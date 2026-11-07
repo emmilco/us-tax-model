@@ -61,7 +61,14 @@ questions never default to zero. Questions are asked in bank order, then by key.
 `serve` runs a local, single-user page (`ui/`) over the `ny` profile (the federal questions,
 then the New York ones). The current question is the centre of the page: its full text (long
 text is broken into paragraphs at sentence ends, never shortened), the answer widget, then the
-explanation (a very long explanation shows its opening and a control for the rest). Beside it,
+explanation (a very long explanation shows its opening and a control for the rest), then the
+forms the question's prompt and help name ("Forms mentioned"): each one's designation and printed
+title, and, where its catalog entry has a `form_purpose`, the official statement of what the form is
+for, quoted with its document and page (`check_source_titles.py` checks it on that page); more than
+two forms are folded to one line each. The server finds them in the question's wording by the
+catalogs' designations ("Form 8814", "Forms 1099-INT and 1099-OID", "Schedule J", "Schedules C and E
+(Form 1040)"; a schedule named without its parent form resolves when the catalogs hold exactly one
+schedule of that number) and sends only the forms the catalogs hold (`engine/src/form-refs.ts`). Beside it,
 or below the explanation on a narrow window, is its source: the cited document's designation
 and printed title, as "Form 1040 — U.S. Individual Income Tax Return" (the `designation`, the form,
 schedule or publication number as the document prints it, and the `title` of its entry in
@@ -104,7 +111,7 @@ key to label, which replay ignores. Its API:
 |---|---|
 | `GET /api/returns` | the return logs in the directory, the scope sentence, the notices, `docTitles` (document id to printed title) and `docDesignations` (document id to printed designation, for the documents that have one), both from the year's source catalogs |
 | `POST /api/returns` `{name}` | starts a log (profile `ny`); an existing name is refused |
-| `GET /api/returns/:name` | the state: the CLI's fields, `pending` with each input's `type` (and enum `values`), `refusalFinal`, the structured `sheets` (federal and New York), the `answered` questions, the `entryLabels` (entry path to label) and the lines the last answer `changed` |
+| `GET /api/returns/:name` | the state: the CLI's fields, `pending` with each input's `type` (and enum `values`) and `forms` (the catalogued forms its question names: `designation`, `id`, `title`, `purpose`), `refusalFinal`, the structured `sheets` (federal and New York), the `answered` questions, the `entryLabels` (entry path to label) and the lines the last answer `changed` |
 | `POST /api/returns/:name/answer` `{input, value[, labels]}` | appends the answer and returns the new state, or 400 with the reason |
 
 `test-serve` (in `check-all`) tests the server on synthetic returns in temporary

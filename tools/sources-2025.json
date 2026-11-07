@@ -15,7 +15,12 @@
     "id": "f1040sa",
     "title": "Itemized Deductions",
     "designation": "Schedule A (Form 1040)",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1040sa.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sa.pdf",
+    "form_purpose": {
+      "text": "Use Schedule A (Form 1040) to figure your itemized deductions. In most cases, your federal income tax will be less if you take the larger of your itemized deductions or your standard deduction.",
+      "doc": "i1040sca",
+      "page": 1
+    }
   },
   {
     "id": "i1040sca",
@@ -33,7 +38,12 @@
     "id": "f1040sd",
     "title": "Capital Gains and Losses",
     "designation": "Schedule D (Form 1040)",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1040sd.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sd.pdf",
+    "form_purpose": {
+      "text": "Use Schedule D: • To figure the overall gain or loss from transactions reported on Form 8949; • To report certain transactions you don’t have to report on Form 8949; • To report a gain from Form 2439 or 6252 or Part I of Form 4797; • To report a gain or loss from Form 4684, 6781, or 8824; • To report a gain or loss from a partnership, S corporation, estate, or trust; • To report capital gain distributions not reported directly on Form 1040 or 1040-SR, line 7a (or effectively connected capital gain distributions not reported directly on Form 1040-NR, line 7a); and • To report a capital loss carryover from 2024 to 2025.",
+      "doc": "i1040sd",
+      "page": 1
+    }
   },
   {
     "id": "i1040sd",
@@ -45,19 +55,34 @@
     "id": "f1040s2",
     "title": "Additional Taxes",
     "designation": "Schedule 2 (Form 1040)",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1040s2.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040s2.pdf",
+    "form_purpose": {
+      "text": "Use Schedule 2 if you have additional taxes that can’t be entered directly on Form 1040, 1040-SR, or 1040-NR.",
+      "doc": "i1040gi",
+      "page": 111
+    }
   },
   {
     "id": "f1040s3",
     "title": "Additional Credits and Payments",
     "designation": "Schedule 3 (Form 1040)",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1040s3.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040s3.pdf",
+    "form_purpose": {
+      "text": "Use Schedule 3 if you have nonrefundable credits, other than the child tax credit or the credit for other dependents, or other payments and refundable credits.",
+      "doc": "i1040gi",
+      "page": 115
+    }
   },
   {
     "id": "f8949",
     "title": "Sales and Other Dispositions of Capital Assets",
     "designation": "Form 8949",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8949.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8949.pdf",
+    "form_purpose": {
+      "text": "Use Form 8949 to report sales and exchanges of capital assets. Form 8949 allows you and the IRS to reconcile amounts that were reported to you and the IRS on Form 1099-B, Form 1099-DA, or Form 1099-S (or substitute statements) with the amounts you report on your return.",
+      "doc": "i8949",
+      "page": 1
+    }
   },
   {
     "id": "i8949",
@@ -69,13 +94,23 @@
     "id": "f4952",
     "title": "Investment Interest Expense Deduction",
     "designation": "Form 4952",
-    "url": "https://www.irs.gov/pub/irs-pdf/f4952.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f4952.pdf",
+    "form_purpose": {
+      "text": "Use Form 4952 to figure the amount of investment interest expense you can deduct for 2025 and the amount you can carry forward to future years. Your investment interest expense deduction is limited to your net investment income.",
+      "doc": "f4952",
+      "page": 3
+    }
   },
   {
     "id": "f8283",
     "title": "Noncash Charitable Contributions",
     "designation": "Form 8283",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8283.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8283.pdf",
+    "form_purpose": {
+      "text": "Use Form 8283 to report information about noncash charitable contributions.",
+      "doc": "i8283",
+      "page": 1
+    }
   },
   {
     "id": "i8283",
@@ -87,7 +122,12 @@
     "id": "f8959",
     "title": "Additional Medicare Tax",
     "designation": "Form 8959",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8959.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8959.pdf",
+    "form_purpose": {
+      "text": "Use Form 8959 to figure the amount of Additional Medicare Tax you owe and the amount of Additional Medicare Tax withheld by your employer, if any.",
+      "doc": "i8959",
+      "page": 1
+    }
   },
   {
     "id": "i8959",
@@ -99,7 +139,12 @@
     "id": "f8960",
     "title": "Net Investment Income Tax— Individuals, Estates, and Trusts",
     "designation": "Form 8960",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8960.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8960.pdf",
+    "form_purpose": {
+      "text": "Use Form 8960 to figure the amount of your Net Investment Income Tax (NIIT).",
+      "doc": "i8960",
+      "page": 1
+    }
   },
   {
     "id": "i8960",
@@ -111,7 +156,12 @@
     "id": "f8995",
     "title": "Qualified Business Income Deduction Simplified Computation",
     "designation": "Form 8995",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8995.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8995.pdf",
+    "form_purpose": {
+      "text": "Use Form 8995 to figure your qualified business income (QBI) deduction. Individual taxpayers and some trusts and estates may be entitled to a deduction of up to 20% of their net QBI from a trade or business, including income from a pass-through entity, but not from a C corporation, plus 20% of qualified real estate investment trust (REIT) dividends and qualified publicly traded partnership (PTP) income.",
+      "doc": "i8995",
+      "page": 1
+    }
   },
   {
     "id": "i8995",
@@ -123,7 +173,12 @@
     "id": "f8995a",
     "title": "Qualified Business Income Deduction",
     "designation": "Form 8995-A",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8995a.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8995a.pdf",
+    "form_purpose": {
+      "text": "Use Form 8995-A to figure your qualified business income (QBI) deduction.",
+      "doc": "i8995a",
+      "page": 1
+    }
   },
   {
     "id": "i8995a",
@@ -189,13 +244,23 @@
     "id": "f1099int",
     "title": "Interest Income",
     "designation": "Form 1099-INT",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1099int.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099int.pdf",
+    "form_purpose": {
+      "text": "Box 1. Shows taxable interest paid to you during the calendar year by the payer.",
+      "doc": "f1099int",
+      "page": 5
+    }
   },
   {
     "id": "f1099div",
     "title": "Dividends and Distributions",
     "designation": "Form 1099-DIV",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1099div.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099div.pdf",
+    "form_purpose": {
+      "text": "Box 1a. Shows total ordinary dividends that are taxable.",
+      "doc": "f1099div",
+      "page": 5
+    }
   },
   {
     "id": "i1099int",
@@ -317,7 +382,12 @@
     "id": "f1040s8812",
     "title": "Credits for Qualifying Children and Other Dependents",
     "designation": "Schedule 8812 (Form 1040)",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1040s8.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040s8.pdf",
+    "form_purpose": {
+      "text": "Use Schedule 8812 (Form 1040) to figure your child tax credit (CTC), credit for other dependents (ODC), and additional child tax credit (ACTC).",
+      "doc": "i1040s8812",
+      "page": 1
+    }
   },
   {
     "id": "i1040s8812",
@@ -329,7 +399,12 @@
     "id": "f1099r",
     "title": "Distributions From Pensions, Annuities, Retirement or Profit-Sharing Plans, IRAs, Insurance Contracts, etc.",
     "designation": "Form 1099-R",
-    "url": "https://www.irs.gov/pub/irs-prior/f1099r--2025.pdf"
+    "url": "https://www.irs.gov/pub/irs-prior/f1099r--2025.pdf",
+    "form_purpose": {
+      "text": "Generally, distributions from retirement plans (IRAs, qualified plans, section 403(b) plans, and governmental section 457(b) plans), insurance contracts, etc., are reported to recipients on Form 1099-R.",
+      "doc": "f1099r",
+      "page": 5
+    }
   },
   {
     "id": "i1099r",
@@ -341,13 +416,23 @@
     "id": "f1040s1",
     "title": "Additional Income and Adjustments to Income",
     "designation": "Schedule 1 (Form 1040)",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1040s1.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040s1.pdf",
+    "form_purpose": {
+      "text": "Use Schedule 1 to report income or adjustments to income that can’t be entered directly on Form 1040, 1040-SR, or 1040-NR.",
+      "doc": "i1040gi",
+      "page": 88
+    }
   },
   {
     "id": "f8889",
     "title": "Health Savings Accounts (HSAs)",
     "designation": "Form 8889",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8889.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8889.pdf",
+    "form_purpose": {
+      "text": "Use Form 8889 to: • Report contributions to your HSA, • Figure your HSA deduction, • Report distributions from HSAs, and • Figure amounts you must include in income and additional tax you may owe if you fail to be an eligible individual.",
+      "doc": "i8889",
+      "page": 1
+    }
   },
   {
     "id": "i8889",
@@ -431,7 +516,12 @@
     "id": "f1040s1a",
     "title": "Additional Deductions",
     "designation": "Schedule 1-A (Form 1040)",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1040s1a.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040s1a.pdf",
+    "form_purpose": {
+      "text": "Use Schedule 1-A to report additional deductions that can’t be entered directly on Form 1040, 1040-SR, or 1040-NR. You can claim these deductions whether you claim the standard deduction or itemize deductions on Schedule A or Schedule A (Form 1040-NR). These additional deductions are deductions for qualified tips, qualified overtime compensation, no tax on car loan interest, and the enhanced deduction for seniors.",
+      "doc": "i1040gi",
+      "page": 101
+    }
   },
   {
     "id": "wftc-notices",
@@ -522,7 +612,12 @@
     "id": "f1040sc",
     "title": "Profit or Loss From Business",
     "designation": "Schedule C (Form 1040)",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1040sc.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sc.pdf",
+    "form_purpose": {
+      "text": "Use Schedule C (Form 1040) to report income or (loss) from a business you operated or a profession you practiced as a sole proprietor. An activity qualifies as a business if your primary purpose for engaging in the activity is for income or profit and you are involved in the activity with continuity and regularity. For example, a sporadic activity, a not-for-profit activity, or a hobby does not qualify as a business.",
+      "doc": "i1040sc",
+      "page": 2
+    }
   },
   {
     "id": "i1040sc",
@@ -534,7 +629,12 @@
     "id": "f1040sse",
     "title": "Self-Employment Tax",
     "designation": "Schedule SE (Form 1040)",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1040sse.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sse.pdf",
+    "form_purpose": {
+      "text": "Use Schedule SE (Form 1040) to figure the tax due on net earnings from self-employment. The Social Security Administration (SSA) uses the information from Schedule SE to figure your benefits under the social security program.",
+      "doc": "i1040sse",
+      "page": 1
+    }
   },
   {
     "id": "i1040sse",
@@ -546,7 +646,12 @@
     "id": "f4562",
     "title": "Depreciation and Amortization",
     "designation": "Form 4562",
-    "url": "https://www.irs.gov/pub/irs-pdf/f4562.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f4562.pdf",
+    "form_purpose": {
+      "text": "Use Form 4562 to: • Claim your deduction for depreciation and amortization, • Make the election under section 179 to expense certain property, and • Provide information on the business/investment use of automobiles and other listed property.",
+      "doc": "i4562",
+      "page": 1
+    }
   },
   {
     "id": "i4562",
@@ -594,7 +699,12 @@
     "id": "f7206",
     "title": "Self-Employed Health Insurance Deduction",
     "designation": "Form 7206",
-    "url": "https://www.irs.gov/pub/irs-pdf/f7206.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f7206.pdf",
+    "form_purpose": {
+      "text": "Use Form 7206 to determine any amount of the self-employed health insurance deduction you may be able to report on Schedule 1 (Form 1040), line 17.",
+      "doc": "i7206",
+      "page": 1
+    }
   },
   {
     "id": "i7206",
@@ -645,13 +755,23 @@
     "id": "f8880",
     "title": "Credit for Qualified Retirement Savings Contributions",
     "designation": "Form 8880",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8880.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8880.pdf",
+    "form_purpose": {
+      "text": "Use Form 8880 to figure the amount, if any, of your retirement savings contributions credit (also known as the saver’s credit). The maximum amount of the credit is $1,000 ($2,000 if married filing jointly).",
+      "doc": "f8880",
+      "page": 2
+    }
   },
   {
     "id": "f2441",
     "title": "Child and Dependent Care Expenses",
     "designation": "Form 2441",
-    "url": "https://www.irs.gov/pub/irs-pdf/f2441.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f2441.pdf",
+    "form_purpose": {
+      "text": "If you paid someone to care for your child or other qualifying person so you (or your spouse if filing jointly) could work or look for work in 2025, you may be able to take the credit for child and dependent care expenses. In addition, if you (or your spouse if filing jointly) received any dependent care benefits for 2025, you must use Form 2441 to figure the amount, if any, of the benefits you can exclude from your income. You must complete Part III of Form 2441 before you can figure the credit, if any, in Part II.",
+      "doc": "i2441",
+      "page": 1
+    }
   },
   {
     "id": "i2441",
@@ -669,7 +789,12 @@
     "id": "f5695",
     "title": "Residential Energy Credits",
     "designation": "Form 5695",
-    "url": "https://www.irs.gov/pub/irs-pdf/f5695.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f5695.pdf",
+    "form_purpose": {
+      "text": "Use Form 5695 to figure and take your residential energy credits. The residential energy credits are: • The residential clean energy credit, and • The energy efficient home improvement credit.",
+      "doc": "i5695",
+      "page": 1
+    }
   },
   {
     "id": "i5695",
@@ -724,7 +849,12 @@
     "id": "f8606",
     "title": "Nondeductible IRAs",
     "designation": "Form 8606",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8606.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8606.pdf",
+    "form_purpose": {
+      "text": "Use Form 8606 to report: • Nondeductible contributions you made to traditional IRAs; • Distributions from traditional IRAs, if you have a basis in these IRAs; • Conversions from traditional IRAs to Roth IRAs; and • Distributions from Roth IRAs.",
+      "doc": "i8606",
+      "page": 2
+    }
   },
   {
     "id": "i8606",
@@ -736,7 +866,12 @@
     "id": "f1040se",
     "title": "Supplemental Income and Loss",
     "designation": "Schedule E (Form 1040)",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1040se.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040se.pdf",
+    "form_purpose": {
+      "text": "Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties, partnerships, S corporations, estates, trusts, and residual interests in REMICs.",
+      "doc": "i1040se",
+      "page": 1
+    }
   },
   {
     "id": "i1040se",
@@ -748,7 +883,12 @@
     "id": "f8582",
     "title": "Passive Activity Loss Limitations",
     "designation": "Form 8582",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8582.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8582.pdf",
+    "form_purpose": {
+      "text": "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL) for the current tax year and to report the application of prior-year unallowed PALs.",
+      "doc": "i8582",
+      "page": 1
+    }
   },
   {
     "id": "i8582",
@@ -808,7 +948,12 @@
     "id": "f6198",
     "title": "At-Risk Limitations",
     "designation": "Form 6198",
-    "url": "https://www.irs.gov/pub/irs-pdf/f6198.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f6198.pdf",
+    "form_purpose": {
+      "text": "Use Form 6198 to figure: • The profit (loss) from an at-risk activity for the current year (Part I), • The amount at risk for the current year (Part II or Part III), and • The deductible loss for the current year (Part IV). The at-risk rules of section 465 limit the amount of the loss you can deduct to the amount at risk.",
+      "doc": "i6198",
+      "page": 1
+    }
   },
   {
     "id": "i6198",
@@ -820,7 +965,12 @@
     "id": "f8962",
     "title": "Premium Tax Credit (PTC)",
     "designation": "Form 8962",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8962.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8962.pdf",
+    "form_purpose": {
+      "text": "Use Form 8962 to figure the amount of your PTC and reconcile it with APTC.",
+      "doc": "i8962",
+      "page": 2
+    }
   },
   {
     "id": "i8962",
@@ -838,7 +988,12 @@
     "id": "f1095a",
     "title": "Health Insurance Marketplace Statement",
     "designation": "Form 1095-A",
-    "url": "https://www.irs.gov/pub/irs-prior/f1095a--2025.pdf"
+    "url": "https://www.irs.gov/pub/irs-prior/f1095a--2025.pdf",
+    "form_purpose": {
+      "text": "You received this Form 1095-A because you or a family member enrolled in health insurance coverage through the Health Insurance Marketplace. This Form 1095-A provides information you need to complete Form 8962, Premium Tax Credit (PTC).",
+      "doc": "f1095a",
+      "page": 3
+    }
   },
   {
     "id": "i1095a",
@@ -850,7 +1005,12 @@
     "id": "f8863",
     "title": "Education Credits (American Opportunity and Lifetime Learning Credits)",
     "designation": "Form 8863",
-    "url": "https://www.irs.gov/pub/irs-pdf/f8863.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8863.pdf",
+    "form_purpose": {
+      "text": "Use Form 8863 to figure and claim your education credits, which are based on adjusted qualified education expenses paid to an eligible educational institution (postsecondary). For 2025, there are two education credits. • The American opportunity credit, part of which may be refundable. • The lifetime learning credit, which is nonrefundable.",
+      "doc": "i8863",
+      "page": 1
+    }
   },
   {
     "id": "i8863",
@@ -874,7 +1034,12 @@
     "id": "f5329",
     "title": "Additional Taxes on Qualified Plans (Including IRAs) and Other Tax-Favored Accounts",
     "designation": "Form 5329",
-    "url": "https://www.irs.gov/pub/irs-pdf/f5329.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f5329.pdf",
+    "form_purpose": {
+      "text": "Use Form 5329 to report additional taxes on: • IRAs, • Other qualified retirement plans, • Modified endowment contracts, • Coverdell ESAs, • QTPs, • Archer MSAs, • HSAs, or • ABLE accounts.",
+      "doc": "i5329",
+      "page": 1
+    }
   },
   {
     "id": "i5329",
@@ -910,7 +1075,12 @@
     "id": "f1099c",
     "title": "Cancellation of Debt",
     "designation": "Form 1099-C",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1099c.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099c.pdf",
+    "form_purpose": {
+      "text": "You received this form because a federal government agency or an applicable financial entity (a creditor) has discharged (canceled or forgiven) a debt you owed, or because an identifiable event has occurred that either is or is deemed to be a discharge of a debt of $600 or more.",
+      "doc": "f1099c",
+      "page": 4
+    }
   },
   {
     "id": "i1099ac",
@@ -922,7 +1092,12 @@
     "id": "f1099sa",
     "title": "Distributions From an HSA, Archer MSA, or Medicare Advantage MSA",
     "designation": "Form 1099-SA",
-    "url": "https://www.irs.gov/pub/irs-pdf/f1099sa.pdf"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099sa.pdf",
+    "form_purpose": {
+      "text": "Distributions from a health savings account (HSA), Archer medical savings account (MSA), or Medicare Advantage (MA) MSA are reported to you on Form 1099-SA.",
+      "doc": "f1099sa",
+      "page": 3
+    }
   },
   {
     "id": "usc-26-36b",
@@ -951,7 +1126,12 @@
     "title": "Tuition Statement",
     "designation": "Form 1098-T",
     "url": "https://www.irs.gov/pub/irs-prior/f1098t--2025.pdf",
-    "purpose": "Stage 19: Form 1098-T (2025), the box captions named in the education credit help text (D9)"
+    "purpose": "Stage 19: Form 1098-T (2025), the box captions named in the education credit help text (D9)",
+    "form_purpose": {
+      "text": "This statement has been furnished to you by an eligible educational institution in which you are enrolled, or by an insurer who makes reimbursements or refunds of qualified tuition and related expenses to you. This statement is required to support any claim for an education credit.",
+      "doc": "f1098t",
+      "page": 4
+    }
   },
   {
     "id": "usc-26-72",

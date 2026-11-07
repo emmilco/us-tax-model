@@ -7,7 +7,9 @@
 // ny.refuse.part_year_state) through the page: every answer through the page's widgets, a blank amount refused
 // without writing, an earlier answer corrected, a derivation opened and followed to the answer it depends on, and the
 // provisional refusal becoming final once nothing is pending. The answered list, the values sheets and the scope and
-// notices are tabs; a refusal's details open in a dialog. Screenshots of each view go to /private/tmp/tax-ui-design-*.png.
+// notices are tabs; a refusal's details open in a dialog. A question that names forms lists them under its
+// explanation, each with its title and quoted purpose. Screenshots of each view go to /private/tmp/tax-ui-design-*.png,
+// and of the forms a question names to /private/tmp/tax-ui-glosses.png.
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -145,9 +147,32 @@ try {
   assert(firstQ.beside, "the source is beside the question on a wide window");
   await shot("question");
   assert.match(await banner(), /In progress/);
+  // The first question names Form W-2 and Form 1099-R: under the explanation, each by designation and title; Form
+  // 1099-R's purpose, from its recipient instructions, quoted with its source and shown open; Form W-2, with no
+  // recipient-facing purpose archived, by name alone. The question itself is unchanged.
+  const glosses = await evaluate(`({heading:document.getElementById('forms-heading')?.textContent,
+    items:[...document.querySelectorAll('.forms-mentioned .form-gloss')].map(li=>({name:li.querySelector('.form-name').textContent,
+      open:li.querySelector('details')?.open ?? null, quote:li.querySelector('blockquote')?.innerText ?? '', meta:li.querySelector('.meta')?.textContent ?? ''})),
+    below:(()=>{const h=document.querySelector('.question .help'),f=document.querySelector('.forms-mentioned');return !!h&&!!f&&f.getBoundingClientRect().top>=h.getBoundingClientRect().bottom;})(),
+    inAsk:!!document.querySelector('.question .ask .forms-mentioned')})`);
+  assert.equal(glosses.heading, "Forms mentioned");
+  assert.deepEqual(glosses.items.map(i => i.name), ["Form W-2 \u2014 Wage and Tax Statement",
+    "Form 1099-R \u2014 Distributions From Pensions, Annuities, Retirement or Profit-Sharing Plans, IRAs, Insurance Contracts, etc."]);
+  assert.equal(glosses.items[0].open, null, "Form W-2 has no purpose to show");
+  assert.equal(glosses.items[1].open, true, "with two forms, a purpose is shown open");
+  assert.match(glosses.items[1].quote, /^\u201cGenerally, distributions from retirement plans/);
+  assert.equal(glosses.items[1].meta, "Form 1099-R, p. 5", "a purpose quoted from the form itself names it by designation");
+  // Form 1099-R's name wraps; every line of it starts right of the disclosure marker, none under it.
+  const wrap = await evaluate(`(()=>{const n=document.querySelector('.forms-mentioned summary .form-name'),s=n.closest('summary');
+    const box=n.getBoundingClientRect();return {lines:Math.round(box.height/parseFloat(getComputedStyle(n).lineHeight)), indent:box.left-s.getBoundingClientRect().left};})()`);
+  assert(wrap.lines >= 2 && wrap.indent > 5, `the wrapped form name is indented past the marker on every line: ${JSON.stringify(wrap)}`);
+  assert(glosses.below && glosses.inAsk, "the forms are listed under the explanation, in the question's column");
+  await evaluate("document.querySelector('.forms-mentioned').scrollIntoView({block:'center',behavior:'instant'})");
+  await screenshot("/private/tmp/tax-ui-glosses.png");
+  await evaluate("window.scrollTo(0, 0)");
 
   // A blank amount is refused on the page and nothing is written; a help request leaves the question pending.
-  let answered = 0, correctedAt = null, sawProvisional = false, derivationOpened = false, blankRefused = false;
+  let answered = 0, correctedAt = null, sawProvisional = false, derivationOpened = false, blankRefused = false, sawFolded = false;
   for (let step = 0; step < 400; step++) {
     const input = await question();
     if (!input || !(fx(input) in inputs)) break;
@@ -179,6 +204,17 @@ try {
       assert.equal(words(shown.prompt), words(q.prompt), `${input}: the question is shown word for word`);
       const title = docTitles[q.cite.doc], designation = docDesignations[q.cite.doc];
       assert.equal(shown.doc, designation && !title.includes(designation) ? `${designation} \u2014 ${title}` : title, `${input}: the source is named by its designation and title`);
+      // The forms it names: one item per served form, open when there are at most two, each purpose quoted in full.
+      const forms = await evaluate(`[...document.querySelectorAll('.forms-mentioned .form-gloss')].map(li=>({open:li.querySelector('details')?.open ?? null,
+        quote:li.querySelector('blockquote')?.textContent ?? null}))`);
+      assert.equal(forms.length, q.forms.length, `${input}: one item per form named`);
+      forms.forEach((f, i) => {
+        const purpose = q.forms[i].purpose;
+        assert.equal(f.open, purpose ? q.forms.length <= 2 : null, `${input}: ${q.forms[i].designation} is open only when at most two forms are named`);
+        if (purpose) assert.equal(f.quote.replace(/[\u201c\u201d\s•]/g, ""), purpose.text.replace(/[\s•]/g, ""),
+          `${input}: ${q.forms[i].designation}'s purpose is quoted word for word`);
+      });
+      if (q.forms.length > 2) sawFolded = true;
       if (input === "scope.other_line16") {
         assert(q.prompt.length > 900, "scope.other_line16 is a long question");
         await shot("long");
@@ -312,7 +348,8 @@ try {
   assert.deepEqual(errors, []);
   console.log(`Browser passed: the person selector with no entry syntax, ${answered} answers through the page's widgets, labelled roster entries (a colliding label suffixed; labels in the answered list, a sheet heading and a question's entry), a help request, a refused blank amount, a correction through the answered list, a derivation with operand links and the answer it depends on, a provisional refusal that became final, a reload.`);
   assert(longShot, "the long question scope.other_line16 was shown in full");
-  console.log("Screenshots: /private/tmp/tax-ui-design-{question,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png");
+  assert(sawFolded, "a question naming more than two forms was shown with each form folded to one line");
+  console.log("Screenshots: /private/tmp/tax-ui-design-{question,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png, /private/tmp/tax-ui-glosses.png");
 } finally {
   server?.kill(); ws.close();
   rmSync(dir, { recursive: true, force: true });

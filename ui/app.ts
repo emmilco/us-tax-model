@@ -14,7 +14,8 @@ type Value =
   | { kind: "unknown"; reason: string; input?: string };
 interface Derivation { value: Value; op: string; cite: Cite | null; operands: { ref: string; value: Value }[]; guardsNotTaken: { guard: string; value: Value }[]; notes: string[] }
 interface Choice { label: string; value: string[]; labels: Record<string, string> }
-interface Question { input: string; prompt: string; help: string; cite: Cite; helpRequested?: boolean; type: string; values?: string[]; choices?: Choice[]; value?: unknown }
+interface FormRef { designation: string; id: string; title?: string; purpose?: { text: string; doc: string; page: number } }
+interface Question { input: string; prompt: string; help: string; cite: Cite; helpRequested?: boolean; type: string; values?: string[]; choices?: Choice[]; value?: unknown; forms?: FormRef[] }
 interface SheetLine { key: string; printed: string; label: string; value: Value; status: string; shown: boolean; notes: string[] }
 interface Section { doc: string; title: string; entry: string | null; lines: SheetLine[] }
 interface State {
@@ -168,6 +169,30 @@ function sourceBlock(c: Cite, inputKey: string): HTMLElement {
     el("ol", { class: "refs", id: "source-refs" }, ...references(c.locator).map(referenceNode)),
     el("p", { class: "meta" }, `${c.doc}${c.revision ? `, revision ${c.revision}` : ""}`),
     el("p", { class: "meta key", title: "The input this question answers" }, displayKey(inputKey)));
+}
+
+/** The forms a question names (found by the server in its prompt and help): each one's designation and printed
+ * title, and the catalog's quoted statement of what it is for with that statement's source. More than two are shown
+ * one line each, each expandable. A purpose's "•" items are shown as a list; the words are the source's. A purpose
+ * quoted from the form itself (its recipient instructions) names its source by designation alone. */
+function formsBlock(forms: FormRef[]): HTMLElement | null {
+  if (!forms.length) return null;
+  const open = forms.length <= 2;
+  const items = forms.map((f) => {
+    const name = f.title && !f.title.includes(f.designation) ? `${f.designation} — ${f.title}` : f.title ?? f.designation;
+    if (!f.purpose) return el("li", { class: "form-gloss bare" }, el("span", { class: "form-name" }, name));
+    const [lead, ...points] = f.purpose.text.split(/\s+•\s+/);
+    const quote = el("blockquote", { class: "quote" }, el("p", {}, `“${lead!.replace(/^•\s*/, "")}${points.length ? "" : "”"}`),
+      points.length ? el("ul", {}, ...points.map((t, i) => el("li", {}, i === points.length - 1 ? `${t}”` : t))) : null);
+    const details = el("details", open ? { open: "" } : {},
+      el("summary", {}, el("span", { class: "form-name" }, name)),
+      quote,
+      el("p", { class: "meta" }, `${f.purpose.doc === f.id ? f.designation : docTitle(f.purpose.doc)}, p. ${f.purpose.page}`));
+    return el("li", { class: "form-gloss" }, details);
+  });
+  return el("section", { class: "forms-mentioned", "aria-labelledby": "forms-heading" },
+    el("h3", { id: "forms-heading", class: "source-label" }, "Forms mentioned"),
+    el("ul", { class: "form-glosses" }, ...items));
 }
 
 // ---- long text ----
@@ -553,6 +578,7 @@ function renderQuestion(): void {
     widget, errorLine,
     q.helpRequested ? el("p", { class: "note" }, "You asked for help with this question. It stays unanswered until you answer it.") : null,
     q.help ? el("section", { class: "help", "aria-label": "Explanation" }, longText(q.help, "help-text", "help", "explanation", true)) : null,
+    formsBlock(q.forms ?? []),
     el("div", { class: "actions" }, help));
   panel.replaceChildren(savedLine(), el("article", { class: "question", "data-input": q.input }, main, sourceBlock(q.cite, q.input)));
   if (view === "question") (panel.querySelector("#answer-input, .widget .choice, .roster-row input") as HTMLElement | null)?.focus({ preventScroll: true });

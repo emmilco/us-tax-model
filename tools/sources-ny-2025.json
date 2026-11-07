@@ -28,13 +28,23 @@
     "id": "ny_it201att",
     "title": "Other Tax Credits and Taxes",
     "designation": "Form IT-201-ATT",
-    "url": "https://www.tax.ny.gov/pdf/2025/inc/it201att_2025_fill_in.pdf"
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it201att_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "You must complete Form IT-201-ATT and submit it with your Form IT-201 if: • you are claiming other New York State, New York City, Yonkers, or metropolitan commuter transportation mobility tax credits that are not entered directly on Form IT-201; or • you are subject to other New York State or New York City taxes.",
+      "doc": "ny_it201i",
+      "page": 28
+    }
   },
   {
     "id": "ny_it2",
     "title": "Summary of W-2 Statements",
     "designation": "Form IT-2",
-    "url": "https://www.tax.ny.gov/pdf/2025/inc/it2_2025_fill_in.pdf"
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it2_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "Complete Form IT-2, Summary of W-2 Statements, for all federal Forms W-2 (or W-2c) you received. You must complete a W-2 record for each W-2 you receive, even if it does not show any New York State, New York City (NYC), or Yonkers wages or tax withheld.",
+      "doc": "ny_it201i",
+      "page": 21
+    }
   },
   {
     "id": "ny_it270i",

@@ -144,6 +144,20 @@ h1 span { font-weight: 400; color: var(--muted); }
 .quote { color: var(--ink); }
 .source .meta { margin-top: 0.7rem; font-size: 0.75rem; color: var(--muted); overflow-wrap: anywhere; }
 .source .meta + .meta { margin-top: 0.15rem; }
+.forms-mentioned { margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--rule-soft); font-size: 0.875rem; line-height: 1.5; max-width: var(--measure); }
+.form-glosses { list-style: none; padding: 0; margin: 0.3rem 0 0; }
+.form-gloss + .form-gloss { margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid var(--rule-soft); }
+.form-gloss summary { cursor: pointer; color: var(--ink); list-style: none; position: relative; padding-left: 1.1em; }
+.form-gloss summary::-webkit-details-marker { display: none; }
+.form-gloss summary::before { content: "\25B8"; position: absolute; left: 0; color: var(--muted); }
+.form-gloss details[open] > summary::before { content: "\25BE"; }
+.form-gloss.bare { padding-left: 1.1em; }
+.form-gloss .form-name { display: inline-block; }
+.form-gloss .form-name { font-weight: 600; }
+.form-gloss.bare .form-name { font-weight: 400; color: var(--muted); }
+.form-gloss blockquote { margin: 0.35rem 0 0; padding-left: 0.75rem; border-left: 2px solid #aeb6bf; }
+.form-gloss blockquote ul { margin: 0.2rem 0 0; padding-left: 1.1rem; }
+.form-gloss .meta { margin-top: 0.3rem; font-size: 0.75rem; color: var(--muted); }
 .key { font-family: var(--mono); }
 
 /* ---- answered ---- */

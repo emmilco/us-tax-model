@@ -4,7 +4,8 @@
 //
 //   GET  /api/returns                 the return logs in the returns directory, and each source document's title
 //   POST /api/returns {name}          starts a log <name>.jsonl (mode 0600; an existing name is refused)
-//   GET  /api/returns/:name           the return's state
+//   GET  /api/returns/:name           the return's state; each question carries `forms`, the forms its prompt and
+//                                     help name that the catalogs hold, with designation, title and purpose
 //   POST /api/returns/:name/answer {input, value[, labels]}
 //                                     (labels: a roster answer's label for each entry key, kept in the log)
 //                                     appends the answer and returns the new state, or 400 with the reason
@@ -18,6 +19,7 @@ import { isDeepStrictEqual } from "node:util";
 import { loadCanonical } from "./canonical.js";
 import { applyAnswer, inputMeta, interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData } from "./interview.js";
 import { standingNotices, type SheetSection } from "./output.js";
+import { formResolver, type FormEntry, type FormRef, type Purpose } from "./form-refs.js";
 import type { CanonicalData } from "./types.js";
 
 export const PROFILE = "ny";
@@ -54,19 +56,33 @@ export function checkReturnsDir(dir: string): string {
 
 /** Each source document's printed title and designation (the form, schedule or publication number as printed), by
  * id, from the year's source catalogs (tools/sources-<year>.json and tools/sources-ny-<year>.json;
- * tools/check_source_titles.py checks each against the archived document). A document with none is absent. */
-export function docNames(year: number): { titles: Record<string, string>; designations: Record<string, string> } {
+ * tools/check_source_titles.py checks each against the archived document), and the entries that carry a designation,
+ * with a form's quoted purpose where the catalog gives one. A document with none is absent. */
+export function docNames(year: number): { titles: Record<string, string>; designations: Record<string, string>; forms: FormEntry[] } {
   const titles: Record<string, string> = {};
   const designations: Record<string, string> = {};
+  const forms: FormEntry[] = [];
   for (const name of [`sources-${year}.json`, `sources-ny-${year}.json`]) {
     const path = join(ROOT, "tools", name);
     if (!existsSync(path)) continue;
-    for (const e of JSON.parse(readFileSync(path, "utf8")) as { id: string; title?: string; designation?: string }[]) {
+    for (const e of JSON.parse(readFileSync(path, "utf8")) as { id: string; title?: string; designation?: string; form_purpose?: Purpose }[]) {
       if (e.title) titles[e.id] = e.title;
-      if (e.designation) designations[e.id] = e.designation;
+      if (e.designation) {
+        designations[e.id] = e.designation;
+        forms.push({ id: e.id, designation: e.designation, ...(e.title ? { title: e.title } : {}), ...(e.form_purpose ? { purpose: e.form_purpose } : {}) });
+      }
     }
   }
-  return { titles, designations };
+  return { titles, designations, forms };
+}
+
+/** The forms each question names, by question input template, in order of first mention in its prompt, then its
+ * help; a named form the catalogs do not hold has a null id. */
+export function questionForms(config: InterviewData, forms: FormEntry[]): Map<string, FormRef[]> {
+  const resolve = formResolver(forms);
+  const out = new Map<string, FormRef[]>();
+  for (const q of config.questions) if (!out.has(q.input)) out.set(q.input, resolve([q.prompt, q.help ?? ""]));
+  return out;
 }
 
 class HttpError extends Error { constructor(readonly status: number, message: string) { super(message); } }
@@ -79,6 +95,9 @@ function changedKeys(before: Record<string, { value: unknown }> | null, after: R
 }
 
 export function createApp(data: CanonicalData, config: InterviewData, dir: string) {
+  const names = docNames(config.tax_year);
+  const formsOf = questionForms(config, names.forms);
+  const formsFor = (key: string) => (formsOf.get(questionTemplate(key)) ?? []).filter((f) => f.id !== null);
   const logPath = (name: string) => {
     if (!NAME.test(name)) throw new HttpError(400, "a return name is 1 to 64 letters, digits, '_' or '-', starting with a letter or digit");
     return join(dir, `${name}.jsonl`);
@@ -101,7 +120,7 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
     const answered = firstAnswered.filter((key) => key in inputs).map((key) => {
       const q = question(key);
       return { input: key, value: inputs[key], prompt: q.prompt, help: q.help, order: q.order, cite: q.cite,
-        ...(q.choices ? { choices: q.choices } : {}), ...inputMeta(data, key) };
+        ...(q.choices ? { choices: q.choices } : {}), ...inputMeta(data, key), forms: formsFor(key) };
     });
     // Each listed entry's label, by entry path (`person[taxpayer].w2[acme_corp]`), from its roster's latest labelled answer.
     const entryLabels: Record<string, string> = {};
@@ -115,7 +134,7 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
     const isNy = (s: SheetSection) => s.doc.startsWith("ny_");
     return {
       name, ...rest,
-      pending: view.pending.map((q) => ({ ...q, ...inputMeta(data, q.input) })),
+      pending: view.pending.map((q) => ({ ...q, ...inputMeta(data, q.input), forms: formsFor(q.input) })),
       refusalFinal: view.refusal !== null && view.pending.length === 0,
       standingNotices: standingNotices(),
       sheets: { federal: sheet.sections.filter((s) => !isNy(s)), newYork: sheet.sections.filter(isNy) },
@@ -133,7 +152,6 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
   };
 
   const blank = interviewView(data, config, replay(config, [{ version: 1, tax_year: config.tax_year }]));
-  const names = docNames(config.tax_year);
   const api = (method: string, parts: string[], body: unknown): [number, unknown] => {
     if (parts.length === 0) {
       if (method === "GET") {
