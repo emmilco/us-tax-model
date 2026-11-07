@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 138 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.6% (312/4127 second-family lines judged; pending reviews are provisional); 66 eligible, 72 pending; raw agreement 81.3% (diagnostic only); current independence yield 162 line(s); both families disputed 545
+Summary: 138 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.6% (312/4127 second-family lines judged; pending reviews are provisional); 66 eligible, 72 pending; raw agreement 81.3% (diagnostic only); current independence yield 162 line(s); both families disputed 546
 
 Written by `tools/transcription/compare_families.py` on 2026-11-07 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -29,7 +29,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-07 from the revi
 | f2441 | gpt (gpt-6-astra) | 37 | 25 | 67.6% | 8/37 (21.6%) | pending | 4 | 8 | 0 | 0 |
 | f4562 | deepseek (deepseek-flash) | 15 | 1 | 6.7% | 0/15 (0.0%) | pending | 0 | 14 | 0 | 0 |
 | f5329 | deepseek (deepseek-flash) | 10 | 2 | 20.0% | 5/10 (50.0%) | pending | 0 | 8 | 0 | 0 |
-| f5695 | deepseek (deepseek-flash) | 33 | 6 | 18.2% | 23/33 (69.7%) | pending | 0 | 24 | 3 | 0 |
+| f5695 | deepseek (deepseek-flash) | 33 | 6 | 18.2% | 23/33 (69.7%) | pending | 0 | 25 | 2 | 0 |
 | f8606 | deepseek (deepseek-flash) | 5 | 2 | 40.0% | 0/5 (0.0%) | pending | 0 | 3 | 0 | 0 |
 | f8863 | deepseek (deepseek-flash) | 28 | 1 | 3.6% | 22/28 (78.6%) | pending | 0 | 27 | 0 | 0 |
 | f8880 | deepseek (deepseek-flash) | 21 | 6 | 28.6% | 15/21 (71.4%) | pending | 7 | 8 | 0 | 0 |
@@ -66,7 +66,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-07 from the revi
 | tcw | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 0 | 0.0% | 7/18 (38.9%) | pending | 0 | 18 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 872 | 290 | 33.3% | | | 92 | 467 | 23 | 3 |
+| **all** | | 872 | 290 | 33.3% | | | 92 | 468 | 22 | 3 |
 
 Pending aqee [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending carloan [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -319,6 +319,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f5695 | deepseek | 32a | DISAGREE | DISAGREE | (no reason given) |
 | f5695 | deepseek | 32b | DISAGREE | DISAGREE | (no reason given) |
 | f5695 | deepseek | 5b | DISAGREE | DISAGREE | (no reason given) |
+| f5695 | deepseek | 6a | DISAGREE | DISAGREE | (no reason given) |
 | f5695 | deepseek | f5695.claiming_part1 | DISAGREE | DISAGREE | The IRS text does not define this result interface; read as true when the Part I credit on line 15 is positive. |
 | f8606 | deepseek | 1 | DISAGREE | DISAGREE | The IRS worksheet permits line 1 to be figured through the IRA Deduction Worksheet or the Pub. 590-A reduced-deduction worksheet; with no additional input interface, this slice takes line 1 as the supplied nondeductible contribution amount. |
 | f8606 | deepseek | 2 | DISAGREE | DISAGREE | The IRS instructions allow line 2 to be adjusted for return of excess contributions, divorce transfers, and rollovers of nontaxable plan amounts; this closed slice takes line 2 as the supplied total basis. |

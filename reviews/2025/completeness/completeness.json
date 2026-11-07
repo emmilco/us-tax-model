@@ -1921,10 +1921,28 @@
  },
  {
   "form": "f5695",
-  "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317",
+  "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a",
   "claims": [
    {
-    "item": "f5695.line6a",
+    "item": "f5695.part1_any",
+    "sentences": [
+     {
+      "quote": "A home is where you lived in 2025 and can include a house, houseboat, mobile home, cooperative apartment, condominium, and a manufactured home that conforms to Federal Manufactured Home Construction and Safety Standards.",
+      "page": "i5695 p. 1"
+     },
+     {
+      "quote": "If you made energy saving improvements to more than one home that you used as a residence during 2025, enter the total of those costs on the applicable line(s) of one Form 5695.",
+      "page": "i5695 p. 2"
+     }
+    ],
+    "quote": "A home is where you lived in 2025 and can include a house, houseboat, mobile home, cooperative apartment, condominium, and a manufactured home that conforms to Federal Manufactured Home Construction and Safety Standards. / If you made energy saving improvements to more than one home that you used as a residence during 2025, enter the total of those costs on the applicable line(s) of one Form 5695.",
+    "page": "i5695 p. 1; i5695 p. 2",
+    "why_uncovered": "The Part I questions (part1_any, line1 to line4, line5a, battery_cost) ask only for property 'for a home in the United States (it need not be your main home)'. None of them requires the home to be one the filer lived in or used as a residence in 2025, and none says a manufactured home must meet the federal construction and safety standards. So a filer could enter costs for a rental or investment property they never lived in. No refusal applies to this situation.",
+    "closest_item": "f5695.part1_any",
+    "effect": "amount"
+   },
+   {
+    "item": "f5695.line1",
     "sentences": [
      {
       "quote": "In the section above line 1, enter the complete address of the home where you installed the qualified residential clean energy property or technology associated with lines 1 through 4 and 5b.",
@@ -1937,8 +1955,8 @@
     ],
     "quote": "In the section above line 1, enter the complete address of the home where you installed the qualified residential clean energy property or technology associated with lines 1 through 4 and 5b. / If you made improvements to more than one home, list the complete address of the home with the greatest total cost in the section above line 1. Then, attach a statement listing the additional addresses to Form 5695.",
     "page": "i5695 p. 4",
-    "why_uncovered": "No question asks for the address of the Part I home, and nothing records the additional addresses or the attached statement when Part I costs are for more than one home. Lines 1-5b only ask for cost amounts.",
-    "closest_item": "f5695.line6a",
+    "why_uncovered": "No item collects the Part I home address. No item collects the address of the home with the greatest total cost, and nothing produces the attached statement listing the other addresses.",
+    "closest_item": "f5695.line1",
     "effect": "presentation"
    },
    {
@@ -1951,7 +1969,7 @@
     ],
     "quote": "Line 17d. Enter the complete address of your main home during 2025.",
     "page": "i5695 p. 5",
-    "why_uncovered": "No encoded line or question captures the line 17d main-home address. The 17a question only asks yes/no about the main home and repeats the one-main-home limit, which is already covered.",
+    "why_uncovered": "Line 17d is not encoded and no question collects the main home address. The 17a question only covers the one-main-home limit.",
     "closest_item": "f5695.line17a",
     "effect": "presentation"
    },
@@ -1965,7 +1983,7 @@
     ],
     "quote": "Line 21c. Enter the full address of each home where you installed qualified energy property.",
     "page": "i5695 p. 6",
-    "why_uncovered": "Line 21c is not encoded, and no question collects the address of each home where Section B property was installed.",
+    "why_uncovered": "Line 21c is not encoded and no question collects the addresses of the homes where qualified energy property was installed.",
     "closest_item": "f5695.line21a",
     "effect": "presentation"
    },
@@ -1979,68 +1997,88 @@
     ],
     "quote": "Line 25b. Enter the code for the type(s) of enabled property from the following list.",
     "page": "i5695 p. 6",
-    "why_uncovered": "The 25a question lists the enabled-property types to decide eligibility, but no line or question records which code(s) A-G must be entered on line 25b.",
+    "why_uncovered": "The 25a question lists the kinds of enabled property, but line 25b is not encoded. No question records which codes A to G apply, so the required documentation of the link between enabling and enabled property is never entered.",
     "closest_item": "f5695.line25a",
     "effect": "presentation"
    },
    {
-    "item": "f5695.line19e",
+    "item": "f5695.qmid_doors",
     "sentences": [
+     {
+      "quote": "Line 19b. Enter the QMID for the exterior door you reported on line 19a.",
+      "page": "i5695 p. 6"
+     },
+     {
+      "quote": "Line 19d. Enter the QMID(s) and amount(s) you paid for the two next most expensive qualifying exterior doors in 2025.",
+      "page": "i5695 p. 6"
+     },
      {
       "quote": "If you enter an amount on line 19e, attach a statement to your return listing the QMID and cost of each item included on line 19e.",
       "page": "i5695 p. 6"
      }
     ],
-    "quote": "If you enter an amount on line 19e, attach a statement to your return listing the QMID and cost of each item included on line 19e.",
+    "quote": "Line 19b. Enter the QMID for the exterior door you reported on line 19a. / Line 19d. Enter the QMID(s) and amount(s) you paid for the two next most expensive qualifying exterior doors in 2025. / If you enter an amount on line 19e, attach a statement to your return listing the QMID and cost of each item included on line 19e.",
     "page": "i5695 p. 6",
-    "why_uncovered": "The encoding asks only whether a valid QMID exists (qmid_doors). It does not capture the QMIDs or produce the required statement listing each door's QMID and cost.",
-    "closest_item": "f5695.line19e",
+    "why_uncovered": "The encoding only asks whether the filer has a valid QMID and refuses if not. It never collects the QMIDs, so they can't be entered on lines 19b and 19d. Nothing produces the required statement for line 19e.",
+    "closest_item": "f5695.qmid_doors",
     "effect": "presentation"
    },
    {
-    "item": "f5695.line20b",
+    "item": "f5695.qmid_windows",
     "sentences": [
+     {
+      "quote": "Line 20a. Enter the QMID and amounts you paid for the four most expensive exterior windows and skylights that meet Energy Star certification requirements on lines (i) through (iv).",
+      "page": "i5695 p. 6"
+     },
      {
       "quote": "If you enter an amount on line 20b, attach a statement to your return listing the QMID and cost of each item included on line 20b.",
       "page": "i5695 p. 6"
      }
     ],
-    "quote": "If you enter an amount on line 20b, attach a statement to your return listing the QMID and cost of each item included on line 20b.",
+    "quote": "Line 20a. Enter the QMID and amounts you paid for the four most expensive exterior windows and skylights that meet Energy Star certification requirements on lines (i) through (iv). / If you enter an amount on line 20b, attach a statement to your return listing the QMID and cost of each item included on line 20b.",
     "page": "i5695 p. 6",
-    "why_uncovered": "qmid_windows only checks that QMIDs exist. Nothing produces the required itemized statement of each window or skylight's QMID and cost.",
-    "closest_item": "f5695.line20b",
+    "why_uncovered": "The encoding only asks whether QMIDs exist. It never collects them for line 20a, and nothing produces the statement for line 20b.",
+    "closest_item": "f5695.qmid_windows",
     "effect": "presentation"
    },
    {
-    "item": "f5695.line22b",
+    "item": "f5695.qmid_ac",
     "sentences": [
+     {
+      "quote": "Line 22a. Enter the QMID and amount you paid for the most expensive central air conditioner that achieves the highest efficiency tier that has been established by the Consortium for Energy Efficiency (CEE) that is in effect as of the beginning of the calendar year in which the property is placed in service.",
+      "page": "i5695 p. 6"
+     },
      {
       "quote": "If you enter an amount on line 22b, attach a statement to your return listing the QMID and cost of each item included on line 22b.",
       "page": "i5695 p. 6"
      }
     ],
-    "quote": "If you enter an amount on line 22b, attach a statement to your return listing the QMID and cost of each item included on line 22b.",
+    "quote": "Line 22a. Enter the QMID and amount you paid for the most expensive central air conditioner that achieves the highest efficiency tier that has been established by the Consortium for Energy Efficiency (CEE) that is in effect as of the beginning of the calendar year in which the property is placed in service. / If you enter an amount on line 22b, attach a statement to your return listing the QMID and cost of each item included on line 22b.",
     "page": "i5695 p. 6",
-    "why_uncovered": "qmid_ac only checks that QMIDs exist. The required statement listing each additional central air conditioner's QMID and cost is not encoded.",
-    "closest_item": "f5695.line22b",
+    "why_uncovered": "The encoding only asks whether QMIDs exist. It never collects the QMID for line 22a, and nothing produces the statement for line 22b.",
+    "closest_item": "f5695.qmid_ac",
     "effect": "presentation"
    },
    {
-    "item": "f5695.line23b",
+    "item": "f5695.qmid_wh",
     "sentences": [
+     {
+      "quote": "Line 23a. Enter the QMID and amounts you paid for the two most expensive natural gas, propane, or oil water heaters that achieve the highest efficiency tier established by the CEE that is in effect as of the beginning of the calendar year in which the property is placed in service.",
+      "page": "i5695 p. 6"
+     },
      {
       "quote": "If you enter an amount on line 23b, attach a statement to your return listing the QMID and cost of each item included on line 23b.",
       "page": "i5695 p. 6"
      }
     ],
-    "quote": "If you enter an amount on line 23b, attach a statement to your return listing the QMID and cost of each item included on line 23b.",
+    "quote": "Line 23a. Enter the QMID and amounts you paid for the two most expensive natural gas, propane, or oil water heaters that achieve the highest efficiency tier established by the CEE that is in effect as of the beginning of the calendar year in which the property is placed in service. / If you enter an amount on line 23b, attach a statement to your return listing the QMID and cost of each item included on line 23b.",
     "page": "i5695 p. 6",
-    "why_uncovered": "qmid_wh only checks that QMIDs exist. The required statement listing each additional water heater's QMID and cost is not encoded.",
-    "closest_item": "f5695.line23b",
+    "why_uncovered": "The encoding only asks whether QMIDs exist. It never collects them for line 23a, and nothing produces the statement for line 23b.",
+    "closest_item": "f5695.qmid_wh",
     "effect": "presentation"
    },
    {
-    "item": "f5695.line24b",
+    "item": "f5695.qmid_furnace",
     "sentences": [
      {
       "quote": "If you enter an amount on line 24b, attach a statement to your return listing the QMID and cost of each item included on line 24b.",
@@ -2049,8 +2087,8 @@
     ],
     "quote": "If you enter an amount on line 24b, attach a statement to your return listing the QMID and cost of each item included on line 24b.",
     "page": "i5695 p. 6",
-    "why_uncovered": "qmid_furnace only checks that QMIDs exist. The required statement listing each additional furnace or boiler's QMID and cost is not encoded.",
-    "closest_item": "f5695.line24b",
+    "why_uncovered": "The encoding only asks whether QMIDs exist. It never collects them for line 24a, and nothing produces the statement for line 24b.",
+    "closest_item": "f5695.qmid_furnace",
     "effect": "presentation"
    },
    {
@@ -2071,7 +2109,7 @@
     ],
     "quote": "If you enter an amount on line 29b, attach a statement to your return listing the QMID and cost of each item included on line 29b. / If you enter an amount on line 29d, attach a statement to your return listing the QMID and cost of each item included on line 29d. / If you enter an amount on line 29f, attach a statement to your return listing the QMID and cost of each item included on line 29f.",
     "page": "i5695 p. 7",
-    "why_uncovered": "qmid_hp only asks whether valid QMIDs exist for lines 29a-29f. Nothing captures the QMIDs or produces the required statements for lines 29b, 29d and 29f.",
+    "why_uncovered": "The encoding only asks whether QMIDs exist. It never collects them for lines 29a, 29c and 29e, and nothing produces the statements for lines 29b, 29d and 29f.",
     "closest_item": "f5695.qmid_hp",
     "effect": "presentation"
    }
@@ -2096,7 +2134,7 @@
     ]
    }
   ],
-  "cost": 0.40428679999999995,
+  "cost": 0.28384,
   "model": "claude-opus-5-5"
  },
  {

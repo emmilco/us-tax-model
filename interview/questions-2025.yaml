@@ -1558,66 +1558,126 @@ bank:
       your original use of the home begins; such costs for a home you first use after 2025 cannot be claimed.
   - input: f5695.line1
     order: 25
-    help: 'Zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite
-      preparation, assembly or original installation and for piping or wiring to connect the property to the home.
-      Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included
-      in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on
-      the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or
-      installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder
-      in a cooperative, include your proportionate share of the costs paid by the condominium management association or
-      the cooperative housing corporation. Costs for more than one home go on the same line.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation is completed.
+
+      Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
+
+      Costs for more than one home go on the same line.
   - input: f5695.line2
     order: 25
-    help: 'Zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite
-      preparation, assembly or original installation and for piping or wiring to connect the property to the home.
-      Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included
-      in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on
-      the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or
-      installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder
-      in a cooperative, include your proportionate share of the costs paid by the condominium management association or
-      the cooperative housing corporation. Costs for more than one home go on the same line.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation is completed.
+
+      Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
+
+      Costs for more than one home go on the same line.
   - input: f5695.line3
     order: 25
-    help: 'Zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite
-      preparation, assembly or original installation and for piping or wiring to connect the property to the home.
-      Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included
-      in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on
-      the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or
-      installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder
-      in a cooperative, include your proportionate share of the costs paid by the condominium management association or
-      the cooperative housing corporation. Costs for more than one home go on the same line.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation is completed.
+
+      Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
+
+      Costs for more than one home go on the same line.
   - input: f5695.line4
     order: 25
-    help: 'Zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite
-      preparation, assembly or original installation and for piping or wiring to connect the property to the home.
-      Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included
-      in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on
-      the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or
-      installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder
-      in a cooperative, include your proportionate share of the costs paid by the condominium management association or
-      the cooperative housing corporation. Costs for more than one home go on the same line.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation is completed.
+
+      Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
+
+      Costs for more than one home go on the same line.
   - input: f5695.line5a
     order: 25
   - input: f5695.battery_cost
     order: 25
-    help: 'Zero if none. A cost counts in 2025 when the original installation is completed. Include labor for onsite
-      preparation, assembly or original installation and for piping or wiring to connect the property to the home.
-      Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included
-      in your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on
-      the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or
-      installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. If you own a condominium or are a tenant-stockholder
-      in a cooperative, include your proportionate share of the costs paid by the condominium management association or
-      the cooperative housing corporation. Costs for more than one home go on the same line.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation is completed.
+
+      Include labor for onsite preparation, assembly or original installation and for piping or wiring to connect the property to the home.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
+
+      Costs for more than one home go on the same line.
   - input: f5695.line7a
     order: 25
     help: Fuel cell property is refused by this tool.
@@ -1637,79 +1697,124 @@ bank:
     help: Answer No if the improvements are to an existing home or are an addition to or renovation of an existing home.
   - input: f5695.line18a
     order: 26
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Enter the cost of the components only: do not include labor for
-      onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for
-      buying or installing the property that was not included in your income (also when a contractor received it for
-      you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with
-      the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home
-      Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net
-      metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do
-      not include amounts provided by subsidized energy financing (financing under a federal, state or local program a
-      principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you
-      own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid
-      by the condominium management association or the cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line19a
     order: 26
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Enter the cost of the components only: do not include labor for
-      onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for
-      buying or installing the property that was not included in your income (also when a contractor received it for
-      you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with
-      the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home
-      Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net
-      metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do
-      not include amounts provided by subsidized energy financing (financing under a federal, state or local program a
-      principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you
-      own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid
-      by the condominium management association or the cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line19d_i
     order: 26
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Enter the cost of the components only: do not include labor for
-      onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for
-      buying or installing the property that was not included in your income (also when a contractor received it for
-      you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with
-      the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home
-      Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net
-      metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do
-      not include amounts provided by subsidized energy financing (financing under a federal, state or local program a
-      principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you
-      own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid
-      by the condominium management association or the cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line19d_ii
     order: 26
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Enter the cost of the components only: do not include labor for
-      onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for
-      buying or installing the property that was not included in your income (also when a contractor received it for
-      you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with
-      the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home
-      Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net
-      metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do
-      not include amounts provided by subsidized energy financing (financing under a federal, state or local program a
-      principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you
-      own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid
-      by the condominium management association or the cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line19e
     order: 26
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Enter the cost of the components only: do not include labor for
-      onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for
-      buying or installing the property that was not included in your income (also when a contractor received it for
-      you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with
-      the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home
-      Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net
-      metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do
-      not include amounts provided by subsidized energy financing (financing under a federal, state or local program a
-      principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you
-      own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid
-      by the condominium management association or the cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.qmid_doors
     order: 26
     help: 'The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for
@@ -1717,79 +1822,124 @@ bank:
       or do not enter that item''s cost.'
   - input: f5695.line20a_i
     order: 26
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Enter the cost of the components only: do not include labor for
-      onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for
-      buying or installing the property that was not included in your income (also when a contractor received it for
-      you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with
-      the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home
-      Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net
-      metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do
-      not include amounts provided by subsidized energy financing (financing under a federal, state or local program a
-      principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you
-      own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid
-      by the condominium management association or the cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line20a_ii
     order: 26
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Enter the cost of the components only: do not include labor for
-      onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for
-      buying or installing the property that was not included in your income (also when a contractor received it for
-      you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with
-      the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home
-      Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net
-      metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do
-      not include amounts provided by subsidized energy financing (financing under a federal, state or local program a
-      principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you
-      own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid
-      by the condominium management association or the cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line20a_iii
     order: 26
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Enter the cost of the components only: do not include labor for
-      onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for
-      buying or installing the property that was not included in your income (also when a contractor received it for
-      you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with
-      the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home
-      Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net
-      metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do
-      not include amounts provided by subsidized energy financing (financing under a federal, state or local program a
-      principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you
-      own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid
-      by the condominium management association or the cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line20a_iv
     order: 26
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Enter the cost of the components only: do not include labor for
-      onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for
-      buying or installing the property that was not included in your income (also when a contractor received it for
-      you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with
-      the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home
-      Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net
-      metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do
-      not include amounts provided by subsidized energy financing (financing under a federal, state or local program a
-      principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you
-      own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid
-      by the condominium management association or the cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line20b
     order: 26
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Enter the cost of the components only: do not include labor for
-      onsite preparation, assembly or original installation. Reduce the cost by any subsidy from a public utility for
-      buying or installing the property that was not included in your income (also when a contractor received it for
-      you), and by any rebate: a reduction of the price, based on the cost of the property, from someone connected with
-      the sale (the manufacturer, distributor, seller or installer), or a payment from a Department of Energy Home
-      Energy Rebate program. Do not subtract a state energy-efficiency incentive unless it is such a rebate, or net
-      metering credits. Do not include financing costs such as interest, origination fees or an extended warranty. Do
-      not include amounts provided by subsidized energy financing (financing under a federal, state or local program a
-      principal purpose of which is to provide subsidized financing for projects to conserve or produce energy). If you
-      own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid
-      by the condominium management association or the cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Enter the cost of the components only: do not include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.qmid_windows
     order: 26
     help: 'The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for
@@ -1804,34 +1954,52 @@ bank:
     help: The energy efficient home improvement credit is only available for existing homes.
   - input: f5695.line22a
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line22b
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.qmid_ac
     order: 27
     help: 'The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for
@@ -1839,49 +2007,76 @@ bank:
       or do not enter that item''s cost.'
   - input: f5695.line23a_i
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line23a_ii
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line23b
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.qmid_wh
     order: 27
     help: 'The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for
@@ -1889,34 +2084,52 @@ bank:
       or do not enter that item''s cost.'
   - input: f5695.line24a
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line24b
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.qmid_furnace
     order: 27
     help: 'The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for
@@ -1927,19 +2140,28 @@ bank:
     help: Doors and insulation are not enabled property.
   - input: f5695.line25c
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.qmid_enabling
     order: 27
     help: 'The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for
@@ -1949,104 +2171,164 @@ bank:
     order: 27
   - input: f5695.line26b
     order: 27
-    help: 'Reduce the cost by any subsidy from a public utility for buying or installing the property that was not included in
-      your income (also when a contractor received it for you), and by any rebate: a reduction of the price, based on
-      the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or
-      installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy).'
+    help: |-
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
   - input: f5695.line29a
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line29b
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line29c
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line29d
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line29e
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.line29f
     order: 27
-    help: 'Zero if none. A cost counts in 2025 when the original installation of the item is completed (for costs connected
-      with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid
-      it; an item installed after 2025 does not qualify. Include labor for onsite preparation, assembly or original
-      installation. Reduce the cost by any subsidy from a public utility for buying or installing the property that was
-      not included in your income (also when a contractor received it for you), and by any rebate: a reduction of the
-      price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor,
-      seller or installer), or a payment from a Department of Energy Home Energy Rebate program. Do not subtract a state
-      energy-efficiency incentive unless it is such a rebate, or net metering credits. Do not include financing costs
-      such as interest, origination fees or an extended warranty. Do not include amounts provided by subsidized energy
-      financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized
-      financing for projects to conserve or produce energy). If you own a condominium or are a tenant-stockholder in a
-      cooperative, include your proportionate share of the costs paid by the condominium management association or the
-      cooperative housing corporation.'
+    help: |-
+      Zero if none.
+
+      A cost counts in 2025 when the original installation of the item is completed (for costs connected with the reconstruction of your home, when your original use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
+
+      Include labor for onsite preparation, assembly or original installation.
+
+      Reduce the cost:
+      - by any subsidy from a public utility for buying or installing the property that was not included in your income (also when a contractor received it for you)
+      - by any rebate:
+        - a reduction of the price, based on the cost of the property, from someone connected with the sale (the manufacturer, distributor, seller or installer)
+        - a payment from a Department of Energy Home Energy Rebate program
+
+      Do not subtract:
+      - a state energy-efficiency incentive unless it is such a rebate
+      - net metering credits
+
+      Do not include financing costs such as interest, origination fees or an extended warranty.
+
+      Do not include amounts provided by subsidized energy financing (financing under a federal, state or local program a principal purpose of which is to provide subsidized financing for projects to conserve or produce energy).
+
+      If you own a condominium or are a tenant-stockholder in a cooperative, include your proportionate share of the costs paid by the condominium management association or the cooperative housing corporation.
   - input: f5695.qmid_hp
     order: 27
     help: 'The QMID is the four-character alphanumeric qualified manufacturer identification number the manufacturer gives for

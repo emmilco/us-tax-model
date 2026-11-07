@@ -262,54 +262,60 @@
    "gate": "f8889.unsupported"
   },
   "unruled:f5695#1": {
-   "class": "presentation",
-   "evidence": "i5695 p. 4. The Part I home address and the statement of additional addresses is filing information (as f5695#7 to #15 of the backlog round).",
-   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+   "class": "real gap",
+   "evidence": "i5695 p. 1, Home: \"A home is where you lived in 2025\". f5695.part1_any and the Part I cost questions say \"a home in the United States (it need not be your main home)\" and do not require that the filer lived there in 2025 or that a manufactured home meet the federal standards. Partly covered: a rented home is refused by f5695.business_use (more than 20% of use for renting out) and a home under construction by f5695.construction_later; a home neither lived in nor rented in 2025 is open. Low; BUG-0434. The wording predates R1 (kept word for word).",
+   "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a",
+   "bug": "BUG-0434"
   },
   "unruled:f5695#10": {
    "class": "presentation",
+   "evidence": "i5695 p. 6. The line 24b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a"
+  },
+  "unruled:f5695#11": {
+   "class": "presentation",
    "evidence": "i5695 p. 7. The line 29b, 29d and 29f QMID statements; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round).",
-   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+   "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a"
   },
   "unruled:f5695#2": {
    "class": "presentation",
-   "evidence": "i5695 p. 5. The line 17d main-home address is filing information (as f5695#7 to #15 of the backlog round).",
-   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+   "evidence": "i5695 p. 4. The Part I home address and the statement of additional addresses is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a"
   },
   "unruled:f5695#3": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 21c addresses is filing information (as f5695#7 to #15 of the backlog round).",
-   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+   "evidence": "i5695 p. 5. The line 17d main-home address is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a"
   },
   "unruled:f5695#4": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 25b enabled-property code; f5695.line25a asks the eligibility is filing information (as f5695#7 to #15 of the backlog round).",
-   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+   "evidence": "i5695 p. 6. The line 21c addresses is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a"
   },
   "unruled:f5695#5": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 19e QMID statement; f5695.doors_no_qmid refuses an item without a QMID is filing information (as f5695#7 to #15 of the backlog round).",
-   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+   "evidence": "i5695 p. 6. The line 25b enabled-property code; f5695.line25a asks the eligibility is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a"
   },
   "unruled:f5695#6": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 20b QMID statement; f5695.windows_no_qmid refuses an item without a QMID is filing information (as f5695#7 to #15 of the backlog round).",
-   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+   "evidence": "i5695 p. 6. The line 19b and 19d QMIDs and the line 19e QMID statement; f5695.qmid_doors refuses an item without a QMID is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a"
   },
   "unruled:f5695#7": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 22b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round).",
-   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+   "evidence": "i5695 p. 6. The line 20a QMIDs and the line 20b QMID statement; f5695.qmid_windows refuses an item without a QMID is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a"
   },
   "unruled:f5695#8": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 23b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round).",
-   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+   "evidence": "i5695 p. 6. The line 22a QMID and the line 22b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a"
   },
   "unruled:f5695#9": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 24b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round).",
-   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+   "evidence": "i5695 p. 6. The line 23a QMIDs and the line 23b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "83047376e8eb32897ff2a2ba7a4613f3c7d2056ea07b1a5636adae6203efc75a"
   },
   "unruled:f8606#1": {
    "class": "real gap",

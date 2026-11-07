@@ -6052,3 +6052,10 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** The Form 8615 condition says only "more than $2,700 of unearned income"; i1040gi p. 36 says "(such as taxable interest, ordinary dividends, or capital gains (including capital gain distributions))". A child whose unearned income is mostly capital gains or capital gain distributions may read unearned income as interest and dividends only, answer no, and get no Form 8615 tax on line 16. The wording predates R0 (R0 kept it word for word).
 - **Disposition:** open; low. Fix by adding the IRS examples to the condition, a content change outside R0's no-new-clauses rule, with the screen review rerun.
 - **Tags:** screen wording; open
+
+## BUG-0434 — The Part I cost questions do not say the home must be one you lived in during 2025
+
+- **Caught by:** R1 completeness review of f5695 (claim 1), 2026-11-07.
+- **Symptom:** i5695 p. 1, Home: "A home is where you lived in 2025 and can include a house, houseboat, mobile home, cooperative apartment, condominium, and a manufactured home that conforms to Federal Manufactured Home Construction and Safety Standards." f5695.part1_any and the Part I cost questions (f5695.line1 to line4, f5695.battery_cost) ask about property "for a home in the United States (it need not be your main home)" and never say the filer must have lived there in 2025, or that a manufactured home must conform to the federal standards. A home that is rented out is refused by f5695.business_use (more than 20% of an item's use for renting out); a home neither lived in nor rented in 2025 (for example a second home first used after 2025, other than a home under construction, which f5695.construction_later handles) can be entered and credited. The wording predates R1 (R1 kept it word for word).
+- **Disposition:** open; low. Fix by adding the lived-in-2025 condition (and the manufactured-home standard) to f5695.part1_any, a content change outside R1's no-new-clauses rule, with the completeness and render reviews rerun.
+- **Tags:** source-definition-debt; low; pre-existing; open
