@@ -56,5 +56,226 @@
     "id": "ny_tax_law_601",
     "title": "§ 601. Imposition of tax.",
     "url": "https://legislation.nysenate.gov/pdf/laws/TAX601/"
+  },
+  {
+    "id": "ny_it112r",
+    "title": "New York State Resident Credit",
+    "designation": "IT-112-R",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it112r_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "You may claim the resident credit against your New York State tax using Form IT-112-R if you had income sourced to and taxed by another state, a local government within another state, or the District of Columbia, and you were: • a full-year or part-year resident of New York State, • a New York State resident estate or trust, or • a part-year resident trust.",
+      "doc": "ny_it112ri",
+      "page": 1
+    }
+  },
+  {
+    "id": "ny_it112ri",
+    "title": "Instructions for Form IT-112-R",
+    "designation": "Instructions for Form IT-112-R",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it112ri_2025.pdf"
+  },
+  {
+    "id": "ny_it195",
+    "title": "Allocation of Refund",
+    "designation": "Form IT-195",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it195_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "You must complete Form IT-195 and submit it with your return if you want to directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts.",
+      "doc": "ny_it201i",
+      "page": 27
+    }
+  },
+  {
+    "id": "ny_it196",
+    "title": "New York Resident, Nonresident, and Part-Year Resident Itemized Deductions",
+    "designation": "Form IT-196",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it196_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "To calculate your New York State itemized deduction, complete Form IT-196. If you take the larger of your New York State itemized or standard deductions, in most cases your New York State and New York City income tax will be less.",
+      "doc": "ny_it196i",
+      "page": 1
+    }
+  },
+  {
+    "id": "ny_it196i",
+    "title": "Instructions for Form IT-196",
+    "designation": "Instructions for Form IT-196",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it196i_2025.pdf"
+  },
+  {
+    "id": "ny_it203",
+    "title": "Nonresident and Part-Year Resident Income Tax Return",
+    "designation": "Form IT-203",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it203_2025_fill_in.pdf"
+  },
+  {
+    "id": "ny_it203i",
+    "title": "Instructions for Form IT-203",
+    "designation": "Instructions for Form IT-203",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it203i_2025.pdf"
+  },
+  {
+    "id": "ny_it209",
+    "title": "Claim for Noncustodial Parent New York State Earned Income Credit",
+    "designation": "Form IT-209",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it209_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "You may claim the noncustodial earned income credit (EIC) or the New York State Earned Income Credit (NYS EIC) claimed on Form IT-215, Claim for Earned Income Credit, or on Schedule B of Form IT-209. You may not claim both.",
+      "doc": "ny_it209i",
+      "page": 1
+    }
+  },
+  {
+    "id": "ny_it209i",
+    "title": "Instructions for Form IT-209",
+    "designation": "Instructions for Form IT-209",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it209i_2025.pdf"
+  },
+  {
+    "id": "ny_it214",
+    "title": "Claim for Real Property Tax Credit",
+    "designation": "IT-214",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it214_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "The real property tax credit may be available to New York State residents who have federal adjusted gross income (FAGI) of $18,000 or less, and pay real property taxes or rent for their residences, or both.",
+      "doc": "ny_it214i",
+      "page": 1
+    }
+  },
+  {
+    "id": "ny_it214i",
+    "title": "Instructions for Form IT-214",
+    "designation": "Instructions for Form IT-214",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it214i_2025.pdf"
+  },
+  {
+    "id": "ny_it216",
+    "title": "Claim for Child and Dependent Care Credit",
+    "designation": "IT-216",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it216_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "The New York State child and dependent care credit is calculated based on the amount of your New York adjusted gross income, the number of qualifying persons, and the amount of qualified expenses paid.",
+      "doc": "ny_it216i",
+      "page": 1
+    }
+  },
+  {
+    "id": "ny_it216i",
+    "title": "Instructions for Form IT-216",
+    "designation": "Instructions for Form IT-216",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it216i_2025.pdf"
+  },
+  {
+    "id": "ny_it225",
+    "title": "New York State Modifications",
+    "designation": "Form IT-225",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it225_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "To report any New York additions and subtractions to federal adjusted gross income that do not have their own line on your return, complete Form IT-225 and submit it with your return.",
+      "doc": "ny_it225i",
+      "page": 1
+    }
+  },
+  {
+    "id": "ny_it225i",
+    "title": "Instructions for Form IT-225",
+    "designation": "Instructions for Form IT-225",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it225i_2025.pdf"
+  },
+  {
+    "id": "ny_it227",
+    "title": "New York State Voluntary Contributions",
+    "designation": "Form IT-227",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it227_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "If you would like to make voluntary contributions to any of the funds listed in Part 1, you must complete Form IT-227 and submit it with your return (Form IT-201, Resident Income Tax Return, or Form IT-203, Nonresident and Part-Year Resident Income Tax Return).",
+      "doc": "ny_it227",
+      "page": 2
+    }
+  },
+  {
+    "id": "ny_it230",
+    "title": "Separate Tax on Lump-Sum Distributions",
+    "designation": "Form IT-230",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it230_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "If you were a New York State resident or part-year resident individual, resident estate, or resident or part-year resident trust, and you used federal Form 4972, Tax on Lump-Sum Distributions, to calculate your federal tax on lump-sum distributions, you must use Form IT-230 to calculate your New York State separate tax on lump-sum distributions.",
+      "doc": "ny_it230i",
+      "page": 1
+    }
+  },
+  {
+    "id": "ny_it230i",
+    "title": "Instructions for Form IT-230",
+    "designation": "Instructions for Form IT-230",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it230i_2025.pdf"
+  },
+  {
+    "id": "ny_it272",
+    "title": "Claim for College Tuition Credit or Itemized Deduction",
+    "designation": "Form IT-272",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it272_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "The college tuition credit or itemized deduction is allowed for qualified college tuition expenses paid for an eligible student.",
+      "doc": "ny_it272i",
+      "page": 1
+    }
+  },
+  {
+    "id": "ny_it272i",
+    "title": "Instructions for Form IT-272",
+    "designation": "Instructions for Form IT-272",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it272i_2025.pdf"
+  },
+  {
+    "id": "ny_it360_1",
+    "title": "Change of City Resident Status",
+    "designation": "Form IT-360.1",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it360_1_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "If during the tax year you had a New York City or Yonkers change of resident status, you must complete Form IT‑360.1.",
+      "doc": "ny_it360_1i",
+      "page": 1
+    }
+  },
+  {
+    "id": "ny_it360_1i",
+    "title": "Instructions for Form IT-360.1",
+    "designation": "Instructions for Form IT-360.1",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it360_1i_2025.pdf"
+  },
+  {
+    "id": "ny_it370",
+    "title": "Application for Automatic Six-Month Extension of Time to File for Individuals",
+    "designation": "Form IT-370",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it370_2025_fill_in.pdf",
+    "form_purpose": {
+      "text": "To get an automatic extension of time to file Form IT-201, Resident Income Tax Return, or IT-203, Nonresident and Part-Year Resident Income Tax Return, file Form IT-370 on or before the due date of the return.",
+      "doc": "ny_it370i",
+      "page": 1
+    }
+  },
+  {
+    "id": "ny_it370i",
+    "title": "Instructions for Form IT-370",
+    "designation": "Instructions for Form IT-370",
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it370i_2025.pdf"
+  },
+  {
+    "id": "ny_st141",
+    "title": "Individual Purchaser’s Periodic Report of Sales and Use Tax",
+    "designation": "Form ST-141",
+    "url": "https://www.tax.ny.gov/pdf/current_forms/st/st141.pdf",
+    "form_purpose": {
+      "text": "You may use Form ST-141, Individual Purchaser’s Periodic Report of Sales and Use Tax, if you are an individual, estate, or trust: • that is not registered or required to be registered for New York State sales tax and is a New York State resident for sales tax and use tax; or • operating a business in New York State as a sole proprietor that is not registered or required to be registered for New York State sales tax.",
+      "doc": "ny_st141i",
+      "page": 1
+    }
+  },
+  {
+    "id": "ny_st141i",
+    "title": "Instructions for Form ST-141",
+    "designation": "Instructions for Form ST-141",
+    "url": "https://www.tax.ny.gov/pdf/current_forms/st/st141i.pdf"
   }
 ]

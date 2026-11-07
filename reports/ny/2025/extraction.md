@@ -4,12 +4,22 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 
 | check | documents | failing |
 | --- | --- | --- |
-| layout vs reading order | 6 | 0 |
-| PDFKit against poppler | 6 | 0 |
+| layout vs reading order | 32 | 0 |
+| PDFKit against poppler | 32 | 0 |
 | PDF vs HTML snapshot | 1 | 0 |
 
 ## Per document
 
+- **ny_it112r** layout vs reading order: 2 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it112ri** layout vs reading order: 4 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it195** layout vs reading order: 1 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 2 words poppler reads that PDFKit skips)
+- **ny_it196** layout vs reading order: 3 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it196i** layout vs reading order: 21 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (2 such occurrences; 4 words poppler reads that PDFKit skips)
 - **ny_it2** layout vs reading order: 2 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 2 words poppler reads that PDFKit skips)
 - **ny_it201** layout vs reading order: 4 pages, identical characters
@@ -25,7 +35,49 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
         - p. 37 accepted: ['agi'] — Running heading 'Tax computation – New York AGI of more than $107,650 (continued)' on a continuation page of the tax computation worksheets; the HTML publication prints the section once, without the continuation heading
         - p. 38 accepted: ['agi'] — Running heading 'Tax computation – New York AGI of more than $107,650 (continued)' on a continuation page of the tax computation worksheets; the HTML publication prints the section once, without the continuation heading
         - p. 39 accepted: ['agi'] — Running heading 'Tax computation – New York AGI of more than $107,650 (continued)' on a continuation page of the tax computation worksheets; the HTML publication prints the section once, without the continuation heading
+- **ny_it203** layout vs reading order: 4 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it203i** layout vs reading order: 47 pages, identical characters (4 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (27 such occurrences; 17 words poppler reads that PDFKit skips)
+- **ny_it209** layout vs reading order: 4 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it209i** layout vs reading order: 10 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it214** layout vs reading order: 3 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it214i** layout vs reading order: 3 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 51 words poppler reads that PDFKit skips)
+- **ny_it216** layout vs reading order: 2 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it216i** layout vs reading order: 7 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it225** layout vs reading order: 2 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it225i** layout vs reading order: 21 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 2 words poppler reads that PDFKit skips)
+- **ny_it227** layout vs reading order: 2 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it230** layout vs reading order: 2 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (6 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it230i** layout vs reading order: 4 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **ny_it270i** layout vs reading order: 1 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it272** layout vs reading order: 2 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 2 words poppler reads that PDFKit skips)
+- **ny_it272i** layout vs reading order: 5 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 2 words poppler reads that PDFKit skips)
+- **ny_it360_1** layout vs reading order: 3 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it360_1i** layout vs reading order: 9 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_it370** layout vs reading order: 2 pages, identical characters (1 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (4 such occurrences; 2 words poppler reads that PDFKit skips)
+- **ny_it370i** layout vs reading order: 3 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 2 words poppler reads that PDFKit skips)
+- **ny_st141** layout vs reading order: 4 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **ny_st141i** layout vs reading order: 4 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **ny_tax_law_601** layout vs reading order: 58 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)

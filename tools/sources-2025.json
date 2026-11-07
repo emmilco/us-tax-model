@@ -1146,5 +1146,911 @@
     "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleD-chap43-sec4973.pdf",
     "document_tax_year": 2025,
     "purpose": "Stage 21: 26 U.S.C. 4973 (tax on excess contributions; the HSA excess and the year-end value limit, D6); law, not a form source"
+  },
+  {
+    "id": "f1040nr",
+    "title": "U.S. Nonresident Alien Income Tax Return",
+    "designation": "Form 1040-NR",
+    "url": "https://www.irs.gov/pub/irs-prior/f1040nr--2025.pdf"
+  },
+  {
+    "id": "i1040nr",
+    "title": "Instructions for Form 1040-NR",
+    "designation": "Instructions for Form 1040-NR",
+    "url": "https://www.irs.gov/pub/irs-prior/i1040nr--2025.pdf"
+  },
+  {
+    "id": "f1040s",
+    "title": "U.S. Income Tax Return for Seniors",
+    "designation": "Form 1040-SR",
+    "url": "https://www.irs.gov/pub/irs-prior/f1040s--2025.pdf"
+  },
+  {
+    "id": "f1042s",
+    "title": "Foreign Person’s U.S. Source Income Subject to Withholding",
+    "designation": "Form 1042-S",
+    "url": "https://www.irs.gov/pub/irs-prior/f1042s--2025.pdf"
+  },
+  {
+    "id": "i1042s",
+    "title": "Instructions for Form 1042-S",
+    "designation": "Instructions for Form 1042-S",
+    "url": "https://www.irs.gov/pub/irs-prior/i1042s--2025.pdf"
+  },
+  {
+    "id": "f1098",
+    "title": "Mortgage Interest Statement",
+    "designation": "Form 1098",
+    "url": "https://www.irs.gov/pub/irs-prior/f1098--2025.pdf",
+    "form_purpose": {
+      "text": "A person (including a financial institution, a governmental unit, and a cooperative housing corporation) who is engaged in a trade or business and, in the course of such trade or business, received from you at least $600 of mortgage interest (including certain points) on any one mortgage in the calendar year must furnish this statement to you.",
+      "doc": "f1098",
+      "page": 4
+    }
+  },
+  {
+    "id": "i1098",
+    "title": "Instructions for Form 1098",
+    "designation": "Instructions for Form 1098",
+    "url": "https://www.irs.gov/pub/irs-prior/i1098--2025.pdf"
+  },
+  {
+    "id": "f1098e",
+    "title": "Student Loan Interest Statement",
+    "designation": "Form 1098-E",
+    "url": "https://www.irs.gov/pub/irs-prior/f1098e--2025.pdf",
+    "form_purpose": {
+      "text": "A person (including a financial institution, a governmental unit, and an educational institution) that receives interest payments of $600 or more during the year on one or more qualified student loans must furnish this statement to you. You may be able to deduct student loan interest that you actually paid in 2025 on your income tax return. However, you may not be able to deduct the full amount of interest reported on this statement.",
+      "doc": "f1098e",
+      "page": 4
+    }
+  },
+  {
+    "id": "f1099a",
+    "title": "Acquisition or Abandonment of Secured Property",
+    "designation": "Form 1099-A",
+    "url": "https://www.irs.gov/pub/irs-prior/f1099a--2025.pdf",
+    "form_purpose": {
+      "text": "Certain lenders who acquire an interest in property that was security for a loan or who have reason to know that such property has been abandoned must provide you with this statement. You may have reportable income or loss because of such acquisition or abandonment.",
+      "doc": "f1099a",
+      "page": 4
+    }
+  },
+  {
+    "id": "f1099b",
+    "title": "Proceeds From Broker and Barter Exchange Transactions",
+    "designation": "Form 1099-B",
+    "url": "https://www.irs.gov/pub/irs-prior/f1099b--2025.pdf",
+    "form_purpose": {
+      "text": "Brokers and barter exchanges must report proceeds from (and in some cases, basis for) transactions to you and the IRS on Form 1099-B.",
+      "doc": "f1099b",
+      "page": 5
+    }
+  },
+  {
+    "id": "i1099b",
+    "title": "Instructions for Form 1099-B",
+    "designation": "Instructions for Form 1099-B",
+    "url": "https://www.irs.gov/pub/irs-prior/i1099b--2025.pdf"
+  },
+  {
+    "id": "f1099k",
+    "title": "Payment Card and Third Party Network Transactions",
+    "designation": "Form 1099-K",
+    "url": "https://www.irs.gov/pub/irs-prior/f1099k--2024.pdf",
+    "form_purpose": {
+      "text": "You have received this form because you have either (a) accepted payment cards for payments, or (b) received payments through a third party network in the calendar year reported on this form.",
+      "doc": "f1099k",
+      "page": 5
+    }
+  },
+  {
+    "id": "i1099k",
+    "title": "Instructions for Form 1099-K",
+    "designation": "Instructions for Form 1099-K",
+    "url": "https://www.irs.gov/pub/irs-prior/i1099k--2024.pdf"
+  },
+  {
+    "id": "f1099msc",
+    "title": "Miscellaneous Information",
+    "designation": "Form 1099-MISC",
+    "url": "https://www.irs.gov/pub/irs-prior/f1099msc--2025.pdf"
+  },
+  {
+    "id": "i1099mec",
+    "title": "Instructions for Forms 1099-MISC and 1099-NEC",
+    "designation": "Instructions for Forms 1099-MISC and 1099-NEC",
+    "url": "https://www.irs.gov/pub/irs-prior/i1099mec--2025.pdf"
+  },
+  {
+    "id": "f1099nec",
+    "title": "Nonemployee Compensation",
+    "designation": "Form 1099-NEC",
+    "url": "https://www.irs.gov/pub/irs-prior/f1099nec--2025.pdf",
+    "form_purpose": {
+      "text": "You received this form instead of Form W-2 because the payer did not consider you an employee and did not withhold income tax or social security and Medicare taxes.",
+      "doc": "f1099nec",
+      "page": 5
+    }
+  },
+  {
+    "id": "f1099oid",
+    "title": "Original Issue Discount",
+    "designation": "Form 1099-OID",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099oid.pdf",
+    "form_purpose": {
+      "text": "Original issue discount (OID) is the excess of an obligation’s stated redemption price at maturity over its issue price (acquisition price for a stripped bond or coupon). OID on a taxable obligation is taxable as interest over the life of the obligation. If you are the holder of a taxable OID obligation, you must generally include an amount of OID in your gross income each year you hold the obligation.",
+      "doc": "f1099oid",
+      "page": 5
+    }
+  },
+  {
+    "id": "f1099ptr",
+    "title": "Taxable Distributions Received From Cooperatives",
+    "designation": "Form 1099-PATR",
+    "url": "https://www.irs.gov/pub/irs-prior/f1099ptr--2025.pdf",
+    "form_purpose": {
+      "text": "Distributions you received from a cooperative may be includible in your income.",
+      "doc": "f1099ptr",
+      "page": 4
+    }
+  },
+  {
+    "id": "i1099ptr",
+    "title": "Instructions for Form 1099-PATR",
+    "designation": "Instructions for Form 1099-PATR",
+    "url": "https://www.irs.gov/pub/irs-prior/i1099ptr--2025.pdf"
+  },
+  {
+    "id": "f1099s",
+    "title": "Proceeds From Real Estate Transactions",
+    "designation": "Form 1099-S",
+    "url": "https://www.irs.gov/pub/irs-prior/f1099s--2025.pdf",
+    "form_purpose": {
+      "text": "For sales or exchanges of certain real estate, the person responsible for closing a real estate transaction must report the real estate proceeds to the IRS and must furnish this statement to you.",
+      "doc": "f1099s",
+      "page": 4
+    }
+  },
+  {
+    "id": "i1099s",
+    "title": "Instructions for Form 1099-S",
+    "designation": "Instructions for Form 1099-S",
+    "url": "https://www.irs.gov/pub/irs-prior/i1099s--2025.pdf"
+  },
+  {
+    "id": "f1116",
+    "title": "Foreign Tax Credit",
+    "designation": "Form 1116",
+    "url": "https://www.irs.gov/pub/irs-prior/f1116--2025.pdf",
+    "form_purpose": {
+      "text": "Who should file. File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and: • You are an individual, estate, or trust; and • You paid or accrued certain foreign taxes to a foreign country or U.S. territory.",
+      "doc": "i1116",
+      "page": 2
+    }
+  },
+  {
+    "id": "f2350",
+    "title": "Application for Extension of Time To File U.S. Income Tax Return",
+    "designation": "Form 2350",
+    "url": "https://www.irs.gov/pub/irs-prior/f2350--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 2350 to ask for an extension of time to file your tax return only if you expect to file Form 2555 and you need the time to meet either the bona fide residence test or the physical presence test to qualify for the foreign earned income exclusion and/or the foreign housing exclusion or deduction.",
+      "doc": "f2350",
+      "page": 3
+    }
+  },
+  {
+    "id": "f2439",
+    "title": "Notice to Shareholder of Undistributed Long-Term Capital Gains",
+    "designation": "Form 2439",
+    "url": "https://www.irs.gov/pub/irs-pdf/f2439.pdf",
+    "form_purpose": {
+      "text": "Box 1a. This amount is your total undistributed long-term capital gain from your regulated investment company (RIC) or real estate investment trust (REIT).",
+      "doc": "f2439",
+      "page": 4
+    }
+  },
+  {
+    "id": "f2555",
+    "title": "Foreign Earned Income",
+    "designation": "Form 2555",
+    "url": "https://www.irs.gov/pub/irs-prior/f2555--2025.pdf",
+    "form_purpose": {
+      "text": "If you qualify, you can use Form 2555 to figure your foreign earned income exclusion and your housing exclusion or deduction. You cannot exclude or deduct more than the amount of your foreign earned income for the year.",
+      "doc": "i2555",
+      "page": 1
+    }
+  },
+  {
+    "id": "i2555",
+    "title": "Instructions for Form 2555",
+    "designation": "Instructions for Form 2555",
+    "url": "https://www.irs.gov/pub/irs-prior/i2555--2025.pdf"
+  },
+  {
+    "id": "f3115",
+    "title": "Application for Change in Accounting Method",
+    "designation": "Form 3115",
+    "url": "https://www.irs.gov/pub/irs-pdf/f3115.pdf",
+    "form_purpose": {
+      "text": "File Form 3115 to request a change in either an overall accounting method or the accounting treatment of any item.",
+      "doc": "i3115",
+      "page": 1
+    }
+  },
+  {
+    "id": "i3115",
+    "title": "Instructions for Form 3115",
+    "designation": "Instructions for Form 3115",
+    "url": "https://www.irs.gov/pub/irs-pdf/i3115.pdf"
+  },
+  {
+    "id": "f4029",
+    "title": "Application for Exemption From Social Security and Medicare Taxes and Waiver of Benefits",
+    "designation": "Form 4029",
+    "url": "https://www.irs.gov/pub/irs-pdf/f4029.pdf",
+    "form_purpose": {
+      "text": "Form 4029 is used by members of recognized religious groups to apply for exemption from social security and Medicare taxes. The exemption is for individuals and partnerships (when all the partners have approved certification).",
+      "doc": "f4029",
+      "page": 2
+    }
+  },
+  {
+    "id": "f4136",
+    "title": "Credit for Federal Tax Paid on Fuels",
+    "designation": "Form 4136",
+    "url": "https://www.irs.gov/pub/irs-prior/f4136--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 4136 to claim the following. • The alternative fuel credit. • A credit for certain nontaxable uses (or sales) of fuel during your income tax year. • A credit for blending a diesel-water fuel emulsion. • A credit for exporting dyed fuels or gasoline blendstocks.",
+      "doc": "i4136",
+      "page": 1
+    }
+  },
+  {
+    "id": "i4136",
+    "title": "Instructions for Form 4136",
+    "designation": "Instructions for Form 4136",
+    "url": "https://www.irs.gov/pub/irs-prior/i4136--2025.pdf"
+  },
+  {
+    "id": "f4137",
+    "title": "Social Security and Medicare Tax on Unreported Tip Income",
+    "designation": "Form 4137",
+    "url": "https://www.irs.gov/pub/irs-prior/f4137--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 4137 only to figure the social security and Medicare tax owed on tips you didn’t report to your employer, including any allocated tips shown on your Form(s) W-2 that you must report as income.",
+      "doc": "f4137",
+      "page": 1
+    }
+  },
+  {
+    "id": "f4361",
+    "title": "Application for Exemption From Self-Employment Tax for Use by Ministers, Members of Religious Orders and Christian Science Practitioners",
+    "designation": "Form 4361",
+    "url": "https://www.irs.gov/pub/irs-pdf/f4361.pdf"
+  },
+  {
+    "id": "f4563",
+    "title": "Exclusion of Income for Bona Fide Residents of American Samoa",
+    "designation": "Form 4563",
+    "url": "https://www.irs.gov/pub/irs-pdf/f4563.pdf",
+    "form_purpose": {
+      "text": "Use Form 4563 to figure the amount of income from American Samoa you may exclude from your gross income on your Form 1040 or 1040-SR (your tax return).",
+      "doc": "f4563",
+      "page": 1
+    }
+  },
+  {
+    "id": "f4684",
+    "title": "Casualties and Thefts",
+    "designation": "Form 4684",
+    "url": "https://www.irs.gov/pub/irs-prior/f4684--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 4684 to report gains and losses from casualties and thefts. Attach Form 4684 to your tax return.",
+      "doc": "i4684",
+      "page": 2
+    }
+  },
+  {
+    "id": "i4684",
+    "title": "Instructions for Form 4684",
+    "designation": "Instructions for Form 4684",
+    "url": "https://www.irs.gov/pub/irs-prior/i4684--2025.pdf"
+  },
+  {
+    "id": "f4797",
+    "title": "Sales of Business Property",
+    "designation": "Form 4797",
+    "url": "https://www.irs.gov/pub/irs-prior/f4797--2025.pdf"
+  },
+  {
+    "id": "i4797",
+    "title": "Instructions for Form 4797",
+    "designation": "Instructions for Form 4797",
+    "url": "https://www.irs.gov/pub/irs-prior/i4797--2025.pdf"
+  },
+  {
+    "id": "f4868",
+    "title": "Application for Automatic Extension of Time To File U.S. Individual Income Tax Return",
+    "designation": "Form 4868",
+    "url": "https://www.irs.gov/pub/irs-prior/f4868--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 4868 to apply for 6 more months (4 if “out of the country” (defined later under Taxpayers who are out of the country) and a U.S. citizen or resident) to file Form 1040, 1040-SR, 1040-NR, or 1040-SS.",
+      "doc": "f4868",
+      "page": 1
+    }
+  },
+  {
+    "id": "f4970",
+    "title": "Tax on Accumulation Distribution of Trusts",
+    "designation": "Form 4970",
+    "url": "https://www.irs.gov/pub/irs-prior/f4970--2025.pdf",
+    "form_purpose": {
+      "text": "A beneficiary of certain domestic trusts (see Who Must File below) uses Form 4970 to figure the partial tax on accumulation distributions under section 667.",
+      "doc": "f4970",
+      "page": 2
+    }
+  },
+  {
+    "id": "f4972",
+    "title": "Tax on Lump-Sum Distributions",
+    "designation": "Form 4972",
+    "url": "https://www.irs.gov/pub/irs-prior/f4972--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 4972 to figure the tax on a qualified lump-sum distribution (defined below) you received in 2025 using the 20% capital gain election, the 10-year tax option, or both.",
+      "doc": "f4972",
+      "page": 2
+    }
+  },
+  {
+    "id": "f5498",
+    "title": "IRA Contribution Information",
+    "designation": "Form 5498",
+    "url": "https://www.irs.gov/pub/irs-prior/f5498--2025.pdf",
+    "form_purpose": {
+      "text": "The information on Form 5498 is submitted to the IRS by the trustee or issuer of your individual retirement arrangement (IRA) to report contributions, including any catch-up contributions, rollovers, repayments, required minimum distributions (RMDs), and the fair market value (FMV) of the account.",
+      "doc": "f5498",
+      "page": 4
+    }
+  },
+  {
+    "id": "f5884",
+    "title": "Work Opportunity Credit",
+    "designation": "Form 5884",
+    "url": "https://www.irs.gov/pub/irs-pdf/f5884.pdf",
+    "form_purpose": {
+      "text": "Use Form 5884 to claim the work opportunity credit for qualified first- and/or second-year wages you paid to or incurred for targeted group employees during the tax year.",
+      "doc": "i5884",
+      "page": 1
+    }
+  },
+  {
+    "id": "i5884",
+    "title": "Instructions for Form 5884",
+    "designation": "Instructions for Form 5884",
+    "url": "https://www.irs.gov/pub/irs-pdf/i5884.pdf"
+  },
+  {
+    "id": "f6251",
+    "title": "Alternative Minimum Tax—Individuals",
+    "designation": "Form 6251",
+    "url": "https://www.irs.gov/pub/irs-prior/f6251--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 6251 to figure the amount, if any, of your alternative minimum tax (AMT). The AMT is a separate tax that is imposed in addition to your regular tax.",
+      "doc": "i6251",
+      "page": 1
+    }
+  },
+  {
+    "id": "i6251",
+    "title": "Instructions for Form 6251",
+    "designation": "Instructions for Form 6251",
+    "url": "https://www.irs.gov/pub/irs-prior/i6251--2025.pdf"
+  },
+  {
+    "id": "f6252",
+    "title": "Installment Sale Income",
+    "designation": "Form 6252",
+    "url": "https://www.irs.gov/pub/irs-prior/f6252--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 6252 to report an installment sale under the installment method.",
+      "doc": "f6252",
+      "page": 2
+    }
+  },
+  {
+    "id": "f6781",
+    "title": "Gains and Losses From Section 1256 Contracts and Straddles",
+    "designation": "Form 6781",
+    "url": "https://www.irs.gov/pub/irs-prior/f6781--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 6781 to report: • Any capital gain or loss on section 1256 contracts under the mark-to- market rules, and • Gains and losses under section 1092 from straddle positions.",
+      "doc": "f6781",
+      "page": 2
+    }
+  },
+  {
+    "id": "f706",
+    "title": "United States Estate (and Generation-Skipping Transfer) Tax Return",
+    "designation": "Form 706",
+    "url": "https://www.irs.gov/pub/irs-prior/f706--2025.pdf",
+    "form_purpose": {
+      "text": "The executor of a decedent’s estate uses Form 706 to figure the estate tax imposed by chapter 11 of the Internal Revenue Code.",
+      "doc": "i706",
+      "page": 1
+    }
+  },
+  {
+    "id": "i706",
+    "title": "Instructions for Form 706",
+    "designation": "Instructions for Form 706",
+    "url": "https://www.irs.gov/pub/irs-prior/i706--2025.pdf"
+  },
+  {
+    "id": "f7205",
+    "title": "Energy Efficient Commercial Buildings Deduction",
+    "designation": "Form 7205",
+    "url": "https://www.irs.gov/pub/irs-pdf/f7205.pdf",
+    "form_purpose": {
+      "text": "Use Form 7205 to: • Calculate and claim the deduction under section 179D for qualifying energy efficient commercial building property placed in service during the tax year, • Identify yourself as a designer or the building owner, • Provide information on the person performing the certification, and • Provide information on the person completing the allocation.",
+      "doc": "i7205",
+      "page": 1
+    }
+  },
+  {
+    "id": "i7205",
+    "title": "Instructions for Form 7205",
+    "designation": "Instructions for Form 7205",
+    "url": "https://www.irs.gov/pub/irs-prior/i7205--2025.pdf"
+  },
+  {
+    "id": "f8288a",
+    "title": "Statement of Withholding on Certain Dispositions by Foreign Persons",
+    "designation": "Form 8288-A",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8288a.pdf"
+  },
+  {
+    "id": "i8288",
+    "title": "Instructions for Form 8288",
+    "designation": "Instructions for Form 8288",
+    "url": "https://www.irs.gov/pub/irs-prior/i8288--2023.pdf"
+  },
+  {
+    "id": "f8332",
+    "title": "Release/Revocation of Release of Claim to Exemption for Child by Custodial Parent",
+    "designation": "Form 8332",
+    "url": "https://www.irs.gov/pub/irs-prior/f8332--2025.pdf",
+    "form_purpose": {
+      "text": "If you are the custodial parent, you can use this form to do the following. • Release a claim to exemption for your child so that the noncustodial parent can claim an exemption for the child and claim the child tax credit, the additional child tax credit, and the credit for other dependents (if applicable). • Revoke a previous release of claim to exemption for your child.",
+      "doc": "f8332",
+      "page": 1
+    }
+  },
+  {
+    "id": "f8615",
+    "title": "Tax for Certain Children Who Have Unearned Income",
+    "designation": "Form 8615",
+    "url": "https://www.irs.gov/pub/irs-prior/f8615--2025.pdf",
+    "form_purpose": {
+      "text": "For children under age 18 and certain older children described below in Who Must File, unearned income over $2,700 is taxed at the parent's rate if the parent's rate is higher than the child's. If the child's unearned income is more than $2,700, use Form 8615 to figure the child's tax.",
+      "doc": "i8615",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8615",
+    "title": "Instructions for Form 8615",
+    "designation": "Instructions for Form 8615",
+    "url": "https://www.irs.gov/pub/irs-prior/i8615--2025.pdf"
+  },
+  {
+    "id": "f8621",
+    "title": "Information Return by a Shareholder of a Passive Foreign Investment Company or Qualified Electing Fund",
+    "designation": "Form 8621",
+    "url": "https://www.irs.gov/pub/irs-prior/f8621--2025.pdf"
+  },
+  {
+    "id": "i8621",
+    "title": "Instructions for Form 8621",
+    "designation": "Instructions for Form 8621",
+    "url": "https://www.irs.gov/pub/irs-prior/i8621--2025.pdf"
+  },
+  {
+    "id": "f8805",
+    "title": "Foreign Partner’s Information Statement of Section 1446 Withholding Tax",
+    "designation": "Form 8805",
+    "url": "https://www.irs.gov/pub/irs-prior/f8805--2019.pdf"
+  },
+  {
+    "id": "i8804",
+    "title": "Instructions for Forms 8804, 8805, and 8813",
+    "designation": "Instructions for Forms 8804, 8805, and 8813",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8804.pdf"
+  },
+  {
+    "id": "f8814",
+    "title": "Parents’ Election To Report Child’s Interest and Dividends",
+    "designation": "Form 8814",
+    "url": "https://www.irs.gov/pub/irs-prior/f8814--2025.pdf",
+    "form_purpose": {
+      "text": "Use this form if you elect to report your child’s income on your return. If you do, your child will not have to file a return.",
+      "doc": "i8814",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8814",
+    "title": "Instructions for Form 8814",
+    "designation": "Instructions for Form 8814",
+    "url": "https://www.irs.gov/pub/irs-prior/i8814--2025.pdf"
+  },
+  {
+    "id": "f8815",
+    "title": "Exclusion of Interest From Series EE and I U.S. Savings Bonds Issued After 1989",
+    "designation": "Form 8815",
+    "url": "https://www.irs.gov/pub/irs-prior/f8815--2025.pdf",
+    "form_purpose": {
+      "text": "If you cashed series EE or I U.S. savings bonds in 2025 that were issued after 1989, you may be able to exclude from your income part or all of the interest on those bonds. Use this form to figure the amount of any interest you may exclude.",
+      "doc": "f8815",
+      "page": 3
+    }
+  },
+  {
+    "id": "f8824",
+    "title": "Like-Kind Exchanges",
+    "designation": "Form 8824",
+    "url": "https://www.irs.gov/pub/irs-prior/f8824--2025.pdf",
+    "form_purpose": {
+      "text": "Use Parts I, II, and III of Form 8824 to report each exchange of business or investment real property for real property of a like kind. Form 8824 figures the amount of gain deferred as a result of a like-kind exchange.",
+      "doc": "i8824",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8824",
+    "title": "Instructions for Form 8824",
+    "designation": "Instructions for Form 8824",
+    "url": "https://www.irs.gov/pub/irs-prior/i8824--2025.pdf"
+  },
+  {
+    "id": "f8829",
+    "title": "Expenses for Business Use of Your Home",
+    "designation": "Form 8829",
+    "url": "https://www.irs.gov/pub/irs-prior/f8829--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 8829 to figure the allowable expenses for business use of your home on Schedule C (Form 1040) and any carryover to 2026 of amounts not deductible in 2025.",
+      "doc": "i8829",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8829",
+    "title": "Instructions for Form 8829",
+    "designation": "Instructions for Form 8829",
+    "url": "https://www.irs.gov/pub/irs-prior/i8829--2025.pdf"
+  },
+  {
+    "id": "f8844",
+    "title": "Empowerment Zone Employment Credit",
+    "designation": "Form 8844",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8844.pdf",
+    "form_purpose": {
+      "text": "Use Form 8844 (Rev. March 2020) to claim the empowerment zone employment credit.",
+      "doc": "i8844",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8844",
+    "title": "Instructions for Form 8844",
+    "designation": "Instructions for Form 8844",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8844.pdf"
+  },
+  {
+    "id": "f8846",
+    "title": "Credit for Employer Social Security and Medicare Taxes Paid on Certain Employee Tips",
+    "designation": "Form 8846",
+    "url": "https://www.irs.gov/pub/irs-prior/f8846--2025.pdf",
+    "form_purpose": {
+      "text": "Certain employers (see Who Should File below) use Form 8846 to claim a credit for social security and Medicare taxes paid or incurred by the employer on certain employees’ tips.",
+      "doc": "f8846",
+      "page": 2
+    }
+  },
+  {
+    "id": "f8853",
+    "title": "Archer MSAs and Long-Term Care Insurance Contracts",
+    "designation": "Form 8853",
+    "url": "https://www.irs.gov/pub/irs-prior/f8853--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 8853 to: • Report Archer MSA contributions (including employer contributions), • Figure your Archer MSA deduction, • Report distributions from Archer MSAs or Medicare Advantage MSAs, • Report taxable payments from long-term care (LTC) insurance contracts, or • Report taxable accelerated death benefits from a life insurance policy.",
+      "doc": "i8853",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8853",
+    "title": "Instructions for Form 8853",
+    "designation": "Instructions for Form 8853",
+    "url": "https://www.irs.gov/pub/irs-prior/i8853--2025.pdf"
+  },
+  {
+    "id": "f8862",
+    "title": "Information To Claim Certain Credits After Disallowance",
+    "designation": "Form 8862",
+    "url": "https://www.irs.gov/pub/irs-prior/f8862--2025.pdf",
+    "form_purpose": {
+      "text": "You must complete Form 8862 and attach it to your tax return to claim the EIC, CTC, ACTC, ODC, or AOTC if you meet the following criteria for any of the credits.",
+      "doc": "i8862",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8862",
+    "title": "Instructions for Form 8862",
+    "designation": "Instructions for Form 8862",
+    "url": "https://www.irs.gov/pub/irs-prior/i8862--2025.pdf"
+  },
+  {
+    "id": "f8873",
+    "title": "Extraterritorial Income Exclusion",
+    "designation": "Form 8873",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8873.pdf",
+    "form_purpose": {
+      "text": "Use this form to figure the amount of extraterritorial income (defined below) excluded from gross income for the tax year. Attach the form to your income tax return.",
+      "doc": "i8873",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8873",
+    "title": "Instructions for Form 8873",
+    "designation": "Instructions for Form 8873",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8873.pdf"
+  },
+  {
+    "id": "f8915f",
+    "title": "Qualified Disaster Retirement Plan Distributions and Repayments",
+    "designation": "Form 8915-F",
+    "url": "https://www.irs.gov/pub/irs-prior/f8915f--2025.pdf",
+    "form_purpose": {
+      "text": "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report, as applicable: • A qualified disaster distribution described in Qualified disaster distribution requirements, later, that was made to you this year; • A repayment of, or income from, a qualified disaster distribution reported in Part I of a Form 8915-F from this or an earlier year; • Income in 2021 and later years from qualified 2020 and later disaster distributions; or • A qualified distribution described in Qualified 2021 and later disaster areas under Qualified Distribution for the Purchase or Construction of a Main Home in Qualified Disaster Areas, later, that you received this year.",
+      "doc": "i8915f",
+      "page": 2
+    }
+  },
+  {
+    "id": "i8915f",
+    "title": "Instructions for Form 8915-F",
+    "designation": "Instructions for Form 8915-F",
+    "url": "https://www.irs.gov/pub/irs-prior/i8915f--2025.pdf"
+  },
+  {
+    "id": "f8919",
+    "title": "Uncollected Social Security and Medicare Tax on Wages",
+    "designation": "Form 8919",
+    "url": "https://www.irs.gov/pub/irs-prior/f8919--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 8919 to figure and report your share of the uncollected social security and Medicare taxes due on your compensation if you were an employee but were treated as an independent contractor by your employer.",
+      "doc": "f8919",
+      "page": 2
+    }
+  },
+  {
+    "id": "f8932",
+    "title": "Credit for Employer Differential Wage Payments",
+    "designation": "Form 8932",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8932.pdf",
+    "form_purpose": {
+      "text": "Use Form 8932 to claim the credit for eligible differential wage payments made to qualified employees after 2008. The credit is 20% of up to $20,000 of differential wage payments paid to each qualified employee during the tax year.",
+      "doc": "f8932",
+      "page": 1
+    }
+  },
+  {
+    "id": "f8938",
+    "title": "Statement of Specified Foreign Financial Assets",
+    "designation": "Form 8938",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8938.pdf",
+    "form_purpose": {
+      "text": "Use Form 8938 to report your specified foreign financial assets if the total value of all the specified foreign financial assets in which you have an interest is more than the appropriate reporting threshold.",
+      "doc": "i8938",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8938",
+    "title": "Instructions for Form 8938",
+    "designation": "Instructions for Form 8938",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8938.pdf"
+  },
+  {
+    "id": "f8939",
+    "title": "Allocation of Increase in Basis for Property Acquired From a Decedent",
+    "designation": "Form 8939",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8939.pdf",
+    "form_purpose": {
+      "text": "Form 8939 is an information return used by the executor (defined below) of a decedent who died in 2010: 1. To make the Section 1022 Election (see Section 1022 Election, later); 2. To report information about property acquired from a decedent; and 3. To allocate Basis Increase (see Basis Increase, later) to certain property acquired from a decedent.",
+      "doc": "i8939",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8939",
+    "title": "Instructions for Form 8939",
+    "designation": "Instructions for Form 8939",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8939.pdf"
+  },
+  {
+    "id": "f8941",
+    "title": "Credit for Small Employer Health Insurance Premiums",
+    "designation": "Form 8941",
+    "url": "https://www.irs.gov/pub/irs-prior/f8941--2025.pdf",
+    "form_purpose": {
+      "text": "Eligible small employers (defined later) use Form 8941 to figure the credit for small employer health insurance premiums for tax years beginning after 2009.",
+      "doc": "i8941",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8941",
+    "title": "Instructions for Form 8941",
+    "designation": "Instructions for Form 8941",
+    "url": "https://www.irs.gov/pub/irs-prior/i8941--2025.pdf"
+  },
+  {
+    "id": "f8958",
+    "title": "Allocation of Tax Amounts Between Certain Individuals in Community Property States",
+    "designation": "Form 8958",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8958.pdf",
+    "form_purpose": {
+      "text": "Use Form 8958 to allocate tax amounts between spouses or registered domestic partners (RDPs) with community property rights, who file separate income tax returns.",
+      "doc": "f8958",
+      "page": 3
+    }
+  },
+  {
+    "id": "f8978",
+    "title": "Partner’s Additional Reporting Year Tax",
+    "designation": "Form 8978",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8978.pdf",
+    "form_purpose": {
+      "text": "Partners (other than pass-through partners such as partnerships or S corporations) use Form 8978 and Schedule A (Form 8978) to report adjustments shown on Forms 8986 received from partnerships that have elected to push out adjustments to partnership-related items to their partners.",
+      "doc": "i8978",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8978",
+    "title": "Instructions for Form 8978",
+    "designation": "Instructions for Form 8978",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8978.pdf"
+  },
+  {
+    "id": "f8990",
+    "title": "Limitation on Business Interest Expense Under Section 163(j)",
+    "designation": "Form 8990",
+    "url": "https://www.irs.gov/pub/irs-prior/f8990--2025.pdf",
+    "form_purpose": {
+      "text": "Use Form 8990 to figure the amount of business interest expense you can deduct and the amount to carry forward to the next year.",
+      "doc": "i8990",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8990",
+    "title": "Instructions for Form 8990",
+    "designation": "Instructions for Form 8990",
+    "url": "https://www.irs.gov/pub/irs-prior/i8990--2025.pdf"
+  },
+  {
+    "id": "f8994",
+    "title": "Employer Credit for Paid Family and Medical Leave",
+    "designation": "Form 8994",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8994.pdf",
+    "form_purpose": {
+      "text": "An eligible employer (defined later) uses Form 8994 to figure the employer credit for paid family and medical leave.",
+      "doc": "i8994",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8994",
+    "title": "Instructions for Form 8994",
+    "designation": "Instructions for Form 8994",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8994.pdf"
+  },
+  {
+    "id": "f982",
+    "title": "Reduction of Tax Attributes Due to Discharge of Indebtedness (and Section 1082 Basis Adjustment)",
+    "designation": "Form 982",
+    "url": "https://www.irs.gov/pub/irs-pdf/f982.pdf"
+  },
+  {
+    "id": "fw2as",
+    "title": "American Samoa Wage and Tax Statement",
+    "designation": "Form W-2AS",
+    "url": "https://www.irs.gov/pub/irs-prior/fw2as--2025.pdf"
+  },
+  {
+    "id": "fw2gu",
+    "title": "Guam Wage and Tax Statement",
+    "designation": "Form W-2GU",
+    "url": "https://www.irs.gov/pub/irs-prior/fw2gu--2025.pdf"
+  },
+  {
+    "id": "fw2vi",
+    "title": "U.S. Virgin Islands Wage and Tax Statement",
+    "designation": "Form W-2VI",
+    "url": "https://www.irs.gov/pub/irs-prior/fw2vi--2025.pdf"
+  },
+  {
+    "id": "fw2g",
+    "title": "Certain Gambling Winnings",
+    "designation": "Form W-2G",
+    "url": "https://www.irs.gov/pub/irs-prior/fw2g--2023.pdf",
+    "form_purpose": {
+      "text": "Box 1. The payer must furnish a Form W-2G to you if you receive: 1. $1,200 or more in gambling winnings from bingo or slot machines; 2. $1,500 or more in winnings (reduced by the wager) from keno; 3. More than $5,000 in winnings (reduced by the wager or buy-in) from a poker tournament; 4. $600 or more in gambling winnings (except winnings from bingo, keno, slot machines, and poker tournaments) and the payout is at least 300 times the amount of the wager; or 5. Any other gambling winnings subject to federal income tax withholding.",
+      "doc": "fw2g",
+      "page": 5
+    }
+  },
+  {
+    "id": "iw2g",
+    "title": "Instructions for Forms W-2G and 5754",
+    "designation": "Instructions for Forms W-2G and 5754",
+    "url": "https://www.irs.gov/pub/irs-prior/iw2g--2021.pdf"
+  },
+  {
+    "id": "f1040sf",
+    "title": "Profit or Loss From Farming",
+    "designation": "Schedule F (Form 1040)",
+    "url": "https://www.irs.gov/pub/irs-prior/f1040sf--2025.pdf",
+    "form_purpose": {
+      "text": "Use Schedule F (Form 1040) to report farm income and expenses. File it with Form 1040, 1040-SR, 1040-SS, 1040-NR, 1041, or 1065.",
+      "doc": "i1040sf",
+      "page": 2
+    }
+  },
+  {
+    "id": "i1040sf",
+    "title": "Instructions for Schedule F (Form 1040)",
+    "designation": "Instructions for Schedule F (Form 1040)",
+    "url": "https://www.irs.gov/pub/irs-prior/i1040sf--2025.pdf"
+  },
+  {
+    "id": "i1040sj",
+    "title": "Instructions for Schedule J (Form 1040)",
+    "designation": "Instructions for Schedule J (Form 1040)",
+    "url": "https://www.irs.gov/pub/irs-prior/i1040sj--2025.pdf"
+  },
+  {
+    "id": "f8971",
+    "title": "Information Regarding Beneficiaries Acquiring Property From a Decedent",
+    "designation": "Form 8971",
+    "url": "https://www.irs.gov/pub/irs-prior/f8971--2025.pdf",
+    "form_purpose": {
+      "text": "Form 8971 and copies of Schedules A provide information to the IRS about beneficiaries who acquired property from a decedent. Schedule A provides basis information to beneficiaries who acquire certain property from the decedent.",
+      "doc": "i8971",
+      "page": 1
+    }
+  },
+  {
+    "id": "i8971",
+    "title": "Instructions for Form 8971 and Schedule A",
+    "designation": "Instructions for Form 8971 and Schedule A",
+    "url": "https://www.irs.gov/pub/irs-prior/i8971--2025.pdf"
+  },
+  {
+    "id": "fct2",
+    "title": "Employee Representative’s Quarterly Railroad Tax Return",
+    "designation": "Form CT-2",
+    "url": "https://www.irs.gov/pub/irs-prior/fct2--2025.pdf",
+    "form_purpose": {
+      "text": "Use this form to report railroad retirement taxes imposed on compensation received by employee representatives.",
+      "doc": "fct2",
+      "page": 2
+    }
   }
 ]

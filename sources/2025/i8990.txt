@@ -1,0 +1,1271 @@
+Instructions for Form 8990
+(Rev. December 2025)
+Limitation on Business Interest Expense Under Section 163(j)
+Section references are to the Internal Revenue Code             year is carried forward to the following year as a
+unless otherwise noted.                                         disallowed business interest expense carryforward.
+                                                                However, see Special Rules for partnership treatment of
+Future Developments                                             disallowed business interest expense, later.
+
+For the latest information about developments related to        Who Must File
+Form 8990 and its instructions, such as legislation             A taxpayer (including, for example, an individual,
+enacted after they were published, go to IRS.gov/               corporation, partnership, S corporation) with business
+Form8990.                                                       interest expense; a disallowed business interest expense
+                                                                carryforward; or current year or prior year excess business
+What’s New                                                      interest expense must generally file Form 8990, unless an
+Changes to adjusted taxable income (ATI) and busi-              exclusion from filing applies.
+ness interest limitations. P.L. 119-21, commonly known             A pass-through entity allocating excess taxable income
+as the One Big Beautiful Bill Act, amended section 163(j)       or excess business interest income to its owners must file
+to allow an add-back to taxable income for any deduction        Form 8990, regardless of whether it has any interest
+allowable for depreciation, amortization, or depletion to       expense.
+determine ATI for tax years beginning after 2024. Form
+8990, line 11 has been revised to reinstate the deduction          A regulated investment company that pays section
+allowable for depreciation, amortization, or depletion          163(j) interest dividends (see Regulations sections
+attributable to a trade or business as an adjustment to         1.163(j)-1(b)(22)(iii)(F) and 1.163(j)-1(b)(35)) must file
+tentative taxable income for purposes of computing ATI.         Form 8990.
+See the instructions for Line 11, later.                           A taxpayer that is a U.S. shareholder of an applicable
+   For tax years beginning after 2025, limitations on           controlled foreign corporation (CFC) that has business
+business interest will generally include capitalized interest   interest expense, disallowed business interest expense
+except for interest capitalized under sections 263(g) and       carryforward, or is part of a CFC group, must generally
+263A(f). Also, ATI will exclude U.S. shareholder inclusions     apply section 163(j) to the applicable CFC and attach a
+from controlled foreign corporations (CFCs).                    Form 8990 with each Form 5471. See Regulations section
+                                                                1.163(j)-7(b).
+Floor plan financing interest expense. For tax years
+beginning after 2024, P.L. 119-21 also expanded the                For a CFC group, an additional Form 8990 must be filed
+definition of floor plan financing interest expense to          for the CFC group to report the combined limitations
+include any trailer or camper, which is designed to provide     attributable to a trade or business of all CFC group
+temporary living quarters for recreational, camping, or         members. See Specified Group Parent, later.
+seasonal use, and is designed to be towed by or affixed to
+                                                                  If a safe-harbor election is made for a CFC group, Form
+a motor vehicle.
+                                                                8990 does not need to be filed for each CFC group
+                                                                member, but Form 8990 must be filed for the CFC group.
+General Instructions                                            Exclusions from filing. A taxpayer is not required to file
+Purpose of Form                                                 Form 8990 if the taxpayer is a small business taxpayer
+                                                                and does not have excess business interest expense from
+Use Form 8990 to figure the amount of business interest         a partnership. A taxpayer is also not required to file Form
+expense you can deduct and the amount to carry forward          8990 if it only has interest expense from one or more of
+to the next year. For more information, see Regulations         these excepted trades or businesses:
+sections 1.163(j)-1 through 1.163(j)-11.                        • The trade or business of providing services as an
+Computation of section 163(j) limitation. If section            employee,
+163(j) applies to you, the business interest expense            • An electing real property trade or business,
+deduction allowed for the tax year is limited to the sum of:    • An electing farming business, or
+   1. Business interest income,                                 • Certain regulated utility businesses.
+   2. Applicable percentage of the adjusted taxable                If a pass-through entity is not required to file Form 8990
+income (ATI), and                                               because it is a small business taxpayer, but a partner or
+                                                                shareholder is required to file Form 8990, the
+   3. Floor plan financing interest expense.                    pass-through entity is required, upon request by the
+                                                                partner or shareholder, to provide certain information so
+Carryforward of disallowed business interest. The
+                                                                that the partner or shareholder can complete their return.
+amount of any business interest expense that is not
+                                                                See Ownership of pass-through entities not subject to the
+allowed as a deduction under section 163(j) for the tax
+                                                                section 163(j) limitation, later.
+                              Instructions for Form 8990 (Rev. 12-2025) Catalog Number 71420E
+Jan 21, 2026                  Department of the Treasury Internal Revenue Service www.irs.gov
+Coordination With Other Limitations                              • Any entity described in section 6662(d)(2)(C)(ii).
+                                                                    A pass-through entity that is a small business taxpayer
+Categorization and allocation of interest expense.               does not allocate excess taxable income, excess business
+Current year interest expense must be categorized under          interest income, or excess business interest to its owners.
+Temporary Regulations section 1.163-8T (for example, as
+investment interest, personal interest, or business              Gross receipts test. For tax years beginning in 2025, a
+interest) before computing the section 163(j) limitation on      taxpayer meets the gross receipts test if the taxpayer has
+the deduction for business interest expense. Also, see           average annual gross receipts of $31 million or less for the
+Proposed Regulations section 1.163-14 ((85 FR 56846)             3 prior tax years.
+(2020 Proposed Regulations)) for rules on allocating                A taxpayer’s average annual gross receipts for the 3
+interest expense associated with debt proceeds for               prior tax years is determined by:
+pass-through entities. Only business interest expense is            1. Adding the gross receipts for the 3 prior tax years,
+subject to the section 163(j) limitation.                        and
+   For purposes of the section 163(j) limitation only,              2. Dividing the total by 3.
+business interest expense refers to interest expense
+properly allocable to trades or businesses that are not              Caution: The average annual gross receipts test
+excepted trades or businesses. See Taxpayers with both           threshold amount may be adjusted for inflation. The
+excepted and non-excepted trades or businesses, later,           Instructions for Form 8990 may not be revised to reflect
+for allocating interest expense between excepted and             this amount. For tax years beginning after 2025, see the
+non-excepted trades or businesses before computing the           instructions for your applicable income tax return for the
+section 163(j) limitation.                                       average annual gross receipts test threshold amount for
+                                                                 the current tax year. The average annual gross receipts
+Interest expense limitations. An expense that has been           test threshold amount is also available at IRS.gov/
+disallowed, deferred, or capitalized in the current tax year,    InflationAdjustment. Select the applicable tax year news
+or which has not yet been accrued, is not taken into             release, then click the Revenue Procedure link to see the
+account for section 163(j) purposes. Section 163(j)              threshold amount under Limitation on Use of Cash
+applies after any basis limitation and before the operation      Method of Accounting.
+of the at-risk, passive activity loss, or excess business
+loss limitations. See Regulations section 1.163(j)-3 for             In the case of any taxpayer, which is not a corporation
+additional information on interactions of section 163(j) with    or a partnership, and except as provided below, the gross
+other code provisions relating to interest expense.              receipts test is applied in the same manner as if such
+                                                                 taxpayer were a corporation or a partnership.
+    If a taxpayer’s deduction for business interest expense
+is limited under section 163(j) and such taxpayer has                Gross receipts for any tax year must be reduced by
+more than one business activity for purposes of either the       returns and allowances made during the year. For
+at-risk (section 465) or passive activity loss (section 469)     individuals and for section 163(j) only, gross receipts do
+limitation provisions, then the section 163(j) limitation will   not include inherently personal amounts such as disability
+apply to the overall business interest expense from all the      benefits, social security benefits, and wages received as
+business activities of the taxpayer. The proportion of each      an employee and reported on Form W-2.
+activity’s business interest expense that is disallowed is           For section 163(j), a taxpayer with an ownership
+the same proportion as the disallowed business interest          interest in a partnership or S corporation must include a
+expense over the total business interest expense. See            share of the partnership’s or S corporation’s gross
+Regulations section 1.163(j)-3(c), example 4, and                receipts, in proportion to the partner’s distributive share of
+Temporary Regulations section 1.163-8T.                          items of gross income or S corporation’s shareholder’s pro
+                                                                 rata share of gross receipts, unless the partner and
+Partner basis limitations. Deductible business interest
+                                                                 partnership, or S corporation shareholder and S
+expense and excess business interest expense are
+                                                                 corporation, are treated as a single person. In that case,
+subject to section 704(d) loss limitation rules. See
+                                                                 see Gross receipts aggregation for members of a
+Regulations section 1.163(j)-6(h)(1) and (2).
+                                                                 controlled group, businesses under common control, or
+Definitions                                                      members of an affiliated group, later.
+The definitions below are only for the purposes of applying          The gross receipts of an organization subject to tax
+section 163(j).                                                  under section 511 only include gross receipts taken into
+                                                                 account in determining its unrelated business taxable
+Small business taxpayer. A small business taxpayer is            income.
+not subject to the section 163(j) limitation and is generally
+not required to file Form 8990.                                  Note: Gross receipts must meet the definition under
+   A small business taxpayer is a taxpayer that is not a tax     section 448(c) and Temporary Regulations section
+shelter (as defined in section 448(d)(3)) and meets the          1.448-1T(f)(2)(iv).
+gross receipts test, described below. A tax shelter is              Any reference to your business gross receipts also
+defined as:                                                      includes a reference to the gross receipts of any
+• Any enterprise other than a C corporation offering             predecessor of your business. If your business was not in
+ownership via registered securities,                             existence for the entire 3-year period, base your average
+• Any syndicate within the meaning of section 1256(e)(3)         annual gross receipts on the period your business existed.
+(B) (see Regulations section 1.163(j)-2(d)(3)), or               Also, if your business had a tax year of less than 12
+
+2                                                                                  Instructions for Form 8990 (Rev. 12-2025)
+months, your gross receipts must be annualized by               reconstruction, acquisition, conversion, rental, operation,
+multiplying the gross receipts for the short period by 12       management, leasing, or brokerage trade or business.
+and dividing the result by the number of months in the
+                                                                Electing farming business. Farming businesses (as
+short period.                                                   defined in section 263A(e)(4)) and specified agricultural
+   The prior period gross receipts must be annualized for       and horticultural cooperatives (as defined in section
+any short period before dividing by 3.                          199A(g)(4)) may elect to not be subject to the section
+   For assistance in preparing the average annual gross         163(j) limitation. See Elections under Special Rules, later,
+receipts, see the Average Annual Gross Receipts                 for the effect of making an election. A farming business
+Worksheet Per Section 448(c), later.                            includes livestock, dairy, poultry, fish, fruit, nut, and truck
+  Gross receipts aggregation for members of a                   farms. It also includes plantations, ranches, ranges, and
+controlled group, businesses under common control,              orchards. A fish farm is an area where fish and other
+or members of an affiliated group. For section 163(j),          marine animals are grown or raised and artificially fed,
+gross receipts may include the receipts of more than one        protected, etc., but it does not include an area where they
+taxpayer. For this purpose, all members of a controlled         are merely caught or harvested. A plant nursery is a farm
+group of corporations (as defined in section 52(a)), and all    for purposes of deducting soil and water conservation
+members of a group of businesses under common control           expenses.
+(as defined in section 52(b)), are treated as a single             A specified agricultural or horticultural cooperative is a
+person; and all members of an affiliated service group (as      cooperative to which Part I of subchapter T of the Internal
+defined in sections 414(m) and (o)) shall be treated as a       Revenue Code applies that manufactures, produces,
+single person. If you and a partnership or S corporation in     grows, or extracts any agricultural or horticultural product,
+which you hold an interest are treated as a single person       or has marketed agricultural or horticultural products.
+for purposes of the gross receipts test, aggregate the
+                                                                Certain regulated utility businesses. Certain regulated
+partnership’s or S corporation’s gross receipts with your
+                                                                utility trades or businesses are not subject to the section
+gross receipts. Do not duplicate amounts by also including
+                                                                163(j) limitation. No election is required for certain
+a share of partnership or S corporation gross receipts as
+                                                                regulated utility businesses, meaning these trades or
+your own gross receipts.
+                                                                businesses are automatically excepted from the limitation.
+   For more information, see Average Annual Gross
+                                                                    Automatically excepted regulated utilities are trades or
+Receipts Worksheet Per Section 448(c), later.
+                                                                businesses that furnish or sell:
+   Also see FAQs Regarding the Aggregation Rules at             • Electrical energy, water, or sewage disposal services;
+IRS.gov.                                                        • Gas or steam through a local distribution system; or
+Tax shelter election. A taxpayer that is a tax shelter as       • Transportation of gas or steam by pipeline.
+defined in section 448(d)(3) is not permitted to use the            To be an automatically excepted regulated utility trade
+small business exemptions contained in section 163(j)(3).       or business, the rates for furnishing or sale of the above
+Under section 448(d)(3), a taxpayer that is a “syndicate” is    listed items must be established or approved by a state or
+considered to be a tax shelter. To determine whether a          political subdivision thereof, by any agency or
+taxpayer is a syndicate, the section 448 regulations permit     instrumentality of the United States, by a public service or
+a taxpayer to make an annual election to use its                public utility commission or other similar body of any state
+allocations of income, gain, loss, or deduction made in the     or political subdivision thereof, on a rate of return and cost
+immediately preceding tax year, instead of using its            of service basis, or by the governing or rate-making body
+current year allocations. The election is made on a timely      of an electric cooperative.
+filed original return (including extensions) for the tax year       If the trade or business does not qualify as an
+for which it is made. It is only valid for that tax year and    automatically excepted regulated utility trade or business
+once made cannot be revoked. See Regulations section            because its rates are not established or approved on a
+1.448-2(b)(2)(iii)(B)(2) for guidance on the time and           cost of service and rate of return basis, the taxpayer may
+manner of making the annual election.                           be able to elect that the trade or business be an excepted
+Excepted trade or business. A trade or business does            trade or business. See Regulations section 1.163(j)-1(b)
+not include:                                                    (15)(iii)(A) regarding electing utility trades or businesses.
+• Performing services as an employee,                           Also, see Elections under Special Rules, later, for the
+• An electing real property trade or business,                  effect of making an election.
+• An electing farming business, or                              Interest. In general, interest is any amount that is paid,
+• Certain regulated utility businesses.                         received, or accrued as compensation for the use or
+  How to make an election and the effect of being an            forbearance of money or that is treated as interest under
+excepted trade or business are discussed under Special          the Internal Revenue Code or the regulations thereunder.
+Rules, later.                                                      Regulations section 1.163(j)-1(b)(22) provides
+Electing real property trade or business. A real                additional guidance on what constitutes interest for
+property trade or business engaged in activities described      purposes of section 163(j), including anti-avoidance rules
+in section 469(c)(7) may elect to not be subject to the         and a list of other amounts treated as interest, such as
+section 163(j) limitation. See Elections under Special          certain amounts of bond premium, factoring income, and
+Rules, later, for the effect of making an election. Real        section 163(j) interest dividends from regulated
+property trade or business means any real property              investment companies.
+development, redevelopment, construction,
+
+Instructions for Form 8990 (Rev. 12-2025)                                                                                     3
+Business interest income. Business interest income             Applicable percentage. The applicable percentage is
+means the amount of interest income includible in the          the percentage applied to ATI for purposes of computing
+taxpayer’s gross income for the tax year, which is properly    the business interest expense limitation calculation. The
+allocable to a trade or business. Business interest income     applicable percentage is 30% (30% ATI limitation).
+does not include investment income.                            Floor plan financing interest expense. Floor plan
+   See C corporation business interest expense and             financing interest expense is not subject to the section
+income, later.                                                 163(j) limitation. Floor plan financing interest expense is
+   Interest income that is allocable to an excepted trade or   interest on debt used to finance the acquisition of motor
+business is not treated as business interest income.           vehicles and any trailer or camper which is designed to
+                                                               provide temporary living quarters for recreational,
+Business interest expense. Business interest expense
+                                                               camping, or seasonal use and is designed to be towed by,
+means any interest paid or accrued that is properly
+                                                               or affixed to, a motor vehicle that is held for sale or lease
+allocable to a trade or business. Business interest
+                                                               where the debt is secured by the acquired inventory.
+expense includes elective capitalized interest but,
+generally, does not include investment interest or other       Excess taxable income. In general, excess taxable
+personal interest. See Temporary Regulations section           income is the amount of a partnership’s or S corporation’s
+1.163-9T for a definition of personal interest. However,       ATI that is in excess of the amount of ATI required to
+see C corporation business interest expense and income,        support the partnership’s or S corporation’s business
+later.                                                         interest expense deduction. This amount is computed by
+   Interest expense that is allocable to an excepted trade     a partnership or an S corporation and is allocated to the
+or business is not treated as business interest expense.       partner or shareholder. This amount is used by the partner
+                                                               or shareholder in determining their current year ATI.
+Excess business interest expense. If a partnership has
+a limitation on business interest expense, the disallowed      Excess business interest income. Excess business
+business interest expense is not carried over by the           interest income is the amount by which current year
+partnership, but is allocated to the partners. This interest   business interest income exceeds current year business
+is referred to as excess business interest expense.            interest expense (excluding floor plan financing). This
+                                                               amount is computed by a partnership or an S corporation
+Tentative taxable income. Tentative taxable income is          and is allocated to the partner or shareholder. This
+generally the same as taxable income under section 63.         amount is used by the partner or shareholder in
+However, tentative taxable income is computed as if the        determining their current year business interest income.
+section 163(j) limitation does not exist; therefore, do not
+include disallowed business interest expense                   Special Rules
+carryforwards from a prior year or excess business
+                                                               Elections. A taxpayer engaged in a real property trade or
+interest expense from a prior year.
+                                                               business, a farming business, or a non-automatically
+   See Regulations section 1.163(j)-1(b)(43) for more          excepted regulated utility trade or business may elect not
+information.                                                   to limit business interest expense under section 163(j) for
+Adjusted taxable income (ATI). ATI means tentative             such trade or business. This is an irrevocable election.
+taxable income of the taxpayer computed without regard             If the real property trade or business or farming
+to:                                                            business election is in effect, you are required to use the
+• Any item of income, gain, deduction, or loss, which is       alternative depreciation system (ADS) for certain property.
+not properly allocable to a trade or business (within the      See Pub. 946, How To Depreciate Property. Also, you are
+meaning of section 162);                                       not entitled to the special depreciation allowance for that
+• Any business interest income or business interest            property. For a taxpayer with more than one qualifying
+expense;                                                       business, the election is made with respect to each trade
+• The amount of any net operating loss deduction under         or business.
+section 172;
+                                                               Electing real property trade or business. An electing
+• The amount of any qualified business income allowed          real property trade or business must use the ADS for any
+under section 199A (for purposes of determining ATI the
+                                                               nonresidential real property, residential rental property,
+section 199A deduction is determined without regard to
+                                                               and qualified improvement property used in its trade or
+section 163(j). See Regulations section 1.163(j)-1(b)(43));
+                                                               business.
+• For tax years beginning before 2022, and after 2024,
+any deduction for depreciation, amortization, or depletion     Revenue Procedure 2021-9. Revenue Procedure
+attributable to a trade or business; and                       2021-9 provides a safe harbor that allows a taxpayer
+• Adjustments described in published guidance.                 engaged in a trade or business that manages or operates
+    To determine ATI, tentative taxable income is computed     a residential living facility that provides certain
+after applying other sections limiting the deductibility of    supplemental assistive, nursing, and other routine medical
+interest, such as sections 263A and 267, as well as basis,     services to treat such trade or business as a real property
+at-risk and passive activity loss limitations.                 trade or business. See Revenue Procedure 2021-9 for
+                                                               additional information and requirements to qualify for the
+   Caution: Any additions or subtractions from taxable         safe harbor.
+income in arriving at ATI are limited to the amount by
+which the item affects taxable income.
+
+
+4                                                                                Instructions for Form 8990 (Rev. 12-2025)
+Electing farming business. An electing farming                   Partnerships. If a partnership is subject to the section
+business must use the ADS for any farming property the           163(j) limitation, the section 163(j) limitation is applied at
+taxpayer owns with a recovery period of 10 years or more.        the partnership level. If a partnership has deductible
+                                                                 business interest expense, such deductible business
+Regulated utility trade or business. Automatically
+                                                                 interest expense is not subject to any further limitation
+excepted utility trades or businesses and electing utility
+                                                                 under section 163(j) at the partner level. For all other
+trades or businesses cannot claim the additional first-year
+                                                                 purposes of the Code, however, deductible business
+depreciation deduction under section 168(k) for any
+                                                                 interest expense retains its character as business interest
+property that is primarily used in the excepted regulated
+                                                                 expense at the partner level.
+utility trade or business.
+                                                                    If the partnership has a limitation on business interest
+Safe harbor for real estate investment trusts (REITs).           expense, the disallowed business interest expense
+Under certain circumstances, a REIT (and a partnership           (excess business interest expense) is not carried over by
+controlled by one or more REITs) is eligible to make an          the partnership, but is allocated to the partners.
+election to be a real property trade or business. See
+Regulations section 1.163(j)-9(h).                                  After completing Form 8990, the partnership must
+                                                                 determine how the deductible business interest expense,
+How to make the election. To make an election for a              excess business interest expense, excess taxable income,
+real property, farming, or non-automatically excepted            and excess business interest income are allocated among
+regulated utility trade or business, attach an election          the partners. Worksheet A—Determination of Each
+statement to a timely filed original tax return (including       Partner’s Deductible Business Interest Expense and
+extensions). Once the election is made, it is irrevocable.       Section 163(j) Excess Items and Worksheet
+    The statement must be titled “Section 1.163(j)-9             B—Determination of Each Partner’s Relevant Section
+Election” (for real property or farming businesses) or           163(j) Items are to be used to determine the amount of
+“Section 1.163(j)-1(b)(15)(iii) Election” (for an electing       each item allocable to each partner. See Regulations
+utility trade or business), and must contain the following       section 1.163(j)-6(f)(2) for additional information on the
+information for each electing trade or business:                 allocation.
+• The taxpayer’s name;                                           Self-charged interest. See Regulations section
+• The taxpayer’s address;                                        1.163(j)-6(n) for the treatment of business interest income
+• The taxpayer’s social security number (SSN) or                 and business interest expense with respect to lending
+employer identification number (EIN);                            transactions between a partnership and a partner.
+• A description of the taxpayer’s electing trade or
+business, sufficient to demonstrate qualification for an         Partner. A partner’s excess business interest expense is
+election, including the principal business activity code;        treated as paid or accrued by the partner in subsequent
+and                                                              years to the extent the partner is allocated current year
+• A statement that the taxpayer is making an election            excess taxable income or excess business interest
+pursuant to section 163(j)(7)(B) (as an electing real            income from the same partnership.
+property trade or business) or (C) (as an electing farming          If a partner not subject to the section 163(j) limitation
+business), or Regulations section 1.163(j)-1(b)(15)(iii) (as     has excess business interest expense from a prior year
+an electing utility trade or business), as applicable.           and is allocated excess taxable income or excess
+Consolidated group’s trade or business. Only the                 business interest income in the current year, the partner
+name and taxpayer identification number (TIN) of the             would file Form 8990 and the amount of excess business
+agent for the group, as defined in Regulations section           interest expense treated as paid or accrued in the current
+1.1502-77, must be provided on the election statement.           year would not be subject to further limitation under
+                                                                 section 163(j). See Schedule A, Summary of Partner’s
+Partnership’s trade or business. An election for a               Section 163(j) Excess Items, later.
+partnership must be made on the partnership’s return with
+                                                                    A partner subject to the section 163(j) limitation will
+respect to any trade or business that the partnership
+                                                                 include the amount of excess business interest expense
+conducts. An election by a partnership does not apply to a
+                                                                 treated as paid or accrued in figuring its current year
+trade or business conducted by a partner outside the
+                                                                 business interest expense limitation.
+partnership.
+                                                                    If both a partnership and a partner are subject to the
+Taxpayers with both excepted and non-excepted                    section 163(j) limitation, the partner’s current year
+trades or businesses. Taxpayers must allocate and                business interest expense limitation computation will
+apportion their interest expense, interest income, and           include the following amounts from each of its
+other tax items between excepted and non-excepted                partnerships:
+trades or businesses, applying the rules under                   • Current year excess taxable income,
+Regulations section 1.163(j)-10. An asset basis approach         • Excess business interest expense treated as paid or
+is generally used to allocate interest expense and interest      accrued, and
+income. Regulations section 1.163(j)-10(c) requires a            • Current year excess business interest income.
+taxpayer to attach a statement to its timely filed tax return,
+providing information related to the asset basis and                These amounts will not include items from an excepted
+allocation determination, as provided, in Regulations            trade or business.
+section 1.163(j)-10(c)(6)(iii).
+
+
+Instructions for Form 8990 (Rev. 12-2025)                                                                                    5
+   If a partner is subject to the section 163(j) limitation and   income, except to the extent such interest expense or
+the partnership is not, see Ownership of pass-through             interest income is allocable to an excepted trade or
+entities not subject to the section 163(j) limitation, later.     business.
+   In the event a partner sells a partnership interest and           Any investment interest expense, investment interest
+the partnership in which the interest is being sold owns          income, or investment expenses that a partnership pays,
+only non-excepted trade or business assets, the gain or           receives, or accrues and allocates to a C corporation
+loss on the sale of the partnership interest is included in       partner as a separately stated item is treated by the C
+the partner’s ATI. If the partnership interest consists of        corporation as properly allocable to a trade or business of
+both excepted and non-excepted assets, the partner may            that partner. Similarly, for purposes of section 163(j), any
+use the method set forth in Regulations section                   other tax items of a partnership that are neither properly
+1.163(j)-10(c) to determine the amount properly allocable         allocable to a trade or business of the partnership nor
+to a non-excepted trade or business and, therefore,               described in section 163(d) and that are allocated to a C
+properly includible in the partner’s ATI.                         corporation partner as separately stated items, are treated
+Excess business interest expense from a prior tax                 as properly allocable to a trade or business of that partner.
+year that was suspended under section 704(d) (“neg-               See Regulations section 1.163(j)-4(b)(3)(i).
+ative section 163(j) expense”). See Regulations                      Current year business interest expense is deducted
+section 1.163(j)-6(h) for basis adjustment calculations and       before disallowed business interest expense
+ordering rules for losses under section 704(d).                   carryforwards, which are then deducted in the order of the
+                                                                  year in which they were incurred, starting with the earliest
+Excess business interest expense in tiered partner-               year, subject to certain limitations.
+ships. See 2020 Proposed Regulations section
+1.163(j)-6(j) for treatment of excess business interest           Consolidated group. A consolidated group has a single
+expense in tiered partnerships.                                   section 163(j) limitation. A consolidated group files one
+                                                                  Form 8990. For members entering or leaving the group,
+S corporation. The section 163(j) limitation is applied at        see Regulations section 1.163(j)-5 for applicable
+the S corporation level. Disallowed business interest             limitations.
+expense is carried over by the S corporation and is treated
+                                                                     Intercompany obligations. All intercompany
+as business interest expense paid or accrued in the
+                                                                  obligations, as defined in Regulations section
+following year.
+                                                                  1.1502-13(g)(2)(ii), are disregarded for purposes of
+    For a shareholder subject to the section 163(j)               determining a member’s business interest expense and
+limitation, the shareholder’s current year section 163(j)         business interest income and in figuring the consolidated
+limitation computation will include the following amounts         group’s ATI.
+from each of its S corporations:
+• Current year excess taxable income, and                         Tax-exempt corporations with unrelated business in-
+• Current year excess business interest income.                   come (UBI). The rule for C corporation interest expense
+                                                                  and income applies to a corporation that is subject to the
+    These amounts will not include items from an excepted         unrelated business income tax under section 511 only
+trade or business.                                                with respect to that corporation’s items of income, gain,
+Ownership of pass-through entities not subject to                 deduction, or loss that are taken into account in computing
+the section 163(j) limitation. If you are subject to the          the corporation’s unrelated business taxable income, as
+section 163(j) limitation and are an owner of a                   defined in section 512.
+pass-through entity that is not subject to the section 163(j)     Regulated investment companies (RICs) and real es-
+limitation, your share of the pass-through business               tate investment trusts (REITs). For special rules for
+interest expense is not subject to the section 163(j)             determining ATI for RICs and REITs, see Regulations
+limitation, and your share of non-excepted trade or               section 1.163(j)-4(b)(4). For a safe harbor for REITs (and
+business items of income, gain, loss, and deduction               partnerships controlled by one or more REITs) making an
+(including business interest expense and business                 election to be an electing real property trade or business,
+interest income) of such pass-through entity, if net              see Regulations section 1.163(j)-9(h).
+positive, is included on line 13. You must request the
+pass-through entity to separately state, in sufficient detail,    Trading partnerships. A trading partnership is a
+the items necessary to include on line 13.                        partnership engaged in a trade or business activity of
+   In the event a partnership allocates excess business           trading personal property (including marketable securities)
+interest expense to one or more of its partners, and in a         for the account of owners of interests in the activity, as
+later tax year the partnership is an exempt entity, the           described in Temporary Regulations section 1.469-1T(e)
+excess business interest expense from the prior year is           (6). A trading partnership is required to bifurcate its
+treated as business interest expense paid or accrued by           interest expense from a trading activity between partners
+the partner in the later year. See Regulations section            that materially participate in the trading activity and
+1.163(j)-6(m)(3).                                                 partners that do not materially participate. Only the portion
+                                                                  of the interest expense that is allocable to the materially
+C corporation business interest expense and in-                   participating partners is subject to limitation under section
+come. Solely for section 163(j), all interest paid or             163(j) at the partnership level. In addition, the trading
+accrued (or treated as paid or accrued) by a C corporation        partnership is required to bifurcate all of its other items of
+is business interest expense, and all interest includible in      income, gain, loss, and deduction from its trading activity
+gross income by a C corporation is business interest              allocable to the partners that do not materially participate.
+
+6                                                                                   Instructions for Form 8990 (Rev. 12-2025)
+Such items are not taken into account at the partnership             If a CFC group election is in effect, a single section
+level as items from a trade or business for section 163(j),      163(j) limitation is computed for a specified period of a
+but instead are treated as items from an investment              CFC group. A CFC group sums each of its CFC group
+activity of the partnership.                                     member’s separate-company applicable amounts for a
+Foreign persons with effectively connected income                specified period. Items of a CFC group member are
+(ECI). A nonresident alien individual or foreign                 translated into a single currency (which may be the U.S.
+corporation that is not a relevant foreign corporation and       dollar or the functional currency of a plurality of the CFC
+that has ECI is also subject to the section 163(j) limitation.   group members) for the CFC group and back to the
+As foreign persons are only taxed on their ECI, ATI,             functional currency of the CFC group member using the
+business interest expense, business interest income, and         average exchange rate for the CFC group member’s
+floor plan financing interest expense are modified to limit      specified tax year (as defined in Regulations section
+such amounts to income, which is ECI and expenses                1.163(j)-7(k)(30)), using any reasonable method,
+properly allocable to ECI. A relevant foreign corporation        consistently applied. Only non-ECI amounts are included
+means any foreign corporation whose classification is            in the CFC group calculation. A separate section 163(j)
+relevant under Regulations section 301.7701-3(d)(1) for a        calculation and Form 8990 must be filed for the ECI of a
+tax year, other than solely pursuant to sections 881 or          CFC group member, if any. The CFC group member’s ECI
+882.                                                             attributes are treated, for this purpose, as attributes of a
+                                                                 separate applicable CFC.
+   Before applying section 163(j), a foreign corporation
+that has ECI must first determine its business interest          Form 8990 for each CFC group member. When a CFC
+expense allocable to ECI under Regulations section               group election is in effect, the U.S. shareholders of each
+1.882-5. Business interest expense allocable to ECI is           CFC group member must file Form 8990 with Form 5471
+reported on Schedule I (Form 1120-F). Disallowed                 for each CFC group member on a separate entity basis
+business interest expense carryforward, as determined            (unless a safe-harbor election is in effect for the CFC
+under section 163(j), that was allocable to ECI in a prior       group). On each CFC group member’s Form 8990, report
+year but deductible in the current tax year and any current      the individual CFC group member’s amounts on line 1
+year ECI business interest expense that becomes                  through line 25. Do not complete line 26 through line 29
+disallowed business interest expense carryforward, after         and report the CFC group member’s current year business
+applying section 163(j), are also included on Schedule I         interest expense deduction and disallowed business
+(Form 1120-F).                                                   interest expense (as determined under Regulations
+                                                                 section 1.163(j)-7(c)(3)) on lines 30 and 31.
+Relevant foreign corporations. Section 163(j) generally
+applies to determine the deductibility of a relevant foreign     Additional Form 8990 for CFC group. In addition to the
+corporation’s business interest expense for purposes of          Form 8990 that is filed for each CFC group member, a
+computing its taxable income (determined under                   separate Form 8990 must be filed for the CFC group in
+Regulations section 1.952-2 or the rules of section 882) in      order to report the combined limitation of the CFC group.
+the same manner as it applies to determine the                   The CFC group’s Form 8990 must be filed by the specified
+deductibility of a domestic C corporation’s business             group parent, if the specified group parent is a qualified
+interest expense for purposes of computing its taxable           U.S. person. If the specified group parent is a CFC, the
+income. An applicable CFC means a foreign corporation            U.S. shareholders that file Form 5471 for the specified
+described in section 957, but only if the foreign                group parent must file the CFC group’s Form 8990 with
+corporation has at least one U.S. shareholder that owns          Form 5471 of the specified group parent. In addition, if a
+(within the meaning of section 958(a)) stock of the foreign      U.S. shareholder that files Form 5471 for a CFC group
+corporation.                                                     member is not the specified group parent and does not file
+                                                                 Form 5471 for the specified group parent, the CFC group’s
+CFC group election. In order to make a CFC group                 Form 8990 should be attached to such U.S. shareholder’s
+election under Regulations section 1.163(j)-7(e), each           tax return.
+designated U.S. person (as defined in Regulations section
+                                                                    On the CFC group’s Form 8990, line 1 through line 25
+1.163(j)-7(k)(12)) must attach the election statement
+                                                                 should be completed by adding together the individual
+described in Regulations section 1.163(j)-7(e)(5)(iv) to the
+                                                                 amounts reported by each CFC group member on a
+CFC group’s Form 8990 in the year the CFC group
+                                                                 separate entity basis. However, for purposes of
+election is made. The statement must include the name
+                                                                 determining ATI of a CFC group, the limitation that ATI
+and taxpayer identification number of all designated U.S.
+                                                                 cannot be less than zero applies with respect to the ATI of
+persons, a statement that the CFC group election is being
+                                                                 the CFC group but not the ATI of any CFC group member.
+made, the specified period (as defined in Regulations
+                                                                 Line 26 through line 31 of Form 8990 should be
+section 1.163(j)-7(k)(29)) for which the CFC group
+                                                                 completed by reference to the total amounts reported on
+election is being made, the name of each CFC group
+                                                                 line 1 through line 25. Each designated U.S. person
+member, and its specified tax year with respect to the
+                                                                 should attach a statement identifying the specified group
+specified period. If a CFC group election was previously
+                                                                 parent, the specified period, and the name and specified
+revoked, the statement must include a certification that the
+                                                                 tax year of each CFC group member.
+specified period for which the election is made did not
+begin before 60 months following the last day of the                On the CFC group’s Form 8990, enter “Specified Group
+specified period for which the election was revoked. See         Parent” as the name of the foreign entity on line A. Enter
+Regulations section 1.163(j)-7(e)(5)(ii).                        zeros for the foreign entity’s EIN number. Do not complete
+                                                                 Schedule A or Schedule B of the CFC group’s Form 8990.
+
+Instructions for Form 8990 (Rev. 12-2025)                                                                                   7
+   Compliance with these instructions satisfies the             instructions to Worksheet C. Check the “Yes” box on line D
+statement requirement under Regulations section                 of the CFC group’s Form 8990.
+1.163(j)-7(e)(5)(iv) and the annual information reporting          A safe-harbor election is valid only if made by each
+requirement under Regulations section 1.163(j)-7(e)(6).         designated U.S. person. The requirement to file the
+Revocation of CFC group election. In order to revoke a          election statement described in Regulations section
+CFC group election, each designated U.S. person must            1.163(j)-7(h)(5)(ii) is satisfied by attaching Worksheet C in
+attach the statement described in Regulations section           compliance with these instructions.
+1.163(j)-7(e)(5)(iv) to the Form 8990 that is filed by or on       The safe-harbor election is available if a CFC group’s
+behalf of the specified group parent. The statement must        (or stand-alone applicable CFC’s) business interest
+include the name and taxpayer identification number of all      expense is equal to or less than either (a) its business
+designated U.S. persons, a statement that the CFC group         interest income or (b) 30% of the lesser of (i) its qualified
+election is being revoked, the name of the specified group      tentative taxable income (QTTI) or (ii) its eligible amount.
+parent, the specified period for which the election is          See Regulations section 1.163(j)-7(h)(3). A CFC group is
+revoked, and the name and specified tax year of each            not eligible for the safe-harbor election if any CFC group
+specified group member. The statement must also include         member has a pre-group disallowed business interest
+a certification that the specified period for which the         expense carryforward. See Regulations section
+election is revoked did not begin before 60 months              1.163(j)-7(k)(19) for the specified period. See Regulations
+following the last day of the specified period for which the    section 1.163(j)-7(h)(2). See the instructions for
+election was made. See Regulations section 1.163(j)-7(e)        Worksheet C for additional information.
+(5)(ii).                                                           The safe-harbor election does not apply to excess
+Specified group parent. A specified group parent                business interest expense, as described in Regulations
+means a qualified U.S. person or an applicable CFC. A           section 1.163(j)-6(f)(2), until the tax year in which it is
+qualified U.S. person means a United States person              treated as paid or accrued by an applicable CFC under
+described in section 7701(a)(30)(A) or (C). Members of a        Regulations section 1.163(j)-6(g)(2)(i). Excess business
+consolidated group that file (or that are required to file) a   interest expense is not taken into account for purposes of
+consolidated U.S. federal income tax return are treated as      this election until a tax year in which it is treated as paid or
+a single qualified U.S. person, and individuals described       accrued by an applicable CFC under Regulations section
+in section 7701(a)(30)(A) whose filing status is married        1.163(j)-6(g)(2)(i). See Regulations section 1.163(j)-7(h)
+filing jointly are treated as a single qualified U.S. person.   for full election rules.
+Designated U.S. person. With respect to a specified             Limitation on pre-group disallowed business interest
+group, a designated U.S. person means either the                expense carryforward. The amount of the pre-group
+specified group parent (if the specified group parent is a      disallowed business interest expense carryforwards that
+qualified U.S. person) or each controlling domestic             may be included in any CFC group member’s business
+shareholder (see Regulations section 1.964-1(c)(5)(i)) of       interest expense deduction for any specified tax year may
+the specified group parent (if the specified group parent is    not exceed the aggregate section 163(j) limitation for all
+an applicable CFC). With respect to a stand-alone               specified periods of the CFC group, determined by
+applicable CFC, each controlling domestic shareholder of        reference only to the CFC group member’s items of
+the stand-alone applicable CFC is a designated U.S.             income, gain, deduction, and loss, and reduced (including
+person.                                                         below zero) by the CFC group member’s business interest
+                                                                expense (including disallowed business interest expense
+Safe-harbor election. If a safe-harbor election is in
+                                                                carryforwards) taken into account as a deduction by the
+effect with respect to a tax year of a stand-alone
+                                                                CFC group member in all specified tax years in which the
+applicable CFC or a specified tax year of a CFC group
+                                                                CFC group member has continuously been a CFC group
+member, then, for such year, no portion of the applicable
+                                                                member of the CFC group (cumulative section 163(j)
+CFC’s business interest expense is disallowed under the
+                                                                pre-group carryforward limitation). See Regulations
+section 163(j) limitation. See instructions to Worksheet C,
+                                                                section 1.163(j)-7(c)(3)(iv).
+and complete Worksheet C before completing Part I.
+   If the safe-harbor election is made for a stand-alone        U.S. shareholder of an applicable CFC. A U.S.
+applicable CFC, the U.S. shareholders that file Form 8990       shareholder of an applicable CFC, in order to arrive at ATI,
+for the stand-alone applicable CFC must attach                  must reduce its tentative taxable income, by, among other
+Worksheet C to their tax return together with the Form          items, an amount equal to the sum of any specified
+8990 of the stand-alone applicable CFC and complete             deemed inclusions that were included in the computation
+Part I of the stand-alone applicable CFC’s Form 8990 in         of the taxpayer’s tentative taxable income, reduced by the
+accordance with the instructions to Worksheet C. Check          portion of the deduction allowed under section 250(a) by
+the “Yes” box on line D of the stand-alone applicable           reason of the specified deemed inclusions. See
+CFC’s Form 8990.                                                Regulations section 1.163(j)-1(b)(1)(ii)(G). A specified
+                                                                deemed inclusion means the inclusion of an amount by a
+   If the safe-harbor election is made for a CFC group, the     U.S. shareholder (as defined in section 951(b)) in gross
+U.S. shareholders that file the CFC group’s Form 8990           income under sections 78, 951(a), or 951A(a) with respect
+must attach Worksheet C to their tax return together with       to an applicable CFC that is properly allocable to a
+the CFC group’s Form 8990 and complete Part I of the            non-excepted trade or business. A specified deemed
+CFC group’s Form 8990 in accordance with the                    inclusion also includes any amount included in a domestic
+                                                                partnership’s gross income under sections 951(a) or
+
+8                                                                                  Instructions for Form 8990 (Rev. 12-2025)
+951A(a) with respect to an applicable CFC to the extent          safe-harbor election and special instructions for
+such amounts are attributable to investment income of the        completing Part I. If a safe-harbor election is made,
+partnership and are allocated to a domestic C corporation        Schedules A and B should not be completed.
+that is a direct (or indirect) partner and treated as properly
+allocable to a non-excepted trade or business of the             Part I—Computation of Allowable
+domestic C corporation.                                          Business Interest Expense
+   Section 1.163(j)-7(j) of the 2020 Proposed Regulations        Complete Part I to determine your allowable business
+does, however, allow a U.S. shareholder to add to its            interest expense deduction.
+tentative taxable income a portion of its specified deemed
+inclusions that are attributable to either a stand-alone            If you are a taxpayer that owns an interest in a
+applicable CFC or a CFC group member, except to the              partnership subject to the section 163(j) limitation, see the
+extent attributable to an inclusion under section 78 with        instructions for Schedule A before completing Part I.
+respect to an applicable CFC, provided the applicable               If you are a taxpayer that is a shareholder in an S
+requirements are met. That portion is equal to the ratio of      corporation subject to the section 163(j) limitation, see the
+the applicable CFC’s excess taxable income over its ATI.         instructions for Schedule B before completing Part I.
+Change in ATI computation. For tax years beginning
+                                                                    If you are a regulated investment company that paid
+before 2022 and after 2024, ATI is computed without
+                                                                 section 163(j) interest dividends and that has no business
+deductions for depreciation, amortization, depletion, and
+                                                                 interest expense for the tax year, complete only Sections I
+any other deduction prescribed in published guidance. For
+                                                                 and III.
+tax years 2022 through 2024, ATI includes deductions for
+depreciation, amortization, or depletion attributable to a         Prepare the form in U.S. dollars.
+trade or business.
+Change from being subject to section 163(j) to being
+                                                                 Section I—Business Interest Expense
+exempt from section 163(j) under the small business              (Lines 1 Through 5)
+exemption. A taxpayer that has disallowed business
+                                                                 Line 1. Current year business interest expense. Enter
+interest expense from a prior year and meets the small
+                                                                 the business interest expense including elective
+business exemption in the current year is no longer
+                                                                 capitalized interest (not including floor plan financing
+required to limit their business interest expense for section
+                                                                 interest expense or disallowed business interest expense
+163(j) purposes.
+                                                                 carryforwards from prior years) that would have been
+   Similarly, a partner with excess business interest            deductible in the current year without the application of
+expense from a partnership is not required to limit such         section 163(j).
+excess business interest expense under section 163(j) if
+                                                                     Interest expense from an excepted trade or business
+the partnership meets the small business exemption in the
+                                                                 should not be included.
+current year and the partner also meets the small
+business exemption in the current year.                              See Ownership of pass-through entities not subject to
+                                                                 the section 163(j) limitation, earlier.
+Change from non-excepted trade or business to ex-
+cepted trade or business. If a taxpayer has disallowed               Do not include interest expense allocated by a trading
+business interest expense from a prior year, or excess           partnership to a partner that does not materially
+business interest expense from a partnership, for which an       participate. See Trading partnerships, earlier.
+election to be an excepted trade or business is made in              For C corporations with an interest in a partnership, any
+the current year, then the disallowed business interest          investment interest expense allocated to the C corporation
+expense carried forward, or excess business interest             is treated as business interest expense of the C
+expense, is still subject to the section 163(j) limitation.      corporation from a non-excepted trade or business.
+                                                                 Line 2. Disallowed business interest expense carry-
+Specific Instructions                                            forwards from prior years. Enter the prior year
+                                                                 disallowed business interest expense carryover. See Form
+If Form 8990 relates to an information return for a foreign      8990, line 31, for prior year amount.
+entity (for example, Form 5471), provide the foreign entity         For consolidated groups with members joining or
+name and appropriate identification number on line A.            leaving the group, see Regulations section 1.163(j)-5, as
+   If the foreign entity is a CFC group member or if this        limitations may apply.
+Form 8990 is being filed by or on behalf of the specified           Caution: Line 2 does not apply to partnerships.
+group parent to report the combined limitation of the CFC           If Form 8990 is being completed for an applicable CFC
+group, check the “Yes” box and see CFC group election,           with a functional currency other than the U.S. dollar, and
+earlier, for additional requirements when making a CFC           the amount reported on line 2 is different from the amount
+group election. One of those additional requirements is          reported on line 31 of the prior year Form 8990 due to the
+that a separate Form 8990 must be completed in order to          use of different translation rates for translating from
+report the combined limitation of the CFC group.                 functional currency to U.S. dollars in different years, attach
+   If a safe-harbor election is being made, check the “Yes”      a statement providing the amount of the disallowed
+box and see Safe-harbor election, earlier, and Worksheet         business interest expense carryover in functional currency
+C, Stand-Alone Applicable CFC/CFC Group Safe Harbor              and the translation rate used in the current year and the
+Election, later, for additional requirements when making a       prior year. In the case of a CFC group member, a single
+
+Instructions for Form 8990 (Rev. 12-2025)                                                                                    9
+statement may be attached to the CFC group’s Form 8990        entered on line 7 as a positive amount to the extent the
+for all CFC group members in lieu of separate statements      casualty loss offset tentative taxable income.
+for each CFC group member.                                      Do not include amounts from pass-through entities,
+Line 4. Floor plan financing interest expense. Enter          which are entered on line 12.
+the current year floor plan financing interest expense.       Line 8. Any business interest expense not from a
+Section II—Adjusted Taxable Income                            pass-through entity. Add to tentative taxable income all
+                                                              business interest expense, to the extent includable in
+(Lines 6 Through 22)                                          tentative taxable income, that is not from a pass-through
+Enter all numbers as positive amounts unless otherwise        entity. For section 163(j), business interest expense does
+indicated.                                                    not include interest from an excepted trade or business.
+
+Tentative Taxable Income                                      Note: Interest expense that is allocable to an excepted
+                                                              trade or business is not treated as business interest
+Line 6. Tentative taxable income. Enter tentative             expense.
+taxable income computed as though all of the business
+interest expense is otherwise allowable business interest     Line 9. Amount of any net operating loss deduction
+expense. In figuring tentative taxable income, consider all   under section 172. Enter the amount of any net
+other applicable limitations such as sections 163(f), 267,    operating loss deduction carried forward or carried back
+basis (sections 704 and 1366), at-risk (section 465) and      to the current tax year under section 172.
+passive activity loss (section 469), and excess business      Line 10. Amount of any qualified business income
+loss (section 461(l)) limitations prior to inputting the      deduction allowed under section 199A. Enter the
+tentative taxable income amount.                              amount of any qualified business income deduction
+   The tentative taxable income of a partnership or S         allowed under section 199A. To determine ATI, the section
+corporation shall include both separately and                 199A deduction on line 10 is determined without regard to
+non-separately stated items. For a partnership, this will     section 163(j). See Regulations section 1.163(j)-1(b)(43).
+generally be the amount on Form 1065, Analysis of Net         Line 11. Deduction allowable for depreciation, amor-
+Income (Loss), line 1, Net income (loss), less guaranteed     tization, or depletion attributable to a trade or busi-
+payments, Schedule K, line 4c. If adjustments to a            ness. Enter the amounts allowable for depreciation,
+partnership’s income or deductions resulting from section     amortization, or depletion attributable to a trade or
+743(b) basis adjustments are taken into account in            business.
+calculating a partnership’s net income (loss), remove the
+effects of those adjustments by adding or subtracting the        Do not include amounts from pass-through entities,
+income, gain, loss, or deduction resulting from the section   which will be entered on line 12.
+743(b) basis adjustments. For an S corporation, this will     Line 12. Amount of any loss or deduction items from
+generally be the amount on Form 1120-S, Schedule K,           a pass-through entity. Enter any amount of loss or
+line 18, Income/loss reconciliation.                          deduction items from pass-through entities (regardless of
+   To compute a partnership’s and partner’s ATI, the          whether the entity is subject to the section 163(j)
+partnership (not the partner) takes into account items        limitation).
+resulting from adjustments to property under section          Line 13. Other additions. Enter the amount of any
+734(b). See Regulations section 1.163(j)-6(d)(2).             capital loss carryback or carryover.
+However, to compute ATI or items resulting from
+                                                                 A taxpayer subject to the section 163(j) limitation who
+adjustments to property under section 743(b), the partner
+                                                              has an interest in a pass-through entity not subject to the
+(not the partnership) takes into account such items.
+                                                              section 163(j) limitation should include their share of the
+   These adjustments are entered on line 13 (or line 20) of   entity’s ATI in other additions. See Ownership of
+Form 8990.                                                    pass-through entities not subject to the section 163(j)
+                                                              limitation, earlier.
+Additions (Lines 7 Through 16)
+                                                                 A C corporation should include investment income from
+Add back to tentative taxable income certain adjustments      a pass-through entity and any other tax items of a
+to arrive at ATI. Do not include amounts that were not        partnership that are neither properly allocable to a trade or
+taken into account in tentative taxable income on line 6.     business of the partnership nor described in section
+See Adjusted taxable income (ATI), earlier.                   163(d) and that are allocated to a C corporation partner as
+Line 7. Any item of loss or deduction which is not            separately stated items as other additions. See C
+properly allocable to a trade or business of the tax-         corporation business interest expense and income,
+payer. Enter any item of loss or deduction that is not        earlier.
+properly allocable to a trade or business of the taxpayer,       For trusts and estates subject to section 163(j), add
+including the taxpayer’s loss or deduction from any           back the amount of any income distribution deduction
+excepted trades or businesses. The amount of the              under sections 651 and 661, and the deduction under
+addition is limited to the amount the additional item         section 642(c).
+affected tentative taxable income.
+                                                                 The ATI of a beneficiary (including a tax-exempt
+   For example, a personal casualty loss is not allocable     beneficiary) of a trust or a decedent’s estate is reduced by
+to a trade or business of a taxpayer, which would be          any income (including any distributable net income)
+
+10                                                                              Instructions for Form 8990 (Rev. 12-2025)
+received from the trust or estate by the beneficiary to the         A U.S. shareholder of an applicable CFC should
+extent such income was necessary to permit a deduction           include an amount equal to the sum of any specified
+under section 163(j)(1)(B) and Regulations section               deemed inclusions that were included in the computation
+1.163(j)-2(b) for any business interest expense of the trust     of the taxpayer’s tentative taxable income, reduced by the
+or estate that was in excess of any business interest            portion of the deduction allowed under section 250(a) by
+income of the trust or estate.                                   reason of the specified deemed inclusions. See
+   A U.S. shareholder of an applicable CFC should                Regulations section 1.163(j)-1(b)(1)(ii)(G). Separately list
+include the amount added to the U.S. shareholder’s               each reduction by stand-alone applicable CFC or CFC
+tentative taxable income under 2020 Proposed                     group member.
+Regulations section 1.163(j)-7(j). Separately list each             Also include any other reductions described in
+inclusion by stand-alone applicable CFC or CFC group             published guidance. If none, leave blank.
+member.                                                             A C corporation should include investment expenses
+   A relevant foreign corporation should include the             from a pass-through entity and other tax items of a
+amount of any deduction for foreign income tax (as               partnership that are neither properly allocable to a trade or
+defined in Regulations section 1.960-1(b)) that was              business of the partnership nor described in section
+included in computing tentative taxable income on line 6         163(d) and that are allocated to a C corporation partner as
+since foreign income taxes should not reduce ATI. See            separately stated items as other reductions. See C
+Regulations section 1.163(j)-7(g)(3).                            corporation business interest expense and income,
+   Also include any other additions described in published       earlier.
+guidance. If none, leave blank.                                  Line 22. Adjusted taxable income (ATI). If line 22 is
+Line 15. Total current year S corporation sharehold-             zero or less, enter zero. However, CFC group members
+er’s excess taxable income. Enter the amount of any S            should follow instructions below.
+corporation excess taxable income reported on Form                 CFC group members. If a CFC group member has a
+8990, Schedule B, line 46, column (c).                           negative amount of ATI, the CFC group member should
+                                                                 report the negative amount on line 22. See Regulations
+Reductions (Lines 17 Through 21)                                 section 1.163(j)-7(c)(2)(i).
+Subtract from tentative taxable income certain
+adjustments to arrive at ATI. Do not include amounts that
+                                                                 Section III—Business Interest Income
+were not taken into account in tentative taxable income on       (Lines 23 Through 25)
+line 6. See ATI, defined earlier.
+                                                                 Line 23. Current year business interest income. Enter
+Line 17. Any item of income or gain which is not                 the amount of business interest income directly paid to or
+properly allocable to a trade or business of the tax-            accrued by the taxpayer. This does not include interest
+payer. Enter any item of income or gain, which is not            income from excepted trades or businesses.
+properly allocable to a trade or business of the taxpayer,           For C corporations with an interest in a partnership, any
+including the taxpayer’s income or gain from any excepted        investment interest income allocated to the C corporation
+trade(s) or business(es).                                        is treated as business interest income of the C corporation
+    For example, gain from the sale of a taxpayer’s              from a non-excepted trade or business.
+personal residence would be entered on line 17 because               See Ownership of pass-through entities not subject to
+it is not gain that is allocable to a trade or business of the   the section 163(j) limitation, earlier.
+taxpayer.
+    Do not include amounts from pass-through entities,           Section IV—163(j) Limitation
+which will be entered on line 19.                                Calculations (Lines 26 Through 31)
+Line 18. Any business interest income not from a
+pass-through entity. Enter all business interest income,         Limitation on Business Interest Expense
+to the extent included in tentative taxable income on            Line 26. Applicable percentage of ATI limitation.
+line 6, that is not from a pass-through entity (regardless of    Multiply the ATI from line 22 by the applicable percentage.
+whether the entity is subject to the section 163(j)              The applicable percentage is 30% (30% ATI limitation).
+limitation).
+                                                                    For a partnership or S corporation, if line 26 is zero,
+Line 19. Amount of any income or gain items from a               enter -0- on lines 35 and 40.
+pass-through entity. Enter the amount of any income or
+gain items from pass-through entities.                           Allowable Interest Expense
+Line 20. Other reductions. Include floor plan financing          Line 30. Total current year business interest expense
+interest expense.                                                deduction. A taxpayer subject to the section 163(j)
+   For tax years through 2024, ATI is computed with              limitation will enter on line 30 the smaller of line 29 or
+deductions for depreciation, amortization, depletion, and        line 5. Line 30 is the amount of current year business
+any other deduction prescribed in published guidance.            interest expense deduction allowed after considering the
+   If you are filing Form 8990 for an applicable CFC,            section 163(j) limitation.
+include the amount of any related party dividend income.            If a partner is not subject to the section 163(j) limitation
+See Regulations section 1.163(j)-7(g)(2).                        and has partnership excess business interest expense
+
+Instructions for Form 8990 (Rev. 12-2025)                                                                                    11
+treated as paid or accrued in the current year, enter the         ECI portion of the excess section 163(j) amounts were
+amount from Schedule A, line 44, column (h). The amount           determined. See 2020 Proposed Regulations section
+will not be subject to further limitation under section 163(j).   1.163(j)-8(c) for additional information.
+   If the amount on line 29 is less than the amount on               On line 43, enter the amount of current year excess
+line 5 and business interest expense is reported on more          business interest expense in column (c), current year
+than one location on the return (such as ordinary business        excess taxable income in column (f), and the current year
+interest expense and farming interest expense), then the          excess business interest income in column (g), reported
+disallowed business interest expense must be allocated to         to the partner on Schedule K-1 for each partnership.
+each source in proportion to the total amount of business
+interest expense from each source. Attach a schedule to             Do not include excess business interest expense that is
+Form 8990 that indicates the amount and line item on the          suspended under the basis limitation rules of section
+tax return where the business interest expense is being           704(d). See Regulations section 1.163(j)-6(h) for basis
+deducted.                                                         adjustment calculations and ordering rules for losses
+                                                                  under section 704(d).
+Carryforward                                                      Line 43, column (c). Current year. Reduce the current
+Line 31. Disallowed business interest expense.                    year excess business interest expense by the amount of
+Subtract line 29 from line 5. If zero or less, enter -0-.         negative section 163(j) expense that relates to the current
+                                                                  year excess business interest expense, and attach a
+Note: The amount on line 31 is used on the taxpayer’s             statement to the Form 8990 identifying the partnership
+next year’s Form 8990, line 2 (except for partnerships). If       name and amount of negative 163(j) expense. See
+the taxpayer completing this form is a partnership, carry         Regulations section 163(j)-6(h).
+the amount on line 31 to Part II, line 32, of the current year
+Form 8990.                                                        Line 43, column (d). Prior year carryforward. From
+                                                                  the prior year’s Form 8990, enter the amount from line 43,
+Part II—Partnership Pass-Through                                  column (i). Increase the prior year carryover by the
+                                                                  amount of negative section 163(j) expense that is no
+Items                                                             longer suspended, or if applicable, reduce the prior year
+Part II is completed by a partnership that is subject to          excess business interest expense by the amount of
+section 163(j) and is required to file Form 8990. The             negative section 163(j) expense that relates to the prior
+partnership items are allocated to the partners and are not       year excess business interest expense. Attach a
+carried forward by the partnership.                               statement to the Form 8990 identifying the partnership
+                                                                  name and a description of the adjustments and the
+   See the Instructions for Form 1065 for how the                 amounts. See Regulations section 1.163(j)-6(h).
+partnership reports the excess business interest expense,
+excess taxable income, and excess business interest               Line 43, column (h). Excess business interest ex-
+income to the partners.                                           pense treated as paid or accrued. Enter the lesser of:
+                                                                  • The total excess business interest expense amount in
+   See Ownership of pass-through entities not subject to          column (e), or
+the section 163(j) limitation, earlier.                           • The current year excess taxable income in column (f)
+                                                                  plus the current year excess business interest income in
+Part III—S Corporation Pass-Through                               column (g) from the same partnership.
+Items                                                                In addition, add any of the applicable amounts listed
+Part III is completed by an S corporation that is subject to      below, and attach a statement to the Form 8990
+the section 163(j) limitation. The S corporation’s excess         identifying the partnership name, amount, and description
+taxable income and excess business interest income are            of addition.
+allocated to the shareholders’ pro rata after the S               • The amount of excess business interest expense
+corporation’s section 163(j) limitation is determined and         carryover on line 43(d) if the partnership became an
+are not carried forward by the S corporation.                     exempt entity during the tax year. See Regulations section
+                                                                  1.163(j)-6(m)(3).
+   See the Instructions for Form 1120-S for how to report         • Any business interest expense that is treated in the
+the excess taxable income and the excess business                 current tax year, as paid or accrued under the transition
+interest income to the shareholders.                              rule of regulation for trading partnerships. See
+Schedule A—Summary of Partner’s                                   Regulations section 1.163(j)-6(c)(3).
+                                                                  Line 43, column (i). Current year excess business in-
+Section 163(j) Excess Items                                       terest expense carryforward. Columns 43(e) minus (h),
+Any taxpayer that is required to complete Part I and is a         less any excess business interest expense that previously
+partner in a partnership that is subject to the section 163(j)    reduced partner basis that you are required to make a
+limitation must complete Schedule A before completing             basis adjustment to upon disposition of partnership
+Part I. For a foreign person that is not a relevant foreign       interest. See Regulations section 1.163(j)-6(h)(3).
+corporation with an interest in a partnership engaged in a
+U.S. trade or business, the amount of excess items is             Line 44, column (f). Total current year excess taxable
+limited to ECI. For such foreign partners, report on              income. If the partner is subject to the section 163(j)
+Schedule A only the ECI portion of the excess section             limitation, add the amounts entered on line 43, column (f),
+163(j) amounts and attach a statement showing how the
+
+12                                                                                  Instructions for Form 8990 (Rev. 12-2025)
+for all partnerships listed. Enter this total amount on Part I,      Lines 1 through 7 of Worksheet A are taken from the
+line 14.                                                          partnership’s Form 8990, which it must complete first.
+                                                                  Lines 8 through 10 reflect the manner in which the
+Line 44, column (g). Total current year excess busi-
+                                                                  partnership allocated its ATI, business interest income,
+ness interest income. For the partners subject to the
+                                                                  and business interest expense to its partners. Only items
+section 163(j) limitation, add the amounts entered on
+                                                                  that were taken into account in lines 1 through 3 are taken
+line 43, column (g), for all partnerships listed. Combine
+this total amount with Schedule B, line 46, column (d), and       into account in lines 8 through 10. As a result, section
+                                                                  743(b) adjustments, section 704(c) remedial allocations,
+enter the total on Part I, line 24.
+                                                                  allocations of investment income and expense, and
+Line 44, column (h). Total excess business interest               amounts determined for the partner under Regulations
+expense treated as paid or accrued. For the partners              section 1.882-5 are not taken into account in lines 8
+subject to the section 163(j) limitation, add the amounts         through 10. See Regulations section 1.163(j)-6(f)(2)(ii) for
+entered on line 43, column (h), for all partnerships listed.      the definitions of “allocable ATI” (line 8), “allocable
+Enter this total amount on Part I, line 3. For partners not       business interest income” (line 9), and “allocable business
+subject to the section 163(j) limitation, include this amount     interest expense” (line 10). All of the information
+on Part I, line 30.                                               necessary to complete the rest of Worksheets A and B is
+                                                                  contained in lines 1 through 10. See the Instructions for
+Schedule B—Summary of S                                           Form 1065 for how the partnership reports the excess
+Corporation Shareholder’s Excess                                  business interest expense, excess taxable income, and
+                                                                  excess business interest income to the partners.
+Taxable Income and Excess Business
+                                                                      The calculation in Regulations sections 1.163(j)-6(f)(2)
+Interest Income                                                   (i) through (xi) is solely for determining each partner’s
+Any taxpayer that is required to complete Part I and is a         allocable share of deductible business interest expense,
+shareholder in an S corporation that is subject to the            excess business interest expense, excess taxable income,
+section 163(j) limitation must complete Schedule B before         and excess business interest income. Accordingly, no rule
+completing Part I.                                                set forth in Regulations section 1.163(j)-6(f)(2) prohibits a
+                                                                  partnership from making an allocation to a partner that is
+   On line 45, enter the amount of current year excess            otherwise permitted under section 704 and the regulations
+taxable income in column (c) and current year excess              thereunder.
+business interest income in column (d), reported to the
+shareholder on Schedule K-1 for each S corporation.               Worksheet C—Stand-Alone
+Line 46, column (c). Total current year excess taxable            Applicable CFC/CFC Group Safe
+income. Add the amounts entered on line 45, column (c),
+for all S corporations listed. Enter this total amount on Part    Harbor Election
+I, line 15.                                                       Worksheet C is used to determine eligibility for the
+                                                                  safe-harbor election under Regulations section
+Line 46, column (d). Total current year excess busi-
+                                                                  1.163(j)-7(h). Fill out Section 1 to indicate the type of
+ness interest income. Add the amounts entered on
+                                                                  election. Sections 2, 3, 4, and 5 determine eligibility. If the
+line 45, column (d), for all S corporations listed. Combine
+                                                                  safe-harbor election is made for a stand-alone applicable
+this total amount with Schedule A, line 44, column (g) and
+                                                                  CFC, the U.S. shareholders that file Form 8990 for the
+enter the total on Part I, line 24.
+                                                                  stand-alone applicable CFC must attach Worksheet C to
+Worksheet A—Determination of Each                                 their tax returns together with the Form 8990 of the
+                                                                  stand-alone applicable CFC and complete Part I of the
+Partner’s Deductible Business                                     stand-alone applicable CFC’s Form 8990 in accordance
+Interest Expense and Section 163(j)                               with these instructions for Worksheet C. If the safe-harbor
+                                                                  election is made for a CFC group, the U.S. shareholders
+Excess Items and Worksheet                                        that file the CFC group’s Form 8990 must attach
+B—Determination of Each Partner’s                                 Worksheet C to their tax return together with the CFC
+                                                                  group’s Form 8990 and complete Part I of the CFC group’s
+Relevant Section 163(j) Items                                     Form 8990 in accordance with these instructions for
+The Regulations provide guidance regarding how a                  Worksheet C.
+partnership subject to the section 163(j) limitation must
+allocate its deductible business interest expense and                Complete Worksheet C before completing Part I of
+section 163(j) excess items, if any, among its partners.          Form 8990. Complete lines A through D of Form 8990 in
+The Regulations provide that deductible business interest         accordance with the instructions discussed earlier in
+expense and section 163(j) excess items must be                   Specific Instructions and complete the remainder of Form
+allocated in accordance with the 11-step computation              8990 in accordance with the instructions below. If a
+shown in Worksheets A and B. See Regulations section              safe-harbor election is made, Schedules A and B should
+1.163(j)-6(f). The partnership should use Worksheets A            not be completed.
+and B in these instructions and is responsible for keeping           A safe-harbor election may be made only for a
+records that compute the allocation. Partnerships that            stand-alone applicable CFC or for a CFC group. Thus, for
+allocate all section 163(j) items in step 2 proportionately       example, it may not be made for an applicable CFC that is
+do not need to use Worksheets A and B.                            a specified group member if a CFC group election is not in
+
+Instructions for Form 8990 (Rev. 12-2025)                                                                                     13
+effect, and it may not be made for any CFC group member        Line 5. Thirty percent of QTTI. Multiply QTTI from line 4
+unless it is made with respect to the CFC group as a           by 30% (0.30).
+whole.
+                                                               General instructions for lines 6 through 9. The
+   For purposes of the safe-harbor election, all items must    amounts on lines 6 through 9 are determined based on
+be determined using the U.S. dollar. If business interest      the amounts that would be included and deducted by a
+income, business interest expense, or any items that are       hypothetical domestic corporation if the domestic
+taken into account in computing QTTI are maintained in a       corporation had a tax year ending on the last date of the
+currency other than the U.S. dollar, then those items must     tax year of the stand-alone applicable CFC (or specified
+be translated into the U.S. dollar using the average           period of the CFC group), it wholly owned the stand-alone
+exchange rate for the tax year (or specified year, as          applicable CFC throughout the CFC’s tax year (or wholly
+applicable).                                                   owned each CFC group member throughout the CFC
+Line A. Stand-alone election. Check the box if the             group member’s specified tax year), it did not own any
+election is made for a stand-alone applicable CFC. A           assets other than stock in the stand-alone applicable CFC
+stand-alone applicable CFC is an applicable CFC that is        (or CFC group members), and it had no other items of
+not a specified group member and therefore not eligible to     income, gain, deduction, or loss. Additionally, the amounts
+be a CFC group member.                                         on lines 6 through 9 are determined by taking into account
+                                                               any elections that are made with respect to the applicable
+Line B. CFC group election. Check the box if the               CFC(s), including under Regulations section 1.954-1(d)(5)
+election is made for a CFC group.                              (relating to the subpart F high-tax exception) and
+Line C. If a CFC group election has been made, for the         Regulations section 1.951A-2(c)(7)(viii) (relating to the
+specified period, does any CFC group member have any           GILTI high-tax exclusion). These amounts are also
+pre-group disallowed business interest expense                 determined without regard to any section 163(j) limitation
+carryforward? If yes, the CFC group is not eligible for the    on business interest expense and without regard to any
+safe-harbor.                                                   disallowed business interest expense carryovers. In
+                                                               addition, those amounts are determined by only taking
+Line 1. Business interest income. Enter the                    into account items of the applicable CFC(s) that are
+stand-alone applicable CFC’s business interest income if       properly allocable to a non-excepted trade or business
+a stand-alone election is being calculated. Enter the CFC      under Regulations section 1.163(j)-10. See Regulations
+group’s business interest income if a CFC group election       section 1.163(j)-7(h)(3).
+is being calculated. Also enter the amount from line 1 on
+Form 8990, line 25.                                            Line 6. Section 951(a)(1)(A) amount. Include on line 6
+                                                               amounts that would be includable by the hypothetical
+Line 2. Business interest expense. Enter the                   domestic corporation under section 951(a)(1)(A).
+stand-alone applicable CFC’s business interest expense if
+a stand-alone election is being calculated. Enter the CFC      Line 7. Section 951A(a) amount. Include on line 7
+group’s business interest expense if a CFC group election      amounts that would be includable by the hypothetical
+is being calculated. Also enter the amount from line 2 on      domestic corporation under section 951A(a).
+Form 8990, line 5.                                             Line 8. Section 250 amount. Include on line 8 any
+Line 3. Subtract line 2 from line 1. If the amount on          deduction that would be allowed for the hypothetical
+line 3 is greater than or equal to zero, the safe-harbor       domestic corporation under section 250(a)(1)(B)(i).
+requirement is met if all other eligibility requirements are   Line 9. Section 245A amount. Include on line 9 any
+met. Check “Yes” on Form 8990, line D. Skip lines 4            deduction that would be allowed for the hypothetical
+through 14, and continue to line 15. Leave the remaining       domestic corporation under section 245A (by reason of
+lines of Form 8990, Part I (all lines other than line 5 and    section 964(e)(4)).
+line 25) blank.
+                                                               Line 10. Total eligible amount. Combine lines 6
+   If the amount on line 3 is less than zero, continue to
+                                                               through 9. Enter the amount on Form 8990, line 22.
+line 4.
+                                                               Line 11. Thirty percent of eligible amount. Multiply the
+Line 4. Qualified tentative taxable income (QTTI).
+                                                               eligible amount (line 10) by 30% (0.30).
+Enter the stand-alone applicable CFC’s QTTI if a
+stand-alone election is being calculated. Enter the CFC        Line 12. Enter the lesser of line 5 or line 11.
+group’s QTTI if a CFC group election is being calculated.      Line 13. Business interest expense. Enter the amount
+Also enter the amount from line 4 on Form 8990, line 6.        from line 2.
+   With respect to a stand-alone applicable CFC, QTTI
+                                                               Line 14. Subtract line 13 from line 12. If the amount on
+means an applicable CFC’s tentative taxable income for
+                                                               line 14 is greater than or equal to zero, the safe-harbor
+the tax year, determined by taking into account only items
+                                                               requirement is met if all other eligibility requirements are
+properly allocable to a non-excepted trade or business.
+                                                               met. Check “Yes” box on Form 8990, line D, and continue
+With respect to a CFC group, QTTI means the sum of
+                                                               to line 15. Leave the remaining lines of Form 8990, Part I
+each CFC group member’s tentative taxable income for
+                                                               (all lines other than lines 5, 6, 22, and 25) blank.
+the specified tax year, determined by taking into account
+only items properly allocable to a non-excepted trade or           If the amount on line 14 is less than zero, the
+business. See Regulations section 1.163(j)-7(h)(4).            safe-harbor eligibility requirements are not met.
+
+
+
+14                                                                               Instructions for Form 8990 (Rev. 12-2025)
+Line 15. Name(s) of all designated U.S. persons.              Average Annual Gross Receipts Worksheet Per
+Enter the name(s) of all designated U.S. persons. Attach      Section 448(c)
+an additional statement if necessary.
+                                                                                               Column A    Column B    Column C
+Line 16. Taxpayer identification number(s) of line 15.                                            1st         2nd         3rd
+Enter the taxpayer identification number(s) for all persons                                    preceding   preceding   preceding
+listed on line 15. Attach an additional statement if                                            tax year    tax year    tax year
+necessary.                                                    1.Annual gross receipts          $           $           $
+Line 17. Tax year or specified period (as applicable).        2.Plus annual gross receipts of
+Enter the stand-alone applicable CFC’s tax year or the          related entities per
+                                                                aggregate rules               $            $           $
+CFC group’s specified period to which the election relates.
+                                                              3.Total annual gross receipts    $           $           $
+                                                              4.Average annual gross
+                                                                receipts (line 3 columns A +
+                                                                B + C divided by 3)            $
+
+
+
+
+Instructions for Form 8990 (Rev. 12-2025)                                                                                      15
+ Determination of Each Partner’s Deductible Business Interest Expense
+ and Section 163(j) Excess Items—Worksheet A                                                                      Keep for Your Records
+
+     Before you begin: ✓ Complete Form 8990 before beginning this worksheet.
+                       ✓ This worksheet provides space for up to three partners. If there are more than three partners, use more than
+                                       one worksheet. The total column should reconcile to amounts for all partners.
+                                                                                 Partner 1        Partner 2            Partner 3       Total
+     Step 1: Partnership‐level calculation required by section 163(j)(4)(A).
+      1. Partnership’s Adjusted Taxable Income (ATI) (Form 8990, line 22)
+      2. Partnership’s business interest income (Form 8990, line 25) .
+      3. Partnership’s business interest expense (Form 8990, subtract
+         line 4 from line 5)  . . . . . . . . . . . . .
+      4. Partnership’s deductible business interest expense (Form 8990,
+         subtract line 4 from line 30) . . . . . . . . . . .
+      5. Partnership’s excess business interest expense (Form 8990, line 32)
+      6. Partnership’s excess taxable income (Form 8990, line 36)         .
+      7. Partnership’s excess business interest income (Form 8990, line 37)
+     Step 2: Determine each partner’s section 163(j) items.
+      8. Partner’s allocable ATI. See instructions . . . . . . .
+      9. Partner’s allocable business interest income. See instructions
+     10. Partner’s allocable business interest expense. See instructions
+     Step 3: Partner‐level comparison of business interest income and business interest expense.
+     11. Subtract line 10 from line 9. (If zero or less, enter ‐0‐.) .   .   .
+     12. Subtract line 9 from line 10. (If zero or less, enter ‐0‐.) .   .   .
+     Step 4: Matching partnership and aggregate partner excess business interest income.
+     13. Divide line 11 by the line 11 total column amount. (If the total
+         column equals zero, enter ‐0‐.)     . . . . . . . . .                               %                %                    %           %
+     14. Multiply line 13 by the line 12 total column amount . .         .   .
+     15. Subtract line 14 from line 11. (If zero or less, enter ‐0‐.)    .   .
+     Step 5: Remaining business interest expense determination.
+     16. Divide line 12 by the line 12 total column amount. (If the total
+         column equals zero, enter ‐0‐.)     . . . . . . . . .                               %                %                    %           %
+     17. Multiply line 16 by the line 11 total column amount . .         .   .
+     18. Subtract line 17 from line 12. (If zero or less, enter ‐0‐.)    .   .
+     Step 6: Determination of final allocable ATI.
+     19. If line 8 is greater than or equal to $0, enter the amount from
+         line 8. Otherwise, enter ‐0‐ . . . . . . . . . . .
+     20. If line 8 is less than $0, enter the absolute value of line 8.
+         Otherwise, enter ‐0‐ . . . . . . . . . . . . .
+     21. Divide line 19 by the line 19 total column amount. (If the total
+         column equals zero, enter ‐0‐.)     . . . . . . . . .                               %                %                    %           %
+     22. Multiply line 21 by the line 20 total column amount . .         .   .
+     23. Subtract line 22 from line 19. (If zero or less, enter ‐0‐.)    .   .
+     Step 7: Partner‐level comparison of the applicable percentage of ATI and remaining business interest expense.
+     24. Multiply line 23 by the applicable percentage (defined earlier)
+     25. Subtract line 18 from line 24. (If zero or less, enter ‐0‐.) . .
+     26. Subtract line 24 from line 18. (If zero or less, enter ‐0‐.) . .
+
+
+
+
+16                                                                                                     Instructions for Form 8990 (Rev. 12-2025)
+  Determination of Each Partner’s Deductible Business Interest Expense
+  and Section 163(j) Excess Items—Worksheet A—Continued                                                                 Keep for Your Records
+                                                                                 Partner 1              Partner 2         Partner 3              Total
+   Step 8: Partner priority right to ATI capacity excess determination.
+  27a. Is the line 5 total column amount greater than zero?     Yes        No
+  27b. Is the line 20 total column amount greater than zero?    Yes        No
+  27c. Is the line 26 total column amount greater than zero?    Yes        No
+  27d. Are lines 27(a), 27(b), and 27(c) all “Yes”? .           Yes        No
+  28. If line 27d is “No,” enter the amount from line 25. Otherwise,
+       complete Worksheet B . . . . . . . . . . . .
+  29. If line 27d is “No,” enter the amount from line 26. Otherwise,
+      complete Worksheet B . . . . . . . . . . . .
+  30. If line 27d is “No,” enter -0-. Otherwise, complete Worksheet B
+   Step 9: Matching partnership and aggregate partner excess taxable income.
+  31. Divide line 28 by the line 28 total column amount. (If the total
+      column equals zero, enter -0-.)     . . . . . . . . .                                  %                      %                 %                  %
+  32. Multiply line 31 by the line 29 total column amount . .          .   .
+  33. Subtract line 32 from line 28. (If zero or less, enter -0-.)     .   .
+   Step 10: Match partnership and aggregate partner excess business interest expense.
+  34. Divide line 29 by the line 29 total column amount. (If the total
+      column equals zero, enter -0-.)     . . . . . . . . .                                  %                      %                 %                  %
+  35. Multiply line 34 by the line 28 total column amount . . . .
+  36. If line 30 is greater than zero, enter the amount from line 30.
+      Otherwise, subtract line 35 from line 29. (If zero or less, enter -0-.)
+   Step 11: Final section 163(j) excess item and deductible business interest expense allocation.
+  37. Partner’s deductible business interest expense. Subtract line
+      36 from line 10 . . . . . . . . . . . . . .
+  38. Partner’s excess business interest expense. Enter the amount
+      from line 36 . . . . . . . . . . . . . . .
+  39. Partner’s excess taxable income. Multiply line 33 by (10/3) .
+  40. Partner’s excess business interest income. Enter the amount
+      from line 15 . . . . . . . . . . . . . . .
+   Note.
+    • Line 3: Equals the partnership’s business interest expense, not taking into account floor plan financing interest expense. From Form 8990,
+    subtract line 4 from line 5.
+    • Line 4: Equals the partnership’s deductible business interest expense, not taking into account floor plan financing interest expense. From
+    Form 8990, subtract line 4 from line 30.
+    • Line 8: Equals “allocable ATI” as defined in Proposed Regulations section 1.163(j)‐6(f)(2)(ii).
+    • Line 9: Equals “allocable business interest income” as defined in Proposed Regulations section 1.163(j)‐6(f)(2)(ii). The line 9 total column
+    amount must equal the line 2 total column amount.
+    • Line 10: Equals “allocable interest expense” as defined in Proposed Regulations section 1.163(j)‐6(f)(2)(ii). The line 10 total column amount
+    must equal the line 3 total column amount.
+    • Line 23: The line 23 total column amount must equal the line 1 total column amount.
+    • Line 27d: If line 27d is “Yes,” the partnership must complete Worksheet B (in order to get the correct values for lines 28–30) before proceeding
+    to line 31 of Worksheet A.
+    • Line 37: The line 37 total column amount must equal the line 4 total column amount.
+    • Line 38: The line 38 total column amount must equal the line 5 total column amount.
+    • Line 39: The line 39 total column amount must equal the line 6 total column amount.
+    • Line 40: The line 40 total column amount must equal the line 7 total column amount.
+    • The lines 13, 16, 21, 31, and 34 total column amount must equal 100% or zero.
+
+
+
+
+Instructions for Form 8990 (Rev. 12-2025)                                                                                                                    17
+     Determination of Each Partner’s Relevant
+     Section 163(j) Items—Worksheet B                                                                          Keep for Your Records
+
+     Before you begin: ✓ Complete “Determination of Each Partner’s Deductible Business Interest Expense and Section 163(j)
+                                    Excess Items—Worksheet A” before beginning this worksheet.
+                                 ✓ This worksheet provides space for up to three partners. If there are more than three partners, use more than
+                                    one worksheet. The total column should reconcile to amounts for all partners.
+
+     Step 8A: Who must complete this worksheet.
+      1. If the answer to line 27(d) of Worksheet A is “Yes,” complete
+         this worksheet.
+                                                                            Partner 1          Partner 2            Partner 3         Total
+     Step 8B: Determine whether to perform Step 8C or Step 8D.
+      2. Subtract line 23 of Worksheet A from line 19 of Worksheet A .
+      3. Multiply line 2 of Worksheet B by the applicable percentage .
+      4. If line 26 of Worksheet A is greater than zero, enter the amount
+         from line 3 of Worksheet B. Otherwise, enter -0- . . . .
+      5. Enter the smaller of line 4 of Worksheet B or line 26 of
+         Worksheet A . . . . . . . . . . . . . . .
+      6. If the line 25 total column amount of Worksheet A is greater
+         than or equal to the line 5 total column amount of Worksheet
+         B, complete Step 8C of Worksheet B. If the line 5 total column
+         amount of Worksheet B is greater than the line 25 total column
+         amount of Worksheet A, complete Step 8D of Worksheet B.
+     Step 8C: Calculate lines 28, 29, and 30 of Worksheet A. Return to and complete Worksheet A after Step 8C.
+      7. Divide line 25 of Worksheet A by the line 25 total column
+         amount of Worksheet A. (If the line 25 total column amount of
+         Worksheet A equals zero, enter -0-.) . . . . . . . .                           %                  %                    %                 %
+      8. Multiply line 7 of Worksheet B by the line 5 total column
+         amount of Worksheet B    . . . . . . . . . . .
+      9. Subtract line 8 of Worksheet B from line 25 of Worksheet A.
+         Enter the amount(s) on line 28 of Worksheet A . . . . .
+     10. Subtract line 5 of Worksheet B from line 26 of Worksheet A.
+         Enter the amount(s) on line 29 of Worksheet A . . . . .
+     11. Enter ‐0‐ on line 30 of Worksheet A.
+     Step 8D: Calculate lines 28, 29, and 30 of Worksheet A. Return to and complete Worksheet A after Step 8D.
+     12. Divide line 4 of Worksheet B by the line 4 total column amount
+         of Worksheet B. (If the line 4 total column amount of
+         Worksheet B equals zero, enter -0-.) . . . . . . . .
+     13. Multiply line 12 of Worksheet B by the line 25 total column
+         amount of Worksheet A     . . . . . . . . . . .
+     14. If line 4 of Worksheet B is greater than zero, enter the amount
+         from line 26 of Worksheet A. Otherwise, enter -0- . . . .
+     15. Subtract line 14 of Worksheet B from line 13 of Worksheet B.
+         (If zero or less, enter -0-.) Enter the amount(s) on line 28 of
+         Worksheet A . . . . . . . . . . . . . . .
+     16. Subtract line 13 of Worksheet B from line 14 of Worksheet B.
+         (If zero or less, enter -0-.) Enter the amount(s) on line 29 of
+         Worksheet A . . . . . . . . . . . . . . .
+     17. If line 4 of Worksheet B equals zero, enter the amount from
+         line 26 of Worksheet A. Otherwise, enter -0-. Enter the
+         amount(s) on line 30 of Worksheet A . . . . . . . .
+
+
+
+
+18                                                                                                  Instructions for Form 8990 (Rev. 12-2025)
+    Stand-Alone Applicable CFC/CFC Group Safe Harbor Election
+    Section 163(j) Items—Worksheet C                                                                                                             Attach to Your Return
+
+
+    Name of foreign entity
+    Employer identification number, if any                                                         Reference ID number
+
+    Section 1—Type of Safe-Harbor Election
+    A. Stand-alone election                   B. CFC group election
+    C. If CFC group election has been made, for the specified period, does any CFC group member have any pre-group disallowed
+    business interest expense carryforward?     Yes      No
+    If “Yes,” STOP; the CFC group is not eligible for safe-harbor.
+
+    Section 2—Business Interest Income Safe-Harbor Calculation
+
+      1 Business interest income       .   .   .   .   .   .   .   .   .   .   .   .   .   .   .    .       1
+
+      2 Business interest expense .        .   .   .   .   .   .   .   .   .   .   .   .   .   .    .       2
+
+     3 Subtract line 2 from line 1. See instructions . . . . . .                       .   .   .    .   .    .   .       .   .   .   .   .   .      3
+    Section 3—Qualified Tentative Taxable Income Calculation
+
+      4 Qualified tentative taxable income         .   .   .   .   .   .   .   .   .   .   .   .    .       4
+
+     5 Multiply qualified tentative taxable income (line 4) by the applicable percentage. See instructions                                   .      5
+    Section 4—Eligible Amount Calculation
+
+      6 Section 951(a)(1)(A) amount        .   .   .   .   .   .   .   .   .   .   .   .   .   .    .       6
+
+      7 Section 951A(a) amount         .   .   .   .   .   .   .   .   .   .   .   .   .   .   .    .       7
+
+      8 Section 250 amount .       .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .    .       8        (                       )
+
+      9 Section 245A amount        .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .    .       9        (                       )
+
+     10 Total eligible amount. Combine lines 6 through 9               .   .   .   .   .   .   .    .       10
+
+    11 Multiply eligible amount (line 10) by the applicable percentage. See instructions .                               .   .   .   .   .   .      11
+    Section 5—Safe-Harbor Calculation
+
+     12 Enter the lesser of line 5 or line 11      .   .   .   .   .   .   .   .   .   .   .   .    .   .    .   .       .   .   .   .   .   .      12
+
+     13 Business interest expense .        .   .   .   .   .   .   .   .   .   .   .   .   .   .    .   .    .   .       .   .   .   .   .   .      13
+
+    14 Subtract line 13 from line 12. See instructions . . . . . . . . . . . . . .                                               .   .   .   .      14
+    Section 6—Name and Taxpayer Identification Number of All Designated U.S. Persons
+
+     15 Name(s) of all designated U.S. persons
+
+     16 Taxpayer identification number(s) of persons on line 15
+
+     17 Taxable year or specified period (as applicable)
+
+
+
+
+Instructions for Form 8990 (Rev. 12-2025)                                                                                                                                19
+                                                                The time needed to complete and file this form will vary
+Paperwork Reduction Act Notice. We ask for the
+                                                             depending on individual circumstances. The estimated
+information on this form to carry out the Internal Revenue
+                                                             burden for business taxpayers filing this form is approved
+laws of the United States. You are required to give us the
+                                                             under OMB control number 1545-0123 and is included in
+information. We need it to ensure that you are complying
+                                                             the estimates shown in the instructions for their business
+with these laws and to allow us to figure and collect the
+                                                             income tax return.
+right amount of tax.
+   You are not required to provide the information              If you have comments concerning the accuracy of
+requested on a form that is subject to the Paperwork         these time estimates or suggestions for making this form
+Reduction Act unless the form displays a valid OMB           simpler, we would be happy to hear from you. See the
+control number. Books or records relating to a form or its   instructions for the tax return with which this form is filed.
+instructions must be retained as long as their contents
+may become material in the administration of any Internal
+Revenue law. Generally, tax returns and return information
+are confidential, as required by section 6103.
+
+
+
+
+20                                                                              Instructions for Form 8990 (Rev. 12-2025)
+

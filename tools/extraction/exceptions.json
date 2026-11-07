@@ -60,5 +60,32 @@
    "36": "Tax computation worksheet page: PDFKit reads the worksheet's cell text 'enter ... 1' four times where poppler does not; these worksheets are read from the web edition ny_it201i-html, whose text holds every word of the page (the HTML check passes)",
    "38": "Tax computation worksheet page: PDFKit reads the worksheet's cell text 'enter ... 1' four times where poppler does not; these worksheets are read from the web edition ny_it201i-html, whose text holds every word of the page (the HTML check passes)"
   }
+ },
+ "f1098e": {
+  "pdfkit": {
+   "2": "Copy A banner 'Do Not Cut or Separate Forms on This Page', printed letter-spaced: poppler reads it in letter fragments ('Se p a r a te F o rm s') where PDFKit reads whole words; the same text, no text lost"
+  }
+ },
+ "f982": {
+  "pdfkit": {
+   "1": "Lines 7 and 8: poppler reads the line number run on to its first word ('7Applied', '8Applied') where PDFKit reads them separately; the same characters, no text lost"
+  }
+ },
+ "ny_it203i": {
+  "pdfkit": {
+   "41": "Tax computation worksheet page: poppler reads each worksheet's line number run on to its first word ('1Enter') where PDFKit reads '1' and 'Enter' separately, four times; the same characters, no text lost",
+   "43": "Tax computation worksheet page: poppler reads each worksheet's line number run on to its first word ('1Enter') where PDFKit reads '1' and 'Enter' separately, four times; the same characters, no text lost",
+   "45": "Tax computation worksheet page: poppler reads each worksheet's line number run on to its first word ('1Enter') where PDFKit reads '1' and 'Enter' separately, four times; the same characters, no text lost"
+  }
+ },
+ "ny_it230": {
+  "pdfkit": {
+   "2": "Multiple recipients of lump-sum distribution worksheet: PDFKit reads the worksheet's heading twice (run together, 'worksheetMultiple'), poppler once; the only words poppler lacks are the repeated heading"
+  }
+ },
+ "ny_it370": {
+  "pdfkit": {
+   "1": "PDFKit reads four bare '0' characters (two lines '0 0', with no other text) that poppler does not; no printed word is involved"
+  }
  }
 }

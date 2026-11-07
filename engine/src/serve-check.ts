@@ -138,9 +138,9 @@ export async function serveChecks(): Promise<void> {
     const names = docNames(config.tax_year);
     const byQuestion = questionForms(config, names.forms);
     const formsOf = (input: string) => byQuestion.get(input)!.map((f) => `${f.designation}${f.id === null ? "?" : f.purpose ? "+" : ""}`);
-    ok(isDeepStrictEqual(formsOf("scope.other_line16"), ["Form 1040", "Form 8814?", "Form 8615?", "Form 8621?", "Form 8960+", "Form 4972?", "Form 8978?", "Schedule J?"]),
-      `scope.other_line16 names Form 8814 and Schedule J, which the catalogs lack, and Form 8960, glossed: ${formsOf("scope.other_line16")}`);
-    ok(isDeepStrictEqual(formsOf("interest.penalty"), ["Form 1099-INT+", "Form 1099-OID?", "Schedule 1 (Form 1040)+"]), `a bare "Schedule 1" is Schedule 1 (Form 1040), the catalogs' only Schedule 1: ${formsOf("interest.penalty")}`);
+    ok(isDeepStrictEqual(formsOf("scope.other_line16"), ["Form 1040", "Form 8814+", "Form 8615+", "Form 8621", "Form 8960+", "Form 4972+", "Form 8978+", "Schedule J?"]),
+      `scope.other_line16 names Schedule J, which the catalogs lack, Form 8621, held without a purpose, and Forms 8814 and 8960, glossed: ${formsOf("scope.other_line16")}`);
+    ok(isDeepStrictEqual(formsOf("interest.penalty"), ["Form 1099-INT+", "Form 1099-OID+", "Schedule 1 (Form 1040)+"]), `a bare "Schedule 1" is Schedule 1 (Form 1040), the catalogs' only Schedule 1: ${formsOf("interest.penalty")}`);
     ok(formsOf("gift.special").includes("Schedule K-1?"), "a bare Schedule K-1, of three parent forms in the catalogs, stays unresolved");
     ok(isDeepStrictEqual(formsOf("ny_it2.state_withheld"), ["Form W-2", "Form IT-2+"]), `a New York question names Form W-2 and Form IT-2: ${formsOf("ny_it2.state_withheld")}`);
     // As served: only the forms the catalogs hold, each purpose the catalog's own.

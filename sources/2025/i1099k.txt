@@ -1,0 +1,271 @@
+Instructions for
+                                                                                                  Department of the Treasury
+                                                                                                  Internal Revenue Service
+
+Form 1099-K
+(Rev. March 2024)
+Payment Card and Third Party Network Transactions
+Section references are to the Internal Revenue Code unless         the contractual obligation to make payment to participating
+otherwise noted.                                                   payees in settlement of payment card transactions; or a
+                                                                   TPSO, that is, the central organization that has the
+Future Developments                                                contractual obligation to make payments to participating
+For the latest information about developments related to           payees of third party network transactions.
+Form 1099-K and its instructions, such as legislation enacted
+after they were published, go to IRS.gov/Form1099K.                Note. Healthcare networks, in-house accounts payable
+                                                                   departments, and automated clearing houses do not qualify
+Reminders                                                          as TPSOs and do not report under section 6050W.
+In addition to these specific instructions, you should also use       A participating payee is any person, including any
+the current General Instructions for Certain Information           governmental unit (and any agency or instrumentality of a
+Returns. Those general instructions include information            governmental unit) who accepts a payment card, or any
+about the following topics.                                        account number or other indicia associated with a payment
+• Who must file.                                                   card, as payment or accepts payment from a TPSO in
+• When and where to file.                                          settlement of a third party network transaction.
+• Electronic reporting.
+• Corrected and void returns.                                          A payment card is any card, including any stored-value
+• Statements to recipients.                                        card (having prepaid value, including gift cards), issued
+• Taxpayer identification numbers (TINs).                          according to an agreement or arrangement that provides for
+• Backup withholding.                                              all of the following.
+• Penalties.                                                       • One or more issuers of the cards.
+• Other general topics.                                            • A network of persons unrelated to each other, and to the
+                                                                   issuer, who agree to accept the cards as payment.
+   You can get the General Instructions for Certain
+Information Returns at IRS.gov/1099GeneralInstructions or          • Standards and mechanisms for settling the transactions
+                                                                   between the merchant acquiring entities and the persons
+go to IRS.gov/Form1099K.
+                                                                   who agree to accept the cards as payment.
+Online fillable Copies 1, B, and 2. To ease statement
+furnishing requirements, Copies 1, B, and 2 of Form 1099-K            A third party payment network is any agreement or
+are fillable online in a PDF format, available at IRS.gov/         arrangement that provides for the following.
+Form1099K. You can complete these copies online for                • The establishment of accounts with a central organization
+furnishing statements to recipients and for retaining in your      by a substantial number of providers of goods or services
+own files.                                                         who are unrelated to the organization and who have agreed
+                                                                   to settle transactions for the provision of the goods or
+Reporting of third-party network transactions. For                 services to purchasers according to the terms of the
+returns for calendar years beginning after December 31,            agreement or arrangement.
+2022, a third party settlement organization (TPSO) is              • Standards and mechanisms for settling the transactions.
+required to report payments in settlement of third party           • Guarantee of payment to the persons providing goods or
+network transactions with any participating payee that exceed      services (participating payees) in settlement of transactions
+a minimum threshold of $600 in aggregate payments,                 with purchasers pursuant to the agreement or arrangement.
+regardless of the number of such transactions.                     A third party payment network does not include any
+Third party reporting. For more information on third party         agreement or arrangement that provides for the issuance of
+reporting, go to IRS.gov/tax-professionals/third-party-            payment cards.
+reporting-information-center-information-documents.                   “Unrelated” means any person who is not related to
+                                                                   another person within the meaning of section 267(b) using
+Specific Instructions                                              the rules of sections 267(c) and (e)(3), and 707(b)(1).
+A payment settlement entity (PSE) must file Form 1099-K,               For more information, go to IRS.gov/newsroom/form-1099-
+Payment Card and Third Party Network Transactions, for             k-frequently-asked-questions-filing.
+payments made in settlement of reportable payment                     Exception for payments made outside the United
+transactions for each calendar year. A PSE makes a payment         States by U.S. payers or middlemen to offshore
+in settlement of a reportable payment transaction, that is, any    accounts after 2010. For payments under contractual
+payment card or third party network transaction, if the PSE        obligations entered into after December 31, 2010, a PSE that
+submits the instruction to transfer funds to the account of the    is a person as described in Regulations section 1.6049-5(c)
+participating payee to settle the reportable payment               (5) as a U.S. payer or U.S. middleman (U.S. payer) is not
+transaction.                                                       required to file Form 1099-K for payments to a participating
+   A PSE is a domestic or foreign entity that is a merchant        payee with a foreign address as long as, prior to payment, the
+acquiring entity, that is, a bank or other organization that has   PSE has documentation on which the PSE may rely to treat
+
+Dec 4, 2023                                               Cat. No. 54721E
+the payment as made to a foreign person according to               materially modified on or after January 1, 2011, a PSE that is
+Regulations section 1.1441-1(e)(1)(ii) (substituting “payer” for   a U.S. payer or U.S. middleman is not required to file a Form
+the term “withholding agent” and without regard to the             1099-K for a payment to a participating payee with a foreign
+limitations to amounts subject to withholding requirements of      address as long as the payer does not know or have reason
+chapter 3 of the Code and its regulations).                        to know that the participating payee is a U.S. person.
+    A PSE that is a U.S. payer may need to file Form 1099-K            A foreign address means any address that is not within the
+for payments made outside the United States to an offshore         United States (the States and the District of Columbia).
+account if any of the following apply.                               Exception for payments made by non-U.S. payers or
+• There is a U.S. residential or correspondence address            middlemen to foreign payees. A PSE that is not described
+associated with the participating payee.                           as a U.S. payer or U.S. middleman in Regulations section
+• The PSE has standing instructions to direct the payment to       1.6049-5(c)(5) (non-U.S. payer) is not required to file a Form
+a bank account maintained in the United States.                    1099-K for payment to a participating payee that does not
+• The PSE knows or has reason to know that the                     have a U.S. address as long as the PSE does not know or
+participating payee is a U.S. person.                              have reason to know that the participating payee is a U.S.
+    A PSE is not required to file Form 1099-K for payments         person. If the participating payee has any U.S. address, the
+made outside the United States to an offshore account in the       PSE may treat the participating payee as a foreign person
+circumstances described in the preceding paragraph if the          only if the PSE has documentation on which the PSE may
+PSE does not know that the payee is a U.S. person and the          rely to treat the payment as made to a foreign person
+PSE obtains one of the following from the payee:                   according to Regulations section 1.1441-1(e)(1)(ii).
+• An applicable Form W-8;                                              A PSE that is a non-U.S. payer that has reason to know
+• Documentary evidence establishing the payee’s non-U.S.           but not actual knowledge that a participating payee is a U.S.
+status; or                                                         person will not be required to file Form 1099-K if the PSE
+• A suitable substitute form as described in Notice 2011-71,       obtains from the payee a Form W-8 or documentary evidence
+available at IRS.gov/irb/2011-37_IRB#NOT-2011-71.                  that satisfies the requirements described in Notice 2011-71.
+The W-8 forms (or the suitable substitutes) must be collected          A PSE may accept a substitute form, as described in
+by the PSE no later than 90 days after the date on which the       Notice 2011-71, in lieu of Form W-8BEN so that a
+PSE enters into the contractual obligations with the               participating payee can certify its non-U.S. status.
+participating payee. The W-8 forms (or suitable substitutes)       Documentary evidence, described in Notice 2011-71,
+and documentary evidence may be relied upon only when              submitted to establish the identity of the payee and the status
+the requirements described in Notice 2011-71 are satisfied.        of that person as a foreign person remains valid until the
+    A PSE does not have to file Form 1099-K for payments           earlier of the last day of the third calendar year following the
+made outside the United States (within the meaning of              year in which the documentary evidence is provided to the
+Regulations section 1.6049-5(e)) to an offshore account (as        withholding agent or the day that a change in circumstances
+described in Notice 2012-2, available at IRS.gov/irb/              occurs that makes any information on the documentary
+2012-45_IRB#NOT-2012-2) of a participating payee with only         evidence incorrect.
+a foreign address if the name of the participating payee               A U.S. address is any address that is within the United
+indicates that it is a per se corporation under Regulations        States (the States and the District of Columbia).
+section 301.7701-2(b)(8)(i) and the PSE does not know or
+have reason to know that the participating payee is a U.S.         Nonreportable transactions. The following transactions
+person.                                                            are nonreportable under section 6050W.
+    A PSE may apply the grace period rules under                   • A withdrawal of funds at an automated teller machine
+Regulations section 1.6049-5(d)(2)(ii) for payments to a           (ATM) via payment card, or a cash advance or loan against
+participating payee with only a foreign address without regard     the cardholder's account.
+to whether the amounts paid are described in Regulations           • A check issued in connection with a payment card that is
+section 1.1441-6(c)(2) or are reportable under Code section        accepted by a merchant or other payee.
+6042, 6045, 6049, or 6050N.                                        • Any transaction in which a payment card is accepted as
+                                                                   payment by a merchant or other payee who is related to the
+   Alternative method for PSE that does not maintain
+                                                                   issuer of the payment card.
+account for participating payee. The above exception to
+reporting only applies if the PSE is a U.S. payer making a         Conversion of amounts paid in foreign currency. When
+payment to an account maintained outside the United States         a payment is made or received in a foreign currency, the U.S.
+by the PSE, or, if the PSE does not maintain an account for        dollar amount must be determined by converting the foreign
+the payee, to another financial institution maintaining the        currency into U.S. dollars on the date of transaction at the
+account outside the United States. To apply the exception, for     spot rate (as defined in Regulations section 1.988-1(d)(1)) or
+a PSE that does not maintain an account for the payee, the         according to a reasonable spot rate convention, such as a
+PSE must also reasonably determine that the participating          month-end spot rate or a monthly average spot rate. The
+payee is doing business outside the United States based on         convention must be used consistently for all non-dollar
+all the information obtained or reviewed in connection with        amounts reported and from year to year. The convention
+the establishment or maintenance of the contractual                cannot be changed without the consent of the Commissioner
+relationship with the participating payee (including               or his or her delegate.
+information required to be obtained or reviewed under              Reporting under sections 6041, 6041A, and 6050W.
+procedures required to be established under and compliant          Payments made by payment card or through a third party
+with 31 CFR section 1020.220).                                     payment network after December 31, 2010, that otherwise
+   Exception for payments by U.S. payers to foreign                would be reportable under sections 6041 (payments made in
+payees prior to 2011. For payments under contractual               the course of a trade or business to another person) or
+obligations entered into before January 1, 2011, that are not      6041A(a) (payments of remuneration for services and certain
+
+2                                                                                   Instructions for Form 1099-K (Rev. 03-2024)
+direct sales) and 6050W are reported under section 6050W                  For more information about the requirement to furnish a
+and not section 6041 or 6041A. For purposes of determining             statement to each payee, see part M in the current General
+whether payments are subject to reporting under section                Instructions for Certain Information Returns.
+6050W, rather than section 6041 or 6041A, the de minimis
+threshold, discussed later under Box 1a, is disregarded.               2nd TIN Not. Box
+                                                                       You may enter an “X” in this box if you were notified by the
+Who Must File                                                          IRS twice within 3 calendar years that the payee provided an
+Every PSE or other party which submits instructions to                 incorrect TIN. If you mark this box, the IRS will not send you
+transfer funds to the account of a participating payee, in             any further notices about this account.
+settlement of reportable payment transactions, must file an               However, if you received both IRS notices in the same
+information return (Form 1099-K) with respect to each                  year, or if you received them in different years but they both
+participating payee for that calendar year.                            related to information returns filed for the same year, do not
+   Multiple PSEs. If two or more persons qualify as PSEs for           check the box at this time. For purposes of the
+the same reportable transaction, the PSE that submits the              two-notices-in-3-years rule, you are considered to have
+instruction to transfer funds must file the return. However, the       received one notice and you are not required to send a
+PSE obligated to file may designate another person to file the         second “B” notice to the taxpayer on receipt of the second
+return, including the PSE not making payment, if the parties           notice. See part N in the current General Instructions for
+agree in writing. If the designated person fails to timely file        Certain Information Returns for more information.
+the return, the entity with the responsibility to file is liable for
+any applicable penalties under sections 6721 and 6722.                         For information on the TIN Matching System offered
+   Electronic payment facilitator (EPF). If a PSE contracts             TIP by the IRS, see the current General Instructions for
+with an EPF or other third party to make payments in                           Certain Information Returns.
+settlement of reportable payment transactions on behalf of
+the PSE, the facilitator or other third party must file Form           FILER'S Name, Address, Telephone Number,
+1099-K in lieu of the PSE. The facilitator is not required to          and TIN Boxes
+have any arrangement or agreement with the participating               Enter the name, address (including street address, city or
+payee. Payments need not come from the facilitator's                   town, state or province, country, and ZIP or foreign postal
+account. The facilitator need only submit instructions to              code), and telephone number of the entity with the filing
+transfer funds to the account of the participating payee. The          requirement (payer) in the box in the upper left corner. The
+PSE can file Form 1099-K by designation if the parties agree           telephone number must allow a payee to reach a person
+in writing; however, the designation does not relieve the              knowledgeable about the payments reported on the form.
+facilitator from liability for any applicable penalties under          Enter the TIN (EIN) of the entity with the filing requirement
+sections 6721 and 6722 for failure to comply with the                  (payer) in the top box immediately to the right.
+information reporting requirements.
+   See part O in the current General Instructions for Certain          FILER Checkboxes
+Information Returns for more information on penalties.                 Check the first (top) box in the section immediately below the
+                                                                       FILER'S name, street address, city or town, state or province,
+Aggregated payees. If you receive payments from a PSE                  country, ZIP or foreign postal code, and telephone number
+on behalf of one or more participating payees and you                  box if the entity with the filing requirement (payer) is a PSE.
+distribute such payments to one or more participating                  Check the second (bottom) box if the entity with the filing
+payees, you are:                                                       requirement (payer) is an EPF or other third party.
+• The participating payee with respect to the PSE who sent
+you the payment(s), and                                                   If the entity with the filing requirement (payer) is an EPF or
+• The PSE with respect to the participating payees to whom             other third party, enter the PSE's name and telephone
+you distribute the payments.                                           number in the box above the account number box at the
+                                                                       bottom left of the form. The telephone number must allow a
+   For more information on nominee/middleman reporting,
+                                                                       payee to reach a person knowledgeable about the payments
+see part A in the current General Instructions for Certain
+                                                                       reported on the form.
+Information Returns.
+                                                                       Transactions Reported Checkboxes
+Statements to Payees
+                                                                       Check the first (top) box if you are reporting payment card
+If you are required to file Form 1099-K, you must furnish a
+                                                                       transactions on this form. Check the second (bottom) box if
+statement to the payee.
+                                                                       you are reporting third party network transactions on this
+Truncating recipient’s TIN on payee statements.                        form.
+Pursuant to Regulations section 301.6109-4, all filers of this            If you are reporting payments to the same payee that
+form may truncate a payee’s TIN (social security number                include both payment card and third party network
+(SSN), individual taxpayer identification number (ITIN),               transactions, you must file a separate Form 1099-K reporting
+adoption taxpayer identification number (ATIN), or employer            the gross amount from each type.
+identification number (EIN)) on payee statements. Truncation
+is not allowed on any documents the filer files with the IRS. A        Account Number
+filer's TIN may not be truncated on any form. See part J in the
+                                                                       The account number is required if you have multiple accounts
+current General Instructions for Certain Information Returns.
+                                                                       for a payee for whom you are filing more than one Form
+Furnishing statements electronically. Statements may be                1099-K. Additionally, the IRS encourages you to designate an
+furnished to payees electronically in lieu of a paper format.          account number for all Forms 1099-K that you file. See part L
+See Regulations section 1.6050W-2(a) for further                       in the current General Instructions for Certain Information
+information.                                                           Returns.
+
+Instructions for Form 1099-K (Rev. 03-2024)                                                                                            3
+Box 1a. Gross Payment Card/Third Party                               • File separate Forms 1099-K reporting the gross receipts
+Network Transactions                                                 for each MCC, or
+                                                                     • File a single Form 1099-K reporting total gross receipts
+Enter in box 1a the gross amount of the total reportable             and the MCC which corresponds to the largest portion of the
+payment card/third party network transactions for the                total gross receipts.
+calendar year. Gross amount means the total dollar amount
+of total reportable payment transactions for each participating      Box 3. Number of Payment Transactions
+payee without regard to any adjustments for credits, cash
+                                                                     Enter the number of payment transactions (not including
+equivalents, discount amounts, fees, refunded amounts,
+                                                                     refund transactions) processed through the payment card/
+shipping amounts, or any other amounts. The dollar amount
+                                                                     third party payer network.
+of each transaction is determined on the date of the
+transaction.                                                         Box 4. Federal Income Tax Withheld
+Exception for de minimis payments. A TPSO is required                Enter backup withholding. Persons who have not furnished
+to report any information concerning third party network             their TINs to you in the manner required are subject to
+transactions of any participating payee only if the gross            backup withholding on payments required to be aggregately
+amount of total reportable payment transactions exceeds              reported in box 1a.
+$600 for the calendar year, regardless of the number of
+transactions.                                                           A payment made by a TPSO is a reportable payment
+                                                                     potentially subject to section 3406 backup withholding.
+    For examples of reportable payment transactions,
+including responsible filing parties, see Regulations section           For more information on backup withholding, including the
+1.6050W-1(e).                                                        applicable rate, see part N in the current General Instructions
+                                                                     for Certain Information Returns.
+Box 1b. Card Not Present Transactions
+Enter in box 1b the gross amount of the total reportable             Boxes 5a Through 5l
+payment card/third party network transactions for the                Enter in the appropriate box the gross amount of the total
+calendar year where the card was not present at the time of          reportable payment transactions for each month of the
+the transaction or the card number was keyed into the                calendar year.
+terminal. Typically, this relates to online sales, phone sales, or
+catalogue sales. Gross amount means the total dollar amount          Boxes 6 Through 8. State Information
+of total reportable payment transactions for each participating      These boxes may be used by filers who participate in the
+payee without regard to any adjustments for credits, cash            Combined Federal/State Filing Program and/or who are
+equivalents, discount amounts, fees, refunded amounts,               required to file paper copies of this form with a state tax
+shipping amounts, or any other amounts. The dollar amount            department. See Pub. 1220 for more information regarding
+of each transaction is determined on the date of the                 the Combined Federal/State Filing Program. They are
+transaction.                                                         provided for your convenience only and need not be
+                                                                     completed for the IRS. Use the state information boxes to
+Box 2. Merchant Category Code                                        report payments for up to two states. Keep the information for
+Enter the four-digit merchant category code (MCC) used by            each state separated by the dash line. If you withheld state
+the payment card industry to classify the payee for the              income tax on this payment, you may enter it in box 8. In
+payment card transactions reported on this Form 1099-K. If           box 6, enter the abbreviated name of the state. In box 7, enter
+you or the entity on whose behalf you are filing uses an             the filer's state identification number. The state number is the
+industry classification system other than, or in addition to,        filer's identification number assigned by the individual state.
+MCCs, assign to each payee an MCC that most closely
+corresponds to the description of the payee's business.                   If a state tax department requires that you send them a
+                                                                     paper copy of this form, use Copy 1 to provide information to
+Note. If you or the entity on whose behalf you are filing is a       the state tax department. Give Copy 2 to the payee for use in
+TPSO or does not use any industry classification system for          filing the payee's state income tax return.
+its payees, you should not complete this box.
+    If a payee has receipts classified under more than one
+MCC, you may either:
+
+
+
+
+4                                                                                     Instructions for Form 1099-K (Rev. 03-2024)
+

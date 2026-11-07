@@ -1,0 +1,994 @@
+2025
+Instructions for Form 6251
+Alternative Minimum Tax—Individuals
+Section references are to the Internal Revenue Code unless          treatment or who qualify for certain deductions under the tax
+otherwise noted.                                                    law. These tax benefits can significantly reduce the regular
+                                                                    tax of some taxpayers with higher economic incomes. The
+General Instructions                                                AMT sets a limit on the amount these benefits can be used to
+                                                                    reduce total tax.
+Future Developments                                                    Also use Form 6251 to figure your tentative minimum tax
+For the latest information about developments related to            (Form 6251, line 9). You may need to know that amount to
+Form 6251 and its instructions, such as legislation enacted         figure the tax liability limit on the credits listed under Who
+after they were published, go to IRS.gov/Form6251.                  Must File, earlier.
+
+What’s New                                                          Figuring AMT Amounts
+Exemption amount. The exemption amount on Form 6251,                For the AMT, certain items of income, deductions, etc.,
+line 5, has increased to $88,100 ($137,000 if married filing        receive different tax treatment than for the regular tax.
+jointly or qualifying surviving spouse; $68,500 if married filing   Therefore, you will need to figure items for the AMT differently
+separately).                                                        from how you figured them for the regular tax. These
+                                                                    instructions will help you figure AMT items by using the
+     Also, the amount used to determine the phaseout of your        amount you figured for the regular tax and refiguring it for the
+exemption has increased to $626,350 ($1,252,700 if married          AMT. In some cases, it is easiest to refigure an item for AMT
+filing jointly or qualifying surviving spouse).                     by completing a tax form or worksheet a second time using
+AMT tax brackets. For 2025, for noncorporate taxpayers,             additional AMT instructions. These instructions refer to such
+the 26% tax rate applies to the first $239,100 ($119,550 if         a form or worksheet as an “AMT” version. If you do complete
+married filing separately) of taxable excess (the amount on         an AMT version of a form or worksheet, don’t attach it to your
+line 6). This change is reflected on lines 7, 18, and 39.           tax return unless instructed to do so. For example, you may
+                                                                    have to attach an AMT Form 1116, Foreign Tax Credit, to
+Enhanced deduction for seniors. New legislation                     your return; see Line 8, later.
+generally provides an enhanced deduction for seniors of
+$6,000 for taxpayers born before January 2, 1961. The                   As you figure some deductions and credits for the AMT,
+deduction is reported on Schedule 1-A (Form 1040), line 37.         carrybacks or carryforwards to other tax years may be
+The deduction is treated as a personal exemption that is            different from what you figured for the regular tax. Examples
+added back to alternative minimum taxable income as an              are investment interest expense, a net operating loss (NOL),
+adjustment under section 56(b)(5)(D). Accordingly, line 1 has       a capital loss, a passive activity loss, and the foreign tax
+been revised and split into two parts, line 1a and line 1b, to      credit. Your at-risk limits and basis amounts may also differ
+account for the enhanced deduction for seniors as an                for the AMT.
+adjustment to alternative minimum taxable income. See the
+instructions for Line 1, later.                                     Recordkeeping
+                                                                    You must keep records to support items reported on Form
+Who Must File                                                       6251 in case the IRS has questions about them. If the IRS
+Attach Form 6251 to your return if any of the following             examines your tax return, you may be asked to explain the
+statements are true.                                                items reported. Good records will help you explain any item
+    1. Form 6251, line 7, is greater than line 10.                  and arrive at the correct AMT.
+    2. You claim any general business credit, and either line 6         Keep records that show how you figured income,
+(in Part I) of Form 3800 or line 25 of Form 3800 is more than       deductions, etc., for the AMT. Also keep records of any items
+zero.                                                               that you used to figure the AMT that differ from what you
+    3. You claim the qualified electric vehicle credit (Form        used to figure the regular tax. For example, you will need to
+8834), the personal-use part of the alternative fuel vehicle        separately figure and track certain carrybacks, carryforwards,
+refueling property credit (Form 8911), or the credit for prior      basis amounts, depreciation, and loss limitation amounts that
+year minimum tax (Form 8801).                                       differ between the AMT and the regular tax.
+    4. The total of Form 6251, lines 2c through 3, is negative         If you refigure an item for AMT by completing an AMT
+and line 7 would be greater than line 10 if you didn’t take into    version of a form or worksheet, keep a copy of that AMT form
+account lines 2c through 3.                                         or worksheet for your records.
+Purpose of Form                                                     Partners and Shareholders
+Use Form 6251 to figure the amount, if any, of your alternative     If you are a partner in a partnership or a shareholder in an S
+minimum tax (AMT). The AMT is a separate tax that is                corporation, see Schedule K-1 and its instructions to figure
+imposed in addition to your regular tax. It applies to taxpayers    your adjustments or preferences from the partnership or S
+who have certain types of income that receive favorable             corporation to include on Form 6251.
+
+                                      Instructions for Form 6251 (2025) Catalog Number 64277P
+Jan 8, 2026                       Department of the Treasury Internal Revenue Service www.irs.gov
+Nonresident Aliens                                                Line 2a—Taxes
+If you are a nonresident alien and you disposed of U.S. real      Enter the amount of all taxes from Schedule A (Form 1040),
+property interests at a gain, you must make a special             line 7, except any generation-skipping transfer taxes on
+computation. Fill in Form 6251 through line 6. If your net gain   income distributions.
+from the disposition of U.S. real property interests and the
+                                                                     If you aren’t filing Schedule A (Form 1040), then enter the
+amount on line 4 are both greater than the tentative amount
+                                                                  standard deduction amount that you reported on Form 1040
+you figured for line 6, replace the amount on line 6 with the
+                                                                  or 1040-SR, line 12e.
+smaller of that net gain or the amount on line 4. Also enter
+“RPI” on the dotted line next to line 6. Otherwise, don’t         Net qualified disaster loss. If you filed Schedule A just to
+change line 6.                                                    claim an increased standard deduction on Form 1040 or
+                                                                  1040-SR due to a loss you suffered related to property in a
+Credit for Prior Year Minimum Tax                                 federally declared disaster area, then enter zero on line 2a
+See Form 8801, Credit for Prior Year Minimum                      and go to line 2b. You will include the amount of the standard
+Tax—Individuals, Estates, and Trusts, if you paid AMT for         deduction (before it was increased by any net qualified
+2024 or you had a minimum tax credit carryforward on your         disaster loss) on line 3.
+2024 Form 8801. If you pay AMT for 2025, you may be able          Form 1040-NR. If you are filing Form 1040-NR, enter the
+to take a credit on Form 8801 for 2026.                           amount of all taxes from Schedule A (Form 1040-NR),
+Optional Write-off for Certain                                    line 1b, plus any foreign income taxes you are deducting on
+                                                                  Schedule A (instead of claiming a credit on Form 1116).
+Expenditures                                                      Don’t include any generation-skipping transfer taxes on
+There is no AMT adjustment for the following items if you         income distributions.
+elect for the regular tax to deduct them ratably over the
+period of time shown.                                             Line 2b—Refund of Taxes
+• Circulation expenditures—3 years (section 173).                 Include any refund from Schedule 1 (Form 1040), line 1, that
+• Research and experimental expenditures—10 years                 is attributable to state or local income taxes. Also include any
+(section 174A(a)).                                                refunds received in 2025 and included in income on
+• Mining exploration and development costs—10 years               Schedule 1 (Form 1040), line 8z, that are attributable to state
+(sections 616(a) and 617(a)).                                     or local personal property taxes or general sales taxes;
+• Intangible drilling costs—60 months (section 263(c)).           foreign income taxes; or state, local, or foreign real property
+                                                                  taxes. Enter the total as a negative amount. If you include an
+  For information on making the election, see section 59(e)       amount from Schedule 1 (Form 1040), line 8z, you must enter
+and Regulations section 1.59-1.                                   a description and the amount next to the entry space for
+                                                                  line 2b. For example, if you include a refund of real property
+Specific Instructions                                             taxes, enter “real property” and the amount next to the entry
+                                                                  space.
+         If you owe AMT, you may be able to lower your total
+ TIP tax (regular tax plus AMT) by claiming itemized              Line 2c—Investment Interest
+         deductions on Form 1040 or 1040-SR, even if your         If you filled out Form 4952, Investment Interest Expense
+total itemized deductions are less than the standard              Deduction, for your regular tax, you will need to fill out a
+deduction. This is because the standard deduction isn’t           second Form 4952 for the AMT as follows.
+allowed for the AMT and, if you claim the standard deduction         Step 1. Follow the Form 4952 instructions for line 1, but,
+on Form 1040 or 1040-SR, you can’t claim itemized                 when completing line 1, also include any interest that would
+deductions for the AMT.                                           have been deductible if tax-exempt interest on private activity
+                                                                  bonds were includible in gross income.
+Part I—Alternative Minimum Taxable                                   Step 2. Enter your AMT disallowed investment interest
+                                                                  expense from 2024 on line 2. Complete line 3.
+Income (AMTI)                                                        Step 3. When completing Part II, refigure the following
+        To avoid duplication, any adjustment or preference        amounts, taking into account all adjustments and
+    !   for line 2m or 2n or for a tax shelter farm activity on   preferences.
+CAUTION line 3 must not be taken into account in figuring the
+                                                                  • Gross income from property held for investment.
+amount to enter for any other adjustment or preference.           • Net gain from the disposition of property held for
+                                                                  investment.
+Line 1                                                            • Net capital gain from the disposition of property held for
+                                                                  investment.
+Line 1a. Enter on Form 6251, line 1a, the difference              • Investment expenses.
+between line 14 of your Form 1040, 1040-SR, or 1040-NR,
+and line 37 of your Schedule 1-A (Form 1040).                         Include on line 4a any tax-exempt interest income from
+                                                                  private activity bonds that must be included on Form 6251,
+Line 1b. Enter on Form 6251, line 1b, the difference              line 2g. If you have any investment expenses that would have
+between line 1a of Form 6251 and line 11b of your Form            been deductible if the interest on the bonds were includible in
+1040, 1040-SR, or 1040-NR. If less than zero, enter as a          gross income for the regular tax, you can use them to reduce
+negative amount.                                                  the amount on line 4a or include them on line 5.
+                                                                      On line 4g, enter the smaller of:
+                                                                      1. The amount from line 4g of your regular tax Form
+                                                                  4952, or
+
+2                                                                                            Instructions for Form 6251 (2025)
+   2. The total of lines 4b and 4e of this AMT Form 4952.              However, the 90% limit doesn’t apply to an ATNOL that is
+                                                                   attributable to qualified disaster losses before December 19,
+  Step 4. Complete Part III.                                       2004 (as defined in section 172(j)), qualified Gulf Opportunity
+   Enter on Form 6251, line 2c, the difference between line 8      Zone losses (as defined in section 1400N(k)(2)), qualified
+of your AMT Form 4952 and line 8 of your regular tax Form          recovery assistance losses (as defined in Pub. 4492-A,
+4952. If your AMT expense is greater, enter the difference as      Information for Taxpayers Affected by the May 4, 2007,
+a negative amount.                                                 Kansas Storms and Tornadoes), qualified disaster recovery
+Investment interest expense that isn’t an itemized de-             assistance losses (as defined in Pub. 4492-B, Information for
+duction. If you didn’t itemize deductions and you had              Affected Taxpayers in the Midwestern Disaster Areas), or a
+investment interest expense, don’t enter an amount on Form         2008 or 2009 loss that you elected to carry back more than 2
+6251, line 2c, unless you reported investment interest             years under section 172(b)(1)(H). Therefore, if an ATNOL
+expense on Schedule E (Form 1040), Supplemental Income             that is carried back or carried forward to the tax year is
+and Loss. If you did, follow the steps above for completing        attributable to any of those losses, the ATNOLD for the tax
+Form 4952. Allocate the investment interest expense allowed        year is limited to the sum of:
+on line 8 of the AMT Form 4952 in the same way you did for             1. The smaller of:
+the regular tax. Enter on Form 6251, line 2c, the difference           a. The sum of the ATNOL carrybacks and carryforwards
+between the amount allowed on Schedule E for the regular           to the tax year attributable to NOLs other than those losses
+tax and the amount allowed on Schedule E for the AMT.              described in (2a) below, or
+Line 2d—Depletion                                                      b. 90% of AMTI for the tax year (figured without regard to
+                                                                   the ATNOLD); plus
+Refigure your depletion deduction for the AMT. To do so, use
+only income and deductions allowed for the AMT when                    2. The smaller of:
+refiguring the limit based on taxable income from the property         a. The sum of the ATNOL carrybacks and carryforwards
+under section 613(a) and the limit based on taxable income,        to the tax year attributable to qualified disaster losses,
+with certain adjustments, under section 613A(d)(1). Also,          qualified Gulf Opportunity Zone losses, qualified recovery
+your depletion deduction for mines, wells, and other natural       assistance losses, qualified disaster recovery assistance
+deposits under section 611 is limited to the property’s            losses, and any 2008 or 2009 loss that you elected to carry
+adjusted basis at the end of the year, as refigured for the        back more than 2 years under section 172(b)(1)(H), or
+AMT, unless you are an independent producer or royalty                 b. 100% of AMTI for the tax year (figured without regard
+owner claiming percentage depletion for oil and gas wells          to the ATNOLD) reduced by the amount determined under
+under section 613A(c). Figure this limit separately for each       (1).
+property. When refiguring the property’s adjusted basis, take
+into account any AMT adjustments you made this year or in             Enter on line 2f the smaller of the ATNOLD or the ATNOLD
+previous years that affect basis (other than current year          limitation. Enter it as a negative amount.
+depletion).                                                           An ATNOL that arose before your 2018 tax year may
+                                                                   generally be carried back 2 years or forward up to 20 years.
+  Enter the difference between the regular tax and AMT             Any ATNOL arising after your 2020 tax year may generally be
+deduction. If the AMT deduction is more than the regular tax       carried forward indefinitely. For more information about
+deduction, enter the difference as a negative amount.              carryover periods and special rules for 2018 through 2020
+                                                                   losses, see Pub. 536.
+Line 2f—Alternative Tax Net Operating Loss
+                                                                      The treatment of ATNOLs doesn’t affect your regular tax
+Deduction (ATNOLD)                                                 NOL. However, if you elected under section 172(b)(3) to
+The ATNOLD is the sum of the alternative tax net operating         forgo the carryback period for the regular tax, the election
+loss (ATNOL) carrybacks and carryforwards to the tax year          also applies for the AMT.
+subject to the limitation explained later. Figure your ATNOLD
+as follows.                                                        Line 2g—Interest From Private Activity Bonds
+                                                                   Enter on line 2g interest income from “specified private
+    Your ATNOL for a loss year is the excess of the deductions
+                                                                   activity bonds” reduced (but not below zero) by any
+allowed for figuring AMTI (excluding the ATNOLD) over the
+                                                                   deduction that would have been allowable if the interest were
+income included in AMTI. Figure this excess with the
+                                                                   includible in gross income for the regular tax. Each payer of
+modifications in section 172(d), taking into account your AMT
+                                                                   this type of interest should send you a Form 1099-INT
+adjustments and preferences (that is, the section 172(d)
+                                                                   showing the amount of this interest in box 9.
+modifications must be separately figured for the ATNOL). For
+example, the limitation of nonbusiness deductions to the              Generally, the term “specified private activity bond” means
+amount of nonbusiness income must be separately figured            any private activity bond (as defined in section 141) the
+for the ATNOL, using only nonbusiness income and                   interest on which isn’t includible in gross income for the
+deductions that are included in AMTI.                              regular tax if the bond was issued after August 7, 1986. But
+                                                                   specified private activity bonds generally don’t include any
+    Your ATNOLD may be limited. To figure the ATNOLD               bonds issued in 2009 or 2010. See section 57(a)(5) for other
+limitation, you must first figure your AMTI without regard to      exceptions and more details.
+the ATNOLD. To do this, first figure a tentative amount for           Don’t include interest on qualified New York Liberty Bonds,
+line 2d by treating line 2f as if it were zero. Next, figure a     qualified Gulf Opportunity Zone bonds, qualified Midwestern
+tentative total of lines 1 through 3 using the tentative line 2d   disaster area bonds, or qualified Hurricane Ike disaster area
+amount and treating line 2f as if it were zero. This is your       bonds.
+AMTI figured without regard to the ATNOLD. Your ATNOLD
+                                                                      Exempt-interest dividends paid by a mutual fund or other
+is limited to 90% of the result.
+                                                                   regulated investment company are treated as interest income
+
+Instructions for Form 6251 (2025)                                                                                                3
+on specified private activity bonds to the extent the dividends   all the shares. Your adjustment is $1,500 ($2,500 − $1,000).
+are attributable to interest on the bonds received by the         Enter it on Form 6251, line 2i.
+company, minus an allocable share of the expenses paid or
+incurred by the company in earning the interest. This             Line 2k—Disposition of Property
+specified private activity bond interest dividends amount         Your AMT gain or loss from the disposition of property may
+should be reported to you in box 13 of Form 1099-DIV.             be different from your gain or loss for the regular tax. This is
+   If you are filing Form 8814, Parents’ Election To Report       because the property may have a different adjusted basis for
+Child’s Interest and Dividends, include on this line any          the AMT. Use this line to report any AMT adjustment resulting
+tax-exempt interest income from line 1b of that form that is a    from refiguring:
+preference item.                                                      1. Gain or loss from the sale, exchange, or involuntary
+                                                                  conversion of property reported on Form 4797, Sales of
+Line 2h—Qualified Small Business Stock                            Business Property;
+If you claimed the exclusion under section 1202 for gain on           2. Casualty gain or loss to business or income-producing
+qualified small business stock acquired before September          property reported on Form 4684, Casualties and Thefts;
+28, 2010, and held more than 5 years, multiply the excluded           3. Ordinary income from the disposition of property not
+gain (as shown on Form 8949 in column (g)) by 7% (0.07).          already taken into account in (1) or (2) or on any other line on
+Enter the result on line 2h as a positive amount.                 Form 6251, such as a disqualifying disposition of stock
+                                                                  acquired in a prior year by exercising an incentive stock
+Line 2i—Exercise of Incentive Stock Options                       option; and
+For the regular tax, no income is recognized when an
+                                                                      4. Capital gain or loss (including any carryover that is
+incentive stock option (ISO), as defined in section 422(b), is
+                                                                  different for the AMT) reported on Form 8949, Sales and
+exercised. However, this rule doesn’t apply for the AMT.
+                                                                  Other Dispositions of Capital Assets, or Schedule D (Form
+Instead, you must generally include on line 2i the excess, if
+                                                                  1040), Capital Gains and Losses.
+any, of:
+    1. The fair market value (FMV) of the stock acquired             First figure any ordinary income adjustment related to (3)
+through exercise of the option (determined without regard to      above. Then refigure Form 4684, Form 4797, Form 8949, and
+any lapse restriction) when your rights in the acquired stock     Schedule D for the AMT, if applicable, by taking into account
+first become transferable or when these rights are no longer      any adjustments you made this year or in previous years that
+subject to a substantial risk of forfeiture; over                 affect your basis or otherwise result in a different amount for
+                                                                  the AMT. When you refigure your gain or loss on Form 8949
+    2. The amount you paid for the stock, including any
+                                                                  for AMT, the amount of gain you elected to defer for regular
+amount you paid for the ISO used to acquire the stock.
+                                                                  tax purposes due to an investment in a qualified opportunity
+   Even if your rights in the stock aren’t transferable and are   fund may need to be adjusted on your AMT Form 8949. An
+subject to a substantial risk of forfeiture, you may elect to     adjustment may be required if the regular tax and AMT
+include in AMT income the excess of the stock’s FMV               adjusted basis of the property you sold prior to your
+(determined without regard to any lapse restriction) over the     investment is different.
+exercise price upon the transfer to you of the stock acquired        If you have a capital loss after refiguring Schedule D for
+through exercise of the option. You must make the election by     the AMT, apply the $3,000 capital loss limitation separately to
+the 30th day after the date of the transfer. See Pub. 525 for     the AMT loss. Because the amount of your gains and losses
+more details.                                                     may be different for the AMT, the amount of any capital loss
+   If you acquired stock by exercising an ISO and you             carryover may also be different for the AMT. See the following
+disposed of that stock in the same year, the tax treatment        example. To figure your AMT capital loss carryover, fill out an
+under the regular tax and the AMT is the same, and no             AMT Capital Loss Carryover Worksheet in the Schedule D
+adjustment is required.                                           instructions.
+   Increase your AMT basis in any stock acquired through              For each of the four items listed earlier, figure the
+the exercise of an ISO by the amount of the adjustment. Keep      difference between the amount included in taxable income
+adequate records for both the AMT and regular tax so that         for the regular tax and the amount included in income for the
+you can figure your adjustment. See the instructions for          AMT. Include the difference as a negative amount on line 2k if
+line 2k.                                                          (a) both the AMT and regular tax amounts are zero or more
+                                                                  and the AMT amount is less than the regular tax amount or
+Form 3921. If you received a Form 3921, it may help you
+                                                                  (b) the AMT amount is a loss, and the regular tax amount is a
+figure your adjustment.
+                                                                  smaller loss, or is zero or more.
+   Example. You exercised an ISO to acquire 100 shares of
+stock in 2025. Your rights in the acquired stock first became        Enter on line 2k the combined adjustments for the four
+transferable on the date you exercised the ISO and weren’t        items listed earlier.
+subject to a substantial risk of forfeiture. You didn’t pay          Example. On March 13, 2024, your filing status is single,
+anything for the ISO. You didn’t sell the acquired stock during   you paid $20,000 to exercise an ISO (which was granted to
+2025. You received a Form 3921 that shows $10 in box 3 (the       you on January 3, 2023) to buy 200 shares of stock worth
+exercise price you paid for each share), $25 in box 4 (the        $200,000. The $180,000 difference between your cost and
+FMV of each share on the exercise date), and 100 shares in        the value of the stock at the time you exercised the option
+box 5 (the number of shares you acquired). To figure your         isn’t taxable for the regular tax. Your regular tax basis in the
+adjustment, multiply the amount in box 4, $25, by the 100         stock at the end of 2024 is $20,000. For the AMT, however,
+shares in box 5. The result is $2,500, the FMV of all the         you must include the $180,000 as an adjustment on your
+shares. Then multiply the amount in box 3, $10, by the 100        2024 Form 6251. Your AMT basis in the stock at the end of
+shares in box 5. The result is $1,000, the amount you paid for    2024 is $200,000.
+
+4                                                                                             Instructions for Form 6251 (2025)
+    On January 18, 2025, you sold 100 of the shares for             What Depreciation Must Be Refigured for the
+$75,000. Because you didn’t hold these shares more than 1           AMT?
+year, that sale is a disqualifying disposition. For the regular
+tax, you have ordinary income of $65,000 ($75,000 minus
+                                                                    Generally, you must refigure depreciation for the AMT,
+your $10,000 basis in the 100 shares). You have no capital
+                                                                    including depreciation allocable to inventory costs, for:
+gain or loss for the regular tax resulting from the sale. For the
+AMT, you have no ordinary income but have a short-term
+                                                                    • Property placed in service after 1998 that is depreciated
+                                                                    for the regular tax using the 200% declining balance method
+capital loss of $25,000 ($75,000 minus your $100,000 AMT
+                                                                    (generally 3-, 5-, 7-, and 10-year property under the modified
+basis in the 100 shares).
+                                                                    accelerated cost recovery system (MACRS), except for
+    On April 21, 2025, you sold the other 100 shares for            certain qualified property eligible for the special depreciation
+$60,000. Because you held the shares for more than 1 year           allowance (discussed later));
+and more than 2 years had passed since the option was               • Section 1250 property placed in service after 1998 that
+granted to you, the sale isn’t a disqualifying disposition. For     isn’t depreciated for the regular tax using the straight line
+the regular tax, you have a long-term capital gain of $50,000       method; and
+($60,000 minus your regular tax basis of $10,000). For the          • Tangible property placed in service after 1986 and before
+AMT, you have a long-term capital loss of $40,000 ($60,000          1999. (If the transitional election was made under section
+minus your AMT basis of $100,000).                                  203(a)(1)(B) of the Tax Reform Act of 1986, this rule applies
+    You have no other sales of stock or other capital assets for    to property placed in service after July 31, 1986.)
+2025. You enter a total negative adjustment of $118,000 on
+line 2k of your 2025 Form 6251, figured as follows.                 What Depreciation Isn’t Refigured for the AMT?
+• You figure a negative adjustment of $65,000 for the
+difference between the $65,000 of regular tax ordinary              Don’t refigure depreciation for the AMT for the following.
+income and the $0 of AMT ordinary income for the first sale.        • Residential rental property placed in service after 1998.
+• For the regular tax, you have $50,000 capital gain net            • Nonresidential real property with a class life of 27.5 years
+income from the second sale. For the AMT, you have a                or more placed in service after 1998 that is depreciated for
+$25,000 short-term capital loss from the first sale and a           the regular tax using the straight line method.
+$40,000 long-term capital loss from the second sale,                • Other section 1250 property placed in service after 1998
+resulting in a net capital loss of $65,000 for the AMT.             that is depreciated for the regular tax using the straight line
+However, only $3,000 of the $65,000 net capital loss is             method.
+allowed for 2025 for the AMT. The difference between the            • Property (other than section 1250 property) placed in
+regular tax gain of $50,000 and the $3,000 loss allowed for         service after 1998 that is depreciated for the regular tax using
+the AMT results in a $53,000 negative adjustment to include         the 150% declining balance method or the straight line
+on line 2k.                                                         method.
+    You have an AMT capital loss carryover from 2025 to 2026        • Property for which you elected to use the alternative
+of $62,000, of which $22,000 is short term and $40,000 is           depreciation system (ADS) of section 168(g) for the regular
+long term. If you have no other Form 8949 or Schedule D             tax.
+transactions for 2026, your adjustment reported on your 2026        • Qualified property that is or was eligible for a special
+Form 6251 would be limited to ($3,000), the amount of your          depreciation allowance if the depreciable basis of the
+capital loss limitation for 2026.                                   property is the same for the AMT and the regular tax. This
+                                                                    applies to any special depreciation allowance, including
+Line 2l—Post-1986 Depreciation                                      those for disaster assistance property, reuse and recycling
+                                                                    property, cellulosic biofuel plant property, second generation
+         To avoid duplication, any AMT adjustment or tax
+                                                                    biofuel plant property, New York Liberty Zone property, Gulf
+  !      preference item taken into account on this line
+ CAUTION shouldn’t be taken into account in figuring the amount
+                                                                    Opportunity Zone property, and Kansas disaster area
+                                                                    recovery assistance property. The special allowance is
+to enter on any other adjustment or tax preference item line of
+                                                                    deductible for the AMT, and no adjustment is required for any
+this form.
+                                                                    depreciation figured on the remaining basis of the qualified
+    This section describes when depreciation must be                property because the depreciable basis of the property is the
+refigured for the AMT and how to figure the amount to enter         same for the AMT and the regular tax. If you elected not to
+on line 2l.                                                         have any special depreciation allowance apply, the property
+                                                                    may be subject to an AMT adjustment for depreciation if it
+   Don’t use line 2l for depreciation related to the following.
+                                                                    was placed in service before 2016. It isn’t subject to an AMT
+• Passive activities. Take this adjustment into account on          adjustment for depreciation if it was placed in service after
+line 2m.
+                                                                    2015.
+• An activity for which you aren’t at risk. Take this adjustment
+into account on line 2n.                                            • Any part of the cost of any property for which you elected
+                                                                    to take a section 179 expense deduction. The reduction to
+• Income or loss from a partnership or an S corporation if the      the depreciable basis of section 179 property by the amount
+basis limitations apply. Take this adjustment into account on
+                                                                    of the section 179 expense deduction is the same for the
+line 2n.
+                                                                    regular tax and the AMT.
+• A tax shelter farm activity. Take this adjustment into
+account on line 3.                                                  • Motion picture films, videotapes, or sound recordings.
+                                                                    • Property depreciated under the unit-of-production method
+                                                                    or any other method not expressed in a term of years.
+                                                                    • Indian reservation property that meets the requirements of
+                                                                    section 168(j).
+                                                                    • A natural gas gathering line placed in service after April 11,
+                                                                    2005.
+
+Instructions for Form 6251 (2025)                                                                                                  5
+How Is Depreciation Refigured for the AMT?                                    don’t file the AMT versions of these forms and schedules with
+                                                                              your tax return. Instead, keep them with your records.
+Property placed in service before 1999. Refigure
+depreciation for the AMT using ADS, with the same                                 Example. You are a partner in a partnership and the
+convention used for the regular tax. See the following table                  Schedule K-1 (Form 1065) you received shows the following.
+for the method and recovery period to use.                                    • A passive activity loss of $4,125.
+                                                                              • A depreciation adjustment of $500 on post-1986 property.
+                Property Placed in Service Before 1999                        • An adjustment of $225 on the disposition of property.
+ IF the property is...                THEN use the...
+                                                                                  Because the two adjustments above are from the passive
+                                                                              activity and aren’t allowed for the AMT, you must first reduce
+ section 1250 property                straight line method over 40 years.     the passive activity loss by those amounts. The result is a
+ tangible property (other than        straight line method over the           passive activity loss for the AMT of $3,400. You then enter
+ section 1250 property) depreciated   property’s AMT class life.              this amount on the AMT Form 8582 and refigure the
+ using straight line method for the                                           allowable passive activity loss for the AMT.
+ regular tax
+                                                                                      The amount of any AMT passive activity loss that
+ any other tangible property          150% declining balance method,
+                                                                               TIP isn’t deductible and is carried forward is likely to differ
+                                      switching to straight line method the
+                                                                                     from the regular tax amount, if any. Therefore, keep
+                                      first tax year it gives a larger
+                                      deduction, over the property’s AMT
+                                                                              adequate records for both the AMT and regular tax.
+                                      class life.
+                                                                                 Enter the difference between the amount that would be
+                                                                              reported for the activity on Schedule C, E, or F or Form 4835,
+                                                                              Farm Rental Income and Expenses, for the AMT and the
+Property placed in service after 1998. Use the same                           regular tax amount. If (a) the AMT loss is more than the
+convention and recovery period used for the regular tax. For                  regular tax loss, (b) the AMT gain is less than the regular tax
+property other than section 1250 property, use the 150%                       gain, or (c) you have an AMT loss and a regular tax gain,
+declining balance method, switching to straight line the first                enter the adjustment as a negative amount.
+tax year it gives a larger deduction. For section 1250                           Enter any adjustment for amounts reported on Form 8949,
+property, use the straight line method.                                       Schedule D, Form 4684, or Form 4797, for the activity on
+                                                                              line 2k instead of line 2m. See the instructions for line 2k.
+How Is the AMT Class Life Determined?
+                                                                              Publicly Traded Partnership (PTP)
+The class life used for the AMT isn’t necessarily the same as
+the recovery period used for the regular tax. The class lives                 If you had a loss from a PTP, refigure the loss using any AMT
+for the AMT are listed in Rev. Proc. 87-56, 1987-2 C.B. 674,                  adjustments and preferences and any AMT prior year
+and in Pub. 946, How To Depreciate Property. Use 12 years                     unallowed loss.
+for any tangible personal property not assigned a class life.
+         See Pub. 946 for tables that can be used to figure                   Tax Shelter Passive Farm Activities
+ TIP AMT depreciation. Rev. Proc. 89-15, 1989-1 C.B.
+       816, has special rules for short years and for property                Refigure any gain or loss from a tax shelter passive farm
+disposed of before the end of the recovery period.                            activity taking into account all AMT adjustments and
+                                                                              preferences and any AMT prior year unallowed losses. If the
+                                                                              amount is a gain, include it on the AMT Form 8582. If the
+How Is the Adjustment Figured?                                                amount is a loss, don’t include it on the AMT Form 8582.
+                                                                              Carry the loss forward to 2026 to see if you have a gain or
+Subtract the AMT deduction for depreciation from the regular                  loss from tax shelter passive farm activities for 2026.
+tax deduction and enter the result. If the AMT deduction is
+more than the regular tax deduction, enter the difference as a
+negative amount.                                                              Insolvency
+
+   In addition to the AMT adjustment to your deduction for                    If at the end of the tax year your liabilities exceed the FMV of
+depreciation, also adjust the amount of depreciation that was                 your assets, increase your passive activity loss allowed by
+capitalized, if any, to account for the difference between the                that excess (but not by more than your total loss). See
+rules for the regular tax and the AMT. Include on this line the               section 58(c)(1).
+current year adjustment to taxable income, if any, resulting
+from the difference.                                                          Line 2n—Loss Limitations
+                                                                                       To avoid duplication, any AMT adjustment or tax
+Line 2m—Passive Activities                                                             preference item taken into account on this line
+Refigure your passive activity gains and losses for the AMT
+                                                                                !
+                                                                               CAUTION shouldn’t be taken into account in figuring the amount
+
+by taking into account all adjustments and preferences and                    to enter on any other adjustment or tax preference item line of
+any AMT prior year unallowed losses that apply to that                        this form.
+activity. You may fill out an AMT Form 8582, Passive Activity                    For passive activities, see the line 2m instructions instead.
+Loss Limitations, and AMT versions of the other forms or                      For tax shelter farm activities (that aren’t passive), see the
+schedules on which your passive activities are reported, to                   line 3 instructions.
+determine your passive activity loss allowed for the AMT, but
+                                                                                Refigure your gains and losses from activities for which
+                                                                              you aren’t at risk and basis limitations applicable to
+
+6                                                                                                         Instructions for Form 6251 (2025)
+partnerships and S corporations by taking into account all          Line 2q—Mining Costs
+AMT adjustments and preferences that apply. See sections
+59(h), 465, 704(d), and 1366(d).                                            Don’t make this adjustment for costs for which you
+                                                                      !     elected the optional 10-year write-off for the regular
+   Enter the difference between the amount that would be            CAUTION tax.
+reported for the activity on Schedule C, E, or F or Form 4835
+for the AMT and the regular tax amount. If (a) the AMT loss is         Mining exploration and development costs deducted in full
+more than the regular tax loss, (b) the AMT gain is less than       for the regular tax in the tax year they were paid or incurred
+the regular tax gain, or (c) you have an AMT loss and a             must be capitalized and amortized over 10 years for the AMT.
+regular tax gain, enter the adjustment as a negative amount.        Enter the difference between the regular tax and AMT
+                                                                    deduction. If the AMT deduction is more than the regular tax
+        The AMT amount of any gain or loss from activities          deduction, enter the difference as a negative amount.
+ TIP for which you aren’t at risk is likely to differ from the
+        regular tax amount. Your AMT basis in partnerships             If you had a loss on property for which mining costs
+and S corporations is also likely to differ from your regular tax   haven’t been fully amortized for the AMT, your AMT
+basis. Therefore, keep adequate records for both the AMT            deduction is the smaller of (a) the loss allowable for the costs
+and regular tax.                                                    had they remained capitalized or (b) the remaining costs to
+                                                                    be amortized for the AMT.
+   Enter any adjustment for amounts reported on Form 8949,
+Schedule D, Form 4684, or Form 4797 for the activity on             Line 2r—Research and Experimental Costs
+line 2k instead of line 2n.
+                                                                             Don’t make this adjustment for costs paid or incurred
+Line 2o—Circulation Costs                                             !      in connection with an activity in which you materially
+                                                                    CAUTION participated under the passive activity rules or for
+        Don’t make this adjustment for costs for which you          costs for which you elected the optional 10-year write-off for
+  !     elected the optional 3-year write-off for the regular       research and experimental costs under section 59(e) for
+CAUTION tax.
+                                                                    regular tax purposes.
+   Circulation costs (expenditures to establish, maintain, or         Research and experimental costs deducted under section
+increase the circulation of a newspaper, magazine, or other         174(a) or section 174A(a) for regular tax purposes generally
+periodical) deducted in full for the regular tax in the year they   must be amortized for AMT purposes over 10 years
+were paid or incurred must be capitalized and amortized over        beginning with the year the costs were paid or incurred.
+3 years for the AMT. Enter the difference between the regular
+tax and AMT deduction. If the AMT deduction is more than               Enter the difference between the amount allowed for AMT
+the regular tax deduction, enter the difference as a negative       purposes and the amount allowed for regular tax purposes. If
+amount.                                                             the amount for AMT purposes exceeds the amount allowed
+   If you had a loss on property for which circulation costs        for regular tax purposes, enter the difference as a negative
+haven’t been fully amortized for the AMT, your AMT                  amount.
+deduction is the smaller of (a) the loss allowable for the costs       If you had a loss on property for which research and
+had they remained capitalized or (b) the remaining costs to         experimental costs haven’t been fully amortized for the AMT,
+be amortized for the AMT.                                           the AMT deduction is the smaller of (a) the loss allowable for
+                                                                    the costs had they remained capitalized or (b) the remaining
+Line 2p—Long-Term Contracts                                         costs to be amortized for the AMT.
+         To avoid duplication, any AMT adjustment or tax
+  !      preference item taken into account on this line            Line 2s—Installment Sales
+ CAUTION shouldn’t be taken into account in figuring the amount     The installment method doesn’t apply for the AMT to any
+to enter on any other adjustment or tax preference item line of     nondealer disposition of property after August 16, 1986, but
+this form.                                                          before January 1, 1987, if an installment obligation to which
+   For the AMT, you must generally use the                          the proportionate disallowance rule applied arose from the
+percentage-of-completion method described in section                disposition. Enter the amount of installment sale income
+460(b) to determine your income from any long-term contract         reported for the regular tax as a negative amount on line 2s.
+(defined in section 460(f)). However, this rule doesn’t apply to
+any home construction contract (as defined in section 460(e)
+                                                                    Line 2t—Intangible Drilling Costs (IDCs)
+(5)). For contracts excepted from the                                       Don’t make this adjustment for costs for which you
+percentage-of-completion method for the regular tax by                !     elected the optional 60-month write-off for the regular
+section 460(e)(1), use the simplified procedures for allocating     CAUTION tax.
+
+costs outlined in section 460(b)(3) to determine the
+                                                                        IDCs from oil, gas, and geothermal wells are a preference
+percentage of completion.
+                                                                    to the extent that the excess IDCs are more than 65% of the
+   Enter the difference between the AMT and regular tax             net income from the wells. Figure the preference for all oil and
+income. If the AMT income is smaller, enter the difference as       gas properties separately from the preference for all
+a negative amount.                                                  geothermal properties.
+Note: If you are required to use the                                Excess IDCs. Figure excess IDCs as follows.
+percentage-of-completion method for either the regular tax or         Step 1. Determine the amount of your IDCs allowed for
+the AMT, you may owe or be entitled to a refund of interest for     the regular tax under section 263(c), but don’t include any
+the tax year the contract is completed or adjusted. For             section 263(c) deduction for nonproductive wells.
+details, see Form 8697, Interest Computation Under the                Step 2. Subtract from the amount determined in Step 1
+Look-Back Method for Completed Long-Term Contracts.                 the amount that would have been allowed had you amortized
+
+Instructions for Form 6251 (2025)                                                                                                    7
+these IDCs over a 120-month period starting with the month           Tax Shelter Farm Activities
+the well was placed in production. If you prefer not to use the
+120-month period, you can elect to use any method that is            Figure this adjustment only if you have a gain or loss from a
+permissible in determining cost depletion.                           tax shelter farm activity (as defined in section 58(a)(2)) that
+Net income. Determine net income by reducing the gross               isn’t a passive activity. If the activity is passive, you must
+income that you received or accrued during the tax year from         include it with your other passive activities on line 2m.
+all oil, gas, and geothermal wells by the deductions allocable
+to those wells (reduced by the excess IDCs). When refiguring            Refigure all gains and losses you reported for the regular
+net income, use only income and deductions allowed for the           tax from tax shelter farm activities by taking into account any
+AMT.                                                                 AMT adjustments and preferences. Determine your tax
+                                                                     shelter farm activity gain or loss for the AMT using the same
+Exception. The preference for IDCs from oil and gas wells            rules you used for the regular tax with the following
+doesn’t apply to taxpayers who are independent producers             modifications.
+(that is, not integrated oil companies as defined in section         • No refigured loss is allowed, except to the extent you are
+291(b)(4)). However, this benefit may be limited. First, figure      insolvent (see section 58(c)(1)).
+the IDC preference as if this exception didn’t apply. Then, for      • Don’t use a refigured loss in the current tax year to offset
+purposes of this exception, complete Form 6251 through               gains from other tax shelter farm activities. Instead, suspend
+line 3, including the IDC preference and treating line 2f as if it   any refigured loss and carry it forward indefinitely until (a) you
+were zero, and combine lines 1 through 3. If the amount of           have a gain in a subsequent tax year from that same activity
+the IDC preference exceeds 40% of the total of lines 1               or (b) you dispose of the activity.
+through 3 (figured as described in the preceding sentence),
+enter the excess on line 2t (your benefit from this exception is        Enter the difference between the amount that would be
+limited). Otherwise, don’t enter an amount on line 2t (your          reported for the activity on Schedule E or F or Form 4835 for
+benefit from this exception isn’t limited).                          the AMT and the regular tax amount. If (a) the AMT loss is
+                                                                     more than the regular tax loss, (b) the AMT gain is less than
+Line 3—Other Adjustments                                             the regular tax gain, or (c) you have an AMT loss and a
+Enter on line 3 the total of any other adjustments that apply to     regular tax gain, enter the adjustment as a negative amount.
+you, including the following.
+                                                                        Enter any adjustment for amounts reported on Form 8949,
+                                                                     Schedule D, Form 4684, or Form 4797 for the activity on
+Depreciation Figured Using Pre-1987 Rules
+                                                                     line 2k instead of line 3.
+This preference generally applies only to property placed in
+service after 1987 but depreciated using pre-1987 rules due
+                                                                     Charitable Contributions of Certain Property
+to transitional provisions of the Tax Reform Act of 1986.
+                                                                     If you made a charitable contribution of property to which
+                                                                     section 170(e) applies and you had a different basis for AMT
+    For the AMT, you must use the straight line method to            purposes, you may have to make an adjustment. See section
+figure depreciation on real property for which accelerated           170(e) for details.
+depreciation was determined using pre-1987 rules. Use a
+recovery period of 19 years for 19-year real property and 15
+years for low-income housing. For leased personal property           Business Interest Limitation
+other than recovery property, enter the amount by which your
+regular tax depreciation using the pre-1987 rules exceeds the        Complete an AMT Form 8990 using amounts adjusted for
+depreciation allowable using the straight line method. For           AMT. Enter the difference between the AMT and regular tax
+leased 10-year recovery property and leased 15-year public           allowable interest expense. If line 30 of the AMT Form 8990 is
+utility property, enter the amount by which your regular tax         more than the amount on line 30 of the regular tax Form
+depreciation exceeds the depreciation allowable using the            8990, enter the difference as a negative amount.
+straight line method with a half-year convention, no salvage
+value, and a recovery period of 15 years (22 years for 15-year       Mortgage Interest
+public utility property).
+                                                                     If you deducted home mortgage interest on Schedule A for a
+   Figure the excess of the regular tax depreciation over the        dwelling that isn’t a principal residence (within the meaning of
+AMT depreciation separately for each property and include            section 121) or qualified dwelling for AMT, include that
+on line 3 only positive amounts.                                     deducted interest on line 3. A qualified dwelling for AMT is a
+                                                                     house, apartment, condominium, or mobile home not used
+                                                                     on a transient basis. A qualified dwelling for AMT doesn’t
+Pollution Control Facilities
+                                                                     include house boats and recreational vehicles.
+The section 169 election to amortize the basis of a certified
+pollution control facility over a 60-month or 84-month period        Net Qualified Disaster Loss
+isn’t available for the AMT. For facilities placed in service
+before 1999, figure the AMT deduction using ADS. For                 If you filed Schedule A to claim an increased standard
+facilities placed in service after 1998, figure the AMT              deduction on Form 1040 or 1040-SR due to a loss you
+deduction under MACRS using the straight line method.                suffered related to property in a federally declared disaster
+Enter the difference between the regular tax and AMT                 area, then include on line 3 the standard deduction amount
+deduction. If the AMT deduction is more than the regular tax         you listed on the dotted line next to Schedule A, line 16, as
+deduction, enter the difference as a negative amount.                your “Standard Deduction Claimed With Qualified Disaster
+                                                                     Loss.”
+
+8                                                                                                Instructions for Form 6251 (2025)
+  If you filed Schedule A to itemize your deductions, then                                              Your section 179 deduction for the regular tax is limited to
+don’t make this adjustment.                                                                          your net profit (before any section 179 deduction) of $9,000.
+                                                                                                     The $1,000 excess is a section 179 deduction carryforward
+Related Adjustments                                                                                  for the regular tax.
+                                                                                                        For the AMT, your net profit is $9,700, and you are allowed
+If you have an entry on line 2c because you deducted                                                 a section 179 deduction of $9,700 for the AMT. You have a
+investment interest allocable to an interest in a trade or                                           section 179 deduction carryforward of $300 for the AMT.
+business, or on line 2d, 2h, 2i, or 2k through 2t, or you have                                          You include a $700 negative adjustment on line 3 because
+any amount included on line 3 from pre-1987 depreciation,                                            your section 179 deduction for the AMT is $700 greater than
+pollution control facilities, or tax shelter farm activities, you                                    your allowable regular tax deduction. In the following year,
+may have to refigure any item of income or deduction based                                           when you use the $1,000 regular tax carryforward, you will
+on a limit of income other than adjusted gross income (AGI)                                          have a $700 positive related adjustment for the AMT because
+or modified AGI.                                                                                     your AMT carryforward is only $300.
+   Affected items include the following.                                                             Line 4—Alternative Minimum Taxable Income
+• Section 179 expense deduction (Form 4562, line 12).
+• Expenses for business or rental use of your home.                                                  If your filing status is married filing separately and line 4 is
+• Conservation expenses (Schedule F (Form 1040), line 12).                                           more than $900,350, you must include an additional amount
+• Taxable IRA distributions (Form 1040, 1040-SR, or                                                  on line 4. If line 4 is $1,174,350 or more, include an additional
+1040-NR, line 4b), if prior-year IRA deductions were different                                       $68,500. Otherwise, include 25% of the excess of the
+for the AMT and the regular tax.                                                                     amount on line 4 over $900,350. For example, if the amount
+• Self-employed health insurance deduction (Schedule 1                                               on line 4 is $920,350, enter $925,350 instead—the additional
+(Form 1040), line 17).                                                                               $5,000 is 25% of $20,000 ($920,350 minus $900,350).
+• Self-employed SEP, SIMPLE, and qualified plans
+deduction (Schedule 1 (Form 1040), line 16).                                                         Special Rule for Holders of a Residual Interest in a
+• IRA deduction (Schedule 1 (Form 1040), line 20), affected                                          Real Estate Mortgage Investment Conduit (REMIC)
+by the earned income limitation of section 219(b)(1)(B).
+                                                                                                     If you held a residual interest in a REMIC in 2025, the amount
+   Figure the difference between the AMT and regular tax                                             you enter on line 4 may not be less than the amount on
+amount for each item. Combine the amounts for all your                                               Schedule E, line 38, column (c). If the amount in column (c) is
+related adjustments and include the total on line 3. Keep a                                          larger than the amount you would otherwise enter on line 4,
+copy of all computations for your records, including any AMT                                         enter the amount from column (c) instead and enter “Sch. Q”
+carryover and basis amounts.                                                                         on the dotted line next to line 4.
+        Don’t include on line 3 any adjustment for an item you
+        refigured on another line of this form (for example,                                            If your filing status is married filing separately, be sure to
+   !
+CAUTION line 2d).
+                                                                                                     include the additional amount that must be added to line 4
+                                                                                                     (as explained above) before you compare line 4 with the
+   Example. On your Schedule C (Form 1040), you have a                                               amount on Schedule E, line 38, column (c).
+net profit of $9,000 before figuring your section 179
+deduction. You don’t report any other business income on
+your return. During the year, you purchased an asset for
+$10,000 for which you elect to take the section 179
+deduction. You also have an AMT depreciation adjustment of
+$700 for other assets depreciated on your Schedule C.
+
+
+Exemption Worksheet—
+Line 5                                                                                                                                                Keep for Your Records
+ Note: If Form 6251, line 4, is equal to or more than $978,750 if single or head of household, $1,800,700 if married filing jointly or qualifying surviving
+ spouse, or $900,350 if married filing separately, your exemption is zero. Don’t complete this worksheet; instead, enter the amount from Form 6251, line 4,
+ on line 6 and go to line 7.
+
+       1. Enter $88,100 if single or head of household; $137,000 if married filing jointly or qualifying surviving
+          spouse; or $68,500 if married filing separately . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           1.
+       2. Enter your alternative minimum taxable income (AMTI) from Form 6251,
+          line 4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.
+       3. Enter $626,350 if single or head of household; $1,252,700 if married
+          filing jointly or qualifying surviving spouse; or $626,350 if married filing
+          separately . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     3.
+       4. Subtract line 3 from line 2. If zero or less, enter -0- . . . . . . . . . . . . . . . . .                      4.
+       5. Multiply line 4 by 25% (0.25) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   5.
+       6. Subtract line 5 from line 1. If zero or less, enter -0-. Also, enter this amount on Form 6251, line 5,
+          and go to Form 6251, line 6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         6.
+
+
+
+Instructions for Form 6251 (2025)                                                                                                                                             9
+Part II—Alternative Minimum Tax                                                                     separately), figure the amount to enter on line 7 by
+                                                                                                    multiplying line 6 by 26% (0.26). Otherwise, figure the
+(AMT)                                                                                               amount to enter on line 7 by multiplying line 6 by 28% (0.28)
+                                                                                                    and subtracting $4,782 ($2,391 if married filing separately)
+Line 5—Exemption Amount                                                                             from the result.
+If line 4 is more than the amount shown for your filing status in
+the middle column of the chart on line 5, see the Exemption                                         Line 8—Alternative Minimum Tax Foreign Tax
+Worksheet to figure the amount to enter on line 5.                                                  Credit (AMTFTC)
+Form 1040-NR. If you are filing Form 1040-NR, use the                                               The AMTFTC is a credit that you can claim against the AMT.
+following chart to figure the amount to enter on line 5.                                            You will figure the AMTFTC using the same limitation rules
+However, if line 4 is more than the amount shown for your                                           that apply to the foreign tax credit for regular tax purposes,
+filing status in the middle column of the chart, use the                                            but with AMT amounts. However, you may be able to simplify
+Exemption Worksheet to figure the amount to enter on line 5.                                        your AMTFTC calculation by electing to use some of the
+                                                                                                    same amounts you used to figure your foreign tax credit. See
+   IF your filing status is...       AND line 4 is not over...      THEN enter on line 5...
+                                                                                                    Simplified Limitation Election, later, for more information.
+ Single                          $                     626,350 $                      88,100.       Do I need to fill out line 8? Before figuring your AMTFTC,
+ Qualifying surviving spouse     $                    1,252,700 $                    137,000.
+                                                                                                    figure your foreign tax credit for the regular tax and complete
+                                                                                                    Schedule 3 (Form 1040), line 1. Next, fill in Form 6251,
+ Married filing separately       $                     626,350 $                      68,500.
+                                                                                                    line 10, as instructed. If the amount on line 10 is greater than
+                                                                                                    or equal to the amount on line 7, do the following.
+                                                                                                    • Leave line 8 blank and enter -0- on line 11.
+Line 7                                                                                              • See Who Must File, earlier, to find out if you must attach
+If you claimed the foreign earned income exclusion, housing                                         Form 6251 to your return.
+exclusion, or housing deduction on Form 2555, you must use                                          • Determine if you can carry back or carry forward your
+the Foreign Earned Income Tax Worksheet in these                                                    unused 2025 AMTFTC. See AMTFTC Carryback and
+instructions to figure the amount to enter on line 7.                                               Carryforward, later. If you can carry back or carry forward
+                                                                                                    your unused 2025 AMTFTC, you will need to complete line 8
+Form 1040-NR. If you are filing Form 1040-NR and you                                                for your records.
+reported capital gain distributions directly on Form 1040-NR,
+line 7a; you reported qualified dividends on Form 1040-NR,                                             If the amount on line 10 is less than the amount on line 7,
+line 3a; or you had a gain on both lines 15 and 16 of                                               figure your AMTFTC and enter it on line 8.
+Schedule D (Form 1040) (as refigured for the AMT, if                                                Figuring the AMTFTC. If you made an election to claim the
+necessary), complete Part III of Form 6251 and enter the                                            foreign tax credit on your 2025 tax return without filing Form
+amount from line 40 on line 7. All other Form 1040-NR filers,                                       1116, your AMTFTC is the same as the foreign tax credit on
+don’t complete Part III. Instead, if Form 6251, line 6, is                                          Schedule 3 (Form 1040), line 1. Enter that amount on Form
+$239,100 or less ($119,550 or less if married filing                                                6251, line 8. For more information about electing to claim
+
+
+
+Foreign Earned Income Tax Worksheet—Line 7                                                                                                        Keep for Your Records
+ Before you begin:                          If Form 6251, line 6, is zero, don’t complete this worksheet.
+ 1.       Enter the amount from Form 6251, line 6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        1.
+ 2a. Enter the amount from your (and your spouse’s, if filing jointly) Form 2555,
+     lines 45 and 50 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    2a.
+  b. Enter the total amount of any itemized deductions or exclusions you
+     couldn’t claim because they are related to excluded income . . . . . . . . . .                               2b.
+  c. Subtract line 2b from line 2a. If zero or less, enter -0- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2c.
+ 3. Add lines 1 and 2c . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.
+ 4.       Tax on the amount on line 3.
+          • If you reported capital gain distributions directly on Form 1040 or 1040-SR, line 7a; or you reported
+          qualified dividends on Form 1040 or 1040-SR, line 3a; or you had a gain on both lines 15 and 16 of
+          Schedule D (Form 1040) (as refigured for the AMT, if necessary), enter the amount from line 3 of this
+          worksheet on Form 6251, line 12. Complete the rest of Form 6251, Part III. However, before completing
+                                                                                                                                                            4.
+                                                                                                                                                             .
+          Part III, see Form 2555, later, to see if you must complete Part III with certain modifications. Then enter
+          the amount from Form 6251, line 40, here.
+          • All others: If line 3 is $239,100 or less ($119,550 or less if married filing separately), multiply line 3
+          by 26% (0.26). Otherwise, multiply line 3 by 28% (0.28) and subtract $4,782 ($2,391 if married filing
+          separately) from the result.
+ 5.       Tax on the amount on line 2c. If line 2c is $239,100 or less ($119,550 or less if married filing
+          separately), multiply line 2c by 26% (0.26). Otherwise, multiply line 2c by 28% (0.28) and subtract $4,782
+          ($2,391 if married filing separately) from the result . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         5.
+ 6.       Subtract line 5 from line 4. Enter the result here and on Form 6251, line 7 . . . . . . . . . . . . . . . . . . . . . . . .                       6.
+
+
+
+10                                                                                                                                           Instructions for Form 6251 (2025)
+your foreign tax credit without filing Form 1116, see the            Individuals with capital gain distributions only. If you
+Instructions for Form 1116.                                        have no capital gains or losses other than capital gain
+   Otherwise, figure your AMTFTC as follows.                       distributions from box 2a of Form(s) 1099-DIV or substitute
+                                                                   statement(s), you must adjust your foreign source capital
+Step 1. Separate your foreign source income into                   gain distributions if you are required to adjust your foreign
+categories. See the Instructions for Form 1116 for information     source qualified dividends under the rules just described or
+about categories of income. Complete a separate AMT Form           you would be required to adjust your foreign source qualified
+1116 for each separate category of income. Enter “AMT” and         dividends if you had any.
+specify the category of income in the top margin of each
+                                                                      To adjust your foreign source capital gain distributions,
+Form 1116.
+                                                                   multiply your foreign source capital gain distributions in each
+  Figuring high-taxed income. When applying the                    separate category by 0.5357 if the foreign source capital gain
+separate categories of income, use the applicable AMT rate         distributions are taxed at a rate of 15%, and by 0.7143 if they
+instead of the regular tax rate to determine if any income is      are taxed at a rate of 20%. Include the results on line 1a of
+“high-taxed.”                                                      the applicable AMT Form 1116.
+Step 2. Complete Part I of each AMT Form 1116 using only              You adjust your foreign source capital gain distributions
+income and deductions that are allowed for the AMT and             taxed at the 0% rate by not including them on line 1a.
+attributable to sources outside the United States.                 Amounts taxed at the 0% rate are on line 9 of the Qualified
+   Simplified limitation election. If you previously made or       Dividends and Capital Gain Tax Worksheet or line 22 of the
+are making the simplified limitation election, skip Part I and     Schedule D Tax Worksheet.
+go to Step 3. For more information about the simplified
+limitation election, see Simplified Limitation Election, later.            Don’t adjust the amount of any foreign source capital
+                                                                     !     gain distributions you elected to include on line 4g of
+Foreign source qualified dividends and capital gains. If           CAUTION AMT Form 4952.
+you have any foreign source qualified dividends or foreign
+source capital gains (including any foreign source capital            Individuals with other capital gains or losses. If any
+gain distributions) or losses, use the following instructions to   capital gain or loss is different for the AMT, use amounts as
+determine whether you must make adjustments to those               refigured for the AMT to complete this step. Use Worksheet A
+amounts before you include the amounts on line 1a or line 5        in the Instructions for Form 1116 to determine the
+of the AMT Form 1116.                                              adjustments you must make to your foreign source capital
+   Foreign qualified dividends. You must adjust your               gains or losses (as refigured for the AMT) if you have foreign
+foreign source qualified dividends before you include those        source capital gains or losses (as refigured for the AMT) in no
+amounts on line 1a of the AMT Form 1116 if:                        more than two separate categories and any of the following
+• Line 38 of Form 6251 is smaller than line 39, and                apply.
+• Line 17 of Form 6251 is greater than zero.                       • You aren’t required to make adjustments to your foreign
+                                                                   source qualified dividends under the rules described earlier
+    But you don’t need to make any adjustments if:                 (or you wouldn’t be required to make those adjustments if you
+• You qualify for the adjustment exception under Qualified         had foreign source qualified dividends).
+Dividends and Capital Gain Tax Worksheet (Individuals) or          • Line 15 or 16 of the AMT Schedule D (Form 1040) is zero
+Adjustments to foreign qualified dividends under Schedule D        or a loss.
+Filers in the Instructions for Form 1116, and                      • On the AMT Qualified Dividends and Capital Gain Tax
+• Line 17 of Form 6251 isn’t more than $239,100 ($119,550          Worksheet, (a) line 3 of that worksheet is zero or less, (b)
+if married filing separately (on Form 1040, 1040-SR, or            line 5 of that worksheet is zero, or (c) line 23 of that
+1040-NR)).                                                         worksheet is equal to or greater than line 24.
+    Use your capital gains and losses as refigured for the AMT     • On the AMT Schedule D Tax Worksheet, (a) line 18 is zero,
+to determine whether your total amounts are less than the          (b) line 9 is zero or less, or (c) line 45 is equal to or greater
+$20,000 threshold under the adjustment exception. If you           than line 46.
+qualify for the adjustment exception, your election also               Use Worksheet B in the Instructions for Form 1116 if you:
+applies when you determine whether you must adjust your            • Can’t use Worksheet A,
+capital gain distributions or other capital gains or losses. It    • Have foreign source capital gains and losses in no more
+also applies to Step 4.                                            than two separate categories,
+    To adjust your foreign source qualified dividends, multiply    • Didn’t have any item of unrecaptured section 1250 gain or
+your foreign source qualified dividends in each separate           28% rate gain or loss for the AMT, and
+category by 0.5357 if the foreign source qualified dividends       • Don’t have any capital gains taxed at a rate of 0% or 20%.
+are taxed at a rate of 15%, and by 0.7143 if they are taxed at        Instructions for Worksheets A and B. When you
+a rate of 20%. Include the results on line 1a of the applicable    complete Worksheet A or Worksheet B, use foreign source
+AMT Form 1116.                                                     capital gains and losses, as refigured for the AMT if
+    You adjust your foreign source qualified dividends taxed at    necessary, and don’t use any foreign source capital gains you
+the 0% rate by not including them on line 1a. Amounts taxed        elected to include on line 4g of AMT Form 4952. If you are
+at the 0% rate are on line 9 of the Qualified Dividends and        required to complete a Schedule D for the AMT, use line 16 of
+Capital Gain Tax Worksheet or line 22 of the Schedule D Tax        that AMT Schedule D to complete line 3 of Worksheet A or
+Worksheet.                                                         line 4 of the Line 2 Worksheet for Worksheet B. Use 0.5357
+                                                                   instead of the number used for regular tax to complete lines
+        Don’t adjust the amount of any foreign source              11, 13, and 15 of Worksheet B and to complete lines 8, 11,
+  !     qualified dividends you elected to include on line 4g      and 17 of the Line 15 Worksheet for Worksheet B.
+CAUTION of AMT Form 4952.
+                                                                       If you don’t qualify to use Worksheet A or Worksheet B,
+                                                                   use the instructions under Capital Gains and Losses in Pub.
+
+Instructions for Form 6251 (2025)                                                                                                11
+514 to determine the adjustments you make. When using the             6. Multiply line 6 of the worksheet by 0.2857 (instead of
+instructions in Pub. 514 to determine if you must adjust          the number used for regular tax). Enter the result on line 7 of
+foreign source capital gains and losses, make the following       the worksheet.
+substitutions.                                                        7. Enter the amount from Form 6251, line 30, on line 8 of
+• When the amount of any AMT gain is in the 15% rate              the worksheet.
+group, multiply it by 0.5357 instead of the number used for
+regular tax.                                                          8. Multiply line 8 of the worksheet by 0.4643 (instead of
+                                                                  the number used for regular tax). Enter the result on line 9 of
+• When the amount of any AMT gain is in the 20% rate              the worksheet.
+group, multiply it by 0.7143 instead of the number used for
+regular tax.                                                          9. Enter the amount from Form 6251, line 23, on line 10
+• When the amount of any AMT gain is in the 25% rate              of the worksheet.
+group, multiply it by 0.8929 instead of the number used for           10. Complete lines 11 and 12 of the worksheet, as
+regular tax.                                                      instructed on the worksheet.
+• When the amount of any AMT gain is in the 28% rate                  11. Enter the amount from your AMT Worksheet for
+group, multiply it by 1.0 instead of the number used for          Line 18 on your AMT Form 1116, line 18.
+regular tax.
+Step 3. Complete Part II and lines 9 through 17 of the AMT        Step 5. Enter the amount from Form 6251, line 7, on the
+Form 1116. Use your AMTFTC carryover, if any, on                  AMT Form 1116, line 20. Complete lines 19 through 24 of the
+line 10.                                                          AMT Form 1116.
+   Simplified limitation election. If you previously made or      Step 6. Complete Part IV of the first AMT Form 1116 only.
+are making the simplified limitation election, complete Part II
+and lines 9 through 14. Use your AMTFTC carryover, if any,            Enter on Form 6251, line 8, the amount from line 35 of the
+on line 10. Skip lines 15 and 16. Enter on your AMT Form          first AMT Form 1116.
+1116, line 17, the same amount you entered on that line for
+the regular tax.                                                      Attach to your tax return, after Form 6251, all AMT Forms
+                                                                  1116 (and, if applicable, Schedule B (Form 1116)) you used
+Step 4. Enter the amount from line 4 of Form 6251 on line 18      to figure your AMTFTC. But don’t attach AMT Forms 1116 if
+of the AMT Form 1116 unless you must complete an AMT              your AMTFTC is the same as your regular tax foreign tax
+Worksheet for Line 18. In most cases, you must complete an        credit.
+AMT Worksheet for Line 18 if you completed Part III of Form
+6251 and:                                                         AMTFTC Carryback and Carryforward
+• Line 38 of Form 6251 is smaller than line 39, and
+• Line 17 of Form 6251 is greater than zero.                      If your AMTFTC is limited, the unused amount may generally
+    But even if you meet the requirements above, you don’t        be carried back or forward according to section 904(c).
+need to complete an AMT Worksheet for Line 18 if:
+• You qualify for the adjustment exception under Qualified        No AMTFTC carryback or carryforward allowed in 2025.
+Dividends and Capital Gain Tax Worksheet (Individuals) or         If you made the election to claim the foreign tax credit on your
+Adjustments to foreign qualified dividends under Schedule D       2025 tax return without filing Form 1116, any unused
+Filers in the Instructions for Form 1116, and                     AMTFTC for 2025 can’t be carried back or forward. In
+• Line 17 of Form 6251 isn’t more than $239,100 ($119,550         addition, you can’t claim any unused AMTFTC from another
+if married filing separately (on Form 1040, 1040-SR, or           year in 2025.
+1040-NR)).                                                            For more information about electing to claim your foreign
+Note: Use your capital gains and losses as refigured for the      tax credit without filing Form 1116, see the Instructions for
+AMT to determine whether your total amounts are less than         Form 1116.
+the $20,000 threshold under the adjustment exception. If you
+have any foreign source qualified dividends or capital gains      Simplified Limitation Election
+(or losses), then you must make the same adjustment
+exception election you made in Step 2.                            You may elect to use a simplified section 904 limitation to
+   Instructions for AMT Worksheet for Line 18. If you             figure your AMTFTC. If you do, when figuring your AMTFTC,
+must complete an AMT Worksheet for Line 18 for your AMT           you will use the same net foreign source income for AMT that
+Form 1116, you will use the Worksheet for Line 18 in the          you used for regular tax. (The amount on line 17 of your AMT
+Instructions for Form 1116 and do the following.                  Form 1116 will be the same as the amount on line 17 of your
+    1. Enter the amount from Form 6251, line 4, on line 1 of      regular tax Form 1116.) You must make the election for the
+the worksheet.                                                    first tax year after 1997 for which you claim an AMTFTC. If
+    2. Skip lines 2 and 3 of the worksheet.                       you don’t make the election for that year, you may not make it
+                                                                  for a later year. Once made, the election applies to all later
+    3. Enter the amount from Form 6251, line 36, on line 4 of     tax years and may be revoked only with IRS consent.
+the worksheet.
+    4. Multiply line 4 of the worksheet by 0.1071 (instead of     Line 10
+the number used for regular tax). Enter the result on line 5 of   If you file Form 8978, Partner’s Additional Reporting Year Tax,
+the worksheet.                                                    you will need to decrease the amount you report on Form
+    5. Enter the amount from Form 6251, line 33, on line 6 of     6251, line 10, by any negative amount reported on Form
+the worksheet.                                                    8978, line 14 (treated as a positive number). If any additional
+                                                                  guidance is provided related to reporting amounts from Form
+                                                                  8978 on Form 6251, we will post it at IRS.gov/Form6251
+                                                                  under Recent Developments.
+
+12                                                                                           Instructions for Form 6251 (2025)
+   If you file Schedule J (Form 1040), Income Averaging for            Step 1. Complete an AMT Form 8949 or, if applicable,
+Individuals With Income from Farming or Fishing, to figure          lines 1a and 8a of an AMT Schedule D by refiguring, for
+your tax on Form 1040, 1040-SR, or 1040-NR, line 16, you            example, your basis for the AMT.
+must refigure that tax (including any tax from Form 8814)              Step 2. Complete lines 1b through 20 of an AMT
+without using Schedule J before completing this line. This is       Schedule D.
+only for Form 6251; don’t change the amount on Form 1040,              Step 3. Complete lines 2 through 4 of an AMT Qualified
+1040-SR, or 1040-NR, line 16.                                       Dividends and Capital Gain Tax Worksheet or lines 2 through
+Form 1040-NR. If you are filing Form 1040-NR, add Form              13 of an AMT Schedule D Tax Worksheet, whichever applies.
+1040-NR, line 16 (minus any tax from Form 4972, Tax on              (See line 20 of your AMT Schedule D, if you completed one,
+Lump-Sum Distributions), and Schedule 2 (Form 1040),                to determine which worksheet applies.)
+line 1z. Subtract from the result Schedule 3 (Form 1040),              Complete lines 3 and 4 of the AMT Schedule D Tax
+line 1, and any negative amount reported on Form 8978,              Worksheet using your AMT Form 4952.
+line 14 (treated as a positive number). If zero or less,               Step 4. Use amounts from the AMT Qualified Dividends
+enter -0-. If you file Schedule J to figure your tax on Form        and Capital Gain Tax Worksheet or AMT Schedule D Tax
+1040-NR, line 16, refigure that tax without using Schedule J        Worksheet, whichever applies, and the AMT Schedule D to
+before completing Form 6251, line 10 (see preceding                 complete lines 13, 14, and 15.
+paragraph).                                                            If you filed Form 2555, see Form 2555, later, for additional
+                                                                    modifications you may have to make before entering amounts
+Line 11—AMT                                                         on lines 13, 14, and 15.
+If you are filing Form 1040-NR, enter the amount from line 11
+on Schedule 2 (Form 1040), line 2.                                  Only statement (2) applies. If (2) applies but (1) and (3)
+                                                                    don’t, complete the following steps.
+Part III—Tax Computation Using                                        Step 1. Complete lines 2 through 4 of an AMT Qualified
+                                                                    Dividends and Capital Gain Tax Worksheet or lines 2 through
+Maximum Capital Gains Rates                                         13 of an AMT Schedule D Tax Worksheet, whichever applies.
+                                                                    (See line 20 of your Schedule D to determine which
+Lines 13, 14, and 15                                                worksheet applies.)
+Determine if any of the following statements apply.                    Complete lines 3 and 4 of the AMT Schedule D Tax
+   1. The gain or loss from any transaction reported on             Worksheet, using your AMT Form 4952.
+Form 8949 or Schedule D is different for the AMT (for                 Step 2. Use amounts from the AMT Qualified Dividends
+example, because of a different basis for the AMT due to            and Capital Gain Tax Worksheet or AMT Schedule D Tax
+depreciation adjustments, an ISO adjustment, or a different         Worksheet, whichever applies, and the Schedule D you used
+AMT capital loss carryover from 2024).                              for regular tax to complete lines 13, 14, and 15.
+   2. You didn’t complete either the Qualified Dividends and           If you filed Form 2555, see Form 2555, later, for additional
+Capital Gain Tax Worksheet or the Schedule D Tax                    modifications you may have to make before entering amounts
+Worksheet because Form 1040, 1040-SR, or 1040-NR,                   on lines 13, 14, and 15.
+line 15, is zero.
+                                                                            Keep the AMT Form 8949, AMT Schedule D, and the
+   3. You received a Schedule K-1 (Form 1041) that shows             TIP applicable AMT worksheet for your records but don’t
+an amount in box 12 with code B, C, D, E, or F.                             attach any of them to your tax return.
+   Then, use the following instructions that apply to you.
+• If none of the statements apply, go to None of the                Note: Don’t decrease your section 1202 exclusion by the
+statements apply, later.                                            amount, if any, on line 2h.
+• If only statement (2) applies, go to Only statement (2)           Form 2555. If you are filing Form 2555 and you have an
+applies, later.
+                                                                    AMT capital gain excess, you must complete Part III of Form
+• If statement (3) applies (by itself or in combination with        6251 with certain modifications. To see if you have an AMT
+statement (1) or (2)), go to Beneficiaries of estates or trusts
+first, then go to Statement (1) or (3) applies, later.              capital gain excess, subtract Form 6251, line 6, from line 4 of
+                                                                    your AMT Qualified Dividends and Capital Gain Tax
+• For all other situations, go to Statement (1) or (3) applies,     Worksheet or line 10 of your AMT Schedule D Tax
+later.
+                                                                    Worksheet, whichever applies. If the result is greater than
+None of the statements apply. If (1), (2), or (3) don’t apply,      zero, that amount is your AMT capital gain excess.
+then for Part III of these instructions, the AMT versions of your       If you have AMT capital gain excess, figure the amounts to
+Qualified Dividends and Capital Gain Tax Worksheet,                 enter on lines 13, 14, and 15 of Form 6251 using the
+Schedule D Tax Worksheet, Unrecaptured Section 1250 Gain            following modifications (only for purposes of Part III of Form
+Worksheet, 28% Rate Gain Worksheet, and Schedule D will             6251).
+be the same as those you used for regular tax purposes. Use
+the regular tax amounts to complete lines 13, 14, and 15.               1. Reduce the amount you would otherwise enter on
+                                                                    line 3 of your AMT Qualified Dividends and Capital Gain Tax
+   If you filed Form 2555, see Form 2555, later, for additional     Worksheet or line 9 of your AMT Schedule D Tax Worksheet
+modifications you may have to make before entering amounts          (but not below zero) by your AMT capital gain excess.
+on lines 13, 14, and 15.
+                                                                        2. Reduce the amount you would otherwise enter on
+Statement (1) or (3) applies. If (1) applies, complete all of       line 2 of your AMT Qualified Dividends and Capital Gain Tax
+the following steps. If (3) applies but (1) doesn’t, complete       Worksheet or line 6 of your AMT Schedule D Tax Worksheet
+steps 2 through 4 only.                                             (but not below zero) by any of your AMT capital gain excess
+                                                                    not used in (1).
+
+Instructions for Form 6251 (2025)                                                                                               13
+   3. Reduce the amount on your AMT Schedule D (Form                              the regular tax). If you didn’t complete either worksheet for
+1040), line 18 (but not below zero), by your AMT capital gain                     the regular tax, enter the amount from Form 1040-NR,
+excess.                                                                           line 15; if zero or less, enter -0-.
+   4. Include your AMT capital gain excess as a loss on                           Form 2555. If you are filing Form 2555, the amount you
+line 16 of your AMT Unrecaptured Section 1250 Gain                                enter on line 20 will take into account your regular tax capital
+Worksheet in the Instructions for Schedule D (Form 1040).                         gain excess, if any. Don’t refigure it using the amount of your
+     Also see the instructions for line 20.                                       AMT capital gain excess.
+                                                                                     If you are filing Form 2555 and you didn’t complete either
+Beneficiaries of estates or trusts. If you received a                             the Qualified Dividends and Capital Gain Tax Worksheet or
+Schedule K-1 (Form 1041) that shows an adjustment in                              the Schedule D Tax Worksheet for the regular tax, enter the
+box 12, follow the instructions in the following table.                           amount from line 3 of the Foreign Earned Income Tax
+ IF the code in box 12 is...   THEN include that adjustment in figuring the       Worksheet in the Form 1040 instructions (as figured for the
+                               amount on...                                       regular tax).
+              B                line 2 of an AMT Qualified Dividends and Capital
+                               Gain Tax Worksheet or an AMT Schedule D Tax        Line 25
+                               Worksheet, whichever applies.                      If you are filing Form 1040-NR, enter on Form 6251, line 25,
+              C                line 5 of an AMT Schedule D.                       the amount from the list below that corresponds to your filing
+              D                line 12 of an AMT Schedule D.                      status.
+              E                line 11 of an AMT Unrecaptured Section 1250
+                                                                                  • $533,400 if single.
+                               Gain Worksheet.
+                                                                                  • $300,000 if married filing separately.
+                                                                                  • $600,050 if qualifying surviving spouse.
+               F               line 4 of an AMT 28% Rate Gain Worksheet.
+                                                                                  Line 27
+                                                                                  If you are filing Form 1040-NR, enter on Form 6251, line 27,
+Form 1040-NR. If you are filing Form 1040-NR, enter on                            the amount from line 5 of the Qualified Dividends and Capital
+Form 6251, line 13, the amount from line 4 of the Qualified                       Gain Tax Worksheet or the amount from line 21 of the
+Dividends and Capital Gain Tax Worksheet or the amount                            Schedule D Tax Worksheet, whichever applies (as figured for
+from line 13 of the Schedule D Tax Worksheet, whichever                           the regular tax). If you didn’t complete either worksheet for
+applies (as refigured for the AMT, if necessary).                                 the regular tax, enter the amount from Form 1040-NR,
+                                                                                  line 15; if zero or less, enter -0-.
+Line 18
+If you are filing Form 1040-NR and Form 6251, line 17, is                         Form 2555. If you are filing Form 2555, the amount you
+$239,100 or less ($119,550 or less if married filing                              enter on line 27 will take into account your regular tax capital
+separately), multiply line 17 by 26% (0.26). Otherwise,                           gain excess, if any. Don’t refigure it using the amount of your
+multiply line 17 by 28% (0.28) and subtract $4,782 ($2,391 if                     AMT capital gain excess.
+married filing separately) from the result.                                          If you are filing Form 2555 and you didn’t complete either
+                                                                                  the Qualified Dividends and Capital Gain Tax Worksheet or
+Line 19                                                                           the Schedule D Tax Worksheet for the regular tax, enter the
+If you are filing Form 1040-NR, enter $48,350 ($96,700 if your                    amount from Form 6251, line 20.
+filing status is qualifying surviving spouse).
+                                                                                  Line 39
+Line 20                                                                           If you are filing Form 1040-NR and Form 6251, line 12, is
+If you are filing Form 1040-NR, enter on Form 6251, line 20,                      $239,100 or less ($119,550 or less if married filing
+the amount from line 5 of the Qualified Dividends and Capital                     separately), multiply line 12 by 26% (0.26). Otherwise,
+Gain Tax Worksheet or the amount from line 14 of the                              multiply line 12 by 28% (0.28) and subtract $4,782 ($2,391 if
+Schedule D Tax Worksheet, whichever applies (as figured for                       married filing separately) from the result.
+
+
+
+
+14                                                                                                            Instructions for Form 6251 (2025)
+

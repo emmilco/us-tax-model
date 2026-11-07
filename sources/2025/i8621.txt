@@ -1,0 +1,1151 @@
+Instructions for Form 8621
+(Rev. December 2025)
+Information Return by a Shareholder of a Passive Foreign Investment Company or
+Qualified Electing Fund
+Section references are to the Internal Revenue Code               A separate Form 8621 must be filed for each PFIC in
+unless otherwise noted.                                         which stock is held directly or indirectly. In the case of a
+                                                                chain of ownership, under the five circumstances
+Future Developments                                             described above, unless otherwise provided, if the
+For the latest information about developments relating to       shareholder owns one PFIC and through that PFIC owns
+Form 8621 and its instructions, such as legislation             one or more other PFICs, the shareholder must file a Form
+enacted after they were published, go to IRS.gov/               8621 for each PFIC in the chain.
+Form8621.
+                                                                    A single Form 8621 may be filed with respect to a PFIC
+What’s New                                                      to report the information required by section 1298(f) (that
+                                                                is, Part I), as well as to report information in Parts III
+New Part V lines on page 3 of Form 8621. In the entry           through VI of the form and to make elections in Part II of
+space provided for the new line above line 15a, filers are      the form. For example, a U.S. person that has made a
+required to enter a three-letter currency code.                 section 1296 mark-to-market election with respect to a
+   New line 15e(2) requests filers to report the line 15e(1)    PFIC will file a single Form 8621 and complete Part I and
+amount in U.S. dollars. If the amount on line 15e(1) is in a    Part IV.
+foreign currency, filers must convert the amount to U.S.        Indirect shareholder. Generally, a U.S. person is an
+dollars.                                                        indirect shareholder of a PFIC if it is:
+   See instructions for more information about both of          • A 50%-or-more shareholder of a foreign corporation
+these new lines.                                                that is not a PFIC and that directly or indirectly owns stock
+                                                                of a PFIC,
+General Instructions                                            • A shareholder of a PFIC where the PFIC itself is a
+                                                                shareholder of another PFIC, or
+Who Must File                                                   • A direct or indirect owner of a pass-through entity where
+                                                                the pass-through entity itself is a direct or indirect
+Qualifying Insurance Corporation                                shareholder of a PFIC.
+A U.S. person that owns stock (or holds an option to               For more information on determining whether a U.S.
+purchase stock) of a foreign corporation and elects to treat    person is an indirect shareholder, see Regulations section
+such stock as the stock of a qualifying insurance               1.1291-1(b)(8).
+corporation under the alternative facts and circumstances          For purposes of these rules, a pass-through entity is a
+test within the meaning of section 1297(f)(2) and               partnership, S corporation, trust, or estate.
+Regulations section 1.1297-4(d) must file a
+                                                                   However, a U.S. person that owns stock of a PFIC
+limited-information Form 8621. For details, see Election To
+                                                                through a tax-exempt organization or account described in
+Be Treated as a Qualifying Insurance Corporation, later.
+                                                                the list below is not treated as a shareholder of the PFIC.
+Passive Foreign Investment Corporation (PFIC)                   • An organization or an account that is exempt from tax
+                                                                under section 501(a) because it is described in section
+Generally, a U.S. person that is a direct or indirect           501(c), 501(d), or 401(a).
+shareholder of a PFIC must file Form 8621 for each tax          • A state college or university described in section 511(a)
+year under the following five circumstances if the U.S.         (2)(B).
+person:                                                         • A plan described in section 403(b) or 457(b).
+   1. Receives certain direct or indirect distributions from    • An individual retirement plan or annuity as defined in
+a PFIC,                                                         section 7701(a)(37).
+   2. Recognizes gain on a direct or indirect disposition       • A qualified tuition program described in section 529 or
+of PFIC stock,                                                  530.
+   3. Is reporting information with respect to a Qualified      • A qualified ABLE program described in section 529A.
+Electing Fund (QEF) or section 1296 mark-to-market              Interest holder of pass-through entities. In general,
+election,                                                       the following interest holders must file Form 8621, unless
+   4. Is making an election reportable in Part II of the        an exception applies.
+form, or                                                           1. A U.S. person that is an interest holder of a foreign
+   5. Is required to file an annual report pursuant to          pass-through entity that is a direct or indirect shareholder
+section 1298(f). See the Part I instructions, later, for more   of a PFIC.
+information regarding the person that must file pursuant to
+section 1298(f).
+
+                              Instructions for Form 8621 (Rev. 12-2025) Catalog Number 10784P
+Dec 8, 2025                   Department of the Treasury Internal Revenue Service www.irs.gov
+   2. A U.S. person that is considered (under sections           any corporation in which it owns at least 25% of the stock
+671 through 679) the shareholder of PFIC stock held in           (by value).
+trust.
+                                                                 CFC overlap rule. A U.S. shareholder (defined in section
+   3. A U.S. partnership, S corporation, U.S. trust (other       951(b)) that includes in income its pro rata share of
+than a trust that is subject to sections 671 through 679 for     subpart F income for stock of a CFC that is also a PFIC
+the PFIC stock), or U.S. estate that is a direct or indirect     will not generally be subject to the PFIC provisions for the
+shareholder of a PFIC.                                           same stock during the qualified portion of the
+                                                                 shareholder's holding period of the stock in the PFIC. This
+Note: U.S. persons that are interest holders of                  exception does not apply to option holders. For more
+pass-through entities described in 3 above must file Form        information, see section 1297(d).
+8621 if the pass-through entity fails to file such form or the
+U.S. person is required to recognize any income under            Note: The attribution rules of section 1298(a)(2)(B) will
+section 1291.                                                    continue to apply even if the foreign corporation is not
+                                                                 treated as a PFIC with respect to the shareholder under
+When and Where To File                                           section 1297(d).
+Attach Form 8621 to the shareholder's tax return (or, if
+applicable, partnership or exempt organization return) and       Qualified Electing Fund (QEF) Election
+file both by the due date, including extensions, of the          A PFIC is a QEF if a U.S. person who is a direct or indirect
+return at the Internal Revenue Service Center where the          shareholder of the PFIC elects (under section 1295(b)) to
+tax return is required to be filed.                              treat the PFIC as a QEF and complies with the
+                                                                 requirements described in section 1295(a)(2). See the
+   If you are not required to file an income tax return or
+                                                                 instructions for Election A, later, for information on making
+other return for the tax year, file Form 8621 directly with
+                                                                 this election.
+the Internal Revenue Service Center, Ogden, UT
+84201-0201.
+                                                                 Tax Consequences for Shareholders of a QEF
+Definitions and Special Rules
+                                                                 • A shareholder of a QEF must annually include in gross
+Passive Foreign Investment Company (PFIC)                        income, as ordinary income, its pro rata share of the
+A foreign corporation is a PFIC if it meets either the           ordinary earnings of the QEF and as long-term capital
+income or asset test described next.                             gain its pro rata share of the net capital gain of the QEF.
+                                                                 • The shareholder may elect to extend the time for
+   1. Income test. 75% or more of the corporation's              payment of tax on its share of the undistributed earnings
+gross income for its tax year is passive income (as defined      of the QEF (Election B) until the QEF election is
+in section 1297(b)).                                             terminated.
+   2. Asset test. At least 50% of the average percentage         • If the QEF election is not made with respect to the first
+of assets (determined under section 1297(e)) held by the         year of the shareholder’s holding period in the PFIC, the
+foreign corporation during the tax year are assets that          shareholder may be able to make a deemed sale election
+produce passive income or that are held for the production       (Election D) or deemed dividend election (Election E) (if
+of passive income.                                               eligible). If the shareholder properly makes a deemed sale
+                                                                 election or deemed dividend election in connection with
+Basis for measuring assets. When determining PFIC                its QEF election, then the PFIC will become a pedigreed
+status using the asset test, a foreign corporation must use      QEF (as defined in Regulations section 1.1291-9(j)(2)(ii))
+adjusted basis if:                                               with respect to the shareholder.
+   1. The corporation is not publicly traded for the tax
+year; and                                                        Note: A shareholder that receives a distribution from an
+                                                                 unpedigreed QEF (defined in Regulations section
+   2. The corporation is a controlled foreign corporation
+                                                                 1.1291-9(j)(2)(iii)) is also subject to the rules applicable to
+(CFC) under Regulations section 1.1297-1(d)(1)(v)(B)(2).
+                                                                 a shareholder of a section 1291 fund, later.
+   In addition, a non-publicly traded foreign corporation
+                                                                 Basis adjustments. A shareholder's basis in the stock of
+that is not a CFC may use adjusted basis if an election is
+                                                                 a QEF, or in any property through which the shareholder is
+made to use adjusted basis. The election can be made
+                                                                 treated as owning stock of a QEF, is increased by the
+either by the corporation or by certain of its owners. If
+                                                                 earnings included in gross income and decreased by a
+made by an owner, the election must be made according
+                                                                 distribution from the QEF to the extent of previously taxed
+to the rules of Regulations section 1.1297-1(d)(1)(iv).
+                                                                 amounts.
+   Publicly traded foreign corporations must use fair
+market value when determining PFIC status using the              Section 1291 Fund
+asset test. See Regulations section 1.1297-1(f)(7) for           A PFIC is a section 1291 fund if:
+guidance on when a foreign corporation is publicly traded
+                                                                    1. The shareholder did not elect to treat the PFIC as a
+for this purpose.
+                                                                 QEF or make a mark-to-market election with respect to
+Look-thru rule. When determining if a foreign                    the PFIC, or
+corporation is a PFIC, the foreign corporation is treated as        2. The PFIC is an unpedigreed QEF (as defined in
+if it directly held its proportionate share of the assets and    Regulations section 1.1291-9(j)(2)(iii)).
+directly received its proportionate share of the income of
+
+2                                                                                   Instructions for Form 8621 (Rev. 12-2025)
+Tax Consequences for Shareholders of a Section                       3. A foreign securities exchange that is regulated or
+1291 Fund                                                         supervised by a governmental authority of the country in
+                                                                  which the market is located and has the characteristics
+Shareholders of a section 1291 fund are subject to special        described in Regulations section 1.1296-2(c)(1)(ii).
+rules when they receive an excess distribution (defined           • Stock in certain PFICs described in Regulations section
+below) from, or recognize gain on the sale or disposition of      1.1296-2(d).
+the stock of, a section 1291 fund. A distribution may be             For additional information, including special rules for
+partly or wholly an excess distribution. The entire amount        regulated investment companies (RICs) that own PFIC
+of gain from the disposition of a section 1291 fund is            stock, see Regulations section 1.1296-1 and 1.1296-2.
+treated as an excess distribution.
+Excess distributions. An excess distribution is the part          Tax Consequences
+of the distribution received from a section 1291 fund in the
+current tax year that is greater than 125% of the average         After a PFIC shareholder elects to mark the stock to
+distributions received in respect of such stock by the            market under section 1296, the shareholder either:
+shareholder during the 3 preceding tax years (or, if
+                                                                     1. Includes in income each year an amount equal to
+shorter, the portion of the shareholder's holding period
+                                                                  the excess, if any, of the fair market value of the PFIC
+before the current tax year). No part of a distribution
+                                                                  stock as of the close of the tax year over the shareholder's
+received or deemed received during the first tax year of
+                                                                  adjusted basis in such stock; or
+the shareholder's holding period of the stock will be
+treated as an excess distribution.                                   2. Is allowed a deduction equal to the lesser of:
+    The excess distribution is determined on a per share             a. The excess, if any, of the adjusted basis of the PFIC
+basis and is allocated to each day in the shareholder's           stock over its fair market value as of the close of the tax
+holding period of the stock. See section 1291(b)(3) for           year; or
+adjustments that are made when determining if a                      b. The excess, if any, of the amount of mark-to-market
+distribution is an excess distribution.                           gain included in the gross income of the PFIC shareholder
+    Portions of an excess distribution are treated differently.   for prior tax years over the amount allowed such PFIC
+The portions allocated to the days in the current tax year        shareholder as a deduction for a loss with respect to such
+and the shareholder's tax years in its holding period             stock for prior tax years.
+before the foreign corporation qualified as a PFIC
+(pre-PFIC years) are taxed as ordinary income. The                   See the instructions for Part II, Election C, and Part IV,
+portions allocated to the days in the shareholder's tax           later, for more information, including special rules that may
+years (other than the current tax year) in its holding period     apply in the year that a mark-to-market election is made.
+when the foreign corporation was a PFIC are not included          Basis adjustment. If the stock is held directly, the
+in income, but are subject to the separate tax and interest       shareholder's adjusted basis in the PFIC stock is
+charge set forth in section 1291(c).                              increased by the amount included in income and
+    See the instructions for Part V, later.                       decreased by any deductions allowed. If the stock is
+Exempt organizations. If a shareholder of a PFIC is a             owned indirectly through foreign entities, see Regulations
+tax-exempt organization, the rules of section 1291 will           section 1.1296-1(d)(2).
+apply only if a dividend from the PFIC would be taxable to        Additional Information Required
+the shareholder under subchapter F.
+                                                                  Reportable transaction disclosure statement. A 10%
+Coordination of mark-to-market regimes with section
+                                                                  shareholder (by vote or value) of a QEF may also be
+1291. Shareholders of a PFIC that is marked to market
+                                                                  required to file Form 8886 if the QEF is considered to have
+under section 1296 or any other Code provision may be
+                                                                  participated in a reportable transaction pursuant to
+subject to section 1291 in the first tax year in which the
+                                                                  Regulations section 1.6011-4(c)(3)(i)(G). See Form 8886,
+shareholder marks to market the PFIC stock. See
+                                                                  Reportable Transaction Disclosure Statement, and
+Regulations sections 1.1291-1(c)(4) and 1.1296-1(i).
+                                                                  Regulations section 1.6011-4 for additional information.
+Mark-to-Market Election                                           Rounding Off to Whole Dollars
+A shareholder of a PFIC may elect to mark to market the           The shareholder may enter decimal points and cents
+PFIC stock under section 1296 if the stock is “marketable         when completing Form 8621. However, the shareholder
+stock.” See the instructions for Election C, later, for           should consider rounding off cents to whole dollars on
+information on making this election.                              Form 8621 because it may make completing the form
+Marketable stock. Marketable stock is:                            easier. The shareholder must either round off all amounts
+• PFIC stock that is regularly traded (as defined in              on Form 8621 to whole dollars or use cents for all
+Regulations section 1.1296-2(b)) on:                              amounts. To round, drop amounts under 50 cents and
+   1. A national securities exchange that is registered           increase amounts from 50 to 99 cents to the next dollar.
+with the Securities and Exchange Commission (SEC),                For example, $8.40 rounds to $8 and $8.50 rounds to $9.
+   2. The national market system established under                  If two or more amounts must be added to figure the
+section 11A of the Securities Exchange Act of 1934, or            amount to enter on a line, include cents when adding the
+                                                                  amounts and round off only the total.
+
+Instructions for Form 8621 (Rev. 12-2025)                                                                                      3
+                                                                   • The foreign corporation (or its foreign parent
+Specific Instructions                                              corporation on its behalf) makes a publicly available
+                                                                   statement (such as in a public filing, disclosure statement,
+Important: All line references to Form 1120 and Form               or other notice provided to U.S. persons that are
+1040 are to the 2025 forms. Other entities should use the          shareholders of the foreign corporation) that it satisfied the
+comparable line on their tax return.                               requirements of section 1297(f)(2) and Regulations
+                                                                   section 1.1297-4(d)(1) during the foreign corporation's
+Excepted Specified Foreign Financial                               applicable reporting period (as defined in Regulations
+Assets Reported                                                    section 1.1297-4(f)(4)). This publicly available statement
+Check this box only if the Form 8621 filer also files Form         must include the same three items noted in the first
+8938, Statement of Specified Foreign Financial Assets, for         bulleted item above. However, a shareholder may not rely
+the tax year and includes this form in the total number of         upon the foreign corporation’s statement described in this
+Forms 8621 reported on line 4 of Part IV, Excepted                 bullet if the U.S. person knows or has reason to know
+Specified Foreign Financial Assets, of Form 8938. For              based upon reasonably accessible information that the
+more information, see the Instructions for Form 8938,              statement was incorrect.
+available at IRS.gov/Form8938, generally, and in                   Note: The final regulations do not require the U.S. person
+particular, Duplicative Reporting and the specific                 to attach a copy of either of the above statements to Form
+instructions for Part IV, Excepted Specified Foreign               8621. See Regulations section 1.1297-4(d)(5).
+Financial Assets.
+                                                                   When to make the election. Generally, the shareholder
+Election To Be Treated as a Qualifying                             must make this election by the due date, including
+Insurance Corporation                                              extensions, of the U.S. person’s tax return for the tax year
+                                                                   for which the taxpayer is relying on the alternative facts
+Who may make the election. A U.S. person that is a                 and circumstances test within the meaning of section
+shareholder (or holds an option to purchase stock) of a            1297(f)(2) and Regulations section 1.1297-4(d) to meet
+corporation that fails to qualify as a qualifying insurance        the definition of a qualifying insurance corporation. A U.S.
+corporation (QIC) (as defined in section 1297(f)(1)) solely        person can attach the Form 8621 to an amended return
+because its applicable insurance liabilities make up 25%           for the tax year of the U.S. person to which the election
+or less of its total assets may elect to treat the stock as        relates if the U.S. person can demonstrate that the reason
+stock of a qualifying insurance corporation under the              for not filing the form with its original return was due to
+alternative facts and circumstances test set forth in              reasonable cause.
+section 1297(f)(2) and Regulations section 1.1297-4(d) if:         How to make the election. Follow these steps to make
+   1. The foreign corporation’s applicable insurance               the election.
+liabilities make up at least 10% of its total assets; and              1. Check the box on page 1 of Form 8621.
+   2. Based on the applicable facts and circumstances,                 2. Provide the identifying information for the U.S.
+the foreign corporation is predominantly engaged in an             person and the foreign corporation (Name, Address,
+insurance business, and its failure to satisfy the 25%             Identifying Number (if any)) only. You do not have to
+threshold is due solely to runoff-related or rating-related        complete any other part of the Form 8621 if you are only
+circumstances involving such insurance business.                   filing the form to make this election.
+   The U.S. shareholder may make the election under                   Deemed election for publicly traded companies. A
+section 1297(f)(2) for its tax year if:                            U.S. person who owns publicly traded stock in a foreign
+• The foreign corporation directly provides the                    corporation will be deemed to make the election under
+shareholder a statement, signed by a responsible officer           section 1297(f)(2) with respect to the foreign corporation
+of the foreign corporation or an authorized representative         and its subsidiaries if the following requirements are
+of the foreign corporation, that the foreign corporation           satisfied.
+satisfied the requirements of section 1297(f)(2) and
+Regulations section 1.1297-4(d)(1) during the foreign
+                                                                   • The stock of the foreign corporation that is owned by
+                                                                   the U.S. person (including stock owned indirectly) has a
+corporation's applicable reporting period (as defined in           value of $25,000 or less ($50,000 or less in the case of a
+Regulations section 1.1297-4(f)(4)). Specifically, if the          joint return) on the last day of the U.S. person's tax year
+foreign corporation failed to qualify as a QIC under section       and on any day during the tax year on which the U.S.
+1297(f)(1) solely because the ratio of applicable insurance        person disposes of stock of the foreign corporation; and
+liabilities to total assets for the tax year is 25% or less, the
+statement must (1) indicate that the ratio was at least
+                                                                   • If the U.S. person owns stock of the foreign corporation
+                                                                   indirectly through a domestic partnership, domestic trust,
+10%, along with a calculation of the ratio (with the               domestic estate, or S corporation (a domestic
+resultant ratio double underlined); (2) include a statement        pass-through entity), the stock of the foreign corporation
+indicating whether the failure to satisfy the 25% test was         that is owned by the domestic pass-through entity has a
+the result of runoff-related or rating-related circumstances,      value of $25,000 or less on the last day of the tax year of
+along with a brief description of those circumstances; and         the domestic pass-through entity that ends with or within
+(3) include information that establishes that the foreign          the U.S. person's tax year and on any day during the tax
+corporation has met the “predominantly engaged in an               year of the domestic pass-through entity on which it
+insurance business” requirement described in Regulations           disposes of stock of the foreign corporation.
+section 1.1297-4(d)(2).
+
+4                                                                                    Instructions for Form 8621 (Rev. 12-2025)
+   For these purposes, stock is publicly traded if it would     previous reference ID number with the new reference ID
+be treated as marketable stock within the meaning of            number assigned to the PFIC, QEF, or QIC.
+section 1296(e) and Regulations section 1.1296-2                • In the case of an entity classification election that is
+(without regard to Regulations section 1.1296-2(d)) if the      made on behalf of a PFIC, QEF, or QIC on Form 8832,
+election under section 1297(f)(2) is not made.                  Regulations section 301.6109-1(b)(2)(v) requires the
+                                                                PFIC, QEF, or QIC to have an EIN for this election. For the
+Address and Identifying Number                                  first year that Form 8621 is filed after an entity
+Address. Include the suite, room, or other unit number          classification election is made on behalf of the PFIC, QEF,
+after the street address. If the post office does not deliver   or QIC on Form 8832, the new EIN must be entered in the
+mail to the street address and the shareholder has a P.O.       applicable entry space above Part I of Form 8621 and the
+box, enter the box number instead.                              old reference ID number must be entered in the applicable
+                                                                entry space just below. In subsequent years, the Form
+Identifying number. Individuals should enter a social           8621 filer may continue to enter both the EIN and the
+security number or a taxpayer identification number             reference ID number, but must enter at least the EIN.
+issued by the IRS. All other entities should enter an
+                                                                    You must correlate the reference ID numbers as
+employer identification number (EIN).
+                                                                follows: New reference ID number [space] Old reference
+Reference ID number. A reference ID number is                   ID number. If there is more than one old reference ID
+required in the applicable entry space above Part I of the      number, you must enter a space between each such
+form only in cases where no EIN was entered for the PFIC,       number. As indicated above, the length of a given
+QEF, or QIC. However, filers are permitted to enter both an     reference ID number is limited to 50 characters and each
+EIN and a reference ID number. If applicable, enter the         number must be alphanumeric and no special characters
+reference ID number (defined below) you have assigned           are permitted.
+to the PFIC, QEF, or QIC.
+   A “reference ID number” is a number established by or        Note: This correlation requirement applies only to the first
+on behalf of the U.S. person identified at the top of page 1    year the new reference ID number is used.
+of the form that is assigned to a PFIC, QEF, or QIC with
+respect to which Form 8621 reporting is required. These         Part I. Summary of Annual
+numbers are used to uniquely identify the PFIC, QEF, or         Information
+QIC in order to keep track of the entity from tax year to tax
+year. The reference ID number must meet the                     Who Must Complete Part I
+requirements set forth below.
+                                                                In general, all shareholders required to file Form 8621
+Note: Because reference ID numbers are established by           under section 1298(f) and the regulations thereunder must
+or on the behalf of a U.S. person filing Form 8621, there is    complete Part I. However, a shareholder of a PFIC that is
+no need to apply to the IRS to request a reference ID           marked to market under a Code provision other than
+number or for permission to use these numbers.                  section 1296 (such as section 475) is not required to
+                                                                complete Part I unless it is subject to section 1291 with
+Note: In general, the reference ID number assigned to a         respect to the PFIC pursuant to Regulations section
+PFIC, QEF, or QIC on Form 8621 has relevance only to            1.1291-1(c)(4)(ii). See T.D. 9806.
+Form 8621 and should not be used with respect to the               Shareholders filing a joint return may file a single Form
+PFIC, QEF, or QIC on other IRS forms.                           8621 with respect to a single PFIC in which each joint filer
+Requirements. The reference ID number must be                   owns an interest.
+alphanumeric (defined below), and no special characters         Shareholders that are the first U.S. person in the
+or spaces are permitted. The length of a given reference        chain of ownership. Regulations section 1.1298-1
+ID number is limited to 50 characters.                          generally requires a U.S. person that is at the lowest tier in
+   For these purposes, the term “alphanumeric” means            a chain of ownership (that is, the first U.S. person in the
+the entry can be alphabetical, numeric, or any                  chain of ownership) and that is a shareholder (including
+combination of the two.                                         an indirect shareholder) of a PFIC to complete Part I for
+   The same reference ID number must be used                    each PFIC owned by that shareholder during the
+consistently from tax year to tax year with respect to a        shareholder’s tax year.
+given PFIC, QEF, or QIC. If for any reason a reference ID          Specific filing requirements apply with respect to
+number falls out of use (for example, the PFIC, QEF, or         Domestic grantor trusts, as described later in these
+QIC no longer exists due to disposition or liquidation), the    Instructions.
+reference ID number used for that PFIC, QEF, or QIC                Exceptions to these filing requirements are described
+cannot be used again for another PFIC, QEF, or QIC for          later under Exceptions to Filing Part I.
+purposes of Form 8621 reporting.
+                                                                Shareholders that are not the first U.S. person in the
+   There are some situations that warrant correlation of a
+                                                                chain of ownership. In general, an indirect shareholder
+new reference ID number with a previous reference ID
+                                                                that is not the first U.S. person in the chain of ownership is
+number when assigning a new reference ID number to a
+                                                                not required to complete Part I unless the indirect
+PFIC, QEF, or QIC. For example:
+                                                                shareholder:
+• In the case of a merger or acquisition, a Form 8621 filer     • Is treated as receiving an excess distribution from the
+must use a reference ID number that correlates the
+                                                                PFIC;
+
+Instructions for Form 8621 (Rev. 12-2025)                                                                                    5
+• Is treated as recognizing gain that is treated as an            to complete Part I with respect to a specific section 1291
+excess distribution as a result of a disposition of the PFIC;     fund if the shareholder meets the $25,000 exception on
+• Is required to include an amount in income under                the last day of the shareholder’s tax year and the
+section 1293(a) with respect to the PFIC, unless another          shareholder does not receive an excess distribution from,
+shareholder through which the indirect shareholder owns           or recognize gain on the sale or disposition of the stock of,
+the PFIC files under section 1298(f) with respect to the          the section 1291 fund. For purposes of determining
+PFIC and no other exception applies;                              whether a shareholder satisfies the $25,000 threshold, the
+• Is required to include an amount in income under                shareholder takes into account all PFIC stock (QEFs,
+section 1296(a) with respect to the PFIC, unless another          section 1291 funds, and PFIC stock subject to a section
+shareholder through which the indirect shareholder owns           1296 mark-to-market election) owned directly or indirectly
+the PFIC files under section 1298(f) with respect to the          other than PFIC stock owned through another U.S. person
+PFIC; or                                                          or PFIC stock owned through another PFIC. Shareholders
+• Is required to report the status of a section 1294              filing a joint return have a combined threshold of $50,000
+election with respect to the PFIC.                                instead of $25,000 for purposes of this exception.
+   See Regulations section 1.1298-1(b)(2) for further                 For more information, see Regulations section
+information.                                                      1.1298-1(c)(2).
+Domestic grantor trusts. In general, a U.S. grantor of a          Exception if the value of shareholder’s indirect PFIC
+domestic grantor trust that owns an interest in a PFIC            stock is $5,000 or less. A shareholder is not required to
+(directly or indirectly) through one or more foreign entities     complete Part I with respect to indirect ownership of a
+must complete Part I with respect to that PFIC interest.          specific section 1291 fund if the shareholder meets the
+See Regulations sections 1.1291-1(b)(8)(iii)(D) and               $5,000 exception with respect to the section 1291 fund on
+1.1298-1(b)(1)(iii). In those circumstances, a domestic           the last day of the shareholder’s tax year and the
+grantor trust is not required to complete Part I with respect     shareholder does not receive an excess distribution from,
+to the stock of the PFIC that is owned by the grantor. For        or recognize gain on the sale or disposition of the stock of,
+certain exceptions, see Regulations section 1.1298-1(b)           the section 1291 fund. For purposes of determining
+(3)(i).                                                           whether a shareholder satisfies the $5,000 threshold, the
+                                                                  shareholder takes into account only the value of the
+Exceptions To Filing Part I                                       shareholder’s proportionate share of the section 1291
+A shareholder is exempt from completing Part I if it meets        fund.
+one of the exceptions described below.                               For more information, see Regulations section
+Special rules for estates and trusts. Certain U.S.                1.1298-1(c)(2).
+grantors and beneficiaries of estates and trusts may
+qualify for an exception to filing Part I.                        Line Instructions
+• A U.S. grantor of a domestic grantor trust is not required      Line 1. Describe each class of shares held by the
+to complete Part I if the trust is a domestic liquidating trust   shareholder.
+or a widely held fixed investment trust, as described in
+                                                                  Line 2. Provide the date during the tax year that the
+Regulations section 1.1298-1(b)(3)(i). In these
+                                                                  shares were acquired, if applicable.
+circumstances, the domestic grantor trust is required to
+complete Part I.                                                  Line 3. List the number of shares held at the end of the
+• In certain situations, a shareholder who is a member or         tax year.
+beneficiary of (or participant in) an arrangement treated as      Line 4. Indicate the value of the shares held at the end of
+a foreign pension fund under a U.S. income tax treaty that        the tax year. Shareholders may rely upon periodic account
+owns an interest in a PFIC is not required to complete Part       statements provided at least annually to determine the
+I with respect to the PFIC. See Regulations section               value of a PFIC unless the shareholder has actual
+1.1298-1(c)(4).                                                   knowledge or reason to know based on readily accessible
+• A U.S. beneficiary of a foreign nongrantor trust or             information that the statements do not reflect a reasonable
+foreign estate is not required to complete Part I with            estimate of the PFIC’s value.
+respect to the stock of the PFIC that is owned by the trust
+or estate unless it has made a QEF or section 1296                Line 5. Indicate the type of PFIC and the amount of any
+mark-to-market election, received an excess distribution,         excess distribution or gain treated as an excess
+or recognized gain treated as an excess distribution with         distribution under section 1291, inclusion under section
+respect to the stock of the PFIC. See Regulations section         1293, and inclusion or deduction under section 1296.
+1.1298-1(b)(3)(ii).
+                                                                  Note: In cases in which a shareholder’s ownership
+Exempt organizations. In general, if a shareholder of a           interest in a PFIC is not denominated in shares, the
+PFIC is a tax-exempt organization, the shareholder is             shareholder must provide the information for lines 1
+required to complete Part I only if income derived with           through 4 based on its form of ownership in the PFIC.
+respect to the PFIC stock would be taxable to the
+shareholder under subchapter F. See Regulations section
+1.1298-1(c)(1).
+Exception if aggregate value of shareholder’s PFIC
+stock is $25,000 or less. A shareholder is not required
+
+6                                                                                   Instructions for Form 8621 (Rev. 12-2025)
+                                                                  Protective statement regime. Under the protective
+Part II. Elections                                              statement regime, a shareholder may preserve the ability
+                                                                to make a retroactive election if the shareholder:
+A. Election To Treat the PFIC as a QEF (Section                     1. Reasonably believed, as of the due date for making
+1295 Election)                                                  the QEF election, that the foreign corporation was not a
+Who May Make the Election                                       PFIC for its tax year that ended during that year
+                                                                (retroactive election year);
+Generally, a U.S. person that owns stock in a PFIC,                 2. Filed a Protective Statement (see below) with
+directly or indirectly, may make Election A to treat the PFIC   respect to the foreign corporation, applicable to the
+as a QEF.                                                       retroactive election year, in which the shareholder
+                                                                describes the basis for its reasonable belief;
+Note: A separate election must be made for each PFIC                3. Extended, in the Protective Statement, the periods
+that the shareholder wants to treat as a QEF.                   of limitations on the assessment of taxes under the PFIC
+Exception. A tax-exempt organization that is not taxable        rules for all tax years to which the protective statement
+under section 1291 may not make the election. In                applies; and
+addition, a tax-exempt organization that is not taxable             4. Complied with the other terms and conditions of the
+under section 1291 is not subject to a QEF election made        protective statements.
+by a pass-through entity.
+                                                                   The Protective Statement must be attached to the
+Chain of ownership. In a chain of ownership, only the           shareholder's tax return for the shareholder's first tax year
+first U.S. person that is a direct or indirect shareholder of   to which the statement will apply. For required content of
+the PFIC may make the election.                                 the statement and other information, see Regulations
+Pass-through entities. A QEF election made by a                 section 1.1295-3(c).
+domestic partnership, S corporation, or estate is made in         Consent regime. Under the consent regime, a
+the pass-through entity's capacity as a shareholder of a        shareholder that has not satisfied the requirements of the
+PFIC. The entity will include the QEF earnings as income        protective regime may request that the IRS permit a
+for the year in which the PFIC's tax year ends. The interest    retroactive election. The consent regime applies only if:
+holder in the pass-through entity takes the income into            1. The shareholder reasonably relied on tax advice of
+account under the rules applicable to inclusions of income      a competent and qualified tax professional;
+from the pass-through entity.
+                                                                   2. The interest of the U.S. Government will not be
+Affiliated groups. The common parent of an affiliated           prejudiced if the consent is granted;
+group of corporations that joins in filing a consolidated          3. The shareholder requests consent before the PFIC
+income tax return makes the QEF election for all members        status issue is raised on audit; and
+of the affiliated group that are shareholders in the PFIC.
+An election by a common parent is effective for all                4. The shareholder satisfies the procedural
+members of the group that own stock in the PFIC at the          requirements under Regulations section 1.1295-3(f)(4).
+time the election is made or any time thereafter.                 For more information on making a retroactive election,
+                                                                see Regulations section 1.1295-3.
+  For more information on who may make the election,
+see Regulations section 1.1295-1(d).                            Special Rules
+When To Make the Election                                       For rules relating to the invalidation, termination, or
+                                                                revocation of a section 1295 election, see Regulations
+Generally, a shareholder must make the election to be           section 1.1295-1(i). Also, see Regulations section
+treated as a QEF by the due date, including extensions,         1.1295-1(c)(2) for rules relating to the years to which a
+for filing the shareholder's income tax return for the first    section 1295 election applies.
+tax year to which the election will apply (the “election due
+date”). See Retroactive election, below, for exceptions.        How To Make the Election
+The foreign corporation will be treated as a QEF with
+respect to the shareholder for the tax year in which the        For the tax year in which the section 1295 election is
+election is made and for each subsequent tax year of the        made, the shareholder must do the following.
+foreign corporation ending with or within a tax year of the        1. Check box A in Part II of Form 8621.
+shareholder for which the election is effective.
+                                                                   2. Complete the applicable lines of Part III. Include the
+Retroactive election. A shareholder may make a QEF              information provided in the PFIC Annual Information
+election for a tax year after the election due date (a          Statement, Annual Intermediary Statement, or a
+retroactive election) only if:                                  Combined statement (see below) received from the PFIC.
+• The shareholder has preserved its right to make a                3. Attach Form 8621 to a timely filed tax return (or, if
+retroactive election under the Protective statement regime      applicable, partnership or exempt organization return).
+(described below), or
+• The shareholder obtains the permission of the IRS to
+make a retroactive election under the Consent regime
+(described later).
+
+Instructions for Form 8621 (Rev. 12-2025)                                                                                   7
+  For each subsequent tax year in which the election            If a U.S. partnership is a shareholder of a QEF, the
+applies and the corporation is treated as a QEF, the            election is made at the partner level.
+shareholder must:
+  1. Complete the applicable lines of Part III, and             Special Rules
+  2. Attach Form 8621 to a timely filed tax return (or, if
+applicable, a partnership or exempt organization return).       • If this election is made, interest will be imposed on the
+                                                                amount of the deferred tax. This interest must be paid on
+                                                                the termination of the election (see the instructions for Part
+Annual Election Requirements of the PFIC or                     VI, line 24, later).
+Intermediary                                                    • The election cannot be made for any earnings on
+PFIC Annual Information Statement. For each year of             shares disposed of during the tax year or for a tax year
+the PFIC ending in a tax year of a shareholder to which         that any portion of the shareholder's pro rata share of the
+the QEF election applies, the PFIC must provide the             fund's earnings is included in income under section 951
+shareholders with a PFIC Annual Information Statement.          (relating to CFCs).
+The statement must contain certain information, including:
+                                                                When To Make the Election
+   1. The shareholder's pro rata share of the PFIC's
+ordinary earnings and net capital gain for that tax year, or    Generally, this election must be made by the due date,
+   2. Sufficient information to enable the shareholder to       including extensions, of the shareholder's tax return for the
+calculate its pro rata share of the PFIC's ordinary earnings    tax year for which the shareholder reports the income
+and net capital gain for that tax year.                         related to the deferred tax.
+  For other information required to be included in the
+PFIC Annual Information Statement, see Regulations              How To Make the Election
+section 1.1295-1(g).
+                                                                Take these steps to make this election.
+Annual Intermediary Statement. If the shareholder
+                                                                  1. Check box B in Part II.
+holds stock in a PFIC through an intermediary, an Annual
+Intermediary Statement may be issued in lieu of the PFIC          2. Complete lines 8a through 9c of Part III.
+Annual Information Statement. For the definition of an            For more information on making Election B, see
+“intermediary,” see Regulations section 1.1295-1(j). For        Temporary Regulations section 1.1294-1T.
+details on the information that should be included in the
+Annual Intermediary Statement, see Regulations section          Note: The temporary regulations instruct taxpayers to file
+1.1295-1(g)(3).                                                 a duplicate copy of the election with the Philadelphia
+Combined statements. A PFIC that owns directly or               service center, in addition to filing the election with their
+indirectly any shares of stock in one or more PFICs may         returns for the year. Taxpayers may, but are not required
+provide its shareholders with a PFIC Annual Information         to, file the duplicate copy.
+Statement in which it combines its own required                   See Part VI for annual reporting requirements for
+information and representations with the information and        outstanding section 1294 elections.
+representations of any lower-tier PFIC. Similarly, an
+intermediary through which a shareholder indirectly holds       C. Election To Mark to Market PFIC Stock
+stock in more than one PFIC may provide the shareholder         (Section 1296 Election)
+with a combined Annual Intermediary Statement. For
+more information, see Regulations section 1.1295-1(g)(4).       Who May Make the Election
+Documentation. For all tax years subject to the section         Generally, an election to mark to market PFIC stock under
+1295 election, the shareholder must keep copies of all          section 1296 may be made by:
+Forms 8621, attachments, and PFIC Annual Information            • A U.S. person who owns (or is treated as owning)
+Statements or Annual Intermediary Statements. Failure to        Marketable stock (defined earlier) in a PFIC at the close of
+produce these documents at the request of the IRS may           such person's tax year, or
+result in invalidation or termination of the section 1295       • A RIC that meets the requirements of section 1296(e)
+election. See Regulations section 1.1295-1(f)(2)(ii). In rare   (2).
+and unusual circumstances, the IRS will consider requests
+for alternative documentation to verify the ordinary               For more information, see section 1296 and
+earnings and net capital gain of the PFIC. For more             Regulations section 1.1296-1. See sections 1296(f) and
+information, see Regulations section 1.1295-1(g)(2).            (g) and Regulations sections 1.1296-1(e) and (h)(1)(ii) for
+                                                                information regarding stock owned through certain foreign
+B. Election To Extend Time for Payment of Tax                   entities.
+Who May Make the Election
+                                                                When To Make the Election
+A shareholder of a QEF may make Election B to extend
+the time for payment of the tax on its share of the             This election must be made on or before the due date
+undistributed earnings of the fund for the current tax year.    (including extensions) of the U.S. person's income tax
+                                                                return for the tax year in which the stock is marked to
+                                                                market under section 1296. A section 1296 election by a
+
+8                                                                                 Instructions for Form 8621 (Rev. 12-2025)
+CFC is made by its controlling domestic shareholders (as         • After the deemed sale, the PFIC becomes a pedigreed
+defined in Regulations section 1.964-1(c)(5)). For more          QEF with respect to the shareholder.
+information, see Regulations section 1.1296-1(h)(1)(ii).
+Once made, the election applies to all subsequent tax            When To Make the Election
+years unless the election is revoked or terminated
+pursuant to Regulations section 1.1296-1(h)(3).                  This election must be made by the due date, including
+                                                                 extensions, of the shareholder's original tax return (or by
+How To Make the Election                                         filing an amended return within 3 years of the due date of
+                                                                 the original return) for the tax year that includes the
+Take these steps to make this election.                          qualification date.
+   1. Check box C in Part II.
+                                                                 How To Make the Election
+   2. Complete either (a) Part V to calculate the amount
+due under section 1291 (when required, as generally              Take these steps to make this election.
+described in the next paragraph), or (b) Part IV to
+                                                                    1. Check box D in Part II.
+calculate the gain or loss on the stock in all other cases.
+                                                                    2. Enter the gain or loss on line 15f of Part V.
+Coordination of Election C with section 1291 for first              3. If a gain is entered, complete line 16 to report the
+year of election. In general, when a shareholder makes           tax and interest due on the excess distribution.
+a mark-to-market election for PFIC stock in a year other
+than the first year in which the shareholder holds stock in        For more information regarding making Election D, see
+the PFIC and no QEF election is in effect, the PFIC stock        Regulations section 1.1291-10.
+is treated as sold at fair market value on the last day of the
+tax year for which the election is made, and the gain is         E. Deemed Dividend Election in Connection
+treated as an excess distribution subject to section 1291.       With a QEF Election
+In addition, any distributions made during the year with
+                                                                 Who May Make the Election
+respect to the PFIC stock are subject to section 1291. See
+section 1296(j) and Regulations section 1.1296-1(i).             This is a deemed dividend election under section 1291(d)
+                                                                 (2)(B). This election may be made by a U.S. person that
+D. Deemed Sale Election in Connection With a
+                                                                 elects to treat a PFIC that is also a CFC as a QEF for the
+QEF Election                                                     foreign corporation's tax year following its first tax year as
+Who May Make the Election                                        a PFIC included in the shareholder's holding period (an
+                                                                 unpedigreed QEF).
+This is a deemed sale election under section 1291(d)(2)
+(A). This election may be made by a U.S. person that                A shareholder making this election is treated as
+elects to treat a PFIC as a QEF for a foreign corporation's      receiving a dividend equal to its pro rata share of the
+tax year following its first tax year as a PFIC included in      post-1986 earnings and profits (defined below in Special
+the shareholder's holding period (an unpedigreed QEF). A         Rules) of the PFIC on the qualification date (defined under
+shareholder making this election is deemed to have sold          the instructions for Election D, earlier). The deemed
+the PFIC stock as of the first day of the PFIC's first tax       dividend is taxed as an excess distribution, allocated only
+year as a QEF (the qualification date) for its fair market       to the days in the shareholder's holding period during
+value.                                                           which the foreign corporation qualified as a PFIC. For this
+                                                                 purpose, the shareholder's holding period ends on the day
+                                                                 before the qualification date.
+Special Rules
+                                                                 Special Rules
+For purposes of this election, the following apply.
+• The gain from the deemed sale is taxed as an excess            For purposes of this election, the following apply.
+distribution received on the qualification date.                 • The term “post-1986 earnings and profits” means the
+• The basis of the shareholder’s PFIC stock held directly,       undistributed earnings and profits of the PFIC (as of the
+or the stock or other property owned directly by the             day before the qualification date) accumulated and not
+shareholder through which ownership of the PFIC is               distributed in tax years beginning after 1986 during which
+attributed to the shareholder, is increased by the gain          the foreign corporation was a PFIC and while the
+recognized. The manner in which the basis adjustment is          shareholder held the stock (but without regard to whether
+made depends on whether the shareholder is a direct or           the earnings relate to a period in which the PFIC was a
+indirect shareholder. See Regulations section                    CFC).
+1.1291-10(f).                                                    • The basis of the shareholder's PFIC stock held directly,
+• Solely for purposes of applying the PFIC rules, the            or the stock or other property owned directly by the
+shareholder's holding period of the stock begins on the          shareholder through which ownership of the PFIC is
+qualification date.                                              attributed to the shareholder, is increased by the amount
+• The election may be made for stock on which the                of the deemed dividend. The manner in which the basis
+shareholder will realize a loss, but that loss cannot be         adjustment is made depends on whether the shareholder
+recognized. In addition, there is no basis adjustment for a      is a direct or indirect shareholder. See Regulations section
+loss.                                                            1.1291-9(f).
+
+Instructions for Form 8621 (Rev. 12-2025)                                                                                      9
+• Solely for purposes of applying the PFIC rules, the            Such persons may elect to treat the stock of the foreign
+shareholder's holding period begins on the qualification      corporation as sold for its fair market value on the last day
+date.                                                         of the last tax year of the foreign corporation in which it
+                                                              was treated as a PFIC (termination date) or the first day on
+When To Make the Election                                     which the qualified portion of the shareholder’s holding
+                                                              period in the section 1297(e) PFIC begins (qualification
+This election must be made by the due date (including         date), as applicable.
+extensions) of the shareholder's original tax return (or by
+filing an amended return within 3 years of the due date of    Special Rules
+the original return) for the tax year that includes the
+qualification date.                                           • The gain from the deemed sale is taxed as an excess
+                                                              distribution.
+How To Make the Election                                      • The basis of the shareholder’s PFIC stock held directly,
+                                                              or the stock or other property owned directly by the
+Take these steps to make this election.                       shareholder through which ownership of the PFIC is
+                                                              attributed to the shareholder, is increased by the amount
+  1. Check box E in Part II.                                  of the excess distribution taxed to the shareholder making
+  2. Enter the dividend on line 15e(2) of Part V as an        Election F. The manner in which the basis adjustment is
+excess distribution.                                          made depends on whether the shareholder is a direct or
+  3. Complete line 16 to figure the tax and interest due      indirect shareholder. See Regulations sections 1.1297-
+on the excess distribution.                                   3(b)(5) and 1.1298-3(b)(5).
+                                                              • Solely for purposes of applying the PFIC rules, the new
+Attachments. The shareholder must attach a statement          holding period of the stock begins on the date after the
+to Form 8621 that demonstrates the calculation of its pro     termination date or on the qualification date, as
+rata share of the post-1986 earnings and profits of the       applicable.
+PFIC that are treated as distributed to the shareholder on    • Election F may be made for stock on which there would
+the qualification date. The post-1986 earnings and profits    be a loss, but the loss is not recognized.
+may be reduced (but not below zero) by the amount that           For more information on making this election, see
+the shareholder satisfactorily demonstrates was               Regulations sections 1.1297-3(b) (section 1297(e) PFIC)
+previously included in its income or in the income of         and 1.1298-3(b) (former PFIC).
+another U.S. person. The shareholder demonstrates this
+by including in the statement mentioned above the             When To Make the Election
+following information.
+• The name, address, and identifying number of the U.S.       This election must be made by the due date of the
+person and the amount that was included in income.            shareholder’s original tax return (or by filing an amended
+• The tax year in which the amount was previously             return within 3 years of the due date, as extended under
+included in income;                                           section 6081, of the original return) for the tax year that
+• The provision of law under which the amount was             includes, as appropriate, either the termination date or
+previously included in income;                                qualification date. However, see Form 8621-A, Return by a
+• A description of the transaction in which the               Shareholder Making Certain Late Elections To End
+shareholder acquired the stock of the PFIC from the other     Treatment as a Passive Foreign Investment Company,
+U.S. person; and                                              available at IRS.gov/Form8621A, (and Regulations
+• The provision of law under which the shareholder's          sections 1.1297-3(e) and 1.1298-3(e)) if the 3-year period
+holding period includes the holding period of the other       has expired.
+U.S. person.
+                                                              How To Make the Election
+  For more information on making Election E, see
+Regulations section 1.1291-9.
+                                                              Take these steps to make this election.
+F. Deemed Sale Election With Respect to a                       1. Check box F in Part II.
+Former PFIC or “Section 1297(e) PFIC”                           2. Enter the gain or loss on line 15f of Part V. If a gain,
+Who May Make the Election                                     complete the rest of Part V.
+
+                                                              G. Deemed Dividend Election With Respect to a
+This is a deemed sale election under section 1298(b)(1)
+                                                              “Section 1297(e) PFIC”
+and Regulations section 1.1297-3(b) or 1.1298-3(b). This
+election may be made by:                                      Who May Make the Election
+• A U.S. person that is a shareholder of a foreign
+corporation that no longer qualifies as a PFIC under either   This is a deemed dividend election under section 1298(b)
+the income or asset test of section 1297(a), or               (1) and Regulations section 1.1297-3(c). This election
+• A U.S. shareholder (as defined in section 951(b)) that      may be made by a shareholder that is a U.S. shareholder
+owns stock in a foreign corporation that is a CFC and a       (as defined in section 951(b)) of a foreign corporation that
+PFIC, but that is not treated as a PFIC with respect to the   is a CFC and a PFIC, but that is not treated as a PFIC with
+U.S. shareholder under section 1297(d).                       respect to the U.S. shareholder under section 1297(d).
+
+10                                                                              Instructions for Form 8621 (Rev. 12-2025)
+Special Rules                                                   • The beginning and ending dates of the tax year of the
+                                                                shareholder in which the CFC qualification date falls (that
+A shareholder making this election is treated as receiving      is, the election year).
+a dividend of its pro rata share of the post-1986 earnings      • The shareholder’s pro rata share of the post-1986
+and profits (defined later in Attachments) of the section       earnings and profits of the Section 1297(e) PFIC that is
+1297(e) PFIC on the CFC qualification date (as defined in       treated as distributed to the shareholder on the CFC
+Regulations section 1.1297-3(d)). The deemed dividend is        qualification date, including a schedule that shows the
+taxed under section 1291 as an excess distribution,             calculation of this amount as required under Regulations
+allocated only to the days in the shareholder’s holding         section 1.1297-3(c)(5)(ii). In addition, if the shareholder
+period during which the foreign corporation qualified as a      filed a Form 5471 for the Section 1297(e) PFIC for the
+PFIC. For this purpose, the shareholder’s holding period        election year, attach Schedule J (Form 5471).
+ends on the day before the CFC qualification date. After
+the deemed dividend election, the shareholder’s stock is           The post-1986 earnings and profits may be reduced
+not treated as stock in a PFIC.                                 (but not below zero) by the amount that the shareholder
+                                                                satisfactorily shows was previously included in its income
+  For purposes of this election, the following rules apply.     or in the income of another U.S. person. The shareholder
+• The basis of the shareholder’s PFIC stock held directly,      shows this by including in the statement mentioned above
+or the stock or other property owned directly by the            the following information.
+shareholder through which ownership of the PFIC is              • The name, address, and identifying number of the U.S.
+attributed to the shareholder, is increased by the amount       person and the amount that was included in income.
+of the deemed dividend. The manner in which the basis           • A description of the transaction in which the
+adjustment is made depends on whether the shareholder           shareholder acquired the stock of the Section 1297(e)
+is a direct or indirect shareholder (as defined earlier). See   PFIC from the other U.S. person.
+Regulations section 1.1297-3(c)(6).                             • The tax year in which the amount was previously
+• Solely for purposes of applying the PFIC rules, the           included in income.
+shareholder’s new holding period begins on the CFC              • The provision of law under which the shareholder's
+qualification date.                                             holding period includes the holding period of the other
+                                                                U.S. person.
+When To Make the Election                                         For more information on making Election G, see
+                                                                Regulations section 1.1297-3(c).
+Make this election by the due date of the shareholder’s
+original return (or by filing an amended return within 3        H. Deemed Dividend Election With Respect to a
+years of the due date, as extended under section 6081, of       Former PFIC
+the original return) for the tax year that includes the first
+day on which the qualified portion of the shareholder’s         Who May Make the Election
+holding period in the PFIC begins, as determined under
+section 1297(d). However, see Form 8621-A (and                  This is a deemed dividend election under section 1298(b)
+Regulations section 1.1297-3(e)) if the 3-year period has       (1) and Regulations section 1.1298-3(c). This election
+expired.                                                        may be made by a shareholder of a foreign corporation
+                                                                that no longer qualifies as a PFIC under either the income
+                                                                or asset test of section 1297(a) if the foreign corporation
+How To Make the Election                                        was a CFC during its last tax year as a PFIC.
+Take these steps to make this election.
+                                                                Special Rules
+   1. Check box G in Part II.
+   2. Enter the excess distribution on line 15e(2) of Part      A shareholder making this election is treated as receiving
+V.                                                              a dividend of its pro rata share of the post-1986 earnings
+   3. If the excess distribution is greater than zero,          and profits (defined later in Attachments) of the former
+complete line 16 to figure the tax and interest due on the      PFIC on the termination date (as defined in Regulations
+excess distribution.                                            section 1.1298-3(d)). The deemed dividend is taxed under
+                                                                section 1291 as an excess distribution, allocated only to
+   4. Attach to Form 8621 the information specified             the days in the shareholder’s holding period during which
+below.                                                          the foreign corporation qualified as a PFIC. For this
+                                                                purpose, the shareholder's holding period ends on the
+Attachments                                                     termination date. After the deemed dividend election, the
+                                                                shareholder’s stock is not treated as stock in a PFIC.
+The shareholder must attach a statement to Form 8621
+that shows the calculation of its pro rata share of the           For purposes of this election, the following rules apply.
+post-1986 earnings and profits of the section 1297(e)           • The basis of the shareholder’s PFIC stock held directly,
+PFIC (as defined in Regulations section 1.1291-9(j)(2)(v))      or the stock or other property owned directly by the
+that is treated as distributed to the shareholder on the        shareholder through which ownership of the PFIC is
+CFC qualification date.                                         attributed to the shareholder, is increased by the amount
+• The CFC qualification date, as defined in Regulations         of the deemed dividend. The manner in which the basis
+section 1.1297-3(d), for the Section 1297(e) PFIC.              adjustment is made depends on whether the shareholder
+
+Instructions for Form 8621 (Rev. 12-2025)                                                                                11
+is a direct or indirect shareholder (as defined earlier). See   • The provision of law under which the amount was
+Regulations section 1.1298-3(c)(6).                             previously included in income.
+• Solely for purposes of applying the PFIC rules, the           • A description of the transaction in which the
+shareholder’s new holding period begins on the day              shareholder acquired the stock of the former PFIC from
+following the termination date.                                 the other U.S. person.
+                                                                • The provision of law under which the shareholder’s
+When To Make the Election                                       holding period includes the holding period of the other
+                                                                U.S. person.
+This election must be made by the due date of the
+                                                                  For more information on making Election H, see
+shareholder’s original return (or by filing an amended
+                                                                Regulations section 1.1298-3(c).
+return within 3 years of the due date, as extended under
+section 6081, of the original return) for the tax year that
+includes the first day on which the qualified portion of the    Part III. Income From a QEF
+shareholder’s holding period in the PFIC begins, as             For any tax year in which the foreign corporation is not
+determined under section 1297(d). However, see Form             treated as a QEF because it is not a PFIC under section
+8621-A (and Regulations section 1.1298-3(e)) if the             1297(a), the shareholder is not required to complete Part
+3-year period has expired.                                      III. However, the section 1295 election is not terminated. If
+                                                                the foreign corporation is treated as a PFIC in any
+How To Make the Election                                        subsequent tax year, the original election continues to
+                                                                apply and the shareholder must include in Part III its pro
+Take these steps to make this election.                         rata share of ordinary earnings and net capital gain and
+                                                                must also comply with the section 1295 annual reporting
+   1. Check box H in Part II.
+                                                                requirements.
+   2. Enter the excess distribution on line 15e(2) of Part
+V.                                                                All QEF shareholders complete lines 6a through 7c. If
+                                                                you are making Election B, also complete lines 8a through
+   3. If the excess distribution is greater than zero,
+                                                                9c.
+complete line 16 to figure the tax and interest due on the
+excess distribution.                                            Lines 6 and 7
+   4. Attach to Form 8621 the information specified
+                                                                Lines 6a and 7a. Enter on lines 6a and 7a, respectively,
+below.
+                                                                your pro rata share of the ordinary earnings and net
+                                                                capital gain of the QEF. The PFIC should provide these
+Attachments                                                     amounts or information that will help you determine your
+                                                                pro rata share. See Annual Election Requirements of the
+The shareholder must attach a statement to Form 8621            PFIC or Intermediary, earlier.
+that shows the calculation of its pro rata share of the
+post-1986 earnings and profits of the former PFIC that is       Lines 6b and 7b. Your share of the ordinary earnings
+treated as distributed to the shareholder on the                and net capital gain of the QEF is reduced by the amounts
+termination date.                                               you include in income under section 951 for the tax year
+• The termination date, as defined in Regulations section       with respect to the QEF. Your share of these amounts may
+1.1298-3(d), for the former PFIC.                               also be reduced as provided in section 1293(g).
+• The beginning and ending dates of the tax year of the         Line 6c. This amount is treated as ordinary income on
+shareholder in which the termination date falls (that is, the   your tax return.
+election year).                                                    For a noncorporate taxpayer, include this amount as
+• The shareholder’s pro rata share of the post-1986             “other income” on Schedule 1 (Form 1040), line 8z, or on
+earnings and profits of the former PFIC that is treated as      the comparable line of other noncorporate tax returns. For
+distributed to the shareholder on the termination date,         a corporate taxpayer, include this amount as “other
+including a schedule that shows the calculation of this         income” on line 10 of Form 1120, or on the comparable
+amount as required under Regulations section                    line of other corporate tax returns.
+1.1298-3(c)(5)(ii). In addition, if the shareholder filed a
+Form 5471 for the former PFIC for the election year, attach     Line 7c. See the instructions for the Schedule D used for
+Schedule J (Form 5471).                                         your tax return. Portions of the net capital gain may have
+                                                                to be reported on different lines of Schedule D, depending
+   The post-1986 earnings and profits may be reduced            upon the information provided by the QEF concerning the
+(but not below zero) by the amount that the shareholder         section 1(h) categories of net capital gains and amounts
+satisfactorily shows was previously included in its income      thereof, derived by the QEF. See Regulations section
+or in the income of another U.S. person. The shareholder        1.1293-1(a)(2) for three options a QEF may use to report
+shows this by including in the statement mentioned above        and calculate capital gain.
+the following information.
+                                                                Line 8
+• The name, address, and identifying number of the U.S.
+person and the amount that was included in income.              If you receive a distribution from the QEF during the
+• The tax year in which the amount was previously               current tax year, the distribution is first treated as a
+included in income.                                             distribution out of the earnings and profits of the QEF
+                                                                accumulated during the year. If the total amount
+
+12                                                                                Instructions for Form 8621 (Rev. 12-2025)
+distributed (line 8b) exceeds the amount included in               2. The Unreversed inclusions (defined below) with
+income (line 8a), the excess is treated as distributed out of   respect to such stock (line 11).
+the most recently accumulated earnings and profits. This
+                                                                  This amount is treated as an ordinary loss and as a
+amount is not taxable to you if you can satisfactorily
+                                                                deduction allowable in computing adjusted gross income.
+demonstrate that the excess was previously included in
+your income or the income of another U.S. person. This is       Unreversed inclusions. Unreversed inclusions are the
+demonstrated by attaching a statement to Form 8621 that         excess of the amounts that were included in income under
+includes the information listed under Attachments for           the section 1296 mark-to-market rules for prior tax years
+Election E, earlier. If the excess has not been previously      over the amounts allowed as a deduction under the
+included in your income or the income of another U.S.           section 1296 mark-to-market rules for prior tax years. See
+person, then the excess is subject to tax according to the      section 1296(d) and Regulations section 1.1296-1(a)(3).
+rules of section 301(c).                                        Lines 10c and 12. Corporations and individuals should
+Line 9                                                          include the gain or (loss) on the “other income” line of their
+                                                                tax returns. Other entities should include this amount on
+Line 9a. Enter the total tax on your total taxable income       the comparable line of their tax return. However, RICs, for
+(including your share of undistributed earnings of the          purposes of section 851(b), should treat amounts included
+QEF) for the tax year (for example, from Form 1120,             in income as a dividend.
+Schedule J, line 11; or Form 1040, line 24).                        If a CFC makes a section 1296 mark-to-market election
+    For this purpose, “undistributed earnings” is the excess,   with respect to a PFIC in which it owns stock, any line 10c
+if any, of the amount included in gross income under            gain is treated as foreign personal holding company
+section 1293(a) over the sum of the amount of any               income and any line 12 loss is treated as a deduction that
+distribution and the portion of the amount attributable to      is allocable to foreign personal holding company income.
+stock in the QEF that you transferred or otherwise
+disposed of before the end of the QEF's tax year.               Lines 13 Through 14c
+Line 9b. Calculate your total tax as if your total taxable      Complete lines 13 through 14c if you sold or otherwise
+income did not include your share of the undistributed          disposed of any section 1296 stock during the tax year.
+earnings of the QEF (line 8e). Enter this amount on             For purposes of lines 13 through 14c, “section 1296 stock”
+line 9b.                                                        is any stock for which the taxpayer has made a
+                                                                mark-to-market election pursuant to section 1296(a),
+Line 9c. For corporations, enter this deferred tax on Form      which is in effect for the tax year and for which the
+1120, Schedule J, in brackets to the left of the entry space    coordination rule of Regulations section 1.1296-1(i) does
+for line 11. Subtract this deferred tax amount from the sum     not apply.
+of lines 7, 8, and 10, and enter the difference on line 11.
+                                                                Line 13c. If the fair market value of the stock on the date
+    For individuals, enter this deferred tax on Form 1040 in
+                                                                of sale or disposition (line 13a) is more than the U.S.
+brackets to the left of the entry space for line 24. Subtract   person's adjusted basis in the stock on the date of sale or
+this deferred tax amount from the sum of lines 22 and 23,
+                                                                disposition (line 13b), the line 13c excess is a gain and is
+and enter the difference on line 24.                            treated as ordinary income. Corporations and individuals
+                                                                should include the gain on the “other income” line of their
+Part IV. Gain or (Loss) From a Section                          tax returns. Other entities should include this amount on
+1296 Mark-to-Market Election                                    the comparable line of their tax return. However, RICs, for
+                                                                purposes of section 851(b), should treat this amount as a
+A shareholder that has made a mark-to-market election           dividend.
+under section 1296 with respect to PFIC stock completes
+lines 10a through 12 with respect to PFIC stock that the            If the adjusted basis of the stock (line 13b) is more than
+shareholder holds at the close of its tax year, and lines       its fair market value (line 13a), the excess is a loss and is
+13a through 14c, with respect to PFIC stock that it sold or     entered on line 13c as such. Furthermore, the filer must
+disposed of during its tax year.                                complete lines 14a and 14b, and, if applicable, line 14c.
+   As discussed earlier in Mark-to-Market Election, a           Line 14a. Enter any Unreversed inclusions with respect
+shareholder may be required to complete Part V, rather          to the stock (see definition, earlier).
+than Part IV, in the first year in which a mark-to-market       Line 14b. Enter the loss from line 13c, but only to the
+election is made. See section 1296(j) and Regulations           extent of unreversed inclusions on line 14a. This loss is
+sections 1.1291-1(c)(4) and 1.1296-1(i).                        treated as ordinary loss. Corporations and individuals
+                                                                should include the loss on the “other income” line of their
+Lines 10a Through 12                                            tax returns. Other entities should include this amount on
+If the fair market value of the PFIC stock as of the close of   the comparable line of their tax return.
+the tax year is more than the U.S. person's adjusted basis
+in the stock, the excess is treated as ordinary income.         Line 14c. Enter the amount by which the loss on line 13c
+                                                                is more than the unreversed inclusions. This amount is
+    If the adjusted basis of the stock is more than the fair    subject to the rules generally applicable to losses
+market value as of the close of the tax year, the excess is     provided elsewhere in the Code and regulations
+allowed as a deduction, but only to the extent of, the          thereunder. See Regulations section 1.1296-1(c)(4)(ii).
+lesser of:
+    1. The amount of the excess (line 10c), or
+
+Instructions for Form 8621 (Rev. 12-2025)                                                                                  13
+Multiple dispositions. In the case of multiple                  Note: A 10%-or-greater domestic corporation
+dispositions, attach a statement for each disposition using     shareholder might be able to claim a deemed paid foreign
+the same format shown on lines 13 through 14c. Then:            tax credit under section 902 with respect to a distribution
+• Enter “multiple” on lines 13a, 13b, and 14a.                  from a section 1291 fund in the fund’s tax year beginning
+• Enter your net ordinary gains on line 13c (do not enter       before January 1, 2018. See Form 1118, Foreign Tax
+any net losses on line 13c).                                    Credits—Corporations, available at IRS.gov/Form1118, to
+• Enter your net ordinary losses on line 14b.                   calculate the taxes deemed paid and the gross-up
+• Enter your net “other” losses on line 14c.                    amount.
+                                                                Line 15a. If the holding period of the applicable stock
+   For more information relating to mark-to-market
+                                                                began in the current tax year, there is no excess
+elections under section 1296, see Regulations sections
+                                                                distribution and you should complete Part V as follows:
+1.1296-1 and 1.1296-2.
+                                                                Enter on line 15a the total distributions you received from
+                                                                the section 1291 fund with respect to that stock during the
+Part V. Distributions From and                                  current tax year. If you did not dispose of that stock during
+Dispositions of Stock of a Section                              the tax year, do not complete the rest of Part V. If you did
+                                                                dispose of that stock during the tax year, skip lines 15b
+1291 Fund                                                       through 15e and complete lines 15f and 16.
+See Section 1291 Fund, earlier, for the definition of a            If the holding period of the applicable stock began in
+section 1291 fund and also for a brief summary of the tax       the current tax year, the line 15a amount is taxed
+consequences for shareholders of a section 1291 fund.           according to the rules of section 301. To the extent that
+                                                                section 301(c)(1) is applicable, include the amount as a
+   Also, see Section 1291 Fund and Mark-to-Market
+                                                                dividend on your income tax return. For corporations,
+Election, earlier, for a brief discussion of when a
+                                                                include this line 15a amount on Form 1120, Schedule C,
+shareholder may be subject to section 1291 in the year
+                                                                line 14. For individuals, include this line 15a amount on
+that it makes a mark-to-market election under any
+                                                                Form 1040, line 3b (and, if applicable, on Schedule B
+provision of the Code, including section 1296.
+                                                                (Form 1040), line 5).
+   Complete a separate Part V for each excess
+distribution. That is, if you receive a distribution from a     Line 15c
+section 1291 fund with respect to shares for which you
+have different holding periods, complete lines 15a through      Divide the amount on line 15b by 3. If the number of tax
+15e separately for each block of shares that has the same       years in your holding period preceding the current tax year
+holding period (“applicable stock”). If you dispose of stock    is less than 3, divide the amount on line 15b by that
+in a section 1291 fund for which you have different holding     number.
+periods, complete line 15f for each block of shares that
+has the same holding period.                                    Line 15e(1)
+Line 15                                                         Nonexcess distribution. The nonexcess distribution is
+In the entry space provided above line 15a, enter the           the lesser of line 15a or line 15d. This amount is taxed
+three-letter currency code of the currency used on lines        according to the rules of section 301. To the extent that
+15a through 15e(1). Currency codes are available at six-        section 301(c)(1) is applicable, include the amount as a
+group.com/en/products-services/financial-information/           dividend on your income tax return. For corporations,
+data-standards.html#scrollTo=currency-codes.                    include this amount on Form 1120, Schedule C, line 14.
+                                                                For individuals, include this amount on Form 1040, line 3b
+   The excess distribution must be determined in a single       (and, if applicable, on Schedule B (Form 1040), line 5).
+currency. In general, the excess distribution must be           Excess distributions. If you received more than one
+calculated in U.S. dollars. Each distribution is translated     distribution during the tax year with respect to the
+into the U.S. dollar at the spot rate on the date on which      applicable stock, the excess distribution is apportioned
+such distribution is made. However, if all distributions that   among all actual distributions. Each apportioned amount
+must be taken into account for purposes of calculating the      is treated as a separate excess distribution.
+excess distribution are made in a single foreign currency,
+the excess distribution must be calculated in the currency
+                                                                Line 15f
+in which the distributions are made. Each ratable portion
+of a total excess distribution determined in such foreign       Gain recognized on the disposition of stock of a section
+currency is then translated into U.S dollars at the spot rate   1291 fund is treated as an excess distribution. Loss
+on the date of the distribution to which the ratable portion    realized on the disposition of stock of a section 1291 fund
+is allocated. See section 1291(b)(3)(E) and Proposed            is not taken into account under section 1291 and thus, for
+Regulations section 1.1291-2(d)(4).                             example, does not reduce the amount of total gain subject
+                                                                to section 1291. However, the loss may be recognized
+Lines 15a and 15b                                               under another provision of the Code and reported
+                                                                accordingly. Stock of a section 1291 fund is considered
+Enter your total distributions from the section 1291 fund       disposed of if it is sold, transferred, or pledged.
+with respect to the applicable stock for the periods
+indicated.
+
+14                                                                                Instructions for Form 8621 (Rev. 12-2025)
+Line 16                                                         Line 16d
+Lines 16a and 16b                                               To figure the foreign tax credit, the shareholder of a
+                                                                section 1291 fund figures the total creditable foreign taxes
+Determine the taxation of the excess distribution on a          attributable to the distribution. This amount includes the
+separate sheet and attach it to Form 8621. Divide the           withholding taxes paid by the shareholder on the
+amount on line 15e(2) or 15f, whichever applies, by the         distribution and, in the case of the tax year of a section
+number of days in your holding period. The holding period       1291 fund that begins before 2018, for 10%-or-greater
+of the stock is treated as ending on the date of the            domestic corporate shareholders, any taxes deemed paid
+distribution or disposition.                                    under section 902. These taxes must be creditable under
+                                                                general foreign tax credit principles, and the shareholder
+   Special rules apply to the holding period if:                must choose to claim the foreign tax credit for the current
+• The deemed dividend election (Election E) is made.            tax year.
+See the instructions earlier for Election E.
+• The mark-to-market election (Election C) is made or              The excess distribution taxes (the creditable foreign
+was made in a prior year (see section 1291(a)(3)(A)(ii)).       taxes attributable to an excess distribution) are
+• The deemed dividend election with respect to a Section        determined by apportioning the total creditable foreign
+1297(e) PFIC (Election G) or with respect to a Former           taxes between the part of the distribution that is an excess
+PFIC (Election H) is made. See the instructions for             distribution and the part that is not.
+Election G and Election H, earlier.
+                                                                   The excess distribution taxes are allocated in the same
+   Determine the amount allocable to each tax year in           manner as the excess distribution is allocated. See
+your holding period by adding the amounts allocated to          Excess distributions, earlier. Those taxes allocated to
+the days in each such tax year. Add the amounts allocated       pre-PFIC tax years and the current tax year are taken into
+to the pre-PFIC and current tax years. Enter the sum on         account for the current tax year under the general rules of
+line 16b.                                                       the foreign tax credit.
+
+  This amount is treated as ordinary income (for                   The excess distribution taxes allocated to a PFIC year
+example, individuals and corporations should enter this         only reduce the increase in tax figured for that tax year
+amount on the “other income” line of their tax return).         (but not below zero). No carryover of any unused excess
+                                                                distribution taxes is allowed.
+Line 16c                                                           When you dispose of PFIC stock, the above foreign tax
+                                                                credit rules apply only to the part of the gain that, without
+Determine the increase in tax for each tax year in your         regard to section 1291, would be treated under section
+holding period (other than the current tax year and             1248 as a dividend.
+pre-PFIC years). An increase in tax is determined for each
+PFIC year by multiplying the part of the excess distribution    Line 16e
+allocated to each year (as determined on line 16a) by the
+highest rate of tax under section 1 or section 11,              This amount is the total increase in tax and is included on
+whichever applies, in effect for that tax year. Add the         your tax return as additional taxes.
+increases in tax computed for all years. Enter the
+aggregate increases in tax (before credits) on line 16c.           For individuals, include the amount as part of the total
+                                                                for Form 1040, line 16. Check box 3 on line 16 and enter
+   The following table sets forth the highest rate of tax in    “1291TAX” in the entry space for that box.
+effect under section 1 (applicable to individuals) for
+calendar years 1987 through 2025.                                  For corporations, enter this amount on Form 1120,
+                                                                Schedule J, to the left of the entry space for line 1. Enter
+                                                                “Sec. 1291” next to the amount and include it as part of
+Tax Rates
+                                                                the total for line 1. Other entities should use the
+                                                                comparable line on their income tax return.
+ Tax year(s) (based on calendar Highest rate of tax in effect
+ year taxpayer)                 under IRC section 1
+                                                                Line 16f
+ 2018–2025                       37%
+ 2013–2017                       39.6%                          Interest is charged on each net increase in tax for the
+ 2003–2012                       35%
+                                                                period beginning on the due date (without regard to
+                                                                extensions) of your income tax return for the tax year to
+ 2002                            38.6%                          which an increase in tax is attributable and ending with the
+ 2001                            39.1%                          due date (without regard to extensions) of your income tax
+ 1993–2000                       39.6%
+                                                                return for the tax year of the excess distribution.
+ 1991–1992                       31%                               The amount of interest is determined by using the rates
+ 1988–1990                       28%                            and methods under section 6621. See section 1291(c)(3)
+                                                                for more information regarding the computation of interest,
+ 1987                            38.5%
+                                                                and also see Revenue Ruling 2024-18, 2024-37 I.R.B.
+
+Instructions for Form 8621 (Rev. 12-2025)                                                                                  15
+584 (or successor Revenue Ruling) for a list of historical          An election may be terminated in whole or in part
+interest rates under section 6621.                               depending on the event causing the termination.
+                                                                 Examples are as follows.
+   For individuals, include the interest on Schedule 2           • A distribution of earnings will terminate an election to
+(Form 1040), line 17p.                                           the extent the election is attributable to the earnings
+                                                                 distributed.
+   For corporations, include the interest as part of the total   • A loan, pledge, or guarantee by the QEF made directly
+for Form 1120, Schedule J, line 9z. See the instructions         or indirectly to the electing shareholder or related person
+for Form 1120, Schedule J, line 9z.                              will terminate an election to the extent of the undistributed
+                                                                 earnings equal to the amount loaned, secured, or
+Part VI. Status of Prior Year Section                            guaranteed.
+1294 Elections and Termination of                                • A disposition of stock will terminate all elections with
+                                                                 respect to the undistributed earnings attributable to that
+Section 1294 Elections                                           stock.
+Each person who has made a section 1294 election must            • A change in status of the QEF will terminate all
+(1) complete lines 17 through 20 to annually report the          elections.
+status of that election, and (2) complete lines 21 through          For more information, see Regulations section
+24 to report the termination of any section 1294 election        1.1294-1T(e).
+that occurred during the tax year. See Temporary
+                                                                 Line 23. Enter the deferred tax due from the termination
+Regulations section 1.1294-1T(h).
+                                                                 of the section 1294 election. The deferred tax entered on
+Line 17. Enter the last day of each tax year for which you       line 19 is due if the election was completely terminated. If
+made a section 1294 election that is outstanding. Enter as       the election was only partially terminated, a proportionate
+MM/DD/YYYY. Do not include an election made in the               amount of the deferred tax is due. That amount is
+current tax year.                                                determined by multiplying the amount entered on line 19
+Line 18. Enter the undistributed earnings of the QEF in          by a fraction, of which the numerator is the amount
+the year for which the payment of tax was extended by the        entered on line 22 and the denominator is the amount
+section 1294 election entered on line 17. If the election        entered on line 18. The deferred tax is due by the due
+was partially terminated in a prior year, enter the              date of the shareholder's income tax return (without
+remaining undistributed earnings.                                regard to extensions) for the year of termination.
+                                                                     When the election is terminated, corporations include
+Line 19. Enter the tax for which payment was extended            the deferred tax as part of the total for Form 1120,
+by the section 1294 election entered on line 17. If the          Schedule J, line 11. Also, enter the deferred tax to the left
+election was partially terminated in the previous tax year,      of line 11 and label it as “Sec. 1294 deferred tax.”
+enter the balance of the deferred tax from line 25 of the
+prior year Form 8621.                                                For individuals, include the deferred tax as part of the
+                                                                 total for Schedule 2 (Form 1040), line 17z. Enter “1294DT”
+Line 20. Enter the accrued interest (determined under            and the amount of the deferred tax in the entry space for
+section 6621) on the deferred tax. This is the interest          that line.
+accrued from the due date (not including extensions) of
+the return for the year for which the section 1294 election      Line 24. Enter the interest accrued on the deferred tax.
+was made until the date the current year's return is filed.      Interest accrues beginning on the due date (without
+                                                                 regard to extensions) of your tax return for the tax year in
+Line 21. Enter the event(s) that occurred during the tax         which the section 1294 election is made and ending with
+year that terminated one or more of the section 1294             the due date (without regard to extensions) of your tax
+elections reported on line 17. A section 1294 election may       return for the tax year of the termination. Interest is
+be terminated voluntarily. However, an election will             computed using the rates and methods under section
+terminate automatically, in whole or in part, when any of        6621.
+the following events occur.
+                                                                    For corporations, enter the amount of section 1294
+• An actual or deemed distribution of earnings to which          interest on Form 1120, Schedule J, line 11, and label it as
+the election is attributable (a loan, pledge, or guarantee by
+                                                                 “Sec. 1294 interest.”
+the QEF to or for the benefit of the taxpayer may cause a
+deemed distribution of the earnings);                               For individuals, include the interest from line 24 on
+• A disposition of stock in the QEF, including a pledge by       Schedule 2 (Form 1040), line 17q.
+the taxpayer of stock as security for a loan; or                 Lines 25 and 26. Complete lines 25 and 26 only if a
+• A change of status of the QEF (that is, a foreign              section 1294 election is partially terminated. Enter on
+corporation that is no longer a QEF or PFIC).                    line 25 the part of the deferred tax outstanding after the
+                                                                 partial termination of the section 1294 election. This
+Line 22. Enter the earnings distributed or deemed
+                                                                 amount should equal line 19 minus line 23.
+distributed as a result of the events described on line 21.
+Earnings are treated as distributed out of the most              Note: As indicated in the line 19 instructions, for next
+recently accumulated earnings and profits. Accordingly,          year, be sure to enter the line 25 amount of this year’s
+an event will first terminate the most recently made             Form 8621 on line 19 of next year’s Form 8621.
+election.
+
+
+16                                                                                 Instructions for Form 8621 (Rev. 12-2025)
+  Enter on line 26 the accrued interest remaining after the
+partial termination of the section 1294 election. This
+amount should equal line 20 minus line 24.
+
+
+
+
+Instructions for Form 8621 (Rev. 12-2025)                     17
+Disclosure, Privacy Act, and Paperwork Reduction Act Notice. We ask for the information on this form to carry out
+the Internal Revenue laws of the United States. Sections 6001, 6011, 6012(a), and 6109, and their regulations, require
+you to provide this information. We need this information to ensure that you are complying with the Internal Revenue laws
+and to allow us to figure and determine the right amount of tax. You must fill in all parts of the tax form that apply to you. If
+you do not file a return under circumstances requiring its filing, do not provide the information we ask for, or provide
+fraudulent information, you may be charged penalties and be subject to criminal prosecution.
+   We may disclose your tax information to the Department of Justice for civil and criminal litigation, and to cities, states,
+the District of Columbia, and U.S. possessions and commonwealths for use in administering their tax laws. We may also
+disclose to foreign countries pursuant to a treaty, to federal and state agencies to enforce federal nontax criminal laws, or
+to federal law enforcement and intelligence agencies to combat terrorism.
+   You are not required to provide the information requested on a form that is subject to the Paperwork Reduction Act
+unless the form displays a valid OMB control number. Books or records relating to a form or its instructions must be
+retained as long as their contents may become material in the administration of any Internal Revenue law.
+   The time needed to complete and file this form will vary depending on individual circumstances. The estimated burden
+for individual taxpayers filing this form is approved under OMB control number 1545-0074 and the estimated burden for
+business taxpayers is approved under OMB control number 1545-0123. The estimated burden for all other taxpayers
+who file this form is shown below.
+
+Recordkeeping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   16 hr., 58 min.
+Learning about the law or the form. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         11 hr., 24 min.
+Preparing and sending the form to the IRS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             20 hr., 34 min.
+
+
+
+   If you have comments concerning the accuracy of these time estimates or suggestions for making this form simpler,
+we would be happy to hear from you. You can send us comments from IRS.gov/FormComments. Or, you can write to the
+Internal Revenue Service, Tax Forms and Publications, 1111 Constitution Ave. NW, IR-6526, Washington, DC 20224. Do
+not send the tax form to this office. Instead, see When and Where To File, earlier.
+
+
+
+
+18                                                                                                                     Instructions for Form 8621 (Rev. 12-2025)
+

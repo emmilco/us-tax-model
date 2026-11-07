@@ -1,0 +1,869 @@
+2025
+Instructions for Form 1099-B
+Proceeds From Broker and Barter Exchange Transactions
+Section references are to the Internal Revenue Code            • For whom the broker has sold (including short sales)
+unless otherwise noted.                                        stocks, commodities, regulated futures contracts, foreign
+                                                               currency contracts (pursuant to a forward contract or
+Future Developments                                            regulated futures contract), forward contracts, debt
+For the latest information about developments related to       instruments, options, securities futures contracts, etc., for
+Form 1099-B and its instructions, such as legislation          cash;
+enacted after they were published, go to IRS.gov/              • Who received cash, stock, or other property from a
+Form1099B.                                                     corporation that the broker knows, or has reason to know,
+                                                               has had its stock acquired in an acquisition of control or
+   You can get the General Instructions for Certain            had a substantial change in capital structure reportable on
+Information Returns at IRS.gov/1099GeneralInstructions.        Form 8806, Information Return for Acquisition of Control
+                                                               or Substantial Change in Capital Structure; or
+What’s New                                                     • Who exchanged property or services through a barter
+Digital Assets. For each digital asset sale that a broker      exchange.
+has effected for a customer in 2025, the broker must
+complete Form 1099–DA, Digital Asset Proceeds Form             Qualified Opportunity Funds (QOF)
+Broker Transactions, as described in the instructions for      A QOF is an investment vehicle organized as a
+that Form. If you effected a sale of a digital asset that is   corporation or a partnership for the purpose of investing in
+also a security for which Form 1099-B would be required        qualified opportunity zone property. See section
+(dual classification asset), you should generally file Form    1400Z-2(d).
+1099-DA and not Form 1099-B. There are three                   Reporting dispositions of QOF investments. Report
+exceptions to the requirement to report a sale of a dual       all dispositions of interests in the QOF regardless of the
+classification asset on either Form 1099-B or Form             identity of the person who disposed of it. For example, if
+1099-DA. See Sales of digital assets, later. Additionally,     the person is a corporation, you should still file a Form
+certain dispositions of digital assets held by a widely held   1099-B. A disposition includes any disposition of the
+fixed investment trust (WHFIT) must be reported on Form        investment (whether or not the disposition is for
+1099-DA. See Widely held fixed investment trusts               consideration), including by gift or inheritance.
+(WHFITs), later.
+                                                                   Report each disposition on a separate Form 1099-B,
+Reminders                                                      regardless of how many dispositions any one person has
+In addition to these specific instructions, you should also    made in the calendar year. The reporting Exceptions
+use the current General Instructions for Certain               under Brokers, and the reporting Exceptions under Barter
+Information Returns. Those general instructions include        Exchanges, later, do not apply to dispositions of interests
+information about the following topics.                        in a QOF. If you are a QOF that is not a broker or barter
+• Who must file.                                               exchange and do not know that a broker or barter
+• When and where to file.                                      exchange reported a disposition of an interest in the QOF,
+• Electronic reporting.                                        then complete the following on the form in the manner
+• Corrected and void returns.                                  instructed for the respective items and boxes.
+• Statements to recipients.                                    • Box 1a. For interests in the QOF, enter the appropriate
+• Taxpayer identification numbers (TINs).                      descriptions. For example, for stock, enter the number of
+• Backup withholding.                                          shares or units; for partnerships, enter the percentage of
+• Penalties.                                                   investment.
+• The definitions of terms applicable for chapter 4            • Box 1b. Enter the acquisition date of any interest in the
+purposes that are referenced in these instructions.            QOF, if known.
+• Other general topics.                                        • Box 1c. Enter the date of disposition of any interest in
+                                                               the QOF.
+Online fillable copies. To ease statement furnishing           • Box 1d. Enter the gross cash proceeds from the
+requirements, Copies B, 1, and 2 are fillable online in a      disposition of any interest in the QOF, if known.
+PDF format available at IRS.gov/Form1099B. You can             • Box 3. Check the “QOF” box for reporting the
+complete these copies online for furnishing statements to      disposition of an interest in the QOF.
+recipients and for retaining in your own files.                    QOFs must furnish a statement to the person who
+                                                               disposed of the interest in the QOF investment. For
+Specific Instructions                                          additional information on furnishing statements, see part
+A broker or barter exchange must file Form 1099-B for          M in the current General Instructions for Certain
+each person:                                                   Information Returns.
+
+                                 Instructions for Form 1099B (2025) Catalog Number 64171A
+Jan 16, 2025                  Department of the Treasury Internal Revenue Service www.irs.gov
+   If you are a broker or barter exchange, including a QOF    Closing transactions. In the case of an option, a
+that is a broker or barter exchange, complete Form            regulated futures contract, a securities futures contract, or
+1099-B as usual for all dispositions of interests in QOFs.    a forward contract, a sale includes any closing
+Follow the specific instructions for brokers or barter        transaction. A closing transaction is a lapse, an expiration,
+exchanges (for example, the reporting of basis for a QOF      a settlement, an abandonment, or other termination of a
+investment that is a covered security). Complete all boxes    position (which includes a right or an obligation under a
+as appropriate, depending on the nature of the interest       forward contract, a regulated futures contract, a securities
+disposed. For example, if the QOF investment is stock,        futures contract, or an option).
+you must complete box 1e to report cost or other basis.
+Also, you must check the QOF box in box 3 for all                Example. For an option that is a covered security, that
+dispositions of QOF investments.                              also has a basis of zero in the option upon a closing
+                                                              transaction, enter -0- in box 1e.
+Brokers                                                       Substitute statements. Brokers that use substitute
+A broker is any person who, in the ordinary course of a       statements may be able to report customer transactions
+trade or business, stands ready to effect sales to be made    (digital asset sales (Form 1099-DA), stock sales (Form
+by others. A broker may include a U.S. or foreign person      1099-B), interest earned (Forms 1099-INT and
+or a governmental unit and any subsidiary agency.             1099-OID), dividends (Form 1099-DIV), and foreign taxes
+                                                              paid (Forms 1099-DIV and 1099-INT)) for the year on a
+    You are considered a broker if:                           single substitute statement. For details, see Pub. 1179,
+• You are an obligor that regularly issues and retires its    General Rules and Specifications for Substitute Forms
+own debt obligations, or                                      1096, 1098, 1099, 5498, and Certain Other Information
+• You are a corporation that regularly redeems its own        Returns, at IRS.gov/Pub1179, which provides the rules for
+stock.                                                        substitute forms.
+However, for a sale, redemption, or retirement at an office
+outside the United States, only a U.S. payer or U.S.          Additional information required for covered securi-
+intermediary is a broker. See Regulations sections            ties. For each sale of a covered security for which you are
+1.6045-1(g)(1) and 1.6049-5(c)(5).                            required to file Form 1099-B, report the date of acquisition
+                                                              (box 1b); whether the gain or loss is short-term or
+    You are not considered a broker if:                       long-term, and whether any portion of the gain or loss is
+• You are a corporation that purchases odd-lot shares         ordinary (box 2); cost or other basis (box 1e); the amount
+from its stockholders on an irregular basis (unless facts     of accrued market discount (box 1f); and the loss
+indicate otherwise),                                          disallowed due to a wash sale (box 1g). When selling a
+• You manage a farm for someone else, or                      noncovered security and reporting it on a separate Form
+• You are an international organization that redeems or       1099-B, you may check box 5 and leave boxes 1b, 1e, 1f,
+retires its own debt. See Regulations section 1.6045-1(a)     1g, and 2 blank. If you check box 5, you may choose to
+(1).                                                          report the information requested in boxes 1b, 1e, 1f, 1g,
+                                                              and 2 and will not be subject to penalties under section
+Reporting                                                     6721 or 6722 for failure to report this information correctly.
+How many transactions to report on each form.                    Example. Your customer Arlo bought shares of stock
+Report each transaction (other than regulated futures,        in ABC Corporation in April 2023, April 2024, and August
+foreign currency, or Section 1256 option contracts) on a      2024. The shares of stock bought in 2024 are covered
+separate Form 1099-B. Report transactions involving           securities. The shares of stock bought in April 2023 are
+regulated futures, foreign currency, or Section 1256 option   noncovered securities. In June 2025, Arlo sells all of the
+contracts on an aggregate basis. However, you may report      stock in a single transaction. Even though the stock was
+these contracts on an aggregate basis on a separate           sold in a single transaction, you must report the sale of the
+Form 1099-B for each type of contract, including separate     covered securities on two separate 2025 Forms 1099-B
+forms for digital asset and non-digital asset contracts of    (one for the securities bought in April 2024 with long-term
+the same type. For example, you must report all section       gain or loss and one for the securities bought in August
+1256 contracts, whether they are digital assets or            2024 with short-term gain or loss). You must report the
+non-digital assets, on at least one Form 1099-B, but you      sale of the noncovered securities on a third Form 1099-B
+can choose to report digital asset section 1256 option        or on the Form 1099-B reporting the sale of the covered
+contracts separately from non-digital asset section 1256      securities bought in April 2024 (reporting long-term gain or
+option contracts.                                             loss). You may check box 5 if reporting the noncovered
+                                                              securities on a third Form 1099-B. If you check box 5, you
+How many forms to file for each transaction. Report           may leave boxes 1b, 1e, 1f, 1g, and 2 blank or you may
+sales of each of the following types of securities on a       complete boxes 1b, 1e, 1f (if applicable), 1g (if applicable),
+separate Form 1099-B, even if all three types were sold in    and 2 and not be subject to penalties under section 6721
+a single transaction.                                         or 6722 for failing to report this information correctly.
+• Covered securities (defined later) with short-term gain
+or loss.                                                      Short sales of securities. Do not report a short sale
+• Covered securities with long-term gain or loss.             entered into after 2010 until the year a customer delivers a
+• Noncovered securities (securities that are not covered      security to satisfy the short sale obligation, unless there is
+securities) if you choose to check box 5 when reporting       backup withholding. See Backup withholding, later.
+their sale.                                                   Disregard sections 1259 (constructive sales) and 1233(h)
+
+2                                                                                     Instructions for Form 1099-B (2025)
+(short sales of property that becomes worthless). Report          redemption asset proceeds (as defined in Regulations
+the short sale on a single Form 1099-B unless:                    section 1.671-5(b)(14)), redemption proceeds (as defined
+• You are reporting both short-term and long-term gain or         in Regulations section 1.671-5(b)(15)), the sales asset
+loss from a short sale closed by delivery of covered              proceeds (as defined in Regulations section 1.671-5(b)
+securities (as explained earlier under How many forms to          (17)), and the sales proceeds (as defined in Regulations
+file for each transaction),                                       section 1.671-5(b)(18)) that are attributable to a trust
+• The securities delivered to close the short sale include        interest holder (TIH) for the calendar year on Form
+both covered securities and noncovered securities (as             1099-B.
+explained earlier under How many forms to file for each              Report a disposition of digital assets held by the
+transaction), or                                                  WHFIT. You may choose to report this disposition of digital
+• There was backup withholding and other conditions               assets on either Form 1099-B or Form 1099-DA. See
+apply (see Backup withholding, later).                            Sales of digital assets, later.
+Report on Form 1099-B the relevant information about the
+                                                                     To determine the amount of each item of proceeds to
+security sold to open the short sale, with the exceptions
+                                                                  be reported on Form 1099-B, see, generally, Regulations
+described in the following paragraphs.
+                                                                  section 1.671-5. If the trustee provides WHFIT information
+    In box 1a, report the quantity of the security delivered to   using the safe harbor rules in Regulations section
+close the short sale.                                             1.671-5(f)(1) or (g)(1), the trustee or intermediary must
+    In box 1b, report the acquisition date of the security        determine the amounts reported on Forms 1099 under
+delivered to close the short sale.                                Regulations section 1.671-5(f)(2) or (g)(2), as appropriate.
+    In box 1c, report the date the security was delivered to         Check box 5 and leave boxes 1b, 1e, 1f, 1g, and 2
+close the short sale.                                             blank if:
+    In box 1e, report the adjusted basis of the security          • You are a broker reporting the sale of a security held by
+delivered to close the short sale.                                a WHFIT to the WHFIT trustee; or
+    In box 2, report whether any gain or loss on the closing
+                                                                  • You are a trustee or intermediary of a WHFIT reporting
+                                                                  non-pro rata partial principal payments, trust sale
+of the short sale is short-term or long-term based on the
+                                                                  proceeds, redemption asset proceeds, redemption
+acquisition date of the security delivered to close the short
+                                                                  proceeds, sales asset proceeds, and sales proceeds to a
+sale. Apply section 1233(d), if applicable.
+                                                                  TIH.
+    If the short sale is closed by delivery of a noncovered          Requirement to furnish a tax information statement
+security, you may check box 5. In this case, you do not           to TIH. A tax information statement that includes the
+have to complete boxes 1b, 1e, 1f, 1g, and 2. However, if         information provided to the IRS on Form 1099-B, as well
+you choose to report the information in those boxes and           as additional information identified in Regulations section
+check box 5, you will not be subject to the penalties under       1.671-5(e), must be provided to TIHs. The written tax
+sections 6721 and 6722 for failure to report that                 information statement furnished to the TIH for 2025 is due
+information correctly.                                            on or before March 15, 2026. The amount of an item of a
+    If a short sale obligation is satisfied by delivery of a      trust expense that is attributable to a TIH must be included
+security transferred into a customer's account                    on the tax information statement provided to the TIH and
+accompanied by a transfer statement indicating the                is not required to be included in box 5 on the Form
+security was borrowed, see Regulations section                    1099-DIV. See Regulations section 1.671-5(e) for a
+1.6045-1(c)(3)(xi)(C).                                            complete list of the items of information that must be
+    In the case of a short sale, you can take backup              included in the statement to the TIH.
+withholding either:                                               Acquisition of control or substantial change in capi-
+• From the gross proceeds when the short sale is                  tal structure. File Form 1099-B for each customer who
+opened, or                                                        received cash, stock, or other property from a corporation
+• From any gain when the short sale is closed if you              that you know, or have reason to know based on readily
+expect to be able to determine the gain on the short sale         available information, must recognize gain under section
+at that time.                                                     367(a) from the transfer of property to a foreign
+   Backup withholding. If backup withholding was taken            corporation in an acquisition of control or substantial
+from the gross proceeds when a short sale was opened in           change in capital structure reportable on Form 8806.
+2025 but the short sale was not closed by the end of 2025,        Readily available information includes information from a
+file a 2025 Form 1099-B. Report the tax withheld in box 4.        clearing organization, such as the Depository Trust
+In box 1a, enter a brief description of the transaction (for      Company (DTC), or from information published on
+example, “$5,000 short sale of 100 shares of ABC stock            IRS.gov.
+not closed”). Leave the other numbered boxes blank. File
+a final Form 1099-B for the year the short sale is closed,                For more information, see Form 8806, available at
+as described above, but do not include the 2025 tax                TIP IRS.gov/Form8806.
+withheld on that Form 1099-B.
+                                                                     You are not required to file a second Form 1099-B for a
+Widely held fixed investment trusts (WHFITs).                     customer who received only cash for stock acquired in an
+Trustees and middlemen must report the amount of                  acquisition of control if you report the cash as proceeds
+non-pro rata partial principal payments (as defined in            from a sale on another Form 1099-B. You are also not
+Regulations section 1.671-5(b)(13)), trust sales proceeds         required to file Form 1099-B for a customer who is an
+(as defined in Regulations section 1.671-5(b)(21)),
+
+Instructions for Form 1099-B (2025)                                                                                         3
+exempt recipient (under Regulations section 1.6045-1(c)         1099-MISC, Miscellaneous Information. See section
+(3)(i) or 1.6043-4(b)(5)). For a list of exempt recipients,     6045(d) and the Instructions for Forms 1099-MISC and
+see the current Instructions for Form 1099-CAP.                 1099-NEC.
+     Enter in box 1d the aggregate amount of cash and the       Stock options granted in connection with the per-
+fair market value (FMV) of any stock and other property         formance of services. If an employee, former employee,
+received in exchange for stock held in your custody. Also,      or other service provider, in connection with the
+check box 7.                                                    performance of services, obtains substantially vested
+     In box 1a, show the corporation's name and the number      shares of stock from the exercise of a stock option, and
+of shares of the corporation's stock you held that were         sells that stock through a broker on the same day, then the
+exchanged. Also enter the class or classes of stock (for        broker may not be required to report the sale on Form
+example, preferred, common, etc.) that were exchanged,          1099-B. For details, see Rev. Proc. 2002-50, which is on
+whether for cash or other property. Abbreviate the class to     page 173 of Internal Revenue Bulletin 2002-29 at
+fit the entry. For example, enter “C” for common stock, “P”     IRS.gov/pub/irs-irbs/irb02-29.pdf.
+for preferred, or “O” for other. Also abbreviate any            Partnership sale. Form 8308, Report of a Sale or
+subclasses.                                                     Exchange of Certain Partnership Interests, does not have
+     Leave the other numbered boxes and the CUSIP               to be filed if, under section 6045, a return is required to be
+number box blank unless you are required to file a Form         filed by a broker on Form 1099-B for the transfer of the
+1099-B to report proceeds you paid to the customer from         partnership interest.
+the acquisition of control or substantial change in capital
+                                                                Exceptions. Brokers are not required to file, but may file,
+structure and you choose to file and furnish one Form
+                                                                Form 1099-B for the following.
+1099-B for amounts reported under both Regulations
+sections 1.6045-1 and 1.6045-3. If you choose to combine            1. Sales for exempt recipients, including the following.
+the reporting for both, do not combine other transactions           a. Charitable organizations.
+the customer may have had during the year with the                  b. IRAs.
+reporting of the acquisition of control or change in capital
+structure. Also, in box 1e, report the total basis of the           c. Archer MSAs and health savings accounts (HSAs).
+customer's stock. Do not enter an amount in box 1e that is          d. The United States or any state or a political
+greater than the amount entered in box 1d.                      subdivision of the United States or any state.
+Cash on delivery account. For a sale of securities                  e. Corporations. However, see Identifying a
+through a “cash on delivery” or similar account, only the       corporation, later, for instructions about how to know
+broker that receives the gross proceeds from the sale           whether a customer is a corporation for this purpose. Also,
+against delivery of the securities sold is required to report   you must file Form 1099-B for the sale of a covered
+the sale. However, if such broker's customer is a               security (defined later) by an S corporation if the S
+“second-party broker” that is an exempt recipient, only the     corporation acquired the covered security after 2011.
+second-party broker is required to report the sale.                 2. Sales initiated by dealers in securities and financial
+                                                                institutions.
+Foreign currency. If the purchase amount or sales
+proceeds are paid in foreign currency, you must report the          3. Sales by custodians and trustees, provided the sale
+amount of foreign currency in U.S. dollars. Generally, you      is reported on a properly filed Form 1041, U.S. Income Tax
+must determine the reportable amount (other than                Return for Estates and Trusts.
+amounts representing accrued interest or original issue             4. Sales of shares in a regulated investment company
+discount) as of the date you receive, credit, or make the       that is a money market fund.
+payment, whichever applies, at the spot rate or by                  5. Obligor payments on the following.
+following a reasonable spot rate convention, such as a
+month-end spot rate or a monthly average spot rate.                 a. Nontransferable obligations, such as savings bonds
+                                                                or CDs.
+    When reporting the purchase or sale of a security
+traded on an established securities market, you must                b. Obligations for which gross proceeds are reported
+determine the U.S. dollar amounts to be reported (other         on other Forms 1099, such as stripped coupons issued
+than amounts representing accrued interest or original          before July 1, 1982.
+issue discount) as of the settlement date, at the spot rate         c. Callable demand obligations issued before January
+or by following a reasonable spot rate convention. See          1, 2014, that have no premium or discount.
+Regulations section 1.6045-1(d)(8).                                 6. Sales of foreign currency unless under a forward or
+    Generally, payments of foreign currency amounts             regulated futures contract that requires delivery of foreign
+representing accrued interest or original issue discount        currency.
+must be translated using the average rate for the interest          7. Sales of fractional shares of stock if gross proceeds
+accrual period, although certain customers may elect to         are less than $20.
+translate such amounts using the spot rate on the last day          8. Retirements of book-entry or registered form
+of the interest accrual period. See Regulations sections        obligations issued before January 1, 2014, if no interim
+1.988-2(b)(2) and 1.6045-1(n)(4)(v).                            transfers have occurred.
+Substitute payments. Do not report substitute payments              9. Sales for exempt foreign persons as, defined in
+in lieu of dividends and tax-exempt interest on Form            Regulations section 1.6045-1(g)(1).
+1099-B. Instead, report these payments in box 8 of Form
+
+4                                                                                        Instructions for Form 1099-B (2025)
+   10. Sales of Commodity Credit Corporation certificates.         For example, a broker selling a single gold coin does
+   11. Spot or forward sales of agricultural commodities.       not need to file Form 1099-B even if the coin is of such
+See Spot or forward sales of agricultural commodities,          form and quality that it could be delivered to satisfy a
+later.                                                          CFTC-approved RFC if all CFTC-approved contracts for
+                                                                gold coins currently call for delivery of at least 25 coins.
+   12. Some sales of precious metals. See Sales of
+precious metals, later.                                            Sales of precious metals for a single customer during a
+                                                                24-hour period must be aggregated and treated as a
+   13. Grants or purchases of options, purchases due to
+                                                                single sale to determine if this exception applies. This
+exercises of call options, or entering into contracts that
+                                                                exception does not apply if the broker knows or has
+require delivery of personal property or an interest therein.
+                                                                reason to know that a customer, either alone or with a
+   14. Sales (including retirements) of short-term              related person, is engaging in sales to avoid information
+obligations issued on or after January 1, 2014. However, a      reporting.
+broker may be required to file a Form 1099-INT for interest
+or original issue discount on a short-term obligation.          Sales of digital assets. A digital asset is any digital
+                                                                representation of value that is recorded on a
+   Identifying a corporation. For sales of covered              cryptographically secured distributed ledger without
+securities (defined later) that were acquired after 2011,       regard to whether each individual transaction involving
+you cannot rely on Regulations section 1.6049-4(c)(1)(ii)       that digital asset is actually recorded on that distributed
+(A) to tell whether a customer is a corporation. However,       ledger, and that is not cash (that is, U.S. dollars or any
+for sales of all securities, you can treat a customer as an     convertible foreign currency issued by a government or
+exempt recipient if one of the following statements is true.    central bank).
+    1. The name of the customer contains the term                   For sales of digital assets, complete Form 1099-DA.
+“insurance company,” “indemnity company,” “reinsurance              For sales of digital assets that are also securities for
+company,” or “assurance company.”                               which the Form 1099-B would be required (dual
+    2. The name of the customer indicates it is an entity       classification asset), you should generally file Form
+listed as a per se corporation under Regulations section        1099-DA and not Form 1099-B. There are three
+301.7701-2(b)(8)(i).                                            exceptions to the requirement to report a sale of a dual
+    3. You receive a properly completed exemption               classification asset on a Form 1099-DA. See Regulations
+certificate on Form W-9 that shows the customer is not an       section 1.6045-1(c)(8).
+S corporation.                                                      1. For transactions involving dual classification assets
+    4. You receive a Form W-8 that includes a certification     that are digital assets solely because their sales are
+that the person whose name is on the form is a foreign          cleared or settled on a limited access regulated network,
+corporation.                                                    as described in Regulations section 1.6045-1(c)(8)(iii)(B),
+                                                                you should file Form 1099-B and not Form 1099-DA.
+   Spot or forward sales of agricultural commodities.
+Agricultural commodities include grain, feed, livestock,            2. For transactions involving dual classification assets
+meat, oil seed, timber, and fiber. A spot sale is a sale that   that constitute section 1256 contracts, including regulated
+results in almost immediate delivery of a commodity. A          futures contracts or section 1256 option contracts on
+forward sale is a sale under a forward contract. However,       digital assets, you should report the section 1256 contract
+sales and exchanges of timber for lump-sum payments             transactions on an aggregate basis on Form 1099-B. In
+must be reported on Form 1099-S, Proceeds From Real             the event the delivery of the underlying digital asset is
+Estate Transactions.                                            made with respect to a section 1256 contract, which
+                                                                includes a regulated futures contract, a section 1256
+   Report sales of agricultural commodities under a             nonequity option contract, or a section 1256 foreign
+regulated futures contract, sales of derivative interests in    currency contract, however, report the delivery of the
+agricultural commodities, and sales of receipts for             underlying digital asset as a sale on Form 1099-DA.
+agricultural commodities issued by a designated
+warehouse on Form 1099-B. A designated warehouse is a               3. For transactions involving dual classification assets
+warehouse, depository, or other similar entity designated       that are shares in money market funds, you should not file
+by a commodity exchange in which or out of which a              a Form 1099-DA and you are not required to file, but may
+particular type of agricultural commodity is deliverable to     file, Form 1099-B.
+satisfy a regulated futures contract. Sales of warehouse           For rules related to sales of digital assets for exempt
+receipts issued by any other warehouse are not                  foreign persons, see Regulations section 1.6045-1(g)(4).
+reportable.
+                                                                Dual Classification Assets that are Not Tokenized Se-
+   Sales of precious metals. A sale of a precious metal
+                                                                curities. For transactions involving dual classification
+(gold, silver, platinum, or palladium) in any form for which
+                                                                assets that are tokenized securities, you should file Form
+the Commodity Futures Trading Commission (CFTC) has
+                                                                1099-DA and not Form 1099-B. A tokenized security is a
+not approved trading by regulated futures contract (RFC)
+                                                                dual classification asset that provides the holder with an
+is not reportable. Further, even if the sale is of a precious
+                                                                interest in another asset that is a security that is otherwise
+metal in a form for which the CFTC has approved trading
+                                                                subject to reporting on the Form 1099-B. Additionally, a
+by RFC, the sale is not reportable if the quantity, by weight
+                                                                tokenized security is an asset, the offer of sale of which is
+or by number of items, is less than the minimum required
+                                                                registered with the U.S. Securities and Exchange
+quantity to satisfy a CFTC-approved RFC.
+                                                                Commission, other than an asset treated as a security for
+
+Instructions for Form 1099-B (2025)                                                                                          5
+securities law purposes solely as an investment contract.      • Date the transfer was initiated and settlement date of
+See Regulations section 1.6045-1(c)(8)(i)(D).                  the transfer (if known); and
+Exemption certificate. A broker may require an exempt          • The security's total adjusted basis, original acquisition
+                                                               date, and, if applicable, the holding period adjustment
+recipient to file a properly completed Form W-9, Request
+                                                               under section 1091.
+for Taxpayer Identification Number and Certification, or
+similar form. A broker may treat an exempt recipient that         For a debt instrument, the following additional
+fails to do so as a recipient that is not exempt. See part J   information is required.
+in the current General Instructions for Certain Information    • A description of the payment terms used by the broker
+Returns for more information.                                  to compute any basis adjustments under Regulations
+                                                               section 1.6045-1(n).
+Transfer Statement                                             • The issue price.
+                                                               • The issue date, if different from the original acquisition
+                                                               date.
+Any person that transfers custody of a specified security
+(defined later) to a broker after 2010 (after 2011 if the      • The adjusted issue price as of the transfer date.
+stock is in a regulated investment company, and after          • The initial basis.
+2014 for certain debt instruments, options, and securities     • Any market discount that has accrued as of the transfer
+                                                               date.
+futures contracts) must give the broker a written transfer
+statement within 15 days after the date of settlement for      • Any bond premium that has been amortized as of the
+                                                               transfer date.
+the transfer.
+                                                               • Any acquisition premium that has been amortized as of
+                                                               the transfer date.
+   The transferor must furnish a separate statement for
+each security and, if transferring custody of the same
+                                                               • Whether the transferring broker has computed any of
+                                                               the information by taking into account one or more
+security acquired on different dates or at different prices,
+                                                               elections under Regulations section 1.6045-1(n).
+for each acquisition. However, a separate statement is not
+required for:
+                                                               • The last date on or before the transfer date that the
+                                                               broker made an adjustment for a particular item relating to
+• Noncovered securities, and                                   a debt instrument transferred on or after January 1, 2016.
+• Securities acquired more than 5 years before the
+transfer for which basis is determined using an average           For all option transfers, include the following.
+basis method.                                                  • The date of grant or acquisition of the option, the
+                                                               amount of the premium paid or received, and any other
+    These rules apply to:                                      information required to fully describe the option.
+• Any broker,                                                  • For the transfer of a Section 1256 option on or after
+• Anyone that acts as a custodian of securities in the         January 1, 2016, also provide the original basis of the
+ordinary course of a trade or business,                        option and the FMV of the option as of the end of the prior
+• Any issuer of securities,                                    calendar year.
+• Any trustee or custodian of an individual retirement            The adjusted basis, original acquisition date, holding
+plan, or                                                       period adjustment, and the additional information for a
+• Any agent of the above.                                      debt instrument or option described above are not
+                                                               required if the transfer statement identifies the security as
+    These rules do not apply to:                               a noncovered security.
+• The beneficial owner of a security or any agent                 If the names of the customer(s) for the transferring and
+substituted for an undisclosed beneficial owner,               receiving accounts are not the same, the transfer
+• Any governmental unit or any agency or instrumentality       statement must also include the name of the customer(s)
+of a governmental unit holding escheated securities, or        for the account to which the security is transferred.
+• Any organization that holds and transfers obligations        However, if the transfer is to or from an account for which
+among members as a service to its members.                     a broker, custodian, or other person subject to the transfer
+Information required. Each transfer statement must             reporting rules is the customer, the transfer statement
+include:                                                       must treat the beneficial owner or, if applicable, an agent
+• Date the statement is furnished;                             substituted by an undisclosed beneficial owner, as the
+• Name, address, and telephone number of the person            customer for both accounts, and the broker receiving the
+furnishing the statement;                                      transfer statement should treat the security as held for the
+• Name, address, and telephone number of the broker            beneficial owner or the beneficial owner's agent
+receiving custody of the security;                             regardless of the customer listed for the broker's account.
+• Name of the customer(s) for the account from which the          The person furnishing and the broker receiving the
+security is transferred;                                       transfer statement can agree to combine the information in
+• Account number for the transferring account and, if          any format or to use a code in place of one or more
+different, the receiving account;                              required items. The transferor should determine the
+• CUSIP or other security identifier number of the             adjusted basis and other information to be reported as
+transferred security;                                          explained in these instructions. If the basis of the
+• Number of shares or units;                                   transferred security is determined using an average basis
+• Type of security (such as stock, debt instrument, or         method, any securities acquired more than 5 years prior to
+option);                                                       the transfer may be reported on a single statement on
+
+6                                                                                      Instructions for Form 1099-B (2025)
+which the original acquisition date is reported as “various,”     issuer of the security during the period you held custody of
+but only if the other information reported applies to all the     the security (beginning with the date on which you
+securities.                                                       received a transferred security). If you receive or are
+                                                                  deemed to receive an issuer statement after filing Form
+Effect on Form 1099-B and other transfer statements.
+In preparing Form 1099-B or a transfer statement for              1099-B, you must file a corrected Form 1099-B within 30
+securities you transfer to someone else, you must take            days of receiving the issuer statement. But you do not
+into account all the information (other than securities           have to file a corrected Form 1099-B if you receive the
+classifications) reported on a transfer statement you             issuer statement more than 3 years after you filed the
+receive, unless the statement is incomplete or you know it        original Form 1099-B. If you receive or are deemed to
+is incorrect. If you do not receive a required transfer           receive an issuer statement after furnishing a transfer
+statement by the due date, you must request one from the          statement for a covered security, you must furnish a
+transferor. If a complete transfer statement is not               corrected transfer statement within 15 days of receiving
+                                                                  the issuer statement. But you do not have to furnish a
+furnished, either after you requested one or because no
+transfer statement was required, you may treat the                corrected transfer statement if you receive the issuer
+                                                                  statement more than 18 months after you furnished the
+security as noncovered. However, you must file a
+corrected Form 1099-B within 30 days of receiving a               original transfer statement.
+transfer statement indicating that the security is a covered      More information. For more information, see Form 8937
+security. But you do not have to file a corrected Form            and its instructions, and Regulations section 1.6045B-1.
+1099-B if you receive the statement more than 3 years
+after you filed the original Form 1099-B. You must also           Barter Exchanges
+furnish a corrected transfer statement within 15 days of          A barter exchange is any person or organization with
+receiving a transfer statement indicating that a security is      members or clients that contract with each other (or with
+a covered security if you transferred the security                the barter exchange) to jointly trade or barter property or
+transferred to you. But you do not have to furnish a              services. The term does not include arrangements that
+corrected transfer statement if you receive the transfer          provide solely for the informal exchange of similar services
+statement more than 18 months after you furnished your            on a noncommercial basis. Persons who do not contract
+transfer statement.                                               with a barter exchange but who trade services do not file
+More information. For more information about transfer             Form 1099-B. However, they may have to file Form
+statements, including definitions, exceptions, rules for gift     1099-MISC.
+transfers, transfers from a decedent's estate, and transfers      Transactional/aggregate reporting. Barter exchanges
+of borrowed securities, see Regulations section                   involving noncorporate members or clients must report
+1.6045A-1.                                                        each transaction on a separate Form 1099-B.
+                                                                  Transactions involving corporate members or clients of a
+Issuer Returns for Actions Affecting Basis                        barter exchange may be reported on an aggregate basis.
+                                                                  Member information. In the recipient area of Form
+An issuer of a specified security (defined later) that takes      1099-B, enter information about the member or client that
+an organizational action that affects the basis of the            provided the property or services in the exchange.
+security must file an issuer return on Form 8937. This
+applies to organizational actions after 2010 (after 2011 if       Exceptions. Barter exchanges are not required to file
+the stock is in a regulated investment company, and after         Form 1099-B for:
+2013 for debt instruments, options, and securities futures           1. Exchanges through a barter exchange having fewer
+contracts). The return is due on or before the 45th day           than 100 transactions during the year,
+following the organizational action or, if earlier, January 15       2. Exempt foreign persons, as defined in Regulations
+of the next calendar year.                                        section 1.6045-1(g)(1), or
+                                                                     3. Exchanges involving property or services with an
+   An issuer is not required to file this return if, by the due   FMV of less than $1.00.
+date, the issuer posts the return with the required
+information in a readily accessible format in an area of its
+primary public website dedicated to this purpose and, for
+                                                                  Statements to Recipients
+10 years, keeps the return accessible to the public on its        If you are required to file Form 1099-B, you must provide a
+primary public website or the primary public website of           statement to the recipient. For more information about the
+any successor organization. An issuer may electronically          requirement to furnish a statement to the recipient, see
+sign a return that is publicly reported on the issuer’s public    part M in the current General Instructions for Certain
+website. The electronic signature must identify the               Information Returns.
+individual who is signing the return.
+                                                                  Truncating recipient's TIN on payee statements.
+Effect on Form 1099-B and transfer statements. In                 Pursuant to Regulations section 301.6109-4, all filers of
+preparing Form 1099-B or a transfer statement, you must           this form may truncate a recipient’s TIN (social security
+take into account all the information reported by the issuer      number (SSN), individual taxpayer identification number
+of the security on a statement that the issuer furnishes to       (ITIN), adoption taxpayer identification number (ATIN), or
+you or is deemed to furnish to you, unless the issuer             employer identification number (EIN)) on payee
+statement is incomplete or you know it is incorrect. Take         statements. Truncation is not allowed on any documents
+into account only those organizational actions taken by the
+
+Instructions for Form 1099-B (2025)                                                                                            7
+the filer files with the IRS. A filer's TIN may not be          IRS. Use this code to report a transaction that the
+truncated on any form. See part J in the current General        recipient will report on Schedule D (Form 1040), line 1a, or
+Instructions for Certain Information Returns.                   on Form 8949 with box A checked with totals being carried
+                                                                to Schedule D (Form 1040), line 1b.
+2nd TIN Not. Checkbox                                              Code B. This code indicates a short-term transaction
+                                                                for which the cost or other basis is not being reported to
+You may enter an “X” in this box if you were notified by the    the IRS. Use this code to report a transaction that the
+IRS twice within 3 calendar years that the payee provided       recipient will report on Form 8949 with box B checked with
+an incorrect TIN. If you mark this box, the IRS will not send   totals being carried to Schedule D (Form 1040), line 2.
+you any further notices about this account.                        Code D. This code indicates a long-term transaction for
+                                                                which the cost or other basis is being reported to the IRS.
+   However, if you received both IRS notices in the same        Use this code to report a transaction that the recipient will
+year, or if you received them in different years but they       report on Schedule D (Form 1040), line 8a, or on Form
+both related to information returns filed for the same year,    8949 with box D checked with totals being carried to
+do not check the box at this time. For purposes of the          Schedule D (Form 1040), line 8b.
+two-notices-in-3-years rule, you are considered to have            Code E. This code indicates a long-term transaction for
+received one notice and you are not required to send a          which the cost or other basis is not being reported to the
+second “B” notice to the taxpayer on receipt of the second      IRS. Use this code to report a transaction that the
+notice. See part N in the current General Instructions for      recipient will report on Form 8949 with box E checked,
+Certain Information Returns for more information. See also      with totals being carried to Schedule D (Form 1040),
+Rev. Proc. 2014–43.                                             line 9.
+        For more information on the TIN Matching System            Code X. Use this code to report a transaction if you
+ TIP offered by the IRS, see the current General                cannot determine whether the recipient should check box
+        Instructions for Certain Information Returns.           B or box E on Form 8949 because the holding period is
+                                                                unknown.
+
+CUSIP Number                                                    Box 1a. Description of Property
+For transactional reporting by brokers, enter the CUSIP         For stock and debt instruments, enter the issuer's name
+(Committee on Uniform Security Identification                   and the number of shares or units you held that were
+Procedures) number of the security or other applicable          exchanged. For stock, also enter the class or classes of
+identifying number.                                             stock (for example, preferred, common, etc.) that were
+                                                                exchanged, whether for cash or other property. Abbreviate
+Account Number                                                  the class to fit the entry. For example, enter “C” for
+                                                                common stock, “P” for preferred, or “O” for other. Also
+The account number is required if you have multiple             abbreviate any subclasses. For a non-Section 1256 option
+accounts for a recipient for whom you are filing more than      or securities futures contract, enter the name of the
+one Form 1099-B. The account number is also required if         underlier and the number of shares or units covered by the
+you check the "FATCA filing requirement" checkbox. See          contract.
+FATCA Filing Requirement Checkbox below. Additionally,
+the IRS encourages you to designate an account number              For bartering transactions, describe the service or
+for all Forms 1099-B that you file. See part L in the current   property provided.
+General Instructions for Certain Information Returns.
+                                                                  For regulated futures contracts and forward contracts,
+FATCA Filing Requirement Checkbox                               enter “RFC,” “digital asset RFC,” or other appropriate
+                                                                description.
+Check the box if you are a Foreign Financial Institution
+                                                                  For Section 1256 option contracts, enter “Section 1256
+(FFI) reporting payments to a U.S. account pursuant to an
+                                                                option,” “digital asset Section 1256 option,” or other
+election described in Regulations section 1.1471-4(d)(5)
+                                                                appropriate description.
+(i)(A). In addition, check the box if you are a U.S. payer
+that is reporting on Form 1099-B as part of satisfying your       If you are reporting more than one type of section 1256
+requirement to report with respect to a U.S. account for        contract on a single form, please describe the types of
+chapter 4 purposes, as described in Regulations section         contracts being reported. For example, enter “Section
+1.1471-4(d)(2)(iii)(A).                                         1256 options and digital asset Section 1256 options.”
+
+Applicable Checkbox on Form 8949                                  See Acquisition of control or substantial change in
+                                                                capital structure, earlier, for the information to enter in
+Use this box to enter a one-letter code that will assist the    box 1a for that type of transaction.
+recipient in reporting the transaction on Form 8949 and/or
+Schedule D (Form 1040). Use the code below that applies         Box 1b. Date Acquired
+to how the recipient will report the transaction.
+  Code A. This code indicates a short-term transaction          Enter the acquisition date of any securities sold. Leave
+for which the cost or other basis is being reported to the      this box blank if:
+
+8                                                                                        Instructions for Form 1099-B (2025)
+• The securities sold were acquired on a variety of dates,      you check box 5 and are not reporting basis, leave box 1e
+or                                                              blank. Enter -0- in box 1e only if the securities sold
+• You check box 5 and do not choose to complete box 1b.         actually had a basis of zero.
+
+     For short sales, see Short sales of securities, earlier.   Covered security. A covered security is any of the
+                                                                following.
+Box 1c. Date Sold or Disposed
+                                                                • Stock acquired for cash in an account after 2010,
+                                                                except stock for which the average basis method is
+For broker transactions, enter the trade date of the sale or    available.
+exchange. For short sales, see Short sales of securities,       • Stock for which the average basis method is available
+earlier. For barter exchanges, enter the date that cash,        and that is acquired for cash in an account after 2011.
+property, a credit, or scrip is actually or constructively      • A specified security transferred to an account if the
+received.                                                       broker or other custodian of the account receives a
+                                                                transfer statement (explained earlier) reporting the
+                                                                security as a covered security.
+Box 1d. Proceeds                                                • Certain debt instruments or options that are specified
+                                                                securities acquired for cash in an account after 2013. See
+Enter the gross cash proceeds from all dispositions
+                                                                Regulations section 1.6045-1(a)(15)(i)(C) and (E).
+(including short sales) of securities, commodities, options,
+securities futures contracts, or forward contracts. Show a      • Certain debt instruments or options that are specified
+                                                                securities acquired for cash in an account after 2015. See
+loss, such as one from a closing transaction on a written
+                                                                Regulations sections 1.6045-1(a)(15)(i)(D) and
+option or forward contract, as a negative amount by
+                                                                1.6045-1(m)(2)(ii). This includes variable-rate debt
+enclosing it in parentheses.
+                                                                instruments; inflation-indexed debt instruments;
+   You must reduce the proceeds by commissions and              contingent payment debt instruments; convertible debt
+transfer taxes related to the sale. For securities sold         instruments; options on debt instruments with payments
+because of the exercise of an option granted or acquired        denominated in, or determined by reference to, a currency
+before 2014, you may, but are not required to, take into        other than the U.S. dollar; and options issued as part of
+account option premiums in determining gross proceeds if        investment units.
+that is consistent with your books. For securities sold         • A securities futures contract entered into in an account
+because of the exercise of an option granted after 2013 or      after 2013.
+for the treatment of an option granted or acquired after        • A security acquired due to a stock dividend, stock split,
+2013, see Regulations section 1.6045-1(m) for details.          reorganization, redemption, stock conversion,
+                                                                recapitalization, corporate division, or other similar action,
+  If you reduce gross proceeds by option premiums,              if the basis of the acquired security is determined from the
+check the second box in box 6. Otherwise, check the first       basis of a covered security.
+box.                                                                Specified security. A specified security is any of the
+                                                                following.
+     Do not include amounts shown in boxes 8 through 11.        • Any share of stock (or any interest treated as stock,
+                                                                such as an American Depositary Receipt) in an entity
+   If identical stock is sold at separate times on the same     organized as, or treated for federal tax purposes as, a
+calendar day by a single trade order and a single               corporation (foreign or domestic). For this purpose, a
+confirmation is given that reports to the customer an           security classified as stock by the issuer is treated as
+aggregate price or an average price per share, you can          stock. If the issuer has not classified the security, the
+determine gross proceeds by averaging the proceeds for          security is not treated as stock unless the broker knows
+each share. However, do not do this if the customer             that the security is reasonably classified as stock under
+notifies you in writing of an intent to determine the           general federal tax principles.
+proceeds from the sale by the actual proceeds per share         • Any debt instrument, other than a debt instrument
+and you receive that notification by January 15 of the          subject to section 1272(a)(6) (certain interests in or
+calendar year following the year of the sale. You may           mortgages held by a real estate mortgage investment
+extend the January 15 deadline but not beyond the due           conduit (REMIC), certain other debt instruments with
+date for filing Form 1099-B.                                    payments subject to acceleration, and pools of debt
+  Do not include any accrued qualified stated interest on       instruments the yield on which may be affected by
+bonds sold between payment dates (or on a payment               prepayments), or any short-term obligation. For this
+date) in this box. Instead, report this accrued interest on     purpose, a security classified as debt by the issuer is
+Form 1099-INT.                                                  treated as debt. If the issuer has not classified the
+                                                                security, the security is not treated as debt unless the
+  For reporting an acquisition of control or substantial        broker knows that the security is reasonably classified as
+change in capital structure, see Acquisition of control or      debt under general federal tax principles or that the
+substantial change in capital structure, earlier.               instrument or position is treated as a debt instrument
+                                                                under a specific provision of the Internal Revenue Code.
+Box 1e. Cost or Other Basis                                     • Any option on one or more specified securities (which
+                                                                includes an index substantially all the components of
+Enter the adjusted basis of any securities sold unless the      which are specified securities), any option on financial
+security is not a covered security and you check box 5. If
+
+Instructions for Form 1099-B (2025)                                                                                          9
+attributes of specified securities, or a warrant or stock            Generally, determine the average basis of a share of
+right.                                                            stock by dividing the aggregate basis of all shares of
+• Any securities futures contract.                                identical stock in an account by the total number of
+                                                                  shares, regardless of holding period. However, for this
+Noncovered security. A noncovered security is any
+security that is not a covered security.                          purpose, shares of stock in a dividend reinvestment plan
+                                                                  are not identical to shares of stock with the same CUSIP
+    The following securities are not covered securities.          number that are not in a dividend reinvestment plan. The
+• Stock acquired in 2011 that was transferred in 2011 to a        basis of each share of identical stock in the account is the
+dividend reinvestment plan that meets the requirements of         aggregate basis of all shares of that stock in the account
+Regulations section 1.1012-1(e)(6). However, a covered            divided by the aggregate number of shares. Unless a
+security acquired in 2011 and transferred to a dividend           single-account election is in effect, you may not average
+reinvestment plan after 2011 remains a covered security.          together the basis of identical stock held in separated
+For purposes of this rule, stock is considered transferred        accounts that is sold, exchanged, or otherwise disposed
+to a dividend reinvestment plan if it is held in a plan that is   of after December 31, 2011. See Regulations section
+not a dividend reinvestment plan and the plan amends its          1.1012-1(e) for details.
+plan documents to become a dividend reinvestment plan.
+The stock is considered transferred as of the effective           Adjusted basis. The adjusted basis begins with the
+date of the plan amendments.                                      initial basis (defined later) as of the date the security is
+• A security acquired due to a stock dividend, stock split,       acquired in an account.
+reorganization, redemption, stock conversion,                         In reporting the adjusted basis, take into account all
+recapitalization, corporate division, or other similar action,    information, other than the classification of the security
+if the basis of the acquired security is determined from the      (such as stock), reported on a transfer statement or issuer
+basis of a noncovered security.                                   return furnished to you or deemed furnished to you, unless
+• A security that, when acquired, did not have to be              that statement or return is incomplete or you know it is
+reported on Form 1099-B because it was acquired from              incorrect. See Transfer Statement and Issuer Returns for
+an exempt recipient or an exempt foreign person, as               Actions Affecting Basis, earlier. Also, treat Form 2439 as
+defined in Regulations section 1.6045-1(g)(1).                    an issuer return and take into account the effects of
+• A security for which reporting is required by Regulations       undistributed capital gains reported to you on the form by
+section 1.6049-5(d)(3)(ii) (certain securities owned by a         a regulated investment company or real estate investment
+foreign intermediary or flow-through entity).                     trust.
+• A debt instrument if the terms of the debt instrument are           You are not required to consider other transactions,
+not reasonably available to the broker within 90 days of          elections, or events occurring outside the account when
+the date the debt instrument was acquired by the                  determining basis.
+customer and the debt instrument is either a debt
+                                                                      You are also not required to apply section 1259
+instrument issued by a non-U.S. issuer or a tax-exempt
+                                                                  (constructive sales), section 475 (mark-to-market method
+obligation issued before January 1, 2014.
+                                                                  of accounting), section 1296 (mark-to-market method of
+Identification of securities. If the customer has                 accounting for marketable stock in a passive foreign
+acquired securities on different dates or at different prices     investment company), and section 1092 (straddles).
+and sells less than the entire position in the security, report       For a debt instrument, see Regulations sections
+the sale according to the customer's adequate and timely          1.6045-1(n)(7) and 1.6045-1(n)(11) for the rules to
+identification of the security to be sold. If no identification   determine adjusted basis for a debt instrument acquired at
+is provided, report the sale in this order.                       a premium or discount.
+   1. Any shares for which the acquisition date is
+                                                                  Initial basis. If a customer paid cash for a security, the
+unknown.
+                                                                  initial basis is:
+   2. The shares that were purchased or acquired first,
+                                                                      1. The total cash paid by the customer or credited
+whether they are covered or noncovered securities.
+                                                                  against the customer's account for the security, plus
+Average basis method. Generally, the average basis                    2. The commissions and transfer taxes to buy the
+method is available for either of the following types of          security.
+stock if the customer leaves the shares with a custodian or
+                                                                  You may, but do not have to:
+agent in an account and acquires identical shares of stock
+at different prices in the account.                               • Take option premiums into account to determine the
+                                                                  initial basis of securities acquired by exercising an option
+• Stock in most mutual funds or other regulated                   granted or acquired before 2014, or
+investment companies.
+• Stock acquired after 2010 in connection with a dividend         • Increase initial basis for income recognized upon the
+                                                                  exercise of a compensatory option or the vesting or
+reinvestment plan that meets the requirements of
+                                                                  exercise of other equity-based compensation
+Regulations section 1.1012-1(e)(6).
+                                                                  arrangements granted or acquired before 2014.
+   Compute basis using the average basis method if:
+                                                                      You cannot increase initial basis for income recognized
+• The customer elects that method; or                             upon the exercise of a compensatory option or the vesting
+• You choose the average basis method as your default             or exercise of other equity-based compensation
+method, and the customer does not give you any other
+                                                                  arrangements granted or acquired after 2013. For rules
+instructions.
+
+
+10                                                                                        Instructions for Form 1099-B (2025)
+related to options granted or acquired after 2013, see           Box 1g. Wash Sale Loss Disallowed
+Regulations section 1.6045-1(m).
+                                                                 Wash sales. Report wash sale loss amount disallowed.
+    You must report the basis of identical stock by              You must report any loss disallowed under section 1091 if
+averaging the basis of each share if:                            both the sale and purchase transactions occur in the
+• The stock was purchased at separate times on the               same account with respect to covered securities with the
+same calendar day in executing a single trade order, and         same CUSIP number. You are permitted, but are not
+• The broker executing the trade provides a single               required, to report in box 1g all loss disallowed under
+confirmation to the customer that reports an aggregate           section 1091. For example, you may report a disallowed
+total price or an average price per share.                       loss even though a security is sold in one account and
+    However, do not average the basis if the customer            repurchased in a different account. Increase the adjusted
+timely notifies you in writing of an intent to determine basis   basis of the acquired securities by the amount of the
+by the actual cost per share.                                    disallowed loss reported in box 1g.
+    The initial basis of a security transferred to an account       You also do not have to apply the wash sale rules if:
+is generally the basis reported on the transfer statement. If    • The purchased security is transferred to another
+a transfer statement indicates that the security is acquired     account before the wash sale,
+as a gift, you must apply the relevant basis rules for           • The purchased security was purchased in another
+property acquired by gift in determining the initial basis,      account and later transferred into the account from which
+except you do not have to adjust the basis for gift tax.         securities were sold,
+Treat the initial basis as equal to the gross proceeds from      • The securities are treated as held in separate accounts,
+the sale if:                                                     or
+• Neither gain nor loss is recognized because of the basis       • The customer has notified you in writing (including in an
+rules for gift property, or                                      electronic format) that they have made a valid and timely
+• The initial basis depends on FMV as of the date of the         mark-to-market election under section 475 and identify the
+gift and you neither know nor can readily ascertain this         account from which the securities were sold as containing
+value.                                                           only securities subject to the election.
+Short sales. In the case of a short sale, report the                For more details, see Regulations section 1.6045-1(d)
+adjusted basis of the security delivered to close the short      (6)(iii).
+sale.                                                               Example. Your customer Alex buys 100 shares for
+Wash sales. If a customer acquired securities that               $1,000 in September 2024. In October 2024, he sells
+caused a loss from a sale of other securities to be both         them for $600. Within 30 days of the sale, he buys 75
+nondeductible under section 1091 and the loss was                shares with the same CUSIP number in the same
+reported as a wash sale adjustment on a Form 1099-B for          account. Since his loss is $400 ($1,000 minus $600) but
+the sale at a loss, increase the adjusted basis of the           the loss on 75 shares is disallowed, his disallowed loss is
+acquired securities by the amount of the disallowed loss.        $300. Report the $600 gross proceeds from the sale in
+                                                                 box 1d, $1,000 basis in box 1e, and $300 wash sale loss
+Corporate mergers. Report only the net reduction in              disallowed in box 1g. The $300 in disallowed loss is
+basis between stock exchanged and stock received when            added to his basis in the newly purchased 75 shares.
+reporting the payment of cash paid as part of a corporate
+merger, reorganization, or similar event that is taxable only
+                                                                 Box 2. Type of Gain or Loss
+to the extent that cash or property other than stock or
+securities (“boot”) is received and for which no loss can be     Determine whether the gain or loss is short-term or
+recognized. Enter only the amount of the reduction               long-term under section 1222, and whether any portion of
+attributable to the amount reported in box 1d. Enter the         the gain or loss is ordinary. In making the determination,
+amount as a positive number. However, do not apply this          you must do the following.
+rule, and instead report adjusted basis, as described            • Consider any information reported on a transfer
+earlier, for any stock considered to have been redeemed          statement.
+or sold, for example, fractional shares of stock resulting       • Consider any information reported on Form 8937.
+from the merger that are only paid in cash.                      • Apply the rules for stock acquired from a decedent.
+   Example. Your customer Adrian buys 100 shares of              • Apply the rules for stock acquired as a gift.
+covered stock in MNO Corporation for $5,000 in February          • If a customer acquired securities that caused a loss
+2025. MNO Corporation merges with PQR Corporation in             from a sale of other securities to be both nondeductible
+December 2025. The merger is taxable only to the extent          under section 1091 and reported in box 5 of a 2013 or
+that boot is received. Adrian receives 100 shares of PQR         earlier Form 1099-B (or reported on a 2014 or 2015 Form
+stock with a value of $4,700 and $800 cash boot in               1099-B with code W in box 1f and an adjustment amount
+exchange for his MNO stock. Adrian's resulting basis in          in box 1g), use the rules in section 1223(3) to determine
+the PQR stock is $4,700. Report the $800 cash boot in            the holding period of the acquired securities.
+box 1d, and report $300 in box 1e to reflect the net             • In the case of a short sale, report whether any gain or
+reduction in basis from $5,000 (for the MNO stock) to            loss on the closing of the short sale is short-term or
+$4,700 (for the PQR stock).                                      long-term based on the acquisition date of the security
+                                                                 delivered to close the short sale. Apply the rule in section
+Box 1f. Accrued Market Discount                                  1233(d), if applicable.
+Enter the amount of accrued market discount in box 1f.
+
+Instructions for Form 1099-B (2025)                                                                                        11
+  Except as provided below, in addition to checking the       Box 5. Check if a Noncovered Security
+applicable short-term or long-term box, you are required to
+check the “Ordinary” checkbox if all or a portion of the      You may check the box if reporting the sale of a
+gain or loss may be ordinary. You may not report both         noncovered security. Do not check this box if reporting the
+short-term and long-term gain or loss on the same Form        sale of a covered security.
+1099-B.
+                                                                  If you check this box, you do not have to complete
+   For transactions that are denominated in a currency        boxes 1b, 1e, 1f, 1g, and 2, and you do not have to check
+other than the U.S. dollar, brokers must check the            box 12. If you check box 5 and choose to complete boxes
+"Ordinary" checkbox because these transactions may be         1b, 1e, 1f, 1g, and 2, you are not subject to penalties
+section 988 transactions to the customer. Because a           under section 6721 or 6722 for failure to report boxes 1b,
+customer may make an election to treat gains and losses       1e, 1f, 1g, and 2 correctly. If you do not check box 5, you
+on certain section 988 transactions as capital, the broker    are subject to penalties under sections 6721 and 6722 for
+must also check the short-term or long-term box to            failure to report boxes 1b, 1e, 1f, 1g, and 2 correctly even if
+indicate whether any portion of the gain or loss may be       you are reporting the sale of a noncovered security.
+short-term or long-term. Brokers are not required to check
+the “Ordinary” checkbox if the security is a market
+discount bond or passive foreign investment company           Box 6. Reported to IRS
+stock. Brokers are required to check the “Ordinary”
+checkbox if the security is a contingent payment debt         See Box 1d. Proceeds, earlier.
+instrument subject to the noncontingent bond method.
+                                                              Box 7. Check if Loss Not Allowed Based on
+   You are not required to consider other transactions,       Amount in Box 1d
+elections, or events occurring outside the account when
+determining whether the gain or loss on the sale is           See Acquisition of control or substantial change in capital
+short-term or long-term. You are also not required to apply   structure, earlier.
+holding period-related adjustments under section 1259
+(constructive sales), 475 (mark-to-market method of           Regulated Futures Contracts, Foreign Currency
+accounting), 1092 (straddles), 1233(b)(2) (short sales),      Contracts, and Section 1256 Option Contracts
+1296 (mark-to-market method of accounting for
+                                                              (Boxes 8 Through 11)—Brokers Only
+marketable stock in a passive foreign investment
+company), 852(b)(4)(A), 857(b)(8), 852(b)(4)(B)               If you complete boxes 8 through 11, do not complete any
+(regulated investment company and real estate                 other numbered box except box 1a and, if applicable,
+investment trust adjustments), and Regulations section        box 4. Also, do not complete the “Applicable checkbox on
+1.1221-2(b) (hedging transactions).                           Form 8949” box.
+
+Box 3. Check if Proceeds Are From Collectibles or             Box 8. Profit or (Loss) Realized in 2025 on Closed
+From a QOF                                                    Contracts
+
+Check the “Collectibles” box if the proceeds you are          Enter the profit or (loss) realized by the customer on
+reporting in box 1d are from a transaction involving          closed regulated futures, foreign currency, or Section
+collectibles. Check the “QOF” box if you are reporting a      1256 option contracts in 2025.
+disposition of an interest in a QOF.
+                                                              Box 9. Unrealized Profit or (Loss) on Open
+Box 4. Federal Income Tax Withheld                            Contracts—12/31/2024
+Enter backup withholding. For example, persons who            Enter the unrealized profit or (loss) on open regulated
+have not furnished their TIN to you in the manner required    futures, foreign currency, or Section 1256 option contracts
+are subject to withholding on certain amounts required to     at the end of 2024. Do not include amounts related to
+be reported on this form. This is called backup               contracts that were open on December 31, 2024, and
+withholding. For more information on backup withholding,      were transferred to another broker during 2025.
+including the rate, see part N in the current General
+Instructions for Certain Information Returns and go to
+                                                              Box 10. Unrealized Profit or (Loss) on Open
+IRS.gov/Form1099B.
+                                                              Contracts—12/31/2025
+   Use Form W-9 to request the TIN of the recipient. For
+foreign recipients, request the recipient complete the        Enter the unrealized profit or (loss) on open regulated
+appropriate Form W-8. See the Instructions for the            futures, foreign currency, or Section 1256 option contracts
+Requester of Forms W-8BEN, W-8BEN-E, W-8ECI,                  at the end of 2025 .
+W-8EXP, and W-8IMY.
+                                                              Box 11. Aggregate Profit or (Loss) on Contracts
+
+                                                              Enter the aggregate profit or (loss) for the year from
+                                                              regulated futures, foreign currency, or Section 1256 option
+
+12                                                                                     Instructions for Form 1099-B (2025)
+contracts. Use boxes 8, 9, and 10 to figure the aggregate     required to file paper copies of this form with a state tax
+profit or (loss).                                             department. See Pub. 1220 for more information
+                                                              regarding the Combined Federal/State Filing Program.
+Box 12. Check if Basis Reported to IRS                        They are provided for your convenience only and need not
+                                                              be completed for the IRS. Use the state information boxes
+Check this box if:                                            to report payments for up to two states. Keep the
+• You are not checking box 5, or                              information for each state separated by the dash line. If
+• You are checking box 5 but are reporting basis to the       you withheld state income tax on this payment, you may
+IRS in box 1e anyway.                                         enter it in box 16. In box 14, enter the abbreviated name of
+                                                              the state. In box 15, enter the filer's state identification
+Box 13. Bartering                                             number. The state number is the filer's identification
+                                                              number assigned by the individual state.
+Enter the gross amounts received by a member or client of
+a barter exchange. This includes cash received, the FMV          If a state tax department requires that you send them a
+of any property or services received, and the FMV of any      paper copy of this form, use Copy 1 to provide information
+trade credits or scrip credited to the member's or client's   to the state tax department. Give Copy 2 to the payee for
+account. However, do not include amounts received by a        use in filing the payee's state income tax return.
+member or client in a subsequent exchange of credits or
+scrip. Do not report negative amounts.
+
+Boxes 14 Through 16. State Information
+These boxes may be used by filers who participate in the
+Combined Federal/State Filing Program and/or who are
+
+
+
+
+Instructions for Form 1099-B (2025)                                                                                    13
+
