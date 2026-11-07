@@ -52,16 +52,21 @@ export function checkReturnsDir(dir: string): string {
   return real;
 }
 
-/** Each source document's printed title, by id, from the year's source catalogs (tools/sources-<year>.json and
- * tools/sources-ny-<year>.json; tools/check_source_titles.py checks each against the archived document). */
-export function docTitles(year: number): Record<string, string> {
+/** Each source document's printed title and designation (the form, schedule or publication number as printed), by
+ * id, from the year's source catalogs (tools/sources-<year>.json and tools/sources-ny-<year>.json;
+ * tools/check_source_titles.py checks each against the archived document). A document with none is absent. */
+export function docNames(year: number): { titles: Record<string, string>; designations: Record<string, string> } {
   const titles: Record<string, string> = {};
+  const designations: Record<string, string> = {};
   for (const name of [`sources-${year}.json`, `sources-ny-${year}.json`]) {
     const path = join(ROOT, "tools", name);
     if (!existsSync(path)) continue;
-    for (const e of JSON.parse(readFileSync(path, "utf8")) as { id: string; title?: string }[]) if (e.title) titles[e.id] = e.title;
+    for (const e of JSON.parse(readFileSync(path, "utf8")) as { id: string; title?: string; designation?: string }[]) {
+      if (e.title) titles[e.id] = e.title;
+      if (e.designation) designations[e.id] = e.designation;
+    }
   }
-  return titles;
+  return { titles, designations };
 }
 
 class HttpError extends Error { constructor(readonly status: number, message: string) { super(message); } }
@@ -128,12 +133,12 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
   };
 
   const blank = interviewView(data, config, replay(config, [{ version: 1, tax_year: config.tax_year }]));
-  const titles = docTitles(config.tax_year);
+  const names = docNames(config.tax_year);
   const api = (method: string, parts: string[], body: unknown): [number, unknown] => {
     if (parts.length === 0) {
       if (method === "GET") {
         return [200, { returns: readdirSync(dir).filter((f) => f.endsWith(".jsonl")).map((f) => f.slice(0, -6)).filter((n) => NAME.test(n)).sort(),
-          scope: blank.scope, notices: blank.notices, standingNotices: standingNotices(), docTitles: titles }];
+          scope: blank.scope, notices: blank.notices, standingNotices: standingNotices(), docTitles: names.titles, docDesignations: names.designations }];
       }
       if (method === "POST") {
         const name = (body as { name?: unknown } | null)?.name;

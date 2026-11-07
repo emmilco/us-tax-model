@@ -2,16 +2,19 @@
   {
     "id": "ny_it201",
     "title": "Resident Income Tax Return",
+    "designation": "Form IT-201",
     "url": "https://www.tax.ny.gov/pdf/2025/inc/it201_2025_fill_in.pdf"
   },
   {
     "id": "ny_it201i",
     "title": "Instructions for Form IT-201",
+    "designation": "Instructions for Form IT-201",
     "url": "https://www.tax.ny.gov/pdf/2025/inc/it201i_2025.pdf"
   },
   {
     "id": "ny_it201i-html",
     "title": "2025 Form IT-201-I, Instructions for Form IT-201, Full-Year Resident Income Tax Return",
+    "designation": "Form IT-201-I",
     "url": "https://www.tax.ny.gov/forms/current-forms/it/it201i.htm",
     "format": "html"
   },
@@ -24,16 +27,19 @@
   {
     "id": "ny_it201att",
     "title": "Other Tax Credits and Taxes",
+    "designation": "Form IT-201-ATT",
     "url": "https://www.tax.ny.gov/pdf/2025/inc/it201att_2025_fill_in.pdf"
   },
   {
     "id": "ny_it2",
     "title": "Summary of W-2 Statements",
+    "designation": "Form IT-2",
     "url": "https://www.tax.ny.gov/pdf/2025/inc/it2_2025_fill_in.pdf"
   },
   {
     "id": "ny_it270i",
     "title": "Instructions for Form IT-270",
+    "designation": "Instructions for Form IT-270",
     "url": "https://www.tax.ny.gov/pdf/2025/inc/it270i_2025.pdf"
   },
   {

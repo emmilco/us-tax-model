@@ -111,6 +111,11 @@ export async function serveChecks(): Promise<void> {
     // Every document a question cites has a title for the page to show as its source.
     const untitled = [...new Set(config.questions.map((q) => q.cite.doc))].filter((doc) => typeof listing.docTitles?.[doc] !== "string");
     ok(untitled.length === 0, `every cited document has a title in the source catalogs; missing: ${untitled.join(", ")}`);
+    // A document's designation is served beside its title: a federal form and a New York form carry theirs; a statute has none.
+    ok(listing.docDesignations?.f1040 === "Form 1040" && listing.docTitles.f1040 === "U.S. Individual Income Tax Return"
+      && listing.docDesignations.ny_it201 === "Form IT-201" && listing.docDesignations["usc-26-72"] === undefined
+      && Object.keys(listing.docDesignations).every((doc) => typeof listing.docTitles[doc] === "string"),
+      "designations are served for the documents that print one, each with a title");
     const cli = (args: string[], expectOk = true) => {
       const p = spawnSync(process.execPath, [MAIN, ...YEAR_ARGS, "interview", ...args, "--log", log], { encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
       assert.equal(p.status === 0, expectOk, `interview ${args.join(" ")}: ${p.stderr}`);

@@ -74,7 +74,7 @@ const pathMap = new Map();
 const fx = key => { let k = key; for (const [f, p] of [...pathMap].sort((a, b) => b[1].length - a[1].length)) k = k.split(p + "]").join(f + "]").split(p + ".").join(f + "."); return k; };
 const entryPath = (roster, key) => { const [coll, parent] = roster.slice(1).split("@"); return `${parent ? parent + "." : ""}${coll}[${key}]`; };
 const labelsFor = (roster, keys) => roster === "$w2@person[taxpayer]" ? ["Acme Corp.", "Acme Corp"].slice(0, keys.length).concat(keys.slice(2).map((_, i) => `Acme ${i + 3}`)) : keys.map((_, i) => `Entry ${i + 1}`);
-let origin, docTitles, rosterShot = false, longShot = false;
+let origin, docTitles, docDesignations, rosterShot = false, longShot = false;
 const served = () => fetch(`${origin}/api/returns/smoke`).then(r => r.json());
 
 /** Answers the question on the page with the fixture's `value` through its widget and waits for the page to move on. */
@@ -121,7 +121,7 @@ try {
   for (let i = 0; i < 300 && !/http:\/\/127\.0\.0\.1:\d+\//.test(out); i++) await wait(50);
   origin = out.match(/http:\/\/127\.0\.0\.1:\d+/)?.[0];
   assert(origin, "the server did not start: " + out);
-  docTitles = (await fetch(`${origin}/api/returns`).then(r => r.json())).docTitles;
+  ({ docTitles, docDesignations } = await fetch(`${origin}/api/returns`).then(r => r.json()));
   await cdp("Page.enable"); await cdp("Runtime.enable");
   await cdp("Emulation.setDeviceMetricsOverride", { width: 1600, height: 1100, deviceScaleFactor: 1, mobile: false });
   await cdp("Page.navigate", { url: origin + "/" });
@@ -140,7 +140,7 @@ try {
   assert.deepEqual(firstQ.choices, ["Just me", "Me and my spouse (joint return)"]);
   assert.equal(firstQ.inputs, 0, "no text box on the first question");
   assert.doesNotMatch(firstQ.text, /\[|taxpayer|JSON|cents|true or false/, "no entry syntax or keys on the first question");
-  assert.match(firstQ.source, /^Source\s+U\.S\. Individual Income Tax Return\s/);
+  assert.match(firstQ.source, /^Source\s+Form 1040 \u2014 U\.S\. Individual Income Tax Return\s/);
   assert.match(firstQ.source, /Your first name and middle initial/);
   assert(firstQ.beside, "the source is beside the question on a wide window");
   await shot("question");
@@ -168,14 +168,15 @@ try {
         assert.equal(logLines(), before, "a blank amount is never sent");
       }
     }
-    // Every question is shown in full, word for word, and its source by the document's title, not its id.
+    // Every question is shown in full, word for word, and its source by the document's designation and title, not its id.
     const q = (await served()).pending.find(p => p.input === input) ?? null;
     if (q) {
       const shown = await evaluate(`({prompt:[...document.querySelectorAll('.prompt-text p')].map(p=>p.textContent).join(' '),
         folds:document.querySelectorAll('.prompt-text .expander, .prompt-text [hidden]').length, doc:document.querySelector('.source .doc').textContent})`);
       assert.equal(shown.folds, 0, `${input}: the question is never folded`);
       assert.equal(shown.prompt.replace(/\s+/g, " "), q.prompt.replace(/\s+/g, " "), `${input}: the question is shown word for word`);
-      assert.equal(shown.doc, docTitles[q.cite.doc], `${input}: the source is named by its title`);
+      const title = docTitles[q.cite.doc], designation = docDesignations[q.cite.doc];
+      assert.equal(shown.doc, designation && !title.includes(designation) ? `${designation} \u2014 ${title}` : title, `${input}: the source is named by its designation and title`);
       if (input === "scope.other_line16") {
         assert(q.prompt.length > 900, "scope.other_line16 is a long question");
         await shot("long");

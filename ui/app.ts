@@ -23,7 +23,7 @@ interface State {
   values: Record<string, Derivation>; sheets: { federal: Section[]; newYork: Section[] }; changed: string[];
   entryLabels: Record<string, string>;
 }
-interface Listing { returns: string[]; scope: string; notices: string; standingNotices: string[]; docTitles: Record<string, string> }
+interface Listing { returns: string[]; scope: string; notices: string; standingNotices: string[]; docTitles: Record<string, string>; docDesignations: Record<string, string> }
 type View = "question" | "answered" | "return" | "about";
 
 const KEY = /^[a-zA-Z0-9_-]+$/;
@@ -84,13 +84,17 @@ function plural(n: number, one: string, many = one + "s"): string { return `${n}
 
 // ---- sources ----
 // A citation names a document by its id (`i1040gi`) and a locator, which carries the page, line and the quoted
-// passages. The page shows the document's printed title (from the source catalogs, sent with the listing), every
-// reference of the locator one per item, and the quoted words in ink.
+// passages. The page shows the document's designation and printed title (from the source catalogs, sent with the
+// listing), every reference of the locator one per item, and the quoted words in ink.
 
 let docTitles: Record<string, string> = {};
-/** A document's printed title; its id when the catalogs give none. */
+let docDesignations: Record<string, string> = {};
+/** A document's name: "<designation> — <title>", the title alone when it has no designation or already contains
+ * it, the id when the catalogs give no title. */
 function docTitle(id: string): string {
-  return docTitles[id] ?? id;
+  const title = docTitles[id], designation = docDesignations[id];
+  if (!title) return id;
+  return designation && !title.includes(designation) ? `${designation} — ${title}` : title;
 }
 function citeText(c: Cite | null): string {
   return c ? `${docTitle(c.doc)}, ${c.locator}` : "";
@@ -294,6 +298,7 @@ function tabKeys(list: HTMLElement, activate: (tab: HTMLElement) => void): void 
 async function loadListing(selected: string | null): Promise<void> {
   const listing = await api<Listing>("GET", "/api/returns");
   docTitles = listing.docTitles ?? {};
+  docDesignations = listing.docDesignations ?? {};
   renderNotices(listing.scope, listing.notices, listing.standingNotices);
   const select = $<HTMLSelectElement>("return-select");
   select.replaceChildren(el("option", { value: "" }, listing.returns.length ? "Open a return…" : "No returns yet"));
