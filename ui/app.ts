@@ -50,6 +50,38 @@ function button(label: string | Node, attrs: Record<string, string> = {}, onclic
   return b;
 }
 
+/** Structured text (the build-checked subset of engine/src/text.ts: one-line paragraphs separated by blank lines, a
+ * heading, a line ending in ":", directly above a list, "- " bullets and "  - " nested bullets) as its blocks: <p>,
+ * and <h4> or <ul> for a list and its heading. Every piece of text is a text node, never markup. Plain text (no line
+ * break) is one <p>. */
+function textBlocks(text: string): HTMLElement[] {
+  const blocks: HTMLElement[] = [];
+  for (const chunk of text.split("\n\n")) {
+    const lines = chunk.split("\n");
+    const head = lines[0]!.startsWith("- ") ? null : lines.shift()!;
+    if (lines.length === 0) { blocks.push(el("p", {}, head ?? "")); continue; }
+    const list = el("ul");
+    let item: HTMLElement | null = null;
+    for (const line of lines) {
+      if (line.startsWith("  - ") && item) {
+        const sub = item.querySelector(":scope > ul") ?? item.appendChild(el("ul"));
+        sub.append(el("li", {}, line.slice(4)));
+      } else list.append(item = el("li", {}, line.replace(/^- /, "")));
+    }
+    // A heading stays with its list, so a fold never separates them.
+    blocks.push(head === null ? list : el("div", { class: "text-list" }, el("h4", {}, head), list));
+  }
+  return blocks;
+}
+/** A label as HTML: plain text is one `tag` element, as always; structured text is `tag` (a <p> becomes a <div>)
+ * holding its blocks. */
+function richText(tag: string, attrs: Record<string, string>, text: string): HTMLElement {
+  if (!text.includes("\n")) return el(tag, attrs, text);
+  return el(tag === "p" ? "div" : tag, { ...attrs, class: `${attrs.class ?? ""} structured`.trim() }, ...textBlocks(text));
+}
+/** The first line of a question: how a structured question is named in a link. */
+const firstLine = (text: string): string => text.split("\n")[0]!;
+
 function fmtMoney(cents: number): string {
   const sign = cents < 0 ? "-" : "";
   const abs = Math.abs(cents);
@@ -167,23 +199,34 @@ function paragraphs(text: string, target = 420): string[] {
 }
 const LONG = 900;
 const OPENING = 520;
-/** A text as paragraphs; with `fold`, past LONG characters, the opening paragraphs and a control that shows the rest. */
+/** A text as paragraphs (structured text as its blocks); with `fold`, past LONG characters, the opening paragraphs or
+ * blocks and a control that shows the rest. */
 function longText(text: string, cls: string, id: string, what: string, fold: boolean): HTMLElement {
   const box = el("div", { class: cls });
-  const paras = paragraphs(text);
-  if (!fold || text.length <= LONG) { box.append(...paras.map((p) => el("p", {}, p))); return box; }
   const rest = el("div", { class: "rest", id: `${id}-rest`, hidden: "" });
   let shown = 0;
-  paras.forEach((p, i) => {
-    if (i === 0 && p.length > LONG) {
-      // One sentence longer than the limit: its opening words, then the remainder in the expandable part.
-      const cut = p.lastIndexOf(" ", OPENING);
-      box.append(el("p", {}, p.slice(0, cut), el("span", { class: "continues", "aria-hidden": "true" }, " …")));
-      rest.append(el("p", { class: "continued" }, p.slice(cut + 1)));
-      shown = OPENING;
-    } else if (i === 0 || shown + p.length <= OPENING) { box.append(el("p", {}, p)); shown += p.length; }
-    else rest.append(el("p", {}, p));
-  });
+  if (text.includes("\n")) {
+    box.classList.add("structured");
+    const blocks = textBlocks(text);
+    if (!fold || text.length <= LONG) { box.append(...blocks); return box; }
+    blocks.forEach((b, i) => {
+      const n = (b.textContent ?? "").length;
+      if (i === 0 || shown + n <= OPENING) { box.append(b); shown += n; } else rest.append(b);
+    });
+  } else {
+    const paras = paragraphs(text);
+    if (!fold || text.length <= LONG) { box.append(...paras.map((p) => el("p", {}, p))); return box; }
+    paras.forEach((p, i) => {
+      if (i === 0 && p.length > LONG) {
+        // One sentence longer than the limit: its opening words, then the remainder in the expandable part.
+        const cut = p.lastIndexOf(" ", OPENING);
+        box.append(el("p", {}, p.slice(0, cut), el("span", { class: "continues", "aria-hidden": "true" }, " …")));
+        rest.append(el("p", { class: "continued" }, p.slice(cut + 1)));
+        shown = OPENING;
+      } else if (i === 0 || shown + p.length <= OPENING) { box.append(el("p", {}, p)); shown += p.length; }
+      else rest.append(el("p", {}, p));
+    });
+  }
   if (!rest.childElementCount) return box;
   const remaining = text.length - shown;
   const label = `Read the rest of the ${what} (about ${(Math.max(1, Math.round(remaining / 100)) * 100).toLocaleString("en-US")} more characters)`;
@@ -408,7 +451,7 @@ function renderQuestion(): void {
     try {
       state = await api<State>("POST", `/api/returns/${encodeURIComponent(state!.name)}/answer`, labels ? { input: q.input, value, labels } : { input: q.input, value });
       const saved = state.answered.find((a) => a.input === q.input);
-      lastSaved = { prompt: shortPrompt(q.prompt, 90), answer: saved ? fmtAnswer(saved, saved.value) : fmtAnswer(q, value), changed: state.changed.length };
+      lastSaved = { prompt: shortPrompt(firstLine(q.prompt), 90), answer: saved ? fmtAnswer(saved, saved.value) : fmtAnswer(q, value), changed: state.changed.length };
       reopened = null;
       render();
     } catch (e) { errorLine.textContent = `Not saved: ${(e as Error).message}`; }
@@ -505,7 +548,7 @@ function renderQuestion(): void {
   const main = el("div", { class: "ask" },
     ...head,
     about ? el("p", { class: "about" }, `About: ${about}`) : null,
-    el("h2", { class: "prompt-heading visually-hidden", id: labelId }, shortPrompt(q.prompt, 160)),
+    el("h2", { class: "prompt-heading visually-hidden", id: labelId }, shortPrompt(firstLine(q.prompt), 160)),
     longText(q.prompt, "prompt-text", "prompt", "question", false),
     widget, errorLine,
     q.helpRequested ? el("p", { class: "note" }, "You asked for help with this question. It stays unanswered until you answer it.") : null,
@@ -524,7 +567,7 @@ function renderAnswered(): void {
   $("answered-count").textContent = String(s.answered.length);
   $("answered").replaceChildren(...s.answered.map((a) => {
     const about = entryContext(a.input);
-    const link = button(el("span", { class: "q" }, a.prompt), { class: "answered-q", "data-input": a.input, title: displayKey(a.input) }, () => reopen(a.input));
+    const link = button(el("span", { class: "q" }, firstLine(a.prompt)), { class: "answered-q", "data-input": a.input, title: displayKey(a.input) }, () => reopen(a.input));
     if (about) link.prepend(el("span", { class: "about" }, about));
     return el("li", {}, link, el("span", { class: "value" }, fmtAnswer(a, a.value)));
   }));
@@ -567,7 +610,7 @@ function renderSheet(): void {
     if (!lines.length && only) continue;
     const rows = lines.map((l) => el("tr", { "data-key": l.key, class: `${l.status}${changed.has(l.key) ? " changed" : ""}${open === l.key ? " open" : ""}` },
       el("th", { class: `printed${/^\(/.test(l.printed) ? " aside" : ""}`, scope: "row" }, l.printed),
-      el("td", { class: "label" }, button(l.label, { class: "line-open", "aria-current": String(open === l.key) })),
+      el("td", { class: "label" }, button(firstLine(l.label), { class: "line-open", "aria-current": String(open === l.key) }), ...textBlocks(l.label).slice(1)),
       el("td", { class: "value", ...(l.value.kind === "unknown" ? { title: labelKeys(l.value.reason) } : {}) },
         l.value.kind === "refusal" ? null : fmtValue(l.value), l.value.kind === "refusal" ? statusTag(l) : null)));
     out.push(el("section", { class: "form" }, el("h3", {}, sectionTitle(section)),
@@ -624,7 +667,7 @@ function renderDerivation(): void {
     const p = s.pending.find((q) => q.input === input);
     if (!a && !p) return el("li", { class: "mono" }, displayKey(input));
     const about = entryContext(input);
-    const b = button(`${about ? about + ": " : ""}${shortPrompt((a ?? p)!.prompt, 110)}`, { class: "link", "data-input": input, title: displayKey(input) }, () => reopen(input));
+    const b = button(`${about ? about + ": " : ""}${shortPrompt(firstLine((a ?? p)!.prompt), 110)}`, { class: "link", "data-input": input, title: displayKey(input) }, () => reopen(input));
     return el("li", {}, b, el("span", { class: "dep-value" }, a ? fmtAnswer(a, a.value) : "not yet answered"));
   });
   const close = button("Close", { class: "quiet" }, () => { trail = []; renderDerivation(); renderSheet(); });
@@ -641,7 +684,7 @@ function renderDerivation(): void {
   box.replaceChildren(...[
     el("div", { class: "derivation-bar" }, el("h2", {}, where ? lineName(where) : displayKey(key)),
       el("div", { class: "derivation-actions" }, trail.length > 1 ? back : null, close)),
-    where ? el("p", { class: "line-label" }, where.line.label) : null,
+    where ? richText("p", { class: "line-label" }, where.line.label) : null,
     el("p", { class: "derived-value" }, valueText, s.changed.includes(key) ? el("span", { class: "tag" }, "changed by the last answer") : null),
     el("dl", {},
       el("dt", {}, "Operation"), el("dd", { class: "mono" }, d.op),

@@ -6,6 +6,7 @@ import { entrySyntax } from "./interview.js";
 import { gateProblems } from "./gates.js";
 import { evaluate } from "./eval.js";
 import type { CanonicalData, Line, RegisterEntry, TableDoc } from "./types.js";
+import { flatText, indentRest, parseStructured, textSummary } from "./text.js";
 
 function table(bands: { at_least: number; less_than: number; tax: number[] }[]): TableDoc {
   return { id: "t", kind: "tax_table", title: "t", tax_year: 2025, cite: null as never, columns: [{ key: "a", statuses: [] }, { key: "b", statuses: [] }], bands };
@@ -89,5 +90,42 @@ export function runCheckSelfTest(): void {
   assert.deepEqual(asked({}), ["g.any"]);
   assert.deepEqual(asked({ "g.any": false }), []);
   assert.deepEqual(asked({ "g.any": true }), ["g.box_amount"]);
-  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions)`);
+
+  // Structured text (text.ts): the subset parses to its blocks; everything else is a named problem; plain text is untouched.
+  const good = "Any of these?\n\nWork:\n- wages (Form W-2)\n- tips, for example:\n  - cash tips\n\nA closing note, with a colon:\n\n- a list after a blank line";
+  const parsed = parseStructured(good);
+  assert.deepEqual(parsed.problems, []);
+  assert.deepEqual(parsed.blocks, [{ kind: "paragraph", text: "Any of these?" },
+    { kind: "list", heading: "Work:", items: [{ text: "wages (Form W-2)", items: [] }, { text: "tips, for example:", items: ["cash tips"] }] },
+    { kind: "paragraph", text: "A closing note, with a colon:" }, { kind: "list", heading: null, items: [{ text: "a list after a blank line", items: [] }] }]);
+  const plain = "  a plain *label*  with  `anything`, - kept as it is ";
+  assert.deepEqual(parseStructured(plain).problems, []);
+  assert.equal(indentRest(plain, "    "), plain);
+  assert.equal(textSummary(plain), plain);
+  assert.equal(flatText(plain), plain);
+  assert.equal(indentRest(good, "  ").split("\n")[5], "    - cash tips");
+  assert.equal(textSummary(good), "Any of these?");
+  assert.equal(flatText("Q?\n\nH:\n- a\n  - b"), "Q? H: - a - b");
+  const bad: [string, RegExp][] = [
+    ["- a bullet first\n\nx", /first line must be the question/],
+    ["Q?\nHeading:\n- a", /must follow a blank line/],
+    ["Q?\n\nNo colon\n- a", /must end with ":"/],
+    [`Q?\n\n${"h".repeat(81)}:\n- a`, /at most 80 characters/],
+    ["Q?\n\n  - nested first", /nested bullet must follow a bullet/],
+    ["Q?\n\n- a\nafter the list", /must follow a blank line/],
+    ["Q?\n\n\nx", /two blank lines/],
+    ["Q?\n\nx\n", /only allowed between blocks/],
+    ["Q?\n\n### Heading", /block syntax/],
+    ["Q?\n\n* star", /block syntax/],
+    ["Q?\n\n1. one", /block syntax/],
+    ["Q?\n\n- **bold**", /inline Markdown/],
+    ["Q?\n\n- a _stressed_ word", /inline Markdown/],
+    ["Q?\n\n- [a](b)", /inline Markdown/],
+    ["Q?\n\n    - too deep", /indented line/],
+    ["Q?\n\nx ", /trailing spaces/],
+    ["Q?\n\n\tx", /tab/],
+  ];
+  for (const [text, re] of bad) assert.match(parseStructured(text).problems.join("\n"), re, `not flagged: ${JSON.stringify(text)}`);
+  assert.deepEqual(parseStructured("Q?\n\n- employer_reported, an enum value").problems, []);
+  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + 10 + bad.length} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, structured text)`);
 }

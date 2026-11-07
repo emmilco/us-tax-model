@@ -23,6 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
+from structured_text import indent_rest  # noqa: E402
 
 PLACEMENT = Path(__file__).with_name("tree.json")
 CANONICAL = ROOT / "canonical" / Y
@@ -162,7 +163,7 @@ def gate_entry(e, gates, categories):
     g = e["gate"]
     line = gates[g]["line"] or {}
     head = f"**`{g}`**" + (f": {e['question']}" if e.get("question") else "")
-    out = [f"- {head}", f"  - *The data asks or tests:* {line.get('label', '')} (`{line.get('expr', {}).get('op')}`)"]
+    out = [f"- {head}", indent_rest(f"  - *The data asks or tests:* {line.get('label', '')} (`{line.get('expr', {}).get('op')}`)", "    ")]
     if e.get("stop"):
         out.append(f"  - *Stops the return as:* {e['stop']}")
     for r in distinct(gates[g]["refusals"]):

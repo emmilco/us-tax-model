@@ -5,7 +5,7 @@ The rendered English of every printed line of `Proof-of-concept scope screening`
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 1 (latest 2026-11-06); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 5e735001c1608662a8cbbee87dd33ceb151e1cd9d0919b4eb053769866368d75 |
@@ -32,30 +32,32 @@ The rendered English of every printed line of `Proof-of-concept scope screening`
 ### schedule1 — Any income or adjustment requiring Schedule 1 other than the ones this tool asks about sep
 Status: **MATCH**
 
-Model: This is a filer-answered scope screen, and its refusal names the excluded Schedule 1 items. The parts the text covers agree with the Schedule SE instructions: ministers, members of a religious order who haven't taken a vow of poverty and Christian Science practitioners, and church employee income as wages from 'a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes.'
+Model: This is a filer-input scope screen, and its descriptions agree with the text given. The minister and church employee income wording matches i1040sse ('wages you received as an employee ... of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes'), and the refusal names what is excluded.
+Reviewed in: pass 14fc9dfc3bd1
 
-### credits — Do you want to claim any credit other than the foreign tax credit claimed without Form 111
+### credits — Do you want to claim any credit other than the following, or do you have any other amount
 Status: **MATCH**
 
-Model: This is a scope screen whose refusal names the excluded forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31). That fits Form 1040 line 30 'Refundable adoption credit from Form 8839' and line 31 'Amount from Schedule 3, line 15', and the instructions' cross-reference of Form 8978 amounts to Schedule 3 line 6l.
+Model: This is a filer-input scope screen for credits beyond the supported list, and the ready refusal names the excluded forms. Nothing in the text given contradicts the listed credits or the Form 8978 example; i1040gi points a negative Form 8978 line 14 amount to Schedule 3 line 6l.
+Reviewed in: pass 14fc9dfc3bd1
 
-### other_income — Any nonresident alien status (you or your spouse, for any part of 2025) or other income or
+### other_income — Any nonresident alien status, or other income or return treatment outside the kinds listed
 Status: **MATCH**
 
-Model: The screen's items agree with the text given. Form 1040 lines 1b–1d and 1f–1h are household wages, tips, Medicaid waiver payments, adoption benefits, Form 8919 wages and other earned income. Pub. 575 covers the spread-out qualified disaster recovery distributions and their repayment on Form 8915-F, the i8606 says to 'Include on line 1 any repayment of a qualified reservist distribution,' and the i1040gi covers nonresident alien status; nothing in the text contradicts the restatement.
-Reviewed in: pass 54def64fdc69
+Model: This is a filer-input scope screen, and its items agree with the text given. Pub. 575 spreads a 2023 qualified disaster recovery distribution over 2023, 2024 and 2025 and points to Form 8915-F, and i8606 says 'Include on line 1 any repayment of a qualified reservist distribution.' The ready refusal names the exclusion.
+Reviewed in: pass 14fc9dfc3bd1
 
-### other_line16 — Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no t
+### other_line16 — Any additional Form 1040 line 16 tax or filing, including any of the following?
 Status: **MATCH**
 
-Model: The Form 8615 conditions match the instructions: 'more than $2,700 of unearned income,' required to file, under 18 or age 18 or a full-time student 'at least age 19 but under age 24' without earned income over half of support, a parent alive, and no joint return. The other items also match the text: Forms 8814 and 4972 are line 16 checkboxes, Schedule J is optional ('if you choose'), Form 8978 is mentioned, and the i8960 says CFC/PFIC ownership can make line 13 MAGI differ from AGI.
-Reviewed in: pass 54def64fdc69
+Model: The Form 8615 conditions match i1040gi: 'more than $2,700 of unearned income', required to file, under 18 / age 18 / full-time student 'at least age 19 but under age 24', parent alive, no joint return. The CFC/PFIC note matches i8960 line 13, and Schedule J is optional ('if you choose'), as i1040gi says.
+Reviewed in: pass 14fc9dfc3bd1
 
 ### ready — All declared scope screens passed
 Status: **MATCH**
 
-Model: Ready is simply true once no refusal applies, and each refusal names the gate it excludes (Schedule 1 items, other credits, other income, other line 16 tax, MFS). The MFS exclusions it cites, such as a spouse who itemizes and credits a separate return can't take, agree with the i1040gi Married Filing Separately text.
-Reviewed in: pass 54def64fdc69
+Model: The value is a constant true, gated by refusals for each scope input and for MFS filing status. The MFS reasons are consistent with i1040gi ('can't take the standard deduction if your spouse itemizes', no education credits on a separate return) and with Form 1040 line 6d on MFS spouses who lived apart.
+Reviewed in: pass 14fc9dfc3bd1
 
 ## Line subjects
 
@@ -63,34 +65,34 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| schedule1 | 772b4e76d3435af117a95432e12f98302e3021075b03d072701112816772039d |
-| credits | ef3fa66779cb958c56f925af035a3c57fe54cc99d2f0d9a04ab3e4f3d3941c5f |
-| other_income | 20e46c38b1f4243b4d02903fa3ab2cc85af8d85911a3bcc30473c4cabbd14995 |
-| other_line16 | 2a67ba6cf0bbb33800ca2c3d778da9b1179df09525343535d68a812044d20240 |
-| ready | 81eb33d4431975801caf0e8acb233c20a64df0f69acaca886fe62d4e6a16c784 |
+| schedule1 | 177e07f9f761177d8d0d74d5818250a1c77e73f8404f01e9518ee809eba51a79 |
+| credits | a2d9bcde875f8e0e3d4e7f8168c8af403162435e40d07d93d7049483ce2820e9 |
+| other_income | 4215927dad7e61c1fa8e6d761035d1cd44533e7a65f34742a890462f2bc8cc95 |
+| other_line16 | 96db9fa19806453b282fdcc893a7acdde1e978926828bcf82d896542ee4d7f89 |
+| ready | 4845f0664f62dfdf1869a2dc192ec117e9941384cf0a2a71c04bb65360f317ac |
 | (rest of the document) | 9a25da53ed2fbd2a45701244528c1eac2209891e67bfcf91f6753aa6e83ec08d |
 
 ## Line-scoped reviews
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass 54def64fdc69
+#### Pass 14fc9dfc3bd1
 
 | field | value |
 | --- | --- |
-| date | 2026-11-04 |
-| review scope | lines other_income, other_line16, ready |
+| date | 2026-11-06 |
+| review scope | lines schedule1, credits, other_income, other_line16, ready |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 54def64fdc6913ac80baecdb131dbfafa66ac67f290ee571c9b6f2850f9d0607 |
+| prompt sha256 | 14fc9dfc3bd12eb3c81675b4cf89b3e79580ecfb7a8d1960cb24ee15c5a803b4 |
 | prompt policy | render-source-comparison-v2+lines-v1 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 0c038d71681d95ff020dafdf85ddad6cbb20d79691d7c721fcfa11a5bc758260 |
-| receipt | .transcription/scope.render.lines-12f0328e6e48 |
-| lines judged | 3 |
-| match / mismatch / unclear / missing | 3 / 0 / 0 / 0 |
+| subject sha256 | c22da569405ab86f393956d521b30522322aa02ca930b255d665ff8785e797b9 |
+| receipt | .transcription/scope.render.lines-3f42ec2e2ecc |
+| lines judged | 5 |
+| match / mismatch / unclear / missing | 5 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ##### Source pages given to the model
@@ -107,18 +109,22 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 ##### Raw response
 
 ```yaml
-```yaml
 lines:
+  - key: "schedule1"
+    status: MATCH
+    reason: "This is a filer-input scope screen, and its descriptions agree with the text given. The minister and church employee income wording matches i1040sse ('wages you received as an employee ... of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes'), and the refusal names what is excluded."
+  - key: "credits"
+    status: MATCH
+    reason: "This is a filer-input scope screen for credits beyond the supported list, and the ready refusal names the excluded forms. Nothing in the text given contradicts the listed credits or the Form 8978 example; i1040gi points a negative Form 8978 line 14 amount to Schedule 3 line 6l."
   - key: "other_income"
     status: MATCH
-    reason: "The screen's items agree with the text given. Form 1040 lines 1b–1d and 1f–1h are household wages, tips, Medicaid waiver payments, adoption benefits, Form 8919 wages and other earned income. Pub. 575 covers the spread-out qualified disaster recovery distributions and their repayment on Form 8915-F, the i8606 says to 'Include on line 1 any repayment of a qualified reservist distribution,' and the i1040gi covers nonresident alien status; nothing in the text contradicts the restatement."
+    reason: "This is a filer-input scope screen, and its items agree with the text given. Pub. 575 spreads a 2023 qualified disaster recovery distribution over 2023, 2024 and 2025 and points to Form 8915-F, and i8606 says 'Include on line 1 any repayment of a qualified reservist distribution.' The ready refusal names the exclusion."
   - key: "other_line16"
     status: MATCH
-    reason: "The Form 8615 conditions match the instructions: 'more than $2,700 of unearned income,' required to file, under 18 or age 18 or a full-time student 'at least age 19 but under age 24' without earned income over half of support, a parent alive, and no joint return. The other items also match the text: Forms 8814 and 4972 are line 16 checkboxes, Schedule J is optional ('if you choose'), Form 8978 is mentioned, and the i8960 says CFC/PFIC ownership can make line 13 MAGI differ from AGI."
+    reason: "The Form 8615 conditions match i1040gi: 'more than $2,700 of unearned income', required to file, under 18 / age 18 / full-time student 'at least age 19 but under age 24', parent alive, no joint return. The CFC/PFIC note matches i8960 line 13, and Schedule J is optional ('if you choose'), as i1040gi says."
   - key: "ready"
     status: MATCH
-    reason: "Ready is simply true once no refusal applies, and each refusal names the gate it excludes (Schedule 1 items, other credits, other income, other line 16 tax, MFS). The MFS exclusions it cites, such as a spouse who itemizes and credits a separate return can't take, agree with the i1040gi Married Filing Separately text."
-```
+    reason: "The value is a constant true, gated by refusals for each scope input and for MFS filing status. The MFS reasons are consistent with i1040gi ('can't take the standard deduction if your spouse itemizes', no education credits on a separate return) and with Form 1040 line 6d on MFS spouses who lived apart."
 ```
 
 ## Raw response

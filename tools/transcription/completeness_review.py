@@ -32,6 +32,7 @@ import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York forms; revie
 import archive_text  # noqa: E402
 import baseline_check  # noqa: E402
 import citations  # noqa: E402
+from structured_text import indent_rest  # noqa: E402
 
 OUT = str(jurisdiction.ypath("reviews", Y, "completeness"))
 RAW = os.path.join(ROOT, ".transcription", "completeness")
@@ -141,9 +142,9 @@ def sections(form, mani):
 def encoding(form):
     out = [f"== {form['id']} =="]
     for l in form["lines"]:
-        out.append(f"- {l['id']} [{l.get('printed', '')}] {l['label']}")
+        out.append(f"- {l['id']} [{l.get('printed', '')}] {indent_rest(l['label'], '    ')}")
         if l["expr"].get("op") == "input":
-            out.append(f"    QUESTION: {l['expr'].get('source', '')}")
+            out.append(f"    QUESTION: {indent_rest(l['expr'].get('source', ''), '      ')}")
         for r in l.get("refuses") or []:
             out.append(f"    REFUSES when {r['when']}: {r['form']}")
         out.append(f"    cites: {l['cite']['doc']} {l['cite']['locator']}")

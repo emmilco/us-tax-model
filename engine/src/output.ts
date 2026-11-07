@@ -5,6 +5,7 @@ import { fmtMoney, shortHash } from "./util.js";
 import type { CanonicalData, FormDoc } from "./types.js";
 import type { Derivation, EvalResult, Value } from "./eval.js";
 import { YEAR } from "./year.js";
+import { indentRest } from "./text.js";
 
 export function fmtValue(v: Value): string {
   switch (v.kind) {
@@ -125,7 +126,7 @@ export function renderValuesSheetText(sheet: ValuesSheet): string {
     lines.push(`== ${section.title} ==`);
     for (const line of section.lines) {
       if (!line.shown) continue;
-      lines.push(`  ${line.printed.padEnd(3)} ${line.label}`);
+      lines.push(`  ${line.printed.padEnd(3)} ${indentRest(line.label, "      ")}`);
       lines.push(`      = ${fmtValue(line.value)}`);
       if (line.cite) lines.push(`      cite: [${line.cite.doc}] ${line.cite.locator} (${line.cite.revision}; ${shortHash(line.cite.snapshot)})`);
       if (line.notes.length > 0) lines.push(`      note: ${line.notes.join("; ")}`);

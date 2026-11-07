@@ -12,6 +12,7 @@ import { evaluate } from "./eval.js";
 import type { Inputs } from "./types.js";
 import type { Value } from "./eval.js";
 import { YEAR, yearPath } from "./year.js";
+import { flatText } from "./text.js";
 
 const ROOT = join(import.meta.dirname, "../..");
 const DIR = yearPath("fixtures", "differential");
@@ -87,7 +88,7 @@ function entrySheet(data: ReturnType<typeof loadCanonical>, c: CaseFixture, expe
   const byId = new Map(data.forms.flatMap((d) => d.lines.map((l) => [l.id, l])));
   for (const key of Object.keys(expect)) {
     const line = byId.get(key);
-    out.push(`| ${key} | ${line?.label ?? ""} |`);
+    out.push(`| ${key} | ${flatText(line?.label ?? "")} |`);
   }
   out.push("", "## Record format", "", `Save as \`fixtures/${YEAR}/differential/<calculator>.` + c.id + ".json`:", "", "```json",
     JSON.stringify({ calculator: "FreeTaxUSA", version: `${YEAR}, accessed YYYY-MM-DD`, case: c.id, values: { "f1040.line15": 0 }, investigations: {} }, null, 2), "```", "");

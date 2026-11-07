@@ -196,6 +196,15 @@ if it repeats the line's. `help` is optional. A roster with a fixed set of answe
 them as `choices` (a label, the entry keys and a label for each key), which the page shows
 as a selector.
 
+A long question is written as structured text (`engine/src/text.ts`): a line's `label`, an input's
+`source`, a `note`, and a bank `prompt` or `help` may hold line breaks, and then only a small Markdown
+subset, which the build checks. The first line is the question; then one-line paragraphs separated by
+blank lines, a heading (a short line ending in ":") directly above a list, `- ` bullets and `  - ` nested
+bullets (one level). Text without a line break is plain text, shown unchanged everywhere. The authored text
+is canonical and already reads as plain text: the CLI's JSON carries it as it is, the values sheet,
+`rendered/` and the review prompts indent its continuation lines, a reference to a structured label names
+its first line, and the page renders the blocks as HTML.
+
 Wording says what to answer, not how to type it: the build fails when a filled prompt or
 help states entry syntax (`entrySyntax` in `interview.ts`: cents, integer, whole number,
 true or false, JSON, null, a list literal such as `[]`, entry keys). Each client states

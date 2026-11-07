@@ -25,6 +25,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 from transcribe import ROOT  # noqa: E402
 from taxyear import Y  # noqa: E402
 import jurisdiction  # noqa: E402
+from structured_text import indent_rest  # noqa: E402
 
 NOT_REFS = {"cite", "source", "label", "op", "ref", "def", "line", "const", "param"}
 
@@ -118,21 +119,21 @@ def describe(unit, lines, english):
         cdoc, cline = lines[cond]
         if (cline.get("expr") or {}).get("op") == "input":
             w = wording(cline)
-            condition = (f"The filer is asked (input `{cond}`, document {cdoc}): {w['prompt']}"
-                         + (f"\n  Help shown with it: {w['help']}" if w["help"] else "")
+            condition = (f"The filer is asked (input `{cond}`, document {cdoc}): {indent_rest(w['prompt'], '    ')}"
+                         + (f"\n  Help shown with it: {indent_rest(w['help'], '    ')}" if w["help"] else "")
                          + f"\n  Cited: {cline['cite']['doc']} {cline['cite']['locator']}")
         else:
-            condition = (f"A condition the tool computes (line `{cond}`, document {cdoc}): {cline['label']}"
-                         f"\n  Computed as: {english(cdoc, cond)}\n  Cited: {cline['cite']['doc']} {cline['cite']['locator']}")
+            condition = (f"A condition the tool computes (line `{cond}`, document {cdoc}): {indent_rest(cline['label'], '    ')}"
+                         f"\n  Computed as: {indent_rest(english(cdoc, cond), '    ')}\n  Cited: {cline['cite']['doc']} {cline['cite']['locator']}")
     else:
         condition = "The guards of the gate line below (more than one line decides it)."
     items = []
     for gdoc, gate, inp in unit["gates"]:
         w = wording(inp)
-        items.append(f"""- Line `{gate['id']}` (document {gdoc}, printed {gate['printed']}): {gate['label']}
-  When the condition holds: {english(gdoc, gate['id'])}
+        items.append(f"""- Line `{gate['id']}` (document {gdoc}, printed {gate['printed']}): {indent_rest(gate['label'], '    ')}
+  When the condition holds: {indent_rest(english(gdoc, gate['id']), '    ')}
   Otherwise: zero, and the question below is not asked.
-  Gated question (input `{inp['id']}`): {w['prompt']}""" + (f"\n  Help shown with it: {w['help']}" if w["help"] else "") + f"""
+  Gated question (input `{inp['id']}`): {indent_rest(w['prompt'], '    ')}""" + (f"\n  Help shown with it: {indent_rest(w['help'], '    ')}" if w["help"] else "") + f"""
   Cited: {gate['cite']['doc']} {gate['cite']['locator']}; the input cites {inp['cite']['doc']} {inp['cite']['locator']}""")
     return condition, items
 

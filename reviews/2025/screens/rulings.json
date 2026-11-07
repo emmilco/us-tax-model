@@ -893,51 +893,31 @@
    "bugs": [],
    "adjudication": "reviews/2025/screens/adjudication/group2.md"
   },
-  "unruled:scope.credits": {
-   "prompt_sha": "44ecc3aaa8abe83353621be78ef91f41e8087174470fb5b68671db130906a35c",
-   "reason": "No defect: the Schedule 3 Part II amounts named are collected as inputs, not dropped.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
-     "class": "model error",
-     "evidence": "Line 10 is the input s3.line10 ('Amount paid with request for extension to file') and lines 13a-13z, including 13c and 13d, enter through s3.line14 ('Total other payments or refundable credits (supplied subtotal)'), both summed into s3.line15/f1040.line31; the reviewer did not have these inputs."
-    }
-   ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group2.md"
-  },
   "unruled:scope.other_income": {
-   "prompt_sha": "ecb43bb6b1fe6d641d2f9da10c0f71cf1f900dc7620b427a791c9cc508370f2a",
-   "reason": "No defect. BUG-0408's addition (repayment of a qualified reservist distribution) drew no finding. Each NARROW item has its own refusal; the UNCLEAR adjustment reading can only refuse.",
+   "prompt_sha": "ef3728e9e702fe7d8e6f46636b5cb4442d71728625b4a506bcc5602fdbadbb4a",
+   "reason": "No defect. The R0 restructure kept every clause (no word lost); the NARROW finding is covered by another screen; the UNCLEAR readings can only refuse.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "f1040 line 16. scope.other_line16 names Form 4972 and gates scope.ready; retirement.special names 'a lump-sum distribution you may report on Form 4972' and refuses the distribution."
+     "evidence": "i1040gi p. 40; Schedule 1 line 8d. s1.line8_other names 'the foreign earned income or housing exclusion from Form 2555 (8d)' and refuses f1040.line8; sa.excluded_income refuses the EIC for a Form 2555 filer (eic.step1_foreign)."
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "i1040gi p. 40. scope.other_line16 asks about 'filing Form 8814 (even with no tax)' and gates scope.ready. As group 8 finding 0."
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "f1040 lines 10, 13b and 20. As the prior ruling (finding 3): adjustments, Schedule 1-A deductions and credits are asked by scope.schedule1, scope.schedule1a and scope.credits; a filer who reads 'return treatment' to include them answers Yes and is refused. Refusal only."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "f1040 line 8. scope.schedule1 asks about a taxable state or local income tax refund and other Schedule 1 income separately, and s1.line8_other lists the line 8 items one by one, both refusing what the tool does not compute. As group 8 finding 2."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
      "class": "accepted (minor UNCLEAR, leans WIDE)",
-     "evidence": "f1040 lines 10 and 13b. The Schedule 1 adjustments and Schedule 1-A deductions are asked separately (scope.schedule1 lists them); a filer who reads 'return treatment' to include them answers Yes and is refused. Refusal only."
+     "evidence": "f1040 line 8. A filer who counts nontaxable receipts (gifts, child support) as 'other income' answers Yes and is refused; no amount is computed from a Yes. Refusal only."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group9.md"
+   "adjudication": "reviews/2025/screens/adjudication/r0.md"
   },
   "unruled:sd.other_forms": {
    "prompt_sha": "3a076e4e32be22b5d339d4801cf0dcc8e4584a6b436f1d7e867c3febae7565a5",
@@ -1393,80 +1373,76 @@
    "adjudication": "reviews/2025/screens/adjudication/group4.md"
   },
   "unruled:scope.other_line16": {
-   "prompt_sha": "113d5dbc950399233a14cc358d8ff29ca26d6a56b541e827500ef95246fe7e51",
-   "reason": "No defect. BUG-0409's CFC/PFIC wording (T-216) drew the expected WIDE findings, an over-refusal the owner accepted; the passive Schedule C case is covered; 965(i) falls under the opening clause.",
+   "prompt_sha": "5c48614b176894cf72b1ed621e29525b6275a2013fa786a373da675338cdea92",
+   "reason": "One low defect in wording R0 kept unchanged (BUG-0433, the Form 8615 condition omits the IRS examples of unearned income); the CFC/PFIC findings are the accepted over-refusal; 965(i) falls under the opening clause.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "covered",
-     "evidence": "i1040gi p. 40. A passive Schedule C answers sc.passive No (sc.screened refuses sc.line1), and scope.other_income asks 'income or loss from a passive activity' and gates scope.ready. As group 7 scope.schedule1 finding 0."
+     "class": "out of scope / presentation",
+     "evidence": "i1040gi p. 36. As the prior ruling (finding 3): a triggered section 965(i) liability is an 'additional Form 1040 line 16 tax' under the question's opening clause, which the list only illustrates. Rare."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i8960 p. 22. Any CFC or PFIC stock is refused even with nothing to include for 2025 (BUG-0409, accepted over-refusal). Safe."
+     "evidence": "i8960 p. 22; i1040gi p. 34. Any CFC or PFIC stock, and Form 8621, is refused even with no line 16 tax (BUG-0409, accepted over-refusal). Safe."
     },
     {
      "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i8960 p. 22. Mark-to-market PFICs and CFC or PFIC stock held in a section 1411 trade or business are refused though no MAGI adjustment applies (BUG-0409). Safe."
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "i1040gi p. 36: 'more than $2,700 of unearned income (such as taxable interest, ordinary dividends, or capital gains (including capital gain distributions))'. The question gives the threshold without the examples, so a child with mostly capital gains may answer No and Form 8615 tax is missed. The words are the prior wording's (R0 changed none); BUG-0433, low."
+    }
+   ],
+   "bugs": [
+    "BUG-0433"
+   ],
+   "adjudication": "reviews/2025/screens/adjudication/r0.md"
+  },
+  "unruled:scope.schedule1": {
+   "prompt_sha": "f8464ba61729ca85b5aa08254bd13cd557990815e761943a3a35a4ae472ff487",
+   "reason": "No defect, after the second round: the first round's UNCLEAR on alimony paid came from R0 sorting 'alimony under an agreement made before 2019' under income, which narrowed it to alimony received (s1.alimony asks received or paid); the list was restored to the original order and the review rerun, which raised no such finding. The NARROW findings are covered by other gates; the WIDE and UNCLEAR ones can only refuse.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "i1040gi p. 40: a passive Schedule C answers sc.passive No and is refused (sc.screened refuses sc.line1), and scope.other_income asks 'income or loss from a passive activity'. As the prior ruling (finding 0)."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "i1040gi p. 104: s1.sc_1a (from sc.tips_ot) refuses s1a.line5_calc for qualified tips received in a trade or business. As the prior ruling (finding 1)."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "i1040gi p. 108: s1.sc_1a (from sc.tips_ot) refuses s1a.line14b_calc for overtime on Form 1099-NEC or 1099-MISC. As the prior ruling (finding 2)."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "out of scope / presentation",
-     "evidence": "i1040gi p. 36: a section 965(i) triggered liability is an 'additional Form 1040 line 16 tax' under the opening clause, and indirect CFC ownership is named. Rare. As group 7 finding 0."
-    }
-   ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group9.md"
-  },
-  "unruled:scope.schedule1": {
-   "prompt_sha": "4188400ad5c041465942a217de08ab5f63a8c00540ba52a606b933e176f77b94",
-   "reason": "No defect. The NARROW findings are covered by sibling gates as in group 7; the WIDE and UNCLEAR findings can only refuse.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
      "class": "covered",
-     "evidence": "i1040gi p. 40: a passive Schedule C answers sc.passive No (sc.screened refuses sc.line1), and scope.other_income asks 'income or loss from a passive activity' and gates eic.step1_resident, f1040.line8 and scope.ready. As group 7 finding 0."
-    },
-    {
-     "n": 1,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "i1040gi p. 104: s1.sc_1a (from sc.tips_ot) refuses s1a.line5_calc for qualified tips received in a trade or business. As group 7 finding 1."
-    },
-    {
-     "n": 2,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "i1040gi p. 108: s1.sc_1a (from sc.tips_ot) refuses s1a.line14b_calc for overtime reported on Form 1099-NEC or 1099-MISC. As group 7 finding 1."
-    },
-    {
-     "n": 3,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi p. 42; i1040sse p. 1: church wages under $108.28 are refused though line 1z is right. Safe; as group 7 finding 3."
+     "evidence": "i1040sc p. 5, Line 1, Statutory employees: a statutory employee's Schedule C answers sc.statutory Yes and is refused (sc.screened); either reading of this question refuses."
     },
     {
      "n": 4,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1040gi p. 43: a minister with an approved Form 4361 is refused though line 27b does not apply. Safe."
+     "evidence": "i1040gi p. 42; i1040sse p. 1: church wages under $108.28 are refused though line 1z is right. Safe; as the prior ruling (finding 3)."
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
      "class": "accepted (minor UNCLEAR, leans WIDE)",
-     "evidence": "f1040 line 8: a recovery that gave no tax benefit may draw Yes; refusal only."
+     "evidence": "i1040gi p. 40, Step 2 question 4. A Yes refuses; a No leaves a business rental of personal property on Schedule C, where a rental activity answers sc.passive No and sc.screened refuses it. Either answer refuses or computes correctly."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group9.md"
+   "adjudication": "reviews/2025/screens/adjudication/r0.md"
   },
   "unruled:ssb.terror_disability": {
    "prompt_sha": "32b055c485c0a25e182e4c4934b2052ee9dd390a33dac74ea3fc51c14bfc19f5",

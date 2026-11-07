@@ -236,3 +236,9 @@ footer p { padding-block: 0.8rem; font-size: 0.75rem; color: var(--muted); }
   table.lines td.value { width: 8rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+/* Structured text (a question, help or label with headings and lists): its blocks, a heading kept with its list. */
+.structured > * + * { margin-top: 0.75em; }
+.structured h4 { font-size: inherit; font-weight: 600; margin: 0 0 0.25em; }
+.structured ul, #derivation .structured ul { list-style: disc; padding-left: 1.4em; margin: 0; }
+.structured li + li { margin-top: 0.2em; }
+.structured li > ul { list-style: circle; margin-top: 0.2em; }

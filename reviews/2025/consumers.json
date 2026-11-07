@@ -857,6 +857,30 @@
    "question_phrase": "Adjustment codes: none, B, W, BW; choose other for any additional code",
    "source_phrase": "You don't need to make any adjustments to the basis or type of gain or loss reported on Form 1099-B",
    "reason": "sales.bad_aggregate treats any code other than none as an adjustment, which is the condition for reporting on Schedule D line 1a or 8a rather than Form 8949."
+  },
+  "consumer:scope.credits@i1040s8812:p4": {
+   "verdict": "same",
+   "question_phrase": "Do you want to claim any credit other than the following, or do you have any other amount for Schedule 3 Part I ... the foreign tax credit claimed without Form 1116 ... the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695) ... the education credits this tool figures on Form 8863",
+   "source_phrase": "Add the following amounts (if applicable) from: Schedule 3, line 1 ... line 2 ... line 3 ... line 4 ... line 5b ... line 6d",
+   "reason": "The worksheet adds Schedule 3 lines 1, 2, 3, 4 and 5b, which the tool figures, and lines 6d, 6f, 6l and 6m, credits the question names as other credits, so a no makes those lines zero and a yes refuses."
+  },
+  "consumer:scope.credits@i5695:p5": {
+   "verdict": "same",
+   "question_phrase": "Do you want to claim any credit other than the following, or do you have any other amount for Schedule 3 Part I ... the foreign tax credit claimed without Form 1116 ... the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695) ... the education credits this tool figures on Form 8863",
+   "source_phrase": "Enter the total of the following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return: + Amount on Schedule 3 (Form 1040), line 6l ... line 1 ... line 2 ... line 6d ... line 3 ... line 4",
+   "reason": "Lines 1 to 4 and Form 5695 line 32 are figured by the tool; lines 6l, 6d, 6m, 6f, 6g, 6c and 6h are credits other than the listed ones, which the question asks about and refuses on yes."
+  },
+  "consumer:scope.credits@i5695:p7": {
+   "verdict": "same",
+   "question_phrase": "Do you want to claim any credit other than the following, or do you have any other amount for Schedule 3 Part I ... the foreign tax credit claimed without Form 1116 ... the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695) ... the education credits this tool figures on Form 8863",
+   "source_phrase": "Enter the total of the following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return: + Amount on Schedule 3 (Form 1040), line 6l ... line 1 ... line 2 ... line 6d ... line 3 ... line 4",
+   "reason": "Lines 1 to 4 are figured by the tool; lines 6l and 6d are credits other than the listed ones, which the question asks about and refuses on yes."
+  },
+  "consumer:scope.credits@i8863:p8": {
+   "verdict": "same",
+   "question_phrase": "Do you want to claim any credit other than the following, or do you have any other amount for Schedule 3 Part I ... the foreign tax credit claimed without Form 1116 ... the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695) ... the education credits this tool figures on Form 8863",
+   "source_phrase": "5. Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l",
+   "reason": "Lines 1 and 2 are figured by the tool; lines 6d and 6l are credits other than the listed ones, which the question asks about and refuses on yes."
   }
  },
  "baseline": {

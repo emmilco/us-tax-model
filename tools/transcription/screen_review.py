@@ -32,6 +32,7 @@ from transcribe import ROOT, manifest, excerpt_for, call_model  # noqa: E402
 from taxyear import Y  # noqa: E402
 import jurisdiction  # noqa: E402  (--jurisdiction ny: the screens of New York lines; reviews/ny/<year>/screens/)
 import gates  # noqa: E402
+from structured_text import indent_rest, continued  # noqa: E402
 
 OUT = str(jurisdiction.ypath("reviews", Y, "screens"))
 # A New York screen review may share its screen (a federal scope question gating New York lines) with a federal
@@ -58,7 +59,7 @@ def encoded_english(doc_id, line_id):
     if not m:
         return "(no rendering)"
     enc = re.search(r"\*\*Encoded[^*]*\*\*:? ?(.*)", m.group(1))
-    return enc.group(1).strip() if enc else "(no rendering)"
+    return (enc.group(1) + continued(m.group(1), enc.start())).strip() if enc else "(no rendering)"
 
 
 def screens(lines):
@@ -76,8 +77,8 @@ def screens(lines):
 def build_prompt(screen, sline, gated, excerpt):
     items = []
     for doc, l, r in gated:
-        items.append(f"""- Line `{l['id']}` (document {doc}, printed {l['printed']}): {l['label']}
-  Computed as (when the screen is answered no): {encoded_english(doc, l['id'])}
+        items.append(f"""- Line `{l['id']}` (document {doc}, printed {l['printed']}): {indent_rest(l['label'], "    ")}
+  Computed as (when the screen is answered no): {indent_rest(encoded_english(doc, l['id']), "    ")}
   Refusal when the screen is answered yes: {r['form']} — {r['remedy']}
   Cited: {l['cite']['doc']} {l['cite']['locator']}; refusal cites {r['cite']['doc']} {r['cite']['locator']}""")
     return jurisdiction.preface(f"""A tax preparation tool asks the filer a yes/no screening question. If the filer answers YES, the

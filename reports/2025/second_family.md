@@ -1,8 +1,8 @@
 # Second-family review comparison — 2025
 
-Summary: 138 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.5% (311/4127 second-family lines judged; pending reviews are provisional); 66 eligible, 72 pending; raw agreement 81.3% (diagnostic only); current independence yield 161 line(s); both families disputed 545
+Summary: 138 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.6% (312/4127 second-family lines judged; pending reviews are provisional); 66 eligible, 72 pending; raw agreement 81.3% (diagnostic only); current independence yield 162 line(s); both families disputed 545
 
-Written by `tools/transcription/compare_families.py` on 2026-11-06 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
+Written by `tools/transcription/compare_families.py` on 2026-11-07 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
 - **Noise rule** (owner's decision 12, integrity plan item 1.3): second-family disputes ruled **model error**, divided by the lines that family judged, must be at most 10% for each form-kind run. Findings, representation differences, scope differences and ambiguities are not model noise. The threshold uses integer arithmetic; 1/10 passes and 1/9 does not. Rates for pending reviews are provisional: an unresolved objection has not yet been classified, and zero ruled model errors does not mean every objection was correct.
 - **Eligibility** also requires current subjects/sources, the named second-family model, no missing or invalid verdicts, and no open or unclassified ruling. Empty reviews earn no assertion. Optional-family results can remain pending without becoming evidence.
@@ -82,9 +82,9 @@ Pending f2441 [deepseek]: 3 missing expected lines; model-error noise above 10%;
 Pending f2441 [gpt]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for gpt: required input/interface wording is missing or stale.
 Pending f4562 [deepseek]: 14 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f5329 [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
-Pending f5695 [deepseek]: model-error noise above 10%.
+Pending f5695 [deepseek]: model-error noise above 10%; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending f8606 [deepseek]: 3 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending f8863 [deepseek]: 3 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending f8863 [deepseek]: 3 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending f8880 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending f8959 [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8962 [deepseek]: 89 open, unclassified or interface-gap rulings; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -113,7 +113,7 @@ Pending scope [deepseek]: no verified current request context for claude: requir
 Pending sd [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending sdtw [deepseek]: model-error noise above 10%; no passing current expression type validation: claude; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending se [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending ssb [deepseek]: model-error noise above 10%.
+Pending ssb [deepseek]: model-error noise above 10%; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending tax_on_amount [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending tcw [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending u1250 [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -742,7 +742,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sales | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | sb | deepseek (deepseek-flash) | 6 | 4 | 66.7% | 0/6 (0.0%) | pending | 1 | 1 | 0 | 0 |
 | sc | deepseek (deepseek-flash) | 75 | 72 | 96.0% | 0/75 (0.0%) | pass | 3 | 0 | 0 | 0 |
-| scope | deepseek (deepseek-flash) | 5 | 2 | 40.0% | 1/5 (20.0%) | pending | 3 | 0 | 0 | 0 |
+| scope | deepseek (deepseek-flash) | 5 | 1 | 20.0% | 2/5 (40.0%) | pending | 4 | 0 | 0 | 0 |
 | scveh | deepseek (deepseek-flash) | 27 | 21 | 77.8% | 1/27 (3.7%) | pass | 0 | 5 | 1 | 0 |
 | sd | deepseek (deepseek-flash) | 46 | 44 | 95.7% | 0/46 (0.0%) | pass | 0 | 1 | 1 | 0 |
 | sdtw | deepseek (deepseek-flash) | 47 | 46 | 97.9% | 0/47 (0.0%) | pass | 0 | 1 | 0 | 0 |
@@ -754,7 +754,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 5 | 8 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 16 | 94.1% | 1/17 (5.9%) | pass | 1 | 0 | 0 | 0 |
-| **all** | | 1325 | 1158 | 87.4% | | | 66 | 74 | 27 | 1 |
+| **all** | | 1325 | 1157 | 87.3% | | | 67 | 74 | 27 | 1 |
 
 Pending asset [deepseek]: 1 missing expected lines.
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
@@ -827,9 +827,10 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | sc | deepseek | 13 (sc.line13) | MISMATCH | IRS line 13 is depreciation and the section 179 expense deduction; Form 4562 line 22 includes lines 14 through 17, lines 19 and 20(g), and line 21, while the restatement's helper lists only lines 14, 17, 19 and 21. |
 | sc | deepseek | 4 (sc.f7206_line4) | MISMATCH | IRS Form 7206 line 4 says 'Enter your net profit* and any other earned income** from the trade or business under which the insurance plan is established'; the restatement uses only net profit of this business. |
 | sc | deepseek | 5 (sc.f7206_line5) | MISMATCH | IRS Form 7206 line 5 includes 'plus any other income allocable to the profitable businesses'; the restatement only totals net profits and excludes losses. |
-| scope | deepseek | credits | UNCLEAR | The IRS text does not include Schedule 3 Part I or the instructions for the listed credits (Form 2441, Form 8880, Form 5695, Form 8962, Form 8863, etc.), so the scope question cannot be compared. |
-| scope | deepseek | other_line16 | MISMATCH | The restatement includes CFC/PFIC ownership under Form 1040 line 16, but the IRS text says those interests affect the 'modified AGI of Form 8960 line 13' (MAGI), not line 16; line 16 instead involves items such as Form 8615, Schedule D, qualified dividends, Schedule J, and Form 2555. |
-| scope | deepseek | schedule1 | UNCLEAR | The IRS text only references Form 1040 lines 8 and 10 as coming from Schedule 1; it does not include Schedule 1 line 10/26 or the listed income and adjustment items, so the restatement cannot be verified. |
+| scope | deepseek | credits | UNCLEAR | The provided IRS text does not include the Schedule 3 or credit instructions for most listed credits (foreign tax, excess Social Security, child tax, etc.), so the completeness of the 'other than' list cannot be verified. |
+| scope | deepseek | other_income | UNCLEAR | The text supports the Form 8915-F disaster-distribution and Form 8606 qualified-reservist repayment items, but it does not cover the nonresident-alien status screen or most other listed income/return treatments, so the full restatement cannot be judged. |
+| scope | deepseek | other_line16 | MISMATCH | The restatement treats CFC/PFIC stock ownership as an additional Form 1040 line 16 tax/filing, but IRS i8960 says CFC/PFIC ownership may require MAGI adjustments on Form 8960 line 13: "If you own, directly or indirectly, stock in a CFC or PFIC ... to calculate your MAGI, you may need to make certain adjustments to your AGI" and "enter your AGI ... on line 13 of Form 8960." |
+| scope | deepseek | schedule1 | MISMATCH | The restatement lists statutory-employee, minister, and church-employee income as Schedule 1 items, but the IRS text directs statutory employee social security wages and tips to Schedule SE line 8a ("be sure to include on line 8a statutory employee social security wages and tips from Form W-2") and minister/church-employee income to Schedule SE lines 2/5a, not Schedule 1. |
 | sli | deepseek | 6 | MISMATCH | The IRS line says "No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9"; the restatement subtracts line 5 from line 4 without that condition, so line 6 would be negative when line 4 is not more than line 5. |
 | ssb | deepseek | 9 | MISMATCH | The IRS line 9 is conditional: “Is the amount on line 8 less than the amount on line 7? No. STOP None of your social security benefits are taxable... Yes. Subtract line 8 from line 7.” The restatement instead always subtracts and floors at zero, omitting the No/STOP condition. |
 | u1250 | deepseek | 2 | MISMATCH | IRS line 2 says 'Enter the amount from Form 4797, line 26g, for the property for which you made an entry on line 1'; the restatement always enters div.screen $0 and does not exclude Form 4797 property. |

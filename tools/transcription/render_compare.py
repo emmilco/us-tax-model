@@ -24,6 +24,7 @@ import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
 import transcribe as T  # noqa: E402
+from structured_text import summary, indent_rest, continued  # noqa: E402  (tools/, on the path through transcribe)
 
 RENDERED = str(jurisdiction.ypath("rendered", Y))
 LOGS = str(jurisdiction.ypath("reviews", Y, "render"))
@@ -57,8 +58,10 @@ def parse_rendered_text(text):
         label = re.search(r"(?m)^- \*\*(?:IRS|Authored helper label):\*\* (.*)$", body)
         refusals = re.findall(r"(?m)^- \*\*Refusal:\*\* (.*?) Cite: ", body)
         shown_when = re.search(r"(?m)^- \*\*Shown on the values sheet only when:\*\* (.*?) \(`[^`]+`\)$", body)
-        entries[m.group(2)] = {"printed": m.group(1), "id": m.group(2), "type": enc.group(1), "encoded": enc.group(2),
-                               "label": label.group(1) if label else "", "refusals": refusals,
+        # A structured text continues on the indented lines below its field (engine/src/render.ts).
+        entries[m.group(2)] = {"printed": m.group(1), "id": m.group(2), "type": enc.group(1),
+                               "encoded": enc.group(2) + continued(body, enc.start()),
+                               "label": label.group(1) + continued(body, label.start()) if label else "", "refusals": refusals,
                                "shown_when": shown_when.group(1) if shown_when else None}
     return entries
 
@@ -183,7 +186,7 @@ def glossary(form_id, lines, stop=None):
         except FileNotFoundError:
             continue
         if kind == "label":
-            matches = [e for e in entries.values() if e["label"] == key and e["printed"] in HELPER_MARKERS]
+            matches = [e for e in entries.values() if summary(e["label"]) == key and e["printed"] in HELPER_MARKERS]
         elif kind == "def":
             matches = list(entries.values())  # every line of the invoked definition
         else:
@@ -285,7 +288,7 @@ def build_prompt(form_doc, excerpt, scope=None):
     printed = judged_lines(form_doc, scope)
     rows = []
     for e in printed:
-        rows.append(f'- {e["shown"]} ({e["type"]}): {e["encoded"]}')
+        rows.append(indent_rest(f'- {e["shown"]} ({e["type"]}): {e["encoded"]}', "    "))
         if e.get("shown_when"):
             rows.append(f"    reported on this line only for an entry where: {e['shown_when']} (otherwise the line is left out for that entry)")
         for r in e["refusals"]:
@@ -302,7 +305,7 @@ def build_prompt(form_doc, excerpt, scope=None):
             continue
         else:
             name = f'{gfid} line {e["printed"]} "{e["label"]}"'
-        gl.append(f'- {name}{where} ({e["type"]}): {e["encoded"]}')
+        gl.append(indent_rest(f'- {name}{where} ({e["type"]}): {e["encoded"]}', "    "))
         for r in e["refusals"]:
             gl.append(f"    refusal: {r}")
     texts = [e["encoded"] + " " + " ".join(e["refusals"]) for e in printed] + [e["encoded"] + " " + " ".join(e["refusals"]) for _, e in gloss]
@@ -310,7 +313,7 @@ def build_prompt(form_doc, excerpt, scope=None):
     if refd:
         gl += ["", "Lines of other forms named above, with the IRS wording of each:"]
         for rfid, word, e in refd:
-            gl.append(f'- {rfid} {word} {e["printed"]}: "{e["label"]}"')
+            gl.append(indent_rest(f'- {rfid} {word} {e["printed"]}: "{e["label"]}"', "    "))
     return jurisdiction.preface(f"""You are checking whether a program's plain-English restatement of each printed line of an IRS form
 or worksheet says what the IRS text says. Work ONLY from the IRS text provided below. Do not rely on
 memory of the tax law or of any software; if the text does not say it, it is not evidence.
@@ -437,7 +440,7 @@ def _sections(results, kept, pass_id=None):
     out = []
     tag = [T.pass_tag(pass_id)] if pass_id else []
     for r in results:
-        out.append(f"### {r['printed']} — {r['label'][:90].rstrip()}")
+        out.append(f"### {r['printed']} — {summary(r['label'])[:90].rstrip()}")
         out.append(f"Status: **{r['status']}**")
         if r["status"] != "MATCH":
             out += ["", f"Restated: {r['encoded']}", "", f"Model: {r['reason']}", "",

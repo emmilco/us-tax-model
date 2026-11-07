@@ -8,6 +8,7 @@ import { fmtMoney, fmtRate, isHelperLine, isMarkedLine, shortHash } from "./util
 import { loadCanonical } from "./canonical.js";
 import type { CanonicalData, CiteFilled, Expr, FormDoc, Line, Operand, TestExpr } from "./types.js";
 import { NY_MODE, YEAR, nyPath, yearPath } from "./year.js";
+import { indentRest, textSummary } from "./text.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 // rendered/<YEAR>/ for the federal documents; with --ny, rendered/ny/<YEAR>/ for the New York ones.
@@ -82,7 +83,7 @@ function operandText(op: Operand, doc: FormDoc, ctx: RenderCtx): string {
 // nothing a reader could check.
 
 function lineName(line: Line, prefix: string, doc: FormDoc): string {
-  if (isHelperLine(line)) return `${prefix}helper "${line.label}"`;
+  if (isHelperLine(line)) return `${prefix}helper "${textSummary(line.label)}"`;
   // A marker several lines share (a worksheet's repeated row columns) is
   // qualified by the line id, since the marker alone names no single line.
   const shared = doc.lines.filter((l) => l.printed === line.printed).length > 1;
@@ -144,7 +145,7 @@ function testText(test: TestExpr, doc: FormDoc, ctx: RenderCtx): string {
 function exprText(expr: Expr, doc: FormDoc, ctx: RenderCtx): string {
   switch (expr.op) {
     case "input":
-      return `Input — ${expr.source}`;
+      return `Input — ${indentRest(expr.source, "  ")}`;
     case "copy":
       if (typeof expr.from === "string") return `Enter the amount from ${refText(doc, expr.from, ctx)}.`;
       return `Enter "${expr.from.line}" of ${ctx.forms.get(expr.from.def)?.title ?? expr.from.def} with ${listAnd(Object.entries(expr.from.bind)
@@ -231,17 +232,17 @@ function renderDoc(doc: FormDoc, ctx: RenderCtx): string {
   out.push(`- Document: \`${doc.id}\` (${doc.kind}, tax year ${doc.tax_year})`);
   if (doc.collection) out.push(`- Collection: keyed entries${doc.collection.parent ? ` within ${doc.collection.parent}` : ""}${doc.collection.implicit ? `, one per ${doc.collection.parent} entry without being asked (\`${doc.collection.implicit}\`)` : ""}; ${citeLine(doc.collection.cite)}`);
   if (doc.parameters?.length) out.push(`- Parameters: ${doc.parameters.join(", ")}`);
-  if (doc.note) out.push(`- Note: ${doc.note}`);
+  if (doc.note) out.push(`- Note: ${indentRest(doc.note, "  ")}`);
   out.push("");
   for (const line of doc.lines) {
     out.push(`## ${line.printed} — \`${line.id}\``);
     out.push("");
-    out.push(`- **${doc.collection && doc.kind === "worksheet" || isMarkedLine(line) ? "Authored helper label" : "IRS"}:** ${line.label}`);
+    out.push(`- **${doc.collection && doc.kind === "worksheet" || isMarkedLine(line) ? "Authored helper label" : "IRS"}:** ${indentRest(line.label, "  ")}`);
     out.push(`- **Encoded (${line.type}):** ${exprText(line.expr as Expr, doc, ctx)}`);
     for (const r of line.refuses ?? []) out.push(`- **Refusal:** when ${r.when} is true, cannot complete ${r.form}. ${r.remedy}${r.when_known ? " Check supplied figures only; an unanswered check does not block an independently determined amount or assume an answer." : ""} Cite: ${citeLine(r.cite)}`);
-    if (line.shown_when) out.push(`- **Shown on the values sheet only when:** ${doc.lines.find((l) => l.id === line.shown_when)?.label ?? line.shown_when} (\`${line.shown_when}\`)`);
+    if (line.shown_when) out.push(`- **Shown on the values sheet only when:** ${textSummary(doc.lines.find((l) => l.id === line.shown_when)?.label ?? line.shown_when)} (\`${line.shown_when}\`)`);
     if (line.ambiguity) out.push(`- Interpretation: ${line.ambiguity}`);
-    if (line.note) out.push(`- Note: ${line.note}`);
+    if (line.note) out.push(`- Note: ${indentRest(line.note, "  ")}`);
     out.push(`- Expr: \`${JSON.stringify(line.expr)}\``);
     out.push(`- Cite: ${citeLine(line.cite)}`);
     out.push("");

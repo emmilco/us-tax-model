@@ -32,6 +32,7 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
 import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York documents, sources and logs)
 import archive_text  # noqa: E402
+from structured_text import indent_rest, summary  # noqa: E402
 import citations  # noqa: E402
 import html_sections  # noqa: E402  (a web edition cut by the headings its locators name)
 SOURCES = str(jurisdiction.ypath("sources", Y))
@@ -1033,7 +1034,8 @@ def build_prompt(form_doc, excerpt, params, other_lines, param_types=None, colle
         scope_block = "\n" + SCOPE_NOTE + ("\n".join(printed_row(l) for l in others) if others else "  (none)") + "\n"
     tgt = "\n".join(printed_row(l) for l in targets) if targets or scope is None else "  (none)"
     exp = "\n".join(f"  - id {l['id']} ({l['type']})" for l in exported)
-    inp = "\n".join(f"  - {l['id']} (printed {keys[l['id']]!r}, type {l['type']}): {l['expr'].get('source','')}" for l in inputs)
+    inp = "\n".join(indent_rest(f"  - {l['id']} (printed {keys[l['id']]!r}, type {l['type']}): {l['expr'].get('source','')}", "      ")
+                    for l in inputs)
     prm = "\n".join(f"  - {k} ({(param_types or {}).get(k, 'type supplied by the interface')}): {v}" for k, v in params.items())
     oth = "\n".join(f"  - {k}: {v}" for k, v in other_lines.items())
     spec = open(os.path.join(ROOT, "spec", "spec.md"), encoding="utf-8").read()
@@ -2051,7 +2053,7 @@ def _sections(results, kept, pass_id=None):
     out = []
     tag = [pass_tag(pass_id)] if pass_id else []
     for r in results:
-        out.append(f"### {r['printed']} — {r['label'][:90].rstrip()}")
+        out.append(f"### {r['printed']} — {summary(r['label'])[:90].rstrip()}")
         out.append(f"Status: **{r['status']}**")
         if r["status"] != "AGREE":
             out += ["", "Project:", "", "```json", r["project"], "```", "", "Second:", "", "```json", str(r["second"]), "```"]

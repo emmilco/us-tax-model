@@ -740,20 +740,20 @@
   "unruled:scope#1": {
    "class": "out of scope",
    "evidence": "p575 p. 35. retirement.special names 'a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F)' (BUG-0408) and refuses the distribution's taxable amount; scope.other_income asks the 2023 and 2024 parts and repayments.",
-   "prompt_sha": "73a0944f68f6fb2fb1c48d46108e1d95f142381d0da9ce064b8639c839f2b258",
+   "prompt_sha": "03f152e8a3f9b2b295e780bcb14d426b0f9da8a855aef7cb070688deaece55b4",
    "gate": "retirement.special"
   },
   "unruled:scope#2": {
-   "class": "covered",
-   "evidence": "i1040gi p. 36. As scope#2 of the refresh round: f1040.gate.sdtw routes the Schedule D Tax Worksheet when Schedule D line 18 or 19 is more than zero (sd.line18 and sd.line19 are figured from Form 1099-DIV boxes 2d and 2b) or Form 4952 line 4g has an election (sd.investment_election).",
-   "prompt_sha": "73a0944f68f6fb2fb1c48d46108e1d95f142381d0da9ce064b8639c839f2b258",
-   "line": "f1040.gate.sdtw"
-  },
-  "unruled:scope#3": {
    "class": "out of scope",
    "evidence": "i1040sse p. 1. As scope#3 of the refresh round: person.se_screen names an approved Form 4029 or Form 4361 and refuses Schedule SE.",
-   "prompt_sha": "73a0944f68f6fb2fb1c48d46108e1d95f142381d0da9ce064b8639c839f2b258",
+   "prompt_sha": "03f152e8a3f9b2b295e780bcb14d426b0f9da8a855aef7cb070688deaece55b4",
    "gate": "person.se_screened"
+  },
+  "unruled:scope#3": {
+   "class": "covered",
+   "evidence": "i1040gi p. 36; i8960 p. 22. s1.line8_other asks about 'the foreign earned income or housing exclusion from Form 2555 (8d)' and refuses f1040.line8; sa.excluded_income refuses the EIC for a Form 2555 filer. A filer with a section 911 exclusion is refused before the Foreign Earned Income Tax Worksheet or the Form 8960 line 13 add-back could matter.",
+   "prompt_sha": "03f152e8a3f9b2b295e780bcb14d426b0f9da8a855aef7cb070688deaece55b4",
+   "line": "s1.line8_other"
   },
   "unruled:scveh#1": {
    "class": "out of scope",

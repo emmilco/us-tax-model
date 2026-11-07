@@ -5,7 +5,7 @@ Second transcription of `Earned Income Credit (EIC)—Steps 1 to 6 and Worksheet
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 1 (latest 2026-11-06); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 9c532afa5c55cc856624af3e06f497873efbaa3033102908c15a5b15e764911e |
@@ -323,13 +323,13 @@ Project:
 Second:
 
 ```json
-{"shown_when": {"args": [{"const": 0}, {"line": "2"}], "test": "lt"}, "value": {"args": [{"line": "1"}, {"line": "3"}], "test": "eq"}}
+{"shown_when": null, "value": {"args": [{"line": "1"}, {"line": "3"}], "test": "eq"}}
 ```
 
-Second transcription's note: Line 4 is reached only when line 2 is not zero, because of the STOP after line 2. Line 4 is therefore shown only then. The comparison itself is computed either way.
+Second transcription's note: Open point: line 4 is reached only when line 2 is not zero, because the worksheet says STOP if line 2 is zero. Chosen reading: line 4 is a fixed printed question on Worksheet A, so no shown_when is given and the value is always computed. The effect of the STOP on the credit belongs to line 6, which is reviewed separately.
 
-Ruling: representation; i1040gi p. 46, Worksheet A, line 2, "If line 2 is zero, You can’t take the credit." and line 4. The reply shows line 4 when line 2 is more than zero; the project shows it under eic.show3, which also requires eic.eligible. The worksheet is completed only when the credit is reached (eic.eligible), so the two conditions agree on every return that reaches the worksheet; the value (lines 3 and 1 compared) is the project's.
-Reviewed in: pass 9019c03448ff
+Ruling: representation; i1040gi p. 46, Worksheet A, line 2, "If line 2 is zero, You can’t take the credit." and line 4. The value agrees (lines 3 and 1 compared). The reply gives no shown_when and notes the STOP after line 2 as an open point; the project shows line 4 under eic.show3, which requires eic.eligible, the condition on which the worksheet is completed. The difference is whether the line is shown, not its value; the reviewed change (the wording of the scope questions this line's condition reads) does not bear on it. As the prior ruling.
+Reviewed in: pass b5d9d416684b
 
 ### 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the column for you
 Status: **DISAGREE**
@@ -422,26 +422,26 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 
 | line | foreign interfaces sha256 |
 | --- | --- |
-| 4 | 5607af5e7c49bba8ede703971c5e80b46e9a9662c9330b858134c82cc7c68035 |
+| 4 | 4c1dfbdcde6fe523b8773ff9b17b75ce1a51280271534487ba61f4a57e08cd19 |
 
 ## Line-scoped reviews
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass 9019c03448ff
+#### Pass b5d9d416684b
 
 | field | value |
 | --- | --- |
-| date | 2026-11-04 |
+| date | 2026-11-06 |
 | review scope | lines 4 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 9019c03448ffb4814604b54d03e087822cac74b6f17e26813c72feb8a0d6b6da |
-| prompt policy | source-only-computation-v3+lines-v1 |
+| prompt sha256 | b5d9d416684bca9de44594984185f5e9af18e423741d8d4d2843e6a4992f9c5f |
+| prompt policy | source-only-computation-v3+lines-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | e9cbcc0a8e557839ab99b8a6aa5a135a08b8388abcf1b35c74827f51d3a90bb0 |
+| required input context sha256 | f99748f0c3d6455cf9071cfe4635353ba9c3f03848f6e3f83779f2495c4c1dc0 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
@@ -467,8 +467,11 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 | reason | documents |
 | --- | --- |
 | definition | aqee, se, tax_on_amount, tcw |
-| named form | dcprov, f2441, s1, s3, sc, scveh |
+| named form, inputs and named lines: f2441.benefits, f2441.care, f2441.employer_care, f2441.line13, f2441.line14, f2441.nondependent, f2441.paid_2026, f2441.plan_max, f2441.plans_differ, f2441.prior_year, f2441.spouse_died, f2441.student_disabled | f2441 |
+| named form, inputs and named lines: s1.alimony, s1.alimony_paid, s1.alimony_received, s1.alimony_unsupported, s1.cod_amount, s1.cod_any, s1.cod_unsupported, s1.gambling_pro, s1.gambling_winnings, s1.jury_to_employer, s1.line8_other, s1.line8g, s1.line8h, s1.line8i, s1.line8j, s1.line8r, s1.uc_paid, s1.uc_repaid, s1.uc_unsupported | s1 |
+| named form, inputs and named lines: s3.line10, s3.line12, s3.line14, s3.line2 | s3 |
 | named line | ira, oi8z, s8812, sa, sli |
+| named lines: sc.f7206_line1, sc.ho_line1, sc.line1, sc.line31 | sc |
 | shared page | dependent, f1040, household, person, scope |
 
 ##### Raw second transcription
@@ -476,14 +479,6 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 ```yaml
 ```yaml
 lines:
-  - id: eic.h_line2_positive
-    printed: "(helper)"
-    label: "Line 2 is not zero (otherwise STOP: You can't take the credit)"
-    type: Bool
-    expr:
-      op: test
-      gt: [eic.line2, {const: 0}]
-    note: "Worksheet A says after line 2: 'If line 2 is zero, STOP. You can't take the credit.' The worksheet is not continued past line 2 in that case, so this helper is used as the display condition for line 4."
   - id: eic.line4
     printed: "4"
     label: "Are the amounts on lines 3 and 1 the same? Yes. Skip line 5; enter the amount from line 2 on line 6. No. Go to line 5."
@@ -491,8 +486,7 @@ lines:
     expr:
       op: test
       eq: [eic.line3, eic.line1]
-    shown_when: eic.h_line2_positive
-    note: "Line 4 is reached only when line 2 is not zero, because of the STOP after line 2. Line 4 is therefore shown only then. The comparison itself is computed either way."
+    note: "Open point: line 4 is reached only when line 2 is not zero, because the worksheet says STOP if line 2 is zero. Chosen reading: line 4 is a fixed printed question on Worksheet A, so no shown_when is given and the value is always computed. The effect of the STOP on the credit belongs to line 6, which is reviewed separately."
 ```
 ```
 

@@ -6045,3 +6045,10 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** interview start --profile social-security fails on a fresh build with: no question for reachable input f8962.alloc (also on the code before T-254).
 - **Disposition:** open.
 - **Tags:** interview; open
+
+## BUG-0433 — scope.other_line16 omits the IRS examples of unearned income in its Form 8615 condition
+
+- **Caught by:** R0 screen review of scope.other_line16 (finding 2, UNCLEAR), 2026-11-06.
+- **Symptom:** The Form 8615 condition says only "more than $2,700 of unearned income"; i1040gi p. 36 says "(such as taxable interest, ordinary dividends, or capital gains (including capital gain distributions))". A child whose unearned income is mostly capital gains or capital gain distributions may read unearned income as interest and dividends only, answer no, and get no Form 8615 tax on line 16. The wording predates R0 (R0 kept it word for word).
+- **Disposition:** open; low. Fix by adding the IRS examples to the condition, a content change outside R0's no-new-clauses rule, with the screen review rerun.
+- **Tags:** screen wording; open

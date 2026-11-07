@@ -56,7 +56,28 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
   - *Refused at:* `f2441.line11`, `f2441.line26`, `s3.line11`, `scope.ready`
   - *Share of returns (coverage estimate):* Married filing separately, 2.6%
 - **`scope.other_income`**: Were you or your spouse a nonresident alien for any part of 2025, or do you have income such as wages not on a Form W-2, Medicaid waiver payments or passive-activity income?
-  - *The data asks or tests:* Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), income or loss from a passive activity (including gain on selling an interest in one), or the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F), or a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)? (`input`)
+  - *The data asks or tests:* Any nonresident alien status, or other income or return treatment outside the kinds listed below?
+
+    Kinds this question is not about:
+    - wages
+    - interest
+    - dividends
+    - supported securities sales
+    - Form 1099-R distributions
+    - social security benefits
+
+    Nonresident alien status:
+    - you or your spouse, for any part of 2025
+
+    Other income or return treatment, including:
+    - wages or tips not on a Form W-2
+    - Medicaid waiver payments (whether or not in Form W-2 box 1)
+    - adoption benefits
+    - dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan)
+    - other earned income (Form 1040 lines 1b to 1d and 1f to 1h)
+    - income or loss from a passive activity (including gain on selling an interest in one)
+    - the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)
+    - a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1) (`input`)
   - *Stops the return as:* Nonresident or dual-status returns, and income outside the kinds the tool supports
   - *Not covered:* Nonresident aliens (EIC, Step 1, question 4). Nonresident and dual-status treatment is outside this tool.
     *Source:* [i1040gi] p. 40, Step 1, question 4; p. 44, Nonresident aliens
@@ -122,7 +143,44 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
 *Income, wages and accounts*
 
 - **`scope.schedule1`**: Do you have rental or royalty income, a partnership, S corporation, estate or trust (Schedule E or a K-1), farm income, sales of business property (Form 4797), a net operating loss, or another Schedule 1 item the tool does not ask about?
-  - *The data asks or tests:* Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner; church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.) (`input`)
+  - *The data asks or tests:* Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately, including any of the following?
+
+    Income:
+    - statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner
+    - church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)
+    - a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund, for example:
+      - a refund of general sales tax, real estate tax or personal property tax
+      - a refund of mortgage interest in box 4 of Form 1098
+      - a reimbursement of medical expenses
+      - a payment on a bad debt you deducted
+    - sales of business property (Form 4797)
+    - a net operating loss deduction
+    - rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)
+    - rental of personal property
+    - farm income (Schedule F)
+    - an exclusion of Medicaid waiver payments (Schedule 1 line 8s)
+
+    Adjustments:
+    - other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan)
+    - an adjustment on Schedule 1 line 12, 14 or 23
+
+    The ones this tool asks about separately:
+    - business income or loss from Schedule C
+    - a taxable state or local income tax refund
+    - alimony under an agreement made before 2019
+    - unemployment compensation
+    - the line 8 items asked one by one
+    - educator expenses
+    - the HSA deduction
+    - the deductible part of self-employment tax
+    - self-employed SEP and SIMPLE contributions
+    - the self-employed health insurance deduction
+    - the penalty on early withdrawal of savings
+    - the IRA deduction
+    - student loan interest
+    - jury duty pay you gave your employer
+
+    Schedule 1-A deductions are asked separately. (`input`)
   - *Stops the return as:* Schedule 1 items outside the tool, among them Schedules E and F, Form 4797 and the net operating loss
   - *Not covered:* Pub. 596, Worksheet 1 (EIC, Step 2, question 4). Schedule E, rental of personal property and passive activity income are outside this tool.
     *Source:* [i1040gi] p. 40, Step 2, question 4, "Yes. Use Worksheet 1 ... in Pub. 596"
@@ -247,7 +305,27 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
   - *Refused at:* `s1a.line4b_calc`, `s2.line2`, `s2.line3`, `s2.line21`, `s8812.line22`, `tipjob.col_c`
   - *Share of returns (coverage estimate):* Household employment, uncollected tip taxes, homebuyer credit repayment, 0.4%
 - **`scope.other_line16`**: Do you have an extra line 16 tax or filing, such as the tax on a child's unearned income (Form 8615), Form 8814, Form 4972 or an education credit recapture?
-  - *The data asks or tests:* Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615 (required if you had more than $2,700 of unearned income, are required to file, do not file jointly, have a parent who was alive at the end of 2025, and were under 18 at the end of 2025, or 18 with earned income of not more than half your support, or a full-time student 19 to 23 with earned income of not more than half your support), a section 962 election, Form 8621, a Form 8978 amount, recapture of an education credit, income averaging of farming or fishing income on Schedule J (if you choose it), or stock you own, directly or indirectly, in a controlled foreign corporation (CFC) or a passive foreign investment company (PFIC), even with nothing to include in income for 2025 (its distributions, dispositions and related adjustments can make the modified AGI of Form 8960 line 13 differ from AGI)? (`input`)
+  - *The data asks or tests:* Any additional Form 1040 line 16 tax or filing, including any of the following?
+
+    A child's unearned income:
+    - filing Form 8814 (even with no tax)
+    - Form 8615, required if all of these apply:
+      - you had more than $2,700 of unearned income
+      - you are required to file
+      - you do not file jointly
+      - you have a parent who was alive at the end of 2025
+      - you were under 18 at the end of 2025, or 18 with earned income of not more than half your support, or a full-time student 19 to 23 with earned income of not more than half your support
+
+    Foreign corporations:
+    - a section 962 election
+    - Form 8621
+    - stock you own, directly or indirectly, in a controlled foreign corporation (CFC) or a passive foreign investment company (PFIC), even with nothing to include in income for 2025 (its distributions, dispositions and related adjustments can make the modified AGI of Form 8960 line 13 differ from AGI)
+
+    Other:
+    - Form 4972
+    - a Form 8978 amount
+    - recapture of an education credit
+    - income averaging of farming or fishing income on Schedule J (if you choose it) (`input`)
   - *Stops the return as:* Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture
   - *Not covered:* Form 8814 (EIC, Step 2, question 4). Reporting a child's interest and dividends on Form 8814 is outside this tool.
     *Source:* [i1040gi] p. 40, Step 2, question 4
@@ -257,7 +335,19 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
     *Source:* [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
   - *Refused at:* `eic.step2_other`, `f1040.line16`, `scope.ready`
 - **`scope.credits`**: Do you want a credit the tool does not prepare, such as the adoption, clean vehicle, elderly or disabled, or general business credit?
-  - *The data asks or tests:* Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695), the net premium tax credit this tool figures on Form 8962 from your Forms 1095-A (Schedule 3 line 9) and the education credits this tool figures on Form 8863 (the American opportunity and lifetime learning credits), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)? (`input`)
+  - *The data asks or tests:* Do you want to claim any credit other than the following, or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
+
+    - the foreign tax credit claimed without Form 1116
+    - the excess social security credit
+    - the child tax credit
+    - the credit for other dependents
+    - the additional child tax credit
+    - the earned income credit
+    - the credit for child and dependent care expenses (Form 2441)
+    - the retirement savings contributions credit (Form 8880)
+    - the residential energy credits (Form 5695)
+    - the net premium tax credit this tool figures on Form 8962 from your Forms 1095-A (Schedule 3 line 9)
+    - the education credits this tool figures on Form 8863 (the American opportunity and lifetime learning credits) (`input`)
   - *Stops the return as:* Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)
   - *Not covered:* Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31). Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits, the net premium tax credit figured on Form 8962 and the education credits (Form 8863) require forms outside this proof of concept.
     *Source:* [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31

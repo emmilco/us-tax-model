@@ -11,6 +11,7 @@ import { isMarkedLine, stableStringify } from "./util.js";
 import { entrySyntax, type InterviewData, type RosterChoice } from "./interview.js";
 import { checkInterview, checkSalesInterview } from "./interview-check.js";
 import { runChecks } from "./check.js";
+import { isStructured, parseStructured, textSummary } from "./text.js";
 import { YEAR, nyPath, yearPath } from "./year.js";
 import type {
   CanonicalData,
@@ -134,8 +135,36 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     }
   }
 
+  // Structured text (text.ts): a line break is allowed only in the text shown as a question or help, and there
+  // only in the Markdown subset. A structured label is referred to by its first line, which must name one line.
+  for (const doc of [...forms, ...defs]) {
+    const textField = (where: string, text: unknown) => {
+      if (typeof text !== "string") return;
+      for (const p of parseStructured(text).problems) errors.push(`${where}: structured text ${p}`);
+    };
+    const stray = (where: string, node: unknown, allowed: ReadonlySet<string>): void => {
+      if (Array.isArray(node)) { node.forEach((v) => stray(where, v, new Set())); return; }
+      if (!node || typeof node !== "object") return;
+      for (const [k, v] of Object.entries(node)) {
+        if (typeof v === "string") { if (v.includes("\n") && !allowed.has(k)) errors.push(`${where}: '${k}' has a line break; only label, an input's source and note may be structured text`); }
+        else if (k !== "lines") stray(where, v, k === "expr" && (v as { op?: string }).op === "input" ? new Set(["source"]) : new Set());
+      }
+    };
+    stray(doc.id, doc, new Set(["note"]));
+    textField(`${doc.id} note`, doc.note);
+    for (const line of doc.lines ?? []) {
+      stray(line.id, line, new Set(["label", "note"]));
+      textField(`${line.id} label`, line.label);
+      textField(`${line.id} note`, line.note);
+      if (line.expr?.op === "input") textField(`${line.id} source`, (line.expr as { source?: unknown }).source);
+      if (isStructured(line.label) && doc.lines.some((o) => o !== line && textSummary(o.label) === textSummary(line.label))) {
+        errors.push(`${line.id} label: its first line "${textSummary(line.label)}" names another line of ${doc.id} too; a structured label is referred to by its first line`);
+      }
+    }
+  }
+
   // Parameters
-  const paramsRaw = parseYaml(readFileSync(PARAMS_PATH, "utf-8")) as { params: ParamsDoc };
+  const paramsRaw =parseYaml(readFileSync(PARAMS_PATH, "utf-8")) as { params: ParamsDoc };
   const params = paramsRaw.params;
   for (const [name, entry] of Object.entries(params.values)) {
     entry.cite = fillCite(entry.cite as unknown as CiteAuthored, params.tax_year, `param ${name}`);
@@ -237,6 +266,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     for (const [field, text] of [["prompt", prompt], ["help", q.help ?? ""]] as const) {
       const syntax = entrySyntax(text);
       if (syntax) errors.push(`${where}: the ${field} states entry syntax (${syntax}); say what to answer, not how to type it`);
+      for (const p of parseStructured(text).problems) errors.push(`${where}: the ${field}'s structured text ${p}`);
     }
     if (q.choices !== undefined) {
       const ok = q.input.startsWith("$") && Array.isArray(q.choices) && q.choices.length >= 2 && q.choices.every((c) =>
