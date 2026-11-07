@@ -1596,7 +1596,7 @@
  },
  {
   "screen": "f8962.other",
-  "question": "Does any of these apply: someone enrolled in a Marketplace policy was not lawfully present in the United States; for any month, anyone in your tax family was eligible for minimum essential coverage other than coverage in the individual market, including Medicare Part A or Part C, Medicaid, the Children's Health Insurance Program (CHIP), TRICARE, certain benefits for veterans and their families, health coverage for Peace Corps volunteers, employer-sponsored coverage that was offered and was affordable and provided minimum value (other than during a waiting period before the benefits begin; the offer is affordable for the employee if the employee's share of the annual cost of self-only coverage is not more than 9.02% of household income (Form 8962, line 3), whatever family coverage costs, and for another member of the tax family allowed to enroll if the employee's share of the annual cost of coverage for the employee and the family members allowed to enroll is not more than 9.02% of household income), employer-sponsored coverage the person actually enrolled in (including COBRA or retiree coverage) even if it was not affordable or did not provide minimum value, or other health coverage the Department of Health and Human Services designates as minimum essential coverage; you or a family member were offered or covered by a qualified small employer HRA (QSEHRA, W-2 box 12 code FF) or an individual coverage HRA for 2025; any part of a month's premium was not paid by the due date of your return, not including extensions (or, for coverage you enrolled in retroactively after a successful eligibility appeal, by the 120th day after the appeals decision), or a Form 1095-A shows zero in column A for a month whose premium you paid; advance payments were made for someone who is in no one's tax family; a Marketplace determination that you or a family member was ineligible for Medicaid or CHIP was later found to be based on incorrect information given with intentional or reckless disregard for the facts; or someone enrolled was incarcerated, other than pending disposition of charges such as awaiting trial? Do not count coverage bought in the individual market outside the Marketplace.",
+  "question": "Does any of these apply?\n\n- someone enrolled in a Marketplace policy was not lawfully present in the United States\n- for any month, anyone in your tax family was eligible for minimum essential coverage other than coverage in the individual market, including:\n  - Medicare Part A or Part C\n  - Medicaid\n  - the Children's Health Insurance Program (CHIP)\n  - TRICARE\n  - certain benefits for veterans and their families\n  - health coverage for Peace Corps volunteers\n  - employer-sponsored coverage that was offered and was affordable and provided minimum value (other than during a waiting period before the benefits begin; the offer is affordable for the employee if the employee's share of the annual cost of self-only coverage is not more than 9.02% of household income (Form 8962, line 3), whatever family coverage costs, and for another member of the tax family allowed to enroll if the employee's share of the annual cost of coverage for the employee and the family members allowed to enroll is not more than 9.02% of household income)\n  - employer-sponsored coverage the person actually enrolled in (including COBRA or retiree coverage) even if it was not affordable or did not provide minimum value\n  - other health coverage the Department of Health and Human Services designates as minimum essential coverage\n- you or a family member were offered or covered by a qualified small employer HRA (QSEHRA, W-2 box 12 code FF) or an individual coverage HRA for 2025\n- any part of a month's premium was not paid by the due date of your return, not including extensions (or, for coverage you enrolled in retroactively after a successful eligibility appeal, by the 120th day after the appeals decision), or a Form 1095-A shows zero in column A for a month whose premium you paid\n- advance payments were made for someone who is in no one's tax family\n- a Marketplace determination that you or a family member was ineligible for Medicaid or CHIP was later found to be based on incorrect information given with intentional or reckless disregard for the facts\n- someone enrolled was incarcerated, other than pending disposition of charges such as awaiting trial\n\nDo not count coverage bought in the individual market outside the Marketplace.",
   "lines": [
    "f8962.line24",
    "f8962.line25"
@@ -1605,36 +1605,36 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A tax family member who is not enrolled in any Marketplace policy (for example, a dependent child on CHIP or a parent's spouse-free employer plan) is eligible for other MEC, while the enrolled members are not.",
-    "irs_text": "i8962 p. 4: \"If an individual in your tax family is not enrolled in a qualified health plan, or is enrolled in a qualified health plan but is eligible for MEC ..., that individual is not part of your coverage family.\" Question: \"for any month, anyone in your tax family was eligible for minimum essential coverage other than coverage in the individual market\"",
-    "why": "MEC eligibility matters only for enrolled individuals. A non-enrolled member is already outside the coverage family, so the Form 1095-A amounts and the tool's computation are correct. The question still reaches 'anyone in your tax family' and forces a YES."
+    "situation": "A tax family member who is not enrolled in any Marketplace policy (for example, a dependent child on Medicaid or on a parent's employer plan) has other MEC, while only the filer is enrolled through the Marketplace.",
+    "irs_text": "i8962 p. 4: \"If an individual in your tax family is not enrolled in a qualified health plan, or is enrolled in a qualified health plan but is eligible for MEC ... that individual is not part of your coverage family.\"",
+    "why": "The question asks about 'anyone in your tax family', so this filer answers YES. That person's MEC does not change the PTC for the Marketplace enrollees, so the tool's computation from Form 1095-A would be correct."
    },
    {
     "kind": "WIDE",
-    "situation": "An enrolled member's actual 2025 income made them Medicaid- or CHIP-eligible, but the Marketplace, given accurate information, determined them ineligible for Medicaid/CHIP and eligible for APTC.",
-    "irs_text": "i8962 p. 6: \"if a Marketplace made a determination that you or a family member was ineligible for Medicaid or CHIP and was eligible for APTC ... the individual is treated as not eligible for Medicaid or CHIP for purposes of the PTC ... even if your actual 2025 income suggests that the individual may have been eligible\"",
-    "why": "The question lists Medicaid and CHIP eligibility without this Marketplace-determination exception, so a truthful filer answers YES. The individual is treated as not eligible, and the tool's computation is correct."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "An employer offer meets the 9.02% affordability test and provides minimum value, but the filer gave the Marketplace accurate information about it and the Marketplace determined the filer eligible for APTC.",
+    "situation": "An employer offer was in fact affordable under 9.02% of actual household income, but the filer gave the Marketplace accurate information and the Marketplace found the filer eligible for APTC.",
     "irs_text": "i8962 p. 5: \"employer-sponsored coverage is not considered affordable if, when you or a family member enrolled in a qualified health plan, you gave accurate information about the availability of employer coverage to the Marketplace, and the Marketplace determined that you were eligible for APTC\"",
-    "why": "The question defines affordability only by the 9.02% test, so the filer answers YES. Under this rule the offer is treated as unaffordable, so there is no MEC eligibility and the tool computes correctly."
+    "why": "The question's affordability test only looks at the 9.02% threshold, so the filer answers YES. Under the IRS text the person is not eligible for that coverage, so the tool computes the lines correctly."
    },
    {
     "kind": "WIDE",
-    "situation": "The filer was offered an individual coverage HRA, opted out of reimbursements, and the HRA is unaffordable.",
-    "irs_text": "i8962 p. 3: \"If you or a family member could have been covered by an individual coverage HRA for 2025, but you opted out of receiving reimbursements ..., you may be allowed a PTC ... if the individual coverage HRA is considered unaffordable.\"",
-    "why": "The question asks whether anyone was 'offered or covered by' an individual coverage HRA, so a mere offer forces YES. When the filer opted out and the HRA is unaffordable, the ordinary PTC computation applies unchanged."
+    "situation": "Actual 2025 income made a family member income-eligible for Medicaid or CHIP, but the Marketplace, given accurate information, had determined the person ineligible for Medicaid or CHIP and eligible for APTC.",
+    "irs_text": "i8962 p. 6: \"the individual is treated as not eligible for Medicaid or CHIP for purposes of the PTC for the duration of the period of coverage under the qualified health plan ... even if your actual 2025 income suggests that the individual may have been eligible\"",
+    "why": "The bullet 'eligible for ... Medicaid' leads this filer to answer YES. The person is treated as not eligible, so the tool's computation is correct. The question's separate bullet only covers determinations based on intentionally or recklessly incorrect information."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "After leaving a job, a former employee was offered affordable, minimum-value COBRA or retiree coverage but did not enroll in it.",
+    "irs_text": "i8962 p. 6: \"if you leave your employment and are offered post-employment coverage such as COBRA or retiree coverage, you are not considered eligible for that post-employment coverage unless you actually enroll in the coverage\"",
+    "why": "The bullet 'employer-sponsored coverage that was offered and was affordable and provided minimum value' excludes only waiting periods, not post-employment offers. This filer answers YES even though the person is not eligible and the tool computes correctly."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "An enrolled individual was eligible for other MEC for only part of a month, for example Medicare beginning mid-month.",
+    "situation": "A family member was eligible for other MEC for only part of a month, for example Medicaid or employer coverage that began mid-month.",
     "irs_text": "i8962 p. 3: \"An individual is generally considered eligible for MEC for the month only if they were eligible for every day of the month\"",
-    "why": "'For any month, anyone ... was eligible' can be read as eligibility at any point during a month, which would yield YES. Under the IRS rule that month is not a MEC month, and the tool would compute it correctly."
+    "why": "'For any month, anyone ... was eligible' can be read as covering partial-month eligibility, which would mean answering YES. Under the IRS rule that month is not a month of eligibility."
    }
   ],
-  "prompt_sha": "a09f6853e4be1852addf35ef2ab9a35450a3c3ae3cfaa6a03dedcad2c619c401",
+  "prompt_sha": "a3f8acb2ea9f0cff07c162a0437893814731ff76120bad6f28589e99b3ed0180",
   "used": [
    {
     "doc": "i8962",
@@ -1658,7 +1658,7 @@
     "locators": [
      "p. 12, Allocating policy amounts, \"The policy covered at least one individual in your tax family and at least one individual in another tax family\"",
      "p. 13, Table 4, \"Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?\"",
-     "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"; \"may report your applicable SLCSP premium as -0-\", \"In either case, you must determine your correct applicable SLCSP premium.\"",
+     "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"; , \"may report your applicable SLCSP premium as -0-\", \"In either case, you must determine your correct applicable SLCSP premium.\"",
      "p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\"",
      "p. 4, \"Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month.\"; p. 4, \"The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025\"",
      "p. 5, \"An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month.\"; p. 5, \"Most coverage through government-sponsored programs (including Medicaid coverage, Medicare Part A or C, the Children’s Health Insurance Program (CHIP), certain benefits for veterans and their families, TRICARE, and health coverage for Peace Corps volunteers);\"; p. 5, \"Other health coverage the Department of Health and Human Services designates as MEC.\"; p. 5, \"In addition, if you or your family member enrolls in employer-sponsored coverage for a month, you or your family member is considered eligible for employer-sponsored coverage for that month, even if the coverage does not satisfy the affordability and minimum value standards.\"; p. 5, \"The coverage offered by your employer is generally considered affordable for you if your share of the annual cost for self-only coverage, which is sometimes referred to as the “employee required contribution,” is not more than 9.02% of your household income.\"; p. 5, \"coverage if your share of the annual cost for coverage for yourself and the other members of your tax family allowed to enroll in the coverage is not more than 9.02% of your household income.\"; p. 5, \"If your employer coverage is affordable for you but not affordable for your other family members, you may be able to take the PTC for your other family members if they enroll in a Marketplace qualified health plan.\"; p. 6, \"Also, if you leave your employment and are offered post-employment coverage such as COBRA or retiree coverage, you are not considered eligible for that post-employment coverage unless you actually enroll in the coverage.\"; p. 6, \"Individuals who are incarcerated (other than pending disposition of charges, for example, awaiting trial) are not eligible for coverage in a qualified health plan through a Marketplace.\"; p. 6, \"You or the family member may be treated as eligible for Medicaid, CHIP, or the similar program, and not eligible for the PTC, if the Marketplace determination is later found to be based on incorrect information that was given with an intentional or reckless disregard for the facts.\"; p. 6, \"While coverage purchased in the individual market outside the Marketplace is MEC, eligibility for this type of coverage does not prevent you from being eligible for the PTC for Marketplace coverage.\"; p. 6, \"Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace.\"; p. 3, \"If you were covered under an individual coverage HRA for 2025, you are not allowed a PTC for your 2025 Marketplace health insurance.\"; p. 1, \"If the QSEHRA is affordable for a month, no PTC is allowed for the month.\"; p. 4, Enrollment premiums, \"You are generally not allowed a monthly credit amount for the month if any part of that month\"; p. 3, \"if you became eligible for APTC because of a successful eligibility appeal and you retroactively enrolled in the plan, then the portion of the enrollment premium for which you are responsible must be paid on or before the 120th day following the date of the appeals decision\"; p. 4, \"due date of your tax return (not including extensions)\"",
@@ -1690,8 +1690,8 @@
     ],
     "how": "whole document",
     "locators": [
-     "p. 1, Part II, line 24, \"Total PTC. Enter the amount from line 11, column (e), or add lines 12 through 23, column (e), and enter the total here\"; Line 24",
-     "p. 1, Part II, line 25, \"Advance payment of PTC. Enter the amount from line 11, column (f), or add lines 12 through 23, column (f), and enter the total here\"; Line 25"
+     "p. 1, Part II, line 24, \"Total PTC. Enter the amount from line 11, column (e), or add lines 12 through 23, column (e), and enter the total here\"; , Line 24",
+     "p. 1, Part II, line 25, \"Advance payment of PTC. Enter the amount from line 11, column (f), or add lines 12 through 23, column (f), and enter the total here\"; , Line 25"
     ],
     "cols_pages": [],
     "cols_sha256": "7cc6e936bae7166ff84f462fdf8dfb599a5c7cc6db6fb470b434a0bbe85875c5"
@@ -1711,32 +1711,38 @@
     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
    }
   ],
-  "cost": 0.309312,
+  "cost": 0.181544,
   "model": "claude-opus-5-5"
  },
  {
   "screen": "f8962.premium_adjust",
-  "question": "Did either of these happen: Marketplace coverage reported on a Form 1095-A (a qualified health plan) for anyone in your tax family began after the first day of a 2025 month, other than coverage effective on the date of a birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order placing the individual with your family (those count from the first day of the month); or were any premiums for a 2025 month of that Marketplace coverage refunded in 2025? A start date of other coverage (employer, Medicaid, or a catastrophic, stand-alone dental or SHOP plan) does not count here.",
+  "question": "Did either of these happen?\n\n- Marketplace coverage reported on a Form 1095-A (a qualified health plan) for anyone in your tax family began after the first day of a 2025 month, other than coverage effective on the date of a birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order placing the individual with your family (those count from the first day of the month)\n- any premiums for a 2025 month of that Marketplace coverage were refunded in 2025\n\nA start date of other coverage (employer, Medicaid, or a catastrophic, stand-alone dental or SHOP plan) does not count here.",
   "lines": [
    "f8962.line24",
    "f8962.line25"
   ],
-  "verdict": "NARROW",
+  "verdict": "WIDE",
   "findings": [
    {
-    "kind": "NARROW",
-    "situation": "The filer's share of a 2025 month's enrollment premium was still unpaid at the unextended due date. Either the month is disallowed entirely, or the premium is allowed but must be reduced by the unpaid portion. The filer truthfully answers NO because coverage began on the first of the month and nothing was refunded.",
-    "irs_text": "i8962 p. 4: \"You are generally not allowed a monthly credit amount for the month if any part of that month's enrollment premium for which you are responsible has not been paid by the due date of your tax return (not including extensions)... the amount of the enrollment premiums for the month you use to compute your monthly credit amount must be reduced by any portion of the premium that is unpaid as of the unextended due date\"",
-    "why": "This is a third adjustment to Form 1095-A column A that the same enrollment-premiums rule requires. The question asks only about mid-month starts and refunds, so the tool would take column A as reported and overstate line 24."
+    "kind": "WIDE",
+    "situation": "A filer whose Marketplace coverage began mid-month, or who had a 2025 premium refunded in 2025, answers YES, and the tool refuses line 25 even though line 25 is only the APTC reported in Form 1095-A column C, which neither adjustment changes.",
+    "irs_text": "i8962 p. 17, Column (f): \"Enter on lines 12 through 23, column (f), the amount of the monthly APTC reported on Form 1095-A, lines 21 through 32, column C\"; i8962 p. 18, Line 25: \"Enter the amount from line 11(f) or add lines 12(f) through 23(f)\"",
+    "why": "Both adjustments in the question act only on the monthly credit amount, through enrollment premiums and first-of-month enrollment. They feed column (e) and line 24, not column (f) and line 25. The tool computes line 25 correctly in every YES situation."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "A filer whose 2025 premium refund the Marketplace has already netted out of Form 1095-A column A must answer YES to \"any premiums for a 2025 month of that Marketplace coverage were refunded in 2025\", even though the tool's use of column A as reported is already correct.",
+    "irs_text": "i8962 p. 4: \"The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025 ... Form 1095-A, Part III, column A, reports the enrollment premiums.\"",
+    "why": "The IRS text says column A reports enrollment premiums, which are defined net of 2025 refunds. A refund already reflected there needs no adjustment by the filer. The question asks only whether a refund happened, not whether column A omits it."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A premium for a 2025 month was refunded in 2025, and the Marketplace's Form 1095-A column A already shows the reduced amount.",
-    "irs_text": "i8962 p. 4: \"The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025... Form 1095-A, Part III, column A, reports the enrollment premiums.\"",
-    "why": "The question says \"were any premiums ... refunded in 2025?\" and sends every refund to YES. The IRS text says column A reports enrollment premiums, which are already net of refunds. A filer can't tell whether a refund that is already reflected counts, and if it does the tool would compute correctly while being refused."
+    "situation": "A filer whose coverage began mid-month cannot tell whether to answer YES when Form 1095-A column A already shows no premium for that partial month, a case the tool already treats correctly.",
+    "irs_text": "i8962 p. 4: \"Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month.\"",
+    "why": "The question asks only about the start date. It does not ask whether the 1095-A reports a premium or APTC for that month. A filer could reasonably answer either way when the 1095-A already shows nothing for the partial month."
    }
   ],
-  "prompt_sha": "8e18e829674951190de5b1867a764cb45a9413a066c5cfac79b4a35f2059926b",
+  "prompt_sha": "b7bcb1e2889ae93ea768e656fe3d24e89a85618438045e13df128b4bdfc0dc82",
   "used": [
    {
     "doc": "i8962",
@@ -1758,7 +1764,7 @@
     "locators": [
      "p. 12, Allocating policy amounts, \"The policy covered at least one individual in your tax family and at least one individual in another tax family\"",
      "p. 13, Table 4, \"Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?\"",
-     "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"; \"may report your applicable SLCSP premium as -0-\", \"In either case, you must determine your correct applicable SLCSP premium.\"",
+     "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"; , \"may report your applicable SLCSP premium as -0-\", \"In either case, you must determine your correct applicable SLCSP premium.\"",
      "p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\"",
      "p. 4, \"Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month.\"; p. 4, \"The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025\"",
      "p. 4, \"Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month.\"; p. 4, \"if an individual in your tax family enrolled in a qualified health plan in 2025 and the enrollment was effective on the date of the individual’s birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order placing the individual with your family, the individual is treated as enrolled as of the first day of that month.\"; p. 4, \"The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025\"; p. 5, \"Catastrophic health plans and stand-alone dental plans purchased through the Marketplace, and all plans purchased through the Small Business Health Options Program (SHOP), are not qualified health plans for purposes of the PTC.\"",
@@ -1788,8 +1794,8 @@
     ],
     "how": "whole document",
     "locators": [
-     "p. 1, Part II, line 24, \"Total PTC. Enter the amount from line 11, column (e), or add lines 12 through 23, column (e), and enter the total here\"; Line 24",
-     "p. 1, Part II, line 25, \"Advance payment of PTC. Enter the amount from line 11, column (f), or add lines 12 through 23, column (f), and enter the total here\"; Line 25"
+     "p. 1, Part II, line 24, \"Total PTC. Enter the amount from line 11, column (e), or add lines 12 through 23, column (e), and enter the total here\"; , Line 24",
+     "p. 1, Part II, line 25, \"Advance payment of PTC. Enter the amount from line 11, column (f), or add lines 12 through 23, column (f), and enter the total here\"; , Line 25"
     ],
     "cols_pages": [],
     "cols_sha256": "7cc6e936bae7166ff84f462fdf8dfb599a5c7cc6db6fb470b434a0bbe85875c5"
@@ -1809,7 +1815,7 @@
     "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
    }
   ],
-  "cost": 0.25696,
+  "cost": 0.158168,
   "model": "claude-opus-5-5"
  },
  {
@@ -2685,7 +2691,7 @@
  },
  {
   "screen": "retirement.special",
-  "question": "Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a distribution of employer securities with net unrealized appreciation (an amount in box 6); a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments; a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F); a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?",
+  "question": "Does this distribution involve any of these?\n\n- a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack\n- a corrective distribution of excess deferrals or contributions\n- a qualified charitable distribution or HSA funding distribution\n- nondeductible contributions to any traditional IRA\n- a conversion or recharacterization (Form 8606)\n- a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025\n- a rollover to a Roth IRA or designated Roth account\n- a lump-sum distribution you may report on Form 4972\n- a distribution of employer securities with net unrealized appreciation (an amount in box 6)\n- a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments\n- a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA\n- a nonqualified annuity\n- the retired public safety officer premium exclusion\n- a death benefit exclusion\n- a military disability pension\n- an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these)\n- a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead\n- a rollover of a distribution under a qualified domestic relations order\n- a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F)\n- a plan loan offset\n- a Form RRB-1099-R\n- U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721)\n- a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)",
   "lines": [
    "retirement.rolled",
    "retirement.taxable",
@@ -2695,36 +2701,30 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer takes a nonqualified Roth IRA distribution (for example code J, or code T with a first Roth contribution for 2021 or later) with no conversion, recharacterization or returned contribution in 2025, and answers NO.",
-    "irs_text": "i1040gi p. 27, Exception 2: \"2. You received a distribution from a Roth IRA. But if either (a) or (b) below applies, enter -0- on line 4b ... a. Distribution code T ... and you made a contribution (including a conversion) to a Roth IRA for 2020 or an earlier year. b. Distribution code Q\"",
-    "why": "Every Roth IRA distribution that is not covered by (a) or (b) needs Form 8606 to recover Roth basis. The question names only nondeductible traditional IRA contributions, conversions and recharacterizations. So the filer answers NO, and the tool taxes the whole part not rolled over."
+    "situation": "A filer receives a nonqualified distribution from a Roth IRA, or a code T distribution, and has made no conversion, recharacterization or rollover this year, so none of the listed items applies and they answer NO.",
+    "irs_text": "i1040gi p. 27, Exception 2: \"2. You received a distribution from a Roth IRA. But if either (a) or (b) below applies, enter -0- on line 4b ... a. Distribution code T is shown in box 7 ... and you made a contribution (including a conversion) to a Roth IRA for 2020 or an earlier year. b. Distribution code Q ...\"",
+    "why": "Any Roth IRA distribution other than code Q, or code T with a pre-2021 contribution, needs Form 8606 to find the taxable part, and the question never mentions it. The tool would treat everything not rolled over as taxable, or treat the distribution as a qualified Roth distribution and tax none of it."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer receives a nonperiodic (non-annuity) distribution before the annuity starting date from a qualified plan in which they have after-tax cost (box 5/9b), with no rollover, and answers NO.",
-    "irs_text": "p575 p. 17: \"If you receive a nonperiodic distribution before the annuity starting date from a qualified retirement plan, you can generally allocate only part of it to the cost of the contract ... Cost of contract x Amount received / Account balance = Tax-free amount\"",
-    "why": "The question lists only nonperiodic payments on or after the annuity starting date. The tool's pension computation applies the Simplified Method only to annuities, so the pro-rata exclusion for a pre-annuity distribution is ignored and the distribution is overtaxed."
+    "situation": "A filer receives a distribution from one traditional IRA in a year when they converted a different traditional IRA to a Roth IRA, and answers NO because this distribution was not itself a conversion.",
+    "irs_text": "i1040gi p. 27, Exception 2: \"If any of the following apply, enter the total distribution on line 4a and see Form 8606 ... 3. You converted part or all of a traditional IRA or traditional SIMPLE IRA to a Roth IRA in 2025.\"",
+    "why": "Exception 2 is triggered by a conversion anywhere in the filer's year, and it then governs every IRA distribution. The question asks whether \"this distribution\" involves a conversion, so a filer can truthfully answer NO for a separate distribution that still needs Form 8606."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer receives a nonperiodic distribution before the annuity starting date from a pension plan that, as of May 5, 1986, permitted withdrawal of pre-1987 employee contributions, and answers NO.",
-    "irs_text": "p575 p. 17: \"any distribution before your annuity starting date is tax free to the extent that it, when added to earlier distributions received after 1986, doesn't exceed your cost as of December 31, 1986\"",
-    "why": "Nothing in the question reaches pre-annuity-starting-date distributions with cost. The tool therefore does not apply this cost-first recovery."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer whose plan loan offset is simply taxable, with no after-tax cost and no rollover, must answer YES, although the tool computes the fully taxable amount from box 1 correctly.",
-    "irs_text": "Question: \"a plan loan offset\"; p575 p. 23: \"A plan loan offset is the amount your employer plan account balance is reduced, or offset, to repay a loan from the plan.\"",
-    "why": "The offset needs special handling only because of its extended rollover deadline. An unrolled offset with no basis is an ordinary fully taxable distribution, which the tool handles."
+    "situation": "A filer takes a non-annuity distribution, before the annuity starting date, from a 401(k) or other qualified plan that holds after-tax contributions (box 5 or 9b), or rolls over such a distribution, and answers NO because only post-start-date nonperiodic payments are listed.",
+    "irs_text": "p575 p. 17: \"If you receive a nonperiodic distribution before the annuity starting date from a qualified retirement plan, you can generally allocate only part of it to the cost of the contract ... Cost of contract x Amount received / Account balance = Tax-free amount\"; i1040gi p. 30, Rollovers: \"From this amount, subtract any contributions (usually shown in box 5) that were taxable to you when made.\"",
+    "why": "The tool figures cost recovery only by the Simplified Method for an annuity, so it would tax the whole distribution or the whole part not rolled over. The question names only nonperiodic payments made on or after the annuity starting date."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer who made nondeductible traditional IRA contributions receives a pension distribution or a qualified Roth IRA distribution, and cannot tell whether to answer YES.",
-    "irs_text": "Question: \"Does this distribution involve ... nondeductible contributions to any traditional IRA\"; i1040gi p. 27: \"1. You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs\"",
-    "why": "Read literally, \"any traditional IRA\" can prompt a YES even when the distribution is not from a traditional IRA, and the tool computes that case correctly. A filer could also reasonably read \"this distribution involve\" as limiting it to the account paid from."
+    "situation": "A filer with nondeductible contributions to a traditional IRA receives a pension or 401(k) distribution, or a code Q Roth IRA distribution, and is unsure whether that distribution 'involves' the nondeductible contributions.",
+    "irs_text": "i1040gi p. 27, Exception 2: \"1. You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs\"",
+    "why": "The IRS condition applies only to distributions from non-Roth IRAs. The bullet \"nondeductible contributions to any traditional IRA\" can be read as a filer-level fact, which would wrongly refuse pension and qualified Roth distributions that the tool computes correctly."
    }
   ],
-  "prompt_sha": "cf08af5350ea5fd74e853d1cb32d55486b923ac31492833f03422dfd66150477",
+  "prompt_sha": "284e269b73e9647262e13802814f8ecff3871274b85bc0aafe86d84396781a6e",
   "used": [
    {
     "doc": "i1040gi",
@@ -2794,7 +2794,7 @@
     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
    }
   ],
-  "cost": 0.262644,
+  "cost": 0.172616,
   "model": "claude-opus-5-5"
  },
  {

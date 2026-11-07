@@ -56,16 +56,23 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A (monthly enrollment
-        premiums) every month and the same amount in column B (monthly SLCSP premium) every month? Use the corrected column
-        B if column B is blank, zero or wrong, and answer no if the correct amount is not the same every month. Column B can
-        be blank, zero or wrong if no advance payments of the premium tax credit were made. It is wrong for the months
-        affected if, during 2025, any of these happened and you did not tell the Marketplace: you enrolled someone newly
-        added to your tax family (for example a newborn); someone in your tax family was enrolled for only part of the year;
-        someone in your coverage family became eligible, or stopped being eligible, for employer coverage or other minimum
-        essential coverage; you include someone in your tax family whom you did not tell the Marketplace you would include,
-        or leave out someone you said you would include; an enrolled person died; or you moved. Get the correct amount from
-        the Marketplace''s tool, for example HealthCare.gov/Tax-Tool.'
+      source: |-
+        Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A (monthly enrollment premiums) every month and the same amount in column B (monthly SLCSP premium) every month?
+
+        Use the corrected column B if column B is blank, zero or wrong, and answer no if the correct amount is not the same every month.
+
+        Column B can be blank, zero or wrong if no advance payments of the premium tax credit were made.
+
+        It is wrong for the months affected if, during 2025, any of these happened and you did not tell the Marketplace:
+
+        - you enrolled someone newly added to your tax family (for example a newborn)
+        - someone in your tax family was enrolled for only part of the year
+        - someone in your coverage family became eligible, or stopped being eligible, for employer coverage or other minimum essential coverage
+        - you include someone in your tax family whom you did not tell the Marketplace you would include, or leave out someone you said you would include
+        - an enrolled person died
+        - you moved
+
+        Get the correct amount from the Marketplace's tool, for example HealthCare.gov/Tax-Tool.
     cite: *id001
   - id: f1095a.mo_a
     printed: (helper)

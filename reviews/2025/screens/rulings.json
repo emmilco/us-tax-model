@@ -1179,42 +1179,36 @@
    "adjudication": "reviews/2025/screens/adjudication/group7.md"
   },
   "unruled:retirement.special": {
-   "prompt_sha": "cf08af5350ea5fd74e853d1cb32d55486b923ac31492833f03422dfd66150477",
-   "reason": "No defect. Round 3's additions (nonperiodic payments on or after the annuity starting date that are a single sum at the start, fully discharge the contract or reduce later payments; a recontribution of a wrongfully levied distribution) drew no finding. Findings 0, 1 and 4 repeat groups 9 and 10; finding 2 is finding 1's pre-1987 variant; finding 3 can only refuse.",
+   "prompt_sha": "284e269b73e9647262e13802814f8ecff3871274b85bc0aafe86d84396781a6e",
+   "reason": "No defect. Findings 0, 2 and 3 repeat the prior findings 0, 1 and 4; finding 1 (a conversion of another IRA) is covered because the conversion is itself a Form 1099-R entry on which the filer answers Yes (screen groups 2 and 4). The R2 restructure (one bullet per item, items in their original order and each multi-part item kept whole) drew no finding on its own wording.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i1040gi p. 27, Exception 2. retirement.bad_code refuses a roth_ira account with any code other than qualified_roth_Q and gates the same lines. As groups 9 and 10, finding 0."
+     "evidence": "i1040gi p. 27, Exception 2, 'Distribution code T is shown in box 7'. retirement.bad_code refuses a roth_ira account with any code other than qualified_roth_Q (and Q from any other account) and gates the same lines, so a nonqualified or code T Roth IRA distribution is refused whatever this answer. As the prior finding 0."
     },
     {
      "n": 1,
      "kind": "NARROW",
-     "class": "model error",
-     "evidence": "p575 p. 17; i1099r pp. 13, 15. Box 5 is subtracted: retirement.plan_excluded is box 5 plus the amount rolled over, and retirement.plan_simple subtracts it for any plan distribution, periodic or not. Box 5 is the cost 'that the employee may recover tax free this year', which the payer figures (by the pro-rata rule for a distribution before the annuity starting date). As groups 9 and 10, finding 1."
+     "class": "covered",
+     "evidence": "i1040gi p. 27, Exception 2, 'You converted part or all of a traditional IRA or traditional SIMPLE IRA to a Roth IRA in 2025.' A 2025 conversion is reported on its own Form 1099-R, which the filer enters; on that entry 'a conversion or recharacterization (Form 8606)' is Yes and the return is refused, so the separate distribution is never computed alone (as screen group 2 finding 5 and group 4 finding 1). The item's words are unchanged by R2."
     },
     {
      "n": 2,
      "kind": "NARROW",
      "class": "model error",
-     "evidence": "p575 p. 17; i1099r p. 15. As finding 1: the cost-first recovery of pre-1987 contributions is part of the tax-free amount the payer reports in box 5, which retirement.plan_simple subtracts."
+     "evidence": "p575 p. 17, 'Cost of contract x Amount received / Account balance = Tax-free amount'. The payer reports that tax-free part in box 5, which retirement.plan_simple subtracts (retirement.plan_excluded) for any plan distribution, periodic or not, with the rolled-over amount; the reviewer's premise that only the Simplified Method recovers cost is wrong. As the prior finding 1."
     },
     {
      "n": 3,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "p575 p. 23. A plan loan offset with no basis and no rollover is refused though the tool would compute it; refusal only."
-    },
-    {
-     "n": 4,
      "kind": "UNCLEAR",
      "class": "accepted (minor UNCLEAR, leans WIDE)",
-     "evidence": "i1040gi p. 27, Exception 1. A pension or qualified Roth filer with nondeductible traditional IRA basis may answer Yes and be refused; refusal only. As groups 9 and 10, finding 2."
+     "evidence": "i1040gi p. 27, Exception 2, item 1. A pension or qualified Roth filer with nondeductible traditional IRA basis may answer Yes and be refused; refusal only. As the prior finding 4."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group11.md"
+   "adjudication": "reviews/2025/screens/adjudication/r2.md"
   },
   "unruled:s1.alimony_unsupported": {
    "prompt_sha": "94fb0d5ea859724e5140c196c2d633d657e425a3ab14423081386376fc384bec",
@@ -1493,62 +1487,68 @@
    "adjudication": "reviews/2025/screens/adjudication/group7.md"
   },
   "unruled:f8962.other": {
-   "prompt_sha": "a09f6853e4be1852addf35ef2ab9a35450a3c3ae3cfaa6a03dedcad2c619c401",
-   "reason": "No defect. Four WIDE and one UNCLEAR that leans WIDE: each reading that matters gives Yes and refuses f8962.line24 and line25; no reading lets an unsupported case compute.",
+   "prompt_sha": "a3f8acb2ea9f0cff07c162a0437893814731ff76120bad6f28589e99b3ed0180",
+   "reason": "No defect. Four WIDE and one UNCLEAR that leans WIDE: each reading that matters gives Yes and refuses f8962.line24 and line25; no reading lets an unsupported case compute. Findings 0, 1, 2 and 4 repeat the prior findings 0, 2, 1 and 4; finding 3 (post-employment coverage offered and not enrolled in) is new and WIDE. The R2 restructure (the coverage kinds as a nested list under the eligibility item) drew no finding on its own wording.",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i8962 p. 4: MEC eligibility of a tax family member not enrolled in a Marketplace plan does not change the coverage family; 'anyone in your tax family' refuses. Safe."
+     "evidence": "i8962 p. 4: MEC eligibility of a tax family member not enrolled in a qualified health plan does not change the coverage family; 'anyone in your tax family' refuses. Safe; as the prior finding 0."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i8962 p. 6: a Marketplace determination of Medicaid/CHIP ineligibility on accurate information is not MEC eligibility; the question's Medicaid item refuses it. Safe."
+     "evidence": "i8962 p. 5, 'you gave accurate information about the availability of employer coverage to the Marketplace, and the Marketplace determined that you were eligible for APTC': such an offer is not affordable, but the 9.02% item draws Yes and refuses. Safe; as the prior finding 2."
     },
     {
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i8962 p. 5: an offer treated as unaffordable after an accurate APTC determination draws Yes on the 9.02% test. Safe."
+     "evidence": "i8962 p. 6, a Medicaid or CHIP ineligibility determination on accurate information holds 'even if your actual 2025 income suggests that the individual may have been eligible'; the Medicaid item draws Yes and refuses. Safe; as the prior finding 1."
     },
     {
      "n": 3,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i8962 p. 3: an unaffordable individual coverage HRA with reimbursements opted out draws Yes on 'offered'. Safe."
+     "evidence": "i8962 p. 6, 'you are not considered eligible for that post-employment coverage unless you actually enroll in the coverage'. A former employee offered affordable COBRA or retiree coverage and not enrolled may answer Yes on the offered-coverage item and is refused; refusal only. The words are unchanged by R2."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "accepted (minor UNCLEAR, leans WIDE)",
-     "evidence": "i8962 p. 3: mid-month eligibility for other MEC read as 'for any month' gives Yes and refuses; under the every-day rule No is also right. Safe; as before."
+     "evidence": "i8962 p. 3, 'An individual is generally considered eligible for MEC for the month only if they were eligible for every day of the month'. Partial-month eligibility read as 'for any month' gives Yes and refuses; under the every-day rule No is also right. Safe; as the prior finding 4."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "adjudication": "reviews/2025/screens/adjudication/r2.md"
   },
   "unruled:f8962.premium_adjust": {
-   "prompt_sha": "8e18e829674951190de5b1867a764cb45a9413a066c5cfac79b4a35f2059926b",
-   "reason": "No defect. The unpaid-premium NARROW is covered by f8962.other, which asks whether any part of a month's premium was not paid by the due date and gates f8962.line24 and line25 (BUG-0327 closed by ptc-sa PENDING-3); the refund UNCLEAR leans WIDE.",
+   "prompt_sha": "b7bcb1e2889ae93ea768e656fe3d24e89a85618438045e13df128b4bdfc0dc82",
+   "reason": "No defect. Two WIDE and one UNCLEAR that leans WIDE: every Yes refuses f8962.line24 and line25, and the No reading of the UNCLEAR case computes from column A as reported, which the reviewer itself calls correct. The prior unpaid-premium NARROW did not recur; the refund finding repeats the prior finding 1.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "i8962 p. 4: a month's premium unpaid by the unextended due date. f8962.other asks 'any part of a month's premium was not paid by the due date of your return, not including extensions' and refuses f8962.line24 and f8962.line25, the lines this screen gates. BUG-0327's unpaid-share part, closed by ptc-sa PENDING-3."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i8962 p. 18, Line 25, 'Enter the amount from line 11(f) or add lines 12(f) through 23(f)'. Line 25 is the APTC from Form 1095-A column C, which neither adjustment changes; refusing line 25 with line 24 on a Yes refuses a value the tool could compute. Refusal only."
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
+     "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i8962 p. 4: column A reports enrollment premiums, net of 2025 refunds. A filer whose refund is already reflected in column A answers Yes and is refused though column A as reported is right; any refund draws Yes, so no reading lets an unreflected refund compute. Safe."
+     "evidence": "i8962 p. 4, 'The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025'. A refund already netted in column A draws Yes and is refused though column A as reported is right; any refund draws Yes, so no reading lets an unreflected refund compute. Safe; as the prior finding 1."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "i8962 p. 4, 'Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month.' Mid-month coverage asked by its start date gives Yes and refuses; a filer answering No because column A already shows nothing for the partial month computes that month from column A as reported, which the finding itself says the tool treats correctly. Safe."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "adjudication": "reviews/2025/screens/adjudication/r2.md"
   },
   "unruled:sa.dependent": {
    "prompt_sha": "ed663816b735dbfc49af3fa0ce3e076713185f92fdb0104a368707b0d0425394",

@@ -5,7 +5,7 @@ Second transcription of `Form 1099-R distributions (IRAs, pensions and annuities
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 2 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 5162e8c502e87badadbf77ca44b17819f68113d5f829520705043795019beb41 |
@@ -81,11 +81,11 @@ Project:
 Second:
 
 ```json
-{"args": [{"const": 0}, {"input": "retirement.rollover"}], "test": "lt"}
+{"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}], "test": "lt"}
 ```
 
-Ruling: model error; New in this reply: it drops the code G branch and reads retirement.rollover alone, so a code G direct rollover whose rollover answer is $0 is not rolled over to it; i1040gi p. 30, Rollovers, "Use lines 5a and 5b to report a rollover, including a direct rollover"; the project treats code G as rolling over box 1 (retirement.direct; the question says "for a direct rollover, code G, the whole distribution is treated as rolled over"), the point of the refresh-round ruling, which the round-2 reply had fixed. The round-3 rollover wording fix (non-eligible distributions, nonspouse beneficiaries, code S) keeps that sentence and does not bear on it. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): 1,900 agree; on completed returns 90 value differences, every one project true and reply false with the rollover answer $0 on a code G entry (e.g. classm.f1040.3 r2 and .deepseek, box 1 $0.00; classm.aqee.1 r1, box 1 $45,285.00), and 6 candidate-unknown where the rollover answer is withheld; the rest are the project's cited retirement.special, bad_code and screen refusals and unknowns on partial records. Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error and scope; i1040gi p. 30, Rollovers: "Use lines 5a and 5b to report a rollover, including a direct rollover"; the rollover question: "for a direct rollover, code G, the whole distribution is treated as rolled over". The reply now reads code G as rolling over box 1 (its h_rollover_eff), so the round-3 reply's dropped code G branch is back; it still tests only that the amount rolled over is above zero, so a code G direct rollover with box 1 $0 is not a rollover to it, where the project's code G test makes it one: the refresh-round ruling's point. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,991 agree; on completed returns 66 value differences, each project true and reply false on a code G entry with box 1 $0.00 (the only case where the two predicates can differ; e.g. classm.f1040.3 r2 and .deepseek, and their partial records); the rest are the project's cited refusals (retirement.special, bad_code), unknowns on partial records and 35 value differences of the same kind on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.taxable — Taxable amount of this distribution (line 4b or 5b)
 Status: **DISAGREE**
@@ -99,13 +99,13 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}
 ```
 
-Second transcription's note: Roth IRA with code Q: enter -0- (Exception 2(b)); other Roth IRA distributions are refused (Form 8606). Code T, which may also give -0-, falls under 'other' and is refused. Traditional IRA: the part not rolled over (Exception 1); the Exception 2 to 4 cases are screened by retirement.special.
+Second transcription's note: Traditional IRA: Exception 1 (the part not rolled over). Nondeductible contributions, QCDs, HFDs, conversions and returned contributions are refused through special. Roth IRA: code Q gives zero, and other codes are refused. Plan: Simplified Method line 9 when it applies, otherwise box 1 minus box 5 minus the rollover.
 
-Ruling: model error; i1040gi p. 30, Rollovers, and p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn't contribute to the cost ... or (b) you got your entire cost back tax free before 2025." New in this reply: it drops the code G branch and reads retirement.rollover alone, so a code G direct rollover whose rollover answer is $0 is not rolled over to it; its taxable amount is box 1 less the rollover answer. Also new: for a plan annuity whose amount recovered exceeds the cost (worksheet line 7 negative) it now refuses (its h_recovered_over gate), where the project enters box 1 as fully taxable; the earlier overstatement of line 9 is gone. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): 2,100 agree; on completed returns 26 value differences, all code G with the rollover answer $0 (23 plan entries, e.g. classm.aqee.1 r1, $0.00 against $45,285.00; 3 traditional IRA entries, e.g. generated 147 r2, $0.00 against $41,985.98), 2 candidate refusals on line 7 negative (generated 229 r1, project $28,082.59), 6 candidate-unknown on the withheld rollover answer. Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error and scope; i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025." For a plan annuity the reply always takes its Simplified Method Worksheet line 9; the project takes box 1 when worksheet line 7 (cost less the amount recovered, signed) is zero or less and line 9 otherwise. Where the amount recovered exceeds the cost, lines 7 and 8 are negative and the reply's line 9 exceeds box 1: the refresh-round ruling's point (the round-3 reply refused there, by an h_recovered_over gate this reply no longer declares). The code G branch (box 1 rolled over) is back. Elsewhere (plan without annuity: box 1 less box 5 less the rollover; traditional IRA: box 1 less the rollover; Roth IRA: zero, other than code Q refused by its h_roth_nonq as by the project's cited bad_code) the reply is the project's. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,198 agree; on completed returns 2 value differences, both with line 7 negative (generated 229 r1: project $28,082.59, reply $54,722.79; generated 395 r2: box 1 $0.00, reply $22,738.41); the rest are the project's cited refusals and unknowns on partial records, and 2 value differences on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.amount_a — Total distribution entered on line 4a or 5a (none when fully taxable)
 Status: **DISAGREE**
@@ -119,13 +119,13 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 1)"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"input": "retirement.box5"}, {"const": 0}], "test": "le"}, {"args": [{"input": "retirement.rollover"}, {"const": 0}], "test": "le"}], "test": "all"}, {"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"input": "retirement.rollover"}, {"const": 0}], "test": "le"}], "test": "all"}], "test": "any"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": 0}, {"input": "retirement.box5"}], "test": "lt"}, {"args": [{"const": 0}, {"input": "retirement.rollover"}], "test": "lt"}], "test": "any"}, {"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "retirement.rollover"}], "test": "lt"}], "test": "all"}, {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}], "test": "any"}, "then": {"input": "retirement.box1"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "ne"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "ne"}], "test": "any"}, {"args": [{"input": "retirement.box1"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}], "test": "le"}, {"args": [{"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}, {"const": 0}], "test": "le"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, {"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}], "test": "lt"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}, {"input": "retirement.box1"}], "test": "lt"}], "test": "any"}, "then": {"input": "retirement.box1"}}], "op": "choose"}
 ```
 
-Second transcription's note: Lump-sum distributions ('Enter the total distribution on line 5a') cannot be identified from the inputs (box 2b is not supplied); a fully taxable plan distribution without rollover or box 5 amount is treated as having no line 5a entry.
+Second transcription's note: If the distribution is fully taxable, enter it on line 4b or 5b and make no entry on line 4a or 5a. Otherwise (an exception applies, a rollover, a partially taxable pension or the Simplified Method), enter box 1 on line 4a or 5a.
 
-Ruling: model error; i1040gi p. 28: "If your pension or annuity is fully taxable, enter the total pension or annuity payments (from Form(s) 1099-R, box 1) on line 5b; don't make an entry on line 5a", and p. 30, Rollovers. The reply enters box 1 on line 5a for every plan annuity, also one with no cost left (generated 229 r1: project none, reply $28,082.59, the earlier rounds' point), and, new, makes no line 5a entry for a code G direct rollover whose rollover answer is $0 (see retirement.has_rollover). Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): 2,006 agree; on completed returns 28 value differences (26 code G: 23 plan, e.g. classm.aqee.1 r1, $45,285.00 against $0.00, and 3 traditional IRA, e.g. generated 147 r2; 2 the no-cost annuity above) and 6 candidate-unknown on the withheld rollover answer. Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error and scope; i1040gi p. 28: "If your pension or annuity is fully taxable, enter the total pension or annuity payments (from Form(s) 1099-R, box 1) on line 5b; don’t make an entry on line 5a." The reply enters box 1 on line 5a for every plan annuity (its h_show_a includes the Simplified Method test), also one that is fully taxable because it has no cost or its cost has been recovered: the earlier rulings' point (refresh round, generated 314 r2; round 3, generated 229 r1). The round-3 point on code G is gone: a code G entry has a line 5a entry, and one with box 1 $0.00 gives $0.00 on either side. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,081 agree; on completed returns 2 value differences, both plan annuities with no cost left (generated 229 r1, amount recovered above cost: project none, reply $28,082.59; generated 314 r2, code 4, cost $0: reply $46,209.90); the rest are the project's cited refusals and unknowns on partial records, and on refused or incomplete returns 6 value differences and 36 candidate-unknown. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.sav_amount — This distribution's amount on Form 8880 line 4
 Status: **DISAGREE**
@@ -139,11 +139,13 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": true}, {"input": "retirement.sav_404k"}], "test": "ne"}, {"args": [{"const": true}, {"input": "retirement.sav_inherited"}], "test": "ne"}, {"args": [{"const": true}, {"input": "retirement.sav_military"}], "test": "ne"}], "test": "all"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "retirement.sav_404k"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.sav_inherited"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.sav_military"}], "test": "eq"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": true}, {"input": "retirement.sav_404k"}], "test": "ne"}, {"args": [{"const": true}, {"input": "retirement.sav_inherited"}], "test": "ne"}, {"args": [{"const": true}, {"input": "retirement.sav_military"}], "test": "ne"}], "test": "all"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "retirement.sav_404k"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.sav_inherited"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.sav_military"}], "test": "eq"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: model error; f8880 p. 2, Line 4: "Don't include any of the following. • Distributions not taxable as the result of a rollover or a trustee-to-trustee transfer." New in this reply: a code G direct rollover with a $0 rollover answer counts in full. As before it asks retirement.sav_404k, sav_military and sav_inherited of every entry, where the project asks the first two of plan entries and the third of IRA entries. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): 2,067 agree; on completed returns 23 value differences, all code G (e.g. classm.aqee.1 r1, project $0.00, reply $45,285.00), and 17 candidate-unknown on the unasked Form 8880 answers. Project stands.
-Reviewed in: pass 3b3828e7c41f
+Second transcription's note: Form 8880 line 4 excludes distributions not taxable as the result of a rollover, so the rolled-over part is subtracted. Roth conversions, excess or returned contributions and loan offsets are refused through special. Deemed loans with code L are not separately screened, so they are not excluded here.
+
+Ruling: model error and scope; f8880 p. 2, Line 4: "Don’t include any of the following. • Distributions not taxable as the result of a rollover or a trustee-to-trustee transfer." Values agree (box 1 less the rollover, the whole of box 1 for code G, so zero then; zero for the excluded kinds), so the round-3 point on code G is gone; as the earlier rulings, the reply tests retirement.sav_404k, sav_military and sav_inherited on every entry, where the project asks the first two only of plan entries and the third only of IRA entries. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,136 agree, no value difference; 12 completed candidate-unknown on a withheld Form 8880 answer the project does not ask of that account kind (e.g. classm.ira.2 r1, sav_inherited on a plan entry, project $20,743.00; classm.ira.2 r2, sav_military on a traditional IRA entry, project $7,514.00); 2 candidate refusals on retirement.special on refused returns; the rest the project's cited refusals and unknowns on partial records. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.l1 — Form 5329 line 1 share: the taxable amount of an early distribution
 Status: **DISAGREE**
@@ -157,13 +159,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}
 ```
 
-Second transcription's note: Codes 1, 2, 3 and S are treated as early distributions. Codes 4 (death), 7, G and Q are not. Code 'other' cannot be classified from the inputs, so it is refused here.
-
-Ruling: ambiguity and model error; i5329 p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:" (amb.2025.f5329_line1_codes, owner decision D8(a): codes 1 and S only). The reply now puts codes 1, 2, 3 and S on line 1, the register's reading 2 (it offsets codes 2 and 3 in full on line 2, so the tax is the same). As the earlier rulings, it asks retirement.early_screen and code_screen of every entry (retirement.early_screen is asked only for code 1 and S, code_screen only for codes 2, 4 and 7). Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): 1,688 agree; on completed returns 80 candidate-unknown (the unasked screens) and 2 value differences, both the code 2 entry generated 175 r1 (project $0.00, reply $52,095.29). Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: ambiguity, model error and scope; i5329 p. 3, Line 1: "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from: • A qualified retirement plan ..." (amb.2025.f5329_line1_codes, owner decision D8(a): codes 1 and S only). As the round-3 ruling: the reply puts codes 1, 2, 3 and S on line 1, the register's reading 2 (it excludes codes 2 and 3 in full on line 2, so the tax is the same), and its line 1 refuses on retirement.early_screen and code_screen for every entry (retirement.early_screen is asked only for code 1 and S entries, code_screen only for codes 2, 4 and 7). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,523 agree; on completed returns 78 candidate-unknown (the unasked screens, e.g. classm.f8962.2.deepseek r1, code 7, early_screen) and 2 value differences, both code 2 (generated 175 r1, plan, $0.00 against $52,095.29; generated 348 r1, traditional IRA, $0.00 against $4,784.11); 4 candidate refusals and 13 value differences on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.l2 — Form 5329 line 2 share before the per-person limits
 Status: **DISAGREE**
@@ -177,13 +177,13 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}
 ```
 
-Second transcription's note: Open: whether l2 holds all exceptions or only those without a dollar limit. Chosen: l2 is the whole entry-level exclusion before per-person limits, and l2_eNN gives the part under each capped exception. For codes 2 and 3 the payer's exception covers the whole line 1 amount (partial coverage is refused by code_screen), and no capped-exception split is made.
+Second transcription's note: Code 2 or 3: the whole amount is excepted. A partial exception is refused through code_screen. For code 1 or S, the amount the exception covers is limited to line 1 but not yet to the per-person dollar limits. Those limits are applied at the person level through the l2_eXX interfaces.
 
-Ruling: ambiguity and model error; i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude." With codes 2 and 3 on line 1 (amb.2025.f5329_line1_codes reading 2, see retirement.l1) the reply excludes the whole line 1 amount for those codes on line 2, so the tax agrees; it carries line 1's unasked screens. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): 2,154 agree; on completed returns 25 candidate-unknown and 2 value differences, both generated 175 r1 (code 2, $0.00 against $52,095.29). The earlier ruling's wrong_kind point is not in this sample's completed returns. Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: ambiguity, model error and scope; i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude." As the round-3 ruling: with codes 2 and 3 on line 1 (amb.2025.f5329_line1_codes reading 2, see retirement.l1) the reply excludes the whole line 1 amount for those codes on line 2, so the tax agrees; for code 1 and S it takes the smaller of the excepted amount and line 1, as the project. It carries line 1's screen refusals, now only on code 2 and 3 entries (other codes give zero without reading line 1). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,223 agree; on completed returns 25 candidate-unknown (retirement.early_screen on code 2 entries, e.g. classm.ira.2 r1) and 2 value differences, generated 175 r1 and 348 r1 (code 2, $0.00 against $52,095.29 and $4,784.11); 1 candidate refusal and 12 value differences on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.l2_e05 — Line 2 share under exception 05
 Status: **DISAGREE**
@@ -197,11 +197,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e05"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e05"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "e05"}, {"input": "retirement.exception"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"const": "e05"}, {"input": "retirement.exception"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: representation; i5329 p. 5, Line 2: "enter the applicable exception number (01–23). If more than one exception applies, enter 99." The reply now tests the code before exception 05, so the earlier ruling's need of the exception answer on every entry is gone; its codes 2 and 3 branch never reaches an exception share. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): no completed-return difference; the few others are unknowns on partial records. Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." The reply tests retirement.exception before the code (exception 05, then line 2), so it needs the exception answer on every entry, where the project asks it only of code 1 and S entries (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries; decision D3(a), the cited screens of retirement.screen_refused); and its line 2 carries line 1's screen refusals. Values agree where both compute. This is the refresh-round ruling's point, which the round-3 reply had fixed (ruled representation then). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,576 agree, no value difference; 75 completed candidate-unknown on retirement.exception (e.g. classm.f8962.2.deepseek r1, code 7); the rest candidate-unknown on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.l2_e09 — Line 2 share under exception 09
 Status: **DISAGREE**
@@ -215,11 +215,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e09"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e09"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "e09"}, {"input": "retirement.exception"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"const": "e09"}, {"input": "retirement.exception"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: representation; i5329 p. 5, Line 2: "enter the applicable exception number (01–23). If more than one exception applies, enter 99." The reply now tests the code before exception 09, so the earlier ruling's need of the exception answer on every entry is gone; its codes 2 and 3 branch never reaches an exception share. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): no completed-return difference; the few others are unknowns on partial records. Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." The reply tests retirement.exception before the code (exception 09, then line 2), so it needs the exception answer on every entry, where the project asks it only of code 1 and S entries (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries; decision D3(a), the cited screens of retirement.screen_refused); and its line 2 carries line 1's screen refusals. Values agree where both compute. This is the refresh-round ruling's point, which the round-3 reply had fixed (ruled representation then). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,574 agree, no value difference; 75 completed candidate-unknown on retirement.exception (e.g. classm.f8962.2.deepseek r1, code 7); the rest candidate-unknown on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.l2_e19 — Line 2 share under exception 19
 Status: **DISAGREE**
@@ -233,11 +233,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e19"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e19"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "e19"}, {"input": "retirement.exception"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"const": "e19"}, {"input": "retirement.exception"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: representation; i5329 p. 5, Line 2: "enter the applicable exception number (01–23). If more than one exception applies, enter 99." The reply now tests the code before exception 19, so the earlier ruling's need of the exception answer on every entry is gone; its codes 2 and 3 branch never reaches an exception share. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): no completed-return difference; the few others are unknowns on partial records. Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." The reply tests retirement.exception before the code (exception 19, then line 2), so it needs the exception answer on every entry, where the project asks it only of code 1 and S entries (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries; decision D3(a), the cited screens of retirement.screen_refused); and its line 2 carries line 1's screen refusals. Values agree where both compute. This is the refresh-round ruling's point, which the round-3 reply had fixed (ruled representation then). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,576 agree, no value difference; 75 completed candidate-unknown on retirement.exception (e.g. classm.f8962.2.deepseek r1, code 7); the rest candidate-unknown on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.l2_e22 — Line 2 share under exception 22
 Status: **DISAGREE**
@@ -251,11 +251,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e22"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e22"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "e22"}, {"input": "retirement.exception"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"const": "e22"}, {"input": "retirement.exception"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: representation; i5329 p. 5, Line 2: "enter the applicable exception number (01–23). If more than one exception applies, enter 99." The reply now tests the code before exception 22, so the earlier ruling's need of the exception answer on every entry is gone; its codes 2 and 3 branch never reaches an exception share. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): no completed-return difference; the few others are unknowns on partial records. Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." The reply tests retirement.exception before the code (exception 22, then line 2), so it needs the exception answer on every entry, where the project asks it only of code 1 and S entries (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries; decision D3(a), the cited screens of retirement.screen_refused); and its line 2 carries line 1's screen refusals. Values agree where both compute. This is the refresh-round ruling's point, which the round-3 reply had fixed (ruled representation then). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,576 agree, no value difference; 75 completed candidate-unknown on retirement.exception (e.g. classm.f8962.2.deepseek r1, code 7); the rest candidate-unknown on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.is_e23 — Exception 23
 Status: **DISAGREE**
@@ -269,11 +269,11 @@ Project:
 Second:
 
 ```json
-{"args": [{"const": "e23"}, {"input": "retirement.exception"}], "test": "eq"}
+{"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e23"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}
 ```
 
-Ruling: model error; p590b p. 28, Emergency personal expense distributions; i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." The reply's test is the exception answer alone, so it needs retirement.exception on entries where it is not asked (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries (decision D3(a), the cited screens of retirement.screen_refused)); the project tests the code first. Same point as the refresh-round ruling. Ruled from reading the pass reply (.transcription/retirement.lines-535357ae1261) against the project; triage was not rerun.
-Reviewed in: pass 136337bdca28
+Ruling: model error; p590b p. 28, Emergency personal expense distributions; i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." The reply now tests the code first, but its early test includes codes 2 and 3 (its line 1 reading, see retirement.l1), so it needs retirement.exception on code 2 and 3 entries, where the project asks it only of code 1 and S entries (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries; decision D3(a), the cited screens of retirement.screen_refused); for code 1 and S entries it is the project's test. The round-3 reply read the exception answer alone; the point (the exception asked where the interview does not ask it) is the same. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,275 agree; 25 completed candidate-unknown (e.g. classm.ira.2 r1, code 2, project false), the rest on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.l2_e23 — Line 2 share under exception 23
 Status: **DISAGREE**
@@ -287,11 +287,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e23"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e23"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "e23"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "e23"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: representation; i5329 p. 5, Line 2: "enter the applicable exception number (01–23). If more than one exception applies, enter 99." The reply now tests the code before exception 23, so the earlier ruling's need of the exception answer on every entry is gone; its codes 2 and 3 branch never reaches an exception share. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): no completed-return difference; the few others are unknowns on partial records. Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." Through retirement.is_e23 the reply tests the code before exception 23, as the round-3 reply did, but includes codes 2 and 3, so on code 2 and 3 entries it needs retirement.exception (and, through line 2, retirement.early_screen), where the project asks it only of code 1 and S entries (retirement.early_screen is asked only for code 1 and S entries, retirement.code_screen only for codes 2, 4 and 7, and retirement.exception only for code 1 and S entries; decision D3(a), the cited screens of retirement.screen_refused). Values agree where both compute. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,272 agree, no value difference; 25 completed candidate-unknown (e.g. classm.ira.2 r1, code 2), the rest on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.l1_s — Line 1 share from a code S distribution
 Status: **DISAGREE**
@@ -305,11 +305,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: scope; i5329 p. 5, Line 4 (25% for a code S distribution in the first 2 years). As the earlier ruling: for a code S entry the share is line 1, zero otherwise. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): 2,411 agree; the one difference is the project's cited retirement.bad_code refusal (fixture stage21.refuse.bad_code_screen_unasked). Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: scope; i5329 p. 5, Line 4: "you must multiply that amount by 25% instead of 10%" (a SIMPLE IRA distribution within 2 years). As the round-3 ruling: for a code S entry the reply's share is its line 1, the taxable amount, as the project's; for other codes zero. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,388 agree, nothing on completed returns; the project's cited retirement.bad_code refusal (fixture stage21.refuse.bad_code_screen_unasked) and 1 candidate-unknown on an incomplete partial record (stage21.mut.simple_e23_within_cap withholding retirement.code_screen, which the project does not ask of code S); the reply's line 1 screens are ruled on retirement.l1. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### retirement.l2_s — Line 2 share from a code S distribution
 Status: **DISAGREE**
@@ -323,11 +323,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.rollover"}}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, "then": {"of": [{"input": "retirement.exc_amount"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "ne"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "disability_3"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "early_exception_2"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"input": "retirement.box5"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "then": {"line": "(SMW 9)"}}, {"guard": {"args": [{"const": "roth_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "traditional_ira"}, {"input": "retirement.account"}], "test": "eq"}, "then": {"from": {"input": "retirement.box1"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: representation; i5329 p. 5, Line 2 and Line 4. For a code S entry the share is line 2, zero otherwise, as the project. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,080 partial records; 2,412 comparisons per line): 2,412 of 2,412 agree. Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: scope; i5329 p. 5, Line 4 (25% for a code S distribution in the first 2 years); i5329 p. 5, Line 2: "Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99." As the round-3 ruling: for a code S entry the reply's share is its line 2 (the smaller of the excepted amount and line 1), as the project's; for other codes zero. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 2,389 agree; the one difference is candidate-unknown on an incomplete partial record (stage21.mut.simple_e23_within_cap withholding retirement.code_screen, which the project does not ask of code S); the reply's line 1 screens are ruled on retirement.l1. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### (SMW 1) — Enter the total pension or annuity payments from Form 1099-R, box 1
 Status: **DISAGREE**
@@ -344,8 +344,8 @@ Second:
 {"shown_when": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "value": {"input": "retirement.box1"}}
 ```
 
-Ruling: model error; same reply and project as the earlier ruling. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet"; i1040gi p. 28: "Your payments are fully taxable if (a) you didn't contribute to the cost ... or (b) you got your entire cost back tax free before 2025." The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the line's expression is unchanged from the earlier ruling. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc; 1,578 fixtures, 500 generated returns seed 20261026, 1,030 partial records; 2,342 comparisons per line): the differences are candidate-shows-skipped and candidate-unknown records (values the reply's display condition shows or its unasked worksheet answers), project-unknown partial records, and, from line 7 on, up to 6 candidate refusals on the reply's h_recovered_over gate (amount recovered above cost; ruled on retirement.taxable). Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; repeats the round-3 ruling: same reply and project expressions, the current project line and the source pages checked again. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity." i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025." i1040gi p. 29, Simplified Method Worksheet. The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the value matches where both show it. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 695 agree; on completed returns 220 candidate-shows-skipped and 2 candidate-unknown (values the reply's display condition shows on entries the project hides, e.g. plan annuities with no cost, or worksheet answers the interview does not ask there); the rest the same kinds and project-unknown partial records on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### (SMW 2) — Enter your cost in the plan at the annuity starting date
 Status: **DISAGREE**
@@ -362,10 +362,10 @@ Second:
 {"shown_when": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "value": {"input": "retirement.cost"}}
 ```
 
-Second transcription's note: The death benefit exclusion that 'Before you begin' adds to line 2 is screened out by retirement.special, so line 2 is the cost alone.
+Second transcription's note: The death benefit exclusion (Before you begin) is refused through retirement.special, so line 2 is the cost alone.
 
-Ruling: model error; same reply and project as the earlier ruling. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet"; i1040gi p. 28: "Your payments are fully taxable if (a) you didn't contribute to the cost ... or (b) you got your entire cost back tax free before 2025." The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the line's expression is unchanged from the earlier ruling. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc; 1,578 fixtures, 500 generated returns seed 20261026, 1,030 partial records; 2,342 comparisons per line): the differences are candidate-shows-skipped and candidate-unknown records (values the reply's display condition shows or its unasked worksheet answers), project-unknown partial records, and, from line 7 on, up to 6 candidate refusals on the reply's h_recovered_over gate (amount recovered above cost; ruled on retirement.taxable). Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; repeats the round-3 ruling: same reply and project expressions, the current project line and the source pages checked again. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity." i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025." i1040gi p. 29, Simplified Method Worksheet. The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the value matches where both show it. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,577 agree; on completed returns 2 candidate-shows-skipped and 26 candidate-unknown (values the reply's display condition shows on entries the project hides, e.g. plan annuities with no cost, or worksheet answers the interview does not ask there); the rest the same kinds and project-unknown partial records on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### (SMW 4) — Divide line 2 by the number on line 3 (or, if you completed this worksheet last year, line
 Status: **DISAGREE**
@@ -379,13 +379,13 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.used_last_year"}], "test": "eq"}, {"args": [{"const": 56, "type": "Count"}, {"input": "retirement.age"}], "test": "le"}, {"args": [{"input": "retirement.age"}, {"const": 60, "type": "Count"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table1_310"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.used_last_year"}], "test": "eq"}, {"args": [{"const": 61, "type": "Count"}, {"input": "retirement.age"}], "test": "le"}, {"args": [{"input": "retirement.age"}, {"const": 65, "type": "Count"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table1_260"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.used_last_year"}], "test": "eq"}, {"args": [{"const": 66, "type": "Count"}, {"input": "retirement.age"}], "test": "le"}, {"args": [{"input": "retirement.age"}, {"const": 70, "type": "Count"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table1_210"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.used_last_year"}], "test": "eq"}, {"args": [{"const": 71, "type": "Count"}, {"input": "retirement.age"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table1_160"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"const": false}, {"input": "retirement.used_last_year"}], "test": "eq"}, {"args": [{"input": "retirement.age"}, {"const": 55, "type": "Count"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table1_360"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.used_last_year"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"const": 111, "type": "Count"}, {"input": "retirement.combined_age"}], "test": "le"}, {"args": [{"input": "retirement.combined_age"}, {"const": 120, "type": "Count"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table2_360"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.used_last_year"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"const": 121, "type": "Count"}, {"input": "retirement.combined_age"}], "test": "le"}, {"args": [{"input": "retirement.combined_age"}, {"const": 130, "type": "Count"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table2_310"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.used_last_year"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"const": 131, "type": "Count"}, {"input": "retirement.combined_age"}], "test": "le"}, {"args": [{"input": "retirement.combined_age"}, {"const": 140, "type": "Count"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table2_260"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.used_last_year"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"const": 141, "type": "Count"}, {"input": "retirement.combined_age"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table2_210"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.used_last_year"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"input": "retirement.combined_age"}, {"const": 110, "type": "Count"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table2_410"}}}, {"guard": {"args": [{"const": true}, {"input": "retirement.used_last_year"}], "test": "eq"}, "then": {"input": "retirement.last_line4"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "retirement.used_last_year"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"input": "retirement.age"}, {"const": 55, "type": "Count"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table1_360"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"input": "retirement.age"}, {"const": 60, "type": "Count"}], "test": "le"}, {"args": [{"const": 55, "type": "Count"}, {"input": "retirement.age"}], "test": "lt"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table1_310"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"input": "retirement.age"}, {"const": 65, "type": "Count"}], "test": "le"}, {"args": [{"const": 60, "type": "Count"}, {"input": "retirement.age"}], "test": "lt"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table1_260"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"input": "retirement.age"}, {"const": 70, "type": "Count"}], "test": "le"}, {"args": [{"const": 65, "type": "Count"}, {"input": "retirement.age"}], "test": "lt"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table1_210"}}}, {"guard": {"args": [{"args": [{"const": false}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"const": 70, "type": "Count"}, {"input": "retirement.age"}], "test": "lt"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table1_160"}}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"input": "retirement.combined_age"}, {"const": 110, "type": "Count"}], "test": "le"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table2_410"}}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"input": "retirement.combined_age"}, {"const": 120, "type": "Count"}], "test": "le"}, {"args": [{"const": 110, "type": "Count"}, {"input": "retirement.combined_age"}], "test": "lt"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table2_360"}}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"input": "retirement.combined_age"}, {"const": 130, "type": "Count"}], "test": "le"}, {"args": [{"const": 120, "type": "Count"}, {"input": "retirement.combined_age"}], "test": "lt"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table2_310"}}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"input": "retirement.combined_age"}, {"const": 140, "type": "Count"}], "test": "le"}, {"args": [{"const": 130, "type": "Count"}, {"input": "retirement.combined_age"}], "test": "lt"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table2_260"}}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "retirement.joint_life"}], "test": "eq"}, {"args": [{"const": 140, "type": "Count"}, {"input": "retirement.combined_age"}], "test": "lt"}], "test": "all"}, "then": {"amount": {"line": "(SMW 2)"}, "op": "multiply_rate", "rate": {"param": "smw.table2_210"}}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "retirement.used_last_year"}], "test": "eq"}, "then": {"input": "retirement.last_line4"}}], "op": "choose"}
 ```
 
-Second transcription's note: The worksheet does not say how to round the quotient on line 4; chosen: half-up to the cent (multiply_rate by 1/n). Only the 'after November 18, 1996' column of Table 1 is used, because earlier starting dates are screened out by retirement.annuity and retirement.special. Line 3 is folded into this choice.
+Second transcription's note: If you completed this worksheet last year, skip line 3 and enter the amount from line 4 of last year's worksheet on line 4 (even if the amount of your pension or annuity has changed).
 
-Ruling: equivalent; project retained. i1040gi p. 29, Simplified Method Worksheet, line 4 and Tables 1 and 2 ("after November 18, 1996" column). The reply repeats the not-used-last-year test in every band instead of nesting it; ages are whole numbers, so its bands (56 to 60 as 56 <= age <= 60) are the project's. Same as the earlier ruling.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity." i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025." i1040gi p. 29, Simplified Method Worksheet. New in this reply: line 4 now carries the same display condition as the reply's other worksheet lines (shown_when plan and annuity), so it makes the point of the (SMW 1) to (SMW 11) rulings: shown for every plan annuity, where the project shows the worksheet only with cost left to recover (retirement.smw_shown). The value is the project's: last year's line 4 when the worksheet was used last year, otherwise line 2 divided by the Table 1 or Table 2 number; ages are whole numbers, so its bands (56 to 60 as 55 < age <= 60) are the project's (as the earlier equivalence ruling). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,528 agree; on completed returns 2 candidate-shows-skipped and 42 candidate-unknown (generated 229 r1 and 395 r2, amount recovered above cost: $49.95 and $1,550.08, equal to the project's hidden values; the candidate-unknown are worksheet answers not asked on entries the project hides, e.g. classm.f8962.2.deepseek r1, used_last_year); the rest the same kinds and project-unknown partial records on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### (SMW 5) — Multiply line 4 by the number of months for which this year's payments were made
 Status: **DISAGREE**
@@ -402,10 +402,10 @@ Second:
 {"shown_when": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "value": {"amount": {"line": "(SMW 4)"}, "count": {"input": "retirement.months"}, "op": "multiply_count"}}
 ```
 
-Second transcription's note: The instruction to skip lines 6 and 7 when the annuity starting date was before 1987 never applies, because retirement.annuity requires a starting date after November 18, 1996.
+Second transcription's note: The before-1987 branch cannot occur, because retirement.annuity requires a starting date after November 18, 1996.
 
-Ruling: model error; same reply and project as the earlier ruling. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet"; i1040gi p. 28: "Your payments are fully taxable if (a) you didn't contribute to the cost ... or (b) you got your entire cost back tax free before 2025." The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the line's expression is unchanged from the earlier ruling. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc; 1,578 fixtures, 500 generated returns seed 20261026, 1,030 partial records; 2,342 comparisons per line): the differences are candidate-shows-skipped and candidate-unknown records (values the reply's display condition shows or its unasked worksheet answers), project-unknown partial records, and, from line 7 on, up to 6 candidate refusals on the reply's h_recovered_over gate (amount recovered above cost; ruled on retirement.taxable). Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; repeats the round-3 ruling: same reply and project expressions, the current project line and the source pages checked again. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity." i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025." i1040gi p. 29, Simplified Method Worksheet. The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the value matches where both show it. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,503 agree; on completed returns 2 candidate-shows-skipped and 50 candidate-unknown (values the reply's display condition shows on entries the project hides, e.g. plan annuities with no cost, or worksheet answers the interview does not ask there); the rest the same kinds and project-unknown partial records on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### (SMW 6) — Enter the amount, if any, recovered tax free in years after 1986
 Status: **DISAGREE**
@@ -422,8 +422,8 @@ Second:
 {"shown_when": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "value": {"input": "retirement.recovered"}}
 ```
 
-Ruling: model error; same reply and project as the earlier ruling. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet"; i1040gi p. 28: "Your payments are fully taxable if (a) you didn't contribute to the cost ... or (b) you got your entire cost back tax free before 2025." The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the line's expression is unchanged from the earlier ruling. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc; 1,578 fixtures, 500 generated returns seed 20261026, 1,030 partial records; 2,342 comparisons per line): the differences are candidate-shows-skipped and candidate-unknown records (values the reply's display condition shows or its unasked worksheet answers), project-unknown partial records, and, from line 7 on, up to 6 candidate refusals on the reply's h_recovered_over gate (amount recovered above cost; ruled on retirement.taxable). Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; repeats the round-3 ruling: same reply and project expressions, the current project line and the source pages checked again. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity." i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025." i1040gi p. 29, Simplified Method Worksheet. The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the value matches where both show it. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,596 agree; on completed returns 2 candidate-shows-skipped and 26 candidate-unknown (values the reply's display condition shows on entries the project hides, e.g. plan annuities with no cost, or worksheet answers the interview does not ask there); the rest the same kinds and project-unknown partial records on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### (SMW 7) — Subtract line 6 from line 2
 Status: **DISAGREE**
@@ -440,8 +440,8 @@ Second:
 {"shown_when": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "value": {"from": {"line": "(SMW 2)"}, "op": "subtract", "take": {"line": "(SMW 6)"}}}
 ```
 
-Ruling: model error; same reply and project as the earlier ruling. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet"; i1040gi p. 28: "Your payments are fully taxable if (a) you didn't contribute to the cost ... or (b) you got your entire cost back tax free before 2025." The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the line's expression is unchanged from the earlier ruling. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc; 1,578 fixtures, 500 generated returns seed 20261026, 1,030 partial records; 2,342 comparisons per line): the differences are candidate-shows-skipped and candidate-unknown records (values the reply's display condition shows or its unasked worksheet answers), project-unknown partial records, and, from line 7 on, up to 6 candidate refusals on the reply's h_recovered_over gate (amount recovered above cost; ruled on retirement.taxable). Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; repeats the round-3 ruling: same reply and project expressions, the current project line and the source pages checked again. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity." i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025." i1040gi p. 29, Simplified Method Worksheet. The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the value matches where both show it. The reply no longer declares the h_recovered_over gate the round-3 reply had on lines 7 to 9, so the round-3 ruling's candidate refusals there do not occur; instead it shows a negative line where the amount recovered exceeds the cost (generated 229 r1, -$26,640.20; generated 395 r2, -$22,738.41), returns the project treats as fully taxable with the worksheet hidden. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,564 agree; on completed returns 2 candidate-shows-skipped and 34 candidate-unknown (values the reply's display condition shows on entries the project hides, e.g. plan annuities with no cost, or worksheet answers the interview does not ask there); the rest the same kinds and project-unknown partial records on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### (SMW 8) — Enter the smaller of line 5 or line 7
 Status: **DISAGREE**
@@ -458,8 +458,8 @@ Second:
 {"shown_when": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "value": {"of": [{"line": "(SMW 5)"}, {"line": "(SMW 7)"}], "op": "smaller_of"}}
 ```
 
-Ruling: model error; same reply and project as the earlier ruling. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet"; i1040gi p. 28: "Your payments are fully taxable if (a) you didn't contribute to the cost ... or (b) you got your entire cost back tax free before 2025." The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the line's expression is unchanged from the earlier ruling. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc; 1,578 fixtures, 500 generated returns seed 20261026, 1,030 partial records; 2,342 comparisons per line): the differences are candidate-shows-skipped and candidate-unknown records (values the reply's display condition shows or its unasked worksheet answers), project-unknown partial records, and, from line 7 on, up to 6 candidate refusals on the reply's h_recovered_over gate (amount recovered above cost; ruled on retirement.taxable). Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; repeats the round-3 ruling: same reply and project expressions, the current project line and the source pages checked again. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity." i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025." i1040gi p. 29, Simplified Method Worksheet. The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the value matches where both show it. The reply no longer declares the h_recovered_over gate the round-3 reply had on lines 7 to 9, so the round-3 ruling's candidate refusals there do not occur; instead it shows a negative line where the amount recovered exceeds the cost (generated 229 r1, -$26,640.20; generated 395 r2, -$22,738.41), returns the project treats as fully taxable with the worksheet hidden. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,478 agree; on completed returns 2 candidate-shows-skipped and 62 candidate-unknown (values the reply's display condition shows on entries the project hides, e.g. plan annuities with no cost, or worksheet answers the interview does not ask there); the rest the same kinds and project-unknown partial records on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### (SMW 9) — Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than zero
 Status: **DISAGREE**
@@ -476,8 +476,8 @@ Second:
 {"shown_when": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "value": {"from": {"line": "(SMW 1)"}, "op": "subtract_floor0", "take": {"line": "(SMW 8)"}}}
 ```
 
-Ruling: model error; same reply and project as the earlier ruling. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet"; i1040gi p. 28: "Your payments are fully taxable if (a) you didn't contribute to the cost ... or (b) you got your entire cost back tax free before 2025." The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the line's expression is unchanged from the earlier ruling. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc; 1,578 fixtures, 500 generated returns seed 20261026, 1,030 partial records; 2,342 comparisons per line): the differences are candidate-shows-skipped and candidate-unknown records (values the reply's display condition shows or its unasked worksheet answers), project-unknown partial records, and, from line 7 on, up to 6 candidate refusals on the reply's h_recovered_over gate (amount recovered above cost; ruled on retirement.taxable). Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; repeats the round-3 ruling: same reply and project expressions, the current project line and the source pages checked again. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity." i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025." i1040gi p. 29, Simplified Method Worksheet. The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the value matches where both show it. The reply no longer declares the h_recovered_over gate the round-3 reply had on lines 7 to 9, so the round-3 ruling's candidate refusals there do not occur (the resulting overstatement is ruled on retirement.taxable). Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 679 agree; on completed returns 177 candidate-shows-skipped and 62 candidate-unknown (values the reply's display condition shows on entries the project hides, e.g. plan annuities with no cost, or worksheet answers the interview does not ask there); the rest the same kinds and project-unknown partial records on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### (SMW 10) — Add lines 6 and 8. This is the amount you have recovered tax free through 2025
 Status: **DISAGREE**
@@ -494,10 +494,10 @@ Second:
 {"shown_when": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "value": {"of": [{"line": "(SMW 6)"}, {"line": "(SMW 8)"}], "op": "sum"}}
 ```
 
-Second transcription's note: The 'Yes. STOP' branch (starting date before 1987) cannot occur within the scope of retirement.annuity, so line 10 is always completed.
+Second transcription's note: The Yes (STOP) branch, for a starting date before 1987, cannot occur in scope. The No branch is always taken.
 
-Ruling: model error; same reply and project as the earlier ruling. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet"; i1040gi p. 28: "Your payments are fully taxable if (a) you didn't contribute to the cost ... or (b) you got your entire cost back tax free before 2025." The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the line's expression is unchanged from the earlier ruling. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc; 1,578 fixtures, 500 generated returns seed 20261026, 1,030 partial records; 2,342 comparisons per line): the differences are candidate-shows-skipped and candidate-unknown records (values the reply's display condition shows or its unasked worksheet answers), project-unknown partial records, and, from line 7 on, up to 6 candidate refusals on the reply's h_recovered_over gate (amount recovered above cost; ruled on retirement.taxable). Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; repeats the round-3 ruling: same reply and project expressions, the current project line and the source pages checked again. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity." i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025." i1040gi p. 29, Simplified Method Worksheet. The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the value matches where both show it. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,474 agree; on completed returns 2 candidate-shows-skipped and 62 candidate-unknown (values the reply's display condition shows on entries the project hides, e.g. plan annuities with no cost, or worksheet answers the interview does not ask there); the rest the same kinds and project-unknown partial records on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ### (SMW 11) — Balance of cost to be recovered. Subtract line 10 from line 2
 Status: **DISAGREE**
@@ -514,8 +514,8 @@ Second:
 {"shown_when": {"args": [{"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "eq"}, {"args": [{"const": true}, {"input": "retirement.annuity"}], "test": "eq"}], "test": "all"}, "value": {"from": {"line": "(SMW 2)"}, "op": "subtract", "take": {"line": "(SMW 10)"}}}
 ```
 
-Ruling: model error; same reply and project as the earlier ruling. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet"; i1040gi p. 28: "Your payments are fully taxable if (a) you didn't contribute to the cost ... or (b) you got your entire cost back tax free before 2025." The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the line's expression is unchanged from the earlier ruling. Scratch run of triage.mjs on the round-3 pass reply (.transcription/retirement.lines-fede9ff2eecc; 1,578 fixtures, 500 generated returns seed 20261026, 1,030 partial records; 2,342 comparisons per line): the differences are candidate-shows-skipped and candidate-unknown records (values the reply's display condition shows or its unasked worksheet answers), project-unknown partial records, and, from line 7 on, up to 6 candidate refusals on the reply's h_recovered_over gate (amount recovered above cost; ruled on retirement.taxable). Project stands.
-Reviewed in: pass 3b3828e7c41f
+Ruling: model error; repeats the round-3 ruling: same reply and project expressions, the current project line and the source pages checked again. i1040gi p. 30, Simplified Method: "If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity." i1040gi p. 28, Fully Taxable Pensions and Annuities: "Your payments are fully taxable if (a) you didn’t contribute to the cost (see Cost, later) of your pension or annuity, or (b) you got your entire cost back tax free before 2025." i1040gi p. 29, Simplified Method Worksheet. The reply shows the worksheet for every plan annuity (shown_when plan and annuity), the project only with cost left to recover (worksheet line 7 above zero, retirement.smw_shown); the value matches where both show it. Scratch run of triage.mjs on this pass reply (.transcription/retirement.lines-f0403c8b5416) over the project's other lines (1,638 fixtures, 500 generated returns seed 20261026, 1,024 partial records from 40 bases; 2,390 comparisons per line; `triage/retirement.json`, rewritten by triage.py this round, evaluates the full review's reply, not this pass): 1,483 agree; on completed returns 62 candidate-unknown (values the reply's display condition shows on entries the project hides, e.g. plan annuities with no cost, or worksheet answers the interview does not ask there); the rest the same kinds and project-unknown partial records on refused or incomplete returns. Project stands.
+Reviewed in: pass fe0dc0deb98c
 
 ## Refusal gates listed by the second transcription
 
@@ -523,23 +523,18 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| retirement.taxable | retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused, retirement.special | retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused |
-| retirement.amount_a | retirement.special | - |
+| retirement.taxable | retirement.h_roth_nonq, retirement.special | retirement.h_roth_nonq |
+| retirement.amount_a | retirement.h_roth_nonq, retirement.special | retirement.h_roth_nonq |
 | retirement.sav_amount | retirement.special | - |
-| retirement.l1 | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused |
-| retirement.l2 | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused |
-| retirement.l2_e05 | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused |
-| retirement.l2_e09 | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused |
-| retirement.l2_e19 | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused |
-| retirement.l2_e22 | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused |
-| retirement.l2_e23 | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused |
-| retirement.l1_s | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused |
-| retirement.l2_s | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_other_code, retirement.h_recovered_over, retirement.h_rollover_over, retirement.h_roth_refused |
-| (SMW 7) | retirement.h_recovered_over | retirement.h_recovered_over |
-| (SMW 8) | retirement.h_recovered_over | retirement.h_recovered_over |
-| (SMW 9) | retirement.h_recovered_over | retirement.h_recovered_over |
-| (SMW 10) | retirement.h_recovered_over | retirement.h_recovered_over |
-| (SMW 11) | retirement.h_recovered_over | retirement.h_recovered_over |
+| retirement.l1 | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq |
+| retirement.l2 | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq |
+| retirement.l2_e05 | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq |
+| retirement.l2_e09 | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq |
+| retirement.l2_e19 | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq |
+| retirement.l2_e22 | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq |
+| retirement.l2_e23 | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq |
+| retirement.l1_s | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq |
+| retirement.l2_s | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq, retirement.special | retirement.code_screen, retirement.early_screen, retirement.h_roth_nonq |
 
 ## Line subjects
 
@@ -549,30 +544,30 @@ What each compared line's verdict depends on within the document (tools/transcri
 | --- | --- |
 | retirement.one | 76b9f2cffa363962328538b47981396fbfe500bba0758d5db5018ea61d1d0a64 |
 | retirement.is_ira | 346a3e8d9e9bd5fd570df6652d6d72eac3cf20ec1a8149eb316e81b972dcde84 |
-| retirement.has_rollover | 57f84842cd86f21cd76b6eee02e37a265c9376e2a24193807d005ab1ac3eebc7 |
-| retirement.taxable | 92a5bb155b007e5a4053b3344ff0527d09f75da0af998d99cbe4c62bf97c4908 |
-| retirement.amount_a | 9ce16ecff00c8e8fd3c76ee9c87d6adb9bfb19c9a23948f8646368da4eeac6fd |
-| retirement.sav_amount | 68ffb1fd05cf1c89a06fde40284e3ef05a8144794f46f604412b57caddc9ac12 |
-| retirement.l1 | cd8fc50d367fb2d572fb7137bfb486e391b53cd3d9df711bab431b67057603af |
-| retirement.l2 | 66a8a49074b529ddada15467c76f0d559e9e859d06f7091d51b86c50ae79809a |
-| retirement.l2_e05 | beef2eed103684e4b8fe52d76e6cfd33cb9244ffeb4f87c257855b6d534f9b50 |
-| retirement.l2_e09 | 4231db7935ae5e52c296ed2343c5ae4b25049e7518eb3056e8f02408f01546f3 |
-| retirement.l2_e19 | cd2b5261c1db0c3eb5de2ac610f3cc30d267c7338360d6f9810f380fd9966e1a |
-| retirement.l2_e22 | cdf76007dd231b1d8204fdd5c4a1c4b1b56be8f715f4a5564e7eb04fd15132a6 |
-| retirement.is_e23 | 151da4ea1cf7523a5250e3721213041ba27dbf450919e153878989530f23b923 |
-| retirement.l2_e23 | 54c039efe0da74e039ffe2f287f7a3e39438b119ff5a27772c41b10ca47a4872 |
-| retirement.l1_s | 9389e242d3d022eb2b68d45e1bde6e8dc8d787fe4017212a3d8f0719b113cd51 |
-| retirement.l2_s | 96134e1ee93968b047cf3f62d058c11adee9b4f61e96dee16395ee1b2ea0a78a |
-| (SMW 1) | e612dc8ae5ffa3d35a1e2e8b0e155aa8cf7160fce566acc68f734c00c26f56de |
-| (SMW 2) | 184d88edfe0d150dafe5316ab400b4335d9f0f6f0a2e3ee3b49a683d4dc3a582 |
-| (SMW 4) | e28d091e1987fb872c6f41ff5b1a4659c75944c920476292868c06c141a430ac |
-| (SMW 5) | 19a8297ec91ce1f69613251c1f6c5dc2db8ac6013892f53e4363a5af8701de21 |
-| (SMW 6) | 1f2631d4bf3826b15ac14ead1e412dfaada541b0da973100d6177622521f7bd8 |
-| (SMW 7) | 770265a57683fb32a4461602d4177b355a1084f3221a2f0b7cf208c7c3a45f49 |
-| (SMW 8) | ccbe2932b8767f8481219d72b5de831ae66fc018033abed608375bbc39b4d09c |
-| (SMW 9) | d1b393ea07917134fe1ae4cb3ecdb5b5e91852f885ab74da6634d64a59490355 |
-| (SMW 10) | 5cfa9dc2a8e6728088ad53b8b2f38418aa45ceab7cd69ff652b6d5c0a65cc23f |
-| (SMW 11) | 4f59cb86dcd837a03614e5c9ffbed1ced101a0145ca3cbb7ebb7846437536849 |
+| retirement.has_rollover | 74b8952c5d70feae591b1c9976d73d6f2bd80af2b698c9a22308c6da6037e57a |
+| retirement.taxable | 513c7cada25dec37790cc5804d5e448acfdb58adf5051f4631d277114c56cc97 |
+| retirement.amount_a | 9f8b347361ed02a4c7ab7279da5bcf8d3b9c5804e31d3a57786d516cf1f33a66 |
+| retirement.sav_amount | 6d8231061e14a32c331f056df4eacc7da4459486f4c652fe65670dd2fbf0ca8b |
+| retirement.l1 | 05de04c368ffa3557e0c731b3923e7582ef7b0ab19fd41c20dc30fdf26475ef4 |
+| retirement.l2 | a4e995f0b898825594a9a5b3653a765b2942b8d41e4fd20051dba6289fe9f561 |
+| retirement.l2_e05 | 54e7a8afe46a8429ce1efff5f2e43648136fd4ff52a84502c781957e6d4dcc6d |
+| retirement.l2_e09 | 309450be3868c1c40628a32e592a69b3a6438a47198458771e8f7afa96a84728 |
+| retirement.l2_e19 | 8b46010cff7b4df3ca3264eb648f22b01be1d7b234e134bff35ac36520b0597b |
+| retirement.l2_e22 | becadc7eba4b0e226f9d5b164be1223020d58c439b177e6760265c3b1c66acad |
+| retirement.is_e23 | d7026551843db7349d62b187ebdb7eb262f1ddd4f11baade3a052fa8c16388ff |
+| retirement.l2_e23 | ea82768ac2c5bed5ef37beab8b4a20bdac0575b40a8121acfe1c6a16f7222cfd |
+| retirement.l1_s | 3412c86cdbab602e8e51fe6d8ede656bc2c3bd0b23c1106cd26ac391a563530c |
+| retirement.l2_s | 4e71966bb8ebcc7e33c2ec0d8ab2923ac3d00617b2613a91719c47c2c2110e44 |
+| (SMW 1) | 721fed1def417f7a76f27b5bd3eb0d1c63e665991392d4d09038214e88504add |
+| (SMW 2) | 705919f4f24548b46adccdff00f68519726623f5576a1e8b651910b9843dd004 |
+| (SMW 4) | a9c7a3dd265966773138d13f04a7dce3056fed473aea48d6e2215cf839621edd |
+| (SMW 5) | cd5892106c7336b0cb44655449ceb51c2682eef536faa1c87ee8a051572ecbdd |
+| (SMW 6) | 38e18e7f3d4cb4eedaca75504a0d06d756e61ad40f86bec33017226b913d5143 |
+| (SMW 7) | 9e045358dc36411778545377d80217180e13098eca4813e237d3024e9622be9b |
+| (SMW 8) | b084036361dd9f59b39451906c9c76bb63510030ce32640d032563e80c430d05 |
+| (SMW 9) | 98bd75a38094fb7fef1cef3600cd77539bf7752f1b35e6d9a969f4da653adf88 |
+| (SMW 10) | 38586f2282a88f995586d864fad94e91fb00d2ea292cf6b0f4d249cf1b225cb8 |
+| (SMW 11) | 85d6714fe7530214dc54c8139675915cab6484ffcae6d54c2bad3b679702f230 |
 | (rest of the document) | 753d6dcac87a3c80fc66eda9e36c1de83ff170ac41b64253534cb38b1e178e2d |
 
 ## Foreign interfaces
@@ -610,481 +605,30 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass 136337bdca28
+#### Pass fe0dc0deb98c
 
 | field | value |
 | --- | --- |
-| date | 2026-11-04 |
-| review scope | lines retirement.has_rollover, retirement.taxable, retirement.amount_a, retirement.sav_amount, retirement.l1, retirement.l2, retirement.l2_e05, retirement.l2_e09, retirement.l2_e19, retirement.l2_e22, retirement.is_e23, retirement.l2_e23, retirement.l1_s, retirement.l2_s |
+| date | 2026-11-07 |
+| review scope | lines retirement.has_rollover, retirement.taxable, retirement.amount_a, retirement.sav_amount, retirement.l1, retirement.l2, retirement.l2_e05, retirement.l2_e09, retirement.l2_e19, retirement.l2_e22, retirement.is_e23, retirement.l2_e23, retirement.l1_s, retirement.l2_s, (SMW 1), (SMW 2), (SMW 4), (SMW 5), (SMW 6), (SMW 7), (SMW 8), (SMW 9), (SMW 10), (SMW 11) |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 136337bdca2834bbd6aeec28ac0e735aa482f004fc5db202094cf8bfa986e98a |
-| prompt policy | source-only-computation-v3+lines-v1 |
+| prompt sha256 | fe0dc0deb98cb9d8905806b83eba86f6713ce95e8cbb78833a7c27bb136fcf37 |
+| prompt policy | source-only-computation-v3+lines-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 0c89f23597f74ec13312ebd3fbebe528e79cc4d4eabf880fcdd53fd91654330d |
+| required input context sha256 | 466ade19d0538b9482dcceef4f52808ff87cd4ea406c48bfe378358a8c08387a |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 1c375407b194405d7c70ae78d4e1118d1ac7dfd40efd4acad96180401c0bb054 |
-| receipt | .transcription/retirement.lines-535357ae1261 |
-| printed lines compared | 14 |
-| agree / disagree / missing | 0 / 14 / 0 |
-| extra printed lines in second | none |
-
-##### Source pages given to the model
-
-| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
-| --- | --- | --- | --- | --- | --- | --- |
-| f1099r | 2025 (calendar-year form) | 5, 7, 9 | cited pages | 97b0b54ae7c95303418077d54e349c0106cbbd5c4b5695ef684c23c39a5fda3f | 5, 7, 9 | af300d066f4492afc97aa90824bfc681581f64482976e6d6a705e7e94b0e4e67 |
-| i1040gi | 2025; printed date 2026-02-25 | 26, 27, 28, 29, 30, 31 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 26, 27, 28, 30, 31 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
-| i5329 | 2025 | 1, 3, 5 | cited pages | bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf | 1, 3, 5 | e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d |
-| f8880 | 2025; created 2025-11-04 | 1, 2 | whole document | e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94 | 2 | e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575 |
-| p575 | None | 21, 23, 34, 35 | pages named by another document's citation | 4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b | 21, 23, 34, 35 | 3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837 |
-| p590b | 2025 | 6, 28 | pages named by another document's citation | 24de404e77c2a3d1f0540b91ac8c28ca4d45c7fcf968de613407419eba9266f4 | 6, 28 | 464639ba13341fe9c824b6f495922126cb3d158650887bf9beb265fd951c3e77 |
-
-##### Other documents in the catalog
-
-Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
-
-| reason | documents |
-| --- | --- |
-| definition | aqee, se, tax_on_amount, tcw |
-| named form | clcw, clcw26, dependent, div, f8606, f8889, g28, household, interest, s1, s3, sa, sales, sb, sdtw, u1250 |
-| named line | scveh, sli |
-| shared page | f1040, f5329, f8880, ira, person, s2, scope, sd, ssb, w2 |
-
-##### Raw second transcription
-
-```yaml
-```yaml
-lines:
-  - id: retirement.h_zero
-    printed: "(helper)"
-    label: "Zero (enter -0-)"
-    type: NonNegDollars
-    expr: {op: param, ref: ss.zero}
-
-  - id: retirement.h_is_g
-    printed: "(helper)"
-    label: "Box 7 shows code G, direct rollover of a distribution to a qualified plan, a section 403(b) plan, a governmental section 457(b) plan, or an IRA"
-    type: Bool
-    expr: {op: test, eq: [retirement.code, {const: "direct_rollover_G"}]}
-
-  - id: retirement.h_is_trad
-    printed: "(helper)"
-    label: "Distribution from an IRA other than a Roth IRA (IRA/SEP/SIMPLE box checked)"
-    type: Bool
-    expr: {op: test, eq: [retirement.account, {const: "traditional_ira"}]}
-
-  - id: retirement.h_is_roth
-    printed: "(helper)"
-    label: "Distribution from a Roth IRA or Roth SIMPLE IRA"
-    type: Bool
-    expr: {op: test, eq: [retirement.account, {const: "roth_ira"}]}
-
-  - id: retirement.h_is_plan
-    printed: "(helper)"
-    label: "Pension or annuity payment (including 401(k), 403(b) and governmental 457(b) plans)"
-    type: Bool
-    expr: {op: test, eq: [retirement.account, {const: "plan"}]}
-
-  - id: retirement.h_annuity_plan
-    printed: "(helper)"
-    label: "You must use the Simplified Method for this pension or annuity"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [retirement.h_is_plan, {const: true}]}
-        - {op: test, eq: [retirement.annuity, {const: true}]}
-
-  - id: retirement.has_rollover
-    printed: "(helper)"
-    label: "Rollover, including a direct rollover (check box 1 on line 4c or line 5c)"
-    type: Bool
-    expr:
-      op: test
-      any:
-        - {op: test, eq: [retirement.h_is_g, {const: true}]}
-        - {op: test, gt: [retirement.rollover, {const: 0}]}
-
-  - id: retirement.h_rollover_over
-    printed: "(helper)"
-    label: "Consistency check: amount rolled over is more than the total distribution in box 1"
-    type: Bool
-    expr: {op: test, gt: [retirement.rollover, retirement.box1]}
-
-  - id: retirement.h_roth_unsupported
-    printed: "(helper)"
-    label: "Roth IRA distribution other than one with distribution code Q (see Form 8606 and its instructions)"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [retirement.h_is_roth, {const: true}]}
-        - {op: test, ne: [retirement.code, {const: "qualified_roth_Q"}]}
-
-  - id: retirement.h_annuity_rollover
-    printed: "(helper)"
-    label: "A rollover reported for a pension or annuity figured with the Simplified Method"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [retirement.h_annuity_plan, {const: true}]}
-        - {op: test, eq: [retirement.has_rollover, {const: true}]}
-    note: "The Simplified Method Worksheet does not address a rollover of part of an annuity payment; the tool refuses that combination rather than guessing."
-
-  - id: retirement.h_not_rolled
-    printed: "(helper)"
-    label: "If the total distribution wasn't rolled over, the part not rolled over"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: retirement.box1, take: retirement.rollover}
-
-  - id: retirement.h_plan_net5
-    printed: "(helper)"
-    label: "From this amount, subtract any contributions (usually shown in box 5) that were taxable to you when made"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: retirement.box1, take: retirement.box5}
-
-  - id: retirement.h_plan_taxable
-    printed: "(helper)"
-    label: "From that result, subtract the amount of the rollover. Enter the remaining amount on line 5b"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: retirement.h_plan_net5, take: retirement.rollover}
-    note: "The text gives this subtraction for rollovers; for a plan distribution that is not an annuity under the Simplified Method and has no rollover, the same formula (box 1 less box 5) is used, which with box 5 zero is the fully taxable amount."
-
-  - id: retirement.taxable
-    printed: "(helper)"
-    label: "Taxable amount of this distribution (Form 1040, line 4b or line 5b)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.h_is_g, {const: true}]}
-          then: retirement.h_zero
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_is_g, {const: false}]}
-              - {op: test, eq: [retirement.h_is_roth, {const: true}]}
-          then: retirement.h_zero
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_is_g, {const: false}]}
-              - {op: test, eq: [retirement.h_is_trad, {const: true}]}
-          then: retirement.h_not_rolled
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_is_g, {const: false}]}
-              - {op: test, eq: [retirement.h_annuity_plan, {const: true}]}
-          then: retirement.smw9
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_is_g, {const: false}]}
-              - {op: test, eq: [retirement.h_is_plan, {const: true}]}
-              - {op: test, eq: [retirement.annuity, {const: false}]}
-          then: retirement.h_plan_taxable
-    refuses:
-      - retirement.special
-      - retirement.h_roth_unsupported
-      - retirement.h_annuity_rollover
-      - {when: retirement.h_rollover_over, when_known: true}
-    note: "Code G: Form 1099-R says zero should be shown and you must enter -0- on the Taxable amount line. Roth IRA with code Q: enter -0- on line 4b. Other Roth IRA distributions need Form 8606 and are refused. Distribution code 'other' is not refused here: the text ties the taxable amount only to codes G, Q and T; other codes are computed by the same rules."
-
-  - id: retirement.h_show_a
-    printed: "(helper)"
-    label: "Total distribution is entered on line 4a or 5a (not a fully taxable distribution entered only on line 4b or 5b)"
-    type: Bool
-    expr:
-      op: test
-      any:
-        - {op: test, eq: [retirement.has_rollover, {const: true}]}
-        - {op: test, eq: [retirement.h_is_roth, {const: true}]}
-        - {op: test, eq: [retirement.h_annuity_plan, {const: true}]}
-        - op: test
-          all:
-            - {op: test, eq: [retirement.h_is_plan, {const: true}]}
-            - {op: test, gt: [retirement.box5, {const: 0}]}
-
-  - id: retirement.amount_a
-    printed: "(helper)"
-    label: "Amount of this distribution entered on Form 1040, line 4a or line 5a"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.h_show_a, {const: true}]}
-          then: retirement.box1
-        - guard: {op: test, eq: [retirement.h_show_a, {const: false}]}
-          then: retirement.h_zero
-    refuses:
-      - retirement.special
-      - retirement.h_roth_unsupported
-      - retirement.h_annuity_rollover
-    note: "If the distribution is fully taxable, enter it on line 4b/5b and don't make an entry on line 4a/5a; so the line 4a/5a amount is zero then. Rollovers (Exception 1), Roth IRA distributions (Exception 2) and partially taxable pensions (Simplified Method, or box 5 after-tax contributions) put box 1 on line 4a/5a."
-
-  - id: retirement.h_sav_excluded
-    printed: "(helper)"
-    label: "Form 8880 line 4 exclusion: section 404(k) dividends, a military retirement plan (other than the TSP), or an inherited IRA by a nonspousal beneficiary"
-    type: Bool
-    expr:
-      op: test
-      any:
-        - {op: test, eq: [retirement.sav_military, {const: true}]}
-        - {op: test, eq: [retirement.sav_404k, {const: true}]}
-        - {op: test, eq: [retirement.sav_inherited, {const: true}]}
-
-  - id: retirement.sav_amount
-    printed: "(helper)"
-    label: "Amount of this distribution counted on Form 8880, line 4 (not including distributions not taxable as the result of a rollover)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.h_sav_excluded, {const: true}]}
-          then: retirement.h_zero
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_sav_excluded, {const: false}]}
-              - {op: test, eq: [retirement.h_is_g, {const: true}]}
-          then: retirement.h_zero
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_sav_excluded, {const: false}]}
-              - {op: test, eq: [retirement.h_is_g, {const: false}]}
-          then: retirement.h_not_rolled
-    refuses:
-      - retirement.special
-      - retirement.h_roth_unsupported
-      - {when: retirement.h_rollover_over, when_known: true}
-
-  - id: retirement.h_is_early
-    printed: "(helper)"
-    label: "Early distribution (box 7 code 1, 2, 3 or S)"
-    type: Bool
-    expr:
-      op: test
-      any:
-        - {op: test, eq: [retirement.code, {const: "early_1"}]}
-        - {op: test, eq: [retirement.code, {const: "early_exception_2"}]}
-        - {op: test, eq: [retirement.code, {const: "simple_S"}]}
-        - {op: test, eq: [retirement.code, {const: "disability_3"}]}
-    note: "Code 3 (disability) is read as an early distribution to which exception 03 applies in full; codes 4 and 7 are not early unless the code is wrong, which code_screen refuses."
-
-  - id: retirement.l1
-    printed: "(helper)"
-    label: "Early distributions includible in income from this distribution (Form 5329, line 1)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.h_is_early, {const: true}]}
-          then: retirement.taxable
-        - guard: {op: test, eq: [retirement.h_is_early, {const: false}]}
-          then: retirement.h_zero
-    refuses:
-      - retirement.early_screen
-      - retirement.code_screen
-
-  - id: retirement.l1_s
-    printed: "(helper)"
-    label: "Part of line 1 that is a distribution from a SIMPLE IRA within 2 years of first participation (code S)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.code, {const: "simple_S"}]}
-          then: retirement.l1
-        - guard: {op: test, ne: [retirement.code, {const: "simple_S"}]}
-          then: retirement.h_zero
-
-  - id: retirement.h_code_excepted
-    printed: "(helper)"
-    label: "Box 7 indicates an exception applies (code 2 or code 3)"
-    type: Bool
-    expr:
-      op: test
-      any:
-        - {op: test, eq: [retirement.code, {const: "early_exception_2"}]}
-        - {op: test, eq: [retirement.code, {const: "disability_3"}]}
-
-  - id: retirement.h_has_exc
-    printed: "(helper)"
-    label: "An exception to the additional tax on early distributions is entered"
-    type: Bool
-    expr: {op: test, ne: [retirement.exception, {const: "none"}]}
-
-  - id: retirement.h_exc_mismatch
-    printed: "(helper)"
-    label: "Consistency check: exception 01 or 06 (doesn't apply to IRAs) for an IRA, or exception 07, 08 or 09 (IRA distributions) for a plan"
-    type: Bool
-    expr:
-      op: test
-      any:
-        - op: test
-          all:
-            - {op: test, eq: [retirement.h_is_trad, {const: true}]}
-            - op: test
-              any:
-                - {op: test, eq: [retirement.exception, {const: "e01"}]}
-                - {op: test, eq: [retirement.exception, {const: "e06"}]}
-        - op: test
-          all:
-            - {op: test, eq: [retirement.h_is_plan, {const: true}]}
-            - op: test
-              any:
-                - {op: test, eq: [retirement.exception, {const: "e07"}]}
-                - {op: test, eq: [retirement.exception, {const: "e08"}]}
-                - {op: test, eq: [retirement.exception, {const: "e09"}]}
-
-  - id: retirement.h_exc_capped
-    printed: "(helper)"
-    label: "Amount the exception covers, not more than the early distribution on line 1"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [retirement.exc_amount, retirement.l1]}
-
-  - id: retirement.l2
-    printed: "(helper)"
-    label: "Early distributions from this distribution not subject to additional tax (Form 5329, line 2)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.h_code_excepted, {const: true}]}
-          then: retirement.l1
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_code_excepted, {const: false}]}
-              - {op: test, eq: [retirement.h_has_exc, {const: true}]}
-          then: retirement.h_exc_capped
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_code_excepted, {const: false}]}
-              - {op: test, eq: [retirement.h_has_exc, {const: false}]}
-          then: retirement.h_zero
-    refuses:
-      - retirement.early_screen
-      - retirement.code_screen
-      - {when: retirement.h_exc_mismatch, when_known: true}
-    note: "With code 2 or 3 the exception is read as covering the whole distribution (a partial exception is refused by code_screen). This amount includes exceptions with dollar limits (05, 09, 19, 22, 23) before the per-person limits, which are applied at the person level from the l2_eNN amounts."
-
-  - id: retirement.l2_s
-    printed: "(helper)"
-    label: "Part of line 2 for a code S SIMPLE IRA distribution"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.code, {const: "simple_S"}]}
-          then: retirement.l2
-        - guard: {op: test, ne: [retirement.code, {const: "simple_S"}]}
-          then: retirement.h_zero
-
-  - id: retirement.l2_e05
-    printed: "(helper)"
-    label: "Line 2 amount under exception 05 (unreimbursed medical expenses)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.exception, {const: "e05"}]}
-          then: retirement.l2
-        - guard: {op: test, ne: [retirement.exception, {const: "e05"}]}
-          then: retirement.h_zero
-
-  - id: retirement.l2_e09
-    printed: "(helper)"
-    label: "Line 2 amount under exception 09 (IRA distributions for the purchase of a first home, up to $10,000)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.exception, {const: "e09"}]}
-          then: retirement.l2
-        - guard: {op: test, ne: [retirement.exception, {const: "e09"}]}
-          then: retirement.h_zero
-
-  - id: retirement.l2_e19
-    printed: "(helper)"
-    label: "Line 2 amount under exception 19 (qualified birth or adoption distributions, up to $5,000)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.exception, {const: "e19"}]}
-          then: retirement.l2
-        - guard: {op: test, ne: [retirement.exception, {const: "e19"}]}
-          then: retirement.h_zero
-
-  - id: retirement.l2_e22
-    printed: "(helper)"
-    label: "Line 2 amount under exception 22 (qualified distributions to victims of domestic abuse)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.exception, {const: "e22"}]}
-          then: retirement.l2
-        - guard: {op: test, ne: [retirement.exception, {const: "e22"}]}
-          then: retirement.h_zero
-
-  - id: retirement.is_e23
-    printed: "(helper)"
-    label: "Exception 23 (eligible emergency personal expense distribution) is entered for this distribution"
-    type: Bool
-    expr: {op: test, eq: [retirement.exception, {const: "e23"}]}
-
-  - id: retirement.l2_e23
-    printed: "(helper)"
-    label: "Line 2 amount under exception 23 (emergency personal expense distributions)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [retirement.is_e23, {const: true}]}
-          then: retirement.l2
-        - guard: {op: test, eq: [retirement.is_e23, {const: false}]}
-          then: retirement.h_zero
-```
-```
-
-#### Pass 3b3828e7c41f
-
-| field | value |
-| --- | --- |
-| date | 2026-11-04 |
-| review scope | lines retirement.has_rollover, retirement.taxable, retirement.amount_a, retirement.sav_amount, retirement.l1, retirement.l2, retirement.l2_e05, retirement.l2_e09, retirement.l2_e19, retirement.l2_e22, retirement.l2_e23, retirement.l1_s, retirement.l2_s, (SMW 1), (SMW 2), (SMW 4), (SMW 5), (SMW 6), (SMW 7), (SMW 8), (SMW 9), (SMW 10), (SMW 11) |
-| model requested | claude-opus-5-5 |
-| model reported | claude-opus-5-5 |
-| prompt sha256 | 3b3828e7c41f195bcb69dffda8dfd546904ebdc748ce347f1a11b92caf86721a |
-| prompt policy | source-only-computation-v3+lines-v1 |
-| comparison policy | checked-expression-types-v2 |
-| input context policy | required-review-interfaces-v2 |
-| complete input context | pass |
-| required input context sha256 | 3db718b7f1b61a38e312f9e52d8600cf067d93aa8a65526122717921d0844206 |
-| type validation policy | project-expression-types-v3 |
-| model type validation | pass |
-| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
-| reasoning effort | provider default |
-| output token budget | transport default (65536 for DeepSeek) |
-| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 5f8a4e6da6c3d74f05b1ccf24a7f0cdfa62ed2ea0297fec35205f1d43c3cd942 |
-| receipt | .transcription/retirement.lines-fede9ff2eecc |
-| printed lines compared | 23 |
-| agree / disagree / missing | 0 / 23 / 0 |
+| subject sha256 | 3dd828ab41b93e954f0e1e5ef6221da6cc3865f9b88a3ba081b01965d68d3d52 |
+| receipt | .transcription/retirement.lines-f0403c8b5416 |
+| printed lines compared | 24 |
+| agree / disagree / missing | 0 / 24 / 0 |
 | extra printed lines in second | none |
 
 ##### Source pages given to the model
@@ -1106,7 +650,14 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 | reason | documents |
 | --- | --- |
 | definition | aqee, se, tax_on_amount, tcw |
-| named form | clcw, clcw26, dependent, div, f8606, f8889, g28, household, interest, s1, s3, sa, sales, sb, sdtw, u1250 |
+| named form | interest |
+| named form, inputs and named lines: clcw.prior_11, clcw.prior_14, clcw.prior_sd15, clcw.prior_sd21, clcw.prior_sd7, clcw.spouse_screen | clcw |
+| named form, inputs and named lines: div.basis_reconciled, div.box10, div.box12, div.box13, div.box2b, div.box2c, div.box2d, div.box2e, div.box2f, div.box3, div.box9 | div |
+| named form, inputs and named lines: household.community_property, household.cp_married, household.credit_disallowed, household.home_cost, household.married, household.qss_eligible, household.rdp, household.spouse_died_2025, household.unmarried | household |
+| named form, inputs and named lines: s1.alimony, s1.alimony_paid, s1.alimony_received, s1.alimony_unsupported, s1.cod_amount, s1.cod_any, s1.cod_unsupported, s1.gambling_pro, s1.gambling_winnings, s1.jury_to_employer, s1.line20, s1.line8_other, s1.line8g, s1.line8h, s1.line8i, s1.line8j, s1.line8r, s1.line8z, s1.uc_paid, s1.uc_repaid, s1.uc_unsupported | s1 |
+| named form, inputs and named lines: s3.line1, s3.line10, s3.line12, s3.line14, s3.line4 | s3 |
+| named form, inputs and named lines: sa.charity_limited, sa.dependent, sa.elect_itemize, sa.excluded_income, sa.gambling_losses, sa.line1, sa.line11, sa.line5a, sa.line5b, sa.line5c, sa.line8a, sa.spouse_extra, sa.spouse_itemizes, sa.unsupported | sa |
+| named form, inputs and named lines: sb.fbar_required, sb.form8938, sb.line7a, sb.line8, sb.ordinary_dividends, sb.unsupported | sb |
 | named line | scveh, sli |
 | shared page | f1040, f5329, f8880, ira, person, s2, scope, sd, ssb, w2 |
 
@@ -1115,30 +666,31 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 ```yaml
 ```yaml
 lines:
-  - id: retirement.h_smw_used
+  - id: retirement.h_smw
     printed: "(helper)"
-    label: "Simplified Method applies: a pension or annuity from a qualified plan with after-tax cost and an annuity starting date after November 18, 1996 (Simplified Method Worksheet—Lines 5a and 5b is completed)"
+    label: "If you must use the Simplified Method, complete the Simplified Method Worksheet in these instructions to figure the taxable part of your pension or annuity."
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [retirement.account, {const: "plan"}]}
         - {op: test, eq: [retirement.annuity, {const: true}]}
+    note: "The worksheet applies to a pension or annuity for which the Simplified Method applies (retirement.annuity) from a plan. The SMW lines are shown only for such a distribution."
 
   - id: retirement.smw1
     printed: "(SMW 1)"
     label: "Enter the total pension or annuity payments from Form 1099-R, box 1. Also, enter this amount on Form 1040 or 1040-SR, line 5a"
     type: NonNegDollars
     expr: {op: copy, from: retirement.box1}
-    shown_when: retirement.h_smw_used
+    shown_when: retirement.h_smw
 
   - id: retirement.smw2
     printed: "(SMW 2)"
     label: "Enter your cost in the plan at the annuity starting date"
     type: NonNegDollars
     expr: {op: copy, from: retirement.cost}
-    shown_when: retirement.h_smw_used
-    note: "The death benefit exclusion that 'Before you begin' adds to line 2 is screened out by retirement.special, so line 2 is the cost alone."
+    shown_when: retirement.h_smw
+    note: "The death benefit exclusion (Before you begin) is refused through retirement.special, so line 2 is the cost alone."
 
   - id: retirement.h_t1_360
     printed: "(helper)"
@@ -1147,17 +699,17 @@ lines:
     expr: {op: multiply_rate, amount: retirement.smw2, rate: {param: smw.table1_360}}
   - id: retirement.h_t1_310
     printed: "(helper)"
-    label: "Line 2 divided by 310 (Table 1, age 56–60)"
+    label: "Line 2 divided by 310 (Table 1, age 56-60)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: retirement.smw2, rate: {param: smw.table1_310}}
   - id: retirement.h_t1_260
     printed: "(helper)"
-    label: "Line 2 divided by 260 (Table 1, age 61–65)"
+    label: "Line 2 divided by 260 (Table 1, age 61-65)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: retirement.smw2, rate: {param: smw.table1_260}}
   - id: retirement.h_t1_210
     printed: "(helper)"
-    label: "Line 2 divided by 210 (Table 1, age 66–70)"
+    label: "Line 2 divided by 210 (Table 1, age 66-70)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: retirement.smw2, rate: {param: smw.table1_210}}
   - id: retirement.h_t1_160
@@ -1172,17 +724,17 @@ lines:
     expr: {op: multiply_rate, amount: retirement.smw2, rate: {param: smw.table2_410}}
   - id: retirement.h_t2_360
     printed: "(helper)"
-    label: "Line 2 divided by 360 (Table 2, combined ages 111–120)"
+    label: "Line 2 divided by 360 (Table 2, combined ages 111-120)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: retirement.smw2, rate: {param: smw.table2_360}}
   - id: retirement.h_t2_310
     printed: "(helper)"
-    label: "Line 2 divided by 310 (Table 2, combined ages 121–130)"
+    label: "Line 2 divided by 310 (Table 2, combined ages 121-130)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: retirement.smw2, rate: {param: smw.table2_310}}
   - id: retirement.h_t2_260
     printed: "(helper)"
-    label: "Line 2 divided by 260 (Table 2, combined ages 131–140)"
+    label: "Line 2 divided by 260 (Table 2, combined ages 131-140)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: retirement.smw2, rate: {param: smw.table2_260}}
   - id: retirement.h_t2_210
@@ -1191,152 +743,99 @@ lines:
     type: NonNegDollars
     expr: {op: multiply_rate, amount: retirement.smw2, rate: {param: smw.table2_210}}
 
+  - id: retirement.h_line4_figured
+    printed: "(helper)"
+    label: "Enter the appropriate number from Table 1 below. But if your annuity starting date was after 1997 and the payments are for your life and that of your beneficiary, enter the appropriate number from Table 2 below. Divide line 2 by the number on line 3."
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, all: [{op: test, eq: [retirement.joint_life, {const: false}]}, {op: test, le: [retirement.age, {const: 55, type: Count}]}]}
+          then: retirement.h_t1_360
+        - guard: {op: test, all: [{op: test, eq: [retirement.joint_life, {const: false}]}, {op: test, gt: [retirement.age, {const: 55, type: Count}]}, {op: test, le: [retirement.age, {const: 60, type: Count}]}]}
+          then: retirement.h_t1_310
+        - guard: {op: test, all: [{op: test, eq: [retirement.joint_life, {const: false}]}, {op: test, gt: [retirement.age, {const: 60, type: Count}]}, {op: test, le: [retirement.age, {const: 65, type: Count}]}]}
+          then: retirement.h_t1_260
+        - guard: {op: test, all: [{op: test, eq: [retirement.joint_life, {const: false}]}, {op: test, gt: [retirement.age, {const: 65, type: Count}]}, {op: test, le: [retirement.age, {const: 70, type: Count}]}]}
+          then: retirement.h_t1_210
+        - guard: {op: test, all: [{op: test, eq: [retirement.joint_life, {const: false}]}, {op: test, gt: [retirement.age, {const: 70, type: Count}]}]}
+          then: retirement.h_t1_160
+        - guard: {op: test, all: [{op: test, eq: [retirement.joint_life, {const: true}]}, {op: test, le: [retirement.combined_age, {const: 110, type: Count}]}]}
+          then: retirement.h_t2_410
+        - guard: {op: test, all: [{op: test, eq: [retirement.joint_life, {const: true}]}, {op: test, gt: [retirement.combined_age, {const: 110, type: Count}]}, {op: test, le: [retirement.combined_age, {const: 120, type: Count}]}]}
+          then: retirement.h_t2_360
+        - guard: {op: test, all: [{op: test, eq: [retirement.joint_life, {const: true}]}, {op: test, gt: [retirement.combined_age, {const: 120, type: Count}]}, {op: test, le: [retirement.combined_age, {const: 130, type: Count}]}]}
+          then: retirement.h_t2_310
+        - guard: {op: test, all: [{op: test, eq: [retirement.joint_life, {const: true}]}, {op: test, gt: [retirement.combined_age, {const: 130, type: Count}]}, {op: test, le: [retirement.combined_age, {const: 140, type: Count}]}]}
+          then: retirement.h_t2_260
+        - guard: {op: test, all: [{op: test, eq: [retirement.joint_life, {const: true}]}, {op: test, gt: [retirement.combined_age, {const: 140, type: Count}]}]}
+          then: retirement.h_t2_210
+    note: "Only the Table 1 column for annuity starting dates after November 18, 1996 is used, because retirement.annuity requires such a starting date. Earlier dates are refused through retirement.special. The worksheet does not say how to round the division. It is rounded half-up to the cent."
+
   - id: retirement.smw4
     printed: "(SMW 4)"
-    label: "Divide line 2 by the number on line 3 (if you completed this worksheet last year, enter the amount from line 4 of last year's worksheet)"
+    label: "Divide line 2 by the number on line 3"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
         - guard: {op: test, eq: [retirement.used_last_year, {const: true}]}
           then: retirement.last_line4
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.used_last_year, {const: false}]}
-              - {op: test, eq: [retirement.joint_life, {const: false}]}
-              - {op: test, le: [retirement.age, {const: 55, type: Count}]}
-          then: retirement.h_t1_360
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.used_last_year, {const: false}]}
-              - {op: test, eq: [retirement.joint_life, {const: false}]}
-              - {op: test, ge: [retirement.age, {const: 56, type: Count}]}
-              - {op: test, le: [retirement.age, {const: 60, type: Count}]}
-          then: retirement.h_t1_310
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.used_last_year, {const: false}]}
-              - {op: test, eq: [retirement.joint_life, {const: false}]}
-              - {op: test, ge: [retirement.age, {const: 61, type: Count}]}
-              - {op: test, le: [retirement.age, {const: 65, type: Count}]}
-          then: retirement.h_t1_260
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.used_last_year, {const: false}]}
-              - {op: test, eq: [retirement.joint_life, {const: false}]}
-              - {op: test, ge: [retirement.age, {const: 66, type: Count}]}
-              - {op: test, le: [retirement.age, {const: 70, type: Count}]}
-          then: retirement.h_t1_210
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.used_last_year, {const: false}]}
-              - {op: test, eq: [retirement.joint_life, {const: false}]}
-              - {op: test, ge: [retirement.age, {const: 71, type: Count}]}
-          then: retirement.h_t1_160
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.used_last_year, {const: false}]}
-              - {op: test, eq: [retirement.joint_life, {const: true}]}
-              - {op: test, le: [retirement.combined_age, {const: 110, type: Count}]}
-          then: retirement.h_t2_410
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.used_last_year, {const: false}]}
-              - {op: test, eq: [retirement.joint_life, {const: true}]}
-              - {op: test, ge: [retirement.combined_age, {const: 111, type: Count}]}
-              - {op: test, le: [retirement.combined_age, {const: 120, type: Count}]}
-          then: retirement.h_t2_360
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.used_last_year, {const: false}]}
-              - {op: test, eq: [retirement.joint_life, {const: true}]}
-              - {op: test, ge: [retirement.combined_age, {const: 121, type: Count}]}
-              - {op: test, le: [retirement.combined_age, {const: 130, type: Count}]}
-          then: retirement.h_t2_310
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.used_last_year, {const: false}]}
-              - {op: test, eq: [retirement.joint_life, {const: true}]}
-              - {op: test, ge: [retirement.combined_age, {const: 131, type: Count}]}
-              - {op: test, le: [retirement.combined_age, {const: 140, type: Count}]}
-          then: retirement.h_t2_260
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.used_last_year, {const: false}]}
-              - {op: test, eq: [retirement.joint_life, {const: true}]}
-              - {op: test, ge: [retirement.combined_age, {const: 141, type: Count}]}
-          then: retirement.h_t2_210
-    shown_when: retirement.h_smw_used
-    note: "The worksheet does not say how to round the quotient on line 4; chosen: half-up to the cent (multiply_rate by 1/n). Only the 'after November 18, 1996' column of Table 1 is used, because earlier starting dates are screened out by retirement.annuity and retirement.special. Line 3 is folded into this choice."
+        - guard: {op: test, eq: [retirement.used_last_year, {const: false}]}
+          then: retirement.h_line4_figured
+    shown_when: retirement.h_smw
+    note: "If you completed this worksheet last year, skip line 3 and enter the amount from line 4 of last year's worksheet on line 4 (even if the amount of your pension or annuity has changed)."
 
   - id: retirement.smw5
     printed: "(SMW 5)"
-    label: "Multiply line 4 by the number of months for which this year's payments were made"
+    label: "Multiply line 4 by the number of months for which this year's payments were made. If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8. Otherwise, go to line 6"
     type: NonNegDollars
     expr: {op: multiply_count, amount: retirement.smw4, count: retirement.months}
-    shown_when: retirement.h_smw_used
-    note: "The instruction to skip lines 6 and 7 when the annuity starting date was before 1987 never applies, because retirement.annuity requires a starting date after November 18, 1996."
+    shown_when: retirement.h_smw
+    note: "The before-1987 branch cannot occur, because retirement.annuity requires a starting date after November 18, 1996."
 
   - id: retirement.smw6
     printed: "(SMW 6)"
     label: "Enter the amount, if any, recovered tax free in years after 1986. If you completed this worksheet last year, enter the amount from line 10 of last year's worksheet"
     type: NonNegDollars
     expr: {op: copy, from: retirement.recovered}
-    shown_when: retirement.h_smw_used
-
-  - id: retirement.h_recovered_over
-    printed: "(helper)"
-    label: "Consistency check: the amount recovered tax free (line 6) is more than the cost (line 2)"
-    type: Bool
-    expr: {op: test, gt: [retirement.recovered, retirement.cost]}
+    shown_when: retirement.h_smw
 
   - id: retirement.smw7
     printed: "(SMW 7)"
     label: "Subtract line 6 from line 2"
     type: Dollars
     expr: {op: subtract, from: retirement.smw2, take: retirement.smw6}
-    refuses:
-      - {when: retirement.h_recovered_over, when_known: true}
-    shown_when: retirement.h_smw_used
+    shown_when: retirement.h_smw
 
   - id: retirement.smw8
     printed: "(SMW 8)"
     label: "Enter the smaller of line 5 or line 7"
     type: Dollars
     expr: {op: smaller_of, of: [retirement.smw5, retirement.smw7]}
-    shown_when: retirement.h_smw_used
+    shown_when: retirement.h_smw
 
   - id: retirement.smw9
     printed: "(SMW 9)"
-    label: "Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than zero. Also, enter this amount on Form 1040 or 1040-SR, line 5b"
+    label: "Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than zero. Also, enter this amount on Form 1040 or 1040-SR, line 5b."
     type: NonNegDollars
     expr: {op: subtract_floor0, from: retirement.smw1, take: retirement.smw8}
-    shown_when: retirement.h_smw_used
+    shown_when: retirement.h_smw
 
   - id: retirement.smw10
     printed: "(SMW 10)"
-    label: "Was your annuity starting date before 1987? No. Add lines 6 and 8. This is the amount you have recovered tax free through 2025"
+    label: "Was your annuity starting date before 1987? No. Add lines 6 and 8. This is the amount you have recovered tax free through 2025."
     type: Dollars
     expr: {op: sum, of: [retirement.smw6, retirement.smw8]}
-    shown_when: retirement.h_smw_used
-    note: "The 'Yes. STOP' branch (starting date before 1987) cannot occur within the scope of retirement.annuity, so line 10 is always completed."
+    shown_when: retirement.h_smw
+    note: "The Yes (STOP) branch, for a starting date before 1987, cannot occur in scope. The No branch is always taken."
 
   - id: retirement.smw11
     printed: "(SMW 11)"
-    label: "Balance of cost to be recovered. Subtract line 10 from line 2"
+    label: "Balance of cost to be recovered. Subtract line 10 from line 2."
     type: Dollars
     expr: {op: subtract, from: retirement.smw2, take: retirement.smw10}
-    shown_when: retirement.h_smw_used
+    shown_when: retirement.h_smw
 
   - id: retirement.h_zero
     printed: "(helper)"
@@ -1344,156 +843,121 @@ lines:
     type: NonNegDollars
     expr: {op: param, ref: ss.zero}
 
+  - id: retirement.h_rollover_eff
+    printed: "(helper)"
+    label: "Amount rolled over (for code G, a direct rollover, the whole distribution)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [retirement.code, {const: "direct_rollover_G"}]}
+          then: retirement.box1
+        - guard: {op: test, ne: [retirement.code, {const: "direct_rollover_G"}]}
+          then: retirement.rollover
+    note: "The input text says that for code G the whole distribution is treated as rolled over. Box 1 is used for code G."
+
   - id: retirement.has_rollover
     printed: "(helper)"
-    label: "You rolled over part or all of the distribution (Exception 1; check box 1 on line 4c or 5c)"
+    label: "Rolled over part or all of the distribution (check box 1 on line 4c or 5c)"
     type: Bool
-    expr: {op: test, gt: [retirement.rollover, {const: 0}]}
+    expr: {op: test, gt: [retirement.h_rollover_eff, {const: 0}]}
 
-  - id: retirement.h_rollover_over
+  - id: retirement.h_not_rolled
     printed: "(helper)"
-    label: "Consistency check: the amount rolled over is more than the gross distribution in box 1"
-    type: Bool
-    expr: {op: test, gt: [retirement.rollover, retirement.box1]}
+    label: "Part of the distribution not rolled over"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: retirement.box1, take: retirement.h_rollover_eff}
 
-  - id: retirement.h_roth_refused
-    printed: "(gate)"
-    label: "Distribution from a Roth IRA without distribution code Q: see Form 8606 and its instructions to figure the amount for line 4b (Exception 2)"
+  - id: retirement.h_net5
+    printed: "(helper)"
+    label: "Box 1 minus contributions (usually shown in box 5) that were taxable to you when made"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: retirement.box1, take: retirement.box5}
+
+  - id: retirement.h_plan_other
+    printed: "(helper)"
+    label: "From that result, subtract the amount of the rollover. Enter the remaining amount on line 5b."
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: retirement.h_net5, take: retirement.h_rollover_eff}
+    note: "Used for a plan distribution to which the Simplified Method does not apply. When there is no rollover and box 5 is zero, it equals box 1 (fully taxable). The General Rule is refused through retirement.special."
+
+  - id: retirement.h_roth_nonq
+    printed: "(helper)"
+    label: "You received a distribution from a Roth IRA, other than one with distribution code Q (see Form 8606)"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [retirement.account, {const: "roth_ira"}]}
         - {op: test, ne: [retirement.code, {const: "qualified_roth_Q"}]}
-
-  - id: retirement.h_not_rolled
-    printed: "(helper)"
-    label: "The part of the distribution not rolled over (box 1 minus the amount rolled over, not less than zero)"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: retirement.box1, take: retirement.rollover}
-
-  - id: retirement.h_plan_after5
-    printed: "(helper)"
-    label: "From the box 1 amount, subtract any contributions (usually shown in box 5) that were taxable to you when made"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: retirement.box1, take: retirement.box5}
-
-  - id: retirement.h_plan_taxable
-    printed: "(helper)"
-    label: "From that result, subtract the amount of the rollover. Enter the remaining amount on line 5b"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: retirement.h_plan_after5, take: retirement.rollover}
-    note: "The Rollovers instruction (box 1 minus box 5 minus rollover) is also used for nonperiodic plan distributions that were not rolled over; with no box 5 amount this is the fully taxable box 1 amount. Pub. 575's allocation formula for a distribution before the annuity starting date is not applied; box 5 is read as the tax-free amount."
+    note: "Exception 2(2) sends a nonqualified Roth IRA distribution to Form 8606, which this slice does not compute. The tool refuses it."
 
   - id: retirement.taxable
     printed: "(helper)"
-    label: "Taxable amount of this distribution (Form 1040, line 4b or 5b)"
+    label: "Taxable amount of this distribution (line 4b or 5b)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [retirement.account, {const: "roth_ira"}]}
-          then: retirement.h_zero
         - guard: {op: test, eq: [retirement.account, {const: "traditional_ira"}]}
           then: retirement.h_not_rolled
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.account, {const: "plan"}]}
-              - {op: test, eq: [retirement.annuity, {const: true}]}
+        - guard: {op: test, eq: [retirement.account, {const: "roth_ira"}]}
+          then: retirement.h_zero
+        - guard: {op: test, eq: [retirement.h_smw, {const: true}]}
           then: retirement.smw9
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.account, {const: "plan"}]}
-              - {op: test, eq: [retirement.annuity, {const: false}]}
-          then: retirement.h_plan_taxable
-    refuses:
-      - retirement.special
-      - retirement.h_roth_refused
-      - {when: retirement.h_rollover_over, when_known: true}
-    note: "Roth IRA with code Q: enter -0- (Exception 2(b)); other Roth IRA distributions are refused (Form 8606). Code T, which may also give -0-, falls under 'other' and is refused. Traditional IRA: the part not rolled over (Exception 1); the Exception 2 to 4 cases are screened by retirement.special."
+        - guard: {op: test, all: [{op: test, eq: [retirement.account, {const: "plan"}]}, {op: test, eq: [retirement.annuity, {const: false}]}]}
+          then: retirement.h_plan_other
+    refuses: [retirement.special, retirement.h_roth_nonq]
+    note: "Traditional IRA: Exception 1 (the part not rolled over). Nondeductible contributions, QCDs, HFDs, conversions and returned contributions are refused through special. Roth IRA: code Q gives zero, and other codes are refused. Plan: Simplified Method line 9 when it applies, otherwise box 1 minus box 5 minus the rollover."
 
-  - id: retirement.h_partial
+  - id: retirement.h_show_a
     printed: "(helper)"
-    label: "Plan distribution that is not fully taxable (rollover, or contributions in box 5), so the total goes on line 5a"
+    label: "An amount is entered on line 4a or 5a (the distribution is not fully taxable, was rolled over, or the Simplified Method applies)"
     type: Bool
     expr:
       op: test
       any:
+        - {op: test, eq: [retirement.h_smw, {const: true}]}
         - {op: test, eq: [retirement.has_rollover, {const: true}]}
-        - {op: test, gt: [retirement.box5, {const: 0}]}
+        - {op: test, lt: [retirement.taxable, retirement.box1]}
 
   - id: retirement.amount_a
     printed: "(helper)"
-    label: "Total distribution entered on Form 1040, line 4a or 5a (no entry when the distribution is fully taxable)"
+    label: "Total distribution entered on line 4a or 5a (no entry if fully taxable)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [retirement.account, {const: "roth_ira"}]}
+        - guard: {op: test, eq: [retirement.h_show_a, {const: true}]}
           then: retirement.box1
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.account, {const: "traditional_ira"}]}
-              - {op: test, eq: [retirement.has_rollover, {const: true}]}
-          then: retirement.box1
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.account, {const: "traditional_ira"}]}
-              - {op: test, eq: [retirement.has_rollover, {const: false}]}
+        - guard: {op: test, eq: [retirement.h_show_a, {const: false}]}
           then: retirement.h_zero
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.account, {const: "plan"}]}
-              - {op: test, eq: [retirement.annuity, {const: true}]}
-          then: retirement.smw1
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.account, {const: "plan"}]}
-              - {op: test, eq: [retirement.annuity, {const: false}]}
-              - {op: test, eq: [retirement.h_partial, {const: true}]}
-          then: retirement.box1
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.account, {const: "plan"}]}
-              - {op: test, eq: [retirement.annuity, {const: false}]}
-              - {op: test, eq: [retirement.h_partial, {const: false}]}
-          then: retirement.h_zero
-    refuses:
-      - retirement.special
-    note: "Lump-sum distributions ('Enter the total distribution on line 5a') cannot be identified from the inputs (box 2b is not supplied); a fully taxable plan distribution without rollover or box 5 amount is treated as having no line 5a entry."
+    note: "If the distribution is fully taxable, enter it on line 4b or 5b and make no entry on line 4a or 5a. Otherwise (an exception applies, a rollover, a partially taxable pension or the Simplified Method), enter box 1 on line 4a or 5a."
+
+  - id: retirement.h_sav_excluded
+    printed: "(helper)"
+    label: "Distribution not included on Form 8880 line 4 (section 404(k) dividends, military retirement plan, inherited IRA by a nonspousal beneficiary)"
+    type: Bool
+    expr:
+      op: test
+      any:
+        - {op: test, eq: [retirement.sav_military, {const: true}]}
+        - {op: test, eq: [retirement.sav_404k, {const: true}]}
+        - {op: test, eq: [retirement.sav_inherited, {const: true}]}
 
   - id: retirement.sav_amount
     printed: "(helper)"
-    label: "Distribution counted on Form 8880, line 4 (excluding distributions not taxable as the result of a rollover, section 404(k) dividends, military retirement plan distributions, and inherited IRA distributions to a nonspousal beneficiary)"
+    label: "Amount of this distribution counted on Form 8880, line 4"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            any:
-              - {op: test, eq: [retirement.sav_military, {const: true}]}
-              - {op: test, eq: [retirement.sav_404k, {const: true}]}
-              - {op: test, eq: [retirement.sav_inherited, {const: true}]}
+        - guard: {op: test, eq: [retirement.h_sav_excluded, {const: true}]}
           then: retirement.h_zero
-        - guard:
-            op: test
-            not:
-              op: test
-              any:
-                - {op: test, eq: [retirement.sav_military, {const: true}]}
-                - {op: test, eq: [retirement.sav_404k, {const: true}]}
-                - {op: test, eq: [retirement.sav_inherited, {const: true}]}
+        - guard: {op: test, eq: [retirement.h_sav_excluded, {const: false}]}
           then: retirement.h_not_rolled
-    refuses:
-      - retirement.special
+    refuses: [retirement.special]
+    note: "Form 8880 line 4 excludes distributions not taxable as the result of a rollover, so the rolled-over part is subtracted. Roth conversions, excess or returned contributions and loan offsets are refused through special. Deemed loans with code L are not separately screened, so they are not excluded here."
 
   - id: retirement.h_early
     printed: "(helper)"
@@ -1504,28 +968,13 @@ lines:
       any:
         - {op: test, eq: [retirement.code, {const: "early_1"}]}
         - {op: test, eq: [retirement.code, {const: "early_exception_2"}]}
-        - {op: test, eq: [retirement.code, {const: "disability_3"}]}
         - {op: test, eq: [retirement.code, {const: "simple_S"}]}
-
-  - id: retirement.h_payer_exc
-    printed: "(helper)"
-    label: "Box 7 shows that an exception applies (code 2, or code 3 disability)"
-    type: Bool
-    expr:
-      op: test
-      any:
-        - {op: test, eq: [retirement.code, {const: "early_exception_2"}]}
         - {op: test, eq: [retirement.code, {const: "disability_3"}]}
-
-  - id: retirement.h_other_code
-    printed: "(gate)"
-    label: "Box 7 shows another code or two codes; whether the distribution is an early distribution cannot be determined"
-    type: Bool
-    expr: {op: test, eq: [retirement.code, {const: "other"}]}
+    note: "Open point: whether a code 3 (disability) distribution is reported as an early distribution. Chosen: it counts on line 1 and is fully excepted on line 2."
 
   - id: retirement.l1
     printed: "(helper)"
-    label: "Early distributions includible in income (Form 5329, line 1) from this distribution"
+    label: "Form 5329 line 1: early distributions includible in income from this distribution"
     type: NonNegDollars
     expr:
       op: choose
@@ -1534,178 +983,119 @@ lines:
           then: retirement.taxable
         - guard: {op: test, eq: [retirement.h_early, {const: false}]}
           then: retirement.h_zero
-    refuses:
-      - retirement.early_screen
-      - retirement.code_screen
-      - retirement.h_other_code
-    note: "Codes 1, 2, 3 and S are treated as early distributions. Codes 4 (death), 7, G and Q are not. Code 'other' cannot be classified from the inputs, so it is refused here."
+    refuses: [retirement.early_screen, retirement.code_screen]
 
-  - id: retirement.h_has_exc
+  - id: retirement.h_excepted_code
     printed: "(helper)"
-    label: "An exception number (01–23) is entered for this distribution"
+    label: "Box 7 indicates an exception (code 2 or 3)"
     type: Bool
-    expr: {op: test, ne: [retirement.exception, {const: "none"}]}
+    expr:
+      op: test
+      any:
+        - {op: test, eq: [retirement.code, {const: "early_exception_2"}]}
+        - {op: test, eq: [retirement.code, {const: "disability_3"}]}
 
-  - id: retirement.h_exc_covered
+  - id: retirement.h_claimed_exc
     printed: "(helper)"
-    label: "Amount the exception covers, not more than the early distribution on line 1"
+    label: "Code 1 or S distribution for which an exception is claimed"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, any: [{op: test, eq: [retirement.code, {const: "early_1"}]}, {op: test, eq: [retirement.code, {const: "simple_S"}]}]}
+        - {op: test, ne: [retirement.exception, {const: "none"}]}
+
+  - id: retirement.h_exc_cap
+    printed: "(helper)"
+    label: "Amount the exception covers, not more than line 1"
     type: NonNegDollars
     expr: {op: smaller_of, of: [retirement.exc_amount, retirement.l1]}
 
   - id: retirement.l2
     printed: "(helper)"
-    label: "Early distributions not subject to additional tax (Form 5329, line 2) from this distribution, before the per-person dollar limits"
+    label: "Form 5329 line 2: early distributions not subject to additional tax from this distribution"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [retirement.h_early, {const: false}]}
-          then: retirement.h_zero
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_early, {const: true}]}
-              - {op: test, eq: [retirement.h_payer_exc, {const: true}]}
+        - guard: {op: test, eq: [retirement.h_excepted_code, {const: true}]}
           then: retirement.l1
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_early, {const: true}]}
-              - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-              - {op: test, eq: [retirement.h_has_exc, {const: true}]}
-          then: retirement.h_exc_covered
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_early, {const: true}]}
-              - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-              - {op: test, eq: [retirement.h_has_exc, {const: false}]}
+        - guard: {op: test, eq: [retirement.h_claimed_exc, {const: true}]}
+          then: retirement.h_exc_cap
+        - guard: {op: test, all: [{op: test, eq: [retirement.h_excepted_code, {const: false}]}, {op: test, eq: [retirement.h_claimed_exc, {const: false}]}]}
           then: retirement.h_zero
-    note: "Open: whether l2 holds all exceptions or only those without a dollar limit. Chosen: l2 is the whole entry-level exclusion before per-person limits, and l2_eNN gives the part under each capped exception. For codes 2 and 3 the payer's exception covers the whole line 1 amount (partial coverage is refused by code_screen), and no capped-exception split is made."
+    note: "Code 2 or 3: the whole amount is excepted. A partial exception is refused through code_screen. For code 1 or S, the amount the exception covers is limited to line 1 but not yet to the per-person dollar limits. Those limits are applied at the person level through the l2_eXX interfaces."
 
   - id: retirement.l2_e05
     printed: "(helper)"
-    label: "Part of line 2 under exception 05 (medical expenses)"
+    label: "Line 2 amount under exception 05 (medical expenses)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_early, {const: true}]}
-              - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-              - {op: test, eq: [retirement.exception, {const: "e05"}]}
-          then: retirement.h_exc_covered
-        - guard:
-            op: test
-            not:
-              op: test
-              all:
-                - {op: test, eq: [retirement.h_early, {const: true}]}
-                - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-                - {op: test, eq: [retirement.exception, {const: "e05"}]}
+        - guard: {op: test, eq: [retirement.exception, {const: "e05"}]}
+          then: retirement.l2
+        - guard: {op: test, ne: [retirement.exception, {const: "e05"}]}
           then: retirement.h_zero
-
   - id: retirement.l2_e09
     printed: "(helper)"
-    label: "Part of line 2 under exception 09 (first home, up to $10,000)"
+    label: "Line 2 amount under exception 09 (first home, up to $10,000)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_early, {const: true}]}
-              - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-              - {op: test, eq: [retirement.exception, {const: "e09"}]}
-          then: retirement.h_exc_covered
-        - guard:
-            op: test
-            not:
-              op: test
-              all:
-                - {op: test, eq: [retirement.h_early, {const: true}]}
-                - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-                - {op: test, eq: [retirement.exception, {const: "e09"}]}
+        - guard: {op: test, eq: [retirement.exception, {const: "e09"}]}
+          then: retirement.l2
+        - guard: {op: test, ne: [retirement.exception, {const: "e09"}]}
           then: retirement.h_zero
-
   - id: retirement.l2_e19
     printed: "(helper)"
-    label: "Part of line 2 under exception 19 (qualified birth or adoption, up to $5,000)"
+    label: "Line 2 amount under exception 19 (qualified birth or adoption, up to $5,000)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_early, {const: true}]}
-              - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-              - {op: test, eq: [retirement.exception, {const: "e19"}]}
-          then: retirement.h_exc_covered
-        - guard:
-            op: test
-            not:
-              op: test
-              all:
-                - {op: test, eq: [retirement.h_early, {const: true}]}
-                - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-                - {op: test, eq: [retirement.exception, {const: "e19"}]}
+        - guard: {op: test, eq: [retirement.exception, {const: "e19"}]}
+          then: retirement.l2
+        - guard: {op: test, ne: [retirement.exception, {const: "e19"}]}
           then: retirement.h_zero
-
   - id: retirement.l2_e22
     printed: "(helper)"
-    label: "Part of line 2 under exception 22 (victims of domestic abuse)"
+    label: "Line 2 amount under exception 22 (victims of domestic abuse)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_early, {const: true}]}
-              - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-              - {op: test, eq: [retirement.exception, {const: "e22"}]}
-          then: retirement.h_exc_covered
-        - guard:
-            op: test
-            not:
-              op: test
-              all:
-                - {op: test, eq: [retirement.h_early, {const: true}]}
-                - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-                - {op: test, eq: [retirement.exception, {const: "e22"}]}
+        - guard: {op: test, eq: [retirement.exception, {const: "e22"}]}
+          then: retirement.l2
+        - guard: {op: test, ne: [retirement.exception, {const: "e22"}]}
           then: retirement.h_zero
+
+  - id: retirement.is_e23
+    printed: "(helper)"
+    label: "Early distribution under exception 23 (emergency personal expense distribution)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [retirement.h_early, {const: true}]}
+        - {op: test, eq: [retirement.exception, {const: "e23"}]}
 
   - id: retirement.l2_e23
     printed: "(helper)"
-    label: "Part of line 2 under exception 23 (emergency personal expense distributions)"
+    label: "Line 2 amount under exception 23 (emergency personal expenses)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [retirement.h_early, {const: true}]}
-              - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-              - {op: test, eq: [retirement.exception, {const: "e23"}]}
-          then: retirement.h_exc_covered
-        - guard:
-            op: test
-            not:
-              op: test
-              all:
-                - {op: test, eq: [retirement.h_early, {const: true}]}
-                - {op: test, eq: [retirement.h_payer_exc, {const: false}]}
-                - {op: test, eq: [retirement.exception, {const: "e23"}]}
+        - guard: {op: test, eq: [retirement.is_e23, {const: true}]}
+          then: retirement.l2
+        - guard: {op: test, eq: [retirement.is_e23, {const: false}]}
           then: retirement.h_zero
 
   - id: retirement.l1_s
     printed: "(helper)"
-    label: "Part of line 1 that is a distribution from a SIMPLE IRA within 2 years of first participating (code S; 25% instead of 10%)"
+    label: "Line 1 amount from a SIMPLE IRA within 2 years of first participation (code S, 25% rate)"
     type: NonNegDollars
     expr:
       op: choose
@@ -1717,7 +1107,7 @@ lines:
 
   - id: retirement.l2_s
     printed: "(helper)"
-    label: "Part of line 2 that is from a code S SIMPLE IRA distribution"
+    label: "Line 2 amount from a code S distribution"
     type: NonNegDollars
     expr:
       op: choose

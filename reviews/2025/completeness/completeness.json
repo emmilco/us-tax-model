@@ -416,7 +416,7 @@
  },
  {
   "form": "dependent",
-  "prompt_sha": "2bbc1eff25ab815f87ca50e6d8f4947a051e367c4e7edebc6a84a81685dc1d31",
+  "prompt_sha": "c43c1b44361949f0f926ee95bb9b9da5f8c115c886a0eb1ace597d3c6763055d",
   "claims": [
    {
     "item": "dependent.edu_aoc",
@@ -436,35 +436,9 @@
     ],
     "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If you claim the American opportunity credit even though you’re not eligible, you may be banned from claiming the credit depending on your conduct. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
     "page": "i8863 p. 3; i8863 p. 1",
-    "why_uncovered": "dependent.edu_aoc rests only on lines 23–26, filer and student TINs, and the institution's EIN. No question asks about a prior final determination of reckless or intentional disregard (2-year ban) or fraud (10-year ban). No question asks about an earlier disallowance or reduction that requires Form 8862. No refusal, here or under HANDLED ELSEWHERE, covers these situations, so the student is treated as an American opportunity credit student even when the credit is barred or needs Form 8862.",
+    "why_uncovered": "dependent.edu_aoc treats a student as an American opportunity credit student when lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available. No question asks whether the filer is under a 2-year (reckless or intentional disregard) or 10-year (fraud) ban on claiming the credit. No question asks whether a prior American opportunity credit was denied or reduced so that Form 8862 must be attached. None of the HANDLED ELSEWHERE refusals for Form 8863 covers the ban or Form 8862.",
     "closest_item": "dependent.edu_aoc",
     "effect": "eligibility"
-   },
-   {
-    "item": "dependent.claimed",
-    "sentences": [
-     {
-      "quote": "If you have more than four dependents, check the box under Dependents on page 1 of Form 1040 or 1040-SR and include a statement showing the information requested in the Dependents section.",
-      "page": "i1040gi p. 17"
-     },
-     {
-      "quote": "If the child lived with you for more than half of 2025, check the “Yes” box (box (a)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
-      "page": "i1040gi p. 17"
-     },
-     {
-      "quote": "If the child is a full-time student, check the “Full-time student” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR",
-      "page": "i1040gi p. 17"
-     },
-     {
-      "quote": "Check the “Credit for other dependents” box on row (7) of the Dependents section on page 1 of Form 1040 or 1040-SR for this person.",
-      "page": "i1040gi p. 18"
-     }
-    ],
-    "quote": "If you have more than four dependents, check the box under Dependents on page 1 of Form 1040 or 1040-SR and include a statement showing the information requested in the Dependents section. / If the child lived with you for more than half of 2025, check the “Yes” box (box (a)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR. / If the child is a full-time student, check the “Full-time student” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR / Check the “Credit for other dependents” box on row (7) of the Dependents section on page 1 of Form 1040 or 1040-SR for this person.",
-    "page": "i1040gi p. 17; i1040gi p. 18",
-    "why_uncovered": "The encoding computes whether the person is a dependent, a CTC child or an ODC dependent. It has no lines for the Dependents section entries: the row (5) residency boxes, the row (6) student or disabled boxes, the row (7) credit boxes, and the more-than-four-dependents checkbox with its attached statement. Nothing in the encoding produces or asks for these entries.",
-    "closest_item": "dependent.claimed",
-    "effect": "presentation"
    }
   ],
   "used": [
@@ -571,7 +545,7 @@
     ]
    }
   ],
-  "cost": 0.9969948,
+  "cost": 0.563008,
   "model": "claude-opus-5-5"
  },
  {
@@ -1048,7 +1022,7 @@
  },
  {
   "form": "f1095a",
-  "prompt_sha": "40b6bfd585ffbda45649cdc0760577fb6fe566881fe91fb7535d26779ef740c7",
+  "prompt_sha": "9d1c5eeca15fcc2c78481befaac6badc908eef73a807d412ac5174baf8197cc9",
   "claims": [
    {
     "item": "f1095a.b_counted",
@@ -1072,21 +1046,49 @@
     ],
     "quote": "However, if you got married in December of 2025 and you and your spouse, or individuals in your and your spouse’s tax family, were enrolled in separate qualified health plans, add the amounts from Form 1095-A, column B, for each plan (or plans) and enter the total. / If you got married in a month other than December, your applicable SLCSP premium may not be the same for every month. If it is not the same for every month, you cannot use line 11. / If you got married in 2025, and someone in your tax family who you enrolled in a qualified health plan (including yourself) and someone in your tax family who your spouse enrolled in a qualified health plan (including your spouse) prior to your first month of marriage receives separate Forms 1095-A, add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage and enter the total. / If you completed Part V, use the instructions in Pub. 974 for the entries to make for your pre-marriage months.",
     "page": "i8962 p. 15; i8962 p. 17",
-    "why_uncovered": "The b_counted question tells the filer to count column B from only one same-state Form 1095-A when another counted form covers every month this one does. It has no exception for spouses who married in 2025 and had separate pre-marriage policies. For those months the instructions require adding the column B amounts. Under the encoded question, the filer would drop one spouse's SLCSP premium. The HANDLED ELSEWHERE refusal for f8962 column (b) covers only partial overlap of same-state forms, not the marriage add-together rule. Nothing asks about Part V pre-marriage entries.",
+    "why_uncovered": "The b_counted question tells the filer to count column B from only one same-state form for any month that several forms cover. It has no exception for the months before marriage. In those months, separate forms for each spouse's pre-marriage tax family must be added, not deduplicated. The f8962 refusal handled elsewhere covers only partly overlapping forms. It does not cover this marriage rule. Neither the uniform gate nor b_counted asks about marriage in 2025 or the Part V pre-marriage entries.",
     "closest_item": "f1095a.b_counted",
     "effect": "amount"
    },
    {
-    "item": "f1095a.one",
+    "item": "f1095a.in_a_jan",
     "sentences": [
      {
+      "quote": "If you or a family member isn’t lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
+      "page": "i8962 p. 16"
+     },
+     {
       "quote": "If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e), to the monthly premiums for other policies that you did not allocate.",
+      "page": "i8962 p. 16"
+     }
+    ],
+    "quote": "If you or a family member isn’t lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b). / If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e), to the monthly premiums for other policies that you did not allocate.",
+    "page": "i8962 p. 16",
+    "why_uncovered": "The monthly column A questions (in_a_jan through in_a_dec) and mo_a take the full column A amount, or premiums paid by the due date. Nothing asks whether the policy is a shared policy allocated under Part IV, which would reduce the amount by an allocation percentage. Nothing asks about or refuses enrollees who are not lawfully present, whose column (a) amounts follow special Pub. 974 rules. No refusal covers either case.",
+    "closest_item": "f1095a.in_a_jan",
+    "effect": "amount"
+   },
+   {
+    "item": "f1095a.in_b_jan",
+    "sentences": [
+     {
+      "quote": "If you or a family member isn’t lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
       "page": "i8962 p. 16"
      },
      {
       "quote": "If you completed Part IV for any Form 1095-A, add the amounts of applicable SLCSP premium allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (f), to the applicable SLCSP premium shown on the Form(s) 1095-A that you did not allocate.",
       "page": "i8962 p. 16"
-     },
+     }
+    ],
+    "quote": "If you or a family member isn’t lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b). / If you completed Part IV for any Form 1095-A, add the amounts of applicable SLCSP premium allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (f), to the applicable SLCSP premium shown on the Form(s) 1095-A that you did not allocate.",
+    "page": "i8962 p. 16",
+    "why_uncovered": "The monthly column B questions (in_b_jan through in_b_dec) and mo_b take the full or corrected SLCSP premium. They do not apply a Part IV allocation percentage for shared policies. They also do not address the special column (b) treatment when an enrollee is not lawfully present. No question or refusal covers these cases.",
+    "closest_item": "f1095a.in_b_jan",
+    "effect": "amount"
+   },
+   {
+    "item": "f1095a.in_c_jan",
+    "sentences": [
      {
       "quote": "If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g), and combine that amount with the amounts of the monthly APTC for other policies that you did not allocate.",
       "page": "i8962 p. 17"
@@ -1104,24 +1106,10 @@
       "page": "p974 p. 27"
      }
     ],
-    "quote": "If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e), to the monthly premiums for other policies that you did not allocate. / If you completed Part IV for any Form 1095-A, add the amounts of applicable SLCSP premium allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (f), to the applicable SLCSP premium shown on the Form(s) 1095-A that you did not allocate. / If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g), and combine that amount with the amounts of the monthly APTC for other policies that you did not allocate. / If you indicated to the Marketplace at enrollment that you would claim an individual in your tax family for the year of coverage but the individual is not included in any tax family for the year of coverage, you must report any APTC paid for that individual’s coverage. / If an individual you enrolled in coverage is not included in any tax family, you must reconcile the APTC paid for the individual’s coverage, even if you are claimed as a dependent by another taxpayer. / If you are enrolled in the same policy as the individual not included in any tax family, you have to allocate policy amounts even though the conditions in the Form 8962 instructions for line 9 are not met.",
-    "page": "i8962 p. 16; i8962 p. 17; p974 p. 27",
-    "why_uncovered": "Each Form 1095-A's columns A, B and C are taken at face value, and the totals are added across forms. No question asks whether the policy is shared with another tax family (Part IV allocation) or whether it covers an individual who is in no tax family. No refusal covers these cases. In them, only the allocated percentage of each column belongs on this filer's return.",
-    "closest_item": "f1095a.one",
-    "effect": "amount"
-   },
-   {
-    "item": "f1095a.in_a_jan",
-    "sentences": [
-     {
-      "quote": "If you or a family member isn’t lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
-      "page": "i8962 p. 16"
-     }
-    ],
-    "quote": "If you or a family member isn’t lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
-    "page": "i8962 p. 16",
-    "why_uncovered": "The monthly column A and column B questions (in_a_*, in_b_*, mo_a, mo_b) use the reported or Marketplace-tool amounts. None of them asks whether an enrolled individual is not lawfully present, which calls for different column (a) and (b) amounts under Pub. 974. No refusal covers this situation.",
-    "closest_item": "f1095a.in_a_jan",
+    "quote": "If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g), and combine that amount with the amounts of the monthly APTC for other policies that you did not allocate. / If you indicated to the Marketplace at enrollment that you would claim an individual in your tax family for the year of coverage but the individual is not included in any tax family for the year of coverage, you must report any APTC paid for that individual’s coverage. / If an individual you enrolled in coverage is not included in any tax family, you must reconcile the APTC paid for the individual’s coverage, even if you are claimed as a dependent by another taxpayer. / If you are enrolled in the same policy as the individual not included in any tax family, you have to allocate policy amounts even though the conditions in the Form 8962 instructions for line 9 are not met.",
+    "page": "i8962 p. 17; p974 p. 27",
+    "why_uncovered": "The monthly column C questions (in_c_jan through in_c_dec) and c_total take the full APTC shown on the form. Nothing asks whether the policy is shared with another tax family, which would require allocating APTC by a Part IV percentage. Nothing asks whether an enrolled individual is in no tax family, which would require reporting or allocating that individual's APTC. No refusal covers allocated policies.",
+    "closest_item": "f1095a.in_c_jan",
     "effect": "amount"
    }
   ],
@@ -1155,7 +1143,7 @@
     ]
    }
   ],
-  "cost": 0.3411228,
+  "cost": 0.21502,
   "model": "claude-opus-5-5"
  },
  {
@@ -2479,35 +2467,13 @@
  },
  {
   "form": "f8962",
-  "prompt_sha": "12c0b4219fd8e3edd9503bbc37369c131315b1a6b87589093806920fe23ccacc",
+  "prompt_sha": "0c61090f80fbdf2653d0745c84fd826a935413a389433b3ce990672af7001b77",
   "claims": [
-   {
-    "item": "f8962.line1",
-    "sentences": [
-     {
-      "quote": "If you checked the “Someone can claim you as a dependent” box, or if you are filing jointly and you checked the “Someone can claim your spouse as a dependent” box on your tax return, you or your spouse is not included in the tax family size calculation for purposes of Form 8962, line 1.",
-      "page": "i8962 p. 8"
-     },
-     {
-      "quote": "You, if you file a tax return for the year and you can’t be claimed as a dependent on someone else’s 2025 tax return.",
-      "page": "i8962 p. 3"
-     },
-     {
-      "quote": "Your spouse if filing jointly and your spouse can’t be claimed as a dependent on someone else’s 2025 tax return.",
-      "page": "i8962 p. 3"
-     }
-    ],
-    "quote": "If you checked the “Someone can claim you as a dependent” box, or if you are filing jointly and you checked the “Someone can claim your spouse as a dependent” box on your tax return, you or your spouse is not included in the tax family size calculation for purposes of Form 8962, line 1. / You, if you file a tax return for the year and you can’t be claimed as a dependent on someone else’s 2025 tax return. / Your spouse if filing jointly and your spouse can’t be claimed as a dependent on someone else’s 2025 tax return.",
-    "page": "i8962 p. 8; i8962 p. 3",
-    "why_uncovered": "Line 1 cites only the form's 'Enter your tax family size' and the dependents helper (f8962.deps). No question, helper or refusal says a filer or joint-return spouse who can be claimed as someone else's dependent is left out of the family size. As listed, the encoding counts every person on the return.",
-    "closest_item": "f8962.line1",
-    "effect": "amount"
-   },
    {
     "item": "f8962.applicable",
     "sentences": [
      {
-      "quote": "No one can claim you as a dependent for the year.",
+      "quote": "2. No one can claim you as a dependent for the year.",
       "page": "i8962 p. 3"
      },
      {
@@ -2515,39 +2481,21 @@
       "page": "i8962 p. 6"
      },
      {
-      "quote": "If you are claimed as a dependent on another person’s tax return, the person who claims you will file Form 8962 to take the PTC and, if necessary, repay excess APTC for your coverage. You do not need to file Form 8962.",
-      "page": "i8962 p. 3"
+      "quote": "No one can claim you as a dependent for the year.",
+      "page": "i8962 p. 9"
      }
     ],
-    "quote": "No one can claim you as a dependent for the year. / Generally, you are an applicable taxpayer if your household income for 2025 (described earlier) is at least 100% of the federal poverty line for your family size (provided in Tables 1-1, 1-2, and 1-3) and no one can claim you as a dependent for 2025. / If you are claimed as a dependent on another person’s tax return, the person who claims you will file Form 8962 to take the PTC and, if necessary, repay excess APTC for your coverage. You do not need to file Form 8962.",
-    "page": "i8962 p. 3; i8962 p. 6",
-    "why_uncovered": "The applicable-taxpayer helper tests only line 5 against 100, or the Marketplace-estimate exception. No question, gate or refusal checks whether someone can claim the filer as a dependent. That condition denies applicable-taxpayer status and the credit no matter what the income is.",
+    "quote": "2. No one can claim you as a dependent for the year. / Generally, you are an applicable taxpayer if your household income for 2025 (described earlier) is at least 100% of the federal poverty line for your family size (provided in Tables 1-1, 1-2, and 1-3) and no one can claim you as a dependent for 2025. / No one can claim you as a dependent for the year.",
+    "page": "i8962 p. 3; i8962 p. 6; i8962 p. 9",
+    "why_uncovered": "The applicable-taxpayer helper tests only line 5 (at least 100) or the Marketplace-estimate exception. The f8962.estimate_100 question asks only about the Marketplace's income estimate and misreporting. No listed line, question or refusal tests whether the filer (or the spouse on a joint return) can be claimed as someone else's dependent. A filer who can be claimed could therefore be shown as an applicable taxpayer and allowed a PTC on lines 24 and 26, when the PTC should be denied.",
     "closest_item": "f8962.applicable",
-    "effect": "eligibility"
-   },
-   {
-    "item": "f8962.estimate_100",
-    "sentences": [
-     {
-      "quote": "APTC was paid for the coverage of 1 or more months during 2025.",
-      "page": "i8962 p. 9"
-     },
-     {
-      "quote": "No APTC was paid for your or your family’s coverage; or",
-      "page": "i8962 p. 9"
-     }
-    ],
-    "quote": "APTC was paid for the coverage of 1 or more months during 2025. / No APTC was paid for your or your family’s coverage; or",
-    "page": "i8962 p. 9",
-    "why_uncovered": "The estimate_100 question asks only about the Marketplace's income estimate and about reckless or intentional misreporting. Neither the question nor the applicable-taxpayer helper says the below-100% exception also requires that APTC was paid for at least one month. A filer below 100% with no APTC who answers yes could therefore be treated as an applicable taxpayer.",
-    "closest_item": "f8962.estimate_100",
     "effect": "eligibility"
    },
    {
     "item": "f8962.line12b",
     "sentences": [
      {
-      "quote": "In either case, you must determine your correct applicable SLCSP premium.",
+      "quote": "Also, if you had a change in circumstances during 2025 that you did not report to the Marketplace, the SLCSP premium reported in Part III, column B, may be wrong. In either case, you must determine your correct applicable SLCSP premium.",
       "page": "i8962 p. 5"
      },
      {
@@ -2555,36 +2503,22 @@
       "page": "i8962 p. 14"
      },
      {
+      "quote": "If no APTC was paid for your or your family member’s coverage, the SLCSP premium reported in Part III, lines 21 through 32, column B, of Form 1095-A may be wrong, left blank, or reported as -0-.",
+      "page": "i8962 p. 14"
+     },
+     {
       "quote": "If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected.",
       "page": "i8962 p. 15"
      },
      {
-      "quote": "See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
+      "quote": "If, during 2025, your coverage family changed or you moved and you did not notify the Marketplace, or if no APTC was paid, the applicable SLCSP premium reported on your Form(s) 1095-A may be missing or incorrect.",
       "page": "i8962 p. 17"
      }
     ],
-    "quote": "In either case, you must determine your correct applicable SLCSP premium. / If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month. / If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected. / See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
+    "quote": "Also, if you had a change in circumstances during 2025 that you did not report to the Marketplace, the SLCSP premium reported in Part III, column B, may be wrong. In either case, you must determine your correct applicable SLCSP premium. / If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month. / If no APTC was paid for your or your family member’s coverage, the SLCSP premium reported in Part III, lines 21 through 32, column B, of Form 1095-A may be wrong, left blank, or reported as -0-. / If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected. / If, during 2025, your coverage family changed or you moved and you did not notify the Marketplace, or if no APTC was paid, the applicable SLCSP premium reported on your Form(s) 1095-A may be missing or incorrect.",
     "page": "i8962 p. 5; i8962 p. 14; i8962 p. 15; i8962 p. 17",
-    "why_uncovered": "Column (b) on lines 11 and 12–23 is copied from Form 1095-A column B. The only related checks are f8962.b_zero (a zero column B) and two_counted (the same form counted twice). The 'other' question catches MEC eligibility changes. Nothing asks whether column B is wrong but nonzero, or nothing refuses that case. Examples are a move, a newborn, a person added to or dropped from the tax family, a death, a partial-year enrollee, a filer who received no APTC (column B may then be wrong), or any other reason to believe the Marketplace reported the wrong SLCSP. The same gap applies to line 11(b).",
+    "why_uncovered": "Column (b) (lines 11(b) and 12(b)–23(b)) is taken straight from Form 1095-A column B. Only some situations are caught. A zero column B for a covered month triggers the b_zero/two_counted refusal. MEC eligibility changes and late coverage starts are refused through f8962.other and f8962.premium_adjust. No question or refusal covers a nonzero but wrong column B caused by other unreported changes. These include a move, a newborn or other person added to the tax family, a person included in or dropped from the tax family contrary to what was told to the Marketplace, or a death. A wrong nonzero column B where no APTC was paid is also not covered. In all of these cases the tool would use the incorrect SLCSP premium.",
     "closest_item": "f8962.line12b",
-    "effect": "amount"
-   },
-   {
-    "item": "f8962.line10",
-    "sentences": [
-     {
-      "quote": "If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”and continue to lines 12 through 23.",
-      "page": "i8962 p. 14"
-     },
-     {
-      "quote": "If your correct applicable SLCSP premium is not the same for all 12 months, check “No” and continue to lines 12 through 23.",
-      "page": "i8962 p. 15"
-     }
-    ],
-    "quote": "If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”and continue to lines 12 through 23. / If your correct applicable SLCSP premium is not the same for all 12 months, check “No” and continue to lines 12 through 23.",
-    "page": "i8962 p. 14; i8962 p. 15",
-    "why_uncovered": "Line 10 is decided only from the Form 1095-A columns A and B as entered (f8962.nonuniform). Nothing asks whether the correct SLCSP premium differs from the reported one by month. So the annual line 11 may be used when the corrected premium varies during the year.",
-    "closest_item": "f8962.line10",
     "effect": "amount"
    }
   ],
@@ -2619,7 +2553,7 @@
     ]
    }
   ],
-  "cost": 0.5610788,
+  "cost": 0.322396,
   "model": "claude-opus-5-5"
  },
  {
@@ -3908,7 +3842,7 @@
  },
  {
   "form": "retirement",
-  "prompt_sha": "2f9dab0131912eb4c8121b2e9db5fc0b2561d257bd4aa0e5b2c0d0e2539109af",
+  "prompt_sha": "377a98553625cb07e87d01d528797703544943cd90d7f4045b8ef8d1d70a1ad5",
   "claims": [
    {
     "item": "retirement.has_rollover",
@@ -3920,12 +3854,52 @@
     ],
     "quote": "If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.",
     "page": "i1040gi p. 27",
-    "why_uncovered": "The rollover question asks only for the amount rolled over. It does not ask whether the IRA distribution went into a qualified plan or whether the rollover was completed in 2026. The encoding also produces no attachment or statement, so this filing requirement is neither implemented nor refused.",
+    "why_uncovered": "The encoding computes the rollover and checks box 1 on line 4c, but nothing asks whether an IRA rollover went into a qualified plan or was completed in 2026. Nothing produces or flags the required explanatory statement.",
     "closest_item": "retirement.has_rollover",
     "effect": "presentation"
    },
    {
+    "item": "retirement.rollover",
+    "sentences": [
+     {
+      "quote": "During the first 2 years of participation in a SIMPLE retirement account, you may roll over amounts from one SIMPLE retirement account into another SIMPLE retirement account.",
+      "page": "p575 p. 21"
+     },
+     {
+      "quote": "After 2 years of participation in a SIMPLE retirement account, you may roll over amounts from a SIMPLE retirement account, a qualified retirement plan, or an IRA into a SIMPLE retirement account.",
+      "page": "p575 p. 21"
+     }
+    ],
+    "quote": "During the first 2 years of participation in a SIMPLE retirement account, you may roll over amounts from one SIMPLE retirement account into another SIMPLE retirement account. / After 2 years of participation in a SIMPLE retirement account, you may roll over amounts from a SIMPLE retirement account, a qualified retirement plan, or an IRA into a SIMPLE retirement account.",
+    "page": "p575 p. 21",
+    "why_uncovered": "The rollover question counts any amount rolled over to 'an IRA other than a Roth IRA'. It limits only code S distributions coming out of a SIMPLE IRA. It does not exclude amounts rolled from a qualified plan or a non-SIMPLE IRA into a SIMPLE IRA during the filer's first 2 years of participation in that SIMPLE IRA. Such a rollover is not permitted, so the amount stays taxable.",
+    "closest_item": "retirement.rollover",
+    "effect": "amount"
+   },
+   {
     "item": "retirement.exception",
+    "sentences": [
+     {
+      "quote": "Distributions that are made on or after the date on which your physician has certified that you have a terminal illness or physical condition that can reasonably be expected to result in death in 84 months or less after the date of the certification.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "A distribution made from an applicable eligible retirement plan and made to an individual during the 1-year period beginning on any date on which the individual is a victim of domestic abuse by a spouse or a domestic partner.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "An eligible distribution to a domestic abuse victim is a distribution to a domestic abuse victim from an applicable eligible retirement plan and made to that individual during the 1-year period beginning on any date on which the individual is a victim of domestic abuse by a spouse or domestic partner.",
+      "page": "p590b p. 28"
+     }
+    ],
+    "quote": "Distributions that are made on or after the date on which your physician has certified that you have a terminal illness or physical condition that can reasonably be expected to result in death in 84 months or less after the date of the certification. / A distribution made from an applicable eligible retirement plan and made to an individual during the 1-year period beginning on any date on which the individual is a victim of domestic abuse by a spouse or a domestic partner. / An eligible distribution to a domestic abuse victim is a distribution to a domestic abuse victim from an applicable eligible retirement plan and made to that individual during the 1-year period beginning on any date on which the individual is a victim of domestic abuse by a spouse or domestic partner.",
+    "page": "i5329 p. 5; p590b p. 28",
+    "why_uncovered": "The exception question spells out the qualifying conditions for exceptions 01, 02, 03, 04, 09, 11 and 19 only. For exception 20 it omits the physician-certification timing and the 84-month test. For exception 22 it omits the 1-year window. A filer could choose these exceptions for distributions that fall outside the required period.",
+    "closest_item": "retirement.exception",
+    "effect": "eligibility"
+   },
+   {
+    "item": "retirement.l2_e19",
     "sentences": [
      {
       "quote": "Attach a statement that provides the name, age, and TIN of the child or eligible adoptee.",
@@ -3938,42 +3912,30 @@
     ],
     "quote": "Attach a statement that provides the name, age, and TIN of the child or eligible adoptee. / If the child died before you obtained a TIN, then write that the child died on the statement and include a copy of the child’s birth certificate, death certificate, or hospital records.",
     "page": "i5329 p. 5",
-    "why_uncovered": "Exception 19 is encoded: its 1-year window, eligible-adoptee definition and $5,000 cap are applied. Nothing collects the child's name, age and TIN, or produces the required statement and supporting records. No refusal covers this either.",
-    "closest_item": "retirement.exception",
+    "why_uncovered": "Exception 19 is computed, but nothing asks for the child's name, age and TIN. Nothing produces, flags or refuses the required attachment.",
+    "closest_item": "retirement.l2_e19",
     "effect": "presentation"
    },
    {
-    "item": "retirement.plan_taxable",
+    "item": "retirement.screen_refused",
     "sentences": [
      {
-      "quote": "If you receive a nonperiodic distribution before the annuity starting date from a qualified retirement plan, you can generally allocate only part of it to the cost of the contract.",
-      "page": "p575 p. 17"
+      "quote": "You didn’t receive the minimum required distribution from your qualified retirement plan.",
+      "page": "i5329 p. 1"
      },
      {
-      "quote": "For this purpose, your account balance includes only amounts to which you have a nonforfeitable right (a right that can’t be taken away).",
-      "page": "p575 p. 17"
+      "quote": "If you don’t receive the minimum distribution amount, you may have to pay an additional tax on the amount that should have been distributed.",
+      "page": "i1040gi p. 27"
      },
      {
-      "quote": "Under a defined contribution plan, your contributions (and income allocable to those contributions) may be treated as a separate contract for figuring the taxable part of any distribution.",
-      "page": "p575 p. 17"
-     },
-     {
-      "quote": "If you contributed before 1987 to a pension plan that, as of May 5, 1986, permitted you to withdraw your contributions before your separation from service, any distribution before your annuity starting date is tax free to the extent that it, when added to earlier distributions received after 1986, doesn’t exceed your cost as of December 31, 1986.",
-      "page": "p575 p. 17"
-     },
-     {
-      "quote": "If you are a beneficiary of an employee who was covered by any of the retirement plans mentioned, you can exclude from income nonperiodic distributions received that totally relieve the payer from the obligation to pay an annuity.",
-      "page": "p575 p. 34"
-     },
-     {
-      "quote": "The amount that you can exclude is equal to the deceased employee’s investment in the contract (cost).",
-      "page": "p575 p. 34"
+      "quote": "If there are no distributions, or if the distributions aren't large enough, you may have to pay an excise tax on the amount not distributed as required.",
+      "page": "p590b p. 6"
      }
     ],
-    "quote": "If you receive a nonperiodic distribution before the annuity starting date from a qualified retirement plan, you can generally allocate only part of it to the cost of the contract. / For this purpose, your account balance includes only amounts to which you have a nonforfeitable right (a right that can’t be taken away). / Under a defined contribution plan, your contributions (and income allocable to those contributions) may be treated as a separate contract for figuring the taxable part of any distribution. / If you contributed before 1987 to a pension plan that, as of May 5, 1986, permitted you to withdraw your contributions before your separation from service, any distribution before your annuity starting date is tax free to the extent that it, when added to earlier distributions received after 1986, doesn’t exceed your cost as of December 31, 1986. / If you are a beneficiary of an employee who was covered by any of the retirement plans mentioned, you can exclude from income nonperiodic distributions received that totally relieve the payer from the obligation to pay an annuity. / The amount that you can exclude is equal to the deceased employee’s investment in the contract (cost).",
-    "page": "p575 p. 17; p575 p. 34",
-    "why_uncovered": "For a nonperiodic plan distribution, the filer answers No to retirement.annuity, and the tool computes box 1 less box 5 less the rollover. The tool never applies the pro-rata cost allocation (cost x amount received / nonforfeitable account balance). It also does not apply the separate-contract option for defined contribution plans, the pre-1987 withdrawable-contribution rule, or the exclusion of the deceased employee's cost for a beneficiary's discharging payment. The special question refuses nonperiodic payments only on or after the annuity starting date, nonqualified annuities, and annuities to an employee's beneficiary. It does not refuse nonperiodic distributions before the annuity starting date, or lump payments to a beneficiary that discharge the contract. The taxable amount is therefore right only if box 5 happens to reflect these rules.",
-    "closest_item": "retirement.plan_taxable",
+    "quote": "You didn’t receive the minimum required distribution from your qualified retirement plan. / If you don’t receive the minimum distribution amount, you may have to pay an additional tax on the amount that should have been distributed. / If there are no distributions, or if the distributions aren't large enough, you may have to pay an excise tax on the amount not distributed as required.",
+    "page": "i5329 p. 1; i1040gi p. 27; p590b p. 6",
+    "why_uncovered": "The encoding computes Form 5329 Part I shares and refuses some other Form 5329 situations. No question asks whether the filer took less than the required minimum distribution, and no refusal fires when a filer owes the excess-accumulation tax. That tax is part of the same Form 5329 filing requirement.",
+    "closest_item": "retirement.screen_refused",
     "effect": "amount"
    }
   ],
@@ -4048,7 +4010,7 @@
     ]
    }
   ],
-  "cost": 0.6559108,
+  "cost": 0.401164,
   "model": "claude-opus-5-5"
  },
  {

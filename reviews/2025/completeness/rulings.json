@@ -48,17 +48,6 @@
    "prompt_sha": "c493eb53bacc6172ce5bf33c562a913414d377215351ee5fb6e95d0eff499d89",
    "line": "dependent.dc_paid"
   },
-  "unruled:dependent#1": {
-   "class": "out of scope",
-   "evidence": "i8863 pp. 1, 3. As dependent#1 of the backlog round (rechecked): f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans; f8863.ban_refused refuses the American opportunity credit when it is Yes.",
-   "prompt_sha": "2bbc1eff25ab815f87ca50e6d8f4947a051e367c4e7edebc6a84a81685dc1d31",
-   "gate": "f8863.ban_refused"
-  },
-  "unruled:dependent#2": {
-   "class": "presentation",
-   "evidence": "i1040gi pp. 17-18. As dependent#3 of the backlog round: the Dependents-section boxes and the more-than-four statement are filing information; every dependent is entered and counted.",
-   "prompt_sha": "2bbc1eff25ab815f87ca50e6d8f4947a051e367c4e7edebc6a84a81685dc1d31"
-  },
   "unruled:eic#1": {
    "class": "covered",
    "evidence": "i1040gi pp. 41, 45. eic.qc_count counts only dependents for whom dependent.eic_child is true, and dependent.eic_child tests dependent.us_half, which asks whether the child lived with you in the United States (the 50 states and the District of Columbia) for more than half of 2025.",
@@ -129,24 +118,6 @@
    "evidence": "p501 p. 6. household.married states the rule: 'if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years.'",
    "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
    "line": "household.married"
-  },
-  "unruled:f1095a#1": {
-   "class": "out of scope",
-   "evidence": "i8962 pp. 15, 17. As f1095a#1 of the backlog round (rechecked): f8962.married_in_2025 asks about a 2025 marriage with coverage before the first full month of marriage (a December marriage always has such coverage); f8962.marriage refuses lines 24 and 25.",
-   "prompt_sha": "40b6bfd585ffbda45649cdc0760577fb6fe566881fe91fb7535d26779ef740c7",
-   "gate": "f8962.marriage"
-  },
-  "unruled:f1095a#2": {
-   "class": "out of scope",
-   "evidence": "i8962 pp. 16-17; p974 p. 27. As f1095a#3/#4 of the backlog round (rechecked): f8962.alloc refuses any policy shared with another tax family, so no Part IV allocation arises; an enrolled individual in no tax family is refused by f8962.other.",
-   "prompt_sha": "40b6bfd585ffbda45649cdc0760577fb6fe566881fe91fb7535d26779ef740c7",
-   "gate": "f8962.alloc"
-  },
-  "unruled:f1095a#3": {
-   "class": "out of scope",
-   "evidence": "i8962 p. 16. As f1095a#2 of the backlog round (rechecked): f8962.other asks whether someone enrolled was not lawfully present and refuses lines 24 and 25.",
-   "prompt_sha": "40b6bfd585ffbda45649cdc0760577fb6fe566881fe91fb7535d26779ef740c7",
-   "gate": "f8962.other"
   },
   "unruled:f2441#1": {
    "class": "covered",
@@ -358,36 +329,6 @@
    "prompt_sha": "ac57b6bad300a0e2f9e0768d0e69834e0a86cbc8e28873cd3d61ecab0fee39dd",
    "line": "person.se_line6"
   },
-  "unruled:f8962#1": {
-   "class": "out of scope",
-   "evidence": "i8962 pp. 3, 8. A filer or spouse someone can claim as a dependent is refused for the whole return by sa.dependent.",
-   "prompt_sha": "12c0b4219fd8e3edd9503bbc37369c131315b1a6b87589093806920fe23ccacc",
-   "gate": "sa.dependent"
-  },
-  "unruled:f8962#2": {
-   "class": "out of scope",
-   "evidence": "i8962 pp. 3, 6. A filer someone can claim as a dependent is refused for the whole return by sa.dependent.",
-   "prompt_sha": "12c0b4219fd8e3edd9503bbc37369c131315b1a6b87589093806920fe23ccacc",
-   "gate": "sa.dependent"
-  },
-  "unruled:f8962#3": {
-   "class": "covered",
-   "evidence": "i8962 p. 9. f8962.applicable takes the estimate exception only when f8962.aptc is true (APTC paid) and f8962.estimate_100 is Yes.",
-   "prompt_sha": "12c0b4219fd8e3edd9503bbc37369c131315b1a6b87589093806920fe23ccacc",
-   "line": "f8962.applicable"
-  },
-  "unruled:f8962#4": {
-   "class": "covered",
-   "evidence": "i8962 pp. 5, 14-15, 17. The f1095a.in_b_* and mo_b questions ask for the correct SLCSP premium when column B is wrong, naming a move and an unreported tax or coverage family change; f1095a.uniform lists the i8962 p. 15 changes and the no-APTC case (BUG-0366); a remaining zero is refused by f8962.b_zero.",
-   "prompt_sha": "12c0b4219fd8e3edd9503bbc37369c131315b1a6b87589093806920fe23ccacc",
-   "line": "f1095a.in_b_jan"
-  },
-  "unruled:f8962#5": {
-   "class": "covered",
-   "evidence": "i8962 pp. 14-15. f1095a.uniform tells the filer to use the corrected column B and to answer no if the correct amount is not the same every month, so line 10 follows the corrected premium (BUG-0366).",
-   "prompt_sha": "12c0b4219fd8e3edd9503bbc37369c131315b1a6b87589093806920fe23ccacc",
-   "line": "f1095a.uniform"
-  },
   "unruled:f8995#1": {
    "class": "covered",
    "evidence": "i8995 p. 3. qbi.dividends asks for box 5 dividends 'after confirming holding-period and related-payment requirements'.",
@@ -552,22 +493,6 @@
    "evidence": "i1040gi p. 89; p525 p. 24. A recovery of another earlier-year deduction (real estate taxes, sales taxes) is a line 8z item of kind recovery, refused by oi8z.recovery.",
    "prompt_sha": "818f7d059360703e44ef0024c9778edd601a1d73704d3d9210ae4c639be5a5c0",
    "gate": "oi8z.recovery"
-  },
-  "unruled:retirement#1": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 27. The statement explaining a rollover into a qualified plan, or one made in 2026, is an attachment; the amount rolled over is asked (retirement.rollover) and excluded. The round-3 fix to retirement.rollover (non-eligible distributions, nonspouse beneficiaries, code S) and the wrongful-levy refusal in retirement.special closed BUG-0414's low (p575 pp. 21, 24; p560 p. 18; i5329 p. 2; rechecked: correct).",
-   "prompt_sha": "2f9dab0131912eb4c8121b2e9db5fc0b2561d257bd4aa0e5b2c0d0e2539109af"
-  },
-  "unruled:retirement#2": {
-   "class": "presentation",
-   "evidence": "i5329 p. 5. As retirement#4 of the T-094 round: the statement with the child's or eligible adoptee's name, age and TIN (or the death documentation) is an attachment; exception 19's conditions are stated in retirement.exception and its $5,000 cap is applied.",
-   "prompt_sha": "2f9dab0131912eb4c8121b2e9db5fc0b2561d257bd4aa0e5b2c0d0e2539109af"
-  },
-  "unruled:retirement#3": {
-   "class": "covered",
-   "evidence": "p575 pp. 17, 34; i1099r pp. 13, 15. As screen group 9 and 10, finding 1: retirement.plan_simple subtracts box 5 (retirement.plan_excluded) for any plan distribution, periodic or not, and box 5 is the employee's cost 'that the employee may recover tax free this year', which the payer must 'make every effort to compute' (box 2b). The pro-rata, separate-contract, pre-1987 and beneficiary-discharge rules are how that amount is figured. The round-3 fix (retirement.annuity, and retirement.special for single-sum, full-discharge and reduced-payment nonperiodic payments on or after the annuity starting date) closed BUG-0414's low; the single-sum payment treated as received before the starting date is refused.",
-   "prompt_sha": "2f9dab0131912eb4c8121b2e9db5fc0b2561d257bd4aa0e5b2c0d0e2539109af",
-   "line": "retirement.plan_simple"
   },
   "unruled:s1#1": {
    "class": "presentation",
@@ -866,6 +791,78 @@
    "evidence": "i2441 p. 5. As w2#4 of the refresh round: s8812.combat_pay asks about nontaxable combat pay and refuses Form 2441 lines 4, 5, 18 and 19.",
    "prompt_sha": "b09d0516a0fd8987fce1e3c82d700704a06f52f71355b8ccf8fff4164be906dc",
    "gate": "s8812.combat_pay"
+  },
+  "unruled:dependent#1": {
+   "class": "out of scope",
+   "evidence": "i8863 pp. 1, 3. As dependent#1 of the prior review (rechecked): f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans; f8863.ban_refused refuses the American opportunity credit when it is Yes.",
+   "gate": "f8863.ban_refused",
+   "prompt_sha": "c43c1b44361949f0f926ee95bb9b9da5f8c115c886a0eb1ace597d3c6763055d"
+  },
+  "unruled:f1095a#1": {
+   "class": "out of scope",
+   "evidence": "i8962 pp. 15, 17. As f1095a#1 of the prior review (rechecked): f8962.married_in_2025 asks about a 2025 marriage with coverage before the first full month of marriage; f8962.marriage refuses lines 24 and 25, so the pre-marriage column B rule never meets a computed return.",
+   "gate": "f8962.marriage",
+   "prompt_sha": "9d1c5eeca15fcc2c78481befaac6badc908eef73a807d412ac5174baf8197cc9"
+  },
+  "unruled:f1095a#2": {
+   "class": "out of scope",
+   "evidence": "i8962 p. 16; p974 p. 27. As f1095a#2 and #3 of the prior review (rechecked): f8962.alloc refuses any policy shared with another tax family, so no Part IV allocation of column A arises, and f8962.other ('someone enrolled in a Marketplace policy was not lawfully present in the United States') refuses lines 24 and 25.",
+   "gate": "f8962.alloc",
+   "prompt_sha": "9d1c5eeca15fcc2c78481befaac6badc908eef73a807d412ac5174baf8197cc9"
+  },
+  "unruled:f1095a#3": {
+   "class": "out of scope",
+   "evidence": "i8962 p. 16. As f1095a#2 above, for column B: f8962.alloc refuses shared policies and f8962.other refuses an enrollee not lawfully present.",
+   "gate": "f8962.alloc",
+   "prompt_sha": "9d1c5eeca15fcc2c78481befaac6badc908eef73a807d412ac5174baf8197cc9"
+  },
+  "unruled:f1095a#4": {
+   "class": "out of scope",
+   "evidence": "i8962 p. 17; p974 p. 27. As f1095a#2 of the prior review: f8962.alloc refuses shared policies, and f8962.other ('advance payments were made for someone who is in no one's tax family') refuses lines 24 and 25 when an enrolled individual is in no tax family.",
+   "gate": "f8962.other",
+   "prompt_sha": "9d1c5eeca15fcc2c78481befaac6badc908eef73a807d412ac5174baf8197cc9"
+  },
+  "unruled:f8962#1": {
+   "class": "out of scope",
+   "evidence": "i8962 pp. 3, 6, 9. As f8962#1 and #2 of the prior review: a filer or spouse someone can claim as a dependent is refused for the whole return by sa.dependent.",
+   "gate": "sa.dependent",
+   "prompt_sha": "0c61090f80fbdf2653d0745c84fd826a935413a389433b3ce990672af7001b77"
+  },
+  "unruled:f8962#2": {
+   "class": "covered",
+   "evidence": "i8962 pp. 5, 14-15, 17. As f8962#4 and #5 of the prior review (rechecked against the R2 text): f1095a.uniform tells the filer to use the corrected column B, explains that it can be blank, zero or wrong when no advance payments were made, and lists the unreported changes (a newborn, part-year enrollment, MEC eligibility, a tax family different from what the Marketplace was told, a death, a move); the in_b_* and mo_b questions ask for the correct SLCSP premium. A wrong nonzero column B is therefore corrected by the filer, and a remaining zero is refused by f8962.b_zero.",
+   "line": "f1095a.uniform",
+   "prompt_sha": "0c61090f80fbdf2653d0745c84fd826a935413a389433b3ce990672af7001b77"
+  },
+  "unruled:retirement#1": {
+   "class": "presentation",
+   "evidence": "i1040gi p. 27. As retirement#1 of the prior review: the statement explaining a rollover into a qualified plan, or one made in 2026, is an attachment; the amount rolled over is asked (retirement.rollover) and excluded.",
+   "prompt_sha": "377a98553625cb07e87d01d528797703544943cd90d7f4045b8ef8d1d70a1ad5"
+  },
+  "unruled:retirement#2": {
+   "class": "real gap",
+   "evidence": "p575 p. 21, Rollovers to SIMPLE retirement accounts, '1. During the first 2 years of participation in a SIMPLE retirement account, you may roll over amounts from one SIMPLE retirement account into another SIMPLE retirement account.' retirement.rollover counts an amount rolled over to 'an IRA other than a Roth IRA' and limits only code S distributions out of a SIMPLE IRA; it does not exclude a plan or non-SIMPLE IRA distribution rolled into a SIMPLE IRA in the first 2 years of participation, which is not a rollover and stays taxable. The words predate R2 (kept word for word). Low; BUG-0435.",
+   "bug": "BUG-0435",
+   "line": "retirement.rollover",
+   "prompt_sha": "377a98553625cb07e87d01d528797703544943cd90d7f4045b8ef8d1d70a1ad5"
+  },
+  "unruled:retirement#3": {
+   "class": "real gap",
+   "evidence": "i5329 p. 5; p590b p. 28. retirement.exception requires that an exception's conditions are met and names the Form 5329 table, but states the conditions of exceptions 20 (the physician's certification and the 84-month test) and 22 (the 1-year period) only through that table; the tool does not test them. Open in BUG-0369 (T-175), as completeness f5329#1. The words predate R2 (kept word for word).",
+   "bug": "BUG-0369",
+   "line": "retirement.exception",
+   "prompt_sha": "377a98553625cb07e87d01d528797703544943cd90d7f4045b8ef8d1d70a1ad5"
+  },
+  "unruled:retirement#4": {
+   "class": "presentation",
+   "evidence": "i5329 p. 5. As retirement#2 of the prior review: the statement with the child's or eligible adoptee's name, age and TIN (or the death documentation) is an attachment; exception 19's conditions are stated in retirement.exception and its $5,000 cap is applied.",
+   "prompt_sha": "377a98553625cb07e87d01d528797703544943cd90d7f4045b8ef8d1d70a1ad5"
+  },
+  "unruled:retirement#5": {
+   "class": "out of scope",
+   "evidence": "i5329 p. 1, Part IX; i5329 p. 9. person.x_other asks whether 'a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)' applies and refuses the Form 5329 parts the tool does not prepare.",
+   "gate": "person.x_other",
+   "prompt_sha": "377a98553625cb07e87d01d528797703544943cd90d7f4045b8ef8d1d70a1ad5"
   }
  }
 }

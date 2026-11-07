@@ -612,6 +612,15 @@
    "context": "68ea7e261b6ddd60d491a370f5604e9636c98e21babac3b609c03bb6ba81fa86"
   },
   {
+   "printed": "24",
+   "restated": "Choose — [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = false → helper \"Year parameter sales.zero\"] [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = true → helper \"The PTC allowed: line 11, column (e), or lines 12 through 23, column (e), added\"]",
+   "model": "The restatement enters the line 11(e) or lines 12–23(e) total whenever the line 5 or Marketplace-estimate test is met. It never tests filing status, and no refusal excludes married filing separately. The IRS says 'If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC ... enter -0- on line 24' (see also Form line A, 'You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception').",
+   "ruling": "Ruling: scope — i8962 p. 16, \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC. You must repay some or all of the APTC entered on line 11, column (f). To complete the rest of the form, skip lines 12 through 23, enter -0- on line 24\". No married filing separately return is completed: gate s3.mfs (forms/2025/s3.yaml, f1040.status mfs) refuses through scope.ready, Exception 2 included, as the prior ruling. The applicable-taxpayer helper therefore never meets a married filing separately filer, and the restatement is faithful to the project line. The finding does not touch the restructured questions.",
+   "context": "170b35c6d808e9562610fc9f8888de6a92374f8a1fd47ce6493fcedb8bfee959",
+   "date": "2026-11-07",
+   "run": "26ecf659b09940040f7ee98b1ab7f9b473b197270867373d2385db61678feeb6"
+  },
+  {
    "printed": "28",
    "restated": "Choose — [line 5 ≥ 0 (a count) and line 5 < 200 (a count) → helper \"Table 5 limitation, line 5 below 200\"] [line 5 ≥ 200 (a count) and line 5 < 300 (a count) → helper \"Table 5 limitation, line 5 below 300\"] [line 5 ≥ 300 (a count) and line 5 < 400 (a count) → helper \"Table 5 limitation, line 5 below 400\"] [line 5 ≥ 400 (a count) → line 27]",
    "model": "The Table 5 amounts and bands match. The restatement omits \"If you are self-employed and are claiming the self-employed health insurance deduction, see Self-Employed Health Insurance Deduction and PTC in Pub. 974 for the amount to enter on line 28\", and no refusal covers that case.",

@@ -97,26 +97,27 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Does any of these apply: someone enrolled in a Marketplace policy was not lawfully present in the United
-        States; for any month, anyone in your tax family was eligible for minimum essential coverage other than coverage
-        in the individual market, including Medicare Part A or Part C, Medicaid, the Children''s Health Insurance Program
-        (CHIP), TRICARE, certain benefits for veterans and their families, health coverage for Peace Corps volunteers,
-        employer-sponsored coverage that was offered and was affordable and provided minimum value (other than during a
-        waiting period before the benefits begin; the offer is affordable for the employee if the employee''s share of the
-        annual cost of self-only coverage is not more than 9.02% of household income (Form 8962, line 3), whatever family
-        coverage costs, and for another member of the tax family allowed to enroll if the employee''s share of the annual
-        cost of coverage for the employee and the family members allowed to enroll is not more than 9.02% of household
-        income), employer-sponsored coverage the person actually enrolled in (including
-        COBRA or retiree coverage) even if it was not affordable or did not provide minimum value, or other health coverage
-        the Department of Health and Human Services designates as minimum essential coverage; you or a family member were
-        offered or covered by a qualified small employer HRA (QSEHRA, W-2 box 12 code FF) or an individual coverage HRA
-        for 2025; any part of a month''s premium was not paid by the due date of your return, not including extensions (or,
-        for coverage you enrolled in retroactively after a successful eligibility appeal, by the 120th day after the appeals
-        decision), or a Form 1095-A shows zero in column A for a month whose premium you paid; advance payments were made
-        for someone who is in no one''s tax family; a Marketplace determination that you or a family member was ineligible
-        for Medicaid or CHIP was later found to be based on incorrect information given with intentional or reckless
-        disregard for the facts; or someone enrolled was incarcerated, other than pending disposition of charges such as
-        awaiting trial? Do not count coverage bought in the individual market outside the Marketplace.'
+      source: |-
+        Does any of these apply?
+
+        - someone enrolled in a Marketplace policy was not lawfully present in the United States
+        - for any month, anyone in your tax family was eligible for minimum essential coverage other than coverage in the individual market, including:
+          - Medicare Part A or Part C
+          - Medicaid
+          - the Children's Health Insurance Program (CHIP)
+          - TRICARE
+          - certain benefits for veterans and their families
+          - health coverage for Peace Corps volunteers
+          - employer-sponsored coverage that was offered and was affordable and provided minimum value (other than during a waiting period before the benefits begin; the offer is affordable for the employee if the employee's share of the annual cost of self-only coverage is not more than 9.02% of household income (Form 8962, line 3), whatever family coverage costs, and for another member of the tax family allowed to enroll if the employee's share of the annual cost of coverage for the employee and the family members allowed to enroll is not more than 9.02% of household income)
+          - employer-sponsored coverage the person actually enrolled in (including COBRA or retiree coverage) even if it was not affordable or did not provide minimum value
+          - other health coverage the Department of Health and Human Services designates as minimum essential coverage
+        - you or a family member were offered or covered by a qualified small employer HRA (QSEHRA, W-2 box 12 code FF) or an individual coverage HRA for 2025
+        - any part of a month's premium was not paid by the due date of your return, not including extensions (or, for coverage you enrolled in retroactively after a successful eligibility appeal, by the 120th day after the appeals decision), or a Form 1095-A shows zero in column A for a month whose premium you paid
+        - advance payments were made for someone who is in no one's tax family
+        - a Marketplace determination that you or a family member was ineligible for Medicaid or CHIP was later found to be based on incorrect information given with intentional or reckless disregard for the facts
+        - someone enrolled was incarcerated, other than pending disposition of charges such as awaiting trial
+
+        Do not count coverage bought in the individual market outside the Marketplace.
     cite:
       doc: i8962
       locator: p. 5, "An individual in your tax family who is eligible for MEC (except coverage in the individual market)
@@ -156,12 +157,13 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Did either of these happen: Marketplace coverage reported on a Form 1095-A (a qualified health plan) for
-        anyone in your tax family began after the first day of a 2025 month, other than coverage effective on the date of
-        a birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order placing
-        the individual with your family (those count from the first day of the month); or were any premiums for a 2025
-        month of that Marketplace coverage refunded in 2025? A start date of other coverage (employer, Medicaid, or a
-        catastrophic, stand-alone dental or SHOP plan) does not count here.'
+      source: |-
+        Did either of these happen?
+
+        - Marketplace coverage reported on a Form 1095-A (a qualified health plan) for anyone in your tax family began after the first day of a 2025 month, other than coverage effective on the date of a birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order placing the individual with your family (those count from the first day of the month)
+        - any premiums for a 2025 month of that Marketplace coverage were refunded in 2025
+
+        A start date of other coverage (employer, Medicaid, or a catastrophic, stand-alone dental or SHOP plan) does not count here.
     cite:
       doc: i8962
       locator: p. 4, "Generally, if coverage in a qualified health plan began after the first day of the month, you are

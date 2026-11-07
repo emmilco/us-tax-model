@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 138 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.6% (312/4127 second-family lines judged; pending reviews are provisional); 66 eligible, 72 pending; raw agreement 81.3% (diagnostic only); current independence yield 162 line(s); both families disputed 546
+Summary: 137 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.3% (299/4098 second-family lines judged; pending reviews are provisional); 66 eligible, 71 pending; raw agreement 81.8% (diagnostic only); current independence yield 147 line(s); both families disputed 534
 
 Written by `tools/transcription/compare_families.py` on 2026-11-07 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -21,10 +21,9 @@ Written by `tools/transcription/compare_families.py` on 2026-11-07 from the revi
 | clcw | deepseek (deepseek-flash) | 13 | 13 | 100.0% | 0/13 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | clcw26 | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 1/13 (7.7%) | pending | 1 | 0 | 0 | 0 |
 | dcprov | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pending | 0 | 0 | 0 | 0 |
-| dependent | deepseek (deepseek-flash) | 22 | 1 | 4.5% | 17/22 (77.3%) | pending | 2 | 17 | 2 | 0 |
+| dependent | deepseek (deepseek-flash) | 22 | 1 | 4.5% | 18/22 (81.8%) | pending | 0 | 20 | 1 | 0 |
 | div | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | pending | 0 | 0 | 0 | 0 |
 | f1040 | deepseek (deepseek-flash) | 52 | 39 | 75.0% | 11/52 (21.2%) | pending | 8 | 5 | 0 | 0 |
-| f1095a | deepseek (deepseek-flash) | 29 | 1 | 3.4% | 15/29 (51.7%) | pending | 13 | 15 | 0 | 0 |
 | f2441 | deepseek (deepseek-flash) | 34 | 7 | 20.6% | 23/34 (67.6%) | pending | 19 | 7 | 1 | 3 |
 | f2441 | gpt (gpt-6-astra) | 37 | 25 | 67.6% | 8/37 (21.6%) | pending | 4 | 8 | 0 | 0 |
 | f4562 | deepseek (deepseek-flash) | 15 | 1 | 6.7% | 0/15 (0.0%) | pending | 0 | 14 | 0 | 0 |
@@ -34,7 +33,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-07 from the revi
 | f8863 | deepseek (deepseek-flash) | 28 | 1 | 3.6% | 22/28 (78.6%) | pending | 0 | 27 | 0 | 0 |
 | f8880 | deepseek (deepseek-flash) | 21 | 6 | 28.6% | 15/21 (71.4%) | pending | 7 | 8 | 0 | 0 |
 | f8959 | deepseek (deepseek-flash) | 24 | 22 | 91.7% | 0/24 (0.0%) | pending | 0 | 2 | 0 | 0 |
-| f8962 | deepseek (deepseek-flash) | 97 | 0 | 0.0% | 3/97 (3.1%) | pending | 0 | 95 | 2 | 0 |
+| f8962 | deepseek (deepseek-flash) | 97 | 0 | 0.0% | 4/97 (4.1%) | pending | 0 | 95 | 2 | 0 |
 | f8995 | deepseek (deepseek-flash) | 16 | 7 | 43.8% | 0/16 (0.0%) | pending | 4 | 5 | 0 | 0 |
 | f8995a | deepseek (deepseek-flash) | 14 | 2 | 14.3% | 9/14 (64.3%) | pending | 7 | 5 | 0 | 0 |
 | ftc | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 0 | 1 | 0 | 0 |
@@ -66,18 +65,17 @@ Written by `tools/transcription/compare_families.py` on 2026-11-07 from the revi
 | tcw | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 0 | 0.0% | 7/18 (38.9%) | pending | 0 | 18 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 872 | 290 | 33.3% | | | 92 | 468 | 22 | 3 |
+| **all** | | 843 | 289 | 34.3% | | | 77 | 456 | 21 | 3 |
 
 Pending aqee [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending carloan [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending clcw [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending clcw26 [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending dcprov [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending dependent [deepseek]: model-error noise above 10%; no passing current source-based partial-input checks: deepseek.
+Pending dependent [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails; no passing current source-based partial-input checks: deepseek.
 Excluded internal adapters for div: div.screen. Original logs/rulings are preserved; separate engineering checks earn no independent tax-evidence credit.
 Pending div [deepseek]: no source-defined computed targets; internal adapter checks earn no tax-evidence credit; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f1040 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
-Pending f1095a [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending f2441 [deepseek]: 3 missing expected lines; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending f2441 [gpt]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for gpt: required input/interface wording is missing or stale.
 Pending f4562 [deepseek]: 14 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
@@ -107,7 +105,7 @@ Pending s1a [deepseek]: model-error noise above 10%; no passing current expressi
 Pending s2 [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending s8812 [deepseek]: model-error noise above 10%; no passing current expression type validation: claude, deepseek; no verified current request context for claude: current expression/refusal validation fails; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending sa [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
-Pending sales [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
+Pending sales [deepseek]: no verified current request context for claude: pass 82f67b365891: saved prompt differs from the pass's receipt; no verified current request context for deepseek: pass 82f67b365891: saved prompt differs from the pass's receipt.
 Pending sb [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending scope [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending sd [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -124,8 +122,6 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | form | second family | line | second family's verdict | second family's reason |
 | --- | --- | --- | --- | --- |
 | clcw26 | deepseek | 3 | DISAGREE | (no reason given) |
-| dependent | deepseek | dependent.eic_child | DISAGREE | (no reason given) |
-| dependent | deepseek | dependent.eic_ssn_child | DISAGREE | (no reason given) |
 | f1040 | deepseek | 19 | DISAGREE | (no reason given) |
 | f1040 | deepseek | 1a | DISAGREE | (no reason given) |
 | f1040 | deepseek | 25a | DISAGREE | (no reason given) |
@@ -134,19 +130,6 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f1040 | deepseek | 2b | DISAGREE | (no reason given) |
 | f1040 | deepseek | 3b | DISAGREE | (no reason given) |
 | f1040 | deepseek | 6d | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_apr | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_aug | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_dec | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_feb | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_jan | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_jul | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_jun | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_mar | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_may | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_nov | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_oct | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_sep | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.line33c | DISAGREE | (no reason given) |
 | f2441 | deepseek | 10 | DISAGREE | The supplied catalog has no Schedule 3 line 6l or Form 8978 amount; only Schedule 3 line 1 is subtracted. |
 | f2441 | deepseek | 11 | DISAGREE | (no reason given) |
 | f2441 | deepseek | 12 | DISAGREE | Only Form W-2 box 10 benefits are computed; sole-proprietorship or partnership benefits are refused through scope.other_income. |
@@ -222,8 +205,8 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | --- | --- | --- | --- | --- | --- |
 | carloan | deepseek | 22(ii) | DISAGREE | DISAGREE | (no reason given) |
 | carloan | deepseek | 22(iii) | DISAGREE | DISAGREE | (no reason given) |
-| dependent | deepseek | 2(c) | DISAGREE | DISAGREE | For a person age 13 at the end of 2025, the checkbox depends on whether any care was provided after age 12; when dc_over12_care is not answered the result is unknown. |
-| dependent | deepseek | 2(d) | DISAGREE | DISAGREE | (no reason given) |
+| dependent | deepseek | 2(c) | DISAGREE | DISAGREE | When age is exactly 13, the dc_over12_care answer controls. For younger ages the box is false. For older ages it is true when disabled care expenses were paid. |
+| dependent | deepseek | 2(d) | DISAGREE | DISAGREE | The supplied dc_paid is taken as the column (d) amount; the return-level Part III benefit subtraction is handled by Form 2441. |
 | dependent | deepseek | 27 | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | 28 | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | 29 | DISAGREE | DISAGREE | (no reason given) |
@@ -233,7 +216,10 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | dependent | deepseek | dependent.claimed | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.ctc_amount | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.ctc_child | DISAGREE | DISAGREE | (no reason given) |
+| dependent | deepseek | dependent.dc_count | DISAGREE | DISAGREE | Return-level count over the dependent entries. |
 | dependent | deepseek | dependent.dc_qp | DISAGREE | DISAGREE | (no reason given) |
+| dependent | deepseek | dependent.eic_child | DISAGREE | DISAGREE | (no reason given) |
+| dependent | deepseek | dependent.eic_ssn_child | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.hoh_absence | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.hoh_test1 | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.hoh_test2 | DISAGREE | DISAGREE | (no reason given) |
@@ -244,21 +230,6 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f1040 | deepseek | 28 (box) | DISAGREE | DISAGREE | (no reason given) |
 | f1040 | deepseek | 29 | DISAGREE | DISAGREE | (no reason given) |
 | f1040 | deepseek | 6c | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_apr | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_aug | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_dec | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_feb | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_jan | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_jul | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_jun | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_mar | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_may | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_nov | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_oct | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_sep | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_used | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.line33a | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.line33b | DISAGREE | DISAGREE | (no reason given) |
 | f2441 | deepseek | 1 (box) | DISAGREE | DISAGREE | (no reason given) |
 | f2441 | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
 | f2441 | deepseek | 2 (box) | DISAGREE | DISAGREE | (no reason given) |
@@ -847,7 +818,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | --- | --- | --- | --- | --- | --- |
 | asset | deepseek | (c) | MISMATCH | MISMATCH | IRS column (c) says: 'To find the basis for depreciation, multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property.' The restatement only multiplies cost by the business-use percentage and omits the required subtraction. |
 | carloan | deepseek | 22(ii) | MISMATCH | MISMATCH | The IRS text says 'enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F),' but the restatement computes only the QPVLI part of Schedule C interest and omits other elsewhere-deducted QPVLI such as Schedule E or Schedule F. |
-| dependent | deepseek | 2(d) | MISMATCH | MISMATCH | The IRS column (d) instruction says, 'If you completed Part III, don't include in column (d) any benefits shown on line 28.' The helper instead includes expenses paid with dependent care benefits and only says Form 2441 subtracts the excluded benefits later. |
+| dependent | deepseek | 2(d) | MISMATCH | MISMATCH | The helper includes 'expenses paid with dependent care benefits', but Form 2441 line 2(d) instructions say 'If you completed Part III, don't include in column (d) any benefits shown on line 28.' |
 | f1040 | deepseek | 29 | UNCLEAR | MISMATCH | The eligibility test uses only expenses paid and dependent status, but Form 8863 instructions state, for example, 'You cannot claim an education credit ... if ... Your filing status is married filing separately' and impose other eligibility limits. |
 | f1095a | deepseek | b_counted | MISMATCH | MISMATCH | The IRS rule is monthly: if more than one Form 1095-A shows coverage in a particular month from the same state, enter column B from only one form. The 'covers every month this one does' test can leave both partially overlapping same-state forms counted, double-counting the overlapping months. |
 | f2441 | deepseek | 18 | MISMATCH | MISMATCH | Line 18 uses the same incomplete earned-income base, W-2 box 1 plus Worksheet B, instead of Form 1040 line 1z; it also excludes only line 1e rather than implementing the instruction that earned income doesn't include dependent care benefits shown on line 12. |

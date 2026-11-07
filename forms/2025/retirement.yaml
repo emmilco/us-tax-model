@@ -57,19 +57,23 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: Amount of this distribution you rolled over within 60 days to a qualified plan or an IRA other than
-        a Roth IRA (for a direct rollover, code G, the whole distribution is treated as rolled over). Also count an amount
-        rolled over after the 60 days if the 60-day requirement was waived (you qualify for an automatic waiver, you
-        self-certify that you meet the requirements of a waiver, or you received a private letter ruling granting a waiver)
-        or the period was extended because the amount was a frozen deposit, and an IRA distribution to buy, build or rebuild
-        a first home that you contributed back to a traditional IRA within 120 days of the distribution because the purchase
-        or construction was canceled or delayed. Do not count any part of a required minimum distribution, which is not
-        eligible for rollover, nor, from a pension, annuity, 401(k), 403(b) or 457(b) plan, any part of a series of
-        substantially equal payments over your life or life expectancy (or yours and your beneficiary's) or over 10 years
-        or more, a hardship distribution, dividends on employer securities, or the cost of life insurance coverage. If you
-        received this distribution as a beneficiary other than the surviving spouse, count only an amount paid by direct
-        trustee-to-trustee transfer to an inherited IRA. For code S (a SIMPLE IRA in its first 2 years), count only an
-        amount rolled over to another SIMPLE IRA.
+      source: |-
+        Amount of this distribution you rolled over within 60 days to a qualified plan or an IRA other than a Roth IRA (for a direct rollover, code G, the whole distribution is treated as rolled over).
+
+        Also count:
+        - an amount rolled over after the 60 days if the 60-day requirement was waived (you qualify for an automatic waiver, you self-certify that you meet the requirements of a waiver, or you received a private letter ruling granting a waiver) or the period was extended because the amount was a frozen deposit
+        - an IRA distribution to buy, build or rebuild a first home that you contributed back to a traditional IRA within 120 days of the distribution because the purchase or construction was canceled or delayed
+
+        Do not count any part of a required minimum distribution, which is not eligible for rollover, nor any of these from a pension, annuity, 401(k), 403(b) or 457(b) plan:
+
+        - any part of a series of substantially equal payments over your life or life expectancy (or yours and your beneficiary's) or over 10 years or more
+        - a hardship distribution
+        - dividends on employer securities
+        - the cost of life insurance coverage
+
+        If you received this distribution as a beneficiary other than the surviving spouse, count only an amount paid by direct trustee-to-trustee transfer to an inherited IRA.
+
+        For code S (a SIMPLE IRA in its first 2 years), count only an amount rolled over to another SIMPLE IRA.
     cite:
       doc: i1040gi
       locator: p. 27, Exception 1 (IRA rollovers); p. 30, Rollovers; p575 p. 21, Eligible rollover distribution, "An
@@ -91,20 +95,61 @@ form:
         contribution is treated as a rollover contribution to the IRA."
   - id: retirement.special
     printed: (helper)
-    label: 'Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess
-      deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
-      contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
-      a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
-      a distribution of employer securities with net unrealized appreciation (an amount in box 6); a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments; a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F); a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree''s annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
+    label: |-
+      Does this distribution involve any of these?
+
+      - a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack
+      - a corrective distribution of excess deferrals or contributions
+      - a qualified charitable distribution or HSA funding distribution
+      - nondeductible contributions to any traditional IRA
+      - a conversion or recharacterization (Form 8606)
+      - a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025
+      - a rollover to a Roth IRA or designated Roth account
+      - a lump-sum distribution you may report on Form 4972
+      - a distribution of employer securities with net unrealized appreciation (an amount in box 6)
+      - a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments
+      - a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA
+      - a nonqualified annuity
+      - the retired public safety officer premium exclusion
+      - a death benefit exclusion
+      - a military disability pension
+      - an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these)
+      - a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead
+      - a rollover of a distribution under a qualified domestic relations order
+      - a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F)
+      - a plan loan offset
+      - a Form RRB-1099-R
+      - U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721)
+      - a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)
     type: Bool
     expr:
       op: input
-      source: 'Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess
-        deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
-        contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
-        a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
-        a distribution of employer securities with net unrealized appreciation (an amount in box 6); a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments; a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F);
-        a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree''s annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
+      source: |-
+        Does this distribution involve any of these?
+
+        - a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack
+        - a corrective distribution of excess deferrals or contributions
+        - a qualified charitable distribution or HSA funding distribution
+        - nondeductible contributions to any traditional IRA
+        - a conversion or recharacterization (Form 8606)
+        - a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025
+        - a rollover to a Roth IRA or designated Roth account
+        - a lump-sum distribution you may report on Form 4972
+        - a distribution of employer securities with net unrealized appreciation (an amount in box 6)
+        - a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments
+        - a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA
+        - a nonqualified annuity
+        - the retired public safety officer premium exclusion
+        - a death benefit exclusion
+        - a military disability pension
+        - an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these)
+        - a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead
+        - a rollover of a distribution under a qualified domestic relations order
+        - a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F)
+        - a plan loan offset
+        - a Form RRB-1099-R
+        - U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721)
+        - a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)
     cite:
       doc: i1040gi
       locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
@@ -145,13 +190,19 @@ form:
     type: Bool
     expr:
       op: input
-      source: Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity,
-        paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting
-        date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed
-        payments? (This is when the Simplified Method applies. If you are the survivor of a retiree, answer for the retiree's
-        annuity, with its starting date and the retiree's age on that date. A nonperiodic payment received on or after the
-        annuity starting date, one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only
-        such a payment, answer No; if box 1 also includes the periodic payments, answer for those payments.)
+      source: |-
+        Is this a pension or annuity to which all of these apply?
+
+        - from a qualified plan, section 403(b) plan or tax-sheltered annuity
+        - paid in periodic payments in which you have after-tax cost (box 9b or your records)
+        - with an annuity starting date after November 18, 1996
+        - on that date you were under age 75 or had fewer than 5 years of guaranteed payments
+
+        This is when the Simplified Method applies.
+
+        If you are the survivor of a retiree, answer for the retiree's annuity, with its starting date and the retiree's age on that date.
+
+        A nonperiodic payment received on or after the annuity starting date, one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only such a payment, answer No; if box 1 also includes the periodic payments, answer for those payments.
     cite:
       doc: i1040gi
       locator: p. 30, Simplified Method, conditions 1 and 2; p. 28, Partially Taxable Pensions and Annuities; p575 p. 16,
@@ -1371,28 +1422,19 @@ form:
     type: Enum(early_exception)
     expr:
       op: input
-      source: Which exception to the 10% additional tax applies to this distribution? Enter the number from the table in the
-        Form 5329 instructions (for example 02 substantially equal periodic payments, 03 disability, 05 medical expenses, 08
-        higher education expenses, 09 first home, 12 incorrectly coded as early, 19 birth or adoption, 20 terminal illness),
-        or none. An exception applies only if its conditions are met, for example 01, a qualified retirement plan distribution
-        (not an IRA) received after you separated from service in or after the year you reached age 55 (age 50 for qualified
-        public safety employees and private sector firefighters) or after 25 years of service under the plan, whichever is
-        earlier; 02, payments made at least annually for your life (or life expectancy) or the joint lives (or joint life
-        expectancies) of you and your designated beneficiary, which from an employer plan must begin after separation from
-        service; 03, total and permanent disability, if you can furnish proof that you can't do any substantial gainful
-        activity because of your physical or mental condition and a medical determination has been made that the condition
-        can be expected to result in death or to be of long, continued, and indefinite duration; 04, a distribution due to
-        death (not from a modified endowment contract); 09, an IRA distribution for a first home, only if you had no present
-        interest in a main home during the 2-year period ending on the date of acquisition (the date you entered into a
-        binding contract to buy it, or building or rebuilding began) and, if you are married, your spouse also meets this
-        no-ownership requirement; 11, a qualified reservist distribution, only if you were ordered or called to active duty
-        after September 11, 2001, for more than 179 days or for an indefinite period because you are a member of a reserve
-        component, the distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k)
-        or 403(b) plan or a similar arrangement, and it was made no earlier than the date of the order or call and no later
-        than the close of the active duty period; 19, a qualified birth or adoption distribution, only if made during the
-        1-year period beginning on the date your child was born or the legal adoption was finalized, an adopted child being
-        an eligible adoptee (not the child of your spouse, and under age 18 or physically or mentally incapable of
-        self-support).
+      source: |-
+        Which exception to the 10% additional tax applies to this distribution?
+
+        Enter the number from the table in the Form 5329 instructions (for example 02 substantially equal periodic payments, 03 disability, 05 medical expenses, 08 higher education expenses, 09 first home, 12 incorrectly coded as early, 19 birth or adoption, 20 terminal illness), or none.
+
+        An exception applies only if its conditions are met, for example:
+        - 01, a qualified retirement plan distribution (not an IRA) received after you separated from service in or after the year you reached age 55 (age 50 for qualified public safety employees and private sector firefighters) or after 25 years of service under the plan, whichever is earlier
+        - 02, payments made at least annually for your life (or life expectancy) or the joint lives (or joint life expectancies) of you and your designated beneficiary, which from an employer plan must begin after separation from service
+        - 03, total and permanent disability, if you can furnish proof that you can't do any substantial gainful activity because of your physical or mental condition and a medical determination has been made that the condition can be expected to result in death or to be of long, continued, and indefinite duration
+        - 04, a distribution due to death (not from a modified endowment contract)
+        - 09, an IRA distribution for a first home, only if you had no present interest in a main home during the 2-year period ending on the date of acquisition (the date you entered into a binding contract to buy it, or building or rebuilding began) and, if you are married, your spouse also meets this no-ownership requirement
+        - 11, a qualified reservist distribution, only if you were ordered or called to active duty after September 11, 2001, for more than 179 days or for an indefinite period because you are a member of a reserve component, the distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k) or 403(b) plan or a similar arrangement, and it was made no earlier than the date of the order or call and no later than the close of the active duty period
+        - 19, a qualified birth or adoption distribution, only if made during the 1-year period beginning on the date your child was born or the legal adoption was finalized, an adopted child being an eligible adoptee (not the child of your spouse, and under age 18 or physically or mentally incapable of self-support)
     cite:
       doc: i5329
       locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
@@ -1438,14 +1480,15 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: 'Amount of this distribution that the exception covers (the tool applies the dollar limits per person). Medical
-        expenses (05), birth or adoption (19) and domestic abuse (22): the amount of the distribution that qualifies, whatever
-        it was spent on; for 05 the tool limits it to the medical expenses above 7.5% of AGI, and for 22 enter no more than
-        50% of the present value of the IRA or plan account. First home (09): the amount used to pay qualified acquisition costs
-        before the close of the 120th day after the day you received it. Emergency expenses (23): no more than your total interest
-        in the IRA or plan account minus $1,000. Health insurance premiums while unemployed (07): the premiums you paid. Higher
-        education (08): your adjusted qualified education expenses (Pub. 970, chapter 8). Other exceptions: the amount the exception
-        covers.'
+      source: |-
+        Amount of this distribution that the exception covers (the tool applies the dollar limits per person).
+
+        - Medical expenses (05), birth or adoption (19) and domestic abuse (22): the amount of the distribution that qualifies, whatever it was spent on; for 05 the tool limits it to the medical expenses above 7.5% of AGI, and for 22 enter no more than 50% of the present value of the IRA or plan account
+        - First home (09): the amount used to pay qualified acquisition costs before the close of the 120th day after the day you received it
+        - Emergency expenses (23): no more than your total interest in the IRA or plan account minus $1,000
+        - Health insurance premiums while unemployed (07): the premiums you paid
+        - Higher education (08): your adjusted qualified education expenses (Pub. 970, chapter 8)
+        - Other exceptions: the amount the exception covers
     cite:
       doc: i5329
       locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable

@@ -107,6 +107,15 @@
   {
    "printed": "2(d)",
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The helper includes 'expenses paid with dependent care benefits', but Form 2441 line 2(d) instructions say 'If you completed Part III, don't include in column (d) any benefits shown on line 28.'",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner's decision, Stage 15 decision 6): column (d) shows each person's expenses including those paid with dependent care benefits and line 30 subtracts line 28 from the total; Form 2441 line 30 and i2441 p. 3, Column (d), \"don't include in column (d) any benefits shown on line 28\", give no rule for dividing line 28 among persons. The reviewer reads the rejected reading, as in the prior review; the R2 restructure of dependent.dc_paid keeps the words \"expenses paid with dependent care benefits ... Form 2441 subtracts the benefits you exclude\" unchanged. Project stands.",
+   "context": "b3476f777b8d814bacbf2eecb77d971cbd036c0dc16479a8dcf566217f4530a6",
+   "date": "2026-11-07",
+   "run": "931cc6012b3629d761349aa6a96284250df95c4da3d6a56d34f8bd86e2eab6e2"
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The helper includes 'expenses paid with dependent care benefits,' but the IRS instruction for column (d) says 'If you completed Part III, don't include in column (d) any benefits shown on line 28.'",
    "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). Form 2441 line 30: \"Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here\"; i2441 p. 3, Column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28\"; the instructions give no rule for dividing line 28 among persons. The deepseek model reads the register's rejected reading (column (d) net of benefits). The chosen reading shows each person's expenses including those paid with dependent care benefits and subtracts line 28 once at line 30. The BUG-0224 exclusions added to dependent.dc_paid (food, lodging, education, clothing, entertainment, camps, summer school, tutoring, out-of-home care under 8 hours, non-compliant centers) match i2441 p. 2, Care of the qualifying person, and the model raised no objection to them. As ruled since round 2. Project stands.",
    "context": "efae3122dc8b1d3728b97ce110517e5a1bacab99283b1d7361d3c6dfab48844f"
