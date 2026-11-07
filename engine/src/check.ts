@@ -5,6 +5,7 @@
 // snapshot hash; and the tables satisfy their structural invariants.
 
 import { IMPLEMENTED, VOCABULARY } from "./atoms.js";
+import { gateProblems, gatesOf } from "./gates.js";
 import { isHelperLine, stableStringify } from "./util.js";
 import type {
   CanonicalData,
@@ -125,6 +126,10 @@ export function runChecks(data: CanonicalData): { errors: string[]; stats: strin
       }
     }
   }
+
+  // Gate conventions: each gated input read only by its gate line, each gate with an else (gates.ts).
+  ctx.errors.push(...gateProblems(data));
+  stats.push(`gated inputs: ${gatesOf(data).length}`);
 
   checkParams(ctx);
   for (const table of data.tables) checkTable(ctx, table);

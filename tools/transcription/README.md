@@ -74,9 +74,9 @@ python3 tools/transcription/transport_check.py [--model deepseek-flash]   # one 
 ### Cost ledger
 
 Every call that reaches a transport (`call_model`, used by transcription,
-render, class M, completeness, screen, table and transport checks) appends one
+render, class M, completeness, screen, false-no, table and transport checks) appends one
 JSON line to `.transcription/costs.jsonl`, success or failure: timestamp,
-tool, kind, subject (form, job or screen), model requested and reported,
+tool, kind, subject (form, job, screen or gate), model requested and reported,
 transport, prompt and system characters, the prompt's sha256 and the reply's
 (`response_sha256`, the identity a ruling's `run` stamp names), the usage fields as reported,
 `cost_usd` as reported, `estimated_cost_usd` with its `price_basis`, duration
@@ -275,6 +275,50 @@ Until a New York document's first review of a kind is run, it is listed in
 has a review fails the check until it is removed from the list, so the list only shrinks; deleting the
 file makes the checks strict. `rerun_all.py --jurisdiction ny` runs the logged documents and the
 pending ones.
+
+## Gate reviews
+
+A formal gate (`docs/2026-11-06_formal_gates_design.md`) is an input marked `gated_by: <gate line>` in the form
+data, whose gate line is a `choose` of the same document taking the input when its guard holds and a zero parameter
+otherwise; the build checks the convention (`engine/src/gates.ts`). `gates.py` groups gate lines by the one line their
+guards read, the gate's condition: an applicability or existence `Bool` the filer answers, or a condition computed
+from earlier answers. Each group is one review unit, keyed `gate:<condition>`. Two standing reviews judge each unit
+against the pages its lines cite, and both are logged by the unit's subject (`gates.subject`): the condition's line
+and its wording as the filer reads it (the interview's prompt and help), each gate line and gated input with their
+English and wording, citations included. The review prompt's own text and the archived page text are not part of the
+subject, so a prompt change applies at each gate's next real change (`CLAUDE.md`, review what changed).
+
+- **Screen review of gates** (`screen_review.py`, the same tool as the refusal screens, recorded in
+  `reviews/<year>/screens/screen_review.json` with `kind: gate`): `NARROW`, a situation the cited text gives a gated
+  line an amount in which the condition is false; `SOURCE`, a condition the cited text states that the gate does not
+  match; `UNCLEAR`; and `WIDE`, reported but not changing the verdict, since gate wording leans to yes. The verdict
+  is `COVERS` without a NARROW, SOURCE or UNCLEAR finding. `check_screens.py` reports a gate `stale` when its subject
+  differs from the recorded `subject_sha`, `unruled` until a non-COVERS review is ruled in
+  `reviews/<year>/screens/rulings.json` under `unruled:gate:<condition>` with the review's `prompt_sha`, and
+  `orphan` when a recorded gate is gone.
+- **False-no review** (`false_no_review.py`, kind `false_no` in the cost ledger): adversarial, "who would honestly
+  answer no while a gated line is non-zero?". The prompt carries the patterns of the 43 findings of the T-251 review
+  (`research/audits/2026-11-06_t251_ladder_review.md`): narrow time frames, narrow verbs ("sell", "paid"), a missing
+  spouse, a document or one issuer for a fact, hierarchy leaks, lists read as complete, legal classifications asked
+  before checkable facts, and amounts not perceived as the thing asked, each with its finding numbers. Findings carry
+  `who`, `why_no`, the line, the IRS text, a severity (the T-251 scale) and a fix; the verdict is `SOUND` without a
+  medium or high finding. Logged per form in `reviews/<year>/false_no/<form>.json` (the form of the condition), ruled
+  in `reviews/<year>/false_no/rulings.json` under `unruled:<gate>` with the review's `prompt_sha`, and checked in
+  `check-all` by `check_false_no.py` (`stale`, `unruled`, `rerun`, `orphan`; report
+  `reports/<year>/false_no_currency.md`). Raw prompts and replies are under `.transcription/false_no/`.
+
+```
+python3 tools/transcription/screen_review.py --gates-only --dry-run      # prompts and estimated cost, no call
+python3 tools/transcription/screen_review.py --screens gate:div.any      # one gate's screen review
+python3 tools/transcription/false_no_review.py --dry-run                 # every gate, no call
+python3 tools/transcription/false_no_review.py --gates gate:div.any [--from-response]
+```
+
+Both dry runs print each prompt's size and an estimated cost from a fit to the ledger's 17 Claude screen calls
+(`screen_review.estimate_usd`: $0.048 a call plus $0.00295 per thousand prompt characters, each call within $0.03 of
+it). Claude's price basis is the reported cost, so the estimate is for planning; the ledger records what was paid.
+Both tools are tested offline in `test_review_tools.py` (`GateUnits`, `GateReviewRuns`): a stubbed model call, a
+placeholder for the archived pages, and files in a temporary directory.
 
 ## Excerpt selection
 

@@ -1,0 +1,10 @@
+{
+ "about": "Inputs the interview leaves reachable and unanswered when it reports a return complete (engine/src/interview-rules.ts, check completion), held until their leaking conjunctions are rewritten as nested choose. Keyed by input template; the list may only shrink: a template no longer seen fails the check until it is removed.",
+ "early_completion": {
+  "person.ira_excess": "f8880.can_take is an all whose contribution operand is evaluated before the AGI limit decides it false (applicability survey 1.4); the saver's credit inputs stay reachable once the credit is out",
+  "person.sav_excess": "as person.ira_excess (f8880.can_take)",
+  "person.sav_roth": "as person.ira_excess (f8880.can_take)",
+  "w2.box12_any": "as person.ira_excess: each W-2's box 12 question feeds the Form 8880 contributions operand of f8880.can_take",
+  "f8889.dec_coverage": "an all/any over f8889.use_last_month and the December coverage in Form 8889's line 3 tests: answered in some orders, another operand decides the test and the coverage question stays reachable (seen in a random answering order of a generated return)"
+ }
+}

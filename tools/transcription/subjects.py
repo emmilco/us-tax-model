@@ -6,6 +6,8 @@ records, so that check_logs.py can tell when a log no longer describes the data.
   classm         what the hand-work computes: each line's id, type and expression,
                  without an input's question wording, plus explicit when_known consistency modes
 
+A formal gate's subject, which its screen and false-no reviews judge, is in gates.py (gates.subject).
+
 A change to the review tool's prompt or to the pages a citation names does not
 change a subject: those are deliberate and rerun deliberately.
 """

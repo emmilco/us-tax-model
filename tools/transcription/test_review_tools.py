@@ -2315,5 +2315,179 @@ class WordingBlindSubjects(unittest.TestCase):
         self.assertEqual(after, before)
 
 
+import gates as G  # noqa: E402
+import screen_review as SR  # noqa: E402
+import check_screens as CS  # noqa: E402
+import false_no_review as FN  # noqa: E402
+import check_false_no as CFN  # noqa: E402
+
+
+def _gate_lines(condition_prompt="Did you or your spouse receive any dividends?"):
+    """A synthetic document `div` with one existence gate `div.any` over two gated inputs, and a computed condition
+    `div.has_1a` gating a third; `lines` as screen_review.load_lines gives them."""
+    cite = {"doc": "i1099div", "locator": "p. 1, Box 1a"}
+    eq = lambda ref, v: {"op": "test", "eq": [ref, {"const": v}]}
+    def gate(gid, cond, inp, guard=None):
+        g = guard or (lambda v: eq(cond, v))
+        return {"id": gid, "printed": gid[-2:], "label": gid, "type": "NonNegDollars", "cite": cite,
+                "expr": {"op": "choose", "alternatives": [{"guard": g(True), "then": inp}, {"guard": g(False), "then": "div.zero"}]}}
+    def inp(iid, gid, q):
+        return {"id": iid, "printed": "1", "label": iid, "type": "NonNegDollars", "cite": cite, "gated_by": gid,
+                "expr": {"op": "input", "source": q}}
+    ls = [
+        {"id": "div.any", "printed": "(gate)", "label": "Any dividends", "type": "Bool", "cite": cite, "expr": {"op": "input", "source": condition_prompt}},
+        gate("div.box1a", "div.any", "div.box1a_amount"), inp("div.box1a_amount", "div.box1a", "Ordinary dividends (box 1a)"),
+        gate("div.box2a", "div.any", "div.box2a_amount"), inp("div.box2a_amount", "div.box2a", "Capital gain distributions (box 2a)"),
+        {"id": "div.has_1a", "printed": "(helper)", "label": "Box 1a above zero", "type": "Bool", "cite": cite,
+         "expr": {"op": "test", "gt": ["div.box1a", {"const": 0}]}},
+        gate("div.box1b", "div.has_1a", "div.box1b_amount"), inp("div.box1b_amount", "div.box1b", "Qualified dividends (box 1b)"),
+        {"id": "div.zero", "printed": "zero", "label": "zero", "type": "NonNegDollars", "cite": cite, "expr": {"op": "param", "ref": "div.zero"}},
+    ]
+    return {l["id"]: ("div", l) for l in ls}
+
+
+ENGLISH = lambda doc, lid: f"English of {lid}"
+
+
+class GateUnits(unittest.TestCase):
+    def setUp(self):
+        stack = contextlib.ExitStack()
+        self.addCleanup(stack.close)
+        stack.enter_context(patch.object(G, "_QUESTIONS", {}))
+
+    def test_gate_lines_group_by_their_condition(self):
+        units = G.units(_gate_lines())
+        self.assertEqual(sorted(units), ["gate:div.any", "gate:div.has_1a"])
+        self.assertEqual([g["id"] for _, g, _ in units["gate:div.any"]["gates"]], ["div.box1a", "div.box2a"])
+        self.assertEqual([i["id"] for _, _, i in units["gate:div.any"]["gates"]], ["div.box1a_amount", "div.box2a_amount"])
+        self.assertEqual(units["gate:div.has_1a"]["condition"], "div.has_1a")
+        self.assertEqual(G.unit_form(units["gate:div.any"], _gate_lines()), "div")
+
+    def test_the_subject_follows_wording_and_gated_lines_not_the_prompt(self):
+        lines = _gate_lines()
+        unit = G.units(lines)["gate:div.any"]
+        base = G.subject(unit, lines, ENGLISH)
+        self.assertEqual(base, G.subject(unit, _gate_lines(), ENGLISH))
+        reworded = _gate_lines("Did you receive any dividends?")
+        self.assertNotEqual(base, G.subject(G.units(reworded)["gate:div.any"], reworded, ENGLISH))
+        relabelled = _gate_lines()
+        relabelled["div.box2a_amount"][1]["expr"]["source"] = "Capital gain distributions"
+        self.assertNotEqual(base, G.subject(G.units(relabelled)["gate:div.any"], relabelled, ENGLISH))
+        self.assertNotEqual(base, G.subject(unit, lines, lambda d, l: "other English"))
+        recited = _gate_lines()
+        recited["div.box1a"][1]["cite"] = {"doc": "i1099div", "locator": "p. 2, Box 1a"}
+        self.assertNotEqual(base, G.subject(G.units(recited)["gate:div.any"], recited, ENGLISH))
+        # The interview's own wording, where the bank gives one, is what the filer reads.
+        with patch.object(G, "_QUESTIONS", {"div.any": {"prompt": "Any dividends or fund distributions?", "help": "Not sure is yes."}}):
+            self.assertNotEqual(base, G.subject(unit, lines, ENGLISH))
+
+    def test_a_marker_whose_gate_line_is_not_a_choose_makes_no_unit(self):
+        lines = _gate_lines()
+        lines["div.box2a"][1]["expr"] = {"op": "sum", "of": ["div.box2a_amount"]}
+        self.assertEqual([g["id"] for _, g, _ in G.units(lines)["gate:div.any"]["gates"]], ["div.box1a"])
+
+
+class GateReviewRuns(unittest.TestCase):
+    """The screen review of a gate and the false-no review, run offline: the model call is a stub, the archived pages
+    a placeholder, and every file goes to a temporary directory."""
+    REPLY_COVERS = "verdict: COVERS\nfindings: []\n"
+    REPLY_FALSE_NO = ("verdict: FALSE_NO\nfindings:\n  - kind: FALSE_NO\n    pattern: '1'\n    who: a filer paid in 2025 on a 2021 sale\n"
+                      "    why_no: in 2025\n    line: div.box1a\n    irs_text: x\n    severity: high\n    fix: any year\n")
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        stack = contextlib.ExitStack()
+        self.addCleanup(stack.close)
+        stack.enter_context(patch.object(G, "_QUESTIONS", {}))
+        for mod in (SR, FN):
+            stack.enter_context(patch.object(mod, "RAW", self.temp.name))
+            stack.enter_context(patch.object(mod, "excerpt_for", return_value=("ARCHIVED PAGES", [{"doc": "i1099div", "pages": [1]}])))
+        stack.enter_context(patch.object(SR, "encoded_english", ENGLISH))
+        stack.enter_context(patch.object(FN, "encoded_english", ENGLISH))
+        stack.enter_context(patch.object(CS, "encoded_english", ENGLISH))
+        stack.enter_context(patch.object(CFN, "encoded_english", ENGLISH))
+        self.out = Path(self.temp.name) / "false_no"
+        stack.enter_context(patch.object(FN, "OUT", str(self.out)))
+        self.lines = _gate_lines()
+        self.unit = G.units(self.lines)["gate:div.any"]
+
+    def test_the_screen_review_covers_choose_guard_gates(self):
+        units = SR.units(self.lines)
+        self.assertEqual(units["gate:div.any"][0], "gate")
+        prompt, used = SR.prompt_for("gate:div.any", self.unit, self.lines, {})
+        for text in ("Did you or your spouse receive any dividends?", "div.box1a", "div.box2a_amount", "Capital gain distributions (box 2a)",
+                     "English of div.box1a", "ARCHIVED PAGES", "NARROW", "SOURCE", "spouse"):
+            self.assertIn(text, prompt)
+        with patch.object(SR, "call_model", side_effect=AssertionError("a dry run makes no call")):
+            dry = SR.run_one("gate:div.any", self.unit, self.lines, {}, "claude-opus-5-5", True, False)
+        self.assertEqual(dry["lines"], 2)
+        with patch.object(SR, "call_model", return_value=(self.REPLY_COVERS, {"model_reported": ["claude-opus-5-5"], "cost_usd": 0.2})) as call:
+            r = SR.run_one("gate:div.any", self.unit, self.lines, {}, "claude-opus-5-5", False, False)
+        self.assertEqual(call.call_args.kwargs["kind"], "screen")
+        self.assertEqual(call.call_args.kwargs["subject"], "gate:div.any")
+        self.assertEqual((r["kind"], r["verdict"], r["condition"]), ("gate", "COVERS", "div.any"))
+        self.assertEqual(r["subject_sha"], G.subject(self.unit, self.lines, ENGLISH))
+        self.assertTrue((Path(self.temp.name) / "gate_div.any.prompt.txt").exists())
+
+    def test_screen_currency_of_gates(self):
+        sha = G.subject(self.unit, self.lines, ENGLISH)
+        kinds = lambda reviewed, rulings={}: {f["line"]: f["kind"] for f in CS.gate_findings(self.lines, reviewed, rulings)}
+        self.assertEqual(kinds({})["gate:div.any"], "stale")
+        current = {"gate:div.any": {"subject_sha": sha, "prompt_sha": "p1", "verdict": "COVERS"},
+                   "gate:div.has_1a": {"subject_sha": G.subject(G.units(self.lines)["gate:div.has_1a"], self.lines, ENGLISH), "prompt_sha": "p", "verdict": "COVERS"}}
+        self.assertEqual(kinds(current), {})
+        changed = _gate_lines("Did you receive dividends?")
+        self.assertEqual({f["line"]: f["kind"] for f in CS.gate_findings(changed, current, {})}, {"gate:div.any": "stale"})
+        narrow = dict(current, **{"gate:div.any": dict(current["gate:div.any"], verdict="NARROW", findings=[{"kind": "NARROW"}])})
+        self.assertEqual(kinds(narrow), {"gate:div.any": "unruled"})
+        self.assertEqual(kinds(narrow, {"unruled:gate:div.any": {"prompt_sha": "p0"}}), {"gate:div.any": "rerun"})
+        self.assertEqual(kinds(dict(current, **{"gate:gone": {}})), {"gate:gone": "orphan"})
+
+    def test_the_false_no_review_logs_per_form_with_its_kind_in_the_cost_ledger(self):
+        prompt, _ = FN.prompt_for(self.unit, self.lines, {})
+        for text in ("Did you or your spouse receive any dividends?", "adversarial", "A narrow time frame", "A missing spouse",
+                     "A document for a fact", "L-1", "L-43" if "L-43" in FN.PATTERNS else "L-40", "severity", "ARCHIVED PAGES"):
+            self.assertIn(text, prompt)
+        with patch.object(FN, "call_model", side_effect=AssertionError("a dry run makes no call")):
+            self.assertEqual(FN.run_one("gate:div.any", self.unit, self.lines, {}, "claude-opus-5-5", True, False)["lines"], 2)
+        with patch.object(FN, "call_model", return_value=(self.REPLY_FALSE_NO, {"model_reported": ["claude-opus-5-5"], "cost_usd": 0.25})) as call:
+            r = FN.run_one("gate:div.any", self.unit, self.lines, {}, "claude-opus-5-5", False, False)
+        self.assertEqual((call.call_args.kwargs["kind"], call.call_args.kwargs["subject"]), ("false_no", "gate:div.any"))
+        self.assertEqual(T.TOOL_KINDS["false_no_review.py"], "false_no")
+        self.assertEqual((r["verdict"], r["form"], r["findings"][0]["severity"]), ("FALSE_NO", "div", "high"))
+        FN.write_results([r])
+        log = json.loads((self.out / "div.json").read_text())
+        self.assertEqual(list(log["reviews"]), ["gate:div.any"])
+        # A rerun of another gate merges into the same form's log.
+        r2 = dict(r, gate="gate:div.has_1a", verdict="SOUND", findings=[])
+        FN.write_results([r2])
+        self.assertEqual(sorted(json.loads((self.out / "div.json").read_text())["reviews"]), ["gate:div.any", "gate:div.has_1a"])
+        # --from-response parses the saved reply without a call.
+        with patch.object(FN, "call_model", side_effect=AssertionError("offline")):
+            again = FN.run_one("gate:div.any", self.unit, self.lines, {}, "claude-opus-5-5", False, True)
+        self.assertEqual(again["verdict"], "FALSE_NO")
+
+    def test_false_no_currency_and_rulings(self):
+        with patch.object(FN, "call_model", return_value=(self.REPLY_FALSE_NO, {"model_reported": ["claude-opus-5-5"]})):
+            r = FN.run_one("gate:div.any", self.unit, self.lines, {}, "claude-opus-5-5", False, False)
+        with patch.object(FN, "call_model", return_value=("verdict: SOUND\nfindings: []\n", {"model_reported": ["claude-opus-5-5"]})):
+            r2 = FN.run_one("gate:div.has_1a", G.units(self.lines)["gate:div.has_1a"], self.lines, {}, "claude-opus-5-5", False, False)
+        reviewed = {"gate:div.any": ("div", r), "gate:div.has_1a": ("div", r2)}
+        kinds = lambda lines, reviewed, rulings={}: {f["line"]: f["kind"] for f in CFN.findings(lines, reviewed, rulings)}
+        self.assertEqual(kinds(self.lines, {}), {"gate:div.any": "stale", "gate:div.has_1a": "stale"})
+        self.assertEqual(kinds(self.lines, reviewed), {"gate:div.any": "unruled"})
+        self.assertEqual(kinds(self.lines, reviewed, {"unruled:gate:div.any": {"prompt_sha": "older"}}), {"gate:div.any": "rerun"})
+        self.assertEqual(kinds(_gate_lines("Did you get dividends?"), reviewed), {"gate:div.any": "stale"})
+        self.assertEqual(kinds(self.lines, dict(reviewed, **{"gate:gone": ("div", {})})), {"gate:div.any": "unruled", "gate:gone": "orphan"})
+        # Accepted by a ruling naming the review's prompt hash (tools/baseline_check.py), and the report written.
+        rulings_path, report = Path(self.temp.name) / "rulings.json", Path(self.temp.name) / "report.md"
+        rulings_path.write_text(json.dumps({"rulings": {"unruled:gate:div.any": {"prompt_sha": r["prompt_sha"], "reason": "L-1 designed out"}}}))
+        found = CFN.findings(self.lines, reviewed, json.loads(rulings_path.read_text())["rulings"])
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(CFN.baseline_check.run("false_no", [], found, rulings_path, report, "t", "l"), 0)
+            self.assertEqual(CFN.baseline_check.run("false_no", [], found, Path(self.temp.name) / "none.json", report, "t", "l"), 1)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

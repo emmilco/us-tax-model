@@ -1617,7 +1617,7 @@ class MissingCredential(RuntimeError):
 LEDGER_NAME = "costs.jsonl"
 PRICES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prices.json")
 TOOL_KINDS = {"transcribe.py": "transcription", "render_compare.py": "render", "classm.py": "classm",
-              "completeness_review.py": "completeness", "screen_review.py": "screen",
+              "completeness_review.py": "completeness", "screen_review.py": "screen", "false_no_review.py": "false_no",
               "transcribe_tables.py": "tables", "transport_check.py": "transport-check"}
 
 
@@ -1631,7 +1631,7 @@ def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_e
     Every call that reaches a transport appends one line to the cost ledger
     (.transcription/costs.jsonl), success or failure; the ledger never enters a prompt,
     a receipt or meta. kind and subject name the review (transcription, render, classm,
-    completeness, screen) and its form; kind defaults from the calling script."""
+    completeness, screen, false_no) and its form; kind defaults from the calling script."""
     import time
     families.require_selected_model(model)
     if not model.startswith("deepseek") and (reasoning_effort is not None or max_output_tokens is not None):

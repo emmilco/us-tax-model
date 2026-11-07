@@ -9,7 +9,14 @@ as a zero; one worded wider refuses cases the tool computes. The review gives th
 screen's question, each gated line with its encoded English (from rendered/) and its refusal text,
 and the archived pages those lines cite, and asks for every case the wording misses or sweeps in.
 
-    screen_review.py [--screens a,b] [--dry-run] [--from-response] [--jobs 6] [--model M]
+A choose-guard gate (gates.py: an input marked `gated_by` and its gate line) is reviewed the same way, keyed
+`gate:<condition>`: the condition's wording (the question the filer answers, or the computed condition) and every gate
+line on it with its gated question, against the pages they cite. Answered no (or false), the gate's lines are zero and
+their questions are not asked, so the review looks for a situation the cited text gives a gated line an amount in which
+the condition is false (NARROW), and checks that the condition is the one the cited text states. A gate's review is
+current while its subject (gates.subject: wording and gated lines, not the prompt's own text) is unchanged.
+
+    screen_review.py [--screens a,b] [--gates-only] [--dry-run] [--from-response] [--jobs 6] [--model M]
 
 Standing review (T-088): a screen whose prompt hash (its question, the gated lines' English and refusals, and
 the pages they cite) differs from its recorded review is stale in check-all (tools/transcription/check_screens.py)
@@ -24,6 +31,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, manifest, excerpt_for, call_model  # noqa: E402
 from taxyear import Y  # noqa: E402
 import jurisdiction  # noqa: E402  (--jurisdiction ny: the screens of New York lines; reviews/ny/<year>/screens/)
+import gates  # noqa: E402
 
 OUT = str(jurisdiction.ypath("reviews", Y, "screens"))
 # A New York screen review may share its screen (a federal scope question gating New York lines) with a federal
@@ -120,8 +128,78 @@ Use an empty list when the question covers the lines exactly. No prose before or
 """)
 
 
+def build_gate_prompt(unit, lines, excerpt):
+    condition, items = gates.describe(unit, lines, encoded_english)
+    return jurisdiction.preface(f"""A tax preparation tool asks some questions only when a gate condition holds. When the condition does
+not hold, the tool never asks the gated questions below and treats each gated line as zero. The
+condition is either a question the filer answers (answered no, the gated lines are zero) or a
+condition the tool computes from earlier answers.
+
+The gate is right only if, in every situation the IRS text below gives one of the gated lines an
+amount (or makes it matter), the condition holds: a filer who reads the question and answers it
+truthfully answers yes, or the computed condition is true. Where the cited text states the
+condition itself ("Use this form if...", "Who must file"), the gate must be that condition.
+Gate questions deliberately lean to yes: a wrong yes costs a few questions, a wrong no silently
+drops an amount. A joint return is in scope: the question must cover the spouse.
+
+# The gate condition
+
+{condition}
+
+# Gated lines
+
+{chr(10).join(items)}
+
+# Your task
+
+Read the IRS text below. Report:
+- NARROW: a situation the IRS text gives a gated line an amount (or a refusal) in which the
+  condition is false: a filer could truthfully answer no, or the computed condition is false.
+  Quote the IRS text and say why the condition misses it.
+- SOURCE: the cited text states a condition, and the gate's condition differs from it (another
+  threshold, time frame, person or event). Quote both.
+- UNCLEAR: wording a filer could reasonably read either way.
+- WIDE: the condition holds in a situation the IRS text gives every gated line no amount. Report
+  it, but it does not change the verdict: gates lean to yes by design.
+
+# Output
+
+Return ONLY a YAML document of the form
+
+verdict: "COVERS | NARROW | SOURCE | UNCLEAR"
+findings:
+  - kind: "NARROW | SOURCE | UNCLEAR | WIDE"
+    situation: "<one sentence>"
+    irs_text: "<short quote with document and page>"
+    why: "<one or two sentences>"
+
+The verdict is COVERS when there is no NARROW, SOURCE or UNCLEAR finding. Use an empty list when the
+gate covers the lines exactly. No prose before or after the YAML.
+
+# IRS text (archived snapshots; page markers show document, revision and page)
+
+{excerpt}
+""")
+
+
+def units(lines):
+    """Every review subject of the jurisdiction: {screen: ("screen", gated lines)} and {"gate:<condition>": ("gate",
+    unit)}. --screens selects among both keys."""
+    out = {k: ("screen", v) for k, v in screens(lines).items()}
+    out.update({k: ("gate", u) for k, u in gates.units(lines).items()})
+    return out
+
+
+def gate_prompt_for(unit, lines, mani):
+    """The review prompt of one gate and the pages it gives."""
+    excerpt, used = excerpt_for(gates.pseudo_form(unit, lines), mani)
+    return build_gate_prompt(unit, lines, excerpt), used
+
+
 def prompt_for(screen, gated, lines, mani):
     """The review prompt of one screen and the pages it gives; its hash is the screen's review subject."""
+    if screen.startswith("gate:"):
+        return gate_prompt_for(gated, lines, mani)
     sdoc, sline = lines[screen]
     pseudo = {"id": screen, "lines": [sline] + [l for _, l, _ in gated] + [{"cite": r["cite"], "expr": {}} for _, _, r in gated]}
     excerpt, used = excerpt_for(pseudo, mani)
@@ -129,13 +207,13 @@ def prompt_for(screen, gated, lines, mani):
 
 
 def run_one(screen, gated, lines, mani, model, dry, from_response):
-    sdoc, sline = lines[screen]
+    gate = screen.startswith("gate:")
     prompt, used = prompt_for(screen, gated, lines, mani)
     os.makedirs(RAW, exist_ok=True)
-    base = os.path.join(RAW, screen)
+    base = os.path.join(RAW, gates.safe_name(screen))
     open(base + ".prompt.txt", "w", encoding="utf-8").write(prompt)
     if dry:
-        return {"screen": screen, "chars": len(prompt), "lines": len(gated)}
+        return {"screen": screen, "chars": len(prompt), "lines": len(gated["gates"] if gate else gated)}
     if from_response:
         text = open(base + ".response.txt", encoding="utf-8").read(); meta = {}
     else:
@@ -143,26 +221,51 @@ def run_one(screen, gated, lines, mani, model, dry, from_response):
         open(base + ".response.txt", "w", encoding="utf-8").write(text)
     blocks = re.findall(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
     doc = yaml.safe_load(blocks[-1] if blocks else text) or {}
+    if gate:
+        return {"screen": screen, "kind": "gate", "condition": gated["condition"],
+                "lines": [g["id"] for _, g, _ in gated["gates"]], "inputs": [i["id"] for _, _, i in gated["gates"]],
+                "verdict": str(doc.get("verdict", "UNPARSED")), "findings": doc.get("findings") or [],
+                "prompt_sha": hashlib.sha256(prompt.encode()).hexdigest(),
+                "subject_sha": gates.subject(gated, lines, encoded_english), "used": used,
+                "cost": meta.get("cost_usd") or 0, "model": ", ".join(meta.get("model_reported", [])),
+                "date": datetime.date.today().isoformat()}
+    sline = lines[screen][1]
     return {"screen": screen, "question": sline["expr"]["source"], "lines": [l["id"] for _, l, _ in gated],
             "verdict": str(doc.get("verdict", "UNPARSED")), "findings": doc.get("findings") or [],
             "prompt_sha": hashlib.sha256(prompt.encode()).hexdigest(), "used": used, "cost": meta.get("cost_usd") or 0,
             "model": ", ".join(meta.get("model_reported", []))}
 
 
+# The cost of a Claude screen review by prompt size: a least-squares fit to the cost ledger's 17 successful screen calls
+# (claude-opus-5-5, reported cost, 16,808 to 115,466 prompt characters, $0.09 to $0.38): $0.048 a call plus $0.00295
+# per thousand characters, within $0.03 of each call. Claude's price basis is the reported cost (prices.json), so this
+# is a planning estimate; the ledger records what each call cost.
+USD_PER_KCHAR = 0.00295
+USD_PER_CALL = 0.048
+
+
+def estimate_usd(chars):
+    return USD_PER_CALL + USD_PER_KCHAR * chars / 1000
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--screens"); ap.add_argument("--dry-run", action="store_true"); ap.add_argument("--from-response", action="store_true")
+    ap.add_argument("--screens"); ap.add_argument("--gates-only", action="store_true", help="review only the choose-guard gates")
+    ap.add_argument("--dry-run", action="store_true"); ap.add_argument("--from-response", action="store_true")
     ap.add_argument("--jobs", type=int, default=6); ap.add_argument("--model", default="claude-opus-5-5")
     a = ap.parse_args()
-    lines = load_lines(); mani = manifest(); sc = screens(lines)
+    lines = load_lines(); mani = manifest(); sc = {k: v for k, (_, v) in units(lines).items()}
+    if a.gates_only:
+        sc = {k: v for k, v in sc.items() if k.startswith("gate:")}
     if a.screens:
         sc = {k: v for k, v in sc.items() if k in a.screens.split(",")}
     with ThreadPoolExecutor(max_workers=a.jobs) as ex:
         results = list(ex.map(lambda kv: run_one(kv[0], kv[1], lines, mani, a.model, a.dry_run, a.from_response), sc.items()))
     if a.dry_run:
         for r in results:
-            print(f"{r['screen']:32s} {r['lines']:3d} lines {r['chars']:8,d} chars")
-        print(f"{len(results)} screens, {sum(r['chars'] for r in results):,} chars in all")
+            print(f"{r['screen']:32s} {r['lines']:3d} lines {r['chars']:8,d} chars  ~${estimate_usd(r['chars']):.2f}")
+        print(f"{len(results)} screens, {sum(r['chars'] for r in results):,} chars in all, ~${sum(estimate_usd(r['chars']) for r in results):.2f} at the "
+              "Claude rate of the ledger's screen reviews (estimate_usd)")
         return
     os.makedirs(OUT, exist_ok=True)
     path = os.path.join(OUT, "screen_review.json")

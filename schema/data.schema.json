@@ -908,6 +908,11 @@
           "minLength": 1,
           "description": "A Bool line of the same document: the values sheet shows this printed line only when it is true (a per-entry line the form reports for some entries only)."
         },
+        "gated_by": {
+          "type": "string",
+          "minLength": 1,
+          "description": "On an input line: its gate line, a choose of the same document that takes this input as an alternative's then and has an else of a zero or false parameter. The gate line is the input's only reader (engine/src/gates.ts; docs/2026-11-06_formal_gates_design.md)."
+        },
         "display": {
           "type": "string",
           "minLength": 1,

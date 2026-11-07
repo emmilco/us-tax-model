@@ -84,6 +84,8 @@ export interface Line {
   /** A Bool line of the same document; the values sheet shows this line only when it is true. */
   shown_when?: string;
   refuses?: { when: string; when_known?: true; form: string; remedy: string; cite: CiteFilled }[];
+  /** On an input: the gate line, a `choose` of the same document, that is the input's only reader (gates.ts). */
+  gated_by?: string;
 }
 
 export interface FormDoc {

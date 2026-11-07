@@ -11,6 +11,7 @@
 //   node engine/dist/main.js properties --ny       the refusal properties over generated returns with New York answers
 //   node engine/dist/main.js classm-jobs [--docs a,b] write the class M hand-work jobs (branch-covering cases)
 //   node engine/dist/main.js check-self-test       test check rules against constructed violations
+//   node engine/dist/main.js interview-rules       the interview rules over profiles, fixture paths and generated returns
 //   node engine/dist/main.js serve --dir D [--port N]
 //                                                  the web UI (ui/) on 127.0.0.1, return logs in D
 //   node engine/dist/main.js test-serve            the web UI server's tests (synthetic returns, temporary dirs)
@@ -37,6 +38,7 @@ import type { CanonicalData } from "./types.js";
 import { runInterview } from "./interview.js";
 import { runServe } from "./serve.js";
 import { serveChecks } from "./serve-check.js";
+import { interviewRules } from "./interview-rules.js";
 
 const command = process.argv[2];
 
@@ -143,11 +145,13 @@ if (command === "review-stage5") {
   process.exit(runProperties());
 } else if (command === "classm-jobs") {
   classmJobs(process.argv.slice(3));
+} else if (command === "interview-rules") {
+  process.exit(interviewRules(process.argv.slice(3)));
 } else if (command === "check-self-test") {
   runCheckSelfTest();
 } else {
   console.error(
-    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] | test-serve | conjecture | record-fixtures | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test",
+    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] | test-serve | conjecture | record-fixtures | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules",
   );
   process.exit(2);
 }

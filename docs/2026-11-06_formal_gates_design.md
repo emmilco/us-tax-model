@@ -75,6 +75,10 @@ form is filed, never whether an amount exists, so they never hide an amount inpu
   a `choose` on the gate with an explicit else of zero, false or empty. Every reader keeps reading the old id, so no
   reader can be missed. The rename changes input keys, the question bank and the fixtures: one mechanical migration,
   checked by `test-fixtures`. A check fails if any line other than its gate line reads a gated input.
+  The gated input carries the marker: `gated_by: <gate line>` (`schema/data.schema.json`, `engine/src/gates.ts`). The
+  marker sits on the input because the rule protects the input: any new reader of it fails the build, wherever it is
+  added. The gate line is a `choose` of the same document that takes the input as an alternative's `then`, whose guards
+  do not read it, and whose other alternatives are a zero or false parameter; it gates one input.
 - **Leaking conjunctions are rewritten as nested `choose`** where order matters, so the second question waits for the
   first. The evaluator's `all`/`any` semantics stay unchanged. A change there would alter reachability across the
   whole model and the Lean evaluator, and belongs with T-248.
@@ -86,16 +90,21 @@ form is filed, never whether an amount exists, so they never hide an amount inpu
 
 - **Existing reviews** rerun on every changed form: transcription, render, class M and completeness, as the inference
   cost rules require (review what changed).
-- **The screen review is extended to `choose`-guard gates first.** Today `screen_review.py` covers only `Bool` refusal
-  gates, so new gates would go unreviewed. No gate lands before this extension.
+- **The screen review is extended to `choose`-guard gates first.** `screen_review.py` reviews each gate condition
+  (keyed `gate:<condition>`: the line its gate lines' guards read, with every gate line on it) against the cited pages,
+  and `check_screens.py` flags it when its wording or gated lines change (its subject, `tools/transcription/gates.py`).
 - **An adversarial gate review** ("who would answer no wrongly?") becomes a standing review kind beside the screen
-  review: logged per form, rerun when a gate's wording or gated lines change. Its first input is the 43 findings of
-  the T-251 review, each either designed out by an A or C gate or turned into a test.
+  review: logged per form, rerun when a gate's wording or gated lines change (`false_no_review.py`,
+  `check_false_no.py`). Its first input is the 43 findings of the T-251 review, each either designed out by an A or C
+  gate or turned into a test; their patterns are in the review's prompt.
 - **Mechanical checks** in `check-all`:
   - the interview rules of the standing rules (no input set by the interview; order independence; no early
-    completion);
-  - each gated input is read only by its gate line;
-  - every `choose` gate has an else;
+    completion), in `interview-rules` over the Stage 5 and New York fixtures and generated returns. No early
+    completion does not hold today: five inputs (the saver's credit and Form 8889 conjunctions) stay reachable when
+    the interview reports complete. They are held in `tools/interview_rules_baseline.json`, which may only shrink, and
+    leave it as the C gates rewrite those conjunctions;
+  - each gated input is read only by its gate line (the build);
+  - every `choose` gate has an else (the build; every `choose`'s guards are already exhaustive);
   - the fixtures and generated returns reach the same values;
   - mutation testing covers the new gate lines.
 - **Lean:** the new lines use existing operations, so the Lean evaluator needs no new semantics. Form-data commits are

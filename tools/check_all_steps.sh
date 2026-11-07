@@ -97,6 +97,7 @@ step check_self_test "${node[@]}" check-self-test
 wave
 
 step fetch_sources python3 tools/fetch_sources.py "$@"
+step interview_rules_self_test "${node[@]}" interview-rules --self-test "$@"
 step fetch_sources_self_test python3 tools/fetch_sources.py --self-test
 step archive_text_self_test python3 tools/archive_text.py --self-test
 step check_extraction python3 tools/check_extraction.py "$@"
@@ -137,6 +138,7 @@ step operands_self_test python3 tools/check_operands.py --self-test "$@"
 step signs python3 tools/check_signs.py "$@"
 step signs_self_test python3 tools/check_signs.py --self-test "$@"
 step screen_currency python3 tools/transcription/check_screens.py "$@"
+step false_no_currency python3 tools/transcription/check_false_no.py "$@"
 step consumers python3 tools/check_consumers.py "$@"
 step consumers_self_test python3 tools/check_consumers.py --self-test "$@"
 step limits python3 tools/check_limits.py "$@"
@@ -161,11 +163,14 @@ step ny_review_tools python3 tools/transcription/test_ny_review.py
 step ny_check_logs python3 tools/transcription/check_logs.py --jurisdiction ny "$@"
 step ny_completeness python3 tools/transcription/check_completeness.py --jurisdiction ny "$@"
 step ny_screen_currency python3 tools/transcription/check_screens.py --jurisdiction ny "$@"
+step ny_false_no_currency python3 tools/transcription/check_false_no.py --jurisdiction ny "$@"
 wave
 
 step conjecture "${node[@]}" conjecture "$@"
 step test_fixtures "${node[@]}" test-fixtures "$@"
 step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs "$@"
+# The interview rules of the formal gates design: no input set by the interview, order independence, no early completion.
+step interview_rules "${node[@]}" interview-rules "$@"
 step test_integration "${node[@]}" test-integration "$@"
 # The web UI server (serve): synthetic returns in temporary directories, compared with the CLI and the fixtures.
 step test_serve "${node[@]}" test-serve "$@"

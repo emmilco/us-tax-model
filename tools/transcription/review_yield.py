@@ -5,7 +5,7 @@ Usage: review_yield.py [--ledger PATH] [--agent-runs PATH] [--window-ref GIT_REF
 
 Sources: the cost ledger (.transcription/costs.jsonl), research/costs/agent_runs.jsonl, the rulings under
 reviews/<year>/{transcription,render,classm}/*.rulings.json, reviews/<year>/completeness/rulings.json and
-reviews/<year>/screens/rulings.json, and the "Caught by" lines of BUG_INVENTORY.md.
+reviews/<year>/screens/rulings.json, reviews/<year>/false_no/rulings.json, and the "Caught by" lines of BUG_INVENTORY.md.
 
 The ledger covers only calls since it began; rulings written before stamping carry no date. The "window"
 table therefore counts only rulings and bug entries that are absent at --window-ref (the commit just before
@@ -27,9 +27,9 @@ ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, HERE)
 import families  # noqa: E402
 
-KINDS = ["transcription", "render", "classm", "completeness", "screen"]
+KINDS = ["transcription", "render", "classm", "completeness", "screen", "false_no"]
 CLASSES = ["model error", "scope", "representation", "ambiguity", "interface gap", "finding", "other"]
-BUG_KIND_WORDS = [("completeness", "completeness"), ("screen", "screen"), ("class m", "classm"),
+BUG_KIND_WORDS = [("completeness", "completeness"), ("false-no", "false_no"), ("screen", "screen"), ("class m", "classm"),
                   ("render", "render"), ("transcription", "transcription")]
 HEAD_CLASSES = (("model", "model error"), ("finding", "finding"), ("defect", "finding"), ("real gap", "finding"),
                 ("interface gap", "interface gap"), ("scope", "scope"), ("representation", "representation"),
@@ -96,6 +96,16 @@ def ruling_items(root, ref=None):
                 c = (f.get("class") or "").lower()
                 cls = "finding" if c == "defect" else "model error" if c == "model error" else "other"
                 yield "screen", families.DEFAULT, cls, changed
+    # The false-no review's rulings (false_no_review.py): a finding ruled a defect counts as a finding.
+    for path in sorted(glob.glob(os.path.join(root, "reviews", "*", "false_no", "rulings.json"))):
+        old = git_show(ref, os.path.relpath(path, root))
+        before = json.loads(old).get("rulings", {}) if old else {}
+        for name, r in json.load(open(path, encoding="utf-8")).get("rulings", {}).items():
+            changed = bool(ref) and before.get(name) != r
+            for f in r.get("findings", []):
+                c = (f.get("class") or "").lower()
+                cls = "finding" if c == "defect" else "model error" if c == "model error" else "other"
+                yield "false_no", families.DEFAULT, cls, changed
 
 
 def stamped_items(root):
