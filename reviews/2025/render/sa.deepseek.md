@@ -5,6 +5,7 @@ The rendered English of every printed line of `Schedule A — supported itemized
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | 6e37426479c5001decaf24b5fed6218f10bfd53d22f8f3fe0fada43d99c66083 |
@@ -36,21 +37,54 @@ The rendered English of every printed line of `Schedule A — supported itemized
 ### 1 — Unreimbursed eligible medical and dental expenses
 Status: **MISMATCH**
 
-Restated: Input — Unreimbursed eligible medical and dental expenses paid in 2025 (Pub. 502 lists what counts) for yourself, your spouse, your dependents, your child whom you do not claim only because of the rules for children of divorced or separated parents, and anyone you could have claimed as a dependent except that the person had gross income of $5,200 or more or filed a joint return. Reduce them by payments from insurance or other sources, but do not reduce them by a 2025 reimbursement of expenses paid in an earlier year. Leave out: amounts equal to tax-free distributions from a health savings account (HSA) or an Archer MSA; insurance premiums paid by a pretax reduction of your pay, and premiums and other medical and dental expenses paid by an employer-sponsored health plan (cafeteria plan) unless they are included in box 1 of your Form W-2; premiums for someone on your policy who is not one of the people listed above (for example a nondependent child under age 27), unless you had family coverage when you added that person and your premiums did not increase; if you are a retired public safety officer, premiums to the extent paid with a tax-free distribution from your retirement plan; the housework part of pay to someone who did both nursing and housework (only the nursing help counts); and meals while away from home for medical care, other than hospital care, which includes its meals and lodging (other lodging for medical care counts at no more than $50 a night for each person who meets the Pub. 502 lodging requirements). Reduce health insurance premiums by any self-employed health insurance deduction on Schedule 1 (Form 1040), line 17. For Marketplace coverage on a Form 1095-A, include the total premiums (including the part paid by advance payments of the premium tax credit), minus the premium tax credit allowed on Form 8962, line 24, and minus any excess advance payments you do not have to repay because of the repayment limit (Form 8962, line 27 minus line 29); advance payments you do repay count as premiums you paid. Include qualified long-term care insurance premiums only up to the limit for the age at the end of 2025 of the person for whom they were paid: $480 if 40 or under, $900 if 41 to 50, $1,800 if 51 to 60, $4,810 if 61 to 70, $6,020 if 71 or older. On the final return of a person who died in 2025, include the medical expenses paid out of that person's estate that Pub. 502 allows on the final return.
+Restated: Input — Unreimbursed eligible medical and dental expenses paid in 2025 (Pub. 502 lists what counts) for these people:
 
-Model: The restatement omits the eligible category in the IRS instructions: 'Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.'
+- yourself
+- your spouse
+- your dependents
+- your child whom you do not claim only because of the rules for children of divorced or separated parents
+- anyone you could have claimed as a dependent except that the person had gross income of $5,200 or more or filed a joint return
 
-Ruling: scope; i1040sca p. 2, Line 1: "Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return." The restatement leaves that person out because the case cannot reach line 1: a filer who, or whose joint spouse, can be claimed as a dependent is refused by sa.dependent ("Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien?"), on the deduction line Form 1040 line 12e reads, so no completed return has that person's expenses to enter. PENDING-4 of the ptc-sa package records the omission as deliberate for this reason. The rest of the PENDING-2 and PENDING-4 wording (Marketplace premiums less the credit allowed and the unrepaid excess advance payments; whose expenses count; the cafeteria-plan and nondependent-premium exclusions) is not objected to.
+Reduce them by payments from insurance or other sources, but do not reduce them by a 2025 reimbursement of expenses paid in an earlier year.
+
+Leave out:
+- amounts equal to tax-free distributions from a health savings account (HSA) or an Archer MSA
+- insurance premiums paid by a pretax reduction of your pay, and premiums and other medical and dental expenses paid by an employer-sponsored health plan (cafeteria plan) unless they are included in box 1 of your Form W-2
+- premiums for someone on your policy who is not one of the people listed above (for example a nondependent child under age 27), unless you had family coverage when you added that person and your premiums did not increase
+- if you are a retired public safety officer, premiums to the extent paid with a tax-free distribution from your retirement plan
+- the housework part of pay to someone who did both nursing and housework (only the nursing help counts)
+- meals while away from home for medical care, other than hospital care, which includes its meals and lodging (other lodging for medical care counts at no more than $50 a night for each person who meets the Pub. 502 lodging requirements)
+
+Reduce health insurance premiums by any self-employed health insurance deduction on Schedule 1 (Form 1040), line 17.
+
+For Marketplace coverage on a Form 1095-A, include the total premiums (including the part paid by advance payments of the premium tax credit), minus the premium tax credit allowed on Form 8962, line 24, and minus any excess advance payments you do not have to repay because of the repayment limit (Form 8962, line 27 minus line 29); advance payments you do repay count as premiums you paid.
+
+Include qualified long-term care insurance premiums only up to the limit for the age at the end of 2025 of the person for whom they were paid:
+
+- $480 if 40 or under
+- $900 if 41 to 50
+- $1,800 if 51 to 60
+- $4,810 if 61 to 70
+- $6,020 if 71 or older
+
+On the final return of a person who died in 2025, include the medical expenses paid out of that person's estate that Pub. 502 allows on the final return.
+
+Model: The restatement omits the IRS category for expenses of 'Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.' That omission would exclude otherwise includible medical expenses.
+
+Ruling: scope; i1040sca p. 2, Line 1: "Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return." As the prior ruling: the restatement leaves that person out because the case cannot reach line 1: a filer who, or whose joint spouse, can be claimed as a dependent is refused by sa.dependent ("Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien?"), on the deduction line Form 1040 line 12e reads, so no completed return has that person's expenses to enter (PENDING-4 of the ptc-sa package). The R4 restructuring moved the people into a list without adding or removing one; nothing else in the restatement is objected to.
+Reviewed in: pass 0b22e82affa8
 
 ### 5a — State/local income taxes paid, including withholding; no sales-tax election
 Status: **MATCH**
 
-Model: Restates the IRS line 5a income-tax items, exclusions, refund treatment, safe-harbor credit, and U.S. territory rules.
+Model: Matches the income-tax alternative on line 5a, including withholding, estimated and prior-year payments, mandatory contributions, refund and credit treatment, safe-harbor credit, and U.S. territory income taxes; the sales-tax election is expressly excluded.
+Reviewed in: pass 0b22e82affa8
 
 ### 5b — Deductible state/local real estate taxes
 Status: **MATCH**
 
-Model: Restates the IRS real estate tax rules, including uniform assessment, exclusions, mortgage-company payments, refunds, assessment timing, and U.S. territory taxes.
+Model: Matches line 5b, including the uniform-assessment and general-purpose condition, listed exclusions, mortgage-company payment rule, refund/rebate and home-sale adjustments, prepayment rule, and U.S. territory treatment.
+Reviewed in: pass 0b22e82affa8
 
 ### 5c — Deductible state/local personal property taxes
 Status: **MATCH**
@@ -84,12 +118,14 @@ Model: Multiplies line 2 by 7.5% (0.075), equivalent to 75/1000.
 ### 4 — Subtract sa.line3 from sa.line1; if zero or less, enter zero
 Status: **MATCH**
 
-Model: Subtracts line 3 from line 1 and enters zero when the result is zero or less, matching the IRS line's zero floor.
+Model: Equivalent to the form: subtract line 3 from line 1 and enter -0- when the result is zero or less, i.e., when line 3 is more than line 1.
+Reviewed in: pass 0b22e82affa8
 
 ### 5d — Add sa.line5a, sa.line5b, sa.line5c
 Status: **MATCH**
 
-Model: Adds lines 5a, 5b, and 5c as the IRS line directs.
+Model: Equivalent to the form line 5d instruction: 'Add lines 5a through 5c.'
+Reviewed in: pass 0b22e82affa8
 
 ### 5e — Smaller of sa.line5d, sa.saltlimit
 Status: **MATCH**
@@ -160,6 +196,92 @@ Model: Adds lines 11, 12, and 13 as the IRS line directs.
 Status: **MATCH**
 
 Model: Adds lines 4, 7, 10, 14, 15, and 16, which are the Schedule A far-right amounts for lines 4 through 16.
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| 1 | bc543d18c1c8382a87fd9fde6b505b3e376a88b6670b28bba3984f94d38afe8f |
+| 5a | f2f69af0bc697b740a40ac764b09f46f7cf84249bf260e2ab5ef730c33fd3191 |
+| 5b | 57583553381fef1a1ee0e33ded0f3a76b6158e675c20c003ae9727361c5bc59a |
+| 5c | b27b09ae6c5c4cee8fcb75c29e6b8737d1303a8b51aad78dab435c9d4b5aa421 |
+| 8a | 1c28a67e90f31c4f151d3cdb3cf2616a83042dcf7bae1c50e24481d52615b564 |
+| 11 | 93a6fd2fb40039f3032cb5927ea07caad0fb2807fb88f947c606b27e42b85627 |
+| 2 | 4c52e94111b469ad5fce0fe24cb2cd74ec38a052a03ed05e10f6bfcd6933529e |
+| 3 | 5e24c8422623eea02699f8e25a3375d4b4a5f93310c9c241875983aa685b0cf0 |
+| 4 | b0566af27490727e00272391ce682101893fd7c95b6458fecdb03fa5e2e9ca55 |
+| 5d | c934cb7f9555055754465bd7bcf8aea0421f71eb26be966d3bddbd13c798c2e3 |
+| 5e | e7daa6499b8e1a3edb3981ba2fee13b425abaed672ba46f872697e8e87c4f0d9 |
+| 6 | b09013ce40895bb4ea84f0b1dcb9e2e58ef66084378e6487b898452a2a1d705e |
+| 8b | ee1f5f404fcf8d89fbe8a61196d1c457dde3320bd5d045fe03439039c7596fd8 |
+| 8c | 141476c33460466b06c2561b054781f70c2888a420fc28949be066b2e912fa8b |
+| 13 | f2deb70830849887fc932a73be5d3e238b24af16c3c7c26f77f99c28f832cbfd |
+| 15 | dd7f55d37dbef57fd32ea42f7962621300a5a20f5f9332bc5bd14853cc303d6d |
+| 16 | d5fa83f9c840b094e7ef28956d1ac4736f61584ce35b40d78e58d81b7bb115ff |
+| 7 | 70cfb6710af8fce9f9347739679cfa8ef8d9e6eb9a005a167f812991f2b5c031 |
+| 8e | ede48c70f46b6f531719631fb056d0a71509d94a48969162789ddc0cc0023a5d |
+| 9 | 59551c58e6058836eb81aa7e7079bae6d30cf931898c086363bac3d61c09d8af |
+| 10 | 92b522a02b3747cf7e857a9a1c388ed33e2503712bdf226862aea42adeee02e9 |
+| 12 | 3d1b6996da384da40ed3216c6ee81b8f8594740c613f183902a32a0d9c9dd3e2 |
+| 14 | 4c43f4c752b63a3d437a0fd085015fded25a2afbb72bd310abdbce31c24fa627 |
+| 17 | 8c9c0e5763d6ea09d91d8335bf33c4e7bf17f4eeeb9f11dbba760e8d3a53f7da |
+| (rest of the document) | ac772d777e129a58b4d78fdc4d9997382ee870e6cbf12e65c65dde7b7e719585 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 0b22e82affa8
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 1, 5a, 5b, 4, 5d |
+| model requested | deepseek-flash |
+| model reported | deepseek-flash |
+| prompt sha256 | 0b22e82affa806d8b4a58481b7446dab08e15f48d82b0b64c95ec7d41c006f1b |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | 65536 |
+| subject sha256 | 040b49215d29c9dd7f16a746a79b972169e8f139e73c50577d224f13d6d291d5 |
+| receipt | .transcription/sa.deepseek.render.lines-deceb8822939 |
+| lines judged | 5 |
+| match / mismatch / unclear / missing | 4 / 1 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040sca | 2025; printed date 2025-12-08 | 1, 2, 3, 6, 7 | cited pages | 18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b | 1, 2, 3, 6 | 5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c |
+| f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
+| p502 | None | 12 | pages named by another document's citation | a85451b60db3f8c4d2be78bf08975f2ba8bd5c56093a86b24e5ae4ed5051d40b | 12 | 71bbda10a232ac104b7a59173c2901b409cd010f035f28e9bb615cab6db21c08 |
+| i8962 | 2025 | 2 | pages named by another document's citation | 6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976 | 2 | 11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309 |
+| p969 | 2025 | 9, 13 | pages named by another document's citation | 0491c6445304fc8c1b7ae3097b8a3ea30260bb35f706da40900d06416502b9c8 | 9, 13 | f643ce7086d88eabd1d8006ab0b5609f775af36b9b8a5b74637e1f366d8c29c3 |
+
+##### Raw response
+
+```yaml
+lines:
+  - key: "1"
+    status: MISMATCH
+    reason: "The restatement omits the IRS category for expenses of 'Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.' That omission would exclude otherwise includible medical expenses."
+  - key: "5a"
+    status: MATCH
+    reason: "Matches the income-tax alternative on line 5a, including withholding, estimated and prior-year payments, mandatory contributions, refund and credit treatment, safe-harbor credit, and U.S. territory income taxes; the sales-tax election is expressly excluded."
+  - key: "5b"
+    status: MATCH
+    reason: "Matches line 5b, including the uniform-assessment and general-purpose condition, listed exclusions, mortgage-company payment rule, refund/rebate and home-sale adjustments, prepayment rule, and U.S. territory treatment."
+  - key: "4"
+    status: MATCH
+    reason: "Equivalent to the form: subtract line 3 from line 1 and enter -0- when the result is zero or less, i.e., when line 3 is more than line 1."
+  - key: "5d"
+    status: MATCH
+    reason: "Equivalent to the form line 5d instruction: 'Add lines 5a through 5c.'"
+```
 
 ## Raw response
 

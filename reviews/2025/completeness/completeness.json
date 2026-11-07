@@ -2817,15 +2817,11 @@
  },
  {
   "form": "household",
-  "prompt_sha": "ecc9815ebc825938d50146399a761038ac59efe1f4b0ea343bb40b4dcb325073",
+  "prompt_sha": "76941c20b8e418fe5c2eb8d844f062762a8048ea886a762dffa2abe6674e9765",
   "claims": [
    {
-    "item": "household.test1_met",
+    "item": "household.test1_persons",
     "sentences": [
-     {
-      "quote": "Also, you must pay more than half the cost of keeping up a home that was the main home for the entire year for your parent.",
-      "page": "p501 p. 9"
-     },
      {
       "quote": "If you pay more than half the cost of keeping your parent in a rest home or home for the elderly, that counts as paying more than half the cost of keeping up your parent's main home.",
       "page": "p501 p. 9"
@@ -2835,10 +2831,10 @@
       "page": "p501 p. 9"
      }
     ],
-    "quote": "Also, you must pay more than half the cost of keeping up a home that was the main home for the entire year for your parent. / If you pay more than half the cost of keeping your parent in a rest home or home for the elderly, that counts as paying more than half the cost of keeping up your parent's main home. / Your parent for whom you paid, for the entire part of the year your parent was alive, more than half the cost of keeping up the home your parent lived in.",
+    "quote": "If you pay more than half the cost of keeping your parent in a rest home or home for the elderly, that counts as paying more than half the cost of keeping up your parent's main home. / Your parent for whom you paid, for the entire part of the year your parent was alive, more than half the cost of keeping up the home your parent lived in.",
     "page": "p501 p. 9",
-    "why_uncovered": "Test 1 turns on paying over half the cost of the parent's main home, which can be a separate home. The only cost question (household.home_cost) asks about 'your home'. No question asks whether you paid over half the cost of a separate home or rest home for your parent. Nothing applies the rule that, for a parent who died during the year, only the part of the year the parent was alive counts.",
-    "closest_item": "household.test1_met",
+    "why_uncovered": "Test 1 is encoded only from i1040gi p. 14, which requires a home that was the parent's main home for all of 2025. The only cost question (household.home_cost) asks about your own home, not the parent's. No question or refusal says that paying for a rest home or home for the elderly counts. None covers a parent who died during 2025, for whom you only need to have paid for the part of the year the parent was alive.",
+    "closest_item": "household.test1_persons",
     "effect": "eligibility"
    },
    {
@@ -2849,31 +2845,9 @@
       "page": "p501 p. 9"
      },
      {
-      "quote": "The child is presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family.",
+      "quote": "You can claim head of household filing status if all the following statements are true.",
       "page": "p501 p. 9"
      },
-     {
-      "quote": "In the year of the kidnapping, the child lived with you for more than half the part of the year before the kidnapping.",
-      "page": "p501 p. 10"
-     },
-     {
-      "quote": "In the year of the child's return, the child lived with you for more than half the part of the year following the date of the child's return.",
-      "page": "p501 p. 10"
-     },
-     {
-      "quote": "You would have qualified for head of household filing status if the child hadn't been kidnapped.",
-      "page": "p501 p. 10"
-     }
-    ],
-    "quote": "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped. / The child is presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family. / In the year of the kidnapping, the child lived with you for more than half the part of the year before the kidnapping. / In the year of the child's return, the child lived with you for more than half the part of the year following the date of the child's return. / You would have qualified for head of household filing status if the child hadn't been kidnapped.",
-    "page": "p501 p. 9; p501 p. 10",
-    "why_uncovered": "The qualifying surviving spouse question tells the filer to answer No for a kidnapped child, but nothing does the same for head of household. The unmarried question and the Test 2 person count do not mention the kidnapped-child rule, and no refusal covers it. A kidnapped child could therefore be wrongly counted or wrongly excluded as the person who qualifies you for head of household.",
-    "closest_item": "household.test2_persons",
-    "effect": "eligibility"
-   },
-   {
-    "item": "household.hoh_eligible",
-    "sentences": [
      {
       "quote": "A person can't qualify more than one taxpayer to use the head of household filing status for the year.",
       "page": "p501 p. 10"
@@ -2881,16 +2855,66 @@
      {
       "quote": "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits, unless the special rule for Children of divorced or separated parents under Who Qualifies as Your Dependent, earlier, applies.",
       "page": "i1040gi p. 44"
-     },
-     {
-      "quote": "No other person can take any of the five tax benefits just listed based on the qualifying child.",
-      "page": "i1040gi p. 44"
      }
     ],
-    "quote": "A person can't qualify more than one taxpayer to use the head of household filing status for the year. / Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits, unless the special rule for Children of divorced or separated parents under Who Qualifies as Your Dependent, earlier, applies. / No other person can take any of the five tax benefits just listed based on the qualifying child.",
-    "page": "p501 p. 10; i1040gi p. 44",
-    "why_uncovered": "No question asks whether the qualifying person also qualifies another taxpayer for head of household. No question applies the tie-breaker rules for a child who is the qualifying child of more than one person. No refusal covers either case, so head of household can be allowed based on a child that another taxpayer is entitled to use.",
+    "quote": "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped. / You can claim head of household filing status if all the following statements are true. / A person can't qualify more than one taxpayer to use the head of household filing status for the year. / Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits, unless the special rule for Children of divorced or separated parents under Who Qualifies as Your Dependent, earlier, applies.",
+    "page": "p501 p. 9; p501 p. 10; i1040gi p. 44",
+    "why_uncovered": "The kidnapped-child rule is mentioned only in the qualifying surviving spouse question, which tells the filer to answer No. There is no matching question or refusal for the head of household Test 2 count or for the living-apart test in household.unmarried. Nothing asks whether another taxpayer is using the same person for head of household. Nothing asks whether the tie-breaker rules give the child to someone else when the child is not your dependent, such as an unmarried qualifying child who isn't your dependent.",
+    "closest_item": "household.test2_persons",
+    "effect": "eligibility"
+   },
+   {
+    "item": "household.hoh_eligible",
+    "sentences": [
+     {
+      "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space below qualifying surviving spouse.",
+      "page": "i1040gi p. 14"
+     },
+     {
+      "quote": "If the child who qualifies you for this filing status isn't claimed as your dependent in the Dependents section of Form 1040 or 1040-SR, enter the child's name in the entry space below the filing status checkboxes.",
+      "page": "p501 p. 8"
+     }
+    ],
+    "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space below qualifying surviving spouse. / If the child who qualifies you for this filing status isn't claimed as your dependent in the Dependents section of Form 1040 or 1040-SR, enter the child's name in the entry space below the filing status checkboxes.",
+    "page": "i1040gi p. 14; p501 p. 8",
+    "why_uncovered": "No line or question records or outputs the name of a qualifying child who isn't claimed as a dependent when filing as head of household.",
     "closest_item": "household.hoh_eligible",
+    "effect": "presentation"
+   },
+   {
+    "item": "household.qss_eligible",
+    "sentences": [
+     {
+      "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space.",
+      "page": "i1040gi p. 15"
+     }
+    ],
+    "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space.",
+    "page": "i1040gi p. 15",
+    "why_uncovered": "The qualifying surviving spouse question decides eligibility. No line records the name of a child who isn't claimed as a dependent, which must be entered.",
+    "closest_item": "household.qss_eligible",
+    "effect": "presentation"
+   },
+   {
+    "item": "household.filing_status_conflict",
+    "sentences": [
+     {
+      "quote": "Generally, a married couple can't file a joint return if either spouse is a nonresident alien at any time during the year.",
+      "page": "i1040gi p. 13"
+     },
+     {
+      "quote": "To make either choice for 2025, you and your spouse must file a joint return and attach a statement, signed by both spouses, to your return.",
+      "page": "i1040gi p. 14"
+     },
+     {
+      "quote": "If your spouse is a nonresident alien, your spouse must have either an SSN or an ITIN if: • You file a joint return, or • Your spouse is filing a separate return.",
+      "page": "i1040gi p. 13"
+     }
+    ],
+    "quote": "Generally, a married couple can't file a joint return if either spouse is a nonresident alien at any time during the year. / To make either choice for 2025, you and your spouse must file a joint return and attach a statement, signed by both spouses, to your return. / If your spouse is a nonresident alien, your spouse must have either an SSN or an ITIN if: • You file a joint return, or • Your spouse is filing a separate return.",
+    "page": "i1040gi p. 13; i1040gi p. 14",
+    "why_uncovered": "The filing-status conflict check and the roster check use only the marriage, death and divorce facts. Nothing asks whether either spouse was a nonresident or dual-status alien during 2025, or whether the election to be treated as residents was made. A nonresident alien is refused only for the EIC (on another form). So a joint return with a nonresident spouse who never made the election is neither blocked nor refused. Nothing checks for the required signed statement or the spouse's SSN or ITIN.",
+    "closest_item": "household.filing_status_conflict",
     "effect": "eligibility"
    }
   ],
@@ -2974,7 +2998,7 @@
     ]
    }
   ],
-  "cost": 0.6240588,
+  "cost": 0.379636,
   "model": "claude-opus-5-5"
  },
  {
@@ -3355,57 +3379,13 @@
  },
  {
   "form": "person",
-  "prompt_sha": "846ae740c1e1d09d15fc9619c87a00e15edb46953c686daf98a079c032fae9bc",
+  "prompt_sha": "fa8e7d08c25571c253d4d81162478d591528c2f071b5a56c2292d3a6cb22ec03",
   "claims": [
-   {
-    "item": "person.se_line2",
-    "sentences": [
-     {
-      "quote": "If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2.",
-      "page": "i1040sse p. 4"
-     },
-     {
-      "quote": "Fees received for services performed as a notary public.",
-      "page": "i1040sse p. 4"
-     },
-     {
-      "quote": "However, do not report this amount on Schedule SE (Form 1040), line 2.",
-      "page": "i1040sc p. 14"
-     },
-     {
-      "quote": "Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
-      "page": "i1040sc p. 14"
-     }
-    ],
-    "quote": "If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2. / Fees received for services performed as a notary public. / However, do not report this amount on Schedule SE (Form 1040), line 2. / Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
-    "page": "i1040sse p. 4; i1040sc p. 14",
-    "why_uncovered": "person.se_line2 is computed as the Schedule C line 31 net profit for every Schedule C. The self-employment screen (person.se_screen) does not ask about statutory employees or notary publics, and it does not refuse them. The only statutory-employee refusal in HANDLED ELSEWHERE covers the EIC, not Schedule SE. A statutory employee's or notary's Schedule C profit would therefore flow into Schedule SE line 2. It would also flow into the SE tax and deduction, SEP Step 1, and Form 2441 and EIC self-employment earned income.",
-    "closest_item": "person.se_line2",
-    "effect": "amount"
-   },
-   {
-    "item": "person.ira_trad",
-    "sentences": [
-     {
-      "quote": "Don’t include any repayments of qualified reservist distributions. You can’t deduct them.",
-      "page": "i1040gi p. 95"
-     },
-     {
-      "quote": "Include on line 1 any repayment of a qualified reservist distribution.",
-      "page": "i8606 p. 9"
-     }
-    ],
-    "quote": "Don’t include any repayments of qualified reservist distributions. You can’t deduct them. / Include on line 1 any repayment of a qualified reservist distribution.",
-    "page": "i1040gi p. 95; i8606 p. 9",
-    "why_uncovered": "The traditional IRA contribution question lists several things to exclude: rollovers, prior-year-deducted contributions, withdrawn contributions, separately billed fees and employer SEP/SIMPLE contributions. It does not mention repayments of qualified reservist distributions. Nothing asks about them or refuses them. A repayment entered as a contribution would be deducted. A repayment left out would never reach Form 8606 line 1 as nondeductible basis.",
-    "closest_item": "person.ira_trad",
-    "effect": "amount"
-   },
    {
     "item": "person.edu_aoc",
     "sentences": [
      {
-      "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
+      "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
       "page": "i8863 p. 3"
      },
      {
@@ -3413,9 +3393,9 @@
       "page": "i8863 p. 1"
      }
     ],
-    "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+    "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
     "page": "i8863 p. 3; i8863 p. 1",
-    "why_uncovered": "person.edu_aoc depends only on lines 23–26, filer TINs and the institution's EIN. No question asks about a prior American opportunity credit disallowance, a reckless-disregard or fraud determination, or Form 8862. No refusal covers the 2-year or 10-year ban or the Form 8862 requirement.",
+    "why_uncovered": "The American opportunity credit test for each student checks lines 23 to 26, the TINs and the institution's EIN. No question asks whether the filer is under a 2-year or 10-year ban after a final determination, or whether an earlier American opportunity credit was denied or reduced so that Form 8862 is required. No refusal covers these cases either. The only Form 8862 and ban rules in the HANDLED ELSEWHERE list are for the EIC.",
     "closest_item": "person.edu_aoc",
     "effect": "eligibility"
    },
@@ -3429,7 +3409,7 @@
     ],
     "quote": "An eligible distribution to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA.",
     "page": "p590b p. 28",
-    "why_uncovered": "person.x_c22 limits exception 22 only to the $10,300 parameter (person.x_cap22). No question asks for the present value of the IRA, so the alternative 50%-of-value limit is never applied, and nothing refuses that case.",
+    "why_uncovered": "The exception 22 cap (person.x_cap22) is only the fixed $10,300. Nothing asks for the present value of the IRA, so the 50% limit is never applied. Form 5329 line 2 can therefore exclude more than the law allows.",
     "closest_item": "person.x_c22",
     "effect": "amount"
    },
@@ -3437,7 +3417,7 @@
     "item": "person.x_c23",
     "sentences": [
      {
-      "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000.",
+      "quote": "Distribution limits. You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000.",
       "page": "p590b p. 28"
      },
      {
@@ -3445,10 +3425,54 @@
       "page": "p590b p. 28"
      }
     ],
-    "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000. / You are also limited in taking emergency personal expense distributions in subsequent years as you may not take this type of distribution in the following 3 calendar years unless:",
+    "quote": "Distribution limits. You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000. / You are also limited in taking emergency personal expense distributions in subsequent years as you may not take this type of distribution in the following 3 calendar years unless:",
     "page": "p590b p. 28",
-    "why_uncovered": "person.x_c23 caps exception 23 at $1,000, and person.x_two23 handles more than one distribution in 2025. Nothing applies the alternative limit of total IRA interest minus $1,000, because the account value is never asked. Nothing asks whether an emergency distribution was taken in the prior 3 calendar years without repayment or replacement contributions, which would bar the exception.",
+    "why_uncovered": "The encoding caps exception 23 at a fixed $1,000 and refuses more than one such distribution in 2025 (person.x_two23). It never asks for the total interest in the IRA, so the 'interest minus $1,000' limit is not applied. It also never asks about an earlier emergency personal expense distribution in the prior 3 calendar years that was not repaid or offset by later contributions. Such a distribution makes the 2025 exception unavailable.",
     "closest_item": "person.x_c23",
+    "effect": "amount"
+   },
+   {
+    "item": "person.se_line2",
+    "sentences": [
+     {
+      "quote": "Statutory employees. Enter your net profit or loss on line 31 and include it on Schedule 1 (Form 1040), line 3. However, do not report this amount on Schedule SE (Form 1040), line 2.",
+      "page": "i1040sc p. 14"
+     },
+     {
+      "quote": "Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
+      "page": "i1040sc p. 14"
+     },
+     {
+      "quote": "If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2.",
+      "page": "i1040sse p. 4"
+     },
+     {
+      "quote": "Fees received for services performed as a notary public.",
+      "page": "i1040sse p. 4"
+     }
+    ],
+    "quote": "Statutory employees. Enter your net profit or loss on line 31 and include it on Schedule 1 (Form 1040), line 3. However, do not report this amount on Schedule SE (Form 1040), line 2. / Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income. / If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2. / Fees received for services performed as a notary public.",
+    "page": "i1040sc p. 14; i1040sse p. 4",
+    "why_uncovered": "person.se_line2 takes the net profit or loss from every Schedule C of the person. The self-employment screen (person.se_screen) does not ask about statutory employee or notary public income. The statutory-employee refusal in HANDLED ELSEWHERE applies only to the EIC. As a result, statutory employee or notary profit would be subject to self-employment tax and would also flow into the SEP and SIMPLE compensation figures.",
+    "closest_item": "person.se_line2",
+    "effect": "amount"
+   },
+   {
+    "item": "person.employer_max",
+    "sentences": [
+     {
+      "quote": "If you choose a matching contribution less than 3%, the percentage must be at least 1%.",
+      "page": "p560 p. 16"
+     },
+     {
+      "quote": "You can't choose a percentage less than 3% for more than 2 years during the 5-year period that ends with (and includes) the year for which the choice is effective.",
+      "page": "p560 p. 16"
+     }
+    ],
+    "quote": "If you choose a matching contribution less than 3%, the percentage must be at least 1%. / You can't choose a percentage less than 3% for more than 2 years during the 5-year period that ends with (and includes) the year for which the choice is effective.",
+    "page": "p560 p. 16",
+    "why_uncovered": "The cap on the SIMPLE match always uses 3% of compensation (person.rate3, person.match_3pct). No question asks whether the plan elected a lower matching percentage for 2025, or how often a lower match was chosen in the past 5 years. Matching contributions above the plan's elected rate are therefore not flagged as excess, and are deducted.",
+    "closest_item": "person.employer_max",
     "effect": "amount"
    }
   ],
@@ -3721,7 +3745,7 @@
     ]
    }
   ],
-  "cost": 1.908404,
+  "cost": 1.02508,
   "model": "claude-opus-5-5"
  },
  {
@@ -4071,13 +4095,39 @@
  },
  {
   "form": "s1",
-  "prompt_sha": "c7416aee4f877fc10e01915e07bfda8832e6ae6f5c2dc9b81da372c210f03498",
+  "prompt_sha": "72e78dc40701faa79c2890f3227682e2f52bd3081f5cdce7d02b3a893c742281",
   "claims": [
    {
-    "item": "s1.line2a",
+    "item": "s1.line8r",
     "sentences": [
      {
-      "quote": "Your spouse can exclude the payments from income only if they attach a copy of the instrument designating them as not alimony to their return. The copy must be attached each year the designation applies.",
+      "quote": "Generally, you can't exclude from your gross income the part of any scholarship or fellowship that represents payment for teaching, research, or other services required as a condition for receiving the scholarship.",
+      "page": "p525 p. 35"
+     },
+     {
+      "quote": "This applies even if all candidates for a degree must perform the services to receive the degree.",
+      "page": "p525 p. 35"
+     },
+     {
+      "quote": "These items must be required of all students in your course of instruction.",
+      "page": "p525 p. 35"
+     }
+    ],
+    "quote": "Generally, you can't exclude from your gross income the part of any scholarship or fellowship that represents payment for teaching, research, or other services required as a condition for receiving the scholarship. / This applies even if all candidates for a degree must perform the services to receive the degree. / These items must be required of all students in your course of instruction.",
+    "page": "p525 p. 35",
+    "why_uncovered": "The line 8r question tells a degree candidate to report only the part used for things other than tuition and course-related expenses. It never asks whether any part of the grant pays for teaching, research or other required services. That part is taxable even when it is spent on tuition, unless one of the listed program exceptions applies. The question also lets the filer leave out course-related expenses without checking that every student in the course of instruction must pay them.",
+    "closest_item": "s1.line8r",
+    "effect": "amount"
+   },
+   {
+    "item": "s1.alimony_received",
+    "sentences": [
+     {
+      "quote": "Your spouse can exclude the payments from income only if they attach a copy of the instrument designating them as not alimony to their return.",
+      "page": "p504 p. 14"
+     },
+     {
+      "quote": "The copy must be attached each year the designation applies.",
       "page": "p504 p. 14"
      },
      {
@@ -4085,10 +4135,10 @@
       "page": "p504 p. 14"
      }
     ],
-    "quote": "Your spouse can exclude the payments from income only if they attach a copy of the instrument designating them as not alimony to their return. The copy must be attached each year the designation applies. / If you're subject to temporary support orders, the designation must be made in the original or a later temporary support order.",
+    "quote": "Your spouse can exclude the payments from income only if they attach a copy of the instrument designating them as not alimony to their return. / The copy must be attached each year the designation applies. / If you're subject to temporary support orders, the designation must be made in the original or a later temporary support order.",
     "page": "p504 p. 14",
-    "why_uncovered": "The s1.alimony_received question tells the recipient to leave out payments the instrument designates as not alimony. It never says the exclusion holds only if a copy of the instrument is attached to the return each year. It also never says that, under temporary support orders, the designation must appear in the original or a later temporary order. No notice tells the filer to attach the instrument, and no refusal covers a missing attachment.",
-    "closest_item": "s1.line2a",
+    "why_uncovered": "The alimony-received question tells the filer to leave out payments the instrument designates as not alimony. It does not make that exclusion depend on attaching a copy of the instrument every year, and no notice tells the filer to attach it. It also does not check that, under temporary support orders, the designation was made in the original or a later temporary order.",
+    "closest_item": "s1.alimony_received",
     "effect": "amount"
    },
    {
@@ -4099,17 +4149,17 @@
       "page": "i1040gi p. 93"
      },
      {
-      "quote": "Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses in health or physical education.",
+      "quote": "Qualified expenses don't include expenses for home schooling or for nonathletic supplies for courses in health or physical education.",
       "page": "i1040gi p. 93"
      },
      {
-      "quote": "You must reduce your qualified expenses by the following amounts. • Excludable U.S. series EE and I savings bond interest from Form 8815. • Nontaxable qualified tuition program earnings or distributions. • Any nontaxable distribution of Coverdell education savings account earnings. • Any reimbursements you received for these expenses that weren’t reported to you in box 1 of your Form W-2.",
+      "quote": "You must reduce your qualified expenses by the following amounts.",
       "page": "i1040gi p. 93"
      }
     ],
-    "quote": "An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year. / Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses in health or physical education. / You must reduce your qualified expenses by the following amounts. • Excludable U.S. series EE and I savings bond interest from Form 8815. • Nontaxable qualified tuition program earnings or distributions. • Any nontaxable distribution of Coverdell education savings account earnings. • Any reimbursements you received for these expenses that weren’t reported to you in box 1 of your Form W-2.",
+    "quote": "An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year. / Qualified expenses don't include expenses for home schooling or for nonathletic supplies for courses in health or physical education. / You must reduce your qualified expenses by the following amounts.",
     "page": "i1040gi p. 93",
-    "why_uncovered": "s1.line11 implements and cites only the $300/$600 per-spouse caps. No encoded question asks about the 900-hour K-12 eligibility test, the exclusion of home-schooling and nonathletic health/PE supplies, or the required reductions. Those reductions are Form 8815 interest, nontaxable QTP and Coverdell amounts, and reimbursements not reported in box 1. No refusal covers any of these rules.",
+    "why_uncovered": "Line 11 only cites the $300/$600 cap. No listed question or refusal tests who counts as an eligible educator (K-12 role, 900 hours). Nothing leaves out home-schooling or health and physical education supply costs. Nothing reduces expenses by excludable savings bond interest, nontaxable qualified tuition program or Coverdell amounts, or reimbursements not shown in Form W-2 box 1.",
     "closest_item": "s1.line11",
     "effect": "amount"
    },
@@ -4117,15 +4167,15 @@
     "item": "s1.line21",
     "sentences": [
      {
-      "quote": "You can take this deduction only if all of the following apply. • You paid interest in 2025 on a qualified student loan (defined later). • Your filing status is any status except married filing separately.",
+      "quote": "Your filing status is any status except married filing separately.",
       "page": "i1040gi p. 98"
      },
      {
-      "quote": "You, or your spouse if filing jointly, aren’t claimed as a dependent on someone else's (such as your parent’s) 2025 tax return.",
+      "quote": "You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.",
       "page": "i1040gi p. 98"
      },
      {
-      "quote": "Don’t include any amount paid from a distribution of earnings made from a qualified tuition program (QTP) after 2018 to the extent the earnings are treated as tax free because they were used to pay student loan interest.",
+      "quote": "Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP) after 2018 to the extent the earnings are treated as tax free because they were used to pay student loan interest.",
       "page": "i1040gi p. 98"
      },
      {
@@ -4133,23 +4183,55 @@
       "page": "i1040gi p. 98"
      },
      {
-      "quote": "However, a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan.",
+      "quote": "However, a loan isn't a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan.",
       "page": "i1040gi p. 99"
      },
      {
-      "quote": "Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21). Don’t enter more than $2,500",
-      "page": "i1040gi p. 99"
-     },
-     {
-      "quote": "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.",
+      "quote": "You can't deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.",
       "page": "p4681 p. 5"
      }
     ],
-    "quote": "You can take this deduction only if all of the following apply. • You paid interest in 2025 on a qualified student loan (defined later). • Your filing status is any status except married filing separately. / You, or your spouse if filing jointly, aren’t claimed as a dependent on someone else's (such as your parent’s) 2025 tax return. / Don’t include any amount paid from a distribution of earnings made from a qualified tuition program (QTP) after 2018 to the extent the earnings are treated as tax free because they were used to pay student loan interest. / Exception. Use Pub. 970 instead of the worksheet in these instructions to figure your student loan interest deduction if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico. / However, a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan. / Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21). Don’t enter more than $2,500 / You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.",
+    "quote": "Your filing status is any status except married filing separately. / You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return. / Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP) after 2018 to the extent the earnings are treated as tax free because they were used to pay student loan interest. / Exception. Use Pub. 970 instead of the worksheet in these instructions to figure your student loan interest deduction if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico. / However, a loan isn't a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan. / You can't deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.",
     "page": "i1040gi p. 98; i1040gi p. 99; p4681 p. 5",
-    "why_uncovered": "s1.line21 cites only the form line. It has no question, worksheet citation or refusal for any of these rules: - the married-filing-separately bar - the dependent bar - the qualified-student-loan definition and its exclusions (mixed-use proceeds, related-party lender) - the exclusion of interest paid with tax-free QTP earnings - interest paid through loan repayment assistance programs - the $2,500 cap - the Pub. 970 exception for Form 2555/4563 or Puerto Rico exclusion filers",
+    "why_uncovered": "Line 21 cites only the form line. No listed question, gate or refusal covers the bar on married filing separately or on filers claimed as a dependent. Nothing covers the qualified-student-loan definition (related-person loans, proceeds used for other purposes), leaving out interest paid with tax-free qualified tuition program earnings or through loan repayment assistance programs, or the Pub. 970 exception for Form 4563 or Puerto Rico income.",
     "closest_item": "s1.line21",
     "effect": "eligibility"
+   },
+   {
+    "item": "s1.line20",
+    "sentences": [
+     {
+      "quote": "If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction.",
+      "page": "i1040gi p. 96"
+     },
+     {
+      "quote": "If married filing jointly and line 10 is less than $14,000 ($15,000 if one spouse is age 50 or older at the end of 2025; $16,000 if both spouses are age 50 or older at the end of 2025), stop here and use the worksheet in Pub. 590-A to figure your IRA deduction.",
+      "page": "i1040gi p. 98"
+     },
+     {
+      "quote": "You must use the special worksheets in Appendix B of Pub. 590-A to figure your taxable benefits and your IRA deduction if all of the following conditions apply.",
+      "page": "p525 p. 31"
+     }
+    ],
+    "quote": "If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction. / If married filing jointly and line 10 is less than $14,000 ($15,000 if one spouse is age 50 or older at the end of 2025; $16,000 if both spouses are age 50 or older at the end of 2025), stop here and use the worksheet in Pub. 590-A to figure your IRA deduction. / You must use the special worksheets in Appendix B of Pub. 590-A to figure your taxable benefits and your IRA deduction if all of the following conditions apply.",
+    "page": "i1040gi p. 96; i1040gi p. 98; p525 p. 31",
+    "why_uncovered": "Line 20 cites only worksheet line 12. The visible refusals cover only a deduction smaller than the maximum and traditional plus Roth contributions on a joint return. Nothing refuses or handles the Pub. 590-A cases: a covered filer with Form 8815 or excluded adoption benefits, joint compensation under the $14,000–$16,000 floor, or a filer with social security benefits, taxable compensation, IRA contributions and retirement plan coverage (Appendix B worksheets).",
+    "closest_item": "s1.line20",
+    "effect": "amount"
+   },
+   {
+    "item": "s1.line17",
+    "sentences": [
+     {
+      "quote": "Use Pub. 974 instead of the worksheet in these instructions if the insurance plan was considered to be established under your business and was obtained through the Marketplace, and advance payments of the premium tax credit were made or you are claiming the premium tax credit.",
+      "page": "i1040gi p. 95"
+     }
+    ],
+    "quote": "Use Pub. 974 instead of the worksheet in these instructions if the insurance plan was considered to be established under your business and was obtained through the Marketplace, and advance payments of the premium tax credit were made or you are claiming the premium tax credit.",
+    "page": "i1040gi p. 95",
+    "why_uncovered": "Line 17 cites the worksheet and Form 7206 line 14. No question or refusal finds Marketplace coverage with advance premium tax credit payments or a premium tax credit claim. In that case the deduction must be figured together with the credit under Pub. 974.",
+    "closest_item": "s1.line17",
+    "effect": "amount"
    }
   ],
   "used": [
@@ -4253,7 +4335,7 @@
     ]
    }
   ],
-  "cost": 0.7176588,
+  "cost": 0.49048,
   "model": "claude-opus-5-5"
  },
  {
@@ -4686,28 +4768,28 @@
  },
  {
   "form": "sa",
-  "prompt_sha": "ebf61cdde66d79e8dea65240e46a0d1db7f219b762dd57d67e3e3671c8b16c32",
+  "prompt_sha": "1c6961042db0a6ac25246c57a98326cd29f96ca3cbc33d3cc2b7c3182b14503b",
   "claims": [
    {
     "item": "sa.boxes_blind",
     "sentences": [
      {
-      "quote": "If you weren't totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that: • You can't see better than 20/200 in your better eye with glasses or contact lenses, or • Your field of vision is 20 degrees or less.",
+      "quote": "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that: • You can't see better than 20/200 in your better eye with glasses or contact lenses, or • Your field of vision is 20 degrees or less.",
       "page": "i1040gi p. 33"
      },
      {
-      "quote": "If your eye condition isn't likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead.",
+      "quote": "If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead.",
       "page": "i1040gi p. 33"
      }
     ],
-    "quote": "If you weren't totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that: • You can't see better than 20/200 in your better eye with glasses or contact lenses, or • Your field of vision is 20 degrees or less. / If your eye condition isn't likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead.",
+    "quote": "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that: • You can't see better than 20/200 in your better eye with glasses or contact lenses, or • Your field of vision is 20 degrees or less. / If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead.",
     "page": "i1040gi p. 33",
-    "why_uncovered": "sa.boxes_blind only counts blindness boxes. No question or refusal gives the vision test (20/200 in the better eye, or a field of vision of 20 degrees or less) that a partially blind filer must meet. No question asks whether the eye doctor's certified statement exists. So a filer who is not totally blind can count a box without meeting the definition.",
+    "why_uncovered": "sa.boxes_blind counts blindness boxes but has no question. No other question gives the test for partial blindness (20/200 vision or a field of vision of 20 degrees or less, certified by an eye doctor), and none asks whether the person was blind at the end of 2025. As encoded, a person who doesn't meet the definition could still get a blindness box counted.",
     "closest_item": "sa.boxes_blind",
     "effect": "amount"
    },
    {
-    "item": "sa.mfs",
+    "item": "sa.line17",
     "sentences": [
      {
       "quote": "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions.",
@@ -4716,8 +4798,8 @@
     ],
     "quote": "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions.",
     "page": "i1040sca p. 1",
-    "why_uncovered": "The encoding supports married filing separately: it halves the SALT limit and handles a spouse who itemizes. Nothing asks about, or refuses, expenses the spouses paid jointly. None of the line questions (1, 5a, 5b, 5c, 8a, 11) tell the filer to allocate joint payments between the two separate returns.",
-    "closest_item": "sa.mfs",
+    "why_uncovered": "The encoding supports married filing separately (sa.mfs, sa.salthalf, sa.spouse_itemizes). But no question on lines 1, 5a–5c, 8a, 11 or 16 tells a separate filer to claim only their share of expenses paid jointly with a spouse. No refusal covers this either. The Schedule 3 married-filing-separately refusal is not tied to the Schedule A lines.",
+    "closest_item": "sa.line17",
     "effect": "amount"
    },
    {
@@ -4734,15 +4816,11 @@
      {
       "quote": "If the gift of property is $250 or more, you must also have a contemporaneous written acknowledgment from the charity.",
       "page": "i1040sca p. 11"
-     },
-     {
-      "quote": "Form 8283 doesn't satisfy the contemporaneous written acknowledgment requirement, and a contemporaneous written acknowledgment isn't a substitute for the other records you may need to keep if you gave property.",
-      "page": "i1040sca p. 11"
      }
     ],
-    "quote": "A deduction for these contributions will be allowed only if the items are in good used condition or better. / However, this rule doesn't apply to a contribution of any single item for which a deduction of more than $500 is claimed and for which you include a qualified appraisal and Form 8283 with your tax return. / If the gift of property is $250 or more, you must also have a contemporaneous written acknowledgment from the charity. / Form 8283 doesn't satisfy the contemporaneous written acknowledgment requirement, and a contemporaneous written acknowledgment isn't a substitute for the other records you may need to keep if you gave property.",
+    "quote": "A deduction for these contributions will be allowed only if the items are in good used condition or better. / However, this rule doesn't apply to a contribution of any single item for which a deduction of more than $500 is claimed and for which you include a qualified appraisal and Form 8283 with your tax return. / If the gift of property is $250 or more, you must also have a contemporaneous written acknowledgment from the charity.",
     "page": "i1040sca p. 11",
-    "why_uncovered": "sa.line12 is a total of 'supported noncash donations before income limits' and asks no question. Line 11 mentions 'required substantiation' only for cash or check gifts. The gift refusals in HANDLED ELSEWHERE cover only appraisal, special-property treatment and Section B. Nothing excludes clothing or household items that are not in good used condition. Nothing requires the contemporaneous written acknowledgment for property gifts of $250 or more.",
+    "why_uncovered": "sa.line12 is computed as total supported noncash donations, with no question or condition shown. Nothing listed requires clothing and household items to be in good used condition or better, or requires a written acknowledgment for property gifts of $250 or more. The substantiation wording on sa.line11 covers cash gifts only. The gift refusals for Form 8283 deal with appraisals and Section B, not these rules.",
     "closest_item": "sa.line12",
     "effect": "amount"
    }
@@ -4805,7 +4883,7 @@
     ]
    }
   ],
-  "cost": 0.4253228,
+  "cost": 0.277788,
   "model": "claude-opus-5-5"
  },
  {

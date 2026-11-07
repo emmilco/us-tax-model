@@ -289,17 +289,33 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Do you have any income (or loss or exclusion) for Schedule 1, line 8, other than gambling winnings (line 8b),
-        canceled debt (line 8c), income from Form 8889 (line 8f), Alaska Permanent Fund dividends (line 8g), jury duty pay
-        (line 8h), prizes and awards (line 8i), income from an activity not engaged in for profit (line 8j), scholarship and
-        fellowship grants not reported on Form W-2 (line 8r) and the other income asked item by item for line 8z? For
-        example: a net operating loss deduction (8a); the foreign earned income or housing exclusion from Form 2555 (8d);
-        income from Form 8853 (8e); stock options (8k); income from the rental of personal property (8l); Olympic and
-        Paralympic medals or USOC prize money (8m); a section 951(a) or 951A(a) inclusion (8n, 8o); a section 461(l) excess
-        business loss adjustment (8p); taxable distributions from an ABLE account (8q); nontaxable Medicaid waiver payments
-        (8s); a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan
-        (8t); wages earned while incarcerated (8u); or digital assets received as ordinary income not reported elsewhere
-        (8v).'
+      source: |-
+        Do you have any income (or loss or exclusion) for Schedule 1, line 8, other than the following?
+
+        - gambling winnings (line 8b)
+        - canceled debt (line 8c)
+        - income from Form 8889 (line 8f)
+        - Alaska Permanent Fund dividends (line 8g)
+        - jury duty pay (line 8h)
+        - prizes and awards (line 8i)
+        - income from an activity not engaged in for profit (line 8j)
+        - scholarship and fellowship grants not reported on Form W-2 (line 8r)
+        - the other income asked item by item for line 8z
+
+        Other income, loss or exclusion, for example:
+        - a net operating loss deduction (8a)
+        - the foreign earned income or housing exclusion from Form 2555 (8d)
+        - income from Form 8853 (8e)
+        - stock options (8k)
+        - income from the rental of personal property (8l)
+        - Olympic and Paralympic medals or USOC prize money (8m)
+        - a section 951(a) or 951A(a) inclusion (8n, 8o)
+        - a section 461(l) excess business loss adjustment (8p)
+        - taxable distributions from an ABLE account (8q)
+        - nontaxable Medicaid waiver payments (8s)
+        - a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)
+        - wages earned while incarcerated (8u)
+        - digital assets received as ordinary income not reported elsewhere (8v)
     cite:
       doc: f1040s1
       locator: Schedule 1 (2025), lines 8a to 8z
@@ -466,11 +482,10 @@ form:
     type: Bool
     expr:
       op: input
-      source: Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered
-        into on or before December 31, 2018 (counting only payments made before any change after 2018 that expressly applies
-        the post-2018 rules, that is, one that states that the post-2018 alimony rules apply, or that alimony isn't deductible
-        by the payer or isn't included in the recipient's income), or must you include or may you deduct a recapture of alimony? Alimony under an agreement entered
-        into after 2018 is neither income nor deductible; answer false for it.
+      source: |-
+        Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered into on or before December 31, 2018 (counting only payments made before any change after 2018 that expressly applies the post-2018 rules, that is, one that states that the post-2018 alimony rules apply, or that alimony isn't deductible by the payer or isn't included in the recipient's income), or must you include or may you deduct a recapture of alimony?
+
+        Alimony under an agreement entered into after 2018 is neither income nor deductible; answer false for it.
     cite:
       doc: i1040gi
       locator: p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation
@@ -486,21 +501,22 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: Alimony or separate maintenance you received in 2025 under a divorce or separation agreement entered into on
-        or before December 31, 2018 (cash payments only, counting cash, checks or money orders the payer paid to a third
-        party for you under the instrument, such as for your medical expenses, rent, utilities or tuition, or at your written
-        request in place of alimony paid to you, if the request states that you both intend the payments to be alimony and
-        the payer received it before filing the return for the year of the payments, and premiums the payer must pay under
-        the instrument for insurance on the payer's life to the extent you own the policy; do not include child support,
-        noncash property settlements, your own part of community income, or payments to keep up or the use of the payer's property, or payments your divorce or separation instrument
-        designates as not alimony (it states that the payments aren't deductible as alimony by the payer and are excludable
-        from your income), or payments from a spouse with whom you file a joint return, or payments made while you and the
-        payer were members of the same household if you were legally
-        separated under a decree of divorce or separate maintenance (a home you formerly shared is one household, even if you
-        physically separate yourselves in the home, unless one of you was preparing to leave and left no later than 1 month
-        after the payment), or payments made after the agreement was changed
-        after 2018 in a way that expressly applies the post-2018 rules, that is, a change that states that the post-2018
-        alimony rules apply, or that alimony isn't deductible by the payer or isn't included in your income); zero if none
+      source: |-
+        Alimony or separate maintenance you received in 2025 under a divorce or separation agreement entered into on or before December 31, 2018 (cash payments only); zero if none.
+
+        Counting as cash payments:
+        - cash, checks or money orders the payer paid to a third party for you under the instrument, such as for your medical expenses, rent, utilities or tuition, or at your written request in place of alimony paid to you, if the request states that you both intend the payments to be alimony and the payer received it before filing the return for the year of the payments
+        - premiums the payer must pay under the instrument for insurance on the payer's life to the extent you own the policy
+
+        Do not include:
+        - child support
+        - noncash property settlements
+        - your own part of community income
+        - payments to keep up or the use of the payer's property
+        - payments your divorce or separation instrument designates as not alimony (it states that the payments aren't deductible as alimony by the payer and are excludable from your income)
+        - payments from a spouse with whom you file a joint return
+        - payments made while you and the payer were members of the same household if you were legally separated under a decree of divorce or separate maintenance (a home you formerly shared is one household, even if you physically separate yourselves in the home, unless one of you was preparing to leave and left no later than 1 month after the payment)
+        - payments made after the agreement was changed after 2018 in a way that expressly applies the post-2018 rules, that is, a change that states that the post-2018 alimony rules apply, or that alimony isn't deductible by the payer or isn't included in your income
     cite:
       doc: i1040gi
       locator: p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation
@@ -529,22 +545,22 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: Alimony or separate maintenance you paid in 2025 to or for a spouse or former spouse under a divorce or separation
-        agreement entered into on or before December 31, 2018 (cash payments only, counting cash, checks or money orders
-        you paid to a third party for your spouse under the instrument, such as for your spouse's medical expenses, rent,
-        utilities or tuition, or at your spouse's written request in place of alimony paid to your spouse, if the request
-        states that you both intend the payments to be alimony and you received it before filing your return for the year
-        of the payments, and premiums you must pay under the instrument for insurance on your life to the extent your spouse
-        owns the policy; do not include child support, noncash property settlements, your spouse's part of community
-        income, or payments to keep up or the use of your property, or payments your divorce or separation instrument
-        designates as not alimony (it states that the payments aren't deductible as alimony by you and are excludable from
-        your spouse's income), or payments to a spouse with whom you file a joint return, or payments made while you and
-        your spouse were members of the same household if you were
-        legally separated under a decree of divorce or separate maintenance (a home you formerly shared is one household,
-        even if you physically separate yourselves in the home, unless one of you was preparing to leave and left no later
-        than 1 month after the payment), or payments made after the agreement was changed after
-        2018 in a way that expressly applies the post-2018 rules, that is, a change that states that the post-2018 alimony rules apply,
-        or that alimony isn't deductible by you or isn't included in the recipient's income); zero if none
+      source: |-
+        Alimony or separate maintenance you paid in 2025 to or for a spouse or former spouse under a divorce or separation agreement entered into on or before December 31, 2018 (cash payments only); zero if none.
+
+        Counting as cash payments:
+        - cash, checks or money orders you paid to a third party for your spouse under the instrument, such as for your spouse's medical expenses, rent, utilities or tuition, or at your spouse's written request in place of alimony paid to your spouse, if the request states that you both intend the payments to be alimony and you received it before filing your return for the year of the payments
+        - premiums you must pay under the instrument for insurance on your life to the extent your spouse owns the policy
+
+        Do not include:
+        - child support
+        - noncash property settlements
+        - your spouse's part of community income
+        - payments to keep up or the use of your property
+        - payments your divorce or separation instrument designates as not alimony (it states that the payments aren't deductible as alimony by you and are excludable from your spouse's income)
+        - payments to a spouse with whom you file a joint return
+        - payments made while you and your spouse were members of the same household if you were legally separated under a decree of divorce or separate maintenance (a home you formerly shared is one household, even if you physically separate yourselves in the home, unless one of you was preparing to leave and left no later than 1 month after the payment)
+        - payments made after the agreement was changed after 2018 in a way that expressly applies the post-2018 rules, that is, a change that states that the post-2018 alimony rules apply, or that alimony isn't deductible by you or isn't included in the recipient's income
     cite:
       doc: i1040gi
       locator: p. 95, Line 19a, "If you made payments to or for your spouse or former spouse under a divorce or separation
@@ -575,14 +591,15 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Does any of these apply to alimony you received or paid: payments under more than one divorce or separation
-        agreement, or paid to more than one person; a recapture of alimony (payments that decreased or ended during the
-        first 3 calendar years, Pub. 504 Worksheet 1); or payments of which part is not alimony: child support (including payments that fell short of the total of child
-        support and alimony required, and an amount the instrument reduces on a contingency relating to a child, such as
-        reaching a certain age, or at a time associated with one), payments for a home either of you owns (mortgage,
-        real estate taxes, insurance, repairs; Pub. 504 Table 4), or payments of which any part must continue, in cash or
-        property, for any period after the recipient spouse''s death (even if the instrument does not say so, for example
-        under state law), or payments for which a payment due after the death is a substitute?'
+      source: |-
+        Does any of these apply to alimony you received or paid?
+
+        - payments under more than one divorce or separation agreement, or paid to more than one person
+        - a recapture of alimony (payments that decreased or ended during the first 3 calendar years, Pub. 504 Worksheet 1)
+        - payments of which part is not alimony:
+          - child support (including payments that fell short of the total of child support and alimony required, and an amount the instrument reduces on a contingency relating to a child, such as reaching a certain age, or at a time associated with one)
+          - payments for a home either of you owns (mortgage, real estate taxes, insurance, repairs; Pub. 504 Table 4)
+          - payments of which any part must continue, in cash or property, for any period after the recipient spouse's death (even if the instrument does not say so, for example under state law), or payments for which a payment due after the death is a substitute
     cite:
       doc: p504
       locator: p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients";
@@ -697,13 +714,16 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Does any of these apply to a canceled debt: it was canceled in a bankruptcy case or while you were insolvent,
-        or is otherwise excluded from income (Form 982, for example qualified principal residence indebtedness); it was a
-        student loan, was canceled as a gift or inheritance, was a reduction of the price of property you bought from the
-        seller, or was owed to a corporation in which you hold stock; it was a business, rental or farm debt; it was canceled
-        in connection with a foreclosure, repossession or abandonment of property (Form 1099-C box 7, or a Form 1099-A);
-        it includes interest (Form 1099-C box 3) or any other amount (for example an unpaid medical bill) that would have been deductible if you had paid it; you were not personally
-        liable for it (box 5); or you and someone other than your spouse on this return were both liable for it?'
+      source: |-
+        Does any of these apply to a canceled debt?
+
+        - it was canceled in a bankruptcy case or while you were insolvent, or is otherwise excluded from income (Form 982, for example qualified principal residence indebtedness)
+        - it was a student loan, was canceled as a gift or inheritance, was a reduction of the price of property you bought from the seller, or was owed to a corporation in which you hold stock
+        - it was a business, rental or farm debt
+        - it was canceled in connection with a foreclosure, repossession or abandonment of property (Form 1099-C box 7, or a Form 1099-A)
+        - it includes interest (Form 1099-C box 3) or any other amount (for example an unpaid medical bill) that would have been deductible if you had paid it
+        - you were not personally liable for it (box 5)
+        - you and someone other than your spouse on this return were both liable for it
     cite:
       doc: p4681
       locator: p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled

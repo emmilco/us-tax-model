@@ -14,23 +14,38 @@
    "prompt_sha": "92e34be93caf8fecb4a31ba29bf9a0dcd95ac13e7d20f49c1cf84de0e5fd630c",
    "bug": "BUG-0424"
   },
-  "unruled:ny_it201#1": {
-   "class": "real gap",
-   "evidence": "ny_it201i p. 5, Item A: a filer on a joint federal return who cannot file a joint New York return because the spouse's whereabouts are unknown or the spouse refuses to sign files separately; no question asks it and the return is computed jointly. Rare; low.",
-   "prompt_sha": "e015c813b8021a6c3aa4147dcb17b8d0e1fa39d9a84d1187ff7eea79bd4116f9",
-   "bug": "BUG-0424"
-  },
-  "unruled:ny_it201#2": {
-   "class": "covered",
-   "evidence": "ny_it201i p. 20, Line 69a. ny_it201.line69a chooses ny_it201.zero_stc when ny_it201.item_c is Yes (can be claimed as a dependent) and the rate-reduction amount only when it is No; the claim missed the expression's guard.",
-   "prompt_sha": "e015c813b8021a6c3aa4147dcb17b8d0e1fa39d9a84d1187ff7eea79bd4116f9",
-   "line": "ny_it201.line69a"
-  },
   "unruled:ny_rs#1": {
    "class": "out of scope",
    "evidence": "ny_it201i p. 4, Item A. As ny_city_rs#1: the mixed-residency joint return is refused by ny_it201.gate.spouse_nonresident.",
    "prompt_sha": "487565a2fc4af66144ff91b2b07857bffaa33efbee15eefff20309daa556d4dd",
    "gate": "ny_it201.gate.spouse_nonresident"
+  },
+  "unruled:ny_it201#1": {
+   "class": "real gap",
+   "bug": "BUG-0424",
+   "evidence": "ny_it201i p. 5, Item A. As the prior ny_it201#1 ruling: a filer on a joint federal return who cannot file a joint New York return because the spouse's whereabouts are unknown or the spouse refuses to sign files separately; no question asks it. Rare; low.",
+   "prompt_sha": "c589c3d3d042eb70c914b13871aaf79db6c100b8863a8f46ca6ebf1e5b3db2c1"
+  },
+  "unruled:ny_it201#2": {
+   "class": "out of scope",
+   "gate": "ny_it201.gate.estimated_penalty",
+   "evidence": "ny_it201i p. 23, Line 81. The farmer or fisherman exception is not asked (the safe-harbor line's note says so): such a filer gets the 110% safe harbor, never a smaller one, so the estimated-penalty gate can only fire more often; when it fires the penalty is refused, not computed, so no penalty is misstated.",
+   "prompt_sha": "c589c3d3d042eb70c914b13871aaf79db6c100b8863a8f46ca6ebf1e5b3db2c1"
+  },
+  "unruled:ny_it201#3": {
+   "class": "presentation",
+   "evidence": "ny_it201i p. 5, Item B. The federal itemized-or-standard checkbox is filing information; the New York deduction is computed from the federal choice.",
+   "prompt_sha": "c589c3d3d042eb70c914b13871aaf79db6c100b8863a8f46ca6ebf1e5b3db2c1"
+  },
+  "unruled:ny_it201#4": {
+   "class": "presentation",
+   "evidence": "ny_it201i p. 5, Item F. The months of New York City residence are 12 for every return the tool prepares (part-year City residents are refused at ny_it201.gate.part_year_city); filing information.",
+   "prompt_sha": "c589c3d3d042eb70c914b13871aaf79db6c100b8863a8f46ca6ebf1e5b3db2c1"
+  },
+  "unruled:ny_it201#5": {
+   "class": "presentation",
+   "evidence": "ny_it201i p. 11, Lines 37 and 38. Line 37 is a subtract_floor0 (never negative); leaving lines 37 and 38 blank rather than zero is presentation.",
+   "prompt_sha": "c589c3d3d042eb70c914b13871aaf79db6c100b8863a8f46ca6ebf1e5b3db2c1"
   }
  }
 }

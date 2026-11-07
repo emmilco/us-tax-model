@@ -316,36 +316,30 @@
    "adjudication": "reviews/2025/screens/adjudication/group3.md"
   },
   "unruled:person.sav_able": {
-   "prompt_sha": "65570d4d7b1f63955e90e9044741928f492ebf50c1c999a7ae644c6bda18132d",
-   "reason": "WIDE only, plus one minor UNCLEAR; no defect. Rollovers, returned excess and rollover contributions are excluded from Form 8880 lines 1 and 4 and refusing them is safe.",
+   "prompt_sha": "12e55d081d78405d855167e101115bd013278e7dd8da64e001a5837427be20a0",
+   "reason": "WIDE only, plus one minor UNCLEAR; no defect, as the prior review. Rollover contributions and rolled-over distributions are excluded from Form 8880 lines 1 and 4, and refusing them is safe.",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "f8880 p. 2 line 4 excludes rollover/trustee-to-trustee distributions; refusing them is safe."
+     "evidence": "f8880 p. 1, line 1, \"Do not include rollover contributions\": a rollover-only ABLE contribution draws Yes and is refused. Safe; as the prior finding 2."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "f8880 p. 2 line 4 excludes distributions of excess contributions; refusing is safe."
+     "evidence": "f8880 p. 2, line 4, rollovers and trustee-to-trustee transfers are excluded: a rolled-over ABLE distribution draws Yes and is refused. Safe; as the prior finding 0."
     },
     {
      "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "f8880 p. 1 line 1 'Do not include rollover contributions'; refusing is safe."
-    },
-    {
-     "n": 3,
      "kind": "UNCLEAR",
      "class": "accepted (minor UNCLEAR)",
-     "evidence": "Only an ABLE account's designated beneficiary receives its distributions, so a filer with a line 4 ABLE distribution was the beneficiary when paid; the miss needs a former beneficiary who reads 'As the designated beneficiary' as present status. Optional rewording: 'did you receive, as its designated beneficiary, any distribution...'."
+     "evidence": "As the prior finding 3: only an ABLE account's designated beneficiary receives its distributions, so a filer with a line 4 ABLE distribution was the beneficiary when paid; the miss needs a former beneficiary who reads \"As the designated beneficiary\" as present status. The question is unchanged by R4 (its gated lines read the restructured person.sav_prior_joint and person.sav_prior_other)."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group2.md"
+   "adjudication": "reviews/2025/screens/adjudication/r4.md"
   },
   "unruled:qbi.unsupported": {
    "prompt_sha": "8a76b644ce4b74b7569a220521be84b68c0ce7ffc5fea05cac5856f576ae83eb",
@@ -480,36 +474,30 @@
    "adjudication": "reviews/2025/screens/adjudication/group3.md"
   },
   "unruled:s1.line8_other": {
-   "prompt_sha": "8e3389aa897923a167b828da46125f02c67cf60a0242d693e5692e5210710a5f",
-   "reason": "No defect: WIDE examples, line 8z items are collected item by item in oi8z (unsupported kinds refused), and the stock-option example is safe either way.",
+   "prompt_sha": "0f7168a37ccdf4efd5522b49aa842824b6b3cc9cd0d69cab003a032fcb1205f8",
+   "reason": "No defect, as the prior review: finding 0 covered (line 8z items are entered in the oi8z collection, unsupported kinds refused); 1 and 2 accepted WIDE. The \"Other income, loss or exclusion, for example:\" heading drew no finding.",
    "findings": [
     {
      "n": 0,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Not-for-profit personal property rental refused via the 8l example; safe."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "i1040gi p. 92, Line 8z. Line 8z items are entered in the oi8z collection (\"insurance_dividends ... or other (any other taxable income for line 8z)\"), and every kind but the supported ones is refused at the entry (oi8z note); a filer who answers No still meets the 8z items there. As the prior finding 2."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Medicaid waiver payments not on line 1a/1d refused; safe."
+     "evidence": "f1040s1 p. 1, line 8l. A not-for-profit rental of personal property draws Yes through the 8l example and is refused. Safe; as the prior finding 0."
     },
     {
      "n": 2,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Line 8z items are entered in the oi8z collection ('insurance_dividends ... or other (any other taxable income for line 8z)'); every kind except RTAA and kickbacks is refused at the entry (oi8z note)."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
+     "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Stock option income all on line 1h: Yes refuses (safe), No computes correctly (line 8k is zero)."
+     "evidence": "i1040gi p. 91, Line 8k. Stock option income all on line 1h: Yes refuses (safe), No computes correctly. As the prior finding 3."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group1.md"
+   "adjudication": "reviews/2025/screens/adjudication/r4.md"
   },
   "unruled:s2.amt": {
    "prompt_sha": "8c4944503bfdf0740418e67497acfc1094df7c2ac93c1ae1ca8d14d8da12400c",
@@ -1117,46 +1105,30 @@
    "adjudication": "reviews/2025/screens/adjudication/r3.md"
   },
   "unruled:person.x_other": {
-   "prompt_sha": "8679b76a5974e85f81330e8286bda87fd765d8182016f799bd1f337897eb8cc9",
-   "reason": "BUG-0292 is fixed (BUG-0313): the earlier-year HSA excess is asked whether or not a 2025 Form 8889 exists, and whether or not it was ever reported. The remaining findings are accepted over-refusals.",
+   "prompt_sha": "7333a6ad4550a9c04265ac059b7a1a13514ca12a5e1234d9c994ada3a422f34f",
+   "reason": "No defect. Findings 0 and 1 accepted WIDE, as the prior review's 0 and 2; finding 2 accepted (minor UNCLEAR, leans WIDE), the prior finding 3 read as unclear. The restructuring drew no finding of a narrowed item.",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "An ABLE excess returned in time answers Yes: a harmless over-refusal."
+     "evidence": "i5329 p. 9. An ABLE (or Coverdell) excess returned in time answers Yes: a harmless over-refusal, as the prior finding 0."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "An excess resolved before 2025 answers Yes: a harmless over-refusal."
+     "evidence": "i5329 p. 9. An RMD shortfall whose deadline fell outside 2025 answers Yes: a harmless over-refusal, as the prior finding 2."
     },
     {
      "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "An RMD deadline outside 2025 answers Yes: a harmless over-refusal."
-    },
-    {
-     "n": 3,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "An HSA excess eliminated during 2025 answers Yes: an accepted over-refusal, since lines 42 to 46 are not computed."
-    },
-    {
-     "n": 4,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "An IRA excess absorbed in 2025 answers Yes: a harmless over-refusal."
-    },
-    {
-     "n": 5,
      "kind": "UNCLEAR",
      "class": "accepted (minor UNCLEAR, leans WIDE)",
-     "evidence": "Either answer is safe in the direction that matters; Yes refuses. Same over-broad wording."
+     "evidence": "f5329 p. 2, Part VII. An earlier-year HSA excess absorbed during 2025: a filer who answers Yes is refused (safe); one who answers No has no prior-year excess left for line 46, and the 2025 excess is figured by f8889 (as the prior finding 3, accepted). The item's words are unchanged by R4."
     }
-   ]
+   ],
+   "bugs": [],
+   "adjudication": "reviews/2025/screens/adjudication/r4.md"
   },
   "unruled:refund.not_2024": {
    "prompt_sha": "1d15eac04091fb53d3d83a099504d26b116f26c7b7aac20ca8b834fa2d9ede29",
@@ -1205,82 +1177,68 @@
    "adjudication": "reviews/2025/screens/adjudication/r2.md"
   },
   "unruled:s1.alimony_unsupported": {
-   "prompt_sha": "94fb0d5ea859724e5140c196c2d633d657e425a3ab14423081386376fc384bec",
-   "reason": "Defect: payments under a decree of divorce or separate maintenance while the spouses are members of the same household are not alimony, and neither the screen nor the amount questions say so (PENDING-7-3, medium, rare). PENDING-4-8 (part continuing after death) closed by income PENDING-1, a widening. Community income, noncash and property items and the post-2018 modification are covered by s1.alimony, s1.alimony_received and s1.alimony_paid; the WIDE findings are accepted.",
+   "prompt_sha": "b0a83923f1118f2b47b354cc72c88c75111e626654628db62189a691ff36626e",
+   "reason": "No defect. Findings 0 and 1 covered by s1.alimony and the amount questions s1.alimony_received and s1.alimony_paid (as the prior findings 0, 1 and 5); 2 and 3 accepted WIDE (prior 3 and 4); 4 accepted (minor UNCLEAR, leans WIDE). The prior defect (payments within one household, PENDING-7-3) did not recur: the amount questions now exclude those payments. The nested list keeps the original order and grammar (\"payments of which part is not alimony: child support ..., payments for a home ..., or payments of which any part must continue ...\").",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "p504 p. 13. s1.alimony_received and s1.alimony_paid say 'cash payments only, so do not include ... your own part [your spouse's part] of community income', the amounts copied into s1.alimony_refused and s1.paid_refused (BUG-0240). As group 4 finding 1."
+     "evidence": "p504 p. 16, Example 2; i1040gi p. 89. s1.alimony counts \"only payments made before any change after 2018 that expressly applies the post-2018 rules\", and s1.alimony_received and s1.alimony_paid exclude \"payments made after the agreement was changed after 2018 in a way that expressly applies the post-2018 rules\", so only the payments before the change are entered (as the prior finding 5)."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "p504 p. 13. The same amount questions exclude 'noncash property settlements ... or payments to keep up or the use of the payer's property'. As group 4 finding 1."
+     "evidence": "p504 p. 13, Payments not alimony. s1.alimony_received and s1.alimony_paid list under \"Do not include\" child support, noncash property settlements, the spouse's part of community income and payments to keep up or the use of the payer's property, so those parts are never entered as alimony (as the prior findings 0 and 1)."
     },
     {
      "n": 2,
-     "kind": "NARROW",
-     "class": "defect",
-     "evidence": "p504 p. 14: 'Payments to your spouse while you're members of the same household aren't alimony if you're legally separated under a decree of divorce or separate maintenance. A home you formerly shared is considered one household'. Not in the screen nor in s1.alimony_received/paid; a payer still sharing the home under a decree enters the payments and deducts them on line 19a. PENDING-7-3, medium (rare)."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "p504 p. 13, Payments to a third party, Example 2: a home owned only by the recipient is fully alimony but answers Yes. Safe; as the prior finding 3."
     },
     {
      "n": 3,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "p504 p. 13, Example 2: home owned only by the recipient is fully alimony but answers Yes. Safe; as group 4 finding 3."
+     "evidence": "p504 p. 16: a decrease with no recapture is refused. Safe; as the prior finding 4."
     },
     {
      "n": 4,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "p504 p. 16: a decrease with no recapture is refused. Safe; as group 4 finding 4."
-    },
-    {
-     "n": 5,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "p504 p. 16, Example 2. After income PENDING-3, s1.alimony counts 'only payments made before any change after 2018 that expressly applies the post-2018 rules', and s1.alimony_received/paid exclude 'payments made after the agreement was changed after 2018' in that way; the January to May payments are the ones entered."
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "p504 p. 16. A filer whose first 3 calendar years ended before 2025 answers Yes (refused, safe) or No (correct: no recapture is reportable in 2025)."
     }
    ],
-   "bugs": [
-    "PENDING-7-3"
-   ],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "bugs": [],
+   "adjudication": "reviews/2025/screens/adjudication/r4.md"
   },
   "unruled:s1.cod_unsupported": {
-   "prompt_sha": "a30db9007c7b2baa2b489e423dffd9c79350aa40d4db97fe9a604f63330b9970",
-   "reason": "Round-1 PENDING-2-3 closed (any other amount deductible if paid); the short-sale finding is covered (p4681's own short-sale example uses the canceled amount, and the property sale is refused by scope.other_income); the rest WIDE.",
+   "prompt_sha": "dc292578de4c296b7a0334f182bb25a65eb40c48e7da08b597955e0a399b8477",
+   "reason": "No defect. Finding 0 accepted WIDE (the prior finding 1); finding 1 covered by the help; finding 2 accepted (minor UNCLEAR, leans WIDE). The prior NARROW (short sale) did not recur.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "p4681 pp. 4, 10; forms/2025/scope.yaml: p4681 p. 10, Example 3 (short sale): the lender cancels 'the remaining $115,000 of the outstanding $735,000 debt' and that $115,000 is the canceled debt: the Form 1099-C box 2 amount the tool enters. The gain or loss on selling the property is not a supported securities sale, so scope.other_income ('other income ... outside ... supported securities sales') refuses."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "p525 p. 20. Nondeductible personal interest in Form 1099-C box 3 draws Yes and is refused though box 2 is fully taxable. Safe; as the prior finding 1."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "p525 p. 20: The 'would have been deductible' qualifier read as also covering box 3 interest: a filer with nondeductible interest answers yes and is refused (safe); the other reading is correct."
+     "class": "covered",
+     "evidence": "p4681 p. 6. The question's help gives the insolvency test and its timing: \"for example insolvency, when your debts were more than the value of everything you owned just before the cancellation\"; everything owned includes retirement accounts, so a filer following the help reads insolvency as Pub. 4681 defines it."
     },
     {
      "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "p4681 p. 4: Taxable nonbusiness student loan: refused. Safe."
-    },
-    {
-     "n": 3,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "p4681 p. 3: Nonrecourse discount with collateral kept: refused though computable. Safe."
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "f1099c p. 4, Box 5: \"Shows whether you were personally liable for repayment of the debt\". The item asks whether you were not personally liable and points to the box that shows it; Form 1099-C's box 5 caption (p. 2) asks to check it if the debtor was personally liable. The item's words are unchanged by R4."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group4.md"
+   "adjudication": "reviews/2025/screens/adjudication/r4.md"
   },
   "unruled:s1.uc_unsupported": {
    "prompt_sha": "00f07e8ef59c0b8466873733eda16fa442ae9ac9276f0a5ab885251b89ba80e5",

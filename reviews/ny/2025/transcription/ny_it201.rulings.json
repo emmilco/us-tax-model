@@ -347,6 +347,15 @@
   {
    "printed": "1",
    "project": "{\"of\": {\"ref\": \"f1040.line1z\"}, \"op\": \"round\", \"rule\": \"half_up\", \"unit\": 100}",
+   "second": "{\"const\": 0}",
+   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" R4 reran this line because its refusals read ny_it201.ask.state_resident, restructured into a question and a list (no word lost). The line-scoped request gave only the pages the line and its refusals cite (IT-201-I pp. 3-5, 13-14, 30-31; line 1 cites only the form page), so neither the p. 7 instruction nor federal Form 1040 line 1z was in the request, and the reply entered a zero stand-in, which its note says is not a computation; it differs wherever there are wages (35 value differences, all on refused records; on the federal fixtures, which carry no New York answers, the project is unknown or refuses at the residency gates). The project's line follows p. 7, rounded by amb.ny.2025.whole_dollars, as the prior ruling. executable-triage-v2 on this pass's reply (`.transcription/ny_it201.lines-6b86b273ff34.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 40 partial records; 2,178 comparisons): 0 of 2,178 agree; differences on returns the full interview completes: 120 project-refuses, 244 project-unknown; no completed-return value difference. Project stands; the citation gap is BUG-0439.",
+   "context": "3b0f2a11a66a76fa251dfb3ea8e6b2a486f0998c39c4376523a196125d9dc711",
+   "date": "2026-11-07",
+   "run": "7be06673bafb8bbf29c81a33f0b9c85f2aad01bb7da7091b1f6dc372c19c6ea3"
+  },
+  {
+   "printed": "1",
+   "project": "{\"of\": {\"ref\": \"f1040.line1z\"}, \"op\": \"round\", \"rule\": \"half_up\", \"unit\": 100}",
    "second": "{\"ref\": \"f1040.line1z\"}",
    "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents. Same reference otherwise. The reply's note puts the same whole-return scope refusals on line 1 as the project.",
    "context": "c81d86a5be048bb9e8df1e1ec97c51b1cba8ffb0b3d49ee1167d741cada0dfb5",

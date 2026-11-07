@@ -5,7 +5,7 @@ The rendered English of every printed line of `Each person on the return — per
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 2 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 3 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | 4a463469695f692171c99d1fd3b66d05d02ba647f45a2516554a2df009b4d850 |
@@ -15,7 +15,7 @@ The rendered English of every printed line of `Each person on the return — per
 | output token budget | 65536 |
 | subject sha256 | a13414b8df766c51657a30dcdf2b8cf3025ca895a0c16c5d5818b1a26c3ad8b3 |
 | lines judged | 32 |
-| match / mismatch / unclear / missing | 31 / 1 / 0 / 0 |
+| match / mismatch / unclear / missing | 29 / 2 / 1 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -111,9 +111,24 @@ Status: **MATCH**
 Model: Chooses excess when eligible and zero otherwise; refusals correctly exclude RRTA and any one employer's over-withholding.
 
 ### (screen) (person.se_screen) — Does any of these apply to this person's self-employment?
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: The screen enumerates the self-employment items outside the supported Schedule C computation and is used as a refusal gate.
+Restated: Input — Does any of these apply to this person?
+
+- church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)
+- being a minister, a member of a religious order or a Christian Science practitioner, or having an approved Form 4361 or Form 4029
+- net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C (such as director's fees, fiduciary fees, or fees as a fee-basis state or local government employee)
+- farm income (Schedule F) or Conservation Reserve Program payments
+- electing an optional method (Schedule SE Part II)
+- a chapter 11 bankruptcy case
+- community income on a separate return
+- self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government
+- tips reported on Form 4137 or wages on Form 8919
+
+Model: The screen omits statutory employee income, although the Schedule SE instructions say: 'If you were a statutory employee... be sure to include on line 8a statutory employee social security wages and tips from Form W-2.' A statutory employee with none of the listed items would not be flagged.
+
+Ruling: scope; i1040sse p. 1 and i1040sc p. 14, Statutory employees. The screen need not name statutory employee income: a Schedule C of statutory employee wages (or notary fees) is asked by sc.statutory and refused by sc.screened (sc.line1), so no such income reaches Schedule SE, as the person#4 completeness ruling. The R4 restructuring listed the screen's items in their original order, with no word lost. Project stands.
+Reviewed in: pass dc99a6b5442d
 
 ### (screen) (person.plan_screen) — Does any of these apply to this person's retirement contributions?
 Status: **MATCH**
@@ -183,9 +198,18 @@ Status: **MATCH**
 Model: The restatement matches the elective deferral and designated Roth contribution limit, including plan-allowed catch-up contributions.
 
 ### (screen) (person.ira_excess) — Were your 2025 IRA contributions more than allowed, recharacterized, or did an earlier exc
-Status: **MATCH**
+Status: **UNCLEAR**
 
-Model: The restatement describes the Pub. 590-A and Form 8606 IRA excess, timely-withdrawal, recharacterization, and prior-year excess cases.
+Restated: Input — Does any of these apply to you?
+
+- your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return (including extensions)
+- you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse)
+- an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025
+
+Model: The provided Pub. 590-A excerpt covers traditional IRA excess contributions and recharacterization, but it does not state the Roth IRA contribution/income limits or that traditional and Roth contributions share the $7,000/$8,000 limit.
+
+Ruling: scope; accepted over-refusal, as the prior ruling. p590a pp. 30, 35. The model's UNCLEAR is that the given Pub. 590-A pages do not state the Roth limits or the shared $7,000/$8,000 limit; the screen asks the filer and refuses on Yes, so no line is computed from those limits, and a filer over either limit answers Yes. The R4 restructuring listed the three items in their original order, with no word lost. Project stands.
+Reviewed in: pass dc99a6b5442d
 
 ### 23 — Has the American opportunity credit been claimed for this student for any 4 prior tax year
 Status: **MATCH**
@@ -210,27 +234,32 @@ Model: Matches Form 8863 line 26 and the felony controlled-substance conviction 
 ### 27 — Adjusted qualified education expenses. Don't enter more than $4,000
 Status: **MATCH**
 
-Model: Uses the Adjusted Qualified Education Expenses Worksheet and the $4,000 cap through the referenced Form 8863 line 27 helper; the multi-period refusal names the excluded over-adjustment case.
+Model: Form 8863 line 27 is adjusted qualified education expenses, not more than $4,000, computed from worksheet line 4 (institution-required expenses plus other course materials less worksheet line 3 adjustments).
+Reviewed in: pass dc99a6b5442d
 
 ### 28 — Subtract $2,000 from line 27. If zero or less, enter -0-
 Status: **MATCH**
 
-Model: Uses Form 8863 line 28, subtracting $2,000 from line 27 and flooring at zero.
+Model: Form 8863 line 28 says to subtract $2,000 from line 27 and enter -0- if zero or less.
+Reviewed in: pass dc99a6b5442d
 
 ### 29 — Multiply line 28 by 25% (0.25)
 Status: **MATCH**
 
-Model: Multiplies line 28 by 25%, matching Form 8863 line 29.
+Model: Form 8863 line 29 says to multiply line 28 by 25%.
+Reviewed in: pass dc99a6b5442d
 
 ### 30 — American opportunity credit for this student. If line 28 is zero, enter the amount from li
 Status: **MATCH**
 
-Model: Matches Form 8863 line 30: line 27 if line 28 is zero, otherwise $2,000 plus line 29.
+Model: Form 8863 line 30 says to enter line 27 if line 28 is zero; otherwise add $2,000 to line 29.
+Reviewed in: pass dc99a6b5442d
 
 ### 31 — Adjusted qualified education expenses for the lifetime learning credit
 Status: **MATCH**
 
-Model: Uses the lifetime learning credit worksheet amount, excludes other course materials, and names the TIN and multi-period exclusions.
+Model: Form 8863 line 31 is the lifetime learning credit adjusted qualified education expenses; worksheet line 4 subtracts adjustments from institution-required expenses only, so the AOC-only other course materials are not used.
+Reviewed in: pass dc99a6b5442d
 
 ## Line subjects
 
@@ -248,7 +277,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | excess | 2ec6c73ca182e811cf7259d5a2359870a6b4847c23b1a1213dd210cceb89c0f9 |
 | zero | 56a11e09deb0116e1f3c128f1752c8b174532238c961ae27a9a708421219f121 |
 | credit | 04f651e17bd41d95113216306e28f5303f80898e3ef2041e1a151adc423b3e75 |
-| (screen) (person.se_screen) | b0d1e9b80b73ff047c2ba94e65ff5b6abcef473d6027d9c9e88b75e9ecc90d16 |
+| (screen) (person.se_screen) | b117049b2d5c553634ae6c5ee8d0619cf62c008db8ea56a0cfd25844c808caa2 |
 | (screen) (person.plan_screen) | ed86e8484bea910c1df4dd0d64973e941cda2456c239f982c52205101ac3bd51 |
 | Step 1 | 2f1ee32f848fae246d96f744b1f94b9cb1b1e64460d6a4c0b48c0c935a1fd51d |
 | Step 2 | 11602d9af4406ebfba4bb3cb46649bd7be586b4194b42ab25e064553db835639 |
@@ -260,16 +289,16 @@ What each compared line's verdict depends on within the document (tools/transcri
 | Step 21 | c09eb630c2d318f1edb9dbc207e75c4ce84b690f82647c535d3a905095456a44 |
 | (screen) (person.sav_able) | 4dac837ece8f3062a726a3909e8e873a3c1a610a0dc74c0fe2bb112fbf2fb6e6 |
 | (screen) (person.sav_excess) | 8268c2fc44d105f215387ac095fc2d13542bd84d97ae1432802d40bdd791497e |
-| (screen) (person.ira_excess) | fad6ca1db48468bf005a8a6f78cbd76556fe1fbb6c8911d71fa27e5690355329 |
+| (screen) (person.ira_excess) | 0725f9a698f6683481a436d50d331a4b1194adc6c9248c3aea874d016a1a961b |
 | 23 | 9223c23e3c46b26b83ccb5d841633f2f1b39bbf9863863f6d107c062cbebd231 |
 | 24 | 9f1d38d7e493b18f7b91c64374bad4f7eaa16e7049076217bf16d8d3c87ed5a7 |
 | 25 | 92bbf9d23da231a378008f560b77f4ecc9287bdf9de6a32bb55f97d1df37d95c |
 | 26 | 5e230914a1d319de23b13cb4bc87ab8ec9fae1f62dbbda87ffa25dcff0585388 |
-| 27 | 5ef37e070b23e6a98285fa4b0e0cd9726a40cd65c86dfb962b21c02c23edc8c9 |
-| 28 | 6c1f2a168e9868523fed8f2c32fc66e42a716d026f5a9f020316b2887ecab81f |
-| 29 | ee7befdce4550952ab00442bb5d9727836d56b5abbbcf4b0a5b85f9fc6294ec2 |
-| 30 | ed27bcd7d876d97eb839b2ab5dfc58f0a4d3a0f76be0b814b8c73ce0ac7e5a0a |
-| 31 | 2e2cf650db9042c47f251df02c2bf685a8204fe8ced1bc6904642a2634133c65 |
+| 27 | 7c91de09488a32aa9e5a26effdf743cfe52568fd238ab2714aeaafe3a1d2ffce |
+| 28 | 8fee8b959cd8fe912a396424d9f6161a8ff459df0ef43a153620a9c57cfd17b6 |
+| 29 | 20a1b46cdd4c80844a65b245165b26ad97d5c017a555a1014fd8e0402aba30d3 |
+| 30 | 48cb154c9ea23e98f3fabf26f376e000aa609a846d58bff3ab4f0d3e6d95f393 |
+| 31 | 157cb2cdead4b92f9a5e5f55ec406cdd8e5aec43cd4f3d4eccc22133202f7a2e |
 | (rest of the document) | 774637a29894532eb1f17ff28873aee0739a6158bd21538f87516cd8da60346c |
 
 ## Line-scoped reviews
@@ -392,6 +421,65 @@ lines:
   - key: "Step 2"
     status: MATCH
     reason: "IRS Step 2 asks for the self-employment tax deduction from Schedule 1 line 15, which is Schedule SE line 13; the restatement uses that helper, with a refusal for railroad retirement cases."
+```
+
+#### Pass dc99a6b5442d
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines (screen) (person.se_screen), (screen) (person.ira_excess), 27, 28, 29, 30, 31 |
+| model requested | deepseek-flash |
+| model reported | deepseek-flash |
+| prompt sha256 | dc99a6b5442d7444b6eb598a82d8b28e24b0f360e8e6ea6029b0620ac268966d |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | 65536 |
+| subject sha256 | 18dbffc1cfb7142251307851417ac737db973dde631bfae65757f263e2ecb916 |
+| receipt | .transcription/person.deepseek.render.lines-8df2ba53827c |
+| lines judged | 7 |
+| match / mismatch / unclear / missing | 5 / 1 / 1 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
+| i1040gi | 2025; printed date 2026-02-25 | 17, 19, 95 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 17, 19, 95 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040sse | 2025 | 1, 2, 3, 4, 5 | whole document | bd4768e77e9087e707701447574c3fd8b1b6ac8deca77fcf2e1bce4c50b7db28 | 1, 2, 3, 4, 5 | 6cb68f929e214450ea7ffa33648d5602e2431f38e91c7a6c83dfbee0ab23f08c |
+| p590a | 2025 | 30, 35 | cited pages | be942a345a01a8f875a2a625b400d7760221e1a55a2c85dca5ab75826e6c801a | 35 | cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b |
+| i8863 | 2025 | 1, 2, 3, 4, 9 | cited pages | 71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d | 1, 3, 4, 9 | 6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b |
+| f8863 | 2025 | 1, 2 | whole document | 8e2a766019b69e75af71e8da04f82a27534acb97f9ae4c2b72438a56d10d444e | - | 37bbeebd24c238e54a031ab21ac880feb5d8e9ce98f792e1b45d93e1bf8abc6c |
+| p503 | For use in preparing 2025 returns | 3 | pages named by another document's citation | a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607 | 3 | 44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9 |
+| p970 | 2025 | 11 | pages named by another document's citation | a5c80030374da420bbaf3118a8a42fe79092e8529663d02ef601b6ae06657e00 | 11 | f6622ed07641c7d4e2a217fb9d9b1fecb7ab16f08dbc758f1a0963e1fe677e0a |
+
+##### Raw response
+
+```yaml
+lines:
+  - key: "(screen) (person.se_screen)"
+    status: MISMATCH
+    reason: "The screen omits statutory employee income, although the Schedule SE instructions say: 'If you were a statutory employee... be sure to include on line 8a statutory employee social security wages and tips from Form W-2.' A statutory employee with none of the listed items would not be flagged."
+  - key: "(screen) (person.ira_excess)"
+    status: UNCLEAR
+    reason: "The provided Pub. 590-A excerpt covers traditional IRA excess contributions and recharacterization, but it does not state the Roth IRA contribution/income limits or that traditional and Roth contributions share the $7,000/$8,000 limit."
+  - key: "27"
+    status: MATCH
+    reason: "Form 8863 line 27 is adjusted qualified education expenses, not more than $4,000, computed from worksheet line 4 (institution-required expenses plus other course materials less worksheet line 3 adjustments)."
+  - key: "28"
+    status: MATCH
+    reason: "Form 8863 line 28 says to subtract $2,000 from line 27 and enter -0- if zero or less."
+  - key: "29"
+    status: MATCH
+    reason: "Form 8863 line 29 says to multiply line 28 by 25%."
+  - key: "30"
+    status: MATCH
+    reason: "Form 8863 line 30 says to enter line 27 if line 28 is zero; otherwise add $2,000 to line 29."
+  - key: "31"
+    status: MATCH
+    reason: "Form 8863 line 31 is the lifetime learning credit adjusted qualified education expenses; worksheet line 4 subtracts adjustments from institution-required expenses only, so the AOC-only other course materials are not used."
 ```
 
 ## Raw response

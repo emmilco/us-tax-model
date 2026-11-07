@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 137 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.3% (299/4096 second-family lines judged; pending reviews are provisional); 64 eligible, 73 pending; raw agreement 81.8% (diagnostic only); current independence yield 148 line(s); both families disputed 534
+Summary: 136 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.2% (294/4074 second-family lines judged; pending reviews are provisional); 63 eligible, 73 pending; raw agreement 81.9% (diagnostic only); current independence yield 150 line(s); both families disputed 527
 
 Written by `tools/transcription/compare_families.py` on 2026-11-07 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -39,7 +39,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-07 from the revi
 | ftc | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 0 | 1 | 0 | 0 |
 | g28 | deepseek (deepseek-flash) | 7 | 0 | 0.0% | 4/7 (57.1%) | pending | 0 | 7 | 0 | 0 |
 | gift | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pending | 0 | 0 | 0 | 0 |
-| household | deepseek (deepseek-flash) | 19 | 5 | 26.3% | 11/19 (57.9%) | pending | 2 | 10 | 2 | 0 |
+| household | deepseek (deepseek-flash) | 19 | 5 | 26.3% | 10/19 (52.6%) | pending | 2 | 9 | 3 | 0 |
 | interest | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | pending | 0 | 0 | 0 | 0 |
 | ira | deepseek (deepseek-flash) | 29 | 6 | 20.7% | 16/29 (55.2%) | pending | 0 | 22 | 1 | 0 |
 | ltc | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pending | 0 | 0 | 0 | 0 |
@@ -53,7 +53,6 @@ Written by `tools/transcription/compare_families.py` on 2026-11-07 from the revi
 | s1a | deepseek (deepseek-flash) | 43 | 8 | 18.6% | 34/43 (79.1%) | pending | 1 | 34 | 0 | 0 |
 | s2 | deepseek (deepseek-flash) | 13 | 9 | 69.2% | 3/13 (23.1%) | pending | 3 | 1 | 0 | 0 |
 | s8812 | deepseek (deepseek-flash) | 51 | 12 | 23.5% | 32/51 (62.7%) | pending | 1 | 38 | 0 | 0 |
-| sa | deepseek (deepseek-flash) | 22 | 16 | 72.7% | 4/22 (18.2%) | pending | 2 | 4 | 0 | 0 |
 | sales | deepseek (deepseek-flash) | 4 | 1 | 25.0% | 0/4 (0.0%) | pending | 0 | 2 | 1 | 0 |
 | sb | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | scope | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | pending | 0 | 0 | 0 | 0 |
@@ -65,7 +64,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-07 from the revi
 | tcw | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 0 | 0.0% | 7/18 (38.9%) | pending | 0 | 18 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 843 | 289 | 34.3% | | | 76 | 457 | 21 | 3 |
+| **all** | | 821 | 273 | 33.3% | | | 74 | 452 | 22 | 3 |
 
 Pending aqee [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending carloan [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -91,7 +90,7 @@ Pending f8995a [deepseek]: model-error noise above 10%; no passing current expre
 Pending ftc [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending g28 [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending gift [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
-Pending household [deepseek]: model-error noise above 10%.
+Pending household [deepseek]: model-error noise above 10%; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending interest [deepseek]: transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending ira [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending ltc [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
@@ -105,7 +104,6 @@ Pending s179 [deepseek]: model-error noise above 10%; no verified current reques
 Pending s1a [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending s2 [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending s8812 [deepseek]: model-error noise above 10%; no passing current expression type validation: claude, deepseek; no verified current request context for claude: current expression/refusal validation fails; no verified current request context for deepseek: current expression/refusal validation fails.
-Pending sa [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending sales [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending sb [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending scope [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
@@ -172,8 +170,8 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8995a | deepseek | 37 | DISAGREE | (no reason given) |
 | f8995a | deepseek | 38 | DISAGREE | No patron DPAD is supplied; patron cases are refused by qbi.unsupported, so the supported amount is zero. |
 | f8995a | deepseek | 39 | DISAGREE | (no reason given) |
-| household | deepseek | household.cp_marriage_ended | DISAGREE | (no reason given) |
-| household | deepseek | household.qss_fails | DISAGREE | (no reason given) |
+| household | deepseek | household.cp_marriage_ended | DISAGREE | Required interface. Chosen reading: true when the taxpayer lived in a community property state in 2025 and answered yes to the community-property marriage question, which describes being married during 2025 before a divorce or legal separation. A 2025 death is not treated here because the separate spouse-died question addresses that situation for filing status. |
+| household | deepseek | household.qss_fails | DISAGREE | Required interface. Chosen reading: true when QSS is selected and either the all-five-tests QSS question is false, the spouse died in 2025 (which cannot qualify for QSS), or the taxpayer is married at the end of 2025. |
 | qbi | deepseek | qbi.eligible | DISAGREE | (no reason given) |
 | qbi | deepseek | qbi.net_capital_gain | DISAGREE | (no reason given) |
 | refund | deepseek | 1 | DISAGREE | The instructions’ tip says none of the refund is taxable if you didn’t itemize or elected sales taxes. I set the worksheet lines to zero in that case rather than using line 5d. |
@@ -186,8 +184,6 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | s2 | deepseek | 4 | DISAGREE | (no reason given) |
 | s2 | deepseek | 8 (box) | DISAGREE | (no reason given) |
 | s8812 | deepseek | s8812.clwb_complete | DISAGREE | (no reason given) |
-| sa | deepseek | 5e | DISAGREE | The SALT worksheet is applied as printed: the $40,000 base and $10,000 floor are halved for married filing separately at the final step. |
-| sa | deepseek | 9 | DISAGREE | (no reason given) |
 | sd | deepseek | 11 | DISAGREE | (no reason given) |
 | sd | deepseek | 12 | DISAGREE | (no reason given) |
 | sd | deepseek | 21 | DISAGREE | (no reason given) |
@@ -450,8 +446,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | household | deepseek | household.ctc_disallowed_claim | DISAGREE | DISAGREE | The supplied credit_disallowed question combines EIC and CTC/ACTC/ODC disallowance; without separate inputs this is treated as a CTC disallowance when true. |
 | household | deepseek | household.ctc_ssn | DISAGREE | DISAGREE | (no reason given) |
 | household | deepseek | household.eic_disallowed_claim | DISAGREE | DISAGREE | The supplied credit_disallowed question combines EIC and CTC/ACTC/ODC disallowance; without separate inputs this is treated as an EIC disallowance when true. |
-| household | deepseek | household.filing_status_conflict | DISAGREE | DISAGREE | (no reason given) |
-| household | deepseek | household.hoh_fails | DISAGREE | DISAGREE | (no reason given) |
+| household | deepseek | household.filing_status_conflict | DISAGREE | DISAGREE | Required interface. Chosen reading: reports a conflict between the selected filing status and the household facts. HOH and QSS conflicts use the specific failure flags; single conflicts with married-at-year-end or spouse-died-in-2025 facts; MFJ and MFS require one of those facts. |
 | household | deepseek | household.rdp_community_property | DISAGREE | DISAGREE | (no reason given) |
 | household | deepseek | household.roster_bad | DISAGREE | DISAGREE | Reads the person roster as valid when there is exactly one taxpayer and a spouse entry only on a joint return. |
 | household | deepseek | household.widowed_2025 | DISAGREE | DISAGREE | (no reason given) |
@@ -564,10 +559,6 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | s8812 | deepseek | 27 | DISAGREE | DISAGREE | (no reason given) |
 | s8812 | deepseek | 5 | DISAGREE | DISAGREE | (no reason given) |
 | s8812 | deepseek | 7 | DISAGREE | DISAGREE | (no reason given) |
-| sa | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
-| sa | deepseek | sa.age65 | DISAGREE | DISAGREE | (no reason given) |
-| sa | deepseek | sa.deduction | DISAGREE | DISAGREE | (no reason given) |
-| sa | deepseek | sa.itemizes | DISAGREE | DISAGREE | (no reason given) |
 | sales | deepseek | (e) | DISAGREE | DISAGREE | (no reason given) |
 | sales | deepseek | (g) | DISAGREE | DISAGREE | The closed input interface supplies no amount for adjustment code other (for example code E). The line is refused when sales.code is other; the supported cases none, B, W and BW compute the basis correction and the wash-sale adjustment from the supplied basis and wash-loss inputs. |
 | sd | deepseek | 10(d) | DISAGREE | DISAGREE | (no reason given) |
@@ -693,14 +684,14 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | ftc | deepseek (deepseek-flash) | 12 | 11 | 91.7% | 0/12 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | g28 | deepseek (deepseek-flash) | 7 | 3 | 42.9% | 0/7 (0.0%) | pass | 0 | 4 | 0 | 0 |
 | gift | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pending | 0 | 0 | 0 | 1 |
-| household | deepseek (deepseek-flash) | 48 | 41 | 85.4% | 2/48 (4.2%) | pass | 5 | 2 | 0 | 0 |
+| household | deepseek (deepseek-flash) | 48 | 41 | 85.4% | 2/48 (4.2%) | pending | 7 | 0 | 0 | 0 |
 | interest | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | ira | deepseek (deepseek-flash) | 21 | 13 | 61.9% | 0/21 (0.0%) | pending | 2 | 4 | 2 | 0 |
 | ltc | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | mq | deepseek (deepseek-flash) | 7 | 7 | 100.0% | 0/7 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | oi8z | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pending | 1 | 0 | 0 | 0 |
 | otjob | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| person | deepseek (deepseek-flash) | 32 | 26 | 81.2% | 0/32 (0.0%) | pass | 1 | 0 | 5 | 0 |
+| person | deepseek (deepseek-flash) | 32 | 29 | 90.6% | 0/32 (0.0%) | pass | 3 | 0 | 0 | 0 |
 | qbi | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 0 | 1 | 0 | 0 |
 | qdcg | deepseek (deepseek-flash) | 25 | 24 | 96.0% | 0/25 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | refund | deepseek (deepseek-flash) | 9 | 7 | 77.8% | 0/9 (0.0%) | pass | 0 | 2 | 0 | 0 |
@@ -711,7 +702,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | s2 | deepseek (deepseek-flash) | 12 | 10 | 83.3% | 0/12 (0.0%) | pass | 2 | 0 | 0 | 0 |
 | s3 | deepseek (deepseek-flash) | 13 | 10 | 76.9% | 0/13 (0.0%) | pass | 2 | 1 | 0 | 0 |
 | s8812 | deepseek (deepseek-flash) | 50 | 48 | 96.0% | 0/50 (0.0%) | pass | 0 | 2 | 0 | 0 |
-| sa | deepseek (deepseek-flash) | 24 | 21 | 87.5% | 0/24 (0.0%) | pass | 1 | 1 | 1 | 0 |
+| sa | deepseek (deepseek-flash) | 24 | 20 | 83.3% | 0/24 (0.0%) | pass | 1 | 1 | 2 | 0 |
 | sales | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | sb | deepseek (deepseek-flash) | 6 | 4 | 66.7% | 0/6 (0.0%) | pending | 1 | 1 | 0 | 0 |
 | sc | deepseek (deepseek-flash) | 75 | 72 | 96.0% | 0/75 (0.0%) | pass | 3 | 0 | 0 | 0 |
@@ -727,13 +718,14 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 5 | 8 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 16 | 94.1% | 1/17 (5.9%) | pass | 1 | 0 | 0 | 0 |
-| **all** | | 1323 | 1154 | 87.2% | | | 69 | 73 | 27 | 3 |
+| **all** | | 1323 | 1156 | 87.4% | | | 73 | 71 | 23 | 3 |
 
 Pending asset [deepseek]: 2 missing expected lines.
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending f8995 [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending f8995a [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending gift [deepseek]: 1 missing expected lines.
+Pending household [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending ira [deepseek]: 5 open, unclassified or interface-gap rulings.
 Pending oi8z [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending qbi [deepseek]: model-error noise above 10%.
@@ -777,13 +769,17 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8995 | deepseek | 11 | MISMATCH | IRS line 11 instructions compute 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b' and do not provide a zero floor; the restatement adds an 'If zero or less, enter -0-' condition. |
 | f8995a | deepseek | 33 | MISMATCH | The restatement adds an 'if zero or less, enter -0-' floor, but the IRS instruction is only 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b'; no zero floor is stated for line 33. |
 | household | deepseek | ctc_ssn | MISMATCH | The IRS says 'To claim the child tax credit, you must have a valid SSN, which means it must be valid for employment' and 'If your qualifying child didn’t have an SSN valid for employment... you can’t claim the child tax credit for that child'; the restatement allows SSN or ITIN for each other person and does not check the qualifying children. |
-| household | deepseek | hoh_community_property | MISMATCH | The IRS says 'If you were considered married for part of the year and lived in a community property state... special rules may apply'; this helper requires married at the end of 2025, missing part-year married HOH filers. |
+| household | deepseek | filing_status_conflict | MISMATCH | The helper omits a married-filing-separately return when the filer was not married at year end, although the IRS says 'Check the Married filing separately box ... if you are married at the end of 2025'; it also does not flag single when the spouse died in 2025, whom the IRS treats as married for the whole year. |
 | household | deepseek | home_cost | MISMATCH | The IRS note says TANF used 'to support another person' is considered support you provided for that person, and amounts in a child's or qualifying person's name are considered paid by the child; the restatement instead treats TANF used for the home as paid by you and refers to any person living in the home. |
+| household | deepseek | hsa_share_sum | MISMATCH | IRS line 6 Step 3 says 'Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1'; line 6 is one spouse's share, not the sum of both spouses' shares. |
+| household | deepseek | hsa_step1_sum | MISMATCH | IRS line 6 Step 2 says 'Divide the refigured contribution limit from Step 1 equally between you and your spouse' and Step 3 subtracts the spouse's part; no step adds both spouses' Step 1 limits together. |
 | household | deepseek | test2_absence_persons | MISMATCH | The same omission exists for non-dependent Test 2 persons: the IRS Test 2 can turn on a qualifying child who isn’t your dependent, but the restatement counts only dependent entries. |
 | household | deepseek | test2_persons | MISMATCH | IRS Test 2 includes 'Your unmarried qualifying child who isn’t your dependent,' a married qualifying child who isn’t your dependent, and certain divorced/separated-parent children; counting only dependent entries misses those non-dependent Test 2 persons. |
 | ira | deepseek | 1b | MISMATCH | The IRS line is 'If married filing jointly, was your spouse covered by a retirement plan?'; the restatement adds a contribution condition and does not condition the line on married filing jointly. |
 | ira | deepseek | 8 | MISMATCH | The IRS line includes 'Nontaxable combat pay' in the total; the restatement adds only W-2 box 1 wages and Schedule 1 line 2a. |
 | oi8z | deepseek | 8z (amount) | MISMATCH | The line is NonNegDollars, but the IRS line 8z examples include a 'Loss on certain corrective distributions of excess deferrals'; a loss cannot be entered as a nonnegative amount to include in income. |
+| person | deepseek | (screen) (person.ira_excess) | UNCLEAR | The provided Pub. 590-A excerpt covers traditional IRA excess contributions and recharacterization, but it does not state the Roth IRA contribution/income limits or that traditional and Roth contributions share the $7,000/$8,000 limit. |
+| person | deepseek | (screen) (person.se_screen) | MISMATCH | The screen omits statutory employee income, although the Schedule SE instructions say: 'If you were a statutory employee... be sure to include on line 8a statutory employee social security wages and tips from Form W-2.' A statutory employee with none of the listed items would not be flagged. |
 | person | deepseek | Step 3 | MISMATCH | IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; the restatement adds 'If zero or less, enter -0-,' which changes a negative subtraction result. |
 | retirement | deepseek | (SMW 6) | MISMATCH | The worksheet says 'If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8'; the restatement always computes line 6. |
 | retirement | deepseek | (SMW 7) | MISMATCH | The worksheet says 'If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8'; the restatement always subtracts line 6 from line 2. |
@@ -845,8 +841,6 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | g28 | deepseek | 3 | MISMATCH | MISMATCH | IRS line 3 says 'Enter the total of all collectibles gain or (loss) from Form 4684, line 4 (but only if Form 4684, line 15, is more than zero); Form 6252; Form 6781, Part II; and Form 8824'; the restatement is a $0 div helper and omits those sources and losses. |
 | g28 | deepseek | 4 | MISMATCH | MISMATCH | IRS line 4 says 'Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust'; the restatement only uses Form 1099-DIV box 2d. |
 | g28 | deepseek | 5 | MISMATCH | MISMATCH | IRS line 5 also includes 'Schedule K-1 (Form 1041), box 11, code D'; the restatement only takes Schedule D line 14. |
-| household | deepseek | filing_status_conflict | MISMATCH | MISMATCH | It omits MFS: the IRS says 'Check the “Married filing separately” box... if you are married at the end of 2025 and file a separate return,' so MFS with married false and no 2025 spouse death is also a conflict. |
-| household | deepseek | qss_eligible | MISMATCH | MISMATCH | It tells the filer to answer No if the child was presumed kidnapped, but Pub. 501 says 'You may be eligible to file as a qualifying surviving spouse even if the child... has been kidnapped'; it also repeats the TANF home-cost statement. |
 | ira | deepseek | 1a | MISMATCH | MISMATCH | The IRS line asks 'Were you covered by a retirement plan' without requiring traditional IRA contributions; the restatement adds that condition and does not reflect the MFS spouse-plan deemed-coverage rule. |
 | ira | deepseek | 2a | MISMATCH | MISMATCH | For married filing separately and living apart from the spouse all year, the IRS says 'enter $89,000'; the program uses $10,000 for all married-filing-separately cases. |
 | ira | deepseek | 4 | MISMATCH | MISMATCH | The IRS says to add Schedule 1 'lines 11 through 19a, plus 23 and 25'; the restatement omits Schedule 1 line 12, line 14, and line 23. |
@@ -867,7 +861,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | s3 | deepseek | 1 | MISMATCH | MISMATCH | The referenced ftc.credit uses ftc.regular_tax, which the program defines as Form 1040 line 16 plus Schedule 2 line 1z; the IRS says regular tax is that total 'less any tax included on line 16 from Form 4972.' |
 | s8812 | deepseek | 18a | UNCLEAR | MISMATCH | The Earned Income Chart says a filer with net earnings from self-employment who uses either optional method enters the Earned Income Worksheet amount 'even if you are also taking the EIC,' and its Worksheet B branch is for filers who 'completed Worksheet B.' The restatement instead always uses Worksheet B line 4b whenever its self-employed helper is true. |
 | s8812 | deepseek | 21 | UNCLEAR | MISMATCH | The Additional Medicare Tax and RRTA Tax Worksheet line 16 says 'Add lines 6, 7, 11, and 15' and enter on line 21. The restatement adds only worksheet lines 6 and 7, omitting Tier 1 RRTA lines 11 and 15, with no RRTA refusal. |
-| sa | deepseek | 1 | MISMATCH | MISMATCH | The restatement omits the eligible category in the IRS instructions: 'Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.' |
+| sa | deepseek | 1 | MISMATCH | MISMATCH | The restatement omits the IRS category for expenses of 'Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.' That omission would exclude otherwise includible medical expenses. |
 | sales | deepseek | (e) | MISMATCH | MISMATCH | The restatement routes basis-reported transactions by the helper “Basis reported to IRS,” which is true only for boxes A or D. IRS also says “Box A or Box G” and “Box D or Box J” transactions with an amount shown for cost or other basis were reported to the IRS, so G/J digital-asset transactions would use the records-basis branch instead of the broker-reported basis required for column (e). |
 | sales | deepseek | (g) | MISMATCH | MISMATCH | IRS column (g) is for “any necessary adjustments to gain (or loss)” and specifically includes code E selling expenses, digital asset transaction costs, and option premiums; the restatement only adds the code B basis correction and code W wash-sale adjustment, omitting other column (g) adjustments. |
 | sb | deepseek | 4 | UNCLEAR | UNCLEAR | The provided IRS text contains no line 4 instruction or statement that line 4 is line 2 minus line 3, so the arithmetic cannot be verified from the text given. |

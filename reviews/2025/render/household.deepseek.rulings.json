@@ -34,6 +34,15 @@
   {
    "printed": "filing_status_conflict",
    "restated": "(f1040 line Filing Status = 'single' and helper \"Were you married at the end of 2025?\" = true or f1040 line Filing Status = 'mfj' and helper \"Were you married at the end of 2025?\" = false and helper \"Did your spouse die in 2025?\" = false)",
+   "model": "The helper omits a married-filing-separately return when the filer was not married at year end, although the IRS says 'Check the Married filing separately box ... if you are married at the end of 2025'; it also does not flag single when the spouse died in 2025, whom the IRS treats as married for the whole year.",
+   "ruling": "Ruling: scope; i1040gi p. 14, Married Filing Separately; p501 p. 6, Spouse died during the year. As the prior ruling: a separate return is refused for the whole return by s3.mfs on scope.ready, so the married-filing-separately case never reaches line 12e; a single return in the year of a spouse's death is refused by household.widowed_2025. The gate covers the single and joint contradictions (BUG-0286). The R4 rewording of household.married (paragraphs, no word lost) changed no condition. Project stands.",
+   "context": "62d4bab5c098a466ddb6f5d12fccaa89333669d231a37c0887784e0ae64d4d25",
+   "date": "2026-11-07",
+   "run": "f7e4ea97590e355da7dc189b67dccfb46e46d6b495ebbf4dc7f741decf2c607c"
+  },
+  {
+   "printed": "filing_status_conflict",
+   "restated": "(f1040 line Filing Status = 'single' and helper \"Were you married at the end of 2025?\" = true or f1040 line Filing Status = 'mfj' and helper \"Were you married at the end of 2025?\" = false and helper \"Did your spouse die in 2025?\" = false)",
    "model": "The restatement only flags single and MFJ conflicts; IRS says \"Check the 'Married filing separately' box ... if you are married at the end of 2025 and file a separate return,\" so MFS with not married should also be flagged.",
    "ruling": "Ruling: scope — i1040gi p. 14, Married Filing Separately: a separate return is refused for the whole return by `s3.mfs` on `scope.ready`, so a still-married filer who checks MFS never reaches line 12e and cannot produce the conflict the reviewer describes. The gate covers the single and joint contradictions; HOH and QSS have their own tests, and a joint death-year return stays supported. BUG-0286 records the entry check.",
    "context": "e728e711d3a85f01f98471fae37691185e2a0057ba1f4493b5af641b8881687e"
@@ -76,6 +85,15 @@
   {
    "printed": "hsa_share_sum",
    "restated": "Add person.hsa_share over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS line 6 Step 3 says 'Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1'; line 6 is one spouse's share, not the sum of both spouses' shares.",
+   "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Steps 1 to 3. As the prior rulings and hsa_step1_sum: the line is unchanged by R4; the sum of the shares is the check f8889.allocation_bad makes on an agreed allocation, not line 6, and is computed with line 4 zero (f8889.unsupported refuses Archer MSA contributions). Project stands.",
+   "context": "62d4bab5c098a466ddb6f5d12fccaa89333669d231a37c0887784e0ae64d4d25",
+   "date": "2026-11-07",
+   "run": "f7e4ea97590e355da7dc189b67dccfb46e46d6b495ebbf4dc7f741decf2c607c"
+  },
+  {
+   "printed": "hsa_share_sum",
+   "restated": "Add person.hsa_share over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The shares rest on the same Step 1 limit, which uses Form 8889 line 4 as $0 rather than the required Archer MSA contributions from Form 8853 lines 1 and 2.",
    "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Steps 1 and 2; Form 8889 line 4 is zero on every computed return because Archer MSA contributions are refused by f8889.unsupported, a Form 8889 screen outside the household render. The line is unchanged by the household pass. The shares halve (or allocate) a Step 1 limit computed with that zero. Same as hsa_step1_sum and fix rounds 2 and 4. Project stands.",
    "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8"
@@ -86,6 +104,15 @@
    "model": "Form 8889 line 4 is 'Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2,' not zero; forcing line 4 to zero overstates the Step 1 limits because Step 1 subtracts line 4 from refigured line 3.",
    "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\"; Form 8889 line 4 (Archer MSA contributions). The project enters zero on line 4 because Archer MSA contributions are refused by f8889.unsupported (forms/2025/f8889.yaml, line 4 cite \"Archer MSA contributions are refused by f8889.unsupported\"), a screen on Form 8889 that the household render does not show. The sum is what Step 1 and Step 2 add for both spouses. Same as the completeness-fixes ruling of the Claude render. Project stands.",
    "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+  },
+  {
+   "printed": "hsa_step1_sum",
+   "restated": "Add person.hsa_step1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS line 6 Step 2 says 'Divide the refigured contribution limit from Step 1 equally between you and your spouse' and Step 3 subtracts the spouse's part; no step adds both spouses' Step 1 limits together.",
+   "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\". As the prior rulings: the line is unchanged by R4, which reworded only household.married, household.unmarried and household.qss_eligible; the sum is not line 6: it checks an agreed allocation (f8889.allocation_bad refuses when the spouses' Step 1 limits differ or their shares exceed one Step 1 limit; i8889 p. 7, Step 2), and line 4 (Archer MSA contributions) is zero on every computed return because f8889.unsupported refuses them, a Form 8889 screen outside the household render. Project stands.",
+   "context": "62d4bab5c098a466ddb6f5d12fccaa89333669d231a37c0887784e0ae64d4d25",
+   "date": "2026-11-07",
+   "run": "f7e4ea97590e355da7dc189b67dccfb46e46d6b495ebbf4dc7f741decf2c607c"
   },
   {
    "printed": "hsa_step1_sum",

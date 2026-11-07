@@ -1,14 +1,14 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1565,
+  "fixtures": 1638,
   "generated": 500,
   "partial_bases": 40,
   "partial_records": 235,
   "return_states": {
-   "completed": 402,
-   "incomplete": 893,
-   "refused": 1005
+   "completed": 400,
+   "incomplete": 926,
+   "refused": 1047
   },
   "seed": 20261026
  },
@@ -20,14 +20,14 @@
  "lines": [
   {
    "absent": 0,
-   "agree": 2287,
+   "agree": 2360,
    "candidate": "household.roster_bad",
-   "compared": 2300,
+   "compared": 2373,
    "completed_witnesses": [],
    "differ": 13,
    "handle": "household.roster_bad",
-   "in_scope": 2299,
-   "in_scope_agree": 2287,
+   "in_scope": 2372,
+   "in_scope_agree": 2360,
    "invalid": 0,
    "kinds": {
     "project-refuses": 1,
@@ -41,11 +41,11 @@
      "project-refuses": 1
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.roster_bad",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
     "partial": 235
    },
@@ -827,9 +827,9 @@
   },
   {
    "absent": 0,
-   "agree": 2157,
+   "agree": 2236,
    "candidate": "household.all_eic_ssn",
-   "compared": 2300,
+   "compared": 2373,
    "completed_witnesses": [
     {
      "candidate": {
@@ -960,43 +960,112 @@
      }
     }
    ],
-   "differ": 143,
+   "differ": 137,
    "handle": "household.all_eic_ssn",
-   "in_scope": 2275,
-   "in_scope_agree": 2157,
+   "in_scope": 2347,
+   "in_scope_agree": 2236,
    "invalid": 0,
    "kinds": {
-    "candidate-refuses": 25,
-    "candidate-unknown": 84,
-    "project-unknown": 1,
-    "value": 33
+    "candidate-refuses": 26,
+    "candidate-unknown": 89,
+    "project-unknown": 5,
+    "value": 17
    },
    "kinds_by_return": {
     "completed": {
      "value": 2
     },
     "incomplete": {
-     "candidate-unknown": 53,
+     "candidate-unknown": 58,
      "value": 1
     },
     "refused": {
-     "candidate-refuses": 25,
+     "candidate-refuses": 26,
      "candidate-unknown": 31,
-     "project-unknown": 1,
-     "value": 30
+     "project-unknown": 5,
+     "value": 14
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.all_eic_ssn",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
     "partial": 235
    },
    "status": "DISAGREE",
    "triage": "differs",
    "witnesses": [
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_person_eic_fail_count",
+       "value": {
+        "input": "person[taxpayer].eic_ssn",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].eic_ssn"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "household.h_dep_eic_fail_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].eic_ssn",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].eic_ssn"
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_ssn_count",
+       "value": {
+        "input": "person[taxpayer].eic_ssn",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].eic_ssn"
+       }
+      },
+      {
+       "ref": "household.persons",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8960.3.deepseek",
+      "kind": "fixture"
+     }
+    },
     {
      "candidate": {
       "kind": "bool",
@@ -1189,6 +1258,75 @@
      "project_return": "refused",
      "source": {
       "id": "classm.asset.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_person_eic_fail_count",
+       "value": {
+        "input": "person[taxpayer].eic_ssn",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].eic_ssn"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "household.h_dep_eic_fail_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].eic_ssn",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].eic_ssn"
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_ssn_count",
+       "value": {
+        "input": "person[taxpayer].eic_ssn",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].eic_ssn"
+       }
+      },
+      {
+       "ref": "household.persons",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8960.3",
       "kind": "fixture"
      }
     },
@@ -1866,6 +2004,81 @@
      ],
      "project_return": "refused",
      "source": {
+      "id": "stage21.choose.eic_limit_status_unanswered",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 44, Married child"
+      },
+      "form": "Married child (EIC)",
+      "gate": "dependent[child].married",
+      "kind": "refusal",
+      "remedy": "A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person."
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_person_eic_fail_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "household.h_dep_eic_fail_count",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 44, Married child"
+        },
+        "form": "Married child (EIC)",
+        "gate": "dependent[child].married",
+        "kind": "refusal",
+        "remedy": "A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_ssn_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "household.persons",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
       "id": "stage8.refuse.dependent.married",
       "kind": "fixture"
      }
@@ -2161,82 +2374,6 @@
     },
     {
      "candidate": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 44, Married child"
-      },
-      "form": "Married child (EIC)",
-      "gate": "dependent[dep_c].married",
-      "kind": "refusal",
-      "remedy": "A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person."
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_person_eic_fail_count",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      },
-      {
-       "ref": "household.h_dep_eic_fail_count",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 44, Married child"
-        },
-        "form": "Married child (EIC)",
-        "gate": "dependent[dep_c].married",
-        "kind": "refusal",
-        "remedy": "A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person."
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.eic_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 23,
-      "kind": "generated",
-      "seed": 20261026
-     }
-    },
-    {
-     "candidate": {
       "kind": "bool",
       "value": false
      },
@@ -2298,44 +2435,321 @@
       "kind": "generated",
       "seed": 20261026
      }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_person_eic_fail_count",
+       "value": {
+        "input": "person[taxpayer].eic_ssn",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].eic_ssn"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "household.h_dep_eic_fail_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].eic_ssn",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].eic_ssn"
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_ssn_count",
+       "value": {
+        "input": "person[taxpayer].eic_ssn",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].eic_ssn"
+       }
+      },
+      {
+       "ref": "household.persons",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.asset.4",
+      "kind": "partial",
+      "withheld": "household.community_property"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_person_eic_fail_count",
+       "value": {
+        "input": "person[taxpayer].eic_ssn",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].eic_ssn"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "household.h_dep_eic_fail_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].eic_ssn",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].eic_ssn"
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_ssn_count",
+       "value": {
+        "input": "person[taxpayer].eic_ssn",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].eic_ssn"
+       }
+      },
+      {
+       "ref": "household.persons",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.asset.4",
+      "kind": "partial",
+      "withheld": "household.credit_disallowed"
+     }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 2228,
+   "agree": 2303,
    "candidate": "household.all_tin",
-   "compared": 2300,
-   "completed_witnesses": [],
-   "differ": 72,
+   "compared": 2373,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_person_tin_fail_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "household.h_dep_tin_fail_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "household.tin_count",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "household.persons",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "index": 413,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ],
+   "differ": 70,
    "handle": "household.all_tin",
-   "in_scope": 2300,
-   "in_scope_agree": 2228,
+   "in_scope": 2373,
+   "in_scope_agree": 2303,
    "invalid": 0,
    "kinds": {
-    "project-unknown": 2,
-    "value": 70
+    "project-unknown": 6,
+    "value": 64
    },
    "kinds_by_return": {
+    "completed": {
+     "value": 1
+    },
     "incomplete": {
      "value": 2
     },
     "refused": {
-     "project-unknown": 2,
-     "value": 68
+     "project-unknown": 6,
+     "value": 61
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.all_tin",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
     "partial": 235
    },
    "status": "DISAGREE",
    "triage": "differs",
    "witnesses": [
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_person_tin_fail_count",
+       "value": {
+        "input": "person[taxpayer].tin",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].tin"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "household.h_dep_tin_fail_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].tin",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].tin"
+     },
+     "project_operands": [
+      {
+       "ref": "household.tin_count",
+       "value": {
+        "input": "person[taxpayer].tin",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].tin"
+       }
+      },
+      {
+       "ref": "household.persons",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8960.3.deepseek",
+      "kind": "fixture"
+     }
+    },
     {
      "candidate": {
       "kind": "bool",
@@ -2666,6 +3080,75 @@
       {
        "ref": "household.h_person_tin_fail_count",
        "value": {
+        "input": "person[taxpayer].tin",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].tin"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "household.h_dep_tin_fail_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].tin",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].tin"
+     },
+     "project_operands": [
+      {
+       "ref": "household.tin_count",
+       "value": {
+        "input": "person[taxpayer].tin",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].tin"
+       }
+      },
+      {
+       "ref": "household.persons",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8960.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_person_tin_fail_count",
+       "value": {
         "kind": "count",
         "value": 0
        }
@@ -2853,22 +3336,162 @@
       "id": "classm.eic.8",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_person_tin_fail_count",
+       "value": {
+        "input": "person[taxpayer].tin",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].tin"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "household.h_dep_tin_fail_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].tin",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].tin"
+     },
+     "project_operands": [
+      {
+       "ref": "household.tin_count",
+       "value": {
+        "input": "person[taxpayer].tin",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].tin"
+       }
+      },
+      {
+       "ref": "household.persons",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.asset.4",
+      "kind": "partial",
+      "withheld": "household.community_property"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_person_tin_fail_count",
+       "value": {
+        "input": "person[taxpayer].tin",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].tin"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "household.h_dep_tin_fail_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].tin",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].tin"
+     },
+     "project_operands": [
+      {
+       "ref": "household.tin_count",
+       "value": {
+        "input": "person[taxpayer].tin",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].tin"
+       }
+      },
+      {
+       "ref": "household.persons",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.asset.4",
+      "kind": "partial",
+      "withheld": "household.credit_disallowed"
+     }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 2226,
+   "agree": 2298,
    "candidate": "household.ctc_ssn",
-   "compared": 2300,
+   "compared": 2373,
    "completed_witnesses": [],
-   "differ": 74,
+   "differ": 75,
    "handle": "household.ctc_ssn",
-   "in_scope": 2227,
-   "in_scope_agree": 2226,
+   "in_scope": 2299,
+   "in_scope_agree": 2298,
    "invalid": 0,
    "kinds": {
-    "candidate-refuses": 73,
+    "candidate-refuses": 74,
     "value": 1
    },
    "kinds_by_return": {
@@ -2876,14 +3499,14 @@
      "value": 1
     },
     "refused": {
-     "candidate-refuses": 73
+     "candidate-refuses": 74
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.ctc_ssn",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
     "partial": 235
    },
@@ -3537,9 +4160,9 @@
   },
   {
    "absent": 0,
-   "agree": 2277,
+   "agree": 2347,
    "candidate": "household.ctc_disallowed_claim",
-   "compared": 2300,
+   "compared": 2373,
    "completed_witnesses": [
     {
      "candidate": {
@@ -3701,14 +4324,14 @@
       {
        "ref": "s8812.line11",
        "value": {
-        "cents": 125000,
+        "cents": 0,
         "kind": "money"
        }
       }
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.s8812.3.deepseek",
+      "base": "classm.clcw.2.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -3768,7 +4391,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.f5329.2.deepseek",
+      "base": "classm.s2.2.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -3814,114 +4437,55 @@
       {
        "ref": "s8812.line8",
        "value": {
-        "cents": 50000,
+        "cents": 150000,
         "kind": "money"
        }
       },
       {
        "ref": "s8812.line11",
        "value": {
-        "cents": 155000,
+        "cents": 620000,
         "kind": "money"
        }
       }
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.f8962.3.gpt",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "s8812.line8",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "s8812.line11",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f4952.2",
+      "base": "classm.f8962.2.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
     }
    ],
-   "differ": 23,
+   "differ": 26,
    "handle": "household.ctc_disallowed_claim",
-   "in_scope": 2295,
-   "in_scope_agree": 2277,
+   "in_scope": 2367,
+   "in_scope_agree": 2347,
    "invalid": 0,
    "kinds": {
-    "candidate-unknown": 16,
-    "project-refuses": 5,
-    "value": 2
+    "candidate-unknown": 17,
+    "project-refuses": 6,
+    "value": 3
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 4,
+     "candidate-unknown": 3,
      "value": 2
     },
     "incomplete": {
-     "candidate-unknown": 8
+     "candidate-unknown": 11
     },
     "refused": {
-     "candidate-unknown": 4,
-     "project-refuses": 5
+     "candidate-unknown": 3,
+     "project-refuses": 6,
+     "value": 1
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.ctc_disallowed_claim",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
     "partial": 235
    },
@@ -4037,6 +4601,62 @@
      "project_return": "completed",
      "source": {
       "id": "f2.t101.credit_disallowed_eic_zero",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "s8812.line8",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s8812.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage9.mut.eic_no_child_credit_disallowed",
       "kind": "fixture"
      }
     },
@@ -4189,16 +4809,10 @@
       }
      ],
      "instance": "household",
-     "kind": "project-refuses",
+     "kind": "candidate-unknown",
      "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+      "kind": "bool",
+      "value": false
      },
      "project_operands": [
       {
@@ -4219,27 +4833,21 @@
       {
        "ref": "s8812.line8",
        "value": {
-        "cents": 220000,
+        "cents": 0,
         "kind": "money"
        }
       },
       {
        "ref": "s8812.line11",
        "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+        "cents": 1540000,
+        "kind": "money"
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.g28.2.deepseek",
+      "base": "classm.sd.3.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -4297,69 +4905,9 @@
        }
       }
      ],
-     "project_return": "refused",
+     "project_return": "completed",
      "source": {
-      "base": "classm.clcw.3.deepseek",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "s8812.line8",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "s8812.line11",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.clcw26.3.deepseek",
+      "base": "classm.clcw.2.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -4411,7 +4959,7 @@
       {
        "ref": "s8812.line8",
        "value": {
-        "cents": 320000,
+        "cents": 440000,
         "kind": "money"
        }
       },
@@ -4431,7 +4979,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.dependent.3.deepseek",
+      "base": "classm.dependent.2.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -4484,14 +5032,14 @@
       {
        "ref": "s8812.line11",
        "value": {
-        "cents": 125000,
+        "cents": 0,
         "kind": "money"
        }
       }
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.s8812.3.deepseek",
+      "base": "classm.s2.2.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -4551,7 +5099,7 @@
      ],
      "project_return": "incomplete",
      "source": {
-      "base": "classm.f5695.3.deepseek",
+      "base": "classm.s3.3.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -4597,21 +5145,93 @@
       {
        "ref": "s8812.line8",
        "value": {
-        "cents": 0,
+        "cents": 150000,
         "kind": "money"
        }
       },
       {
        "ref": "s8812.line11",
        "value": {
-        "cents": 0,
+        "cents": 620000,
         "kind": "money"
        }
       }
      ],
-     "project_return": "incomplete",
+     "project_return": "completed",
      "source": {
-      "base": "classm.f5695.11.deepseek",
+      "base": "classm.f8962.2.deepseek",
+      "kind": "partial",
+      "withheld": "household.credit_disallowed"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.credit_disallowed",
+      "kind": "unknown",
+      "reason": "no input supplied for household.credit_disallowed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "input": "household.credit_disallowed",
+        "kind": "unknown",
+        "reason": "no input supplied for household.credit_disallowed"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f1040s8812",
+       "locator": "Schedule 8812 (2025), lines 2a\u20132c"
+      },
+      "form": "Schedule 8812 lines 2a\u20132c",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "Excluded Puerto Rico income, Form 2555 and Form 4563 amounts are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "input": "household.credit_disallowed",
+        "kind": "unknown",
+        "reason": "no input supplied for household.credit_disallowed"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "s8812.line8",
+       "value": {
+        "cents": 50000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s8812.line11",
+       "value": {
+        "cite": {
+         "doc": "f1040s8812",
+         "locator": "Schedule 8812 (2025), lines 2a\u20132c"
+        },
+        "form": "Schedule 8812 lines 2a\u20132c",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "Excluded Puerto Rico income, Form 2555 and Form 4563 amounts are outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.eic.6.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -4640,7 +5260,7 @@
        "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
       },
       "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
-      "gate": "dependent[dep_b].claimed_no_tin",
+      "gate": "dependent[dep_c].claimed_no_tin",
       "kind": "refusal",
       "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
      },
@@ -4668,7 +5288,7 @@
          "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
         },
         "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
-        "gate": "dependent[dep_b].claimed_no_tin",
+        "gate": "dependent[dep_c].claimed_no_tin",
         "kind": "refusal",
         "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
        }
@@ -4683,7 +5303,79 @@
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.retirement.3.deepseek",
+      "base": "classm.asset.4",
+      "kind": "partial",
+      "withheld": "household.credit_disallowed"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.credit_disallowed",
+      "kind": "unknown",
+      "reason": "no input supplied for household.credit_disallowed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "input": "household.credit_disallowed",
+        "kind": "unknown",
+        "reason": "no input supplied for household.credit_disallowed"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "FinCEN Form 114 (FBAR)",
+      "gate": "sb.fbar_required",
+      "kind": "refusal",
+      "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
+     },
+     "project_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "input": "household.credit_disallowed",
+        "kind": "unknown",
+        "reason": "no input supplied for household.credit_disallowed"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "s8812.line8",
+       "value": {
+        "cents": 50000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s8812.line11",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "FinCEN Form 114 (FBAR)",
+        "gate": "sb.fbar_required",
+        "kind": "refusal",
+        "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.dcprov.1",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -4748,14 +5440,20 @@
       {
        "ref": "s8812.line11",
        "value": {
-        "cents": 700000,
-        "kind": "money"
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 3520 / Form 3520-A",
+        "gate": "sb.line8",
+        "kind": "refusal",
+        "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.carloan.1",
+      "base": "classm.f8959.2",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -4764,9 +5462,9 @@
   },
   {
    "absent": 0,
-   "agree": 2270,
+   "agree": 2339,
    "candidate": "household.eic_disallowed_claim",
-   "compared": 2300,
+   "compared": 2373,
    "completed_witnesses": [
     {
      "candidate": {
@@ -4949,7 +5647,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.s8812.3.deepseek",
+      "base": "classm.clcw.2.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -5009,7 +5707,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.f5329.2.deepseek",
+      "base": "classm.s2.2.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -5069,101 +5767,41 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.f8962.3.gpt",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f4952.2",
+      "base": "classm.f8962.2.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
     }
    ],
-   "differ": 30,
+   "differ": 34,
    "handle": "household.eic_disallowed_claim",
-   "in_scope": 2297,
-   "in_scope_agree": 2270,
+   "in_scope": 2368,
+   "in_scope_agree": 2339,
    "invalid": 0,
    "kinds": {
-    "candidate-unknown": 24,
-    "project-refuses": 3,
+    "candidate-unknown": 26,
+    "project-refuses": 5,
     "value": 3
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 4,
+     "candidate-unknown": 3,
      "value": 2
     },
     "incomplete": {
-     "candidate-unknown": 13
+     "candidate-unknown": 16
     },
     "refused": {
      "candidate-unknown": 7,
-     "project-refuses": 3,
+     "project-refuses": 5,
      "value": 1
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.eic_disallowed_claim",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
     "partial": 235
    },
@@ -5561,78 +6199,6 @@
       }
      ],
      "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.g28.2.deepseek",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      }
-     ],
-     "instance": "household",
      "kind": "candidate-unknown",
      "project": {
       "kind": "bool",
@@ -5671,7 +6237,7 @@
      ],
      "project_return": "incomplete",
      "source": {
-      "base": "classm.u1250.1.deepseek",
+      "base": "classm.g28.1.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -5731,7 +6297,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.clcw.3.deepseek",
+      "base": "classm.sd.3.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -5789,9 +6355,9 @@
        }
       }
      ],
-     "project_return": "refused",
+     "project_return": "completed",
      "source": {
-      "base": "classm.clcw26.3.deepseek",
+      "base": "classm.clcw.2.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -5863,7 +6429,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.dependent.3.deepseek",
+      "base": "classm.dependent.2.deepseek",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -5921,9 +6487,225 @@
        }
       }
      ],
-     "project_return": "incomplete",
+     "project_return": "completed",
      "source": {
-      "base": "classm.s2.3.deepseek",
+      "base": "classm.s2.2.deepseek",
+      "kind": "partial",
+      "withheld": "household.credit_disallowed"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.credit_disallowed",
+      "kind": "unknown",
+      "reason": "no input supplied for household.credit_disallowed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "input": "household.credit_disallowed",
+        "kind": "unknown",
+        "reason": "no input supplied for household.credit_disallowed"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 40, Step 1, question 3, \"Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP\""
+      },
+      "form": "Form 2555 (EIC, Step 1, question 3)",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "input": "household.credit_disallowed",
+        "kind": "unknown",
+        "reason": "no input supplied for household.credit_disallowed"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "eic.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 40, Step 1, question 3, \"Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP\""
+        },
+        "form": "Form 2555 (EIC, Step 1, question 3)",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.eic.6.deepseek",
+      "kind": "partial",
+      "withheld": "household.credit_disallowed"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.credit_disallowed",
+      "kind": "unknown",
+      "reason": "no input supplied for household.credit_disallowed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "input": "household.credit_disallowed",
+        "kind": "unknown",
+        "reason": "no input supplied for household.credit_disallowed"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "FinCEN Form 114 (FBAR)",
+      "gate": "sb.fbar_required",
+      "kind": "refusal",
+      "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
+     },
+     "project_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "input": "household.credit_disallowed",
+        "kind": "unknown",
+        "reason": "no input supplied for household.credit_disallowed"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "eic.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "FinCEN Form 114 (FBAR)",
+        "gate": "sb.fbar_required",
+        "kind": "refusal",
+        "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.dcprov.1",
+      "kind": "partial",
+      "withheld": "household.credit_disallowed"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.credit_disallowed",
+      "kind": "unknown",
+      "reason": "no input supplied for household.credit_disallowed"
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "input": "household.credit_disallowed",
+        "kind": "unknown",
+        "reason": "no input supplied for household.credit_disallowed"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 3520 / Form 3520-A",
+      "gate": "sb.line8",
+      "kind": "refusal",
+      "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "input": "household.credit_disallowed",
+        "kind": "unknown",
+        "reason": "no input supplied for household.credit_disallowed"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "eic.eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 3520 / Form 3520-A",
+        "gate": "sb.line8",
+        "kind": "refusal",
+        "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8959.2",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -5932,3082 +6714,9 @@
   },
   {
    "absent": 0,
-   "agree": 565,
-   "candidate": "household.hoh_fails",
-   "compared": 2300,
-   "completed_witnesses": [
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "qss"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f8960.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "qss"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.u1250.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.clcw.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "qss"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.clcw26.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.s2.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.unmarried",
-      "kind": "unknown",
-      "reason": "no input supplied for household.unmarried"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "dependent[dep_a].absence_no_return",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for dependent[dep_a].absence_no_return"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.s3.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.unmarried",
-      "kind": "unknown",
-      "reason": "no input supplied for household.unmarried"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "dependent[dep_b].kidnapped",
-        "kind": "unknown",
-        "reason": "no input supplied for dependent[dep_b].kidnapped"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f8962.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.unmarried",
-      "kind": "unknown",
-      "reason": "no input supplied for household.unmarried"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "dependent[dep_a].absence_no_return",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for dependent[dep_a].absence_no_return"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f8962.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.unmarried",
-      "kind": "unknown",
-      "reason": "no input supplied for household.unmarried"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "dependent[dep_b].absence_no_return",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for dependent[dep_b].absence_no_return"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f8962.5.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.unmarried",
-      "kind": "unknown",
-      "reason": "no input supplied for household.unmarried"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "dependent[dep_a].parent_home_paid",
-        "kind": "unknown",
-        "reason": "no input supplied for dependent[dep_a].parent_home_paid"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "qss"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f5695.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.unmarried",
-      "kind": "unknown",
-      "reason": "no input supplied for household.unmarried"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "dependent[dep_a].absence_no_return",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for dependent[dep_a].absence_no_return"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "qss"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f5695.7.deepseek",
-      "kind": "fixture"
-     }
-    }
-   ],
-   "differ": 1735,
-   "handle": "household.hoh_fails",
-   "in_scope": 2211,
-   "in_scope_agree": 543,
-   "invalid": 0,
-   "kinds": {
-    "candidate-refuses": 62,
-    "candidate-unknown": 105,
-    "project-refuses": 5,
-    "project-unknown": 2,
-    "value": 1561
-   },
-   "kinds_by_return": {
-    "completed": {
-     "candidate-unknown": 26,
-     "value": 258
-    },
-    "incomplete": {
-     "candidate-unknown": 45,
-     "project-unknown": 2,
-     "value": 646
-    },
-    "refused": {
-     "candidate-refuses": 62,
-     "candidate-unknown": 34,
-     "project-refuses": 5,
-     "value": 657
-    }
-   },
-   "open_at_triage": true,
-   "project": "household.hoh_fails",
-   "shown_when": null,
-   "sources": {
-    "fixture": 1565,
-    "generated": 500,
-    "partial": 235
-   },
-   "status": "DISAGREE",
-   "triage": "differs",
-   "witnesses": [
-    {
-     "candidate": {
-      "input": "household.unmarried",
-      "kind": "unknown",
-      "reason": "no input supplied for household.unmarried"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "dependent[a].absence_no_return",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for dependent[a].absence_no_return"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "classm.f2441.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.w2.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.f8889.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.unmarried",
-      "kind": "unknown",
-      "reason": "no input supplied for household.unmarried"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "$dependent",
-        "kind": "unknown",
-        "reason": "collection roster not confirmed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "classm.f8889.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.f8889.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.unmarried",
-      "kind": "unknown",
-      "reason": "no input supplied for household.unmarried"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "dependent[dep_a].absence_no_return",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for dependent[dep_a].absence_no_return"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.f4952.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.f4952.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "qss"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f8960.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.unmarried",
-      "kind": "unknown",
-      "reason": "no input supplied for household.unmarried"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "dependent[dep_a].absence_no_return",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for dependent[dep_a].absence_no_return"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.s3.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "dependent[dep_a].born_died",
-      "kind": "unknown",
-      "lowerBound": 0,
-      "reason": "no input supplied for dependent[dep_a].born_died"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "dependent[dep_a].born_died",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for dependent[dep_a].born_died"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfs"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.f1095a.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.unmarried",
-      "kind": "unknown",
-      "reason": "no input supplied for household.unmarried"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "input": "dependent[dep_b].kidnapped",
-        "kind": "unknown",
-        "reason": "no input supplied for dependent[dep_b].kidnapped"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f8962.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
-      },
-      "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
-      "gate": "dependent[dep_a].claimed_no_tin",
-      "kind": "refusal",
-      "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
-        },
-        "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
-        "gate": "dependent[dep_a].claimed_no_tin",
-        "kind": "refusal",
-        "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfs"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.eic.8.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
-      },
-      "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
-      "gate": "dependent[dep_c].claimed_no_tin",
-      "kind": "refusal",
-      "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
-        },
-        "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
-        "gate": "dependent[dep_c].claimed_no_tin",
-        "kind": "refusal",
-        "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfs"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.asset.4",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
-      },
-      "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
-      "gate": "dependent[dep_a].claimed_no_tin",
-      "kind": "refusal",
-      "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
-        },
-        "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
-        "gate": "dependent[dep_a].claimed_no_tin",
-        "kind": "refusal",
-        "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.s1.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 21, Married person"
-      },
-      "form": "Married person rules",
-      "gate": "dependent[dep_a].married",
-      "kind": "refusal",
-      "remedy": "A married dependent is outside this tool; see Married person in the instructions."
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "input": "household.unmarried",
-        "kind": "unknown",
-        "reason": "no input supplied for household.unmarried"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "input": "household.home_cost",
-        "kind": "unknown",
-        "reason": "no input supplied for household.home_cost"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 21, Married person"
-        },
-        "form": "Married person rules",
-        "gate": "dependent[dep_a].married",
-        "kind": "refusal",
-        "remedy": "A married dependent is outside this tool; see Married person in the instructions."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.sales.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "pp. 19\u201320, Exception to gross income test"
-      },
-      "form": "Exception to gross income test",
-      "gate": "dependent[dep_a].income_exception",
-      "kind": "refusal",
-      "remedy": "The sheltered-workshop exception to the gross income test for a disabled person is outside this tool."
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "pp. 19\u201320, Exception to gross income test"
-        },
-        "form": "Exception to gross income test",
-        "gate": "dependent[dep_a].income_exception",
-        "kind": "refusal",
-        "remedy": "The sheltered-workshop exception to the gross income test for a disabled person is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.se.3",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 21, Qualifying child of more than one person"
-      },
-      "form": "Qualifying child of more than one person (tie-breaker rules)",
-      "gate": "dependent[dep_a].qc_tiebreak",
-      "kind": "refusal",
-      "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 21, Qualifying child of more than one person"
-        },
-        "form": "Qualifying child of more than one person (tie-breaker rules)",
-        "gate": "dependent[dep_a].qc_tiebreak",
-        "kind": "refusal",
-        "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfs"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.sli.5",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-unknown",
-     "project": {
-      "input": "f1040.status",
-      "kind": "unknown",
-      "reason": "no input supplied for f1040.status"
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "input": "f1040.status",
-        "kind": "unknown",
-        "reason": "no input supplied for f1040.status"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "household.hoh_eligible",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "mutation.t2.sd.line7a_gain_no_status",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\""
-      },
-      "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
-      "gate": "household.hoh_community_property",
-      "kind": "refusal",
-      "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "household.hoh_eligible",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\""
-        },
-        "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
-        "gate": "household.hoh_community_property",
-        "kind": "refusal",
-        "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool."
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage21.household.community_still_married",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
-      },
-      "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
-      "gate": "dependent[parent].claimed_no_tin",
-      "kind": "refusal",
-      "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "household.hoh_eligible",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
-        },
-        "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
-        "gate": "dependent[parent].claimed_no_tin",
-        "kind": "refusal",
-        "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "audit.dependent.hoh_test1_no_tin",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\""
-      },
-      "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
-      "gate": "household.hoh_community_property",
-      "kind": "refusal",
-      "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "household.hoh_eligible",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\""
-        },
-        "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
-        "gate": "household.hoh_community_property",
-        "kind": "refusal",
-        "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool."
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "audit.household.hoh_community_property",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "p501",
-       "locator": "p. 9, Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\""
-      },
-      "form": "Temporary absences for head of household (Pub. 501)",
-      "gate": "household.hoh_absence",
-      "kind": "refusal",
-      "remedy": "For head of household, an absence counts as time lived with you only if it was reasonable to assume the absent person would return and you kept up the home; the time the person who would qualify you lived with you must be recounted under that rule, which this tool does not do."
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "household.hoh_eligible",
-       "value": {
-        "cite": {
-         "doc": "p501",
-         "locator": "p. 9, Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\""
-        },
-        "form": "Temporary absences for head of household (Pub. 501)",
-        "gate": "household.hoh_absence",
-        "kind": "refusal",
-        "remedy": "For head of household, an absence counts as time lived with you only if it was reasonable to assume the absent person would return and you kept up the home; the time the person who would qualify you lived with you must be recounted under that rule, which this tool does not do."
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "t091.absence.hoh_refused",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 21, Married person"
-      },
-      "form": "Married person rules",
-      "gate": "dependent[dep_a].married",
-      "kind": "refusal",
-      "remedy": "A married dependent is outside this tool; see Married person in the instructions."
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "household.hoh_eligible",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 21, Married person"
-        },
-        "form": "Married person rules",
-        "gate": "dependent[dep_a].married",
-        "kind": "refusal",
-        "remedy": "A married dependent is outside this tool; see Married person in the instructions."
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 357,
-      "kind": "generated",
-      "seed": 20261026
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.home_cost",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_hoh_any",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-unknown",
-     "project": {
-      "input": "household.community_property",
-      "kind": "unknown",
-      "reason": "no input supplied for household.community_property"
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      },
-      {
-       "ref": "household.hoh_eligible",
-       "value": {
-        "input": "household.community_property",
-        "kind": "unknown",
-        "reason": "no input supplied for household.community_property"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "base": "classm.f1040.5.deepseek",
-      "kind": "partial",
-      "withheld": "household.community_property"
-     }
-    }
-   ]
-  },
-  {
-   "absent": 0,
-   "agree": 649,
+   "agree": 647,
    "candidate": "household.qss_fails",
-   "compared": 2300,
+   "compared": 2373,
    "completed_witnesses": [
     {
      "candidate": {
@@ -9316,30 +7025,30 @@
      }
     }
    ],
-   "differ": 1651,
+   "differ": 1726,
    "handle": "household.qss_fails",
-   "in_scope": 2300,
-   "in_scope_agree": 649,
+   "in_scope": 2373,
+   "in_scope_agree": 647,
    "invalid": 0,
    "kinds": {
-    "candidate-unknown": 1651
+    "candidate-unknown": 1726
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 232
+     "candidate-unknown": 247
     },
     "incomplete": {
-     "candidate-unknown": 865
+     "candidate-unknown": 910
     },
     "refused": {
-     "candidate-unknown": 554
+     "candidate-unknown": 569
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.qss_fails",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
     "partial": 235
    },
@@ -9656,9 +7365,9 @@
   },
   {
    "absent": 0,
-   "agree": 2233,
+   "agree": 2299,
    "candidate": "household.widowed_2025",
-   "compared": 2300,
+   "compared": 2373,
    "completed_witnesses": [
     {
      "candidate": {
@@ -10009,32 +7718,32 @@
      }
     }
    ],
-   "differ": 67,
+   "differ": 74,
    "handle": "household.widowed_2025",
-   "in_scope": 2300,
-   "in_scope_agree": 2233,
+   "in_scope": 2373,
+   "in_scope_agree": 2299,
    "invalid": 0,
    "kinds": {
-    "candidate-unknown": 66,
+    "candidate-unknown": 73,
     "value": 1
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 20
+     "candidate-unknown": 23
     },
     "incomplete": {
-     "candidate-unknown": 22,
+     "candidate-unknown": 14,
      "value": 1
     },
     "refused": {
-     "candidate-unknown": 24
+     "candidate-unknown": 36
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.widowed_2025",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
     "partial": 235
    },
@@ -10154,6 +7863,64 @@
      "project_return": "completed",
      "source": {
       "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.spouse_died_2025",
+      "kind": "unknown",
+      "reason": "no input supplied for household.spouse_died_2025"
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.spouse_died_2025",
+       "value": {
+        "input": "household.spouse_died_2025",
+        "kind": "unknown",
+        "reason": "no input supplied for household.spouse_died_2025"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8960.3.deepseek",
       "kind": "fixture"
      }
     },
@@ -10333,64 +8100,6 @@
     },
     {
      "candidate": {
-      "input": "household.spouse_died_2025",
-      "kind": "unknown",
-      "reason": "no input supplied for household.spouse_died_2025"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.spouse_died_2025",
-       "value": {
-        "input": "household.spouse_died_2025",
-        "kind": "unknown",
-        "reason": "no input supplied for household.spouse_died_2025"
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "qss"
-       }
-      },
-      {
-       "ref": "\"single\"",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "qss"
-       }
-      },
-      {
-       "ref": "\"hoh\"",
-       "value": {
-        "kind": "enum",
-        "value": "hoh"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f5695.7.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
       "kind": "bool",
       "value": true
      },
@@ -10449,9 +8158,9 @@
   },
   {
    "absent": 0,
-   "agree": 2090,
+   "agree": 2120,
    "candidate": "household.cp_marriage_ended",
-   "compared": 2300,
+   "compared": 2373,
    "completed_witnesses": [
     {
      "candidate": {
@@ -10552,6 +8261,64 @@
      "project_return": "completed",
      "source": {
       "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.cp_married",
+      "kind": "unknown",
+      "reason": "no input supplied for household.cp_married"
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.cp_married",
+       "value": {
+        "input": "household.cp_married",
+        "kind": "unknown",
+        "reason": "no input supplied for household.cp_married"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "household.community_property",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     },
@@ -10728,93 +8495,35 @@
       "id": "classm.s3.3.deepseek",
       "kind": "fixture"
      }
-    },
-    {
-     "candidate": {
-      "input": "household.cp_married",
-      "kind": "unknown",
-      "reason": "no input supplied for household.cp_married"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.cp_married",
-       "value": {
-        "input": "household.cp_married",
-        "kind": "unknown",
-        "reason": "no input supplied for household.cp_married"
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "\"mfj\"",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.s3.4.deepseek",
-      "kind": "fixture"
-     }
     }
    ],
-   "differ": 210,
+   "differ": 253,
    "handle": "household.cp_marriage_ended",
-   "in_scope": 2300,
-   "in_scope_agree": 2090,
+   "in_scope": 2373,
+   "in_scope_agree": 2120,
    "invalid": 0,
    "kinds": {
-    "candidate-unknown": 208,
+    "candidate-unknown": 251,
     "value": 2
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 64
+     "candidate-unknown": 80
     },
     "incomplete": {
-     "candidate-unknown": 96,
+     "candidate-unknown": 111,
      "value": 1
     },
     "refused": {
-     "candidate-unknown": 48,
+     "candidate-unknown": 60,
      "value": 1
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.cp_marriage_ended",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
     "partial": 235
    },
@@ -11285,9 +8994,9 @@
   },
   {
    "absent": 0,
-   "agree": 2269,
+   "agree": 2345,
    "candidate": "household.rdp_community_property",
-   "compared": 2300,
+   "compared": 2373,
    "completed_witnesses": [
     {
      "candidate": {
@@ -11615,7 +9324,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.tcw.2",
+      "id": "classm.sli.2",
       "kind": "fixture"
      }
     },
@@ -11681,35 +9390,35 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.tcw.16",
+      "id": "classm.ssb.3",
       "kind": "fixture"
      }
     }
    ],
-   "differ": 31,
+   "differ": 28,
    "handle": "household.rdp_community_property",
-   "in_scope": 2300,
-   "in_scope_agree": 2269,
+   "in_scope": 2373,
+   "in_scope_agree": 2345,
    "invalid": 0,
    "kinds": {
-    "candidate-unknown": 31
+    "candidate-unknown": 28
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 9
+     "candidate-unknown": 12
     },
     "incomplete": {
-     "candidate-unknown": 16
+     "candidate-unknown": 11
     },
     "refused": {
-     "candidate-unknown": 6
+     "candidate-unknown": 5
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.rdp_community_property",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
     "partial": 235
    },
@@ -12116,9 +9825,9 @@
   },
   {
    "absent": 0,
-   "agree": 2018,
+   "agree": 2057,
    "candidate": "household.filing_status_conflict",
-   "compared": 2300,
+   "compared": 2373,
    "completed_witnesses": [
     {
      "candidate": {
@@ -12332,35 +10041,35 @@
      }
     }
    ],
-   "differ": 282,
+   "differ": 316,
    "handle": "household.filing_status_conflict",
-   "in_scope": 2277,
-   "in_scope_agree": 2018,
+   "in_scope": 2357,
+   "in_scope_agree": 2057,
    "invalid": 0,
    "kinds": {
-    "candidate-refuses": 23,
-    "candidate-unknown": 68,
-    "value": 191
+    "candidate-refuses": 16,
+    "candidate-unknown": 80,
+    "value": 220
    },
    "kinds_by_return": {
     "completed": {
      "value": 2
     },
     "incomplete": {
-     "candidate-unknown": 45,
-     "value": 2
+     "candidate-unknown": 41,
+     "value": 3
     },
     "refused": {
-     "candidate-refuses": 23,
-     "candidate-unknown": 23,
-     "value": 187
+     "candidate-refuses": 16,
+     "candidate-unknown": 39,
+     "value": 215
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.filing_status_conflict",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
     "partial": 235
    },
@@ -12604,6 +10313,232 @@
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_conflict_single",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_conflict_mfj",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_conflict_mfs",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_conflict_hoh",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8960.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.married",
+      "kind": "unknown",
+      "reason": "no input supplied for household.married"
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_conflict_single",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_conflict_mfj",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_conflict_mfs",
+       "value": {
+        "input": "household.married",
+        "kind": "unknown",
+        "reason": "no input supplied for household.married"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_conflict_hoh",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_conflict_qss",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8960.3.deepseek",
       "kind": "fixture"
      }
     },
@@ -12973,97 +10908,6 @@
     },
     {
      "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_conflict_single",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_conflict_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_conflict_mfs",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfs"
-       }
-      },
-      {
-       "ref": "\"single\"",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfs"
-       }
-      },
-      {
-       "ref": "\"mfj\"",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.eic.8.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
       "cite": {
        "doc": "i1040gi",
        "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
@@ -13297,6 +11141,127 @@
      "project_return": "refused",
      "source": {
       "id": "classm.asset.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.married",
+      "kind": "unknown",
+      "reason": "no input supplied for household.married"
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.h_conflict_single",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_conflict_mfj",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_conflict_mfs",
+       "value": {
+        "input": "household.married",
+        "kind": "unknown",
+        "reason": "no input supplied for household.married"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_conflict_hoh",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_conflict_qss",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8960.3",
       "kind": "fixture"
      }
     },
@@ -13656,248 +11621,6 @@
      "project_return": "refused",
      "source": {
       "id": "classm.scveh.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.spouse_died_2025",
-      "kind": "unknown",
-      "reason": "no input supplied for household.spouse_died_2025"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_conflict_single",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_conflict_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_conflict_mfs",
-       "value": {
-        "input": "household.spouse_died_2025",
-        "kind": "unknown",
-        "reason": "no input supplied for household.spouse_died_2025"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_conflict_hoh",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_conflict_qss",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfs"
-       }
-      },
-      {
-       "ref": "\"single\"",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfs"
-       }
-      },
-      {
-       "ref": "\"mfj\"",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.tcw.4",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.spouse_died_2025",
-      "kind": "unknown",
-      "reason": "no input supplied for household.spouse_died_2025"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_conflict_single",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_conflict_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_conflict_mfs",
-       "value": {
-        "input": "household.spouse_died_2025",
-        "kind": "unknown",
-        "reason": "no input supplied for household.spouse_died_2025"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_conflict_hoh",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_conflict_qss",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfs"
-       }
-      },
-      {
-       "ref": "\"single\"",
-       "value": {
-        "kind": "enum",
-        "value": "single"
-       }
-      },
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfs"
-       }
-      },
-      {
-       "ref": "\"mfj\"",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.tcw.9",
       "kind": "fixture"
      }
     },
@@ -14372,10 +12095,10 @@
    ]
   }
  ],
- "log_sha256_at_triage": "9ceacc3302c9ec51c1de20c3edfb1a74fe80410dcaa1e61dbee092e05c7d64e0",
+ "log_sha256_at_triage": "53209ddd48a7a81a4c60a67147bdbb203c71a117f8432b35470187a5f5eb10b5",
  "policy": "executable-triage-v2",
  "response_sha256": "6388e97f1409e82f5117b6682ec821e76f2529f6ac673d1fe5b9ea5884cd757b",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "83f6ac4700c277df401354d9d0297fddd9023575ef445ec5fb06560f21cdecca"
+ "subject_sha256": "877d0d54921e64f9c104d4b53ea77cd4216946a2bb5fddeb853f010608dfdcbd"
 }

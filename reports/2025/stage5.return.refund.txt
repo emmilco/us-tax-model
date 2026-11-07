@@ -2665,7 +2665,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: Interpretation amb.2025.mq_joint: Both spouses' property together (mq.q4 and mq.total sum over every person on the return). The owner's ruling; section 179's limits are already figured once for a joint return (i4562 line 11, "combine the total taxable incomes for you and your spouse"). (p946-html, Chapter 4, Which Convention Applies?, Mid-quarter convention)
 
 == Form IT-201 (2025), Resident Income Tax Return — New York State and New York City ==
-  (question) Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there? Answer No if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B); if you were in active military service; or if your only New York residence was undergraduate student housing.
+  (question) Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there?
+
+      Answer No:
+      - if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B)
+      - if you were in active military service
+      - if your only New York residence was undergraduate student housing
       = UNKNOWN (no input supplied for ny_it201.ask.state_resident)
       cite: [ny_it201i] p. 30, Resident, "You maintain a permanent place of abode in New York State for substantially all of the tax year and spend 184 days or more in New York State during the tax year" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) Were you (and your spouse, on a joint return) a New York City resident (the Bronx, Brooklyn, Manhattan, Queens or Staten Island) for all of 2025, by the same test with New York City in place of New York State?

@@ -5,6 +5,7 @@ Second transcription of `Form IT-201 (2025), Resident Income Tax Return — New 
 | field | value |
 | --- | --- |
 | date | 2026-11-04 |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | f3f8c326d3828cbc0684a46ec47d3e018d206a842853958ee0bad5afb279af0b |
@@ -91,12 +92,13 @@ Project:
 Second:
 
 ```json
-{"ref": "f1040.line1z"}
+{"const": 0}
 ```
 
-Second transcription's note: Scope refusals for the whole return are placed on line 1: not a full-year resident (Form IT-203), a joint return with a spouse who was not also a full-year State and City resident (separate-sheet computations for lines 51 and 55), special accruals (IT-225 A-115/S-129), a decedent return, and special condition codes (including A6, which changes the household credit income).
+Second transcription's note: LIMITATION, NOT A COMPUTATION: this line is not correctly encoded. The zero is a stand-in only, and a return built on it is wrong whenever the filer has wages. This line must be replaced before any return is produced. The archived Form IT-201 page 2 prints this line as "Wages, salaries, tips, etc." and says nothing more. The supplied IT-201-I pages (3-5, 13-14, 30-31) do not include the line 1 instruction, so the supplied text does not say where the amount comes from. The federal line carrying the same wording (federal Form 1040, line 1z) is not in the supplied catalog. No W-2 collection field is in the catalog either. The input interface is closed, so no new input may be added. Nothing in the supplied interface can carry the filer's wages. The ny.zero parameter is the only well-formed expression available; it encodes no amount from the IRS or New York text. Fix: replace it with {op: copy, from: <federal Form 1040 line 1z id>} once that line, and the New York line 1 instruction naming it, are added to the catalog.
 
-Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, "Enter only whole dollar amounts on your New York return.", and p. 2, "When you enter amounts on your return, enter whole dollar amounts only" ... "Increase amounts that are 50 cents or more to the next dollar." The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents. Same reference otherwise. The reply's note puts the same whole-return scope refusals on line 1 as the project.
+Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, "The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z." R4 reran this line because its refusals read ny_it201.ask.state_resident, restructured into a question and a list (no word lost). The line-scoped request gave only the pages the line and its refusals cite (IT-201-I pp. 3-5, 13-14, 30-31; line 1 cites only the form page), so neither the p. 7 instruction nor federal Form 1040 line 1z was in the request, and the reply entered a zero stand-in, which its note says is not a computation; it differs wherever there are wages (35 value differences, all on refused records; on the federal fixtures, which carry no New York answers, the project is unknown or refuses at the residency gates). The project's line follows p. 7, rounded by amb.ny.2025.whole_dollars, as the prior ruling. executable-triage-v2 on this pass's reply (`.transcription/ny_it201.lines-6b86b273ff34.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 40 partial records; 2,178 comparisons): 0 of 2,178 agree; differences on returns the full interview completes: 120 project-refuses, 244 project-unknown; no completed-return value difference. Project stands; the citation gap is BUG-0439.
+Reviewed in: pass 573a35290f69
 
 ### 2 — Taxable interest income
 Status: **DISAGREE**
@@ -1717,7 +1719,6 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| 1 | ny_it201.ask.decedent, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.h_not_state_resident, ny_it201.h_spouse_nonres | ny_it201.ask.decedent, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.h_not_state_resident, ny_it201.h_spouse_nonres |
 | 8 | scope.schedule1, sd.other_forms | scope.schedule1, sd.other_forms |
 | 11 | scope.schedule1 | scope.schedule1 |
 | 12 | scope.schedule1 | scope.schedule1 |
@@ -1858,7 +1859,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | --- | --- |
 | C | ec3d44ebace17d5b01c6e4e6c3fbc9045203535db2e6545ad6d3250167378a8b |
 | H (count) | c775556cf6baebf885155f3e0e760fff74624401c1c24b030e770258031b62a5 |
-| 1 | 83779a0681f34a8b3e52377e69970096e1717e520c96f844f009731fa83af763 |
+| 1 | 2e68d97efd58ec2f0398cec4d680d134b85e779f056cae9ea05e011a9f7506f1 |
 | 2 | 0ab699890c51786638b6f0c1b93f2c9a51e56b9ec03cfab26033df0c734de77c |
 | 3 | 69f377530fe78842ed6435d2451a374c955c9ac4c0f217290631c73ceb170a92 |
 | 4 | f5190222dc5ddab58aa5d89b74a4dc3d317370884faacfd2008a57428b329152 |
@@ -2196,6 +2197,80 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 | 78a | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 78b | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 80 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 573a35290f69
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 1 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 573a35290f692a55051348194551d4d7983fa7dff89ab452864e3e0441ed2e2a |
+| prompt policy | source-only-computation-v3+lines-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | fail |
+| required input context sha256 | 10140de2871ab559d86226041fcd6c3ce5658619653c9639fafa76a952c7867b |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | 83e9ed0ae4edc40db4c301ed52bf00d46afb0b4bd30dea929e35960993911093 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | 13f1b2a29a4ff9ba988b5349985901969d73a6c4147d8843605eb8430b831a65 |
+| receipt | .transcription/ny_it201.lines-6b86b273ff34 |
+| printed lines compared | 1 |
+| agree / disagree / missing | 0 / 1 / 0 |
+| extra printed lines in second | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ny_it201i | Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20 | 3, 4, 5, 13, 14, 30, 31 | cited pages | 05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9 | 3, 4, 5, 30, 31 | 460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf |
+| ny_it201 | Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12 | 1, 2, 3, 4 | whole document | c924371c32a986a1903c9216bd60c6df8fb52f8e506e5c462851226b71e2154d | - | 895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d |
+
+##### Other documents in the catalog
+
+Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
+
+| reason | documents |
+| --- | --- |
+| definition | ny_city_rs, ny_rs, ny_tcw, ny_tcw_first |
+| named lines: f1040.line11a, f1040.line15, f1040.line2b, f1040.line3b, f1040.line4b, f1040.line5b, f1040.line6b, f1040.line7a | f1040 |
+| named lines: s1.line1, s1.line26, s1.line2a, s1.line3, s1.line7 | s1 |
+
+##### Raw second transcription
+
+```yaml
+```yaml
+lines:
+  - id: ny_it201.line1
+    printed: "1"
+    label: "Wages, salaries, tips, etc."
+    type: NonNegDollars
+    expr: {op: param, ref: ny.zero}
+    note: >-
+      LIMITATION, NOT A COMPUTATION: this line is not correctly encoded. The zero is a stand-in
+      only, and a return built on it is wrong whenever the filer has wages. This line must be
+      replaced before any return is produced.
+      The archived Form IT-201 page 2 prints this line as "Wages, salaries, tips, etc." and says
+      nothing more. The supplied IT-201-I pages (3-5, 13-14, 30-31) do not include the line 1
+      instruction, so the supplied text does not say where the amount comes from.
+      The federal line carrying the same wording (federal Form 1040, line 1z) is not in the
+      supplied catalog. No W-2 collection field is in the catalog either. The input interface is
+      closed, so no new input may be added.
+      Nothing in the supplied interface can carry the filer's wages. The ny.zero parameter is the
+      only well-formed expression available; it encodes no amount from the IRS or New York text.
+      Fix: replace it with {op: copy, from: <federal Form 1040 line 1z id>} once that line, and
+      the New York line 1 instruction naming it, are added to the catalog.
+```
+```
 
 ## Raw second transcription
 

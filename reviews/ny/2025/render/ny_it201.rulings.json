@@ -3,6 +3,15 @@
  "form": "ny_it201",
  "rulings": [
   {
+   "printed": "1",
+   "restated": "Round f1040 line 1z to the nearest multiple of (half up) $1.",
+   "model": "The form prints line 1 as 'Wages, salaries, tips, etc.' under 'Federal income and adjustments' with 'Whole dollars only', but the pages given contain no line 1 instruction. Nothing here says the amount is federal Form 1040 line 1z or how to round to whole dollars (half up or otherwise). The refusals are consistent with the text given.",
+   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" The line-scoped request (rerun because line 1's refusals read the restructured ny_it201.ask.state_resident) gave only the pages its citations name, and line 1 cites only the form page, so p. 7 was not given; the restatement follows it, rounded half up by amb.ny.2025.whole_dollars (IT-201-I p. 2, whole dollars). The model found the refusals consistent with the text. Citation gap: BUG-0439. Project stands.",
+   "context": "44ed7d5c6ec947a4beb343e1d97711fb991b324a6641b29d8799039f7693d46e",
+   "date": "2026-11-07",
+   "run": "a1034af935fcdeb8f9e5faeb37e39f96fcf0063cccc86bebd68ad50b6ff12be7"
+  },
+  {
    "printed": "11",
    "restated": "Enter $0 (ny.zero).",
    "model": "The form asks for 'Rental real estate, royalties, partnerships, S corporations, trusts, etc. (submit copy of federal Schedule E)'. The program always enters $0, and no refusal names Schedule E income.",

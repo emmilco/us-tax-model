@@ -5,7 +5,7 @@ The rendered English of every printed line of `Form IT-201 (2025), Resident Inco
 | field | value |
 | --- | --- |
 | date | 2026-11-04 |
-| line-scoped reviews | 1 (latest 2026-11-05); see Line-scoped reviews |
+| line-scoped reviews | 2 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 81d9fe83915746ba73187579ffca2b953cfb6545ea4e32efd364d62173e181a5 |
@@ -15,7 +15,7 @@ The rendered English of every printed line of `Form IT-201 (2025), Resident Inco
 | output token budget | transport default (65536 for DeepSeek) |
 | subject sha256 | 446aa9d889a2b5621e01ece80ccbb9df74d330db1e7cb0822188e8736c9e8bce |
 | lines judged | 168 |
-| match / mismatch / unclear / missing | 164 / 4 / 0 / 0 |
+| match / mismatch / unclear / missing | 163 / 4 / 1 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -43,9 +43,14 @@ Status: **MATCH**
 Model: Counts the dependents entered in item H. Line 36 multiplies 'the number of dependents listed in item H' by 1,000.
 
 ### 1 — Wages, salaries, tips, etc.
-Status: **MATCH**
+Status: **UNCLEAR**
 
-Model: Instructions: line 1 'should be the same as the amount reported on federal Form 1040, line 1z', in whole dollars. The refusals exclude part-year, nonresident-spouse, Yonkers, special-accrual, special-code and decedent returns.
+Restated: Round f1040 line 1z to the nearest multiple of (half up) $1.
+
+Model: The form prints line 1 as 'Wages, salaries, tips, etc.' under 'Federal income and adjustments' with 'Whole dollars only', but the pages given contain no line 1 instruction. Nothing here says the amount is federal Form 1040 line 1z or how to round to whole dollars (half up or otherwise). The refusals are consistent with the text given.
+
+Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, "The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z." The line-scoped request (rerun because line 1's refusals read the restructured ny_it201.ask.state_resident) gave only the pages its citations name, and line 1 cites only the form page, so p. 7 was not given; the restatement follows it, rounded half up by amb.ny.2025.whole_dollars (IT-201-I p. 2, whole dollars). The model found the refusals consistent with the text. Citation gap: BUG-0439. Project stands.
+Reviewed in: pass d4a19f82147a
 
 ### 2 — Taxable interest income
 Status: **MATCH**
@@ -905,7 +910,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | --- | --- |
 | C | 2f4cfc9d431b0aebac77b25abb69510a4a1c812968120d5bfa95309f7b5a70d8 |
 | H (count) | 0c8c87a494445eedac6b11398976eaa3cc695158ad2d7d62ac07fde93f319b62 |
-| 1 | 8927514e061f3af7cb647ae212ca9d06d291da904f3867c8b32710eb6c260d18 |
+| 1 | b82216fde0ece13b54ed01a359eff700095b60d0893c828617d2cfae397e68bd |
 | 2 | 41a22296c262da3dae545c48ee34e0f1f178cb656d50b89b46b262cac4e8812b |
 | 3 | ec9f1eece2ab7d441953cd351e87aea12bb92fc22ece65ed1f45d255fdff67fe |
 | 4 | e1d3337da945c87972767038058bedf0ab6eef7a7fc10340c3622f29f03e99ff |
@@ -1136,6 +1141,43 @@ lines:
   - key: "54d"
     status: MATCH
     reason: "The instructions say 'Multiply the amount on line 54b by 0.34% (0.0034).' Rounding to whole dollars agrees with the form's 'Whole dollars only' and with the example '$57,000 x 0.0034 = $194'."
+```
+```
+
+#### Pass d4a19f82147a
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 1 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | d4a19f82147a2fa50c4acf85c62c47576ad8a4b94eafbe7f6836b37842621009 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 390d22ff0e196470cf6119d363b160934f85d1c37fcc6196dd053b2d9797cb11 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 5d2a50a2fc3286f123a4b29beb74d56769c0bbd8ccc9e88d0b0471d97eb31c1e |
+| receipt | .transcription/ny_it201.render.lines-6b86b273ff34 |
+| lines judged | 1 |
+| match / mismatch / unclear / missing | 0 / 0 / 1 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ny_it201i | Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20 | 3, 4, 5, 13, 14, 30, 31 | cited pages | 05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9 | 3, 4, 5, 30, 31 | 460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf |
+| ny_it201 | Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12 | 1, 2, 3, 4 | whole document | c924371c32a986a1903c9216bd60c6df8fb52f8e506e5c462851226b71e2154d | - | 895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d |
+
+##### Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "1"
+    status: UNCLEAR
+    reason: "The form prints line 1 as 'Wages, salaries, tips, etc.' under 'Federal income and adjustments' with 'Whole dollars only', but the pages given contain no line 1 instruction. Nothing here says the amount is federal Form 1040 line 1z or how to round to whole dollars (half up or otherwise). The refusals are consistent with the text given."
 ```
 ```
 

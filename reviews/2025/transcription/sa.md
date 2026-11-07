@@ -5,6 +5,7 @@ Second transcription of `Schedule A — supported itemized deductions and standa
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 14be893889613c275e411636a9c4f8908e0bbbd991bb3b1aa4077f5205b9fbaf |
@@ -104,9 +105,11 @@ Status: **AGREE**
 
 ### 4 — Subtract sa.line3 from sa.line1; if zero or less, enter zero
 Status: **AGREE**
+Reviewed in: pass 07eff69e6904
 
 ### 5d — Add sa.line5a, sa.line5b, sa.line5c
 Status: **AGREE**
+Reviewed in: pass 07eff69e6904
 
 ### 5e — Smaller of sa.line5d, sa.saltlimit
 Status: **AGREE**
@@ -172,7 +175,6 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | --- | --- | --- |
 | sa.itemizes | sa.charity_limited, sa.dependent, sa.excluded_income, sa.spouse_extra, sa.unsupported | sa.spouse_extra |
 | sa.deduction | sa.charity_limited, sa.dependent, sa.excluded_income, sa.spouse_extra, sa.unsupported | sa.spouse_extra |
-| 5d | sa.unsupported | sa.unsupported |
 | 5e | sa.excluded_income, sa.unsupported | sa.unsupported |
 | 6 | sa.unsupported | - |
 | 8b | sa.unsupported | - |
@@ -199,8 +201,8 @@ What each compared line's verdict depends on within the document (tools/transcri
 | sa.deduction | cadc70373beef251c7ce5e4a979aafa7485532c86652393a759e1036cc0ef0cc |
 | 2 | 6ed9e8826b6917afade8428ad8ba0ef06fdbb723500482b53bce904f69e95014 |
 | 3 | 4606a9bdca74892e9959452bafe144fe3a9c24d25b48c83ee961469221a4b4c3 |
-| 4 | 3e76ff364e4e11c3472e01259f76b707dfc78422a8c93abe7d4e9deb5d8fafbe |
-| 5d | fb4eee7436051e32595ede198f689933a427b0f7416511f9c4194a0cfb7febdf |
+| 4 | d6e7773c6a0320691ca4144299791249ce57839562905a9d2bf42783fba57b83 |
+| 5d | e982db8b9a85a024643b90e1fd4ff9aa0bae6b0ae062976ded4ca6ac6ad90608 |
 | 5e | 0762d68e00b9d72f8d0f0038205ed4ce3626ba29164c5743fb3d673cc4d286ef |
 | 6 | 8e7cfae2b9add8293cde806261e2967eec63604ca5d8c96c919f57e050d97b0f |
 | 8b | 08e60f0d38ae0fe9c5aa02875e5b98f24cb3d837d65ca474ee364f3f1c3ce5db |
@@ -216,6 +218,97 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 14 | c37b1e535791ea619bf78cfdf3ffcf20d537bef0eb764479222f46493ccda43b |
 | 17 | 1627818731b5bbf9dd5e60d5830e64f50beb2c702503544e409ba1b280568c1c |
 | (rest of the document) | 4ab44412ed063c2bc602f385d7b58b759dbf415cd3a4e78f694db4b2cde08b0a |
+
+## Foreign interfaces
+
+The interfaces (id, printed marker, type, input question) of other documents' lines that each compared line reads, as the request carried them (tools/transcription/subjects.py); a changed row stales that line.
+
+| line | foreign interfaces sha256 |
+| --- | --- |
+| 4 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| 5d | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 07eff69e6904
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 4, 5d |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 07eff69e69040509d8fa2f28cbb87086de388dcfb5606a0c7b8c884520eec447 |
+| prompt policy | source-only-computation-v3+lines-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | f49e02aa20631125954867a4f0d29be66054e1f29b85b06f0270db173ed57c0c |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | 572fdd13b89830690582e15658e1bfad745237ba6f497f7bdc97f0a52df8a507 |
+| receipt | .transcription/sa.lines-d86999fd34e0 |
+| printed lines compared | 2 |
+| agree / disagree / missing | 2 / 0 / 0 |
+| extra printed lines in second | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040sca | 2025; printed date 2025-12-08 | 1, 2, 3, 6, 7 | cited pages | 18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b | 1, 2, 3, 6 | 5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c |
+| f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
+| p502 | None | 12 | pages named by another document's citation | a85451b60db3f8c4d2be78bf08975f2ba8bd5c56093a86b24e5ae4ed5051d40b | 12 | 71bbda10a232ac104b7a59173c2901b409cd010f035f28e9bb615cab6db21c08 |
+| i8962 | 2025 | 2 | pages named by another document's citation | 6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976 | 2 | 11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309 |
+| p969 | 2025 | 9, 13 | pages named by another document's citation | 0491c6445304fc8c1b7ae3097b8a3ea30260bb35f706da40900d06416502b9c8 | 9, 13 | f643ce7086d88eabd1d8006ab0b5609f775af36b9b8a5b74637e1f366d8c29c3 |
+
+##### Other documents in the catalog
+
+Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
+
+| reason | documents |
+| --- | --- |
+| definition | aqee, se, tax_on_amount, tcw |
+| named form, inputs and named lines: f1040.line11b, f1040.line12e, f1040.line25b, f1040.line25c_other, f1040.line26, f1040.line35a, f1040.line36, f1040.line3a, f1040.status, f1040.tax_exempt_interest | f1040 |
+| named form, inputs and named lines: f2441.benefits, f2441.care, f2441.employer_care, f2441.line13, f2441.line14, f2441.nondependent, f2441.paid_2026, f2441.plan_max, f2441.plans_differ, f2441.prior_year, f2441.spouse_died, f2441.student_disabled | f2441 |
+| named form, inputs and named lines: f4952.alternative_allocation, f4952.carryover, f4952.line1, f4952.line4g, f4952.prior_7, f4952.unsupported | f4952 |
+| named form, inputs and named lines: household.community_property, household.cp_married, household.credit_disallowed, household.home_cost, household.married, household.qss_eligible, household.rdp, household.spouse_died_2025, household.unmarried | household |
+| named form, inputs and named lines: s1.alimony, s1.alimony_paid, s1.alimony_received, s1.alimony_unsupported, s1.cod_amount, s1.cod_any, s1.cod_unsupported, s1.gambling_pro, s1.gambling_winnings, s1.jury_to_employer, s1.line1, s1.line17, s1.line21, s1.line8_other, s1.line8g, s1.line8h, s1.line8i, s1.line8j, s1.line8r, s1.line8z, s1.uc_paid, s1.uc_repaid, s1.uc_unsupported | s1 |
+| named form, inputs and named lines: s1a.carloan, s1a.overtime, s1a.tips | s1a |
+| named form, inputs and named lines: s3.line10, s3.line12, s3.line14 | s3 |
+| named form, inputs and named lines: scope.credits, scope.other_income, scope.other_line16, scope.schedule1 | scope |
+| named line | eic, f8960, ltc, sli |
+| shared page | f1095a, f8962, person, refund |
+
+##### Raw second transcription
+
+```yaml
+```yaml
+lines:
+  - id: sa.line4
+    printed: "4"
+    label: "Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-"
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: sa.line1
+      take: sa.line3
+  - id: sa.line5d
+    printed: "5d"
+    label: "Add lines 5a through 5c"
+    type: NonNegDollars
+    expr:
+      op: sum
+      of: [sa.line5a, sa.line5b, sa.line5c]
+    note: "Line 5a on the form may hold either income taxes or general sales taxes (with the box checked). The supplied sa.line5a input covers income taxes only, and the sales-tax election is screened by sa.unsupported where line 5a is defined. Line 5d therefore adds the three supplied inputs and adds no refusal of its own."
+```
+```
 
 ## Raw second transcription
 

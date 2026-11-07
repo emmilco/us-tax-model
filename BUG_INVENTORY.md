@@ -6083,3 +6083,19 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Tool change:** structured_text.inline replaces flat: the question, then each further block after ' — ', a list as 'Heading: (1) item; (2) item [nested: sub; sub]'. reference_note and classm use it; plain text is returned unchanged.
 - **Validation:** All 441 review prompts dry-run before and after (61 transcription requests and 62 render requests; 62 completeness, 58 screen and 198 classm prompts; no false-no gates exist): 380 byte-identical, and the 61 that differ are exactly the transcription requests (the screen-question list every request carries now holds structured questions), and each of those returns to the old bytes when every structured text's new rendering is replaced by its old flattening. Transcription, render and classm logs are judged by line subjects and foreign-interface hashes (not the prompt text), and the screen, completeness and false-no hashes are unchanged, so no check goes stale; no review was rerun.
 - **Tags:** transcription; structured text; tool change
+
+## BUG-0438 — s1.line8r does not tell a degree candidate to include the part of a grant paid for required services
+
+- **Caught by:** the s1 completeness review rerun after the R4 restructuring, 2026-11-07 (s1#1).
+- **Source:** p525 p. 35 ("Generally, you can't exclude from your gross income the part of any scholarship or fellowship that represents payment for teaching, research, or other services required as a condition for receiving the scholarship. This applies even if all candidates for a degree must perform the services to receive the degree."); i1040gi p. 92, Line 8r.
+- **Symptom:** the line 8r question asks a degree candidate for only the part of a grant used for expenses other than tuition and course-related expenses, so the part paying for required teaching or research services, when not reported on a Form W-2, can be left out of income. Pre-existing; not caused by the R4 restructuring, which did not touch s1.line8r.
+- **Disposition:** open, low: name the services part in s1.line8r (or ask it and refuse); rerun the s1 reviews.
+- **Tags:** completeness; s1; open
+
+## BUG-0439 — ny_it201.line1 does not cite the IT-201-I instruction that line 1 is federal Form 1040 line 1z
+
+- **Caught by:** the R4 line-scoped transcription and render reviews of ny_it201 line 1, 2026-11-07.
+- **Source:** ny_it201i p. 7, Lines 1 through 19 ("The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.").
+- **Symptom:** line 1 cites only the form page, so a line-scoped review's request carries neither the p. 7 instruction nor federal Form 1040 line 1z; the transcription reply entered a zero stand-in and the render reply was UNCLEAR. The computed value is right (f1040.line1z rounded by amb.ny.2025.whole_dollars); the gap is in the citation and so in review evidence.
+- **Disposition:** open, low: add the p. 7 locator to ny_it201.line1 (and its siblings on lines 2 to 19 if they lack it), with T-244; rerun the ny_it201 line reviews.
+- **Tags:** new-york; citation; review-tools; low; open

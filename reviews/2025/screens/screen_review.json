@@ -2111,30 +2111,24 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A designated beneficiary whose only ABLE activity was a distribution not taxable because it was rolled over or moved by trustee-to-trustee transfer must answer YES, although the distribution is excluded from line 4 and the tool's zero is correct.",
-    "irs_text": "f8880 (2025) p. 2, Line 4: \"Don't include any of the following. • Distributions not taxable as the result of a rollover or a trustee-to-trustee transfer.\"",
-    "why": "The question asks about \"any distribution from an ABLE account\" without the Line 4 exclusions. This filer is refused even though the excluded amount does not change the computed lines."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A designated beneficiary whose only ABLE distribution was a return of excess contributions and allocable income must answer YES, although that distribution is excluded from line 4 and the tool's zero is correct.",
-    "irs_text": "f8880 (2025) p. 2, Line 4: \"Don't include any of the following. ... • Distributions of excess contributions or deferrals (and income allocable to such contributions or deferrals).\"",
-    "why": "\"Any distribution\" has no carve-out for returned excess contributions. The filer must answer YES even though Line 4 excludes the amount."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A designated beneficiary whose only 2025 ABLE contribution was a rollover contribution would truthfully answer YES if they treat it as contributing, although line 1 excludes it and the tool's zero is correct.",
+    "situation": "In 2025 the designated beneficiary's only ABLE contribution was a rollover from a 529 plan or another ABLE account, and they had no non-rollover ABLE contribution and no taxable ABLE distribution.",
     "irs_text": "f8880 (2025) p. 1, line 1: \"Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2025. Do not include rollover contributions\"",
-    "why": "The question says \"did you contribute to it for 2025\" without excluding rollovers. A rollover into the account can be read as a contribution, which triggers a refusal for an amount line 1 leaves out."
+    "why": "The question asks \"did you contribute to it for 2025\" without excluding rollovers. A rollover contribution makes the filer answer YES, but it adds nothing to line 1, so the tool's computed line would have been correct."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "Between 2023 and the 2025 due date, the filer's only ABLE distribution was rolled over or transferred trustee-to-trustee to another ABLE account, so it was not taxable.",
+    "irs_text": "f8880 (2025) p. 2, Line 4: \"Traditional or Roth IRAs, or ABLE accounts ... Don't include any of the following. • Distributions not taxable as the result of a rollover or a trustee-to-trustee transfer.\"",
+    "why": "The question asks about \"any distribution from an ABLE account\", so a nontaxable rollover makes the filer answer YES. Line 4 excludes that distribution, so the tool's zero for ABLE amounts would have been correct."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer who received an ABLE distribution after 2022 but is no longer, or was not, the designated beneficiary could read the opening phrase as limiting the distribution clause and answer NO, while another filer in the same position would answer YES.",
-    "irs_text": "f8880 (2025) p. 2, Line 4: \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans. • Traditional or Roth IRAs, or ABLE accounts.\"",
-    "why": "\"As the designated beneficiary of an ABLE account\" may govern only the contribution clause or both clauses, and it can also be read as describing current status only. Line 4 has no designated-beneficiary condition, so a NO would leave a covered distribution out of the computed amounts."
+    "situation": "The filer was the designated beneficiary of an ABLE account in 2023 or 2024 and received distributions then, but by 2025 the account is closed or no longer theirs.",
+    "irs_text": "f8880 (2025) p. 2, Line 4: \"Enter the total amount of distributions you ... received after 2022 and before the due date of your 2025 return (including extensions) from ... ABLE accounts\"",
+    "why": "The opening phrase \"As the designated beneficiary of an ABLE account\" reads as current status. A filer who is no longer a beneficiary may think the whole question does not apply and answer NO, even though line 4 still counts those earlier distributions."
    }
   ],
-  "prompt_sha": "65570d4d7b1f63955e90e9044741928f492ebf50c1c999a7ae644c6bda18132d",
+  "prompt_sha": "12e55d081d78405d855167e101115bd013278e7dd8da64e001a5837427be20a0",
   "used": [
    {
     "doc": "f8880",
@@ -2174,12 +2168,12 @@
     "cols_sha256": "cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b"
    }
   ],
-  "cost": 0.118364,
+  "cost": 0.07664,
   "model": "claude-opus-5-5"
  },
  {
   "screen": "person.x_other",
-  "question": "Does any of these apply to you: a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account; excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not you contributed for 2025); excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account; excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported), whether or not you have a Form 8889 for 2025; or a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)?",
+  "question": "Does any of these apply to you?\n\n- a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account\n- excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not you contributed for 2025)\n- excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account\n- excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported), whether or not you have a Form 8889 for 2025\n- a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)",
   "lines": [
    "f5329.l4",
    "f5329.l49"
@@ -2188,42 +2182,24 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "An excess ABLE contribution for 2025 was returned with its net income to the contributor by the return due date, so no excise tax applies, but the question's unqualified 'excess contributions to ... an ABLE account' still prompts YES.",
-    "irs_text": "i5329 (2025) p. 9, Part VIII: 'You won't incur a tax on a contribution to your ABLE account that is in excess of the contribution limit if the qualified ABLE program returns the contribution, including all net income attributable to the contribution'",
-    "why": "The question has no carve-out for a timely returned excess, although treating the Part VIII tax as zero is correct in this case."
+    "situation": "A filer's excess ABLE (or Coverdell) contribution was returned with its net income before the return due date, so no additional tax is owed and treating the amount as zero is correct, yet the filer truthfully answers YES to the unqualified 'excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account'.",
+    "irs_text": "i5329 (2025) p. 9: \"You won't incur a tax on a contribution to your ABLE account that is in excess of the contribution limit if the qualified ABLE program returns the contribution, including all net income attributable to the contribution, to the person who made the contribution ... on or before the due date (including extensions)\"",
+    "why": "The question has no exception for excesses corrected by timely withdrawal. A filer who owes nothing is refused even though the tool's zero is right."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer's only Coverdell, Archer MSA or ABLE excess arose and was fully resolved before 2025, or for ABLE arose in any earlier year, yet the question's undated wording covers it.",
-    "irs_text": "f5329 (2025) p. 2, Part V: 'Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329'; Part VI uses parallel wording; Part VIII: 'Complete this part if contributions to your ABLE account for 2025 were more than is allowable.'",
-    "why": "The question says 'excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account' with no year, while these Parts turn on 2025 contributions or, for Coverdell and Archer, a 2024 carryover. A truthful YES can therefore refuse a return with no tax in these Parts."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer missed only an RMD whose deadline fell in a year other than 2025, such as a 2022 shortfall or a first RMD due April 1, 2026 and not taken by then, and must answer YES even though no 2025 Part IX tax arises from it.",
-    "irs_text": "i5329 (2025) p. 9, Part IX: 'The tax is due for the tax year that includes the last day by which the minimum required distribution must be taken.'; f5329 (2025) p. 3, line 52a: 'Minimum required distribution for 2025'",
-    "why": "The question reaches any RMD not received 'in full by its deadline (including a shortfall you made up later)' without limiting the deadline to 2025, so it covers shortfalls that the 2025 Part IX tax does not."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer's earlier-year HSA excess was still present at the start of 2025 but was fully eliminated during 2025, so line 46 is zero and line 49 depends only on any 2025 excess, yet the question requires YES.",
-    "irs_text": "f5329 (2025) p. 2, Part VII, line 46: 'Prior year excess contributions. Subtract line 45 from line 42. If zero or less, enter -0-'; line 48: 'Total excess contributions. Add lines 46 and 47'",
-    "why": "The question asks about excess 'you had not removed or used up before 2025', but when lines 43 and 44 fully offset line 42, the tool's computation of line 49 from 2025 excess alone gives the correct amount."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "An earlier-year traditional or Roth IRA excess stayed in the account at the end of 2025 but was fully absorbed by unused 2025 contribution room, so the prior-year excess line is zero, yet the question requires YES.",
-    "irs_text": "f5329 (2025) p. 1, Part III, line 10: 'If your traditional IRA contributions for 2025 are less than your maximum allowable contribution, see instructions'; line 14: 'Prior year excess contributions. Subtract line 13 from line 9. If zero or less, enter -0-'; Part IV, lines 19 and 22 are parallel.",
-    "why": "The question's test is whether the excess 'remained in the IRA at the end of 2025', but the form reduces the carryover by unused 2025 room, so an excess can remain physically in the account while the 6% tax on it is zero."
+    "situation": "A filer missed an RMD whose deadline fell in an earlier year, and that tax belongs to that year's return, but the filer still truthfully answers YES to 'a required minimum distribution ... that you did not receive in full by its deadline'.",
+    "irs_text": "i5329 (2025) p. 9: \"The tax is due for the tax year that includes the last day by which the minimum required distribution must be taken.\"",
+    "why": "The question does not limit the shortfall to an RMD whose deadline fell in 2025. Shortfalls belonging to other tax years trigger a refusal although 2025 Part IX would be zero."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer with an earlier-year IRA excess took a 2025 distribution smaller than the IRA balance and cannot tell whether the excess 'remained in the IRA', because account funds are not separately traceable.",
-    "irs_text": "f5329 (2025) p. 1, Part III, line 9: 'Enter your excess contributions from line 16 of your 2024 Form 5329'; line 11: '2025 traditional IRA distributions included in income'; line 12: '2025 distributions of prior year excess contributions to traditional IRAs'",
-    "why": "The form tracks the excess through line arithmetic, while 'remained in the IRA' suggests tracing the money itself. A filer could reasonably answer either way, including when a withdrawal does not reduce the carryover on these lines."
+    "situation": "A filer had an HSA excess remaining at the end of 2024 that was fully absorbed in 2025 by under-contributing or by taxable distributions, and could read 'had not removed or used up before 2025' either way.",
+    "irs_text": "f5329 (2025) p. 2, Part VII: \"43 If the contributions to your HSAs for 2025 are less than the maximum allowable contribution, see instructions ... 44 2025 distributions from your HSAs ... 46 Prior year excess contributions. Subtract line 45 from line 42.\"",
+    "why": "The question does not say whether 'used up' covers absorption during 2025. A filer who believes the excess is gone may answer NO, even though line 42 still needs the 2024 line 48 amount to show line 46 is zero."
    }
   ],
-  "prompt_sha": "8679b76a5974e85f81330e8286bda87fd765d8182016f799bd1f337897eb8cc9",
+  "prompt_sha": "7333a6ad4550a9c04265ac059b7a1a13514ca12a5e1234d9c994ada3a422f34f",
   "used": [
    {
     "doc": "f5329",
@@ -2236,9 +2212,9 @@
     ],
     "how": "whole document",
     "locators": [
-     "p. 1, Part I, line 4, \"Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 8\"; Line 4, \"you must multiply that amount by 25% instead of 10%\"",
+     "p. 1, Part I, line 4, \"Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form 1040), line 8\"; , Line 4, \"you must multiply that amount by 25% instead of 10%\"",
      "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"",
-     "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\"",
+     "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; , \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\"",
      "p. 2, Part VII, line 49, \"Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2025 (including 2025 contributions made in 2026).\""
     ],
     "cols_pages": [],
@@ -2279,7 +2255,7 @@
     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
    }
   ],
-  "cost": 0.240232,
+  "cost": 0.116176,
   "model": "claude-opus-5-5"
  },
  {
@@ -2805,7 +2781,7 @@
  },
  {
   "screen": "s1.alimony_unsupported",
-  "question": "Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement, or paid to more than one person; a recapture of alimony (payments that decreased or ended during the first 3 calendar years, Pub. 504 Worksheet 1); or payments of which part is not alimony: child support (including payments that fell short of the total of child support and alimony required, and an amount the instrument reduces on a contingency relating to a child, such as reaching a certain age, or at a time associated with one), payments for a home either of you owns (mortgage, real estate taxes, insurance, repairs; Pub. 504 Table 4), or payments of which any part must continue, in cash or property, for any period after the recipient spouse's death (even if the instrument does not say so, for example under state law), or payments for which a payment due after the death is a substitute?",
+  "question": "Does any of these apply to alimony you received or paid?\n\n- payments under more than one divorce or separation agreement, or paid to more than one person\n- a recapture of alimony (payments that decreased or ended during the first 3 calendar years, Pub. 504 Worksheet 1)\n- payments of which part is not alimony:\n  - child support (including payments that fell short of the total of child support and alimony required, and an amount the instrument reduces on a contingency relating to a child, such as reaching a certain age, or at a time associated with one)\n  - payments for a home either of you owns (mortgage, real estate taxes, insurance, repairs; Pub. 504 Table 4)\n  - payments of which any part must continue, in cash or property, for any period after the recipient spouse's death (even if the instrument does not say so, for example under state law), or payments for which a payment due after the death is a substitute",
   "lines": [
    "s1.alimony_refused",
    "s1.paid_refused"
@@ -2814,42 +2790,39 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A payer pays the former spouse an amount that is the spouse's share of community income. The filer could answer NO because the question lists only child support, home payments and death-contingent payments as the non-alimony parts.",
-    "irs_text": "Alimony doesn't include: • Child support, • Noncash property settlements, • Payments that are your spouse's part of community income, as explained later under Community Property, • Payments to keep up the payer's property, or • Use of the payer's property. (p504 p. 13, Payments not alimony)",
-    "why": "The question's list of non-alimony parts leaves out community income, so the tool would deduct or include that amount as alimony on line 19a or 2a."
+    "situation": "A pre-2019 agreement was modified after 2018 and the modification expressly adopts the post-2018 rules. Payments made after the modification are neither income nor deductible, but the filer answers NO and enters the full year's payments under the helper, which asks only whether the agreement was 'entered into on or before December 31, 2018'.",
+    "irs_text": "p504 p. 16: 'The alimony payments made in January 2025 through May 2025 are includible ... The alimony payments made in June 2025 through December 2025 are neither includible ... nor deductible'; i1040gi p. 89: 'unless that agreement was changed after December 31, 2018, to expressly provide that alimony received isn't included in your income'",
+    "why": "The question does not ask about modifications after 2018. A filer with one agreement and no recapture, child support, home payments or death contingency truthfully answers NO, and the tool computes the full amount even though part or all of it should be excluded."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer makes or receives noncash property transfers, or provides the use of the payer's property other than a home, under the instrument. The filer could answer NO because the question mentions property only for payments that continue after death.",
-    "irs_text": "Alimony doesn't include: ... • Noncash property settlements, ... • Payments to keep up the payer's property, or • Use of the payer's property. (p504 p. 13, Payments not alimony)",
-    "why": "The question names home costs (Table 4) but not noncash settlements or upkeep and use of other payer property, so a filer could enter these as alimony with no screen catching them."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "Payments are made under a decree of divorce or separate maintenance while the spouses are still members of the same household.",
-    "irs_text": "Exception. If you aren't legally separated under a decree of divorce or separate maintenance, a payment under a written separation agreement, support decree, or other court order may qualify as alimony even if you're members of the same household when the payment is made. (p504 p. 15)",
-    "why": "Under a decree, payments made while sharing a household aren't alimony. The question never mentions living together, so the filer answers NO and the tool counts the payments."
+    "situation": "Part of the payments is not alimony because it is a noncash property settlement, the recipient's share of community income, or upkeep of the payer's property other than a home, such as a car. The filer answers NO because the list names only child support, home payments and death-contingent payments.",
+    "irs_text": "p504 p. 13: 'Alimony doesn't include: • Child support, • Noncash property settlements, • Payments that are your spouse's part of community income ..., • Payments to keep up the payer's property, or • Use of the payer's property.'",
+    "why": "The heading 'payments of which part is not alimony' lists only some of the Pub. 504 exclusions, so a filer can read the list as complete. A filer who answers NO then has mixed payments computed as all alimony."
    },
    {
     "kind": "WIDE",
-    "situation": "Under a pre-2019 instrument, a payer pays the mortgage, real estate taxes and insurance on a home owned only by the recipient spouse.",
-    "irs_text": "Under your 2018 separation agreement, you must pay the real estate taxes and mortgage payments on a home owned by your spouse. If they otherwise qualify, you can deduct the payments as alimony on your return, and your spouse must report them as alimony received. (p504 p. 13, Payments to a third party, Example 2)",
-    "why": "The question says 'payments for a home either of you owns (mortgage, real estate taxes, insurance, repairs ...)', so this filer must answer YES. But these payments are fully alimony and the tool would compute them correctly."
+    "situation": "The payer pays the mortgage, real estate taxes or insurance on a home that only the recipient spouse owns. These payments are fully alimony and the tool computes them correctly, but the question's wording makes the filer answer YES.",
+    "irs_text": "p504 p. 13, Payments to a third party, Example 2: 'you must pay the real estate taxes and mortgage payments on a home owned by your spouse. If they otherwise qualify, you can deduct the payments as alimony'",
+    "question_text": "payments for a home either of you owns (mortgage, real estate taxes, insurance, repairs; Pub. 504 Table 4)",
+    "why": "'Either of you owns' includes a home owned only by the recipient, where nothing needs to be split out. Only a home the payer owns, alone or jointly, needs the Table 4 or non-alimony treatment."
    },
    {
     "kind": "WIDE",
-    "situation": "Alimony decreased or ended within the first 3 calendar years in a way that triggers no recapture.",
-    "irs_text": "You are subject to the recapture rule in the third year if the alimony you pay in the third year decreases by more than $15,000 from the second year or ... decreases significantly ... When you figure a decrease in alimony, don't include ... Payments made under a temporary support order ... Payments that decrease because of the death of either spouse or the remarriage of the spouse ... (p504 p. 16)",
-    "why": "The question defines recapture with the parenthetical '(payments that decreased or ended during the first 3 calendar years ...)'. That makes filers answer YES for small decreases, decreases due to death or remarriage, temporary-order changes, or a decrease in year 2, even though no recapture amount arises and the tool computes correctly."
+    "situation": "Payments decreased or ended during the first 3 calendar years, but no recapture applies. For example, the decrease is $15,000 or less from year 2 to year 3, it was caused by death or remarriage, it occurred under a temporary order, or it reflects a fixed share of income. The filer still answers YES because the parenthetical describes any decrease.",
+    "irs_text": "p504 p. 16: 'You are subject to the recapture rule in the third year if the alimony you pay in the third year decreases by more than $15,000 from the second year or ... decreases significantly from the alimony you pay in the first year. When you figure a decrease in alimony, don't include ... Payments that decrease because of the death of either spouse or the remarriage ...'",
+    "question_text": "a recapture of alimony (payments that decreased or ended during the first 3 calendar years, Pub. 504 Worksheet 1)",
+    "why": "The parenthetical reads as the test for recapture and catches every decrease. When there is no recapture, the tool correctly computes zero recapture."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer's pre-2019 agreement was modified in 2025 to expressly apply the post-2018 rules, so only the payments before the modification count.",
-    "irs_text": "The alimony payments made in January 2025 through May 2025 are includible in the recipient's income and deductible from the payer's income. The alimony payments made in June 2025 through December 2025 are neither includible ... nor deductible ... (p504 p. 16, Example 2)",
-    "why": "Neither the question nor the helper wording ('under an agreement entered into on or before December 31, 2018') mentions a later modification. A filer could read the helper as covering all payments under that original agreement and enter the full year's payments."
+    "situation": "A filer whose first 3 calendar years ended long before 2025, and who had a decrease in those years, may not know whether the recapture item refers to a recapture reportable in 2025 or to any past decrease.",
+    "irs_text": "p504 p. 16: 'you have to include in income (in the third year) part of the alimony payments you previously deducted'",
+    "question_text": "a recapture of alimony (payments that decreased or ended during the first 3 calendar years ...)",
+    "why": "The question does not say that the third year must be 2025. A filer could reasonably answer YES or NO for a recapture year that has already passed."
    }
   ],
-  "prompt_sha": "94fb0d5ea859724e5140c196c2d633d657e425a3ab14423081386376fc384bec",
+  "prompt_sha": "b0a83923f1118f2b47b354cc72c88c75111e626654628db62189a691ff36626e",
   "used": [
    {
     "doc": "p504",
@@ -2892,43 +2865,37 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "cost": 0.14446,
+  "cost": 0.10199599999999999,
   "model": "claude-opus-5-5"
  },
  {
   "screen": "s1.cod_unsupported",
-  "question": "Does any of these apply to a canceled debt: it was canceled in a bankruptcy case or while you were insolvent, or is otherwise excluded from income (Form 982, for example qualified principal residence indebtedness); it was a student loan, was canceled as a gift or inheritance, was a reduction of the price of property you bought from the seller, or was owed to a corporation in which you hold stock; it was a business, rental or farm debt; it was canceled in connection with a foreclosure, repossession or abandonment of property (Form 1099-C box 7, or a Form 1099-A); it includes interest (Form 1099-C box 3) or any other amount (for example an unpaid medical bill) that would have been deductible if you had paid it; you were not personally liable for it (box 5); or you and someone other than your spouse on this return were both liable for it?",
+  "question": "Does any of these apply to a canceled debt?\n\n- it was canceled in a bankruptcy case or while you were insolvent, or is otherwise excluded from income (Form 982, for example qualified principal residence indebtedness)\n- it was a student loan, was canceled as a gift or inheritance, was a reduction of the price of property you bought from the seller, or was owed to a corporation in which you hold stock\n- it was a business, rental or farm debt\n- it was canceled in connection with a foreclosure, repossession or abandonment of property (Form 1099-C box 7, or a Form 1099-A)\n- it includes interest (Form 1099-C box 3) or any other amount (for example an unpaid medical bill) that would have been deductible if you had paid it\n- you were not personally liable for it (box 5)\n- you and someone other than your spouse on this return were both liable for it",
   "lines": [
    "s1.cod_refused"
   ],
-  "verdict": "NARROW",
+  "verdict": "WIDE",
   "findings": [
    {
-    "kind": "NARROW",
-    "situation": "A filer sells a personal-use property, such as a second home, in a short sale or gives a deed in lieu, and the lender cancels the rest of a recourse mortgage, with no Form 1099-A or Form 1099-C box 7 entry.",
-    "irs_text": "p4681 p. 4: \"Sales or Other Dispositions (Such as Foreclosures and Repossessions)\"; p525 p. 20: \"you're relieved of the mortgage when you dispose of the property... To the extent the mortgage discharge exceeds the FMV of the property, it's income from discharge of indebtedness\"",
-    "why": "The question names only foreclosure, repossession or abandonment, so this filer could truthfully answer NO even though the IRS applies the disposition rules to other dispositions too. The tool would then enter the full canceled amount without testing the discharge against FMV or addressing gain or loss on the disposition."
+    "kind": "WIDE",
+    "situation": "A filer has a canceled personal credit card or personal loan debt whose Form 1099-C shows nondeductible personal interest in box 3. The question's wording makes them answer YES, although the full box 2 amount is taxable and the tool computes it correctly.",
+    "irs_text": "Question: \"it includes interest (Form 1099-C box 3) or any other amount ... that would have been deductible if you had paid it\"; p525 p. 20: \"If the interest would not be deductible (such as interest on a personal loan), include in your income the amount from box 2 of Form 1099-C.\"",
+    "why": "Read literally, the bullet triggers on any box 3 amount, but only deductible interest changes the result. Personal credit card interest is nondeductible, so it is fully covered by the computed line."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer's Form 1099-C box 3 shows nondeductible interest, such as interest on a personal credit card or personal loan, and the rest of the debt is fully taxable.",
-    "irs_text": "p525 p. 20: \"If the interest would not be deductible (such as interest on a personal loan), include in your income the amount from box 2 of Form 1099-C.\"",
-    "why": "In \"it includes interest (Form 1099-C box 3) or any other amount... that would have been deductible,\" the deductibility condition may modify interest or only \"any other amount.\" On the first reading this filer answers NO and the tool correctly uses box 2; on the second the filer answers YES and is wrongly refused."
+    "situation": "A filer whose debts exceed their assets only if retirement accounts and pension interests are left out could believe they were insolvent when they were not, or misjudge when insolvency is measured.",
+    "irs_text": "p4681 p. 6: \"You were insolvent immediately before the cancellation to the extent that the total of all of your liabilities was more than the FMV of all of your assets ... assets include ... exempt assets ... such as your interest in a pension plan and the value of your retirement account\"",
+    "why": "The question says \"while you were insolvent\" without the IRS definition or the \"immediately before the cancellation\" timing. A layperson could answer YES when the debt is fully taxable, or NO when part of it is excludable."
    },
    {
-    "kind": "WIDE",
-    "situation": "A filer has a canceled nonbusiness student loan that does not qualify for any exception or exclusion, such as a loan from an educational organization canceled because of services performed for that organization.",
-    "irs_text": "Question: \"it was a student loan\"; p4681 p. 4: \"The cancellation of your loan won't qualify for tax-free treatment if it was made by an educational organization or tax-exempt section 501(c)(3) organization and was canceled because of the services you performed for either organization.\"",
-    "why": "The question makes every canceled student loan a YES, whether or not it is excluded. A fully taxable canceled student loan is nonbusiness debt that the tool could correctly enter at its full amount."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer who is not personally liable on a nonbusiness debt keeps the collateral and receives an early-payment discount or a loan modification that reduces principal, with no exclusion applying.",
-    "irs_text": "Question: \"you were not personally liable for it (box 5)\"; p4681 p. 3: \"you don't have ordinary income from the cancellation of debt unless you retain the collateral and either: • The lender offers a discount for the early payment of the debt, or • The lender agrees to a loan modification that results in the reduction of the principal balance of the debt.\"",
-    "why": "The question makes all nonrecourse debt a YES, but in this situation the discount or principal reduction is canceled debt that must be included in income. The tool could correctly enter that amount if it is the amount reported."
+    "kind": "UNCLEAR",
+    "situation": "A filer whose Form 1099-C has box 5 checked may read the \"(box 5)\" reference as a cue to answer YES to \"you were not personally liable for it.\"",
+    "irs_text": "p4681 p. 3: \"Debt for which you are personally liable is recourse debt. All other debt is nonrecourse debt.\"",
+    "why": "On Form 1099-C, a checked box 5 means the debtor WAS personally liable. The parenthetical does not say whether a checked or unchecked box corresponds to YES, so the filer could answer it backwards in either direction."
    }
   ],
-  "prompt_sha": "a30db9007c7b2baa2b489e423dffd9c79350aa40d4db97fe9a604f63330b9970",
+  "prompt_sha": "dc292578de4c296b7a0334f182bb25a65eb40c48e7da08b597955e0a399b8477",
   "used": [
    {
     "doc": "p4681",
@@ -2968,43 +2935,37 @@
     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
    }
   ],
-  "cost": 0.179844,
+  "cost": 0.115068,
   "model": "claude-opus-5-5"
  },
  {
   "screen": "s1.line8_other",
-  "question": "Do you have any income (or loss or exclusion) for Schedule 1, line 8, other than gambling winnings (line 8b), canceled debt (line 8c), income from Form 8889 (line 8f), Alaska Permanent Fund dividends (line 8g), jury duty pay (line 8h), prizes and awards (line 8i), income from an activity not engaged in for profit (line 8j), scholarship and fellowship grants not reported on Form W-2 (line 8r) and the other income asked item by item for line 8z? For example: a net operating loss deduction (8a); the foreign earned income or housing exclusion from Form 2555 (8d); income from Form 8853 (8e); stock options (8k); income from the rental of personal property (8l); Olympic and Paralympic medals or USOC prize money (8m); a section 951(a) or 951A(a) inclusion (8n, 8o); a section 461(l) excess business loss adjustment (8p); taxable distributions from an ABLE account (8q); nontaxable Medicaid waiver payments (8s); a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t); wages earned while incarcerated (8u); or digital assets received as ordinary income not reported elsewhere (8v).",
+  "question": "Do you have any income (or loss or exclusion) for Schedule 1, line 8, other than the following?\n\n- gambling winnings (line 8b)\n- canceled debt (line 8c)\n- income from Form 8889 (line 8f)\n- Alaska Permanent Fund dividends (line 8g)\n- jury duty pay (line 8h)\n- prizes and awards (line 8i)\n- income from an activity not engaged in for profit (line 8j)\n- scholarship and fellowship grants not reported on Form W-2 (line 8r)\n- the other income asked item by item for line 8z\n\nOther income, loss or exclusion, for example:\n- a net operating loss deduction (8a)\n- the foreign earned income or housing exclusion from Form 2555 (8d)\n- income from Form 8853 (8e)\n- stock options (8k)\n- income from the rental of personal property (8l)\n- Olympic and Paralympic medals or USOC prize money (8m)\n- a section 951(a) or 951A(a) inclusion (8n, 8o)\n- a section 461(l) excess business loss adjustment (8p)\n- taxable distributions from an ABLE account (8q)\n- nontaxable Medicaid waiver payments (8s)\n- a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)\n- wages earned while incarcerated (8u)\n- digital assets received as ordinary income not reported elsewhere (8v)",
   "lines": [
    "s1.line9"
   ],
-  "verdict": "WIDE",
+  "verdict": "UNCLEAR",
   "findings": [
    {
-    "kind": "WIDE",
-    "situation": "A filer has income from renting personal property in an activity not engaged in for profit, which belongs on line 8j and which the tool computes, but the question's example tells them to answer YES.",
-    "irs_text": "Question: \"income from the rental of personal property (8l)\". i1040gi p. 91, Line 8l: \"Income from the rental of personal property if you engaged in the rental for profit but were not in the business of renting such property.\"",
-    "why": "The example drops the for-profit limit in the line 8l text, so it also describes not-for-profit rentals that the tool handles on line 8j. The question excludes line 8j income but also names this rental income, so a filer following the example is refused unnecessarily."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer received nontaxable Medicaid waiver payments that were not included on Form 1040, line 1a or 1d, so the line 8s amount is zero, but the question's example prompts a YES.",
-    "irs_text": "Question: \"nontaxable Medicaid waiver payments (8s)\". f1040s1 p. 1, line 8s: \"Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d\"; i1040gi p. 92: \"enter the total amount of the nontaxable payments reported on Form 1040 or 1040-SR, line 1a or 1d\".",
-    "why": "Line 8s only reverses payments included on line 1a or 1d, a limit the example omits. A filer with excluded payments that were never included has nothing to subtract, and the tool's zero is correct, yet the example reads as covering them."
-   },
-   {
     "kind": "UNCLEAR",
-    "situation": "A filer has taxable line 8z income that the tool does not ask about individually, such as an insurance policy dividend exceeding net premiums, and may not know whether it is among the items asked.",
-    "irs_text": "Question: \"the other income asked item by item for line 8z\". i1040gi p. 91-92, Line 8z: \"Use line 8z to report any taxable income not reported elsewhere on your return or other schedules.\"",
-    "why": "The question does not list the supported items or use an unsupported line 8z item as an example, so a filer could read the phrase as excluding all line 8z income and answer NO. If that item is not captured elsewhere, it would be omitted from line 9."
+    "situation": "A filer has a line 8z item the tool never asks about, such as a taxable Coverdell ESA or QTP distribution or the taxable part of disaster relief payments, and reads the exception for line 8z as covering all line 8z income.",
+    "irs_text": "i1040gi p. 92, Line 8z: \"Use line 8z to report any taxable income not reported elsewhere ... Examples ... • Taxable part of disaster relief payments ... • Taxable distributions from a Coverdell education savings account (ESA) or a qualified tuition program (QTP).\"",
+    "why": "The question exempts \"the other income asked item by item for line 8z\" but never says which 8z items those are. A filer could treat any 8z income as exempt and answer NO, and the tool would then count an unasked 8z item as zero. Another filer could read it to mean only the items the tool actually asks about and answer YES."
    },
    {
-    "kind": "UNCLEAR",
-    "situation": "A filer exercised stock options and all the resulting income is already reported as wages on Form 1040, line 1h, leaving nothing for line 8k.",
-    "irs_text": "Question: \"stock options (8k)\". i1040gi p. 91, Line 8k: \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h.\"",
-    "why": "The example omits the \"not otherwise reported\" limit, although the 8v example includes similar wording. A filer could answer YES because they have stock option income, or NO because none of it belongs on line 8k, and YES would cause an unnecessary refusal."
+    "kind": "WIDE",
+    "situation": "A filer who rents out personal property but not for profit (income the tool computes on line 8j) answers YES because the question gives \"income from the rental of personal property\" as an example of unsupported income.",
+    "irs_text": "f1040s1 p. 1, line 8l: \"Income from the rental of personal property if you engaged in the rental for profit but were not in the business of renting such property\"; i1040gi p. 91, Line 8j: \"Activity not engaged in for profit income.\"",
+    "why": "The question's example \"income from the rental of personal property (8l)\" drops the for-profit condition. A not-for-profit rental belongs on line 8j, which the tool supports, yet the example tells that filer to answer YES."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "A filer whose stock option income is already in wages on Form 1040 line 1a or 1h answers YES because the question lists \"stock options (8k)\" without qualification.",
+    "irs_text": "i1040gi p. 91, Line 8k: \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h.\"",
+    "why": "Line 8k covers only stock option income not reported elsewhere. The bare example \"stock options\" could lead a filer with no line 8k amount to answer YES and be refused unnecessarily."
    }
   ],
-  "prompt_sha": "8e3389aa897923a167b828da46125f02c67cf60a0242d693e5692e5210710a5f",
+  "prompt_sha": "0f7168a37ccdf4efd5522b49aa842824b6b3cc9cd0d69cab003a032fcb1205f8",
   "used": [
    {
     "doc": "f1040s1",
@@ -3041,7 +3002,7 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "cost": 0.148748,
+  "cost": 0.084272,
   "model": "claude-opus-5-5"
  },
  {

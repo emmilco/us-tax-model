@@ -40,12 +40,16 @@ form:
       label: Were you blind at the end of 2025 (totally blind, or partly blind with a statement certified by your eye doctor)?
       expr:
         op: input
-        source: Were you blind at the end of 2025? Answer yes if you were totally blind as of December 31, 2025. If you weren't
-          totally blind, answer yes only if you have a statement certified by your eye doctor (ophthalmologist or optometrist)
-          that you can't see better than 20/200 in your better eye with glasses or contact lenses, or that your field of
-          vision is 20 degrees or less (or, if your eye condition isn't likely to improve beyond these conditions, a
-          certified statement to that effect). If your vision can be corrected beyond these limits only by contact lenses
-          that you can wear only briefly because of pain, infection or ulcers, answer yes. Keep the statement for your records.
+        source: |-
+          Were you blind at the end of 2025?
+
+          Answer yes if you were totally blind as of December 31, 2025.
+
+          If you weren't totally blind, answer yes only if you have a statement certified by your eye doctor (ophthalmologist or optometrist) that you can't see better than 20/200 in your better eye with glasses or contact lenses, or that your field of vision is 20 degrees or less (or, if your eye condition isn't likely to improve beyond these conditions, a certified statement to that effect).
+
+          If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection or ulcers, answer yes.
+
+          Keep the statement for your records.
       cite:
         doc: i1040gi
         locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
@@ -972,14 +976,18 @@ form:
       type: Bool
       expr:
         op: input
-        source: 'Does any of these apply to this person: church employee income (wages from a church or qualified
-          church-controlled organization that elected exemption from social security and Medicare taxes); being a minister, a member of a religious order or a Christian Science practitioner,
-          or having an approved Form 4361 or Form 4029; net earnings from self-employment from a partnership (Schedule K-1, box
-          14, code A) or other self-employment income not on a Schedule C (such as director''s fees, fiduciary fees, or fees as
-          a fee-basis state or local government employee); farm income (Schedule F) or Conservation Reserve Program payments;
-          electing an optional method (Schedule SE Part II); a chapter 11 bankruptcy case; community income on a separate return;
-          self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed
-          by a foreign government; or tips reported on Form 4137 or wages on Form 8919?'
+        source: |-
+          Does any of these apply to this person?
+
+          - church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)
+          - being a minister, a member of a religious order or a Christian Science practitioner, or having an approved Form 4361 or Form 4029
+          - net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C (such as director's fees, fiduciary fees, or fees as a fee-basis state or local government employee)
+          - farm income (Schedule F) or Conservation Reserve Program payments
+          - electing an optional method (Schedule SE Part II)
+          - a chapter 11 bankruptcy case
+          - community income on a separate return
+          - self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government
+          - tips reported on Form 4137 or wages on Form 8919
       cite:
         doc: i1040sse
         locator: pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II;
@@ -2325,13 +2333,23 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: 'On a joint return: the distributions you received in 2023 and 2024 in a year for which you and your spouse filed
-          a joint return, plus those you receive in 2026 before the due date of your 2025 return (including extensions), from
-          a traditional or Roth IRA; a 401(k), 403(b), governmental 457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal
-          TSP; or another qualified retirement plan. Do not include rollovers or trustee-to-trustee transfers, in-plan Roth rollovers,
-          amounts rolled over or converted to a Roth IRA, plan loans treated as distributions, distributions of excess contributions
-          or deferrals, IRA contributions returned by the due date, section 404(k) dividends, distributions from a military retirement
-          plan (other than the TSP), or distributions from an inherited IRA as a nonspouse beneficiary; zero if none'
+        source: |-
+          On a joint return: the distributions you received in 2023 and 2024 in a year for which you and your spouse filed a joint return, plus those you receive in 2026 before the due date of your 2025 return (including extensions), from any of the following; zero if none
+
+          - a traditional or Roth IRA
+          - a 401(k), 403(b), governmental 457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal TSP
+          - another qualified retirement plan
+
+          Do not include:
+          - rollovers or trustee-to-trustee transfers
+          - in-plan Roth rollovers
+          - amounts rolled over or converted to a Roth IRA
+          - plan loans treated as distributions
+          - distributions of excess contributions or deferrals
+          - IRA contributions returned by the due date
+          - section 404(k) dividends
+          - distributions from a military retirement plan (other than the TSP)
+          - distributions from an inherited IRA as a nonspouse beneficiary
       cite:
         doc: f8880
         locator: 'p. 2, Line 4, "If you’re filing a joint return, include both spouses’ amounts in both columns. Exception.
@@ -2354,14 +2372,23 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: 'The distributions you received in 2023 and 2024 in a year for which you did not file a joint return with your
-          spouse on this return (on a return that is not a joint return: all your distributions in 2023 and 2024, and in 2026
-          before the due date of your 2025 return, including extensions), from a traditional or Roth IRA; a 401(k), 403(b), governmental
-          457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal TSP; or another qualified retirement plan. Do not include rollovers
-          or trustee-to-trustee transfers, in-plan Roth rollovers, amounts rolled over or converted to a Roth IRA, plan loans treated
-          as distributions, distributions of excess contributions or deferrals, IRA contributions returned by the due date, section
-          404(k) dividends, distributions from a military retirement plan (other than the TSP), or distributions from an inherited
-          IRA as a nonspouse beneficiary; zero if none'
+        source: |-
+          The distributions you received in 2023 and 2024 in a year for which you did not file a joint return with your spouse on this return (on a return that is not a joint return: all your distributions in 2023 and 2024, and in 2026 before the due date of your 2025 return, including extensions), from any of the following; zero if none
+
+          - a traditional or Roth IRA
+          - a 401(k), 403(b), governmental 457(b), 501(c)(18)(D), SEP or SIMPLE plan, or the federal TSP
+          - another qualified retirement plan
+
+          Do not include:
+          - rollovers or trustee-to-trustee transfers
+          - in-plan Roth rollovers
+          - amounts rolled over or converted to a Roth IRA
+          - plan loans treated as distributions
+          - distributions of excess contributions or deferrals
+          - IRA contributions returned by the due date
+          - section 404(k) dividends
+          - distributions from a military retirement plan (other than the TSP)
+          - distributions from an inherited IRA as a nonspouse beneficiary
       cite:
         doc: f8880
         locator: 'p. 2, Line 4, "Enter the total amount of distributions you, and your spouse if filing jointly, received after
@@ -2454,11 +2481,12 @@ form:
       type: Bool
       expr:
         op: input
-        source: 'Does any of these apply to you: your contributions for 2025 to traditional and Roth IRAs together were more than
-          you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your
-          taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with
-          its earnings by the due date of your return (including extensions); you recharacterized a 2025 contribution (moved it from a traditional to
-          a Roth IRA or the reverse); or an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025?'
+        source: |-
+          Does any of these apply to you?
+
+          - your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return (including extensions)
+          - you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse)
+          - an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025
       cite:
         doc: p590a
         locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
@@ -3526,15 +3554,26 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: 'Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution:
-          tuition, required enrollment fees, and books, supplies and equipment required to be paid to the institution as a condition
-          of enrollment or attendance, for academic periods beginning in 2025 or in the first 3 months of 2026. Use the amounts
-          actually paid, which may differ from Form 1098-T box 1. Do not include amounts paid in 2024 or 2026, room and board,
-          insurance, medical expenses (including student health fees), transportation, expenses deducted elsewhere (for example
-          on Schedule C), or expenses used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529
-          plan), or a course or other education involving sports, games or hobbies, or any noncredit course, unless it is
-          part of the student''s degree program or, where this student can''t get the American opportunity credit, it helps
-          the student acquire or improve job skills; zero if none'
+        source: |-
+          Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution, for academic periods beginning in 2025 or in the first 3 months of 2026:
+
+          - tuition
+          - required enrollment fees
+          - books, supplies and equipment required to be paid to the institution as a condition of enrollment or attendance
+
+          Use the amounts actually paid, which may differ from Form 1098-T box 1.
+
+          Do not include:
+          - amounts paid in 2024 or 2026
+          - room and board
+          - insurance
+          - medical expenses (including student health fees)
+          - transportation
+          - expenses deducted elsewhere (for example on Schedule C)
+          - expenses used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529 plan)
+          - a course or other education involving sports, games or hobbies, or any noncredit course, unless it is part of the student's degree program or, where this student can't get the American opportunity credit, it helps the student acquire or improve job skills
+
+          Zero if none
       cite:
         doc: i8863
         locator: p. 4, Qualified Education Expenses, "Generally, qualified education expenses are amounts paid in 2025 for tuition
@@ -4695,11 +4734,14 @@ form:
       type: Bool
       expr:
         op: input
-        source: 'Does any of these apply to you: a taxable distribution from a Coverdell ESA, a qualified tuition program (529
-          plan) or an ABLE account; excess contributions to a traditional or Roth IRA for an earlier year that remained in the
-          IRA at the end of 2025 (whether or not you contributed for 2025); excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account;
-          excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported), whether or not you have a Form 8889 for 2025; or a required minimum distribution
-          from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)?'
+        source: |-
+          Does any of these apply to you?
+
+          - a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account
+          - excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not you contributed for 2025)
+          - excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account
+          - excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported), whether or not you have a Form 8889 for 2025
+          - a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)
       cite:
         doc: f5329
         locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from

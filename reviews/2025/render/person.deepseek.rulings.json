@@ -25,6 +25,15 @@
    "context": "4917603b44ead740d1a8c1dad66b6c5ce764c9569fd12497af0a0775a401f100"
   },
   {
+   "printed": "(screen) (person.ira_excess)",
+   "restated": "Input — Does any of these apply to you?\n\n- your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return (including extensions)\n- you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse)\n- an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025",
+   "model": "The provided Pub. 590-A excerpt covers traditional IRA excess contributions and recharacterization, but it does not state the Roth IRA contribution/income limits or that traditional and Roth contributions share the $7,000/$8,000 limit.",
+   "ruling": "Ruling: scope; accepted over-refusal, as the prior ruling. p590a pp. 30, 35. The model's UNCLEAR is that the given Pub. 590-A pages do not state the Roth limits or the shared $7,000/$8,000 limit; the screen asks the filer and refuses on Yes, so no line is computed from those limits, and a filer over either limit answers Yes. The R4 restructuring listed the three items in their original order, with no word lost. Project stands.",
+   "context": "5be12c06787efd1cc47927d9e82e268b996598e3ec3df00a9a737678004c7001",
+   "date": "2026-11-07",
+   "run": "aef41be794a59ad44dfd5314e64a771d1fc3ff4dd7e8bf29b65dd8c938073105"
+  },
+  {
    "printed": "(screen) (person.sav_able)",
    "restated": "Input — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?",
    "model": "Form 8880 line 4 is limited to certain distributions received after 2022, with rollovers and other amounts excluded; the restatement asks about any ABLE distribution and merges it with a contribution question.",
@@ -37,6 +46,15 @@
    "model": "IRS Form 8880 line 4 includes only 'Certain distributions received after 2022 and before the due date' rather than any ABLE distribution; the restatement also combines that with the separate line 1 ABLE contribution question.",
    "ruling": "Ruling: scope; f8880 p. 2, Line 4: \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans. • Traditional or Roth IRAs, or ABLE accounts.\" followed by \"Don't include any of the following\" (rollovers and other excluded distributions); Who Can Take This Credit, \"(e) contributions, as a designated beneficiary of an ABLE account, to the ABLE account\". The English says what the project asks: one screen that refuses the credit for ABLE contributions and for any ABLE distribution in the line 4 period (person.sav_able refuses person.sav_line1 and the line 4 distributions). The model is right that line 4 counts only some ABLE distributions; the screen is wider, so a return with only an excluded ABLE distribution is refused rather than figured. A broader refusal never misfigures a credit; refusal scope, not a misstatement.",
    "context": "da345ebe6576e309df5502390571b2a6348576fa182cf72216b7f513bb5e51c6"
+  },
+  {
+   "printed": "(screen) (person.se_screen)",
+   "restated": "Input — Does any of these apply to this person?\n\n- church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)\n- being a minister, a member of a religious order or a Christian Science practitioner, or having an approved Form 4361 or Form 4029\n- net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C (such as director's fees, fiduciary fees, or fees as a fee-basis state or local government employee)\n- farm income (Schedule F) or Conservation Reserve Program payments\n- electing an optional method (Schedule SE Part II)\n- a chapter 11 bankruptcy case\n- community income on a separate return\n- self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government\n- tips reported on Form 4137 or wages on Form 8919",
+   "model": "The screen omits statutory employee income, although the Schedule SE instructions say: 'If you were a statutory employee... be sure to include on line 8a statutory employee social security wages and tips from Form W-2.' A statutory employee with none of the listed items would not be flagged.",
+   "ruling": "Ruling: scope; i1040sse p. 1 and i1040sc p. 14, Statutory employees. The screen need not name statutory employee income: a Schedule C of statutory employee wages (or notary fees) is asked by sc.statutory and refused by sc.screened (sc.line1), so no such income reaches Schedule SE, as the person#4 completeness ruling. The R4 restructuring listed the screen's items in their original order, with no word lost. Project stands.",
+   "context": "5be12c06787efd1cc47927d9e82e268b996598e3ec3df00a9a737678004c7001",
+   "date": "2026-11-07",
+   "run": "aef41be794a59ad44dfd5314e64a771d1fc3ff4dd7e8bf29b65dd8c938073105"
   },
   {
    "printed": "Step 3",

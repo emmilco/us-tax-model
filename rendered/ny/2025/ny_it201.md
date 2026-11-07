@@ -4,9 +4,19 @@
 
 ## (question) — `ny_it201.ask.state_resident`
 
-- **Authored helper label:** Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there? Answer No if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B); if you were in active military service; or if your only New York residence was undergraduate student housing.
-- **Encoded (Bool):** Input — Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there? Answer No if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B); if you were in active military service; or if your only New York residence was undergraduate student housing.
-- Expr: `{"op":"input","source":"Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there? Answer No if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B); if you were in active military service; or if your only New York residence was undergraduate student housing."}`
+- **Authored helper label:** Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there?
+
+  Answer No:
+  - if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B)
+  - if you were in active military service
+  - if your only New York residence was undergraduate student housing
+- **Encoded (Bool):** Input — Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there?
+
+  Answer No:
+  - if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B)
+  - if you were in active military service
+  - if your only New York residence was undergraduate student housing
+- Expr: `{"op":"input","source":"Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there?\n\nAnswer No:\n- if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B)\n- if you were in active military service\n- if your only New York residence was undergraduate student housing"}`
 - Cite: [ny_it201i] p. 30, Resident, "You maintain a permanent place of abode in New York State for substantially all of the tax year and spend 184 days or more in New York State during the tax year" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.city_resident`
@@ -271,7 +281,7 @@
 ## (gate) — `ny_it201.gate.part_year_state`
 
 - **Authored helper label:** Not a New York State resident for all of 2025
-- **Encoded (Bool):** helper "Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there? Answer No if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B); if you were in active military service; or if your only New York residence was undergraduate student housing." = false
+- **Encoded (Bool):** helper "Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there?" = false
 - Expr: `{"eq":["ny_it201.ask.state_resident",{"const":false}],"op":"test"}`
 - Cite: [ny_it201i] p. 3, New York State full-year residents: Who must file?, "If you were a New York State resident for only part of the year, do not file Form IT-201." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
