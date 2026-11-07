@@ -1,0 +1,1012 @@
+# How often each candidate gate situation applies: the share of ALL individual returns that would answer
+# yes. Read by the "Rare-situation pages" rule of docs/2026-11-06_formal_gates_design.md: gates answered
+# yes by fewer filers than the cut (a fixed 5%, owner decision 2026-11-07) go on themed grids at the end.
+# Checked and rendered to reports/2025/gate_frequencies.md by tools/coverage/gate_frequencies.py; its --recompute
+# (engines interpreter) re-reads every IRS cell and microdata share recorded here.
+#
+# Each situation: label; refs (where it is a candidate: the applicability survey's A/B gates
+# (research/audits/2026-11-06_applicability_survey.md), an input asked directly today, or the top-level
+# number in the ladder proposal, `git show 204cc77:docs/2026-11-06_question_ladder_proposal.md`); share
+# (central estimate) and range [low, high]; source (kind soi, microdata or judgment); note; and, below
+# the cut, theme (one of `themes`, the proposed grid).
+#
+# IRS counts are tax year 2023 (Publication 1304 tables archived in sources/2025/), as in the coverage
+# estimate; 2025 shares are assumed similar unless a note says why not. An IRS count is of returns
+# reporting an amount. Where more filers would honestly answer the question yes (a state refund that is
+# not taxable, small gambling winnings, tuition paid without a credit) the entry is a judgment bounded by
+# that count. Figures in a judgment's reasoning that come from outside the archive (Census, CDC, DoD,
+# industry counts) are recalled, not archived or re-read, and are stated as approximate.
+tax_year_counts: 2023
+total_returns: {file: soi-23in12ms, table: "Table 1.2", column: 1, header: "All returns / Number of returns", returns: 160602107}
+cut:
+  share: 0.05
+  source: owner decision 2026-11-07
+  note: Situations whose share is below the cut go on the rare-situation grids, by theme, at most max_rows rows per grid.
+max_rows: 8
+# The themes are a proposal for the owner; each situation below the cut names one.
+themes:
+  work_pay: Work and pay
+  other_income: Other income and repayments
+  business_farm: Business and farm
+  family_household: Family and household
+  investments: Investments
+  home_vehicle: Home, vehicle and property
+  foreign: Foreign and outside the United States
+  other: Payments and other screens
+situations:
+
+  # ---- Who is on the return (direct questions asked of everyone today) ----
+  married:
+    label: Married at the end of 2025
+    refs: [household.married]
+    share: 0.3656
+    range: [0.3656, 0.39]
+    source:
+      kind: soi
+      combine: sum
+      cells:
+        - {file: soi-23in12ms, table: "Table 1.2", column: 13, header: "married persons filing jointly", returns: 54568939}
+        - {file: soi-23in12ms, table: "Table 1.2", column: 25, header: "married persons filing separately", returns: 4139858}
+    note: Joint (with qualifying surviving spouses) plus separate returns. Married people filing as head of household (living apart) answer yes too, so the share is a floor.
+  age65:
+    label: You or your spouse 65 or older
+    refs: [person.age65]
+    share: 0.1944
+    range: [0.1944, 0.22]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in16ag, table: "Table 1.6", column: 1, header: "All returns", row: "65 and over", returns: 31217324}
+    note: Age of the primary taxpayer only (the table's note 1); a joint return with only the spouse 65 or older adds a little.
+  community_property:
+    label: Lived in a community-property state
+    refs: [household.community_property]
+    share: 0.2335
+    range: [0.2335, 0.31]
+    source:
+      kind: microdata
+      dataset: populace_us_2024
+      predicate: {state_fips: [4, 6, 16, 22, 32, 35, 48, 53, 55]}
+      microdata_share: 0.2335
+    note: Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington and Wisconsin. Asked of everyone today though it matters only for married filers and head of household. By resident population these states hold about 31% of the US (Census, recalled), above the microdata's 23%; the range spans both.
+  dependent_filer:
+    label: You can be claimed as a dependent on someone else's return
+    theme: family_household
+    refs: [sa.dependent]
+    share: 0.0469
+    range: [0.0469, 0.055]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in17dp, table: "Table 1.7", column: 1, header: "Number of returns", returns: 7525664}
+    note: Returns marked as dependent returns. A filer who could be claimed but is not (and so does not mark it) also answers yes; the table cannot show them.
+  spouse_died:
+    label: Spouse died in 2025
+    theme: family_household
+    refs: [household.spouse_died_2025]
+    share: 0.006
+    range: [0.004, 0.008]
+    source:
+      kind: judgment
+      reasoning: About 3.1 million US deaths a year (CDC, recalled), roughly a third of them of married people, leave about 1 million surviving spouses, about 0.6% of returns.
+  blind:
+    label: You or your spouse blind
+    theme: family_household
+    refs: [person.blind]
+    share: 0.004
+    range: [0.002, 0.01]
+    source:
+      kind: judgment
+      reasoning: Legal blindness affects roughly 1 million US adults (recalled, CDC/NEI order of magnitude); about 0.4% of returns after joint returns. The microdata's is_blind (3.0% of filing units, any member) measures a broader vision-disability question and was not used.
+  filer_under16:
+    label: You or your spouse under 16
+    theme: family_household
+    refs: [person.under16]
+    share: 0.005
+    range: [0.002, 0.0112]
+    source:
+      kind: judgment
+      reasoning: Primary taxpayers under 18 are 1.1% of returns (Table 1.6); those under 16 are a part of them, taken as about half.
+      bounds:
+        - {file: soi-23in16ag, table: "Table 1.6", column: 1, header: "All returns", row: "Under 18", returns: 1803861}
+
+  # ---- Scope screens (complements asked of everyone today) ----
+  scope_credits:
+    label: Credits this tool does not figure
+    theme: other
+    refs: [scope.credits]
+    share: 0.012
+    range: [0.0091, 0.02]
+    source:
+      kind: judgment
+      reasoning: Other nonrefundable credits (general business, adoption, clean vehicle, elderly, mortgage interest and others) are 0.9% of returns; the screen also lists refundable credits and credits outside that total, so a little more.
+      bounds:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 18, header: "Other nonrefundable credits / Total", returns: 1467567}
+  scope_other_income:
+    label: Income or return treatment outside what the tool handles (wages not on a W-2 and others)
+    theme: other_income
+    refs: [scope.other_income]
+    share: 0.015
+    range: [0.0079, 0.03]
+    source:
+      kind: judgment
+      reasoning: The countable parts (other earned income, household employee wages not on a W-2, taxable dependent care benefits, tips not on a W-2, Form 8919 wages) are 0.8% at the largest and 1.4% summed; the screen lists further treatments with no count.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 17, header: "Other earned income", returns: 1267621}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 9, header: "Household employee wages", returns: 404554}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 13, header: "Taxable dependent care benefits", returns: 431865}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 11, header: "Tip income not reported", returns: 106786}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 15, header: "Wages from Form 8919", returns: 55403}
+  scope_other_line16:
+    label: Additional line 16 taxes (Forms 8814, 4972, 8615 and others)
+    theme: other
+    refs: [scope.other_line16]
+    share: 0.002
+    range: [0.0014, 0.005]
+    source:
+      kind: judgment
+      reasoning: The kiddie tax (Form 8615) alone is 0.14% of returns (dependent returns with it, Table 1.7); Forms 8814 and 4972 add a little.
+      bounds:
+        - {file: soi-23in17dp, table: "Table 1.7", column: 35, header: "kiddie tax", returns: 228992}
+  scope_schedule1:
+    label: Schedule 1 items asked by one screen (rental, partnership or S corporation, estate, farm, other income, NOL, Form 4797)
+    refs: [scope.schedule1]
+    share: 0.1200
+    range: [0.0594, 0.15]
+    source:
+      kind: microdata
+      dataset: populace_us_2024
+      predicate: {nonzero: [rental_income, partnership_s_corp_income, estate_income, farm_income, miscellaneous_income]}
+      microdata_share: 0.1200
+    note: The union of the coverage estimate's categories behind this screen, each raked to its IRS count; NOL and Form 4797 (no microdata variable, 0.6% and 1.1% alone) are left out, so the share is a floor.
+
+  # ---- Income: the ladder's common topics ----
+  wages:
+    label: Work as an employee, or any Form W-2
+    refs: [ladder 1, "$w2"]
+    share: 0.7869
+    range: [0.7869, 0.80]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 7, header: "Total from Form W-2 wages", returns: 126376015}
+  workplace_plan:
+    label: Contributed to a retirement plan through work (401(k), 403(b), 457, TSP)
+    refs: [ladder 1b, w2.box12_any]
+    share: 0.35
+    range: [0.25, 0.45]
+    source:
+      kind: judgment
+      reasoning: About half of private-sector workers participate in an employer plan (BLS National Compensation Survey, recalled) and nearly all public employees; with W-2 wages on 79% of returns that is roughly 35% of returns. The microdata's 401(k) contribution variables flag 30% but identically for traditional, Roth and IRA contributions, so they were not used. Each W-2's box 12 question (w2.box12_any) is yes for still more returns, since code DD (employer health coverage) is common.
+  interest:
+    label: Interest received
+    refs: [ladder 2, "$interest"]
+    share: 0.3441
+    range: [0.3441, 0.39]
+    source:
+      kind: soi
+      combine: max
+      cells:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 19, header: "Taxable interest", returns: 55260238}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 21, header: "Tax-exempt interest", returns: 6893860}
+    note: The larger of taxable and tax-exempt interest; the high end adds them.
+  dividends:
+    label: Dividends or fund distributions, with or without a form
+    refs: [survey B-1, ladder 3]
+    share: 0.2100
+    range: [0.2100, 0.23]
+    source:
+      kind: soi
+      combine: max
+      cells:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 23, header: "Ordinary dividends", returns: 33718460}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 35, header: "Capital gain distributions reported on Form 1040", returns: 3209131}
+    note: The high end adds capital gain distributions reported directly on Form 1040.
+  retirement_distributions:
+    label: Pension, annuity, retirement-plan or IRA distributions (any Form 1099-R)
+    refs: [ladder 4, "$retirement"]
+    share: 0.2357
+    range: [0.2026, 0.31]
+    source:
+      kind: microdata
+      dataset: populace_us_2024
+      predicate: {positive: [pension_income, taxable_ira_distributions, tax_exempt_ira_distributions]}
+      microdata_share: 0.2357
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 47, header: "Pensions and annuities", note: "total (column 47), not taxable (column 49)", returns: 32538787}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 45, header: "Taxable Individual Retirement Arrangement (IRA) distributions", returns: 16694154}
+    note: IRS counts bound the union from 20.3% (pensions alone) to 30.7% (summed). Rollovers and conversions reported on a Form 1099-R also answer yes and are partly outside both counts.
+  ira_contributions:
+    label: IRA contributions for 2025 (traditional or Roth)
+    refs: [ladder 5, person.sav_trad]
+    share: 0.08
+    range: [0.04, 0.13]
+    source:
+      kind: judgment
+      reasoning: Deducted traditional IRA contributions are 1.6% of returns; nondeductible traditional and Roth contributions appear on no counted line. About one in ten to one in seven US households contributes to an IRA in a year (ICI surveys, recalled), and households are fewer than returns, so about 8%. The microdata's IRA contribution variables flag 30% of filing units, the same units as its 401(k) variables, and were not used. For person.sav_trad alone (traditional IRA only) the share is lower, about 3%.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 123, header: "IRA payments", returns: 2503934}
+  social_security:
+    label: Social Security or tier 1 railroad benefits
+    refs: [ladder 6, ssb.benefits]
+    share: 0.1999
+    range: [0.1999, 0.21]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 85, header: "Social security benefits / Total", returns: 32104077}
+  securities_sales:
+    label: Sales or exchanges of stocks, funds, digital assets or other property
+    refs: [ladder 7, "$sales"]
+    share: 0.13
+    range: [0.1145, 0.17]
+    source:
+      kind: judgment
+      reasoning: Returns with a net long-term gain or loss from sales of capital assets (disjoint columns, summed) are 11.4%, a floor on returns with any sale; all returns with Schedule D gain or loss are 16.3%, but that includes returns with only distributions or a carryover. Sales with no net gain or loss, and a home sale whose gain is excluded, also answer yes.
+      bounds:
+        - {file: soi-23in14acg, table: "Table 1.4A", column: 65, header: "Net long-term gain from sales of capital assets", returns: 8891406}
+        - {file: soi-23in14acg, table: "Table 1.4A", column: 67, header: "Net long-term loss from sales of capital assets", returns: 9496262}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 37, header: "Taxable net gain", returns: 12392020}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 39, header: "Taxable net loss", returns: 13833037}
+  unemployment:
+    label: Unemployment compensation
+    theme: work_pay
+    refs: [ladder 8, s1.uc_paid]
+    share: 0.0292
+    range: [0.0292, 0.035]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 83, header: "Unemployment compensation", returns: 4697502}
+  state_refund:
+    label: Received a state or local income tax refund, credit or offset
+    refs: [ladder 8, refund.received]
+    share: 0.40
+    range: [0.25, 0.55]
+    source:
+      kind: judgment
+      reasoning: Only refunds that are taxable are counted (1.9% of returns), but everyone who received a refund answers yes. Most of the about 85% of filers in states with an income tax file a state return, and most state returns end in a refund, so about 40%.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 27, header: "State income tax refunds", returns: 3109096}
+  business_any:
+    label: Business, farm or fishing, rental, royalties or a pass-through
+    refs: [ladder 9]
+    share: 0.2642
+    range: [0.1898, 0.32]
+    source:
+      kind: microdata
+      dataset: populace_us_2024
+      predicate: {nonzero: [self_employment_income, rental_income, partnership_s_corp_income, farm_income, estate_income]}
+      microdata_share: 0.2642
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 31, header: "Business or profession / Net income", returns: 21411713}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 33, header: "Business or profession / Net loss", returns: 9067174}
+    note: Each part raked to its IRS count; the ladder also asks "in any earlier year" (carryovers), which adds a little.
+  self_employment:
+    label: Operated a business or practised a profession for yourself (Schedule C)
+    refs: [ladder 9a, "$sc"]
+    share: 0.1898
+    range: [0.1898, 0.21]
+    source:
+      kind: soi
+      combine: sum
+      cells:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 31, header: "Business or profession / Net income", returns: 21411713}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 33, header: "Business or profession / Net loss", returns: 9067174}
+    note: Net income and net loss are disjoint, so their sum counts returns with a Schedule C.
+  schedule_e:
+    label: Rental property, royalties, or a share of a partnership, S corporation, estate or trust
+    refs: [ladder 9b, scope.schedule1]
+    share: 0.10
+    range: [0.0594, 0.14]
+    source:
+      kind: judgment
+      reasoning: Rental and royalty returns are 5.9%, partnership 3.3%, S corporation 3.5%, estate and trust 0.4%; summed 13.2%. They overlap (the same filers often hold several), so about 10%.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 63, header: "Total rental and royalty / Net income", returns: 6346357}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 65, header: "Total rental and royalty / Net loss", returns: 3196282}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 67, header: "Partnership / Net income", returns: 3266345}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 69, header: "Partnership / Net loss", returns: 2103634}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 71, header: "S corporation / Net income", returns: 4138040}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 73, header: "S corporation / Net loss", returns: 1415974}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 75, header: "Estate and trust / Net income", returns: 648583}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 77, header: "Estate and trust / Net loss", returns: 36592}
+  farm:
+    label: Farm or fishing income, or a Form 1099-PATR
+    theme: business_farm
+    refs: [ladder 9c]
+    share: 0.012
+    range: [0.0109, 0.015]
+    source:
+      kind: judgment
+      reasoning: Schedule F returns (net income plus net loss, disjoint) are 1.09%; cooperative patrons without a farm and fishing on Schedule C add a little.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 79, header: "Farm / Net income", returns: 484162}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 81, header: "Farm / Net loss", returns: 1258869}
+  business_carryovers:
+    label: A business, farm or rental loss or deduction carried into 2025 (section 179, QBI loss, NOL)
+    theme: business_farm
+    refs: [ladder 9d, survey B-5, s179.line10, qbi.carryforward]
+    share: 0.012
+    range: [0.0063, 0.025]
+    source:
+      kind: judgment
+      reasoning: Net operating loss returns alone are 0.63%; section 179 and QBI loss carryforwards have no count and mostly fall on the same business owners.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 95, header: "Net operating loss", returns: 1019019}
+
+  # ---- Family, health, education, home ----
+  dependents:
+    label: Dependents (children or others you claim)
+    refs: [ladder 10, "$dependent"]
+    share: 0.2937
+    range: [0.2425, 0.36]
+    source:
+      kind: microdata
+      dataset: populace_us_2024
+      predicate: {positive: [tax_unit_count_dependents]}
+      microdata_share: 0.2937
+      bounds:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 12, header: "Nonrefundable child and other dependent tax credit", returns: 38949527}
+    note: The child and other dependent credit alone (nonrefundable part) is on 24.3% of returns, a floor.
+  care_expenses:
+    label: Paid for care of a child or dependent so you could work
+    theme: family_household
+    refs: [ladder 10, f2441.care]
+    share: 0.045
+    range: [0.0356, 0.07]
+    source:
+      kind: judgment
+      reasoning: The child and dependent care credit is claimed on 3.6% of returns; filers who paid care but take the employer exclusion instead, or whose credit is zero, also answer yes.
+      bounds:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 6, header: "Credit for child and dependent care", returns: 5720294}
+  dependent_care_benefits:
+    label: Dependent care benefits from an employer (W-2 box 10)
+    theme: family_household
+    refs: [f2441.benefits]
+    share: 0.012
+    range: [0.0027, 0.025]
+    source:
+      kind: judgment
+      reasoning: Taxable dependent care benefits are on 0.27% of returns; most benefits are excluded and uncounted. Dependent care FSAs have roughly 1.5 to 2.5 million participants (recalled), about 1% of returns.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 13, header: "Taxable dependent care benefits", returns: 431865}
+  hsa:
+    label: Health savings account (contributions, employer contributions or distributions)
+    refs: [ladder 11, "$f8889"]
+    share: 0.11
+    range: [0.07, 0.16]
+    source:
+      kind: judgment
+      reasoning: Only own-contribution deductions (1.25%) and taxable distributions (0.29%) are counted; employer contributions and qualified distributions also require Form 8889. About 37 million HSA accounts exist (Devenir, recalled), most with a contribution or distribution in a year, held by perhaps 15 to 20 million returns, about 11%.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 109, header: "Health savings account deduction", returns: 2012002}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 101, header: "Taxable health savings account distributions", returns: 464689}
+    note: Weak and across the cut. The archived tables count only a small part of Form 8889 filers; a count of Forms 8889 (not archived) would settle it.
+  marketplace:
+    label: Marketplace health coverage (Form 1095-A)
+    refs: ["$f1095a"]
+    share: 0.085
+    range: [0.0598, 0.10]
+    source:
+      kind: judgment
+      reasoning: Returns with advance premium tax credit were 6.0% in 2023. Marketplace enrolment rose from about 16 million (2023) to about 24 million (2025) under the enhanced credits (CMS, recalled), so about 8.5% for 2025.
+      bounds:
+        - {file: soi-23in27aca, table: "Table 2.7", column: 5, header: "Advance payment of premium tax credit", returns: 9604913}
+        - {file: soi-23in27aca, table: "Table 2.7", column: 3, header: "Total premium tax credit", returns: 8860422}
+  education:
+    label: Education after high school (tuition or qualified expenses paid for you, your spouse or a dependent)
+    refs: [ladder 12, f8863.paid]
+    share: 0.09
+    range: [0.0449, 0.13]
+    source:
+      kind: judgment
+      reasoning: Education credits are claimed on 4.5% of returns (the larger of the nonrefundable education and American opportunity counts), but expenses paid without a credit (income over the limit, scholarships covering tuition, students filing their own return while a parent claims them) also answer yes. About 19 million students in postsecondary education (NCES, recalled) touch roughly 14 million returns, about 9%. The microdata's qualified_tuition_expenses flags 0.7% and was not used.
+      bounds:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 8, header: "Nonrefundable education credit", returns: 7211349}
+        - {file: soi-23in33ar, table: "Table 3.3", column: 40, header: "American opportunity credit", returns: 5821688}
+    note: Weak and across the cut.
+  home_energy:
+    label: Home energy improvements or residential clean energy property
+    theme: home_vehicle
+    refs: [ladder 13, f5695.part1_any, f5695.part2_any]
+    share: 0.0252
+    range: [0.016, 0.035]
+    source:
+      kind: soi
+      combine: sum
+      cells:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 14, header: "Residential clean energy credit", returns: 1481945}
+        - {file: soi-23in33ar, table: "Table 3.3", column: 16, header: "Energy efficient home improvement credit", returns: 2570561}
+    note: Summed (overlap assumed small); 2025 is the last year for both credits, so a rush may raise it.
+  clean_energy_part1:
+    label: Residential clean energy property (Form 5695 Part I) or a carryforward
+    theme: home_vehicle
+    refs: [f5695.part1_any]
+    share: 0.0092
+    range: [0.0092, 0.015]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 14, header: "Residential clean energy credit", returns: 1481945}
+  home_improvement_part2:
+    label: Energy efficient home improvements (Form 5695 Part II)
+    theme: home_vehicle
+    refs: [f5695.part2_any]
+    share: 0.0160
+    range: [0.0160, 0.025]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 16, header: "Energy efficient home improvement credit", returns: 2570561}
+  home_or_charity:
+    label: Mortgage interest, property taxes or charity
+    refs: [ladder 14]
+    share: 0.60
+    range: [0.45, 0.70]
+    source:
+      kind: judgment
+      reasoning: About 65% of households own their home and nearly all pay property tax (Census, recalled); renters who give to charity add more. Itemizers are only 9.4% of returns, which measures who deducts, not who would answer yes. The microdata's imputed mortgage interest, property tax and charity flags (19%, 22%, 20%) follow itemizers and were not used.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 135, header: "Total itemized deductions", returns: 15106257}
+  charity:
+    label: Gave anything to a charity in 2025, or a charitable contribution carryover
+    refs: [survey B-3]
+    share: 0.40
+    range: [0.25, 0.55]
+    source:
+      kind: judgment
+      reasoning: About half of US households give to charity in a year (Philanthropy Panel Study, recalled); per return, with many single young filers, about 40%. Itemized deductions (9.4% of returns) measure who deducts gifts, not who gives.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 135, header: "Total itemized deductions", returns: 15106257}
+  noncash_gifts:
+    label: Gave property (clothing, goods, stock) to a charity
+    refs: ["$gift"]
+    share: 0.15
+    range: [0.06, 0.25]
+    source:
+      kind: judgment
+      reasoning: Donating used goods is common; perhaps a third of those who give also give goods. The roster is asked of everyone today (survey 2.2).
+  charity_limited:
+    label: Gifts subject to the special limits (private foundations, capital gain property, carryovers)
+    theme: home_vehicle
+    refs: [sa.charity_limited]
+    share: 0.004
+    range: [0.001, 0.01]
+    source:
+      kind: judgment
+      reasoning: Gifts of appreciated stock, to private foundations or carried over are concentrated among high-income itemizers, a small part of the 9.4% who itemize.
+
+  # ---- Payments ----
+  estimated_payments:
+    label: Estimated tax payments, an overpayment applied from 2024, or a payment with an extension
+    refs: [ladder 15, f1040.line26]
+    share: 0.0657
+    range: [0.0657, 0.081]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 106, header: "Estimated tax payments", returns: 10546072}
+    note: Estimated payments alone; the high end adds payments with an extension (1.5%), which the ladder's question also covers.
+  extension_payment:
+    label: Amount paid with a request for an extension
+    theme: other
+    refs: [s3.line10]
+    share: 0.0153
+    range: [0.0153, 0.02]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 108, header: "request for extension of filing time", returns: 2461454}
+  other_withholding:
+    label: Federal tax withheld other than on a W-2 (1099, W-2G, K-1 and others)
+    refs: [ladder 16, survey B-4, f1040.line25b, f1040.line25c_other]
+    share: 0.2081
+    range: [0.2081, 0.251]
+    source:
+      kind: soi
+      combine: max
+      cells:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 102, header: "Income tax withheld from Form 1099", returns: 33417322}
+        - {file: soi-23in33ar, table: "Table 3.3", column: 104, header: "Income tax withheld from other forms", returns: 6886761}
+  other_payments:
+    label: Other payments and refundable credits on Schedule 3 lines 13a to 13z (Form 2439 and others)
+    theme: other
+    refs: [s3.line14]
+    share: 0.002
+    range: [0.0005, 0.005]
+    source:
+      kind: judgment
+      reasoning: Form 2439 undistributed gains, the qualified sick and family leave credits (each under 0.05% in 2023) and the other lines 13 items are rare.
+  fuel_tax_credit:
+    label: Credit for federal tax on fuels (Form 4136)
+    theme: business_farm
+    refs: [s3.line12]
+    share: 0.0019
+    range: [0.0019, 0.003]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 112, header: "tax on gasoline and special fuels", returns: 303094}
+
+  # ---- Investments, foreign ----
+  capital_loss_carryover:
+    label: Capital loss carried over from 2024 (2024 Schedule D line 21 a loss)
+    theme: investments
+    refs: [sd.carryover]
+    share: 0.045
+    range: [0.035, 0.0671]
+    source:
+      kind: judgment
+      reasoning: Long-term carryovers are on 3.5% of returns and short-term on 3.2%; summed 6.7%. Many returns carry both, so about 4.5%.
+      bounds:
+        - {file: soi-23in14acg, table: "Table 1.4A", column: 59, header: "Short-term loss carryover", returns: 5151589}
+        - {file: soi-23in14acg, table: "Table 1.4A", column: 117, header: "Long-term loss carryover", returns: 5622923}
+  schedule_d_other_forms:
+    label: Gains or losses from other forms (2439, 6252, 4797, 4684, 6781, 8824) or a K-1
+    theme: investments
+    refs: [sd.other_forms]
+    share: 0.025
+    range: [0.0123, 0.0477]
+    source:
+      kind: judgment
+      reasoning: Each Schedule D other-form or pass-through column is at most 1.2% of returns and Form 4797 is 1.1%; summed 4.8%, with large overlap among pass-through owners.
+      bounds:
+        - {file: soi-23in14acg, table: "Table 1.4A", column: 107, header: "Net long-term gain from other forms", returns: 1979380}
+        - {file: soi-23in14acg, table: "Table 1.4A", column: 111, header: "Net long-term gain from partnership/S corporation", returns: 1219800}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 41, header: "Sales of property other than capital assets", returns: 945122}
+  foreign_tax:
+    label: Foreign income tax paid (on a 1099 or otherwise)
+    refs: [ladder 18, ftc.taxes]
+    share: 0.0734
+    range: [0.0734, 0.09]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 4, header: "Foreign tax credit", returns: 11791525}
+    note: Returns claiming the credit; holders of international funds who do not claim it, and itemizers who deduct foreign tax instead, also answer yes.
+  investment_interest:
+    label: Interest on money borrowed to buy investments, or investment interest carried from 2024
+    theme: investments
+    refs: [survey A-1, ladder 19, f4952.line1, f4952.carryover]
+    share: 0.01
+    range: [0.004, 0.025]
+    source:
+      kind: judgment
+      reasoning: Investment interest is deducted by well under 1 million returns since 2018 (recalled; Table 2.1 is not archived); margin borrowers who do not itemize also answer yes. The microdata's investment_interest_expense flags 18.6% of filing units, the same units as its mortgage interest, an imputation artefact, and was not used.
+  foreign_accounts:
+    label: Money, accounts or shares outside the United States (foreign account, Schedule B line 7a)
+    theme: foreign
+    refs: [ladder 17, survey A-2, sb.line7a]
+    share: 0.025
+    range: [0.01, 0.06]
+    source:
+      kind: judgment
+      reasoning: About 1.5 million FBARs are filed a year (FinCEN, recalled), each for accounts over $10,000 in total; line 7a is yes at any balance, and many of the roughly 45 million foreign-born residents keep accounts in their country of origin. About 2.5%.
+    note: Wide; below the cut at either end.
+  fbar_required:
+    label: Required to file FinCEN Form 114
+    theme: foreign
+    refs: [sb.fbar_required]
+    share: 0.009
+    range: [0.006, 0.013]
+    source:
+      kind: judgment
+      reasoning: About 1.5 million FBARs a year (FinCEN, recalled), some by entities, against 160.6 million returns.
+  form8938:
+    label: Specified foreign financial assets over the Form 8938 threshold
+    theme: foreign
+    refs: [sb.form8938]
+    share: 0.003
+    range: [0.001, 0.005]
+    source:
+      kind: judgment
+      reasoning: Form 8938 thresholds ($50,000 single at year end, higher abroad) are several times the FBAR's; a few hundred thousand filers.
+  foreign_trust:
+    label: Distribution from, grantor of, or transferor to a foreign trust
+    theme: foreign
+    refs: [sb.line8]
+    share: 0.0005
+    range: [0.0001, 0.001]
+    source:
+      kind: judgment
+      reasoning: Foreign trust reporting (Form 3520) is filed by tens of thousands of individuals a year (recalled order of magnitude).
+  schedule_b_special:
+    label: Special interest or dividend treatment (nominee, seller-financed mortgage, accrued interest, OID, bond premium, savings bond exclusion)
+    theme: investments
+    refs: [sb.unsupported]
+    share: 0.015
+    range: [0.005, 0.04]
+    source:
+      kind: judgment
+      reasoning: Each item arises only with directly held bonds, seller financing, nominee accounts or savings bonds redeemed for education; a small part of the 34% with interest.
+
+  # ---- Schedule 1 items ----
+  schedule1_line8:
+    label: Any other income for Schedule 1 line 8 (gambling, cancelled debt, prizes, jury pay, other)
+    refs: [survey B-2, ladder 20]
+    share: 0.08
+    range: [0.0485, 0.13]
+    source:
+      kind: judgment
+      reasoning: Other income (net income plus net loss, line 8z and others) is on 4.8% of returns, gambling 1.4%, cancelled debt 0.24%; summed 6.5%. Honest yes adds gambling winnings and jury pay that go unreported, so about 8%.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 91, header: "Other income / Net income", returns: 7468434}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 93, header: "Other income / Net loss", returns: 318839}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 97, header: "Gambling earnings", returns: 2304901}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 99, header: "Cancellation of debt", returns: 386021}
+    note: Across the cut at its high end.
+  other_income_8z:
+    label: Other income (line 8z roster)
+    theme: other_income
+    refs: ["$oi8z", ladder 20]
+    share: 0.0485
+    range: [0.0485, 0.07]
+    source:
+      kind: soi
+      combine: sum
+      cells:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 91, header: "Other income / Net income", returns: 7468434}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 93, header: "Other income / Net loss", returns: 318839}
+    note: SOI's other income covers more of Schedule 1 line 8 than 8z alone, so this overstates the roster slightly; unreported small items understate it.
+  gambling:
+    label: Gambling winnings (with or without a Form W-2G)
+    theme: other_income
+    refs: [s1.gambling_winnings]
+    share: 0.03
+    range: [0.0144, 0.08]
+    source:
+      kind: judgment
+      reasoning: Reported gambling earnings are on 1.4% of returns; legal sports betting and lotteries reach far more people, and any winnings answer yes, so about 3%.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 97, header: "Gambling earnings", returns: 2304901}
+  cancelled_debt:
+    label: Debt cancelled or forgiven (Form 1099-C)
+    theme: other_income
+    refs: [s1.cod_any]
+    share: 0.006
+    range: [0.0024, 0.02]
+    source:
+      kind: judgment
+      reasoning: Reported cancellation of debt income is on 0.24% of returns; cancelled debt excluded as insolvency, student loan discharge or qualified principal residence debt also answers yes.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 99, header: "Cancellation of debt", returns: 386021}
+  alimony:
+    label: Alimony received or paid under a pre-2019 agreement
+    theme: other_income
+    refs: [s1.alimony]
+    share: 0.0029
+    range: [0.0017, 0.0029]
+    source:
+      kind: soi
+      combine: sum
+      cells:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 29, header: "Alimony received", returns: 183582}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 121, header: "Alimony paid", returns: 278541}
+    note: Received and paid summed; a return rarely has both.
+  educator:
+    label: Eligible educator with classroom expenses
+    theme: work_pay
+    refs: [person.educator_expenses]
+    share: 0.0237
+    range: [0.0237, 0.035]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 105, header: "Educator expenses deduction", returns: 3811310}
+  student_loan_interest:
+    label: Paid interest on a student loan
+    refs: [sli.interest]
+    share: 0.08
+    range: [0.0426, 0.11]
+    source:
+      kind: judgment
+      reasoning: The deduction was on 4.3% of returns in 2023, when federal loan payments had resumed only in October after the pause. Before the pause it was on about 12 million returns (recalled), about 7.5%; borrowers above the income limit also answer yes, so about 8% for 2025.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 125, header: "Student loan interest deduction", returns: 6844802}
+    note: Weak and across the cut; the 2023 count is depressed by the payment pause.
+  tips:
+    label: Received tips in your job
+    theme: work_pay
+    refs: [s1a.tips, ladder 1a]
+    share: 0.0195
+    range: [0.015, 0.04]
+    source:
+      kind: microdata
+      dataset: populace_us_2024
+      predicate: {positive: [tip_income]}
+      microdata_share: 0.0195
+    note: New for 2025, so no IRS count. The microdata's tip income is imputed for tipped occupations; about 4 million workers in tipped occupations (Budget Lab, recalled) agrees in size.
+  overtime:
+    label: Received overtime pay
+    refs: [s1a.overtime]
+    share: 0.1471
+    range: [0.08, 0.22]
+    source:
+      kind: microdata
+      dataset: populace_us_2024
+      predicate: {positive: [fsla_overtime_premium]}
+      microdata_share: 0.1471
+    note: New for 2025, so no IRS count. The microdata's overtime premium is imputed for hourly non-exempt workers; the annual share of workers with any overtime is uncertain.
+  car_loan:
+    label: Interest on a loan for a new US-assembled passenger vehicle bought in 2025
+    theme: home_vehicle
+    refs: [s1a.carloan]
+    share: 0.03
+    range: [0.015, 0.06]
+    source:
+      kind: judgment
+      reasoning: About 16 million new vehicles are sold a year, perhaps 60% on a loan rather than a lease or cash and about half assembled in the US, so about 5 million personal-use purchases, about 3% of returns. A question asking about any car loan would draw far more yes answers; the microdata's household auto loan interest flags 32% and was not used.
+    note: Wording-sensitive.
+  rrta:
+    label: Railroad Retirement (RRTA) compensation
+    theme: work_pay
+    refs: [person.rrta, ladder 1c]
+    share: 0.0015
+    range: [0.001, 0.003]
+    source:
+      kind: judgment
+      reasoning: Railroad employment is about 200,000 workers (Railroad Retirement Board, recalled), about 0.13% of returns.
+
+  # ---- Schedules 2 and 3, other screens ----
+  amt:
+    label: Alternative minimum tax
+    theme: investments
+    refs: [s2.amt]
+    share: 0.0009
+    range: [0.0009, 0.002]
+    source:
+      kind: soi
+      combine: single
+      cells:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 143, header: "Alternative minimum tax", returns: 150167}
+  schedule2_other:
+    label: Other Schedule 2 taxes (household employment, uncollected tip taxes, homebuyer credit repayment and others)
+    theme: business_farm
+    refs: [s2.other]
+    share: 0.008
+    range: [0.0036, 0.015]
+    source:
+      kind: judgment
+      reasoning: The largest counted part (Social Security and Medicare tax on tips not reported, 0.36%) and household employment tax (0.15%), homebuyer credit repayment (0.25%) and uncollected tax (0.06%) sum to about 0.8%.
+      bounds:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 72, header: "Uncollected Social Security and Medicare tax on tips", returns: 574187}
+        - {file: soi-23in33ar, table: "Table 3.3", column: 78, header: "Household employment tax", returns: 242743}
+        - {file: soi-23in33ar, table: "Table 3.3", column: 80, header: "First-time homebuyer credit repayment", returns: 409307}
+  form5329_other:
+    label: Form 5329 parts the tool does not prepare (excess contributions, missed required distributions, 529/ESA/ABLE)
+    theme: investments
+    refs: [person.x_other]
+    share: 0.006
+    range: [0.002, 0.015]
+    source:
+      kind: judgment
+      reasoning: All Form 5329 additional taxes are on 3.2% of returns, mostly the early-distribution tax (Part I, prepared); the other parts are a small fraction.
+      bounds:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 76, header: "Penalty tax on qualified retirement plans", returns: 5092999}
+  additional_medicare_items:
+    label: Additional Medicare tax items (Form 4137 tips, Form 8919 wages, RRTA, church income, territory wages)
+    theme: other_income
+    refs: [f8959.unsupported]
+    share: 0.006
+    range: [0.002, 0.012]
+    source:
+      kind: judgment
+      reasoning: Each listed item is under about 0.4% of returns (tips not reported 0.07%, Form 8919 0.03%, RRTA about 0.13%, church employees and territory wages small).
+  excluded_income:
+    label: Foreign earned income or other excluded income (Schedule A screen)
+    theme: foreign
+    refs: [sa.excluded_income]
+    share: 0.004
+    range: [0.0027, 0.008]
+    source:
+      kind: judgment
+      reasoning: The foreign earned income exclusion is on 0.27% of returns; the housing exclusion and territory exclusions add a little.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 89, header: "Foreign-earned income exclusion", returns: 432724}
+  schedule_a_other:
+    label: Schedule A items this tool does not prepare (casualty, gambling losses, other deductions)
+    theme: other
+    refs: [sa.unsupported]
+    share: 0.01
+    range: [0.003, 0.02]
+    source:
+      kind: judgment
+      reasoning: These items fall mostly on itemizers (9.4% of returns) and on a minority of them; gambling losses go with the 1.4% reporting gambling earnings.
+  qbi_other:
+    label: QBI items the tool does not handle (cooperative patrons, PTP income, and others)
+    theme: business_farm
+    refs: [qbi.unsupported]
+    share: 0.005
+    range: [0.002, 0.012]
+    source:
+      kind: judgment
+      reasoning: Publicly traded partnership income and cooperative patronage are held by a small part of the investors and farmers above.
+  credit_disallowed:
+    label: Child tax credit or EIC reduced or disallowed in an earlier year (Form 8862)
+    theme: other
+    refs: [household.credit_disallowed]
+    share: 0.003
+    range: [0.001, 0.008]
+    source:
+      kind: judgment
+      reasoning: EIC and CTC disallowances after examination are a few hundred thousand a year (recalled order of magnitude) against 24 million EIC returns.
+  combat_pay:
+    label: Nontaxable combat pay (W-2 box 12 code Q)
+    theme: work_pay
+    refs: [s8812.combat_pay]
+    share: 0.0005
+    range: [0.0001, 0.001]
+    source:
+      kind: judgment
+      reasoning: Service members in combat zones in 2025 number in the tens of thousands (recalled order of magnitude).
+  puerto_rico:
+    label: Bona fide resident of Puerto Rico (child tax credit)
+    theme: foreign
+    refs: [s8812.puerto_rico]
+    share: 0.002
+    range: [0.0005, 0.004]
+    source:
+      kind: judgment
+      reasoning: Puerto Rico residents file Form 1040 mainly to claim the refundable child tax credit; a few hundred thousand returns (recalled order of magnitude).
+
+  # ---- The ladder's starred situations ----
+  religious_work:
+    label: Work for a church or religious organization, or as clergy
+    theme: work_pay
+    refs: [ladder 21]
+    share: 0.01
+    range: [0.004, 0.02]
+    source:
+      kind: judgment
+      reasoning: Clergy number a few hundred thousand and employees of religious organizations perhaps 1 to 2 million (BLS, recalled), about 1% of returns.
+  noncitizen:
+    label: Citizen of another country without a green card
+    theme: foreign
+    refs: [ladder 22]
+    share: 0.035
+    range: [0.02, 0.06]
+    source:
+      kind: judgment
+      reasoning: Noncitizens without lawful permanent residence (temporary visa holders, refugees and asylees awaiting adjustment, the undocumented) number about 15 to 20 million people (DHS and Census, recalled); returns filed with ITINs alone are about 4 million. About 3.5%.
+  abroad_or_territory:
+    label: Lived or worked outside the 50 states and DC, including Puerto Rico and other territories
+    theme: foreign
+    refs: [ladder 23]
+    share: 0.01
+    range: [0.0027, 0.02]
+    source:
+      kind: judgment
+      reasoning: The foreign earned income exclusion (0.27% of returns) counts only part of US citizens abroad (several hundred thousand returns more claim the foreign tax credit or no exclusion), and territory residents with federal returns add a few hundred thousand.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 89, header: "Foreign-earned income exclusion", returns: 432724}
+  casualty:
+    label: Property damaged, destroyed or stolen
+    theme: home_vehicle
+    refs: [ladder 24]
+    share: 0.02
+    range: [0.002, 0.08]
+    source:
+      kind: judgment
+      reasoning: Deducted casualty losses are a few thousand returns (disaster losses 0.007%), but the question as worded draws yes from anyone with a damaged car or a burglary, perhaps several percent; scoped to federally declared disasters it is well under 1%.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 133, header: "Disaster loss deduction", returns: 10848}
+    note: Wording-sensitive; below the cut at any reasonable wording.
+  savings_accounts:
+    label: A 529, Coverdell, ABLE or medical savings account
+    refs: [ladder 25]
+    share: 0.06
+    range: [0.04, 0.10]
+    source:
+      kind: judgment
+      reasoning: About 16 million 529 accounts (ISS Market Intelligence, recalled), several per family in many cases, so perhaps 8 to 10 million owner returns; ABLE, Coverdell and Archer MSAs add little.
+  ira_owner:
+    label: Owns an IRA, including an inherited one
+    refs: [ladder 26]
+    share: 0.33
+    range: [0.25, 0.40]
+    source:
+      kind: judgment
+      reasoning: About 4 in 10 US households own an IRA (ICI, recalled); per return, with single filers, about a third.
+  equity_comp_or_amt:
+    label: Stock compensation from an employer, or alternative minimum tax on an earlier return
+    refs: [ladder 27]
+    share: 0.05
+    range: [0.025, 0.10]
+    source:
+      kind: judgment
+      reasoning: Employee stock purchase plan participants and holders of restricted stock units and options number perhaps 8 to 15 million (NCEO, recalled); AMT on an earlier return (0.09% in 2023, 0.07% with a prior-year minimum tax credit) adds little.
+      bounds:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 143, header: "Alternative minimum tax", returns: 150167}
+        - {file: soi-23in33ar, table: "Table 3.3", column: 22, header: "Prior-year minimum tax credit", returns: 113755}
+  household_employer:
+    label: Paid someone to work in the home
+    theme: family_household
+    refs: [ladder 28]
+    share: 0.02
+    range: [0.0015, 0.08]
+    source:
+      kind: judgment
+      reasoning: Household employment tax (Schedule H) is on 0.15% of returns; household employers who should file but do not, and families with nannies or housekeepers who are not employees, answer yes too. A wording that includes any paid cleaner or contractor draws far more.
+      bounds:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 78, header: "Household employment tax", returns: 242743}
+    note: Wording-sensitive.
+  clean_vehicle:
+    label: Bought an electric or fuel-cell vehicle, or installed a home vehicle charger
+    theme: home_vehicle
+    refs: [ladder 29]
+    share: 0.008
+    range: [0.0037, 0.015]
+    source:
+      kind: judgment
+      reasoning: The clean vehicle credit was on 0.31% of returns in 2023 and the refuelling property credit 0.07%. Electric vehicle purchases rose in 2024 and 2025 (the credit ended for vehicles acquired after September 2025), and buyers who transferred the credit to a dealer or leased also answer yes, so about 0.8%.
+      bounds:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 30, header: "Clean vehicle credit", returns: 493953}
+        - {file: soi-23in33ar, table: "Table 3.3", column: 28, header: "Alternative fuel vehicle refueling prop. credit", returns: 104733}
+  adoption:
+    label: Adopted, or paid adoption expenses, since 2020
+    theme: family_household
+    refs: [ladder 30]
+    share: 0.003
+    range: [0.0003, 0.005]
+    source:
+      kind: judgment
+      reasoning: The adoption credit was on 0.03% of returns in 2023; about 100,000 to 120,000 adoptions a year (recalled), over six years about 0.7 million families, about 0.4%.
+      bounds:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 24, header: "Adoption credit", returns: 48062}
+  military:
+    label: In the armed forces (active, reserve or Guard)
+    theme: work_pay
+    refs: [ladder 31]
+    share: 0.013
+    range: [0.008, 0.018]
+    source:
+      kind: judgment
+      reasoning: About 1.3 million active-duty and 0.8 million reserve and Guard members (DoD, recalled), some on the same joint return; about 1.3% of returns. The microdata's is_military (0.5%) follows the CPS, which leaves out most active-duty members, and was not used.
+  repayment:
+    label: Paid back in 2025 income reported in an earlier year
+    theme: other_income
+    refs: [ladder 32]
+    share: 0.005
+    range: [0.001, 0.015]
+    source:
+      kind: judgment
+      reasoning: Repayments of wages, unemployment or benefits under a claim of right appear on no counted line; overpayment recoveries of unemployment benefits are the largest group.
+  pay_outside_w2:
+    label: Paid for work in a way not shown on a W-2 or 1099
+    theme: work_pay
+    refs: [ladder 33]
+    share: 0.0079
+    range: [0.0079, 0.0141]
+    source:
+      kind: soi
+      combine: max
+      cells:
+        - {file: soi-23in14ar, table: "Table 1.4", column: 17, header: "Other earned income", returns: 1267621}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 9, header: "Household employee wages", returns: 404554}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 11, header: "Tip income not reported", returns: 106786}
+        - {file: soi-23in14ar, table: "Table 1.4", column: 15, header: "Wages from Form 8919", returns: 55403}
+    note: The largest part; the high end sums the parts and taxable dependent care benefits.
+  agency_home_purchase:
+    label: Bought a home with a mortgage credit certificate or a below-market agency mortgage
+    theme: home_vehicle
+    refs: [ladder 34]
+    share: 0.004
+    range: [0.0005, 0.008]
+    source:
+      kind: judgment
+      reasoning: The mortgage interest credit was on 0.05% of returns; holders of bond-financed agency mortgages within the nine-year recapture period (roughly 100,000 loans a year, recalled) add more.
+      bounds:
+        - {file: soi-23in33ar, table: "Table 3.3", column: 32, header: "Mortgage interest credit", returns: 86419}

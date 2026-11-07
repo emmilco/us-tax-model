@@ -135,6 +135,8 @@ step year_diff_self_test python3 tools/year_diff.py --self-test "$@"
 step fixtures_year_self_test python3 tools/fixtures_year.py --self-test
 step engine_compare_tests python3 -I tools/engines/test_compare.py
 step coverage_tree_self_test python3 tools/coverage/tree.py --self-test "$@"
+# Every candidate gate situation has a share of all returns in [0, 1] and a source, and its report is current.
+step gate_frequencies python3 tools/coverage/gate_frequencies.py --check "$@"
 # Source-coverage checks (T-084 to T-089) read the canonical data and rendered English the build writes.
 step instruction_cites python3 tools/check_instruction_cites.py "$@"
 step instruction_cites_self_test python3 tools/check_instruction_cites.py --self-test "$@"
