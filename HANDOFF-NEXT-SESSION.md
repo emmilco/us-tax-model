@@ -1,3 +1,54 @@
+# Web UI, formal gates and readable questions — 2026-11-06/07
+
+**State:** `main` is pushed through `5d8c6fd` (R4, the last restructuring lane). The UI runs from `main` at
+http://127.0.0.1:8791 (`node engine/dist/main.js serve --dir ~/Documents/Tax-Interview`). No release was made this
+session; the next `tools/release.sh` is the first full run of everything below (G2's merge had its own full run).
+
+**Landed (in order):**
+- T-236 web UI: the server and page (`814a1ea`); the re-layout with sources and tabs (`2c1b77b`); source titles and
+  designations, verbatim and checked (`2c1b77b`, `c41851e`).
+- Formal gates, owner-approved design `docs/2026-11-06_formal_gates_design.md` (standing rules: the interview only
+  words, formats, orders, groups and labels; only the evaluator's reachability hides a question). G1 tooling
+  (`05aa303`: interview-rule checks, `gated_by`, gate screen review, false-no review); G2 (`a061e28`: `choose` takes
+  Bool and enum alternatives; full tier green). The T-251 interview-layer topic layer is superseded and stays unmerged
+  on its branch (`worktree-agent-aeba046e877ced9d9`).
+- Structured question text (`b66f4ea`, R0) and every question over 800 characters restructured into a question,
+  headings and lists with no word lost: scope screens (R0), f5695 (R1, `42a384d`), dependent/retirement/f8962/f1095a
+  (R2, `c1e852d`), sales/asset/sc and seven more (R3, `6c7d46a`), person/s1/sa/household/ny_it201 (R4). Each form's
+  stale reviews were rerun and ruled: $28.67 in paid calls (ledger 746 rows), no meaning change found.
+- T-254 check-all speed: interview checks lean (`14a06ba`, build 258 s to 64 s); worker pools for the fixture,
+  integration and server tests (`cb5e58f`); interview-rules on worker threads (`e0a59b6`). Fast tier about 11 min
+  to about 5 min.
+- BUG-0437 fixed (`ce992c6`: structured text kept in review prompts' one-line listings). Bugs registered: BUG-0431
+  to BUG-0439.
+
+**Decisions waiting for the owner** (details in the commit messages and agent reports):
+1. Partial fixtures and gates (blocks the G2 leak rewrite and every gate round): a nested gate turns a partial
+   fixture's decided value unknown where an earlier operand is unanswered. Are partial fixtures' decided values
+   authoritative (complete those fixtures first), or may gates turn them unknown? Measured on f8880/f8889: the owner's
+   AGI-first order fails 7 recorded fixtures; the sequential order fails none but saves no questions. Also: extend the
+   mutation tool to reason through Bool `choose` first (3 pinned arguments name `use_last_month`).
+2. T-254 items 3-4 (branch `worktree-agent-a4eceeb8ee9a5f170`, commits `d4067d5`, `a5c2d9b`, `6358a7f`, held): a
+   traced dependency scheduler and a step cache. Fresh fast tier not faster (tracing doubles traced steps); reruns
+   190 s; docs tier 90 s vs 133 s; the final tree never ran the full tier; cache soundness rests on stated untraced
+   assumptions. The same commit holds the BUG-0431 guard and `tools/worktree_data.py` (clone, carry-back), and fixes two
+   real races of the old waves. Adopt, adopt in part, or drop. Its bug numbers clash and need renumbering.
+3. R4 wording: two numbered household lists became bullets (the format has none); one `household.unmarried` sentence
+   moved after its list. Reviews accepted both.
+4. Stale optional-family logs: `check_logs` fails on a stale DeepSeek log even where it is not second-family eligible,
+   forcing small reruns or archiving (R1, R3, R4). Tolerate them?
+5. Content fixes registered, each adding a clause: BUG-0433 (Form 8615 examples), 0434 (f5695 lived-in home), 0435
+   (SIMPLE IRA rollover), 0436 (sales.code adjustments), 0438 (s1.line8r grant), 0439 (IT-201 line 1 cite).
+6. Review tooling (R2, R3): `triage.py` evaluates only the whole reply, not a line-scoped pass reply; line-scoped
+   requests list other lines by id and type only, so models zero hidden lines (f8962 11e, f8960's Form 1040 line 11).
+
+**Hazard learned:** agents in worktrees write paid-review outputs and ledger rows into their own clone of the
+git-ignored `.transcription/`. Until `worktree_data.py carry-back` lands, carry them back by hand: append the ledger
+rows after the clone point and copy changed files three-way against an untouched clone (a plain sync overwrote newer
+files once this session; repaired).
+
+**Next:** the owner's decisions above, then the first gate round (C gates) on the formal-gates design.
+
 # Process packages, release gating and T-245 — 2026-11-05/06
 
 **State:** `main` is pushed through `f2850ce`, release **`r2026.11.06.1`** (the first release, made by `tools/release.sh --push`: a full
