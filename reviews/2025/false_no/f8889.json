@@ -1,0 +1,94 @@
+{
+ "form": "f8889",
+ "reviews": {
+  "gate:f8889.dec_coverage": {
+   "condition": "f8889.dec_coverage",
+   "lines": [
+    "f8889.use_last_month"
+   ],
+   "inputs": [
+    "f8889.last_month"
+   ],
+   "verdict": "FALSE_NO",
+   "findings": [
+    {
+     "kind": "FALSE_NO",
+     "pattern": "1",
+     "who": "An individual with a fiscal tax year, for example one ending June 30. They were an eligible individual with HDHP coverage on June 1, the first day of the last month of their tax year, but had no HDHP coverage on December 1.",
+     "why_no": "The gate asks only about 'December 1, 2025', so they truthfully answer none. The rule actually keys to 'the 1st day of the last month of the tax year', and December 1 is only the most common case.",
+     "line": "f8889.use_last_month",
+     "irs_text": "i8889 (2025) p. 2: 'eligible individual on the 1st day of the last month of the tax year (December 1, for most individuals)'; p. 4, Line 3 rule 2: 'the same HDHP coverage ... as you had on the first day of the last month of your tax year'",
+     "severity": "high",
+     "fix": "Ask first whether the return is for a calendar year. For a fiscal year, either ask about coverage on the first day of the last month of the tax year or refuse with a citation. Do not hard-code December 1."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "3",
+     "who": "On a joint return, a spouse who has no plan in their own name but is enrolled as a covered family member under the other spouse's family HDHP, and who has no other disqualifying coverage on December 1.",
+     "why_no": "They read 'The high-deductible health plan coverage you had' as a plan they themselves hold or enrolled in, and answer none. The help speaks of treating both spouses as family only if 'both were eligible individuals', so a covered spouse with no HDHP of their own excludes themselves.",
+     "line": "f8889.use_last_month",
+     "irs_text": "i8889 (2025) p. 4, Line 1: 'If you and your spouse are considered covered by a family HDHP, you are considered covered by a family HDHP'; p. 2: 'You may consider yourself an \"eligible individual\" for the entire year if you are an eligible individual on the 1st day of the last month'",
+     "severity": "medium",
+     "fix": "Add: 'Count coverage as a member of anyone's family HDHP, including your spouse's, even if the plan is not in your name.'"
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "6",
+     "who": "An HDHP enrollee on December 1 who also had VA care for a service-connected disability, dental or vision coverage, a cancer (specified-disease) policy, a fixed per-day hospital indemnity policy, telehealth coverage, or benefits under surprise billing laws.",
+     "why_no": "The answer 'none' is glossed as 'you were not an eligible individual that day'. Knowing that eligibility requires 'no other health coverage', they count these as other health coverage and answer none.",
+     "line": "f8889.use_last_month",
+     "irs_text": "i8889 (2025) p. 2: 'Certain coverage disregarded. An eligible individual may have: 1. Coverage for any benefit provided by permitted insurance; and 2. Coverage for accidents, disability, dental care, vision care, long-term care, or telehealth'; 'does not fail to be treated as an eligible individual ... merely because the individual receives hospital care or medical services under any law administered by the Secretary of Veterans Affairs for a service-connected disability'",
+     "severity": "medium",
+     "fix": "List the disregarded coverage in the help, and state that it does not make you ineligible. Ask the facts first (HDHP on December 1, Medicare, dependent status, other non-disregarded medical coverage), then classify eligibility."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "7",
+     "who": "A filer covered on December 1 by a COBRA, retiree, marketplace or individually purchased plan that is an HSA-qualified HDHP but is not labeled 'high-deductible health plan' in their materials.",
+     "why_no": "They cannot tell whether their plan is an 'HDHP', so they choose none rather than self_only or family.",
+     "line": "f8889.use_last_month",
+     "irs_text": "i8889 (2025) p. 2: 'To be eligible to have contributions made to your HSA, you must be covered under a high deductible health plan (HDHP)'; 'You may consider yourself an \"eligible individual\" for the entire year if you are an eligible individual on the 1st day of the last month'",
+     "severity": "medium",
+     "fix": "Ask something the filer can check, such as whether the plan is described as 'HSA-eligible' or 'HSA-qualified', or whether its deductible meets the stated minimum. Point to the plan's summary of benefits."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "other",
+     "who": "A joint return where one spouse died during 2025, before December 1, after being an HDHP-covered eligible individual in the month of death. The survivor answers the question for the deceased spouse.",
+     "why_no": "The deceased spouse had no coverage on 'December 1, 2025', so the survivor answers none. The instructions tie the rule to 'the last month of the tax year', and the snapshot does not address how that applies to a decedent.",
+     "line": "f8889.use_last_month",
+     "irs_text": "i8889 (2025) p. 2: 'on the 1st day of the last month of the tax year (December 1, for most individuals)'; Testing period: 'other than because of death or becoming disabled'",
+     "severity": "low",
+     "fix": "Ask whether either spouse died in 2025. If so, refuse with a citation, or state the rule for a decedent's final year, rather than relying on a December 1 answer."
+    }
+   ],
+   "prompt_sha": "8168f534c08ec6d2f38b7d3981df81a057eab65e04eb62b4d816a6f84c4edf3b",
+   "subject_sha": "fbdf6edf264e62612cd67bbbcdc50f9434b32b27eed6cd4b88c8c2ad45c263d2",
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      2,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Last-month rule and Testing period; p. 4, Line 3, rule 2",
+      "p. 2, Last-month rule, \"for the entire year if you are an eligible individual\"; p. 4, Line 3, rule 2",
+      "p. 4, How To Complete Part I and Line 3 rules 1, 2 and 4(b), spouse-attributed family coverage and the coverage on the first day of the last month"
+     ],
+     "cols_pages": [
+      2,
+      4
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.095032,
+   "date": "2026-11-07"
+  }
+ }
+}

@@ -1685,9 +1685,30 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Line 3, columns (a) and (b) together
       = $0
       cite: [f8880] p. 1, "(a) You", "(b) Your spouse", "Add lines 1 and 2" (line 3, both columns), "Add the amounts on line 6. If zero, stop; you can’t take this credit" (line 7: with no contributions in either column, line 7 is zero) (2025; created 2025-11-04; ba2b2877)
-  (helper) The credit is figured: contributions in a column (with none, line 7 is zero), line 8 not more than the limit (so line 9 is not zero), the Credit Limit Worksheet line 3 more than zero, and line 7 more than zero
+  (helper) Year parameter savers.no_credit (false)
       = false
-      cite: [f8880] Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit", and line 9, "Note: If line 9 is zero, stop; you can’t take this credit"; p. 1, Caution; p. 2, Credit Limit Worksheet, "But if zero or less, stop; you can’t take the credit—don’t file this form" (2025; created 2025-11-04; ba2b2877)
+      cite: [f8880] p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies" (2025; created 2025-11-04; ba2b2877)
+  (helper) Line 8 (Form 1040 line 11a) is not more than the limit for the filing status
+      = false
+      cite: [f8880] p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; p. 1, Caution, "line 11a, is more than $39,500" (2025; created 2025-11-04; ba2b2877)
+  (helper) The Credit Limit Worksheet line 3 is more than zero
+      = true
+      cite: [f8880] p. 2, Credit Limit Worksheet, "But if zero or less, stop", "you can’t take the credit—don’t file this form" (2025; created 2025-11-04; ba2b2877)
+  (helper) Contributions in a column (line 3, columns (a) and (b) together, more than zero)
+      = false
+      cite: [f8880] Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit" (with no contributions in either column, line 7 is zero) (2025; created 2025-11-04; ba2b2877)
+  (helper) With contributions and line 8 within the limit: the Credit Limit Worksheet line 3 more than zero, then line 7 more than zero
+      = false
+      cite: [f8880] p. 2, Credit Limit Worksheet, "But if zero or less, stop", "you can’t take the credit—don’t file this form" (2025; created 2025-11-04; ba2b2877)
+      note: taken: {"eq":["f8880.clw_room",{"const":true}],"op":"test"}
+  (helper) With contributions in a column: line 8 not more than the limit, then the Credit Limit Worksheet line 3 more than zero, then line 7 more than zero
+      = false
+      cite: [f8880] p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; p. 1, Caution, "line 11a, is more than $39,500"; line 9, "Note: If line 9 is zero, stop; you can’t take this credit" (2025; created 2025-11-04; ba2b2877)
+      note: taken: {"eq":["f8880.within_limit",{"const":false}],"op":"test"}
+  (helper) The credit is figured, in the form's order: contributions in a column (with none, line 7 is zero), then line 8 not more than the limit (so line 9 is not zero), then the Credit Limit Worksheet line 3 more than zero, then line 7 more than zero (each column's eligibility is asked before its line 6)
+      = false
+      cite: [f8880] p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; p. 1, Caution, "line 11a, is more than $39,500"; Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit", and line 9, "Note: If line 9 is zero, stop; you can’t take this credit"; p. 2, Credit Limit Worksheet, "But if zero or less, stop" (2025; created 2025-11-04; ba2b2877)
+      note: taken: {"eq":["f8880.has_contrib",{"const":false}],"op":"test"}
   (helper) The smaller of line 10 or line 11
       = $0
       cite: [f8880] Form 8880 (2025), line 12 (2025; created 2025-11-04; ba2b2877)
@@ -2246,6 +2267,25 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Positive foreign taxes
       = false
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
+  (helper) Year parameter ftc.no (false)
+      = false
+      cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory" (2025; printed date 2025-12-23; 6998cf8c)
+  (helper) Whether all foreign-source gross income was passive category income, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)
+      = false
+      cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This election is available only if you meet all of the following conditions" (2025; printed date 2025-12-23; 6998cf8c)
+      note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
+  (helper) Whether all foreign income and taxes were reported on qualified payee statements, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)
+      = false
+      cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This election is available only if you meet all of the following conditions" (2025; printed date 2025-12-23; 6998cf8c)
+      note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
+  (helper) Whether the creditability, holding-period, related-payment and reduction rules are met, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)
+      = false
+      cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This election is available only if you meet all of the following conditions" (2025; printed date 2025-12-23; 6998cf8c)
+      note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
+  (helper) Whether the election without Form 1116 is made, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)
+      = false
+      cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This election is available only if you meet all of the following conditions" (2025; printed date 2025-12-23; 6998cf8c)
+      note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
   (helper) Fails a condition of the election
       = false
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
@@ -7370,6 +7410,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   person[taxpayer].sav_simple: chose $0 (guard 1)
       not taken: guard 0 = false
+  f8880.can_take: chose false (guard 1)
+      not taken: guard 0 = false
   f8880.line12: chose $0 (guard 1)
       not taken: guard 0 = false
   s3.line5b: chose $0 (guard 1)
@@ -7443,6 +7485,9 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   f8880.line6a: chose $0 (guard 0)
   f8880.line6b: chose $0 (guard 0)
+  f8880.can_take_tax: chose false (guard 0)
+  f8880.can_take_agi: chose false (guard 1)
+      not taken: guard 0 = false
   f8960.line9a: chose $0 (guard 1)
       not taken: guard 0 = false
   f8960.line9b: chose $0 (guard 1)
@@ -7450,6 +7495,14 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f8962.allowed: chose UNKNOWN (no input supplied for f1040.tax_exempt_interest) (guard 0)
   f8962.line28: chose UNKNOWN (no input supplied for f1040.tax_exempt_interest)
   f8995.line16: chose $0 (guard 1)
+      not taken: guard 0 = false
+  ftc.all_passive_if_tax: chose false (guard 1)
+      not taken: guard 0 = false
+  ftc.statements_if_tax: chose false (guard 1)
+      not taken: guard 0 = false
+  ftc.eligible_if_tax: chose false (guard 1)
+      not taken: guard 0 = false
+  ftc.elect_if_tax: chose false (guard 1)
       not taken: guard 0 = false
   person[taxpayer].ira_line2: chose $89,000 (guard 1)
       not taken: guard 0 = false
@@ -8135,7 +8188,9 @@ Derivations:
   f8880.line2b: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
   f8880.line3b: sum(f8880.line1b = $0; f8880.line2b = $0)
   f8880.line3_total: sum(f8880.line3a = $0; f8880.line3b = $0)
-  f8880.can_take: test(f8880.line3_total = $0; #sales.zero = $0)
+  f8880.has_contrib: test(f8880.line3_total = $0; #sales.zero = $0)
+  f8880.no: param(#savers.no_credit = false)
+  f8880.can_take: choose(f8880.has_contrib = false; true = true; f8880.has_contrib = false; false = false; f8880.no = false)
   f8880.zero: param(#sales.zero = $0)
   f8880.line12: choose(f8880.can_take = false; true = true; f8880.can_take = false; false = false; f8880.zero = $0)
   s3.line4: copy(f8880.line12 = $0)
@@ -8530,6 +8585,10 @@ Derivations:
   f8880.clw3: subtract_floor0(f8880.clw1 = $18,500; f8880.clw2 = $0)
   f8880.line11: copy(f8880.clw3 = $18,500)
   f8880.agi_limit: param(#savers.agi_limit = $39,500)
+  f8880.within_limit: test(f8880.line8 = $123,200; f8880.agi_limit = $39,500)
+  f8880.clw_room: test(f8880.clw3 = $18,500; #sales.zero = $0)
+  f8880.can_take_tax: choose(f8880.clw_room = true; true = true; f8880.past7 = false)
+  f8880.can_take_agi: choose(f8880.within_limit = false; true = true; f8880.within_limit = false; false = false; f8880.no = false)
   f8880.line12_figured: smaller_of(f8880.line10 = $0; f8880.line11 = $18,500)
   f8960.carryforward_adj: test(sd.carryover = false; true = true)
   f8960.line1: copy(f8960.unsupported = false; f8960.refund = false; f1040.line2b = $1,200)
@@ -8682,6 +8741,11 @@ Derivations:
   f8995a.line37: smaller_of(f8995a.line32 = $0; f8995a.line36 = $21,190)
   f8995a.line39: sum(f8995a.line37 = $0; f8995a.line38 = $0)
   ftc.limit: param(#ftc.limit = $300)
+  ftc.no: param(#ftc.no = false)
+  ftc.all_passive_if_tax: choose(ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.no = false)
+  ftc.statements_if_tax: choose(ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.no = false)
+  ftc.eligible_if_tax: choose(ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.no = false)
+  ftc.elect_if_tax: choose(ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.no = false)
   ftc.regular_tax: sum(f1040.line16 = $18,500; s2.line1z = $0)
   ftc.limited: smaller_of(ftc.taxes = $0; ftc.regular_tax = $18,500)
   g28.reached: test(sd.line17 = false; true = true)

@@ -2331,19 +2331,19 @@
  },
  {
   "form": "f8880",
-  "prompt_sha": "b282e9213f26acda6108e8b80666abc6592e4f2d35151c3b71b8b89eff8d773a",
+  "prompt_sha": "bb56d1d013d334d269a7c4c7462a52c0c8b8c3000abb40413ad9f626172634cb",
   "claims": [
    {
     "item": "f8880.line2a",
     "sentences": [
      {
-      "quote": "Note: Contributions designated under section 414(h)(2) are treated as employer contributions and, as such, they aren't voluntary contributions made by the employee. They don't qualify for the credit and shouldn't be included on line 2.",
+      "quote": "Note: Contributions designated under section 414(h)(2) are treated as employer contributions and, as such, they aren’t voluntary contributions made by the employee. They don’t qualify for the credit and shouldn’t be included on line 2.",
       "page": "f8880 p. 2"
      }
     ],
-    "quote": "Note: Contributions designated under section 414(h)(2) are treated as employer contributions and, as such, they aren't voluntary contributions made by the employee. They don't qualify for the credit and shouldn't be included on line 2.",
+    "quote": "Note: Contributions designated under section 414(h)(2) are treated as employer contributions and, as such, they aren’t voluntary contributions made by the employee. They don’t qualify for the credit and shouldn’t be included on line 2.",
     "page": "f8880 p. 2",
-    "why_uncovered": "Lines 2(a) and 2(b) cover elective deferrals, voluntary employee contributions and 501(c)(18)(D) contributions. The encoding states no rule that excludes section 414(h)(2) pick-up contributions, and it has no question or refusal for them. These amounts are often reported on Form W-2 as employee contributions, so they could be counted as voluntary contributions on line 2. The same gap applies to f8880.line2b.",
+    "why_uncovered": "Lines 2(a) and 2(b) take elective deferrals, voluntary employee contributions and 501(c)(18)(D) contributions. No listed line, question or refusal excludes contributions designated under section 414(h)(2), such as government employer pick-up contributions. No helper separates them from the voluntary employee contributions counted on line 2. The same gap applies to line 2(b).",
     "closest_item": "f8880.line2a",
     "effect": "amount"
    }
@@ -2357,30 +2357,38 @@
     ]
    }
   ],
-  "cost": 0.13674,
+  "cost": 0.077908,
   "model": "claude-opus-5-5"
  },
  {
   "form": "f8889",
-  "prompt_sha": "efc0b167f0378c62a12f728446e7d4cdbfbb94684233d583178e55cc09404b2e",
+  "prompt_sha": "48799bd22636d97749945b000aef0d8d43373cafcb1f6b3520f538b4862fbdb5",
   "claims": [
    {
-    "item": "f8889.dec_coverage",
+    "item": "f8889.medical",
     "sentences": [
      {
-      "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period.",
-      "page": "i8889 p. 4"
+      "quote": "Even though nonprescription medicines (other than insulin) do not qualify for the medical and dental expenses deduction, they do qualify as expenses for HSA purposes.",
+      "page": "i8889 p. 2"
      },
      {
-      "quote": "If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the “family” box.",
-      "page": "i8889 p. 4"
+      "quote": "The cost of menstrual care products (tampons, pads, liners, cups, sponges, or other similar products) are also reimbursable for HSA purposes.",
+      "page": "i8889 p. 2"
+     },
+     {
+      "quote": "Amounts paid for condoms are treated as amounts paid for medical care and qualify as reimbursable expenses for HSA purposes.",
+      "page": "i8889 p. 2"
+     },
+     {
+      "quote": "Amounts you pay for personal protective equipment, such as masks, hand sanitizer, and sanitizing wipes for you, your spouse, and your dependents for the primary purpose of preventing the spread of COVID-19 are treated as medical expenses eligible to be reimbursed from an HSA.",
+      "page": "i8889 p. 2"
      }
     ],
-    "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period. / If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the “family” box.",
-    "page": "i8889 p. 4",
-    "why_uncovered": "The encoding has no Form 8889 line 1 item. Nothing chooses or reports the self-only or family checkbox. The December 1 coverage question and the month counts feed only the line 3 and line 6 computations. Neither the longer-period rule nor the December 1 family override is applied to an entry for the checkbox.",
-    "closest_item": "f8889.dec_coverage",
-    "effect": "presentation"
+    "quote": "Even though nonprescription medicines (other than insulin) do not qualify for the medical and dental expenses deduction, they do qualify as expenses for HSA purposes. / The cost of menstrual care products (tampons, pads, liners, cups, sponges, or other similar products) are also reimbursable for HSA purposes. / Amounts paid for condoms are treated as amounts paid for medical care and qualify as reimbursable expenses for HSA purposes. / Amounts you pay for personal protective equipment, such as masks, hand sanitizer, and sanitizing wipes for you, your spouse, and your dependents for the primary purpose of preventing the spread of COVID-19 are treated as medical expenses eligible to be reimbursed from an HSA.",
+    "page": "i8889 p. 2",
+    "why_uncovered": "The f8889.medical question spells out who the expenses may be for, the reimbursement and timing conditions, and the narrow list of premiums that count. It never says that items not deductible on Schedule A still count for HSA purposes: nonprescription medicines, menstrual care products, condoms and COVID-19 protective equipment. The instructions define qualified medical expenses as 'expenses that could otherwise be deducted on Schedule A'. A filer reading that, alongside the question's explicit premium limits, would likely leave these items out of line 15. That overstates line 16.",
+    "closest_item": "f8889.medical",
+    "effect": "amount"
    }
   ],
   "used": [
@@ -2411,7 +2419,7 @@
     ]
    }
   ],
-  "cost": 0.33744,
+  "cost": 0.200204,
   "model": "claude-opus-5-5"
  },
  {
@@ -2660,20 +2668,20 @@
  },
  {
   "form": "ftc",
-  "prompt_sha": "ad553a980325cdf1f883ddbe5bf3d57df03ac0d8954d01f4265aa4a37df7bf27",
+  "prompt_sha": "c3120d24f26ad3d987a47836f2a57ae8ead14e87723f39be786fbe97994d4641",
   "claims": [
    {
-    "item": "ftc.elect",
+    "item": "ftc.credit",
     "sentences": [
      {
-      "quote": "Generally, if you take the credit for any eligible foreign taxes, you can't take any part of that year's foreign taxes as a deduction.",
+      "quote": "Generally, if you take the credit for any eligible foreign taxes, you can’t take any part of that year’s foreign taxes as a deduction.",
       "page": "i1116 p. 2"
      }
     ],
-    "quote": "Generally, if you take the credit for any eligible foreign taxes, you can't take any part of that year's foreign taxes as a deduction.",
+    "quote": "Generally, if you take the credit for any eligible foreign taxes, you can’t take any part of that year’s foreign taxes as a deduction.",
     "page": "i1116 p. 2",
-    "why_uncovered": "The ftc.elect question asks only whether to elect the credit without Form 1116 and to give up carryovers to and from that year. Nothing in the encoding asks whether the same year's foreign taxes were also deducted on Schedule A, and nothing refuses that case. No item stops a filer from claiming the credit and also deducting part of that year's foreign income taxes as an itemized deduction.",
-    "closest_item": "ftc.elect",
+    "why_uncovered": "The encoding computes the credit as the smaller of creditable foreign tax and regular tax whenever the election is made. No question, line or refusal checks whether any of the same year's foreign income taxes were also deducted, for example on Schedule A. The ftc.elect question covers only electing without Form 1116 and the carryover consequence. The ftc.eligible question covers creditability, holding-period, related-payment and reduction rules, but not the credit-versus-deduction choice. So nothing prevents taking both the credit and a deduction for the same year's foreign taxes.",
+    "closest_item": "ftc.credit",
     "effect": "amount"
    }
   ],
@@ -2692,7 +2700,7 @@
     ]
    }
   ],
-  "cost": 0.1212348,
+  "cost": 0.08730399999999999,
   "model": "claude-opus-5-5"
  },
  {

@@ -15,7 +15,7 @@ type Value =
 interface Derivation { value: Value; op: string; cite: Cite | null; operands: { ref: string; value: Value }[]; guardsNotTaken: { guard: string; value: Value }[]; notes: string[] }
 interface Choice { label: string; value: string[]; labels: Record<string, string> }
 interface FormRef { designation: string; id: string; title?: string; purpose?: { text: string; doc: string; page: number } }
-interface Question { input: string; prompt: string; help: string; cite: Cite; helpRequested?: boolean; type: string; values?: string[]; choices?: Choice[]; value?: unknown; forms?: FormRef[] }
+interface Question { input: string; prompt: string; help: string; cite: Cite; helpRequested?: boolean; type: string; values?: string[]; choices?: Choice[]; value_labels?: Record<string, string>; value?: unknown; forms?: FormRef[] }
 interface SheetLine { key: string; printed: string; label: string; value: Value; status: string; shown: boolean; notes: string[] }
 interface Section { doc: string; title: string; entry: string | null; lines: SheetLine[] }
 /** A refusal whose gate is a consistency check: answers that contradict each other, not an unsupported case. */
@@ -114,6 +114,7 @@ function fmtAnswer(q: Question, value: unknown): string {
     if (choice) return choice.label;
     return keys.length ? keys.map((k) => entryLabel(rosterEntryPath(q.input, k)) ?? k).join(", ") : "none";
   }
+  if (q.type === "Enum" && typeof value === "string") return q.value_labels?.[value] ?? value;
   return String(value);
 }
 function plural(n: number, one: string, many = one + "s"): string { return `${n} ${n === 1 ? one : many}`; }
@@ -533,7 +534,7 @@ function renderQuestion(): void {
     }
     widget.append(group);
   } else if (q.type === "Enum") {
-    const select = el("select", { id: "answer-input", "aria-labelledby": labelId }, el("option", { value: "" }, "Choose…"), ...(q.values ?? []).map((v) => el("option", { value: v }, v))) as HTMLSelectElement;
+    const select = el("select", { id: "answer-input", "aria-labelledby": labelId }, el("option", { value: "" }, "Choose…"), ...(q.values ?? []).map((v) => el("option", { value: v }, q.value_labels?.[v] ?? v))) as HTMLSelectElement;
     if (typeof current_value === "string") select.value = current_value;
     const ok = button("Save answer", { class: "primary", id: "answer-submit" }, () => { if (!select.value) invalid("Choose a value."); else void submit(select.value); });
     widget.append(el("div", { class: "entry" }, select, ok));

@@ -1819,6 +1819,100 @@
   "model": "claude-opus-5-5"
  },
  {
+  "screen": "gate:f8889.dec_coverage",
+  "kind": "gate",
+  "condition": "f8889.dec_coverage",
+  "lines": [
+   "f8889.use_last_month"
+  ],
+  "inputs": [
+   "f8889.last_month"
+  ],
+  "verdict": "COVERS",
+  "findings": [],
+  "prompt_sha": "56d2602ca6ed78ed0c9c722ab68e0b77939c15841d85f0357d7909b69db25907",
+  "subject_sha": "fbdf6edf264e62612cd67bbbcdc50f9434b32b27eed6cd4b88c8c2ad45c263d2",
+  "used": [
+   {
+    "doc": "i8889",
+    "revision": "2025",
+    "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+    "pages": [
+     2,
+     4
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 2, Last-month rule and Testing period; p. 4, Line 3, rule 2",
+     "p. 2, Last-month rule, \"for the entire year if you are an eligible individual\"; p. 4, Line 3, rule 2",
+     "p. 4, How To Complete Part I and Line 3 rules 1, 2 and 4(b), spouse-attributed family coverage and the coverage on the first day of the last month"
+    ],
+    "cols_pages": [
+     2,
+     4
+    ],
+    "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+   }
+  ],
+  "cost": 0.037932,
+  "model": "claude-opus-5-5",
+  "date": "2026-11-07"
+ },
+ {
+  "screen": "gate:ftc.has_tax",
+  "kind": "gate",
+  "condition": "ftc.has_tax",
+  "lines": [
+   "ftc.all_passive_if_tax",
+   "ftc.elect_if_tax",
+   "ftc.eligible_if_tax",
+   "ftc.statements_if_tax"
+  ],
+  "inputs": [
+   "ftc.all_passive",
+   "ftc.elect",
+   "ftc.eligible",
+   "ftc.statements"
+  ],
+  "verdict": "COVERS",
+  "findings": [
+   {
+    "kind": "WIDE",
+    "situation": "A filer with positive creditable foreign taxes above $300 ($600 if married filing jointly), or an estate or trust, is asked the election questions even though the election cannot apply to them.",
+    "irs_text": "i1116 p. 1: \"Your total creditable foreign taxes aren't more than $300 ($600 if married filing a joint return).\" ... \"This election isn't available to estates or trusts.\"",
+    "why": "The gate opens on any positive foreign tax, so the passive-income, payee-statement and election questions are asked of filers who cannot make the election. This only adds questions and drops no amount."
+   }
+  ],
+  "prompt_sha": "900b0441846411ee164382e85230897434e6a742154dd63a079a45625f4e679e",
+  "subject_sha": "4711934c03a420b8cdc7d17bbb49ab050ab0630944e87767658fef7d930ebdaa",
+  "used": [
+   {
+    "doc": "i1116",
+    "revision": "2025; printed date 2025-12-23",
+    "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
+    "pages": [
+     1,
+     2,
+     25
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 2, Purpose of Form, \"File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and\", \"You paid or accrued certain foreign taxes to a foreign country or U.S. territory\"; p. 1, \"This election is available only if you meet all of the following conditions\"",
+     "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax"
+    ],
+    "cols_pages": [
+     1,
+     2,
+     25
+    ],
+    "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
+   }
+  ],
+  "cost": 0.061248000000000004,
+  "model": "claude-opus-5-5",
+  "date": "2026-11-07"
+ },
+ {
   "screen": "gift.special",
   "question": "Does this group need an appraisal or other special treatment: any of the following?\n\n- a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together, other than publicly traded securities\n  - similar items: items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings\n  - publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper\n- a noncash contribution reaching you through a Schedule K-1\n- vehicles\n- pass-through entity interests\n- intellectual property\n- inventory\n- conservation or partial interests\n- property with restrictions on its use\n- a clothing or household item over $500 not in good used condition",
   "lines": [

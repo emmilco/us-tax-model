@@ -76,6 +76,11 @@
                     "labels": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } }
                   }
                 }
+              },
+              "value_labels": {
+                "type": "object",
+                "minProperties": 2,
+                "additionalProperties": { "type": "string", "minLength": 1 }
               }
             }
           }

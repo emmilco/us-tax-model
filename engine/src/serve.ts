@@ -163,7 +163,7 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
     const answered = firstAnswered.filter((key) => key in inputs).map((key) => {
       const q = question(key);
       return { input: key, value: inputs[key], prompt: q.prompt, help: q.help, order: q.order, cite: q.cite,
-        ...(q.choices ? { choices: q.choices } : {}), ...inputMeta(data, key), forms: formsFor(key) };
+        ...(q.choices ? { choices: q.choices } : {}), ...(q.value_labels ? { value_labels: q.value_labels } : {}), ...inputMeta(data, key), forms: formsFor(key) };
     });
     // Each listed entry's label, by entry path (`person[taxpayer].w2[acme_corp]`), from its roster's latest labelled answer.
     const entryLabels: Record<string, string> = {};

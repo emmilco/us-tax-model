@@ -1499,6 +1499,13 @@ params:
         doc: i1116
         locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular
           tax
+    ftc.no:
+      type: Bool
+      value: false
+      cite:
+        doc: i1116
+        locator: 'p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t
+          apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"'
     s1.educator_max:
       type: NonNegDollars
       value: 30000
@@ -1565,6 +1572,13 @@ params:
       cite:
         doc: i1040gi
         locator: 'p. 99, Student Loan Interest Deduction Worksheet, line 7, "($30,000 if married filing jointly)"'
+    hsa.no_last_month:
+      type: Bool
+      value: false
+      cite:
+        doc: i8889
+        locator: 'p. 2, Last-month rule, "for the entire year if you are an
+          eligible individual"'
     hsa.self_only:
       type: NonNegDollars
       value: 430000
@@ -2055,6 +2069,12 @@ params:
       cite:
         doc: f8880
         locator: 'Form 8880 (2025), line 6, "In each column, enter the smaller of line 5 or $2,000"'
+    savers.no_credit:
+      type: Bool
+      value: false
+      cite:
+        doc: f8880
+        locator: 'p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"'
     savers.agi_limit:
       type: Dollars
       value:

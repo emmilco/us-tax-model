@@ -59,11 +59,46 @@
 - Expr: `{"gt":["ftc.taxes",{"const":0}],"op":"test"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 
+## (helper) — `ftc.no`
+
+- **Authored helper label:** Year parameter ftc.no (false)
+- **Encoded (Bool):** Enter false (ftc.no).
+- Expr: `{"op":"param","ref":"ftc.no"}`
+- Cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory" (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## (helper) — `ftc.all_passive_if_tax`
+
+- **Authored helper label:** Whether all foreign-source gross income was passive category income, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)
+- **Encoded (Bool):** Choose — [helper "Positive foreign taxes" = true → helper "Was all foreign-source gross income passive category income under the small-tax election rules?"] [helper "Positive foreign taxes" = false → helper "Year parameter ftc.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ftc.has_tax",{"const":true}],"op":"test"},"then":"ftc.all_passive"},{"guard":{"eq":["ftc.has_tax",{"const":false}],"op":"test"},"then":"ftc.no"}],"op":"choose"}`
+- Cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This election is available only if you meet all of the following conditions" (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## (helper) — `ftc.statements_if_tax`
+
+- **Authored helper label:** Whether all foreign income and taxes were reported on qualified payee statements, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)
+- **Encoded (Bool):** Choose — [helper "Positive foreign taxes" = true → helper "Were all foreign income and taxes reported on qualified payee statements?"] [helper "Positive foreign taxes" = false → helper "Year parameter ftc.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ftc.has_tax",{"const":true}],"op":"test"},"then":"ftc.statements"},{"guard":{"eq":["ftc.has_tax",{"const":false}],"op":"test"},"then":"ftc.no"}],"op":"choose"}`
+- Cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This election is available only if you meet all of the following conditions" (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## (helper) — `ftc.eligible_if_tax`
+
+- **Authored helper label:** Whether the creditability, holding-period, related-payment and reduction rules are met, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)
+- **Encoded (Bool):** Choose — [helper "Positive foreign taxes" = true → helper "Have creditability, holding-period, related-payment and required foreign-tax reduction rules been satisfied?"] [helper "Positive foreign taxes" = false → helper "Year parameter ftc.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ftc.has_tax",{"const":true}],"op":"test"},"then":"ftc.eligible"},{"guard":{"eq":["ftc.has_tax",{"const":false}],"op":"test"},"then":"ftc.no"}],"op":"choose"}`
+- Cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This election is available only if you meet all of the following conditions" (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## (helper) — `ftc.elect_if_tax`
+
+- **Authored helper label:** Whether the election without Form 1116 is made, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)
+- **Encoded (Bool):** Choose — [helper "Positive foreign taxes" = true → helper "Elect the credit without Form 1116, with no carryover to or from this election year?"] [helper "Positive foreign taxes" = false → helper "Year parameter ftc.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ftc.has_tax",{"const":true}],"op":"test"},"then":"ftc.elect"},{"guard":{"eq":["ftc.has_tax",{"const":false}],"op":"test"},"then":"ftc.no"}],"op":"choose"}`
+- Cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This election is available only if you meet all of the following conditions" (2025; printed date 2025-12-23; sha256 6998cf8c)
+
 ## (helper) — `ftc.needs1116`
 
 - **Authored helper label:** Fails a condition of the election
-- **Encoded (Bool):** helper "Positive foreign taxes" = true and (helper "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7" > helper "Year parameter ftc.limit" or helper "Was all foreign-source gross income passive category income under the small-tax election rules?" = false or helper "Were all foreign income and taxes reported on qualified payee statements?" = false or helper "Have creditability, holding-period, related-payment and required foreign-tax reduction rules been satisfied?" = false or helper "Elect the credit without Form 1116, with no carryover to or from this election year?" = false)
-- Expr: `{"all":[{"eq":["ftc.has_tax",{"const":true}],"op":"test"},{"any":[{"gt":["ftc.taxes","ftc.limit"],"op":"test"},{"eq":["ftc.all_passive",{"const":false}],"op":"test"},{"eq":["ftc.statements",{"const":false}],"op":"test"},{"eq":["ftc.eligible",{"const":false}],"op":"test"},{"eq":["ftc.elect",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** helper "Positive foreign taxes" = true and (helper "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7" > helper "Year parameter ftc.limit" or helper "Whether all foreign-source gross income was passive category income, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false or helper "Whether all foreign income and taxes were reported on qualified payee statements, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false or helper "Whether the creditability, holding-period, related-payment and reduction rules are met, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false or helper "Whether the election without Form 1116 is made, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)" = false)
+- Expr: `{"all":[{"eq":["ftc.has_tax",{"const":true}],"op":"test"},{"any":[{"gt":["ftc.taxes","ftc.limit"],"op":"test"},{"eq":["ftc.all_passive_if_tax",{"const":false}],"op":"test"},{"eq":["ftc.statements_if_tax",{"const":false}],"op":"test"},{"eq":["ftc.eligible_if_tax",{"const":false}],"op":"test"},{"eq":["ftc.elect_if_tax",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 
 ## (helper) — `ftc.regular_tax`

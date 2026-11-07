@@ -112,6 +112,18 @@ def subject(unit, lines, english):
     return hashlib.sha256(json.dumps(body, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
+def else_text(gate, inp, lines):
+    """What a gate line is when its condition does not hold, by the gated input's type: zero, false, or the enum value
+    its else line names."""
+    t = inp.get("type", "")
+    if t == "Bool":
+        return "false"
+    if t.startswith("Enum("):
+        others = [a.get("then") for a in gate["expr"].get("alternatives", []) if a.get("then") != inp["id"]]
+        return " or ".join(f"`{o}` ({lines[o][1]['label']})" if o in lines else f"`{o}`" for o in others) or "its else"
+    return "zero"
+
+
 def describe(unit, lines, english):
     """The condition and gated lines as a prompt gives them: (condition text, [gated line items])."""
     cond = unit["condition"]
@@ -132,7 +144,7 @@ def describe(unit, lines, english):
         w = wording(inp)
         items.append(f"""- Line `{gate['id']}` (document {gdoc}, printed {gate['printed']}): {indent_rest(gate['label'], '    ')}
   When the condition holds: {indent_rest(english(gdoc, gate['id']), '    ')}
-  Otherwise: zero, and the question below is not asked.
+  Otherwise: {else_text(gate, inp, lines)}, and the question below is not asked.
   Gated question (input `{inp['id']}`): {indent_rest(w['prompt'], '    ')}""" + (f"\n  Help shown with it: {indent_rest(w['help'], '    ')}" if w["help"] else "") + f"""
   Cited: {gate['cite']['doc']} {gate['cite']['locator']}; the input cites {inp['cite']['doc']} {inp['cite']['locator']}""")
     return condition, items

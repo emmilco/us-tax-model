@@ -23,6 +23,7 @@ form:
     - id: ftc.all_passive
       printed: (helper)
       type: Bool
+      gated_by: ftc.all_passive_if_tax
       label: Was all foreign-source gross income passive category income under the small-tax election
         rules?
       expr:
@@ -36,6 +37,7 @@ form:
     - id: ftc.statements
       printed: (helper)
       type: Bool
+      gated_by: ftc.statements_if_tax
       label: Were all foreign income and taxes reported on qualified payee statements?
       expr:
         op: input
@@ -47,6 +49,7 @@ form:
     - id: ftc.eligible
       printed: (helper)
       type: Bool
+      gated_by: ftc.eligible_if_tax
       label: Have creditability, holding-period, related-payment and required foreign-tax reduction rules
         been satisfied?
       expr:
@@ -60,6 +63,7 @@ form:
     - id: ftc.elect
       printed: (helper)
       type: Bool
+      gated_by: ftc.elect_if_tax
       label: Elect the credit without Form 1116, with no carryover to or from this election year?
       expr:
         op: input
@@ -103,6 +107,117 @@ form:
         doc: i1116
         locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
           regular tax
+    - id: ftc.no
+      printed: (helper)
+      type: Bool
+      label: Year parameter ftc.no (false)
+      expr:
+        op: param
+        ref: ftc.no
+      cite:
+        doc: i1116
+        locator: 'p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t
+          apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"'
+    - id: ftc.all_passive_if_tax
+      printed: (helper)
+      type: Bool
+      label: Whether all foreign-source gross income was passive category income, asked only with foreign tax (false without foreign tax, where neither the election nor Form
+        1116 applies)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - ftc.has_tax
+                - const: true
+            then: ftc.all_passive
+          - guard:
+              op: test
+              eq:
+                - ftc.has_tax
+                - const: false
+            then: ftc.no
+      cite:
+        doc: i1116
+        locator: 'p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t
+          apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This
+          election is available only if you meet all of the following conditions"'
+    - id: ftc.statements_if_tax
+      printed: (helper)
+      type: Bool
+      label: Whether all foreign income and taxes were reported on qualified payee statements, asked only with foreign tax (false without foreign tax, where neither the election nor Form
+        1116 applies)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - ftc.has_tax
+                - const: true
+            then: ftc.statements
+          - guard:
+              op: test
+              eq:
+                - ftc.has_tax
+                - const: false
+            then: ftc.no
+      cite:
+        doc: i1116
+        locator: 'p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t
+          apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This
+          election is available only if you meet all of the following conditions"'
+    - id: ftc.eligible_if_tax
+      printed: (helper)
+      type: Bool
+      label: Whether the creditability, holding-period, related-payment and reduction rules are met, asked only with foreign tax (false without foreign tax, where neither the election nor Form
+        1116 applies)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - ftc.has_tax
+                - const: true
+            then: ftc.eligible
+          - guard:
+              op: test
+              eq:
+                - ftc.has_tax
+                - const: false
+            then: ftc.no
+      cite:
+        doc: i1116
+        locator: 'p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t
+          apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This
+          election is available only if you meet all of the following conditions"'
+    - id: ftc.elect_if_tax
+      printed: (helper)
+      type: Bool
+      label: Whether the election without Form 1116 is made, asked only with foreign tax (false without foreign tax, where neither the election nor Form
+        1116 applies)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - ftc.has_tax
+                - const: true
+            then: ftc.elect
+          - guard:
+              op: test
+              eq:
+                - ftc.has_tax
+                - const: false
+            then: ftc.no
+      cite:
+        doc: i1116
+        locator: 'p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t
+          apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This
+          election is available only if you meet all of the following conditions"'
     - id: ftc.needs1116
       printed: (helper)
       type: Bool
@@ -122,19 +237,19 @@ form:
                   - ftc.limit
               - op: test
                 eq:
-                  - ftc.all_passive
+                  - ftc.all_passive_if_tax
                   - const: false
               - op: test
                 eq:
-                  - ftc.statements
+                  - ftc.statements_if_tax
                   - const: false
               - op: test
                 eq:
-                  - ftc.eligible
+                  - ftc.eligible_if_tax
                   - const: false
               - op: test
                 eq:
-                  - ftc.elect
+                  - ftc.elect_if_tax
                   - const: false
       cite:
         doc: i1116

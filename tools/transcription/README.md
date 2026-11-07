@@ -279,8 +279,8 @@ pending ones.
 ## Gate reviews
 
 A formal gate (`docs/2026-11-06_formal_gates_design.md`) is an input marked `gated_by: <gate line>` in the form
-data, whose gate line is a `choose` of the same document taking the input when its guard holds and a zero parameter
-otherwise; the build checks the convention (`engine/src/gates.ts`). `gates.py` groups gate lines by the one line their
+data, whose gate line is a `choose` of the same document taking the input when its guard holds and a parameter of the
+input's type otherwise (zero, false or an enum value, which the review prompt states); the build checks the convention (`engine/src/gates.ts`). `gates.py` groups gate lines by the one line their
 guards read, the gate's condition: an applicability or existence `Bool` the filer answers, or a condition computed
 from earlier answers. Each group is one review unit, keyed `gate:<condition>`. Two standing reviews judge each unit
 against the pages its lines cite, and both are logged by the unit's subject (`gates.subject`): the condition's line

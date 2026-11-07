@@ -18,6 +18,15 @@
    "context": "6a6f244373af557eca19fb3173d32efb79e8754c8aa633b459c224f77b85c93f"
   },
   {
+   "printed": "elect",
+   "restated": "Input — Elect the credit without Form 1116, with no carryover to or from this election year?",
+   "model": "IRS says: \"You can’t carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies (but carryovers to and from other years are unaffected).\" The restatement's \"no carryover to or from this election year\" is broader/different.",
+   "ruling": "Ruling: model error; project retained. i1116 p. 2, \"You can’t carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies (but carryovers to and from other years are unaffected)\". The question's \"with no carryover to or from this election year\" states exactly that consequence: no carryover of this year's taxes to or from other years; carryovers between other years are not touched by the wording. Unchanged by the gate round, which only asks the question after foreign tax above zero.",
+   "context": "351b61f157079e33f7c333e0cc4f0836c24ca5b02d02a80dffe190271573d899",
+   "date": "2026-11-07",
+   "run": "427727c44d0b096ee339d13996c6b304fed98a815ab3e013b208d9201e551453"
+  },
+  {
    "printed": "limited",
    "restated": "Enter the smaller of helper \"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7\" or f1040 line 16.",
    "model": "IRS line 20 regular tax is Form 1040 line 16 plus Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972; this uses only f1040 line 16.",
@@ -37,6 +46,15 @@
    "model": "IRS line 20 requires Form 1040 line 16 plus Schedule 2 line 1z 'less any tax included on line 16 from Form 4972' (and possible Form 8978 adjustment); the restatement only adds the two lines.",
    "ruling": "Ruling: scope; screens scope.other_line16 and scope.credits. i1116 p. 25, Line 20, \"Individuals. Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.\" and \"If you file Form 8978, Partner’s Additional Reporting Year Tax, you will need to increase or decrease the amount you report on Form 1116, line 20 ... If, after your adjustment, the amount of your tax is zero or less, enter -0- on Form 1116, line 20.\" The restatement is the BUG-0190 fix (round-1 F1): ftc.regular_tax = f1040.line16 + s2.line1z. The three omitted terms are refused. Form 4972: scope.other_line16 (\"... including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount ...\") refuses f1040.line16 and scope.ready, so no Form 4972 tax is in line 16 and nothing is subtracted. Form 8978: a positive amount is in line 16 and refused by the same screen; a negative one goes to Schedule 3 Part I and is refused by scope.credits (\"... any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)\", at f1040 lines 29 and 30). The zero floor applies only \"after your adjustment\"; without one, line 16 and line 1z are both NonNegDollars, so their sum is never below zero. The fix uses line 1z, not line 3, which agrees with the page (line 3 adds the alternative minimum tax, section 26(b)(2)). Regression stage18.ftc_limit_with_repayment evaluates to ftc.regular_tax $375.00, ftc.credit $200.00 and Form 1040 line 22 $175.00, the round-1 source values. No new error found.",
    "context": "cce77a446274d8b073a534c5cfae2041b606489009b1bebf28437dfbf4318e0b"
+  },
+  {
+   "printed": "regular_tax",
+   "restated": "Add f1040 line 16 and s2 line 1z.",
+   "model": "IRS says: \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.\" The restatement omits the Form 4972 subtraction.",
+   "ruling": "Ruling: scope; as the prior ruling and the Claude ruling of this round. i1116 p. 25, Line 20, \"less any tax included on line 16 from Form 4972\": Form 4972 tax is refused by scope.other_line16, so there is nothing to subtract on any return the tool completes.",
+   "context": "351b61f157079e33f7c333e0cc4f0836c24ca5b02d02a80dffe190271573d899",
+   "date": "2026-11-07",
+   "run": "427727c44d0b096ee339d13996c6b304fed98a815ab3e013b208d9201e551453"
   },
   {
    "printed": "taxes",

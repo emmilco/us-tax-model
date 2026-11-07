@@ -66,11 +66,29 @@
    "context": "1386054167d115015b836b860e06998f1f4b1bf06116bf87480b70de5ef20624"
   },
   {
+   "printed": "3",
+   "restated": "Choose — [helper \"Eligible individual on the first day of every month of 2025\" = true → helper \"Line 3 for an eligible individual all year\"] [helper \"Eligible individual on the first day of every month of 2025\" = false → helper \"Line 3 when not an eligible individual every month\"]",
+   "model": "The last-month-rule branch uses the actual coverage-change helper and can take the greater of the worksheet amount and the December 1 maximum. The IRS says that when the last-month rule applies, 'You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year,' so earlier family months cannot be combined with December self-only coverage to increase line 3.",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_last_month_change (owner ruling after Stage 11: keep rule 4) and amb.2025.hsa_last_month_all_year, as the prior DeepSeek ruling of this line. i8889 p. 4, Line 3, rule 2 (the December 1 coverage for the whole year under the last-month rule) against rule 4 (the greater of the worksheet and the December 1 maximum when the coverage type changed); the restatement applies the owner's reading. The gate round changed only f8889.use_last_month (December 1 coverage asked first), which gives the same value on every completed return.",
+   "context": "47b1e855f796deb3478ec2a63730ed9df3bf8435afbfc56265d07f27b0c40d57",
+   "date": "2026-11-07",
+   "run": "7eadcc13ca4fed5600666c28885db2c3c74b2cc18bdd28b35c62ae094491ce6d"
+  },
+  {
    "printed": "4",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "The IRS line says 'Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2' and to include spouse's Archer MSA contributions in family-coverage cases; the restatement always enters zero.",
    "ruling": "Ruling: scope; f8889 p. 1, line 4: \"Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2. If you or your spouse had family coverage under an HDHP at any time during 2025, also include any amount contributed to your spouse's Archer MSAs\". Every case with a nonzero line 4 is refused by f8889.unsupported, which since BUG-0236 asks about \"contributions by you or your employer to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, any contribution by anyone to your spouse's Archer MSA\"; the line's cite names the refusal. Zero is the value on every completed return.",
    "context": "6e0ce3fbedf9395d0661300a38d173855326834fc50e83310bba70f6918708bb"
+  },
+  {
+   "printed": "6",
+   "restated": "Choose — [helper \"Spouses with separate HSAs, treated as having family coverage at any time during 2025\" = true → helper \"Line 6 for spouses with separate HSAs: Step 3 plus Step 4\"] [helper \"Spouses with separate HSAs, treated as having family coverage at any time during 2025\" = false → line 5]",
+   "model": "The spouse-rule gate uses a treated-family helper that can be false when the last-month rule applies with December self-only coverage even if the filer actually had family HDHP coverage earlier in 2025. IRS line 6 applies if 'you and your spouse each have separate HSAs and had family coverage under an HDHP at any time during 2025,' so the restatement can wrongly enter line 5 instead of the line 6 spouse computation.",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_last_month_all_year (owner's reading 1, read by f8889.married_family): a filer who uses the last-month rule is treated as having the December 1 coverage for the whole year (i8889 p. 4, Line 3, rule 2, \"You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month\"), so earlier family months followed by December 1 self-only coverage are not family coverage under the rule. The restatement states this; project stands, as the prior rulings of line 7 on the same point.",
+   "context": "47b1e855f796deb3478ec2a63730ed9df3bf8435afbfc56265d07f27b0c40d57",
+   "date": "2026-11-07",
+   "run": "7eadcc13ca4fed5600666c28885db2c3c74b2cc18bdd28b35c62ae094491ce6d"
   },
   {
    "printed": "7",
@@ -85,6 +103,15 @@
    "model": "The IRS worksheet counts months where 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month,' but the program uses the general number of eligible months, overstating line 7 when family coverage exists only part of the year.",
    "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted after Stage 13). The model reads \"number of months eligible\" as only the months of family coverage and says the restatement overstates line 7 when family coverage did not last all year. i8889 p. 7, Additional Contribution Amount Worksheet: \"1. $1,000 × number of months eligible\"; the English states the project's chosen reading (every month treated as eligible) accurately. Under the model's reading the $1,000 for the self-only months would be lost, since i8889 p. 5, Line 3, Note says \"If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\", the register's reason. Same model reading as round 2.",
    "context": "f1a41d42596ab807ff84c3526be2fc5ecba466a1a3ce5e08910eb5f0b5b10753"
+  },
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = true → helper \"Additional Contribution Amount Worksheet, line 2: divide line 1 by 12\"] [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The line 7 applicability test uses the same treated-family helper and can deny line 7 when the last-month rule applies with December self-only coverage despite actual family coverage earlier in the year. The IRS form says line 7 applies if you were age 55 or older, married, and 'you or your spouse had family coverage under an HDHP at any time during 2025.'",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_last_month_all_year (owner's reading 1, read by f8889.married_family and line 7), as the prior DeepSeek ruling of this line: under the last-month rule the December 1 coverage holds for the whole year (i8889 p. 4, Line 3, rule 2), so earlier family months followed by December 1 self-only coverage are not family coverage under the rule; that filer's $1,000 is on line 3. Project stands.",
+   "context": "47b1e855f796deb3478ec2a63730ed9df3bf8435afbfc56265d07f27b0c40d57",
+   "date": "2026-11-07",
+   "run": "7eadcc13ca4fed5600666c28885db2c3c74b2cc18bdd28b35c62ae094491ce6d"
   },
   {
    "printed": "7",

@@ -818,6 +818,11 @@ bank:
   - input: f8962.fpl_table
     order: 10
     help: Married filing separately and unsupported items are refused with citations.
+    value_labels:
+      contiguous: Neither of you lived in Alaska or Hawaii during 2025 (the 48 contiguous states and the District of
+        Columbia)
+      alaska: You, or your spouse on a joint return, lived in Alaska during 2025
+      hawaii: Either of you lived in Hawaii during 2025, and neither of you in Alaska
   - input: f8863.paid
     order: 10
     help: Married filing separately and unsupported items are refused with citations.

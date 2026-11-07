@@ -4,7 +4,8 @@
 //
 //   no-input-set      the interview data sets no input value: every profile's `initial` is empty (the three
 //                     single-filer slice profiles' fixed filer, pinned below, excepted); each roster choice's label
-//                     maps to exactly one value; no interview target reads a gated input; and replaying a log yields
+//                     maps to exactly one value, and each enum value label to exactly one value of its enum; no
+//                     interview target reads a gated input; and replaying a log yields
 //                     only answers its events gave, at their last value
 //   order             the same answers in a different order give the same status and values: each walk's answers
 //                     replayed reversed and in a seeded shuffle, and the same answers given by a seeded random
@@ -31,7 +32,7 @@ import { Worker } from "node:worker_threads";
 import fc from "fast-check";
 import { mapPool, poolSize } from "./pool.js";
 import { loadCanonical } from "./canonical.js";
-import { interviewStatus, loadInterview, questionTemplate, replay, type InterviewData } from "./interview.js";
+import { entryHint, inputMeta, interviewStatus, loadInterview, questionTemplate, replay, type InterviewData } from "./interview.js";
 import { evaluate } from "./eval.js";
 import { gateProblems } from "./gates.js";
 import { nyReturnArbitrary, sampleReturns } from "./generate.js";
@@ -133,6 +134,12 @@ export function staticProblems(data: CanonicalData, configs: Record<string, Inte
     const initial = JSON.stringify(c.initial);
     if (Object.keys(c.initial).length && initial !== INITIAL_ALLOWED[p]) errors.push(`no-input-set: profile ${p}: initial ${initial} sets input values; the interview sets none`);
     for (const q of c.questions) {
+      if (q.value_labels) {
+        const meta = inputMeta(data, q.input);
+        const texts = Object.values(q.value_labels);
+        if (new Set(texts).size !== texts.length) errors.push(`no-input-set: ${p} ${q.input}: two values share a label`);
+        if (JSON.stringify(Object.keys(q.value_labels).sort()) !== JSON.stringify([...(meta.values ?? [])].sort())) errors.push(`no-input-set: ${p} ${q.input}: the value labels are not one per value of the enum`);
+      }
       if (!q.choices) continue;
       const labels = q.choices.map((ch) => ch.label);
       const values = q.choices.map((ch) => JSON.stringify([...ch.value].sort()));
@@ -363,12 +370,18 @@ function selfTest(): number {
   const choices = (c: Record<string, InterviewData>) => c["full"]!.questions.find((q) => q.choices)!.choices!;
   assert.match(planted((c) => { const ch = choices(c); ch[1]!.label = ch[0]!.label; }), /two choices share a label/);
   assert.match(planted((c) => { const ch = choices(c); ch[1]!.value = [...ch[0]!.value]; ch[1]!.labels = { ...ch[0]!.labels }; }), /two choices give the same value/);
+  const labelled = (c: Record<string, InterviewData>) => c["full"]!.questions.find((q) => q.value_labels)!.value_labels!;
+  assert.match(planted((c) => { const l = labelled(c); const [a, b] = Object.keys(l); l[b!] = l[a!]!; }), /two values share a label/);
+  assert.match(planted((c) => { const l = labelled(c); delete l[Object.keys(l)[0]!]; }), /value labels are not one per value/);
+  const lq = configs["full"]!.questions.find((q) => q.value_labels)!;
+  const hint = entryHint(data, lq.input, undefined, lq.value_labels);
+  for (const [v, label] of Object.entries(lq.value_labels!)) assert.ok(hint.includes(`${JSON.stringify(v)} (${label})`), `the entry hint names ${v} with its label: ${hint}`);
   const config = configs["full"]!;
   assert.equal(onlyGiven(config, [{ input: "a.x", value: 1 }, { input: "a.x", value: 2 }]), null);
   assert.deepEqual(replayed(config, [{ input: "a.x", value: 1 }, { input: "a.x", value: 2 }]), { "a.x": 2 });
   assert.deepEqual(leakProblems(new Map([["p.a", "case 1"]]), { "p.a": "held" }), []);
   assert.match(leakProblems(new Map([["p.a", "case 1"], ["p.b", "case 2"]]), { "p.a": "held" }).join("\n"), /case 2: reported complete while p\.b is reachable/);
   assert.match(leakProblems(new Map(), { "p.a": "held" }).join("\n"), /p\.a no longer leaks/);
-  console.log("interview-rules self-test: 10 cases passed (profile initial, roster choices, replay, early-completion baseline)");
+  console.log("interview-rules self-test: 13 cases passed (profile initial, roster choices, value labels and their entry hint, replay, early-completion baseline)");
   return 0;
 }

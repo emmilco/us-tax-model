@@ -617,35 +617,124 @@ form:
     cite:
       doc: f8880
       locator: 'p. 1, "(a) You", "(b) Your spouse", "Add lines 1 and 2" (line 3, both columns), "Add the amounts on line 6. If zero, stop; you can’t take this credit" (line 7: with no contributions in either column, line 7 is zero)'
-  - id: f8880.can_take
+  - id: f8880.no
     printed: (helper)
-    label: 'The credit is figured: contributions in a column (with none, line 7 is zero), line 8 not more than the limit
-      (so line 9 is not zero), the Credit Limit Worksheet line 3 more than zero, and line 7 more than zero'
+    label: Year parameter savers.no_credit (false)
+    type: Bool
+    expr:
+      op: param
+      ref: savers.no_credit
+    cite:
+      doc: f8880
+      locator: 'p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"'
+  - id: f8880.within_limit
+    printed: (helper)
+    label: Line 8 (Form 1040 line 11a) is not more than the limit for the filing status
     type: Bool
     expr:
       op: test
-      all:
-      - op: test
-        gt:
-        - f8880.line3_total
-        - param: sales.zero
-      - op: test
-        le:
-        - f8880.line8
-        - f8880.agi_limit
-      - op: test
-        gt:
-        - f8880.clw3
-        - param: sales.zero
-      - op: test
-        gt:
-        - f8880.line7
-        - param: sales.zero
+      le:
+      - f8880.line8
+      - f8880.agi_limit
     cite:
       doc: f8880
-      locator: 'Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit", and line 9, "Note: If line 9 is zero,
-        stop; you can’t take this credit"; p. 1, Caution; p. 2, Credit Limit Worksheet, "But if zero or less, stop; you can’t
-        take the credit—don’t file this form"'
+      locator: 'p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; p. 1, Caution, "line 11a, is more than $39,500"'
+  - id: f8880.clw_room
+    printed: (helper)
+    label: The Credit Limit Worksheet line 3 is more than zero
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8880.clw3
+      - param: sales.zero
+    cite:
+      doc: f8880
+      locator: 'p. 2, Credit Limit Worksheet, "But if zero or less, stop", "you can’t take the credit—don’t file this form"'
+  - id: f8880.has_contrib
+    printed: (helper)
+    label: Contributions in a column (line 3, columns (a) and (b) together, more than zero)
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8880.line3_total
+      - param: sales.zero
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit" (with no contributions in either column,
+        line 7 is zero)'
+  - id: f8880.can_take_tax
+    printed: (helper)
+    label: 'With contributions and line 8 within the limit: the Credit Limit Worksheet line 3 more than zero, then line 7
+      more than zero'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8880.clw_room
+          - const: true
+        then: f8880.past7
+      - guard:
+          op: test
+          eq:
+          - f8880.clw_room
+          - const: false
+        then: f8880.no
+    cite:
+      doc: f8880
+      locator: 'p. 2, Credit Limit Worksheet, "But if zero or less, stop", "you can’t take the credit—don’t file this form"'
+  - id: f8880.can_take_agi
+    printed: (helper)
+    label: 'With contributions in a column: line 8 not more than the limit, then the Credit Limit Worksheet line 3 more
+      than zero, then line 7 more than zero'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8880.within_limit
+          - const: true
+        then: f8880.can_take_tax
+      - guard:
+          op: test
+          eq:
+          - f8880.within_limit
+          - const: false
+        then: f8880.no
+    cite:
+      doc: f8880
+      locator: 'p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; p. 1, Caution, "line 11a, is more than $39,500"; line 9, "Note: If line 9 is zero, stop; you can’t take this credit"'
+  - id: f8880.can_take
+    printed: (helper)
+    label: 'The credit is figured, in the form''s order: contributions in a column (with none, line 7 is zero), then line
+      8 not more than the limit (so line 9 is not zero), then the Credit Limit Worksheet line 3 more than zero, then line
+      7 more than zero (each column''s eligibility is asked before its line 6)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8880.has_contrib
+          - const: true
+        then: f8880.can_take_agi
+      - guard:
+          op: test
+          eq:
+          - f8880.has_contrib
+          - const: false
+        then: f8880.no
+    cite:
+      doc: f8880
+      locator: 'p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; p. 1, Caution, "line 11a, is more than $39,500"; Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit", and line 9, "Note: If line 9
+        is zero, stop; you can’t take this credit"; p. 2, Credit Limit Worksheet, "But if zero or less, stop"'
   - id: f8880.line12_figured
     printed: (helper)
     label: The smaller of line 10 or line 11

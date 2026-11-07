@@ -22,14 +22,14 @@ Review these renderings line by line against the archived IRS sources in `source
 | f5695.md | form | 142 |
 | f8606.md | form | 6 |
 | f8863.md | form | 45 |
-| f8880.md | form | 42 |
-| f8889.md | form | 100 |
+| f8880.md | form | 48 |
+| f8889.md | form | 101 |
 | f8959.md | form | 26 |
 | f8960.md | form | 34 |
 | f8962.md | form | 160 |
 | f8995.md | form | 18 |
 | f8995a.md | form | 14 |
-| ftc.md | form | 12 |
+| ftc.md | form | 17 |
 | g28.md | form | 9 |
 | gift.md | form | 5 |
 | household.md | form | 48 |

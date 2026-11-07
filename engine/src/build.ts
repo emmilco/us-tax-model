@@ -43,7 +43,7 @@ const NY_TABLES_DIR = nyPath("tables");
 const NY_PARAMS_PATH = join(ROOT, "params", "ny", `${YEAR}.yaml`);
 const NY_REGISTER_PATH = join(ROOT, "ambiguities", "ny", `${YEAR}.yaml`);
 
-interface BankQuestion { input: string; order: number; help?: string; prompt?: string; cite?: CiteAuthored; choices?: RosterChoice[] }
+interface BankQuestion { input: string; order: number; help?: string; prompt?: string; cite?: CiteAuthored; choices?: RosterChoice[]; value_labels?: Record<string, string> }
 interface QuestionBank { tax_year: number; frames: Record<string, string>; questions: BankQuestion[] }
 interface InterviewProfile { tax_year: number; targets: string[]; initial: InterviewData["initial"]; cite: CiteAuthored; questions: string[] | "all"; questions_from?: string; targets_from?: string }
 
@@ -274,7 +274,25 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
         && new Set(c.value).size === c.value.length && stableStringify(Object.keys(c.labels ?? {}).sort()) === stableStringify([...c.value].sort()));
       if (!ok) errors.push(`${where}: choices must be a roster's, at least two, each a label, distinct entry keys and a label for each key`);
     }
-    return { input: q.input, prompt, help: q.help ?? "", order: q.order, cite: cite!, ...(q.choices ? { choices: q.choices } : {}) };
+    // Value labels present an enum input's values as the facts they stand for; each label names exactly one value,
+    // every value has one, and the answer is still the value.
+    if (q.value_labels !== undefined) {
+      const line = forms.flatMap((d) => d.lines).find((l) => l.id === q.input && l.expr.op === "input");
+      const enumName = /^Enum\(([a-z_]+)\)$/.exec(line?.type ?? "")?.[1];
+      const values = enumName ? (params.enums[enumName] ?? nyParams?.enums[enumName])?.values : undefined;
+      const labels = q.value_labels && typeof q.value_labels === "object" && !Array.isArray(q.value_labels) ? q.value_labels : null;
+      if (!values) errors.push(`${where}: value_labels are for an enum input`);
+      else if (!labels || stableStringify(Object.keys(labels).sort()) !== stableStringify([...values].sort())) {
+        errors.push(`${where}: value_labels must label every value of the enum (${values.join(", ")}) and no other`);
+      } else {
+        const texts = Object.values(labels);
+        if (texts.some((t) => typeof t !== "string" || t.trim() === "" || t.includes("\n"))) errors.push(`${where}: each value label is one non-empty line`);
+        else if (new Set(texts).size !== texts.length) errors.push(`${where}: two values share a label; each label maps to exactly one value`);
+        for (const t of texts) { const syntax = typeof t === "string" ? entrySyntax(t) : null; if (syntax) errors.push(`${where}: a value label states entry syntax (${syntax})`); }
+      }
+    }
+    return { input: q.input, prompt, help: q.help ?? "", order: q.order, cite: cite!, ...(q.choices ? { choices: q.choices } : {}),
+      ...(q.value_labels ? { value_labels: q.value_labels } : {}) };
   };
   const resolved = new Map(bank.questions.flatMap((q) => { const r = resolveQuestion(q); return r ? [[q.input, r] as const] : []; }));
   const loadProfile = (file: string, name: string): InterviewData => {

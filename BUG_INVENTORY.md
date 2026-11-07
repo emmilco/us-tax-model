@@ -6127,3 +6127,11 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Tool change:** a stale optional log fails only when it would earn credit if it were current: `compare_families.eligible_when_current` drops the blockers a change since the review causes (stale subject, stale source snapshot, a target the log never judged, a changed foreign input's wording) and the log is eligible when none remain. Otherwise it is printed as stale-ineligible, with its staleness and the blockers that remain, and does not fail. Required-family logs are unchanged.
 - **Validation:** `test_review_tools.py` `OptionalStaleLogs` (in check-all: review_tools): stale and ineligible passes and is reported; stale and eligible when current fails; current and ineligible passes; a stale required log fails.
 - **Tags:** review-tools; check_logs; owner decision; tool change
+
+## BUG-0443 — f8889.medical does not say that items not deductible on Schedule A but qualified for HSA purposes count on line 15
+
+- **Caught by:** the f8889 completeness review rerun in gate round 1, 2026-11-07 (f8889#1).
+- **Source:** i8889 p. 2, Qualified Medical Expenses ("Even though nonprescription medicines (other than insulin) do not qualify for the medical and dental expenses deduction, they do qualify as expenses for HSA purposes."; menstrual care products; condoms; COVID-19 personal protective equipment).
+- **Symptom:** the line 15 question lists the premium limits but not these inclusions, so a filer reading qualified medical expenses as Schedule A expenses can leave them out of line 15 and overstate line 16. Pre-existing; the gate round changed only f8889.use_last_month.
+- **Disposition:** open, low: name the inclusions in the f8889.medical question at the form's next substantive change; rerun the f8889 reviews.
+- **Tags:** completeness; f8889; open

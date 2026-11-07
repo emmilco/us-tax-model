@@ -172,6 +172,61 @@
    "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
   },
   {
+   "case": "classm.f8880.3",
+   "printed": "2(b)",
+   "project": "$15,497.00",
+   "model": "$30,994.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The model counts the person's elective deferrals twice (\"$15,497 + $15,497\"), though their Forms W-2 box 12 amounts total that sum once (Form 8880 line 2), and it takes line 6 for a column whose person was born after January 1, 2008 (person[spouse].sav_born false), against f8880 p. 2, Who Can Take This Credit, and amb.2025.savers_ineligible_column (an ineligible person's own column is zero on line 6). Claude's class M of this round agrees with the project on lines 6 and 7.",
+   "drop": true,
+   "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
+   "date": "2026-11-07",
+   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9"
+  },
+  {
+   "case": "classm.f8880.3",
+   "printed": "3(b)",
+   "project": "$15,497.00",
+   "model": "$30,994.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The model counts the person's elective deferrals twice (\"$15,497 + $15,497\"), though their Forms W-2 box 12 amounts total that sum once (Form 8880 line 2), and it takes line 6 for a column whose person was born after January 1, 2008 (person[spouse].sav_born false), against f8880 p. 2, Who Can Take This Credit, and amb.2025.savers_ineligible_column (an ineligible person's own column is zero on line 6). Claude's class M of this round agrees with the project on lines 6 and 7.",
+   "drop": true,
+   "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
+   "date": "2026-11-07",
+   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9"
+  },
+  {
+   "case": "classm.f8880.3",
+   "printed": "5(b)",
+   "project": "$15,497.00",
+   "model": "$30,994.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The model counts the person's elective deferrals twice (\"$15,497 + $15,497\"), though their Forms W-2 box 12 amounts total that sum once (Form 8880 line 2), and it takes line 6 for a column whose person was born after January 1, 2008 (person[spouse].sav_born false), against f8880 p. 2, Who Can Take This Credit, and amb.2025.savers_ineligible_column (an ineligible person's own column is zero on line 6). Claude's class M of this round agrees with the project on lines 6 and 7.",
+   "drop": true,
+   "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
+   "date": "2026-11-07",
+   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9"
+  },
+  {
+   "case": "classm.f8880.3",
+   "printed": "6(b)",
+   "project": "$0.00",
+   "model": "$2,000.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The model counts the person's elective deferrals twice (\"$15,497 + $15,497\"), though their Forms W-2 box 12 amounts total that sum once (Form 8880 line 2), and it takes line 6 for a column whose person was born after January 1, 2008 (person[spouse].sav_born false), against f8880 p. 2, Who Can Take This Credit, and amb.2025.savers_ineligible_column (an ineligible person's own column is zero on line 6). Claude's class M of this round agrees with the project on lines 6 and 7.",
+   "drop": true,
+   "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
+   "date": "2026-11-07",
+   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9"
+  },
+  {
+   "case": "classm.f8880.3",
+   "printed": "7",
+   "project": "$0.00",
+   "model": "$2,000.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The model counts the person's elective deferrals twice (\"$15,497 + $15,497\"), though their Forms W-2 box 12 amounts total that sum once (Form 8880 line 2), and it takes line 6 for a column whose person was born after January 1, 2008 (person[spouse].sav_born false), against f8880 p. 2, Who Can Take This Credit, and amb.2025.savers_ineligible_column (an ineligible person's own column is zero on line 6). Claude's class M of this round agrees with the project on lines 6 and 7.",
+   "drop": true,
+   "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
+   "date": "2026-11-07",
+   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9"
+  },
+  {
    "case": "classm.f8880.4",
    "printed": "1(b)",
    "project": "$665.00",
@@ -179,6 +234,28 @@
    "ruling": "Ruling: model error; model value dropped from the fixture. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution. The model's work, \"Spouse line 1 entries: 665.00 + 665.00 = 1330.00\", counts the one $665.00 contribution twice; f8880 p. 1, line 1, \"Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2025\", is that one contribution. The project's $665.00 is right on its reading (amb.2025.savers_ineligible_column puts the ineligible spouse's zero on line 6(b)).",
    "drop": true,
    "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "2(a)",
+   "project": "$3,767.00",
+   "model": "$7,534.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The model counts the person's elective deferrals twice (\"$3,767.00 + $3,767.00\"), though their Forms W-2 box 12 amounts total that sum once (Form 8880 line 2), and it takes line 6 for a column whose person was born after January 1, 2008 (person[taxpayer].sav_born false), against f8880 p. 2, Who Can Take This Credit, and amb.2025.savers_ineligible_column (an ineligible person's own column is zero on line 6). Claude's class M of this round agrees with the project on lines 6 and 7.",
+   "drop": true,
+   "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
+   "date": "2026-11-07",
+   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "3(a)",
+   "project": "$3,767.00",
+   "model": "$7,534.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The model counts the person's elective deferrals twice (\"$3,767.00 + $3,767.00\"), though their Forms W-2 box 12 amounts total that sum once (Form 8880 line 2), and it takes line 6 for a column whose person was born after January 1, 2008 (person[taxpayer].sav_born false), against f8880 p. 2, Who Can Take This Credit, and amb.2025.savers_ineligible_column (an ineligible person's own column is zero on line 6). Claude's class M of this round agrees with the project on lines 6 and 7.",
+   "drop": true,
+   "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
+   "date": "2026-11-07",
+   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c"
   },
   {
    "case": "classm.f8880.4",
@@ -191,12 +268,34 @@
   },
   {
    "case": "classm.f8880.4",
+   "printed": "5(a)",
+   "project": "$3,767.00",
+   "model": "$7,534.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The model counts the person's elective deferrals twice (\"$3,767.00 + $3,767.00\"), though their Forms W-2 box 12 amounts total that sum once (Form 8880 line 2), and it takes line 6 for a column whose person was born after January 1, 2008 (person[taxpayer].sav_born false), against f8880 p. 2, Who Can Take This Credit, and amb.2025.savers_ineligible_column (an ineligible person's own column is zero on line 6). Claude's class M of this round agrees with the project on lines 6 and 7.",
+   "drop": true,
+   "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
+   "date": "2026-11-07",
+   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c"
+  },
+  {
+   "case": "classm.f8880.4",
    "printed": "5(b)",
    "project": "$665.00",
    "model": "$1,330.00",
    "ruling": "Ruling: model error; model value dropped from the fixture. Inherits the double count on line 1(b) (1,330.00 - 0.00); project 665.00. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
    "drop": true,
    "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "6(a)",
+   "project": "$0.00",
+   "model": "$2,000.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The model counts the person's elective deferrals twice (\"$3,767.00 + $3,767.00\"), though their Forms W-2 box 12 amounts total that sum once (Form 8880 line 2), and it takes line 6 for a column whose person was born after January 1, 2008 (person[taxpayer].sav_born false), against f8880 p. 2, Who Can Take This Credit, and amb.2025.savers_ineligible_column (an ineligible person's own column is zero on line 6). Claude's class M of this round agrees with the project on lines 6 and 7.",
+   "drop": true,
+   "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
+   "date": "2026-11-07",
+   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c"
   },
   {
    "case": "classm.f8880.4",
@@ -215,6 +314,17 @@
    "ruling": "Ruling: model error; model value dropped from the fixture. Inherits line 6(b): with the spouse ineligible under the Caution (f8880 p. 1, \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008\") and no taxpayer contribution, line 7 is $0.00 (\"If zero, stop; you can’t take this credit\"), as the project has. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
    "drop": true,
    "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+  },
+  {
+   "case": "classm.f8880.4",
+   "printed": "7",
+   "project": "$0.00",
+   "model": "$2,000.00",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The model counts the person's elective deferrals twice (\"$3,767.00 + $3,767.00\"), though their Forms W-2 box 12 amounts total that sum once (Form 8880 line 2), and it takes line 6 for a column whose person was born after January 1, 2008 (person[taxpayer].sav_born false), against f8880 p. 2, Who Can Take This Credit, and amb.2025.savers_ineligible_column (an ineligible person's own column is zero on line 6). Claude's class M of this round agrees with the project on lines 6 and 7.",
+   "drop": true,
+   "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
+   "date": "2026-11-07",
+   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c"
   }
  ]
 }

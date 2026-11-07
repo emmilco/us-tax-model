@@ -556,6 +556,48 @@ export function unknownGuardSelfTest(): string[] {
   return problems;
 }
 
+// Self-test of the reasoning through a Bool or enum choose: a form with an enum input E (a, b, c), a Bool input y,
+// a false parameter, the gate G = choose[E = a -> false, E = b -> y, E = c -> y] and the enum choose K =
+// choose[y = true -> E, y = false -> the parameter a]. G true settles E not a and y true, and implies E != a; G false
+// settles neither; E = a settles G false; y true and E = b settle K to b, and K = b with y false is impossible, so K = b
+// settles y true. Each fact is also checked against the evaluator on every complete answer.
+export function scalarChooseSelfTest(): string[] {
+  const cite = { doc: "t", locator: "t" };
+  const line = (id: string, type: string, expr: unknown) => ({ id: `t.${id}`, printed: "(helper)", label: id, type, expr, cite });
+  const eqc = (r: string, c: unknown) => ({ op: "test", eq: [`t.${r}`, { const: c }] });
+  const data = { tax_year: YEAR, forms: [{ id: "t", kind: "form", tax_year: YEAR, title: "t", lines: [
+    line("E", "Enum(tv)", { op: "input", source: "E" }), line("y", "Bool", { op: "input", source: "y" }),
+    line("no", "Bool", { op: "param", ref: "t.no" }), line("ea", "Enum(tv)", { op: "param", ref: "t.a" }),
+    line("G", "Bool", { op: "choose", alternatives: [{ guard: eqc("E", "a"), then: "t.no" }, { guard: eqc("E", "b"), then: "t.y" }, { guard: eqc("E", "c"), then: "t.y" }] }),
+    line("K", "Enum(tv)", { op: "choose", alternatives: [{ guard: eqc("y", true), then: "t.E" }, { guard: eqc("y", false), then: "t.ea" }] })] }],
+    defs: [], tables: [], register: { entries: [] },
+    params: { tax_year: YEAR, values: { "t.no": { type: "Bool", value: false }, "t.a": { type: "Enum(tv)", value: "a" } }, enums: { tv: { values: ["a", "b", "c"] } } } } as unknown as CanonicalData;
+  const problems: string[] = [];
+  const want = (what: string, got: unknown, expected: unknown) => { if (got !== expected) problems.push(`${what}: ${String(got)}, expected ${String(expected)}`); };
+  const gTrue = guardFacts(data, eqc("G", true));
+  want("G true settles E = a", decides(eqc("E", "a"), gTrue), false);
+  want("G true settles y", decides(eqc("y", true), gTrue), true);
+  want("G true implies E != a", testImplies(data, eqc("G", true), { op: "test", ne: ["t.E", { const: "a" }] }), true);
+  const gFalse = guardFacts(data, eqc("G", false));
+  want("G false leaves E = a open", decides(eqc("E", "a"), gFalse), undefined);
+  want("G false leaves y open", decides(eqc("y", true), gFalse), undefined);
+  want("E = a settles G", decides(eqc("G", true), guardFacts(data, eqc("E", "a"))), false);
+  want("E = b alone leaves G open", decides(eqc("G", true), guardFacts(data, eqc("E", "b"))), undefined);
+  const yb = guardFacts(data, { op: "test", all: [eqc("y", true), eqc("E", "b")] });
+  want("y true and E = b settle K = b", decides(eqc("K", "b"), yb), true);
+  want("K = b settles y", decides(eqc("y", true), guardFacts(data, eqc("K", "b"))), true);
+  want("K = a leaves y open", decides(eqc("y", true), guardFacts(data, eqc("K", "a"))), undefined);
+  // Every settled fact holds in the evaluator on every complete answer where its premise holds.
+  for (const e of ["a", "b", "c"]) for (const y of [true, false]) {
+    const vals = evaluate(data, { "t.E": e, "t.y": y } as never, ["t.G", "t.K"]).values;
+    const g = (vals.get("t.G") as { value?: unknown })?.value, k = (vals.get("t.K") as { value?: unknown })?.value;
+    if (g === true && (e === "a" || y !== true)) problems.push(`the evaluator gives G true at E = ${e}, y = ${y}`);
+    if (k === "b" && y !== true) problems.push(`the evaluator gives K = b at y = ${y}`);
+    if (e === "a" && g !== false) problems.push(`the evaluator gives G ${String(g)} at E = a`);
+  }
+  return problems;
+}
+
 // Self-test of path dominance through `refusalsSame`: on a synthetic form, a helper H reads a gated figure (a
 // choice on flag f between the figure and $0) and a printed line takes, on f true, a choice that reads H in its
 // guards. Replacing H's operand by the figure must not be accepted as a guarded figure: where f is unanswered the
@@ -646,9 +688,26 @@ function readerSteps(data: CanonicalData, id: string): ReaderStep[] {
   return index.get(id) ?? [];
 }
 
+// A Bool or enum line that is a choose whose alternatives are all lines: each alternative's guard, the line it
+// takes, and, where that line is a parameter (a gate's else), the parameter's value. The line's value, where it is
+// complete, is the value of the alternative taken, the first whose guard is true (spec 4.7.3); so a value v of the
+// line means some alternative that can give v (a line, or a parameter equal to v) was taken, its guard true.
+type ScalarAlt = { guard: unknown; then: string; fixed?: boolean | string };
+function scalarChoose(data: CanonicalData, id: string): ScalarAlt[] | undefined {
+  const l = findLine(data, id);
+  if (!l || !(l.type === "Bool" || l.type.startsWith("Enum(")) || l.expr.op !== "choose") return undefined;
+  const alts = l.expr.alternatives as { guard: unknown; then: unknown }[];
+  if (!alts.every((a) => typeof a.then === "string")) return undefined;
+  return alts.map((a) => {
+    const n = normalizeChain(data, a.then as string) as { parameter?: unknown };
+    return { guard: a.guard, then: a.then as string, ...(typeof n.parameter === "boolean" || typeof n.parameter === "string" ? { fixed: n.parameter } : {}) };
+  });
+}
+
 // Whether test g, known true, makes test c true: the same test; eq(x, v) against ne(x, w) with
-// constants v and w different; a conjunct of an all-test; or eq(G, true) for an ungated test line G
-// whose own test does.
+// constants v and w different; a conjunct of an all-test; eq(G, true) for an ungated test line G
+// whose own test does; or eq(G, true) for an ungated Bool choose G (scalarChoose) where every
+// alternative that can give true has a guard that does, or takes a line L for which eq(L, true) does.
 function testImplies(data: CanonicalData, g: unknown, c: unknown, depth = 0): boolean {
   if (depth > 8) return false;
   if (stableStringify(g) === stableStringify(c)) return true;
@@ -660,6 +719,12 @@ function testImplies(data: CanonicalData, g: unknown, c: unknown, depth = 0): bo
   if (Array.isArray(gt.eq) && typeof gt.eq[0] === "string" && stableStringify(gt.eq[1]) === stableStringify({ const: true })) {
     const line = findLine(data, gt.eq[0]);
     if (line && !(line.refuses ?? []).length && line.expr.op === "test") return testImplies(data, line.expr, c, depth + 1);
+    const alts = line && line.type === "Bool" && !(line.refuses ?? []).length ? scalarChoose(data, line.id) : undefined;
+    if (alts) {
+      const possible = alts.filter((a) => a.fixed !== false);
+      return possible.length > 0 && possible.every((a) => testImplies(data, a.guard, c, depth + 1)
+        || (a.fixed === undefined && testImplies(data, { op: "test", eq: [a.then, { const: true }] }, c, depth + 1)));
+    }
   }
   return false;
 }
@@ -670,7 +735,13 @@ function flagHolds(data: CanonicalData, facts: unknown[][], flag: string): boole
   const implied = (c: unknown): boolean => facts.some((fact) => fact.every((g) => testImplies(data, g, c)));
   if (implied({ op: "test", eq: [flag, { const: true }] })) return true;
   const f = findLine(data, flag);
-  if (!f || (f.refuses ?? []).length || f.expr.op !== "test") return false;
+  if (!f || (f.refuses ?? []).length) return false;
+  // An ungated Bool choose: the facts of single-guard steps, together, settle it true (decides).
+  if (f.type === "Bool" && scalarChoose(data, flag)) {
+    const single = facts.filter((fact) => fact.length === 1).map((fact) => fact[0]);
+    return single.length > 0 && decides({ op: "test", eq: [flag, { const: true }] }, guardFacts(data, { op: "test", all: single })) === true;
+  }
+  if (f.expr.op !== "test") return false;
   const conjuncts = Array.isArray((f.expr as { all?: unknown[] }).all) ? (f.expr as { all: unknown[] }).all : [f.expr];
   return conjuncts.length > 0 && conjuncts.every(implied);
 }
@@ -836,6 +907,28 @@ function addTest(facts: GuardFacts, t: unknown, truth: boolean, depth: number): 
     // eq(F, v) true, or ne(F, v) false, means F is v; the other two mean F is not v.
     addTest(facts, flag.expr, ((cmp.key === "eq") === truth) === cmp.v, depth + 1);
   }
+  // A Bool or enum choose with a settled value (eq or ne against a constant): the alternative taken can give that
+  // value (or, for "not v", a value other than v). With one such alternative its guard held and, for a line, the line
+  // compares the same way; with several taking one line, that line does; with several whose guards each test one
+  // enum line E against a value, E is complete and has none of the other values of its enum.
+  const alts = flag && (cmp.key === "eq" || cmp.key === "ne") && (typeof cmp.v === "boolean" || typeof cmp.v === "string") ? scalarChoose(facts.data, flag.id) : undefined;
+  if (alts) {
+    const is = (cmp.key === "eq") === truth;
+    const possible = alts.filter((a) => a.fixed === undefined || (a.fixed === cmp.v) === is);
+    const same = (then: string): unknown => ({ op: "test", [is ? "eq" : "ne"]: [then, { const: cmp.v }] });
+    if (possible.length === 1) {
+      addTest(facts, possible[0]!.guard, true, depth + 1);
+      if (possible[0]!.fixed === undefined) addTest(facts, same(possible[0]!.then), true, depth + 1);
+    } else if (possible.length > 1) {
+      if (possible.every((a) => a.fixed === undefined && a.then === possible[0]!.then)) addTest(facts, same(possible[0]!.then), true, depth + 1);
+      const eqs = possible.map((a) => comparison(facts.data, a.guard));
+      const e0 = eqs[0]?.line, ty = e0 ? findLine(facts.data, e0)?.type ?? "" : "";
+      if (e0 && ty.startsWith("Enum(") && eqs.every((c) => c?.key === "eq" && c.line === e0 && typeof c.v === "string")) {
+        const taken = new Set(eqs.map((c) => c!.v as string));
+        for (const v of facts.data.params.enums[ty.slice(5, -1)]?.values ?? []) if (!taken.has(v)) addComparison(facts, "ne", e0, v, false, true);
+      }
+    }
+  }
 }
 
 // A settled comparison of two lines, neither a count (so no lower bound can settle it early): both lines
@@ -895,6 +988,17 @@ function decides(t: unknown, facts: GuardFacts, depth = 0): boolean | undefined 
     if (flag && !(flag.refuses ?? []).length && flag.expr.op === "test" && typeof v === "boolean" && (cmp.key === "eq" || cmp.key === "ne")) {
       const fv = decides(flag.expr, facts, depth + 1);
       return fv === undefined ? undefined : (cmp.key === "eq") === (fv === v);
+    }
+    // An ungated Bool or enum choose: its guards settled in order up to the first true one, and that
+    // alternative's value settled (a parameter's, or the comparison of the line it takes).
+    const alts = flag && !(flag.refuses ?? []).length && (typeof v === "boolean" || typeof v === "string") && (cmp.key === "eq" || cmp.key === "ne")
+      ? scalarChoose(facts.data, cmp.line) : undefined;
+    for (const a of alts ?? []) {
+      const g = decides(a.guard, facts, depth + 1);
+      if (g === undefined) return undefined;
+      if (!g) continue;
+      if (a.fixed !== undefined) return (cmp.key === "eq") === (a.fixed === v);
+      return decides({ op: "test", [cmp.key]: [a.then, { const: v }] }, facts, depth + 1);
     }
     return undefined;
   }
@@ -985,7 +1089,7 @@ function settledBranch(data: CanonicalData, mutation: Mutation): string | undefi
 }
 
 // Unreachable alternative: the mutated line is a helper, and every printed line reads it only through
-// choices whose guards make some ungated test line F true (path dominance, as for a guarded figure);
+// choices whose guards make some ungated Bool line F (a test, or a choose) true (path dominance, as for a guarded figure);
 // F true settles the replaced alternative's guard false, so wherever a printed value depends on the
 // helper that alternative is not taken, and its value is never read there.
 function unreachableAlternative(data: CanonicalData, mutation: Mutation): string | undefined {
@@ -998,7 +1102,7 @@ function unreachableAlternative(data: CanonicalData, mutation: Mutation): string
   const blind = refusalBlind(data, pair[0], pair[1]);
   if (!unknownGuardSafe(data, line, Number(m[1]), pair[0], pair[1])) return undefined;
   for (const f of doc.lines) {
-    if (f.type !== "Bool" || f.expr.op !== "test" || (f.refuses ?? []).length) continue;
+    if (f.type !== "Bool" || !(f.expr.op === "test" || scalarChoose(data, f.id)) || (f.refuses ?? []).length) continue;
     if (decides(alt.guard, guardFacts(data, { op: "test", eq: [f.id, { const: true }] })) !== false) continue;
     if (!dominatedBy(data, id, f.id, blind)) continue;
     return `Unreachable alternative: ${id} is a helper that every printed line reads only through choices whose guards make ${f.id} true, and ${f.id} true makes the guard of alternative ${m[1]} (${stableStringify(alt.guard)}) false; where ${id}'s guards or its readers' are unknown, the choice is that unknown whatever the alternative's value (${blind ? `neither ${pair[0]} nor ${pair[1]} ever refuses` : "the values compared, or another alternative still possible, cannot refuse while the guard is unknown"}; spec 4.7.3); so wherever a printed value depends on ${id} that alternative is not taken, and replacing its value changes no printed value.`;
@@ -1255,12 +1359,16 @@ function absLineRaw(data: CanonicalData, id: string, env: SplitEnv, depth: numbe
   return { k: "line", v: "atom:" + createHash("sha256").update(stableStringify({ shape, vals })).digest("hex").slice(0, 32) };
 }
 
-// The facts with split line s set to v: a test line's own test, true or false, adds what it establishes.
+// The facts with split line s set to v: a test line's own test, true or false, adds what it establishes; a Bool
+// or enum choose (scalarChoose) at a value adds what that value establishes about the alternative taken.
 function factsWith(data: CanonicalData, facts: GuardFacts, s: string, v: unknown): GuardFacts {
   const l = findLine(data, s);
-  if (typeof v !== "boolean" || l?.expr.op !== "test") return facts;
+  const isTest = typeof v === "boolean" && l?.expr.op === "test";
+  const isChoose = (typeof v === "boolean" || (typeof v === "string" && v !== INC)) && !!scalarChoose(data, s);
+  if (!isTest && !isChoose) return facts;
   const next: GuardFacts = { data, same: new Set(facts.same), known: new Map([...facts.known].map(([k, b]): [string, Bound] => [k, b.not ? { ...b, not: [...b.not] } : { ...b }])), rel: new Set(facts.rel ?? []) };
-  addTest(next, l.expr, v, 0);
+  if (isTest) addTest(next, l!.expr, v as boolean, 0);
+  else addTest(next, { op: "test", eq: [s, { const: v }] }, true, 0);
   return next;
 }
 
@@ -1789,10 +1897,10 @@ const EQUIVALENT_IF: Record<string, Conditional> = {
   "operand.eic.eic.line1_table3.line1.key": line1KeyInTable("eic.line1_table3"),
   "operand.f8889.f8889.subject.line16.then0": pinned("f8889.subject is read only by line17b_figured, which only line17b reads, and only in its has_taxable alternative; has_taxable is line16 more than $0 (sales.zero), so where subject is read line16 is complete and positive, which only line16's has_dist alternative gives (the other is f8889.zero, $0), and that alternative's value is line16_figured. Where has_taxable is false or refused, subject is not read; where it is unknown, line17b evaluates line17b_figured as a way (spec 4.7.3), but line17b's other alternative is f8889.zero, which never refuses, so line17b is that unknown on both routes.",
     ["f8889.subject", "f8889.line17b_figured", "f8889.line17b", "f8889.has_taxable", "f8889.line16", "f8889.line16_figured", "f8889.has_dist", "f8889.zero", "param:sales.zero"], "9f3618649628f2ee", "f8889.line16_figured"),
-  "operand.f8889.f8889.self_dec_year.zero.then1": pinned("self_dec_year's self_only alternative is read (through self_in_family, step4_total, step4 and line6_split) only by line6, and only where split is true; with use_last_month true (which self_in_family requires to read self_dec_year) and December coverage self-only, married_family's inner any-test is false (its first disjunct needs December family coverage, its second needs use_last_month false), so married_family, an all-test, is false even past an unknown married answer (spec 4.7.2) or is the same refusal on both routes, and split is false: line6 reads line5, not line6_split.",
-    ["f8889.self_dec_year", "f8889.self_in_family", "f8889.self_all", "f8889.step4_total", "f8889.step4", "f8889.line6_split", "f8889.line6", "f8889.split", "f8889.married_family", "f8889.use_last_month", "f8889.dec_coverage", "f8889.self_year", "f8889.zero"], "99917228415b46ec", "f8889.self_family_months"),
-  "operand.f8889.f8889.self_in_family.self_dec_year.then0": pinned("self_in_family's use_last_month alternative: use_last_month true means December coverage is known and not none. With family coverage self_dec_year and self_all are both self_year (self_all takes self_year under use_last_month), the same memoized value; with self-only coverage step4_total reaches line6 only through line6_split, which line6 reads only where split is true, and married_family (so split) is then false or the same refusal on both routes, as for self_dec_year's zero alternative.",
-    ["f8889.self_dec_year", "f8889.self_in_family", "f8889.self_all", "f8889.step4_total", "f8889.step4", "f8889.line6_split", "f8889.line6", "f8889.split", "f8889.married_family", "f8889.use_last_month", "f8889.dec_coverage", "f8889.self_year", "f8889.zero"], "99917228415b46ec", "f8889.self_all"),
+  "operand.f8889.f8889.self_dec_year.zero.then1": pinned("self_dec_year's self_only alternative is read (through self_in_family, step4_total, step4 and line6_split) only by line6, and only where split is true; with use_last_month true (which self_in_family requires to read self_dec_year) and December coverage self-only, married_family's inner any-test is false (its first disjunct needs December family coverage, its second needs use_last_month false), so married_family, an all-test, is false even past an unknown married answer (spec 4.7.2) or is the same refusal on both routes, and split is false: line6 reads line5, not line6_split. use_last_month is a choose on dec_coverage (asked first) that takes last_month for self-only or family coverage and the false parameter no_last_month for none, with no gates: it is true only with December coverage known and not none and last_month true, and it is never a refusal.",
+    ["f8889.self_dec_year", "f8889.self_in_family", "f8889.self_all", "f8889.step4_total", "f8889.step4", "f8889.line6_split", "f8889.line6", "f8889.split", "f8889.married_family", "f8889.use_last_month", "f8889.dec_coverage", "f8889.self_year", "f8889.zero", "f8889.last_month", "f8889.no_last_month"], "6ab0fdd24cd3d6e4", "f8889.self_family_months"),
+  "operand.f8889.f8889.self_in_family.self_dec_year.then0": pinned("self_in_family's use_last_month alternative: use_last_month true means December coverage is known and not none (use_last_month is a choose on dec_coverage taking last_month for self-only or family coverage and the false parameter no_last_month for none, with no gates). With family coverage self_dec_year and self_all are both self_year (self_all takes self_year under use_last_month), the same memoized value; with self-only coverage step4_total reaches line6 only through line6_split, which line6 reads only where split is true, and married_family (so split) is then false or the same refusal on both routes, as for self_dec_year's zero alternative.",
+    ["f8889.self_dec_year", "f8889.self_in_family", "f8889.self_all", "f8889.step4_total", "f8889.step4", "f8889.line6_split", "f8889.line6", "f8889.split", "f8889.married_family", "f8889.use_last_month", "f8889.dec_coverage", "f8889.self_year", "f8889.zero", "f8889.last_month", "f8889.no_last_month"], "6ab0fdd24cd3d6e4", "f8889.self_all"),
   "operand.person.person.edu_adj.zero.then1": pinned("edu_adj's edu_student-false alternative: edu_student is then known false (memoized). edu_over_refused is an all-test whose first conjunct, edu_student true, decides it false before edu_adj is read; lines 27 to 30 read edu_adj only in the alternative guarded by edu_aoc and line 31 only in the one guarded by edu_llc, both all-tests whose first conjunct is edu_student true, so both are false and those alternatives (and their bindings) are not evaluated (spec 4.7.3, 4.7.4). Where edu_student is unknown, edu_adj's other alternative never refuses, so edu_adj is that unknown on both routes (spec 4.7.3). edu_adj is a helper.",
     ["person.edu_adj", "person.edu_student", "person.edu_over_refused", "person.edu_aoc", "person.edu_llc", "person.edu_line27", "person.edu_line28", "person.edu_line29", "person.edu_line30", "person.edu_line31", "person.zero"], "0365cb37a26cdbc6", "person.ira_se"),
   "operand.dependent.dependent.edu_adj.zero.then1": pinned("dependent.edu_adj's edu_student-false alternative: as for person.edu_adj, edu_over_refused is decided false by its first conjunct, and lines 27 to 31 read edu_adj only in alternatives guarded by edu_aoc or edu_llc, all-tests whose first conjunct is edu_student true; where edu_student is unknown edu_adj is that unknown on both routes, its other alternative never refusing (spec 4.7.3). edu_adj is a helper.",
@@ -1835,8 +1943,8 @@ const EQUIVALENT_IF: Record<string, Conditional> = {
     ["ssb.show16_18", "ssb.mfs_together", "ssb.show10_15", "ssb.show8_9", "ssb.lines8_to_15", "ssb.past7", "ssb.past9", "ssb.line9", "ssb.line8", "ssb.mfs_base", "ssb.line7", "ssb.zero", "ssb.lived_apart"], "47676839c241e06e", "ssb.show10_15"),
   "operand.ssb.ssb.show16_18.past9.all.1.any.1.eq.0": pinned("show16_18 is all[past7, any[mfs_together, past9]]; the mutant reads show10_15, all[all[mfs_together false, past7], past9], in place of past9. The second disjunct is reached only when mfs_together was not true. With mfs_together false and past7 true (the outer test's first conjunct), show10_15 is past9. mfs_together is unknown only when the status or lived_apart is unknown; then line 8 is unknown, so past9 is unknown or line 7's refusal (already returned by past7): show10_15 is then unknown too, and both any-tests are unknown. With past7 unknown (line 7 unknown, the outer test continuing past it), past9 is unknown or line 8's refusal, and show10_15, all[show8_9 (unknown, since lines8_to_15 is true or unknown there and past7 is unknown), past9], is past9's value; the second disjuncts agree, and the outer test, holding past7's unknown, is unknown on both routes or the same refusal.",
     ["ssb.show16_18", "ssb.mfs_together", "ssb.show10_15", "ssb.show8_9", "ssb.lines8_to_15", "ssb.past7", "ssb.past9", "ssb.line9", "ssb.line8", "ssb.mfs_base", "ssb.line7", "ssb.zero", "ssb.lived_apart"], "47676839c241e06e", "ssb.show10_15"),
-  "operand.f8889.f8889.age55_unmarried.age55.all.0.eq.0": pinned("age55_unmarried is all[age55, married false]; the mutant reads age55_line3, all[age55, married_family false], in place of age55, and married_family is all[married, any[...]] over inputs (household.married, dec_coverage, last_month, months_family) and use_last_month, none with refusal gates, so married_family is never a refusal. With married false, married_family is false and age55_line3 is age55. With married true the second conjunct is false in both, and the mutant's first conjunct is age55's value or false. With married unknown, married_family is false or unknown, so age55_line3 is age55's value or unknown where age55 is true, and the second conjunct is unknown: both tests are unknown, or false where age55 is false.",
-    ["f8889.age55_unmarried", "f8889.age55_line3", "f8889.married_family", "f8889.age55", "household.married", "f8889.use_last_month", "f8889.dec_coverage", "f8889.months_family", "f8889.last_month"], "645f7f1e6c992c1e", "f8889.age55_line3"),
+  "operand.f8889.f8889.age55_unmarried.age55.all.0.eq.0": pinned("age55_unmarried is all[age55, married false]; the mutant reads age55_line3, all[age55, married_family false], in place of age55, and married_family is all[married, any[...]] over inputs (household.married, dec_coverage, last_month, months_family) and use_last_month (a choose on dec_coverage taking last_month or the false parameter no_last_month), none with refusal gates, so married_family is never a refusal. With married false, married_family is false and age55_line3 is age55. With married true the second conjunct is false in both, and the mutant's first conjunct is age55's value or false. With married unknown, married_family is false or unknown, so age55_line3 is age55's value or unknown where age55 is true, and the second conjunct is unknown: both tests are unknown, or false where age55 is false.",
+    ["f8889.age55_unmarried", "f8889.age55_line3", "f8889.married_family", "f8889.age55", "household.married", "f8889.use_last_month", "f8889.dec_coverage", "f8889.months_family", "f8889.last_month", "f8889.no_last_month"], "eb4e920e248a5677", "f8889.age55_line3"),
   "operand.eic.eic.line1_in_table.line1.ge.0": (() => {
     const p = pinned("line1_in_table compares eic.line1 with eic.table_start; the mutant compares eic.earned_for_limit. Both choose on the same guards (self_employed false, then true) and take earned_income on the first; on the second line 1 takes wsb_6, which is wsb_4b floored at zero (subtract_floor0 from wsb_4b of eic.zero, no gates of its own), and earned_for_limit takes wsb_4b. A refused guard is the value of both; with an unknown guard both evaluate both alternatives (spec 4.7.3) and are a refusal exactly when earned_income and wsb_4b both refuse (wsb_6 refuses exactly when wsb_4b does), then earned_income's, the first way's, and otherwise that guard's unknown; an incomplete wsb_4b is wsb_6's value too. For a complete wsb_4b x, max(x, 0) >= start exactly when x >= start, because table_start is positive (checked).",
       ["eic.line1_in_table", "eic.line1", "eic.earned_for_limit", "eic.self_employed", "eic.wsb_6", "eic.wsb_4b", "eic.earned_income", "eic.zero", "param:eic.table_start"], "6cffe7974afc02b2", "eic.earned_for_limit");
@@ -2442,5 +2550,8 @@ export async function runMutation(): Promise<number> {
   const figureProblems = guardedFigureSelfTest();
   console.log(`mutation: guarded-figure dominance self-test: ${figureProblems.length} problems`);
   for (const p of figureProblems) console.log(`mutation: ${p}`);
-  return unexplained.length === 0 && openDefectProblems.length === 0 && retarget.problems.length === 0 && wholeProblems.length === 0 && guardProblems.length === 0 && figureProblems.length === 0 ? 0 : 1;
+  const chooseProblems = scalarChooseSelfTest();
+  console.log(`mutation: Bool and enum choose reasoning self-test: ${chooseProblems.length} problems`);
+  for (const p of chooseProblems) console.log(`mutation: ${p}`);
+  return unexplained.length === 0 && openDefectProblems.length === 0 && retarget.problems.length === 0 && wholeProblems.length === 0 && guardProblems.length === 0 && figureProblems.length === 0 && chooseProblems.length === 0 ? 0 : 1;
 }

@@ -205,7 +205,10 @@ its citation from the line (a roster question's from its collection). An entry s
 `prompt` or `cite` only for interview wording the line does not carry; the build fails
 if it repeats the line's. `help` is optional. A roster with a fixed set of answers lists
 them as `choices` (a label, the entry keys and a label for each key), which the page shows
-as a selector.
+as a selector. An enum input may give `value_labels`, a label for each value of its enum
+(presentation only: the answer is still the value). The build requires exactly one
+distinct label per value; the page's selector, its answered list and the CLI's entry hint
+show the labels.
 
 A long question is written as structured text (`engine/src/text.ts`): a line's `label`, an input's
 `source`, a `note`, and a bank `prompt` or `help` may hold line breaks, and then only a small Markdown

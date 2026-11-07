@@ -608,6 +608,28 @@
   },
   {
    "case": "classm.f8889.5",
+   "printed": "person[taxpayer].f8889[hsa].line12",
+   "project": "$8,487.50",
+   "model": "$8,237.50",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted after Stage 13, reading 1: every month treated as eligible); model value dropped from the fixture, as the prior rulings of this line. The case (classm.f8889.5: married filing jointly, age 55, 12 eligible months, 9 of family coverage, December 1 self-only, last-month rule not used) counts 12 months, $1,000; the model counts the 9 family months, $750, the register's reading 2 (i8889 p. 7, Additional Contribution Amount Worksheet, \"1. $1,000 × number of months eligible\"; p. 5, Line 3, Note). line 12 differs only through line 7.",
+   "drop": true,
+   "context": "d0be7dca82dd614b35bcb5bbe4b70ded50a305fd28e83e54ee5a25e4827b4b5d",
+   "date": "2026-11-07",
+   "run": "a0903b8a71e05d20955e5ee9ef75cc7b1e5176b6fafa4413c62e000ba15af19d"
+  },
+  {
+   "case": "classm.f8889.5",
+   "printed": "person[taxpayer].f8889[hsa].line7",
+   "project": "$1,000.00",
+   "model": "$750.00",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted after Stage 13, reading 1: every month treated as eligible); model value dropped from the fixture, as the prior rulings of this line. The case (classm.f8889.5: married filing jointly, age 55, 12 eligible months, 9 of family coverage, December 1 self-only, last-month rule not used) counts 12 months, $1,000; the model counts the 9 family months, $750, the register's reading 2 (i8889 p. 7, Additional Contribution Amount Worksheet, \"1. $1,000 × number of months eligible\"; p. 5, Line 3, Note).",
+   "drop": true,
+   "context": "d0be7dca82dd614b35bcb5bbe4b70ded50a305fd28e83e54ee5a25e4827b4b5d",
+   "date": "2026-11-07",
+   "run": "a0903b8a71e05d20955e5ee9ef75cc7b1e5176b6fafa4413c62e000ba15af19d"
+  },
+  {
+   "case": "classm.f8889.5",
    "printed": "person[taxpayer].f8889[hsa].line7_total",
    "project": "$12,000.00",
    "model": "$9,000.00",
@@ -621,6 +643,17 @@
    "model": "$750.00",
    "ruling": "Ruling: owner ruling (register entry amb.2025.hsa_line7_months); project retained; model value dropped from the fixture. The worksheet counts every month treated as eligible, here 12 (i8889 p. 7, Additional Contribution Amount Worksheet, \"$1,000 × number of months eligible\"); the model counted only the 9 months of family coverage, the reading the owner did not choose (p. 5, Note: once a married filer had family coverage at any time the additional amount is left off line 3 for every month, so counting only family months would drop it for the self-only months). On this return the helper is not read: the taxpayer is under 55, so line 7 is $0 (f8889.line7_applies false).",
    "drop": true
+  },
+  {
+   "case": "classm.f8889.5",
+   "printed": "person[taxpayer].f8889[hsa].line8",
+   "project": "$8,487.50",
+   "model": "$8,237.50",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted after Stage 13, reading 1: every month treated as eligible); model value dropped from the fixture, as the prior rulings of this line. The case (classm.f8889.5: married filing jointly, age 55, 12 eligible months, 9 of family coverage, December 1 self-only, last-month rule not used) counts 12 months, $1,000; the model counts the 9 family months, $750, the register's reading 2 (i8889 p. 7, Additional Contribution Amount Worksheet, \"1. $1,000 × number of months eligible\"; p. 5, Line 3, Note). line 8 differs only through line 7.",
+   "drop": true,
+   "context": "d0be7dca82dd614b35bcb5bbe4b70ded50a305fd28e83e54ee5a25e4827b4b5d",
+   "date": "2026-11-07",
+   "run": "a0903b8a71e05d20955e5ee9ef75cc7b1e5176b6fafa4413c62e000ba15af19d"
   }
  ]
 }

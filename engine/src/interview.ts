@@ -13,7 +13,7 @@ export interface InterviewData {
   targets: string[];
   initial: Inputs;
   cite: CiteFilled;
-  questions: { input: string; prompt: string; help: string; order: number; cite: CiteFilled; choices?: RosterChoice[] }[];
+  questions: { input: string; prompt: string; help: string; order: number; cite: CiteFilled; choices?: RosterChoice[]; value_labels?: Record<string, string> }[];
 }
 /** A roster question with a fixed set of answers (`$person`: just you, or you and your spouse): each choice's label,
  * its entry keys and each key's label. */
@@ -64,7 +64,7 @@ function inputLine(data: CanonicalData, template: string) {
   }
   return index.get(template);
 }
-export interface Question { input: string; prompt: string; help: string; order: number; cite: CiteFilled; choices?: RosterChoice[]; helpRequested: boolean; entry: string }
+export interface Question { input: string; prompt: string; help: string; order: number; cite: CiteFilled; choices?: RosterChoice[]; value_labels?: Record<string, string>; helpRequested: boolean; entry: string }
 /** A derivation as `resultToJson` writes it. */
 export interface JsonDerivation { value: Value; op: string; cite: CiteFilled | null; operands: { ref: string; value: Value }[]; guardsNotTaken: { guard: string; value: Value }[]; notes: string[] }
 /** The interview's state, with the values sheet as data (`interviewState` prints it as text). `question` is the next
@@ -79,7 +79,7 @@ export function interviewView(data: CanonicalData, config: InterviewData, inputs
   const pending: Question[] = [...needed].map(key => {
     const q = questionFor(config, questionTemplate(key));
     if (!q) throw new Error(`no question for reachable input ${key}`);
-    return { ...q, input: key, helpRequested: inputs[key] === null, entry: entryHint(data, key, q.choices) };
+    return { ...q, input: key, helpRequested: inputs[key] === null, entry: entryHint(data, key, q.choices, q.value_labels) };
   }).sort((a,b) => a.order - b.order || a.input.localeCompare(b.input));
   const complete = targetValues.every(v => v.kind !== "unknown" && v.kind !== "refusal");
   return { status: refused ? "refused" : complete ? "complete" : "incomplete", refusal: refused ?? null,
@@ -132,7 +132,7 @@ export function inputMeta(data: CanonicalData, key: string): { type: string; val
   return { type: line.type };
 }
 /** How to type an answer at the command line (`--value` is JSON), from the input's type. */
-export function entryHint(data: CanonicalData, key: string, choices?: RosterChoice[]): string {
+export function entryHint(data: CanonicalData, key: string, choices?: RosterChoice[], valueLabels?: Record<string, string>): string {
   const meta = inputMeta(data, key);
   const help = "; null asks for help";
   switch (meta.type) {
@@ -140,7 +140,7 @@ export function entryHint(data: CanonicalData, key: string, choices?: RosterChoi
     case "NonNegDollars": return `integer cents, e.g. 620000 for $6,200.00${help}`;
     case "Dollars": return `integer cents, negative for a loss, e.g. -150000 for -$1,500.00${help}`;
     case "Count": return `a whole number, e.g. 2${help}`;
-    case "Enum": return `one of: ${meta.values!.map((v) => JSON.stringify(v)).join(", ")}${help}`;
+    case "Enum": return `one of: ${meta.values!.map((v) => JSON.stringify(v) + (valueLabels?.[v] ? ` (${valueLabels[v]})` : "")).join(", ")}${help}`;
     case "Roster": return choices
       ? `one of: ${choices.map((c) => `${JSON.stringify(c.value)} (${c.label})`).join(", ")}${help}`
       : `a JSON list of distinct entry keys (letters, digits, _ and -), e.g. ["acme_corp"], or [] for none${help}`;

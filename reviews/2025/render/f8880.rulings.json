@@ -38,6 +38,15 @@
   {
    "printed": "(CLW 2)",
    "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
+   "model": "The worksheet says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l'. The restatement adds only Schedule 3 lines 1, 2 and 3, leaving out 6d and 6l.",
+   "ruling": "Ruling: scope; the English is the source within the slice, as the prior rulings. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". Lines 6d and 6l are refused through scope.credits on Schedule 3 line 8, so on every return that reaches the worksheet they are zero; the line's citation says so.",
+   "context": "2bc96c188f94d348c0a0f6d9645230a90268b4249d8c6f8f9acd46ea943f3267",
+   "date": "2026-11-07",
+   "run": "37b037b1d3d1d6c6056dac3bac0f74e87aa32aabad04a6d6d111889ee1b6f2e3"
+  },
+  {
+   "printed": "(CLW 2)",
+   "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
    "model": "The worksheet says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l.' The restatement adds only Schedule 3 lines 1, 2 and 3, leaving out lines 6d and 6l, and no refusal excludes those credits.",
    "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The rendered line (rendered/2025/f8880.md, (CLW 2)) adds Schedule 3 lines 1, 2 and 3 and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show. Same ruling as Stages 19 and 21; T-067 added only shown_when f8880.past7 to this line.",
    "context": "34c3fcc24a8e3c130ebda67b8ab78c497fc3306456a4ae8dc9633f0901b625e5"
@@ -50,11 +59,29 @@
    "context": "2029ea100d2d4c089505799ed1df861996d691087b24bf348d86e4b30bf58cdb"
   },
   {
+   "printed": "1(b)",
+   "restated": "Add person.sav_line1 over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The sum matches line 1 for the spouse's entries. However, the instructions say 'Complete column (b) only if you're filing a joint return', and the restatement has no joint-return gate. It is not shown whether spouse entries can exist on a non-joint return.",
+   "ruling": "Ruling: representation; as the prior ruling. f8880 p. 2, Column (b): \"Complete column (b) only if you’re filing a joint return\". The roster has a spouse entry only on a joint return (the $person question: \"Who is on this return: just you, or you and your spouse on a joint return?\"), so the spouse sum is zero on any other return.",
+   "context": "2bc96c188f94d348c0a0f6d9645230a90268b4249d8c6f8f9acd46ea943f3267",
+   "date": "2026-11-07",
+   "run": "37b037b1d3d1d6c6056dac3bac0f74e87aa32aabad04a6d6d111889ee1b6f2e3"
+  },
+  {
    "printed": "2(b)",
    "restated": "Add person.sav_line2 over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The instructions say \"Complete column (b) only if you're filing a joint return.\" The restatement sums spouse entries without requiring a joint return.",
    "ruling": "Ruling: representation; as line 1(b). f8880 p. 2, Column (b): \"Complete column (b) only if you’re filing a joint return\"; the roster has a spouse entry only on a joint return: the $person question reads \"Who is on this return? Enter [\\\"taxpayer\\\"], or [\\\"taxpayer\\\",\\\"spouse\\\"] if you are married filing jointly\" (interview/questions-2025.yaml, help \"One entry for you and, on a joint return, one for your spouse\"), so the spouse sum is column (b) of a joint return and zero otherwise.",
    "context": "2029ea100d2d4c089505799ed1df861996d691087b24bf348d86e4b30bf58cdb"
+  },
+  {
+   "printed": "2(b)",
+   "restated": "Add person.sav_line2 over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The sum matches line 2 for the spouse's entries. The restatement does not show that column (b) is limited to joint returns ('Complete column (b) only if you're filing a joint return').",
+   "ruling": "Ruling: representation; as line 1(b) and the prior ruling. f8880 p. 2, Column (b): \"Complete column (b) only if you’re filing a joint return\"; the roster has a spouse entry only on a joint return.",
+   "context": "2bc96c188f94d348c0a0f6d9645230a90268b4249d8c6f8f9acd46ea943f3267",
+   "date": "2026-11-07",
+   "run": "37b037b1d3d1d6c6056dac3bac0f74e87aa32aabad04a6d6d111889ee1b6f2e3"
   },
   {
    "printed": "4(a)",

@@ -98,11 +98,13 @@
 | `f5695.rce_rate` | Rate | 30% (0.30) | [f5695] Form 5695 (2025), line 6b, "Multiply line 6a by 30% (0.30)"; i5695 p. 1, Reminders, "The credit rate for property placed in service in 2022 through 2025 is 30%" (2025; created 2025-03-20; sha256 e2ac6a5c) |
 | `f5695.windows_max` | NonNegDollars | $600 | [f5695] Form 5695 (2025), line 20d, "Do not enter more than $600"; i5695 p. 2, Energy Efficient Home Improvement Credit (Part II), "A combined credit limit of $600 for all exterior windows and skylights" (2025; created 2025-03-20; sha256 e2ac6a5c) |
 | `ftc.limit` | NonNegDollars | single $300; mfj $600; mfs $300; hoh $300; qss $300 | [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; sha256 6998cf8c) |
+| `ftc.no` | Bool | false | [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory" (2025; printed date 2025-12-23; sha256 6998cf8c) |
 | `hsa.additional` | NonNegDollars | $1,000 | [i8889] p. 7, Additional Contribution Amount Worksheet, line 1, "$1,000 × number of months eligible" (2025; sha256 da6f2f58) |
 | `hsa.additional_rate` | Rate | 20% (0.20) | [f8889] Form 8889 (2025), line 17b, "Enter 20% (0.20) of the distributions included on line 16 that are subject to the additional 20% tax" (2025; created 2025-03-28; sha256 15ed4587) |
 | `hsa.family` | NonNegDollars | $8,550 | [i8889] p. 6, Line 3 Limitation Chart, family coverage, "Enter $8,550 on the line below for the month" (2025; sha256 da6f2f58) |
 | `hsa.family_55` | NonNegDollars | $9,550 | [i8889] p. 6, Line 3 Limitation Chart, family coverage, "If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month" (2025; sha256 da6f2f58) |
 | `hsa.half` | Rate | 1/2 | [i8889] p. 7, Line 6, "divide the amount on line 5 equally between you and your spouse"; Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse" (2025; sha256 da6f2f58) |
+| `hsa.no_last_month` | Bool | false | [i8889] p. 2, Last-month rule, "for the entire year if you are an eligible individual" (2025; sha256 da6f2f58) |
 | `hsa.no_months` | Count | 0 | [i8889] p. 4, Line 3, rule 2, "You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year" (2025; sha256 da6f2f58) |
 | `hsa.self_only` | NonNegDollars | $4,300 | [i8889] p. 6, Line 3 Limitation Chart, self-only coverage, "Enter $4,300 on the line below for the month" (2025; sha256 da6f2f58) |
 | `hsa.self_only_55` | NonNegDollars | $5,300 | [i8889] p. 6, Line 3 Limitation Chart, self-only coverage, "If you were age 55 or older at the end of 2025, enter $5,300 for the month" (2025; sha256 da6f2f58) |
@@ -192,6 +194,7 @@
 | `sales.zero` | NonNegDollars | $0 | [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c) |
 | `savers.agi_limit` | Dollars | single $39,500; mfj $79,000; mfs $39,500; hoh $59,250; qss $39,500 | [f8880] p. 1, Caution, "The amount on Form 1040, 1040-SR, or 1040-NR, line 11a, is more than $39,500 ($59,250 if head of household; $79,000 if married filing jointly)"; Form 8880 (2025), line 9 table, the last band "$79,000 --- 0.0 0.0 0.0" (2025; created 2025-11-04; sha256 ba2b2877) |
 | `savers.cap` | NonNegDollars | $2,000 | [f8880] Form 8880 (2025), line 6, "In each column, enter the smaller of line 5 or $2,000" (2025; created 2025-11-04; sha256 ba2b2877) |
+| `savers.no_credit` | Bool | false | [f8880] p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies" (2025; created 2025-11-04; sha256 ba2b2877) |
 | `sc.bonus_rate_40` | Rate | 40% (0.40) | [i4562] pp. 5–6, Line 14, "is limited to a special depreciation allowance of 40% of the depreciable basis" (2025; sha256 5c1c95b7) |
 | `sc.conv_hy` | Enum(macrs_convention) | hy | [i4562] p. 11, Column (e)—Convention, Half-year convention (2025; sha256 5c1c95b7) |
 | `sc.count2` | Count | 2 | [p946] p. 34, Which Convention Applies?, Mid-quarter convention, "more than 40%" (For use in preparing 2025 returns; sha256 07fadfb2) |

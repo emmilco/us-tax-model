@@ -71,10 +71,11 @@ form is filed, never whether an amount exists, so they never hide an amount inpu
 
 ## Model conventions
 
-- **One gate line per gated input.** A gated input is renamed (`div.box2b` → `div.box2b_amount`), and its old id becomes
-  a `choose` on the gate with an explicit else of zero, false or empty. Every reader keeps reading the old id, so no
-  reader can be missed. The rename changes input keys, the question bank and the fixtures: one mechanical migration,
-  checked by `test-fixtures`. A check fails if any line other than its gate line reads a gated input.
+- **One gate line per gated input.** A gated input keeps its id; a new gate line (`<input>_if_<condition>`) is a
+  `choose` on the gate with an explicit else of zero, false or empty, and every former reader of the input reads the
+  gate line instead. A check fails if any line other than its gate line reads a gated input, so no reader can be
+  missed. (Owner, 2026-11-07: this replaces renaming the input, which would rework the fixture keys and refusal ids of
+  the gates already landed for the same guarantee.)
   The gated input carries the marker: `gated_by: <gate line>` (`schema/data.schema.json`, `engine/src/gates.ts`). The
   marker sits on the input because the rule protects the input: any new reader of it fails the build, wherever it is
   added. The gate line is a `choose` of the same document that takes the input as an alternative's `then`, whose guards
@@ -156,6 +157,10 @@ A presentation rule within the interview layer's grouping; it changes where a ga
 - A grid has at most about 8 rows. Longer sets are split into themed grids (for example work and income; family;
   property and investments).
 - A row's follow-up questions are asked after its grid.
+- Grids (owner, 2026-11-07): the eight themes proposed in `interview/gate_frequencies-2025.yaml`, with three
+  adjustments: one home-energy row, the Form 5695 questions being its follow-ups; follow-ups (such as FinCEN 114 after
+  foreign accounts) stay behind their leading row rather than being rows; borderline estimates fall where their
+  estimates put them. A fiscal-year filer row (the tool assumes a calendar year) is added as a refusing row.
 
 ## Question hierarchy after the first build
 

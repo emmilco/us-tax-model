@@ -32,6 +32,15 @@
    "context": "679329ca4f0bf3dbc100df8cae5dd88d42543ec61901b274b36649a402ea591e"
   },
   {
+   "printed": "(CLW 2)",
+   "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
+   "model": "The worksheet line 2 includes credits from Schedule 3 lines 1 through 3, 6d, and 6l; the restatement adds only s3 lines 1, 2, and 3, omitting 6d and 6l. IRS text: 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l.'",
+   "ruling": "Ruling: scope; the English is the source within the slice, as the prior rulings and the Claude ruling of this round. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\"; lines 6d and 6l are refused through scope.credits on Schedule 3 line 8, so they are zero on every return that reaches the worksheet; the line's citation says so.",
+   "context": "dda8c92eb5f5b4af6cc39b44e24d4e68fa426111d7a41f4ec78144099cd85977",
+   "date": "2026-11-07",
+   "run": "60c8d19266a7b0b9e432eb8dedc39cd353615cf0666d3cf4a5c56039326d54c3"
+  },
+  {
    "printed": "1(b)",
    "restated": "Add person.sav_line1 over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The IRS says 'Complete column (b) only if you're filing a joint return'; the restatement sums spouse entries without an MFJ gate.",

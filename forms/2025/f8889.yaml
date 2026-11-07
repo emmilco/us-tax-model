@@ -519,6 +519,7 @@ form:
       locator: p. 4, Line 3, rules 2, 3 and 4(b)
   - id: f8889.last_month
     printed: (helper)
+    gated_by: f8889.use_last_month
     label: Do you use the last-month rule (treating yourself as an eligible individual for all of 2025 with your December
       1 coverage, subject to the testing period through December 31, 2026)?
     type: Bool
@@ -530,24 +531,47 @@ form:
     cite:
       doc: i8889
       locator: p. 2, Last-month rule and Testing period; p. 4, Line 3, rule 2
-  - id: f8889.use_last_month
+  - id: f8889.no_last_month
     printed: (helper)
-    label: The last-month rule applies (an eligible individual on December 1 who uses it)
+    label: Year parameter hsa.no_last_month (false)
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        ne:
-        - f8889.dec_coverage
-        - const: none
-      - op: test
-        eq:
-        - f8889.last_month
-        - const: true
+      op: param
+      ref: hsa.no_last_month
     cite:
       doc: i8889
-      locator: p. 2, Last-month rule; p. 4, Line 3, rule 2
+      locator: 'p. 2, Last-month rule, "for the entire year if you are an
+        eligible individual"'
+  - id: f8889.use_last_month
+    printed: (helper)
+    label: 'The last-month rule applies: an eligible individual on December 1 (the December 1 coverage, asked first, is
+      not none) who uses it'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: none
+        then: f8889.no_last_month
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: self_only
+        then: f8889.last_month
+      - guard:
+          op: test
+          eq:
+          - f8889.dec_coverage
+          - const: family
+        then: f8889.last_month
+    cite:
+      doc: i8889
+      locator: 'p. 2, Last-month rule, "for the entire year if you are an
+        eligible individual"; p. 4, Line 3, rule 2'
     ambiguity: amb.2025.hsa_last_month_all_year
   - id: f8889.line3_changed
     printed: (helper)

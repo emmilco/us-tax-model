@@ -314,14 +314,15 @@
   },
   "unruled:f8880#1": {
    "class": "covered",
-   "evidence": "f8880 p. 2. Line 2 is person.sav_line2 = person.sav_w2 (Form W-2 box 12 deferrals) + person.sav_voluntary + person.sav_simple. person.sav_voluntary excludes 'contributions designated under section 414(h)(2) (treated as employer contributions)'. Pick-ups are shown in box 14, not as box 12 deferrals, so they do not reach person.sav_w2.",
-   "prompt_sha": "b282e9213f26acda6108e8b80666abc6592e4f2d35151c3b71b8b89eff8d773a",
-   "line": "person.sav_voluntary"
+   "line": "person.sav_voluntary",
+   "prompt_sha": "bb56d1d013d334d269a7c4c7462a52c0c8b8c3000abb40413ad9f626172634cb",
+   "evidence": "f8880 p. 2 (as the prior ruling; the claim repeats it). Line 2 is person.sav_line2 = person.sav_w2 (Form W-2 box 12 deferrals) + person.sav_voluntary + person.sav_simple. person.sav_voluntary excludes 'contributions designated under section 414(h)(2) (treated as employer contributions)'. Pick-ups are shown in box 14, not as box 12 deferrals, so they do not reach person.sav_w2. The gate round changed only f8880.can_take's order."
   },
   "unruled:f8889#1": {
-   "class": "presentation",
-   "evidence": "i8889 p. 4. The line 1 self-only/family checkbox is filing information; no amount depends on it. The amounts use the coverage rules directly: f8889.dec_coverage (December 1 coverage, with the family rule for spouses) and the monthly coverage feed lines 3 and 6. The round-3 fixes (f8889.medical premiums; f8889.line2 and line14a trustee-to-trustee transfers, i8889 pp. 2-4) closed BUG-0414's two lows and drew no claim.",
-   "prompt_sha": "efc0b167f0378c62a12f728446e7d4cdbfbb94684233d583178e55cc09404b2e"
+   "class": "real gap",
+   "bug": "BUG-0443",
+   "prompt_sha": "48799bd22636d97749945b000aef0d8d43373cafcb1f6b3520f538b4862fbdb5",
+   "evidence": "i8889 p. 2, Qualified Medical Expenses: nonprescription medicines, menstrual care products, condoms and COVID-19 protective equipment qualify for HSA purposes though not deductible on Schedule A; the f8889.medical question does not say so. Pre-existing (the round changed only f8889.use_last_month); low, held for the form's next substantive change."
   },
   "unruled:f8959#1": {
    "class": "covered",
@@ -337,9 +338,9 @@
   },
   "unruled:ftc#1": {
    "class": "out of scope",
-   "evidence": "i1116 p. 2. A foreign tax deduction on Schedule A is refused by sa.unsupported ('a foreign tax ... deduction'), so the credit and a deduction cannot both be taken.",
-   "prompt_sha": "ad553a980325cdf1f883ddbe5bf3d57df03ac0d8954d01f4265aa4a37df7bf27",
-   "gate": "sa.unsupported"
+   "gate": "sa.unsupported",
+   "prompt_sha": "c3120d24f26ad3d987a47836f2a57ae8ead14e87723f39be786fbe97994d4641",
+   "evidence": "i1116 p. 2 (as the prior ruling; the claim repeats it). A foreign tax deduction on Schedule A is refused by sa.unsupported ('a foreign tax ... deduction'), so the credit and a deduction cannot both be taken."
   },
   "unruled:g28#1": {
    "class": "out of scope",
