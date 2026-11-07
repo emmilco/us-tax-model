@@ -59,9 +59,23 @@ questions never default to zero. Questions are asked in bank order, then by key.
 ## Web UI
 
 `serve` runs a local, single-user page (`ui/`) over the `ny` profile (the federal questions,
-then the New York ones), with the interview on the left and the federal and New York values
-sheets on the right; a sheet line opens its derivation (operation, citation, operands,
-guards not taken, notes and the answers it depends on):
+then the New York ones). The current question is the centre of the page: its full text (long
+text is broken into paragraphs at sentence ends, never shortened), the answer widget, then the
+explanation (a very long explanation shows its opening and a control for the rest). Beside it,
+or below the explanation on a narrow window, is its source: the cited document's printed title
+(the `title` of its entry in `tools/sources-<year>.json` or `tools/sources-ny-<year>.json`,
+which `tools/check_source_titles.py` checks against the archived document), every reference of
+the citation's locator with the quoted words set apart, and the document's id and revision. A
+status line under the tabs shows the return's progress, or its refusal, labelled provisional
+while questions are pending and final once none are, with the refusal's form, remedy, trigger
+and source in a dialog. Everything else is one tab away: the answered questions (choosing one
+reopens it for correction); "Your return so far", the federal and New York values sheets (the
+return first, then its schedules, the other forms, and worksheets and helper sections last;
+the order is the page's, the text sheet keeps the engine's), where the lines the last answer
+changed are highlighted and a line opens its derivation beside the sheet (operation,
+citation, the lines it uses, the answers it depends on, which reopen their questions,
+conditions not taken and notes); and the scope and standing notices, whose one-sentence
+summary stays in the footer:
 
 ```sh
 node engine/dist/main.js serve --dir /path/to/returns [--port 8791]
@@ -84,7 +98,7 @@ key to label, which replay ignores. Its API:
 
 | Route | Does |
 |---|---|
-| `GET /api/returns` | the return logs in the directory, the scope sentence and the notices |
+| `GET /api/returns` | the return logs in the directory, the scope sentence, the notices and `docTitles` (document id to printed title, from the year's source catalogs) |
 | `POST /api/returns` `{name}` | starts a log (profile `ny`); an existing name is refused |
 | `GET /api/returns/:name` | the state: the CLI's fields, `pending` with each input's `type` (and enum `values`), `refusalFinal`, the structured `sheets` (federal and New York), the `answered` questions, the `entryLabels` (entry path to label) and the lines the last answer `changed` |
 | `POST /api/returns/:name/answer` `{input, value[, labels]}` | appends the answer and returns the new state, or 400 with the reason |

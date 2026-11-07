@@ -3,42 +3,86 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>2025 return: federal and New York</title>
 <link rel="stylesheet" href="/style.css">
 <script src="/app.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#panel-question">Skip to the question</a>
 <header id="top">
-  <div class="bar">
-    <h1>2025 return <span id="return-name"></span></h1>
-    <nav id="returns">
-      <select id="return-select" aria-label="Open a return"></select>
+  <div class="masthead">
+    <h1>2025 return<span id="return-name"></span></h1>
+    <div id="returns">
+      <label class="visually-hidden" for="return-select">Open a return</label>
+      <select id="return-select"></select>
       <form id="new-return">
-        <input id="new-name" placeholder="new return name" aria-label="New return name" autocomplete="off" spellcheck="false">
+        <label class="visually-hidden" for="new-name">Name for a new return</label>
+        <input id="new-name" name="new-name" placeholder="New, e.g. final-2025" autocomplete="off" spellcheck="false">
         <button type="submit">Start</button>
       </form>
-    </nav>
-  </div>
-  <p id="scope" class="scope"></p>
-  <p id="status-banner" class="banner" hidden></p>
-</header>
-<main id="app">
-  <section id="interview" aria-label="Interview">
-    <div id="question-panel"></div>
-    <h2>Answered <span id="answered-count" class="muted"></span></h2>
-    <ol id="answered"></ol>
-  </section>
-  <section id="sheets" aria-label="Values sheets">
-    <div id="derivation" hidden></div>
-    <div class="tabs" role="tablist">
-      <button role="tab" data-sheet="federal" aria-selected="true">Federal</button>
-      <button role="tab" data-sheet="newYork" aria-selected="false">New York</button>
-      <label class="muted"><input type="checkbox" id="changed-only"> lines changed by the last answer only</label>
     </div>
-    <div id="sheet"></div>
+  </div>
+  <nav class="views" aria-label="Views">
+    <div role="tablist" id="view-tabs">
+      <button role="tab" id="tab-question" aria-controls="panel-question" aria-selected="true">Question</button>
+      <button role="tab" id="tab-answered" aria-controls="panel-answered" aria-selected="false" tabindex="-1">Answered <span id="answered-count" class="count"></span></button>
+      <button role="tab" id="tab-return" aria-controls="panel-return" aria-selected="false" tabindex="-1">Your return so far</button>
+      <button role="tab" id="tab-about" aria-controls="panel-about" aria-selected="false" tabindex="-1">Scope and notices</button>
+    </div>
+  </nav>
+  <div id="status" class="status" aria-live="polite"><p id="status-banner"></p></div>
+</header>
+
+<main>
+  <section role="tabpanel" id="panel-question" aria-labelledby="tab-question" tabindex="-1">
+    <div id="question-panel"></div>
+  </section>
+
+  <section role="tabpanel" id="panel-answered" aria-labelledby="tab-answered" tabindex="-1" hidden>
+    <div class="page narrow">
+      <h2>Answered questions</h2>
+      <p class="lede">In the order you first answered them. Choose one to change your answer; a change is a new entry in the log.</p>
+      <ol id="answered"></ol>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="panel-return" aria-labelledby="tab-return" tabindex="-1" hidden>
+    <div class="page return-grid">
+      <div class="sheet-col">
+        <div class="sheet-bar">
+          <div class="tabs" role="tablist" aria-label="Return">
+            <button role="tab" data-sheet="federal" aria-selected="true" aria-controls="sheet">Federal</button>
+            <button role="tab" data-sheet="newYork" aria-selected="false" aria-controls="sheet" tabindex="-1">New York</button>
+          </div>
+          <label class="check"><input type="checkbox" id="changed-only"> Only lines changed by the last answer</label>
+        </div>
+        <div id="sheet" role="tabpanel" aria-label="Lines of the return"></div>
+      </div>
+      <aside class="derivation-col" aria-label="How a line was figured">
+        <div id="derivation" hidden></div>
+        <p id="derivation-empty" class="placeholder">Choose a line to see how it was figured: the operation, the source, the lines it uses and the answers it depends on.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="panel-about" aria-labelledby="tab-about" tabindex="-1" hidden>
+    <div class="page narrow">
+      <h2>What this tool covers</h2>
+      <p id="scope" class="reading"></p>
+      <h2>Standing notices</h2>
+      <ul id="standing" class="reading"></ul>
+    </div>
   </section>
 </main>
-<footer id="notices"></footer>
+
+<footer><p id="notices"></p></footer>
+
+<dialog id="refusal-dialog" aria-labelledby="refusal-title">
+  <div id="refusal-body"></div>
+  <form method="dialog"><button class="primary" value="close">Close</button></form>
+</dialog>
+
 <p id="error" role="alert" hidden></p>
 </body>
 </html>

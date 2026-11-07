@@ -108,6 +108,9 @@ export async function serveChecks(): Promise<void> {
     // The CLI and the server give the same state on the same log.
     const data = loadCanonical();
     const config = loadInterview("ny");
+    // Every document a question cites has a title for the page to show as its source.
+    const untitled = [...new Set(config.questions.map((q) => q.cite.doc))].filter((doc) => typeof listing.docTitles?.[doc] !== "string");
+    ok(untitled.length === 0, `every cited document has a title in the source catalogs; missing: ${untitled.join(", ")}`);
     const cli = (args: string[], expectOk = true) => {
       const p = spawnSync(process.execPath, [MAIN, ...YEAR_ARGS, "interview", ...args, "--log", log], { encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
       assert.equal(p.status === 0, expectOk, `interview ${args.join(" ")}: ${p.stderr}`);

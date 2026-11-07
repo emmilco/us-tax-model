@@ -2,7 +2,7 @@
 // CLI is: each request replays a return's answer log with the `ny` profile (federal and New York) and answers go
 // through `applyAnswer`. It serves the page in ui/ and a JSON API, on 127.0.0.1 only.
 //
-//   GET  /api/returns                 the return logs in the returns directory
+//   GET  /api/returns                 the return logs in the returns directory, and each source document's title
 //   POST /api/returns {name}          starts a log <name>.jsonl (mode 0600; an existing name is refused)
 //   GET  /api/returns/:name           the return's state
 //   POST /api/returns/:name/answer {input, value[, labels]}
@@ -50,6 +50,18 @@ export function checkReturnsDir(dir: string): string {
   const mode = statSync(real).mode & 0o777;
   if (mode & 0o077) throw new Error(`${dir}: mode ${mode.toString(8)} lets others read it; use chmod 700`);
   return real;
+}
+
+/** Each source document's printed title, by id, from the year's source catalogs (tools/sources-<year>.json and
+ * tools/sources-ny-<year>.json; tools/check_source_titles.py checks each against the archived document). */
+export function docTitles(year: number): Record<string, string> {
+  const titles: Record<string, string> = {};
+  for (const name of [`sources-${year}.json`, `sources-ny-${year}.json`]) {
+    const path = join(ROOT, "tools", name);
+    if (!existsSync(path)) continue;
+    for (const e of JSON.parse(readFileSync(path, "utf8")) as { id: string; title?: string }[]) if (e.title) titles[e.id] = e.title;
+  }
+  return titles;
 }
 
 class HttpError extends Error { constructor(readonly status: number, message: string) { super(message); } }
@@ -116,11 +128,12 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
   };
 
   const blank = interviewView(data, config, replay(config, [{ version: 1, tax_year: config.tax_year }]));
+  const titles = docTitles(config.tax_year);
   const api = (method: string, parts: string[], body: unknown): [number, unknown] => {
     if (parts.length === 0) {
       if (method === "GET") {
         return [200, { returns: readdirSync(dir).filter((f) => f.endsWith(".jsonl")).map((f) => f.slice(0, -6)).filter((n) => NAME.test(n)).sort(),
-          scope: blank.scope, notices: blank.notices, standingNotices: standingNotices() }];
+          scope: blank.scope, notices: blank.notices, standingNotices: standingNotices(), docTitles: titles }];
       }
       if (method === "POST") {
         const name = (body as { name?: unknown } | null)?.name;

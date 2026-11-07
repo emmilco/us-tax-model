@@ -1,36 +1,44 @@
 [
   {
     "id": "ny_it201",
+    "title": "Resident Income Tax Return",
     "url": "https://www.tax.ny.gov/pdf/2025/inc/it201_2025_fill_in.pdf"
   },
   {
     "id": "ny_it201i",
+    "title": "Instructions for Form IT-201",
     "url": "https://www.tax.ny.gov/pdf/2025/inc/it201i_2025.pdf"
   },
   {
     "id": "ny_it201i-html",
+    "title": "2025 Form IT-201-I, Instructions for Form IT-201, Full-Year Resident Income Tax Return",
     "url": "https://www.tax.ny.gov/forms/current-forms/it/it201i.htm",
     "format": "html"
   },
   {
     "id": "ny_it201_tax_tables",
+    "title": "Tax tables for Form IT-201",
     "url": "https://www.tax.ny.gov/pit/file/tax-tables/it201i-2025.htm",
     "format": "html"
   },
   {
     "id": "ny_it201att",
+    "title": "Other Tax Credits and Taxes",
     "url": "https://www.tax.ny.gov/pdf/2025/inc/it201att_2025_fill_in.pdf"
   },
   {
     "id": "ny_it2",
+    "title": "Summary of W-2 Statements",
     "url": "https://www.tax.ny.gov/pdf/2025/inc/it2_2025_fill_in.pdf"
   },
   {
     "id": "ny_it270i",
+    "title": "Instructions for Form IT-270",
     "url": "https://www.tax.ny.gov/pdf/2025/inc/it270i_2025.pdf"
   },
   {
     "id": "ny_tax_law_601",
+    "title": "§ 601. Imposition of tax.",
     "url": "https://legislation.nysenate.gov/pdf/laws/TAX601/"
   }
 ]

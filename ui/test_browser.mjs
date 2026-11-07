@@ -6,7 +6,8 @@
 // It starts `serve` on a temporary returns directory and walks a synthetic New York return (the fixture
 // ny.refuse.part_year_state) through the page: every answer through the page's widgets, a blank amount refused
 // without writing, an earlier answer corrected, a derivation opened and followed to the answer it depends on, and the
-// provisional refusal becoming final once nothing is pending. Screenshots go to /private/tmp/tax-ui-*.png.
+// provisional refusal becoming final once nothing is pending. The answered list, the values sheets and the scope and
+// notices are tabs; a refusal's details open in a dialog. Screenshots of each view go to /private/tmp/tax-ui-design-*.png.
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -60,6 +61,8 @@ async function screenshot(path) {
   const r = await cdp("Page.captureScreenshot", { format: "png" });
   writeFileSync(path, Buffer.from(r.data, "base64"));
 }
+const view = async name => { await click(`#tab-${name}`); await until(`!document.getElementById('panel-${name}').hidden`, `the ${name} view`); };
+const shot = name => screenshot(`/private/tmp/tax-ui-design-${name}.png`);
 const question = () => evaluate("document.querySelector('.question[data-input]')?.dataset.input ?? null");
 const banner = () => evaluate("document.getElementById('status-banner').textContent");
 const logLines = () => readFileSync(join(dir, "smoke.jsonl"), "utf8").trim().split("\n").length;
@@ -71,7 +74,7 @@ const pathMap = new Map();
 const fx = key => { let k = key; for (const [f, p] of [...pathMap].sort((a, b) => b[1].length - a[1].length)) k = k.split(p + "]").join(f + "]").split(p + ".").join(f + "."); return k; };
 const entryPath = (roster, key) => { const [coll, parent] = roster.slice(1).split("@"); return `${parent ? parent + "." : ""}${coll}[${key}]`; };
 const labelsFor = (roster, keys) => roster === "$w2@person[taxpayer]" ? ["Acme Corp.", "Acme Corp"].slice(0, keys.length).concat(keys.slice(2).map((_, i) => `Acme ${i + 3}`)) : keys.map((_, i) => `Entry ${i + 1}`);
-let origin, rosterShot = false;
+let origin, docTitles, rosterShot = false, longShot = false;
 const served = () => fetch(`${origin}/api/returns/smoke`).then(r => r.json());
 
 /** Answers the question on the page with the fixture's `value` through its widget and waits for the page to move on. */
@@ -89,7 +92,7 @@ async function answer(input, value) {
     const labels = labelsFor(input, value);
     await evaluate("document.querySelectorAll('#roster .roster-row').forEach(r=>r.remove())");
     for (let i = 0; i < value.length; i++) { await click("#roster-add"); await type(`#roster .roster-row:nth-child(${i + 1}) input`, labels[i]); }
-    if (input === "$w2@person[taxpayer]" && !rosterShot) { await screenshot("/private/tmp/tax-ui-roster.png"); rosterShot = true; }
+    if (input === "$w2@person[taxpayer]" && !rosterShot) { await shot("roster"); rosterShot = true; }
     await click("#answer-submit");
   } else {
     const money = await evaluate("document.getElementById('answer-input').inputMode === 'decimal'");
@@ -118,6 +121,7 @@ try {
   for (let i = 0; i < 300 && !/http:\/\/127\.0\.0\.1:\d+\//.test(out); i++) await wait(50);
   origin = out.match(/http:\/\/127\.0\.0\.1:\d+/)?.[0];
   assert(origin, "the server did not start: " + out);
+  docTitles = (await fetch(`${origin}/api/returns`).then(r => r.json())).docTitles;
   await cdp("Page.enable"); await cdp("Runtime.enable");
   await cdp("Emulation.setDeviceMetricsOverride", { width: 1600, height: 1100, deviceScaleFactor: 1, mobile: false });
   await cdp("Page.navigate", { url: origin + "/" });
@@ -131,13 +135,16 @@ try {
   // The first question is a selector in plain terms, with no entry syntax, and its citation is shown as its source.
   const firstQ = await evaluate(`({choices:[...document.querySelectorAll('.widget [data-choice]')].map(b=>b.textContent),
     text:document.querySelector('.question').innerText, inputs:document.querySelectorAll('.widget input').length,
-    source:document.querySelector('.question .source').innerText})`);
+    source:document.querySelector('.question .source').innerText,
+    beside:(()=>{const a=document.querySelector('.question .ask').getBoundingClientRect(),b=document.querySelector('.question .source').getBoundingClientRect();return b.left>=a.right&&b.top<a.bottom;})()})`);
   assert.deepEqual(firstQ.choices, ["Just me", "Me and my spouse (joint return)"]);
   assert.equal(firstQ.inputs, 0, "no text box on the first question");
   assert.doesNotMatch(firstQ.text, /\[|taxpayer|JSON|cents|true or false/, "no entry syntax or keys on the first question");
-  assert.match(firstQ.source, /^Source — the form line or instruction this question comes from: f1040/);
-  await screenshot("/private/tmp/tax-ui-first.png");
-  assert.match(await banner(), /Incomplete/);
+  assert.match(firstQ.source, /^Source\s+U\.S\. Individual Income Tax Return\s/);
+  assert.match(firstQ.source, /Your first name and middle initial/);
+  assert(firstQ.beside, "the source is beside the question on a wide window");
+  await shot("question");
+  assert.match(await banner(), /In progress/);
 
   // A blank amount is refused on the page and nothing is written; a help request leaves the question pending.
   let answered = 0, correctedAt = null, sawProvisional = false, derivationOpened = false, blankRefused = false;
@@ -161,19 +168,36 @@ try {
         assert.equal(logLines(), before, "a blank amount is never sent");
       }
     }
+    // Every question is shown in full, word for word, and its source by the document's title, not its id.
+    const q = (await served()).pending.find(p => p.input === input) ?? null;
+    if (q) {
+      const shown = await evaluate(`({prompt:[...document.querySelectorAll('.prompt-text p')].map(p=>p.textContent).join(' '),
+        folds:document.querySelectorAll('.prompt-text .expander, .prompt-text [hidden]').length, doc:document.querySelector('.source .doc').textContent})`);
+      assert.equal(shown.folds, 0, `${input}: the question is never folded`);
+      assert.equal(shown.prompt.replace(/\s+/g, " "), q.prompt.replace(/\s+/g, " "), `${input}: the question is shown word for word`);
+      assert.equal(shown.doc, docTitles[q.cite.doc], `${input}: the source is named by its title`);
+      if (input === "scope.other_line16") {
+        assert(q.prompt.length > 900, "scope.other_line16 is a long question");
+        await shot("long");
+        longShot = true;
+      }
+    }
     await answer(input, inputs[fx(input)]);
     answered++;
     // Correct an earlier answer: the first amount answered, through the answered list, then back to the fixture's value.
     if (!correctedAt) {
       const money = await evaluate(`[...document.querySelectorAll('#answered button[data-input]')].map(b=>b.dataset.input).find(k=>/\\.w2\\[[^\\]]+\\]\\.box1$/.test(k)) ?? null`);
       if (money && inputs[fx(money)] > 0) {
+        await view("answered");
         await click(`#answered button[data-input="${money}"]`);
-        await until(`document.querySelector('.question[data-input]')?.dataset.input === ${JSON.stringify(money)} && !!document.querySelector('.correcting')`, "the reopened question");
+        await until(`document.querySelector('.question[data-input]')?.dataset.input === ${JSON.stringify(money)} && !!document.querySelector('.correcting') && document.getElementById('panel-answered').hidden`, "the reopened question");
         await type("#answer-input", ((inputs[fx(money)] + 12345) / 100).toFixed(2));
         await click("#answer-submit");
         await until(`[...document.querySelectorAll('#answered li')].some(li=>li.querySelector('button').dataset.input===${JSON.stringify(money)} && li.querySelector('.value').textContent===${JSON.stringify(fmtMoney(inputs[fx(money)] + 12345))})`, "the corrected answer");
         assert(await evaluate("document.querySelectorAll('#sheet tr.changed').length > 0"), "the lines the correction changed are highlighted");
-        await screenshot("/private/tmp/tax-ui-corrected.png");
+        assert(await evaluate("document.getElementById('saved').textContent.includes('Saved:')"), "the saved answer is acknowledged");
+        await view("answered");
+        await shot("answered");
         await click(`#answered button[data-input="${money}"]`);
         await until("!!document.querySelector('.correcting')", "the reopened question");
         await type("#answer-input", (inputs[fx(money)] / 100).toFixed(2));
@@ -184,19 +208,22 @@ try {
     }
     // Open a derivation once wages are computed: its operation, operands and the answers it depends on.
     if (correctedAt && !derivationOpened && await evaluate("!!document.querySelector('#sheet tr[data-key=\"f1040.line1a\"]')")) {
-      await click('#sheet tr[data-key="f1040.line1a"]');
+      await view("return");
+      await click('#sheet tr[data-key="f1040.line1a"] .line-open');
       await until("!document.getElementById('derivation').hidden", "the derivation");
       const shown = await evaluate(`({text:document.getElementById('derivation').innerText, operands:document.querySelectorAll('#derivation button[data-ref]').length,
         deps:[...document.querySelectorAll('#depends-on button[data-input]')].map(b=>b.dataset.input)})`);
-      assert.match(shown.text, /operation/); assert(shown.operands > 0, "operands are links");
+      assert.match(shown.text, /Operation/); assert(shown.operands > 0, "operands are links");
       assert(shown.deps.includes(correctedAt), `the corrected answer ${correctedAt} is among the answers line 1a depends on: ${shown.deps}`);
       await click("#derivation button[data-ref]");
-      await until("document.querySelectorAll('#derivation .bar button').length === 2", "an operand's derivation with a Back button");
-      await click("#derivation .bar button"); // back
-      await screenshot("/private/tmp/tax-ui-derivation.png");
+      await until("!!document.getElementById('derivation-back')", "an operand's derivation with a Back button");
+      await click("#derivation-back");
+      await until("!document.getElementById('derivation-back') && document.querySelector('#sheet tr.open')?.dataset.key === 'f1040.line1a'", "line 1a's derivation again");
+      await evaluate("window.scrollTo(0, 0)");
+      await shot("return");
       await click(`#depends-on button[data-input="${correctedAt}"]`);
       await until(`document.querySelector('.question[data-input]')?.dataset.input === ${JSON.stringify(correctedAt)} && !!document.querySelector('.correcting')`, "the question a derivation links to");
-      await click(".actions button:nth-child(2)"); // back to the next question
+      await click("#back-next");
       await until("!document.querySelector('.correcting')", "the next question");
       derivationOpened = true;
     }
@@ -204,10 +231,16 @@ try {
     if (/provisional/.test(b)) {
       if (!sawProvisional) {
         assert.match(b, /provisional: later answers may clear it/);
+        await click("#refusal-open");
+        await until("document.getElementById('refusal-dialog').open", "the refusal details");
+        assert.match(await evaluate("document.getElementById('refusal-dialog').innerText"), /Refused, provisional[\s\S]*Later answers may clear it[\s\S]*Source/);
+        await shot("refusal-provisional");
+        await evaluate("document.getElementById('refusal-dialog').close()");
+        await view("return");
         await click('.tabs [data-sheet="newYork"]');
         await until("[...document.querySelectorAll('#sheet .tag')].some(t=>t.textContent==='refused, provisional')", "a provisional refused line on the New York sheet");
-        await screenshot("/private/tmp/tax-ui-provisional.png");
         await click('.tabs [data-sheet="federal"]');
+        await view("question");
       }
       sawProvisional = true;
     }
@@ -217,31 +250,66 @@ try {
   const finalState = await served();
   assert.deepEqual(finalState.answered.find(a => a.input === "$w2@person[taxpayer]").value, ["acme_corp", "acme_corp_2"], "the colliding label got a numeric suffix");
   assert.equal(finalState.entryLabels["person[taxpayer]"], "You");
+  await view("answered");
   const shown = await evaluate(`({answered:document.getElementById('answered').innerText, headings:[...document.querySelectorAll('#sheet h3')].map(h=>h.textContent)})`);
   assert.match(shown.answered, /Just me/); assert.match(shown.answered, /Acme Corp\., Acme Corp/);
-  assert.match(shown.answered, /person\[You\]\.w2\[Acme Corp\.\]\.box1/);
+  assert.match(shown.answered, /You › Acme Corp\./);
   assert.doesNotMatch(shown.answered, /acme_corp|\[taxpayer\]/, "no entry keys in the answered list");
+  await view("return");
   await click('.tabs [data-sheet="federal"]');
   await until("[...document.querySelectorAll('#sheet h3')].some(h=>h.textContent.endsWith('— You › Acme Corp.'))", "an entry heading on the sheet shown by its labels");
+  // The sheet shows the return first, then its schedules, the other forms, and worksheets and helper sections last.
+  const groups = async () => evaluate(`[...document.querySelectorAll('#sheet h3')].map(h=>h.textContent)`);
+  const rank = t => /^Form (1040|IT-201)\b/.test(t) ? 0 : t.startsWith("Schedule ") ? 1 : t.startsWith("Form ") ? 2 : 3;
+  for (const tab of ["federal", "newYork"]) {
+    await click(`.tabs [data-sheet="${tab}"]`);
+    const heads = await groups();
+    assert.match(heads[0], tab === "federal" ? /^Form 1040 / : /^Form IT-201 /, `${tab}: the return comes first`);
+    assert(heads.every((h, i) => i === 0 || rank(heads[i - 1]) <= rank(h)), `${tab}: sections in order: ${heads.join(" | ")}`);
+    if (tab === "federal") assert(heads.some(h => rank(h) === 1) && heads.some(h => rank(h) === 3), "the federal sheet has schedules and worksheets");
+  }
+  await evaluate("window.scrollTo(0, 0)");
+  await click('.tabs [data-sheet="federal"]');
+  await shot("sheet-order");
   // An entry's question names the entry it is about.
+  await view("answered");
   await click(`#answered button[data-input="person[taxpayer].w2[acme_corp_2].box1"]`);
   await until("document.querySelector('.question .about')?.textContent === 'About: You › Acme Corp'", "the entry a question is about");
-  await click(".actions button:nth-child(2)");
+  await click("#back-next");
   assert(correctedAt, "an earlier answer was corrected");
   assert(derivationOpened, "a derivation was opened");
   assert(sawProvisional, "the refusal was shown as provisional while questions were pending");
   assert.match(await banner(), /Refused \(final\)/);
   assert.match(await banner(), /Form IT-203/);
   assert.equal(await question(), null);
+  await click("#refusal-open");
+  await until("document.getElementById('refusal-dialog').open", "the final refusal details");
+  assert.match(await evaluate("document.getElementById('refusal-dialog').innerText"), /Refused \(final\)[\s\S]*IT-203/);
+  await shot("refusal");
+  await evaluate("document.getElementById('refusal-dialog').close()");
+  await view("return");
   await click('.tabs [data-sheet="newYork"]');
   await until("[...document.querySelectorAll('#sheet .tag')].some(t=>t.textContent==='refused')", "a final refused line on the New York sheet");
-  await screenshot("/private/tmp/tax-ui-final.png");
+  await shot("refused-sheet");
+  await view("about");
+  assert.match(await evaluate("document.getElementById('standing').textContent"), /not tax or legal advice/);
+  await shot("about");
+  // A narrow window: the source drops below the explanation.
+  await view("answered");
+  await click(`#answered button[data-input="person[taxpayer].w2[acme_corp_2].box1"]`);
+  await until("!!document.querySelector('.question .source')", "a question to show narrow");
+  await cdp("Emulation.setDeviceMetricsOverride", { width: 760, height: 1100, deviceScaleFactor: 1, mobile: false });
+  assert(await evaluate("(()=>{const a=document.querySelector('.question .ask').getBoundingClientRect(),b=document.querySelector('.question .source').getBoundingClientRect();return b.top>=a.bottom;})()"), "the source is below the question on a narrow window");
+  await shot("narrow");
+  await cdp("Emulation.setDeviceMetricsOverride", { width: 1600, height: 1100, deviceScaleFactor: 1, mobile: false });
+  await click("#back-next");
   // A reload keeps the state.
   await cdp("Page.reload");
   await until("/Refused \\(final\\)/.test(document.getElementById('status-banner').textContent)", "the reloaded page");
   assert.deepEqual(errors, []);
   console.log(`Browser passed: the person selector with no entry syntax, ${answered} answers through the page's widgets, labelled roster entries (a colliding label suffixed; labels in the answered list, a sheet heading and a question's entry), a help request, a refused blank amount, a correction through the answered list, a derivation with operand links and the answer it depends on, a provisional refusal that became final, a reload.`);
-  console.log("Screenshots: /private/tmp/tax-ui-first.png, tax-ui-roster.png, tax-ui-corrected.png, tax-ui-derivation.png, tax-ui-provisional.png, tax-ui-final.png");
+  assert(longShot, "the long question scope.other_line16 was shown in full");
+  console.log("Screenshots: /private/tmp/tax-ui-design-{question,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png");
 } finally {
   server?.kill(); ws.close();
   rmSync(dir, { recursive: true, force: true });
