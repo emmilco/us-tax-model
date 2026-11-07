@@ -171,10 +171,12 @@ try {
     // Every question is shown in full, word for word, and its source by the document's designation and title, not its id.
     const q = (await served()).pending.find(p => p.input === input) ?? null;
     if (q) {
-      const shown = await evaluate(`({prompt:[...document.querySelectorAll('.prompt-text p')].map(p=>p.textContent).join(' '),
+      // Paragraphs, headings and list items alike: a structured question's bullets are part of the question.
+      const shown = await evaluate(`({prompt:document.querySelector('.prompt-text').innerText,
         folds:document.querySelectorAll('.prompt-text .expander, .prompt-text [hidden]').length, doc:document.querySelector('.source .doc').textContent})`);
       assert.equal(shown.folds, 0, `${input}: the question is never folded`);
-      assert.equal(shown.prompt.replace(/\s+/g, " "), q.prompt.replace(/\s+/g, " "), `${input}: the question is shown word for word`);
+      const words = (t) => t.replace(/^\s*- /gm, "").replace(/\s+/g, " ").trim();
+      assert.equal(words(shown.prompt), words(q.prompt), `${input}: the question is shown word for word`);
       const title = docTitles[q.cite.doc], designation = docDesignations[q.cite.doc];
       assert.equal(shown.doc, designation && !title.includes(designation) ? `${designation} \u2014 ${title}` : title, `${input}: the source is named by its designation and title`);
       if (input === "scope.other_line16") {
