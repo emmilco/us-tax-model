@@ -8,7 +8,7 @@ import { parse as parseYaml } from "yaml";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import type { ValidateFunction } from "ajv";
 import { isMarkedLine, stableStringify } from "./util.js";
-import { type InterviewData } from "./interview.js";
+import { entrySyntax, type InterviewData, type RosterChoice } from "./interview.js";
 import { checkInterview, checkSalesInterview } from "./interview-check.js";
 import { runChecks } from "./check.js";
 import { YEAR, nyPath, yearPath } from "./year.js";
@@ -42,7 +42,7 @@ const NY_TABLES_DIR = nyPath("tables");
 const NY_PARAMS_PATH = join(ROOT, "params", "ny", `${YEAR}.yaml`);
 const NY_REGISTER_PATH = join(ROOT, "ambiguities", "ny", `${YEAR}.yaml`);
 
-interface BankQuestion { input: string; order: number; help: string; prompt?: string; cite?: CiteAuthored }
+interface BankQuestion { input: string; order: number; help?: string; prompt?: string; cite?: CiteAuthored; choices?: RosterChoice[] }
 interface QuestionBank { tax_year: number; frames: Record<string, string>; questions: BankQuestion[] }
 interface InterviewProfile { tax_year: number; targets: string[]; initial: InterviewData["initial"]; cite: CiteAuthored; questions: string[] | "all"; questions_from?: string; targets_from?: string }
 
@@ -232,8 +232,19 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     const cite = q.cite === undefined ? derivedCite : fillCite(q.cite, YEAR, where);
     if (q.cite !== undefined && stableStringify(cite) === stableStringify(derivedCite)) errors.push(`${where}: cite repeats the form line's; remove it from the bank`);
     const prompt = q.prompt ?? derivedPrompt;
-    if (!prompt || !q.help || !Number.isSafeInteger(q.order)) { errors.push(`invalid ${where}`); return null; }
-    return { input: q.input, prompt, help: q.help, order: q.order, cite: cite! };
+    if (!prompt || (q.help !== undefined && !q.help) || !Number.isSafeInteger(q.order)) { errors.push(`invalid ${where}`); return null; }
+    // Entry syntax belongs to the clients (the CLI's entry hint, the page's widgets), not to the wording.
+    for (const [field, text] of [["prompt", prompt], ["help", q.help ?? ""]] as const) {
+      const syntax = entrySyntax(text);
+      if (syntax) errors.push(`${where}: the ${field} states entry syntax (${syntax}); say what to answer, not how to type it`);
+    }
+    if (q.choices !== undefined) {
+      const ok = q.input.startsWith("$") && Array.isArray(q.choices) && q.choices.length >= 2 && q.choices.every((c) =>
+        typeof c.label === "string" && c.label !== "" && Array.isArray(c.value) && c.value.every((k) => /^[a-zA-Z0-9_-]+$/.test(k))
+        && new Set(c.value).size === c.value.length && stableStringify(Object.keys(c.labels ?? {}).sort()) === stableStringify([...c.value].sort()));
+      if (!ok) errors.push(`${where}: choices must be a roster's, at least two, each a label, distinct entry keys and a label for each key`);
+    }
+    return { input: q.input, prompt, help: q.help ?? "", order: q.order, cite: cite!, ...(q.choices ? { choices: q.choices } : {}) };
   };
   const resolved = new Map(bank.questions.flatMap((q) => { const r = resolveQuestion(q); return r ? [[q.input, r] as const] : []; }));
   const loadProfile = (file: string, name: string): InterviewData => {

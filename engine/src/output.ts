@@ -3,7 +3,7 @@
 
 import { fmtMoney, shortHash } from "./util.js";
 import type { CanonicalData, FormDoc } from "./types.js";
-import type { EvalResult, Value } from "./eval.js";
+import type { Derivation, EvalResult, Value } from "./eval.js";
 import { YEAR } from "./year.js";
 
 export function fmtValue(v: Value): string {
@@ -36,65 +36,123 @@ function entryKeys(doc: FormDoc, parent: string | null, result: EvalResult): str
 
 function escapeRe(s: string): string { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
 
+/** One line of a values-sheet section. `shown` is false when the line's `shown_when` test is false on this return:
+ * the form does not report the entry on that line, and the sheet omits it. */
+export interface SheetLine {
+  key: string;
+  printed: string;
+  label: string;
+  value: Value;
+  status: "value" | "unknown" | "refused";
+  cite: Derivation["cite"];
+  notes: string[];
+  shownWhen: string | null;
+  shown: boolean;
+}
+
+/** One section: a form, worksheet or collection entry with at least one evaluated line. `entry` is the entry key
+ * (for example `person[taxpayer].w2[a]`) or null for a form that is not a collection. */
+export interface SheetSection { doc: string; title: string; entry: string | null; lines: SheetLine[] }
+
+/** The values sheet as data; `renderValuesSheetText` prints it as the text sheet. */
+export interface ValuesSheet {
+  sections: SheetSection[];
+  choices: { key: string; value: Value; takenGuardIndex?: number; guardsNotTaken: Value[] }[];
+  derivations: { key: string; op: string; operands: { ref: string; value: Value }[] }[];
+  interpretations: string[];
+  notices: string[];
+}
+
+export function lineStatus(v: Value): SheetLine["status"] {
+  return v.kind === "refusal" ? "refused" : v.kind === "unknown" ? "unknown" : "value";
+}
+
 /** One section of the sheet: each line of `doc` that has a value, under `prefix` for a collection entry. */
-function pushSection(lines: string[], doc: FormDoc, result: EvalResult, title: string, prefix: string | null): void {
+function pushSection(sections: SheetSection[], doc: FormDoc, result: EvalResult, title: string, prefix: string | null): void {
   const keyOf = (id: string) => prefix ? `${prefix}.${id.slice(doc.id.length + 1)}` : id;
   if (!doc.lines.some((l) => result.derivations.has(keyOf(l.id)))) return;
-  lines.push(`== ${title} ==`);
+  const lines: SheetLine[] = [];
   for (const line of doc.lines) {
-    const der = result.derivations.get(keyOf(line.id));
+    const key = keyOf(line.id);
+    const der = result.derivations.get(key);
     if (!der) continue;
+    let shown = true;
     if (line.shown_when) {
       const cond = result.derivations.get(keyOf(line.shown_when))?.value;
-      if (cond?.kind === "bool" && !cond.value) continue; // the form does not report this entry on this line
+      if (cond?.kind === "bool" && !cond.value) shown = false; // the form does not report this entry on this line
     }
-    lines.push(`  ${line.printed.padEnd(3)} ${line.label}`);
-    lines.push(`      = ${fmtValue(der.value)}`);
-    if (der.cite) lines.push(`      cite: [${der.cite.doc}] ${der.cite.locator} (${der.cite.revision}; ${shortHash(der.cite.snapshot)})`);
-    if (der.notes.length > 0) lines.push(`      note: ${der.notes.join("; ")}`);
+    lines.push({ key, printed: line.printed, label: line.label, value: der.value, status: lineStatus(der.value), cite: der.cite,
+      notes: der.notes, shownWhen: line.shown_when ? keyOf(line.shown_when) : null, shown });
   }
-  lines.push("");
+  sections.push({ doc: doc.id, title, entry: prefix, lines });
 }
 
 /** A collection entry's section, followed by the sections of the entries nested under it. */
-function pushEntry(lines: string[], data: CanonicalData, doc: FormDoc, entry: string, result: EvalResult): void {
-  pushSection(lines, doc, result, `${doc.title} — ${entry}`, entry);
+function pushEntry(sections: SheetSection[], data: CanonicalData, doc: FormDoc, entry: string, result: EvalResult): void {
+  pushSection(sections, doc, result, `${doc.title} — ${entry}`, entry);
   for (const child of data.forms) {
     if (child.collection?.parent !== doc.id) continue;
-    for (const sub of entryKeys(child, entry, result)) pushEntry(lines, data, child, sub, result);
+    for (const sub of entryKeys(child, entry, result)) pushEntry(sections, data, child, sub, result);
   }
 }
 
-export function renderValuesSheet(data: CanonicalData, result: EvalResult, targetDocs: string[]): string {
-  const lines: string[] = [];
-  lines.push(`Values sheet — tax year ${YEAR} (not a complete return for all filers)`);
-  lines.push("");
+/** The values sheet of `result`: each form of `targetDocs` in printed order, line by line; collection entries under
+ * their parents; the path choices, the derivations and the standing notices. */
+export function valuesSheet(data: CanonicalData, result: EvalResult, targetDocs: string[]): ValuesSheet {
+  const sections: SheetSection[] = [];
   for (const docId of targetDocs) {
     const doc = [...data.forms].find((f) => f.id === docId);
     if (!doc) continue;
-    if (!doc.collection) { pushSection(lines, doc, result, doc.title, null); continue; }
+    if (!doc.collection) { pushSection(sections, doc, result, doc.title, null); continue; }
     if (doc.collection.parent) continue; // printed under its parent entry
-    for (const entry of entryKeys(doc, null, result)) pushEntry(lines, data, doc, entry, result);
+    for (const entry of entryKeys(doc, null, result)) pushEntry(sections, data, doc, entry, result);
   }
-  const choices = [...result.derivations.entries()].filter(([, d]) => d.op === "choose");
-  if (choices.length > 0) {
+  const choices = [...result.derivations.entries()].filter(([, d]) => d.op === "choose").map(([key, der]) => ({
+    key, value: der.value, ...(der.takenGuardIndex !== undefined ? { takenGuardIndex: der.takenGuardIndex } : {}),
+    guardsNotTaken: der.guardsNotTaken.map((g) => g.value) }));
+  const derivations = [...result.derivations.entries()].filter(([, der]) => der.operands.length)
+    .map(([key, der]) => ({ key, op: der.op, operands: der.operands }));
+  const interpretations = [...new Set([...result.derivations.values()].flatMap(d=>d.notes.filter(n=>n.startsWith("Interpretation "))))];
+  return { sections, choices, derivations, interpretations, notices: standingNotices() };
+}
+
+/** The text values sheet: a rendering of `valuesSheet`. */
+export function renderValuesSheetText(sheet: ValuesSheet): string {
+  const lines: string[] = [];
+  lines.push(`Values sheet — tax year ${YEAR} (not a complete return for all filers)`);
+  lines.push("");
+  for (const section of sheet.sections) {
+    lines.push(`== ${section.title} ==`);
+    for (const line of section.lines) {
+      if (!line.shown) continue;
+      lines.push(`  ${line.printed.padEnd(3)} ${line.label}`);
+      lines.push(`      = ${fmtValue(line.value)}`);
+      if (line.cite) lines.push(`      cite: [${line.cite.doc}] ${line.cite.locator} (${line.cite.revision}; ${shortHash(line.cite.snapshot)})`);
+      if (line.notes.length > 0) lines.push(`      note: ${line.notes.join("; ")}`);
+    }
+    lines.push("");
+  }
+  if (sheet.choices.length > 0) {
     lines.push(`Path choices (guard wording per the rendered worksheets in rendered/${YEAR}/):`);
-    for (const [key, der] of choices) {
-      lines.push(`  ${key}: chose ${fmtValue(der.value)}${der.takenGuardIndex !== undefined ? ` (guard ${der.takenGuardIndex})` : ""}`);
-      for (let gi = 0; gi < der.guardsNotTaken.length; gi++) {
-        const g = der.guardsNotTaken[gi]!;
-        lines.push(`      not taken: guard ${gi} = ${fmtValue(g.value)}`);
+    for (const choice of sheet.choices) {
+      lines.push(`  ${choice.key}: chose ${fmtValue(choice.value)}${choice.takenGuardIndex !== undefined ? ` (guard ${choice.takenGuardIndex})` : ""}`);
+      for (let gi = 0; gi < choice.guardsNotTaken.length; gi++) {
+        lines.push(`      not taken: guard ${gi} = ${fmtValue(choice.guardsNotTaken[gi]!)}`);
       }
     }
     lines.push("");
   }
   lines.push("Derivations:");
-  for (const [key, der] of result.derivations) {
-    if (der.operands.length) lines.push(`  ${key}: ${der.op}(${der.operands.map(o => `${o.ref} = ${fmtValue(o.value)}`).join("; ")})`);
+  for (const der of sheet.derivations) {
+    lines.push(`  ${der.key}: ${der.op}(${der.operands.map(o => `${o.ref} = ${fmtValue(o.value)}`).join("; ")})`);
   }
-  for (const note of new Set([...result.derivations.values()].flatMap(d=>d.notes.filter(n=>n.startsWith("Interpretation "))))) lines.push(note);
-  lines.push(...standingNotices());
+  lines.push(...sheet.interpretations);
+  lines.push(...sheet.notices);
   return lines.join("\n");
+}
+
+export function renderValuesSheet(data: CanonicalData, result: EvalResult, targetDocs: string[]): string {
+  return renderValuesSheetText(valuesSheet(data, result, targetDocs));
 }
 
 /** Spec 8's standing notices, closing every output: the values sheet, its HTML form and every JSON result. */

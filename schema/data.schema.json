@@ -55,14 +55,27 @@
                 "minLength": 1
               },
               "help": {
-                "type": "string",
-                "minLength": 1
+                "type": "string"
               },
               "order": {
                 "type": "integer"
               },
               "cite": {
                 "$ref": "#/$defs/cite"
+              },
+              "choices": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "object",
+                  "required": ["label", "value", "labels"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "label": { "type": "string", "minLength": 1 },
+                    "value": { "type": "array", "items": { "type": "string", "pattern": "^[a-zA-Z0-9_-]+$" } },
+                    "labels": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } }
+                  }
+                }
               }
             }
           }

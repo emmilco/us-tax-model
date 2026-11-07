@@ -40,15 +40,58 @@ differs from the log's is an error. A log is pinned to 2025 and is not usable as
 tax year. Every command takes `--year N` (default: the newest year in `years.json`).
 
 Each response is JSON with `status` (`incomplete`, `complete` or `refused`), the next
-`question` (its `input`, `prompt`, `help`, `order` and `cite`, and `helpRequested`), the
-`refusal` if any, `reachableInputs`, the profile's `scope` sentence, the standing
-`notices`, the `values` with derivations, and a text `sheet`.
+`question` (its `input`, `prompt`, `help`, `order` and `cite`, `helpRequested`, `entry`, a
+hint for typing the answer as `--value` JSON from the input's type, and `choices` for a
+roster with a fixed set of answers, such as `$person`), the
+`pending` questions (every question still reachable, in asking order, in the same form),
+the `refusal` if any, `reachableInputs`, the profile's `scope` sentence, the standing
+`notices`, the `values` with derivations, and a text `sheet`. `question` is null once the
+return is complete or refused; `pending` continues after a refusal, because on an
+incomplete return a later answer may clear it. A refusal is final only when nothing is
+pending.
 
 Answer using the question's exact `input` key. `--value` is JSON: `false`, `620000`,
 `"single"`, `null` or `["employer_a","employer_b"]`. `null` requests help: the value
 stays unknown and the same question is asked again with `helpRequested` set. A blank
 printed money box must be entered as zero if that is the intended answer; unanswered
 questions never default to zero. Questions are asked in bank order, then by key.
+
+## Web UI
+
+`serve` runs a local, single-user page (`ui/`) over the `ny` profile (the federal questions,
+then the New York ones), with the interview on the left and the federal and New York values
+sheets on the right; a sheet line opens its derivation (operation, citation, operands,
+guards not taken, notes and the answers it depends on):
+
+```sh
+node engine/dist/main.js serve --dir /path/to/returns [--port 8791]
+```
+
+`--dir` is required and names the directory of answer logs, one `<name>.jsonl` per return,
+in the format above (the CLI reads and answers the same logs). The server refuses a
+directory that is missing, inside the repository (resolved through symlinks) or readable by
+group or others; it creates logs mode 0600 and never overwrites one. It listens on
+127.0.0.1 only and refuses requests whose `Host` is not `127.0.0.1:<port>` or
+`localhost:<port>`, and POSTs whose `Origin` is not that same origin. Answers go through the
+same validation as `interview answer` (`applyAnswer` in `interview.ts`); a rejected answer
+is a 400 and nothing is written. The page sends money as integer cents and never sends a
+blank amount as zero. Yes/no questions, enums and rosters with `choices` are selectors. An
+open roster is entered as a list of labels the user types ("Acme Corp"); the page derives
+each new entry's key from its label (lowercase, other characters to `_`, a numeric suffix
+when the key is taken), an edited label keeps its entry's key, and the page shows labels,
+not keys. The labels are saved on the roster answer's event as `labels`, a map from entry
+key to label, which replay ignores. Its API:
+
+| Route | Does |
+|---|---|
+| `GET /api/returns` | the return logs in the directory, the scope sentence and the notices |
+| `POST /api/returns` `{name}` | starts a log (profile `ny`); an existing name is refused |
+| `GET /api/returns/:name` | the state: the CLI's fields, `pending` with each input's `type` (and enum `values`), `refusalFinal`, the structured `sheets` (federal and New York), the `answered` questions, the `entryLabels` (entry path to label) and the lines the last answer `changed` |
+| `POST /api/returns/:name/answer` `{input, value[, labels]}` | appends the answer and returns the new state, or 400 with the reason |
+
+`test-serve` (in `check-all`) tests the server on synthetic returns in temporary
+directories; `ui/test_browser.mjs` is a smoke test of the page in a separately launched
+headless Chrome, run by hand.
 
 ## The answer log
 
@@ -131,4 +174,11 @@ an input's `order` and `help`. Its prompt is filled at build from the form line'
 question text, after its collection's frame (for example "For this business — "), and
 its citation from the line (a roster question's from its collection). An entry states a
 `prompt` or `cite` only for interview wording the line does not carry; the build fails
-if it repeats the line's.
+if it repeats the line's. `help` is optional. A roster with a fixed set of answers lists
+them as `choices` (a label, the entry keys and a label for each key), which the page shows
+as a selector.
+
+Wording says what to answer, not how to type it: the build fails when a filled prompt or
+help states entry syntax (`entrySyntax` in `interview.ts`: cents, integer, whole number,
+true or false, JSON, null, a list literal such as `[]`, entry keys). Each client states
+entry syntax itself, the CLI in the question's `entry` hint and the page in its widgets.

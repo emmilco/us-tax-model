@@ -139,10 +139,10 @@ bank:
     help: This tool totals New York withholding from Forms W-2 only.
   - input: $ny_it2
     order: 1032
-    prompt: Which Forms W-2 did you receive? List one key per Form W-2 (for example ["a", "b"]), even for a W-2
-      that shows no New York wages or tax.
-    help: One record per Form W-2 you received, keyed as on your federal Forms W-2, even if it shows no New York
-      wages or tax (Form IT-2).
+    prompt: Which Forms W-2 did you receive? List each Form W-2, one entry per form, even a W-2 that shows no New York wages or
+      tax.
+    help: One record per Form W-2 you received (Form IT-2), even if it shows no New York wages or tax; labelling them as you
+      labelled your federal Forms W-2 makes them easier to match.
   - input: ny_it2.state_withheld
     order: 1033
     help: Box 17 of the Form W-2, the state income tax withheld, where box 15 shows NY. Enter 0 if none.

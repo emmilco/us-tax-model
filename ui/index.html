@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2025 return: federal and New York</title>
+<link rel="stylesheet" href="/style.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<header id="top">
+  <div class="bar">
+    <h1>2025 return <span id="return-name"></span></h1>
+    <nav id="returns">
+      <select id="return-select" aria-label="Open a return"></select>
+      <form id="new-return">
+        <input id="new-name" placeholder="new return name" aria-label="New return name" autocomplete="off" spellcheck="false">
+        <button type="submit">Start</button>
+      </form>
+    </nav>
+  </div>
+  <p id="scope" class="scope"></p>
+  <p id="status-banner" class="banner" hidden></p>
+</header>
+<main id="app">
+  <section id="interview" aria-label="Interview">
+    <div id="question-panel"></div>
+    <h2>Answered <span id="answered-count" class="muted"></span></h2>
+    <ol id="answered"></ol>
+  </section>
+  <section id="sheets" aria-label="Values sheets">
+    <div id="derivation" hidden></div>
+    <div class="tabs" role="tablist">
+      <button role="tab" data-sheet="federal" aria-selected="true">Federal</button>
+      <button role="tab" data-sheet="newYork" aria-selected="false">New York</button>
+      <label class="muted"><input type="checkbox" id="changed-only"> lines changed by the last answer only</label>
+    </div>
+    <div id="sheet"></div>
+  </section>
+</main>
+<footer id="notices"></footer>
+<p id="error" role="alert" hidden></p>
+</body>
+</html>

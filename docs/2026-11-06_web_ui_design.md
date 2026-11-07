@@ -1,6 +1,6 @@
 # T-236 web UI pilot: design
 
-Status: proposed, awaiting owner approval. Readback confirmed by the owner 2026-11-06.
+Status: approved by the owner 2026-11-06, with the second-pass addendum at the end (approved 2026-11-06).
 
 ## Goal
 
@@ -27,7 +27,7 @@ PDFs (T-252), both due before the pilot closes.
 
 The UI is a client of the interview code (`engine/src/interview.ts`), as the CLI is. It holds no tax logic.
 
-- **Server:** a new CLI command, `node engine/dist/main.js serve [--dir <returns dir>] [--port N]`, in
+- **Server:** a new CLI command, `node engine/dist/main.js serve --dir <returns dir> [--port N]`, in
   `engine/src/serve.ts`. Node's built-in `http`, no new dependencies. It loads the canonical data once and keeps it
   in memory; each request replays the return's answer log, as the CLI does.
 - **Page:** static files in a new top-level `ui/` (one HTML page, one script compiled from TypeScript with the
@@ -108,3 +108,41 @@ The UI is a client of the interview code (`engine/src/interview.ts`), as the CLI
 
 Question ordering (T-251), filled PDFs (T-252), printing, multiple users, lab-server or phone access, comparing
 against the filed return inside the app (the owner compares by eye), and tax years other than 2025.
+
+## Addendum: second pass (owner, 2026-11-06)
+
+The owner's first use found that the question bank is written for the command line: entry syntax in the wording
+("Answer true or false", "Money is integer cents", JSON lists), raw entry keys asked of the user, and citations that
+read as instructions for what to type (the first question, `$person`, asks for keys while its citation quotes the 1040's
+name lines, so a typed name is rejected). This pass fixes the presentation; it changes no tax logic.
+
+1. **Entry syntax out of the wording.** Sentences that only state how to type an answer are removed from the
+   question bank's prompts and help; substance in the same sentence stays. Each client states entry syntax from the
+   input's type instead: the CLI's question gains an `entry` hint (for example "true or false", "integer cents, e.g.
+   620000", "one of: single, mfj, ..."), and the page's widget needs none. A check in `check-all` fails when a prompt
+   or help text states entry syntax again.
+2. **Selector rule.** Any input with a fixed set of possible answers is a selector, never a text box: yes/no inputs,
+   enums, and `$person`, presented as "Just me" / "Me and my spouse (joint return)" and stored as the usual keys.
+   Bounded counts (months 0 to 12, percentages) become selectors once their ranges are recorded in the data, which
+   the review in T-253 does.
+3. **Determined inputs are not asked.** An input whose answer follows from other answers (`person.role` equals its
+   entry's key) is answered by the page automatically, shown in the answered list as set automatically, and never
+   presented as a question.
+4. **Roster labels.** Open rosters (employers, payers, sales, dependents, ...) are entered as an "Add" list of labels the
+   owner types (for example "Acme Corp"). The page derives each entry key from its label (lowercase, non-alphanumerics
+   to `_`, a numeric suffix on collision) and shows labels, not keys, everywhere. Labels are saved in the answer log, on
+   the roster answer's event as a `labels` map from key to label; replay ignores the field. Logs are outside the
+   repository, so labels never enter it. The help keeps each roster's meaning (for `$w2`, one entry per distinct
+   employer).
+5. **Citations as sources.** A question's citation is shown under "Source", labelled as the form line or instruction
+   the question comes from, never as instructions for what to type.
+
+The review of every question's accepted values against its cited instructions (bounded ranges, inputs whose type
+looks wrong, such as `scveh.placed_date` and `person.sep_rate` as counts) is T-253, after this pass and before the owner
+resumes the interview with real data.
+
+## Standing rules for the interview layer (owner, 2026-11-06)
+
+The interview may only word, format, order, group and label; it never sets an input, and only the formal model's
+reachability makes a question disappear. The rules, their enforcement and the rare-situation pages are in
+`docs/2026-11-06_formal_gates_design.md`, which governs this UI from here on.

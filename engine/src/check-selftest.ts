@@ -2,6 +2,7 @@
 // flag a constructed violation and pass the corresponding clean case.
 import assert from "node:assert/strict";
 import { registerLinkProblems, tableBandMonoProblems } from "./check.js";
+import { entrySyntax } from "./interview.js";
 import type { CanonicalData, RegisterEntry, TableDoc } from "./types.js";
 
 function table(bands: { at_least: number; less_than: number; tax: number[] }[]): TableDoc {
@@ -31,5 +32,20 @@ export function runCheckSelfTest(): void {
   assert.match(registerLinkProblems(data([entry("amb.a"), entry("amb.b")], ["amb.a"])).join("\n"), /register amb\.b: no line links this entry/);
   assert.match(registerLinkProblems(data([entry("amb.b", { unlinked: "  " })], [])).join("\n"), /register amb\.b: no line links/);
   assert.match(registerLinkProblems(data([entry("amb.a", { unlinked: "superseded" })], ["amb.a"])).join("\n"), /carries an unlinked reason/);
-  console.log("check self-test: 9 cases passed (tableBand_mono condition, register links)");
+
+  // Entry syntax in question wording: the forms the question bank used, and substance it must not flag.
+  const syntax = [
+    "Money is integer cents.", "In cents; zero if none.", "Answer true or false.", "Answer true/false for questions; a count is a whole number.",
+    "Unknown may be null; do not guess.", "Enter a JSON array of distinct keys.", "Empty [] means none.",
+    'Enter ["taxpayer"], or ["taxpayer","spouse"] if you are married filing jointly.', "List stable keys for taxable interest payers.",
+    "Answer taxpayer for the entry keyed taxpayer and spouse for the entry keyed spouse.", "Integer cents.", "A whole number.",
+  ];
+  for (const s of syntax) assert.ok(entrySyntax(s), `entry syntax not flagged: ${s}`);
+  const substance = [
+    "Zero if none.", "Answer No if you have none.", "Yes refuses the return.", "Enter 0 if none; Yonkers tax is outside this tool.",
+    "The percentage of this property's use that is for this business, from 1 to 100.", "List the employers that gave you a Form W-2, one entry per employer.",
+    "Line 7 of your 2024 Schedule D; a loss (printed in parentheses) is entered as a negative amount.", "Box 12 holds up to four amounts, each with a code of one or two letters.",
+  ];
+  for (const s of substance) assert.equal(entrySyntax(s), null, `substance flagged as entry syntax: ${s}`);
+  console.log(`check self-test: ${9 + syntax.length + substance.length} cases passed (tableBand_mono condition, register links, entry syntax in question wording)`);
 }

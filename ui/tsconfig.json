@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2023",
+    "module": "es2022",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "lib": ["es2023", "dom", "dom.iterable"],
+    "outDir": "dist",
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "types": []
+  },
+  "files": ["app.ts"]
+}

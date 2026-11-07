@@ -165,6 +165,8 @@ step conjecture "${node[@]}" conjecture "$@"
 step test_fixtures "${node[@]}" test-fixtures "$@"
 step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs "$@"
 step test_integration "${node[@]}" test-integration "$@"
+# The web UI server (serve): synthetic returns in temporary directories, compared with the CLI and the fixtures.
+step test_serve "${node[@]}" test-serve "$@"
 step human_review python3 tools/human_review/test_review.py "$@"
 step classm_job_seeds "${node[0]}" tools/transcription/test_classm_jobs.mjs "$@"
 step coverage "${node[@]}" coverage "$@"
