@@ -2331,19 +2331,23 @@
  },
  {
   "form": "f8880",
-  "prompt_sha": "bb56d1d013d334d269a7c4c7462a52c0c8b8c3000abb40413ad9f626172634cb",
+  "prompt_sha": "c92791fc0dc296b0ae51bef28cbd79f80afad1e701c2ab99fcb9301bd41b9298",
   "claims": [
    {
     "item": "f8880.line2a",
     "sentences": [
      {
-      "quote": "Note: Contributions designated under section 414(h)(2) are treated as employer contributions and, as such, they aren’t voluntary contributions made by the employee. They don’t qualify for the credit and shouldn’t be included on line 2.",
+      "quote": "Contributions designated under section 414(h)(2) are treated as employer contributions and, as such, they aren’t voluntary contributions made by the employee.",
+      "page": "f8880 p. 2"
+     },
+     {
+      "quote": "They don’t qualify for the credit and shouldn’t be included on line 2.",
       "page": "f8880 p. 2"
      }
     ],
-    "quote": "Note: Contributions designated under section 414(h)(2) are treated as employer contributions and, as such, they aren’t voluntary contributions made by the employee. They don’t qualify for the credit and shouldn’t be included on line 2.",
+    "quote": "Contributions designated under section 414(h)(2) are treated as employer contributions and, as such, they aren’t voluntary contributions made by the employee. / They don’t qualify for the credit and shouldn’t be included on line 2.",
     "page": "f8880 p. 2",
-    "why_uncovered": "Lines 2(a) and 2(b) take elective deferrals, voluntary employee contributions and 501(c)(18)(D) contributions. No listed line, question or refusal excludes contributions designated under section 414(h)(2), such as government employer pick-up contributions. No helper separates them from the voluntary employee contributions counted on line 2. The same gap applies to line 2(b).",
+    "why_uncovered": "Lines 2(a) and 2(b) cite only the form line. No question, refusal or stated rule excludes contributions designated under section 414(h)(2), which are often reported on Form W-2 as employee contributions. Nothing on any other form's list handles them. Line 2(b) has the same gap for the spouse's column.",
     "closest_item": "f8880.line2a",
     "effect": "amount"
    }
@@ -2357,7 +2361,7 @@
     ]
    }
   ],
-  "cost": 0.077908,
+  "cost": 0.083496,
   "model": "claude-opus-5-5"
  },
  {

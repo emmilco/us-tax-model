@@ -605,18 +605,6 @@ form:
       doc: f8880
       locator: 'p. 1, Caution, "The amount on Form 1040, 1040-SR, or 1040-NR, line 11a, is more than $39,500 ($59,250 if head
         of household; $79,000 if married filing jointly)"'
-  - id: f8880.line3_total
-    printed: (helper)
-    label: Line 3, columns (a) and (b) together
-    type: NonNegDollars
-    expr:
-      op: sum
-      of:
-      - f8880.line3a
-      - f8880.line3b
-    cite:
-      doc: f8880
-      locator: 'p. 1, "(a) You", "(b) Your spouse", "Add lines 1 and 2" (line 3, both columns), "Add the amounts on line 6. If zero, stop; you can’t take this credit" (line 7: with no contributions in either column, line 7 is zero)'
   - id: f8880.no
     printed: (helper)
     label: Year parameter savers.no_credit (false)
@@ -651,22 +639,104 @@ form:
     cite:
       doc: f8880
       locator: 'p. 2, Credit Limit Worksheet, "But if zero or less, stop", "you can’t take the credit—don’t file this form"'
+  - id: f8880.line3a_counted
+    printed: (helper)
+    label: Line 3, column (a), where you can take the credit for your own contributions; zero where you cannot
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8880.elig_a
+          - const: true
+        then: f8880.line3a
+      - guard:
+          op: test
+          eq:
+          - f8880.elig_a
+          - const: false
+        then: f8880.zero
+    cite:
+      doc: f8880
+      locator: 'p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was born after January 1, 2008"'
+    ambiguity: amb.2025.savers_ineligible_column
+  - id: f8880.line3b_counted
+    printed: (helper)
+    label: Line 3, column (b), where your spouse can take the credit for your spouse's own contributions; zero where your
+      spouse cannot
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8880.elig_b
+          - const: true
+        then: f8880.line3b
+      - guard:
+          op: test
+          eq:
+          - f8880.elig_b
+          - const: false
+        then: f8880.zero
+    cite:
+      doc: f8880
+      locator: 'p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; "was born after January 1, 2008"'
+    ambiguity: amb.2025.savers_ineligible_column
+  - id: f8880.contrib_counted
+    printed: (helper)
+    label: Line 3 in the columns of persons who can take the credit, together
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8880.line3a_counted
+      - f8880.line3b_counted
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit" (with no contributions in a column
+        whose person can take the credit, line 6 is zero in both columns)'
   - id: f8880.has_contrib
     printed: (helper)
-    label: Contributions in a column (line 3, columns (a) and (b) together, more than zero)
+    label: Contributions in a column whose person can take the credit
     type: Bool
     expr:
       op: test
       gt:
-      - f8880.line3_total
+      - f8880.contrib_counted
       - param: sales.zero
     cite:
       doc: f8880
-      locator: 'Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit" (with no contributions in either column,
-        line 7 is zero)'
+      locator: 'Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit"'
+  - id: f8880.can_take_contrib
+    printed: (helper)
+    label: 'With line 8 within the limit and the Credit Limit Worksheet line 3 more than zero: contributions in a column
+      whose person can take the credit, then line 7 more than zero'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8880.has_contrib
+          - const: true
+        then: f8880.past7
+      - guard:
+          op: test
+          eq:
+          - f8880.has_contrib
+          - const: false
+        then: f8880.no
+    cite:
+      doc: f8880
+      locator: 'Form 8880 (2025), line 7, "If zero, stop; you can’t take this credit"'
   - id: f8880.can_take_tax
     printed: (helper)
-    label: 'With contributions and line 8 within the limit: the Credit Limit Worksheet line 3 more than zero, then line 7
+    label: 'With line 8 within the limit: the Credit Limit Worksheet line 3 more than zero, then contributions and line 7
       more than zero'
     type: Bool
     expr:
@@ -677,7 +747,7 @@ form:
           eq:
           - f8880.clw_room
           - const: true
-        then: f8880.past7
+        then: f8880.can_take_contrib
       - guard:
           op: test
           eq:
@@ -687,10 +757,11 @@ form:
     cite:
       doc: f8880
       locator: 'p. 2, Credit Limit Worksheet, "But if zero or less, stop", "you can’t take the credit—don’t file this form"'
-  - id: f8880.can_take_agi
+  - id: f8880.can_take
     printed: (helper)
-    label: 'With contributions in a column: line 8 not more than the limit, then the Credit Limit Worksheet line 3 more
-      than zero, then line 7 more than zero'
+    label: 'The credit is figured: line 8 not more than the limit (so line 9 is not zero), then the Credit Limit Worksheet
+      line 3 more than zero, then contributions in a column whose person can take the credit (each column''s eligibility
+      asked before its contributions), then line 7 more than zero'
     type: Bool
     expr:
       op: choose
@@ -705,30 +776,6 @@ form:
           op: test
           eq:
           - f8880.within_limit
-          - const: false
-        then: f8880.no
-    cite:
-      doc: f8880
-      locator: 'p. 2, Who Can Take This Credit, "However, you can’t take the credit if either of the following applies"; p. 1, Caution, "line 11a, is more than $39,500"; line 9, "Note: If line 9 is zero, stop; you can’t take this credit"'
-  - id: f8880.can_take
-    printed: (helper)
-    label: 'The credit is figured, in the form''s order: contributions in a column (with none, line 7 is zero), then line
-      8 not more than the limit (so line 9 is not zero), then the Credit Limit Worksheet line 3 more than zero, then line
-      7 more than zero (each column''s eligibility is asked before its line 6)'
-    type: Bool
-    expr:
-      op: choose
-      alternatives:
-      - guard:
-          op: test
-          eq:
-          - f8880.has_contrib
-          - const: true
-        then: f8880.can_take_agi
-      - guard:
-          op: test
-          eq:
-          - f8880.has_contrib
           - const: false
         then: f8880.no
     cite:

@@ -73,6 +73,39 @@
    "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b"
   },
   {
+   "case": "classm.f8880.2",
+   "printed": "2(b)",
+   "project": "$13,606.00",
+   "model": "$0.00",
+   "ruling": "Ruling: ambiguity; amb.2025.savers_ineligible_column; model value dropped from the fixture (the non-chosen placement), as the prior rulings of this case kind. The spouse was born after January 1, 2008 (person[spouse].sav_born false) and so cannot take the credit for that column's contributions (f8880 p. 2, Who Can Take This Credit, \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else's 2025 tax return; or (c) was a student\"). The register's owner decision: \"an ineligible spouse's own column is zero (line 6 of that column)\", chosen as f8880.line6a/6b through f8880.elig_a/elig_b; the model zeroes the column at line 2(b) instead. Line 6 and line 7 agree on both sides.",
+   "drop": true,
+   "context": "5695d979f00ceb3654ca6342c6e45e4b5d9913a91d142846f7f26a4f5a2f9cab",
+   "date": "2026-11-07",
+   "run": "a2117478002db2d5a14321e1b7afe45477cde019bd501c6584ec5026e0498ba6"
+  },
+  {
+   "case": "classm.f8880.2",
+   "printed": "3(b)",
+   "project": "$13,606.00",
+   "model": "$0.00",
+   "ruling": "Ruling: ambiguity; amb.2025.savers_ineligible_column; model value dropped from the fixture (the non-chosen placement), as the prior rulings of this case kind. The spouse was born after January 1, 2008 (person[spouse].sav_born false) and so cannot take the credit for that column's contributions (f8880 p. 2, Who Can Take This Credit, \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else's 2025 tax return; or (c) was a student\"). The register's owner decision: \"an ineligible spouse's own column is zero (line 6 of that column)\", chosen as f8880.line6a/6b through f8880.elig_a/elig_b; the model zeroes the column at line 2(b) instead. Line 6 and line 7 agree on both sides.",
+   "drop": true,
+   "context": "5695d979f00ceb3654ca6342c6e45e4b5d9913a91d142846f7f26a4f5a2f9cab",
+   "date": "2026-11-07",
+   "run": "a2117478002db2d5a14321e1b7afe45477cde019bd501c6584ec5026e0498ba6"
+  },
+  {
+   "case": "classm.f8880.2",
+   "printed": "5(b)",
+   "project": "$13,606.00",
+   "model": "$0.00",
+   "ruling": "Ruling: ambiguity; amb.2025.savers_ineligible_column; model value dropped from the fixture (the non-chosen placement), as the prior rulings of this case kind. The spouse was born after January 1, 2008 (person[spouse].sav_born false) and so cannot take the credit for that column's contributions (f8880 p. 2, Who Can Take This Credit, \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else's 2025 tax return; or (c) was a student\"). The register's owner decision: \"an ineligible spouse's own column is zero (line 6 of that column)\", chosen as f8880.line6a/6b through f8880.elig_a/elig_b; the model zeroes the column at line 2(b) instead. Line 6 and line 7 agree on both sides.",
+   "drop": true,
+   "context": "5695d979f00ceb3654ca6342c6e45e4b5d9913a91d142846f7f26a4f5a2f9cab",
+   "date": "2026-11-07",
+   "run": "a2117478002db2d5a14321e1b7afe45477cde019bd501c6584ec5026e0498ba6"
+  },
+  {
    "case": "classm.f8880.3",
    "printed": "(CLW 1)",
    "project": "$0.00",
@@ -101,6 +134,17 @@
   },
   {
    "case": "classm.f8880.3",
+   "printed": "2(a)",
+   "project": "$1,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: ambiguity; amb.2025.savers_ineligible_column; model value dropped from the fixture (the non-chosen placement), as the prior rulings of this case kind. The filer was a student (person[taxpayer].sav_student true) and so cannot take the credit for that column's contributions (f8880 p. 2, Who Can Take This Credit, \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else's 2025 tax return; or (c) was a student\"). The register's owner decision: \"an ineligible person's own column is zero (line 6 of that column)\", chosen as f8880.line6a/6b through f8880.elig_a/elig_b; the model zeroes the column at line 2(a) instead. Line 6 and line 7 agree on both sides.",
+   "drop": true,
+   "context": "5695d979f00ceb3654ca6342c6e45e4b5d9913a91d142846f7f26a4f5a2f9cab",
+   "date": "2026-11-07",
+   "run": "102062fc20a00acdad9e4f71aae4dfb6df872a257dc0744a7e6f22ea8ef9ef43"
+  },
+  {
+   "case": "classm.f8880.3",
    "printed": "2(b)",
    "project": "$15,497.00",
    "model": "$0.00",
@@ -109,6 +153,17 @@
    "context": "bfeee6182dbbf496f4db9edee197e1c5c860cb4f39bf622d29626563193c4fa0",
    "date": "2026-11-07",
    "run": "4c4d9e70152063e84d7c2795bc1d515c216e01eeeecc4a717a9f8263d1528ca2"
+  },
+  {
+   "case": "classm.f8880.3",
+   "printed": "3(a)",
+   "project": "$1,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: ambiguity; amb.2025.savers_ineligible_column; model value dropped from the fixture (the non-chosen placement), as the prior rulings of this case kind. The filer was a student (person[taxpayer].sav_student true) and so cannot take the credit for that column's contributions (f8880 p. 2, Who Can Take This Credit, \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else's 2025 tax return; or (c) was a student\"). The register's owner decision: \"an ineligible person's own column is zero (line 6 of that column)\", chosen as f8880.line6a/6b through f8880.elig_a/elig_b; the model zeroes the column at line 2(a) instead. Line 6 and line 7 agree on both sides.",
+   "drop": true,
+   "context": "5695d979f00ceb3654ca6342c6e45e4b5d9913a91d142846f7f26a4f5a2f9cab",
+   "date": "2026-11-07",
+   "run": "102062fc20a00acdad9e4f71aae4dfb6df872a257dc0744a7e6f22ea8ef9ef43"
   },
   {
    "case": "classm.f8880.3",

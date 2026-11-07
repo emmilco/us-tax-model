@@ -9,7 +9,7 @@ The refusal properties of spec 6.3 checked over 400 generated returns with New Y
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 370; cases with a line that has both a refused and an unknown operand (the order this property guards): 278; cases with a choose stopped at an unknown guard: 384, of which 26 have one refused on every way it can still resolve.
+- Cases with a refused operand somewhere: 370; cases with a line that has both a refused and an unknown operand (the order this property guards): 277; cases with a choose stopped at an unknown guard: 384, of which 26 have one refused on every way it can still resolve.
 
 ## Branch coverage of the generated corpus
 

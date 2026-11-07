@@ -315,8 +315,8 @@
   "unruled:f8880#1": {
    "class": "covered",
    "line": "person.sav_voluntary",
-   "prompt_sha": "bb56d1d013d334d269a7c4c7462a52c0c8b8c3000abb40413ad9f626172634cb",
-   "evidence": "f8880 p. 2 (as the prior ruling; the claim repeats it). Line 2 is person.sav_line2 = person.sav_w2 (Form W-2 box 12 deferrals) + person.sav_voluntary + person.sav_simple. person.sav_voluntary excludes 'contributions designated under section 414(h)(2) (treated as employer contributions)'. Pick-ups are shown in box 14, not as box 12 deferrals, so they do not reach person.sav_w2. The gate round changed only f8880.can_take's order."
+   "prompt_sha": "c92791fc0dc296b0ae51bef28cbd79f80afad1e701c2ab99fcb9301bd41b9298",
+   "evidence": "f8880 p. 2 (as the prior ruling; the claim repeats it). Line 2 is person.sav_line2 = person.sav_w2 (Form W-2 box 12 deferrals) + person.sav_voluntary + person.sav_simple. person.sav_voluntary's question excludes 'contributions designated under section 414(h)(2) (treated as employer contributions)'. Pick-ups are shown in box 14, not as box 12 deferrals, so they do not reach person.sav_w2. The round changed only the order of f8880.can_take (AGI first) and which contributions its test counts."
   },
   "unruled:f8889#1": {
    "class": "real gap",

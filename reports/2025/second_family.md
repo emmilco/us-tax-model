@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 135 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.2% (292/4038 second-family lines judged; pending reviews are provisional); 62 eligible, 73 pending; raw agreement 81.8% (diagnostic only); current independence yield 151 line(s); both families disputed 522
+Summary: 135 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.1% (287/4048 second-family lines judged; pending reviews are provisional); 63 eligible, 72 pending; raw agreement 81.8% (diagnostic only); current independence yield 152 line(s); both families disputed 516
 
 Written by `tools/transcription/compare_families.py` on 2026-11-07 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -892,7 +892,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f5329 | deepseek (deepseek-flash) | 21 | 21 | 100.0% | 0/21 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f5695 | deepseek (deepseek-flash) | 340 | 338 | 99.4% | 2/343 (0.6%) | pass | 2 | 0 | 0 | 236 |
 | f8863 | deepseek (deepseek-flash) | 65 | 65 | 100.0% | 0/65 (0.0%) | pending | 0 | 0 | 0 | 2 |
-| f8880 | deepseek (deepseek-flash) | 48 | 38 | 79.2% | 10/48 (20.8%) | pending | 4 | 6 | 0 | 12 |
+| f8880 | deepseek (deepseek-flash) | 58 | 48 | 82.8% | 5/58 (8.6%) | pass | 5 | 0 | 5 | 12 |
 | f8889 | deepseek (deepseek-flash) | 135 | 132 | 97.8% | 0/135 (0.0%) | pass | 0 | 0 | 3 | 0 |
 | f8960 | deepseek (deepseek-flash) | 75 | 75 | 100.0% | 0/75 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f8962 | deepseek (deepseek-flash) | 171 | 162 | 94.7% | 0/171 (0.0%) | pass | 0 | 0 | 9 | 0 |
@@ -905,7 +905,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | sd | deepseek (deepseek-flash) | 41 | 41 | 100.0% | 0/41 (0.0%) | pending | 0 | 0 | 0 | 97 |
 | u1250 | deepseek (deepseek-flash) | 18 | 18 | 100.0% | 0/18 (0.0%) | pass | 0 | 0 | 0 | 18 |
 | w2 | deepseek (deepseek-flash) | 39 | 39 | 100.0% | 0/39 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1880 | 1853 | 98.6% | | | 7 | 7 | 13 | 635 |
+| **all** | | 1890 | 1863 | 98.6% | | | 8 | 1 | 18 | 635 |
 
 Pending clcw26 [deepseek]: 5 missing expected lines.
 Pending eic [deepseek]: 19 missing expected lines; 50 unexpected line keys.
@@ -914,7 +914,6 @@ Pending f1095a [deepseek]: 19 unexpected line keys.
 Pending f1095a [gpt]: 19 unexpected line keys.
 Pending f2441 [deepseek]: 2 missing expected lines.
 Pending f8863 [deepseek]: 1 missing expected lines.
-Pending f8880 [deepseek]: model-error noise above 10%.
 Pending g28 [deepseek]: 11 missing expected lines.
 Pending person [deepseek]: model-error noise above 10%.
 Pending s3 [deepseek]: 10 missing expected lines.
@@ -928,19 +927,14 @@ Pending sd [deepseek]: 32 missing expected lines.
 | f1095a | deepseek | classm.f1095a.1 — f1095a[mkt_b].line33c | DISAGREE | model gave $1,578.00; work: Given line 33, column C. |
 | f5695 | deepseek | classm.f5695.11 — 14 | DISAGREE | model gave $0.00; work: 9,055.00 − 600.00 energy credit − 8,455.00 child tax credit − other 0 = 0.00; zero or less, enter -0- |
 | f5695 | deepseek | classm.f5695.6 — 14 | DISAGREE | model gave $0.00; work: 6855 - (2300 + 4555) = 0; zero or less, enter -0-. |
-| f8880 | deepseek | classm.f8880.3 — 6(b) | DISAGREE | model gave $2,000.00; work: smaller of 30,994 or 2,000 = 2,000 |
-| f8880 | deepseek | classm.f8880.3 — 7 | DISAGREE | model gave $2,000.00; work: 0 + 2,000 = 2,000 |
-| f8880 | deepseek | classm.f8880.4 — 6(a) | DISAGREE | model gave $2,000.00; work: Smaller of line 5(a) $7,534.00 or $2,000.00 = $2,000.00 |
-| f8880 | deepseek | classm.f8880.4 — 7 | DISAGREE | model gave $2,000.00; work: Add line 6: $2,000.00 + $0.00 = $2,000.00 |
+| f8880 | deepseek | classm.f8880.2 — 6(b) | DISAGREE | model gave $2,000.00; work: smaller of 13606.00 or 2000.00 = 2000.00 |
+| f8880 | deepseek | classm.f8880.2 — 7 | DISAGREE | model gave $4,000.00; work: 2000.00 + 2000.00 = 4000.00 |
+| f8880 | deepseek | classm.f8880.4 — 2(a) | DISAGREE | model gave $23,976.00; work: Taxpayer line 2 entries sum: 11,988.00 + 11,988.00 = 23,976.00 |
+| f8880 | deepseek | classm.f8880.4 — 3(a) | DISAGREE | model gave $23,976.00; work: 0.00 + 23,976.00 = 23,976.00 |
+| f8880 | deepseek | classm.f8880.4 — 5(a) | DISAGREE | model gave $23,976.00; work: 23,976.00 - 0.00 = 23,976.00 |
 
 ### Lines both families disputed
 
 | form | second family | line | Claude | second family | second family's reason |
 | --- | --- | --- | --- | --- | --- |
-| f8880 | deepseek | classm.f8880.3 — 2(b) | DISAGREE | DISAGREE | model gave $30,994.00; work: Spouse elective deferrals: $15,497 + $15,497 = $30,994 |
-| f8880 | deepseek | classm.f8880.3 — 3(b) | DISAGREE | DISAGREE | model gave $30,994.00; work: 0 + 30,994 = 30,994 |
-| f8880 | deepseek | classm.f8880.3 — 5(b) | DISAGREE | DISAGREE | model gave $30,994.00; work: 30,994 - 0 = 30,994 |
-| f8880 | deepseek | classm.f8880.4 — 2(a) | DISAGREE | DISAGREE | model gave $7,534.00; work: Sum of taxpayer line 2 entries: $3,767.00 + $3,767.00 = $7,534.00 |
-| f8880 | deepseek | classm.f8880.4 — 3(a) | DISAGREE | DISAGREE | model gave $7,534.00; work: Line 1(a) $0.00 + line 2(a) $7,534.00 = $7,534.00 |
-| f8880 | deepseek | classm.f8880.4 — 5(a) | DISAGREE | DISAGREE | model gave $7,534.00; work: Line 3(a) $7,534.00 - line 4(a) $0.00 = $7,534.00 |
 | person | deepseek | classm.person.1 — person[taxpayer].wages | DISAGREE | DISAGREE | model gave $29,524.00; work: Total W-2 wages: $29,524.00 + $0.00 = $29,524.00. |
