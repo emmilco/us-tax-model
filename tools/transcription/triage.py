@@ -14,6 +14,8 @@ reference validation is reported as `candidate-invalid` and listed in `invalid_l
 Usage: triage.py --form sd [--family deepseek] [--generated 500] [--seed 20261026] [--partial-bases 40]
        triage.py --form sd [--family deepseek] --explain <handle> [--witness N] [--completed] [--depth 6]
 --completed indexes the line's separate sample of witnesses on completed returns.
+Sections the log marks "Reviewed in: pass <id>" were judged in a line-scoped pass; triage refuses a form
+with any such disagreeing section, because the whole-form reply is not the evidence they came from.
 Writes reviews/<year>/transcription/triage/<stem>.json. Raw replies are read, never changed.
 """
 import argparse, hashlib, json, os, subprocess, sys
@@ -43,6 +45,35 @@ def disagreement_handles(form, family):
     return handles
 
 
+def line_scoped_sections(form, family, only=None):
+    """{handle: pass id} for each disagreeing or missing section the log marks "Reviewed in: pass <id>".
+    Such a section was judged in a line-scoped pass, not in the whole-form reply that
+    `.transcription/<stem>.response.txt` holds. Decided from the log's text alone; a form
+    with no log has no such sections."""
+    path = rulings.log_path("transcription", form, family)
+    if not os.path.exists(path):
+        return {}
+    text = open(path, encoding="utf-8").read()
+    body = text.partition("\n## Lines\n")[2].partition("\n## Raw ")[0]
+    found = {}
+    for part in body.split("\n### ")[1:]:
+        title, _, content = part.partition("\n")
+        handle = title.split(" — ")[0]
+        if "Status: **AGREE**" in content or (only is not None and handle != only):
+            continue
+        tag = T.TAG_RE.search(content)
+        if tag:
+            found[handle] = tag.group(1)
+    return found
+
+
+def refuse_line_scoped(form, family, found):
+    if found:
+        raise SystemExit(f"{families.stem(form, family)}: triage of line-scoped passes is not supported yet; "
+                         f"these sections were reviewed in line-scoped passes, not in the whole-form reply: "
+                         + ", ".join(f"{h} (pass {pid})" for h, pid in sorted(found.items())))
+
+
 def pairs_for(form, project_lines, second_lines, handles):
     """Map each handle to the project's line id and the candidate's line id, as compare() keys them."""
     exported = {l["id"] for l in T.exported_lines({"id": form, "lines": project_lines})}
@@ -69,6 +100,7 @@ def pairs_for(form, project_lines, second_lines, handles):
 
 def triage(form, family, generated, seed, partial_bases, max_witnesses=6):
     stem = families.stem(form, family)
+    refuse_line_scoped(form, family, line_scoped_sections(form, family))
     raw_path = os.path.join(ROOT, ".transcription", stem + ".response.txt")
     raw = open(raw_path, encoding="utf-8").read()
     doc = T.load_form(form)
@@ -135,6 +167,7 @@ def explain(form, family, handle, witness, depth, completed=False):
     if not 0 <= witness < len(found):
         raise SystemExit(f"{stem}: line {handle!r} has {len(found)} {which.replace('_', ' ')}; --witness {witness} is out of range")
     w = found[witness]
+    refuse_line_scoped(form, family, line_scoped_sections(form, family, only=handle))
     raw = open(os.path.join(ROOT, ".transcription", stem + ".response.txt"), encoding="utf-8").read()
     doc = T.load_form(form)
     second = T.extract_yaml(raw)["lines"]

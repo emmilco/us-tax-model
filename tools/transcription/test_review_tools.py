@@ -1371,6 +1371,43 @@ class TriageWitnesses(unittest.TestCase):
             self.assertEqual(seen["payload"]["explain"]["source"], w["source"])
 
 
+class TriageLineScopedGuard(unittest.TestCase):
+    def log(self, temp, tag):
+        section = lambda h, extra="": f"### {h} — x\n\nStatus: **DISAGREE**\nRuling: open\n{extra}\n"
+        text = ("# log\n\n## Lines\n\n" + section("3") + "\n" + section("7", f"\nReviewed in: pass {tag}\n" if tag else "")
+                + "\n### 9 — x\n\nStatus: **AGREE**\nReviewed in: pass aaaaaaaaaaaa\n\n## Raw second transcription\n\nx\n")
+        path = Path(temp, "x.md")
+        path.write_text(text)
+        return patch.object(rulings, "log_path", return_value=str(path))
+
+    def test_line_scoped_section_is_refused_with_form_handle_and_pass(self):
+        import triage
+        with tempfile.TemporaryDirectory() as temp, self.log(temp, "0123456789ab"):
+            self.assertEqual(triage.line_scoped_sections("x", "deepseek"), {"7": "0123456789ab"})
+            with patch("builtins.open", side_effect=lambda p, *a, **k: io.StringIO("lines: []") if str(p).endswith(".response.txt") else io.open(p, *a, **k)):
+                with self.assertRaisesRegex(SystemExit, r"x.*not supported yet.*7 \(pass 0123456789ab\)"):
+                    triage.triage("x", "deepseek", 1, 1, 1)
+                with patch.object(triage, "OUT", temp):
+                    Path(temp, families.stem("x", "deepseek") + ".json").write_text(json.dumps(
+                        {"state": "evaluated", "lines": [{"handle": "7", "triage": "differs", "witnesses": [{"kind": "v", "source": {}, "instance": "i"}]}]}))
+                    with self.assertRaisesRegex(SystemExit, r"7 \(pass 0123456789ab\)"):
+                        triage.explain("x", "deepseek", "7", 0, 6)
+
+    def test_whole_form_log_still_triages(self):
+        import triage
+        with tempfile.TemporaryDirectory() as temp, self.log(temp, None):
+            self.assertEqual(triage.line_scoped_sections("x", "deepseek"), {})
+            handles = [("3", "DISAGREE", True)]
+            with patch.object(triage, "OUT", temp), patch.object(triage, "ROOT", temp), \
+                    patch("builtins.open", side_effect=lambda p, *a, **k: io.StringIO("lines: []") if str(p).endswith(".response.txt") else io.open(p, *a, **k)), \
+                    patch.object(triage.T, "load_form", return_value={"lines": []}), patch.object(triage.T, "load_defs", return_value={}), \
+                    patch.object(triage.T, "extract_yaml", return_value={"lines": []}), \
+                    patch.object(triage, "pairs_for", return_value=[{"handle": "3", "status": "DISAGREE", "candidate": None, "project": "x.3"}]), \
+                    patch.object(triage.T.subjects, "current", return_value="s"):
+                path, record = triage.triage("x", "deepseek", 1, 1, 1)
+            self.assertEqual(record["lines"][0]["triage"], "missing")
+
+
 class ClassMProvenance(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
