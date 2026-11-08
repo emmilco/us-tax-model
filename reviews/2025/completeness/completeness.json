@@ -2310,39 +2310,129 @@
  },
  {
   "form": "f8889",
-  "prompt_sha": "48799bd22636d97749945b000aef0d8d43373cafcb1f6b3520f538b4862fbdb5",
+  "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
   "claims": [
    {
-    "item": "f8889.medical",
+    "item": "f8889.coverage_year",
     "sentences": [
      {
-      "quote": "Even though nonprescription medicines (other than insulin) do not qualify for the medical and dental expenses deduction, they do qualify as expenses for HSA purposes.",
-      "page": "i8889 p. 2"
+      "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP.",
+      "page": "p969 p. 4"
      },
      {
-      "quote": "The cost of menstrual care products (tampons, pads, liners, cups, sponges, or other similar products) are also reimbursable for HSA purposes.",
-      "page": "i8889 p. 2"
+      "quote": "Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs.",
+      "page": "p969 p. 5"
      },
      {
-      "quote": "Amounts paid for condoms are treated as amounts paid for medical care and qualify as reimbursable expenses for HSA purposes.",
-      "page": "i8889 p. 2"
+      "quote": "You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met.",
+      "page": "p969 p. 5"
      },
      {
-      "quote": "Amounts you pay for personal protective equipment, such as masks, hand sanitizer, and sanitizing wipes for you, your spouse, and your dependents for the primary purpose of preventing the spread of COVID-19 are treated as medical expenses eligible to be reimbursed from an HSA.",
+      "quote": "If you can receive benefits before that deductible is met, you aren't an eligible individual.",
+      "page": "p969 p. 5"
+     },
+     {
+      "quote": "Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
+      "page": "p969 p. 5"
+     },
+     {
+      "quote": "When the suspension period ends, you are no longer eligible to make contributions to an HSA.",
+      "page": "p969 p. 5"
+     },
+     {
+      "quote": "After retirement with such an HRA, you are no longer eligible to make contributions to an HSA.",
+      "page": "p969 p. 5"
+     },
+     {
+      "quote": "This limit does not apply to deductibles and expenses for out-of-network services if the plan uses a network of providers.",
+      "page": "i8889 p. 3"
+     },
+     {
+      "quote": "A plan will not fail to be treated as a high deductible health plan by reason of failing to have a deductible for preventive care.",
+      "page": "i8889 p. 3"
+     },
+     {
+      "quote": "In general, a plan will not fail to be treated as a high deductible health plan by reason of failing to have a deductible for selected insulin products.",
+      "page": "i8889 p. 3"
+     }
+    ],
+    "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP. / Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs. / You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met. / If you can receive benefits before that deductible is met, you aren't an eligible individual. / Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero. / When the suspension period ends, you are no longer eligible to make contributions to an HSA. / After retirement with such an HRA, you are no longer eligible to make contributions to an HSA. / This limit does not apply to deductibles and expenses for out-of-network services if the plan uses a network of providers. / A plan will not fail to be treated as a high deductible health plan by reason of failing to have a deductible for preventive care. / In general, a plan will not fail to be treated as a high deductible health plan by reason of failing to have a deductible for selected insulin products.",
+    "page": "p969 p. 4; p969 p. 5; i8889 p. 3",
+    "why_uncovered": "The coverage and eligible-month questions ask whether the filer was 'covered by an HDHP' but never state what an HDHP is: the minimum deductible and out-of-pocket limits, the family-plan embedded-deductible rule, the 'substantially all disregarded coverage' exclusion, or the preventive care and insulin safe harbors. They also omit the rule that a prescription drug plan paying before the deductible disqualifies the filer. On FSAs and HRAs, the question treats a general-purpose health FSA as disqualifying. It leaves out the exception for a grace period with a zero prior-year balance. It also does not say that eligibility ends after a suspended HRA's suspension period or after retirement with a retiree-only HRA.",
+    "closest_item": "f8889.coverage_year",
+    "effect": "eligibility"
+   },
+   {
+    "item": "f8889.last_month",
+    "sentences": [
+     {
+      "quote": "If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025, enter the beginning and ending months of your fiscal year in the entry space provided at the top of page 1 of Form 1040 or 1040-SR.",
+      "page": "i1040gi p. 12"
+     },
+     {
+      "quote": "You may consider yourself an \"eligible individual\" for the entire year if you are an eligible individual on the 1st day of the last month of the tax year (December 1, for most individuals).",
       "page": "i8889 p. 2"
      }
     ],
-    "quote": "Even though nonprescription medicines (other than insulin) do not qualify for the medical and dental expenses deduction, they do qualify as expenses for HSA purposes. / The cost of menstrual care products (tampons, pads, liners, cups, sponges, or other similar products) are also reimbursable for HSA purposes. / Amounts paid for condoms are treated as amounts paid for medical care and qualify as reimbursable expenses for HSA purposes. / Amounts you pay for personal protective equipment, such as masks, hand sanitizer, and sanitizing wipes for you, your spouse, and your dependents for the primary purpose of preventing the spread of COVID-19 are treated as medical expenses eligible to be reimbursed from an HSA.",
-    "page": "i8889 p. 2",
-    "why_uncovered": "The f8889.medical question spells out who the expenses may be for, the reimbursement and timing conditions, and the narrow list of premiums that count. It never says that items not deductible on Schedule A still count for HSA purposes: nonprescription medicines, menstrual care products, condoms and COVID-19 protective equipment. The instructions define qualified medical expenses as 'expenses that could otherwise be deducted on Schedule A'. A filer reading that, alongside the question's explicit premium limits, would likely leave these items out of line 15. That overstates line 16.",
-    "closest_item": "f8889.medical",
+    "quote": "If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025, enter the beginning and ending months of your fiscal year in the entry space provided at the top of page 1 of Form 1040 or 1040-SR. / You may consider yourself an \"eligible individual\" for the entire year if you are an eligible individual on the 1st day of the last month of the tax year (December 1, for most individuals).",
+    "page": "i1040gi p. 12; i8889 p. 2",
+    "why_uncovered": "The last-month rule, the December 1 coverage question and the testing-period dates all assume a calendar tax year ending in December. Nothing asks about or refuses a fiscal-year filer, whose last month and testing period are different. The death refusal covers decedents only.",
+    "closest_item": "f8889.last_month",
     "effect": "amount"
+   },
+   {
+    "item": "f8889.line2",
+    "sentences": [
+     {
+      "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
+      "page": "p969 p. 5"
+     }
+    ],
+    "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
+    "page": "p969 p. 5",
+    "why_uncovered": "The line 2 question asks for all contributions made for 2025 but does not exclude or refuse contributions of stock or property. Those are not allowed as HSA contributions and so are not deductible.",
+    "closest_item": "f8889.line2",
+    "effect": "amount"
+   },
+   {
+    "item": "f8889.line9",
+    "sentences": [
+     {
+      "quote": "Also, include contributions made by a health insurance plan on an employer's behalf.",
+      "page": "i8889 p. 7"
+     }
+    ],
+    "quote": "Also, include contributions made by a health insurance plan on an employer's behalf.",
+    "page": "i8889 p. 7",
+    "why_uncovered": "The line 9 question lists employer and cafeteria-plan contributions from Form W-2 code W, with the worksheet adjustments. It does not tell the filer to include contributions made by a health insurance plan on the employer's behalf. Those contributions reduce line 12 and so the deduction.",
+    "closest_item": "f8889.line9",
+    "effect": "amount"
+   },
+   {
+    "item": "f8889.dec_coverage",
+    "sentences": [
+     {
+      "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period.",
+      "page": "i8889 p. 4"
+     },
+     {
+      "quote": "If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the \"family\" box.",
+      "page": "i8889 p. 4"
+     }
+    ],
+    "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period. / If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the \"family\" box.",
+    "page": "i8889 p. 4",
+    "why_uncovered": "No encoded line produces the line 1 self-only/family checkbox. The coverage answers (December 1 coverage and month counts) are collected but never mapped to line 1 under these rules.",
+    "closest_item": "f8889.dec_coverage",
+    "effect": "presentation"
    }
   ],
   "used": [
    {
     "doc": "i1040gi",
     "pages": [
+     12,
+     13,
      14
     ]
    },
@@ -2365,9 +2455,18 @@
      8,
      9
     ]
+   },
+   {
+    "doc": "p969",
+    "pages": [
+     4,
+     5,
+     6,
+     7
+    ]
    }
   ],
-  "cost": 0.200204,
+  "cost": 0.283716,
   "model": "claude-opus-5-5"
  },
  {

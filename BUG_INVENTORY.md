@@ -6203,3 +6203,26 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** a filer who defers a gain that has no sale entry (for example capital gain distributions, Form 1099-DIV box 2a) by investing in a QOF is asked no QOF question and is not refused; the deferral is not reflected.
 - **Disposition:** open, low: name QOF deferral of any gain in a return-level screen (sd.other_forms or a scope screen), with its citation.
 - **Tags:** schedule-d; scope; completeness; low; open
+
+## BUG-0452 — f8889.dec_coverage asks for December 1 coverage, but a person who died in 2025 has a last month of the month of death
+
+- **Caught by:** the false-no review of gate:f8889.dec_coverage_if_changed (Form 8889 coverage restructure, wave 2), 2026-11-07; reported low in gate round 1 and ruled with the gate.
+- **Source:** i8889 p. 2, Last-month rule: 'if you are an eligible individual on the 1st day of the last month of the tax year (December 1, for most individuals)'; p. 4, Line 3, rule 2: 'the first day of the last month of your tax year'; a decedent's final return ends at the date of death.
+- **Symptom:** on a joint return, a spouse who died in 2025 after being an eligible individual on the first day of the month of death answers December 1 coverage none, which sets use_last_month false and hides the last-month question; the month counts may also be read as running to December. Pre-existing; the restructure did not change the December 1 wording.
+- **Disposition:** fixed by owner decision 2026-11-07: a Form 8889 for a person who died in 2025 is refused; the existing f8889.unsupported screen names the case, cited to i8889 p. 2, Last-month rule, and i1040gi p. 12, Death of a Taxpayer (screen review ruled).
+- **Tags:** false-no; f8889; fixed
+
+## BUG-0453 — Form 8889 questions omit four source details the completeness review found: the HDHP tests, cash-only contributions, insurer contributions on line 9, excess withdrawn after the due date on line 15
+
+- **Caught by:** the f8889 completeness review rerun in the Form 8889 coverage restructure (wave 2), 2026-11-07 (f8889#1, #3, #4, #5).
+- **Source:** i8889 p. 3, HDHP requirements, and p969 pp. 4-5 (a family plan whose individual deductible is below the family minimum, or a plan mainly of disregarded coverage, is not an HDHP); p969 p. 5, 'Contributions to an HSA must be made in cash'; i8889 p. 7, Line 9, 'include contributions made by a health insurance plan on an employer's behalf'; i8889 p. 8, Line 15, 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses'.
+- **Symptom:** the eligibility questions (coverage_year, months_eligible, dec_coverage) take 'covered by an HDHP' at face value; line 2 does not exclude stock or property; line 9 does not name insurer contributions for the employer; line 15 does not exclude an excess contribution withdrawn after the due date. Pre-existing wording; the restructure did not change these lines' scope.
+- **Disposition:** open, low: word each at the form's next substantive change (with BUG-0443), then rerun the f8889 reviews.
+- **Tags:** completeness; f8889; open
+
+## BUG-0454 — person.edu left reachable at completion on a generated return
+
+- **Caught by:** interview-rules on the Form 8889 coverage restructure rebase, 2026-11-07 (full profile, generated.4).
+- **Symptom:** generated return 4 of the full profile reports complete while person.edu is reachable and unanswered: person.edu_student is all[f8863.paid, person.edu, TIN, 1098-T], a conjunction that reads past an unknown operand, the leak family of BUG-0446. Not caused by the Form 8889 change (person.edu is not read by Form 8889); the new f8889.coverage_year input changes the generated returns, which exposed it (inferred, not confirmed against main).
+- **Disposition:** open: held in tools/interview_rules_baseline.json until person.edu_student is rewritten as a nested choose (f8863.paid first).
+- **Tags:** interview; leak; open

@@ -203,6 +203,7 @@ interview:
   - person.x_other
   - person.x_prior09
   - person.x_births
+  - f8889.coverage_year
   - f8889.months_eligible
   - f8889.months_family
   - f8889.age55

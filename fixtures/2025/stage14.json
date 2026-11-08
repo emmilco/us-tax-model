@@ -34938,7 +34938,7 @@
         "asset"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "BUG-0169 regression, predicted from p560 p. 39, Deduction Worksheet for Self-Employed, Step 1 (\"Enter your net profit from Schedule C (Form 1040), line 31; Schedule F (Form 1040), line 34;* or Schedule K-1 (Form 1065),* box 14, code A\") before recording: with SEP contributions and self-employment income not on a Schedule C (screen Yes), Step 1 is refused at the self-employment screen rather than showing the Schedule C profit alone. Mutation-score assertion (T-159: the eic_se_has operand of person.eic_se), predicted before recording: with self-employment income not on a Schedule C (the Schedule SE screen answered Yes), whether this person files Schedule SE, which decides between EIC Worksheet B Part 1 and Part 2 (i1040gi p. 47), is refused at the Schedule SE screen, so the person's Worksheet B self-employment amount is that refusal (gate person[taxpayer].se_screened). Refusal text recorded from the evaluator.",
+      "evidence_note": "BUG-0169 regression, predicted from p560 p. 39, Deduction Worksheet for Self-Employed, Step 1 (\"Enter your net profit from Schedule C (Form 1040), line 31; Schedule F (Form 1040), line 34;* or Schedule K-1 (Form 1065),* box 14, code A\") before recording: with SEP contributions and self-employment income not on a Schedule C (screen Yes), Step 1 is refused at the self-employment screen rather than showing the Schedule C profit alone. Mutation-score assertion (T-159: the eic_se_has operand of person.eic_se), predicted before recording: with self-employment income not on a Schedule C (the Schedule SE screen answered Yes), whether this person files Schedule SE, which decides between EIC Worksheet B Part 1 and Part 2 (i1040gi p. 47), is refused at the Schedule SE screen, so the person's Worksheet B self-employment amount is that refusal (gate person[taxpayer].se_screened). Refusal text recorded from the evaluator. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -35069,6 +35069,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,

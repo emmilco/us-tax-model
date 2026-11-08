@@ -81,6 +81,10 @@ form is filed, never whether an amount exists, so they never hide an amount inpu
   added. The gate line is a `choose` of the same document that takes the input as an alternative's `then`, whose guards
   do not read it, and whose other alternatives are a parameter of the input's type: zero, false, or a designated enum
   value (a `choose`'s alternatives are money, Bool or enum, all of one type). It gates one input.
+- **Count inputs are not marked.** A `choose` takes no Count alternatives, so a Count input (a number of months) cannot
+  have a gate line. It is hidden instead by placing every line that reads it under a `choose` on the gate condition,
+  with no `gated_by` marker; the build does not guard it and the gate reviews do not list it (owner, 2026-11-07, for the
+  Form 8889 month counts behind the all-year coverage question).
 - **Leaking conjunctions are rewritten as nested `choose`** where order matters, so the second question waits for the
   first. The evaluator's `all`/`any` semantics stay unchanged. A change there would alter reachability across the
   whole model and the Lean evaluator, and belongs with T-248.

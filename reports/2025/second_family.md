@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 135 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.3% (287/3947 second-family lines judged; pending reviews are provisional); 62 eligible, 73 pending; raw agreement 81.3% (diagnostic only); current independence yield 151 line(s); both families disputed 518
+Summary: 135 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.4% (287/3887 second-family lines judged; pending reviews are provisional); 62 eligible, 73 pending; raw agreement 81.1% (diagnostic only); current independence yield 149 line(s); both families disputed 518
 
 Written by `tools/transcription/compare_families.py` on 2026-11-07 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -658,7 +658,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8606 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 1 | 0 | 1 | 0 |
 | f8863 | deepseek (deepseek-flash) | 25 | 19 | 76.0% | 0/25 (0.0%) | pass | 2 | 4 | 0 | 0 |
 | f8880 | deepseek (deepseek-flash) | 21 | 18 | 85.7% | 0/21 (0.0%) | pass | 0 | 1 | 2 | 0 |
-| f8889 | deepseek (deepseek-flash) | 19 | 11 | 57.9% | 0/19 (0.0%) | pass | 7 | 1 | 0 | 0 |
+| f8889 | deepseek (deepseek-flash) | 19 | 13 | 68.4% | 0/19 (0.0%) | pass | 5 | 1 | 0 | 0 |
 | f8959 | deepseek (deepseek-flash) | 24 | 23 | 95.8% | 0/24 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | f8960 | deepseek (deepseek-flash) | 25 | 23 | 92.0% | 0/25 (0.0%) | pass | 1 | 1 | 0 | 0 |
 | f8962 | deepseek (deepseek-flash) | 95 | 92 | 96.8% | 0/95 (0.0%) | pass | 0 | 1 | 2 | 0 |
@@ -701,7 +701,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 5 | 8 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 16 | 94.1% | 1/17 (5.9%) | pass | 1 | 0 | 0 | 0 |
-| **all** | | 1333 | 1162 | 87.2% | | | 78 | 71 | 22 | 20 |
+| **all** | | 1333 | 1164 | 87.3% | | | 76 | 71 | 22 | 20 |
 
 Pending asset [deepseek]: 2 missing expected lines.
 Pending div [deepseek]: stale subject: deepseek; 17 missing expected lines.
@@ -745,9 +745,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8889 | deepseek | 14b | MISMATCH | The restatement includes only rollovers, but the IRS line says 'Also include any excess contributions (and the earnings on those excess contributions) included on line 14a that were withdrawn by the due date of your return'; the f8889.rollover_bad refusal does not exclude that case. |
 | f8889 | deepseek | 15 | MISMATCH | The helper describes distributions used for qualified medical expenses but omits the IRS line 15 caution 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses'; no line-15 refusal excludes that case. |
 | f8889 | deepseek | 17a | MISMATCH | The IRS exceptions are distributions made after the account beneficiary 'Dies, Becomes disabled or Turns age 65'; the restatement lists only disabled or age 65. |
-| f8889 | deepseek | 3 | MISMATCH | The last-month-rule branch uses the actual coverage-change helper and can take the greater of the worksheet amount and the December 1 maximum. The IRS says that when the last-month rule applies, 'You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year,' so earlier family months cannot be combined with December self-only co… |
 | f8889 | deepseek | 4 | MISMATCH | The IRS line says 'Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2' and to include spouse's Archer MSA contributions in family-coverage cases; the restatement always enters zero. |
-| f8889 | deepseek | 6 | MISMATCH | The spouse-rule gate uses a treated-family helper that can be false when the last-month rule applies with December self-only coverage even if the filer actually had family HDHP coverage earlier in 2025. IRS line 6 applies if 'you and your spouse each have separate HSAs and had family coverage under an HDHP at any time during 2025,' so the restatement can wrongly enter line 5 instead of the line 6 … |
 | f8960 | deepseek | 9b | MISMATCH | IRS says to include 'state, local, and foreign income taxes' and 'state, local, and foreign real property taxes,' but the restatement mentions only state/local income and property taxes and an exclusion for foreign taxes claimed as a credit. |
 | f8995 | deepseek | 11 | MISMATCH | IRS line 11 instructions compute 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b' and do not provide a zero floor; the restatement adds an 'If zero or less, enter -0-' condition. |
 | f8995a | deepseek | 33 | MISMATCH | The restatement adds an 'if zero or less, enter -0-' floor, but the IRS instruction is only 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b'; no zero floor is stated for line 33. |
@@ -822,7 +820,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8863 | deepseek | 2 | MISMATCH | MISMATCH | IRS line 2 says '$180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse'; the restatement also gives $90,000 for married filing separately, which the instructions say cannot claim an education credit. |
 | f8863 | deepseek | 5 | MISMATCH | MISMATCH | IRS line 5 says '$20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse'; the restatement adds $10,000 for married filing separately, which cannot claim the credit. |
 | f8880 | deepseek | (CLW 2) | MISMATCH | MISMATCH | The worksheet line 2 includes credits from Schedule 3 lines 1 through 3, 6d, and 6l; the restatement adds only s3 lines 1, 2, and 3, omitting 6d and 6l. IRS text: 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l.' |
-| f8889 | deepseek | 7 | MISMATCH | MISMATCH | The line 7 applicability test uses the same treated-family helper and can deny line 7 when the last-month rule applies with December self-only coverage despite actual family coverage earlier in the year. The IRS form says line 7 applies if you were age 55 or older, married, and 'you or your spouse had family coverage under an HDHP at any time during 2025.' |
+| f8889 | deepseek | 7 | MISMATCH | MISMATCH | The IRS worksheet applies to months when 'You or your spouse had family coverage under an HDHP and were ... an eligible individual on the first day of the month' and 'You were not enrolled in Medicare for the month'; the restatement counts every eligible month, so line 7 is too high when eligible months are not family-coverage months. |
 | f8960 | deepseek | 5a | MISMATCH | MISMATCH | IRS says to combine 'Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4,' but the restatement uses only f1040 line 7a and omits Schedule 1 line 4. |
 | f8962 | deepseek | 28 | MISMATCH | MISMATCH | The IRS line 28 instructions say that if you are self-employed and claiming the self-employed health insurance deduction, see Pub. 974 for the amount to enter; the restatement only uses the Table 5 limitation and has no adjustment or refusal for that case. |
 | f8995 | deepseek | 12 | MISMATCH | MISMATCH | IRS line 12 instructions say if you're not required to file Schedule D, your net capital gain is the amount on Form 1040 line 7a; the restatement uses only the smaller of Schedule D lines 15 and 16. |
@@ -895,7 +893,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f5695 | deepseek (deepseek-flash) | 340 | 338 | 99.4% | 2/343 (0.6%) | pass | 2 | 0 | 0 | 236 |
 | f8863 | deepseek (deepseek-flash) | 65 | 65 | 100.0% | 0/65 (0.0%) | pending | 0 | 0 | 0 | 2 |
 | f8880 | deepseek (deepseek-flash) | 58 | 48 | 82.8% | 5/58 (8.6%) | pass | 5 | 0 | 5 | 12 |
-| f8889 | deepseek (deepseek-flash) | 135 | 132 | 97.8% | 0/135 (0.0%) | pass | 0 | 0 | 3 | 0 |
+| f8889 | deepseek (deepseek-flash) | 75 | 75 | 100.0% | 0/75 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f8960 | deepseek (deepseek-flash) | 75 | 75 | 100.0% | 0/75 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f8962 | deepseek (deepseek-flash) | 171 | 162 | 94.7% | 0/171 (0.0%) | pass | 0 | 0 | 9 | 0 |
 | g28 | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pending | 0 | 0 | 0 | 11 |
@@ -907,7 +905,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | sd | deepseek (deepseek-flash) | 41 | 41 | 100.0% | 0/41 (0.0%) | pending | 0 | 0 | 0 | 97 |
 | u1250 | deepseek (deepseek-flash) | 18 | 18 | 100.0% | 0/18 (0.0%) | pass | 0 | 0 | 0 | 18 |
 | w2 | deepseek (deepseek-flash) | 39 | 39 | 100.0% | 0/39 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1789 | 1762 | 98.5% | | | 8 | 1 | 18 | 736 |
+| **all** | | 1729 | 1705 | 98.6% | | | 8 | 1 | 15 | 736 |
 
 Pending clcw26 [deepseek]: 5 missing expected lines.
 Pending eic [deepseek]: 19 missing expected lines; 50 unexpected line keys.

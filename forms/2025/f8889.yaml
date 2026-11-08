@@ -83,7 +83,7 @@ form:
       period that began in an earlier year; an HSA you acquired because of the account beneficiary''s death; the HSA of a person who died in 2025 whose
       estate is the beneficiary; a deemed distribution
       (a prohibited transaction, or an HSA used as security for a loan); a withdrawal of excess contributions or their earnings (made in 2025, or in 2026 by the due date of your 2025 return, including extensions);
-      or a mistaken distribution you repaid?'
+      or a mistaken distribution you repaid; or this person died in 2025?'
     type: Bool
     expr:
       op: input
@@ -93,13 +93,15 @@ form:
         HSA funding distribution); an HSA you acquired because of the account beneficiary''s death; the HSA of a person who
         died in 2025 whose estate is the beneficiary (its value at death is included on the final return); a deemed distribution
         from an HSA in 2025 (a prohibited transaction, or any part of an HSA used as security for a loan); a withdrawal of
-        excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions; or a mistaken distribution you repaid to your HSA?'
+        excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions; a mistaken distribution you repaid to your HSA; or this person died in 2025 (a joint return with a spouse who died in 2025, or the final return of a person who died in 2025), since the last month of a decedent''s tax year is the month of death, not December?'
     cite:
       doc: i8889
       locator: 'f8889 p. 1, line 4, "If you or your spouse had family coverage under an HDHP at any time during 2025, also
         include any amount contributed to your spouse’s Archer MSAs"; Parts II and III, line 4 (Archer MSAs), line 10 (qualified HSA funding distributions), line 13 (Prior Year
         Excess Contributions), line 14b (excess contributions withdrawn), Lines 17a and 17b (mistaken distributions), Death
-        of HSA Account Beneficiary, and Deemed Distributions From HSAs'
+        of HSA Account Beneficiary, and Deemed Distributions From HSAs; i8889 p. 2, Last-month rule, "if you are an eligible
+        individual on the 1st day of the last month of the tax year (December 1, for most individuals)"; i1040gi p. 12, Death of
+        a Taxpayer, "A joint return should show your spouse''s 2025 income before death and your income for all of 2025"'
   - id: f8889.mfs
     printed: (gate)
     label: 'Married filing separately'
@@ -112,6 +114,48 @@ form:
     cite:
       doc: i1040gi
       locator: 'p. 14, Married Filing Separately'
+  - id: f8889.coverage_year
+    printed: (helper)
+    label: 'HDHP coverage in 2025: self-only all year, family all year, or changed during the year (including starting
+      or ending)'
+    type: Enum(hsa_year_coverage)
+    expr:
+      op: input
+      source: |-
+        Was your high-deductible health plan (HDHP) coverage self-only all year, family all year, or did it change during 2025 (including starting or ending)?
+
+        - Self-only all year: on the first day of every month of 2025 you were an eligible individual with self-only HDHP coverage, and no month counts as family coverage under the rules below.
+        - Family all year: on the first day of every month of 2025 you were an eligible individual with family HDHP coverage, or counted as having it under the rules below.
+        - Changed: anything else, including coverage that started, ended or changed type during 2025, any month in which you were not an eligible individual, or if you are not sure. The month-by-month questions follow.
+
+        An eligible individual on the first day of a month:
+        - is covered by an HDHP
+        - has no other health coverage, apart from the coverage the instructions disregard (accident, disability, dental, vision, long-term care, telehealth and other remote care, workers' compensation, tort or property liability insurance, insurance for a specified disease or illness, and insurance paying a fixed amount per day of hospitalization); a general-purpose health FSA or HRA that pays your medical expenses, yours or your spouse's, is other health coverage, while VA care for a service-connected disability and benefits under surprise billing laws are not
+        - is not enrolled in Medicare, counting Medicare coverage backdated to an earlier month
+        - cannot be claimed as a dependent on someone else's 2025 return
+
+        A month counts as family coverage:
+        - if you were covered by a family HDHP (HDHP coverage for you and at least one other person, such as an employee-plus-spouse or employee-plus-children tier), including as a member of someone else's plan (your spouse's or a parent's, for example)
+        - if you were covered by a self-only HDHP and a family HDHP at the same time
+        - if you and your spouse were both eligible individuals and either of you had family HDHP coverage
+    cite:
+      doc: i8889
+      locator: 'p. 2, Eligible Individual, "you must be covered under a high deductible health plan (HDHP) and have no other
+        health coverage except certain disregarded coverage ... you cannot be enrolled in Medicare or be another person''s
+        dependent ... You must be, or be considered, an eligible individual on the first day of a month"; p. 2, Certain
+        coverage disregarded and Permitted insurance; p. 4, Line 1, "If you were covered by both a self-only HDHP and a family
+        HDHP at the same time, you are treated as having family coverage during that period"; p. 4, Line 3, rule 1, "if you and your spouse are both eligible
+        individuals and either of you has an HDHP with family coverage, you both are treated as having only the family
+        coverage plan"; p. 6, Line 3 Limitation Chart and Worksheet, "Were you an eligible individual (see Eligible
+        Individual, earlier) on the first day of the month"; p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year
+        and you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for a family HDHP on line
+        3"; p. 4, "You cannot deduct any contributions for any month in which you were enrolled in Medicare. Also, you
+        cannot deduct contributions if you are someone else''s dependent for 2025"; p. 2, Eligible Individual, VA hospital
+        care or medical services for a service-connected disability and benefits under surprise billing laws; p969 p. 4,
+        "Family HDHP coverage is HDHP coverage for an eligible individual and at least one other individual"; p969 p. 5,
+        Other employee health plans, "An employee covered by an HDHP and a health FSA or an HRA that pays or reimburses
+        qualified medical expenses can''t generally make contributions to an HSA"; p969 p. 7, Enrolled in Medicare, "This rule
+        applies to periods of retroactive Medicare coverage"'
   - id: f8889.months_eligible
     printed: (helper)
     label: Number of months of 2025 on the first day of which you were an eligible individual
@@ -120,7 +164,7 @@ form:
       op: input
       source: Number of months of 2025 on the first day of which you were an eligible individual (covered by a high-deductible
         health plan, with no other disqualifying health coverage, not enrolled in Medicare, and not able to be claimed as
-        a dependent on someone else's 2025 return); 0 to 12
+        a dependent on someone else's 2025 return)
     cite:
       doc: i8889
       locator: pp. 2 and 6, Eligible Individual and the Line 3 Limitation Chart and Worksheet ('Were you an eligible individual
@@ -131,8 +175,9 @@ form:
     type: Count
     expr:
       op: input
-      source: Of those eligible months, the number in which you had or were treated as having family high-deductible health
-        plan coverage on the first day of the month; 0 to the number of eligible months. If you and your spouse were both
+      source: Of those eligible months, the number in which you had or were treated as having family (not self-only)
+        high-deductible health plan coverage on the first day of the month; zero if your coverage was self-only in all of
+        them. If you and your spouse were both
         eligible individuals for a month and either of you had family HDHP coverage, count that month as family coverage
         for both of you and disregard either spouse's self-only plan. Count the actual eligible months here; the separate
         last-month-rule question determines whether December 1 coverage is treated as applying throughout the year.
@@ -140,7 +185,7 @@ form:
       doc: i8889
       locator: p. 4, How To Complete Part I and Line 3 rule 1 (both eligible spouses are treated as having family coverage
         if either has a family HDHP); p. 6, Line 3 Limitation Chart and Worksheet, monthly coverage
-  - id: f8889.bad_months
+  - id: f8889.bad_months_counted
     printed: (helper)
     label: The month counts or the December 1 coverage are impossible (more than 12 eligible months, more family months
       than eligible months, or a December 1 coverage the month counts cannot include)
@@ -161,7 +206,7 @@ form:
         all:
         - op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: self_only
         - op: test
           eq:
@@ -171,7 +216,7 @@ form:
         all:
         - op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: family
         - op: test
           eq:
@@ -182,7 +227,7 @@ form:
         all:
         - op: test
           ne:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: none
         - op: test
           eq:
@@ -193,7 +238,7 @@ form:
         all:
         - op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: none
         - op: test
           eq:
@@ -204,6 +249,47 @@ form:
       doc: i8889
       locator: p. 6, Line 3 Limitation Chart and Worksheet (twelve months of 2025, each counted on the first day of the month,
         December 1 among them)
+  - id: f8889.counts_hold
+    printed: (helper)
+    label: Year parameter hsa.year_counts_hold (false)
+    type: Bool
+    expr:
+      op: param
+      ref: hsa.year_counts_hold
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart and Worksheet (twelve months of 2025, each counted on the first day of the month,
+        December 1 among them)
+  - id: f8889.bad_months
+    printed: (helper)
+    label: The month counts or the December 1 coverage are impossible (asked only when coverage changed during the year; one
+      coverage type all year gives twelve eligible months and that December 1 coverage)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: self_only
+        then: f8889.counts_hold
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: family
+        then: f8889.counts_hold
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: changed
+        then: f8889.bad_months_counted
+    cite:
+      doc: i8889
+      locator: p. 6, Line 3 Limitation Chart and Worksheet (twelve months of 2025, each counted on the first day of the month,
+        December 1 among them); p. 4, Line 3, rule 3
   - id: f8889.age55
     printed: (helper)
     label: Were you age 55 or older at the end of 2025?
@@ -236,28 +322,9 @@ form:
         - household.married
         - const: true
       - op: test
-        any:
-        - op: test
-          all:
-          - op: test
-            eq:
-            - f8889.use_last_month
-            - const: true
-          - op: test
-            eq:
-            - f8889.dec_coverage
-            - const: family
-        - op: test
-          all:
-          - op: test
-            eq:
-            - f8889.use_last_month
-            - const: false
-          - op: test
-            gt:
-            - f8889.months_family
-            - const: 0
-              type: Count
+        eq:
+        - f8889.family_any_time
+        - const: true
     cite:
       doc: i8889
       locator: 'p. 5, Line 3, "Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3"; p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
@@ -477,18 +544,73 @@ form:
       locator: p. 4, Line 3, rule 4, 'you changed your type of coverage during the year'
   - id: f8889.dec_coverage
     printed: (helper)
+    gated_by: f8889.dec_coverage_if_changed
     label: 'HDHP coverage you had or were treated as having on December 1, 2025: none, self_only or family'
     type: Enum(hsa_coverage)
     expr:
       op: input
       source: 'The high-deductible health plan coverage you had or were treated as having on December 1, 2025: none
-        (you were not an eligible individual that day), self_only, or family. If you and your spouse were both eligible
-        individuals that day and either of you had family HDHP coverage, answer family for both spouses and disregard
-        either spouse''s self-only plan.'
+        (you were not an eligible individual that day), self_only, or family. Family is HDHP coverage for you and at
+        least one other person, and includes coverage as a member of someone else''s family HDHP (your spouse''s or a parent''s, for example) and a self-only HDHP and a family HDHP held
+        at the same time. If you and your spouse were both eligible individuals that day and either of you had family HDHP
+        coverage, answer family for both spouses and disregard either spouse''s self-only plan.'
     cite:
       doc: i8889
-      locator: p. 4, How To Complete Part I and Line 3 rules 1, 2 and 4(b), spouse-attributed family coverage and the
-        coverage on the first day of the last month
+      locator: p. 4, How To Complete Part I, Line 1 ("If you were covered by both a self-only HDHP and a family HDHP at the
+        same time, you are treated as having family coverage during that period") and Line 3 rules 1, 2 and 4(b),
+        spouse-attributed family coverage and the coverage on the first day of the last month
+  - id: f8889.year_self_only
+    printed: (helper)
+    label: Year parameter hsa.year_self_only (self-only)
+    type: Enum(hsa_coverage)
+    expr:
+      op: param
+      ref: hsa.year_self_only
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did
+        not change your type of coverage, enter $4,300 for a self-only HDHP"
+  - id: f8889.year_family
+    printed: (helper)
+    label: Year parameter hsa.year_family (family)
+    type: Enum(hsa_coverage)
+    expr:
+      op: param
+      ref: hsa.year_family
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did
+        not change your type of coverage, enter ... $8,550 for a family HDHP"
+  - id: f8889.dec_coverage_if_changed
+    printed: (helper)
+    label: 'The HDHP coverage on December 1, 2025: asked only when coverage changed during the year; self-only or family all
+      year is that coverage on December 1'
+    type: Enum(hsa_coverage)
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: self_only
+        then: f8889.year_self_only
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: family
+        then: f8889.year_family
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: changed
+        then: f8889.dec_coverage
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rules 2, 3 and 4(b) (the coverage on the first day of the last month, and under rule 3 an
+        eligible individual for the entire year who did not change the type of coverage)
   - id: f8889.dec_amount
     printed: (helper)
     label: The maximum amount for the HDHP coverage you had on December 1 (the full-year amount of that coverage type)
@@ -499,19 +621,19 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: self_only
         then: f8889.self_amount
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: family
         then: f8889.family_amount
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: none
         then: f8889.zero
     cite:
@@ -553,19 +675,19 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: none
         then: f8889.no_last_month
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: self_only
         then: f8889.last_month
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: family
         then: f8889.last_month
     cite:
@@ -573,6 +695,101 @@ form:
       locator: 'p. 2, Last-month rule, "for the entire year if you are an
         eligible individual"; p. 4, Line 3, rule 2'
     ambiguity: amb.2025.hsa_last_month_all_year
+  - id: f8889.year_same
+    printed: (helper)
+    label: Year parameter hsa.year_same (true)
+    type: Bool
+    expr:
+      op: param
+      ref: hsa.year_same
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did
+        not change your type of coverage"
+  - id: f8889.full_year
+    printed: (helper)
+    label: 'Treated as having the December 1 coverage for all of 2025: one type of coverage all year, or the last-month rule
+      applies'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: self_only
+        then: f8889.year_same
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: family
+        then: f8889.year_same
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: changed
+        then: f8889.use_last_month
+    cite:
+      doc: i8889
+      locator: 'p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the
+        entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the
+        last month of your tax year"; rule 3, "If you were, or were considered, an eligible individual for the entire year
+        and you did not change your type of coverage"'
+    ambiguity: amb.2025.hsa_last_month_all_year
+  - id: f8889.dec_family
+    printed: (helper)
+    label: Family HDHP coverage on December 1, 2025
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f8889.dec_coverage_if_changed
+      - const: family
+    cite:
+      doc: i8889
+      locator: p. 4, Line 3, rule 2, "You are treated as having the same HDHP coverage for the entire year as you had on the
+        first day of the last month of your tax year"
+  - id: f8889.some_family_months
+    printed: (helper)
+    label: At least one eligible month of family HDHP coverage
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8889.months_family
+      - const: 0
+        type: Count
+    cite:
+      doc: i8889
+      locator: 'p. 5, Line 3, "Note. If you are married and had family coverage at any time during the year"'
+  - id: f8889.family_any_time
+    printed: (helper)
+    label: Treated as having family coverage at any time during 2025 (the December 1 coverage under a full-year treatment,
+      else any month of family coverage)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.full_year
+          - const: true
+        then: f8889.dec_family
+      - guard:
+          op: test
+          eq:
+          - f8889.full_year
+          - const: false
+        then: f8889.some_family_months
+    cite:
+      doc: i8889
+      locator: 'p. 5, Line 3, "Note. If you are married and had family coverage at any time during the year, the additional
+        contribution amount is figured on line 7 and is not included on line 3"; p. 4, Line 3, rule 2, "You are treated as
+        having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
   - id: f8889.line3_changed
     printed: (helper)
     label: The greater of the Line 3 Limitation Chart and Worksheet and the maximum for your December 1 coverage
@@ -656,11 +873,10 @@ form:
     cite:
       doc: i8889
       locator: p. 4, Line 3, rules 2 and 5
-  - id: f8889.line3
-    printed: '3'
-    label: If you were under age 55 at the end of 2025 and, on the first day of every month during 2025, you were, or were
-      considered, an eligible individual with the same coverage, enter $4,300 ($8,550 for family coverage). All others, see
-      the instructions for the amount to enter
+  - id: f8889.line3_months
+    printed: (helper)
+    label: Line 3 when coverage changed during the year (from the month counts, the December 1 coverage and the last-month
+      rule)
     type: Dollars
     expr:
       op: choose
@@ -678,8 +894,40 @@ form:
           - const: false
         then: f8889.line3_part_year
     cite:
+      doc: i8889
+      locator: pp. 4-6, Line 3 and the Line 3 Limitation Chart and Worksheet
+  - id: f8889.line3
+    printed: '3'
+    label: If you were under age 55 at the end of 2025 and, on the first day of every month during 2025, you were, or were
+      considered, an eligible individual with the same coverage, enter $4,300 ($8,550 for family coverage). All others, see
+      the instructions for the amount to enter
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: self_only
+        then: f8889.self_amount
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: family
+        then: f8889.family_amount
+      - guard:
+          op: test
+          eq:
+          - f8889.coverage_year
+          - const: changed
+        then: f8889.line3_months
+    cite:
       doc: f8889
-      locator: Form 8889 (2025), line 3; i8889 pp. 4-6, Line 3
+      locator: 'Form 8889 (2025), line 3; i8889 p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual
+        for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for a
+        family HDHP on line 3"'
   - id: f8889.line4
     printed: '4'
     label: Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2
@@ -722,19 +970,19 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: family
         then: f8889.family_year
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: self_only
         then: f8889.zero
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: none
         then: f8889.zero
     cite:
@@ -761,13 +1009,13 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.use_last_month
+          - f8889.full_year
           - const: true
         then: f8889.family_dec_year
       - guard:
           op: test
           eq:
-          - f8889.use_last_month
+          - f8889.full_year
           - const: false
         then: f8889.family_counted
     cite:
@@ -959,13 +1207,13 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.use_last_month
+          - f8889.full_year
           - const: true
         then: f8889.self_year
       - guard:
           op: test
           eq:
-          - f8889.use_last_month
+          - f8889.full_year
           - const: false
         then: f8889.self_counted
     cite:
@@ -992,19 +1240,19 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: family
         then: f8889.self_year
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: self_only
         then: f8889.zero
       - guard:
           op: test
           eq:
-          - f8889.dec_coverage
+          - f8889.dec_coverage_if_changed
           - const: none
         then: f8889.zero
     cite:
@@ -1020,13 +1268,13 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.use_last_month
+          - f8889.full_year
           - const: true
         then: f8889.self_dec_year
       - guard:
           op: test
           eq:
-          - f8889.use_last_month
+          - f8889.full_year
           - const: false
         then: f8889.self_family_months
     cite:
@@ -1151,13 +1399,13 @@ form:
       - guard:
           op: test
           eq:
-          - f8889.use_last_month
+          - f8889.full_year
           - const: true
         then: f8889.line7_year
       - guard:
           op: test
           eq:
-          - f8889.use_last_month
+          - f8889.full_year
           - const: false
         then: f8889.line7_counted
     cite:

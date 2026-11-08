@@ -407,6 +407,7 @@
         "person[sample].role": "taxpayer",
         "person[spouse].role": "spouse",
         "person[sample].f8889[hsa].unsupported": false,
+        "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 12,
         "person[sample].f8889[hsa].months_family": 12,
         "person[sample].f8889[hsa].dec_coverage": "family",
@@ -416,6 +417,7 @@
         "person[sample].f8889[hsa].line2": 200000,
         "person[sample].f8889[hsa].line9": 0,
         "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 12,
         "person[spouse].f8889[hsa].months_family": 12,
         "person[spouse].f8889[hsa].dec_coverage": "family",
@@ -452,7 +454,7 @@
           "cents": 200000
         }
       },
-      "basis": "i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. With two separate HSAs, p.7 line6 divides $8550 equally into $4275 per spouse. Each $2000 personal contribution is below its limit."
+      "basis": "i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. With two separate HSAs, p.7 line6 divides $8550 equally into $4275 per spouse. Each $2000 personal contribution is below its limit. coverage_year is answered changed (the month-by-month answers follow), so the supplied month counts and December 1 coverage are read."
     },
     {
       "id": "H17",
@@ -469,6 +471,7 @@
         "person[sample].role": "taxpayer",
         "person[spouse].role": "spouse",
         "person[sample].f8889[hsa].unsupported": false,
+        "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 12,
         "person[sample].f8889[hsa].months_family": 12,
         "person[sample].f8889[hsa].dec_coverage": "family",
@@ -493,7 +496,7 @@
           "cents": 200000
         }
       },
-      "basis": "i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. Only one spouse has an HSA; no separate-HSA division applies and the full $8550 limit remains. Each $2000 personal contribution is below its limit."
+      "basis": "i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. Only one spouse has an HSA; no separate-HSA division applies and the full $8550 limit remains. Each $2000 personal contribution is below its limit. coverage_year is answered changed (the month-by-month answers follow), so the supplied month counts and December 1 coverage are read."
     }
   ]
 }

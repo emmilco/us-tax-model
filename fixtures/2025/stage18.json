@@ -14448,7 +14448,7 @@
         "f1095a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Shown-state regression (T-232), inputs copied unchanged from class M case classm.f8962.4; values predicted from the archived f8962 and i8962 before evaluating. One Form 1095-A with monthly amounts (line 10 No) covering November and December only, with advance payments in December; wages of $48,446 for a tax family of one put line 5 above 100, so the filer is an applicable taxpayer. Line 21 (October) has blank columns (a) and (b) and is not used, while lines 22 and 23 are used with their calculation columns (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\"): line 22 (a) $1,052, (b) $745, (f) $0; line 23 (a) $1,052, (b) $745, (f) $646 (i8962 p. 16, columns (a) and (b) from Form 1095-A columns A and B; p. 17, column (f) from column C). Mutation-score assertion (T-159): employer contributions of $2,789 on Form 8889 line 9 (line 2 $0), so there are HSA contributions for 2025.",
+      "evidence_note": "Shown-state regression (T-232), inputs copied unchanged from class M case classm.f8962.4; values predicted from the archived f8962 and i8962 before evaluating. One Form 1095-A with monthly amounts (line 10 No) covering November and December only, with advance payments in December; wages of $48,446 for a tax family of one put line 5 above 100, so the filer is an applicable taxpayer. Line 21 (October) has blank columns (a) and (b) and is not used, while lines 22 and 23 are used with their calculation columns (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\"): line 22 (a) $1,052, (b) $745, (f) $0; line 23 (a) $1,052, (b) $745, (f) $646 (i8962 p. 16, columns (a) and (b) from Form 1095-A columns A and B; p. 17, column (f) from column C). Mutation-score assertion (T-159): employer contributions of $2,789 on Form 8889 line 9 (line 2 $0), so there are HSA contributions for 2025. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "div.any": false,
         "div.box2b": 0,
@@ -14558,6 +14558,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 278900,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 1,
         "person[taxpayer].f8889[hsa].age55": false,

@@ -978,7 +978,7 @@
         "sdtw"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f4952.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: married filing jointly with taxable income $8,234.16, below the $96,700 line 15 amount, so Schedule D Tax Worksheet lines 1 and 16 are the same and lines 23 through 43 are skipped: line 23 is blank ($0). Mutation-score assertions (T-159), checked against the archived sources: sale s1 (box D) is a long-term loss of $838 and sale s2 (box B) a short-term gain of $5,958, and capital gain distributions are $4,196, so Schedule D has no net loss and the Capital Loss Carryover Worksheet carries nothing to 2026 (lines 8 and 13 $0, i1040sd p. 10, line 8 \"If zero or less, enter -0-\"): the decedent carryover notice (p550 p. 103) does not apply. Neither spouse has a workplace retirement plan or a Schedule C plan, so the spouse's IRA deduction worksheet column is not limited by coverage. Both spouses were born after January 1, 1961, so Schedule 1-A Part V is not completed and line 35 (so the senior line 36a amount) is $0. No 28% rate gain, no unrecaptured section 1250 gain and no Form 4952: Schedule D line 20 is Yes (f1040sd line 20, \"Are lines 18 and 19 both zero or blank and are you not filing Form 4952?\").",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f4952.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: married filing jointly with taxable income $8,234.16, below the $96,700 line 15 amount, so Schedule D Tax Worksheet lines 1 and 16 are the same and lines 23 through 43 are skipped: line 23 is blank ($0). Mutation-score assertions (T-159), checked against the archived sources: sale s1 (box D) is a long-term loss of $838 and sale s2 (box B) a short-term gain of $5,958, and capital gain distributions are $4,196, so Schedule D has no net loss and the Capital Loss Carryover Worksheet carries nothing to 2026 (lines 8 and 13 $0, i1040sd p. 10, line 8 \"If zero or less, enter -0-\"): the decedent carryover notice (p550 p. 103) does not apply. Neither spouse has a workplace retirement plan or a Schedule C plan, so the spouse's IRA deduction worksheet column is not limited by coverage. Both spouses were born after January 1, 1961, so Schedule 1-A Part V is not completed and line 35 (so the senior line 36a amount) is $0. No 28% rate gain, no unrecaptured section 1250 gain and no Form 4952: Schedule D line 20 is Yes (f1040sd line 20, \"Are lines 18 and 19 both zero or blank and are you not filing Form 4952?\"). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -1234,6 +1234,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -1574,7 +1575,7 @@
         "sli"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8960.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: qualifying surviving spouse with no unrecaptured section 1250 gain (Schedule D line 19 zero): 'If Schedule D, line 19, is zero or blank, skip lines 35 through 40', so worksheet line 35 is blank ($0). Student loan interest deduction worksheet line 5 is the amount for the filing status: 'Single, head of household, or qualifying surviving spouse\u2014$85,000' (i1040gi, Schedule 1 line 21 worksheet). Mutation-score assertion (T-159): ordinary dividends of $258,039 exceed $1,500, so Schedule B Part III is completed (f1040sb Part III, \"You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends\").",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8960.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: qualifying surviving spouse with no unrecaptured section 1250 gain (Schedule D line 19 zero): 'If Schedule D, line 19, is zero or blank, skip lines 35 through 40', so worksheet line 35 is blank ($0). Student loan interest deduction worksheet line 5 is the amount for the filing status: 'Single, head of household, or qualifying surviving spouse\u2014$85,000' (i1040gi, Schedule 1 line 21 worksheet). Mutation-score assertion (T-159): ordinary dividends of $258,039 exceed $1,500, so Schedule B Part III is completed (f1040sb Part III, \"You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends\"). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -1830,6 +1831,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -1963,7 +1965,7 @@
         "sdtw"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.sdtw.3 unchanged; expected values predicted by hand from the archived sources before running the evaluator: married filing separately with no 28% rate gain (Schedule D line 18 zero): 'If Schedule D, line 18, is zero or blank, skip lines 41 through 43', so worksheet line 41 is blank ($0). Mutation-score assertions (T-159): distribution r1 has no rollover, is not a Roth or Simplified Method annuity and shows no box 5 amount, so it is fully taxable and goes only on line 5b (i1040gi, Lines 5a and 5b, \"If your pension or annuity is fully taxable, enter the total pension or annuity payments (from Form(s) 1099-R, box 1) on line 5b; don't make an entry on line 5a\"); a Form 1099-DIV box 2b amount ($132) means Schedule D must be filed (i1040gi, Line 7, Exception 1: \"None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)\").",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.sdtw.3 unchanged; expected values predicted by hand from the archived sources before running the evaluator: married filing separately with no 28% rate gain (Schedule D line 18 zero): 'If Schedule D, line 18, is zero or blank, skip lines 41 through 43', so worksheet line 41 is blank ($0). Mutation-score assertions (T-159): distribution r1 has no rollover, is not a Roth or Simplified Method annuity and shows no box 5 amount, so it is fully taxable and goes only on line 5b (i1040gi, Lines 5a and 5b, \"If your pension or annuity is fully taxable, enter the total pension or annuity payments (from Form(s) 1099-R, box 1) on line 5b; don't make an entry on line 5a\"); a Form 1099-DIV box 2b amount ($132) means Schedule D must be filed (i1040gi, Line 7, Exception 1: \"None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)\"). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[taxpayer].retirement[r1].code_screen": false,
@@ -2212,6 +2214,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -2420,7 +2423,7 @@
         "f1095a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.retirement.5.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with monthly amounts that differ by month; Form 8962 lines 12 through 23 take each month's Form 1095-A columns A and B into columns (a) and (b) (i8962). February (line 13): column A $403, column B $771; October (line 21) column B $333. Shown state (T-232, predicted from the forms before evaluating): line 10 is No; wages of $369,062 for a tax family of one put line 5 far above 100, so the filer is an applicable taxpayer; coverage starts in February, so line 13 is used with its calculation columns (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\").",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.retirement.5.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with monthly amounts that differ by month; Form 8962 lines 12 through 23 take each month's Form 1095-A columns A and B into columns (a) and (b) (i8962). February (line 13): column A $403, column B $771; October (line 21) column B $333. Shown state (T-232, predicted from the forms before evaluating): line 10 is No; wages of $369,062 for a tax family of one put line 5 far above 100, so the filer is an applicable taxpayer; coverage starts in February, so line 13 is used with its calculation columns (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\"). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -2701,6 +2704,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -2907,7 +2911,7 @@
         "f1095a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.retirement.4.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with monthly amounts; Form 8962 line 22 (November) column (b) is the Form 1095-A November column B amount, $812. Mutation-score assertion (T-159), checked against the archived f4952 p. 1 (\"Your investment income from interest and ordinary dividends minus any qualified dividends is more than your investment interest expense\"): interest $77,243 and ordinary dividends $22,778, all qualified, give $77,243, more than investment interest of $4,788; no other expenses and no 2024 carryover (the line 4g election is a separate matter).",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.retirement.4.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with monthly amounts; Form 8962 line 22 (November) column (b) is the Form 1095-A November column B amount, $812. Mutation-score assertion (T-159), checked against the archived f4952 p. 1 (\"Your investment income from interest and ordinary dividends minus any qualified dividends is more than your investment interest expense\"): interest $77,243 and ordinary dividends $22,778, all qualified, give $77,243, more than investment interest of $4,788; no other expenses and no 2024 carryover (the line 4g election is a separate matter). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -3188,6 +3192,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -3515,7 +3520,7 @@
         "f1095a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.scveh.3 unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with coverage from September; Form 8962 line 20 (September) takes Form 1095-A September column A $168 and column B $970. Mutation-score assertions (T-159): Form 2441 line 13 (grace-period carryover) is $0, so the line 13 gate is false (i2441 p. 5, Line 13); there is no American opportunity credit (Form 8863 line 1 $0), so the line 7 conditions are not asked; car_1 of biz_a is owned, on actual expenses and a passenger automobile, so the depreciation limits apply (i4562, passenger automobiles).",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.scveh.3 unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with coverage from September; Form 8962 line 20 (September) takes Form 1095-A September column A $168 and column B $970. Mutation-score assertions (T-159): Form 2441 line 13 (grace-period carryover) is $0, so the line 13 gate is false (i2441 p. 5, Line 13); there is no American opportunity credit (Form 8863 line 1 $0), so the line 7 conditions are not asked; car_1 of biz_a is owned, on actual expenses and a passenger automobile, so the depreciation limits apply (i4562, passenger automobiles). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -3798,6 +3803,7 @@
         "person[taxpayer].f8889[hsa].line2": 804900,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 11,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -4248,7 +4254,7 @@
         "f1095a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.asset.3 unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with coverage from August; Form 8962 line 19 (August) column (a) is the Form 1095-A August column A amount, $275. Shown state (T-232, predicted from the forms before evaluating): line 10 is No; wages of $48,074 plus a Schedule C profit put household income above the poverty line for the tax family, so the filer is an applicable taxpayer; coverage starts in August, so line 19 is used with its calculation columns (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\"). Mutation-score assertions (T-159), checked against the archived sources: dep_b files a joint return, so is not a qualifying child for the EIC (i1040gi p. 41, Step 3, a qualifying child for the EIC is a child who meets the relationship, age, joint return and residency tests; the child is not filing a joint return). The only section 179 property is $100 elected in full, and business income (wages of $48,074 alone) is above it, so Form 4562 line 12 equals the $100 elected on line 8.",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.asset.3 unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with coverage from August; Form 8962 line 19 (August) column (a) is the Form 1095-A August column A amount, $275. Shown state (T-232, predicted from the forms before evaluating): line 10 is No; wages of $48,074 plus a Schedule C profit put household income above the poverty line for the tax family, so the filer is an applicable taxpayer; coverage starts in August, so line 19 is used with its calculation columns (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\"). Mutation-score assertions (T-159), checked against the archived sources: dep_b files a joint return, so is not a qualifying child for the EIC (i1040gi p. 41, Step 3, a qualifying child for the EIC is a child who meets the relationship, age, joint return and residency tests; the child is not filing a joint return). The only section 179 property is $100 elected in full, and business income (wages of $48,074 alone) is above it, so Form 4562 line 12 equals the $100 elected on line 8. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -4531,6 +4537,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -4910,7 +4917,7 @@
         "f8880"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8889.3.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: single filer who paid no qualified education expenses (Form 8863 not filed: line 1 $0) and Form 8880 column (b), the spouse's column, is blank for a filer who is not married filing jointly: line 4(b) $0.",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8889.3.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: single filer who paid no qualified education expenses (Form 8863 not filed: line 1 $0) and Form 8880 column (b), the spouse's column, is blank for a filer who is not married filing jointly: line 4(b) $0. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[sample].x_other": false,
         "f8863.paid": false,
@@ -4930,6 +4937,7 @@
         "person[sample].f8889[hsa].subject_part": 10000,
         "person[sample].f8889[hsa].line2": 0,
         "person[sample].f8889[hsa].line9": 0,
+        "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 12,
         "person[sample].f8889[hsa].months_family": 0,
         "person[sample].f8889[hsa].dec_coverage": "self_only",
@@ -5379,7 +5387,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.clcw.4.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: no qualified passenger vehicle loan interest: Schedule 1-A Part IV does not apply, so line 23 is blank ($0). Mutation-score assertions (T-159): the taxpayer has Schedule C businesses and a SIMPLE IRA plan for self-employment, so is covered by a retirement plan for the IRA deduction worksheet (i1040gi, Were You Covered by a Retirement Plan, SEP or SIMPLE contributions).",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.clcw.4.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: no qualified passenger vehicle loan interest: Schedule 1-A Part IV does not apply, so line 23 is blank ($0). Mutation-score assertions (T-159): the taxpayer has Schedule C businesses and a SIMPLE IRA plan for self-employment, so is covered by a retirement plan for the IRA deduction worksheet (i1040gi, Were You Covered by a Retirement Plan, SEP or SIMPLE contributions). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -5634,6 +5642,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -5965,7 +5974,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.sd.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: no qualified passenger vehicle loan interest: Schedule 1-A Part IV does not apply, so line 25 is blank ($0). Mutation-score assertion (T-159), checked against the archived i2441: no care expenses and no dependent care benefits, so Form 2441 is not completed and line 2 column (c) is not checked for dep_b (i2441 p. 3, Column (c), \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\"; no care was provided).",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.sd.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: no qualified passenger vehicle loan interest: Schedule 1-A Part IV does not apply, so line 25 is blank ($0). Mutation-score assertion (T-159), checked against the archived i2441: no care expenses and no dependent care benefits, so Form 2441 is not completed and line 2 column (c) is not checked for dep_b (i2441 p. 3, Column (c), \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\"; no care was provided). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -6220,6 +6229,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -6468,7 +6478,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.clcw.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: neither filer born before January 2, 1961: Schedule 1-A Part V does not apply, so line 31 is blank ($0).",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.clcw.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: neither filer born before January 2, 1961: Schedule 1-A Part V does not apply, so line 31 is blank ($0). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -6723,6 +6733,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -6996,7 +7007,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8889.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: married filing jointly with no qualified overtime: Schedule 1-A Part III does not apply, so lines 14a and 16 are blank ($0). Mutation-score assertion (T-159): car_2 is leased, with no section 179 election ($0), so the election is not more than the business cost.",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8889.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: married filing jointly with no qualified overtime: Schedule 1-A Part III does not apply, so lines 14a and 16 are blank ($0). Mutation-score assertion (T-159): car_2 is leased, with no section 179 election ($0), so the election is not more than the business cost. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -7277,6 +7288,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 9,
         "person[taxpayer].f8889[hsa].age55": true,
@@ -7590,6 +7602,7 @@
         "person[spouse].f8889[hsa].line2": 518800,
         "person[spouse].f8889[hsa].line9": 0,
         "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 12,
         "person[spouse].f8889[hsa].months_family": 9,
         "person[spouse].f8889[hsa].age55": false,
@@ -7918,7 +7931,7 @@
         "s3"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.w2.1.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: no residential clean energy property (Form 5695 Part I not used): Schedule 3 line 5a is $0. Mutation-score assertions (T-159): the employer furnished the care but there are no qualifying persons and no qualified expenses were paid, so the employer-care-plus-paid-expenses case (i2441 p. 3, Columns (a) and (b), \"enter your employer's name in column (a)\") does not arise; the taxpayer contributed $7,000 to a Roth IRA for 2025.",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.w2.1.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: no residential clean energy property (Form 5695 Part I not used): Schedule 3 line 5a is $0. Mutation-score assertions (T-159): the employer furnished the care but there are no qualifying persons and no qualified expenses were paid, so the employer-care-plus-paid-expenses case (i2441 p. 3, Columns (a) and (b), \"enter your employer's name in column (a)\") does not arise; the taxpayer contributed $7,000 to a Roth IRA for 2025. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -8167,6 +8180,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": true,
@@ -8380,7 +8394,7 @@
         "sli"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8959.2 unchanged; expected values predicted by hand from the archived sources before running the evaluator: married filing separately, who cannot take the student loan interest deduction (i1040gi, Schedule 1 line 21): the worksheet line 5 amount is blank ($0).",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8959.2 unchanged; expected values predicted by hand from the archived sources before running the evaluator: married filing separately, who cannot take the student loan interest deduction (i1040gi, Schedule 1 line 21): the worksheet line 5 amount is blank ($0). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -8511,6 +8525,7 @@
         "person[taxpayer].f8889[hsa].line2": 257200,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 11,
         "person[taxpayer].f8889[hsa].months_family": 3,
         "person[taxpayer].f8889[hsa].age55": true,
@@ -8738,7 +8753,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.person.1.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: head of household claiming qualified tips and overtime (Parts II and III apply). Schedule 1-A line 9: 'Enter $150,000 ($300,000 if married filing jointly)', so $150,000; line 17 likewise $150,000.",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.person.1.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: head of household claiming qualified tips and overtime (Parts II and III apply). Schedule 1-A line 9: 'Enter $150,000 ($300,000 if married filing jointly)', so $150,000; line 17 likewise $150,000. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -9019,6 +9034,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 1,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -9205,7 +9221,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8606.1 unchanged; expected values predicted by hand from the archived sources before running the evaluator: qualifying surviving spouse claiming qualified overtime (Part III applies): Schedule 1-A line 17 is $150,000 (not married filing jointly).",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8606.1 unchanged; expected values predicted by hand from the archived sources before running the evaluator: qualifying surviving spouse claiming qualified overtime (Part III applies): Schedule 1-A line 17 is $150,000 (not married filing jointly). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[taxpayer].retirement[r1].code_screen": false,
@@ -9444,6 +9460,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -9597,7 +9614,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.carloan.2 unchanged; expected values predicted by hand from the archived sources before running the evaluator: head of household claiming qualified passenger vehicle loan interest (Part IV applies): Schedule 1-A line 26 'Enter $100,000 ($200,000 if married filing jointly)' is $100,000. Shown state (T-232, predicted from the instructions before evaluating): $7,608 contributed to an HSA with family coverage for 9 months (limit 9/12 of $8,550, $6,412.50, no last-month rule) is an excess contribution, so Form 5329 Part VII is prepared for the taxpayer (i5329 p. 8, Line 47, excess contributions for 2025), with no early distribution. Mutation-score assertion (T-159): all 9 eligible months had family coverage (months_family 9 of 9), so the coverage type did not change during the year (i8889 p. 4, Line 3).",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.carloan.2 unchanged; expected values predicted by hand from the archived sources before running the evaluator: head of household claiming qualified passenger vehicle loan interest (Part IV applies): Schedule 1-A line 26 'Enter $100,000 ($200,000 if married filing jointly)' is $100,000. Shown state (T-232, predicted from the instructions before evaluating): $7,608 contributed to an HSA with family coverage for 9 months (limit 9/12 of $8,550, $6,412.50, no last-month rule) is an excess contribution, so Form 5329 Part VII is prepared for the taxpayer (i5329 p. 8, Line 47, excess contributions for 2025), with no early distribution. Mutation-score assertion (T-159): all 9 eligible months had family coverage (months_family 9 of 9), so the coverage type did not change during the year (i8889 p. 4, Line 3). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -9844,6 +9861,7 @@
         "person[taxpayer].f8889[hsa].line2": 760800,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 9,
         "person[taxpayer].f8889[hsa].months_family": 9,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -10076,7 +10094,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.dcprov.1 unchanged; expected values predicted by hand from the archived sources before running the evaluator: qualifying surviving spouse claiming qualified passenger vehicle loan interest (Part IV applies): Schedule 1-A line 26 is $100,000.",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.dcprov.1 unchanged; expected values predicted by hand from the archived sources before running the evaluator: qualifying surviving spouse claiming qualified passenger vehicle loan interest (Part IV applies): Schedule 1-A line 26 is $100,000. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[taxpayer].retirement[r1].code_screen": false,
@@ -10286,6 +10304,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -10447,7 +10466,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of stage12.car.mixed_sc_interest_prorated unchanged; expected values predicted by hand from the archived sources before running the evaluator: qualifying surviving spouse with Parts II, III and IV of Schedule 1-A applying: line 9 $150,000, line 17 $150,000, line 26 $100,000 (the amounts for a filer not married filing jointly).",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of stage12.car.mixed_sc_interest_prorated unchanged; expected values predicted by hand from the archived sources before running the evaluator: qualifying surviving spouse with Parts II, III and IV of Schedule 1-A applying: line 9 $150,000, line 17 $150,000, line 26 $100,000 (the amounts for a filer not married filing jointly). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -10579,6 +10598,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": true,
@@ -12480,7 +12500,7 @@
         "f1040.line27a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (EIC limit and threshold by filing status), inputs of classm.eic.4 unchanged; expected values predicted by hand from the archived i1040gi (EIC Steps 1 and 5, Worksheet A, EIC Table) before running the evaluator: qualifying surviving spouse, one qualifying child with a valid SSN, earned income $5,137 and AGI $16,019: AGI is below the $61,555 top limit and the $50,434 one-child limit, so the credit is figured. Line 2 is row $5,100-$5,150, one child: $1,743 (34% of the $5,125 midpoint, rounded); line 3 $16,019 is less than $23,350, so line 5 is skipped and line 6 is $1,743, entered on Form 1040 line 27a.",
+      "evidence_note": "Mutation fixture (EIC limit and threshold by filing status), inputs of classm.eic.4 unchanged; expected values predicted by hand from the archived i1040gi (EIC Steps 1 and 5, Worksheet A, EIC Table) before running the evaluator: qualifying surviving spouse, one qualifying child with a valid SSN, earned income $5,137 and AGI $16,019: AGI is below the $61,555 top limit and the $50,434 one-child limit, so the credit is figured. Line 2 is row $5,100-$5,150, one child: $1,743 (34% of the $5,125 midpoint, rounded); line 3 $16,019 is less than $23,350, so line 5 is skipped and line 6 is $1,743, entered on Form 1040 line 27a. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -12763,6 +12783,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -14131,7 +14152,7 @@
         "s1.line21"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the line 7 divisor by filing status), inputs of classm.sli.2 unchanged; expected values predicted by hand from the archived i1040gi (p. 99, Student Loan Interest Deduction Worksheet) before running the evaluator: qualifying surviving spouse, interest paid $3,000, so line 1 is the $2,500 maximum; line 2 (Form 1040 line 9) $87,733; line 3 $0; line 4 $87,733. Line 5: 'Single, head of household, or qualifying surviving spouse\u2014$85,000'; line 4 is more, so line 6 is $2,733. Line 7: 'Divide line 6 by $15,000 ($30,000 if married filing jointly). Enter the result as a decimal (rounded to at least three places)': 0.182. Line 8: $2,500 x 0.182 = $455. Line 9: $2,500 - $455 = $2,045.",
+      "evidence_note": "Mutation fixture (choose branch values: the line 7 divisor by filing status), inputs of classm.sli.2 unchanged; expected values predicted by hand from the archived i1040gi (p. 99, Student Loan Interest Deduction Worksheet) before running the evaluator: qualifying surviving spouse, interest paid $3,000, so line 1 is the $2,500 maximum; line 2 (Form 1040 line 9) $87,733; line 3 $0; line 4 $87,733. Line 5: 'Single, head of household, or qualifying surviving spouse\u2014$85,000'; line 4 is more, so line 6 is $2,733. Line 7: 'Divide line 6 by $15,000 ($30,000 if married filing jointly). Enter the result as a decimal (rounded to at least three places)': 0.182. Line 8: $2,500 x 0.182 = $455. Line 9: $2,500 - $455 = $2,045. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[taxpayer].retirement[r1].code_screen": false,
@@ -14370,6 +14391,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -14521,7 +14543,7 @@
         "s1.line21"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the line 7 divisor by filing status), inputs of classm.sli.2 with the filing status head of household; expected values predicted by hand from the archived i1040gi (p. 99, Student Loan Interest Deduction Worksheet) before running the evaluator: interest paid $3,000, line 1 $2,500; line 4 (Form 1040 line 9 less the Schedule 1 adjustments, none) $87,733. Line 5: 'Single, head of household, or qualifying surviving spouse\u2014$85,000'; line 6 $2,733. Line 7: 'Divide line 6 by $15,000 ($30,000 if married filing jointly)', rounded to three places: 0.182. Line 8 $455; line 9 $2,045.",
+      "evidence_note": "Mutation fixture (choose branch values: the line 7 divisor by filing status), inputs of classm.sli.2 with the filing status head of household; expected values predicted by hand from the archived i1040gi (p. 99, Student Loan Interest Deduction Worksheet) before running the evaluator: interest paid $3,000, line 1 $2,500; line 4 (Form 1040 line 9 less the Schedule 1 adjustments, none) $87,733. Line 5: 'Single, head of household, or qualifying surviving spouse\u2014$85,000'; line 6 $2,733. Line 7: 'Divide line 6 by $15,000 ($30,000 if married filing jointly)', rounded to three places: 0.182. Line 8 $455; line 9 $2,045. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[taxpayer].retirement[r1].code_screen": false,
@@ -14760,6 +14782,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -15083,7 +15106,7 @@
         "f8880"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the joint-return prior-distribution amount), inputs of classm.f8962.3.deepseek unchanged; expected value predicted by hand from the archived f8880 (p. 2, Line 4) before running the evaluator: head of household, the taxpayer received two 2025 distributions, a Roth IRA distribution of $29,242 and a plan distribution of $18,556, none rolled over, and no earlier-year distributions. 'Enter the total amount of distributions you, and your spouse if filing jointly, received ...': not a joint return, so only the taxpayer's own, line 4(a) $47,798.",
+      "evidence_note": "Mutation fixture (choose branch values: the joint-return prior-distribution amount), inputs of classm.f8962.3.deepseek unchanged; expected value predicted by hand from the archived f8880 (p. 2, Line 4) before running the evaluator: head of household, the taxpayer received two 2025 distributions, a Roth IRA distribution of $29,242 and a plan distribution of $18,556, none rolled over, and no earlier-year distributions. 'Enter the total amount of distributions you, and your spouse if filing jointly, received ...': not a joint return, so only the taxpayer's own, line 4(a) $47,798. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -15366,6 +15389,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -15712,7 +15736,7 @@
         "person"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the self-employed SEP/SIMPLE salary reduction on Form 8880 line 2), inputs of classm.dependent.1.deepseek unchanged; expected value predicted by hand from the archived f8880 (p. 2, Line 2: 'Include on line 2 any of the following amounts. Elective deferrals ... These amounts may be shown in box 12 of your Form(s) W-2') before running the evaluator: single; the taxpayer's W-2 from emp_a shows $4,384 in box 12 code D and the other W-2 none, and the taxpayer made no SIMPLE salary reduction contributions as a self-employed person (the answer is a SEP, with no SIMPLE deferral), so line 2(a) is $4,384.",
+      "evidence_note": "Mutation fixture (choose branch values: the self-employed SEP/SIMPLE salary reduction on Form 8880 line 2), inputs of classm.dependent.1.deepseek unchanged; expected value predicted by hand from the archived f8880 (p. 2, Line 2: 'Include on line 2 any of the following amounts. Elective deferrals ... These amounts may be shown in box 12 of your Form(s) W-2') before running the evaluator: single; the taxpayer's W-2 from emp_a shows $4,384 in box 12 code D and the other W-2 none, and the taxpayer made no SIMPLE salary reduction contributions as a self-employed person (the answer is a SEP, with no SIMPLE deferral), so line 2(a) is $4,384. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -15995,6 +16019,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -16368,7 +16393,7 @@
         "person"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the self-employed SIMPLE salary reduction on Form 8880 line 2), inputs of classm.g28.2.deepseek unchanged; expected value predicted by hand from the archived f8880 (p. 2, Line 2: 'Elective deferrals ... to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE ... These amounts may be shown in box 12 of your Form(s) W-2') before running the evaluator: married filing jointly; the spouse's W-2 from emp_b shows $5,940 in box 12 code D (the other W-2 none), and the spouse contributed to a SIMPLE IRA as a self-employed person with $0 salary reduction contributions, so line 2(b) is $5,940 + $0 = $5,940.",
+      "evidence_note": "Mutation fixture (choose branch values: the self-employed SIMPLE salary reduction on Form 8880 line 2), inputs of classm.g28.2.deepseek unchanged; expected value predicted by hand from the archived f8880 (p. 2, Line 2: 'Elective deferrals ... to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE ... These amounts may be shown in box 12 of your Form(s) W-2') before running the evaluator: married filing jointly; the spouse's W-2 from emp_b shows $5,940 in box 12 code D (the other W-2 none), and the spouse contributed to a SIMPLE IRA as a self-employed person with $0 salary reduction contributions, so line 2(b) is $5,940 + $0 = $5,940. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -16624,6 +16649,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -16964,7 +16990,7 @@
         "s3.line11"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the excess social security credit when not eligible), inputs of classm.clcw.1.deepseek unchanged; expected values predicted by hand from the archived i1040gi (p. 117, Excess Social Security and Tier 1 RRTA Tax Withheld: 'If you, or your spouse if filing a joint return, had more than one employer for 2025 and total wages of more than $176,100, too much social security ... tax may have been withheld') before running the evaluator: qualifying surviving spouse, one Form W-2 (emp_a) with no social security wages or tax, not a railroad employee, so there is no excess and Schedule 3 line 11 is $0.",
+      "evidence_note": "Mutation fixture (choose branch values: the excess social security credit when not eligible), inputs of classm.clcw.1.deepseek unchanged; expected values predicted by hand from the archived i1040gi (p. 117, Excess Social Security and Tier 1 RRTA Tax Withheld: 'If you, or your spouse if filing a joint return, had more than one employer for 2025 and total wages of more than $176,100, too much social security ... tax may have been withheld') before running the evaluator: qualifying surviving spouse, one Form W-2 (emp_a) with no social security wages or tax, not a railroad employee, so there is no excess and Schedule 3 line 11 is $0. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[taxpayer].retirement[r2].code_screen": false,
@@ -17221,6 +17247,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -17383,7 +17410,7 @@
         "retirement"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: a distribution Form 8880 line 4 leaves out), inputs of classm.dependent.2.deepseek unchanged; expected value predicted by hand from the archived f8880 (p. 2, Line 4: 'Don't include any of the following. ... Distributions from an inherited IRA by a nonspousal beneficiary') before running the evaluator: married filing separately; the taxpayer's only 2025 distribution is $59,719 from a Roth IRA inherited as a non-spouse beneficiary, and there are no earlier-year distributions, so line 4(a) is $0. Mutation-score assertion (T-159): capital gain distributions with a Form 1099-DIV box 2d (28% rate gain) amount of $8,604 mean Schedule D must be filed (i1040gi, Line 7, Exception 1: \"None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)\").",
+      "evidence_note": "Mutation fixture (choose branch values: a distribution Form 8880 line 4 leaves out), inputs of classm.dependent.2.deepseek unchanged; expected value predicted by hand from the archived f8880 (p. 2, Line 4: 'Don't include any of the following. ... Distributions from an inherited IRA by a nonspousal beneficiary') before running the evaluator: married filing separately; the taxpayer's only 2025 distribution is $59,719 from a Roth IRA inherited as a non-spouse beneficiary, and there are no earlier-year distributions, so line 4(a) is $0. Mutation-score assertion (T-159): capital gain distributions with a Form 1099-DIV box 2d (28% rate gain) amount of $8,604 mean Schedule D must be filed (i1040gi, Line 7, Exception 1: \"None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)\"). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -17666,6 +17693,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": true,
@@ -17957,7 +17985,7 @@
         "f8962"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the monthly Form 1095-A amounts), inputs of classm.f1095a.1.deepseek with only its second Form 1095-A (mkt_b, monthly amounts, column B counted) and its March, October, November and December amounts changed so that each differs from the month before; expected values predicted by hand from the archived i8962 (p. 16, Lines 12 Through 23: 'Column (a). Enter on lines 12 through 23, column (a), the amount of the monthly premiums reported on Form 1095-A, lines 21 through 32, column A, for the corresponding month' and 'Column (b). Enter on lines 12 through 23, column (b), the amount of the monthly applicable SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month') before running the evaluator: with one Form 1095-A, line 14 (March) is $500 in column (a) and $200 in column (b); line 21 (October) column (a) $1,200; line 22 (November) column (a) $1,100; line 23 (December) $1,300 in column (a) and $400 in column (b). Shown state (T-232, predicted from the forms before evaluating): line 10 is No (monthly amounts); the filer is an applicable taxpayer through the Marketplace-estimate exception with advance payments (i8962 p. 9); March and May have premiums, April none, so lines 14 and 16 are used with their calculation columns and line 15 is not (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\").",
+      "evidence_note": "Mutation fixture (choose branch values: the monthly Form 1095-A amounts), inputs of classm.f1095a.1.deepseek with only its second Form 1095-A (mkt_b, monthly amounts, column B counted) and its March, October, November and December amounts changed so that each differs from the month before; expected values predicted by hand from the archived i8962 (p. 16, Lines 12 Through 23: 'Column (a). Enter on lines 12 through 23, column (a), the amount of the monthly premiums reported on Form 1095-A, lines 21 through 32, column A, for the corresponding month' and 'Column (b). Enter on lines 12 through 23, column (b), the amount of the monthly applicable SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month') before running the evaluator: with one Form 1095-A, line 14 (March) is $500 in column (a) and $200 in column (b); line 21 (October) column (a) $1,200; line 22 (November) column (a) $1,100; line 23 (December) $1,300 in column (a) and $400 in column (b). Shown state (T-232, predicted from the forms before evaluating): line 10 is No (monthly amounts); the filer is an applicable taxpayer through the Marketplace-estimate exception with advance payments (i8962 p. 9); March and May have premiums, April none, so lines 14 and 16 are used with their calculation columns and line 15 is not (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\"). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -18240,6 +18268,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -18447,7 +18476,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: line 13 when line 10 is not reached), inputs of classm.f8889.2.deepseek unchanged; expected value predicted by hand before running the evaluator from the archived f1040s1a and i1040gi (p. 105, Schedule 1-A, line 10, \"If the amount on line 10 is zero or less ... Skip lines 11 and 12 and enter the amount from Schedule 1-A, line 7, on Schedule 1-A, line 13\") and the evaluation order of spec 4.7.3 (a choose evaluates its guard first): married filing jointly, qualified tips claimed, Part II applies. Line 13 is decided by line 10, which reads line 8 (modified AGI) before anything else; line 8 here refuses with the Schedule B foreign-trust entry (gate sb.line8, Form 3520 / Form 3520-A), while line 7 (the tips amount) refuses with a different entry (scope.schedule1). So line 13 carries the line 8 refusal, the record of the sb.line8 refusal entry.",
+      "evidence_note": "Mutation fixture (choose branch values: line 13 when line 10 is not reached), inputs of classm.f8889.2.deepseek unchanged; expected value predicted by hand before running the evaluator from the archived f1040s1a and i1040gi (p. 105, Schedule 1-A, line 10, \"If the amount on line 10 is zero or less ... Skip lines 11 and 12 and enter the amount from Schedule 1-A, line 7, on Schedule 1-A, line 13\") and the evaluation order of spec 4.7.3 (a choose evaluates its guard first): married filing jointly, qualified tips claimed, Part II applies. Line 13 is decided by line 10, which reads line 8 (modified AGI) before anything else; line 8 here refuses with the Schedule B foreign-trust entry (gate sb.line8, Form 3520 / Form 3520-A), while line 7 (the tips amount) refuses with a different entry (scope.schedule1). So line 13 carries the line 8 refusal, the record of the sb.line8 refusal entry. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -18728,6 +18757,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 9,
         "person[taxpayer].f8889[hsa].age55": true,
@@ -19041,6 +19071,7 @@
         "person[spouse].f8889[hsa].line2": 518800,
         "person[spouse].f8889[hsa].line9": 0,
         "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 12,
         "person[spouse].f8889[hsa].months_family": 9,
         "person[spouse].f8889[hsa].age55": false,
@@ -19107,7 +19138,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: line 21 when line 18 is not reached), inputs of classm.clcw.4.deepseek unchanged; expected value predicted by hand before running the evaluator from the archived f1040s1a and i1040gi (Schedule 1-A, line 18: if zero or less, skip lines 19 and 20 and enter line 15 on line 21) and the evaluation order of spec 4.7.3 (a choose evaluates its guard first): single, qualified overtime claimed, Part III applies. Line 21 is decided by line 18, which reads line 16 (modified AGI) first; line 16 here refuses with the retirement-plan screen entry (gate person[taxpayer].plan_screened), while line 15 refuses through a different entry (the overtime job screen). So line 21 carries the line 16 refusal, the record of the plan_screened refusal entry.",
+      "evidence_note": "Mutation fixture (choose branch values: line 21 when line 18 is not reached), inputs of classm.clcw.4.deepseek unchanged; expected value predicted by hand before running the evaluator from the archived f1040s1a and i1040gi (Schedule 1-A, line 18: if zero or less, skip lines 19 and 20 and enter line 15 on line 21) and the evaluation order of spec 4.7.3 (a choose evaluates its guard first): single, qualified overtime claimed, Part III applies. Line 21 is decided by line 18, which reads line 16 (modified AGI) first; line 16 here refuses with the retirement-plan screen entry (gate person[taxpayer].plan_screened), while line 15 refuses through a different entry (the overtime job screen). So line 21 carries the line 16 refusal, the record of the plan_screened refusal entry. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -19362,6 +19393,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -19881,7 +19913,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the line 15 overtime maximum by filing status), inputs of classm.otjob.2 with the filing status head of household and the second overtime statement raised to $30,000; expected value predicted by hand from the archived f1040s1a (p. 1, line 15, 'Enter the smaller of line 14c or $12,500 ($25,000 if married filing jointly)') before running the evaluator: the second job's statement is a double-time premium of $30,000, of which half ($15,000) is qualified overtime, so line 14c is more than $12,500 and line 15 is $12,500. Mutation-score assertion (T-159), checked against the archived i1040gi before recording: dep_a, age 21, a full-time student younger than you, meets the age test (p. 17, Step 1, the age conditions: under age 24 at the end of 2025, a student, and younger than you), whatever the relationship test gives.",
+      "evidence_note": "Mutation fixture (choose branch values: the line 15 overtime maximum by filing status), inputs of classm.otjob.2 with the filing status head of household and the second overtime statement raised to $30,000; expected value predicted by hand from the archived f1040s1a (p. 1, line 15, 'Enter the smaller of line 14c or $12,500 ($25,000 if married filing jointly)') before running the evaluator: the second job's statement is a double-time premium of $30,000, of which half ($15,000) is qualified overtime, so line 14c is more than $12,500 and line 15 is $12,500. Mutation-score assertion (T-159), checked against the archived i1040gi before recording: dep_a, age 21, a full-time student younger than you, meets the age test (p. 17, Step 1, the age conditions: under age 24 at the end of 2025, a student, and younger than you), whatever the relationship test gives. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -20001,6 +20033,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -20153,7 +20186,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the line 15 overtime maximum by filing status), inputs of classm.otjob.2 with the filing status qualifying surviving spouse and the second overtime statement raised to $30,000; expected value predicted by hand from the archived f1040s1a (p. 1, line 15, 'Enter the smaller of line 14c or $12,500 ($25,000 if married filing jointly)') before running the evaluator: half of the $30,000 double-time premium ($15,000) is qualified overtime, so line 14c is more than $12,500 and, not being married filing jointly, line 15 is $12,500.",
+      "evidence_note": "Mutation fixture (choose branch values: the line 15 overtime maximum by filing status), inputs of classm.otjob.2 with the filing status qualifying surviving spouse and the second overtime statement raised to $30,000; expected value predicted by hand from the archived f1040s1a (p. 1, line 15, 'Enter the smaller of line 14c or $12,500 ($25,000 if married filing jointly)') before running the evaluator: half of the $30,000 double-time premium ($15,000) is qualified overtime, so line 14c is more than $12,500 and, not being married filing jointly, line 15 is $12,500. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -20273,6 +20306,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -20421,7 +20455,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: Parts II and III for married filing separately), inputs of classm.s1a.1 with the filing status married filing separately and the taxpayer born before January 2, 1961 and the taxpayer's valid-SSN answer left unanswered; expected values predicted by hand from the archived f1040s1a before running the evaluator: Part II caution (p. 1) 'If married, you must file jointly to claim this deduction' and Part III caution (p. 1) the same, and Part V (p. 2) the same, so with qualified tips, qualified overtime and a taxpayer aged 65 or older but a separate return, lines 13, 21 and 36a are $0 whatever the SSN answer would be.",
+      "evidence_note": "Mutation fixture (choose branch values: Parts II and III for married filing separately), inputs of classm.s1a.1 with the filing status married filing separately and the taxpayer born before January 2, 1961 and the taxpayer's valid-SSN answer left unanswered; expected values predicted by hand from the archived f1040s1a before running the evaluator: Part II caution (p. 1) 'If married, you must file jointly to claim this deduction' and Part III caution (p. 1) the same, and Part V (p. 2) the same, so with qualified tips, qualified overtime and a taxpayer aged 65 or older but a separate return, lines 13, 21 and 36a are $0 whatever the SSN answer would be. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -20541,6 +20575,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -20754,7 +20789,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: line 36a by filing status), inputs of classm.otjob.2 with the filing status head of household, the taxpayer born before January 2, 1961, who died in 2025 before reaching age 65; expected value predicted by hand from the archived i1040gi (p. 110, Schedule 1-A, Part V, \"Death of a taxpayer in 2025. If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors\") before running the evaluator: the case is outside the tool, so line 36a carries the refusal of that entry (gate s1a.senior_decedent, whose record quotes this passage).",
+      "evidence_note": "Mutation fixture (choose branch values: line 36a by filing status), inputs of classm.otjob.2 with the filing status head of household, the taxpayer born before January 2, 1961, who died in 2025 before reaching age 65; expected value predicted by hand from the archived i1040gi (p. 110, Schedule 1-A, Part V, \"Death of a taxpayer in 2025. If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors\") before running the evaluator: the case is outside the tool, so line 36a carries the refusal of that entry (gate s1a.senior_decedent, whose record quotes this passage). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -20874,6 +20909,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -21031,7 +21067,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: line 36a by filing status), inputs of classm.otjob.2 with the filing status qualifying surviving spouse, the taxpayer born before January 2, 1961, who died in 2025 before reaching age 65; expected value predicted by hand from the archived i1040gi (p. 110, Schedule 1-A, Part V, \"Death of a taxpayer in 2025. If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors\") before running the evaluator: the case is outside the tool, so line 36a carries the refusal of that entry (gate s1a.senior_decedent, whose record quotes this passage).",
+      "evidence_note": "Mutation fixture (choose branch values: line 36a by filing status), inputs of classm.otjob.2 with the filing status qualifying surviving spouse, the taxpayer born before January 2, 1961, who died in 2025 before reaching age 65; expected value predicted by hand from the archived i1040gi (p. 110, Schedule 1-A, Part V, \"Death of a taxpayer in 2025. If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors\") before running the evaluator: the case is outside the tool, so line 36a carries the refusal of that entry (gate s1a.senior_decedent, whose record quotes this passage). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -21151,6 +21187,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -21308,7 +21345,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: line 15 when there are no distributions), inputs of stage11.hsa.self_full_year with a $1,000 rollover answered although line 14a is $0; expected values predicted by hand from the archived i8889 (p. 8, Line 15, 'Only include on line 15 distributions from your HSA that were used to pay you for qualified medical expenses') and f8889 (p. 1, line 14b, 'Distributions included on line 14a that you rolled over to another HSA') before running the evaluator: line 14a is $0, so no distribution paid medical expenses and line 15 is $0; the $1,000 rollover cannot be part of $0 of distributions, so the line 14b consistency gate is true. Mutation-score assertion (T-159): no HSA distributions (line 14a $0), so line 16 is $0 and there are no taxable distributions.",
+      "evidence_note": "Mutation fixture (choose branch values: line 15 when there are no distributions), inputs of stage11.hsa.self_full_year with a $1,000 rollover answered although line 14a is $0; expected values predicted by hand from the archived i8889 (p. 8, Line 15, 'Only include on line 15 distributions from your HSA that were used to pay you for qualified medical expenses') and f8889 (p. 1, line 14b, 'Distributions included on line 14a that you rolled over to another HSA') before running the evaluator: line 14a is $0, so no distribution paid medical expenses and line 15 is $0; the $1,000 rollover cannot be part of $0 of distributions, so the line 14b consistency gate is true. Mutation-score assertion (T-159): no HSA distributions (line 14a $0), so line 16 is $0 and there are no taxable distributions. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -21442,6 +21479,7 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "sli.interest": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -21491,7 +21529,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: line 3 for an eligible individual all year), inputs of stage11.hsa.self_full_year with the December 1 coverage unanswered; expected values predicted by hand from the archived f8889 (p. 1, line 3, 'If you were under age 55 at the end of 2025 and, on the first day of every month during 2025, you were ... an eligible individual with the same coverage, enter $4,300') and i8889 (p. 4, Line 3, rule 3, 'enter $4,300 for a self-only HDHP') before running the evaluator: under 55, eligible 12 months, no family months, so line 3 is $4,300 whatever the December 1 answer; line 4 is $0, so line 5 is $4,300.",
+      "evidence_note": "Mutation fixture (choose branch values: line 3 for an eligible individual all year), inputs of stage11.hsa.self_full_year with the December 1 coverage unanswered; expected values predicted by hand from the archived f8889 (p. 1, line 3, 'If you were under age 55 at the end of 2025 and, on the first day of every month during 2025, you were ... an eligible individual with the same coverage, enter $4,300') and i8889 (p. 4, Line 3, rule 3, 'enter $4,300 for a self-only HDHP') before running the evaluator: under 55, eligible 12 months, no family months, so line 3 is $4,300 whatever the December 1 answer; line 4 is $0, so line 5 is $4,300. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -21625,6 +21663,7 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "sli.interest": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -21668,7 +21707,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: line 3 when not an eligible individual every month), inputs of stage11.hsa.last_month_changed with the last-month rule not used and family coverage on December 1; expected values predicted by hand from the archived i8889 (p. 2, Last-month rule, 'You may consider yourself an eligible individual for the entire year'; p. 4, Line 3, rules 3 and 4 apply only if you 'were, or were considered, an eligible individual for the entire year'; p. 9, Line 18, the Line 3 Limitation Chart determines 'the contribution you could have made if the last-month rule did not apply'; p. 6, chart: '$4,300' a self-only month, '$8,550' a family month, 'Limitation. Divide the total by 12') before running the evaluator: eligible 11 months, 4 of them family, under 55, not considered eligible all year, so line 3 is the chart: 7 x $4,300 + 4 x $8,550 = $30,100 + $34,200 = $64,300, divided by 12 = $5,358.33 (rule 4's December 1 maximum of $8,550 does not apply); line 5 $5,358.33; line 13 the smaller of line 2 $5,000 and line 12 $5,358.33 = $5,000.",
+      "evidence_note": "Mutation fixture (choose branch values: line 3 when not an eligible individual every month), inputs of stage11.hsa.last_month_changed with the last-month rule not used and family coverage on December 1; expected values predicted by hand from the archived i8889 (p. 2, Last-month rule, 'You may consider yourself an eligible individual for the entire year'; p. 4, Line 3, rules 3 and 4 apply only if you 'were, or were considered, an eligible individual for the entire year'; p. 9, Line 18, the Line 3 Limitation Chart determines 'the contribution you could have made if the last-month rule did not apply'; p. 6, chart: '$4,300' a self-only month, '$8,550' a family month, 'Limitation. Divide the total by 12') before running the evaluator: eligible 11 months, 4 of them family, under 55, not considered eligible all year, so line 3 is the chart: 7 x $4,300 + 4 x $8,550 = $30,100 + $34,200 = $64,300, divided by 12 = $5,358.33 (rule 4's December 1 maximum of $8,550 does not apply); line 5 $5,358.33; line 13 the smaller of line 2 $5,000 and line 12 $5,358.33 = $5,000. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -21802,6 +21841,7 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "sli.interest": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 11,
         "person[taxpayer].f8889[hsa].months_family": 4,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -21850,7 +21890,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the Step 1 family amount under the last-month rule with self-only coverage on December 1), inputs of stage11.hsa.last_month_changed unchanged (the spouse allocation question unanswered, as for any single filer); expected values predicted by hand from the archived i8889 (p. 7, Line 6, 'Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules'; p. 4, Line 3, rule 2, under the last-month rule 'You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month') before running the evaluator: a single filer with one Form 8889, treated as having self-only coverage all year, so there is no spouse and no family-coverage limit to allocate: Step 1's family amount is $0 and the spouse-allocation check (gate) is false. Mutation-score assertion (T-159), from the archived i8889 (p. 4, Line 3, last-month rule, \"You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month\"): self-only coverage on December 1, so all 12 months carry the self-only amount, $4,300 each, $51,600 in all before the division by 12.",
+      "evidence_note": "Mutation fixture (choose branch values: the Step 1 family amount under the last-month rule with self-only coverage on December 1), inputs of stage11.hsa.last_month_changed unchanged (the spouse allocation question unanswered, as for any single filer); expected values predicted by hand from the archived i8889 (p. 7, Line 6, 'Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules'; p. 4, Line 3, rule 2, under the last-month rule 'You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month') before running the evaluator: a single filer with one Form 8889, treated as having self-only coverage all year, so there is no spouse and no family-coverage limit to allocate: Step 1's family amount is $0 and the spouse-allocation check (gate) is false. Mutation-score assertion (T-159), from the archived i8889 (p. 4, Line 3, last-month rule, \"You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month\"): self-only coverage on December 1, so all 12 months carry the self-only amount, $4,300 each, $51,600 in all before the division by 12. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -21984,6 +22024,7 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "sli.interest": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 11,
         "person[taxpayer].f8889[hsa].months_family": 4,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -22028,7 +22069,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the December 1 maximum when there was no coverage on December 1), inputs of stage16.refuse.f8889.dec_none_all_year with 4 family months (the month counts still contradict the December 1 answer, so line 13 refuses as in the source case); expected values predicted by hand from the archived i8889 (p. 4, Line 3, rule 4, 'the greater of: a. The limitation shown on the last line of the Line 3 Limitation Chart and Worksheet ... or b. The maximum amount that can be contributed based on the type of HDHP coverage you had on the first day of the last month'; p. 6, chart: '$4,300' a self-only month, '$8,550' a family month) before running the evaluator: 12 eligible months, 4 family, a change of type; chart 8 x $4,300 + 4 x $8,550 = $34,400 + $34,200 = $68,600, divided by 12 = $5,716.67; with no HDHP coverage on December 1, b is $0, so line 3 is $5,716.67; line 5 $5,716.67; the month-count check is true (no coverage on December 1 but eligible in all 12 months).",
+      "evidence_note": "Mutation fixture (choose branch values: the December 1 maximum when there was no coverage on December 1), inputs of stage16.refuse.f8889.dec_none_all_year with 4 family months (the month counts still contradict the December 1 answer, so line 13 refuses as in the source case); expected values predicted by hand from the archived i8889 (p. 4, Line 3, rule 4, 'the greater of: a. The limitation shown on the last line of the Line 3 Limitation Chart and Worksheet ... or b. The maximum amount that can be contributed based on the type of HDHP coverage you had on the first day of the last month'; p. 6, chart: '$4,300' a self-only month, '$8,550' a family month) before running the evaluator: 12 eligible months, 4 family, a change of type; chart 8 x $4,300 + 4 x $8,550 = $34,400 + $34,200 = $68,600, divided by 12 = $5,716.67; with no HDHP coverage on December 1, b is $0, so line 3 is $5,716.67; line 5 $5,716.67; the month-count check is true (no coverage on December 1 but eligible in all 12 months). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -22162,6 +22203,7 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "sli.interest": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 4,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -22210,7 +22252,7 @@
         "eic"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the Worksheet A line 5 threshold with a qualifying child), inputs of mutation.eic.qss_one_child with the filing status qualifying surviving spouse, wages raised to $12,000 and the other income item set to $0, so that AGI ($9,000, after the case's $3,000 capital loss) is less than earned income; expected values predicted by hand from the archived i1040gi before running the evaluator: one qualifying child with a valid SSN. Line 1 $12,000; line 2: EIC Table row $12,000-$12,050, one child: $4,089 (p. 51). Line 4 No. p. 46, Part 2: '1 or more qualifying children who have valid SSNs, is the amount on line 3 less than $23,350 ($30,470 if married filing jointly)? ... Yes. Leave line 5 blank; enter the amount from line 2 on line 6': line 6 $4,089.",
+      "evidence_note": "Mutation fixture (choose branch values: the Worksheet A line 5 threshold with a qualifying child), inputs of mutation.eic.qss_one_child with the filing status qualifying surviving spouse, wages raised to $12,000 and the other income item set to $0, so that AGI ($9,000, after the case's $3,000 capital loss) is less than earned income; expected values predicted by hand from the archived i1040gi before running the evaluator: one qualifying child with a valid SSN. Line 1 $12,000; line 2: EIC Table row $12,000-$12,050, one child: $4,089 (p. 51). Line 4 No. p. 46, Part 2: '1 or more qualifying children who have valid SSNs, is the amount on line 3 less than $23,350 ($30,470 if married filing jointly)? ... Yes. Leave line 5 blank; enter the amount from line 2 on line 6': line 6 $4,089. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -22493,6 +22535,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -22708,7 +22751,7 @@
         "eic"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the Worksheet A line 5 threshold with a qualifying child), inputs of mutation.eic.qss_one_child with the filing status head of household, wages raised to $12,000 and the other income item set to $0, so that AGI ($9,000, after the case's $3,000 capital loss) is less than earned income; expected values predicted by hand from the archived i1040gi before running the evaluator: one qualifying child with a valid SSN. Line 1 $12,000; line 2: EIC Table row $12,000-$12,050, one child: $4,089 (p. 51). Line 4 No. p. 46, Part 2: '1 or more qualifying children who have valid SSNs, is the amount on line 3 less than $23,350 ($30,470 if married filing jointly)? ... Yes. Leave line 5 blank; enter the amount from line 2 on line 6': line 6 $4,089.",
+      "evidence_note": "Mutation fixture (choose branch values: the Worksheet A line 5 threshold with a qualifying child), inputs of mutation.eic.qss_one_child with the filing status head of household, wages raised to $12,000 and the other income item set to $0, so that AGI ($9,000, after the case's $3,000 capital loss) is less than earned income; expected values predicted by hand from the archived i1040gi before running the evaluator: one qualifying child with a valid SSN. Line 1 $12,000; line 2: EIC Table row $12,000-$12,050, one child: $4,089 (p. 51). Line 4 No. p. 46, Part 2: '1 or more qualifying children who have valid SSNs, is the amount on line 3 less than $23,350 ($30,470 if married filing jointly)? ... Yes. Leave line 5 blank; enter the amount from line 2 on line 6': line 6 $4,089. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -22991,6 +23034,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -23206,7 +23250,7 @@
         "eic"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the Worksheet A line 5 threshold with a qualifying child), inputs of mutation.eic.qss_one_child with the filing status married filing separately (the separated-spouse rule of the case met), wages raised to $12,000 and the other income item set to $0, so that AGI ($9,000, after the case's $3,000 capital loss) is less than earned income; expected values predicted by hand from the archived i1040gi before running the evaluator: one qualifying child with a valid SSN. Line 1 $12,000; line 2: EIC Table row $12,000-$12,050, one child: $4,089 (p. 51). Line 4 No. p. 46, Part 2: '1 or more qualifying children who have valid SSNs, is the amount on line 3 less than $23,350 ($30,470 if married filing jointly)? ... Yes. Leave line 5 blank; enter the amount from line 2 on line 6': line 6 $4,089.",
+      "evidence_note": "Mutation fixture (choose branch values: the Worksheet A line 5 threshold with a qualifying child), inputs of mutation.eic.qss_one_child with the filing status married filing separately (the separated-spouse rule of the case met), wages raised to $12,000 and the other income item set to $0, so that AGI ($9,000, after the case's $3,000 capital loss) is less than earned income; expected values predicted by hand from the archived i1040gi before running the evaluator: one qualifying child with a valid SSN. Line 1 $12,000; line 2: EIC Table row $12,000-$12,050, one child: $4,089 (p. 51). Line 4 No. p. 46, Part 2: '1 or more qualifying children who have valid SSNs, is the amount on line 3 less than $23,350 ($30,470 if married filing jointly)? ... Yes. Leave line 5 blank; enter the amount from line 2 on line 6': line 6 $4,089. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -23489,6 +23533,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -23705,7 +23750,7 @@
         "f1040.line27c"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the EIC income limit by filing status), inputs of classm.tipjob.1 unchanged; expected value predicted by hand from the archived i1040gi (p. 40, Step 1, question 1, \"... less than $19,104 ($26,214 if married filing jointly)? ... No. STOP You can't take the credit\", a STOP that, unlike question 2's, does not say to check the box on line 27c; p. 42, Line 27c, \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box\") before running the evaluator: married filing separately, no qualifying child, AGI $23,500, which is not less than $19,104, so the line 27c box is not checked.",
+      "evidence_note": "Mutation fixture (choose branch values: the EIC income limit by filing status), inputs of classm.tipjob.1 unchanged; expected value predicted by hand from the archived i1040gi (p. 40, Step 1, question 1, \"... less than $19,104 ($26,214 if married filing jointly)? ... No. STOP You can't take the credit\", a STOP that, unlike question 2's, does not say to check the box on line 27c; p. 42, Line 27c, \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box\") before running the evaluator: married filing separately, no qualifying child, AGI $23,500, which is not less than $19,104, so the line 27c box is not checked. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -23825,6 +23870,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -23951,7 +23997,7 @@
         "f1040.line27c"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the EIC income limit by filing status), inputs of classm.tipjob.1 with the filing status qualifying surviving spouse; expected value predicted by hand from the archived i1040gi (p. 40, Step 1, question 1, \"... less than $19,104 ($26,214 if married filing jointly)? ... No. STOP You can't take the credit\", a STOP that, unlike question 2's, does not say to check the box on line 27c; p. 42, Line 27c, \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box\") before running the evaluator: qualifying surviving spouse, no qualifying child, AGI $23,500, which is not less than $19,104, so the line 27c box is not checked.",
+      "evidence_note": "Mutation fixture (choose branch values: the EIC income limit by filing status), inputs of classm.tipjob.1 with the filing status qualifying surviving spouse; expected value predicted by hand from the archived i1040gi (p. 40, Step 1, question 1, \"... less than $19,104 ($26,214 if married filing jointly)? ... No. STOP You can't take the credit\", a STOP that, unlike question 2's, does not say to check the box on line 27c; p. 42, Line 27c, \"Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box\") before running the evaluator: qualifying surviving spouse, no qualifying child, AGI $23,500, which is not less than $19,104, so the line 27c box is not checked. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -24071,6 +24117,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -25030,7 +25077,7 @@
         "asset"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the mid-quarter total basis of an owned vehicle on actual expenses placed in service before 2025), inputs of classm.eic.2.deepseek with the 2025 asset item_1 costing $1,000; expected value predicted by hand from the archived p946 (p. 34, The mid-quarter convention, 'the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year ... are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year'; p. 73, Table A-5, fourth quarter, 20-year property, year 1: 0.938%) before running the evaluator: the only property placed in service in 2025 is item_1 (class 48.11, 20-year property, 100% business, placed in service October to December, no section 179, no special allowance), basis $1,000. car_2 is an owned vehicle on actual expenses placed in service in 2019 (in the fourth quarter of that year), so it is not 2025 property and does not enter the test. Fourth-quarter bases $1,000 are 100% of the 2025 bases, more than 40%: the mid-quarter convention applies and column 19(g) is $1,000 x 0.938% = $9.38. (Counting car_2's $6,864.33 business basis would give 12.7% and the half-year 3.750%, $37.50.)",
+      "evidence_note": "Mutation fixture (choose branch values: the mid-quarter total basis of an owned vehicle on actual expenses placed in service before 2025), inputs of classm.eic.2.deepseek with the 2025 asset item_1 costing $1,000; expected value predicted by hand from the archived p946 (p. 34, The mid-quarter convention, 'the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year ... are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year'; p. 73, Table A-5, fourth quarter, 20-year property, year 1: 0.938%) before running the evaluator: the only property placed in service in 2025 is item_1 (class 48.11, 20-year property, 100% business, placed in service October to December, no section 179, no special allowance), basis $1,000. car_2 is an owned vehicle on actual expenses placed in service in 2019 (in the fourth quarter of that year), so it is not 2025 property and does not enter the test. Fourth-quarter bases $1,000 are 100% of the 2025 bases, more than 40%: the mid-quarter convention applies and column 19(g) is $1,000 x 0.938% = $9.38. (Counting car_2's $6,864.33 business basis would give 12.7% and the half-year 3.750%, $37.50.) Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -25313,6 +25360,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -25516,7 +25564,7 @@
         "asset"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the mid-quarter total basis of an owned 2025 vehicle on actual expenses), inputs of classm.eic.2.deepseek with the 2025 asset item_1 costing $1,000 and car_2 placed in service in 2025, April to June; expected value predicted by hand from the archived p946 (p. 34, The mid-quarter convention, 'the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year ... are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year'; p. 71, Table A-1, half-year convention, 20-year property, year 1: 3.750%) before running the evaluator: 2025 property is item_1 (20-year, 100% business, fourth quarter, basis $1,000) and car_2 ($9,534 cost, 14,080 of 19,556 miles business = 72.0%, no section 179, no special allowance; basis $9,534 x 14,080 / 19,556 = $6,864.33, second quarter). Fourth-quarter bases $1,000 against total $7,864.33: 12.7%, not more than 40%, so the half-year convention applies and item_1's column 19(g) is $1,000 x 3.750% = $37.50. (Leaving car_2 out of the total would make the test 100% and give the mid-quarter 0.938%, $9.38.)",
+      "evidence_note": "Mutation fixture (choose branch values: the mid-quarter total basis of an owned 2025 vehicle on actual expenses), inputs of classm.eic.2.deepseek with the 2025 asset item_1 costing $1,000 and car_2 placed in service in 2025, April to June; expected value predicted by hand from the archived p946 (p. 34, The mid-quarter convention, 'the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year ... are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year'; p. 71, Table A-1, half-year convention, 20-year property, year 1: 3.750%) before running the evaluator: 2025 property is item_1 (20-year, 100% business, fourth quarter, basis $1,000) and car_2 ($9,534 cost, 14,080 of 19,556 miles business = 72.0%, no section 179, no special allowance; basis $9,534 x 14,080 / 19,556 = $6,864.33, second quarter). Fourth-quarter bases $1,000 against total $7,864.33: 12.7%, not more than 40%, so the half-year convention applies and item_1's column 19(g) is $1,000 x 3.750% = $37.50. (Leaving car_2 out of the total would make the test 100% and give the mid-quarter 0.938%, $9.38.) Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -25799,6 +25847,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -28556,7 +28605,7 @@
         "eic"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (refusal order: the EIC self-employment earnings when Schedule SE items are screened out and a Schedule C line refuses), inputs of stage14.sep.step1_other_se_income unchanged. Two refusals compete: the taxpayer answers Yes to the Schedule SE screen (Schedule SE items outside this tool, i1040sse pp. 1-5), and the Schedule C totals refuse for a section 179 deduction to allocate among more than one business. Expected values predicted from the evaluation order of spec/spec.md 4.7 before running the evaluator: the EIC self-employment line first asks whether the person files Schedule SE (Schedule SE line 4c, whose line 2 carries the Schedule SE screen as its own gate, 4.7.1), so the Schedule SE refusal is reached before the Schedule C total is read: EIC Worksheet B line 4b and EIC line 1 are the Schedule SE screen refusal. Mutation-score assertion (T-159), checked against the archived f4952 p. 1 (\"Exception. You don't have to file Form 4952 if all of the following apply. Your investment income from interest and ordinary dividends minus any qualified dividends is more than your investment interest expense. You don't have any other deductible investment expenses. You don't have any carryover\"): ordinary dividends $36,194 less qualified dividends $24,612 is $11,582, more than investment interest of $3,567; no other expenses and no 2024 carryover.",
+      "evidence_note": "Mutation fixture (refusal order: the EIC self-employment earnings when Schedule SE items are screened out and a Schedule C line refuses), inputs of stage14.sep.step1_other_se_income unchanged. Two refusals compete: the taxpayer answers Yes to the Schedule SE screen (Schedule SE items outside this tool, i1040sse pp. 1-5), and the Schedule C totals refuse for a section 179 deduction to allocate among more than one business. Expected values predicted from the evaluation order of spec/spec.md 4.7 before running the evaluator: the EIC self-employment line first asks whether the person files Schedule SE (Schedule SE line 4c, whose line 2 carries the Schedule SE screen as its own gate, 4.7.1), so the Schedule SE refusal is reached before the Schedule C total is read: EIC Worksheet B line 4b and EIC line 1 are the Schedule SE screen refusal. Mutation-score assertion (T-159), checked against the archived f4952 p. 1 (\"Exception. You don't have to file Form 4952 if all of the following apply. Your investment income from interest and ordinary dividends minus any qualified dividends is more than your investment interest expense. You don't have any other deductible investment expenses. You don't have any carryover\"): ordinary dividends $36,194 less qualified dividends $24,612 is $11,582, more than investment interest of $3,567; no other expenses and no 2024 carryover. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -28687,6 +28736,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -30489,7 +30539,7 @@
         "s1"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the maximum employer contribution of a nonelective SIMPLE IRA plan), inputs of classm.sc.3 (single, one Schedule C, net earnings from self-employment $49,655.86) with the taxpayer given a SIMPLE IRA plan with the nonelective formula, no salary reduction contributions and a $2,000 employer contribution for himself; expected values predicted by hand from the archived p560 before running the evaluator: p560 p. 17, Nonelective contributions: 'nonelective contributions of 2% of compensation'; 2% of $49,655.86 is $993.12, so the $2,000 contribution is above the SIMPLE limit (it would be within the limit if measured against 100% of compensation). The encoding refuses contributions above the SIMPLE limits ('Excess SIMPLE contributions are outside this tool', p560 pp. 14-17, chapter 3), so Schedule 1 line 16 is that refusal.",
+      "evidence_note": "Mutation fixture (choose branch values: the maximum employer contribution of a nonelective SIMPLE IRA plan), inputs of classm.sc.3 (single, one Schedule C, net earnings from self-employment $49,655.86) with the taxpayer given a SIMPLE IRA plan with the nonelective formula, no salary reduction contributions and a $2,000 employer contribution for himself; expected values predicted by hand from the archived p560 before running the evaluator: p560 p. 17, Nonelective contributions: 'nonelective contributions of 2% of compensation'; 2% of $49,655.86 is $993.12, so the $2,000 contribution is above the SIMPLE limit (it would be within the limit if measured against 100% of compensation). The encoding refuses contributions above the SIMPLE limits ('Excess SIMPLE contributions are outside this tool', p560 pp. 14-17, chapter 3), so Schedule 1 line 16 is that refusal. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -30620,6 +30670,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -31112,7 +31163,7 @@
         "ira"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (T-159: the any_trad operand of ira.line1b), predicted from the archived i1040gi IRA Deduction Worksheet before evaluating: mutation.t2.mfj_sdtw_skip23 (married filing jointly, no IRA contributions) with $3,000 of traditional IRA contributions for you and your spouse covered by a retirement plan at work. Worksheet line 1b asks \"If married filing jointly, was your spouse covered by a retirement plan?\": Yes, whatever line 1a (you are not covered) says.",
+      "evidence_note": "Mutation fixture (T-159: the any_trad operand of ira.line1b), predicted from the archived i1040gi IRA Deduction Worksheet before evaluating: mutation.t2.mfj_sdtw_skip23 (married filing jointly, no IRA contributions) with $3,000 of traditional IRA contributions for you and your spouse covered by a retirement plan at work. Worksheet line 1b asks \"If married filing jointly, was your spouse covered by a retirement plan?\": Yes, whatever line 1a (you are not covered) says. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -31368,6 +31419,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -31696,7 +31748,7 @@
         "ira"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (T-159: the ira_any_contrib operand of person.ira_excess_gate), predicted from the archived i1040gi and p590a before evaluating: mutation.t2.no_5695_part1_s3_5a (the taxpayer contributed $7,000 to a Roth IRA, nothing to a traditional IRA) with the excess-contribution screen answered Yes. A Roth contribution is an IRA contribution for 2025 and the screen covers traditional and Roth IRAs together, so the screen gate is true for a Roth-only contributor.",
+      "evidence_note": "Mutation fixture (T-159: the ira_any_contrib operand of person.ira_excess_gate), predicted from the archived i1040gi and p590a before evaluating: mutation.t2.no_5695_part1_s3_5a (the taxpayer contributed $7,000 to a Roth IRA, nothing to a traditional IRA) with the excess-contribution screen answered Yes. A Roth contribution is an IRA contribution for 2025 and the screen covers traditional and Roth IRAs together, so the screen gate is true for a Roth-only contributor. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -31945,6 +31997,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": true,

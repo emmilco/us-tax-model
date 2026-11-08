@@ -306,12 +306,6 @@
    "prompt_sha": "c92791fc0dc296b0ae51bef28cbd79f80afad1e701c2ab99fcb9301bd41b9298",
    "evidence": "f8880 p. 2 (as the prior ruling; the claim repeats it). Line 2 is person.sav_line2 = person.sav_w2 (Form W-2 box 12 deferrals) + person.sav_voluntary + person.sav_simple. person.sav_voluntary's question excludes 'contributions designated under section 414(h)(2) (treated as employer contributions)'. Pick-ups are shown in box 14, not as box 12 deferrals, so they do not reach person.sav_w2. The round changed only the order of f8880.can_take (AGI first) and which contributions its test counts."
   },
-  "unruled:f8889#1": {
-   "class": "real gap",
-   "bug": "BUG-0443",
-   "prompt_sha": "48799bd22636d97749945b000aef0d8d43373cafcb1f6b3520f538b4862fbdb5",
-   "evidence": "i8889 p. 2, Qualified Medical Expenses: nonprescription medicines, menstrual care products, condoms and COVID-19 protective equipment qualify for HSA purposes though not deductible on Schedule A; the f8889.medical question does not say so. Pre-existing (the round changed only f8889.use_last_month); low, held for the form's next substantive change."
-  },
   "unruled:f8959#1": {
    "class": "covered",
    "evidence": "i8959 pp. 1-3. Line 8 sums person.se_line6, which is NonNegDollars per person (Schedule SE line 4c is floored at zero), so one spouse's loss never offsets the other's income.",
@@ -834,6 +828,35 @@
    "class": "presentation",
    "evidence": "i1040sb p. 1. The roster's help names seller-financed interest; the buyer's name, address and SSN and the listing order are filing information; sb.unsupported names seller-financed mortgage interest and refuses.",
    "prompt_sha": "f823a1800a3098a3341162ec5e29f61ce22589815f34d9ba25111418c284607b"
+  },
+  "unruled:f8889#1": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
+   "evidence": "i8889 p. 3, HDHP requirements; p969 pp. 4-5 (minimum deductible and out-of-pocket tests, an embedded family deductible below the family minimum, a plan mainly of disregarded coverage). The eligibility questions take 'covered by an HDHP' at face value. Low; held for the form's next substantive change."
+  },
+  "unruled:f8889#2": {
+   "class": "out of scope",
+   "gate": "f8889.unsupported",
+   "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
+   "evidence": "i1040gi p. 12 (fiscal-year filers) and i8889 p. 2, Last-month rule, 'the 1st day of the last month of the tax year (December 1, for most individuals)'. The tool prepares calendar-year returns (fiscal-year refusing row of the gate grids); a person who died in 2025, whose last month is the month of death, is refused by f8889.unsupported."
+  },
+  "unruled:f8889#3": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
+   "evidence": "p969 p. 5, 'Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.' The f8889.line2 question does not exclude non-cash contributions. Pre-existing, low."
+  },
+  "unruled:f8889#4": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
+   "evidence": "i8889 p. 7, Line 9, 'Also, include contributions made by a health insurance plan on an employer's behalf.' The f8889.line9 question does not name them. Pre-existing, low."
+  },
+  "unruled:f8889#5": {
+   "class": "presentation",
+   "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
+   "evidence": "i8889 p. 4, Line 1: the self-only or family checkbox. The model computes no printed line 1 checkbox; the coverage the limit rules read is f8889.dec_coverage_if_changed and the month counts. No amount depends on the checkbox."
   }
  }
 }

@@ -75,6 +75,14 @@ params:
       cite:
         doc: i8889
         locator: "p. 4, Line 3, rules 2 and 4(b), and p. 6, Line 3 Limitation Chart: the type of HDHP coverage (self-only or family) on the first day of a month, or not an eligible individual that day"
+    hsa_year_coverage:
+      values:
+        - self_only
+        - family
+        - changed
+      cite:
+        doc: i8889
+        locator: "p. 4, Line 3, rule 3, \"If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for a family HDHP\"; rules 4 and 5 (a change of coverage type, or not an eligible individual every month)"
     retirement_account:
       values:
         - traditional_ira
@@ -1605,6 +1613,30 @@ params:
         doc: i8889
         locator: 'p. 2, Last-month rule, "for the entire year if you are an
           eligible individual"'
+    hsa.year_self_only:
+      type: Enum(hsa_coverage)
+      value: self_only
+      cite:
+        doc: i8889
+        locator: 'p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP": the December 1 coverage of a filer eligible all year with self-only coverage'
+    hsa.year_family:
+      type: Enum(hsa_coverage)
+      value: family
+      cite:
+        doc: i8889
+        locator: 'p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter ... $8,550 for a family HDHP": the December 1 coverage of a filer eligible all year with family coverage'
+    hsa.year_same:
+      type: Bool
+      value: true
+      cite:
+        doc: i8889
+        locator: 'p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage": an eligible individual every month with one coverage type has that coverage for the entire year'
+    hsa.year_counts_hold:
+      type: Bool
+      value: false
+      cite:
+        doc: i8889
+        locator: 'p. 6, Line 3 Limitation Chart and Worksheet (twelve months of 2025, each counted on the first day of the month): coverage of one type on the first day of every month gives twelve eligible months and a December 1 coverage of that type, which cannot disagree'
     hsa.self_only:
       type: NonNegDollars
       value: 430000

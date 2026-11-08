@@ -24748,7 +24748,7 @@
         "f1040"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Predicted from i1040gi p. 43 before the fixed tree was evaluated: Form 8862 is filed 'to claim' the EIC, so with an earlier disallowance answered Yes and Worksheet A line 6 at $0 the return is unchanged from the No answer (classm.ssb.4 inputs: EIC $0, Form 1040 line 34 $920). Adjudication finding F1, backlog round.",
+      "evidence_note": "Predicted from i1040gi p. 43 before the fixed tree was evaluated: Form 8862 is filed 'to claim' the EIC, so with an earlier disallowance answered Yes and Worksheet A line 6 at $0 the return is unchanged from the No answer (classm.ssb.4 inputs: EIC $0, Form 1040 line 34 $920). Adjudication finding F1, backlog round. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -24986,6 +24986,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,

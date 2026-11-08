@@ -291,9 +291,9 @@ export async function serveChecks(): Promise<void> {
     const conflict = conflicted.conflicts?.find((c: any) => c.gate === `${hsa}bad_months`);
     ok(conflict && /month counts and the December 1 coverage do not fit together/.test(conflict.explanation) && !/cannot prepare/.test(conflict.explanation),
       `the refusal is served as a conflict with its explanation: ${JSON.stringify(conflicted.conflicts).slice(0, 300)}`);
-    ok(isDeepStrictEqual(conflict.answers.map((a: any) => a.input).sort(), ["dec_coverage", "months_eligible", "months_family"].map((k) => hsa + k))
+    ok(isDeepStrictEqual(conflict.answers.map((a: any) => a.input).sort(), ["coverage_year", "dec_coverage", "months_eligible", "months_family"].map((k) => hsa + k))
       && conflict.answers.every((a: any) => a.value === hsaInputs[a.input] && typeof a.prompt === "string" && a.prompt !== "") && conflict.figures.length === 0,
-      `the conflict names the three answers it reads, with their answers and prompts: ${JSON.stringify(conflict.answers.map((a: any) => [a.input, a.value]))}`);
+      `the conflict names the four answers it reads (the coverage answer that asks for the months, and the months), with their answers and prompts: ${JSON.stringify(conflict.answers.map((a: any) => [a.input, a.value]))}`);
     ok((await get("/api/returns/synthetic")).body.conflicts.length === 0, "a scope refusal is not a conflict");
 
     // Fixture interview paths replayed through the server: the federal Stage 5 cases (the federal questions; their

@@ -1581,6 +1581,24 @@
     }
    ],
    "bugs": []
+  },
+  "unruled:f8889.unsupported": {
+   "prompt_sha": "e05dc77fd55d0bfa6a0ada249e04b3cf5d88064aede811c3ad413c4651a7d586",
+   "reason": "No defect in the screen: the NARROW finding is a fiscal-year filer, outside the whole tool (calendar-year 2025 returns; the fiscal-year refusing row of the gate grids), not a gap of this screen; the WIDE finding refuses a case the tool would compute.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "i8889 p. 2, Last-month rule, 'the 1st day of the last month of the tax year (December 1, for most individuals)'. A fiscal-year filer's last month is not December, but the tool prepares calendar-year returns throughout (every form's dates assume it); the gate grids carry a fiscal-year refusing row. The decedent clause added here is the owner's decision for a person who died in 2025 (BUG-0452)."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i8889 p. 2, Testing period, 'other than because of death or becoming disabled': a testing-period failure caused by disability brings no income, but the screen refuses it. Safe (refuses a case the tool would otherwise compute correctly)."
+    }
+   ]
   }
  },
  "baseline": {

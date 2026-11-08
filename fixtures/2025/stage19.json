@@ -10693,7 +10693,7 @@
         "household"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 13 return: married filing jointly, only you have an HSA, family HDHP coverage all 12 months, contribution $8,550. The spouse rule of line 6 applies only to \"Spouses who have separate HSAs and had family coverage\" (i8889 p. 7); with one HSA it does not apply, so line 6 = line 5 = $8,550 and Schedule 1 line 13 is $8,550. No Form 8889 uses the spouse rule, so this person's Step 1 limit and Step 2/3 share under that rule are $0 (the form's own refigured Step 1 figure, $8,550 x 12 / 12 less line 4 $0 = $8,550, is not counted), and both household totals are $0.",
+      "evidence_note": "Stage 13 return: married filing jointly, only you have an HSA, family HDHP coverage all 12 months, contribution $8,550. The spouse rule of line 6 applies only to \"Spouses who have separate HSAs and had family coverage\" (i8889 p. 7); with one HSA it does not apply, so line 6 = line 5 = $8,550 and Schedule 1 line 13 is $8,550. No Form 8889 uses the spouse rule, so this person's Step 1 limit and Step 2/3 share under that rule are $0 (the form's own refigured Step 1 figure, $8,550 x 12 / 12 less line 4 $0 = $8,550, is not counted), and both household totals are $0. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -10861,6 +10861,7 @@
         "person[taxpayer].f8889[hsa].line2": 855000,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 12,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -11535,7 +11536,7 @@
         "f8863"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Shown-state regression (T-232), inputs copied unchanged from class M case classm.f5329.3, which alone asserted nothing about them; values predicted from the archived f8863 and i8863 before evaluating. The dependent (an 86-year-old in-law claimed as a qualifying relative) is an eligible student with line 23 No, line 24 Yes and line 25 No, so Part III reaches lines 24, 25 and 26 (f8863 line 23, \"No—Go to line 24\"; line 24, \"Yes—Go to line 25\"; line 25, \"No—Go to line 26\"); line 26 is No, but the institution's EIN is not available, so the American opportunity credit is not allowed for this student (i8863 p. 4, Student qualifications, \"7. You must provide the educational institution's employer identification number (EIN) on your Form 8863\") and the student is a lifetime learning credit student instead (i8863 p. 4, Tip, \"You may be able to claim the lifetime learning credit for part or all of that student's qualified education expenses instead\").",
+      "evidence_note": "Shown-state regression (T-232), inputs copied unchanged from class M case classm.f5329.3, which alone asserted nothing about them; values predicted from the archived f8863 and i8863 before evaluating. The dependent (an 86-year-old in-law claimed as a qualifying relative) is an eligible student with line 23 No, line 24 Yes and line 25 No, so Part III reaches lines 24, 25 and 26 (f8863 line 23, \"No—Go to line 24\"; line 24, \"Yes—Go to line 25\"; line 25, \"No—Go to line 26\"); line 26 is No, but the institution's EIN is not available, so the American opportunity credit is not allowed for this student (i8863 p. 4, Student qualifications, \"7. You must provide the educational institution's employer identification number (EIN) on your Form 8863\") and the student is a lifetime learning credit student instead (i8863 p. 4, Tip, \"You may be able to claim the lifetime learning credit for part or all of that student's qualified education expenses instead\"). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -11816,6 +11817,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": true,

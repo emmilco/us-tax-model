@@ -8171,7 +8171,7 @@
         "f1040"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, aged 45. Wages $50,000. HSA distributions (Form 1099-SA box 1) $3,000, of which $1,000 paid qualified medical expenses. Working (predictor A): 8889: 14a 3,000; 14b 0; 14c 3,000; 15 qualified medical 1,000; 16 = 2,000 -> Sch 1 line 8f (i1040gi line 8f: lines 16 + 20). Age 45: no exception (i8889 Exceptions: death, disability, age 65), 17a unchecked, 17b = 20% x 2,000 = 400 -> Sch 2 17c 400; 18 = 400; 21 = 400 -> 1040 line 23. 1040 line 9 = 52,000; line 11 = 52,000; line 15 = 36,250; Tax Table 36,250-36,300 single = 4,115.",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, aged 45. Wages $50,000. HSA distributions (Form 1099-SA box 1) $3,000, of which $1,000 paid qualified medical expenses. Working (predictor A): 8889: 14a 3,000; 14b 0; 14c 3,000; 15 qualified medical 1,000; 16 = 2,000 -> Sch 1 line 8f (i1040gi line 8f: lines 16 + 20). Age 45: no exception (i8889 Exceptions: death, disability, age 65), 17a unchecked, 17b = 20% x 2,000 = 400 -> Sch 2 17c 400; 18 = 400; 21 = 400 -> 1040 line 23. 1040 line 9 = 52,000; line 11 = 52,000; line 15 = 36,250; Tax Table 36,250-36,300 single = 4,115. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -8319,6 +8319,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -8428,7 +8429,7 @@
         "f1040"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, turned 65 on July 10, 2025. Wages $50,000. HSA distributions $4,000, none for medical expenses; $1,500 of them were made before your 65th birthday. Working (predictor A): 8889: 14a 4,000; 14c 4,000; 15 0; 16 4,000 -> Sch 1 8f. Exception applies to distributions made after turning 65 (i8889 Part II), so 17a checked; 17b = 20% of the 1,500 made before the 65th birthday = 300 -> Sch 2 17c, 18, 21 = 300 -> 1040 line 23. 1040 line 9 = 54,000 = line 11. Born July 10, 1960 (before Jan 2, 1961): line 12d box; std deduction chart, single, 1 box = 17,750. Sch 1-A Part V: line 31 MAGI 54,000 <= 75,000 -> line 35 = 6,000; 36a 6,000; 37 6,000; line 38 -> 1040 line 13b 6,000. Line 14 = 23,750; line 15 = 30,250. Tax Table 30,250-30,300 single = 3,395.",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, turned 65 on July 10, 2025. Wages $50,000. HSA distributions $4,000, none for medical expenses; $1,500 of them were made before your 65th birthday. Working (predictor A): 8889: 14a 4,000; 14c 4,000; 15 0; 16 4,000 -> Sch 1 8f. Exception applies to distributions made after turning 65 (i8889 Part II), so 17a checked; 17b = 20% of the 1,500 made before the 65th birthday = 300 -> Sch 2 17c, 18, 21 = 300 -> 1040 line 23. 1040 line 9 = 54,000 = line 11. Born July 10, 1960 (before Jan 2, 1961): line 12d box; std deduction chart, single, 1 box = 17,750. Sch 1-A Part V: line 31 MAGI 54,000 <= 75,000 -> line 35 = 6,000; 36a 6,000; 37 6,000; line 38 -> 1040 line 13b 6,000. Line 14 = 23,750; line 15 = 30,250. Tax Table 30,250-30,300 single = 3,395. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -8576,6 +8577,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": true,
@@ -8694,7 +8696,7 @@
         "f1040"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, aged 70. Wages $30,000. HSA distributions $2,000, none for medical expenses. Working (predictor A): 8889: 14a 2,000; 16 2,000 -> Sch 1 8f. Aged 70: all distributions after turning 65, 17a checked, 17b 0; Sch 2 17c/18/21 = 0. 1040 line 9 = 32,000 = line 11. Std deduction (born before 1961, single, 1 box) 17,750; Sch 1-A Part V: MAGI 32,000 <= 75,000 -> 6,000 on line 13b. Line 14 = 23,750; line 15 = 8,250. Tax Table 8,250-8,300 single = 828.",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, aged 70. Wages $30,000. HSA distributions $2,000, none for medical expenses. Working (predictor A): 8889: 14a 2,000; 16 2,000 -> Sch 1 8f. Aged 70: all distributions after turning 65, 17a checked, 17b 0; Sch 2 17c/18/21 = 0. 1040 line 9 = 32,000 = line 11. Std deduction (born before 1961, single, 1 box) 17,750; Sch 1-A Part V: MAGI 32,000 <= 75,000 -> 6,000 on line 13b. Line 14 = 23,750; line 15 = 8,250. Tax Table 8,250-8,300 single = 828. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -8842,6 +8844,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": true,
@@ -9366,7 +9369,7 @@
         "f1040"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Married filing jointly. You: wages $50,000, aged 45, HSA distributions $2,000, none for medical. Spouse: wages $30,000, aged 40, HSA distributions $1,000, all for medical. Working (predictor A): Separate Part II per spouse (f8889 Part II heading). You: 14a 2,000; 15 0; 16 2,000; age 45, 17b 400. Spouse: 14a 1,000; 15 1,000; 16 0; 17b 0. Sch 1 8f = 2,000 + 0 = 2,000; Sch 2 17c = 400 + 0 = 400; 18 400; 21 400. 1040 line 9 = 80,000 + 2,000 = 82,000 = line 11; MFJ std ded 31,500; line 15 = 50,500. Tax Table 50,500-50,550 MFJ = 5,586.",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Married filing jointly. You: wages $50,000, aged 45, HSA distributions $2,000, none for medical. Spouse: wages $30,000, aged 40, HSA distributions $1,000, all for medical. Working (predictor A): Separate Part II per spouse (f8889 Part II heading). You: 14a 2,000; 15 0; 16 2,000; age 45, 17b 400. Spouse: 14a 1,000; 15 1,000; 16 0; 17b 0. Sch 1 8f = 2,000 + 0 = 2,000; Sch 2 17c = 400 + 0 = 400; 18 400; 21 400. 1040 line 9 = 80,000 + 2,000 = 82,000 = line 11; MFJ std ded 31,500; line 15 = 50,500. Tax Table 50,500-50,550 MFJ = 5,586. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -9566,6 +9569,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -9579,6 +9583,7 @@
         "person[spouse].f8889[hsa].line2": 0,
         "person[spouse].f8889[hsa].line9": 0,
         "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 0,
         "person[spouse].f8889[hsa].months_family": 0,
         "person[spouse].f8889[hsa].age55": false,
@@ -13299,7 +13304,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the amount rolled over changed to $4,000, more than the $3,000 distributed. Line 14b chooses the rollover amount, an input, so its own entry decides its value; lines 14c and 16 and Schedule 1 line 8f carry the same refusal through it. The refused values are the evaluator's.",
+      "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the amount rolled over changed to $4,000, more than the $3,000 distributed. Line 14b chooses the rollover amount, an input, so its own entry decides its value; lines 14c and 16 and Schedule 1 line 8f carry the same refusal through it. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -13447,6 +13452,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -13525,7 +13531,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the unsupported-HSA-situations question (Part III, Form 8853, or other HSA situations) answered Yes. Line 16 carries the screen's own refusal entry (as line 13 does), so line 16 refuses whatever its figure; the figure behind it, line 14c less line 15, is $2,000. Schedule 1 line 8f carries the same refusal through line 16. The refused values are the evaluator's.",
+      "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the unsupported-HSA-situations question (Part III, Form 8853, or other HSA situations) answered Yes. Line 16 carries the screen's own refusal entry (as line 13 does), so line 16 refuses whatever its figure; the figure behind it, line 14c less line 15, is $2,000. Schedule 1 line 8f carries the same refusal through line 16. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -13673,6 +13679,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -13733,7 +13740,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.small.s5 (an HSA distribution of $4,000, none for medical expenses, with the line 17a exception checked), with the part of line 16 subject to the additional tax changed to $5,000, more than line 16's $4,000. The line copies that input, so its own entry decides its value; the amount subject to the additional tax and line 17b carry the same refusal through it, while line 16 stays a number. The refused values are the evaluator's.",
+      "evidence_note": "Inputs are stage16.small.s5 (an HSA distribution of $4,000, none for medical expenses, with the line 17a exception checked), with the part of line 16 subject to the additional tax changed to $5,000, more than line 16's $4,000. The line copies that input, so its own entry decides its value; the amount subject to the additional tax and line 17b carry the same refusal through it, while line 16 stays a number. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -13881,6 +13888,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": true,
@@ -18393,7 +18401,7 @@
         "stage16:mutation"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "SC-09 of the Stage 16 mutation scenarios. Single, aged 45. Wages $50,000; the W-2 shows no employer HSA contributions (no box 12 code W). Covered all of 2025 by a self-only high-deductible health plan, with no other health coverage, no Medicare, no Archer MSA, and not claimable as a dependent. Contributed $2,000 of your own money to your HSA for 2025 (not through payroll). Received HSA distributions of $3,000 in 2025 (Form 1099-SA box 1). $1,000 of it paid qualified medical expenses; the rest was not used for medical expenses, nothing was rolled over, and no exception to the additional tax applies (not disabled, not 65, alive at year end). No excess contributions withdrawn, no qualified HSA funding distribution, not under the last-month rule. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
+      "evidence_note": "SC-09 of the Stage 16 mutation scenarios. Single, aged 45. Wages $50,000; the W-2 shows no employer HSA contributions (no box 12 code W). Covered all of 2025 by a self-only high-deductible health plan, with no other health coverage, no Medicare, no Archer MSA, and not claimable as a dependent. Contributed $2,000 of your own money to your HSA for 2025 (not through payroll). Received HSA distributions of $3,000 in 2025 (Form 1099-SA box 1). $1,000 of it paid qualified medical expenses; the rest was not used for medical expenses, nothing was rolled over, and no exception to the additional tax applies (not disabled, not 65, alive at year end). No excess contributions withdrawn, no qualified HSA funding distribution, not under the last-month rule. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -18541,6 +18549,7 @@
         "person[taxpayer].f8889[hsa].line2": 200000,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -19439,7 +19448,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with six eligible months, all of family coverage, but self-only coverage on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with six eligible months, all of family coverage, but self-only coverage on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -19573,6 +19582,7 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "sli.interest": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 6,
         "person[taxpayer].f8889[hsa].months_family": 6,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -19652,7 +19662,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with six eligible months, none of family coverage, but family coverage on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with six eligible months, none of family coverage, but family coverage on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -19786,6 +19796,7 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "sli.interest": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 6,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -19865,7 +19876,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with no eligible month, but self-only coverage as an eligible individual on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with no eligible month, but self-only coverage as an eligible individual on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -19999,6 +20010,7 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "sli.interest": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -20078,7 +20090,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with twelve eligible months, but not an eligible individual on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's.",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with twelve eligible months, but not an eligible individual on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -20212,6 +20224,7 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "sli.interest": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -23065,7 +23078,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.small.s4 as the interview asks them, for a person whose only HSA item is one the tool does not support (a qualified HSA funding distribution from an IRA, a testing-period failure or an inherited HSA): Form 8889 is answered for the person and the unsupported-HSA-situations question Yes. The interview asks that question straight after the Form 8889 roster and stops at the refusal, so no contribution or distribution amount is asked. Form 8889 lines 13 and 16 carry the question's refusal entry whatever their figure, and Schedule 1 lines 13 and 8f carry it through them. The refused values are the evaluator's. Ordinary dividends (box 1a) of $0 answered, with the dividends question answered yes: qualified dividends (line 3a) are asked only when box 1a is above zero, and the recorded $0 assumes it is not.",
+      "evidence_note": "Inputs are stage16.small.s4 as the interview asks them, for a person whose only HSA item is one the tool does not support (a qualified HSA funding distribution from an IRA, a testing-period failure or an inherited HSA): Form 8889 is answered for the person and the unsupported-HSA-situations question Yes. The interview asks that question straight after the Form 8889 roster and stops at the refusal, so no contribution or distribution amount is asked. Form 8889 lines 13 and 16 carry the question's refusal entry whatever their figure, and Schedule 1 lines 13 and 8f carry it through them. The refused values are the evaluator's. Ordinary dividends (box 1a) of $0 answered, with the dividends question answered yes: qualified dividends (line 3a) are asked only when box 1a is above zero, and the recorded $0 assumes it is not. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -23111,6 +23124,7 @@
         "person[taxpayer].age65": false,
         "person[taxpayer].educator_expenses": 0,
         "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
@@ -23518,7 +23532,7 @@
         "household"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Inputs are stage11.hsa.family_55 filed as head of household with the qualifying child of stage8.hoh.child.ctc, the filer married at the end of 2025 but considered unmarried for head of household: Form 8889 reads the marital answer, not the filing status, so the chart amount for a month of family coverage is $8,550 (not $9,550, which is for the unmarried: i8889 p. 6, \"If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month\"), line 3 is $8,550, the $1,000 additional contribution amount goes on line 7 (p. 5, \"If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\"), line 8 is $9,550 and line 13 is the $9,000 contributed; the standard deduction is the head of household amount. Predicted from i8889 pp. 4-7 and i1040gi p. 14; no independent human hand-work is claimed.",
+      "evidence_note": "Inputs are stage11.hsa.family_55 filed as head of household with the qualifying child of stage8.hoh.child.ctc, the filer married at the end of 2025 but considered unmarried for head of household: Form 8889 reads the marital answer, not the filing status, so the chart amount for a month of family coverage is $8,550 (not $9,550, which is for the unmarried: i8889 p. 6, \"If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month\"), line 3 is $8,550, the $1,000 additional contribution amount goes on line 7 (p. 5, \"If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\"), line 8 is $9,550 and line 13 is the $9,000 contributed; the standard deduction is the head of household amount. Predicted from i8889 pp. 4-7 and i1040gi p. 14; no independent human hand-work is claimed. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -23654,6 +23668,7 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "sli.interest": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 12,
         "person[taxpayer].f8889[hsa].age55": true,
@@ -23746,7 +23761,7 @@
         "household"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Inputs are audit.f8889.married_hoh_family_age55 with the filer unmarried at the end of 2025: the chart amount for a month of family coverage is $9,550 (i8889 p. 6), line 3 is $9,550, line 7 is zero and line 13 is the $9,000 contributed, as in stage11.hsa.family_55; only the marital answer separates the two cases. Predicted from i8889 pp. 4-7; no independent human hand-work is claimed.",
+      "evidence_note": "Inputs are audit.f8889.married_hoh_family_age55 with the filer unmarried at the end of 2025: the chart amount for a month of family coverage is $9,550 (i8889 p. 6), line 3 is $9,550, line 7 is zero and line 13 is the $9,000 contributed, as in stage11.hsa.family_55; only the marital answer separates the two cases. Predicted from i8889 pp. 4-7; no independent human hand-work is claimed. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -23882,6 +23897,7 @@
         "person[taxpayer].f8889[hsa].line9": 0,
         "sli.interest": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 12,
         "person[taxpayer].f8889[hsa].age55": true,
@@ -24422,7 +24438,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 p.8 lines14b/15 count only actual distributions; p.9 taxes only taxable distributions. Zero distributed dollars needs no rollover, medical or exception figures.",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 p.8 lines14b/15 count only actual distributions; p.9 taxes only taxable distributions. Zero distributed dollars needs no rollover, medical or exception figures. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[sample].x_other": false,
         "f8863.paid": false,
@@ -24435,7 +24451,8 @@
         "f1040.status": "single",
         "person[sample].role": "taxpayer",
         "person[sample].f8889[hsa].unsupported": false,
-        "person[sample].f8889[hsa].line14a": 0
+        "person[sample].f8889[hsa].line14a": 0,
+        "person[sample].f8889[hsa].coverage_year": "changed"
       },
       "expect": {
         "person[sample].f8889[hsa].line14b": {
@@ -24466,7 +24483,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. An explicit zero rollover leaves the same zero-distribution amounts; no medical or exception answer is needed.",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. An explicit zero rollover leaves the same zero-distribution amounts; no medical or exception answer is needed. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[sample].x_other": false,
         "f8863.paid": false,
@@ -24480,7 +24497,8 @@
         "person[sample].role": "taxpayer",
         "person[sample].f8889[hsa].unsupported": false,
         "person[sample].f8889[hsa].line14a": 0,
-        "person[sample].f8889[hsa].rollover": 0
+        "person[sample].f8889[hsa].rollover": 0,
+        "person[sample].f8889[hsa].coverage_year": "changed"
       },
       "expect": {
         "person[sample].f8889[hsa].line14b": {
@@ -24511,7 +24529,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. All $1000 distributed dollars pay qualifying expenses; no taxable amount remains and no exception answer is needed. i8889 pp.8-9. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers.",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. All $1000 distributed dollars pay qualifying expenses; no taxable amount remains and no exception answer is needed. i8889 pp.8-9. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[sample].x_other": false,
         "f8863.paid": false,
@@ -24529,6 +24547,7 @@
         "person[sample].f8889[hsa].medical": 100000,
         "person[sample].f8889[hsa].line2": 0,
         "person[sample].f8889[hsa].line9": 0,
+        "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 12,
         "person[sample].f8889[hsa].months_family": 0,
         "person[sample].f8889[hsa].dec_coverage": "self_only",
@@ -24568,7 +24587,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. All $1000 distributed dollars are rolled over, with no medical-use amount; the remainder and taxable amount are zero. i8889 p.8. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers.",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. All $1000 distributed dollars are rolled over, with no medical-use amount; the remainder and taxable amount are zero. i8889 p.8. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[sample].x_other": false,
         "f8863.paid": false,
@@ -24586,6 +24605,7 @@
         "person[sample].f8889[hsa].medical": 0,
         "person[sample].f8889[hsa].line2": 0,
         "person[sample].f8889[hsa].line9": 0,
+        "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 12,
         "person[sample].f8889[hsa].months_family": 0,
         "person[sample].f8889[hsa].dec_coverage": "self_only",
@@ -24625,7 +24645,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 pp.8-9: $1000 minus $250 rollover minus $250 qualified expenses is $500 taxable; with no exception, 20% is $100. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers.",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 pp.8-9: $1000 minus $250 rollover minus $250 qualified expenses is $500 taxable; with no exception, 20% is $100. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[sample].x_other": false,
         "f8863.paid": false,
@@ -24644,6 +24664,7 @@
         "person[sample].f8889[hsa].line17a": false,
         "person[sample].f8889[hsa].line2": 0,
         "person[sample].f8889[hsa].line9": 0,
+        "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 12,
         "person[sample].f8889[hsa].months_family": 0,
         "person[sample].f8889[hsa].dec_coverage": "self_only",
@@ -24683,7 +24704,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 p.9 limits 20% tax to the nonexcepted part: $100 nonexcepted out of $500 taxable produces $20. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers.",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 p.9 limits 20% tax to the nonexcepted part: $100 nonexcepted out of $500 taxable produces $20. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[sample].x_other": false,
         "f8863.paid": false,
@@ -24703,6 +24724,7 @@
         "person[sample].f8889[hsa].subject_part": 10000,
         "person[sample].f8889[hsa].line2": 0,
         "person[sample].f8889[hsa].line9": 0,
+        "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 12,
         "person[sample].f8889[hsa].months_family": 0,
         "person[sample].f8889[hsa].dec_coverage": "self_only",
@@ -24741,7 +24763,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Source-derived spouse-coverage facts and amounts, not evaluator outputs. i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. With two separate HSAs, p.7 line6 divides $8550 equally into $4275 per spouse. Each $2000 personal contribution is below its limit.",
+      "evidence_note": "Source-derived spouse-coverage facts and amounts, not evaluator outputs. i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. With two separate HSAs, p.7 line6 divides $8550 equally into $4275 per spouse. Each $2000 personal contribution is below its limit. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[sample].x_other": false,
         "person[spouse].x_other": false,
@@ -24760,6 +24782,7 @@
           "hsa"
         ],
         "person[spouse].role": "spouse",
+        "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 12,
         "person[sample].f8889[hsa].months_family": 12,
         "person[sample].f8889[hsa].dec_coverage": "family",
@@ -24769,6 +24792,7 @@
         "person[sample].f8889[hsa].line2": 200000,
         "person[sample].f8889[hsa].line9": 0,
         "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 12,
         "person[spouse].f8889[hsa].months_family": 12,
         "person[spouse].f8889[hsa].dec_coverage": "family",
@@ -24812,7 +24836,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Source-derived spouse-coverage facts and amounts, not evaluator outputs. i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. Only one spouse has an HSA; no separate-HSA division applies and the full $8550 limit remains. Each $2000 personal contribution is below its limit.",
+      "evidence_note": "Source-derived spouse-coverage facts and amounts, not evaluator outputs. i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. Only one spouse has an HSA; no separate-HSA division applies and the full $8550 limit remains. Each $2000 personal contribution is below its limit. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[sample].x_other": false,
         "person[spouse].x_other": false,
@@ -24829,6 +24853,7 @@
         "person[sample].f8889[hsa].unsupported": false,
         "$f8889@person[spouse]": [],
         "person[spouse].role": "spouse",
+        "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 12,
         "person[sample].f8889[hsa].months_family": 12,
         "person[sample].f8889[hsa].dec_coverage": "family",
@@ -24860,7 +24885,7 @@
         "f8889"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Engineering arithmetic and consistency-boundary checks, with no independent tax-evidence credit. Both spouses are eligible for six months, all attributed family coverage, without the last-month rule; the ordinary chart line5 is $4275 while the annual chart amount remains $8550. The underlying under-55 chart implies an under-55 $8550 family amount and $4300 self-only amount (i8889 p.6 chart). The internal twelve-month numerators are $8550 times 12 = $102600 and $4300 times 12 = $51600; they are not claimed as IRS printed amounts. Zero distributions imply line16 zero; a supplied zero subject part is not MORE THAN zero, so subject_bad is false. These assertions replace lost mutation sensitivity from retired helper-inclusive M fixtures without promoting helper plumbing as independent IRS calculations.",
+      "evidence_note": "Engineering arithmetic and consistency-boundary checks, with no independent tax-evidence credit. Both spouses are eligible for six months, all attributed family coverage, without the last-month rule; the ordinary chart line5 is $4275 while the annual chart amount remains $8550. The underlying under-55 chart implies an under-55 $8550 family amount and $4300 self-only amount (i8889 p.6 chart). The internal twelve-month numerators are $8550 times 12 = $102600 and $4300 times 12 = $51600; they are not claimed as IRS printed amounts. Zero distributions imply line16 zero; a supplied zero subject part is not MORE THAN zero, so subject_bad is false. These assertions replace lost mutation sensitivity from retired helper-inclusive M fixtures without promoting helper plumbing as independent IRS calculations. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[sample].x_other": false,
         "person[spouse].x_other": false,
@@ -24879,6 +24904,7 @@
           "hsa"
         ],
         "person[spouse].role": "spouse",
+        "person[sample].f8889[hsa].coverage_year": "changed",
         "person[sample].f8889[hsa].months_eligible": 6,
         "person[sample].f8889[hsa].months_family": 6,
         "person[sample].f8889[hsa].dec_coverage": "family",
@@ -24888,6 +24914,7 @@
         "person[sample].f8889[hsa].line2": 200000,
         "person[sample].f8889[hsa].line9": 0,
         "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 6,
         "person[spouse].f8889[hsa].months_family": 6,
         "person[spouse].f8889[hsa].dec_coverage": "family",
@@ -24921,7 +24948,7 @@
         "sd"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "BUG-0149 regression, predicted from f1040sd p. 2, line 17 (\"No. Skip lines 18 through 21, and go to line 22\") before recording: generated return 20261026/76, whose 28% Rate Gain Worksheet line 7 is positive while Schedule D line 17 is No, enters zero on Schedule D line 18.",
+      "evidence_note": "BUG-0149 regression, predicted from f1040sd p. 2, line 17 (\"No. Skip lines 18 through 21, and go to line 22\") before recording: generated return 20261026/76, whose 28% Rate Gain Worksheet line 7 is positive while Schedule D line 17 is No, enters zero on Schedule D line 18. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -25168,6 +25195,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -25437,7 +25465,7 @@
         "sli"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "BUG-0149 regression, predicted from f1040sd p. 2, line 17 before recording: the inputs of classm.sli.2, whose Unrecaptured Section 1250 Gain Worksheet line 18 is $145 while Schedule D line 17 is No, enter zero on Schedule D line 19.",
+      "evidence_note": "BUG-0149 regression, predicted from f1040sd p. 2, line 17 before recording: the inputs of classm.sli.2, whose Unrecaptured Section 1250 Gain Worksheet line 18 is $145 while Schedule D line 17 is No, enter zero on Schedule D line 19. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[taxpayer].retirement[r1].code_screen": false,
@@ -25676,6 +25704,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,

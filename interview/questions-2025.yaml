@@ -1228,21 +1228,32 @@ bank:
     order: 10
     help: HSA distributions that were not used for qualified medical expenses are not among these; Form 8889 Part II asks
       about them separately.
+  - input: f8889.coverage_year
+    order: 10
+    help: The first day of each month is what counts. Medicare enrollment, other health coverage that is not disregarded, or
+      being someone else's dependent in any month means the coverage was not the same all year; choose Changed.
+    value_labels:
+      self_only: Self-only all year
+      family: Family all year (yours, or your spouse's while you were both eligible)
+      changed: Changed during the year (including starting or ending), or not sure
   - input: f8889.months_eligible
     order: 10
-    help: Married filing separately and unsupported items are refused with citations.
+    help: Count a month only if every condition held on its first day. December 1 counts as one of the months.
   - input: f8889.months_family
     order: 10
-    help: Married filing separately and unsupported items are refused with citations.
+    help: Count only months of family coverage, not every month you were covered.
   - input: f8889.age55
     order: 10
-    help: Married filing separately and unsupported items are refused with citations.
   - input: f8889.dec_coverage
     order: 10
-    help: Married filing separately and unsupported items are refused with citations.
+    value_labels:
+      none: Not an eligible individual on December 1
+      self_only: Self-only HDHP coverage
+      family: Family HDHP coverage (yours, or your spouse's while you were both eligible)
   - input: f8889.last_month
     order: 10
-    help: Married filing separately and unsupported items are refused with citations.
+    help: If you stop being an eligible individual during the testing period (other than by death or disability), the
+      contributions the rule allowed are included in income, with a 10% additional tax (Form 8889 Part III).
   - input: f8889.line14a
     order: 10
     help: A direct transfer from one of your HSAs to another (trustee to trustee) is not a distribution.

@@ -923,6 +923,30 @@
    "question_phrase": "an officer or director of a foreign corporation, or ... own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power",
    "source_phrase": "Line 7a—Question 1 ... financial interest in or signature authority over a financial account located in a foreign country",
    "reason": "Line 2 reads the question only as a refusal gate; the foreign account and trust rules on this page set no definition of it, and the question is worded as the Part II TIP (p. 2) states the Form 5471 trigger."
+  },
+  "consumer:f8889.months_family@i8889:p7": {
+   "verdict": "same",
+   "question_phrase": "Of those eligible months, the number in which you had or were treated as having family (not self-only) high-deductible health plan coverage on the first day of the month",
+   "source_phrase": "the total of the worksheet amounts only for the months you were treated as having family coverage",
+   "reason": "Step 1 counts the months treated as having family coverage, the months the question counts (had or treated as having family coverage, spouse-attributed coverage included)."
+  },
+  "consumer:f8889.months_eligible@i8889:p7": {
+   "verdict": "same",
+   "question_phrase": "Number of months of 2025 on the first day of which you were an eligible individual",
+   "source_phrase": "Determine any other contribution limits that apply for the tax year",
+   "reason": "f8889.self_counted multiplies the self-only monthly amount by the eligible months, the months the p. 6 chart counts on their first day, which Step 4 refers back to; the question counts the same months."
+  },
+  "consumer:f8889.months_family@i8889:p5": {
+   "verdict": "same",
+   "question_phrase": "Of those eligible months, the number in which you had or were treated as having family (not self-only) high-deductible health plan coverage on the first day of the month",
+   "source_phrase": "If you are married and had family coverage at any time during the year",
+   "reason": "f8889.some_family_months tests at least one family month, which is family coverage at some time during the year, counted as the question counts it on the first day of the month, spouse-attributed coverage included (p. 4, rule 1)."
+  },
+  "consumer:f8889.months_eligible@i8889:p4": {
+   "verdict": "same",
+   "question_phrase": "Number of months of 2025 on the first day of which you were an eligible individual",
+   "source_phrase": "If you were, or were considered, an eligible individual for the entire year",
+   "reason": "f8889.all_year tests twelve eligible months, the question's count of months on whose first day the filer was an eligible individual (p. 4 rules 3 and 4 read eligibility on the first day of each month, as the question does)."
   }
  },
  "baseline": {
@@ -1069,9 +1093,6 @@
   "consumer:f8889.age55@i8889:p6": "99a64d71d9fedc70",
   "consumer:f8889.age55@i8889:p7": "99a64d71d9fedc70",
   "consumer:f8889.allocation@i8889:p4": "4d50687bd9b2952e",
-  "consumer:f8889.dec_coverage@i8889:p2": "cf77e98f893d2216",
-  "consumer:f8889.dec_coverage@i8889:p5": "cf77e98f893d2216",
-  "consumer:f8889.dec_coverage@i8889:p6": "cf77e98f893d2216",
   "consumer:f8889.months_eligible@i8889:p4": "f097312ec50a8040",
   "consumer:f8889.months_eligible@i8889:p7": "f097312ec50a8040",
   "consumer:f8889.months_family@i8889:p5": "d25370be6670ccc0",

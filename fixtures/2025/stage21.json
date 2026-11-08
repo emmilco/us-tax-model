@@ -3289,7 +3289,7 @@
         "s2"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 21 return E10: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage21/); they agreed with each other and with the evaluator on all 18 values asserted here. Lines a predictor marked blank, and values where the predictors differed, are not asserted.",
+      "evidence_note": "Stage 21 return E10: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage21/); they agreed with each other and with the evaluator on all 18 values asserted here. Lines a predictor marked blank, and values where the predictors differed, are not asserted. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "$dependent": [],
         "$f1095a": [],
@@ -3422,6 +3422,7 @@
         "person[taxpayer].f8889[hsa].line2": 580000,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].medical": 490000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].rollover": 0,
@@ -4405,7 +4406,7 @@
         "s2"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation regression (refusal.f5329.f5329.l4.0, refusal.f5329.f5329.l49.0), predicted by hand before recording. Blind return E10 with the other-parts question answered yes. f5329 p. 1, Part II: \"Complete this part if you included an amount in income ... from a Coverdell education savings account (ESA) or a qualified tuition program (QTP) ...\"; Parts II to VI, VIII and IX are not prepared, so lines 4 and 49 are both refused, and Schedule 2 line 8 with them. Lines 1 and 3 ($2,000) and lines 47 and 48 ($1,500, the $5,800 contributed less the $4,300 self-only limit) are unchanged.",
+      "evidence_note": "Mutation regression (refusal.f5329.f5329.l4.0, refusal.f5329.f5329.l49.0), predicted by hand before recording. Blind return E10 with the other-parts question answered yes. f5329 p. 1, Part II: \"Complete this part if you included an amount in income ... from a Coverdell education savings account (ESA) or a qualified tuition program (QTP) ...\"; Parts II to VI, VIII and IX are not prepared, so lines 4 and 49 are both refused, and Schedule 2 line 8 with them. Lines 1 and 3 ($2,000) and lines 47 and 48 ($1,500, the $5,800 contributed less the $4,300 self-only limit) are unchanged. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "$dependent": [],
         "$f1095a": [],
@@ -4538,6 +4539,7 @@
         "person[taxpayer].f8889[hsa].line2": 580000,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].medical": 490000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].rollover": 0,
@@ -6326,7 +6328,7 @@
         "s2"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation regression (operand.f8889.f8889.excess_employer.line11, operand.f8889.f8889.excess_employer.line8), predicted by hand before recording. Blind return E10 with no own HSA contributions and $5,000 of employer contributions, the excess included in Form W-2 box 1. i8889 p. 7, Excess Employer Contributions: \"Excess employer contributions are the excess, if any, of your employer's contributions over your limitation on line 8\"; i5329 p. 8, Line 47: \"Also include on line 47 any excess contributions your employer made.\" Line 8 $4,300 (self-only all year), excess $700; Form 5329 lines 47 and 48 $700; line 49 6% of the smaller of $700 and the $910 year-end value = $42; line 4 $200 (unchanged); Schedule 2 line 8 $242.",
+      "evidence_note": "Mutation regression (operand.f8889.f8889.excess_employer.line11, operand.f8889.f8889.excess_employer.line8), predicted by hand before recording. Blind return E10 with no own HSA contributions and $5,000 of employer contributions, the excess included in Form W-2 box 1. i8889 p. 7, Excess Employer Contributions: \"Excess employer contributions are the excess, if any, of your employer's contributions over your limitation on line 8\"; i5329 p. 8, Line 47: \"Also include on line 47 any excess contributions your employer made.\" Line 8 $4,300 (self-only all year), excess $700; Form 5329 lines 47 and 48 $700; line 49 6% of the smaller of $700 and the $910 year-end value = $42; line 4 $200 (unchanged); Schedule 2 line 8 $242. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "$dependent": [],
         "$f1095a": [],
@@ -6460,6 +6462,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 500000,
         "person[taxpayer].f8889[hsa].medical": 490000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].rollover": 0,
@@ -6590,7 +6593,7 @@
         "s2"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation regression (refusal.f8889.f8889.line13_figured.2, operand.f8889.f8889.excess_own.line13), predicted by hand before recording. Blind return E10 with $1,000 of own HSA contributions and $5,000 of employer contributions, the excess not included in Form W-2 box 1. i8889 p. 7, Excess Employer Contributions: \"If the excess was not included in income on Form W-2, you must report it as 'Other income' on your tax return\", which the tool does not take; Form 8889 line 13 is refused, and with it Form 5329 lines 47 and 49 (line 47 is line 2 less line 13, i8889 p. 7, \"subtract your deductible contributions (line 13) from your actual contributions (line 2)\") and Schedule 2 line 8.",
+      "evidence_note": "Mutation regression (refusal.f8889.f8889.line13_figured.2, operand.f8889.f8889.excess_own.line13), predicted by hand before recording. Blind return E10 with $1,000 of own HSA contributions and $5,000 of employer contributions, the excess not included in Form W-2 box 1. i8889 p. 7, Excess Employer Contributions: \"If the excess was not included in income on Form W-2, you must report it as 'Other income' on your tax return\", which the tool does not take; Form 8889 line 13 is refused, and with it Form 5329 lines 47 and 49 (line 47 is line 2 less line 13, i8889 p. 7, \"subtract your deductible contributions (line 13) from your actual contributions (line 2)\") and Schedule 2 line 8. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "$dependent": [],
         "$f1095a": [],
@@ -6724,6 +6727,7 @@
         "person[taxpayer].f8889[hsa].line2": 100000,
         "person[taxpayer].f8889[hsa].line9": 500000,
         "person[taxpayer].f8889[hsa].medical": 490000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].rollover": 0,
@@ -6884,7 +6888,7 @@
         "f5329"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 21 regression (BUG-0202): blind return E10 with its 2025 HSA excess withdrawn, with earnings, by the due date of the 2025 return including extensions. i5329 p. 8, Line 47: such contributions \"will be treated as not having been contributed\"; the withdrawal and its earnings go on Form 8889 lines 14a and 14b, which this tool does not prepare, so the Form 8889 screen refuses (D6).",
+      "evidence_note": "Stage 21 regression (BUG-0202): blind return E10 with its 2025 HSA excess withdrawn, with earnings, by the due date of the 2025 return including extensions. i5329 p. 8, Line 47: such contributions \"will be treated as not having been contributed\"; the withdrawal and its earnings go on Form 8889 lines 14a and 14b, which this tool does not prepare, so the Form 8889 screen refuses (D6). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "$dependent": [],
         "$f1095a": [],
@@ -7017,6 +7021,7 @@
         "person[taxpayer].f8889[hsa].line2": 580000,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].medical": 490000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 12,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].rollover": 0,
@@ -7475,7 +7480,7 @@
         "f1040"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "T-067 finding F5 (.transcription/proposed/t067/retirement.findings.md): classm.s2.3.deepseek, a traditional IRA (code 1, box 1 $92), without the pension-worksheet answers the interview does not ask on an IRA entry. The Simplified Method Worksheet is for lines 5a and 5b (i1040gi p. 29, \"Simplified Method Worksheet\u2014Lines 5a and 5b\"); IRA distributions go on lines 4a and 4b (p. 27), so the worksheet is not shown.",
+      "evidence_note": "T-067 finding F5 (.transcription/proposed/t067/retirement.findings.md): classm.s2.3.deepseek, a traditional IRA (code 1, box 1 $92), without the pension-worksheet answers the interview does not ask on an IRA entry. The Simplified Method Worksheet is for lines 5a and 5b (i1040gi p. 29, \"Simplified Method Worksheet\u2014Lines 5a and 5b\"); IRA distributions go on lines 4a and 4b (p. 27), so the worksheet is not shown. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -7756,6 +7761,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -10160,7 +10166,7 @@
         "sales"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "classm.f8889.1.deepseek with sales[s1].special withheld (absent). Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown.",
+      "evidence_note": "classm.f8889.1.deepseek with sales[s1].special withheld (absent). Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -10441,6 +10447,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -10714,6 +10721,7 @@
         "person[spouse].f8889[hsa].line2": 693200,
         "person[spouse].f8889[hsa].line9": 0,
         "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 12,
         "person[spouse].f8889[hsa].months_family": 0,
         "person[spouse].f8889[hsa].age55": true,
@@ -10836,7 +10844,7 @@
         "sales"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "classm.f8889.1.deepseek with sales[s1].special null (the interview's unknown answer). Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown.",
+      "evidence_note": "classm.f8889.1.deepseek with sales[s1].special null (the interview's unknown answer). Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -11117,6 +11125,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -11390,6 +11399,7 @@
         "person[spouse].f8889[hsa].line2": 693200,
         "person[spouse].f8889[hsa].line9": 0,
         "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 12,
         "person[spouse].f8889[hsa].months_family": 0,
         "person[spouse].f8889[hsa].age55": true,
@@ -11513,7 +11523,7 @@
         "sales"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "classm.f1040.6 with sales[s2].aggregate_eligible withheld (absent); sales[s2] is on the aggregate route, so sales.bad_aggregate awaits it. Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown.",
+      "evidence_note": "classm.f1040.6 with sales[s2].aggregate_eligible withheld (absent); sales[s2] is on the aggregate route, so sales.bad_aggregate awaits it. Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -11794,6 +11804,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -12172,7 +12183,7 @@
         "sales"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "classm.f1040.6 with sales[s2].aggregate_eligible null. Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown.",
+      "evidence_note": "classm.f1040.6 with sales[s2].aggregate_eligible null. Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -12453,6 +12464,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -12831,7 +12843,7 @@
         "ira"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Companion to finding F1: the legitimate use of sum_over's lower bound is kept. classm.f8889.1.deepseek with person[taxpayer].ira_work_plan true and person[spouse].ira_work_plan withheld. The spouse's entry is unknown only through an unanswered input that can only add to the count (no refusal gate awaits it), so ira.cov_count is unknown with lower bound 1 and ira.anyone_covered (ira.cov_count > 0) is decided true.",
+      "evidence_note": "Companion to finding F1: the legitimate use of sum_over's lower bound is kept. classm.f8889.1.deepseek with person[taxpayer].ira_work_plan true and person[spouse].ira_work_plan withheld. The spouse's entry is unknown only through an unanswered input that can only add to the count (no refusal gate awaits it), so ira.cov_count is unknown with lower bound 1 and ira.anyone_covered (ira.cov_count > 0) is decided true. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -13112,6 +13124,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": false,
@@ -13385,6 +13398,7 @@
         "person[spouse].f8889[hsa].line2": 693200,
         "person[spouse].f8889[hsa].line9": 0,
         "person[spouse].f8889[hsa].unsupported": false,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
         "person[spouse].f8889[hsa].months_eligible": 12,
         "person[spouse].f8889[hsa].months_family": 0,
         "person[spouse].f8889[hsa].age55": true,

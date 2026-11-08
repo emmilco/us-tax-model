@@ -112,6 +112,12 @@
   },
   "limit:p560:p18:e80dbc74": {
    "not_applicable": "SIMPLE 401(k) plan rule; a SIMPLE 401(k) is a qualified plan, refused by person.plan_screened (person.plan_screen: 'to a qualified plan (such as a solo 401(k))'); p560 p. 18 is cited by retirement.rollover only for the SIMPLE IRA 2-year rollover rule."
+  },
+  "limit:p969:p4:c5722ec9": {
+   "not_applicable": "Pub. 969 p. 4's list of preventive care describes what an HDHP may pay before the deductible; it is cited only for the definition of family HDHP coverage (f8889.coverage_year) and limits no amount the tool computes."
+  },
+  "limit:p969:p7:21d3967d": {
+   "not_applicable": "the limit on a qualified HSA funding distribution: such distributions are refused by f8889.unsupported (Form 8889 line 10); Pub. 969 p. 7 is cited only for retroactive Medicare coverage (f8889.coverage_year)."
   }
  },
  "baseline": {

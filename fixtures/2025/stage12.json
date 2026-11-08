@@ -9479,7 +9479,7 @@
         "carloan"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "BUG-0163 regression, predicted from fr-2025-24154 p. 23, proposed § 1.163-16(g)(1) (\"Independently deductible interest is limited to interest that is QPVLI\") and (d)(2)(iii)(A) (pro rata allocation) before recording: a mixed loan, $20,000 financed of which $4,000 does not qualify (ratio 0.8), $424 of interest and $106 deducted on Schedule C: QPVLI $339.20, column (ii) the QPVLI part of the Schedule C interest $84.80, column (iii) $254.40 (the previous whole-amount subtraction gave $233.20).",
+      "evidence_note": "BUG-0163 regression, predicted from fr-2025-24154 p. 23, proposed § 1.163-16(g)(1) (\"Independently deductible interest is limited to interest that is QPVLI\") and (d)(2)(iii)(A) (pro rata allocation) before recording: a mixed loan, $20,000 financed of which $4,000 does not qualify (ratio 0.8), $424 of interest and $106 deducted on Schedule C: QPVLI $339.20, column (ii) the QPVLI part of the Schedule C interest $84.80, column (iii) $254.40 (the previous whole-amount subtraction gave $233.20). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -9611,6 +9611,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
         "person[taxpayer].f8889[hsa].months_eligible": 0,
         "person[taxpayer].f8889[hsa].months_family": 0,
         "person[taxpayer].f8889[hsa].age55": true,
