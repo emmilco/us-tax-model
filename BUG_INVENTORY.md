@@ -6301,3 +6301,49 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Regression predictions:** no recorded value changes.
 - **Validation:** every federal fixture (1,641) passes. `tools/structural_leaks.mjs` lists `edu_mat` under binding reads before the change and not after (2 such inputs remain, `w2.box3` and `w2.box7`, outside this change). interview-rules with an empty baseline. The transcription, render, class M and completeness reviews of person and dependent were rerun after this change. The tier run of this change.
 - **Tags:** interview; leak; def-binding; fixed
+
+## BUG-0463 — interview-rules' random traversal answered from the fixture's whole answer map, so leftover answers hid order-dependent leaks
+
+- **Date:** 2026-11-08
+- **Caught by:** reading (Gemini 4 Argon, docs/ARGON_CLAUDE_DISCUSSION.md MSG-007), confirmed in MSG-008 and reproduced on d41235c4 (T-258).
+- **Source:** `engine/src/interview-rules.ts` at d41235c4, line 211: the `random` task called `walk(data, config, c.inputs, ...)`, where the reversed and shuffled replays use `replayed(config, w.events)`.
+- **Symptom:** a random answering order that reaches an input the bank-order walk never asks was answered from the fixture's leftover value (for example a `0` kept after its gate was closed), so the error the task prints for that case ("asks X, which the answers in bank order never reach") could fire only for an input missing from the fixture altogether. Measured on d41235c4: 0 failures over the 82 random traversals as run; with `replayed(config, w.events)` and the walk otherwise unchanged, 3 New York fixtures fail on `f8960.allocated_taxes`.
+- **Why it survived:** the check was green, and a green check over leftover answers looks the same as a green check without them.
+- **Disposition:** fixed (tool only; no form lines): the random traversal answers only what the bank-order walk asked (`replayed(config, w.events)`); the fixture's other answers are withheld. Fixed with BUG-0464.
+- **Tags:** interview-rules; check-weakness; masked-by-fixture; fixed
+
+## BUG-0464 — interview-rules' walk offered only answered questions, so a random order could never reach a question its answers lacked
+
+- **Date:** 2026-11-08
+- **Caught by:** reading (Gemini 4 Argon, MSG-014, failure mode 1), reproduced on d41235c4 (T-258).
+- **Source:** `engine/src/interview-rules.ts` at d41235c4, `walk()`: line 86 filtered the open questions to those `answers` holds, and line 88 checked only the interview's own next question (the first reachable in bank order).
+- **Symptom:** an input reachable at some state, but only out of bank order, was never picked by a random traversal, so order-dependent leaks went unseen. MSG-014 states that fixing BUG-0463 alone catches nothing; measured, it catches 1 template (`f8960.allocated_taxes`, 3 cases). With both fixed, plus a scan of every incomplete state of the bank-order walk, 59 templates are reached only out of bank order (54 by the scan, 5 more by the random traversals).
+- **Disposition:** fixed (tool only; no form lines): while the return is incomplete every reachable unanswered input is open; a pick the answers lack throws Unanswered in bank order and is reported (and the pick made again) in a random traversal. The walk records each input reachable at an incomplete state that a later answer hid before it was asked. On a complete return those inputs, and those a random traversal reaches, fail unless held in `order_dependent_reach` of `tools/interview_rules_baseline.json`, seeded with today's 59, each with its reason. Refused returns keep the old behaviour (questions open at a refusal are not leaks). Minimal returns (every gate closed; each existence gate opened alone) and planted-fault self-tests were added in the same change.
+- **Tags:** interview-rules; check-weakness; order-dependence; fixed
+
+## BUG-0465 — the zero-income return reports complete while four EIC inputs are reachable and unanswered
+
+- **Date:** 2026-11-08
+- **Caught by:** interview-rules, the minimal return with every gate closed (full profile), on the first run of the T-258 check. No fixture has a return with no earned income.
+- **Source:** `forms/2025/eic.yaml`, `eic.eligible`: an `all` whose operand `eic.step34` is false on a return with no earned income, while the earlier operands `eic.step1_ssn` and `eic.step2_income` (and `eic.age_range` inside step 3/4) are unknown. `all` evaluates every operand, so their inputs stay reachable.
+- **Symptom:** the interview reports the return complete while `person[taxpayer].eic_ssn`, `f1040.tax_exempt_interest`, `person[taxpayer].born_after_1960` and `person[taxpayer].born_before_2001` are reachable and unanswered (standing rule 3). No value is affected: `eic.eligible` is false either way.
+- **Disposition:** open, low: rewrite the conjunction as a nested choose in the order the instructions state (the gate wave's pattern). Held in `early_completion` of `tools/interview_rules_baseline.json` until then.
+- **Tags:** interview; leak; conjunction; eic; open
+
+## BUG-0466 — 59 input templates are reachable only out of bank order, and 11 are asked in bank order and then unread
+
+- **Date:** 2026-11-08
+- **Caught by:** interview-rules after BUG-0463 and BUG-0464 were fixed (T-258).
+- **Source:** conjunctions (`all`/`any` tests, collection sums with conjunctive `where`, refusal gates evaluated before their lines) whose deciding operand is answered after another operand's question becomes reachable. Each template and the line it is read under are listed with their reasons in `order_dependent_reach` and `walked_unused` of `tools/interview_rules_baseline.json`; the families are the EIC steps, the dependent qualifying-child and qualifying-relative tests, the education credit tests, the saver's credit and IRA tests, Form 5695, the household marital tests, the New York estimated-tax penalty and use-tax tests, and single conjunctions in Schedule 1, Schedule A, Form 4952, Form 8863 and the sales rows.
+- **Symptom:** in a different answering order the interview asks a question that a later answer makes moot (reachable only out of bank order), or it asks one in bank order and a later answer makes it moot (asked and unread; `reports/2025/interview_pruning.md`). No value is affected; asking a reachable question is allowed, so the cost is questions.
+- **Disposition:** open: each family is rewritten as nested choose by the gate wave, and its templates leave the baseline (which fails until they are removed).
+- **Tags:** interview; leak; conjunction; order-dependence; open
+
+## BUG-0467 — interview-rules' random traversal reported an out-of-order input only when its pick landed on it
+
+- **Date:** 2026-11-08
+- **Caught by:** review (Gemini 4 Argon, docs/ARGON_CLAUDE_DISCUSSION.md MSG-017), reproduced: with every unanswered input open at an incomplete state reported, the existing single seed finds `ny_it201.ask.spouse_resident` (first ny.schedule.single.65000) and `f8960.allocated_taxes` (ny.worksheet.mfj.400000), and also `f8962.married_in_2025` (generated.0), none held.
+- **Source:** `engine/src/interview-rules.ts`, `walk()` as committed for BUG-0464: with `reach`, an input the answers lack was reported only when `pick` chose it, so at a state with many open inputs it was usually passed over. The self-test's `plantLeak` appended its refusal after the target's own refusals, so `scope.ready`'s unknown `scope.credits` refusal (index 1) stopped evaluation before it, and 3 of 15 planted leaks were reachable in no order.
+- **Symptom:** order-dependent leaks seen in a traversal's states went unreported; the F2 strength measurement read 12 of 15 where the plants, not the check, were at fault.
+- **Disposition:** fixed (tool only; no form lines): at each incomplete state of a traversal every unanswered open input is reported and the pick is made among the answered ones; `plantLeak` puts its refusal first; random traversals run 5 seeds per chosen walk. The three templates are held in `order_dependent_reach` (62 entries); they are conjunctions on the filing status or `sa.itemizes`, open questions of BUG-0466's kind.
+- **Tags:** interview-rules; check-weakness; sampling; fixed
