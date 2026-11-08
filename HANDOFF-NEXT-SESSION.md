@@ -1,3 +1,31 @@
+# Merge chain cleared, consolidation started — 2026-11-07/08
+
+**State:** `main` is pushed through `63273754` (the education lane, the last of the merge chain); the full tier is green on it.
+The education lane (`63273754`: BUG-0446/0454 fixed, BUG-0456 data fix, NY pins, `tools/structural_leaks.mjs`
+prototype) closed the merge chain; its review data was carried back with `--prefer-worktree` for the person
+completeness files. No release has been
+cut since `r2026.11.06.1`.
+
+**Landed this session:** Form 8889 decedent remedy (`d05db7e6`); the retrospective archived in
+`docs/2026-11-07_process_retrospective/` (`f6607ed6`); `worktree_data.py fill` (`7744f501`) and
+`carry-back --prefer-worktree` (`fb3bc7f6`); T-255 carry.py fixes and rerun_all.py guards (`1525cae5`: a $3.00
+owner cost gate, once per round, line-scoped by default); main's mutation and engine differential green again
+(`8969807a`, BUG-0457); the triage.py refusal for line-scoped passes (`f733797f`); gates lane C (`5dbc39d4`);
+check-all concurrency (`c595f9ee`: per-run records under `.git/check-all-bg/runs/`, two machine-wide slots).
+
+**Owner decisions (2026-11-07/08):**
+- Consolidation (T-256) comes before coverage growth; federal coverage stays at 78.4% until the project stabilizes.
+- The review machinery and the fixtures are fixed **before** any further gate lanes: step (a) T-255 (done), step (b)
+  T-258 (sound leak check), step (c) per-form partial fixtures with test-data defaults plus a small whole-return set.
+- Partial fixtures: explicit defaults written into the test data, never engine defaults. (This settles decision 1 of
+  the entry below.)
+- The cost gate is $3.00. The carry-over tool stays strict about reworded input questions.
+- Discussion with Gemini 4 Argon continues in `docs/ARGON_CLAUDE_DISCUSSION.md` (append-only protocol); use it for
+  analysis and design critique. Decisions stay with the owner.
+
+**Next:** T-258 (brief to be reviewed with Argon first); then T-256 step (c) and phase 0
+(charter, inventory, TY2026 rollover measurement); T-257 (triage reads line-scoped passes).
+
 # Web UI, formal gates and readable questions — 2026-11-06/07
 
 **State:** `main` is pushed through `5d8c6fd` (R4, the last restructuring lane). The UI runs from `main` at
