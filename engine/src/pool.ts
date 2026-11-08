@@ -4,11 +4,20 @@
 import { spawn } from "node:child_process";
 import { availableParallelism } from "node:os";
 
-// Concurrent invocations: TEST_WORKERS, or the core count less six (left for the steps check-all runs
-// beside these); one runs them serially.
+// The default size of a worker pool: the core count less six (left for the steps check-all runs beside
+// the pool), but at most an equal share, among CHECK_ALL_MAX_RUNS runs (default 2, tools/check_slot.py), of
+// the cores less two, so that the runs allowed at once together fit the machine.
+export function defaultWorkers(): number {
+  const cores = availableParallelism();
+  const runs = Number(process.env.CHECK_ALL_MAX_RUNS);
+  const share = Math.floor((cores - 2) / (Number.isInteger(runs) && runs > 0 ? runs : 2));
+  return Math.max(1, Math.min(cores - 6, share));
+}
+
+// Concurrent invocations: TEST_WORKERS, or defaultWorkers(); one runs them serially.
 export function poolSize(): number {
   const set = Number(process.env.TEST_WORKERS);
-  return Number.isInteger(set) && set > 0 ? set : Math.max(1, availableParallelism() - 6);
+  return Number.isInteger(set) && set > 0 ? set : defaultWorkers();
 }
 
 // fn over every item, at most `limit` at a time; the results in the order of the items. If any call rejects,

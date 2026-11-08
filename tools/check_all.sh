@@ -8,11 +8,14 @@
 # for a year other than the default (--year N) is checked but never marked
 # green: a commit must have passed on the default year. It refuses to run when a
 # git-ignored raw review file the review logs reference is missing
-# (tools/worktree_data.py check; a linked worktree has none until cloned in).
+# (tools/worktree_data.py check; a linked worktree has none until cloned in). At most
+# CHECK_ALL_MAX_RUNS (default 2) runs, in any worktree and either script, execute at once; the
+# others wait their turn (tools/check_slot.py).
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 . tools/green.sh
 
+orig=("$@")
 tier=full
 rest=()
 while [ "$#" -gt 0 ]; do
@@ -24,6 +27,12 @@ while [ "$#" -gt 0 ]; do
 done
 set -- ${rest[@]+"${rest[@]}"}
 marker="$(marker_of "$tier")" || exit 2
+
+# At most CHECK_ALL_MAX_RUNS runs execute at once on the machine (tools/check_slot.py): wait for a
+# slot, then run again from the top holding it. A run started by check_all_bg.sh already holds one.
+if [ -z "${CHECK_ALL_SLOT:-}" ]; then
+  exec python3 tools/check_slot.py --tier "$tier" -- "$0" ${orig[@]+"${orig[@]}"}
+fi
 
 rm -f "$marker"
 python3 tools/worktree_data.py check || exit 1

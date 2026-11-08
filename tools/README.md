@@ -96,16 +96,22 @@ steps that read it, and that those steps are in the docs tier.
 `npm run check-all-bg` (`tools/check_all_bg.sh`) runs the same suite on a snapshot of
 the working tree in `.git/check-all-worktree`, detached, so the main tree can be
 edited while it runs (`--wait` runs it in the foreground; `--tier` as above; `--status`
-reports the running and last runs; the log is `.git/check-all-bg/log`). The snapshot is the tree
+lists the running runs, the check-all slots and the latest finished run, and `--status <tree>`
+shows the record of the latest run of that snapshot tree). Each run keeps its own record and
+log in `.git/check-all-bg/runs/<snapshot-tree>-<timestamp>/` (`status`, `log`, the newest 50
+kept); `.git/check-all-bg/last` is a copy of the latest finished run's status and
+`.git/check-all-bg/log` a link to the latest started run's log, so a run that finishes just
+before another starts loses nothing. The snapshot is the tree
 `git add -A` would commit; the worktree is the script's own and is reset before each
 run; ignored data the suite reads is copied in as copy-on-write clones, and the build
-outputs are rebuilt from the snapshot. One run at a time per clone. It runs from the
+outputs are rebuilt from the snapshot. One background run at a time per clone. It runs from the
 main worktree or a linked one: the snapshot and the review data come from the worktree
 it is run in (which must hold the review data in full), and the installs
 (`node_modules`, `.engines`, `lean/.lake`) from the main worktree when that one has
 none. When it is green,
 `tools/commit_tested.sh -F <file>` commits exactly that tree, leaving edits made since
-the snapshot uncommitted; it refuses if another worktree started the run, if the run's
+the snapshot uncommitted (it reads `last`; `COMMIT_TESTED_TREE=<tree>` names another run's
+snapshot tree instead); it refuses if another worktree started the run, if the run's
 tier is below the one the commit needs, if HEAD has moved since the snapshot or if anything is staged, and writes the
 regenerated `reports/` and `rendered/` files into the working tree where it still holds
 the snapshot's version.
@@ -119,13 +125,29 @@ pushes the tag only with `--push`. A red run tags nothing.
 A run for a year other than the default passes or fails as usual but writes no
 marker.
 
+At most `CHECK_ALL_MAX_RUNS` (default 2) check-all runs execute at once on the machine, in
+any worktree, foreground (`tools/check_all.sh`) or background (`tools/check_all_bg.sh`), of
+any tier; further runs print that they are waiting, and on which runs, and start in arrival
+order as slots free (`tools/check_slot.py`, with `--status` to list the holders and waiters).
+A slot is an `flock` on a file in `.git/check-all-slots/` (the clone's common git dir),
+held by the run and its children and released when the last of them exits, however it ends,
+so a killed run leaves no stale slot; a waiter's place is a ticket named by arrival time and
+pid, dropped when its pid is dead. A background run waits for its slot before it checks out
+its snapshot. The worker pools size themselves to the limit: by default the smaller of
+the core count less six and `floor((cores - 2) / CHECK_ALL_MAX_RUNS)`
+(`defaultWorkers()` in `engine/src/pool.ts`, used by the test commands, interview-rules
+and mutate); `TEST_WORKERS` and `MUTATE_WORKERS` still override. `check_slot.py --self-test`
+and `hooks/test_check_bg.sh` (per-run records, pruning, a background run waiting for a
+slot) are check-all steps.
+
 After compiling and building, the steps run in three waves of side-by-side steps
 (see the head of `tools/check_all_steps.sh`); a step that reads what another writes runs
 in a later wave than its writer (in the full tier `human_review` after
 `engine_differential`), a rule no check enforces, so a new
 step must be placed by it. A step's output is printed when its wave ends, and
 each step's wall time is in `.git/check-all-times`. Mutation spreads its mutants
-over worker threads; `MUTATE_WORKERS=1` runs it on one.
+over worker threads (`MUTATE_WORKERS`, default `defaultWorkers()` of `engine/src/pool.ts`);
+`MUTATE_WORKERS=1` runs it on one.
 
 `tools/hooks/pre-commit` refuses any commit whose tree is not exactly a tree a green
 run of the tier the commit needs tested (a marker, or one of the recorded green

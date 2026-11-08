@@ -3,7 +3,7 @@
 // mutation score with the surviving mutations listed.
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { availableParallelism } from "node:os";
+import { defaultWorkers } from "./pool.js";
 import { join, resolve } from "node:path";
 import { Worker } from "node:worker_threads";
 import { createHash } from "node:crypto";
@@ -2395,11 +2395,11 @@ export function mutantShare(index: number, count: number): { digest: string; out
   return { digest: mutantsDigest(muts), outcomes };
 }
 
-// Workers: MUTATE_WORKERS, or the core count less six (left for the steps check-all runs
-// beside this one); one means no workers.
+// Workers: MUTATE_WORKERS, or defaultWorkers() of pool.ts (core count less six, and at most an equal
+// share of the cores among the check-all runs allowed at once); one means no workers.
 function workerCount(): number {
   const set = Number(process.env.MUTATE_WORKERS);
-  return Number.isInteger(set) && set > 0 ? set : Math.max(1, availableParallelism() - 6);
+  return Number.isInteger(set) && set > 0 ? set : defaultWorkers();
 }
 
 async function outcomesOf(baseline: CanonicalData, cases: ReturnType<typeof loadCases>["cases"], muts: Mutation[]): Promise<Outcome[]> {

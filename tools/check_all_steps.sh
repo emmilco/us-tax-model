@@ -121,6 +121,8 @@ step bookkeeping_tools python3 -m unittest tools/test_bookkeeping_tools.py
 step pre_push_self_test bash tools/hooks/test_pre_push.sh
 step green_self_test bash tools/hooks/test_green.sh
 step worktree_data_self_test python3 tools/worktree_data.py --self-test
+step check_slot_self_test python3 tools/check_slot.py --self-test
+step check_bg_self_test bash tools/hooks/test_check_bg.sh
 step consistency_checks node tools/test_consistency_checks.mjs
 step siblings_self_test python3 tools/siblings.py --self-test
 step siblings_check python3 tools/siblings.py --check "$@"

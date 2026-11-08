@@ -4,7 +4,8 @@
 #
 #   tools/check_all_bg.sh [--wait] [--tier full|fast|docs] [--year N]
 #                                     snapshot now and test it (detached unless --wait; tier full by default)
-#   tools/check_all_bg.sh --status    the running run and the last finished one
+#   tools/check_all_bg.sh --status    the running run(s), the slots, and the latest finished run
+#   tools/check_all_bg.sh --status TREE   the record of the latest run of snapshot tree TREE
 #
 # The snapshot is the tree a full `git add -A` would commit (tools/green.sh),
 # wrapped in a commit object no ref points to. It is checked out in
@@ -17,7 +18,13 @@
 # snapshot. tools/check_all.sh does the run; a green run records its tree in the
 # clone's list of green trees for its tier, which both hooks read, and
 # tools/commit_tested.sh commits that tree, from the worktree that started the run.
-# One run at a time per clone.
+# One run at a time per clone. Each run keeps its own record under .git/check-all-bg/runs/
+# <snapshot-tree>-<timestamp>/ (status, log), the newest 50 kept; `last` (a copy of the latest
+# finished run's status) and `log` (a link to the latest started run's log) follow the newest, so
+# a run that finishes just before another starts loses nothing. Across the machine at most
+# CHECK_ALL_MAX_RUNS check-all runs (this and tools/check_all.sh, in any worktree) execute at
+# once, the others waiting their turn (tools/check_slot.py); the slot is taken before the
+# snapshot is checked out.
 #
 # It runs from the main worktree or a linked one (an agent's). The snapshot and the
 # review data come from the worktree it runs in, which must hold the review data
@@ -46,11 +53,26 @@ from() {
   esac
 }
 
+# status [TREE]: with no TREE, the running runs and the slots, then the latest finished run's record;
+# with TREE, the record (or running state) of the latest run of that snapshot tree.
 status() {
-  if [ -d "$lock" ] && kill -0 "$(cat "$lock/pid" 2>/dev/null)" 2>/dev/null; then
-    echo "running: pid $(cat "$lock/pid"), snapshot tree $(cat "$lock/tree"), log $state/log"
+  local d p want="${1:-}" latest
+  if [ -n "$want" ]; then
+    latest="$(ls -1dt "$state/runs/$want"-* 2>/dev/null | head -n 1 || true)"
+    if [ -z "$latest" ]; then echo "no run of snapshot tree $want"; return 1; fi
+    if [ -f "$latest/status" ]; then cat "$latest/status"
+    else echo "running: pid $(cat "$latest/pid" 2>/dev/null), snapshot tree $want, log $latest/log"; fi
+    return 0
   fi
-  if [ -f "$state/last" ]; then cat "$state/last"; else echo "no finished run"; fi
+  for d in "$state"/runs/*/; do
+    { [ -d "$d" ] && [ ! -f "${d}status" ]; } || continue
+    p="$(cat "${d}pid" 2>/dev/null || true)"
+    if [ -n "$p" ] && kill -0 "$p" 2>/dev/null; then
+      echo "running: pid $p, snapshot tree $(cat "${d}tree"), log ${d}log"
+    fi
+  done
+  python3 tools/check_slot.py --status
+  if [ -f "$state/last" ]; then echo "latest finished:"; cat "$state/last"; else echo "no finished run"; fi
 }
 
 take_lock() {
@@ -95,15 +117,27 @@ prepare() {
   if [ ! -d "$wt/lean/.lake" ] && [ -d "$(from lean/.lake)" ]; then cp -cR "$(from lean/.lake)" "$wt/lean/.lake"; fi
 }
 
-# run BASE TREE SNAP [check-all args]: test the snapshot and write $state/last.
-run() {
-  local base="$1" tree="$2" snap="$3" rc tested="" result tier=full a prev=""
-  shift 3
+# tier_of [check-all args]: the tier the arguments select (full by default).
+tier_of() {
+  local a prev="" tier=full
   for a in "$@"; do
     case "$a" in --tier=*) tier="${a#--tier=}" ;; esac
     [ "$prev" = --tier ] && tier="$a"
     prev="$a"
   done
+  echo "$tier"
+}
+
+# prune: keep the 50 newest run directories.
+prune() {
+  ls -1dt "$state"/runs/*/ 2>/dev/null | tail -n +51 | while IFS= read -r d; do rm -rf "$d"; done
+}
+
+# run BASE TREE SNAP [check-all args]: test the snapshot and write its record in $RUN_DIR and $state/last.
+run() {
+  local base="$1" tree="$2" snap="$3" rc tested="" result tier
+  shift 3
+  tier="$(tier_of "$@")"
   trap 'rm -rf "$lock"' EXIT
   echo "check-all-bg: snapshot tree $tree (on $base), $tier tier, started $(date '+%Y-%m-%d %H:%M:%S')"
   prepare "$snap" "$base"
@@ -124,16 +158,24 @@ run() {
     echo "worktree=$main"
     echo "tested=$tested"
     echo "finished=$(date '+%Y-%m-%d %H:%M:%S')"
-    echo "log=$state/log"
-  } > "$state/last.tmp"
+    echo "log=$RUN_DIR/log"
+  } > "$RUN_DIR/status"
+  cp "$RUN_DIR/status" "$state/last.tmp"
   mv "$state/last.tmp" "$state/last"
+  prune
   echo "check-all-bg: $result"
   [ "$result" != failed ]
 }
 
 case "${1:-}" in
-  --status) status; exit 0 ;;
-  --run) shift; run "$@"; exit $? ;;
+  --status) status "${2:-}"; exit $? ;;
+  --run)
+    shift
+    # Wait for one of the CHECK_ALL_MAX_RUNS machine-wide slots, then run again from here holding it.
+    if [ -z "${CHECK_ALL_SLOT:-}" ]; then
+      exec python3 tools/check_slot.py --tier "$(tier_of "${@:4}")" --tree "$2" -- "$0" --run "$@"
+    fi
+    run "$@"; exit $? ;;
 esac
 wait=0
 if [ "${1:-}" = "--wait" ]; then wait=1; shift; fi
@@ -148,12 +190,16 @@ base="$(git rev-parse HEAD)"
 tree="$(worktree_tree)"
 snap="$(git commit-tree "$tree" -p "$base" -m "check-all snapshot")"
 echo "$tree" > "$lock/tree"
+export RUN_DIR="$state/runs/$tree-$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$RUN_DIR"
+echo "$tree" > "$RUN_DIR/tree"
+ln -sfn "$RUN_DIR/log" "$state/log"
 if [ "$wait" -eq 1 ]; then
-  echo $$ > "$lock/pid"
-  run "$base" "$tree" "$snap" "$@" 2>&1 | tee "$state/log"
+  echo $$ > "$lock/pid"; echo $$ > "$RUN_DIR/pid"
+  "$0" --run "$base" "$tree" "$snap" "$@" 2>&1 | tee "$RUN_DIR/log"
   exit "${PIPESTATUS[0]}"
 fi
-nohup "$0" --run "$base" "$tree" "$snap" "$@" > "$state/log" 2>&1 < /dev/null &
-echo $! > "$lock/pid"
+nohup "$0" --run "$base" "$tree" "$snap" "$@" > "$RUN_DIR/log" 2>&1 < /dev/null &
+echo $! > "$lock/pid"; echo $! > "$RUN_DIR/pid"
 echo "check-all-bg: testing snapshot tree $tree in $wt (pid $!)"
-echo "check-all-bg: log $state/log; tools/check_all_bg.sh --status; on green, commit it with tools/commit_tested.sh -F <file>"
+echo "check-all-bg: log $RUN_DIR/log; tools/check_all_bg.sh --status [tree]; on green, commit it with tools/commit_tested.sh -F <file>"

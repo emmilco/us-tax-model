@@ -11,6 +11,8 @@
 # tools/hooks/pre-commit as usual. Files the run regenerated (reports/,
 # rendered/) are written into the working tree when the working tree still holds
 # the snapshot's version of them; otherwise they are left as they are, and named.
+# It reads the record of the latest finished run (check-all-bg/last), or with
+# COMMIT_TESTED_TREE=<tree> that tree's latest run.
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 . tools/green.sh
@@ -18,6 +20,12 @@ cd "$(git rev-parse --show-toplevel)"
 common="$(cd "$(git rev-parse --git-common-dir)" && pwd)"
 last="$common/check-all-bg/last"
 die() { echo "commit-tested: $*" >&2; exit 1; }
+# COMMIT_TESTED_TREE=<snapshot tree> commits that tree's latest run (a record under check-all-bg/runs/)
+# instead of the latest finished one, for when another run finished after it.
+if [ -n "${COMMIT_TESTED_TREE:-}" ]; then
+  last="$(ls -1t "$common/check-all-bg/runs/$COMMIT_TESTED_TREE"-*/status 2>/dev/null | head -n 1 || true)"
+  [ -n "$last" ] || die "no background run of snapshot tree $COMMIT_TESTED_TREE"
+fi
 get() { sed -n "s/^$1=//p" "$last"; }
 
 [ -f "$last" ] || die "no finished background run (tools/check_all_bg.sh)"
