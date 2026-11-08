@@ -7,12 +7,12 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 | sdtw_skip_rule | Computing lines 23–43 of the Schedule D Tax Worksheet unconditionally gives the same lines 45, 47 and Form 1040 line 16 as skipping them, and every skipped component of line 41 and line 45 is zero when computed anyway. | 400 | 147 | holds |
 | tax_bounds | Form 1040 line 16 is non-negative, at most the top rate (37/100) on taxable income plus one Tax Table band ($50), and at most the tax on all taxable income from the Tax Table or Tax Computation Worksheet. | 400 | 145 | holds |
 | deduction_choice | With no election to itemize and no spouse itemizing, Form 1040 line 16 under the project's standard-or-itemized choice is at most line 16 under either deduction forced. | 400 | 145 | holds |
-| edu_clw_nonneg | Form 8863 Credit Limit Worksheet line 6 (Form 1040 line 18 less Schedule 3 lines 1 and 2) is never negative. | 400 | 131 | holds |
-| refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 344 | holds |
-| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. A choose whose guard is unknown is a refusal exactly when every way it can still resolve is a refusal, whatever the order of its guards. | 400 | 314 | holds |
+| edu_clw_nonneg | Form 8863 Credit Limit Worksheet line 6 (Form 1040 line 18 less Schedule 3 lines 1 and 2) is never negative. | 400 | 130 | holds |
+| refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 346 | holds |
+| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. A choose whose guard is unknown is a refusal exactly when every way it can still resolve is a refusal, whatever the order of its guards. | 400 | 315 | holds |
 | tax_monotone | Raising W-2 box 1 of the first employer, all else fixed, never lowers Form 1040 line 16. | 400 | 145 | holds |
 | tax_monotone_by_method | Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns. | 400 | 147 | holds |
-| screens_respected | No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206). | 400 | 99 | holds |
+| screens_respected | No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206). | 400 | 94 | holds |
 
 ## sdtw_skip_rule
 
@@ -21,15 +21,15 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## deduction_choice
 
-- Cases where total tax (line 24) under the project's choice exceeded the better alternative: 0.
+- Cases where total tax (line 24) under the project's choice exceeded the better alternative: 1.
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 314; cases with a line that has both a refused and an unknown operand (the order this property guards): 213; cases with a choose stopped at an unknown guard: 386, of which 8 have one refused on every way it can still resolve.
+- Cases with a refused operand somewhere: 315; cases with a line that has both a refused and an unknown operand (the order this property guards): 215; cases with a choose stopped at an unknown guard: 385, of which 12 have one refused on every way it can still resolve.
 
 ## tax_monotone
 
-- Cases where total tax (line 24) fell as wages rose: 1.
+- Cases where total tax (line 24) fell as wages rose: 0.
 
 ## tax_monotone_by_method
 
@@ -41,7 +41,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-2702 of 3089 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+2726 of 3089 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.screen:true
@@ -110,6 +110,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f2441.line25:positive
 - f2441.line29:floor
 - f2441.line31:left
+- f5329.l3_s:positive
+- f5329.l49_base:right
 - f5695.line15:right
 - f5695.line16:positive
 - f5695.ins_capped:right
@@ -128,46 +130,14 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8863.no_refund:true
 - f8863.line8#0
 - f8880.no:true
+- f8889.bad_months_counted:true
 - f8889.counts_hold:true
-- f8889.bad_months#1
-- f8889.bad_months#2
 - f8889.bad_months:true
-- f8889.married_family:true
-- f8889.dec_coverage_if_changed#1
-- f8889.dec_coverage_if_changed#2
-- f8889.dec_amount#1
-- f8889.dec_amount#2
 - f8889.no_last_month:true
-- f8889.use_last_month#0
-- f8889.use_last_month#2
+- f8889.use_last_month:true
 - f8889.year_same:false
-- f8889.full_year#1
-- f8889.full_year#2
-- f8889.full_year:false
-- f8889.dec_family:true
-- f8889.family_any_time#1
-- f8889.family_any_time:true
-- f8889.line3#1
-- f8889.line3#2
-- f8889.line5:floor
-- f8889.family_dec_year#0
-- f8889.family_dec_year#2
-- f8889.step1_total#1
-- f8889.step1:positive
-- f8889.allocation_bad:true
-- f8889.self_all#1
-- f8889.self_dec_year#0
-- f8889.self_dec_year#2
-- f8889.self_in_family#1
-- f8889.step4_total:floor
-- f8889.split:true
-- f8889.line6#0
-- f8889.line7_total#1
-- f8889.line7_applies:true
-- f8889.line7#0
-- f8889.line12:floor
+- f8889.line3_part_year#0
 - f8889.excess:true
-- f8889.excess_employer:positive
 - f8889.has_dist:true
 - f8889.rollover_bad:true
 - f8889.line14b#0
@@ -281,10 +251,12 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.x_has09:true
 - person.x_c09_min:right
 - person.x_c09#0
+- person.x_has19:true
+- person.x_c19_min:right
+- person.x_c19#0
 - person.x_c22:right
 - person.x_c23:right
 - person.x_two23:true
-- person.x_other_exc:positive
 - person.x_limit_binds:true
 - person.x_other:true
 - refund.has:true
@@ -335,13 +307,17 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - retirement.code_screen:true
 - retirement.screen_refused:true
 - retirement.wrong_kind:true
-- retirement.exc_capped:right
 - retirement.is_e05:true
 - retirement.l2_e05#0
 - retirement.is_e09:true
 - retirement.l2_e09#0
-- retirement.is_e23:true
-- retirement.l2_e23#0
+- retirement.is_e19:true
+- retirement.l2_e19#0
+- retirement.is_e22:true
+- retirement.l2_e22#0
+- retirement.is_s:true
+- retirement.l1_s#0
+- retirement.l2_s#0
 - s1.line1#1
 - s1.ebl:true
 - s1.sc_1a:true

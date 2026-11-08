@@ -40,6 +40,12 @@ export function declaredInputs(data: CanonicalData): { roots: Map<string, Line>;
   return { roots, collections };
 }
 
+// Form 8889's first coverage question, agreeing with the drawn month counts: one coverage type in all twelve
+// months is that type all year; anything else is a change, whose month counts are then read.
+function coverageYear(months: number, family: number): string {
+  return months === 12 && family === 0 ? "self_only" : months === 12 && family === 12 ? "family" : "changed";
+}
+
 function defaultFor(data: CanonicalData, line: Line): number | boolean | string {
   if (line.type === "Bool") return false;
   if (line.type.startsWith("Enum(")) return data.params.enums[line.type.slice(5, -1)]!.values[0]!;
@@ -509,6 +515,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["$person"] = ["taxpayer"];
   inputs["person[taxpayer].role"] = "taxpayer";
   inputs["$f8889@person[taxpayer]"] = ["hsa"];
+  inputs[`${HSA}.coverage_year`] = "changed";
   inputs["qbi.carryforward"] = 0;
   putBusinesses(data, inputs, "person[taxpayer]", s.profile === "investor" || s.profile === "retiree" ? [] : s.businesses, s.plan);
   inputs["person[taxpayer].rrta"] = s.rrta;
@@ -635,6 +642,7 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["sli.interest"] = s.adj.sli;
   if (s.adj.hsa) {
     const months = s.adj.months, family = Math.min(s.adj.familyMonths, months);
+    inputs[`${HSA}.coverage_year`] = coverageYear(months, family);
     inputs[`${HSA}.months_eligible`] = months;
     inputs[`${HSA}.months_family`] = family;
     inputs[`${HSA}.dec_coverage`] = months === 0 ? "none" : family === months ? "family" : family === 0 ? "self_only" : s.adj.decFamily ? "family" : "self_only";
@@ -706,7 +714,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     putBusinesses(data, inputs, P, s.spouseBusinesses, s.spousePlan);
     if (h.has) {
       const family = Math.min(h.familyMonths, h.months);
-      Object.assign(inputs, { [`${H}.line2`]: h.contrib, [`${H}.line9`]: 0, [`${H}.unsupported`]: false, [`${H}.months_eligible`]: h.months,
+      Object.assign(inputs, { [`${H}.line2`]: h.contrib, [`${H}.line9`]: 0, [`${H}.unsupported`]: false,
+        [`${H}.coverage_year`]: coverageYear(h.months, family), [`${H}.months_eligible`]: h.months,
         [`${H}.months_family`]: family, [`${H}.age55`]: h.age55, [`${H}.last_month`]: false,
         [`${H}.dec_coverage`]: h.months === 0 ? "none" : family === h.months ? "family" : family === 0 ? "self_only" : h.decFamily ? "family" : "self_only",
         [`${H}.allocation`]: h.agreed ? "agreed" : "equal", [`${H}.allocated`]: h.allocated,

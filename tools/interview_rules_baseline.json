@@ -1,6 +1,4 @@
 {
  "about": "Inputs the interview leaves reachable and unanswered when it reports a return complete (engine/src/interview-rules.ts, check completion), held until their leaking conjunctions are rewritten as nested choose. Keyed by input template; the list may only shrink: a template no longer seen fails the check until it is removed.",
- "early_completion": {
-  "person.edu": "seen on generated return 4 of the full profile after the Form 8889 coverage restructure changed the generated returns (BUG-0454); held until person.edu_student is rewritten as nested choose"
- }
+ "early_completion": {}
 }

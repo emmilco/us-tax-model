@@ -61,7 +61,7 @@ def saver_answers(person):
 def gen_case(rng, i):
     inputs = {
         "f1040.status": "single", "$person": ["taxpayer"], "person[taxpayer].role": "taxpayer", "person[taxpayer].rrta": False,
-        "sb.unsupported": False, "sb.line7a": False, "sb.fbar_required": False, "sb.form8938": False, "sb.line8": False,
+        "sb.unsupported": False, "sb.form5471": False, "sb.line7a": False, "sb.fbar_required": False, "sb.form8938": False, "sb.line8": False,
         "div.box2c": 0, "div.box2e": 0, "div.box2f": 0, "div.box3": 0,
         "div.box9": 0, "div.box10": 0, "div.box13": 0, "div.basis_reconciled": True,
         "sd.other_forms": False, "sd.carryover": False,
@@ -244,7 +244,8 @@ def gen_case(rng, i):
         employer = rng.randint(0, limit // 2) if rng.random() < 0.5 else 0
         contrib = rng.randint(0, limit - employer)
         hsa_deduction = min(contrib, limit - employer)
-        inputs.update({f"{HSA}.months_eligible": 12, f"{HSA}.months_family": 12 if family else 0, f"{HSA}.age55": age55,
+        inputs.update({f"{HSA}.coverage_year": "family" if family else "self_only", f"{HSA}.months_eligible": 12,
+                       f"{HSA}.months_family": 12 if family else 0, f"{HSA}.age55": age55,
                        f"{HSA}.dec_coverage": "family" if family else "self_only", f"{HSA}.last_month": False})
         features.add("hsa")
     # The Form 8889 screen is answered on every return: the form asks it whenever the account exists,
@@ -310,8 +311,8 @@ def early_answers(inputs, person):
         H = f"{person}.f8889[{h}]"
         inputs[f"{H}.employer_in_box1"] = False
         # Part VII reads the Form 8889 limit (lines 3 to 8) on every return with the form, so an account with no
-        # contributions answers its coverage too: no eligible months.
-        for k, v in (("months_eligible", 0), ("months_family", 0), ("age55", False), ("dec_coverage", "none"), ("last_month", False)):
+        # contributions answers its coverage too: coverage changed during the year, with no eligible months.
+        for k, v in (("coverage_year", "changed"), ("months_eligible", 0), ("months_family", 0), ("age55", False), ("dec_coverage", "none"), ("last_month", False)):
             inputs.setdefault(f"{H}.{k}", v)
 
 
@@ -694,6 +695,10 @@ def make_se(case, j):
     return {"id": f"se-{j:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
 
 
+# The amounts div.any gates directly (Form 1099-DIV boxes 1a, 2a, 3, 9, 10, 12 and 13), as in engine/src/generate.ts.
+DIV_ANY_GATED = ("sb.ordinary_dividends", "sd.distributions", "div.box3", "div.box9", "div.box10", "div.box12", "div.box13")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--count", type=int, default=1000)
@@ -706,6 +711,9 @@ def main():
     cases = [gen_case(rng, i) for i in range(a.count)]
     cases += [make_joint(gen_case(random.Random(f"mfj-base:{a.seed}:{j}"), 100_000 + j), j) for j in range(a.joint)]
     cases += [make_se(gen_case(random.Random(f"se-base:{a.seed}:{j}"), 200_000 + j), j) for j in range(a.se)]
+    # The dividends question agrees with the amounts it gates, answered once every amount is final.
+    for c in cases:
+        c["inputs"]["div.any"] = any(c["inputs"].get(k, 0) != 0 for k in DIV_ANY_GATED)
     with open(a.out, "w") as f:
         json.dump(cases, f)
     print(f"generated {len(cases)} cases (seed {a.seed}) -> {a.out}")
