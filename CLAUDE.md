@@ -18,7 +18,8 @@ advisory only).
     forms whose content changed. A review-prompt or tool change applies prospectively, at each
     form's next real change; there is no global re-review unless a measured defect calls for it.
   - Rule repeat disagreements mechanically where the carry-over tool allows (T-218), and scope
-    reviews to changed lines and their readers once that exists (T-219).
+    reviews to changed lines and their readers (T-219). Enforced in `rerun_all.py`: carry runs after
+    each review, and transcription and render are line-scoped unless the tool refuses or `--whole`.
   - DeepSeek transcription runs only on forms where its log is eligible for second-family credit
     (`compare_families.py`) or for a change the owner flags; DeepSeek render and class M run as before
     (owner decision 2026-11-04).
@@ -26,7 +27,10 @@ advisory only).
     runs on Sonnet; judgment (adjudication, source reading, design) on Opus.
   - One review per form per round, run after all of that form's fixes in the round
     have landed; a round whose reviews find only lows starts no further round (the
-    lows wait for the form's next substantive change).
+    lows wait for the form's next substantive change). Enforced in `rerun_all.py` for transcription,
+    render and class M: a log that already answers its subject is not rerun without
+    `--force-rerun REASON`, and a run estimated above $3.00 needs `--approve-cost`
+    (tools/README.md, "Review rerun guards"). Completeness and screen reruns are not guarded.
   - Every agent brief states the agent's model and its class (mechanical or
     judgment), and every `agent_runs.jsonl` row records both, as `model` and
     `class` fields.

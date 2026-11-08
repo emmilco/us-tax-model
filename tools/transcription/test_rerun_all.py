@@ -22,23 +22,46 @@ def proc(code, stdout="", stderr=""):
     return SimpleNamespace(returncode=code, stdout=stdout, stderr=stderr)
 
 
+def ledger(path, rows=(("transcribe.py", "gpt-6-astra"), ("transcribe.py", "claude-opus-5-5"))):
+    """A cost ledger pricing each (tool, model) at $1 per million prompt characters."""
+    with open(path, "w", encoding="utf-8") as f:
+        for tool, model in rows:
+            f.write(json.dumps({"tool": tool, "model_requested": model, "outcome": "ok", "estimated_cost_usd": 1.0,
+                                "prompt_chars": 1_000_000, "timestamp": "2026-01-01T00:00:00+00:00"}) + "\n")
+    return path
+
+
+def dry(chars=1000):
+    return proc(0, f"x: excerpt 10 chars\nprompt {chars:,} chars -> .transcription/x.preview.prompt.txt\n")
+
+
 class UsageLimitBreaker(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.calls = []
+        self.dry_calls = []
+        self.ledger = ledger(os.path.join(self.temp.name, "costs.jsonl"))
+        patcher = patch.object(RA, "answered", return_value="no log")
+        patcher.start()
+        self.addCleanup(patcher.stop)
 
     def fake(self, outcomes):
-        """subprocess.run returning outcomes[form] for each tool call, recording the forms called."""
+        """subprocess.run returning outcomes[form] for each tool call, recording the forms called; a
+        --dry-run call (planning) is recorded apart and builds a 1,000-character request."""
         def run(cmd, **kw):
             form = cmd[cmd.index("--form") + 1] if "--form" in cmd else cmd[cmd.index("--doc") + 1]
+            if "--dry-run" in cmd:
+                self.dry_calls.append(form)
+                return dry()
             self.calls.append(form)
             return outcomes.get(form, proc(0, "agree"))
         return run
 
     def main(self, forms, outcomes, model="gpt-6-astra", extra=()):
         summary = os.path.join(self.temp.name, "summary.json")
-        argv = ["rerun_all.py", "--kinds", "transcription", "--jobs", "1", "--no-carry", "--summary", summary, *extra]
+        argv = ["rerun_all.py", "--kinds", "transcription", "--jobs", "1", "--no-carry", "--summary", summary,
+                "--ledger", self.ledger, *extra]
         if model:
             argv += ["--model", model]
         out = io.StringIO()
@@ -71,6 +94,8 @@ class UsageLimitBreaker(unittest.TestCase):
         # With --resume each job first tries its saved response (--from-response, no model call).
         def run(cmd, **kw):
             form = cmd[cmd.index("--form") + 1]
+            if "--dry-run" in cmd:
+                return dry()
             self.calls.append((form, "--from-response" in cmd))
             if form == "a" and "--from-response" not in cmd:
                 return proc(1, "", LIMIT)
@@ -79,7 +104,7 @@ class UsageLimitBreaker(unittest.TestCase):
             return proc(1, "", "no saved response") if "--from-response" in cmd else proc(0, "agree")
         summary = os.path.join(self.temp.name, "summary.json")
         argv = ["rerun_all.py", "--kinds", "transcription", "--jobs", "1", "--no-carry", "--resume", "--model",
-                "gpt-6-astra", "--summary", summary]
+                "gpt-6-astra", "--summary", summary, "--ledger", self.ledger]
         with patch.object(sys, "argv", argv), patch.object(RA, "forms_for", return_value=["a", "b", "c"]), \
                 patch.object(RA.subprocess, "run", side_effect=run), contextlib.redirect_stdout(io.StringIO()):
             with self.assertRaises(SystemExit):
@@ -108,6 +133,134 @@ class UsageLimitBreaker(unittest.TestCase):
         for text in ("deepseek HTTP 429: rate limited", "codex exited 1: HTTP 504", "claude exited 1: timeout",
                      "Input exceeds the maximum length of 1048576 characters", "output token limit"):
             self.assertNotRegex(text, RA.USAGE_LIMIT)
+
+
+class Guards(unittest.TestCase):
+    """The guards before any paid call: once per form per round, line-scoped by default, the cost
+    estimate and the owner gate. No model is called (subprocess.run is replaced)."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.ledger = ledger(os.path.join(self.temp.name, "costs.jsonl"))
+        self.calls, self.dry_calls = [], []
+
+    def main(self, states, extra=(), dry_out=None, kinds="transcription"):
+        """Run rerun_all over the forms of `states` ({form: answered() result}); `dry_out(cmd)` answers dry runs."""
+        summary = os.path.join(self.temp.name, "summary.json")
+
+        def run(cmd, **kw):
+            form = cmd[cmd.index("--form") + 1] if "--form" in cmd else cmd[cmd.index("--doc") + 1]
+            if "--dry-run" in cmd:
+                self.dry_calls.append((form, cmd[cmd.index("--lines") + 1] if "--lines" in cmd else None))
+                return dry_out(cmd) if dry_out else dry()
+            self.calls.append((form, cmd[cmd.index("--lines") + 1] if "--lines" in cmd else None,
+                               (kw.get("env") or {}).get(RA.REASON_ENV)))
+            return proc(0, "agree")
+        argv = ["rerun_all.py", "--kinds", kinds, "--jobs", "1", "--no-carry", "--summary", summary,
+                "--ledger", self.ledger, *extra]
+        out = io.StringIO()
+        with patch.object(sys, "argv", argv), patch.object(RA, "forms_for", return_value=sorted(states)), \
+                patch.object(RA, "answered", side_effect=lambda k, f, fam: states[f]), \
+                patch.object(RA.subprocess, "run", side_effect=run), contextlib.redirect_stdout(out):
+            with self.assertRaises(SystemExit) as done:
+                RA.main()
+        rows = json.loads(Path(summary).read_text()) if os.path.exists(summary) else None
+        return done.exception.code, out.getvalue(), rows
+
+    def test_a_log_that_answers_its_subject_is_not_rerun_unless_forced_with_a_reason(self):
+        code, out, rows = self.main({"a": None, "b": "the transcription log reviewed an earlier form of b"})
+        self.assertEqual(code, 0)
+        self.assertEqual([c[0] for c in self.calls], ["b"])
+        self.assertIn("once per form per round: 1 job(s)", out)
+        self.assertEqual(self.dry_calls, [("b", "auto")])          # a is not even planned past its state
+        self.calls, self.dry_calls = [], []
+        code, out, rows = self.main({"a": None}, extra=("--force-rerun", "prompt policy changed"))
+        self.assertEqual(self.calls, [("a", None, "prompt policy changed")])  # whole: no stale line to scope to
+        self.assertEqual(rows[0]["forced"], "prompt policy changed")
+        with patch.object(sys, "argv", ["rerun_all.py", "--force-rerun", " "]), contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit) as done:
+                RA.main()
+        self.assertEqual(done.exception.code, 2)
+
+    def test_line_scoped_by_default_and_whole_when_the_tool_refuses_or_when_asked(self):
+        def refuse_dependent(cmd):
+            if "dependent" in cmd and "--lines" in cmd:
+                return proc(1, "", "SystemExit: dependent: a form with source partial-input cases is reviewed whole "
+                                   "(its cases read every line)")
+            return dry()
+        stale = "the transcription log is stale for lines changed or not yet reviewed: 3"
+        code, out, _ = self.main({"person": stale, "dependent": stale, "new": "no log"}, dry_out=refuse_dependent)
+        self.assertEqual(code, 0)
+        self.assertEqual(sorted(self.calls), [("dependent", None, None), ("new", None, None), ("person", "auto", None)])
+        self.assertIn(("dependent", "auto"), self.dry_calls)
+        self.assertIn(("dependent", None), self.dry_calls)
+        self.assertNotIn(("new", "auto"), self.dry_calls)          # no log to merge into: whole at once
+        self.calls, self.dry_calls = [], []
+        self.main({"person": stale}, extra=("--whole",))
+        self.assertEqual(self.calls, [("person", None, None)])
+        self.calls = []
+        self.main({"person": stale}, extra=("--lines", "person.se_line6"))
+        self.assertEqual(self.calls, [("person", "person.se_line6", None)])
+        self.calls = []
+        self.main({"person": stale}, kinds="classm", extra=("--approve-cost", "1"))  # class M: no line scope; unpriced here
+        self.assertEqual(self.calls, [("person", None, None)])
+
+    def test_the_estimate_is_printed_and_the_gate_needs_approval_above_the_threshold(self):
+        stale = "stale"
+        big = lambda cmd: dry(2_000_000)  # $2.00 at $1 per million characters
+        code, out, rows = self.main({"a": stale, "b": stale}, dry_out=big)
+        self.assertEqual(code, 2)
+        self.assertEqual(self.calls, [])                            # nothing paid
+        self.assertIn("Cost estimate", out)
+        self.assertIn("total $4.00 for 2 job(s); gate $3.00", out)
+        self.assertIn("refused: estimated $4.00 exceeds the $3.00 gate; pass --approve-cost 4.00", out)
+        self.assertIsNone(rows)
+        code, out, _ = self.main({"a": stale, "b": stale}, extra=("--approve-cost", "3.50"), dry_out=big)
+        self.assertEqual((code, self.calls), (2, []))
+        code, out, _ = self.main({"a": stale, "b": stale}, extra=("--approve-cost", "4"), dry_out=big)
+        self.assertEqual(code, 0)
+        self.assertEqual(sorted(c[0] for c in self.calls), ["a", "b"])
+        self.assertLess(out.index("Cost estimate"), out.index("2 runs"))
+        self.calls = []
+        code, out, _ = self.main({"a": stale}, dry_out=big)        # $2.00: under the gate
+        self.assertEqual((code, [c[0] for c in self.calls]), (0, ["a"]))
+        self.calls = []
+        code, out, _ = self.main({"a": stale}, extra=("--dry-run",), dry_out=big)
+        self.assertEqual((code, self.calls), (0, []))
+        self.assertIn("dry run: no model called", out)
+
+    def test_unpriced_calls_need_approval(self):
+        ledger(self.ledger, rows=(("render_compare.py", "claude-opus-5-5"),))   # no transcription price
+        code, out, _ = self.main({"a": "stale"})
+        self.assertEqual((code, self.calls), (2, []))
+        self.assertIn("no ledger price", out)
+        code, out, _ = self.main({"a": "stale"}, extra=("--approve-cost", "1"))
+        self.assertEqual(code, 0)
+        self.assertEqual([c[0] for c in self.calls], ["a"])
+
+    def test_prices_are_recent_cost_per_prompt_character(self):
+        path = os.path.join(self.temp.name, "p.jsonl")
+        rows = [{"tool": "transcribe.py", "model_requested": "deepseek-flash", "outcome": "ok", "estimated_cost_usd": 0.1 * (i + 1),
+                 "prompt_chars": 1000, "timestamp": f"2026-01-{i + 1:02d}T00:00:00+00:00"} for i in range(RA.PRICE_SAMPLE + 5)]
+        rows.append({**rows[0], "outcome": "error: x", "estimated_cost_usd": 99})
+        Path(path).write_text("".join(json.dumps(r) + "\n" for r in rows))
+        recent = rows[5:RA.PRICE_SAMPLE + 5]
+        want = sum(r["estimated_cost_usd"] for r in recent) / sum(r["prompt_chars"] for r in recent)
+        self.assertAlmostEqual(RA.prices(path)[("transcribe.py", "deepseek")], want)
+
+    def test_the_ledger_row_records_a_forced_reason(self):
+        import transcribe as T
+        self.assertEqual(RA.REASON_ENV, T.RERUN_REASON_ENV)
+        from datetime import datetime, timezone
+        raw = os.path.join(self.temp.name, "raw")
+        with patch.object(T, "RAW", raw), patch.dict(os.environ, {T.RERUN_REASON_ENV: "owner asked"}):
+            T.record_cost(datetime.now(timezone.utc), 1.0, "deepseek-flash", "deepseek", "P", "S", {}, "ok", "transcription", "x")
+        with patch.object(T, "RAW", raw), patch.dict(os.environ, {}, clear=False):
+            os.environ.pop(T.RERUN_REASON_ENV, None)
+            T.record_cost(datetime.now(timezone.utc), 1.0, "deepseek-flash", "deepseek", "P", "S", {}, "ok", "transcription", "y")
+        rows = [json.loads(l) for l in Path(raw, T.LEDGER_NAME).read_text().splitlines()]
+        self.assertEqual([r.get("rerun_reason") for r in rows], ["owner asked", None])
 
 
 if __name__ == "__main__":

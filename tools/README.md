@@ -135,6 +135,32 @@ whose commit's tree is not full-green. Enable both once per clone:
 
 `--no-verify` bypasses either hook; that is a deliberate act, not a routine.
 
+## Review rerun guards
+
+`tools/transcription/rerun_all.py` plans every job before it makes any paid call, and
+enforces these rules (self-tests: `tools/transcription/test_rerun_all.py`):
+
+- **Once per form per round.** A job (form, review kind, model family) whose log already
+  answers the current subject (`subjects.log_state` finds nothing it judged changed, the same
+  test `check_logs.py` applies) is not run. `--force-rerun REASON` runs it; the reason goes
+  into the run summary (`.transcription/rerun_summary.json`, `"forced"`) and, through the
+  `REVIEW_RERUN_REASON` environment variable, into each paid call's row of the cost ledger
+  (`.transcription/costs.jsonl`, `"rerun_reason"`).
+- **Line-scoped by default.** Transcription and render run with `--lines auto` (only the
+  lines whose subject changed). A job runs whole when the tool refuses line scoping (no log
+  or no line subjects to merge into, a change outside every compared line, a form with
+  partial-input cases), when `--whole` is given, or for a forced rerun of a current log
+  without `--lines`. Class M has no line scope. `--lines L` names the lines explicitly.
+- **Cost estimate.** Each job is first run with its tool's `--dry-run`, which builds the
+  request it would send; its prompt size is priced at the average cost per prompt character
+  of the last `PRICE_SAMPLE` (30) successful priced calls of the same tool and model family in
+  the ledger. The estimate is printed per job and in total before anything is called. A
+  saved response that `--resume` would reuse is still counted. `--dry-run` prints the plan
+  and estimate and stops.
+- **Owner gate.** A run whose estimate exceeds `COST_GATE_USD` ($3.00), or which includes
+  calls the ledger cannot price (no recent call of that tool and family), is refused (exit 2)
+  unless `--approve-cost DOLLARS` is at least the estimate.
+
 ## EIC Table
 
 `python3 tools/extract_eic_table.py` reads the 2025 Earned Income Credit Table

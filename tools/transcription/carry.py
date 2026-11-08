@@ -13,10 +13,12 @@ adjudicator sees only new disagreements. A ruling carries only when all hold:
   (canonical JSON); for render the restated English; for class M the case id
   (part of the handle) and both values (a case's branch list is not compared:
   it changes with instrumentation, and what the line computes is checked below);
-- the same project line: the line's own definition (citations left out) and
-  everything it reads, followed through other lines, documents, tables and the
-  year parameters, is unchanged between the source log's commit and the
-  working tree; for render also the line's rendered section;
+- the same project line: the line and everything it reads, followed as the
+  evaluator resolves references (closure: lines, definition instances, the
+  collections it sums over, tables, and only the year parameters it names), is
+  unchanged between the source log's commit and the working tree, each part as
+  the review kind sees it (view: citations left out, and for transcription and
+  class M wording left out too); for render also the line's rendered section;
 - the earlier ruling is of a settled class: not a finding or defect (those are
   re-judged), not an interface gap or unclassified prose (still pending in
   compare_families.py), and not open.
@@ -38,13 +40,16 @@ lines split between model error, scope, representation and interface gap.
 A render objection is free text, so render matches on the restated English and
 the status (MISMATCH, UNCLEAR, MISSING), not on the objection's wording.
 
-The source is the log the ruling was written in: by default the committed
-version of the same log (`git show HEAD:...`), else a log, its rulings sidecar,
-an archive directory (`<stem>.md`, `render.<stem>.md`, `classm.<stem>.md`) or
-`git:<rev>`. The reviewed forms are read from the commit that introduced the
-source log (a pre-commit check holds every committed log's subject current);
-a source log found in no commit is matched by its recorded subject hash, and
-a source whose forms cannot be found carries nothing.
+The source is the log the ruling was written in: by default every committed
+version of the same log, newest first, each read with the forms of the commit
+that wrote it (a pre-commit check holds every committed log's subject current);
+else a log, its rulings sidecar, an archive directory (`<stem>.md`,
+`render.<stem>.md`, `classm.<stem>.md`) or `git:<rev>`, whose forms are read from
+the commit that introduced it, or matched by its recorded subject hash when it
+is in no commit; a source whose forms cannot be found carries nothing. Across
+versions, the newest settled ruling on the same disagreement whose line was
+then as it is now carries; a newer finding, defect or unsettled ruling on the
+same disagreement stops the search.
 
 The carried ruling keeps its text, so its class prefix is read as before, and
 names its source:
@@ -147,15 +152,26 @@ class Snapshot:
         self.doc(fid)
         return self._cache["__subject " + fid]
 
-    def line_index(self):
-        """{line id: (form id, line dict)} over every document."""
-        if "__lines" not in self._cache:
-            idx = {}
-            for fid in self.forms():
-                for l in (self.doc(fid) or {}).get("lines", []):
-                    idx.setdefault(l["id"], (fid, l))
-            self._cache["__lines"] = idx
-        return self._cache["__lines"]
+    def params(self):
+        """({parameter name: entry}, {enum name: entry}) of the year parameters (in New York mode
+        merged with the New York ones, as the canonical build merges them)."""
+        if "__params" not in self._cache:
+            values, enums = {}, {}
+            for rel in [f"params/{Y}.yaml"] + ([f"params/ny/{Y}.yaml"] if jurisdiction.NY else []):
+                text = self.read(rel)
+                raw = (yaml.load(text, Loader=_Loader) or {}) if text else {}
+                p = raw.get("params") or raw
+                values.update(p.get("values") or {})
+                enums.update(p.get("enums") or {})
+            self._cache["__params"] = (values, enums)
+        return self._cache["__params"]
+
+    def line(self, fid, line_id):
+        """A document's line by id, else None."""
+        key = "__line " + fid
+        if key not in self._cache:
+            self._cache[key] = {l["id"]: l for l in (self.doc(fid) or {}).get("lines", [])}
+        return self._cache[key].get(line_id)
 
 
 def _strings(o):
@@ -170,6 +186,17 @@ def _strings(o):
         yield o
 
 
+def _dicts(o):
+    if isinstance(o, dict):
+        yield o
+        for k, v in o.items():
+            if k != "cite":
+                yield from _dicts(v)
+    elif isinstance(o, list):
+        for x in o:
+            yield from _dicts(x)
+
+
 def _sha(obj):
     return hashlib.sha256(json.dumps(obj, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
@@ -177,42 +204,98 @@ def _sha(obj):
 DEPTH = None  # how many references deep closure() follows; None follows every one
 
 
-def closure(snap, fid, line, depth=None):
-    """What a line reads, as {node: hash}: the line itself and, transitively, every line it
-    names, every document it names without naming a line of it (whole, citations left out),
-    every table it names, and the year parameters. Any string in a line that is a line id,
-    a document id or a document-prefixed name counts as a reference; over-collecting only
-    makes a carry less likely."""
-    idx, forms, tables = snap.line_index(), set(snap.forms()), snap.tables()
-    if "__params" not in snap._cache:
-        text = snap.read(f"params/{Y}.yaml") or ""
-        if jurisdiction.NY:
-            text += snap.read(f"params/ny/{Y}.yaml") or ""
-        snap._cache["__params"] = hashlib.sha256(text.encode()).hexdigest()
-    out = {"params": snap._cache["__params"]}
+def view(kind):
+    """What a review kind sees of a line, a document's own fields or a parameter: render judges
+    wording, so only citations are left out; transcription and class M judge computation, so
+    wording (subjects.WORDING) is left out as well."""
+    if kind == "render":
+        return subjects._without_cites
+    return lambda o: subjects._without_cites(subjects._unworded(o) if isinstance(o, dict) else o)
+
+
+ENUM = re.compile(r"^Enum\(([^()]+)\)$")
+
+
+def closure(snap, fid, line, depth=None, kind="transcription"):
+    """What a line reads, as {node: hash}, each node hashed as the review `kind` sees it (view).
+    References are resolved as the evaluator resolves them (engine/src/eval.ts):
+
+    - a string naming a line of the document being read (a definition's lines are named by their
+      local ids), else a line `<doc>.<name>` of another document: that line, followed;
+    - a definition instance ({def, bind, line}): the definition's `line`, followed within the
+      definition; the bound operands are strings of the calling line, followed there;
+    - a sum over a collection ({collection, field, where}): the field and the `where` lines are
+      strings, followed; of the collection document, its own fields (the roster's parent and
+      implicit entry) are read;
+    - a year parameter ({param: name}, {op: param, ref: name}) or an Enum(name) type: that entry;
+    - a table id: the table file.
+
+    The own fields (everything but the lines) of every document a followed line belongs to are
+    included. A string that names a document, or starts with a document id, and is none of the above
+    stands for the whole document (its own fields and every line, followed), which over-collects:
+    over-collecting only makes a carry less likely."""
+    tables, (params, enums), see = snap.tables(), snap.params(), view(kind)
+    forms = set(snap.forms())
+    out = {}
+
+    def head(d):
+        if "head " + d not in out:
+            doc = snap.doc(d) or {}
+            out["head " + d] = _sha(see({k: v for k, v in doc.items() if k != "lines"}))
+
     todo, seen = [(fid, line, 0)], set()
     while todo:
         f, l, n = todo.pop(0)
-        if l["id"] in seen:
+        if (f, l["id"]) in seen:
             continue
-        seen.add(l["id"])
-        out["line " + l["id"]] = _sha(subjects._without_cites(l))
+        seen.add((f, l["id"]))
+        out[f"line {f}:{l['id']}"] = _sha(see(l))
+        head(f)
         if depth is not None and n >= depth:
             continue
-        for s in _strings({k: v for k, v in l.items() if k != "id"}):
-            base = re.split(r"[\[\]]", s)[0]
-            if base in idx:
-                todo.append((*idx[base], n + 1))
+        body = {k: v for k, v in l.items() if k != "id"}
+        named = set()
+        for o in _dicts(body):
+            d = o.get("def")
+            if isinstance(d, str) and d in forms and (snap.doc(d) or {}).get("kind") == "def":
+                head(d)
+                named.add(d)
+                target = snap.line(d, o.get("line"))
+                if target is None:
+                    todo += [(d, dl, n + 1) for dl in snap.doc(d).get("lines", [])]
+                else:
+                    todo.append((d, target, n + 1))
+            c = o.get("collection")
+            if isinstance(c, str) and c in forms:
+                head(c)
+                named.add(c)
+        for s in _strings(body):
+            m = ENUM.match(s)
+            if m and m.group(1) in enums:
+                out["enum " + m.group(1)] = _sha(see(enums[m.group(1)]))
                 continue
-            head = re.split(r"[.\[]", s)[0]
+            if s in params:
+                out["param " + s] = _sha(see(params[s]))
+                continue
             if s in tables:
                 out["table " + s] = hashlib.sha256((snap.read(tables[s]) or "").encode()).hexdigest()
-            elif head in forms and head != f or s in forms:
-                d = head if head in forms else s
-                if "doc " + d not in out:
-                    out["doc " + d] = snap.subject(d)
-                    if depth is None:
-                        todo += [(d, dl, n + 1) for dl in (snap.doc(d) or {}).get("lines", [])]
+                continue
+            if s in named:
+                continue
+            target = snap.line(f, s)
+            base = re.split(r"[\[\]]", s)[0]
+            owner = re.split(r"[.\[]", s)[0]
+            if target is None and owner in forms:
+                target = snap.line(owner, base)
+            if target is not None:
+                todo.append((f if snap.line(f, s) is not None else owner, target, n + 1))
+                continue
+            d = owner if owner in forms else s if s in forms else None
+            if d is not None and (d != f or s == d) and "doc " + d not in out:
+                out["doc " + d] = _sha([see(x) for x in (snap.doc(d) or {}).get("lines", [])])
+                head(d)
+                if depth is None:
+                    todo += [(d, dl, n + 1) for dl in (snap.doc(d) or {}).get("lines", [])]
     return out
 
 
@@ -263,7 +346,7 @@ def _line_subject(kind, snap, fid, handle):
     line = find_line(snap, fid, handle)
     if line is None:
         return None
-    nodes = closure(snap, fid, line, DEPTH)
+    nodes = closure(snap, fid, line, DEPTH, kind)
     if kind == "render":
         nodes["rendered"] = rendered_section(snap, fid, line["id"])
         if nodes["rendered"] is None:
@@ -429,6 +512,22 @@ def source_log(kind, form, family, origin):
     return text, label, snapshot(rev)
 
 
+def source_logs(kind, form, family, origin):
+    """[(source text, label, snapshot)] of the earlier logs, newest first, or ([], reason). By
+    default every committed version of the log, each with the forms of the commit that wrote it (a
+    pre-commit check holds every committed log current); else the one log `origin` names."""
+    if origin is not None:
+        text, label, snap = source_log(kind, form, family, origin)
+        return ([(text, label, snap)], None) if text is not None else ([], label)
+    rel = f"{_dirs('reviews')[-1]}/{kind}/{families.stem(form, family)}.md"
+    out = []
+    for rev in (_git("log", "--format=%H", "--", rel) or "").split():
+        text = _git("show", f"{rev}:{rel}")
+        if text is not None:
+            out.append((text, f"{rel} at {rev[:8]}", snapshot(rev)))
+    return (out, None) if out else ([], "no source log")
+
+
 _snapshots = {}
 
 
@@ -459,33 +558,55 @@ def plan(kind, form, family=families.DEFAULT, origin=None, current=None):
     targets = [s for s in targets if s["handle"] not in out]
     if not targets:
         return out, stats, []
-    src, label, snap = source_log(kind, form, family, origin)
-    if src is None:
-        return out, stats, [(s["handle"], label) for s in targets]
-    date = recorded(src, "date") or "unknown date"
-    earlier = {}
-    for s in sections(kind, src):
-        earlier.setdefault(s["handle"], []).append(s)
+    srcs, reason = source_logs(kind, form, family, origin)
+    if not srcs:
+        return out, stats, [(s["handle"], reason) for s in targets]
+    earlier = []  # per source, newest first: (label, date, snapshot, {handle: [sections]})
+    for src, label, snap in srcs:
+        by_handle = {}
+        for e in sections(kind, src):
+            by_handle.setdefault(e["handle"], []).append(e)
+        earlier.append((label, recorded(src, "date") or "unknown date", snap, by_handle))
     left = []
     for s in targets:
-        cands = [e for e in earlier.get(s["handle"], []) if content(kind, e) == content(kind, s)]
-        if not cands:
-            left.append((s["handle"], "no earlier ruling on the same disagreement")); continue
-        e = cands[0]
-        why = excluded(e["ruling"])
-        if why:
-            left.append((s["handle"], f"earlier ruling not carried: {why}")); continue
-        printed = s["key"][1] if kind == "classm" else s["handle"]
-        old, new = line_subject(kind, snap, form, printed), line_subject(kind, current, form, printed)
-        if old is None or new is None:
-            left.append((s["handle"], "line not found in the reviewed forms")); continue
-        if old != new:
-            left.append((s["handle"], "the project line or what it reads changed")); continue
+        ruled, why = match(kind, form, s, earlier, current)
+        if ruled is None:
+            left.append((s["handle"], why)); continue
+        e, label, date = ruled
         text = carried_text(e["ruling"], label, date)
         # A class M model error dropped from the fixture is dropped again (rule.py does it).
         out[s["handle"]] = {"ruling": text, "drop": True} if sidecar.split_ruling(e["ruling"])[1] else text
     stats["carried"] = len(out) - stats["mechanical"]
     return out, stats, left
+
+
+def match(kind, form, s, earlier, current):
+    """((earlier section, label, date), None) for the ruling to carry to open section `s`, else (None, why).
+    The sources are searched newest first for a section on the same line with the same disagreement
+    content. An open one is passed over; a ruling of a class that is re-judged (excluded) stops the
+    search, so a later finding is never overridden by an older settled ruling; a settled ruling
+    carries when the line and what it reads were then as they are now, else the search goes on."""
+    printed = s["key"][1] if kind == "classm" else s["handle"]
+    new = line_subject(kind, current, form, printed)
+    if new is None:
+        return None, "line not found in the reviewed forms"
+    why = "no earlier ruling on the same disagreement"
+    for label, date, snap, by_handle in earlier:
+        cands = [e for e in by_handle.get(s["handle"], []) if content(kind, e) == content(kind, s)]
+        if not cands or cands[0]["ruling"] == sidecar.OPEN:
+            continue
+        e = cands[0]
+        stop = excluded(e["ruling"])
+        if stop:
+            return None, f"earlier ruling not carried: {stop}"
+        old = line_subject(kind, snap, form, printed)
+        if old == new:
+            return (e, label, date), None
+        if old is not None:
+            why = "the project line or what it reads changed"
+        elif why == "no earlier ruling on the same disagreement":
+            why = "line not found in the reviewed forms"
+    return None, why
 
 
 def carry(kind, form, family=families.DEFAULT, origin=None, dry_run=False, current=None):
@@ -501,7 +622,7 @@ def main(argv=None):
     ap.add_argument("--kind", required=True, choices=sorted(sidecar.KINDS))
     ap.add_argument("--form", required=True, help="a form id, or 'all' for every log of the kind and family")
     ap.add_argument("--family", default=families.DEFAULT)
-    ap.add_argument("--from", dest="origin", help="earlier log, its .rulings.json, an archive directory or git:<rev> (default git:HEAD)")
+    ap.add_argument("--from", dest="origin", help="earlier log, its .rulings.json, an archive directory or git:<rev> (default: every committed version of the log)")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--depth", type=int, help="follow references only this many lines deep (default: all; "
                     "0 compares the line alone); a looser check carries more and is less precise")

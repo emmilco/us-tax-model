@@ -631,8 +631,15 @@ receipt and the final log retains case order. Concurrency does not repair model 
 `carry.py --kind K --form F [--family X] [--from git:REV|LOG|RULINGS.json|ARCHIVE_DIR] [--dry-run]` rules an open
 section with an earlier ruling when the disagreement repeats exactly: same log, handle and status, the same content
 (both expression trees for transcription; the restated English for render; the case and both values for class M),
-and the line's transitive subject (the line, every line, document and table it reads, and the year parameters)
-unchanged since the earlier log's commit. It never carries a finding, defect, correction, interface gap or
+and the line's transitive subject unchanged since the earlier log's commit. The subject follows references as the
+evaluator resolves them: the lines it names (a definition's lines by their local ids, within the definition), the
+named line of a definition instance, the own fields (roster parent and implicit entry) of a collection it sums over,
+the tables it names and only the year parameters and enums it names; a string naming a whole document stands for all
+of it. Each part is hashed as the review kind sees it: citations left out, and for transcription and class M the
+wording (label, help, note, display, ambiguity link) as well; an input's question is kept. By default every committed
+version of the log is searched, newest first, each with the forms of its commit: the newest settled ruling on the
+same disagreement whose line was then as it is now carries, and a newer finding, defect or unsettled ruling on the
+same disagreement stops the search. It never carries a finding, defect, correction, interface gap or
 unclassified ruling, and it labels what it carries ("(carried over from <source>, review of <date>)"), so every
 carried ruling is auditable. `rerun_all.py` runs it after each review with open disagreements (`--no-carry` turns it
 off). Measured precision against hand rulings: 50 of 50 on the 2026-11-03 refresh round, 39 of 43 on the backlog
@@ -679,7 +686,9 @@ collection named only as a form only by its named lines. Definitions, shared pag
 screening list are as in a whole review. Each log records a
 `## Line subjects` table; `check_logs.py` names exactly the stale lines and suggests `--lines auto`. Owner decision
 2026-11-04: a log goes stale only for the lines whose subject changed (a line no compared line reaches does not stale
-it). Forms with partial-input banks (dependent, f8889) are reviewed whole. `rerun_all.py --lines auto` runs the transcription and render reviews this way.
+it). Forms with partial-input banks (dependent, f8889) are reviewed whole. `rerun_all.py` runs the transcription and
+render reviews this way by default, and refuses reruns of current logs and runs above a cost gate (tools/README.md,
+"Review rerun guards").
 When `--lines auto` finds every compared line current in a log written before line-subject tables existed (a whole
 subject that changed only outside every line subject), it records the table it verified against the reviewed version
 and makes no model call, so `check_logs.py` holds the log current by its lines.

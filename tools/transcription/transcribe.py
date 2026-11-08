@@ -1617,6 +1617,7 @@ class MissingCredential(RuntimeError):
 
 
 LEDGER_NAME = "costs.jsonl"
+RERUN_REASON_ENV = "REVIEW_RERUN_REASON"  # a forced rerun's reason, recorded in each ledger row it writes
 PRICES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prices.json")
 TOOL_KINDS = {"transcribe.py": "transcription", "render_compare.py": "render", "classm.py": "classm",
               "completeness_review.py": "completeness", "screen_review.py": "screen", "false_no_review.py": "false_no",
@@ -1734,6 +1735,8 @@ def record_cost(started, seconds, model, transport, prompt, system, meta, outcom
               "usage": usage, "cost_usd": meta.get("cost_usd"),
               "estimated_cost_usd": estimated, "price_basis": basis,
               "duration_s": round(seconds, 3), "outcome": outcome}
+    if os.environ.get(RERUN_REASON_ENV):
+        record["rerun_reason"] = os.environ[RERUN_REASON_ENV]  # rerun_all.py --force-rerun
     line = (json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
     os.makedirs(RAW, exist_ok=True)
     fd = os.open(os.path.join(RAW, LEDGER_NAME), os.O_WRONLY | os.O_APPEND | os.O_CREAT, 0o644)

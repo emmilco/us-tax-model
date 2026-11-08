@@ -1819,6 +1819,43 @@ class CarryOver(unittest.TestCase):
         self.assertEqual(carry.carried_text(once, "c.md", "2026-11-03"), once)
         self.assertEqual(rulings.split_ruling(once + " [dropped]"), (once, True))
 
+    def test_every_committed_version_is_searched_and_a_newer_finding_stops(self):
+        """A ruling found only in an older committed version carries; a newer finding on the same
+        disagreement is not overridden by an older settled ruling."""
+        self.write(self.rows(), prompt="a changed prompt")
+        older = self.source
+        rule.apply("x", {"2": {"ruling": "finding; the line reads the wrong amount", "severity": "low"}})
+        newer = Path(rulings.log_path("transcription", "x")).read_text()
+        self.write(self.rows(), prompt="another prompt")
+        blank = older.replace("Ruling: model error; the reply copies an unrelated line", "Ruling: open")
+        snap = _Files(self.files())
+        with patch.object(carry.subjects, "of_text", return_value="a" * 64):
+            for versions, want in (([blank, older], ["2"]), ([newer, older], [])):
+                srcs = [(t, f"v{i}", snap) for i, t in enumerate(versions)]
+                with patch.object(carry, "source_logs", return_value=(srcs, None)):
+                    ruled, _, left = carry.plan("transcription", "x", current=snap)
+                self.assertEqual(list(ruled), want)
+            self.assertIn(("2", "earlier ruling not carried: finding or defect"), left)
+            srcs = [(blank, "v0", snap), (older, "v1", snap)]
+            with patch.object(carry, "source_logs", return_value=(srcs, None)):
+                ruled, _, _ = carry.plan("transcription", "x", current=snap)
+            self.assertIn("(carried over from v1, review of", ruled["2"])
+
+    def test_default_sources_are_the_committed_versions_newest_first(self):
+        rel = f"{carry._dirs('reviews')[-1]}/transcription/x.md"
+        shown = {f"new:{rel}": "NEW", f"old:{rel}": "OLD"}
+
+        def git(*args):
+            if args[0] == "log":
+                return "new\nold\n"
+            return shown.get(args[1]) if args[0] == "show" else None
+        with patch.object(carry, "_git", side_effect=git):
+            srcs, why = carry.source_logs("transcription", "x", families.DEFAULT, None)
+        self.assertIsNone(why)
+        self.assertEqual([(t, l, s.rev) for t, l, s in srcs], [("NEW", f"{rel} at new", "new"), ("OLD", f"{rel} at old", "old")])
+        with patch.object(carry, "_git", return_value=""):
+            self.assertEqual(carry.source_logs("transcription", "x", families.DEFAULT, None), ([], "no source log"))
+
     def test_handles_name_lines(self):
         snap = _Files({f"forms/{rulings.Y}/x.yaml": _form("x", self.LINES + [
             {"id": "x.d", "printed": "4", "type": "Dollars", "expr": {"op": "input"}},
@@ -1842,6 +1879,102 @@ class CarryOver(unittest.TestCase):
         m1 = {"key": ("classm.x.1", "2", "$1.00", "$2.00"), "status": "DISAGREE"}
         m2 = {"key": ("classm.x.1", "2", "$1.00", "$3.00"), "status": "DISAGREE"}
         self.assertNotEqual(carry.content("classm", m1), carry.content("classm", m2))
+
+
+class CarryClosure(unittest.TestCase):
+    """carry.closure follows what a line reads as the evaluator resolves it, each part as the review kind sees it."""
+    Y = rulings.Y
+
+    def files(self, **change):
+        """A small project: form p reads a parameter, a definition instance and a sum over collection c;
+        definitions d and e share a local line id. `change` replaces a document's lines, a document's own
+        fields (`<doc>_head`) or the parameters text."""
+        lines = {
+            "p": [{"id": "p.rate", "printed": "(helper)", "type": "Rate", "label": "Rate", "expr": {"op": "param", "ref": "p.r"}},
+                  {"id": "p.inst", "printed": "1", "type": "Dollars", "label": "Line one",
+                   "expr": {"op": "copy", "from": {"def": "d", "bind": {"amount": "p.in"}, "line": "out"}}},
+                  {"id": "p.in", "printed": "(helper)", "type": "Dollars", "label": "Amount",
+                   "expr": {"op": "input", "source": "How much?"}},
+                  {"id": "p.sum", "printed": "2", "type": "Dollars", "label": "Line two",
+                   "expr": {"op": "sum_over", "collection": "c", "field": "c.amt", "where": {"op": "test", "eq": ["c.kind", {"const": True}]}}},
+                  {"id": "p.other", "printed": "3", "type": "Dollars", "label": "Line three", "expr": {"op": "copy", "from": "c.unread"}}],
+            "c": [{"id": "c.amt", "printed": "1", "type": "Dollars", "label": "Amount", "expr": {"op": "input", "source": "Amount?"}},
+                  {"id": "c.kind", "printed": "(helper)", "type": "Bool", "label": "Kind", "expr": {"op": "input", "source": "Kind?"}},
+                  {"id": "c.unread", "printed": "2", "type": "Dollars", "label": "Other", "expr": {"op": "input", "source": "Other?"}}],
+            "d": [{"id": "amount", "printed": "1", "type": "Dollars", "label": "Amount", "expr": {"op": "input", "source": "Bound."}},
+                  {"id": "out", "printed": "2", "type": "Dollars", "label": "Out", "expr": {"op": "copy", "from": "amount"}},
+                  {"id": "spare", "printed": "3", "type": "Dollars", "label": "Spare", "expr": {"op": "copy", "from": "amount"}}],
+            "e": [{"id": "out", "printed": "1", "type": "Dollars", "label": "Out", "expr": {"op": "input", "source": "Other definition."}}],
+        }
+        heads = {"p": {"kind": "form"}, "c": {"kind": "form", "collection": {"parent": None, "implicit": None}},
+                 "d": {"kind": "def", "parameters": ["amount"]}, "e": {"kind": "def", "parameters": []}}
+        for k, v in change.items():
+            if k.endswith("_head"):
+                heads[k[:-5]] = {**heads[k[:-5]], **v}
+            elif k in lines:
+                lines[k] = v
+        out = {}
+        for fid in lines:
+            wrapper = "def" if heads[fid]["kind"] == "def" else "form"
+            out[f"forms/{self.Y}/{fid}.yaml"] = yaml.safe_dump({wrapper: {"id": fid, "title": fid, **heads[fid], "lines": lines[fid]}})
+        out[f"params/{self.Y}.yaml"] = change.get("params", yaml.safe_dump(
+            {"params": {"values": {"p.r": {"value": {"num": 1, "den": 2}, "type": "Rate"}, "unused": {"value": 5}},
+                        "enums": {}}}))
+        return out
+
+    def same(self, line_id, kind="transcription", base=None, **change):
+        old, new = _Files(self.files(**(base or {}))), _Files(self.files(**{**(base or {}), **change}))
+        a = carry.closure(old, "p", old.line("p", line_id), kind=kind)
+        b = carry.closure(new, "p", new.line("p", line_id), kind=kind)
+        return a == b
+
+    def edit(self, doc, line_id, **fields):
+        lines = yaml.safe_load(self.files()[f"forms/{self.Y}/{doc}.yaml"])
+        lines = (lines.get("form") or lines.get("def"))["lines"]
+        return [{**l, **fields} if l["id"] == line_id else l for l in lines]
+
+    def test_only_the_parameters_a_line_reads(self):
+        params = yaml.safe_load(self.files()[f"params/{self.Y}.yaml"])
+        added = {**params["params"]["values"], "new_param": {"value": 1}, "unused": {"value": 6}}
+        self.assertTrue(self.same("p.rate", params=yaml.safe_dump({"params": {**params["params"], "values": added}})))
+        changed = {**params["params"]["values"], "p.r": {"value": {"num": 1, "den": 3}, "type": "Rate"}}
+        self.assertFalse(self.same("p.rate", params=yaml.safe_dump({"params": {**params["params"], "values": changed}})))
+        self.assertTrue(self.same("p.inst", params=yaml.safe_dump({"params": {**params["params"], "values": changed}})))
+
+    def test_a_definition_instance_follows_the_named_line_in_its_own_scope(self):
+        self.assertTrue(self.same("p.inst", d=self.edit("d", "spare", type="NonNegDollars")))
+        self.assertTrue(self.same("p.inst", e=self.edit("e", "out", type="NonNegDollars")))  # same local id, other def
+        self.assertFalse(self.same("p.inst", d=self.edit("d", "out", type="NonNegDollars")))
+        self.assertFalse(self.same("p.inst", d=self.edit("d", "amount", type="NonNegDollars")))  # read by out
+        self.assertFalse(self.same("p.inst", p=self.edit("p", "p.in", type="NonNegDollars")))  # the bound operand
+        self.assertFalse(self.same("p.inst", d_head={"parameters": ["amount", "spare"]}))
+
+    def test_a_collection_sum_reads_the_roster_fields_and_the_lines_it_names(self):
+        self.assertTrue(self.same("p.sum", c=self.edit("c", "c.unread", type="NonNegDollars")))
+        self.assertFalse(self.same("p.sum", c=self.edit("c", "c.amt", type="NonNegDollars")))
+        self.assertFalse(self.same("p.sum", c=self.edit("c", "c.kind", expr={"op": "input", "source": "Kind, reworded?"})))
+        self.assertFalse(self.same("p.sum", c_head={"collection": {"parent": None, "implicit": "only"}}))
+        self.assertTrue(self.same("p.inst", c_head={"collection": {"parent": None, "implicit": "only"}}))
+
+    def test_each_kind_sees_its_own_view(self):
+        reworded = self.edit("p", "p.inst", label="Line one, reworded", help="New help")
+        self.assertTrue(self.same("p.inst", "transcription", p=reworded))
+        self.assertTrue(self.same("p.inst", "classm", p=reworded))
+        self.assertFalse(self.same("p.inst", "render", p=reworded))
+        cited = self.edit("p", "p.inst", cite={"doc": "f", "locator": "p. 9"})
+        self.assertTrue(self.same("p.inst", "render", p=cited))
+        question = self.edit("p", "p.in", expr={"op": "input", "source": "How much, reworded?"})
+        self.assertFalse(self.same("p.inst", "transcription", p=question))  # an input's question is kept
+
+    def test_a_line_naming_a_whole_document_still_reads_all_of_it(self):
+        lines = self.edit("p", "p.other", note_ref="c")
+        self.assertTrue(self.same("p.other", c=self.edit("c", "c.kind", type="Count")))
+        self.assertFalse(self.same("p.other", base={"p": lines}, c=self.edit("c", "c.kind", type="Count")))
+        old = _Files(self.files(p=lines))
+        nodes = carry.closure(old, "p", old.line("p", "p.other"))
+        self.assertIn("doc c", nodes)
+        self.assertIn("line c:c.kind", nodes)
+
 
 class CompletenessPages(unittest.TestCase):
     """The pages a completeness review is given."""
