@@ -38,7 +38,9 @@ advisory only).
     and every agent run in `research/costs/agent_runs.jsonl`.
 - **Worktrees (owner decision 2026-11-07).** Agents in worktrees clone review data with
   `tools/worktree_data.py clone` and their results are carried back with `carry-back`; never copy
-  `.transcription/` by hand; missing files are added with `fill`, never copied by hand.
+  `.transcription/` by hand; missing files are added with `fill`, never copied by hand;
+  a file changed on both sides is taken from the worktree only with `carry-back --prefer-worktree`, after
+  checking which copy the committed logs were written from.
 - **Background waits (owner decision 2026-11-07).** Never wait with `pgrep -f "<pattern>"` (it matches
   the waiting shell itself, so the wait never ends) or for a marker in the log of a run that may be
   killed. Wait on a pid or poll `tools/check_all_bg.sh --status`, always with a timeout, one wait per task.

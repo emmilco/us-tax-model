@@ -11,7 +11,7 @@ into a linked worktree (an agent's) from the main worktree, and carry back what 
         copy-on-write clones of the main worktree's (cp -cR; never links), and write the clone's base:
         the hash of every untracked review-data file as cloned, and each ledger's length and hash.
         Refused when a tracked file under DATA has uncommitted changes in the worktree
-    worktree_data.py carry-back <worktree> [--main DIR] [--dry-run]
+    worktree_data.py carry-back <worktree> [--main DIR] [--dry-run] [--prefer-worktree PATH...]
         bring back into the main worktree what the worktree changed since its clone:
           ledgers (costs.jsonl): the rows the worktree appended after the clone point are appended to the
             main ledger. Refused unless the worktree's ledger and the main one both still begin with the
@@ -21,6 +21,10 @@ into a linked worktree (an agent's) from the main worktree, and carry back what 
             equal to the worktree's; a file both changed differently is a conflict, and any conflict refuses
             the whole carry-back before anything is written. A file the worktree deleted is reported, not
             deleted. Files git tracks travel with the worktree's commits and are left out
+        --prefer-worktree PATH...: repo-relative paths (globs the shell expands are fine). Each named
+          non-ledger file that is a both-changed conflict is copied from the worktree over main's instead
+          of refusing, and reported as such; a named file not in conflict is reported and handled as
+          usual; a ledger path is an error. Every other conflict still refuses
         The base then moves to what was carried, so a second carry-back brings only what came after.
     worktree_data.py fill <worktree> [--main DIR] [--dry-run]
         copy into the worktree each untracked review file the main worktree has and the worktree lacks.
@@ -264,14 +268,26 @@ def plan(main, worktree, base, skip):
     return appends, copies, conflicts, deleted
 
 
-def carry_back(main, worktree, manifest, dry_run=False, skip=None):
+def carry_back(main, worktree, manifest, dry_run=False, skip=None, prefer=()):
     if not manifest.is_file():
         raise SystemExit(f"worktree_data: no clone base for {worktree} ({manifest}); a worktree whose data was not "
                          "cloned with `worktree_data.py clone` cannot be carried back exactly")
+    prefer = [os.path.normpath(x) for x in prefer]
+    for rel in prefer:
+        if is_ledger(rel):
+            raise SystemExit(f"worktree_data: --prefer-worktree does not apply to a ledger: {rel}")
     if skip is None:
         skip = tracked(worktree) | tracked(main)
     base = json.loads(manifest.read_text())
     appends, copies, conflicts, deleted = plan(main, worktree, base, skip)
+    for rel in dict.fromkeys(prefer):
+        both = f"{rel}: changed in both the worktree and the main worktree since the clone"
+        if both in conflicts:
+            conflicts.remove(both)
+            copies.append(rel)
+            print(f"worktree_data: {rel}: changed in both; worktree copy kept (--prefer-worktree)")
+        else:
+            print(f"worktree_data: {rel}: not in conflict; --prefer-worktree has no effect on it")
     for rel in deleted:
         print(f"worktree_data: {rel} was deleted in the worktree; left in the main worktree")
     if conflicts:
@@ -353,7 +369,7 @@ def self_test():
         _self_test()
     print("worktree_data self-test: check (present, a receipt missing a file, prose left out), clone, carry-back "
           "(ledger rows with rows on both sides, changed files, tracked files left out, both-changed refusal, "
-          "rewritten ledgers, repeated carry, no base), fill (adds missing, never overwrites, skips ledgers, "
+          "rewritten ledgers, repeated carry, no base, --prefer-worktree), fill (adds missing, never overwrites, skips ledgers, "
           "dry run, carry-back after) ok")
     return 0
 
@@ -427,6 +443,25 @@ def _self_test():
         assert carry_back(main, wt, manifest, skip=skip) == 1
         assert (main / ".transcription" / LEDGER).read_text() == before
         assert (main / ".transcription" / "a.prompt.txt").read_text() == "a-other"
+        # --prefer-worktree: a named conflicting file is taken from the worktree; unnamed conflicts still
+        # refuse; a ledger name is rejected; a dry run writes nothing.
+        (main / ".transcription" / "b.prompt.txt").write_text("b-main2")
+        (wt / ".transcription" / "b.prompt.txt").write_text("b-wt")
+        a_rel, b_rel = ".transcription/a.prompt.txt", ".transcription/b.prompt.txt"
+        (main / a_rel).write_text("a-other")
+        assert carry_back(main, wt, manifest, skip=skip, prefer=[b_rel]) == 1, "an unnamed conflict still refuses"
+        assert (main / b_rel).read_text() == "b-main2"
+        try:
+            carry_back(main, wt, manifest, skip=skip, prefer=[b_rel, ".transcription/" + LEDGER])
+            raise AssertionError("a ledger was accepted")
+        except SystemExit:
+            pass
+        assert carry_back(main, wt, manifest, dry_run=True, skip=skip, prefer=[a_rel, b_rel]) == 0
+        assert (main / a_rel).read_text() == "a-other" and (main / b_rel).read_text() == "b-main2", "dry run writes nothing"
+        assert carry_back(main, wt, manifest, skip=skip, prefer=["./" + a_rel, b_rel]) == 0
+        assert (main / a_rel).read_text() == "a3" and (main / b_rel).read_text() == "b-wt", "preferred files are copied"
+        assert carry_back(main, wt, manifest, skip=skip) == 0, "a preferred file is recorded as carried"
+        (main / a_rel).write_text("a3")
         # A rewritten worktree ledger is refused; so is a rewritten main ledger.
         (main / ".transcription" / "a.prompt.txt").write_text("a3")
         good = (wt / ".transcription" / LEDGER).read_text()
@@ -483,7 +518,11 @@ def main(argv):
     ap.add_argument("worktree")
     ap.add_argument("--main", help="the main worktree (default: the clone's first worktree)")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--prefer-worktree", nargs="+", metavar="PATH", default=[],
+                    help="carry-back: take the worktree's copy of these both-changed files")
     a = ap.parse_args(argv)
+    if a.prefer_worktree and a.command != "carry-back":
+        ap.error("--prefer-worktree applies to carry-back")
     wt, main_wt, manifest = locate(Path(a.worktree), a.main)
     if a.command == "clone":
         if a.dry_run:
@@ -492,7 +531,7 @@ def main(argv):
         return 0
     if a.command == "fill":
         return fill(main_wt, wt, manifest, a.dry_run)
-    return carry_back(main_wt, wt, manifest, a.dry_run)
+    return carry_back(main_wt, wt, manifest, a.dry_run, prefer=a.prefer_worktree)
 
 
 if __name__ == "__main__":

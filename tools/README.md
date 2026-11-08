@@ -56,7 +56,11 @@ worktree's copies; `python3 tools/worktree_data.py carry-back <worktree>` (`--dr
 first) brings them back: it appends to the main `costs.jsonl` exactly the rows the
 worktree appended since the clone (refusing if either ledger no longer begins with the
 cloned one), and copies each raw file the worktree changed since the base where the
-main copy is unchanged, refusing everything if any file changed on both sides. Files git
+main copy is unchanged, refusing everything if any file changed on both sides. Naming
+such a non-ledger file after `--prefer-worktree PATH...` (repo-relative; shell globs are fine)
+copies the worktree's version over main's instead, with one report line per file; a ledger
+name is an error, a named file not in conflict is reported and handled as usual, every other
+conflict still refuses, and `--dry-run` writes nothing. Files git
 tracks are left to the worktree's commits. A worktree cloned some other way has no base
 and is refused; carry it back by hand. `python3 tools/worktree_data.py fill <worktree>`
 (`--dry-run` first; run from the main checkout) copies into the worktree each untracked
