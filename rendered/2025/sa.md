@@ -10,12 +10,53 @@
 - Expr: `{"op":"input","source":"Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
+## (helper) — `sa.gifts`
+
+- **Authored helper label:** Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:
+
+  - money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund
+  - a payment to a charity that got you something back (such as a fundraising dinner, an auction item or a membership), or that earned you a state or local tax credit
+  - property given to a charity, such as clothing, household items, a vehicle or stock, or property sold to a charity for less than its value
+  - out-of-pocket costs of volunteer work for a charity, such as mileage, parking, supplies or uniforms, or unreimbursed costs of hosting a student or a foster child placed by a charitable organization
+  - a charitable contribution shown on a Schedule K-1 from a partnership, S corporation, estate or trust
+  - expenses you paid as a whaling captain for Native Alaskan subsistence bowhead whale hunting
+  - a contribution from an earlier year (in most cases one of the five years before 2025) that was more than you could deduct that year, by either of you, on a joint or separate return; if you itemized in any of those years, check that return and any carryover worksheet or statement kept with it
+
+  A charity here is any organization that is religious, charitable, educational, scientific or literary in purpose (such as a church, a school, a nonprofit hospital, a veterans' group or a fraternal order's charitable work), one that works to prevent cruelty to children or animals, or a federal, state, local or Indian tribal government receiving a gift for public purposes; nonprofit cemetery companies and other qualified organizations count too.
+- **Encoded (Bool):** Input — Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:
+
+  - money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund
+  - a payment to a charity that got you something back (such as a fundraising dinner, an auction item or a membership), or that earned you a state or local tax credit
+  - property given to a charity, such as clothing, household items, a vehicle or stock, or property sold to a charity for less than its value
+  - out-of-pocket costs of volunteer work for a charity, such as mileage, parking, supplies or uniforms, or unreimbursed costs of hosting a student or a foster child placed by a charitable organization
+  - a charitable contribution shown on a Schedule K-1 from a partnership, S corporation, estate or trust
+  - expenses you paid as a whaling captain for Native Alaskan subsistence bowhead whale hunting
+  - a contribution from an earlier year (in most cases one of the five years before 2025) that was more than you could deduct that year, by either of you, on a joint or separate return; if you itemized in any of those years, check that return and any carryover worksheet or statement kept with it
+
+  A charity here is any organization that is religious, charitable, educational, scientific or literary in purpose (such as a church, a school, a nonprofit hospital, a veterans' group or a fraternal order's charitable work), one that works to prevent cruelty to children or animals, or a federal, state, local or Indian tribal government receiving a gift for public purposes; nonprofit cemetery companies and other qualified organizations count too.
+- Expr: `{"op":"input","source":"Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:\n\n- money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund\n- a payment to a charity that got you something back (such as a fundraising dinner, an auction item or a membership), or that earned you a state or local tax credit\n- property given to a charity, such as clothing, household items, a vehicle or stock, or property sold to a charity for less than its value\n- out-of-pocket costs of volunteer work for a charity, such as mileage, parking, supplies or uniforms, or unreimbursed costs of hosting a student or a foster child placed by a charitable organization\n- a charitable contribution shown on a Schedule K-1 from a partnership, S corporation, estate or trust\n- expenses you paid as a whaling captain for Native Alaskan subsistence bowhead whale hunting\n- a contribution from an earlier year (in most cases one of the five years before 2025) that was more than you could deduct that year, by either of you, on a joint or separate return; if you itemized in any of those years, check that return and any carryover worksheet or statement kept with it\n\nA charity here is any organization that is religious, charitable, educational, scientific or literary in purpose (such as a church, a school, a nonprofit hospital, a veterans' group or a fraternal order's charitable work), one that works to prevent cruelty to children or animals, or a federal, state, local or Indian tribal government receiving a gift for public purposes; nonprofit cemetery companies and other qualified organizations count too."}`
+- Cite: [i1040sca] p. 9, Gifts to Charity, "You can deduct contributions or gifts you gave to organizations that are religious, charitable, educational, scientific, or literary in purpose", "Certain whaling captains may be able to deduct expenses paid in 2025 for Native Alaskan subsistence bowhead whale hunting activities" and "Federal, state, and local governments if the gifts are solely for public purposes"; p. 9, Gifts from which you benefit, "If you made a gift and received a benefit in return"; p. 9, Amounts You Can Deduct, "Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.no`
+
+- **Authored helper label:** Year parameter sa.no (no)
+- **Encoded (Bool):** Enter false (sa.no).
+- Expr: `{"op":"param","ref":"sa.no"}`
+- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
 ## (helper) — `sa.charity_limited`
 
 - **Authored helper label:** Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering.
 - **Encoded (Bool):** Input — Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering.
 - Expr: `{"op":"input","source":"Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering."}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## (helper) — `sa.charity_limited_if_gifts`
+
+- **Authored helper label:** Charitable deductions are reduced by income limits or carried over from a prior year (no when you and your spouse gave nothing to charity and have no carryover)
+- **Encoded (Bool):** Choose — [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = true → helper "Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering."] [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.gifts",{"const":true}],"op":"test"},"then":"sa.charity_limited"},{"guard":{"eq":["sa.gifts",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- Cite: [i1040sca] p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction if any of the following applies"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; sha256 b0999b12)
 
 ## (helper) — `sa.excluded_income`
 
@@ -173,12 +214,19 @@
 - Expr: `{"op":"input","source":"Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits do not apply"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
-## 11 — `sa.line11`
+## (helper) — `sa.line11`
 
-- **IRS:** Deductible cash/check charitable gifts before income limits, after benefits received and required substantiation
+- **Authored helper label:** Deductible cash/check charitable gifts before income limits, after benefits received and required substantiation
 - **Encoded (NonNegDollars):** Input — Deductible cash/check charitable gifts before income limits, after benefits received and required substantiation
 - Expr: `{"op":"input","source":"Deductible cash/check charitable gifts before income limits, after benefits received and required substantiation"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+
+## 11 — `sa.line11_if_gifts`
+
+- **IRS:** Gifts by cash or check (zero when you and your spouse gave nothing to charity and have no carryover)
+- **Encoded (NonNegDollars):** Choose — [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = true → helper "Deductible cash/check charitable gifts before income limits, after benefits received and required substantiation"] [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.gifts",{"const":true}],"op":"test"},"then":"sa.line11"},{"guard":{"eq":["sa.gifts",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Cite: [f1040sa] p. 1, Gifts to Charity, line 11, "Gifts by cash or check"; i1040sca p. 10, Line 11, "Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.zero`
 
@@ -309,7 +357,7 @@
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
-- **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
@@ -319,7 +367,7 @@
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
-- **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
@@ -329,7 +377,7 @@
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
-- **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
@@ -339,7 +387,7 @@
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
-- **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
@@ -349,7 +397,7 @@
 - **IRS:** Amount from sa.zero
 - **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sales.zero".
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
-- **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"from":"sa.zero","op":"copy"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
@@ -374,7 +422,7 @@
 - **IRS:** Other—from list in instructions. List type and amount:
 - **Encoded (NonNegDollars):** Choose — [s1 helper "Any gambling winnings" = true → helper "Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b"] [s1 helper "Any gambling winnings" = false → helper "Year parameter sales.zero"]
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
-- **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"alternatives":[{"guard":{"eq":["s1.has_gambling",{"const":true}],"op":"test"},"then":"sa.line16_gambling"},{"guard":{"eq":["s1.has_gambling",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
 - Cite: [f1040sa] Schedule A (2025), line 16; i1040sca p. 11, Other Itemized Deductions, "Only the expenses listed next can be deducted on line 16" (2025; created 2025-11-20; sha256 c14acf34)
@@ -407,15 +455,22 @@
 - Expr: `{"of":["sa.line8e","sa.line9"],"op":"sum"}`
 - Cite: [f1040sa] p. 1, Interest You Paid, line 10, "Add lines 8e and 9" (2025; created 2025-11-20; sha256 c14acf34)
 
-## 12 — `sa.line12`
+## (helper) — `sa.line12_noncash`
 
-- **IRS:** Total supported noncash donations before income limits
+- **Authored helper label:** Total supported noncash donations before income limits
 - **Encoded (NonNegDollars):** Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.
-- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
-- **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
-- **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"collection":"gift","field":"gift.allowed","op":"sum_over"}`
 - Cite: [f1040sa] p. 1, Gifts to Charity, line 12, "Other than by cash or check. If you made any gift of $250 or more, see instructions" (2025; created 2025-11-20; sha256 c14acf34)
+
+## 12 — `sa.line12`
+
+- **IRS:** Total supported noncash donations before income limits (zero when you and your spouse gave nothing to charity and have no carryover)
+- **Encoded (NonNegDollars):** Choose — [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = true → helper "Total supported noncash donations before income limits"] [helper "Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:" = false → helper "Year parameter sales.zero"]
+- **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.gifts",{"const":true}],"op":"test"},"then":"sa.line12_noncash"},{"guard":{"eq":["sa.gifts",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Cite: [f1040sa] p. 1, Gifts to Charity, line 12, "Other than by cash or check. If you made any gift of $250 or more, see instructions"; i1040sca p. 10, Line 12, "Enter on line 12 the total value of your contributions of property other than by cash or check" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.form8283`
 
@@ -428,7 +483,7 @@
 
 - **IRS:** Add sa.line11, sa.line12, sa.line13
 - **Encoded (NonNegDollars):** Add line 11, line 12, and line 13.
-- Expr: `{"of":["sa.line11","sa.line12","sa.line13"],"op":"sum"}`
+- Expr: `{"of":["sa.line11_if_gifts","sa.line12","sa.line13"],"op":"sum"}`
 - Cite: [f1040sa] p. 1, Gifts to Charity, line 14, "Add lines 11 through 13" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 17 — `sa.line17`
@@ -436,7 +491,7 @@
 - **IRS:** Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
 - **Encoded (NonNegDollars):** Add line 4, line 7, line 10, line 14, line 15, and line 16.
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
-- **Refusal:** when sa.charity_limited is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
 - Expr: `{"of":["sa.line4","sa.line7","sa.line10","sa.line14","sa.line15","sa.line16"],"op":"sum"}`
 - Cite: [f1040sa] p. 1, Total Itemized Deductions, line 17, "Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e" (2025; created 2025-11-20; sha256 c14acf34)

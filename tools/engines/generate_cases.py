@@ -180,7 +180,8 @@ def gen_case(rng, i):
     noncash = min(log_uniform(rng, 10_000, 500_000), wages // 20) if itemize and rng.random() < 0.3 else 0
     inv_interest = log_uniform(rng, 10_000, 1_000_000) if itemize and rng.random() < 0.3 else 0
     inputs.update({"sa.line1": medical, "sa.line5a": salt_income, "sa.line5b": salt_re, "sa.line8a": mortgage,
-                   "sa.line11": cash_gifts, "f4952.line1": inv_interest})
+                   "sa.line11": cash_gifts, "f4952.line1": inv_interest,
+                   "sa.gifts": bool(cash_gifts or noncash), "f4952.has_interest": bool(inv_interest)})
     inputs["$gift"] = ["items"] if noncash else []
     if noncash:
         inputs.update({"gift[items].deduction": noncash, "gift[items].public_securities": False, "gift[items].special": False})

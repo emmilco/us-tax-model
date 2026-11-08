@@ -51,7 +51,7 @@ function generatedCases(data: CanonicalData, n: number): Case[] {
       "f1040.line3a": line3a,
       "sd.distributions": line7a,
       "$sales": [], "sd.other_forms": false, "sd.carryover": false,
-      "qbi.dividends":0,"div.box2b":0,"div.box2c":0,"div.box2d":0,"div.box2e":0,"div.box2f":0,"div.box3":0,"div.box9":0,"div.box10":0,"div.box13":0,"div.basis_reconciled":true, "f4952.line1": 0, "f4952.line4g": 0,
+      "qbi.dividends":0,"div.box2b":0,"div.box2c":0,"div.box2d":0,"div.box2e":0,"div.box2f":0,"div.box3":0,"div.box9":0,"div.box10":0,"div.box13":0,"div.basis_reconciled":true, "f4952.has_interest": false, "f4952.line1": 0, "f4952.line4g": 0,
       "f4952.carryover": false, "f4952.unsupported": false, "f4952.alternative_allocation": false, "$interest": [], "sb.ordinary_dividends": line3a, "sb.unsupported": false, "sb.line7a": false, "sb.fbar_required": false, "sb.form8938": false, "sb.line8": false,
     };
     inputs["$person"] = ["taxpayer"];
@@ -60,7 +60,7 @@ function generatedCases(data: CanonicalData, n: number): Case[] {
     inputs["person[taxpayer].w2[a].box1"] = Math.max(0, line15 + standard[status]! - 2 * line3a);
     inputs["scope.schedule1"] = false;
     inputs["scope.other_income"] = false;
-    inputs["sa.unsupported"] = false; inputs["sa.charity_limited"] = false; inputs["sa.excluded_income"] = false;
+    inputs["sa.unsupported"] = false; inputs["sa.gifts"] = false; inputs["sa.charity_limited"] = false; inputs["sa.excluded_income"] = false;
     inputs["sa.dependent"] = false; inputs["sa.spouse_extra"] = false; inputs["person[taxpayer].age65"] = false; inputs["person[taxpayer].blind"] = false;
     inputs["sa.spouse_itemizes"] = false; inputs["sa.elect_itemize"] = false;
     // A joint return has an entry for each spouse; the generated spouse has no income.

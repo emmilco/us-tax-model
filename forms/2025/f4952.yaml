@@ -9,9 +9,87 @@ form:
     line 4g election; otherwise lines 4g (as elected) and 8 are zero for Schedule A and the Schedule D Tax Worksheet, and
     its screens are not reached.
   lines:
-    - id: f4952.line1
+    - id: f4952.has_interest
+      printed: (helper)
+      type: Bool
+      label: |-
+        Did you or your spouse pay or accrue any interest in 2025 on money borrowed for investments (even if the interest was for an earlier period), or does either of you have investment interest expense carried forward from an earlier year? Answer Yes if any of these applies:
+
+        - interest on any loan of which any part was used to buy or hold property held for investment, such as stocks, bonds, funds, land held for appreciation, royalty interests, collectibles, cryptocurrency, a loan you made to someone else, an oil or gas working interest you do not materially participate in, or any other property held for investment; this includes brokerage margin interest, and a home equity loan, personal or family loan or credit card used that way, even if you received a Form 1098 for it
+        - interest on a loan used to buy an interest in a partnership or S corporation
+        - investment interest expense reported to you on a Schedule K-1 from a partnership or an S corporation
+        - investment interest expense disallowed in 2024 or an earlier year and not yet deducted, by either of you, on a joint or separate return (line 7 of a 2024 Form 4952, or of the latest Form 4952 filed)
+      expr:
+        op: input
+        source: |-
+          Did you or your spouse pay or accrue any interest in 2025 on money borrowed for investments (even if the interest was for an earlier period), or does either of you have investment interest expense carried forward from an earlier year? Answer Yes if any of these applies:
+
+          - interest on any loan of which any part was used to buy or hold property held for investment, such as stocks, bonds, funds, land held for appreciation, royalty interests, collectibles, cryptocurrency, a loan you made to someone else, an oil or gas working interest you do not materially participate in, or any other property held for investment; this includes brokerage margin interest, and a home equity loan, personal or family loan or credit card used that way, even if you received a Form 1098 for it
+          - interest on a loan used to buy an interest in a partnership or S corporation
+          - investment interest expense reported to you on a Schedule K-1 from a partnership or an S corporation
+          - investment interest expense disallowed in 2024 or an earlier year and not yet deducted, by either of you, on a joint or separate return (line 7 of a 2024 Form 4952, or of the latest Form 4952 filed)
+      cite:
+        doc: f4952
+        locator: p. 3, Who Must File, "you must file Form 4952 to claim a deduction for your investment interest expense"
+          and "You don’t have any carryover of disallowed investment interest expense from 2024"; p. 3, Line 1,
+          "Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to
+          property held for investment" and "Include investment interest expense reported to you on Schedule K-1 from a
+          partnership or an S corporation"; p. 3, Allocation of Interest Expense, "If you paid or accrued interest on a
+          loan and used the loan proceeds for more than one purpose, you may have to allocate the interest"; p. 3,
+          Property held for investment, "Property held for investment includes property that produces income, not
+          derived in the ordinary course of a trade or business, from interest, dividends, annuities, or royalties" and "A
+          working interest in an oil or gas property that you held directly or through an entity that didn't limit your
+          liability is property held for investment"; p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form
+          4952, line 7"
+    - id: f4952.no
+      printed: (helper)
+      type: Bool
+      label: Year parameter f4952.no (no)
+      expr:
+        op: param
+        ref: f4952.no
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.no_interest
+      printed: (helper)
+      type: NonNegDollars
+      label: Zero amount (no investment interest expense)
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+    - id: f4952.line1_if_interest
       printed: "1"
       type: NonNegDollars
+      label: Investment interest expense paid or accrued in 2025 (zero when you and your spouse have no investment
+        interest expense and no carryforward)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f4952.has_interest
+                - const: true
+            then: f4952.line1
+          - guard:
+              op: test
+              eq:
+                - f4952.has_interest
+                - const: false
+            then: f4952.no_interest
+      cite:
+        doc: f4952
+        locator: p. 3, Who Must File, "you must file Form 4952 to claim a deduction for your investment interest expense";
+          p. 3, Line 1, "Enter the investment interest expense paid or accrued during the tax year, regardless of when you
+          incurred the indebtedness"
+    - id: f4952.line1
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: f4952.line1_if_interest
       label: Investment interest paid or accrued in 2025
       expr:
         op: input
@@ -30,9 +108,34 @@ form:
           including qualified residence interest.", "Any interest expense that is capitalized, such as construction
           interest subject to section 263A." and "Interest expense, disallowed under section 264, on indebtedness with
           respect to life insurance, endowment, or annuity contracts issued after June 8, 1997"
+    - id: f4952.carryover_if_interest
+      printed: (helper)
+      type: Bool
+      label: Investment interest expense disallowed in 2024 and carried forward (no when you and your spouse have no
+        investment interest expense and no carryforward)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f4952.has_interest
+                - const: true
+            then: f4952.carryover
+          - guard:
+              op: test
+              eq:
+                - f4952.has_interest
+                - const: false
+            then: f4952.no
+      cite:
+        doc: f4952
+        locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"; p. 3, Who
+          Must File, "You don’t have any carryover of disallowed investment interest expense from 2024"
     - id: f4952.carryover
       printed: (helper)
       type: Bool
+      gated_by: f4952.carryover_if_interest
       label: Do you have investment interest expense disallowed in 2024 and carried forward (line 7 of your 2024 Form 4952)?
       expr:
         op: input
@@ -134,11 +237,11 @@ form:
               - const: true
           - op: test
             eq:
-              - f4952.carryover
+              - f4952.carryover_if_interest
               - const: true
           - op: test
             gt:
-              - f4952.line1
+              - f4952.line1_if_interest
               - const: 0
       cite:
         doc: f4952
@@ -154,13 +257,13 @@ form:
           - guard:
               op: test
               eq:
-                - f4952.carryover
+                - f4952.carryover_if_interest
                 - const: true
             then: f4952.prior_7
           - guard:
               op: test
               eq:
-                - f4952.carryover
+                - f4952.carryover_if_interest
                 - const: false
             then: f4952.zero
       cite:
@@ -188,7 +291,7 @@ form:
       expr:
         op: sum
         of:
-          - f4952.line1
+          - f4952.line1_if_interest
           - f4952.line2
       cite:
         doc: f4952
@@ -464,14 +567,14 @@ form:
           - op: test
             gt:
               - f4952.line4c
-              - f4952.line1
+              - f4952.line1_if_interest
           - op: test
             eq:
               - f4952.line5
               - const: 0
           - op: test
             eq:
-              - f4952.carryover
+              - f4952.carryover_if_interest
               - const: false
       cite:
         doc: f4952

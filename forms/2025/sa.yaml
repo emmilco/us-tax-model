@@ -17,9 +17,59 @@ form:
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
+    - id: sa.gifts
+      printed: (helper)
+      type: Bool
+      label: |-
+        Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:
+
+        - money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund
+        - a payment to a charity that got you something back (such as a fundraising dinner, an auction item or a membership), or that earned you a state or local tax credit
+        - property given to a charity, such as clothing, household items, a vehicle or stock, or property sold to a charity for less than its value
+        - out-of-pocket costs of volunteer work for a charity, such as mileage, parking, supplies or uniforms, or unreimbursed costs of hosting a student or a foster child placed by a charitable organization
+        - a charitable contribution shown on a Schedule K-1 from a partnership, S corporation, estate or trust
+        - expenses you paid as a whaling captain for Native Alaskan subsistence bowhead whale hunting
+        - a contribution from an earlier year (in most cases one of the five years before 2025) that was more than you could deduct that year, by either of you, on a joint or separate return; if you itemized in any of those years, check that return and any carryover worksheet or statement kept with it
+
+        A charity here is any organization that is religious, charitable, educational, scientific or literary in purpose (such as a church, a school, a nonprofit hospital, a veterans' group or a fraternal order's charitable work), one that works to prevent cruelty to children or animals, or a federal, state, local or Indian tribal government receiving a gift for public purposes; nonprofit cemetery companies and other qualified organizations count too.
+      expr:
+        op: input
+        source: |-
+          Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:
+
+          - money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund
+          - a payment to a charity that got you something back (such as a fundraising dinner, an auction item or a membership), or that earned you a state or local tax credit
+          - property given to a charity, such as clothing, household items, a vehicle or stock, or property sold to a charity for less than its value
+          - out-of-pocket costs of volunteer work for a charity, such as mileage, parking, supplies or uniforms, or unreimbursed costs of hosting a student or a foster child placed by a charitable organization
+          - a charitable contribution shown on a Schedule K-1 from a partnership, S corporation, estate or trust
+          - expenses you paid as a whaling captain for Native Alaskan subsistence bowhead whale hunting
+          - a contribution from an earlier year (in most cases one of the five years before 2025) that was more than you could deduct that year, by either of you, on a joint or separate return; if you itemized in any of those years, check that return and any carryover worksheet or statement kept with it
+
+          A charity here is any organization that is religious, charitable, educational, scientific or literary in purpose (such as a church, a school, a nonprofit hospital, a veterans' group or a fraternal order's charitable work), one that works to prevent cruelty to children or animals, or a federal, state, local or Indian tribal government receiving a gift for public purposes; nonprofit cemetery companies and other qualified organizations count too.
+      cite:
+        doc: i1040sca
+        locator: p. 9, Gifts to Charity, "You can deduct contributions or gifts you gave to organizations that are
+          religious, charitable, educational, scientific, or literary in purpose", "Certain whaling captains may be able to
+          deduct expenses paid in 2025 for Native Alaskan subsistence bowhead whale hunting activities" and "Federal,
+          state, and local governments if the gifts are solely for public purposes"; p. 9, Gifts from which you benefit,
+          "If you made a gift and received a benefit in return"; p. 9, Amounts You Can Deduct,
+          "Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work"; p. 11, Line
+          13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on
+          the amount you could deduct"
+    - id: sa.no
+      printed: (helper)
+      type: Bool
+      label: Year parameter sa.no (no)
+      expr:
+        op: param
+        ref: sa.no
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
     - id: sa.charity_limited
       printed: (helper)
       type: Bool
+      gated_by: sa.charity_limited_if_gifts
       label: Are any charitable deductions reduced by income limits, or carried over from a prior year?
         Determine under Publication 526 before answering.
       expr:
@@ -29,6 +79,31 @@ form:
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
+    - id: sa.charity_limited_if_gifts
+      printed: (helper)
+      type: Bool
+      label: Charitable deductions are reduced by income limits or carried over from a prior year (no when you and
+        your spouse gave nothing to charity and have no carryover)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.gifts
+                - const: true
+            then: sa.charity_limited
+          - guard:
+              op: test
+              eq:
+                - sa.gifts
+                - const: false
+            then: sa.no
+      cite:
+        doc: i1040sca
+        locator: p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction if
+          any of the following applies"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an
+          earlier year because they exceeded the limits on the amount you could deduct"
     - id: sa.excluded_income
       printed: (helper)
       type: Bool
@@ -332,8 +407,9 @@ form:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
     - id: sa.line11
-      printed: "11"
+      printed: (helper)
       type: NonNegDollars
+      gated_by: sa.line11_if_gifts
       label: Deductible cash/check charitable gifts before income limits, after benefits received and
         required substantiation
       expr:
@@ -343,6 +419,29 @@ form:
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
+    - id: sa.line11_if_gifts
+      printed: "11"
+      type: NonNegDollars
+      label: Gifts by cash or check (zero when you and your spouse gave nothing to charity and have no carryover)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.gifts
+                - const: true
+            then: sa.line11
+          - guard:
+              op: test
+              eq:
+                - sa.gifts
+                - const: false
+            then: sa.zero
+      cite:
+        doc: f1040sa
+        locator: p. 1, Gifts to Charity, line 11, "Gifts by cash or check"; i1040sca p. 10, Line 11, "Enter on line 11 the total value of gifts you made in cash or by check
+          (including out-of-pocket expenses)"
     - id: sa.zero
       printed: (helper)
       type: NonNegDollars
@@ -577,7 +676,7 @@ form:
           cite:
             doc: f1040sa
             locator: Schedule A (2025), lines 1–18
-        - when: sa.charity_limited
+        - when: sa.charity_limited_if_gifts
           form: Schedule A charitable limitation / carryover
           remedy: Income-limited and carried-over charitable deductions are outside scope.
           cite:
@@ -607,7 +706,7 @@ form:
           cite:
             doc: f1040sa
             locator: Schedule A (2025), lines 1–18
-        - when: sa.charity_limited
+        - when: sa.charity_limited_if_gifts
           form: Schedule A charitable limitation / carryover
           remedy: Income-limited and carried-over charitable deductions are outside scope.
           cite:
@@ -637,7 +736,7 @@ form:
           cite:
             doc: f1040sa
             locator: Schedule A (2025), lines 1–18
-        - when: sa.charity_limited
+        - when: sa.charity_limited_if_gifts
           form: Schedule A charitable limitation / carryover
           remedy: Income-limited and carried-over charitable deductions are outside scope.
           cite:
@@ -667,7 +766,7 @@ form:
           cite:
             doc: f1040sa
             locator: Schedule A (2025), lines 1–18
-        - when: sa.charity_limited
+        - when: sa.charity_limited_if_gifts
           form: Schedule A charitable limitation / carryover
           remedy: Income-limited and carried-over charitable deductions are outside scope.
           cite:
@@ -697,7 +796,7 @@ form:
           cite:
             doc: f1040sa
             locator: Schedule A (2025), lines 1–18
-        - when: sa.charity_limited
+        - when: sa.charity_limited_if_gifts
           form: Schedule A charitable limitation / carryover
           remedy: Income-limited and carried-over charitable deductions are outside scope.
           cite:
@@ -767,7 +866,7 @@ form:
           cite:
             doc: f1040sa
             locator: Schedule A (2025), lines 1–18
-        - when: sa.charity_limited
+        - when: sa.charity_limited_if_gifts
           form: Schedule A charitable limitation / carryover
           remedy: Income-limited and carried-over charitable deductions are outside scope.
           cite:
@@ -826,8 +925,8 @@ form:
       cite:
         doc: f1040sa
         locator: p. 1, Interest You Paid, line 10, "Add lines 8e and 9"
-    - id: sa.line12
-      printed: "12"
+    - id: sa.line12_noncash
+      printed: (helper)
       type: NonNegDollars
       label: Total supported noncash donations before income limits
       expr:
@@ -838,6 +937,31 @@ form:
         doc: f1040sa
         locator: p. 1, Gifts to Charity, line 12, "Other than by cash or check. If you made any gift of $250 or more,
           see instructions"
+    - id: sa.line12
+      printed: "12"
+      type: NonNegDollars
+      label: Total supported noncash donations before income limits (zero when you and your spouse gave nothing to
+        charity and have no carryover)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.gifts
+                - const: true
+            then: sa.line12_noncash
+          - guard:
+              op: test
+              eq:
+                - sa.gifts
+                - const: false
+            then: sa.zero
+      cite:
+        doc: f1040sa
+        locator: p. 1, Gifts to Charity, line 12, "Other than by cash or check. If you made any gift of $250 or more,
+          see instructions"; i1040sca p. 10, Line 12, "Enter on line 12 the total value of your contributions of property
+          other than by cash or check"
       refuses:
         - when: sa.unsupported
           form: Schedule A unsupported item / Form 4684
@@ -846,7 +970,7 @@ form:
           cite:
             doc: f1040sa
             locator: Schedule A (2025), lines 1–18
-        - when: sa.charity_limited
+        - when: sa.charity_limited_if_gifts
           form: Schedule A charitable limitation / carryover
           remedy: Income-limited and carried-over charitable deductions are outside scope.
           cite:
@@ -878,7 +1002,7 @@ form:
       expr:
         op: sum
         of:
-          - sa.line11
+          - sa.line11_if_gifts
           - sa.line12
           - sa.line13
       cite:
@@ -909,7 +1033,7 @@ form:
           cite:
             doc: f1040sa
             locator: Schedule A (2025), lines 1–18
-        - when: sa.charity_limited
+        - when: sa.charity_limited_if_gifts
           form: Schedule A charitable limitation / carryover
           remedy: Income-limited and carried-over charitable deductions are outside scope.
           cite:

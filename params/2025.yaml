@@ -1483,6 +1483,18 @@ params:
       cite:
         doc: i1040gi
         locator: pp. 34–35, line 12e and Standard Deduction Chart
+    sa.no:
+      type: Bool
+      value: false
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    f4952.no:
+      type: Bool
+      value: false
+      cite:
+        doc: f4952
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction
     niit.threshold:
       type: NonNegDollars
       value:

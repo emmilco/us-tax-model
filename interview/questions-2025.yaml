@@ -87,6 +87,9 @@ bank:
     order: 0
   - input: f1040.line3a
     order: 10
+  - input: f4952.has_interest
+    order: 10
+    help: Answer Yes if you are not sure; the following questions ask for the amounts, and zero is a valid answer.
   - input: f4952.line1
     order: 10
   - input: f4952.carryover
@@ -146,6 +149,9 @@ bank:
   - input: ftc.elect
     order: 10
     help: Yes if you choose to claim the foreign tax credit without filing Form 1116, with no carryover to or from this year.
+  - input: sa.gifts
+    order: 5
+    help: Answer Yes if you are not sure; the following questions ask for the amounts, and zero is a valid answer.
   - input: $gift
     order: 5
     help: Group similar items across all the organizations you gave to. Leave the list empty if there are none.
@@ -268,8 +274,8 @@ bank:
     help: Home mortgage interest and points reported to you on Form 1098, when no debt or use limit applies. Zero if none.
   - input: sa.line11
     order: 10
-    help: Charitable gifts by cash or check in 2025, before income limits, after subtracting benefits you received. Zero if
-      none.
+    help: Charitable gifts by cash or check in 2025, including out-of-pocket costs of volunteer work, before income limits,
+      after subtracting benefits you received. Zero if none.
   - input: $sales
     order: 1
     help: Enter each transaction once; the tool decides whether it goes on Form 8949 or in Schedule D aggregate reporting.

@@ -696,64 +696,6 @@
   "model": "claude-opus-5-5"
  },
  {
-  "screen": "f4952.alternative_allocation",
-  "question": "Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?",
-  "lines": [
-   "f4952.line2",
-   "f4952.election_checked",
-   "f4952.line5",
-   "f4952.required_test"
-  ],
-  "verdict": "NARROW",
-  "findings": [
-   {
-    "kind": "NARROW",
-    "situation": "A filer has deductible investment expenses other than interest, such as depreciation or depletion on investment assets or expenses reported on a partnership or S corporation K-1, and does not elect any alternative 4g allocation. They truthfully answer NO, and the tool sets line 5 to zero.",
-    "irs_text": "f4952 p. 4, Line 5: \"Investment expenses are your allowed deductions, other than interest expense, directly connected with the production of investment income. For example, depreciation or depletion allowed on assets that produce investment income is an investment expense. Include investment expenses incurred directly by you or reported to you on Schedule K-1 from a partnership, or by an S corporation...\"",
-    "why": "The question asks only about the line 4g allocation election and never mentions other investment expenses. A NO answer therefore lets line 5 default to zero, which overstates net investment income and the line 8 deduction."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer with other deductible investment expenses answers NO, and the filing-exception helper may treat them as exempt from filing even though the exception requires having no such expenses.",
-    "irs_text": "f4952 p. 3, Who Must File, Exception: \"You don't have any other deductible investment expenses.\"",
-    "why": "The tool assumes line 5 is zero, so the required_test exception can fire when the IRS text says it cannot. The screen's wording never draws out these expenses."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer who elects on line 4g to include qualified dividends in investment income, often with no line 4e net capital gain, may read the question as asking whether they are electing to treat qualified dividends as investment income, and answer YES.",
-    "irs_text": "f4952 p. 3, Line 4g: \"you can elect to include part or all of these amounts in investment income\"; p. 4 Note: \"you can treat less of the amount on line 4e as attributable to line 4g and more to line 4b... enter on the dotted line next to line 4e 'Elec.'\"",
-    "question": "Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?",
-    "why": "The wording \"allocation of line 4g to qualified dividends\" can be read as the ordinary line 4g election, which the tool computes, rather than the separate \"Elec.\" election on line 4e. Under that reading the filer answers YES and the tool refuses lines it handles correctly."
-   }
-  ],
-  "prompt_sha": "a8fc568fe0c6fb138c73c911990fb8c3ac4a62f0a6f6b1cf1d5be50e6af99327",
-  "used": [
-   {
-    "doc": "f4952",
-    "revision": "2025; created 2025-05-28",
-    "text_sha256": "efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81",
-    "pages": [
-     1,
-     2,
-     3,
-     4
-    ],
-    "how": "whole document",
-    "locators": [
-     "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
-     "pp. 1, 3–4, Investment Interest Expense Deduction"
-    ],
-    "cols_pages": [
-     3,
-     4
-    ],
-    "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
-   }
-  ],
-  "cost": 0.085372,
-  "model": "claude-opus-5-5"
- },
- {
   "screen": "f4952.carryover",
   "question": "Any prior-year disallowed investment interest carryover?",
   "lines": [
@@ -802,76 +744,6 @@
   ],
   "cost": 0,
   "model": ""
- },
- {
-  "screen": "f4952.unsupported",
-  "question": "Is any of the interest you count as investment interest paid or accrued in 2025 (line 1), or any of your 2024 carryforward, attributable to royalties, a trade or business, a passive activity, tax-exempt income, or an activity for which you aren't at risk (Form 6198); do you have any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?",
-  "lines": [
-   "f4952.line2",
-   "f4952.election_checked",
-   "f4952.line5",
-   "f4952.required_test"
-  ],
-  "verdict": "NARROW",
-  "findings": [
-   {
-    "kind": "NARROW",
-    "situation": "A filer has a loan whose proceeds went partly to personal use, such as a margin loan used partly to buy a car, and counts all of its interest as investment interest; nothing in the question makes them answer YES.",
-    "irs_text": "f4952 p. 3, Allocation of Interest Expense: \"If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest... different rules apply to investment interest, personal interest...\"",
-    "why": "The question asks only whether interest is attributable to royalties, a business, a passive activity, tax-exempt income or an at-risk activity, so mixed personal use goes unasked. The tool then puts unallocated interest into lines 2 and 3 and the filing test, even though the refusal itself says to allocate the interest."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer counts capitalized interest (section 263A) or section 264 interest on debt tied to life insurance or annuity contracts as investment interest, including in a 2024 carryforward, and truthfully answers NO.",
-    "irs_text": "f4952 p. 3, Line 1: \"Investment interest expense doesn't include ... Any interest expense that is capitalized ... Interest expense, disallowed under section 264, on indebtedness with respect to life insurance, endowment, or annuity contracts...\"",
-    "why": "The question's list of exclusions leaves out these two. A filer relying on the phrase \"interest you count as investment interest\" gets no prompt, and the tool keeps the interest in line 3 and in the required-filing test."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer whose Schedule K-1 reports portfolio investment expenses (section 212 expenses that are nondeductible miscellaneous itemized deductions in 2025) answers YES because of the K-1 example, although line 5 is correctly zero.",
-    "irs_text": "f4952 p. 4, Line 5: \"Include investment expenses ... reported to you on Schedule K-1 ... but only if you are allowed a deduction on your return for the expense ... Don't include any miscellaneous itemized deductions, which aren't allowed deductions in tax years beginning after December 31, 2017, and before January 1, 2026.\"",
-    "why": "The question's example \"investment expenses on a Schedule K-1\" brings in K-1 expenses that are not allowed deductions, so the tool's zero for line 5 would have been right."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer who pays investment advisory fees, or has depreciation on a passive rental, cannot tell whether that is a \"deductible investment expense other than interest\".",
-    "irs_text": "f4952 p. 4, Line 5: \"Investment expenses don't include any deductions used in determining your income or loss from a passive activity. Don't include any miscellaneous itemized deductions...\"",
-    "why": "The question does not say that passive-activity deductions and nondeductible miscellaneous expenses are excluded. A filer could answer YES, which is wide, or NO, which is correct."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer with mutual fund capital gain distributions, capital loss carryovers or annuity income cannot tell whether these are \"other investment income or expense beyond interest, dividends and securities sales\".",
-    "irs_text": "f4952 p. 3, Line 4d: \"When figuring this amount, include capital gain distributions from mutual funds and capital loss carryovers.\"; Line 4a: \"...from interest, ordinary dividends ..., annuities, and royalties.\"",
-    "why": "Capital gain distributions and carryovers are not literally securities sales, and annuities are not named. Some filers would answer YES even though none of these change lines 2, 5, the election or the filing test."
-   }
-  ],
-  "prompt_sha": "7407e686484f4a1ca06e68c405a344f9c7200f744fdb18b350f049d227371b3f",
-  "used": [
-   {
-    "doc": "f4952",
-    "revision": "2025; created 2025-05-28",
-    "text_sha256": "efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81",
-    "pages": [
-     1,
-     2,
-     3,
-     4
-    ],
-    "how": "whole document",
-    "locators": [
-     "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
-     "pp. 1, 3–4, Investment Interest Expense Deduction",
-     "pp. 1, 3–4, Investment Interest Expense Deduction; p. 4, Line 8, \"if any part of the interest expense is attributable to royalties, enter that part on Schedule E (Form 1040)\" and \"If any of your deductible investment interest expense is attributable to an activity for which you aren’t at risk, you must also use Form 6198\""
-    ],
-    "cols_pages": [
-     3,
-     4
-    ],
-    "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
-   }
-  ],
-  "cost": 0.121332,
-  "model": "claude-opus-5-5"
  },
  {
   "screen": "f5695.business_use",
@@ -4143,110 +4015,6 @@
   "model": "claude-opus-5-5"
  },
  {
-  "screen": "sa.charity_limited",
-  "question": "Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering.",
-  "lines": [
-   "sa.line6",
-   "sa.line8b",
-   "sa.line8c",
-   "sa.line13",
-   "sa.line15",
-   "sa.line16",
-   "sa.line12",
-   "sa.line17"
-  ],
-  "verdict": "NARROW",
-  "findings": [
-   {
-    "kind": "NARROW",
-    "situation": "A filer paid foreign income tax or generation-skipping tax on income distributions and wants to deduct it as an itemized deduction, but has no limited or carried-over charitable gifts.",
-    "irs_text": "i1040sca (2025) p. 7, Line 6: \"Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.\"",
-    "why": "The question asks only about charitable deductions, so this filer truthfully answers NO. The tool then enters zero on line 6 and understates line 17."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer paid home mortgage interest not reported on Form 1098, such as interest paid to the person from whom the home was bought, but has no limited or carried-over charitable gifts.",
-    "irs_text": "f1040sa (2025) p. 1, line 8b: \"Home mortgage interest not reported to you on Form 1098... If paid to the person from whom you bought the home, see instructions\"",
-    "why": "Mortgage interest has nothing to do with the charitable wording, so the filer answers NO. The tool then enters zero on line 8b."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer has deductible points that were not reported on Form 1098, but has no limited or carried-over charitable gifts.",
-    "irs_text": "f1040sa (2025) p. 1, line 8c: \"Points not reported to you on Form 1098. See instructions for special rules\"",
-    "why": "The charitable wording does not reach points, so the filer answers NO. The tool then enters zero on line 8c."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer has a personal casualty or theft loss from a federally declared disaster on Form 4684, line 18, but has no limited or carried-over charitable gifts.",
-    "irs_text": "i1040sca (2025) p. 11, Line 15: \"Complete and attach Form 4684 to figure the amount of your loss. Only enter the amount from Form 4684, line 18, on line 15.\"",
-    "why": "The question does not mention casualty losses, so the filer answers NO. The tool then enters zero on line 15."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer has a line 16 deduction other than gambling losses: a casualty or theft loss of income-producing property, federal estate tax on income in respect of a decedent, amortizable bond premium, or an ordinary loss on a contingent payment or inflation-indexed debt instrument.",
-    "irs_text": "i1040sca (2025) p. 11, Other Itemized Deductions: \"Casualty and theft losses of income-producing property... Federal estate tax on income in respect of a decedent... A deduction for amortizable bond premium... An ordinary loss attributable to a contingent payment debt instrument or an inflation-indexed debt instrument\"",
-    "why": "None of these items is charitable, so the filer answers NO. The tool's line 16 computes only gambling losses and omits them."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer has a net qualified disaster loss on Form 4684, line 15, whether itemizing or claiming the increased standard deduction through Schedule A.",
-    "irs_text": "i1040sca (2025) p. 11, Line 16: \"If you have a net qualified disaster loss on Form 4684, line 15, and you are itemizing your deductions, list the amount... and include with your other miscellaneous deductions on line 16\"; \"you can claim an increased standard deduction using Schedule A\"",
-    "why": "The charitable wording does not cover a disaster loss, so the filer answers NO. The tool's line 16 omits the loss, and neither of its reporting methods is computed."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer has an unused charitable contribution from more than 5 years ago, or an earlier-year carryover that the limits leave with no amount deductible this year.",
-    "irs_text": "i1040sca (2025) p. 11, Line 13: \"In most cases, you have 5 years to use contributions that were limited in an earlier year... enter the amount of your carryover that you are allowed to deduct this year.\"",
-    "why": "\"Carried over from a prior year\" could mean any leftover prior-year amount or only an amount deductible this year. A filer could answer either way, although a NO with zero on line 13 would be correct when nothing is allowed this year."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer gave appreciated property and must reduce the deduction by the ordinary income or capital gain that a sale would have produced, but is not otherwise limited by a percentage of income.",
-    "irs_text": "i1040sca (2025) p. 11, Recordkeeping: \"The cost or other basis of the property if you must reduce it by any ordinary income or capital gain that would have resulted if the property had been sold at its fair market value\"",
-    "why": "\"Reduced by income limits\" most naturally means percentage limits, but a filer could also read it to include this reduction based on ordinary income or gain. The filer could therefore answer YES or NO on the same facts."
-   }
-  ],
-  "prompt_sha": "a6fdc61edefeab935a2c622f9221de0c9c35bfdb9b67afb1ddb48c18f1aa9925",
-  "used": [
-   {
-    "doc": "f1040sa",
-    "revision": "2025; created 2025-11-20",
-    "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
-    "pages": [
-     1
-    ],
-    "how": "whole document",
-    "locators": [
-     "Schedule A (2025), line 16; Other Itemized Deductions, \"Only the expenses listed next can be deducted on line 16\"",
-     "Schedule A (2025), lines 1–18",
-     "p. 1, Gifts to Charity, line 12, \"Other than by cash or check. If you made any gift of $250 or more, see instructions\"",
-     "p. 1, Total Itemized Deductions, line 17, \"Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e\""
-    ],
-    "cols_pages": [],
-    "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
-   },
-   {
-    "doc": "i1040sca",
-    "revision": "2025; printed date 2025-12-08",
-    "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
-    "pages": [
-     7,
-     11
-    ],
-    "how": "cited pages",
-    "locators": [
-     "p. 7, State and Local Tax Deduction Worksheet"
-    ],
-    "cols_pages": [
-     11
-    ],
-    "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
-   }
-  ],
-  "cost": 0.12679200000000002,
-  "model": "claude-opus-5-5"
- },
- {
   "screen": "sa.dependent",
   "question": "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)",
   "lines": [
@@ -4307,304 +4075,6 @@
   "model": "claude-opus-5-5"
  },
  {
-  "screen": "sa.excluded_income",
-  "question": "Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?",
-  "lines": [
-   "eic.step1_foreign",
-   "f2441.line4",
-   "f2441.line5",
-   "f2441.line18",
-   "f2441.line19",
-   "f8863.line3",
-   "f8863.line14",
-   "f8880.line8",
-   "f8962.ws1_3",
-   "s1a.line2a",
-   "s8812.line2a",
-   "s8812.line2b",
-   "s8812.line2c",
-   "sa.line6",
-   "sa.line8b",
-   "sa.line8c",
-   "sa.line13",
-   "sa.line15",
-   "sa.line16",
-   "sa.line12",
-   "sa.line17",
-   "sli.line1"
-  ],
-  "verdict": "NARROW",
-  "findings": [
-   {
-    "kind": "NARROW",
-    "situation": "A filer who has no excluded income paid foreign income tax or generation-skipping tax that belongs on Schedule A, line 6.",
-    "irs_text": "\"Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.\" (i1040sca p. 7, Line 6)",
-    "why": "The question asks only about excluded income, so this filer truthfully answers NO and the tool enters zero on line 6. Paying foreign tax does not imply filing Form 2555 or having excluded income."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer who has no excluded income paid mortgage interest or points not reported on Form 1098, such as interest paid to the home's seller.",
-    "irs_text": "\"Home mortgage interest not reported to you on Form 1098\" and \"Points not reported to you on Form 1098\" (f1040sa p. 1, lines 8b and 8c)",
-    "why": "The wording has no connection to these amounts, so the filer answers NO and the tool enters zero on lines 8b and 8c."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer who has no excluded income has a charitable contribution carryover from an earlier year.",
-    "irs_text": "\"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits... In most cases, you have 5 years to use contributions that were limited in an earlier year.\" (i1040sca p. 11, Line 13)",
-    "why": "The filer truthfully answers NO because the question does not ask about carryovers, and the tool enters zero on line 13."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer who has no excluded income has a personal casualty or theft loss from a federally declared disaster.",
-    "irs_text": "\"Casualty and theft loss(es) from a federally declared disaster (other than net qualified disaster losses). Attach Form 4684 and enter the amount from line 18 of that form.\" (f1040sa p. 1, line 15)",
-    "why": "The filer truthfully answers NO because the question does not ask about casualty losses, and the tool enters zero on line 15."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer who has no excluded income has a line 16 deduction other than gambling losses, such as a net qualified disaster loss or federal estate tax on income in respect of a decedent.",
-    "irs_text": "\"Federal estate tax on income in respect of a decedent.\" and \"list the amount from Form 4684, line 15, on the dotted line next to line 16 as 'Net Qualified Disaster Loss'\" (i1040sca p. 11, Line 16)",
-    "why": "The filer truthfully answers NO, but the tool computes line 16 only from gambling losses or zero, so these deductions are dropped."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer who files Form 4563 or excludes Puerto Rico income, but does not file Form 2555, must answer YES and is refused at EIC Step 1, question 3.",
-    "irs_text": "Question: \"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\" IRS: \"Are you filing Form 2555 (relating to foreign earned income)? No. Continue\" (i1040gi p. 40, Step 1, question 3)",
-    "why": "This step turns only on Form 2555, so the correct result for this filer is the same as the computed NO result. The combined question still forces a refusal."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer who files Form 4563 or excludes Puerto Rico income, but does not file Form 2555, must answer YES and is refused on Form 2441 lines 4, 5, 18 and 19.",
-    "irs_text": "Question: \"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\" IRS: \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\" (i2441 p. 4, Lines 4 and 5)",
-    "why": "The quoted reduction names only Form 2555 and does not mention Form 4563 or Puerto Rico income. On this text, the tool's earned-income entries would need no adjustment for this filer."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer who files Form 4563 or excludes Puerto Rico income, but does not file Form 2555, must answer YES and is refused on Worksheet 1-1, line 3.",
-    "irs_text": "Question: \"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\" IRS: \"Enter any amounts from Form 2555, lines 45 and 50\" (i8962 p. 8, Worksheet 1-1, line 3)",
-    "why": "The line takes amounts only from Form 2555, so the tool's zero is correct for a filer who does not file that form."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer with excluded income must answer YES and is refused on Schedule A lines 12 and 17 even if line 5d is $10,000 or less, so the exclusion cannot change the SALT deduction.",
-    "irs_text": "Question: \"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\" IRS: \"If the amount on Schedule A, line 5d is $10,000 ($5,000 if married filing separately) or less, enter the amount from Schedule A, line 5d on Schedule A, line 5e. You don’t have to complete this worksheet.\" (i1040sca p. 7, State and Local Tax Deduction Worksheet)",
-    "why": "The cited worksheet does not use excluded income in this case, and line 12 does not depend on it in the supplied text. The refusal's stated reason, the excluded-income addback, therefore does not apply."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer excluding foreign earned income, foreign housing or American Samoa income may not recognize the bare form numbers in the question.",
-    "irs_text": "\"if you claim any exclusion or deduction for foreign earned income, foreign housing, income from Puerto Rico, or income from American Samoa\" (f8880 p. 1, line 8 footnote); \"Form 4563, Exclusion of Income for Bona Fide Residents of American Samoa\" (i8863 p. 3)",
-    "why": "The question does not say what Forms 2555 and 4563 cover, so a filer who has not prepared them could answer NO while intending to claim the exclusion. Naming the income would make the question clear."
-   }
-  ],
-  "prompt_sha": "4afc486c20482a2de3fae91aa4b45571f59f827385187bdf79949acb06768057",
-  "used": [
-   {
-    "doc": "f1040sa",
-    "revision": "2025; created 2025-11-20",
-    "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
-    "pages": [
-     1
-    ],
-    "how": "whole document",
-    "locators": [
-     "Schedule A (2025), line 16; Other Itemized Deductions, \"Only the expenses listed next can be deducted on line 16\"",
-     "Schedule A (2025), lines 1–18",
-     "p. 1, Gifts to Charity, line 12, \"Other than by cash or check. If you made any gift of $250 or more, see instructions\"",
-     "p. 1, Total Itemized Deductions, line 17, \"Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e\""
-    ],
-    "cols_pages": [],
-    "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
-   },
-   {
-    "doc": "i1040gi",
-    "revision": "2025; printed date 2026-02-25",
-    "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
-    "pages": [
-     40,
-     98,
-     99,
-     101
-    ],
-    "how": "cited pages",
-    "locators": [
-     "p. 101, Schedule 1-A, Part I, \"If you do have excluded income from Puerto Rico, or you are filing Form 2555 or 4563, complete lines 2a through 2e\"",
-     "p. 101, Schedule 1-A, Part I; Schedule 1-A (2025), line 2a (zero unless refused through sa.excluded_income)",
-     "p. 40, Step 1, question 3",
-     "p. 40, Step 1, question 3, \"Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP\"",
-     "p. 98, Schedule 1, line 21, Exception",
-     "p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 1"
-    ],
-    "cols_pages": [
-     40,
-     98,
-     101
-    ],
-    "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
-   },
-   {
-    "doc": "i2441",
-    "revision": "2025",
-    "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
-    "pages": [
-     4,
-     5
-    ],
-    "how": "cited pages",
-    "locators": [
-     "p. 4, If You or Your Spouse Was a Student or Disabled, \"Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)\"",
-     "p. 4, Lines 4 and 5, \"Enter your earned income on line 4 and your spouse's earned income on line 5\" and \"You must reduce your earned income by any loss from self-employment\"",
-     "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\"",
-     "p. 4, Lines 4 and 5, \"If filing jointly, figure your and your spouse's earned income separately\"",
-     "p. 4, Lines 4 and 5, \"Nontaxable combat pay if you elect to include it in earned income\"",
-     "p. 5, Line 18, \"Enter your earned income on line 18 and your spouse's earned income on line 19\"",
-     "p. 5, Line 18, \"You can elect to include your nontaxable combat pay in earned income when figuring your exclusion or deduction\""
-    ],
-    "cols_pages": [
-     4,
-     5
-    ],
-    "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
-   },
-   {
-    "doc": "f2441",
-    "revision": "2025; created 2025-03-18",
-    "text_sha256": "f39ca34d11c156e1ac55f4e2b5f16ef03c919773245cd7e50836e4c1555339c7",
-    "pages": [
-     1,
-     2
-    ],
-    "how": "whole document",
-    "locators": [
-     "Form 2441 (2025), line 19",
-     "Form 2441 (2025), line 5"
-    ],
-    "cols_pages": [],
-    "cols_sha256": "0e24fa891992674b84736c78565752c4a7d6f411fca4e24e5bb1307f239f60d6"
-   },
-   {
-    "doc": "p503",
-    "revision": "For use in preparing 2025 returns",
-    "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
-    "pages": [
-     11
-    ],
-    "how": "cited pages",
-    "locators": [
-     "p. 11, Surviving spouse, \"you may, but aren't required to, take into account the earned income of your spouse who died during the year\""
-    ],
-    "cols_pages": [
-     11
-    ],
-    "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9"
-   },
-   {
-    "doc": "f8863",
-    "revision": "2025",
-    "text_sha256": "8e2a766019b69e75af71e8da04f82a27534acb97f9ae4c2b72438a56d10d444e",
-    "pages": [
-     1,
-     2
-    ],
-    "how": "whole document",
-    "locators": [
-     "p. 1, Part I, line 3, \"Enter the amount from Form 1040 or 1040-SR, line 11b.\""
-    ],
-    "cols_pages": [],
-    "cols_sha256": "37bbeebd24c238e54a031ab21ac880feb5d8e9ce98f792e1b45d93e1bf8abc6c"
-   },
-   {
-    "doc": "i8863",
-    "revision": "2025",
-    "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
-    "pages": [
-     3,
-     8
-    ],
-    "how": "cited pages",
-    "locators": [
-     "p. 3, Who cannot claim a credit, \"However, if you’re filing Form 2555, Foreign Earned Income; or Form 4563, Exclusion of Income for Bona Fide Residents of American Samoa; or are excluding income from Puerto Rico, add to the amount on your Form 1040 or 1040-SR, line 11b, the amount of income you excluded.\"",
-     "p. 8, Line 14, \"Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11b.\""
-    ],
-    "cols_pages": [
-     3,
-     8
-    ],
-    "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
-   },
-   {
-    "doc": "f8880",
-    "revision": "2025; created 2025-11-04",
-    "text_sha256": "e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94",
-    "pages": [
-     1,
-     2
-    ],
-    "how": "whole document",
-    "locators": [
-     "Form 8880 (2025), line 8",
-     "Form 8880 (2025), line 8, \"* See Pub. 590-A, Contributions to Individual Retirement Arrangements, for the amount to enter if you claim any exclusion or deduction for foreign earned income, foreign housing, income from Puerto Rico, or income from American Samoa\""
-    ],
-    "cols_pages": [
-     2
-    ],
-    "cols_sha256": "e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575"
-   },
-   {
-    "doc": "i8962",
-    "revision": "2025",
-    "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
-    "pages": [
-     8
-    ],
-    "how": "cited pages",
-    "locators": [
-     "p. 8, Worksheet 1-1, line 3, \"Enter any amounts from Form 2555, lines 45 and 50\""
-    ],
-    "cols_pages": [
-     8
-    ],
-    "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
-   },
-   {
-    "doc": "f1040s8812",
-    "revision": "2025; created 2025-07-30",
-    "text_sha256": "9b38295071c42fe489ec8f93e117b31eda11355b5a95e3fe388eeee69601c8c9",
-    "pages": [
-     1,
-     2
-    ],
-    "how": "whole document",
-    "locators": [
-     "Schedule 8812 (2025), line 2a",
-     "Schedule 8812 (2025), line 2b",
-     "Schedule 8812 (2025), line 2c",
-     "Schedule 8812 (2025), lines 2a–2c"
-    ],
-    "cols_pages": [],
-    "cols_sha256": "3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9"
-   },
-   {
-    "doc": "i1040sca",
-    "revision": "2025; printed date 2025-12-08",
-    "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
-    "pages": [
-     7,
-     11
-    ],
-    "how": "cited pages",
-    "locators": [
-     "p. 7, State and Local Tax Deduction Worksheet"
-    ],
-    "cols_pages": [
-     11
-    ],
-    "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
-   }
-  ],
-  "cost": 0.467968,
-  "model": "claude-opus-5-5"
- },
- {
   "screen": "sa.spouse_extra",
   "question": "Claiming any age/blindness standard-deduction boxes for a spouse?",
   "lines": [
@@ -4648,74 +4118,6 @@
   ],
   "cost": 0,
   "model": ""
- },
- {
-  "screen": "sa.unsupported",
-  "question": "Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?",
-  "lines": [
-   "sa.line6",
-   "sa.line8b",
-   "sa.line8c",
-   "sa.line13",
-   "sa.line15",
-   "sa.line16",
-   "sa.line12",
-   "sa.line17"
-  ],
-  "verdict": "NARROW",
-  "findings": [
-   {
-    "kind": "NARROW",
-    "situation": "A filer has a charitable contribution carryover from an earlier year that is deductible in 2025, which belongs on line 13, but none of the question's categories mentions it, so the filer truthfully answers NO and line 13 is computed as zero.",
-    "irs_text": "i1040sca (2025) p. 11, Line 13: \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct. In most cases, you have 5 years to use contributions that were limited in an earlier year.\"",
-    "why": "The question lists casualty and theft losses, line 16 items, foreign and generation-skipping taxes, mortgage items, and the sales-tax election, but not charitable carryovers. The carryover is therefore dropped from lines 13 and 17 with no refusal."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer has a personal casualty or theft loss not attributable to a federally declared disaster and with no income-producing property involved, so it is not deductible and the tool's zero is correct, but the question makes the filer answer YES.",
-    "irs_text": "Question: \"Any casualty or theft loss (including a disaster loss added to the standard deduction)\". i1040sca (2025) p. 11, Line 15: \"You can only deduct personal casualty and theft losses attributable to a federally declared disaster\".",
-    "why": "\"Any casualty or theft loss\" has no disaster or income-producing limit, so it refuses a filer whose loss produces no amount on lines 15 or 16. The screen needs to reach only federally declared disaster losses, net qualified disaster losses, and income-producing property losses."
-   }
-  ],
-  "prompt_sha": "2328e5635ed9a8cb4ac54c808c19860020daf4f674ae9efaa82648b7960ef81a",
-  "used": [
-   {
-    "doc": "f1040sa",
-    "revision": "2025; created 2025-11-20",
-    "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
-    "pages": [
-     1
-    ],
-    "how": "whole document",
-    "locators": [
-     "Schedule A (2025), line 16; Other Itemized Deductions, \"Only the expenses listed next can be deducted on line 16\"",
-     "Schedule A (2025), lines 1–18",
-     "p. 1, Gifts to Charity, line 12, \"Other than by cash or check. If you made any gift of $250 or more, see instructions\"",
-     "p. 1, Total Itemized Deductions, line 17, \"Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e\""
-    ],
-    "cols_pages": [],
-    "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
-   },
-   {
-    "doc": "i1040sca",
-    "revision": "2025; printed date 2025-12-08",
-    "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
-    "pages": [
-     7,
-     11
-    ],
-    "how": "cited pages",
-    "locators": [
-     "p. 7, State and Local Tax Deduction Worksheet"
-    ],
-    "cols_pages": [
-     11
-    ],
-    "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
-   }
-  ],
-  "cost": 0.133416,
-  "model": "claude-opus-5-5"
  },
  {
   "screen": "sales.special",
@@ -6008,6 +5410,668 @@
    }
   ],
   "cost": 0.11035600000000001,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "screen": "sa.charity_limited",
+  "question": "Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering.",
+  "lines": [
+   "sa.line6",
+   "sa.line8b",
+   "sa.line8c",
+   "sa.line13",
+   "sa.line15",
+   "sa.line16",
+   "sa.line12",
+   "sa.line17"
+  ],
+  "verdict": "NARROW",
+  "findings": [
+   {
+    "kind": "NARROW",
+    "situation": "A filer gave appreciated property, such as stock held one year or less, inventory, or tangible property put to an unrelated use, whose deduction must be reduced from fair market value under Pub. 526, but whose total gifts are well under every AGI percentage limit.",
+    "irs_text": "i1040sca p. 10, Limit on the amount you can deduct: \"See Pub. 526 to figure the amount of your deduction if any of the following applies... 3. You gave gifts of property that increased in value or gave gifts of the use of property\"; p. 10, Line 12: \"Enter on line 12 the total value of your contributions of property other than by cash or check unless a limit on deducting gifts applies to you\"; p. 11, Recordkeeping: \"The cost or other basis of the property if you must reduce it by any ordinary income or capital gain that would have resulted if the property had been sold at its fair market value\"",
+    "why": "The question asks only about deductions 'reduced by income limits' or carried over, so this filer truthfully answers NO. The tool then enters the noncash donations before limits on line 12, and that amount is fair market value rather than the reduced amount the instructions require."
+   },
+   {
+    "kind": "NARROW",
+    "situation": "A filer who gave appreciated capital gain property chooses under Pub. 526 to reduce the deduction to basis so that a higher percentage limit applies.",
+    "irs_text": "i1040sca p. 11, Recordkeeping: \"How you figured your deduction if you chose to reduce your deduction for gifts of capital gain property\"",
+    "why": "This is an elective reduction, not a reduction 'by income limits', so a filer answers NO and the tool reports the unreduced value on line 12."
+   },
+   {
+    "kind": "NARROW",
+    "situation": "A filer paid foreign income taxes or generation-skipping tax and has no charitable limitation or carryover.",
+    "irs_text": "i1040sca p. 7, Line 6: \"Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions\"",
+    "why": "Line 6 is refused only by this charity screen, and the question says nothing about other taxes. The filer answers NO, and line 6 is computed as zero."
+   },
+   {
+    "kind": "NARROW",
+    "situation": "A filer has home mortgage interest not reported on Form 1098, or points not reported on Form 1098, and no charitable limitation or carryover.",
+    "irs_text": "f1040sa line 8b: \"Home mortgage interest not reported to you on Form 1098\"; line 8c: \"Points not reported to you on Form 1098. See instructions for special rules\"",
+    "why": "Lines 8b and 8c are refused only by this charity screen, which cannot catch mortgage interest. The filer answers NO, and both lines are set to zero."
+   },
+   {
+    "kind": "NARROW",
+    "situation": "A filer has a personal casualty or theft loss from a federally declared disaster and no charitable limitation or carryover.",
+    "irs_text": "f1040sa line 15: \"Casualty and theft loss(es) from a federally declared disaster (other than net qualified disaster losses). Attach Form 4684 and enter the amount from line 18 of that form\"",
+    "why": "Line 15 is refused only by this charity screen, so the filer answers NO and the loss is computed as zero."
+   },
+   {
+    "kind": "NARROW",
+    "situation": "A filer has a line 16 deduction other than gambling losses, such as a net qualified disaster loss, federal estate tax on income in respect of a decedent, or amortizable bond premium, and no charitable limitation or carryover.",
+    "irs_text": "i1040sca p. 11, Other Itemized Deductions: \"Casualty and theft losses of income-producing property... Federal estate tax on income in respect of a decedent. A deduction for amortizable bond premium...\"; p. 11: \"list the amount from Form 4684, line 15, on the dotted line next to line 16 as \\\"Net Qualified Disaster Loss\\\"\"",
+    "why": "Line 16 is refused only by this charity screen, which says nothing about these items. The filer answers NO, and line 16 then includes only gambling losses."
+   }
+  ],
+  "prompt_sha": "43beebe82355a7e08d7ffa0e16118b9efc52bb12e80804ec4294337ad05dc849",
+  "subject_sha": "c98fefa77bf361a2788500b2f9ac6cfdf7cedb438a703add48a9e3c5143f84ab",
+  "used": [
+   {
+    "doc": "f1040sa",
+    "revision": "2025; created 2025-11-20",
+    "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+    "pages": [
+     1
+    ],
+    "how": "whole document",
+    "locators": [
+     "Schedule A (2025), line 16; , Other Itemized Deductions, \"Only the expenses listed next can be deducted on line 16\"",
+     "Schedule A (2025), lines 1–18",
+     "p. 1, Gifts to Charity, line 12, \"Other than by cash or check. If you made any gift of $250 or more, see instructions\"; , Line 12, \"Enter on line 12 the total value of your contributions of property other than by cash or check\"",
+     "p. 1, Total Itemized Deductions, line 17, \"Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e\""
+    ],
+    "cols_pages": [],
+    "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+   },
+   {
+    "doc": "i1040sca",
+    "revision": "2025; printed date 2025-12-08",
+    "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+    "pages": [
+     7,
+     10,
+     11
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 7, State and Local Tax Deduction Worksheet"
+    ],
+    "cols_pages": [
+     10,
+     11
+    ],
+    "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+   }
+  ],
+  "cost": 0.109176,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "screen": "gate:sa.gifts",
+  "kind": "gate",
+  "condition": "sa.gifts",
+  "lines": [
+   "sa.charity_limited_if_gifts",
+   "sa.line11_if_gifts"
+  ],
+  "inputs": [
+   "sa.charity_limited",
+   "sa.line11"
+  ],
+  "verdict": "COVERS",
+  "findings": [
+   {
+    "kind": "WIDE",
+    "situation": "Either spouse's only 2025 payment to a charity was fully offset by goods received or by a state or local tax credit, so the gate answer is yes but neither gated line has an amount.",
+    "irs_text": "i1040sca p. 9: \"If you made a gift and received a benefit in return ... you can generally only deduct the amount that is more than the value of the benefit\"; p. 10: \"Certain contributions to charitable organizations to the extent that you receive a state or local tax credit in return for your contribution\"",
+    "why": "The gate tells the filer to answer yes for such payments, but nothing is deductible on line 11 and no limit or carryover applies. This only adds questions, which is the intended lean to yes."
+   }
+  ],
+  "prompt_sha": "c2f8acd5c363d104977970a4f8528c34a071feaa443bbbeab04b01e5c87d422e",
+  "subject_sha": "5ae0a7dcb1c5ae16c3ccbee50046b250206bb44fed2b505f0232cb662db79c25",
+  "used": [
+   {
+    "doc": "i1040sca",
+    "revision": "2025; printed date 2025-12-08",
+    "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+    "pages": [
+     9,
+     10,
+     11
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 10, Limit on the amount you can deduct, \"See Pub. 526 to figure the amount of your deduction if any of the following applies\"; p. 11, Line 13, \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct\"",
+     "p. 9, Gifts to Charity, \"You can deduct contributions or gifts you gave to organizations that are religious, charitable, educational, scientific, or literary in purpose\", \"Certain whaling captains may be able to deduct expenses paid in 2025 for Native Alaskan subsistence bowhead whale hunting activities\" and \"Federal, state, and local governments if the gifts are solely for public purposes\"; p. 9, Gifts from which you benefit, \"If you made a gift and received a benefit in return\"; p. 9, Amounts You Can Deduct, \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\"; p. 11, Line 13, \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct\""
+    ],
+    "cols_pages": [
+     9,
+     10,
+     11
+    ],
+    "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+   },
+   {
+    "doc": "f1040sa",
+    "revision": "2025; created 2025-11-20",
+    "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+    "pages": [
+     1
+    ],
+    "how": "whole document",
+    "locators": [
+     "Schedule A (2025), lines 1–18",
+     "p. 1, Gifts to Charity, line 11, \"Gifts by cash or check\"; , Line 11, \"Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)\""
+    ],
+    "cols_pages": [],
+    "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+   }
+  ],
+  "cost": 0.064056,
+  "model": "claude-opus-5-5",
+  "date": "2026-11-07"
+ },
+ {
+  "screen": "gate:f4952.has_interest",
+  "kind": "gate",
+  "condition": "f4952.has_interest",
+  "lines": [
+   "f4952.carryover_if_interest",
+   "f4952.line1_if_interest"
+  ],
+  "inputs": [
+   "f4952.carryover",
+   "f4952.line1"
+  ],
+  "verdict": "COVERS",
+  "findings": [
+   {
+    "kind": "WIDE",
+    "situation": "A filer answers yes because they borrowed to buy a partnership or S corporation interest in a trade or business where they materially participate, or in a passive activity, so the interest is business or passive interest rather than investment interest.",
+    "irs_text": "f4952 p. 3, Line 1: \"Investment interest expense doesn't include ... Interest expense that is properly allocable to a passive activity\"; p. 3, Property held for investment: \"it doesn't include an interest in a passive activity\"",
+    "why": "The gate's second bullet covers any loan used to buy a partnership or S corporation interest. Some of that interest is never line 1 investment interest, so the condition holds while both gated lines are zero."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "A filer answers yes for interest on a loan used to buy tax-exempt bonds, or for interest on a loan against a life insurance contract, and that interest is excluded from line 1.",
+    "irs_text": "f4952 p. 3, Line 1: \"Interest expense related to tax-exempt interest income under section 265\" and \"Interest expense, disallowed under section 264, on indebtedness with respect to life insurance, endowment, or annuity contracts\"",
+    "why": "The gate counts interest on any loan used for investment property, but these categories are excluded from line 1, so the gated lines stay zero."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "A filer answers yes for a carryforward from a year before 2024 that does not appear on line 7 of a 2024 Form 4952.",
+    "irs_text": "f4952 p. 1, Part I, line 2: \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+    "why": "Line 2 takes only the amount from line 7 of the 2024 Form 4952. Asking about carryforwards from the latest Form 4952 filed can produce a yes where line 2 is zero."
+   }
+  ],
+  "prompt_sha": "932540f7d1941774f3dd88bbb03e71e9aa7e6dd3b9360a415853ed0f88da2b01",
+  "subject_sha": "f1d3f8f31959bce155b578b4c50e60fa9a004593228421c2ea336cda3e6aab63",
+  "used": [
+   {
+    "doc": "f4952",
+    "revision": "2025; created 2025-05-28",
+    "text_sha256": "efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81",
+    "pages": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "how": "whole document",
+    "locators": [
+     "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+     "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"; p. 3, Who Must File, \"You don’t have any carryover of disallowed investment interest expense from 2024\"",
+     "p. 3, Who Must File, \"you must file Form 4952 to claim a deduction for your investment interest expense\" and \"You don’t have any carryover of disallowed investment interest expense from 2024\"; p. 3, Line 1, \"Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment\" and \"Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation\"; p. 3, Allocation of Interest Expense, \"If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest\"; p. 3, Property held for investment, \"Property held for investment includes property that produces income, not derived in the ordinary course of a trade or business, from interest, dividends, annuities, or royalties\" and \"A working interest in an oil or gas property that you held directly or through an entity that didn't limit your liability is property held for investment\"; p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+     "p. 3, Who Must File, \"you must file Form 4952 to claim a deduction for your investment interest expense\"; p. 3, Line 1, \"Enter the investment interest expense paid or accrued during the tax year, regardless of when you incurred the indebtedness\"",
+     "pp. 1, 3–4, Investment Interest Expense Deduction; p. 3, Allocation of Interest Expense, \"If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest.\"; p. 3, Line 1, \"Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment (as defined later).\", \"Personal interest under section 163(h), including qualified residence interest.\", \"Any interest expense that is capitalized, such as construction interest subject to section 263A.\" and \"Interest expense, disallowed under section 264, on indebtedness with respect to life insurance, endowment, or annuity contracts issued after June 8, 1997\""
+    ],
+    "cols_pages": [
+     3,
+     4
+    ],
+    "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
+   }
+  ],
+  "cost": 0.06378,
+  "model": "claude-opus-5-5",
+  "date": "2026-11-07"
+ },
+ {
+  "screen": "sa.excluded_income",
+  "question": "Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?",
+  "lines": [
+   "eic.step1_foreign",
+   "f2441.line4",
+   "f2441.line5",
+   "f2441.line18",
+   "f2441.line19",
+   "f8863.line3",
+   "f8863.line14",
+   "f8880.line8",
+   "f8962.ws1_3",
+   "s1a.line2a",
+   "s8812.line2a",
+   "s8812.line2b",
+   "s8812.line2c",
+   "sa.line6",
+   "sa.line8b",
+   "sa.line8c",
+   "sa.line13",
+   "sa.line15",
+   "sa.line16",
+   "sa.line12",
+   "sa.line17",
+   "sli.line1"
+  ],
+  "verdict": "NARROW",
+  "findings": [
+   {
+    "kind": "NARROW",
+    "situation": "A filer who moved away from Puerto Rico during 2025, after at least 2 years as a bona fide resident, still excludes Puerto Rico-source income earned during the residence period, but may truthfully answer NO because they were not a bona fide resident of Puerto Rico for 2025.",
+    "irs_text": "i8863 p. 3: \"or are excluding income from Puerto Rico, add to the amount on your Form 1040 or 1040-SR, line 11b, the amount of income you excluded\"; i1040gi p. 98: \"or you exclude income from sources within Puerto Rico\"; i1040sca p. 7: \"or excluded income from Puerto Rico\"",
+    "why": "The IRS triggers depend only on whether Puerto Rico income is being excluded, not on the filer's residence status in 2025. The question limits the trigger to income excluded \"as a bona fide resident of Puerto Rico\", so a former resident could answer NO. Schedule 8812 line 2a, Schedule 1-A line 2a, Form 8863 lines 3 and 14, Form 8880 line 8 and the student loan worksheet would then omit the excluded income."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "A filer who files only Form 4563, or who excludes Puerto Rico income without filing Form 2555, must answer YES, and the tool refuses the EIC Step 1 question 3 line, even though that IRS question asks only about Form 2555 and the computed 'No' would be correct.",
+    "irs_text": "i1040gi p. 40, Step 1, question 3: \"Are you filing Form 2555 (relating to foreign earned income)? No. Continue Yes. STOP\"",
+    "why": "The question also covers Form 4563 and Puerto Rico exclusions, which EIC Step 1 question 3 does not mention. For these filers the tool's computed answer of false is right, but the screen still refuses the line."
+   }
+  ],
+  "prompt_sha": "ce7ac5753438699b7d3538f15387c03e0d383ec44a7328bdb765123a280cd922",
+  "used": [
+   {
+    "doc": "f1040sa",
+    "revision": "2025; created 2025-11-20",
+    "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+    "pages": [
+     1
+    ],
+    "how": "whole document",
+    "locators": [
+     "Schedule A (2025), line 16; , Other Itemized Deductions, \"Only the expenses listed next can be deducted on line 16\"",
+     "Schedule A (2025), lines 1–18",
+     "p. 1, Gifts to Charity, line 12, \"Other than by cash or check. If you made any gift of $250 or more, see instructions\"; , Line 12, \"Enter on line 12 the total value of your contributions of property other than by cash or check\"",
+     "p. 1, Total Itemized Deductions, line 17, \"Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e\""
+    ],
+    "cols_pages": [],
+    "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+   },
+   {
+    "doc": "i1040gi",
+    "revision": "2025; printed date 2026-02-25",
+    "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+    "pages": [
+     40,
+     98,
+     99,
+     101
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 101, Schedule 1-A, Part I, \"If you do have excluded income from Puerto Rico, or you are filing Form 2555 or 4563, complete lines 2a through 2e\"",
+     "p. 101, Schedule 1-A, Part I; Schedule 1-A (2025), line 2a (zero unless refused through sa.excluded_income)",
+     "p. 40, Step 1, question 3",
+     "p. 40, Step 1, question 3, \"Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP\"",
+     "p. 98, Schedule 1, line 21, Exception",
+     "p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 1"
+    ],
+    "cols_pages": [
+     40,
+     98,
+     101
+    ],
+    "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   },
+   {
+    "doc": "i2441",
+    "revision": "2025",
+    "text_sha256": "361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e",
+    "pages": [
+     4,
+     5
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 4, If You or Your Spouse Was a Student or Disabled, \"Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)\"",
+     "p. 4, Lines 4 and 5, \"Enter your earned income on line 4 and your spouse's earned income on line 5\" and \"You must reduce your earned income by any loss from self-employment\"",
+     "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\"",
+     "p. 4, Lines 4 and 5, \"If filing jointly, figure your and your spouse's earned income separately\"",
+     "p. 4, Lines 4 and 5, \"Nontaxable combat pay if you elect to include it in earned income\"",
+     "p. 5, Line 18, \"Enter your earned income on line 18 and your spouse's earned income on line 19\"",
+     "p. 5, Line 18, \"You can elect to include your nontaxable combat pay in earned income when figuring your exclusion or deduction\""
+    ],
+    "cols_pages": [
+     4,
+     5
+    ],
+    "cols_sha256": "3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee"
+   },
+   {
+    "doc": "f2441",
+    "revision": "2025; created 2025-03-18",
+    "text_sha256": "f39ca34d11c156e1ac55f4e2b5f16ef03c919773245cd7e50836e4c1555339c7",
+    "pages": [
+     1,
+     2
+    ],
+    "how": "whole document",
+    "locators": [
+     "Form 2441 (2025), line 19",
+     "Form 2441 (2025), line 5"
+    ],
+    "cols_pages": [],
+    "cols_sha256": "0e24fa891992674b84736c78565752c4a7d6f411fca4e24e5bb1307f239f60d6"
+   },
+   {
+    "doc": "p503",
+    "revision": "For use in preparing 2025 returns",
+    "text_sha256": "a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607",
+    "pages": [
+     11
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 11, Surviving spouse, \"you may, but aren't required to, take into account the earned income of your spouse who died during the year\""
+    ],
+    "cols_pages": [
+     11
+    ],
+    "cols_sha256": "44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9"
+   },
+   {
+    "doc": "f8863",
+    "revision": "2025",
+    "text_sha256": "8e2a766019b69e75af71e8da04f82a27534acb97f9ae4c2b72438a56d10d444e",
+    "pages": [
+     1,
+     2
+    ],
+    "how": "whole document",
+    "locators": [
+     "p. 1, Part I, line 3, \"Enter the amount from Form 1040 or 1040-SR, line 11b.\""
+    ],
+    "cols_pages": [],
+    "cols_sha256": "37bbeebd24c238e54a031ab21ac880feb5d8e9ce98f792e1b45d93e1bf8abc6c"
+   },
+   {
+    "doc": "i8863",
+    "revision": "2025",
+    "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+    "pages": [
+     3,
+     8
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 3, Who cannot claim a credit, \"However, if you’re filing Form 2555, Foreign Earned Income; or Form 4563, Exclusion of Income for Bona Fide Residents of American Samoa; or are excluding income from Puerto Rico, add to the amount on your Form 1040 or 1040-SR, line 11b, the amount of income you excluded.\"",
+     "p. 8, Line 14, \"Generally, your MAGI is the amount on your Form 1040 or 1040-SR, line 11b.\""
+    ],
+    "cols_pages": [
+     3,
+     8
+    ],
+    "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+   },
+   {
+    "doc": "f8880",
+    "revision": "2025; created 2025-11-04",
+    "text_sha256": "e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94",
+    "pages": [
+     1,
+     2
+    ],
+    "how": "whole document",
+    "locators": [
+     "Form 8880 (2025), line 8",
+     "Form 8880 (2025), line 8, \"* See Pub. 590-A, Contributions to Individual Retirement Arrangements, for the amount to enter if you claim any exclusion or deduction for foreign earned income, foreign housing, income from Puerto Rico, or income from American Samoa\""
+    ],
+    "cols_pages": [
+     2
+    ],
+    "cols_sha256": "e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575"
+   },
+   {
+    "doc": "i8962",
+    "revision": "2025",
+    "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+    "pages": [
+     8
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 8, Worksheet 1-1, line 3, \"Enter any amounts from Form 2555, lines 45 and 50\""
+    ],
+    "cols_pages": [
+     8
+    ],
+    "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+   },
+   {
+    "doc": "f1040s8812",
+    "revision": "2025; created 2025-07-30",
+    "text_sha256": "9b38295071c42fe489ec8f93e117b31eda11355b5a95e3fe388eeee69601c8c9",
+    "pages": [
+     1,
+     2
+    ],
+    "how": "whole document",
+    "locators": [
+     "Schedule 8812 (2025), line 2a",
+     "Schedule 8812 (2025), line 2b",
+     "Schedule 8812 (2025), line 2c",
+     "Schedule 8812 (2025), lines 2a–2c"
+    ],
+    "cols_pages": [],
+    "cols_sha256": "3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9"
+   },
+   {
+    "doc": "i1040sca",
+    "revision": "2025; printed date 2025-12-08",
+    "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+    "pages": [
+     7,
+     10,
+     11
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 7, State and Local Tax Deduction Worksheet"
+    ],
+    "cols_pages": [
+     10,
+     11
+    ],
+    "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+   }
+  ],
+  "cost": 0.252376,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "screen": "sa.unsupported",
+  "question": "Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?",
+  "lines": [
+   "sa.line6",
+   "sa.line8b",
+   "sa.line8c",
+   "sa.line13",
+   "sa.line15",
+   "sa.line16",
+   "sa.line12",
+   "sa.line17"
+  ],
+  "verdict": "NARROW",
+  "findings": [
+   {
+    "kind": "NARROW",
+    "situation": "A filer has charitable contributions from an earlier year that they could not deduct because of the limits and are carrying over into 2025. None of the listed items applies to them, so they answer NO, and the tool enters zero on line 13.",
+    "irs_text": "i1040sca p. 11, Line 13, Carryover From Prior Year: \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct. In most cases, you have 5 years to use contributions that were limited in an earlier year... enter the amount of your carryover that you are allowed to deduct this year.\"",
+    "why": "The screen lists casualty and disaster losses, line 16 items, foreign and GST taxes, mortgage items, and the sales-tax election. It never mentions a charitable contribution carryover, yet line 13 is computed as zero whenever the answer is NO, so the carryover is silently dropped."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer whose Form 1098 mortgage interest may be reduced by the debt limit or the use limit cannot tell from the question whether their loan is affected.",
+    "irs_text": "f1040sa p. 1, line 8: \"If you didn't use all of your home mortgage loan(s) to buy, build, or improve your home, see instructions and check this box\"; line 8a: \"See instructions if limited\"",
+    "why": "The question says \"debt over the limit\" but gives no dollar limit and does not say whether a refinanced loan or a home equity loan counts. A filer could answer either way without knowing whether the tool's figure would be correct."
+   }
+  ],
+  "prompt_sha": "af61e0da06a2af4b3ffc419fe6cc7f5490333ef01f07c630a89251852524749b",
+  "used": [
+   {
+    "doc": "f1040sa",
+    "revision": "2025; created 2025-11-20",
+    "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+    "pages": [
+     1
+    ],
+    "how": "whole document",
+    "locators": [
+     "Schedule A (2025), line 16; , Other Itemized Deductions, \"Only the expenses listed next can be deducted on line 16\"",
+     "Schedule A (2025), lines 1–18",
+     "p. 1, Gifts to Charity, line 12, \"Other than by cash or check. If you made any gift of $250 or more, see instructions\"; , Line 12, \"Enter on line 12 the total value of your contributions of property other than by cash or check\"",
+     "p. 1, Total Itemized Deductions, line 17, \"Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e\""
+    ],
+    "cols_pages": [],
+    "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+   },
+   {
+    "doc": "i1040sca",
+    "revision": "2025; printed date 2025-12-08",
+    "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+    "pages": [
+     7,
+     10,
+     11
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 7, State and Local Tax Deduction Worksheet"
+    ],
+    "cols_pages": [
+     10,
+     11
+    ],
+    "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+   }
+  ],
+  "cost": 0.08644,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "screen": "f4952.unsupported",
+  "question": "Is any of the interest you count as investment interest paid or accrued in 2025 (line 1), or any of your 2024 carryforward, attributable to royalties, a trade or business, a passive activity, tax-exempt income, or an activity for which you aren't at risk (Form 6198); do you have any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?",
+  "lines": [
+   "f4952.line2",
+   "f4952.election_checked",
+   "f4952.line5",
+   "f4952.required_test"
+  ],
+  "verdict": "WIDE",
+  "findings": [
+   {
+    "kind": "WIDE",
+    "situation": "A filer who paid investment advisory, custodial, or other investment fees that can't be deducted in 2025 would answer YES to 'any other investment ... expense beyond interest, dividends and securities sales', yet the tool's zero line 5 is correct for them.",
+    "irs_text": "f4952 p. 4, Line 5: \"Investment expenses are your allowed deductions, other than interest expense ... Don't include any miscellaneous itemized deductions, which aren't allowed deductions in tax years beginning after December 31, 2017, and before January 1, 2026.\"",
+    "why": "The first expense clause correctly says 'deductible', but the catch-all 'any other investment income or expense' has no such limit. Fees that are not deductible never reach line 5 or the filing-exception test, so these filers are refused when they don't need to be."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer whose only gains are mutual fund capital gain distributions, or who has a capital loss carryover, cannot tell whether these are 'investment income ... beyond interest, dividends and securities sales'.",
+    "irs_text": "f4952 p. 3, Line 4d: \"When figuring this amount, include capital gain distributions from mutual funds and capital loss carryovers.\"; Line 4e: \"Capital gain distributions from mutual funds are treated as long-term capital gains.\"",
+    "why": "A capital gain distribution is not a sale and is not an ordinary dividend, so a filer could answer YES or NO. Yet these items belong to the same line 4d/4e and 4g election that the tool's validated-election line computes."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer who receives Alaska Permanent Fund dividends could read 'dividends' as including them and answer NO.",
+    "irs_text": "f4952 p. 3, Line 4a: \"from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties.\"",
+    "why": "The question treats all 'dividends' as supported. The IRS text excludes this dividend from investment income, and that changes the filing-exception comparison used in the required-filing test."
+   }
+  ],
+  "prompt_sha": "28cb69a0c93345820bcda2f107040f4739d95f8f81ff52e3e2276f269f86fa57",
+  "used": [
+   {
+    "doc": "f4952",
+    "revision": "2025; created 2025-05-28",
+    "text_sha256": "efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81",
+    "pages": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "how": "whole document",
+    "locators": [
+     "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+     "pp. 1, 3–4, Investment Interest Expense Deduction",
+     "pp. 1, 3–4, Investment Interest Expense Deduction; p. 4, Line 8, \"if any part of the interest expense is attributable to royalties, enter that part on Schedule E (Form 1040)\" and \"If any of your deductible investment interest expense is attributable to an activity for which you aren’t at risk, you must also use Form 6198\""
+    ],
+    "cols_pages": [
+     3,
+     4
+    ],
+    "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
+   }
+  ],
+  "cost": 0.070604,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "screen": "f4952.alternative_allocation",
+  "question": "Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?",
+  "lines": [
+   "f4952.line2",
+   "f4952.election_checked",
+   "f4952.line5",
+   "f4952.required_test"
+  ],
+  "verdict": "NARROW",
+  "findings": [
+   {
+    "kind": "NARROW",
+    "situation": "A filer has allowed investment expenses other than interest, such as depreciation or depletion on assets that produce investment income or deductible investment expenses reported on a Schedule K-1, and answers NO because they make no alternative 4e/4g allocation, so the tool forces line 5 to zero.",
+    "irs_text": "f4952 p. 4, Line 5: \"Investment expenses are your allowed deductions, other than interest expense, directly connected with the production of investment income. For example, depreciation or depletion allowed on assets that produce investment income is an investment expense. Include investment expenses incurred directly by you or reported to you on Schedule K-1 ...\"",
+    "why": "The question asks only about allocating line 4g between line 4e and line 4b, so nothing in it makes a filer with line 5 expenses answer YES. The tool then overstates net investment income on line 6 and the deduction on line 8."
+   },
+   {
+    "kind": "NARROW",
+    "situation": "A filer with other deductible investment expenses relies on the filing exception, which the tool's required_test evaluates without any line 5 input, and answers NO because they make no alternative allocation.",
+    "irs_text": "f4952 p. 3, Who Must File, Exception: \"You don't have to file Form 4952 if all of the following apply. ... • You don't have any other deductible investment expenses.\"",
+    "why": "Having other investment expenses defeats the exception, but nothing in the allocation question surfaces that fact. The tool may therefore wrongly conclude that the form is not required."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer whose line 4e is zero, so whose line 4g election comes only from qualified dividends, may read \"allocation of line 4g to qualified dividends\" as describing their ordinary election and answer YES, although the tool computes the default allocation correctly.",
+    "irs_text": "f4952 p. 4, Line 4g Note: \"The amount on line 4g is generally treated as being attributable first to net capital gain ... (line 4e), and then to qualified dividends (line 4b) ... However, you can treat less of the amount on line 4e as attributable to line 4g and more to line 4b ... enter on the dotted line next to line 4e \"Elec.\"\"",
+    "why": "The question \"Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?\" never mentions the \"Elec.\" entry next to line 4e. A filer could therefore take it to mean the ordinary line 4g election itself, which the tool supports, and be refused unnecessarily."
+   }
+  ],
+  "prompt_sha": "1bde45c5999cc00e311ca47a02fd06974df92cc1e609bf44106d64067b4b7a24",
+  "used": [
+   {
+    "doc": "f4952",
+    "revision": "2025; created 2025-05-28",
+    "text_sha256": "efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81",
+    "pages": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "how": "whole document",
+    "locators": [
+     "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+     "pp. 1, 3–4, Investment Interest Expense Deduction"
+    ],
+    "cols_pages": [
+     3,
+     4
+    ],
+    "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
+   }
+  ],
+  "cost": 0.059304,
   "model": "claude-opus-5-5"
  }
 ]

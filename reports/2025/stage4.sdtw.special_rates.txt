@@ -196,12 +196,28 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f2441] Form 2441 (2025), Part I, "Did you receive dependent care benefits? No. Complete only Part II below. Yes. Complete Part III on page 2 next."; i2441 p. 1, Purpose of Form (2025; created 2025-03-18; 6c3c2d19)
 
 == Form 4952 — supported investment-interest deduction and election ==
-  1   Investment interest paid or accrued in 2025
-      = $0
-      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction; p. 3, Allocation of Interest Expense, "If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest."; p. 3, Line 1, "Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment (as defined later).", "Personal interest under section 163(h), including qualified residence interest.", "Any interest expense that is capitalized, such as construction interest subject to section 263A." and "Interest expense, disallowed under section 264, on indebtedness with respect to life insurance, endowment, or annuity contracts issued after June 8, 1997" (2025; created 2025-05-28; 5113c166)
-  (helper) Do you have investment interest expense disallowed in 2024 and carried forward (line 7 of your 2024 Form 4952)?
+  (helper) Did you or your spouse pay or accrue any interest in 2025 on money borrowed for investments (even if the interest was for an earlier period), or does either of you have investment interest expense carried forward from an earlier year? Answer Yes if any of these applies:
+
+      - interest on any loan of which any part was used to buy or hold property held for investment, such as stocks, bonds, funds, land held for appreciation, royalty interests, collectibles, cryptocurrency, a loan you made to someone else, an oil or gas working interest you do not materially participate in, or any other property held for investment; this includes brokerage margin interest, and a home equity loan, personal or family loan or credit card used that way, even if you received a Form 1098 for it
+      - interest on a loan used to buy an interest in a partnership or S corporation
+      - investment interest expense reported to you on a Schedule K-1 from a partnership or an S corporation
+      - investment interest expense disallowed in 2024 or an earlier year and not yet deducted, by either of you, on a joint or separate return (line 7 of a 2024 Form 4952, or of the latest Form 4952 filed)
       = false
-      cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
+      cite: [f4952] p. 3, Who Must File, "you must file Form 4952 to claim a deduction for your investment interest expense" and "You don’t have any carryover of disallowed investment interest expense from 2024"; p. 3, Line 1, "Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment" and "Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation"; p. 3, Allocation of Interest Expense, "If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest"; p. 3, Property held for investment, "Property held for investment includes property that produces income, not derived in the ordinary course of a trade or business, from interest, dividends, annuities, or royalties" and "A working interest in an oil or gas property that you held directly or through an entity that didn't limit your liability is property held for investment"; p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
+  (helper) Year parameter f4952.no (no)
+      = false
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  (helper) Zero amount (no investment interest expense)
+      = $0
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  1   Investment interest expense paid or accrued in 2025 (zero when you and your spouse have no investment interest expense and no carryforward)
+      = $0
+      cite: [f4952] p. 3, Who Must File, "you must file Form 4952 to claim a deduction for your investment interest expense"; p. 3, Line 1, "Enter the investment interest expense paid or accrued during the tax year, regardless of when you incurred the indebtedness" (2025; created 2025-05-28; 5113c166)
+      note: taken: {"eq":["f4952.has_interest",{"const":false}],"op":"test"}
+  (helper) Investment interest expense disallowed in 2024 and carried forward (no when you and your spouse have no investment interest expense and no carryforward)
+      = false
+      cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"; p. 3, Who Must File, "You don’t have any carryover of disallowed investment interest expense from 2024" (2025; created 2025-05-28; 5113c166)
+      note: taken: {"eq":["f4952.has_interest",{"const":false}],"op":"test"}
   4g  Amount of qualified dividends and net capital gain elected into investment income (0 unless this return is filed on time, including extensions, or is an amended return filed within 6 months of the due date, excluding extensions, after a timely filed return that did not make the election)
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction; p. 4, "Generally, you must make this election on a timely filed return, including extensions." and "However, if you timely filed your return without making the election, you can make the election on an amended return filed within 6 months of the due date of your return (excluding extensions)." and "Write “Filed pursuant to section 301.9100-2” on the amended return and file it at the same place you filed the original return." (2025; created 2025-05-28; 5113c166)
@@ -1216,9 +1232,26 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any casualty or theft loss (including a disaster loss added to the standard deduction); a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); or the sales-tax election?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering.
+  (helper) Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:
+
+      - money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund
+      - a payment to a charity that got you something back (such as a fundraising dinner, an auction item or a membership), or that earned you a state or local tax credit
+      - property given to a charity, such as clothing, household items, a vehicle or stock, or property sold to a charity for less than its value
+      - out-of-pocket costs of volunteer work for a charity, such as mileage, parking, supplies or uniforms, or unreimbursed costs of hosting a student or a foster child placed by a charitable organization
+      - a charitable contribution shown on a Schedule K-1 from a partnership, S corporation, estate or trust
+      - expenses you paid as a whaling captain for Native Alaskan subsistence bowhead whale hunting
+      - a contribution from an earlier year (in most cases one of the five years before 2025) that was more than you could deduct that year, by either of you, on a joint or separate return; if you itemized in any of those years, check that return and any carryover worksheet or statement kept with it
+
+      A charity here is any organization that is religious, charitable, educational, scientific or literary in purpose (such as a church, a school, a nonprofit hospital, a veterans' group or a fraternal order's charitable work), one that works to prevent cruelty to children or animals, or a federal, state, local or Indian tribal government receiving a gift for public purposes; nonprofit cemetery companies and other qualified organizations count too.
+      = false
+      cite: [i1040sca] p. 9, Gifts to Charity, "You can deduct contributions or gifts you gave to organizations that are religious, charitable, educational, scientific, or literary in purpose", "Certain whaling captains may be able to deduct expenses paid in 2025 for Native Alaskan subsistence bowhead whale hunting activities" and "Federal, state, and local governments if the gifts are solely for public purposes"; p. 9, Gifts from which you benefit, "If you made a gift and received a benefit in return"; p. 9, Amounts You Can Deduct, "Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; b0999b12)
+  (helper) Year parameter sa.no (no)
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Charitable deductions are reduced by income limits or carried over from a prior year (no when you and your spouse gave nothing to charity and have no carryover)
+      = false
+      cite: [i1040sca] p. 10, Limit on the amount you can deduct, "See Pub. 526 to figure the amount of your deduction if any of the following applies"; p. 11, Line 13, "You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct" (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["sa.gifts",{"const":false}],"op":"test"}
   (helper) Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -1256,9 +1289,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   8a  Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits do not apply
       = $0
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  11  Deductible cash/check charitable gifts before income limits, after benefits received and required substantiation
+  11  Gifts by cash or check (zero when you and your spouse gave nothing to charity and have no carryover)
       = $0
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [f1040sa] p. 1, Gifts to Charity, line 11, "Gifts by cash or check"; i1040sca p. 10, Line 11, "Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)" (2025; created 2025-11-20; c14acf34)
+      note: taken: {"eq":["sa.gifts",{"const":false}],"op":"test"}
   (helper) Year parameter sales.zero
       = $0
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -1345,10 +1379,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   10  Add sa.line8e, sa.line9
       = $0
       cite: [f1040sa] p. 1, Interest You Paid, line 10, "Add lines 8e and 9" (2025; created 2025-11-20; c14acf34)
-  12  Total supported noncash donations before income limits
+  12  Total supported noncash donations before income limits (zero when you and your spouse gave nothing to charity and have no carryover)
       = $0
-      cite: [f1040sa] p. 1, Gifts to Charity, line 12, "Other than by cash or check. If you made any gift of $250 or more, see instructions" (2025; created 2025-11-20; c14acf34)
-      note: confirmed roster $gift:
+      cite: [f1040sa] p. 1, Gifts to Charity, line 12, "Other than by cash or check. If you made any gift of $250 or more, see instructions"; i1040sca p. 10, Line 12, "Enter on line 12 the total value of your contributions of property other than by cash or check" (2025; created 2025-11-20; c14acf34)
+      note: taken: {"eq":["sa.gifts",{"const":false}],"op":"test"}
   14  Add sa.line11, sa.line12, sa.line13
       = $0
       cite: [f1040sa] p. 1, Gifts to Charity, line 14, "Add lines 11 through 13" (2025; created 2025-11-20; c14acf34)
@@ -2048,9 +2082,19 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s1.jury_to_employer_if_pay: chose $0 (guard 1)
       not taken: guard 0 = false
+  sa.charity_limited_if_gifts: chose false (guard 1)
+      not taken: guard 0 = false
   sa.saltlimit: chose $40,000 (guard 1)
       not taken: guard 0 = false
+  f4952.carryover_if_interest: chose false (guard 1)
+      not taken: guard 0 = false
+  f4952.line1_if_interest: chose $0 (guard 1)
+      not taken: guard 0 = false
   f4952.line8: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sa.line11_if_gifts: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sa.line12: chose $0 (guard 1)
       not taken: guard 0 = false
   sa.line16: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -2269,6 +2313,8 @@ Derivations:
   household.qss_fails: test(f1040.status = single; "qss" = qss)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
   sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
+  sa.no: param(#sa.no = false)
+  sa.charity_limited_if_gifts: choose(sa.gifts = false; true = true; sa.gifts = false; false = false; sa.no = false)
   sa.agi: copy(f1040.line11b = $315,750)
   sa.zero: param(#sales.zero = $0)
   sa.agi_floor: subtract_floor0(sa.agi = $315,750; sa.zero = $0)
@@ -2285,23 +2331,28 @@ Derivations:
   sa.saltfloor_applied: larger_of(sa.saltremaining = $40,000; sa.saltfloor = $10,000)
   sa.saltlimit: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.saltfloor_applied = $40,000)
   sa.line5e: smaller_of(sa.line5d = $0; sa.saltlimit = $40,000)
-  sa.line6: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line6: copy(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; sa.zero = $0)
   sa.line7: sum(sa.line5e = $0; sa.line6 = $0)
-  sa.line8b: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
-  sa.line8c: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line8b: copy(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line8c: copy(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; sa.zero = $0)
   sa.line8e: sum(sa.line8a = $0; sa.line8b = $0; sa.line8c = $0)
   f4952.has_election: test(f4952.line4g = $0; 0 = $0)
-  f4952.used: test(f4952.has_election = false; true = true; f4952.carryover = false; true = true; f4952.line1 = $0; 0 = $0)
+  f4952.no: param(#f4952.no = false)
+  f4952.carryover_if_interest: choose(f4952.has_interest = false; true = true; f4952.has_interest = false; false = false; f4952.no = false)
+  f4952.no_interest: param(#sales.zero = $0)
+  f4952.line1_if_interest: choose(f4952.has_interest = false; true = true; f4952.has_interest = false; false = false; f4952.no_interest = $0)
+  f4952.used: test(f4952.has_election = false; true = true; f4952.carryover_if_interest = false; true = true; f4952.line1_if_interest = $0; 0 = $0)
   f4952.zero: param(#sales.zero = $0)
   f4952.line8: choose(f4952.used = false; true = true; f4952.used = false; false = false; f4952.zero = $0)
   sa.line9: copy(f4952.line8 = $0)
   sa.line10: sum(sa.line8e = $0; sa.line9 = $0)
-  sa.line12: sum_over(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false)
-  sa.line13: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
-  sa.line14: sum(sa.line11 = $0; sa.line12 = $0; sa.line13 = $0)
-  sa.line15: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
-  sa.line16: choose(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; s1.has_gambling = false; true = true; s1.has_gambling = false; false = false; sa.zero = $0)
-  sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $0; sa.line10 = $0; sa.line14 = $0; sa.line15 = $0; sa.line16 = $0)
+  sa.line11_if_gifts: choose(sa.gifts = false; true = true; sa.gifts = false; false = false; sa.zero = $0)
+  sa.line12: choose(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; sa.gifts = false; true = true; sa.gifts = false; false = false; sa.zero = $0)
+  sa.line13: copy(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line14: sum(sa.line11_if_gifts = $0; sa.line12 = $0; sa.line13 = $0)
+  sa.line15: copy(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; sa.zero = $0)
+  sa.line16: choose(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; s1.has_gambling = false; true = true; s1.has_gambling = false; false = false; sa.zero = $0)
+  sa.line17: sum(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $0; sa.line10 = $0; sa.line14 = $0; sa.line15 = $0; sa.line16 = $0)
   sa.mfs_spouse_extra: test(f1040.status = single; "mfs" = mfs)
   sa.standardbase: param(#sa.standard_base = $15,750)
   sa.extra: param(#sa.standard_extra = $2,000)

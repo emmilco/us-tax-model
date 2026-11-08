@@ -947,6 +947,36 @@
    "question_phrase": "Number of months of 2025 on the first day of which you were an eligible individual",
    "source_phrase": "If you were, or were considered, an eligible individual for the entire year",
    "reason": "f8889.all_year tests twelve eligible months, the question's count of months on whose first day the filer was an eligible individual (p. 4 rules 3 and 4 read eligibility on the first day of each month, as the question does)."
+  },
+  "consumer:sa.charity_limited@i1040sca:p10": {
+   "verdict": "same",
+   "question_phrase": "Are any charitable deductions reduced by income limits, or carried over from a prior year",
+   "source_phrase": "Limit on the amount you can deduct, \"See Pub. 526 to figure the amount of your deduction if any of the following applies\"",
+   "reason": "The question is the p. 10 income-limit condition itself, under which the tool refuses; its gate line takes it only when sa.gifts is yes."
+  },
+  "consumer:sa.gifts@i1040sca:p10": {
+   "verdict": "same",
+   "question_phrase": "make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year",
+   "source_phrase": "Limit on the amount you can deduct, \"See Pub. 526 to figure the amount of your deduction if any of the following applies\"",
+   "reason": "The limits apply only to contributions, and the gate is yes whenever there is a contribution or a carryover, so the limitation question is asked whenever a limit can apply."
+  },
+  "consumer:sa.gifts@f1040sa:p1": {
+   "verdict": "same",
+   "question_phrase": "make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year",
+   "source_phrase": "Gifts to Charity, line 11, \"Gifts by cash or check\"",
+   "reason": "Line 11 is nonzero only for gifts by cash or check, each a charitable contribution the gate's yes covers; with a no line 11 is zero."
+  },
+  "consumer:sa.unsupported@i1040sca:p10": {
+   "verdict": "same",
+   "question_phrase": "Any casualty or theft loss; a deduction from the Schedule A line 16 list other than gambling losses; a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits; or the sales-tax election",
+   "source_phrase": "Line 12, \"Enter on line 12 the total value of your contributions of property other than by cash or check\"",
+   "reason": "sa.line12 refuses on this Schedule A-wide screen as it did before the gate; p. 10 defines nothing the screen asks, and its own conditions are screened by sa.charity_limited and the gift refusals."
+  },
+  "consumer:sa.excluded_income@i1040sca:p10": {
+   "verdict": "same",
+   "question_phrase": "Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico",
+   "source_phrase": "Line 12, \"Enter on line 12 the total value of your contributions of property other than by cash or check\"",
+   "reason": "sa.line12 refuses on this Schedule A-wide screen as it did before the gate; p. 10 defines nothing the screen asks."
   }
  },
  "baseline": {
@@ -1076,7 +1106,6 @@
   "consumer:f2441.spouse_died@i2441:p4": "3ae35d4f272c7694",
   "consumer:f2441.student_disabled@i2441:p5": "8353feb14a0cf833",
   "consumer:f4952.carryover@f4952:p3": "21c998a02a237e4e",
-  "consumer:f4952.carryover@f4952:p4": "21c998a02a237e4e",
   "consumer:f5695.joint_occupancy@i5695:p7": "ab226f3fcb8aaae3",
   "consumer:f5695.part1_any@i1040s8812:p4": "6f916e366030af07",
   "consumer:f5695.part2_any@i5695:p7": "b7ae4aa4a4832688",
@@ -1197,7 +1226,6 @@
   "consumer:s8812.combat_pay@i1040gi:p95": "50fff57981f89a2b",
   "consumer:s8812.combat_pay@i2441:p4": "50fff57981f89a2b",
   "consumer:s8812.combat_pay@i2441:p5": "50fff57981f89a2b",
-  "consumer:sa.charity_limited@f1040sa:p1": "ee2aec28c729e062",
   "consumer:sa.charity_limited@i1040sca:p11": "ee2aec28c729e062",
   "consumer:sa.dependent@f8880:p2": "2c0be795eaccc311",
   "consumer:sa.dependent@i1040gi:p18": "2c0be795eaccc311",

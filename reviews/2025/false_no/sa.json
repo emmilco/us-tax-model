@@ -1,0 +1,112 @@
+{
+ "form": "sa",
+ "reviews": {
+  "gate:sa.gifts": {
+   "condition": "sa.gifts",
+   "lines": [
+    "sa.charity_limited_if_gifts",
+    "sa.line11_if_gifts"
+   ],
+   "inputs": [
+    "sa.charity_limited",
+    "sa.line11"
+   ],
+   "verdict": "UNCLEAR",
+   "findings": [
+    {
+     "kind": "UNCLEAR",
+     "pattern": "4",
+     "who": "A filer whose revocable living trust or other grantor trust wrote checks to charities in 2025. The trust issues no Schedule K-1 because its items are reported directly on the grantor's return.",
+     "why_no": "The gate names a K-1 from 'a partnership, S corporation, estate or trust' as the only way an entity's gift reaches the filer. The filer did not personally give, received no K-1, and reads the trust's gift as the trust's, not 'you or your spouse'.",
+     "line": "sa.line11_if_gifts (and sa.charity_limited_if_gifts)",
+     "irs_text": "i1040sca p. 10, Line 11: \"Enter on line 11 the total value of gifts you made in cash or by check\"; p. 9: \"You can deduct contributions or gifts you gave to organizations that are religious, charitable, educational, scientific, or literary in purpose\"",
+     "severity": "medium",
+     "fix": "Add a bullet: 'a gift made by your sole proprietorship, single-member LLC, or a trust you are treated as owning (such as a revocable living trust), even if no Schedule K-1 was issued'."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "5",
+     "who": "A sole proprietor or single-member LLC owner who paid a 2025 donation to a local nonprofit from the business bank account, or donated business inventory.",
+     "why_no": "The filer thinks of it as 'the business' giving, not 'you or your spouse'. The gate's list names a K-1 for entity gifts but nothing for a business reported on Schedule C, Schedule F or Schedule E. The business cannot deduct it, so it belongs on Schedule A.",
+     "line": "sa.line11_if_gifts (and sa.charity_limited_if_gifts)",
+     "irs_text": "i1040sca p. 9, Amounts You Can Deduct: \"Contributions can be in cash, property, or out-of-pocket expenses\"; p. 10, Line 11: \"total value of gifts you made in cash or by check\"",
+     "severity": "medium",
+     "fix": "State in the gate that gifts paid by a business you own directly (Schedule C, E or F, or a single-member LLC) count as your gifts."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "8",
+     "who": "A filer who in 2025 funded a charitable remainder trust or a pooled income fund with cash or stock, keeping an income stream for life. Or a filer who bought a charitable gift annuity.",
+     "why_no": "The filer sees a trust or annuity purchase for their own income, not a 'gift to a charity'. A charitable remainder trust is not itself one of the listed organizations, and the payment is not obviously one 'that got you something back' or a sale 'for less than its value'.",
+     "line": "sa.line11_if_gifts (and sa.charity_limited_if_gifts, since such gifts often trigger the limits)",
+     "irs_text": "i1040sca p. 9, Gifts from which you benefit: \"If you made a gift and received a benefit in return ... you can generally only deduct the amount that is more than the value of the benefit\"; p. 10, Limit on the amount you can deduct: \"You gave gifts of property that increased in value or gave gifts of the use of property\"",
+     "severity": "medium",
+     "fix": "Add a bullet: 'money or property put into a charitable remainder trust, pooled income fund or charitable gift annuity, even if you keep payments from it'."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "6",
+     "who": "A filer who gave to their church in 2025 only by bank transfer (ACH), Zelle, PayPal, Venmo, text-to-give or an online giving portal debiting a checking account.",
+     "why_no": "The money bullet lists 'cash, check, card or payroll deduction' as the methods. A literal reader may treat the list as complete and electronic transfers as excluded. The 'Answer Yes if you are not sure' help mostly mitigates this.",
+     "line": "sa.line11_if_gifts",
+     "irs_text": "i1040sca p. 10, Recordkeeping: \"For any contribution made in cash, regardless of the amount, you must maintain as a record of the contribution a bank record\"; Line 11: \"total value of gifts you made in cash or by check\"",
+     "severity": "low",
+     "fix": "Reword to 'money given to a charity by any means (cash, check, card, bank or app transfer, text-to-give or payroll deduction)'."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "1",
+     "who": "A filer who mailed a check or charged a card to a charity in late December 2025, but the check cleared or the card bill was paid in January 2026.",
+     "why_no": "The filer reads 'in 2025' by when the money left the bank account or when the card was paid, and puts the gift in 2026.",
+     "line": "sa.line11_if_gifts",
+     "irs_text": "i1040sca p. 10, Line 11: \"Enter on line 11 the total value of gifts you made in cash or by check\" (timing of the gift governs; see Pub. 526)",
+     "severity": "low",
+     "fix": "Add: 'a check mailed or a card charge made in 2025 counts as a 2025 gift even if it cleared or was paid in 2026'."
+    }
+   ],
+   "prompt_sha": "46c03cd1ba26196ce14262f27a1376c95d10639ca5113fc33bb8892636edd61e",
+   "subject_sha": "5ae0a7dcb1c5ae16c3ccbee50046b250206bb44fed2b505f0232cb662db79c25",
+   "used": [
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Limit on the amount you can deduct, \"See Pub. 526 to figure the amount of your deduction if any of the following applies\"; p. 11, Line 13, \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct\"",
+      "p. 9, Gifts to Charity, \"You can deduct contributions or gifts you gave to organizations that are religious, charitable, educational, scientific, or literary in purpose\", \"Certain whaling captains may be able to deduct expenses paid in 2025 for Native Alaskan subsistence bowhead whale hunting activities\" and \"Federal, state, and local governments if the gifts are solely for public purposes\"; p. 9, Gifts from which you benefit, \"If you made a gift and received a benefit in return\"; p. 9, Amounts You Can Deduct, \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\"; p. 11, Line 13, \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct\""
+     ],
+     "cols_pages": [
+      9,
+      10,
+      11
+     ],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    },
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule A (2025), lines 1–18",
+      "p. 1, Gifts to Charity, line 11, \"Gifts by cash or check\"; , Line 11, \"Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.155896,
+   "date": "2026-11-07"
+  }
+ }
+}

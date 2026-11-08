@@ -32,7 +32,7 @@ The themes are a proposal for the owner, recorded as `theme` in the data.
 |---|---|---|---|---|---|---|---|
 | 1 | Work as an employee, or any Form W-2 (`wages`) | 78.7% | 78.7%–80.0% | soi |  | ladder 1, $w2 | IRS SOI, single: soi-23in14ar (Table 1.4) col. 7 "Total from Form W-2 wages" |
 | 2 | Mortgage interest, property taxes or charity (`home_or_charity`) | 60.0% | 45.0%–70.0% | judgment |  | ladder 14 | Judgment. Bound: soi-23in14ar col. 135 "Total itemized deductions" 15,106,257. |
-| 3 | Gave anything to a charity in 2025, or a charitable contribution carryover (`charity`) | 40.0% | 25.0%–55.0% | judgment |  | survey B-3 | Judgment. Bound: soi-23in14ar col. 135 "Total itemized deductions" 15,106,257. |
+| 3 | Gave anything to a charity in 2025, or a charitable contribution carryover (`charity`) | 40.0% | 25.0%–55.0% | judgment |  | survey B-3, sa.gifts | Judgment. Bound: soi-23in14ar col. 135 "Total itemized deductions" 15,106,257. |
 | 4 | Received a state or local income tax refund, credit or offset (`state_refund`) | 40.0% | 25.0%–55.0% | judgment |  | ladder 8, refund.received | Judgment. Bound: soi-23in14ar col. 27 "State income tax refunds" 3,109,096. |
 | 5 | Married at the end of 2025 (`married`) | 36.6% | 36.6%–39.0% | soi |  | household.married | IRS SOI, sum: soi-23in12ms (Table 1.2) col. 13 "married persons filing jointly"; soi-23in12ms (Table 1.2) col. 25 "married persons filing separately" |
 | 6 | Contributed to a retirement plan through work (401(k), 403(b), 457, TSP) (`workplace_plan`) | 35.0% | 25.0%–45.0% | judgment |  | ladder 1b, w2.box12_any | Judgment. |
@@ -88,7 +88,7 @@ The themes are a proposal for the owner, recorded as `theme` in the data.
 | 55 | Farm or fishing income, or a Form 1099-PATR (`farm`) | 1.20% | 1.09%–1.50% | judgment | business_farm | ladder 9c | Judgment. Bound: soi-23in14ar col. 79 "Farm / Net income" 484,162; soi-23in14ar col. 81 "Farm / Net loss" 1,258,869. |
 | 56 | Credits this tool does not figure (`scope_credits`) | 1.20% | 0.91%–2.00% | judgment | other | scope.credits | Judgment. Bound: soi-23in33ar col. 18 "Other nonrefundable credits / Total" 1,467,567. |
 | 57 | Lived or worked outside the 50 states and DC, including Puerto Rico and other territories (`abroad_or_territory`) | 1.00% | 0.27%–2.00% | judgment | foreign | ladder 23 | Judgment. Bound: soi-23in14ar col. 89 "Foreign-earned income exclusion" 432,724. |
-| 58 | Interest on money borrowed to buy investments, or investment interest carried from 2024 (`investment_interest`) | 1.00% | 0.40%–2.50% | judgment | investments | survey A-1, ladder 19, f4952.line1, f4952.carryover | Judgment. |
+| 58 | Interest on money borrowed to buy investments, or investment interest carried from 2024 (`investment_interest`) | 1.00% | 0.40%–2.50% | judgment | investments | survey A-1, ladder 19, f4952.has_interest, f4952.line1, f4952.carryover | Judgment. |
 | 59 | Work for a church or religious organization, or as clergy (`religious_work`) | 1.00% | 0.40%–2.00% | judgment | work_pay | ladder 21 | Judgment. |
 | 60 | Schedule A items this tool does not prepare (casualty, gambling losses, other deductions) (`schedule_a_other`) | 1.00% | 0.30%–2.00% | judgment | other | sa.unsupported | Judgment. |
 | 61 | Residential clean energy property (Form 5695 Part I) or a carryforward (`clean_energy_part1`) | 0.92% | 0.92%–1.50% | soi | home_vehicle | f5695.part1_any | IRS SOI, single: soi-23in33ar (Table 3.3) col. 14 "Residential clean energy credit" |

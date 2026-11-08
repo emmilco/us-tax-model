@@ -4,21 +4,32 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-17 |
+| date | 2026-11-07 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| subject sha256 | 8ce552f47e83584578078f7759ba6a1c98f03295892eca579f1090e69a131037 |
+| prompt policy | worked-values-request-bound-v2 |
+| system sha256 | 18ff9cfe094eedd0548bba02012b0ebf2a58d0606e834e3633432585b4192cb7 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 9024d481239237bda5225b1583163c20a5b9f0919a489744222d261ef6f35f6d |
 | cases | 1 |
 
 ## Source pages given to the model
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i8283 | December 2025; printed date 2026-01-30 | 1, 2, 3 | cited pages | cd582a9f231564c755d552a21d937b33e24df8b9fe65f4f823b7c9eca9dfe1ad | 1, 2, 3 | 53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7 |
+| i8283 | December 2025; printed date 2026-01-30 | 1, 2, 3, 9 | cited pages | cd582a9f231564c755d552a21d937b33e24df8b9fe65f4f823b7c9eca9dfe1ad | 1, 2, 3, 9 | 53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7 |
+| i1040sca | 2025; printed date 2025-12-08 | 11 | pages named by another document's citation | 18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b | 11 | 5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c |
+| f8283 | December 2025; created 2025-07-01 | 1, 2 | whole document | d33f4c2762c7366b560ae700f7c403b698b6567187a94eb4f7943b3ab6c20219 | - | 2a4ef5ee41c489f0de7f68915540d45a11937f39759f0c9ffb0f326461ee9320 |
 
 ## Lines
 
-### case classm.gift.1 — prompt sha256 078fb5ed76d23ec9268090e3c9b63f9eeeaa24f9301478b059df2ca3d622e5c2; branches: gift.public_securities:false, gift.public_securities:true, gift.special:false, gift.section_b:false
+### case classm.gift.1 — prompt sha256 d1c87fa208f80bf82e9fee9863a1dab5f96850fa64d72c3ced32ceb2c1f1c0c8; branches: gift.public_securities:true, gift.special:false, gift.over_5000:false, gift.over_5000:true, gift.not_public:false, gift.no:false, gift.section_b#0, gift.section_b#1, gift.section_b:false
+
+### classm.gift.1 — gift[item_a].over_5000 — The deduction for this item or group is more than $5,000
+Status: **AGREE**
+
+Value: no
 
 ### classm.gift.1 — gift[item_a].section_b — Appraisal threshold: non-publicly-traded group over $5,000
 Status: **AGREE**
@@ -28,7 +39,17 @@ Value: no
 ### classm.gift.1 — gift[item_a].allowed — Amount from gift.deduction
 Status: **AGREE**
 
-Value: $4,087.00
+Value: $854.00
+
+### classm.gift.1 — gift[item_b].over_5000 — The deduction for this item or group is more than $5,000
+Status: **AGREE**
+
+Value: yes
+
+### classm.gift.1 — gift[item_b].not_public — This group is not publicly traded securities
+Status: **AGREE**
+
+Value: no
 
 ### classm.gift.1 — gift[item_b].section_b — Appraisal threshold: non-publicly-traded group over $5,000
 Status: **AGREE**
@@ -38,7 +59,7 @@ Value: no
 ### classm.gift.1 — gift[item_b].allowed — Amount from gift.deduction
 Status: **AGREE**
 
-Value: $0.00
+Value: $15,877.00
 
 ## Raw responses
 
@@ -46,16 +67,25 @@ Value: $0.00
 
 ```yaml
 lines:
+  - printed: "gift[item_a].over_5000"
+    value: "no"
+    work: "Deduction $854.00 is not more than $5,000"
   - printed: "gift[item_a].section_b"
     value: "no"
-    work: "Not publicly traded, no special treatment; deduction $4,087.00 is not more than $5,000, so Section A (i8283 Which Sections To Complete)"
+    work: "Deduction is $5,000 or less and no special-treatment item applies, so Section A (i8283 Which Sections To Complete)"
   - printed: "gift[item_a].allowed"
-    value: "4087.00"
-    work: "Deduction before income limits as given = $4,087.00"
+    value: "854.00"
+    work: "Deduction before income limits, as given = $854.00"
+  - printed: "gift[item_b].over_5000"
+    value: "yes"
+    work: "Deduction $15,877.00 is more than $5,000"
+  - printed: "gift[item_b].not_public"
+    value: "no"
+    work: "Filer answered that the group is publicly traded securities"
   - printed: "gift[item_b].section_b"
     value: "no"
-    work: "Publicly traded securities go in Section A regardless of amount; deduction $0.00 is also not over $5,000"
+    work: "Publicly traded securities go in Section A even if over $5,000 (i8283 Section A item 2a-c)"
   - printed: "gift[item_b].allowed"
-    value: "0.00"
-    work: "Deduction before income limits as given = $0.00"
+    value: "15877.00"
+    work: "Deduction before income limits, as given = $15,877.00"
 ```

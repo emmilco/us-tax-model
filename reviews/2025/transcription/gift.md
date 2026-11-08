@@ -37,7 +37,7 @@ Second transcription of `Form 8283 — groups of similar noncash property` by an
 
 ### gift.allowed — Amount from gift.deduction
 Status: **AGREE**
-Reviewed in: pass f5b4b175109a
+Reviewed in: pass d7ceb90c4529
 
 ## Refusal gates listed by the second transcription
 
@@ -45,7 +45,7 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| gift.allowed | gift.h_over_5000_unflagged, gift.special | gift.h_over_5000_unflagged |
+| gift.allowed | gift.special | - |
 
 ## Line subjects
 
@@ -53,7 +53,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| gift.allowed | 9f6d6615d42b166da141ae78c5a205745c428e73b54142a7072ce3730fb0622f |
+| gift.allowed | 892b8bb69a3ddd4fea578dee516127d3fd6fc167c104ce8ea1dff4a311b712d8 |
 | (rest of the document) | ddbcf2f1a297aa931cad1239e9a5fd1dd8e5972b3c96439aab19e487bc291084 |
 
 ## Foreign interfaces
@@ -62,13 +62,13 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 
 | line | foreign interfaces sha256 |
 | --- | --- |
-| gift.allowed | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| gift.allowed | 71ba755c3f0ee0c5fda98953eae22277a49edb26047a976720966e420f659adb |
 
 ## Line-scoped reviews
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass f5b4b175109a
+#### Pass d7ceb90c4529
 
 | field | value |
 | --- | --- |
@@ -76,7 +76,7 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 | review scope | lines gift.allowed |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | f5b4b175109a4188f5f92f4e8bcea323edab5f54e28f81653f8466237de6b6e2 |
+| prompt sha256 | d7ceb90c452962ccbfdfc36c28b98a8b94d30bbbfdd662b7791041be25d8e559 |
 | prompt policy | source-only-computation-v3+lines-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
@@ -88,7 +88,7 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 701abacdf2425bb06de743729df7d04bbbad2be98671821a098b1193c185f06e |
+| subject sha256 | 8bfbd2c94621f6a1080c62e0db7839a4ae0d6cfa0e0fa551c1b8702214bc4d17 |
 | receipt | .transcription/gift.lines-81339da9de9f |
 | printed lines compared | 1 |
 | agree / disagree / missing | 1 / 0 / 0 |
@@ -121,31 +121,13 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 ```yaml
 ```yaml
 lines:
-  - id: gift.h_over_5000_unflagged
-    printed: "(helper)"
-    label: "Consistency check: the deduction for this item or group of similar items is more than $5,000, the group is not publicly traded securities, and it was not reported as needing an appraisal (Section B)"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - op: test
-          gt: [gift.deduction, {const: 500000}]
-        - op: test
-          eq: [gift.public_securities, {const: false}]
-        - op: test
-          eq: [gift.special, {const: false}]
-    note: "i8283 'Which Sections To Complete' and 'Section B': a deduction of more than $5,000 for an item or group of similar items, counting all donees together and other than publicly traded securities, belongs in Section B and needs a qualified appraisal. The gift.special question covers this case, so a 'No' answer together with such a deduction is contradictory. This line flags that contradiction and does not compute anything."
   - id: gift.allowed
     printed: "(helper)"
-    label: "Amount of your deduction for this noncash contribution (item or group of similar items), before applying any income limits"
+    label: "Amount of your deduction for this item or group of similar items (before applying any income limits that could result in a carryover), after required reductions"
     type: NonNegDollars
-    expr:
-      op: copy
-      from: gift.deduction
-    refuses:
-      - gift.special
-      - {when: gift.h_over_5000_unflagged, when_known: true}
-    note: "Form 8283 is not used to figure the deduction ('do not use Form 8283 to figure your charitable contribution deduction'). The figure it reports is the 'amount of your deduction' before income limits, after the required reductions to the contribution. That figure is the supplied gift.deduction. Clothing and household items not in good used condition, and gifts of $250 or more without a contemporaneous written acknowledgment, are already excluded by that input's definition (i1040sca). Groups that need Section B, an appraisal or other special treatment are refused through gift.special. Publicly traded securities are reported in Section A at any amount, so gift.public_securities does not change the amount; it is used only in the consistency check. Income limits and carryovers belong to Schedule A and Pub. 526 (screened by sa.charity_limited), not to this per-group result. Open point: the interface name 'allowed' could mean a figure after income limits. The pages do not support that, so the before-limits amount was chosen."
+    expr: {op: copy, from: gift.deduction}
+    refuses: [gift.special]
+    note: "Open point: the i8283 text says not to use Form 8283 to figure the charitable contribution deduction. It sends the filer to the tax return instructions and Pub. 526 for that. Reading chosen: this entry's allowed amount is its deduction before income limits, already reduced as required (gift.deduction). The supplied input already leaves out clothing and household items not in good used condition and gifts of $250 or more without a contemporaneous written acknowledgment. Groups needing Section B treatment (an appraisal, a deduction over $5,000 other than publicly traded securities, vehicles, intellectual property, inventory, partial or restricted interests, K-1 contributions, or a clothing or household item over $500 not in good used condition) are refused through gift.special. Publicly traded securities go in Section A in any amount and need no appraisal, so gift.public_securities does not change the amount. Income limits and carryovers are not applied here; they belong to Schedule A and Pub. 526 (screened by sa.charity_limited)."
 ```
 ```
 

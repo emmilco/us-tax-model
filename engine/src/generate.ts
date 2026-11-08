@@ -131,7 +131,7 @@ const EARLY_SET = new Set(EARLY_ROOTS);
 // the household draw); the EIC SSN (the same as the employment-valid SSN); the filer's age under 16; a prior credit
 // disallowance; a community property state; a registered domestic partnership; a spouse's death in 2025; a marriage
 // ended in 2025 in a community property state; the qualifying surviving spouse tests (met, so a drawn qss status stays
-// valid).
+// valid); the charitable-gifts and investment-interest gates (yes when a drawn answer they gate is not none).
 const FIXED = new Set([
   "s1.alimony", "s1.alimony_received", "s1.alimony_paid", "s1.alimony_unsupported", "s1.cod_any", "s1.cod_amount", "s1.cod_unsupported",
   `${HSA}.line14a`, `${HSA}.rollover`, `${HSA}.medical`, `${HSA}.line17a`, `${HSA}.subject_part`,
@@ -139,7 +139,7 @@ const FIXED = new Set([
   "household.cp_married", "household.qss_eligible", "eic.died_2025",
   "person[taxpayer].eic_ssn", "person[taxpayer].under16",
   "clcw.spouse_screen", "clcw.prior_11", "clcw.prior_14", "clcw.prior_sd7", "clcw.prior_sd15", "clcw.prior_sd21",
-  "f4952.prior_7", "f8960.prior_2i",
+  "f4952.prior_7", "f8960.prior_2i", "sa.gifts", "f4952.has_interest",
   "f8962.alloc", "f8962.married_in_2025", "f8962.other", "f8962.premium_adjust", "f8962.same_state_counted", "f8962.estimate_100", "f8962.alien_below", "f8962.fpl_table",
   "f8863.paid", "f8863.ban",
   ...EARLY_ROOTS,
@@ -737,6 +737,10 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   for (const k of (inputs["$dependent"] as string[] | undefined) ?? []) Object.assign(inputs, { [`dependent[${k}].born_died`]: false, [`dependent[${k}].placed`]: false });
   // The dividends question agrees with the amounts it gates, set last for the same reason.
   inputs["div.any"] = DIV_ANY_GATED.some((k) => inputs[k] !== 0);
+  // The charitable-gifts and investment-interest gates: yes whenever an answer they gate is not none, so every drawn
+  // answer is read. Set last, so no stream sees them.
+  inputs["sa.gifts"] = (inputs["sa.line11"] as number) > 0 || ((inputs["$gift"] as string[] | undefined) ?? []).length > 0 || inputs["sa.charity_limited"] === true;
+  inputs["f4952.has_interest"] = (inputs["f4952.line1"] as number) > 0 || inputs["f4952.carryover"] === true;
   return inputs;
 }
 

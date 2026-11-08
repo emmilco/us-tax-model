@@ -114,14 +114,14 @@
    "adjudication": "reviews/2025/screens/adjudication/group2.md"
   },
   "unruled:f4952.alternative_allocation": {
-   "prompt_sha": "a8fc568fe0c6fb138c73c911990fb8c3ac4a62f0a6f6b1cf1d5be50e6af99327",
-   "reason": "No defect. Both NARROW (line 5 investment expenses, the filing exception) are covered by f4952.unsupported on the same four lines; the UNCLEAR errs wide. credits-misc PENDING-6 moved the screens behind f4952.used (line 1, a carryforward or a line 4g election), which is when Form 4952 is filed (f4952 p. 3), and changed no gated line set.",
+   "prompt_sha": "1bde45c5999cc00e311ca47a02fd06974df92cc1e609bf44106d64067b4b7a24",
+   "reason": "No defect; the same findings as the earlier ruling: both NARROW are covered by f4952.unsupported on the same lines; the UNCLEAR errs wide.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "f4952 p. 4, Line 5. f4952.unsupported asks 'any deductible investment expense other than interest (for example depreciation or depletion ... or investment expenses on a Schedule K-1)' and gates f4952.line2, election_checked, line5 and required_test, the same four lines. As group 4."
+     "evidence": "f4952 p. 4, Line 5. f4952.unsupported asks 'any deductible investment expense other than interest' and refuses the same lines."
     },
     {
      "n": 1,
@@ -133,51 +133,37 @@
      "n": 2,
      "kind": "UNCLEAR",
      "class": "accepted WIDE",
-     "evidence": "f4952 pp. 3-4: reading the ordinary line 4g election as the 'alternative allocation' gives Yes and refuses a computed case. Safe; as group 4 finding 2."
+     "evidence": "Reading the ordinary line 4g election as the alternative allocation gives Yes and refuses a computed case. Safe."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
   },
   "unruled:f4952.unsupported": {
-   "prompt_sha": "7407e686484f4a1ca06e68c405a344f9c7200f744fdb18b350f049d227371b3f",
-   "reason": "Low only. The two NARROW findings are a definition gap in f4952.line1 (investment interest is not defined), BUG-0402; the rest WIDE or minor UNCLEAR leaning WIDE.",
+   "prompt_sha": "28cb69a0c93345820bcda2f107040f4739d95f8f81ff52e3e2276f269f86fa57",
+   "reason": "No defect; the same findings as the earlier ruling: WIDE or minor UNCLEAR leaning WIDE.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "low",
-     "evidence": "f4952 p. 3, Allocation of Interest Expense. f4952.line1 asks only for 'Investment interest paid or accrued in 2025' and does not say to allocate a mixed-use loan by the use of its proceeds. Low; BUG-0402 (with finding 1)."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "f4952 p. 4, Line 5: nondeductible fees draw Yes though line 5 is zero. Safe."
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "low",
-     "evidence": "f4952 p. 3, Line 1. Capitalized (section 263A) and section 264 interest are not excluded in f4952.line1 or the screen. Rare. Low; BUG-0402."
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "Capital gain distributions or carryovers: a Yes refuses only; none changes lines 2, 5, the election or the filing test."
     },
     {
      "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "f4952 p. 4, Line 5: nondeductible K-1 portfolio expenses draw Yes though line 5 is zero. Safe; as group 7 finding 2."
-    },
-    {
-     "n": 3,
      "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR, leans WIDE)",
-     "evidence": "f4952 p. 4, Line 5. Advisory fees or passive depreciation: Yes is a refusal only; No is correct."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR, leans WIDE)",
-     "evidence": "f4952 pp. 3-4. Capital gain distributions, carryovers and annuities: a Yes refuses only; none of them changes lines 2, 5, the election or the filing test."
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "Alaska Permanent Fund dividends (f4952 p. 3, Line 4a): rare; the tool's line 4a reads Form 1040 lines 2b and 3b."
     }
    ],
-   "bugs": [
-    "BUG-0402"
-   ],
-   "adjudication": "reviews/2025/screens/adjudication/group8.md"
+   "bugs": [],
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
   },
   "unruled:f5695.construction_later": {
    "prompt_sha": "9f2201cabd96d1ba08d13ee63c9a19dabd0f1300ea374f3d0ccf2d17b288e63f",
@@ -559,148 +545,90 @@
    "adjudication": "reviews/2025/screens/adjudication/group0.md"
   },
   "unruled:sa.charity_limited": {
-   "prompt_sha": "a6fdc61edefeab935a2c622f9221de0c9c35bfdb9b67afb1ddb48c18f1aa9925",
-   "reason": "No defect: every non-charitable item is screened by sa.unsupported, which gates the same eight lines; the two UNCLEARs compute correctly on NO.",
+   "prompt_sha": "43beebe82355a7e08d7ffa0e16118b9efc52bb12e80804ec4294337ad05dc849",
+   "reason": "No defect: the property reductions are asked by gift.deduction, and every non-charitable item is screened by sa.unsupported, which refuses the same lines; the screen is now asked behind sa.gifts.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sa.unsupported: 'a foreign tax or generation-skipping tax deduction' (gates sa.line6)."
+     "evidence": "i1040sca p. 10, Limit on the amount you can deduct; gift.deduction asks for the deduction 'after required valuation/basis reductions', so the reduced value is what line 12 sums."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sa.unsupported: 'mortgage interest or points not on Form 1098' (gates sa.line8b)."
+     "evidence": "As finding 0: an elected reduction to basis is a basis reduction gift.deduction asks the filer to apply."
     },
     {
      "n": 2,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sa.unsupported: 'mortgage interest or points not on Form 1098' (gates sa.line8c)."
+     "evidence": "sa.unsupported: 'a foreign tax or generation-skipping tax deduction' (refuses sa.line6)."
     },
     {
      "n": 3,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sa.unsupported: 'Any casualty or theft loss' (gates sa.line15)."
+     "evidence": "sa.unsupported: 'mortgage interest or points not on Form 1098' (refuses sa.line8b, sa.line8c)."
     },
     {
      "n": 4,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sa.unsupported: 'a deduction from the Schedule A line 16 list other than gambling losses' (gates sa.line16)."
+     "evidence": "sa.unsupported: 'Any casualty or theft loss' (refuses sa.line15)."
     },
     {
      "n": 5,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sa.unsupported: 'including a disaster loss added to the standard deduction' (gates sa.line16, line17)."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR)",
-     "evidence": "Expired or currently non-deductible carryover: NO gives line 13 zero, which the finding itself says is correct; YES is WIDE."
-    },
-    {
-     "n": 7,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The appreciated-property reduction is not an income limit; it is asked in gift.deduction ('Deduction before income limits ... after required valuation/basis reductions'), which feeds sa.line12, so a NO computes it."
+     "evidence": "sa.unsupported: 'a deduction from the Schedule A line 16 list other than gambling losses' (refuses sa.line16)."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group2.md"
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
   },
   "unruled:sa.excluded_income": {
-   "prompt_sha": "4afc486c20482a2de3fae91aa4b45571f59f827385187bdf79949acb06768057",
-   "reason": "No defect: the five NARROW Schedule A items are screened by sa.unsupported and sa.charity_limited, which gate the same lines; the WIDE findings are accepted; bare form numbers are a presentation point.",
+   "prompt_sha": "ce7ac5753438699b7d3538f15387c03e0d383ec44a7328bdb765123a280cd922",
+   "reason": "Low finding BUG-0458 (the year-of-move Puerto Rico case); the WIDE finding is accepted as before.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "covered",
-     "evidence": "sa.unsupported asks 'a foreign tax or generation-skipping tax deduction' and gates sa.line6."
+     "class": "low",
+     "evidence": "i1040sca p. 7, 'or excluded income from Puerto Rico'; i1040gi p. 98, 'or you exclude income from sources within Puerto Rico'. The screen asks only about income excluded 'as a bona fide resident', so a filer who left Puerto Rico in 2025 may answer No. Rare. Low; BUG-0458."
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "sa.unsupported asks 'mortgage interest or points not on Form 1098' and gates sa.line8b, sa.line8c."
-    },
-    {
-     "n": 2,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "sa.charity_limited asks 'carried over from a prior year' and gates sa.line13."
-    },
-    {
-     "n": 3,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "sa.unsupported asks 'Any casualty or theft loss' and gates sa.line15."
-    },
-    {
-     "n": 4,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "sa.unsupported asks 'a deduction from the Schedule A line 16 list other than gambling losses' and gates sa.line16."
-    },
-    {
-     "n": 5,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Form 4563/Puerto Rico filer refused at EIC Step 1 q. 3 (i1040gi p. 40 names only Form 2555). Safe."
-    },
-    {
-     "n": 6,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Same on Form 2441 lines 4, 5, 18, 19 (i2441 p. 4). Safe."
-    },
-    {
-     "n": 7,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Same on Form 8962 Worksheet 1-1 line 3 (i8962 p. 8). Safe."
-    },
-    {
-     "n": 8,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "SALT at or below the cap refused (i1040sca p. 7). Safe."
-    },
-    {
-     "n": 9,
-     "kind": "UNCLEAR",
-     "class": "out of scope / presentation",
-     "evidence": "The exclusions cannot be claimed without the forms; a Form 2555 exclusion is also Schedule 1 line 8d, refused by s1.line8_other ('the foreign earned income or housing exclusion from Form 2555 (8d)'), and foreign wages not on a W-2 by scope.other_income. Naming the income would help but nothing unsupported computes."
+     "evidence": "Form 4563/Puerto Rico filer refused at EIC Step 1 question 3 (i1040gi p. 40). Safe, as before."
     }
    ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group0.md"
+   "bugs": [
+    "BUG-0458"
+   ],
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
   },
   "unruled:sa.unsupported": {
-   "prompt_sha": "2328e5635ed9a8cb4ac54c808c19860020daf4f674ae9efaa82648b7960ef81a",
-   "reason": "No defect: a charitable carryover is screened by sa.charity_limited on the same lines; the casualty finding is WIDE.",
+   "prompt_sha": "af61e0da06a2af4b3ffc419fe6cc7f5490333ef01f07c630a89251852524749b",
+   "reason": "No defect: a charitable carryover is screened by sa.charity_limited on lines 13 and 17, reached through sa.gifts, whose wording names a carryover; the UNCLEAR is the existing debt and use limit wording.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sa.charity_limited ('or carried over from a prior year') gates sa.line13 and sa.line17 among the same eight lines. Same ruling as T-008."
+     "evidence": "i1040sca p. 11, Line 13. A carryover answers sa.gifts yes ('a contribution from an earlier year ... more than you could deduct that year') and sa.charity_limited_answer yes ('or carried over from a prior year'): refused on lines 13 and 17."
     },
     {
      "n": 1,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "A non-disaster personal casualty loss is not deductible (i1040sca p. 11); refusing it is safe."
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "f1040sa line 8: the question names the debt and use limits ('loan proceeds not all used to buy, build or improve the home, or debt over the limit'); a filer unsure answers Yes and is refused. Leans WIDE."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group2.md"
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
   },
   "unruled:sb.fbar_required": {
    "prompt_sha": "b03c8fb0bc7882e62829c6840e6d8724571ede52b112175871140b0cce16163b",

@@ -9,10 +9,10 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 | deduction_choice | With no election to itemize and no spouse itemizing, Form 1040 line 16 under the project's standard-or-itemized choice is at most line 16 under either deduction forced. | 400 | 145 | holds |
 | edu_clw_nonneg | Form 8863 Credit Limit Worksheet line 6 (Form 1040 line 18 less Schedule 3 lines 1 and 2) is never negative. | 400 | 130 | holds |
 | refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 346 | holds |
-| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. A choose whose guard is unknown is a refusal exactly when every way it can still resolve is a refusal, whatever the order of its guards. | 400 | 315 | holds |
+| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. A choose whose guard is unknown is a refusal exactly when every way it can still resolve is a refusal, whatever the order of its guards. | 400 | 318 | holds |
 | tax_monotone | Raising W-2 box 1 of the first employer, all else fixed, never lowers Form 1040 line 16. | 400 | 145 | holds |
 | tax_monotone_by_method | Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns. | 400 | 147 | holds |
-| screens_respected | No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206). | 400 | 94 | holds |
+| screens_respected | No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206). | 400 | 93 | holds |
 
 ## sdtw_skip_rule
 
@@ -21,11 +21,11 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## deduction_choice
 
-- Cases where total tax (line 24) under the project's choice exceeded the better alternative: 1.
+- Cases where total tax (line 24) under the project's choice exceeded the better alternative: 0.
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 315; cases with a line that has both a refused and an unknown operand (the order this property guards): 215; cases with a choose stopped at an unknown guard: 385, of which 12 have one refused on every way it can still resolve.
+- Cases with a refused operand somewhere: 318; cases with a line that has both a refused and an unknown operand (the order this property guards): 231; cases with a choose stopped at an unknown guard: 378, of which 10 have one refused on every way it can still resolve.
 
 ## tax_monotone
 
@@ -41,7 +41,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-2726 of 3089 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+2754 of 3119 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.screen:true
@@ -110,6 +110,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f2441.line25:positive
 - f2441.line29:floor
 - f2441.line31:left
+- f4952.no:true
 - f5329.l3_s:positive
 - f5329.l49_base:right
 - f5695.line15:right
@@ -168,6 +169,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8962.alien_branch:true
 - f8962.line9:true
 - ftc.no:true
+- gift.no:true
 - household.roster_ok:false
 - household.roster_bad:true
 - household.filer_under16:true
@@ -241,6 +243,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.ira_ssb#0
 - person.edu_over:true
 - person.edu_over_refused:true
+- person.edu_line25:true
 - person.edu_line26:true
 - person.edu_llc_tin_refused:true
 - person.edu_kid:true
@@ -255,7 +258,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.x_c19_min:right
 - person.x_c19#0
 - person.x_c22:right
-- person.x_c23:right
 - person.x_two23:true
 - person.x_limit_binds:true
 - person.x_other:true
@@ -307,6 +309,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - retirement.code_screen:true
 - retirement.screen_refused:true
 - retirement.wrong_kind:true
+- retirement.exc_capped:right
 - retirement.is_e05:true
 - retirement.l2_e05#0
 - retirement.is_e09:true
@@ -315,9 +318,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - retirement.l2_e19#0
 - retirement.is_e22:true
 - retirement.l2_e22#0
-- retirement.is_s:true
-- retirement.l1_s#0
-- retirement.l2_s#0
 - s1.line1#1
 - s1.ebl:true
 - s1.sc_1a:true
@@ -354,6 +354,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1a.line27_pos:positive
 - s1a.line30_amount#1
 - s2.e05_over:true
+- s2.line8_box:true
 - s8812.no:true
 - s8812.show_iib:true
 - s8812.few_children:false
@@ -363,6 +364,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s8812.clwb_to7:true
 - s8812.clwb_11#0
 - s8812.clwb_12:right
+- sa.no:true
 - sa.line16_gambling:right
 - sa.line16#0
 - sales.special:true

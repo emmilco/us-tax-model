@@ -33,6 +33,7 @@ interview:
   - sd.distributions
   - f1040.status
   - f1040.line3a
+  - f4952.has_interest
   - f4952.line1
   - f4952.carryover
   - f4952.prior_7
@@ -61,6 +62,7 @@ interview:
   - div.box13
   - div.basis_reconciled
   - qbi.dividends
+  - sa.gifts
   - $gift
   - $w2
   - qbi.unsupported

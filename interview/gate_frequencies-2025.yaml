@@ -458,7 +458,7 @@ situations:
         - {file: soi-23in14ar, table: "Table 1.4", column: 135, header: "Total itemized deductions", returns: 15106257}
   charity:
     label: Gave anything to a charity in 2025, or a charitable contribution carryover
-    refs: [survey B-3]
+    refs: [survey B-3, sa.gifts]
     share: 0.40
     range: [0.25, 0.55]
     source:
@@ -579,7 +579,7 @@ situations:
   investment_interest:
     label: Interest on money borrowed to buy investments, or investment interest carried from 2024
     theme: investments
-    refs: [survey A-1, ladder 19, f4952.line1, f4952.carryover]
+    refs: [survey A-1, ladder 19, f4952.has_interest, f4952.line1, f4952.carryover]
     share: 0.01
     range: [0.004, 0.025]
     source:

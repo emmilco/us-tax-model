@@ -20,6 +20,15 @@
    "context": "dd5add3d9ed496ee7d2ddfe7f11b098b09201f08da0c3df6f101d2bded7a64d5"
   },
   {
+   "printed": "11",
+   "restated": "Choose — [helper \"Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:\" = true → helper \"Deductible cash/check charitable gifts before income limits, after benefits received and required substantiation\"] [helper \"Did you or your spouse make any charitable contribution in 2025, or does either of you have a charitable contribution carried over from an earlier year? Answer Yes if any of these applies:\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The program uses a 'before income limits' amount and has no refusal for limited charitable deductions, but the IRS instruction says 'Only enter on line 11 the deductible value of gifts you made in cash or by check' when the deduction is limited.",
+   "ruling": "Ruling: model error; i1040sca p. 10, Line 11: \"Deduction for gifts by cash or check limited. If your deduction for the gifts you made in cash or by check is limited, see Pub. 526 to figure the amount you can deduct.\" The project's line 11 is the before-limits amount, and a limited deduction is refused: sa.line11 is read only by sa.line14, which only sa.line17 reads, and sa.line17 refuses when sa.charity_limited is true (the filer's answer to 'reduced by income limits, or carried over', asked whenever sa.gifts is yes, which it must be for line 11 to be nonzero). No limited amount reaches a printed total. The restatement itself (the sa.gifts gate, then the cash amount, else zero) matches the project.",
+   "context": "ca01f501768feef423f8d9bf44d6abd4701c67ed0e7a49832f308dcc96c89ffa",
+   "date": "2026-11-07",
+   "run": "9f8d612034c7a682bf5e3a0efc535523bb0a76798a44bc2798e8d47b175873e7"
+  },
+  {
    "printed": "2",
    "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
    "model": "IRS line 2 says 'Enter amount from Form 1040 or 1040-SR, line 11b'; the restatement instead uses an AGI floored at zero, which changes the amount if line 11b is negative.",

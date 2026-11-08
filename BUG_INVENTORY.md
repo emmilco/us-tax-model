@@ -6251,3 +6251,21 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Root cause:** the restructure and lane A completed the fixtures and the interview banks but not every generator; no check fails when a generator leaves an input unanswered (an unanswered input is unknown, not an error), and the merge ran without the full tier.
 - **Disposition:** fixed (tooling only; no data line changed): both generators answer coverage_year consistently with the month counts they draw: one coverage type in all twelve months is that type all year, anything else changed (a taxpayer with no HSA answers changed with no eligible months); the engine-differential HSA returns, always twelve months of one type, answer self_only or family. The engine-differential generator answers sb.form5471 false and div.any from the amounts it gates, as engine/src/generate.ts does. With the property returns' month counts read again, generated return 4 no longer shows the person.edu early completion of BUG-0454, so its interview-rules baseline entry was removed; BUG-0454 itself (the person.edu_student conjunction) stays open.
 - **Tags:** generator; input-ripple; engine-differential; fixed
+
+## BUG-0458 — sa.excluded_income asks about Puerto Rico exclusion only as a bona fide resident
+
+- **Caught by:** the screen review of `sa.excluded_income` (claude-opus-5-5), rerun in the lane C gate round because the gated `sa.line12` became a gate line, 2026-11-07.
+- **Source:** `forms/2025/sa.yaml` `sa.excluded_income` ("do you have income excluded as a bona fide resident of Puerto Rico?") against i1040sca p. 7 ("or excluded income from Puerto Rico"), i1040gi p. 98 ("or you exclude income from sources within Puerto Rico") and i8863 p. 3 ("or are excluding income from Puerto Rico").
+- **Symptom:** a filer who left Puerto Rico in 2025 after two or more years as a bona fide resident and still excludes Puerto Rico-source income for the residence period can answer No truthfully (not a bona fide resident for 2025); the lines that add excluded Puerto Rico income back (Schedule A SALT worksheet, Schedule 8812 line 2a, Schedule 1-A line 2a, Form 8863 lines 3 and 14, Form 8880 line 8, the student loan interest worksheet) then omit it. Not reproduced; rare.
+- **Why the checks missed it:** earlier screen reviews of `sa.excluded_income` did not raise the year-of-move case.
+- **Disposition:** open, low: word the screen on excluding Puerto Rico-source income, without the residence condition, and rerun its screen review.
+- **Tags:** schedule-a; screen; wording; low; open
+
+## BUG-0459 — Schedule A line 8a and line 11 questions do not state the instructions' reductions
+
+- **Caught by:** the completeness review of `sa` (claude-opus-5-5), rerun in the lane C gate round, 2026-11-07 (claims sa#2, sa#3).
+- **Source:** `forms/2025/sa.yaml` `sa.line8a` and `sa.line11_amount` (the questions ask for "eligible" Form 1098 interest and "deductible" cash gifts without stating the rules) against i1040sca p. 8 (prepaid interest, "secured by your main home or second home", basic living accommodations, a co-borrower's share, a refund of overpaid interest not netted) and pp. 9–10 (a state or local tax credit received, college athletic seating rights, a substitute for tuition, 14 cents a mile, amounts repaid, travel with a personal-pleasure element).
+- **Symptom:** a filer who does not know these rules enters a Form 1098 total or a cash total that overstates the deduction (or, for the refund rule, understates it). Not reproduced; the amounts are the filer's.
+- **Why the checks missed it:** the earlier completeness reviews of `sa` did not raise these sentences.
+- **Disposition:** open, low: state the reductions in the two questions (or their help), and rerun the form's reviews.
+- **Tags:** schedule-a; wording; completeness; low; open

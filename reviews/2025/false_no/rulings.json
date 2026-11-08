@@ -166,6 +166,44 @@
    "class": "no gate defect; definition points of the eligible individual, shared with the month question",
    "prompt_sha": "e2cbe6b69d377fe68b9702144c217bf0da13e05cd529e0ef8f6ac3ba8ad54cdc",
    "reason": "The gate hides the month counts and the December 1 coverage when coverage_year is self-only or family all year, which i8889 p. 4, Line 3, rule 3 makes decisive ('If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for a family HDHP'). Findings of the earlier runs this round were fixed in the wording (family coverage as a member of another's plan and two plans at once, i8889 p. 4, Line 1; the spouse rule in its own list; VA care and surprise billing, i8889 p. 2; family coverage as coverage for you and another person, a general-purpose FSA or HRA, backdated Medicare, p969 pp. 4, 5, 7). This run's findings are all on the definition of an eligible individual, which the month question (months_eligible) uses in the same words, so a filer who misjudges eligibility answers the month count the same way: automatic Part A (medium; the question counts Medicare coverage backdated, the automatic case is wording), a carried-over FSA balance, a drug rider or direct primary care, a spouse's non-HDHP plan covering the filer, an embedded family deductible (medium and low: HDHP and other-coverage definitions, BUG-0453), VA care not service-connected (low, wording), and a filer whose eligible spouse's family HDHP does not cover the filer (low; the question's third family rule states that case: both eligible and either had family coverage). No finding shows a filer who answers an all-year option correctly by the stated definitions while a hidden month answer would change line 3."
+  },
+  "unruled:gate:sa.gifts": {
+   "prompt_sha": "46c03cd1ba26196ce14262f27a1376c95d10639ca5113fc33bb8892636edd61e",
+   "reason": "No defect on the archived pages after the wording rounds; the residual mediums rest on Pub. 526 rules not archived (grantor trusts, sole proprietors' gifts, split-interest gifts).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "Grantor trust gift without a K-1: Pub. 526, not archived; listed for the owner."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "A sole proprietor's gift from the business account: a contribution the filer made; Pub. 526, not archived."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "Charitable remainder trusts, pooled income funds and gift annuities: Pub. 526, not archived; such gifts are refused through sa.charity_limited or gift.special in any case."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "accepted (low)",
+     "evidence": "Electronic transfers: the bullet says 'money given to a charity'; the methods are examples."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "accepted (low)",
+     "evidence": "Year-end card or mailed-check gifts."
+    }
+   ],
+   "bugs": [],
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
   }
  },
  "baseline": {}

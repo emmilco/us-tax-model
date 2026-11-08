@@ -1,0 +1,80 @@
+{
+ "form": "f4952",
+ "reviews": {
+  "gate:f4952.has_interest": {
+   "condition": "f4952.has_interest",
+   "lines": [
+    "f4952.carryover_if_interest",
+    "f4952.line1_if_interest"
+   ],
+   "inputs": [
+    "f4952.carryover",
+    "f4952.line1"
+   ],
+   "verdict": "SOUND",
+   "findings": [
+    {
+     "kind": "UNCLEAR",
+     "pattern": "6",
+     "who": "A filer whose margin or investment loan is in the name of a revocable living trust, an intentionally defective grantor trust, or a single-member LLC that holds only investments. The interest is reported to the filer on a grantor letter or brokerage statement, not on a Schedule K-1.",
+     "why_no": "The entity bullet names only 'a partnership or an S corporation'. The filer reads 'Did you or your spouse pay' as excluding interest the trust or LLC paid on its own account.",
+     "line": "f4952.line1_if_interest",
+     "irs_text": "f4952 p. 3, Line 1: \"Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment\"",
+     "severity": "low",
+     "fix": "Add a bullet: 'interest paid by a grantor trust (including a revocable living trust) or a single-member LLC you own, on a loan used for investments'."
+    },
+    {
+     "kind": "FALSE_NO",
+     "pattern": "2",
+     "who": "A filer who borrowed more than $10,000 interest-free or below market from a relative and invested the money. Section 7872 treats the forgone interest as paid by the borrower.",
+     "why_no": "No interest was actually paid or charged, so 'pay or accrue any interest' is answered no.",
+     "line": "f4952.line1_if_interest",
+     "irs_text": "f4952 p. 3, Line 1: \"Enter the investment interest expense paid or accrued during the tax year, regardless of when you incurred the indebtedness\"",
+     "severity": "low",
+     "fix": "Add a bullet: 'a below-market or interest-free loan of over $10,000 used for investments (imputed interest may apply)'."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "8",
+     "who": "A filer with a short stock sale held open more than 45 days who paid the lender amounts in lieu of dividends. Pub. 550 can treat those payments as investment interest.",
+     "why_no": "The payments are not interest on 'money borrowed'. The filer borrowed shares, not money.",
+     "line": "f4952.line1_if_interest",
+     "irs_text": "f4952 p. 3, Purpose of Form: \"For more information, see Pub. 550, Investment Income and Expenses\"",
+     "severity": "low",
+     "fix": "Add a bullet: 'payments in lieu of dividends on a short sale'. Classify the amount in a later question."
+    }
+   ],
+   "prompt_sha": "134c698ad625dddabfa2645afd6553b3b6aa32ef04934e5d6e63fef33f959325",
+   "subject_sha": "f1d3f8f31959bce155b578b4c50e60fa9a004593228421c2ea336cda3e6aab63",
+   "used": [
+    {
+     "doc": "f4952",
+     "revision": "2025; created 2025-05-28",
+     "text_sha256": "efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+      "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"; p. 3, Who Must File, \"You don’t have any carryover of disallowed investment interest expense from 2024\"",
+      "p. 3, Who Must File, \"you must file Form 4952 to claim a deduction for your investment interest expense\" and \"You don’t have any carryover of disallowed investment interest expense from 2024\"; p. 3, Line 1, \"Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment\" and \"Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation\"; p. 3, Allocation of Interest Expense, \"If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest\"; p. 3, Property held for investment, \"Property held for investment includes property that produces income, not derived in the ordinary course of a trade or business, from interest, dividends, annuities, or royalties\" and \"A working interest in an oil or gas property that you held directly or through an entity that didn't limit your liability is property held for investment\"; p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
+      "p. 3, Who Must File, \"you must file Form 4952 to claim a deduction for your investment interest expense\"; p. 3, Line 1, \"Enter the investment interest expense paid or accrued during the tax year, regardless of when you incurred the indebtedness\"",
+      "pp. 1, 3–4, Investment Interest Expense Deduction; p. 3, Allocation of Interest Expense, \"If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest.\"; p. 3, Line 1, \"Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment (as defined later).\", \"Personal interest under section 163(h), including qualified residence interest.\", \"Any interest expense that is capitalized, such as construction interest subject to section 263A.\" and \"Interest expense, disallowed under section 264, on indebtedness with respect to life insurance, endowment, or annuity contracts issued after June 8, 1997\""
+     ],
+     "cols_pages": [
+      3,
+      4
+     ],
+     "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.12866,
+   "date": "2026-11-07"
+  }
+ }
+}

@@ -82,6 +82,7 @@
 | `eic.ws_threshold0.other` | NonNegDollars | $10,620 | [i1040gi] p. 46, Worksheet A, line 5, "No qualifying children ... less than $10,620" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `eic.ws_threshold1.joint` | NonNegDollars | $30,470 | [i1040gi] p. 46, Worksheet A, line 5, "($30,470 if married filing jointly)" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `eic.ws_threshold1.other` | NonNegDollars | $23,350 | [i1040gi] p. 46, Worksheet A, line 5, "1 or more qualifying children ... less than $23,350" (2025; printed date 2026-02-25; sha256 482e9c48) |
+| `f4952.no` | Bool | false | [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; sha256 5113c166) |
 | `f5329.cap_abuse` | NonNegDollars | $10,300 | [p590b] p. 28, Distributions to domestic abuse victims, "must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA." (the 50% of the IRA value limb is attested in the question) (2025; sha256 d18a592e) |
 | `f5329.cap_birth` | NonNegDollars | $5,000 | [p590b] p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer." (2025; sha256 d18a592e) |
 | `f5329.cap_emergency` | NonNegDollars | $1,000 | [p590b] p. 28, Emergency personal expense distributions, "must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000." (the interest less $1,000 limb is attested in the question) (2025; sha256 d18a592e) |
@@ -192,6 +193,7 @@
 | `s8812.no` | Bool | false | [i1040s8812] p. 3, Bona Fide Residents of Puerto Rico, "If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child" (2025; printed date 2026-01-23; sha256 bb9788cd) |
 | `sa.half` | Rate | 1/2 | [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12) |
 | `sa.medical_rate` | Rate | 75/1000 | [f1040sa] Schedule A (2025), line 3 (2025; created 2025-11-20; sha256 c14acf34) |
+| `sa.no` | Bool | false | [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34) |
 | `sa.salt_base` | NonNegDollars | $40,000 | [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12) |
 | `sa.salt_floor` | NonNegDollars | $10,000 | [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12) |
 | `sa.salt_rate` | Rate | 3/10 | [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12) |

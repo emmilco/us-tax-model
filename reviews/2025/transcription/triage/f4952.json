@@ -1,2533 +1,506 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1565,
+  "fixtures": 1638,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 194,
+  "partial_records": 226,
   "return_states": {
-   "completed": 377,
-   "incomplete": 884,
-   "refused": 998
+   "completed": 392,
+   "incomplete": 928,
+   "refused": 1044
   },
   "seed": 20261026
  },
- "errors": [],
+ "errors": [
+  {
+   "line": "f4952.line2",
+   "message": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve"
+  },
+  {
+   "line": "f4952.line2",
+   "message": "f4952.f4952.line2: comparison operands have incompatible types"
+  },
+  {
+   "line": "f4952.line2",
+   "message": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve"
+  },
+  {
+   "line": "f4952.line2",
+   "message": "f4952.f4952.line2: comparison operands have incompatible types"
+  },
+  {
+   "line": "f4952.line3",
+   "message": "f4952.f4952.line3: reference 'f4952.line1' does not resolve"
+  },
+  {
+   "line": "f4952.required",
+   "message": "f4952.f4952.required: reference 'f4952.line1' does not resolve"
+  },
+  {
+   "line": "f4952.required",
+   "message": "f4952.f4952.required: reference 'f4952.carryover' does not resolve"
+  },
+  {
+   "line": "f4952.required",
+   "message": "f4952.f4952.required: comparison operands have incompatible types"
+  },
+  {
+   "line": "f4952.required",
+   "message": "f4952.f4952.required: reference 'f4952.line1' does not resolve"
+  },
+  {
+   "line": "f4952.required",
+   "message": "f4952.f4952.required: reference 'f4952.carryover' does not resolve"
+  },
+  {
+   "line": "f4952.required",
+   "message": "f4952.f4952.required: comparison operands have incompatible types"
+  }
+ ],
  "failures": [],
  "family": "claude",
  "form": "f4952",
- "invalid_lines": [],
+ "invalid_lines": [
+  "f4952.line2",
+  "f4952.line3",
+  "f4952.required",
+  "f4952.line7",
+  "f4952.line8"
+ ],
  "lines": [
   {
    "absent": 0,
-   "agree": 2067,
+   "agree": 0,
    "candidate": "f4952.required",
-   "compared": 2259,
+   "compared": 0,
    "completed_witnesses": [
     {
-     "candidate": {
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
       "kind": "bool",
       "value": false
      },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 244100,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 7857700,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 244100,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f1040.2.deepseek",
+      "id": "classm.f8889.1.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 680400,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 3973900,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 680400,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
      "instance": "f4952",
-     "kind": "value",
+     "kind": "candidate-invalid",
      "project": {
       "kind": "bool",
       "value": true
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f5329.2.deepseek",
+      "id": "classm.f4952.1.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
       "kind": "bool",
       "value": false
      },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.tcw.10",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 349900,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 5828100,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 349900,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
      "instance": "f4952",
-     "kind": "value",
+     "kind": "candidate-invalid",
      "project": {
       "kind": "bool",
       "value": true
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.tcw.16",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 244100,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 7857700,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 244100,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
      "instance": "f4952",
-     "kind": "value",
+     "kind": "candidate-invalid",
      "project": {
       "kind": "bool",
       "value": true
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f1040.2",
+      "id": "classm.g28.1.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 680400,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 3973900,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 680400,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
      "instance": "f4952",
-     "kind": "value",
+     "kind": "candidate-invalid",
      "project": {
       "kind": "bool",
       "value": true
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f5329.2",
+      "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
     }
    ],
-   "differ": 192,
+   "differ": 0,
    "handle": "f4952.required",
-   "in_scope": 2096,
-   "in_scope_agree": 1988,
-   "invalid": 0,
+   "in_scope": 0,
+   "in_scope_agree": 0,
+   "invalid": 2364,
    "kinds": {
-    "candidate-refuses": 1,
-    "candidate-unknown": 2,
-    "project-refuses": 83,
-    "project-unknown": 61,
-    "value": 45
+    "candidate-invalid": 2364
    },
    "kinds_by_return": {
     "completed": {
-     "value": 16
+     "candidate-invalid": 392
     },
     "incomplete": {
-     "candidate-unknown": 2,
-     "project-refuses": 1,
-     "project-unknown": 38,
-     "value": 1
+     "candidate-invalid": 928
     },
     "refused": {
-     "candidate-refuses": 1,
-     "project-refuses": 82,
-     "project-unknown": 23,
-     "value": 28
+     "candidate-invalid": 1044
     }
    },
    "open_at_triage": true,
    "project": "f4952.required",
    "shown_when": null,
-   "sources": {
-    "fixture": 1565,
-    "generated": 500,
-    "partial": 194
-   },
+   "sources": {},
    "status": "DISAGREE",
-   "triage": "differs",
+   "triage": "candidate invalid",
    "witnesses": [
     {
-     "candidate": {
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
       "kind": "bool",
       "value": false
      },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "f1040sd",
-       "locator": "Schedule D (2025), Parts I\u2013III"
-      },
-      "form": "Schedule D additional source forms",
-      "gate": "sd.other_forms",
-      "kind": "refusal",
-      "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice."
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "cite": {
-         "doc": "f1040sd",
-         "locator": "Schedule D (2025), Parts I\u2013III"
-        },
-        "form": "Schedule D additional source forms",
-        "gate": "sd.other_forms",
-        "kind": "refusal",
-        "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 3104700,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "f4952",
-       "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-      },
-      "form": "Form 4952 alternative allocation",
-      "gate": "f4952.alternative_allocation",
-      "kind": "refusal",
-      "remedy": "Only the default capital-gain-first allocation is supported; alternative allocation and Form 1116 coordination are outside scope."
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "cite": {
-         "doc": "f4952",
-         "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-        },
-        "form": "Form 4952 alternative allocation",
-        "gate": "f4952.alternative_allocation",
-        "kind": "refusal",
-        "remedy": "Only the default capital-gain-first allocation is supported; alternative allocation and Form 1116 coordination are outside scope."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.dependent.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 244100,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 7857700,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 244100,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f1040.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 478800,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 7724300,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 478800,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.retirement.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 680400,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 3973900,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 680400,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f5329.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "f4952",
-       "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-      },
-      "form": "Form 4952",
-      "gate": "f4952.bad_election",
-      "kind": "refusal",
-      "remedy": "Enter no more than the sum of lines 4b and 4e on line 4g."
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "cite": {
-         "doc": "f4952",
-         "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-        },
-        "form": "Form 4952",
-        "gate": "f4952.bad_election",
-        "kind": "refusal",
-        "remedy": "Enter no more than the sum of lines 4b and 4e on line 4g."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.f8962.4.gpt",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.carloan.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "f1099div",
-       "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
-      },
-      "form": "Form 1099-DIV dividend components",
-      "gate": "div.bad_components",
-      "kind": "refusal",
-      "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "cite": {
-         "doc": "f1099div",
-         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
-        },
-        "form": "Form 1099-DIV dividend components",
-        "gate": "div.bad_components",
-        "kind": "refusal",
-        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.f8606.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 881900,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 2885700,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 881900,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.ltc.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 222000,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 222000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "f4952",
-       "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-      },
-      "form": "Form 4952",
-      "gate": "f4952.bad_election",
-      "kind": "refusal",
-      "remedy": "Enter no more than the sum of lines 4b and 4e on line 4g."
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "cite": {
-         "doc": "f4952",
-         "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-        },
-        "form": "Form 4952",
-        "gate": "f4952.bad_election",
-        "kind": "refusal",
-        "remedy": "Enter no more than the sum of lines 4b and 4e on line 4g."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.oi8z.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 568300,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 2684800,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 568300,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "f4952",
-       "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-      },
-      "form": "Form 4952",
-      "gate": "f4952.bad_election",
-      "kind": "refusal",
-      "remedy": "Enter no more than the sum of lines 4b and 4e on line 4g."
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "cite": {
-         "doc": "f4952",
-         "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-        },
-        "form": "Form 4952",
-        "gate": "f4952.bad_election",
-        "kind": "refusal",
-        "remedy": "Enter no more than the sum of lines 4b and 4e on line 4g."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.otjob.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 478800,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 7724300,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 478800,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.retirement.4",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 100000,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 100000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "project-unknown",
-     "project": {
-      "input": "f4952.alternative_allocation",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.alternative_allocation"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "input": "f4952.alternative_allocation",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.alternative_allocation"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
      "project_return": "incomplete",
      "source": {
-      "id": "stage16.f4952.allocation_unanswered",
+      "id": "classm.f2441.1.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 100000,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": -100000,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 100000,
-        "kind": "money"
-       }
-      }
-     ],
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
      "instance": "f4952",
-     "kind": "project-unknown",
+     "kind": "candidate-invalid",
      "project": {
-      "input": "f4952.alternative_allocation",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.alternative_allocation"
+      "kind": "bool",
+      "value": false
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "input": "f4952.alternative_allocation",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.alternative_allocation"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
+     "project_return": "incomplete",
      "source": {
-      "id": "stage16.f4952.required_unanswered_bad_dividends",
+      "id": "classm.f2441.2.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-      },
-      "form": "FinCEN Form 114 (FBAR)",
-      "gate": "sb.fbar_required",
-      "kind": "refusal",
-      "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 999984,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-        },
-        "form": "FinCEN Form 114 (FBAR)",
-        "gate": "sb.fbar_required",
-        "kind": "refusal",
-        "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 999984,
-        "kind": "money"
-       }
-      }
-     ],
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
      "instance": "f4952",
-     "kind": "candidate-refuses",
+     "kind": "candidate-invalid",
      "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "index": 291,
-      "kind": "generated",
-      "seed": 20261026
-     }
-    },
-    {
-     "candidate": {
       "kind": "bool",
       "value": false
      },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "project-unknown",
-     "project": {
-      "input": "f4952.line4g",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.line4g"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "input": "f4952.line4g",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.line4g"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
      "project_return": "incomplete",
      "source": {
-      "base": "classm.f2441.1.deepseek",
-      "kind": "partial",
-      "withheld": "f4952.line4g"
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
      }
     },
     {
-     "candidate": {
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
       "kind": "bool",
       "value": false
      },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "project-unknown",
-     "project": {
-      "input": "f4952.line4g",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.line4g"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "input": "f4952.line4g",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.line4g"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
      "project_return": "incomplete",
      "source": {
-      "base": "classm.f2441.5.deepseek",
-      "kind": "partial",
-      "withheld": "f4952.line4g"
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
      }
     },
     {
-     "candidate": {
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
       "kind": "bool",
       "value": false
      },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 508500,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 3555200,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 508500,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "project-unknown",
-     "project": {
-      "input": "f4952.alternative_allocation",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.alternative_allocation"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "input": "f4952.alternative_allocation",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.alternative_allocation"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
+     "project_return": "incomplete",
      "source": {
-      "base": "classm.f8889.4.deepseek",
-      "kind": "partial",
-      "withheld": "f4952.alternative_allocation"
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
      }
     },
     {
-     "candidate": {
+     "candidate_error": "f4952.f4952.required: reference 'f4952.line1' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
       "kind": "bool",
       "value": false
      },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 508500,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 3555200,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 508500,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "project-unknown",
-     "project": {
-      "input": "f4952.line4g",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.line4g"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "input": "f4952.line4g",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.line4g"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.4.deepseek",
-      "kind": "partial",
-      "withheld": "f4952.line4g"
-     }
-    },
-    {
-     "candidate": {
-      "input": "f4952.line1",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.line1"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "input": "f4952.line1",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.line1"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 3973900,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "input": "f4952.line1",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.line1"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
      "project_return": "incomplete",
      "source": {
-      "base": "classm.f5329.2.deepseek",
-      "kind": "partial",
-      "withheld": "f4952.line1"
-     }
-    },
-    {
-     "candidate": {
-      "input": "f4952.carryover",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.carryover"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 680400,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 3973900,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line1",
-       "value": {
-        "cents": 680400,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.carryover",
-       "value": {
-        "input": "f4952.carryover",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.carryover"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.required_test",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "base": "classm.f5329.2.deepseek",
-      "kind": "partial",
-      "withheld": "f4952.carryover"
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
      }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 2259,
+   "agree": 0,
+   "candidate": "f4952.line2",
+   "compared": 0,
+   "completed_witnesses": [
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.g28.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.sd.1.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 0,
+   "handle": "2",
+   "in_scope": 0,
+   "in_scope_agree": 0,
+   "invalid": 2364,
+   "kinds": {
+    "candidate-invalid": 2364
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-invalid": 392
+    },
+    "incomplete": {
+     "candidate-invalid": 928
+    },
+    "refused": {
+     "candidate-invalid": 1044
+    }
+   },
+   "open_at_triage": true,
+   "project": "f4952.line2",
+   "shown_when": null,
+   "sources": {},
+   "status": "DISAGREE",
+   "triage": "candidate invalid",
+   "witnesses": [
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "input": "f4952.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f4952.unsupported"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "input": "f4952.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f4952.unsupported"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "input": "f4952.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f4952.unsupported"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "input": "f4952.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f4952.unsupported"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "input": "f4952.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f4952.unsupported"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "f4952.f4952.line2: reference 'f4952.carryover' does not resolve",
+     "instance": "f4952",
+     "kind": "candidate-invalid",
+     "project": {
+      "input": "f4952.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f4952.unsupported"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2364,
    "candidate": "f4952.line4d",
-   "compared": 2259,
+   "compared": 2364,
    "completed_witnesses": [],
    "differ": 0,
    "handle": "4d",
-   "in_scope": 2140,
-   "in_scope_agree": 2140,
+   "in_scope": 2244,
+   "in_scope_agree": 2244,
    "invalid": 0,
    "kinds": {},
    "kinds_by_return": {},
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f4952.line4d",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
-    "partial": 194
+    "partial": 226
    },
    "status": "DISAGREE",
    "triage": "agrees on sample",
@@ -2535,9 +508,9 @@
   },
   {
    "absent": 0,
-   "agree": 2074,
+   "agree": 2141,
    "candidate": "f4952.line4e",
-   "compared": 2259,
+   "compared": 2364,
    "completed_witnesses": [
     {
      "candidate": {
@@ -2712,6 +685,50 @@
      ],
      "project_return": "completed",
      "source": {
+      "id": "classm.f8962.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f4952.alternative_allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for f4952.alternative_allocation"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f4952.alternative_allocation",
+       "value": {
+        "input": "f4952.alternative_allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for f4952.alternative_allocation"
+       }
+      }
+     ],
+     "instance": "f4952",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f4952.line4d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.net_gain",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
       "id": "classm.f8962.3.deepseek",
       "kind": "fixture"
      }
@@ -2735,28 +752,28 @@
      "instance": "f4952",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 0,
+      "cents": 1844700,
       "kind": "money"
      },
      "project_operands": [
       {
        "ref": "f4952.line4d",
        "value": {
-        "cents": 0,
+        "cents": 2170100,
         "kind": "money"
        }
       },
       {
        "ref": "sd.net_gain",
        "value": {
-        "cents": 0,
+        "cents": 1844700,
         "kind": "money"
        }
       }
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f5695.7.deepseek",
+      "id": "classm.s8812.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -2779,72 +796,28 @@
      "instance": "f4952",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 0,
+      "cents": 7199500,
       "kind": "money"
      },
      "project_operands": [
       {
        "ref": "f4952.line4d",
        "value": {
-        "cents": 0,
+        "cents": 15683900,
         "kind": "money"
        }
       },
       {
        "ref": "sd.net_gain",
        "value": {
-        "cents": 0,
+        "cents": 7199500,
         "kind": "money"
        }
       }
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f5695.7",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "f4952.alternative_allocation",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.alternative_allocation"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.alternative_allocation",
-       "value": {
-        "input": "f4952.alternative_allocation",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.alternative_allocation"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.line4d",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sd.net_gain",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.s3.2",
+      "id": "classm.s8812.3.deepseek",
       "kind": "fixture"
      }
     },
@@ -2982,40 +955,132 @@
       "id": "stage5.return.refund_f4952_screens_unused",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f4952.alternative_allocation",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f4952.alternative_allocation",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f4952",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f4952.line4d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.net_gain",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.clcw.2.deepseek",
+      "kind": "partial",
+      "withheld": "f4952.line1_amount"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f4952.alternative_allocation",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f4952.alternative_allocation",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f4952",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f4952.line4d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.net_gain",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.clcw.2.deepseek",
+      "kind": "partial",
+      "withheld": "f4952.carryover_answer"
+     }
     }
    ],
-   "differ": 185,
+   "differ": 223,
    "handle": "4e",
-   "in_scope": 2098,
-   "in_scope_agree": 1958,
+   "in_scope": 2200,
+   "in_scope_agree": 2024,
    "invalid": 0,
    "kinds": {
-    "candidate-refuses": 42,
-    "candidate-unknown": 140,
+    "candidate-refuses": 44,
+    "candidate-unknown": 176,
     "project-refuses": 3
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-refuses": 4,
-     "candidate-unknown": 20
+     "candidate-refuses": 8,
+     "candidate-unknown": 31
     },
     "incomplete": {
-     "candidate-refuses": 2,
-     "candidate-unknown": 93
+     "candidate-refuses": 4,
+     "candidate-unknown": 101
     },
     "refused": {
-     "candidate-refuses": 36,
-     "candidate-unknown": 27,
+     "candidate-refuses": 32,
+     "candidate-unknown": 44,
      "project-refuses": 3
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f4952.line4e",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
-    "partial": 194
+    "partial": 226
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -3705,9 +1770,9 @@
   },
   {
    "absent": 0,
-   "agree": 2050,
+   "agree": 2129,
    "candidate": "f4952.line4h",
-   "compared": 2259,
+   "compared": 2364,
    "completed_witnesses": [
     {
      "candidate": {
@@ -3958,7 +2023,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8962.3.deepseek",
+      "id": "classm.f8962.1.deepseek",
       "kind": "fixture"
      }
     },
@@ -4024,7 +2089,139 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f5695.7.deepseek",
+      "id": "classm.f8962.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f4952.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f4952.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f4952.line4c",
+       "value": {
+        "input": "f4952.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f4952.unsupported"
+       }
+      },
+      {
+       "ref": "f4952.line4f",
+       "value": {
+        "input": "f4952.alternative_allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for f4952.alternative_allocation"
+       }
+      },
+      {
+       "ref": "f4952.line4g",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f4952",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 325400,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f4952.line4c",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f4952.line4f",
+       "value": {
+        "cents": 325400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f4952.election",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s8812.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f4952.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f4952.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f4952.line4c",
+       "value": {
+        "input": "f4952.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f4952.unsupported"
+       }
+      },
+      {
+       "ref": "f4952.line4f",
+       "value": {
+        "input": "f4952.alternative_allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for f4952.alternative_allocation"
+       }
+      },
+      {
+       "ref": "f4952.line4g",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f4952",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 8484400,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f4952.line4c",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f4952.line4f",
+       "value": {
+        "cents": 8484400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "f4952.election",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s8812.3.deepseek",
       "kind": "fixture"
      }
     },
@@ -4216,138 +2413,6 @@
     },
     {
      "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      },
-      {
-       "ref": "f4952.line4f",
-       "value": {
-        "input": "f4952.alternative_allocation",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.alternative_allocation"
-       }
-      },
-      {
-       "ref": "f4952.line4g",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4f",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.election",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f5695.7",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      },
-      {
-       "ref": "f4952.line4f",
-       "value": {
-        "input": "f4952.alternative_allocation",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.alternative_allocation"
-       }
-      },
-      {
-       "ref": "f4952.line4g",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.line4c",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line4f",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.election",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.s3.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
       "cite": null,
       "form": "model-declared refusal",
       "gate": "f4952.alternative_allocation",
@@ -4464,38 +2529,38 @@
      }
     }
    ],
-   "differ": 209,
+   "differ": 235,
    "handle": "4h",
-   "in_scope": 1972,
-   "in_scope_agree": 1835,
+   "in_scope": 2085,
+   "in_scope_agree": 1911,
    "invalid": 0,
    "kinds": {
-    "candidate-refuses": 71,
-    "candidate-unknown": 137,
+    "candidate-refuses": 60,
+    "candidate-unknown": 174,
     "project-refuses": 1
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-refuses": 13,
-     "candidate-unknown": 25
+     "candidate-refuses": 15,
+     "candidate-unknown": 34
     },
     "incomplete": {
-     "candidate-refuses": 6,
-     "candidate-unknown": 85
+     "candidate-refuses": 5,
+     "candidate-unknown": 97
     },
     "refused": {
-     "candidate-refuses": 52,
-     "candidate-unknown": 27,
+     "candidate-refuses": 40,
+     "candidate-unknown": 43,
      "project-refuses": 1
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f4952.line4h",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
-    "partial": 194
+    "partial": 226
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -5322,924 +3387,129 @@
   },
   {
    "absent": 0,
-   "agree": 2080,
+   "agree": 0,
    "candidate": "f4952.line8",
-   "compared": 2259,
+   "compared": 0,
    "completed_witnesses": [
     {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.alternative_allocation",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.line3",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line6",
-       "value": {
-        "cite": null,
-        "form": "model-declared refusal",
-        "gate": "f4952.alternative_allocation",
-        "kind": "refusal",
-        "remedy": "Outside candidate scope"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-refuses",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.clcw.2.deepseek",
+      "id": "classm.f8889.1.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-unknown",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.s3.2.deepseek",
+      "id": "classm.f4952.1.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-unknown",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.s3.4.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-unknown",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8962.3.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-unknown",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f5695.7.deepseek",
+      "id": "classm.g28.1.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.unsupported",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-refuses",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.aqee.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.unsupported",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.eic.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.unsupported",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f8962.1.gpt",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f5695.7",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.s3.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.alternative_allocation",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.line3",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line6",
-       "value": {
-        "cite": null,
-        "form": "model-declared refusal",
-        "gate": "f4952.alternative_allocation",
-        "kind": "refusal",
-        "remedy": "Outside candidate scope"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.clcw.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.unsupported",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.aqee.1",
+      "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
     }
    ],
-   "differ": 179,
+   "differ": 0,
    "handle": "8",
-   "in_scope": 1977,
-   "in_scope_agree": 1890,
-   "invalid": 0,
+   "in_scope": 0,
+   "in_scope_agree": 0,
+   "invalid": 2364,
    "kinds": {
-    "candidate-refuses": 92,
-    "candidate-unknown": 87
+    "candidate-invalid": 2364
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-refuses": 13,
-     "candidate-unknown": 25
+     "candidate-invalid": 392
     },
     "incomplete": {
-     "candidate-refuses": 6,
-     "candidate-unknown": 43
+     "candidate-invalid": 928
     },
     "refused": {
-     "candidate-refuses": 73,
-     "candidate-unknown": 19
+     "candidate-invalid": 1044
     }
    },
    "open_at_triage": true,
    "project": "f4952.line8",
    "shown_when": null,
-   "sources": {
-    "fixture": 1565,
-    "generated": 500,
-    "partial": 194
-   },
+   "sources": {},
    "status": "DISAGREE",
-   "triage": "differs",
+   "triage": "candidate invalid",
    "witnesses": [
     {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-unknown",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.1.deepseek",
@@ -6247,64 +3517,13 @@
      }
     },
     {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-unknown",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.2.deepseek",
@@ -6312,64 +3531,13 @@
      }
     },
     {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-unknown",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.3.deepseek",
@@ -6377,64 +3545,13 @@
      }
     },
     {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-unknown",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.4.deepseek",
@@ -6442,64 +3559,13 @@
      }
     },
     {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-unknown",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.5.deepseek",
@@ -6507,541 +3573,26 @@
      }
     },
     {
-     "candidate": {
-      "input": "f4952.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f4952.unsupported"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "input": "f4952.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f4952.unsupported"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "f4952",
-     "kind": "candidate-unknown",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 0,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.6.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.alternative_allocation",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.line3",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line6",
-       "value": {
-        "cite": null,
-        "form": "model-declared refusal",
-        "gate": "f4952.alternative_allocation",
-        "kind": "refusal",
-        "remedy": "Outside candidate scope"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.clcw.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.alternative_allocation",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.line3",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line6",
-       "value": {
-        "cite": null,
-        "form": "model-declared refusal",
-        "gate": "f4952.alternative_allocation",
-        "kind": "refusal",
-        "remedy": "Outside candidate scope"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.unsupported",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.aqee.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.unsupported",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.eic.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.alternative_allocation",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.line3",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line6",
-       "value": {
-        "cite": null,
-        "form": "model-declared refusal",
-        "gate": "f4952.alternative_allocation",
-        "kind": "refusal",
-        "remedy": "Outside candidate scope"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.eic.6.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f4952.alternative_allocation",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f4952.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.line3",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "f4952.line6",
-       "value": {
-        "cite": null,
-        "form": "model-declared refusal",
-        "gate": "f4952.alternative_allocation",
-        "kind": "refusal",
-        "remedy": "Outside candidate scope"
-       }
-      }
-     ],
-     "instance": "f4952",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f4952.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f4952.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.eic.7.deepseek",
       "kind": "fixture"
      }
     }
    ]
   }
  ],
- "log_sha256_at_triage": "1453fae97b3a8564544163caf147df8ca4a2e6b6e60f20891eb08567e01d7290",
+ "log_sha256_at_triage": "eb39ff0223f05ddfa49ba02cf8c6cab106df6b1ab459c6a6030b921ef9096987",
  "policy": "executable-triage-v2",
  "response_sha256": "65a6c2b2c31c12150202bea623ca26fcddd07919e6be99763d3cd0a3e68fdcdc",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "7db4c717ccb1ac2e5216ffb466951229eb821c85cee3d4b50e962d3febe3b666"
+ "subject_sha256": "0c935a649d63bd4e0c0c2d35a30cd2d5ae29407f6db9c22f324b552e2ae793d2"
 }

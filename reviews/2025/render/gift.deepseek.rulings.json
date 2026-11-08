@@ -11,6 +11,15 @@
    "context": "9bee6ea9ebce90e936420e9fe48cb68b4dbf2e5bca9ffcd0b3fbbae41ac3e42e"
   },
   {
+   "printed": "no",
+   "restated": "Enter false (sa.no).",
+   "model": "The provided IRS text does not mention a 'Year parameter sa.no' or define this helper, so the false value cannot be verified from the text.",
+   "ruling": "Ruling: model error; gift.no is the false alternative of gift.section_b, taken when the deduction is $5,000 or less (f8283 p. 1, Section B, \"more than $5,000 per item or group\"); it is a structural constant the text need not state, and the restatement (false) matches the project.",
+   "context": "23e60d2622a4fd0458376c98867cf9d19f87b5dd670d86207db212d8e250dd5c",
+   "date": "2026-11-07",
+   "run": "e8975f841b43734a6db6e06d20425c9f75421ba61ea309453d3996ad01842536"
+  },
+  {
    "printed": "public_securities",
    "restated": "Input — Is this group publicly traded securities? A security counts only if it is (a) listed on a recognized stock exchange whose quotations are published daily, (b) regularly traded on a national or regional over-the-counter market, or (c) mutual fund shares quoted daily in a national newspaper of general circulation. Answer No for privately held stock, LLC or partnership interests, and for stock that has a ticker symbol but is not regularly traded.",
    "model": "The IRS says 'A security is generally considered to be publicly traded if' and includes 'Certain other securities even though the securities do not meet any of the criteria'; the restatement says a security 'counts only if' it meets (a)-(c) and adds a No for a ticker symbol not regularly traded, which the text does not impose.",

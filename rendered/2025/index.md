@@ -17,7 +17,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | f1095a.md | form | 77 |
 | f2441.md | form | 84 |
 | f4562.md | form | 15 |
-| f4952.md | form | 31 |
+| f4952.md | form | 36 |
 | f5329.md | form | 22 |
 | f5695.md | form | 142 |
 | f8606.md | form | 6 |
@@ -31,7 +31,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | f8995a.md | form | 14 |
 | ftc.md | form | 17 |
 | g28.md | form | 9 |
-| gift.md | form | 5 |
+| gift.md | form | 8 |
 | household.md | form | 53 |
 | interest.md | form | 2 |
 | ira.md | worksheet | 57 |
@@ -50,7 +50,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | s2.md | form | 19 |
 | s3.md | form | 15 |
 | s8812.md | form | 92 |
-| sa.md | form | 61 |
+| sa.md | form | 66 |
 | sales.md | form | 27 |
 | sb.md | form | 18 |
 | sc.md | form | 152 |

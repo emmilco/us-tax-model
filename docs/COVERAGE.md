@@ -943,8 +943,8 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
   - *Not covered:* Schedule A unsupported item / Form 4684. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`
-- **`sa.charity_limited`**: Are your charitable deductions limited by income, or carried over from an earlier year?
-  - *The data asks or tests:* Are any charitable deductions reduced by income limits, or carried over from a prior year? Determine under Publication 526 before answering. (`input`)
+- **`sa.charity_limited_if_gifts`**: Are your charitable deductions limited by income, or carried over from an earlier year?
+  - *The data asks or tests:* Charitable deductions are reduced by income limits or carried over from a prior year (no when you and your spouse gave nothing to charity and have no carryover) (`choose`)
   - *Not covered:* Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`
@@ -966,7 +966,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
   - *Refused at:* `gift.allowed`
 - **`gift.section_b`**: Is a group of similar noncash gifts, other than publicly traded securities, over $5,000?
-  - *The data asks or tests:* Appraisal threshold: non-publicly-traded group over $5,000 (`test`)
+  - *The data asks or tests:* Appraisal threshold: non-publicly-traded group over $5,000 (`choose`)
   - *Not covered:* Form 8283 Section B. A group of similar items over $5,000 requires Section B and a qualified appraisal; publicly traded securities are excepted.
     *Source:* [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
   - *Refused at:* `gift.allowed`

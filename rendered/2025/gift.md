@@ -49,11 +49,32 @@
 - Expr: `{"op":"input","source":"Does this group need an appraisal or other special treatment: any of the following?\n\n- a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together, other than publicly traded securities\n  - similar items: items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings\n  - publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper\n- a noncash contribution reaching you through a Schedule K-1\n- vehicles\n- pass-through entity interests\n- intellectual property\n- inventory\n- conservation or partial interests\n- property with restrictions on its use\n- a clothing or household item over $500 not in good used condition"}`
 - Cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, "Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings."; p. 9, Securities, "A security is generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations are published daily" (December 2025; printed date 2026-01-30; sha256 2de015f7)
 
+## (helper) — `gift.over_5000`
+
+- **Authored helper label:** The deduction for this item or group is more than $5,000
+- **Encoded (Bool):** helper "Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions" > $5,000
+- Expr: `{"gt":["gift.deduction",{"const":500000}],"op":"test"}`
+- Cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 p. 1, Section B, "for which you claimed a deduction of more than $5,000 per item or group (except contributions reportable in Section A)" (December 2025; printed date 2026-01-30; sha256 2de015f7)
+
+## (helper) — `gift.not_public`
+
+- **Authored helper label:** This group is not publicly traded securities
+- **Encoded (Bool):** helper "Is this group publicly traded securities (listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper of general circulation)?" = false
+- Expr: `{"eq":["gift.public_securities",{"const":false}],"op":"test"}`
+- Cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 p. 1, Section A, "Also list publicly traded securities and certain other property even if the deduction is more than $5,000" (December 2025; printed date 2026-01-30; sha256 2de015f7)
+
+## (helper) — `gift.no`
+
+- **Authored helper label:** Year parameter sa.no (no)
+- **Encoded (Bool):** Enter false (sa.no).
+- Expr: `{"op":"param","ref":"sa.no"}`
+- Cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A (December 2025; printed date 2026-01-30; sha256 2de015f7)
+
 ## (helper) — `gift.section_b`
 
 - **Authored helper label:** Appraisal threshold: non-publicly-traded group over $5,000
-- **Encoded (Bool):** helper "Is this group publicly traded securities (listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper of general circulation)?" = false and helper "Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions" > $5,000
-- Expr: `{"all":[{"eq":["gift.public_securities",{"const":false}],"op":"test"},{"gt":["gift.deduction",{"const":500000}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "The deduction for this item or group is more than $5,000" = true → helper "This group is not publicly traded securities"] [helper "The deduction for this item or group is more than $5,000" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["gift.over_5000",{"const":true}],"op":"test"},"then":"gift.not_public"},{"guard":{"eq":["gift.over_5000",{"const":false}],"op":"test"},"then":"gift.no"}],"op":"choose"}`
 - Cite: [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 p. 1, Section A, "Also list publicly traded securities and certain other property even if the deduction is more than $5,000", Section B, "for which you claimed a deduction of more than $5,000 per item or group (except contributions reportable in Section A)" (December 2025; printed date 2026-01-30; sha256 2de015f7)
 
 ## (helper) — `gift.allowed`

@@ -5,7 +5,7 @@ Second transcription of `Schedule A — supported itemized deductions and standa
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
+| line-scoped reviews | 2 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 14be893889613c275e411636a9c4f8908e0bbbd991bb3b1aa4077f5205b9fbaf |
@@ -21,8 +21,8 @@ Second transcription of `Schedule A — supported itemized deductions and standa
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | db1543ebd2f331ad735d7efc1b1ec2f167dca06d6045bc946d2835324faaefa0 |
-| printed lines compared | 22 |
-| agree / disagree / missing | 18 / 4 / 0 |
+| printed lines compared | 23 |
+| agree / disagree / missing | 19 / 4 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -97,6 +97,10 @@ Second:
 
 Ruling: model error; i1040gi p. 33, Line 12b: "If your filing status is married filing separately and your spouse itemizes deductions on their return, check the box on line 12b"; p. 14: "You also can’t take the standard deduction if your spouse itemizes deductions" (Married Filing Separately); i1040gi p. 34, Line 12e: "your federal income tax will be less if you take the larger of your standard deduction or itemized deductions". Inherited from sa.itemizes and line 16. The 2 completed-return value records are classm.f5695.8.deepseek and its partial withholding sa.spouse_extra: classm.f5695.8.deepseek is a single return whose record answers sa.spouse_itemizes Yes ("Married filing separately with a spouse who itemizes?"); the project's sa.mfs_spouse_itemizes requires married filing separately, so it takes the $15,750.00 standard deduction against line 17 of $7,874.00, where the candidate itemizes. The interview cannot produce that record (a single filer answers No to a question that opens "Married filing separately"), and married filing separately is itself refused (s3.mfs). The completed-return candidate-unknown (sa.gambling_losses, sa.spouse_itemizes, sa.spouse_extra, sa.elect_itemize) and candidate-refuses (sa.spouse_extra on single records) are as at sa.itemizes. Triage executable-triage-v2 (`reviews/2025/transcription/triage/sa.json`; 1,495 fixtures, 500 generated returns seed 20261026, 526 partial records from 40 bases; 2,521 comparisons): 1,388 agree; differences 30 candidate-refuses, 1096 candidate-unknown, 2 project-refuses, 2 project-unknown, 3 value; on completed returns 3 candidate-refuses, 171 candidate-unknown, 2 value; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.
 
+### 11 — Gifts by cash or check (zero when you and your spouse gave nothing to charity and have no
+Status: **AGREE**
+Reviewed in: pass f56e521f4163
+
 ### 2 — Amount from sa.agi_floor
 Status: **AGREE**
 
@@ -116,18 +120,23 @@ Status: **AGREE**
 
 ### 6 — Amount from sa.zero
 Status: **AGREE**
+Reviewed in: pass f56e521f4163
 
 ### 8b — Amount from sa.zero
 Status: **AGREE**
+Reviewed in: pass f56e521f4163
 
 ### 8c — Amount from sa.zero
 Status: **AGREE**
+Reviewed in: pass f56e521f4163
 
 ### 13 — Amount from sa.zero
 Status: **AGREE**
+Reviewed in: pass f56e521f4163
 
 ### 15 — Amount from sa.zero
 Status: **AGREE**
+Reviewed in: pass f56e521f4163
 
 ### 16 — Other—from list in instructions. List type and amount:
 Status: **DISAGREE**
@@ -144,7 +153,10 @@ Second:
 {"of": [{"input": "sa.gambling_losses"}, {"ref": "s1.line8b"}], "op": "smaller_of"}
 ```
 
-Ruling: model error; i1040sca p. 11, Line 16: "Gambling losses (gambling losses include, but aren't limited to, the cost of nonwinning bingo, lottery, and raffle tickets) but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b." The project enters zero without gambling winnings and the smaller of sa.gambling_losses and Schedule 1 line 8b otherwise; the candidate takes the smaller of the two always, so it needs sa.gambling_losses on every return though the amount is zero without winnings (all 144 completed-return differences are candidate-unknown for sa.gambling_losses). No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/sa.json`; 1,495 fixtures, 500 generated returns seed 20261026, 526 partial records from 40 bases; 2,521 comparisons): 1,035 agree; differences 1386 candidate-unknown, 58 project-refuses, 42 project-unknown; on completed returns 144 candidate-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.
+Second transcription's note: The only supported item from the line 16 list is gambling losses. The instructions limit them to the gambling winnings reported on Schedule 1 (Form 1040), line 8b. Every other line 16 item, and any net qualified disaster loss or increased standard deduction reporting, is refused through sa.unsupported.
+
+Ruling: model error; same reply and project expression as the earlier rulings; the line was reopened only because its refusal gate sa.charity_limited became a gate line behind sa.gifts. i1040sca p. 11, Line 16: "Gambling losses (gambling losses include, but aren't limited to, the cost of nonwinning bingo, lottery, and raffle tickets) but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b." The project enters zero without gambling winnings and the smaller of sa.gambling_losses and Schedule 1 line 8b otherwise; the candidate always takes the smaller, so it needs sa.gambling_losses on every return though the amount is zero without winnings. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/sa.json`; 1,638 fixtures, 500 generated returns seed 20261026, 539 partial records; 2,677 comparisons): 972 agree; 1,594 candidate-unknown (184 on completed returns, all sa.gambling_losses), 67 project-refuses (the cited screens sa.unsupported, sa.charity_limited, sa.excluded_income), 44 project-unknown (withheld screen answers). Project stands.
+Reviewed in: pass f56e521f4163
 
 ### 7 — Add sa.line5e, sa.line6
 Status: **AGREE**
@@ -158,14 +170,17 @@ Status: **AGREE**
 ### 10 — Add sa.line8e, sa.line9
 Status: **AGREE**
 
-### 12 — Total supported noncash donations before income limits
+### 12 — Total supported noncash donations before income limits (zero when you and your spouse gave
 Status: **AGREE**
+Reviewed in: pass f56e521f4163
 
 ### 14 — Add sa.line11, sa.line12, sa.line13
 Status: **AGREE**
+Reviewed in: pass f56e521f4163
 
 ### 17 — Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
 Status: **AGREE**
+Reviewed in: pass f56e521f4163
 
 ## Refusal gates listed by the second transcription
 
@@ -175,19 +190,20 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | --- | --- | --- |
 | sa.itemizes | sa.charity_limited, sa.dependent, sa.excluded_income, sa.spouse_extra, sa.unsupported | sa.spouse_extra |
 | sa.deduction | sa.charity_limited, sa.dependent, sa.excluded_income, sa.spouse_extra, sa.unsupported | sa.spouse_extra |
+| 11 | sa.charity_limited | sa.charity_limited |
 | 5e | sa.excluded_income, sa.unsupported | sa.unsupported |
 | 6 | sa.unsupported | - |
 | 8b | sa.unsupported | - |
 | 8c | sa.unsupported | - |
-| 13 | sa.charity_limited | - |
+| 13 | sa.charity_limited | sa.charity_limited |
 | 15 | sa.unsupported | - |
 | 16 | sa.unsupported | - |
 | 7 | sa.excluded_income, sa.unsupported | - |
 | 8e | sa.unsupported | - |
 | 10 | sa.unsupported | - |
-| 12 | sa.charity_limited | - |
-| 14 | sa.charity_limited | - |
-| 17 | sa.charity_limited, sa.excluded_income, sa.unsupported | - |
+| 12 | sa.charity_limited | sa.charity_limited |
+| 14 | sa.charity_limited | sa.charity_limited |
+| 17 | sa.charity_limited, sa.unsupported | sa.charity_limited |
 
 ## Line subjects
 
@@ -199,24 +215,25 @@ What each compared line's verdict depends on within the document (tools/transcri
 | sa.agi | 7ac40a0d224f103b5668b2d9b355ac1ecb9b68c3d5235bd8ae09b20888315bc8 |
 | sa.itemizes | ad4db0f95ab83183ecdedb3a2b0d58c4d33534be64ba6ab315ad5cad220949be |
 | sa.deduction | cadc70373beef251c7ce5e4a979aafa7485532c86652393a759e1036cc0ef0cc |
+| 11 | f8772dd5aa4985305b4739b6595be648f180d2a91b1daf3ffeb754bf1634652b |
 | 2 | 6ed9e8826b6917afade8428ad8ba0ef06fdbb723500482b53bce904f69e95014 |
 | 3 | 4606a9bdca74892e9959452bafe144fe3a9c24d25b48c83ee961469221a4b4c3 |
 | 4 | d6e7773c6a0320691ca4144299791249ce57839562905a9d2bf42783fba57b83 |
 | 5d | e982db8b9a85a024643b90e1fd4ff9aa0bae6b0ae062976ded4ca6ac6ad90608 |
 | 5e | 0762d68e00b9d72f8d0f0038205ed4ce3626ba29164c5743fb3d673cc4d286ef |
-| 6 | 8e7cfae2b9add8293cde806261e2967eec63604ca5d8c96c919f57e050d97b0f |
-| 8b | 08e60f0d38ae0fe9c5aa02875e5b98f24cb3d837d65ca474ee364f3f1c3ce5db |
-| 8c | ed964e2d8103bb043e16af84ffda146b310095768d2bf3ba5affbf75c73bbc22 |
-| 13 | 3b2f227fc6f9276a14fc2e95225c3ce6ebb2e6540eec1675158b44b73d4e78ff |
-| 15 | 6f20b2760034d6da2085c4c5eaeaf6ec12bb56641fefcb87dfec425ea5466ba1 |
-| 16 | bc94551e3e016b4a7a61a6231b190fb8b3e57cad86bee2639e9ec4e5d7fac4a7 |
+| 6 | cad5a8bc0186e5a8328d9258c8a59cf3c753e62139bbfa95bd1401f678c6ae9f |
+| 8b | f37ae7398aeaf36cf6ae9c174f25eddea2a86520a9ebae710e9409ebdd492e16 |
+| 8c | f3927965feffe5c4d545a8d22aa875f48c50dca2d93ac46b48927ae119914afc |
+| 13 | 5ec0b95d053f64618438ffa170eb5d773bc79cca124dbc1894ba8cf15c5eb177 |
+| 15 | c6bb971dc7274078a55bc63751971df545fef2da4dc66bef5bc451a43efaf514 |
+| 16 | 80d2c5b8b5ff902688a6bcd2e62b2e8cb6714f9bd7a33369a99c44e1cd7f783d |
 | 7 | f01dc441865ba4d227e6810328f38376b883f341b25679842cfe8a31fbf9aee0 |
 | 8e | 5f6bb65fc20292add3f19c02137e4eab05e81a61f2a1e8da6bec29434b678658 |
 | 9 | 6afefd4a342b5f5749c93d7aab8c5b7494cd95445e619cb164a79b29df97b69b |
 | 10 | 320b71964696452137d0967c5995c1f6bc29fe3f800b4d8feff670ecdcf79f8a |
-| 12 | f7798b1da5cd3cbbdaece0aa7f693e350ece6c4141530d0cd53593556cbd3b7a |
-| 14 | c37b1e535791ea619bf78cfdf3ffcf20d537bef0eb764479222f46493ccda43b |
-| 17 | 1627818731b5bbf9dd5e60d5830e64f50beb2c702503544e409ba1b280568c1c |
+| 12 | 1bee613c59581de9dd126ac727c3517b6454fa12b56b5e4a76c0ec394a275b76 |
+| 14 | d6f3486eacb02f6ccf83c804d55d314bc5451cf021becb040590566561e4e551 |
+| 17 | f96a5dc36b9b3f79c767e4f47dc7def6aa85ad8444e5ae9d391c13b1faa7f15e |
 | (rest of the document) | 4ab44412ed063c2bc602f385d7b58b759dbf415cd3a4e78f694db4b2cde08b0a |
 
 ## Foreign interfaces
@@ -225,8 +242,18 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 
 | line | foreign interfaces sha256 |
 | --- | --- |
+| 11 | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
 | 4 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 5d | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| 6 | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| 8b | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| 8c | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| 13 | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| 15 | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| 16 | 4f1feac5d6e8d0c8ced014ec9ec1c0520d621c094bff69b87ae11909945e2a46 |
+| 12 | 415ba62a12f11e3e93618cc40ce554ccffc204554a9cb6ccc8d1c504bfc18800 |
+| 14 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| 17 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 
 ## Line-scoped reviews
 
@@ -307,6 +334,164 @@ lines:
       op: sum
       of: [sa.line5a, sa.line5b, sa.line5c]
     note: "Line 5a on the form may hold either income taxes or general sales taxes (with the box checked). The supplied sa.line5a input covers income taxes only, and the sales-tax election is screened by sa.unsupported where line 5a is defined. Line 5d therefore adds the three supplied inputs and adds no refusal of its own."
+```
+```
+
+#### Pass f56e521f4163
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 11, 6, 8b, 8c, 13, 15, 16, 12, 14, 17 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | f56e521f4163ee6d69adb3458698612214c289abdbd80cf7ddd3caeff819c7b6 |
+| prompt policy | source-only-computation-v3+lines-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | a4a61e01d3c14ae99d788bd3b4eb67402e6ec946ac8dc384922628841c44ac82 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | ff285ed95e2e80be2f82edc5fa8ade4696f8e7af4055996800e139385f1dcb81 |
+| receipt | .transcription/sa.lines-c710487fe69e |
+| printed lines compared | 10 |
+| agree / disagree / missing | 9 / 1 / 0 |
+| extra printed lines in second | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
+| i1040sca | 2025; printed date 2025-12-08 | 7, 9, 10, 11 | cited pages | 18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b | 9, 10, 11 | 5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c |
+| p525 | 2025 | 33 | pages named by another document's citation | 7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182 | 33 | 27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65 |
+
+##### Other documents in the catalog
+
+Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
+
+| reason | documents |
+| --- | --- |
+| definition | aqee, se, tax_on_amount, tcw |
+| named form, inputs and named lines: f1040.line11b, f1040.line12e, f1040.line1a, f1040.line25b, f1040.line25c, f1040.line25c_other, f1040.line26, f1040.line35a, f1040.line36, f1040.line3a, f1040.status, f1040.tax_exempt_interest | f1040 |
+| named form, inputs and named lines: f4952.alternative_allocation, f4952.carryover, f4952.has_interest, f4952.line1, f4952.line4g, f4952.prior_7, f4952.unsupported | f4952 |
+| named form, inputs and named lines: f8863.ban, f8863.paid | f8863 |
+| named form, inputs and named lines: household.community_property, household.cp_married, household.credit_disallowed, household.home_cost, household.married, household.qss_eligible, household.rdp, household.spouse_died_2025, household.unmarried | household |
+| named form, inputs and named lines: s3.line10, s3.line12, s3.line14 | s3 |
+| named form, inputs and named lines: scope.credits, scope.other_income, scope.other_line16, scope.schedule1 | scope |
+| named line | eic, f5329, sli |
+| shared page | gift, person, refund, s1 |
+
+##### Raw second transcription
+
+```yaml
+```yaml
+lines:
+  - id: sa.h_zero
+    printed: "(helper)"
+    label: "Zero (no amount on the line for the supported cases)"
+    type: NonNegDollars
+    expr: {op: param, ref: sales.zero}
+
+  - id: sa.line11_if_gifts
+    printed: "11"
+    label: "Gifts by cash or check. If you made any gift of $250 or more, see instructions"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [sa.gifts, {const: true}]}
+          then: sa.line11
+        - guard: {op: test, eq: [sa.gifts, {const: false}]}
+          then: sa.h_zero
+    refuses: [sa.charity_limited]
+    note: "The instructions say to enter the total value of cash or check gifts unless a limit on deducting gifts applies. If a limit applies, Pub. 526 figures the amount. This encoding supports only the unlimited case and refuses when sa.charity_limited is true. With no charitable contributions (sa.gifts false) the line is zero."
+
+  - id: sa.line6
+    printed: "6"
+    label: "Other taxes. List type and amount"
+    type: NonNegDollars
+    expr: {op: copy, from: sa.h_zero}
+    refuses: [sa.unsupported]
+    note: "The instructions say line 6 holds foreign income taxes and generation-skipping tax. Both are outside scope (sa.unsupported), so the supported case is zero."
+
+  - id: sa.line8b
+    printed: "8b"
+    label: "Home mortgage interest not reported to you on Form 1098. See instructions if limited. If paid to the person from whom you bought the home, see instructions and show that person's name, identifying no., and address"
+    type: NonNegDollars
+    expr: {op: copy, from: sa.h_zero}
+    refuses: [sa.unsupported]
+    note: "Mortgage interest not on Form 1098 is outside scope (sa.unsupported), so the supported case is zero."
+
+  - id: sa.line8c
+    printed: "8c"
+    label: "Points not reported to you on Form 1098. See instructions for special rules"
+    type: NonNegDollars
+    expr: {op: copy, from: sa.h_zero}
+    refuses: [sa.unsupported]
+    note: "Points not on Form 1098 are outside scope (sa.unsupported), so the supported case is zero."
+
+  - id: sa.line13
+    printed: "13"
+    label: "Carryover from prior year"
+    type: NonNegDollars
+    expr: {op: copy, from: sa.h_zero}
+    refuses: [sa.charity_limited]
+    note: "A charitable carryover from a prior year is covered by the sa.charity_limited screen. That screen asks about deductions reduced by income limits or carried over. The supported case is therefore zero."
+
+  - id: sa.line15
+    printed: "15"
+    label: "Casualty and theft loss(es) from a federally declared disaster (other than net qualified disaster losses). Attach Form 4684 and enter the amount from line 18 of that form. See instructions"
+    type: NonNegDollars
+    expr: {op: copy, from: sa.h_zero}
+    refuses: [sa.unsupported]
+    note: "Any casualty or theft loss is outside scope (sa.unsupported), so the supported case is zero."
+
+  - id: sa.line16
+    printed: "16"
+    label: "Other—from list in instructions. List type and amount"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [sa.gambling_losses, s1.line8b]}
+    refuses: [sa.unsupported]
+    note: "The only supported item from the line 16 list is gambling losses. The instructions limit them to the gambling winnings reported on Schedule 1 (Form 1040), line 8b. Every other line 16 item, and any net qualified disaster loss or increased standard deduction reporting, is refused through sa.unsupported."
+
+  - id: sa.h_gift_noncash_total
+    printed: "(helper)"
+    label: "Total deductible value of contributions of property other than by cash or check (Form 8283 groups)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: gift, field: gift.allowed}
+
+  - id: sa.line12
+    printed: "12"
+    label: "Other than by cash or check. If you made any gift of $250 or more, see instructions. You must attach Form 8283 if over $500"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [sa.gifts, {const: true}]}
+          then: sa.h_gift_noncash_total
+        - guard: {op: test, eq: [sa.gifts, {const: false}]}
+          then: sa.h_zero
+    refuses: [sa.charity_limited]
+    note: "The instructions say to enter the total value of contributions of property other than by cash or check unless a limit applies. This encoding reads each group's allowed amount (gift.allowed) and handles only the unlimited case. When a limit applies, sa.charity_limited refuses the line."
+
+  - id: sa.line14
+    printed: "14"
+    label: "Add lines 11 through 13"
+    type: NonNegDollars
+    expr: {op: sum, of: [sa.line11_if_gifts, sa.line12, sa.line13]}
+
+  - id: sa.line17
+    printed: "17"
+    label: "Add the amounts in the far right column for lines 4 through 16. Also, enter this amount on Form 1040 or 1040-SR, line 12e"
+    type: NonNegDollars
+    expr: {op: sum, of: [sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16]}
+    note: "The far right column for lines 4 through 16 holds lines 4, 7, 10, 14, 15 and 16."
 ```
 ```
 

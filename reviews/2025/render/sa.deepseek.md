@@ -5,7 +5,7 @@ The rendered English of every printed line of `Schedule A — supported itemized
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
+| line-scoped reviews | 2 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | 6e37426479c5001decaf24b5fed6218f10bfd53d22f8f3fe0fada43d99c66083 |
@@ -96,10 +96,11 @@ Status: **MATCH**
 
 Model: Limits line 8a to eligible Form 1098 mortgage interest and points when the debt/use limits do not apply, matching the supported part of the IRS line.
 
-### 11 — Deductible cash/check charitable gifts before income limits, after benefits received and r
+### 11 — Gifts by cash or check (zero when you and your spouse gave nothing to charity and have no
 Status: **MATCH**
 
-Model: Restates cash/check charitable gifts with benefit and substantiation reductions; the refusal covers income-limited and carryover charitable cases.
+Model: IRS says enter the total value of cash/check gifts (including out-of-pocket expenses) unless a limit applies, and only the deductible value if limited; the program enters deductible cash/check gifts net of benefits and substantiation, and refuses when income limits or carryovers apply.
+Reviewed in: pass c1a37c28471e
 
 ### 2 — Amount from sa.agi_floor
 Status: **MISMATCH**
@@ -135,42 +136,50 @@ Model: Uses the smaller of line 5d and the worksheet ceiling helper, whose formu
 ### 6 — Amount from sa.zero
 Status: **MATCH**
 
-Model: Enters zero; the refusal covers foreign tax/GST and other unsupported items, so zero is correct within supported cases for the other-taxes line.
+Model: Line 6 instruction permits only foreign income taxes and GST on certain distributions, which are exactly the items the program excludes via its sa.unsupported refusal, so zero is right within the supported cases.
+Reviewed in: pass c1a37c28471e
 
 ### 8b — Amount from sa.zero
 Status: **MATCH**
 
-Model: Enters zero; the refusal covers mortgage interest not on Form 1098, so zero is correct when no unsupported 8b amount exists.
+Model: Line 8b is home mortgage interest not reported on Form 1098; the program enters zero and refuses (sa.unsupported) when mortgage interest not on Form 1098 or subject to the debt/use limits is involved.
+Reviewed in: pass c1a37c28471e
 
 ### 8c — Amount from sa.zero
 Status: **MATCH**
 
-Model: Enters zero; the refusal covers points not reported on Form 1098, so zero is correct when no unsupported 8c amount exists.
+Model: Line 8c is points not reported on Form 1098; the program enters zero and refuses via sa.unsupported for points not on Form 1098 or subject to the debt/use limits.
+Reviewed in: pass c1a37c28471e
 
 ### 13 — Amount from sa.zero
 Status: **MATCH**
 
-Model: Enters zero; the refusal covers charitable carryovers and income limits, so zero is correct when no carryover exists.
+Model: Line 13 is the carryover from a prior year allowed this year; the program enters zero and refuses when charitable deductions are income-limited or carried over, which is exactly the case that produces a line 13 amount.
+Reviewed in: pass c1a37c28471e
 
 ### 15 — Amount from sa.zero
 Status: **MATCH**
 
-Model: Enters zero; the refusal covers casualty/theft losses and Form 4684, so zero is correct when no such loss exists.
+Model: Line 15 is the Form 4684, line 18 disaster casualty/theft loss; the program enters zero and refuses (sa.unsupported) for any casualty or theft loss including a disaster loss.
+Reviewed in: pass c1a37c28471e
 
 ### 16 — Other—from list in instructions. List type and amount:
 Status: **MATCH**
 
-Model: Computes gambling losses limited to Schedule 1 line 8b when there are gambling winnings, and zero otherwise, with refusal for other line 16 items.
+Model: IRS lists gambling losses 'but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b'; the program enters the smaller of gambling losses and s1 line 8b when there are winnings, otherwise zero, and refuses other line 16 items.
+Reviewed in: pass c1a37c28471e
 
 ### 7 — Add sa.line5e, sa.line6
 Status: **MATCH**
 
-Model: Adds lines 5e and 6 as the IRS line directs.
+Model: IRS line 7 reads 'Add lines 5e and 6'; the restatement adds line 5e and line 6.
+Reviewed in: pass c1a37c28471e
 
 ### 8e — Add sa.line8a, sa.line8b, sa.line8c
 Status: **MATCH**
 
-Model: Adds lines 8a, 8b, and 8c as the IRS line directs.
+Model: IRS line 8e reads 'Add lines 8a through 8c'; the restatement adds line 8a, line 8b, and line 8c.
+Reviewed in: pass c1a37c28471e
 
 ### 9 — Amount from f4952.line8
 Status: **MATCH**
@@ -182,20 +191,23 @@ Status: **MATCH**
 
 Model: Adds lines 8e and 9 as the IRS line directs.
 
-### 12 — Total supported noncash donations before income limits
+### 12 — Total supported noncash donations before income limits (zero when you and your spouse gave
 Status: **MATCH**
 
-Model: Adds allowed noncash gift deductions after valuation/basis and substantiation reductions, with refusals for special property and Form 8283 Section B cases; matches line 12 for supported gifts.
+Model: IRS line 12 is the total value of property contributions other than cash or check unless a limit applies; the program enters supported noncash donations before income limits and refuses when limits or carryovers apply.
+Reviewed in: pass c1a37c28471e
 
 ### 14 — Add sa.line11, sa.line12, sa.line13
 Status: **MATCH**
 
-Model: Adds lines 11, 12, and 13 as the IRS line directs.
+Model: IRS line 14 reads 'Add lines 11 through 13'; the restatement adds line 11, line 12, and line 13.
+Reviewed in: pass c1a37c28471e
 
 ### 17 — Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
 Status: **MATCH**
 
-Model: Adds lines 4, 7, 10, 14, 15, and 16, which are the Schedule A far-right amounts for lines 4 through 16.
+Model: IRS line 17 reads 'Add the amounts in the far right column for lines 4 through 16'; the only such entry lines are 4, 7, 10, 14, 15, and 16, which the restatement adds.
+Reviewed in: pass c1a37c28471e
 
 ## Line subjects
 
@@ -208,25 +220,25 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 5b | 57583553381fef1a1ee0e33ded0f3a76b6158e675c20c003ae9727361c5bc59a |
 | 5c | b27b09ae6c5c4cee8fcb75c29e6b8737d1303a8b51aad78dab435c9d4b5aa421 |
 | 8a | 1c28a67e90f31c4f151d3cdb3cf2616a83042dcf7bae1c50e24481d52615b564 |
-| 11 | 93a6fd2fb40039f3032cb5927ea07caad0fb2807fb88f947c606b27e42b85627 |
+| 11 | c2aab6e511f279fdf09a05e882a2075ee331c4279a3ba1a7e28e9d2105df4724 |
 | 2 | 4c52e94111b469ad5fce0fe24cb2cd74ec38a052a03ed05e10f6bfcd6933529e |
 | 3 | 5e24c8422623eea02699f8e25a3375d4b4a5f93310c9c241875983aa685b0cf0 |
 | 4 | b0566af27490727e00272391ce682101893fd7c95b6458fecdb03fa5e2e9ca55 |
 | 5d | c934cb7f9555055754465bd7bcf8aea0421f71eb26be966d3bddbd13c798c2e3 |
 | 5e | e7daa6499b8e1a3edb3981ba2fee13b425abaed672ba46f872697e8e87c4f0d9 |
-| 6 | b09013ce40895bb4ea84f0b1dcb9e2e58ef66084378e6487b898452a2a1d705e |
-| 8b | ee1f5f404fcf8d89fbe8a61196d1c457dde3320bd5d045fe03439039c7596fd8 |
-| 8c | 141476c33460466b06c2561b054781f70c2888a420fc28949be066b2e912fa8b |
-| 13 | f2deb70830849887fc932a73be5d3e238b24af16c3c7c26f77f99c28f832cbfd |
-| 15 | dd7f55d37dbef57fd32ea42f7962621300a5a20f5f9332bc5bd14853cc303d6d |
-| 16 | d5fa83f9c840b094e7ef28956d1ac4736f61584ce35b40d78e58d81b7bb115ff |
-| 7 | 70cfb6710af8fce9f9347739679cfa8ef8d9e6eb9a005a167f812991f2b5c031 |
-| 8e | ede48c70f46b6f531719631fb056d0a71509d94a48969162789ddc0cc0023a5d |
+| 6 | 539ba00c09245d16fa37c5b290cef68a5fc71b2a93e25ea62675e85f160a1be4 |
+| 8b | 05566f488e21764d11f4a6e0004d6eb10d3a9601be2dd4629910acdb6570606a |
+| 8c | e6135e168326c32add7095c85cb0e91bd2465ac83ef4852f609e8cc68e2706db |
+| 13 | 9f10b8086456b0315ac123fba0bf336accd65f36a56876ecae85f0a333015bd2 |
+| 15 | 6d2cf7dd5293c6a26c7cad9bcd3e26a00acffc6e9a25a7ad79afa24a3f7d1e05 |
+| 16 | 552f0ea7e49e59515f1f267c8b1b97cf367d4a7725c521f1f7980d54c80d06f0 |
+| 7 | df3ed48aca7b4098a0da0e4055dda563985c0d0a7d408a9850f8417184766fb3 |
+| 8e | f3fb1aa906da9d35c842761860f307f0351eee53f8a7dfe30cae860ab33a4540 |
 | 9 | 59551c58e6058836eb81aa7e7079bae6d30cf931898c086363bac3d61c09d8af |
 | 10 | 92b522a02b3747cf7e857a9a1c388ed33e2503712bdf226862aea42adeee02e9 |
-| 12 | 3d1b6996da384da40ed3216c6ee81b8f8594740c613f183902a32a0d9c9dd3e2 |
-| 14 | 4c43f4c752b63a3d437a0fd085015fded25a2afbb72bd310abdbce31c24fa627 |
-| 17 | 8c9c0e5763d6ea09d91d8335bf33c4e7bf17f4eeeb9f11dbba760e8d3a53f7da |
+| 12 | 99eee96a61f7fd147edcda7b0c342361af7eb1d80f77849083a6c4024925ad3f |
+| 14 | ed6587e1050f57de9c134cd44a28d603f3edb8f0ff70be9f65fa37cb5b66a87e |
+| 17 | e91ca8edc48acf4cbed4ed622292fefa2d28727c4dccdfe8ae5114a77b4fa112 |
 | (rest of the document) | ac772d777e129a58b4d78fdc4d9997382ee870e6cbf12e65c65dde7b7e719585 |
 
 ## Line-scoped reviews
@@ -281,6 +293,78 @@ lines:
   - key: "5d"
     status: MATCH
     reason: "Equivalent to the form line 5d instruction: 'Add lines 5a through 5c.'"
+```
+
+#### Pass c1a37c28471e
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 11, 6, 8b, 8c, 13, 15, 16, 7, 8e, 12, 14, 17 |
+| model requested | deepseek-flash |
+| model reported | deepseek-flash |
+| prompt sha256 | c1a37c28471ed429e1c3b026ce8c4496955d78ac154b98f769aeff91db2f4ce4 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | 65536 |
+| subject sha256 | b07c6a4acba7d417831873304c1906047cb4f27437f81a0fd166c0badc4e519c |
+| receipt | .transcription/sa.deepseek.render.lines-4cd6d16ae8f9 |
+| lines judged | 12 |
+| match / mismatch / unclear / missing | 12 / 0 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
+| i1040sca | 2025; printed date 2025-12-08 | 7, 9, 10, 11 | cited pages | 18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b | 9, 10, 11 | 5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c |
+| i1040gi | 2025; printed date 2026-02-25 | 91 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 91 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i8283 | December 2025; printed date 2026-01-30 | 1, 2, 3, 9 | cited pages | cd582a9f231564c755d552a21d937b33e24df8b9fe65f4f823b7c9eca9dfe1ad | 1, 2, 3, 9 | 53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7 |
+| p525 | 2025 | 33 | pages named by another document's citation | 7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182 | 33 | 27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65 |
+| f8283 | December 2025; created 2025-07-01 | 1, 2 | whole document | d33f4c2762c7366b560ae700f7c403b698b6567187a94eb4f7943b3ab6c20219 | - | 2a4ef5ee41c489f0de7f68915540d45a11937f39759f0c9ffb0f326461ee9320 |
+
+##### Raw response
+
+```yaml
+lines:
+  - key: "11"
+    status: MATCH
+    reason: "IRS says enter the total value of cash/check gifts (including out-of-pocket expenses) unless a limit applies, and only the deductible value if limited; the program enters deductible cash/check gifts net of benefits and substantiation, and refuses when income limits or carryovers apply."
+  - key: "6"
+    status: MATCH
+    reason: "Line 6 instruction permits only foreign income taxes and GST on certain distributions, which are exactly the items the program excludes via its sa.unsupported refusal, so zero is right within the supported cases."
+  - key: "8b"
+    status: MATCH
+    reason: "Line 8b is home mortgage interest not reported on Form 1098; the program enters zero and refuses (sa.unsupported) when mortgage interest not on Form 1098 or subject to the debt/use limits is involved."
+  - key: "8c"
+    status: MATCH
+    reason: "Line 8c is points not reported on Form 1098; the program enters zero and refuses via sa.unsupported for points not on Form 1098 or subject to the debt/use limits."
+  - key: "13"
+    status: MATCH
+    reason: "Line 13 is the carryover from a prior year allowed this year; the program enters zero and refuses when charitable deductions are income-limited or carried over, which is exactly the case that produces a line 13 amount."
+  - key: "15"
+    status: MATCH
+    reason: "Line 15 is the Form 4684, line 18 disaster casualty/theft loss; the program enters zero and refuses (sa.unsupported) for any casualty or theft loss including a disaster loss."
+  - key: "16"
+    status: MATCH
+    reason: "IRS lists gambling losses 'but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b'; the program enters the smaller of gambling losses and s1 line 8b when there are winnings, otherwise zero, and refuses other line 16 items."
+  - key: "7"
+    status: MATCH
+    reason: "IRS line 7 reads 'Add lines 5e and 6'; the restatement adds line 5e and line 6."
+  - key: "8e"
+    status: MATCH
+    reason: "IRS line 8e reads 'Add lines 8a through 8c'; the restatement adds line 8a, line 8b, and line 8c."
+  - key: "12"
+    status: MATCH
+    reason: "IRS line 12 is the total value of property contributions other than cash or check unless a limit applies; the program enters supported noncash donations before income limits and refuses when limits or carryovers apply."
+  - key: "14"
+    status: MATCH
+    reason: "IRS line 14 reads 'Add lines 11 through 13'; the restatement adds line 11, line 12, and line 13."
+  - key: "17"
+    status: MATCH
+    reason: "IRS line 17 reads 'Add the amounts in the far right column for lines 4 through 16'; the only such entry lines are 4, 7, 10, 14, 15, and 16, which the restatement adds."
 ```
 
 ## Raw response

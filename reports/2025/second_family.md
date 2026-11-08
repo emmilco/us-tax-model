@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 135 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.4% (287/3887 second-family lines judged; pending reviews are provisional); 62 eligible, 73 pending; raw agreement 81.1% (diagnostic only); current independence yield 149 line(s); both families disputed 518
+Summary: 136 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.2% (288/4008 second-family lines judged; pending reviews are provisional); 63 eligible, 73 pending; raw agreement 81.7% (diagnostic only); current independence yield 150 line(s); both families disputed 518
 
 Written by `tools/transcription/compare_families.py` on 2026-11-08 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -87,7 +87,7 @@ Pending f8995 [deepseek]: 9 open, unclassified or interface-gap rulings; transcr
 Pending f8995a [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending ftc [deepseek]: model-error noise above 10%; pass d9bfe3c08a2f of claude: no verified complete input context in the request; pass d9bfe3c08a2f of deepseek: no verified complete input context in the request; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending g28 [deepseek]: stale subject: deepseek; model-error noise above 10%; pass 04e5a89b7418 of claude: no verified complete input context in the request; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: the transcription log is stale for lines changed or not yet reviewed: 4; rerun them: transcribe.py --form g28 --lines auto.
-Pending gift [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
+Pending gift [deepseek]: stale subject: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: the transcription log is stale for lines changed or not yet reviewed: gift.allowed; rerun them: transcribe.py --form gift --lines auto.
 Pending household [deepseek]: stale subject: deepseek; model-error noise above 10%; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: the transcription log is stale for lines changed or not yet reviewed: household.ctc_disallowed_claim, household.eic_disallowed_claim; rerun them: transcribe.py --form household --lines auto.
 Pending interest [deepseek]: transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending ira [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -652,7 +652,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f1095a | deepseek (deepseek-flash) | 77 | 76 | 98.7% | 0/77 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | f2441 | deepseek (deepseek-flash) | 36 | 28 | 77.8% | 0/36 (0.0%) | pass | 3 | 5 | 0 | 0 |
 | f4562 | deepseek (deepseek-flash) | 15 | 10 | 66.7% | 0/15 (0.0%) | pass | 3 | 2 | 0 | 0 |
-| f4952 | deepseek (deepseek-flash) | 15 | 11 | 73.3% | 1/15 (6.7%) | pass | 2 | 0 | 2 | 0 |
+| f4952 | deepseek (deepseek-flash) | 15 | 13 | 86.7% | 1/15 (6.7%) | pass | 2 | 0 | 0 | 0 |
 | f5329 | deepseek (deepseek-flash) | 7 | 6 | 85.7% | 0/7 (0.0%) | pass | 1 | 0 | 0 | 0 |
 | f5695 | deepseek (deepseek-flash) | 72 | 72 | 100.0% | 0/72 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f8606 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 1 | 0 | 1 | 0 |
@@ -666,7 +666,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8995a | deepseek (deepseek-flash) | 14 | 12 | 85.7% | 0/14 (0.0%) | pending | 1 | 0 | 1 | 0 |
 | ftc | deepseek (deepseek-flash) | 17 | 15 | 88.2% | 1/17 (5.9%) | pass | 1 | 1 | 0 | 0 |
 | g28 | deepseek (deepseek-flash) | 7 | 3 | 42.9% | 0/7 (0.0%) | pass | 0 | 4 | 0 | 0 |
-| gift | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pending | 0 | 0 | 0 | 1 |
+| gift | deepseek (deepseek-flash) | 7 | 6 | 85.7% | 1/7 (14.3%) | pending | 1 | 0 | 0 | 1 |
 | household | deepseek (deepseek-flash) | 53 | 42 | 79.2% | 4/53 (7.5%) | pending | 11 | 0 | 0 | 0 |
 | interest | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | ira | deepseek (deepseek-flash) | 21 | 13 | 61.9% | 0/21 (0.0%) | pending | 2 | 4 | 2 | 0 |
@@ -701,14 +701,14 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 5 | 8 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 16 | 94.1% | 1/17 (5.9%) | pass | 1 | 0 | 0 | 0 |
-| **all** | | 1333 | 1164 | 87.3% | | | 76 | 71 | 22 | 20 |
+| **all** | | 1336 | 1168 | 87.4% | | | 77 | 71 | 20 | 20 |
 
 Pending asset [deepseek]: 2 missing expected lines.
 Pending div [deepseek]: stale subject: deepseek; 17 missing expected lines.
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending f8995 [deepseek]: stale subject: deepseek; 2 open, unclassified or interface-gap rulings.
 Pending f8995a [deepseek]: stale subject: deepseek; 1 open, unclassified or interface-gap rulings.
-Pending gift [deepseek]: 1 missing expected lines.
+Pending gift [deepseek]: 1 missing expected lines; model-error noise above 10%.
 Pending household [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending ira [deepseek]: 5 open, unclassified or interface-gap rulings.
 Pending oi8z [deepseek]: 1 open, unclassified or interface-gap rulings.
@@ -750,6 +750,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8995 | deepseek | 11 | MISMATCH | IRS line 11 instructions compute 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b' and do not provide a zero floor; the restatement adds an 'If zero or less, enter -0-' condition. |
 | f8995a | deepseek | 33 | MISMATCH | The restatement adds an 'if zero or less, enter -0-' floor, but the IRS instruction is only 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b'; no zero floor is stated for line 33. |
 | ftc | deepseek | elect | MISMATCH | IRS says: "You can’t carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies (but carryovers to and from other years are unaffected)." The restatement's "no carryover to or from this election year" is broader/different. |
+| gift | deepseek | no | UNCLEAR | The provided IRS text does not mention a 'Year parameter sa.no' or define this helper, so the false value cannot be verified from the text. |
 | household | deepseek | ctc_disallowed_claim | MISMATCH | It uses the combined any-credit disallowance answer. The IRS requires Form 8862 for CTC/ACTC/ODC only if 'your child tax credit ... additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced,' not merely because an EIC was disallowed. |
 | household | deepseek | ctc_ssn | MISMATCH | The IRS says 'To claim the child tax credit, you must have a valid SSN, which means it must be valid for employment' and 'If your qualifying child didn’t have an SSN valid for employment... you can’t claim the child tax credit for that child'; the restatement allows SSN or ITIN for each other person and does not check the qualifying children. |
 | household | deepseek | eic_above_zero | MISMATCH | Worksheet B does not use line 11 here; the IRS text says 'enter the amount from line 4b on line 6 of this worksheet,' and Worksheet A line 6 is 'your earned income credit.' |
@@ -888,7 +889,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f1095a | deepseek (deepseek-flash) | 47 | 46 | 97.9% | 1/47 (2.1%) | pending | 1 | 0 | 0 | 19 |
 | f1095a | gpt (gpt-6-astra) | 47 | 47 | 100.0% | 0/47 (0.0%) | pending | 0 | 0 | 0 | 19 |
 | f2441 | deepseek (deepseek-flash) | 138 | 137 | 99.3% | 0/152 (0.0%) | pending | 0 | 0 | 1 | 66 |
-| f4952 | deepseek (deepseek-flash) | 52 | 52 | 100.0% | 0/52 (0.0%) | pass | 0 | 0 | 0 | 0 |
+| f4952 | deepseek (deepseek-flash) | 56 | 56 | 100.0% | 0/56 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f5329 | deepseek (deepseek-flash) | 21 | 21 | 100.0% | 0/21 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f5695 | deepseek (deepseek-flash) | 340 | 338 | 99.4% | 2/343 (0.6%) | pass | 2 | 0 | 0 | 236 |
 | f8863 | deepseek (deepseek-flash) | 65 | 65 | 100.0% | 0/65 (0.0%) | pending | 0 | 0 | 0 | 2 |
@@ -902,10 +903,11 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | s2 | deepseek (deepseek-flash) | 36 | 36 | 100.0% | 0/36 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | s3 | deepseek (deepseek-flash) | 30 | 30 | 100.0% | 0/30 (0.0%) | pending | 0 | 0 | 0 | 10 |
 | s8812 | deepseek (deepseek-flash) | 104 | 104 | 100.0% | 0/104 (0.0%) | pending | 0 | 0 | 0 | 12 |
+| sa | deepseek (deepseek-flash) | 114 | 114 | 100.0% | 0/114 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | sd | deepseek (deepseek-flash) | 41 | 41 | 100.0% | 0/41 (0.0%) | pending | 0 | 0 | 0 | 97 |
 | u1250 | deepseek (deepseek-flash) | 18 | 18 | 100.0% | 0/18 (0.0%) | pass | 0 | 0 | 0 | 18 |
 | w2 | deepseek (deepseek-flash) | 39 | 39 | 100.0% | 0/39 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1729 | 1705 | 98.6% | | | 8 | 1 | 15 | 736 |
+| **all** | | 1847 | 1823 | 98.7% | | | 8 | 1 | 15 | 736 |
 
 Pending clcw26 [deepseek]: 5 missing expected lines.
 Pending eic [deepseek]: 19 missing expected lines; 50 unexpected line keys.

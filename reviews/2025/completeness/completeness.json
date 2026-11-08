@@ -1702,7 +1702,7 @@
  },
  {
   "form": "f4952",
-  "prompt_sha": "ac257421c0e745a465c23fd064fff66ddc3f8ca38e500515c92c6ae683b982b0",
+  "prompt_sha": "ab096269e13e9e62d9cb1e322f741d67a0d4b99c9088ef77f102c76cb2f639f6",
   "claims": [
    {
     "item": "f4952.line4d",
@@ -1714,8 +1714,22 @@
     ],
     "quote": "When figuring this amount, include capital gain distributions from mutual funds and capital loss carryovers.",
     "page": "f4952 p. 3",
-    "why_uncovered": "Line 4d is described only as 'Net gain from investment-property dispositions, including distributions.' That covers capital gain distributions but says nothing about capital loss carryovers. No question asks about a carryover, and no refusal applies when one exists. A capital loss carryover from 2024 could therefore be left out of line 4d. That would overstate lines 4d, 4e and 4f, and could raise net investment income and the line 8 deduction.",
+    "why_uncovered": "Line 4d is described only as net gain from investment-property dispositions 'including distributions'. No line, question or refusal says that a capital loss carryover must reduce line 4d. Line 4d then flows into lines 4e, 4f and 4h, so a missing carryover would overstate them.",
     "closest_item": "f4952.line4d",
+    "effect": "amount"
+   },
+   {
+    "item": "f4952.line4g",
+    "sentences": [
+     {
+      "quote": "Once made, the election can be revoked only with IRS consent.",
+      "page": "f4952 p. 4"
+     }
+    ],
+    "quote": "Once made, the election can be revoked only with IRS consent.",
+    "page": "f4952 p. 4",
+    "why_uncovered": "The line 4g question covers the timing of making the election: a timely filed return, or an amended return within 6 months after a timely filed return. It does not say that an election already made cannot be reduced or withdrawn without IRS consent, for example on an amended return. Nothing stops a filer from entering a smaller or zero line 4g after an earlier election.",
+    "closest_item": "f4952.line4g",
     "effect": "amount"
    }
   ],
@@ -1730,7 +1744,7 @@
     ]
    }
   ],
-  "cost": 0.13755080000000003,
+  "cost": 0.09586800000000001,
   "model": "claude-opus-5-5"
  },
  {
@@ -2742,19 +2756,31 @@
  },
  {
   "form": "gift",
-  "prompt_sha": "f9841054b4a6c8b965b81198928fff2bf1b5ed86f1b1723ec30567927230d5c8",
+  "prompt_sha": "d399796fba74a828d989da47419bf3b46fd1a07d3bc09ca58220953378ce82f4",
   "claims": [
    {
     "item": "gift.deduction",
     "sentences": [
      {
+      "quote": "Do not use Form 8283 to report out-of-pocket expenses for volunteer work or amounts you gave by check or credit card. Treat these items as cash contributions.",
+      "page": "i8283 p. 1"
+     },
+     {
+      "quote": "You must file one or more Forms 8283 if the amount of your deduction for each noncash contribution is more than $500.",
+      "page": "i8283 p. 1"
+     },
+     {
+      "quote": "You must also file Form 8283 if you have a group of similar items for which a total deduction of over $500 is claimed.",
+      "page": "i8283 p. 1"
+     },
+     {
       "quote": "Attach a statement to your tax return showing how you figured the reduction.",
       "page": "i8283 p. 3"
      }
     ],
-    "quote": "Attach a statement to your tax return showing how you figured the reduction.",
-    "page": "i8283 p. 3",
-    "why_uncovered": "The gift.deduction question asks for the amount after the required valuation and basis reductions. It does not ask whether a reduction was made, and nothing produces or prompts for the statement that must be attached showing how the reduction was figured.",
+    "quote": "Do not use Form 8283 to report out-of-pocket expenses for volunteer work or amounts you gave by check or credit card. Treat these items as cash contributions. / You must file one or more Forms 8283 if the amount of your deduction for each noncash contribution is more than $500. / You must also file Form 8283 if you have a group of similar items for which a total deduction of over $500 is claimed. / Attach a statement to your tax return showing how you figured the reduction.",
+    "page": "i8283 p. 1; i8283 p. 3",
+    "why_uncovered": "The gift.deduction question asks for the deduction after valuation and basis reductions. It never tells the filer to leave out volunteer out-of-pocket expenses or check and credit-card gifts, which must be treated as cash contributions rather than reported as noncash property. No listed line tests the over-$500 threshold that decides whether Form 8283 must be filed for an item or group of similar items; the only thresholds encoded are the $5,000 Section B tests. Nothing asks for, or produces, the required statement showing how the ordinary-income or capital-gain reduction was figured.",
     "closest_item": "gift.deduction",
     "effect": "presentation"
    },
@@ -2763,10 +2789,6 @@
     "sentences": [
      {
       "quote": "Filers must fully complete Section A if they are reporting a noncash charitable contribution of more than $500 but not more than $5,000.",
-      "page": "i8283 p. 1"
-     },
-     {
-      "quote": "The failure to fully complete either of these two sections may result in an incomplete filing of Form 8283.",
       "page": "i8283 p. 1"
      },
      {
@@ -2784,19 +2806,11 @@
      {
       "quote": "If you are electronically filing your tax return, you must include the Form 8283 data in the electronic submission.",
       "page": "i8283 p. 2"
-     },
-     {
-      "quote": "Caution: You must attach the completed Form 8283 with all the required signatures to your tax return, either as a PDF attachment when electronically filed, or mailed to the IRS with Form 8453.",
-      "page": "i8283 p. 2"
-     },
-     {
-      "quote": "Although the amount of your deduction determines if you have to file Form 8283, you also need to have information about the FMV of your contribution to complete the form.",
-      "page": "i8283 p. 3"
      }
     ],
-    "quote": "Filers must fully complete Section A if they are reporting a noncash charitable contribution of more than $500 but not more than $5,000. / The failure to fully complete either of these two sections may result in an incomplete filing of Form 8283. / Provide all information required by the Form 8283 and its instructions. / If a box is provided for entry of a number, Form 8283 will not be considered complete unless a number is entered in the box. / You may not indicate that the information is “available upon request.” / If you are electronically filing your tax return, you must include the Form 8283 data in the electronic submission. / Caution: You must attach the completed Form 8283 with all the required signatures to your tax return, either as a PDF attachment when electronically filed, or mailed to the IRS with Form 8453. / Although the amount of your deduction determines if you have to file Form 8283, you also need to have information about the FMV of your contribution to complete the form.",
-    "page": "i8283 p. 1; i8283 p. 2; i8283 p. 3",
-    "why_uncovered": "For Section A groups, the encoding only passes the deduction amount through. It does not collect the Section A entries the form requires, such as the donee, a description of the property, fair market value, and the other numeric boxes. It also does not address completeness, the e-file data requirement, or attaching the form. The refusals cover only Section B and special-treatment groups.",
+    "quote": "Filers must fully complete Section A if they are reporting a noncash charitable contribution of more than $500 but not more than $5,000. / Provide all information required by the Form 8283 and its instructions. / If a box is provided for entry of a number, Form 8283 will not be considered complete unless a number is entered in the box. / You may not indicate that the information is “available upon request.” / If you are electronically filing your tax return, you must include the Form 8283 data in the electronic submission.",
+    "page": "i8283 p. 1; i8283 p. 2",
+    "why_uncovered": "For Section A groups, the encoding only passes through the deduction amount from gift.deduction. It does not ask for or produce the other information Section A must contain. Under these instructions, Form 8283 is treated as incomplete without that information. No refusal applies to an ordinary Section A group, so this requirement is left unhandled.",
     "closest_item": "gift.allowed",
     "effect": "presentation"
    }
@@ -2823,7 +2837,7 @@
     ]
    }
   ],
-  "cost": 0.09573200000000001,
+  "cost": 0.10888,
   "model": "claude-opus-5-5"
  },
  {
@@ -4681,60 +4695,110 @@
  },
  {
   "form": "sa",
-  "prompt_sha": "1c6961042db0a6ac25246c57a98326cd29f96ca3cbc33d3cc2b7c3182b14503b",
+  "prompt_sha": "2e243919f36de40e5185dae5c00ecc5efade6cd55eea84378d788e8821b2733e",
   "claims": [
    {
-    "item": "sa.boxes_blind",
+    "item": "sa.line8a",
     "sentences": [
      {
-      "quote": "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that: • You can't see better than 20/200 in your better eye with glasses or contact lenses, or • Your field of vision is 20 degrees or less.",
-      "page": "i1040gi p. 33"
+      "quote": "In general, if you paid interest in 2025 that applies to any period after 2025, you can deduct only amounts that apply for 2025.",
+      "page": "i1040sca p. 8"
      },
      {
-      "quote": "If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead.",
-      "page": "i1040gi p. 33"
+      "quote": "A home mortgage is any loan that is secured by your main home or second home, regardless of how the loan is labeled.",
+      "page": "i1040sca p. 8"
+     },
+     {
+      "quote": "It must provide basic living accommodations including sleeping space, toilet, and cooking facilities.",
+      "page": "i1040sca p. 8"
+     },
+     {
+      "quote": "If you and at least one other person (other than your spouse if you file a joint return) were liable for and paid interest on a mortgage that was your home, you can only deduct your share of the interest.",
+      "page": "i1040sca p. 8"
+     },
+     {
+      "quote": "If the shared interest was reported on the Form 1098 you received, deduct only your share of the interest on line 8a.",
+      "page": "i1040sca p. 8"
+     },
+     {
+      "quote": "If your Form 1098 shows any refund of overpaid interest, don't reduce your deduction by the refund.",
+      "page": "i1040sca p. 8"
+     },
+     {
+      "quote": "To deduct mortgage interest paid by a decedent, see Form 1041 and Form 706 and their instructions.",
+      "page": "i1040sca p. 8"
      }
     ],
-    "quote": "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that: • You can't see better than 20/200 in your better eye with glasses or contact lenses, or • Your field of vision is 20 degrees or less. / If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead.",
-    "page": "i1040gi p. 33",
-    "why_uncovered": "sa.boxes_blind counts blindness boxes but has no question. No other question gives the test for partial blindness (20/200 vision or a field of vision of 20 degrees or less, certified by an eye doctor), and none asks whether the person was blind at the end of 2025. As encoded, a person who doesn't meet the definition could still get a blindness box counted.",
-    "closest_item": "sa.boxes_blind",
+    "quote": "In general, if you paid interest in 2025 that applies to any period after 2025, you can deduct only amounts that apply for 2025. / A home mortgage is any loan that is secured by your main home or second home, regardless of how the loan is labeled. / It must provide basic living accommodations including sleeping space, toilet, and cooking facilities. / If you and at least one other person (other than your spouse if you file a joint return) were liable for and paid interest on a mortgage that was your home, you can only deduct your share of the interest. / If the shared interest was reported on the Form 1098 you received, deduct only your share of the interest on line 8a. / If your Form 1098 shows any refund of overpaid interest, don't reduce your deduction by the refund. / To deduct mortgage interest paid by a decedent, see Form 1041 and Form 706 and their instructions.",
+    "page": "i1040sca p. 8",
+    "why_uncovered": "The line 8a question asks only for 'eligible home mortgage interest and points on Form 1098' after the debt and use limits are confirmed not to apply. The sa.unsupported refusal covers only interest not on Form 1098 and debt or use limits. Neither the question nor the refusal tells the filer to: leave out interest that applies to periods after 2025; limit the deduction to loans secured by a main or second home that has sleeping, toilet and cooking facilities; deduct only their share of interest shared with a co-borrower that is reported on their own Form 1098; leave the deduction unreduced by an overpaid-interest refund shown on Form 1098; or leave out interest paid by a decedent. A filer would enter the full Form 1098 box amounts.",
+    "closest_item": "sa.line8a",
     "effect": "amount"
    },
    {
-    "item": "sa.line17",
+    "item": "sa.line11",
     "sentences": [
      {
-      "quote": "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions.",
-      "page": "i1040sca p. 1"
-     }
-    ],
-    "quote": "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions.",
-    "page": "i1040sca p. 1",
-    "why_uncovered": "The encoding supports married filing separately (sa.mfs, sa.salthalf, sa.spouse_itemizes). But no question on lines 1, 5a–5c, 8a, 11 or 16 tells a separate filer to claim only their share of expenses paid jointly with a spouse. No refusal covers this either. The Schedule 3 married-filing-separately refusal is not tied to the Schedule A lines.",
-    "closest_item": "sa.line17",
-    "effect": "amount"
-   },
-   {
-    "item": "sa.line12",
-    "sentences": [
-     {
-      "quote": "A deduction for these contributions will be allowed only if the items are in good used condition or better.",
-      "page": "i1040sca p. 11"
+      "quote": "Most nonprofit educational organizations, such as colleges, but only if your contribution isn't a substitute for tuition or other enrollment fees.",
+      "page": "i1040sca p. 9"
      },
      {
-      "quote": "However, this rule doesn't apply to a contribution of any single item for which a deduction of more than $500 is claimed and for which you include a qualified appraisal and Form 8283 with your tax return.",
-      "page": "i1040sca p. 11"
+      "quote": "If you drove to and from the volunteer work, you can take the actual cost of gas and oil or 14 cents a mile.",
+      "page": "i1040sca p. 9"
      },
      {
-      "quote": "If the gift of property is $250 or more, you must also have a contemporaneous written acknowledgment from the charity.",
-      "page": "i1040sca p. 11"
+      "quote": "But don't deduct any amounts that were repaid to you.",
+      "page": "i1040sca p. 9"
+     },
+     {
+      "quote": "Certain contributions to charitable organizations to the extent that you receive a state or local tax credit in return for your contribution.",
+      "page": "i1040sca p. 10"
+     },
+     {
+      "quote": "An amount paid to or for the benefit of a college or university in exchange for the right to purchase tickets to an athletic event in the college or university's stadium.",
+      "page": "i1040sca p. 10"
+     },
+     {
+      "quote": "Travel expenses (including meals and lodging) while away from home performing donated services, unless there was no significant element of personal pleasure, recreation, or vacation in the travel.",
+      "page": "i1040sca p. 10"
+     },
+     {
+      "quote": "Political contributions.",
+      "page": "i1040sca p. 10"
+     },
+     {
+      "quote": "Dues, fees, or bills paid to country clubs, lodges, fraternal orders, or similar groups.",
+      "page": "i1040sca p. 10"
+     },
+     {
+      "quote": "Cost of raffle, bingo, or lottery tickets.",
+      "page": "i1040sca p. 10"
+     },
+     {
+      "quote": "Gifts to individuals and groups that are operated for personal profit.",
+      "page": "i1040sca p. 10"
+     },
+     {
+      "quote": "Gifts to foreign organizations.",
+      "page": "i1040sca p. 10"
+     },
+     {
+      "quote": "Gifts to groups whose purpose is to lobby for changes in the laws.",
+      "page": "i1040sca p. 10"
+     },
+     {
+      "quote": "Gifts to civic leagues, social and sports clubs, labor unions, and chambers of commerce.",
+      "page": "i1040sca p. 10"
+     },
+     {
+      "quote": "Cost of tuition.",
+      "page": "i1040sca p. 10"
      }
     ],
-    "quote": "A deduction for these contributions will be allowed only if the items are in good used condition or better. / However, this rule doesn't apply to a contribution of any single item for which a deduction of more than $500 is claimed and for which you include a qualified appraisal and Form 8283 with your tax return. / If the gift of property is $250 or more, you must also have a contemporaneous written acknowledgment from the charity.",
-    "page": "i1040sca p. 11",
-    "why_uncovered": "sa.line12 is computed as total supported noncash donations, with no question or condition shown. Nothing listed requires clothing and household items to be in good used condition or better, or requires a written acknowledgment for property gifts of $250 or more. The substantiation wording on sa.line11 covers cash gifts only. The gift refusals for Form 8283 deal with appraisals and Section B, not these rules.",
-    "closest_item": "sa.line12",
+    "quote": "Most nonprofit educational organizations, such as colleges, but only if your contribution isn't a substitute for tuition or other enrollment fees. / If you drove to and from the volunteer work, you can take the actual cost of gas and oil or 14 cents a mile. / But don't deduct any amounts that were repaid to you. / Certain contributions to charitable organizations to the extent that you receive a state or local tax credit in return for your contribution. / An amount paid to or for the benefit of a college or university in exchange for the right to purchase tickets to an athletic event in the college or university's stadium. / Travel expenses (including meals and lodging) while away from home performing donated services, unless there was no significant element of personal pleasure, recreation, or vacation in the travel. / Political contributions. / Dues, fees, or bills paid to country clubs, lodges, fraternal orders, or similar groups. / Cost of raffle, bingo, or lottery tickets. / Gifts to individuals and groups that are operated for personal profit. / Gifts to foreign organizations. / Gifts to groups whose purpose is to lobby for changes in the laws. / Gifts to civic leagues, social and sports clubs, labor unions, and chambers of commerce. / Cost of tuition.",
+    "page": "i1040sca p. 9; i1040sca p. 10",
+    "why_uncovered": "The line 11 question asks only for 'deductible cash/check charitable gifts before income limits, after benefits received and required substantiation'. It covers the benefit-received reduction and the substantiation rules. It does not state the 14-cents-a-mile volunteer mileage rate or the exclusion of repaid amounts. It also gives none of the listed nondeductible payments, such as political gifts, raffle tickets, tuition, athletic seating rights, gifts to foreign, for-profit, lobbying or civic groups, and travel with a personal-pleasure element. The sa.gifts question invites filers to report payments that earned a state or local tax credit, but no question or refusal applies the required reduction for that credit. sa.charity_limited covers only income limits and carryovers, not this reduction.",
+    "closest_item": "sa.line11",
     "effect": "amount"
    }
   ],
@@ -4756,12 +4820,10 @@
      4,
      5,
      6,
-     7
-    ]
-   },
-   {
-    "doc": "i1040sca",
-    "pages": [
+     7,
+     8,
+     9,
+     10,
      11
     ]
    },
@@ -4796,7 +4858,7 @@
     ]
    }
   ],
-  "cost": 0.277788,
+  "cost": 0.302088,
   "model": "claude-opus-5-5"
  },
  {

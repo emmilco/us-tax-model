@@ -195,7 +195,7 @@
   {"gate": "f8889.subject_bad", "topic": "hsa", "kind": "entry"},
 
   {"gate": "sa.unsupported", "topic": "deductions", "kind": "situation", "question": "Do you have a casualty or theft loss, another miscellaneous deduction, a foreign tax deduction, mortgage interest not on Form 1098 or over the limits, or the sales tax election?"},
-  {"gate": "sa.charity_limited", "topic": "deductions", "kind": "situation", "question": "Are your charitable deductions limited by income, or carried over from an earlier year?"},
+  {"gate": "sa.charity_limited_if_gifts", "topic": "deductions", "kind": "situation", "question": "Are your charitable deductions limited by income, or carried over from an earlier year?"},
   {"gate": "gift.special", "topic": "deductions", "kind": "situation", "question": "Does a noncash gift need an appraisal or special treatment (over $5,000, a vehicle, intellectual property, inventory and similar)?"},
   {"gate": "gift.section_b", "topic": "deductions", "kind": "situation", "question": "Is a group of similar noncash gifts, other than publicly traded securities, over $5,000?"},
   {"gate": "f4952.unsupported", "topic": "deductions", "kind": "situation", "question": "Is investment interest tied to royalties, a business, passive activities or tax-exempt income, or do you have other investment expenses?"},
