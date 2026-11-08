@@ -27,10 +27,10 @@
 
 ## (helper) — `qbi.eligible`
 
-- **Authored helper label:** Amount from qbi.dividends
-- **Encoded (NonNegDollars):** Enter the amount from helper "Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements".
+- **Authored helper label:** Amount from qbi.dividends_if_ordinary
+- **Encoded (NonNegDollars):** Enter the amount from helper "Qualified section 199A dividends (Form 1099-DIV box 5), when ordinary dividends (box 1a) are above zero; zero otherwise".
 - **Refusal:** when qbi.unsupported is true, cannot complete Forms 8995 / 8995-A business or PTP path. Only section 199A dividend income without loss carryovers is supported. Cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
-- Expr: `{"from":"qbi.dividends","op":"copy"}`
+- Expr: `{"from":"qbi.dividends_if_ordinary","op":"copy"}`
 - Cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
 
 ## 3 — `qbi.carryforward`
@@ -72,8 +72,8 @@
 ## (helper) — `qbi.net_capital_gain`
 
 - **Authored helper label:** Add sd.net_gain, f1040.line3a
-- **Encoded (NonNegDollars):** Add sd helper "Nonnegative net capital gain for QDCGT" and f1040 line 3a.
-- Expr: `{"of":["sd.net_gain","f1040.line3a"],"op":"sum"}`
+- **Encoded (NonNegDollars):** Add sd helper "Nonnegative net capital gain for QDCGT" and f1040 helper "Qualified dividends (Form 1040 line 3a), when ordinary dividends (box 1a) are above zero; zero otherwise".
+- Expr: `{"of":["sd.net_gain","f1040.line3a_if_ordinary"],"op":"sum"}`
 - Cite: [f8995] p. 1, "Enter your net capital gain, if any, increased by any qualified dividends" (line 12); i8995 p. 4, Line 12, "line 3a, plus your net capital gain", "your net capital gain is the smaller of Schedule D (Form 1040), line 15 or 16, unless line 15 or 16 is zero or less" (2025; created 2025-09-12; sha256 55380ad2)
 
 ## (helper) — `qbi.threshold`
@@ -96,3 +96,10 @@
 - **Encoded (NonNegDollars):** Choose — [helper "Taxable income before QBI exceeds the Form 8995 threshold" = true → helper "Form 8995-A (section 199A dividends only)"] [helper "Taxable income before QBI exceeds the Form 8995 threshold" = false → f8995 line 15]
 - Expr: `{"alternatives":[{"guard":{"eq":["qbi.use_8995a",{"const":true}],"op":"test"},"then":"qbi.via_8995a"},{"guard":{"eq":["qbi.use_8995a",{"const":false}],"op":"test"},"then":"f8995.line15"}],"op":"choose"}`
 - Cite: [f8995] p. 1, "Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)", "Qualified business income deduction. Enter the smaller of line 10 or line 14" (line 15); i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
+
+## (helper) — `qbi.dividends_if_ordinary`
+
+- **Authored helper label:** Qualified section 199A dividends (Form 1099-DIV box 5), when ordinary dividends (box 1a) are above zero; zero otherwise
+- **Encoded (NonNegDollars):** Choose — [div helper "Ordinary dividends (box 1a) are above zero" = true → helper "Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements"] [div helper "Ordinary dividends (box 1a) are above zero" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["div.has_ordinary",{"const":true}],"op":"test"},"then":"qbi.dividends"},{"guard":{"eq":["div.has_ordinary",{"const":false}],"op":"test"},"then":"qbi.zero"}],"op":"choose"}`
+- Cite: [f1099div] p. 5, Instructions for Recipient, "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A" (January 2024 (continuous-use form); sha256 4ea1de80)

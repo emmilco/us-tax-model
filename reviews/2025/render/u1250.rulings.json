@@ -63,6 +63,15 @@
    "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
   },
   {
+   "printed": "11",
+   "restated": "Enter the amount from div helper \"Unrecaptured section 1250 gain, box 2b, when capital gain distributions (box 2a) are above zero; zero otherwise\".",
+   "model": "The IRS line says \"Enter the total of any amounts reported to you as 'unrecaptured section 1250 gain' on a Schedule K-1, Form 1099-DIV, or Form 2439 ... or in connection with a Form 1099-R\". The restatement takes only Form 1099-DIV box 2b, and no refusal shown for this line excludes the Schedule K-1, Form 2439 or Form 1099-R amounts. Gating on box 2a above zero is consistent, since box 2b \"Shows the portion of the amount in box 2a\".",
+   "ruling": "Ruling: scope; i1040sd p. 13, Unrecaptured Section 1250 Gain Worksheet, line 11: \"Enter the total of any amounts reported to you as “unrecaptured section 1250 gain” on a Schedule K-1, Form 1099-DIV, or Form 2439 ...\" Schedule K-1 and Form 2439 amounts: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") refuses them, reaching Form 1040 line 7a through Schedule D lines 7, 15 and 16 (as the earlier rulings of this line); a Form 1099-R lump-sum distribution by retirement.special (\"a lump-sum distribution you may report on Form 4972\"), as in the earlier rulings. Within scope line 11 is Form 1099-DIV box 2b alone. The box 2a condition is the box 2b input's: f1099div p. 5, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\", so box 2b is zero when box 2a is. Project retained.",
+   "context": "46f7e992ffc78f51190377fb39dab3d8f87656c30f760688e5d9dd8a709acea3",
+   "date": "2026-11-07",
+   "run": "62c6986af42b97703bd7d25d57e8e439ca27467d33cb5fb7b5036a41aa906461"
+  },
+  {
    "printed": "12",
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
    "model": "IRS line 12 enters unrecaptured section 1250 gain from sales of section 1250 property 'for which you didn't make an entry in Part I of Form 4797', such as a converted vacation home; the program enters $0. No listed refusal excludes such sales.",

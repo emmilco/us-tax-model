@@ -905,6 +905,24 @@
    "question_phrase": "Were you (or, on a joint return, your spouse) a bona fide resident of Puerto Rico in 2025?",
    "source_phrase": "Bona Fide Residents of Puerto Rico, \"If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child\"",
    "reason": "The gate s8812.puerto_rico_if_child reads the same bona fide residence the question asks, and asks it only with a qualifying child as the page states; the page's residence test (presence test, tax home, closer connection) is in the question's help."
+  },
+  "consumer:div.any@i1040sb:p2": {
+   "verdict": "same",
+   "question_phrase": "did you (or your spouse) receive any dividends or other distributions from a company or a fund, with or without a Form 1099-DIV",
+   "source_phrase": "Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements",
+   "reason": "Read by the box 1a gate line: every ordinary dividend line 5 reports is a dividend the question counts (with or without a form, nominee amounts included), so a no means line 5 is empty."
+  },
+  "consumer:sb.form5471@i1040sb:p1": {
+   "verdict": "same",
+   "question_phrase": "an officer or director of a foreign corporation, or ... own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power",
+   "source_phrase": "Report on line 1 all of your taxable interest",
+   "reason": "Line 2 reads the question only as a refusal gate; the interest rule on this page sets no definition of it, and the question is worded as the Part II TIP (p. 2) states the Form 5471 trigger."
+  },
+  "consumer:sb.form5471@i1040sb:p3": {
+   "verdict": "same",
+   "question_phrase": "an officer or director of a foreign corporation, or ... own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power",
+   "source_phrase": "Line 7a—Question 1 ... financial interest in or signature authority over a financial account located in a foreign country",
+   "reason": "Line 2 reads the question only as a refusal gate; the foreign account and trust rules on this page set no definition of it, and the question is worded as the Part II TIP (p. 2) states the Form 5471 trigger."
   }
  },
  "baseline": {

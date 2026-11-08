@@ -69,7 +69,7 @@ form:
       label: "Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust"
       expr:
         op: copy
-        from: div.box2d
+        from: div.box2d_if_capital_gain
       cite:
         doc: i1040sd
         locator: p. 11, 28% Rate Gain Worksheet, lines 1–7

@@ -10,6 +10,15 @@
    "context": "7551207537ea0c1fe2fa4f996f8b8e66c49405f9f230783e66ae7e00260e408b"
   },
   {
+   "printed": "2",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}, \"then\": {\"ref\": \"f1040.line3a\"}}], \"op\": \"choose\"}",
+   "second": "{\"ref\": \"f1040.line3a\"}",
+   "ruling": "Ruling: model error; the candidate reads f1040.line3a whatever box 1a is above zero, so it needs that answer where the source does not: i1040gi p. 25, Line 3a, \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b\": with box 1a (line 3b) zero, line 3a is zero. The project reads the gate line f1040.line3a_if_ordinary, which takes f1040.line3a when box 1a is above zero holds and zero otherwise; the interview asks f1040.line3a only then (gated_by f1040.line3a_if_ordinary), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
+   "context": "cd13e4e01a2eb6e809fcb15c2b0acae65334ba1f57c9db57fc680c9dafb5f718",
+   "date": "2026-11-07",
+   "run": "9d625ebc9cadb9c71119d926f670a74cb96bb8e03d53d523071daad981f242f8"
+  },
+  {
    "printed": "23",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"1\"}, {\"line\": \"16\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"line\": \"1\"}, {\"line\": \"16\"}], \"test\": \"ne\"}, \"then\": {\"of\": [{\"line\": \"1\"}, {\"line\": \"13\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
    "second": "{\"of\": [{\"line\": \"1\"}, {\"line\": \"13\"}], \"op\": \"smaller_of\"}",

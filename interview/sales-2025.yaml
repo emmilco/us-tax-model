@@ -42,6 +42,7 @@ interview:
   - interest.amount
   - interest.penalty
   - sb.unsupported
+  - sb.form5471
   - sb.ordinary_dividends
   - sb.line7a
   - sb.fbar_required
@@ -49,6 +50,7 @@ interview:
   - sb.line8
   - $interest
   - div.box2b
+  - div.any
   - div.box2c
   - div.box2d
   - div.box2e

@@ -19,6 +19,7 @@ interview:
     locator: Form 1040 (2025), related form references
   questions:
   - div.box2b
+  - div.any
   - f2441.benefits
   - div.box2c
   - div.box2d
@@ -89,6 +90,7 @@ interview:
   - sales.correct_basis
   - sales.wash_loss
   - sb.unsupported
+  - sb.form5471
   - sb.ordinary_dividends
   - sb.line7a
   - sb.fbar_required

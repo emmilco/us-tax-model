@@ -583,7 +583,7 @@
  },
  {
   "form": "div",
-  "prompt_sha": "b091144ce7431c18cb8bdc86c82b58806426552d9ea3a30b87a0a19bfd357196",
+  "prompt_sha": "be7ae1643ff07d3a0e5dabcdd1645b2386b60a52031a55559001670f44953c02",
   "claims": [],
   "used": [
    {
@@ -593,7 +593,7 @@
     ]
    }
   ],
-  "cost": 0.078016,
+  "cost": 0.054976,
   "model": "claude-opus-5-5"
  },
  {
@@ -700,38 +700,8 @@
  },
  {
   "form": "f1040",
-  "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
+  "prompt_sha": "d1392b8e385580e8d36bec60af28d5ca56ba53b567782feb7707527c31af8eaf",
   "claims": [
-   {
-    "item": "f1040.line1a",
-    "sentences": [
-     {
-      "quote": "If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a.",
-      "page": "i1040gi p. 23"
-     },
-     {
-      "quote": "If you received a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan and it was reported in box 1 of Form W-2, do not include this amount on Form 1040, line 1a.",
-      "page": "i1040gi p. 24"
-     },
-     {
-      "quote": "Because this income is taxable to the estate, don’t include this income on your own individual income tax return.",
-      "page": "i1040gi p. 23"
-     },
-     {
-      "quote": "Also, you (or the trustee if one is appointed) must allocate between you and the bankruptcy estate the wages, salary, or other compensation and withheld income tax reported to you on Form W-2.",
-      "page": "i1040gi p. 23"
-     },
-     {
-      "quote": "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income.",
-      "page": "i1040gi p. 23"
-     }
-    ],
-    "quote": "If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a. / If you received a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan and it was reported in box 1 of Form W-2, do not include this amount on Form 1040, line 1a. / Because this income is taxable to the estate, don’t include this income on your own individual income tax return. / Also, you (or the trustee if one is appointed) must allocate between you and the bankruptcy estate the wages, salary, or other compensation and withheld income tax reported to you on Form W-2. / If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income.",
-    "page": "i1040gi p. 23; i1040gi p. 24",
-    "why_uncovered": "Line 1a is the sum of W-2 box 1. No question asks whether any box 1 amount is inmate wages, a nonqualified deferred compensation or nongovernmental 457 pension, or income of a chapter 11 bankruptcy estate. Each of these must be taken out of line 1a. The community property refusals cover only a marriage that ended in 2025 and registered domestic partners. They do not cover married filing separately filers in a community property state, who must split community wages under state law.",
-    "closest_item": "f1040.line1a",
-    "effect": "amount"
-   },
    {
     "item": "f1040.line1z",
     "sentences": [
@@ -756,21 +726,21 @@
       "page": "i1040gi p. 24"
      },
      {
-      "quote": "Strike or lockout benefits (other than bona fide gifts).",
-      "page": "i1040gi p. 24"
-     },
-     {
       "quote": "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer.",
       "page": "i1040gi p. 25"
      },
      {
       "quote": "Corrective distributions from a retirement plan shown on Form 1099-R of excess elective deferrals and excess contributions (plus earnings).",
       "page": "i1040gi p. 25"
+     },
+     {
+      "quote": "The following types of income must be included in the total on line 1h. • Strike or lockout benefits (other than bona fide gifts).",
+      "page": "i1040gi p. 24"
      }
     ],
-    "quote": "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2. / This should include any tip income you didn’t report to your employer and any allocated tips shown in box 8 on your Form(s) W-2 unless you can prove that your unreported tips are less than the amount in box 8. / Although you don’t report these noncash tips to your employer, you must report them on line 1c. / Enter the total of your employer-provided adoption benefits from Form 8839, line 31. / Enter the total of your wages from Form 8919, line 6. / Strike or lockout benefits (other than bona fide gifts). / Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer. / Corrective distributions from a retirement plan shown on Form 1099-R of excess elective deferrals and excess contributions (plus earnings).",
+    "quote": "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2. / This should include any tip income you didn’t report to your employer and any allocated tips shown in box 8 on your Form(s) W-2 unless you can prove that your unreported tips are less than the amount in box 8. / Although you don’t report these noncash tips to your employer, you must report them on line 1c. / Enter the total of your employer-provided adoption benefits from Form 8839, line 31. / Enter the total of your wages from Form 8919, line 6. / Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer. / Corrective distributions from a retirement plan shown on Form 1099-R of excess elective deferrals and excess contributions (plus earnings). / The following types of income must be included in the total on line 1h. • Strike or lockout benefits (other than bona fide gifts).",
     "page": "i1040gi p. 24; i1040gi p. 25",
-    "why_uncovered": "Line 1z adds lines 1a through 1h, but the encoding computes only lines 1a and 1e. Nothing asks for or refuses the inputs to the other lines: household employee wages (1b), unreported, allocated or noncash tips (1c), adoption benefits (1f), Form 8919 wages (1g), and strike benefits, pre-retirement-age disability pensions or corrective distributions (1h). Excess elective deferrals and Medicaid waiver payments are refused elsewhere; the rest are not.",
+    "why_uncovered": "Line 1z adds lines 1a through 1h, but only lines 1a and 1e are encoded. Nothing asks for or refuses household wages not on Form W-2 (1b), unreported or allocated or noncash tips (1c), employer-provided adoption benefits (1f), Form 8919 wages (1g), or the line 1h items: strike benefits, pre-retirement-age disability pensions, and corrective distributions. The Medicaid waiver and excess-deferral refusals elsewhere cover only lines 1d and the 1h deferral item.",
     "closest_item": "f1040.line1z",
     "effect": "amount"
    },
@@ -782,23 +752,27 @@
       "page": "i1040gi p. 27"
      },
      {
-      "quote": "If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.",
+      "quote": "You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs for 2025 or an earlier year.",
       "page": "i1040gi p. 27"
      },
      {
-      "quote": "If the total amount distributed is a QCD, enter -0- on line 4b.",
+      "quote": "You received a distribution from a Roth IRA. But if either (a) or (b) below applies, enter -0- on line 4b; you don’t have to see Form 8606 or its instructions.",
       "page": "i1040gi p. 27"
      },
      {
-      "quote": "You must have been at least age 70 1/2 when the distribution was made.",
+      "quote": "You converted part or all of a traditional IRA or traditional SIMPLE IRA to a Roth IRA in 2025.",
       "page": "i1040gi p. 27"
      },
      {
-      "quote": "Generally, your total QCDs for the year can’t be more than $108,000.",
+      "quote": "You recharacterized part or all of a contribution to a Roth IRA as a contribution to a traditional IRA, or vice versa.",
       "page": "i1040gi p. 27"
      },
      {
-      "quote": "The amount of the QCD is limited to the amount that would otherwise be included in your income.",
+      "quote": "If all or part of the distribution is a qualified charitable distribution (QCD), enter the total distribution on line 4a. If the total amount distributed is a QCD, enter -0- on line 4b.",
+      "page": "i1040gi p. 27"
+     },
+     {
+      "quote": "You must have been at least age 70 1/2 when the distribution was made. Generally, your total QCDs for the year can’t be more than $108,000.",
       "page": "i1040gi p. 27"
      },
      {
@@ -814,13 +788,17 @@
       "page": "i1040gi p. 27"
      },
      {
+      "quote": "If Exception 3 applies to you, check box 2 on line 4c. If Exception 4 applies to you, check box 3 on line 4c and enter “HFD” in the entry space next to box 3.",
+      "page": "i1040gi p. 28"
+     },
+     {
       "quote": "If more than one exception applies, check a box for each exception and include a statement showing the amount of each exception, for example, “Line 4b – $1,000 Rollover and $500 HFD.”",
       "page": "i1040gi p. 28"
      }
     ],
-    "quote": "If any of the following apply, enter the total distribution on line 4a and see Form 8606 and its instructions to figure the amount to enter on line 4b. / If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did. / If the total amount distributed is a QCD, enter -0- on line 4b. / You must have been at least age 70 1/2 when the distribution was made. / Generally, your total QCDs for the year can’t be more than $108,000. / The amount of the QCD is limited to the amount that would otherwise be included in your income. / If you make the one-time QCD to an SIE, you must attach a statement to your return. / If the total amount distributed is an HFD and you elect to exclude it from income, enter -0- on line 4b. / You can’t exclude more than the limit on HSA contributions or more than the amount that would otherwise be included in your income. / If more than one exception applies, check a box for each exception and include a statement showing the amount of each exception, for example, “Line 4b – $1,000 Rollover and $500 HFD.”",
+    "quote": "If any of the following apply, enter the total distribution on line 4a and see Form 8606 and its instructions to figure the amount to enter on line 4b. / You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs for 2025 or an earlier year. / You received a distribution from a Roth IRA. But if either (a) or (b) below applies, enter -0- on line 4b; you don’t have to see Form 8606 or its instructions. / You converted part or all of a traditional IRA or traditional SIMPLE IRA to a Roth IRA in 2025. / You recharacterized part or all of a contribution to a Roth IRA as a contribution to a traditional IRA, or vice versa. / If all or part of the distribution is a qualified charitable distribution (QCD), enter the total distribution on line 4a. If the total amount distributed is a QCD, enter -0- on line 4b. / You must have been at least age 70 1/2 when the distribution was made. Generally, your total QCDs for the year can’t be more than $108,000. / If you make the one-time QCD to an SIE, you must attach a statement to your return. / If the total amount distributed is an HFD and you elect to exclude it from income, enter -0- on line 4b. / You can’t exclude more than the limit on HSA contributions or more than the amount that would otherwise be included in your income. / If Exception 3 applies to you, check box 2 on line 4c. If Exception 4 applies to you, check box 3 on line 4c and enter “HFD” in the entry space next to box 3. / If more than one exception applies, check a box for each exception and include a statement showing the amount of each exception, for example, “Line 4b – $1,000 Rollover and $500 HFD.”",
     "page": "i1040gi p. 27; i1040gi p. 28",
-    "why_uncovered": "The encoding handles only the rollover exception (helper ira_rollovers and line 4c box 1). No question, line or refusal covers Exception 2 (nondeductible basis, Roth distributions, conversions, returned or recharacterized contributions via Form 8606). Exception 3 (QCD, with its age 70½ requirement, $108,000 cap, income limit and SIE statement) is also uncovered, as is Exception 4 (HFD exclusion and its limits). Line 4c boxes 2 and 3 and the multiple-exception statement are not encoded.",
+    "why_uncovered": "The only encoded IRA adjustment is the rollover count and the line 4c box 1. Nothing asks about or refuses nondeductible traditional IRA basis (Form 8606), Roth IRA distributions, conversions, returned or recharacterized contributions, QCDs (including the age and dollar limits), or HFDs. Nothing produces the line 4c box 2 and box 3 entries or the statement required when more than one exception applies.",
     "closest_item": "f1040.line4b",
     "effect": "amount"
    },
@@ -832,41 +810,33 @@
       "page": "i1040gi p. 28"
      },
      {
-      "quote": "The distribution must be from the plan maintained by the employer from which you retired as a public safety officer.",
-      "page": "i1040gi p. 28"
-     },
-     {
       "quote": "If you make this election, reduce the otherwise taxable amount of your pension or annuity by the amount excluded.",
       "page": "i1040gi p. 28"
      },
      {
-      "quote": "Also check box 2 on line 5c.",
+      "quote": "Report your total distributions on line 5a and the taxable amount on line 5b. Also check box 2 on line 5c.",
       "page": "i1040gi p. 28"
      },
      {
-      "quote": "If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2 below.",
-      "page": "i1040gi p. 29"
+      "quote": "Don’t include the following payments on lines 5a and 5b. Instead, report them on line 1h. • Disability pensions received before you reach the minimum retirement age set by your employer.",
+      "page": "i1040gi p. 28"
+     },
+     {
+      "quote": "If your Form 1099-R doesn’t show the taxable amount, you must use the General Rule explained in Pub. 939 to figure the taxable part to enter on line 5b.",
+      "page": "i1040gi p. 28"
      },
      {
       "quote": "If you received U.S. Civil Service retirement benefits and you chose the alternative annuity option, see Pub. 721 to figure the taxable part of your annuity. Do not use the Simplified Method Worksheet in these instructions.",
       "page": "i1040gi p. 30"
      },
      {
-      "quote": "From this amount, subtract any contributions (usually shown in box 5) that were taxable to you when made.",
-      "page": "i1040gi p. 30"
-     },
-     {
       "quote": "Include in your income any payments you receive from a 401(k), pension, or other retirement plan to the extent that you would have received the amount at the same or later time regardless of whether you had become disabled.",
       "page": "i1040gi p. 30"
-     },
-     {
-      "quote": "Don’t include the following payments on lines 5a and 5b. Instead, report them on line 1h.",
-      "page": "i1040gi p. 28"
      }
     ],
-    "quote": "You can exclude from income the smaller of the amount of the premiums paid or $3,000. / The distribution must be from the plan maintained by the employer from which you retired as a public safety officer. / If you make this election, reduce the otherwise taxable amount of your pension or annuity by the amount excluded. / Also check box 2 on line 5c. / If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion that you are entitled to (up to $5,000) in the amount entered on line 2 below. / If you received U.S. Civil Service retirement benefits and you chose the alternative annuity option, see Pub. 721 to figure the taxable part of your annuity. Do not use the Simplified Method Worksheet in these instructions. / From this amount, subtract any contributions (usually shown in box 5) that were taxable to you when made. / Include in your income any payments you receive from a 401(k), pension, or other retirement plan to the extent that you would have received the amount at the same or later time regardless of whether you had become disabled. / Don’t include the following payments on lines 5a and 5b. Instead, report them on line 1h.",
-    "page": "i1040gi p. 28; i1040gi p. 29; i1040gi p. 30",
-    "why_uncovered": "Only the rollover box on line 5c is encoded. Nothing asks about or refuses the following: the retired public safety officer premium exclusion (with its $3,000 cap and line 5c box 2); the pre-1996 death benefit exclusion; the Civil Service alternative annuity, which bars use of the Simplified Method; subtracting taxable box 5 contributions in a rollover; the terrorist-attack disability rule; and moving pre-retirement-age disability pensions and corrective distributions to line 1h.",
+    "quote": "You can exclude from income the smaller of the amount of the premiums paid or $3,000. / If you make this election, reduce the otherwise taxable amount of your pension or annuity by the amount excluded. / Report your total distributions on line 5a and the taxable amount on line 5b. Also check box 2 on line 5c. / Don’t include the following payments on lines 5a and 5b. Instead, report them on line 1h. • Disability pensions received before you reach the minimum retirement age set by your employer. / If your Form 1099-R doesn’t show the taxable amount, you must use the General Rule explained in Pub. 939 to figure the taxable part to enter on line 5b. / If you received U.S. Civil Service retirement benefits and you chose the alternative annuity option, see Pub. 721 to figure the taxable part of your annuity. Do not use the Simplified Method Worksheet in these instructions. / Include in your income any payments you receive from a 401(k), pension, or other retirement plan to the extent that you would have received the amount at the same or later time regardless of whether you had become disabled.",
+    "page": "i1040gi p. 28; i1040gi p. 30",
+    "why_uncovered": "No question or refusal addresses: the retired public safety officer premium exclusion and its line 5c box 2; moving pre-retirement-age disability pensions off lines 5a and 5b; the General Rule (Pub. 939) when the Simplified Method doesn't apply; the Civil Service alternative annuity; or the terrorist-attack disability exclusion limits.",
     "closest_item": "f1040.line5b",
     "effect": "amount"
    },
@@ -874,67 +844,41 @@
     "item": "f1040.line6b",
     "sentences": [
      {
-      "quote": "You repaid any benefits in 2025 and your total repayments (box 4) were more than your total benefits for 2025 (box 3). None of your benefits are taxable for 2025.",
-      "page": "i1040gi p. 31"
-     },
-     {
       "quote": "You file Form 2555, 4563, or 8815, or you exclude employer-provided adoption benefits or income from sources within Puerto Rico. Instead, use the worksheet in Pub. 915.",
       "page": "i1040gi p. 31"
      },
      {
       "quote": "Don’t include in your income any disability payments (including Social Security Disability Insurance (SSDI) payments) you receive for injuries incurred as a direct result of a terrorist attack directed against the United States (or its allies), whether outside or within the United States.",
       "page": "i1040gi p. 31"
+     },
+     {
+      "quote": "If these payments are incorrectly reported as taxable on Form SSA-1099, don’t include the nontaxable portion of income on your tax return.",
+      "page": "i1040gi p. 31"
      }
     ],
-    "quote": "You repaid any benefits in 2025 and your total repayments (box 4) were more than your total benefits for 2025 (box 3). None of your benefits are taxable for 2025. / You file Form 2555, 4563, or 8815, or you exclude employer-provided adoption benefits or income from sources within Puerto Rico. Instead, use the worksheet in Pub. 915. / Don’t include in your income any disability payments (including Social Security Disability Insurance (SSDI) payments) you receive for injuries incurred as a direct result of a terrorist attack directed against the United States (or its allies), whether outside or within the United States.",
+    "quote": "You file Form 2555, 4563, or 8815, or you exclude employer-provided adoption benefits or income from sources within Puerto Rico. Instead, use the worksheet in Pub. 915. / Don’t include in your income any disability payments (including Social Security Disability Insurance (SSDI) payments) you receive for injuries incurred as a direct result of a terrorist attack directed against the United States (or its allies), whether outside or within the United States. / If these payments are incorrectly reported as taxable on Form SSA-1099, don’t include the nontaxable portion of income on your tax return.",
     "page": "i1040gi p. 31",
-    "why_uncovered": "Two exceptions to the Social Security Benefits Worksheet are handled elsewhere: the IRA contribution exception and the lump-sum election. Nothing covers repayments exceeding benefits. Nothing covers excluded adoption benefits, Form 4563 or Puerto Rico income, which require the Pub. 915 worksheet. Nothing covers excluding terrorist-attack disability payments from line 6a.",
+    "why_uncovered": "Two rules have no coverage. First, the worksheet exception requires using Pub. 915 with Form 2555 or 4563, excluded adoption benefits, or excluded Puerto Rico income; only Form 8815 (sb refusal) and the IRA-deduction case are handled elsewhere. Second, nothing asks about SSDI received for terrorist-attack injuries, which are excluded from line 6a.",
     "closest_item": "f1040.line6b",
-    "effect": "amount"
-   },
-   {
-    "item": "f1040.line7a",
-    "sentences": [
-     {
-      "quote": "If you received capital gain distributions as a nominee (that is, they were paid to you but actually belong to someone else), report on line 7a only the amount that belongs to you.",
-      "page": "i1040gi p. 33"
-     },
-     {
-      "quote": "Include a statement showing the full amount you received and the amount you received as a nominee.",
-      "page": "i1040gi p. 33"
-     },
-     {
-      "quote": "If Exception 1 applies, check the “Schedule D not required” box on line 7b.",
-      "page": "i1040gi p. 33"
-     }
-    ],
-    "quote": "If you received capital gain distributions as a nominee (that is, they were paid to you but actually belong to someone else), report on line 7a only the amount that belongs to you. / Include a statement showing the full amount you received and the amount you received as a nominee. / If Exception 1 applies, check the “Schedule D not required” box on line 7b.",
-    "page": "i1040gi p. 33",
-    "why_uncovered": "No question asks whether any capital gain distributions were received as a nominee, and no refusal covers that case. Nothing produces the required nominee statement. Line 7b, which tells the Qualified Dividends worksheet that Schedule D isn't required, is not encoded.",
-    "closest_item": "f1040.line7a",
     "effect": "amount"
    },
    {
     "item": "f1040.line12e",
     "sentences": [
      {
-      "quote": "You also can’t take the standard deduction if your spouse itemizes deductions.",
-      "page": "i1040gi p. 14"
-     },
-     {
-      "quote": "If your filing status is married filing separately and your spouse itemizes deductions on their return, check the box on line 12b.",
-      "page": "i1040gi p. 33"
-     },
-     {
       "quote": "If you checked the box on line 12b, your standard deduction is zero, even if you were born before January 2, 1961, or were blind.",
       "page": "i1040gi p. 34"
      },
      {
-      "quote": "Don’t check any boxes for your spouse if your filing status is head of household.",
-      "page": "i1040gi p. 33"
+      "quote": "You also can’t take the standard deduction if your spouse itemizes deductions.",
+      "page": "i1040gi p. 14"
      },
      {
       "quote": "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return.",
+      "page": "i1040gi p. 33"
+     },
+     {
+      "quote": "Don’t check any boxes for your spouse if your filing status is head of household.",
       "page": "i1040gi p. 33"
      },
      {
@@ -942,21 +886,35 @@
       "page": "i1040gi p. 34"
      }
     ],
-    "quote": "You also can’t take the standard deduction if your spouse itemizes deductions. / If your filing status is married filing separately and your spouse itemizes deductions on their return, check the box on line 12b. / If you checked the box on line 12b, your standard deduction is zero, even if you were born before January 2, 1961, or were blind. / Don’t check any boxes for your spouse if your filing status is head of household. / If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return. / If you had a net qualified disaster loss and you elect to increase your standard deduction by the amount of your net qualified disaster loss, use Schedule A to figure your standard deduction.",
-    "page": "i1040gi p. 14; i1040gi p. 33; i1040gi p. 34",
-    "why_uncovered": "Line 12e's refusals cover filing status problems only. No question asks whether a married filing separately spouse itemizes, which makes the standard deduction zero. Nothing covers counting a spouse's age or blindness boxes for married filing separately, or barring them for head of household. Nothing covers the increased standard deduction for a net qualified disaster loss.",
+    "quote": "If you checked the box on line 12b, your standard deduction is zero, even if you were born before January 2, 1961, or were blind. / You also can’t take the standard deduction if your spouse itemizes deductions. / If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return. / Don’t check any boxes for your spouse if your filing status is head of household. / If you had a net qualified disaster loss and you elect to increase your standard deduction by the amount of your net qualified disaster loss, use Schedule A to figure your standard deduction.",
+    "page": "i1040gi p. 34; i1040gi p. 14; i1040gi p. 33",
+    "why_uncovered": "The line 12e refusals concern filing-status validity only. Nothing asks whether a married-filing-separately spouse itemizes (line 12b, which zeroes the standard deduction). Nothing gates the spouse age and blindness boxes on MFS (spouse had no income, isn't filing, can't be claimed) or on HOH (not allowed). Nothing handles the increased standard deduction for a net qualified disaster loss.",
     "closest_item": "f1040.line12e",
+    "effect": "amount"
+   },
+   {
+    "item": "f1040.line16",
+    "sentences": [
+     {
+      "quote": "If you had a triggering event under section 965(i) during the year and did not enter into a transfer agreement, check box 3 and enter the amount of the triggered deferred net 965 tax liability and enter “965INC” on the line next to that box.",
+      "page": "i1040gi p. 36"
+     },
+     {
+      "quote": "If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J.",
+      "page": "i1040gi p. 36"
+     }
+    ],
+    "quote": "If you had a triggering event under section 965(i) during the year and did not enter into a transfer agreement, check box 3 and enter the amount of the triggered deferred net 965 tax liability and enter “965INC” on the line next to that box. / If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J.",
+    "page": "i1040gi p. 36",
+    "why_uncovered": "The line 16 refusal lists Forms 8814, 4972, 8615, 8621 and 8978, section 962, and education credit recapture. It doesn't cover the section 965(i) triggered liability or the Schedule J income-averaging choice.",
+    "closest_item": "f1040.line16",
     "effect": "amount"
    },
    {
     "item": "f1040.line26",
     "sentences": [
      {
-      "quote": "If you can’t agree, you must divide the payments in proportion to each spouse’s individual tax as shown on your separate returns for 2025.",
-      "page": "i1040gi p. 39"
-     },
-     {
-      "quote": "Be sure to show both SSNs in the space provided on the separate returns.",
+      "quote": "If you and your spouse paid joint estimated tax but are now filing separate income tax returns, you can divide the amount paid in any way you choose as long as you both agree. If you can’t agree, you must divide the payments in proportion to each spouse’s individual tax as shown on your separate returns for 2025.",
       "page": "i1040gi p. 39"
      },
      {
@@ -964,25 +922,11 @@
       "page": "i1040gi p. 39"
      }
     ],
-    "quote": "If you can’t agree, you must divide the payments in proportion to each spouse’s individual tax as shown on your separate returns for 2025. / Be sure to show both SSNs in the space provided on the separate returns. / If you got divorced in 2025 and you made joint estimated tax payments with your former spouse, enter your former spouse’s SSN in the space provided on line 26.",
+    "quote": "If you and your spouse paid joint estimated tax but are now filing separate income tax returns, you can divide the amount paid in any way you choose as long as you both agree. If you can’t agree, you must divide the payments in proportion to each spouse’s individual tax as shown on your separate returns for 2025. / If you got divorced in 2025 and you made joint estimated tax payments with your former spouse, enter your former spouse’s SSN in the space provided on line 26.",
     "page": "i1040gi p. 39",
-    "why_uncovered": "Line 26 is a supplied total. The question doesn't address dividing joint estimated payments between spouses who now file separately, including the required proportional split when they can't agree. Nothing collects the spouse's or former spouse's SSN for line 26.",
+    "why_uncovered": "Line 26 is a supplied total. Nothing asks whether joint estimated payments must be split for a separate return, and nothing applies the proportional-to-tax allocation when the spouses don't agree. Nothing asks for the former spouse's SSN entry after a 2025 divorce.",
     "closest_item": "f1040.line26",
     "effect": "amount"
-   },
-   {
-    "item": "f1040.status",
-    "sentences": [
-     {
-      "quote": "If you obtain a divorce for the sole purpose of filing tax returns as unmarried individuals, and at the time of divorce you intend to and do, in fact, remarry each other in the next tax year, you and your spouse must file as married individuals in both years.",
-      "page": "p501 p. 6"
-     }
-    ],
-    "quote": "If you obtain a divorce for the sole purpose of filing tax returns as unmarried individuals, and at the time of divorce you intend to and do, in fact, remarry each other in the next tax year, you and your spouse must file as married individuals in both years.",
-    "page": "p501 p. 6",
-    "why_uncovered": "Filing status is a direct checkbox question, and the conflict refusal tests ordinary marriage facts. Nothing asks about a divorce obtained only to file as unmarried followed by remarriage to the same spouse, which forces married status.",
-    "closest_item": "f1040.status",
-    "effect": "eligibility"
    }
   ],
   "used": [
@@ -1050,7 +994,7 @@
     ]
    }
   ],
-  "cost": 0.7193028,
+  "cost": 0.412156,
   "model": "claude-opus-5-5"
  },
  {
@@ -3015,7 +2959,7 @@
  },
  {
   "form": "interest",
-  "prompt_sha": "6187786b7022f22c96ffff2382098b21b79ec963186c70e0325ed848b96134c4",
+  "prompt_sha": "f823a1800a3098a3341162ec5e29f61ce22589815f34d9ba25111418c284607b",
   "claims": [
    {
     "item": "interest.amount",
@@ -3027,33 +2971,39 @@
      {
       "quote": "The market discount on a tax-exempt bond is taxable interest income and not tax-exempt interest.",
       "page": "i1040sb p. 1"
-     },
-     {
-      "quote": "Enter the total on line 2a of your Form 1040 or 1040-SR.",
-      "page": "i1040sb p. 2"
-     },
-     {
-      "quote": "However, if you acquired a tax-exempt bond at a premium, only report the net amount of tax-exempt interest on line 2a of your Form 1040 or 1040-SR (that is, the excess of the tax-exempt interest received during the year over the amortized bond premium for the year).",
-      "page": "i1040sb p. 2"
-     },
-     {
-      "quote": "Also, if you acquired a tax-exempt OID bond at an acquisition premium, only report the net amount of tax-exempt OID on line 2a of your Form 1040 or 1040-SR (that is, the excess of the tax-exempt OID for the year over the amortized acquisition premium for the year).",
-      "page": "i1040sb p. 2"
-     },
-     {
-      "quote": "Also include on line 2a of your Form 1040 or 1040-SR any exempt-interest dividends from a mutual fund or other regulated investment company.",
-      "page": "i1040sb p. 2"
-     },
-     {
-      "quote": "If an amount is shown in box 9 of Form 1099-INT, you must generally report it on line 2g of Form 6251.",
-      "page": "i1040sb p. 2"
      }
     ],
-    "quote": "Also include any accrued market discount that is includible in income and any gain on a contingent payment debt instrument that is includible in income as interest income. / The market discount on a tax-exempt bond is taxable interest income and not tax-exempt interest. / Enter the total on line 2a of your Form 1040 or 1040-SR. / However, if you acquired a tax-exempt bond at a premium, only report the net amount of tax-exempt interest on line 2a of your Form 1040 or 1040-SR (that is, the excess of the tax-exempt interest received during the year over the amortized bond premium for the year). / Also, if you acquired a tax-exempt OID bond at an acquisition premium, only report the net amount of tax-exempt OID on line 2a of your Form 1040 or 1040-SR (that is, the excess of the tax-exempt OID for the year over the amortized acquisition premium for the year). / Also include on line 2a of your Form 1040 or 1040-SR any exempt-interest dividends from a mutual fund or other regulated investment company. / If an amount is shown in box 9 of Form 1099-INT, you must generally report it on line 2g of Form 6251.",
-    "page": "i1040sb p. 1; i1040sb p. 2",
-    "why_uncovered": "The payer question asks only for taxable interest, including Treasury interest, and tells the filer to exclude tax-exempt interest. It does not say that includible accrued market discount and contingent-payment-debt-instrument gain belong in taxable interest. It also does not say that market discount on a tax-exempt bond is taxable. A filer following the question could therefore leave these amounts out. Nothing in the encoding collects tax-exempt interest for Form 1040 line 2a: not the gross amount, not the net amount after premium, and not exempt-interest dividends. Nothing collects or refuses the Form 1099-INT box 9 private activity bond interest that must go to Form 6251. The Schedule B special-treatment refusal covers adjustments that reduce reported interest and the Form 8815 exclusion. It does not cover these inclusion or classification rules, line 2a reporting, or the AMT referral.",
+    "quote": "Also include any accrued market discount that is includible in income and any gain on a contingent payment debt instrument that is includible in income as interest income. / The market discount on a tax-exempt bond is taxable interest income and not tax-exempt interest.",
+    "page": "i1040sb p. 1",
+    "why_uncovered": "The question asks only for taxable interest 'including Treasury interest' and tells the filer to exclude tax-exempt interest. It does not tell the filer to include accrued market discount or contingent payment debt instrument gain. Following the 'exclude tax-exempt interest' instruction, a filer could leave out market discount on a tax-exempt bond. No refusal covers these items: the Schedule B special-treatment refusal is about adjustments that reduce reported interest, not about income that must be added.",
     "closest_item": "interest.amount",
     "effect": "amount"
+   },
+   {
+    "item": "interest.amount",
+    "sentences": [
+     {
+      "quote": "If you sold your home or other property and the buyer used the property as a personal residence, list first any interest the buyer paid you on a mortgage or other form of seller financing.",
+      "page": "i1040sb p. 1"
+     },
+     {
+      "quote": "Be sure to show the buyer’s name, address, and SSN.",
+      "page": "i1040sb p. 1"
+     },
+     {
+      "quote": "You must also let the buyer know your SSN.",
+      "page": "i1040sb p. 1"
+     },
+     {
+      "quote": "If you or the buyer do not have an SSN, use the appropriate TIN for the filer or recipient of Form 1098.",
+      "page": "i1040sb p. 1"
+     }
+    ],
+    "quote": "If you sold your home or other property and the buyer used the property as a personal residence, list first any interest the buyer paid you on a mortgage or other form of seller financing. / Be sure to show the buyer’s name, address, and SSN. / You must also let the buyer know your SSN. / If you or the buyer do not have an SSN, use the appropriate TIN for the filer or recipient of Form 1098.",
+    "page": "i1040sb p. 1",
+    "why_uncovered": "Seller-financed mortgage interest is unadjusted taxable interest, so the tool would accept it as an ordinary payer entry. Nothing asks whether a payer is a buyer under seller financing, nothing collects the buyer's address or SSN/TIN, and nothing orders such entries first. The Schedule B special-treatment refusal covers adjustments and exclusions, not this disclosure requirement.",
+    "closest_item": "interest.amount",
+    "effect": "presentation"
    }
   ],
   "used": [
@@ -3072,7 +3022,7 @@
     ]
    }
   ],
-  "cost": 0.1156308,
+  "cost": 0.073564,
   "model": "claude-opus-5-5"
  },
  {
@@ -3762,7 +3712,7 @@
  },
  {
   "form": "qbi",
-  "prompt_sha": "96a84dae94184520e563d4478c125c9ad12cbb9e58b7b0877947dab58818c3b7",
+  "prompt_sha": "9810c5958b1cc323366b12cceb0e5419490621590439de3019e2d2de4ad5ef7b",
   "claims": [
    {
     "item": "qbi.eligible",
@@ -3772,36 +3722,26 @@
       "page": "i8995 p. 2"
      },
      {
+      "quote": "Losses or deductions from a qualified trade or business that are suspended by other provisions of the Internal Revenue Code are not qualified losses or deductions and, therefore, are not included in your QBI for the year.",
+      "page": "i8995 p. 3"
+     },
+     {
+      "quote": "If a loss or deduction is partially suspended, only the portion of the allowed loss or deduction attributable to QBI must be considered when determining QBI from the trade or business in the year the loss or deduction is incurred.",
+      "page": "i8995 p. 3"
+     },
+     {
       "quote": "If you were previously an employee of a business and continue to provide substantially the same services to that business after you're no longer treated as an employee, there is a presumption that you're providing services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee.",
       "page": "i8995 p. 2"
      },
      {
-      "quote": "Determining if items on Schedule C (Form 1040) are included in QBI. The net gain or loss reported on your Schedule C (Form 1040) isn't automatically included in your QBI.",
-      "page": "i8995 p. 3"
-     }
-    ],
-    "quote": "To figure the total amount of QBI, you must consider all items that are attributable to the trade or business. This includes, but isn't limited to, unreimbursed partnership expenses, business interest expense, deductible part of self-employment tax, self-employment health insurance deduction, and contributions to qualified retirement plans. / If you were previously an employee of a business and continue to provide substantially the same services to that business after you're no longer treated as an employee, there is a presumption that you're providing services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee. / Determining if items on Schedule C (Form 1040) are included in QBI. The net gain or loss reported on your Schedule C (Form 1040) isn't automatically included in your QBI.",
-    "page": "i8995 p. 2; i8995 p. 3",
-    "why_uncovered": "The qbi.unsupported question carves out 'the Schedule C businesses entered in this tool', so those businesses are kept in scope. Yet no encoded line computes their QBI. qbi.eligible takes only qbi.dividends. Nothing reduces Schedule C net profit by the deductible part of self-employment tax, the self-employment health insurance deduction, or retirement plan contributions attributable to the business. No question asks about the 3-year former-employee presumption, which can make Schedule C income not QBI.",
-    "closest_item": "qbi.eligible",
-    "effect": "amount"
-   },
-   {
-    "item": "qbi.carryforward",
-    "sentences": [
-     {
-      "quote": "If you have a qualified business net loss for the year, you don't qualify for the QBI deduction unless you have qualified REIT dividends or qualified PTP income. The loss will be carried forward to next year.",
+      "quote": "Do not include here any losses or deductions suspended from use in calculating taxable income in the current year or any portion of qualified losses or deductions previously suspended by other Code provisions that are allowed in calculating taxable income in the current year.",
       "page": "i8995 p. 4"
-     },
-     {
-      "quote": "This is the amount to be carried forward to the next year. This amount will offset QBI in later tax years regardless of whether the trade(s) or business(es) that generated the loss is still in existence.",
-      "page": "i8995 p. 5"
      }
     ],
-    "quote": "If you have a qualified business net loss for the year, you don't qualify for the QBI deduction unless you have qualified REIT dividends or qualified PTP income. The loss will be carried forward to next year. / This is the amount to be carried forward to the next year. This amount will offset QBI in later tax years regardless of whether the trade(s) or business(es) that generated the loss is still in existence.",
-    "page": "i8995 p. 4; i8995 p. 5",
-    "why_uncovered": "The encoding asks for the prior-year carryforward on line 3. It encodes no line 4 net-loss result, no zeroing of the QBI component, and no line 16 output. If the line 3 carryforward (or a Schedule C loss) exceeds QBI, the remaining negative amount is never computed or reported as the next-year carryforward.",
-    "closest_item": "qbi.carryforward",
+    "quote": "To figure the total amount of QBI, you must consider all items that are attributable to the trade or business. This includes, but isn't limited to, unreimbursed partnership expenses, business interest expense, deductible part of self-employment tax, self-employment health insurance deduction, and contributions to qualified retirement plans. / Losses or deductions from a qualified trade or business that are suspended by other provisions of the Internal Revenue Code are not qualified losses or deductions and, therefore, are not included in your QBI for the year. / If a loss or deduction is partially suspended, only the portion of the allowed loss or deduction attributable to QBI must be considered when determining QBI from the trade or business in the year the loss or deduction is incurred. / If you were previously an employee of a business and continue to provide substantially the same services to that business after you're no longer treated as an employee, there is a presumption that you're providing services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee. / Do not include here any losses or deductions suspended from use in calculating taxable income in the current year or any portion of qualified losses or deductions previously suspended by other Code provisions that are allowed in calculating taxable income in the current year.",
+    "page": "i8995 p. 2; i8995 p. 3; i8995 p. 4",
+    "why_uncovered": "qbi.unsupported carves out 'the Schedule C businesses entered in this tool' from its refusal, so Schedule C businesses reach Form 8995. But the only listed computed items are section 199A dividends (qbi.eligible draws only on qbi.dividends_if_ordinary) and the line 3 carryforward. No listed line computes line 1(c)/line 2 QBI from Schedule C. The encoding also does not show that QBI is reduced by the deductible part of self-employment tax, the self-employment health insurance deduction, or retirement plan contributions attributable to the business. It does not exclude current-year Schedule C losses suspended by sections 465 or 461(l), and it does not prorate partially suspended losses. No question asks whether the 3-year former-employee presumption applies to a Schedule C business. None of the HANDLED ELSEWHERE refusals covers these points: the s1a refusal covers only qualified tips in a trade or business, and the statutory-employee refusals concern EIC and Schedule 8812.",
+    "closest_item": "qbi.eligible",
     "effect": "amount"
    }
   ],
@@ -3823,7 +3763,7 @@
     ]
    }
   ],
-  "cost": 0.1809588,
+  "cost": 0.118252,
   "model": "claude-opus-5-5"
  },
  {
@@ -4961,7 +4901,7 @@
  },
  {
   "form": "sb",
-  "prompt_sha": "32955922f455df75581cd15d151a76520a7da3875fd5e9405909fac3c24eb841",
+  "prompt_sha": "790f11ef3aaf26986482d9efbdd258a5a7d6baffd8961629479e2da1c3704140",
   "claims": [
    {
     "item": "sb.line7a",
@@ -4969,15 +4909,11 @@
      {
       "quote": "Don't consider the exceptions relating to signature authority in answering Question 1 on line 7a.",
       "page": "i1040sb p. 3"
-     },
-     {
-      "quote": "Check the “Yes” box even if you aren't required to file FinCEN Form 114.",
-      "page": "i1040sb p. 2"
      }
     ],
-    "quote": "Don't consider the exceptions relating to signature authority in answering Question 1 on line 7a. / Check the “Yes” box even if you aren't required to file FinCEN Form 114.",
-    "page": "i1040sb p. 3; i1040sb p. 2",
-    "why_uncovered": "The line 7a question asks only whether the filer had a financial interest in or signature authority over a foreign financial account. It does not tell the filer to ignore the FinCEN Form 114 signature-authority exceptions. It also does not say that the answer is Yes even when no FBAR is required. A filer who relies on an FBAR exception could wrongly answer No. The sb.fbar_required refusal does not help, because it only triggers when an FBAR is actually required.",
+    "quote": "Don't consider the exceptions relating to signature authority in answering Question 1 on line 7a.",
+    "page": "i1040sb p. 3",
+    "why_uncovered": "The sb.line7a question asks only whether the filer had a financial interest in or signature authority over a foreign financial account. It does not tell the filer to ignore the FinCEN Form 114 signature-authority exceptions. A filer who has signature authority covered by one of those exceptions, and who is not otherwise required to file an FBAR, could answer \"No\" here. The sb.fbar_required refusal does not catch this case, because no FBAR is required.",
     "closest_item": "sb.line7a",
     "effect": "presentation"
    }
@@ -4992,7 +4928,7 @@
     ]
    }
   ],
-  "cost": 0.1027428,
+  "cost": 0.06822,
   "model": "claude-opus-5-5"
  },
  {
@@ -5441,7 +5377,7 @@
  },
  {
   "form": "sd",
-  "prompt_sha": "3d0ee66bdda303e65184fdd4a2339a5e637e3627184592db49fdc9147ed5f5d2",
+  "prompt_sha": "b6203d102f7c2383d41d47078acb1b261d06d27f44b33a7a5477bc589aaedb9e",
   "claims": [
    {
     "item": "sd.carryover",
@@ -5449,15 +5385,11 @@
      {
       "quote": "If you and your spouse once filed a joint return and are filing separate returns for 2025, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss.",
       "page": "i1040sd p. 10"
-     },
-     {
-      "quote": "If you excluded canceled debt from income in 2025, see Pub. 4681.",
-      "page": "i1040sd p. 10"
      }
     ],
-    "quote": "If you and your spouse once filed a joint return and are filing separate returns for 2025, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss. / If you excluded canceled debt from income in 2025, see Pub. 4681.",
+    "quote": "If you and your spouse once filed a joint return and are filing separate returns for 2025, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss.",
     "page": "i1040sd p. 10",
-    "why_uncovered": "The sd.carryover question tells joint 2025 filers how to answer. It gives no rule for a 2025 separate filer whose 2024 loss arose on a joint return, so it never limits the carryover to the spouse who actually had the loss. No question or refusal asks about canceled debt excluded from income in 2025. That exclusion can reduce capital loss carryovers under Pub. 4681. The carryover on lines 6 and 14 (sd.line6_ws, sd.line14_ws) therefore flows into the computation unadjusted.",
+    "why_uncovered": "The sd.carryover question only says how a 2025 joint return should answer (for the 2024 joint return or either spouse's separate return). Nothing asks a 2025 separate filer who filed jointly in 2024 which spouse actually had the loss. No refusal covers that case either. As encoded, the whole joint-return carryover could flow into this spouse's lines 6 and 14 when only the share belonging to the spouse who had the loss is allowed.",
     "closest_item": "sd.carryover",
     "effect": "amount"
    },
@@ -5475,7 +5407,7 @@
     ],
     "quote": "If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements. / You must also complete Part III of Form 8997.",
     "page": "i1040sd p. 10",
-    "why_uncovered": "No question asks whether a QOF investment was disposed of during the year. No encoded item sets the Schedule D page 1 QOF checkbox. No refusal points the filer to the required Form 8997 Part III. The Form 1099-B or 1099-DA QOF box may route a sale away from lines 1a and 8a through the sales screening, but neither the checkbox nor the Form 8997 requirement is implemented.",
+    "why_uncovered": "The QOF box on Form 1099-B or 1099-DA only keeps a transaction off lines 1a and 8a (the sales refusal 'Form 8949 -- Use the detail route'). No item checks the Schedule D page 1 box for disposing of a qualified opportunity fund investment. No item requires Form 8997 Part III or refuses such a disposal, so a QOF disposal reported through Form 8949 would leave the box unchecked and the required form missing.",
     "closest_item": "sd.screen",
     "effect": "presentation"
    }
@@ -5505,7 +5437,7 @@
     ]
    }
   ],
-  "cost": 0.2691228,
+  "cost": 0.170056,
   "model": "claude-opus-5-5"
  },
  {

@@ -12,6 +12,7 @@ form:
       type: NonNegDollars
       label: Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and
         related-payment requirements
+      gated_by: qbi.dividends_if_ordinary
       expr:
         op: input
         source: Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period
@@ -43,10 +44,10 @@ form:
     - id: qbi.eligible
       printed: (helper)
       type: NonNegDollars
-      label: Amount from qbi.dividends
+      label: Amount from qbi.dividends_if_ordinary
       expr:
         op: copy
-        from: qbi.dividends
+        from: qbi.dividends_if_ordinary
       cite:
         doc: f8995
         locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
@@ -136,7 +137,7 @@ form:
         op: sum
         of:
           - sd.net_gain
-          - f1040.line3a
+          - f1040.line3a_if_ordinary
       cite:
         doc: f8995
         locator: p. 1, "Enter your net capital gain, if any, increased by any qualified dividends" (line 12); i8995 p.
@@ -189,3 +190,25 @@ form:
         locator: p. 1, "Use this form if your taxable income, before your qualified business income deduction, is at
           or below $197,300 ($394,600 if married filing jointly)", "Qualified business income deduction. Enter the
           smaller of line 10 or line 14" (line 15); i8995 pp. 3–4
+    - id: qbi.dividends_if_ordinary
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Qualified section 199A dividends (Form 1099-DIV box 5), when ordinary dividends (box 1a) are above zero; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.has_ordinary
+                - const: true
+            then: qbi.dividends
+          - guard:
+              op: test
+              eq:
+                - div.has_ordinary
+                - const: false
+            then: qbi.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A"'

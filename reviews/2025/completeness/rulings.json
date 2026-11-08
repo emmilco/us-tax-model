@@ -67,57 +67,45 @@
   },
   "unruled:f1040#1": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 23-24. s1.line8_other names wages earned while incarcerated (8u) and a nonqualified deferred compensation or nongovernmental 457 pension (8t) and refuses at s1.line9. As f1040#1 of the backlog round (rechecked): a chapter 11 estate is refused by scope.other_income and person.se_screen; married filing separately by s3.mfs.",
-   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
-   "gate": "s1.line8_other"
+   "evidence": "i1040gi pp. 24-25. As the earlier rulings: scope.other_income names wages or tips not on a Form W-2, adoption benefits and other earned income (lines 1b to 1d and 1f to 1h); unreported and allocated tips are also refused by f8959.unsupported.",
+   "gate": "scope.other_income",
+   "prompt_sha": "d1392b8e385580e8d36bec60af28d5ca56ba53b567782feb7707527c31af8eaf"
   },
   "unruled:f1040#2": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 24-25. As f1040#2 of the backlog round (rechecked): scope.other_income names wages or tips not on a Form W-2, adoption benefits and other earned income (Form 1040 lines 1b to 1d and 1f to 1h); unreported and allocated tips are also refused by f8959.unsupported.",
-   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
-   "gate": "scope.other_income"
+   "evidence": "i1040gi pp. 27-28. As the earlier rulings: retirement.special names nondeductible IRA contributions, conversions and recharacterizations, returned contributions, QCDs and HSA funding distributions; rollovers are computed; the line 4c boxes are filing information.",
+   "gate": "retirement.special",
+   "prompt_sha": "d1392b8e385580e8d36bec60af28d5ca56ba53b567782feb7707527c31af8eaf"
   },
   "unruled:f1040#3": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 27-28. As f1040#3 of the backlog round (rechecked): retirement.special names nondeductible IRA contributions, conversions and recharacterizations, returned contributions, QCDs and HSA funding distributions; retirement.bad_code refuses Roth IRA codes other than Q. Rollovers are computed; the line 4c boxes and statement are filing information.",
-   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
-   "gate": "retirement.special"
+   "evidence": "i1040gi pp. 28-31. As the earlier rulings: retirement.special names the retired public safety officer exclusion, pre-retirement-age disability pensions and the Civil Service alternative annuity.",
+   "gate": "retirement.special",
+   "prompt_sha": "d1392b8e385580e8d36bec60af28d5ca56ba53b567782feb7707527c31af8eaf"
   },
   "unruled:f1040#4": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 28-31. As f1040#4 of the backlog round (rechecked): retirement.special names the retired public safety officer exclusion, the death benefit exclusion, terrorist-attack disability, pre-retirement-age disability pensions, corrective distributions and the Civil Service alternative annuity; box 5 contributions are subtracted (retirement.plan_excluded).",
-   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
-   "gate": "retirement.special"
+   "evidence": "i1040gi p. 31. As the earlier rulings: ssb.pub915 refuses Forms 2555, 4563 and 8815, excluded adoption benefits and Puerto Rico income.",
+   "gate": "ssb.pub915",
+   "prompt_sha": "d1392b8e385580e8d36bec60af28d5ca56ba53b567782feb7707527c31af8eaf"
   },
   "unruled:f1040#5": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 31. As f1040#5 of the backlog round (rechecked): ssb.pub915 refuses repayments above benefits, Forms 2555, 4563 and 8815, excluded adoption benefits and Puerto Rico income; ssb.terror_disability asks about terrorist-attack disability payments.",
-   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
-   "gate": "ssb.pub915"
+   "evidence": "i1040gi pp. 14, 33-34. As the earlier rulings: married filing separately is refused (s3.mfs), so the spouse-itemizes and spouse-box rules do not arise; sa.unsupported refuses a disaster loss added to the standard deduction.",
+   "gate": "s3.mfs",
+   "prompt_sha": "d1392b8e385580e8d36bec60af28d5ca56ba53b567782feb7707527c31af8eaf"
   },
   "unruled:f1040#6": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 33. As f1040#6 of the backlog round (rechecked): sb.unsupported asks about any nominee income and refuses; the nominee statement and the line 7b box are filing information.",
-   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
-   "gate": "sb.unsupported"
+   "evidence": "i1040gi pp. 34-36. scope.other_line16 refuses the other line 16 taxes, including Form 8615 and Schedule J; the section 965(i) amount is outside the tool (BUG inventory, earlier rounds).",
+   "gate": "scope.other_line16",
+   "prompt_sha": "d1392b8e385580e8d36bec60af28d5ca56ba53b567782feb7707527c31af8eaf"
   },
   "unruled:f1040#7": {
-   "class": "out of scope",
-   "evidence": "i1040gi pp. 14, 33-34. As f1040#7 of the backlog round (rechecked): married filing separately is refused (s3.mfs), so the spouse-itemizes and spouse-box rules do not arise; a spouse is entered only on a joint return; sa.unsupported refuses a disaster loss added to the standard deduction.",
-   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
-   "gate": "s3.mfs"
-  },
-  "unruled:f1040#8": {
    "class": "covered",
-   "evidence": "i1040gi p. 39. As f1040#8 of the backlog round: married filing separately is refused; line 26 is the supplied total of the filer's own payments; the former spouse's SSN is filing information.",
-   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
-   "line": "f1040.line26"
-  },
-  "unruled:f1040#9": {
-   "class": "covered",
-   "evidence": "p501 p. 6. household.married states the rule: 'if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years.'",
-   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
-   "line": "household.married"
+   "evidence": "i1040gi p. 39. As the earlier rulings: married filing separately is refused; line 26 is the supplied total of the filer's own payments.",
+   "line": "f1040.line26",
+   "prompt_sha": "d1392b8e385580e8d36bec60af28d5ca56ba53b567782feb7707527c31af8eaf"
   },
   "unruled:f2441#1": {
    "class": "covered",
@@ -360,9 +348,9 @@
   },
   "unruled:interest#1": {
    "class": "out of scope",
-   "evidence": "i1040sb pp. 1-2. sb.unsupported names accrued market discount and a contingent payment debt instrument and refuses; tax-exempt interest is asked (f1040.tax_exempt_interest, net of premium) with exempt-interest dividends (div.box12); private activity bond interest is an AMT matter (s2.amt, div.amt).",
-   "prompt_sha": "6187786b7022f22c96ffff2382098b21b79ec963186c70e0325ed848b96134c4",
-   "gate": "sb.unsupported"
+   "evidence": "i1040sb pp. 1-2. The interest roster's help names accrued market discount (taxable even on a tax-exempt bond) and contingent payment debt instrument gain; sb.unsupported names them and refuses; tax-exempt interest is asked separately (f1040.tax_exempt_interest).",
+   "gate": "sb.unsupported_if_income",
+   "prompt_sha": "f823a1800a3098a3341162ec5e29f61ce22589815f34d9ba25111418c284607b"
   },
   "unruled:ira#1": {
    "class": "out of scope",
@@ -420,14 +408,8 @@
   },
   "unruled:qbi#1": {
    "class": "wrong",
-   "evidence": "i8995 pp. 2-3. Wrong: Schedule C QBI is computed (f8995.line2 sums person.qbi = sc.qbi, line 31 less sc.qbi_ded: the self-employment tax deduction, SEP/SIMPLE and Form 7206 amounts). The former-employee presumption is refused by sc.special ('services you provide to a business that employed you within the last 3 years').",
-   "prompt_sha": "96a84dae94184520e563d4478c125c9ad12cbb9e58b7b0877947dab58818c3b7"
-  },
-  "unruled:qbi#2": {
-   "class": "covered",
-   "evidence": "i8995 pp. 4-5. f8995.line4 floors at zero and f8995.line16 reports lines 2 and 3 combined when less than zero.",
-   "prompt_sha": "96a84dae94184520e563d4478c125c9ad12cbb9e58b7b0877947dab58818c3b7",
-   "line": "f8995.line16"
+   "evidence": "i8995 pp. 1-3. As the earlier ruling: Schedule C QBI is computed (f8995.line2 sums person.qbi = sc.qbi less sc.qbi_ded).",
+   "prompt_sha": "9810c5958b1cc323366b12cceb0e5419490621590439de3019e2d2de4ad5ef7b"
   },
   "unruled:qdcg#1": {
    "class": "out of scope",
@@ -508,8 +490,8 @@
   },
   "unruled:sb#1": {
    "class": "presentation",
-   "evidence": "i1040sb pp. 2-3. The line 7a answer is a yes/no on the form; no amount depends on it, and the question already asks about financial interest or signature authority without any FBAR exception.",
-   "prompt_sha": "32955922f455df75581cd15d151a76520a7da3875fd5e9405909fac3c24eb841"
+   "evidence": "i1040sb pp. 2-3. As the earlier ruling: the line 7a answer is a yes/no on the form; no amount depends on it, and the question asks without any FBAR exception.",
+   "prompt_sha": "790f11ef3aaf26986482d9efbdd258a5a7d6baffd8961629479e2da1c3704140"
   },
   "unruled:sc#1": {
    "class": "covered",
@@ -559,14 +541,15 @@
   },
   "unruled:sd#1": {
    "class": "out of scope",
-   "evidence": "i1040sd p. 10. As sd#1 of the backlog round (rechecked): a 2025 separate return is refused (s3.mfs), clcw.spouse_screen refuses a carryover from a 2024 joint return without the same spouse, and excluded canceled debt is refused by s1.cod_unsupported.",
-   "prompt_sha": "3d0ee66bdda303e65184fdd4a2339a5e637e3627184592db49fdc9147ed5f5d2",
-   "gate": "clcw.spouse_screen"
+   "evidence": "i1040sd p. 10. As the earlier ruling: a 2025 separate return is refused (s3.mfs).",
+   "gate": "s3.mfs",
+   "prompt_sha": "b6203d102f7c2383d41d47078acb1b261d06d27f44b33a7a5477bc589aaedb9e"
   },
   "unruled:sd#2": {
-   "class": "presentation",
-   "evidence": "i1040sd p. 10. As sd#2 of the backlog round: the QOF box and Form 8997 Part III are filing information; QOF codes are refused by sales.bad_code.",
-   "prompt_sha": "3d0ee66bdda303e65184fdd4a2339a5e637e3627184592db49fdc9147ed5f5d2"
+   "class": "real gap",
+   "evidence": "i1040sd p. 10. A QOF disposition on a sale entry is refused by sales.special; the Schedule D page 1 QOF box and a gain deferred without a sale entry are not handled: BUG-0451 (low, open).",
+   "bug": "BUG-0451",
+   "prompt_sha": "b6203d102f7c2383d41d47078acb1b261d06d27f44b33a7a5477bc589aaedb9e"
   },
   "unruled:sdtw#1": {
    "class": "out of scope",
@@ -846,6 +829,11 @@
    "gate": "person.se_screened",
    "prompt_sha": "99721b0c3a1aaf6960a9083c68e15655772b70d0564edb1545c23da3c05bf973",
    "evidence": "i1040s8812 p. 3. As s8812#3 of the earlier rounds: an optional method, farm or nonfarm, is refused by person.se_screen (\"electing an optional method (Schedule SE Part II)\"), not only lines 2c to 2e as the claim says; treaty-excluded income is a Schedule 1 line 8 exclusion refused by s1.line8_other. Re-ruled on the review rerun after the formal-gate changes."
+  },
+  "unruled:interest#2": {
+   "class": "presentation",
+   "evidence": "i1040sb p. 1. The roster's help names seller-financed interest; the buyer's name, address and SSN and the listing order are filing information; sb.unsupported names seller-financed mortgage interest and refuses.",
+   "prompt_sha": "f823a1800a3098a3341162ec5e29f61ce22589815f34d9ba25111418c284607b"
   }
  }
 }

@@ -46,33 +46,41 @@ bank:
     prompt: For this person (you, or your spouse on a joint return) — the part of the family contribution limit
       (Step 1) allocated to this person under the allocation you agreed on. The two parts together may not be more
       than the limit.
+  - input: div.any
+    order: 10
+    help: 'If you are not sure, answer Yes: the next questions ask for each amount, and you can enter zero for any you
+      did not receive. Amounts you receive from a mutual fund, ETF or money market fund, including a municipal or other
+      tax-exempt bond fund, are dividends, even when a statement calls them interest or tax-exempt interest. A benefit
+      from a corporation you own, such as personal use of its car or home, a below-market or forgiven loan, or a purchase
+      for less than value, counts when it is treated as a dividend. On a joint return, answer for you and your spouse
+      together.'
   - input: div.box2b
     order: 15
-    help: Enter the amounts of all your Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
   - input: div.box2c
     order: 15
-    help: Enter the amounts of all your Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
   - input: div.box2d
     order: 15
-    help: Enter the amounts of all your Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
   - input: div.box2e
     order: 15
-    help: Enter the amounts of all your Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
   - input: div.box2f
     order: 15
-    help: Enter the amounts of all your Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
   - input: div.box3
     order: 15
-    help: Enter the amounts of all your Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
   - input: div.box9
     order: 15
-    help: Enter the amounts of all your Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
   - input: div.box10
     order: 15
-    help: Enter the amounts of all your Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
   - input: div.box13
     order: 15
-    help: Enter the amounts of all your Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
   - input: div.basis_reconciled
     order: 15
   - input: f1040.status
@@ -157,7 +165,7 @@ bank:
       vehicle, a pass-through entity interest, intellectual property, inventory, or a partial interest.
   - input: $interest
     order: 8
-    help: Include every payer of taxable interest.
+    help: "Include every payer of taxable interest, with or without a Form 1099-INT or 1099-OID: a bank or credit union; a bond or note, including original issue discount and accrued market discount (market discount on a tax-exempt bond is taxable interest); U.S. savings bonds, even if you may exclude the interest for education expenses; a gain on a contingent payment debt instrument that is treated as interest; a buyer who pays you interest on a mortgage or other seller financing, including for a sale in an earlier year; and interest received in your or your spouse's name that belongs to someone else (as a nominee)."
     prompt: List the payers of your taxable interest, one entry per payer. Leave the list empty if there are none.
   - input: interest.amount
     order: 10
@@ -169,7 +177,8 @@ bank:
     help: Married filing separately and unsupported items are refused with citations.
   - input: div.box12
     order: 30
-    help: Married filing separately and unsupported items are refused with citations.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Married filing separately and
+      unsupported items are refused with citations.
   - input: person.rrta
     order: 10
     help: Yes if any Form W-2 of this person reports railroad retirement (RRTA) compensation or tax in box 14, or this person
@@ -312,8 +321,12 @@ bank:
       The loss entered cannot be more than the loss on this sale (column (e) less column (d), after any code B basis correction).
   - input: sb.unsupported
     order: 10
+  - input: sb.form5471
+    order: 10
+    help: Yes refuses the return; this tool does not prepare Form 5471.
   - input: sb.ordinary_dividends
     order: 10
+    help: "The total of box 1a of every Form 1099-DIV and substitute statement (such as a broker's consolidated statement) in your or your spouse's name, including dividends that belong to someone else (as a nominee), plus your share of dividends paid in someone else's name and any ordinary dividends received without a form."
   - input: sb.line7a
     order: 10
   - input: sb.fbar_required
@@ -366,6 +379,7 @@ bank:
     help: The loss printed in parentheses on line 21 of your 2024 Schedule D (at most $3,000), entered as a positive amount.
   - input: sd.distributions
     order: 10
+    help: "The total of box 2a of every Form 1099-DIV and substitute statement in your or your spouse's name, including amounts reinvested, plus any capital gain distributions received without a form."
   - input: $w2
     order: 5
     help: 'One entry per distinct employer, not per Form W-2: the excess social security credit turns on the number of

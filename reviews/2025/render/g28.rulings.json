@@ -87,6 +87,15 @@
    "ruling": "Ruling: refusal located elsewhere; project retained. Form 2439 box 1d and Schedule K-1 collectibles gain are refused by sd.other_forms ('Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1'), which refuses line 7 of this worksheet and Form 1040 line 7a; within scope line 4 is Form 1099-DIV box 2d alone. No change to the data."
   },
   {
+   "printed": "4",
+   "restated": "Enter the amount from div helper \"Collectibles (28%) gain, box 2d, when capital gain distributions (box 2a) are above zero; zero otherwise\".",
+   "model": "The IRS line is a total of collectibles gain from three sources: \"Form 1099-DIV, box 2d; • Form 2439, box 1d; and • Schedule K-1 from a partnership, S corporation, estate, or trust.\" The restatement enters only box 2d, and no refusal names the excluded Form 2439 and Schedule K-1 amounts. Gating box 2d on box 2a being above zero is consistent with box 2d being \"the portion of the amount in box 2a.\"",
+   "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 4: \"Enter the total of any collectibles gain reported to you on: • Form 1099-DIV, box 2d; • Form 2439, box 1d; and • Schedule K-1 from a partnership, S corporation, estate, or trust.\" Form 2439 and Schedule K-1 amounts: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") refuses them, reaching Form 1040 line 7a through Schedule D lines 7, 15 and 16 (as the earlier rulings of this line). Within scope line 4 is Form 1099-DIV box 2d alone. The restatement now names the box 2a condition of the box 2d input: f1099div p. 5, \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", so box 2d is zero when box 2a is. Project retained.",
+   "context": "7095435685c2315023c8a6f4f4c36d65dc27afc5ca07f72cb0354330601f8000",
+   "date": "2026-11-07",
+   "run": "685a566e844dca161f915e1d3ca4d64d702f0b8a877353f4fdd2b09d7d086549"
+  },
+  {
    "printed": "5",
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
    "model": "IRS line 5 says 'Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D'. The program always enters $0, and no refusal excludes filers who have carryovers. A filer with only distributions can still have a carryover.",

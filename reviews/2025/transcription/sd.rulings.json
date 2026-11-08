@@ -299,6 +299,15 @@
    "context": "80f1a3739f83f60d88f9ed4e7b245de4f0ba9fdc78b8d70c2aa4e541a2c261e1"
   },
   {
+   "printed": "22",
+   "project": "{\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}, \"then\": {\"ref\": \"f1040.line3a\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}",
+   "second": "{\"args\": [{\"const\": 0}, {\"ref\": \"f1040.line3a\"}], \"test\": \"lt\"}",
+   "ruling": "Ruling: model error; the candidate reads f1040.line3a whatever box 1a is above zero, so it needs that answer where the source does not: i1040gi p. 25, Line 3a, \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b\": with box 1a (line 3b) zero, line 3a is zero. The project reads the gate line f1040.line3a_if_ordinary, which takes f1040.line3a when box 1a is above zero holds and zero otherwise; the interview asks f1040.line3a only then (gated_by f1040.line3a_if_ordinary), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
+   "context": "63c8e67ce1498b9c265ca5c30e7455833541b0285ba91c15796215fd3b2dba75",
+   "date": "2026-11-07",
+   "run": "03d7608dfeee9935e49ed4f01451061d14ceaa19fa2ba297e8d2b5c7d3c21d85"
+  },
+  {
    "printed": "3(d)",
    "project": "{\"collection\": \"sales\", \"field\": \"sales.proceeds\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"const\": \"C\"}, {\"ref\": \"sales.box\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"detail\"}, {\"ref\": \"sales.route\"}], \"test\": \"eq\"}], \"test\": \"all\"}}",
    "second": "{\"collection\": \"sales\", \"field\": \"sales.proceeds\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"const\": \"C\"}, {\"ref\": \"sales.box\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"I\"}, {\"ref\": \"sales.box\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": \"detail\"}, {\"ref\": \"sales.route\"}], \"test\": \"eq\"}], \"test\": \"all\"}}",

@@ -165,16 +165,16 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) For box 3, have basis reductions been applied to records with no distribution exceeding basis?
       = true
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
-  (helper) Amount from sb.ordinary_dividends
+  (helper) Amount from sb.ordinary_dividends_if_dividends
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
-  (helper) Amount from f1040.line3a
+  (helper) Amount from f1040.line3a_if_ordinary
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
-  (helper) Amount from sd.distributions
+  (helper) Amount from sd.distributions_if_dividends
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
-  (helper) Amount from qbi.dividends
+  (helper) Amount from qbi.dividends_if_ordinary
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
   (helper) Section 1202 distribution present
@@ -201,6 +201,76 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Total special capital-gain distribution components
       = $0
       cite: [f1099div] p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain" (January 2024 (continuous-use form); 4ea1de80)
+  (gate) In 2025, did you (or your spouse) receive any dividends or other distributions from a company or a fund, with or without a Form 1099-DIV? Count amounts that were reinvested, credited to an account or paid in shares or other property. Answer Yes if any of these applies:
+
+      - a Form 1099-DIV for 2025, or the dividends section of a broker's consolidated statement or another substitute statement, shows an amount in your (or your spouse's) name, even if it was paid in early 2026 or no cash was paid (such as a deemed dividend on a convertible bond)
+      - dividends from stock or from a mutual fund, ETF, money market fund or REIT
+      - capital gain distributions, exempt-interest dividends, nondividend distributions (a return of capital) or liquidation distributions
+      - dividends paid to you as a participant in an employee stock ownership plan (ESOP)
+      - dividends received in your name that belong to someone else (as a nominee), or dividends that belong to you but were paid in someone else's name, such as your share of an account you own with a parent or another person
+      - a corporation you own paid your personal expenses or gave you property, and the amount is treated as a dividend
+      - dividends from a foreign company, dividends reported on a Schedule K-1, or dividends received without any form
+      = false
+      cite: [f1099div] p. 5, Instructions for Recipient, boxes 1a, 2a, 3, 9, 10, 12 and 13, Box 1b, "The amount shown may be dividends a corporation paid directly to you as a participant (or beneficiary of a participant) in an employee stock ownership plan (ESOP)", Nominees, "If this form includes amounts belonging to another person, you are considered a nominee recipient", "Box 1a. Shows total ordinary dividends that are taxable", "Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)", "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12" (January 2024 (continuous-use form); 4ea1de80)
+  (gate) Ordinary dividends (box 1a) are above zero
+      = false
+      cite: [f1099div] p. 5, Instructions for Recipient, boxes 1b, 2e and 5, "Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates", "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI)", "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A" (January 2024 (continuous-use form); 4ea1de80)
+  (gate) Capital gain distributions (box 2a) are above zero
+      = false
+      cite: [f1099div] p. 5, Instructions for Recipient, boxes 2b, 2c, 2d and 2f, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI" (January 2024 (continuous-use form); 4ea1de80)
+  (gate) Nondividend distributions (box 3) are above zero
+      = false
+      cite: [f1099div] p. 5, Instructions for Recipient, Box 3, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable" (January 2024 (continuous-use form); 4ea1de80)
+  (helper) No amount in a box whose condition does not hold
+      = $0
+      cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
+  (helper) No answer needed without nondividend distributions (box 3)
+      = false
+      cite: [f1099div] p. 5, Instructions for Recipient, Box 3, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable" (January 2024 (continuous-use form); 4ea1de80)
+  (helper) Unrecaptured section 1250 gain, box 2b, when capital gain distributions (box 2a) are above zero; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.has_capital_gain",{"const":false}],"op":"test"}
+  (helper) Section 1202 gain, box 2c, when capital gain distributions (box 2a) are above zero; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.has_capital_gain",{"const":false}],"op":"test"}
+  (helper) Collectibles (28%) gain, box 2d, when capital gain distributions (box 2a) are above zero; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.has_capital_gain",{"const":false}],"op":"test"}
+  (helper) Section 897 capital gain, box 2f, when capital gain distributions (box 2a) are above zero; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.has_capital_gain",{"const":false}],"op":"test"}
+  (helper) Section 897 ordinary dividends, box 2e, when ordinary dividends (box 1a) are above zero; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI)" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.has_ordinary",{"const":false}],"op":"test"}
+  (helper) Nondividend distributions/return of capital, box 3, when you or your spouse received dividends or other distributions; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
+  (helper) Cash liquidation distributions, box 9, when you or your spouse received dividends or other distributions; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Boxes 9 and 10. Show cash and noncash liquidation distributions" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
+  (helper) Noncash liquidation distributions, box 10, when you or your spouse received dividends or other distributions; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Boxes 9 and 10. Show cash and noncash liquidation distributions" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
+  (helper) Exempt-interest dividends, box 12, when you or your spouse received dividends or other distributions; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
+  (helper) Specified private activity bond interest dividends, box 13, when you or your spouse received dividends or other distributions; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
+  (helper) For box 3, basis reductions applied, when nondividend distributions (box 3) are above zero; false otherwise
+      = false
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.has_return_of_capital",{"const":false}],"op":"test"}
 
 == Earned Income Credit (EIC)—Steps 1 to 6 and Worksheet A—Line 27a ==
   (helper) Could you be a qualifying child of another person for 2025?
@@ -657,6 +727,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   37  Subtract line 33 from line 24. This is the amount you owe
       = $0
       cite: [f1040] Form 1040 (2025), line 37 (2025; created 2025-09-05; 3d31c226)
+  (helper) Qualified dividends (Form 1040 line 3a), when ordinary dividends (box 1a) are above zero; zero otherwise
+      = $0
+      cite: [i1040gi] p. 25, Line 3a, "Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["div.has_ordinary",{"const":false}],"op":"test"}
 
 == Form 2441 — Child and Dependent Care Expenses (Parts I to III) ==
   (helper) Year parameter sales.zero
@@ -4782,7 +4856,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter sales.zero
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
-  (helper) Amount from qbi.dividends
+  (helper) Amount from qbi.dividends_if_ordinary
       = $0
       cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
   3   Qualified business net (loss) carryforward from the prior year (as a positive amount)
@@ -4813,6 +4887,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f8995] p. 1, "Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)", "Qualified business income deduction. Enter the smaller of line 10 or line 14" (line 15); i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
       note: taken: {"eq":["qbi.use_8995a",{"const":false}],"op":"test"}
+  (helper) Qualified section 199A dividends (Form 1099-DIV box 5), when ordinary dividends (box 1a) are above zero; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.has_ordinary",{"const":false}],"op":"test"}
 
 == Qualified Dividends and Capital Gain Tax Worksheet—Line 16 ==
   (question) Are you filing Schedule D?
@@ -6407,7 +6485,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 34, Line 12e, Exception 2 (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule B — supported interest and ordinary dividends ==
-  (helper) Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?
+  (helper) Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, or other special treatment?
       = false
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
   (helper) Total ordinary dividends, Form 1099-DIV box 1a
@@ -6438,12 +6516,33 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   4   Subtract sb.line3 from sb.line2
       = $0
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
-  6   Amount from sb.ordinary_dividends
+  6   Amount from sb.ordinary_dividends_if_dividends
       = $0
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
   (helper) Complete Part III for interest/dividends over $1,500 or foreign account/trust
       = false
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) In 2025, were you (or your spouse) an officer or director of a foreign corporation, or did you (or your spouse) own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power of all classes of a foreign corporation's stock with voting rights?
+      = false
+      cite: [i1040sb] p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation", "You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights" (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Taxable interest from all payers, before any Schedule B adjustment
+      = $0
+      cite: [i1040sb] p. 1, Line 1, "Report on line 1 all of your taxable interest" (TY2025; printed April 23, 2025; b92f31ec)
+      note: confirmed roster $interest:
+  (gate) Taxable interest, ordinary dividends or capital gain distributions are above zero
+      = false
+      cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) No special treatment without interest, ordinary dividends or capital gain distributions
+      = false
+      cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Total ordinary dividends, Form 1099-DIV box 1a, when you or your spouse received dividends or other distributions; zero otherwise
+      = $0
+      cite: [i1040sb] p. 2, Line 5, "Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements" (TY2025; printed April 23, 2025; b92f31ec)
+      note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
+  (helper) Schedule B special treatment, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise
+      = false
+      cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
+      note: taken: {"eq":["sb.has_income",{"const":false}],"op":"test"}
 
 == Proof-of-concept scope screening ==
   (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately, including any of the following?
@@ -6787,6 +6886,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Nonnegative net capital gain for QDCGT
       = $0
       cite: [i1040gi] i1040gi p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3, "Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Capital gain distributions, generally Form 1099-DIV box 2a, when you or your spouse received dividends or other distributions; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
 
 == Schedule D Tax Worksheet ==
   (helper) Zero for skipped worksheet lines
@@ -7261,9 +7364,37 @@ Values sheet — tax year 2025 (not a complete return for all filers)
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
   sd.line6: chose $0 (guard 1)
       not taken: guard 0 = false
+  sd.distributions_if_dividends: chose $0 (guard 1)
+      not taken: guard 0 = false
+  div.box2c_if_capital_gain: chose $0 (guard 1)
+      not taken: guard 0 = false
+  div.box13_if_dividends: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sb.ordinary_dividends_if_dividends: chose $0 (guard 1)
+      not taken: guard 0 = false
+  div.box2e_if_ordinary: chose $0 (guard 1)
+      not taken: guard 0 = false
+  div.box2f_if_capital_gain: chose $0 (guard 1)
+      not taken: guard 0 = false
+  div.box9_if_dividends: chose $0 (guard 1)
+      not taken: guard 0 = false
+  div.box10_if_dividends: chose $0 (guard 1)
+      not taken: guard 0 = false
+  div.box3_if_dividends: chose $0 (guard 1)
+      not taken: guard 0 = false
+  div.box2b_if_capital_gain: chose $0 (guard 1)
+      not taken: guard 0 = false
+  div.box2d_if_capital_gain: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f1040.line3a_if_ordinary: chose $0 (guard 1)
+      not taken: guard 0 = false
+  qbi.dividends_if_ordinary: chose $0 (guard 1)
+      not taken: guard 0 = false
   sd.line14: chose $0 (guard 1)
       not taken: guard 0 = false
   f1040.line1e: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sb.unsupported_if_income: chose false (guard 1)
       not taken: guard 0 = false
   ssb.line18: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -7310,6 +7441,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   qbi.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   sd.line21: chose $0 (guard 1)
+      not taken: guard 0 = false
+  div.box12_if_dividends: chose $0 (guard 1)
+      not taken: guard 0 = false
+  div.basis_reconciled_if_return_of_capital: chose false (guard 1)
       not taken: guard 0 = false
   eic.top_limit: chose $61,555 (guard 0)
   eic.limit_other: chose $19,104 (guard 0)
@@ -7745,14 +7880,32 @@ Derivations:
   sd.line10.h: sum_over(sd.screen = false)
   sd.line11: copy(sd.other_forms = false; sd.zero = $0)
   sd.line12: copy(sd.other_forms = false; sd.zero = $0)
-  div.section1202: test(div.box2c = $0; 0 = $0)
-  div.amt: test(div.box13 = $0; 0 = $0)
-  div.unsupported: test(div.box2e = $0; 0 = $0; div.box2f = $0; 0 = $0; div.box9 = $0; 0 = $0; div.box10 = $0; 0 = $0; div.box3 = $0; 0 = $0)
-  div.special_total: sum(div.box2b = $0; div.box2c = $0; div.box2d = $0)
-  div.bad_special: test(div.box2b = $0; sd.distributions = $0; div.box2c = $0; sd.distributions = $0; div.box2d = $0; sd.distributions = $0; div.special_total = $0; sd.distributions = $0)
-  div.bad_components: test(f1040.line3a = $0; sb.ordinary_dividends = $0; qbi.dividends = $0; sb.ordinary_dividends = $0)
+  div.zero: param(#sales.zero = $0)
+  sd.distributions_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; div.zero = $0)
+  div.has_capital_gain: test(sd.distributions_if_dividends = $0; 0 = $0)
+  div.box2c_if_capital_gain: choose(div.has_capital_gain = false; true = true; div.has_capital_gain = false; false = false; div.zero = $0)
+  div.section1202: test(div.box2c_if_capital_gain = $0; 0 = $0)
+  div.box13_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; div.zero = $0)
+  div.amt: test(div.box13_if_dividends = $0; 0 = $0)
+  sb.zero: param(#sales.zero = $0)
+  sb.ordinary_dividends_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; sb.zero = $0)
+  div.has_ordinary: test(sb.ordinary_dividends_if_dividends = $0; 0 = $0)
+  div.box2e_if_ordinary: choose(div.has_ordinary = false; true = true; div.has_ordinary = false; false = false; div.zero = $0)
+  div.box2f_if_capital_gain: choose(div.has_capital_gain = false; true = true; div.has_capital_gain = false; false = false; div.zero = $0)
+  div.box9_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; div.zero = $0)
+  div.box10_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; div.zero = $0)
+  div.box3_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; div.zero = $0)
+  div.unsupported: test(div.box2e_if_ordinary = $0; 0 = $0; div.box2f_if_capital_gain = $0; 0 = $0; div.box9_if_dividends = $0; 0 = $0; div.box10_if_dividends = $0; 0 = $0; div.box3_if_dividends = $0; 0 = $0)
+  div.box2b_if_capital_gain: choose(div.has_capital_gain = false; true = true; div.has_capital_gain = false; false = false; div.zero = $0)
+  div.box2d_if_capital_gain: choose(div.has_capital_gain = false; true = true; div.has_capital_gain = false; false = false; div.zero = $0)
+  div.special_total: sum(div.box2b_if_capital_gain = $0; div.box2c_if_capital_gain = $0; div.box2d_if_capital_gain = $0)
+  div.bad_special: test(div.box2b_if_capital_gain = $0; sd.distributions_if_dividends = $0; div.box2c_if_capital_gain = $0; sd.distributions_if_dividends = $0; div.box2d_if_capital_gain = $0; sd.distributions_if_dividends = $0; div.special_total = $0; sd.distributions_if_dividends = $0)
+  f1040.line3a_if_ordinary: choose(div.has_ordinary = false; true = true; div.has_ordinary = false; false = false; div.zero = $0)
+  qbi.zero: param(#sales.zero = $0)
+  qbi.dividends_if_ordinary: choose(div.has_ordinary = false; true = true; div.has_ordinary = false; false = false; qbi.zero = $0)
+  div.bad_components: test(f1040.line3a_if_ordinary = $0; sb.ordinary_dividends_if_dividends = $0; qbi.dividends_if_ordinary = $0; sb.ordinary_dividends_if_dividends = $0)
   div.screen: param(div.section1202 = false; div.amt = false; div.unsupported = false; div.bad_special = false; div.bad_components = false; #sales.zero = $0)
-  sd.line13: sum(sd.distributions = $0; div.screen = $0)
+  sd.line13: sum(sd.distributions_if_dividends = $0; div.screen = $0)
   sd.line14: choose(sd.other_forms = false; sd.carryover = false; true = true; sd.carryover = false; false = false; sd.zero = $0)
   sd.line15: sum(sd.line8a.h = $0; sd.line8b.h = $0; sd.line9.h = $0; sd.line10.h = $0; sd.line11 = $0; sd.line12 = $0; sd.line13 = $0; sd.line14 = $0)
   sd.line16: sum(sd.line7 = $0; sd.line15 = $0)
@@ -7774,12 +7927,14 @@ Derivations:
   f2441.zero: param(#sales.zero = $0)
   f1040.line1e: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; f2441.zero = $0)
   f1040.line1z: sum(f1040.line1a = $130,000; f1040.line1e = $0)
-  sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
-  sb.zero: param(#sales.zero = $0)
-  sb.line3: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.zero = $0)
+  sb.has_income: test(sb.interest_total = $0; 0 = $0; sb.ordinary_dividends_if_dividends = $0; 0 = $0; sd.distributions_if_dividends = $0; 0 = $0)
+  sb.no: param(#sb.no = false)
+  sb.unsupported_if_income: choose(sb.has_income = false; true = true; sb.has_income = false; false = false; sb.no = false)
+  sb.line2: sum_over(sb.unsupported_if_income = false; sb.form5471 = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
+  sb.line3: copy(sb.unsupported_if_income = false; sb.form5471 = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.zero = $0)
   sb.line4: subtract(sb.line2 = $0; sb.line3 = $0)
   f1040.line2b: copy(sb.line4 = $0)
-  sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
+  sb.line6: copy(sb.unsupported_if_income = false; sb.form5471 = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends_if_dividends = $0)
   f1040.line3b: copy(sb.line6 = $0)
   f1040.line4b: sum_over(person[taxpayer].ira_taxable = $0)
   f1040.line5b: sum_over(person[taxpayer].plan_taxable = $0)
@@ -7918,12 +8073,11 @@ Derivations:
   qbi.threshold: param(#qbi.threshold = $197,300)
   qbi.use_8995a: test(qbi.taxable_before = $114,250; qbi.threshold = $197,300)
   f8995.line2: sum_over(person[taxpayer].qbi = $0)
-  qbi.zero: param(#sales.zero = $0)
   f8995.line3: subtract(qbi.zero = $0; qbi.carryforward = $0)
   f8995.line4_sum: sum(f8995.line2 = $0; f8995.line3 = $0)
   f8995.line4: subtract_floor0(f8995.line4_sum = $0; qbi.zero = $0)
   f8995.line5: multiply_rate(f8995.line4 = $0; #qbi.rate = 1/5)
-  qbi.eligible: copy(qbi.unsupported = false; qbi.dividends = $0)
+  qbi.eligible: copy(qbi.unsupported = false; qbi.dividends_if_ordinary = $0)
   f8995.line6: copy(qbi.eligible = $0)
   f8995.line8: copy(f8995.line6 = $0)
   f8995.line9: multiply_rate(f8995.line8 = $0; #qbi.rate = 1/5)
@@ -7931,7 +8085,7 @@ Derivations:
   f8995.line11: copy(qbi.taxable_before = $114,250)
   sd.net_gain_raw: smaller_of(sd.line15 = $0; sd.line16 = $0)
   sd.net_gain: subtract_floor0(sd.net_gain_raw = $0; 0 = $0)
-  qbi.net_capital_gain: sum(sd.net_gain = $0; f1040.line3a = $0)
+  qbi.net_capital_gain: sum(sd.net_gain = $0; f1040.line3a_if_ordinary = $0)
   f8995.line12: copy(qbi.net_capital_gain = $0)
   f8995.line13: subtract_floor0(f8995.line11 = $114,250; f8995.line12 = $0)
   f8995.line14: multiply_rate(f8995.line13 = $114,250; #qbi.rate = 1/5)
@@ -7955,10 +8109,14 @@ Derivations:
   clcw26.line12: sum(clcw26.line10 = $0; clcw26.line11 = $0)
   clcw26.line13: subtract_floor0(clcw26.line9 = $0; clcw26.line12 = $0)
   clcw26.decedent_notice: test(f1040.status = single; "mfj" = mfj)
-  div.box1a: copy(sb.ordinary_dividends = $0)
-  div.box1b: copy(f1040.line3a = $0)
-  div.box2a: copy(sd.distributions = $0)
-  div.box5: copy(qbi.dividends = $0)
+  div.box1a: copy(sb.ordinary_dividends_if_dividends = $0)
+  div.box1b: copy(f1040.line3a_if_ordinary = $0)
+  div.box2a: copy(sd.distributions_if_dividends = $0)
+  div.box5: copy(qbi.dividends_if_ordinary = $0)
+  div.has_return_of_capital: test(div.box3_if_dividends = $0; 0 = $0)
+  div.no: param(#div.no = false)
+  div.box12_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; div.zero = $0)
+  div.basis_reconciled_if_return_of_capital: choose(div.has_return_of_capital = false; true = true; div.has_return_of_capital = false; false = false; div.no = false)
   eic.age_range_count: sum_over(person[taxpayer].born_before_2001 = UNKNOWN (no input supplied for person[taxpayer].born_before_2001); true = true; person[taxpayer].born_after_1960 = UNKNOWN (no input supplied for person[taxpayer].born_after_1960); true = true)
   eic.age_range: gate(eic.died_2025 = UNKNOWN (no input supplied for eic.died_2025))
   eic.zero: param(#sales.zero = $0)
@@ -7985,7 +8143,7 @@ Derivations:
   eic.step1_foreign: test(sa.excluded_income = false; sa.excluded_income = false; false = false)
   eic.step1_resident: test(scope.other_income = false; scope.other_income = false; false = false)
   eic.gain_7a: subtract_floor0(f1040.line7a = $0; eic.zero = $0)
-  f1040.line2a: sum(f1040.tax_exempt_interest = UNKNOWN (no input supplied for f1040.tax_exempt_interest); div.box12 = UNKNOWN (no input supplied for div.box12))
+  f1040.line2a: sum(f1040.tax_exempt_interest = UNKNOWN (no input supplied for f1040.tax_exempt_interest); div.box12_if_dividends = $0)
   eic.investment_income: sum(f1040.line2a = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f1040.line2b = $0; f1040.line3b = $0; eic.gain_7a = $0)
   eic.step2_income: test(eic.investment_income = UNKNOWN (no input supplied for f1040.tax_exempt_interest); #eic.investment_limit = $11,950)
   eic.step2_other: test(scope.schedule1 = false; scope.other_line16 = false; scope.schedule1 = false; false = false; scope.other_line16 = false; false = false)
@@ -8062,7 +8220,7 @@ Derivations:
   sd.line18: choose(sd.line17 = false; true = true; sd.line17 = false; false = false; sd.zero = $0)
   sd.line19: choose(sd.line17 = false; true = true; sd.line17 = false; false = false; sd.zero = $0)
   sd.filed: test(sd.count = 0; 0 = 0; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0; sd.line6 = $0; 0 = $0; sd.line14 = $0; 0 = $0)
-  f1040.gate.qdcg_applies: test(f1040.line15 = $114,250; 0 = $0; f1040.line3a = $0; 0 = $0; sd.filed = false; false = false; sd.distributions = $0; 0 = $0; sd.line17 = false; true = true)
+  f1040.gate.qdcg_applies: test(f1040.line15 = $114,250; 0 = $0; f1040.line3a_if_ordinary = $0; 0 = $0; sd.filed = false; false = false; sd.distributions_if_dividends = $0; 0 = $0; sd.line17 = false; true = true)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = false; true = true)
   root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.amount: bound(f1040.line15 = $114,250)
   root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary: test(root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.amount = $114,250; #ordinary.table_boundary = $100,000)
@@ -8321,7 +8479,7 @@ Derivations:
   f4952.line4a: sum(f1040.line2b = $0; f1040.line3b = $0)
   f4952.line2: choose(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.carryover = false; true = true; f4952.carryover = false; false = false; f4952.zero = $0)
   f4952.line3: sum(f4952.line1 = $0; f4952.line2 = $0)
-  f4952.line4b: copy(f1040.line3a = $0)
+  f4952.line4b: copy(f1040.line3a_if_ordinary = $0)
   f4952.bad_dividends: test(f4952.line4b = $0; f4952.line4a = $0)
   f4952.line4c: subtract(f4952.bad_dividends = false; f4952.line4a = $0; f4952.line4b = $0)
   f4952.line4d: subtract_floor0(sd.line16 = $0; 0 = $0)
@@ -8689,7 +8847,7 @@ Derivations:
   g28.line2: copy(div.screen = $0)
   g28.line3: copy(div.screen = $0)
   g28.line5: copy(sd.line14 = $0)
-  g28.line4: copy(div.box2d = $0)
+  g28.line4: copy(div.box2d_if_capital_gain = $0)
   g28.line6: smaller_of(sd.line7 = $0; sd.zero = $0)
   g28.combined: sum(g28.line1 = $0; g28.line2 = $0; g28.line3 = $0; g28.line4 = $0; g28.line5 = $0; g28.line6 = $0)
   g28.line7: subtract_floor0(g28.combined = $0; sd.zero = $0)
@@ -9202,8 +9360,8 @@ Derivations:
   qdcg.schedule_d_filed: copy(sd.filed = false)
   qdcg.schedule_d_net_gain: copy(sd.net_gain = $0)
   qdcg.line1: copy(f1040.line15 = $114,250)
-  qdcg.line2: copy(f1040.line3a = $0)
-  qdcg.line3: choose(qdcg.schedule_d_filed = false; true = true; qdcg.schedule_d_filed = false; false = false; sd.distributions = $0)
+  qdcg.line2: copy(f1040.line3a_if_ordinary = $0)
+  qdcg.line3: choose(qdcg.schedule_d_filed = false; true = true; qdcg.schedule_d_filed = false; false = false; sd.distributions_if_dividends = $0)
   qdcg.line4: sum(qdcg.line2 = $0; qdcg.line3 = $0)
   qdcg.line5: subtract_floor0(qdcg.line1 = $114,250; qdcg.line4 = $0)
   qdcg.line6: param(#qdcg.zero_rate_ceiling = $48,350)
@@ -9538,14 +9696,14 @@ Derivations:
   sd.line20: test(sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0; sd.filing4952 = false; false = false)
   sd.loss_limit: param(#sd.loss_limit = -$3,000)
   sd.limited_loss: larger_of(sd.line16 = $0; sd.loss_limit = -$3,000)
-  sd.line22: test(f1040.line3a = $0; 0 = $0)
+  sd.line22: test(f1040.line3a_if_ordinary = $0; 0 = $0)
   sdtw.zero: param(#sales.zero = $0)
   sdtw.ordinary_ceiling: param(#sdtw.ordinary_ceiling = $197,300)
   sdtw.line1: copy(f1040.line15 = $114,250)
   sdtw.line15: param(#qdcg.zero_rate_ceiling = $48,350)
   sdtw.line16: smaller_of(sdtw.line1 = $114,250; sdtw.line15 = $48,350)
   sdtw.after22: test(sdtw.line1 = $114,250; sdtw.line16 = $48,350)
-  sdtw.line2: copy(f1040.line3a = $0)
+  sdtw.line2: copy(f1040.line3a_if_ordinary = $0)
   sdtw.line3: copy(sd.investment_election = $0)
   sdtw.line4: choose(sd.filing4952 = false; true = true; sd.filing4952 = false; false = false; sdtw.zero = $0)
   sdtw.line5: subtract_floor0(sdtw.line3 = $0; sdtw.line4 = $0)
@@ -9702,7 +9860,7 @@ Derivations:
   u1250.line10: copy(div.screen = $0)
   u1250.line12: copy(div.screen = $0)
   u1250.line16: copy(sd.line14 = $0)
-  u1250.line11: copy(div.box2b = $0)
+  u1250.line11: copy(div.box2b_if_capital_gain = $0)
   u1250.line13: sum(u1250.line9 = $0; u1250.line10 = $0; u1250.line11 = $0; u1250.line12 = $0)
   u1250.line14: sum(g28.line1 = $0; g28.line2 = $0; g28.line3 = $0; g28.line4 = $0)
   u1250.line15: copy(g28.line6 = $0)

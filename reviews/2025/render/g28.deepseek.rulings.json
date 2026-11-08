@@ -53,6 +53,15 @@
    "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
   },
   {
+   "printed": "4",
+   "restated": "Enter the amount from div helper \"Collectibles (28%) gain, box 2d, when capital gain distributions (box 2a) are above zero; zero otherwise\".",
+   "model": "IRS line 4 says to enter the total of collectibles gain reported on Form 1099-DIV box 2d, Form 2439 box 1d, and Schedule K-1; the restatement takes only the Form 1099-DIV box 2d amount and omits the other two sources.",
+   "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 4: \"Enter the total of any collectibles gain reported to you on: • Form 1099-DIV, box 2d; • Form 2439, box 1d; and • Schedule K-1 from a partnership, S corporation, estate, or trust.\" Form 2439 and Schedule K-1 amounts: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") refuses them, reaching Form 1040 line 7a through Schedule D lines 7, 15 and 16 (as the earlier rulings of this line). Within scope line 4 is Form 1099-DIV box 2d alone. The restatement now names the box 2a condition of the box 2d input: f1099div p. 5, \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", so box 2d is zero when box 2a is. Project retained.",
+   "context": "f0600fc21c01b30dbe6e602986c6fccc725ed59983a4c6294787b81556537aba",
+   "date": "2026-11-07",
+   "run": "9444ad4bafbca51da29fff45b479a6f592646e660b0b63b6e9e250f47270de68"
+  },
+  {
    "printed": "5",
    "restated": "Enter the amount from sd line 14.",
    "model": "IRS line 5 also includes 'Schedule K-1 (Form 1041), box 11, code D'; the restatement only takes Schedule D line 14.",

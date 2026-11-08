@@ -9,7 +9,10 @@
   "section:scveh.line17": "Not applicable: the line is line 17 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (limit on the MACRS depreciation), which it cites on pp. 61-62; the Line 17 section of i1040sc p. 8 is Schedule C line 17 (legal and professional services), a different line.",
   "section:scveh.line18": "Not applicable: the line is line 18 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (basis for depreciation), which it cites on pp. 61-62; the Line 18 section of i1040sc p. 8 is Schedule C line 18 (office expense), a different line.",
   "section:scveh.line19": "Not applicable: the line is line 19 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (tentative MACRS depreciation deduction), which it cites on pp. 61-62; the Line 19 section of i1040sc p. 8 is Schedule C line 19 (pension and profit-sharing plans), a different line.",
-  "section:scveh.bonus_allowed": "Not applicable: the line is Form 4562 line 25 (special depreciation allowance for qualified listed property), figured as line 16 of Pub. 946's Depreciation Worksheet for Passenger Automobiles limited to line 11, which it cites on pp. 61-62; the Line 25 section of i1040sc p. 10 is Schedule C line 25 (utilities), a different line."
+  "section:scveh.bonus_allowed": "Not applicable: the line is Form 4562 line 25 (special depreciation allowance for qualified listed property), figured as line 16 of Pub. 946's Depreciation Worksheet for Passenger Automobiles limited to line 11, which it cites on pp. 61-62; the Line 25 section of i1040sc p. 10 is Schedule C line 25 (utilities), a different line.",
+  "section:f1040.line2a": "Cited: the locator reads 'Instructions for Form 1040, p. 25, line 2a, \"Enter the total on line 2a\" ...', i1040gi p. 25, the Line 2a section; the leading document words precede the page. Held in the baseline until lane A's gate lines changed the form.",
+  "section:sd.line13": "Not applicable: the line cites the form face (f1040sd p. 1, line 13, \"Capital gain distributions. See the instructions\"); the i1040sd p. 11 Line 13 section says only \"See Capital Gain Distributions, earlier\". Held in the baseline until lane A's gate lines changed the form.",
+  "section:f1040.line3a": "Cited: the locator reads 'Instructions for Form 1040, pp. 25–26, line 3a and exceptions', i1040gi pp. 25-26, the Line 3a section and its exceptions; the gate line f1040.line3a_if_ordinary cites p. 25, Line 3a. Held in the baseline until lane A's gate lines changed the form."
  },
  "baseline": {
   "section:f1040.line10": "fcfe7f73f535b5a0",
@@ -22,14 +25,12 @@
   "section:f1040.line27c": "58eebf389c83aee5",
   "section:f1040.line28": "839640f1b261201a",
   "section:f1040.line29": "3d3c419571e30805",
-  "section:f1040.line2a": "ab2b6c20125ae26e",
   "section:f1040.line2b": "518f068a381c642c",
   "section:f1040.line30": "f760bf970db7a48d",
   "section:f1040.line34": "2705b3806535bc48",
   "section:f1040.line35a": "039ef1ee1017fc65",
   "section:f1040.line36": "e4b45f190a7cb17b",
   "section:f1040.line37": "41dbd237c9e50c66",
-  "section:f1040.line3a": "48a15cc2a4fc1db3",
   "section:f1040.line3b": "4b540663b3ace5c2",
   "section:f1040.line4b": "df631cb9d4bd321b",
   "section:f1040.line4c_rollover": "c13a48ee77f3084e",
@@ -153,7 +154,6 @@
   "section:scveh.line19": "1152d4bffc56b746",
   "section:scveh.line9w": "6cf80039f7a11e04",
   "section:sd.line12": "ff70985bd36ac8f5",
-  "section:sd.line13": "0c20bb1e0463aed9",
   "section:sd.line21": "8126780994408322",
   "section:sd.line4": "37781d36fb5eb14d"
  }

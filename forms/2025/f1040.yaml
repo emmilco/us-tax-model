@@ -105,7 +105,7 @@ form:
         op: sum
         of:
           - f1040.tax_exempt_interest
-          - div.box12
+          - div.box12_if_dividends
       cite:
         doc: i1040gi
         locator: Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" and "Also include on line 2a any
@@ -135,6 +135,7 @@ form:
       printed: 3a
       label: Qualified dividends
       type: NonNegDollars
+      gated_by: f1040.line3a_if_ordinary
       expr:
         op: input
         source: Form 1040 line 3a total qualified dividends, generally Form 1099-DIV box 1b, after the line
@@ -482,7 +483,7 @@ form:
             any:
               - op: test
                 gt:
-                  - f1040.line3a
+                  - f1040.line3a_if_ordinary
                   - const: 0
               - op: test
                 all:
@@ -492,7 +493,7 @@ form:
                       - const: false
                   - op: test
                     gt:
-                      - sd.distributions
+                      - sd.distributions_if_dividends
                       - const: 0
               - op: test
                 eq:
@@ -949,3 +950,25 @@ form:
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 37
+    - id: f1040.line3a_if_ordinary
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Qualified dividends (Form 1040 line 3a), when ordinary dividends (box 1a) are above zero; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.has_ordinary
+                - const: true
+            then: f1040.line3a
+          - guard:
+              op: test
+              eq:
+                - div.has_ordinary
+                - const: false
+            then: div.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 25, Line 3a, "Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b"'

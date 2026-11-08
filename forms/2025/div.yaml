@@ -12,6 +12,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: Unrecaptured section 1250 gain, box 2b
+      gated_by: div.box2b_if_capital_gain
       expr:
         op: input
         source: Unrecaptured section 1250 gain, box 2b
@@ -22,6 +23,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: Section 1202 gain, box 2c
+      gated_by: div.box2c_if_capital_gain
       expr:
         op: input
         source: Section 1202 gain, box 2c
@@ -32,6 +34,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: Collectibles (28%) gain, box 2d
+      gated_by: div.box2d_if_capital_gain
       expr:
         op: input
         source: Collectibles (28%) gain, box 2d
@@ -42,6 +45,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: Section 897 ordinary dividends, box 2e
+      gated_by: div.box2e_if_ordinary
       expr:
         op: input
         source: Section 897 ordinary dividends, box 2e
@@ -52,6 +56,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: Section 897 capital gain, box 2f
+      gated_by: div.box2f_if_capital_gain
       expr:
         op: input
         source: Section 897 capital gain, box 2f
@@ -62,6 +67,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: Nondividend distributions/return of capital, box 3
+      gated_by: div.box3_if_dividends
       expr:
         op: input
         source: Nondividend distributions/return of capital, box 3
@@ -72,6 +78,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: Cash liquidation distributions, box 9
+      gated_by: div.box9_if_dividends
       expr:
         op: input
         source: Cash liquidation distributions, box 9
@@ -82,6 +89,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: Noncash liquidation distributions, box 10
+      gated_by: div.box10_if_dividends
       expr:
         op: input
         source: Noncash liquidation distributions, box 10
@@ -92,6 +100,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: Exempt-interest dividends, box 12
+      gated_by: div.box12_if_dividends
       expr:
         op: input
         source: Exempt-interest dividends, box 12 (total of all your Forms 1099-DIV; box 13 amounts are already included)
@@ -104,6 +113,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: Specified private activity bond interest dividends, box 13
+      gated_by: div.box13_if_dividends
       expr:
         op: input
         source: Specified private activity bond interest dividends, box 13
@@ -115,6 +125,7 @@ form:
       type: Bool
       label: For box 3, have basis reductions been applied to records with no distribution exceeding
         basis?
+      gated_by: div.basis_reconciled_if_return_of_capital
       expr:
         op: input
         source: For box 3, have basis reductions been applied to records with no distribution exceeding
@@ -126,10 +137,10 @@ form:
       printed: (helper)
       display: 'Form 1099-DIV box 1a shown on the values sheet as the ordinary dividends it carries to Schedule B.'
       type: NonNegDollars
-      label: Amount from sb.ordinary_dividends
+      label: Amount from sb.ordinary_dividends_if_dividends
       expr:
         op: copy
-        from: sb.ordinary_dividends
+        from: sb.ordinary_dividends_if_dividends
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -137,10 +148,10 @@ form:
       printed: (helper)
       display: 'Form 1099-DIV box 1b shown on the values sheet as the qualified dividends it carries to Form 1040 line 3a.'
       type: NonNegDollars
-      label: Amount from f1040.line3a
+      label: Amount from f1040.line3a_if_ordinary
       expr:
         op: copy
-        from: f1040.line3a
+        from: f1040.line3a_if_ordinary
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -148,10 +159,10 @@ form:
       printed: (helper)
       display: 'Form 1099-DIV box 2a shown on the values sheet as the capital gain distributions it carries to Schedule D.'
       type: NonNegDollars
-      label: Amount from sd.distributions
+      label: Amount from sd.distributions_if_dividends
       expr:
         op: copy
-        from: sd.distributions
+        from: sd.distributions_if_dividends
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -159,10 +170,10 @@ form:
       printed: (helper)
       display: 'Form 1099-DIV box 5 shown on the values sheet as the section 199A dividends it carries to the QBI deduction.'
       type: NonNegDollars
-      label: Amount from qbi.dividends
+      label: Amount from qbi.dividends_if_ordinary
       expr:
         op: copy
-        from: qbi.dividends
+        from: qbi.dividends_if_ordinary
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -173,7 +184,7 @@ form:
       expr:
         op: test
         gt:
-          - div.box2c
+          - div.box2c_if_capital_gain
           - const: 0
       cite:
         doc: f1099div
@@ -186,7 +197,7 @@ form:
       expr:
         op: test
         gt:
-          - div.box13
+          - div.box13_if_dividends
           - const: 0
       cite:
         doc: f1099div
@@ -201,29 +212,29 @@ form:
         any:
           - op: test
             gt:
-              - div.box2e
+              - div.box2e_if_ordinary
               - const: 0
           - op: test
             gt:
-              - div.box2f
+              - div.box2f_if_capital_gain
               - const: 0
           - op: test
             gt:
-              - div.box9
+              - div.box9_if_dividends
               - const: 0
           - op: test
             gt:
-              - div.box10
+              - div.box10_if_dividends
               - const: 0
           - op: test
             all:
               - op: test
                 gt:
-                  - div.box3
+                  - div.box3_if_dividends
                   - const: 0
               - op: test
                 eq:
-                  - div.basis_reconciled
+                  - div.basis_reconciled_if_return_of_capital
                   - const: false
       cite:
         doc: f1099div
@@ -241,20 +252,20 @@ form:
         any:
           - op: test
             gt:
-              - div.box2b
-              - sd.distributions
+              - div.box2b_if_capital_gain
+              - sd.distributions_if_dividends
           - op: test
             gt:
-              - div.box2c
-              - sd.distributions
+              - div.box2c_if_capital_gain
+              - sd.distributions_if_dividends
           - op: test
             gt:
-              - div.box2d
-              - sd.distributions
+              - div.box2d_if_capital_gain
+              - sd.distributions_if_dividends
           - op: test
             gt:
               - div.special_total
-              - sd.distributions
+              - sd.distributions_if_dividends
       cite:
         doc: f1099div
         locator: p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a
@@ -316,12 +327,12 @@ form:
         any:
           - op: test
             gt:
-              - f1040.line3a
-              - sb.ordinary_dividends
+              - f1040.line3a_if_ordinary
+              - sb.ordinary_dividends_if_dividends
           - op: test
             gt:
-              - qbi.dividends
-              - sb.ordinary_dividends
+              - qbi.dividends_if_ordinary
+              - sb.ordinary_dividends_if_dividends
       cite:
         doc: f1099div
         locator: p. 5, Instructions for Recipient, boxes 1b and 5, "Box 1b. Shows the portion of the amount in box 1a
@@ -334,11 +345,337 @@ form:
       expr:
         op: sum
         of:
-          - div.box2b
-          - div.box2c
-          - div.box2d
+          - div.box2b_if_capital_gain
+          - div.box2c_if_capital_gain
+          - div.box2d_if_capital_gain
       cite:
         doc: f1099div
         locator: p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a
           that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section
           1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain"
+    - id: div.any
+      printed: (gate)
+      type: Bool
+      label: |-
+        In 2025, did you (or your spouse) receive any dividends or other distributions from a company or a fund, with or without a Form 1099-DIV? Count amounts that were reinvested, credited to an account or paid in shares or other property. Answer Yes if any of these applies:
+
+        - a Form 1099-DIV for 2025, or the dividends section of a broker's consolidated statement or another substitute statement, shows an amount in your (or your spouse's) name, even if it was paid in early 2026 or no cash was paid (such as a deemed dividend on a convertible bond)
+        - dividends from stock or from a mutual fund, ETF, money market fund or REIT
+        - capital gain distributions, exempt-interest dividends, nondividend distributions (a return of capital) or liquidation distributions
+        - dividends paid to you as a participant in an employee stock ownership plan (ESOP)
+        - dividends received in your name that belong to someone else (as a nominee), or dividends that belong to you but were paid in someone else's name, such as your share of an account you own with a parent or another person
+        - a corporation you own paid your personal expenses or gave you property, and the amount is treated as a dividend
+        - dividends from a foreign company, dividends reported on a Schedule K-1, or dividends received without any form
+      expr:
+        op: input
+        source: |-
+          In 2025, did you (or your spouse) receive any dividends or other distributions from a company or a fund, with or without a Form 1099-DIV? Count amounts that were reinvested, credited to an account or paid in shares or other property. Answer Yes if any of these applies:
+
+          - a Form 1099-DIV for 2025, or the dividends section of a broker's consolidated statement or another substitute statement, shows an amount in your (or your spouse's) name, even if it was paid in early 2026 or no cash was paid (such as a deemed dividend on a convertible bond)
+          - dividends from stock or from a mutual fund, ETF, money market fund or REIT
+          - capital gain distributions, exempt-interest dividends, nondividend distributions (a return of capital) or liquidation distributions
+          - dividends paid to you as a participant in an employee stock ownership plan (ESOP)
+          - dividends received in your name that belong to someone else (as a nominee), or dividends that belong to you but were paid in someone else's name, such as your share of an account you own with a parent or another person
+          - a corporation you own paid your personal expenses or gave you property, and the amount is treated as a dividend
+          - dividends from a foreign company, dividends reported on a Schedule K-1, or dividends received without any form
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, boxes 1a, 2a, 3, 9, 10, 12 and 13, Box 1b, "The amount shown may be dividends a corporation paid directly to you as a participant (or beneficiary of a participant) in an employee stock ownership plan (ESOP)", Nominees, "If this form includes amounts belonging to another person, you are considered a nominee recipient", "Box 1a. Shows total ordinary dividends that are taxable", "Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)", "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12"'
+    - id: div.has_ordinary
+      printed: (gate)
+      type: Bool
+      label: Ordinary dividends (box 1a) are above zero
+      expr:
+        op: test
+        gt:
+          - sb.ordinary_dividends_if_dividends
+          - const: 0
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, boxes 1b, 2e and 5, "Box 1b. Shows the portion of the amount in box 1a that may be eligible for reduced capital gains rates", "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI)", "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A"'
+    - id: div.has_capital_gain
+      printed: (gate)
+      type: Bool
+      label: Capital gain distributions (box 2a) are above zero
+      expr:
+        op: test
+        gt:
+          - sd.distributions_if_dividends
+          - const: 0
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, boxes 2b, 2c, 2d and 2f, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles", "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI"'
+    - id: div.has_return_of_capital
+      printed: (gate)
+      type: Bool
+      label: Nondividend distributions (box 3) are above zero
+      expr:
+        op: test
+        gt:
+          - div.box3_if_dividends
+          - const: 0
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, Box 3, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable"'
+    - id: div.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: No amount in a box whose condition does not hold
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1099div
+        locator: Instructions for Recipient, boxes 1–16
+    - id: div.no
+      printed: (helper)
+      type: Bool
+      label: No answer needed without nondividend distributions (box 3)
+      expr:
+        op: param
+        ref: div.no
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, Box 3, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable"'
+    - id: div.box2b_if_capital_gain
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Unrecaptured section 1250 gain, box 2b, when capital gain distributions (box 2a) are above zero; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.has_capital_gain
+                - const: true
+            then: div.box2b
+          - guard:
+              op: test
+              eq:
+                - div.has_capital_gain
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain from certain depreciable real property"'
+    - id: div.box2c_if_capital_gain
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Section 1202 gain, box 2c, when capital gain distributions (box 2a) are above zero; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.has_capital_gain
+                - const: true
+            then: div.box2c
+          - guard:
+              op: test
+              eq:
+                - div.has_capital_gain
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain from certain small business stock that may be subject to an exclusion"'
+    - id: div.box2d_if_capital_gain
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Collectibles (28%) gain, box 2d, when capital gain distributions (box 2a) are above zero; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.has_capital_gain
+                - const: true
+            then: div.box2d
+          - guard:
+              op: test
+              eq:
+                - div.has_capital_gain
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain from sales or exchanges of collectibles"'
+    - id: div.box2f_if_capital_gain
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Section 897 capital gain, box 2f, when capital gain distributions (box 2a) are above zero; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.has_capital_gain
+                - const: true
+            then: div.box2f
+          - guard:
+              op: test
+              eq:
+                - div.has_capital_gain
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Box 2f. Shows the portion of the amount in box 2a that is section 897 gain attributable to disposition of USRPI"'
+    - id: div.box2e_if_ordinary
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Section 897 ordinary dividends, box 2e, when ordinary dividends (box 1a) are above zero; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.has_ordinary
+                - const: true
+            then: div.box2e
+          - guard:
+              op: test
+              eq:
+                - div.has_ordinary
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Box 2e. Shows the portion of the amount in box 1a that is section 897 gain attributable to disposition of U.S. real property interests (USRPI)"'
+    - id: div.box3_if_dividends
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Nondividend distributions/return of capital, box 3, when you or your spouse received dividends or other distributions; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: true
+            then: div.box3
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable"'
+    - id: div.box9_if_dividends
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Cash liquidation distributions, box 9, when you or your spouse received dividends or other distributions; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: true
+            then: div.box9
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Boxes 9 and 10. Show cash and noncash liquidation distributions"'
+    - id: div.box10_if_dividends
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Noncash liquidation distributions, box 10, when you or your spouse received dividends or other distributions; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: true
+            then: div.box10
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Boxes 9 and 10. Show cash and noncash liquidation distributions"'
+    - id: div.box12_if_dividends
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Exempt-interest dividends, box 12, when you or your spouse received dividends or other distributions; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: true
+            then: div.box12
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year"'
+    - id: div.box13_if_dividends
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Specified private activity bond interest dividends, box 13, when you or your spouse received dividends or other distributions; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: true
+            then: div.box13
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12"'
+    - id: div.basis_reconciled_if_return_of_capital
+      printed: (helper)
+      type: Bool
+      label: 'For box 3, basis reductions applied, when nondividend distributions (box 3) are above zero; false otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.has_return_of_capital
+                - const: true
+            then: div.basis_reconciled
+          - guard:
+              op: test
+              eq:
+                - div.has_return_of_capital
+                - const: false
+            then: div.no
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable"'

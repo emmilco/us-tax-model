@@ -5,6 +5,7 @@ Second transcription of `Qualified Dividends and Capital Gain Tax Worksheet—Li
 | field | value |
 | --- | --- |
 | date | 2026-10-26 |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | review provenance | verified saved-response replay; no model call |
 | parent review log sha256 | 40fc2376a6e1a9a2d7729b4689f0af01df0e88777dc6578f08bed3cccbef1c76 |
 | original review date | 2026-10-26 |
@@ -27,7 +28,7 @@ Second transcription of `Qualified Dividends and Capital Gain Tax Worksheet—Li
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 0ec80da435463402c2d8e70745618a3a4b8e2d8949ed1b76192d41f26ba57324 |
 | printed lines compared | 26 |
-| agree / disagree / missing | 23 / 3 / 0 |
+| agree / disagree / missing | 22 / 4 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -45,7 +46,24 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### 2 — Enter the amount from Form 1040 or 1040-SR, line 3a
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"alternatives": [{"guard": {"args": [{"alternatives": [{"guard": {"args": [{"const": false}, {"ref": "div.any"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"ref": "div.any"}], "test": "eq"}, "then": {"input": "sb.ordinary_dividends"}}], "op": "choose"}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": false}, {"ref": "div.any"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"ref": "div.any"}], "test": "eq"}, "then": {"input": "sb.ordinary_dividends"}}], "op": "choose"}], "test": "lt"}, "then": {"ref": "f1040.line3a"}}], "op": "choose"}
+```
+
+Second:
+
+```json
+{"ref": "f1040.line3a"}
+```
+
+Second transcription's note: The footnote sends Form 2555 filers to the Foreign Earned Income Tax Worksheet footnote. That text is not supplied here, so only the line 3a amount is encoded.
+
+Ruling: model error; the candidate reads f1040.line3a whatever box 1a is above zero, so it needs that answer where the source does not: i1040gi p. 25, Line 3a, "Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b": with box 1a (line 3b) zero, line 3a is zero. The project reads the gate line f1040.line3a_if_ordinary, which takes f1040.line3a when box 1a is above zero holds and zero otherwise; the interview asks f1040.line3a only then (gated_by f1040.line3a_if_ordinary), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.
+Reviewed in: pass 4b5ad4d24360
 
 ### 3 — Are you filing Schedule D? Yes. Enter the smaller of line 15 or line 16 of Schedule D. If
 Status: **DISAGREE**
@@ -53,16 +71,17 @@ Status: **DISAGREE**
 Project:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(question)"}], "test": "eq"}, "then": {"ref": "sd.distributions"}}, {"guard": {"args": [{"const": true}, {"line": "(question)"}], "test": "eq"}, "then": {"from": {"of": [{"ref": "sd.line15"}, {"ref": "sd.line16"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"const": 0}}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(question)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"ref": "div.any"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"ref": "div.any"}], "test": "eq"}, "then": {"input": "sd.distributions"}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"line": "(question)"}], "test": "eq"}, "then": {"from": {"of": [{"ref": "sd.line15"}, {"ref": "sd.line16"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"const": 0}}}], "op": "choose"}
 ```
 
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(question)"}], "test": "eq"}, "then": {"from": {"ref": "f1040.line7a"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"const": true}, {"line": "(question)"}], "test": "eq"}, "then": {"of": [{"from": {"ref": "sd.line15"}, "op": "subtract_floor0", "take": {"const": 0}}, {"from": {"ref": "sd.line16"}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(question)"}], "test": "eq"}, "then": {"from": {"ref": "f1040.line7a"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"const": true}, {"line": "(question)"}], "test": "eq"}, "then": {"from": {"of": [{"ref": "sd.line15"}, {"ref": "sd.line16"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"const": 0}}}], "op": "choose"}
 ```
 
-Ruling: representation; i1040gi p.38 QDCG worksheet line3 uses Form1040 line7a when ScheduleD is not filed; in the supported distribution-only route that amount is sd.distributions, while all direct sales/loss routes require ScheduleD. On the filed route, max(min(SD15,SD16),0) equals min(max(SD15,0),max(SD16,0)), the printed loss-to-zero rule. This compares the prepared, supported-return quantities; it does not claim arbitrary inconsistent supplied cross-form subtotals or all partial-input paths are equivalent.
+Ruling: equivalent representation; project retained. The No branch reads “Enter the amount from Form 1040 or 1040-SR, line 7a” (i1040gi p. 38). When Schedule D is not required, line 7a carries the total capital gain distributions from Form 1099-DIV box 2a (i1040gi p. 33, line 7a, Exception 1), the value the project references directly through its gate line sd.distributions_if_dividends (box 2a when dividends or distributions were received, zero otherwise); the candidate references line 7a literally, as in the earlier ruling of this line.
+Reviewed in: pass 4b5ad4d24360
 
 ### 4 — Add lines 2 and 3
 Status: **AGREE**
@@ -197,8 +216,8 @@ What each compared line's verdict depends on within the document (tools/transcri
 | --- | --- |
 | (question) | 1755ec95f96d6eb16f557ff0a764d3d65b5157c931ac2508fe5f174cb87a6914 |
 | 1 | 0db46a35a7ee0b04e336416534a77d24631506703e686767755693e5b114ed17 |
-| 2 | cefc445bf09741211b6bfc1ca17e9932b12e6114d19679df2bb0a2cf57ed4230 |
-| 3 | 80278b2c1bc1269cfe0a5779922d66ad609d342663d3e5d39e6a4f2bf2e37beb |
+| 2 | 73762dce96c5e41a836d5c04db6fb29183c2e4df99c9040514217a98bfd805a0 |
+| 3 | ee97d5c467e589a343409725373430584bc811b0f4e10d4f5bc2cf4bfbfe62b9 |
 | 4 | ea387178ae2e311c71bf20912a1681a1f6324608dc0529a8502b8e753aa36941 |
 | 5 | cc7d7bc947fc103adac4f6807d45ef453f6aa98d5632dfff37f022d407f94cd6 |
 | 6 | 3325b82c831e9576c61ad9ca15b708c1f6fc590b5e6227244f0313c680c3f18f |
@@ -222,6 +241,108 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 24 | e4a4ecd32352388e6c216bc638565fc1f768110914080a3baea7a45a0ff79b9f |
 | 25 | 1edbfd1c114c0bf78e12023c6c9044af482dd524cf15b40a369a6877fb3f17da |
 | (rest of the document) | 9834d8f9eaa00f8ff7494eee1cdbaf5394af2f0de2d80b1eca9f8c02c95934e4 |
+
+## Foreign interfaces
+
+The interfaces (id, printed marker, type, input question) of other documents' lines that each compared line reads, as the request carried them (tools/transcription/subjects.py); a changed row stales that line.
+
+| line | foreign interfaces sha256 |
+| --- | --- |
+| 2 | 5d5fac7682b7a2fa13c2250bae25effb6239a504e9095246e6b2c15009ed77b2 |
+| 3 | 0b46ad0c66365fc911ceac5efb8f7b20969dca09cb954900c5d3bce78c348634 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 4b5ad4d24360
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 2, 3 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 4b5ad4d243603762dc3af92f3a745de3975384e9cd79ec4fba9b786298e60b52 |
+| prompt policy | source-only-computation-v3+lines-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | fail |
+| required input context sha256 | 54bc879230953cc6aea184849ad44cf1bffce16be1bc91ccf878bcb4ad733566 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | 7ea2d588ac542def30c0e9b6e6c078c7b71e40cd5de41427ec3ff3cbe061190d |
+| receipt | .transcription/qdcg.lines-46584c88c62d |
+| printed lines compared | 2 |
+| agree / disagree / missing | 0 / 2 / 0 |
+| extra printed lines in second | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040gi | 2025; printed date 2026-02-25 | 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | - | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+
+##### Other documents in the catalog
+
+Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
+
+| reason | documents |
+| --- | --- |
+| definition | aqee, se, tax_on_amount, tcw |
+| named form, inputs and named lines: clcw.prior_11, clcw.prior_14, clcw.prior_sd15, clcw.prior_sd21, clcw.prior_sd7, clcw.spouse_screen | clcw |
+| named form, inputs and named lines: f1040.line15, f1040.line16, f1040.line25b, f1040.line25c_other, f1040.line26, f1040.line35a, f1040.line36, f1040.line3a, f1040.line7a, f1040.status, f1040.tax_exempt_interest | f1040 |
+| named form, inputs and named lines: household.community_property, household.cp_married, household.credit_disallowed, household.home_cost, household.married, household.qss_eligible, household.rdp, household.spouse_died_2025, household.unmarried | household |
+| named form, inputs and named lines: scope.credits, scope.other_income, scope.other_line16, scope.schedule1 | scope |
+| named form, inputs and named lines: u1250.line16 | u1250 |
+| named line | f4952, ftc |
+| shared page | sd, sdtw |
+
+##### Raw second transcription
+
+```yaml
+```yaml
+lines:
+  - id: qdcg.line2
+    printed: "2"
+    label: "Enter the amount from Form 1040 or 1040-SR, line 3a"
+    type: NonNegDollars
+    expr: {op: copy, from: f1040.line3a}
+    note: "The footnote sends Form 2555 filers to the Foreign Earned Income Tax Worksheet footnote. That text is not supplied here, so only the line 3a amount is encoded."
+  - id: qdcg.h_sd_smaller
+    printed: "(helper)"
+    label: "Smaller of line 15 or line 16 of Schedule D"
+    type: Dollars
+    expr: {op: smaller_of, of: [sd.line15, sd.line16]}
+  - id: qdcg.h_sd_amount
+    printed: "(helper)"
+    label: "Smaller of Schedule D line 15 or line 16; if either line 15 or line 16 is blank or a loss, enter -0-"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: qdcg.h_sd_smaller, take: {param: sales.zero}}
+    note: "If either line is a loss, the smaller of the two is zero or less, so flooring the smaller amount at zero gives the -0- the text calls for. A blank line is read as zero."
+  - id: qdcg.h_no_sd_amount
+    printed: "(helper)"
+    label: "Amount from Form 1040 or 1040-SR, line 7a"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: f1040.line7a, take: {param: sales.zero}}
+    note: "The No branch says to enter line 7a and gives no zero floor. Without Schedule D, line 7a holds only capital gain distributions, which cannot be negative. The floor at zero is there only so the NonNegDollars type can be proved; it does not change any value."
+  - id: qdcg.line3
+    printed: "3"
+    label: "Are you filing Schedule D? Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-. No. Enter the amount from Form 1040 or 1040-SR, line 7a."
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [qdcg.schedule_d_filed, {const: true}]}
+          then: qdcg.h_sd_amount
+        - guard: {op: test, eq: [qdcg.schedule_d_filed, {const: false}]}
+          then: qdcg.h_no_sd_amount
+```
+```
 
 ## Raw second transcription
 

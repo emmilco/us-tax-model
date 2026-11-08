@@ -42,6 +42,15 @@
    "ruling": "Ruling: representation; project retained. The tax methods (Tax Table, Tax Computation Worksheet, the Qualified Dividends and Capital Gain Tax Worksheet and the Schedule D Tax Worksheet) are separate documents in this project (tax_on_amount, tcw, qdcg, sdtw), each with its own transcription and render review; the selection is ruled in the transcription log for line 16. Forms 8814 and 4972 and the box 3 taxes are refused through scope.other_line16."
   },
   {
+   "printed": "16",
+   "restated": "Choose — [helper \"Schedule D Tax Worksheet required after its exceptions\" = true → sdtw line 47] [helper \"Schedule D Tax Worksheet required after its exceptions\" = false → helper \"Tax when Schedule D Tax Worksheet does not apply\"]",
+   "model": "The routing, Tax Table and Tax Computation Worksheet rates, brackets and subtraction amounts all match the IRS text. The refusal covers the other line 16 taxes. But the line 16 instructions say 'if you are filing Form 2555, you must use the Foreign Earned Income Tax Worksheet instead', and qdcg line 25 says 'If you are filing Form 2555, don't enter this amount on ... line 16'. No refusal or gate here names Form 2555, so a Form 2555 filer would get a different line 16.",
+   "ruling": "Ruling: scope; project retained. i1040gi, Line 16: \"If you are filing Form 2555, you must use the Foreign Earned Income Tax Worksheet\"; Form 2555 is refused by sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\"), which refuses the deduction and so line 16 downstream; the refusal sits on Schedule A, not on this line's derivation, so the rendered English did not name it. Line 16 itself is unchanged; it went stale through line 3a.",
+   "context": "32622b207b256a29da3ff66bdd5a1a4abc7f1cb52be916d8be18358661e940c1",
+   "date": "2026-11-07",
+   "run": "a1d4dff1f905eca253bdb161f890c800b2d015b2be4fab1d2bf29b2b14cf1d46"
+  },
+  {
    "printed": "1a",
    "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Adding W-2 box 1 for you and your spouse (on a joint return) matches \"Enter the total amount from Form(s) W-2, box 1. If a joint return, also include your spouse's income.\" However, the instructions also say inmate wages and nonqualified deferred compensation or nongovernmental 457 amounts in box 1 must not go on line 1a (\"Do not report these wages on line 1a\"), and the text given doesn't show whether person.box1 leaves them out.",

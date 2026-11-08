@@ -342,42 +342,35 @@
    "adjudication": "reviews/2025/screens/adjudication/r4.md"
   },
   "unruled:qbi.unsupported": {
-   "prompt_sha": "8a76b644ce4b74b7569a220521be84b68c0ce7ffc5fea05cac5856f576ae83eb",
-   "reason": "No defect: the reviewer saw only qbi.eligible; Schedule C QBI (f8995.line2) and the line 3 carryforward (qbi.carryforward) are computed elsewhere; K-1 items are refused by scope.schedule1.",
+   "prompt_sha": "0e038a448076c47705f61067e894233208e007cca0acbc4913bb71c78e7dbe40",
+   "reason": "No defect, as the earlier rulings: the carryforward and Schedule C QBI are computed elsewhere, the box 5 input asks for the amount after the holding-period test; reviewed again because qbi.eligible reads box 5 through its gate line.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "model error",
-     "evidence": "qbi.carryforward asks 'The qualified business loss carryforward from line 16 of your 2024 Form 8995' and f8995.line3 takes it (forms/2025/qbi.yaml, f8995.yaml). Not ignored."
+     "class": "covered",
+     "evidence": "f8995.line3 takes qbi.carryforward ('The qualified business loss carryforward from line 16 of your 2024 Form 8995'); the reviewer saw only qbi.eligible."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "model error",
-     "evidence": "f8995.line2 is 'the qualified business income of the Schedule C businesses (sc.qbi)' (f8995.yaml note); qbi.eligible covers only the dividends limb. Interface gap of the review (gated line only)."
+     "evidence": "f8995.line2 sums the Schedule C businesses' QBI (sc.qbi); qbi.eligible covers only the dividends limb."
     },
     {
      "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Non-business suspended items refused; safe."
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "qbi.dividends asks for 'Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements'."
     },
     {
      "n": 3,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Pre-2018 suspended losses refused; safe."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Any Schedule K-1 is refused by scope.schedule1 ('partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)'), which refuses Form 1040 line 8/10 upstream of QBI; Form 1099-PATR is named in the question."
+     "evidence": "Refuses lines the tool would compute; safe."
     }
    ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group1.md"
+   "bugs": []
   },
   "unruled:refund.exc_tax": {
    "prompt_sha": "c3926035fe42d3b89926c1b4a539beb464b2185b2683bbb54ab73cd7201ce8a1",
@@ -710,106 +703,109 @@
    "adjudication": "reviews/2025/screens/adjudication/group2.md"
   },
   "unruled:sb.fbar_required": {
-   "prompt_sha": "5254294c2c532baae0fe58793e0be101642291ae8360f54d5c49ab6975a0e3e1",
-   "reason": "Re-ruled as T-008: the line 2/3/6 adjustments are screened by sb.unsupported, which gates the same lines; the FBAR refusal is WIDE.",
+   "prompt_sha": "b03c8fb0bc7882e62829c6840e6d8724571ede52b112175871140b0cce16163b",
+   "reason": "As T-008: the adjustments are screened by sb.unsupported on the same lines; Part III is asked by sb.line7a and sb.line8 of every filer; the FBAR refusal is WIDE.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sb.unsupported ('Any nominee income, ... accrued interest paid on a bond purchase, bond premium adjustment ...') refuses sb.line2 (sb.yaml line 98)."
+     "evidence": "sb.line7a asks every filer about a financial interest in or signature authority over a foreign account, without the FBAR exceptions; no amount on lines 2, 3 or 6 depends on it."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sb.unsupported names 'a savings bond interest exclusion' and refuses sb.line3."
+     "evidence": "sb.line8 asks every filer about foreign trust distributions, grantors and transferors, and refuses."
     },
     {
      "n": 2,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sb.unsupported names 'Any nominee income' and refuses sb.line6."
+     "evidence": "sb.unsupported ('Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, ... a savings bond interest exclusion, or other special treatment?') refuses lines 2, 3 and 6 through its gate line sb.unsupported_if_income, and is asked whenever taxable interest, ordinary dividends or capital gain distributions are above zero, which every situation in this finding has (the interest roster's help names savings bonds, OID, accrued and seller-financed interest and nominee interest)."
     },
     {
      "n": 3,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "FBAR filers refused on lines 2, 3, 6; safe."
+     "evidence": "Refuses lines the tool would compute; safe."
     }
    ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group1.md"
+   "bugs": []
   },
   "unruled:sb.form8938": {
-   "prompt_sha": "6eb7911e7486e44011917ada80116ef406261b456f4508ad838fb3a488703993",
-   "reason": "Nominee, accrued interest, OID, premium and savings-bond findings are caught by sb.unsupported on the same three lines (T-008 ruling holds); WIDE accepted; 'required' follows the Schedule B text.",
+   "prompt_sha": "2207e9abd2f149f53dd8ef27791a9d61bcbc7717e95bc35db1962aa95601be01",
+   "reason": "As T-008: the adjustments are screened by sb.unsupported on the same lines; WIDE accepted.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sb.unsupported ('Any nominee income ...') gates sb.line2, sb.line3, sb.line6."
+     "evidence": "sb.unsupported ('Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, ... a savings bond interest exclusion, or other special treatment?') refuses lines 2, 3 and 6 through its gate line sb.unsupported_if_income, and is asked whenever taxable interest, ordinary dividends or capital gain distributions are above zero, which every situation in this finding has (the interest roster's help names savings bonds, OID, accrued and seller-financed interest and nominee interest)."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sb.unsupported names 'accrued interest paid on a bond purchase, bond premium adjustment' and OID 'reported in an amount other than on Form 1099-OID' (plus 'other special treatment'); same lines."
+     "evidence": "sb.unsupported ('Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, ... a savings bond interest exclusion, or other special treatment?') refuses lines 2, 3 and 6 through its gate line sb.unsupported_if_income, and is asked whenever taxable interest, ordinary dividends or capital gain distributions are above zero, which every situation in this finding has (the interest roster's help names savings bonds, OID, accrued and seller-financed interest and nominee interest)."
     },
     {
      "n": 2,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sb.unsupported names 'a savings bond interest exclusion'; gates sb.line3."
+     "evidence": "sb.unsupported ('Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, ... a savings bond interest exclusion, or other special treatment?') refuses lines 2, 3 and 6 through its gate line sb.unsupported_if_income, and is asked whenever taxable interest, ordinary dividends or capital gain distributions are above zero, which every situation in this finding has (the interest roster's help names savings bonds, OID, accrued and seller-financed interest and nominee interest)."
     },
     {
      "n": 3,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "sb.unsupported 'Any nominee income' gates sb.line6."
+     "evidence": "sb.unsupported ('Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, ... a savings bond interest exclusion, or other special treatment?') refuses lines 2, 3 and 6 through its gate line sb.unsupported_if_income, and is asked whenever taxable interest, ordinary dividends or capital gain distributions are above zero, which every situation in this finding has (the interest roster's help names savings bonds, OID, accrued and seller-financed interest and nominee interest)."
     },
     {
      "n": 4,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Form 8938 filers refused though lines compute. Safe."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "out of scope / presentation",
-     "evidence": "i1040sb p. 2 states the requirement without thresholds; the filer must determine it under the Form 8938 instructions, as with sb.fbar_required. Accepted (T-008)."
+     "evidence": "Refuses lines the tool would compute; safe."
     }
    ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group3.md"
+   "bugs": []
   },
   "unruled:sb.unsupported": {
-   "prompt_sha": "6a1c4b1482ba35ca70ae91fc1d2130bc16b4ee14dd6041caadfe8c3c23c618b1",
-   "reason": "No defect: WIDE and catch-all wording; the OID wording affects only the Schedule B line 1 presentation because interest.amount asks the taxable amount.",
+   "prompt_sha": "371ac7070309753bd95cab95d2bf52e111a469ac9196f906d4aed5df0996db26",
+   "reason": "No defect: WIDE and catch-all wording, as the earlier rulings; the Form 5471 clause is now its own screen (sb.form5471), and the screen is asked behind its gate (sb.unsupported_if_income).",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Form 5471 duty refused; safe."
+     "evidence": "Refuses a case whose Schedule B lines the tool computes; safe."
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
-     "class": "out of scope / presentation",
-     "evidence": "interest.amount asks 'Taxable interest from this payer'; a filer reporting less than box 1/8 enters the taxable amount, so line 2 is right and only the 'OID Adjustment' subtraction layout (i1040sb p. 2) is missing."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Refuses a payer-netted premium the tool would compute from the reported amount; safe."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "out of scope / presentation",
-     "evidence": "Catch-all 'other special treatment' (T-008: 'remaining items are WIDE or catch-all wording'). Taxable market discount on a tax-exempt bond is entered as taxable interest by interest.amount's own wording."
+     "evidence": "As the earlier ruling: interest.amount asks the taxable amount; a filer reporting less than box 1/8 enters it, so line 2 is right and only the 'OID Adjustment' layout (i1040sb p. 2) is missing; any reading of 'other than' errs toward yes."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The interest roster's help names accrued market discount (and on a tax-exempt bond) and contingent payment debt instrument gain as interest; the question names accrued market discount; a yes refuses."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "out of scope / presentation",
+     "evidence": "Catch-all 'other special treatment' (T-008: catch-all wording); a yes refuses, which is safe."
     }
    ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group1.md"
+   "bugs": []
   },
   "unruled:sc.inventory_other": {
    "prompt_sha": "e1fb1ae2200f53849a4773175df49239db9b1d80368db14721fd79d0d8cde19e",
@@ -1273,36 +1269,41 @@
    "adjudication": "reviews/2025/screens/adjudication/r3.md"
   },
   "unruled:sb.line8": {
-   "prompt_sha": "bac1d7745a6c4e4b90d1449fbf5df780355eb8cbc0383a8e87dd907469971f1e",
-   "reason": "Round-1 PENDING-2-5 closed (loans count; a trust that existed at any time during 2025); the grantor-trust owner is outside the line 8 question and the gated lines; WIDE accepted.",
+   "prompt_sha": "838c002bbaa3962ebebd755f1e4c2704183af720e13dbc11747c6d604bf9009d",
+   "reason": "As the earlier ruling: the adjustments are screened by sb.unsupported; WIDE accepted.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "out of scope / presentation",
-     "evidence": "i1040sb p. 3; f1040sb line 8; forms/2025/sb.yaml: Schedule B line 8 asks only about a distribution, a grantor or a transferor. The p. 3 sentence on owners under the grantor trust rules concerns the trust's Form 3520-A, not this return. The gated lines (sb.line2, line3, line6) do not change, and the printed No answers the form's question."
+     "class": "covered",
+     "evidence": "sb.unsupported ('Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, ... a savings bond interest exclusion, or other special treatment?') refuses lines 2, 3 and 6 through its gate line sb.unsupported_if_income, and is asked whenever taxable interest, ordinary dividends or capital gain distributions are above zero, which every situation in this finding has (the interest roster's help names savings bonds, OID, accrued and seller-financed interest and nominee interest)."
     },
     {
      "n": 1,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040sb p. 3: A loan outside the 'generally' rule draws yes: refused. Safe (widening from BUG-0246)."
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "sb.unsupported ('Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, ... a savings bond interest exclusion, or other special treatment?') refuses lines 2, 3 and 6 through its gate line sb.unsupported_if_income, and is asked whenever taxable interest, ordinary dividends or capital gain distributions are above zero, which every situation in this finding has (the interest roster's help names savings bonds, OID, accrued and seller-financed interest and nominee interest)."
     },
     {
      "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040sb p. 3: Grantor or transferor with no Form 3520 requirement: refused; lines unaffected. Safe."
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "sb.unsupported ('Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, ... a savings bond interest exclusion, or other special treatment?') refuses lines 2, 3 and 6 through its gate line sb.unsupported_if_income, and is asked whenever taxable interest, ordinary dividends or capital gain distributions are above zero, which every situation in this finding has (the interest roster's help names savings bonds, OID, accrued and seller-financed interest and nominee interest)."
     },
     {
      "n": 3,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Refuses lines the tool would compute; safe."
+    },
+    {
+     "n": 4,
      "kind": "UNCLEAR",
      "class": "accepted WIDE",
-     "evidence": "i1040sb p. 3: Transfer before 2025 to a trust still in existence: the clause 'a foreign trust that existed at any time during 2025' points to yes. A reading that keeps the opening 'During 2025' for the grantor limb prints No on line 8, and lines 2, 3 and 6 are unaffected. The residual comes from the form's own line 8 wording. No action needed."
+     "evidence": "i1040sb p. 3: 'a loan of cash or marketable securities is generally considered to be a distribution'; the question counts every loan, so the residual reading errs toward yes (BUG-0246 widening, as the earlier ruling)."
     }
    ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group4.md"
+   "bugs": []
   },
   "unruled:scope.other_line16": {
    "prompt_sha": "5c48614b176894cf72b1ed621e29525b6275a2013fa786a373da675338cdea92",
@@ -1517,11 +1518,73 @@
    ],
    "bugs": [],
    "adjudication": "reviews/2025/screens/adjudication/gates-b.md"
+  },
+  "unruled:sb.form5471": {
+   "prompt_sha": "64178532ea4501b6b5e58a1a66af8b154bcb59d83e4e40a45d7035ade0b0b497",
+   "reason": "No defect: WIDE by design (the tool refuses a return that may need Form 5471, which it does not prepare); the question names you or your spouse.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A spouse's role refuses a head-of-household return; Form 5471 is outside the tool either way. Safe."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:gate:div.has_ordinary": {
+   "prompt_sha": "5d27ea86ab061f8848122a807b5bf811d9464dd99f55bfc3f74b8715d8352199",
+   "reason": "No defect: dividends without a form are part of box 1a as the tool asks it; Form 8814 is refused before these lines.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "Form 8814 is refused by scope.other_line16 ('filing Form 8814 (even with no tax)'), asked of every filer."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "i1040gi p. 25: 'Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b'; the box 1a question's help asks for 'any ordinary dividends received without a form', and div.any names dividends received without any form."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Refuses lines the tool would compute; safe."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:gate:sb.has_income": {
+   "prompt_sha": "f772b8182134c74c62c3a8c81237c3c4849a0bebf015fee8f8aba69a7e7ad6b3",
+   "reason": "No defect: the interest roster's help names each case; the WIDE item is the nominee capital gain distribution limb (i1040gi p. 33).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "the interest payer roster's help names original issue discount, accrued market discount (taxable even on a tax-exempt bond), contingent payment debt instrument gain, U.S. savings bonds even when the interest may be excluded, a buyer paying interest on seller financing, and nominee interest, so each is entered as interest and makes sb.has_income true."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "the interest payer roster's help names original issue discount, accrued market discount (taxable even on a tax-exempt bond), contingent payment debt instrument gain, U.S. savings bonds even when the interest may be excluded, a buyer paying interest on seller financing, and nominee interest, so each is entered as interest and makes sb.has_income true."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i1040gi p. 33, line 7a: nominee capital gain distributions; the special-treatment question names nominee income. One extra question; safe."
+    }
+   ],
+   "bugs": []
   }
  },
  "baseline": {
   "unruled:sb.fbar_required": "044d3f9f7a63bdfe",
-  "unruled:sb.form8938": "555f5d0aa1a98a7f",
-  "unruled:sb.unsupported": "36cda5d4bbe27c0c"
+  "unruled:sb.form8938": "555f5d0aa1a98a7f"
  }
 }

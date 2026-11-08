@@ -35,6 +35,7 @@ form:
       printed: (helper)
       label: Capital gain distributions, generally Form 1099-DIV box 2a
       type: NonNegDollars
+      gated_by: sd.distributions_if_dividends
       expr:
         op: input
         source: Capital gain distributions, generally Form 1099-DIV box 2a
@@ -1325,7 +1326,7 @@ form:
       expr:
         op: sum
         of:
-          - sd.distributions
+          - sd.distributions_if_dividends
           - div.screen
       cite:
         doc: f1040sd
@@ -1486,7 +1487,7 @@ form:
       expr:
         op: test
         gt:
-          - f1040.line3a
+          - f1040.line3a_if_ordinary
           - const: 0
       cite:
         doc: f1040sd
@@ -1543,3 +1544,25 @@ form:
         doc: i1040gi
         locator: i1040gi p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3, "Yes. Enter the smaller of
           line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-"
+    - id: sd.distributions_if_dividends
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Capital gain distributions, generally Form 1099-DIV box 2a, when you or your spouse received dividends or other distributions; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: true
+            then: sd.distributions
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: false
+            then: div.zero
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, "Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)"'

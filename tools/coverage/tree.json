@@ -55,6 +55,7 @@
   {"gate": "sb.fbar_required", "topic": "everyone", "part": "income", "kind": "situation", "question": "Must you file an FBAR (FinCEN Form 114) for foreign accounts?"},
   {"gate": "sb.form8938", "topic": "everyone", "part": "income", "kind": "situation", "question": "Must you file Form 8938 for specified foreign financial assets?"},
   {"gate": "sb.line8", "topic": "everyone", "part": "income", "kind": "situation", "question": "Did you receive a distribution from a foreign trust, or were you its grantor or a transferor to it?"},
+  {"gate": "sb.form5471", "topic": "everyone", "part": "income", "kind": "situation", "question": "Were you an officer or director of a foreign corporation, or a 10% owner of one (Form 5471)?"},
   {"gate": "ftc.needs1116", "topic": "everyone", "part": "income", "kind": "situation", "question": "Do you have foreign tax that needs Form 1116 (over the small-amount limit, not all passive income, or not all reported on a payee statement)?"},
   {"gate": "w2.box10_bad", "topic": "everyone", "part": "income", "kind": "entry"},
   {"gate": "w2.g_bad", "topic": "everyone", "part": "income", "kind": "entry"},
@@ -88,7 +89,7 @@
   {"gate": "dependent.qr_kidnapped", "topic": "household", "kind": "situation", "question": "Was a child under 19 whom you would claim as a qualifying relative presumed kidnapped during 2025 by someone outside the family?"},
   {"gate": "dependent.income_exception", "topic": "household", "kind": "situation", "question": "Does a permanently and totally disabled relative have gross income of $5,200 or more (the sheltered workshop exception)?"},
 
-  {"gate": "sb.unsupported", "topic": "interest", "kind": "situation", "question": "Do you have nominee interest, OID not on a Form 1099-OID, bond premium or market discount, seller-financed mortgage interest, a savings bond interest exclusion, or other special interest treatment?"},
+  {"gate": "sb.unsupported_if_income", "topic": "interest", "kind": "situation", "question": "Do you have nominee interest, OID not on a Form 1099-OID, bond premium or market discount, seller-financed mortgage interest, a savings bond interest exclusion, or other special interest treatment?"},
   {"gate": "div.amt", "topic": "interest", "kind": "situation", "question": "Do you have specified private activity bond interest dividends (Form 1099-DIV box 13)?"},
   {"gate": "div.section1202", "topic": "interest", "kind": "situation", "question": "Do you have section 1202 gain distributions (Form 1099-DIV box 2c)?"},
   {"gate": "div.unsupported", "topic": "interest", "kind": "situation", "question": "Do you have section 897 amounts, liquidation distributions, or return-of-capital distributions not yet reconciled with your basis?"},

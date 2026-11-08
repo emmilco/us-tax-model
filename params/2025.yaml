@@ -1108,6 +1108,20 @@ params:
       cite:
         doc: i8949
         locator: pp. 7–11, columns (e) through (h), codes B and W
+    div.no:
+      value: false
+      type: Bool
+      cite:
+        doc: f1099div
+        locator: 'p. 5, Instructions for Recipient, Box 3, "Box 3. Shows a return of capital. To the extent of your cost
+          (or other basis) in the stock, the distribution reduces your basis and is not taxable"'
+    sb.no:
+      value: false
+      type: Bool
+      cite:
+        doc: i1040sb
+        locator: 'p. 1, General Instructions, "You received interest from a seller-financed mortgage", "You received
+          interest or ordinary dividends as a nominee"'
     sales.one:
       value: 1
       type: Count

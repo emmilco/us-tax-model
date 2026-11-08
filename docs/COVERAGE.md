@@ -14,15 +14,15 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 152 of the 160 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 153 of the 161 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **199 refusal gates**: 160 tax situations the tool does not prepare, grouped by topic below, and 39 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **200 refusal gates**: 161 tax situations the tool does not prepare, grouped by topic below, and 39 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
-- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (29)
+- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (30)
 - [Household and dependents](#household-and-dependents) (15)
 - [Interest and dividends](#interest-and-dividends) (4)
 - [Sales and capital gains](#sales-and-capital-gains) (5)
@@ -277,6 +277,11 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
   - *Not covered:* Form 3520 / Form 3520-A. Review and prepare the required foreign-trust information returns; this path is outside scope.
     *Source:* [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts
   - *Refused at:* `sb.line2`, `sb.line3`, `sb.line6`
+- **`sb.form5471`**: Were you an officer or director of a foreign corporation, or a 10% owner of one (Form 5471)?
+  - *The data asks or tests:* In 2025, were you (or your spouse) an officer or director of a foreign corporation, or did you (or your spouse) own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power of all classes of a foreign corporation's stock with voting rights? (`input`)
+  - *Not covered:* Form 5471. You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.
+    *Source:* [i1040sb] p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation", "You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights"
+  - *Refused at:* `sb.line2`, `sb.line3`, `sb.line6`
 - **`ftc.needs1116`**: Do you have foreign tax that needs Form 1116 (over the small-amount limit, not all passive income, or not all reported on a payee statement)?
   - *The data asks or tests:* Fails a condition of the election (`test`)
   - *Not covered:* Form 1116. The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.
@@ -493,8 +498,8 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
 
 ### Interest and dividends
 
-- **`sb.unsupported`**: Do you have nominee interest, OID not on a Form 1099-OID, bond premium or market discount, seller-financed mortgage interest, a savings bond interest exclusion, or other special interest treatment?
-  - *The data asks or tests:* Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment? (`input`)
+- **`sb.unsupported_if_income`**: Do you have nominee interest, OID not on a Form 1099-OID, bond premium or market discount, seller-financed mortgage interest, a savings bond interest exclusion, or other special interest treatment?
+  - *The data asks or tests:* Schedule B special treatment, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise (`choose`)
   - *Not covered:* Schedule B special treatment / Form 8815. Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends.
     *Source:* [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts
   - *Refused at:* `sb.line2`, `sb.line3`, `sb.line6`

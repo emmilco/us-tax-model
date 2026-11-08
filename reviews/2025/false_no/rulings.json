@@ -19,6 +19,148 @@
    "class": "no gate defect; the condition is the owner-approved C gate on line 8h",
    "prompt_sha": "f67ac280d9cf5ac6b95d90c44a19badd75f04b6bbd6c2ba64839c0a5bdc0d234",
    "reason": "The gate asks s1.jury_to_employer only when Schedule 1 line 8h is above zero (design, question hierarchy: 'Jury pay given to your employer [C: only if jury pay (8h) is above zero]'). Line 24a is a part of line 8h: i1040gi p. 91, Line 8h, 'Enter any jury duty pay and see the instructions for line 24a'; p525 p. 34, Jury duty, 'Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h. If you must give the pay to your employer ... you can deduct the amount turned over to your employer'; the chosen reading of amb.2025.jury_24a_cap treats an amount given above line 8h as an impossible entry. (1, high) Pay received and reported in 2024 and turned over in 2025: that is a repayment of an amount included in income in an earlier year, which p525 p. 36, Repayments, treats separately ('If you had to repay an amount that you included in your income in an earlier year, you may be able to deduct the amount repaid from your income for the year in which you repaid it'), not line 24a of the year of receipt; before the gate the tool asked the amount and refused it as an impossible entry (s1.jury_over), now it does not ask it. Neither handles a claim-of-right repayment, which no screen names; reported to the owner as an open question, not a gate defect. (2, medium) Jury pay entered as other income (line 8z or a Form 1099-MISC): line 8h is asked of every filer and p525 p. 34 puts jury pay on line 8h; its help now says 'All jury duty pay received in 2025, whether or not a form reported it, including any pay you gave to your employer'. (3, low) Pay signed over and never entered: the line 8h question and help both say to include pay given to the employer. Every fixture's recorded value is unchanged."
+  },
+  "unruled:gate:div.any": {
+   "prompt_sha": "250bd3f469cb817a2ee5cb9f47eccb33e384d23948d336c3ce5b0b323254fb5c",
+   "reason": "No defect: Form 8814 is refused for every filer, a repeat of the earlier rounds' finding; the lows are wording already covered by the list and help.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "high",
+     "class": "covered by refusal",
+     "evidence": "Form 8814 is refused by scope.other_line16 ('filing Form 8814 (even with no tax)'), asked of every filer, so a parent reporting a child's dividends is refused whatever the dividends answer."
+    },
+    {
+     "n": 1,
+     "severity": "low",
+     "class": "covered",
+     "evidence": "div.any lists 'liquidation distributions'; the question names distributions from a company, not only dividends."
+    },
+    {
+     "n": 2,
+     "severity": "low",
+     "class": "covered",
+     "evidence": "div.any lists money market funds; its help says fund amounts are dividends even when a statement calls them interest or tax-exempt interest."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:gate:div.has_ordinary": {
+   "prompt_sha": "6a48bd8b9001e82dc465eb01f188dc499c72c256839597f8a277ccec5aa0d487",
+   "reason": "No defect: Schedule K-1 and Form 8814 dividends are refused before these lines; dividends without a form and reinvested dividends are named in div.any and the box 1a help.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "high",
+     "class": "covered by refusal",
+     "evidence": "Schedule K-1 items are refused by scope.schedule1 ('partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)'), asked of every filer."
+    },
+    {
+     "n": 1,
+     "severity": "high",
+     "class": "covered",
+     "evidence": "div.any names 'dividends from a foreign company ... or dividends received without any form'; the box 1a question's help asks for 'any ordinary dividends received without a form', and qualified dividends are part of ordinary dividends (i1040gi p. 25)."
+    },
+    {
+     "n": 2,
+     "severity": "high",
+     "class": "covered by refusal",
+     "evidence": "Form 8814 is refused by scope.other_line16 ('filing Form 8814 (even with no tax)'), asked of every filer, so a parent reporting a child's dividends is refused whatever the dividends answer."
+    },
+    {
+     "n": 3,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "div.any: 'Count amounts that were reinvested, credited to an account or paid in shares or other property'."
+    },
+    {
+     "n": 4,
+     "severity": "medium",
+     "class": "covered by refusal",
+     "evidence": "Schedule K-1 items are refused by scope.schedule1 ('partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)'), asked of every filer."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:gate:div.has_return_of_capital": {
+   "prompt_sha": "472b2828118d8b540983a26f7fc391631519d7fcc84e447c259f27a6af20c44c",
+   "reason": "No defect of the gate: the gated answer is read only with box 3 above zero, as before the gate; the parent question names returns of capital and distributions without a form.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "high",
+     "class": "covered",
+     "evidence": "div.any names 'nondividend distributions (a return of capital)' and 'dividends received without any form'; box 3 is asked whenever div.any is yes."
+    },
+    {
+     "n": 1,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "div.any names 'nondividend distributions (a return of capital)' among the distributions that count."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "accepted",
+     "evidence": "The box 3 question asks for the amount the form shows in box 3, not a taxable amount; a filer who leaves it out also leaves out the box from the forms combined. Low risk; no change."
+    },
+    {
+     "n": 3,
+     "severity": "low",
+     "class": "no defect",
+     "evidence": "The filer answers from the forms held; a later correction is an amended return."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:gate:sb.has_income": {
+   "prompt_sha": "c542c8d734a691a49a28cf311e6120e45d7f9b04b1b3168cec9ec318326613e7",
+   "reason": "No defect: Part III is asked of every filer by its own questions; the interest roster's and box 1a help name each source the findings describe.",
+   "findings": [
+    {
+     "n": 0,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "the interest payer roster's help names original issue discount, accrued market discount (taxable even on a tax-exempt bond), contingent payment debt instrument gain, U.S. savings bonds even when the interest may be excluded, a buyer paying interest on seller financing (including for a sale in an earlier year), and interest received in your or your spouse's name that belongs to someone else, so each is entered as interest and opens the gate; the box 1a help includes 'dividends that belong to someone else (as a nominee)'."
+    },
+    {
+     "n": 1,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "the interest payer roster's help names original issue discount, accrued market discount (taxable even on a tax-exempt bond), contingent payment debt instrument gain, U.S. savings bonds even when the interest may be excluded, a buyer paying interest on seller financing (including for a sale in an earlier year), and interest received in your or your spouse's name that belongs to someone else, so each is entered as interest and opens the gate."
+    },
+    {
+     "n": 2,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "the interest payer roster's help names original issue discount, accrued market discount (taxable even on a tax-exempt bond), contingent payment debt instrument gain, U.S. savings bonds even when the interest may be excluded, a buyer paying interest on seller financing (including for a sale in an earlier year), and interest received in your or your spouse's name that belongs to someone else, so each is entered as interest and opens the gate."
+    },
+    {
+     "n": 3,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "the interest payer roster's help names original issue discount, accrued market discount (taxable even on a tax-exempt bond), contingent payment debt instrument gain, U.S. savings bonds even when the interest may be excluded, a buyer paying interest on seller financing (including for a sale in an earlier year), and interest received in your or your spouse's name that belongs to someone else, so each is entered as interest and opens the gate."
+    },
+    {
+     "n": 4,
+     "severity": "low",
+     "class": "covered",
+     "evidence": "The $person help: amounts not asked person by person (interest, dividends ...) are entered once, for you and your spouse combined."
+    },
+    {
+     "n": 5,
+     "severity": "medium",
+     "class": "covered",
+     "evidence": "Part III is asked of every filer, ungated: sb.line7a, sb.fbar_required, sb.form8938 and sb.line8."
+    },
+    {
+     "n": 6,
+     "severity": "low",
+     "class": "covered",
+     "evidence": "The box 1a question's help: substitute statements and 'any ordinary dividends received without a form'."
+    }
+   ],
+   "bugs": []
   }
  },
  "baseline": {}

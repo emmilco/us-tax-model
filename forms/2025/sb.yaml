@@ -10,10 +10,11 @@ form:
     - id: sb.unsupported
       printed: (helper)
       type: Bool
-      label: 'Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?'
+      label: 'Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, or other special treatment?'
+      gated_by: sb.unsupported_if_income
       expr:
         op: input
-        source: 'Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?'
+        source: 'Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, or other special treatment?'
       cite:
         doc: i1040sb
         locator: pp. 1–3, interest, dividends and foreign accounts/trusts
@@ -21,6 +22,7 @@ form:
       printed: (helper)
       type: NonNegDollars
       label: Total ordinary dividends, Form 1099-DIV box 1a
+      gated_by: sb.ordinary_dividends_if_dividends
       expr:
         op: input
         source: Total ordinary dividends, Form 1099-DIV box 1a
@@ -93,13 +95,19 @@ form:
         doc: i1040sb
         locator: pp. 1–3, interest, dividends and foreign accounts/trusts
       refuses:
-        - when: sb.unsupported
+        - when: sb.unsupported_if_income
           form: Schedule B special treatment / Form 8815
           remedy: Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable
             interest and ordinary dividends.
           cite:
             doc: i1040sb
             locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.form5471
+          form: Form 5471
+          remedy: You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.
+          cite:
+            doc: i1040sb
+            locator: 'p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation", "You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights"'
         - when: sb.fbar_required
           form: FinCEN Form 114 (FBAR)
           remedy: Foreign-account reporting and the required country list are outside this tool. Prepare the
@@ -132,13 +140,19 @@ form:
         doc: i1040sb
         locator: pp. 1–3, interest, dividends and foreign accounts/trusts
       refuses:
-        - when: sb.unsupported
+        - when: sb.unsupported_if_income
           form: Schedule B special treatment / Form 8815
           remedy: Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable
             interest and ordinary dividends.
           cite:
             doc: i1040sb
             locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.form5471
+          form: Form 5471
+          remedy: You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.
+          cite:
+            doc: i1040sb
+            locator: 'p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation", "You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights"'
         - when: sb.fbar_required
           form: FinCEN Form 114 (FBAR)
           remedy: Foreign-account reporting and the required country list are outside this tool. Prepare the
@@ -174,21 +188,27 @@ form:
     - id: sb.line6
       printed: "6"
       type: NonNegDollars
-      label: Amount from sb.ordinary_dividends
+      label: Amount from sb.ordinary_dividends_if_dividends
       expr:
         op: copy
-        from: sb.ordinary_dividends
+        from: sb.ordinary_dividends_if_dividends
       cite:
         doc: i1040sb
         locator: pp. 1–3, interest, dividends and foreign accounts/trusts
       refuses:
-        - when: sb.unsupported
+        - when: sb.unsupported_if_income
           form: Schedule B special treatment / Form 8815
           remedy: Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable
             interest and ordinary dividends.
           cite:
             doc: i1040sb
             locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+        - when: sb.form5471
+          form: Form 5471
+          remedy: You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.
+          cite:
+            doc: i1040sb
+            locator: 'p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation", "You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights"'
         - when: sb.fbar_required
           form: FinCEN Form 114 (FBAR)
           remedy: Foreign-account reporting and the required country list are outside this tool. Prepare the
@@ -237,3 +257,100 @@ form:
       cite:
         doc: i1040sb
         locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+    - id: sb.form5471
+      printed: (helper)
+      type: Bool
+      label: 'In 2025, were you (or your spouse) an officer or director of a foreign corporation, or did you (or your spouse) own 10% or more of the total value of a foreign corporation''s stock, or of the combined voting power of all classes of a foreign corporation''s stock with voting rights?'
+      expr:
+        op: input
+        source: 'In 2025, were you (or your spouse) an officer or director of a foreign corporation, or did you (or your spouse) own 10% or more of the total value of a foreign corporation''s stock, or of the combined voting power of all classes of a foreign corporation''s stock with voting rights?'
+      cite:
+        doc: i1040sb
+        locator: 'p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation", "You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights"'
+    - id: sb.interest_total
+      printed: (helper)
+      type: NonNegDollars
+      label: Taxable interest from all payers, before any Schedule B adjustment
+      expr:
+        op: sum_over
+        collection: interest
+        field: interest.amount
+      cite:
+        doc: i1040sb
+        locator: 'p. 1, Line 1, "Report on line 1 all of your taxable interest"'
+    - id: sb.has_income
+      printed: (gate)
+      type: Bool
+      label: Taxable interest, ordinary dividends or capital gain distributions are above zero
+      expr:
+        op: test
+        any:
+          - op: test
+            gt:
+              - sb.interest_total
+              - const: 0
+          - op: test
+            gt:
+              - sb.ordinary_dividends_if_dividends
+              - const: 0
+          - op: test
+            gt:
+              - sd.distributions_if_dividends
+              - const: 0
+      cite:
+        doc: i1040sb
+        locator: 'p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee"'
+    - id: sb.no
+      printed: (helper)
+      type: Bool
+      label: No special treatment without interest, ordinary dividends or capital gain distributions
+      expr:
+        op: param
+        ref: sb.no
+      cite:
+        doc: i1040sb
+        locator: 'p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee"'
+    - id: sb.ordinary_dividends_if_dividends
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Total ordinary dividends, Form 1099-DIV box 1a, when you or your spouse received dividends or other distributions; zero otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: true
+            then: sb.ordinary_dividends
+          - guard:
+              op: test
+              eq:
+                - div.any
+                - const: false
+            then: sb.zero
+      cite:
+        doc: i1040sb
+        locator: 'p. 2, Line 5, "Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements"'
+    - id: sb.unsupported_if_income
+      printed: (helper)
+      type: Bool
+      label: 'Schedule B special treatment, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sb.has_income
+                - const: true
+            then: sb.unsupported
+          - guard:
+              op: test
+              eq:
+                - sb.has_income
+                - const: false
+            then: sb.no
+      cite:
+        doc: i1040sb
+        locator: 'p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee"'

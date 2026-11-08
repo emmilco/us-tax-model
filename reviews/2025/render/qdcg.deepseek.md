@@ -5,6 +5,7 @@ The rendered English of every printed line of `Qualified Dividends and Capital G
 | field | value |
 | --- | --- |
 | date | 2026-10-27 |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | 15e4d920841a84db078f450e020fa0bb4f18a323f88253d0a54cec27ac3af7d4 |
@@ -41,17 +42,20 @@ Model: The IRS line directs the amount from Form 1040 line 15; the Form 2555 alt
 ### 2 — Enter the amount from Form 1040 or 1040-SR, line 3a
 Status: **MATCH**
 
-Model: The IRS line directs the amount from Form 1040 line 3a, qualified dividends.
+Model: IRS line 2 says to enter Form 1040 line 3a; the helper is the qualified dividends amount from line 3a, and zero when there are no ordinary dividends is consistent because qualified dividends are included in ordinary dividends.
+Reviewed in: pass ba11116286ff
 
 ### 3 — Are you filing Schedule D? Yes. Enter the smaller of line 15 or line 16 of Schedule D. If
 Status: **MATCH**
 
-Model: The Schedule D branch uses the smaller of Schedule D lines 15 and 16 with zero floor, and the no-Schedule D branch corresponds to capital gain distributions reported on Form 1040 line 7a.
+Model: The Yes branch tracks Schedule D lines 15 and 16 with zero for a blank or loss, and the No branch gives the capital gain distributions amount (Form 1099-DIV box 2a) that goes on Form 1040 line 7a when Schedule D is not filed.
+Reviewed in: pass ba11116286ff
 
 ### 4 — Add lines 2 and 3
 Status: **MATCH**
 
-Model: The IRS line says to add lines 2 and 3.
+Model: IRS line 4 says “Add lines 2 and 3,” and the restatement does exactly that.
+Reviewed in: pass ba11116286ff
 
 ### 5 — Subtract line 4 from line 1. If zero or less, enter -0-
 Status: **MATCH**
@@ -157,6 +161,92 @@ Model: The IRS line requires tax on line 1 using the Tax Table below $100,000 an
 Status: **MATCH**
 
 Model: The IRS line says to enter the smaller of line 23 or line 24 as the tax on all taxable income.
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| 1 | f64d33d04d441dbb219d494e9ff87b7eff7af85f10a2d6f368bbd282a4ed4cf8 |
+| 2 | d74f21ce219e10fca637cf503d8752eda3da05bd4d68fd0308142e4f5dcabc7d |
+| 3 | c05a5ad1244d2c000b9fc2cfd9e562c2050126a46158ac7a24c6cf05de2a8c45 |
+| 4 | 213afa874293a6ccf9df47b8127f50d351d5b7afd1633952a578c5a3ae24fc05 |
+| 5 | 6c59d80a539dc804a531c59a238b8d07fae1bdf203486a83882498a4a3121f26 |
+| 6 | e44877699b3362ea6956420000bba8e07c0ca6507447b8532c1ebc96f4b292b1 |
+| 7 | 919f2f875ab4cfb7dc7b162099cec3406f8d8c894e6d4f26b29ae5af0bb0786d |
+| 8 | 875808d7969812c433ef89f9cc0e8c29ff7b0d049b1ec89057498d3f50881627 |
+| 9 | 64ffce7e9b9385d569a20a753c0c0125f59958aace25354b3adf6e6d78334d46 |
+| 10 | 42f0b088d816fb088f7b2769c501a163f6f0c309b66e391d1871c82740a46e82 |
+| 11 | 77b5c02399125d00460f523beb2d86a4490c8b1eca522be27a926c6b6952e89e |
+| 12 | df0bcbe0f8c5c7f05d4227f724c80962082ff20f6994d20ff211ea4c585b0645 |
+| 13 | ee61db83bbfda9a9cb4dd8c57beaefd8bcb9e5c560361eb9c469d09c850e588c |
+| 14 | d82200d654724ff83f024ed8da82e20042b24496f6b2060c59bf9be8120f5220 |
+| 15 | 03487a623e64bd4ffaac962c88061d8713583e5334006d5f6cc9bd0d7918e98c |
+| 16 | 39f73d76347238210a1ba0c196324b91b011f5b7e844470b7285d06bf3650811 |
+| 17 | 9336e2931d4b35b4dfef82b0948e727b329ff48bb2a186d48cd8032b58344054 |
+| 18 | 8a46d54069777b5e1616a29bc60ad5627767132225e1630e3930b4e504bc1cd4 |
+| 19 | 5eb2a9555212745fc024b244e5621ae6764fbb568057a14fcf3441b0b037eed7 |
+| 20 | 5625cfbe080f12f5c2e1e635081819fc5d4f72f2c674be5592416b5acf50d8dc |
+| 21 | 875f34e1591d329effc3cc562f32e069cf3aa1fe87018091a98c4e143d20ee55 |
+| 22 | c5cde3e21fac86a9c6e50abe3ed26d31a782043c92f1e156c52d7704a036ed87 |
+| 23 | b99bef5e9585843e3b6312a12dd0402081c058c806c2fd34603754ce1b05320b |
+| 24 | 561d2d9ef8cf22c89a432b52bba2a23cd393258b900bbf771a5b7fef25ce2199 |
+| 25 | c481e4b5beb166b9d8a22e2113c0f65d9f2625efd01c5d5684ebd3e3e7646167 |
+| (rest of the document) | 39d6c92b76a19102e5784a93dabc0df8904dab6dd9502f98feaa91794ed9ccf1 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass ba11116286ff
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 2, 3, 4 |
+| model requested | deepseek-flash |
+| model reported | deepseek-flash |
+| prompt sha256 | ba11116286ffe60b7ff17bc6e5bd95d3f4a207cdb2ca778f002ba92a94c219c4 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | 65536 |
+| subject sha256 | 2da108960fc797a1fd158dcbfa835495c079bc921f28520a6d12d6772ec25704 |
+| receipt | .transcription/qdcg.deepseek.render.lines-7189e0d256b4 |
+| lines judged | 3 |
+| match / mismatch / unclear / missing | 3 / 0 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040gi | 2025; printed date 2026-02-25 | 25, 26, 31, 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 25, 26, 31 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| f1099div | January 2024 (continuous-use form) | 1, 2, 3, 4, 5, 6 | whole document | 833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3 | 5 | 617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d |
+| i1040sd | 2025; printed date 2025-12-11 | 5, 6, 8, 10, 11, 12 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | 5, 6, 8, 11, 12 | 0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec |
+| i1040sb | TY2025; printed April 23, 2025 | 1, 2, 3 | whole document | 2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05 | 1, 2, 3 | 0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e |
+| f1040sd | 2025; created 2025-10-06 | 1, 2 | whole document | 221151530f7cd599e8ad00bc3e1ba62d6b7ff34e402c336f4ae58d698c9f5187 | - | eb461181b39879c79d1c0b7761ca0cd9ade46fdb1531cdee3281053c348f6c41 |
+| i8949 | 2025; printed date 2026-01-20 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 | cited pages | d3ddc2b91cf89087ca348ebb00dbd1c80bbc025fa4df1176753d25013f581a67 | 2, 3, 4, 5, 6, 7, 9, 10 | cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85 |
+| f8949 | 2025; created 2025-05-05 | 1, 2 | whole document | f191f96ca2847b4c59875d5e1169f784a79b4d57f1f12d0196bd9bc2e7838e9d | - | cc308c3ff7751456647bed9c2855d077dcbd0a55469b57f9e8cccb6f4927f232 |
+| f8995 | 2025; created 2025-09-12 | 1 | whole document | 49922587df3bd093e24470f5b42d0e3382ef8f5210b3cedccb02ccb864f2f65a | - | 8e2e78d7610e1d45e93c10c8b03f9026d46a1166678c6ed93f852569c382f346 |
+| p550 | 2025 returns; printed date 2026-03-05 | 59, 60, 61, 81, 82, 86, 87, 88 | pages named by another document's citation | e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26 | 59, 60, 61, 81, 82, 86, 87, 88 | 7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51 |
+| i8995 | 2025; printed date 2026-01-26 | 3, 4 | pages named by another document's citation | 96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2 | 3, 4 | 6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a |
+
+##### Raw response
+
+```yaml
+lines:
+  - key: "2"
+    status: MATCH
+    reason: IRS line 2 says to enter Form 1040 line 3a; the helper is the qualified dividends amount from line 3a, and zero when there are no ordinary dividends is consistent because qualified dividends are included in ordinary dividends.
+  - key: "3"
+    status: MATCH
+    reason: The Yes branch tracks Schedule D lines 15 and 16 with zero for a blank or loss, and the No branch gives the capital gain distributions amount (Form 1099-DIV box 2a) that goes on Form 1040 line 7a when Schedule D is not filed.
+  - key: "4"
+    status: MATCH
+    reason: IRS line 4 says “Add lines 2 and 3,” and the restatement does exactly that.
+```
 
 ## Raw response
 

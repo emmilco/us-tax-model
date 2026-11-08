@@ -4,14 +4,14 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-11-03 |
+| date | 2026-11-07 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt policy | worked-values-request-bound-v2 |
 | system sha256 | 18ff9cfe094eedd0548bba02012b0ebf2a58d0606e834e3633432585b4192cb7 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 5e0506d05999e698ca8f85143ff93aaa6e6ef2bae6c5d66ecf2c338aa65649de |
+| subject sha256 | 901d5cc2cda101f8842ca00912c274bf77b604896dfe08b2e4d8d6a7267969e0 |
 | cases | 2 |
 | worked target scope | printed IRS lines |
 
@@ -23,7 +23,7 @@
 
 ## Lines
 
-### case classm.qdcg.1 — prompt sha256 059b5ff24d3970aad1cb174f2a72eccdf258130d9f0b2905070b4f45d81b9d13; branches: qdcg.schedule_d_filed:false, qdcg.line3#1, qdcg.line5:floor, qdcg.line7:left, qdcg.line8:left, qdcg.line10:left, qdcg.line14:left, qdcg.line16:floor, qdcg.line17:left, qdcg.line25:left
+### case classm.qdcg.1 — prompt sha256 0532756d4d266f4536de3519def65a8562f47c4b901824fbe1d99fa6fd6e89d8; branches: qdcg.schedule_d_filed:false, qdcg.line3#1, qdcg.line5:floor, qdcg.line7:left, qdcg.line8:left, qdcg.line10:left, qdcg.line14:left, qdcg.line16:floor, qdcg.line17:left, qdcg.line25:left
 
 ### classm.qdcg.1 — 1 — Enter the amount from Form 1040 or 1040-SR, line 15. However, if you are filing
 Status: **AGREE**
@@ -140,7 +140,7 @@ Status: **AGREE**
 
 Value: $0.00
 
-### case classm.qdcg.2 — prompt sha256 a2f93cac41bd7c17f8e1dc6dda4935730f01058d2038d629fab092e6ecb24a74; branches: qdcg.schedule_d_filed:true, qdcg.line3#0, qdcg.line5:positive, qdcg.line7:right, qdcg.line8:right, qdcg.line10:right, qdcg.line14:right, qdcg.line16:positive, qdcg.line17:right, qdcg.line25:left
+### case classm.qdcg.2 — prompt sha256 dabff562eede1eabdc8b80f4f44fae98385733d11a0b5780f8c69a8aabb8ca5c; branches: qdcg.schedule_d_filed:true, qdcg.line3#0, qdcg.line5:positive, qdcg.line7:right, qdcg.line8:right, qdcg.line10:right, qdcg.line14:right, qdcg.line16:positive, qdcg.line17:right, qdcg.line25:left
 
 ### classm.qdcg.2 — 1 — Enter the amount from Form 1040 or 1040-SR, line 15. However, if you are filing
 Status: **AGREE**
@@ -262,58 +262,59 @@ Value: $74,680.87
 ### classm.qdcg.1
 
 ```yaml
+```yaml
 lines:
   - printed: "1"
     value: "0.00"
-    work: "Form 1040 line 15 = 0.00; no Form 2555"
+    work: "Form 1040 line 15 = 0.00"
   - printed: "2"
     value: "0.00"
     work: "Form 1040 line 3a = 0.00"
   - printed: "3"
     value: "0.00"
-    work: "Not filing Schedule D; Form 1040 line 7a (capital gain distributions) = 0.00"
+    work: "No Schedule D; Form 1040 line 7a (capital gain distributions) = 0.00"
   - printed: "4"
     value: "0.00"
     work: "0.00 + 0.00"
   - printed: "5"
     value: "0.00"
-    work: "0.00 - 0.00 = 0.00; zero or less, enter -0-"
+    work: "0.00 - 0.00 = 0; zero or less, enter -0-"
   - printed: "6"
     value: "64750.00"
-    work: "Head of household amount"
+    work: "Head of household = 64,750"
   - printed: "7"
     value: "0.00"
-    work: "smaller of 0.00 or 64750.00"
+    work: "smaller of 0.00 or 64,750 = 0.00"
   - printed: "8"
     value: "0.00"
-    work: "smaller of 0.00 or 0.00"
+    work: "smaller of 0.00 or 0.00 = 0.00"
   - printed: "9"
     value: "0.00"
     work: "0.00 - 0.00"
   - printed: "10"
     value: "0.00"
-    work: "smaller of 0.00 or 0.00"
+    work: "smaller of 0.00 or 0.00 = 0.00"
   - printed: "11"
     value: "0.00"
-    work: "from line 9"
+    work: "line 9 = 0.00"
   - printed: "12"
     value: "0.00"
     work: "0.00 - 0.00"
   - printed: "13"
     value: "566700.00"
-    work: "Head of household amount"
+    work: "Head of household = 566,700"
   - printed: "14"
     value: "0.00"
-    work: "smaller of 0.00 or 566700.00"
+    work: "smaller of 0.00 or 566,700 = 0.00"
   - printed: "15"
     value: "0.00"
     work: "0.00 + 0.00"
   - printed: "16"
     value: "0.00"
-    work: "0.00 - 0.00 = 0.00; zero or less, enter -0-"
+    work: "0.00 - 0.00 = 0; enter -0-"
   - printed: "17"
     value: "0.00"
-    work: "smaller of 0.00 or 0.00"
+    work: "smaller of 0.00 or 0.00 = 0.00"
   - printed: "18"
     value: "0.00"
     work: "0.00 x 0.15"
@@ -331,7 +332,8 @@ lines:
     work: "0.00 + 0.00 + 0.00 (line 22 given)"
   - printed: "25"
     value: "0.00"
-    work: "smaller of line 23 0.00 or line 24 0.00"
+    work: "smaller of line 23 0.00 or line 24 0.00 = 0.00"
+```
 ```
 
 ### classm.qdcg.2
@@ -341,13 +343,13 @@ lines:
 lines:
   - printed: "1"
     value: "317901.55"
-    work: "Form 1040 line 15"
+    work: "Form 1040 line 15 = 317,901.55"
   - printed: "2"
     value: "31832.00"
-    work: "Form 1040 line 3a"
+    work: "Form 1040 line 3a = 31,832.00"
   - printed: "3"
     value: "3303.00"
-    work: "Filing Schedule D: smaller of Sch D line 15 or 16 = 3,303.00"
+    work: "Filing Schedule D: smaller of Sch D line 15 or 16 = 3,303.00 (nonnegative net capital gain)"
   - printed: "4"
     value: "35135.00"
     work: "31,832.00 + 3,303.00"
@@ -356,16 +358,16 @@ lines:
     work: "317,901.55 - 35,135.00"
   - printed: "6"
     value: "48350.00"
-    work: "Married filing separately"
+    work: "Married filing separately: $48,350"
   - printed: "7"
     value: "48350.00"
-    work: "smaller of 317,901.55 or 48,350.00"
+    work: "smaller of 317,901.55 or 48,350"
   - printed: "8"
     value: "48350.00"
-    work: "smaller of 282,766.55 or 48,350.00"
+    work: "smaller of 282,766.55 or 48,350"
   - printed: "9"
     value: "0.00"
-    work: "48,350.00 - 48,350.00"
+    work: "48,350 - 48,350"
   - printed: "10"
     value: "35135.00"
     work: "smaller of 317,901.55 or 35,135.00"
@@ -374,19 +376,19 @@ lines:
     work: "line 9"
   - printed: "12"
     value: "35135.00"
-    work: "35,135.00 - 0.00"
+    work: "35,135.00 - 0"
   - printed: "13"
     value: "300000.00"
-    work: "Married filing separately"
+    work: "Married filing separately: $300,000"
   - printed: "14"
     value: "300000.00"
-    work: "smaller of 317,901.55 or 300,000.00"
+    work: "smaller of 317,901.55 or 300,000"
   - printed: "15"
     value: "282766.55"
-    work: "282,766.55 + 0.00"
+    work: "282,766.55 + 0"
   - printed: "16"
     value: "17233.45"
-    work: "300,000.00 - 282,766.55"
+    work: "300,000 - 282,766.55"
   - printed: "17"
     value: "17233.45"
     work: "smaller of 35,135.00 or 17,233.45"
@@ -395,7 +397,7 @@ lines:
     work: "17,233.45 x 0.15 = 2,585.0175"
   - printed: "19"
     value: "17233.45"
-    work: "0.00 + 17,233.45"
+    work: "0 + 17,233.45"
   - printed: "20"
     value: "17901.55"
     work: "35,135.00 - 17,233.45"

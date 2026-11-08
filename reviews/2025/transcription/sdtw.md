@@ -5,6 +5,7 @@ Second transcription of `Schedule D Tax Worksheet` by an isolated model (spec 6.
 | field | value |
 | --- | --- |
 | date | 2026-10-26 |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 78b9ac7527b71b2c3a5e21f7e2e97ecf726c31b5c019e67c7918e9be5c4d96a3 |
@@ -21,7 +22,7 @@ Second transcription of `Schedule D Tax Worksheet` by an isolated model (spec 6.
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | cb0e91b7d153d0a32b27a4d832d94568504fe02e5a5484bc8f24319203eb5fed |
 | printed lines compared | 47 |
-| agree / disagree / missing | 22 / 25 / 0 |
+| agree / disagree / missing | 21 / 26 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -43,7 +44,22 @@ The build's reference/type checker rejected these model expressions; none were e
 Status: **AGREE**
 
 ### 2 — Qualified dividends
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"alternatives": [{"guard": {"args": [{"alternatives": [{"guard": {"args": [{"const": false}, {"ref": "div.any"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"ref": "div.any"}], "test": "eq"}, "then": {"input": "sb.ordinary_dividends"}}], "op": "choose"}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": false}, {"ref": "div.any"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"ref": "div.any"}], "test": "eq"}, "then": {"input": "sb.ordinary_dividends"}}], "op": "choose"}], "test": "lt"}, "then": {"ref": "f1040.line3a"}}], "op": "choose"}
+```
+
+Second:
+
+```json
+{"ref": "f1040.line3a"}
+```
+
+Ruling: model error; the candidate reads f1040.line3a whatever box 1a is above zero, so it needs that answer where the source does not: i1040gi p. 25, Line 3a, "Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b": with box 1a (line 3b) zero, line 3a is zero. The project reads the gate line f1040.line3a_if_ordinary, which takes f1040.line3a when box 1a is above zero holds and zero otherwise; the interview asks f1040.line3a only then (gated_by f1040.line3a_if_ordinary), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.
+Reviewed in: pass 1085915f6128
 
 ### 3 — Form 4952 line 4g election
 Status: **AGREE**
@@ -601,7 +617,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | line | subject sha256 |
 | --- | --- |
 | 1 | 1c0725e9bb355032dd19c4e1b76431883615c9f2545b572126c6f1d7d33a5935 |
-| 2 | 35dcc0d9b2ea7aa888afa60d931779807c4fed87fa144916abcdf2c4d5c07d14 |
+| 2 | 9f3f75677609b47d356bdd6936009e509dd60204aa541ab4a2410c00fa55ca98 |
 | 3 | 39fba7a263730ca3462877185bd6884d8dce5725c6aeffc3264e93bea377740f |
 | 4 | d85dc790d13284247492b95bff86af31c4da3bd8278bcb17abd890f04f1450a5 |
 | 5 | b5fdb97150dbf8b81a39a27714967a1e4d36707d56a3bf45659be368aab69d62 |
@@ -648,6 +664,78 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 46 | faf83629c0a6672205dea940b6408881802fe123bc692d9d0c0d662c3c193c5d |
 | 47 | e09491c5deb30e65a7c8783d4b166442ebed6c496f77c66cb0514e7ac51966a7 |
 | (rest of the document) | 00e2c531b38e20d5876431bbdd73e9a5202745d11ffe800e9a417e86bbc7af82 |
+
+## Foreign interfaces
+
+The interfaces (id, printed marker, type, input question) of other documents' lines that each compared line reads, as the request carried them (tools/transcription/subjects.py); a changed row stales that line.
+
+| line | foreign interfaces sha256 |
+| --- | --- |
+| 2 | 5d5fac7682b7a2fa13c2250bae25effb6239a504e9095246e6b2c15009ed77b2 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 1085915f6128
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 2 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 1085915f61282492719f05468c5561c50927eb103783725a49d51412e46be557 |
+| prompt policy | source-only-computation-v3+lines-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | 7c9c16cbdd59a13c2e32a55bb1632ae48dd9c59977c6a6e4631d317923c46297 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | dd93c27e2728726c64c7ab5aceaeca5ea5668d885f1962ab516a4276686caa4a |
+| receipt | .transcription/sdtw.lines-d4735e3a265e |
+| printed lines compared | 1 |
+| agree / disagree / missing | 0 / 1 / 0 |
+| extra printed lines in second | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040sd | 2025; printed date 2025-12-11 | 15, 16 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | - | 0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec |
+
+##### Other documents in the catalog
+
+Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
+
+| reason | documents |
+| --- | --- |
+| definition | aqee, se, tax_on_amount, tcw |
+| named form | clcw, clcw26, g28, u1250 |
+| named form, inputs and named lines: f4952.alternative_allocation, f4952.carryover, f4952.line1, f4952.line4e, f4952.line4g, f4952.prior_7, f4952.unsupported | f4952 |
+| named form, inputs and named lines: household.community_property, household.cp_married, household.credit_disallowed, household.home_cost, household.married, household.qss_eligible, household.rdp, household.spouse_died_2025, household.unmarried | household |
+| named form, inputs and named lines: scope.credits, scope.other_income, scope.other_line16, scope.schedule1 | scope |
+| named line | ftc, sales |
+| shared page | f1040, sd |
+| worksheet | qdcg |
+
+##### Raw second transcription
+
+```yaml
+```yaml
+lines:
+  - id: sdtw.line2
+    printed: "2"
+    label: "Enter your qualified dividends from Form 1040, 1040-SR, or 1040-NR, line 3a"
+    type: NonNegDollars
+    expr: {op: copy, from: f1040.line3a}
+```
+```
 
 ## Raw second transcription
 

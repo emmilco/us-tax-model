@@ -27,15 +27,15 @@
 ## 2 — `qdcg.line2`
 
 - **IRS:** Enter the amount from Form 1040 or 1040-SR, line 3a
-- **Encoded (NonNegDollars):** Enter the amount from f1040 line 3a.
-- Expr: `{"from":"f1040.line3a","op":"copy"}`
+- **Encoded (NonNegDollars):** Enter the amount from f1040 helper "Qualified dividends (Form 1040 line 3a), when ordinary dividends (box 1a) are above zero; zero otherwise".
+- Expr: `{"from":"f1040.line3a_if_ordinary","op":"copy"}`
 - Cite: [i1040gi] QDCGT worksheet, line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 3 — `qdcg.line3`
 
 - **IRS:** Are you filing Schedule D? Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-. No. Enter the amount from Form 1040 or 1040-SR, line 7a
-- **Encoded (NonNegDollars):** Choose — [helper "Are you filing Schedule D?" = true → helper "Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-."] [helper "Are you filing Schedule D?" = false → sd helper "Capital gain distributions, generally Form 1099-DIV box 2a"]
-- Expr: `{"alternatives":[{"guard":{"eq":["qdcg.schedule_d_filed",{"const":true}],"op":"test"},"then":"qdcg.schedule_d_net_gain"},{"guard":{"eq":["qdcg.schedule_d_filed",{"const":false}],"op":"test"},"then":"sd.distributions"}],"op":"choose"}`
+- **Encoded (NonNegDollars):** Choose — [helper "Are you filing Schedule D?" = true → helper "Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-."] [helper "Are you filing Schedule D?" = false → sd helper "Capital gain distributions, generally Form 1099-DIV box 2a, when you or your spouse received dividends or other distributions; zero otherwise"]
+- Expr: `{"alternatives":[{"guard":{"eq":["qdcg.schedule_d_filed",{"const":true}],"op":"test"},"then":"qdcg.schedule_d_net_gain"},{"guard":{"eq":["qdcg.schedule_d_filed",{"const":false}],"op":"test"},"then":"sd.distributions_if_dividends"}],"op":"choose"}`
 - Cite: [i1040gi] p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3, "Are you filing Schedule D?", "Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-", "No. Enter the amount from Form 1040 or 1040-SR, line 7a" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 4 — `qdcg.line4`

@@ -6195,3 +6195,11 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** the question names New York City for Zone 1 but says only "Zone 2", and the help "the suburban counties (Zone 2)". A self-employed filer whose earnings over $50,000 are allocated to a Zone 2 county, chiefly an exurban one, may not know it is in the MCTD and answer No; lines 54a and 54b are then 0 and the MCTMT is omitted, understating tax. No other question covers it.
 - **Disposition:** open, low: name the seven Zone 2 counties (and the five Zone 1 boroughs) in the question or help, and say the $50,000 test is per zone and per person; rerun its screen review.
 - **Tags:** new-york; screen; wording; low; open
+
+## BUG-0451 — A gain deferred by an investment in a qualified opportunity fund is refused only through a sale entry
+
+- **Caught by:** completeness review of Schedule D (sd#2), lane A of the formal gates, 2026-11-07.
+- **Source:** i1040gi pp. 31, 38 (Exception 1: you don't have to file Form 8949 or Schedule D if you aren't deferring any capital gain by investing in a qualified opportunity fund); forms/2025/sales.yaml sales.special (asks the QOF question per sale).
+- **Symptom:** a filer who defers a gain that has no sale entry (for example capital gain distributions, Form 1099-DIV box 2a) by investing in a QOF is asked no QOF question and is not refused; the deferral is not reflected.
+- **Disposition:** open, low: name QOF deferral of any gain in a return-level screen (sd.other_forms or a scope screen), with its citation.
+- **Tags:** schedule-d; scope; completeness; low; open

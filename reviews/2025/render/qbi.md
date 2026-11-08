@@ -38,6 +38,15 @@ Model: The restatement takes only the 2024 Form 8995 line 16 carryforward, so it
 
 Ruling: scope; i8995 p. 3, Determining Your Qualified Business Income: "When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion of the loss or deduction allowed under each provision is treated as a qualified net loss carryforward from a separate trade or business ... See Line 3"; i8995 p. 4, Line 3: "Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year". That case is screened: qbi.unsupported asks about "losses or deductions suspended in an earlier year by another provision and allowed this year" and refuses on qbi.eligible ("Forms 8995 / 8995-A business or PTP path"), so on a completed return line 3 is only the prior-year carryforward, which i8995 p. 5, Line 16 describes as "the amount to be carried forward to the next year". Same result as the archived prior ruling, rechecked against the current rendering. Incidental: the line's cite quotes "enter the amount from line 16 of your 2024 Form 8995", which is not in the archived i8995 (see findings.md F2; citation only).
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| 3 | 3824f40b2d7d402084e93cc175627f04b959707d9f9eeb7b6836c80f0f309e9c |
+| (rest of the document) | 546a30709e9e27a978182a906d0d3d96e948369d9feb18da096bbc01aa40368b |
+
 ## Raw response
 
 ```yaml

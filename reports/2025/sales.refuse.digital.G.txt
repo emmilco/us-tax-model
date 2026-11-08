@@ -1,5 +1,21 @@
 Values sheet — tax year 2025 (not a complete return for all filers)
 
+== Form 1099-DIV — distribution components and scope screening ==
+  (gate) In 2025, did you (or your spouse) receive any dividends or other distributions from a company or a fund, with or without a Form 1099-DIV? Count amounts that were reinvested, credited to an account or paid in shares or other property. Answer Yes if any of these applies:
+
+      - a Form 1099-DIV for 2025, or the dividends section of a broker's consolidated statement or another substitute statement, shows an amount in your (or your spouse's) name, even if it was paid in early 2026 or no cash was paid (such as a deemed dividend on a convertible bond)
+      - dividends from stock or from a mutual fund, ETF, money market fund or REIT
+      - capital gain distributions, exempt-interest dividends, nondividend distributions (a return of capital) or liquidation distributions
+      - dividends paid to you as a participant in an employee stock ownership plan (ESOP)
+      - dividends received in your name that belong to someone else (as a nominee), or dividends that belong to you but were paid in someone else's name, such as your share of an account you own with a parent or another person
+      - a corporation you own paid your personal expenses or gave you property, and the amount is treated as a dividend
+      - dividends from a foreign company, dividends reported on a Schedule K-1, or dividends received without any form
+      = false
+      cite: [f1099div] p. 5, Instructions for Recipient, boxes 1a, 2a, 3, 9, 10, 12 and 13, Box 1b, "The amount shown may be dividends a corporation paid directly to you as a participant (or beneficiary of a participant) in an employee stock ownership plan (ESOP)", Nominees, "If this form includes amounts belonging to another person, you are considered a nominee recipient", "Box 1a. Shows total ordinary dividends that are taxable", "Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)", "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12" (January 2024 (continuous-use form); 4ea1de80)
+  (helper) No amount in a box whose condition does not hold
+      = $0
+      cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
+
 == Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes) ==
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
@@ -428,12 +444,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
 
 == Schedule B — supported interest and ordinary dividends ==
-  (helper) Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, foreign corporation reporting, or other special treatment?
-      = false
-      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
-  (helper) Total ordinary dividends, Form 1099-DIV box 1a
-      = $0
-      cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
   (helper) Are you required to file FinCEN Form 114 (FBAR)? Determine under its instructions; this tool does not determine foreign account values or exceptions.
       = false
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
@@ -456,9 +466,30 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   4   Subtract sb.line3 from sb.line2
       = $0
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
-  6   Amount from sb.ordinary_dividends
+  6   Amount from sb.ordinary_dividends_if_dividends
       = $0
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) In 2025, were you (or your spouse) an officer or director of a foreign corporation, or did you (or your spouse) own 10% or more of the total value of a foreign corporation's stock, or of the combined voting power of all classes of a foreign corporation's stock with voting rights?
+      = false
+      cite: [i1040sb] p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation", "You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights" (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Taxable interest from all payers, before any Schedule B adjustment
+      = $0
+      cite: [i1040sb] p. 1, Line 1, "Report on line 1 all of your taxable interest" (TY2025; printed April 23, 2025; b92f31ec)
+      note: confirmed roster $interest:
+  (gate) Taxable interest, ordinary dividends or capital gain distributions are above zero
+      = false
+      cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) No special treatment without interest, ordinary dividends or capital gain distributions
+      = false
+      cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
+  (helper) Total ordinary dividends, Form 1099-DIV box 1a, when you or your spouse received dividends or other distributions; zero otherwise
+      = $0
+      cite: [i1040sb] p. 2, Line 5, "Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements" (TY2025; printed April 23, 2025; b92f31ec)
+      note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
+  (helper) Schedule B special treatment, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise
+      = false
+      cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
+      note: taken: {"eq":["sb.has_income",{"const":false}],"op":"test"}
 
 == Proof-of-concept scope screening ==
   (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately, including any of the following?
@@ -551,6 +582,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [f1040sd] p. 2, Part III, lines 16 and 21, "If line 16 is a gain, enter the amount from line 16 on Form 1040, 1040-SR, or 1040-NR, line 7a", "If line 16 is zero, skip lines 17 through 21 below and enter -0- on Form 1040, 1040-SR, or 1040-NR, line 7a", "If line 16 is a loss, enter here and on Form 1040, 1040-SR, or 1040-NR, line 7a, the smaller of" (2025; created 2025-10-06; 90564c8b)
       note: guard incomplete
+  (helper) Capital gain distributions, generally Form 1099-DIV box 2a, when you or your spouse received dividends or other distributions; zero otherwise
+      = $0
+      cite: [f1099div] p. 5, Instructions for Recipient, "Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)" (January 2024 (continuous-use form); 4ea1de80)
+      note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
 
 == Student Loan Interest Deduction Worksheet—Schedule 1, Line 21 ==
   (helper) Year parameter sales.zero
@@ -588,6 +623,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
   sd.to1040: chose REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
   f1040.line1e: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sb.ordinary_dividends_if_dividends: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sd.distributions_if_dividends: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sb.unsupported_if_income: chose false (guard 1)
       not taken: guard 0 = false
   ssb.line18: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -636,12 +677,18 @@ Derivations:
   f2441.zero: param(#sales.zero = $0)
   f1040.line1e: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; f2441.zero = $0)
   f1040.line1z: sum(f1040.line1a = $0; f1040.line1e = $0)
-  sb.line2: sum_over(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
   sb.zero: param(#sales.zero = $0)
-  sb.line3: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.zero = $0)
+  sb.ordinary_dividends_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; sb.zero = $0)
+  div.zero: param(#sales.zero = $0)
+  sd.distributions_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; div.zero = $0)
+  sb.has_income: test(sb.interest_total = $0; 0 = $0; sb.ordinary_dividends_if_dividends = $0; 0 = $0; sd.distributions_if_dividends = $0; 0 = $0)
+  sb.no: param(#sb.no = false)
+  sb.unsupported_if_income: choose(sb.has_income = false; true = true; sb.has_income = false; false = false; sb.no = false)
+  sb.line2: sum_over(sb.unsupported_if_income = false; sb.form5471 = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false)
+  sb.line3: copy(sb.unsupported_if_income = false; sb.form5471 = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.zero = $0)
   sb.line4: subtract(sb.line2 = $0; sb.line3 = $0)
   f1040.line2b: copy(sb.line4 = $0)
-  sb.line6: copy(sb.unsupported = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends = $0)
+  sb.line6: copy(sb.unsupported_if_income = false; sb.form5471 = false; sb.fbar_required = false; sb.form8938 = false; sb.line8 = false; sb.ordinary_dividends_if_dividends = $0)
   f1040.line3b: copy(sb.line6 = $0)
   f1040.line4b: sum_over(person[taxpayer].ira_taxable = $0)
   f1040.line5b: sum_over(person[taxpayer].plan_taxable = $0)

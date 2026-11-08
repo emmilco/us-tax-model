@@ -55,8 +55,8 @@
 ## 2 — `sdtw.line2`
 
 - **IRS:** Qualified dividends
-- **Encoded (NonNegDollars):** Enter the amount from f1040 line 3a.
-- Expr: `{"from":"f1040.line3a","op":"copy"}`
+- **Encoded (NonNegDollars):** Enter the amount from f1040 helper "Qualified dividends (Form 1040 line 3a), when ordinary dividends (box 1a) are above zero; zero otherwise".
+- Expr: `{"from":"f1040.line3a_if_ordinary","op":"copy"}`
 - Cite: [i1040sd] pp. 15–16, Schedule D Tax Worksheet (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## 3 — `sdtw.line3`

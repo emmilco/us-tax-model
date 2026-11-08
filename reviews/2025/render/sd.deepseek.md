@@ -5,7 +5,7 @@ The rendered English of every printed line of `Schedule D — securities sales a
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
+| line-scoped reviews | 2 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | d8a1bade7e8895260afb189920619c7b281ba3f35ca05706a6924a7e0636eac5 |
@@ -15,7 +15,7 @@ The rendered English of every printed line of `Schedule D — securities sales a
 | output token budget | 65536 |
 | subject sha256 | eeaf337d5fa7492478be5ffa58f4ffcda447017332dba311b038e96279119959 |
 | lines judged | 46 |
-| match / mismatch / unclear / missing | 45 / 1 / 0 / 0 |
+| match / mismatch / unclear / missing | 46 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -261,7 +261,8 @@ Model: Line 14 correctly uses the Capital Loss Carryover Worksheet line 13 as a 
 ### 13 — Capital gain distributions
 Status: **MATCH**
 
-Model: Line 13 correctly uses the capital gain distributions amount, with distribution scope checks refusing unsupported special cases.
+Model: Schedule D line 13 is capital gain distributions; the restatement uses the Form 1099-DIV box 2a capital gain distributions helper subject to distribution screening.
+Reviewed in: pass 577abbc56b37
 
 ### 7 — Combine the amounts for Schedule D line 7
 Status: **MATCH**
@@ -272,8 +273,8 @@ Reviewed in: pass 790975e2b01d
 ### 15 — Combine the amounts for Schedule D line 15
 Status: **MATCH**
 
-Model: Matches Schedule D line 15: combines lines 8a through 14 in column (h).
-Reviewed in: pass 790975e2b01d
+Model: The IRS text says to combine lines 8a through 14 in column (h), and the restatement adds the same lines, with line 14 treated as a negative loss.
+Reviewed in: pass 577abbc56b37
 
 ### 16 — Combine the amounts for Schedule D line 16
 Status: **MATCH**
@@ -286,13 +287,10 @@ Status: **MATCH**
 Model: Line 17 correctly tests whether lines 15 and 16 are both positive gains.
 
 ### 20 — Are lines 18 and 19 zero and are you not filing Form 4952?
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: helper "Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" = $0 and helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" = $0 and helper "Are you filing Form 4952?" = false
-
-Model: The form says if line 17 is No, skip lines 18 through 21 and go to line 22; the restatement evaluates line 20 from zeroed lines 18 and 19 without requiring line 17 to be Yes.
-
-Ruling: representation; f1040sd p. 2, line 17: "No. Skip lines 18 through 21, and go to line 22". Line 20 (and line 22) are Boolean flow predicates, evaluated on every path by the documented convention (forms/2025/sd.yaml form note); the path the filer follows, and which lines show, is decided by line 17 and line 16 upstream, so the answer on a skipped path is never read. Same reading as the earlier rounds.
+Model: The IRS text asks whether lines 18 and 19 are both zero or blank and whether Form 4952 is not being filed, which is what the restatement checks.
+Reviewed in: pass 577abbc56b37
 
 ### 21 — Deductible loss, signed; zero when line 21 is skipped
 Status: **MATCH**
@@ -302,7 +300,8 @@ Model: Line 21 correctly applies the smaller positive loss limit by taking the l
 ### 22 — Do you have qualified dividends?
 Status: **MATCH**
 
-Model: Line 22 correctly tests whether Form 1040 line 3a qualified dividends are greater than zero.
+Model: The IRS text asks whether there are qualified dividends on Form 1040 line 3a, and the restatement checks whether qualified dividends are greater than zero.
+Reviewed in: pass 577abbc56b37
 
 ## Line subjects
 
@@ -348,19 +347,69 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 11 | f771edaa32d289030a74d7189648bab320f53c24543262825a52bff3fc797449 |
 | 12 | 6b73101b3aad0baea3bd1a2ca3d6212077528516b286cb108a32f972c036671e |
 | 14 | 647156c672e55b5f86525437cb48b58f7e69078c9e39ca7e1ba8b729b780c3a6 |
-| 13 | 092e3a4875fe86adf11131745dbc0c146a982515002b44daf6406ee928db9b84 |
+| 13 | 4a683e41f2f2cb3103646519b99f211042a98a517bf9dc0cdc3c0602af126761 |
 | 7 | dbf8a9a44f37b3cf67dc555dbf48a8664b9a8ebbedfc49924ddb781c800a0110 |
-| 15 | f46e328515e93755eb02d0ea99933ed0d22e405fa0b8c8053db29b66e4cb01f0 |
+| 15 | 57bf70b5fdc5e71a80d07bea9dd84b3cd595a370d853f98925e381e4272a7921 |
 | 16 | 0f76ecb634638a67f68c0728370c592d43b31b38b3ccde6dc6c2d7c174edb44e |
 | 17 | 31117d838592d91e2901cdbbbc25ab6ddde06e1f462f23a3d043c8974973312d |
-| 20 | e69c889c4021467127fd0589b3546974c7726f302201f4389749b724db35e7ca |
+| 20 | d06d7e43fd62877e184baaa7cb93a6e4df537890a8e9231029ddbc3b2f22a835 |
 | 21 | 01ed960f703ca2f324cbc7f80d1669824b80307f2b0302c0e053541c678be277 |
-| 22 | e11951cb4d3a686d6f7a0ef1a1ce5a3c2cefd39849da3fe395d105c371f5b1d5 |
+| 22 | 336f2a96ba7ce335826970badbf2d93af7cf24106542da2b2dec8d2c02177ee1 |
 | (rest of the document) | 9b5ec474c37e31a1a667821669b753fb7357857a86f4d07c43af9f9de2bff699 |
 
 ## Line-scoped reviews
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 577abbc56b37
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 13, 15, 20, 22 |
+| model requested | deepseek-flash |
+| model reported | deepseek-flash |
+| prompt sha256 | 577abbc56b37d1cebe808323852558d3bd94585db765f728dbf63e0577cd43fe |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | 65536 |
+| subject sha256 | 884443bc10a74221ffffae8b97356b0c0610d7129346cbeb06b585fdb1bbc439 |
+| receipt | .transcription/sd.deepseek.render.lines-6a3b38decded |
+| lines judged | 4 |
+| match / mismatch / unclear / missing | 4 / 0 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040sd | 2025; printed date 2025-12-11 | 8, 11, 12 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | 8, 11, 12 | 0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec |
+| f1040sd | 2025; created 2025-10-06 | 1, 2 | whole document | 221151530f7cd599e8ad00bc3e1ba62d6b7ff34e402c336f4ae58d698c9f5187 | - | eb461181b39879c79d1c0b7761ca0cd9ade46fdb1531cdee3281053c348f6c41 |
+| i1040gi | 2025; printed date 2026-02-25 | 25, 26, 38 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 25, 26 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| f1099div | January 2024 (continuous-use form) | 1, 2, 3, 4, 5, 6 | whole document | 833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3 | 5 | 617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d |
+| f4952 | 2025; created 2025-05-28 | 1, 2, 3, 4 | whole document | efbeec4c44a1e43fb00231942c811a454d86b3632a2a662238893f8c4595bf81 | 3, 4 | c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c |
+| i1040sb | TY2025; printed April 23, 2025 | 1, 2, 3 | whole document | 2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05 | 1, 2, 3 | 0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e |
+| f8995 | 2025; created 2025-09-12 | 1 | whole document | 49922587df3bd093e24470f5b42d0e3382ef8f5210b3cedccb02ccb864f2f65a | - | 8e2e78d7610e1d45e93c10c8b03f9026d46a1166678c6ed93f852569c382f346 |
+| i8995 | 2025; printed date 2026-01-26 | 3, 4 | pages named by another document's citation | 96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2 | 3, 4 | 6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a |
+
+##### Raw response
+
+```yaml
+lines:
+  - key: "13"
+    status: MATCH
+    reason: "Schedule D line 13 is capital gain distributions; the restatement uses the Form 1099-DIV box 2a capital gain distributions helper subject to distribution screening."
+  - key: "15"
+    status: MATCH
+    reason: "The IRS text says to combine lines 8a through 14 in column (h), and the restatement adds the same lines, with line 14 treated as a negative loss."
+  - key: "20"
+    status: MATCH
+    reason: "The IRS text asks whether lines 18 and 19 are both zero or blank and whether Form 4952 is not being filed, which is what the restatement checks."
+  - key: "22"
+    status: MATCH
+    reason: "The IRS text asks whether there are qualified dividends on Form 1040 line 3a, and the restatement checks whether qualified dividends are greater than zero."
+```
 
 #### Pass 790975e2b01d
 

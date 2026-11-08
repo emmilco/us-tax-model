@@ -1,0 +1,24 @@
+{
+ "kind": "transcription",
+ "form": "sb",
+ "rulings": [
+  {
+   "printed": "6",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}",
+   "second": "{\"input\": \"sb.ordinary_dividends\"}",
+   "ruling": "Ruling: model error; the candidate reads sb.ordinary_dividends whatever the filer received dividends or other distributions (div.any), so it needs that answer where the source does not: i1040sb p. 2, Line 5, \"Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements\": a filer who received no dividends has none to report. The project reads the gate line sb.ordinary_dividends_if_dividends, which takes sb.ordinary_dividends when the filer received dividends or other distributions (div.any) holds and zero otherwise; the interview asks sb.ordinary_dividends only then (gated_by sb.ordinary_dividends_if_dividends), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
+   "context": "1513dd0b49df59e70e0a40c974acd75204671e7d1647ee2bd0d49f6f06fe0ac3",
+   "date": "2026-11-07",
+   "run": "2fe8eb5d656bce4b442634290d5e76ea93809dbecdf60fb4ee586d08c2209991"
+  },
+  {
+   "printed": "sb.ordinary_dividends_if_dividends",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"line\": \"6\"}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; the candidate takes line 6 when div.any is yes and zero when it is no; the project takes box 1a (sb.ordinary_dividends) when div.any is yes and zero otherwise, and line 6 is a copy of this gate line with the Schedule B refusals, so the two agree on every return where line 6 is not refused (a refused line 6 refuses the return either way). Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
+   "context": "1513dd0b49df59e70e0a40c974acd75204671e7d1647ee2bd0d49f6f06fe0ac3",
+   "date": "2026-11-07",
+   "run": "2fe8eb5d656bce4b442634290d5e76ea93809dbecdf60fb4ee586d08c2209991"
+  }
+ ]
+}

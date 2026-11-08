@@ -403,8 +403,8 @@
 ## 13 — `sd.line13`
 
 - **IRS:** Capital gain distributions
-- **Encoded (NonNegDollars):** Add helper "Capital gain distributions, generally Form 1099-DIV box 2a" and div helper "Zero only after distribution scope checks".
-- Expr: `{"of":["sd.distributions","div.screen"],"op":"sum"}`
+- **Encoded (NonNegDollars):** Add helper "Capital gain distributions, generally Form 1099-DIV box 2a, when you or your spouse received dividends or other distributions; zero otherwise" and div helper "Zero only after distribution scope checks".
+- Expr: `{"of":["sd.distributions_if_dividends","div.screen"],"op":"sum"}`
 - Cite: [f1040sd] p. 1, Part II, line 13, "Capital gain distributions. See the instructions" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## 7 — `sd.line7`
@@ -473,8 +473,8 @@
 ## 22 — `sd.line22`
 
 - **IRS:** Do you have qualified dividends?
-- **Encoded (Bool):** f1040 line 3a > $0
-- Expr: `{"gt":["f1040.line3a",{"const":0}],"op":"test"}`
+- **Encoded (Bool):** f1040 helper "Qualified dividends (Form 1040 line 3a), when ordinary dividends (box 1a) are above zero; zero otherwise" > $0
+- Expr: `{"gt":["f1040.line3a_if_ordinary",{"const":0}],"op":"test"}`
 - Cite: [f1040sd] p. 2, Part III, line 22, "Do you have qualified dividends on Form 1040, 1040-SR, or 1040-NR, line 3a?" (2025; created 2025-10-06; sha256 90564c8b)
 
 ## (helper) — `sd.to1040`
@@ -497,3 +497,10 @@
 - **Encoded (NonNegDollars):** Subtract $0 from helper "Smaller of Schedule D lines 15 and 16". If zero or less, enter -0-.
 - Expr: `{"from":"sd.net_gain_raw","op":"subtract_floor0","take":{"const":0}}`
 - Cite: [i1040gi] i1040gi p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3, "Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sd.distributions_if_dividends`
+
+- **Authored helper label:** Capital gain distributions, generally Form 1099-DIV box 2a, when you or your spouse received dividends or other distributions; zero otherwise
+- **Encoded (NonNegDollars):** Choose — [div helper "In 2025, did you (or your spouse) receive any dividends or other distributions from a company or a fund, with or without a Form 1099-DIV? Count amounts that were reinvested, credited to an account or paid in shares or other property. Answer Yes if any of these applies:" = true → helper "Capital gain distributions, generally Form 1099-DIV box 2a"] [div helper "In 2025, did you (or your spouse) receive any dividends or other distributions from a company or a fund, with or without a Form 1099-DIV? Count amounts that were reinvested, credited to an account or paid in shares or other property. Answer Yes if any of these applies:" = false → div helper "No amount in a box whose condition does not hold"]
+- Expr: `{"alternatives":[{"guard":{"eq":["div.any",{"const":true}],"op":"test"},"then":"sd.distributions"},{"guard":{"eq":["div.any",{"const":false}],"op":"test"},"then":"div.zero"}],"op":"choose"}`
+- Cite: [f1099div] p. 5, Instructions for Recipient, "Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)" (January 2024 (continuous-use form); sha256 4ea1de80)

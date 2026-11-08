@@ -19,7 +19,7 @@
     "f4952.line4g": 70000,
     "sb.line2": 100000,
     "sb.line6": 200000,
-    "f1040.line3a": 50000,
+    "f1040.line3a_if_ordinary": 50000,
     "sd.line16": 200000,
     "sd.net_gain": 100000
   },
@@ -72,7 +72,7 @@
       "id": "capital-gain-only",
       "adapter": "f4952.election",
       "inputs": {
-        "f1040.line3a": 0,
+        "f1040.line3a_if_ordinary": 0,
         "f4952.line4g": 100000
       },
       "expect": {
@@ -209,11 +209,11 @@
       "id": "missing-f1040-line3a",
       "adapter": "f4952.election",
       "inputs": {
-        "f1040.line3a": null
+        "f1040.line3a_if_ordinary": null
       },
       "expect": {
         "kind": "unknown",
-        "input": "f1040.line3a"
+        "input": "f1040.line3a_if_ordinary"
       }
     },
     {
@@ -242,6 +242,7 @@
   "boundary_inputs": [
     "sb.line2",
     "sb.line6",
+    "f1040.line3a_if_ordinary",
     "sd.line16",
     "sd.net_gain"
   ]

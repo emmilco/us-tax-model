@@ -23,6 +23,15 @@
    "context": "b51117a0bdbd04a4862c1b25b4fee60f15ab48d4ee4f7fb3986ada1d3c697056"
   },
   {
+   "printed": "4b",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}, \"then\": {\"ref\": \"f1040.line3a\"}}], \"op\": \"choose\"}",
+   "second": "{\"ref\": \"f1040.line3a\"}",
+   "ruling": "Ruling: model error; the candidate reads f1040.line3a whatever box 1a is above zero, so it needs that answer where the source does not: i1040gi p. 25, Line 3a, \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b\": with box 1a (line 3b) zero, line 3a is zero. The project reads the gate line f1040.line3a_if_ordinary, which takes f1040.line3a when box 1a is above zero holds and zero otherwise; the interview asks f1040.line3a only then (gated_by f1040.line3a_if_ordinary), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
+   "context": "9006aad319d5ae4282d88df5b79788eab087ef30274cc52618fbe72d8d3b8c53",
+   "date": "2026-11-07",
+   "run": "329935f47b3f57353fb5623b11f2c4dea24e11b1c1722c68e8df2364a7894b5e"
+  },
+  {
    "printed": "4d",
    "project": "{\"from\": {\"ref\": \"sd.line16\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
    "second": "{\"from\": {\"ref\": \"f1040.line7a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",

@@ -5,6 +5,7 @@ Second transcription of `Schedule D — securities sales and supplied distributi
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 10c58a98143cf5cf0a002683bb03cd8d6a8020f41255c0a79a6e357345bc7dbc |
@@ -20,8 +21,8 @@ Second transcription of `Schedule D — securities sales and supplied distributi
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 14f6c7571f90fea7fd4da5231e18ae13294ab3b969700f9e50a613b3212a083f |
-| printed lines compared | 55 |
-| agree / disagree / missing | 16 / 39 / 0 |
+| printed lines compared | 56 |
+| agree / disagree / missing | 16 / 40 / 0 |
 | extra printed lines in second | 18, 19 |
 
 ## Source pages given to the model
@@ -122,6 +123,10 @@ Second:
 Second transcription's note: Qualified Dividends and Capital Gain Tax Worksheet line 3 (Yes branch). When Schedule D is not required, lines 15 and 16 both equal the capital gain distributions, matching the No branch (Form 1040 line 7a).
 
 Ruling: representation; i1040gi p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3: "Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-". The candidate's min(max(line 15, 0), max(line 16, 0)) equals the project's max(min(line 15, line 16), 0) for all values. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,043 of 2,115 comparisons agree; 71 project-refuses, 1 project-unknown (by return: {"refused": {"project-refuses": 71, "project-unknown": 1}}). No value differs; the differences are cited gates (div.bad_components 18, sales[s1].digital 17, div.unsupported 11, sales[s2].digital 7, sales[a].digital 6, div.section1202 5, div.amt 4, div.bad_special 2, sales[s3].digital 1) and one withheld div.box2c. Project stands.
+
+### sd.distributions_if_dividends — Capital gain distributions, generally Form 1099-DIV box 2a, when you or your spouse receiv
+Status: **AGREE**
+Reviewed in: pass 17f7a05c3e95
 
 ### 1a(d) — Line 1a, column (d) totals
 Status: **DISAGREE**
@@ -719,6 +724,7 @@ Ruling: scope; f1040sd p. 1, line 14: "Long-term capital loss carryover. Enter t
 
 ### 13 — Capital gain distributions
 Status: **AGREE**
+Reviewed in: pass 17f7a05c3e95
 
 ### 7 — Combine the amounts for Schedule D line 7
 Status: **AGREE**
@@ -753,7 +759,22 @@ Ruling: scope; f1040sd p. 2, line 20: "Are lines 18 and 19 both zero or blank an
 Status: **AGREE**
 
 ### 22 — Do you have qualified dividends?
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"alternatives": [{"guard": {"args": [{"const": false}, {"ref": "div.any"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"ref": "div.any"}], "test": "eq"}, "then": {"input": "sb.ordinary_dividends"}}], "op": "choose"}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": false}, {"ref": "div.any"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"ref": "div.any"}], "test": "eq"}, "then": {"input": "sb.ordinary_dividends"}}], "op": "choose"}], "test": "lt"}, "then": {"ref": "f1040.line3a"}}], "op": "choose"}], "test": "lt"}
+```
+
+Second:
+
+```json
+{"args": [{"const": 0}, {"ref": "f1040.line3a"}], "test": "lt"}
+```
+
+Ruling: model error; the candidate reads f1040.line3a whatever box 1a is above zero, so it needs that answer where the source does not: i1040gi p. 25, Line 3a, "Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b": with box 1a (line 3b) zero, line 3a is zero. The project reads the gate line f1040.line3a_if_ordinary, which takes f1040.line3a when box 1a is above zero holds and zero otherwise; the interview asks f1040.line3a only then (gated_by f1040.line3a_if_ordinary), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.
+Reviewed in: pass 17f7a05c3e95
 
 ## Refusal gates listed by the second transcription
 
@@ -822,6 +843,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | sd.has_loss | 1e2c8c7df8ec4dc8a21e5ed72420311c4ae2a7b2895ded86e2213151661ada7f |
 | sd.to1040 | c6be714faee43a2731a8e84b3fdbc9673314f85a90a3ddff50bd1fcc4a556678 |
 | sd.net_gain | 9975d7415b27cc117455a94113d2867f95c94c61be4bc016b9faae8e92704ab9 |
+| sd.distributions_if_dividends | e298b33df964936239e1aa4a899b76c8308e3041094d52235a155aab067750ae |
 | 1a(d) | db323fdbca8ec838dd92e590ab5d32425bb9ad0a4ac875d70448d368a9a769f1 |
 | 1a(e) | 4dbf6fdf6081e979d40efde9dbedb81fccfaea20f72c5a7a5d3cff390d9fbe4f |
 | 1a(g) | a91699e17121d70da04ce1c520b0b5fffafa11141dc42b49fc132f94f3cb0a94 |
@@ -860,15 +882,127 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 11 | df971d64bc79d90427e3786ce033c8847772e0a83e9172ee90e24a06204419c5 |
 | 12 | b671b3f19b0d13b3d41295c28f916c47f9d85e9b983e57fb290fc2546c88a0d0 |
 | 14 | 852949d5edfbbdcb954882a21b06e4cf555493d6cb93c30e7ea3372c6a3d9c3c |
-| 13 | 9d070ba48834d647871d8b61a127c4c4722fa6261f09c19dde9d5c91a84f8d84 |
+| 13 | 919862ce6dea30eb0676331db28b397ec864ae318355df9f2156e996cae20b36 |
 | 7 | a9899e1cb09a90f27e64f53f7ca4eb6bf3bb50aeead5c209cd3f6ae267790ef3 |
 | 15 | 0db746e2ca06bdedba11c108bf05789daab7e6242607bc4d0572996b6b0cdc01 |
 | 16 | b8dbb7d8e80124667bc28ec012ef66fb86be6ecbd9d4a9306e7686c76a56db45 |
 | 17 | 9f04394cf47348ce817245c55c2e34211aea92c3fdb2faa27a605060397de9b7 |
 | 20 | 8cf2ccba61ffc9bb1201307f724b0a77f616641dda4bdc38d073d2caae531f68 |
 | 21 | 462bcca25b8919800e51951ff48b8e68fc1da54a6bbce933ad2a870576d270a8 |
-| 22 | a4f49588b819f2d52371392ab77fbabb65db0c19bc2d6f99eea95b29bb23c5b4 |
+| 22 | 5cc1ac47b2b535c6dbfa51b2449db78e1d2bb875c542c56b67fb5a6b62209fa9 |
 | (rest of the document) | 428de7b0aecb0ec58b80e6b99fb756277616bb08aed9f21f90e6accedff64e84 |
+
+## Foreign interfaces
+
+The interfaces (id, printed marker, type, input question) of other documents' lines that each compared line reads, as the request carried them (tools/transcription/subjects.py); a changed row stales that line.
+
+| line | foreign interfaces sha256 |
+| --- | --- |
+| sd.distributions_if_dividends | 972cf38c15d80da0f8de2081225037cf0d43af899903b01f148edc4104ceee2a |
+| 13 | 50d638b3489ec9106a7903e3fe89f538c4938a1c481a3921f285f376d8cb4b74 |
+| 22 | 5d5fac7682b7a2fa13c2250bae25effb6239a504e9095246e6b2c15009ed77b2 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 17f7a05c3e95
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines sd.distributions_if_dividends, 13, 22 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 17f7a05c3e95520dda86ec4817e51e72f9ddfc036f8dc0142ae5b70732bc99f6 |
+| prompt policy | source-only-computation-v3+lines-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | fail |
+| required input context sha256 | e0886dcde09d48dcd5c3e1c0cc2f107ce21eec356f66079436069b15cb8c206d |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | 26b28332cff62995fd42207fa482dda8d718811fd78f700fcc2cf8ebc3067f56 |
+| receipt | .transcription/sd.lines-3c1e462d90db |
+| printed lines compared | 3 |
+| agree / disagree / missing | 2 / 1 / 0 |
+| extra printed lines in second | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040sd | 2025; printed date 2025-12-11 | 11 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | 11 | 0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec |
+| f1040sd | 2025; created 2025-10-06 | 1, 2 | whole document | 221151530f7cd599e8ad00bc3e1ba62d6b7ff34e402c336f4ae58d698c9f5187 | - | eb461181b39879c79d1c0b7761ca0cd9ade46fdb1531cdee3281053c348f6c41 |
+| f1099div | January 2024 (continuous-use form) | 1, 2, 3, 4, 5, 6 | whole document | 833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3 | 5 | 617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d |
+
+##### Other documents in the catalog
+
+Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
+
+| reason | documents |
+| --- | --- |
+| definition | aqee, se, tax_on_amount, tcw |
+| named form | clcw, clcw26, sdtw |
+| named form, inputs and named lines: f1040.line16, f1040.line25b, f1040.line25c_other, f1040.line26, f1040.line35a, f1040.line36, f1040.line3a, f1040.status, f1040.tax_exempt_interest | f1040 |
+| named form, inputs and named lines: f4952.alternative_allocation, f4952.carryover, f4952.line1, f4952.line4g, f4952.prior_7, f4952.unsupported | f4952 |
+| named form, inputs and named lines: household.community_property, household.cp_married, household.credit_disallowed, household.home_cost, household.married, household.qss_eligible, household.rdp, household.spouse_died_2025, household.unmarried | household |
+| named form, inputs and named lines: sb.fbar_required, sb.form5471, sb.form8938, sb.line7a, sb.line8, sb.ordinary_dividends, sb.unsupported | sb |
+| named form, inputs and named lines: scope.credits, scope.other_income, scope.other_line16, scope.schedule1 | scope |
+| named line | ftc |
+| shared page | div, g28, qbi, sales, u1250 |
+| worksheet | qdcg |
+
+##### Raw second transcription
+
+```yaml
+```yaml
+lines:
+  - id: sd.h_zero
+    printed: "(helper)"
+    label: "Zero (no capital gain distributions)"
+    type: NonNegDollars
+    expr: {op: param, ref: sales.zero}
+
+  - id: sd.distributions_if_dividends
+    printed: "(helper)"
+    label: "Capital gain distributions (Form 1099-DIV, box 2a), when any dividends or other distributions were received"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [div.any, {const: true}]}
+          then: sd.distributions
+        - guard: {op: test, eq: [div.any, {const: false}]}
+          then: sd.h_zero
+    note: "The supplied pages don't define this interface. The Form 1099-DIV instructions say box 2a shows total capital gain distributions. The catalog question div.any asks whether any dividends or other distributions, including capital gain distributions, were received. I read the interface as the supplied distributions (sd.distributions) when div.any is Yes, and zero when it is No. The IRS text does not fix this gating; it is inferred."
+
+  - id: sd.line13
+    printed: "13"
+    label: "Capital gain distributions. See the instructions"
+    type: NonNegDollars
+    expr: {op: copy, from: sd.distributions_if_dividends}
+    note: "The line 13 instructions say only \"See Capital Gain Distributions, earlier\", and that section is not in the supplied text. From Form 1099-DIV box 2a (\"See How To Report in the Instructions for Schedule D\"), I take the amount to be the total capital gain distributions, held in the supplied input sd.distributions. Any other sources the omitted section may list, such as Form 2439, are not encoded here."
+
+  - id: sd.h_show22
+    printed: "(helper)"
+    label: "Line 22 is reached: line 17 is not Yes (lines 18 through 20 were not completed)"
+    type: Bool
+    expr: {op: test, eq: [sd.line17, {const: false}]}
+    note: "Line 20 says \"Don't complete lines 21 and 22 below\" whichever way it is answered, and line 20 is reached only when line 17 is Yes. Line 16 being a loss or zero, or line 17 being No, sends the filer to line 22. So line 22 is shown exactly when line 17 is false. This assumes sd.line17 is false, not unknown, when line 16 is a loss or zero."
+
+  - id: sd.line22
+    printed: "22"
+    label: "Do you have qualified dividends on Form 1040, 1040-SR, or 1040-NR, line 3a?"
+    type: Bool
+    expr: {op: test, gt: [f1040.line3a, {const: 0}]}
+    shown_when: sd.h_show22
+```
+```
 
 ## Raw second transcription
 

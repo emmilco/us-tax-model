@@ -25,6 +25,15 @@
    "context": "40291248a3286298823b80a012aaf3d589f548af2199093a1d75e536f636d612"
   },
   {
+   "printed": "4b",
+   "restated": "Enter the amount from f1040 helper \"Qualified dividends (Form 1040 line 3a), when ordinary dividends (box 1a) are above zero; zero otherwise\".",
+   "model": "IRS line 4b says \"Enter the portion of ordinary dividends included on line 4a that are qualified dividends\" (or Form 1041, line 2b), but the restatement takes f1040 line 3a whenever box 1a is above zero; that is not limited to the portion included on line 4a and omits the Form 1041 alternative.",
+   "ruling": "Ruling: scope; project retained. f4952 line 4b, \"Enter the portion of ordinary dividends included on line 4a that are qualified dividends\": f4952.unsupported refuses investment income other than interest and ordinary dividends, so in scope every qualified dividend on Form 1040 line 3a is included on line 4a; the Form 1041 alternative is for estates and trusts, not this return. The box 1a condition is the line 3a gate: qualified dividends are part of ordinary dividends (i1040gi p. 25, Line 3a).",
+   "context": "8c5d05ca571d521f897f09996e633ba9aa0c4d44dc6adea8dce862904037bb4e",
+   "date": "2026-11-07",
+   "run": "4064f947fc2b9aaeee0d5b3cdf6c2d7b524dc7b10d14203064b38d7815a97463"
+  },
+  {
    "printed": "4d",
    "restated": "Subtract $0 from sd line 16. If zero or less, enter -0-.",
    "model": "The IRS line is 'Net gain from the disposition of property held for investment'; the restatement uses Schedule D line 16, which is not limited to property held for investment and can include other gains or losses.",

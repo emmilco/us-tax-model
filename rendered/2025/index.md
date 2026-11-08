@@ -11,9 +11,9 @@ Review these renderings line by line against the archived IRS sources in `source
 | clcw26.md | worksheet | 19 |
 | dcprov.md | worksheet | 6 |
 | dependent.md | worksheet | 111 |
-| div.md | form | 22 |
+| div.md | form | 39 |
 | eic.md | worksheet | 88 |
-| f1040.md | form | 65 |
+| f1040.md | form | 66 |
 | f1095a.md | form | 77 |
 | f2441.md | form | 84 |
 | f4562.md | form | 15 |
@@ -40,7 +40,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | oi8z.md | worksheet | 6 |
 | otjob.md | form | 12 |
 | person.md | worksheet | 284 |
-| qbi.md | form | 13 |
+| qbi.md | form | 14 |
 | qdcg.md | worksheet | 27 |
 | refund.md | form | 48 |
 | retirement.md | form | 89 |
@@ -52,11 +52,11 @@ Review these renderings line by line against the archived IRS sources in `source
 | s8812.md | form | 92 |
 | sa.md | form | 61 |
 | sales.md | form | 27 |
-| sb.md | form | 12 |
+| sb.md | form | 18 |
 | sc.md | form | 152 |
 | scope.md | form | 5 |
 | scveh.md | form | 149 |
-| sd.md | form | 65 |
+| sd.md | form | 66 |
 | sdtw.md | worksheet | 75 |
 | se.md | def | 28 |
 | sli.md | form | 23 |

@@ -57,6 +57,7 @@ def base(file, case_id):
         inputs["interest[bank_a].amount"] = 0
         inputs["sb.ordinary_dividends"] = 0
         inputs["f1040.line3a"] = 0
+        inputs["div.any"] = False  # every amount it gates is now zero
     return inputs
 
 

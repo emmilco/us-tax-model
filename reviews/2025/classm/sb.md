@@ -4,11 +4,16 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-17 |
+| date | 2026-11-07 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| subject sha256 | 92192c6bcd439610ea2ca8e226ff599fceac1e20df99e664e0b3d7837245ed4c |
+| prompt policy | worked-values-request-bound-v2 |
+| system sha256 | 18ff9cfe094eedd0548bba02012b0ebf2a58d0606e834e3633432585b4192cb7 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 8a174ff282482b1eccc09eb06c33e36f14691fae2c7d40caa600ff32b0140081 |
 | cases | 2 |
+| worked target scope | printed IRS lines |
 
 ## Source pages given to the model
 
@@ -18,7 +23,7 @@
 
 ## Lines
 
-### case classm.sb.1 — prompt sha256 d1fe6675f34ae8a58af6f273055d7a04f7514350b8af353736ca2024b48b7adf; branches: sb.unsupported:false, sb.line7a:false, sb.fbar_required:false, sb.form8938:false, sb.line8:false, sb.partIII:false
+### case classm.sb.1 — prompt sha256 4ae80a87b2256a609850278485be280d2d156162686cb083d3ed0e3ff4aff769; branches: sb.unsupported:false, sb.fbar_required:false, sb.form8938:false, sb.line8:false, sb.partIII:true, sb.form5471:false, sb.has_income:true, sb.no:false, sb.ordinary_dividends_if_dividends#0, sb.unsupported_if_income#0, sb.unsupported_if_income:false
 
 ### classm.sb.1 — 2 — Total taxable interest from all payers
 Status: **AGREE**
@@ -35,12 +40,12 @@ Status: **AGREE**
 
 Value: $0.00
 
-### classm.sb.1 — 6 — Amount from sb.ordinary_dividends
+### classm.sb.1 — 6 — Amount from sb.ordinary_dividends_if_dividends
 Status: **AGREE**
 
-Value: $0.00
+Value: $80,000.00
 
-### case classm.sb.2 — prompt sha256 8f73ddc4b1348c6f46dcf9702c1782fa40a7c25b40c62527cb56480381956703; branches: sb.unsupported:false, sb.line7a:true, sb.fbar_required:false, sb.form8938:false, sb.line8:false, sb.partIII:true
+### case classm.sb.2 — prompt sha256 9c1b7ed405132fdc14b212af9edfba36822cc5b4e75d7ae33b3f812181531acc; branches: sb.fbar_required:false, sb.form8938:false, sb.line8:false, sb.form5471:false, sb.has_income:false, sb.no:false, sb.ordinary_dividends_if_dividends#1, sb.unsupported_if_income#1, sb.unsupported_if_income:false
 
 ### classm.sb.2 — 2 — Total taxable interest from all payers
 Status: **AGREE**
@@ -57,10 +62,13 @@ Status: **AGREE**
 
 Value: $0.00
 
-### classm.sb.2 — 6 — Amount from sb.ordinary_dividends
-Status: **AGREE**
+### classm.sb.2 — 6 — Amount from sb.ordinary_dividends_if_dividends
+Status: **SKIPPED**
 
-Value: $50,000.00
+Model: blank
+Work: Filer received no dividends in 2025, so Part II lines 5-6 are left blank
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ## Raw responses
 
@@ -71,33 +79,35 @@ Value: $50,000.00
 lines:
   - printed: "2"
     value: "0.00"
-    work: "No line 1 interest amounts given and no nominee/OID/ABP/accrued-interest subtractions, so line 2 = 0.00"
+    work: "No taxable interest amounts given; line 1 total = 0.00"
   - printed: "3"
     value: "0.00"
-    work: "Amount from sb.zero; no Form 8815 savings-bond exclusion, so 0.00"
+    work: "No savings bond interest exclusion (no special treatment); Form 8815 amount = 0.00"
   - printed: "4"
     value: "0.00"
-    work: "line 2 0.00 - line 3 0.00 = 0.00"
+    work: "Line 2 0.00 - line 3 0.00 = 0.00"
   - printed: "6"
-    value: "0.00"
-    work: "Form 1099-DIV box 1a total 0.00 with no nominee distribution, so line 6 = 0.00"
+    value: "80000.00"
+    work: "Line 5 ordinary dividends from Form 1099-DIV box 1a = 80,000.00; no nominee subtraction"
 ```
 ```
 
 ### classm.sb.2
 
 ```yaml
+```yaml
 lines:
   - printed: "2"
     value: "0.00"
-    work: "No taxable interest payers given; line 1 total 0.00 with no nominee/OID/ABP/accrued subtractions = 0.00"
+    work: "Sum of taxable interest from all payers: bank_a $0.00 = $0.00"
   - printed: "3"
     value: "0.00"
-    work: "No savings-bond exclusion (no Form 8815); amount from sb.zero = 0.00"
+    work: "No excludable series EE/I savings bond interest from Form 8815, so 0.00"
   - printed: "4"
     value: "0.00"
-    work: "Line 2 0.00 - line 3 0.00 = 0.00"
+    work: "Line 2 minus line 3: 0.00 - 0.00 = 0.00"
   - printed: "6"
-    value: "50000.00"
-    work: "Form 1099-DIV box 1a 50,000.00 on line 5; no nominee subtraction; line 6 = 50,000.00"
+    value: "blank"
+    work: "Filer received no dividends in 2025, so Part II lines 5-6 are left blank"
+```
 ```

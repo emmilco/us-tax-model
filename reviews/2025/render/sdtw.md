@@ -5,6 +5,7 @@ The rendered English of every printed line of `Schedule D Tax Worksheet` (`rende
 | field | value |
 | --- | --- |
 | date | 2026-10-26 |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | ceca9bfe032cb8ebdb4a5e57d80a85dbe28d0ee11f980b5167ebfa0becab8411 |
@@ -46,7 +47,8 @@ Ruling: scope; project retained. i1040sd p. 15, line 1: "Enter your taxable inco
 ### 2 — Qualified dividends
 Status: **MATCH**
 
-Model: Qualified dividends from Form 1040 line 3a, as the line says.
+Model: Line 2 says "Enter your qualified dividends from Form 1040, 1040-SR, or 1040-NR, line 3a", and the restatement uses Form 1040 line 3a. Its zero-unless-ordinary-dividends gate agrees with the 1040 instructions: "Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b", so with no ordinary dividends there are no qualified dividends.
+Reviewed in: pass e6b78a6f3605
 
 ### 3 — Form 4952 line 4g election
 Status: **MATCH**
@@ -66,7 +68,8 @@ Model: Subtract line 4 from line 3, floored at zero, as printed.
 ### 6 — Subtract line 5 from line 2; floor at zero
 Status: **MATCH**
 
-Model: Subtract line 5 from line 2, floored at zero, as printed.
+Model: Same operands, direction and floor as "Subtract line 5 from line 2. If zero or less, enter -0-". The ** footnote only points Form 2555 filers to another worksheet's footnote and gives no different computation in the text provided.
+Reviewed in: pass e6b78a6f3605
 
 ### 7 — Smaller of Schedule D lines 15 and 16
 Status: **MATCH**
@@ -272,6 +275,107 @@ Model: Tax on line 1: the Tax Table below $100,000, otherwise the Tax Computatio
 Status: **MATCH**
 
 Model: Smaller of line 45 or line 46, as printed.
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| 1 | e3e1f172c06c39832be059dacbe52895fa0cd4cb978d39a6ef4c72d52987f58a |
+| 2 | 4efbcf739fdb1d59e4adca3468628cae8d33602ca0b9636f1a57b1d920570be3 |
+| 3 | d5a5630d6dc680e58b475a338c061f795530760f0ac16c0732337b7c27fb3eb1 |
+| 4 | 953ce7388b160cbdcec60228ac0c56a7d2adaa0e503c61f7d47a40f609d96730 |
+| 5 | 43ca8fb4d0d7fe4688dd6a73b72c5260a0d35687c7f0b8ba62083a7bb2cfa471 |
+| 6 | 94c4b9a5837135c342a816c488b50d7e7c8c7e4ac5f0d4108f58032b5c8d7c39 |
+| 7 | d251ecad6534b1a4c814c468cc63fb6936948622b13ddea5401576d84e5f0249 |
+| 8 | e803b1c359c9240d6751028dd2fa1548f97ddbd3f22e5478cfd37bf9c22c8238 |
+| 9 | 2743d0efcd830957b827c4519327ff0b7e966027acbdefbd598336cad7e65b08 |
+| 10 | 4fbef8d5348c9ea2e21545716b13a77425cd6dd0783c663f3e83f3ecd60e51e9 |
+| 11 | 866ae63587503ca6cd426ac6f0bce2bd247331fa41b57e0434bd8ead7eca682a |
+| 12 | 1d3b0c9da72c91701981ff423250f764c96574600c4199f3e61ab667eaeb7e1b |
+| 13 | 8526923e5b41d69c4beed1f538088dd4c65cfa8f74d6b94df313c1dc5d781cf8 |
+| 14 | ef06a0eacbe145ada84f38a030520bcd24ff4c6a60baaed2455db584b574e48e |
+| 15 | ce995ef8b4a78b738e264ac39998188dcb55a646010bffbbab4f146a1efcc0de |
+| 16 | 620732100c723c347a08473a326945eeaaec0089ca8b7f8356974799e258b8da |
+| 17 | fb448ef7e865e43148d92feb737ba25860ad849fe20b4cbec4374d839acea716 |
+| 18 | f48b3a1d45cc940b137e4d7e7ee164a7982f1e242c44f25da471b2b0e5841b4c |
+| 19 | 82a242b06af9d57daa18583288300f7881c73d63c025883abfdc637f35cdb7fa |
+| 20 | 0d9b886df74eefeaff6e45a7ebdf284a669c87e5ac827fd6ebd9b84a01248720 |
+| 21 | e12d3cfe997b9f9851d9a83765c5e958d737fe14d4328922f88abaf6bb6bd426 |
+| 22 | c56fd9910988160314338e2bf4851500f062ff9ac0a19c93c6a739af55189b97 |
+| 23 | 3a2de3dbeff6935337155007662cbbf55d70e6984f57f74dea350de90250c5aa |
+| 24 | fb757949210a23c640be27e565abaf94dd8357cdd65fc979ad169f3e85a2c8a9 |
+| 25 | 56743b1e6ad5e536ad053b9e42321452c4e406caae0e2d6d8be7a0661d5ae53d |
+| 26 | 8ee2f28c407a58f5c5306e904a5da711df0446c5fb96cfe3acc614250267d161 |
+| 27 | aef5aecc0180e78bbf3af7fd0211986d866af071ba0ab4d12753062ca806a357 |
+| 28 | a14bae7811ff4ba61b2548499a5842cfe7a0098c16cb2da416b741c8b6c07d45 |
+| 29 | b5470f5f0dec0819cdd7c4ee5145d3f9cc903047b502b59d0dfd6653faeac4c3 |
+| 30 | 1927d5affeaba3c16eec4e146d37d3253df528b349cad75880b33efae4433dbd |
+| 31 | 485861d73ab0c58cdc9516b36f9523a7ce43dab082980e509a36a26367f2d455 |
+| 32 | af2a5552a5be2469952e0a33b0a544f3bee24f28ff67f7c73584925bdc1f0d27 |
+| 33 | 60b3db18baad123807a7c535296c6fb4d71ef2d9a67a0b072d550ad6c743be00 |
+| 34 | c22facdad6f2a3d54c272bc2634cf6226d41aa4de225dc66270333fbcb4ea523 |
+| 35 | 685fec3d39f522bbbfb330f1b396d1d4b5cff82dd34e33f589629b1426c515fc |
+| 36 | a79b89fb5ecba11614a4075708bdf10d9670159cbde23231105bb268025c0ab7 |
+| 37 | d73e9c57d7ae14322ec1c1a30390c5ae7bc53ceb0c2c5e662e33647754cb8a16 |
+| 38 | 99ba1b8ef309b4658b6d6cf92aca411d262c58297bc8d8cb045e710605f27429 |
+| 39 | 89e96e9803d6c4d8966b7408ad6e4684af87a697220536acc8a8be568e3a7072 |
+| 40 | e7dd899fcb371f28be00624d38cd1d624126cd313a7981fadee8fe879e32b090 |
+| 41 | 6dbec7d321b4e4bb8054246ead2c43b936845d0279796faba3da60c7916dd8fc |
+| 42 | c0c7827efcf59cd14f11b092a38ac4c65ea0cb50dd7887145429e4267e1b8e96 |
+| 43 | 7e223072d552871d3f9e4ca4c9669f4261b598cfbb4772a2d605dc35a05652d9 |
+| 44 | 54cc6cf1dbafd76ebe7ce2c4de1d28392771d4112ccea03fb04594159d77bdbd |
+| 45 | 0e6286c360d30e0f0137fe5b0647bd489f171ef0bc2240530543c16062bca174 |
+| 46 | 764a7d496474d63b36065c9469ee561935d5cd497bc8f513969e8fae79b758ed |
+| 47 | b820b1ad2f6110d485d2a70df0a0a8bf4be5e7bba3191fc06b4488898afbd1e8 |
+| (rest of the document) | ed48da6f1926de4f9e1acee968d8270ecf7d89b6e2b1b50424561f92a30136ee |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass e6b78a6f3605
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 2, 6 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | e6b78a6f36057b61e69eaaef1bd96e77eab58f1bdd75dd1e3eafe9a046b53e3d |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 2ec656c8d6411d265f571fc58c0bbab22a909e586b0421189ac8b7c89092a7a1 |
+| receipt | .transcription/sdtw.render.lines-a44c8a6613d9 |
+| lines judged | 2 |
+| match / mismatch / unclear / missing | 2 / 0 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040sd | 2025; printed date 2025-12-11 | 15, 16 | cited pages | 145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1 | - | 0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec |
+| i1040gi | 2025; printed date 2026-02-25 | 25, 26 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 25, 26 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| f1099div | January 2024 (continuous-use form) | 1, 2, 3, 4, 5, 6 | whole document | 833d93e5f2d0bfcc8c9d720c0e8cb8e623cd2c6a8ee25f364f1f69f49fa490e3 | 5 | 617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d |
+| i1040sb | TY2025; printed April 23, 2025 | 1, 2, 3 | whole document | 2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05 | 1, 2, 3 | 0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e |
+
+##### Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "2"
+    status: MATCH
+    reason: "Line 2 says \"Enter your qualified dividends from Form 1040, 1040-SR, or 1040-NR, line 3a\", and the restatement uses Form 1040 line 3a. Its zero-unless-ordinary-dividends gate agrees with the 1040 instructions: \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b\", so with no ordinary dividends there are no qualified dividends."
+  - key: "6"
+    status: MATCH
+    reason: "Same operands, direction and floor as \"Subtract line 5 from line 2. If zero or less, enter -0-\". The ** footnote only points Form 2555 filers to another worksheet's footnote and gives no different computation in the text provided."
+```
+```
 
 ## Raw response
 

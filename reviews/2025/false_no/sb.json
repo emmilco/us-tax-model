@@ -1,0 +1,115 @@
+{
+ "form": "sb",
+ "reviews": {
+  "gate:sb.has_income": {
+   "condition": "sb.has_income",
+   "lines": [
+    "sb.unsupported_if_income"
+   ],
+   "inputs": [
+    "sb.unsupported"
+   ],
+   "verdict": "UNCLEAR",
+   "findings": [
+    {
+     "kind": "UNCLEAR",
+     "pattern": "8",
+     "who": "A filer whose only Form 1099-INT or 1099-DIV is for an account held in their name for a parent or child, or as a nominee for someone else. They passed every dollar on to the actual owner.",
+     "why_no": "The helper asks for 'Taxable interest' and 'ordinary dividends'. The money was never theirs and was not taxable to them, so they enter $0, even though the helper says 'before any Schedule B adjustment'. The gate is false, so the nominee question is never asked.",
+     "line": "sb.unsupported_if_income",
+     "irs_text": "i1040sb p. 1: 'If you received a Form 1099-INT that includes interest you received as a nominee ... report the total on line 1. Do this even if you later distributed some or all of this income to others.' p. 2 gives the same rule for Form 1099-DIV on line 5.",
+     "severity": "medium",
+     "fix": "Gate on the forms and amounts, not on 'taxable' income: 'Did you or your spouse get any Form 1099-INT, 1099-OID or 1099-DIV, or substitute statement, even if some or all of it belongs to someone else?' Add to the helper: 'include amounts you received for someone else.'"
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "4",
+     "who": "A filer who sold a house with seller financing, and the buyer lives in it. The buyer pays monthly, the filer gets no Form 1099-INT, and they have no bank interest.",
+     "why_no": "'Taxable interest from all payers' reads as interest shown on 1099s from banks. They see the buyer's payments as installments on a sale, not as interest from a 'payer', and enter $0.",
+     "line": "sb.unsupported_if_income",
+     "irs_text": "i1040sb p. 1: 'If you sold your home or other property and the buyer used the property as a personal residence, list first any interest the buyer paid you on a mortgage or other form of seller financing. Be sure to show the buyer's name, address, and SSN.'",
+     "severity": "medium",
+     "fix": "Ask about the fact separately, outside the gate: 'Did you or your spouse sell property and finance any of the price yourself (the buyer pays you over time)?' Count a yes as interest for the gate."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "8",
+     "who": "A filer who cashed series EE or I bonds issued after 1989 and paid qualified tuition that year. All of the interest is excludable, and they have no other interest.",
+     "why_no": "They read 'Taxable interest' as the interest after the education exclusion, which is $0. 'Before any Schedule B adjustment' does not say that the savings bond exclusion is such an adjustment.",
+     "line": "sb.unsupported_if_income",
+     "irs_text": "i1040sb p. 1: 'Include interest from series EE, H, HH, and I U.S. savings bonds.' p. 2, Line 3: 'If, during 2025, you cashed series EE or I U.S. savings bonds issued after 1989 and you paid qualified higher education expenses ... you may be able to exclude part or all of the interest.'",
+     "severity": "medium",
+     "fix": "Helper text: 'All interest shown on Forms 1099-INT and 1099-OID or received without a form, including savings bond interest you expect to exclude, interest you will reduce for bond premium, OID or accrued interest, and interest belonging to someone else.'"
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "8",
+     "who": "A filer who holds only municipal bonds bought at a market discount, or who sold one. Or a filer whose only bond is a contingent payment debt instrument that was sold at a gain, or one held only through Form 1099-OID.",
+     "why_no": "All of their bond income feels 'tax-exempt', or it shows up as a sale gain or as OID, not as 'interest'. So taxable interest is $0 to them, and the special items are never asked.",
+     "line": "sb.unsupported_if_income",
+     "irs_text": "i1040sb p. 1: 'Also include any accrued market discount that is includible in income and any gain on a contingent payment debt instrument that is includible in income as interest income.' Also: 'The market discount on a tax-exempt bond is taxable interest income and not tax-exempt interest.'",
+     "severity": "medium",
+     "fix": "Widen the gate: 'Did you or your spouse own, buy or sell any bond, note or other debt instrument, including tax-exempt bonds, or get any Form 1099-INT, 1099-OID or 1099-DIV?' Then ask about the special items."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "3",
+     "who": "A married couple filing jointly. Only the spouse has a savings account or a bond with a Form 1099-INT, or nominee interest.",
+     "why_no": "The interest helper says 'Taxable interest from all payers' without 'you or your spouse', while the dividend helpers say it. The filer counts only their own interest.",
+     "line": "sb.unsupported_if_income",
+     "irs_text": "i1040sb p. 1: 'Report on line 1 all of your taxable interest.' On a joint return, this covers both spouses.",
+     "severity": "low",
+     "fix": "Reword the helper to 'Taxable interest you or your spouse received from all payers, before any Schedule B adjustment.'"
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "5",
+     "who": "A filer with no interest or dividends who has signature authority over an employer's foreign bank account. Or one who received a distribution, or a cash loan, from a foreign trust, or was a grantor of or transferor to one.",
+     "why_no": "The gate is computed only from interest, dividends and capital gain distributions, all $0. The input cites the foreign accounts/trusts pages, but nothing about the foreign account or trust is asked under this gate.",
+     "line": "sb.unsupported_if_income",
+     "irs_text": "i1040sb p. 1: 'Use Schedule B (Form 1040) if any of the following applies. ... You had a financial interest in, or signature authority over, a financial account in a foreign country or you received a distribution from, or were a grantor of, or transferor to, a foreign trust.'",
+     "severity": "medium",
+     "fix": "Unless Part III is gated separately and not by income, add to the gate a computed or asked condition: 'At any time in 2025, did you or your spouse have a financial interest in or signature authority over a foreign financial account, or receive a distribution or loan from, or create or transfer property to, a foreign trust?'"
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "4",
+     "who": "A filer whose only dividends come with no Form 1099-DIV. Examples are a small dividend from a foreign corporation held directly, or dividends shown only on a substitute statement or a K-1, and some of them belong to someone else.",
+     "why_no": "The dividend helper says 'Form 1099-DIV box 1a', so with no 1099-DIV they enter $0.",
+     "line": "sb.unsupported_if_income",
+     "irs_text": "i1040sb p. 2: 'Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements.'",
+     "severity": "low",
+     "fix": "Helper text: 'Ordinary dividends you or your spouse received, from Form 1099-DIV box 1a, substitute statements, or with no form.'"
+    }
+   ],
+   "prompt_sha": "c542c8d734a691a49a28cf311e6120e45d7f9b04b1b3168cec9ec318326613e7",
+   "subject_sha": "ce534a6d7b965f4e73ce8667e089c1fd4b5a0dc078cc41e50364233e2a240114",
+   "used": [
+    {
+     "doc": "i1040sb",
+     "revision": "TY2025; printed April 23, 2025",
+     "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, General Instructions, \"Use Schedule B (Form 1040) if any of the following applies\", \"You received interest from a seller-financed mortgage\", \"You have accrued interest from a bond\", \"You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID\", \"You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium\", \"You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989\", \"You received interest or ordinary dividends as a nominee\"",
+      "pp. 1–3, interest, dividends and foreign accounts/trusts"
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.14134,
+   "date": "2026-11-07"
+  }
+ }
+}

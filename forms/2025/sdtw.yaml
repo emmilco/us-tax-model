@@ -115,7 +115,7 @@ form:
       label: Qualified dividends
       expr:
         op: copy
-        from: f1040.line3a
+        from: f1040.line3a_if_ordinary
       cite:
         doc: i1040sd
         locator: pp. 15–16, Schedule D Tax Worksheet

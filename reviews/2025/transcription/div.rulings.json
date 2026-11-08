@@ -3,6 +3,15 @@
  "form": "div",
  "rulings": [
   {
+   "printed": "div.has_ordinary",
+   "project": "{\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}",
+   "second": "{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"div.any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"sb.ordinary_dividends\"}], \"test\": \"lt\"}], \"test\": \"all\"}",
+   "ruling": "Ruling: representation; the candidate's all[div.any = true, box 1a > 0] is the project's test written out: the project's operand sb.ordinary_dividends_if_dividends is box 1a when div.any is yes and zero when it is no, so both are true exactly when dividends were received and box 1a is above zero. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
+   "context": "baa53037d113b92af21df3ee6a4096b6b6643aa4ac4a08404ccd0995b74a8af1",
+   "date": "2026-11-07",
+   "run": "82fea38fe7acc09a7b6ee991a8fd892d2f439c976812ed8d5532b14f2c394fcc"
+  },
+  {
    "printed": "div.screen",
    "project": "{\"const\": 0}",
    "second": "{\"of\": [{\"input\": \"div.box10\"}, {\"input\": \"div.box2c\"}, {\"input\": \"div.box2e\"}, {\"input\": \"div.box2f\"}, {\"input\": \"div.box9\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"div.basis_reconciled\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"div.box3\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"div.basis_reconciled\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}], \"op\": \"sum\"}",

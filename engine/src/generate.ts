@@ -81,13 +81,14 @@ const DEFAULT_TRUE_PERCENT = 10;
 // Inputs the generator does not draw: each keeps its default (false, zero, the first enum value), so adding them
 // leaves the random stream, and so every earlier generated return, unchanged. Schedule 1 line 1 (no state or local
 // income tax refund and no other recovery); line 8 (gambling, Alaska Permanent Fund dividends, jury duty pay, prizes,
-// hobby income, scholarships and its screen), line 24a and gambling losses on Schedule A line 16.
+// hobby income, scholarships and its screen), line 24a and gambling losses on Schedule A line 16. The Form 5471 screen
+// (no), and the dividends question (set from the amounts it gates, in buildInputs).
 const NOT_DRAWN = new Set([
   "refund.received", "refund.box8", "refund.not_2024", "refund.itemized", "refund.sales",
   "refund.exc_tax", "refund.exc_who", "refund.line5d_2024", "refund.line5e_2024", "refund.line17_2024",
   "refund.mfs_spouse_itemized", "refund.you_born", "refund.you_blind", "refund.spouse_born", "refund.spouse_blind",
   "s1.line8_other", "s1.gambling_winnings", "s1.gambling_pro", "s1.line8g", "s1.line8h", "s1.line8i", "s1.line8j", "s1.line8r",
-  "s1.jury_to_employer", "sa.gambling_losses",
+  "s1.jury_to_employer", "sa.gambling_losses", "div.any", "sb.form5471",
 ]);
 
 // Root inputs that draw nothing: they keep their default (false or zero), so the random stream does not
@@ -725,8 +726,13 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   // streams (which hash the answers given before them) see them. They are read for a person who is not a qualifying
   // child and lived with you half the year or less (the household and dependent care tests).
   for (const k of (inputs["$dependent"] as string[] | undefined) ?? []) Object.assign(inputs, { [`dependent[${k}].born_died`]: false, [`dependent[${k}].placed`]: false });
+  // The dividends question agrees with the amounts it gates, set last for the same reason.
+  inputs["div.any"] = DIV_ANY_GATED.some((k) => inputs[k] !== 0);
   return inputs;
 }
+
+/** The amounts `div.any` gates directly (Form 1099-DIV boxes 1a, 2a, 3, 9, 10, 12 and 13). */
+const DIV_ANY_GATED = ["sb.ordinary_dividends", "sd.distributions", ...["3", "9", "10", "12", "13"].map((b) => `div.box${b}`)];
 
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 

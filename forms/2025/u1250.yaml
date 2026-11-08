@@ -158,7 +158,7 @@ form:
       label: "Enter the total of any amounts reported to you as “unrecaptured section 1250 gain” on a Schedule K-1, Form 1099-DIV, or Form 2439 from an estate, a trust, a real estate investment trust, or a mutual fund (or other regulated investment company) or in connection with a Form 1099-R"
       expr:
         op: copy
-        from: div.box2b
+        from: div.box2b_if_capital_gain
       cite:
         doc: i1040sd
         locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18

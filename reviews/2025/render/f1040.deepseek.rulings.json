@@ -34,6 +34,15 @@
   {
    "printed": "16",
    "restated": "Choose — [helper \"Schedule D Tax Worksheet required after its exceptions\" = true → sdtw line 47] [helper \"Schedule D Tax Worksheet required after its exceptions\" = false → helper \"Tax when Schedule D Tax Worksheet does not apply\"]",
+   "model": "The IRS text says, 'If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must figure your tax using the Foreign Earned Income Tax Worksheet,' but the restatement has no Form 2555 branch or refusal and would use the Schedule D Tax Worksheet/QDCG/Tax Table instead.",
+   "ruling": "Ruling: scope; project retained. i1040gi, Line 16: \"If you are filing Form 2555, you must use the Foreign Earned Income Tax Worksheet\"; Form 2555 is refused by sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\"), which refuses the deduction and so line 16 downstream; the refusal sits on Schedule A, not on this line's derivation, so the rendered English did not name it. Line 16 itself is unchanged; it went stale through line 3a.",
+   "context": "5a98082cf8379a262d49d52f1537057d1dd3970ef0228d5d17cb6ef856ff80a7",
+   "date": "2026-11-07",
+   "run": "f112dc10f1d3f5818465714822809dd89f7510beb02280e434f0311968a3daf2"
+  },
+  {
+   "printed": "16",
+   "restated": "Choose — [helper \"Schedule D Tax Worksheet required after its exceptions\" = true → sdtw line 47] [helper \"Schedule D Tax Worksheet required after its exceptions\" = false → helper \"Tax when Schedule D Tax Worksheet does not apply\"]",
    "model": "The restatement also requires the Qualified Dividends and Capital Gain Tax Worksheet to apply, but the IRS says to use the Schedule D Tax Worksheet if 'You have to file Form 4952 and you have an amount on line 4g, even if you don’t need to file Schedule D.'",
    "ruling": "Ruling: model error — i1040sd p. 15, Schedule D Tax Worksheet: \"Complete this worksheet only if line 18 or line 19 of Schedule D is more than zero and lines 15 and 16 of Schedule D are gains or if you file Form 4952 and you have an amount on line 4g, even if you don't need to file Schedule D. Otherwise, complete the Qualified Dividends and Capital Gain Tax Worksheet\"; the same page's Exception qualifies both worksheets (\"Don't use the Qualified Dividends and Capital Gain Tax Worksheet or this worksheet to figure your tax if ...\"). `f1040.gate.qdcg_applies` implements those exceptions before the selector, and `amb.2025.sd4952_selection` records the owner's reading. The reviewer quotes the trigger and omits its exception; this repeats the ruling in the earlier rounds.",
    "context": "e57dc5a6f1b008f9219a4b988751224b14abecffe92c9c584906353b32a29f2b"

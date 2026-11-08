@@ -950,7 +950,7 @@ class InternalAdapterContracts(unittest.TestCase):
         self.assertTrue(all(len(test["outputs"]) == 2 for test in result["cases"]))
         self.assertFalse(result["evidence_credit"])
         self.assertEqual(context, original)
-        self.assertEqual(result['boundary_inputs'], ['sb.line2','sb.line6','sd.line16','sd.net_gain'])
+        self.assertEqual(result['boundary_inputs'], ['sb.line2','sb.line6','f1040.line3a_if_ordinary','sd.line16','sd.net_gain'])
 
     def test_election_gain_portion_substitution_and_gate_removal_are_caught(self):
         for change in ['gain-portion','remove-limit']:
@@ -1026,12 +1026,11 @@ class InternalAdapterContracts(unittest.TestCase):
                 adapters.load("div", T.Y)
 
     def test_blind_target_list_contains_no_internal_adapter(self):
-        self.assertEqual(T.exported_lines(T.load_form("div")), [])
-        with patch.object(T, "review_response", side_effect=AssertionError("empty source review must make no request")), \
-                patch.object(sys, "argv", ["transcribe.py", "--form", "div"]):
-            with patch("sys.stdout", new_callable=io.StringIO) as out:
-                T.main()
-        self.assertIn("no model call or review assertion", out.getvalue())
+        # div exports its gate lines (other forms read them); its internal adapter is never a blind target.
+        exported = {l["id"] for l in T.exported_lines(T.load_form("div"))}
+        self.assertIn("div.has_ordinary", exported)
+        self.assertFalse(exported & set(adapters.excluded_ids("div", T.Y)))
+        self.assertNotIn("div.screen", exported)
 
     def test_historical_adapter_agreement_cannot_earn_source_credit(self):
         record = {"lines": {"div.screen": {"status": "AGREE"}}}

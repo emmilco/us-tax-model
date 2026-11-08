@@ -36,7 +36,7 @@ form:
       printed: "2"
       label: "Enter the amount from Form 1040 or 1040-SR, line 3a"
       type: NonNegDollars
-      expr: { op: copy, from: "f1040.line3a" }
+      expr: { op: copy, from: "f1040.line3a_if_ordinary" }
       cite: { doc: i1040gi, locator: "QDCGT worksheet, line 2" }
 
     - id: qdcg.line3
@@ -49,7 +49,7 @@ form:
           - guard: { op: test, eq: ["qdcg.schedule_d_filed", { const: true }] }
             then: "qdcg.schedule_d_net_gain"
           - guard: { op: test, eq: ["qdcg.schedule_d_filed", { const: false }] }
-            then: "sd.distributions"
+            then: "sd.distributions_if_dividends"
       cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3, "Are you filing Schedule D?", "Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-", "No. Enter the amount from Form 1040 or 1040-SR, line 7a"' }
 
     - id: qdcg.line4
