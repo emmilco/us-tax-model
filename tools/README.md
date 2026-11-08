@@ -58,7 +58,12 @@ worktree appended since the clone (refusing if either ledger no longer begins wi
 cloned one), and copies each raw file the worktree changed since the base where the
 main copy is unchanged, refusing everything if any file changed on both sides. Files git
 tracks are left to the worktree's commits. A worktree cloned some other way has no base
-and is refused; carry it back by hand. `--self-test` runs in check-all.
+and is refused; carry it back by hand. `python3 tools/worktree_data.py fill <worktree>`
+(`--dry-run` first; run from the main checkout) copies into the worktree each untracked
+review file main has and the worktree lacks, for a worktree whose uncommitted tracked review
+files make `clone` refuse. It never overwrites or deletes a worktree file and never touches
+a ledger; each filled file enters the base at the hash of main's copy, so carry-back brings
+it back only if the worktree later edits it. `--self-test` runs in check-all.
 
 The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast`):
 

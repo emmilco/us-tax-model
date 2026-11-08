@@ -22,6 +22,13 @@ into a linked worktree (an agent's) from the main worktree, and carry back what 
             the whole carry-back before anything is written. A file the worktree deleted is reported, not
             deleted. Files git tracks travel with the worktree's commits and are left out
         The base then moves to what was carried, so a second carry-back brings only what came after.
+    worktree_data.py fill <worktree> [--main DIR] [--dry-run]
+        copy into the worktree each untracked review file the main worktree has and the worktree lacks.
+        Add-only: an existing worktree file is never overwritten or deleted, ledgers (costs.jsonl) are
+        never touched, and uncommitted tracked files do not matter. Each filled file is recorded in the
+        base at the hash of main's copy, so a later carry-back treats it as unchanged unless the worktree
+        edits it. Without a base the files are copied and nothing is recorded (carry-back is refused
+        for such a worktree anyway)
     worktree_data.py --self-test
 
 Why the check: the review logs (tracked, under reviews/) name the raw model requests and replies they
@@ -290,6 +297,30 @@ def carry_back(main, worktree, manifest, dry_run=False, skip=None):
     return 0
 
 
+def fill(main, worktree, manifest, dry_run=False, skip=None):
+    """Copy each untracked, non-ledger review file main has and the worktree lacks; record it in the base."""
+    if main.resolve() == worktree.resolve():
+        raise SystemExit("worktree_data: the worktree is the main worktree")
+    if skip is None:
+        skip = tracked(worktree) | tracked(main)
+    copies = [rel for rel in sorted(files(main, skip))
+              if not is_ledger(rel) and not os.path.lexists(worktree / rel)]
+    base = json.loads(manifest.read_text()) if manifest.is_file() else None
+    for rel in copies:
+        print(f"worktree_data: {rel}: {'would copy' if dry_run else 'filled'}")
+        if not dry_run:
+            (worktree / rel).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(main / rel, worktree / rel)
+            if base is not None:
+                base["files"][rel] = sha(worktree / rel)
+    if base is not None and copies and not dry_run:
+        manifest.write_text(json.dumps(base, indent=0, sort_keys=True))
+    print(f"worktree_data: {len(copies)} file(s) {'to fill' if dry_run else 'filled'}"
+          f"{' (dry run; nothing written)' if dry_run else ''}"
+          f"{'' if base is not None else '; no clone base, so none recorded'}")
+    return 0
+
+
 def git(args, cwd):
     r = subprocess.run(["git", *args], cwd=cwd, capture_output=True, text=True)
     if r.returncode != 0:
@@ -322,7 +353,8 @@ def self_test():
         _self_test()
     print("worktree_data self-test: check (present, a receipt missing a file, prose left out), clone, carry-back "
           "(ledger rows with rows on both sides, changed files, tracked files left out, both-changed refusal, "
-          "rewritten ledgers, repeated carry, no base) ok")
+          "rewritten ledgers, repeated carry, no base), fill (adds missing, never overwrites, skips ledgers, "
+          "dry run, carry-back after) ok")
     return 0
 
 
@@ -409,6 +441,29 @@ def _self_test():
             raise AssertionError("carried back without a base")
         except SystemExit:
             pass
+        # fill: adds a missing file, never overwrites a differing one, skips ledgers, and leaves
+        # carry-back with nothing to bring back for an untouched filled file.
+        fm, fw, fb = t / "fmain", t / "fwt", t / "fbase.json"
+        (fm / ".transcription").mkdir(parents=True)
+        (fw / ".transcription").mkdir(parents=True)
+        for name, text in (("keep", "main-keep"), ("new", "new"), ("new2", "new2")):
+            (fm / ".transcription" / (name + ".txt")).write_text(text)
+        (fm / ".transcription" / LEDGER).write_text('{"n": 1}\n')
+        (fw / ".transcription" / "keep.txt").write_text("worktree-keep")
+        fb.write_text(json.dumps(base_of(fw, fm, frozenset())))
+        assert fill(fm, fw, fb, dry_run=True, skip=frozenset()) == 0
+        assert not (fw / ".transcription" / "new.txt").exists(), "a dry run fills nothing"
+        assert fill(fm, fw, fb, skip=frozenset()) == 0
+        assert (fw / ".transcription" / "new.txt").read_text() == "new"
+        assert (fw / ".transcription" / "new2.txt").read_text() == "new2"
+        assert (fw / ".transcription" / "keep.txt").read_text() == "worktree-keep", "an existing file is not overwritten"
+        assert not (fw / ".transcription" / LEDGER).exists(), "a ledger is not filled"
+        assert json.loads(fb.read_text())["files"][".transcription/new.txt"] == sha(fm / ".transcription" / "new.txt")
+        appends, copies, conflicts, deleted = plan(fm, fw, json.loads(fb.read_text()), frozenset())
+        assert not (appends or copies or conflicts or deleted), "an untouched filled file is not carried back"
+        (fw / ".transcription" / "new2.txt").write_text("new2-edited")
+        appends, copies, conflicts, deleted = plan(fm, fw, json.loads(fb.read_text()), frozenset())
+        assert copies == [".transcription/new2.txt"] and not (appends or conflicts or deleted), copies
         sink.close()
 
 
@@ -424,7 +479,7 @@ def main(argv):
             raise SystemExit("usage: worktree_data.py check [--list]")
         return check(ROOT, main_worktree(ROOT))
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("command", choices=("clone", "carry-back"))
+    ap.add_argument("command", choices=("clone", "carry-back", "fill"))
     ap.add_argument("worktree")
     ap.add_argument("--main", help="the main worktree (default: the clone's first worktree)")
     ap.add_argument("--dry-run", action="store_true")
@@ -432,9 +487,11 @@ def main(argv):
     wt, main_wt, manifest = locate(Path(a.worktree), a.main)
     if a.command == "clone":
         if a.dry_run:
-            ap.error("--dry-run applies to carry-back")
+            ap.error("--dry-run applies to carry-back and fill")
         clone(main_wt, wt, manifest)
         return 0
+    if a.command == "fill":
+        return fill(main_wt, wt, manifest, a.dry_run)
     return carry_back(main_wt, wt, manifest, a.dry_run)
 
 
