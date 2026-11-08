@@ -6888,7 +6888,7 @@
         "f5329"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 21 regression (BUG-0202): blind return E10 with its 2025 HSA excess withdrawn, with earnings, by the due date of the 2025 return including extensions. i5329 p. 8, Line 47: such contributions \"will be treated as not having been contributed\"; the withdrawal and its earnings go on Form 8889 lines 14a and 14b, which this tool does not prepare, so the Form 8889 screen refuses (D6). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "evidence_note": "Stage 21 regression (BUG-0202): blind return E10 with its 2025 HSA excess withdrawn, with earnings, by the due date of the 2025 return including extensions. i5329 p. 8, Line 47: such contributions \"will be treated as not having been contributed\"; the withdrawal and its earnings go on Form 8889 lines 14a and 14b, which this tool does not prepare, so the Form 8889 screen refuses (D6). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
       "inputs": {
         "$dependent": [],
         "$f1095a": [],
@@ -7124,7 +7124,7 @@
         "person[taxpayer].f8889[hsa].line13": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, or other HSA situations",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
           "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
           "cite": {
             "doc": "i8889",

@@ -6226,3 +6226,19 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** generated return 4 of the full profile reports complete while person.edu is reachable and unanswered: person.edu_student is all[f8863.paid, person.edu, TIN, 1098-T], a conjunction that reads past an unknown operand, the leak family of BUG-0446. Not caused by the Form 8889 change (person.edu is not read by Form 8889); the new f8889.coverage_year input changes the generated returns, which exposed it (inferred, not confirmed against main).
 - **Disposition:** open: held in tools/interview_rules_baseline.json until person.edu_student is rewritten as a nested choose (f8863.paid first).
 - **Tags:** interview; leak; open
+
+## BUG-0455 — person.edu_a2025 lets a student leave out a scholarship without saying the choice to include it is limited
+
+- **Caught by:** the person completeness review rerun after the f8889.unsupported remedy text changed (owner decision 2026-11-07), 2026-11-07 (person#2).
+- **Source:** i8863 p. 5: 'A student cannot choose to include in income a scholarship or fellowship grant provided by an Indian tribal government that is excluded from income under the Tribal General Welfare Exclusion Act of 2014 ...'; 'Also, the scholarship or fellowship grant must be one that may (by its terms) be used for expenses other than qualified education expenses (such as room and board).'
+- **Symptom:** the line 2a question tells the filer to leave out a scholarship the student includes in income, without saying that only a grant usable for other expenses may be included and that a tribal-government grant may not; qualified expenses could be under-reduced. Pre-existing wording; the remedy text change did not touch it.
+- **Disposition:** open, low: word it at the form's next substantive change, then rerun the person completeness review.
+- **Tags:** completeness; person; open
+
+## BUG-0456 — person.simple_deferral has no timing condition for SIMPLE IRA salary reduction contributions
+
+- **Caught by:** the person completeness review rerun after the f8889.unsupported remedy text changed (owner decision 2026-11-07), 2026-11-07 (person#6).
+- **Source:** p560 p. 17: 'You must make the salary reduction contributions to the SIMPLE IRA within 30 days after the end of the month in which the amounts would otherwise have been payable to the employee in cash.'
+- **Symptom:** the question asks for the contributions 'for 2025' with no timing condition, while the employer-contribution question states the due-date condition; a late salary reduction contribution is not refused. Pre-existing wording; the remedy text change did not touch it.
+- **Disposition:** open, low: word it at the form's next substantive change, then rerun the person completeness review.
+- **Tags:** completeness; person; open

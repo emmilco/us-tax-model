@@ -1633,7 +1633,7 @@ form:
       locator: Form 8889 (2025), line 13
     refuses:
     - when: f8889.unsupported
-      form: Form 8889 Part III, Form 8853, or other HSA situations
+      form: Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations
       remedy: Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited
         HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.
       cite:
@@ -1821,7 +1821,7 @@ form:
       locator: Form 8889 (2025), line 16
     refuses:
     - when: f8889.unsupported
-      form: Form 8889 Part III, Form 8853, or other HSA situations
+      form: Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations
       remedy: Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited
         HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.
       cite:

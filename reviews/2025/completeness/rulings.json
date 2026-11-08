@@ -712,36 +712,6 @@
    "evidence": "i4562 p. 3, listed property exceptions. The exception for a computer used exclusively at a regular business establishment owned or leased by its operator, and the employee's employer-establishment rule, change no amount here: a Schedule C proprietor's regular business establishment is the one the proprietor operates, employees' property is not Schedule C property, and a computer placed in service before 2018 is past its 5-year recovery in 2025 (property placed in service before 2005, ADS and other methods are refused by asset.screen). The asset.listed wording is unchanged by R3.",
    "prompt_sha": "883ef58dbdaa8d8b440a6af6f489dbed80063693dc77e43d4e7cb50d8833df01"
   },
-  "unruled:person#1": {
-   "class": "out of scope",
-   "gate": "f8863.ban_refused",
-   "evidence": "i8863 pp. 1, 3. As the prior person#3 ruling: f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans, and f8863.ban_refused refuses the American opportunity credit.",
-   "prompt_sha": "fa8e7d08c25571c253d4d81162478d591528c2f071b5a56c2292d3a6cb22ec03"
-  },
-  "unruled:person#2": {
-   "class": "covered",
-   "line": "retirement.exc_amount",
-   "evidence": "p590b p. 28. As the prior person#4 ruling: retirement.exc_amount tells the filer to enter, for exception 22, no more than 50% of the present value of the IRA or plan account; person.x_c22 applies the $10,300 cap.",
-   "prompt_sha": "fa8e7d08c25571c253d4d81162478d591528c2f071b5a56c2292d3a6cb22ec03"
-  },
-  "unruled:person#3": {
-   "class": "covered",
-   "line": "retirement.exc_amount",
-   "evidence": "p590b p. 28. As the prior person#5 ruling: retirement.exc_amount caps exception 23 at the total interest in the account minus $1,000; retirement.early_screen refuses an emergency distribution within 3 years after an unrepaid earlier one; person.x_two23 refuses more than one in a year.",
-   "prompt_sha": "fa8e7d08c25571c253d4d81162478d591528c2f071b5a56c2292d3a6cb22ec03"
-  },
-  "unruled:person#4": {
-   "class": "out of scope",
-   "gate": "sc.screened",
-   "evidence": "i1040sse p. 4; i1040sc p. 14. As the prior person#1 ruling: sc.statutory asks whether the Schedule C is statutory employee income or notary public fees and sc.screened refuses the Schedule C, so no such line 31 reaches person.se_line2 or the SEP and SIMPLE compensation.",
-   "prompt_sha": "fa8e7d08c25571c253d4d81162478d591528c2f071b5a56c2292d3a6cb22ec03"
-  },
-  "unruled:person#5": {
-   "class": "covered",
-   "line": "person.plan_screen",
-   "evidence": "p560 p. 16. A SIMPLE matching contribution above the rate the plan elected (1% to 3%) is a contribution above the maximum deductible amount, which person.plan_screen names (\"contributions that are more than the maximum deductible amount\") and refuses; the elected rate itself is the plan's term, not a figure the return computes.",
-   "prompt_sha": "fa8e7d08c25571c253d4d81162478d591528c2f071b5a56c2292d3a6cb22ec03"
-  },
   "unruled:sa#1": {
    "class": "covered",
    "line": "person.blind",
@@ -832,31 +802,55 @@
   "unruled:f8889#1": {
    "class": "real gap",
    "bug": "BUG-0453",
-   "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
-   "evidence": "i8889 p. 3, HDHP requirements; p969 pp. 4-5 (minimum deductible and out-of-pocket tests, an embedded family deductible below the family minimum, a plan mainly of disregarded coverage). The eligibility questions take 'covered by an HDHP' at face value. Low; held for the form's next substantive change."
-  },
-  "unruled:f8889#2": {
-   "class": "out of scope",
-   "gate": "f8889.unsupported",
-   "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
-   "evidence": "i1040gi p. 12 (fiscal-year filers) and i8889 p. 2, Last-month rule, 'the 1st day of the last month of the tax year (December 1, for most individuals)'. The tool prepares calendar-year returns (fiscal-year refusing row of the gate grids); a person who died in 2025, whose last month is the month of death, is refused by f8889.unsupported."
-  },
-  "unruled:f8889#3": {
-   "class": "real gap",
-   "bug": "BUG-0453",
-   "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
+   "prompt_sha": "bf2ae17c613634db6f16974d943f2ff68a62a1f1923d85dd99e3d26d0ce2c84d",
    "evidence": "p969 p. 5, 'Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.' The f8889.line2 question does not exclude non-cash contributions. Pre-existing, low."
   },
-  "unruled:f8889#4": {
+  "unruled:f8889#2": {
    "class": "real gap",
    "bug": "BUG-0453",
-   "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
-   "evidence": "i8889 p. 7, Line 9, 'Also, include contributions made by a health insurance plan on an employer's behalf.' The f8889.line9 question does not name them. Pre-existing, low."
+   "prompt_sha": "bf2ae17c613634db6f16974d943f2ff68a62a1f1923d85dd99e3d26d0ce2c84d",
+   "evidence": "i8889 p. 3, HDHP requirements; p969 pp. 4-5 (minimum deductible and out-of-pocket tests, an embedded family deductible below the family minimum, a plan mainly of disregarded coverage). The eligibility questions take 'covered by an HDHP' at face value. Low; held for the form's next substantive change."
   },
-  "unruled:f8889#5": {
+  "unruled:f8889#3": {
    "class": "presentation",
-   "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
+   "prompt_sha": "bf2ae17c613634db6f16974d943f2ff68a62a1f1923d85dd99e3d26d0ce2c84d",
    "evidence": "i8889 p. 4, Line 1: the self-only or family checkbox. The model computes no printed line 1 checkbox; the coverage the limit rules read is f8889.dec_coverage_if_changed and the month counts. No amount depends on the checkbox."
+  },
+  "unruled:person#1": {
+   "class": "out of scope",
+   "gate": "f8863.ban_refused",
+   "evidence": "i8863 pp. 1, 3. As the prior person#3 ruling: f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans, and f8863.ban_refused refuses the American opportunity credit.",
+   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c"
+  },
+  "unruled:person#2": {
+   "class": "real gap",
+   "bug": "BUG-0455",
+   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c",
+   "evidence": "i8863 p. 5, 'A student cannot choose to include in income a scholarship or fellowship grant provided by an Indian tribal government ... Also, the scholarship or fellowship grant must be one that may (by its terms) be used for expenses other than qualified education expenses.' person.edu_a2025 tells the filer to leave out a scholarship the student includes in income without saying the choice is limited to grants usable for other expenses and excludes tribal-government grants. Pre-existing wording; low; held for the form's next substantive change."
+  },
+  "unruled:person#3": {
+   "class": "covered",
+   "line": "retirement.exc_amount",
+   "evidence": "p590b p. 28. As the prior person#4 ruling: retirement.exc_amount tells the filer to enter, for exception 22, no more than 50% of the present value of the IRA or plan account; person.x_c22 applies the $10,300 cap.",
+   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c"
+  },
+  "unruled:person#4": {
+   "class": "covered",
+   "line": "retirement.exc_amount",
+   "evidence": "p590b p. 28. As the prior person#5 ruling: retirement.exc_amount caps exception 23 at the total interest in the account minus $1,000; retirement.early_screen refuses an emergency distribution within 3 years after an unrepaid earlier one; person.x_two23 refuses more than one in a year.",
+   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c"
+  },
+  "unruled:person#5": {
+   "class": "out of scope",
+   "gate": "sc.screened",
+   "evidence": "i1040sse p. 4; i1040sc p. 14. As the prior person#1 ruling: sc.statutory asks whether the Schedule C is statutory employee income or notary public fees and sc.screened refuses the Schedule C, so no such line 31 reaches person.se_line2 or the SEP and SIMPLE compensation.",
+   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c"
+  },
+  "unruled:person#6": {
+   "class": "real gap",
+   "bug": "BUG-0456",
+   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c",
+   "evidence": "p560 p. 17, 'You must make the salary reduction contributions to the SIMPLE IRA within 30 days after the end of the month in which the amounts would otherwise have been payable to the employee in cash.' person.simple_deferral asks for the contributions 'for 2025' with no timing condition (the employer-contribution question states the due-date condition). Pre-existing wording; low; held for the form's next substantive change."
   }
  }
 }

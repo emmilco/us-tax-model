@@ -1145,19 +1145,13 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A living filer with a fiscal tax year has a last month other than December, so the last-month rule and its testing period run on different dates. The question raises a non-December last month only for decedents, so this filer truthfully answers NO and the tool computes line 13 on a calendar-year basis.",
-    "irs_text": "i8889 (2025) p.2: 'You may consider yourself an \"eligible individual\" for the entire year if you are an eligible individual on the 1st day of the last month of the tax year (December 1, for most individuals).' i1040gi (2025) p.12: 'If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025...'",
-    "why": "The question names only death as the reason the last month is not December. A fiscal-year filer is outside every listed item, yet the eligibility months and the last-month rule that feed line 13 differ from the calendar-year computation."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer whose testing period began in an earlier year stopped being an eligible individual in 2025 only because they became disabled. Read literally, the question makes them answer YES, although no income inclusion or additional tax results and lines 13 and 16 are unaffected.",
-    "irs_text": "i8889 (2025) p.2: 'If you fail to remain an eligible individual during this period, other than because of death or becoming disabled, you will have to include in income the total contributions made that would not have been made except for the last-month rule.'",
-    "why": "The question says 'failing to remain an eligible individual during a testing period' and does not state the death-or-disability exception. A filer whose failure was caused by disability is refused even though nothing outside the tool's computation applies."
+    "situation": "A living filer whose tax year is a fiscal year (not January 1 through December 31) uses the last-month rule or the month-by-month limit. The last month of that filer's tax year is not December, so the testing period and the eligible months the tool assumes for lines 3–13 are wrong. The filer still answers NO, because the screen asks about a different last month only when the person died.",
+    "irs_text": "i8889 (2025) p.2: \"if you are an eligible individual on the 1st day of the last month of the tax year (December 1, for most individuals)... The testing period begins with the last month of your tax year\"; i1040gi (2025) p.12: \"Fiscal-year filers. If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025...\"",
+    "why": "The screen catches a last month other than December only when someone died (\"since the last month of a decedent's tax year is the month of death, not December\"). It never asks about fiscal-year filers. Their line 3/line 12 limit, and so line 13, depend on a last month the tool doesn't model."
    }
   ],
-  "prompt_sha": "e05dc77fd55d0bfa6a0ada249e04b3cf5d88064aede811c3ad413c4651a7d586",
-  "subject_sha": "e05dc77fd55d0bfa6a0ada249e04b3cf5d88064aede811c3ad413c4651a7d586",
+  "prompt_sha": "e5c1dfff7dd201699cd4cffde8f7fb925c796b2bd05b86a59183a951fa01b520",
+  "subject_sha": "e5c1dfff7dd201699cd4cffde8f7fb925c796b2bd05b86a59183a951fa01b520",
   "used": [
    {
     "doc": "i8889",
@@ -1206,7 +1200,7 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "cost": 0.080904,
+  "cost": 0.083116,
   "model": "claude-opus-5-5"
  },
  {

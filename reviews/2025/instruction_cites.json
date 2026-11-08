@@ -12,7 +12,8 @@
   "section:scveh.bonus_allowed": "Not applicable: the line is Form 4562 line 25 (special depreciation allowance for qualified listed property), figured as line 16 of Pub. 946's Depreciation Worksheet for Passenger Automobiles limited to line 11, which it cites on pp. 61-62; the Line 25 section of i1040sc p. 10 is Schedule C line 25 (utilities), a different line.",
   "section:f1040.line2a": "Cited: the locator reads 'Instructions for Form 1040, p. 25, line 2a, \"Enter the total on line 2a\" ...', i1040gi p. 25, the Line 2a section; the leading document words precede the page. Held in the baseline until lane A's gate lines changed the form.",
   "section:sd.line13": "Not applicable: the line cites the form face (f1040sd p. 1, line 13, \"Capital gain distributions. See the instructions\"); the i1040sd p. 11 Line 13 section says only \"See Capital Gain Distributions, earlier\". Held in the baseline until lane A's gate lines changed the form.",
-  "section:f1040.line3a": "Cited: the locator reads 'Instructions for Form 1040, pp. 25–26, line 3a and exceptions', i1040gi pp. 25-26, the Line 3a section and its exceptions; the gate line f1040.line3a_if_ordinary cites p. 25, Line 3a. Held in the baseline until lane A's gate lines changed the form."
+  "section:f1040.line3a": "Cited: the locator reads 'Instructions for Form 1040, pp. 25–26, line 3a and exceptions', i1040gi pp. 25-26, the Line 3a section and its exceptions; the gate line f1040.line3a_if_ordinary cites p. 25, Line 3a. Held in the baseline until lane A's gate lines changed the form.",
+  "section:f8889.line13": "Accepted, page not named: the refusal citation of f8889.line13 (i8889, 'Parts II and III; lines 4, 10 and 13') names no page; the Line 13 section is on i8889 p. 8. Adding the page would change the recorded cite of the f8889.unsupported refusal in four complete fixtures and the citations of the gated lines that the screen and completeness reviews read; the owner decision of 2026-11-07 (name the death case in the remedy text) allows no other recorded value to change. Name the page at the next change of these citations."
  },
  "baseline": {
   "section:f1040.line10": "fcfe7f73f535b5a0",
@@ -56,7 +57,6 @@
   "section:f8863.line7": "3d5257b724138ae9",
   "section:f8863.line9": "14d514bade00c475",
   "section:f8889.line10": "7145352685bac8f0",
-  "section:f8889.line13": "b8acc353c5a948e3",
   "section:f8889.line14b": "0303210cb70ad4ce",
   "section:f8889.line15": "26b16ebf7493f893",
   "section:f8889.line17b": "a6bc5e3733bab578",

@@ -3095,7 +3095,7 @@
         "f1040.lines8-10"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: the Form 8889 screen answered Yes (one of the situations it lists, such as a qualified HSA funding distribution): refused. Since Stage 16 the screen no longer lists taxable distributions, which Form 8889 Part II computes. Mutation-score assertion (T-159: the line 16 operand of f8889.subject_bad), predicted before recording: line 16 is refused at the HSA screen, and the comparison of the line 17b amount (unanswered here) with line 16 is that refusal, which outranks the unknown first operand (spec 4.7.2, comparisons: the first refusal among the two operands, else the first unknown). Refusal text recorded from the evaluator. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: the Form 8889 screen answered Yes (one of the situations it lists, such as a qualified HSA funding distribution): refused. Since Stage 16 the screen no longer lists taxable distributions, which Form 8889 Part II computes. Mutation-score assertion (T-159: the line 16 operand of f8889.subject_bad), predicted before recording: line 16 is refused at the HSA screen, and the comparison of the line 17b amount (unanswered here) with line 16 is that refusal, which outranks the unknown first operand (spec 4.7.2, comparisons: the first refusal among the two operands, else the first unknown). Refusal text recorded from the evaluator. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -3261,7 +3261,7 @@
         "f1040.line10": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, or other HSA situations",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
           "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
           "cite": {
             "doc": "i8889",
@@ -3274,7 +3274,7 @@
         "person[taxpayer].f8889[hsa].subject_bad": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, or other HSA situations",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
           "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
           "cite": {
             "doc": "i8889",

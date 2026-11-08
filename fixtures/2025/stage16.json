@@ -13531,7 +13531,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the unsupported-HSA-situations question (Part III, Form 8853, or other HSA situations) answered Yes. Line 16 carries the screen's own refusal entry (as line 13 does), so line 16 refuses whatever its figure; the figure behind it, line 14c less line 15, is $2,000. Schedule 1 line 8f carries the same refusal through line 16. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the unsupported-HSA-situations question (Part III, Form 8853, or other HSA situations) answered Yes. Line 16 carries the screen's own refusal entry (as line 13 does), so line 16 refuses whatever its figure; the figure behind it, line 14c less line 15, is $2,000. Schedule 1 line 8f carries the same refusal through line 16. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -13709,7 +13709,7 @@
         "person[taxpayer].f8889[hsa].line16": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, or other HSA situations",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
           "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
           "cite": {
             "doc": "i8889",
@@ -13722,7 +13722,7 @@
         "s1.line8f": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, or other HSA situations",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
           "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
           "cite": {
             "doc": "i8889",
@@ -23078,7 +23078,7 @@
         "f8889:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.small.s4 as the interview asks them, for a person whose only HSA item is one the tool does not support (a qualified HSA funding distribution from an IRA, a testing-period failure or an inherited HSA): Form 8889 is answered for the person and the unsupported-HSA-situations question Yes. The interview asks that question straight after the Form 8889 roster and stops at the refusal, so no contribution or distribution amount is asked. Form 8889 lines 13 and 16 carry the question's refusal entry whatever their figure, and Schedule 1 lines 13 and 8f carry it through them. The refused values are the evaluator's. Ordinary dividends (box 1a) of $0 answered, with the dividends question answered yes: qualified dividends (line 3a) are asked only when box 1a is above zero, and the recorded $0 assumes it is not. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "evidence_note": "Inputs are stage16.small.s4 as the interview asks them, for a person whose only HSA item is one the tool does not support (a qualified HSA funding distribution from an IRA, a testing-period failure or an inherited HSA): Form 8889 is answered for the person and the unsupported-HSA-situations question Yes. The interview asks that question straight after the Form 8889 roster and stops at the refusal, so no contribution or distribution amount is asked. Form 8889 lines 13 and 16 carry the question's refusal entry whatever their figure, and Schedule 1 lines 13 and 8f carry it through them. The refused values are the evaluator's. Ordinary dividends (box 1a) of $0 answered, with the dividends question answered yes: qualified dividends (line 3a) are asked only when box 1a is above zero, and the recorded $0 assumes it is not. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -23135,7 +23135,7 @@
         "person[taxpayer].f8889[hsa].line13": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, or other HSA situations",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
           "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
           "cite": {
             "doc": "i8889",
@@ -23148,7 +23148,7 @@
         "person[taxpayer].f8889[hsa].line16": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, or other HSA situations",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
           "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
           "cite": {
             "doc": "i8889",
@@ -23161,7 +23161,7 @@
         "s1.line13": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, or other HSA situations",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
           "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
           "cite": {
             "doc": "i8889",
@@ -23174,7 +23174,7 @@
         "s1.line8f": {
           "kind": "refusal",
           "gate": "person[taxpayer].f8889[hsa].unsupported",
-          "form": "Form 8889 Part III, Form 8853, or other HSA situations",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
           "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
           "cite": {
             "doc": "i8889",

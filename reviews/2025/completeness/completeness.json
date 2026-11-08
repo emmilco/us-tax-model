@@ -2310,8 +2310,22 @@
  },
  {
   "form": "f8889",
-  "prompt_sha": "9f1ba4d18827cfa0c03c1e3be31693203d84d92b5be0e8fa055db37fe46deb68",
+  "prompt_sha": "bf2ae17c613634db6f16974d943f2ff68a62a1f1923d85dd99e3d26d0ce2c84d",
   "claims": [
+   {
+    "item": "f8889.line2",
+    "sentences": [
+     {
+      "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
+      "page": "p969 p. 5"
+     }
+    ],
+    "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
+    "page": "p969 p. 5",
+    "why_uncovered": "The line 2 question lists what to exclude (employer and cafeteria-plan contributions, rollovers, trustee-to-trustee transfers, qualified HSA funding distributions). It never says contributions must be in cash, and it does not exclude stock or other property. A filer could enter an in-kind contribution as deductible, and no refusal catches it.",
+    "closest_item": "f8889.line2",
+    "effect": "amount"
+   },
    {
     "item": "f8889.coverage_year",
     "sentences": [
@@ -2320,19 +2334,15 @@
       "page": "p969 p. 4"
      },
      {
-      "quote": "Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs.",
-      "page": "p969 p. 5"
+      "quote": "Self-only coverage Family coverage Minimum annual deductible $1,650 $3,300 Maximum annual deductible and other out-of-pocket expenses* $8,300 $16,600",
+      "page": "p969 p. 4"
      },
      {
-      "quote": "You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met.",
+      "quote": "Caution: Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs.",
       "page": "p969 p. 5"
      },
      {
       "quote": "If you can receive benefits before that deductible is met, you aren't an eligible individual.",
-      "page": "p969 p. 5"
-     },
-     {
-      "quote": "Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
       "page": "p969 p. 5"
      },
      {
@@ -2344,69 +2354,15 @@
       "page": "p969 p. 5"
      },
      {
-      "quote": "This limit does not apply to deductibles and expenses for out-of-network services if the plan uses a network of providers.",
-      "page": "i8889 p. 3"
-     },
-     {
-      "quote": "A plan will not fail to be treated as a high deductible health plan by reason of failing to have a deductible for preventive care.",
-      "page": "i8889 p. 3"
-     },
-     {
-      "quote": "In general, a plan will not fail to be treated as a high deductible health plan by reason of failing to have a deductible for selected insulin products.",
-      "page": "i8889 p. 3"
-     }
-    ],
-    "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP. / Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs. / You can have a prescription drug plan, either as part of your HDHP or a separate plan (or rider), and qualify as an eligible individual if the plan doesn't provide benefits until the minimum annual deductible of the HDHP has been met. / If you can receive benefits before that deductible is met, you aren't an eligible individual. / Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero. / When the suspension period ends, you are no longer eligible to make contributions to an HSA. / After retirement with such an HRA, you are no longer eligible to make contributions to an HSA. / This limit does not apply to deductibles and expenses for out-of-network services if the plan uses a network of providers. / A plan will not fail to be treated as a high deductible health plan by reason of failing to have a deductible for preventive care. / In general, a plan will not fail to be treated as a high deductible health plan by reason of failing to have a deductible for selected insulin products.",
-    "page": "p969 p. 4; p969 p. 5; i8889 p. 3",
-    "why_uncovered": "The coverage and eligible-month questions ask whether the filer was 'covered by an HDHP' but never state what an HDHP is: the minimum deductible and out-of-pocket limits, the family-plan embedded-deductible rule, the 'substantially all disregarded coverage' exclusion, or the preventive care and insulin safe harbors. They also omit the rule that a prescription drug plan paying before the deductible disqualifies the filer. On FSAs and HRAs, the question treats a general-purpose health FSA as disqualifying. It leaves out the exception for a grace period with a zero prior-year balance. It also does not say that eligibility ends after a suspended HRA's suspension period or after retirement with a retiree-only HRA.",
-    "closest_item": "f8889.coverage_year",
-    "effect": "eligibility"
-   },
-   {
-    "item": "f8889.last_month",
-    "sentences": [
-     {
-      "quote": "If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025, enter the beginning and ending months of your fiscal year in the entry space provided at the top of page 1 of Form 1040 or 1040-SR.",
-      "page": "i1040gi p. 12"
-     },
-     {
-      "quote": "You may consider yourself an \"eligible individual\" for the entire year if you are an eligible individual on the 1st day of the last month of the tax year (December 1, for most individuals).",
-      "page": "i8889 p. 2"
-     }
-    ],
-    "quote": "If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025, enter the beginning and ending months of your fiscal year in the entry space provided at the top of page 1 of Form 1040 or 1040-SR. / You may consider yourself an \"eligible individual\" for the entire year if you are an eligible individual on the 1st day of the last month of the tax year (December 1, for most individuals).",
-    "page": "i1040gi p. 12; i8889 p. 2",
-    "why_uncovered": "The last-month rule, the December 1 coverage question and the testing-period dates all assume a calendar tax year ending in December. Nothing asks about or refuses a fiscal-year filer, whose last month and testing period are different. The death refusal covers decedents only.",
-    "closest_item": "f8889.last_month",
-    "effect": "amount"
-   },
-   {
-    "item": "f8889.line2",
-    "sentences": [
-     {
-      "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
+      "quote": "Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
       "page": "p969 p. 5"
      }
     ],
-    "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
-    "page": "p969 p. 5",
-    "why_uncovered": "The line 2 question asks for all contributions made for 2025 but does not exclude or refuse contributions of stock or property. Those are not allowed as HSA contributions and so are not deductible.",
-    "closest_item": "f8889.line2",
-    "effect": "amount"
-   },
-   {
-    "item": "f8889.line9",
-    "sentences": [
-     {
-      "quote": "Also, include contributions made by a health insurance plan on an employer's behalf.",
-      "page": "i8889 p. 7"
-     }
-    ],
-    "quote": "Also, include contributions made by a health insurance plan on an employer's behalf.",
-    "page": "i8889 p. 7",
-    "why_uncovered": "The line 9 question lists employer and cafeteria-plan contributions from Form W-2 code W, with the worksheet adjustments. It does not tell the filer to include contributions made by a health insurance plan on the employer's behalf. Those contributions reduce line 12 and so the deduction.",
-    "closest_item": "f8889.line9",
-    "effect": "amount"
+    "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP. / Self-only coverage Family coverage Minimum annual deductible $1,650 $3,300 Maximum annual deductible and other out-of-pocket expenses* $8,300 $16,600 / Caution: Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs. / If you can receive benefits before that deductible is met, you aren't an eligible individual. / When the suspension period ends, you are no longer eligible to make contributions to an HSA. / After retirement with such an HRA, you are no longer eligible to make contributions to an HSA. / Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
+    "page": "p969 p. 4; p969 p. 5",
+    "why_uncovered": "The coverage and month-count questions ask whether the filer was 'covered by an HDHP', but they never define an HDHP. They give no minimum deductible or out-of-pocket limits, do not say that an embedded individual deductible below the family minimum disqualifies the plan, and do not say that a plan consisting substantially of disregarded coverage isn't an HDHP. On disqualifying other coverage, the questions mention only a general-purpose FSA or HRA. They say nothing about a prescription drug plan that pays before the deductible, the end of eligibility after a suspended HRA or retiree-only HRA takes effect, or the zero-balance condition for general-purpose FSA grace-period coverage.",
+    "closest_item": "f8889.coverage_year",
+    "effect": "eligibility"
    },
    {
     "item": "f8889.dec_coverage",
@@ -2416,13 +2372,13 @@
       "page": "i8889 p. 4"
      },
      {
-      "quote": "If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the \"family\" box.",
+      "quote": "If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the “family” box.",
       "page": "i8889 p. 4"
      }
     ],
-    "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period. / If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the \"family\" box.",
+    "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period. / If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the “family” box.",
     "page": "i8889 p. 4",
-    "why_uncovered": "No encoded line produces the line 1 self-only/family checkbox. The coverage answers (December 1 coverage and month counts) are collected but never mapped to line 1 under these rules.",
+    "why_uncovered": "The encoding has no item for the Form 8889 line 1 coverage checkbox. The December 1 coverage and month counts are collected but never used to pick the self-only or family box. The longer-period rule for coverage that changed during the year is also not implemented.",
     "closest_item": "f8889.dec_coverage",
     "effect": "presentation"
    }
@@ -2466,7 +2422,7 @@
     ]
    }
   ],
-  "cost": 0.283716,
+  "cost": 0.29094000000000003,
   "model": "claude-opus-5-5"
  },
  {
@@ -3440,25 +3396,43 @@
  },
  {
   "form": "person",
-  "prompt_sha": "fa8e7d08c25571c253d4d81162478d591528c2f071b5a56c2292d3a6cb22ec03",
+  "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c",
   "claims": [
    {
     "item": "person.edu_aoc",
     "sentences": [
      {
-      "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
-      "page": "i8863 p. 3"
-     },
-     {
       "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
       "page": "i8863 p. 1"
+     },
+     {
+      "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
+      "page": "i8863 p. 3"
      }
     ],
-    "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
-    "page": "i8863 p. 3; i8863 p. 1",
-    "why_uncovered": "The American opportunity credit test for each student checks lines 23 to 26, the TINs and the institution's EIN. No question asks whether the filer is under a 2-year or 10-year ban after a final determination, or whether an earlier American opportunity credit was denied or reduced so that Form 8862 is required. No refusal covers these cases either. The only Form 8862 and ban rules in the HANDLED ELSEWHERE list are for the EIC.",
+    "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit. / Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
+    "page": "i8863 p. 1; i8863 p. 3",
+    "why_uncovered": "person.edu_aoc qualifies a student from lines 23 to 26, the filers' TINs, and the institution's EIN. No question asks whether an earlier American opportunity credit was denied or reduced. No question asks about a final reckless-disregard or fraud determination. Nothing refuses or requires Form 8862 for the AOC. The Form 8862 handling listed under HANDLED ELSEWHERE covers only the EIC.",
     "closest_item": "person.edu_aoc",
     "effect": "eligibility"
+   },
+   {
+    "item": "person.edu_a2025",
+    "sentences": [
+     {
+      "quote": "A student cannot choose to include in income a scholarship or fellowship grant provided by an Indian tribal government that is excluded from income under the Tribal General Welfare Exclusion Act of 2014 or benefits provided by an educational program described in section 5.02(2)(b)(ii) of Revenue Procedure 2014-35, available at IRS.gov/irb/2014-26_IRB#RP-2014-35.",
+      "page": "i8863 p. 5"
+     },
+     {
+      "quote": "Also, the scholarship or fellowship grant must be one that may (by its terms) be used for expenses other than qualified education expenses (such as room and board).",
+      "page": "i8863 p. 5"
+     }
+    ],
+    "quote": "A student cannot choose to include in income a scholarship or fellowship grant provided by an Indian tribal government that is excluded from income under the Tribal General Welfare Exclusion Act of 2014 or benefits provided by an educational program described in section 5.02(2)(b)(ii) of Revenue Procedure 2014-35, available at IRS.gov/irb/2014-26_IRB#RP-2014-35. / Also, the scholarship or fellowship grant must be one that may (by its terms) be used for expenses other than qualified education expenses (such as room and board).",
+    "page": "i8863 p. 5",
+    "why_uncovered": "The line 2a question lets the filer leave out any scholarship the student includes in income. It does not limit that choice to grants that may by their terms pay non-qualified expenses. It also does not exclude tribal-government grants and Rev. Proc. 2014-35 program benefits, which can't be included in income. Expenses could therefore be under-reduced.",
+    "closest_item": "person.edu_a2025",
+    "effect": "amount"
    },
    {
     "item": "person.x_c22",
@@ -3470,7 +3444,7 @@
     ],
     "quote": "An eligible distribution to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA.",
     "page": "p590b p. 28",
-    "why_uncovered": "The exception 22 cap (person.x_cap22) is only the fixed $10,300. Nothing asks for the present value of the IRA, so the 50% limit is never applied. Form 5329 line 2 can therefore exclude more than the law allows.",
+    "why_uncovered": "person.x_c22 caps exception 22 only at the fixed $10,300 (person.x_cap22). No question asks for the IRA's present value, so the 50%-of-present-value limit is never applied or refused.",
     "closest_item": "person.x_c22",
     "effect": "amount"
    },
@@ -3478,7 +3452,7 @@
     "item": "person.x_c23",
     "sentences": [
      {
-      "quote": "Distribution limits. You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000.",
+      "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000.",
       "page": "p590b p. 28"
      },
      {
@@ -3486,9 +3460,9 @@
       "page": "p590b p. 28"
      }
     ],
-    "quote": "Distribution limits. You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000. / You are also limited in taking emergency personal expense distributions in subsequent years as you may not take this type of distribution in the following 3 calendar years unless:",
+    "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000. / You are also limited in taking emergency personal expense distributions in subsequent years as you may not take this type of distribution in the following 3 calendar years unless:",
     "page": "p590b p. 28",
-    "why_uncovered": "The encoding caps exception 23 at a fixed $1,000 and refuses more than one such distribution in 2025 (person.x_two23). It never asks for the total interest in the IRA, so the 'interest minus $1,000' limit is not applied. It also never asks about an earlier emergency personal expense distribution in the prior 3 calendar years that was not repaid or offset by later contributions. Such a distribution makes the 2025 exception unavailable.",
+    "why_uncovered": "person.x_c23 caps exception 23 only at the fixed $1,000. person.x_two23 refuses only more than one such distribution in 2025. Nothing asks for the total interest in the IRA, so the 'total interest minus $1,000' limit is not applied. Nothing asks whether an unrepaid emergency distribution was taken in a prior year within the 3-year window.",
     "closest_item": "person.x_c23",
     "effect": "amount"
    },
@@ -3496,44 +3470,36 @@
     "item": "person.se_line2",
     "sentences": [
      {
-      "quote": "Statutory employees. Enter your net profit or loss on line 31 and include it on Schedule 1 (Form 1040), line 3. However, do not report this amount on Schedule SE (Form 1040), line 2.",
-      "page": "i1040sc p. 14"
+      "quote": "Fees received for services performed as a notary public.",
+      "page": "i1040sse p. 4"
      },
      {
       "quote": "Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
       "page": "i1040sc p. 14"
-     },
-     {
-      "quote": "If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2.",
-      "page": "i1040sse p. 4"
-     },
-     {
-      "quote": "Fees received for services performed as a notary public.",
-      "page": "i1040sse p. 4"
      }
     ],
-    "quote": "Statutory employees. Enter your net profit or loss on line 31 and include it on Schedule 1 (Form 1040), line 3. However, do not report this amount on Schedule SE (Form 1040), line 2. / Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income. / If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2. / Fees received for services performed as a notary public.",
-    "page": "i1040sc p. 14; i1040sse p. 4",
-    "why_uncovered": "person.se_line2 takes the net profit or loss from every Schedule C of the person. The self-employment screen (person.se_screen) does not ask about statutory employee or notary public income. The statutory-employee refusal in HANDLED ELSEWHERE applies only to the EIC. As a result, statutory employee or notary profit would be subject to self-employment tax and would also flow into the SEP and SIMPLE compensation figures.",
+    "quote": "Fees received for services performed as a notary public. / Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
+    "page": "i1040sse p. 4; i1040sc p. 14",
+    "why_uncovered": "person.se_line2 takes the Schedule C line 31 net profit for every Schedule C. The self-employment screen (person.se_screen) lists clergy, church, partnership, farm, exempt and other cases. It does not mention notary public fees, so notary profit would be subjected to SE tax rather than excluded or refused.",
     "closest_item": "person.se_line2",
     "effect": "amount"
    },
    {
-    "item": "person.employer_max",
+    "item": "person.simple_deferral",
     "sentences": [
      {
-      "quote": "If you choose a matching contribution less than 3%, the percentage must be at least 1%.",
-      "page": "p560 p. 16"
+      "quote": "You must make the salary reduction contributions to the SIMPLE IRA within 30 days after the end of the month in which the amounts would otherwise have been payable to the employee in cash.",
+      "page": "p560 p. 17"
      },
      {
-      "quote": "You can't choose a percentage less than 3% for more than 2 years during the 5-year period that ends with (and includes) the year for which the choice is effective.",
-      "page": "p560 p. 16"
+      "quote": "You can deduct contributions for a particular tax year if they are made for that tax year and are made by the due date (including extensions) of your federal income tax return for that year.",
+      "page": "p560 p. 17"
      }
     ],
-    "quote": "If you choose a matching contribution less than 3%, the percentage must be at least 1%. / You can't choose a percentage less than 3% for more than 2 years during the 5-year period that ends with (and includes) the year for which the choice is effective.",
-    "page": "p560 p. 16",
-    "why_uncovered": "The cap on the SIMPLE match always uses 3% of compensation (person.rate3, person.match_3pct). No question asks whether the plan elected a lower matching percentage for 2025, or how often a lower match was chosen in the past 5 years. Matching contributions above the plan's elected rate are therefore not flagged as excess, and are deducted.",
-    "closest_item": "person.employer_max",
+    "quote": "You must make the salary reduction contributions to the SIMPLE IRA within 30 days after the end of the month in which the amounts would otherwise have been payable to the employee in cash. / You can deduct contributions for a particular tax year if they are made for that tax year and are made by the due date (including extensions) of your federal income tax return for that year.",
+    "page": "p560 p. 17",
+    "why_uncovered": "The salary reduction question asks for contributions 'for 2025' with no timing condition. The employer-contribution question does state the due-date condition. Nothing limits the deducted salary reduction amount to timely contributions, and nothing refuses late ones.",
+    "closest_item": "person.simple_deferral",
     "effect": "amount"
    }
   ],
@@ -3806,7 +3772,7 @@
     ]
    }
   ],
-  "cost": 1.02508,
+  "cost": 1.035008,
   "model": "claude-opus-5-5"
  },
  {
