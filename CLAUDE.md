@@ -35,3 +35,6 @@ advisory only).
 - **Worktrees (owner decision 2026-11-07).** Agents in worktrees clone review data with
   `tools/worktree_data.py clone` and their results are carried back with `carry-back`; never copy
   `.transcription/` by hand.
+- **Background waits (owner decision 2026-11-07).** Never wait with `pgrep -f "<pattern>"` (it matches
+  the waiting shell itself, so the wait never ends) or for a marker in the log of a run that may be
+  killed. Wait on a pid or poll `tools/check_all_bg.sh --status`, always with a timeout, one wait per task.
