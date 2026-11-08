@@ -42,7 +42,7 @@ the glossary. "Input" means the filer supplies the amount from the named record.
 - printed "30" (NonNegDollars): Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line30" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → helper "No amount for this person"]
     reported on this line only for an entry where: An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available (otherwise the line is left out for that entry)
     refusal: when dependent.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.
-- printed "31" (NonNegDollars): Choose — [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true → "ws4_llc" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = false → helper "No amount for this person"]
+- printed "31" (NonNegDollars): Choose — [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true → "ws4_llc" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "No amount for this person"] [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = false → helper "No amount for this person"]
     reported on this line only for an entry where: A lifetime learning credit student: an eligible student who is not an American opportunity credit student (otherwise the line is left out for that entry)
     refusal: when dependent.edu_llc_tin_refused is true, cannot complete Lifetime learning credit for a student whose ITIN or ATIN was only applied for. The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.
     refusal: when dependent.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.
@@ -52,14 +52,68 @@ the glossary. "Input" means the filer supplies the amount from the named record.
 A gate named in a refusal ("when X is true") is listed by its id with its label and restatement.
 Within a glossary entry, an unqualified line name belongs to the form named on that entry.
 
-- dependent.dc_paid "Qualified expenses incurred and paid in 2025 for this person's care" (NonNegDollars): Input — Qualified expenses you incurred and paid in 2025 for this person's care while they were a qualifying person (under age 13, or not able to care for themselves), so that you (and your spouse, if filing jointly) could work or look for work (unpaid volunteer work, or work for a nominal salary, is not work). Include care you prepaid in 2024 for 2025, your share of employment taxes on a care provider's wages, and expenses paid with dependent care benefits (reimbursed from a dependent care account or paid by your employer to a provider you chose); Form 2441 subtracts the benefits you exclude. Include household services needed to run your home if they were partly for this person's care (for example a cook, maid, babysitter, housekeeper or cleaning person, but not a chauffeur, bartender or gardener), meals your housekeeper eats in your home because of the job and the extra cost of lodging the housekeeper in your home, a care provider's transportation of this person to or from the place of care (but not other transportation, or the cost of bringing the provider to your home), and agency fees, deposits, application fees and other indirect costs you had to pay to get care (but not a forfeited deposit for care that was not provided). Do not include the value of care your employer furnished itself (at your workplace or through a care provider your employer hired). Do not include 2024 care paid in 2025, 2025 care paid in 2026, payments for care in 2026, amounts reimbursed by a state social services agency, payments to a provider who may not be listed (your spouse, your dependent, your child under 19, or the parent of your child under 13), expenses you claim as medical expenses, the cost of food, lodging, education, clothing or entertainment other than the housekeeper's meals and lodging above (food or schooling incidental to a child's care that can't be separated from the total cost may be included, but never schooling for a child in kindergarten or above), expenses for an overnight camp, a summer school or a tutoring program, care outside your home for a qualifying person other than your dependent under 13 who does not regularly spend at least 8 hours a day in your home, or care at a dependent care center that does not meet all applicable state and local regulations, or child support payments. If you (or your spouse) worked or looked for work during only part of the period the expenses cover, count the expenses only for the days of work or looking for work (a day you work at least 1 hour is a day of work), but include care you had to pay for anyway during a short, temporary absence from work, such as a vacation or minor illness (2 weeks or less, or longer depending on the circumstances), and, for part-time work, care you must pay for weekly, monthly or in another way that covers both days worked and days not worked. If part of an expense is work related and part is for other purposes, count only the work-related part, unless only a small part is for other purposes; zero if none
+- dependent.dc_paid "Qualified expenses incurred and paid in 2025 for this person's care" (NonNegDollars): Input — Qualified expenses you incurred and paid in 2025 for this person's care while they were a qualifying person (under age 13, or not able to care for themselves), so that you (and your spouse, if filing jointly) could work or look for work (unpaid volunteer work, or work for a nominal salary, is not work)
+
+    Include:
+    - care you prepaid in 2024 for 2025
+    - your share of employment taxes on a care provider's wages
+    - expenses paid with dependent care benefits (reimbursed from a dependent care account or paid by your employer to a provider you chose); Form 2441 subtracts the benefits you exclude
+
+    Include also:
+    - household services needed to run your home if they were partly for this person's care (for example a cook, maid, babysitter, housekeeper or cleaning person, but not a chauffeur, bartender or gardener)
+    - meals your housekeeper eats in your home because of the job and the extra cost of lodging the housekeeper in your home
+    - a care provider's transportation of this person to or from the place of care (but not other transportation, or the cost of bringing the provider to your home)
+    - agency fees, deposits, application fees and other indirect costs you had to pay to get care (but not a forfeited deposit for care that was not provided)
+
+    Do not include the value of care your employer furnished itself (at your workplace or through a care provider your employer hired).
+
+    Do not include:
+    - 2024 care paid in 2025
+    - 2025 care paid in 2026
+    - payments for care in 2026
+    - amounts reimbursed by a state social services agency
+    - payments to a provider who may not be listed (your spouse, your dependent, your child under 19, or the parent of your child under 13)
+    - expenses you claim as medical expenses
+    - the cost of food, lodging, education, clothing or entertainment other than the housekeeper's meals and lodging above (food or schooling incidental to a child's care that can't be separated from the total cost may be included, but never schooling for a child in kindergarten or above)
+    - expenses for an overnight camp, a summer school or a tutoring program
+    - care outside your home for a qualifying person other than your dependent under 13 who does not regularly spend at least 8 hours a day in your home
+    - care at a dependent care center that does not meet all applicable state and local regulations
+    - child support payments
+
+    If you (or your spouse) worked or looked for work during only part of the period the expenses cover, count the expenses only for the days of work or looking for work (a day you work at least 1 hour is a day of work).
+
+    But include:
+    - care you had to pay for anyway during a short, temporary absence from work, such as a vacation or minor illness (2 weeks or less, or longer depending on the circumstances)
+    - for part-time work, care you must pay for weekly, monthly or in another way that covers both days worked and days not worked
+
+    If part of an expense is work related and part is for other purposes, count only the work-related part, unless only a small part is for other purposes.
+
+    Zero if none
 - dependent.dc_qp "A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)" (Bool): f2441 helper "Did you pay for the care of a qualifying person so you could work or look for work?" = true and helper "Your dependent" = true and (helper "Your qualifying child who is your dependent and was under age 13 for all of 2025 (age 12 or younger at the end of 2025)" = true or helper "Your dependent who lived with you for more than half of 2025 and was not able to care for themselves" = true or helper "Your qualifying child who is your dependent, turned 13 during 2025 and was under 13 for part of 2025 when the care was provided" = true)
 - dependent.dc_incapable "Physically or mentally not able to care for themselves?" (Bool): Input — In 2025, was this person physically or mentally not able to care for themselves (unable to dress, clean or feed themselves because of a physical or mental disability, or needing constant attention to prevent them from injuring themselves or others)? This is a different test from permanent and total disability.
 - dependent.age "Age at the end of 2025" (Count): Input — Age at the end of 2025 (whole years)
 - dependent.dc_over12_care "Care provided while this qualifying person was age 13 or older and disabled" (Bool): Input — Of the care expenses included for this person on Form 2441, line 2, was any care provided when the person was age 13 or older and physically or mentally unable to care for themselves? Answer only for the care included on this form, not their age at the end of the year.
-- dependent.edu_aoc "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" (Bool): helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = true and line 23 = false and line 24 = true and line 25 = false and line 26 = false and household helper "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN" = true and helper "The institution's employer identification number (EIN) is available" = true
+- dependent.edu_aoc "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" (Bool): Choose — [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = true → helper "For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years), and lines 24 to 26, the TINs and the EIN allow the credit"] [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = false → helper "Year parameter edu.no (false)"]
 - dependent.edu_adj "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c" (NonNegDollars): Choose — [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = true → helper "Add lines 2a, 2b and 2c"] [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = false → helper "No amount for this person"]
-- dependent.edu_inst "Qualified education expenses required to be paid to the institution" (NonNegDollars): Input — Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution: tuition, required enrollment fees, and books, supplies and equipment required to be paid to the institution as a condition of enrollment or attendance, for academic periods beginning in 2025 or in the first 3 months of 2026. Use the amounts actually paid, which may differ from Form 1098-T box 1. Do not include amounts paid in 2024 or 2026, room and board, insurance, medical expenses (including student health fees), transportation, expenses deducted elsewhere (for example on Schedule C), or expenses used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529 plan), or a course or other education involving sports, games or hobbies, or any noncredit course, unless it is part of the student's degree program or, where this student can't get the American opportunity credit, it helps the student acquire or improve job skills; zero if none
+- dependent.edu_inst "Qualified education expenses required to be paid to the institution" (NonNegDollars): Input — Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution, for academic periods beginning in 2025 or in the first 3 months of 2026:
+
+    - tuition
+    - required enrollment fees
+    - books, supplies and equipment required to be paid to the institution as a condition of enrollment or attendance
+
+    Use the amounts actually paid, which may differ from Form 1098-T box 1.
+
+    Do not include:
+    - amounts paid in 2024 or 2026
+    - room and board
+    - insurance
+    - medical expenses (including student health fees)
+    - transportation
+    - expenses deducted elsewhere (for example on Schedule C)
+    - expenses used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529 plan)
+    - a course or other education involving sports, games or hobbies, or any noncredit course, unless it is part of the student's degree program or, where this student can't get the American opportunity credit, it helps the student acquire or improve job skills
+
+    Zero if none
 - dependent.edu_mat "Other course materials (American opportunity credit only)" (NonNegDollars): Input — Other course materials paid for in 2025 for this student: books, supplies and equipment needed for a course of study that did not have to be paid to the institution (they count for the American opportunity credit only); the same exclusions as for the expenses paid to the institution; zero if none
 - dependent.zero "No amount for this person" (NonNegDollars): Enter $0 (sales.zero).
 - dependent.edu_over_refused "Adjustments that exceed one academic period's expenses" (Bool): helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = true and helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c" > $0 and helper "An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution" = true
@@ -87,9 +141,9 @@ Within a glossary entry, an unqualified line name belongs to the form named on t
 - dependent.dc_child_all_year "Your qualifying child who is your dependent and was under age 13 for all of 2025 (age 12 or younger at the end of 2025)" (Bool): helper "Qualifying child who is your dependent (Step 2)" = true and helper "Age at the end of 2025" < 13 (dc.child_age)
 - dependent.dc_disabled_qp "Your dependent who lived with you for more than half of 2025 and was not able to care for themselves" (Bool): helper "Physically or mentally not able to care for themselves?" = true and helper "Lived with you more than half of 2025, or, for a person other than a qualifying child born or who died in 2025, more than half of the part of 2025 they were alive" = true
 - dependent.dc_child "Your qualifying child who is your dependent, turned 13 during 2025 and was under 13 for part of 2025 when the care was provided" (Bool): helper "Your qualifying child who is your dependent and was 13 at the end of 2025 (who may have been under 13 for part of the year)" = true and helper "Under age 13 for part of 2025 when the care was provided?" = true
-- dependent.edu_student "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" (Bool): f8863 helper "Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim" = true and helper "Your dependent" = true and helper "Qualified education expenses paid in 2025 for this dependent" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true and helper "The student received a 2025 Form 1098-T from the institution, or an exception applies" = true
-- household.all_tin "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN" (on household) (Bool): helper "Number of people on the return with an SSN or ITIN, or who have applied for an ITIN" = helper "Number of people on the return (you, and your spouse if filing jointly)"
-- dependent.edu_ein "The institution's employer identification number (EIN) is available" (Bool): Input — Do you have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?
+- dependent.edu_student "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" (Bool): Choose — [f8863 helper "Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim" = true → helper "With education expenses paid: claimed as your dependent, a student with qualified expenses, a TIN by the due date and a Form 1098-T (or an exception)"] [f8863 helper "Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim" = false → helper "Year parameter edu.no (false)"]
+- dependent.edu_aoc23 "For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years), and lines 24 to 26, the TINs and the EIN allow the credit" (Bool): Choose — [line 23 = false → helper "Line 24 is Yes (enrolled at least half-time), and lines 25 and 26, the TINs and the EIN allow the credit"] [line 23 = true → helper "Year parameter edu.no (false)"]
+- dependent.edu_no "Year parameter edu.no (false)" (Bool): Enter false (edu.no).
 - dependent.edu_adj_sum "Add lines 2a, 2b and 2c" (NonNegDollars): Add helper "Adjusted Qualified Education Expenses Worksheet, line 2a", helper "Adjusted Qualified Education Expenses Worksheet, line 2b", and helper "Adjusted Qualified Education Expenses Worksheet, line 2c".
 - dependent.edu_over "An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution" (Bool): Input — Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course materials required to be paid to the institution)?
 - dependent.edu_tin_issued "The student's SSN, ITIN or ATIN was issued on or before the due date of your return" (Bool): Input — Was this student's SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including extensions)? Answer no if an ITIN or ATIN had only been applied for by then, even if it has been or will be issued later.
@@ -100,11 +154,8 @@ Within a glossary entry, an unqualified line name belongs to the form named on t
 - dependent.dc_age13 "Your qualifying child who is your dependent and was 13 at the end of 2025 (who may have been under 13 for part of the year)" (Bool): helper "Qualifying child who is your dependent (Step 2)" = true and helper "Age at the end of 2025" = 13 (dc.child_age)
 - dependent.dc_under13 "Under age 13 for part of 2025 when the care was provided?" (Bool): Input — Was this child under age 13 for part of 2025, when you paid for their care? (A child who turned 13 in 2025 is a qualifying person only for the part of the year before their 13th birthday.)
 - f8863.paid "Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim" (on f8863) (Bool): Input — Did anyone pay qualified education expenses in 2025 for you, your spouse if filing jointly, or a dependent you claim, at a college, university, vocational school or other postsecondary school (for tuition, required fees or course materials)?
-- dependent.edu "Qualified education expenses paid in 2025 for this dependent" (Bool): Input — Did anyone pay qualified education expenses in 2025 for this dependent at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?
-- dependent.tin "SSN, ITIN or ATIN issued on or before the due date of your return?" (Bool): Input — Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN or ATIN for this person by then? An ITIN that has expired counts only if it has been renewed, or renewal applied for, by then.
-- dependent.edu_1098t "The student received a 2025 Form 1098-T from the institution, or an exception applies" (Bool): Input — Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution did not furnish it and, after February 2, 2026, but before you file, you or the student requested it, you fully cooperated with the institution's efforts to gather the information needed to furnish it, and you can show the enrollment and the payments.
-- household.tin_count "Number of people on the return with an SSN or ITIN, or who have applied for an ITIN" (on household) (Count): Add person.one over every confirmed person entry for which (helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = true or helper "If not, have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your return?" = true), within the current person when parent-bound. An unanswered roster is unknown.
-- household.persons "Number of people on the return (you, and your spouse if filing jointly)" (on household) (Count): Add person.one over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- dependent.edu_student_claimed "With education expenses paid: claimed as your dependent, a student with qualified expenses, a TIN by the due date and a Form 1098-T (or an exception)" (Bool): Choose — [helper "Your dependent" = true → helper "Your dependent: a student with qualified expenses, a TIN by the due date and a Form 1098-T (or an exception)"] [helper "Your dependent" = false → helper "Year parameter edu.no (false)"]
+- dependent.edu_aoc24 "Line 24 is Yes (enrolled at least half-time), and lines 25 and 26, the TINs and the EIN allow the credit" (Bool): Choose — [line 24 = true → helper "Line 25 is No (the first 4 years of postsecondary education were not completed before 2025), and line 26, the TINs and the EIN allow the credit"] [line 24 = false → helper "Year parameter edu.no (false)"]
 - dependent.edu_a2025 "Adjusted Qualified Education Expenses Worksheet, line 2a" (NonNegDollars): Input — Tax-free educational assistance received in 2025 for this student's 2025 expenses: the tax-free part of scholarships and fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance, veterans' educational assistance, and other tax-free educational assistance. Do not include wages, loans, gifts, inheritances, withdrawals from personal savings, emergency financial aid grants, or a scholarship the student includes in income (for you or your spouse, the amount on Schedule 1 line 8r); zero if none
 - dependent.edu_a2026 "Adjusted Qualified Education Expenses Worksheet, line 2b" (NonNegDollars): Input — Tax-free educational assistance received in 2026, before you file this return, that is allocable to an academic period of these 2025 expenses; zero if none
 - dependent.edu_refunds "Adjusted Qualified Education Expenses Worksheet, line 2c" (NonNegDollars): Input — Refunds of these 2025 qualified education expenses received in 2025, or in 2026 before you file this return; zero if none
@@ -119,14 +170,35 @@ Within a glossary entry, an unqualified line name belongs to the form named on t
     refusal: when dependent.income_exception is true, cannot complete Exception to gross income test. The sheltered-workshop exception to the gross income test for a disabled person is outside this tool.
     refusal: when dependent.married is true, cannot complete Married person rules. A married dependent is outside this tool; see Married person in the instructions.
     refusal: when dependent.qr_kidnapped is true, cannot complete Kidnapped child (Pub. 501). A child presumed kidnapped by someone who isn't a family member may be your qualifying relative under part-year rules this tool does not apply.
+- dependent.tin "SSN, ITIN or ATIN issued on or before the due date of your return?" (Bool): Input — Did this person have an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN or ATIN for this person by then? An ITIN that has expired counts only if it has been renewed, or renewal applied for, by then.
 - dependent.lived_half "Lived with you for more than half of 2025" (Bool): helper "Months lived with you in 2025, counting temporary absences" > 6 (a count)
     refusal: when dependent.kidnap_residency is true, cannot complete Kidnapped child (Pub. 501; Pub. 596 for the EIC). A child presumed kidnapped by someone who isn't a family member, who lived with you for fewer than 7 months of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.
 - dependent.born_died "Born or died in 2025?" (Bool): Input — Was this person born in 2025, or did this person die in 2025? A child born in 2025 is born alive only if state or local law treats the child as born alive and an official document, such as a birth certificate, shows the live birth (even if the child lived only for a moment). Do not list a stillborn child.
 - dependent.part_year_home "Lived with you more than half the part of 2025 they were alive, or since the adoption or placement?" (Bool): Input — Was your home this person's home for more than half of the part of 2025 they were alive (or, for a person adopted or placed with you in 2025, more than half of the time since the adoption or placement), counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you?
-- person.one "One entry for this person" (on person) (Count): Enter 1 (person.one).
+- dependent.edu_student_edu "Your dependent: a student with qualified expenses, a TIN by the due date and a Form 1098-T (or an exception)" (Bool): Choose — [helper "Qualified education expenses paid in 2025 for this dependent" = true → helper "A student with qualified expenses: a TIN by the due date and a Form 1098-T (or an exception)"] [helper "Qualified education expenses paid in 2025 for this dependent" = false → helper "Year parameter edu.no (false)"]
+- dependent.edu_aoc25 "Line 25 is No (the first 4 years of postsecondary education were not completed before 2025), and line 26, the TINs and the EIN allow the credit" (Bool): Choose — [line 25 = false → helper "Line 26 is No (no felony drug conviction), and the TINs and the EIN allow the credit"] [line 25 = true → helper "Year parameter edu.no (false)"]
 - dependent.qc_relationship "A child, sibling, or a descendant of either" (Bool): (helper "Relationship to you" = 'child' or helper "Relationship to you" = 'sibling' or helper "Relationship to you" = 'sibling_descendant')
 - dependent.qc_age "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" (Bool): (helper "Age at the end of 2025" < 19 (qc.age_limit) and helper "Younger than you (or your spouse if filing jointly)?" = true or helper "Age at the end of 2025" < 24 (qc.student_age_limit) and helper "Full-time student in 2025?" = true and helper "Younger than you (or your spouse if filing jointly)?" = true or helper "Permanently and totally disabled?" = true)
-- dependent.self_support "Provided over half of their own support?" (Bool): Input — Did this person provide over half of their own support for 2025? Total support is the amount spent for their food, lodging, clothing, education, medical and dental care, recreation, transportation and similar necessities, including tax-exempt income, savings and borrowed amounts used for their support and GI Bill tuition payments and allowances; it does not include income, social security or Medicare taxes paid from their own income, life insurance premiums, funeral expenses, medical insurance benefits (including Medicare benefits), or Survivors' and Dependents' Educational Assistance payments used for the support of the child who receives them. Count the person's own funds only if actually spent for their support (support the person paid for with their own wages is theirs, even if you paid the wages, and a person living in their own home provides its fair rental value), count lodging at its fair rental value and property, such as a car the person bought with their own funds, at its fair market value. Payments you receive from a child placement agency, state or county for a foster child's support are support provided by the agency, state or county, and benefits a state provides to this person as a needy person (welfare, food benefits, housing, etc.) are support provided by the state, not by the person. Do not count a scholarship the person received as a student. Social security benefits the person receives and uses for their own support are support the person provided.
+- dependent.self_support "Provided over half of their own support?" (Bool): Input — Did this person provide over half of their own support for 2025?
+
+    Total support is the amount spent for their food, lodging, clothing, education, medical and dental care, recreation, transportation and similar necessities, including tax-exempt income, savings and borrowed amounts used for their support and GI Bill tuition payments and allowances.
+
+    It does not include:
+    - income, social security or Medicare taxes paid from their own income
+    - life insurance premiums
+    - funeral expenses
+    - medical insurance benefits (including Medicare benefits)
+    - Survivors' and Dependents' Educational Assistance payments used for the support of the child who receives them
+
+    Count the person's own funds only if actually spent for their support (support the person paid for with their own wages is theirs, even if you paid the wages, and a person living in their own home provides its fair rental value).
+
+    Count lodging at its fair rental value and property, such as a car the person bought with their own funds, at its fair market value.
+
+    Payments you receive from a child placement agency, state or county for a foster child's support are support provided by the agency, state or county, and benefits a state provides to this person as a needy person (welfare, food benefits, housing, etc.) are support provided by the state, not by the person.
+
+    Do not count a scholarship the person received as a student.
+
+    Social security benefits the person receives and uses for their own support are support the person provided.
 - dependent.joint_return "Included on a 2025 joint return filed other than only to claim a refund?" (Bool): Input — Is a joint return being filed for 2025 that includes this person (including one filed by this person with a spouse who died during 2025, or by this person's surviving spouse after this person died during 2025), other than one filed only to claim a refund of withheld or estimated tax?
 - dependent.qc_tiebreak "The qualifying child of another person who is also your qualifying child, or whose other person is a taxpayer" (Bool): helper "Meets the conditions to be the qualifying child of another person?" = true and (helper "Every other person this person is a qualifying child of is not a taxpayer?" = false or helper "A child, sibling, or a descendant of either" = true and helper "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" = true and helper "Provided over half of their own support?" = false and helper "Included on a 2025 joint return filed other than only to claim a refund?" = false and helper "Lived with you for more than half of 2025" = true)
 - dependent.divorced_rule "Rule for children of divorced or separated parents applies?" (Bool): Input — Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child? Answer yes whether you are the custodial parent who signed the release (or whose decree or agreement lets the other parent claim the child) or the noncustodial parent using it. A release the custodial parent has revoked still applies for 2025 unless written notice of the revocation was given (or reasonable efforts were made to give it) to the noncustodial parent in 2024 or earlier.
@@ -135,23 +207,128 @@ Within a glossary entry, an unqualified line name belongs to the form named on t
 - dependent.canada_mexico "Resident of Canada or Mexico (if not a U.S. citizen, national or resident alien)?" (Bool): Input — If not a U.S. citizen, national or resident alien, was this person a resident of Canada or Mexico?
 - dependent.qr_relationship "A relative listed in Step 4, or any other person who lived with you all year" (Bool): (helper "Relationship to you" = 'child' or helper "Relationship to you" = 'sibling' or helper "Relationship to you" = 'parent' or helper "Relationship to you" = 'parent_relative' or helper "Relationship to you" = 'in_law' or f1040 line Filing Status = 'mfj' and helper "On a joint return, related to your spouse in one of the Step 4 ways" = true or (helper "Relationship to you" = 'household_member' or helper "Relationship to you" = 'sibling_descendant' or helper "Relationship to you" = 'other') and helper "Lived with you all of 2025 as a member of your household (qualifying relative test)" = true and (helper "Relationship to you" ≠ 'other' and helper "Relationship to you" ≠ 'sibling_descendant' or helper "Your relationship with this person did not violate local law" = true))
 - dependent.qr_income "Gross income under $5,200" (Bool): helper "Gross income for 2025" < $5,200 (qr.gross_income_limit)
-- dependent.supported "You provided over half of this person's support?" (Bool): Input — Did you provide over half of this person's support in 2025? Total support is the amount spent for the person's food, lodging, clothing, education, medical and dental care, recreation, transportation and similar necessities, including their tax-exempt income, savings and borrowed amounts used for their support and GI Bill tuition payments and allowances; it does not include income, social security or Medicare taxes the person paid from their own income, life insurance premiums, funeral expenses, a scholarship your child received as a student, or Survivors' and Dependents' Educational Assistance payments used for the support of the child who receives them. TANF or other public assistance payments you received and used to support this person count as support you provided. Count lodging at its fair rental value, which includes a reasonable allowance for furniture, appliances, heat and other utilities provided (a person living in their own home provides its fair rental value; if you provide only part of the lodging and the person supplies the rest, divide the fair rental value by how much each of you provides; and if you live rent free in this person's home, reduce your support by the fair rental value of the lodging they provide you), property at its fair market value, and expenses for the whole household, such as food, divided among its members. Medical insurance premiums you pay, including premiums for supplementary Medicare coverage, are support you provide; medical insurance benefits, including Medicare benefits, are not support. Count both the government's part and the part taken out of your military pay of an Armed Forces dependency allotment, and a tax-exempt military quarters allowance, as yours, and count payments you make for the person's child or dependent care as yours. A lump-sum advance payment to a home for the aged for a relative's care for life, based on their life expectancy, counts each year as the payment divided by that life expectancy. A capital item such as furniture, an appliance or a car counts only if bought for the person and given to them, not one the household shares or that you own and let them use. The person's own funds are support only if actually spent for their support. Payments you receive from a child placement agency, state or county for a foster child's support are support provided by the agency, state or county, not by you; your unreimbursed foster care expenses are not support you provided if you are in the trade or business of providing foster care or if they are deductible as a charitable contribution. Support your child paid for with the child's own wages is not yours, even if you paid the wages. Benefits a state provides to this person as a needy person (welfare, food benefits, housing, etc.) are support provided by the state, not by you; but payments based on need are not counted entirely as this person's support if part of them can be shown not to have been used for it. When spouses receive social security benefits by one check made out to both of them, half is support of each spouse unless they can show otherwise. Alimony or separate maintenance payments to a spouse (or similar payments from an estate or trust) are not support of a dependent. The year you provide support is the year you pay for it, even with borrowed money you repay later.
+- dependent.supported "You provided over half of this person's support?" (Bool): Input — Did you provide over half of this person's support in 2025?
+
+    Total support is the amount spent for the person's food, lodging, clothing, education, medical and dental care, recreation, transportation and similar necessities, including their tax-exempt income, savings and borrowed amounts used for their support and GI Bill tuition payments and allowances.
+
+    It does not include:
+    - income, social security or Medicare taxes the person paid from their own income
+    - life insurance premiums
+    - funeral expenses
+    - a scholarship your child received as a student
+    - Survivors' and Dependents' Educational Assistance payments used for the support of the child who receives them
+
+    TANF or other public assistance payments you received and used to support this person count as support you provided.
+
+    Count:
+    - lodging at its fair rental value, which includes a reasonable allowance for furniture, appliances, heat and other utilities provided
+      - a person living in their own home provides its fair rental value
+      - if you provide only part of the lodging and the person supplies the rest, divide the fair rental value by how much each of you provides
+      - if you live rent free in this person's home, reduce your support by the fair rental value of the lodging they provide you
+    - property at its fair market value
+    - expenses for the whole household, such as food, divided among its members
+
+    Medical insurance premiums you pay, including premiums for supplementary Medicare coverage, are support you provide; medical insurance benefits, including Medicare benefits, are not support.
+
+    Count both the government's part and the part taken out of your military pay of an Armed Forces dependency allotment, and a tax-exempt military quarters allowance, as yours, and count payments you make for the person's child or dependent care as yours.
+
+    A lump-sum advance payment to a home for the aged for a relative's care for life, based on their life expectancy, counts each year as the payment divided by that life expectancy.
+
+    A capital item such as furniture, an appliance or a car counts only if bought for the person and given to them, not one the household shares or that you own and let them use.
+
+    The person's own funds are support only if actually spent for their support.
+
+    Payments you receive from a child placement agency, state or county for a foster child's support are support provided by the agency, state or county, not by you; your unreimbursed foster care expenses are not support you provided if you are in the trade or business of providing foster care or if they are deductible as a charitable contribution.
+
+    Support your child paid for with the child's own wages is not yours, even if you paid the wages.
+
+    Benefits a state provides to this person as a needy person (welfare, food benefits, housing, etc.) are support provided by the state, not by you; but payments based on need are not counted entirely as this person's support if part of them can be shown not to have been used for it.
+
+    When spouses receive social security benefits by one check made out to both of them, half is support of each spouse unless they can show otherwise.
+
+    Alimony or separate maintenance payments to a spouse (or similar payments from an estate or trust) are not support of a dependent.
+
+    The year you provide support is the year you pay for it, even with borrowed money you repay later.
 - dependent.multiple_support "Claimed under a multiple support agreement?" (Bool): Input — Did you and others together provide over half of this person's support for 2025, with no one person providing over half (a multiple support situation), whether you or another contributor claims the person?
 - dependent.income_exception "Permanently and totally disabled with gross income at or over the limit" (Bool): helper "Permanently and totally disabled?" = true and helper "Gross income under $5,200" = false
 - dependent.qr_kidnapped "A child aged 18 or under at the end of 2025 presumed kidnapped by someone who isn't a family member" (Bool): helper "Age at the end of 2025" < 19 (a count) and helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" = true
-- dependent.months "Months lived with you in 2025, counting temporary absences" (Count): Input — Months this person lived with you in 2025, counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you, and counting a newborn's required hospital stay following birth as time lived with you (0–12), but not counting time a child presumed kidnapped was missing because of the kidnapping; enter 7 if the person lived with you for more than half of 2025 but fewer than 7 full months. For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible foster child in 2025, enter 12 only if your home was their home for the entire time they were alive or since the adoption or placement, and 0 otherwise
+- dependent.months "Months lived with you in 2025, counting temporary absences" (Count): Input — Months this person lived with you in 2025 (0–12)
+
+    - counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you
+    - counting a newborn's required hospital stay following birth as time lived with you
+    - but not counting time a child presumed kidnapped was missing because of the kidnapping
+
+    Enter 7 if the person lived with you for more than half of 2025 but fewer than 7 full months.
+
+    For a person born, died, adopted or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home was their home for more than half the time they were alive or with you, and 0 otherwise.
+
+    For any other person born or who died in 2025, or adopted, lawfully placed with you for legal adoption, or placed with you as an eligible foster child in 2025, enter 12 only if your home was their home for the entire time they were alive or since the adoption or placement, and 0 otherwise
 - dependent.kidnap_residency "A child presumed kidnapped who lived with you for fewer than 7 months of 2025, not counting the time missing" (Bool): helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" = true and helper "Months lived with you in 2025, counting temporary absences" < 7 (a count)
-- dependent.relationship "Relationship to you" (Enum(dependent_relationship)): Input — Relationship to you: child (son, daughter, stepchild, eligible foster child, or a descendant of any of them; an adopted child, including a child lawfully placed with you for legal adoption, is your son or daughter; an eligible foster child is one placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction, and a child in your care without such a placement who is not otherwise your relative is entered as household_member or other), sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister), sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling's child), parent (father or mother; not a foster parent, who is entered as other), parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent), in_law (step-parent or in-law, including one whose relationship began with a marriage that has since ended by death or divorce), household_member (any other person, other than a person who was your spouse at any time during 2025, who lived with you all year as a member of your household, if your relationship did not violate local law), or other (any other relationship; such a person is a Step 4 relative only if they lived with you all year as a member of your household and the relationship did not violate local law). Do not list a person who was your spouse at any time during 2025: that person can't be your qualifying relative. Give the relationship to you; on a joint return, a relative of your spouse who is no relative of yours is entered as household_member or other, and a later question asks about the relationship to your spouse.
+- dependent.edu "Qualified education expenses paid in 2025 for this dependent" (Bool): Input — Did anyone pay qualified education expenses in 2025 for this dependent at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?
+- dependent.edu_student_tin "A student with qualified expenses: a TIN by the due date and a Form 1098-T (or an exception)" (Bool): Choose — [helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true → helper "The student received a 2025 Form 1098-T from the institution, or an exception applies"] [helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = false → helper "Year parameter edu.no (false)"]
+- dependent.edu_aoc26 "Line 26 is No (no felony drug conviction), and the TINs and the EIN allow the credit" (Bool): Choose — [line 26 = false → helper "You, and your spouse if filing jointly, have a TIN, and the institution's EIN is available"] [line 26 = true → helper "Year parameter edu.no (false)"]
+- dependent.relationship "Relationship to you" (Enum(dependent_relationship)): Input — Relationship to you:
+
+    - child (son, daughter, stepchild, eligible foster child, or a descendant of any of them)
+      - an adopted child, including a child lawfully placed with you for legal adoption, is your son or daughter
+      - an eligible foster child is one placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction
+      - a child in your care without such a placement who is not otherwise your relative is entered as household_member or other
+    - sibling (brother, sister, half brother, half sister, stepbrother or stepsister, or a son or daughter of a brother, sister, half brother or half sister)
+    - sibling_descendant (any other descendant of a sibling, such as a grandniece or a stepsibling's child)
+    - parent (father or mother; not a foster parent, who is entered as other)
+    - parent_relative (a grandparent, aunt or uncle: an ancestor or sibling of a parent)
+    - in_law (step-parent or in-law, including one whose relationship began with a marriage that has since ended by death or divorce)
+    - household_member (any other person, other than a person who was your spouse at any time during 2025, who lived with you all year as a member of your household, if your relationship did not violate local law)
+    - other (any other relationship; such a person is a Step 4 relative only if they lived with you all year as a member of your household and the relationship did not violate local law)
+
+    Do not list a person who was your spouse at any time during 2025: that person can't be your qualifying relative.
+
+    Give the relationship to you; on a joint return, a relative of your spouse who is no relative of yours is entered as household_member or other, and a later question asks about the relationship to your spouse.
 - dependent.younger "Younger than you (or your spouse if filing jointly)?" (Bool): Input — Was this person younger than you (or, if you file jointly, younger than you or your spouse; the person need not be younger than both of you)?
-- dependent.student "Full-time student in 2025?" (Bool): Input — Was this person a full-time student in 2025, that is, during any part of 5 calendar months of 2025 (not necessarily consecutive) enrolled for the hours or courses the school considers full-time attendance at a school that has a regular teaching staff and course of study and a regularly enrolled student body (an elementary school, junior or senior high school, college, university, or technical, trade or mechanical school), or taking a full-time, on-farm training course given by such a school or a state, county or local government agency? A student who works on a "co-op" job in private industry as part of a school's regular course of classroom and practical training is a full-time student. An on-the-job training course, a correspondence school or a school offering courses only through the Internet does not count.
+- dependent.student "Full-time student in 2025?" (Bool): Input — Was this person a full-time student in 2025, that is, during any part of 5 calendar months of 2025 (not necessarily consecutive), either of these?
+
+    - enrolled for the hours or courses the school considers full-time attendance at a school that has a regular teaching staff and course of study and a regularly enrolled student body (an elementary school, junior or senior high school, college, university, or technical, trade or mechanical school)
+    - taking a full-time, on-farm training course given by such a school or a state, county or local government agency
+
+    A student who works on a "co-op" job in private industry as part of a school's regular course of classroom and practical training is a full-time student.
+
+    An on-the-job training course, a correspondence school or a school offering courses only through the Internet does not count.
 - dependent.disabled "Permanently and totally disabled?" (Bool): Input — Was this person permanently and totally disabled at any time in 2025, that is, unable to engage in any substantial gainful activity because of a physical or mental condition that a doctor has determined has lasted or can be expected to last continuously for at least a year or can be expected to lead to death?
 - dependent.other_claimant "Meets the conditions to be the qualifying child of another person?" (Bool): Input — Does this person meet the conditions to be the qualifying child of any other person for 2025, under the dependent rules or under the EIC rules (which have no support test)?
 - dependent.other_nontaxpayer "Every other person this person is a qualifying child of is not a taxpayer?" (Bool): Input — If this person meets the conditions to be the qualifying child of another person: is every such other person not a taxpayer for 2025? A person is not a taxpayer if they are not required to file a 2025 U.S. income tax return and either do not file one or file only to get a refund of withheld income tax or estimated tax paid (claiming no earned income credit or other tax credit or deduction), or if they are not a U.S. citizen and have no U.S. gross income.
-- dependent.spouse_relative "On a joint return, related to your spouse in one of the Step 4 ways" (Bool): Input — Is this person related to your spouse in one of these ways: your spouse's child, stepchild or foster child, or a descendant of any of them; your spouse's brother, sister, half brother, half sister, stepbrother or stepsister; your spouse's father, mother, grandparent or other direct ancestor (not a foster parent); your spouse's stepfather or stepmother; a son or daughter of your spouse's brother, sister, half brother or half sister; a brother or sister of your spouse's father or mother; or your spouse's son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law or sister-in-law? A relationship established by marriage is not ended by death or divorce. (Asked only on a joint return, for a person who is not one of these relatives of yours.)
-- dependent.qr_all_year "Lived with you all of 2025 as a member of your household (qualifying relative test)" (Bool): Input — Did this person live with you all of 2025 as a member of your household? Count as time lived with you a temporary absence by you or the person for special circumstances, such as illness, education, business, vacation, military service or detention in a juvenile facility, and a stay in a nursing home for an indefinite period to receive constant medical care. Answer Yes also for a person who died in 2025 and lived with you as a member of your household until death; a child born in 2025 who lived with you as a member of your household for the rest of the year, apart from any required hospital stay following birth; and a person you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025, if your main home was the person's main home for the entire time since the adoption or placement.
+- dependent.spouse_relative "On a joint return, related to your spouse in one of the Step 4 ways" (Bool): Input — Is this person related to your spouse in one of these ways?
+
+    - your spouse's child, stepchild or foster child, or a descendant of any of them
+    - your spouse's brother, sister, half brother, half sister, stepbrother or stepsister
+    - your spouse's father, mother, grandparent or other direct ancestor (not a foster parent)
+    - your spouse's stepfather or stepmother
+    - a son or daughter of your spouse's brother, sister, half brother or half sister
+    - a brother or sister of your spouse's father or mother
+    - your spouse's son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law or sister-in-law
+
+    A relationship established by marriage is not ended by death or divorce.
+
+    (Asked only on a joint return, for a person who is not one of these relatives of yours.)
+- dependent.qr_all_year "Lived with you all of 2025 as a member of your household (qualifying relative test)" (Bool): Input — Did this person live with you all of 2025 as a member of your household?
+
+    Count as time lived with you:
+    - a temporary absence by you or the person for special circumstances, such as illness, education, business, vacation, military service or detention in a juvenile facility
+    - a stay in a nursing home for an indefinite period to receive constant medical care
+
+    Answer Yes also for:
+    - a person who died in 2025 and lived with you as a member of your household until death
+    - a child born in 2025 who lived with you as a member of your household for the rest of the year, apart from any required hospital stay following birth
+    - a person you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025, if your main home was the person's main home for the entire time since the adoption or placement
 - dependent.lawful "Your relationship with this person did not violate local law" (Bool): Input — Did your relationship with this person not violate local law? (Asked for a person who is a Step 4 relative only as a member of your household all year, such as a sibling's grandchild or a step sibling's child, or who is no relative.)
 - dependent.gross_income "Gross income for 2025" (NonNegDollars): Input — This person's gross income for 2025, which is all income in the form of money, property, and services that isn't exempt from tax. Include gross receipts from rental property without deducting taxes, repairs or other expenses, a partner's share of the gross (not net) partnership income, business sales minus the cost of goods sold in a manufacturing, merchandising or mining business, and all taxable unemployment compensation, taxable social security benefits and certain amounts received as scholarship and fellowship grants. Do not include nontaxable social security benefits or other tax-exempt income.
 - dependent.kidnapped "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" (Bool): Input — Is this person a child who was kidnapped by someone who isn't a member of your family or the child's family, whom law enforcement authorities presume to have been kidnapped, and who was missing because of the kidnapping at some time during 2025 (a kidnapping in 2025, or an earlier kidnapping before the child's return)? Answer yes even if law enforcement first presumed the kidnapping after 2025, or the child has since been returned.
+- dependent.edu_1098t "The student received a 2025 Form 1098-T from the institution, or an exception applies" (Bool): Input — Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution did not furnish it and, after February 2, 2026, but before you file, you or the student requested it, you fully cooperated with the institution's efforts to gather the information needed to furnish it, and you can show the enrollment and the payments.
+- dependent.edu_aoc_tin "You, and your spouse if filing jointly, have a TIN, and the institution's EIN is available" (Bool): Choose — [household helper "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN" = true → helper "The institution's employer identification number (EIN) is available"] [household helper "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN" = false → helper "Year parameter edu.no (false)"]
+- household.all_tin "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN" (on household) (Bool): helper "Number of people on the return with an SSN or ITIN, or who have applied for an ITIN" = helper "Number of people on the return (you, and your spouse if filing jointly)"
+- dependent.edu_ein "The institution's employer identification number (EIN) is available" (Bool): Input — Do you have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?
+- household.tin_count "Number of people on the return with an SSN or ITIN, or who have applied for an ITIN" (on household) (Count): Add person.one over every confirmed person entry for which (helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = true or helper "If not, have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your return?" = true), within the current person when parent-bound. An unanswered roster is unknown.
+- household.persons "Number of people on the return (you, and your spouse if filing jointly)" (on household) (Count): Add person.one over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- person.one "One entry for this person" (on person) (Count): Enter 1 (person.one).
 
 Lines of other forms named above, with the IRS wording of each:
 - f1040 line Filing Status: "Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS)."
@@ -1846,6 +2023,79 @@ year. If you complete lines 27 through 30 for this student, don’t complete lin
                                                                                                                                    Form 8863 (2025)
 
 
+===== f1040sa (2025; created 2025-11-20) page 1 of 1, as laid out =====
+SCHEDULE A                                                       Itemized Deductions                                                                      OMB No. 1545-0074
+(Form 1040)
+Department of the Treasury
+                                                             Attach to Form 1040 or 1040-SR.
+                                          Go to www.irs.gov/ScheduleA for instructions and the latest information.                                         2025
+                                                                                                                                                          Attachment
+Internal Revenue Service       Caution: If you are claiming a net qualified disaster loss on Form 4684, see the instructions for line 16.                 Sequence No. 07
+Name(s) shown on Form 1040 or 1040-SR                                                                                                              Your social security number
+
+
+Medical                     Caution: Do not include expenses reimbursed or paid by others.
+and                      1  Medical and dental expenses (see instructions) . . . . .                                   1
+Dental                   2  Enter amount from Form 1040 or 1040-SR,
+Expenses                    line 11b . . . . . . . . . . .                   2
+                         3  Multiply line 2 by 7.5% (0.075) . . . . . . . . . . .                                      3
+                         4  Subtract line 3 from line 1. If line 3 is more than line 1, enter -0- .                    . .   .     .   .   .   .      4
+Taxes You                5  State and local taxes (SALT).
+Paid                      a State and local income taxes or general sales taxes. You may
+                            include either income taxes or general sales taxes on line 5a,
+                            but not both. If you elect to include general sales taxes instead
+                            of income taxes, check this box         . . . . . . . . .                                  5a
+                          b State and local real estate taxes (see instructions)      . . . .                          5b
+                          c State and local personal property taxes . . . . . . . .                                    5c
+                          d Add lines 5a through 5c . . . . . . . . . . . . .                                          5d
+                          e   Enter the smaller of line 5d or $40,000 ($20,000 if married filing
+                              separately). If Form 1040 or 1040-SR, line 11b is more than $500,000
+                              ($250,000 if married filing separately), or if you completed Form 2555,
+                              Form 4563, or excluded income from Puerto Rico, see instructions .                       5e
+                         6    Other taxes. List type and amount:
+
+                                                                                                                       6
+                         7     Add lines 5e and 6        .   .   .   .   .   .   .   .   .   .   .    .   .   .   .    . .   .     .   .   .   .      7
+Interest                 8  Home mortgage interest and points. If you didn’t use all of your
+You Paid                    home mortgage loan(s) to buy, build, or improve your home, see
+Caution: Your               instructions and check this box . . . . . . . . . .
+mortgage interest
+deduction may be          a Home mortgage interest and points reported to you on Form
+limited. See                1098. See instructions if limited . . . . . . . . . . .                                    8a
+instructions.
+                          b Home mortgage interest not reported to you on Form 1098. See
+                            instructions if limited. If paid to the person from whom you
+                            bought the home, see instructions and show that person’s
+                            name, identifying no., and address . . . . . . . . . .                                     8b
+
+
+
+                          c Points not reported to you on Form 1098. See instructions for
+                            special rules . . . . . . . . . . . . . . . . .                     8c
+                          d Reserved for future use . . . . . . . . . . . . .                   8d
+                          e Add lines 8a through 8c . . . . . . . . . . . . .                   8e
+                         9  Investment interest. Attach Form 4952 if required. See instructions  9
+                        10  Add lines 8e and 9 . . . . . . . . . . . . . . . . . .                                           .     .   .   .   .     10
+Gifts to                11    Gifts by cash or check. If you made any gift of $250 or more,
+Charity                       see instructions . . . . . . . . . . . . . . . .               11
+Caution: If you         12    Other than by cash or check. If you made any gift of $250 or
+made a gift and
+got a benefit for it,         more, see instructions. You must attach Form 8283 if over $500 12
+see instructions.       13    Carryover from prior year . . . . . . . . . . . . .            13
+                        14    Add lines 11 through 13 . . . . . . . . . . . . . . . .                                        .     .   .   .   .     14
+Casualty                15    Casualty and theft loss(es) from a federally declared disaster (other than net qualified
+and Theft                     disaster losses). Attach Form 4684 and enter the amount from line 18 of that form. See
+Losses                        instructions . . . . . . . . . . . . . . . . . . . . . . . . .                                                         15
+Other                   16    Other—from list in instructions. List type and amount:
+Itemized
+Deductions                                                                                                                                           16
+Total                   17    Add the amounts in the far right column for lines 4 through 16. Also, enter this amount
+Itemized                      on Form 1040 or 1040-SR, line 12e . . . . . . . . . . . . . . . . .                                                    17
+Deductions              18    If you elect to itemize deductions even though they are less than your standard
+                              deduction, check this box    . . . . . . . . . . . . . . . . . . .
+For Paperwork Reduction Act Notice, see the Instructions for Form 1040.                              Cat. No. 17145C             Schedule A (Form 1040) 2025 Created 11/20/25
+
+
 ===== f1040 (2025; created 2025-09-05) page 1 of 2, as laid out =====
        1040 U.S. Individual Income Tax Return 2025
                         Department of the Treasury—Internal Revenue Service
@@ -2013,79 +2263,6 @@ attach Sch. EIC.        b    Clergy filing Schedule SE (see instructions)       
  Use Only             Firm’s name                                                                                                                         Phone no.
                       Firm’s address                                                                                                                      Firm’s EIN
  Go to www.irs.gov/Form1040 for instructions and the latest information.                                                                                                     Form 1040 (2025)
-
-
-===== f1040sa (2025; created 2025-11-20) page 1 of 1, as laid out =====
-SCHEDULE A                                                       Itemized Deductions                                                                      OMB No. 1545-0074
-(Form 1040)
-Department of the Treasury
-                                                             Attach to Form 1040 or 1040-SR.
-                                          Go to www.irs.gov/ScheduleA for instructions and the latest information.                                         2025
-                                                                                                                                                          Attachment
-Internal Revenue Service       Caution: If you are claiming a net qualified disaster loss on Form 4684, see the instructions for line 16.                 Sequence No. 07
-Name(s) shown on Form 1040 or 1040-SR                                                                                                              Your social security number
-
-
-Medical                     Caution: Do not include expenses reimbursed or paid by others.
-and                      1  Medical and dental expenses (see instructions) . . . . .                                   1
-Dental                   2  Enter amount from Form 1040 or 1040-SR,
-Expenses                    line 11b . . . . . . . . . . .                   2
-                         3  Multiply line 2 by 7.5% (0.075) . . . . . . . . . . .                                      3
-                         4  Subtract line 3 from line 1. If line 3 is more than line 1, enter -0- .                    . .   .     .   .   .   .      4
-Taxes You                5  State and local taxes (SALT).
-Paid                      a State and local income taxes or general sales taxes. You may
-                            include either income taxes or general sales taxes on line 5a,
-                            but not both. If you elect to include general sales taxes instead
-                            of income taxes, check this box         . . . . . . . . .                                  5a
-                          b State and local real estate taxes (see instructions)      . . . .                          5b
-                          c State and local personal property taxes . . . . . . . .                                    5c
-                          d Add lines 5a through 5c . . . . . . . . . . . . .                                          5d
-                          e   Enter the smaller of line 5d or $40,000 ($20,000 if married filing
-                              separately). If Form 1040 or 1040-SR, line 11b is more than $500,000
-                              ($250,000 if married filing separately), or if you completed Form 2555,
-                              Form 4563, or excluded income from Puerto Rico, see instructions .                       5e
-                         6    Other taxes. List type and amount:
-
-                                                                                                                       6
-                         7     Add lines 5e and 6        .   .   .   .   .   .   .   .   .   .   .    .   .   .   .    . .   .     .   .   .   .      7
-Interest                 8  Home mortgage interest and points. If you didn’t use all of your
-You Paid                    home mortgage loan(s) to buy, build, or improve your home, see
-Caution: Your               instructions and check this box . . . . . . . . . .
-mortgage interest
-deduction may be          a Home mortgage interest and points reported to you on Form
-limited. See                1098. See instructions if limited . . . . . . . . . . .                                    8a
-instructions.
-                          b Home mortgage interest not reported to you on Form 1098. See
-                            instructions if limited. If paid to the person from whom you
-                            bought the home, see instructions and show that person’s
-                            name, identifying no., and address . . . . . . . . . .                                     8b
-
-
-
-                          c Points not reported to you on Form 1098. See instructions for
-                            special rules . . . . . . . . . . . . . . . . .                     8c
-                          d Reserved for future use . . . . . . . . . . . . .                   8d
-                          e Add lines 8a through 8c . . . . . . . . . . . . .                   8e
-                         9  Investment interest. Attach Form 4952 if required. See instructions  9
-                        10  Add lines 8e and 9 . . . . . . . . . . . . . . . . . .                                           .     .   .   .   .     10
-Gifts to                11    Gifts by cash or check. If you made any gift of $250 or more,
-Charity                       see instructions . . . . . . . . . . . . . . . .               11
-Caution: If you         12    Other than by cash or check. If you made any gift of $250 or
-made a gift and
-got a benefit for it,         more, see instructions. You must attach Form 8283 if over $500 12
-see instructions.       13    Carryover from prior year . . . . . . . . . . . . .            13
-                        14    Add lines 11 through 13 . . . . . . . . . . . . . . . .                                        .     .   .   .   .     14
-Casualty                15    Casualty and theft loss(es) from a federally declared disaster (other than net qualified
-and Theft                     disaster losses). Attach Form 4684 and enter the amount from line 18 of that form. See
-Losses                        instructions . . . . . . . . . . . . . . . . . . . . . . . . .                                                         15
-Other                   16    Other—from list in instructions. List type and amount:
-Itemized
-Deductions                                                                                                                                           16
-Total                   17    Add the amounts in the far right column for lines 4 through 16. Also, enter this amount
-Itemized                      on Form 1040 or 1040-SR, line 12e . . . . . . . . . . . . . . . . .                                                    17
-Deductions              18    If you elect to itemize deductions even though they are less than your standard
-                              deduction, check this box    . . . . . . . . . . . . . . . . . . .
-For Paperwork Reduction Act Notice, see the Instructions for Form 1040.                              Cat. No. 17145C             Schedule A (Form 1040) 2025 Created 11/20/25
 
 
 ===== p970 (2025) page 11 of 81, in reading order =====

@@ -449,8 +449,86 @@
  },
  {
   "form": "dependent",
-  "prompt_sha": "c43c1b44361949f0f926ee95bb9b9da5f8c115c886a0eb1ace597d3c6763055d",
+  "prompt_sha": "deb4f7f1a789a496adeeb51e0fd0e2ae510815e648014fede14ca831c5bcd71a",
   "claims": [
+   {
+    "item": "dependent.claimed",
+    "sentences": [
+     {
+      "quote": "If you have more than four dependents, check the box under Dependents on page 1 of Form 1040 or 1040-SR and include a statement showing the information requested in the Dependents section.",
+      "page": "i1040gi p. 17"
+     },
+     {
+      "quote": "If the child lived with you for more than half of 2025, check the “Yes” box (box (a)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
+      "page": "i1040gi p. 17"
+     },
+     {
+      "quote": "If the child is a full-time student, check the “Full-time student” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR",
+      "page": "i1040gi p. 17"
+     },
+     {
+      "quote": "If the child is permanently and totally disabled, check the “Permanently and totally disabled” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
+      "page": "i1040gi p. 17"
+     },
+     {
+      "quote": "Check the “Child tax credit” box on row (7) of the Dependents section on page 1 of Form 1040 or 1040-SR for this person.",
+      "page": "i1040gi p. 18"
+     },
+     {
+      "quote": "If the child lived with you in the United States for more than half of 2025, check both boxes (box (a) and box (b)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
+      "page": "i1040gi p. 41"
+     }
+    ],
+    "quote": "If you have more than four dependents, check the box under Dependents on page 1 of Form 1040 or 1040-SR and include a statement showing the information requested in the Dependents section. / If the child lived with you for more than half of 2025, check the “Yes” box (box (a)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR. / If the child is a full-time student, check the “Full-time student” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR / If the child is permanently and totally disabled, check the “Permanently and totally disabled” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR. / Check the “Child tax credit” box on row (7) of the Dependents section on page 1 of Form 1040 or 1040-SR for this person. / If the child lived with you in the United States for more than half of 2025, check both boxes (box (a) and box (b)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
+    "page": "i1040gi p. 17; i1040gi p. 18; i1040gi p. 41",
+    "why_uncovered": "The encoding computes the underlying tests: lived_half, student, disabled, ctc_child, odc_person and us_half. It has no line that produces the Dependents-section entries (row (5)(a)/(b), row (6) and row (7) checkboxes). It also does not produce the over-four-dependents checkbox and the attached statement. No refusal covers these entries.",
+    "closest_item": "dependent.claimed",
+    "effect": "presentation"
+   },
+   {
+    "item": "dependent.dc_line2d",
+    "sentences": [
+     {
+      "quote": "If you have more than three qualifying persons, check the box on line 2 and attach a statement to your return with the required information.",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "In this situation, all the lines on line 2 of Form 2441 must be completed with information for the three people with the highest qualifying expenses.",
+      "page": "i2441 p. 3"
+     }
+    ],
+    "quote": "If you have more than three qualifying persons, check the box on line 2 and attach a statement to your return with the required information. / In this situation, all the lines on line 2 of Form 2441 must be completed with information for the three people with the highest qualifying expenses.",
+    "page": "i2441 p. 3",
+    "why_uncovered": "dc_count and dc_line2d produce a per-person column (d) amount. Nothing chooses the three persons with the highest expenses for the form rows, sets the line 2 checkbox, or produces the attached statement for additional qualifying persons.",
+    "closest_item": "dependent.dc_line2d",
+    "effect": "presentation"
+   },
+   {
+    "item": "dependent.edu_ein",
+    "sentences": [
+     {
+      "quote": "Enter the student’s name as shown on page 1 of your tax return.",
+      "page": "i8863 p. 8"
+     },
+     {
+      "quote": "Enter the student’s social security number (or other TIN, if applicable) as shown on page 1 of your tax return.",
+      "page": "i8863 p. 8"
+     },
+     {
+      "quote": "The educational institution’s EIN must be provided on line 22(4) if the American opportunity credit is claimed for this student.",
+      "page": "i8863 p. 8"
+     },
+     {
+      "quote": "If the student attended more than two educational institutions, attach an additional page 2 completed only through line 22.",
+      "page": "i8863 p. 8"
+     }
+    ],
+    "quote": "Enter the student’s name as shown on page 1 of your tax return. / Enter the student’s social security number (or other TIN, if applicable) as shown on page 1 of your tax return. / The educational institution’s EIN must be provided on line 22(4) if the American opportunity credit is claimed for this student. / If the student attended more than two educational institutions, attach an additional page 2 completed only through line 22.",
+    "page": "i8863 p. 8",
+    "why_uncovered": "edu_ein only asks whether the EIN is available, as a gate. No encoded line produces Form 8863 Part III lines 20–22: the student's name, the student's TIN, the institution information including the EIN on line 22(4), and the Form 1098-T answers. Nothing handles the extra page 2 for more than two institutions.",
+    "closest_item": "dependent.edu_ein",
+    "effect": "presentation"
+   },
    {
     "item": "dependent.edu_aoc",
     "sentences": [
@@ -459,17 +537,13 @@
       "page": "i8863 p. 3"
      },
      {
-      "quote": "If you claim the American opportunity credit even though you’re not eligible, you may be banned from claiming the credit depending on your conduct.",
-      "page": "i8863 p. 1"
-     },
-     {
       "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
       "page": "i8863 p. 1"
      }
     ],
-    "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If you claim the American opportunity credit even though you’re not eligible, you may be banned from claiming the credit depending on your conduct. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+    "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
     "page": "i8863 p. 3; i8863 p. 1",
-    "why_uncovered": "dependent.edu_aoc treats a student as an American opportunity credit student when lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available. No question asks whether the filer is under a 2-year (reckless or intentional disregard) or 10-year (fraud) ban on claiming the credit. No question asks whether a prior American opportunity credit was denied or reduced so that Form 8862 must be attached. None of the HANDLED ELSEWHERE refusals for Form 8863 covers the ban or Form 8862.",
+    "why_uncovered": "edu_aoc is built only from lines 23–26, the filer and student TINs, and the institution EIN. No question asks about a prior final determination of reckless or intentional disregard or of fraud, which bars the credit. No question asks about a prior AOC disallowance requiring Form 8862, and no refusal covers either. Nothing in HANDLED ELSEWHERE addresses the AOC ban or Form 8862.",
     "closest_item": "dependent.edu_aoc",
     "effect": "eligibility"
    }
@@ -578,7 +652,7 @@
     ]
    }
   ],
-  "cost": 0.563008,
+  "cost": 0.6407,
   "model": "claude-opus-5-5"
  },
  {
@@ -3410,42 +3484,24 @@
  },
  {
   "form": "person",
-  "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c",
+  "prompt_sha": "ca1d25d6b42ed148a1e70bbcd476dea17f98976459e00a656b9a2fd550e15d82",
   "claims": [
    {
-    "item": "person.edu_aoc",
+    "item": "person.ira_trad",
     "sentences": [
      {
-      "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
-      "page": "i8863 p. 1"
+      "quote": "9. Don’t include any repayments of qualified reservist distributions. You can’t deduct them.",
+      "page": "i1040gi p. 95"
      },
      {
-      "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
-      "page": "i8863 p. 3"
+      "quote": "Include on line 1 any repayment of a qualified reservist distribution.",
+      "page": "i8606 p. 9"
      }
     ],
-    "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit. / Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
-    "page": "i8863 p. 1; i8863 p. 3",
-    "why_uncovered": "person.edu_aoc qualifies a student from lines 23 to 26, the filers' TINs, and the institution's EIN. No question asks whether an earlier American opportunity credit was denied or reduced. No question asks about a final reckless-disregard or fraud determination. Nothing refuses or requires Form 8862 for the AOC. The Form 8862 handling listed under HANDLED ELSEWHERE covers only the EIC.",
-    "closest_item": "person.edu_aoc",
-    "effect": "eligibility"
-   },
-   {
-    "item": "person.edu_a2025",
-    "sentences": [
-     {
-      "quote": "A student cannot choose to include in income a scholarship or fellowship grant provided by an Indian tribal government that is excluded from income under the Tribal General Welfare Exclusion Act of 2014 or benefits provided by an educational program described in section 5.02(2)(b)(ii) of Revenue Procedure 2014-35, available at IRS.gov/irb/2014-26_IRB#RP-2014-35.",
-      "page": "i8863 p. 5"
-     },
-     {
-      "quote": "Also, the scholarship or fellowship grant must be one that may (by its terms) be used for expenses other than qualified education expenses (such as room and board).",
-      "page": "i8863 p. 5"
-     }
-    ],
-    "quote": "A student cannot choose to include in income a scholarship or fellowship grant provided by an Indian tribal government that is excluded from income under the Tribal General Welfare Exclusion Act of 2014 or benefits provided by an educational program described in section 5.02(2)(b)(ii) of Revenue Procedure 2014-35, available at IRS.gov/irb/2014-26_IRB#RP-2014-35. / Also, the scholarship or fellowship grant must be one that may (by its terms) be used for expenses other than qualified education expenses (such as room and board).",
-    "page": "i8863 p. 5",
-    "why_uncovered": "The line 2a question lets the filer leave out any scholarship the student includes in income. It does not limit that choice to grants that may by their terms pay non-qualified expenses. It also does not exclude tribal-government grants and Rev. Proc. 2014-35 program benefits, which can't be included in income. Expenses could therefore be under-reduced.",
-    "closest_item": "person.edu_a2025",
+    "quote": "9. Don’t include any repayments of qualified reservist distributions. You can’t deduct them. / Include on line 1 any repayment of a qualified reservist distribution.",
+    "page": "i1040gi p. 95; i8606 p. 9",
+    "why_uncovered": "The question for traditional IRA contributions lists what to leave out: rollovers, contributions deducted for 2024, contributions withdrawn by the due date, trustees' fees and employer SEP/SIMPLE contributions. It does not leave out repayments of qualified reservist distributions. No refusal or other question covers them either. So a repayment would flow into worksheet line 11 and could be deducted, when it is nondeductible and belongs on Form 8606 line 1.",
+    "closest_item": "person.ira_trad",
     "effect": "amount"
    },
    {
@@ -3458,7 +3514,7 @@
     ],
     "quote": "An eligible distribution to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA.",
     "page": "p590b p. 28",
-    "why_uncovered": "person.x_c22 caps exception 22 only at the fixed $10,300 (person.x_cap22). No question asks for the IRA's present value, so the 50%-of-present-value limit is never applied or refused.",
+    "why_uncovered": "person.x_c22 caps exception 22 at $10,300 only. Nothing asks for the IRA's present value or applies the 50% cap, so the exception can be overstated.",
     "closest_item": "person.x_c22",
     "effect": "amount"
    },
@@ -3476,44 +3532,52 @@
     ],
     "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000. / You are also limited in taking emergency personal expense distributions in subsequent years as you may not take this type of distribution in the following 3 calendar years unless:",
     "page": "p590b p. 28",
-    "why_uncovered": "person.x_c23 caps exception 23 only at the fixed $1,000. person.x_two23 refuses only more than one such distribution in 2025. Nothing asks for the total interest in the IRA, so the 'total interest minus $1,000' limit is not applied. Nothing asks whether an unrepaid emergency distribution was taken in a prior year within the 3-year window.",
+    "why_uncovered": "person.x_c23 caps exception 23 at a flat $1,000, and person.x_two23 refuses more than one such distribution in 2025. Nothing applies the 'total interest in the IRA minus $1,000' limit. Nothing asks whether an emergency distribution taken in one of the prior 3 years was not repaid or made up by later contributions, which would bar the exception.",
     "closest_item": "person.x_c23",
     "effect": "amount"
+   },
+   {
+    "item": "person.edu_aoc",
+    "sentences": [
+     {
+      "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
+      "page": "i8863 p. 3"
+     },
+     {
+      "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+      "page": "i8863 p. 1"
+     }
+    ],
+    "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+    "page": "i8863 p. 3; i8863 p. 1",
+    "why_uncovered": "The questions for lines 23–26, the TIN, the Form 1098-T and the EIN set eligibility for the American opportunity credit. None of them asks about a past disallowance, a 2-year or 10-year ban, or a required Form 8862. There is no refusal for these cases either.",
+    "closest_item": "person.edu_aoc",
+    "effect": "eligibility"
    },
    {
     "item": "person.se_line2",
     "sentences": [
      {
+      "quote": "Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
+      "page": "i1040sc p. 14"
+     },
+     {
       "quote": "Fees received for services performed as a notary public.",
       "page": "i1040sse p. 4"
      },
      {
-      "quote": "Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
+      "quote": "If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2.",
+      "page": "i1040sse p. 4"
+     },
+     {
+      "quote": "However, do not report this amount on Schedule SE (Form 1040), line 2.",
       "page": "i1040sc p. 14"
      }
     ],
-    "quote": "Fees received for services performed as a notary public. / Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
-    "page": "i1040sse p. 4; i1040sc p. 14",
-    "why_uncovered": "person.se_line2 takes the Schedule C line 31 net profit for every Schedule C. The self-employment screen (person.se_screen) lists clergy, church, partnership, farm, exempt and other cases. It does not mention notary public fees, so notary profit would be subjected to SE tax rather than excluded or refused.",
+    "quote": "Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income. / Fees received for services performed as a notary public. / If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2. / However, do not report this amount on Schedule SE (Form 1040), line 2.",
+    "page": "i1040sc p. 14; i1040sse p. 4",
+    "why_uncovered": "person.se_line2 takes the Schedule C line 31 net profit for all of the person's Schedules C. The self-employment screen lists church, clergy, partnership, farm, optional-method and similar cases. It does not list notary public fees or statutory-employee Schedules C. The listed statutory-employee refusals apply only to the EIC and Schedule 8812, not to Schedule SE. So this income could wrongly be charged self-employment tax.",
     "closest_item": "person.se_line2",
-    "effect": "amount"
-   },
-   {
-    "item": "person.simple_deferral",
-    "sentences": [
-     {
-      "quote": "You must make the salary reduction contributions to the SIMPLE IRA within 30 days after the end of the month in which the amounts would otherwise have been payable to the employee in cash.",
-      "page": "p560 p. 17"
-     },
-     {
-      "quote": "You can deduct contributions for a particular tax year if they are made for that tax year and are made by the due date (including extensions) of your federal income tax return for that year.",
-      "page": "p560 p. 17"
-     }
-    ],
-    "quote": "You must make the salary reduction contributions to the SIMPLE IRA within 30 days after the end of the month in which the amounts would otherwise have been payable to the employee in cash. / You can deduct contributions for a particular tax year if they are made for that tax year and are made by the due date (including extensions) of your federal income tax return for that year.",
-    "page": "p560 p. 17",
-    "why_uncovered": "The salary reduction question asks for contributions 'for 2025' with no timing condition. The employer-contribution question does state the due-date condition. Nothing limits the deducted salary reduction amount to timely contributions, and nothing refuses late ones.",
-    "closest_item": "person.simple_deferral",
     "effect": "amount"
    }
   ],
@@ -3786,7 +3850,7 @@
     ]
    }
   ],
-  "cost": 1.035008,
+  "cost": 1.0649199999999999,
   "model": "claude-opus-5-5"
  },
  {

@@ -4492,6 +4492,19 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)
       = false
       cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; 195cfd5e)
+      note: taken: {"eq":["f8863.paid",{"const":false}],"op":"test"}
+  (helper) With education expenses paid: this person was a student with qualified expenses, has a TIN by the due date and a Form 1098-T (or an exception)
+      = UNKNOWN (no input supplied for person[taxpayer].edu)
+      cite: [i8863] p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution." (2025; 195cfd5e)
+      note: guard incomplete; possible: #0 unknown, #1 bool
+  (helper) A student with qualified expenses: an SSN or ITIN (or an ITIN applied for by the due date), and a Form 1098-T (or an exception)
+      = UNKNOWN (no input supplied for person[taxpayer].edu_1098t)
+      cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; 195cfd5e)
+      note: taken: {"eq":["person.tin",{"const":true}],"op":"test"}
+  (helper) A student without an SSN or ITIN: an ITIN applied for by the due date, and a Form 1098-T (or an exception)
+      = UNKNOWN (no input supplied for person[taxpayer].itin_applied)
+      cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; 195cfd5e)
+      note: guard incomplete; possible: #0 unknown, #1 bool
   (helper) Qualified education expenses required to be paid to the institution
       = UNKNOWN (no input supplied for person[taxpayer].edu_inst)
       cite: [i8863] p. 4, Qualified Education Expenses, "Generally, qualified education expenses are amounts paid in 2025 for tuition and fees required for the student’s enrollment or attendance at an eligible educational institution."; p. 4, "Any course or other education involving sports, games, or hobbies, or any noncredit course, unless such course or other education is part of the student’s degree program or (for the lifetime learning credit only) helps the student acquire or improve job skills." (2025; 195cfd5e)
@@ -4532,10 +4545,33 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) The institution's employer identification number (EIN) is available
       = UNKNOWN (no input supplied for person[taxpayer].edu_ein)
       cite: [i8863] p. 4, Student qualifications, "7. You must provide the educational institution’s employer identification number (EIN) on your Form 8863." (2025; 195cfd5e)
+  (helper) Year parameter edu.no (false)
+      = false
+      cite: [f8863] p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student." (2025; a251a1cf)
   (helper) An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available
       = false
       cite: [f8863] p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)." (2025; a251a1cf)
-      note: Interpretation amb.2025.edu_filer_tin: The first; without it an American opportunity credit student goes to the lifetime learning credit (line 31). Both spouses are filers of a joint return, and the text says "Filers". The 2026 draft instructions read one spouse as enough, but under the new valid-SSN rule of P.L. 119-21 sec. 70606, which is not the 2025 text. Owner's decision D7(a), 2026-10-29. (i8863, p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).")
+      note: taken: {"eq":["person.edu_student",{"const":false}],"op":"test"}
+  (helper) For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years), and lines 24 to 26, the TINs and the EIN allow the credit
+      = UNKNOWN (no input supplied for person[taxpayer].edu_line23)
+      cite: [f8863] p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student." (2025; a251a1cf)
+      note: guard incomplete; possible: #0 unknown, #1 bool
+  (helper) Line 24 is Yes (enrolled at least half-time), and lines 25 and 26, the TINs and the EIN allow the credit
+      = UNKNOWN (no input supplied for person[taxpayer].edu_line24)
+      cite: [f8863] p. 2, Part III, line 24, "No—Stop! Go to line 31 for this student." (2025; a251a1cf)
+      note: guard incomplete; possible: #0 unknown, #1 bool
+  (helper) Line 25 is No (the first 4 years of postsecondary education were not completed before 2025), and line 26, the TINs and the EIN allow the credit
+      = UNKNOWN (no input supplied for person[taxpayer].edu_line25)
+      cite: [f8863] p. 2, Part III, line 25, "Yes—Stop! Go to line 31 for this student." (2025; a251a1cf)
+      note: guard incomplete; possible: #0 unknown, #1 bool
+  (helper) Line 26 is No (no felony drug conviction), and the TINs and the EIN allow the credit
+      = UNKNOWN (no input supplied for person[taxpayer].edu_line26)
+      cite: [f8863] p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student." (2025; a251a1cf)
+      note: guard incomplete; possible: #0 unknown, #1 bool
+  (helper) You, and your spouse if filing jointly, have a TIN, and the institution's EIN is available
+      = UNKNOWN (no input supplied for person[taxpayer].edu_ein)
+      cite: [i8863] p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)." (2025; 195cfd5e)
+      note: taken: {"eq":["household.all_tin",{"const":true}],"op":"test"}; Interpretation amb.2025.edu_filer_tin: The first; without it an American opportunity credit student goes to the lifetime learning credit (line 31). Both spouses are filers of a joint return, and the text says "Filers". The 2026 draft instructions read one spouse as enough, but under the new valid-SSN rule of P.L. 119-21 sec. 70606, which is not the 2025 text. Owner's decision D7(a), 2026-10-29. (i8863, p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).")
   (helper) A lifetime learning credit student: an eligible student who is not an American opportunity credit student
       = false
       cite: [i8863] p. 4, Tip, "If the requirements above aren’t met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the lifetime learning credit for part or all of that student’s qualified education expenses instead if certain requirements are met." (2025; 195cfd5e)
@@ -7732,6 +7768,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f5695.line29h: chose UNKNOWN (no input supplied for f5695.line21a)
   f5695.line32: chose $0 (guard 1)
       not taken: guard 0 = false
+  person[taxpayer].edu_student: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].edu_aoc: chose false (guard 1)
+      not taken: guard 0 = false
   person[taxpayer].edu_line30: chose $0 (guard 1)
       not taken: guard 0 = false
   f8863.line1: chose $0 (guard 1)
@@ -7997,8 +8037,16 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   person[taxpayer].ira_line7_figured: chose $0 (guard 1)
       not taken: guard 0 = false
+  person[taxpayer].edu_student_edu: chose UNKNOWN (no input supplied for person[taxpayer].edu)
+  person[taxpayer].edu_student_tin: chose UNKNOWN (no input supplied for person[taxpayer].edu_1098t) (guard 0)
+  person[taxpayer].edu_student_itin: chose UNKNOWN (no input supplied for person[taxpayer].itin_applied)
   person[taxpayer].edu_adj: chose $0 (guard 1)
       not taken: guard 0 = false
+  person[taxpayer].edu_aoc23: chose UNKNOWN (no input supplied for person[taxpayer].edu_line23)
+  person[taxpayer].edu_aoc24: chose UNKNOWN (no input supplied for person[taxpayer].edu_line24)
+  person[taxpayer].edu_aoc25: chose UNKNOWN (no input supplied for person[taxpayer].edu_line25)
+  person[taxpayer].edu_aoc26: chose UNKNOWN (no input supplied for person[taxpayer].edu_line26)
+  person[taxpayer].edu_aoc_tin: chose UNKNOWN (no input supplied for person[taxpayer].edu_ein) (guard 0)
   person[taxpayer].edu_line27: chose $0 (guard 1)
       not taken: guard 0 = false
   person[taxpayer].edu_line28: chose $0 (guard 1)
@@ -8810,9 +8858,10 @@ Derivations:
   f5695.line32a: test(f5695.part2_any = false; true = true)
   f5695.line32b: test(f5695.part2_any = false; true = true)
   f8863.claimed_count: sum_over(person[taxpayer].sav_claimed = false; true = true)
-  person[taxpayer].edu_student: test(f8863.paid = false; true = true)
+  person[taxpayer].edu_no: param(#edu.no = false)
+  person[taxpayer].edu_student: choose(f8863.paid = false; true = true; f8863.paid = false; false = false; person[taxpayer].edu_no = false)
   person[taxpayer].edu_over_refused: test(person[taxpayer].edu_student = false; true = true)
-  person[taxpayer].edu_aoc: test(person[taxpayer].edu_student = false; true = true)
+  person[taxpayer].edu_aoc: choose(person[taxpayer].edu_student = false; true = true; person[taxpayer].edu_student = false; false = false; person[taxpayer].edu_no = false)
   person[taxpayer].edu_line30: choose(person[taxpayer].edu_over_refused = false; person[taxpayer].edu_aoc = false; true = true; person[taxpayer].edu_aoc = false; false = false; person[taxpayer].zero = $0)
   f8863.aoc_person: sum_over(person[taxpayer].edu_line30 = $0)
   f8863.aoc_sum: sum(f8863.aoc_person = $0; f8863.aoc_dep = $0)
@@ -10141,11 +10190,19 @@ Derivations:
   person[taxpayer].ira_ssb_figured: smaller_of(ira.cov_gate = false; person[taxpayer].ira_ssb_lim = UNKNOWN (no input supplied for person[taxpayer].ira_age50); person[taxpayer].ira_line11 = $0)
   person[taxpayer].ira_se_take: sum(person[taxpayer].se_line13 = $0; person[taxpayer].s16 = $0)
   person[taxpayer].ira_se_figured: subtract_floor0(person[taxpayer].sc_total = $0; person[taxpayer].ira_se_take = $0)
+  person[taxpayer].edu_student_edu: choose(person[taxpayer].edu = UNKNOWN (no input supplied for person[taxpayer].edu); true = true; person[taxpayer].edu_student_tin = UNKNOWN (no input supplied for person[taxpayer].edu_1098t); person[taxpayer].edu = UNKNOWN (no input supplied for person[taxpayer].edu); false = false; person[taxpayer].edu_no = false)
+  person[taxpayer].edu_student_tin: choose(person[taxpayer].tin = true; true = true; person[taxpayer].edu_1098t = UNKNOWN (no input supplied for person[taxpayer].edu_1098t))
+  person[taxpayer].edu_student_itin: choose(person[taxpayer].itin_applied = UNKNOWN (no input supplied for person[taxpayer].itin_applied); true = true; person[taxpayer].edu_1098t = UNKNOWN (no input supplied for person[taxpayer].edu_1098t); person[taxpayer].itin_applied = UNKNOWN (no input supplied for person[taxpayer].itin_applied); false = false; person[taxpayer].edu_no = false)
   person[taxpayer].edu_adj_sum: sum(person[taxpayer].edu_a2025 = UNKNOWN (no input supplied for person[taxpayer].edu_a2025); person[taxpayer].edu_a2026 = UNKNOWN (no input supplied for person[taxpayer].edu_a2026); person[taxpayer].edu_refunds = UNKNOWN (no input supplied for person[taxpayer].edu_refunds))
   person[taxpayer].edu_adj: choose(person[taxpayer].edu_student = false; true = true; person[taxpayer].edu_student = false; false = false; person[taxpayer].zero = $0)
   person[taxpayer].edu_show24: test(person[taxpayer].edu_student = false; true = true)
   person[taxpayer].edu_show25: test(person[taxpayer].edu_show24 = false; true = true)
   person[taxpayer].edu_show26: test(person[taxpayer].edu_show25 = false; true = true)
+  person[taxpayer].edu_aoc23: choose(person[taxpayer].edu_line23 = UNKNOWN (no input supplied for person[taxpayer].edu_line23); false = false; person[taxpayer].edu_aoc24 = UNKNOWN (no input supplied for person[taxpayer].edu_line24); person[taxpayer].edu_line23 = UNKNOWN (no input supplied for person[taxpayer].edu_line23); true = true; person[taxpayer].edu_no = false)
+  person[taxpayer].edu_aoc24: choose(person[taxpayer].edu_line24 = UNKNOWN (no input supplied for person[taxpayer].edu_line24); true = true; person[taxpayer].edu_aoc25 = UNKNOWN (no input supplied for person[taxpayer].edu_line25); person[taxpayer].edu_line24 = UNKNOWN (no input supplied for person[taxpayer].edu_line24); false = false; person[taxpayer].edu_no = false)
+  person[taxpayer].edu_aoc25: choose(person[taxpayer].edu_line25 = UNKNOWN (no input supplied for person[taxpayer].edu_line25); false = false; person[taxpayer].edu_aoc26 = UNKNOWN (no input supplied for person[taxpayer].edu_line26); person[taxpayer].edu_line25 = UNKNOWN (no input supplied for person[taxpayer].edu_line25); true = true; person[taxpayer].edu_no = false)
+  person[taxpayer].edu_aoc26: choose(person[taxpayer].edu_line26 = UNKNOWN (no input supplied for person[taxpayer].edu_line26); false = false; person[taxpayer].edu_aoc_tin = UNKNOWN (no input supplied for person[taxpayer].edu_ein); person[taxpayer].edu_line26 = UNKNOWN (no input supplied for person[taxpayer].edu_line26); true = true; person[taxpayer].edu_no = false)
+  person[taxpayer].edu_aoc_tin: choose(household.all_tin = true; true = true; person[taxpayer].edu_ein = UNKNOWN (no input supplied for person[taxpayer].edu_ein))
   person[taxpayer].edu_line27: choose(person[taxpayer].edu_over_refused = false; person[taxpayer].edu_aoc = false; true = true; person[taxpayer].edu_aoc = false; false = false; person[taxpayer].zero = $0)
   person[taxpayer].edu_line28: choose(person[taxpayer].edu_over_refused = false; person[taxpayer].edu_aoc = false; true = true; person[taxpayer].edu_aoc = false; false = false; person[taxpayer].zero = $0)
   person[taxpayer].edu_line29: choose(person[taxpayer].edu_over_refused = false; person[taxpayer].edu_aoc = false; true = true; person[taxpayer].edu_aoc = false; false = false; person[taxpayer].zero = $0)
@@ -10210,7 +10267,6 @@ Interpretation amb.2025.f5695_battery_second_home: The first (f5695.line5a asks 
 Interpretation amb.2025.f5695_17abc_section_a: The first (f5695.sec_a_claimed gates lines 18b, 19h and 20d only). The owner's decision. Section B has its own residence test on line 21a, "a home located in the United States that you use as a residence", which is not limited to the main home, and its own original-use test on line 21b, and the audit has its own test on line 26a; the form's direction is "Do not complete Part II, Section A". Reading the No as disallowing Section B would make line 21a's wider residence test unreachable for anyone without Section A improvements on a main home. (f5695, Form 5695 (2025), lines 17a to 17c and 21a; i5695 p. 5, Lines 17a Through 17e)
 Interpretation amb.2025.f5695_section_b_residence: The first (f5695.line21a's question says the home may be a second home or a home you rent). The owner's decision. Line 21a and the Section B paragraph state the wider test, line 21c asks for "each home", and Fact Sheet 2025-01 says "such property may be installed in the taxpayer’s second home" and that "the taxpayer may rent the home". The main-home statements are in Section A (lines 17a and 17d) and in a summary in the Form 1040 instructions. (fs-2025-01, p. 5, Energy Efficient Home Improvement Credit - Qualifying residence, "In this case, the taxpayer may rent the home in which such property is installed, and such property may be installed in the taxpayer’s second home")
 Interpretation amb.2025.f5695_category_cap: The first (f5695.ac_capped, wh_capped, furnace_capped and enabling_capped against f5695.item_max). The owner's decision to encode the form as printed. The joint occupancy list of credit limits (i5695 p. 3) also gives the limit by category ("$600 for central air conditioners"). The two readings differ only for a filer with two or more items in one category whose 30% exceeds $600 together, and line 28's $1,200 limit narrows even that. (f5695, Form 5695 (2025), lines 22d, 23d, 24d and 25e; i5695 p. 2, Energy Efficient Home Improvement Credit (Part II), "A credit limit of $600 for any qualified energy property item")
-Interpretation amb.2025.edu_filer_tin: The first; without it an American opportunity credit student goes to the lifetime learning credit (line 31). Both spouses are filers of a joint return, and the text says "Filers". The 2026 draft instructions read one spouse as enough, but under the new valid-SSN rule of P.L. 119-21 sec. 70606, which is not the 2025 text. Owner's decision D7(a), 2026-10-29. (i8863, p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).")
 Interpretation amb.2025.edu_ratio_places: The first (the prorate atom with places 3 on f8863.line7 and f8863.line18), as amb.2025.sli_ratio_places reads the same words. The owner's Stage 11 ruling on the same words, applied by the Stage 19 decision batch (Settled item 4). The readings differ by at most a few dollars of credit. (f8863, p. 1, Part I, line 6, "Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded to at least three places).")
 Interpretation amb.2025.edu_age_rule: The first (person.sav_born, person.edu_born_2007 and person.edu_born_2002 feeding person.edu_kid). Pub. 501 states the rule for age 65 and the project's other birth-date questions apply it. Owner's decision D7(b), 2026-10-29. (i8863, p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.")
 Interpretation amb.2025.savers_traditional: The first (person.sav_line1 adds person.ira_contrib). The owner's decision (Stage 16 decision 10). The line names traditional IRA contributions without limiting them to the deductible ones. Excess or recharacterized contributions, traditional or Roth, are refused by one screen per person (person.ira_excess), which also answers Stage 15 owner question 4. (f8880, Form 8880 (2025), line 1, "Traditional and Roth IRA contributions")
@@ -10258,6 +10314,7 @@ Interpretation amb.2025.sep_rate_places: Six decimal places, half-up (person.sep
 Interpretation amb.2025.savers_sep_contrib: The first (person.sav_simple_plan). The owner's decision (Stage 15 premise map, decision 2). Only elective deferrals to a SEP (code F, a salary reduction SEP) are named; a SEP contribution a self-employed person makes for themselves is a nonelective contribution. (f8880, p. 2, Line 2, "Elective deferrals (including designated Roth contributions under section 402A, if applicable) to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP")
 Interpretation amb.2025.ira_line7_cents: The first. The project's rule for products (amb.2025.multiplication_subcent). The readings differ only when the exact product is less than half a cent above a multiple of $10. (i1040gi, p. 98, IRA Deduction Worksheet—Continued, line 7, "If the result isn’t a multiple of $10, increase it to the next multiple of $10 (for example, increase $490.30 to $500)")
 Interpretation amb.2025.edu_1098t_date: The first, in the help text of person.edu_1098t and dependent.edu_1098t. Pub. 970 is the later revision and explains the shift (January 31 falls on a Saturday). Owner's decision D7(d), 2026-10-29. (p970, p. 2, Reminders, "After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.")
+Interpretation amb.2025.edu_filer_tin: The first; without it an American opportunity credit student goes to the lifetime learning credit (line 31). Both spouses are filers of a joint return, and the text says "Filers". The 2026 draft instructions read one spouse as enough, but under the new valid-SSN rule of P.L. 119-21 sec. 70606, which is not the 2025 text. Owner's decision D7(a), 2026-10-29. (i8863, p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).")
 Interpretation amb.2025.edu_fulltime: The first (person.edu_fulltime asks the 5-month definition). Condition 1c points to "(defined later)", and the only definition later is the 5-month one. Owner's decision D7(c), 2026-10-29. (i8863, p. 7, Full-time student, "you were a full-time student for 2025 if during any part of any 5 calendar months during the year you were enrolled as a full-time student at an eligible educational institution (defined earlier)")
 Interpretation amb.2025.f5329_birth_cap: The first (person.x_cap19 is $5,000 times the number of births or adoptions). The instructions tie the amount to each birth or adoption, and the publication to each taxpayer; the statute (26 U.S.C. 72(t)(2)(H)) is to be archived as a second printing. Owner's decision D8(c), 2026-10-29. (p590b, p. 28, Qualified birth or adoption distribution, "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer.")
 Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.

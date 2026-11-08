@@ -3520,30 +3520,89 @@ form:
       label: 'An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)'
       type: Bool
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - f8863.paid
-          - const: true
-        - op: test
-          eq:
-          - person.edu
-          - const: true
-        - op: test
-          any:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f8863.paid
+            - const: true
+          then: person.edu_student_edu
+        - guard:
+            op: test
+            eq:
+            - f8863.paid
+            - const: false
+          then: person.edu_no
+      cite:
+        doc: i8863
+        locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+          return (including extensions)."
+    - id: person.edu_student_edu
+      printed: (helper)
+      label: 'With education expenses paid: this person was a student with qualified expenses, has a TIN by the due date and a Form 1098-T (or an exception)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu
+            - const: true
+          then: person.edu_student_tin
+        - guard:
+            op: test
+            eq:
+            - person.edu
+            - const: false
+          then: person.edu_no
+      cite:
+        doc: i8863
+        locator: p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse, or
+          a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution."
+    - id: person.edu_student_tin
+      printed: (helper)
+      label: 'A student with qualified expenses: an SSN or ITIN (or an ITIN applied for by the due date), and a Form 1098-T (or an exception)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
             - person.tin
             - const: true
-          - op: test
+          then: person.edu_1098t
+        - guard:
+            op: test
+            eq:
+            - person.tin
+            - const: false
+          then: person.edu_student_itin
+      cite:
+        doc: i8863
+        locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+          return (including extensions)."
+    - id: person.edu_student_itin
+      printed: (helper)
+      label: 'A student without an SSN or ITIN: an ITIN applied for by the due date, and a Form 1098-T (or an exception)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
             - person.itin_applied
             - const: true
-        - op: test
-          eq:
-          - person.edu_1098t
-          - const: true
+          then: person.edu_1098t
+        - guard:
+            op: test
+            eq:
+            - person.itin_applied
+            - const: false
+          then: person.edu_no
       cite:
         doc: i8863
         locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
@@ -3827,46 +3886,153 @@ form:
         doc: i8863
         locator: p. 4, Student qualifications, "7. You must provide the educational institution’s employer identification number
           (EIN) on your Form 8863."
+    - id: person.edu_no
+      printed: (helper)
+      label: Year parameter edu.no (false)
+      type: Bool
+      expr:
+        op: param
+        ref: edu.no
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student."
     - id: person.edu_aoc
       printed: (helper)
       label: 'An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution''s EIN
         is available'
       type: Bool
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - person.edu_student
-          - const: true
-        - op: test
-          eq:
-          - person.edu_line23
-          - const: false
-        - op: test
-          eq:
-          - person.edu_line24
-          - const: true
-        - op: test
-          eq:
-          - person.edu_line25
-          - const: false
-        - op: test
-          eq:
-          - person.edu_line26
-          - const: false
-        - op: test
-          eq:
-          - household.all_tin
-          - const: true
-        - op: test
-          eq:
-          - person.edu_ein
-          - const: true
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_student
+            - const: true
+          then: person.edu_aoc23
+        - guard:
+            op: test
+            eq:
+            - person.edu_student
+            - const: false
+          then: person.edu_no
       cite:
         doc: f8863
         locator: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications,
           "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)."
+    - id: person.edu_aoc23
+      printed: (helper)
+      label: 'For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years),
+        and lines 24 to 26, the TINs and the EIN allow the credit'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_line23
+            - const: false
+          then: person.edu_aoc24
+        - guard:
+            op: test
+            eq:
+            - person.edu_line23
+            - const: true
+          then: person.edu_no
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student."
+    - id: person.edu_aoc24
+      printed: (helper)
+      label: 'Line 24 is Yes (enrolled at least half-time), and lines 25 and 26, the TINs and the EIN allow the credit'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_line24
+            - const: true
+          then: person.edu_aoc25
+        - guard:
+            op: test
+            eq:
+            - person.edu_line24
+            - const: false
+          then: person.edu_no
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 24, "No—Stop! Go to line 31 for this student."
+    - id: person.edu_aoc25
+      printed: (helper)
+      label: 'Line 25 is No (the first 4 years of postsecondary education were not completed before 2025), and line 26, the
+        TINs and the EIN allow the credit'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_line25
+            - const: false
+          then: person.edu_aoc26
+        - guard:
+            op: test
+            eq:
+            - person.edu_line25
+            - const: true
+          then: person.edu_no
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 25, "Yes—Stop! Go to line 31 for this student."
+    - id: person.edu_aoc26
+      printed: (helper)
+      label: 'Line 26 is No (no felony drug conviction), and the TINs and the EIN allow the credit'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_line26
+            - const: false
+          then: person.edu_aoc_tin
+        - guard:
+            op: test
+            eq:
+            - person.edu_line26
+            - const: true
+          then: person.edu_no
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."
+    - id: person.edu_aoc_tin
+      printed: (helper)
+      label: 'You, and your spouse if filing jointly, have a TIN, and the institution''s EIN is available'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.all_tin
+            - const: true
+          then: person.edu_ein
+        - guard:
+            op: test
+            eq:
+            - household.all_tin
+            - const: false
+          then: person.edu_no
+      cite:
+        doc: i8863
+        locator: p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their
+          2025 return (including extensions)."
       ambiguity: amb.2025.edu_filer_tin
     - id: person.edu_llc
       printed: (helper)
@@ -4086,7 +4252,7 @@ form:
             def: aqee
             bind:
               inst: person.edu_inst
-              mat: person.edu_mat
+              mat: person.zero
               adj: person.edu_adj
             line: ws4_llc
         - guard:

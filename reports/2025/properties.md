@@ -25,7 +25,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 318; cases with a line that has both a refused and an unknown operand (the order this property guards): 231; cases with a choose stopped at an unknown guard: 378, of which 10 have one refused on every way it can still resolve.
+- Cases with a refused operand somewhere: 318; cases with a line that has both a refused and an unknown operand (the order this property guards): 231; cases with a choose stopped at an unknown guard: 381, of which 10 have one refused on every way it can still resolve.
 
 ## tax_monotone
 
@@ -41,7 +41,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-2754 of 3119 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+2823 of 3195 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.screen:true
@@ -78,6 +78,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dependent.edu_over:true
 - dependent.edu_over_refused:true
 - dependent.edu_line26:true
+- dependent.edu_no:true
+- dependent.edu_aoc26#1
 - dependent.edu_tin_issued:false
 - dependent.edu_llc_tin_refused:true
 - div.no:true
@@ -241,10 +243,15 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.ira_dist:true
 - person.ira_dist_gate:true
 - person.ira_ssb#0
+- person.edu_student_itin#0
+- person.edu_student_itin:true
 - person.edu_over:true
 - person.edu_over_refused:true
 - person.edu_line25:true
 - person.edu_line26:true
+- person.edu_no:true
+- person.edu_aoc25#1
+- person.edu_aoc26#1
 - person.edu_llc_tin_refused:true
 - person.edu_kid:true
 - person.x_cap09:floor

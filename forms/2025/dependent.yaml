@@ -1807,33 +1807,95 @@ form:
         claimed as your dependent'
       type: Bool
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - f8863.paid
-          - const: true
-        - op: test
-          eq:
-          - dependent.claimed
-          - const: true
-        - op: test
-          eq:
-          - dependent.edu
-          - const: true
-        - op: test
-          eq:
-          - dependent.tin
-          - const: true
-        - op: test
-          eq:
-          - dependent.edu_1098t
-          - const: true
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f8863.paid
+            - const: true
+          then: dependent.edu_student_claimed
+        - guard:
+            op: test
+            eq:
+            - f8863.paid
+            - const: false
+          then: dependent.edu_no
       cite:
         doc: i8863
         locator: p. 2, Who can claim a dependent’s expenses, "If a student is claimed as a dependent on another person’s tax return,
           all qualified education expenses of the student are treated as having been paid by that person. Therefore, only that
           person can claim an education credit for the student."
+    - id: dependent.edu_student_claimed
+      printed: (helper)
+      label: 'With education expenses paid: claimed as your dependent, a student with qualified expenses, a TIN by the due date and a Form 1098-T (or an exception)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.claimed
+            - const: true
+          then: dependent.edu_student_edu
+        - guard:
+            op: test
+            eq:
+            - dependent.claimed
+            - const: false
+          then: dependent.edu_no
+      cite:
+        doc: i8863
+        locator: p. 2, Who can claim a dependent’s expenses, "If a student is claimed as a dependent on another person’s tax return,
+          all qualified education expenses of the student are treated as having been paid by that person. Therefore, only that
+          person can claim an education credit for the student."
+    - id: dependent.edu_student_edu
+      printed: (helper)
+      label: 'Your dependent: a student with qualified expenses, a TIN by the due date and a Form 1098-T (or an exception)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu
+            - const: true
+          then: dependent.edu_student_tin
+        - guard:
+            op: test
+            eq:
+            - dependent.edu
+            - const: false
+          then: dependent.edu_no
+      cite:
+        doc: i8863
+        locator: p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse, or
+          a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution."
+    - id: dependent.edu_student_tin
+      printed: (helper)
+      label: 'A student with qualified expenses: a TIN by the due date and a Form 1098-T (or an exception)'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.tin
+            - const: true
+          then: dependent.edu_1098t
+        - guard:
+            op: test
+            eq:
+            - dependent.tin
+            - const: false
+          then: dependent.edu_no
+      cite:
+        doc: i8863
+        locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+          return (including extensions)."
     - id: dependent.edu_inst
       printed: (helper)
       label: Qualified education expenses required to be paid to the institution
@@ -2113,46 +2175,153 @@ form:
         doc: i8863
         locator: p. 4, Student qualifications, "7. You must provide the educational institution’s employer identification number
           (EIN) on your Form 8863."
+    - id: dependent.edu_no
+      printed: (helper)
+      label: Year parameter edu.no (false)
+      type: Bool
+      expr:
+        op: param
+        ref: edu.no
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student."
     - id: dependent.edu_aoc
       printed: (helper)
       label: 'An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution''s EIN
         is available'
       type: Bool
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - dependent.edu_student
-          - const: true
-        - op: test
-          eq:
-          - dependent.edu_line23
-          - const: false
-        - op: test
-          eq:
-          - dependent.edu_line24
-          - const: true
-        - op: test
-          eq:
-          - dependent.edu_line25
-          - const: false
-        - op: test
-          eq:
-          - dependent.edu_line26
-          - const: false
-        - op: test
-          eq:
-          - household.all_tin
-          - const: true
-        - op: test
-          eq:
-          - dependent.edu_ein
-          - const: true
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_student
+            - const: true
+          then: dependent.edu_aoc23
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_student
+            - const: false
+          then: dependent.edu_no
       cite:
         doc: f8863
         locator: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications,
           "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)."
+    - id: dependent.edu_aoc23
+      printed: (helper)
+      label: 'For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years),
+        and lines 24 to 26, the TINs and the EIN allow the credit'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_line23
+            - const: false
+          then: dependent.edu_aoc24
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_line23
+            - const: true
+          then: dependent.edu_no
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student."
+    - id: dependent.edu_aoc24
+      printed: (helper)
+      label: 'Line 24 is Yes (enrolled at least half-time), and lines 25 and 26, the TINs and the EIN allow the credit'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_line24
+            - const: true
+          then: dependent.edu_aoc25
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_line24
+            - const: false
+          then: dependent.edu_no
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 24, "No—Stop! Go to line 31 for this student."
+    - id: dependent.edu_aoc25
+      printed: (helper)
+      label: 'Line 25 is No (the first 4 years of postsecondary education were not completed before 2025), and line 26, the
+        TINs and the EIN allow the credit'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_line25
+            - const: false
+          then: dependent.edu_aoc26
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_line25
+            - const: true
+          then: dependent.edu_no
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 25, "Yes—Stop! Go to line 31 for this student."
+    - id: dependent.edu_aoc26
+      printed: (helper)
+      label: 'Line 26 is No (no felony drug conviction), and the TINs and the EIN allow the credit'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_line26
+            - const: false
+          then: dependent.edu_aoc_tin
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_line26
+            - const: true
+          then: dependent.edu_no
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."
+    - id: dependent.edu_aoc_tin
+      printed: (helper)
+      label: 'You, and your spouse if filing jointly, have a TIN, and the institution''s EIN is available'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.all_tin
+            - const: true
+          then: dependent.edu_ein
+        - guard:
+            op: test
+            eq:
+            - household.all_tin
+            - const: false
+          then: dependent.edu_no
+      cite:
+        doc: i8863
+        locator: p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their
+          2025 return (including extensions)."
       ambiguity: amb.2025.edu_filer_tin
     - id: dependent.edu_llc
       printed: (helper)
@@ -2386,7 +2555,7 @@ form:
             def: aqee
             bind:
               inst: dependent.edu_inst
-              mat: dependent.edu_mat
+              mat: dependent.zero
               adj: dependent.edu_adj
             line: ws4_llc
         - guard:

@@ -163,6 +163,15 @@
    "context": "6c1e77cad716189ff582b140eaae9fb8ef34b2335ab4091b893c17117fe698a7"
   },
   {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The restatement enters a helper amount that expressly includes 'expenses paid with dependent care benefits'; Form 2441 line 2(d) says 'If you completed Part III, don't include in column (d) any benefits shown on line 28.'",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner's decision, Stage 15 decision 6). Column (d) shows each person's expenses including those paid with dependent care benefits, and f2441.line30 subtracts line 28 once from the total, since the instructions give no rule for dividing line 28 among the qualifying persons; the model reads the unchosen reading (net each column (d)), as ruled on this line before. Project stands.",
+   "context": "5bca2e72b09741381df79f7db0955d99554d343eeca0cd7055fed628206e8545",
+   "date": "2026-11-07",
+   "run": "25e06af01c5c82eba9c493f94664c6e247990269d47db4cba76e3b650101b126"
+  },
+  {
    "printed": "23",
    "restated": "Input — Has the American opportunity credit been claimed (by you or anyone else) for this student for any 4 tax years before 2025?",
    "model": "The eligible-student gate uses the TIN helper that allows a student who has only 'applied for' an ITIN/ATIN; the IRS AOC text requires the student to have been 'issued a TIN by the due date'.",

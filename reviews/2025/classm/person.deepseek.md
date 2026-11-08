@@ -4,14 +4,14 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-11-04 |
+| date | 2026-11-07 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt policy | worked-values-request-bound-v2 |
 | system sha256 | 18ff9cfe094eedd0548bba02012b0ebf2a58d0606e834e3633432585b4192cb7 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 5b5a5637379bc8f46305623119d5d808ddf465babcd9005327df3be2d5661ee8 |
+| subject sha256 | 77862e99b0fafd0a472c443de55010b9679ec02635a270f2b96c7ae0a13865ca |
 | cases | 1 |
 | worked target scope | printed IRS lines |
 
@@ -52,7 +52,7 @@
 
 ## Lines
 
-### case classm.person.1 — prompt sha256 b7e7c89f6430cb1414c652ab109f1accb7190a265f14c0293e629bc5578c7c4e; branches: person.age65:false, person.blind:false, person.tin:true, person.work_ssn:true, person.under16:false, person.has_educator_expenses:false, person.educator_limited:left, person.educator_deduction#1, person.hsa_repeated:false, person.rrta:false, person.se_rrta:false, person.over:false, person.eligible:false, person.excess:floor, person.credit#1, person.has_sc:true, person.se_screen:false, person.se_screened:false, person.se_line6#0, person.se_line12#0, person.se_line13#0, person.se_line4c#0, person.sep_shown:false, person.sep_s3:floor, person.ne_comp:left, person.plan_deduction#0, person.s16#0, person.files_se:false, person.eic_se_has#1, person.eic_se#0, person.dc_1e_counted:false, person.dc_1e#1, person.sav_trad:false, person.sav_able:false, person.sav_excess_gate:false, person.sav_simple_plan#0, person.sav_simple#0, person.ira_contrib#1, person.ira_has:false, person.ira_any_contrib:false, person.ira_excess_gate:false, person.ira_se_plan:false, person.ira_not_covered_joint:false, person.ira_line2#1, person.ira_line6:positive, person.ira_line6_yes:true, person.ira_wide:true, person.ira_full#0, person.ira_at_full:true, person.ira_prod#0, person.ira_below#0, person.ira_line7_figured#0, person.ira_over_limit:false, person.ira_deduction#1, person.ira_10or11:right, person.ira_nondeductible#1, person.ira_files_8606:false, person.ira_basis_gate:false, person.ira_8606_line2#1, person.ira_dist_gate:false, person.ira_ssb#1, person.ira_se_figured:floor, person.ira_se#0, person.edu_student:false, person.edu_adj#1, person.edu_over_refused:false, person.edu_show24:false, person.edu_show25:false, person.edu_show26:false, person.edu_aoc:false, person.edu_llc:false, person.edu_llc_tin_refused:false, person.edu_line27#1, person.edu_line28#1, person.edu_line29#1, person.edu_line30#1, person.edu_line31#1, person.edu_kid:false, person.x_c05#1, person.x_has05:false, person.x_c05_min:left, person.x_has09:false, person.x_c09#1, person.x_has19:false, person.x_c19#1, person.x_c22:left, person.x_c23:left, person.x_two23:false, person.x_other_exc:floor, person.x_limit_binds:false, person.x_other:false
+### case classm.person.1 — prompt sha256 e8f555d414d6f756e5dcee3511018e7ca005a9fd7479675e932b02fa14446527; branches: person.age65:false, person.blind:false, person.tin:true, person.work_ssn:true, person.eic_ssn:true, person.under16:false, person.has_educator_expenses:false, person.educator_limited:left, person.educator_deduction#1, person.hsa_repeated:false, person.rrta:false, person.se_rrta:false, person.over:false, person.eligible:false, person.excess:floor, person.credit#1, person.has_sc:true, person.se_screen:false, person.se_screened:false, person.se_line6#0, person.se_line12#0, person.se_line13#0, person.se_line4c#0, person.sep_shown:false, person.sep_s3:floor, person.ne_comp:left, person.plan_deduction#0, person.s16#0, person.files_se:false, person.eic_se_has#1, person.eic_se#0, person.dc_1e_counted:false, person.dc_1e#1, person.sav_trad:false, person.sav_simple_plan#0, person.sav_simple#0, person.ira_contrib#1, person.ira_has:false, person.ira_se_plan:false, person.ira_not_covered_joint:false, person.ira_line2#1, person.ira_line6:positive, person.ira_line6_yes:true, person.ira_wide:true, person.ira_full#0, person.ira_at_full:true, person.ira_prod#0, person.ira_below#0, person.ira_line7_figured#0, person.ira_over_limit:false, person.ira_deduction#1, person.ira_nondeductible#1, person.ira_files_8606:false, person.ira_basis_gate:false, person.ira_8606_line2#1, person.ira_dist_gate:false, person.ira_ssb#1, person.ira_se_figured:floor, person.ira_se#0, person.edu_student_tin#0, person.edu_no:false, person.edu_aoc_tin#0, person.edu_llc_tin_refused:false, person.x_c05#1, person.x_has05:false, person.x_c05_min:left, person.x_has09:false, person.x_c09#1, person.x_has19:false, person.x_c19#1, person.x_c22:left, person.x_c23:left, person.x_two23:false, person.x_other_exc:floor, person.x_limit_binds:false
 
 ### classm.person.1 — person[taxpayer].employers — Total w2.one for this person
 Status: **AGREE**
@@ -70,18 +70,14 @@ Status: **AGREE**
 Value: no
 
 ### classm.person.1 — person[taxpayer].wages — Total w2.wages for this person
-Status: **DISAGREE**
+Status: **AGREE**
 
-Project: $44,754.00
-Model: $29,524.00
-Work: Total W-2 wages: $29,524.00 + $0.00 = $29,524.00.
-
-Ruling: model error; same case and reply as the refresh-round ruling. w2.wages is social security wages plus social security tips, boxes 3 and 7 (iw2w3 p. 18; amb.2025.ss_wages, owner approved). The model left out the $15,230 of box 7 tips on the second W-2: $29,524 + $15,230 = $44,754, the project amount. [dropped]
+Value: $55,120.00
 
 ### classm.person.1 — person[taxpayer].withheld — Total w2.box4 for this person
 Status: **AGREE**
 
-Value: $2,775.00
+Value: $3,417.00
 
 ### classm.person.1 — person[taxpayer].eligible — More than one employer and total social security wages over $176,100
 Status: **AGREE**
@@ -106,26 +102,26 @@ Value: $0.00
 lines:
   - printed: "person[taxpayer].employers"
     value: "2"
-    work: "Two W-2 employer entries, each with one employer = 1 + 1 = 2."
+    work: "Count of W-2 employer entries: emp_a + emp_b = 2."
   - printed: "person[taxpayer].overcount"
     value: "0"
-    work: "Neither employer withheld more than $10,918.20."
+    work: "Neither employer withheld more than $10,918.20 (both answered no)."
   - printed: "person[taxpayer].over"
     value: "no"
-    work: "Both employers answered no to withholding more than the limit."
+    work: "No employer withheld more than the $10,918.20 limit."
   - printed: "person[taxpayer].wages"
-    value: "29524.00"
-    work: "Total W-2 wages: $29,524.00 + $0.00 = $29,524.00."
+    value: "$55,120.00"
+    work: "$42,698.00 + $12,422.00 = $55,120.00."
   - printed: "person[taxpayer].withheld"
-    value: "2775.00"
-    work: "Total Social Security tax withheld: $1,831.00 + $944.00 = $2,775.00."
+    value: "$3,417.00"
+    work: "$2,647.00 + $770.00 = $3,417.00."
   - printed: "person[taxpayer].eligible"
     value: "no"
-    work: "More than one employer, but Social Security wages $29,524.00 + $15,230.00 = $44,754.00, not over $176,100."
+    work: "Two employers, but total social security wages $42,698.00 + $12,422.00 = $55,120.00, not over $176,100."
   - printed: "person[taxpayer].excess"
-    value: "0.00"
-    work: "Total withholding $2,775.00 is not above $10,918.20."
+    value: "$0.00"
+    work: "Total withholding $3,417.00 is below $10,918.20, so no excess."
   - printed: "person[taxpayer].credit"
-    value: "0.00"
-    work: "No excess Social Security tax withheld, so credit is $0.00."
+    value: "$0.00"
+    work: "Excess Social Security tax withheld figured separately for taxpayer is $0.00."
 ```

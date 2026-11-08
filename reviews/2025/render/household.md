@@ -5,7 +5,7 @@ The rendered English of every printed line of `Household facts for dependents an
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 3 (latest 2026-11-07); see Line-scoped reviews |
+| line-scoped reviews | 4 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 17422f5dec7c2102012a5d0047e50131b253903349a5dc9f0d163bb74d1e6512 |
@@ -137,22 +137,26 @@ Model: True when any filer was under 16. It is the gate for the owner-recorded r
 ### tin_count — Number of people on the return with an SSN or ITIN, or who have applied for an ITIN
 Status: **MATCH**
 
-Model: Counts the people with an SSN or ITIN issued on or before the due date, or who are applying for an ITIN. This follows the ODC rule: 'Answer "Yes" if you are applying for an ITIN on or before the return due date.'
+Model: Counts each person on the return who has an SSN or ITIN 'issued on or before the due date of your 2025 return', or who is 'applying for an ITIN on or before the return due date'. This follows Step 5 question 1 and the TIP. The text does not mention renewing an expired ITIN; that is part of the question helper's wording, not this count.
+Reviewed in: pass bf687506c025
 
 ### all_tin — You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN
 Status: **MATCH**
 
-Model: Requires everyone on the return to meet the TIN rule. This matches 'you, and your spouse if filing jointly, must have either an SSN or ITIN.'
+Model: Compares the count of people with an SSN or ITIN (or a pending ITIN application) to the number of people on the return. That tests the text's 'you, and your spouse if filing jointly, must have either an SSN or ITIN issued on or before the due date' requirement for the credit for other dependents.
+Reviewed in: pass bf687506c025
 
 ### id_count — Number of people on the return with an SSN valid for employment or an SSN or ITIN
 Status: **MATCH**
 
-Model: Counts the people with either an employment-valid SSN or an SSN/ITIN. This supports the CTC rule for the other spouse.
+Model: Counts people with an employment-valid SSN or an SSN or ITIN, with no allowance for a pending ITIN application. That fits the CTC rule that the other spouse 'must have either an SSN or ITIN, and it must have been issued on or before the due date of the return'.
+Reviewed in: pass bf687506c025
 
 ### ctc_ssn — Child tax credit identification: you, or your spouse if filing jointly, have an SSN valid
 Status: **MATCH**
 
-Model: Requires at least one valid SSN, and every person to hold a valid SSN or an SSN/ITIN. This matches 'only one spouse is required to have a valid SSN ... The other spouse must have either an SSN or ITIN.'
+Model: Requires at least one person with an SSN valid for employment and every person on the return to have an SSN or ITIN. That matches 'only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN'.
+Reviewed in: pass bf687506c025
 
 ### taxpayer_work_ssn_count — Your entry, if the answer is yes
 Status: **MATCH**
@@ -564,6 +568,52 @@ lines:
   - key: "eic_disallowed_claim"
     status: MATCH
     reason: "The computation matches its label: the EIC is claimed (Steps 1–5 passed, credit above zero) AND some earlier credit was disallowed. As an EIC Form 8862 trigger, it is broader than the IRS rule (\"if your EIC for a year after 1996 was reduced or disallowed\"), since a CTC-only disallowance also sets it. It also does not apply the listed exceptions (Form 8862 previously filed and EIC allowed; no-qualifying-child case)."
+```
+```
+
+#### Pass bf687506c025
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines tin_count, all_tin, id_count, ctc_ssn |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | bf687506c025f83361e7f10eb89851fc00db5a928638b9463da29b124e7cfa80 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 7c1990f745c4a5cc4c20c5827dcce7cf08b0ea2880e60d61ed47f38b40b537c4 |
+| receipt | .transcription/household.render.lines-3b481ef5c9b6 |
+| lines judged | 4 |
+| match / mismatch / unclear / missing | 4 / 0 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
+| i1040gi | 2025; printed date 2026-02-25 | 17, 19, 40 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 17, 19, 40 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+
+##### Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "tin_count"
+    status: MATCH
+    reason: "Counts each person on the return who has an SSN or ITIN 'issued on or before the due date of your 2025 return', or who is 'applying for an ITIN on or before the return due date'. This follows Step 5 question 1 and the TIP. The text does not mention renewing an expired ITIN; that is part of the question helper's wording, not this count."
+  - key: "all_tin"
+    status: MATCH
+    reason: "Compares the count of people with an SSN or ITIN (or a pending ITIN application) to the number of people on the return. That tests the text's 'you, and your spouse if filing jointly, must have either an SSN or ITIN issued on or before the due date' requirement for the credit for other dependents."
+  - key: "id_count"
+    status: MATCH
+    reason: "Counts people with an employment-valid SSN or an SSN or ITIN, with no allowance for a pending ITIN application. That fits the CTC rule that the other spouse 'must have either an SSN or ITIN, and it must have been issued on or before the due date of the return'."
+  - key: "ctc_ssn"
+    status: MATCH
+    reason: "Requires at least one person with an SSN valid for employment and every person on the return to have an SSN or ITIN. That matches 'only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN'."
 ```
 ```
 

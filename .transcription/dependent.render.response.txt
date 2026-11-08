@@ -2,35 +2,35 @@
 lines:
   - key: "2(d)"
     status: MISMATCH
-    reason: "The program's helper includes expenses paid with dependent care benefits and assumes Form 2441 subtracts them later. The column (d) instructions exclude them at this line: \"If you completed Part III, don't include in column (d) any benefits shown on line 28\" (also line 30: \"Don't include in column (d) any benefits shown on line 28 above\")."
+    reason: "The restated expenses include amounts paid with dependent care benefits, but the IRS text says 'If you completed Part III, don't include in column (d) any benefits shown on line 28' (line 30: 'Don't include in column (d) any benefits shown on line 28 above'). The gate also requires the person to be your dependent, which drops a disabled person you 'could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You … could be claimed as a dependent', and no refusal names that case."
   - key: "2(c)"
-    status: MATCH
-    reason: "The column (c) instructions say \"Check the box ... if the qualifying person ... was over age 12 at the time the care was provided and was disabled.\" The restatement requires a qualifying person unable to care for themselves who was 14 or older at year end, or 13 at year end with care given while 13 or older and disabled, which is the same test."
+    status: MISMATCH
+    reason: "The age and disability test matches 'over age 12 at the time the care was provided and was disabled'. But the gate drops qualifying persons the IRS lists, a disabled person 'whom you can claim as a dependent or could claim as a dependent except' for gross income of $5,200 or more, a joint return, or your being claimable, and no refusal names that case."
   - key: "23"
-    status: MATCH
-    reason: "Matches line 23: \"Has the American opportunity credit been claimed for this student for any 4 prior tax years?\" The restatement adds \"by you or anyone else\", which follows the instruction text."
+    status: MISMATCH
+    reason: "The question matches line 23. The eligible-student gate's Form 1098-T exception counts a request made 'after February 2, 2026', but the IRS text says 'After January 31, 2026, but before you file the return, you or the student must request…', so requests made on February 1 or 2 are wrongly excluded."
   - key: "24"
-    status: MATCH
-    reason: "Matches line 24 and its instructions: at least half-time for an academic period that began, or is treated as having begun, in 2025 (including the first 3 months of 2026 if paid in 2025), in a program leading to a postsecondary credential. It is shown only when line 23 was \"No\"."
+    status: MISMATCH
+    reason: "The question matches line 24 and its instructions. The line is still reached only through the eligible-student gate, whose Form 1098-T request window ('after February 2, 2026') differs from the IRS 'After January 31, 2026'."
   - key: "25"
-    status: MATCH
-    reason: "Matches line 25 and its instructions: first 4 years completed before 2025, as shown by 4 years of academic credit, disregarding credit awarded solely for proficiency examinations. It is reached only when line 24 was \"Yes\"."
+    status: MISMATCH
+    reason: "The question matches line 25 and its instructions. The eligible-student gate uses 'after February 2, 2026' for the Form 1098-T request where the IRS says 'After January 31, 2026'."
   - key: "26"
-    status: MATCH
-    reason: "Matches line 26 and its instructions: convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance. It is reached only when line 25 was \"No\"."
+    status: MISMATCH
+    reason: "The question matches line 26 ('federal or state felony'). The eligible-student gate uses 'after February 2, 2026' for the Form 1098-T request where the IRS says 'After January 31, 2026'."
   - key: "27"
-    status: MATCH
-    reason: "Line 27 is adjusted qualified education expenses, capped at $4,000. The restatement uses worksheet line 1 (tuition, fees and course materials) less lines 2a, 2b and 2c, floored at zero, and limits it to AOC-eligible students as the instructions require. The refusal names the period-by-period case it does not handle."
+    status: MISMATCH
+    reason: "The computation matches the worksheet (tuition, fees and course materials less lines 2a–2c, floored at zero, capped at $4,000), and the per-period refusal is properly named. However, the eligible-student gate's Form 1098-T exception uses 'after February 2, 2026' where the IRS says 'After January 31, 2026'."
   - key: "28"
-    status: MATCH
-    reason: "Matches \"Subtract $2,000 from line 27. If zero or less, enter -0-.\""
+    status: MISMATCH
+    reason: "The computation matches 'Subtract $2,000 from line 27. If zero or less, enter -0-'. The eligible-student gate uses 'after February 2, 2026' for the Form 1098-T request where the IRS says 'After January 31, 2026'."
   - key: "29"
-    status: MATCH
-    reason: "Matches \"Multiply line 28 by 25% (0.25).\""
+    status: MISMATCH
+    reason: "The computation matches 'Multiply line 28 by 25% (0.25)'. The eligible-student gate uses 'after February 2, 2026' for the Form 1098-T request where the IRS says 'After January 31, 2026'."
   - key: "30"
-    status: MATCH
-    reason: "Matches \"If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29.\""
+    status: MISMATCH
+    reason: "The computation matches 'If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29'. The eligible-student gate uses 'after February 2, 2026' for the Form 1098-T request where the IRS says 'After January 31, 2026'."
   - key: "31"
-    status: MATCH
-    reason: "Line 31 is the student's adjusted qualified education expenses for the lifetime learning credit. Those expenses are amounts required to be paid to the institution, less worksheet line 3, floored at zero. The line is completed only when the student is not taking the AOC (\"If you complete lines 27 through 30 for this student, don't complete line 31\"), and the refusals name the excluded cases."
+    status: MISMATCH
+    reason: "The computation matches (institution-required expenses less lines 2a–2c, floored at zero), and the refusals are named. The eligible-student gate's Form 1098-T exception uses 'after February 2, 2026' where the IRS says 'After January 31, 2026'."
 ```

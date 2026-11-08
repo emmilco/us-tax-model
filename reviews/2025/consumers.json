@@ -120,17 +120,17 @@
    "source_phrase": "You must enter each dependent's social security number (SSN) ... If your dependent won't have a number by the date your return is due, see What if You Can't File on Time?",
    "reason": "The page requires a number for each listed dependent, which the question asks with the ITIN and ATIN of Steps 3 and 5; the born-and-died child entered as \"Died\" is refused by dependent.claimed rather than read through this question."
   },
-  "consumer:dependent.tin@i8863:p2": {
+  "consumer:dependent.tin@i8863:p3": {
    "verdict": "same",
    "question_phrase": "an SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including extensions), or have you applied for an ITIN or ATIN for this person by then",
-   "source_phrase": "Students must have been issued a TIN by the due date of their 2025 return (including extensions)",
+   "source_phrase": "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)",
    "reason": "Read with Pub. 970 (\"If an ATIN or ITIN is applied for on or before the due date ... and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date\"), an application by the due date meets the issued-by-the-due-date test, as the question counts it."
   },
-  "consumer:dependent.edu_1098t@i8863:p2": {
+  "consumer:dependent.edu_1098t@i8863:p3": {
    "verdict": "same",
    "question_phrase": "Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution was not required to furnish one",
-   "source_phrase": "If a student is claimed as a dependent on another person's tax return, all qualified education expenses of the student are treated as having been paid by that person",
-   "reason": "Page 2 sets no Form 1098-T condition of its own; the line reads the p. 1 requirement, the question's own definition, for the dependent it treats as an eligible student here."
+   "source_phrase": "Who cannot claim a credit ... 5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)",
+   "reason": "Page 3 sets no Form 1098-T condition of its own; the line reads the p. 1 requirement, the question's own definition, for the dependent it treats as an eligible student here."
   },
   "consumer:eic.died_2025@i1040gi:p41": {
    "verdict": "same",
@@ -1027,13 +1027,7 @@
   "consumer:dependent.dc_under13@i2441:p1": "9c04a8fe5b5a9881",
   "consumer:dependent.disabled@i1040gi:p19": "88310c89a45c193a",
   "consumer:dependent.divorced_rule@i1040gi:p17": "d2e686c025ceb1cc",
-  "consumer:dependent.edu_1098t@i8863:p2": "ae249a4537353ef7",
-  "consumer:dependent.edu_ein@f8863:p2": "da340e429f69e1e0",
   "consumer:dependent.edu_ein@i8863:p3": "da340e429f69e1e0",
-  "consumer:dependent.edu_line23@i8863:p3": "5822007b581ca5bb",
-  "consumer:dependent.edu_line24@i8863:p3": "e1b93da88f207a17",
-  "consumer:dependent.edu_line25@i8863:p3": "1135abcc4a3b2936",
-  "consumer:dependent.edu_line26@i8863:p3": "d320fd5af8580b47",
   "consumer:dependent.edu_over@i8863:p9": "b50528d2f38f481a",
   "consumer:dependent.eic_ssn@i1040gi:p46": "c640be8f62a36c13",
   "consumer:dependent.joint_return@i1040gi:p41": "afc8d829737a3a70",
@@ -1045,7 +1039,6 @@
   "consumer:dependent.placed@p501:p9": "29d06457176ad4aa",
   "consumer:dependent.relationship@i1040gi:p14": "931570f8fa68a8c0",
   "consumer:dependent.tin@i1040gi:p22": "e3c9b3d40a8e3ec5",
-  "consumer:dependent.tin@i8863:p2": "e3c9b3d40a8e3ec5",
   "consumer:div.basis_reconciled@f1099div:p5": "105b9412695b9ae4",
   "consumer:eic.qc_of_another@i1040gi:p40": "0cf5e57a1cdaabc7",
   "consumer:eic.qc_of_another@i1040gi:p42": "0cf5e57a1cdaabc7",
@@ -1148,14 +1141,8 @@
   "consumer:person.died_before_65@i1040gi:p33": "a3ac05903529a6e1",
   "consumer:person.died_before_65@i1040gi:p34": "a3ac05903529a6e1",
   "consumer:person.died_before_65@i1040gi:p35": "a3ac05903529a6e1",
-  "consumer:person.edu@i8863:p3": "bbd3fcc469e46a38",
   "consumer:person.edu_1098t@i8863:p3": "ae249a4537353ef7",
-  "consumer:person.edu_ein@f8863:p2": "da340e429f69e1e0",
   "consumer:person.edu_ein@i8863:p3": "da340e429f69e1e0",
-  "consumer:person.edu_line23@i8863:p3": "5822007b581ca5bb",
-  "consumer:person.edu_line24@i8863:p3": "e1b93da88f207a17",
-  "consumer:person.edu_line25@i8863:p3": "1135abcc4a3b2936",
-  "consumer:person.edu_line26@i8863:p3": "d320fd5af8580b47",
   "consumer:person.edu_over@i8863:p9": "b50528d2f38f481a",
   "consumer:person.ira_age50@i1040gi:p98": "469eef086f4d07e5",
   "consumer:person.ira_work_plan@i1040gi:p97": "82df36d6edc99960",

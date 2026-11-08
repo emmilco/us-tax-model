@@ -59,12 +59,6 @@
    "prompt_sha": "c493eb53bacc6172ce5bf33c562a913414d377215351ee5fb6e95d0eff499d89",
    "line": "dependent.dc_paid"
   },
-  "unruled:dependent#1": {
-   "class": "out of scope",
-   "evidence": "i8863 pp. 1, 3. As dependent#1 of the prior review (rechecked): f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans; f8863.ban_refused refuses the American opportunity credit when it is Yes.",
-   "gate": "f8863.ban_refused",
-   "prompt_sha": "c43c1b44361949f0f926ee95bb9b9da5f8c115c886a0eb1ace597d3c6763055d"
-  },
   "unruled:eic#1": {
    "class": "covered",
    "evidence": "i1040gi pp. 41, 45. eic.qc_count counts only dependents for whom dependent.eic_child is true, and dependent.eic_child tests dependent.us_half, which asks whether the child lived with you in the United States (the 50 states and the District of Columbia) for more than half of 2025.",
@@ -514,42 +508,6 @@
    "prompt_sha": "1c82805dfb71a7aa808a431bffde395c3fb27e97a77e17b828a365476634a96a",
    "line": "s1a.line14a_calc"
   },
-  "unruled:person#1": {
-   "class": "out of scope",
-   "gate": "f8863.ban_refused",
-   "evidence": "i8863 pp. 1, 3. As the prior person#3 ruling: f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans, and f8863.ban_refused refuses the American opportunity credit.",
-   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c"
-  },
-  "unruled:person#2": {
-   "class": "real gap",
-   "bug": "BUG-0455",
-   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c",
-   "evidence": "i8863 p. 5, 'A student cannot choose to include in income a scholarship or fellowship grant provided by an Indian tribal government ... Also, the scholarship or fellowship grant must be one that may (by its terms) be used for expenses other than qualified education expenses.' person.edu_a2025 tells the filer to leave out a scholarship the student includes in income without saying the choice is limited to grants usable for other expenses and excludes tribal-government grants. Pre-existing wording; low; held for the form's next substantive change."
-  },
-  "unruled:person#3": {
-   "class": "covered",
-   "line": "retirement.exc_amount",
-   "evidence": "p590b p. 28. As the prior person#4 ruling: retirement.exc_amount tells the filer to enter, for exception 22, no more than 50% of the present value of the IRA or plan account; person.x_c22 applies the $10,300 cap.",
-   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c"
-  },
-  "unruled:person#4": {
-   "class": "covered",
-   "line": "retirement.exc_amount",
-   "evidence": "p590b p. 28. As the prior person#5 ruling: retirement.exc_amount caps exception 23 at the total interest in the account minus $1,000; retirement.early_screen refuses an emergency distribution within 3 years after an unrepaid earlier one; person.x_two23 refuses more than one in a year.",
-   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c"
-  },
-  "unruled:person#5": {
-   "class": "out of scope",
-   "gate": "sc.screened",
-   "evidence": "i1040sse p. 4; i1040sc p. 14. As the prior person#1 ruling: sc.statutory asks whether the Schedule C is statutory employee income or notary public fees and sc.screened refuses the Schedule C, so no such line 31 reaches person.se_line2 or the SEP and SIMPLE compensation.",
-   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c"
-  },
-  "unruled:person#6": {
-   "class": "real gap",
-   "bug": "BUG-0456",
-   "prompt_sha": "6b0d6b6699cc386ebebbfa6dc735bf81ff96949dbfadcc16ba86e8f19816fb9c",
-   "evidence": "p560 p. 17, 'You must make the salary reduction contributions to the SIMPLE IRA within 30 days after the end of the month in which the amounts would otherwise have been payable to the employee in cash.' person.simple_deferral asks for the contributions 'for 2025' with no timing condition (the employer-contribution question states the due-date condition). Pre-existing wording; low; held for the form's next substantive change."
-  },
   "unruled:qbi#1": {
    "class": "wrong",
    "evidence": "i8995 pp. 1-3. As the earlier ruling: Schedule C QBI is computed (f8995.line2 sums person.qbi = sc.qbi less sc.qbi_ded).",
@@ -850,6 +808,57 @@
    "evidence": "i2441 p. 5. As w2#4 of the refresh round: s8812.combat_pay asks about nontaxable combat pay and refuses Form 2441 lines 4, 5, 18 and 19.",
    "prompt_sha": "b09d0516a0fd8987fce1e3c82d700704a06f52f71355b8ccf8fff4164be906dc",
    "gate": "s8812.combat_pay"
+  },
+  "unruled:dependent#1": {
+   "class": "presentation",
+   "evidence": "i1040gi pp. 17-18. As the prior ruling on this claim: the Dependents-section checkboxes (more than four dependents, full-time student, disabled, row (5) and row (7) boxes) and the statement are filing information; the dependency and credit tests are asked (dependent.claimed, dependent.ctc_child, dependent.odc_person).",
+   "prompt_sha": "deb4f7f1a789a496adeeb51e0fd0e2ae510815e648014fede14ca831c5bcd71a"
+  },
+  "unruled:dependent#2": {
+   "class": "presentation",
+   "evidence": "i2441 p. 3. As the prior ruling on this claim: the line 2 box and the statement for more than three qualifying persons are filing information; f2441.line2_box shows the box, and the qualifying-person count and column (d) total include every person. Which three persons fill the printed rows changes no amount.",
+   "prompt_sha": "deb4f7f1a789a496adeeb51e0fd0e2ae510815e648014fede14ca831c5bcd71a"
+  },
+  "unruled:dependent#3": {
+   "class": "presentation",
+   "evidence": "i8863 p. 8. As the prior ruling on this claim: the student's name and TIN, the institution's name, address and EIN on line 22 and the extra page 2 for more than two institutions are filing information; whether the EIN is available is asked (dependent.edu_ein) and gates the American opportunity credit.",
+   "prompt_sha": "deb4f7f1a789a496adeeb51e0fd0e2ae510815e648014fede14ca831c5bcd71a"
+  },
+  "unruled:dependent#4": {
+   "class": "out of scope",
+   "gate": "f8863.ban_refused",
+   "evidence": "i8863 pp. 1, 3. As the prior ruling on this claim: f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans; f8863.ban_refused refuses the American opportunity credit when it is Yes.",
+   "prompt_sha": "deb4f7f1a789a496adeeb51e0fd0e2ae510815e648014fede14ca831c5bcd71a"
+  },
+  "unruled:person#1": {
+   "class": "out of scope",
+   "gate": "scope.other_income",
+   "evidence": "i1040gi p. 98 and i8606 p. 9, Line 1. The claim says nothing covers a repayment of a qualified reservist distribution; scope.other_income lists \"a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)\" (cited to i8606 p. 9, \"Include on line 1 any repayment of a qualified reservist distribution\") and the return is refused there, so no such repayment reaches person.ira_trad. The claim's premise is wrong.",
+   "prompt_sha": "ca1d25d6b42ed148a1e70bbcd476dea17f98976459e00a656b9a2fd550e15d82"
+  },
+  "unruled:person#2": {
+   "class": "covered",
+   "line": "retirement.exc_amount",
+   "evidence": "p590b p. 28. As the prior ruling on this claim: retirement.exc_amount tells the filer to enter, for exception 22, no more than 50% of the present value of the IRA or plan account; person.x_c22 applies the $10,300 cap.",
+   "prompt_sha": "ca1d25d6b42ed148a1e70bbcd476dea17f98976459e00a656b9a2fd550e15d82"
+  },
+  "unruled:person#3": {
+   "class": "covered",
+   "line": "retirement.exc_amount",
+   "evidence": "p590b p. 28. As the prior ruling on this claim: retirement.exc_amount caps exception 23 at the total interest in the IRA or plan account minus $1,000; retirement.early_screen refuses an emergency distribution within 3 years after an unrepaid earlier one; person.x_two23 refuses more than one in a year.",
+   "prompt_sha": "ca1d25d6b42ed148a1e70bbcd476dea17f98976459e00a656b9a2fd550e15d82"
+  },
+  "unruled:person#4": {
+   "class": "out of scope",
+   "gate": "f8863.ban_refused",
+   "evidence": "i8863 pp. 1, 3. As the prior ruling on this claim: f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans; f8863.ban_refused refuses the American opportunity credit when it is Yes.",
+   "prompt_sha": "ca1d25d6b42ed148a1e70bbcd476dea17f98976459e00a656b9a2fd550e15d82"
+  },
+  "unruled:person#5": {
+   "class": "out of scope",
+   "gate": "sc.screened",
+   "evidence": "i1040sse p. 4; i1040sc p. 14. As the prior ruling on this claim: sc.statutory asks whether the Schedule C is statutory employee income or notary public fees and sc.screened refuses the Schedule C, so no such line 31 reaches person.se_line2.",
+   "prompt_sha": "ca1d25d6b42ed148a1e70bbcd476dea17f98976459e00a656b9a2fd550e15d82"
   }
  }
 }

@@ -7,11 +7,11 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 5292 |
-| Killed by the checker | 1109 |
-| Killed by fixtures | 3892 (38 only by class M cases) |
-| Surviving | 291 (283 provably equivalent on every input; 8 equivalent on answered inputs only) |
-| Mutation score (raw) | 94.5% |
+| Mutants | 5344 |
+| Killed by the checker | 1173 |
+| Killed by fixtures | 3882 (38 only by class M cases) |
+| Surviving | 289 (281 provably equivalent on every input; 8 equivalent on answered inputs only) |
+| Mutation score (raw) | 94.6% |
 | Mutation score (mutants provably equivalent on every input excluded) | 99.8% |
 | Mutation score (also excluding those equivalent on answered inputs only) | 100.0% |
 
@@ -130,9 +130,17 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
 }
 ), the lines that guard compares are complete and fix the choices that asset.zero and asset.mq_total make, and both reduce to the zero (through settled choices, copies and arithmetic of zeros, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since the values compared, or another alternative still possible, cannot refuse while the guard is unknown (spec 4.7.3); so the mutated line is unchanged at every input.
 - `operand.dependent.dependent.dc_lived_half.part_year_home.any.1.all.2.eq.0` (replace an operand, dependent.dependent.dc_lived_half): dc_lived_half is any[lived_half, all[qualifying_child false, born_died, part_year_home]]; the mutant reads hoh_lived_half, any[lived_half, all[qualifying_child false, any[born_died, placed], part_year_home]], in place of part_year_home. The replaced conjunct is reached only after lived_half was neither true nor a refusal (any-test) and the first two conjuncts were true or unknown, so lived_half, qualifying_child and born_died are memoized there (spec 4.7.6) and born_died is not false. With born_died true the inner any is true without reading placed, so hoh_lived_half is any[lived_half, P] where P is the base conjunct list's value; with born_died unknown the inner any is true or unknown (placed is an input with no gates, never a refusal). In every combination the mutant's inner all-test differs from the base's only by a true turned unknown, or a false turned unknown when lived_half is unknown, and the outer any-test, which already remembers lived_half's unknown in that case, gives the same value; a refusal of part_year_home is passed through in both. (Premises pinned: dependent.dc_lived_half, dependent.hoh_lived_half, dependent.lived_half, dependent.qualifying_child, dependent.born_died, dependent.placed, dependent.part_year_home; the mutant reads dependent.hoh_lived_half.) (structural conditions re-checked this run.)
-- `operand.dependent.dependent.edu_adj.zero.then1` (replace an operand, dependent.dependent.edu_adj): dependent.edu_adj's edu_student-false alternative: as for person.edu_adj, edu_over_refused is decided false by its first conjunct, and lines 27 to 31 read edu_adj only in alternatives guarded by edu_aoc or edu_llc, all-tests whose first conjunct is edu_student true; where edu_student is unknown edu_adj is that unknown on both routes, its other alternative never refusing (spec 4.7.3). edu_adj is a helper. (Premises pinned: dependent.edu_adj, dependent.edu_student, dependent.edu_over_refused, dependent.edu_aoc, dependent.edu_llc, dependent.edu_line27, dependent.edu_line28, dependent.edu_line29, dependent.edu_line30, dependent.edu_line31, dependent.zero; the mutant reads dependent.dc_line2d.) (structural conditions re-checked this run.)
-- `operand.dependent.dependent.edu_aoc.edu_student.all.0.eq.0` (replace an operand, dependent.dependent.edu_aoc): Conjunct prefix: dependent.edu_show26 expands to conjuncts that dependent.edu_aoc reads anyway, in the same first-read order (dependent.edu_student among them), so the all-test meets the same first refusal or false, or ends unknown or true, at every input.
-- `operand.dependent.dependent.edu_aoc.edu_line24.all.2.eq.0` (replace an operand, dependent.dependent.edu_aoc): Conjunct prefix: dependent.edu_show26 expands to conjuncts that dependent.edu_aoc reads anyway, in the same first-read order (dependent.edu_line24 among them), so the all-test meets the same first refusal or false, or ends unknown or true, at every input.
+- `operand.dependent.dependent.edu_adj.zero.then1` (replace an operand, dependent.dependent.edu_adj): dependent.edu_adj's edu_student-false alternative: as for person.edu_adj, edu_over_refused is decided false by its first conjunct; lines 27 to 30 read edu_adj only where edu_aoc is true, and edu_aoc is a choice on edu_student whose false alternative is edu_no (the year parameter edu.no, false); line 31 reads it only where edu_llc is true, an all-test whose first conjunct is edu_student true. Where edu_student is unknown edu_adj is that unknown on both routes, its other alternative never refusing (spec 4.7.3). edu_adj is a helper. (Premises pinned: dependent.edu_adj, dependent.edu_student, dependent.edu_over_refused, dependent.edu_aoc, dependent.edu_no, dependent.edu_llc, dependent.edu_line27, dependent.edu_line28, dependent.edu_line29, dependent.edu_line30, dependent.edu_line31, dependent.zero, param:edu.no; the mutant reads dependent.dc_line2d.) (structural conditions re-checked this run.)
+- `operand.dependent.dependent.edu_aoc.edu_no.then1` (replace an operand, dependent.dependent.edu_aoc): Branch equal under a case split: where dependent.edu_aoc takes alternative 1 (guard {
+  "eq": [
+    "dependent.edu_student",
+    {
+      "const": false
+    }
+  ],
+  "op": "test"
+}
+), dependent.edu_no and dependent.edu_show26 have the same value, through settled choices, copies, comparisons of complete values and arithmetic of zeros, so the mutated line is unchanged at every input.
 - `operand.dependent.dependent.edu_line28.zero.then1` (replace an operand, dependent.dependent.edu_line28): Branch settled by its guard: where dependent.edu_line28 takes alternative 1 (guard {
   "eq": [
     "dependent.edu_aoc",
@@ -555,9 +563,17 @@ partial return can tell the mutant apart (spec 4.7.3). They are not counted as p
 }
 ), the lines that guard compares are complete and fix the choices that person.zero and person.ira_nondeductible make, and both reduce to the zero (through settled choices, copies and arithmetic of zeros, with refusal gates only among the line's own, already false); where its guards are unknown the line is that unknown on both routes, since the values compared, or another alternative still possible, cannot refuse while the guard is unknown (spec 4.7.3); so the mutated line is unchanged at every input.
 - `operand.person.person.ira_se.zero.then1` (replace an operand, person.person.ira_se): person.ira_se's has_sc-false alternative is person.zero; the mutant reads person.ira_se_take, the sum of se_line13 and s16. With has_sc known false both take person.zero, so the sum is $0. Where has_sc is unknown: has_sc is sc_count more than 0, sc_count a sum of sc.one (a parameter) over the person's Schedule C entries with no filter, so it is complete wherever that roster is confirmed and unknown, without a lower bound, only where it is not; person.se_rrta sums sc.one over the same roster (where sc.rrta), so it is unknown there too; se_line13's gate se_rrta is unknown, so se_line13 is unknown at line entry, and s16 is a choice on has_sc with a person.zero alternative, so it is unknown (spec 4.7.3); ira_se_take is then unknown, never a refusal, and ira_se is has_sc's unknown on both routes. (Premises pinned: person.ira_se, person.ira_se_take, person.se_line13, person.s16, person.has_sc, person.sc_count, person.se_rrta, person.sc_rrta_count, person.zero, sc.one, param:sc.one; the mutant reads person.ira_se_take.) (structural conditions re-checked this run.)
-- `operand.person.person.edu_adj.zero.then1` (replace an operand, person.person.edu_adj): edu_adj's edu_student-false alternative: edu_student is then known false (memoized). edu_over_refused is an all-test whose first conjunct, edu_student true, decides it false before edu_adj is read; lines 27 to 30 read edu_adj only in the alternative guarded by edu_aoc and line 31 only in the one guarded by edu_llc, both all-tests whose first conjunct is edu_student true, so both are false and those alternatives (and their bindings) are not evaluated (spec 4.7.3, 4.7.4). Where edu_student is unknown, edu_adj's other alternative never refuses, so edu_adj is that unknown on both routes (spec 4.7.3). edu_adj is a helper. (Premises pinned: person.edu_adj, person.edu_student, person.edu_over_refused, person.edu_aoc, person.edu_llc, person.edu_line27, person.edu_line28, person.edu_line29, person.edu_line30, person.edu_line31, person.zero; the mutant reads person.ira_se.) (structural conditions re-checked this run.)
-- `operand.person.person.edu_aoc.edu_student.all.0.eq.0` (replace an operand, person.person.edu_aoc): Conjunct prefix: person.edu_show26 expands to conjuncts that person.edu_aoc reads anyway, in the same first-read order (person.edu_student among them), so the all-test meets the same first refusal or false, or ends unknown or true, at every input.
-- `operand.person.person.edu_aoc.edu_line24.all.2.eq.0` (replace an operand, person.person.edu_aoc): Conjunct prefix: person.edu_show26 expands to conjuncts that person.edu_aoc reads anyway, in the same first-read order (person.edu_line24 among them), so the all-test meets the same first refusal or false, or ends unknown or true, at every input.
+- `operand.person.person.edu_adj.zero.then1` (replace an operand, person.person.edu_adj): edu_adj's edu_student-false alternative: edu_student is then known false (memoized). edu_over_refused is an all-test whose first conjunct, edu_student true, decides it false before edu_adj is read. Lines 27 to 30 read edu_adj only in the alternative guarded by edu_aoc true; edu_aoc is a choice on edu_student whose false alternative is edu_no, the year parameter edu.no (false), so edu_aoc is false. Line 31 reads it only in the alternative guarded by edu_llc true, an all-test whose first conjunct is edu_student true, so edu_llc is false. Those alternatives (and their bindings) are not evaluated (spec 4.7.3, 4.7.4). Where edu_student is unknown, edu_adj's other alternative never refuses, so edu_adj is that unknown on both routes (spec 4.7.3). edu_adj is a helper. (Premises pinned: person.edu_adj, person.edu_student, person.edu_over_refused, person.edu_aoc, person.edu_no, person.edu_llc, person.edu_line27, person.edu_line28, person.edu_line29, person.edu_line30, person.edu_line31, person.zero, param:edu.no; the mutant reads person.ira_se.) (structural conditions re-checked this run.)
+- `operand.person.person.edu_aoc.edu_no.then1` (replace an operand, person.person.edu_aoc): Branch equal under a case split: where person.edu_aoc takes alternative 1 (guard {
+  "eq": [
+    "person.edu_student",
+    {
+      "const": false
+    }
+  ],
+  "op": "test"
+}
+), person.edu_no and person.edu_show26 have the same value, through settled choices, copies, comparisons of complete values and arithmetic of zeros, so the mutated line is unchanged at every input.
 - `operand.person.person.edu_line28.zero.then1` (replace an operand, person.person.edu_line28): Branch settled by its guard: where person.edu_line28 takes alternative 1 (guard {
   "eq": [
     "person.edu_aoc",

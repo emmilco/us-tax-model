@@ -1240,6 +1240,12 @@ params:
       cite:
         doc: p590b
         locator: 'p. 28, Emergency personal expense distributions, "must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000." (the interest less $1,000 limb is attested in the question)'
+    edu.no:
+      type: Bool
+      value: false
+      cite:
+        doc: f8863
+        locator: p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student."
     edu.magi_limit:
       type: NonNegDollars
       value:

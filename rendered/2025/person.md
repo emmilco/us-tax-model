@@ -1615,8 +1615,29 @@
 ## (helper) — `person.edu_student`
 
 - **Authored helper label:** An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)
-- **Encoded (Bool):** f8863 helper "Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim" = true and helper "Qualified education expenses paid in 2025 for this person" = true and (helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = true or helper "If not, have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your return?" = true) and helper "The student received a 2025 Form 1098-T from the institution, or an exception applies" = true
-- Expr: `{"all":[{"eq":["f8863.paid",{"const":true}],"op":"test"},{"eq":["person.edu",{"const":true}],"op":"test"},{"any":[{"eq":["person.tin",{"const":true}],"op":"test"},{"eq":["person.itin_applied",{"const":true}],"op":"test"}],"op":"test"},{"eq":["person.edu_1098t",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [f8863 helper "Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim" = true → helper "With education expenses paid: this person was a student with qualified expenses, has a TIN by the due date and a Form 1098-T (or an exception)"] [f8863 helper "Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim" = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["f8863.paid",{"const":true}],"op":"test"},"then":"person.edu_student_edu"},{"guard":{"eq":["f8863.paid",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
+- Cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; sha256 195cfd5e)
+
+## (helper) — `person.edu_student_edu`
+
+- **Authored helper label:** With education expenses paid: this person was a student with qualified expenses, has a TIN by the due date and a Form 1098-T (or an exception)
+- **Encoded (Bool):** Choose — [helper "Qualified education expenses paid in 2025 for this person" = true → helper "A student with qualified expenses: an SSN or ITIN (or an ITIN applied for by the due date), and a Form 1098-T (or an exception)"] [helper "Qualified education expenses paid in 2025 for this person" = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu",{"const":true}],"op":"test"},"then":"person.edu_student_tin"},{"guard":{"eq":["person.edu",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
+- Cite: [i8863] p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student enrolled at or attending an eligible educational institution." (2025; sha256 195cfd5e)
+
+## (helper) — `person.edu_student_tin`
+
+- **Authored helper label:** A student with qualified expenses: an SSN or ITIN (or an ITIN applied for by the due date), and a Form 1098-T (or an exception)
+- **Encoded (Bool):** Choose — [helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = true → helper "The student received a 2025 Form 1098-T from the institution, or an exception applies"] [helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = false → helper "A student without an SSN or ITIN: an ITIN applied for by the due date, and a Form 1098-T (or an exception)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.tin",{"const":true}],"op":"test"},"then":"person.edu_1098t"},{"guard":{"eq":["person.tin",{"const":false}],"op":"test"},"then":"person.edu_student_itin"}],"op":"choose"}`
+- Cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; sha256 195cfd5e)
+
+## (helper) — `person.edu_student_itin`
+
+- **Authored helper label:** A student without an SSN or ITIN: an ITIN applied for by the due date, and a Form 1098-T (or an exception)
+- **Encoded (Bool):** Choose — [helper "If not, have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your return?" = true → helper "The student received a 2025 Form 1098-T from the institution, or an exception applies"] [helper "If not, have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your return?" = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.itin_applied",{"const":true}],"op":"test"},"then":"person.edu_1098t"},{"guard":{"eq":["person.itin_applied",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
 - Cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; sha256 195cfd5e)
 
 ## (helper) — `person.edu_inst`
@@ -1760,13 +1781,55 @@
 - Expr: `{"op":"input","source":"Do you have the educational institution's employer identification number (EIN), from Form 1098-T or from the institution?"}`
 - Cite: [i8863] p. 4, Student qualifications, "7. You must provide the educational institution’s employer identification number (EIN) on your Form 8863." (2025; sha256 195cfd5e)
 
+## (helper) — `person.edu_no`
+
+- **Authored helper label:** Year parameter edu.no (false)
+- **Encoded (Bool):** Enter false (edu.no).
+- Expr: `{"op":"param","ref":"edu.no"}`
+- Cite: [f8863] p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student." (2025; sha256 a251a1cf)
+
 ## (helper) — `person.edu_aoc`
 
 - **Authored helper label:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available
-- **Encoded (Bool):** helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)" = true and line 23 = false and line 24 = true and line 25 = false and line 26 = false and household helper "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN" = true and helper "The institution's employer identification number (EIN) is available" = true
-- Interpretation: amb.2025.edu_filer_tin
-- Expr: `{"all":[{"eq":["person.edu_student",{"const":true}],"op":"test"},{"eq":["person.edu_line23",{"const":false}],"op":"test"},{"eq":["person.edu_line24",{"const":true}],"op":"test"},{"eq":["person.edu_line25",{"const":false}],"op":"test"},{"eq":["person.edu_line26",{"const":false}],"op":"test"},{"eq":["household.all_tin",{"const":true}],"op":"test"},{"eq":["person.edu_ein",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)" = true → helper "For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years), and lines 24 to 26, the TINs and the EIN allow the credit"] [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)" = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_student",{"const":true}],"op":"test"},"then":"person.edu_aoc23"},{"guard":{"eq":["person.edu_student",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
 - Cite: [f8863] p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)." (2025; sha256 a251a1cf)
+
+## (helper) — `person.edu_aoc23`
+
+- **Authored helper label:** For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years), and lines 24 to 26, the TINs and the EIN allow the credit
+- **Encoded (Bool):** Choose — [line 23 = false → helper "Line 24 is Yes (enrolled at least half-time), and lines 25 and 26, the TINs and the EIN allow the credit"] [line 23 = true → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_line23",{"const":false}],"op":"test"},"then":"person.edu_aoc24"},{"guard":{"eq":["person.edu_line23",{"const":true}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
+- Cite: [f8863] p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student." (2025; sha256 a251a1cf)
+
+## (helper) — `person.edu_aoc24`
+
+- **Authored helper label:** Line 24 is Yes (enrolled at least half-time), and lines 25 and 26, the TINs and the EIN allow the credit
+- **Encoded (Bool):** Choose — [line 24 = true → helper "Line 25 is No (the first 4 years of postsecondary education were not completed before 2025), and line 26, the TINs and the EIN allow the credit"] [line 24 = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_line24",{"const":true}],"op":"test"},"then":"person.edu_aoc25"},{"guard":{"eq":["person.edu_line24",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
+- Cite: [f8863] p. 2, Part III, line 24, "No—Stop! Go to line 31 for this student." (2025; sha256 a251a1cf)
+
+## (helper) — `person.edu_aoc25`
+
+- **Authored helper label:** Line 25 is No (the first 4 years of postsecondary education were not completed before 2025), and line 26, the TINs and the EIN allow the credit
+- **Encoded (Bool):** Choose — [line 25 = false → helper "Line 26 is No (no felony drug conviction), and the TINs and the EIN allow the credit"] [line 25 = true → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_line25",{"const":false}],"op":"test"},"then":"person.edu_aoc26"},{"guard":{"eq":["person.edu_line25",{"const":true}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
+- Cite: [f8863] p. 2, Part III, line 25, "Yes—Stop! Go to line 31 for this student." (2025; sha256 a251a1cf)
+
+## (helper) — `person.edu_aoc26`
+
+- **Authored helper label:** Line 26 is No (no felony drug conviction), and the TINs and the EIN allow the credit
+- **Encoded (Bool):** Choose — [line 26 = false → helper "You, and your spouse if filing jointly, have a TIN, and the institution's EIN is available"] [line 26 = true → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_line26",{"const":false}],"op":"test"},"then":"person.edu_aoc_tin"},{"guard":{"eq":["person.edu_line26",{"const":true}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
+- Cite: [f8863] p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student." (2025; sha256 a251a1cf)
+
+## (helper) — `person.edu_aoc_tin`
+
+- **Authored helper label:** You, and your spouse if filing jointly, have a TIN, and the institution's EIN is available
+- **Encoded (Bool):** Choose — [household helper "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN" = true → helper "The institution's employer identification number (EIN) is available"] [household helper "You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN" = false → helper "Year parameter edu.no (false)"]
+- Interpretation: amb.2025.edu_filer_tin
+- Expr: `{"alternatives":[{"guard":{"eq":["household.all_tin",{"const":true}],"op":"test"},"then":"person.edu_ein"},{"guard":{"eq":["household.all_tin",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
+- Cite: [i8863] p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)." (2025; sha256 195cfd5e)
 
 ## (helper) — `person.edu_llc`
 
@@ -1821,11 +1884,11 @@
 ## 31 — `person.edu_line31`
 
 - **Authored helper label:** Adjusted qualified education expenses for the lifetime learning credit
-- **Encoded (NonNegDollars):** Choose — [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true → "ws4_llc" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = false → line zero]
+- **Encoded (NonNegDollars):** Choose — [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true → "ws4_llc" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = line zero] [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = false → line zero]
 - **Refusal:** when person.edu_llc_tin_refused is true, cannot complete Lifetime learning credit for a student whose ITIN or ATIN was only applied for. The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student. Cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)."; p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (2025; sha256 195cfd5e)
 - **Refusal:** when person.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
 - **Shown on the values sheet only when:** A lifetime learning credit student: an eligible student who is not an American opportunity credit student (`person.edu_llc`)
-- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_llc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"person.edu_adj","inst":"person.edu_inst","mat":"person.edu_mat"},"def":"aqee","line":"ws4_llc"}},{"guard":{"eq":["person.edu_llc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_llc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"person.edu_adj","inst":"person.edu_inst","mat":"person.zero"},"def":"aqee","line":"ws4_llc"}},{"guard":{"eq":["person.edu_llc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f8863] p. 2, Part III, line 31, "Adjusted qualified education expenses (see instructions). Include the total of all amounts from all Parts III, line 31, on Part II, line 10"; i8863 p. 9, Line 31 (2025; sha256 a251a1cf)
 
 ## (helper) — `person.edu_born_2007`
