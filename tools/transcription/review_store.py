@@ -545,14 +545,44 @@ def migrate():
     print(f"review store: {n} logs stored as records and indexes under {os.path.relpath(_reviews(), ROOT)}")
 
 
+# Indexes held out of the line/subject agreement below: {"<kind>/<stem>": reason}. Shrink-only: an entry is
+# removed when its form is reviewed, and an entry that no longer has a gap fails until it is removed.
+SUBJECT_VERDICT_EXCEPTIONS = {
+    "transcription/eic": "eic.zero is a compared line (household.yaml reads it) with a line subject and no verdict "
+                         "section; reviewing it needs a paid transcription call (BUG-0468)",
+    "transcription/div.deepseek": "optional-family log whose verdict section div.screen has no line subject; "
+                                  "stale for the lines now compared, rerun only where it can earn credit (BUG-0468)",
+}
+
+
+def subject_verdict_gap(index):
+    """What differs between an index's compared lines (those with a verdict section) and its line subjects:
+    ([keys with a subject and no verdict], [keys with a verdict and no subject]); both empty when the index
+    records no per-line subjects (a whole-form review of an older form)."""
+    subj = index.get("subjects")
+    if subj is None:
+        return [], []
+    lines = [l["key"] for l in index["lines"]]
+    return sorted(set(subj) - set(lines)), sorted(set(lines) - set(subj))
+
+
 def check():
-    """Every index's records exist, parse, name their kind, form and family, and hash to their names, and
-    the index's view parses back to the same index."""
+    """Every index's records exist, parse, name their kind, form and family, and hash to their names, the
+    index's view parses back to the same index, and every key with a line subject has a verdict section
+    and the reverse (SUBJECT_VERDICT_EXCEPTIONS aside)."""
     problems, n, used = [], 0, set()
     for kind in KINDS:
         for form, family in forms(kind):
             n += 1
             index = load_index(kind, form, family)
+            tag = f"{kind}/{families.stem(form, family)}"
+            no_verdict, no_subject = subject_verdict_gap(index)
+            if (no_verdict or no_subject) and tag not in SUBJECT_VERDICT_EXCEPTIONS:
+                problems.append(f"{tag}: " + "; ".join(
+                    ([f"line subject without a verdict section: {', '.join(no_verdict)}"] if no_verdict else []) +
+                    ([f"verdict section without a line subject: {', '.join(no_subject)}"] if no_subject else [])))
+            elif tag in SUBJECT_VERDICT_EXCEPTIONS and not (no_verdict or no_subject):
+                problems.append(f"{tag}: listed in SUBJECT_VERDICT_EXCEPTIONS but has no gap; remove it")
             for sha in {index["base"]} | {l["record"] for l in index["lines"]}:
                 used.add((kind, sha))
                 try:

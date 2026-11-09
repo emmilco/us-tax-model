@@ -3213,6 +3213,41 @@ class ReviewStore(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "never rewritten"):
             self.store.write_record(ident, [(n, t + "x") for n, t in parts.items()])
 
+    def test_a_line_subject_without_a_verdict_fails_the_store_check(self):
+        stack = contextlib.ExitStack()
+        stack.enter_context(patch.object(self.store, "SUBJECT_VERDICT_EXCEPTIONS", {}))
+        self.addCleanup(stack.close)
+        rulings.write_log("transcription", "x", self.log())
+        path = Path(self.store.index_path("transcription", "x"))
+        good = json.loads(path.read_text())
+        self.assertEqual(self.store.subject_verdict_gap(good), ([], []))
+        self.assertEqual(self.store.check(), 0)
+        extra = copy.deepcopy(good)
+        extra["subjects"]["x.zero"] = "9" * 64  # a subject recorded for a line no pass judged
+        path.write_text(json.dumps(extra))
+        self.assertEqual(self.store.subject_verdict_gap(extra), (["x.zero"], []))
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            self.assertEqual(self.store.check(), 1)
+        self.assertIn("line subject without a verdict section: x.zero", err.getvalue())
+        held = {"transcription/x": "test"}
+        with patch.object(self.store, "SUBJECT_VERDICT_EXCEPTIONS", held):
+            path.write_text(json.dumps(extra))
+            self.assertEqual(self.store.check(), 0)  # listed: held
+            path.write_text(json.dumps(good))
+            with contextlib.redirect_stderr(err):
+                self.assertEqual(self.store.check(), 1)  # no gap left: the entry must go
+        self.assertIn("has no gap", err.getvalue())
+        bare = copy.deepcopy(good)
+        del bare["subjects"]["2"]  # a verdict section with no subject
+        path.write_text(json.dumps(bare))
+        self.assertEqual(self.store.subject_verdict_gap(bare), ([], ["2"]))
+        with contextlib.redirect_stderr(err):
+            self.assertEqual(self.store.check(), 1)
+        self.assertIn("verdict section without a line subject: 2", err.getvalue())
+        nosubj = {k: v for k, v in good.items() if k != "subjects"}
+        self.assertEqual(self.store.subject_verdict_gap(nosubj), ([], []))  # whole-form index without subjects
+
     def test_index_state_follows_lines_rest_and_foreign_interfaces(self):
         import subjects as S
         index = {"subjects": {"1": "a", "2": "b"}, "__rest__": "r", "foreign": {"1": "f"}}
