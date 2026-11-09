@@ -18,7 +18,6 @@ Enter this case in FreeTaxUSA (2025) and OLT (2025), then read the lines below b
 | Gifts to charity by cash or check | 5000.00 |
 | W-2 (emp_a) box 1 — wages, tips, other compensation | 90000.00 |
 | W-2 (emp_a) box 2 — federal income tax withheld | 10000.00 |
-| W-2 (emp_a) box 3 — social security wages | 90000.00 |
 | W-2 (emp_a) box 4 — social security tax withheld | 5580.00 |
 | W-2 (emp_a) box 5 — Medicare wages and tips | 90000.00 |
 | W-2 (emp_a) box 6 — Medicare tax withheld | 1305.00 |
@@ -34,7 +33,6 @@ Screening questions (answer No unless noted): Schedule 1 income, Schedule 1-A de
 
 | field | value |
 | --- | --- |
-| div.basis_reconciled | yes |
 | ftc.all_passive | yes |
 | ftc.statements | yes |
 | ftc.eligible | yes |

@@ -27,7 +27,7 @@
 //                     existence gate (an input a gate line's guard reads) opened alone. Each must complete without
 //                     asking an input gated by a closed gate
 //
-// Walks: the full profile over the Stage 5 fixtures and generated returns (generate.ts), the New York profile over
+// Walks: the full profile over the whole-return fixtures (fixtures/<year>/returns.json) and generated returns (generate.ts), the New York profile over
 // the New York stage fixtures and generated returns with New York answers. A generated return whose walk reaches a
 // question it does not answer is counted as not walkable, not failed (the generator does not answer every input). The
 // random traversals take every New York fixture of RANDOM_EVERY and every other case. On a refused return the
@@ -39,7 +39,7 @@
 //
 //   interview-rules [--self-test]
 import assert from "node:assert/strict";
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { Worker } from "node:worker_threads";
 import fc from "fast-check";
@@ -49,8 +49,8 @@ import { entryHint, inputMeta, interviewStatus, loadInterview, questionTemplate,
 import { evaluate } from "./eval.js";
 import { gateProblems, gatesOf, readsOf } from "./gates.js";
 import { nyReturnArbitrary, sampleReturns } from "./generate.js";
-import { resolveInputs } from "./fixture-inputs.js";
-import { YEAR, nyPath, yearPath } from "./year.js";
+import { loadFixtureCases, walkedCases } from "./fixture-inputs.js";
+import { YEAR } from "./year.js";
 import type { CanonicalData, Expr, Inputs, Line } from "./types.js";
 
 const PROFILES = ["social-security", "sales", "stage4", "full", "ny"] as const;
@@ -187,8 +187,11 @@ function classify(data: CanonicalData, config: InterviewData, inputs: Inputs, w:
 }
 
 interface Case { id: string; inputs: Inputs }
-function fixtureCases(file: string, data: CanonicalData): Case[] {
-  return (JSON.parse(readFileSync(file, "utf8")) as { cases: Case[] }).cases.map((c) => ({ id: c.id, inputs: resolveInputs(c.inputs, data.params, c.id) }));
+/** The fixture cases a profile walks: the federal whole returns (`walk: full`), or the New York stage fixtures (not the
+ * class M or mutation cases); inputs resolved (fixture-inputs.ts). */
+function fixtureCases(profile: "full" | "ny", data: CanonicalData): Case[] {
+  const cases = profile === "full" ? walkedCases("full", data) : loadFixtureCases("ny", data).filter((c) => !c.file.startsWith("classm") && c.file !== "mutation.json");
+  return cases.map((c) => ({ id: c.id, inputs: c.inputs }));
 }
 
 /** The static part of no-input-set: each profile's initial, its roster choices, and the gate conventions with the
@@ -422,10 +425,9 @@ export async function interviewRules(args: string[] = []): Promise<number> {
   };
 
   // The walks: (profile, case) pairs from the fixtures and generated returns.
-  const nyFiles = readdirSync(nyPath("fixtures")).filter((n) => n.endsWith(".json") && !n.startsWith("classm") && n !== "mutation.json").sort();
   const groups: { name: string; profile: "full" | "ny"; cases: Case[]; generated: boolean }[] = await timed("generate returns", () => [
-    { name: "full: Stage 5 fixtures", profile: "full", cases: fixtureCases(yearPath("fixtures", "stage5.json"), data), generated: false },
-    { name: "ny: New York fixtures", profile: "ny", cases: nyFiles.flatMap((f) => fixtureCases(join(nyPath("fixtures"), f), data)), generated: false },
+    { name: "full: Stage 5 fixtures", profile: "full", cases: fixtureCases("full", data), generated: false },
+    { name: "ny: New York fixtures", profile: "ny", cases: fixtureCases("ny", data), generated: false },
     { name: "full: generated returns", profile: "full", cases: sampleReturns(data, GENERATED, SEED).map((inputs, i) => ({ id: `generated.${i}`, inputs })), generated: true },
     { name: "ny: generated returns", profile: "ny", cases: fc.sample(nyReturnArbitrary(data), { seed: SEED, numRuns: GENERATED }).map((inputs, i) => ({ id: `ny.generated.${i}`, inputs })), generated: true },
   ]);
@@ -617,7 +619,7 @@ function selfTest(): number {
 
   // A leftover fixture answer masks a planted conjunction leak from the fixture values and the walk in bank order; the
   // reach class names it.
-  const c = fixtureCases(yearPath("fixtures", "stage5.json"), data).find((x) => x.id === LEAK_CASE)!;
+  const c = fixtureCases("full", data).find((x) => x.id === LEAK_CASE)!;
   const clean = runTask(context, { kind: "walk", profile: "full", c });
   assert.ok(clean.kind === "walked" && clean.classes, "the clean case walks to completion");
   const pair = leakPair(data, config, c.inputs, (clean as Extract<TaskResult, { kind: "walked" }>).w);

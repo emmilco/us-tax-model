@@ -1,0 +1,226 @@
+{
+  "tax_year": 2025,
+  "note": "Test-data defaults (engine/src/fixture-inputs.ts): every input a fixture case does not state takes its template's value here; null in a case withholds one. The evaluator, the command-line program and the interview never read this file. Changing an existing value needs an acknowledged affected-cases report (tools/defaults_guard.mjs); adding one for a new input needs only the normal tier. The New York fixtures take the federal defaults as well as these.",
+  "defaults": [
+    {
+      "input": "$ny_it2",
+      "value": [],
+      "reason": "None: Form IT-2 (2025), Summary of W-2 Statements — one record per Form W-2 entries are listed only where the scenario has them."
+    },
+    {
+      "input": "ny_it2.city_withheld",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "ny_it2.state_withheld",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "ny_it2.yonkers_withheld",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "ny_it201.ask.414h",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.529_nonqualified",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.529_owner",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.abode_part_year",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.city_credits",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.city_resident",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.college_tuition",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.contributions",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.decedent",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.dependent_care",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.est_late",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.gov_pension",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.inflation_check",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.it225",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.item_c",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.itemize",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.late_penalty",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.mctmt",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.noncustodial",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.other_credits",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.other_taxes",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.other_withholding",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.out_of_state_bond_interest",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.owes_use_tax",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.pension_exclusion",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.prior_agi_high",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.prior_full_year",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.prior_year_tax",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "ny_it201.ask.real_property_credit",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.refund_529",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.resident_credit",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.special_accrual",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.special_code",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.spouse_resident",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.state_resident",
+      "value": true,
+      "reason": "true: Form IT-201 is the full-year resident return; a part-year resident is out of scope and refuses."
+    },
+    {
+      "input": "ny_it201.ask.us_obligation_interest",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.use_tax_st141",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.ask.yonkers",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "ny_it201.line75",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "ny_it201.line79_amount",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    }
+  ]
+}

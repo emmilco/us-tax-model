@@ -1,0 +1,598 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "sales.select.sdtw.election",
+      "walk": "sales",
+      "covers": [
+        "f1040.gate.sdtw"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "D",
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 200000,
+        "f4952.line4g": 1,
+        "$w2@person[taxpayer]": [
+          "migrated"
+        ],
+        "person[taxpayer].w2[migrated].box1": 6175000
+      },
+      "expect": {
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 553250
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sdtw.show41_43": {
+          "kind": "bool",
+          "value": false
+        }
+      },
+      "evidence_note": "Stage 4 now computes SDTW. Synthetic hand calculation: ordinary-income Tax Table amount $5,285 plus preferential-rate tax $247.50 = $5,532.50; the one-cent special gain/election does not change the rounded total.  Shown-line regression (owner decision 2026-10-26: skipped lines are hidden): Schedule D line 18 is zero, so i1040sd p. 16 \"skip lines 41 through 43\" hides them."
+    },
+    {
+      "id": "stage4.sdtw.special_rates",
+      "walk": "stage4",
+      "covers": [
+        "sdtw.special_rates"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending. Lines 16, 17 and 18 and the non-worksheet tax are asserted so that line 18 is pinned on the Schedule D Tax Worksheet path. BUG-0160 (closing BUG-0099): no Form 4952 is filed, so worksheet line 4 (\"Enter the amount from Form 4952, line 4e\", i1040sd pp. 15-16) is zero; it had recorded Form 4952 line 4e figured for an unfiled form. Lines 5 and 47 are unchanged.",
+      "inputs": {
+        "div.any": true,
+        "div.box2b": 3000000,
+        "div.box2d": 2000000,
+        "sd.distributions": 10000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 21575000
+      },
+      "expect": {
+        "sdtw.line31": {
+          "kind": "money",
+          "cents": 750000
+        },
+        "sdtw.line40": {
+          "kind": "money",
+          "cents": 750000
+        },
+        "sdtw.line43": {
+          "kind": "money",
+          "cents": 560000
+        },
+        "sdtw.line44": {
+          "kind": "money",
+          "cents": 4106300
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 6166300
+        },
+        "sdtw.line1": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "sdtw.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line7": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "sdtw.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line9": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "sdtw.line10": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "sdtw.line11": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "sdtw.line12": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "sdtw.line13": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "sdtw.line14": {
+          "kind": "money",
+          "cents": 25000000
+        },
+        "sdtw.line15": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "sdtw.line16": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "sdtw.line17": {
+          "kind": "money",
+          "cents": 4835000
+        },
+        "sdtw.line18": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "sdtw.line19": {
+          "kind": "money",
+          "cents": 19730000
+        },
+        "sdtw.line20": {
+          "kind": "money",
+          "cents": 19730000
+        },
+        "sdtw.line21": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "sdtw.line22": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line23": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "sdtw.line24": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line25": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "sdtw.line26": {
+          "kind": "money",
+          "cents": 53340000
+        },
+        "sdtw.line27": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "sdtw.line28": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "sdtw.line29": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "sdtw.line30": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "sdtw.line32": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "sdtw.line33": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line34": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line35": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "sdtw.line36": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "sdtw.line37": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "sdtw.line38": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line39": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "sdtw.line41": {
+          "kind": "money",
+          "cents": 28000000
+        },
+        "sdtw.line42": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "sdtw.line45": {
+          "kind": "money",
+          "cents": 6166300
+        },
+        "sdtw.line46": {
+          "kind": "money",
+          "cents": 7454725
+        },
+        "sdtw.line47": {
+          "kind": "money",
+          "cents": 6166300
+        },
+        "f1040.non_sdtw_tax": {
+          "kind": "money",
+          "cents": 5606300
+        },
+        "f1040.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 6166300
+        }
+      }
+    },
+    {
+      "id": "stage4.sdtw.skip22",
+      "walk": "stage4",
+      "covers": [
+        "sdtw.skip22"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending. Lines 16, 17 and 18 and the non-worksheet tax are asserted so that line 18 is pinned on the Schedule D Tax Worksheet path.",
+      "inputs": {
+        "div.any": true,
+        "div.box2d": 2000000,
+        "sa.gifts": true,
+        "sa.elect_itemize": true,
+        "sa.line11": 6000000,
+        "sd.distributions": 10000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000
+      },
+      "expect": {
+        "sdtw.after22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sdtw.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line43": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line47": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.non_sdtw_tax": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.sdtw.skip32",
+      "walk": "stage4",
+      "covers": [
+        "sdtw.skip32"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "div.any": true,
+        "sd.distributions": 10000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 1575000
+      },
+      "expect": {
+        "sdtw.after32": {
+          "kind": "bool",
+          "value": false
+        },
+        "sdtw.line33": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line43": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.sdtw.twenty_percent",
+      "walk": "stage4",
+      "covers": [
+        "sdtw.twenty_percent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Explicitly calculated regression expectations; human review pending.",
+      "inputs": {
+        "div.any": true,
+        "div.box2b": 3000000,
+        "div.box2d": 2000000,
+        "sd.distributions": 20000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 51575000
+      },
+      "expect": {
+        "sdtw.line30": {
+          "kind": "money",
+          "cents": 3340000
+        },
+        "sdtw.line31": {
+          "kind": "money",
+          "cents": 501000
+        },
+        "sdtw.line33": {
+          "kind": "money",
+          "cents": 11660000
+        },
+        "sdtw.line34": {
+          "kind": "money",
+          "cents": 2332000
+        },
+        "sdtw.line40": {
+          "kind": "money",
+          "cents": 750000
+        },
+        "sdtw.line43": {
+          "kind": "money",
+          "cents": 560000
+        },
+        "sdtw.line44": {
+          "kind": "money",
+          "cents": 14454725
+        },
+        "sdtw.line45": {
+          "kind": "money",
+          "cents": 18597725
+        },
+        "sdtw.line46": {
+          "kind": "money",
+          "cents": 21602025
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 18597725
+        }
+      }
+    },
+    {
+      "id": "stage4.sdtw.lower_bracket",
+      "walk": "stage4",
+      "covers": [
+        "sdtw.lower_bracket"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Explicitly calculated regression expectations; human review pending.",
+      "inputs": {
+        "div.any": true,
+        "div.box2b": 500000,
+        "div.box2d": 1000000,
+        "sd.distributions": 2000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 9575000
+      },
+      "expect": {
+        "sdtw.line21": {
+          "kind": "money",
+          "cents": 9500000
+        },
+        "sdtw.line31": {
+          "kind": "money",
+          "cents": 75000
+        },
+        "sdtw.line38": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "sdtw.line39": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line43": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sdtw.line44": {
+          "kind": "money",
+          "cents": 1582000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1657000
+        }
+      }
+    },
+    {
+      "id": "stage4.sdtw.line12_takes_line9",
+      "walk": "stage4",
+      "covers": [
+        "sdtw.line12:line9"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Worked by hand before recording: stage4.sdtw.special_rates with $10,000 of qualified dividends and $60,000 of net capital gain elected into investment income on Form 4952 line 4g ($20,000 of investment interest). Schedule D Tax Worksheet: line 2 10,000; line 3 60,000; line 4 100,000; line 5 0; line 6 10,000; line 7 100,000; line 8 60,000; line 9 40,000; line 10 50,000; line 11 20,000 + 30,000 = 50,000; line 12, the smaller of lines 9 and 11, 40,000.",
+      "inputs": {
+        "div.any": true,
+        "div.box2b": 3000000,
+        "div.box2d": 2000000,
+        "f1040.line3a": 1000000,
+        "f4952.has_interest": true,
+        "f4952.line1": 2000000,
+        "f4952.line4g": 6000000,
+        "sb.ordinary_dividends": 1000000,
+        "sd.distributions": 10000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 21575000
+      },
+      "expect": {
+        "sdtw.line6": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "sdtw.line8": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "sdtw.line9": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "sdtw.line10": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "sdtw.line11": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "sdtw.line12": {
+          "kind": "money",
+          "cents": 4000000
+        }
+      }
+    },
+    {
+      "id": "stage4.mut.sdtw_28pct_no_1250",
+      "walk": "stage4",
+      "covers": [
+        "sdtw",
+        "sd",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the after32 operand of sdtw.use28), predicted from the archived i1040sd Schedule D Tax Worksheet before evaluating: stage4.sdtw.special_rates (single, wages $215,750, capital gain distributions $100,000 with $20,000 of 28% rate gain) without the unrecaptured section 1250 gain. Line 1 $300,000; line 10 $100,000; line 11 $20,000 (Schedule D line 18; line 19 is zero); line 12 $20,000; line 13 $80,000; line 14 $220,000; lines 16 and 17 $48,350; line 22 $0; lines 1 and 16 differ; line 23 $80,000; line 24 $0; line 25 $80,000; line 21 $200,000 (line 18 $200,000, line 20 $197,300); line 27 $300,000; line 28 $200,000; line 29 $100,000; line 30 $80,000; line 32 $80,000, not line 1, so line 33 ($0) and line 34 follow; \"If Schedule D, line 19, is zero or blank, skip lines 35 through 40 and go to line 41\", and line 18 is not zero, so lines 41 to 43 are completed: line 41 $280,000, line 42 $20,000, line 43 $5,600.",
+      "inputs": {
+        "div.any": true,
+        "div.box2d": 2000000,
+        "sd.distributions": 10000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 21575000
+      },
+      "expect": {
+        "sdtw.use28": {
+          "kind": "bool",
+          "value": true
+        },
+        "sdtw.use1250": {
+          "kind": "bool",
+          "value": false
+        },
+        "sdtw.line43": {
+          "kind": "money",
+          "cents": 560000
+        }
+      }
+    },
+    {
+      "id": "stage4.mut.sdtw_1250_line32_is_line1",
+      "walk": "stage4",
+      "covers": [
+        "sdtw",
+        "sd",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the after32 operand of sdtw.use1250), predicted from the archived i1040sd before evaluating: stage4.sdtw.skip32 (single, capital gain distributions $100,000) with no wages and $10,000 of the distributions unrecaptured section 1250 gain (box 2b). Taxable income $84,250 ($100,000 less the $15,750 standard deduction); Schedule D line 19 $10,000. Worksheet: line 10 $100,000; line 11 $10,000; line 12 $10,000; line 13 $90,000; line 14 $0; line 16 $48,350; line 17 $0; line 22 $48,350; lines 1 and 16 differ; line 23 $84,250; line 24 $48,350; line 25 $35,900; line 21 $0; line 27 $84,250; line 28 $48,350; line 29 $35,900; line 30 $35,900; line 32 $84,250, the same as line 1: \"If lines 1 and 32 are the same, skip lines 33 through 43 and go to line 44\", so lines 35 to 40 are not completed although Schedule D line 19 is more than zero.",
+      "inputs": {
+        "div.any": true,
+        "div.box2b": 1000000,
+        "sd.distributions": 10000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000
+      },
+      "expect": {
+        "sd.line19": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "sdtw.after32": {
+          "kind": "bool",
+          "value": false
+        },
+        "sdtw.use1250": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    }
+  ]
+}

@@ -13,8 +13,8 @@ import { isDeepStrictEqual } from "node:util";
 import { loadCanonical } from "./canonical.js";
 import { interviewView, loadInterview, replay, type Event } from "./interview.js";
 import { renderValuesSheetText } from "./output.js";
-import { resolveInputs } from "./fixture-inputs.js";
-import { nyPath, YEAR_ARGS, yearPath } from "./year.js";
+import { loadFixtureCases } from "./fixture-inputs.js";
+import { YEAR_ARGS } from "./year.js";
 import type { Inputs } from "./types.js";
 import { mapPool, poolSize } from "./pool.js";
 import { docNames, questionForms } from "./serve.js";
@@ -184,9 +184,8 @@ export async function serveChecks(): Promise<void> {
     };
     same(created.body, "new return");
 
-    const fixtures = (file: string) => (JSON.parse(readFileSync(file, "utf8")) as { cases: { id: string; inputs: Inputs; expect?: Record<string, unknown> }[] }).cases
-      .map((c) => ({ ...c, inputs: resolveInputs(c.inputs, data.params, c.id) }));
-    const nyCases = fixtures(join(nyPath("fixtures"), "it201.json"));
+    const nyCases = loadFixtureCases("ny", data).filter((c) => c.file === "it201.json");
+    const federal = loadFixtureCases("federal", data);
     const answer = (name: string, input: string, value: unknown) => post(`/api/returns/${name}/answer`, { input, value });
     const unchanged = async (name: string, input: unknown, value: unknown, label: string, body?: unknown) => {
       const before = readFileSync(join(dir, `${name}.jsonl`), "utf8");
@@ -281,7 +280,7 @@ export async function serveChecks(): Promise<void> {
 
     // A consistency check is served as a conflict, not as an unsupported case: Form 8889 with self-only coverage on
     // December 1 and every eligible month a family month (stage11.hsa.self_full_year, its month answers changed).
-    const hsaCase = fixtures(yearPath("fixtures", "stage11.json")).find((c) => c.id === "stage11.hsa.self_full_year")!;
+    const hsaCase = federal.find((c) => c.id === "stage11.hsa.self_full_year")!;
     const hsa = "person[taxpayer].f8889[hsa].";
     const hsaInputs: Inputs = { ...hsaCase.inputs, [`${hsa}dec_coverage`]: "self_only", [`${hsa}months_eligible`]: 12, [`${hsa}months_family`]: 12 };
     writeFileSync(join(dir, "conflict.jsonl"), [{ version: 1, tax_year: config.tax_year, profile: "ny" }, ...Object.entries(hsaInputs).map(([input, value]) => ({ input, value }))]
@@ -296,10 +295,10 @@ export async function serveChecks(): Promise<void> {
       `the conflict names the four answers it reads (the coverage answer that asks for the months, and the months), with their answers and prompts: ${JSON.stringify(conflict.answers.map((a: any) => [a.input, a.value]))}`);
     ok((await get("/api/returns/synthetic")).body.conflicts.length === 0, "a scope refusal is not a conflict");
 
-    // Fixture interview paths replayed through the server: the federal Stage 5 cases (the federal questions; their
+    // Fixture interview paths replayed through the server: the federal whole returns (the federal questions; their
     // fixtures have no New York answers) and a sample of the New York cases. Each walk answers the first pending
     // question the fixture answers, until none is left; every expected value the profile's targets reach must match.
-    const fed = fixtures(yearPath("fixtures", "stage5.json"));
+    const fed = federal.filter((c) => c.walk === "full");
     const sample = [...nyCases.filter((_, i) => i % 9 === 0), ...nyCases.filter((c) => c.id.startsWith("ny.refuse.")).slice(0, 2)];
     const all = [...fed, ...sample];
     const walkers = [{ port }, ...(await Promise.all(extra))];

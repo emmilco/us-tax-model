@@ -1,0 +1,4167 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage15.f5695.s1",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. Solar electric property $20,000 (labor included). Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): AGI 80,000; taxable 80,000-15,750=64,250; Tax Table row 64,250-64,300 Single = 9,055 (i1040gi). 5695 line 1 = 20,000 (labor included per i5695 p.4 Tip); 6a = 20,000; 6b = 6,000; 13 = 6,000 (no 11, no 12). RCE CLW (i5695 p.4): 1 = 9,055; 2 = 0 (no other credits, no line 32); 3 = 9,055 -> line 14. 15 = min(6,000, 9,055) = 6,000. 16 blank (15 not less than 13).",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part1_any": true,
+        "f5695.line1": 2000000
+      },
+      "expect": {
+        "f5695.line1": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f5695.line6a": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f5695.line6b": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f5695.line13": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f5695.rce_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.rce_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.rce_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line14": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line15": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s2",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Fact Sheet 2025-01 p. 12, Example 1, as a married filing jointly return with wages $120,000: use the costs that example states. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): FS-2025-01 p.12 Example 1: two exterior doors $1,000 each, windows and skylights $2,200 total, one central AC $5,000. AGI 120,000; taxable 120,000-31,500=88,500; Tax Table row 88,500-88,550 MFJ = 10,146. Section A (17a-c Yes): 19a = 1,000; 19c = min(300, 250) = 250; 19d(i) = 1,000; 19e = 0; 19f = 1,000; 19g = 300; 19h = min(550, 500) = 500. 20a = 2,200 (sum of entries i-iv); 20b = 0; 20c = 2,200; 20d = min(660, 600) = 600. Section B (21a, 21b Yes): 22a = 5,000; 22b = 0; 22c = 5,000; 22d = min(1,500, 600) = 600. 27 = 500+600+600 = 1,700; 28 = min(1,700, 1,200) = 1,200; 29h none; 30 = 1,200. EEHI CLW (i5695 p.7): 1 = 10,146; 2 = 0; 3 = 10,146 -> 31. 32 = min(1,200, 10,146) = 1,200. Matches the example's $1,200.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 100000,
+        "f5695.line20a_i": 220000,
+        "f5695.line22a": 500000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_doors": true,
+        "f5695.qmid_windows": true,
+        "f5695.qmid_ac": true
+      },
+      "expect": {
+        "f5695.line19a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line19c": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "f5695.line19e": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line19f": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line19g": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line19h": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f5695.line20b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line20c": {
+          "kind": "money",
+          "cents": 220000
+        },
+        "f5695.line20d": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line22a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f5695.line22b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line22c": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f5695.line22d": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 170000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 1014600
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 1014600
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 1014600
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 12000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 1014600
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s3",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $70,000. Electric heat pump meeting the highest CEE tier $10,000; insulation $1,000. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): Taxable 70,000-15,750=54,250; Tax Table row 54,250-54,300 Single = 6,855. 18a = 1,000; 18b = 300 (cap 1,200). 27 = 300; 28 = min(300, 1,200) = 300. 29a = 10,000; 29b = 0; 29g = 10,000; 29h = min(3,000, 2,000) = 2,000. 30 = 300 + 2,000 = 2,300. EEHI CLW: 1 = 6,855; 2 = 0; 3 = 6,855 -> 31. 32 = min(2,300, 6,855) = 2,300.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7000000,
+        "person[taxpayer].w2[emp_a].box4": 434000,
+        "person[taxpayer].w2[emp_a].box5": 7000000,
+        "person[taxpayer].w2[emp_a].box6": 101500,
+        "f5695.part2_any": true,
+        "f5695.line18a": 100000,
+        "f5695.line29a": 1000000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_hp": true
+      },
+      "expect": {
+        "f5695.line18a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line18b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line29a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f5695.line29b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line29g": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f5695.line29h": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 230000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 685500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 685500
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 685500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 230000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 230000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 7000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 685500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s4",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Married filing jointly. Wages $90,000. Qualified battery storage technology of 10 kilowatt hours installed at your vacation home in the United States, $8,000. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): Taxable 90,000-31,500=58,500; Tax Table row 58,500-58,550 MFJ = 6,546. 5a Yes (10 kWh >= 3 kWh); 5b = 8,000 (owner's ruling: not-main-home allowed, as for lines 1-4). 6a = 8,000; 6b = 2,400; 13 = 2,400. RCE CLW: 1 = 6,546; 2 = 0; 3 = 6,546 -> 14. 15 = 2,400. 16 blank.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 9000000,
+        "person[taxpayer].w2[e0].box4": 558000,
+        "person[taxpayer].w2[e0].box5": 9000000,
+        "person[taxpayer].w2[e0].box6": 130500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part1_any": true,
+        "f5695.battery_cost": 800000,
+        "f5695.line5a": true
+      },
+      "expect": {
+        "f5695.line5b": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "f5695.line6a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "f5695.line6b": {
+          "kind": "money",
+          "cents": 240000
+        },
+        "f5695.line13": {
+          "kind": "money",
+          "cents": 240000
+        },
+        "f5695.rce_ws1": {
+          "kind": "money",
+          "cents": 654600
+        },
+        "f5695.rce_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.rce_ws3": {
+          "kind": "money",
+          "cents": 654600
+        },
+        "f5695.line14": {
+          "kind": "money",
+          "cents": 654600
+        },
+        "f5695.line15": {
+          "kind": "money",
+          "cents": 240000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 240000
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 9000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 654600
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s5",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $60,000. No 2025 costs; a residential clean energy credit carryforward of $1,500 from your 2024 Form 5695, line 16. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): Taxable 60,000-15,750=44,250; Tax Table row 44,250-44,300 Single = 5,075. Lines 1-11 skipped (form note: only a carryforward). 12 = 1,500; 13 = 1,500. RCE CLW: 1 = 5,075; 2 = 0; 3 = 5,075 -> 14. 15 = 1,500. 16 blank.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "f5695.part1_any": true,
+        "f5695.line12": 150000
+      },
+      "expect": {
+        "f5695.line12": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f5695.line13": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f5695.rce_ws1": {
+          "kind": "money",
+          "cents": 507500
+        },
+        "f5695.rce_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.rce_ws3": {
+          "kind": "money",
+          "cents": 507500
+        },
+        "f5695.line14": {
+          "kind": "money",
+          "cents": 507500
+        },
+        "f5695.line15": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 507500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s6",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $65,000. A home energy audit of your main home with a written report by a qualified home energy auditor, $500. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): Taxable 65,000-15,750=49,250; Tax Table row 49,250-49,300 Single = 5,755. 26a Yes; 26b = 500; 26c = min(150, 150) = 150. 27 = 150; 28 = 150; 30 = 150. EEHI CLW: 1 = 5,755; 2 = 0; 3 = 5,755 -> 31. 32 = 150.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6500000,
+        "person[taxpayer].w2[emp_a].box4": 403000,
+        "person[taxpayer].w2[emp_a].box5": 6500000,
+        "person[taxpayer].w2[emp_a].box6": 94250,
+        "f5695.part2_any": true,
+        "f5695.line26b": 50000,
+        "f5695.line26a": true
+      },
+      "expect": {
+        "f5695.line26b": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f5695.line26c": {
+          "kind": "money",
+          "cents": 15000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 15000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 15000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 15000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 575500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 575500
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 575500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 15000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 15000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 6500000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 575500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s7",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $75,000. Three qualifying exterior doors costing $1,000, $600 and $600. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): Taxable 75,000-15,750=59,250; Tax Table row 59,250-59,300 Single = 7,955. 19a = 1,000; 19c = min(300, 250) = 250; 19d (i) 600 + (ii) 600 = 1,200; 19e = 0; 19f = 1,200; 19g = 360; 19h = min(610, 500) = 500. (Per-door view: 250 + 180 + 180 = 610 -> 500, same.) 27 = 500; 28 = 500; 30 = 500. EEHI CLW: 7,955 - 0 = 7,955 -> 31. 32 = 500.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7500000,
+        "person[taxpayer].w2[emp_a].box4": 465000,
+        "person[taxpayer].w2[emp_a].box5": 7500000,
+        "person[taxpayer].w2[emp_a].box6": 108750,
+        "f5695.part2_any": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 60000,
+        "f5695.line19d_ii": 60000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.qmid_doors": true
+      },
+      "expect": {
+        "f5695.line19a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line19c": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "f5695.line19e": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line19f": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f5695.line19g": {
+          "kind": "money",
+          "cents": 36000
+        },
+        "f5695.line19h": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 795500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 795500
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 795500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 7500000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 795500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s8",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $75,000. Qualifying exterior windows costing $3,000 in total (four windows, each $750). Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): Taxable 59,250; tax 7,955 (Single). 20a (i)-(iv) = 750 each = 3,000; 20b = 0; 20c = 3,000; 20d = min(900, 600) = 600. 27 = 600; 28 = 600; 30 = 600. EEHI CLW: 7,955 -> 31. 32 = 600.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7500000,
+        "person[taxpayer].w2[emp_a].box4": 465000,
+        "person[taxpayer].w2[emp_a].box5": 7500000,
+        "person[taxpayer].w2[emp_a].box6": 108750,
+        "f5695.part2_any": true,
+        "f5695.line20a_i": 75000,
+        "f5695.line20a_ii": 75000,
+        "f5695.line20a_iii": 75000,
+        "f5695.line20a_iv": 75000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.qmid_windows": true
+      },
+      "expect": {
+        "f5695.line20b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line20c": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.line20d": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 795500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 795500
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 795500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 7500000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 795500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s9",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Head of household. Wages $45,000. Two qualifying children aged 4 and 9. Solar electric property $10,000. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): Taxable 45,000-23,625=21,375; Tax Table row 21,350-21,400 HOH = 2,225; f1040 18 = 2,225. 5695 Part I: 1 = 10,000; 6a = 10,000; 6b = 3,000; 13 = 3,000. Schedule 8812 Part I: 1 = 45,000; 2d = 0; 3 = 45,000; 4 = 2; 5 = 4,400; 8 = 4,400; 9 = 200,000; 10 = 0; 11 = 0; 12 = 4,400. CLW A (i1040s8812 p.4): 1 = 2,225; 2 = 0 (no s3 1-4, 5b, 6d, 6f, 6l, 6m); 3 = 2,225; CLW B required (claiming 5695 Part I, no 2555, line 4 > 0). CLW B (p.5-6): 1 = 4,400; 2 = 2 x 1,700 = 3,400; 3 = Earned Income Worksheet line 7 = 45,000 (line 1z wages); 4 = 42,500; 5 = 6,375; 6: line 2 (3,400) < 5,100 and not PR -> lines 7-10 blank, 11 = 0; 12 = max(6,375, 0) = 6,375; 13 = min(3,400, 6,375) = 3,400; 14 = 4,400 - 3,400 = 1,000. RCE CLW (i5695 p.4): 1 = 2,225; 2 = CLW B line 14 (1,000, per footnote, in place of f1040 line 19) + 5695 line 32 (0) = 1,000; 3 = 1,225 -> 14. 15 = min(3,000, 1,225) = 1,225; 16 = 3,000 - 1,225 = 1,775. CLW B 15 = s3 5a 1,225 -> CLW A 4 = 1,225; CLW A 5 = 2,225 - 1,225 = 1,000 = 8812 line 13. 8812 14 = min(4,400, 1,000) = 1,000 -> f1040 19. Part II-A: 16a = 4,400 - 1,000 = 3,400; 16b = 2 x 1,700 = 3,400; 17 = 3,400; 18a = 45,000; 19 = 42,500; 20 = 6,375; 16b < 5,100 and not PR -> 27 = min(17, 20) = 3,400. Tax after credits: 2,225 - 1,000 - 1,225 = 0.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "$dependent": [
+          "a",
+          "b"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "f5695.part1_any": true,
+        "dependent[a].age": 4,
+        "dependent[a].months": 12,
+        "dependent[b].age": 9,
+        "dependent[b].months": 12,
+        "f5695.line1": 1000000
+      },
+      "expect": {
+        "f5695.line1": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f5695.line6a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f5695.line6b": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.line13": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.rce_ws1": {
+          "kind": "money",
+          "cents": 222500
+        },
+        "f5695.rce_ws2": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.rce_ws3": {
+          "kind": "money",
+          "cents": 122500
+        },
+        "f5695.line14": {
+          "kind": "money",
+          "cents": 122500
+        },
+        "f5695.line15": {
+          "kind": "money",
+          "cents": 122500
+        },
+        "f5695.line16": {
+          "kind": "money",
+          "cents": 177500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 122500
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 222500
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s8812.line12": {
+          "kind": "money",
+          "cents": 440000
+        },
+        "s8812.line13": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s8812.line14": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s8812.line27": {
+          "kind": "money",
+          "cents": 340000
+        },
+        "s8812.clw_a1": {
+          "kind": "money",
+          "cents": 222500
+        },
+        "s8812.clw_a2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clw_a3": {
+          "kind": "money",
+          "cents": 222500
+        },
+        "s8812.clw_a4": {
+          "kind": "money",
+          "cents": 122500
+        },
+        "s8812.clw_a5": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s8812.clwb_1": {
+          "kind": "money",
+          "cents": 440000
+        },
+        "s8812.clwb_2": {
+          "kind": "money",
+          "cents": 340000
+        },
+        "s8812.clwb_3": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "s8812.clwb_4": {
+          "kind": "money",
+          "cents": 4250000
+        },
+        "s8812.clwb_5": {
+          "kind": "money",
+          "cents": 637500
+        },
+        "s8812.clwb_11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clwb_12": {
+          "kind": "money",
+          "cents": 637500
+        },
+        "s8812.clwb_13": {
+          "kind": "money",
+          "cents": 340000
+        },
+        "s8812.clwb_14": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s8812.clwb_15": {
+          "kind": "money",
+          "cents": 122500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s10",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $85,000. A central air conditioner meeting the highest CEE tier, $2,500, installed at a second home in the United States that you use as a residence. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): Taxable 85,000-15,750=69,250; Tax Table row 69,250-69,300 Single = 10,155. Section B on a second home used as a residence: allowed (owner's ruling; FS-2025-01 25C qualifying residence A1). 21a Yes, 21b Yes. 22a = 2,500; 22b = 0; 22c = 2,500; 22d = min(750, 600) = 600. 27 = 600; 28 = 600; 30 = 600. EEHI CLW: 10,155 -> 31. 32 = 600.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8500000,
+        "person[taxpayer].w2[emp_a].box4": 527000,
+        "person[taxpayer].w2[emp_a].box5": 8500000,
+        "person[taxpayer].w2[emp_a].box6": 123250,
+        "f5695.part2_any": true,
+        "f5695.line22a": 250000,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_ac": true
+      },
+      "expect": {
+        "f5695.line22a": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f5695.line22b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line22c": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f5695.line22d": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 1015500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 1015500
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 1015500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8500000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 1015500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s11",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $90,000. Insulation $3,000; qualifying windows $2,000 (two windows, $1,000 each). Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): Taxable 90,000-15,750=74,250; Tax Table row 74,250-74,300 Single = 11,255. 18a = 3,000; 18b = 900. 20a (i) 1,000 + (ii) 1,000 = 2,000; 20b = 0; 20c = 2,000; 20d = 600. 27 = 900 + 600 = 1,500; 28 = 1,200; 30 = 1,200. EEHI CLW: 11,255 -> 31. 32 = 1,200.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 9000000,
+        "person[taxpayer].w2[emp_a].box4": 558000,
+        "person[taxpayer].w2[emp_a].box5": 9000000,
+        "person[taxpayer].w2[emp_a].box6": 130500,
+        "f5695.part2_any": true,
+        "f5695.line18a": 300000,
+        "f5695.line20a_i": 100000,
+        "f5695.line20a_ii": 100000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.qmid_windows": true
+      },
+      "expect": {
+        "f5695.line18a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.line18b": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "f5695.line20b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line20c": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f5695.line20d": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 1125500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 1125500
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 1125500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 9000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 1125500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s12",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $19,000. Insulation $2,000; a qualifying exterior door $1,000. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): Taxable 19,000-15,750=3,250; Tax Table row 3,250-3,300 Single = 328. 18a = 2,000; 18b = 600. 19a = 1,000; 19c = 250; 19d blank (no other doors); 19e = 0; 19f = 0; 19g = 0; 19h = 250. 27 = 850; 28 = 850; 30 = 850. EEHI CLW: 1 = 328; 2 = 0; 3 = 328 -> 31. 32 = min(850, 328) = 328. No carryforward exists for the Part II credit (line 16 is Part I only); the 522 excess is lost.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1900000,
+        "person[taxpayer].w2[emp_a].box4": 117800,
+        "person[taxpayer].w2[emp_a].box5": 1900000,
+        "person[taxpayer].w2[emp_a].box6": 27550,
+        "f5695.part2_any": true,
+        "f5695.line18a": 200000,
+        "f5695.line19a": 100000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.qmid_doors": true
+      },
+      "expect": {
+        "f5695.line18a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f5695.line18b": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line19a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line19c": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "f5695.line19e": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line19f": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line19g": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line19h": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 85000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 85000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 85000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 32800
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 32800
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 32800
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 32800
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 32800
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 1900000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 32800
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.s13",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $50,000. Solar water heating property (SRCC-certified) $6,000 and a geothermal heat pump $12,000. (The tax may limit the credit.) Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): Taxable 50,000-15,750=34,250; Tax Table row 34,250-34,300 Single = 3,875. 2 = 6,000; 4 = 12,000; 6a = 18,000; 6b = 5,400; 13 = 5,400. RCE CLW: 1 = 3,875; 2 = 0; 3 = 3,875 -> 14. 15 = min(5,400, 3,875) = 3,875; 16 = 5,400 - 3,875 = 1,525.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "f5695.part1_any": true,
+        "f5695.line2": 600000,
+        "f5695.line4": 1200000
+      },
+      "expect": {
+        "f5695.line2": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f5695.line4": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "f5695.line6a": {
+          "kind": "money",
+          "cents": 1800000
+        },
+        "f5695.line6b": {
+          "kind": "money",
+          "cents": 540000
+        },
+        "f5695.line13": {
+          "kind": "money",
+          "cents": 540000
+        },
+        "f5695.rce_ws1": {
+          "kind": "money",
+          "cents": 387500
+        },
+        "f5695.rce_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.rce_ws3": {
+          "kind": "money",
+          "cents": 387500
+        },
+        "f5695.line14": {
+          "kind": "money",
+          "cents": 387500
+        },
+        "f5695.line15": {
+          "kind": "money",
+          "cents": 387500
+        },
+        "f5695.line16": {
+          "kind": "money",
+          "cents": 152500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 387500
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 387500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e1",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. Qualifying exterior windows $1,000 in total (two windows, $500 each). Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; f1040: line 11 AGI 80,000; standard deduction single 15,750 (i1040gi What's New); line 15 taxable 64,250; Tax Table row 64,250-64,300 single = 9,055 = line 16 = line 18 (no Sch 2). EEHIC CLW (i5695 p.7): line 1 = 9,055, line 2 = 0 (no Sch 3 lines 1-4, 6d, 6l credits), line 3 = 9,055 -> line 31. Section A (17a-c Yes): 20a(i) 500, 20a(ii) 500 (four most expensive; only two exist), 20b 0, 20c 1,000, 20d 30% = 300 (<= 600). Line 27 = 300; 28 = min(300,1,200) = 300; no line 29; 30 = 300; 32 = min(300, 9,055) = 300 -> s3 5b. No Part I, s3 5a 0.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part2_any": true,
+        "f5695.line20a_i": 50000,
+        "f5695.line20a_ii": 50000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.qmid_windows": true
+      },
+      "expect": {
+        "f5695.line20b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line20c": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line20d": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e2",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. A central air conditioner meeting the highest CEE tier, $1,000. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; f1040: line 11 AGI 80,000; standard deduction single 15,750 (i1040gi What's New); line 15 taxable 64,250; Tax Table row 64,250-64,300 single = 9,055 = line 16 = line 18 (no Sch 2). EEHIC CLW (i5695 p.7): line 1 = 9,055, line 2 = 0 (no Sch 3 lines 1-4, 6d, 6l credits), line 3 = 9,055 -> line 31. Section B (21a,b Yes): 22a 1,000, 22b 0, 22c 1,000, 22d 30% = 300 (<= 600). 27 = 300, 28 = 300, 30 = 300, 32 = 300.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part2_any": true,
+        "f5695.line22a": 100000,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_ac": true
+      },
+      "expect": {
+        "f5695.line22a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line22b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line22c": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line22d": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e3",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. Two gas water heaters meeting the highest CEE tier, $1,500 and $900. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; f1040: line 11 AGI 80,000; standard deduction single 15,750 (i1040gi What's New); line 15 taxable 64,250; Tax Table row 64,250-64,300 single = 9,055 = line 16 = line 18 (no Sch 2). EEHIC CLW (i5695 p.7): line 1 = 9,055, line 2 = 0 (no Sch 3 lines 1-4, 6d, 6l credits), line 3 = 9,055 -> line 31. 23a(i) 1,500, 23a(ii) 900 (two most expensive), 23b 0, 23c 2,400, 23d 30% = 720 capped at 600 (ruling: cap on line total). 27 = 600, 28 = 600, 30 = 600, 32 = 600.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part2_any": true,
+        "f5695.line23a_i": 150000,
+        "f5695.line23a_ii": 90000,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_wh": true
+      },
+      "expect": {
+        "f5695.line23b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line23c": {
+          "kind": "money",
+          "cents": 240000
+        },
+        "f5695.line23d": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e4",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. A gas furnace meeting the highest CEE tier, $1,000 (the most expensive), and a second qualifying gas furnace, $500. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; f1040: line 11 AGI 80,000; standard deduction single 15,750 (i1040gi What's New); line 15 taxable 64,250; Tax Table row 64,250-64,300 single = 9,055 = line 16 = line 18 (no Sch 2). EEHIC CLW (i5695 p.7): line 1 = 9,055, line 2 = 0 (no Sch 3 lines 1-4, 6d, 6l credits), line 3 = 9,055 -> line 31. 24a 1,000 (most expensive), 24b 500 (all other qualifying furnaces), 24c 1,500, 24d 30% = 450 (<= 600). 27 = 450, 28 = 450, 30 = 450, 32 = 450.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part2_any": true,
+        "f5695.line24a": 100000,
+        "f5695.line24b": 50000,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_furnace": true
+      },
+      "expect": {
+        "f5695.line24a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line24b": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f5695.line24c": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f5695.line24d": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e5",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. A gas furnace meeting the highest CEE tier, $3,000, and a second, $1,500. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; f1040: line 11 AGI 80,000; standard deduction single 15,750 (i1040gi What's New); line 15 taxable 64,250; Tax Table row 64,250-64,300 single = 9,055 = line 16 = line 18 (no Sch 2). EEHIC CLW (i5695 p.7): line 1 = 9,055, line 2 = 0 (no Sch 3 lines 1-4, 6d, 6l credits), line 3 = 9,055 -> line 31. 24a 3,000, 24b 1,500, 24c 4,500, 24d 30% = 1,350 capped at 600. 27 = 600, 28 = 600, 30 = 600, 32 = 600.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part2_any": true,
+        "f5695.line24a": 300000,
+        "f5695.line24b": 150000,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_furnace": true
+      },
+      "expect": {
+        "f5695.line24a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.line24b": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f5695.line24c": {
+          "kind": "money",
+          "cents": 450000
+        },
+        "f5695.line24d": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e6",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. An electric heat pump meeting the highest CEE tier, $4,000, and a panelboard upgrade (qualified enabling property) installed in 2025 to enable that heat pump, $1,000. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; f1040: line 11 AGI 80,000; standard deduction single 15,750 (i1040gi What's New); line 15 taxable 64,250; Tax Table row 64,250-64,300 single = 9,055 = line 16 = line 18 (no Sch 2). EEHIC CLW (i5695 p.7): line 1 = 9,055, line 2 = 0 (no Sch 3 lines 1-4, 6d, 6l credits), line 3 = 9,055 -> line 31. 25a Yes (both installed 2025), 25b code E (heat pump on 29a, i5695 p.7); 25c 1,000; 25e 30% = 300 (<= 600). 29a 4,000, 29b/29d/29f 0, 29g 4,000, 29h 30% = 1,200 (<= 2,000). 27 = 25e 300; 28 = min(300,1,200) = 300; 30 = 300 + 1,200 = 1,500; 31 = 9,055; 32 = 1,500.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part2_any": true,
+        "f5695.line25c": 100000,
+        "f5695.line29a": 400000,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.line25a": true,
+        "f5695.qmid_enabling": true,
+        "f5695.qmid_hp": true
+      },
+      "expect": {
+        "f5695.line25c": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line25e": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line29a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f5695.line29b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line29d": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line29f": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line29g": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f5695.line29h": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e7",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. An electric heat pump meeting the highest CEE tier, $4,000, and a panelboard upgrade installed in 2025 to enable it, $3,000. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; f1040: line 11 AGI 80,000; standard deduction single 15,750 (i1040gi What's New); line 15 taxable 64,250; Tax Table row 64,250-64,300 single = 9,055 = line 16 = line 18 (no Sch 2). EEHIC CLW (i5695 p.7): line 1 = 9,055, line 2 = 0 (no Sch 3 lines 1-4, 6d, 6l credits), line 3 = 9,055 -> line 31. 25a Yes, 25b E; 25c 3,000; 25e 30% = 900 capped at 600. 29a 4,000, 29g 4,000, 29h 1,200. 27 = 600, 28 = 600, 30 = 1,800, 32 = 1,800.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part2_any": true,
+        "f5695.line25c": 300000,
+        "f5695.line29a": 400000,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.line25a": true,
+        "f5695.qmid_enabling": true,
+        "f5695.qmid_hp": true
+      },
+      "expect": {
+        "f5695.line25c": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.line25e": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line29a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f5695.line29b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line29d": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line29f": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line29g": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f5695.line29h": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 180000
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 180000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 180000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e8",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. Exterior doors: the most expensive $1,000, the next two $200 and $300, and one more qualifying door $100. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; f1040: line 11 AGI 80,000; standard deduction single 15,750 (i1040gi What's New); line 15 taxable 64,250; Tax Table row 64,250-64,300 single = 9,055 = line 16 = line 18 (no Sch 2). EEHIC CLW (i5695 p.7): line 1 = 9,055, line 2 = 0 (no Sch 3 lines 1-4, 6d, 6l credits), line 3 = 9,055 -> line 31. 19a 1,000 (most expensive); 19c 30% = 300 capped 250; 19d two next most expensive: (i) 300, (ii) 200; 19e all other 100; 19f = 19d + 19e = 600; 19g 30% = 180 (form puts no per-door cap on 19g); 19h = 250 + 180 = 430 (<= 500). 27 = 430, 28 = 430, 30 = 430, 32 = 430.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part2_any": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 20000,
+        "f5695.line19d_ii": 30000,
+        "f5695.line19e": 10000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.qmid_doors": true
+      },
+      "expect": {
+        "f5695.line19a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line19c": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "f5695.line19e": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "f5695.line19f": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f5695.line19g": {
+          "kind": "money",
+          "cents": 18000
+        },
+        "f5695.line19h": {
+          "kind": "money",
+          "cents": 43000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 43000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 43000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 43000
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 43000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 43000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e9",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. A home energy audit, $300; insulation $500. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; f1040: line 11 AGI 80,000; standard deduction single 15,750 (i1040gi What's New); line 15 taxable 64,250; Tax Table row 64,250-64,300 single = 9,055 = line 16 = line 18 (no Sch 2). EEHIC CLW (i5695 p.7): line 1 = 9,055, line 2 = 0 (no Sch 3 lines 1-4, 6d, 6l credits), line 3 = 9,055 -> line 31. 18a 500, 18b 30% = 150 (<= 1,200). 26a Yes (main home, qualified auditor report per convention), 26b 300, 26c 30% = 90 (<= 150). 27 = 150 + 90 = 240, 28 = 240, 30 = 240, 32 = 240.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part2_any": true,
+        "f5695.line18a": 50000,
+        "f5695.line26b": 30000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line26a": true
+      },
+      "expect": {
+        "f5695.line18a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f5695.line18b": {
+          "kind": "money",
+          "cents": 15000
+        },
+        "f5695.line26b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line26c": {
+          "kind": "money",
+          "cents": 9000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 24000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 24000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 24000
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 24000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 24000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e10",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. An electric heat pump water heater meeting the highest CEE tier, $3,000; insulation $1,000. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; f1040: line 11 AGI 80,000; standard deduction single 15,750 (i1040gi What's New); line 15 taxable 64,250; Tax Table row 64,250-64,300 single = 9,055 = line 16 = line 18 (no Sch 2). EEHIC CLW (i5695 p.7): line 1 = 9,055, line 2 = 0 (no Sch 3 lines 1-4, 6d, 6l credits), line 3 = 9,055 -> line 31. 18a 1,000, 18b 300. 29c 3,000 (heat pump water heater), 29b/29d/29f 0, 29g 3,000, 29h 30% = 900. 27 = 300, 28 = 300, 30 = 300 + 900 = 1,200, 32 = 1,200.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part2_any": true,
+        "f5695.line18a": 100000,
+        "f5695.line29c": 300000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_hp": true
+      },
+      "expect": {
+        "f5695.line18a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line18b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line29b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line29c": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.line29d": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line29f": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line29g": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.line29h": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e11",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $45,000. Solar electric property $25,000. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; f1040: AGI 45,000; std ded 15,750; taxable 29,250; Tax Table row 29,250-29,300 single = 3,275 = line 18. Part I: line 1 25,000; 6a 25,000; 6b 30% = 7,500; no fuel cell, no carryforward; 13 = 7,500. RCE CLW (i5695 p.5): line 1 = 3,275; line 2 = 0 (no Part II credit, no CTC, no other listed credits); line 3 = 3,275 -> line 14. 15 = min(7,500, 3,275) = 3,275 -> s3 5a. 16 = 7,500 - 3,275 = 4,225.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "f5695.part1_any": true,
+        "f5695.line1": 2500000
+      },
+      "expect": {
+        "f5695.line1": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "f5695.line6a": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "f5695.line6b": {
+          "kind": "money",
+          "cents": 750000
+        },
+        "f5695.line13": {
+          "kind": "money",
+          "cents": 750000
+        },
+        "f5695.line14": {
+          "kind": "money",
+          "cents": 327500
+        },
+        "f5695.line15": {
+          "kind": "money",
+          "cents": 327500
+        },
+        "f5695.line16": {
+          "kind": "money",
+          "cents": 422500
+        },
+        "f5695.rce_ws1": {
+          "kind": "money",
+          "cents": 327500
+        },
+        "f5695.rce_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.rce_ws3": {
+          "kind": "money",
+          "cents": 327500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 327500
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 327500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e12",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Head of household. Wages $26,000. Three qualifying children aged 3, 6 and 9. Solar electric property $5,000. W-2 boxes 4 and 6 are zero (no other boxes stated). Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; i1040s8812 pp.3-6 (CLW A, CLW B, line 21); f1040s8812. f1040: AGI 26,000; HOH std ded 23,625; taxable 2,375; tax 239 (Tax Table HOH row 2,375-2,400 = 239) = line 18. s8812: line 1/3 26,000; line 4 = 3; 5 = 6,600; 8 = 6,600; 10 = 0; 11 = 0; 12 = 6,600. CLW B (required: RCE credit Part I claimed, line 4 > 0, no 2555): 1 = 6,600; 2 = 3 x 1,700 = 5,100; 3 earned income 26,000; 4 = 23,500; 5 = 15% = 3,525.0; 6: line 2 >= 5,100 and line 5 < line 1, go to 7; 7 = W-2 boxes 4 and 6 (0 under the 'no other boxes' convention; 7.65% = 1,989.0 if populated); 8 = 0; 9 = line 7; 10 = EIC 27a 7,483 (EIC table, HOH 3 children) ; 11 = 0 either way; 12 = 3,525.0; 13 = min(5,100, 3,525.0) = 3,525.0; 14 = 6,600 - 3,525.0 = 3,075.0. RCE CLW (i5695 p.5, footnote: use CLW B line 14 instead of f1040 line 19): line 1 = 239; line 2 = f5695 line 32 (0) + 3,075.0 = 3,075.0; line 3 = 239 - 3,075.0 < 0 -> 0 -> f5695 line 14 = 0, line 15 = 0, s3 5a = 0. Part I: line 1 5,000, 6a 5,000, 6b 1,500.0, 13 1,500.0, 16 = 1,500.0 carryforward. CLW B line 15 = s3 5a = 0 -> CLW A line 4 = 0. CLW A: 1 = 239; 2 = 0 (s3 5b etc. none); 3 = 239; 4 = 0; 5 = 239 -> s8812 13; 14 = min(6,600, 239) = 239 -> f1040 19. Part II-A: 16a = 6,361; 16b = 5,100; 17 = 5,100; 18a 26,000; 19 23,500; 20 3,525.0; 16b >= 5,100 and 20 < 17 -> Part II-B: 21 = 0 (convention) or 7.65%; 22 = 0; 23 = 21; 24 = EIC 7,483; 25 = 0; 26 = max(20, 25) = 3,525.0; 27 = min(5,100, 3,525.0) = 3,525.0.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2600000,
+        "person[taxpayer].w2[emp_a].box5": 2600000,
+        "$dependent": [
+          "a",
+          "b",
+          "c"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "f5695.part1_any": true,
+        "dependent[a].age": 3,
+        "dependent[a].months": 12,
+        "dependent[b].age": 6,
+        "dependent[b].months": 12,
+        "dependent[c].age": 9,
+        "dependent[c].months": 12,
+        "f5695.line1": 500000
+      },
+      "expect": {
+        "f5695.line1": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f5695.line6a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f5695.line6b": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f5695.line13": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f5695.line14": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line16": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f5695.rce_ws1": {
+          "kind": "money",
+          "cents": 23900
+        },
+        "f5695.rce_ws2": {
+          "kind": "money",
+          "cents": 307500
+        },
+        "f5695.rce_ws3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2600000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 23900
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 23900
+        },
+        "s8812.line13": {
+          "kind": "money",
+          "cents": 23900
+        },
+        "s8812.line14": {
+          "kind": "money",
+          "cents": 23900
+        },
+        "s8812.line27": {
+          "kind": "money",
+          "cents": 352500
+        },
+        "s8812.clw_a1": {
+          "kind": "money",
+          "cents": 23900
+        },
+        "s8812.clw_a2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clw_a3": {
+          "kind": "money",
+          "cents": 23900
+        },
+        "s8812.clw_a4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clw_a5": {
+          "kind": "money",
+          "cents": 23900
+        },
+        "s8812.clwb_1": {
+          "kind": "money",
+          "cents": 660000
+        },
+        "s8812.clwb_2": {
+          "kind": "money",
+          "cents": 510000
+        },
+        "s8812.clwb_3": {
+          "kind": "money",
+          "cents": 2600000
+        },
+        "s8812.clwb_4": {
+          "kind": "money",
+          "cents": 2350000
+        },
+        "s8812.clwb_5": {
+          "kind": "money",
+          "cents": 352500
+        },
+        "s8812.clwb_11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clwb_12": {
+          "kind": "money",
+          "cents": 352500
+        },
+        "s8812.clwb_13": {
+          "kind": "money",
+          "cents": 352500
+        },
+        "s8812.clwb_14": {
+          "kind": "money",
+          "cents": 307500
+        },
+        "s8812.clwb_15": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-2.e13",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Head of household. Wages $16,000. Three qualifying children aged 2, 5 and 8. Solar electric property $3,000. W-2 boxes 4 and 6 are zero (no other boxes stated). Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; i5695 pp.2-7 (credit limits p.2-3; line instructions pp.5-7; EEHIC CLW p.7, RCE CLW p.4-5); f5695 pp.1-4; i1040gi standard deduction (What's New) and 2025 Tax Table; i1040s8812 pp.3-6 (CLW A, CLW B, line 21); f1040s8812. f1040: AGI 16,000; HOH std ded 23,625; taxable 0; tax 0 (Tax Table HOH, taxable 0 -> 0) = line 18. s8812: line 1/3 16,000; line 4 = 3; 5 = 6,600; 8 = 6,600; 10 = 0; 11 = 0; 12 = 6,600. CLW B (required: RCE credit Part I claimed, line 4 > 0, no 2555): 1 = 6,600; 2 = 3 x 1,700 = 5,100; 3 earned income 16,000; 4 = 13,500; 5 = 15% = 2,025.0; 6: line 2 >= 5,100 and line 5 < line 1, go to 7; 7 = W-2 boxes 4 and 6 (0 under the 'no other boxes' convention; 7.65% = 1,224.0 if populated); 8 = 0; 9 = line 7; 10 = EIC 27a 7,211 (EIC table, HOH 3 children) ; 11 = 0 either way; 12 = 2,025.0; 13 = min(5,100, 2,025.0) = 2,025.0; 14 = 6,600 - 2,025.0 = 4,575.0. RCE CLW (i5695 p.5, footnote: use CLW B line 14 instead of f1040 line 19): line 1 = 0; line 2 = f5695 line 32 (0) + 4,575.0 = 4,575.0; line 3 = 0 - 4,575.0 < 0 -> 0 -> f5695 line 14 = 0, line 15 = 0, s3 5a = 0. Part I: line 1 3,000, 6a 3,000, 6b 900.0, 13 900.0, 16 = 900.0 carryforward. CLW B line 15 = s3 5a = 0 -> CLW A line 4 = 0. CLW A: 1 = 0; 2 = 0 (s3 5b etc. none); 3 = 0; 4 = 0; 5 = 0 -> s8812 13; 14 = min(6,600, 0) = 0 -> f1040 19. Part II-A: 16a = 6,600; 16b = 5,100; 17 = 5,100; 18a 16,000; 19 13,500; 20 2,025.0; 16b >= 5,100 and 20 < 17 -> Part II-B: 21 = 0 (convention) or 7.65%; 22 = 0; 23 = 21; 24 = EIC 7,211; 25 = 0; 26 = max(20, 25) = 2,025.0; 27 = min(5,100, 2,025.0) = 2,025.0.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1600000,
+        "person[taxpayer].w2[emp_a].box5": 1600000,
+        "$dependent": [
+          "a",
+          "b",
+          "c"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "f5695.part1_any": true,
+        "dependent[a].age": 2,
+        "dependent[a].months": 12,
+        "dependent[b].age": 5,
+        "dependent[b].months": 12,
+        "dependent[c].age": 8,
+        "dependent[c].months": 12,
+        "f5695.line1": 300000
+      },
+      "expect": {
+        "f5695.line1": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.line6a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.line6b": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "f5695.line13": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "f5695.line14": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line16": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "f5695.rce_ws1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.rce_ws2": {
+          "kind": "money",
+          "cents": 457500
+        },
+        "f5695.rce_ws3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 1600000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.line14": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.line27": {
+          "kind": "money",
+          "cents": 202500
+        },
+        "s8812.clw_a1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clw_a2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clw_a3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clw_a4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clw_a5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clwb_1": {
+          "kind": "money",
+          "cents": 660000
+        },
+        "s8812.clwb_2": {
+          "kind": "money",
+          "cents": 510000
+        },
+        "s8812.clwb_3": {
+          "kind": "money",
+          "cents": 1600000
+        },
+        "s8812.clwb_4": {
+          "kind": "money",
+          "cents": 1350000
+        },
+        "s8812.clwb_5": {
+          "kind": "money",
+          "cents": 202500
+        },
+        "s8812.clwb_11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clwb_12": {
+          "kind": "money",
+          "cents": 202500
+        },
+        "s8812.clwb_13": {
+          "kind": "money",
+          "cents": 202500
+        },
+        "s8812.clwb_14": {
+          "kind": "money",
+          "cents": 457500
+        },
+        "s8812.clwb_15": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.business_use_part1",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s1 (solar electric $20,000) with the answer Yes to an item used less than 80% for nonbusiness purposes: line 6a is refused. The refused value is the evaluator's. Shown state (T-232, predicted from the forms before evaluating): no dependents, so Schedule 8812 lines 8 and 11 are both zero and the schedule stops at line 12 (f1040s8812 line 12, \"Is the amount on line 8 more than the amount on line 11? No. Stop here.\"); Credit Limit Worksheet B is not reached, whatever Form 5695 Part I's refusal.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part1_any": true,
+        "f5695.business_use": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.line6a": {
+          "kind": "refusal",
+          "gate": "f5695.business_use",
+          "form": "Form 5695 for an item used less than 80% for nonbusiness purposes",
+          "remedy": "Allocating an item's cost between business and nonbusiness use is outside this tool.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 1, Costs, \"only that portion of the costs that is allocable to the nonbusiness use can be used to determine either credit\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        },
+        "s8812.clwb_to7": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.construction_later",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s1 with the answer Yes to Part I costs for a home whose original use did not begin in 2025: line 6a is refused. The refused value is the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part1_any": true,
+        "f5695.construction_later": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.line6a": {
+          "kind": "refusal",
+          "gate": "f5695.construction_later",
+          "form": "Form 5695 Part I for a constructed or reconstructed home whose original use did not begin in 2025",
+          "remedy": "Costs of constructing or reconstructing a home are treated as paid when your original use of the home begins; a home first used in another year is outside this tool.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 1, Costs, \"costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.fuel_cell",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s1 with line 7a answered Yes (qualified fuel cell property): line 11 (lines 7b to 11) is refused. The refused value is the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part1_any": true,
+        "f5695.line1": 2000000,
+        "f5695.line7a": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.line11": {
+          "kind": "refusal",
+          "gate": "f5695.line7a",
+          "form": "Form 5695 lines 7b to 11 (qualified fuel cell property)",
+          "remedy": "The credit for qualified fuel cell property (its capacity limit and the joint occupancy rule) is outside this tool.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 4, Lines 7a Through 7c; p. 2, Qualified fuel cell property costs, \"The credit amount for costs paid for qualified fuel cell property is limited to $500 for each one-half kilowatt of capacity of the property\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.other_credits_part1",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s1 with the other-credits screen answered Yes: line 2 of the Residential Clean Energy Credit Limit Worksheet is refused with its own text (Schedule 3 lines 3, 6c and the others it adds); without the entry it would carry a different refusal from a line it reads. The refused value is the evaluator's.",
+      "inputs": {
+        "scope.credits": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.rce_ws2": {
+          "kind": "refusal",
+          "gate": "scope.credits",
+          "form": "Residential Clean Energy Credit Limit Worksheet, line 2 (Schedule 3 lines 6c, 6d, 6f, 6g, 6h, 6l and 6m)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14, line 2",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.other_credits_part2",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s2 (Fact Sheet 2025-01 Example 1) with the other-credits screen answered Yes: line 2 of the Energy Efficient Home Improvement Credit Limit Worksheet is refused. The refused value is the evaluator's.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "scope.credits": true,
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.eehi_ws2": {
+          "kind": "refusal",
+          "gate": "scope.credits",
+          "form": "Energy Efficient Home Improvement Credit Limit Worksheet, line 2 (Schedule 3 lines 6d and 6l)",
+          "remedy": "Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's credit and the residential energy credits are outside this tool.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 7, Energy Efficient Home Improvement Credit Limit Worksheet—Line 31, line 2",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.business_use_part2",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s2 (Fact Sheet 2025-01 Example 1, married filing jointly; line 28 $1,200) with the answer Yes for an item used less than 80% for nonbusiness purposes: line 30 is refused; lines 28 and 29h are computed, so the entry on line 30 decides its value. The refused value is the evaluator's.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.business_use": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.line30": {
+          "kind": "refusal",
+          "gate": "f5695.business_use",
+          "form": "Form 5695 for an item used less than 80% for nonbusiness purposes",
+          "remedy": "Allocating an item's cost between business and nonbusiness use is outside this tool.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 1, Costs, \"only that portion of the costs that is allocable to the nonbusiness use can be used to determine either credit\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.joint_occupancy",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s2 (Fact Sheet 2025-01 Example 1, married filing jointly; line 28 $1,200) with the answer Yes for joint occupancy with someone other than a spouse (line 32a): line 30 is refused; lines 28 and 29h are computed, so the entry on line 30 decides its value. The refused value is the evaluator's. Mutation-score assertions (T-159), from the archived f5695 line 32: Part II costs with joint occupancy answered Yes, so 32a is checked (\"If the special rule for joint occupants applies, check here\"); not a condominium or cooperative, so 32b is not.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.joint_occupancy": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.line30": {
+          "kind": "refusal",
+          "gate": "f5695.joint_occupancy",
+          "form": "Form 5695 Part II for joint occupants (line 32a)",
+          "remedy": "Allocating the credit limits among joint occupants by the amounts each paid, with the statement line 32a requires, is outside this tool.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 3, Joint occupancy, \"If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share of the credit from each property\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        },
+        "f5695.line32a": {
+          "kind": "bool",
+          "value": true
+        },
+        "f5695.line32b": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.separate_homes",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s2 (Fact Sheet 2025-01 Example 1, married filing jointly; line 28 $1,200) with the answer Yes for spouses on a joint return with separate main homes: line 30 is refused; lines 28 and 29h are computed, so the entry on line 30 decides its value. The refused value is the evaluator's.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.separate_homes": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.line30": {
+          "kind": "refusal",
+          "gate": "f5695.separate_homes_joint",
+          "form": "Form 5695 Part II for spouses with separate main homes (a separate Form 5695 for each main home)",
+          "remedy": "Figuring lines 17a through 30 on a separate Form 5695 for each spouse's main home and combining them on line 30 is outside this tool.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 3, Married taxpayers with more than one home, \"Complete lines 17a through 30 of a separate Form 5695 for each main home\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.sec_a_new_home",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s2 (Fact Sheet 2025-01 Example 1, married filing jointly; line 28 $1,200) with the answer Yes for line 17e (improvements related to the construction of the main home): line 30 is refused; lines 28 and 29h are computed, so the entry on line 30 decides its value. The refused value is the evaluator's.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line17e": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.line30": {
+          "kind": "refusal",
+          "gate": "f5695.sec_a_new_home",
+          "form": "Form 5695 Part II, Section A, with improvements related to the construction of the main home (line 17e Yes)",
+          "remedy": "Separating improvements related to the construction of a home from those that are not is outside this tool.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Lines 17a Through 17e, \"If the qualified improvements for which you are seeking to claim the credit are related to the construction of a new home, check the ... Yes ... box. If you check the ... Yes ... box, skip lines 18a through 20d\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.sec_b_new_home",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s2 (Fact Sheet 2025-01 Example 1, married filing jointly; line 28 $1,200) with the answer Yes for Section B property installed in connection with the construction of a new home: line 30 is refused; lines 28 and 29h are computed, so the entry on line 30 decides its value. The refused value is the evaluator's.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.b_new_home": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.line30": {
+          "kind": "refusal",
+          "gate": "f5695.sec_b_new_home",
+          "form": "Form 5695 Part II, Section B, for property installed in connection with the construction of a new home",
+          "remedy": "The energy efficient home improvement credit is only available for existing homes; separating such property from property for an existing home is outside this tool.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 1, Costs, \"The energy efficient home improvement credit (Part II) is only available for existing homes\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.qmid_doors_windows_ac",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s2 (doors $2,000, windows $2,200, a central air conditioner $5,000) with each item answered as having no valid qualified manufacturer identification number (QMID): the capped amounts of lines 19, 20 and 22 are refused, each by its own entry. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 100000,
+        "f5695.line20a_i": 220000,
+        "f5695.line22a": 500000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.doors_capped": {
+          "kind": "refusal",
+          "gate": "f5695.doors_no_qmid",
+          "form": "Form 5695 line 19 (an exterior door without a valid QMID)",
+          "remedy": "An exterior door installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that door.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Part II Energy Efficient Home Improvement Credit, \"you must provide a valid QMID for each item\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        },
+        "f5695.windows_capped": {
+          "kind": "refusal",
+          "gate": "f5695.windows_no_qmid",
+          "form": "Form 5695 line 20 (an exterior window or skylight without a valid QMID)",
+          "remedy": "An exterior window or skylight installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Part II Energy Efficient Home Improvement Credit, \"you must provide a valid QMID for each item\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        },
+        "f5695.ac_capped": {
+          "kind": "refusal",
+          "gate": "f5695.ac_no_qmid",
+          "form": "Form 5695 line 22 (a central air conditioner without a valid QMID)",
+          "remedy": "Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Part II Energy Efficient Home Improvement Credit, \"you must provide a valid QMID for each item\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f5695.qmid_wh_furnace_enabling_hp",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f5695.s2 with $1,000 each of a water heater (line 23a), a furnace (line 24a), enabling property (lines 25a and 25c) and a heat pump (line 29a), each answered as having no valid QMID: the capped amounts of lines 23, 24, 25 and 29 are refused, each by its own entry. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 100000,
+        "f5695.line20a_i": 220000,
+        "f5695.line22a": 500000,
+        "f5695.line23a_i": 100000,
+        "f5695.line24a": 100000,
+        "f5695.line25c": 100000,
+        "f5695.line29a": 100000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.line25a": true,
+        "f5695.qmid_doors": true,
+        "f5695.qmid_windows": true,
+        "f5695.qmid_ac": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f5695.wh_capped": {
+          "kind": "refusal",
+          "gate": "f5695.wh_no_qmid",
+          "form": "Form 5695 line 23 (a water heater without a valid QMID)",
+          "remedy": "Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Part II Energy Efficient Home Improvement Credit, \"you must provide a valid QMID for each item\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        },
+        "f5695.furnace_capped": {
+          "kind": "refusal",
+          "gate": "f5695.furnace_no_qmid",
+          "form": "Form 5695 line 24 (a furnace or hot water boiler without a valid QMID)",
+          "remedy": "Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Part II Energy Efficient Home Improvement Credit, \"you must provide a valid QMID for each item\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        },
+        "f5695.enabling_capped": {
+          "kind": "refusal",
+          "gate": "f5695.enabling_no_qmid",
+          "form": "Form 5695 line 25 (enabling property without a valid QMID)",
+          "remedy": "Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Part II Energy Efficient Home Improvement Credit, \"you must provide a valid QMID for each item\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        },
+        "f5695.hp_capped": {
+          "kind": "refusal",
+          "gate": "f5695.hp_no_qmid",
+          "form": "Form 5695 line 29 (a heat pump, heat pump water heater or biomass stove or boiler without a valid QMID)",
+          "remedy": "Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Part II Energy Efficient Home Improvement Credit, \"you must provide a valid QMID for each item\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.regress.f5695.enabling_cap",
+      "covers": [
+        "f5695"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-worked from Form 5695 (2025) Part II, Section B. Facts: stage15.f5695.s2 (Fact Sheet 2025-01 Example 1: doors, windows and a central air conditioner) plus enabling property (a panelboard installed with the air conditioner) costing $1,000, with a valid QMID. Line 25c $1,000; line 25d = 30% of 1,000 = $300; line 25e 'Enter the smaller of line 25d or $600' = $300. Line 27 adds lines 18b (0), 19h ($500), 20d ($600), 22d ($600), 23d (0), 24d (0), 25e ($300) and 26c (0) = $2,000; line 28 'Enter the smaller of line 27 or $1,200' = $1,200.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 100000,
+        "f5695.line20a_i": 220000,
+        "f5695.line22a": 500000,
+        "f5695.line25c": 100000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.line25a": true,
+        "f5695.qmid_doors": true,
+        "f5695.qmid_windows": true,
+        "f5695.qmid_ac": true,
+        "f5695.qmid_enabling": true
+      },
+      "expect": {
+        "f5695.enabling_capped": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line25e": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 120000
+        }
+      }
+    },
+    {
+      "id": "stage15.regress.f5695.insulation_audit_caps",
+      "covers": [
+        "f5695"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-worked from Form 5695 (2025) Part II. Facts: single, wages $90,000 (stage15.f5695.s11, Section A lines 17a to 17c Yes), insulation $5,000, no windows, and a home energy audit of the main home with a qualified auditor's written report costing $1,000. Line 18a $5,000; line 18b 'Multiply line 18a by 30% (0.30). Do not enter more than $1,200': 30% of 5,000 = 1,500, so $1,200. Line 26b $1,000; line 26c 'Multiply line 26b by 30% (0.30). Do not enter more than $150': 30% of 1,000 = 300, so $150. Line 27 = 1,200 + 150 = $1,350; line 28 'Enter the smaller of line 27 or $1,200' = $1,200.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 9000000,
+        "person[taxpayer].w2[emp_a].box4": 558000,
+        "person[taxpayer].w2[emp_a].box5": 9000000,
+        "person[taxpayer].w2[emp_a].box6": 130500,
+        "f5695.part2_any": true,
+        "f5695.line18a": 500000,
+        "f5695.line26b": 100000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line26a": true
+      },
+      "expect": {
+        "f5695.line18b": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f5695.line26c": {
+          "kind": "money",
+          "cents": 15000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 135000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 120000
+        }
+      }
+    },
+    {
+      "id": "stage15.regress.f5695.qmid_doors_no_doors",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15: the return of stage15.f5695.s3 (insulation $1,000 and a heat pump $10,000, no exterior doors) with the exterior-door QMID question answered No. With no door cost the QMID requirement for doors (i5695 p. 5, Part II Caution, \"you must provide a valid QMID for each item\") has nothing to apply to, so no refusal arises and every value is that case's (predicted by hand by two independent agents).",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7000000,
+        "person[taxpayer].w2[emp_a].box4": 434000,
+        "person[taxpayer].w2[emp_a].box5": 7000000,
+        "person[taxpayer].w2[emp_a].box6": 101500,
+        "f5695.part2_any": true,
+        "f5695.line18a": 100000,
+        "f5695.line29a": 1000000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_hp": true
+      },
+      "expect": {
+        "f5695.line18a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line18b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line29a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f5695.line29b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line29g": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f5695.line29h": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 230000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 685500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 685500
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 685500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 230000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 230000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 7000000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 685500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-3.g1",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $80,000. One gas water heater meeting the highest CEE tier, $1,000. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): AGI 80,000 (f1040 line 11a). Standard deduction single 15,750 (f1040 p.2 margin; i1040gi Standard Deduction Worksheet line 3). Taxable income 64,250 (line 15). Tax Table row 64,250-64,300, Single column: 9,055 (i1040gi Tax Table p.~78); cross-check by brackets 64,275 -> 9,054.5. Line 18 = 9,055 (no Schedule 2). Part I: no costs, no carryforward, all lines blank. Part II Section A: no costs (17a-c answered Yes but no amounts). Section B: 21a Yes, 21b Yes; gas water heater at highest CEE tier (i5695 Line 23a): 23a(i) 1,000; 23b 0; 23c 1,000; 23d 30% = 300 (cap 600 not reached). 27 = 300; 28 = smaller of 300 or 1,200 = 300; 29 none so 29h blank; 30 = 300. EEHIC Credit Limit Worksheet (i5695 Line 31): line 1 = f1040 line 18 9,055; line 2 = 0 (no listed credits); line 3 = 9,055 -> line 31. Line 32 = smaller of 300 and 9,055 = 300 -> s3 line 5b 300. No children, so no Schedule 8812 / line 19.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part2_any": true,
+        "f5695.line23a_i": 100000,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_wh": true
+      },
+      "expect": {
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 6425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line23b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line23c": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f5695.line23d": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line28": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f5695.eehi_ws1": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.eehi_ws2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.eehi_ws3": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line31": {
+          "kind": "money",
+          "cents": 905500
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 30000
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695-3.g2",
+      "covers": [
+        "f5695",
+        "s3",
+        "s8812",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f5695, i5695, fs-2025-01, i1040gi (Tax Table) and i1040s8812 (Credit Limit Worksheets A and B), by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Head of household. Wages $60,000, with W-2 box 4 (social security tax withheld) $3,720 and box 6 (Medicare tax withheld) $870. Three qualifying children aged 2, 7 and 12. Solar electric property $10,000. Owner rulings applied: 17a-17c No zeroes Section A only; the $600 limits of lines 22d to 25e by line; a battery on a second home allowed; Section B on any home used as a residence. Working (predictor A): AGI 60,000; HOH standard deduction 23,625 (f1040 p.2); taxable 36,375; Tax Table row 36,350-36,400, Head of household column 4,025 (bracket check: 1,700 + 12% x 19,375 = 4,025). f1040 line 18 = 4,025. EIC (i1040gi EIC table row 60,000-60,050, single/HOH with 3 children): 322; AGI equals earned income so same row; investment income 0 -> f1040 line 27a 322. Schedule 8812 Part I (f1040s8812 p.1): line 1 60,000; 2a-2d 0; 3 60,000; 4 = 3 (ages 2, 7, 12); 5 = 3 x 2,200 = 6,600; 6 = 0; 7 = 0; 8 = 6,600; 9 = 200,000; 10 = 0; 11 = 0; 12 = 6,600. Form 5695 Part I: line 1 10,000; 6a 10,000; 6b 30% = 3,000; 13 = 3,000. Credit Limit Worksheet B required (i1040s8812 CLW A line 4 conditions: claiming Form 5695 Part I, no Form 2555, s8812 line 4 > 0). Earned Income Worksheet (i1040s8812): 1a = f1040 line 1z 60,000; 1b 0; 3 = 60,000; 4-6 0; 7 = 60,000. CLW B: 1 = 6,600; 2 = 3 x 1,700 = 5,100; 3 = 60,000; 4 = 57,500; 5 = 15% = 8,625; 6: line 2 is 5,100 or more -> Yes, and line 5 (8,625) >= line 1 (6,600) -> leave lines 7-10 blank, enter 0 on line 11; 12 = larger of 8,625 or 0 = 8,625; 13 = smaller of 5,100 or 8,625 = 5,100; 14: 5,100 not more than 6,600 -> 6,600 - 5,100 = 1,500. Residential Clean Energy Credit Limit Worksheet (i5695 Line 14): line 1 = f1040 line 18 4,025; line 2 = child tax credit using CLW B line 14 instead of f1040 line 19 (footnote *) = 1,500; line 3 = 2,525 -> f5695 line 14 2,525; line 15 = smaller of 3,000 or 2,525 = 2,525 -> s3 line 5a; line 16 = 3,000 - 2,525 = 475 carryforward to 2026. CLW B line 15 = s3 5a 2,525. CLW A: 1 = 4,025; 2 = 0 (s3 lines 1, 2, 3, 4, 5b, 6d, 6f, 6l, 6m all 0); 3 = 4,025; 4 = 2,525; 5 = 1,500 -> s8812 line 13 1,500; line 14 = smaller of 6,600 or 1,500 = 1,500 -> f1040 line 19. Part II-A: 16a = 6,600 - 1,500 = 5,100; 16b = 3 x 1,700 = 5,100; 17 = 5,100; 18a = 60,000 (Earned Income Chart: taking EIC, no EIC Worksheet B -> earned income from EIC Step 5 = 60,000 wages); 18b blank; 19 = 57,500; 20 = 8,625. Line 16b is 5,100 or more and line 20 >= line 17 -> skip Part II-B, line 27 = 5,100. Resulting f1040 line 22 = 4,025 - (1,500 + 2,525) = 0. Part II of Form 5695 not used.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "$dependent": [
+          "a",
+          "b",
+          "c"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "f5695.part1_any": true,
+        "dependent[a].age": 2,
+        "dependent[a].months": 12,
+        "dependent[b].age": 7,
+        "dependent[b].months": 12,
+        "dependent[c].age": 12,
+        "dependent[c].months": 12,
+        "f5695.line1": 1000000
+      },
+      "expect": {
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2362500
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 3637500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 402500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 402500
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 32200
+        },
+        "f5695.line1": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f5695.line6a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f5695.line6b": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.line13": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f5695.rce_ws1": {
+          "kind": "money",
+          "cents": 402500
+        },
+        "f5695.rce_ws2": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f5695.rce_ws3": {
+          "kind": "money",
+          "cents": 252500
+        },
+        "f5695.line14": {
+          "kind": "money",
+          "cents": 252500
+        },
+        "f5695.line15": {
+          "kind": "money",
+          "cents": 252500
+        },
+        "f5695.line16": {
+          "kind": "money",
+          "cents": 47500
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 252500
+        },
+        "s8812.line1": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "s8812.line3": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "s8812.line4": {
+          "kind": "count",
+          "value": 3
+        },
+        "s8812.line5": {
+          "kind": "money",
+          "cents": 660000
+        },
+        "s8812.line6": {
+          "kind": "count",
+          "value": 0
+        },
+        "s8812.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.line8": {
+          "kind": "money",
+          "cents": 660000
+        },
+        "s8812.line9": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "s8812.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.line12": {
+          "kind": "money",
+          "cents": 660000
+        },
+        "s8812.line13": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "s8812.line14": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "s8812.line16a": {
+          "kind": "money",
+          "cents": 510000
+        },
+        "s8812.line16b": {
+          "kind": "money",
+          "cents": 510000
+        },
+        "s8812.line17": {
+          "kind": "money",
+          "cents": 510000
+        },
+        "s8812.line18a": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "s8812.line19": {
+          "kind": "money",
+          "cents": 5750000
+        },
+        "s8812.line20": {
+          "kind": "money",
+          "cents": 862500
+        },
+        "s8812.line27": {
+          "kind": "money",
+          "cents": 510000
+        },
+        "s8812.clw_a1": {
+          "kind": "money",
+          "cents": 402500
+        },
+        "s8812.clw_a2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clw_a3": {
+          "kind": "money",
+          "cents": 402500
+        },
+        "s8812.clw_a4": {
+          "kind": "money",
+          "cents": 252500
+        },
+        "s8812.clw_a5": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "s8812.clwb_1": {
+          "kind": "money",
+          "cents": 660000
+        },
+        "s8812.clwb_2": {
+          "kind": "money",
+          "cents": 510000
+        },
+        "s8812.clwb_3": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "s8812.clwb_4": {
+          "kind": "money",
+          "cents": 5750000
+        },
+        "s8812.clwb_5": {
+          "kind": "money",
+          "cents": 862500
+        },
+        "s8812.clwb_11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.clwb_12": {
+          "kind": "money",
+          "cents": 862500
+        },
+        "s8812.clwb_13": {
+          "kind": "money",
+          "cents": 510000
+        },
+        "s8812.clwb_14": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "s8812.clwb_15": {
+          "kind": "money",
+          "cents": 252500
+        }
+      }
+    },
+    {
+      "id": "stage15.f5695.no_part2",
+      "covers": [
+        "f5695.line32",
+        "f5695.line32a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-145. stage15.f8880.s1 has no Part II (f5695.part2_any No) and leaves the Part II screens, including f5695.joint_occupancy, unanswered. Predicted from Form 5695 (2025): Part II is not completed, so line 32 (the Part II credit) is $0 and the line 32a box, for \"Joint occupants of a home who are claiming the energy efficient home improvement credit\" (i5695 p. 7), is unchecked; Schedule 3 line 5b stays $0. Before the change line 32 was unknown (f5695.business_use) and line 32a unknown (f5695.joint_occupancy). Written before the evaluator was run.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 3000000,
+        "person[taxpayer].w2[e0].box4": 186000,
+        "person[taxpayer].w2[e0].box5": 3000000,
+        "person[taxpayer].w2[e0].box6": 43500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 1000000,
+        "person[spouse].w2[e0].box4": 62000,
+        "person[spouse].w2[e0].box5": 1000000,
+        "person[spouse].w2[e0].box6": 14500,
+        "person[taxpayer].w2[e0].box12_any": true,
+        "person[spouse].sav_roth": 100000,
+        "person[spouse].sav_prior_other": 200000,
+        "person[taxpayer].w2[e0].box12_d": 100000,
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 500000
+      },
+      "expect": {
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line32a": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line5b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage15.mut.f5695_one_cent_no_qmid_condo",
+      "covers": [
+        "f5695"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the line 22c, 23c, 24c and 25c operands of the QMID gates, and the operands of line 32b), predicted from the archived f5695 and i5695 before evaluating: stage15.f5695.s2 (Fact Sheet 2025-01 Example 1, Part II costs) with one cent of cost each for a central air conditioner (line 22a), a water heater (line 23a), a furnace (line 24a) and enabling property (line 25c), none with a valid QMID, and a condominium owner with a fractional share. Each of the four items has a cost entered without the QMID that i5695 requires (\"To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item\"), so each QMID gate is true however small the cost (30% of one cent rounds to $0, which is why the cost, not the credit, is the test). Line 32b is checked (f5695 line 32b, \"If you live in a condominium or cooperative and have a fractional share of the qualified energy efficiency improvements or residential energy property expenditures, check here\"); line 32a is not (no joint occupancy).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 100000,
+        "f5695.line20a_i": 220000,
+        "f5695.line22a": 1,
+        "f5695.line23a_i": 1,
+        "f5695.line24a": 1,
+        "f5695.line25c": 1,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_doors": true,
+        "f5695.qmid_windows": true,
+        "f5695.condo": true
+      },
+      "expect": {
+        "f5695.ac_no_qmid": {
+          "kind": "bool",
+          "value": true
+        },
+        "f5695.wh_no_qmid": {
+          "kind": "bool",
+          "value": true
+        },
+        "f5695.furnace_no_qmid": {
+          "kind": "bool",
+          "value": true
+        },
+        "f5695.enabling_no_qmid": {
+          "kind": "bool",
+          "value": true
+        },
+        "f5695.line32b": {
+          "kind": "bool",
+          "value": true
+        },
+        "f5695.line32a": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage16.cleanup.f5695_no_audit",
+      "covers": [
+        "f5695:line27"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage15.f5695.s2 as the interview asks them: No to the home energy audit (line 26a), so the audit cost is not asked and is left out, as the interview leaves it. The expected values are stage15.f5695.s2's blind-predicted lines 27, 30 and 32, which do not depend on the audit cost when line 26a is No.",
+      "inputs": {
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "f1040.status": "mfj",
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "f5695.part2_any": true,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 100000,
+        "f5695.line20a_i": 220000,
+        "f5695.qmid_doors": true,
+        "f5695.qmid_windows": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.line22a": 500000,
+        "f5695.qmid_ac": true,
+        "household.married": true,
+        "f5695.line25c": null,
+        "f5695.line26b": null
+      },
+      "expect": {
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 170000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 120000
+        }
+      }
+    },
+    {
+      "id": "stage16.cleanup.f5695_no_section_b",
+      "covers": [
+        "f5695:line30"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage15.f5695.s7 as the interview asks them: No on line 21a, so Section B lines 22 to 25 and line 29 are skipped and the heat pump costs are not asked; they are left out, as the interview leaves them. The expected values are stage15.f5695.s7's blind-predicted lines 27, 30 and 32.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7500000,
+        "f1040.line26": 200000,
+        "person[taxpayer].w2[emp_a].box4": 465000,
+        "person[taxpayer].w2[emp_a].box5": 7500000,
+        "f5695.part2_any": true,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 60000,
+        "f5695.line19d_ii": 60000,
+        "f5695.qmid_doors": true,
+        "f5695.line22b": null,
+        "f5695.line23b": null,
+        "f5695.line24b": null,
+        "f5695.line29f": null
+      },
+      "expect": {
+        "f5695.line27": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f5695.line30": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f5695.line32": {
+          "kind": "money",
+          "cents": 50000
+        }
+      }
+    },
+    {
+      "id": "stage16.cleanup.f5695_small_wind",
+      "covers": [
+        "f5695:line6a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage15.f5695-2.e12 (head of household, wages $26,000, three children, solar electric property $5,000; blind-predicted) as the interview asks them, with $2,000 of qualified small wind energy property costs added on line 3 and No to the questions the interview now asks that e12 predates. Line 6a adds lines 1 through 5b, $7,000; line 6b is 30%, $2,100, and line 13 the same. The limit (lines 14 and 15) does not depend on the credit and stays $0 as e12 records, so line 16, the carryforward, is $2,100 (Form 5695 (2025) lines 6a, 6b, 13 to 16; i5695 p. 5). The expected values follow from the form's arithmetic over e12's predicted values and agree with the evaluator.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$dependent": [
+          "a",
+          "b",
+          "c"
+        ],
+        "dependent[a].age": 3,
+        "dependent[a].months": 12,
+        "dependent[b].age": 6,
+        "dependent[b].months": 12,
+        "dependent[c].age": 9,
+        "dependent[c].months": 12,
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2600000,
+        "person[taxpayer].w2[emp_a].box5": 2600000,
+        "f5695.part1_any": true,
+        "f5695.line1": 500000,
+        "f5695.line3": 200000
+      },
+      "expect": {
+        "f5695.line1": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f5695.line3": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f5695.line6a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "f5695.line6b": {
+          "kind": "money",
+          "cents": 210000
+        },
+        "f5695.line13": {
+          "kind": "money",
+          "cents": 210000
+        },
+        "f5695.line14": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.line16": {
+          "kind": "money",
+          "cents": 210000
+        }
+      }
+    }
+  ]
+}

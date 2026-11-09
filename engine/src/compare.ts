@@ -18,7 +18,6 @@ import { TYPED_CHOOSE_CASES, typedChooseData, valueText } from "./check-selftest
 const ROOT = resolve(import.meta.dirname, "../..");
 const LEAN_BIN = join(ROOT, "lean", ".lake", "build", "bin", "taxeval");
 const CANON = yearPath("canonical");
-const FIXTURES = yearPath("fixtures", "stage1.json");
 
 interface Case {
   id: string;

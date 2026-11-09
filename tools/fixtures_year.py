@@ -52,9 +52,17 @@ sys.path.insert(0, str(ROOT / "tools"))
 import year_diff  # noqa: E402
 import jurisdiction  # noqa: E402  (--jurisdiction ny, docs/ny/DECISIONS.md C1, C8)
 from jurisdiction import ypath  # noqa: E402
+from fixture_inputs import resolve_cases  # noqa: E402
 
 YEAR_KEYS = ("placed", "placed_date")
 NODE = ["node", str(ROOT / "engine" / "dist" / "main.js")]
+
+
+def defaults_files(year):
+    """The year's defaults files, federal first (fixture-inputs.ts): the New York fixtures take both."""
+    fed = ROOT / "fixtures" / str(year) / "defaults.json"
+    ny = ROOT / "fixtures" / "ny" / str(year) / "defaults.json"
+    return [p for p in ([fed, ny] if jurisdiction.J == "ny" else [fed]) if p.exists()]
 
 
 def canonical_params(year):
@@ -189,7 +197,6 @@ def main():
     if dst.exists():
         sys.exit(f"refusing to overwrite fixtures/{t}/")
     build(t, f"--plan reports what would be re-recorded without the {t} build.")
-    params = canonical_params(t)
 
     work_lines, work_params = worklist(f, t)
 
@@ -212,14 +219,21 @@ def main():
                 dropped.append((name, c["id"]))
                 continue
             c["inputs"] = {k: shift_year(k, v, t - f) for k, v in c["inputs"].items()}
-            c["resolved"] = resolve(c["inputs"], params, where=f"{name} {c['id']}")
+            c["file"] = name
             cases.append(c)
             all_cases.append(c)
         data["cases"] = cases
+    try:
+        resolved = resolve_cases(all_cases, t, jurisdiction.J == "ny", defaults_files(f))
+    except ValueError as e:
+        sys.exit(f"fixtures {f} -> {t}: {e}")
+    for c in all_cases:
+        c["resolved"] = resolved[c["id"]]
     results = evaluate(all_cases, t)
 
     failed = []
     for c in all_cases:
+        del c["file"]
         derivations = results[c["id"]]
         if "error" in derivations:
             failed.append((c["id"], derivations["error"]))
@@ -258,6 +272,10 @@ def main():
     dst.mkdir(parents=True)
     for name, (data, indent) in files.items():
         (dst / name).write_text(json.dumps(data, indent=indent, ensure_ascii=False) + "\n", encoding="utf-8")
+    if (src / "defaults.json").exists():
+        d = json.loads((src / "defaults.json").read_text(encoding="utf-8"))
+        d["tax_year"] = t
+        (dst / "defaults.json").write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     docs = sorted({line.split(".")[0] for line in work_lines})
     hand = []
@@ -313,19 +331,23 @@ def plan(f, t, src):
     if not (ypath("forms", str(t))).is_dir():
         sys.exit(f"--plan reads the {t} definitions' citations: adopt first (tools/year_diff.py --from {f} --to {t} --adopt)")
     build(f, "")
-    params = canonical_params(f)
     doc_only = set()
     work_lines, work_params = worklist(f, t, doc_only)
     dropped, cases = [], []
     for path in sorted(src.glob("*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
-        for c in data.get("cases", []):
+        for c in ([] if path.name == "defaults.json" else data.get("cases", [])):
             if str(c.get("evidence", "")).startswith("A"):
                 dropped.append((path.name, c["id"]))
                 continue
-            c["resolved"] = resolve(c["inputs"], params, where=f"{path.name} {c['id']}")
             c["file"] = path.name
             cases.append(c)
+    try:
+        resolved = resolve_cases(cases, f, jurisdiction.J == "ny")
+    except ValueError as e:
+        sys.exit(f"fixtures {f} -> {t} (plan): {e}")
+    for c in cases:
+        c["resolved"] = resolved[c["id"]]
     results = evaluate(cases, f)
     rest, kept, failed = [], [], []
     for c in cases:

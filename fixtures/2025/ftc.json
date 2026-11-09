@@ -1,0 +1,357 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage4.ftc.29999",
+      "walk": "stage4",
+      "covers": [
+        "ftc.29999"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "ftc.taxes": {
+          "param": "ftc.limit",
+          "status": "single",
+          "offset": -1
+        },
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 29999
+        }
+      }
+    },
+    {
+      "id": "stage4.ftc.30000",
+      "walk": "stage4",
+      "covers": [
+        "ftc.30000"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "ftc.taxes": 30000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 30000
+        }
+      }
+    },
+    {
+      "id": "stage4.ftc.regular_limit",
+      "walk": "stage4",
+      "covers": [
+        "ftc.regular_limit"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "ftc.taxes": {
+          "param": "ftc.limit",
+          "status": "single",
+          "offset": 0
+        },
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 1575000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.ftc.limit",
+      "walk": "stage4",
+      "covers": [
+        "ftc.needs1116"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "ftc.taxes": {
+          "param": "ftc.limit",
+          "status": "single",
+          "offset": 1
+        },
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "ftc.needs1116",
+          "form": "Form 1116",
+          "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.",
+          "cite": {
+            "doc": "i1116",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2025-12-23",
+            "locator": "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.ftc.passive",
+      "walk": "stage4",
+      "covers": [
+        "ftc.needs1116"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "ftc.taxes": 10000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "ftc.needs1116",
+          "form": "Form 1116",
+          "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.",
+          "cite": {
+            "doc": "i1116",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2025-12-23",
+            "locator": "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.ftc.statements",
+      "walk": "stage4",
+      "covers": [
+        "ftc.needs1116"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "ftc.taxes": 10000,
+        "ftc.all_passive": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "ftc.needs1116",
+          "form": "Form 1116",
+          "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.",
+          "cite": {
+            "doc": "i1116",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2025-12-23",
+            "locator": "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.ftc.eligible",
+      "walk": "stage4",
+      "covers": [
+        "ftc.needs1116"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "ftc.taxes": 10000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "ftc.needs1116",
+          "form": "Form 1116",
+          "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.",
+          "cite": {
+            "doc": "i1116",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2025-12-23",
+            "locator": "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.ftc.election",
+      "walk": "stage4",
+      "covers": [
+        "ftc.needs1116"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "ftc.taxes": 10000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "ftc.needs1116",
+          "form": "Form 1116",
+          "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.",
+          "cite": {
+            "doc": "i1116",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2025-12-23",
+            "locator": "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage18.ftc_limit_with_repayment",
+      "covers": [
+        "ftc",
+        "f8962",
+        "s2"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 18 adjudication regression (finding F1), predicted by hand: blind return P8 (Form 8962 line 29 $375, Form 1040 line 16 $0) with $200 of creditable foreign tax under the election without Form 1116. The limit is regular tax, i1116 p. 25, Line 20, \"the total of Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line 1z\": $0 + $375, so the credit is $200 and line 22 $175.",
+      "inputs": {
+        "ftc.taxes": 20000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 74400,
+        "person[taxpayer].w2[emp_a].box5": 1200000,
+        "person[taxpayer].w2[emp_a].box6": 17400,
+        "$f1095a": [
+          "m"
+        ],
+        "f1095a[m].uniform": true,
+        "f1095a[m].c_total": 500000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s3.line1": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f1040.line22": {
+          "kind": "money",
+          "cents": 17500
+        }
+      }
+    }
+  ]
+}

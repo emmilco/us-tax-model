@@ -1,0 +1,1802 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage4.mut.savers_claimed_dependent",
+      "walk": "stage4",
+      "covers": [
+        "f8880",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the sav_claimed operand of person.sav_ineligible), predicted from the archived f8880 before evaluating: stage4.refuse.standard.dependent (someone can claim you as a dependent) with you answering that you are claimed as a dependent on someone else's 2025 return. f8880 p. 1, \"You can't take this credit if ... (b) claimed as a dependent on someone else's 2025 tax return\": you are ineligible.",
+      "inputs": {
+        "sa.dependent": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].sav_claimed": true
+      },
+      "expect": {
+        "person[taxpayer].sav_ineligible": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "f1.t113.person_llc_itin_applied",
+      "covers": [
+        "person",
+        "f8863"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "F1 pass, T-113/BUG-0285. Expected result written from the archived source before the evaluator was run: the facts of stage19.example.llc_phaseout (the taxpayer is a lifetime learning credit student) with the taxpayer's ITIN only applied for by the due date. i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"; p970 p. 11 deems an ATIN or ITIN applied for by the due date issued only in the American opportunity credit chapter. Owner decision T-113: refuse the lifetime learning credit for a student with only an applied-for ATIN or ITIN; the American opportunity credit keeps the deeming. The taxpayer's line 31 and Part II line 10 refuse.",
+      "inputs": {
+        "f8863.paid": true,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "person[taxpayer].tin": false,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 16100000,
+        "person[taxpayer].w2[e0].box4": 998200,
+        "person[taxpayer].w2[e0].box5": 16100000,
+        "person[taxpayer].w2[e0].box6": 233450,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": true,
+        "person[taxpayer].edu_line24": true,
+        "person[taxpayer].edu_line25": true,
+        "person[taxpayer].itin_applied": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].edu_line31": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].edu_llc_tin_refused",
+          "form": "Lifetime learning credit for a student whose ITIN or ATIN was only applied for",
+          "remedy": "The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.",
+          "cite": {
+            "doc": "i8863",
+            "locator": "p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"; p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return.\"",
+            "revision": "2025",
+            "snapshot": "195cfd5e93892f0db4162c5b8882236c4d27b26e2934ed99493743ceccf9ea29",
+            "tax_year": 2025
+          }
+        },
+        "f8863.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].edu_llc_tin_refused",
+          "form": "Lifetime learning credit for a student whose ITIN or ATIN was only applied for",
+          "remedy": "The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.",
+          "cite": {
+            "doc": "i8863",
+            "locator": "p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"; p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return.\"",
+            "revision": "2025",
+            "snapshot": "195cfd5e93892f0db4162c5b8882236c4d27b26e2934ed99493743ceccf9ea29",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1.t113.person_aoc_itin_applied",
+      "covers": [
+        "person",
+        "f8863"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "F1 pass, T-113. Expected values written from the archived source before the evaluator was run: the facts and values of stage19.example.aoc_phaseout with the taxpayer's ITIN only applied for by the due date; p970 p. 11 deems it issued for the American opportunity credit, so every value is unchanged.",
+      "inputs": {
+        "f8863.paid": true,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "person[taxpayer].tin": false,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 16500000,
+        "person[taxpayer].w2[e0].box4": 1023000,
+        "person[taxpayer].w2[e0].box5": 16500000,
+        "person[taxpayer].w2[e0].box6": 239250,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": true,
+        "person[taxpayer].edu_inst": 500000,
+        "person[taxpayer].edu_line24": true,
+        "person[taxpayer].edu_ein": true,
+        "person[taxpayer].itin_applied": true
+      },
+      "expect": {
+        "person[taxpayer].edu_line30": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f8863.line1": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f8863.line3": {
+          "kind": "money",
+          "cents": 16500000
+        },
+        "f8863.line4": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "f8863.line7": {
+          "kind": "money",
+          "cents": 187500
+        },
+        "f8863.line8": {
+          "kind": "money",
+          "cents": 75000
+        },
+        "f8863.line9": {
+          "kind": "money",
+          "cents": 112500
+        },
+        "f8863.line19": {
+          "kind": "money",
+          "cents": 112500
+        }
+      }
+    },
+    {
+      "id": "stage14.se.under_400",
+      "covers": [
+        "se"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $400 and no expenses: line 31 $400; Schedule SE line 4a $400 x 92.35% = $369.40, less than $400, so no self-employment tax (line 4c, 6, 12 zero) and no deduction on line 15.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "odd"
+        ],
+        "person[taxpayer].sc[odd].line1": 40000
+      },
+      "expect": {
+        "person[taxpayer].sc[odd].line31": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "person[taxpayer].se_line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].se_line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line15": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.se.wage_base",
+      "covers": [
+        "se",
+        "f8959"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: wages $180,000 (box 3, above the $176,100 base) and a Schedule C profit of $20,000: line 6 $20,000 x 92.35% = $18,470; line 9 zero (line 7 less line 8a), so line 10 is zero; line 11 2.9% = $535.63; line 12 $535.63; line 13 $267.82 (half-up of $267.815).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "big"
+        ],
+        "$sc@person[taxpayer]": [
+          "side"
+        ],
+        "person[taxpayer].w2[big].box1": 18000000,
+        "person[taxpayer].w2[big].box3": 18000000,
+        "person[taxpayer].w2[big].box4": 1091820,
+        "person[taxpayer].w2[big].box5": 18000000,
+        "person[taxpayer].w2[big].box6": 261000,
+        "person[taxpayer].sc[side].line1": 2000000
+      },
+      "expect": {
+        "person[taxpayer].se_line6": {
+          "kind": "money",
+          "cents": 1847000
+        },
+        "person[taxpayer].se_line12": {
+          "kind": "money",
+          "cents": 53563
+        },
+        "s1.line15": {
+          "kind": "money",
+          "cents": 26782
+        },
+        "f8959.line8": {
+          "kind": "money",
+          "cents": 1847000
+        }
+      }
+    },
+    {
+      "id": "stage14.se.partial_base",
+      "covers": [
+        "se"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: wages $170,000 and a profit of $30,000: line 6 $27,705; line 9 $176,100 - $170,000 = $6,100; line 10 12.4% x $6,100 = $756.40; line 11 2.9% x $27,705 = $803.45 (half-up of $803.445); line 12 $1,559.85; line 13 $779.93 (half-up of $779.925).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "job"
+        ],
+        "$sc@person[taxpayer]": [
+          "side"
+        ],
+        "person[taxpayer].w2[job].box1": 17000000,
+        "person[taxpayer].w2[job].box3": 17000000,
+        "person[taxpayer].w2[job].box4": 1054000,
+        "person[taxpayer].w2[job].box5": 17000000,
+        "person[taxpayer].w2[job].box6": 246500,
+        "person[taxpayer].sc[side].line1": 3000000
+      },
+      "expect": {
+        "person[taxpayer].se_line12": {
+          "kind": "money",
+          "cents": 155985
+        },
+        "s1.line15": {
+          "kind": "money",
+          "cents": 77993
+        }
+      }
+    },
+    {
+      "id": "stage14.sep.basic",
+      "covers": [
+        "person",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $100,000; Schedule SE line 12 $14,129.55, line 13 $7,064.78 (half-up of $7,064.775). SEP Deduction Worksheet for Self-Employed: step 3 $92,935.22; step 4 the 25% rate reduced to 0.2 (25/125); step 5 $18,587.04; step 6 $350,000 x 25% = $87,500; step 8 $70,000; step 21 $18,587.04. Contribution $18,000 is within it: Schedule 1 line 16 $18,000. Mutation-score assertion (T-159): Student Loan Interest Deduction Worksheet line 4 is Form 1040 line 9 ($100,000) less the adjustments (half of SE tax $7,064.78 and the SEP deduction $18,000), $74,935.22, not more than line 5 ($85,000).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line1": 10000000,
+        "person[taxpayer].plan": "sep",
+        "person[taxpayer].sep_rate": 25,
+        "person[taxpayer].sep_contrib": 1800000
+      },
+      "expect": {
+        "person[taxpayer].sep_s5": {
+          "kind": "money",
+          "cents": 1858704
+        },
+        "person[taxpayer].sep_s21": {
+          "kind": "money",
+          "cents": 1858704
+        },
+        "s1.line16": {
+          "kind": "money",
+          "cents": 1800000
+        },
+        "sli.over": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage14.sep.worksheet_shown",
+      "covers": [
+        "person",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-222 (BUG-0402 person SEP worksheet) regression, predicted from p560 p. 38 before recording: the inputs of stage14.sep.basic, a SEP IRA for yourself (\"you must use the rate table or rate worksheet and deduction worksheet to figure your deduction for contributions you made for yourself to a SEP IRA\"), so the worksheet steps are shown; step 21 $18,587.04 as in that case.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line1": 10000000,
+        "person[taxpayer].plan": "sep",
+        "person[taxpayer].sep_rate": 25,
+        "person[taxpayer].sep_contrib": 1800000
+      },
+      "expect": {
+        "person[taxpayer].sep_shown": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].sep_s21": {
+          "kind": "money",
+          "cents": 1858704
+        }
+      }
+    },
+    {
+      "id": "stage14.sep.refuse_excess",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.sep.basic but $19,000 contributed, more than the $18,587.04 maximum: the deduction refuses (excess contributions).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line1": 10000000,
+        "person[taxpayer].plan": "sep",
+        "person[taxpayer].sep_rate": 25,
+        "person[taxpayer].sep_contrib": 1900000
+      },
+      "expect": {
+        "person[taxpayer].sep_deduction": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sep_excess",
+          "form": "SEP contributions above the maximum deductible contribution",
+          "remedy": "Excess SEP contributions are outside this tool.",
+          "cite": {
+            "doc": "p560",
+            "locator": "pp. 11, 39, chapter 2, Excess contributions; chapter 5",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.simple.match_age50",
+      "covers": [
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $60,000: compensation for the SIMPLE IRA is Schedule SE line 4 = $55,410. Salary reduction contributions $18,000: $16,500 within the limit and $1,500 catch-up (limit $3,500, and not more than $55,410 - $16,500); matching contribution 3% x $55,410 = $1,662.30 (not more than the $18,000 deferred). Schedule 1 line 16 $18,000 + $1,662.30 = $19,662.30.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line1": 6000000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].simple_deferral": 1800000,
+        "person[taxpayer].simple_age": "age50",
+        "person[taxpayer].simple_employer": 166230
+      },
+      "expect": {
+        "person[taxpayer].simple_comp": {
+          "kind": "money",
+          "cents": 5541000
+        },
+        "person[taxpayer].match_max": {
+          "kind": "money",
+          "cents": 166230
+        },
+        "s1.line16": {
+          "kind": "money",
+          "cents": 1966230
+        }
+      }
+    },
+    {
+      "id": "stage14.sep.worksheet_hidden",
+      "covers": [
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-222 (BUG-0402 person SEP worksheet) regression, predicted from p560 p. 38 before recording: the inputs of stage14.simple.match_age50, a SIMPLE IRA and no SEP, so the SEP deduction worksheet steps are not shown.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line1": 6000000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].simple_deferral": 1800000,
+        "person[taxpayer].simple_age": "age50",
+        "person[taxpayer].simple_employer": 166230
+      },
+      "expect": {
+        "person[taxpayer].sep_shown": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage14.simple.nonelective_60",
+      "covers": [
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $60,000, age 61: deferrals $21,750 ($16,500 plus the $5,250 catch-up for ages 60 to 63); 2% nonelective contribution on $55,410 = $1,108.20. Line 16 $22,858.20.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line1": 6000000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].simple_deferral": 2175000,
+        "person[taxpayer].simple_age": "age60_63",
+        "person[taxpayer].simple_kind": "nonelective",
+        "person[taxpayer].simple_employer": 110820
+      },
+      "expect": {
+        "person[taxpayer].catchup_max": {
+          "kind": "money",
+          "cents": 525000
+        },
+        "person[taxpayer].ne_max": {
+          "kind": "money",
+          "cents": 110820
+        },
+        "s1.line16": {
+          "kind": "money",
+          "cents": 2285820
+        }
+      }
+    },
+    {
+      "id": "stage14.simple.refuse_catchup",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: deferrals of $18,000 under age 50: $1,500 above the $16,500 limit with no catch-up allowed: the deduction refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line1": 6000000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].simple_deferral": 1800000
+      },
+      "expect": {
+        "person[taxpayer].simple_deduction": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].simple_excess",
+          "form": "SIMPLE contributions above the limits",
+          "remedy": "Excess SIMPLE contributions are outside this tool.",
+          "cite": {
+            "doc": "p560",
+            "locator": "pp. 14–17, chapter 3",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.joint.both_se",
+      "covers": [
+        "se",
+        "s2",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: married filing jointly, each spouse with a business: $50,000 (you) and $30,000 (your spouse), no wages. Separate Schedules SE: yours line 6 $46,175, line 12 $7,064.78; your spouse's line 6 $27,705, line 12 $4,238.87; Schedule 2 line 4 $11,303.65; Schedule 1 line 15 $3,532.39 + $2,119.44 = $5,651.83; Form 8959 line 8 $73,880.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$sc@person[taxpayer]": [
+          "t"
+        ],
+        "$sc@person[spouse]": [
+          "s"
+        ],
+        "person[taxpayer].sc[t].line1": 5000000,
+        "person[spouse].sc[s].line1": 3000000
+      },
+      "expect": {
+        "person[taxpayer].se_line12": {
+          "kind": "money",
+          "cents": 706478
+        },
+        "person[spouse].se_line12": {
+          "kind": "money",
+          "cents": 423887
+        },
+        "s2.line4": {
+          "kind": "money",
+          "cents": 1130365
+        },
+        "s1.line15": {
+          "kind": "money",
+          "cents": 565183
+        },
+        "f8959.line8": {
+          "kind": "money",
+          "cents": 7388000
+        }
+      }
+    },
+    {
+      "id": "stage14.joint.spouse_wages",
+      "covers": [
+        "se"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: married filing jointly: your spouse's $180,000 of wages do not reduce your Schedule SE wage base (line 8a is your own wages, zero): your line 10 is 12.4% of the full $36,940, line 12 $5,651.82.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$sc@person[taxpayer]": [
+          "t"
+        ],
+        "$w2@person[spouse]": [
+          "job"
+        ],
+        "person[spouse].w2[job].box1": 18000000,
+        "person[spouse].w2[job].box4": 1091820,
+        "person[spouse].w2[job].box5": 18000000,
+        "person[spouse].w2[job].box6": 261000,
+        "person[taxpayer].sc[t].line1": 4000000
+      },
+      "expect": {
+        "person[taxpayer].se_line12": {
+          "kind": "money",
+          "cents": 565182
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.se_screen",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule SE screen answered Yes (for example church employee income): Schedule SE line 2 refuses, and so do Schedule 2 line 4 and Schedule 1 line 15.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line1": 1000000,
+        "person[taxpayer].se_screen": true
+      },
+      "expect": {
+        "person[taxpayer].se_line2": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].se_screened",
+          "form": "Schedule SE items outside this tool (church employee income, clergy, Forms 4361 and 4029, partnership and other self-employment income, farm income, optional methods, chapter 11, community income, exempt income, Forms 4137 and 8919)",
+          "remedy": "These self-employment tax items are outside this tool.",
+          "cite": {
+            "doc": "i1040sse",
+            "locator": "pp. 1-5",
+            "revision": "2025",
+            "snapshot": "ea9e3120706f9d5e21ce1c6cbec256b5e2e2bf02c44759773d9236462cf4d800",
+            "tax_year": 2025
+          }
+        },
+        "s2.line4": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].se_screened",
+          "form": "Schedule SE items outside this tool (church employee income, clergy, Forms 4361 and 4029, partnership and other self-employment income, farm income, optional methods, chapter 11, community income, exempt income, Forms 4137 and 8919)",
+          "remedy": "These self-employment tax items are outside this tool.",
+          "cite": {
+            "doc": "i1040sse",
+            "locator": "pp. 1-5",
+            "revision": "2025",
+            "snapshot": "ea9e3120706f9d5e21ce1c6cbec256b5e2e2bf02c44759773d9236462cf4d800",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.simple.refuse_employer",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $2,000 matching contribution where 3% of $55,410 is $1,662.30: refused as an excess contribution.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 6000000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].simple_deferral": 1000000,
+        "person[taxpayer].simple_employer": 200000
+      },
+      "expect": {
+        "person[taxpayer].simple_deduction": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].simple_excess",
+          "form": "SIMPLE contributions above the limits",
+          "remedy": "Excess SIMPLE contributions are outside this tool.",
+          "cite": {
+            "doc": "p560",
+            "locator": "pp. 14–17, chapter 3",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.plan.refuse_screen",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a retirement plan screen answered Yes (for example a SARSEP): the SEP contribution line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 6000000,
+        "person[taxpayer].plan": "sep",
+        "person[taxpayer].plan_screen": true,
+        "person[taxpayer].sep_rate": 10,
+        "person[taxpayer].sep_contrib": 100
+      },
+      "expect": {
+        "person[taxpayer].sep_contrib": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].plan_screened",
+          "form": "Retirement plan contributions outside this tool (SARSEP, other plan rates, higher SIMPLE limits, more than one plan, a plan with more than one Schedule C, other elective deferrals, Roth contributions, excess contributions)",
+          "remedy": "These retirement contributions are outside this tool.",
+          "cite": {
+            "doc": "p560",
+            "locator": "pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.se.exactly_400",
+      "covers": [
+        "se"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $433.14: line 4a $433.14 x 92.35% = $400.00 (half-up of $400.0045), not less than $400, so self-employment tax is owed: line 10 $49.60, line 11 $11.60, line 12 $61.20.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line1": 43314
+      },
+      "expect": {
+        "person[taxpayer].se_line6": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "person[taxpayer].se_line12": {
+          "kind": "money",
+          "cents": 6120
+        }
+      }
+    },
+    {
+      "id": "stage14.sep.dollar_limit",
+      "covers": [
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $500,000, plan rate 25%: step 5 $96477.28; step 6 $87,500; step 7 the smaller; step 8 $70,000; step 21 $70,000, so a $70,000 contribution is deductible.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 50000000,
+        "person[taxpayer].plan": "sep",
+        "person[taxpayer].sep_rate": 25,
+        "person[taxpayer].sep_contrib": {
+          "param": "ret.sep_dollar_limit",
+          "offset": 0
+        }
+      },
+      "expect": {
+        "person[taxpayer].sep_s21": {
+          "kind": "money",
+          "cents": 7000000
+        },
+        "person[taxpayer].sep_s6": {
+          "kind": "money",
+          "cents": 8750000
+        },
+        "s1.line16": {
+          "kind": "money",
+          "cents": 7000000
+        }
+      }
+    },
+    {
+      "id": "stage14.simple.comp_cap",
+      "covers": [
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $600,000: compensation $554,100, of which only $350,000 counts for the 2% nonelective contribution: $7,000; a $7,000 contribution is deductible.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 60000000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].simple_kind": "nonelective",
+        "person[taxpayer].simple_employer": 700000
+      },
+      "expect": {
+        "person[taxpayer].ne_max": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "s1.line16": {
+          "kind": "money",
+          "cents": 700000
+        }
+      }
+    },
+    {
+      "id": "stage14.plan.refuse_screen_simple",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a retirement plan screen answered Yes with a SIMPLE plan: the salary reduction line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 6000000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].plan_screen": true,
+        "person[taxpayer].simple_deferral": 100000
+      },
+      "expect": {
+        "person[taxpayer].simple_deferral": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].plan_screened",
+          "form": "Retirement plan contributions outside this tool",
+          "remedy": "These retirement contributions are outside this tool.",
+          "cite": {
+            "doc": "p560",
+            "locator": "pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.simple.refuse_catchup_comp",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $19,000: compensation $17,546.50; deferrals $18,000 at age 50: $16,500 regular and $1,500 catch-up, but the catch-up may not exceed $17,546.50 - $16,500 = $1,046.50: refused as excess.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 1900000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].simple_deferral": 1800000,
+        "person[taxpayer].simple_age": "age50"
+      },
+      "expect": {
+        "person[taxpayer].catchup_max": {
+          "kind": "money",
+          "cents": 104650
+        },
+        "person[taxpayer].simple_deduction": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].simple_excess",
+          "form": "SIMPLE contributions above the limits",
+          "remedy": "Excess SIMPLE contributions are outside this tool.",
+          "cite": {
+            "doc": "p560",
+            "locator": "pp. 14–17, chapter 3",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.simple.match_high_comp",
+      "covers": [
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $200,000: compensation $184,700; deferrals $16,500 under age 50 (no catch-up); matching 3% x $184,700 = $5,541 (not more than the $16,500 deferred): line 16 $22,041.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 20000000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].simple_deferral": 1650000,
+        "person[taxpayer].simple_employer": 554100
+      },
+      "expect": {
+        "person[taxpayer].match_max": {
+          "kind": "money",
+          "cents": 554100
+        },
+        "s1.line16": {
+          "kind": "money",
+          "cents": 2204100
+        }
+      }
+    },
+    {
+      "id": "stage14.sep.rate_5",
+      "covers": [
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $500,000, plan rate 5% (reduced rate 0.047619): step 5 $22970.76; step 6 $350,000 x 5% = $17,500; step 7 the smaller, $17,500; step 21 $17,500.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 50000000,
+        "person[taxpayer].plan": "sep",
+        "person[taxpayer].sep_rate": 5,
+        "person[taxpayer].sep_contrib": 1750000
+      },
+      "expect": {
+        "person[taxpayer].sep_s5": {
+          "kind": "money",
+          "cents": 2297076
+        },
+        "person[taxpayer].sep_s7": {
+          "kind": "money",
+          "cents": 1750000
+        },
+        "person[taxpayer].sep_s21": {
+          "kind": "money",
+          "cents": 1750000
+        }
+      }
+    },
+    {
+      "id": "stage14.simple.refuse_over_by_1",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: salary reduction contributions of $16,501 under age 50, $1 over the limit: refused.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 6000000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].simple_deferral": {
+          "param": "ret.simple_limit",
+          "offset": 100
+        }
+      },
+      "expect": {
+        "person[taxpayer].simple_deduction": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].simple_excess",
+          "form": "SIMPLE contributions above the limits",
+          "remedy": "Excess SIMPLE contributions are outside this tool.",
+          "cite": {
+            "doc": "p560",
+            "locator": "pp. 14–17, chapter 3",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.se_railroad",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Predicted from the owner's ruling (T-044, BUG-0076) before recording: a person with a Schedule C who answers yes to the railroad question is refused at Schedule SE, whose line 8a adds railroad retirement (tier 1) compensation; each Schedule SE line the person carries refuses. Inputs are stage14.sep.basic with person.rrta true.",
+      "inputs": {
+        "person[taxpayer].rrta": true,
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line1": 10000000
+      },
+      "expect": {
+        "person[taxpayer].se_line4c": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].se_rrta",
+          "form": "Schedule SE with railroad retirement (tier 1) compensation",
+          "remedy": "Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions.",
+          "cite": {
+            "doc": "f1040sse",
+            "locator": "Schedule SE (2025), line 8a, \"Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation\"",
+            "revision": "2025; created 2025-05-07",
+            "snapshot": "05bc2b3e1dfca65d8c6fc6d652af4fa3736e953c6575d6e9f82590484677d347",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].se_line6": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].se_rrta",
+          "form": "Schedule SE with railroad retirement (tier 1) compensation",
+          "remedy": "Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions.",
+          "cite": {
+            "doc": "f1040sse",
+            "locator": "Schedule SE (2025), line 8a, \"Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation\"",
+            "revision": "2025; created 2025-05-07",
+            "snapshot": "05bc2b3e1dfca65d8c6fc6d652af4fa3736e953c6575d6e9f82590484677d347",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].se_line12": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].se_rrta",
+          "form": "Schedule SE with railroad retirement (tier 1) compensation",
+          "remedy": "Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions.",
+          "cite": {
+            "doc": "f1040sse",
+            "locator": "Schedule SE (2025), line 8a, \"Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation\"",
+            "revision": "2025; created 2025-05-07",
+            "snapshot": "05bc2b3e1dfca65d8c6fc6d652af4fa3736e953c6575d6e9f82590484677d347",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].se_line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].se_rrta",
+          "form": "Schedule SE with railroad retirement (tier 1) compensation",
+          "remedy": "Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions.",
+          "cite": {
+            "doc": "f1040sse",
+            "locator": "Schedule SE (2025), line 8a, \"Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation\"",
+            "revision": "2025; created 2025-05-07",
+            "snapshot": "05bc2b3e1dfca65d8c6fc6d652af4fa3736e953c6575d6e9f82590484677d347",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.plan.refuse_two_businesses",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Predicted from the owner's ruling (T-044, BUG-0078) before recording: a SEP or SIMPLE plan with more than one Schedule C is refused (Pub. 560 p. 7: only the earned income of the business with the plan counts). Inputs are stage14.sep.basic with a second, $30,000 Schedule C and a $20,000 contribution.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm",
+          "shop"
+        ],
+        "person[taxpayer].sc[firm].line1": 10000000,
+        "person[taxpayer].plan": "sep",
+        "person[taxpayer].sep_rate": 25,
+        "person[taxpayer].sc[shop].line1": 3000000
+      },
+      "expect": {
+        "person[taxpayer].sep_deduction": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].plan_screened",
+          "form": "Retirement plan contributions outside this tool (SARSEP, other plan rates, higher SIMPLE limits, more than one plan, a plan with more than one Schedule C, other elective deferrals, Roth contributions, excess contributions)",
+          "remedy": "These retirement contributions are outside this tool.",
+          "cite": {
+            "doc": "p560",
+            "locator": "pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line16": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].plan_screened",
+          "form": "Retirement plan contributions outside this tool (SARSEP, other plan rates, higher SIMPLE limits, more than one plan, a plan with more than one Schedule C, other elective deferrals, Roth contributions, excess contributions)",
+          "remedy": "These retirement contributions are outside this tool.",
+          "cite": {
+            "doc": "p560",
+            "locator": "pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.sep.step1_other_se_income",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0169 regression, predicted from p560 p. 39, Deduction Worksheet for Self-Employed, Step 1 (\"Enter your net profit from Schedule C (Form 1040), line 31; Schedule F (Form 1040), line 34;* or Schedule K-1 (Form 1065),* box 14, code A\") before recording: with SEP contributions and self-employment income not on a Schedule C (screen Yes), Step 1 is refused at the self-employment screen rather than showing the Schedule C profit alone. Mutation-score assertion (T-159: the eic_se_has operand of person.eic_se), predicted before recording: with self-employment income not on a Schedule C (the Schedule SE screen answered Yes), whether this person files Schedule SE, which decides between EIC Worksheet B Part 1 and Part 2 (i1040gi p. 47), is refused at the Schedule SE screen, so the person's Worksheet B self-employment amount is that refusal (gate person[taxpayer].se_screened). Refusal text recorded from the evaluator. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "div.any": true,
+        "sa.gifts": true,
+        "sa.line1": 261900,
+        "sb.ordinary_dividends": 3619400,
+        "person[taxpayer].se_screen": true,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$sc@person[taxpayer]": [
+          "biz_a",
+          "biz_b"
+        ],
+        "person[taxpayer].sc[biz_a].ho_uses": true,
+        "person[taxpayer].sc[biz_a].line16a": 1273500,
+        "person[taxpayer].sc[biz_a].line19": 2183900,
+        "person[taxpayer].sc[biz_a].line22": 1551700,
+        "person[taxpayer].sc[biz_a].line26": 836700,
+        "person[taxpayer].sc[biz_a].ho_sqft": 364,
+        "$scveh@person[taxpayer].sc[biz_a]": [
+          "car_1",
+          "car_2"
+        ],
+        "person[taxpayer].sc[biz_a].scveh[car_1].method": "actual",
+        "person[taxpayer].sc[biz_a].scveh[car_1].owned": true,
+        "person[taxpayer].sc[biz_a].scveh[car_1].miles_business": 5943,
+        "person[taxpayer].sc[biz_a].scveh[car_1].miles_other": 1725,
+        "person[taxpayer].sc[biz_a].scveh[car_1].operating": 157700,
+        "person[taxpayer].sc[biz_a].scveh[car_1].placed": "y2021",
+        "person[taxpayer].sc[biz_a].scveh[car_1].cost": 3820300,
+        "person[taxpayer].sc[biz_a].scveh[car_1].passenger": true,
+        "person[taxpayer].sc[biz_a].scveh[car_1].prior_conv": "mq2",
+        "person[taxpayer].sc[biz_a].scveh[car_2].miles_business": 15655,
+        "person[taxpayer].sc[biz_a].scveh[car_2].smr_ok": true,
+        "$asset@person[taxpayer].sc[biz_a]": [
+          "item_1"
+        ],
+        "person[taxpayer].sc[biz_a].asset[item_1].class": "c48_32",
+        "person[taxpayer].sc[biz_a].asset[item_1].placed": "y2025",
+        "person[taxpayer].sc[biz_a].asset[item_1].cost": 1931500,
+        "person[taxpayer].sc[biz_a].asset[item_1].pct": 100,
+        "person[taxpayer].sc[biz_a].asset[item_1].listed": true,
+        "person[taxpayer].sc[biz_a].asset[item_1].quarter": "q3",
+        "person[taxpayer].sc[biz_a].asset[item_1].after_jan19": true,
+        "person[taxpayer].sc[biz_a].asset[item_1].bonus_same": true,
+        "person[taxpayer].sc[biz_b].line1": 273300,
+        "person[taxpayer].sc[biz_b].line6": 454400,
+        "person[taxpayer].sc[biz_b].line17": 1614000,
+        "person[taxpayer].sc[biz_b].line20b": 1027200,
+        "person[taxpayer].sc[biz_b].meals_100": 1490800,
+        "$scveh@person[taxpayer].sc[biz_b]": [
+          "car_1",
+          "car_2"
+        ],
+        "person[taxpayer].sc[biz_b].scveh[car_1].method": "actual",
+        "person[taxpayer].sc[biz_b].scveh[car_1].owned": true,
+        "person[taxpayer].sc[biz_b].scveh[car_1].miles_business": 29951,
+        "person[taxpayer].sc[biz_b].scveh[car_1].miles_other": 1586,
+        "person[taxpayer].sc[biz_b].scveh[car_1].operating": 378500,
+        "person[taxpayer].sc[biz_b].scveh[car_1].placed": "y2022",
+        "person[taxpayer].sc[biz_b].scveh[car_1].cost": 3750100,
+        "person[taxpayer].sc[biz_b].scveh[car_1].passenger": true,
+        "person[taxpayer].sc[biz_b].scveh[car_1].prior_conv": "mq3",
+        "person[taxpayer].sc[biz_b].scveh[car_2].miles_business": 13197,
+        "person[taxpayer].sc[biz_b].scveh[car_2].parking": 62800,
+        "person[taxpayer].sc[biz_b].scveh[car_2].smr_ok": true,
+        "$asset@person[taxpayer].sc[biz_b]": [
+          "item_1"
+        ],
+        "person[taxpayer].sc[biz_b].asset[item_1].class": "c44_0",
+        "person[taxpayer].sc[biz_b].asset[item_1].placed": "y2025",
+        "person[taxpayer].sc[biz_b].asset[item_1].cost": 3612400,
+        "person[taxpayer].sc[biz_b].asset[item_1].pct": 100,
+        "person[taxpayer].sc[biz_b].asset[item_1].quarter": "q2",
+        "person[taxpayer].sc[biz_b].asset[item_1].s179": 318900,
+        "person[taxpayer].sc[biz_b].asset[item_1].bonus_choice": "none",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 763000,
+        "person[taxpayer].w2[emp_a].box2": 175500,
+        "person[taxpayer].w2[emp_a].box3": 763000,
+        "person[taxpayer].w2[emp_a].box5": 763000,
+        "person[taxpayer].w2[emp_a].box6": 11100,
+        "$interest": [
+          "bank_a"
+        ],
+        "$sales": [
+          "s1",
+          "s2"
+        ],
+        "sales[s1].box": "J",
+        "$dependent": [
+          "dep_a"
+        ],
+        "dependent[dep_a].age": 26,
+        "dependent[dep_a].citizen": false,
+        "dependent[dep_a].supported": true
+      },
+      "expect": {
+        "person[taxpayer].sep_s1": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].se_screened",
+          "form": "SEP Deduction Worksheet Step 1 with self-employment income not on a Schedule C (Schedule F, Schedule K-1 box 14 code A and the other items of the self-employment screen)",
+          "remedy": "These self-employment items are outside this tool.",
+          "cite": {
+            "doc": "p560",
+            "locator": "p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 1, \"Enter your net profit from\"",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].eic_se": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].se_screened",
+          "form": "Schedule SE items outside this tool (church employee income, clergy, Forms 4361 and 4029, partnership and other self-employment income, farm income, optional methods, chapter 11, community income, exempt income, Forms 4137 and 8919)",
+          "remedy": "These self-employment tax items are outside this tool.",
+          "cite": {
+            "doc": "i1040sse",
+            "locator": "pp. 1-5",
+            "revision": "2025",
+            "snapshot": "ea9e3120706f9d5e21ce1c6cbec256b5e2e2bf02c44759773d9236462cf4d800",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.sep.loss_floor",
+      "covers": [
+        "person",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0180, amb.2025.sep_loss_floor. Predicted by hand from the archived p560 p. 39 worksheet before recording: Schedule C loss $5,000 (line 8 advertising $5,000, no receipts), SEP plan rate 10%, contribution $0. Step 1 -$5,000.00; Step 2 $0.00 (Schedule SE line 4c below $400). The printed arithmetic gives Step 3 -$5,000.00 and Steps 5, 7 and 21 -$454.55; under the registered reading Step 3 is floored at zero, so Steps 3, 5, 7 and 21 are $0.00, the zero contribution is not excess, and Schedule 1 line 16 is $0.00.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line8": 500000,
+        "person[taxpayer].plan": "sep",
+        "person[taxpayer].sep_rate": 10
+      },
+      "expect": {
+        "person[taxpayer].sep_s1": {
+          "kind": "money",
+          "cents": -500000
+        },
+        "person[taxpayer].sep_s3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sep_s5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sep_s7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sep_s21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sep_excess": {
+          "kind": "bool",
+          "value": false
+        },
+        "s1.line16": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.mut.simple_deferral_over_compensation",
+      "covers": [
+        "person",
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the simple_regular operand of person.simple_excess), predicted from the archived p560 before evaluating: stage14.simple.refuse_employer (a SIMPLE IRA for the self-employed filer, under 50, matching formula) with Schedule C receipts of $10,000 instead of $60,000, no employer contribution and salary reduction contributions of $10,000. Compensation for the plan is net earnings from self-employment, $10,000 x 92.35% = $9,235 (Schedule SE line 4c); salary reduction contributions are a percentage of compensation (p560 p. 15, \"These contributions must be expressed as a percentage of the employee's compensation\"), so $10,000, within the $16,500 limit but more than $9,235, is an excess: the SIMPLE excess gate is true.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 1000000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].simple_deferral": 1000000
+      },
+      "expect": {
+        "person[taxpayer].simple_excess": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.person.sav_able",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f8880.s2 with ABLE account contributions or distributions answered Yes: the person's Form 8880 line 1 and both prior-year distribution amounts (line 4) are refused, each by its own entry (Pub. 907). The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "person[taxpayer].sav_able": true,
+        "person[taxpayer].sav_roth": 150000,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].sav_line1": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sav_able",
+          "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+          "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool.",
+          "cite": {
+            "doc": "f8880",
+            "locator": "p. 2, What’s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\"",
+            "revision": "2025; created 2025-11-04",
+            "snapshot": "ba2b28770bc82d318ab0b884e56a572771030ce1a3ec80d85bafd2eea3a2778e",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].sav_prior_joint": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sav_able",
+          "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+          "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool.",
+          "cite": {
+            "doc": "f8880",
+            "locator": "p. 2, What’s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\"",
+            "revision": "2025; created 2025-11-04",
+            "snapshot": "ba2b28770bc82d318ab0b884e56a572771030ce1a3ec80d85bafd2eea3a2778e",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].sav_prior_other": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sav_able",
+          "form": "ABLE account contributions or distributions on Form 8880 (Pub. 907)",
+          "remedy": "Contributions to an ABLE account by its designated beneficiary (line 1) and ABLE distributions (line 4) are outside this tool.",
+          "cite": {
+            "doc": "f8880",
+            "locator": "p. 2, What’s New, \"See Pub. 907, Tax Highlights for Persons With Disabilities, for more information about ABLE accounts\"",
+            "revision": "2025; created 2025-11-04",
+            "snapshot": "ba2b28770bc82d318ab0b884e56a572771030ce1a3ec80d85bafd2eea3a2778e",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.person.sav_excess",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f8880.s3 (box 12 code D $3,000) with excess elective deferrals answered Yes: the person's Form 8880 line 2 is refused. The refused value is the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].sav_excess": true,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_d": 300000,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].sav_line2": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sav_excess_gate",
+          "form": "Excess elective deferrals on Form 8880 line 2",
+          "remedy": "Elective deferrals over the limit for the year, and their later distribution, are outside this tool.",
+          "cite": {
+            "doc": "iw2w3",
+            "locator": "p. 20, Box 12—Codes, \"Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500\"",
+            "revision": "2025; printed date 2025-02-19",
+            "snapshot": "bfecbc99720cc8fbedb50f6e698ac1f6fa758dbfa5df775715446b7cc30bae2b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.person.ira_excess",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i9 (single, wages $30,000, not covered by a plan, traditional IRA contribution $5,000), with the excess-or-recharacterized-contributions question answered Yes. Two lines carry this gate on their own: person.ira_line11 (after the joint-return gates, false on a single return) and Form 8880 line 1 (person.sav_line1, first entry); each reads the contribution, an input through the traditional-IRA question, so each line's own entry decides its value; line 20 and Schedule 1 line 20 carry the refusal through line 11. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 500000,
+        "person[taxpayer].ira_excess": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].ira_line11": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_excess_gate",
+          "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
+          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Line 20, \"If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].sav_line1": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_excess_gate",
+          "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
+          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 35, Excess Contributions, \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        },
+        "ira.line20": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_excess_gate",
+          "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
+          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Line 20, \"If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_excess_gate",
+          "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
+          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Line 20, \"If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.person.ira_basis_adjusted",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i3 (single, wages $85,000, covered by a workplace plan, $4,200 nondeductible, so Form 8606 is filed), with the basis-adjustments question (Form 8606 line 2) answered Yes. The person's line 2 amount chooses the basis input when Form 8606 is filed, so its own entry decides its value; Form 8606 lines 2, 3 and 14 carry the same refusal through it, while line 1 stays a number. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8500000,
+        "person[taxpayer].w2[emp_a].box4": 527000,
+        "person[taxpayer].w2[emp_a].box5": 8500000,
+        "person[taxpayer].w2[emp_a].box6": 123250,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 700000,
+        "person[taxpayer].ira_work_plan": true,
+        "person[taxpayer].ira_basis_adjusted": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].ira_8606_line2": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_basis_gate",
+          "form": "Form 8606, line 2 (basis adjustments)",
+          "remedy": "Adjusting the Form 8606 line 2 basis for a Line 15c Worksheet amount, a return of excess contributions, a transfer incident to divorce or a rollover of a nontaxable part of a qualified plan is outside this tool.",
+          "cite": {
+            "doc": "i8606",
+            "locator": "p. 9, Line 2, \"you may need to enter an amount that is more than -0- (even if this is the first year you are required to file Form 8606) or increase or decrease the amount from the chart\"",
+            "revision": "2025",
+            "snapshot": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8606[form].line1": {
+          "kind": "money",
+          "cents": 420000
+        },
+        "person[taxpayer].f8606[form].line2": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_basis_gate",
+          "form": "Form 8606, line 2 (basis adjustments)",
+          "remedy": "Adjusting the Form 8606 line 2 basis for a Line 15c Worksheet amount, a return of excess contributions, a transfer incident to divorce or a rollover of a nontaxable part of a qualified plan is outside this tool.",
+          "cite": {
+            "doc": "i8606",
+            "locator": "p. 9, Line 2, \"you may need to enter an amount that is more than -0- (even if this is the first year you are required to file Form 8606) or increase or decrease the amount from the chart\"",
+            "revision": "2025",
+            "snapshot": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8606[form].line3": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_basis_gate",
+          "form": "Form 8606, line 2 (basis adjustments)",
+          "remedy": "Adjusting the Form 8606 line 2 basis for a Line 15c Worksheet amount, a return of excess contributions, a transfer incident to divorce or a rollover of a nontaxable part of a qualified plan is outside this tool.",
+          "cite": {
+            "doc": "i8606",
+            "locator": "p. 9, Line 2, \"you may need to enter an amount that is more than -0- (even if this is the first year you are required to file Form 8606) or increase or decrease the amount from the chart\"",
+            "revision": "2025",
+            "snapshot": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8606[form].line14": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_basis_gate",
+          "form": "Form 8606, line 2 (basis adjustments)",
+          "remedy": "Adjusting the Form 8606 line 2 basis for a Line 15c Worksheet amount, a return of excess contributions, a transfer incident to divorce or a rollover of a nontaxable part of a qualified plan is outside this tool.",
+          "cite": {
+            "doc": "i8606",
+            "locator": "p. 9, Line 2, \"you may need to enter an amount that is more than -0- (even if this is the first year you are required to file Form 8606) or increase or decrease the amount from the chart\"",
+            "revision": "2025",
+            "snapshot": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.ira.ssb_covered",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i10 (single, wages $20,000, social security benefits $12,000, traditional IRA contribution $3,000, 50 or older), with workplace retirement plan coverage answered Yes, so the gate for social security benefits with an IRA deduction and plan coverage (Pub. 590-A Appendix B) holds. The figured amount is the smaller of the limit-or-compensation amount and line 11, and neither carries this gate (person.ira_line11's gates are false here), so its own entry decides its value; the person's amount for the Social Security Benefits Worksheet carries the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "person[taxpayer].age65": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "ssb.benefits": 1200000,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 300000,
+        "person[taxpayer].ira_age50": true,
+        "person[taxpayer].ira_work_plan": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].ira_ssb_figured": {
+          "kind": "refusal",
+          "gate": "ira.cov_gate",
+          "form": "Social security benefits with an IRA deduction and retirement plan coverage (Pub. 590-A Appendix B)",
+          "remedy": "With social security benefits, traditional IRA contributions for 2025 and you or your spouse covered by a retirement plan, the taxable benefits and the IRA deduction are figured with the worksheets in Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 31, Lines 6a and 6b, Exception",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].ira_ssb": {
+          "kind": "refusal",
+          "gate": "ira.cov_gate",
+          "form": "Social security benefits with an IRA deduction and retirement plan coverage (Pub. 590-A Appendix B)",
+          "remedy": "With social security benefits, traditional IRA contributions for 2025 and you or your spouse covered by a retirement plan, the taxable benefits and the IRA deduction are figured with the worksheets in Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 31, Lines 6a and 6b, Exception",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.cleanup.refuse.rrta_medicare",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage14.refuse.se_railroad as the interview asks them (it stops at the refusal): wage statements report railroad retirement compensation. The person's Medicare wages and Medicare tax withheld (W-2 boxes 5 and 6, read by Form 8959) each carry the railroad refusal entry. The refused values are the evaluator's. Ordinary dividends (box 1a) of $0 answered, with the dividends question answered yes: qualified dividends (line 3a) are asked only when box 1a is above zero, and the recorded $0 assumes it is not.",
+      "inputs": {
+        "div.any": true,
+        "person[taxpayer].rrta": true,
+        "f2441.benefits": null,
+        "sd.distributions": null,
+        "ssb.benefits": null,
+        "sd.other_forms": null,
+        "refund.received": null,
+        "s1.alimony": null,
+        "s1.uc_paid": null,
+        "s1.line8_other": null,
+        "person[taxpayer].sav_trad": null,
+        "person[taxpayer].ira_dist": null,
+        "ira.deduct_less": null,
+        "sli.interest": null,
+        "s1.line8h": null,
+        "sa.dependent": null,
+        "s1a.carloan": null,
+        "s2.amt": null,
+        "sa.excluded_income": null,
+        "f1040.tax_exempt_interest": null,
+        "div.box12": null,
+        "f2441.care": null,
+        "f5695.part2_any": null,
+        "f5695.part1_any": null,
+        "f5695.business_use": null,
+        "f5695.line7a": null,
+        "f5695.line12": null,
+        "f8959.unsupported": null,
+        "s3.line10": null,
+        "f5695.condo": null,
+        "sd.carryover": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].medicare5": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].rrta",
+          "form": "Form 8959 RRTA computation",
+          "remedy": "RRTA compensation is outside the supported wage-only path.",
+          "cite": {
+            "doc": "f8959",
+            "locator": "Form 8959 (2025), lines 1–24; i8959 pp. 1–3",
+            "revision": "2025; created 2025-04-30",
+            "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].medicare6": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].rrta",
+          "form": "Form 8959 RRTA computation",
+          "remedy": "RRTA compensation is outside the supported wage-only path.",
+          "cite": {
+            "doc": "f8959",
+            "locator": "Form 8959 (2025), lines 1–24; i8959 pp. 1–3",
+            "revision": "2025; created 2025-04-30",
+            "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage19.refuse.period_over_person",
+      "covers": [
+        "f8863",
+        "aqee",
+        "person",
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 19 mutation scenario: blind return E1 with $500 of 2026 tax-free assistance that exceeds one academic period's own expenses; i8863 p. 9 completes the worksheet \"for each student for each academic period\", which this tool refuses (D3). Shown state (T-232, predicted from the form before evaluating): an eligible student with line 23 No, so line 24 is reached (f8863 line 23, \"No—Go to line 24\") even though the worksheet's adjustment is refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "f8863.paid": true,
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": true,
+        "person[taxpayer].edu_a2026": 50000,
+        "person[taxpayer].edu_ein": true,
+        "person[taxpayer].edu_line24": true,
+        "person[taxpayer].edu_over": true,
+        "person[taxpayer].w2[emp_a].box1": 8456700,
+        "person[taxpayer].w2[emp_a].box2": 676500,
+        "person[taxpayer].w2[emp_a].box5": 8456700,
+        "person[taxpayer].w2[emp_a].box6": 122622,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].edu_line27": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].edu_over_refused",
+          "form": "Adjusted Qualified Education Expenses Worksheet for more than one academic period",
+          "remedy": "The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.",
+          "cite": {
+            "doc": "i8863",
+            "locator": "p. 9, Adjusted Qualified Education Expenses Worksheet, \"Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025.\"",
+            "revision": "2025",
+            "snapshot": "195cfd5e93892f0db4162c5b8882236c4d27b26e2934ed99493743ceccf9ea29",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].edu_line28": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].edu_over_refused",
+          "form": "Adjusted Qualified Education Expenses Worksheet for more than one academic period",
+          "remedy": "The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.",
+          "cite": {
+            "doc": "i8863",
+            "locator": "p. 9, Adjusted Qualified Education Expenses Worksheet, \"Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025.\"",
+            "revision": "2025",
+            "snapshot": "195cfd5e93892f0db4162c5b8882236c4d27b26e2934ed99493743ceccf9ea29",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].edu_line29": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].edu_over_refused",
+          "form": "Adjusted Qualified Education Expenses Worksheet for more than one academic period",
+          "remedy": "The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.",
+          "cite": {
+            "doc": "i8863",
+            "locator": "p. 9, Adjusted Qualified Education Expenses Worksheet, \"Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025.\"",
+            "revision": "2025",
+            "snapshot": "195cfd5e93892f0db4162c5b8882236c4d27b26e2934ed99493743ceccf9ea29",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].edu_line30": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].edu_over_refused",
+          "form": "Adjusted Qualified Education Expenses Worksheet for more than one academic period",
+          "remedy": "The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.",
+          "cite": {
+            "doc": "i8863",
+            "locator": "p. 9, Adjusted Qualified Education Expenses Worksheet, \"Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025.\"",
+            "revision": "2025",
+            "snapshot": "195cfd5e93892f0db4162c5b8882236c4d27b26e2934ed99493743ceccf9ea29",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].edu_line31": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].edu_over_refused",
+          "form": "Adjusted Qualified Education Expenses Worksheet for more than one academic period",
+          "remedy": "The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.",
+          "cite": {
+            "doc": "i8863",
+            "locator": "p. 9, Adjusted Qualified Education Expenses Worksheet, \"Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025.\"",
+            "revision": "2025",
+            "snapshot": "195cfd5e93892f0db4162c5b8882236c4d27b26e2934ed99493743ceccf9ea29",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].edu_show24": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage19.mut.assistance_2026",
+      "covers": [
+        "f8863",
+        "aqee",
+        "person",
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 19 mutation scenario, predicted by hand: blind return E1 with $500 of tax-free assistance received in 2026 for 2025 expenses (worksheet line 2b): line 27 $3,550 - $500 = $3,050, line 28 $1,050, line 29 $262.50, line 30 $2,262.50, line 7 $2,262.50 x 0.543 = $1,228.54.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "f8863.paid": true,
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": true,
+        "person[taxpayer].edu_a2026": 50000,
+        "person[taxpayer].edu_born_2002": true,
+        "person[taxpayer].edu_born_2007": true,
+        "person[taxpayer].edu_ein": true,
+        "person[taxpayer].edu_inst": 310000,
+        "person[taxpayer].edu_line24": true,
+        "person[taxpayer].edu_mat": 45000,
+        "person[taxpayer].w2[emp_a].box1": 8456700,
+        "person[taxpayer].w2[emp_a].box2": 676500,
+        "person[taxpayer].w2[emp_a].box4": 524315,
+        "person[taxpayer].w2[emp_a].box5": 8456700,
+        "person[taxpayer].w2[emp_a].box6": 122622
+      },
+      "expect": {
+        "person[taxpayer].edu_line27": {
+          "kind": "money",
+          "cents": 305000
+        },
+        "person[taxpayer].edu_line28": {
+          "kind": "money",
+          "cents": 105000
+        },
+        "person[taxpayer].edu_line29": {
+          "kind": "money",
+          "cents": 26250
+        },
+        "person[taxpayer].edu_line30": {
+          "kind": "money",
+          "cents": 226250
+        },
+        "f8863.line7": {
+          "kind": "money",
+          "cents": 122854
+        }
+      }
+    },
+    {
+      "id": "stage19.mut.ira_ssb_copy_limit",
+      "covers": [
+        "person",
+        "ira",
+        "ssb"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation scenario, predicted by hand: stage16.ira.i10 (single, aged 66, wages $20,000, Social Security benefits). The Social Security Benefits Worksheet copy of the IRA deduction limit is the smaller of the applicable amount ($7,000 plus the $1,000 catch-up at 50 or older, $8,000) and IRA Deduction Worksheet line 10 ($20,000 of compensation): $8,000 (i1040gi p. 98, line 12, \"enter the smallest of line 7a, 10, or 11a\").",
+      "inputs": {
+        "person[taxpayer].age65": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "ssb.benefits": 1200000,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 300000,
+        "person[taxpayer].ira_age50": true
+      },
+      "expect": {
+        "person[taxpayer].ira_ssb_lim": {
+          "kind": "money",
+          "cents": 800000
+        }
+      }
+    }
+  ]
+}

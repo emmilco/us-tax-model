@@ -1,0 +1,292 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage4.qbi.below",
+      "walk": "stage4",
+      "covers": [
+        "qbi.below"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "div.any": true,
+        "qbi.dividends": 100000,
+        "sb.ordinary_dividends": 100000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 21204999
+      },
+      "expect": {
+        "qbi.use_8995a": {
+          "kind": "bool",
+          "value": false
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8995.line15": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8995a.line39": {
+          "kind": "money",
+          "cents": 20000
+        }
+      }
+    },
+    {
+      "id": "stage4.qbi.exact",
+      "walk": "stage4",
+      "covers": [
+        "qbi.exact"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "div.any": true,
+        "qbi.dividends": 100000,
+        "sb.ordinary_dividends": 100000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 21205000
+      },
+      "expect": {
+        "qbi.use_8995a": {
+          "kind": "bool",
+          "value": false
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8995.line15": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8995a.line39": {
+          "kind": "money",
+          "cents": 20000
+        }
+      }
+    },
+    {
+      "id": "stage4.qbi.above",
+      "walk": "stage4",
+      "covers": [
+        "qbi.above"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "div.any": true,
+        "qbi.dividends": 100000,
+        "sb.ordinary_dividends": 100000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 21205001
+      },
+      "expect": {
+        "qbi.use_8995a": {
+          "kind": "bool",
+          "value": true
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8995.line15": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8995a.line39": {
+          "kind": "money",
+          "cents": 20000
+        }
+      }
+    },
+    {
+      "id": "stage4.qbi.income_limit",
+      "walk": "stage4",
+      "covers": [
+        "qbi.income_limit"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "div.any": true,
+        "qbi.dividends": 1000000,
+        "sb.ordinary_dividends": 1000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 675000
+      },
+      "expect": {
+        "qbi.taxable_before": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8995.line15": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8995a.line39": {
+          "kind": "money",
+          "cents": 20000
+        }
+      }
+    },
+    {
+      "id": "stage4.qbi.capital_limit",
+      "walk": "stage4",
+      "covers": [
+        "qbi.capital_limit"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "div.any": true,
+        "qbi.dividends": 1000000,
+        "sb.ordinary_dividends": 1000000,
+        "sd.distributions": 100000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 575000
+      },
+      "expect": {
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8995.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8995a.line39": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.qbi",
+      "walk": "stage4",
+      "covers": [
+        "qbi.unsupported"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "qbi.unsupported": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "qbi.deduction": {
+          "kind": "refusal",
+          "gate": "qbi.unsupported",
+          "form": "Forms 8995 / 8995-A business or PTP path",
+          "remedy": "Only section 199A dividend income without loss carryovers is supported.",
+          "cite": {
+            "doc": "f8995",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-09-12",
+            "locator": "Form 8995 (2025), lines 1–17; i8995 pp. 3–4",
+            "snapshot": "55380ad230303e1586ce97f0f224265b8337ad18c9204f0fb7325e95a76b5cde"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.qbi.zero_income",
+      "walk": "stage4",
+      "covers": [
+        "qbi.zero_income"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Explicitly calculated regression expectations; human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000
+      },
+      "expect": {
+        "qbi.taxable_before": {
+          "kind": "money",
+          "cents": 0
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8995.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8995a.line39": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.qbi_8995a",
+      "covers": [
+        "qbi:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $300,000, so taxable income before the deduction is above $197,300: Form 8995-A with business income is refused.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line1": 30000000
+      },
+      "expect": {
+        "qbi.via_8995a": {
+          "kind": "refusal",
+          "gate": "qbi.business_any",
+          "form": "Form 8995-A with qualified business income (taxable income above the threshold)",
+          "remedy": "The qualified business income deduction above the Form 8995 threshold is outside this tool.",
+          "cite": {
+            "doc": "i8995a",
+            "locator": "p. 1, Who Can Take the Deduction",
+            "revision": "2025; printed date 2026-01-26",
+            "snapshot": "6df1301c1ce74ef391219094831accd22cfeac26ce510f4499c4834484f55d97",
+            "tax_year": 2025
+          }
+        }
+      }
+    }
+  ]
+}

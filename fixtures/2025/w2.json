@@ -1,0 +1,195 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage15.refuse.w2.userra",
+      "covers": [
+        "w2:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f8880.s3 with the W-2 answered as showing a box 12 amount with a year after its code (USERRA make-up contributions): the W-2's Form 8880 line 2 amount is refused. The refused value is the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_userra": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].w2[emp_a].sav_listed": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].w2[emp_a].box12_userra",
+          "form": "Form W-2 box 12 make-up contributions for an earlier year (USERRA)",
+          "remedy": "Form 8880 line 2 counts contributions for 2025; box 12 amounts designated for an earlier year are outside this tool.",
+          "cite": {
+            "doc": "iw2w3",
+            "locator": "p. 20, Box 12—Codes, \"for a prior year, you must enter the prior-year contributions separately\"",
+            "revision": "2025; printed date 2025-02-19",
+            "snapshot": "bfecbc99720cc8fbedb50f6e698ac1f6fa758dbfa5df775715446b7cc30bae2b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.w2.code_h",
+      "covers": [
+        "w2:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f8880.s3 with box 12 code H $500 (section 501(c)(18)(D) plan, Schedule 1 line 24f): the W-2's Form 8880 line 2 amount is refused. The refused value is the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_h": 50000,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].w2[emp_a].sav_listed": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].w2[emp_a].code_h",
+          "form": "Section 501(c)(18)(D) plan contributions (Form W-2 box 12, code H; Schedule 1, line 24f)",
+          "remedy": "Contributions to a 501(c)(18)(D) plan are deducted on Schedule 1 and count on Form 8880 line 2; that deduction is outside this tool.",
+          "cite": {
+            "doc": "iw2w3",
+            "locator": "p. 20, Box 12—Codes, \"Code H—Elective deferrals under section 501(c) (18)(D) tax-exempt organization plan. Be sure to include this amount in box 1 as wages. The employee will deduct the amount on their Form 1040 or 1040-SR\"",
+            "revision": "2025; printed date 2025-02-19",
+            "snapshot": "bfecbc99720cc8fbedb50f6e698ac1f6fa758dbfa5df775715446b7cc30bae2b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.w2.g_bad",
+      "covers": [
+        "w2:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f8880.s10 (box 12 code G $1,000, governmental 457(b)) with the elective part entered as $1,500, more than the code G amount: the governmental part is refused. The refused value is the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2800000,
+        "person[taxpayer].w2[emp_a].box4": 173600,
+        "person[taxpayer].w2[emp_a].box5": 2800000,
+        "person[taxpayer].w2[emp_a].box6": 40600,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_g": 100000,
+        "person[taxpayer].w2[emp_a].g_governmental": true,
+        "person[taxpayer].w2[emp_a].g_elective": 150000,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].w2[emp_a].g_gov_part": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].w2[emp_a].g_bad",
+          "form": "Form W-2 box 12, code G",
+          "remedy": "The elective deferrals entered for code G cannot be more than the code G amount in box 12. Check the amounts against your Form W-2 and your plan statement.",
+          "cite": {
+            "doc": "iw2w3",
+            "locator": "p. 20, Box 12—Codes, \"Code G—Elective deferrals and employer contributions (including nonelective deferrals) to any governmental or nongovernmental section 457(b) deferred compensation plan\"",
+            "revision": "2025; printed date 2025-02-19",
+            "snapshot": "bfecbc99720cc8fbedb50f6e698ac1f6fa758dbfa5df775715446b7cc30bae2b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.w2.box10_bad",
+      "covers": [
+        "w2:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f2441.s4 (box 10 $5,000) with $6,000 entered as the part of box 10 included in box 1, more than box 10: the W-2's dependent care benefits are refused. The refused value is the evaluator's. Mutation-score assertion (T-159): the taxpayer's Form W-2 shows $5,000 in box 10.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$dependent": [
+          "a"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "f2441.care": true,
+        "f2441.benefits": true,
+        "dependent[a].age": 5,
+        "dependent[a].months": 12,
+        "$dcprov": [
+          "p0"
+        ],
+        "dcprov[p0].paid": 600000,
+        "person[taxpayer].w2[emp_a].box10": 500000,
+        "person[taxpayer].w2[emp_a].box10_wages": 600000,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].w2[emp_a].dc_net": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].w2[emp_a].box10_bad",
+          "form": "Form W-2 box 10 amounts",
+          "remedy": "The part of box 10 reported as wages in box 1 cannot be more than box 10. Check the amounts with your employer.",
+          "cite": {
+            "doc": "i2441",
+            "locator": "p. 5, Line 12, \"don’t include amounts reported in box 10 that exceed your plan's exclusion and are therefore reported as wages in box 1 of Form(s) W-2\"",
+            "revision": "2025",
+            "snapshot": "86f0669e78b1dc00bfb99e956673d4fccee9e40d6c44d53623dd08e62567fd39",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].dc_has_box10": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage15.mut.w2_g_elective_no_code_g",
+      "covers": [
+        "w2"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the g_governmental operand of w2.g_bad), predicted before evaluating: stage15.refuse.w2.g_bad (governmental 457(b), elective part $1,500) with box 12 code G entered as $0. The elective part of the code G amount is still more than the code G amount, so the inconsistency gate is true as for that case (the elective deferrals are part of the box 12 code G amount, f1040 W-2 instructions for box 12 code G).",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2800000,
+        "person[taxpayer].w2[emp_a].box4": 173600,
+        "person[taxpayer].w2[emp_a].box5": 2800000,
+        "person[taxpayer].w2[emp_a].box6": 40600,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].g_governmental": true,
+        "person[taxpayer].w2[emp_a].g_elective": 150000
+      },
+      "expect": {
+        "person[taxpayer].w2[emp_a].g_bad": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    }
+  ]
+}

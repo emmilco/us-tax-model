@@ -1,0 +1,1111 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage11.uc.repaid",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: As uc.basic, but $1,000 of a 2025 overpayment repaid in 2025: line 7 $4,000, the line 7 box checked with $1,000 beside it (p. 89).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "s1.uc_paid": 500000,
+        "s1.uc_repaid": 100000
+      },
+      "expect": {
+        "s1.line7": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s1.line7_box": {
+          "kind": "bool",
+          "value": true
+        },
+        "s1.line7_repaid": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 400000
+        }
+      }
+    },
+    {
+      "id": "stage11.educator.under",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible educator, qualified expenses $200: line 11 $200.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "person[taxpayer].educator_expenses": 20000,
+        "person[taxpayer].eligible_educator": true
+      },
+      "expect": {
+        "s1.line11": {
+          "kind": "money",
+          "cents": 20000
+        }
+      }
+    },
+    {
+      "id": "stage11.refuse.sli_pub970",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Interest $1,200 with Form 2555: use Pub. 970 instead of the worksheet, refused (p. 98, Exception).",
+      "inputs": {
+        "sa.excluded_income": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "sli.interest": 120000,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1.line21": {
+          "kind": "refusal",
+          "gate": "sa.excluded_income",
+          "form": "Pub. 970 (student loan interest with Form 2555 or 4563, or excluded Puerto Rico income)",
+          "remedy": "Use Pub. 970 instead of the worksheet; it is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 98, Schedule 1, line 21, Exception",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage13.educator_one_eligible",
+      "covers": [
+        "s1",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: you are an eligible educator with $250 of expenses; your spouse paid $500 but is not an eligible educator: line 11 $250.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "person[taxpayer].educator_expenses": 25000,
+        "person[taxpayer].eligible_educator": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "person[spouse].educator_expenses": 50000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500
+      },
+      "expect": {
+        "s1.line11": {
+          "kind": "money",
+          "cents": 25000
+        }
+      }
+    },
+    {
+      "id": "stage13.refuse.hsa_over_allocated",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: agreed parts of $8,550 and $1,000 add to more than the $8,550 Step 1 limit: refused at line 6 (the spouses form is reached first). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[taxpayer].f8889[hsa].allocation": "agreed",
+        "person[taxpayer].f8889[hsa].allocated": 855000,
+        "person[spouse].f8889[hsa].line2": 100000,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].months_family": 12,
+        "person[spouse].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].allocation": "agreed",
+        "person[spouse].f8889[hsa].allocated": 100000,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[spouse].f8889[hsa].allocation_bad",
+          "form": "Form 8889 line 6 for spouses with separate HSAs",
+          "remedy": "Count the months treated as family coverage the same way for both spouses (if either had family coverage while both were eligible, both are treated as having it), use the same allocation method on both Forms 8889, and allocate no more than the Step 1 limit between you. An agreed allocation between spouses whose Step 1 limits differ is outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 4, Line 3, rule 1; p. 7, Line 6, Steps 1 to 3",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage13.refuse.hsa_two_forms",
+      "covers": [
+        "person",
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: two Forms 8889 entered for you: one per person, combining your own HSAs; separate forms are for an inherited HSA, outside this tool (i8889 p. 3): refused at Schedule 1 line 13. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa",
+          "inherited"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].hsa_repeated",
+          "form": "More than one Form 8889 for one person",
+          "remedy": "Enter one Form 8889 per person, combining all of that person's own HSAs on it. A separate Form 8889 for each HSA (with a controlling Form 8889) is required only for an inherited HSA, which is outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 3, \"If, during the tax year, you are the beneficiary of two or more HSAs or you are a beneficiary of an HSA and you have your own HSA, you must complete a separate Form 8889 for each HSA\"",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage13.refuse.hsa_mixed_methods",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: you divide the family limit equally and your spouse enters an agreed allocation: both Forms 8889 must use the allocation you both agree on, so line 6 is refused (the spouses form is reached first). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].line2": 427500,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].months_family": 12,
+        "person[spouse].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].allocation": "agreed",
+        "s179.line10": null
+      },
+      "expect": {
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[spouse].f8889[hsa].allocation_bad",
+          "form": "Form 8889 line 6 for spouses with separate HSAs",
+          "remedy": "Count the months treated as family coverage the same way for both spouses (if either had family coverage while both were eligible, both are treated as having it), use the same allocation method on both Forms 8889, and allocate no more than the Step 1 limit between you. An agreed allocation between spouses whose Step 1 limits differ is outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 4, Line 3, rule 1; p. 7, Line 6, Steps 1 to 3",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.excess_business_loss",
+      "covers": [
+        "s1:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C loss of $400,000, more than the $313,000 threshold for a single filer: Schedule 1 line 3 refuses with Form 461. Schedule 1 line 10 refuses with it.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "job"
+        ],
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].w2[job].box1": 3000000,
+        "person[taxpayer].w2[job].box3": 3000000,
+        "person[taxpayer].w2[job].box5": 3000000,
+        "person[taxpayer].w2[job].box6": 43500,
+        "person[taxpayer].sc[b].line18": 40000000
+      },
+      "expect": {
+        "s1.line3": {
+          "kind": "refusal",
+          "gate": "s1.ebl",
+          "form": "Form 461 (Limitation on Business Losses)",
+          "remedy": "A Schedule C loss above the excess business loss threshold is outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "p. 1, Reminders, Excess business loss limitation; rp-2024-40 section 3.32",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        },
+        "s1.line10": {
+          "kind": "refusal",
+          "gate": "s1.ebl",
+          "form": "Form 461 (Limitation on Business Losses)",
+          "remedy": "A Schedule C loss above the excess business loss threshold is outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "p. 1, Reminders, Excess business loss limitation; rp-2024-40 section 3.32",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.sep.at_max",
+      "covers": [
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $100,000, plan rate 10% (reduced rate 0.090909): step 3 $92,935.22, step 5 $8448.65; a contribution exactly equal to the maximum is deductible in full.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 10000000,
+        "person[taxpayer].plan": "sep",
+        "person[taxpayer].sep_rate": 10,
+        "person[taxpayer].sep_contrib": 844865
+      },
+      "expect": {
+        "s1.line16": {
+          "kind": "money",
+          "cents": 844865
+        }
+      }
+    },
+    {
+      "id": "stage14.simple.at_limit",
+      "covers": [
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: salary reduction contributions of exactly $16,500 under age 50: within the limit; line 16 $16,500.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 6000000,
+        "person[taxpayer].plan": "simple",
+        "person[taxpayer].simple_deferral": {
+          "param": "ret.simple_limit",
+          "offset": 0
+        }
+      },
+      "expect": {
+        "s1.line16": {
+          "kind": "money",
+          "cents": 1650000
+        }
+      }
+    },
+    {
+      "id": "stage14.ebl.over_by_1_cent",
+      "covers": [
+        "s1:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C loss of $313,000.01, 1 cent over the single threshold: Schedule 1 line 3 refuses with Form 461, and so does line 10.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "job"
+        ],
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].w2[job].box1": 3000000,
+        "person[taxpayer].w2[job].box3": 3000000,
+        "person[taxpayer].w2[job].box5": 3000000,
+        "person[taxpayer].w2[job].box6": 43500,
+        "person[taxpayer].sc[b].line18": {
+          "param": "s1.ebl_threshold",
+          "status": "single",
+          "offset": 1
+        }
+      },
+      "expect": {
+        "s1.line3": {
+          "kind": "refusal",
+          "gate": "s1.ebl",
+          "form": "Form 461 (Limitation on Business Losses)",
+          "remedy": "A Schedule C loss above the excess business loss threshold is outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "p. 1, Reminders, Excess business loss limitation; rp-2024-40 section 3.32",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        },
+        "s1.line10": {
+          "kind": "refusal",
+          "gate": "s1.ebl",
+          "form": "Form 461 (Limitation on Business Losses)",
+          "remedy": "A Schedule C loss above the excess business loss threshold is outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "p. 1, Reminders, Excess business loss limitation; rp-2024-40 section 3.32",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.small.s1",
+      "covers": [
+        "s1",
+        "interest",
+        "f8889",
+        "person",
+        "s2",
+        "f8959",
+        "f8960",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $40,000. Taxable interest $300 from a bank, with an early withdrawal penalty of $75 (Form 1099-INT box 2). Working (predictor A): 1040 line 1z 40,000; line 2b 300; line 9 = 40,300. Sch 1 line 18 penalty on early withdrawal of savings = 1099-INT box 2 = 75 (i1040gi Sch 1 line 18); Sch 1 line 26 = 75 -> 1040 line 10. Line 11(a) = 40,300 - 75 = 40,225. Std deduction single 15,750 (f1040 margin). Line 15 = 24,475. Tax Table row 24,450-24,500 single = 2,699. No Sch 2 -> line 17 0, line 18 = 2,699; line 23 = 0.",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "interest[bank_a].amount": 30000,
+        "interest[bank_a].penalty": 7500
+      },
+      "expect": {
+        "s1.line18": {
+          "kind": "money",
+          "cents": 7500
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 7500
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 7500
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4022500
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2447500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 269900
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 269900
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.s1.gambling_business",
+      "covers": [
+        "s1:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.other.o1 (gambling winnings $5,000), with the professional-gambler question answered Yes (Schedule C). Line 8b copies the winnings, an input, so its own entry decides its value; line 9 and the lines after it carry the same refusal through line 8b. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1.gambling_winnings": 500000,
+        "s1.gambling_pro": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1.line8b": {
+          "kind": "refusal",
+          "gate": "s1.gambling_business",
+          "form": "Schedule C (gambling as a trade or business)",
+          "remedy": "Gambling as a trade or business is reported on Schedule C, with losses and expenses limited to the winnings; this tool does not compute it.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 33, Gambling winnings, \"For tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "s1.line9": {
+          "kind": "refusal",
+          "gate": "s1.gambling_business",
+          "form": "Schedule C (gambling as a trade or business)",
+          "remedy": "Gambling as a trade or business is reported on Schedule C, with losses and expenses limited to the winnings; this tool does not compute it.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 33, Gambling winnings, \"For tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "s1.line10": {
+          "kind": "refusal",
+          "gate": "s1.gambling_business",
+          "form": "Schedule C (gambling as a trade or business)",
+          "remedy": "Gambling as a trade or business is reported on Schedule C, with losses and expenses limited to the winnings; this tool does not compute it.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 33, Gambling winnings, \"For tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line8": {
+          "kind": "refusal",
+          "gate": "s1.gambling_business",
+          "form": "Schedule C (gambling as a trade or business)",
+          "remedy": "Gambling as a trade or business is reported on Schedule C, with losses and expenses limited to the winnings; this tool does not compute it.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 33, Gambling winnings, \"For tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.s1.line8_other",
+      "covers": [
+        "s1:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.other.o1 (gambling winnings $5,000), with the question on other line 8 income this tool does not compute answered Yes. No line 8 entry (8b to 8z) carries this gate, so their sum is a number and line 9's own entry decides its value; line 10 and Form 1040 line 8 carry the same refusal through line 9. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1.line8_other": true,
+        "s1.gambling_winnings": 500000,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1.line8b": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1.line9": {
+          "kind": "refusal",
+          "gate": "s1.line8_other",
+          "form": "Schedule 1, line 8 (other income this tool does not compute)",
+          "remedy": "Other income on Schedule 1 line 8 other than gambling winnings, canceled debt, income from Form 8889, Alaska Permanent Fund dividends, jury duty pay, prizes and awards, income from an activity not engaged in for profit, scholarship and fellowship grants not on Form W-2 and the supported line 8z items is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "pp. 91–92, Lines 8a Through 8z",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line10": {
+          "kind": "refusal",
+          "gate": "s1.line8_other",
+          "form": "Schedule 1, line 8 (other income this tool does not compute)",
+          "remedy": "Other income on Schedule 1 line 8 other than gambling winnings, canceled debt, income from Form 8889, Alaska Permanent Fund dividends, jury duty pay, prizes and awards, income from an activity not engaged in for profit, scholarship and fellowship grants not on Form W-2 and the supported line 8z items is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "pp. 91–92, Lines 8a Through 8z",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line8": {
+          "kind": "refusal",
+          "gate": "s1.line8_other",
+          "form": "Schedule 1, line 8 (other income this tool does not compute)",
+          "remedy": "Other income on Schedule 1 line 8 other than gambling winnings, canceled debt, income from Form 8889, Alaska Permanent Fund dividends, jury duty pay, prizes and awards, income from an activity not engaged in for profit, scholarship and fellowship grants not on Form W-2 and the supported line 8z items is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "pp. 91–92, Lines 8a Through 8z",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.s1.jury_over",
+      "covers": [
+        "s1:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.other.o5 (jury duty pay $300, all of it given to the employer), with the amount given to the employer changed to $400, more than the $300 of jury duty pay on line 8h. Line 24a copies that input, so its own entry decides its value; lines 25 and 26 carry the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "s1.line8h": 30000,
+        "s1.jury_to_employer": 40000,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1.line8h": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "s1.line24a": {
+          "kind": "refusal",
+          "gate": "s1.jury_over",
+          "form": "Schedule 1, line 24a (more than the jury duty pay received)",
+          "remedy": "The jury duty pay given to your employer cannot be more than the jury duty pay reported on line 8h; correct the two amounts.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line25": {
+          "kind": "refusal",
+          "gate": "s1.jury_over",
+          "form": "Schedule 1, line 24a (more than the jury duty pay received)",
+          "remedy": "The jury duty pay given to your employer cannot be more than the jury duty pay reported on line 8h; correct the two amounts.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line26": {
+          "kind": "refusal",
+          "gate": "s1.jury_over",
+          "form": "Schedule 1, line 24a (more than the jury duty pay received)",
+          "remedy": "The jury duty pay given to your employer cannot be more than the jury duty pay reported on line 8h; correct the two amounts.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "s1.jury_over",
+          "form": "Schedule 1, line 24a (more than the jury duty pay received)",
+          "remedy": "The jury duty pay given to your employer cannot be more than the jury duty pay reported on line 8h; correct the two amounts.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.s1.cod_unsupported",
+      "covers": [
+        "s1:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.small.s7 (canceled debt $5,000), with the canceled-debt exceptions question (Form 982, Pub. 4681 exceptions, business or farm debt, foreclosure or repossession) answered Yes. The refused line copies the amount, an input, so its own entry decides its value; line 8c and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "s1.cod_amount": 500000,
+        "s1.cod_unsupported": true,
+        "s1.cod_any": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1.cod_refused": {
+          "kind": "refusal",
+          "gate": "s1.cod_unsupported",
+          "form": "Form 982, Pub. 4681 exceptions, business or farm debt, foreclosures and repossessions",
+          "remedy": "Canceled debt that is excluded from income or excepted, business, rental or farm debt, debt canceled in a foreclosure, repossession or abandonment, deductible interest, nonrecourse debt and debt owed jointly with another person are outside this tool; only fully taxable canceled nonbusiness debt is computed.",
+          "cite": {
+            "doc": "p4681",
+            "locator": "p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions",
+            "revision": "2025",
+            "snapshot": "d87305a0e1817a7f7e7a06bde669586ef76c763878c674196542b624ad5958e7",
+            "tax_year": 2025
+          }
+        },
+        "s1.line8c": {
+          "kind": "refusal",
+          "gate": "s1.cod_unsupported",
+          "form": "Form 982, Pub. 4681 exceptions, business or farm debt, foreclosures and repossessions",
+          "remedy": "Canceled debt that is excluded from income or excepted, business, rental or farm debt, debt canceled in a foreclosure, repossession or abandonment, deductible interest, nonrecourse debt and debt owed jointly with another person are outside this tool; only fully taxable canceled nonbusiness debt is computed.",
+          "cite": {
+            "doc": "p4681",
+            "locator": "p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions",
+            "revision": "2025",
+            "snapshot": "d87305a0e1817a7f7e7a06bde669586ef76c763878c674196542b624ad5958e7",
+            "tax_year": 2025
+          }
+        },
+        "s1.line9": {
+          "kind": "refusal",
+          "gate": "s1.cod_unsupported",
+          "form": "Form 982, Pub. 4681 exceptions, business or farm debt, foreclosures and repossessions",
+          "remedy": "Canceled debt that is excluded from income or excepted, business, rental or farm debt, debt canceled in a foreclosure, repossession or abandonment, deductible interest, nonrecourse debt and debt owed jointly with another person are outside this tool; only fully taxable canceled nonbusiness debt is computed.",
+          "cite": {
+            "doc": "p4681",
+            "locator": "p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions",
+            "revision": "2025",
+            "snapshot": "d87305a0e1817a7f7e7a06bde669586ef76c763878c674196542b624ad5958e7",
+            "tax_year": 2025
+          }
+        },
+        "s1.line10": {
+          "kind": "refusal",
+          "gate": "s1.cod_unsupported",
+          "form": "Form 982, Pub. 4681 exceptions, business or farm debt, foreclosures and repossessions",
+          "remedy": "Canceled debt that is excluded from income or excepted, business, rental or farm debt, debt canceled in a foreclosure, repossession or abandonment, deductible interest, nonrecourse debt and debt owed jointly with another person are outside this tool; only fully taxable canceled nonbusiness debt is computed.",
+          "cite": {
+            "doc": "p4681",
+            "locator": "p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions",
+            "revision": "2025",
+            "snapshot": "d87305a0e1817a7f7e7a06bde669586ef76c763878c674196542b624ad5958e7",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line8": {
+          "kind": "refusal",
+          "gate": "s1.cod_unsupported",
+          "form": "Form 982, Pub. 4681 exceptions, business or farm debt, foreclosures and repossessions",
+          "remedy": "Canceled debt that is excluded from income or excepted, business, rental or farm debt, debt canceled in a foreclosure, repossession or abandonment, deductible interest, nonrecourse debt and debt owed jointly with another person are outside this tool; only fully taxable canceled nonbusiness debt is computed.",
+          "cite": {
+            "doc": "p4681",
+            "locator": "p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions",
+            "revision": "2025",
+            "snapshot": "d87305a0e1817a7f7e7a06bde669586ef76c763878c674196542b624ad5958e7",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.s1.alimony_received",
+      "covers": [
+        "s1:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.small.s2 (alimony received $12,000), with the alimony exceptions question (more than one agreement, recapture, or payments partly child support) answered Yes. The refused line copies the amount received, an input, so its own entry decides its value; line 2a and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "s1.alimony": true,
+        "s1.alimony_unsupported": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1.alimony_refused": {
+          "kind": "refusal",
+          "gate": "s1.alimony_unsupported",
+          "form": "Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504)",
+          "remedy": "Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.",
+          "cite": {
+            "doc": "p504",
+            "locator": "p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony",
+            "revision": "2025",
+            "snapshot": "61bb4d52fa8c218dd9e6eac95513f16ffc5aa602df6b2f9af88369fbc295b175",
+            "tax_year": 2025
+          }
+        },
+        "s1.line2a": {
+          "kind": "refusal",
+          "gate": "s1.alimony_unsupported",
+          "form": "Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504)",
+          "remedy": "Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.",
+          "cite": {
+            "doc": "p504",
+            "locator": "p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony",
+            "revision": "2025",
+            "snapshot": "61bb4d52fa8c218dd9e6eac95513f16ffc5aa602df6b2f9af88369fbc295b175",
+            "tax_year": 2025
+          }
+        },
+        "s1.line10": {
+          "kind": "refusal",
+          "gate": "s1.alimony_unsupported",
+          "form": "Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504)",
+          "remedy": "Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.",
+          "cite": {
+            "doc": "p504",
+            "locator": "p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony",
+            "revision": "2025",
+            "snapshot": "61bb4d52fa8c218dd9e6eac95513f16ffc5aa602df6b2f9af88369fbc295b175",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line8": {
+          "kind": "refusal",
+          "gate": "s1.alimony_unsupported",
+          "form": "Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504)",
+          "remedy": "Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.",
+          "cite": {
+            "doc": "p504",
+            "locator": "p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony",
+            "revision": "2025",
+            "snapshot": "61bb4d52fa8c218dd9e6eac95513f16ffc5aa602df6b2f9af88369fbc295b175",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.s1.alimony_paid",
+      "covers": [
+        "s1:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.small.s3 (alimony paid $18,000), with the alimony exceptions question answered Yes. The refused line copies the amount paid, an input, so its own entry decides its value; line 19a and the lines after it carry the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1.alimony": true,
+        "s1.alimony_unsupported": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1.paid_refused": {
+          "kind": "refusal",
+          "gate": "s1.alimony_unsupported",
+          "form": "Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504)",
+          "remedy": "Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.",
+          "cite": {
+            "doc": "p504",
+            "locator": "p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony",
+            "revision": "2025",
+            "snapshot": "61bb4d52fa8c218dd9e6eac95513f16ffc5aa602df6b2f9af88369fbc295b175",
+            "tax_year": 2025
+          }
+        },
+        "s1.line19a": {
+          "kind": "refusal",
+          "gate": "s1.alimony_unsupported",
+          "form": "Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504)",
+          "remedy": "Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.",
+          "cite": {
+            "doc": "p504",
+            "locator": "p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony",
+            "revision": "2025",
+            "snapshot": "61bb4d52fa8c218dd9e6eac95513f16ffc5aa602df6b2f9af88369fbc295b175",
+            "tax_year": 2025
+          }
+        },
+        "s1.line26": {
+          "kind": "refusal",
+          "gate": "s1.alimony_unsupported",
+          "form": "Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504)",
+          "remedy": "Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.",
+          "cite": {
+            "doc": "p504",
+            "locator": "p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony",
+            "revision": "2025",
+            "snapshot": "61bb4d52fa8c218dd9e6eac95513f16ffc5aa602df6b2f9af88369fbc295b175",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "s1.alimony_unsupported",
+          "form": "Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504)",
+          "remedy": "Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.",
+          "cite": {
+            "doc": "p504",
+            "locator": "p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony",
+            "revision": "2025",
+            "snapshot": "61bb4d52fa8c218dd9e6eac95513f16ffc5aa602df6b2f9af88369fbc295b175",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.mut.alimony_paid",
+      "covers": [
+        "stage16:mutation"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "SC-03 of the Stage 16 mutation scenarios. Single, aged 40. Wages $60,000. Paid $6,000 of alimony in 2025 to a former spouse under a divorce decree signed in 2016 and never modified. All of it is alimony: one agreement, one recipient, no child support, no recapture. Received no alimony. No IRA contributions. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1.alimony": true,
+        "s1.alimony_paid": 600000
+      },
+      "expect": {
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5400000
+        },
+        "s1.line19a": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1.line19b_notice": {
+          "kind": "bool",
+          "value": true
+        },
+        "s1.line19c_notice": {
+          "kind": "bool",
+          "value": true
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line2b_notice": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage16.regress.s1.cod_yes_zero",
+      "covers": [
+        "s1:line8c"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage16.small.s7 (single; $5,000 of fully taxable canceled nonbusiness debt, the only Schedule 1 income) with Yes to the question whether any debt was canceled and an amount of $0; the exceptions question is not asked for a zero amount and is left out, as the interview leaves it. Line 8c is the amount, $0, and lines 9 and 10 add nothing else (i1040gi p. 91, Line 8c; Schedule 1 lines 9 and 10).",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "s1.cod_any": true
+      },
+      "expect": {
+        "s1.line8c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.regress.s1.cod_no",
+      "covers": [
+        "s1:line8c"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage16.small.s7 (single; $5,000 of fully taxable canceled nonbusiness debt, the only Schedule 1 income) with No to the question whether any debt was canceled; the amount and the exceptions question are not asked after a No and are left out, as the interview leaves them. Line 8c is $0 and lines 9 and 10 add nothing else (Schedule 1 lines 8c, 9 and 10).",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "s1.cod_amount": null
+      },
+      "expect": {
+        "s1.line8c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    }
+  ]
+}

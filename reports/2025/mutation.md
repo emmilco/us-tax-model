@@ -9,7 +9,7 @@ the fixture test compares).
 | --- | --- |
 | Mutants | 5344 |
 | Killed by the checker | 1173 |
-| Killed by fixtures | 3882 (38 only by class M cases) |
+| Killed by fixtures | 3882 (36 only by class M cases) |
 | Surviving | 289 (281 provably equivalent on every input; 8 equivalent on answered inputs only) |
 | Mutation score (raw) | 94.6% |
 | Mutation score (mutants provably equivalent on every input excluded) | 99.8% |
@@ -38,7 +38,6 @@ keep it (or a stage fixture with the same facts and source-predicted values) amo
 | operand.household.household.ctc_ssn.id_count.all.1.eq.0 | replace an operand | household.household.ctc_ssn | classm.s3.4.deepseek |
 | boundary.s1.s1.has_jury_pay | replace strict greater-than with inclusive | s1.s1.has_jury_pay | classm.s8812.1.deepseek |
 | operand.s3.s3.line15.line9 | replace an operand | s3.s3.line15 | classm.s3.2.deepseek |
-| operand.sales.sales.wash_over.b | replace an operand | sales.sales.wash_over | classm.f1040.6.deepseek |
 | operand.sales.sales.wash_bad.wash_loss.all.1.gt.0 | replace an operand | sales.sales.wash_bad | classm.g28.2.deepseek |
 | operand.sc.sc.f7206_line7.zero.then1 | replace an operand | sc.sc.f7206_line7 | classm.sc.1 |
 | operand.scveh.scveh.line9.line9_actual.then1 | replace an operand | scveh.scveh.line9 | classm.f8960.2.deepseek |
@@ -58,7 +57,6 @@ keep it (or a stage fixture with the same facts and source-predicted values) amo
 | operand.ssb.ssb.line10.adjust_single.then3 | replace an operand | ssb.ssb.line10 | classm.ssb.4 |
 | operand.ssb.ssb.line10.adjust_single.then4 | replace an operand | ssb.ssb.line10 | classm.ssb.6 |
 | boundary.w2.w2.has_box10 | replace strict greater-than with inclusive | w2.w2.has_box10 | classm.f2441.2.deepseek |
-| operand.w2.w2.has_box10.box10.gt.0 | replace an operand | w2.w2.has_box10 | classm.f2441.1.deepseek |
 | boundary.w2.w2.box10_bad | replace strict greater-than with inclusive | w2.w2.box10_bad | classm.w2.1.deepseek |
 
 ## Surviving — equivalent on answered inputs only

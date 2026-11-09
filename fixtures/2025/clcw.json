@@ -1,0 +1,1839 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "sales.carryover.short_term",
+      "walk": "sales",
+      "covers": [
+        "sd.carryover",
+        "clcw",
+        "clcw26"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20, predicted by hand from i1040sd p. 10 before recording. 2024: Form 1040 line 11 $50,000, line 14 $15,000; Schedule D line 7 -$10,000, line 15 $0, line 21 -$3,000. Worksheet: line 1 $35,000, line 2 $3,000, line 3 $38,000, line 4 $3,000, line 5 $10,000, line 6 $0, line 7 $3,000, line 8 $7,000; line 15 is not a loss, so lines 9 to 13 are skipped and line 13 is $0. 2025: a $4,000 short-term gain; Schedule D line 6 -$7,000, line 7 -$3,000, line 16 -$3,000, line 21 -$3,000 (the limit), Form 1040 line 7a -$3,000. Carryover to 2026: 2025 line 1 is negative and line 3 $0, so line 8 is the whole $3,000 net short-term loss.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 200000,
+        "clcw.prior_11": 5000000,
+        "clcw.prior_14": 1500000,
+        "clcw.prior_sd7": -1000000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw.line1": {
+          "kind": "money",
+          "cents": 3500000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 3800000
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line7": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "clcw.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": -700000
+        },
+        "sd.line7": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "sd.line14": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line21": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "sd.filed": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage20.blind.r1",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "sd"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20, short-term carryover only: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 20 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 400000,
+        "clcw.prior_11": 5500000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": -800000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "clcw.line1": {
+          "kind": "money",
+          "cents": 4040000
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 4340000
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "clcw.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line7": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5700000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 4125000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 471500
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 5700000
+        },
+        "sd.line16": {
+          "kind": "money",
+          "cents": -400000
+        },
+        "sd.line21": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": -500000
+        },
+        "sd.line7": {
+          "kind": "money",
+          "cents": -400000
+        }
+      }
+    },
+    {
+      "id": "stage20.blind.r2",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "sd"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20, long-term carryover only: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 25 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "sales[a].box": "D",
+        "sales[a].proceeds": 1250000,
+        "sales[a].reported_basis": 1000000,
+        "clcw.prior_11": 7000000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd15": -1200000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 350000
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line1": {
+          "kind": "money",
+          "cents": 5540000
+        },
+        "clcw.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line11": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line12": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line13": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 5840000
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line9": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 7700000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 6125000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 839500
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 7700000
+        },
+        "sd.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line14": {
+          "kind": "money",
+          "cents": -900000
+        },
+        "sd.line15": {
+          "kind": "money",
+          "cents": -650000
+        },
+        "sd.line16": {
+          "kind": "money",
+          "cents": -650000
+        },
+        "sd.line21": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage20.blind.r3",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "sd"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20, both terms, 2024 taxable income negative: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 28 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
+      "inputs": {
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 900000,
+        "person[taxpayer].w2[emp_a].box4": 55800,
+        "person[taxpayer].w2[emp_a].box5": 900000,
+        "person[taxpayer].w2[emp_a].box6": 13050,
+        "clcw.prior_11": 400000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": -200000,
+        "clcw.prior_sd15": -500000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw.line1": {
+          "kind": "money",
+          "cents": -1060000
+        },
+        "clcw.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line13": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw.line9": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line14": {
+          "kind": "money",
+          "cents": -500000
+        },
+        "sd.line15": {
+          "kind": "money",
+          "cents": -500000
+        },
+        "sd.line16": {
+          "kind": "money",
+          "cents": -700000
+        },
+        "sd.line21": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sd.line7": {
+          "kind": "money",
+          "cents": -200000
+        }
+      }
+    },
+    {
+      "id": "stage20.blind.r4",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "sd"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20, 2024 taxable income slightly negative (line 3 below line 2): blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 20 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
+      "inputs": {
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "clcw.prior_11": 1360000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": -600000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "clcw.line1": {
+          "kind": "money",
+          "cents": -100000
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "clcw.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 125000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 12600
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "sd.line16": {
+          "kind": "money",
+          "cents": -400000
+        },
+        "sd.line21": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": -400000
+        },
+        "sd.line7": {
+          "kind": "money",
+          "cents": -400000
+        }
+      }
+    },
+    {
+      "id": "stage20.blind.r5",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "sd"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20, 2024 short-term loss with a long-term gain: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 23 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 9000000,
+        "person[taxpayer].w2[emp_a].box4": 558000,
+        "person[taxpayer].w2[emp_a].box5": 9000000,
+        "person[taxpayer].w2[emp_a].box6": 130500,
+        "sales[a].box": "D",
+        "sales[a].proceeds": 1600000,
+        "sales[a].reported_basis": 1000000,
+        "clcw.prior_11": 9000000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": -1000000,
+        "clcw.prior_sd15": 300000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line1": {
+          "kind": "money",
+          "cents": 7540000
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 7840000
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "clcw.line6": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line7": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 9200000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 7625000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1155500
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 9200000
+        },
+        "sd.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line14": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line15": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line16": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "sd.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": -400000
+        },
+        "sd.line7": {
+          "kind": "money",
+          "cents": -400000
+        }
+      }
+    },
+    {
+      "id": "stage20.blind.r6",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "sd"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20, 2024 long-term loss with a short-term gain; distributions only in 2025: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 25 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted. Shown state (T-232, predicted from the instructions before evaluating): the 2024 line 21 loss ($3,000) is smaller than the line 16 loss ($7,000), so the worksheet applies, and the 2024 line 15 is a loss, so lines 9 to 13 are used; the 2025 Schedule D line 16 loss ($3,500) is more than the line 21 loss ($3,000) and line 15 is a loss, so the 2026 worksheet's line 9 is used (i1040sd p. 10, \"If line 15 of your 2024 Schedule D is a loss, go to line 9\").",
+      "inputs": {
+        "div.any": true,
+        "sd.carryover": true,
+        "sd.distributions": 50000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "clcw.prior_11": 5000000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": 200000,
+        "clcw.prior_sd15": -900000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line1": {
+          "kind": "money",
+          "cents": 3540000
+        },
+        "clcw.line10": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw.line11": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line12": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "clcw.line13": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 3840000
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line9": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4700000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 3125000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 351500
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 4700000
+        },
+        "sd.line13": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sd.line14": {
+          "kind": "money",
+          "cents": -400000
+        },
+        "sd.line15": {
+          "kind": "money",
+          "cents": -350000
+        },
+        "sd.line16": {
+          "kind": "money",
+          "cents": -350000
+        },
+        "sd.line21": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.show_lt": {
+          "kind": "bool",
+          "value": true
+        },
+        "clcw26.show_lt": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage20.blind.r7",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "sd"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20, joint return, 2025 gain absorbs the carryover: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 25 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 7000000,
+        "person[taxpayer].w2[e0].box2": 700000,
+        "person[taxpayer].w2[e0].box4": 434000,
+        "person[taxpayer].w2[e0].box5": 7000000,
+        "person[taxpayer].w2[e0].box6": 101500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box2": 500000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "sales[a].box": "D",
+        "sales[a].proceeds": 4500000,
+        "sales[a].reported_basis": 2500000,
+        "clcw.prior_11": 11000000,
+        "clcw.prior_14": 2920000,
+        "clcw.prior_sd15": -1500000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line1": {
+          "kind": "money",
+          "cents": 8080000
+        },
+        "clcw.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line11": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line12": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line13": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 8380000
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line9": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 12800000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 3150000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 9650000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1014600
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 12800000
+        },
+        "sd.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line14": {
+          "kind": "money",
+          "cents": -1200000
+        },
+        "sd.line15": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "sd.line16": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "sd.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage20.blind.r8",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "sd"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20, long-term carryover against box 2d collectibles gain: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 25 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
+      "inputs": {
+        "div.any": true,
+        "sb.ordinary_dividends": 200000,
+        "f1040.line3a": 150000,
+        "div.box2d": 40000,
+        "sd.carryover": true,
+        "sd.distributions": 100000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "clcw.prior_11": 4000000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd15": -600000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line1": {
+          "kind": "money",
+          "cents": 2540000
+        },
+        "clcw.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line11": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line12": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line13": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 2840000
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line9": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2925000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 309500
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "sd.line13": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "sd.line14": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "sd.line15": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sd.line16": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sd.line21": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage20.blind.r10",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "sd"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20, carryover on a return owing net investment income tax: blind-predicted. Two agents worked the return from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage20/); they agreed with each other and with the evaluator on all 28 values asserted here, the tax included. Lines a predictor marked skipped or not used are not asserted.",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 25000000,
+        "person[taxpayer].w2[emp_a].box4": 1091820,
+        "person[taxpayer].w2[emp_a].box5": 25000000,
+        "person[taxpayer].w2[emp_a].box6": 362500,
+        "interest[bank_a].amount": 2000000,
+        "sales[a].proceeds": 1400000,
+        "sales[a].reported_basis": 1000000,
+        "clcw.prior_11": 24000000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": -1000000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line1": {
+          "kind": "money",
+          "cents": 22540000
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 22840000
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "clcw.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line7": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 26700000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 25125000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 5748475
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 26700000
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f8960.line1": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f8960.line12": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f8960.line13": {
+          "kind": "money",
+          "cents": 26700000
+        },
+        "f8960.line15": {
+          "kind": "money",
+          "cents": 6700000
+        },
+        "f8960.line17": {
+          "kind": "money",
+          "cents": 64600
+        },
+        "f8960.line5a": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "f8960.line8": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "sd.line16": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "sd.line21": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": -700000
+        },
+        "sd.line7": {
+          "kind": "money",
+          "cents": -300000
+        }
+      }
+    },
+    {
+      "id": "stage20.refuse.line21_over_limit",
+      "covers": [
+        "clcw"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: the refusal named by the id fires on this return.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 400000,
+        "clcw.prior_sd7": -800000,
+        "clcw.prior_sd21": 350000,
+        "s179.line10": null
+      },
+      "expect": {
+        "clcw.line2": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        },
+        "sd.line6": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line7a": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage20.refuse.line21_over_line16",
+      "covers": [
+        "clcw"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: the refusal named by the id fires on this return.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 400000,
+        "clcw.prior_sd7": -100000,
+        "clcw.prior_sd15": -100000,
+        "clcw.prior_sd21": 300000,
+        "s179.line10": null
+      },
+      "expect": {
+        "clcw.line2": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        },
+        "sd.line6": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line7a": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage20.line21_at_both_bounds",
+      "covers": [
+        "clcw"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20 control, recorded from the evaluator: the case next to a refusal that must still compute. Shown state (T-232, predicted from the instructions before evaluating): the 2024 line 21 loss ($3,000) equals the line 16 loss ($3,000) and 2024 line 15 is not below zero ($40,000 less $14,600), so there is no carryover (i1040sd p. 10, \"Otherwise, you don't have any carryovers\").",
+      "inputs": {
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "clcw.prior_11": 4000000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": -300000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw.bad": {
+          "kind": "bool",
+          "value": false
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.filed": {
+          "kind": "bool",
+          "value": false
+        },
+        "clcw.applies": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage20.mut.line21_below_limit",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "f4952"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from i1040sd p. 10 before recording: 2024 line 11 $40,000, line 14 $14,600, Schedule D line 7 -$2,000, line 15 $0, line 21 ($2,000). Line 1 $25,400, line 2 $2,000, line 3 $27,400, line 4 $2,000 (the smaller of lines 2 and 3), line 5 $2,000, line 7 $2,000, line 8 $0: the whole 2024 loss was deducted, so nothing carries and Schedule D line 6 is $0.",
+      "inputs": {
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "clcw.prior_11": 4000000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": -200000,
+        "clcw.prior_sd21": 200000
+      },
+      "expect": {
+        "clcw.line1": {
+          "kind": "money",
+          "cents": 2540000
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 2740000
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage20.refuse.line21_just_over_limit",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "f4952"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: a 2024 line 21 of $3,000.50, more than the $3,000 limit, is refused.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 400000,
+        "clcw.prior_sd7": -800000,
+        "clcw.prior_sd21": 300050,
+        "s179.line10": null
+      },
+      "expect": {
+        "clcw.line2": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        },
+        "sd.line6": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage20.refuse.line21_zero_with_loss",
+      "covers": [
+        "clcw"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 20 refusal regression (BUG-0186), recorded from the evaluator: a 2024 line 21 entered as $0 on a $5,000 loss (the gate answered Yes) is refused.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 400000,
+        "clcw.prior_sd7": -500000,
+        "s179.line10": null
+      },
+      "expect": {
+        "clcw.line2": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        },
+        "sd.line6": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage20.refuse.line21_below_floor",
+      "covers": [
+        "clcw"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 20 refusal regression (BUG-0186), recorded from the evaluator: a 2024 line 21 of $1,499.99 on a $2,000 loss, below the smaller of the loss and $1,500 is refused.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 400000,
+        "clcw.prior_sd7": -200000,
+        "clcw.prior_sd21": 149999,
+        "s179.line10": null
+      },
+      "expect": {
+        "clcw.line2": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        },
+        "sd.line6": {
+          "kind": "refusal",
+          "gate": "clcw.bad",
+          "form": "Capital Loss Carryover Worksheet line 2",
+          "remedy": "Check your 2024 Schedule D. Line 21 cannot be a larger loss than $3,000 or than the loss on line 16 (lines 7 and 15 combined), nor a smaller loss than the line 16 loss or $1,500, whichever is less; enter the amounts as printed on the 2024 return.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 3, Capital Losses, \"You can deduct capital losses up to the amount of your capital gains plus $3,000 ($1,500 if married filing separately)\"",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage20.line21_small_loss",
+      "covers": [
+        "clcw"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20 control for BUG-0186, predicted by hand and recorded: a $1,000 2024 loss with line 21 ($1,000): a valid entry below $1,500, accepted; the worksheet does not apply (the loss was fully deducted and 2024 taxable income is positive), so nothing carries.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 400000,
+        "clcw.prior_11": 5500000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": -100000,
+        "clcw.prior_sd21": 100000
+      },
+      "expect": {
+        "clcw.bad": {
+          "kind": "bool",
+          "value": false
+        },
+        "clcw.applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage20.line21_at_floor",
+      "covers": [
+        "clcw"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 20 control for BUG-0186, predicted by hand and recorded: a $2,000 2024 loss with line 21 ($1,500), the amount a 2024 return filed separately prints: accepted, and $500 carries as a short-term loss. Shown state (T-232, predicted from the instructions before evaluating): the worksheet applies, the 2024 line 7 is a $2,000 loss and line 15 is zero, so lines 5 to 8 are used and lines 9 to 13 are not (i1040sd p. 10, \"If line 7 of your 2024 Schedule D is a loss, go to line 5\"; \"If line 15 of your 2024 Schedule D is a loss, go to line 9\").",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 400000,
+        "clcw.prior_11": 5500000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": -200000,
+        "clcw.prior_sd21": 150000
+      },
+      "expect": {
+        "clcw.bad": {
+          "kind": "bool",
+          "value": false
+        },
+        "clcw.applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": -50000
+        },
+        "clcw.show_st": {
+          "kind": "bool",
+          "value": true
+        },
+        "clcw.show_lt": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage20.mut.line21_at_loss_negative_income",
+      "covers": [
+        "clcw",
+        "sd"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Shown-state regression (T-232): stage20.line21_at_both_bounds with 2024 Form 1040 line 11 of $10,000, below the $14,600 deduction. Predicted from the archived i1040sd before evaluating: the 2024 line 21 loss ($3,000) equals the line 16 loss, but 2024 line 15 would be less than zero, so the worksheet applies (i1040sd p. 10, \"if the amount on your 2024 Form 1040, 1040-SR or 1040-NR, line 15 would be less than zero if you could enter a negative amount on that line\"); line 1 ($10,000 less $14,600) is a $4,600 loss, line 2 $3,000, line 3 (lines 1 and 2 combined, not less than zero) $0, line 4 $0, line 5 $3,000; the 2024 line 7 is a loss and line 15 is not, so lines 5 to 8 are used and lines 9 to 13 are not; line 8 is $3,000 ($3,000 less line 7, $0), carried to 2025 Schedule D line 6 as a $3,000 loss.",
+      "inputs": {
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "clcw.prior_11": 1000000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": -300000,
+        "clcw.prior_sd21": 300000
+      },
+      "expect": {
+        "clcw.applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "clcw.bad": {
+          "kind": "bool",
+          "value": false
+        },
+        "clcw.show_st": {
+          "kind": "bool",
+          "value": true
+        },
+        "clcw.show_lt": {
+          "kind": "bool",
+          "value": false
+        },
+        "clcw.line1": {
+          "kind": "money",
+          "cents": -460000
+        },
+        "clcw.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw.line5": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw.line8": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "sd.line6": {
+          "kind": "money",
+          "cents": -300000
+        }
+      }
+    }
+  ]
+}

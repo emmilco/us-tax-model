@@ -1,0 +1,1686 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "audit.household.filer_under16",
+      "covers": [
+        "household:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage8.single.phaseout.partial with the filer answered as under age 16 at the end of 2025: the owner's entry check (amb.2025.filer_under_16; the archived text states no such rule) refuses the people-on-the-return line, and Form 1040 line 1a and every line after it follow. The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box2": 2153000,
+        "person[taxpayer].w2[emp_a].box5": 21530000,
+        "person[taxpayer].w2[emp_a].box6": 325955,
+        "$dependent": [
+          "child"
+        ],
+        "person[taxpayer].under16": true,
+        "dependent[child].age": 12,
+        "dependent[child].months": 12,
+        "s179.line10": null
+      },
+      "expect": {
+        "household.filer_under16": {
+          "kind": "bool",
+          "value": true
+        },
+        "household.roster_ok": {
+          "kind": "refusal",
+          "gate": "household.filer_under16",
+          "form": "A filer under age 16 at the end of 2025",
+          "remedy": "A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool. The archived instructions state no such rule; this is an entry check the owner decided on, recorded in the ambiguity register (amb.2025.filer_under_16).",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 66, Self-Select PIN, \"You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line1a": {
+          "kind": "refusal",
+          "gate": "household.filer_under16",
+          "form": "A filer under age 16 at the end of 2025",
+          "remedy": "A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool. The archived instructions state no such rule; this is an entry check the owner decided on, recorded in the ambiguity register (amb.2025.filer_under_16).",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 66, Self-Select PIN, \"You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line37": {
+          "kind": "refusal",
+          "gate": "household.filer_under16",
+          "form": "A filer under age 16 at the end of 2025",
+          "remedy": "A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool. The archived instructions state no such rule; this is an entry check the owner decided on, recorded in the ambiguity register (amb.2025.filer_under_16).",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 66, Self-Select PIN, \"You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "audit.household.hoh_community_property",
+      "covers": [
+        "household:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage8.hoh.child.ctc with the filer answered as married at the end of 2025 (considered unmarried for head of household) and living in a community property state: community income under state law (i1040gi p. 23, Community Property States; Form 8958 and Pub. 555) is outside this tool, so the head of household eligibility line is refused and Form 1040 line 12e and every line after it follow (owner's decision, amb.2025.hoh_community_property). The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "household.married": true,
+        "household.community_property": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "s179.line10": null
+      },
+      "expect": {
+        "household.hoh_community_property": {
+          "kind": "bool",
+          "value": true
+        },
+        "household.hoh_eligible": {
+          "kind": "refusal",
+          "gate": "household.hoh_community_property",
+          "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
+          "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.hoh_community_property",
+          "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
+          "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line37": {
+          "kind": "refusal",
+          "gate": "household.hoh_community_property",
+          "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
+          "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "audit.household.hoh_married_no_community_property",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage8.hoh.child.ctc with the filer answered as married at the end of 2025 (considered unmarried for head of household) and not living in a community property state: the community property gate is false and the return computes as stage8.hoh.child.ctc does (line 12e $23,625; line 37 $153). Predicted from i1040gi pp. 14 and 23; no independent human hand-work is claimed.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "household.married": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "household.hoh_community_property": {
+          "kind": "bool",
+          "value": false
+        },
+        "household.hoh_eligible": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2362500
+        },
+        "f1040.line37": {
+          "kind": "money",
+          "cents": 15300
+        }
+      }
+    },
+    {
+      "id": "audit.household.single_community_property",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage8.single.phaseout.partial with the filer answered as living in a community property state and not married: the gate reads only a married head of household, so it is false and the return computes as stage8.single.phaseout.partial does. Predicted from i1040gi p. 23 (the paragraph speaks of you and your spouse); no independent human hand-work is claimed. BUG-0165: Form 1040 line 25c now includes Form 8959 line 24 ($137.70 Additional Medicare Tax withheld; i1040gi p. 39, Line 25c), so line 37 falls by that amount, $18,126.70 to $17,989.00.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 21530000,
+        "person[taxpayer].w2[emp_a].box2": 2153000,
+        "person[taxpayer].w2[emp_a].box4": 1091820,
+        "person[taxpayer].w2[emp_a].box5": 21530000,
+        "person[taxpayer].w2[emp_a].box6": 325955,
+        "$dependent": [
+          "child"
+        ],
+        "household.community_property": true,
+        "dependent[child].age": 12,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "household.hoh_community_property": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 140000
+        },
+        "f1040.line37": {
+          "kind": "money",
+          "cents": 1798900
+        },
+        "f1040.line25c": {
+          "kind": "money",
+          "cents": 13770
+        }
+      }
+    },
+    {
+      "id": "t091r.absence.roommate_not_test2",
+      "covers": [
+        "dependent.hoh_test2",
+        "dependent.hoh_absence",
+        "household.test2_absence_persons",
+        "household.hoh_absence"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-091 regression fix, predicted from the archived source before recording: Head of household through a qualifying child; a roommate who is not a dependent answers yes to the absence question. The roommate cannot be a Test 2 person (i1040gi p. 14), so the absence rule of p501 p. 9 does not reach the return: line 12e $23,625, line 16 $14,378, no refusal.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child",
+          "room"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "dependent[room].relationship": "other",
+        "dependent[room].age": 40,
+        "dependent[room].qr_all_year": true,
+        "dependent[room].gross_income": 3000000,
+        "dependent[room].lawful": true
+      },
+      "expect": {
+        "household.hoh_absence": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2362500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1437800
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 220000
+        }
+      }
+    },
+    {
+      "id": "t091r.absence.second_child_clean",
+      "covers": [
+        "dependent.hoh_test2",
+        "dependent.hoh_absence",
+        "household.test2_absence_persons",
+        "household.hoh_absence"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-091 regression fix, predicted from the archived source before recording: Two children; one counted an absence head of household does not count, the other lived with the filer all year with no such absence. One Test 2 person is enough (i1040gi p. 14), so head of household holds: line 12e $23,625, line 16 $14,378; both children remain qualifying children for the child tax credit (the expected-return sentence sits only under head of household, p501 p. 9): line 19 $4,400.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child",
+          "kid2"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "dependent[child].age": 10,
+        "dependent[child].absence_no_return": true,
+        "dependent[child].months": 12,
+        "dependent[kid2].age": 10,
+        "dependent[kid2].months": 12
+      },
+      "expect": {
+        "household.hoh_absence": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2362500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1437800
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 440000
+        }
+      }
+    },
+    {
+      "id": "t091r.absence.household_member_not_test2",
+      "covers": [
+        "dependent.hoh_test2",
+        "dependent.hoh_absence",
+        "household.test2_absence_persons",
+        "household.hoh_absence"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-091 regression fix, predicted from the archived source before recording: A clean qualifying child plus a household member claimed under the all-year bullet who answers yes to the absence question. Test 2 excludes such a person whatever the time lived (i1040gi p. 14), so head of household holds through the child: line 12e $23,625, line 16 $14,378, line 19 $2,700.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child",
+          "hm"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "dependent[hm].relationship": "household_member",
+        "dependent[hm].age": 40,
+        "dependent[hm].qr_all_year": true,
+        "dependent[hm].supported": true
+      },
+      "expect": {
+        "household.hoh_absence": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2362500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1437800
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 270000
+        }
+      }
+    },
+    {
+      "id": "f2.t101.credit_disallowed_no_credit_claimed",
+      "covers": [
+        "household",
+        "s8812",
+        "eic",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "F2 pass, T-101. Inputs are stage5.return.owed (single, no dependents, no earned income credit) with household.credit_disallowed Yes. i1040s8812 p. 2: \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\"; i1040gi p. 43: \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed\". Form 8862 is needed only to claim a credit; with no qualifying child or other dependent (Schedule 8812 line 8 zero) and EIC Steps 1 to 5 not passed, no credit is claimed, so the return completes with the values stage5.return.owed records. Predicted before evaluation.",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "div.any": true,
+        "sb.ordinary_dividends": 200000,
+        "f1040.line3a": 150000,
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
+        "interest[bank_a].amount": 120000
+      },
+      "expect": {
+        "f1040.line1a": {
+          "kind": "money",
+          "cents": 12000000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 12000000
+        },
+        "f1040.line2b": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f1040.line3b": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 12320000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 12320000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 12320000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line13a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 10745000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1850000
+        },
+        "f1040.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 1850000
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line22": {
+          "kind": "money",
+          "cents": 1850000
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line24": {
+          "kind": "money",
+          "cents": 1850000
+        },
+        "f1040.line25a": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f1040.line25b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line25c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line25d": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f1040.line26": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line28": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line29": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line30": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line32": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line33": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f1040.line34": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line35a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line36": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line37": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "s3.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sa.deduction": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "sa.itemizes": {
+          "kind": "bool",
+          "value": false
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 0
+        },
+        "household.ctc_disallowed_claim": {
+          "kind": "bool",
+          "value": false
+        },
+        "household.eic_disallowed_claim": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage8.mut.hoh_unmarried_community_property",
+      "covers": [
+        "household",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the married operand of household.hoh_community_property), predicted from the archived i1040gi before evaluating: audit.household.hoh_married_no_community_property (head of household, one qualifying child) with the filer not married at the end of 2025 and living in a community property state. The community property question for head of household concerns a married filer who is considered unmarried (i1040gi p. 23, the paragraph speaks of you and your spouse, as audit.household.single_community_property records); an unmarried filer is outside it, so the gate is false.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "household.community_property": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "household.hoh_community_property": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage8.mut.hoh_test1_and_absence",
+      "covers": [
+        "household",
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the test1_met operand of household.hoh_absence), predicted from the archived i1040gi before evaluating: stage8.hoh.parent.test1 (head of household under Test 1 through a parent who lived elsewhere, whose home the filer paid over half the cost of) with the filer also paying over half the cost of their own home and a child aged 10 who lived there all year, counting an absence from which the child was not expected to return. Test 1 is met through the parent (i1040gi p. 14), so head of household does not turn on the child and the absence gate (which applies only when no Test 1 person and no other Test 2 person qualifies) is false.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "kid",
+          "parent"
+        ],
+        "household.unmarried": true,
+        "dependent[parent].relationship": "parent",
+        "dependent[parent].age": 70,
+        "dependent[parent].gross_income": 400000,
+        "dependent[parent].supported": true,
+        "dependent[parent].parent_home_paid": true,
+        "dependent[kid].age": 10,
+        "dependent[kid].months": 12
+      },
+      "expect": {
+        "household.hoh_absence": {
+          "kind": "bool",
+          "value": false
+        },
+        "household.test1_met": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage9.mut.eic_no_child_credit_disallowed",
+      "covers": [
+        "eic",
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the credit_disallowed operand of household.eic_disallowed_claim), predicted from the archived i1040gi before evaluating: stage9.eic.no_child.12000 (single, no qualifying child, wages $12,000; Worksheet A line 6 $542) with an EIC for an earlier year reduced or disallowed other than for a math or clerical error. i1040gi p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\": the filer passes Steps 1 to 5 with a credit above zero, so the Form 8862 gate is true; there is no child tax credit on this return, which does not matter to the EIC gate.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 1200000,
+        "person[taxpayer].w2[emp_a].box6": 17400,
+        "household.credit_disallowed": true
+      },
+      "expect": {
+        "household.eic_disallowed_claim": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage19.mut.hsa_one_form_no_split",
+      "covers": [
+        "f8889",
+        "person",
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13 return: married filing jointly, only you have an HSA, family HDHP coverage all 12 months, contribution $8,550. The spouse rule of line 6 applies only to \"Spouses who have separate HSAs and had family coverage\" (i8889 p. 7); with one HSA it does not apply, so line 6 = line 5 = $8,550 and Schedule 1 line 13 is $8,550. No Form 8889 uses the spouse rule, so this person's Step 1 limit and Step 2/3 share under that rule are $0 (the form's own refigured Step 1 figure, $8,550 x 12 / 12 less line 4 $0 = $8,550, is not counted), and both household totals are $0. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 855000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].hsa_step1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].hsa_share": {
+          "kind": "money",
+          "cents": 0
+        },
+        "household.hsa_step1_sum": {
+          "kind": "money",
+          "cents": 0
+        },
+        "household.hsa_share_sum": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage21.pending1.single_claims_qss_refused",
+      "covers": [
+        "household",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Completeness finding PENDING-1: stage5.return.owed (a single filer with no dependents) with status qss and the qualifying surviving spouse tests answered No. i1040gi p. 15, Qualifying Surviving Spouse: joint return rates apply only \"if all of the following apply\". Before the screen this return computed line 16 at $10,350 instead of $18,500 with no refusal; now line 12e is refused at household.qss_fails.",
+      "inputs": {
+        "f1040.status": "qss",
+        "$interest": [
+          "bank_a"
+        ],
+        "div.any": true,
+        "sb.ordinary_dividends": 200000,
+        "f1040.line3a": 150000,
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
+        "interest[bank_a].amount": 120000,
+        "s179.line10": null
+      },
+      "expect": {
+        "household.qss_fails": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.qss_fails",
+          "form": "Qualifying surviving spouse filing status",
+          "remedy": "Qualifying surviving spouse is checked but the tests are not met; your spouse must have died in 2023 or 2024 and you must not have remarried before the end of 2025, a child or stepchild (not a foster child) you can claim as a dependent must have lived in your home all year, you must have paid over half the cost of keeping up your home, and you must have been able to file jointly the year your spouse died; or the qualifying child was presumed kidnapped, whose rule (Pub. 501) is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 15, Qualifying Surviving Spouse; p501 p. 11, Kidnapped child, \"You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped.\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line16": {
+          "kind": "refusal",
+          "gate": "household.qss_fails",
+          "form": "Qualifying surviving spouse filing status",
+          "remedy": "Qualifying surviving spouse is checked but the tests are not met; your spouse must have died in 2023 or 2024 and you must not have remarried before the end of 2025, a child or stepchild (not a foster child) you can claim as a dependent must have lived in your home all year, you must have paid over half the cost of keeping up your home, and you must have been able to file jointly the year your spouse died; or the qualifying child was presumed kidnapped, whose rule (Pub. 501) is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 15, Qualifying Surviving Spouse; p501 p. 11, Kidnapped child, \"You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped.\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line24": {
+          "kind": "refusal",
+          "gate": "household.qss_fails",
+          "form": "Qualifying surviving spouse filing status",
+          "remedy": "Qualifying surviving spouse is checked but the tests are not met; your spouse must have died in 2023 or 2024 and you must not have remarried before the end of 2025, a child or stepchild (not a foster child) you can claim as a dependent must have lived in your home all year, you must have paid over half the cost of keeping up your home, and you must have been able to file jointly the year your spouse died; or the qualifying child was presumed kidnapped, whose rule (Pub. 501) is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 15, Qualifying Surviving Spouse; p501 p. 11, Kidnapped child, \"You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped.\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage21.pending1.qss_valid_computes",
+      "covers": [
+        "household",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Completeness finding PENDING-1: stage19.blind.e3 (wages $62,000, a 22-year-old student daughter who lived with the filer all year) filed as qss with all five qualifying surviving spouse tests answered Yes. Checked by hand against i1040gi: standard deduction for qss $31,500 (line 12e); taxable income $30,500 (line 15); tax from the Tax Table, married filing jointly column, $3,186 (line 16); credit for other dependents $500 (line 19); unchanged education credit $2,000, so line 24 is $686. F1 pass context repair: dependent[daughter].edu_tin_issued is supplied as true, read from the case's answer that the student has a TIN (inferred: the case does not say whether it was issued or applied for); no expected value changed.",
+      "inputs": {
+        "$dependent": [
+          "daughter"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "dependent[daughter].age": 22,
+        "dependent[daughter].edu": true,
+        "dependent[daughter].edu_1098t": true,
+        "dependent[daughter].edu_tin_issued": true,
+        "dependent[daughter].edu_inst": 720000,
+        "dependent[daughter].edu_line24": true,
+        "dependent[daughter].edu_line25": true,
+        "dependent[daughter].months": 12,
+        "dependent[daughter].student": true,
+        "f1040.status": "qss",
+        "f8863.paid": true,
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": true,
+        "person[taxpayer].edu_inst": 500000,
+        "person[taxpayer].w2[emp_a].box1": 6200000,
+        "person[taxpayer].w2[emp_a].box2": 496000,
+        "person[taxpayer].w2[emp_a].box4": 384400,
+        "person[taxpayer].w2[emp_a].box5": 6200000,
+        "person[taxpayer].w2[emp_a].box6": 89900,
+        "household.qss_eligible": true
+      },
+      "expect": {
+        "household.qss_fails": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 3150000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 3050000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 318600
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f1040.line24": {
+          "kind": "money",
+          "cents": 68600
+        }
+      }
+    },
+    {
+      "id": "stage21.pending2.rdp_community_income_refused",
+      "covers": [
+        "household",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Completeness finding PENDING-2: audit.household.single_community_property (single, community property state) with the filer a registered domestic partner in Nevada, Washington or California. i1040gi p. 23: \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555.\" Line 1a is refused at household.rdp_community_property.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box2": 2153000,
+        "person[taxpayer].w2[emp_a].box5": 21530000,
+        "person[taxpayer].w2[emp_a].box6": 325955,
+        "$dependent": [
+          "child"
+        ],
+        "household.community_property": true,
+        "household.rdp": true,
+        "dependent[child].age": 12,
+        "dependent[child].months": 12,
+        "s179.line10": null
+      },
+      "expect": {
+        "household.rdp_community_property": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line1a": {
+          "kind": "refusal",
+          "gate": "household.rdp_community_property",
+          "form": "Community income of a registered domestic partner (Form 8958; Pub. 555)",
+          "remedy": "A registered domestic partner in Nevada, Washington or California must generally report half the combined community income of the partners; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 23, Community Property States, Nevada, Washington, and California domestic partners, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line24": {
+          "kind": "refusal",
+          "gate": "household.rdp_community_property",
+          "form": "Community income of a registered domestic partner (Form 8958; Pub. 555)",
+          "remedy": "A registered domestic partner in Nevada, Washington or California must generally report half the combined community income of the partners; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 23, Community Property States, Nevada, Washington, and California domestic partners, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage21.f1.where_kidnapped_withheld_hoh",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "stage8.hoh.actc.three_children with dependent[b].kidnapped withheld. Before the fix household.test2_met was decided true from a lower bound of 2 and Form 1040 line 16 computed. Finding F1 extended to the where-test path: sum_over kept the known entries as a lower bound while another entry's where test awaited dependent.kidnapped, a refusal gate on dependent.lived_half and dependent.eic_child. The unanswered gate can become a refusal, so the counts, the tests decided from them and the return must stay unknown. The withheld child lived with you 4 months: the kidnapped answer decides the refusal gate dependent.kidnap_residency only below 7 months, so the case keeps an unanswered gate on the where path.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 300000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$dependent": [
+          "a",
+          "b",
+          "c"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "dependent[a].age": 2,
+        "dependent[a].months": 12,
+        "dependent[b].age": 5,
+        "dependent[b].months": 4,
+        "dependent[c].age": 8,
+        "dependent[c].months": 12,
+        "dependent[b].kidnapped": null,
+        "dependent[b].born_died": null,
+        "dependent[b].placed": null,
+        "dependent[b].part_year_home": null
+      },
+      "expect": {
+        "household.test2_persons": {
+          "kind": "unknown",
+          "reason": "no input supplied for dependent[b].kidnapped",
+          "input": "dependent[b].kidnapped"
+        },
+        "household.test2_met": {
+          "kind": "unknown",
+          "reason": "no input supplied for dependent[b].kidnapped",
+          "input": "dependent[b].kidnapped"
+        },
+        "f1040.line16": {
+          "kind": "unknown",
+          "reason": "no input supplied for dependent[b].kidnapped",
+          "input": "dependent[b].kidnapped"
+        }
+      }
+    },
+    {
+      "id": "stage21.household.widow_single_false",
+      "covers": [
+        "household.widowed_2025"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived p501 p. 6, Spouse died during the year, and i1040gi p. 13: a spouse's death in 2025 leaves the filer married for filing status; owner decision refuses single/HOH at line 12e. Negative controls retain the 2025 single $15,750 or HOH $23,625 standard deduction. The HOH positive case deliberately retains unmarried=yes to test enforcement despite a mistaken status answer. No independent human hand-work claimed.",
+      "inputs": {
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].age": 10,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "household.widowed_2025": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        }
+      }
+    },
+    {
+      "id": "stage21.household.widow_single_true",
+      "covers": [
+        "household.widowed_2025"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived p501 p. 6, Spouse died during the year, and i1040gi p. 13: a spouse's death in 2025 leaves the filer married for filing status; owner decision refuses single/HOH at line 12e. Negative controls retain the 2025 single $15,750 or HOH $23,625 standard deduction. The HOH positive case deliberately retains unmarried=yes to test enforcement despite a mistaken status answer. No independent human hand-work claimed.",
+      "inputs": {
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.spouse_died_2025": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "s179.line10": null
+      },
+      "expect": {
+        "household.widowed_2025": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.widowed_2025",
+          "form": "Filing status after a spouse's death in 2025",
+          "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 13, Single, \"You were widowed before January 1, 2025, and didn’t remarry before the end of 2025\"; p. 13, Married Filing Jointly, \"Your spouse died in 2025 and you didn’t remarry in 2025.\"; p501 p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage21.household.widow_hoh_false",
+      "covers": [
+        "household.widowed_2025"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived p501 p. 6, Spouse died during the year, and i1040gi p. 13: a spouse's death in 2025 leaves the filer married for filing status; owner decision refuses single/HOH at line 12e. Negative controls retain the 2025 single $15,750 or HOH $23,625 standard deduction. The HOH positive case deliberately retains unmarried=yes to test enforcement despite a mistaken status answer. No independent human hand-work claimed.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "household.widowed_2025": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2362500
+        }
+      }
+    },
+    {
+      "id": "stage21.household.widow_hoh_true",
+      "covers": [
+        "household.widowed_2025"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived p501 p. 6, Spouse died during the year, and i1040gi p. 13: a spouse's death in 2025 leaves the filer married for filing status; owner decision refuses single/HOH at line 12e. Negative controls retain the 2025 single $15,750 or HOH $23,625 standard deduction. The HOH positive case deliberately retains unmarried=yes to test enforcement despite a mistaken status answer. No independent human hand-work claimed.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "household.spouse_died_2025": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "s179.line10": null
+      },
+      "expect": {
+        "household.widowed_2025": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.widowed_2025",
+          "form": "Filing status after a spouse's death in 2025",
+          "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 13, Single, \"You were widowed before January 1, 2025, and didn’t remarry before the end of 2025\"; p. 13, Married Filing Jointly, \"Your spouse died in 2025 and you didn’t remarry in 2025.\"; p501 p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage21.household.community_ended",
+      "covers": [
+        "household.cp_marriage_ended"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived i1040gi p. 23, Community Property States, and the owner's refusal decision: a non-joint filer whose marriage ended after living married in a community property state refuses at line 1a. Otherwise wages remain $120,000. Still-married HOH retains the existing downstream line12e community-property refusal. Outside-state positive cp_married is an unasked-answer control. No independent human hand-work claimed.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.community_property": true,
+        "household.cp_married": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "s179.line10": null
+      },
+      "expect": {
+        "household.cp_marriage_ended": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line1a": {
+          "kind": "refusal",
+          "gate": "household.cp_marriage_ended",
+          "form": "Community income of a marriage that ended in 2025 (Form 8958; Pub. 555)",
+          "remedy": "Income earned while you were married and living in a community property state may be community income under state law, half yours and half your former spouse's; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555.\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage21.household.community_never_married",
+      "covers": [
+        "household.cp_marriage_ended"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived i1040gi p. 23, Community Property States, and the owner's refusal decision: a non-joint filer whose marriage ended after living married in a community property state refuses at line 1a. Otherwise wages remain $120,000. Still-married HOH retains the existing downstream line12e community-property refusal. Outside-state positive cp_married is an unasked-answer control. No independent human hand-work claimed.",
+      "inputs": {
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.community_property": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "household.cp_marriage_ended": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line1a": {
+          "kind": "money",
+          "cents": 12000000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        }
+      }
+    },
+    {
+      "id": "stage21.household.community_outside_state",
+      "covers": [
+        "household.cp_marriage_ended"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived i1040gi p. 23, Community Property States, and the owner's refusal decision: a non-joint filer whose marriage ended after living married in a community property state refuses at line 1a. Otherwise wages remain $120,000. Still-married HOH retains the existing downstream line12e community-property refusal. Outside-state positive cp_married is an unasked-answer control. No independent human hand-work claimed.",
+      "inputs": {
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].age": 10,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "household.cp_marriage_ended": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line1a": {
+          "kind": "money",
+          "cents": 12000000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        }
+      }
+    },
+    {
+      "id": "stage21.household.community_still_married",
+      "covers": [
+        "household.cp_marriage_ended"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived i1040gi p. 23, Community Property States, and the owner's refusal decision: a non-joint filer whose marriage ended after living married in a community property state refuses at line 1a. Otherwise wages remain $120,000. Still-married HOH retains the existing downstream line12e community-property refusal. Outside-state positive cp_married is an unasked-answer control. No independent human hand-work claimed.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "household.married": true,
+        "household.community_property": true,
+        "household.cp_married": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "s179.line10": null
+      },
+      "expect": {
+        "household.cp_marriage_ended": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line1a": {
+          "kind": "money",
+          "cents": 12000000
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.hoh_community_property",
+          "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
+          "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage21.household.status_single_valid",
+      "covers": [
+        "household.filing_status_conflict"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived i1040gi p.13 Single and Married Filing Jointly and p501 p.6: single conflicts with a marriage in effect at year end; joint requires marriage or a spouse who died during the year. HOH has its separate considered-unmarried tests. Standard deductions for under-65, nonblind filers are $15,750 single, $31,500 joint and $23,625 HOH. No new independent numeric credit claimed.",
+      "inputs": {
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].age": 10,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "household.filing_status_conflict": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        }
+      }
+    },
+    {
+      "id": "stage21.household.status_single_conflict",
+      "covers": [
+        "household.filing_status_conflict"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived i1040gi p.13 Single and Married Filing Jointly and p501 p.6: single conflicts with a marriage in effect at year end; joint requires marriage or a spouse who died during the year. HOH has its separate considered-unmarried tests. Standard deductions for under-65, nonblind filers are $15,750 single, $31,500 joint and $23,625 HOH. No new independent numeric credit claimed.",
+      "inputs": {
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.married": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "s179.line10": null
+      },
+      "expect": {
+        "household.filing_status_conflict": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.filing_status_conflict",
+          "form": "Filing status inconsistent with your marriage facts",
+          "remedy": "Correct the filing status or marriage facts. A person married at the end of 2025 cannot file as single; filing jointly requires marriage at year end or the death of a spouse during 2025. The head of household and qualifying surviving spouse tests are checked separately.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 13, Single and Married Filing Jointly, \"You were married at the end of 2025\" and \"Your spouse died in 2025 and you didn’t remarry in 2025.\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage21.household.status_joint_valid",
+      "covers": [
+        "household.filing_status_conflict"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived i1040gi p.13 Single and Married Filing Jointly and p501 p.6: single conflicts with a marriage in effect at year end; joint requires marriage or a spouse who died during the year. HOH has its separate considered-unmarried tests. Standard deductions for under-65, nonblind filers are $15,750 single, $31,500 joint and $23,625 HOH. No new independent numeric credit claimed.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.married": true,
+        "dependent[child].relationship": "other",
+        "dependent[child].age": 30,
+        "dependent[child].spouse_relative": true,
+        "dependent[child].supported": true
+      },
+      "expect": {
+        "household.filing_status_conflict": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 3150000
+        }
+      }
+    },
+    {
+      "id": "stage21.household.status_joint_conflict",
+      "covers": [
+        "household.filing_status_conflict"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived i1040gi p.13 Single and Married Filing Jointly and p501 p.6: single conflicts with a marriage in effect at year end; joint requires marriage or a spouse who died during the year. HOH has its separate considered-unmarried tests. Standard deductions for under-65, nonblind filers are $15,750 single, $31,500 joint and $23,625 HOH. No new independent numeric credit claimed.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].relationship": "other",
+        "dependent[child].age": 30,
+        "dependent[child].spouse_relative": true,
+        "dependent[child].supported": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "household.filing_status_conflict": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.filing_status_conflict",
+          "form": "Filing status inconsistent with your marriage facts",
+          "remedy": "Correct the filing status or marriage facts. A person married at the end of 2025 cannot file as single; filing jointly requires marriage at year end or the death of a spouse during 2025. The head of household and qualifying surviving spouse tests are checked separately.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 13, Single and Married Filing Jointly, \"You were married at the end of 2025\" and \"Your spouse died in 2025 and you didn’t remarry in 2025.\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage21.household.status_joint_death_year",
+      "covers": [
+        "household.filing_status_conflict"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived i1040gi p.13 Single and Married Filing Jointly and p501 p.6: single conflicts with a marriage in effect at year end; joint requires marriage or a spouse who died during the year. HOH has its separate considered-unmarried tests. Standard deductions for under-65, nonblind filers are $15,750 single, $31,500 joint and $23,625 HOH. No new independent numeric credit claimed.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.spouse_died_2025": true,
+        "dependent[child].relationship": "other",
+        "dependent[child].age": 30,
+        "dependent[child].spouse_relative": true,
+        "dependent[child].supported": true
+      },
+      "expect": {
+        "household.filing_status_conflict": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 3150000
+        }
+      }
+    },
+    {
+      "id": "stage21.household.status_hoh_married",
+      "covers": [
+        "household.filing_status_conflict"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluation from archived i1040gi p.13 Single and Married Filing Jointly and p501 p.6: single conflicts with a marriage in effect at year end; joint requires marriage or a spouse who died during the year. HOH has its separate considered-unmarried tests. Standard deductions for under-65, nonblind filers are $15,750 single, $31,500 joint and $23,625 HOH. No new independent numeric credit claimed.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "household.married": true,
+        "dependent[child].age": 10,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "household.filing_status_conflict": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2362500
+        }
+      }
+    }
+  ]
+}

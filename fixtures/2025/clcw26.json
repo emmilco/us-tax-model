@@ -1,0 +1,95 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage20.mut.to2026_short_gain_long_loss",
+      "covers": [
+        "clcw",
+        "clcw26",
+        "f4952"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from i1040sd p. 10 and p. 14 (Line 21) before recording: wages $60,000, a $1,000 short-term gain and a $6,000 long-term loss, no carryover into 2025. Schedule D line 7 $1,000, line 15 -$6,000, line 16 -$5,000, line 21 -$3,000. Carryover to 2026: line 1 $41,250 ($57,000 less the $15,750 standard deduction), line 2 $3,000, line 3 $44,250, line 4 $3,000, line 5 $0, line 9 $6,000, line 10 $1,000, line 11 $3,000, line 12 $4,000, line 13 $2,000 (Pub. 550: the $5,000 net loss less the $3,000 deducted).",
+      "inputs": {
+        "$sales": [
+          "a",
+          "b"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "sales[a].proceeds": 300000,
+        "sales[a].reported_basis": 200000,
+        "sales[b].box": "D",
+        "sales[b].proceeds": 400000,
+        "sales[b].reported_basis": 1000000
+      },
+      "expect": {
+        "sd.line7": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "sd.line15": {
+          "kind": "money",
+          "cents": -600000
+        },
+        "sd.line16": {
+          "kind": "money",
+          "cents": -500000
+        },
+        "sd.line21": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "clcw26.line1": {
+          "kind": "money",
+          "cents": 4125000
+        },
+        "clcw26.line2": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw26.line3": {
+          "kind": "money",
+          "cents": 4425000
+        },
+        "clcw26.line4": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw26.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "clcw26.line9": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "clcw26.line10": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "clcw26.line11": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "clcw26.line12": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "clcw26.line13": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "clcw26.line8": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    }
+  ]
+}

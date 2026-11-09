@@ -1,0 +1,495 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage11.sli.basic",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Single, wages $50,000, student loan interest $1,200: worksheet line 4 $50,000 is not more than $85,000, so the deduction is $1,200 (i1040gi p. 99); Form 1040 line 11a $48,800.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "sli.interest": 120000
+      },
+      "expect": {
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "s1.line21": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4880000
+        }
+      }
+    },
+    {
+      "id": "stage11.sli.cap",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Student loan interest $3,000: line 1 $2,500 (don't enter more than $2,500), deduction $2,500.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "sli.interest": 300000
+      },
+      "expect": {
+        "sli.line1": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 250000
+        }
+      }
+    },
+    {
+      "id": "stage11.sli.third",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Wages $90,000, interest $2,000: line 4 $90,000, line 6 $5,000, line 7 0.333 (5,000 / 15,000 to three places), line 8 $666.00, deduction $1,334.00.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 9000000,
+        "person[taxpayer].w2[emp_a].box4": 558000,
+        "person[taxpayer].w2[emp_a].box5": 9000000,
+        "person[taxpayer].w2[emp_a].box6": 130500,
+        "sli.interest": 200000
+      },
+      "expect": {
+        "sli.line6": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "sli.line8": {
+          "kind": "money",
+          "cents": 66600
+        },
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 133400
+        }
+      }
+    },
+    {
+      "id": "stage11.sli.half",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Wages $92,500, interest $2,500: line 6 $7,500, line 7 0.500, line 8 $1,250, deduction $1,250.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 9250000,
+        "person[taxpayer].w2[emp_a].box4": 573500,
+        "person[taxpayer].w2[emp_a].box5": 9250000,
+        "person[taxpayer].w2[emp_a].box6": 134125,
+        "sli.interest": 250000
+      },
+      "expect": {
+        "sli.line8": {
+          "kind": "money",
+          "cents": 125000
+        },
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 125000
+        }
+      }
+    },
+    {
+      "id": "stage11.sli.over",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Wages $101,000, interest $2,500: line 6 $16,000, line 7 1.000 (the result is more than 1.000), line 8 $2,500, deduction $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 10100000,
+        "person[taxpayer].w2[emp_a].box4": 626200,
+        "person[taxpayer].w2[emp_a].box5": 10100000,
+        "person[taxpayer].w2[emp_a].box6": 146450,
+        "sli.interest": 250000
+      },
+      "expect": {
+        "sli.line8": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage11.sli.rounding",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Wages $86,000, interest $2,500: line 6 $1,000, line 7 0.067 (0.0666... rounded to three places, amb.2025.sli_ratio_places), line 8 $167.50, deduction $2,332.50.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8600000,
+        "person[taxpayer].w2[emp_a].box4": 533200,
+        "person[taxpayer].w2[emp_a].box5": 8600000,
+        "person[taxpayer].w2[emp_a].box6": 124700,
+        "sli.interest": 250000
+      },
+      "expect": {
+        "sli.line8": {
+          "kind": "money",
+          "cents": 16750
+        },
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 233250
+        }
+      }
+    },
+    {
+      "id": "stage11.sli.claimed",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Interest $1,200 but claimed as a dependent on a parent's return: no deduction (p. 98).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "sli.interest": 120000,
+        "person[taxpayer].sav_claimed": true
+      },
+      "expect": {
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage11.sli.with_adjustments",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Wages $90,000, eligible educator expenses $300, HSA contributions $1,000 (self-only all year), interest $2,000: worksheet line 3 $1,300 (Schedule 1 lines 11 and 13), line 4 $88,700, line 6 $3,700, line 7 0.247, line 8 $494.00, deduction $1,506.00; Schedule 1 line 26 $2,806.00, Form 1040 line 11a $87,194.00. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 9000000,
+        "person[taxpayer].w2[emp_a].box4": 558000,
+        "person[taxpayer].w2[emp_a].box5": 9000000,
+        "person[taxpayer].w2[emp_a].box6": 130500,
+        "person[taxpayer].educator_expenses": 30000,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "sli.interest": 200000,
+        "person[taxpayer].eligible_educator": true,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only"
+      },
+      "expect": {
+        "sli.line3": {
+          "kind": "money",
+          "cents": 130000
+        },
+        "sli.line8": {
+          "kind": "money",
+          "cents": 49400
+        },
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 150600
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 280600
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8719400
+        }
+      }
+    },
+    {
+      "id": "stage11.sli.boundary_single",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Single, wages $85,007.50, interest $2,500: line 6 $7.50, line 7 0.001 (7.50 / 15,000 = 0.0005, rounded half-up to three places), line 8 $2.50, deduction $2,497.50.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8500750,
+        "person[taxpayer].w2[emp_a].box4": 527047,
+        "person[taxpayer].w2[emp_a].box5": 8500750,
+        "person[taxpayer].w2[emp_a].box6": 123261,
+        "sli.interest": {
+          "param": "sli.max",
+          "offset": 0
+        }
+      },
+      "expect": {
+        "sli.line6": {
+          "kind": "money",
+          "cents": 750
+        },
+        "sli.line8": {
+          "kind": "money",
+          "cents": 250
+        },
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 249750
+        }
+      }
+    },
+    {
+      "id": "stage11.sli.boundary_joint",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Married filing jointly, wages $170,015, interest $2,500: line 5 $170,000, line 6 $15, line 7 0.001 (15 / 30,000 = 0.0005, rounded half-up), line 8 $2.50, deduction $2,497.50 (the return itself refuses elsewhere for a joint filing).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 17001500,
+        "person[taxpayer].w2[emp_a].box4": 1054093,
+        "person[taxpayer].w2[emp_a].box5": 17001500,
+        "person[taxpayer].w2[emp_a].box6": 246522,
+        "household.married": true,
+        "sli.interest": {
+          "param": "sli.max",
+          "offset": 0
+        }
+      },
+      "expect": {
+        "sli.line5": {
+          "kind": "money",
+          "cents": 17000000
+        },
+        "sli.line6": {
+          "kind": "money",
+          "cents": 1500
+        },
+        "sli.line8": {
+          "kind": "money",
+          "cents": 250
+        },
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 249750
+        }
+      }
+    },
+    {
+      "id": "stage11.sli.none_claimed_joint",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-215 regression, predicted from i1040gi pp. 98-99 before recording: the inputs of stage11.sli.boundary_joint, neither person claimed as a dependent (both person[*].sav_claimed false), so the deduction stands as in that case: $2,497.50.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 17001500,
+        "person[taxpayer].w2[emp_a].box4": 1054093,
+        "person[taxpayer].w2[emp_a].box5": 17001500,
+        "person[taxpayer].w2[emp_a].box6": 246522,
+        "household.married": true,
+        "sli.interest": {
+          "param": "sli.max",
+          "offset": 0
+        }
+      },
+      "expect": {
+        "sli.claimed_count": {
+          "kind": "count",
+          "value": 0
+        },
+        "sli.eligible": {
+          "kind": "bool",
+          "value": true
+        },
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 249750
+        }
+      }
+    },
+    {
+      "id": "stage11.sli.spouse_claimed",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-215 regression, predicted from i1040gi p. 98 before recording: the inputs of stage11.sli.boundary_joint (married filing jointly, interest $2,500) with the spouse claimed as a dependent on someone else's 2025 return (person[spouse].sav_claimed true). Line 21: \"You can take this deduction only if all of the following apply\" and \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.\" One person claimed, so no deduction: sli.deduction $0.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 17001500,
+        "person[taxpayer].w2[emp_a].box4": 1054093,
+        "person[taxpayer].w2[emp_a].box5": 17001500,
+        "person[taxpayer].w2[emp_a].box6": 246522,
+        "household.married": true,
+        "sli.interest": {
+          "param": "sli.max",
+          "offset": 0
+        },
+        "person[spouse].sav_claimed": true
+      },
+      "expect": {
+        "sli.claimed_count": {
+          "kind": "count",
+          "value": 1
+        },
+        "sli.eligible": {
+          "kind": "bool",
+          "value": false
+        },
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage13.sli_joint_phaseout",
+      "covers": [
+        "sli"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: student loan interest $2,500; MAGI $185,000 (wages $100,000 and $85,000). Worksheet line 5 $170,000 (married filing jointly); line 6 $15,000; line 7 $15,000 / $30,000 = 0.500; line 8 $1,250; deduction $1,250 (line 10).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "sli.interest": 250000,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 10000000,
+        "person[taxpayer].w2[e0].box4": 620000,
+        "person[taxpayer].w2[e0].box5": 10000000,
+        "person[taxpayer].w2[e0].box6": 145000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 8500000,
+        "person[spouse].w2[e0].box4": 527000,
+        "person[spouse].w2[e0].box5": 8500000,
+        "person[spouse].w2[e0].box6": 123250
+      },
+      "expect": {
+        "sli.deduction": {
+          "kind": "money",
+          "cents": 125000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 125000
+        }
+      }
+    }
+  ]
+}

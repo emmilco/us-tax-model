@@ -13,6 +13,7 @@ import type { Inputs } from "./types.js";
 import type { Value } from "./eval.js";
 import { YEAR, yearPath } from "./year.js";
 import { flatText } from "./text.js";
+import { loadFixtureCases } from "./fixture-inputs.js";
 
 const ROOT = join(import.meta.dirname, "../..");
 const DIR = yearPath("fixtures", "differential");
@@ -108,7 +109,7 @@ function calculatorRecords(): { file: string; rec: DifferentialRecord }[] {
 
 export function differential(): number {
   const data = loadCanonical();
-  const cases = (JSON.parse(readFileSync(yearPath("fixtures", "stage5.json"), "utf8")) as { cases: CaseFixture[] }).cases;
+  const cases = loadFixtureCases("federal", data).filter((c) => c.walk === "full") as CaseFixture[];
   mkdirSync(yearPath("reports"), { recursive: true });
   const returnCases = cases.filter((c) => c.id.startsWith("stage5.return."));
   for (const c of returnCases) {
@@ -124,7 +125,7 @@ export function differential(): number {
   let mismatches = 0;
   for (const { file: f, rec } of files) {
     const c = cases.find((x) => x.id === rec.case);
-    if (!c) { lines.push(`## ${f}`, "", `Unknown case \`${rec.case}\` — not in stage5.json.`, ""); mismatches++; continue; }
+    if (!c) { lines.push(`## ${f}`, "", `Unknown case \`${rec.case}\` — not a whole-return case (returns.json).`, ""); mismatches++; continue; }
     const result = evaluate(data, c.inputs, Object.keys(rec.values));
     lines.push(`## ${rec.calculator} — ${rec.case}`, "");
     lines.push(`Recorded version: ${rec.version}. Lines compared: ${Object.keys(rec.values).length}.`, "");

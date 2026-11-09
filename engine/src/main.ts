@@ -17,14 +17,15 @@
 //   node engine/dist/main.js test-serve            the web UI server's tests (synthetic returns, temporary dirs)
 
 import { readFileSync } from "node:fs";
-import "./year.js";
+import { NY_MODE } from "./year.js";
+import { readDefaultsFile, resolveCase, tableOf } from "./fixture-inputs.js";
 import { runBuild } from "./build.js";
 import { renderAll } from "./render.js";
 import { loadCanonical } from "./canonical.js";
 import { allTargets, evaluate } from "./eval.js";
 import { renderValuesSheet, renderValuesHtml, resultToJson, standingNotices } from "./output.js";
 import { runConjecture, runEicConjecture } from "./conjecture.js";
-import { coverageReport, evidenceReport, recordFixtures, testFixtures, reviewStage2, reviewStage3, reviewStage4, reviewStage5 } from "./fixtures.js";
+import { coverageReport, evidenceReport, testFixtures, reviewStage2, reviewStage3, reviewStage4, reviewStage5 } from "./fixtures.js";
 import { differential } from "./differential.js";
 import { compareEvaluators } from "./compare.js";
 import { runMutation } from "./mutate.js";
@@ -126,8 +127,29 @@ if (command === "review-stage5") {
 } else if (command === "conjecture") {
   runConjecture();
   runEicConjecture();
-} else if (command === "record-fixtures") {
-  recordFixtures();
+} else if (command === "fixture-inputs") {
+  // The inputs fixture cases are evaluated on, for tools outside the engine (tools/fixtures_year.py resolve_cases):
+  // --cases <file> holds [{id, file, inputs}] as a fixture file states them (`file`: the case file's name, which decides
+  // whether the case takes the defaults); prints {"cases": {<id>: <inputs>}}. --ny adds the New York defaults;
+  // --defaults <file> (repeatable) reads those defaults files instead of the year's.
+  const args = process.argv.slice(3);
+  let casesPath: string | null = null;
+  const defaultsFiles: string[] = [];
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--cases") casesPath = args[++i] ?? null;
+    else if (args[i] === "--defaults") defaultsFiles.push(args[++i] ?? "");
+    else { console.error(`fixture-inputs: unknown argument ${args[i]}`); process.exit(2); }
+  }
+  if (!casesPath) { console.error("usage: main.js fixture-inputs --cases <file> [--ny] [--defaults <file> ...]"); process.exit(2); }
+  const data = loadCanonical();
+  const j = NY_MODE ? "ny" : "federal";
+  const table = defaultsFiles.length ? tableOf(...defaultsFiles.map(readDefaultsFile)) : undefined;
+  const cases = JSON.parse(readFileSync(casesPath, "utf8")) as { id: string; file: string; inputs: Record<string, unknown> }[];
+  const out: Record<string, unknown> = {};
+  try {
+    for (const c of cases) out[c.id] = resolveCase(c, c.file, data, j, table);
+  } catch (e) { console.error(String(e instanceof Error ? e.message : e)); process.exit(1); }
+  process.stdout.write(JSON.stringify({ cases: out }) + "\n");
 } else if (command === "test-fixtures") {
   process.exit(await testFixtures() === 0 ? 0 : 1);
 } else if (command === "coverage") {
@@ -151,7 +173,7 @@ if (command === "review-stage5") {
   runCheckSelfTest();
 } else {
   console.error(
-    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] | test-serve | conjecture | record-fixtures | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules",
+    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] | test-serve | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules",
   );
   process.exit(2);
 }

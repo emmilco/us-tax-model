@@ -1,0 +1,84 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage12.car.mixed_sc_interest_prorated",
+      "covers": [
+        "carloan"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0163 regression, predicted from fr-2025-24154 p. 23, proposed § 1.163-16(g)(1) (\"Independently deductible interest is limited to interest that is QPVLI\") and (d)(2)(iii)(A) (pro rata allocation) before recording: a mixed loan, $20,000 financed of which $4,000 does not qualify (ratio 0.8), $424 of interest and $106 deducted on Schedule C: QPVLI $339.20, column (ii) the QPVLI part of the Schedule C interest $84.80, column (iii) $254.40 (the previous whole-amount subtraction gave $233.20). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "f8959.unsupported": true,
+        "sa.gifts": true,
+        "sb.form8938": true,
+        "person[taxpayer].f8889[hsa].unsupported": true,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$sc@person[taxpayer]": [
+          "biz_a",
+          "biz_b"
+        ],
+        "$scveh@person[taxpayer].sc[biz_a]": [
+          "car_1"
+        ],
+        "person[taxpayer].sc[biz_a].scveh[car_1].method": "actual",
+        "person[taxpayer].sc[biz_a].scveh[car_1].owned": true,
+        "person[taxpayer].sc[biz_a].scveh[car_1].miles_business": 10103,
+        "person[taxpayer].sc[biz_a].scveh[car_1].miles_other": 11619,
+        "$asset@person[taxpayer].sc[biz_a]": [
+          "item_1"
+        ],
+        "person[taxpayer].sc[biz_a].asset[item_1].class": "c37_11",
+        "person[taxpayer].sc[biz_a].asset[item_1].placed": "y2025",
+        "person[taxpayer].sc[biz_a].asset[item_1].cost": 2523800,
+        "person[taxpayer].sc[biz_a].asset[item_1].pct": 100,
+        "$asset@person[taxpayer].sc[biz_b]": [
+          "item_1"
+        ],
+        "person[taxpayer].sc[biz_b].asset[item_1].placed": "y2025",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 36474200,
+        "person[taxpayer].w2[emp_a].box2": 4012200,
+        "$sales": [
+          "s1"
+        ],
+        "sales[s1].box": "D",
+        "sales[s1].code": "B",
+        "sales[s1].proceeds": 4329600,
+        "sales[s1].reported_basis": 4206700,
+        "sales[s1].correct_basis": 1496700,
+        "$carloan": [
+          "vin_1",
+          "vin_2"
+        ],
+        "carloan[vin_1].requirements": true,
+        "carloan[vin_1].vehicle": true,
+        "carloan[vin_1].interest": 42400,
+        "carloan[vin_1].mixed": true,
+        "carloan[vin_1].financed": 2000000,
+        "carloan[vin_1].nonqualifying": 400000,
+        "carloan[vin_1].col_ii_input": 10600
+      },
+      "expect": {
+        "carloan[vin_1].qpvli": {
+          "kind": "money",
+          "cents": 33920
+        },
+        "carloan[vin_1].col_ii": {
+          "kind": "money",
+          "cents": 8480
+        },
+        "carloan[vin_1].col_iii": {
+          "kind": "money",
+          "cents": 25440
+        }
+      }
+    }
+  ]
+}

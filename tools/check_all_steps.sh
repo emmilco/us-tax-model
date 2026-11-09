@@ -135,6 +135,7 @@ step citations python3 tools/citations.py --strict "$@"
 step citations_self_test python3 tools/citations.py --self-test "$@"
 step year_diff_self_test python3 tools/year_diff.py --self-test "$@"
 step fixtures_year_self_test python3 tools/fixtures_year.py --self-test
+step defaults_guard_self_test node tools/defaults_guard.mjs --self-test
 step engine_compare_tests python3 -I tools/engines/test_compare.py
 step coverage_tree_self_test python3 tools/coverage/tree.py --self-test "$@"
 # Every candidate gate situation has a share of all returns in [0, 1] and a source, and its report is current.

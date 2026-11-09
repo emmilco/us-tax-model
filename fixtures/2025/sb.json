@@ -1,0 +1,418 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage4.refuse.sb.unsupported",
+      "walk": "stage4",
+      "covers": [
+        "sb.unsupported"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "An interest payer with $1 of interest: the special-treatment screen is asked only when taxable interest or ordinary dividends are above zero.",
+      "inputs": {
+        "sb.unsupported": true,
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 100,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "sb.line4": {
+          "kind": "refusal",
+          "gate": "sb.unsupported_if_income",
+          "form": "Schedule B special treatment / Form 8815",
+          "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line2": {
+          "kind": "refusal",
+          "gate": "sb.unsupported_if_income",
+          "form": "Schedule B special treatment / Form 8815",
+          "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line3": {
+          "kind": "refusal",
+          "gate": "sb.unsupported_if_income",
+          "form": "Schedule B special treatment / Form 8815",
+          "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line6": {
+          "kind": "refusal",
+          "gate": "sb.unsupported_if_income",
+          "form": "Schedule B special treatment / Form 8815",
+          "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.sb.fbar_required",
+      "walk": "stage4",
+      "covers": [
+        "sb.fbar_required"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "sb.fbar_required": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "sb.line4": {
+          "kind": "refusal",
+          "gate": "sb.fbar_required",
+          "form": "FinCEN Form 114 (FBAR)",
+          "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line2": {
+          "kind": "refusal",
+          "gate": "sb.fbar_required",
+          "form": "FinCEN Form 114 (FBAR)",
+          "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line3": {
+          "kind": "refusal",
+          "gate": "sb.fbar_required",
+          "form": "FinCEN Form 114 (FBAR)",
+          "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line6": {
+          "kind": "refusal",
+          "gate": "sb.fbar_required",
+          "form": "FinCEN Form 114 (FBAR)",
+          "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.sb.form8938",
+      "walk": "stage4",
+      "covers": [
+        "sb.form8938"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "sb.form8938": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "sb.line4": {
+          "kind": "refusal",
+          "gate": "sb.form8938",
+          "form": "Form 8938",
+          "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line2": {
+          "kind": "refusal",
+          "gate": "sb.form8938",
+          "form": "Form 8938",
+          "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line3": {
+          "kind": "refusal",
+          "gate": "sb.form8938",
+          "form": "Form 8938",
+          "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line6": {
+          "kind": "refusal",
+          "gate": "sb.form8938",
+          "form": "Form 8938",
+          "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.sb.line8",
+      "walk": "stage4",
+      "covers": [
+        "sb.line8"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "sb.line8": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "sb.line4": {
+          "kind": "refusal",
+          "gate": "sb.line8",
+          "form": "Form 3520 / Form 3520-A",
+          "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line2": {
+          "kind": "refusal",
+          "gate": "sb.line8",
+          "form": "Form 3520 / Form 3520-A",
+          "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line3": {
+          "kind": "refusal",
+          "gate": "sb.line8",
+          "form": "Form 3520 / Form 3520-A",
+          "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line6": {
+          "kind": "refusal",
+          "gate": "sb.line8",
+          "form": "Form 3520 / Form 3520-A",
+          "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.sb.foreign_no_filing",
+      "walk": "stage4",
+      "covers": [
+        "sb.foreign_no_filing"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Explicitly calculated regression expectations; human review pending.",
+      "inputs": {
+        "sb.line7a": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "sb.partIII": {
+          "kind": "bool",
+          "value": true
+        },
+        "sb.line4": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.sb.unsupported.simultaneous",
+      "walk": "stage4",
+      "covers": [
+        "sb.unsupported"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "An interest payer with $1 of interest: the special-treatment screen is asked only when taxable interest or ordinary dividends are above zero.",
+      "inputs": {
+        "sb.unsupported": true,
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 100,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "sb.line4": {
+          "kind": "refusal",
+          "gate": "sb.unsupported_if_income",
+          "form": "Schedule B special treatment / Form 8815",
+          "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line2": {
+          "kind": "refusal",
+          "gate": "sb.unsupported_if_income",
+          "form": "Schedule B special treatment / Form 8815",
+          "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line3": {
+          "kind": "refusal",
+          "gate": "sb.unsupported_if_income",
+          "form": "Schedule B special treatment / Form 8815",
+          "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        },
+        "sb.line6": {
+          "kind": "refusal",
+          "gate": "sb.unsupported_if_income",
+          "form": "Schedule B special treatment / Form 8815",
+          "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends.",
+          "cite": {
+            "doc": "i1040sb",
+            "tax_year": 2025,
+            "revision": "TY2025; printed April 23, 2025",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
+            "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,11 +1,11 @@
-// Fixtures: covering cases over the Stage 1 slice.
+// Fixtures: the year's covering cases (fixtures/<year>/<doc>.json, one file per form tested, plus the walked whole
+// returns, the class M and mutation cases), each stating only the inputs its scenario does not take from the
+// test-data defaults (fixture-inputs.ts).
 //
-// `record-fixtures` fills each case's expected values from the evaluator (a
-// convenience for recording; the values are then frozen in the file).
 // `test-fixtures` runs every case THROUGH THE COMMAND-LINE PROGRAM and
 // compares. `coverage` reports which case takes each choose-guard.
 
-import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
@@ -16,16 +16,18 @@ import { allTargets, evaluate } from "./eval.js";
 import { differentialClassC } from "./differential.js";
 import type { FormDoc, Inputs, Line, LineRef } from "./types.js";
 import type { Value } from "./eval.js";
-import { NY_MODE, YEAR, YEAR_ARGS, nyPath, reportName, reportPath, yearPath } from "./year.js";
-import { resolveInputs } from "./fixture-inputs.js";
+import { NY_MODE, YEAR, YEAR_ARGS, reportName, reportPath, yearPath } from "./year.js";
+import { loadFixtureCases } from "./fixture-inputs.js";
+export { caseFiles, loadFixtureCases, walkedCases } from "./fixture-inputs.js";
 import { mapPool, run } from "./pool.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
-const CASES_PATH = yearPath("fixtures", "stage1.json");
 const DIST_MAIN = join(ROOT, "engine", "dist", "main.js");
 
 export interface FixtureCase {
   id: string;
+  /** The interview profile whose walk this case is a path of (build's interview path checks, interview-rules). */
+  walk?: "social-security" | "sales" | "stage4" | "full";
   covers: string[];
   evidence: string;
   evidence_note?: string;
@@ -38,42 +40,9 @@ export interface FixtureFile {
   cases: FixtureCase[];
 }
 
-// Every fixture of the year, its inputs resolved (parameter-relative ones: fixture-inputs.ts).
+// Every fixture of the year (--ny: the New York fixtures, fixtures/ny/<year>/), inputs resolved.
 export function loadCases(): FixtureFile {
-  // --ny: the New York fixtures (fixtures/ny/<year>/*.json) only; otherwise the federal fixtures, as before.
-  const dir = NY_MODE ? nyPath("fixtures") : yearPath("fixtures");
-  const params = loadCanonical().params;
-  const cases = readdirSync(dir).filter(f => NY_MODE ? f.endsWith(".json") : /^(stage[0-9]+|classm|classm\.[a-z]+|mutation)\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases);
-  return { tax_year: YEAR, cases: cases.map(c => ({ ...c, inputs: resolveInputs(c.inputs, params, c.id) })) };
-}
-
-function saveCases(file: FixtureFile): void {
-  writeFileSync(CASES_PATH, JSON.stringify(file, null, 2) + "\n");
-}
-
-const VALUE_KINDS = new Set(["money", "bool", "enum"]);
-
-export function recordFixtures(): void {
-  const data = loadCanonical();
-  const file = JSON.parse(readFileSync(CASES_PATH, "utf8")) as FixtureFile;
-  const targets = data.forms.filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
-  for (const c of file.cases) {
-    const result = evaluate(data, c.inputs, targets);
-    const expect: Record<string, Value> = {};
-    for (const [key, der] of [...result.derivations.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
-      if (VALUE_KINDS.has(der.value.kind)) {
-        expect[key] = der.value;
-      }
-    }
-    // Keep only lines belonging to f1040 and qdcg (the Stage 1 slice facets).
-    const filtered: Record<string, Value> = {};
-    for (const [key, value] of Object.entries(expect)) {
-      if (key.startsWith("f1040.") || key.startsWith("qdcg.")) filtered[key] = value;
-    }
-    c.expect = filtered;
-  }
-  saveCases(file);
-  console.log(`recorded expected values for ${file.cases.length} cases in fixtures/${YEAR}/stage1.json`);
+  return { tax_year: YEAR, cases: loadFixtureCases(NY_MODE ? "ny" : "federal", loadCanonical()).map(({ file: _file, ...c }) => c as FixtureCase) };
 }
 
 export async function testFixtures(): Promise<number> {

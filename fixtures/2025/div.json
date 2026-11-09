@@ -1,0 +1,31 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage4.mut.div_box3_basis_reconciled",
+      "walk": "stage4",
+      "covers": [
+        "div",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the basis_reconciled operand of div.unsupported), predicted before evaluating: stage4.refuse.div.basis (Form 1099-DIV box 3 $1.00) with basis reductions applied to records with no distribution exceeding basis. A nondividend distribution that only reduces basis is not taxed (f1099div Instructions for Recipient, box 3), so none of the unsupported conditions applies: no section 897, liquidation or unreconciled box 3 amount.",
+      "inputs": {
+        "div.any": true,
+        "div.box3": 100,
+        "div.basis_reconciled": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000
+      },
+      "expect": {
+        "div.unsupported": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    }
+  ]
+}

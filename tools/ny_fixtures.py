@@ -24,6 +24,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 import ny_predict  # noqa: E402
+from fixture_inputs import load_cases  # noqa: E402
 
 NODE = ["node", str(ROOT / "engine" / "dist" / "main.js")]
 OUT = ROOT / "fixtures" / "ny" / "2025" / "it201.json"
@@ -40,15 +41,24 @@ NO = {"state_resident": True, "city_resident": True, "special_accrual": False, "
       "abode_part_year": False, "prior_full_year": True, "est_late": False}
 
 
-def base(file, case_id):
-    d = json.loads((ROOT / "fixtures" / "2025" / file).read_text())
-    inputs = copy.deepcopy(next(c for c in d["cases"] if c["id"] == case_id)["inputs"])
+_FEDERAL = None
+
+
+def federal_inputs(case_id):
+    """A federal fixture case's inputs as it is evaluated (tools/fixture_inputs.py: parameters and test-data defaults)."""
+    global _FEDERAL
+    if _FEDERAL is None:
+        _FEDERAL = {c["id"]: c["inputs"] for c in load_cases(2025)}
+    return copy.deepcopy(_FEDERAL[case_id])
+
+
+def base(case_id):
+    inputs = federal_inputs(case_id)
     if case_id != "stage5.return.owed":
         # Answers the federal full interview asks that this base (written for a narrower federal profile) does not
         # carry: the whole-return base's answers to return-level questions, where the key is missing. None of them is
         # about a person, an entry or an amount that reaches the New York lines.
-        whole = next(c for c in json.loads((ROOT / "fixtures" / "2025" / "stage5.json").read_text())["cases"]
-                     if c["id"] == "stage5.return.owed")["inputs"]
+        whole = federal_inputs("stage5.return.owed")
         for k, v in whole.items():
             if k not in inputs and not k.startswith(("$", "person[", "interest[", "div[", "sales[", "dependent[")):
                 inputs[k] = v
@@ -61,12 +71,12 @@ def base(file, case_id):
     return inputs
 
 
-BASES = {  # status: (file, case id, the W-2 whose wages are varied)
-    "single": ("stage5.json", "stage5.return.owed", "person[taxpayer].w2[emp_a]"),
-    "mfj": ("stage15.json", "stage15.f5695.s2", None),
-    "hoh": ("stage8.json", "stage8.hoh.parent.test1", None),
-    "qss": ("stage21.json", "stage21.pending1.qss_valid_computes", None),
-    "mfs": ("stage4.json", "stage4.standard.mfs", None),
+BASES = {  # status: (case id, the W-2 whose wages are varied)
+    "single": ("stage5.return.owed", "person[taxpayer].w2[emp_a]"),
+    "mfj": ("stage15.f5695.s2", None),
+    "hoh": ("stage8.hoh.parent.test1", None),
+    "qss": ("stage21.pending1.qss_valid_computes", None),
+    "mfs": ("stage4.standard.mfs", None),
 }
 
 
@@ -144,10 +154,9 @@ def more_parents(inputs, n):
     inputs["$dependent"] = ["parent"] + [f"parent{i}" for i in range(2, n + 1)]
 
 
-def fixture_inputs(file, case_id, keep):
+def fixture_inputs(case_id, keep):
     """The inputs of a federal fixture whose keys pass `keep`."""
-    case = next(c for c in json.loads((ROOT / "fixtures" / "2025" / file).read_text())["cases"] if c["id"] == case_id)
-    return {k: v for k, v in case["inputs"].items() if keep(k)}
+    return {k: v for k, v in federal_inputs(case_id).items() if keep(k)}
 
 
 def gated_federal(gate):
@@ -156,12 +165,12 @@ def gated_federal(gate):
     pension = (" The federal return carries one Form 1099-R pension (box 1 $12,000, box 5 $1,200; fixture stage10.plan.box5), so "
                "line 10 is above zero and the screen is asked (ny_it201.has_pension_income).")
     if gate in ("gate.line26", "gate.line29"):
-        return fixture_inputs("stage10.json", "stage10.plan.box5", lambda k: "retirement" in k), None, pension
+        return fixture_inputs("stage10.plan.box5", lambda k: "retirement" in k), None, pension
     if gate == "gate.line28":
         return ({"interest[bank_a].amount": 10000}, None,
                 " The interest payer reports $100, so line 2 is not zero and the screen is asked (ny_it201.has_line28_income).")
     if gate == "gate.mctmt":
-        fed = fixture_inputs("stage14.json", "stage14.f8959.se_above_threshold", lambda k: k.startswith((
+        fed = fixture_inputs("stage14.f8959.se_above_threshold", lambda k: k.startswith((
             "person[taxpayer].sc[", "$sc@person[taxpayer]", "$scveh@person[taxpayer]", "$asset@person[taxpayer]",
             "$ltc@person[taxpayer]")) or k == "person[taxpayer].se_screen")
         fed["person[taxpayer].sc[big].line1"] = 8000000
@@ -185,8 +194,8 @@ def gated_federal(gate):
 
 def make_case(cid, status, wages, ans=None, w2s=((0, 0),), line75=0, line79=0, prior_tax=0, note="", refuse=None, evidence=None, covers=None, parents=None,
               fed_inputs=None, note_after=""):
-    file, case_id, _ = BASES[status]
-    inputs = base(file, case_id)
+    case_id, _ = BASES[status]
+    inputs = base(case_id)
     if parents:
         more_parents(inputs, parents)
     if wages is not None:
@@ -258,8 +267,8 @@ def wages_for_taxable(status, target_ti, extra=0):
     """W-2 wages that put New York taxable income (line 38) at target_ti on the base return, found by evaluating the
     federal return once at a probe amount and shifting the wages by the difference (the base returns' other income
     and deductions do not depend on wages in the ranges used)."""
-    file, case_id, _ = BASES[status]
-    inputs = base(file, case_id)
+    case_id, _ = BASES[status]
+    inputs = base(case_id)
     k = w2_key(inputs)
     probe = 10000000
     set_wages(inputs, probe)

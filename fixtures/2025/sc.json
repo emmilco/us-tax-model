@@ -1,0 +1,1355 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage14.sc.basic",
+      "covers": [
+        "sc",
+        "se",
+        "s1",
+        "f8995",
+        "qbi"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $60,000 less returns $1,000 (line 3 $59,000); cost of goods sold $2,000 + $10,000 - $3,000 = $9,000 (lines 35-42, line 4); gross profit $50,000; other income $500 (line 7 $50,500); expenses advertising $1,200, supplies $800, meals $600 at 50% and $1,000 at 80% (line 24b $300 + $800 = $1,100), utilities $400, other $250: line 28 $3,750; line 31 $46,750. Schedule SE: $46,750 x 92.35% = $43,173.63 (line 4a, 4c, 6); line 10 12.4% = $5,353.53; line 11 2.9% = $1,252.04; line 12 $6,605.57; line 13 $3,302.79 (half-up). AGI $46,750 - $3,302.79 = $43,447.21. QBI $43,447.21, 20% = $8,689.44; taxable income before QBI $43,447.21 - $15,750 = $27,697.21, 20% = $5,539.44 (line 14); line 15 the smaller, $5,539.44. Schedule 2 line 21 is line 4, $6,605.57 (no Additional Medicare Tax or NIIT). Shown state (T-232, predicted from the instructions before evaluating): AGI of $43,447.21 with no qualifying children fails EIC Step 1 (i1040gi p. 40, \"less than $19,104\"), so Step 5 and Worksheet B are not reached although the filer is self-employed (i1040gi p. 47, Worksheet B, \"Use this worksheet if you answered 'Yes' to Step 5, question 2\").",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 6000000,
+        "person[taxpayer].sc[shop].line2": 100000,
+        "person[taxpayer].sc[shop].line6": 50000,
+        "person[taxpayer].sc[shop].line8": 120000,
+        "person[taxpayer].sc[shop].line22": 80000,
+        "person[taxpayer].sc[shop].meals_50": 60000,
+        "person[taxpayer].sc[shop].meals_80": 100000,
+        "person[taxpayer].sc[shop].line25": 40000,
+        "person[taxpayer].sc[shop].line48": 25000,
+        "person[taxpayer].sc[shop].line35": 200000,
+        "person[taxpayer].sc[shop].line36": 1000000,
+        "person[taxpayer].sc[shop].line41": 300000
+      },
+      "expect": {
+        "person[taxpayer].sc[shop].line3": {
+          "kind": "money",
+          "cents": 5900000
+        },
+        "person[taxpayer].sc[shop].line4": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "person[taxpayer].sc[shop].line7": {
+          "kind": "money",
+          "cents": 5050000
+        },
+        "person[taxpayer].sc[shop].line24b": {
+          "kind": "money",
+          "cents": 110000
+        },
+        "person[taxpayer].sc[shop].line28": {
+          "kind": "money",
+          "cents": 375000
+        },
+        "person[taxpayer].sc[shop].line31": {
+          "kind": "money",
+          "cents": 4675000
+        },
+        "person[taxpayer].se_line12": {
+          "kind": "money",
+          "cents": 660557
+        },
+        "s1.line15": {
+          "kind": "money",
+          "cents": 330279
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 4344721
+        },
+        "f8995.line2": {
+          "kind": "money",
+          "cents": 4344721
+        },
+        "f8995.line5": {
+          "kind": "money",
+          "cents": 868944
+        },
+        "f8995.line14": {
+          "kind": "money",
+          "cents": 553944
+        },
+        "f8995.line15": {
+          "kind": "money",
+          "cents": 553944
+        },
+        "f1040.line13a": {
+          "kind": "money",
+          "cents": 553944
+        },
+        "s2.line21": {
+          "kind": "money",
+          "cents": 660557
+        },
+        "eic.show_wsb4b": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage14.sc.meals_full",
+      "covers": [
+        "sc",
+        "se",
+        "s1",
+        "f8995",
+        "qbi"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.sc.basic with $750 of meals not subject to the 50% limit (amb.2025.meals_full_exceptions, owner, T-042; i1040sc p. 10, Line 24b, Amount of deduction), deducted in full: line 24b $300 + $800 + $750 = $1,850; line 28 $4,500; line 31 $46,000. Schedule SE: $46,000 x 92.35% = $42,481.00; line 10 12.4% = $5,267.64; line 11 2.9% = $1,231.95; line 12 $6,499.59; line 13 $3,249.80 (half-up). AGI $46,000 - $3,249.80 = $42,750.20. QBI $42,750.20, 20% = $8,550.04; taxable income before QBI $42,750.20 - $15,750 = $27,000.20, 20% = $5,400.04; line 15 the smaller, $5,400.04. Schedule 2 line 21 is line 4, $6,499.59.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 6000000,
+        "person[taxpayer].sc[shop].line2": 100000,
+        "person[taxpayer].sc[shop].line6": 50000,
+        "person[taxpayer].sc[shop].line8": 120000,
+        "person[taxpayer].sc[shop].line22": 80000,
+        "person[taxpayer].sc[shop].meals_50": 60000,
+        "person[taxpayer].sc[shop].meals_80": 100000,
+        "person[taxpayer].sc[shop].meals_100": 75000,
+        "person[taxpayer].sc[shop].line25": 40000,
+        "person[taxpayer].sc[shop].line48": 25000,
+        "person[taxpayer].sc[shop].line35": 200000,
+        "person[taxpayer].sc[shop].line36": 1000000,
+        "person[taxpayer].sc[shop].line41": 300000
+      },
+      "expect": {
+        "person[taxpayer].sc[shop].line24b": {
+          "kind": "money",
+          "cents": 185000
+        },
+        "person[taxpayer].sc[shop].line28": {
+          "kind": "money",
+          "cents": 450000
+        },
+        "person[taxpayer].sc[shop].line31": {
+          "kind": "money",
+          "cents": 4600000
+        },
+        "person[taxpayer].se_line12": {
+          "kind": "money",
+          "cents": 649959
+        },
+        "s1.line15": {
+          "kind": "money",
+          "cents": 324980
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 4275020
+        },
+        "f8995.line15": {
+          "kind": "money",
+          "cents": 540004
+        },
+        "f1040.line13a": {
+          "kind": "money",
+          "cents": 540004
+        },
+        "s2.line21": {
+          "kind": "money",
+          "cents": 649959
+        }
+      }
+    },
+    {
+      "id": "stage14.sc.loss",
+      "covers": [
+        "sc",
+        "se",
+        "f8995"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: wages $50,000; a business with receipts $5,000 and office expense $15,000: line 31 a loss of $10,000 (all investment at risk, line 32a). Schedule SE: line 3 -$10,000, line 4a -$10,000, less than $400, no tax. Schedule 1 line 3 -$10,000, line 10 -$10,000; total income and AGI $40,000. QBI line 2 -$10,000; line 4 zero; line 16 carryforward -$10,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "job"
+        ],
+        "$sc@person[taxpayer]": [
+          "new"
+        ],
+        "person[taxpayer].w2[job].box1": 5000000,
+        "person[taxpayer].w2[job].box3": 5000000,
+        "person[taxpayer].w2[job].box4": 310000,
+        "person[taxpayer].w2[job].box5": 5000000,
+        "person[taxpayer].w2[job].box6": 72500,
+        "person[taxpayer].sc[new].line1": 500000,
+        "person[taxpayer].sc[new].line18": 1500000
+      },
+      "expect": {
+        "person[taxpayer].sc[new].line31": {
+          "kind": "money",
+          "cents": -1000000
+        },
+        "s1.line3": {
+          "kind": "money",
+          "cents": -1000000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": -1000000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "person[taxpayer].se_line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8995.line2": {
+          "kind": "money",
+          "cents": -1000000
+        },
+        "f8995.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8995.line16": {
+          "kind": "money",
+          "cents": -1000000
+        }
+      }
+    },
+    {
+      "id": "stage14.ho.basic",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: line 29 $20,000; 200 square feet x $5 = $1,000 (worksheet lines 2 to 5); line 30 $1,000; line 31 $19,000. Mutation-score assertion (T-159): the smaller of line 1 and line 4 ($1,000) with no section 179 election (i1040sc Simplified Method Worksheet line 5, \"Enter the smaller of line 1 or line 4\").",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "home"
+        ],
+        "person[taxpayer].sc[home].line1": 2000000,
+        "person[taxpayer].sc[home].ho_uses": true,
+        "person[taxpayer].sc[home].ho_sqft": 200
+      },
+      "expect": {
+        "person[taxpayer].sc[home].ho_line4": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].sc[home].line30": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].sc[home].line31": {
+          "kind": "money",
+          "cents": 1900000
+        },
+        "person[taxpayer].sc[home].ho_line5_lim": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "stage14.ho.refuse_two_businesses",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.ho.basic with a second business of the same person that also claims the business use of the home. The 300 square feet apply to all the businesses you conduct in your home and must be allocated among them (i1040sc p. 10, Simplified method); the owner chose to refuse a person with more than one home-office business, so line 30 of each refuses through sc.ho_multi.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "home",
+          "shop"
+        ],
+        "person[taxpayer].sc[home].line1": 2000000,
+        "person[taxpayer].sc[home].ho_uses": true,
+        "person[taxpayer].sc[shop].line1": 2000000,
+        "person[taxpayer].sc[shop].ho_uses": true
+      },
+      "expect": {
+        "person[taxpayer].sc[home].line30": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[home].ho_multi",
+          "form": "The simplified method for more than one of your businesses in your home (300 square feet allocated among them)",
+          "remedy": "The 300 square feet apply to all the businesses you conduct in your home together and must be allocated among them; that is outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "p. 10, Simplified method, \"You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home ... Allocate the actual square footage used (up to the maximum 300 square feet) among your qualified business uses\"",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].sc[shop].line30": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[shop].ho_multi",
+          "form": "The simplified method for more than one of your businesses in your home (300 square feet allocated among them)",
+          "remedy": "The 300 square feet apply to all the businesses you conduct in your home together and must be allocated among them; that is outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "p. 10, Simplified method, \"You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home ... Allocate the actual square footage used (up to the maximum 300 square feet) among your qualified business uses\"",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.ho.second_business_no_ho",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.ho.basic with a second business of the same person, with the same income and expenses, that claims no business use of the home: one home-office business, so no refusal. The first business: line 29 $20,000, 200 square feet x $5 = $1,000 on line 30, line 31 $19,000; the second: line 30 zero, line 31 $20,000.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "home",
+          "shop"
+        ],
+        "person[taxpayer].sc[home].line1": 2000000,
+        "person[taxpayer].sc[home].ho_uses": true,
+        "person[taxpayer].sc[home].ho_sqft": 200,
+        "person[taxpayer].sc[shop].line1": 2000000
+      },
+      "expect": {
+        "person[taxpayer].sc[home].line30": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].sc[home].line31": {
+          "kind": "money",
+          "cents": 1900000
+        },
+        "person[taxpayer].sc[shop].line30": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[shop].line31": {
+          "kind": "money",
+          "cents": 2000000
+        }
+      }
+    },
+    {
+      "id": "stage14.ho.cap_300",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 400 square feet is more than 300, so line 2 is 300 and line 4 $1,500; line 30 $1,500; line 31 $18,500.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "home"
+        ],
+        "person[taxpayer].sc[home].line1": 2000000,
+        "person[taxpayer].sc[home].ho_uses": true,
+        "person[taxpayer].sc[home].ho_sqft": 400
+      },
+      "expect": {
+        "person[taxpayer].sc[home].ho_line4": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "person[taxpayer].sc[home].line30": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "person[taxpayer].sc[home].line31": {
+          "kind": "money",
+          "cents": 1850000
+        }
+      }
+    },
+    {
+      "id": "stage14.ho.gross_limit",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: line 29 $600; line 4 $1,500; no section 179 election, so line 5 is the smaller of line 1 ($600) or line 4: $600; line 31 zero. Mutation-score assertions (T-159): no section 179 election, so only the gross income limitation applies (line 5 is the smaller of line 1, $600, and line 4, $1,500); line 31 is $0, not a loss.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "home"
+        ],
+        "person[taxpayer].sc[home].line1": 60000,
+        "person[taxpayer].sc[home].ho_uses": true,
+        "person[taxpayer].sc[home].ho_sqft": 300
+      },
+      "expect": {
+        "person[taxpayer].sc[home].ho_line4": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "person[taxpayer].sc[home].line30": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "person[taxpayer].sc[home].line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[home].ho_both_limits": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].sc[home].loss": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage14.ho.refuse_8829",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: the home office screen is answered Yes (actual expenses on Form 8829 or a special simplified-method case): the square footage line refuses with Form 8829 and so do line 30 and line 31.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "home"
+        ],
+        "person[taxpayer].sc[home].line1": 2000000,
+        "person[taxpayer].sc[home].ho_uses": true,
+        "person[taxpayer].sc[home].ho_other": true
+      },
+      "expect": {
+        "person[taxpayer].sc[home].line30": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[home].ho_screened",
+          "form": "Form 8829, or the simplified method with daycare, shared, part-year or multiple homes",
+          "remedy": "The actual-expense method (Form 8829) and the special simplified-method cases are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 10-13, Line 30, the Simplified Method Worksheet and its instructions",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].sc[home].line31": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[home].ho_screened",
+          "form": "Form 8829, or the simplified method with daycare, shared, part-year or multiple homes",
+          "remedy": "The actual-expense method (Form 8829) and the special simplified-method cases are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 10-13, Line 30, the Simplified Method Worksheet and its instructions",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.ho.refuse_two_limits",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: line 29 before section 179 is $2,000; a $1,000 section 179 election leaves $1,000, less than the $1,500 home office amount, so the two taxable income limits of Pub. 946 interact and line 30 refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "home"
+        ],
+        "person[taxpayer].sc[home].line1": 200000,
+        "person[taxpayer].sc[home].ho_uses": true,
+        "person[taxpayer].sc[home].ho_sqft": 300,
+        "$asset@person[taxpayer].sc[home]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[home].asset[desk].placed": "y2025",
+        "person[taxpayer].sc[home].asset[desk].cost": 100000,
+        "person[taxpayer].sc[home].asset[desk].pct": 100,
+        "person[taxpayer].sc[home].asset[desk].s179": 100000,
+        "person[taxpayer].sc[home].asset[desk].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[home].line30": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[home].ho_both_limits",
+          "form": "Section 179 deduction with a home office deduction limited by gross income (Pub. 946, two different taxable income limits)",
+          "remedy": "Figuring two income-based limits in the order of Pub. 946 is outside this tool.",
+          "cite": {
+            "doc": "p946",
+            "locator": "p. 19, Business Income Limit, Two different taxable income limits, Steps 1 to 8",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.standard",
+      "covers": [
+        "scveh",
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 10,000 business miles x $0.70 = $7,000 plus parking and tolls $150: line 9 $7,150; line 31 $30,000 - $7,150 = $22,850.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "van"
+        ],
+        "person[taxpayer].sc[van].line1": 3000000,
+        "$scveh@person[taxpayer].sc[van]": [
+          "car"
+        ],
+        "person[taxpayer].sc[van].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[van].scveh[car].parking": 15000,
+        "person[taxpayer].sc[van].scveh[car].smr_ok": true
+      },
+      "expect": {
+        "person[taxpayer].sc[van].scveh[car].line9": {
+          "kind": "money",
+          "cents": 715000
+        },
+        "person[taxpayer].sc[van].line9": {
+          "kind": "money",
+          "cents": 715000
+        },
+        "person[taxpayer].sc[van].line31": {
+          "kind": "money",
+          "cents": 2285000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.leased_actual",
+      "covers": [
+        "scveh",
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a leased car on actual expenses, 50% business: operating costs $2,000 x 50% = $1,000 on line 9; lease payments $6,000 x 50% = $3,000 on line 20a; no depreciation.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "rides"
+        ],
+        "person[taxpayer].sc[rides].line1": 10000000,
+        "$scveh@person[taxpayer].sc[rides]": [
+          "car"
+        ],
+        "person[taxpayer].sc[rides].scveh[car].method": "actual",
+        "person[taxpayer].sc[rides].scveh[car].miles_business": 5000,
+        "person[taxpayer].sc[rides].scveh[car].miles_other": 5000,
+        "person[taxpayer].sc[rides].scveh[car].operating": 200000,
+        "person[taxpayer].sc[rides].scveh[car].lease": 600000
+      },
+      "expect": {
+        "person[taxpayer].sc[rides].scveh[car].line9": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].sc[rides].line20a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].sc[rides].line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.refuse_multi",
+      "covers": [
+        "s179:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $10,000 section 179 election limited by business income ($3,000) on a return with two Schedules C: the allowed deduction differs from the election and must be allocated between the businesses, which is refused at each business's section 179 line.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk",
+          "shop"
+        ],
+        "person[taxpayer].sc[desk].line1": 300000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].s179": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].s179_allowed": {
+          "kind": "refusal",
+          "gate": "s179.multi",
+          "form": "Section 179 deduction to allocate among more than one business",
+          "remedy": "Allocating a limited or carried-over section 179 deduction among businesses is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 5, Line 12",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].sc[shop].s179_allowed": {
+          "kind": "refusal",
+          "gate": "s179.multi",
+          "form": "Section 179 deduction to allocate among more than one business",
+          "remedy": "Allocating a limited or carried-over section 179 deduction among businesses is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 5, Line 12",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.sehi.basic",
+      "covers": [
+        "sc",
+        "s1",
+        "f8995"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $50,000, health insurance $6,000 under the business: Form 7206 line 4 $50,000, line 5 $50,000, line 7 the whole of line 13 of Schedule SE ($3,532.39), line 13 $46,467.61; line 14 the smaller, $6,000; Schedule 1 line 17 $6,000. QBI is reduced by the deduction: $50,000 - $3,532.39 - $6,000 = $40,467.61.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line1": 5000000,
+        "person[taxpayer].sc[firm].hi_uses": true,
+        "person[taxpayer].sc[firm].f7206_line1": 600000
+      },
+      "expect": {
+        "person[taxpayer].sc[firm].f7206_line14": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1.line17": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].sc[firm].qbi": {
+          "kind": "money",
+          "cents": 4046761
+        }
+      }
+    },
+    {
+      "id": "stage14.sehi.ltc",
+      "covers": [
+        "ltc",
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: premiums $4,000 and qualified long-term care for two people: $2,500 paid for a person aged 51 to 60 (limited to $1,800) and $3,000 for a person 71 or older (limit $6,020, so $3,000): line 2 $4,800; line 3 $8,800; line 14 $8,800 (profit $60,000).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line1": 6000000,
+        "person[taxpayer].sc[firm].hi_uses": true,
+        "person[taxpayer].sc[firm].f7206_line1": 400000,
+        "$ltc@person[taxpayer].sc[firm]": [
+          "mom",
+          "dad"
+        ],
+        "person[taxpayer].sc[firm].ltc[mom].payments": 250000,
+        "person[taxpayer].sc[firm].ltc[mom].age": "to60",
+        "person[taxpayer].sc[firm].ltc[dad].payments": 300000,
+        "person[taxpayer].sc[firm].ltc[dad].age": "over70"
+      },
+      "expect": {
+        "person[taxpayer].sc[firm].f7206_line2": {
+          "kind": "money",
+          "cents": 480000
+        },
+        "person[taxpayer].sc[firm].f7206_line14": {
+          "kind": "money",
+          "cents": 880000
+        }
+      }
+    },
+    {
+      "id": "stage14.sehi.two_businesses",
+      "covers": [
+        "sc",
+        "f8995"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: two businesses with profits of $30,000 (insurance established under it, $5,000) and $10,000: Schedule SE on $40,000, line 13 $2,825.91; Form 7206 line 6 0.75; line 7 $2,825.91 x 0.75 = $2,119.43; line 8 $27,880.57; line 14 $5,000. QBI of the main business $30,000 - $2,119.43 - $5,000 = $22,880.57; of the other $10,000 - $706.48 = $9,293.52.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "main",
+          "side"
+        ],
+        "person[taxpayer].sc[main].line1": 3000000,
+        "person[taxpayer].sc[main].hi_uses": true,
+        "person[taxpayer].sc[main].f7206_line1": 500000,
+        "person[taxpayer].sc[side].line1": 1000000
+      },
+      "expect": {
+        "person[taxpayer].sc[main].f7206_line7": {
+          "kind": "money",
+          "cents": 211943
+        },
+        "person[taxpayer].sc[main].f7206_line14": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].sc[main].qbi": {
+          "kind": "money",
+          "cents": 2288057
+        },
+        "person[taxpayer].sc[side].qbi": {
+          "kind": "money",
+          "cents": 929352
+        }
+      }
+    },
+    {
+      "id": "stage14.sehi.refuse_ptc",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: Marketplace insurance with the premium tax credit: Form 7206 line 1 refuses (Pub. 974).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].sc[firm].line1": 5000000,
+        "person[taxpayer].sc[firm].hi_uses": true,
+        "person[taxpayer].sc[firm].hi_screen": true,
+        "person[taxpayer].sc[firm].f7206_line1": 600000
+      },
+      "expect": {
+        "person[taxpayer].sc[firm].f7206_line1": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[firm].hi_screened",
+          "form": "Self-employed health insurance with the premium tax credit (Pub. 974), Form 2555, an S corporation, an optional method or retirement plan payments",
+          "remedy": "This health insurance deduction is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Schedule 1, line 17, Exceptions; i7206 pp. 1–2",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line17": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[firm].hi_screened",
+          "form": "Self-employed health insurance with the premium tax credit (Pub. 974), Form 2555, an S corporation, an optional method or retirement plan payments",
+          "remedy": "This health insurance deduction is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Schedule 1, line 17, Exceptions; i7206 pp. 1–2",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.statutory",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C screen answered Yes: line 1 refuses, and so does line 31 and Schedule 1 line 3.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].statutory": true,
+        "person[taxpayer].sc[b].line1": 1000000
+      },
+      "expect": {
+        "person[taxpayer].sc[b].line1": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].screened",
+          "form": "Schedule C items outside this tool",
+          "remedy": "Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 2-15, the items named in the screens of this Schedule C",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        },
+        "s1.line3": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].screened",
+          "form": "Schedule C items outside this tool",
+          "remedy": "Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 2-15, the items named in the screens of this Schedule C",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.passive",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C screen answered Yes: line 1 refuses, and so does line 31 and Schedule 1 line 3.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].passive": false,
+        "person[taxpayer].sc[b].line1": 1000000
+      },
+      "expect": {
+        "person[taxpayer].sc[b].line1": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].screened",
+          "form": "Schedule C items outside this tool",
+          "remedy": "Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 2-15, the items named in the screens of this Schedule C",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        },
+        "s1.line3": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].screened",
+          "form": "Schedule C items outside this tool",
+          "remedy": "Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 2-15, the items named in the screens of this Schedule C",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.spouse_owned",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C screen answered Yes: line 1 refuses, and so does line 31 and Schedule 1 line 3.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].spouse_owned": true,
+        "person[taxpayer].sc[b].line1": 1000000
+      },
+      "expect": {
+        "person[taxpayer].sc[b].line1": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].screened",
+          "form": "Schedule C items outside this tool",
+          "remedy": "Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 2-15, the items named in the screens of this Schedule C",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        },
+        "s1.line3": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].screened",
+          "form": "Schedule C items outside this tool",
+          "remedy": "Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 2-15, the items named in the screens of this Schedule C",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.method",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C screen answered Yes: line 1 refuses, and so does line 31 and Schedule 1 line 3.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].method_other": true,
+        "person[taxpayer].sc[b].line1": 1000000
+      },
+      "expect": {
+        "person[taxpayer].sc[b].line1": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].screened",
+          "form": "Schedule C items outside this tool",
+          "remedy": "Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 2-15, the items named in the screens of this Schedule C",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        },
+        "s1.line3": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].screened",
+          "form": "Schedule C items outside this tool",
+          "remedy": "Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 2-15, the items named in the screens of this Schedule C",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.special",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a Schedule C screen answered Yes: line 1 refuses, and so does line 31 and Schedule 1 line 3.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].special": true,
+        "person[taxpayer].sc[b].line1": 1000000
+      },
+      "expect": {
+        "person[taxpayer].sc[b].line1": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].screened",
+          "form": "Schedule C items outside this tool",
+          "remedy": "Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 2-15, the items named in the screens of this Schedule C",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        },
+        "s1.line3": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].screened",
+          "form": "Schedule C items outside this tool",
+          "remedy": "Statutory employee and notary income, passive and rental activities, businesses owned with your spouse, accounting method changes and the special items in the screen are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 2-15, the items named in the screens of this Schedule C",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.at_risk",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a loss of $4,000 with some investment not at risk (box 32b): Form 6198 is refused at the loss.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line1": 100000,
+        "person[taxpayer].sc[b].line18": 500000,
+        "person[taxpayer].sc[b].at_risk": false
+      },
+      "expect": {
+        "person[taxpayer].sc[b].loss_allowed": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].not_at_risk",
+          "form": "Form 6198 (At-Risk Limitations)",
+          "remedy": "A loss with amounts not at risk is outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "p. 15, Line 32, Some investment is not at risk, \"Be sure to attach Form 6198\"",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        },
+        "s1.line3": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].not_at_risk",
+          "form": "Form 6198 (At-Risk Limitations)",
+          "remedy": "A loss with amounts not at risk is outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "p. 15, Line 32, Some investment is not at risk, \"Be sure to attach Form 6198\"",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.inventory",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: an inventory method other than cost or lower of cost or market: line 35 refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line1": 100000,
+        "person[taxpayer].sc[b].inventory_other": true
+      },
+      "expect": {
+        "person[taxpayer].sc[b].line35": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[b].inventory_other",
+          "form": "Schedule C, Part III, other inventory methods or a change in valuation",
+          "remedy": "Inventory valued other than at cost or lower of cost or market, or changed between opening and closing, is outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "p. 15, Lines 33 and 35",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.sehi.loss",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: health insurance of $3,000 under a business with a loss of $5,000: Form 7206 line 4 zero, line 5 zero, no deduction (line 14 zero).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line18": 500000,
+        "person[taxpayer].sc[b].hi_uses": true,
+        "person[taxpayer].sc[b].f7206_line1": 300000
+      },
+      "expect": {
+        "person[taxpayer].sc[b].f7206_line14": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line17": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.sc.distinct",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $60,000; supplies $700, meals $1,000 at 80% ($800), other expenses $330: line 28 $1,830; line 31 $58,170.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 6000000,
+        "person[taxpayer].sc[shop].line22": 70000,
+        "person[taxpayer].sc[shop].meals_80": 100000,
+        "person[taxpayer].sc[shop].line48": 33000
+      },
+      "expect": {
+        "person[taxpayer].sc[shop].line28": {
+          "kind": "money",
+          "cents": 183000
+        },
+        "person[taxpayer].sc[shop].line31": {
+          "kind": "money",
+          "cents": 5817000
+        }
+      }
+    },
+    {
+      "id": "stage14.ho.with_179",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a home office of 200 square feet ($1,000) and a $1,000 section 179 election on $1,000 of furniture: line 13 $1,000; line 29 $49,000; the worksheet's line 1 is $49,000; $1,000 is not more than $50,000 less the $1,000 election, so line 30 is $1,000. Mutation-score assertion (T-159): the $1,000 home office amount is not more than line 29 ($50,000) less the $1,000 section 179 election, so the gross income limitation cannot bind with the section 179 limit.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "h"
+        ],
+        "person[taxpayer].sc[h].line1": 5000000,
+        "person[taxpayer].sc[h].ho_uses": true,
+        "person[taxpayer].sc[h].ho_sqft": 200,
+        "$asset@person[taxpayer].sc[h]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[h].asset[desk].placed": "y2025",
+        "person[taxpayer].sc[h].asset[desk].cost": 100000,
+        "person[taxpayer].sc[h].asset[desk].pct": 100,
+        "person[taxpayer].sc[h].asset[desk].s179": 100000,
+        "person[taxpayer].sc[h].asset[desk].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[h].ho_line1": {
+          "kind": "money",
+          "cents": 4900000
+        },
+        "person[taxpayer].sc[h].line30": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].sc[h].line31": {
+          "kind": "money",
+          "cents": 4800000
+        },
+        "person[taxpayer].sc[h].ho_both_limits": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage14.sehi.with_sep",
+      "covers": [
+        "sc",
+        "f8995"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $100,000, SEP contribution $18,000, health insurance $6,000: Form 7206 line 8 $100,000 - $7,064.78 = $92,935.22; line 9 $18,000 (one business); line 10 $74,935.22; line 14 $6,000. QBI $100,000 - $7,064.78 - $18,000 - $6,000 = $68,935.22.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "f"
+        ],
+        "person[taxpayer].sc[f].line1": 10000000,
+        "person[taxpayer].sc[f].hi_uses": true,
+        "person[taxpayer].sc[f].f7206_line1": 600000,
+        "person[taxpayer].plan": "sep",
+        "person[taxpayer].sep_rate": 25,
+        "person[taxpayer].sep_contrib": 1800000
+      },
+      "expect": {
+        "person[taxpayer].sc[f].f7206_line9": {
+          "kind": "money",
+          "cents": 1800000
+        },
+        "person[taxpayer].sc[f].f7206_line10": {
+          "kind": "money",
+          "cents": 7493522
+        },
+        "person[taxpayer].sc[f].qbi": {
+          "kind": "money",
+          "cents": 6893522
+        }
+      }
+    },
+    {
+      "id": "stage14.sehi.with_lease",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $5,000 and a leased car used 100% for business ($3,000 of lease payments on line 20a): line 31 $2,000; Schedule SE line 13 $141.3; Form 7206 line 13 $1858.7; premiums $3,000, so line 14 is $1858.7.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "v"
+        ],
+        "person[taxpayer].sc[v].line1": 500000,
+        "person[taxpayer].sc[v].hi_uses": true,
+        "person[taxpayer].sc[v].f7206_line1": 300000,
+        "$scveh@person[taxpayer].sc[v]": [
+          "car"
+        ],
+        "person[taxpayer].sc[v].scveh[car].method": "actual",
+        "person[taxpayer].sc[v].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[v].scveh[car].lease": 300000
+      },
+      "expect": {
+        "person[taxpayer].sc[v].line20a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].sc[v].f7206_line14": {
+          "kind": "money",
+          "cents": 185870
+        }
+      }
+    },
+    {
+      "id": "stage14.ho.refuse_carryover_two_limits",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: wages $50,000; Schedule C receipts $5,600, a $5,000 machine placed in service in 2025 with $1,000 elected under section 179, a $4,500 carryover from 2024, and a 300-square-foot home office ($1,500): Form 4562 line 12 can reach $5,000 (lines 9 and 10, with line 11 including the wages, i4562 p. 5), which would leave Schedule C line 29 below the $1,500 simplified-method amount, so the two income limits of Pub. 946 (p. 19) interact and the home office deduction is refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "job"
+        ],
+        "$sc@person[taxpayer]": [
+          "h"
+        ],
+        "person[taxpayer].w2[job].box1": 5000000,
+        "person[taxpayer].w2[job].box3": 5000000,
+        "person[taxpayer].w2[job].box5": 5000000,
+        "person[taxpayer].w2[job].box6": 72500,
+        "person[taxpayer].sc[h].line1": 560000,
+        "person[taxpayer].sc[h].ho_uses": true,
+        "person[taxpayer].sc[h].ho_sqft": 300,
+        "$asset@person[taxpayer].sc[h]": [
+          "saw"
+        ],
+        "s179.line10": 450000,
+        "person[taxpayer].sc[h].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[h].asset[saw].cost": 500000,
+        "person[taxpayer].sc[h].asset[saw].pct": 100,
+        "person[taxpayer].sc[h].asset[saw].s179": 100000,
+        "person[taxpayer].sc[h].asset[saw].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[h].line30": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[h].ho_both_limits",
+          "form": "Section 179 deduction with a home office deduction limited by gross income (Pub. 946, two different taxable income limits)",
+          "remedy": "Figuring two income-based limits in the order of Pub. 946 is outside this tool.",
+          "cite": {
+            "doc": "p946",
+            "locator": "p. 19, Business Income Limit, Two different taxable income limits, Steps 1 to 8",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.f7206.line9_no_plan_se_screened",
+      "covers": [
+        "sc.f7206_line9"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (operand.sc.sc.f7206_line9_pos.f7206_line5.whole): stage14.refuse.se_screen (one business, $10,000 net profit, no SEP, SIMPLE or qualified plan, a Schedule SE screen answered Yes) with $6,000 of health insurance under the business. Predicted from the archived f7206 (p. 1) before running the evaluator: line 4, \"Enter your net profit ... from the trade or business under which the insurance plan is established\", $10,000; line 5, \"Enter the total of all net profits ...\", $10,000; line 9, \"Enter the amount, if any, from Schedule 1 (Form 1040), line 16, self-employed SEP, SIMPLE, and qualified plans, attributable to the same trade or business\", $0, since there is no plan and line 9 does not depend on Schedule SE; line 7, \"Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the percentage on line 6\", is refused, because Schedule 1 line 15 is refused by the Schedule SE screen (stage14.refuse.se_screen). Matched the evaluator on the first run.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line1": 1000000,
+        "person[taxpayer].se_screen": true
+      },
+      "expect": {
+        "person[taxpayer].sc[b].f7206_line4": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].sc[b].f7206_line5": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].sc[b].f7206_line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[b].f7206_line7": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].se_screened",
+          "form": "Schedule SE items outside this tool (church employee income, clergy, Forms 4361 and 4029, partnership and other self-employment income, farm income, optional methods, chapter 11, community income, exempt income, Forms 4137 and 8919)",
+          "remedy": "These self-employment tax items are outside this tool.",
+          "cite": {
+            "doc": "i1040sse",
+            "locator": "pp. 1-5",
+            "revision": "2025",
+            "snapshot": "ea9e3120706f9d5e21ce1c6cbec256b5e2e2bf02c44759773d9236462cf4d800",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.mut.sehi_side_business_no_profit",
+      "covers": [
+        "sc",
+        "f7206"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the line 4 operand of sc.f7206_has), predicted from the archived f7206 before evaluating: stage14.sehi.two_businesses with the side business (no insurance plan under it) having no receipts, so its net profit is $0 while the main business keeps its $30,000. For the side business, Form 7206 line 4 (\"Net profit from the trade or business under which the insurance plan is established\") is its own $0, not more than zero, even though line 5 (all Schedule C net profits) is $30,000.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "main",
+          "side"
+        ],
+        "person[taxpayer].sc[main].line1": 3000000,
+        "person[taxpayer].sc[main].hi_uses": true,
+        "person[taxpayer].sc[main].f7206_line1": 500000
+      },
+      "expect": {
+        "person[taxpayer].sc[side].f7206_has": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage14.mut.ho_100_sqft_gross_limit",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the line 4 operand of sc.ho_unlimited), predicted from the archived i1040sc Simplified Method Worksheet before evaluating: stage14.ho.gross_limit (line 29 $600, no section 179 election) with a home office of 100 square feet, so line 4 is $500 (100 x $5), not more than line 1 ($600): the gross income limitation does not bind and line 5 is $500 (\"Enter the smaller of line 1 or line 4\").",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "home"
+        ],
+        "person[taxpayer].sc[home].line1": 60000,
+        "person[taxpayer].sc[home].ho_uses": true,
+        "person[taxpayer].sc[home].ho_sqft": 100
+      },
+      "expect": {
+        "person[taxpayer].sc[home].ho_unlimited": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].sc[home].line30": {
+          "kind": "money",
+          "cents": 50000
+        }
+      }
+    }
+  ]
+}

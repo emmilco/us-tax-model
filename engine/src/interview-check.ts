@@ -3,17 +3,15 @@
 // over the questions the interview actually asks: the walk branches on every
 // value of a finite question when it is asked, so each distinct path runs once
 // and inputs the interview never reaches add no work.
-import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { interviewStatus, replay, type InterviewData } from "./interview.js";
 import type { CanonicalData, Inputs } from "./types.js";
-import { yearPath } from "./year.js";
-import { resolveInputs } from "./fixture-inputs.js";
+import { walkedCases } from "./fixture-inputs.js";
 import { templateKey } from "./branches.js";
 
 export function checkInterview(data: CanonicalData, config: InterviewData, paths?: string[]): string[] {
   const errors: string[] = [];
-  const fixtures = (JSON.parse(readFileSync(yearPath("fixtures", "stage2.json"),"utf8")) as {cases:{id:string;inputs:Inputs}[]}).cases.map(c=>({...c,inputs:resolveInputs(c.inputs,data.params,c.id)}));
+  const fixtures = walkedCases("social-security", data);
   const domain = (key: string): unknown[] | undefined => {
     const template = templateKey(key);
     const line = data.forms.flatMap(d=>d.lines).find(l=>l.id===template);
@@ -50,12 +48,10 @@ export function checkInterview(data: CanonicalData, config: InterviewData, paths
 
 // Sales fixtures cover complete paths and refusal paths. Unlike the Stage 2
 // enumeration above, this is representative coverage, not a Cartesian proof.
-export function checkSalesInterview(data: CanonicalData, config: InterviewData, stage = "stage3", file?: string, maxSteps = 200): string[] {
+// `cases`: the fixture cases the profile walks, inputs resolved (fixture-inputs.ts).
+export function checkSalesInterview(data: CanonicalData, config: InterviewData, cases: { id: string; inputs: Inputs }[], maxSteps = 200): string[] {
   const errors: string[]=[];
-  // `file`: a fixtures file outside fixtures/<year>/ (the New York fixtures, fixtures/ny/<year>/).
-  const fixtures=JSON.parse(readFileSync(file ?? yearPath("fixtures", `${stage}.json`),"utf8")) as {cases:{id:string;inputs:Inputs}[]};
-  fixtures.cases=fixtures.cases.map(c=>({...c,inputs:resolveInputs(c.inputs,data.params,c.id)}));
-  for (const fixture of fixtures.cases) {
+  for (const fixture of cases) {
     try {
       let current: Inputs=structuredClone(config.initial);
       const events:{input:string;value:unknown}[]=[];

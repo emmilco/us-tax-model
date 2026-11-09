@@ -1,0 +1,1042 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage4.base",
+      "walk": "stage4",
+      "covers": [
+        "base"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "sa.standard": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "sa.deduction": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line24": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8960.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ftc.has_tax": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.single.-1",
+      "walk": "stage4",
+      "covers": [
+        "medicare.single.-1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "single",
+          "offset": -1
+        },
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.single.0",
+      "walk": "stage4",
+      "covers": [
+        "medicare.single.0"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "single",
+          "offset": 0
+        },
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.single.100000",
+      "walk": "stage4",
+      "covers": [
+        "medicare.single.100000"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20100000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 900
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.hoh.-1",
+      "walk": "stage4",
+      "covers": [
+        "medicare.hoh.-1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "hoh",
+          "offset": -1
+        },
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "dependent[child].citizen": false,
+        "dependent[child].canada_mexico": true,
+        "dependent[child].supported": true,
+        "household.home_cost": true,
+        "household.unmarried": true
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.hoh.0",
+      "walk": "stage4",
+      "covers": [
+        "medicare.hoh.0"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "hoh",
+          "offset": 0
+        },
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "dependent[child].citizen": false,
+        "dependent[child].canada_mexico": true,
+        "dependent[child].supported": true,
+        "household.home_cost": true,
+        "household.unmarried": true
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.hoh.100000",
+      "walk": "stage4",
+      "covers": [
+        "medicare.hoh.100000"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20100000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].age": 10,
+        "dependent[child].months": 12,
+        "dependent[child].citizen": false,
+        "dependent[child].canada_mexico": true,
+        "dependent[child].supported": true,
+        "household.home_cost": true,
+        "household.unmarried": true
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 900
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.qss.-1",
+      "walk": "stage4",
+      "covers": [
+        "medicare.qss.-1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "qss",
+          "offset": -1
+        },
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.qss.0",
+      "walk": "stage4",
+      "covers": [
+        "medicare.qss.0"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "qss",
+          "offset": 0
+        },
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.qss.100000",
+      "walk": "stage4",
+      "covers": [
+        "medicare.qss.100000"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20100000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 900
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.mfs.-1",
+      "walk": "stage4",
+      "covers": [
+        "medicare.mfs.-1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "mfs",
+          "offset": -1
+        },
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.mfs.0",
+      "walk": "stage4",
+      "covers": [
+        "medicare.mfs.0"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "mfs",
+          "offset": 0
+        },
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.mfs.100000",
+      "walk": "stage4",
+      "covers": [
+        "medicare.mfs.100000"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 12600000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 900
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.mfj.-1",
+      "walk": "stage4",
+      "covers": [
+        "medicare.mfj.-1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "mfj",
+          "offset": -1
+        },
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "household.married": true,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.mfj.0",
+      "walk": "stage4",
+      "covers": [
+        "medicare.mfj.0"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": {
+          "param": "medicare.threshold",
+          "status": "mfj",
+          "offset": 0
+        },
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "household.married": true,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.mfj.100000",
+      "walk": "stage4",
+      "covers": [
+        "medicare.mfj.100000"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 25100000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "household.married": true,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null
+      },
+      "expect": {
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 900
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.withholding",
+      "walk": "stage4",
+      "covers": [
+        "medicare.withholding"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 25000000,
+        "person[taxpayer].w2[a].box6": 407500,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f8959.line21": {
+          "kind": "money",
+          "cents": 362500
+        },
+        "f8959.line24": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f8959.line1": {
+          "kind": "money",
+          "cents": 25000000
+        },
+        "f8959.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line4": {
+          "kind": "money",
+          "cents": 25000000
+        },
+        "f8959.line5": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f8959.line7": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f8959.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line9": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "f8959.line10": {
+          "kind": "money",
+          "cents": 25000000
+        },
+        "f8959.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line14": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line15": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "f8959.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8959.line19": {
+          "kind": "money",
+          "cents": 407500
+        },
+        "f8959.line20": {
+          "kind": "money",
+          "cents": 25000000
+        },
+        "f8959.line22": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f8959.line23": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.medicare.withholding_floor",
+      "walk": "stage4",
+      "covers": [
+        "medicare.withholding_floor"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 280000,
+        "person[taxpayer].w2[a].box1": 10000000
+      },
+      "expect": {
+        "f8959.line24": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.8959",
+      "walk": "stage4",
+      "covers": [
+        "f8959.unsupported"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "f8959.unsupported": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f8959.line18": {
+          "kind": "refusal",
+          "gate": "f8959.unsupported",
+          "form": "Form 8959 additional source forms",
+          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "cite": {
+            "doc": "f8959",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-04-30",
+            "locator": "Form 8959 (2025), lines 1–24; i8959 pp. 1–3",
+            "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d"
+          }
+        },
+        "f8959.line1": {
+          "kind": "refusal",
+          "gate": "f8959.unsupported",
+          "form": "Form 8959 additional source forms",
+          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "cite": {
+            "doc": "f8959",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-04-30",
+            "locator": "Form 8959 (2025), lines 1–24; i8959 pp. 1–3",
+            "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d"
+          }
+        },
+        "f8959.line2": {
+          "kind": "refusal",
+          "gate": "f8959.unsupported",
+          "form": "Form 8959 additional source forms",
+          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "cite": {
+            "doc": "f8959",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-04-30",
+            "locator": "Form 8959 (2025), lines 1–24; i8959 pp. 1–3",
+            "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d"
+          }
+        },
+        "f8959.line3": {
+          "kind": "refusal",
+          "gate": "f8959.unsupported",
+          "form": "Form 8959 additional source forms",
+          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "cite": {
+            "doc": "f8959",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-04-30",
+            "locator": "Form 8959 (2025), lines 1–24; i8959 pp. 1–3",
+            "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d"
+          }
+        },
+        "f8959.line8": {
+          "kind": "refusal",
+          "gate": "f8959.unsupported",
+          "form": "Form 8959 additional source forms",
+          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "cite": {
+            "doc": "f8959",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-04-30",
+            "locator": "Form 8959 (2025), lines 1–24; i8959 pp. 1–3",
+            "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d"
+          }
+        },
+        "f8959.line14": {
+          "kind": "refusal",
+          "gate": "f8959.unsupported",
+          "form": "Form 8959 additional source forms",
+          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "cite": {
+            "doc": "f8959",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-04-30",
+            "locator": "Form 8959 (2025), lines 1–24; i8959 pp. 1–3",
+            "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d"
+          }
+        },
+        "f8959.line19": {
+          "kind": "refusal",
+          "gate": "f8959.unsupported",
+          "form": "Form 8959 additional source forms",
+          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "cite": {
+            "doc": "f8959",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-04-30",
+            "locator": "Form 8959 (2025), lines 1–24; i8959 pp. 1–3",
+            "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d"
+          }
+        },
+        "f8959.line23": {
+          "kind": "refusal",
+          "gate": "f8959.unsupported",
+          "form": "Form 8959 additional source forms",
+          "remedy": "The wage and Schedule SE path does not prepare RRTA, Form 4137 or Form 8919.",
+          "cite": {
+            "doc": "f8959",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-04-30",
+            "locator": "Form 8959 (2025), lines 1–24; i8959 pp. 1–3",
+            "snapshot": "13e64004948331d2b708c80b1b664bf69675028edd0b84f2de6e3ca9afaa996d"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage13.excess_ss_both",
+      "covers": [
+        "s3",
+        "f8959"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: each spouse: two employers, $100,000 each; $1,481.80 excess each; Schedule 3 line 11 $2,963.60. Combined Medicare wages $400,000; Form 8959 line 7: 0.9% of ($400,000 - $250,000) = $1,350.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0",
+          "e1"
+        ],
+        "person[taxpayer].w2[e0].box1": 10000000,
+        "person[taxpayer].w2[e0].box3": 10000000,
+        "person[taxpayer].w2[e0].box4": 620000,
+        "person[taxpayer].w2[e0].box5": 10000000,
+        "person[taxpayer].w2[e0].box6": 145000,
+        "person[taxpayer].w2[e1].box1": 10000000,
+        "person[taxpayer].w2[e1].box3": 10000000,
+        "person[taxpayer].w2[e1].box4": 620000,
+        "person[taxpayer].w2[e1].box5": 10000000,
+        "person[taxpayer].w2[e1].box6": 145000,
+        "$w2@person[spouse]": [
+          "e0",
+          "e1"
+        ],
+        "person[spouse].w2[e0].box1": 10000000,
+        "person[spouse].w2[e0].box3": 10000000,
+        "person[spouse].w2[e0].box4": 620000,
+        "person[spouse].w2[e0].box5": 10000000,
+        "person[spouse].w2[e0].box6": 145000,
+        "person[spouse].w2[e1].box1": 10000000,
+        "person[spouse].w2[e1].box3": 10000000,
+        "person[spouse].w2[e1].box4": 620000,
+        "person[spouse].w2[e1].box5": 10000000,
+        "person[spouse].w2[e1].box6": 145000
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 296360
+        },
+        "f8959.line7": {
+          "kind": "money",
+          "cents": 135000
+        }
+      }
+    },
+    {
+      "id": "stage13.additional_medicare_joint",
+      "covers": [
+        "f8959"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: Medicare wages $150,000 each, one employer each (no employer withholds Additional Medicare Tax below $200,000). Form 8959 line 1 $300,000; line 5 $250,000 (married filing jointly); line 6 $50,000; line 7 0.9% = $450; line 18 $450.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 15000000,
+        "person[taxpayer].w2[e0].box4": 930000,
+        "person[taxpayer].w2[e0].box5": 15000000,
+        "person[taxpayer].w2[e0].box6": 217500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 15000000,
+        "person[spouse].w2[e0].box4": 930000,
+        "person[spouse].w2[e0].box5": 15000000,
+        "person[spouse].w2[e0].box6": 217500
+      },
+      "expect": {
+        "f8959.line1": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "f8959.line5": {
+          "kind": "money",
+          "cents": 25000000
+        },
+        "f8959.line6": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f8959.line7": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 45000
+        }
+      }
+    },
+    {
+      "id": "stage14.f8959.se_above_threshold",
+      "covers": [
+        "f8959",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $300,000, no wages, single: Schedule SE line 6 $277,050 (Form 8959 line 8); line 9 $200,000; line 10 zero; line 11 $200,000; line 12 $77,050; line 13 0.9% = $693.45; line 18 $693.45. Schedule 8812 line 21 by the Additional Medicare Tax and RRTA Tax Worksheet (i1040s8812 p. 9): line 6 zero (no Forms W-2), line 7 one-half of $693.45 = $346.73 (half-up to the cent), line 16 and line 21 $346.73. Schedule 8812 line 22 is Schedule 1 line 15 (Schedule 2 lines 5, 6 and 13 are zero): Schedule SE line 12 is 12.4% of $176,100 = $21,836.40 plus 2.9% of $277,050 = $8,034.45, total $29,870.85, one-half $14,935.43 (half-up to the cent); line 23, lines 21 and 22 added, $15,282.16.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "big"
+        ],
+        "person[taxpayer].sc[big].line1": 30000000
+      },
+      "expect": {
+        "f8959.line8": {
+          "kind": "money",
+          "cents": 27705000
+        },
+        "f8959.line12": {
+          "kind": "money",
+          "cents": 7705000
+        },
+        "f8959.line13": {
+          "kind": "money",
+          "cents": 69345
+        },
+        "f8959.line18": {
+          "kind": "money",
+          "cents": 69345
+        },
+        "s8812.amt_ws7": {
+          "kind": "money",
+          "cents": 34673
+        },
+        "s8812.line21": {
+          "kind": "money",
+          "cents": 34673
+        },
+        "s8812.line22": {
+          "kind": "money",
+          "cents": 1493543
+        },
+        "s8812.line23": {
+          "kind": "money",
+          "cents": 1528216
+        }
+      }
+    },
+    {
+      "id": "stage16.cleanup.f8959_line16_se_refused",
+      "covers": [
+        "f8959:line16"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage14.refuse.se_screen as the interview asks them: a Schedule SE item outside the tool, so Form 8959 Part II (line 13) refuses. Part III, the railroad retirement part, does not read Part II: line 14 is $0 (no railroad compensation) and line 16 is line 14 less line 15, floored at zero, $0. The refused value is the evaluator's; line 16 follows from Form 8959 lines 14 to 16.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line1": 1000000,
+        "person[taxpayer].se_screen": true,
+        "f2441.benefits": null,
+        "s179.line10": null,
+        "f2441.care": null,
+        "f5695.part2_any": null,
+        "f5695.condo": null,
+        "person[taxpayer].sav_trad": null,
+        "person[taxpayer].ira_dist": null
+      },
+      "expect": {
+        "f8959.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].se_screened",
+          "form": "Schedule SE items outside this tool (church employee income, clergy, Forms 4361 and 4029, partnership and other self-employment income, farm income, optional methods, chapter 11, community income, exempt income, Forms 4137 and 8919)",
+          "remedy": "These self-employment tax items are outside this tool.",
+          "cite": {
+            "doc": "i1040sse",
+            "locator": "pp. 1-5",
+            "revision": "2025",
+            "snapshot": "ea9e3120706f9d5e21ce1c6cbec256b5e2e2bf02c44759773d9236462cf4d800",
+            "tax_year": 2025
+          }
+        },
+        "f8959.line16": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    }
+  ]
+}

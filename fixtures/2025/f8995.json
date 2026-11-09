@@ -1,0 +1,42 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage14.qbi.carryforward",
+      "covers": [
+        "f8995"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: profit $20,000; Schedule SE line 12 $2,825.82 (line 6 $18,470; 12.4% $2,290.28; 2.9% $535.63, half-up of $535.63), line 13 $1,412.91; QBI $20,000 - $1,412.91 = $18,587.09; prior-year carryforward $5,000 (line 3 -$5,000); line 4 $13,587.09; line 5 20% = $2,717.42 (half-up of $2,717.418).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "qbi.carryforward": 500000,
+        "person[taxpayer].sc[shop].line1": 2000000
+      },
+      "expect": {
+        "person[taxpayer].se_line12": {
+          "kind": "money",
+          "cents": 282591
+        },
+        "f8995.line2": {
+          "kind": "money",
+          "cents": 1858704
+        },
+        "f8995.line3": {
+          "kind": "money",
+          "cents": -500000
+        },
+        "f8995.line4": {
+          "kind": "money",
+          "cents": 1358704
+        },
+        "f8995.line5": {
+          "kind": "money",
+          "cents": 271741
+        }
+      }
+    }
+  ]
+}

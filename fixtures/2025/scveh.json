@@ -1,0 +1,1151 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage14.veh.2025_bonus",
+      "covers": [
+        "scveh",
+        "f4562"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in 2025 (acquired after January 19), cost $40,000, 8,000 of 10,000 miles for business (80%): operating costs $5,000 x 80% = $4,000 on line 9. Depreciation worksheet: line 7 $20,200 (with the special allowance); line 9 $16,160; line 13 $32,000; line 16 100% = $32,000, limited to line 11, $16,160 (line 25); lines 17 to 20 zero. Schedule C line 13 $16,160.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "rides"
+        ],
+        "person[taxpayer].sc[rides].line1": 10000000,
+        "$scveh@person[taxpayer].sc[rides]": [
+          "car"
+        ],
+        "person[taxpayer].sc[rides].scveh[car].method": "actual",
+        "person[taxpayer].sc[rides].scveh[car].owned": true,
+        "person[taxpayer].sc[rides].scveh[car].miles_business": 8000,
+        "person[taxpayer].sc[rides].scveh[car].miles_other": 2000,
+        "person[taxpayer].sc[rides].scveh[car].operating": 500000,
+        "person[taxpayer].sc[rides].scveh[car].passenger": true,
+        "person[taxpayer].sc[rides].scveh[car].after_jan19": true,
+        "person[taxpayer].sc[rides].scveh[car].bonus_same": true,
+        "person[taxpayer].sc[rides].scveh[car].quarter": "q2",
+        "person[taxpayer].sc[rides].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[rides].scveh[car].cost": 4000000
+      },
+      "expect": {
+        "person[taxpayer].sc[rides].scveh[car].line9": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].sc[rides].scveh[car].line9w": {
+          "kind": "money",
+          "cents": 1616000
+        },
+        "person[taxpayer].sc[rides].scveh[car].bonus_allowed": {
+          "kind": "money",
+          "cents": 1616000
+        },
+        "person[taxpayer].sc[rides].scveh[car].line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[rides].line13": {
+          "kind": "money",
+          "cents": 1616000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.2023_prior",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in 2023, half-year convention, no section 179 or special allowance, cost $25,000, 60% business use in 2025: year 3 of recovery; line 7 $11,700 (2023, 3rd year); line 9 $7,020; line 13 $15,000; line 19 $15,000 x 19.20% = $2,880; line 20 the smaller, $2,880.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "rides"
+        ],
+        "person[taxpayer].sc[rides].line1": 10000000,
+        "$scveh@person[taxpayer].sc[rides]": [
+          "car"
+        ],
+        "person[taxpayer].sc[rides].scveh[car].method": "actual",
+        "person[taxpayer].sc[rides].scveh[car].owned": true,
+        "person[taxpayer].sc[rides].scveh[car].miles_business": 6000,
+        "person[taxpayer].sc[rides].scveh[car].miles_other": 4000,
+        "person[taxpayer].sc[rides].scveh[car].passenger": true,
+        "person[taxpayer].sc[rides].scveh[car].placed": "y2023",
+        "person[taxpayer].sc[rides].scveh[car].cost": 2500000,
+        "person[taxpayer].sc[rides].scveh[car].s179_elect": null
+      },
+      "expect": {
+        "person[taxpayer].sc[rides].scveh[car].line7": {
+          "kind": "money",
+          "cents": 1170000
+        },
+        "person[taxpayer].sc[rides].scveh[car].line9w": {
+          "kind": "money",
+          "cents": 702000
+        },
+        "person[taxpayer].sc[rides].scveh[car].line19": {
+          "kind": "money",
+          "cents": 288000
+        },
+        "person[taxpayer].sc[rides].scveh[car].line20": {
+          "kind": "money",
+          "cents": 288000
+        },
+        "person[taxpayer].sc[rides].line13": {
+          "kind": "money",
+          "cents": 288000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.2019_post",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in 2019 (half-year, no section 179, no special allowance), cost $80,000, 75% business use in 2025, the first year after its recovery period: deductions allowable at 100% business use under the limits: $10,100, $16,100, $9,700, $5,760, $5,760 and $4,608 (the 2024 table amount, below the $5,760 limit), total $52,028; unrecovered basis $27,972; 2025: the lesser of $5,760 and $27,972, times 75% = $4,320.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "rides"
+        ],
+        "person[taxpayer].sc[rides].line1": 10000000,
+        "$scveh@person[taxpayer].sc[rides]": [
+          "car"
+        ],
+        "person[taxpayer].sc[rides].scveh[car].method": "actual",
+        "person[taxpayer].sc[rides].scveh[car].owned": true,
+        "person[taxpayer].sc[rides].scveh[car].miles_business": 7500,
+        "person[taxpayer].sc[rides].scveh[car].miles_other": 2500,
+        "person[taxpayer].sc[rides].scveh[car].passenger": true,
+        "person[taxpayer].sc[rides].scveh[car].placed": "y2019",
+        "person[taxpayer].sc[rides].scveh[car].cost": 8000000
+      },
+      "expect": {
+        "person[taxpayer].sc[rides].scveh[car].d_total": {
+          "kind": "money",
+          "cents": 5202800
+        },
+        "person[taxpayer].sc[rides].scveh[car].unrecovered": {
+          "kind": "money",
+          "cents": 2797200
+        },
+        "person[taxpayer].sc[rides].scveh[car].post": {
+          "kind": "money",
+          "cents": 432000
+        },
+        "person[taxpayer].sc[rides].line13": {
+          "kind": "money",
+          "cents": 432000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_suv_cap",
+      "covers": [
+        "scveh:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $40,000 section 179 election on an SUV is more than the $31,300 limit: the election line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "haul"
+        ],
+        "person[taxpayer].sc[haul].line1": 20000000,
+        "$scveh@person[taxpayer].sc[haul]": [
+          "suv"
+        ],
+        "person[taxpayer].sc[haul].scveh[suv].method": "actual",
+        "person[taxpayer].sc[haul].scveh[suv].owned": true,
+        "person[taxpayer].sc[haul].scveh[suv].miles_business": 10000,
+        "person[taxpayer].sc[haul].scveh[suv].suv": true,
+        "person[taxpayer].sc[haul].scveh[suv].s179_elect": 4000000,
+        "person[taxpayer].sc[haul].scveh[suv].after_jan19": true,
+        "person[taxpayer].sc[haul].scveh[suv].bonus_same": true,
+        "person[taxpayer].sc[haul].scveh[suv].placed": "y2025",
+        "person[taxpayer].sc[haul].scveh[suv].cost": 7000000
+      },
+      "expect": {
+        "person[taxpayer].sc[haul].scveh[suv].s179_2025_ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[haul].scveh[suv].s179_bad",
+          "form": "Section 179 election above the vehicle's business cost or the SUV limit",
+          "remedy": "A section 179 election must not exceed the business cost, or $31,300 for an SUV.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 16, Column (i)",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_low_use",
+      "covers": [
+        "scveh:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car used 40% for business on actual expenses: listed property used 50% or less is refused at the year placed in service, and with it the depreciation.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "rides"
+        ],
+        "person[taxpayer].sc[rides].line1": 10000000,
+        "$scveh@person[taxpayer].sc[rides]": [
+          "car"
+        ],
+        "person[taxpayer].sc[rides].scveh[car].method": "actual",
+        "person[taxpayer].sc[rides].scveh[car].owned": true,
+        "person[taxpayer].sc[rides].scveh[car].miles_business": 4000,
+        "person[taxpayer].sc[rides].scveh[car].miles_other": 6000,
+        "person[taxpayer].sc[rides].scveh[car].operating": 500000,
+        "person[taxpayer].sc[rides].scveh[car].passenger": true,
+        "person[taxpayer].sc[rides].scveh[car].placed": "y2025"
+      },
+      "expect": {
+        "person[taxpayer].sc[rides].scveh[car].placed": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[rides].scveh[car].low_use",
+          "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+          "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_lease_smr_before",
+      "covers": [
+        "scveh",
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived instructions before recording: i1040sc p. 6, Line 9, \"You can't use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle.\" The same leased vehicle on actual expenses with the earlier standard rate answered Yes refuses at line 20a. The same screen also asks whether the leased vehicle was converted between personal and business use in 2025 (i1040sc p. 15, Line 44b; p463 pp. 25-26); a Yes for either reason gives this refusal, whose wording names both.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "rides"
+        ],
+        "person[taxpayer].sc[rides].line1": 10000000,
+        "$scveh@person[taxpayer].sc[rides]": [
+          "car"
+        ],
+        "person[taxpayer].sc[rides].scveh[car].method": "actual",
+        "person[taxpayer].sc[rides].scveh[car].miles_business": 5000,
+        "person[taxpayer].sc[rides].scveh[car].miles_other": 5000,
+        "person[taxpayer].sc[rides].scveh[car].operating": 200000,
+        "person[taxpayer].sc[rides].scveh[car].lease_smr_before": true
+      },
+      "expect": {
+        "person[taxpayer].sc[rides].scveh[car].line20a": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[rides].scveh[car].lease_smr_bad",
+          "form": "Actual expenses on a leased vehicle after using the standard mileage rate for it in an earlier year, or on a leased vehicle converted between personal and business use in 2025",
+          "remedy": "You can't use actual expenses for a leased vehicle after using the standard mileage rate for it; use the standard mileage rate for the rest of the lease. Actual expenses for a leased vehicle converted between personal and business use in 2025 are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "p. 6, Line 9; p. 15, Line 44b; p463 pp. 25-26, Change from personal to business use",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_screen",
+      "covers": [
+        "scveh:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: the vehicle screen answered Yes (for example a special allowance claimed in an earlier year): the cost line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 8000,
+        "person[taxpayer].sc[r].scveh[car].miles_other": 2000,
+        "person[taxpayer].sc[r].scveh[car].screen": true,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].after_jan19": true,
+        "person[taxpayer].sc[r].scveh[car].bonus_same": true,
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].cost": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[r].scveh[car].screened",
+          "form": "Vehicle depreciation outside this tool (placed in service before 2019, an earlier special allowance, an earlier standard mileage rate, a disposition, a trade-in, earlier business use of 50% or less, and the other items of the screen)",
+          "remedy": "This vehicle's depreciation is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "pp. 13-15, Part V",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_pre_2017",
+      "covers": [
+        "scveh:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived instructions before recording: a vehicle placed in service in 2025 but acquired before September 28, 2017 is outside the 40% window of i4562 p. 5, Line 14 and the 100% window after January 19, 2025. The screen answered Yes, so the cost line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 8000,
+        "person[taxpayer].sc[r].scveh[car].miles_other": 2000,
+        "person[taxpayer].sc[r].scveh[car].screen": true,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].after_jan19": true,
+        "person[taxpayer].sc[r].scveh[car].bonus_same": true,
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].cost": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[r].scveh[car].screened",
+          "form": "Vehicle depreciation outside this tool (placed in service before 2019, an earlier special allowance, an earlier standard mileage rate, a disposition, a trade-in, earlier business use of 50% or less, and the other items of the screen)",
+          "remedy": "This vehicle's depreciation is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "pp. 13-15, Part V",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_too_old",
+      "covers": [
+        "scveh:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in 2017 (2025 is its year 9): placed in service before 2019 is refused at the cost line.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 8000,
+        "person[taxpayer].sc[r].scveh[car].miles_other": 2000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].placed": "y2017",
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].cost": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[r].scveh[car].too_old",
+          "form": "Vehicle placed in service before 2019",
+          "remedy": "A vehicle placed in service before 2019 is outside this tool.",
+          "cite": {
+            "doc": "p946",
+            "locator": "p. 61, Deductions After the Recovery Period",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_bonus_mixed",
+      "covers": [
+        "scveh:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a 2025 car whose special allowance choice is not the same for all 5-year property: the 100% allowance line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 8000,
+        "person[taxpayer].sc[r].scveh[car].miles_other": 2000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].after_jan19": true,
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].bonus_full": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[r].scveh[car].bonus_mixed",
+          "form": "Different special allowance elections within the 5-year class",
+          "remedy": "An election that is not the same for the whole class is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 7, Election out",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_smr",
+      "covers": [
+        "scveh:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: the standard mileage rate is not available for this vehicle (not used in its first year): the mileage amount refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ]
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].smr_amount": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[r].scveh[car].smr_bad",
+          "form": "Standard mileage rate not available (not used in the vehicle's first year or for the whole lease, or five or more vehicles at once)",
+          "remedy": "Use actual expenses for this vehicle, or this vehicle is outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "p. 6, Line 9",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_bonus_mixed_forty",
+      "covers": [
+        "scveh:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.veh.refuse_bonus_mixed with the 40% election: the 40% line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 8000,
+        "person[taxpayer].sc[r].scveh[car].miles_other": 2000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].bonus_choice": "forty",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].bonus_forty": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[r].scveh[car].bonus_mixed",
+          "form": "Different special allowance elections within the 5-year class",
+          "remedy": "An election that is not the same for the whole class is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 7, Election out",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.2025_nobonus_hy",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in February 2025, no special allowance, 90% business use, cost $30,000 (the only property, half-year): line 9 $12,200 x 90% = $10,980; line 13 $27,000; line 19 20% = $5,400; line 20 the smaller, $5,400.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 9000,
+        "person[taxpayer].sc[r].scveh[car].miles_other": 1000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].bonus_choice": "none",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 3000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].line9w": {
+          "kind": "money",
+          "cents": 1098000
+        },
+        "person[taxpayer].sc[r].scveh[car].line19": {
+          "kind": "money",
+          "cents": 540000
+        },
+        "person[taxpayer].sc[r].scveh[car].line20": {
+          "kind": "money",
+          "cents": 540000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.2025_179_limit",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $90,000 car placed in service in 2025, 100% business, section 179 election $5,000, no special allowance: line 9 $12,200; line 10 $5,000; line 11 $7,200; line 15 $85,000; line 19 20% = $17,000; line 20 limited to line 17 = $7,200; total $12,200.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].s179_elect": 500000,
+        "person[taxpayer].sc[r].scveh[car].bonus_choice": "none",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 9000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].line10": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].sc[r].scveh[car].line11": {
+          "kind": "money",
+          "cents": 720000
+        },
+        "person[taxpayer].sc[r].scveh[car].line19": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "person[taxpayer].sc[r].scveh[car].line20": {
+          "kind": "money",
+          "cents": 720000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.2025_179_over_line9",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived instructions before recording: the $90,000 car of stage14.veh.2025_179_limit with a section 179 election of $15,000, above worksheet line 9 ($12,200). Pub. 946 worksheet line 10, \"(not more than line 9)\", gives line 10 $12,200; i4562 p. 16, Column (i), \"Enter the amount you elect to expense ... (subject to the limits for passenger automobiles)\", so column (i) prints $12,200, not the $15,000 answered; line 11 $0; line 15 $90,000 less $12,200 = $77,800; line 20 limited to line 17 = $0.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].s179_elect": 1500000,
+        "person[taxpayer].sc[r].scveh[car].bonus_choice": "none",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 9000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].line10": {
+          "kind": "money",
+          "cents": 1220000
+        },
+        "person[taxpayer].sc[r].scveh[car].s179_2025": {
+          "kind": "money",
+          "cents": 1220000
+        },
+        "person[taxpayer].sc[r].scveh[car].line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[r].scveh[car].line15": {
+          "kind": "money",
+          "cents": 7780000
+        },
+        "person[taxpayer].sc[r].scveh[car].line20": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.2025_forty",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $30,000 car acquired after January 19, 2025 with the 40% election, 100% business, half-year: line 7 $20,200; line 16 40% = $12,000; allowed $12,000; line 17 $8,200; line 18 $18,000; line 19 20% = $3,600; line 20 $3,600.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].bonus_choice": "forty",
+        "person[taxpayer].sc[r].scveh[car].bonus_same": true,
+        "person[taxpayer].sc[r].scveh[car].quarter": "q2",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 3000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].line16": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "person[taxpayer].sc[r].scveh[car].bonus_allowed": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "person[taxpayer].sc[r].scveh[car].line17": {
+          "kind": "money",
+          "cents": 820000
+        },
+        "person[taxpayer].sc[r].scveh[car].line20": {
+          "kind": "money",
+          "cents": 360000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.2022_mq",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $50,000 car placed in service in December 2022 under the mid-quarter convention, 100% business, no section 179 or allowance: 2025 is year 4; line 7 $6,460 (2022, 4th and later); line 19 $50,000 x 13.6800%; line 20 the smaller.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].prior_conv": "mq4",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2022",
+        "person[taxpayer].sc[r].scveh[car].cost": 5000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].line7": {
+          "kind": "money",
+          "cents": 646000
+        },
+        "person[taxpayer].sc[r].scveh[car].line20": {
+          "kind": "money",
+          "cents": 646000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.2024_prior179",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $15,000 car placed in service in 2024 with a $2,000 section 179 deduction that year, 70% business use: line 13 $10,500; line 14 $2,000; line 15 $8,500; line 19 32% = $2,720; line 9 $19,800 x 70% = $13,860; line 20 $2,720.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 7000,
+        "person[taxpayer].sc[r].scveh[car].miles_other": 3000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].prior_179": 200000,
+        "person[taxpayer].sc[r].scveh[car].placed": "y2024",
+        "person[taxpayer].sc[r].scveh[car].cost": 1500000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].line15": {
+          "kind": "money",
+          "cents": 850000
+        },
+        "person[taxpayer].sc[r].scveh[car].line20": {
+          "kind": "money",
+          "cents": 272000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.2019_mq_179",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $60,000 car placed in service in May 2019 under the mid-quarter convention with a $3,000 section 179 deduction, 100% business use in 2025: at 100% use the recovery-period deductions are each the lesser of the limit and the table amount on $57,000 (year 1 with the $3,000): $10100, $16100, $9700, $5760, $5760, $2428.2; unrecovered basis $10151.8; 2025 the lesser of $5,760 and that.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].prior_179": 300000,
+        "person[taxpayer].sc[r].scveh[car].prior_conv": "mq2",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2019",
+        "person[taxpayer].sc[r].scveh[car].cost": 6000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].d_total": {
+          "kind": "money",
+          "cents": 4984820
+        },
+        "person[taxpayer].sc[r].scveh[car].unrecovered": {
+          "kind": "money",
+          "cents": 1015180
+        },
+        "person[taxpayer].sc[r].scveh[car].post": {
+          "kind": "money",
+          "cents": 576000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.heavy_prior",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a heavy truck (not subject to the limits) placed in service in 2023, half-year, $60,000, 100% business: year 3, 19.20% = $11,520.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "truck"
+        ],
+        "person[taxpayer].sc[r].scveh[truck].method": "actual",
+        "person[taxpayer].sc[r].scveh[truck].owned": true,
+        "person[taxpayer].sc[r].scveh[truck].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[truck].placed": "y2023",
+        "person[taxpayer].sc[r].scveh[truck].cost": 6000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[truck].macrs_v": {
+          "kind": "money",
+          "cents": 1152000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.heavy_2019",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a heavy truck placed in service in 2019: recovered by 2024, no 2025 depreciation.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "truck"
+        ],
+        "person[taxpayer].sc[r].scveh[truck].method": "actual",
+        "person[taxpayer].sc[r].scveh[truck].owned": true,
+        "person[taxpayer].sc[r].scveh[truck].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[truck].placed": "y2019",
+        "person[taxpayer].sc[r].scveh[truck].cost": 6000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[truck].macrs_v": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_half_use",
+      "covers": [
+        "scveh:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car used exactly 50% for business on actual expenses: not more than 50%, refused.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 5000,
+        "person[taxpayer].sc[r].scveh[car].miles_other": 5000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025"
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].placed": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[r].scveh[car].low_use",
+          "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+          "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.standard_half_use",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car used 50% for business on the standard mileage rate: 5,000 miles x $0.70 = $3,500 (no business use test applies to the standard rate).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].miles_business": 5000,
+        "person[taxpayer].sc[r].scveh[car].smr_ok": true
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].line9": {
+          "kind": "money",
+          "cents": 350000
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_suv_cap_by_1",
+      "covers": [
+        "scveh:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $31,301 section 179 election on an SUV, $1 above the limit: refused.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "h"
+        ],
+        "person[taxpayer].sc[h].line1": 20000000,
+        "$scveh@person[taxpayer].sc[h]": [
+          "suv"
+        ],
+        "person[taxpayer].sc[h].scveh[suv].method": "actual",
+        "person[taxpayer].sc[h].scveh[suv].owned": true,
+        "person[taxpayer].sc[h].scveh[suv].miles_business": 10000,
+        "person[taxpayer].sc[h].scveh[suv].suv": true,
+        "person[taxpayer].sc[h].scveh[suv].s179_elect": {
+          "param": "s179.suv_limit",
+          "offset": 100
+        },
+        "person[taxpayer].sc[h].scveh[suv].after_jan19": true,
+        "person[taxpayer].sc[h].scveh[suv].bonus_same": true,
+        "person[taxpayer].sc[h].scveh[suv].placed": "y2025",
+        "person[taxpayer].sc[h].scveh[suv].cost": 7000000
+      },
+      "expect": {
+        "person[taxpayer].sc[h].scveh[suv].s179_2025_ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[h].scveh[suv].s179_bad",
+          "form": "Section 179 election above the vehicle's business cost or the SUV limit",
+          "remedy": "A section 179 election must not exceed the business cost, or $31,300 for an SUV.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 16, Column (i)",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.2019_cheap_mq3",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $40,000 car placed in service in August 2019 (mid-quarter, third quarter) with a $2,000 section 179 deduction, 8,000 business, 1,000 commuting and 1,000 other miles in 2025 (80%): at 100% business use the recovery-period deductions are, year 1, the lesser of $10,100 and $2,000 + 15% of $38,000; then the lesser of each year's limit and the Table A-4 amount on $38,000: $7700, $12920, $7752, $4651.2, $4294, $2682.8 (total $40000); unrecovered basis $0; 2025 the lesser of $5,760 and that, times 80%: $0. Operating costs $1,000 x 80% = $800 on line 9. Worksheet line 19 is zero: 2025 is after the recovery period, when the worksheet is not used (Pub. 946 p. 61).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 8000,
+        "person[taxpayer].sc[r].scveh[car].miles_commuting": 1000,
+        "person[taxpayer].sc[r].scveh[car].miles_other": 1000,
+        "person[taxpayer].sc[r].scveh[car].operating": 100000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].prior_179": 200000,
+        "person[taxpayer].sc[r].scveh[car].prior_conv": "mq3",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2019",
+        "person[taxpayer].sc[r].scveh[car].cost": 4000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].d1": {
+          "kind": "money",
+          "cents": 770000
+        },
+        "person[taxpayer].sc[r].scveh[car].d_total": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "person[taxpayer].sc[r].scveh[car].unrecovered": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[r].scveh[car].post": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[r].scveh[car].line9": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "person[taxpayer].sc[r].scveh[car].line19": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.veh_no_miles",
+      "covers": [
+        "scveh:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Predicted from the owner's ruling (T-044, BUG-0076) before recording: a vehicle on actual expenses with no miles has no business-use percentage (business miles over total miles, i4562 p. 14) and is refused at its total miles. Inputs are stage14.veh.leased_actual with every mileage zero.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "rides"
+        ],
+        "person[taxpayer].sc[rides].line1": 10000000,
+        "$scveh@person[taxpayer].sc[rides]": [
+          "car"
+        ],
+        "person[taxpayer].sc[rides].scveh[car].method": "actual",
+        "person[taxpayer].sc[rides].scveh[car].operating": 200000
+      },
+      "expect": {
+        "person[taxpayer].sc[rides].scveh[car].total_c": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[rides].scveh[car].no_miles",
+          "form": "A vehicle with actual expenses and no miles",
+          "remedy": "The business-use percentage of a vehicle's actual expenses is its business miles divided by its total miles, so it cannot be figured for a vehicle with no miles in 2025. Enter the vehicle's miles, or leave out a vehicle that was not driven.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 14, Column (c), \"by the total number of miles the vehicle is driven for all purposes\"",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_employee_use_lease",
+      "covers": [
+        "scveh",
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-178 (owner decision A4) regression, predicted by hand from the archived instructions before recording: i4562 p. 14, Column (c), \"Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees' gross income, or the employees reimburse the employer for the personal use\". The leased vehicle of stage14.veh.refuse_lease_smr_before on actual expenses, without the earlier standard rate, used by the filer's employees for personal purposes: its line 9 refuses at the business portion of the operating expenses (gate employee_bad), which every actual-expense vehicle reads, owned or leased.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "rides"
+        ],
+        "person[taxpayer].sc[rides].line1": 10000000,
+        "$scveh@person[taxpayer].sc[rides]": [
+          "car"
+        ],
+        "person[taxpayer].sc[rides].scveh[car].method": "actual",
+        "person[taxpayer].sc[rides].scveh[car].employee_use": true
+      },
+      "expect": {
+        "person[taxpayer].sc[rides].scveh[car].line9": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[rides].scveh[car].employee_bad",
+          "form": "Actual expenses for a vehicle your employees use for personal purposes (the 100% business use treatment)",
+          "remedy": "The business use of a vehicle your employees use for personal purposes is not figured from your miles; it is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 14, Column (c)—Business/investment use percentage, \"Treat vehicles used by employees as being used 100% for business/investment purposes\"",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.refuse_employee_use_owned",
+      "covers": [
+        "scveh",
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-178 (owner decision A4) regression, predicted by hand before recording: the vehicle of stage14.veh.refuse_employee_use_lease, owned instead of leased (i4562 p. 14, Column (c), the 100% treatment of vehicles used by employees): line 9 refuses at the same gate, employee_bad, before any depreciation is figured.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "rides"
+        ],
+        "person[taxpayer].sc[rides].line1": 10000000,
+        "$scveh@person[taxpayer].sc[rides]": [
+          "car"
+        ],
+        "person[taxpayer].sc[rides].scveh[car].method": "actual",
+        "person[taxpayer].sc[rides].scveh[car].owned": true,
+        "person[taxpayer].sc[rides].scveh[car].miles_business": 5000,
+        "person[taxpayer].sc[rides].scveh[car].miles_other": 5000,
+        "person[taxpayer].sc[rides].scveh[car].employee_use": true
+      },
+      "expect": {
+        "person[taxpayer].sc[rides].scveh[car].line9": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[rides].scveh[car].employee_bad",
+          "form": "Actual expenses for a vehicle your employees use for personal purposes (the 100% business use treatment)",
+          "remedy": "The business use of a vehicle your employees use for personal purposes is not figured from your miles; it is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 14, Column (c)—Business/investment use percentage, \"Treat vehicles used by employees as being used 100% for business/investment purposes\"",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.veh.2025_179_passenger_suv_unasked",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation regression (operand.scveh.scveh.s179_bad.passenger.any.1.all.0.eq.0), predicted by hand from the archived instructions before evaluating. The $90,000 passenger car of stage14.veh.2025_179_over_line9 with a section 179 election of $40,000, and the sport utility vehicle question left unanswered, as the interview leaves it: its prompt applies only 'If it is not subject to those limits', and the car is a passenger automobile subject to them. The election is within the car's cost, and the $31,300 sport utility vehicle limit does not apply to a passenger automobile. Pub. 946 worksheet line 10, '(not more than line 9)', gives line 10 $12,200; i4562 p. 16, Column (i), 'Enter the amount you elect to expense ... (subject to the limits for passenger automobiles)', so column (i) is $12,200; line 11 $0; line 15 $90,000 less $12,200 = $77,800; line 20 limited to line 17 = $0.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].s179_elect": 4000000,
+        "person[taxpayer].sc[r].scveh[car].bonus_choice": "none",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 9000000,
+        "person[taxpayer].sc[r].scveh[car].suv": null
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].line10": {
+          "kind": "money",
+          "cents": 1220000
+        },
+        "person[taxpayer].sc[r].scveh[car].s179_2025": {
+          "kind": "money",
+          "cents": 1220000
+        },
+        "person[taxpayer].sc[r].scveh[car].line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[r].scveh[car].line15": {
+          "kind": "money",
+          "cents": 7780000
+        },
+        "person[taxpayer].sc[r].scveh[car].line20": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    }
+  ]
+}

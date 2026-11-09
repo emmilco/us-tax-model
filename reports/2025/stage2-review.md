@@ -19,27 +19,27 @@ Use integer cents below. Work each case independently on the archived instructio
 
 | Case | Status | Per-employer (box 3; box 7; box 4), cents | Candidate line 11 |
 | --- | --- | --- | --- |
-| ss.multi | single | person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
-| ss.base.below | single | person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 7609999; 0; 471820 | 0 |
-| ss.base.exact | single | person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 7610000; 0; 471821 | 0 |
-| ss.base.above | single | person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 7610001; 0; 471821 | 1 |
-| ss.withheld.below | single | person[taxpayer].w2[a]: 10000000; 0; 600000 / person[taxpayer].w2[b]: 10000000; 0; 491819 | 0 |
-| ss.withheld.exact | single | person[taxpayer].w2[a]: 10000000; 0; 600000 / person[taxpayer].w2[b]: 10000000; 0; 491820 | 0 |
-| ss.withheld.above | single | person[taxpayer].w2[a]: 10000000; 0; 600000 / person[taxpayer].w2[b]: 10000000; 0; 491821 | 1 |
-| ss.single.exact | single | person[taxpayer].w2[a]: 17610000; 0; 1091820 | 0 |
-| ss.single.below | single | person[taxpayer].w2[a]: 17609999; 0; 1091819 | 0 |
-| ss.single.over | single | person[taxpayer].w2[a]: 17610000; 0; 1091821 | refusal: Form 843 |
-| ss.multi.over | single | person[taxpayer].w2[a]: 17610000; 0; 1091821 / person[taxpayer].w2[b]: 5000000; 0; 310000 | refusal: Form 843 |
-| ss.tips | single | person[taxpayer].w2[a]: 9000000; 1000000; 620000 / person[taxpayer].w2[b]: 7610001; 0; 471821 | 1 |
-| ss.none | single | none | 0 |
-| ss.mfj | mfj | none | 0 |
-| ss.mfs | mfs | none | refusal: Married filing separately |
-| ss.rrta | single | none | refusal: Schedule 3 line 11 (RRTA path) |
-| ss.hoh | hoh | person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
-| ss.qss | qss | person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
-| ss.other.components | single | person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
-| ss.person.separation | single | person[second].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[a]: 10000000; 0; 620000 | 0 |
-| ss.early.refusal | single | person[taxpayer].w2[a]: unknown; 0; 1091821 / person[taxpayer].w2[b]: 5000000; 0; 0 | refusal: Form 843 |
+| ss.multi | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
+| ss.base.below | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 7609999; 0; 471820 | 0 |
+| ss.base.exact | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 7610000; 0; 471821 | 0 |
+| ss.base.above | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 7610001; 0; 471821 | 1 |
+| ss.withheld.below | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 600000 / person[taxpayer].w2[b]: 10000000; 0; 491819 | 0 |
+| ss.withheld.exact | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 600000 / person[taxpayer].w2[b]: 10000000; 0; 491820 | 0 |
+| ss.withheld.above | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 600000 / person[taxpayer].w2[b]: 10000000; 0; 491821 | 1 |
+| ss.single.exact | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 0; 0; 1091820 | 0 |
+| ss.single.below | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 0; 0; 1091819 | 0 |
+| ss.single.over | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 0; 0; 1091821 | refusal: Form 843 |
+| ss.multi.over | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 0; 0; 1091821 / person[taxpayer].w2[b]: 0; 0; 310000 | refusal: Form 843 |
+| ss.tips | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 9000000; 1000000; 620000 / person[taxpayer].w2[b]: 7610001; 0; 471821 | 1 |
+| ss.none | single | div: 0; unknown; unknown | 0 |
+| ss.mfj | mfj | div: 0; unknown; unknown | 0 |
+| ss.mfs | mfs | div: 0; unknown; unknown | refusal: Married filing separately |
+| ss.rrta | single | div: 0; unknown; unknown | refusal: Schedule 3 line 11 (RRTA path) |
+| ss.hoh | hoh | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
+| ss.qss | qss | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
+| ss.other.components | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
+| ss.person.separation | single | div: 0; unknown; unknown / person[second].w2[a]: 0; 0; 620000 / person[taxpayer].w2[a]: 0; 0; 620000 | 0 |
+| ss.early.refusal | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 0; 0; 1091821 / person[taxpayer].w2[b]: 0; 0; 0 | refusal: Form 843 |
 
 RRTA case has the railroad answer true. Other Schedule 3 components are zero except ss.other.components: lines 9, 10, 12 and 14 are 123, 500, 7 and 20 cents; line 15 and Form 1040 line 31 should be 148830 cents.
 

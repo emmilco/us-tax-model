@@ -1,0 +1,44 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage4.feeders.shortloss",
+      "walk": "stage4",
+      "covers": [
+        "feeders.shortloss"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Synthetic explicitly calculated regression; independent human review pending.",
+      "inputs": {
+        "div.any": true,
+        "div.box2b": 400000,
+        "div.box2d": 200000,
+        "sd.distributions": 1000000,
+        "$sales": [
+          "s"
+        ],
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "sales[s].reported_basis": 300000,
+        "person[taxpayer].w2[a].box1": 9300000
+      },
+      "expect": {
+        "g28.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "u1250.line17": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "u1250.line18": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    }
+  ]
+}

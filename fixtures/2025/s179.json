@@ -1,0 +1,782 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage14.veh.suv_179",
+      "covers": [
+        "scveh",
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: an SUV rated over 6,000 pounds placed in service in 2025 (acquired after January 19), 100% business, cost $70,000, section 179 election $31,300 (the SUV limit): no passenger automobile limits; line 15 $38,700; special allowance 100% = $38,700; MACRS zero. Part I: line 2 $70,000, line 8 and 9 $31,300, business income before section 179 $200,000 - $38,700 = $161,300, line 12 $31,300. Schedule C line 13 $70,000.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "haul"
+        ],
+        "person[taxpayer].sc[haul].line1": 20000000,
+        "$scveh@person[taxpayer].sc[haul]": [
+          "suv"
+        ],
+        "person[taxpayer].sc[haul].scveh[suv].method": "actual",
+        "person[taxpayer].sc[haul].scveh[suv].owned": true,
+        "person[taxpayer].sc[haul].scveh[suv].miles_business": 10000,
+        "person[taxpayer].sc[haul].scveh[suv].suv": true,
+        "person[taxpayer].sc[haul].scveh[suv].s179_elect": 3130000,
+        "person[taxpayer].sc[haul].scveh[suv].after_jan19": true,
+        "person[taxpayer].sc[haul].scveh[suv].bonus_same": true,
+        "person[taxpayer].sc[haul].scveh[suv].quarter": "q2",
+        "person[taxpayer].sc[haul].scveh[suv].placed": "y2025",
+        "person[taxpayer].sc[haul].scveh[suv].cost": 7000000,
+        "person[taxpayer].sc[haul].scveh[suv].lease": null
+      },
+      "expect": {
+        "person[taxpayer].sc[haul].scveh[suv].line16": {
+          "kind": "money",
+          "cents": 3870000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 3130000
+        },
+        "person[taxpayer].sc[haul].line13": {
+          "kind": "money",
+          "cents": 7000000
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.income_limit",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: receipts $3,000 and a $10,000 section 179 election on $10,000 of 7-year property (no special allowance, so no MACRS basis is left): business income before section 179 $3,000 (no wages); line 11 $3,000; line 12 $3,000; line 13 carryover to 2026 $7,000; the deduction differs from the election and the return has one Schedule C, so its line 13 is $3,000.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 300000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].s179": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line11": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].sc[desk].line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.wages_count",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.s179.income_limit but with $20,000 of wages: business income $3,000 + $20,000 = $23,000, so line 12 is the full $10,000 and line 31 is a loss of $7,000. Schedule 1 line 3 is the $7,000 loss (all investment at risk). Line 1 is the $2,500,000 the line 1 instruction states (i4562 p. 4; amb.2025.s179_carryover_no_property, owner, T-043), so line 5 is $2,500,000 and line 11 is the smaller of business income and that. Line 11 is therefore the business income, $23,000. Mutation-score assertion (T-159): line 31 is a loss of $7,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "job"
+        ],
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].w2[job].box1": 2000000,
+        "person[taxpayer].w2[job].box3": 2000000,
+        "person[taxpayer].w2[job].box4": 124000,
+        "person[taxpayer].w2[job].box5": 2000000,
+        "person[taxpayer].w2[job].box6": 29000,
+        "person[taxpayer].sc[desk].line1": 300000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].s179": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line11": {
+          "kind": "money",
+          "cents": 2300000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[desk].line31": {
+          "kind": "money",
+          "cents": -700000
+        },
+        "s1.line3": {
+          "kind": "money",
+          "cents": -700000
+        },
+        "person[taxpayer].sc[desk].loss": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.carryover_no_property",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: no section 179 property placed in service in 2025, a $3,000 carryover from 2024 Form 4562 line 13, and receipts of $50,000. Line 1 is the $2,500,000 the line 1 instruction states (i4562 p. 4), not Worksheet 1's smaller of that and the $0 cost of 2025 property (amb.2025.s179_carryover_no_property, owner, T-043: 26 U.S.C. 179(b)(3)(B) and Treas. Reg. 1.179-3(b)-(c) allow a carryover up to the unused dollar limitation and the business income limit). Line 5 $2,500,000; line 9 zero; line 11 the smaller of $50,000 business income and line 5: $50,000; line 12 the smaller of $3,000 and $50,000: $3,000; line 13 zero. Line 12 differs from the $0 elected for 2025 and the return has one Schedule C, so its line 13 is $3,000.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "s179.line10": 300000
+      },
+      "expect": {
+        "s179.line1": {
+          "kind": "money",
+          "cents": 250000000
+        },
+        "s179.line5": {
+          "kind": "money",
+          "cents": 250000000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.phase_down",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $4,000,001 machine with a $2,500,000 section 179 election and business income above it: line 2 $4,000,001, line 4 $1, line 5 $2,499,999; line 9 and line 12 $2,499,999. BUG-0148: the election is now $2,499,999, the line 5 limitation (i4562 p. 4, Line 3); lines 4, 5, 9 and 12 are as predicted.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 500000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "press"
+        ],
+        "person[taxpayer].sc[d].asset[press].placed": "y2025",
+        "person[taxpayer].sc[d].asset[press].cost": {
+          "param": "s179.threshold",
+          "offset": 100
+        },
+        "person[taxpayer].sc[d].asset[press].pct": 100,
+        "person[taxpayer].sc[d].asset[press].s179": 249999900,
+        "person[taxpayer].sc[d].asset[press].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line4": {
+          "kind": "money",
+          "cents": 100
+        },
+        "s179.line5": {
+          "kind": "money",
+          "cents": 249999900
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 249999900
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.carryover_no_room",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: a $4,000,100 press (7-year, half-year, no special allowance), a $2,499,900 section 179 election, a $1,000 carryover from 2024 and $5,000,000 of receipts. Line 2 $4,000,100; line 4 $100; line 5 $2,500,000 - $100 = $2,499,900; line 9 $2,499,900; income before section 179 $5,000,000 less MACRS on $1,500,200 at 14.29% ($214,378.58) = $4,785,621.42; line 11 the smaller of that and line 5, $2,499,900; line 12 the smaller of $2,500,900 and $2,499,900: $2,499,900; line 13 $1,000. The election uses the whole dollar limitation, so no unused allowance is left for the carryover (Treas. Reg. 1.179-3(b)-(c); T-043).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 500000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "press"
+        ],
+        "s179.line10": 100000,
+        "person[taxpayer].sc[d].asset[press].placed": "y2025",
+        "person[taxpayer].sc[d].asset[press].cost": 400010000,
+        "person[taxpayer].sc[d].asset[press].pct": 100,
+        "person[taxpayer].sc[d].asset[press].s179": 249990000,
+        "person[taxpayer].sc[d].asset[press].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line4": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "s179.line5": {
+          "kind": "money",
+          "cents": 249990000
+        },
+        "s179.line9": {
+          "kind": "money",
+          "cents": 249990000
+        },
+        "s179.line11": {
+          "kind": "money",
+          "cents": 249990000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 249990000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.line5_floor",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: a $7,000,000 press and no section 179 election: line 2 $7,000,000; line 4 $7,000,000 - $4,000,000 = $3,000,000; line 5 $2,500,000 - $3,000,000, zero or less, so zero (Form 4562 line 5, 'If zero or less, enter -0-'); line 12 zero.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 500000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "press"
+        ],
+        "person[taxpayer].sc[d].asset[press].placed": "y2025",
+        "person[taxpayer].sc[d].asset[press].cost": 700000000,
+        "person[taxpayer].sc[d].asset[press].pct": 100,
+        "person[taxpayer].sc[d].asset[press].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line4": {
+          "kind": "money",
+          "cents": 300000000
+        },
+        "s179.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.dollar_limit",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $3,000,000 machine with a $3,000,000 election and business income above it: line 1 the smaller of $3,000,000 or $2,500,000; line 5 $2,500,000; line 9 the smaller of line 5 or line 8, $2,500,000; line 12 $2,500,000; line 13 (lines 9 and 10 less line 12) zero: an election above the dollar limit is not carried over, only an amount disallowed by the business income limit (the first prediction recorded a $500,000 carryover; corrected against Form 4562 line 13 before recording). BUG-0148: the election is now $2,500,000, the most i4562 p. 4, Line 3 permits (\"limited to the maximum dollar amount on line 1\"); lines 1, 5, 9, 12 and 13 are as predicted, and the $500,000 not elected stays depreciable basis. An election above the limit is refused (stage14.s179.refuse_over_limit).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 500000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "press"
+        ],
+        "person[taxpayer].sc[d].asset[press].placed": "y2025",
+        "person[taxpayer].sc[d].asset[press].cost": 300000000,
+        "person[taxpayer].sc[d].asset[press].pct": 100,
+        "person[taxpayer].sc[d].asset[press].s179": 250000000,
+        "person[taxpayer].sc[d].asset[press].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line1": {
+          "kind": "money",
+          "cents": 250000000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 250000000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.refuse_zero_limit",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0148 regression, predicted from i4562 p. 5, Line 5 (\"If line 5 is zero, you cannot elect to expense any section 179 property\") before recording: a $7,000,000 machine (line 4 $3,000,000, line 5 zero) with a $1,000,000 election is refused at s179.over_limit on line 9.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 500000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "press"
+        ],
+        "person[taxpayer].sc[d].asset[press].placed": "y2025",
+        "person[taxpayer].sc[d].asset[press].cost": 700000000,
+        "person[taxpayer].sc[d].asset[press].pct": 100,
+        "person[taxpayer].sc[d].asset[press].s179": 100000000,
+        "person[taxpayer].sc[d].asset[press].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s179.line9": {
+          "kind": "refusal",
+          "gate": "s179.over_limit",
+          "form": "A section 179 election above the dollar limitation (Form 4562 lines 6 and 7, column (c), more than line 5)",
+          "remedy": "Elect no more than the dollar limitation on line 5; the rest of the cost is depreciated.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 4, Line 3, \"The amount of section 179 property for which you can make the election is limited to the maximum dollar amount on line 1\"; p. 5, Line 5, \"If line 5 is zero, you cannot elect to expense any section 179 property\"",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.refuse_over_limit",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0148 regression, predicted from i4562 p. 4, Line 3 (\"The amount of section 179 property for which you can make the election is limited to the maximum dollar amount on line 1\") before recording: a $3,000,000 election against the $2,500,000 limitation is refused at s179.over_limit on line 9 rather than deducting $2,500,000 and losing the other $500,000 from basis.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 500000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "press"
+        ],
+        "person[taxpayer].sc[d].asset[press].placed": "y2025",
+        "person[taxpayer].sc[d].asset[press].cost": 300000000,
+        "person[taxpayer].sc[d].asset[press].pct": 100,
+        "person[taxpayer].sc[d].asset[press].s179": 300000000,
+        "person[taxpayer].sc[d].asset[press].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line9": {
+          "kind": "refusal",
+          "gate": "s179.over_limit",
+          "form": "A section 179 election above the dollar limitation (Form 4562 lines 6 and 7, column (c), more than line 5)",
+          "remedy": "Elect no more than the dollar limitation on line 5; the rest of the cost is depreciated.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 4, Line 3, \"The amount of section 179 property for which you can make the election is limited to the maximum dollar amount on line 1\"; p. 5, Line 5, \"If line 5 is zero, you cannot elect to expense any section 179 property\"",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        },
+        "s179.line12": {
+          "kind": "refusal",
+          "gate": "s179.over_limit",
+          "form": "A section 179 election above the dollar limitation (Form 4562 lines 6 and 7, column (c), more than line 5)",
+          "remedy": "Elect no more than the dollar limitation on line 5; the rest of the cost is depreciated.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 4, Line 3, \"The amount of section 179 property for which you can make the election is limited to the maximum dollar amount on line 1\"; p. 5, Line 5, \"If line 5 is zero, you cannot elect to expense any section 179 property\"",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.refuse_orphan",
+      "covers": [
+        "s179:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $3,000 section 179 carryover from 2024 on a return with no Schedule C: Part I line 13 refuses.",
+      "inputs": {
+        "s179.line10": 300000,
+        "f1040.tax_exempt_interest": null,
+        "eic.died_2025": null,
+        "eic.us_home": null,
+        "eic.qc_of_another": null
+      },
+      "expect": {
+        "s179.line13": {
+          "kind": "refusal",
+          "gate": "s179.orphan",
+          "form": "A section 179 carryover from 2024 with no business on the return",
+          "remedy": "Deducting a section 179 carryover without a Schedule C business is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 5, Lines 10 to 12",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.election_and_carryover",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: a $2,000 election on $2,000 of 7-year property and a $3,000 carryover from 2024, business income $50,000. Line 1 is the $2,500,000 the line 1 instruction states (i4562 p. 4; amb.2025.s179_carryover_no_property, owner, T-043), so line 5 is $2,500,000; line 9 $2,000; line 10 $3,000; line 11 the smaller of line 5 or income: $50,000; line 12 the smaller of $5,000 or $50,000: $5,000; line 13 zero. Under Worksheet 1's cap (line 1 the $2,000 cost) the carryover would have deducted nothing.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "saw"
+        ],
+        "s179.line10": 300000,
+        "person[taxpayer].sc[d].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[d].asset[saw].cost": 200000,
+        "person[taxpayer].sc[d].asset[saw].pct": 100,
+        "person[taxpayer].sc[d].asset[saw].s179": 200000,
+        "person[taxpayer].sc[d].asset[saw].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line5": {
+          "kind": "money",
+          "cents": 250000000
+        },
+        "s179.line11": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.zero_limit_carryover",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0155 regression, predicted from i4562 p. 5, Line 5 (\"If line 5 is zero ... skip lines 6 through 11, enter zero on line 12, and enter the carryover of any disallowed deduction from 2024 ... on line 13\") before recording: a $7,000,000 machine (line 5 zero) with no election and a $3,000 carryover hides line 10, and line 13 carries the $3,000.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 110000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "saw"
+        ],
+        "s179.line10": 300000,
+        "person[taxpayer].sc[d].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[d].asset[saw].cost": 700000000,
+        "person[taxpayer].sc[d].asset[saw].pct": 100,
+        "person[taxpayer].sc[d].asset[saw].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s179.show10": {
+          "kind": "bool",
+          "value": false
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.partial_election_carryover",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: a $1,000 election on $2,000 of 7-year property and a $3,000 carryover, receipts $50,000. The $1,000 not expensed is depreciated at 14.29% (7-year, half-year convention, year 1): $142.90, so business income before section 179 is $49,857.10. Line 1 is the $2,500,000 the line 1 instruction states (i4562 p. 4; amb.2025.s179_carryover_no_property, owner, T-043): line 5 $2,500,000; lines 8 and 9 $1,000; line 11 the smaller of line 5 and income, $49,857.10; line 12 the smaller of lines 9 + 10 ($4,000) and line 11: $4,000; line 13 zero.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "saw"
+        ],
+        "s179.line10": 300000,
+        "person[taxpayer].sc[d].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[d].asset[saw].cost": 200000,
+        "person[taxpayer].sc[d].asset[saw].pct": 100,
+        "person[taxpayer].sc[d].asset[saw].s179": 100000,
+        "person[taxpayer].sc[d].asset[saw].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line11": {
+          "kind": "money",
+          "cents": 4985710
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.refuse_mfs",
+      "covers": [
+        "s179:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: married filing separately, Schedule C receipts $50,000, a $1,000 tool (7-year property) placed in service in 2025 with all $1,000 elected under section 179: on a separate return the dollar limitation is allocated between the spouses and line 2 includes the spouse's property (i4562 p. 5, Line 5; p. 4, Line 2), which the tool does not figure, so Form 4562 line 5 refuses (owner).",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[d].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[d].asset[saw].cost": 100000,
+        "person[taxpayer].sc[d].asset[saw].pct": 100,
+        "person[taxpayer].sc[d].asset[saw].s179": 100000,
+        "person[taxpayer].sc[d].asset[saw].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line5": {
+          "kind": "refusal",
+          "gate": "s179.mfs",
+          "form": "Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation)",
+          "remedy": "On a separate return the dollar limitation is shared with your spouse and figured with your spouse's property; that is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 5, Line 5, \"If you are married filing separately, you and your spouse must allocate the dollar limitation for the tax year\"; p. 4, Line 2, \"Any property placed in service by your spouse, even if you are filing a separate return\"",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.mfs_no_election",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived sources before recording: married filing separately, the same business with the tool depreciated, no section 179 election and no carryover, so the separate-return refusal does not apply. Line 1 is $2,500,000 (i4562 p. 4, Line 1; T-043) and nothing is placed in service above $4,000,000, so the limitation is $2,500,000; on a separate return line 5 is that multiplied by 50% (i4562 p. 5, Line 5, the allocation when the spouses elect no other): $1,250,000.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[d].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[d].asset[saw].cost": 100000,
+        "person[taxpayer].sc[d].asset[saw].pct": 100,
+        "person[taxpayer].sc[d].asset[saw].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.mfs": {
+          "kind": "bool",
+          "value": false
+        },
+        "s179.line5": {
+          "kind": "money",
+          "cents": 125000000
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.land_improvement",
+      "covers": [
+        "asset",
+        "s179",
+        "f4562"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-182 regression, predicted by hand from the archived sources before the evaluator was run on the fixed tree: p946 p. 17, \"Land and land improvements do not qualify as section 179 property\", and i4562 p. 4, Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year\". Office furniture (class 00.11) costing $2,000,000, all elected under section 179, and a paved parking area (class 00.3, a land improvement, 15-year) costing $2,400,000 with no election, both placed in service in the first quarter of 2025 with no special allowance, and a $400,000 carryover from 2024. Line 2 is $2,000,000 (not $4,400,000), so line 4 is $0 and line 5 is $2,500,000; line 9 is $2,000,000; line 11 is $2,500,000 (business income is far above it); line 12 is $2,400,000 (lines 9 and 10) and line 13 is $0. Schedule C line 13 is $2,400,000 plus the parking area's MACRS, 5.00% of $2,400,000 (Pub. 946 Table A-1, 15-year, year 1) = $120,000: $2,520,000. Before the fix line 2 was $4,400,000, line 5 $2,100,000, line 12 $2,100,000 and Schedule C line 13 $2,220,000.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 1000000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc",
+          "lot"
+        ],
+        "s179.line10": 40000000,
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[pc].cost": 200000000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].s179": 200000000,
+        "person[taxpayer].sc[desk].asset[pc].bonus_choice": "none",
+        "person[taxpayer].sc[desk].asset[lot].class": "c00_3",
+        "person[taxpayer].sc[desk].asset[lot].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[lot].cost": 240000000,
+        "person[taxpayer].sc[desk].asset[lot].pct": 100,
+        "person[taxpayer].sc[desk].asset[lot].not179": true,
+        "person[taxpayer].sc[desk].asset[lot].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line2": {
+          "kind": "money",
+          "cents": 200000000
+        },
+        "s179.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s179.line5": {
+          "kind": "money",
+          "cents": 250000000
+        },
+        "s179.line9": {
+          "kind": "money",
+          "cents": 200000000
+        },
+        "s179.line11": {
+          "kind": "money",
+          "cents": 250000000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 240000000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 252000000
+        }
+      }
+    },
+    {
+      "id": "stage21.t068.orphan_with_wages_refused",
+      "covers": [
+        "s179:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-068. Inputs are the answers the full interview asked of a single filer with one W-2 ($20,000 wages) and no Schedule C, which it now asks for s179.line10 because s179.line13 (the carryover to 2026) is a target of the full profile. Predicted by hand before recording: a $3,000 carryover from line 13 of the 2024 Form 4562; line 11 is the smaller of line 5 ($2,500,000) and business income including wages ($20,000), so the income limit alone would not stop a deduction, but no Schedule C is on the return to take it (i4562 p. 5, Line 12, \"enter the amount allocated to the business or activity\"), so line 13 refuses at s179.orphan.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box2": 150000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "s179.line10": 300000,
+        "household.married": null
+      },
+      "expect": {
+        "s179.line11": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "s179.line13": {
+          "kind": "refusal",
+          "gate": "s179.orphan",
+          "form": "A section 179 carryover from 2024 with no business on the return",
+          "remedy": "Deducting a section 179 carryover without a Schedule C business is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 5, Lines 10 to 12",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage21.t068.no_business_no_carryover",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-068 companion. The same filer answering zero to the carryover question: the gate is false and line 13, reported to the full profile, is $0.00 (lines 9 and 10 are zero). Predicted by hand before recording.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box2": 150000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000
+      },
+      "expect": {
+        "s179.orphan": {
+          "kind": "bool",
+          "value": false
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    }
+  ]
+}

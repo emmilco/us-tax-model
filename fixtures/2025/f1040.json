@@ -1,0 +1,3707 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage4.refuse.div.section1202",
+      "walk": "stage4",
+      "covers": [
+        "div.section1202"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "div.any": true,
+        "div.box2c": 100,
+        "sd.distributions": 100,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "gate": "div.section1202",
+          "form": "Form 8949 code Q / Form 6251",
+          "remedy": "Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope.",
+          "cite": {
+            "doc": "i1040sd",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2025-12-11",
+            "locator": "p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.div.amt",
+      "walk": "stage4",
+      "covers": [
+        "div.amt"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "div.any": true,
+        "div.box13": 100,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "gate": "div.amt",
+          "form": "Form 6251",
+          "remedy": "Review private activity bond interest for the alternative minimum tax; Form 6251 is outside scope.",
+          "cite": {
+            "doc": "f1099div",
+            "tax_year": 2025,
+            "revision": "January 2024 (continuous-use form)",
+            "locator": "Instructions for Recipient, boxes 1–16",
+            "snapshot": "4ea1de804ff1db921753bd6319beeccfe4647299e03d79816e04d852a9cd1435"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.div.special",
+      "walk": "stage4",
+      "covers": [
+        "div.unsupported"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "div.any": true,
+        "div.box9": 100,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "gate": "div.unsupported",
+          "form": "Form 1099-DIV special distribution treatment",
+          "remedy": "Prepare the required section 897/liquidation treatment or reconcile return-of-capital basis and any excess gain.",
+          "cite": {
+            "doc": "f1099div",
+            "tax_year": 2025,
+            "revision": "January 2024 (continuous-use form)",
+            "locator": "Instructions for Recipient, boxes 1–16",
+            "snapshot": "4ea1de804ff1db921753bd6319beeccfe4647299e03d79816e04d852a9cd1435"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.div.inconsistent",
+      "walk": "stage4",
+      "covers": [
+        "div.bad_special"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Capital gain distributions of $0.50 with box 2b of $1: box 2b is asked only when box 2a is above zero.",
+      "inputs": {
+        "div.any": true,
+        "div.box2b": 100,
+        "sd.distributions": 50,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "gate": "div.bad_special",
+          "form": "Form 1099-DIV corrected amounts",
+          "remedy": "Boxes 2b, 2c and 2d are portions of box 2a. Correct inconsistent supplied amounts.",
+          "cite": {
+            "doc": "f1099div",
+            "tax_year": 2025,
+            "revision": "January 2024 (continuous-use form)",
+            "locator": "Instructions for Recipient, boxes 1–16",
+            "snapshot": "4ea1de804ff1db921753bd6319beeccfe4647299e03d79816e04d852a9cd1435"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.div.components",
+      "walk": "stage4",
+      "covers": [
+        "div.bad_components"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Ordinary dividends of $0.50 with section 199A dividends of $1: box 5 is asked only when box 1a is above zero.",
+      "inputs": {
+        "div.any": true,
+        "qbi.dividends": 100,
+        "sb.ordinary_dividends": 50,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "gate": "div.bad_components",
+          "form": "Form 1099-DIV dividend components",
+          "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends.",
+          "cite": {
+            "doc": "f1099div",
+            "locator": "Instructions for Recipient, boxes 1a, 1b and 5",
+            "tax_year": 2025,
+            "revision": "January 2024 (continuous-use form)",
+            "snapshot": "4ea1de804ff1db921753bd6319beeccfe4647299e03d79816e04d852a9cd1435"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.div.overlapping",
+      "walk": "stage4",
+      "covers": [
+        "div.bad_special"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "div.any": true,
+        "div.box2b": 60,
+        "div.box2d": 60,
+        "sd.distributions": 100,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "gate": "div.bad_special",
+          "form": "Form 1099-DIV corrected amounts",
+          "remedy": "Boxes 2b, 2c and 2d are portions of box 2a. Correct inconsistent supplied amounts.",
+          "cite": {
+            "doc": "f1099div",
+            "locator": "Instructions for Recipient, boxes 1–16",
+            "tax_year": 2025,
+            "revision": "January 2024 (continuous-use form)",
+            "snapshot": "4ea1de804ff1db921753bd6319beeccfe4647299e03d79816e04d852a9cd1435"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.div.basis",
+      "walk": "stage4",
+      "covers": [
+        "div.unsupported"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "div.any": true,
+        "div.box3": 100,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "gate": "div.unsupported",
+          "form": "Form 1099-DIV special distribution treatment",
+          "remedy": "Prepare the required section 897/liquidation treatment or reconcile return-of-capital basis and any excess gain.",
+          "cite": {
+            "doc": "f1099div",
+            "locator": "Instructions for Recipient, boxes 1–16",
+            "tax_year": 2025,
+            "revision": "January 2024 (continuous-use form)",
+            "snapshot": "4ea1de804ff1db921753bd6319beeccfe4647299e03d79816e04d852a9cd1435"
+          }
+        }
+      }
+    },
+    {
+      "id": "t091.absence.hoh_refused",
+      "covers": [
+        "dependent.qr_relationship",
+        "dependent.hoh_test2",
+        "dependent.qualifying_relative"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-091, predicted from the archived source before recording: Head of household through a child lived-half test that counted an absence with no expected return is refused: p501 p. 9, Temporary absences.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "ftc.taxes": 2500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "dependent[child].age": 10,
+        "dependent[child].absence_no_return": true,
+        "dependent[child].months": 12,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.hoh_absence",
+          "form": "Temporary absences for head of household (Pub. 501)",
+          "remedy": "For head of household, an absence counts as time lived with you only if it was reasonable to assume the absent person would return and you kept up the home; the time the person who would qualify you lived with you must be recounted under that rule, which this tool does not do.",
+          "cite": {
+            "doc": "p501",
+            "locator": "p. 9, Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\"",
+            "revision": "2025 returns; PDF created 2026-02-04",
+            "snapshot": "288b62a4917f3bc3df0bade7a22c23a8ae648ba9eb5086df5b8b50e881148ff6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "t091.kidnapped.qr_refused",
+      "covers": [
+        "dependent.qr_relationship",
+        "dependent.hoh_test2",
+        "dependent.qualifying_relative"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-091, predicted from the archived source before recording: A child presumed kidnapped who could only be a qualifying relative is refused: p501 p. 18, Kidnapped child, the part-year rule.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "parent"
+        ],
+        "dependent[parent].relationship": "other",
+        "dependent[parent].age": 10,
+        "dependent[parent].kidnapped": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line19": {
+          "kind": "refusal",
+          "gate": "dependent[parent].qr_kidnapped",
+          "form": "Kidnapped child (Pub. 501)",
+          "remedy": "A child presumed kidnapped by someone who isn't a family member may be your qualifying relative under part-year rules this tool does not apply.",
+          "cite": {
+            "doc": "p501",
+            "locator": "p. 18, Kidnapped child, \"You can treat a child as your qualifying relative even if the child has been kidnapped, but the following statements must be true.\"",
+            "revision": "2025 returns; PDF created 2026-02-04",
+            "snapshot": "288b62a4917f3bc3df0bade7a22c23a8ae648ba9eb5086df5b8b50e881148ff6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "t091.kidnapped.age18",
+      "covers": [
+        "dependent.qr_relationship",
+        "dependent.hoh_test2",
+        "dependent.qualifying_relative"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-091, predicted from the archived source before recording: Boundary: age 18 at the end of 2025 is still refused, the safe side of \"until ... the year the child would have reached age 18\" (p501 p. 18).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "parent"
+        ],
+        "dependent[parent].relationship": "parent",
+        "dependent[parent].age": 18,
+        "dependent[parent].kidnapped": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line19": {
+          "kind": "refusal",
+          "gate": "dependent[parent].qr_kidnapped",
+          "form": "Kidnapped child (Pub. 501)",
+          "remedy": "A child presumed kidnapped by someone who isn't a family member may be your qualifying relative under part-year rules this tool does not apply.",
+          "cite": {
+            "doc": "p501",
+            "locator": "p. 18, Kidnapped child, \"You can treat a child as your qualifying relative even if the child has been kidnapped, but the following statements must be true.\"",
+            "revision": "2025 returns; PDF created 2026-02-04",
+            "snapshot": "288b62a4917f3bc3df0bade7a22c23a8ae648ba9eb5086df5b8b50e881148ff6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1.t153.friend_child_taxpayer",
+      "covers": [
+        "dependent",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "F1 pass, T-153. Expected result written from the archived source before the evaluator was run: the facts of f1.t153.friend_child_nontaxpayer, except the friend is a taxpayer (p501 p. 18, Example 3—earned income credit claimed: \"Your friend’s child is the qualifying child of another taxpayer (your friend), so you can’t claim your friend’s child as your qualifying relative.\"). The answer can include the EIC rules, which the tool does not separate, so the qualifying child of more than one person refusal stands.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.married": true,
+        "dependent[child].other_claimant": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line19": {
+          "kind": "refusal",
+          "gate": "dependent[child].qc_tiebreak",
+          "form": "Qualifying child of more than one person (tie-breaker rules)",
+          "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 21, Qualifying child of more than one person",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1.t153.own_child_nontaxpayer_other",
+      "covers": [
+        "dependent",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "F1 pass, T-153. Expected result written from the archived source before the evaluator was run: your own child aged 3 who lived with you all year and is also the qualifying child of another person who is not a taxpayer. p501 p. 15, Qualifying Child of More Than One Person, \"Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person.\"; the tiebreaker rules (p. 16) have no exception for a person who does not file, so the refusal stands whatever the other person's filing.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "child"
+        ],
+        "household.married": true,
+        "dependent[child].age": 3,
+        "dependent[child].months": 12,
+        "dependent[child].other_claimant": true,
+        "dependent[child].other_nontaxpayer": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line19": {
+          "kind": "refusal",
+          "gate": "dependent[child].qc_tiebreak",
+          "form": "Qualifying child of more than one person (tie-breaker rules)",
+          "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 21, Qualifying child of more than one person",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.refuse.form2555",
+      "covers": [
+        "eic",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 with excluded foreign or Puerto Rico income: Step 1, question 3 is refused.",
+      "inputs": {
+        "sa.excluded_income": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "refusal",
+          "gate": "sa.excluded_income",
+          "form": "Form 2555 (EIC, Step 1, question 3)",
+          "remedy": "A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 40, Step 1, question 3, \"Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.refuse.form8814",
+      "covers": [
+        "eic",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 with a Form 8814 or other line 16 tax: Step 2, question 4 is refused.",
+      "inputs": {
+        "scope.other_line16": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "s1a.tips": null,
+        "s1a.overtime": null,
+        "s1a.carloan": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "refusal",
+          "gate": "scope.other_line16",
+          "form": "Form 8814 (EIC, Step 2, question 4)",
+          "remedy": "Reporting a child's interest and dividends on Form 8814 is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 40, Step 2, question 4",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.refuse.dependent_of_another",
+      "covers": [
+        "eic",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 where someone can claim the filer as a dependent: Step 4, question 6 is refused.",
+      "inputs": {
+        "sa.dependent": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "refusal",
+          "gate": "sa.dependent",
+          "form": "Dependent of another person or dual-status alien (EIC, Step 4, question 6)",
+          "remedy": "A filer who can be claimed as a dependent, or a dual-status alien, is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 4, question 6",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line27c": {
+          "kind": "refusal",
+          "gate": "sa.dependent",
+          "form": "Dependent of another person or dual-status alien (EIC, Step 4, question 6)",
+          "remedy": "A filer who can be claimed as a dependent, or a dual-status alien, is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 4, question 6",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.refuse.child_of_another",
+      "covers": [
+        "eic",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one child who meets the conditions to be the qualifying child of another person: the tie-breaker rules are refused (p. 44).",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "dependent[child].age": 3,
+        "dependent[child].months": 12,
+        "dependent[child].other_claimant": true,
+        "dependent[child].other_nontaxpayer": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "refusal",
+          "gate": "dependent[child].eic_tiebreak",
+          "form": "Qualifying child of more than one person (EIC)",
+          "remedy": "The tie-breaker rules for a child who is the qualifying child of more than one person are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 44, Qualifying child of more than one person",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.refuse.married_child",
+      "covers": [
+        "eic",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: Head of household, one married child: the married-child rule is refused (p. 44).",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "dependent[child].married": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "refusal",
+          "gate": "dependent[child].married",
+          "form": "Married child (EIC)",
+          "remedy": "A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 44, Married child",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.mfs.lived_apart",
+      "covers": [
+        "eic",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 9 follow-up, predicted by hand from the printed instructions before recording: Married filing separately, one child, wages $4,000, no shared principal residence for the last 6 months: Step 3, questions 3 and 4 lead to question 6; the Single/head of household column (the table's star note gives it to married filing separately) is $1,369. The return itself refuses at line 33 (married statuses); line 27a is computed.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].age": 3,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 136900
+        },
+        "f1040.line27c": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.separated_spouses": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.refuse.clergy_schedule1",
+      "covers": [
+        "eic",
+        "f1040.line27b"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Housekeeping pass, predicted before recording: as no_child.4000 with an item requiring Schedule 1 (which covers Schedule SE): line 27b, clergy filing Schedule SE, is refused (i1040gi p. 43).",
+      "inputs": {
+        "scope.schedule1": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line27b": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Clergy filing Schedule SE (Form 1040, line 27b)",
+          "remedy": "Schedule SE is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 43, Line 27b, and Clergy",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.refuse.other_income.schedule1_unanswered",
+      "covers": [
+        "eic",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Mutation-equivalence second reading (kills refusal.eic.eic.step1_resident.0), predicted from the archived i1040gi before recording: as stage9.eic.refuse.other_income but with the Schedule 1 screen left unanswered, the state the interview is in when it stops at the other-income refusal (the scope screens share one order and are asked by key). AGI is then unknown, so Step 1 question 1 cannot be answered, but the other-income screen (which covers nonresident alien status, Step 1 question 4, p. 40) is answered Yes: the EIC refuses on it (a refusal outranks an unknown, spec 4.7.2), so lines 27a and 27c carry the Step 1 question 4 refusal rather than a $0 credit.",
+      "inputs": {
+        "scope.other_income": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "scope.schedule1": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "refusal",
+          "gate": "scope.other_income",
+          "form": "Nonresident aliens (EIC, Step 1, question 4)",
+          "remedy": "Nonresident and dual-status treatment is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 40, Step 1, question 4; p. 44, Nonresident aliens",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line27c": {
+          "kind": "refusal",
+          "gate": "scope.other_income",
+          "form": "Nonresident aliens (EIC, Step 1, question 4)",
+          "remedy": "Nonresident and dual-status treatment is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 40, Step 1, question 4; p. 44, Nonresident aliens",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage9.eic.refuse.f1040_line16.separated_spouses",
+      "covers": [
+        "eic",
+        "f1040.separated_spouses"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Mutation-equivalence second reading (kills refusal.eic.eic.step2_other.0), predicted from the archived f1040 before recording: the inputs of stage16.cleanup.refuse.f1040_line16 as the interview asks them (it stops at the Form 1040 line 16 screen, before the Schedule 1 screen). The filing status is single, and the Dependents box reads 'Check if your filing status is MFS or HOH and you lived apart from your spouse for the last 6 months of 2025, or you are legally separated' (Form 1040, page 1), so it is unchecked whatever the EIC steps say; line 16 refuses on its own entry.",
+      "inputs": {
+        "scope.other_line16": true,
+        "f2441.benefits": null,
+        "div.any": null,
+        "ssb.benefits": null,
+        "sd.other_forms": null,
+        "scope.schedule1": null,
+        "sa.excluded_income": null,
+        "f1040.tax_exempt_interest": null,
+        "eic.qc_of_another": null,
+        "sa.dependent": null,
+        "ftc.taxes": null,
+        "f2441.care": null,
+        "f5695.part2_any": null,
+        "f5695.part1_any": null,
+        "f5695.business_use": null,
+        "f5695.line7a": null,
+        "f5695.line12": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f8959.unsupported": null,
+        "f1040.line26": null,
+        "s3.line10": null,
+        "person[taxpayer].rrta": null,
+        "s3.line12": null,
+        "s3.line14": null,
+        "f5695.condo": null,
+        "person[taxpayer].sav_trad": null,
+        "person[taxpayer].ira_dist": null,
+        "s1a.carloan": null,
+        "person[taxpayer].age65": null,
+        "sd.carryover": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.separated_spouses": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line16": {
+          "kind": "refusal",
+          "gate": "scope.other_line16",
+          "form": "Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture",
+          "remedy": "Additional Form 1040 line 16 taxes are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage10.ira.fully_taxable",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $50,000; traditional IRA distribution $10,000, code 7, nothing rolled over: fully taxable, so $10,000 on line 4b and no entry on line 4a (i1040gi p. 27).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].box1": 1000000
+      },
+      "expect": {
+        "f1040.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line4c_rollover": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 6000000
+        }
+      }
+    },
+    {
+      "id": "stage10.ira.partial_rollover",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: As fully_taxable, but $6,000 rolled over within 60 days to another traditional IRA: Exception 1, total on line 4a ($10,000), the part not rolled over on line 4b ($4,000), box 1 on line 4c checked (p. 27).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].box1": 1000000,
+        "person[taxpayer].retirement[a].rollover": 600000
+      },
+      "expect": {
+        "f1040.line4a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line4c_rollover": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage10.ira.roth_qualified",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Roth IRA distribution $5,000, code Q: Exception 2(b), line 4a $5,000 and line 4b $0 (p. 27).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].retirement[r].account": "roth_ira",
+        "person[taxpayer].retirement[r].code": "qualified_roth_Q",
+        "person[taxpayer].retirement[r].box1": 500000
+      },
+      "expect": {
+        "f1040.line4a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage10.ira.roth_code_unanswered",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation-equivalence second reader (P1, refusal.retirement.retirement.amount_a.1), predicted from i1040gi p. 27 (the distribution code decides whether the Roth IRA exception applies, and a code outside the tool is refused) before recording: with the Form 1099-R code unanswered, Form 1040 line 4a is unknown, waiting on that answer, not box 1.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].retirement[r].account": "roth_ira",
+        "person[taxpayer].retirement[r].code": null
+      },
+      "expect": {
+        "f1040.line4a": {
+          "kind": "unknown",
+          "reason": "no input supplied for person[taxpayer].retirement[r].code",
+          "input": "person[taxpayer].retirement[r].code"
+        }
+      }
+    },
+    {
+      "id": "stage10.refuse.roth_not_q",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Roth IRA distribution with code 7: Form 8606 is needed (Exception 2), refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].retirement[r].account": "roth_ira",
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[r].bad_code",
+          "form": "Form 8606 or another Form 1099-R code",
+          "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 27, Exception 2; f1099r Box 7",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage10.refuse.other_code",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Traditional IRA distribution with a code outside 7, 4, 2, G and Q: refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].code": "other",
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[a].bad_code",
+          "form": "Form 8606 or another Form 1099-R code",
+          "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 27, Exception 2; f1099r Box 7",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line4c_rollover": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[a].bad_code",
+          "form": "Form 8606 or another Form 1099-R code",
+          "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 27, Exception 2; f1099r Box 7",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage10.refuse.special",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Traditional IRA distribution answered yes on the special-cases screen (for example a qualified charitable distribution): refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].special": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[a].special",
+          "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+          "remedy": "This distribution needs a form or rule outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line4c_rollover": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[a].special",
+          "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+          "remedy": "This distribution needs a form or rule outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage10.plan.direct_rollover",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Plan distribution $20,000, code G (direct rollover to a traditional IRA): line 5a $20,000, line 5b $0, box 1 on line 5c checked (pp. 30-31; f1099r box 2a).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].code": "direct_rollover_G",
+        "person[taxpayer].retirement[p].box1": 2000000
+      },
+      "expect": {
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line5c_rollover": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage10.plan.box5",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Pension $12,000, code 7, box 5 employee contributions $1,200, no annuity worksheet: line 5a $12,000, line 5b $10,800 (p. 30, Rollovers: subtract the contributions in box 5).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 1200000,
+        "person[taxpayer].retirement[p].box5": 120000
+      },
+      "expect": {
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 1080000
+        },
+        "f1040.line5c_rollover": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.with_ira",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $20,000, IRA distribution $10,000 (fully taxable), benefits $20,000: line 3 $30,000 (includes line 4b), line 5 $40,000, line 9 $15,000, line 11 $6,000, line 14 $4,500, line 15 $5,100, line 16 $9,600; line 6b $9,600; total income $39,600.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "ssb.benefits": 2000000,
+        "person[taxpayer].retirement[a].box1": 1000000
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 960000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 3960000
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.joint",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Married filing jointly, wages $30,000, benefits $30,000: line 2 $15,000, line 5 $45,000, line 8 $32,000, line 9 $13,000, line 10 $12,000, line 11 $1,000, line 13 $6,000, line 14 $6,000, line 15 $850, line 16 $6,850; line 6b $6,850 (the return itself refuses at line 33).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "household.married": true,
+        "ssb.benefits": 3000000
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 685000
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.mfs_together",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Married filing separately and lived with the spouse during 2025, wages $10,000, benefits $20,000: lines 8 to 15 skipped, line 16 is 85% of line 7 ($20,000) = $17,000, line 17 $17,000; line 6b $17,000.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1000000,
+        "person[taxpayer].w2[emp_a].box5": 1000000,
+        "person[taxpayer].w2[emp_a].box6": 14500,
+        "ssb.benefits": 2000000
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f1040.line6d": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.mfs_apart",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: As mfs_together but lived apart all year: line 8 $25,000, line 5 $20,000, none taxable; line 6d checked.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1000000,
+        "person[taxpayer].w2[emp_a].box5": 1000000,
+        "person[taxpayer].w2[emp_a].box6": 14500,
+        "ssb.benefits": 2000000,
+        "ssb.lived_apart": true
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line6d": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage10.refuse.pub915",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Benefits $20,000 with an exception (for example a traditional IRA contribution while covered by a workplace plan): the worksheet does not apply, refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "ssb.benefits": 2000000,
+        "ssb.pub915": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "refusal",
+          "gate": "ssb.pub915",
+          "form": "Pub. 915 or Pub. 590-A worksheet",
+          "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 31, Lines 6a and 6b, Exception",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage10.refuse.lump_sum",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Benefits $20,000 and the lump-sum election: refused; line 6c is checked.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "ssb.benefits": 2000000,
+        "ssb.lump_sum": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "refusal",
+          "gate": "ssb.lump_sum",
+          "form": "Lump-Sum Election (Pub. 915)",
+          "remedy": "The lump-sum election method is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 31, Line 6c",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line6c": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage10.mixed.ira_and_plan",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Traditional IRA $10,000 with $6,000 rolled over (line 4a $10,000, 4b $4,000, 4c box 1 checked) and a pension $12,000 with box 5 $1,200 and no rollover (line 5a $12,000, 5b $10,800, 5c unchecked): each distribution goes only to its own lines; line 9 $64,800.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "a",
+          "p"
+        ],
+        "person[taxpayer].retirement[a].box1": 1000000,
+        "person[taxpayer].retirement[a].rollover": 600000,
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 1200000,
+        "person[taxpayer].retirement[p].box5": 120000
+      },
+      "expect": {
+        "f1040.line4a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line4c_rollover": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 1080000
+        },
+        "f1040.line5c_rollover": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 6480000
+        }
+      }
+    },
+    {
+      "id": "stage10.plan.partial_rollover",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Plan distribution $20,000, code 7, of which $5,000 rolled over within 60 days to a traditional IRA, no box 5: line 5a $20,000, line 5b $15,000, box 1 on line 5c checked, line 4c unchecked (p. 30, Rollovers).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 2000000,
+        "person[taxpayer].retirement[p].rollover": 500000
+      },
+      "expect": {
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "f1040.line5c_rollover": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line4c_rollover": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage10.refuse.roth_special",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Roth IRA distribution, code Q, answered yes on the special-cases screen (for example a qualified charitable distribution): refused on line 4b even though a qualified Roth distribution is otherwise $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].retirement[r].account": "roth_ira",
+        "person[taxpayer].retirement[r].special": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[r].special",
+          "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+          "remedy": "This distribution needs a form or rule outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage10.smw.cost_recovered",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Annuity $12,000 for 12 months, cost $31,000, all $31,000 recovered tax free in earlier years: the entire cost came back before 2025, so the payments are fully taxable: line 5b $12,000 and no entry on line 5a (p. 28, Fully Taxable Pensions and Annuities).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 1200000,
+        "person[taxpayer].retirement[p].annuity": true,
+        "person[taxpayer].retirement[p].cost": 3100000,
+        "person[taxpayer].retirement[p].recovered": 3100000
+      },
+      "expect": {
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 1200000
+        }
+      }
+    },
+    {
+      "id": "stage10.smw.recovered_exceeds_cost",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: As cost_recovered, but the recovered amount entered ($40,000) is more than the cost ($31,000): still fully taxable, line 5b $12,000, no line 5a entry; line 5b never exceeds box 1.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 1200000,
+        "person[taxpayer].retirement[p].annuity": true,
+        "person[taxpayer].retirement[p].cost": 3100000,
+        "person[taxpayer].retirement[p].recovered": 4000000
+      },
+      "expect": {
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 1200000
+        }
+      }
+    },
+    {
+      "id": "stage10.refuse.annuity_rollover",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: A pension answered as a Simplified Method annuity with code G (direct rollover): the rollover of such payments is left to Pub. 575 (p. 30, Rollovers), refused on lines 5a and 5b.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].code": "direct_rollover_G",
+        "person[taxpayer].retirement[p].box1": 1200000,
+        "person[taxpayer].retirement[p].annuity": true,
+        "person[taxpayer].retirement[p].cost": 3100000,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line5a": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[p].annuity_rollover",
+          "form": "Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)",
+          "remedy": "A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line5b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[p].annuity_rollover",
+          "form": "Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)",
+          "remedy": "A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage10.refuse.terror_disability",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Benefits $20,000 of which some are disability payments for injuries from a terrorist attack: excluded from income under the p. 31 rule (Pub. 3920), refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "ssb.benefits": 2000000,
+        "ssb.terror_disability": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "refusal",
+          "gate": "ssb.terror_disability",
+          "form": "Pub. 3920 (disability payments for injuries from a terrorist attack)",
+          "remedy": "Excluding disability payments for injuries from a terrorist attack is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 31, Lines 6a and 6b, Disability payments",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage10.plan.direct_rollover_zero",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Plan distribution with code G (direct rollover) and $0 in box 1: a direct rollover is a rollover (p. 30, 'Use lines 5a and 5b to report a rollover, including a direct rollover'), so box 1 on line 5c is checked; lines 5a and 5b are $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].code": "direct_rollover_G"
+      },
+      "expect": {
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line5c_rollover": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage10.smw.cost_recovered_box5",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: As cost_recovered, with $1,000 in box 5: the payments are still fully taxable once the cost has been recovered, so line 5b $12,000 and no entry on line 5a (box 5 bears on a plan distribution only outside the Simplified Method; p. 28).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 1200000,
+        "person[taxpayer].retirement[p].box5": 100000,
+        "person[taxpayer].retirement[p].annuity": true,
+        "person[taxpayer].retirement[p].cost": 3100000,
+        "person[taxpayer].retirement[p].recovered": 3100000
+      },
+      "expect": {
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 1200000
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.exempt_interest_dividends",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: As ss.tax_exempt_interest, but the $2,000 is $1,000 of tax-exempt interest (Form 1099-INT box 8) and $1,000 of exempt-interest dividends (Form 1099-DIV box 12): line 2a is their total, $2,000 ('Also include on line 2a any exempt-interest dividends', p. 25), so line 6b is again $11,300.",
+      "inputs": {
+        "div.any": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "ssb.benefits": 2000000,
+        "f1040.tax_exempt_interest": 100000,
+        "div.box12": 100000
+      },
+      "expect": {
+        "f1040.line2a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 1130000
+        }
+      }
+    },
+    {
+      "id": "stage10.plan.property_rollover_full",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-129, predicted by hand from the sources before recording. A plan distribution of $20,000 of nonemployer stock (box 1 $20,000, code 7, no box 5), all of the same stock rolled over within 60 days to a traditional IRA, nothing sold, so retirement.special is answered No (p575 p. 23, \"you must either roll over the actual property distributed or sell it and roll over the proceeds\"; i1040gi p. 30, Rollovers: subtract box 5 and the amount rolled over from box 1). Line 5a $20,000, line 5b $0, box 1 on line 5c checked, line 4c unchecked.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 2000000,
+        "person[taxpayer].retirement[p].rollover": 2000000
+      },
+      "expect": {
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line5c_rollover": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line4c_rollover": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage11.uc.basic",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Single, wages $30,000, unemployment compensation $5,000 (Form 1099-G box 1): Schedule 1 line 7 $5,000, line 10 $5,000, Form 1040 line 8 $5,000, line 9 $35,000 (i1040gi p. 89).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "s1.uc_paid": 500000
+      },
+      "expect": {
+        "s1.line7": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 3500000
+        },
+        "s1.line7_box": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage11.refuse.uc_contributions",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Unemployment compensation with contributions to a governmental unemployment compensation program: refused (p. 89, Caution).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "s1.uc_paid": 500000,
+        "s1.uc_unsupported": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line8": {
+          "kind": "refusal",
+          "gate": "s1.uc_unsupported",
+          "form": "Unemployment compensation contributions or earlier-year repayments (Form 1099-G instructions, Pub. 525)",
+          "remedy": "Reducing unemployment compensation by program contributions, or repayments of amounts included in an earlier year, is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 89, Schedule 1, line 7, Caution and the last paragraph",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage11.educator.capped",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible educator, wages $40,000, qualified expenses $450: line 11 $300 (up to $300, p. 93); Form 1040 line 10 $300, line 11a $39,700, line 14 $15,750 (the standard deduction), line 15 $23,950.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "person[taxpayer].educator_expenses": 45000,
+        "person[taxpayer].eligible_educator": true
+      },
+      "expect": {
+        "s1.line11": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3970000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2395000
+        }
+      }
+    },
+    {
+      "id": "stage11.educator.not_eligible",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Qualified expenses $450 but not an eligible educator (fewer than 900 hours): line 11 $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "person[taxpayer].educator_expenses": 45000
+      },
+      "expect": {
+        "s1.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage11.refuse.hsa_months",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Family months (5) more than eligible months (3): impossible counts, refused. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 3,
+        "person[taxpayer].f8889[hsa].months_family": 5,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage11.refuse.hsa_married",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Married filing separately with HSA contributions: the spouses' rules (Form 8889 lines 6 and 7) are outside this tool, refused. Stage 13: Form 8889 on a married filing separately return stays refused (f8889.mfs); joint returns use the spouse rules. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].mfs",
+          "form": "Form 8889 on a married filing separately return",
+          "remedy": "Married filing separately is outside this tool; the HSA rules for spouses are supported on a joint return.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 14, Married Filing Separately",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage13.wages_both",
+      "covers": [
+        "f1040",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: wages $60,000 (you) and $50,000 (spouse), one employer each. Line 1a $110,000; line 11b $110,000; standard deduction $31,500 (line 12e, line 14); line 15 $78,500. Tax Table, $78,500-$78,550, married filing jointly: tax on the midpoint $78,525 = $2,385 + 12% x $54,675 = $8,946. No excess social security (one employer each).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500
+      },
+      "expect": {
+        "f1040.line1a": {
+          "kind": "money",
+          "cents": 11000000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 11000000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 3150000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 3150000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 7850000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 894600
+        },
+        "s3.line11": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage13.educator_both",
+      "covers": [
+        "s1",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: both eligible educators, expenses $400 (you) and $450 (spouse): $300 each, line 11 $600; line 10 $600; line 11b $110,000 - $600 = $109,400.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "person[taxpayer].educator_expenses": 40000,
+        "person[taxpayer].eligible_educator": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "person[spouse].educator_expenses": 45000,
+        "person[spouse].eligible_educator": true,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500
+      },
+      "expect": {
+        "s1.line11": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 10940000
+        }
+      }
+    },
+    {
+      "id": "stage13.eic_spouse_no_ssn",
+      "covers": [
+        "eic",
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: as above but your spouse has no SSN valid for employment: Step 1 question 2 asks whether you, and your spouse if filing jointly, have one; the answer is no, so no EIC: line 27a $0.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 1000000,
+        "person[taxpayer].w2[e0].box4": 62000,
+        "person[taxpayer].w2[e0].box5": 1000000,
+        "person[taxpayer].w2[e0].box6": 14500,
+        "person[spouse].eic_ssn": false,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 500000,
+        "person[spouse].w2[e0].box4": 31000,
+        "person[spouse].w2[e0].box5": 500000,
+        "person[spouse].w2[e0].box6": 7250
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage13.refuse.joint_without_spouse",
+      "covers": [
+        "household",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: married filing jointly with only your entry: refused at line 1a (one entry for each spouse on a joint return).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line1a": {
+          "kind": "refusal",
+          "gate": "household.roster_bad",
+          "form": "The people on the return",
+          "remedy": "Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse’s first name and middle initial\"; Filing Status",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage13.refuse.single_with_spouse",
+      "covers": [
+        "household",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: single with a spouse entry: refused at line 1a.",
+      "inputs": {
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line1a": {
+          "kind": "refusal",
+          "gate": "household.roster_bad",
+          "form": "The people on the return",
+          "remedy": "Enter one person with the role taxpayer, and, only when married filing jointly, one person with the role spouse.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse’s first name and middle initial\"; Filing Status",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refund.f1",
+      "covers": [
+        "refund",
+        "s1",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: On your 2024 return you took the standard deduction. 2024 state income tax refund $1,000. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): 2024 standard deduction: i1040gi p.89 TIP (a) 'None of your refund is taxable if ... you didn't itemize'; Pub 525 Example 29 same. Worksheet not used; Sch 1 line 1 = 0. | 2025: wages 50000 + Sch1 line 10 0 = f1040 line 9/11 50000; minus std deduction 15750 = line 15 34250; Tax Table (Single) row 34250-34300 = 3875 = line 16; line 17 = 0 so line 18 = 3875. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "refund.received": 100000
+      },
+      "expect": {
+        "s1.line1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 3425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 387500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 387500
+        }
+      }
+    },
+    {
+      "id": "stage16.refund.f2",
+      "covers": [
+        "refund",
+        "s1",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 1 and its worksheet, the Tax Table) and p525, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: On your 2024 return you itemized and deducted state and local general sales taxes instead of income taxes. 2024 state income tax refund $1,500. Lines the worksheet does not reach, and (where a person was born before January 2, 1960) the 2025 lines that depend on age, are not asserted. Working (predictor A): 2024 deducted general sales taxes: i1040gi p.89 TIP (b) 'None of your refund is taxable if ... elected to deduct state and local general sales taxes'; Pub 525 Example 27 analog. Worksheet not used; Sch 1 line 1 = 0. | 2025: wages 50000 + Sch1 line 10 0 = f1040 line 9/11 50000; minus std deduction 15750 = line 15 34250; Tax Table (Single) row 34250-34300 = 3875 = line 16; line 17 = 0 so line 18 = 3875. Sources: i1040gi p.89 (Sch 1 line 1 TIP and Exception), p.90 (State and Local Income Tax Refund Worksheet); 2025 std deduction i1040gi p.~35 worksheet line 3 / What's New ($15,750 single, $31,500 MFJ); Tax Table i1040gi (Single/MFJ columns); f1040s1 line 10 = combine lines 1-7 and 9 -> f1040 line 8; f1040 line 18 = 16 + 17 (17 = 0).",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "refund.received": 150000,
+        "refund.itemized": true,
+        "refund.sales": true
+      },
+      "expect": {
+        "s1.line1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 3425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 387500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 387500
+        }
+      }
+    },
+    {
+      "id": "stage16.other.o2",
+      "covers": [
+        "s1",
+        "oi8z",
+        "sa",
+        "f1040",
+        "eic",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: As O1, but gambling losses $1,200. Working (predictor A): s1 8b 5,000; 9 5,000; 10 5,000; AGI 65,000. Itemized would be 5a/5e 4,000 + 8a 9,000 + 16 min(1,200, 5,000)=1,200 = 14,200 < standard 15,750, so take the standard deduction (Schedule A not filed). 12e 15,750; 14 15,750; 15 = 49,250; Tax Table single 49,250-49,300 = 5,755 (check: 1,192.50 + 4,386 + 22% x 800 at midpoint 49,275 = 5,754.50 -> 5,755); 18 = 5,755.",
+      "inputs": {
+        "sa.line5a": 400000,
+        "sa.line8a": 900000,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1.gambling_winnings": 500000,
+        "sa.gambling_losses": 120000
+      },
+      "expect": {
+        "s1.line8b": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 6500000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 6500000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 6500000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 4925000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 575500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 575500
+        }
+      }
+    },
+    {
+      "id": "stage16.other.o3",
+      "covers": [
+        "s1",
+        "oi8z",
+        "sa",
+        "f1040",
+        "eic",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $60,000. Gambling winnings $3,000; losses $2,000. No other itemized deductions. Working (predictor A): s1 8b 3,000; 9 3,000; 10 3,000; AGI 63,000. Only itemizable item is gambling losses min(2,000, 3,000)=2,000 < 15,750, so standard deduction. 15 = 63,000 - 15,750 = 47,250; Tax Table single 47,250-47,300 = 5,435; 18 = 5,435.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1.gambling_winnings": 300000,
+        "sa.gambling_losses": 200000
+      },
+      "expect": {
+        "s1.line8b": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 6300000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 6300000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 6300000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 4725000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 543500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 543500
+        }
+      }
+    },
+    {
+      "id": "stage16.other.o4",
+      "covers": [
+        "s1",
+        "oi8z",
+        "sa",
+        "f1040",
+        "eic",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Married filing jointly. Wages $50,000 (yours). Alaska Permanent Fund dividends $1,000 each, $2,000 in all. Working (predictor A): Alaska Permanent Fund dividends reported on s1 line 8g (p525, Alaska Permanent Fund dividend): 1,000 x 2 = 2,000 on the joint return; 9 2,000; 10 2,000. AGI 52,000; standard MFJ 31,500; 15 = 20,500; Tax Table MFJ 20,500-20,550 = 2,053; 18 = 2,053.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "s1.line8g": 200000,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box4": 310000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "$w2@person[spouse]": [
+          "e0"
+        ]
+      },
+      "expect": {
+        "s1.line8g": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 5200000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5200000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 5200000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 3150000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 3150000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2050000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 205300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 205300
+        }
+      }
+    },
+    {
+      "id": "stage16.other.o5",
+      "covers": [
+        "s1",
+        "oi8z",
+        "sa",
+        "f1040",
+        "eic",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $45,000. Jury duty pay $300, all of which you gave to your employer because it paid your salary while you served. Working (predictor A): s1 8h jury duty pay 300 (i1040gi Line 8h: enter and see line 24a); 9 300; 10 300 -> f1040 8. s1 24a 300 because the pay was given to the employer that paid salary during service (i1040gi Line 24a p.99); 25 300; 26 300 -> f1040 10. f1040 9 = 45,300; 11a AGI 45,000; 12e 15,750; 15 29,250; Tax Table single 29,250-29,300 = 3,275; 18 = 3,275.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "s1.line8h": 30000,
+        "s1.jury_to_employer": 30000
+      },
+      "expect": {
+        "s1.line8h": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "s1.line24a": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "s1.line25": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 4530000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2925000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 327500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 327500
+        }
+      }
+    },
+    {
+      "id": "stage16.other.o6",
+      "covers": [
+        "s1",
+        "oi8z",
+        "sa",
+        "f1040",
+        "eic",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $45,000. A $50 prize won in a photography contest. Working (predictor A): s1 8i prizes and awards 50 (i1040gi Line 8i); 9 50; 10 50. AGI 45,050; 15 = 29,300; Tax Table single 29,300-29,350 = 3,281; 18 = 3,281.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "s1.line8i": 5000
+      },
+      "expect": {
+        "s1.line8i": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 4505000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4505000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 4505000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2930000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 328100
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 328100
+        }
+      }
+    },
+    {
+      "id": "stage16.other.o7",
+      "covers": [
+        "s1",
+        "oi8z",
+        "sa",
+        "f1040",
+        "eic",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $45,000. Income of $700 from a hobby (an activity not engaged in for profit). Working (predictor A): s1 8j activity not engaged in for profit income 700 (i1040gi Line 8j; p525); no hobby expenses stated (none are deductible as an adjustment anyway); 9 700; 10 700. AGI 45,700; 15 = 29,950; Tax Table single 29,950-30,000 = 3,359; 18 = 3,359.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "s1.line8j": 70000
+      },
+      "expect": {
+        "s1.line8j": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 4570000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4570000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 4570000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2995000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 335900
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 335900
+        }
+      }
+    },
+    {
+      "id": "stage16.other.o8",
+      "covers": [
+        "s1",
+        "oi8z",
+        "sa",
+        "f1040",
+        "eic",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, a degree candidate. Wages $15,000. A $10,000 scholarship not on a Form W-2: $6,000 used for tuition and required fees, $4,000 for room and board. Working (predictor A): Degree candidate: s1 8r includes only amounts used for expenses other than tuition and course-related expenses (i1040gi Line 8r): room and board 4,000; the 6,000 for tuition and required fees is excluded. 9 4,000; 10 4,000. AGI 19,000; 12e 15,750; 15 3,250; Tax Table single 3,250-3,300 = 328; 18 = 328.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1500000,
+        "person[taxpayer].w2[emp_a].box4": 93000,
+        "person[taxpayer].w2[emp_a].box5": 1500000,
+        "person[taxpayer].w2[emp_a].box6": 21750,
+        "s1.line8r": 400000
+      },
+      "expect": {
+        "s1.line8r": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 1900000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 1900000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 1900000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 325000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 32800
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 32800
+        }
+      }
+    },
+    {
+      "id": "stage16.other.o9",
+      "covers": [
+        "s1",
+        "oi8z",
+        "sa",
+        "f1040",
+        "eic",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1 line 8, Schedule A, the Tax Table, the EIC), i1040sca, i1040s8812 and p525, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $40,000. Reemployment trade adjustment assistance (RTAA) payments $1,500 (Form 1099-G box 5) and kickbacks received $800. Working (predictor A): s1 8z other income: RTAA payments 1,500 (i1040gi Line 8z list) + kickbacks 800 (p525 Kickbacks: Schedule 1 line 8z) = 2,300; 9 2,300; 10 2,300. AGI 42,300; 15 26,550; Tax Table single 26,550-26,600 = 2,951 (check: 1,192.50 + 12% x (26,575 - 11,925) = 2,950.50 -> 2,951); 18 = 2,951.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "$oi8z": [
+          "z0",
+          "z1"
+        ],
+        "oi8z[z0].amount": 150000,
+        "oi8z[z1].kind": "kickbacks",
+        "oi8z[z1].amount": 80000
+      },
+      "expect": {
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 230000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 230000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 230000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 230000
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 4230000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4230000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 4230000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2655000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 295100
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 295100
+        }
+      }
+    },
+    {
+      "id": "stage16.small.s2",
+      "covers": [
+        "s1",
+        "interest",
+        "f8889",
+        "person",
+        "s2",
+        "f8959",
+        "f8960",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $30,000. Alimony received of $1,000 a month under a 2015 decree, $12,000. Working (predictor A): Decree 2015 (before 2019, unmodified) -> alimony received taxable, Sch 1 line 2a = 12,000 (i1040gi Sch 1 line 2a). Sch 1 line 10 = 12,000 -> 1040 line 8. Line 9 = 30,000 + 12,000 = 42,000; line 10 = 0; line 11 = 42,000; minus 15,750 = 26,250. Tax Table 26,250-26,300 single = 2,915. Line 18 = 2,915; line 23 = 0.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "s1.alimony": true,
+        "s1.alimony_received": 1200000
+      },
+      "expect": {
+        "s1.line2a": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4200000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2625000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 291500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 291500
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.small.s3",
+      "covers": [
+        "s1",
+        "interest",
+        "f8889",
+        "person",
+        "s2",
+        "f8959",
+        "f8960",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $60,000. Alimony paid of $1,500 a month under a 2017 separation agreement, $18,000. Working (predictor A): 2017 separation agreement (before 2019) -> alimony paid deductible, Sch 1 line 19a = 18,000 (i1040gi lines 19a-19c). Sch 1 line 26 = 18,000 -> 1040 line 10. Line 9 = 60,000; line 11 = 42,000; line 15 = 42,000 - 15,750 = 26,250. Tax Table 26,250-26,300 single = 2,915. Line 23 = 0.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1.alimony": true,
+        "s1.alimony_paid": 1800000
+      },
+      "expect": {
+        "s1.line19a": {
+          "kind": "money",
+          "cents": 1800000
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 1800000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 1800000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4200000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2625000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 291500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 291500
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.small.s7",
+      "covers": [
+        "s1",
+        "interest",
+        "f8889",
+        "person",
+        "s2",
+        "f8959",
+        "f8960",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $45,000. A credit card company canceled $5,000 of your debt (Form 1099-C box 2 $5,000); no exclusion or exception applies. Working (predictor A): Canceled nonbusiness debt 1099-C box 2 5,000, no exclusion -> Sch 1 line 8c 5,000 (i1040gi line 8c). Line 9 (Sch 1) 5,000; line 10 5,000 -> 1040 line 8. 1040 line 9 = 50,000 = line 11; line 15 = 34,250. Tax Table 34,250-34,300 single = 3,875.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "s1.cod_amount": 500000,
+        "s1.cod_any": true
+      },
+      "expect": {
+        "s1.line8c": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 3425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 387500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 387500
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.small.s8",
+      "covers": [
+        "s1",
+        "interest",
+        "f8889",
+        "person",
+        "s2",
+        "f8959",
+        "f8960",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single. Wages $45,000. You owed a friend $1,000 for a personal loan, and the friend accepted $400 in full settlement; no exclusion or exception applies. Working (predictor A): Pub 4681 example: owed friend 1,000, paid 400 in full satisfaction -> canceled debt 600. Sch 1 8c 600; line 9 600; line 10 600 -> 1040 line 8. 1040 line 9 = 45,600 = line 11; line 15 = 29,850. Tax Table 29,850-29,900 single = 3,347.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "s1.cod_amount": 60000,
+        "s1.cod_any": true
+      },
+      "expect": {
+        "s1.line8c": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4560000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2985000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 334700
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 334700
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.cleanup.refuse.f1040_line16",
+      "covers": [
+        "f1040:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage4.refuse.scope.other_line16 as the interview asks them (it stops at the first refusal, after six answers): Yes to the screen for the additional Form 1040 line 16 taxes (Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, an education credit recapture). Form 1040 line 16 carries its own refusal entry for that screen. The refused value is the evaluator's.",
+      "inputs": {
+        "scope.other_line16": true,
+        "scope.schedule1": null,
+        "f2441.benefits": null,
+        "div.any": null,
+        "ssb.benefits": null,
+        "sd.other_forms": null,
+        "sa.excluded_income": null,
+        "f1040.tax_exempt_interest": null,
+        "eic.qc_of_another": null,
+        "sa.dependent": null,
+        "ftc.taxes": null,
+        "f2441.care": null,
+        "f5695.part2_any": null,
+        "f5695.part1_any": null,
+        "f5695.business_use": null,
+        "f5695.line7a": null,
+        "f5695.line12": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f8959.unsupported": null,
+        "f1040.line26": null,
+        "s3.line10": null,
+        "person[taxpayer].rrta": null,
+        "s3.line12": null,
+        "s3.line14": null,
+        "f5695.condo": null,
+        "person[taxpayer].sav_trad": null,
+        "person[taxpayer].ira_dist": null,
+        "s1a.carloan": null,
+        "person[taxpayer].age65": null,
+        "sd.carryover": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line16": {
+          "kind": "refusal",
+          "gate": "scope.other_line16",
+          "form": "Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture",
+          "remedy": "Additional Form 1040 line 16 taxes are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.cleanup.refuse.scope_credits",
+      "covers": [
+        "f1040:refuse",
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage4.refuse.scope.credits as the interview asks them (it stops at the refusal, after four answers): Yes to the screen for other credits. Form 1040 lines 29 and 30 and Schedule 3 line 8 each carry their own refusal entry for that screen. The refused values are the evaluator's.",
+      "inputs": {
+        "scope.credits": true,
+        "scope.schedule1": null,
+        "scope.other_line16": null,
+        "s2.amt": null,
+        "f2441.benefits": null,
+        "div.any": null,
+        "ssb.benefits": null,
+        "sd.other_forms": null,
+        "sa.excluded_income": null,
+        "scope.other_income": null,
+        "f1040.tax_exempt_interest": null,
+        "eic.qc_of_another": null,
+        "sa.dependent": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f8959.unsupported": null,
+        "f1040.line26": null,
+        "f2441.care": null,
+        "f5695.part2_any": null,
+        "f5695.condo": null,
+        "person[taxpayer].sav_trad": null,
+        "person[taxpayer].ira_dist": null,
+        "s1a.carloan": null,
+        "person[taxpayer].age65": null,
+        "sd.carryover": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line29": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line30": {
+          "kind": "refusal",
+          "gate": "scope.credits",
+          "form": "Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)",
+          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits, the net premium tax credit figured on Form 8962 and the education credits (Form 8863) require forms outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "s3.line8": {
+          "kind": "refusal",
+          "gate": "scope.credits",
+          "form": "Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)",
+          "remedy": "Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits, the net premium tax credit figured on Form 8962 and the education credits (Form 8863) require forms outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage20.refuse.excluded_canceled_debt",
+      "covers": [
+        "clcw"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 20 refusal regression, recorded from the evaluator: the refusal named by the id fires on this return.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sd.carryover": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1.cod_amount": 500000,
+        "s1.cod_any": true,
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 400000,
+        "clcw.prior_11": 5500000,
+        "clcw.prior_14": 1460000,
+        "clcw.prior_sd7": -800000,
+        "clcw.prior_sd21": 300000,
+        "s1.cod_unsupported": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1.cod_refused": {
+          "kind": "refusal",
+          "gate": "s1.cod_unsupported",
+          "form": "Form 982, Pub. 4681 exceptions, business or farm debt, foreclosures and repossessions",
+          "remedy": "Canceled debt that is excluded from income or excepted, business, rental or farm debt, debt canceled in a foreclosure, repossession or abandonment, deductible interest, nonrecourse debt and debt owed jointly with another person are outside this tool; only fully taxable canceled nonbusiness debt is computed.",
+          "cite": {
+            "doc": "p4681",
+            "locator": "p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions",
+            "revision": "2025",
+            "snapshot": "d87305a0e1817a7f7e7a06bde669586ef76c763878c674196542b624ad5958e7",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line8": {
+          "kind": "refusal",
+          "gate": "s1.cod_unsupported",
+          "form": "Form 982, Pub. 4681 exceptions, business or farm debt, foreclosures and repossessions",
+          "remedy": "Canceled debt that is excluded from income or excepted, business, rental or farm debt, debt canceled in a foreclosure, repossession or abandonment, deductible interest, nonrecourse debt and debt owed jointly with another person are outside this tool; only fully taxable canceled nonbusiness debt is computed.",
+          "cite": {
+            "doc": "p4681",
+            "locator": "p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions",
+            "revision": "2025",
+            "snapshot": "d87305a0e1817a7f7e7a06bde669586ef76c763878c674196542b624ad5958e7",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage21.d3.kidnapped_child_refused",
+      "covers": [
+        "dependent",
+        "eic",
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Completeness-experiment finding D3 (BUG-0213): stage9.eic.one_child.line5 with the child presumed kidnapped by someone who isn't a family member. i1040gi p. 21, Kidnapped child: \"you may be able to take the child into account in determining your eligibility for head of household ... the child tax credit, the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC).\" Those conditions are not encoded, so the residency tests refuse. The child lived with you 4 months of 2025 and not in the United States for more than half of 2025, without counting the time missing; a child who meets the residency tests on actual time is computed (stage8 f1.kidnapped.returned_11).",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2500000,
+        "person[taxpayer].w2[emp_a].box5": 2500000,
+        "person[taxpayer].w2[emp_a].box6": 36250,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "dependent[child].age": 3,
+        "dependent[child].months": 4,
+        "dependent[child].kidnapped": true,
+        "dependent[child].us_half": false,
+        "interest[bank_a].amount": 500000,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "refusal",
+          "gate": "dependent[child].kidnap_eic",
+          "form": "Kidnapped child (Pub. 501; Pub. 596 for the EIC)",
+          "remedy": "A child presumed kidnapped by someone who isn't a family member, who did not live with you in the United States for more than half of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 21, Kidnapped child, \"For details, see Pub. 501 (Pub. 596 for the EIC)\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line16": {
+          "kind": "refusal",
+          "gate": "dependent[child].kidnap_residency",
+          "form": "Kidnapped child (Pub. 501; Pub. 596 for the EIC)",
+          "remedy": "A child presumed kidnapped by someone who isn't a family member, who lived with you for fewer than 7 months of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 21, Kidnapped child, \"For details, see Pub. 501 (Pub. 596 for the EIC)\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage21.pending.eic_death_pub596_refused",
+      "covers": [
+        "eic"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Screen-review defect PENDING-1-9 (T-037): stage13.eic_spouse_in_age_range with a spouse who died in 2025. i1040gi p. 41, Step 4, question 2: \"If your spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer.\" Pub. 596 is not archived, so the age test refuses.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "eic.died_2025": true,
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 1000000,
+        "person[taxpayer].w2[e0].box5": 1000000,
+        "person[taxpayer].w2[e0].box6": 14500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 500000,
+        "person[spouse].w2[e0].box5": 500000,
+        "person[spouse].w2[e0].box6": 7250,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "refusal",
+          "gate": "eic.died_2025",
+          "form": "EIC age test after a death in 2025 (Pub. 596)",
+          "remedy": "When your spouse died in 2025 or the return is for someone who died in 2025, the EIC age test is answered under Pub. 596, which this tool does not apply.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 42, Step 4, question 2, \"spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer.\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    }
+  ]
+}

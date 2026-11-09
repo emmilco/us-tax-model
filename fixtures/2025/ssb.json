@@ -1,0 +1,513 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage10.ss.top",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $50,000, benefits $20,000: worksheet lines 5 $60,000, 7 $60,000, 9 $35,000, 11 $26,000, 14 $4,500, 15 $22,100, 16 $26,600, 17 $17,000; line 6b $17,000 (p. 32).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "ssb.benefits": 2000000
+      },
+      "expect": {
+        "f1040.line6a": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "ssb.line16": {
+          "kind": "money",
+          "cents": 2660000
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.shown_all",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-222 (BUG-0402 ssb SSB-L1) regression, predicted from i1040gi p. 32 before recording: the inputs of stage10.ss.top (single, wages $50,000, benefits $20,000): line 7 $60,000 is more than line 6 ($0) and line 8 $25,000 is less than line 7, so neither STOP applies and lines 8 to 18 are all shown; line 6b $17,000 as in stage10.ss.top.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "ssb.benefits": 2000000
+      },
+      "expect": {
+        "ssb.show8_9": {
+          "kind": "bool",
+          "value": true
+        },
+        "ssb.show10_15": {
+          "kind": "bool",
+          "value": true
+        },
+        "ssb.show16_18": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 1700000
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.none",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $10,000, benefits $20,000: line 5 $20,000 is not more than $25,000, so none taxable.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1000000,
+        "person[taxpayer].w2[emp_a].box4": 62000,
+        "person[taxpayer].w2[emp_a].box5": 1000000,
+        "person[taxpayer].w2[emp_a].box6": 14500,
+        "ssb.benefits": 2000000
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ssb.line9": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.stop_line9",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-222 (BUG-0402 ssb SSB-L1) regression, predicted from i1040gi p. 32 before recording: the inputs of stage10.ss.none (single, wages $10,000, benefits $20,000). Line 2 $10,000, line 3 $10,000, line 5 $20,000, line 6 $0, so line 7 is $20,000 and the worksheet goes on; line 8 $25,000. Line 9: \"Is the amount on line 8 less than the amount on line 7? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" Line 9 $0; lines 8 and 9 shown, lines 10 to 18 not shown (ssb.show10_15 and ssb.show16_18 false); line 6b $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1000000,
+        "person[taxpayer].w2[emp_a].box4": 62000,
+        "person[taxpayer].w2[emp_a].box5": 1000000,
+        "person[taxpayer].w2[emp_a].box6": 14500,
+        "ssb.benefits": 2000000
+      },
+      "expect": {
+        "ssb.line7": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "ssb.line8": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "ssb.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ssb.past7": {
+          "kind": "bool",
+          "value": true
+        },
+        "ssb.past9": {
+          "kind": "bool",
+          "value": false
+        },
+        "ssb.show8_9": {
+          "kind": "bool",
+          "value": true
+        },
+        "ssb.show10_15": {
+          "kind": "bool",
+          "value": false
+        },
+        "ssb.show16_18": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.stop_line7",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-222 (BUG-0402 ssb SSB-L1) regression, predicted from i1040gi p. 32 before recording: the inputs of stage10.ss.none with no wages, benefits $400 and educator expenses $300 (an eligible educator). Line 2 $200, line 3 $0, line 5 $200; line 6 is Schedule 1 line 11, $300. Line 7: \"Is the amount on line 6 less than the amount on line 5? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" Line 7 $0 and lines 8 to 18 not shown (ssb.show8_9, ssb.show10_15 and ssb.show16_18 false); line 6b $0. The evaluator was run once before recording only to list the inputs the case still needed (eligible_educator).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "ssb.benefits": 40000,
+        "person[taxpayer].educator_expenses": 30000,
+        "person[taxpayer].eligible_educator": true
+      },
+      "expect": {
+        "ssb.line5": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "ssb.line6": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "ssb.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ssb.past7": {
+          "kind": "bool",
+          "value": false
+        },
+        "ssb.show8_9": {
+          "kind": "bool",
+          "value": false
+        },
+        "ssb.show10_15": {
+          "kind": "bool",
+          "value": false
+        },
+        "ssb.show16_18": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.middle",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $25,000, benefits $20,000: line 5 $35,000, line 9 $10,000, line 11 $1,000, line 12 $9,000, line 13 $4,500, line 14 $4,500, line 15 $850, line 16 $5,350, line 17 $17,000; line 6b $5,350.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2500000,
+        "person[taxpayer].w2[emp_a].box4": 155000,
+        "person[taxpayer].w2[emp_a].box5": 2500000,
+        "person[taxpayer].w2[emp_a].box6": 36250,
+        "ssb.benefits": 2000000
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 535000
+        },
+        "ssb.line13": {
+          "kind": "money",
+          "cents": 450000
+        },
+        "ssb.line15": {
+          "kind": "money",
+          "cents": 85000
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.mfs_together_shown",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-222 (BUG-0402 ssb SSB-L1) regression, predicted from i1040gi p. 32 before recording: the inputs of stage10.ss.mfs_together. Line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16. Then, go to line 17\". Line 7 $20,000 is positive, so the line 7 STOP does not apply: lines 8 to 15 not shown, lines 16 to 18 shown; line 16 $17,000.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1000000,
+        "person[taxpayer].w2[emp_a].box5": 1000000,
+        "person[taxpayer].w2[emp_a].box6": 14500,
+        "ssb.benefits": 2000000
+      },
+      "expect": {
+        "ssb.show8_9": {
+          "kind": "bool",
+          "value": false
+        },
+        "ssb.show10_15": {
+          "kind": "bool",
+          "value": false
+        },
+        "ssb.show16_18": {
+          "kind": "bool",
+          "value": true
+        },
+        "ssb.line16": {
+          "kind": "money",
+          "cents": 1700000
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.tax_exempt_interest",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $30,000, tax-exempt interest $2,000 (line 2a), benefits $20,000: line 2 $10,000, line 3 $30,000, line 4 $2,000, line 5 $42,000, line 7 $42,000, line 9 $17,000, line 11 $8,000, line 12 $9,000, line 13 $4,500, line 14 $4,500, line 15 $6,800, line 16 $11,300, line 17 $17,000; line 6b $11,300 (p. 32).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "ssb.benefits": 2000000,
+        "f1040.tax_exempt_interest": 200000
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 1130000
+        },
+        "ssb.line7": {
+          "kind": "money",
+          "cents": 4200000
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.small_benefits",
+      "covers": [
+        "retirement",
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Single, wages $31,000, benefits $4,000: line 2 $2,000, line 5 $33,000, line 9 $8,000, line 11 $0, line 12 $8,000, line 13 $4,000, line 14 $2,000 (line 2 is the smaller), line 15 $0, line 16 $2,000, line 17 $3,400; line 6b $2,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3100000,
+        "person[taxpayer].w2[emp_a].box4": 192200,
+        "person[taxpayer].w2[emp_a].box5": 3100000,
+        "person[taxpayer].w2[emp_a].box6": 44950,
+        "ssb.benefits": 400000
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "ssb.line14": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "ssb.line16": {
+          "kind": "money",
+          "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "stage10.ss.refuse.schedule1",
+      "covers": [
+        "ssb",
+        "f1040.lines4-6"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Mutation-equivalence second reading (kills refusal.ssb.ssb.line6.0), predicted from the archived i1040gi before recording: the inputs of stage10.ss.middle (single, wages $25,000, benefits $20,000) with the Schedule 1 screen answered Yes. Worksheet line 6 is 'the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25' (p. 32), which this tool cannot total when Schedule 1 items it does not ask are present, so line 6 refuses on its own entry; line 5 refuses through Form 1040 line 8. Mutation-score assertion (T-159): wages of $25,000 make Earned Income Worksheet line 3 more than zero (i1040s8812, Earned Income Worksheet).",
+      "inputs": {
+        "scope.schedule1": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2500000,
+        "person[taxpayer].w2[emp_a].box5": 2500000,
+        "person[taxpayer].w2[emp_a].box6": 36250,
+        "ssb.benefits": 2000000,
+        "s179.line10": null
+      },
+      "expect": {
+        "ssb.line6": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1 adjustments (Social Security Benefits Worksheet, line 6)",
+          "remedy": "Schedule 1 adjustments on lines 12, 14 and 23 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 32, Social Security Benefits Worksheet, line 6",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "ssb.line5": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "s8812.eiw_3_positive": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage11.ss.educator",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Single, wages $30,000, benefits $20,000, eligible educator expenses $300: Social Security Benefits Worksheet line 6 $300, line 7 $39,700, line 9 $14,700, line 11 $5,700, line 14 $4,500, line 15 $4,845, line 16 $9,345, line 17 $17,000; line 6b $9,345 (p. 32).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "ssb.benefits": 2000000,
+        "person[taxpayer].educator_expenses": 30000,
+        "person[taxpayer].eligible_educator": true
+      },
+      "expect": {
+        "ssb.line6": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "ssb.line7": {
+          "kind": "money",
+          "cents": 3970000
+        },
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 934500
+        }
+      }
+    },
+    {
+      "id": "stage11.ss.unemployment",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Single, wages $20,000, unemployment $10,000, benefits $20,000: line 3 includes Form 1040 line 8, so line 5 $40,000 and line 6b $9,600, as with any other $10,000 of income.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "ssb.benefits": 2000000,
+        "s1.uc_paid": 1000000
+      },
+      "expect": {
+        "ssb.line3": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 960000
+        }
+      }
+    },
+    {
+      "id": "stage13.ssb_joint_base",
+      "covers": [
+        "ssb"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: benefits $30,000 for you and your spouse together, wages $20,000 (one spouse): worksheet line 2 $15,000; line 7 $35,000; line 8 $32,000 (married filing jointly); line 9 $3,000; line 10 $12,000; line 11 $0; line 12 $3,000; line 13 $1,500; line 14 $1,500; line 18 $1,500. Form 1040 line 6b $1,500.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "ssb.benefits": 3000000,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 2000000,
+        "person[taxpayer].w2[e0].box4": 124000,
+        "person[taxpayer].w2[e0].box5": 2000000,
+        "person[taxpayer].w2[e0].box6": 29000
+      },
+      "expect": {
+        "ssb.line8": {
+          "kind": "money",
+          "cents": 3200000
+        },
+        "ssb.line9": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 150000
+        }
+      }
+    }
+  ]
+}

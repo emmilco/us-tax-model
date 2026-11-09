@@ -13,11 +13,10 @@ import { allTargets, evaluate, multiplyRateHalfUp } from "./eval.js";
 import { loadCases } from "./fixtures.js";
 import { runChecks } from "./check.js";
 import type { CanonicalData, Expr, FormDoc, Line } from "./types.js";
-import { NY_MODE, YEAR, yearPath } from "./year.js";
+import { NY_MODE, YEAR } from "./year.js";
 import { reportName, reportPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
-const FIXTURES = yearPath("fixtures", "stage1.json");
 
 interface Mutation {
   id: string;

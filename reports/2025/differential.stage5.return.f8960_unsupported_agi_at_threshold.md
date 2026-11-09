@@ -7,10 +7,8 @@ Enter this case in FreeTaxUSA (2025) and OLT (2025), then read the lines below b
 | field | value |
 | --- | --- |
 | Estimated tax payments | 2000.00 |
-| Refund amount you want refunded (whole overpayment if equal to line 34) | 1733.00 |
 | W-2 (emp_a) box 1 — wages, tips, other compensation | 200000.00 |
 | W-2 (emp_a) box 2 — federal income tax withheld | 20000.00 |
-| W-2 (emp_a) box 3 — social security wages | 176100.00 |
 | W-2 (emp_a) box 4 — social security tax withheld | 10918.20 |
 | W-2 (emp_a) box 5 — Medicare wages and tips | 200000.00 |
 | W-2 (emp_a) box 6 — Medicare tax withheld | 2900.00 |
@@ -19,11 +17,6 @@ Screening questions (answer No unless noted): Schedule 1 income, Schedule 1-A de
 
 | field | value |
 | --- | --- |
-| div.basis_reconciled | yes |
-| ftc.all_passive | yes |
-| ftc.statements | yes |
-| ftc.eligible | yes |
-| ftc.elect | yes |
 
 ## Read back (record each line the calculators show)
 

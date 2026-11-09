@@ -1,0 +1,3833 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage15.f8880.s1",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Married filing jointly. You: wages $30,000; box 12 code D $1,000. Spouse: wages $10,000; Roth IRA contribution for 2025 of $1,000. In 2025 you received a $5,000 distribution from a qualified retirement plan (Form 1099-R box 1 $5,000, box 2a $5,000, code 7, not an IRA, nothing rolled over). Your spouse received a $2,000 distribution from a Roth IRA in 2023; you and your spouse did not file a joint return for 2023. No other distributions after 2022. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): AGI 30,000+10,000 wages + 5,000 taxable pension (1099-R box 2a, code 7, f1040 line 5b) = 45,000. Line 4 per f8880 p.2 Line 4 example and Exception: col (a) 5,000 (own 2025 distribution; spouse's 2023 Roth IRA distribution excluded because no joint 2023 return); col (b) 2,000 + 5,000 = 7,000 (2025 joint, so your 2025 distribution included in spouse column). f1040: L11a AGI 45000; L12e standard deduction 31500 (f1040 p.2 margin); L15 13500; L16 Tax Table (i1040gi 2025 Tax Table) 1353; L17 0; L18 1353. | col (a): L1 0, L2 1000, L3 1000, L4 5000, L5 0, L6 0 | col (b): L1 1000, L2 0, L3 1000, L4 7000, L5 0, L6 0 | L7 = 0: stop (f8880 p.1 line 7). Mutation-score assertion (T-159): line 7 is $0, a printed stop (f8880 line 7, \"If zero, stop; you can't take this credit\").",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 3000000,
+        "person[taxpayer].w2[e0].box4": 186000,
+        "person[taxpayer].w2[e0].box5": 3000000,
+        "person[taxpayer].w2[e0].box6": 43500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 1000000,
+        "person[spouse].w2[e0].box4": 62000,
+        "person[spouse].w2[e0].box5": 1000000,
+        "person[spouse].w2[e0].box6": 14500,
+        "person[taxpayer].w2[e0].box12_any": true,
+        "person[spouse].sav_roth": 100000,
+        "person[spouse].sav_prior_other": 200000,
+        "person[taxpayer].w2[e0].box12_d": 100000,
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 500000,
+        "person[taxpayer].w2[e0].g_governmental": null
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line1b": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3b": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line4b": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "f8880.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line6b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1350000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f8880.can_take": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s2",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $20,000. Roth IRA contribution for 2025 $1,500. No distributions. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A):  f1040: L11a AGI 20000; L12e standard deduction 15750 (f1040 p.2 margin); L15 4250; L16 Tax Table (i1040gi 2025 Tax Table) 428; L17 0; L18 428. | col (a): L1 1500, L2 0, L3 1500, L4 0, L5 1500, L6 1500 | L7 1500; L8 AGI 20000; L9 0.5 (S column, f8880 p.1 table) | L10 1500x0.5=750.0; CLW1 = f1040 L18 428; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 428; L12 = min = 428 (f8880 p.2 Credit Limit Worksheet)",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "person[taxpayer].sav_roth": 150000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 5,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 75000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 42800
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 42800
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 42800
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 42800
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 42800
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 42800
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 42800
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s3",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $30,000; box 12 code D $3,000. No distributions. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): Line 2 = code D 3,000; line 6 capped at 2,000. f1040: L11a AGI 30000; L12e standard deduction 15750 (f1040 p.2 margin); L15 14250; L16 Tax Table (i1040gi 2025 Tax Table) 1475; L17 0; L18 1475. | col (a): L1 0, L2 3000, L3 3000, L4 0, L5 3000, L6 2000 | L7 2000; L8 AGI 30000; L9 0.1 (S column, f8880 p.1 table) | L10 2000x0.1=200.0; CLW1 = f1040 L18 1475; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 1475; L12 = min = 200.0 (f8880 p.2 Credit Limit Worksheet)",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_d": 300000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 1,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 147500
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 147500
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 147500
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 147500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 147500
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s4",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $23,750.00; Roth IRA contribution $1,000. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): AGI exactly 23,750 is 'not over 23,750' -> 0.5 (f8880 p.1 table). f1040: L11a AGI 23750; L12e standard deduction 15750 (f1040 p.2 margin); L15 8000; L16 Tax Table (i1040gi 2025 Tax Table) 803; L17 0; L18 803. | col (a): L1 1000, L2 0, L3 1000, L4 0, L5 1000, L6 1000 | L7 1000; L8 AGI 23750; L9 0.5 (S column, f8880 p.1 table) | L10 1000x0.5=500.0; CLW1 = f1040 L18 803; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 803; L12 = min = 500.0 (f8880 p.2 Credit Limit Worksheet)",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2375000,
+        "person[taxpayer].w2[emp_a].box4": 147250,
+        "person[taxpayer].w2[emp_a].box5": 2375000,
+        "person[taxpayer].w2[emp_a].box6": 34437,
+        "person[taxpayer].sav_roth": 100000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 2375000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 5,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 80300
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 80300
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 80300
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2375000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 80300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 80300
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s5",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $39,500.00; Roth IRA contribution $2,000. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): AGI exactly 39,500: row over 38,250 not over 39,500 -> 0.1. f1040: L11a AGI 39500; L12e standard deduction 15750 (f1040 p.2 margin); L15 23750; L16 Tax Table (i1040gi 2025 Tax Table) 2615; L17 0; L18 2615. | col (a): L1 2000, L2 0, L3 2000, L4 0, L5 2000, L6 2000 | L7 2000; L8 AGI 39500; L9 0.1 (S column, f8880 p.1 table) | L10 2000x0.1=200.0; CLW1 = f1040 L18 2615; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 2615; L12 = min = 200.0 (f8880 p.2 Credit Limit Worksheet)",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3950000,
+        "person[taxpayer].w2[emp_a].box4": 244900,
+        "person[taxpayer].w2[emp_a].box5": 3950000,
+        "person[taxpayer].w2[emp_a].box6": 57275,
+        "person[taxpayer].sav_roth": 200000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 3950000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 1,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 261500
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 261500
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 261500
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3950000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2375000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 261500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 261500
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s6",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $39,500.01; Roth IRA contribution $2,000. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): AGI 39,500.01 > 39,500: single decimal 0.0 (f8880 p.1 table; also Caution). Taxable income 23,750.01 falls in Tax Table row 23,750-23,800 -> 2,615. f1040: L11a AGI 39500.01; L12e standard deduction 15750 (f1040 p.2 margin); L15 23750.01; L16 Tax Table (i1040gi 2025 Tax Table) 2615; L17 0; L18 2615. | col (a): L1 2000, L2 0, L3 2000, L4 0, L5 2000, L6 2000 | L7 2000; L8 AGI 39500.01; L9 0 (S column, f8880 p.1 table) | L9 = 0.0: stop.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3950001,
+        "person[taxpayer].w2[emp_a].box4": 244900,
+        "person[taxpayer].w2[emp_a].box5": 3950001,
+        "person[taxpayer].w2[emp_a].box6": 57275,
+        "person[taxpayer].sav_roth": 200000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 3950001
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 0,
+          "den": 10
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3950001
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2375001
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 261500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 261500
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s7",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Married filing jointly. You: wages $30,000, Roth IRA contribution $2,500. Spouse: wages $20,000, Roth IRA contribution $2,500. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): AGI 50,000 MFJ in 47,500-51,000 -> 0.2. f1040: L11a AGI 50000; L12e standard deduction 31500 (f1040 p.2 margin); L15 18500; L16 Tax Table (i1040gi 2025 Tax Table) 1853; L17 0; L18 1853. | col (a): L1 2500, L2 0, L3 2500, L4 0, L5 2500, L6 2000 | col (b): L1 2500, L2 0, L3 2500, L4 0, L5 2500, L6 2000 | L7 4000; L8 AGI 50000; L9 0.2 (MFJ column, f8880 p.1 table) | L10 4000x0.2=800.0; CLW1 = f1040 L18 1853; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 1853; L12 = min = 800.0 (f8880 p.2 Credit Limit Worksheet)",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 3000000,
+        "person[taxpayer].w2[e0].box4": 186000,
+        "person[taxpayer].w2[e0].box5": 3000000,
+        "person[taxpayer].w2[e0].box6": 43500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 2000000,
+        "person[spouse].w2[e0].box4": 124000,
+        "person[spouse].w2[e0].box5": 2000000,
+        "person[spouse].w2[e0].box6": 29000,
+        "person[taxpayer].sav_roth": 250000,
+        "person[spouse].sav_roth": 250000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line1b": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f8880.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3b": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f8880.line4b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5b": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f8880.line6b": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 2,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 185300
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 185300
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 185300
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1850000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 185300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 185300
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s8",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Head of household with one qualifying child, your son aged 8, who lived with you all year. Wages $37,000. Roth IRA contribution $2,000. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): AGI 37,000 HOH in 35,625-38,250 -> 0.2. Taxable income 13,375 -> Tax Table row 13,350-13,400 HOH column 1,338. f1040: L11a AGI 37000; L12e standard deduction 23625 (f1040 p.2 margin); L15 13375; L16 Tax Table (i1040gi 2025 Tax Table) 1338; L17 0; L18 1338. | col (a): L1 2000, L2 0, L3 2000, L4 0, L5 2000, L6 2000 | L7 2000; L8 AGI 37000; L9 0.2 (HOH column, f8880 p.1 table) | L10 2000x0.2=400.0; CLW1 = f1040 L18 1338; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 1338; L12 = min = 400.0 (f8880 p.2 Credit Limit Worksheet) | s8812: L4 1, L5 2200, L8 2200, L10 0, L11 0, L12 2200; CLW A: L1 1338 - L2 s3 line 4 400.0 = 938.0, L4 0, L5 938.0 -> L13; L14 min = 938.0 -> f1040 L19. L16a 1262.0, L16b 1x1,700=1700, L17 1262.0, L18a 37000, L19 34500, L20 5175.0; L16b < 5,100 so L27 = min(L17, L20) = 1262.0 (s8812 p.2; i1040s8812 CLW A).",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3700000,
+        "person[taxpayer].w2[emp_a].box4": 229400,
+        "person[taxpayer].w2[emp_a].box5": 3700000,
+        "person[taxpayer].w2[emp_a].box6": 53650,
+        "$dependent": [
+          "a"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "person[taxpayer].sav_roth": 200000,
+        "dependent[a].age": 8,
+        "dependent[a].months": 12
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 3700000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 2,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 133800
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 133800
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 133800
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3700000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1337500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 133800
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 133800
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 93800
+        },
+        "s8812.line14": {
+          "kind": "money",
+          "cents": 93800
+        },
+        "s8812.line27": {
+          "kind": "money",
+          "cents": 126200
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s9",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $18,000; box 12 code D $1,200. You were a full-time student for 6 months of 2025. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): Full-time student for 6 months of 2025 = student (f8880 p.2: during any part of 5 calendar months). Contributor ineligible, so column (a) is zero per owner's ruling; line 7 zero -> stop. f1040: L11a AGI 18000; L12e standard deduction 15750 (f1040 p.2 margin); L15 2250; L16 Tax Table (i1040gi 2025 Tax Table) 226; L17 0; L18 226. | col (a): L1 0, L2 0, L3 0, L4 0, L5 0, L6 0 | L7 = 0: stop (f8880 p.1 line 7).",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1800000,
+        "person[taxpayer].w2[emp_a].box4": 111600,
+        "person[taxpayer].w2[emp_a].box5": 1800000,
+        "person[taxpayer].w2[emp_a].box6": 26100,
+        "person[taxpayer].sav_student": true,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_d": 120000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 1800000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 225000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 22600
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 22600
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s10",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single, a state government employee. Wages $28,000; box 12 code G $1,000, all of it your own elective deferral to the state's governmental section 457(b) plan. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): Code G governmental 457(b) elective deferral counts on line 2 (f8880 p.2 Line 2; iw2w3 code G). AGI 28,000 -> 0.1. f1040: L11a AGI 28000; L12e standard deduction 15750 (f1040 p.2 margin); L15 12250; L16 Tax Table (i1040gi 2025 Tax Table) 1235; L17 0; L18 1235. | col (a): L1 0, L2 1000, L3 1000, L4 0, L5 1000, L6 1000 | L7 1000; L8 AGI 28000; L9 0.1 (S column, f8880 p.1 table) | L10 1000x0.1=100.0; CLW1 = f1040 L18 1235; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 1235; L12 = min = 100.0 (f8880 p.2 Credit Limit Worksheet)",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2800000,
+        "person[taxpayer].w2[emp_a].box4": 173600,
+        "person[taxpayer].w2[emp_a].box5": 2800000,
+        "person[taxpayer].w2[emp_a].box6": 40600,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_g": 100000,
+        "person[taxpayer].w2[emp_a].g_governmental": true,
+        "person[taxpayer].w2[emp_a].g_elective": 100000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 2800000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 1,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 123500
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 123500
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 123500
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2800000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1225000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 123500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 123500
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s11",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $26,000; box 12 code E $500; voluntary after-tax employee contributions of $300 to your employer's qualified pension plan (not designated Roth, not in box 12). Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): Line 2 = code E 403(b) deferral 500 + voluntary employee after-tax contribution to qualified plan 300 = 800 (f8880 p.2 Line 2). AGI 26,000 in 25,500-35,625 single -> 0.1. f1040: L11a AGI 26000; L12e standard deduction 15750 (f1040 p.2 margin); L15 10250; L16 Tax Table (i1040gi 2025 Tax Table) 1028; L17 0; L18 1028. | col (a): L1 0, L2 800, L3 800, L4 0, L5 800, L6 800 | L7 800; L8 AGI 26000; L9 0.1 (S column, f8880 p.1 table) | L10 800x0.1=80.0; CLW1 = f1040 L18 1028; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 1028; L12 = min = 80.0 (f8880 p.2 Credit Limit Worksheet)",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2600000,
+        "person[taxpayer].w2[emp_a].box4": 161200,
+        "person[taxpayer].w2[emp_a].box5": 2600000,
+        "person[taxpayer].w2[emp_a].box6": 37700,
+        "person[taxpayer].sav_voluntary": 30000,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_e": 50000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 2600000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 1,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 8000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 102800
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 102800
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 102800
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 8000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 8000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2600000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1025000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 102800
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 102800
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s12",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $22,000. Roth IRA contribution $2,000. In 2024 you took a $1,500 distribution from your traditional IRA (not rolled over, not a returned contribution). Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): 2024 traditional IRA distribution is after 2022 -> line 4 1,500. f1040: L11a AGI 22000; L12e standard deduction 15750 (f1040 p.2 margin); L15 6250; L16 Tax Table (i1040gi 2025 Tax Table) 628; L17 0; L18 628. | col (a): L1 2000, L2 0, L3 2000, L4 1500, L5 500, L6 500 | L7 500; L8 AGI 22000; L9 0.5 (S column, f8880 p.1 table) | L10 500x0.5=250.0; CLW1 = f1040 L18 628; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 628; L12 = min = 250.0 (f8880 p.2 Credit Limit Worksheet)",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2200000,
+        "person[taxpayer].w2[emp_a].box4": 136400,
+        "person[taxpayer].w2[emp_a].box5": 2200000,
+        "person[taxpayer].w2[emp_a].box6": 31900,
+        "person[taxpayer].sav_roth": 200000,
+        "person[taxpayer].sav_prior_other": 150000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 2200000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 5,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 62800
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 62800
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 62800
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2200000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 625000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 62800
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 62800
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s13",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Married filing jointly. You: wages $25,000, box 12 code D $1,500, born 1990. Spouse: wages $8,000, Roth IRA contribution $1,000, born March 3, 2008. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): Spouse born March 3, 2008, after January 1, 2008 -> spouse column (b) zero per owner's ruling. AGI 33,000 MFJ -> 0.5. Line 10 750 limited to tax 151. f1040: L11a AGI 33000; L12e standard deduction 31500 (f1040 p.2 margin); L15 1500; L16 Tax Table (i1040gi 2025 Tax Table) 151; L17 0; L18 151. | col (a): L1 0, L2 1500, L3 1500, L4 0, L5 1500, L6 1500 | col (b): L1 0, L2 0, L3 0, L4 0, L5 0, L6 0 | L7 1500; L8 AGI 33000; L9 0.5 (MFJ column, f8880 p.1 table) | L10 1500x0.5=750.0; CLW1 = f1040 L18 151; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 151; L12 = min = 151 (f8880 p.2 Credit Limit Worksheet)",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 2500000,
+        "person[taxpayer].w2[e0].box4": 155000,
+        "person[taxpayer].w2[e0].box5": 2500000,
+        "person[taxpayer].w2[e0].box6": 36250,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 800000,
+        "person[spouse].w2[e0].box4": 49600,
+        "person[spouse].w2[e0].box5": 800000,
+        "person[spouse].w2[e0].box6": 11600,
+        "person[taxpayer].w2[e0].box12_any": true,
+        "person[spouse].sav_born": false,
+        "person[spouse].sav_roth": 100000,
+        "person[taxpayer].w2[e0].box12_d": 150000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line4b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line6b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 3300000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 5,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 75000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 15100
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 15100
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 15100
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 15100
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 15100
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3300000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 15100
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 15100
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s14",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Married filing jointly. You: wages $45,000, box 12 code AA $2,000. Spouse: no wages. Two qualifying children, your daughters aged 5 and 10, who lived with you all year. Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): Code AA designated Roth 401(k) contribution counts on line 2 (f8880 p.2 Line 2 'including designated Roth contributions under section 402A'). AGI 45,000 MFJ -> 0.5. Line 10 1,000; CLW 1,353; credit 1,000. f1040: L11a AGI 45000; L12e standard deduction 31500 (f1040 p.2 margin); L15 13500; L16 Tax Table (i1040gi 2025 Tax Table) 1353; L17 0; L18 1353. | col (a): L1 0, L2 2000, L3 2000, L4 0, L5 2000, L6 2000 | col (b): L1 0, L2 0, L3 0, L4 0, L5 0, L6 0 | L7 2000; L8 AGI 45000; L9 0.5 (MFJ column, f8880 p.1 table) | L10 2000x0.5=1000.0; CLW1 = f1040 L18 1353; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 1353; L12 = min = 1000.0 (f8880 p.2 Credit Limit Worksheet) | s8812: L4 2, L5 4400, L8 4400, L10 0, L11 0, L12 4400; CLW A: L1 1353 - L2 s3 line 4 1000.0 = 353.0, L4 0, L5 353.0 -> L13; L14 min = 353.0 -> f1040 L19. L16a 4047.0, L16b 2x1,700=3400, L17 3400, L18a 45000, L19 42500, L20 6375.0; L16b < 5,100 so L27 = min(L17, L20) = 3400 (s8812 p.2; i1040s8812 CLW A).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$dependent": [
+          "a",
+          "b"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 4500000,
+        "person[taxpayer].w2[e0].box4": 279000,
+        "person[taxpayer].w2[e0].box5": 4500000,
+        "person[taxpayer].w2[e0].box6": 65250,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box12_any": true,
+        "dependent[a].age": 5,
+        "dependent[a].months": 12,
+        "dependent[b].age": 10,
+        "dependent[b].months": 12,
+        "person[taxpayer].w2[e0].box12_aa": 200000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line1b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line4b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line6b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 5,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1350000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 35300
+        },
+        "s8812.line14": {
+          "kind": "money",
+          "cents": 35300
+        },
+        "s8812.line27": {
+          "kind": "money",
+          "cents": 340000
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880.s15",
+      "covers": [
+        "f8880",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $16,500. Roth IRA contribution $2,000. (The tax may limit the credit.) Owner rulings applied: an ineligible person zeroes only their own column; line 4 is gross less rollovers. Lines after a printed stop, and an ineligible person's lines 1 to 5, are not asserted (presentation). Working (predictor A): Taxable income 750 -> Tax Table row 750-775 -> 76. Line 10 1,000 limited to 76. f1040: L11a AGI 16500; L12e standard deduction 15750 (f1040 p.2 margin); L15 750; L16 Tax Table (i1040gi 2025 Tax Table) 76; L17 0; L18 76. | col (a): L1 2000, L2 0, L3 2000, L4 0, L5 2000, L6 2000 | L7 2000; L8 AGI 16500; L9 0.5 (S column, f8880 p.1 table) | L10 2000x0.5=1000.0; CLW1 = f1040 L18 76; CLW2 = 0 (no s3 lines 1-3, 6d, 6l); CLW3 = L11 76; L12 = min = 76 (f8880 p.2 Credit Limit Worksheet)",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1650000,
+        "person[taxpayer].w2[emp_a].box4": 102300,
+        "person[taxpayer].w2[emp_a].box5": 1650000,
+        "person[taxpayer].w2[emp_a].box6": 23925,
+        "person[taxpayer].sav_roth": 200000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 1650000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 5,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 7600
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 7600
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 7600
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 7600
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 7600
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 1650000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 75000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 7600
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 7600
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b1",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single wages $23,750.50; Roth IRA contribution $2,000. Lines after a printed stop are not asserted. Working (predictor A): Wages 23750.5 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 15750; line 15 = 8000.5. Tax Table Single row containing 8000.5: 803 = line 16 = line 18. 8880: line 1(a) 2000, 2(a) 0, 3(a) 2000, 4 0, 5 2000, 6 2000, 7 2000; line 8 = 23750.5; line 9 rate 0.2 (Single, over 23,750 not over 25,500). Line 10 = 2000 x 0.2 = 400.0. CLW 1 = f1040 line 18 803; CLW 2 = 0 (no s3 lines 1-3, 6d, 6l); CLW 3 = 803 = line 11; line 12 = min = 400.0 = s3 line 4.  Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2375050,
+        "person[taxpayer].w2[emp_a].box4": 147253,
+        "person[taxpayer].w2[emp_a].box5": 2375050,
+        "person[taxpayer].w2[emp_a].box6": 34438,
+        "person[taxpayer].sav_roth": 200000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 2375050
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 2,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 80300
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 80300
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 80300
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2375050
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 800050
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 80300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 80300
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b2",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single wages $25,500.50; Roth IRA contribution $2,000. Lines after a printed stop are not asserted. Working (predictor A): Wages 25500.5 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 15750; line 15 = 9750.5. Tax Table Single row containing 9750.5: 978 = line 16 = line 18. 8880: line 1(a) 2000, 2(a) 0, 3(a) 2000, 4 0, 5 2000, 6 2000, 7 2000; line 8 = 25500.5; line 9 rate 0.1 (Single, over 25,500 not over 35,625 (and up to 39,500)). Line 10 = 2000 x 0.1 = 200.0. CLW 1 = f1040 line 18 978; CLW 2 = 0 (no s3 lines 1-3, 6d, 6l); CLW 3 = 978 = line 11; line 12 = min = 200.0 = s3 line 4.  Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2550050,
+        "person[taxpayer].w2[emp_a].box4": 158103,
+        "person[taxpayer].w2[emp_a].box5": 2550050,
+        "person[taxpayer].w2[emp_a].box6": 36975,
+        "person[taxpayer].sav_roth": 200000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 2550050
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 1,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 97800
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 97800
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 97800
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2550050
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 975050
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 97800
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 97800
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b3",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Head of household with one qualifying child, your son aged 8, wages $35,625.50; Roth IRA contribution $2,000. Lines after a printed stop are not asserted. Working (predictor A): Wages 35625.5 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 23625; line 15 = 12000.5. Tax Table HOH row containing 12000.5: 1203 = line 16 = line 18. 8880: line 1(a) 2000, 2(a) 0, 3(a) 2000, 4 0, 5 2000, 6 2000, 7 2000; line 8 = 35625.5; line 9 rate 0.2 (HOH, over 35,625 not over 38,250). Line 10 = 2000 x 0.2 = 400.0. CLW 1 = f1040 line 18 1203; CLW 2 = 0 (no s3 lines 1-3, 6d, 6l); CLW 3 = 1203 = line 11; line 12 = min = 400.0 = s3 line 4. 8812: line 1/3 35625.5; 4 = 1; 5 = 8 = 2,200; 9 = 200,000; 10 = 0; 11 = 0; 12 = 2,200. CLW A: 1 = 1203, 2 = s3 line 4 400.0, 3 = 803.0, 4 = 0 (no CLW B credits), 5 = 803.0 = line 13. Line 14 = min(2,200, 803.0) = 803.0 = f1040 line 19. Line 16a = 2,200 - 803.0 = 1397.0; 16b = 1,700; 17 = 1397.0; 18a earned income = wages 35625.5; 19 = 33125.5; 20 = 15% = 4968.825; 16b < 5,100 so line 27 = smaller of 17 or 20 = 1397.0. Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3562550,
+        "person[taxpayer].w2[emp_a].box4": 220878,
+        "person[taxpayer].w2[emp_a].box5": 3562550,
+        "person[taxpayer].w2[emp_a].box6": 51656,
+        "$dependent": [
+          "a"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "person[taxpayer].sav_roth": 200000,
+        "dependent[a].age": 8,
+        "dependent[a].months": 12
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 3562550
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 2,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 120300
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 120300
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 120300
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3562550
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1200050
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 120300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 120300
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 80300
+        },
+        "s8812.line14": {
+          "kind": "money",
+          "cents": 80300
+        },
+        "s8812.line27": {
+          "kind": "money",
+          "cents": 139700
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b4",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Head of household with one qualifying child, your son aged 8, wages $38,250.50; Roth IRA contribution $2,000. Lines after a printed stop are not asserted. Working (predictor A): Wages 38250.5 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 23625; line 15 = 14625.5. Tax Table HOH row containing 14625.5: 1463 = line 16 = line 18. 8880: line 1(a) 2000, 2(a) 0, 3(a) 2000, 4 0, 5 2000, 6 2000, 7 2000; line 8 = 38250.5; line 9 rate 0.1 (HOH, over 38,250 (0.1 up to 59,250)). Line 10 = 2000 x 0.1 = 200.0. CLW 1 = f1040 line 18 1463; CLW 2 = 0 (no s3 lines 1-3, 6d, 6l); CLW 3 = 1463 = line 11; line 12 = min = 200.0 = s3 line 4. 8812: line 1/3 38250.5; 4 = 1; 5 = 8 = 2,200; 9 = 200,000; 10 = 0; 11 = 0; 12 = 2,200. CLW A: 1 = 1463, 2 = s3 line 4 200.0, 3 = 1263.0, 4 = 0 (no CLW B credits), 5 = 1263.0 = line 13. Line 14 = min(2,200, 1263.0) = 1263.0 = f1040 line 19. Line 16a = 2,200 - 1263.0 = 937.0; 16b = 1,700; 17 = 937.0; 18a earned income = wages 38250.5; 19 = 35750.5; 20 = 15% = 5362.575; 16b < 5,100 so line 27 = smaller of 17 or 20 = 937.0. Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3825050,
+        "person[taxpayer].w2[emp_a].box4": 237153,
+        "person[taxpayer].w2[emp_a].box5": 3825050,
+        "person[taxpayer].w2[emp_a].box6": 55463,
+        "$dependent": [
+          "a"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "person[taxpayer].sav_roth": 200000,
+        "dependent[a].age": 8,
+        "dependent[a].months": 12
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 3825050
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 1,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 146300
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 146300
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 146300
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3825050
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1462550
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 146300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 146300
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 126300
+        },
+        "s8812.line14": {
+          "kind": "money",
+          "cents": 126300
+        },
+        "s8812.line27": {
+          "kind": "money",
+          "cents": 93700
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b5",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single wages $39,500.50; Roth IRA contribution $2,000. Lines after a printed stop are not asserted. Working (predictor A): Wages 39500.5 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 15750; line 15 = 23750.5. Tax Table Single row containing 23750.5: 2615 = line 16 = line 18. 8880: line 1(a) 2000, 2(a) 0, 3(a) 2000, 4 0, 5 2000, 6 2000, 7 2000; line 8 = 39500.5; line 9 rate 0.0 (Single, over 39,500). Line 9 is 0.0: 'If line 9 is zero, stop; you can't take this credit' (also p.1 caution: line 11a over the limit). Lines 10-12 and CLW not reached; s3 line 4 = 0.  Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3950050,
+        "person[taxpayer].w2[emp_a].box4": 244903,
+        "person[taxpayer].w2[emp_a].box5": 3950050,
+        "person[taxpayer].w2[emp_a].box6": 57275,
+        "person[taxpayer].sav_roth": 200000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 3950050
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 0,
+          "den": 10
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3950050
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2375050
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 261500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 261500
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b6",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Married filing jointly; all wages are yours, your spouse has none; wages $47,500.50; Roth IRA contribution $2,000. Lines after a printed stop are not asserted. Working (predictor A): Wages 47500.5 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 31500; line 15 = 16000.5. Tax Table MFJ row containing 16000.5: 1603 = line 16 = line 18. 8880: line 1(a) 2000, 2(a) 0, 3(a) 2000, 4 0, 5 2000, 6 2000, 7 2000; line 8 = 47500.5; line 9 rate 0.2 (MFJ, over 47,500 not over 51,000). Line 10 = 2000 x 0.2 = 400.0. CLW 1 = f1040 line 18 1603; CLW 2 = 0 (no s3 lines 1-3, 6d, 6l); CLW 3 = 1603 = line 11; line 12 = min = 400.0 = s3 line 4.  Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 4750050,
+        "person[taxpayer].w2[e0].box4": 294503,
+        "person[taxpayer].w2[e0].box5": 4750050,
+        "person[taxpayer].w2[e0].box6": 68875,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[taxpayer].sav_roth": 200000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line1b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line4b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line6b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 4750050
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 2,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 160300
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 160300
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 160300
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4750050
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1600050
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 160300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 160300
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b7",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Married filing jointly; all wages are yours, your spouse has none; wages $51,000.50; Roth IRA contribution $2,000. Lines after a printed stop are not asserted. Working (predictor A): Wages 51000.5 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 31500; line 15 = 19500.5. Tax Table MFJ row containing 19500.5: 1953 = line 16 = line 18. 8880: line 1(a) 2000, 2(a) 0, 3(a) 2000, 4 0, 5 2000, 6 2000, 7 2000; line 8 = 51000.5; line 9 rate 0.1 (MFJ, over 51,000 not over 79,000). Line 10 = 2000 x 0.1 = 200.0. CLW 1 = f1040 line 18 1953; CLW 2 = 0 (no s3 lines 1-3, 6d, 6l); CLW 3 = 1953 = line 11; line 12 = min = 200.0 = s3 line 4.  Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5100050,
+        "person[taxpayer].w2[e0].box4": 316203,
+        "person[taxpayer].w2[e0].box5": 5100050,
+        "person[taxpayer].w2[e0].box6": 73950,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[taxpayer].sav_roth": 200000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line1b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line4b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line6b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 5100050
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 1,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 195300
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 195300
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 195300
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5100050
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1950050
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 195300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 195300
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b8",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Head of household with one qualifying child, your son aged 8, wages $59,250.50; Roth IRA contribution $2,000. Lines after a printed stop are not asserted. Working (predictor A): Wages 59250.5 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 23625; line 15 = 35625.5. Tax Table HOH row containing 35625.5: 3935 = line 16 = line 18. 8880: line 1(a) 2000, 2(a) 0, 3(a) 2000, 4 0, 5 2000, 6 2000, 7 2000; line 8 = 59250.5; line 9 rate 0.0 (HOH, over 59,250). Line 9 is 0.0: 'If line 9 is zero, stop; you can't take this credit' (also p.1 caution: line 11a over the limit). Lines 10-12 and CLW not reached; s3 line 4 = 0. 8812: line 1/3 59250.5; 4 = 1; 5 = 8 = 2,200; 9 = 200,000; 10 = 0; 11 = 0; 12 = 2,200. CLW A: 1 = 3935, 2 = s3 line 4 0, 3 = 3935, 4 = 0 (no CLW B credits), 5 = 3935 = line 13. Line 14 = min(2,200, 3935) = 2200 = f1040 line 19. Line 16a = 0: stop, no ACTC; line 27 = 0. Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5925050,
+        "person[taxpayer].w2[emp_a].box4": 367353,
+        "person[taxpayer].w2[emp_a].box5": 5925050,
+        "person[taxpayer].w2[emp_a].box6": 85913,
+        "$dependent": [
+          "a"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "person[taxpayer].sav_roth": 200000,
+        "dependent[a].age": 8,
+        "dependent[a].months": 12
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 5925050
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 0,
+          "den": 10
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5925050
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 3562550
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 393500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 393500
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 220000
+        },
+        "s8812.line14": {
+          "kind": "money",
+          "cents": 220000
+        },
+        "s8812.line27": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b9",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Married filing jointly; all wages are yours, your spouse has none; wages $79,000.50; Roth IRA contribution $2,000. Lines after a printed stop are not asserted. Working (predictor A): Wages 79000.5 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 31500; line 15 = 47500.5. Tax Table MFJ row containing 47500.5: 5226 = line 16 = line 18. 8880: line 1(a) 2000, 2(a) 0, 3(a) 2000, 4 0, 5 2000, 6 2000, 7 2000; line 8 = 79000.5; line 9 rate 0.0 (MFJ, over 79,000). Line 9 is 0.0: 'If line 9 is zero, stop; you can't take this credit' (also p.1 caution: line 11a over the limit). Lines 10-12 and CLW not reached; s3 line 4 = 0.  Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 7900050,
+        "person[taxpayer].w2[e0].box4": 489803,
+        "person[taxpayer].w2[e0].box5": 7900050,
+        "person[taxpayer].w2[e0].box6": 114550,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[taxpayer].sav_roth": 200000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line1b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line4b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line6b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 7900050
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 0,
+          "den": 10
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 7900050
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 4750050
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 522600
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 522600
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b10",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $30,000; box 12 code F $500 (salary reduction SEP deferral). Lines after a printed stop are not asserted. Working (predictor A): Wages 30000 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 15750; line 15 = 14250. Tax Table Single row containing 14250: 1475 = line 16 = line 18. 8880: line 1(a) 0, 2(a) 500, 3(a) 500, 4 0, 5 500, 6 500, 7 500; line 8 = 30000; line 9 rate 0.1 (Single, over 25,500 not over 39,500). Line 10 = 500 x 0.1 = 50.0. CLW 1 = f1040 line 18 1475; CLW 2 = 0 (no s3 lines 1-3, 6d, 6l); CLW 3 = 1475 = line 11; line 12 = min = 50.0 = s3 line 4.  Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_f": 50000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 1,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 147500
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 147500
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 147500
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 147500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 147500
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b11",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $28,000; box 12 code S $700 (SIMPLE IRA salary reduction). Lines after a printed stop are not asserted. Working (predictor A): Wages 28000 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 15750; line 15 = 12250. Tax Table Single row containing 12250: 1235 = line 16 = line 18. 8880: line 1(a) 0, 2(a) 700, 3(a) 700, 4 0, 5 700, 6 700, 7 700; line 8 = 28000; line 9 rate 0.1 (Single, over 25,500). Line 10 = 700 x 0.1 = 70.0. CLW 1 = f1040 line 18 1235; CLW 2 = 0 (no s3 lines 1-3, 6d, 6l); CLW 3 = 1235 = line 11; line 12 = min = 70.0 = s3 line 4.  Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2800000,
+        "person[taxpayer].w2[emp_a].box4": 173600,
+        "person[taxpayer].w2[emp_a].box5": 2800000,
+        "person[taxpayer].w2[emp_a].box6": 40600,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_s": 70000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 2800000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 1,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 7000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 123500
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 123500
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 123500
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 7000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 7000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2800000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1225000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 123500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 123500
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b12",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single. Wages $27,000; box 12 code BB $600 (designated Roth 403(b)). Lines after a printed stop are not asserted. Working (predictor A): Wages 27000 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 15750; line 15 = 11250. Tax Table Single row containing 11250: 1128 = line 16 = line 18. 8880: line 1(a) 0, 2(a) 600, 3(a) 600, 4 0, 5 600, 6 600, 7 600; line 8 = 27000; line 9 rate 0.1 (Single, over 25,500). Line 10 = 600 x 0.1 = 60.0. CLW 1 = f1040 line 18 1128; CLW 2 = 0 (no s3 lines 1-3, 6d, 6l); CLW 3 = 1128 = line 11; line 12 = min = 60.0 = s3 line 4.  Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2700000,
+        "person[taxpayer].w2[emp_a].box4": 167400,
+        "person[taxpayer].w2[emp_a].box5": 2700000,
+        "person[taxpayer].w2[emp_a].box6": 39150,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_bb": 60000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 2700000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 1,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 6000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 112800
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 112800
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 112800
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 6000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 6000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2700000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1125000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 112800
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 112800
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b13",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Single, a state employee. Wages $26,000; box 12 code EE $900 (designated Roth governmental 457(b)). Lines after a printed stop are not asserted. Working (predictor A): Wages 26000 = f1040 line 1a/1z/9/11a/11b. Line 12e/14 std deduction 15750; line 15 = 10250. Tax Table Single row containing 10250: 1028 = line 16 = line 18. 8880: line 1(a) 0, 2(a) 900, 3(a) 900, 4 0, 5 900, 6 900, 7 900; line 8 = 26000; line 9 rate 0.1 (Single, over 25,500). Line 10 = 900 x 0.1 = 90.0. CLW 1 = f1040 line 18 1028; CLW 2 = 0 (no s3 lines 1-3, 6d, 6l); CLW 3 = 1028 = line 11; line 12 = min = 90.0 = s3 line 4.  Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2600000,
+        "person[taxpayer].w2[emp_a].box4": 161200,
+        "person[taxpayer].w2[emp_a].box5": 2600000,
+        "person[taxpayer].w2[emp_a].box6": 37700,
+        "person[taxpayer].w2[emp_a].box12_any": true,
+        "person[taxpayer].w2[emp_a].box12_ee": 90000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 2600000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 1,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 9000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 102800
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 102800
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 102800
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 9000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 9000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2600000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1025000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 102800
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 102800
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b14",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Married filing jointly. You: wages $30,000, Roth IRA contribution $1,000. Spouse: wages $15,000, Roth IRA contribution $3,000. Lines after a printed stop are not asserted. Working (predictor A): AGI 30,000 + 15,000 = 45,000; line 15 = 45,000 - 31,500 = 13,500; Tax Table MFJ 13,500-13,550 = 1,353 = line 16 = line 18. 8880: (a) 1 = 1,000, 3 = 5 = 6 = 1,000; (b) 1 = 3,000, 3 = 5 = 3,000, 6 = min(3,000, 2,000) = 2,000; 7 = 3,000; 8 = 45,000; 9 = 0.5 (MFJ, not over 47,500); 10 = 1,500. CLW 1 = 1,353, 2 = 0, 3 = 1,353 = line 11; line 12 = min(1,500, 1,353) = 1,353 = s3 line 4. Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 3000000,
+        "person[taxpayer].w2[e0].box4": 186000,
+        "person[taxpayer].w2[e0].box5": 3000000,
+        "person[taxpayer].w2[e0].box6": 43500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 1500000,
+        "person[spouse].w2[e0].box4": 93000,
+        "person[spouse].w2[e0].box5": 1500000,
+        "person[spouse].w2[e0].box6": 21750,
+        "person[taxpayer].sav_roth": 100000,
+        "person[spouse].sav_roth": 300000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line1b": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f8880.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3b": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f8880.line4b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5b": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f8880.line6b": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 5,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1350000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 135300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 135300
+        }
+      }
+    },
+    {
+      "id": "stage15.f8880-2.b15",
+      "covers": [
+        "f8880",
+        "w2",
+        "person",
+        "retirement",
+        "s3",
+        "f1040",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 15, predicted by hand from the archived f8880 (form and p. 2 instructions), iw2w3, i1040gi Tax Table and, with children, i1040s8812, by two independent agents that did not see the encoding and agreed on every value; recorded after comparison. Facts: Married filing jointly. You: wages $35,000, Roth IRA contribution $2,000. Spouse: wages $10,000, Roth IRA contribution $2,000. In 2025 you received a $1,000 distribution from a qualified retirement plan (box 1 and 2a $1,000, code 7, not an IRA, not rolled over). In 2024, a year you and your spouse filed jointly, your spouse received a $300 distribution from a traditional IRA (not rolled over). In 2023, before you married, you received $200 from a 401(k) plan (not rolled over). Lines after a printed stop are not asserted. Working (predictor A): AGI = wages 35,000 + 10,000 + pension 1,000 (f1040 line 5a/5b) = 46,000; line 15 = 46,000 - 31,500 = 14,500; Tax Table MFJ 14,500-14,550 = 1,453. 8880 line 4 (p.2): distributions after 2022 and before the due date; on a joint return both spouses' amounts go in both columns, except a spouse's distribution is not put in the other's column for a year without a joint return. Column (a): your 2025 $1,000 + spouse's 2024 $300 (joint year) + your own 2023 $200 (your own distribution always in your column) = 1,500. Column (b): spouse's 2024 $300 + your 2025 $1,000 (joint year) = 1,300; your 2023 $200 excluded (no joint return for 2023). Line 3 (a) 2,000, (b) 2,000; 5 (a) 500, (b) 700; 6 (a) 500, (b) 700; 7 = 1,200; 8 = 46,000; 9 = 0.5 (MFJ not over 47,500); 10 = 600. CLW 1 = 1,453, 2 = 0, 3 = 1,453 = line 11; 12 = 600 = s3 line 4. Sources: f8880 p.1 (lines 1-12, line 9 table, caution), f8880 p.2 (line 2, line 4, CLW); i1040gi standard deduction (Single $15,750, MFJ $31,500, HOH $23,625) and 2025 Tax Table (p.68+); f1040s8812 and i1040s8812 CLW A.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 3500000,
+        "person[taxpayer].w2[e0].box4": 217000,
+        "person[taxpayer].w2[e0].box5": 3500000,
+        "person[taxpayer].w2[e0].box6": 50750,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 1000000,
+        "person[spouse].w2[e0].box4": 62000,
+        "person[spouse].w2[e0].box5": 1000000,
+        "person[spouse].w2[e0].box6": 14500,
+        "person[taxpayer].sav_roth": 200000,
+        "person[taxpayer].sav_prior_other": 20000,
+        "person[spouse].sav_roth": 200000,
+        "person[spouse].sav_prior_joint": 30000,
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 100000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line1b": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3b": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4b": {
+          "kind": "money",
+          "cents": 130000
+        },
+        "f8880.line5b": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "f8880.line6b": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 4600000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 5,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 145300
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 145300
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 145300
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4600000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1450000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 145300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 145300
+        }
+      }
+    },
+    {
+      "id": "stage15.refuse.f8880.excluded_income",
+      "covers": [
+        "f8880:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage15.f8880.s2 (single, wages $20,000, Roth IRA $1,500) with excluded foreign or possessions income answered Yes: line 8 (AGI refigured for the excluded income, Pub. 590-A) is refused. Form 1040 line 11a is computed, so the entry on line 8 decides its value. The refused value is the evaluator's.",
+      "inputs": {
+        "sa.excluded_income": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "s179.line10": null
+      },
+      "expect": {
+        "f8880.line8": {
+          "kind": "refusal",
+          "gate": "sa.excluded_income",
+          "form": "Form 8880 line 8 refigured for excluded income (Pub. 590-A)",
+          "remedy": "With an exclusion or deduction for foreign earned income or foreign housing, or income from Puerto Rico or American Samoa, line 8 is figured by Pub. 590-A, which this tool does not apply.",
+          "cite": {
+            "doc": "f8880",
+            "locator": "Form 8880 (2025), line 8, \"* See Pub. 590-A, Contributions to Individual Retirement Arrangements, for the amount to enter if you claim any exclusion or deduction for foreign earned income, foreign housing, income from Puerto Rico, or income from American Samoa\"",
+            "revision": "2025; created 2025-11-04",
+            "snapshot": "ba2b28770bc82d318ab0b884e56a572771030ce1a3ec80d85bafd2eea3a2778e",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage15.regress.f8880.prior_own_b_spouse_only",
+      "covers": [
+        "f8880"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-worked from Form 8880 (2025) lines 3 to 5. Facts: stage15.f8880.s7 (married filing jointly; each spouse a $2,500 Roth IRA contribution) plus a $500 distribution to you in 2024, a year you did not file jointly with this spouse. Line 4 counts each person's own distributions in that person's column: column (a) 500, column (b) 0. Line 3: (a) 2,500, (b) 2,500. Line 5 'Subtract line 4 from line 3': (a) 2,000, (b) 2,500.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 3000000,
+        "person[taxpayer].w2[e0].box4": 186000,
+        "person[taxpayer].w2[e0].box5": 3000000,
+        "person[taxpayer].w2[e0].box6": 43500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 2000000,
+        "person[spouse].w2[e0].box4": 124000,
+        "person[spouse].w2[e0].box5": 2000000,
+        "person[spouse].w2[e0].box6": 29000,
+        "person[taxpayer].sav_roth": 250000,
+        "person[taxpayer].sav_prior_other": 50000,
+        "person[spouse].sav_roth": 250000
+      },
+      "expect": {
+        "f8880.prior_own_a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.prior_own_b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line4b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line5b": {
+          "kind": "money",
+          "cents": 250000
+        }
+      }
+    },
+    {
+      "id": "stage15.regress.f8880.agi_limit",
+      "covers": [
+        "f8880"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-worked from Form 8880 (2025), page 1 heading, 'you can't take the credit if ... The amount on Form 1040 ... line 11a, is more than $39,500 ($59,250 if head of household; $79,000 if married filing jointly)', and line 9 (single: over $39,500, 0.0). Facts: stage15.f8880.s6 (single, wages $39,500.01, Roth IRA $2,000). Line 8 = $39,500.01, more than $39,500, so the credit can't be taken and line 12 is zero. Only the helper (whether the credit can be taken) separates a limit one dollar higher: line 9's rate for this AGI is 0.0 either way, so line 12 is zero on both.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3950001,
+        "person[taxpayer].w2[emp_a].box4": 244900,
+        "person[taxpayer].w2[emp_a].box5": 3950001,
+        "person[taxpayer].w2[emp_a].box6": 57275,
+        "person[taxpayer].sav_roth": 200000
+      },
+      "expect": {
+        "f8880.agi_limit": {
+          "kind": "money",
+          "cents": 3950000
+        },
+        "f8880.can_take": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage21.mut.sav_partial_rollover",
+      "covers": [
+        "f8880",
+        "retirement",
+        "person",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation kill for retirement.sav_gross (the rolled-over part, not the line 4a/5a amount, is subtracted). Case stage15.f8880-2.b15 with your 2025 plan distribution changed to box 1 $4,000 with $3,000 rolled over within 60 days (code 7, not a direct rollover): line 5a $4,000, line 5b $1,000 (i1040gi p. 30, Rollovers). f8880 p. 2, Line 4, excludes \"Distributions not taxable as the result of a rollover\", so your 2025 amount on line 4 stays $1,000 and every other b15 value is unchanged (owner ruling recorded in b15: line 4 is gross less rollovers).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 3500000,
+        "person[taxpayer].w2[e0].box4": 217000,
+        "person[taxpayer].w2[e0].box5": 3500000,
+        "person[taxpayer].w2[e0].box6": 50750,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 1000000,
+        "person[spouse].w2[e0].box4": 62000,
+        "person[spouse].w2[e0].box5": 1000000,
+        "person[spouse].w2[e0].box6": 14500,
+        "person[taxpayer].sav_roth": 200000,
+        "person[taxpayer].sav_prior_other": 20000,
+        "person[spouse].sav_roth": 200000,
+        "person[spouse].sav_prior_joint": 30000,
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 400000,
+        "person[taxpayer].retirement[p].rollover": 300000
+      },
+      "expect": {
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f8880.line1b": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3b": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line4b": {
+          "kind": "money",
+          "cents": 130000
+        },
+        "f8880.line5b": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "f8880.line6b": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 4600000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 5,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 145300
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 145300
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 145300
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4600000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1450000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 145300
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 145300
+        },
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "stage21.t067.f8880_line9_stop",
+      "covers": [
+        "f8880"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-067 finding T067-8880-L9 (.transcription/proposed/t067/f8880.findings.md): stage15.f8880.s6, line 7 above zero and line 8 above the status's last band, so line 9 is 0.0. Form 8880 (2025), line 9: \"If line 9 is zero, stop; you can’t take this credit\"; lines 10 to 12 and the Credit Limit Worksheet are not shown (f8880.past9 false), lines 8 and 9 are (f8880.past7 true).",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3950001,
+        "person[taxpayer].w2[emp_a].box4": 244900,
+        "person[taxpayer].w2[emp_a].box5": 3950001,
+        "person[taxpayer].w2[emp_a].box6": 57275,
+        "person[taxpayer].sav_roth": 200000
+      },
+      "expect": {
+        "f8880.past7": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8880.past9": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 0,
+          "den": 10
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage21.t067.f8880_line7_stop",
+      "covers": [
+        "f8880"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-067 and mutation kill for f8880.past7 (strictly more than zero): stage15.f8880.s1, line 7 $0. Form 8880 (2025), line 7: \"If zero, stop; you can’t take this credit\"; lines 8 to 12 and the Credit Limit Worksheet are not shown (f8880.past7 and f8880.past9 false).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$retirement@person[taxpayer]": [
+          "p"
+        ],
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 3000000,
+        "person[taxpayer].w2[e0].box4": 186000,
+        "person[taxpayer].w2[e0].box5": 3000000,
+        "person[taxpayer].w2[e0].box6": 43500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 1000000,
+        "person[spouse].w2[e0].box4": 62000,
+        "person[spouse].w2[e0].box5": 1000000,
+        "person[spouse].w2[e0].box6": 14500,
+        "person[taxpayer].w2[e0].box12_any": true,
+        "person[spouse].sav_roth": 100000,
+        "person[spouse].sav_prior_other": 200000,
+        "person[taxpayer].w2[e0].box12_d": 100000,
+        "person[taxpayer].retirement[p].account": "plan",
+        "person[taxpayer].retirement[p].box1": 500000
+      },
+      "expect": {
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.past7": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8880.past9": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    }
+  ]
+}

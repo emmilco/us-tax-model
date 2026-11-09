@@ -1,0 +1,2782 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage16.ira.i1",
+      "covers": [
+        "ira",
+        "f8606",
+        "person",
+        "s1",
+        "ssb",
+        "f8880",
+        "s3",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Married filing jointly, both aged 39. You are covered by a plan at work; wages $66,000. Your spouse is not covered; wages $51,500. Taxable interest $9,000. Each of you contributes $7,000 to a traditional IRA. The two predictors differed here only on rounding: Pub. 590-A Example 1 prints $6,825, but its own Worksheet 1-2 line 4 (\"If the result isn't a multiple of $10, round it to the next highest multiple of $10\") and the i1040gi IRA Deduction Worksheet line 7 (\"increase it to the next multiple of $10\") give $6,830; the expected values follow the printed rule (predictor B), and the example's figure is an open owner question. Working (predictor B): 1040 line 9 = 66,000+51,500+9,000 = 126,500. WS (i1040gi p.97): 2a 146,000 (covered, MFJ); 2b 246,000 (not covered). 3 = 126,500; 4 = 0; 5 = 126,500 both. 6a = 19,500 (<20,000, covered column -> line 7); 6b = 119,500 (>=10,000, uncovered column -> 7b = 7,000). 7a = 19,500 x 0.35 = 6,825 -> next multiple of $10 = 6,830 (p.98 line 7). 8 = 117,500 wages; 9 = 0; 10 = 117,500. 11a = 11b = 7,000. 12a = min(6,830,117,500,7,000) = 6,830; 12b = 7,000. s1 line 20 = 13,830 = line 26. Form 8606 (you): line 1 = 7,000 - 6,830 = 170; line 2 = 0; line 3 = 170; no distribution/conversion -> line 14 = 170. AGI = 126,500 - 13,830 = 112,670. Std ded MFJ 31,500. Line 15 = 81,170. Tax Table MFJ 81,150-81,200 = 9,264. Line 17 = 0 so line 18 = 9,264. Saver's credit: AGI > 79,000, not available.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$interest": [
+          "bank_a"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6600000,
+        "person[taxpayer].w2[e0].box4": 409200,
+        "person[taxpayer].w2[e0].box5": 6600000,
+        "person[taxpayer].w2[e0].box6": 95700,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5150000,
+        "person[spouse].w2[e0].box4": 319300,
+        "person[spouse].w2[e0].box5": 5150000,
+        "person[spouse].w2[e0].box6": 74675,
+        "person[taxpayer].sav_trad": true,
+        "person[spouse].sav_trad": true,
+        "interest[bank_a].amount": 900000,
+        "person[taxpayer].ira_trad": 700000,
+        "person[taxpayer].ira_work_plan": true,
+        "person[spouse].ira_trad": 700000
+      },
+      "expect": {
+        "ira.line1a": {
+          "kind": "bool",
+          "value": true
+        },
+        "ira.line1b": {
+          "kind": "bool",
+          "value": false
+        },
+        "ira.line2a": {
+          "kind": "money",
+          "cents": 14600000
+        },
+        "ira.line2b": {
+          "kind": "money",
+          "cents": 24600000
+        },
+        "ira.line3": {
+          "kind": "money",
+          "cents": 12650000
+        },
+        "ira.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line6a": {
+          "kind": "money",
+          "cents": 1950000
+        },
+        "ira.line6b": {
+          "kind": "money",
+          "cents": 11950000
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 683000
+        },
+        "ira.line7b": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line8": {
+          "kind": "money",
+          "cents": 11750000
+        },
+        "ira.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line10": {
+          "kind": "money",
+          "cents": 11750000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line11b": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 683000
+        },
+        "ira.line12b": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 1383000
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 1383000
+        },
+        "person[taxpayer].f8606[form].line1": {
+          "kind": "money",
+          "cents": 17000
+        },
+        "person[taxpayer].f8606[form].line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8606[form].line3": {
+          "kind": "money",
+          "cents": 17000
+        },
+        "person[taxpayer].f8606[form].line14": {
+          "kind": "money",
+          "cents": 17000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 11267000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 8117000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 926400
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 926400
+        }
+      }
+    },
+    {
+      "id": "stage16.ira.i2",
+      "covers": [
+        "ira",
+        "f8606",
+        "person",
+        "s1",
+        "ssb",
+        "f8880",
+        "s3",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 40, covered by a plan at work. Wages $72,000 and taxable interest $18,000. Traditional IRA contribution $7,000. Working (predictor B): Line 9 = 72,000+18,000 = 90,000. WS 2a = 89,000 (single); 3 = 90,000; 4 = 0; 5 = 90,000. Line 6: 90,000 is not less than 89,000 -> STOP, none deductible (p.97). Deduction 0. Form 8606 line 1 = 7,000, 2 = 0, 3 = 7,000, 14 = 7,000. AGI 90,000; std 15,750; taxable 74,250; Tax Table single 74,250-74,300 = 11,255. Saver's credit unavailable (AGI > 39,500).",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7200000,
+        "person[taxpayer].w2[emp_a].box4": 446400,
+        "person[taxpayer].w2[emp_a].box5": 7200000,
+        "person[taxpayer].w2[emp_a].box6": 104400,
+        "person[taxpayer].sav_trad": true,
+        "interest[bank_a].amount": 1800000,
+        "person[taxpayer].ira_trad": 700000,
+        "person[taxpayer].ira_work_plan": true
+      },
+      "expect": {
+        "ira.line1a": {
+          "kind": "bool",
+          "value": true
+        },
+        "ira.line2a": {
+          "kind": "money",
+          "cents": 8900000
+        },
+        "ira.line3": {
+          "kind": "money",
+          "cents": 9000000
+        },
+        "ira.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8606[form].line1": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "person[taxpayer].f8606[form].line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8606[form].line3": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "person[taxpayer].f8606[form].line14": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 9000000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 7425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1125500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 1125500
+        }
+      }
+    },
+    {
+      "id": "stage16.ira.i3",
+      "covers": [
+        "ira",
+        "f8606",
+        "person",
+        "s1",
+        "ssb",
+        "f8880",
+        "s3",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 40, covered. Wages $85,000. Traditional IRA contribution $7,000. Working (predictor B): 2a 89,000; 3 = 85,000; 5 = 85,000; 6 = 4,000 (<10,000 -> line 7). 7 = 4,000 x 0.70 = 2,800 (multiple of 10, >=200). 8 = 85,000; 10 = 85,000; 11 = 7,000; 12 = 2,800. Nondeductible 4,200 -> 8606 lines 1,3,14 = 4,200. AGI 82,200; taxable 66,450; Tax Table single 66,450-66,500 = 9,539.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8500000,
+        "person[taxpayer].w2[emp_a].box4": 527000,
+        "person[taxpayer].w2[emp_a].box5": 8500000,
+        "person[taxpayer].w2[emp_a].box6": 123250,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 700000,
+        "person[taxpayer].ira_work_plan": true
+      },
+      "expect": {
+        "ira.line1a": {
+          "kind": "bool",
+          "value": true
+        },
+        "ira.line2a": {
+          "kind": "money",
+          "cents": 8900000
+        },
+        "ira.line3": {
+          "kind": "money",
+          "cents": 8500000
+        },
+        "ira.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line6a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 280000
+        },
+        "ira.line8": {
+          "kind": "money",
+          "cents": 8500000
+        },
+        "ira.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line10": {
+          "kind": "money",
+          "cents": 8500000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 280000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 280000
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 280000
+        },
+        "person[taxpayer].f8606[form].line1": {
+          "kind": "money",
+          "cents": 420000
+        },
+        "person[taxpayer].f8606[form].line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8606[form].line3": {
+          "kind": "money",
+          "cents": 420000
+        },
+        "person[taxpayer].f8606[form].line14": {
+          "kind": "money",
+          "cents": 420000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8220000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 6645000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 953900
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 953900
+        }
+      }
+    },
+    {
+      "id": "stage16.ira.i4",
+      "covers": [
+        "ira",
+        "f8606",
+        "person",
+        "s1",
+        "ssb",
+        "f8880",
+        "s3",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 40, covered. Wages $81,234.56. Traditional IRA contribution $7,000. Working (predictor B): 5 = 81,234.56; 6 = 89,000 - 81,234.56 = 7,765.44; 7 = x0.70 = 5,435.808 -> next multiple of $10 = 5,440. 12 = min(5,440, 81,234.56, 7,000) = 5,440. Nondeductible 1,560. AGI 75,794.56; taxable 60,044.56; Tax Table single 60,000-60,050 = 8,120.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8123456,
+        "person[taxpayer].w2[emp_a].box4": 503654,
+        "person[taxpayer].w2[emp_a].box5": 8123456,
+        "person[taxpayer].w2[emp_a].box6": 117790,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 700000,
+        "person[taxpayer].ira_work_plan": true
+      },
+      "expect": {
+        "ira.line1a": {
+          "kind": "bool",
+          "value": true
+        },
+        "ira.line2a": {
+          "kind": "money",
+          "cents": 8900000
+        },
+        "ira.line3": {
+          "kind": "money",
+          "cents": 8123456
+        },
+        "ira.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line6a": {
+          "kind": "money",
+          "cents": 776544
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 544000
+        },
+        "ira.line8": {
+          "kind": "money",
+          "cents": 8123456
+        },
+        "ira.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line10": {
+          "kind": "money",
+          "cents": 8123456
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 544000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 544000
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 544000
+        },
+        "person[taxpayer].f8606[form].line1": {
+          "kind": "money",
+          "cents": 156000
+        },
+        "person[taxpayer].f8606[form].line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8606[form].line3": {
+          "kind": "money",
+          "cents": 156000
+        },
+        "person[taxpayer].f8606[form].line14": {
+          "kind": "money",
+          "cents": 156000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 7579456
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 6004456
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 812000
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 812000
+        }
+      }
+    },
+    {
+      "id": "stage16.ira.i5",
+      "covers": [
+        "ira",
+        "f8606",
+        "person",
+        "s1",
+        "ssb",
+        "f8880",
+        "s3",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 55, covered. Wages $88,800. Traditional IRA contribution $8,000. Working (predictor B): 6 = 89,000 - 88,800 = 200; age 55 -> 80%: 160, less than $200 -> enter 200 (p.98 line 7). 12 = min(200, 88,800, 8,000) = 200. Nondeductible 7,800. AGI 88,600; taxable 72,850; Tax Table single 72,850-72,900 = 10,947.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8880000,
+        "person[taxpayer].w2[emp_a].box4": 550560,
+        "person[taxpayer].w2[emp_a].box5": 8880000,
+        "person[taxpayer].w2[emp_a].box6": 128760,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 800000,
+        "person[taxpayer].ira_age50": true,
+        "person[taxpayer].ira_work_plan": true
+      },
+      "expect": {
+        "ira.line1a": {
+          "kind": "bool",
+          "value": true
+        },
+        "ira.line2a": {
+          "kind": "money",
+          "cents": 8900000
+        },
+        "ira.line3": {
+          "kind": "money",
+          "cents": 8880000
+        },
+        "ira.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line6a": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "ira.line8": {
+          "kind": "money",
+          "cents": 8880000
+        },
+        "ira.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line10": {
+          "kind": "money",
+          "cents": 8880000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "person[taxpayer].f8606[form].line1": {
+          "kind": "money",
+          "cents": 780000
+        },
+        "person[taxpayer].f8606[form].line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8606[form].line3": {
+          "kind": "money",
+          "cents": 780000
+        },
+        "person[taxpayer].f8606[form].line14": {
+          "kind": "money",
+          "cents": 780000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8860000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 7285000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1094700
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 1094700
+        }
+      }
+    },
+    {
+      "id": "stage16.ira.i6",
+      "covers": [
+        "ira",
+        "f8606",
+        "person",
+        "s1",
+        "ssb",
+        "f8880",
+        "s3",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 30, not covered. Wages $5,000. Traditional IRA contribution $4,000. Working (predictor B): 1a No -> skip 2-6, 7a = 7,000 (under 50). 8 = 5,000; 10 = 5,000; 11 = 4,000; 12 = 4,000. AGI 1,000; std 15,750; taxable 0; tax 0. Form 8880: 1 = 4,000 ... 6 = 2,000, 7 = 2,000, 8 = 1,000, 9 = 0.5, 10 = 1,000; CLW (f8880 p.2): 1 = line 18 = 0, 2 = 0, 3 = 0 -> stop, no credit. s3 line 4 = 0.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 500000,
+        "person[taxpayer].w2[emp_a].box4": 31000,
+        "person[taxpayer].w2[emp_a].box5": 500000,
+        "person[taxpayer].w2[emp_a].box6": 7250,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 400000
+      },
+      "expect": {
+        "ira.line1a": {
+          "kind": "bool",
+          "value": false
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line8": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "ira.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line10": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 5,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.ira.i7",
+      "covers": [
+        "ira",
+        "f8606",
+        "person",
+        "s1",
+        "ssb",
+        "f8880",
+        "s3",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Married filing jointly, neither covered. You: aged 52, wages $60,000, traditional IRA $8,000. Spouse: aged 40, wages $40,000, traditional IRA $7,000. Working (predictor B): Neither covered -> skip 2-6; 7a = 8,000 (age 52), 7b = 7,000. 8 = 100,000; 10 = 100,000; 12a 8,000, 12b 7,000; s1 line 20 = 15,000. AGI 85,000; std 31,500; taxable 53,500; Tax Table MFJ 53,500-53,550 = 5,946. Saver's credit unavailable (AGI 85,000 > 79,000).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 4000000,
+        "person[spouse].w2[e0].box4": 248000,
+        "person[spouse].w2[e0].box5": 4000000,
+        "person[spouse].w2[e0].box6": 58000,
+        "person[taxpayer].sav_trad": true,
+        "person[spouse].sav_trad": true,
+        "person[taxpayer].ira_trad": 800000,
+        "person[taxpayer].ira_age50": true,
+        "person[spouse].ira_trad": 700000
+      },
+      "expect": {
+        "ira.line1a": {
+          "kind": "bool",
+          "value": false
+        },
+        "ira.line1b": {
+          "kind": "bool",
+          "value": false
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "ira.line7b": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line8": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "ira.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line10": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "ira.line11b": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "ira.line12b": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8500000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 5350000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 594600
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 594600
+        }
+      }
+    },
+    {
+      "id": "stage16.ira.i8",
+      "covers": [
+        "ira",
+        "f8606",
+        "person",
+        "s1",
+        "ssb",
+        "f8880",
+        "s3",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Married filing jointly, both covered. You: wages $70,000, traditional IRA $7,000. Spouse: wages $60,000, traditional IRA $7,000. Both under 50. Working (predictor B): 2a = 2b = 146,000; 3 = 130,000; 5 = 130,000 both; 6 = 16,000 each (<20,000 -> line 7); 7 = 16,000 x 0.35 = 5,600 each. 8 = 130,000; 10 = 130,000; 12a = 12b = 5,600; s1 line 20 = 11,200. Each spouse files 8606: 1 = 1,400, 3 = 1,400, 14 = 1,400. AGI 118,800; std 31,500; taxable 87,300; Tax Table MFJ 87,300-87,350 = 10,002.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 7000000,
+        "person[taxpayer].w2[e0].box4": 434000,
+        "person[taxpayer].w2[e0].box5": 7000000,
+        "person[taxpayer].w2[e0].box6": 101500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 6000000,
+        "person[spouse].w2[e0].box4": 372000,
+        "person[spouse].w2[e0].box5": 6000000,
+        "person[spouse].w2[e0].box6": 87000,
+        "person[taxpayer].sav_trad": true,
+        "person[spouse].sav_trad": true,
+        "person[taxpayer].ira_trad": 700000,
+        "person[taxpayer].ira_work_plan": true,
+        "person[spouse].ira_trad": 700000,
+        "person[spouse].ira_work_plan": true
+      },
+      "expect": {
+        "ira.line1a": {
+          "kind": "bool",
+          "value": true
+        },
+        "ira.line1b": {
+          "kind": "bool",
+          "value": true
+        },
+        "ira.line2a": {
+          "kind": "money",
+          "cents": 14600000
+        },
+        "ira.line2b": {
+          "kind": "money",
+          "cents": 14600000
+        },
+        "ira.line3": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "ira.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line6a": {
+          "kind": "money",
+          "cents": 1600000
+        },
+        "ira.line6b": {
+          "kind": "money",
+          "cents": 1600000
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 560000
+        },
+        "ira.line7b": {
+          "kind": "money",
+          "cents": 560000
+        },
+        "ira.line8": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "ira.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line10": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line11b": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 560000
+        },
+        "ira.line12b": {
+          "kind": "money",
+          "cents": 560000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 1120000
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 1120000
+        },
+        "person[taxpayer].f8606[form].line1": {
+          "kind": "money",
+          "cents": 140000
+        },
+        "person[taxpayer].f8606[form].line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8606[form].line3": {
+          "kind": "money",
+          "cents": 140000
+        },
+        "person[taxpayer].f8606[form].line14": {
+          "kind": "money",
+          "cents": 140000
+        },
+        "person[spouse].f8606[form].line1": {
+          "kind": "money",
+          "cents": 140000
+        },
+        "person[spouse].f8606[form].line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8606[form].line3": {
+          "kind": "money",
+          "cents": 140000
+        },
+        "person[spouse].f8606[form].line14": {
+          "kind": "money",
+          "cents": 140000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 11880000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 8730000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 1000200
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 1000200
+        }
+      }
+    },
+    {
+      "id": "stage16.ira.i9",
+      "covers": [
+        "ira",
+        "f8606",
+        "person",
+        "s1",
+        "ssb",
+        "f8880",
+        "s3",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 30, not covered. Wages $30,000. Traditional IRA contribution $5,000. (Saver's credit.) Working (predictor B): Not covered: 7a = 7,000; 8 = 30,000; 10 = 30,000; 11 = 5,000; 12 = 5,000. AGI 25,000; taxable 9,250; Tax Table single 9,250-9,300 = 928. 8880: line 6 = min(5,000, 2,000) = 2,000; 7 = 2,000; 8 = 25,000 (over 23,750 not over 25,500, single -> 0.2); 10 = 400; CLW 1 = 928, 2 = 0, 3 = 928; 12 = min(400, 928) = 400 -> s3 line 4.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 500000
+      },
+      "expect": {
+        "ira.line1a": {
+          "kind": "bool",
+          "value": false
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line8": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "ira.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line10": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 925000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 92800
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 92800
+        },
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 2,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 92800
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 92800
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 92800
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 40000
+        }
+      }
+    },
+    {
+      "id": "stage16.ira.i10",
+      "covers": [
+        "ira",
+        "f8606",
+        "person",
+        "s1",
+        "ssb",
+        "f8880",
+        "s3",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (IRA Deduction Worksheet, Social Security Benefits Worksheet, Tax Table), p590a, f8606, i8606 and f8880, by two independent agents that did not see the encoding; recorded after comparison. Facts: Single, aged 66 (born 1959), not covered. Wages $20,000; Social Security benefits (Form SSA-1099 box 5) $12,000. Traditional IRA contribution $3,000. Working (predictor B): Not covered, so the SSB Worksheet exception (i1040gi p.31: traditional IRA contribution AND covered by a plan -> Pub 590-A) does not apply. IRA WS: 1a No; age 66 -> 50 or older -> 7a = 8,000; 8 = 20,000; 10 = 20,000; 11 = 3,000; 12 = 3,000. SSB WS (p.32): 1 = 12,000; 2 = 6,000; 3 = 20,000 (line 1z); 4 = 0; 5 = 26,000; 6 = s1 lines 11-20 = 3,000; 7 = 23,000; 8 = 25,000; 9: 25,000 not less than 23,000 -> STOP, none taxable, 6b = 0. Line 9 = 20,000; AGI 17,000. Born 1959 -> line 12d box; std ded chart (p.35) single, 1 box = 17,750. Taxable 0; tax 0. 8880: 8 = 17,000 -> 0.5; 10 = 1,000; CLW 1 = 0 -> 3 = 0 -> stop, no credit.",
+      "inputs": {
+        "person[taxpayer].age65": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "ssb.benefits": 1200000,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 300000,
+        "person[taxpayer].ira_age50": true
+      },
+      "expect": {
+        "ira.line1a": {
+          "kind": "bool",
+          "value": false
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "ira.line8": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "ira.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line10": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s1.line26": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "ssb.line1": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "ssb.line2": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "ssb.line3": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "ssb.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ssb.line5": {
+          "kind": "money",
+          "cents": 2600000
+        },
+        "ssb.line6": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "ssb.line7": {
+          "kind": "money",
+          "cents": 2300000
+        },
+        "ssb.line8": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "ssb.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line6a": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1775000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line1a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f8880.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line3a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f8880.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line5a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f8880.line6a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line7": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8880.line8": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f8880.line9": {
+          "kind": "rate",
+          "num": 5,
+          "den": 10
+        },
+        "f8880.line10": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f8880.clw1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.clw3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8880.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line4": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.ira.both_kinds",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i7 (married filing jointly, neither covered by a workplace plan, traditional IRA contributions $8,000 and $7,000), with the spouse's contributions changed to $6,000 traditional and $1,000 Roth, keeping the spouse within the $7,000 limit. The traditional-and-Roth-on-a-joint-return gate is the first entry of person.ira_line11, which copies the contribution (an input through the traditional-IRA question), so its own entry decides each person's line 11; lines 12a, 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 4000000,
+        "person[spouse].w2[e0].box5": 4000000,
+        "person[spouse].w2[e0].box6": 58000,
+        "person[taxpayer].sav_trad": true,
+        "person[spouse].sav_trad": true,
+        "person[spouse].sav_roth": 100000,
+        "person[taxpayer].ira_trad": 800000,
+        "person[taxpayer].ira_age50": true,
+        "person[spouse].ira_trad": 600000,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].ira_line11": {
+          "kind": "refusal",
+          "gate": "ira.both_kinds",
+          "form": "Traditional and Roth IRA contributions on a joint return (Pub. 590-A)",
+          "remedy": "On a joint return where you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Line 20, \"If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "person[spouse].ira_line11": {
+          "kind": "refusal",
+          "gate": "ira.both_kinds",
+          "form": "Traditional and Roth IRA contributions on a joint return (Pub. 590-A)",
+          "remedy": "On a joint return where you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Line 20, \"If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "ira.line12a": {
+          "kind": "refusal",
+          "gate": "ira.both_kinds",
+          "form": "Traditional and Roth IRA contributions on a joint return (Pub. 590-A)",
+          "remedy": "On a joint return where you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Line 20, \"If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "ira.line20": {
+          "kind": "refusal",
+          "gate": "ira.both_kinds",
+          "form": "Traditional and Roth IRA contributions on a joint return (Pub. 590-A)",
+          "remedy": "On a joint return where you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Line 20, \"If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "ira.both_kinds",
+          "form": "Traditional and Roth IRA contributions on a joint return (Pub. 590-A)",
+          "remedy": "On a joint return where you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Line 20, \"If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.ira.kbh_short",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i7 (married filing jointly, neither covered, traditional IRA contributions $8,000 and $7,000, one spouse 50 or older), with the two Forms W-2 changed to wages of $6,000 and $5,000 (boxes 1, 3 and 5, with boxes 4 and 6 at 6.2% and 1.45%), so worksheet line 10 is $11,000, less than the $15,000 that applies with one spouse 50 or older. No Roth contributions, so the first gate is false and this second entry of person.ira_line11 decides each person's line 11 (the later over-compensation gate also holds, a different refusal); line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 600000,
+        "person[taxpayer].w2[e0].box5": 600000,
+        "person[taxpayer].w2[e0].box6": 8700,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 500000,
+        "person[spouse].w2[e0].box5": 500000,
+        "person[spouse].w2[e0].box6": 7250,
+        "person[taxpayer].sav_trad": true,
+        "person[spouse].sav_trad": true,
+        "person[taxpayer].ira_trad": 800000,
+        "person[taxpayer].ira_age50": true,
+        "person[spouse].ira_trad": 700000,
+        "s179.line10": null
+      },
+      "expect": {
+        "ira.line10": {
+          "kind": "money",
+          "cents": 1100000
+        },
+        "person[taxpayer].ira_line11": {
+          "kind": "refusal",
+          "gate": "ira.kbh_short",
+          "form": "IRA deduction on a joint return with little compensation (Pub. 590-A worksheet)",
+          "remedy": "On a joint return with line 10 of the IRA Deduction Worksheet under $14,000 ($15,000 or $16,000 with spouses age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 98, IRA Deduction Worksheet—Continued, Caution, \"stop here and use the worksheet in Pub. 590-A to figure your IRA deduction\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "person[spouse].ira_line11": {
+          "kind": "refusal",
+          "gate": "ira.kbh_short",
+          "form": "IRA deduction on a joint return with little compensation (Pub. 590-A worksheet)",
+          "remedy": "On a joint return with line 10 of the IRA Deduction Worksheet under $14,000 ($15,000 or $16,000 with spouses age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 98, IRA Deduction Worksheet—Continued, Caution, \"stop here and use the worksheet in Pub. 590-A to figure your IRA deduction\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "ira.line20": {
+          "kind": "refusal",
+          "gate": "ira.kbh_short",
+          "form": "IRA deduction on a joint return with little compensation (Pub. 590-A worksheet)",
+          "remedy": "On a joint return with line 10 of the IRA Deduction Worksheet under $14,000 ($15,000 or $16,000 with spouses age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 98, IRA Deduction Worksheet—Continued, Caution, \"stop here and use the worksheet in Pub. 590-A to figure your IRA deduction\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "ira.kbh_short",
+          "form": "IRA deduction on a joint return with little compensation (Pub. 590-A worksheet)",
+          "remedy": "On a joint return with line 10 of the IRA Deduction Worksheet under $14,000 ($15,000 or $16,000 with spouses age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 98, IRA Deduction Worksheet—Continued, Caution, \"stop here and use the worksheet in Pub. 590-A to figure your IRA deduction\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.person.ira_over_limit",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i9 (single, wages $30,000, not covered by a plan, traditional IRA contribution $5,000), with the contribution changed to $8,000, more than the $7,000 limit under age 50 but less than the $30,000 of compensation. The earlier gates (joint-return gates, the excess question) are false, so this fourth entry of person.ira_line11 decides its value; line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 800000,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].ira_line11": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_over_limit",
+          "form": "Excess IRA contributions (Form 5329 Part III, Pub. 590-A)",
+          "remedy": "Your traditional and Roth IRA contributions for 2025 are together more than $7,000 ($8,000 if age 50 or older), an excess contribution, which is outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 35, Excess Contributions, \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        },
+        "ira.line20": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_over_limit",
+          "form": "Excess IRA contributions (Form 5329 Part III, Pub. 590-A)",
+          "remedy": "Your traditional and Roth IRA contributions for 2025 are together more than $7,000 ($8,000 if age 50 or older), an excess contribution, which is outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 35, Excess Contributions, \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_over_limit",
+          "form": "Excess IRA contributions (Form 5329 Part III, Pub. 590-A)",
+          "remedy": "Your traditional and Roth IRA contributions for 2025 are together more than $7,000 ($8,000 if age 50 or older), an excess contribution, which is outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 35, Excess Contributions, \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.ira.over_comp",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i9 (single, not covered by a plan, traditional IRA contribution $5,000), with the Form W-2 wages changed from $30,000 to $4,000 (boxes 1, 3 and 5, with boxes 4 and 6 at 6.2% and 1.45%), so the $5,000 contribution is more than worksheet line 10. The contribution is within the $7,000 limit and the earlier gates are false, so this fifth entry of person.ira_line11 decides its value; line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 500000,
+        "s179.line10": null
+      },
+      "expect": {
+        "ira.line10": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].ira_line11": {
+          "kind": "refusal",
+          "gate": "ira.over_comp",
+          "form": "Excess IRA contributions (Form 5329 Part III, Pub. 590-A)",
+          "remedy": "The traditional and Roth IRA contributions for 2025 on this return are more than the compensation on line 10 of the IRA Deduction Worksheet, an excess contribution, which is outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 35, Excess Contributions, \"Your taxable compensation for the year\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        },
+        "ira.line20": {
+          "kind": "refusal",
+          "gate": "ira.over_comp",
+          "form": "Excess IRA contributions (Form 5329 Part III, Pub. 590-A)",
+          "remedy": "The traditional and Roth IRA contributions for 2025 on this return are more than the compensation on line 10 of the IRA Deduction Worksheet, an excess contribution, which is outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 35, Excess Contributions, \"Your taxable compensation for the year\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "ira.over_comp",
+          "form": "Excess IRA contributions (Form 5329 Part III, Pub. 590-A)",
+          "remedy": "The traditional and Roth IRA contributions for 2025 on this return are more than the compensation on line 10 of the IRA Deduction Worksheet, an excess contribution, which is outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 35, Excess Contributions, \"Your taxable compensation for the year\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.ira.special",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i9 (single, wages $30,000, not covered by a plan, traditional IRA contribution $5,000), with the IRA special-cases question answered Yes. The earlier gates of person.ira_line11 are false, so its sixth entry decides its value; line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 500000,
+        "ira.special": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].ira_line11": {
+          "kind": "refusal",
+          "gate": "ira.special_gate",
+          "form": "IRA deduction special cases (Pub. 590-A)",
+          "remedy": "Nonqualified deferred compensation in box 1 (Form W-2 box 11 or code Z, Form 1099-MISC box 15), fellowship or stipend payments not on a Form W-2, repayments of qualified reservist distributions and difficulty of care payments change the IRA compensation or contribution limits; they are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Line 20, \"don’t include that income on line 8 of the worksheet\" and \"Don’t include any repayments of qualified reservist distributions\"; p590a p. 6, What Is Compensation?, \"certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "ira.line20": {
+          "kind": "refusal",
+          "gate": "ira.special_gate",
+          "form": "IRA deduction special cases (Pub. 590-A)",
+          "remedy": "Nonqualified deferred compensation in box 1 (Form W-2 box 11 or code Z, Form 1099-MISC box 15), fellowship or stipend payments not on a Form W-2, repayments of qualified reservist distributions and difficulty of care payments change the IRA compensation or contribution limits; they are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Line 20, \"don’t include that income on line 8 of the worksheet\" and \"Don’t include any repayments of qualified reservist distributions\"; p590a p. 6, What Is Compensation?, \"certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "ira.special_gate",
+          "form": "IRA deduction special cases (Pub. 590-A)",
+          "remedy": "Nonqualified deferred compensation in box 1 (Form W-2 box 11 or code Z, Form 1099-MISC box 15), fellowship or stipend payments not on a Form W-2, repayments of qualified reservist distributions and difficulty of care payments change the IRA compensation or contribution limits; they are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 95, Line 20, \"don’t include that income on line 8 of the worksheet\" and \"Don’t include any repayments of qualified reservist distributions\"; p590a p. 6, What Is Compensation?, \"certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.ira.excluded_income",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i3 (single, wages $85,000, covered by a workplace plan, traditional IRA contribution $7,000), with the excluded foreign or possession income question answered Yes; the gate needs someone covered by a plan, which this filer is. The earlier gates of person.ira_line11 are false, so its seventh entry decides its value; line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "sa.excluded_income": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8500000,
+        "person[taxpayer].w2[emp_a].box5": 8500000,
+        "person[taxpayer].w2[emp_a].box6": 123250,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 700000,
+        "person[taxpayer].ira_work_plan": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].ira_line11": {
+          "kind": "refusal",
+          "gate": "ira.excl_gate",
+          "form": "IRA deduction with excluded foreign or possession income (Pub. 590-A)",
+          "remedy": "With a retirement plan coverage and Form 2555 (or excluded income from Form 4563 or Puerto Rico), the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 96, Were You Covered by a Retirement Plan?, \"If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "ira.line20": {
+          "kind": "refusal",
+          "gate": "ira.excl_gate",
+          "form": "IRA deduction with excluded foreign or possession income (Pub. 590-A)",
+          "remedy": "With a retirement plan coverage and Form 2555 (or excluded income from Form 4563 or Puerto Rico), the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 96, Were You Covered by a Retirement Plan?, \"If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "ira.excl_gate",
+          "form": "IRA deduction with excluded foreign or possession income (Pub. 590-A)",
+          "remedy": "With a retirement plan coverage and Form 2555 (or excluded income from Form 4563 or Puerto Rico), the IRA deduction is figured with Pub. 590-A, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 96, Were You Covered by a Retirement Plan?, \"If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.ira.combat_pay",
+      "covers": [
+        "person:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i9 (single, wages $30,000, not covered by a plan, traditional IRA contribution $5,000), with the nontaxable combat pay question answered Yes. The earlier gates of person.ira_line11 are false, so its eighth entry decides its value; line 20 and Schedule 1 line 20 carry the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "s8812.combat_pay": true,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 500000,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].ira_line11": {
+          "kind": "refusal",
+          "gate": "ira.combat_gate",
+          "form": "Nontaxable combat pay in IRA compensation (IRA Deduction Worksheet, line 8)",
+          "remedy": "Nontaxable combat pay counts as compensation for the IRA deduction; it is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 98, IRA Deduction Worksheet—Continued, line 8, \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "ira.line20": {
+          "kind": "refusal",
+          "gate": "ira.combat_gate",
+          "form": "Nontaxable combat pay in IRA compensation (IRA Deduction Worksheet, line 8)",
+          "remedy": "Nontaxable combat pay counts as compensation for the IRA deduction; it is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 98, IRA Deduction Worksheet—Continued, line 8, \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "ira.combat_gate",
+          "form": "Nontaxable combat pay in IRA compensation (IRA Deduction Worksheet, line 8)",
+          "remedy": "Nontaxable combat pay counts as compensation for the IRA deduction; it is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 98, IRA Deduction Worksheet—Continued, line 8, \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.ira.dist",
+      "covers": [
+        "person:refuse",
+        "f8606:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i3 (single, wages $85,000, covered by a workplace plan, traditional IRA contribution $7,000 of which $2,800 deductible and $4,200 nondeductible), with the question on a 2025 distribution or Roth conversion answered Yes. Two lines carry this gate on their own: the person's IRA deduction (worksheet line 12 for this person, read from person.ira_line12, which carries no gate) and Form 8606 line 14 (a copy of line 3, the nondeductible amount, read from person.ira_line12 and line 11, not from the deduction); each line's own entry decides its value; line 20 and Schedule 1 line 20 carry the refusal through the deduction. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8500000,
+        "person[taxpayer].w2[emp_a].box5": 8500000,
+        "person[taxpayer].w2[emp_a].box6": 123250,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 700000,
+        "person[taxpayer].ira_work_plan": true,
+        "person[taxpayer].ira_dist": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].ira_line12": {
+          "kind": "money",
+          "cents": 280000
+        },
+        "person[taxpayer].ira_deduction": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_dist_gate",
+          "form": "Nondeductible IRA contributions with a 2025 distribution or conversion (Form 8606 lines 4 to 13, Pub. 590-B)",
+          "remedy": "With nondeductible traditional IRA contributions for 2025 and a 2025 traditional IRA distribution or Roth conversion, the taxable part of the distribution is figured on Form 8606 lines 4 to 13 (Pub. 590-B Worksheet 1-1), which this tool does not prepare.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 15, Both contributions for 2025 and distributions in 2025, \"you must figure the taxable part of the traditional IRA distribution before you can figure your modified AGI\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8606[form].line3": {
+          "kind": "money",
+          "cents": 420000
+        },
+        "person[taxpayer].f8606[form].line14": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8606[form].dist",
+          "form": "Form 8606 lines 4 to 13 (a 2025 traditional IRA distribution or Roth conversion with nondeductible contributions)",
+          "remedy": "With nondeductible contributions and a 2025 distribution from a traditional IRA or a Roth IRA conversion, the nontaxable part is figured on Form 8606 lines 4 to 13, which this tool does not prepare.",
+          "cite": {
+            "doc": "f8606",
+            "locator": "Form 8606 (2025), Part I, \"In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?\" and \"Go to line 4\"",
+            "revision": "2025",
+            "snapshot": "748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae",
+            "tax_year": 2025
+          }
+        },
+        "ira.line20": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_dist_gate",
+          "form": "Nondeductible IRA contributions with a 2025 distribution or conversion (Form 8606 lines 4 to 13, Pub. 590-B)",
+          "remedy": "With nondeductible traditional IRA contributions for 2025 and a 2025 traditional IRA distribution or Roth conversion, the taxable part of the distribution is figured on Form 8606 lines 4 to 13 (Pub. 590-B Worksheet 1-1), which this tool does not prepare.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 15, Both contributions for 2025 and distributions in 2025, \"you must figure the taxable part of the traditional IRA distribution before you can figure your modified AGI\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_dist_gate",
+          "form": "Nondeductible IRA contributions with a 2025 distribution or conversion (Form 8606 lines 4 to 13, Pub. 590-B)",
+          "remedy": "With nondeductible traditional IRA contributions for 2025 and a 2025 traditional IRA distribution or Roth conversion, the taxable part of the distribution is figured on Form 8606 lines 4 to 13 (Pub. 590-B Worksheet 1-1), which this tool does not prepare.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 15, Both contributions for 2025 and distributions in 2025, \"you must figure the taxable part of the traditional IRA distribution before you can figure your modified AGI\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.ira.deduct_less",
+      "covers": [
+        "ira:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.ira.i9 (single, wages $30,000, not covered by a plan, traditional IRA contribution $5,000, all deductible), with the question whether to deduct less than the most allowed answered Yes. The total of the persons' deductions is $5,000 and carries no gate, so line 20's own entry decides its value; Schedule 1 line 20 carries the same refusal through it. The refused values are the evaluator's.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 500000,
+        "ira.deduct_less": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "ira.total": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "ira.line20": {
+          "kind": "refusal",
+          "gate": "ira.less_gate",
+          "form": "An IRA deduction smaller than the most you can deduct (Form 8606)",
+          "remedy": "Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool takes the most you can deduct.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 98, IRA Deduction Worksheet—Continued, line 12, \"Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "ira.less_gate",
+          "form": "An IRA deduction smaller than the most you can deduct (Form 8606)",
+          "remedy": "Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool takes the most you can deduct.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 98, IRA Deduction Worksheet—Continued, line 12, \"Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.mut.ira_roth_only",
+      "covers": [
+        "stage16:mutation"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "SC-01 of the Stage 16 mutation scenarios. Single, aged 40. Wages $50,000, covered by a plan at work. Contributed $7,000 to a **Roth** IRA for 2025. No traditional IRA contribution. No excess contribution, no recharacterization, no IRA distribution. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500
+      },
+      "expect": {
+        "ira.line1a": {
+          "kind": "bool",
+          "value": false
+        },
+        "ira.line2a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line6a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.mut.ira_alimony_comp",
+      "covers": [
+        "stage16:mutation"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "SC-02 of the Stage 16 mutation scenarios. Single, aged 45. Wages $3,000; not covered by a plan at work. Received $12,000 of alimony in 2025 from a former spouse under a divorce decree signed in 2017 and never modified. All of it is alimony: no child support, one agreement, one payer, no recapture. Paid no alimony. Contributed $5,000 to a traditional IRA for 2025. No Roth contribution, no IRA distribution. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 300000,
+        "person[taxpayer].w2[emp_a].box4": 18600,
+        "person[taxpayer].w2[emp_a].box5": 300000,
+        "person[taxpayer].w2[emp_a].box6": 4350,
+        "s1.alimony": true,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 500000,
+        "s1.alimony_received": 1200000
+      },
+      "expect": {
+        "ira.line10": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line8": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "s1.line19a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line19b_notice": {
+          "kind": "bool",
+          "value": false
+        },
+        "s1.line19c_notice": {
+          "kind": "bool",
+          "value": false
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1.line2a": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "s1.line2b_notice": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage16.mut.ira_trad_and_roth",
+      "covers": [
+        "stage16:mutation"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "SC-04 of the Stage 16 mutation scenarios. Single, aged 30. Wages $60,000; not covered by a plan at work. For 2025 contributed $3,000 to a traditional IRA and $2,000 to a Roth IRA (together within the annual limit; no excess, no recharacterization). No IRA distribution or conversion. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].sav_roth": 200000,
+        "person[taxpayer].ira_trad": 300000
+      },
+      "expect": {
+        "ira.line10": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5700000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "stage16.mut.ira_kbh_none_edge",
+      "covers": [
+        "stage16:mutation"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "SC-05 of the Stage 16 mutation scenarios. Married filing jointly. You: aged 40, wages $9,000. Spouse: aged 38, wages $5,000. Neither is covered by a plan at work. For 2025 you contributed $2,000 and your spouse $1,000 to traditional IRAs. No Roth contributions, no IRA distributions, no other income. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 900000,
+        "person[taxpayer].w2[e0].box4": 55800,
+        "person[taxpayer].w2[e0].box5": 900000,
+        "person[taxpayer].w2[e0].box6": 13050,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 500000,
+        "person[spouse].w2[e0].box4": 31000,
+        "person[spouse].w2[e0].box5": 500000,
+        "person[spouse].w2[e0].box6": 7250,
+        "person[taxpayer].sav_trad": true,
+        "person[spouse].sav_trad": true,
+        "person[taxpayer].ira_trad": 200000,
+        "person[spouse].ira_trad": 100000
+      },
+      "expect": {
+        "ira.line10": {
+          "kind": "money",
+          "cents": 1400000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "ira.line11b": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "ira.line12b": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line7b": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "stage16.mut.ira_kbh_one_edge",
+      "covers": [
+        "stage16:mutation"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "SC-06 of the Stage 16 mutation scenarios. Married filing jointly. You: aged 52, wages $9,000. Spouse: aged 45, wages $6,000. Neither is covered by a plan at work. For 2025 you contributed $2,000 and your spouse $1,000 to traditional IRAs. No Roth contributions, no IRA distributions, no other income. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 900000,
+        "person[taxpayer].w2[e0].box4": 55800,
+        "person[taxpayer].w2[e0].box5": 900000,
+        "person[taxpayer].w2[e0].box6": 13050,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 600000,
+        "person[spouse].w2[e0].box4": 37200,
+        "person[spouse].w2[e0].box5": 600000,
+        "person[spouse].w2[e0].box6": 8700,
+        "person[taxpayer].sav_trad": true,
+        "person[spouse].sav_trad": true,
+        "person[taxpayer].ira_trad": 200000,
+        "person[taxpayer].ira_age50": true,
+        "person[spouse].ira_trad": 100000
+      },
+      "expect": {
+        "ira.line10": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "ira.line11b": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "ira.line12b": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "ira.line7b": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "stage16.mut.ira_kbh_both_edge",
+      "covers": [
+        "stage16:mutation"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "SC-07 of the Stage 16 mutation scenarios. Married filing jointly. You: aged 55, wages $10,000. Spouse: aged 52, wages $6,000. Neither is covered by a plan at work. For 2025 you contributed $2,000 and your spouse $1,000 to traditional IRAs. No Roth contributions, no IRA distributions, no other income. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 1000000,
+        "person[taxpayer].w2[e0].box4": 62000,
+        "person[taxpayer].w2[e0].box5": 1000000,
+        "person[taxpayer].w2[e0].box6": 14500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 600000,
+        "person[spouse].w2[e0].box4": 37200,
+        "person[spouse].w2[e0].box5": 600000,
+        "person[spouse].w2[e0].box6": 8700,
+        "person[taxpayer].sav_trad": true,
+        "person[spouse].sav_trad": true,
+        "person[taxpayer].ira_trad": 200000,
+        "person[taxpayer].ira_age50": true,
+        "person[spouse].ira_trad": 100000,
+        "person[spouse].ira_age50": true
+      },
+      "expect": {
+        "ira.line10": {
+          "kind": "money",
+          "cents": 1600000
+        },
+        "ira.line11a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "ira.line11b": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "ira.line12b": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "ira.line7b": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "stage16.mut.ira_joint_full_edge",
+      "covers": [
+        "stage16:mutation"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "SC-08 of the Stage 16 mutation scenarios. Married filing jointly; both aged 39. The return is figured in dollars and cents: amounts are **not** rounded to whole dollars. You: wages $70,000.00, covered by a plan at work, contributed $7,000 to a traditional IRA for 2025. Spouse: wages $55,999.50, not covered by a plan, no IRA contribution. No Roth contributions, no IRA distributions, no other income or adjustments. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 7000000,
+        "person[taxpayer].w2[e0].box4": 434000,
+        "person[taxpayer].w2[e0].box5": 7000000,
+        "person[taxpayer].w2[e0].box6": 101500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5599950,
+        "person[spouse].w2[e0].box4": 347197,
+        "person[spouse].w2[e0].box5": 5599950,
+        "person[spouse].w2[e0].box6": 81199,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 700000,
+        "person[taxpayer].ira_work_plan": true
+      },
+      "expect": {
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line1a": {
+          "kind": "bool",
+          "value": true
+        },
+        "ira.line1b": {
+          "kind": "bool",
+          "value": false
+        },
+        "ira.line2a": {
+          "kind": "money",
+          "cents": 14600000
+        },
+        "ira.line3": {
+          "kind": "money",
+          "cents": 12599950
+        },
+        "ira.line5": {
+          "kind": "money",
+          "cents": 12599950
+        },
+        "ira.line6a": {
+          "kind": "money",
+          "cents": 2000050
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 700000
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.ira.se_capital",
+      "covers": [
+        "ira:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage14.sc.basic (a single filer with one Schedule C) with a $3,000 traditional IRA contribution, no plan coverage, and Yes to the question whether the Schedule C income is from a business in which personal services are not a material income-producing factor (p590a pp. 6–7, Self-employment income); IRA Deduction Worksheet line 9 carries the refusal and Schedule 1 line 20 reads it. The refused values are the evaluator's.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 6000000,
+        "person[taxpayer].sc[shop].line2": 100000,
+        "person[taxpayer].sc[shop].line6": 50000,
+        "person[taxpayer].sc[shop].line8": 120000,
+        "person[taxpayer].sc[shop].line22": 80000,
+        "person[taxpayer].sc[shop].meals_50": 60000,
+        "person[taxpayer].sc[shop].meals_80": 100000,
+        "person[taxpayer].sc[shop].line25": 40000,
+        "person[taxpayer].sc[shop].line48": 25000,
+        "person[taxpayer].sc[shop].line35": 200000,
+        "person[taxpayer].sc[shop].line36": 1000000,
+        "person[taxpayer].sc[shop].line41": 300000,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 300000,
+        "ira.se_capital": true
+      },
+      "expect": {
+        "ira.line9": {
+          "kind": "refusal",
+          "gate": "ira.se_capital_gate",
+          "form": "IRA compensation from self-employment (Pub. 590-A)",
+          "remedy": "Self-employment income counts as IRA compensation only where your personal services are a material income-producing factor; Schedule C income mainly from investments or property is outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "pp. 6–7, Self-employment income, \"earnings from your trade or business (provided your personal services are a material income-producing factor)\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        },
+        "s1.line20": {
+          "kind": "refusal",
+          "gate": "ira.se_capital_gate",
+          "form": "IRA compensation from self-employment (Pub. 590-A)",
+          "remedy": "Self-employment income counts as IRA compensation only where your personal services are a material income-producing factor; Schedule C income mainly from investments or property is outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "pp. 6–7, Self-employment income, \"earnings from your trade or business (provided your personal services are a material income-producing factor)\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "audit.ira.covered_age50_single_phaseout",
+      "covers": [
+        "ira",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage16.ira.i5 with wages of $85,000: a single filer age 50 or older, covered by a plan at work, contributing $8,000. Line 2 is $89,000 and line 5 (modified AGI) $85,000, so line 6 is $4,000; the column takes 80% for a person age 50 or older ($3,200), already a multiple of $10 and at least $200, so line 7 is $3,200, and the deduction is the smallest of line 7, line 10 (compensation) and line 11 (the $8,000 contributed): $3,200 on Schedule 1 line 20. Predicted from i1040gi pp. 97-98 (IRA Deduction Worksheet, lines 2, 6 and 7, 'Multiply line 6 by 70% (0.70) (or by 80% (0.80) in the column for the IRA of a person who is age 50 or older at the end of 2025)'); no independent human hand-work is claimed.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8500000,
+        "person[taxpayer].w2[emp_a].box4": 550560,
+        "person[taxpayer].w2[emp_a].box5": 8880000,
+        "person[taxpayer].w2[emp_a].box6": 128760,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 800000,
+        "person[taxpayer].ira_age50": true,
+        "person[taxpayer].ira_work_plan": true
+      },
+      "expect": {
+        "person[taxpayer].ira_line6": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].ira_prod": {
+          "kind": "money",
+          "cents": 320000
+        },
+        "person[taxpayer].ira_rounded": {
+          "kind": "money",
+          "cents": 320000
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 320000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 320000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 320000
+        }
+      }
+    },
+    {
+      "id": "audit.ira.covered_age50_joint_phaseout",
+      "covers": [
+        "ira",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage16.ira.i8 with the taxpayer age 50 or older contributing $8,000: a joint return, both spouses covered by a plan at work, wages $70,000 and $60,000. Line 2 is $146,000 in both columns and line 5 (modified AGI) $130,000, so line 6 is $16,000 in both; the taxpayer's column takes 40% ($6,400) and the spouse's 35% ($5,600), both multiples of $10 and at least $200, so lines 7a and 7b are $6,400 and $5,600; the deductions are the smallest of line 7, compensation and the contributions ($8,000 and $7,000): $6,400 and $5,600, $12,000 on Schedule 1 line 20. Predicted from i1040gi pp. 97-98 (IRA Deduction Worksheet, line 7, 'Multiply line 6 by 35% (0.35) (or by 40% (0.40) in the column for the IRA of a person who is age 50 or older at the end of 2025)'); no independent human hand-work is claimed.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 7000000,
+        "person[taxpayer].w2[e0].box4": 434000,
+        "person[taxpayer].w2[e0].box5": 7000000,
+        "person[taxpayer].w2[e0].box6": 101500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 6000000,
+        "person[spouse].w2[e0].box4": 372000,
+        "person[spouse].w2[e0].box5": 6000000,
+        "person[spouse].w2[e0].box6": 87000,
+        "person[taxpayer].sav_trad": true,
+        "person[spouse].sav_trad": true,
+        "person[taxpayer].ira_trad": 800000,
+        "person[taxpayer].ira_age50": true,
+        "person[taxpayer].ira_work_plan": true,
+        "person[spouse].ira_trad": 700000,
+        "person[spouse].ira_work_plan": true
+      },
+      "expect": {
+        "person[taxpayer].ira_line6": {
+          "kind": "money",
+          "cents": 1600000
+        },
+        "person[taxpayer].ira_prod": {
+          "kind": "money",
+          "cents": 640000
+        },
+        "person[spouse].ira_prod": {
+          "kind": "money",
+          "cents": 560000
+        },
+        "person[taxpayer].ira_rounded": {
+          "kind": "money",
+          "cents": 640000
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 640000
+        },
+        "ira.line7b": {
+          "kind": "money",
+          "cents": 560000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 640000
+        },
+        "ira.line12b": {
+          "kind": "money",
+          "cents": 560000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 1200000
+        }
+      }
+    },
+    {
+      "id": "stage19.mut.ira_single_full_edge",
+      "covers": [
+        "ira",
+        "person",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16 return I3 (single, aged 40, covered by a plan at work, traditional IRA contribution $7,000) with wages $78,999.50; the return is figured in dollars and cents. IRA Deduction Worksheet (i1040gi p. 97): line 2 $89,000; line 3 $78,999.50; line 4 $0; line 5 $78,999.50; line 6 = $89,000 - $78,999.50 = $10,000.50. \"If single ... and the result is $10,000 or more, enter the applicable amount below on line 7 ... $7,000 if under age 50\": line 7 $7,000 (not 70% of line 6, $7,000.35 rounded up to $7,010). Line 8 and 10 $78,999.50; line 11 $7,000; line 12 the smallest of 7, 10, 11 = $7,000; Schedule 1 line 20 $7,000.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7899950,
+        "person[taxpayer].w2[emp_a].box4": 489797,
+        "person[taxpayer].w2[emp_a].box5": 7899950,
+        "person[taxpayer].w2[emp_a].box6": 114549,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 700000,
+        "person[taxpayer].ira_work_plan": true
+      },
+      "expect": {
+        "ira.line2a": {
+          "kind": "money",
+          "cents": 8900000
+        },
+        "ira.line5": {
+          "kind": "money",
+          "cents": 7899950
+        },
+        "ira.line6a": {
+          "kind": "money",
+          "cents": 1000050
+        },
+        "ira.line7a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "ira.line12a": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "s1.line20": {
+          "kind": "money",
+          "cents": 700000
+        }
+      }
+    },
+    {
+      "id": "stage21.f1.lower_bound_still_decides",
+      "covers": [
+        "ira"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Companion to finding F1: the legitimate use of sum_over's lower bound is kept. classm.f8889.1.deepseek with person[taxpayer].ira_work_plan true and person[spouse].ira_work_plan withheld. The spouse's entry is unknown only through an unanswered input that can only add to the count (no refusal gate awaits it), so ira.cov_count is unknown with lower bound 1 and ira.anyone_covered (ira.cov_count > 0) is decided true. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "div.any": true,
+        "f1040.status": "mfj",
+        "ftc.taxes": 24100,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "household.married": true,
+        "sa.gifts": true,
+        "sa.line5a": 209800,
+        "sa.line5b": 216200,
+        "sa.line8a": 4000000,
+        "sa.line11": 190500,
+        "sd.distributions": 266100,
+        "sli.interest": 4300,
+        "person[taxpayer].ira_work_plan": true,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "$interest": [
+          "bank_a",
+          "bank_b"
+        ],
+        "interest[bank_a].amount": 314200,
+        "$sales": [
+          "s1",
+          "s2"
+        ],
+        "sales[s1].box": "F",
+        "sales[s1].correct_basis": 2702000,
+        "sales[s2].box": "F",
+        "sales[s2].correct_basis": 1739900,
+        "$dependent": [
+          "dep_a",
+          "dep_b",
+          "dep_c"
+        ],
+        "dependent[dep_a].relationship": "household_member",
+        "dependent[dep_a].age": 25,
+        "dependent[dep_a].qr_all_year": true,
+        "dependent[dep_a].gross_income": 794300,
+        "dependent[dep_b].joint_return": true,
+        "dependent[dep_b].supported": true,
+        "dependent[dep_c].age": 14,
+        "dependent[dep_c].months": 12,
+        "dependent[dep_c].citizen": false,
+        "$w2@person[spouse]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[spouse].w2[emp_b].box1": 17981900,
+        "person[spouse].w2[emp_b].box2": 5394600,
+        "person[spouse].w2[emp_b].box3": 17610000,
+        "person[spouse].w2[emp_b].box4": 1091800,
+        "person[spouse].w2[emp_b].box5": 17981900,
+        "person[spouse].w2[emp_b].box6": 260700,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[spouse].f8889[hsa].line2": 693200,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].age55": true,
+        "person[spouse].f8889[hsa].dec_coverage": "self_only",
+        "person[spouse].x_hsa_value": 834100,
+        "person[spouse].ira_work_plan": null
+      },
+      "expect": {
+        "ira.anyone_covered": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].ira_cov": {
+          "kind": "bool",
+          "value": true
+        },
+        "sd.screen": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    }
+  ]
+}

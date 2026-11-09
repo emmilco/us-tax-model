@@ -5,7 +5,6 @@ The candidates are the fixture cases (fixtures/<year>/*.json) whose `expect` ass
 line; they are evaluated in one `eval --batch` run and the case whose reading shows the most
 nonzero values is shown: the line's value, then the value of every line its reading names.
 """
-import glob
 import json
 import subprocess
 import sys
@@ -17,19 +16,21 @@ sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
 
 from reading import STATUS_WORDS, dollars  # noqa: E402
+import fixture_inputs  # noqa: E402
 
-FIXTURES = ROOT / "fixtures" / Y
 ENGINE = ROOT / "engine" / "dist" / "main.js"
 
 
+_CASES = None
+
+
 def cases():
-    out = []
-    for f in sorted(glob.glob(str(FIXTURES / "*.json"))):
-        d = json.loads(Path(f).read_text(encoding="utf-8"))
-        for c in d.get("cases", []):
-            if "inputs" in c and "expect" in c:
-                out.append(c)
-    return out
+    """The year's federal fixture cases that state expected values, inputs resolved as the engine evaluates them
+    (fixture_inputs.load_cases: parameters and test-data defaults)."""
+    global _CASES
+    if _CASES is None:
+        _CASES = [c for c in fixture_inputs.load_cases(Y) if "expect" in c]
+    return _CASES
 
 
 def value_text(v):

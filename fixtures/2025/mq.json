@@ -1,0 +1,53 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage14.veh.2025_mq_nobonus",
+      "covers": [
+        "scveh",
+        "mq"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a car placed in service in October 2025, the only property placed in service (so the mid-quarter convention applies: 100% of the bases in the fourth quarter), no special allowance, 100% business use, cost $30,000: line 7 $12,200; line 17 $12,200; line 18 $30,000; line 19 $30,000 x 5.00% (Table A-5, 5-year, year 1) = $1,500; line 20 $1,500.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "rides"
+        ],
+        "person[taxpayer].sc[rides].line1": 10000000,
+        "$scveh@person[taxpayer].sc[rides]": [
+          "car"
+        ],
+        "person[taxpayer].sc[rides].scveh[car].method": "actual",
+        "person[taxpayer].sc[rides].scveh[car].owned": true,
+        "person[taxpayer].sc[rides].scveh[car].miles_business": 5000,
+        "person[taxpayer].sc[rides].scveh[car].passenger": true,
+        "person[taxpayer].sc[rides].scveh[car].bonus_choice": "none",
+        "person[taxpayer].sc[rides].scveh[car].quarter": "q4",
+        "person[taxpayer].sc[rides].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[rides].scveh[car].cost": 3000000
+      },
+      "expect": {
+        "mq.applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].sc[rides].scveh[car].line7": {
+          "kind": "money",
+          "cents": 1220000
+        },
+        "person[taxpayer].sc[rides].scveh[car].line19": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "person[taxpayer].sc[rides].scveh[car].line20": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "person[taxpayer].sc[rides].line13": {
+          "kind": "money",
+          "cents": 150000
+        }
+      }
+    }
+  ]
+}

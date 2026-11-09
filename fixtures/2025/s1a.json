@@ -1,0 +1,2968 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage12.tips.one_employer",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $40,000; one employer, $8,000 of qualified tips (Form W-2 box 7). Line 3 $40,000; 4a $8,000, 4b $0, 4c $8,000; line 7 $8,000; line 10 = $40,000 - $150,000 is zero or less, so line 13 = line 7 = $8,000; line 38 $8,000; Form 1040 line 13b $8,000; line 14 = $15,750 + $8,000 = $23,750; line 15 = $40,000 - $23,750 = $16,250.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 800000
+      },
+      "expect": {
+        "s1a.line3": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "s1a.line4a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "s1a.line4b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line4c": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "s1a.line7": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "s1a.line38": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 2375000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1625000
+        }
+      }
+    },
+    {
+      "id": "stage12.tips.two_employers",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $60,000; two employers, $9,000 and $4,500 of qualified tips. Line 4a is -0- with more than one employer; the worksheet column (d) total $13,500 goes on line 4c; line 7 $13,500; line 10 zero or less; line 13 $13,500.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0",
+          "emp1"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 900000,
+        "person[taxpayer].tipjob[emp1].qualified": true,
+        "person[taxpayer].tipjob[emp1].amount": 450000
+      },
+      "expect": {
+        "s1a.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line4c": {
+          "kind": "money",
+          "cents": 1350000
+        },
+        "s1a.line7": {
+          "kind": "money",
+          "cents": 1350000
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 1350000
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 1350000
+        }
+      }
+    },
+    {
+      "id": "stage12.tips.cap",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $80,000; one employer, $30,000 of qualified tips. Line 7 = smaller of $30,000 or $25,000 = $25,000; line 13 $25,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 3000000
+      },
+      "expect": {
+        "s1a.line6": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "s1a.line7": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 2500000
+        }
+      }
+    },
+    {
+      "id": "stage12.tips.phaseout",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $163,500; one employer, $20,000 of tips. Line 10 = $163,500 - $150,000 = $13,500; line 11 = 13 (13.5 decreased to 13); line 12 = 13 x $100 = $1,300; line 13 = $20,000 - $1,300 = $18,700.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 16350000,
+        "person[taxpayer].w2[emp_a].box4": 1013700,
+        "person[taxpayer].w2[emp_a].box5": 16350000,
+        "person[taxpayer].w2[emp_a].box6": 237075,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 2000000
+      },
+      "expect": {
+        "s1a.line10": {
+          "kind": "money",
+          "cents": 1350000
+        },
+        "s1a.line12": {
+          "kind": "money",
+          "cents": 130000
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 1870000
+        }
+      }
+    },
+    {
+      "id": "stage12.tips.phaseout_floor",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $200,000; $2,000 of tips. Line 10 $50,000; line 11 50; line 12 $5,000; line 13 = $2,000 - $5,000, zero or less, -0-.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 20000000,
+        "person[taxpayer].w2[emp_a].box4": 1091820,
+        "person[taxpayer].w2[emp_a].box5": 20000000,
+        "person[taxpayer].w2[emp_a].box6": 290000,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 200000
+      },
+      "expect": {
+        "s1a.line12": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line38": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage12.tips.boundary_under",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $150,999.99; $5,000 of tips. Line 10 $999.99; line 11 = 0 (0.99999 decreased to 0); line 12 $0; line 13 $5,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 15099999,
+        "person[taxpayer].w2[emp_a].box4": 936200,
+        "person[taxpayer].w2[emp_a].box5": 15099999,
+        "person[taxpayer].w2[emp_a].box6": 218950,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 500000
+      },
+      "expect": {
+        "s1a.line10": {
+          "kind": "money",
+          "cents": 99999
+        },
+        "s1a.line12": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 500000
+        }
+      }
+    },
+    {
+      "id": "stage12.tips.boundary_at",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $151,000; $5,000 of tips. Line 10 $1,000; line 11 = 1; line 12 $100; line 13 $4,900.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 15100000,
+        "person[taxpayer].w2[emp_a].box4": 936200,
+        "person[taxpayer].w2[emp_a].box5": 15100000,
+        "person[taxpayer].w2[emp_a].box6": 218950,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 500000
+      },
+      "expect": {
+        "s1a.line10": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s1a.line12": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 490000
+        }
+      }
+    },
+    {
+      "id": "stage12.tips.no_valid_ssn",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $40,000; $8,000 of tips, but no SSN valid for employment: Part II is filled out only with a valid SSN, so line 13 is $0 and line 38 $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "person[taxpayer].work_ssn": false,
+        "s1a.tips": true
+      },
+      "expect": {
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line38": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage12.refuse.tips_mixed",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $40,000; one employer where not all the tips were qualified tips (for example tips in an occupation not on the list): splitting is outside this tool, refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].tipjob[emp0].mixed",
+          "form": "Qualified tips from an employer where some tips were not qualified tips",
+          "remedy": "Splitting one employer's reported tips between qualified and nonqualified tips is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 103, \"If you received tips as an employee in more than one occupation for the same employer, only those tips that were received in an occupation on the list ... are considered qualified tips. Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage12.ot.premium",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $70,000; one FLSA-eligible employer, statement shows a $6,000 FLSA Overtime Premium (method 1). Line 14a $6,000; 14b $0; 14c $6,000; line 15 = smaller of $6,000 or $12,500 = $6,000; line 18 zero or less; line 21 $6,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7000000,
+        "person[taxpayer].w2[emp_a].box4": 434000,
+        "person[taxpayer].w2[emp_a].box5": 7000000,
+        "person[taxpayer].w2[emp_a].box6": 101500,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "premium",
+        "person[taxpayer].otjob[ot0].statement": 600000
+      },
+      "expect": {
+        "s1a.line14a": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line14c": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line15": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 600000
+        }
+      }
+    },
+    {
+      "id": "stage12.ot.time_and_half_total",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: instructions Example 1: $15,000 paid for overtime hours at time-and-a-half; method 2 divides by 3: $5,000. Wages $65,000; line 21 $5,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6500000,
+        "person[taxpayer].w2[emp_a].box4": 403000,
+        "person[taxpayer].w2[emp_a].box5": 6500000,
+        "person[taxpayer].w2[emp_a].box6": 94250,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "total_time_and_half",
+        "person[taxpayer].otjob[ot0].statement": 1500000
+      },
+      "expect": {
+        "s1a.line14a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 500000
+        }
+      }
+    },
+    {
+      "id": "stage12.ot.double_premium",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: instructions Example 2: double time, pay stub shows $10,000 of premium above the regular rate; method 3 at double time multiplies by one-half: $5,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7000000,
+        "person[taxpayer].w2[emp_a].box4": 434000,
+        "person[taxpayer].w2[emp_a].box5": 7000000,
+        "person[taxpayer].w2[emp_a].box6": 101500,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "premium_double",
+        "person[taxpayer].otjob[ot0].statement": 1000000
+      },
+      "expect": {
+        "s1a.line14a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 500000
+        }
+      }
+    },
+    {
+      "id": "stage12.ot.double_total",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: instructions Example 3: double time, $20,000 total pay for overtime hours; method 4 at double time multiplies by one-fourth: $5,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7000000,
+        "person[taxpayer].w2[emp_a].box4": 434000,
+        "person[taxpayer].w2[emp_a].box5": 7000000,
+        "person[taxpayer].w2[emp_a].box6": 101500,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "total_double",
+        "person[taxpayer].otjob[ot0].statement": 2000000
+      },
+      "expect": {
+        "s1a.line14a": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 500000
+        }
+      }
+    },
+    {
+      "id": "stage12.ot.third_cents_down",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: method 2 on $1,000.00: $333.333..., the product rounded half-up to the cent (amb.2025.multiplication_subcent): $333.33.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "total_time_and_half",
+        "person[taxpayer].otjob[ot0].statement": 100000
+      },
+      "expect": {
+        "s1a.line14a": {
+          "kind": "money",
+          "cents": 33333
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 33333
+        }
+      }
+    },
+    {
+      "id": "stage12.ot.third_cents_up",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: method 2 on $1,000.01: $333.3366..., rounded half-up to the cent: $333.34.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "total_time_and_half",
+        "person[taxpayer].otjob[ot0].statement": 100001
+      },
+      "expect": {
+        "s1a.line14a": {
+          "kind": "money",
+          "cents": 33334
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 33334
+        }
+      }
+    },
+    {
+      "id": "stage12.ot.two_employers_cap",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: two employers: $9,000 premium (method 1) and $12,000 total at time-and-a-half (method 2, $4,000). Worksheet total $13,000 on line 14a; line 15 = smaller of $13,000 or $12,500 = $12,500; wages $100,000; line 21 $12,500.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 10000000,
+        "person[taxpayer].w2[emp_a].box4": 620000,
+        "person[taxpayer].w2[emp_a].box5": 10000000,
+        "person[taxpayer].w2[emp_a].box6": 145000,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0",
+          "ot1"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "premium",
+        "person[taxpayer].otjob[ot0].statement": 900000,
+        "person[taxpayer].otjob[ot1].flsa": true,
+        "person[taxpayer].otjob[ot1].method": "total_time_and_half",
+        "person[taxpayer].otjob[ot1].statement": 1200000
+      },
+      "expect": {
+        "s1a.line14a": {
+          "kind": "money",
+          "cents": 1300000
+        },
+        "s1a.line15": {
+          "kind": "money",
+          "cents": 1250000
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 1250000
+        }
+      }
+    },
+    {
+      "id": "stage12.ot.phaseout",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $155,250; $10,000 premium. Line 18 = $5,250; line 19 = 5; line 20 = $500; line 21 = $10,000 - $500 = $9,500.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 15525000,
+        "person[taxpayer].w2[emp_a].box4": 962550,
+        "person[taxpayer].w2[emp_a].box5": 15525000,
+        "person[taxpayer].w2[emp_a].box6": 225112,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "premium",
+        "person[taxpayer].otjob[ot0].statement": 1000000
+      },
+      "expect": {
+        "s1a.line18": {
+          "kind": "money",
+          "cents": 525000
+        },
+        "s1a.line20": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 950000
+        }
+      }
+    },
+    {
+      "id": "stage12.ot.not_flsa",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: overtime claimed, but the filer was not an FLSA-eligible employee of the only employer: no qualified overtime; line 14a $0; line 21 $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7000000,
+        "person[taxpayer].w2[emp_a].box4": 434000,
+        "person[taxpayer].w2[emp_a].box5": 7000000,
+        "person[taxpayer].w2[emp_a].box6": 101500,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].statement": null
+      },
+      "expect": {
+        "s1a.line14a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage12.refuse.ot_other_method",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: overtime figured by a reasonable-method estimate (method 5): refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7000000,
+        "person[taxpayer].w2[emp_a].box4": 434000,
+        "person[taxpayer].w2[emp_a].box5": 7000000,
+        "person[taxpayer].w2[emp_a].box6": 101500,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "other",
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line21": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].otjob[ot0].refused",
+          "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
+          "remedy": "Figure the amount by the method that applies to you; this tool covers the employer-reported amount and methods 1 to 4 at time-and-a-half or double time.",
+          "cite": {
+            "doc": "n-25-69",
+            "locator": "pp. 22–25, Section III.B.2, methods (E), (F) and (G)",
+            "revision": "Notice 2025-69 (no issue date printed; listed on the IRS Working Families Tax Cuts notices page)",
+            "snapshot": "e405c12d18c8a23524fbc822b61ec32e7885ace7caf01c433d6dbd9a42c8caef",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage12.refuse.ot_special_rule",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: an employer under a special FLSA overtime rule (for example section 7(k)): refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7000000,
+        "person[taxpayer].w2[emp_a].box4": 434000,
+        "person[taxpayer].w2[emp_a].box5": 7000000,
+        "person[taxpayer].w2[emp_a].box6": 101500,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].special_rule": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line21": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].otjob[ot0].refused",
+          "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
+          "remedy": "Figure the amount by the method that applies to you; this tool covers the employer-reported amount and methods 1 to 4 at time-and-a-half or double time.",
+          "cite": {
+            "doc": "n-25-69",
+            "locator": "pp. 22–25, Section III.B.2, methods (E), (F) and (G)",
+            "revision": "Notice 2025-69 (no issue date printed; listed on the IRS Working Families Tax Cuts notices page)",
+            "snapshot": "e405c12d18c8a23524fbc822b61ec32e7885ace7caf01c433d6dbd9a42c8caef",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage12.car.basic",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $60,000; one new qualifying loan, $3,200 of interest, nothing else financed. Line 22 column (iii) $3,200; line 23 $3,200; line 24 $3,200; line 27 = $60,000 - $100,000, zero or less; line 30 $3,200.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 320000,
+        "carloan[VIN0].col_ii_input": null
+      },
+      "expect": {
+        "s1a.line23": {
+          "kind": "money",
+          "cents": 320000
+        },
+        "s1a.line24": {
+          "kind": "money",
+          "cents": 320000
+        },
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 320000
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 320000
+        }
+      }
+    },
+    {
+      "id": "stage12.car.phaseout",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $104,500; interest $5,000. Line 27 $4,500; line 28 = 5 (4.5 increased to 5); line 29 = $1,000; line 30 = $4,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 10450000,
+        "person[taxpayer].w2[emp_a].box4": 647900,
+        "person[taxpayer].w2[emp_a].box5": 10450000,
+        "person[taxpayer].w2[emp_a].box6": 151525,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 500000
+      },
+      "expect": {
+        "s1a.line27": {
+          "kind": "money",
+          "cents": 450000
+        },
+        "s1a.line29": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 400000
+        }
+      }
+    },
+    {
+      "id": "stage12.car.phaseout_round_up",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, wages $100,000.01; interest $5,000. Line 27 $0.01; line 28 = 1 (increased to the next whole number); line 29 $200; line 30 $4,800.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": {
+          "param": "s1a.car_base_other",
+          "offset": 1
+        },
+        "person[taxpayer].w2[emp_a].box4": 620000,
+        "person[taxpayer].w2[emp_a].box5": {
+          "param": "s1a.car_base_other",
+          "offset": 1
+        },
+        "person[taxpayer].w2[emp_a].box6": 145000,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 500000
+      },
+      "expect": {
+        "s1a.line27": {
+          "kind": "money",
+          "cents": 1
+        },
+        "s1a.line29": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 480000
+        }
+      }
+    },
+    {
+      "id": "stage12.car.two_loans_cap",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: two qualifying loans, $7,000 and $6,000 of interest; line 23 $13,000; line 24 = smaller of $13,000 or $10,000 = $10,000; wages $50,000; line 30 $10,000.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0",
+          "VIN1"
+        ],
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 700000,
+        "carloan[VIN1].requirements": true,
+        "carloan[VIN1].vehicle": true,
+        "carloan[VIN1].interest": 600000
+      },
+      "expect": {
+        "s1a.line23": {
+          "kind": "money",
+          "cents": 1300000
+        },
+        "s1a.line24": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 1000000
+        }
+      }
+    },
+    {
+      "id": "stage12.car.used_vehicle",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: a loan on a vehicle that is not an applicable passenger vehicle (for example used): its interest is not qualified; line 30 $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].mixed": null
+      },
+      "expect": {
+        "s1a.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage12.car.negative_equity",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: proposed § 1.163-16(d)(6) Example 4: $40,000 vehicle, $6,000 negative equity, $4,000 down payment, $42,000 financed. The down payment is applied first to the negative equity: $2,000 nonqualifying, $40,000 qualifying. Ratio 40,000/42,000 = 0.952380952..., six places 0.952381 (amb.2025.carloan_ratio_places); interest $2,100 x 0.952381 = $2,000.0001, $2,000.00 to the cent; line 30 $2,000 (wages $60,000).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 210000,
+        "carloan[VIN0].mixed": true,
+        "carloan[VIN0].financed": 4200000,
+        "carloan[VIN0].nonqualifying": 600000,
+        "carloan[VIN0].down": 400000
+      },
+      "expect": {
+        "s1a.line23": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "stage12.car.refinanced",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: proposed § 1.163-16(d)(6) Example 3: a $38,000 refinancing of a qualifying loan with a $30,000 balance; only $30,000 is a qualifying loan. Ratio 30,000/38,000 = 0.78947368..., six places 0.789474; interest $1,900 x 0.789474 = $1,500.0006, $1,500.00; line 30 $1,500.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].kind": "refinanced",
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 190000,
+        "carloan[VIN0].refi_whole": true,
+        "carloan[VIN0].refi_balance": 3000000,
+        "carloan[VIN0].financed": 3800000,
+        "carloan[VIN0].down": null,
+        "carloan[VIN0].mixed": null
+      },
+      "expect": {
+        "s1a.line23": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 150000
+        }
+      }
+    },
+    {
+      "id": "stage12.car.refinanced_no_excess",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: a refinancing for less than the balance it replaced ($20,000 of a $25,000 balance): ratio 1; all $1,200 of interest qualifies.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].kind": "refinanced",
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 120000,
+        "carloan[VIN0].refi_whole": true,
+        "carloan[VIN0].refi_balance": 2500000,
+        "carloan[VIN0].financed": 2000000
+      },
+      "expect": {
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 120000
+        }
+      }
+    },
+    {
+      "id": "stage12.car.death",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: the filer became the borrower when the previous borrower died; the loan met the requirements when taken out (proposed § 1.163-16(d)(5)(ii)); interest $2,500, nothing else financed; line 30 $2,500.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].kind": "death",
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 250000
+      },
+      "expect": {
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 250000
+        }
+      }
+    },
+    {
+      "id": "stage12.car.ratio_places",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: a $30,000 loan that financed $10,000 of nonqualifying amounts and no down payment: qualifying $20,000; ratio 0.6666666... rounded to six places 0.666667; interest $1,234.57 x 0.666667 = $823.0471..., $823.05.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 123457,
+        "carloan[VIN0].mixed": true,
+        "carloan[VIN0].financed": 3000000,
+        "carloan[VIN0].nonqualifying": 1000000
+      },
+      "expect": {
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 82305
+        }
+      }
+    },
+    {
+      "id": "stage12.refuse.car_nested_refinancing",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: a refinancing of a loan that was itself only partly a qualifying loan: refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].kind": "refinanced",
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 150000,
+        "carloan[VIN0].financed": 2000000,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line30": {
+          "kind": "refusal",
+          "gate": "carloan[VIN0].refi_nested",
+          "form": "Refinancing of a loan that was itself only partly a qualifying vehicle loan",
+          "remedy": "Allocating a refinancing of a partly qualifying loan is outside this tool.",
+          "cite": {
+            "doc": "fr-2025-24154",
+            "locator": "pp. 20–22, Proposed § 1.163-16(d)(2)(iii) and (d)(4)",
+            "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
+            "snapshot": "4d243f55ac0f9a6b7c44c560ea9aa47e023399b9d08cd7738cc499fb9cc84729",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage12.senior.full",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, born before January 2, 1961, valid SSN, wages $50,000. Line 31 $50,000; line 32 $75,000; line 33 zero or less, so line 35 $6,000; line 36a $6,000; line 37 $6,000; line 38 $6,000; Form 1040 line 14 = $15,750 + $2,000 (age 65) + $6,000 = $23,750; line 15 = $26,250.",
+      "inputs": {
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500
+      },
+      "expect": {
+        "s1a.line35": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line36a": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line38": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 2375000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2625000
+        }
+      }
+    },
+    {
+      "id": "stage12.senior.phaseout",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $90,000. Line 33 $15,000; line 34 = 6% = $900; line 35 = $6,000 - $900 = $5,100; line 37 $5,100.",
+      "inputs": {
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 9000000,
+        "person[taxpayer].w2[emp_a].box4": 558000,
+        "person[taxpayer].w2[emp_a].box5": 9000000,
+        "person[taxpayer].w2[emp_a].box6": 130500
+      },
+      "expect": {
+        "s1a.line33": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "s1a.line34": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "s1a.line35": {
+          "kind": "money",
+          "cents": 510000
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 510000
+        }
+      }
+    },
+    {
+      "id": "stage12.senior.phaseout_zero",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $175,000. Line 33 $100,000; line 34 $6,000; line 35 -0-.",
+      "inputs": {
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 17500000,
+        "person[taxpayer].w2[emp_a].box4": 1085000,
+        "person[taxpayer].w2[emp_a].box5": 17500000,
+        "person[taxpayer].w2[emp_a].box6": 253750
+      },
+      "expect": {
+        "s1a.line34": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line35": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage12.senior.cents",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $75,000.10. Line 33 $0.10; line 34 = 6% = $0.006, rounded half-up to the cent $0.01 (amb.2025.multiplication_subcent); line 35 $5,999.99.",
+      "inputs": {
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7500010,
+        "person[taxpayer].w2[emp_a].box4": 465001,
+        "person[taxpayer].w2[emp_a].box5": 7500010,
+        "person[taxpayer].w2[emp_a].box6": 108750
+      },
+      "expect": {
+        "s1a.line33": {
+          "kind": "money",
+          "cents": 10
+        },
+        "s1a.line34": {
+          "kind": "money",
+          "cents": 1
+        },
+        "s1a.line35": {
+          "kind": "money",
+          "cents": 599999
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 599999
+        }
+      }
+    },
+    {
+      "id": "stage12.senior.no_valid_ssn",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $50,000, no SSN valid for employment: line 36a $0; line 37 $0.",
+      "inputs": {
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].work_ssn": false
+      },
+      "expect": {
+        "s1a.line36a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage12.refuse.senior_decedent",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: the final return of a person born in 1960 who died in 2025 before reaching 65: refused (owner's ruling).",
+      "inputs": {
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].died_before_65": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line37": {
+          "kind": "refusal",
+          "gate": "s1a.senior_decedent",
+          "form": "Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65",
+          "remedy": "A person born before January 2, 1961, who died in 2025 before reaching age 65 does not qualify; this case is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 110, Schedule 1-A, Part V, \"Death of a taxpayer in 2025\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage12.combined.all_four",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: single, 65 or older, wages $120,000; tips $5,000 (one employer); overtime premium $4,000; car loan interest $3,000. Line 3 $120,000. Line 13 $5,000 (line 10 zero or less). Line 21 $4,000. Line 27 $20,000; line 28 20; line 29 $4,000; line 30 = $3,000 - $4,000, -0-. Line 33 $45,000; line 34 $2,700; line 35 $3,300; line 37 $3,300. Line 38 = $5,000 + $4,000 + $0 + $3,300 = $12,300; Form 1040 line 14 = $17,750 + $12,300 = $30,050; line 15 = $89,950.",
+      "inputs": {
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "s1a.tips": true,
+        "s1a.overtime": true,
+        "s1a.carloan": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 500000,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "premium",
+        "person[taxpayer].otjob[ot0].statement": 400000,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 300000
+      },
+      "expect": {
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s1a.line29": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line35": {
+          "kind": "money",
+          "cents": 330000
+        },
+        "s1a.line38": {
+          "kind": "money",
+          "cents": 1230000
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 1230000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 3005000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 8995000
+        }
+      }
+    },
+    {
+      "id": "stage12.refuse.excluded_income",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: 65 or older and filing Form 2555 (excluded income): modified AGI needs Schedule 1-A lines 2a-2d, refused through sa.excluded_income.",
+      "inputs": {
+        "sa.excluded_income": true,
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line38": {
+          "kind": "refusal",
+          "gate": "sa.excluded_income",
+          "form": "Schedule 1-A, Part I, lines 2a to 2d (excluded Puerto Rico income, Form 2555, Form 4563)",
+          "remedy": "Modified AGI with excluded Puerto Rico income or Form 2555 or 4563 amounts is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 101, Schedule 1-A, Part I, \"If you do have excluded income from Puerto Rico, or you are filing Form 2555 or 4563, complete lines 2a through 2e\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage12.excluded_income_no_claim",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: filing Form 2555 but claiming no Schedule 1-A deduction (under 65, no tips, overtime or car loan): Schedule 1-A is not needed, line 38 $0, not refused.",
+      "inputs": {
+        "sa.excluded_income": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500
+      },
+      "expect": {
+        "s1a.line38": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage12.mfs.bar",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: married filing separately, wages $60,000; tips $8,000, overtime premium $6,000, born before January 2, 1961, car loan interest $3,000. The Part II, III and V cautions say a married filer must file jointly to claim: lines 13, 21 and 37 are $0. Part IV has no such bar: line 26 $100,000, line 27 zero or less, line 30 $3,000.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1a.tips": true,
+        "s1a.overtime": true,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 300000
+      },
+      "expect": {
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "stage12.mfj.tips_overtime",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: married filing jointly, wages $301,000; tips $20,000; overtime premium $30,000. Line 9 $300,000; line 10 $1,000; line 11 1; line 12 $100; line 13 $19,900. Line 15 = smaller of $30,000 or $25,000 = $25,000; line 17 $300,000; line 18 $1,000; line 20 $100; line 21 $24,900.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 30100000,
+        "person[taxpayer].w2[emp_a].box4": 1091820,
+        "person[taxpayer].w2[emp_a].box5": 30100000,
+        "person[taxpayer].w2[emp_a].box6": 436450,
+        "household.married": true,
+        "s1a.tips": true,
+        "s1a.overtime": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 2000000,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "premium",
+        "person[taxpayer].otjob[ot0].statement": 3000000
+      },
+      "expect": {
+        "s1a.line9": {
+          "kind": "money",
+          "cents": 30000000
+        },
+        "s1a.line12": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 1990000
+        },
+        "s1a.line15": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "s1a.line20": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 2490000
+        }
+      }
+    },
+    {
+      "id": "stage12.mfj.car",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: married filing jointly, wages $200,000.50; car loan interest $5,000. Line 26 $200,000; line 27 $0.50; line 28 = 1 (increased to the next whole number); line 29 $200; line 30 $4,800.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 20000050,
+        "person[taxpayer].w2[emp_a].box4": 1091820,
+        "person[taxpayer].w2[emp_a].box5": 20000050,
+        "person[taxpayer].w2[emp_a].box6": 290001,
+        "household.married": true,
+        "s1a.carloan": true,
+        "$carloan": [
+          "VIN0"
+        ],
+        "carloan[VIN0].requirements": true,
+        "carloan[VIN0].vehicle": true,
+        "carloan[VIN0].interest": 500000
+      },
+      "expect": {
+        "s1a.line26": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "s1a.line29": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 480000
+        }
+      }
+    },
+    {
+      "id": "stage12.mfj.senior",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: married filing jointly, wages $160,000, the filer born before January 2, 1961 (no spouse born before then is modeled; line 36b $0). Line 32 $150,000; line 33 $10,000; line 34 $600; line 35 $5,400; line 36a $5,400; line 37 $5,400.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 16000000,
+        "person[taxpayer].w2[emp_a].box4": 992000,
+        "person[taxpayer].w2[emp_a].box5": 16000000,
+        "person[taxpayer].w2[emp_a].box6": 232000,
+        "household.married": true
+      },
+      "expect": {
+        "s1a.line32": {
+          "kind": "money",
+          "cents": 15000000
+        },
+        "s1a.line35": {
+          "kind": "money",
+          "cents": 540000
+        },
+        "s1a.line36a": {
+          "kind": "money",
+          "cents": 540000
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 540000
+        }
+      }
+    },
+    {
+      "id": "stage12.car.not_claimed",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: no car loan interest claimed: lines 23, 24 and 30 are $0 and no loan list is asked for.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000
+      },
+      "expect": {
+        "s1a.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line24": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line30": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage12.refuse.form4137_one_employer",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips from one employer and Form 4137 (s2.other): line 4b refuses (Form 4137 is outside this tool), so line 13 refuses.",
+      "inputs": {
+        "s2.other": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 800000,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line13": {
+          "kind": "refusal",
+          "gate": "s2.other",
+          "form": "Form 4137 (Social Security and Medicare Tax on Unreported Tip Income)",
+          "remedy": "Tips reported on Form 4137 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 101, Schedule 1-A, Part II, \"If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137\"; p. 104, line 4b",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage12.refuse.form4137_two_employers",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips from two employers and Form 4137 (s2.other): worksheet column (c) refuses, so line 4c and line 13 refuse.",
+      "inputs": {
+        "s2.other": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0",
+          "emp1"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 500000,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line4c": {
+          "kind": "refusal",
+          "gate": "s2.other",
+          "form": "Form 4137 (Social Security and Medicare Tax on Unreported Tip Income)",
+          "remedy": "Tips reported on Form 4137 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 104, Qualified Tips From More Than One Employer Worksheet, column (c), and p. 103, method 4",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1a.line13": {
+          "kind": "refusal",
+          "gate": "s2.other",
+          "form": "Form 4137 (Social Security and Medicare Tax on Unreported Tip Income)",
+          "remedy": "Tips reported on Form 4137 are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 104, Qualified Tips From More Than One Employer Worksheet, column (c), and p. 103, method 4",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage12.single.spouse_boxes_answer",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: born before January 2, 1961, with a spouse's standard-deduction boxes claimed (sa.spouse_extra): line 36b refuses, so line 37 refuses. Stage 13: a spouses boxes are refused only on a married filing separately return, and line 36b is for a spouse on a joint return, so on this single return line 36b is $0 and line 37 equals line 36a (unchanged). The case formerly expected a refusal; renamed from stage12.refuse.spouse_senior. Joint cases with a spouse born before 1961 are in stage13.json.",
+      "inputs": {
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500
+      },
+      "expect": {
+        "s1a.line36a": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line36b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 600000
+        }
+      }
+    },
+    {
+      "id": "stage12.refuse.tips_trade_or_business",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips claimed and Schedule 1 business income (scope.schedule1): line 5 refuses, so line 6 refuses.",
+      "inputs": {
+        "scope.schedule1": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 800000,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line4c": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "s1a.line6": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1-A, line 5 (qualified tips in a trade or business, with Schedule C, E or F)",
+          "remedy": "Income from a trade or business is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage12.refuse.overtime_nonemployee",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: overtime claimed and Schedule 1 business income (scope.schedule1): line 14b refuses, so line 14c refuses.",
+      "inputs": {
+        "scope.schedule1": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "s1a.overtime": true,
+        "$otjob@person[taxpayer]": [
+          "ot0"
+        ],
+        "person[taxpayer].otjob[ot0].flsa": true,
+        "person[taxpayer].otjob[ot0].method": "premium",
+        "person[taxpayer].otjob[ot0].statement": 300000,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line14a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s1a.line14c": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1-A, line 14b (qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C)",
+          "remedy": "Nonemployee compensation is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 108, Schedule 1-A, line 14b, and the Qualified Overtime Compensation From More Than One Payor Worksheet",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage12.refuse.tips_excluded_income",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips claimed with Form 2555 or excluded Puerto Rico income (sa.excluded_income): line 8 copies line 3, which needs line 2a, refused; line 13 refuses.",
+      "inputs": {
+        "sa.excluded_income": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "s1a.tips": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line13": {
+          "kind": "refusal",
+          "gate": "sa.excluded_income",
+          "form": "Schedule 1-A, Part I, lines 2a to 2d (excluded Puerto Rico income, Form 2555, Form 4563)",
+          "remedy": "Modified AGI with excluded Puerto Rico income or Form 2555 or 4563 amounts is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 101, Schedule 1-A, Part I, \"If you do have excluded income from Puerto Rico, or you are filing Form 2555 or 4563, complete lines 2a through 2e\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage13.boxes_you65_spouse_blind",
+      "covers": [
+        "sa",
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: you born before January 2, 1961; spouse blind. Two boxes: $31,500 + 2 x $1,600 = $34,700. Schedule 1-A Part V: you are 65 with a valid SSN, MAGI $110,000 under $150,000, line 35 $6,000, line 36a $6,000, line 36b $0 (spouse not 65); line 37 $6,000. Line 14 = $34,700 + $6,000 = $40,700.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "person[spouse].blind": true,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500
+      },
+      "expect": {
+        "sa.standard": {
+          "kind": "money",
+          "cents": 3470000
+        },
+        "s1a.line36a": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line36b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 4070000
+        }
+      }
+    },
+    {
+      "id": "stage13.boxes_all_four",
+      "covers": [
+        "sa",
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: both born before January 2, 1961, and both blind: four boxes, $31,500 + 4 x $1,600 = $37,900. Both 65 with valid SSNs, MAGI $110,000: lines 36a and 36b $6,000 each, line 37 $12,000. Line 14 $49,900.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "person[taxpayer].age65": true,
+        "person[taxpayer].blind": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "person[spouse].age65": true,
+        "person[spouse].blind": true,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500
+      },
+      "expect": {
+        "sa.standard": {
+          "kind": "money",
+          "cents": 3790000
+        },
+        "s1a.line36a": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line36b": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 4990000
+        }
+      }
+    },
+    {
+      "id": "stage13.seniors_phaseout",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: both 65 with valid SSNs; wages $120,000 and $80,000. Line 31 $200,000; line 32 $150,000; line 33 $50,000; line 34 6% = $3,000; line 35 $3,000; lines 36a and 36b $3,000 each; line 37 $6,000.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "person[spouse].age65": true,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 8000000,
+        "person[spouse].w2[e0].box4": 496000,
+        "person[spouse].w2[e0].box5": 8000000,
+        "person[spouse].w2[e0].box6": 116000
+      },
+      "expect": {
+        "s1a.line33": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "s1a.line34": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s1a.line35": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s1a.line36a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s1a.line36b": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 600000
+        }
+      }
+    },
+    {
+      "id": "stage13.senior_spouse_no_ssn",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: both 65; your spouse has an ITIN but no SSN valid for employment. Line 36a $6,000; line 36b $0 (the spouse claiming must have a valid SSN, i1040gi p. 110); line 37 $6,000.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "person[taxpayer].age65": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "person[spouse].age65": true,
+        "person[spouse].work_ssn": false,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500
+      },
+      "expect": {
+        "s1a.line36a": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line36b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 600000
+        }
+      }
+    },
+    {
+      "id": "stage13.senior_spouse_only",
+      "covers": [
+        "s1a",
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: only your spouse born before January 2, 1961 (valid SSN); MAGI $110,000. Line 36a $0; line 36b $6,000; line 37 $6,000. Standard deduction $31,500 + $1,600 = $33,100.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "person[spouse].age65": true,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500
+      },
+      "expect": {
+        "s1a.line36a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line36b": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sa.standard": {
+          "kind": "money",
+          "cents": 3310000
+        }
+      }
+    },
+    {
+      "id": "stage13.refuse.senior_spouse_decedent",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: your spouse was born in 1960 and died in 2025 before reaching age 65: does not qualify (i1040gi p. 110, Death of a taxpayer); this case is refused at line 36b, and Form 1040 line 13b with it.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "person[spouse].age65": true,
+        "person[spouse].died_before_65": true,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "s179.line10": null
+      },
+      "expect": {
+        "s1a.line36a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line36b": {
+          "kind": "refusal",
+          "gate": "s1a.spouse_senior_decedent",
+          "form": "Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65",
+          "remedy": "A person born before January 2, 1961, who died in 2025 before reaching age 65 does not qualify; this case is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 110, Schedule 1-A, Part V, \"Death of a taxpayer in 2025\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line13b": {
+          "kind": "refusal",
+          "gate": "s1a.spouse_senior_decedent",
+          "form": "Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65",
+          "remedy": "A person born before January 2, 1961, who died in 2025 before reaching age 65 does not qualify; this case is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 110, Schedule 1-A, Part V, \"Death of a taxpayer in 2025\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage13.tips_both_cap",
+      "covers": [
+        "s1a",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: qualified tips $15,000 (you, one employer) and $14,000 (spouse, one employer): two employers, so line 4a $0 and the worksheet total on line 4c $29,000; line 7 is limited to $25,000 (not a per-spouse limit); MAGI $110,000 under $300,000; line 13 $25,000.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "s1a.tips": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$tipjob@person[taxpayer]": [
+          "job"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$tipjob@person[spouse]": [
+          "job"
+        ],
+        "person[taxpayer].tipjob[job].qualified": true,
+        "person[taxpayer].tipjob[job].amount": 1500000,
+        "person[spouse].tipjob[job].qualified": true,
+        "person[spouse].tipjob[job].amount": 1400000
+      },
+      "expect": {
+        "s1a.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line4c": {
+          "kind": "money",
+          "cents": 2900000
+        },
+        "s1a.line7": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 2500000
+        }
+      }
+    },
+    {
+      "id": "stage13.tips_spouse_no_ssn",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: as above, but your spouse has no SSN valid for employment: only your $15,000 counts (the spouse who received the tips must have a valid SSN); one employer, line 4a and line 4c $15,000; line 13 $15,000.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "s1a.tips": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$tipjob@person[taxpayer]": [
+          "job"
+        ],
+        "person[spouse].work_ssn": false,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$tipjob@person[spouse]": [
+          "job"
+        ],
+        "person[taxpayer].tipjob[job].qualified": true,
+        "person[taxpayer].tipjob[job].amount": 1500000
+      },
+      "expect": {
+        "s1a.line4a": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "s1a.line4c": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 1500000
+        }
+      }
+    },
+    {
+      "id": "stage13.overtime_both_cap",
+      "covers": [
+        "s1a",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: overtime premium $14,000 (you) and $13,000 (spouse): line 14a $27,000; line 15 limited to $25,000 (married filing jointly); line 21 $25,000.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "s1a.overtime": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$otjob@person[taxpayer]": [
+          "job"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$otjob@person[spouse]": [
+          "job"
+        ],
+        "person[taxpayer].otjob[job].flsa": true,
+        "person[taxpayer].otjob[job].method": "premium",
+        "person[taxpayer].otjob[job].statement": 1400000,
+        "person[spouse].otjob[job].flsa": true,
+        "person[spouse].otjob[job].method": "premium",
+        "person[spouse].otjob[job].statement": 1300000
+      },
+      "expect": {
+        "s1a.line14a": {
+          "kind": "money",
+          "cents": 2700000
+        },
+        "s1a.line15": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 2500000
+        }
+      }
+    },
+    {
+      "id": "stage13.senior_you_no_ssn",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: both 65; you have an ITIN but no SSN valid for employment, your spouse has one. Line 36a $0; line 36b $6,000 (MAGI $110,000); line 37 $6,000.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "person[taxpayer].age65": true,
+        "person[taxpayer].work_ssn": false,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "person[spouse].age65": true,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500
+      },
+      "expect": {
+        "s1a.line36a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line36b": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 600000
+        }
+      }
+    },
+    {
+      "id": "stage13.tips_two_jobs_spouse_no_ssn",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: your qualified tips $10,000 and $6,000 from two employers; your spouse (no SSN valid for employment) $4,000 from one. Only your two employers count: line 4a $0, line 4c $16,000; line 13 $16,000.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "s1a.tips": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$tipjob@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "person[spouse].work_ssn": false,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$tipjob@person[spouse]": [
+          "job"
+        ],
+        "person[taxpayer].tipjob[a].qualified": true,
+        "person[taxpayer].tipjob[a].amount": 1000000,
+        "person[taxpayer].tipjob[b].qualified": true,
+        "person[taxpayer].tipjob[b].amount": 600000
+      },
+      "expect": {
+        "s1a.line4a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line4c": {
+          "kind": "money",
+          "cents": 1600000
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 1600000
+        }
+      }
+    },
+    {
+      "id": "stage13.tips_only_spouse_no_ssn",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: only your spouse received qualified tips ($5,000) and has no SSN valid for employment: Part II does not apply, so its lines, among them line 8 (modified AGI), are $0; line 13 $0.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "s1a.tips": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "person[spouse].work_ssn": false,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500
+      },
+      "expect": {
+        "s1a.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage13.overtime_spouse_no_ssn",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: overtime premium $10,000 (you) and $5,000 (spouse, no SSN valid for employment): only yours counts, line 14a $10,000; line 21 $10,000.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "s1a.overtime": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$otjob@person[taxpayer]": [
+          "job"
+        ],
+        "person[spouse].work_ssn": false,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$otjob@person[spouse]": [
+          "job"
+        ],
+        "person[taxpayer].otjob[job].flsa": true,
+        "person[taxpayer].otjob[job].method": "premium",
+        "person[taxpayer].otjob[job].statement": 1000000,
+        "person[spouse].otjob[job].flsa": true,
+        "person[spouse].otjob[job].statement": 500000
+      },
+      "expect": {
+        "s1a.line14a": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 1000000
+        }
+      }
+    },
+    {
+      "id": "stage13.seniors_none",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: a joint return with neither spouse born before January 2, 1961: Part V does not apply, so lines 31 to 37 are $0 (i1040gi p. 110, \"Fill out Schedule 1-A, Part V, only if\").",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500
+      },
+      "expect": {
+        "s1a.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line35": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line37": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage13.overtime_only_spouse_no_ssn",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: only your spouse had qualified overtime ($5,000) and has no SSN valid for employment: Part III does not apply, so its lines, among them line 16 (modified AGI), are $0; line 21 $0.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "s1a.overtime": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "person[spouse].work_ssn": false,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500
+      },
+      "expect": {
+        "s1a.line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1a.line21": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.sch1a_tips",
+      "covers": [
+        "s1a:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a business that received qualified tips to be deducted on Schedule 1-A: Schedule 1-A line 5 refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line1": 1000000,
+        "person[taxpayer].sc[b].tips_ot": true,
+        "f1040.tax_exempt_interest": null,
+        "eic.died_2025": null,
+        "eic.us_home": null,
+        "eic.qc_of_another": null
+      },
+      "expect": {
+        "s1a.line5_calc": {
+          "kind": "refusal",
+          "gate": "s1.sc_1a",
+          "form": "Schedule 1-A, line 5 (qualified tips in a trade or business, with Schedule C)",
+          "remedy": "Qualified tips received in a trade or business are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.refuse.sch1a_tips_business_only",
+      "covers": [
+        "s1a:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0147 regression, predicted from i1040gi p. 101 (Part II and III apply to anyone who received qualified tips or overtime) and p. 104, line 5, before recording: a business whose income includes qualified tips or 1099 overtime, with no employee tips or overtime claimed, is refused at s1.sc_1a on Schedule 1-A lines 13 and 21 and the whole return, instead of the deduction defaulting to zero.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line1": 1000000,
+        "person[taxpayer].sc[b].tips_ot": true,
+        "f1040.tax_exempt_interest": null,
+        "eic.died_2025": null,
+        "eic.us_home": null,
+        "eic.qc_of_another": null
+      },
+      "expect": {
+        "s1a.line13": {
+          "kind": "refusal",
+          "gate": "s1.sc_1a",
+          "form": "Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C)",
+          "remedy": "Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 104, Schedule 1-A, line 5, \"Include the qualified tips you and/or your spouse received in the course of a trade or business\"; p. 101, \"Fill out Schedule 1-A, Part II, only if\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1a.line21": {
+          "kind": "refusal",
+          "gate": "s1.sc_1a",
+          "form": "Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C)",
+          "remedy": "Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 108, Schedule 1-A, line 14b, \"Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3\"; p. 106, \"Fill out Schedule 1-A, Part III, only if\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line37": {
+          "kind": "refusal",
+          "gate": "s1.sc_1a",
+          "form": "Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C)",
+          "remedy": "Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 104, Schedule 1-A, line 5, \"Include the qualified tips you and/or your spouse received in the course of a trade or business\"; p. 101, \"Fill out Schedule 1-A, Part II, only if\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.sch1a.tips_with_sc",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: employee tips of $8,000 (Schedule 1-A Part II, as in stage12.tips.one_employer) and a separate business with $5,000 of receipts and no tips: Schedule 1-A line 5 (tips in a trade or business) is zero, not refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box3": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "person[taxpayer].tipjob[emp0].qualified": true,
+        "person[taxpayer].tipjob[emp0].amount": 800000,
+        "$sc@person[taxpayer]": [
+          "side"
+        ],
+        "person[taxpayer].sc[side].line1": 500000
+      },
+      "expect": {
+        "s1a.line5_calc": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.sch1a.refuse_overtime_1099",
+      "covers": [
+        "s1a:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: overtime claimed on Schedule 1-A (as in stage12.ot.premium) and a business whose income includes qualified overtime reported on Form 1099-NEC: Schedule 1-A line 14b refuses.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7000000,
+        "person[taxpayer].w2[emp_a].box3": 7000000,
+        "person[taxpayer].w2[emp_a].box4": 434000,
+        "person[taxpayer].w2[emp_a].box5": 7000000,
+        "person[taxpayer].w2[emp_a].box6": 101500,
+        "$sc@person[taxpayer]": [
+          "gig"
+        ],
+        "person[taxpayer].sc[gig].line1": 500000,
+        "person[taxpayer].sc[gig].tips_ot": true
+      },
+      "expect": {
+        "s1a.line14b_calc": {
+          "kind": "refusal",
+          "gate": "s1.sc_1a",
+          "form": "Schedule 1-A, line 14b (qualified overtime reported on Form 1099-NEC or 1099-MISC)",
+          "remedy": "Qualified overtime compensation reported on Form 1099-NEC or 1099-MISC is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 108, Schedule 1-A, line 14b",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    }
+  ]
+}

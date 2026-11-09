@@ -10,6 +10,7 @@ import type { ValidateFunction } from "ajv";
 import { isMarkedLine, stableStringify } from "./util.js";
 import { entrySyntax, type InterviewData, type RosterChoice } from "./interview.js";
 import { checkInterview, checkSalesInterview } from "./interview-check.js";
+import { defaultsProblems, loadFixtureCases, walkedCases, yearDefaultsFiles } from "./fixture-inputs.js";
 import { runChecks } from "./check.js";
 import { isStructured, parseStructured, textSummary } from "./text.js";
 import { YEAR, nyPath, yearPath } from "./year.js";
@@ -425,15 +426,16 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   }
   // The interview path checks walk the year's fixtures; a year being adopted has none until
   // tools/fixtures_year.py carries them over, which needs this build.
+  // The fixtures' test-data defaults: one per input and roster, each a value the input accepts.
+  if (errors.length === 0) errors.push(...defaultsProblems(data, yearDefaultsFiles()));
   if (!existsSync(yearPath("fixtures"))) stats.push(`interview path checks skipped: no fixtures/${YEAR}/ yet`);
-  else if (errors.length === 0) errors.push(...checkInterview(data, interview), ...checkSalesInterview(data, salesInterview), ...checkSalesInterview(data, stage4Interview, "stage4"), ...checkSalesInterview(data, fullInterview, "stage5"));
+  else if (errors.length === 0) errors.push(...checkInterview(data, interview), ...checkSalesInterview(data, salesInterview, walkedCases("sales", data)), ...checkSalesInterview(data, stage4Interview, walkedCases("stage4", data)), ...checkSalesInterview(data, fullInterview, walkedCases("full", data)));
   // The New York profile walks the New York fixtures' paths (fixtures/ny/<year>/), once they exist.
   if (nyInterview && errors.length === 0 && existsSync(nyPath("fixtures"))) {
     // As federally (stages 3 to 5 only), the walk covers the hand-authored stage fixtures: class M cases keep only the
     // answers their route reads, and mutation cases exist to kill mutants, so neither is an interview path.
-    for (const f of readdirSync(nyPath("fixtures")).filter((n) => n.endsWith(".json") && !n.startsWith("classm") && n !== "mutation.json").sort()) {
-      errors.push(...checkSalesInterview(data, nyInterview, "ny", join(nyPath("fixtures"), f), 600).map((e) => `New York interview: ${e}`));
-    }
+    const ny = loadFixtureCases("ny", data).filter((c) => !c.file.startsWith("classm") && c.file !== "mutation.json");
+    errors.push(...checkSalesInterview(data, nyInterview, ny, 600).map((e) => `New York interview: ${e}`));
   }
   stats.push("interview: Stage 2 finite domains checked; Stage 3 fixture paths checked for reachability, termination and answer-order invariance (not exhaustive)");
 

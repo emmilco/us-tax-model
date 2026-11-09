@@ -1,0 +1,1536 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage14.asset.hy_5yr",
+      "covers": [
+        "asset",
+        "f4562"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a computer (asset class 00.12, 5-year) placed in service in March 2025 for $3,000, no special allowance or section 179: half-year convention, 20.00% = $600 on Form 4562 line 19b and Schedule C line 13.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[pc].cost": 300000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[pc].macrs2025": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "person[taxpayer].sc[desk].f19_y5": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 60000
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.mq_7yr",
+      "covers": [
+        "asset",
+        "mq"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: office furniture (00.11, 7-year) for $10,000 placed in service in November 2025, the only property: mid-quarter convention, Table A-5 7-year year 1 3.57% = $357.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "sofa"
+        ],
+        "person[taxpayer].sc[desk].asset[sofa].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[sofa].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[sofa].pct": 100,
+        "person[taxpayer].sc[desk].asset[sofa].quarter": "q4",
+        "person[taxpayer].sc[desk].asset[sofa].bonus_choice": "none"
+      },
+      "expect": {
+        "mq.applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].sc[desk].asset[sofa].macrs2025": {
+          "kind": "money",
+          "cents": 35700
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.mq_mixed",
+      "covers": [
+        "asset",
+        "mq"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $6,000 computer in February and $5,000 of furniture in December: $5,000 is more than 40% of $11,000, so the mid-quarter convention applies: computer 35.00% (Table A-2) = $2,100; furniture 3.57% (Table A-5) = $178.50.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc",
+          "sofa"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[pc].cost": 600000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].bonus_choice": "none",
+        "person[taxpayer].sc[desk].asset[sofa].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[sofa].cost": 500000,
+        "person[taxpayer].sc[desk].asset[sofa].pct": 100,
+        "person[taxpayer].sc[desk].asset[sofa].quarter": "q4",
+        "person[taxpayer].sc[desk].asset[sofa].bonus_choice": "none"
+      },
+      "expect": {
+        "mq.applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].sc[desk].asset[pc].macrs2025": {
+          "kind": "money",
+          "cents": 210000
+        },
+        "person[taxpayer].sc[desk].asset[sofa].macrs2025": {
+          "kind": "money",
+          "cents": 17850
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.mq_not",
+      "covers": [
+        "asset",
+        "mq"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $6,000 computer in February and $3,000 of furniture in December: $3,000 is not more than 40% of $9,000 (5 x $3,000 = $15,000 is not more than 2 x $9,000 = $18,000), so the half-year convention applies: computer 20% = $1,200; furniture 14.29% = $428.70.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc",
+          "sofa"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[pc].cost": 600000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].bonus_choice": "none",
+        "person[taxpayer].sc[desk].asset[sofa].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[sofa].cost": 300000,
+        "person[taxpayer].sc[desk].asset[sofa].pct": 100,
+        "person[taxpayer].sc[desk].asset[sofa].quarter": "q4",
+        "person[taxpayer].sc[desk].asset[sofa].bonus_choice": "none"
+      },
+      "expect": {
+        "mq.applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].sc[desk].asset[pc].macrs2025": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "person[taxpayer].sc[desk].asset[sofa].macrs2025": {
+          "kind": "money",
+          "cents": 42870
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.bonus_100",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 7-year property for $20,000 acquired after January 19, 2025, special allowance claimed: 100% = $20,000 (Form 4562 line 14); MACRS zero.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 2000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].after_jan19": true,
+        "person[taxpayer].sc[desk].asset[saw].bonus_same": true
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[saw].bonus": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].sc[desk].asset[saw].macrs2025": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[desk].f14": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 2000000
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.bonus_40_before",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property for $10,000 acquired before January 20, 2025 and placed in service in 2025: special allowance 40% = $4,000; MACRS on $6,000 at 20% = $1,200; line 13 $5,200.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[pc].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].bonus_same": true
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[pc].bonus": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].sc[desk].asset[pc].macrs2025": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 520000
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.bonus_40_elected",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property for $10,000 acquired after January 19, 2025, with the election of 40% instead of 100%: special allowance $4,000; MACRS $1,200.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[pc].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].bonus_choice": "forty",
+        "person[taxpayer].sc[desk].asset[pc].bonus_same": true
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[pc].bonus": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].sc[desk].asset[pc].macrs2025": {
+          "kind": "money",
+          "cents": 120000
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.s179",
+      "covers": [
+        "asset",
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 7-year property for $12,000 with a $5,000 section 179 election and no special allowance: basis $7,000 x 14.29% = $1,000.30; Part I line 12 $5,000 (business income before section 179 $48,999.70); Schedule C line 13 $6,000.30. Schedule SE line 2 is the net profit after the deduction, $43,999.70.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1200000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].s179": 500000,
+        "person[taxpayer].sc[desk].asset[saw].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[saw].macrs2025": {
+          "kind": "money",
+          "cents": 100030
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 600030
+        },
+        "person[taxpayer].se_line2": {
+          "kind": "money",
+          "cents": 4399970
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.prior_7yr",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 7-year property placed in service in 2023 (half-year, no section 179 or allowance), cost $10,000: 2025 is year 3, 17.49% = $1,749 on line 17.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2023",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[saw].macrs_prior": {
+          "kind": "money",
+          "cents": 174900
+        },
+        "person[taxpayer].sc[desk].f17": {
+          "kind": "money",
+          "cents": 174900
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 174900
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.prior_179_full",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.asset.prior_7yr, with the whole $10,000 expensed under section 179 in 2023: the unadjusted basis is $10,000 less the $10,000 section 179 deduction, zero (Pub. 946 p. 37, Figuring the Unadjusted Basis of Your Property, 'you do reduce your original basis by ... Any section 179 deduction claimed'), so line 17 is zero and Schedule C line 13 zero.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2023",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].prior_179": 1000000
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[saw].ub_prior_a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[desk].asset[saw].macrs_prior": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[desk].f17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.prior_bonus_full",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property placed in service in 2022 that took a $20,000 special allowance on its $20,000 cost: unadjusted basis zero, no 2025 depreciation.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2022",
+        "person[taxpayer].sc[desk].asset[pc].cost": 2000000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].prior_bonus": 2000000
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[pc].macrs_prior": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.prior_mq",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property placed in service in August 2023 under the mid-quarter convention, cost $8,000: year 3 of Table A-4 (5-year) = 20.400%.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2023",
+        "person[taxpayer].sc[desk].asset[pc].cost": 800000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].prior_conv": "mq3"
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[pc].macrs_prior": {
+          "kind": "money",
+          "cents": 163200
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.qip",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: qualified improvement property for $30,000 placed in service in 2025, no special allowance: 15-year straight line, half-year (Table A-8) 3.33% = $999, reported on line 19e. No election, so it is not section 179 property and Form 4562 line 2 is zero (i4562 p. 4, Line 2).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "fitout"
+        ],
+        "person[taxpayer].sc[desk].asset[fitout].class": "cqip",
+        "person[taxpayer].sc[desk].asset[fitout].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[fitout].cost": 3000000,
+        "person[taxpayer].sc[desk].asset[fitout].pct": 100,
+        "person[taxpayer].sc[desk].asset[fitout].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[fitout].macrs2025": {
+          "kind": "money",
+          "cents": 99900
+        },
+        "person[taxpayer].sc[desk].f19_y15sl": {
+          "kind": "money",
+          "cents": 99900
+        },
+        "s179.line2": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.qip_2018",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Companion of the qualified improvement property placement regression, predicted by hand from the archived sources before the evaluator was run: the same $30,000 property placed in service in 2018 (i4562 p. 10, \"placed in service by you after December 31, 2017\") is in its 8th recovery year in 2025; Pub. 946 Table A-8 (p. 76), 15-year column, year 8 is 6.66%, so depreciation is $1,998, the only amount on Schedule C line 13.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "fitout"
+        ],
+        "person[taxpayer].sc[desk].asset[fitout].class": "cqip",
+        "person[taxpayer].sc[desk].asset[fitout].placed": "y2018",
+        "person[taxpayer].sc[desk].asset[fitout].cost": 3000000,
+        "person[taxpayer].sc[desk].asset[fitout].pct": 100,
+        "person[taxpayer].sc[desk].asset[fitout].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[fitout].macrs2025": {
+          "kind": "money",
+          "cents": 199800
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 199800
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_qip_2017",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Regression for the qualified improvement property placement rule, predicted by hand from the archived instructions before the evaluator was run: i4562 p. 10, Determining the classification, \"Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017.\" The same $30,000 qualified improvement property placed in service in 2017 is not 15-year qualified improvement property, so the cost line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "fitout"
+        ],
+        "person[taxpayer].sc[desk].asset[fitout].class": "cqip",
+        "person[taxpayer].sc[desk].asset[fitout].placed": "y2017",
+        "person[taxpayer].sc[desk].asset[fitout].cost": 3000000
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[fitout].cost": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[desk].asset[fitout].screened",
+          "form": "Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization, a short tax year and the other items of the screen)",
+          "remedy": "This property is outside the depreciation this tool covers.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "pp. 8-12, Part III, and Pub. 946 Appendix B",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.qip_elected",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived instructions before recording: the same $30,000 qualified improvement property with $10,000 elected under section 179. Line 2 takes its total cost, $30,000 (i4562 p. 4, Line 2, \"the total cost of qualified real property that you elect\"); depreciation is on the remaining $20,000 at 3.33% = $666 (Table A-8).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "fitout"
+        ],
+        "person[taxpayer].sc[desk].asset[fitout].class": "cqip",
+        "person[taxpayer].sc[desk].asset[fitout].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[fitout].cost": 3000000,
+        "person[taxpayer].sc[desk].asset[fitout].pct": 100,
+        "person[taxpayer].sc[desk].asset[fitout].s179": 1000000,
+        "person[taxpayer].sc[desk].asset[fitout].bonus_choice": "none"
+      },
+      "expect": {
+        "s179.line2": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "person[taxpayer].sc[desk].asset[fitout].macrs2025": {
+          "kind": "money",
+          "cents": 66600
+        },
+        "person[taxpayer].sc[desk].f19_y15sl": {
+          "kind": "money",
+          "cents": 66600
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.done",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property placed in service in 2015: 2025 is year 11, after the last year (6) of its recovery period: no depreciation.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2015",
+        "person[taxpayer].sc[desk].asset[pc].cost": 500000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[pc].macrs_prior": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_ads_past_gds",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived instructions before recording: office furniture (class 00.11, GDS 7, ADS 10; p946 Table B-1) placed in service in 2015 under ADS is in year 11 of its ADS period (i4562 p. 13, Column (g), \"straight line method over the ADS recovery period\"), so it still has depreciation the tool does not compute. With the screen answered Yes the asset must refuse rather than give $0, though its GDS period has ended.",
+      "inputs": {
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2015",
+        "person[taxpayer].sc[desk].asset[pc].screen": true,
+        "person[taxpayer].sc[desk].line1": 5000000
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[pc].macrs_prior": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[desk].asset[pc].screened",
+          "form": "Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization, a short tax year and the other items of the screen)",
+          "remedy": "This property is outside the depreciation this tool covers.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "pp. 8-12, Part III, and Pub. 946 Appendix B",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_listed_low_past_gds",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from the archived instructions before recording: listed property (class 00.11) used 40% for business, placed in service in 2015, is depreciated over its 10-year ADS period (i4562 p. 15, Column (f)—Recovery period, \"For property placed in service after 1986 and used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS recovery period\"), so 2025 is year 11 with depreciation the tool does not compute. It must refuse on listed_low rather than give $0, though its GDS period has ended. Shown state (T-232, predicted from the instructions before evaluating): the item is listed property placed in service in 2015, so it belongs in Part V, not on line 17 (i4562 p. 9, Line 17, property placed in service before 2025 that is not listed property).",
+      "inputs": {
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].listed": true,
+        "person[taxpayer].sc[desk].asset[pc].pct": 40,
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2015",
+        "person[taxpayer].sc[desk].line1": 5000000
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[pc].macrs_prior": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[desk].asset[pc].listed_low",
+          "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%",
+          "remedy": "Listed property used 50% or less for business is depreciated under ADS and is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 15, \"used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS recovery period\"",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].sc[desk].asset[pc].on_17": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.listed_prior",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: listed property (7-year) placed in service in 2024, 60% business use, cost $5,000: basis $3,000; year 2 24.49% = $734.70, on Form 4562 line 26 column (h) (not line 17). Schedule C line 13 $734.70.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "cam"
+        ],
+        "person[taxpayer].sc[desk].asset[cam].placed": "y2024",
+        "person[taxpayer].sc[desk].asset[cam].cost": 500000,
+        "person[taxpayer].sc[desk].asset[cam].pct": 60,
+        "person[taxpayer].sc[desk].asset[cam].listed": true
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[cam].dep_listed": {
+          "kind": "money",
+          "cents": 73470
+        },
+        "person[taxpayer].sc[desk].f26h": {
+          "kind": "money",
+          "cents": 73470
+        },
+        "person[taxpayer].sc[desk].f17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 73470
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_class",
+      "covers": [
+        "asset:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: asset class 01.21 (cattle, a farming class) is outside this tool: the cost line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "cows"
+        ],
+        "person[taxpayer].sc[desk].asset[cows].class": "c01_21",
+        "person[taxpayer].sc[desk].asset[cows].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[cows].cost": 300000,
+        "person[taxpayer].sc[desk].asset[cows].pct": 100,
+        "person[taxpayer].sc[desk].asset[cows].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[cows].cost": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[desk].asset[cows].screened",
+          "form": "Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization, a short tax year and the other items of the screen)",
+          "remedy": "This property is outside the depreciation this tool covers.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "pp. 8-12, Part III, and Pub. 946 Appendix B",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_listed_low",
+      "covers": [
+        "asset:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: listed property used 50% for business (not more than 50%): the basis line refuses (ADS).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "cam"
+        ],
+        "person[taxpayer].sc[d].asset[cam].placed": "y2025",
+        "person[taxpayer].sc[d].asset[cam].pct": 50,
+        "person[taxpayer].sc[d].asset[cam].listed": true,
+        "person[taxpayer].sc[d].asset[cam].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[cam].basis": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[d].asset[cam].listed_low",
+          "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%",
+          "remedy": "Listed property used 50% or less for business is depreciated under ADS and is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)—Recovery period, \"For property placed in service after 1986 and used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS recovery period\"",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_s179_over",
+      "covers": [
+        "asset:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $4,000 section 179 election on property with a $3,000 business cost: the line after section 179 refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 300000,
+        "person[taxpayer].sc[d].asset[pc].pct": 100,
+        "person[taxpayer].sc[d].asset[pc].s179": 400000,
+        "person[taxpayer].sc[d].asset[pc].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[pc].after179": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[d].asset[pc].s179_bad",
+          "form": "Section 179 election above the business cost, on property used 50% or less in the business, or on property that is not section 179 property",
+          "remedy": "A section 179 election must not exceed the business cost, needs more than 50% business use, and is allowed only for section 179 property.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 3, Part I; p. 5, Line 6, Column (c); p946 p. 17, What Property Does Not Qualify?",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.s179_partial_use",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property for $3,000 used 60% in the business with a $1,000 section 179 election: business cost $1,800 (more than 50% use, so the election is allowed); basis after section 179 $800.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 300000,
+        "person[taxpayer].sc[d].asset[pc].pct": 60,
+        "person[taxpayer].sc[d].asset[pc].s179": 100000,
+        "person[taxpayer].sc[d].asset[pc].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[pc].after179": {
+          "kind": "money",
+          "cents": 80000
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_s179_half",
+      "covers": [
+        "asset:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a section 179 election on property used 50% for business (not more than 50%): refused.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 300000,
+        "person[taxpayer].sc[d].asset[pc].pct": 50,
+        "person[taxpayer].sc[d].asset[pc].s179": 100000,
+        "person[taxpayer].sc[d].asset[pc].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[pc].after179": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[d].asset[pc].s179_bad",
+          "form": "Section 179 election above the business cost, on property used 50% or less in the business, or on property that is not section 179 property",
+          "remedy": "A section 179 election must not exceed the business cost, needs more than 50% business use, and is allowed only for section 179 property.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 3, Part I; p. 5, Line 6, Column (c); p946 p. 17, What Property Does Not Qualify?",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_bonus_mixed",
+      "covers": [
+        "asset:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a special allowance choice not the same for the whole class: the 100% line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 300000,
+        "person[taxpayer].sc[d].asset[pc].pct": 100,
+        "person[taxpayer].sc[d].asset[pc].after_jan19": true
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[pc].bonus_full": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[d].asset[pc].bonus_mixed",
+          "form": "Different special allowance elections within one class of property",
+          "remedy": "An election that is not the same for the whole class is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 7, Election out",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_pct",
+      "covers": [
+        "asset:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a business use percentage of 101: the basis line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].pct": 101,
+        "person[taxpayer].sc[d].asset[pc].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[pc].basis": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[d].asset[pc].listed_low",
+          "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%",
+          "remedy": "Listed property used 50% or less for business is depreciated under ADS and is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)—Recovery period, \"For property placed in service after 1986 and used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS recovery period\"",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.mq_bonus40",
+      "covers": [
+        "asset",
+        "mq"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property for $10,000 acquired before January 20 and placed in service in November 2025, the only property, special allowance claimed: the mid-quarter test uses the basis before the allowance ($10,000, all in the fourth quarter); allowance 40% = $4,000; MACRS $6,000 x 5.00% (Table A-5) = $300.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 1000000,
+        "person[taxpayer].sc[d].asset[pc].pct": 100,
+        "person[taxpayer].sc[d].asset[pc].quarter": "q4",
+        "person[taxpayer].sc[d].asset[pc].bonus_same": true
+      },
+      "expect": {
+        "mq.applies": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].sc[d].asset[pc].bonus": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].sc[d].asset[pc].macrs2025": {
+          "kind": "money",
+          "cents": 30000
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.prior_179_bonus",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a light truck (asset class 00.241, 5-year, entered as property because it is not a passenger vehicle) placed in service in 2021, 80% business use, cost $20,000, with a $2,000 section 179 deduction and a $4,000 special allowance taken: unadjusted basis $16,000 - $2,000 - $4,000 = $10,000; 2025 is year 5, 11.52% = $1,152.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "van"
+        ],
+        "person[taxpayer].sc[d].asset[van].class": "c00_241",
+        "person[taxpayer].sc[d].asset[van].placed": "y2021",
+        "person[taxpayer].sc[d].asset[van].cost": 2000000,
+        "person[taxpayer].sc[d].asset[van].pct": 80,
+        "person[taxpayer].sc[d].asset[van].prior_179": 200000,
+        "person[taxpayer].sc[d].asset[van].prior_bonus": 400000
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[van].ub_prior": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].sc[d].asset[van].macrs_prior": {
+          "kind": "money",
+          "cents": 115200
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.partial_use",
+      "covers": [
+        "asset",
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property for $10,000 used 60% in the business, 2025, half-year, no allowance: basis $6,000; 20% = $1,200. Part I line 2 counts the $6,000 business cost (used more than 50%).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 1000000,
+        "person[taxpayer].sc[d].asset[pc].pct": 60,
+        "person[taxpayer].sc[d].asset[pc].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[pc].basis": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].sc[d].asset[pc].macrs2025": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "s179.line2": {
+          "kind": "money",
+          "cents": 600000
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.low_use_nonlisted",
+      "covers": [
+        "asset",
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property (not listed) used 40% in the business: basis $4,000, 20% = $800; not counted on Part I line 2 (used 50% or less).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 1000000,
+        "person[taxpayer].sc[d].asset[pc].pct": 40,
+        "person[taxpayer].sc[d].asset[pc].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[pc].macrs2025": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "s179.line2": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.last_year",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: 5-year property placed in service in 2020 (half-year), $5,000: 2025 is year 6, the last year of the recovery period: 5.76% = $288.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2020",
+        "person[taxpayer].sc[d].asset[pc].cost": 500000,
+        "person[taxpayer].sc[d].asset[pc].pct": 100
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[pc].macrs_prior": {
+          "kind": "money",
+          "cents": 28800
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.mq_at_40",
+      "covers": [
+        "mq",
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $6,000 computer in March and $4,000 of furniture in October: $4,000 is exactly 40% of $10,000, not more, so the half-year convention applies: 20% = $1,200 and 14.29% = $571.60.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc",
+          "sofa"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 600000,
+        "person[taxpayer].sc[d].asset[pc].pct": 100,
+        "person[taxpayer].sc[d].asset[pc].bonus_choice": "none",
+        "person[taxpayer].sc[d].asset[sofa].placed": "y2025",
+        "person[taxpayer].sc[d].asset[sofa].cost": 400000,
+        "person[taxpayer].sc[d].asset[sofa].pct": 100,
+        "person[taxpayer].sc[d].asset[sofa].quarter": "q4",
+        "person[taxpayer].sc[d].asset[sofa].bonus_choice": "none"
+      },
+      "expect": {
+        "mq.applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].sc[d].asset[pc].macrs2025": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "person[taxpayer].sc[d].asset[sofa].macrs2025": {
+          "kind": "money",
+          "cents": 57160
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.listed_and_not",
+      "covers": [
+        "sc",
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $2,000 computer (not listed; $500 section 179, 100% allowance on the rest $1,500) and $3,000 of listed photographic equipment used 80% (business cost $2,400; $400 section 179; 100% allowance on $2,000), both 2025: line 6 $500, line 14 $1,500, line 25 $2,000, line 29 $400, line 26(h) zero. Schedule C line 13: section 179 $900 (line 12) plus line 14 $1,500 and line 21 (line 28) $2,000: $4,400. Per asset (T-030): the camera's line 25 $2,000 and column (i) $400; the computer's column (c) $2,000 less $500 and $1,500, zero.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc",
+          "cam"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 200000,
+        "person[taxpayer].sc[d].asset[pc].pct": 100,
+        "person[taxpayer].sc[d].asset[pc].s179": 50000,
+        "person[taxpayer].sc[d].asset[pc].after_jan19": true,
+        "person[taxpayer].sc[d].asset[pc].bonus_same": true,
+        "person[taxpayer].sc[d].asset[cam].placed": "y2025",
+        "person[taxpayer].sc[d].asset[cam].cost": 300000,
+        "person[taxpayer].sc[d].asset[cam].pct": 80,
+        "person[taxpayer].sc[d].asset[cam].listed": true,
+        "person[taxpayer].sc[d].asset[cam].s179": 40000,
+        "person[taxpayer].sc[d].asset[cam].after_jan19": true,
+        "person[taxpayer].sc[d].asset[cam].bonus_same": true
+      },
+      "expect": {
+        "person[taxpayer].sc[d].f6": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[taxpayer].sc[d].f14": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "person[taxpayer].sc[d].f25": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].sc[d].f29": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "person[taxpayer].sc[d].f26h": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[d].line13": {
+          "kind": "money",
+          "cents": 440000
+        },
+        "person[taxpayer].sc[d].asset[cam].f25": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].sc[d].asset[cam].f26i": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "person[taxpayer].sc[d].asset[pc].col19c": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.listed_forty",
+      "covers": [
+        "sc",
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: as stage14.asset.listed_and_not, with the listed photographic equipment taking the 40% special allowance instead of 100% (i4562 p. 5, Line 14, the election for property acquired after January 19, 2025): business cost $2,400, section 179 $400, allowance 40% of $2,000 = $800 on line 25; the remaining $1,200 at 14.29% (7-year, half-year) = $171.48 in column (h) of line 26; line 28 $971.48. Schedule C line 13: section 179 $900 plus line 14 $1,500 plus line 28 $971.48 = $3,371.48. Shown state (T-232, predicted from the instructions before evaluating): both items are placed in service in 2025; the listed photographic equipment goes on lines 25 and 26, not line 19 (i4562 p. 5, Line 6, \"Do not include any listed property on line 6\"), and the computer, not listed, goes on line 19 (i4562 p. 9, \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\").",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc",
+          "cam"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 200000,
+        "person[taxpayer].sc[d].asset[pc].pct": 100,
+        "person[taxpayer].sc[d].asset[pc].s179": 50000,
+        "person[taxpayer].sc[d].asset[pc].after_jan19": true,
+        "person[taxpayer].sc[d].asset[pc].bonus_same": true,
+        "person[taxpayer].sc[d].asset[cam].placed": "y2025",
+        "person[taxpayer].sc[d].asset[cam].cost": 300000,
+        "person[taxpayer].sc[d].asset[cam].pct": 80,
+        "person[taxpayer].sc[d].asset[cam].listed": true,
+        "person[taxpayer].sc[d].asset[cam].s179": 40000,
+        "person[taxpayer].sc[d].asset[cam].after_jan19": true,
+        "person[taxpayer].sc[d].asset[cam].bonus_choice": "forty",
+        "person[taxpayer].sc[d].asset[cam].bonus_same": true
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[cam].f25": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "person[taxpayer].sc[d].asset[cam].dep_listed": {
+          "kind": "money",
+          "cents": 17148
+        },
+        "person[taxpayer].sc[d].f25": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "person[taxpayer].sc[d].f26h": {
+          "kind": "money",
+          "cents": 17148
+        },
+        "person[taxpayer].sc[d].f28": {
+          "kind": "money",
+          "cents": 97148
+        },
+        "person[taxpayer].sc[d].line13": {
+          "kind": "money",
+          "cents": 337148
+        },
+        "person[taxpayer].sc[d].asset[cam].on_19": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].sc[d].asset[cam].on_26_2025": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].sc[d].asset[pc].on_19": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_bonus_mixed_forty",
+      "covers": [
+        "asset:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: the 40% election not the same for the whole class: the 40% line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 300000,
+        "person[taxpayer].sc[d].asset[pc].pct": 100,
+        "person[taxpayer].sc[d].asset[pc].bonus_choice": "forty"
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[pc].bonus_forty": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[d].asset[pc].bonus_mixed",
+          "form": "Different special allowance elections within one class of property",
+          "remedy": "An election that is not the same for the whole class is outside this tool.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 7, Election out",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_reuse_recycling",
+      "covers": [
+        "asset:refuse:reuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted from i4562 pp. 5-6: qualified reuse and recycling property placed in service after August 31, 2008 is eligible for a 50% special depreciation allowance under section 168(m), which this tool does not compute; the screen is answered yes and the cost line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "cows"
+        ],
+        "person[taxpayer].sc[desk].asset[cows].class": "c01_21",
+        "person[taxpayer].sc[desk].asset[cows].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[cows].cost": 300000,
+        "person[taxpayer].sc[desk].asset[cows].pct": 100,
+        "person[taxpayer].sc[desk].asset[cows].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[cows].cost": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[desk].asset[cows].screened",
+          "form": "Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization, a short tax year and the other items of the screen)",
+          "remedy": "This property is outside the depreciation this tool covers.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "pp. 8-12, Part III, and Pub. 946 Appendix B",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_pre_2017",
+      "covers": [
+        "asset:refuse:pre2017"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 14, predicted from i4562 p. 5: the 40% allowance is for property acquired after September 27, 2017 and before January 20, 2025, and the 2025 instructions give no special allowance for property acquired before September 28, 2017; the screen is answered yes and the cost line refuses.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "cows"
+        ],
+        "person[taxpayer].sc[desk].asset[cows].class": "c01_21",
+        "person[taxpayer].sc[desk].asset[cows].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[cows].cost": 300000,
+        "person[taxpayer].sc[desk].asset[cows].pct": 100,
+        "person[taxpayer].sc[desk].asset[cows].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[cows].cost": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[desk].asset[cows].screened",
+          "form": "Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization, a short tax year and the other items of the screen)",
+          "remedy": "This property is outside the depreciation this tool covers.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "pp. 8-12, Part III, and Pub. 946 Appendix B",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.asset.refuse_s179_not179",
+      "covers": [
+        "asset:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-182 regression, predicted by hand from the archived sources before recording: p946 p. 17, \"Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property\". The $3,000 computer of stage14.asset.hy_5yr with its whole cost elected under section 179 and the new question (property that is not section 179 property, such as property used by a governmental unit) answered Yes refuses at the basis after the election (gate s179_bad).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[pc].cost": 300000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].s179": 300000,
+        "person[taxpayer].sc[desk].asset[pc].not179": true,
+        "person[taxpayer].sc[desk].asset[pc].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[pc].after179": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[desk].asset[pc].s179_bad",
+          "form": "Section 179 election above the business cost, on property used 50% or less in the business, or on property that is not section 179 property",
+          "remedy": "A section 179 election must not exceed the business cost, needs more than 50% business use, and is allowed only for section 179 property.",
+          "cite": {
+            "doc": "i4562",
+            "locator": "p. 3, Part I; p. 5, Line 6, Column (c); p946 p. 17, What Property Does Not Qualify?",
+            "revision": "2025",
+            "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6210fbc457f1c7ff086020",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage14.mut.asset_2025_listed_unanswered",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Shown-state regression (T-232): stage14.asset.hy_5yr (a computer placed in service in March 2025) with the listed-property question left unanswered. Predicted from the archived i4562 before evaluating: line 17 is for property placed in service before 2025 (i4562 p. 9, Line 17, \"For tangible property placed in service in tax years beginning before 2025 and depreciated under MACRS\"), so the item is not on line 17 whatever the answer; where it goes (line 19 or Part V) waits on the answer, which is not asserted.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[pc].cost": 300000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].listed": null
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].asset[pc].is2025": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].sc[desk].asset[pc].on_17": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage14.mut.s179_half_fifty_cents",
+      "covers": [
+        "asset",
+        "f4562"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the zero operand of asset.s179_bad), predicted from the archived i4562 and p946 before evaluating: stage14.asset.refuse_s179_half (property used 50% in the business) with a section 179 election of $0.50. Any election above zero on property not used more than 50% in the business is not allowed (i4562 p. 3, Part I; p946 p. 17), however small, so the election gate is true as for that case.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "d"
+        ],
+        "person[taxpayer].sc[d].line1": 5000000,
+        "$asset@person[taxpayer].sc[d]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[d].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[d].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[d].asset[pc].cost": 300000,
+        "person[taxpayer].sc[d].asset[pc].pct": 50,
+        "person[taxpayer].sc[d].asset[pc].s179": 50,
+        "person[taxpayer].sc[d].asset[pc].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[d].asset[pc].s179_bad": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    }
+  ]
+}

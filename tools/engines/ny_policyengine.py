@@ -28,6 +28,8 @@ from fractions import Fraction
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools"))
+import fixture_inputs  # noqa: E402
 FIXTURES = ROOT / "fixtures" / "ny" / "2025" / "it201.json"
 REPORT = ROOT / "reports" / "ny" / "2025" / "engine_differential.md"
 LINES = [("line33", ["ny_agi"]), ("line38", ["ny_taxable_income"]), ("line39", ["ny_main_income_tax", "ny_supplemental_tax"]),
@@ -82,7 +84,11 @@ def situation(status, agi):
 def main():
     from policyengine_us import Simulation
     import policyengine_us
-    cases = json.loads(FIXTURES.read_text())["cases"]
+    # The inputs each case is evaluated on (parameters and test-data defaults resolved), so an unstated filing status
+    # reads as its default rather than as missing.
+    stated = json.loads(FIXTURES.read_text())["cases"]
+    resolved = fixture_inputs.resolve_cases([{**c, "file": FIXTURES.name} for c in stated], 2025, ny=True)
+    cases = [{**c, "inputs": resolved[c["id"]]} for c in stated]
     rows, diffs, compared = [], [], 0
     for c in cases:
         e = c.get("expect", {})

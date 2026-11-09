@@ -1,0 +1,232 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage4.refuse.s2.amt",
+      "walk": "stage4",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "s2.amt": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "s2.line21": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        },
+        "s2.line2": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        },
+        "s2.line3": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.s2.other",
+      "walk": "stage4",
+      "covers": [
+        "s2.other"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "s2.other": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "s2.line21": {
+          "kind": "refusal",
+          "gate": "s2.other",
+          "form": "Schedule 2 additional source forms",
+          "remedy": "Prepare the other required tax forms; this slice supports only Schedule SE and Forms 8959 and 8960.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        },
+        "s2.line2": {
+          "kind": "refusal",
+          "gate": "s2.other",
+          "form": "Schedule 2 additional source forms",
+          "remedy": "Prepare the other required tax forms; this slice supports only Schedule SE and Forms 8959 and 8960.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        },
+        "s2.line3": {
+          "kind": "refusal",
+          "gate": "s2.other",
+          "form": "Schedule 2 additional source forms",
+          "remedy": "Prepare the other required tax forms; this slice supports only Schedule SE and Forms 8959 and 8960.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage4.refuse.s2.amt.simultaneous",
+      "walk": "stage4",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic refusal regression",
+      "inputs": {
+        "s2.amt": true,
+        "s2.other": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "s2.line21": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        },
+        "s2.line2": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        },
+        "s2.line3": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage18.refuse.s2_other_before_8962",
+      "covers": [
+        "f8962"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 18 mutation scenario: Schedule 2 line 3 refuses on its own screen for other Schedule 2 taxes (s2.other) even when Form 8962, read through line 1z, also refuses (an allocation, f8962.alloc). The screen order is the evidence: s2.amt, then s2.other, before the lines summed.",
+      "inputs": {
+        "s2.other": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "$f1095a": [
+          "m"
+        ],
+        "f8962.alloc": true,
+        "s179.line10": null
+      },
+      "expect": {
+        "s2.line3": {
+          "kind": "refusal",
+          "gate": "s2.other",
+          "form": "Schedule 2 additional source forms",
+          "remedy": "Prepare the other required tax forms; this slice supports only Schedule SE and Forms 8959 and 8960.",
+          "cite": {
+            "doc": "f1040s2",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "revision": "2025; created 2025-05-08",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8",
+            "tax_year": 2025
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2971 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "stage11.hsa.self_full_year",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Self-only HDHP coverage every month, under 55, contributions $3,000, no employer contributions: line 3 $4,300, line 12 $4,300, line 13 $3,000 (Form 8889 line 3; i8889 p. 7, line 13). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[taxpayer].f8889[hsa].line12": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "stage11.hsa.self_all_year_answer",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage11, predicted by hand from the archived instructions before recording: Self-only HDHP coverage every month, answered as self-only all year (no month questions): under 55, contributions $3,000, no employer contributions: line 3 $4,300 (i8889 p. 4, Line 3, rule 3, \"If you were ... an eligible individual for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP\"), line 12 $4,300, line 13 $3,000; the same values as stage11.hsa.self_full_year, which gives the months.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 300000
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[taxpayer].f8889[hsa].line12": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "stage11.hsa.family_55",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Family coverage every month, unmarried, 55 at the end of 2025, contributions $9,000: line 3 $9,550 (chart $9,550 a month, total divided by 12), line 13 $9,000. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].f8889[hsa].line2": 900000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].age55": true,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 955000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 900000
+        }
+      }
+    },
+    {
+      "id": "stage11.hsa.family_all_year_answer",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage11, predicted by hand from the archived instructions before recording: Family HDHP coverage every month, answered as family all year (no month questions): unmarried, 55 at the end of 2025, contributions $9,000: line 3 $9,550 (rule 3, $8,550 for a family HDHP, increased by $1,000 under rule 6), line 13 $9,000; the same values as stage11.hsa.family_55, which gives the months.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].f8889[hsa].line2": 900000,
+        "person[taxpayer].f8889[hsa].coverage_year": "family",
+        "person[taxpayer].f8889[hsa].age55": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 955000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 900000
+        }
+      }
+    },
+    {
+      "id": "stage11.hsa.employer",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Self-only all year, contributions $3,000 and employer contributions $1,000: line 11 $1,000, line 12 $3,300, line 13 $3,000. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].line9": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line12": {
+          "kind": "money",
+          "cents": 330000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "stage11.hsa.part_year",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible with self-only coverage for 6 months (January to June), not eligible on December 1, contributions $2,000: chart total $25,800, divided by 12 $2,150 on line 3; line 13 $2,000 (i8889 p. 4, rule 5; p. 6 chart). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 200000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 6
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 215000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "stage11.hsa.changed",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible all 12 months, family coverage for 4 of them, self-only on December 1, under 55, contributions $5,500: chart 8 x $4,300 + 4 x $8,550 = $68,600, divided by 12 = $5,716.67 (half-up), which is more than the self-only $4,300, so line 3 $5,716.67 (rule 4); line 13 $5,500. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 550000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 4,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 571667
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 550000
+        }
+      }
+    },
+    {
+      "id": "stage11.hsa.last_month",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible with family coverage from October 1 (3 months), family on December 1, using the last-month rule, contributions $8,000: treated as family all year, line 3 $8,550 (rule 2); line 13 $8,000. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "person[taxpayer].f8889[hsa].line2": 800000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 3,
+        "person[taxpayer].f8889[hsa].months_family": 3,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[taxpayer].f8889[hsa].last_month": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 800000
+        }
+      }
+    },
+    {
+      "id": "stage11.hsa.no_last_month",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: As hsa.last_month but not using the last-month rule, contributions $2,000: chart 3 x $8,550 = $25,650, divided by 12 = $2,137.50 on line 3; line 13 $2,000. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "person[taxpayer].f8889[hsa].line2": 200000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 3,
+        "person[taxpayer].f8889[hsa].months_family": 3,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 213750
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "stage11.refuse.hsa_screen",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: the Form 8889 screen answered Yes (one of the situations it lists, such as a qualified HSA funding distribution): refused. Since Stage 16 the screen no longer lists taxable distributions, which Form 8889 Part II computes. Mutation-score assertion (T-159: the line 16 operand of f8889.subject_bad), predicted before recording: line 16 is refused at the HSA screen, and the comparison of the line 17b amount (unanswered here) with line 16 is that refusal, which outranks the unknown first operand (spec 4.7.2, comparisons: the first refusal among the two operands, else the first unknown). Refusal text recorded from the evaluator. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].f8889[hsa].subject_part": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].unsupported",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
+          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "Parts II and III; lines 4, 10 and 13",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].subject_bad": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].unsupported",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
+          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "Parts II and III; lines 4, 10 and 13",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage11.hsa.last_month_changed",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Eligible from February 1 (11 months), family coverage in 4 of them, self-only on December 1, under 55, using the last-month rule, contributions $5,000: considered eligible all year with a change of type, so line 3 is the greater of the chart (11 x $4,300 + 4 x $4,250 = $64,300, divided by 12 = $5,358.33) and the self-only $4,300 (rule 4, amb.2025.hsa_last_month_change): $5,358.33; line 13 $5,000. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "person[taxpayer].f8889[hsa].line2": 500000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 11,
+        "person[taxpayer].f8889[hsa].months_family": 4,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "person[taxpayer].f8889[hsa].last_month": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 535833
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 500000
+        }
+      }
+    },
+    {
+      "id": "stage11.mut.hsa_dec_self_only_no_months",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the months_eligible operand of the fifth f8889.bad_months condition), predicted before evaluating: stage11.hsa.part_year with self-only coverage on December 1, zero eligible months, and the family-months question unanswered. An eligible individual on December 1 has at least that month (i8889 p. 4, Line 3, an eligible individual on the first day of the month), so the answers are impossible whatever the family months are: the month-count check is true. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 200000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "person[taxpayer].f8889[hsa].months_family": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].bad_months": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage11.mut.hsa_thirteen_months",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the months_eligible operand of the first f8889.bad_months condition), predicted before evaluating: stage11.hsa.part_year with 13 eligible months entered. A year has 12 months (the question asks for 0 to 12), so the month-count check is true. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 200000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 13
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].bad_months": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage13.hsa_equal_family",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: each spouse has an HSA and family coverage all year: line 3 $8,550 on each form; line 6 divides it equally, $4,275 each (Step 1 $8,550, Step 4 $0); each contributed $4,275; line 13 $4,275 each; Schedule 1 line 13 $8,550. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 427500,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].line2": 427500,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].months_family": 12,
+        "person[spouse].f8889[hsa].dec_coverage": "family"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[spouse].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 855000
+        }
+      }
+    },
+    {
+      "id": "stage13.hsa_agreed_all_to_you",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: family coverage all year; you agree to allocate the whole $8,550 to you and nothing to your spouse: your line 6 $8,550, your spouses $0; you contributed $8,550: line 13 $8,550; Schedule 1 line 13 $8,550. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 855000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[taxpayer].f8889[hsa].allocation": "agreed",
+        "person[taxpayer].f8889[hsa].allocated": 855000,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].months_family": 12,
+        "person[spouse].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].allocation": "agreed"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 855000
+        }
+      }
+    },
+    {
+      "id": "stage13.refuse.hsa_family_one_spouse",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: you count 12 family months and your spouse none, though if either had family coverage while both were eligible both are treated as having it (i8889 p. 4, rule 1): your form is refused; your spouses line 6 is the self-only $4,300. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 427500,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].line2": 430000,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].dec_coverage": "self_only",
+        "s179.line10": null
+      },
+      "expect": {
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].allocation_bad",
+          "form": "Form 8889 line 6 for spouses with separate HSAs",
+          "remedy": "Count the months treated as family coverage the same way for both spouses (if either had family coverage while both were eligible, both are treated as having it), use the same allocation method on both Forms 8889, and allocate no more than the Step 1 limit between you. An agreed allocation between spouses whose Step 1 limits differ is outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 4, Line 3, rule 1; p. 7, Line 6, Steps 1 to 3",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage13.hsa_part_year_family",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: each spouse eligible all year, family coverage for 6 months (including December 1), self-only for 6. Step 1: $8,550 x 6 / 12 = $4,275; Step 2: half, $2,137.50; Step 3: $4,275 - $2,137.50 = $2,137.50; Step 4: self-only months $4,300 x 6 / 12 = $2,150; line 6 $4,287.50 each. Each contributed $4,287.50; Schedule 1 line 13 $8,575. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 428750,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 6,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].line2": 428750,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].months_family": 6,
+        "person[spouse].f8889[hsa].dec_coverage": "family"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].step1": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[taxpayer].f8889[hsa].share": {
+          "kind": "money",
+          "cents": 213750
+        },
+        "person[taxpayer].f8889[hsa].step4": {
+          "kind": "money",
+          "cents": 215000
+        },
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 428750
+        },
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 428750
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 857500
+        }
+      }
+    },
+    {
+      "id": "stage13.hsa_age55_line7",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: family coverage all year, you are 55 or older: the additional contribution amount is not on line 3 (married with family coverage, i8889 p. 5 Note): line 3 $8,550, line 6 $4,275; line 7 = $1,000 x 12 / 12 = $1,000; line 8 $5,275. You contributed $5,275, your spouse $4,275: Schedule 1 line 13 $9,550. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 527500,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].age55": true,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].line2": 427500,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].months_family": 12,
+        "person[spouse].f8889[hsa].dec_coverage": "family"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[taxpayer].f8889[hsa].line7": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].f8889[hsa].line8": {
+          "kind": "money",
+          "cents": 527500
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 527500
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 955000
+        }
+      }
+    },
+    {
+      "id": "stage13.hsa_age55_line7_all_year_answer",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage13, predicted by hand from the archived instructions before recording: Both spouses answer family all year (no month or last-month questions); you are 55 or older: line 3 $8,550 (rule 3; the additional contribution amount is on line 7 for a married filer with family coverage, i8889 p. 5 Note), line 6 $4,275 (half, equal division), line 7 = $1,000 x 12 / 12 = $1,000 (every month eligible), line 8 $5,275; Schedule 1 line 13 $9,550; the same values as stage13.hsa_age55_line7, which gives the months.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 527500,
+        "person[taxpayer].f8889[hsa].coverage_year": "family",
+        "person[taxpayer].f8889[hsa].age55": true,
+        "person[spouse].f8889[hsa].line2": 427500,
+        "person[spouse].f8889[hsa].coverage_year": "family"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[taxpayer].f8889[hsa].line7": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].f8889[hsa].line8": {
+          "kind": "money",
+          "cents": 527500
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 527500
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 955000
+        }
+      }
+    },
+    {
+      "id": "stage13.hsa_one_spouse_family",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: only you have an HSA (family coverage all year): no division, line 6 = line 5 = $8,550; contribution $8,550; Schedule 1 line 13 $8,550. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 855000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 855000
+        }
+      }
+    },
+    {
+      "id": "stage13.hsa_married_self_only_55",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: married, self-only coverage all year, 55 or older: the $1,000 stays on line 3 (rule 6), line 3 $5,300, line 7 $0; contribution $5,300; line 13 $5,300. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 530000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].age55": true,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 530000
+        },
+        "person[taxpayer].f8889[hsa].line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 530000
+        }
+      }
+    },
+    {
+      "id": "stage13.hsa_last_month_spouses",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: each spouse an eligible individual from July 1 with family coverage, using the last-month rule (treated as eligible with family coverage all year, i8889 p. 4 rule 2); you are 55 or older. Step 1: $8,550 x 12 / 12 = $8,550; half $4,275; Step 4 $0; line 6 $4,275 each. Your line 7: $1,000 x 12 / 12 = $1,000; line 8 $5,275. Contributions $5,275 and $4,275: Schedule 1 line 13 $9,550. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 527500,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 6,
+        "person[taxpayer].f8889[hsa].months_family": 6,
+        "person[taxpayer].f8889[hsa].age55": true,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[taxpayer].f8889[hsa].last_month": true,
+        "person[spouse].f8889[hsa].line2": 427500,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 6,
+        "person[spouse].f8889[hsa].months_family": 6,
+        "person[spouse].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].last_month": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].step1": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].share": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[taxpayer].f8889[hsa].step4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[taxpayer].f8889[hsa].line7": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].f8889[hsa].line8": {
+          "kind": "money",
+          "cents": 527500
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 527500
+        },
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 955000
+        }
+      }
+    },
+    {
+      "id": "stage13.hsa_part_year_eligible",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: each spouse an eligible individual from April 1 (9 months, all with family coverage, December 1 family), no last-month rule. Step 1: $8,550 x 9 / 12 = $6,412.50; half $3,206.25; Step 4: $4,300 x 9 - $4,300 x 9 = $0; line 6 $3,206.25 each. Contributions $3,206.25 each: Schedule 1 line 13 $6,412.50. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 320625,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 9,
+        "person[taxpayer].f8889[hsa].months_family": 9,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].line2": 320625,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 9,
+        "person[spouse].f8889[hsa].months_family": 9,
+        "person[spouse].f8889[hsa].dec_coverage": "family"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].step1": {
+          "kind": "money",
+          "cents": 641250
+        },
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 320625
+        },
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 320625
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 641250
+        }
+      }
+    },
+    {
+      "id": "stage13.mut.hsa_married_last_month_self_only",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (T-159: the use_last_month operand of f8889.married_family), predicted from the archived i8889 before evaluating: stage13.hsa_married_self_only_55 (married filing jointly, only you have an HSA, 55 or older, self-only coverage on December 1) with family coverage in the first 6 of 12 eligible months and the last-month rule used. Under that rule \"You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month\" (i8889 p. 4, Line 3, rule 2): self-only all year, so you are not treated as having family coverage at any time, and the $1,000 additional contribution stays on line 3 (rule 6). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 530000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 6,
+        "person[taxpayer].f8889[hsa].age55": true,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "person[taxpayer].f8889[hsa].last_month": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].married_family": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].age55_line3": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage16.small.s4",
+      "covers": [
+        "s1",
+        "interest",
+        "f8889",
+        "person",
+        "s2",
+        "f8959",
+        "f8960",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, aged 45. Wages $50,000. HSA distributions (Form 1099-SA box 1) $3,000, of which $1,000 paid qualified medical expenses. Working (predictor A): 8889: 14a 3,000; 14b 0; 14c 3,000; 15 qualified medical 1,000; 16 = 2,000 -> Sch 1 line 8f (i1040gi line 8f: lines 16 + 20). Age 45: no exception (i8889 Exceptions: death, disability, age 65), 17a unchecked, 17b = 20% x 2,000 = 400 -> Sch 2 17c 400; 18 = 400; 21 = 400 -> 1040 line 23. 1040 line 9 = 52,000; line 11 = 52,000; line 15 = 36,250; Tax Table 36,250-36,300 single = 4,115. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].line14a": 300000,
+        "person[taxpayer].f8889[hsa].medical": 100000
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line14a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].f8889[hsa].line17a": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s1.line8f": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s2.line17c": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s2.line18": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s2.line21": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5200000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 3625000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 411500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 411500
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 40000
+        }
+      }
+    },
+    {
+      "id": "stage16.small.s5",
+      "covers": [
+        "s1",
+        "interest",
+        "f8889",
+        "person",
+        "s2",
+        "f8959",
+        "f8960",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, turned 65 on July 10, 2025. Wages $50,000. HSA distributions $4,000, none for medical expenses; $1,500 of them were made before your 65th birthday. Working (predictor A): 8889: 14a 4,000; 14c 4,000; 15 0; 16 4,000 -> Sch 1 8f. Exception applies to distributions made after turning 65 (i8889 Part II), so 17a checked; 17b = 20% of the 1,500 made before the 65th birthday = 300 -> Sch 2 17c, 18, 21 = 300 -> 1040 line 23. 1040 line 9 = 54,000 = line 11. Born July 10, 1960 (before Jan 2, 1961): line 12d box; std deduction chart, single, 1 box = 17,750. Sch 1-A Part V: line 31 MAGI 54,000 <= 75,000 -> line 35 = 6,000; 36a 6,000; 37 6,000; line 38 -> 1040 line 13b 6,000. Line 14 = 23,750; line 15 = 30,250. Tax Table 30,250-30,300 single = 3,395. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "person[taxpayer].age65": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].age55": true,
+        "person[taxpayer].f8889[hsa].line14a": 400000,
+        "person[taxpayer].f8889[hsa].line17a": true,
+        "person[taxpayer].f8889[hsa].subject_part": 150000
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line14a": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].f8889[hsa].line17a": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "s1.line8f": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s2.line17c": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "s2.line18": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "s2.line21": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5400000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1775000
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 3025000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 339500
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 339500
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 30000
+        }
+      }
+    },
+    {
+      "id": "stage16.small.s6",
+      "covers": [
+        "s1",
+        "interest",
+        "f8889",
+        "person",
+        "s2",
+        "f8959",
+        "f8960",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Single, aged 70. Wages $30,000. HSA distributions $2,000, none for medical expenses. Working (predictor A): 8889: 14a 2,000; 16 2,000 -> Sch 1 8f. Aged 70: all distributions after turning 65, 17a checked, 17b 0; Sch 2 17c/18/21 = 0. 1040 line 9 = 32,000 = line 11. Std deduction (born before 1961, single, 1 box) 17,750; Sch 1-A Part V: MAGI 32,000 <= 75,000 -> 6,000 on line 13b. Line 14 = 23,750; line 15 = 8,250. Tax Table 8,250-8,300 single = 828. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "person[taxpayer].age65": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].age55": true,
+        "person[taxpayer].f8889[hsa].line14a": 200000,
+        "person[taxpayer].f8889[hsa].line17a": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line14a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].f8889[hsa].line17a": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line8f": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s2.line17c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3200000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1775000
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 825000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 82800
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 82800
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.small.s9",
+      "covers": [
+        "s1",
+        "interest",
+        "f8889",
+        "person",
+        "s2",
+        "f8959",
+        "f8960",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 16, predicted by hand from the archived i1040gi (Schedule 1, Schedule 2, the Tax Table and Tax Computation Worksheet), p504, f8889, i8889, p4681, f8959 and i8960, by two independent agents that did not see the encoding and agreed on every shared value; recorded after comparison. Facts: Married filing jointly. You: wages $50,000, aged 45, HSA distributions $2,000, none for medical. Spouse: wages $30,000, aged 40, HSA distributions $1,000, all for medical. Working (predictor A): Separate Part II per spouse (f8889 Part II heading). You: 14a 2,000; 15 0; 16 2,000; age 45, 17b 400. Spouse: 14a 1,000; 15 1,000; 16 0; 17b 0. Sch 1 8f = 2,000 + 0 = 2,000; Sch 2 17c = 400 + 0 = 400; 18 400; 21 400. 1040 line 9 = 80,000 + 2,000 = 82,000 = line 11; MFJ std ded 31,500; line 15 = 50,500. Tax Table 50,500-50,550 MFJ = 5,586. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box4": 310000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 3000000,
+        "person[spouse].w2[e0].box4": 186000,
+        "person[spouse].w2[e0].box5": 3000000,
+        "person[spouse].w2[e0].box6": 43500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].line14a": 200000,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].line14a": 100000,
+        "person[spouse].f8889[hsa].medical": 100000
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line14a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].f8889[hsa].line17a": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "person[spouse].f8889[hsa].line14a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[spouse].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[spouse].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[spouse].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[spouse].f8889[hsa].line17a": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[spouse].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line8f": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s2.line17c": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s2.line18": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s2.line21": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 8200000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 5050000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 558600
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 558600
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 40000
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.f8889.rollover_over",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the amount rolled over changed to $4,000, more than the $3,000 distributed. Line 14b chooses the rollover amount, an input, so its own entry decides its value; lines 14c and 16 and Schedule 1 line 8f carry the same refusal through it. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line14a": 300000,
+        "person[taxpayer].f8889[hsa].rollover": 400000,
+        "person[taxpayer].f8889[hsa].medical": 100000,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line14a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].f8889[hsa].line14b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].rollover_bad",
+          "form": "Form 8889 line 14b",
+          "remedy": "The distributions rolled over are part of the total distributions on line 14a and cannot be more than it.",
+          "cite": {
+            "doc": "f8889",
+            "locator": "Form 8889 (2025), line 14b, \"Distributions included on line 14a\"",
+            "revision": "2025; created 2025-03-28",
+            "snapshot": "15ed4587f75bec57b0b343dfd001b4016f09698af970afee633ca1a364d5f49f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].line14c": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].rollover_bad",
+          "form": "Form 8889 line 14b",
+          "remedy": "The distributions rolled over are part of the total distributions on line 14a and cannot be more than it.",
+          "cite": {
+            "doc": "f8889",
+            "locator": "Form 8889 (2025), line 14b, \"Distributions included on line 14a\"",
+            "revision": "2025; created 2025-03-28",
+            "snapshot": "15ed4587f75bec57b0b343dfd001b4016f09698af970afee633ca1a364d5f49f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].rollover_bad",
+          "form": "Form 8889 line 14b",
+          "remedy": "The distributions rolled over are part of the total distributions on line 14a and cannot be more than it.",
+          "cite": {
+            "doc": "f8889",
+            "locator": "Form 8889 (2025), line 14b, \"Distributions included on line 14a\"",
+            "revision": "2025; created 2025-03-28",
+            "snapshot": "15ed4587f75bec57b0b343dfd001b4016f09698af970afee633ca1a364d5f49f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line8f": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].rollover_bad",
+          "form": "Form 8889 line 14b",
+          "remedy": "The distributions rolled over are part of the total distributions on line 14a and cannot be more than it.",
+          "cite": {
+            "doc": "f8889",
+            "locator": "Form 8889 (2025), line 14b, \"Distributions included on line 14a\"",
+            "revision": "2025; created 2025-03-28",
+            "snapshot": "15ed4587f75bec57b0b343dfd001b4016f09698af970afee633ca1a364d5f49f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.f8889.unsupported_part2",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.small.s4 (an HSA distribution of $3,000 on line 14a, $1,000 of it for medical expenses), with the unsupported-HSA-situations question (Part III, Form 8853, or other HSA situations) answered Yes. Line 16 carries the screen's own refusal entry (as line 13 does), so line 16 refuses whatever its figure; the figure behind it, line 14c less line 15, is $2,000. Schedule 1 line 8f carries the same refusal through line 16. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].f8889[hsa].line14a": 300000,
+        "person[taxpayer].f8889[hsa].medical": 100000,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].f8889[hsa].line16_figured": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].unsupported",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
+          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "Parts II and III; lines 4, 10 and 13",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line8f": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].unsupported",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
+          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "Parts II and III; lines 4, 10 and 13",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.f8889.subject_over",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.small.s5 (an HSA distribution of $4,000, none for medical expenses, with the line 17a exception checked), with the part of line 16 subject to the additional tax changed to $5,000, more than line 16's $4,000. The line copies that input, so its own entry decides its value; the amount subject to the additional tax and line 17b carry the same refusal through it, while line 16 stays a number. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "person[taxpayer].age65": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].age55": true,
+        "person[taxpayer].f8889[hsa].line14a": 400000,
+        "person[taxpayer].f8889[hsa].line17a": true,
+        "person[taxpayer].f8889[hsa].subject_part": 500000,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].f8889[hsa].subject_excepted": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].subject_bad",
+          "form": "Form 8889 line 17b",
+          "remedy": "The part subject to the additional 20% tax is part of line 16 and cannot be more than it.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 9, Exceptions to the Additional 20% Tax",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].subject": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].subject_bad",
+          "form": "Form 8889 line 17b",
+          "remedy": "The part subject to the additional 20% tax is part of line 16 and cannot be more than it.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 9, Exceptions to the Additional 20% Tax",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].line17b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].subject_bad",
+          "form": "Form 8889 line 17b",
+          "remedy": "The part subject to the additional 20% tax is part of line 16 and cannot be more than it.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 9, Exceptions to the Additional 20% Tax",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.mut.hsa_contrib_and_dist",
+      "covers": [
+        "stage16:mutation"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "SC-09 of the Stage 16 mutation scenarios. Single, aged 45. Wages $50,000; the W-2 shows no employer HSA contributions (no box 12 code W). Covered all of 2025 by a self-only high-deductible health plan, with no other health coverage, no Medicare, no Archer MSA, and not claimable as a dependent. Contributed $2,000 of your own money to your HSA for 2025 (not through payroll). Received HSA distributions of $3,000 in 2025 (Form 1099-SA box 1). $1,000 of it paid qualified medical expenses; the rest was not used for medical expenses, nothing was rolled over, and no exception to the additional tax applies (not disabled, not 65, alive at year end). No excess contributions withdrawn, no qualified HSA funding distribution, not under the last-month rule. Two agents worked the return by hand from the archived text without the encoding and agreed on every asserted value; the expected values are theirs. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 200000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "person[taxpayer].f8889[hsa].line14a": 300000,
+        "person[taxpayer].f8889[hsa].medical": 100000
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].f8889[hsa].line14a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "person[taxpayer].f8889[hsa].line2": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s1.line8f": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "s2.line17c": {
+          "kind": "money",
+          "cents": 40000
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.f8889.dec_self_all_family",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with six eligible months, all of family coverage, but self-only coverage on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 6,
+        "person[taxpayer].f8889[hsa].months_family": 6,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].bad_months": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.f8889.dec_family_no_family",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with six eligible months, none of family coverage, but family coverage on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 6,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].bad_months": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.f8889.dec_covered_no_months",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with no eligible month, but self-only coverage as an eligible individual on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].bad_months": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.refuse.f8889.dec_none_all_year",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage11.hsa.self_full_year (single, self-only HDHP coverage all year, $3,000 contributed) with twelve eligible months, but not an eligible individual on December 1; December 1 is one of the months counted (i8889 p. 6, Line 3 Limitation Chart and Worksheet), so the answers contradict each other and Form 8889 refuses them as an entry error. The refused values are the evaluator's. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].bad_months": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].bad_months",
+          "form": "Form 8889 line 3 month counts",
+          "remedy": "The number of eligible months must be at most 12 and the number of family months at most the eligible months, and the December 1 coverage must agree with them (December 1 is one of the months counted). Check the answers.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 6, Line 3 Limitation Chart and Worksheet",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "stage16.cleanup.refuse.f8889.screen_no_amounts",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Inputs are stage16.small.s4 as the interview asks them, for a person whose only HSA item is one the tool does not support (a qualified HSA funding distribution from an IRA, a testing-period failure or an inherited HSA): Form 8889 is answered for the person and the unsupported-HSA-situations question Yes. The interview asks that question straight after the Form 8889 roster and stops at the refusal, so no contribution or distribution amount is asked. Form 8889 lines 13 and 16 carry the question's refusal entry whatever their figure, and Schedule 1 lines 13 and 8f carry it through them. The refused values are the evaluator's. Ordinary dividends (box 1a) of $0 answered, with the dividends question answered yes: qualified dividends (line 3a) are asked only when box 1a is above zero, and the recorded $0 assumes it is not. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "f1040.line26": 200000,
+        "div.any": true,
+        "person[taxpayer].f8889[hsa].unsupported": true,
+        "f2441.benefits": null,
+        "sd.distributions": null,
+        "ssb.benefits": null,
+        "sd.other_forms": null,
+        "refund.received": null,
+        "s1.alimony": null,
+        "s1.uc_paid": null,
+        "s1.line8_other": null,
+        "sa.dependent": null,
+        "s1a.carloan": null,
+        "f8959.unsupported": null,
+        "f2441.care": null,
+        "f5695.part2_any": null,
+        "f5695.condo": null,
+        "person[taxpayer].sav_trad": null,
+        "person[taxpayer].ira_dist": null,
+        "sd.carryover": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].unsupported",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
+          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "Parts II and III; lines 4, 10 and 13",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].line16": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].unsupported",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
+          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "Parts II and III; lines 4, 10 and 13",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].unsupported",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
+          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "Parts II and III; lines 4, 10 and 13",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line8f": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].unsupported",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
+          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "Parts II and III; lines 4, 10 and 13",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "audit.f8889.married_hoh_family_age55",
+      "covers": [
+        "f8889",
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are stage11.hsa.family_55 filed as head of household with the qualifying child of stage8.hoh.child.ctc, the filer married at the end of 2025 but considered unmarried for head of household: Form 8889 reads the marital answer, not the filing status, so the chart amount for a month of family coverage is $8,550 (not $9,550, which is for the unmarried: i8889 p. 6, \"If, at the end of 2025, you were unmarried and age 55 or older, enter $9,550 for the month\"), line 3 is $8,550, the $1,000 additional contribution amount goes on line 7 (p. 5, \"If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\"), line 8 is $9,550 and line 13 is the $9,000 contributed; the standard deduction is the head of household amount. Predicted from i8889 pp. 4-7 and i1040gi p. 14; no independent human hand-work is claimed. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "household.married": true,
+        "person[taxpayer].f8889[hsa].line2": 900000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].age55": true,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "dependent[child].age": 10,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].married_family": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].age55_unmarried": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].line7": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].f8889[hsa].line8": {
+          "kind": "money",
+          "cents": 955000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2362500
+        }
+      }
+    },
+    {
+      "id": "audit.f8889.unmarried_hoh_family_age55",
+      "covers": [
+        "f8889",
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs are audit.f8889.married_hoh_family_age55 with the filer unmarried at the end of 2025: the chart amount for a month of family coverage is $9,550 (i8889 p. 6), line 3 is $9,550, line 7 is zero and line 13 is the $9,000 contributed, as in stage11.hsa.family_55; only the marital answer separates the two cases. Predicted from i8889 pp. 4-7; no independent human hand-work is claimed. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "person[taxpayer].f8889[hsa].line2": 900000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 12,
+        "person[taxpayer].f8889[hsa].age55": true,
+        "person[taxpayer].f8889[hsa].dec_coverage": "family",
+        "dependent[child].age": 10,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].married_family": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].age55_unmarried": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 955000
+        },
+        "person[taxpayer].f8889[hsa].line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f8889[hsa].line8": {
+          "kind": "money",
+          "cents": 955000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2362500
+        }
+      }
+    },
+    {
+      "id": "stage16.hsa.partial.H01",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 p.8 lines14b/15 count only actual distributions; p.9 taxes only taxable distributions. Zero distributed dollars needs no rollover, medical or exception figures. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$person": [
+          "sample"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "person[sample].role": "taxpayer",
+        "person[sample].f8889[hsa].rollover": null,
+        "person[sample].f8889[hsa].line9": null,
+        "person[sample].f8889[hsa].line17a": null
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.hsa.partial.H02",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. An explicit zero rollover leaves the same zero-distribution amounts; no medical or exception answer is needed. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$person": [
+          "sample"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "person[sample].role": "taxpayer"
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.hsa.partial.H05",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. All $1000 distributed dollars pay qualifying expenses; no taxable amount remains and no exception answer is needed. i8889 pp.8-9. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$person": [
+          "sample"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "person[sample].role": "taxpayer",
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].medical": 100000
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.hsa.partial.H06",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. All $1000 distributed dollars are rolled over, with no medical-use amount; the remainder and taxable amount are zero. i8889 p.8. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$person": [
+          "sample"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "person[sample].role": "taxpayer",
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].rollover": 100000
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage16.hsa.partial.H07",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 pp.8-9: $1000 minus $250 rollover minus $250 qualified expenses is $500 taxable; with no exception, 20% is $100. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$person": [
+          "sample"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "person[sample].role": "taxpayer",
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].rollover": 25000,
+        "person[sample].f8889[hsa].medical": 25000
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 75000
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 10000
+        }
+      }
+    },
+    {
+      "id": "stage16.hsa.partial.H08",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0138 source-based partial-input facts and reference amounts derived from archived i8889 pp.8-9 and f8889 p.1, not evaluator outputs. i8889 p.9 limits 20% tax to the nonexcepted part: $100 nonexcepted out of $500 taxable produces $20. Part I context supplies no personal/employer contributions, twelve eligible self-only months, no last-month election and an unmarried filer, so positive Part II cases can seed independent worked jobs without supplying their reference answers. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$person": [
+          "sample"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "person[sample].role": "taxpayer",
+        "person[sample].f8889[hsa].line14a": 100000,
+        "person[sample].f8889[hsa].rollover": 25000,
+        "person[sample].f8889[hsa].medical": 25000,
+        "person[sample].f8889[hsa].line17a": true,
+        "person[sample].f8889[hsa].subject_part": 10000
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line14b": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "person[sample].f8889[hsa].line14c": {
+          "kind": "money",
+          "cents": 75000
+        },
+        "person[sample].f8889[hsa].line15": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "person[sample].f8889[hsa].line16": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[sample].f8889[hsa].line17b": {
+          "kind": "money",
+          "cents": 2000
+        }
+      }
+    },
+    {
+      "id": "stage16.hsa.partial.H16",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Source-derived spouse-coverage facts and amounts, not evaluator outputs. i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. With two separate HSAs, p.7 line6 divides $8550 equally into $4275 per spouse. Each $2000 personal contribution is below its limit. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$person": [
+          "sample",
+          "spouse"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "f1040.status": "mfj",
+        "person[sample].role": "taxpayer",
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[sample].f8889[hsa].coverage_year": "changed",
+        "person[sample].f8889[hsa].months_eligible": 12,
+        "person[sample].f8889[hsa].months_family": 12,
+        "person[sample].f8889[hsa].dec_coverage": "family",
+        "person[sample].f8889[hsa].line2": 200000,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].months_family": 12,
+        "person[spouse].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].line2": 200000,
+        "household.married": true
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[sample].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[sample].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[spouse].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 427500
+        },
+        "person[spouse].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "stage16.hsa.partial.H17",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Source-derived spouse-coverage facts and amounts, not evaluator outputs. i8889 p.4 How To Complete Part I and rule1: both eligible spouses are treated as family-covered if either has a family HDHP, disregarding self-only coverage. These supplied counts are already spouse-attributed. Only one spouse has an HSA; no separate-HSA division applies and the full $8550 limit remains. Each $2000 personal contribution is below its limit. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$person": [
+          "sample",
+          "spouse"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "f1040.status": "mfj",
+        "person[sample].role": "taxpayer",
+        "person[sample].f8889[hsa].coverage_year": "changed",
+        "person[sample].f8889[hsa].months_eligible": 12,
+        "person[sample].f8889[hsa].months_family": 12,
+        "person[sample].f8889[hsa].dec_coverage": "family",
+        "person[sample].f8889[hsa].line2": 200000,
+        "household.married": true
+      },
+      "expect": {
+        "person[sample].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[sample].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[sample].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "stage16.hsa.engineering.helper_arithmetic_and_boundary",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Engineering arithmetic and consistency-boundary checks, with no independent tax-evidence credit. Both spouses are eligible for six months, all attributed family coverage, without the last-month rule; the ordinary chart line5 is $4275 while the annual chart amount remains $8550. The underlying under-55 chart implies an under-55 $8550 family amount and $4300 self-only amount (i8889 p.6 chart). The internal twelve-month numerators are $8550 times 12 = $102600 and $4300 times 12 = $51600; they are not claimed as IRS printed amounts. Zero distributions imply line16 zero; a supplied zero subject part is not MORE THAN zero, so subject_bad is false. These assertions replace lost mutation sensitivity from retired helper-inclusive M fixtures without promoting helper plumbing as independent IRS calculations. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "inputs": {
+        "$person": [
+          "sample",
+          "spouse"
+        ],
+        "$f8889@person[sample]": [
+          "hsa"
+        ],
+        "f1040.status": "mfj",
+        "person[sample].role": "taxpayer",
+        "household.married": true
+      },
+      "expect": {
+        "person[sample].f8889[hsa].family_year": {
+          "kind": "money",
+          "cents": 10260000
+        },
+        "person[sample].f8889[hsa].self_year": {
+          "kind": "money",
+          "cents": 5160000
+        },
+        "person[sample].f8889[hsa].subject_bad": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage21.refuse.hsa_excess_withdrawn",
+      "covers": [
+        "f8889",
+        "f5329"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Stage 21 regression (BUG-0202): blind return E10 with its 2025 HSA excess withdrawn, with earnings, by the due date of the 2025 return including extensions. i5329 p. 8, Line 47: such contributions \"will be treated as not having been contributed\"; the withdrawal and its earnings go on Form 8889 lines 14a and 14b, which this tool does not prepare, so the Form 8889 screen refuses (D6). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Re-recorded 2026-11-07 by owner decision: the refusal's form text names the case of a person who died in 2025 (i8889 p. 2, Last-month rule; i1040gi p. 12, Death of a Taxpayer); no other recorded value changed.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].f8889[hsa].unsupported": true,
+        "person[taxpayer].retirement[a].box1": 200000,
+        "person[taxpayer].retirement[a].code": "early_1",
+        "person[taxpayer].w2[emp_a].box1": 6500000,
+        "person[taxpayer].w2[emp_a].box2": 520000,
+        "person[taxpayer].w2[emp_a].box5": 6500000,
+        "person[taxpayer].w2[emp_a].box6": 94250,
+        "s179.line10": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].unsupported",
+          "form": "Form 8889 Part III, Form 8853, a Form 8889 for a person who died in 2025 (prepare it with the decedent's final return), or other HSA situations",
+          "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "Parts II and III; lines 4, 10 and 13",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    }
+  ]
+}

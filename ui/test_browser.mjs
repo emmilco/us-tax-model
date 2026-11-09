@@ -20,9 +20,9 @@ import { join, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const { loadCanonical } = await import(join(root, "engine/dist/canonical.js"));
-const { resolveInputs } = await import(join(root, "engine/dist/fixture-inputs.js"));
-const fixture = JSON.parse(readFileSync(join(root, "fixtures/ny/2025/it201.json"), "utf8")).cases.find(c => c.id === "ny.refuse.part_year_state");
-const inputs = resolveInputs(fixture.inputs, loadCanonical().params, fixture.id);
+const { loadFixtureCases } = await import(join(root, "engine/dist/fixture-inputs.js"));
+const canonical = loadCanonical();
+const { inputs } = loadFixtureCases("ny", canonical).find(c => c.id === "ny.refuse.part_year_state");
 
 const wait = ms => new Promise(r => setTimeout(r, ms));
 const fmtMoney = c => { const d = Math.floor(Math.abs(c) / 100).toLocaleString("en-US"), r = Math.abs(c) % 100; return `${c < 0 ? "-" : ""}$${d}${r ? "." + String(r).padStart(2, "0") : ""}`; };
@@ -351,9 +351,9 @@ try {
 
   // Conflicting answers are shown as a conflict, not as a refusal: Form 8889 with self-only coverage on December 1 and
   // every eligible month a family month (stage11.hsa.self_full_year, its month answers changed), written as a log.
-  const hsaCase = JSON.parse(readFileSync(join(root, "fixtures/2025/stage11.json"), "utf8")).cases.find(c => c.id === "stage11.hsa.self_full_year");
+  const hsaCase = loadFixtureCases("federal", canonical).find(c => c.id === "stage11.hsa.self_full_year");
   const hsa = "person[taxpayer].f8889[hsa].";
-  const hsaInputs = { ...resolveInputs(hsaCase.inputs, loadCanonical().params, hsaCase.id), [`${hsa}dec_coverage`]: "self_only", [`${hsa}months_eligible`]: 12, [`${hsa}months_family`]: 12 };
+  const hsaInputs = { ...hsaCase.inputs, [`${hsa}dec_coverage`]: "self_only", [`${hsa}months_eligible`]: 12, [`${hsa}months_family`]: 12 };
   writeFileSync(join(dir, "conflict.jsonl"), [{ version: 1, tax_year: 2025, profile: "ny" }, ...Object.entries(hsaInputs).map(([input, value]) => ({ input, value }))]
     .map(e => JSON.stringify(e)).join("\n") + "\n", { mode: 0o600 });
   await cdp("Page.navigate", { url: origin + "/#conflict" });

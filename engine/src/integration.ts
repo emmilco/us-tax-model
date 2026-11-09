@@ -7,8 +7,7 @@ import { loadCanonical } from "./canonical.js";
 import { runChecks } from "./check.js";
 import { loadCases } from "./fixtures.js";
 import type { CanonicalData, Inputs } from "./types.js";
-import { YEAR_ARGS, yearPath } from "./year.js";
-import { resolveInputs } from "./fixture-inputs.js";
+import { YEAR_ARGS } from "./year.js";
 import { gate, mapPool, run } from "./pool.js";
 
 // The checks fall into groups that share nothing (each has its own log and files); the groups run side by side,
@@ -125,9 +124,7 @@ export async function integrationChecks(): Promise<void> {
     // Entry sections: a business, its implicit Form 4562 after it, and each asset with only the
     // lines Form 4562 reports it on (a listed asset on 25 and 26, the other on 14 and 19).
     groups.push(async()=>{
-      const fx=JSON.parse(readFileSync(yearPath("fixtures", "stage14.json"),"utf-8")) as {cases:{id:string;inputs:Record<string,unknown>}[]};
-      const assetCase=fx.cases.find(c=>c.id==="stage14.asset.listed_and_not")!;
-      assetCase.inputs=resolveInputs(assetCase.inputs,loadCanonical().params,assetCase.id);
+      const assetCase=loadCases().cases.find(c=>c.id==="stage14.asset.listed_and_not")!;
       const sheetPath=join(dir,"sheet-input.json");writeFileSync(sheetPath,JSON.stringify(assetCase.inputs));
       const sheet=await main(["eval","--inputs",sheetPath]);
       assert.equal(sheet.status,0);
