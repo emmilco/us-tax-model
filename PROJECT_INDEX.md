@@ -1,9 +1,7 @@
 # tax-formalization — Project Index
 
-**Current execution order:** [temporary backlog plan](docs/2026-11-01_backlog_plan.md),
-approved 2026-11-01; finish existing hardening before coverage expansion. The plan is a disposable
-package tracker; `TASKS.md` remains the task register and `HANDOFF-NEXT-SESSION.md` the current handoff.
-Earlier ordering statements below are historical where they conflict with this plan.
+**Current execution order:** the consolidation program, `TASKS.md` T-256 (owner, 2026-11-07/08), before
+coverage expansion; `TASKS.md` is the task register and `HANDOFF-NEXT-SESSION.md` the current handoff.
 
 An open, verifiable formalization of the IRS forms-and-instructions layer for US federal individual income tax, plus a guided self-preparation interview tool as its first client. The user files their own return; the software never files, signs, or transmits.
 
@@ -26,7 +24,6 @@ spec 3 and its qualification. The integrity plan
 | Path | Purpose |
 |------|---------|
 | `PROJECT_INDEX.md` | This file: structure, directory purposes, naming conventions |
-| `docs/2026-11-01_backlog_plan.md` | Temporary owner-approved backlog order, package tracker, audit-disposition leads and retirement checklist; deleted after the hardening program closes |
 | `HANDOFF-NEXT-SESSION.md` | Current continuation entrypoint: the latest two entries; older entries are in `handoffs/HANDOFF-NEXT-SESSION-ARCHIVE-2026-11.md` (historical state |
 | `CLAUDE.md` | The owner's standing working guidance for agents in this project (inference cost) |
 | `README.md` | What the project is and where it comes from (Direct File, the Fact Graph, Catala), what tax law it encodes, what trusting it would take, the layers from the interview down to the archived page with what each earns and where it stops, the project's status and roadmap, how to run it, the standing notices, where things are, licences |
