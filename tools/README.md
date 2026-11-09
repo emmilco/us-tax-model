@@ -72,24 +72,26 @@ it back only if the worktree later edits it. `--self-test` runs in check-all.
 The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast`):
 
 - **full** (the default): every step, about 38 minutes. A release needs it.
-- **fast**: every step except `mutate`, `engine_differential`, `compare`, `ny_compare`
-  and `ny_mutate`, about 10 minutes. It does not check mutation adequacy or agreement
+- **fast**: every step except `mutate`, `ny_mutate`, `engine_differential`, `lean_build`,
+  `compare`, `ny_compare` and `human_review` (the human-review tooling's test: human packets
+  are optional), about 10 minutes. It does not check mutation adequacy or agreement
   with the independent evaluators, and leaves `mutation.md`, `evaluator_agreement.md`
   and `engine_differential.{md,json}` as the last full run wrote them; `evidence.md`
   then says that its E column dates from the latest release.
 - **docs**: compile, the build, and the checks that read the bookkeeping paths in
-  `tools/docs_paths.txt` (`check_bug_inventory`, `check_agent_runs`,
-  `check_agent_runs_self_test`, `siblings_check`, `siblings_self_test`, `bookkeeping_tools`, `coverage_tree`, `green_self_test`),
+  `tools/docs_paths.txt` (`check_bug_inventory`, `check_agent_runs`, `siblings_check`,
+  `coverage_tree`, and `bookkeeping_self_tests`: the self-tests of the agent-run, siblings,
+  bookkeeping and green-record tools),
   about 3 minutes, nearly all of it the build.
 
 A full-green tree is also fast- and docs-green, and a fast-green tree is docs-green.
 Which tier a commit needs is decided from the paths it changes against its parent
 (`tools/tier_paths.py`): **full** if it changes a path in `tools/full_paths.txt` (the
 mutation tool and its equivalence and pinned lists, the Lean evaluator and its
-comparison, the engine differential), **docs** if every changed path is in
+comparison, the engine differential, the human-review tooling), **docs** if every changed path is in
 `tools/docs_paths.txt`, **fast** otherwise; a merge needs at least fast, a commit with
 no parent full. The lists are read from the parent, so a commit cannot widen the list
-it is judged by. `tools/tier_paths.py --self-test` (run by `green_self_test`) checks
+it is judged by. `tools/tier_paths.py --self-test` (run by `hooks/test_green.sh`) checks
 that every reference to a docs-tier path in the code check-all runs is listed with the
 steps that read it, and that those steps are in the docs tier.
 
@@ -142,10 +144,15 @@ slot) are check-all steps.
 
 After compiling and building, the steps run in three waves of side-by-side steps
 (see the head of `tools/check_all_steps.sh`); a step that reads what another writes runs
-in a later wave than its writer (in the full tier `human_review` after
+in a later wave than its writer (`human_review` and `evidence` after
 `engine_differential`), a rule no check enforces, so a new
-step must be placed by it. A step's output is printed when its wave ends, and
-each step's wall time is in `.git/check-all-times`. Mutation spreads its mutants
+step must be placed by it. A check that runs for both jurisdictions is declared once
+(`jstep`), and its New York run is the step `ny_<name>`. The tools' self-tests and test
+suites run as two steps, `bookkeeping_self_tests` and `self_tests`
+(`tools/self_tests.py --list` names each test and its command), side by side in a worker
+pool, each failing test named. A step's output is printed when its wave ends, and
+each step's wall time is in `.git/check-all-times`, with each self-test's as
+`self_tests/<name>`. Mutation spreads its mutants
 over worker threads (`MUTATE_WORKERS`, default `defaultWorkers()` of `engine/src/pool.ts`);
 `MUTATE_WORKERS=1` runs it on one.
 

@@ -45,18 +45,18 @@ _KEY = ("none", "a dictionary key named docs, not a path")
 READERS = {
     ("tools/check_bug_inventory.py", "BUG_INVENTORY.md"): ("docs", ["check_bug_inventory"]),
     # --check and --self-test both validate the real inventory's Siblings checked fields.
-    ("tools/siblings.py", "BUG_INVENTORY.md"): ("docs", ["siblings_check", "siblings_self_test"]),
+    ("tools/siblings.py", "BUG_INVENTORY.md"): ("docs", ["siblings_check", "bookkeeping_self_tests"]),
     # The tests copy the real registers and run the tools on the copies (--file).
-    ("tools/test_bookkeeping_tools.py", "BUG_INVENTORY.md"): ("docs", ["bookkeeping_tools"]),
-    ("tools/test_bookkeeping_tools.py", "TASKS.md"): ("docs", ["bookkeeping_tools"]),
-    ("tools/test_bookkeeping_tools.py", "TASKS-DONE.md"): ("docs", ["bookkeeping_tools"]),
-    ("tools/new_bug.py", "BUG_INVENTORY.md"): ("docs", ["bookkeeping_tools"]),
-    ("tools/task_row.py", "TASKS.md"): ("docs", ["bookkeeping_tools"]),
-    ("tools/task_row.py", "TASKS-DONE.md"): ("docs", ["bookkeeping_tools"]),
+    ("tools/test_bookkeeping_tools.py", "BUG_INVENTORY.md"): ("docs", ["bookkeeping_self_tests"]),
+    ("tools/test_bookkeeping_tools.py", "TASKS.md"): ("docs", ["bookkeeping_self_tests"]),
+    ("tools/test_bookkeeping_tools.py", "TASKS-DONE.md"): ("docs", ["bookkeeping_self_tests"]),
+    ("tools/new_bug.py", "BUG_INVENTORY.md"): ("docs", ["bookkeeping_self_tests"]),
+    ("tools/task_row.py", "TASKS.md"): ("docs", ["bookkeeping_self_tests"]),
+    ("tools/task_row.py", "TASKS-DONE.md"): ("docs", ["bookkeeping_self_tests"]),
     # --check compares docs/COVERAGE.md with the page it generates from canonical/.
     ("tools/coverage/tree.py", "docs/*"): ("docs", ["coverage_tree"]),
     # Validates research/costs/agent_runs.jsonl; the quoted component "research" also names research/audits.
-    ("tools/check_agent_runs.py", "research/costs/*"): ("docs", ["check_agent_runs", "check_agent_runs_self_test"]),
+    ("tools/check_agent_runs.py", "research/costs/*"): ("docs", ["check_agent_runs", "bookkeeping_self_tests"]),
     ("tools/check_agent_runs.py", "research/audits/*"): ("none", "the quoted component is research/costs"),
     # Pinned open-defect survivors must name an open entry.
     ("engine/src/mutate.ts", "BUG_INVENTORY.md"): ("slow", ["mutate", "ny_mutate"]),
@@ -180,6 +180,8 @@ def tier_steps():
             raise AssertionError(f"check_all_steps.sh declares no {name}")
         found[name] = set(m.group(1).split())
     declared = set(re.findall(r"\bstep ([a-z0-9_]+) ", text))
+    for name in re.findall(r"\bjstep ([a-z0-9_]+) ", text):
+        declared |= {name, f"ny_{name}"}
     for name, steps in found.items():
         unknown = steps - declared
         if unknown:

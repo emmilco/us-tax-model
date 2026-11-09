@@ -4,24 +4,29 @@
 # receives the same arguments. tools/check_all.sh runs this and guards it.
 #
 # Compile first: review tools and every build consumer import engine/dist. Then
-# build and render alone: canonical/ and rendered/ are read by the log, review and
-# source-coverage checks. The other steps run in three waves; the steps of a wave
-# run side by side, each writing its output to its own log, printed in the order
-# below when the wave ends. No two steps of a wave write the same file, and none
-# reads what another of its wave writes: wave 1 checks the sources, logs and the
-# build's data, wave 2 runs the evaluator checks, wave 3 writes the evidence report
-# and review packets. human_review copies reports/<year>/engine_differential.json,
-# which engine_differential (wave 2, full tier only) rewrites, so in the full tier
-# it runs in wave 3, and in wave 2 otherwise. Nothing checks these rules; a new step
-# must be placed by them. A failing step fails
+# build and render, beside only the engine self-check and the Lean build: canonical/
+# and rendered/ are read by the log, review and source-coverage checks. The other
+# steps run in three waves; the steps of a wave run side by side, each writing its
+# output to its own log, printed in the order below when the wave ends. No two steps
+# of a wave write the same file, and none reads what another of its wave writes:
+# wave 1 checks the sources, logs and the build's data and runs the tools' self-tests
+# (tools/self_tests.py, one step per group), wave 2 runs the evaluator checks, wave 3
+# writes the evidence report and review packets and runs human_review, which copies
+# reports/<year>/engine_differential.json that engine_differential (wave 2) rewrites.
+# Nothing checks these rules; a new step must be placed by them. A failing step fails
 # the run after its wave. Each step's wall time, in seconds, goes to
-# .git/check-all-times (not tracked).
+# .git/check-all-times (not tracked); each self-test's, as self_tests/<name>.
 #
-# --tier full|fast|docs selects the steps (default full: every step). fast skips slow_steps, the
-# mutation and independent-evaluator checks a release runs; evidence then marks its E column with the
-# latest release reachable from HEAD, because the engine differential it reads was not rerun. docs
-# runs docs_steps: compile, the build without render, and the checks that read the bookkeeping paths
-# of tools/docs_paths.txt (tools/tier_paths.py lists every reader of them).
+# A check that runs for both jurisdictions is declared once, with jstep: its New York
+# run is the step ny_<name>, the same command with the New York flag.
+#
+# --tier full|fast|docs selects the steps (default full: every step). fast skips slow_steps: the
+# mutation and independent-evaluator checks a release runs, and the human-review tooling's test
+# (human packets are optional; tools/full_paths.txt makes a change to that tooling need the full
+# tier). evidence then marks its E column with the latest release reachable from HEAD, because the
+# engine differential it reads was not rerun. docs runs docs_steps: compile, the build without
+# render, and the checks that read the bookkeeping paths of tools/docs_paths.txt (tools/tier_paths.py
+# lists every reader of them).
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 tier=full
@@ -34,8 +39,9 @@ while [ "$#" -gt 0 ]; do
   esac
 done
 set -- ${args[@]+"${args[@]}"}
-slow_steps=" mutate engine_differential compare ny_compare ny_mutate "
-docs_steps=" compile build check_bug_inventory check_agent_runs check_agent_runs_self_test siblings_check siblings_self_test bookkeeping_tools coverage_tree green_self_test "
+run_args=("$@")
+slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate human_review "
+docs_steps=" compile build check_bug_inventory check_agent_runs siblings_check bookkeeping_self_tests coverage_tree "
 case "$tier" in
   full|fast|docs) ;;
   *) echo "check-all: unknown tier '$tier' (full, fast or docs)" >&2; exit 2 ;;
@@ -64,6 +70,15 @@ step() {
   names+=("$name"); pids+=("$!")
 }
 
+# jstep NAME NY_FLAG COMMAND...: the check NAME for both jurisdictions: step NAME runs COMMAND with the
+# run's arguments, step ny_NAME runs COMMAND, then NY_FLAG (split at spaces), then the run's arguments.
+jstep() {
+  local name="$1" ny="$2"; shift 2
+  step "$name" "$@" ${run_args[@]+"${run_args[@]}"}
+  # shellcheck disable=SC2086
+  step "ny_$name" "$@" $ny ${run_args[@]+"${run_args[@]}"}
+}
+
 # wave: wait for the steps started since the last wave, print their logs in order,
 # and stop the run if any failed.
 wave() {
@@ -89,8 +104,15 @@ build_and_render() {
   "${node[@]}" build "$@" && "${node[@]}" render "$@" && "${node[@]}" render --ny "$@"
 }
 
-lean_compare() {
-  (cd lean && lake build taxeval >/dev/null 2>&1) && "${node[@]}" compare "$@"
+lean_build() {
+  cd lean && lake build taxeval
+}
+
+# The frozen Stage 2 to 5 review packets and their values sheets (reports/<year>/stage*), regenerated through
+# the eval CLI so that they show the current engine's output.
+review_packets() {
+  "${node[@]}" review-stage2 "$@" && "${node[@]}" review-stage3 "$@" && "${node[@]}" review-stage4 "$@" &&
+    "${node[@]}" review-stage5 "$@"
 }
 
 step compile npm run compile --silent
@@ -98,111 +120,66 @@ wave
 
 if [ "$tier" = docs ]; then step build "${node[@]}" build "$@"; else step build build_and_render "$@"; fi
 step check_self_test "${node[@]}" check-self-test
+# The Lean evaluator, for compare and ny_compare.
+step lean_build lean_build
 wave
 
-step fetch_sources python3 tools/fetch_sources.py "$@"
-step interview_rules_self_test "${node[@]}" interview-rules --self-test "$@"
-step fetch_sources_self_test python3 tools/fetch_sources.py --self-test
-step archive_text_self_test python3 tools/archive_text.py --self-test
-step check_extraction python3 tools/check_extraction.py "$@"
-step check_extraction_self_test python3 tools/check_extraction.py --self-test
+# The tools' self-tests and test suites, in a worker pool; the bookkeeping group is the docs tier's.
+step bookkeeping_self_tests python3 tools/self_tests.py --group bookkeeping --times "$times" "$@"
+step self_tests python3 tools/self_tests.py --group code --times "$times" "$@"
+# A check declared with jstep, below, also runs for New York (docs/ny/). A New York document whose first
+# review is not yet run is listed in reviews/ny/<year>/pending.json and reported as pending by the log checks;
+# the list only shrinks (tools/transcription/pending.py), and deleting it makes them strict.
+jstep fetch_sources "--jurisdiction ny" python3 tools/fetch_sources.py
+jstep check_extraction "--jurisdiction ny" python3 tools/check_extraction.py
 step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
-step check_macrs_tables_self_test python3 tools/check_macrs_tables.py --self-test "$@"
 step check_ptc_tables python3 tools/extract_ptc_tables.py --check "$@"
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
-step check_auto_limits_self_test python3 tools/check_auto_limits.py --self-test "$@"
 step check_source_titles python3 tools/check_source_titles.py "$@"
-step check_source_titles_self_test python3 tools/check_source_titles.py --self-test
 step check_bug_inventory python3 tools/check_bug_inventory.py
 step check_agent_runs python3 tools/check_agent_runs.py
-step check_agent_runs_self_test python3 tools/check_agent_runs.py --self-test
-step review_tools python3 tools/transcription/test_review_tools.py
-step input_context python3 tools/transcription/test_input_context.py
-step rerun_all_tools python3 tools/transcription/test_rerun_all.py
-step bookkeeping_tools python3 -m unittest tools/test_bookkeeping_tools.py
-step pre_push_self_test bash tools/hooks/test_pre_push.sh
-step green_self_test bash tools/hooks/test_green.sh
-step worktree_data_self_test python3 tools/worktree_data.py --self-test
-step check_slot_self_test python3 tools/check_slot.py --self-test
-step check_bg_self_test bash tools/hooks/test_check_bg.sh
-step consistency_checks node tools/test_consistency_checks.mjs
-step siblings_self_test python3 tools/siblings.py --self-test
 step siblings_check python3 tools/siblings.py --check "$@"
 step adapter_contracts python3 tools/transcription/adapter_contracts.py "$@"
 step classm_skipped python3 tools/transcription/audit_skipped.py "$@"
 step compare_families python3 tools/transcription/compare_families.py "$@"
-step review_store python3 tools/transcription/review_store.py check
-step year_carry_self_test python3 tools/transcription/year_carry.py --self-test
-step check_logs python3 tools/transcription/check_logs.py "$@"
+jstep review_store "--jurisdiction ny" python3 tools/transcription/review_store.py check
+jstep check_logs "--jurisdiction ny" python3 tools/transcription/check_logs.py
 step check_table_logs python3 tools/transcription/check_table_logs.py "$@"
-step citations python3 tools/citations.py --strict "$@"
-step citations_self_test python3 tools/citations.py --self-test "$@"
-step year_diff_self_test python3 tools/year_diff.py --self-test "$@"
-step fixtures_year_self_test python3 tools/fixtures_year.py --self-test
-step defaults_guard_self_test node tools/defaults_guard.mjs --self-test
-step engine_compare_tests python3 -I tools/engines/test_compare.py
-step coverage_tree_self_test python3 tools/coverage/tree.py --self-test "$@"
+jstep citations "--jurisdiction ny" python3 tools/citations.py --strict
 # Every candidate gate situation has a share of all returns in [0, 1] and a source, and its report is current.
 step gate_frequencies python3 tools/coverage/gate_frequencies.py --check "$@"
 # Source-coverage checks (T-084 to T-089) read the canonical data and rendered English the build writes.
-step instruction_cites python3 tools/check_instruction_cites.py "$@"
-step instruction_cites_self_test python3 tools/check_instruction_cites.py --self-test "$@"
-step operands python3 tools/check_operands.py "$@"
-step operands_self_test python3 tools/check_operands.py --self-test "$@"
-step signs python3 tools/check_signs.py "$@"
-step signs_self_test python3 tools/check_signs.py --self-test "$@"
-step screen_currency python3 tools/transcription/check_screens.py "$@"
-step false_no_currency python3 tools/transcription/check_false_no.py "$@"
-step consumers python3 tools/check_consumers.py "$@"
-step consumers_self_test python3 tools/check_consumers.py --self-test "$@"
-step limits python3 tools/check_limits.py "$@"
-step limits_self_test python3 tools/check_limits.py --self-test "$@"
-step completeness python3 tools/transcription/check_completeness.py "$@"
-step completeness_self_test python3 tools/transcription/check_completeness.py --self-test "$@"
-# New York (docs/ny/): its sources, citations and source-coverage checks, its tax table and predictor, and
-# its review logs. A New York document whose first review is not yet run is listed in
-# reviews/ny/<year>/pending.json and reported as pending by the log checks; the list only shrinks
-# (tools/transcription/pending.py), and deleting it makes them strict.
-step ny_fetch_sources python3 tools/fetch_sources.py --jurisdiction ny "$@"
-step ny_check_extraction python3 tools/check_extraction.py --jurisdiction ny "$@"
-step ny_citations python3 tools/citations.py --strict --jurisdiction ny "$@"
-step ny_instruction_cites python3 tools/check_instruction_cites.py --jurisdiction ny "$@"
-step ny_operands python3 tools/check_operands.py --jurisdiction ny "$@"
-step ny_signs python3 tools/check_signs.py --jurisdiction ny "$@"
-step ny_consumers python3 tools/check_consumers.py --jurisdiction ny "$@"
-step ny_limits python3 tools/check_limits.py --jurisdiction ny "$@"
+jstep instruction_cites "--jurisdiction ny" python3 tools/check_instruction_cites.py
+jstep operands "--jurisdiction ny" python3 tools/check_operands.py
+jstep signs "--jurisdiction ny" python3 tools/check_signs.py
+jstep screen_currency "--jurisdiction ny" python3 tools/transcription/check_screens.py
+jstep false_no_currency "--jurisdiction ny" python3 tools/transcription/check_false_no.py
+jstep consumers "--jurisdiction ny" python3 tools/check_consumers.py
+jstep limits "--jurisdiction ny" python3 tools/check_limits.py
+jstep completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py
+# New York only: its tax table.
 step ny_tax_table python3 tools/extract_ny_tax_table.py --check "$@"
-step ny_predict_self_test python3 tools/ny_predict.py --self-test
-step ny_review_tools python3 tools/transcription/test_ny_review.py
-step ny_review_store python3 tools/transcription/review_store.py --jurisdiction ny check
-step ny_check_logs python3 tools/transcription/check_logs.py --jurisdiction ny "$@"
-step ny_completeness python3 tools/transcription/check_completeness.py --jurisdiction ny "$@"
-step ny_screen_currency python3 tools/transcription/check_screens.py --jurisdiction ny "$@"
-step ny_false_no_currency python3 tools/transcription/check_false_no.py --jurisdiction ny "$@"
 wave
 
 step conjecture "${node[@]}" conjecture "$@"
-step test_fixtures "${node[@]}" test-fixtures "$@"
+jstep test_fixtures --ny "${node[@]}" test-fixtures
 step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs "$@"
 # The interview rules of the formal gates design: no input set by the interview, order independence, no early completion.
 step interview_rules "${node[@]}" interview-rules "$@"
 step test_integration "${node[@]}" test-integration "$@"
 # The web UI server (serve): synthetic returns in temporary directories, compared with the CLI and the fixtures.
 step test_serve "${node[@]}" test-serve "$@"
-# In the full tier, after engine_differential (below), whose report it copies; see wave 3.
-[ "$tier" = full ] || step human_review python3 tools/human_review/test_review.py "$@"
 step classm_job_seeds "${node[0]}" tools/transcription/test_classm_jobs.mjs "$@"
 step coverage "${node[@]}" coverage "$@"
 # Every refusal gate placed in the decision tree, and docs/COVERAGE.md and the README block current.
 step coverage_tree python3 tools/coverage/tree.py --check "$@"
-step properties "${node[@]}" properties "$@"
+# The refusal properties over generated returns; the New York run evaluates every federal and New York line.
+jstep properties --ny "${node[@]}" properties
 step differential "${node[@]}" differential "$@"
 step engine_differential tools/engines/run.sh "$@"
-step mutate "${node[@]}" mutate "$@"
-step compare lean_compare "$@"
-step ny_test_fixtures "${node[@]}" test-fixtures --ny "$@"
-# The refusal properties over generated returns with New York answers, every federal and New York line evaluated.
-step ny_properties "${node[@]}" properties --ny "$@"
+# New York mutants are killed only by the New York fixtures (the federal run takes federal mutants only).
+jstep mutate --ny "${node[@]}" mutate
+jstep compare --ny "${node[@]}" compare
 wave
 
 evidence_args=()
@@ -210,13 +187,7 @@ if [ "$tier" = fast ]; then
   evidence_args=(--engine-release "$(git describe --match 'r[0-9]*' --abbrev=0 HEAD 2>/dev/null || echo none)")
 fi
 step evidence "${node[@]}" evidence ${evidence_args[@]+"${evidence_args[@]}"} "$@"
-step review_stage2 "${node[@]}" review-stage2 "$@"
-step review_stage3 "${node[@]}" review-stage3 "$@"
-step review_stage4 "${node[@]}" review-stage4 "$@"
-step review_stage5 "${node[@]}" review-stage5 "$@"
-[ "$tier" != full ] || step human_review python3 tools/human_review/test_review.py "$@"
-# After the compare wave, which builds the Lean evaluator.
-step ny_compare "${node[@]}" compare --ny "$@"
-# New York mutants, killed only by the New York fixtures (the federal run takes federal mutants only).
-step ny_mutate "${node[@]}" mutate --ny "$@"
+step review_packets review_packets "$@"
+# The human-review tooling: reading, saved verdict, signed log and evidence report, in a sandbox.
+step human_review python3 tools/human_review/test_review.py "$@"
 wave
