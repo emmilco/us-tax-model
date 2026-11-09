@@ -1,0 +1,121 @@
+{
+ "kind": "transcription",
+ "form": "f8995a",
+ "family": "deepseek",
+ "base": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+ "lines": [
+  {
+   "key": "27",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line27: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "subject_key": "13d699c690fe2633fbb88ed7a5190e02bd289fb16e5a68a41c5bf66d99b64e00"
+  },
+  {
+   "key": "29",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "subject_key": "c61e28c001e1c826ce2501751ae79c9250ffe598a6cebeb53d95a09fc4ac10a9"
+  },
+  {
+   "key": "38",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line38: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "subject_key": "a146fb3b1257466cf9060e06aec26548e1be621db9732c927cf1e2a864305e44"
+  },
+  {
+   "key": "40",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "subject_key": "4e9ca219a3f8ab5e64c775c8dfa56c1f996bf8ee3ff793bf1be46ecf149c673a"
+  },
+  {
+   "key": "28",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i8995 p. 3: qualified REIT dividends are \"reported to you on Form 1099-DIV, line 5.\" The candidate copies qbi.dividends and refuses on qbi.unsupported, exactly the project's qbi.eligible (copy of qbi.dividends with the qbi.unsupported refusal); the log shows only the input-versus-reference form of the same id. The DeepSeek reply fails validation only on lines 27, 29 and 38 (\"parameter 'qbi.zero' does not exist\": the reply wrote {op: param, ref: qbi.zero} for a published line; qbi.zero is listed in the prompt as a qbi line, params/2025.yaml has no such parameter, and the Claude reply used copy), none of which is in this line's dependency closure; triage could not execute the reply (triage/f8995a.deepseek.json, state invalid, executable-triage-v1), so this ruling is on reading. The identical Claude candidate agreed on all 1,583 comparisons (triage/f8995a.json). Project stands.",
+   "subject_key": "a7c0d71ab1c30bf3eff905abcf48e3c2fbfb72dddd2f164f5f1b71dd2eabb7be"
+  },
+  {
+   "key": "30",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "subject_key": "bd2f6ca96907a131b35675d081157116c0c7c85b940d3751e49158626744205b"
+  },
+  {
+   "key": "31",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "subject_key": "ef945a7202dfc23a7ff58abdf740d07d9cf47f67f142fb05584fb20cff58ccc3"
+  },
+  {
+   "key": "32",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line27: parameter 'qbi.zero' does not exist / f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "subject_key": "5c25bba9ab6ecbc9e0cd46abd2b74f46f24cae3b82ec38f337cf65f65c0c3a79"
+  },
+  {
+   "key": "33",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i8995a p. 5, Taxable income before QBI deduction (i8995 p. 4, Line 11): \"Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b.\" The candidate takes line 11a minus the sum of lines 12e and 13b, floored at zero, which is the same arithmetic as the project (sa.agi = f1040.line11b = line 11a, less sa.deduction and line 13b, floored); the only possible difference is the cited household.hoh_fails refusal that f1040.line12e carries and the project's line does not read, on returns the project refuses at line 12e. The DeepSeek reply fails validation only on lines 27, 29 and 38 (\"parameter 'qbi.zero' does not exist\": the reply wrote {op: param, ref: qbi.zero} for a published line; qbi.zero is listed in the prompt as a qbi line, params/2025.yaml has no such parameter, and the Claude reply used copy), none of which is in this line's dependency closure; triage could not execute the reply (triage/f8995a.deepseek.json, state invalid, executable-triage-v1), so this ruling is on reading. The arithmetically identical Claude candidate (11a - 12e - 13b, floored) differed only by 43 candidate refusals on household.hoh_fails returns (triage/f8995a.json). Project stands.",
+   "subject_key": "312deb366d3f67fd1d0fb41bb640eeb55e02500b4e9a8bc209d644e3fbdf990e"
+  },
+  {
+   "key": "34",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i8995a p. 7, Line 34 (i8995 p. 4, Line 12): \"If you're not required to file Schedule D (Form 1040), your net capital gain is the amount reported on Form 1040 ... line 7a. If you file Schedule D (Form 1040), your net capital gain is the smaller of Schedule D (Form 1040), line 15 or 16, unless line 15 or 16 is zero or less\". The candidate chooses on qdcg.schedule_d_filed (a copy of sd.filed) between line 7a floored and qdcg.schedule_d_net_gain (sd.net_gain, the floored smaller of lines 15 and 16), plus line 3a; without Schedule D the project's smaller of sd.line15 and sd.line16 equals sd.distributions, which is also f1040.line7a (sd.to1040 = sd.line16), so both give the same amount. The DeepSeek reply fails validation only on lines 27, 29 and 38 (\"parameter 'qbi.zero' does not exist\": the reply wrote {op: param, ref: qbi.zero} for a published line; qbi.zero is listed in the prompt as a qbi line, params/2025.yaml has no such parameter, and the Claude reply used copy), none of which is in this line's dependency closure; triage could not execute the reply (triage/f8995a.deepseek.json, state invalid, executable-triage-v1), so this ruling is on reading. The Claude candidate with the same branch structure agreed on all 1,583 comparisons (triage/f8995a.json). Project stands.",
+   "subject_key": "a86f7c1f8010c9c852429f938a4bd00e2bf304bc026130457a91ecd2036d8d89"
+  },
+  {
+   "key": "35",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "AGREE",
+   "subject_key": "dda8d5f8032352a3e2e64c6a7b121af50ac6f2143c98d4cdde53eb25d399a8d5"
+  },
+  {
+   "key": "36",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "AGREE",
+   "subject_key": "658cac4d5658a57e18fcf6665e41c6db72006e7c7e2a991cb21e1d326177bdcb"
+  },
+  {
+   "key": "37",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line27: parameter 'qbi.zero' does not exist / f8995a.f8995a.line29: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "subject_key": "9e11619e9b9204a088c9d6a72ee16e74bb6610be7744fa460100246f0d5a1702"
+  },
+  {
+   "key": "39",
+   "record": "a0e3cac7c58668579ca71d67244ab33b11502ce71c4418844b2f1f024c30127a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the returned IR violates the explicitly supplied closed schema/type/reference interface: f8995a.f8995a.line27: parameter 'qbi.zero' does not exist / f8995a.f8995a.line29: parameter 'qbi.zero' does not exist / f8995a.f8995a.line38: parameter 'qbi.zero' does not exist. The candidate is rejected and not executed or repaired. This adjudicates the unusable declaration, not the underlying tax reading; source qualification still requires a valid replacement.",
+   "subject_key": "63719286aaf9a04ee2e94e3a5e1b2091255bc6bf5992b9f6e1d5286b0ad0a9bc"
+  }
+ ],
+ "subjects": {
+  "27": "b88d0dabc7110c46baa55440116dd6804b28dee222d439d0e7c6f829badcd5b2",
+  "29": "556dd53726d33628e399ddeec41dbecdbc8d68486da7c70bd5537276c7c7611c",
+  "38": "def6e10cf4eef2c555e78218f69b4eb8fc81912d6b7b3be7e9d39270535a035a",
+  "40": "681b3748c321a18d9c384159ff1a2dfa936fde94e8778b9f077b532ac255f94c",
+  "28": "1b14af1866c26de53393a11303241eeb70ae637905aabffe1da9eb402c62a32f",
+  "30": "eac655c384732e031d9fc2305bb40f02f919b6e5a7762cdbdaa4e0419b99e742",
+  "31": "987d2ec1b8714e7c2c7fc2efb281b128d8d78a3e903b971146def797716c92c1",
+  "32": "884196358a9e8e5832e52537eb7d47d8bc579c6f8c395b50d57bd814ab5a7269",
+  "33": "574d08e3b1ea9f23f087d29a5f55720f80593cf3f40a888ba2a6ab2d43c0c310",
+  "34": "224ec1a58bfc706d4d23795782f669089a7674993abc6a2eee10e41cd43d1bda",
+  "35": "3813638592a8e14121617f94d093f8c13dcb784b2ca2a58af518cad1d903b822",
+  "36": "9fe11095c0a392191c99494432cfb3dc55058c768e1d932053a660aefd524ecb",
+  "37": "c65b4d41c90070711e1a009e0696fbaf666c82affb0b9ad73cc7f293e800c850",
+  "39": "8a37e359ebc6a9a1bd9f5d7230f7ad3112f9f6492a78e1417b697dc523165d84"
+ },
+ "__rest__": "eb332829d5eb65ad4d51c57c582660ea3c9a57d746eaa3cf8644789fb1af9e9a"
+}

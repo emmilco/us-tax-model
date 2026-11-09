@@ -1,0 +1,299 @@
+{
+ "kind": "transcription",
+ "form": "f2441",
+ "family": "deepseek",
+ "base": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+ "lines": [
+  {
+   "key": "f2441.zero",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "AGREE",
+   "subject_key": "d0bb2781adbfb6e5d811ba2c37f1662cb65a66a07f07e59513bc6e998c0e37b3"
+  },
+  {
+   "key": "f2441.has_1e",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Reads line 26, which depends on the invalid lines 15 and 12. By reading: line 26 is not guarded by benefits, as in the hardening round. Project stands.",
+   "subject_key": "46bf3d3952e49d7a97adc930bbb79fc02a58553627e6052efbec6b2a2cbc90fd"
+  },
+  {
+   "key": "f2441.one_box10",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Its h_box10_count sums the w2 collection at the return level (binding mismatch) and counts Forms W-2 rather than persons. Project stands.",
+   "subject_key": "67eb83fe146b99bc4107d844ca76c77a0e1ad2395c0104c1ace81350b292a6a7"
+  },
+  {
+   "key": "1 (box)",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; Form 2441 p. 1, Part I, line 1. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases; 2,375 comparisons): 1,245 of 2,375 agree; 1,130 candidate-unknown; on completed returns: 89 candidate-unknown. As the Claude family: the provider count with no filing test (89 completed-return candidate-unknowns on returns without care or benefits). Project stands.",
+   "subject_key": "c0656467ae0a3f730daf14ac563eaef8e0dd65546bb999ffe14015d22daca6bf"
+  },
+  {
+   "key": "2 (box)",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i2441 p. 3, Line 2. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases; 2,375 comparisons): 2,345 of 2,375 agree; 16 project-unknown, 13 project-refuses, 1 candidate-refuses; on completed returns: none. This reply now counts dependents with dependent.dc_qp, as the project does; the differences are the project's cited f2441.nondependent_gate (13), project-unknown on partial records (16) and one candidate refusal; none completed, no value. Project stands.",
+   "subject_key": "21c376022bbb1a5cfa68b1887d1f5210ecb98cd8cc15258b52abb9ca6b53947b"
+  },
+  {
+   "key": "3",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Line 3 reads line 31 and h_line3_cap (invalid). By reading: its column (d) total sums dependent.dc_line2d over every entry and its limit counts dependent.dc_count unfiltered. Project stands.",
+   "subject_key": "14e3f458297b0c15403498a4bb8ab4cf223a87dcc092865c94112386f842cc2b"
+  },
+  {
+   "key": "4",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "AGREE",
+   "subject_key": "189b79523952a1e931239d38f29934ed2556ec62d21218fee1aa5ec43dab3c4a"
+  },
+  {
+   "key": "5",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "AGREE",
+   "subject_key": "6de338dee65dde04e911d77f22f2a05139ba24c367118fd71b4d6c0b04a2cab3"
+  },
+  {
+   "key": "6",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Inherited from line 3 (invalid). Project stands.",
+   "subject_key": "deea06154e927b0af4538b0445b62fda858f756b1cf42094c6e83a2bb60a7baa"
+  },
+  {
+   "key": "7",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "AGREE",
+   "subject_key": "31221197792a5c554a5f483634044703a7be3114d9fc45ad6481f72d79dd09e8"
+  },
+  {
+   "key": "8",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "AGREE",
+   "subject_key": "fcd76e1c31738ff10b26cb4fb250850afa8657178ac6a9beac158023569f94f6"
+  },
+  {
+   "key": "9a",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Inherited from line 6. Project stands.",
+   "subject_key": "d6f838ed7556f7ff5cb3f96e97e8ef27983bcae3ba5ed4a823a9409bcd3f386e"
+  },
+  {
+   "key": "9b",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "AGREE",
+   "subject_key": "75a17115d1309220a1ea34bef0fa090585e1be06b4b55da3e30bd344924ca70d"
+  },
+  {
+   "key": "9c",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Inherited from line 9a. Project stands.",
+   "subject_key": "3b4f57ee58ef7e1d946d60adb115700f5388daa3e717232e5ed90fd4880ee3f8"
+  },
+  {
+   "key": "CLW 1",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "MISSING",
+   "ruling": "Ruling: model error; i2441 p. 5, Line 10, Credit Limit Worksheet, line 1. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): line missing from the reply, not executed. The reply omits the worksheet lines and folds them into line 10. Project stands.",
+   "subject_key": "760a9f3260715ba0f25aaee942a65c7633cb618eb6bafef2f8c605be3be43c1a"
+  },
+  {
+   "key": "CLW 2",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "MISSING",
+   "ruling": "Ruling: model error; i2441 p. 5, Credit Limit Worksheet, line 2, \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): line missing from the reply, not executed. Omitted; the folded line 10 subtracts only Schedule 3 line 1 and declares no scope.credits refusal (the project's cited screen for line 6l). Project stands.",
+   "subject_key": "1df3a680eca21a1b56f17c3525ad81d80415b3d2b4ea04105e3039bbd6f91131"
+  },
+  {
+   "key": "CLW 3",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "MISSING",
+   "ruling": "Ruling: model error; i2441 p. 5, Credit Limit Worksheet, line 3. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): line missing from the reply, not executed. Omitted; folded into line 10. Project stands.",
+   "subject_key": "21efe87665e1e6e0a94465038286f3bf0910ac0b6bdb7280c6e35729abe633a6"
+  },
+  {
+   "key": "10",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i2441 p. 5, Credit Limit Worksheet; README (validation). executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases; 2,375 comparisons): 2,328 of 2,375 agree; 40 candidate-unknown, 7 project-refuses; on completed returns: none. Its own subtraction (Form 1040 line 18 less Schedule 3 line 1) matches the project on scope, but every candidate-unknown (40) is f2441.line26, the invalid line that reaches Form 1040 line 18 through line 1e; the project refusals (7) are cited screens. Project stands.",
+   "subject_key": "cd34a306c38be281f426810fc793a86affb0b0e09f6592aa109788653bd4ab3f"
+  },
+  {
+   "key": "11",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Inherited from line 9c. Project stands.",
+   "subject_key": "936dd464837db8b5c1a18a949cfc71c42957159a422d13410372de38e079f3eb"
+  },
+  {
+   "key": "12",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. h_w2_benefits sums the w2 collection at the return level (binding mismatch) and reads w2.dc_benefits instead of person.dc_benefits. Project stands.",
+   "subject_key": "1f68ee50cbfd025f48f3c4fc381b2d11357bbc9eae804a99fac65d43e0e798a8"
+  },
+  {
+   "key": "15",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Its line 15 nests an expression where a line id is required (malformed). Project stands.",
+   "subject_key": "870fa695126e8de419f5e04f8467c14ce24d2a5ea236b6ced68d26031cfc370d"
+  },
+  {
+   "key": "16",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s)\"; p. 5, Line 16. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases; 2,375 comparisons): 2,324 of 2,375 agree; 18 project-refuses, 15 project-unknown, 9 candidate-unknown, 9 value; on completed returns: none. It sums dependent.dc_line2d over every entry with no qualifying-person filter: 9 values, all on refused returns (classm.dependent.3.deepseek $4,070.00 against $14,800.00; classm.dcprov.1 $0.00 against $2,960.00); the rest are the project's cited refusals (f2441.nondependent_gate 13) and partial records. As the hardening round. Project stands.",
+   "subject_key": "7ee7730aaf3c0dc1d83a4fbe8c3c8682dad4afd3888f129af47fa2db6e687590"
+  },
+  {
+   "key": "17",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Reads line 15 (malformed). Project stands.",
+   "subject_key": "0c13ab7f32425adaec5442d9c5a504bac03a13d142c5a7e541fa5d776f8e8f02"
+  },
+  {
+   "key": "18",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "AGREE",
+   "subject_key": "131cb9cb9f4a00eaed83ff16a27cdcf28a0695247dcd35b663c061cd9cbe5a0d"
+  },
+  {
+   "key": "19",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i2441 p. 2, Married Persons Filing Separately; Form 2441 line 19. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases; 2,375 comparisons): 2,250 of 2,375 agree; 78 value, 39 project-refuses, 7 project-unknown, 1 candidate-refuses; on completed returns: 5 project-unknown. The 78 values are all on refused returns: married filing separately, where the candidate takes the spouse's earned income (zero without a spouse entry); the project refuses every such return through s3.mfs on lines 11 and 26 (owner decision 5). The rest are cited project refusals (sa.excluded_income, s8812.combat_pay, spouse_died_gate) and 5 completed project-unknowns on partial records withholding f2441.spouse_died, which the project asks on a joint return. Project stands.",
+   "subject_key": "c27eaf9f6c3d738d0b23db96a3e25d3dbaa25ed3f962dc432986a02b125aaa18"
+  },
+  {
+   "key": "20",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Reads line 17 (invalid). Project stands.",
+   "subject_key": "df78ce300faa753a3996bfd5b8b11ae6354844215cb0fc24938746381bc08e78"
+  },
+  {
+   "key": "21",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; Form 2441 line 21, \"$2,500 if married filing separately and you were required to enter your spouse's earned income on line 19\". executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases; 2,375 comparisons): 2,374 of 2,375 agree; 1 value; on completed returns: none. 1 value, stage15.refuse.f2441.mfs_benefits (refused return): project $5,000.00, candidate $2,500.00; married filing separately is refused by s3.mfs. As the hardening round. Project stands.",
+   "subject_key": "ad8d9e751f4e598147ddff2d0fa5ddd52b68de20df021e256e7cdf299d331a83"
+  },
+  {
+   "key": "22",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "AGREE",
+   "subject_key": "386329aa271d8761ee9be889230e959a58a644b83c2aa7597ca7b649097feb6c"
+  },
+  {
+   "key": "23",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Reads line 15 (malformed). Project stands.",
+   "subject_key": "b241d517d6f3272fe0eb496a91eb8693e1c5775d86bbda67dd8744721996e6a6"
+  },
+  {
+   "key": "24",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Reads line 20 (invalid). Project stands.",
+   "subject_key": "e235b54599f5ef9fa38b5f24d77035a73a2f6cb6221581fbd27a114520196c15"
+  },
+  {
+   "key": "25",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Reads line 20 (invalid); by reading it also lacks the new f2441.line13_earned refusal (see the Claude ruling on line 25). Project stands.",
+   "subject_key": "c9e0dbe538d603b45d4809cdb52ff14fce1b6c1cba6489259c4e82aa5b2d1a6c"
+  },
+  {
+   "key": "26",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Reads lines 23 and 25 (invalid). Project stands.",
+   "subject_key": "6088e6c47596e5aff6a810d650088e82494c15b607b056dad945476a3e839067"
+  },
+  {
+   "key": "27",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Compares dependent.dc_count outside sum_over; by reading it counts entries, not qualifying persons. Project stands.",
+   "subject_key": "77e55e30df14d80e8feebf90061934fc5ea942f1926f7639b54e740bbe967235"
+  },
+  {
+   "key": "28",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Reads lines 24 and 25 (invalid). Project stands.",
+   "subject_key": "9dc345874b25aa39d338e73d3bb12035ea2c645c4dfcd7e15b54434f0cd9f69e"
+  },
+  {
+   "key": "29",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Reads lines 27 and 28 (invalid). Project stands.",
+   "subject_key": "a9bf2cdcabfc752387342299bf1fe84443e48bcd0d06601722b3d818341c190c"
+  },
+  {
+   "key": "30",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Reads line 28 (invalid); by reading it sums dependent.dc_line2d over every entry. Project stands.",
+   "subject_key": "2febb2756fb946544093a634fb3ac6b4a6a080c2b691039091802b29aba95c0c"
+  },
+  {
+   "key": "31",
+   "record": "3e10af042927b6c020a9fe7926f85134af3e4f23dfdf4e6713e540204c0474de",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; README (validation): the reply fails validation (f2441.line15 malformed expression; line 27 and h_line3_cap use dependent.dc_count outside sum_over; h_w2_benefits and h_box10_count sum the w2 collection at the return level, collection parent binding mismatch); this ruling adjudicates the declaration, not the tax reading. executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases): candidate invalid (evaluated; invalid lines include f2441.line15, f2441.line27, f2441.h_line3_cap, f2441.h_w2_benefits, f2441.h_box10_count, f2441.line12), not executed. Reads lines 29 and 30 (invalid). Project stands.",
+   "subject_key": "864df9733000bdb8013792ee4242b44417b6b1807143fd1e1dee8e49eb0e8a67"
+  }
+ ],
+ "subjects": {
+  "f2441.zero": "d371bbfd8a55ef20774d47d11cbd8531f22db7d5b5ed3d3b141dfb7588b73506",
+  "f2441.has_1e": "83ea6977338750744c939265cde97df02d01f9b913658b59d9e083be56a5feb0",
+  "f2441.one_box10": "432b4a11aa75590fdfc586c72cb283de95f04a134ce663c04ed9188848288f0d",
+  "1 (box)": "4c0e9dc51278510b9aa3b6b3f8c2bfc0a2c777fce4fe173e995998b5b01ac1d8",
+  "2 (box)": "ad4573baa0a47ca3079708b10805b4c912fa88fa95a17ba805d294f223ba7563",
+  "3": "10973b99efcee320bd6685329a0a0b54ddbd7884ada69da8c8397b0c7a62375f",
+  "4": "63fb880e3c06884539b95afaf3c44ba98876160700eb88159192bb9bd1256247",
+  "5": "aebd7da7b67e306413099465c614b80262499dfdbbcb73b5f3df3b72bfc23fb1",
+  "6": "8b48ce4f7869b51f029ed0d6d4dcf865d084ebf03477a8b98c693936293e2eae",
+  "7": "35d8dcbd937eb2cecc9815d48d81f19127b59fb6a4f1666f85a4b9684423812c",
+  "8": "1de80285b909cd330f83bde6788403c00b2bdb7139a60846d9378c1b8da23520",
+  "9a": "ae581bceb055a0c77868bce57794c4da9cc22cacd1a8893cfa6214346165c44c",
+  "9b": "95c46bf4c421ed92cf0b6f0767ae7fadfa8d347d7a0438b87e31ea18e498da8a",
+  "9c": "c141db3117aea15da822b9f0e49a0eeb4479c720d5ba570dc16c4c1f132e1049",
+  "CLW 1": "1de0c10b1c5d7e378c1d4a285d7289b84a9723968182b6abd9f62cc87606248e",
+  "CLW 2": "10a954e0eba753298857976fbce6b6d0e0412de5a68d91c5459599825ad8559b",
+  "CLW 3": "cdde34cd9e64d3f0e598ed199f009df02468bf4d283f58ed0ccb1193c5589446",
+  "10": "5e50cdec94685d0ce7a8de4956b633076428778e0fc6b1b74c346b1ef2866f17",
+  "11": "f2f5b36257fb5c9737790a5f9c272de563c7d07bd7ebdfa7935155c23de123e3",
+  "12": "84b388cd300a3017aaa805fafddbff6217f15ebe6c7fcc84890ef4312bbc7a04",
+  "15": "554f1dfceb492f15f1f8fdb462ece2270b8d6531942488a365425f8a639adae7",
+  "16": "31374ba97841af386883b4bec2a425d89c66cc2e4f789dec111846dd07132902",
+  "17": "be75b46499ef702293494c24d057f89ec31da8304d0fa435cc8bbf80ad2a1241",
+  "18": "bfb95b42922c570c2a0698bc6e8b5a9598b3fa0134434adb88926da62325ac98",
+  "19": "ea3dedc09d370eb4b73e881f94464be6c1145edfc84841fb7925c5ee17ec8294",
+  "20": "c4144968bd7197fae6bddc8e0ea06352fa3c8c8f2bf7d8d5946646597732b56f",
+  "21": "2bd23ce546ef99d9a69947ba020f9c61c161325ffa60719f7bef3d1ef43487a3",
+  "22": "5c7a2f732b27209dae386af98bd2fefa7fba37d11c21ff686415b9ae20756b05",
+  "23": "175b0f4ae6e2c49707361d0cf9119f93d573fd5956320dd16daa8e67c6a09343",
+  "24": "fbe17c9d1526d68124d18cdb8cac295fd176064f376c036cb6dece39ae3d59c4",
+  "25": "0fb85879a652f56418ceed4bcbca978e95f27059758ebddf38539f5d6f83c5bb",
+  "26": "d7324c84f2139876e95511cb13f783dd2d61b19ba82e0ea8705eb3f905513b78",
+  "27": "434f6ad5de4e6fa56f0359d8ed2d6d28d69273ba48eac8ff4ffe3ebff19b534b",
+  "28": "2fa43414436babeeb42abdf445ea20501bfefd60e0702bb283ec0df6fa21b18c",
+  "29": "ca4c8afef23dba9693bbec219ad481ff9939615c54831b8dcdfe8c5dedb0637a",
+  "30": "d8ee010b387e68f77977fcaf405bdb492727ad6dd0462b8dc035c0024ae9aede",
+  "31": "28abd6ac1b904f439a5319ec1608f81a5f06622d70fb3814e82bea58266ef017"
+ },
+ "__rest__": "1f06a07624874ecaa821f9458bd6d2698c4231ba2e71940d70df5a23b9b1a96c"
+}

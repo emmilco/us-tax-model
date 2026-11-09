@@ -1,0 +1,23 @@
+{
+ "kind": "classm",
+ "form": "ny_it2",
+ "family": "deepseek",
+ "base": "91995c650fc39d9491a28584b4b812148a141f8468fa03db268f78c30d44182f",
+ "lines": [
+  {
+   "key": "case classm.ny_it2.1",
+   "record": "91995c650fc39d9491a28584b4b812148a141f8468fa03db268f78c30d44182f",
+   "status": null
+  },
+  {
+   "key": "classm.ny_it2.1 — ny_it2[w0].state_whole",
+   "record": "91995c650fc39d9491a28584b4b812148a141f8468fa03db268f78c30d44182f",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_it2.1 — ny_it2[w0].city_whole",
+   "record": "91995c650fc39d9491a28584b4b812148a141f8468fa03db268f78c30d44182f",
+   "status": "AGREE"
+  }
+ ]
+}

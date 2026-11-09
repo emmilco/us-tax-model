@@ -1,0 +1,100 @@
+{
+ "kind": "render",
+ "form": "s2",
+ "family": "deepseek",
+ "base": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1a",
+   "record": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
+   "status": "MATCH",
+   "subject_key": "8695ce675244251ce6931efce1c4998986bbb685eab4ee5ce9c1f0546d9cf39d"
+  },
+  {
+   "key": "1z",
+   "record": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; f1040s2 p. 1, line 1z, \"Add lines 1a through 1y\". s2.other (\"Any amount on Schedule 2 other than ...\") refuses lines 2, 3 and 21, so any return with an amount on lines 1b to 1y is refused, and on every computed return line 1z equals line 1a, as the heading says. The round-1 rewording of s2.other (its Form 5329 clause moved to the end) concerns line 8 only and does not change this. Same as Stage 18 and round 1. Project stands.",
+   "subject_key": "59ff1a4068b50412e9b03e33f91f171fa3735f1312356b3fe5538e33be91b29e"
+  },
+  {
+   "key": "2",
+   "record": "64781acc2c0e2c3e8f56d9fa7c5e5cafe1c9dc2ffc667f5967fdbb18226f59b8",
+   "status": "MATCH",
+   "subject_key": "d80b0dff54c740420947cbfec15fdb23bcf3b4ba4f84b27a3baa641d6364a80a"
+  },
+  {
+   "key": "3",
+   "record": "64781acc2c0e2c3e8f56d9fa7c5e5cafe1c9dc2ffc667f5967fdbb18226f59b8",
+   "status": "MATCH",
+   "subject_key": "c0345b308b92a23046c3389f8f7a9194e531c223cb8673dec37c5202d4be2863"
+  },
+  {
+   "key": "4",
+   "record": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
+   "status": "MATCH",
+   "subject_key": "a5f57f71fa027a47c5a97b9f57177809158f740b214d0a9f69381c96b65a51ac"
+  },
+  {
+   "key": "8",
+   "record": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
+   "status": "MATCH",
+   "subject_key": "6944def3812f93a0124460057983d4784db73ab88f9a84d086724a10999cd1db"
+  },
+  {
+   "key": "8 (box)",
+   "record": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
+   "status": "MATCH",
+   "subject_key": "7d55e0e6010642ce367defc75ad88de14dbc37e8b36fc1d7f71d7e03b33445dd"
+  },
+  {
+   "key": "11",
+   "record": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
+   "status": "MATCH",
+   "subject_key": "ab3e79a2b491ca29237b6c979bb0e1833d124adfb28084bcfb2c7fb67e1f3be3"
+  },
+  {
+   "key": "12",
+   "record": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
+   "status": "MATCH",
+   "subject_key": "20183bee26a84529cd084ed7da9655fc1c00e85d4a2f97d19909162ce3c69ab6"
+  },
+  {
+   "key": "17c",
+   "record": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
+   "status": "MATCH",
+   "subject_key": "45dbacbb8edf922370ec49d52cb45da3d2425f41bfdc882d4ff5603d65bfb2f1"
+  },
+  {
+   "key": "18",
+   "record": "0aa8e2e6c29bc4804c82333d35cf4252219552f1297c5d9f40041804e904d0ce",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; f1040s2 p. 2, line 18, \"Total additional taxes. Add lines 17a through 17z\". The restatement enters line 17c; s2.other refuses line 21, the only reader of line 18, on any other line 17 amount, so on every computed return line 18 equals line 17c. Same as Stage 18 and round 1. Project stands.",
+   "subject_key": "f67f8917353e357e40300b578ad3db791bc628cb03537d95a1811a6f63adfc06"
+  },
+  {
+   "key": "21",
+   "record": "64781acc2c0e2c3e8f56d9fa7c5e5cafe1c9dc2ffc667f5967fdbb18226f59b8",
+   "status": "MATCH",
+   "subject_key": "51006f3b48dc6a285358d87771b35bdbc3517768b1aace676a7f1ea7b971c4f8"
+  }
+ ],
+ "subjects": {
+  "1a": "948c5bdb2766ad5ed74cbb3ecc7e370cef081b3b5fc0e996e63782a1b301ec54",
+  "1z": "e9c1c517071505d51cfdd09048d2806447cc278f27db6ccaaeb8660cf62dcff9",
+  "2": "da86415f7fb0e39304a50c08bb97ccd06519d0fc25e24041fc4f39075623b3e0",
+  "3": "cb25af5a8a6b33079d9d8d1c27c87faae3da4eee551adfb8454883f662cd9b4e",
+  "4": "9cd8a4c296c43b06d436f6de558fe38ee0931e30d2d7f91c46bde228c1854ab2",
+  "8": "65684a5df6d08729d036bc5051b48a08801862608c1a4302b5840a91893f491e",
+  "8 (box)": "59f629b249ea6174de9ff804d402427ce91849e74e08d825be82d81b90eb1af3",
+  "11": "84639ccb55785408dbae1f6c5d5e00533aeb504b0038020f3ff72dca803291a7",
+  "12": "a2b0364ad10a5465bad5f179eaabc783505f19ee1cfa377f25770c36df7d6ad1",
+  "17c": "a7f242e005215d810811a1ccbafcb250d841c171576512a790ace38f8326c71d",
+  "18": "fa212e033612dc85b8b7d0a72790eddf3c24462b8703bef9af9f623e922eb97e",
+  "21": "80d0dda4428b7955cd91678600754992ee2fe43ca30bf3be7a83a395b81e8078"
+ },
+ "__rest__": "62e1e78bc43403c82fc8dd83ac8b2f3e5535a2a722b2af4193ee0376b12e6cd6"
+}

@@ -1,0 +1,21 @@
+{
+ "kind": "render",
+ "form": "otjob",
+ "family": "deepseek",
+ "base": "4c5926e137b97e4655bc5c126361bac7f142d0f2dc23bcbb981c12d65dcb83b0",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-04); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1(b)",
+   "record": "a472fab297c92520c2458e5bb39d02a1849e2d888b5b9cc79b582de6e1121bc3",
+   "status": "MATCH",
+   "subject_key": "ae7734809d2aeb2d1064264ee0cf02b361acf8bcfa0485e91f6d25fb1c26307f"
+  }
+ ],
+ "subjects": {
+  "1(b)": "a8322f22511cef38197b67220aa7ab0402ecad234c81556e2849582bccb470d7"
+ },
+ "__rest__": "f07c6baaff7adbcac4cab13c35e31d4096b1b8e3b07ebb63065b80d476899bec"
+}

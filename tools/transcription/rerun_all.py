@@ -80,8 +80,8 @@ class Breaker:
 def forms_for(kind):
     """The forms with a log of the kind; in New York mode also the New York documents whose first review
     is pending (pending.py), so the first run reviews them."""
-    d = os.path.join(str(jurisdiction.ypath("reviews", Y)), kind)
-    logged = {families.split_stem(f[:-3])[0] for f in os.listdir(d) if f.endswith(".md")} if os.path.isdir(d) else set()
+    import rulings
+    logged = {form for form, _ in rulings.forms_with_logs(kind)}
     if jurisdiction.NY:
         import pending
         logged |= pending.listed(kind)
@@ -148,11 +148,12 @@ def answered(kind, form, family):
     or "no log" when there is none."""
     import rulings
     import subjects
-    path = rulings.log_path(kind, form, family)
-    if not os.path.exists(path):
+    import review_store
+    if not rulings.has_log(kind, form, family):
         return "no log"
     try:
-        return subjects.log_state(kind, form, Y, open(path, encoding="utf-8").read())
+        state = review_store.state(kind, form, family, Y)
+        return subjects.log_state(kind, form, Y, rulings.read_log(kind, form, family)) if state is review_store.NO_INDEX else state
     except Exception as ex:  # a log or document the subject code cannot read is treated as stale
         return f"state unreadable ({type(ex).__name__}: {ex})"
 

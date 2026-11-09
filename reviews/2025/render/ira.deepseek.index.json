@@ -1,0 +1,119 @@
+{
+ "kind": "render",
+ "form": "ira",
+ "family": "deepseek",
+ "base": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+ "lines": [
+  {
+   "key": "1a",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MISMATCH",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the worksheet's married-filing-separately rule (i1040gi p. 97, \"If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025\") is never needed; on the statuses the tool completes, line 1a is the filer's own coverage, as the line asks."
+  },
+  {
+   "key": "1b",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation — i1040gi p. 97, line 1b: \"If married filing jointly, was your spouse covered by a retirement plan?\" The added contribution condition does not matter because the worksheet applies only when traditional IRA contributions were made, and a spouse entry exists only on a joint return; the line is the spouse's own coverage, as the source asks."
+  },
+  {
+   "key": "2a",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MISMATCH",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the $89,000 amount for a married filer who lived apart all year and the $10,000 amount (i1040gi p. 97, line 2) are never read; the single, head of household, qualifying surviving spouse and joint amounts agree, as the model says."
+  },
+  {
+   "key": "2b",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "4",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MISMATCH",
+   "ruling": "Ruling: refusal located elsewhere; project retained (as ruled before). Schedule 1 lines 12, 14 and 23 are outside this tool: scope.schedule1 asks about \"an adjustment on Schedule 1 line 12, 14 or 23\" and refuses Form 1040 lines 8 and 10, so worksheet line 3 (Form 1040 line 9) refuses whenever one applies and within scope they are zero, as the line's citation says. The lines in scope (11, 13, 15 to 19a and 25) are all added. i1040gi p. 97, line 4, \"Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25\"."
+  },
+  {
+   "key": "5",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "6a",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "6b",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "7a",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "7b",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "8",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MISMATCH",
+   "ruling": "Ruling: refusal located elsewhere; project retained. Nontaxable combat pay is refused: ira.combat_gate (traditional IRA contributions and s8812.combat_pay, \"Did you receive any nontaxable combat pay in 2025 (it is generally shown in Form W-2, box 12, code Q)?\") refuses person.ira_line11, so line 12 and Schedule 1 line 20, on every return that has it; within scope line 8 is wages and line 2a, as the line's citation says. i1040gi p. 98, line 8, \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q\"."
+  },
+  {
+   "key": "9",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MISMATCH",
+   "ruling": "Ruling: owner ruling (register entry amb.2025.ira_se_floor); project retained. person.ira_se, now shown in the glossary, is each person's Schedule C profit or loss less that person's Schedule 1 lines 15 and 16 deductions, floored at zero per person (i1040gi p. 98, line 9, \"Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner, minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-\"); whether one spouse's loss nets against the other's earnings is the ambiguity the owner settled. Partnership earned income is refused before this line by the Schedule SE screen (person.se_screened, 'partnership and other self-employment income'), so only Schedule C earnings reach it."
+  },
+  {
+   "key": "10",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "(screen) (ira.special)",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "(screen) (ira.se_capital)",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "11a",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "11b",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "12a",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "12b",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  },
+  {
+   "key": "(screen) (ira.deduct_less)",
+   "record": "d5bb4f80b757542ad59c06d157c75ea1806d422d612067bb45b7b928fbb81970",
+   "status": "MATCH"
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "kind": "render",
+ "form": "dcprov",
+ "family": "claude",
+ "base": "0dde11c219994840fc0c666d84b1f513c53c6f990f3af59ce49bcc66ab9a0ce3",
+ "lines": [
+  {
+   "key": "1(c)",
+   "record": "0dde11c219994840fc0c666d84b1f513c53c6f990f3af59ce49bcc66ab9a0ce3",
+   "status": "MATCH"
+  },
+  {
+   "key": "1(d)",
+   "record": "0dde11c219994840fc0c666d84b1f513c53c6f990f3af59ce49bcc66ab9a0ce3",
+   "status": "MATCH"
+  },
+  {
+   "key": "1(e)",
+   "record": "0dde11c219994840fc0c666d84b1f513c53c6f990f3af59ce49bcc66ab9a0ce3",
+   "status": "MATCH"
+  }
+ ]
+}

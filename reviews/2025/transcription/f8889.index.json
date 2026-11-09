@@ -1,0 +1,182 @@
+{
+ "kind": "transcription",
+ "form": "f8889",
+ "family": "claude",
+ "base": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+ "lines": [
+  {
+   "key": "f8889.one",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "AGREE",
+   "subject_key": "a29131ac91ec776be5f1e17ec8845345d781ac8280c60b6aa19cc2f6b2e3d5ce"
+  },
+  {
+   "key": "f8889.step1",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation (+ scope); as the earlier rulings of this disagreement. i8889 p. 7, Line 6, Step 1, and p. 4, Line 3, rule 2 (amb.2025.hsa_last_month_all_year, reading 1). Step 1 is read only on the married allocation path (f8889.line6_split under f8889.split), so it reaches no printed line elsewhere; the reply returns zero when the spouse rule does not apply (split false), the project's helper keeps the Step 1 figure. Triage of this reply (triage.py, 1,641 fixtures, 500 generated returns seed 20261026, 494 partial records): 1,177 of 1,438 agree; on completed returns 14 value differences (every witness shown has split false, Step 1 not read) and 11 project-unknown (f8889.last_month unanswered where Step 1 is not read); the printed lines 3, 6, 7, 13, 16 and 17b show no completed-return value difference.",
+   "subject_key": "9405a1504ee434ff0fa848dc50aa7dfc18c813d2f8dd074a9fbe68a82ed3ba35"
+  },
+  {
+   "key": "f8889.share_raw",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation (+ model error on the allocation check); as the earlier ruling. i8889 p. 7, Line 6, Step 2: divide Step 1 'equally between you and your spouse unless you both agree on a different allocation'. The helper is read only under f8889.split; the reply returns zero when split is false and, as before, leaves the check of an agreed allocation to the household totals, where the project tests it (f8889.allocation_bad). Triage of this reply: 900 of 1,438 agree; on completed returns 10 value differences (every witness shown has split false), 83 project-unknown (the allocation answers where split is false) and 4 candidate-refuses; value differences elsewhere only on incomplete or refused records; no difference on a printed line of completed returns.",
+   "subject_key": "8ab98cdd164f0958ce5d0f6be68827f334ccd18de9707cb2cc044336c9c04445"
+  },
+  {
+   "key": "f8889.split",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; Form 8889 (2025), line 6, and i8889 p. 4, Line 3, rules 1 to 3; as the earlier rulings. Triage of this reply: 1,435 of 1,438 agree; the 3 differences are project-unknown on refused records; no completed-return difference.",
+   "subject_key": "82295be17a22a2eb757f7300e9282214d3ce23705afddbd3ccfda0f0b2cb78db"
+  },
+  {
+   "key": "f8889.excess_amt",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "AGREE",
+   "subject_key": "ab168fa818602e352f49691aed7f92fff91ec199ce1b6abf5420ba2b212c92e4"
+  },
+  {
+   "key": "3",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: reading recorded (amb.2025.hsa_last_month_change); project retained (owner ruling, T-033: keep rule 4); as the earlier ruling. The reply applies rule 2 to every last-month-rule filer and rule 4's greater-of only to a filer eligible all twelve months; the project applies rule 4 also to a last-month-rule filer who changed coverage type. Triage of this reply: 1,355 of 1,438 agree; no completed-return difference; the differences are on incomplete records (30 candidate-unknown, 10 project-unknown, 1 value) and refused records (17 candidate-refuses, 13 candidate-unknown, 10 project-unknown, 2 value).",
+   "subject_key": "00ee2b259e53dd59cf9dfce92cddc0a0a7a168a064e0289e36eafa0c7baf5183"
+  },
+  {
+   "key": "4",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "AGREE",
+   "subject_key": "322340eec7ae68172b64cf9b0b24227a500d1b03dcd8273fbf0e3d5a57c8bc49"
+  },
+  {
+   "key": "5",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "AGREE",
+   "subject_key": "282de64da85743b2992d3b4f4a9498a90f33edebc36a27709501dd87e9361eef"
+  },
+  {
+   "key": "6",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity and scope; as the earlier rulings. i8889 p. 7, Line 6, Steps 1 to 4 (amb.2025.hsa_step4_other_limits, owner reading 1; amb.2025.hsa_last_month_all_year). Triage of this reply: 1,340 of 1,438 agree; on completed returns only the reply's own refusals (2, h_alloc_over, 'Outside candidate scope'); value differences only on incomplete (3) and refused (6) records.",
+   "subject_key": "5d495a677b9fadd6c168c7dccc79da5d0270af63092baca8987db2c2b4c9f965"
+  },
+  {
+   "key": "7",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; project retained; as the earlier ruling. Line 7 applies only to a married filer, and married filers are refused (f8889.married); for an unmarried filer age 55 or older the $1,000 is in line 3 (rule 6). Triage of this reply: 1,423 of 1,438 agree; no completed-return difference; the 15 differences are project-unknown or value on incomplete (4) and refused (11) records.",
+   "subject_key": "0d9adcdde1197b331bb7df581a2b62c3668ea337756f2c7c9ea60b25717b9a27"
+  },
+  {
+   "key": "8",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "AGREE",
+   "subject_key": "19822c7927d9671dc92de43cdc99e9ea3d4aec177c9b924ffbe64eaddfd6e719"
+  },
+  {
+   "key": "10",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "AGREE",
+   "subject_key": "93d536f5292660a0779e1b41e4489449181d053c957e40de642393914808f43f"
+  },
+  {
+   "key": "11",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "AGREE",
+   "subject_key": "bb571680045b0796c495000b6557580fc3a14f19befcde258b46031d087b92a8"
+  },
+  {
+   "key": "12",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "AGREE",
+   "subject_key": "15ad697f3660e51637e0ac2a3adf0b020000c86660d855af8402f1e3ba3e9b25"
+  },
+  {
+   "key": "13",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: equivalent; project retained. i8889 p. 8, line 13: the smaller of line 2 or line 12. The reply returns zero when line 2 is zero and the smaller of lines 12 and 2 otherwise; the project also reads line 9 before returning zero, but line 2 is never negative (NonNegDollars), so the smaller of line 12 and line 2 is zero when line 2 is zero and the two agree wherever both are defined. The project-unknown differences (25, incomplete records) are records with no answer for line 9, which the reply never needs; on completed returns only the reply's own refusals differ (2, h_alloc_over). Triage of this reply: 1,362 of 1,438 agree; 32 project-refuses and 2 value on refused records.",
+   "subject_key": "c790549a2f5bfa1810b0f9648efe7bcb44b3d3f7df2c7b3bcd1396b3fd7663df"
+  },
+  {
+   "key": "14b",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "AGREE",
+   "subject_key": "4fcc28164aed0a15799a42940b3ff5d7b72018bf512d442280da979b4ab3f486"
+  },
+  {
+   "key": "14c",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "AGREE",
+   "subject_key": "d963a309c6a679744ee237c47698abf2514f52b6c6e7d41a5770641041764426"
+  },
+  {
+   "key": "15",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "AGREE",
+   "subject_key": "9eed4bfc02cef2c757d66b27a3a3d1bae4b940400943dc1b452b2f342eaace31"
+  },
+  {
+   "key": "16",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: equivalent; project retained. i8889 p. 8, Line 16: line 14c less line 15, not below zero. The project returns zero without distributions (line 14a zero); with line 14a zero, line 14c is zero (f8889.rollover_bad refuses a line 14b above line 14a), so the reply's subtraction gives the same value. Triage of this reply: 1,437 of 1,438 agree; the one difference is the reply's own refusal on an incomplete record.",
+   "subject_key": "358f6617957bea52334ac2643b92a2012c7d7fc827b4289b6c7b0b411fddfdc0"
+  },
+  {
+   "key": "17b",
+   "record": "de47c40b6fdab76b7fa0a0c3a4cde2c6285b378b89d8dfe2f979ecf9d5caa17c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: equivalent; project retained. The project enters zero when line 16 is zero; the reply's 20% of the smaller of the part subject to the tax and line 16 is 20% of zero either way (f8889.subject_bad refuses a part above line 16; i8889 p. 9, 'Enter on line 17b only 20% (0.20) of any amount included on line 16 that does not meet any of the exceptions'). The input for the part subject to the tax is the owner's reading amb.2025.hsa_partial_exception (D13), which the reply also uses. Triage of this reply: 1,437 of 1,438 agree; the one difference is the reply's own refusal on an incomplete record.",
+   "subject_key": "1ce4257b010d5573d09c964b6740aa8deeddb31c5bc6e01205a2c126085be3d8"
+  }
+ ],
+ "subjects": {
+  "f8889.one": "7594673a6ab47d68dbf371361fde8839f04584c5bbada1795628258925b53277",
+  "f8889.step1": "7a9db2708b97dd2d2286c01e749aa34bee2eb637e1fa10531566d3316c7b45ce",
+  "f8889.share_raw": "faa800cc3a0d666f6d4c6dc1922fa634ff83e0afd015fcb765ec81ef13f6eeb8",
+  "f8889.split": "213383c40200a43087ed0ff9035b74d7b4afba3db7386aa9bc5302f021018868",
+  "f8889.excess_amt": "14267b95d507b3150a18bb9abd049c43835d7900cd24cb45da8b1a900aa6a6ac",
+  "3": "a29ff56b466b32f6cffe229a1b0aa9cab59573d714385ed54216647f14515b2c",
+  "4": "bdbcbd3473d26cfe30b4a43c1a03b3fa7b9a024cd4c5abb8ec952495149764a1",
+  "5": "b3e43a8bf075344f2dbbf5309f12bbf9f421f91ed1919dd36ec20bca8658b96e",
+  "6": "63ed0feb94c62d2f8800d671d8708882e3e0aed9250d11c3b32ac1ea27125d3e",
+  "7": "bd67b66906587edf1fab7045db55a3c967e4c05aa7cdf51d0516047d5f5f2861",
+  "8": "d1f34d3eb338ae44aa92530768d65c84add035375340fd798c2208537ebfd141",
+  "10": "4be51c2e6043d549304c4f147f0c648f8061ce8f2c587a7da68274d1de9cbe39",
+  "11": "590d6c80986ff4565355039b56a84171e1afc451cb64f6e3f1d4f64d367db4a3",
+  "12": "a9fd9e5994291c7a3e39f53ee1f988e632745270f1dae0fd873f0a0a5f813afd",
+  "13": "2ded058f2500dfb577d6a187fb14329445ee06f12b1d0651e7db7b5f15ca36f1",
+  "14b": "09824692f9480d3bd433570920e255c070ef9a61716676ac2d2eca942e6530b5",
+  "14c": "8f2b121d23624cdce6862484db27b6f9b72fd80ddae5b1b97c5e7d660574b6ec",
+  "15": "bc869fb982d977c8c5177e513d806443cb5f5dc41fbf85e541fa2b9d34c1c0da",
+  "16": "311f82046448873fd1daaab7ffda1df2a8f960562128ca32df8822ff036b5b2a",
+  "17b": "43a94580b15837c82b10cd4ff8056fc0788208f6581fec2341aea6c3b19cbf38"
+ },
+ "__rest__": "53224b9b04f6ed8f50b69796e996e2c9484995e759b1ff8a00da01a8e7831756",
+ "foreign": {
+  "f8889.one": "9ac49f1c686239336a69e4c7977f9f969daa6457aa35dd98c3620129ed2279f6",
+  "f8889.step1": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "f8889.share_raw": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "f8889.split": "fdd137c55c3a43083a264bfeee571894d579f263106605031d4cec0965a9b3ac",
+  "f8889.excess_amt": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3": "847de7f3118ca7b27f9eb0b68b28e44da90c489f60c6da3da0d1859be08b1836",
+  "4": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "5": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "6": "f3fe8fd38be83253418265b56198c1e55707d29fb99cf2e87260ae13317ba71d",
+  "7": "847de7f3118ca7b27f9eb0b68b28e44da90c489f60c6da3da0d1859be08b1836",
+  "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "10": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "11": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "12": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "13": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
+  "14b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "14c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "15": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "16": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "17b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+ }
+}

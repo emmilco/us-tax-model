@@ -1,0 +1,320 @@
+{
+ "kind": "classm",
+ "form": "ny_rs",
+ "family": "deepseek",
+ "base": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+ "lines": [
+  {
+   "key": "case classm.ny_rs.1",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.1 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Married filing jointly and qualifying surviving spouse\", the bracket for line 38 of $38,275: $1,202 plus 5.5% of the excess over $27,900: exactly $1,772.625, which the project rounds half-up to $1,773.00; the model's $1,772.63 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.2",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.2 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Single and married filing separately\", the bracket for line 38 of $32,000: $600 plus 5.5% of the excess over $13,900: exactly $1,595.50, which the project rounds half-up to $1,596.00; the model's $1,595.50 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.3",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.3 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.ny_rs.4",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.4 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.ny_rs.5",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.5 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.ny_rs.6",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.6 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.ny_rs.7",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.7 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Married filing jointly and qualifying surviving spouse\", the bracket for line 38 of $24,999: $976 plus 5.25% of the excess over $23,600: exactly $1,049.4475, which the project rounds half-up to $1,049.00; the model's $1,049.45 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.8",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.8 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Head of household\", the bracket for line 38 of $24,999: $901 plus 5.5% of the excess over $20,900: exactly $1,126.445, which the project rounds half-up to $1,126.00; the model's $1,126.45 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.9",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.9 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Single and married filing separately\", the bracket for line 38 of $215,401: $12,356 plus 6.85% of the excess over $215,400: exactly $12,356.0685, which the project rounds half-up to $12,356.00; the model's $12,356.07 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.10",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.10 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Single and married filing separately\", the bracket for line 38 of $1,077,551: $71,413 plus 9.65% of the excess over $1,077,550: exactly $71,413.0965, which the project rounds half-up to $71,413.00; the model's $71,413.10 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.11",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.11 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Single and married filing separately\", the bracket for line 38 of $5,000,001: $449,929 plus 10.3% of the excess over $5,000,000: exactly $449,929.103, which the project rounds half-up to $449,929.00; the model's $449,929.10 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.12",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.12 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.ny_rs.13",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.13 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Married filing jointly and qualifying surviving spouse\", the bracket for line 38 of $323,201: $18,252 plus 6.85% of the excess over $323,200: exactly $18,252.0685, which the project rounds half-up to $18,252.00; the model's $18,252.07 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.14",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.14 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Married filing jointly and qualifying surviving spouse\", the bracket for line 38 of $2,155,351: $143,754 plus 9.65% of the excess over $2,155,350: exactly $143,754.0965, which the project rounds half-up to $143,754.00; the model's $143,754.10 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.15",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.15 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Married filing jointly and qualifying surviving spouse\", the bracket for line 38 of $5,000,001: $418,263 plus 10.3% of the excess over $5,000,000: exactly $418,263.103, which the project rounds half-up to $418,263.00; the model's $418,263.10 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.16",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.16 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.ny_rs.17",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.17 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Head of household\", the bracket for line 38 of $269,301: $15,371 plus 6.85% of the excess over $269,300: exactly $15,371.0685, which the project rounds half-up to $15,371.00; the model's $15,371.07 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.18",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.18 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Head of household\", the bracket for line 38 of $1,616,451: $107,651 plus 9.65% of the excess over $1,616,450: exactly $107,651.0965, which the project rounds half-up to $107,651.00; the model's $107,651.10 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.19",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.19 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Head of household\", the bracket for line 38 of $5,000,001: $434,163 plus 10.3% of the excess over $5,000,000: exactly $434,163.103, which the project rounds half-up to $434,163.00; the model's $434,163.10 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.20",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.20 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.ny_rs.21",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.21 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Single and married filing separately\", the bracket for line 38 of $7,688: 4% of the amount: exactly $307.52, which the project rounds half-up to $308.00; the model's $307.52 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.22",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.22 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Single and married filing separately\", the bracket for line 38 of $11,689: $340 plus 4.5% of the excess over $8,500: exactly $483.505, which the project rounds half-up to $484.00; the model's $483.51 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.23",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.23 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Single and married filing separately\", the bracket for line 38 of $13,691: $484 plus 5.25% of the excess over $11,700: exactly $588.5275, which the project rounds half-up to $589.00; the model's $588.53 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.24",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.24 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Married filing jointly and qualifying surviving spouse\", the bracket for line 38 of $22,650: $686 plus 4.5% of the excess over $17,150: exactly $933.50, which the project rounds half-up to $934.00; the model's $933.50 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.25",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.25 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Head of household\", the bracket for line 38 of $20,498: $730 plus 5.25% of the excess over $17,650: exactly $879.52, which the project rounds half-up to $880.00; the model's $879.52 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.26",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.26 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Married filing jointly and qualifying surviving spouse\", the bracket for line 38 of $25,499,996: $2,478,263 plus 10.9% of the excess over $25,000,000: exactly $2,532,762.564, which the project rounds half-up to $2,532,763.00; the model's $2,532,762.56 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.27",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.27 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Head of household\", the bracket for line 38 of $25,499,996: $2,494,163 plus 10.9% of the excess over $25,000,000: exactly $2,548,662.564, which the project rounds half-up to $2,548,663.00; the model's $2,548,662.56 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.28",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.28 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Married filing jointly and qualifying surviving spouse\", the bracket for line 38 of $12: 4% of the amount: exactly $0.48, which the project rounds half-up to $0.00; the model's $0.48 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_rs.29",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": null
+  },
+  {
+   "key": "classm.ny_rs.29 — tax",
+   "record": "738ee464fa0e541fc94d16cc5bbc7668a44c91de98a62fb771de9ec8c38ca9d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), New York State tax rate schedule, \"Head of household\", the bracket for line 38 of $12: 4% of the amount: exactly $0.48, which the project rounds half-up to $0.00; the model's $0.48 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  }
+ ]
+}

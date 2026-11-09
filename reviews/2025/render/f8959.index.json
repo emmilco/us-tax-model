@@ -1,0 +1,129 @@
+{
+ "kind": "render",
+ "form": "f8959",
+ "family": "claude",
+ "base": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+ "lines": [
+  {
+   "key": "1",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "2",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "8",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: representation; restatement accepted. person.se_line6 is a non-negative line (Schedule SE line 6 is zero when line 4c is less than $400, and lines 4a and 4c are zero or more for a profit; a loss enters zero), so a loss on one spouse's Schedule SE enters zero and cannot offset the other's; the sum is the per-person line 6 with negative amounts not considered, as the instructions say."
+  },
+  {
+   "key": "14",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "23",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "4",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "5",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "6",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "7",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "9",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "10",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "11",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "12",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "13",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "15",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "16",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "17",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "18",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "19",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "20",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "21",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "22",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  },
+  {
+   "key": "24",
+   "record": "1dc9e01ef54a1a83d5969c65fa6aef85a0daa8c3925951bb29d310e2c1906236",
+   "status": "MATCH"
+  }
+ ]
+}

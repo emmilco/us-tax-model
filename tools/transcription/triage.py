@@ -45,7 +45,7 @@ RAW_HEADING = "## Raw second transcription"
 def disagreement_handles(form, family):
     """The printed handles of the log's disagreeing or missing sections, ruled or open, so a record
     regenerated after ruling still covers the lines its rulings cite."""
-    text = open(rulings.log_path("transcription", form, family), encoding="utf-8").read()
+    text = rulings.read_log("transcription", form, family)
     body = text.partition("\n## Lines\n")[2].partition("\n## Raw ")[0]
     handles = []
     for part in body.split("\n### ")[1:]:
@@ -58,14 +58,18 @@ def disagreement_handles(form, family):
 
 
 def line_scoped_sections(form, family, only=None):
-    """{handle: pass id} for each disagreeing or missing section the log marks "Reviewed in: pass <id>".
-    Such a section was judged in a line-scoped pass, not in the whole-form reply that
-    `.transcription/<stem>.response.txt` holds. Decided from the log's text alone; a form
-    with no log has no such sections."""
-    path = rulings.log_path("transcription", form, family)
-    if not os.path.exists(path):
+    """{handle: pass id} for each disagreeing or missing section judged in a line-scoped pass, not in the
+    whole-form review: from the form's index, the pass of the record each line's verdict comes from
+    (review_store.line_passes); for a log kept as a plain file, the "Reviewed in: pass <id>" tag of its
+    section. A form with no log has no such sections."""
+    import review_store
+    passes = review_store.line_passes("transcription", form, family)
+    if passes is not None:
+        return {k: v["pass"] for k, v in passes.items()
+                if v["pass"] and v["status"] != "AGREE" and (only is None or k == only)}
+    text = rulings.read_log("transcription", form, family)
+    if text is None:
         return {}
-    text = open(path, encoding="utf-8").read()
     body = text.partition("\n## Lines\n")[2].partition("\n## Raw ")[0]
     found = {}
     for part in body.split("\n### ")[1:]:
@@ -93,7 +97,7 @@ class Unavailable(Exception):
 
 def pass_blocks(form, family):
     """{pass id: block text} of the log's line-scoped reviews."""
-    text = open(rulings.log_path("transcription", form, family), encoding="utf-8").read()
+    text = rulings.read_log("transcription", form, family)
     return T._log_parts(text, RAW_HEADING)[4]
 
 
@@ -142,7 +146,7 @@ def verify_receipt(receipt, prompt_sha, raw):
 
 def whole_reply(form, family):
     """The whole-form reply the log records (its "## Raw second transcription"), else exit."""
-    text = open(rulings.log_path("transcription", form, family), encoding="utf-8").read()
+    text = rulings.read_log("transcription", form, family)
     raw = rulings.section_reply("transcription", text, "", "")
     if raw is None:
         raise SystemExit(f"{families.stem(form, family)}: the transcription log records no whole-form reply")
@@ -248,7 +252,7 @@ def triage(form, family, generated, seed, partial_bases, max_witnesses=6):
                 refused.update({h[0]: f"{pid}: {ex}" for h in groups[pid]})
     refuse_line_scoped(form, family, refused)
     record = {"policy": POLICY, "form": form, "family": family,
-              "log_sha256_at_triage": hashlib.sha256(open(rulings.log_path("transcription", form, family), "rb").read()).hexdigest(),
+              "log_sha256_at_triage": hashlib.sha256(rulings.read_log("transcription", form, family).encode()).hexdigest(),
               "subject_sha256": T.subjects.current("transcription", form, T.Y),
               "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit"}
     found = {}

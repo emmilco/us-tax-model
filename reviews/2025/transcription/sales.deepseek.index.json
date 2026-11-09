@@ -1,0 +1,50 @@
+{
+ "kind": "transcription",
+ "form": "sales",
+ "family": "deepseek",
+ "base": "fb5c65f2b7f6b816cbeb2ed3589805a5a5c829e73e99e2795a8002f86e9566ab",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "sales.one",
+   "record": "1a439bf03e3f1bd153843bab9a862636e5f729e600d73759e33ebb451d2e14ef",
+   "status": "AGREE",
+   "subject_key": "6fcda75e7e7e62f02da2cc759795964f2a560063de57c2df71d60fda52470ce2"
+  },
+  {
+   "key": "(e)",
+   "record": "1a439bf03e3f1bd153843bab9a862636e5f729e600d73759e33ebb451d2e14ef",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; as the earlier rulings: the reply adds boxes G and J to the reported-basis boxes; boxes G to L are refused at the transaction by sales.digital at sales.one (f8949 p. 1, box G; i8949 p. 8, code B). Its own gates (h_aggregate_bad, h_other_code, special) are the project's sales.bad_aggregate, sales.bad_code and sales.special. Triage executable-triage-v2 (reviews/2025/transcription/triage/sales.deepseek.json; 1,638 fixtures, 500 generated returns seed 20261026, 476 partial records): 1,588 of 1,765 comparisons agree; 7 value differences (boxes G and J), 8 candidate-refuses and 162 candidate-unknown, all on refused or incomplete returns; no completed return differs. Project stands.",
+   "subject_key": "09e8a20031b2dccc6efb5e3a00c977a97a9692de5a962b768d77ac831be7cabd"
+  },
+  {
+   "key": "(g)",
+   "record": "1a439bf03e3f1bd153843bab9a862636e5f729e600d73759e33ebb451d2e14ef",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i8949 p. 10, code W; i8949 p. 8, code B. As the earlier rulings: codes other than B and W are refused (sales.bad_code), and the values for none, B, W and BW are the project's. Triage executable-triage-v2 (reviews/2025/transcription/triage/sales.deepseek.json; 1,638 fixtures, 500 generated returns seed 20261026, 476 partial records): 1,647 of 1,765 comparisons agree; 8 candidate-refuses, 104 candidate-unknown, 3 project-refuses (sales.wash_bad) and 3 project-unknown, all on refused or incomplete returns; no completed return differs. Project stands.",
+   "subject_key": "a4be7cdd82e69b32c57af5b3b9be67b56438d4182a2b31fd6534b06eddfaf531"
+  },
+  {
+   "key": "(h)",
+   "record": "38e283784bce18c09c8f435c96f2dc40b836c6512645fde4fe763afc3023a516",
+   "status": "AGREE",
+   "subject_key": "132bd4367ef6dd80f3e301d94849177c9506271754dce9e1f4b195f333a59375"
+  }
+ ],
+ "subjects": {
+  "sales.one": "7aa4c2c823c6b0f59668d5fb5d3da9875c8964cfb1d6766aac6834ae80faf6c2",
+  "(e)": "b7f290bb5c1dd9dbd25b593ae9a7e0244a1e684e986b47849a9572b164e73d0d",
+  "(g)": "1413c8d8ed06a157299368253fb69f59581cc704bba27cd1699427677401a9e9",
+  "(h)": "99ee2a26d2615b358c59742db7fe5cb7211304df3fd2300bdc0b375bc504b241"
+ },
+ "__rest__": "d66e458afa5745f8eec417fb8e25dc768244f7e1dca0d2d0114dfbf47d7cba76",
+ "foreign": {
+  "sales.one": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(e)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(g)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(h)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

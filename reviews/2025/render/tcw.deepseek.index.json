@@ -1,0 +1,238 @@
+{
+ "kind": "render",
+ "form": "tcw",
+ "family": "deepseek",
+ "base": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+ "lines": [
+  {
+   "key": "(a)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (single.row1.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (single.row1.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (single.row2.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (single.row2.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (single.row3.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (single.row3.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (single.row4.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (single.row4.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (single.row5.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (single.row5.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (single.result)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (mfj.row1.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfj.row1.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (mfj.row2.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfj.row2.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (mfj.row3.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfj.row3.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (mfj.row4.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfj.row4.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (mfj.row5.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfj.row5.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfj.result)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (mfs.row1.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfs.row1.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (mfs.row2.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfs.row2.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (mfs.row3.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfs.row3.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (mfs.row4.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfs.row4.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (mfs.row5.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfs.row5.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (mfs.result)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (hoh.row1.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (hoh.row1.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (hoh.row2.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (hoh.row2.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (hoh.row3.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (hoh.row3.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (hoh.row4.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (hoh.row4.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "(c) (hoh.row5.product)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (hoh.row5.tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (hoh.result)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  },
+  {
+   "key": "Tax (tax)",
+   "record": "f8cfac42d28a7d5133c9439e73dd4e888458372ae93e9e573433896f66c47a59",
+   "status": "MATCH"
+  }
+ ]
+}

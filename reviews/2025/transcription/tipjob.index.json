@@ -1,0 +1,38 @@
+{
+ "kind": "transcription",
+ "form": "tipjob",
+ "family": "claude",
+ "base": "e238c946aa9c55d23cd6615d3544bdee0ab5af692c97832898191121bd7231a7",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-04); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "tipjob.one",
+   "record": "e238c946aa9c55d23cd6615d3544bdee0ab5af692c97832898191121bd7231a7",
+   "status": "AGREE",
+   "subject_key": "19015f061e89ce29041e7ba0b4382803b32626a2c0d78a8fa991af9cbecbd2ea"
+  },
+  {
+   "key": "1(c)",
+   "record": "e238c946aa9c55d23cd6615d3544bdee0ab5af692c97832898191121bd7231a7",
+   "status": "AGREE",
+   "subject_key": "da240fbe42460971e404685ad6296d994321d333f25237e06e44c1fd9805b1ab"
+  },
+  {
+   "key": "1(d)",
+   "record": "51a236219c743a07f30d052c95028a9f532eff6c5729d88eb3d6c3e743e95080",
+   "status": "AGREE",
+   "subject_key": "9374e43345645baa6e0f4aca2e54b47604ce8d37d5c9beea84e20d6adc4b2e2d"
+  }
+ ],
+ "subjects": {
+  "tipjob.one": "5974fbc80063c865a4337eaabedcd9f3fc8ff2a5ae649aac66251445d00d35df",
+  "1(c)": "f3f65ff93abdd04fec92f4d420d611be1c57cbd795849bc0e0bc28010d010509",
+  "1(d)": "dbfb2a9be3e01963951104913de8e086b4ef5cd0247fd41b20789fbaecd24020"
+ },
+ "__rest__": "0300589bc312f32bcfc4776d58448bd7eab5d75748435f116e1b132ae92c1f76",
+ "foreign": {
+  "1(d)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

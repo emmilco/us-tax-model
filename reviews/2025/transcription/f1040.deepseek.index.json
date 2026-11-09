@@ -1,0 +1,388 @@
+{
+ "kind": "transcription",
+ "form": "f1040",
+ "family": "deepseek",
+ "base": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+ "lines": [
+  {
+   "key": "1a",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error — i1040gi p. 23, Line 1a: \"Enter the total amount from Form(s) W-2, box 1. If a joint return, also include your spouse's income from Form(s) W-2, box 1\". The candidate sums person.wages (W-2 boxes 3 and 7) instead of person.box1. Executable triage was unavailable for this entire reply because f1040.line28_box references unresolved s8812.no_refund (`triage/f1040.deepseek.json`, state invalid); this declaration is outside line28_box's closure and is ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "59e409d2ec48f0fbc63e88928e866a27946ab818ca721b78c9d1b6b72254f82b"
+  },
+  {
+   "key": "1e",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error — i1040gi p. 24 line 1e applies to taxable dependent-care benefits; without benefits, Form 2441 Part III is not completed. The candidate always reads f2441.line26, introducing unrelated student/disabled and income prerequisites. Executable triage was unavailable for this entire reply because f1040.line28_box fails reference resolution (`triage/f1040.deepseek.json`, state invalid); this declaration is outside line28_box's closure and is ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "a0c7c948b896cc4d962a66cf992fe9912e80d7ecfb18e88e3aaae0b2f8972c08"
+  },
+  {
+   "key": "1z",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "2f577c753c799046b5cf406be39d9307f5d06ff1fc0c7d24aa0fc40973ce6b53"
+  },
+  {
+   "key": "2a",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error — i1040gi p. 25 line 2a includes exempt-interest dividends (Form 1099-DIV box 12). The public f1040.tax_exempt_interest question explicitly excludes those dividends because the project adds div.box12 separately. The candidate copies only the interest input, omitting div.box12. Executable triage was unavailable for this entire reply because f1040.line28_box fails reference resolution (`triage/f1040.deepseek.json`, state invalid); this declaration is ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "8e555c3f43dd4df7c43f1e76e45a71549040214fe50ca765baf217668841d2a9"
+  },
+  {
+   "key": "2b",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope — The candidate sums interest.amount directly and retains sb.unsupported, whereas the project reads Schedule B line 4 via line 2/line 3 and carries foreign-account/trust disclosure screens. The supported unadjusted amount is the same because line 3 is the zero placeholder for the refused Form 8815 regime; omission of additional Schedule B screens is a scope difference, not a different interest formula. Executable triage was unavailable for this entire reply because f1040.line28_box fails reference resolution (`triage/f1040.deepseek.json`, state invalid); ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "90812974d77ae0268d78be0cbb1ef5a7ff20a75ccc4912ffa6f9b9adb84f6e3e"
+  },
+  {
+   "key": "3b",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope — div.box1a is the underlying ordinary-dividend total also read by sb.ordinary_dividends and sb.line6. The project carries Schedule B special-treatment and foreign-account/trust screens; the candidate copies the underlying amount without those gates. This is a scope distinction, not a different ordinary-dividend formula. Executable triage was unavailable for this entire reply because f1040.line28_box fails reference resolution (`triage/f1040.deepseek.json`, state invalid); ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "471ed8084245bb4fe082ede81025a1253f42c00f792abb265496117bf7ce9cc7"
+  },
+  {
+   "key": "4a",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "ae815d5caa15a823657f447de711489c82300eb42decc1434d8aeb02b75814ff"
+  },
+  {
+   "key": "4b",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "5427342474b964c9ebec38f934ef479af1df8fe38bf60111a4661c215671e5bd"
+  },
+  {
+   "key": "4c",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "ead3f3be17e4b5728b4891ffbda7b872c9f712a164a4480189e692f58d6a14be"
+  },
+  {
+   "key": "5a",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "2ad574576ee33153144d6887126e815b48798847c7a9b26c79bbb7903785e964"
+  },
+  {
+   "key": "5b",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "0eea6ab68d6c7a0ec8ce9039ebe5e17d6724b065c31b6310b7c1bd82f77dcb41"
+  },
+  {
+   "key": "5c",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "870551fc9d82805685d14947e8d92cf369cfcc4162bf2c0b06b9cc71836423fe"
+  },
+  {
+   "key": "6a",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "b497b25c32fc9060cd1af2b3dd4fa94557d40e1c49eb1989c2279699cd7ab866"
+  },
+  {
+   "key": "6b",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "f00e2f9e13515b61339ab6ff3d4a9d012602d701cb20950a9d606fdb4ad35d65"
+  },
+  {
+   "key": "6c",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error — The printed line 6c is a lump-sum-benefits election (i1040gi p. 31). With zero benefits there is no election to make; the project returns false and does not ask ssb.lump_sum. The unguarded copy requires an election answer even when no Social Security benefits were received. Executable triage was unavailable for this entire reply because f1040.line28_box fails reference resolution (`triage/f1040.deepseek.json`, state invalid); ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "02bd48e60ed8711038a22321a85f0a36441c48c6aa846324d209f67849776352"
+  },
+  {
+   "key": "6d",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error — Form 1040 line 6d explicitly begins \"If you are married filing separately\" (i1040gi p. 31). Copying ssb.lived_apart alone drops that status condition and requires a question that is unasked on other statuses. Executable triage was unavailable for this entire reply because f1040.line28_box fails reference resolution (`triage/f1040.deepseek.json`, state invalid); ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "9e78403d31e2738f07a0d73e58cb71c4a902b296de42e9f1061efe7364eba846"
+  },
+  {
+   "key": "7a",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "18f36374fcea9dbcea745f235c043eb6c5bc983fcf05738410dc36156292a2e2"
+  },
+  {
+   "key": "8",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "fe83eaaf6faabc426f60eba3e2333eb0fcb245fd8d6c55e1c4c6aba07e65cb76"
+  },
+  {
+   "key": "9",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "d2dd4510fed9ff6b037c99d7d895cd04758feaf1888578fec6c2b01b6e8d0338"
+  },
+  {
+   "key": "10",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "773553ccb8c2ff78081c76be2cb5239f761b50b7940ddd42d92bf7abc28081fc"
+  },
+  {
+   "key": "11a",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "51dfc2c5c68c655a68dceb09107e40bb88454a6ee3f1263782eed0a8472afaea"
+  },
+  {
+   "key": "11b",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "2d483aaf7f14c962081cee4a56b8fe71ee98bb9df5e2035bc63e082069a1f02f"
+  },
+  {
+   "key": "12e",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "4d7798b56f6ae503205c8971bf886717541bdbd68b0e5ba1106098c1596317dc"
+  },
+  {
+   "key": "13a",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "29a49308142db7179b5a36caf869d3c316da0421ca919da3fe05b3493b045541"
+  },
+  {
+   "key": "13b",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "32a4eb520531ca5bd9ef5f3ca9ead9d9549727556f7b028f262754afbbfd7377"
+  },
+  {
+   "key": "14",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "4a450c1e646c67c5d424b4ddd245d369b7676c93415037fa14fdabb04629396c"
+  },
+  {
+   "key": "15",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "aa0fb1ce6e72eec0d5757fa8541ea5ed915121b5ccc32735889f34d593ab515d"
+  },
+  {
+   "key": "16",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error — i1040sd p. 15 expressly says not to use either capital-gain worksheet under its nonpositive-income/no-gain exceptions. The candidate selects sdtw.line47 or qdcg.line25 without applying those exceptions before worksheet selection (amb.2025.sd4952_selection). Executable triage was unavailable for this entire reply because f1040.line28_box fails reference resolution (`triage/f1040.deepseek.json`, state invalid); ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "719cc672791c6bfbeac077017c12896a07f899b52c56797c8f5f8432e1781226"
+  },
+  {
+   "key": "17",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "0831a78f15ffece9eb7392fefe66e91de40ad06a1aac946c4f9c4ed92a225b20"
+  },
+  {
+   "key": "18",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "14e6d7f6daba8d73a91c6e31ca171dc99db0624229acc7aab8f042792b32a647"
+  },
+  {
+   "key": "19",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error — Form 1040 line 19 is \"Child tax credit or credit for other dependents from Schedule 8812\" (f1040 p. 2). The project's Schedule 8812 record identifies s8812.line14 as that credit (\"Enter the smaller of line 12 or line 13. This is your child tax credit and credit for other dependents\"), cited to f1040s8812 line 14, whose next printed line reads \"Enter this amount on Form 1040, 1040-SR, or 1040-NR, line 19\"; s8812.line19 is instead the Part II-A additional-child-tax-credit line (\"Is the amount on line 18a more than $2,500? ...\"). The candidate copies s8812.line19 instead of s8812.line14. Executable triage was unavailable for this entire reply because f1040.line28_box fails reference resolution (`triage/f1040.deepseek.json`, state invalid); ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "41083752789d463e23b011b738cc8b695376b2f818db8ecb55eec0e7a7571721"
+  },
+  {
+   "key": "20",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "dce8ace65cfddbfdc3168275b087528677afd4766dd8426b0b0997e27f9e6cc8"
+  },
+  {
+   "key": "21",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "f87f8d362e8e87ed458c9b4ff7a00ef24e0ebfcb5e9d7f28d3aa8753b81ea284"
+  },
+  {
+   "key": "22",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "0041a145a271a74f0eea92c2656c0c0e4022bd7a98dda3ddc2fcd74d886b7edc"
+  },
+  {
+   "key": "23",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "e58dc3a40926b7b8e548c46c185a66d9d05dd34d0b3860c7d5b731a0502645bd"
+  },
+  {
+   "key": "24",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "43ec363ae23e7f6e4537d512bdc8117f6c7d664bc46aea1679cfe23ba31817d4"
+  },
+  {
+   "key": "25a",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error — Form 1040 line 25a is federal income tax withheld from Forms W-2, box 2 (i1040gi p. 39). person.withheld is explicitly the sum of W-2 box 4 Social Security tax for excess-withholding calculations; the candidate chooses the wrong public field instead of person.box2. Executable triage was unavailable for this entire reply because f1040.line28_box fails reference resolution (`triage/f1040.deepseek.json`, state invalid); ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "fffabeb1aa0bb20159ae046f307ea015f62c93edc8747b5190e7b7048449b70c"
+  },
+  {
+   "key": "25c",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error — i1040gi p. 39, Line 25c: \"Additional Medicare Tax you had withheld. Include the amount shown on Form 8959, line 24, in the total on line 25c\". The candidate enters only f1040.line25c_other and omits f8959.line24. Executable triage was unavailable for this entire reply because f1040.line28_box fails reference resolution (`triage/f1040.deepseek.json`, state invalid); ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "aadaed3238034a3c69dea67fcb2463370b817e6edc4f53d1b349199341f5db1d"
+  },
+  {
+   "key": "25d",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "6240335434a4d0aee06b558fd1e06daee19eb3ba7b8e99ac7170584308626b94"
+  },
+  {
+   "key": "27a",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "e37ce941250da46f56eaae4cce108b80595dc163296f6cd0f99541aacca395ec"
+  },
+  {
+   "key": "27b",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "0f41bb59f3a5220218407753d8c6553112281da33ddceb240ff90b476a002abb"
+  },
+  {
+   "key": "27c",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "0e91fb91c2b1887c558c3b411d50c9c3296a26ada23267fdd013a135770c7e5a"
+  },
+  {
+   "key": "Dependents (separated spouses)",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "982b81ef110205ca402b007cb1473887a87b25cf69f4265c6469335818414291"
+  },
+  {
+   "key": "28",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "1182572c333cd9ed68cb7fe9d61f0a984e788a567d125922df9752191b0a5123"
+  },
+  {
+   "key": "28 (box)",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error — Validation failure: the candidate expression references s8812.no_refund, which does not exist in the published Schedule 8812 interface (`triage/f1040.deepseek.json`, state invalid: \"f1040.f1040.line28_box: reference 's8812.no_refund' does not resolve\"). The project implements the disclosed owner design limit BUG-0174 as constant false. This adjudicates the unresolved reference; no sampled equivalence is claimed.",
+   "subject_key": "f621d3cf07450707777df63506dfe86c9c6ba16206f7701612ba335f652457dd"
+  },
+  {
+   "key": "29",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error — The unconditional Form 8863 line 8 copy and unguarded f8863.ban refusal require education-credit facts when no credit is claimed (i1040gi p. 61; i8863 p. 3). The project conditions the copy on f8863.eligible. Executable triage was unavailable for this entire reply because f1040.line28_box fails reference resolution (`triage/f1040.deepseek.json`, state invalid); ruled by reading. No sampled equivalence is claimed.",
+   "subject_key": "a96b894db9809ba3ecd8aa657323f076458f0f27a46145626183270ce2e1f38f"
+  },
+  {
+   "key": "30",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "926502e63c855ae2960b5b33d06f5f2a50f2599976a705dbb591c0fda22d5435"
+  },
+  {
+   "key": "31",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "f3a8f5553aecd3663a57407e9b9c64238185d29e612269d79589b8c25e3ee443"
+  },
+  {
+   "key": "32",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "832ad988bb281d9721e00b9296b48f49c235f39c0837914540eb20f9fbc3e270"
+  },
+  {
+   "key": "33",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "fc186c0f51b943567ff2e0884c90fb4838d42458559fca7cd1eee67ddffde6e1"
+  },
+  {
+   "key": "34",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "4463a9f78777b03a3730c36cfdb59a39292b471ebfc580ca3ae636f9286d2186"
+  },
+  {
+   "key": "37",
+   "record": "c04c288447ed677f7bd4246f185e0f52287422545131a60ff4dde2c9ece33def",
+   "status": "AGREE",
+   "subject_key": "c79379d48cdcde775df757a588399214ad2620f9e4e476549c8d589de5431c7a"
+  }
+ ],
+ "subjects": {
+  "1a": "b50991b0e4a046aad90e09a1400d3ca651ec8a5837b1cd130dc9b86943bedcb2",
+  "1e": "44ed6540489e897efab1502a4011b3593f6214d82ac15a70e2f23acee9bd41cc",
+  "1z": "f36d3ec9a9b5c3a371e74d4b070129781e34229674d23ed4fe6dc8140cb4dcca",
+  "2a": "dbbbc6b58bddc3ef03d93d432e86a1cee3fcb7dddb75356533075ff9f4df4622",
+  "2b": "03d82155fa8460bec99cb7486856a6cff99a933867f5fc8d76846d8383066867",
+  "3b": "0d10dd3b8ea473e76293097fde829743554540aca10def24defbe473cff25883",
+  "4a": "00f2d0e365c6748117d4095b2d858e480f4256c4ed594693cd26293026df0a5c",
+  "4b": "d7e9c99cdff30f61fd500a7dceadd210b252f900305c0ed9013ffd4e467f0030",
+  "4c": "6fafae27be338a3c07cd90acb57e687b6a55a0832f8c9523fe6d29727126d7f6",
+  "5a": "73419c2e8b168666acb40f4c616c6da1e047e5af852cb12e305fdec73750ac66",
+  "5b": "5067212e2938c260d2b2e36bf30da9908fbfe52a69e931cc7778f0a117e27699",
+  "5c": "91c8d4d0ed355041d116c73b86960b4a735b7fd46e9ed89e1f61d35e2373d611",
+  "6a": "d2758e1d9ca52b28e87856274b4959483c7bd83355f6baefd54618e747880ba7",
+  "6b": "666b64f35af320d7d78746eece038f88c2d65839033a0ac8bf3491e70c16c8ed",
+  "6c": "717d56ea98d356c868e23a6a66503040122a0f05ffe9343bf3b03d158b178991",
+  "6d": "60c1c4a8ab3f418aaf566bdfcf8071c762b6dbb7163b1ab30edf1eaab506a835",
+  "7a": "70084648d07682496cced0e234fd502ac08d57e93a2bfbd89e1686ebca0e9835",
+  "8": "482e299852c8a42ec80fd05661fa60aa27ec8b58448e77ae9b7337a097859dfc",
+  "9": "4a00120baf348ba5e60f8c7441ffd8c0144db25bcbdab3561b0318424d8da03e",
+  "10": "756e100cb725da7f4f3229d4bff1971708cb3df121b350ac7aad7d6353d25a91",
+  "11a": "27dbd72910e0e60e4ecc381522950d81ef3bdfe9a87d2d2c9872d4a98133d20f",
+  "11b": "980e586ccd43ed0b1ead654efdff7144a1b81e5872e19fd1f4f6e1bf95781112",
+  "12e": "15fb0dc252bac308839c86466f8b8aa797d84310c4ca1f173c4a4038997bc343",
+  "13a": "1ca2c02f6b1ae44a9fe194ebef88f9b5d81de340e765fb0184c4beb5f5e68f28",
+  "13b": "0d9926e84244027e7ad6305124cabe1353f17fffaaba10b10c0e104cedab91f9",
+  "14": "ee12548e01b68f2075b8332ff2bf76bf773510ce09b40e3da6d344bfa77f06fd",
+  "15": "f46a2abb264f976f062b15ce8cafd03a165c846027d7f9312df85d86b28e7072",
+  "16": "a1b3fe2e311142714dc53080902b12b62e78bf8b2f6ef994b4fe87fa63f119f5",
+  "17": "197fb0bb8c3ed1fcd417035ab7846c914a605bb956b3937c4e6b86ec87746a24",
+  "18": "40b1e9ea8ea7ae6bdeff88b5360e565c7f01335932bd87913bdc97a3edbfb3e3",
+  "19": "870d606f182413ca0a44422c1d503873819b19eece544a07c8e0dfc92447bdc0",
+  "20": "5997b6d65c41448c66a75c48cc5983b25dcb8e16768c953663ebdc2f1743b7ad",
+  "21": "d4699d0152c93c82d84119fa1d177db97145b9c7e4fb2b35dd17a4fc51208b09",
+  "22": "fcaa070dd80c8119177e02f98e22988d793a4374facfda57ebcf13deb96666da",
+  "23": "10f862ddf722034b9dd4292204de978273c6814c4d35e80a07d1320266291149",
+  "24": "56ae9053b326c3a8c139c1894951e3b10e81392583f2d62a9be7d73e7741f4a1",
+  "25a": "b3260ac8427478e624d505c205d070cdb79b9eb2966109747704def8c238066e",
+  "25c": "dbd6fce83d95634d61eea15702da46e3a0db860c1d05e5f9d851775fbeba2fb6",
+  "25d": "a707f5d94df6017897f3ea05c6c4d086ca4c1abf10adb658b968a050123c2059",
+  "27a": "c49fbb742239c591b4eba998f713bd683b369f2e90def56f0127b382c7956352",
+  "27b": "b69cd312051c77e6e586a9632e26c34fef189b17b58d18eb159bae58b217e090",
+  "27c": "1ad25f283008d0e1305f40f9de619cbf2f4254cabacea9ce9f7cc83c7e674230",
+  "Dependents (separated spouses)": "b1a4dd1c8fde9a4f275b1e8233b0bc5bf03e92b44117917d36575132f782507d",
+  "28": "2b088ce71159ce5e05be21b510c20184ab171b48ef33990cb1be51478590cfad",
+  "28 (box)": "6f43b3c6e54ac2a2d940ada7ed75de4cba3bfa3a289656adc3ea66b47ac92763",
+  "29": "c07d078ef4fb3f5ac8e875c948e3644e8ce70bdb26e1732ef9a7d88c4ae1b442",
+  "30": "13dd13728b5f75586c77cc936b6ae418cf25d43de806019afd7f229d1872b031",
+  "31": "37586779530fcdb9da44f4f75e3f6a36abab40dbd06119ebd449ee9164ff1f1c",
+  "32": "2a0c0707e902998f704acf7e3574aee9fa0961bde3df0263cafa4a341e724ff5",
+  "33": "ee464639ae07fe8b4df82f11c3f924b3174fde88502336f93a7c819d911be979",
+  "34": "da64209dec787ebfbe10f6f2e9f5cf30726d9fa4dbe45779405023f8fbc211ca",
+  "37": "1fbe79b60207f9761aaffb6e098ac77998fb7cd9e2c6befce0c174e791874434"
+ },
+ "__rest__": "e8cf778e9ae7c8363ed7e5f85314f01a68cf2f35dac8d2449b9664ccb42b3a78"
+}

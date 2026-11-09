@@ -1,0 +1,158 @@
+{
+ "kind": "transcription",
+ "form": "asset",
+ "family": "claude",
+ "base": "99f72119c345281a91a3d2af0f9df6c0b4f6c11e38951868a2fbb2c7d2e56e6b",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "asset.dep_2025",
+   "record": "442c65da06dee1f1e516ce1cbff0ae3b891fd8b1c4aaf1bb05e70675c825c31b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the pass reply's asset.h_bonus_mixed (placed in 2025 and asset.bonus_same false) refuses asset.bonus_2025 whatever asset.bonus_choice is, so it asks asset.bonus_same of 2025 property whose choice is none; the project asks it only on the full and forty branches (asset.bonus_full, asset.bonus_forty refuse on asset.bonus_mixed). i4562 p. 7, Election out: \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year\" makes the same-class question matter only where an allowance is claimed. Same point as the backlog and refresh rulings. The values are now representation: the reply's dep_2025 is the table rate times its (c), which for 2025 property is cost times business use less the section 179 cost and the special allowance, the project's 19(g) basis (asset.ub); the refresh round's added line 14 is gone (i4562 p. 9, Line 17 and Lines 19a Through 19j). Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.",
+   "subject_key": "7b5378fed7415b8847d374f03965f236bd796d54c95e670288008d8ee93e58e7"
+  },
+  {
+   "key": "asset.bonus_2025",
+   "record": "442c65da06dee1f1e516ce1cbff0ae3b891fd8b1c4aaf1bb05e70675c825c31b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the pass reply's asset.h_bonus_mixed (placed in 2025 and asset.bonus_same false) refuses asset.bonus_2025 whatever asset.bonus_choice is, so it asks asset.bonus_same of 2025 property whose choice is none; the project asks it only on the full and forty branches (asset.bonus_full, asset.bonus_forty refuse on asset.bonus_mixed). i4562 p. 7, Election out: \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year\" makes the same-class question matter only where an allowance is claimed. Same point as the backlog and refresh rulings. Values: 100% for full after January 19, 40% for forty or before January 20, none for none, on the basis after section 179, the project's reading. Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.",
+   "subject_key": "0473c44efe24b8278690f43986b36877868c38621ae325427da8cf0ae66becea"
+  },
+  {
+   "key": "asset.s179_2025",
+   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "status": "AGREE",
+   "subject_key": "68212c96c29510f92f924501c944cf5b6a4bc7cbaf64ede53448059586e79213"
+  },
+  {
+   "key": "asset.mq_q4",
+   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; p946 p. 34: \"the total depreciable bases of MACRS property you placed in service during the last 3 months\". Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,354 of 1,403 comparisons agree; 49 project-unknown; no completed return differs; the differences are the project's refusals (asset.screened, asset.listed_low) or unknowns on unasked answers, on refused or incomplete returns. Project stands.",
+   "subject_key": "1a652db0a333d918738f9e9f46ae520f9e9b6bd12343d72109138cd4e828ca3e"
+  },
+  {
+   "key": "asset.mq_total",
+   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; p946 p. 34, the same test over the entire year. Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,337 of 1,403 comparisons agree; 2 candidate-refuses, 17 project-refuses, 47 project-unknown; no completed return differs; the differences are the project's refusals (asset.screened, asset.listed_low) or unknowns on unasked answers, on refused or incomplete returns. Project stands.",
+   "subject_key": "de1a231f4c7318ae0b6823caa052dbec0b869079347eac052840dd086a2db3f1"
+  },
+  {
+   "key": "asset.cost179",
+   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: equivalent; project retained. i4562 p. 5, Line 2, and column 6(b) \"cost (business use only)\": the business-use cost of property placed in service in 2025 and used more than 50% in the business, zero otherwise, on both sides; the guards are merged differently. Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,370 of 1,403 comparisons agree; 14 project-refuses, 19 project-unknown; no completed return differs; the differences are the project's refusals (asset.screened, asset.listed_low) or unknowns on unasked answers, on refused or incomplete returns. Project stands.",
+   "subject_key": "0b11e90e0fdf4ea96ab17375a46e47a077b33853eb3cca8ec24575d92b2f17f2"
+  },
+  {
+   "key": "asset.dep_prior",
+   "record": "442c65da06dee1f1e516ce1cbff0ae3b891fd8b1c4aaf1bb05e70675c825c31b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i4562 p. 9, Line 17, \"enter the deductions for the current year\". For property placed before 2025 the reply takes the table rate (the convention used when placed in service, the recovery year from asset.placed) times the business cost less the earlier section 179 deduction and special allowance, zero after the recovery period; the project's line 17 reads the same answers (asset.prior_179, asset.prior_bonus). The reply's bonus refusal is not reached for property placed before 2025 (asset.h_bonus_mixed is false there). Same reading as the refresh-round ruling. Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.",
+   "subject_key": "766460bf223166b0a059cbc04305deb67e87efd5896cfb1a98973e83ee45b00a"
+  },
+  {
+   "key": "(d)",
+   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "status": "AGREE",
+   "subject_key": "95dc5f166c517cc5da165d4491750bbfef01d69182808d7d29f7e4a9df41a687"
+  },
+  {
+   "key": "(c)",
+   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i4562 p. 11, Column (c): \"multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property\". The reply's (c) subtracts the section 179 deduction and the special allowance; the project's (c) is the basis before them (its label) and the form's column (c) after them is 19(c) (asset.col19c). Its 2-place proration equals the project's 6 places, asset.pct being a whole percent. Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 644 of 1,403 comparisons agree; on completed returns 90 value differences, each the deductions the reply subtracts here (e.g. classm.g28.1.deepseek item_1 $46,128.00/$0.00, an asset fully expensed), and 17 candidate-unknown where the reply asks asset.bonus_same, which the source does not need when no allowance is elected. Project stands.",
+   "subject_key": "35a8cd181c8b990134611edd9a38c36f04930c8966e14608295a7ee861fae00e"
+  },
+  {
+   "key": "14",
+   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained, as the earlier rulings. i4562 p. 5, Line 14. The special allowance is figured identically; the project figures each per-asset amount and selects 2025 property where the totals are taken (asset.bonus_2025 and the where-filters of the sc sums); the reply zeroes the same amounts on the asset. Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,289 of 1,403 comparisons agree; on completed returns 13 candidate-unknown, where the reply asks asset.bonus_same of property with no allowance elected (i4562 p. 7, Election out); the rest on refused or incomplete returns (the reply's h_outside refusal is the project's asset.outside). Project stands.",
+   "subject_key": "fd8ba2f06f9cfee6612a907a05d1ad0b110c85eb97e29ac8f0c47de3bce2beeb"
+  },
+  {
+   "key": "25",
+   "record": "442c65da06dee1f1e516ce1cbff0ae3b891fd8b1c4aaf1bb05e70675c825c31b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the pass reply's asset.h_bonus_mixed (placed in 2025 and asset.bonus_same false) refuses asset.bonus_2025 whatever asset.bonus_choice is, so it asks asset.bonus_same of 2025 property whose choice is none; the project asks it only on the full and forty branches (asset.bonus_full, asset.bonus_forty refuse on asset.bonus_mixed). i4562 p. 7, Election out: \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year\" makes the same-class question matter only where an allowance is claimed. Same point as the backlog and refresh rulings. Values: the allowance for listed property placed in 2025, the project's line 25 (i4562 p. 13, Line 25, \"If you placed in service certain qualified listed property during the tax year, you may be able to deduct the special depreciation allowance\"). Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.",
+   "subject_key": "88b032d8687c031d093dc6c1cee0cdb4581ef09cddceadb42cfba77fa721f06a"
+  },
+  {
+   "key": "26(i)",
+   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: equivalent on every value the form reports; project retained (owner, T-030), as the earlier ruling. The reply writes the listed-property condition into the expression; the project shows the line under shown_when asset.on_26_2025. Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,389 of 1,403 comparisons agree; 14 candidate-unknown where the reply asks asset.listed on records that withhold it; no completed return differs. Project stands.",
+   "subject_key": "cf6fe93c544786276fc1db446c7a4f7c586d107e39c8495ab8b123c442368a59"
+  },
+  {
+   "key": "19(c)",
+   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i4562 p. 9, Lines 19a Through 19j: \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\". The reply needs answers the source does not require (asset.bonus_same of property with no allowance elected). Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,318 of 1,403 comparisons agree; on completed returns 13 candidate-unknown (asset.bonus_same); the rest on refused or incomplete returns. No value differs. Project stands.",
+   "subject_key": "5e36d57d178047d4292fa2b2f3894c21286c4413226c044a3a2a6fc099d4779f"
+  },
+  {
+   "key": "19(g)",
+   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i4562 p. 9, Lines 19a Through 19j. As 19(c): the reply asks asset.bonus_same of property whose bonus_choice is none, which the source does not need (i4562 p. 7, Election out). Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,342 of 1,403 comparisons agree; on completed returns 13 candidate-unknown (asset.bonus_same); the rest on refused or incomplete returns. No value differs. Project stands.",
+   "subject_key": "a303da1d37f942e7c4571bea8e991bb324656b727c221bfeef85b9980b853677"
+  },
+  {
+   "key": "17",
+   "record": "c5a29f6ba9588fcf1793cefebbee7ffd2bfe734beced30df19bf73b70055b74e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i4562 p. 9, Line 17. Triage executable-triage-v2 (reviews/2025/transcription/triage/asset.json; 1,638 fixtures, 500 generated returns seed 20261026, 725 partial records): 1,376 of 1,403 comparisons agree; 13 project-refuses (asset.screened) and 14 project-unknown; no completed return differs; the differences are the project's refusals (asset.screened, asset.listed_low) or unknowns on unasked answers, on refused or incomplete returns. Project stands.",
+   "subject_key": "13b10ab2f5399acd409ed11816785ce0ae9cccd69efec75fb919e7ab67dfd1a4"
+  },
+  {
+   "key": "26(h)",
+   "record": "442c65da06dee1f1e516ce1cbff0ae3b891fd8b1c4aaf1bb05e70675c825c31b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; for listed property placed in 2025 the reply's column (h) reads its (c), which reaches asset.bonus_2025 and so asks asset.bonus_same when the choice is none (as at line 14; i4562 p. 7, Election out). For listed property placed earlier the amount is line 17's reading, the project's (i4562 p. 15, Column (h), \"figure column (h) by following the instructions for line 19, column (g)\"). Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.",
+   "subject_key": "cdb45fb062975391451311ac5f3d6e831800ae8740061a2850499b8a47ee78bf"
+  }
+ ],
+ "subjects": {
+  "asset.dep_2025": "b87bf380fa3f7e323f7fea236e98ccd58db9ce3dcc1320db2eacaee4993e3ae5",
+  "asset.bonus_2025": "9853882e3232fcc2560fcccde147ecade35b8597cc50012826d20d5b05d5af17",
+  "asset.s179_2025": "55d15cfd0c53f715096654a72bd72e6e0e3d7bcf7c358df0c4e9b33b0de7f7b8",
+  "asset.mq_q4": "b6c84a078ff224029085f928d76a1067ad9961fb9a0cae8f268f91ac4f93c99f",
+  "asset.mq_total": "3b0891ec90ebbf0c72602103ff506731602554c0d32cbfa0c643fcbf8a67bde4",
+  "asset.cost179": "41f30e93582149a59b2d6f10c20abd7a09226ee7d3ed678ac0684f8fe63f5d46",
+  "asset.dep_prior": "e692c831a4e43902d96b999dc35c0146f11f71c7fd2facced0547ac5068a1f53",
+  "(d)": "bf97394c0e6baab938fcd0e3d20a43fbde9be75543375088439981eb869fffbd",
+  "(c)": "bc9de339fc485275d7156c04bee4569a5fba391be6c61599d5ddb69a0b588fff",
+  "14": "f0b3ee6fdcdf3f0510b462afe146a14650fd5a3f89dfa400e47bc1c7bed13afb",
+  "25": "c3374b29da3a96e431ad058ca8283ba635ecbc9a69df93eee721097b0c55b469",
+  "26(i)": "bfa4f5427351d355d49391efa8d6a1f51bbb645321ca6d40f03a8963fac8ea36",
+  "19(c)": "e50cd4ebbf48a226e858fe9d5772e30f2adf8b6f32684123b987276d9325d2ae",
+  "19(g)": "72b10ee69008989e999a67afed25a2f35c1715a89bffcdcb46ea407b4f9bbb8f",
+  "17": "15055efa46a9a94503cec45d406a31b8c776bbc51856d9c6e24c3f04f79ab845",
+  "26(h)": "14811301d9197c23d67f5bc110c70298f4a1b3af275cd1ce356a65b0d5b826b7"
+ },
+ "__rest__": "c9708e5777e6b69e7558e632a0713a1496a425dc2a16eb800463caf770f116b1",
+ "foreign": {
+  "asset.dep_2025": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "asset.bonus_2025": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "asset.s179_2025": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "asset.mq_q4": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "asset.mq_total": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "asset.cost179": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "asset.dep_prior": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "(d)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(c)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "14": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "25": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "26(i)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "19(c)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "19(g)": "14ab4862811584dfd01cb4c921ce8aa19deac170e103f50c05485c1ee3465442",
+  "17": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "26(h)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+ }
+}

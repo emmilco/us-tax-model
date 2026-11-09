@@ -1,0 +1,440 @@
+{
+ "kind": "transcription",
+ "form": "sd",
+ "family": "deepseek",
+ "base": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+ "lines": [
+  {
+   "key": "sd.line18",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; this adjudicates the declaration, not the tax reading. The reply declares a refusal on this line naming the collection field sales.special as a scalar gate; the host check rejects it (sd.sd.__type_gate_6: \"collection reference requires sum_over\"; \"comparison operands have incompatible types\"; triage `reviews/2025/transcription/triage/sd.deepseek.json`, invalid_lines sd.line18 and sd.line20), so it was not executed (2,115 candidate-invalid, 332 on completed returns). For the record: its constant 0 omits the Form 1099-DIV box 2d trigger (i1040sd p. 2, Capital Gain Distributions: \"If there is an amount in box 2d, include that amount on line 4 of the 28% Rate Gain Worksheet\"), a page the reviewer still was not given (i1040sd pp. 10, 11, 12, 15), as in Stage 20 (interface gap there). The project's g28.line7 behind line 17 Yes is the BUG-0149 fix. Project stands.",
+   "subject_key": "5799834bbfedaa7095b142b1176e6a709368c46854ca9ec0fd56a0fcf37aa765"
+  },
+  {
+   "key": "sd.line19",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040sd p. 2, line 17: \"No. Skip lines 18 through 21, and go to line 22\"; i1040sd p. 11, Line 19: \"If you checked “Yes” on line 17, complete the Unrecaptured Section 1250 Gain Worksheet\". The candidate copies u1250.line18 without the line 17 guard, so it shows the worksheet result on a skipped line. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 808 of 2,115 comparisons agree; 1,240 candidate-unknown, 53 project-refuses, 9 value, 4 project-unknown, 1 candidate-refuses (by return: {\"completed\": {\"candidate-unknown\": 134, \"value\": 2}, \"incomplete\": {\"candidate-unknown\": 705, \"project-unknown\": 4}, \"refused\": {\"candidate-refuses\": 1, \"candidate-unknown\": 401, \"project-refuses\": 53, \"value\": 7}}). The 9 value differences all have line 17 No (project $0): generated 162 $6,330.85 (completed), generated 188 $9,215.81 (completed), generated 196 $204.79 (refused), generated 201 $7,886.38 (refused), generated 205 $392.17 (refused), generated 223 $9,399.96 (refused), generated 344 $7,402.32 (refused), generated 354 $4,170.32 (refused), generated 474 $0.02 (refused). The 1,240 candidate-unknown (134 on completed returns) all need clcw.spouse_screen: the candidate's lines 6 and 14 (which match the project's expressions, so they are not open) declare refuses: [clcw.spouse_screen], a refusal evaluated on every return, while the screen is asked only through the Capital Loss Carryover Worksheet when sd.carryover is Yes; every one of the 1,240 witnesses is a fixture whose sd.carryover is No (i1040sd p. 10: \"Otherwise, you don’t have any carryovers\"). A candidate that needs an answer the source does not need is a model error (README). The 53 project-refuses are cited gates read through u1250 (sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[a].special 1, sales[s3].digital 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s3].wash_bad 1, sales[s2].bad_code 1, sales[s1].special 1); the candidate-refuses (sales[a].wash_bad 1) is on a refused return. Project stands.",
+   "subject_key": "9ac57baf2ba8927b4ee2731b08a94160a42be73648c2a728e7e99825fc80e8c1"
+  },
+  {
+   "key": "sd.filing4952",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "AGREE",
+   "subject_key": "50b839cdd8f2e257e559908f595d492fe2f1705b957a9d0b51bbbf2ed341dd2d"
+  },
+  {
+   "key": "sd.investment_election",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040sd p. 15, Schedule D Tax Worksheet, line 3: \"Enter the amount from Form 4952 ..., line 4g\". The candidate copies the Form 4952 line 4g answer; the project copies f4952.election, the same amount behind Form 4952's cited gates (f4952.bad_election, f4952.unsupported, f4952.alternative_allocation) and the Schedule D and Form 1099-DIV screens its check reads. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,037 of 2,115 comparisons agree; 74 project-refuses, 4 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 3}, \"refused\": {\"project-refuses\": 74, \"project-unknown\": 1}}). No value differs. Project refusals: f4952.bad_election 43, div.bad_components 9, f4952.unsupported 5, sd.other_forms 5, f4952.alternative_allocation 3, div.unsupported 2, sales[s1].digital 2, sales[s1].bad_aggregate 1, sales[s1].bad_code 1, sales[s3].digital 1, sales[s3].wash_bad 1, sales[s2].digital 1 (the one sales[s3].wash_bad refusal is generated 310, a generated invalid wash-sale entry the generator keeps raw on purpose so the new entry-error gate is exercised; refused return); project-unknown: sales[s2].aggregate_eligible 2, f4952.alternative_allocation 1, sd.distributions 1. Project stands.",
+   "subject_key": "af13182b5c0d73967e70536b098fad66d23a4ce174bb702f7aee36b8fb49a4a4"
+  },
+  {
+   "key": "sd.filed",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 31, Line 7a, Exception 1 (\"You have no capital losses, and your only capital gains are capital gain distributions ... None of the Form(s) 1099-DIV ... have an amount in box 2b ..., box 2c ..., or box 2d\"). The candidate copies qdcg.schedule_d_filed, which is itself a copy of sd.filed (forms/2025/qdcg.yaml, \"Are you filing Schedule D?\"), so the line is defined by itself and states no filing rule. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 148 of 2,115 comparisons agree; 1,870 candidate-unknown, 97 project-refuses (by return: {\"completed\": {\"candidate-unknown\": 332}, \"incomplete\": {\"candidate-unknown\": 728}, \"refused\": {\"candidate-unknown\": 810, \"project-refuses\": 97}}); every candidate-unknown is \"cycle at sd.filed\" (332 on completed returns). The project refusals are cited gates. Project stands.",
+   "subject_key": "a0da8172869390721a53d2819210659f4d223b63b3b4ca26e82da1fadbffa1ef"
+  },
+  {
+   "key": "sd.zero",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "AGREE",
+   "subject_key": "daef9d66f55b601a2e3ca88cd01274f3cd02e485b4918f7b6e0f9bda4bf662c4"
+  },
+  {
+   "key": "sd.has_loss",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "AGREE",
+   "subject_key": "4b26b3dd4851a8b0268bbe134078552ef98ef09b387286bc2932ec3823388ef0"
+  },
+  {
+   "key": "sd.to1040",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040sd p. 2, line 16: \"If line 16 is zero, skip lines 17 through 21 below and enter -0- on Form 1040, 1040-SR, or 1040-NR, line 7a\". The expression is algebraically the project's (an extra zero branch equal to line 16 when line 16 is zero), and no value differs, but the candidate cannot compute on gate-No returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 779 of 2,115 comparisons agree; 1,240 candidate-unknown, 92 project-refuses, 4 project-unknown (by return: {\"completed\": {\"candidate-unknown\": 134}, \"incomplete\": {\"candidate-unknown\": 705, \"project-unknown\": 4}, \"refused\": {\"candidate-unknown\": 401, \"project-refuses\": 92}}). The 1,240 candidate-unknown (134 on completed returns) all need clcw.spouse_screen: the candidate's lines 6 and 14 (which match the project's expressions, so they are not open) declare refuses: [clcw.spouse_screen], a refusal evaluated on every return, while the screen is asked only through the Capital Loss Carryover Worksheet when sd.carryover is Yes; every one of the 1,240 witnesses is a fixture whose sd.carryover is No (i1040sd p. 10: \"Otherwise, you don’t have any carryovers\"). A candidate that needs an answer the source does not need is a model error (README). The project refusals are cited Schedule D and Form 1099-DIV gates (div.bad_components 18, sales[s1].digital 17, div.unsupported 11, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, div.section1202 5, div.amt 4, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, div.bad_special 2, sales[a].special 1, sales[s3].digital 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1); the project-unknown withhold sales screen answers. Project stands.",
+   "subject_key": "ba6b66c7707a04f84ae0b6e72bb44b96abb26af7c99b85f291b0cc435e4e5a3f"
+  },
+  {
+   "key": "sd.net_gain",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3: \"Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-\". The candidate enters line 16 floored at zero and ignores line 15, so it overstates the net capital gain whenever line 15 is less than line 16 (a net short-term loss). executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 690 of 2,115 comparisons agree; 1,240 candidate-unknown, 92 project-refuses, 89 value, 4 project-unknown (by return: {\"completed\": {\"candidate-unknown\": 134, \"value\": 32}, \"incomplete\": {\"candidate-unknown\": 705, \"project-unknown\": 4, \"value\": 2}, \"refused\": {\"candidate-unknown\": 401, \"project-refuses\": 92, \"value\": 55}}). In all 89 value differences the candidate is larger than the project. The 32 on completed returns (project against candidate): classm.f4952.2.deepseek $3,358.00 against $9,316.00; classm.f1040.2.deepseek $1,237.00 against $50,930.00; classm.s8812.2.deepseek $18,447.00 against $21,701.00; classm.s8812.3.deepseek $71,995.00 against $156,839.00; classm.f1040.2 $1,237.00 against $50,930.00; mutation.t2.mfj_sdtw_skip23 $3,358.00 against $9,316.00; generated 22 $0.18 against $0.25; generated 29 $51,144.32 against $81,681.40; generated 89 $36,654.85 against $44,606.42; generated 101 $0.17 against $4,967.01; generated 148 $15,173.73 against $34,090.59; generated 149 $0.00 against $19,656.22; generated 174 $14,804.39 against $61,973.49; generated 188 $0.00 against $2,677.79; generated 224 $9,994.36 against $13,365.38; generated 236 $18,417.36 against $45,250.56; generated 255 $5,632.14 against $75,507.35; generated 257 $53,455.18 against $53,455.33; generated 269 $0.14 against $38,142.35; generated 312 $0.00 against $85,581.52; generated 345 $0.00 against $0.15; generated 346 $410.55 against $20,131.12; generated 348 $10,998.32 against $43,497.84; generated 366 $178.09 against $11,781.62; generated 367 $76,541.23 against $104,048.88; generated 373 $0.00 against $37,432.25; generated 396 $42,991.32 against $60,354.44; generated 433 $0.00 against $22,406.16; generated 436 $15,925.23 against $77,744.10; generated 437 $0.14 against $41,775.04; generated 445 $0.00 against $31,251.60; generated 447 $0.04 against $3,219.67; the other 57 are on refused or incomplete returns (e.g. classm.g28.2 $16,981.00 against $64,515.00). The 1,240 candidate-unknown (134 on completed returns) all need clcw.spouse_screen: the candidate's lines 6 and 14 (which match the project's expressions, so they are not open) declare refuses: [clcw.spouse_screen], a refusal evaluated on every return, while the screen is asked only through the Capital Loss Carryover Worksheet when sd.carryover is Yes; every one of the 1,240 witnesses is a fixture whose sd.carryover is No (i1040sd p. 10: \"Otherwise, you don’t have any carryovers\"). A candidate that needs an answer the source does not need is a model error (README). Project stands.",
+   "subject_key": "bbd11d3431a342ef07b9f30cbe7af8598db355f34749342fae4dbef7b6eeb0a3"
+  },
+  {
+   "key": "1a(d)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (d). The candidate sums box A or its digital-asset counterpart on the aggregate route; the project sums box A behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "0c831e464472e575501d5a74367ab3218790ab0ba0fd47fbc1b1f28c518924b3"
+  },
+  {
+   "key": "1a(e)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (e). The candidate sums box A or its digital-asset counterpart on the aggregate route; the project sums box A behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "1c92c6e7658883095dbf4692955a3dc6c1f2b72a6640781102d5b50e69e59793"
+  },
+  {
+   "key": "1a(g)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (g). The candidate sums box A or its digital-asset counterpart on the aggregate route; the project sums box A behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "035853540df2918ef9e24602150e6f40cad502bcfe1dcca447917831207ec119"
+  },
+  {
+   "key": "1a(h)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (h). The candidate sums box A or its digital-asset counterpart on the aggregate route; the project sums box A behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "11e8abea309db7f879831de834ab0643fba1bf62d9ef198f2d04c47d6df3fb0d"
+  },
+  {
+   "key": "1b(d)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 1b, column (d). The candidate sums box A or its digital-asset counterpart on the detail route; the project sums box A behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "360d960ec82e9e904f2243757c1ec53d9b7e9294f2646d28acd47a27675c51fc"
+  },
+  {
+   "key": "1b(e)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 1b, column (e). The candidate sums box A or its digital-asset counterpart on the detail route; the project sums box A behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "7bcb8e7f10e9692e6f456188b4ebc437d54b7693c9453ef4a0dc00dfe90011c0"
+  },
+  {
+   "key": "1b(g)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 1b, column (g). The candidate sums box A or its digital-asset counterpart on the detail route; the project sums box A behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "28d9e05dc16b8618b8510fe7c47e8962bf089c754901378c5a6732549eb5e069"
+  },
+  {
+   "key": "1b(h)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 1b, column (h). The candidate sums box A or its digital-asset counterpart on the detail route; the project sums box A behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "e2420e2fe86ac3cd83ab99c6a95ada14683506c06db21329e6858825b344a51a"
+  },
+  {
+   "key": "2(d)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 2, column (d). The candidate sums box B or its digital-asset counterpart on the detail route; the project sums box B behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "1c3b7581a1b24481d5178d07442db7df96987452b29693ec2890ded1c6bf3df2"
+  },
+  {
+   "key": "2(e)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 2, column (e). The candidate sums box B or its digital-asset counterpart on the detail route; the project sums box B behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "764e680c9ba6f107923ea3762941cd4bf85b71f3c4b1041862afac3c17b0e0e3"
+  },
+  {
+   "key": "2(g)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 2, column (g). The candidate sums box B or its digital-asset counterpart on the detail route; the project sums box B behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,001 of 2,115 comparisons agree; 70 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 70, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[a].special 1, sales[s3].digital 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "464cd958c2f135ca2276aad4a62877b79dad2f505217dae0998050331a010d47"
+  },
+  {
+   "key": "2(h)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 2, column (h). The candidate sums box B or its digital-asset counterpart on the detail route; the project sums box B behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,001 of 2,115 comparisons agree; 70 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 70, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[a].special 1, sales[s3].digital 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "c1b6b812bd65afb6b07bb3fe735c8df57863c4ecde3ed1cf798897f2a0b54775"
+  },
+  {
+   "key": "3(d)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 3, column (d). The candidate sums box C or its digital-asset counterpart on the detail route; the project sums box C behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "82644626a46a76e69fa5195cb1dada0bc0d5fbcb55b79b342037477ecc88dc71"
+  },
+  {
+   "key": "3(e)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 3, column (e). The candidate sums box C or its digital-asset counterpart on the detail route; the project sums box C behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "e7b773709ca56725c53d18c302c2556719bc1c894c6656cd4a667160f0d16d76"
+  },
+  {
+   "key": "3(g)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 3, column (g). The candidate sums box C or its digital-asset counterpart on the detail route; the project sums box C behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "49fc1e0afd361f4fb167fff8325e66e3ebdc70f55665b51d781aa16e3775e154"
+  },
+  {
+   "key": "3(h)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 3, column (h). The candidate sums box C or its digital-asset counterpart on the detail route; the project sums box C behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "b46b1c0db2ab140a0d57e61c8d1c4423cda6da307f4fa5d05c14200b6be98429"
+  },
+  {
+   "key": "8a(d)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (d). The candidate sums box D or its digital-asset counterpart on the aggregate route; the project sums box D behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "e3b2cb4f5f2d04129be3863200efbf806adc0f2c327a132578ef53a42966fa01"
+  },
+  {
+   "key": "8a(e)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (e). The candidate sums box D or its digital-asset counterpart on the aggregate route; the project sums box D behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "dcf53ceba43110e3ccf1c7cb937a7fd992f06c99e2d4281b7557e060dfd4e792"
+  },
+  {
+   "key": "8a(g)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (g). The candidate sums box D or its digital-asset counterpart on the aggregate route; the project sums box D behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "8f731202b6578b82cbec6ceedbce1142b6f79323257555b55e4b73e4b38efcc9"
+  },
+  {
+   "key": "8a(h)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (h). The candidate sums box D or its digital-asset counterpart on the aggregate route; the project sums box D behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "d1718b9744af8eb45e0b62969c3c2bd5c3dcf4df77d4eaf0ad37b1628e374a95"
+  },
+  {
+   "key": "8b(d)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 8b, column (d). The candidate sums box D or its digital-asset counterpart on the detail route; the project sums box D behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "f240ab21ce1107413ff4c1c4a927fa934ea1613553c9730ea46bb2d47c21ab68"
+  },
+  {
+   "key": "8b(e)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 8b, column (e). The candidate sums box D or its digital-asset counterpart on the detail route; the project sums box D behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "a2cd235c16b76c410d258ee8ee8e64fdabeb53c0a65d3687d3c5b2c8d1d37399"
+  },
+  {
+   "key": "8b(g)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 8b, column (g). The candidate sums box D or its digital-asset counterpart on the detail route; the project sums box D behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "232e47fd7393fa42698dfa3c380ec49b642d557c8f14916b4dd46ab28df9e3c9"
+  },
+  {
+   "key": "8b(h)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 8b, column (h). The candidate sums box D or its digital-asset counterpart on the detail route; the project sums box D behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "68e02cc41deea7589ab399b5e0de9ca409f1ca5c3dbcb2c2f96b4fdf89f222f5"
+  },
+  {
+   "key": "9(d)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (d). The candidate sums box E or its digital-asset counterpart on the detail route; the project sums box E behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "770e853e471a65ba0aa373b82955423541dce9cbf7a7ec5a89fea6824e34b135"
+  },
+  {
+   "key": "9(e)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (e). The candidate sums box E or its digital-asset counterpart on the detail route; the project sums box E behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "c9b4bec9f3e17acbb6e7fe1d0da98d419fd12f4424d5e15bd6c31fbb573311a5"
+  },
+  {
+   "key": "9(g)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (g). The candidate sums box E or its digital-asset counterpart on the detail route; the project sums box E behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "92b5c4d145b7aec044d44770f346f84c90a8ca8e749f218a59eff054e4ec224b"
+  },
+  {
+   "key": "9(h)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (h). The candidate sums box E or its digital-asset counterpart on the detail route; the project sums box E behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "510cce1c02c7c0ede994d7ee581aac5b8a8a070a554bb8f3203e6fbe175a594a"
+  },
+  {
+   "key": "10(d)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (d). The candidate sums box F or its digital-asset counterpart on the detail route; the project sums box F behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "075cf767a7bd44744cbe7c7e8a848f0b161f8b4d2e65d7a45d95fc10701b8cf6"
+  },
+  {
+   "key": "10(e)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (e). The candidate sums box F or its digital-asset counterpart on the detail route; the project sums box F behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "22a3a46215ee341dc4ab09a880c3c8ffeca35f2db75ac7392ef829a5dd0ff9a3"
+  },
+  {
+   "key": "10(g)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (g). The candidate sums box F or its digital-asset counterpart on the detail route; the project sums box F behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "979405bb21d7e6face45312081be78a216c9c8cb546ef37dd17c94a637d1fb76"
+  },
+  {
+   "key": "10(h)",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (h). The candidate sums box F or its digital-asset counterpart on the detail route; the project sums box F behind sd.screen. Boxes G–L are refused at the transaction (sales.one through sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), so the added boxes reach only refused returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,000 of 2,115 comparisons agree; 71 project-refuses, 44 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 35}, \"refused\": {\"project-refuses\": 71, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s1].bad_aggregate 6, sales[s1].bad_code 4, sales[a].bad_aggregate 3, sales[a].bad_code 2, sales[s3].digital 2, sales[a].special 1, sales[s2].bad_aggregate 1, sales[s3].bad_code 1, sales[s3].bad_aggregate 1, sales[s2].bad_code 1, sales[s1].special 1; project-unknown: sd.other_forms 40, sales[s1].special 2, sales[s2].aggregate_eligible 2 (withheld screen answers). No value differs. Same expression as Stage 20 (scope). Project stands.",
+   "subject_key": "bda1c8c1e00e90036813819309bcf7f2eb628792521d8990b87645ec04c01861"
+  },
+  {
+   "key": "4",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f1040sd p. 1, line 4: \"Short-term gain from Form 6252 and short-term gain or (loss) from Forms 4684, 6781, and 8824\". The candidate's 0 − 0 equals the project's 0; the source forms are refused by sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,115 of 2,115 comparisons agree; no difference (by return: {}). Algebraically equal. Project stands.",
+   "subject_key": "18bd6e068ac48b10cbeed8a297fd36e45a35f15c0d4504bb944972f047dc7cd1"
+  },
+  {
+   "key": "5",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f1040sd p. 1, line 5: \"Net short-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1\". The candidate's 0 − 0 equals the project's 0; the source forms are refused by sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,115 of 2,115 comparisons agree; no difference (by return: {}). Algebraically equal. Project stands.",
+   "subject_key": "15fd57c9e5249d6a48c04d644f0d774e58db00c7028a21b34054b92f5cebaa9c"
+  },
+  {
+   "key": "6",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "AGREE",
+   "subject_key": "d5152a5d8efef0efad56e0936d043b5650d5bd8ddc44f69c99b70ec0cc01d03a"
+  },
+  {
+   "key": "11",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f1040sd p. 1, line 11: \"Gain from Form 4797, Part I; long-term gain from Forms 2439 and 6252; and long-term gain or (loss) from Forms 4684, 6781, and 8824\". The candidate's 0 − 0 equals the project's 0; the source forms are refused by sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,115 of 2,115 comparisons agree; no difference (by return: {}). Algebraically equal. Project stands.",
+   "subject_key": "86f2843ea1f3b2669dc28d722d059e1c192180961a934a47ffe31b89c62e8642"
+  },
+  {
+   "key": "12",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f1040sd p. 1, line 12: \"Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1\". The candidate's 0 − 0 equals the project's 0; the source forms are refused by sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,115 of 2,115 comparisons agree; no difference (by return: {}). Algebraically equal. Project stands.",
+   "subject_key": "0e1cd51153c2fa05d0da52bb2ef4d3c2e0c42eac8786b311538d80e77b27c937"
+  },
+  {
+   "key": "14",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "AGREE",
+   "subject_key": "810da896836f6cbe28e56c46d3f01aaeedcad78891e05c7bb065515982b1d101"
+  },
+  {
+   "key": "13",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "AGREE",
+   "subject_key": "84759f1790dd0b1fb280349d807f916a84f69439d014303ab8d0bf8a4f7de485"
+  },
+  {
+   "key": "7",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "AGREE",
+   "subject_key": "3c268b36b8dd35f9093da23bfe2bbf56aa103400795fb08b9e0e0db486acdb86"
+  },
+  {
+   "key": "15",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "AGREE",
+   "subject_key": "3939c7838b8cf4b52028a37eb0476a49304b4ee34af142debede44aea6016782"
+  },
+  {
+   "key": "16",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "AGREE",
+   "subject_key": "f5203eb4579cbcbde39a70154eee9c4b20ba47bd77ee0cabb23650fd643ff582"
+  },
+  {
+   "key": "17",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "AGREE",
+   "subject_key": "8159609ba2457fb32e5b8409238fa38212d3682b38f19c7d8ea7e09da23beee0"
+  },
+  {
+   "key": "20",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; this adjudicates the declaration, not the tax reading. f1040sd p. 2, line 20: \"Are lines 18 and 19 both zero or blank and you are not filing Form 4952?\". The candidate's predicate reads its line 18, whose refusal declaration fails the host check (sd.sd.__type_gate_6, \"collection reference requires sum_over\"), so the line was not executed (triage `reviews/2025/transcription/triage/sd.deepseek.json`: 2,115 candidate-invalid, 332 on completed returns). For the record it also tests 0 = 0 in place of line 18 and an unguarded u1250.line18 in place of line 19; the project's line 20 reads both behind line 17 (BUG-0149). Project stands.",
+   "subject_key": "7b1fd43dba41cb211423f1bcf3ae106fa631a7ccafe4f9e146f5989e7fcfc652"
+  },
+  {
+   "key": "21",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040sd p. 2, line 21: \"If line 16 is a loss, enter here and on Form 1040 ... the smaller of: • The loss on line 16; or • ($3,000), or if married filing separately, ($1,500) ... treat both amounts as positive numbers.\" The expression, 0 − smaller_of(0 − line 16, 0 − sd.loss_limit), equals the project's larger_of(line 16, sd.loss_limit) because sd.loss_limit is negative (params/2025.yaml), and no value differs, but the candidate cannot compute on gate-No returns. executable-triage-v2 (`reviews/2025/transcription/triage/sd.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 779 of 2,115 comparisons agree; 1,240 candidate-unknown, 92 project-refuses, 4 project-unknown (by return: {\"completed\": {\"candidate-unknown\": 134}, \"incomplete\": {\"candidate-unknown\": 705, \"project-unknown\": 4}, \"refused\": {\"candidate-unknown\": 401, \"project-refuses\": 92}}). The 1,240 candidate-unknown (134 on completed returns) all need clcw.spouse_screen: the candidate's lines 6 and 14 (which match the project's expressions, so they are not open) declare refuses: [clcw.spouse_screen], a refusal evaluated on every return, while the screen is asked only through the Capital Loss Carryover Worksheet when sd.carryover is Yes; every one of the 1,240 witnesses is a fixture whose sd.carryover is No (i1040sd p. 10: \"Otherwise, you don’t have any carryovers\"). A candidate that needs an answer the source does not need is a model error (README). The project refusals are cited gates. Project stands.",
+   "subject_key": "3687225da97b7c9b126566bc1f27ae55967d865fe5e6f80455d130a9f151f25c"
+  },
+  {
+   "key": "22",
+   "record": "d71a947c3c465fbb9437ba727c079d838de70630c3516d175d9fed768a933c3b",
+   "status": "AGREE",
+   "subject_key": "7b9bf8728070c726e00f19a03aa6fb41591fd10820af630a2a22f2de566f5529"
+  }
+ ],
+ "subjects": {
+  "sd.line18": "2bbae14fd67622e88c468eacec973d73b3b9ed389fb0401a7e07aded80c90926",
+  "sd.line19": "b653bf85615a8a9a33689a866188bc4740382a75c6c28c008f27bbd7bf9181a4",
+  "sd.filing4952": "c463919a506118918868fb38826faafbd33315376d7f29963f6e818120502b75",
+  "sd.investment_election": "a3d91ae14f27d51f584ab503205e59279759a061e193355b00ebdf9732585be4",
+  "sd.filed": "2809343429f80f68a2596485238d1f8e2f2d7c8ff67ec1d4b394d2e8bf49b38d",
+  "sd.zero": "ce16c7c938fea13ef80d3f7cf152cea6dd84d856dea677c44b6e24fbc5cc60fd",
+  "sd.has_loss": "1e2c8c7df8ec4dc8a21e5ed72420311c4ae2a7b2895ded86e2213151661ada7f",
+  "sd.to1040": "c6be714faee43a2731a8e84b3fdbc9673314f85a90a3ddff50bd1fcc4a556678",
+  "sd.net_gain": "9975d7415b27cc117455a94113d2867f95c94c61be4bc016b9faae8e92704ab9",
+  "1a(d)": "db323fdbca8ec838dd92e590ab5d32425bb9ad0a4ac875d70448d368a9a769f1",
+  "1a(e)": "4dbf6fdf6081e979d40efde9dbedb81fccfaea20f72c5a7a5d3cff390d9fbe4f",
+  "1a(g)": "a91699e17121d70da04ce1c520b0b5fffafa11141dc42b49fc132f94f3cb0a94",
+  "1a(h)": "1135af99d26f8eb86dd39d56926262ba5188731fb97d0eb2ae241d3d6e391610",
+  "1b(d)": "80c37dd3668f64aed9767cc78d73eef9fd24370f8ffb9f3e2be9b8769c8f4aa6",
+  "1b(e)": "55013dc3fb051eb21d7540f1d0b97672683670877a71a3a8d57d257e9b6a2152",
+  "1b(g)": "3c300eaa8758756e0c4d62de7e13e2e54105e1f3c9282c0e1a41b3a01267a833",
+  "1b(h)": "2e61606e0aca606976b8510b886b627d58318c385610aae1f88bc562d3ec2d43",
+  "2(d)": "70161a5b47a0923cbd563f0b70305694fbff1d73468b691eb5d4e9dde928979a",
+  "2(e)": "a625bce4a4ac5a41e71ac077a67c620e6db1eb9a1bb49b32e6eeeebbf29f78c8",
+  "2(g)": "309c10eb1735f926b0a285026842312945ab72ef6740824b673f70e98e059ef3",
+  "2(h)": "acfbf57cf9a80970159ac4ce7a3699f6b35a0326cd57e008955dfd33493a9e02",
+  "3(d)": "3881906eb8acf70950703449d5f85a7341942d8c8f43b14eabab9f5ac97fc55b",
+  "3(e)": "d0c09a53ddb33c0d5766d0fcd690cee8df1c39cdd58f1e1d5e8de336b8ce7a95",
+  "3(g)": "18d700d521cc805dd90a43823c5558f4ebb57c4b16311bbc9c7c4fab8f8fec52",
+  "3(h)": "392b77525528ba1c0b2803cd4c1d6d5acee6fd5bd3dc8e206e79aa42c80cc840",
+  "8a(d)": "569a8311e92e3c0dba2aa6455ed621ea3c57c0361d0f1ed01ec74f5f0aaa8e87",
+  "8a(e)": "24c93ba85d3424ff1bc186ac2456fd471d57f8e9b378e1fca241d67781ec2697",
+  "8a(g)": "1a21469a74deebf480b3c6eaae4f7cb5f96b2f776d1633e7d31c2949f805dacd",
+  "8a(h)": "06e8b78e1bc01658881cb8c82fd48553a2eded4c96e656bd5a597afff29a7afb",
+  "8b(d)": "0a0a0864cf2acba9df092c565ea5756e67ed3636cb76797e46712a31c94af64a",
+  "8b(e)": "7498b03f9a311d8a41cdb477fb8717403ac7cdf28202a2f0bc3de32fffe31e73",
+  "8b(g)": "3a4b75bf8c999a14258b4926f04608d9752a7c3a0299a652569793e5acabac6f",
+  "8b(h)": "49b59614ab30770e9f6707ee914b636af6e2b7b9de95b18b1045a915692f5a98",
+  "9(d)": "5275f33fb72d1ea09ed99aa8359ac5e8ff86a7bc8eaa6be94795c373852d5383",
+  "9(e)": "2b01e0ce5107814c7b2bee68bffd7554b5cdef98dde2cef7f5ebbdfa1e60e905",
+  "9(g)": "6293f156eb58ecd309f515a267e91bb88e4f122da763b9d917a8f1ca1d05df41",
+  "9(h)": "6919b99cf7c94932c022cd1e6bc626ab7837d52258d3ed42913c18079bb8d260",
+  "10(d)": "e601c2e7c50aba93bdcf87196a54a0da79f5da2714658316306292a4dacb1792",
+  "10(e)": "61e121db7dcbe3863d2c89c20706748c87ec1ee6f94a322442fa81a0b42b3627",
+  "10(g)": "ae933c2ed14216bc750f70461c6e3f29ce64cf060eeab652478769b373a98f9a",
+  "10(h)": "1b2f74ba7158600e7e443826aa59bded6b107da86d8cbbc8298f8df5683539a3",
+  "4": "8443fdc5d500eee152c93b8ac69b9e0be5abbbeea079cb21ed743de3113ee688",
+  "5": "d2e3c99b1256da39cb9edb3b970d05980cba8a8f018c68f4a618bacc43e0a0d2",
+  "6": "e635ea08698589bfff629738a5a8bd7dddf7a260aeae4eaf8c46c4a0c54bb9d7",
+  "11": "df971d64bc79d90427e3786ce033c8847772e0a83e9172ee90e24a06204419c5",
+  "12": "b671b3f19b0d13b3d41295c28f916c47f9d85e9b983e57fb290fc2546c88a0d0",
+  "14": "852949d5edfbbdcb954882a21b06e4cf555493d6cb93c30e7ea3372c6a3d9c3c",
+  "13": "9d070ba48834d647871d8b61a127c4c4722fa6261f09c19dde9d5c91a84f8d84",
+  "7": "a9899e1cb09a90f27e64f53f7ca4eb6bf3bb50aeead5c209cd3f6ae267790ef3",
+  "15": "0db746e2ca06bdedba11c108bf05789daab7e6242607bc4d0572996b6b0cdc01",
+  "16": "b8dbb7d8e80124667bc28ec012ef66fb86be6ecbd9d4a9306e7686c76a56db45",
+  "17": "9f04394cf47348ce817245c55c2e34211aea92c3fdb2faa27a605060397de9b7",
+  "20": "8cf2ccba61ffc9bb1201307f724b0a77f616641dda4bdc38d073d2caae531f68",
+  "21": "462bcca25b8919800e51951ff48b8e68fc1da54a6bbce933ad2a870576d270a8",
+  "22": "a4f49588b819f2d52371392ab77fbabb65db0c19bc2d6f99eea95b29bb23c5b4"
+ },
+ "__rest__": "428de7b0aecb0ec58b80e6b99fb756277616bb08aed9f21f90e6accedff64e84"
+}

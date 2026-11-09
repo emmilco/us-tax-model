@@ -1,0 +1,383 @@
+{
+ "kind": "classm",
+ "form": "f8880",
+ "family": "deepseek",
+ "base": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+ "lines": [
+  {
+   "key": "case classm.f8880.1",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": null
+  },
+  {
+   "key": "classm.f8880.1 — 1(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.1 — 1(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.1 — 2(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.1 — 2(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.1 — 3(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.1 — 3(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.1 — 4(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.1 — 4(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.1 — 5(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.1 — 5(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.1 — 6(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.1 — 6(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.1 — 7",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f8880.2",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": null
+  },
+  {
+   "key": "classm.f8880.2 — 1(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 1(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 2(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 2(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 3(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 3(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 4(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 4(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 5(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 5(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 6(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 6(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The spouse was born after January 1, 2008 (person[spouse].sav_born false), so the spouse cannot take the credit for that column's contributions (f8880 p. 2, Who Can Take This Credit, \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008\"); the register's owner decision amb.2025.savers_ineligible_column zeroes that column on line 6. The model takes $2,000 on line 6(b) and so $4,000 on line 7. Claude's class M of this round agrees with the project on lines 6 and 7. [dropped]"
+  },
+  {
+   "key": "classm.f8880.2 — 7",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The spouse was born after January 1, 2008 (person[spouse].sav_born false), so the spouse cannot take the credit for that column's contributions (f8880 p. 2, Who Can Take This Credit, \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008\"); the register's owner decision amb.2025.savers_ineligible_column zeroes that column on line 6. The model takes $2,000 on line 6(b) and so $4,000 on line 7. Claude's class M of this round agrees with the project on lines 6 and 7. [dropped]"
+  },
+  {
+   "key": "classm.f8880.2 — 8",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.2 — 9",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f8880.3",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": null
+  },
+  {
+   "key": "classm.f8880.3 — 1(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 1(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 2(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 2(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 3(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 3(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 4(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 4(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 5(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 5(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 6(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 6(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 7",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 8",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 9",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 10",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — (CLW 1)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — (CLW 2)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — (CLW 3)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 11",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.3 — 12",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f8880.4",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": null
+  },
+  {
+   "key": "classm.f8880.4 — 1(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.4 — 1(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.4 — 2(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The filer has one Form W-2 box 12 code D amount of $11,988 (emp_a; emp_b shows no box 12 amount), and Form 8880 line 2 takes it once (f8880 p. 2, Line 2, \"These amounts may be shown in box 12 of your Form(s) W-2 for 2025\"). The model counts it twice (\"11,988.00 + 11,988.00\"). Lines 3(a) and 5(a) differ only through line 2(a); line 6(a) ($2,000) agrees. [dropped]"
+  },
+  {
+   "key": "classm.f8880.4 — 2(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.4 — 3(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The filer has one Form W-2 box 12 code D amount of $11,988 (emp_a; emp_b shows no box 12 amount), and Form 8880 line 2 takes it once (f8880 p. 2, Line 2, \"These amounts may be shown in box 12 of your Form(s) W-2 for 2025\"). The model counts it twice (\"11,988.00 + 11,988.00\"). Lines 3(a) and 5(a) differ only through line 2(a); line 6(a) ($2,000) agrees. [dropped]"
+  },
+  {
+   "key": "classm.f8880.4 — 3(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.4 — 4(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.4 — 4(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.4 — 5(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; model value dropped from the fixture. The filer has one Form W-2 box 12 code D amount of $11,988 (emp_a; emp_b shows no box 12 amount), and Form 8880 line 2 takes it once (f8880 p. 2, Line 2, \"These amounts may be shown in box 12 of your Form(s) W-2 for 2025\"). The model counts it twice (\"11,988.00 + 11,988.00\"). Lines 3(a) and 5(a) differ only through line 2(a); line 6(a) ($2,000) agrees. [dropped]"
+  },
+  {
+   "key": "classm.f8880.4 — 5(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.4 — 6(a)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.4 — 6(b)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f8880.4 — 7",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.4 — 8",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.4 — 9",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.4 — 10",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.4 — (CLW 1)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.4 — (CLW 2)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.4 — (CLW 3)",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.4 — 11",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f8880.4 — 12",
+   "record": "07692afa6adcfe17637d8734dcb84d3b6b7e4fa6dea985229cdeddf13f8d17d0",
+   "status": "AGREE"
+  }
+ ]
+}

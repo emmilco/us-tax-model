@@ -1,0 +1,196 @@
+{
+ "kind": "transcription",
+ "form": "qdcg",
+ "family": "deepseek",
+ "base": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+ "lines": [
+  {
+   "key": "(question)",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "3560a8855b316594d54b7fa569ef0f32f5f1bc20b2935fbf766dfec14abc6e77"
+  },
+  {
+   "key": "1",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "0885f6858f0ee48db8b543193fbf59afbe12248303bc12bb1423df115fbd840c"
+  },
+  {
+   "key": "2",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "c2c6b0911a07ac68d4e08e1237d66b7576ab0e35a3ad600b8e131b0a55a50c6f"
+  },
+  {
+   "key": "3",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 38, worksheet line 3: \"Are you filing Schedule D? Yes. Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-. No. Enter the amount from Form 1040 or 1040-SR, line 7a.\" With Schedule D the candidate enters the smaller of lines 15 and 16 when both are nonnegative and zero when either is a loss, which is the project's floored smaller. Without Schedule D the candidate enters line 7a floored and the project enters sd.distributions; when sd.filed is false (no sales, no 28% or section 1250 gain) sd.line16 = sd.line15 = sd.distributions and f1040.line7a = sd.to1040 = sd.line16, so the two are equal. Triage executable-triage-v1 (triage/qdcg.deepseek.json; 1,083 fixtures, 500 generated returns; no partial records, qdcg has no own inputs): all 1,583 comparisons agree (1,469 non-refusing). Project stands.",
+   "subject_key": "09511453d7ee4464517e2d4bd2d3744d6b550567ef0ea0d6c103eaebd9c1c678"
+  },
+  {
+   "key": "4",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "fb6b24c7ba8211b26239c7c52f7c89af5f0146e450352430999b0f7cc1f75b7e"
+  },
+  {
+   "key": "5",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "03cf6bd4f0d3090347aa3bccf0d37b1e36778ffcdd99c97149533f21082f0790"
+  },
+  {
+   "key": "6",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 38, worksheet line 6: \"Enter: $48,350 if single or married filing separately, $96,700 if married filing jointly or qualifying surviving spouse, $64,750 if head of household.\" Both enter qdcg.zero_rate_ceiling; the candidate floors it at zero only to meet the NonNegDollars type, and every value in params/2025.yaml is positive. Triage executable-triage-v1 (triage/qdcg.deepseek.json; 1,083 fixtures, 500 generated returns; no partial records, qdcg has no own inputs): all 1,583 comparisons agree. Identical value by reading.",
+   "subject_key": "c37d56d0828dc7b58cc9b5e40766f2748d9db55a801fa34240452337c583766e"
+  },
+  {
+   "key": "7",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "91513622f7f03dc7be5c2dd0923405d2379db29a42db3928daa72b6b58239415"
+  },
+  {
+   "key": "8",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "7a4027c31f0b21f8115b16058e92163e2319c2736d472f0801fcff55b27b31c6"
+  },
+  {
+   "key": "9",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "aabe3f8afd711d760f6ecb9f864d1dc29499d17770c84c833f444ef8f7a1af9e"
+  },
+  {
+   "key": "10",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "d37dd9d3d4997f930beed02a690329773dc71f9d4c6e6ad251cc967f1aba7d08"
+  },
+  {
+   "key": "11",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "65b2e616c5a83f2185f77d9683f523271198fb55e3694d3e55e7f4492a2a5611"
+  },
+  {
+   "key": "12",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "c0459cc12458898d9382831d5ee4d28aad9760164a594c562d5fa6f46866749b"
+  },
+  {
+   "key": "13",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 38, worksheet line 13: \"Enter: $533,400 if single, $300,000 if married filing separately, $600,050 if married filing jointly or qualifying surviving spouse, $566,700 if head of household.\" Both enter qdcg.fifteen_rate_ceiling; the candidate's floor at zero is a type wrapper over positive parameters (params/2025.yaml). Triage executable-triage-v1 (triage/qdcg.deepseek.json; 1,083 fixtures, 500 generated returns; no partial records, qdcg has no own inputs): all 1,583 comparisons agree. Identical value by reading.",
+   "subject_key": "e7a311648863d48bc274b5119796109c607daacb6c3b169deb1afe16fd867682"
+  },
+  {
+   "key": "14",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "caa197f85366b518c040d82ebc04184d2b8c850d76d714e3039b7bd390e03b51"
+  },
+  {
+   "key": "15",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "6b1d38e4ba601d850f3820ececf884e7ea6c1c99b9e584d7c6f762c2842bdff4"
+  },
+  {
+   "key": "16",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "6c33f28a939036a1c4af6cd185ac476d273036ed16f5bba0ba38405066db3ab2"
+  },
+  {
+   "key": "17",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "790f784a7ca73af5780c40c9a83f01b1bf16d78abfa8dd2c7277a8d67715025a"
+  },
+  {
+   "key": "18",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "fb15689f58cc9a708ae2803caadc59573175d90da7e7a6553dab202878469bc7"
+  },
+  {
+   "key": "19",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "15c9a2bb414cbfa27014c934bf6dfb9d3621adc38c4e3f03ce433ebcbb160e36"
+  },
+  {
+   "key": "20",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "39f7c015e1cf4648b25ad6e3ec9c715e35e912b8242f5f56d0788e184876321d"
+  },
+  {
+   "key": "21",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "4db6d0042fa83c8ee5644977069b743c5bf030f18c7b14f450ac37de4a39545e"
+  },
+  {
+   "key": "22",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "e5f6430c2fed4d23a2f618748a7f1cfe0f7fade723d86b4919d7c494800b9995"
+  },
+  {
+   "key": "23",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "f375f35564a7eb27eddc698c219a04a80f3a8092b546643d0089e6072cbfcabe"
+  },
+  {
+   "key": "24",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "f52e6444c5083440c488d308a0a01f53a3e5083476ff20f5c7d6b88f60f4578f"
+  },
+  {
+   "key": "25",
+   "record": "70321a0169e68bdb102d45a6155a6ef60decba3ac8355f281e1bd80133d0eff6",
+   "status": "AGREE",
+   "subject_key": "6a9c6a0a3a0fdd92a9bc674ee561001d2962371835b704802dd705992a90af3e"
+  }
+ ],
+ "subjects": {
+  "(question)": "1755ec95f96d6eb16f557ff0a764d3d65b5157c931ac2508fe5f174cb87a6914",
+  "1": "0db46a35a7ee0b04e336416534a77d24631506703e686767755693e5b114ed17",
+  "2": "cefc445bf09741211b6bfc1ca17e9932b12e6114d19679df2bb0a2cf57ed4230",
+  "3": "80278b2c1bc1269cfe0a5779922d66ad609d342663d3e5d39e6a4f2bf2e37beb",
+  "4": "ea387178ae2e311c71bf20912a1681a1f6324608dc0529a8502b8e753aa36941",
+  "5": "cc7d7bc947fc103adac4f6807d45ef453f6aa98d5632dfff37f022d407f94cd6",
+  "6": "3325b82c831e9576c61ad9ca15b708c1f6fc590b5e6227244f0313c680c3f18f",
+  "7": "81fd8ad61b3d859886500d87b412fac0d0a4665f2ee2c8083c7ac180f7fe5a9f",
+  "8": "8f8209fc9dedc28ae4c57bd2829db6acd8354385f0363b93b9cc9aba4259a5cb",
+  "9": "a71fb2fa2af20d4b027ff72016bcc678905c797455386aa4e3cd8084ccf8cf8f",
+  "10": "0aca8c826da32b53c036e2fc95747a749906c880291ddb1d72b8af3f0571d4d8",
+  "11": "cc077139375e81580bad261fe23589134ce681f6a63385a2570b9de62cfa83d9",
+  "12": "0c3775c87c750552313eff14ae10f2a2c0540b1ee0d4973d5cbd914c6871c78a",
+  "13": "784f95c29779d0e62974162f9b1a765efc10df7f73544f988b70761d42dc650c",
+  "14": "cae008834460034435e10929b28c654030c519848ef317b809d40d2e73cfcc4c",
+  "15": "fbc76078beb08d12e98b267eb10aa2ad1ba46326092382b26b1c9aabebe4112c",
+  "16": "abc12ba448b2bcbd56b96c450ea5875c11f8924feb1e4b7876418dab957c9fb3",
+  "17": "2e7b1fd7747e64956f7455597adedcf6391d217e600e29acfb314018b27355ac",
+  "18": "ed0588125b2bd474f5e5d051447162eba1e1d81bd9cd82dd49f9ec2a348ae852",
+  "19": "29d596d6c096ec7a9142b728e1596a0fccdd86448d0561b741c1b95f1e8e07c4",
+  "20": "e3a34369ea4f665e221a8372d4e15b15355ea18fcbe23c6168b9a8ae58970e86",
+  "21": "196c5ae69fe73dc044f61b060814d285f7b62c5cb6b1f29766b9a7f96b186187",
+  "22": "aac12abda31affeaf4beba3db03f3f76ad9601d4ecbdbea4ec5cc8c19c985f97",
+  "23": "d2f12f8595e91923be5ad26cca163469d14a8e53cff91a16eda5c851477b6fb3",
+  "24": "e4a4ecd32352388e6c216bc638565fc1f768110914080a3baea7a45a0ff79b9f",
+  "25": "1edbfd1c114c0bf78e12023c6c9044af482dd524cf15b40a369a6877fb3f17da"
+ },
+ "__rest__": "9834d8f9eaa00f8ff7494eee1cdbaf5394af2f0de2d80b1eca9f8c02c95934e4"
+}

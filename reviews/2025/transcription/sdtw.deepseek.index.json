@@ -1,0 +1,361 @@
+{
+ "kind": "transcription",
+ "form": "sdtw",
+ "family": "deepseek",
+ "base": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+ "lines": [
+  {
+   "key": "1",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "47d003f163bf988d4514bd7a584dd62c9b0783d24136a2356ce6c1a7579a1067"
+  },
+  {
+   "key": "2",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "4fec377475c83970fb9c509112f8c62f84f30add7a79f81d39d4de349cb9242e"
+  },
+  {
+   "key": "3",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "8c030e5c1bcc0d9bc759ae1e40b5f25ceee261e2c85c358858db20d567bcafdd"
+  },
+  {
+   "key": "4",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 15, line 4: \"Enter the amount from Form 4952, line 4e*\"; the worksheet is for a filer who has Schedule D gains \"or if you file Form 4952 and you have an amount on line 4g\" The candidate copies f4952.line4e on every return (its note: the dotted-line amount is not modeled); the project enters it only when sd.filing4952 (BUG-0160). f4952.line4e is figured whether or not Form 4952 is filed, so the candidate shows an amount from a form that is not filed. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,361 of 1,599 agree; 139 value (34 on completed returns), 99 project-refuses. Witnesses: classm.f5695.5 (completed; f4952.required false) project $0.00, candidate $13,526.00; classm.f4952.2 (f4952.line1 $0) $0.00 against $37,231.00. No amount changes (line 3 is 0 there, so lines 5 and 8 are 0). The project-refuses are scope: f4952.required refuses on the cited f4952.carryover gate (classm.w2.1.deepseek), all on returns the project refuses.",
+   "subject_key": "5d567ec7e7bc044741910808d65a875d455a4e0589281e37605cc4a82eb8d037"
+  },
+  {
+   "key": "5",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "a665cc50866a25839c9967c2ba63faba54250998c658e4be910e6456dc305c20"
+  },
+  {
+   "key": "6",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "60307fcf7bc2d71f9f92f7ce57f4bd254700bb9ec9bf95adf212a974894f055e"
+  },
+  {
+   "key": "7",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "d0ca17c7d93b0f3140651a0d8753122db5d67c77dfbae2462096cf61a1f15520"
+  },
+  {
+   "key": "8",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "4c1de9165934f5f7665bfb191cded4a10868cfbcd1ba95c23cb52fdc3b7d9bc0"
+  },
+  {
+   "key": "9",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "755f21836955429054b212138f1e2322e29123443ae6f61dc8019f79c2c7eabb"
+  },
+  {
+   "key": "10",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "0794006fe078cb78c4967eaf1d60a17ba080f4cf090f724cd2d7acc894fa2bf5"
+  },
+  {
+   "key": "11",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "dc41ce4a109f0f272acbcd49672403c3263702af03b906014147a3cd5f6fa7f7"
+  },
+  {
+   "key": "12",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "6ebaaf81c034063e373879993ea9f9870d88ad198905616c4376a8f0ee49af2e"
+  },
+  {
+   "key": "13",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "6d2b7ba5703182be341fa6181e1117527ed806b0a08863b6493be23972e496f2"
+  },
+  {
+   "key": "14",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "3a00816367c54143f8d60306902280004d137d62241256863b763ded2824c4c9"
+  },
+  {
+   "key": "15",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "c38d97fc21e7952f62d2c82cafd1f0e54a613a112beafbda1c9232badfcafa88"
+  },
+  {
+   "key": "16",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "99c94bb45334b4449716575890b140812514959e34d76821cfaa99c4ee438e64"
+  },
+  {
+   "key": "17",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "7b690ce82032896c05efad81aedec7b3a1fc3ceedfec30eb17687f9c9dae33b5"
+  },
+  {
+   "key": "18",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "bf0a751c2af2fd092c42f2a013b9929bacff331831d449484cc4a43c942aa839"
+  },
+  {
+   "key": "19",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "2c85809485d8f1b819df9db9677d0294f2ed779ffab4a04c50ff8338c8873840"
+  },
+  {
+   "key": "20",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "6c26499f282fe750807c483f616c2af50cc5b49069ed3ee96f7448ac50f02132"
+  },
+  {
+   "key": "21",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "97b593072e6771a3404c92b84bc97c4bc0b6a64b42aa07d6dd2afa9cdc06359c"
+  },
+  {
+   "key": "22",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "ece25d3fdfcfcc5f7035374bc8a106e98ade188e23d35af9c601f508cad50c75"
+  },
+  {
+   "key": "23",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" The candidate figures line 23 with no skip, a nonzero amount on a skipped line (README skipped-line rule); the project enters 0. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,560 of 1,599 agree; 39 value (13 on completed returns). Witness: classm.dependent.5 (completed; lines 1 and 16 equal) project $0.00, candidate $52,797.20. classm.sdtw.2 $0.00 against $10,429.58.",
+   "subject_key": "fe9b436e021c3877fa6ebc9c236cf0b3e107f647c123f747f81818901124e65a"
+  },
+  {
+   "key": "24",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" The candidate figures line 24 with no skip, a nonzero amount on a skipped line (README skipped-line rule); the project enters 0. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,560 of 1,599 agree; 39 value (13 on completed returns). Witness: classm.dependent.5 project $0.00, candidate $52,797.20 (line 22 copied). classm.sdtw.2 $0.00 against $10,429.58.",
+   "subject_key": "cae6228c028294f271b072a7e440e9ba94bdfa148ac6d5c549372f7ae7113b2d"
+  },
+  {
+   "key": "25",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" On a skip return line 25 is 0 by derivation (line 23 less line 22 floored). Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,599 of 1,599 agree. Observed equivalence on the sample, consistent with the derivation.",
+   "subject_key": "8d975a177b0885409701810ad5d1ff07349ac79184e29002a437ff40625590e2"
+  },
+  {
+   "key": "26",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" The candidate enters the 15-percent ceiling with no skip, a nonzero amount on a skipped line. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 364 of 1,599 agree; 516 value (355 on completed returns), 572 project-refuses, 147 project-unknown. Witness: classm.f2441.2.deepseek (completed) project $0.00, candidate $600,050.00. The project-refuses (scope) and project-unknown (representation) come from line 1, which the project's skip test reads: refused by cited upstream gates on refused returns, or unknown on records that withhold an answer the interview asks.",
+   "subject_key": "f29b4c8085ab873a13e0805c3c0aaf646d9c8740a2761ff58a3c8e92cc8f070a"
+  },
+  {
+   "key": "27",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" The candidate figures the smaller of lines 1 and 26 with no skip, a nonzero amount on a skipped line. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,267 of 1,599 agree; 332 value (257 on completed returns). Witness: classm.f2441.1.deepseek (completed) project $0.00, candidate $26,375.00.",
+   "subject_key": "a08a31e159ff94ff93322a527b6ea523139667930a219801524bf8906f714572"
+  },
+  {
+   "key": "28",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" The candidate adds lines 21 and 22 with no skip, a nonzero amount on a skipped line. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,267 of 1,599 agree; 332 value (257 on completed returns). Witness: classm.f2441.1.deepseek (completed) project $0.00, candidate $26,375.00.",
+   "subject_key": "30fd8f3e18448802c95b21ba7e68ebdc80d614da1f8fea87d264ea1a4c4f053b"
+  },
+  {
+   "key": "29",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" On a skip return line 28 (lines 21 + 22) is at least line 27, so line 29 is 0 by derivation. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,599 of 1,599 agree. Observed equivalence on the sample, consistent with the derivation.",
+   "subject_key": "7e142d138dd2ba296d2153572af0af87e7c6dcabae906d910d5ff87d2f7db1a3"
+  },
+  {
+   "key": "30",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" Line 30 is the smaller of lines 25 and 29, both 0 on skip returns. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,599 of 1,599 agree. Observed equivalence on the sample, consistent with the derivation.",
+   "subject_key": "f2f6f6bee2eb00a9661312bc066589f04a52e03cef6871000d405a4e69006b85"
+  },
+  {
+   "key": "31",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" The candidate applies the line 22 skip itself (choose on lines 1 and 16) and floors at zero, a no-op. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,599 of 1,599 agree. Observed equivalence on the sample, consistent with the derivation.",
+   "subject_key": "392337967ae91c950bc678f9dac53fd317da2f8bfa3d2a9fa0d0bb1bb25750b9"
+  },
+  {
+   "key": "32",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" The candidate figures line 32 with no skip, a nonzero amount on a skipped line (README skipped-line rule); the project enters 0. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,560 of 1,599 agree; 39 value (13 on completed returns). Witness: classm.dependent.5 project $0.00, candidate $52,797.20. classm.sdtw.2 $0.00 against $10,429.58.",
+   "subject_key": "460ec3c829286749429f9c6921e7bd2c2f71cba19c523c4f5f3ea0d50f4dff83"
+  },
+  {
+   "key": "33",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040sd p. 16, after line 32: \"If lines 1 and 32 are the same, skip lines 33 through 43 and go to line 44. Otherwise, go to line 33.\" Line 33 = line 23 - line 32; line 32 = line 24 + min(line 25, line 29) is at most line 23, which is at most line 1, so when lines 1 and 32 are equal (the line 32 skip) line 33 is 0, and on line 22 skip returns lines 23 and 32 are equal by derivation. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,599 of 1,599 agree. Observed equivalence on the sample, consistent with the derivation.",
+   "subject_key": "6e08dec06a748668960848609b6ba6e06e1f2493d25976e36b1a13933b7e4791"
+  },
+  {
+   "key": "34",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "86cbb6473a4b78aedd1d9888671f68bdc517db1654fef1857641e4cc23e2ba55"
+  },
+  {
+   "key": "35",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" i1040sd p. 16, after line 32: \"If lines 1 and 32 are the same, skip lines 33 through 43 and go to line 44. Otherwise, go to line 33.\" i1040sd p. 16, after line 34: \"If Schedule D, line 19, is zero or blank, skip lines 35 through 40 and go to line 41. Otherwise, go to line 35.\" The candidate enters the smaller of line 9 and Schedule D line 19 with no skip. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,129 of 1,599 agree; 9 value (4 on completed returns), 459 project-refuses, 2 project-unknown. Witness: classm.s8812.2 (completed; lines 1 and 32 equal) project $0.00, candidate $1,585.00. The project-refuses are scope (the project's skip test reads line 1, refused by cited upstream gates on refused returns; the candidate does not read it); the 2 project-unknown (classm.g28.2, classm.u1250.2) withhold an answer the interview asks (representation).",
+   "subject_key": "c113819bbb4a5dee6558773ca41b61cf9d8fe7437995c76afd12cde9c637f715"
+  },
+  {
+   "key": "36",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 16, after line 34: \"If Schedule D, line 19, is zero or blank, skip lines 35 through 40 and go to line 41. Otherwise, go to line 35.\" The candidate adds lines 10 and 21 with no skip, a nonzero amount on a skipped line. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 781 of 1,599 agree; 709 value (433 on completed returns), 109 candidate-unknown. Witness: classm.f2441.1.deepseek (completed; Schedule D line 19 zero) project $0.00, candidate $26,375.00. The 109 candidate-unknown are records withholding an answer the interview asks of every filer (f1040.line13a and 13b unknown, for example classm.f4952.1), where the project settles the skip from Schedule D line 19 alone (representation).",
+   "subject_key": "ec0074c94fb2ef7f6202e93bdcf1612534985a1603cf41d287ea3a3d6d9718c7"
+  },
+  {
+   "key": "37",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 16, after line 34: \"If Schedule D, line 19, is zero or blank, skip lines 35 through 40 and go to line 41. Otherwise, go to line 35.\" The candidate copies line 1 with no skip, a nonzero amount on a skipped line. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 816 of 1,599 agree; 674 value (417 on completed returns), 109 candidate-unknown. Witness: classm.f2441.1.deepseek project $0.00, candidate $26,375.00. The 109 candidate-unknown are records withholding an answer the interview asks of every filer (f1040.line13a and 13b unknown, for example classm.f4952.1), where the project settles the skip from Schedule D line 19 alone (representation).",
+   "subject_key": "61096e1a215ee57b061c0fa645c609589bf5f74a30e136b80be25b6eb5e94e44"
+  },
+  {
+   "key": "38",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 16, after line 32: \"If lines 1 and 32 are the same, skip lines 33 through 43 and go to line 44. Otherwise, go to line 33.\" i1040sd p. 16, after line 34: \"If Schedule D, line 19, is zero or blank, skip lines 35 through 40 and go to line 41. Otherwise, go to line 35.\" The candidate subtracts line 37 from line 36 with no skip, a nonzero amount on a skipped line. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,418 of 1,599 agree; 72 value (37 on completed returns), 109 candidate-unknown. Witness: classm.f5695.7 (completed; lines 1 and 32 equal) project $0.00, candidate $31,500.00. The 109 candidate-unknown are records withholding an answer the interview asks of every filer (f1040.line13a and 13b unknown, for example classm.f4952.1), where the project settles the skip from Schedule D line 19 alone (representation).",
+   "subject_key": "f14829fe3d9aa290cd0b1e68a98463561452d7b16acc38dd24db78ac46f11beb"
+  },
+  {
+   "key": "39",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040sd p. 16, after line 34: \"If Schedule D, line 19, is zero or blank, skip lines 35 through 40 and go to line 41. Otherwise, go to line 35.\" The candidate's line 39 (line 35 less line 38, floored) has no skip, but line 35 is 0 whenever Schedule D line 19 is zero and the floored difference is then 0, so no value differs; its line 35 error is ruled on line 35. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,490 of 1,599 agree; no value difference; 109 candidate-unknown. The unknowns are records withholding an answer the interview asks of every filer (f1040.line13a and 13b unknown, taxable income unknown; classm.f4952.1), where the project settles the skip from Schedule D line 19 alone; on every record with taxable income known the values agree.",
+   "subject_key": "3cb5e9b6afe096d37553229086653287f59dd3bc3b958b43b0b2ebdc013ac94c"
+  },
+  {
+   "key": "40",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040sd p. 16, after line 34: \"If Schedule D, line 19, is zero or blank, skip lines 35 through 40 and go to line 41. Otherwise, go to line 35.\" The candidate gates line 40 on Schedule D line 19 and the skips after lines 22 and 32, as the project does. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,599 of 1,599 agree. Observed equivalence on the sample, consistent with the derivation.",
+   "subject_key": "56211a92c6cf069cac9e59a0631b55ee8b06a9f83d4b1eb5c8b9b23518d07ced"
+  },
+  {
+   "key": "41",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 16, after line 40: \"If Schedule D, line 18, is zero or blank, skip lines 41 through 43 and go to line 44. Otherwise, go to line 41.\" i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" The candidate adds lines 21, 22, 30, 33 and 39 on every return, so it shows amounts where the source skips lines 41 to 43; the project hides line 41 when Schedule D line 18 is zero (sdtw.show41_43) and enters 0 after the line 22 and 32 skips. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 379 of 1,599 agree; 668 candidate-shows-skipped (414 on completed returns), 7 value, 435 candidate-refuses, 110 candidate-unknown. Witnesses: classm.f8889.2.deepseek (line 18 zero, lines 35-40 skipped) hidden, candidate $324,872.80; stage4.sdtw.skip22 (line 18 positive, a skip return: sdtw.after32 false) project $0.00, candidate $40,000.00. The candidate-refuses are scope (line 21 reads line 1, refused by cited gates such as f2441.line14_bad on classm.w2.1.deepseek, on returns the project refuses); the unknowns are records withholding an answer the interview asks (representation).",
+   "subject_key": "8ee5b300a96c44babb0efa3ba046e51c83418eecd6cd2c29f08a681bd51aec4a"
+  },
+  {
+   "key": "42",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040sd p. 16, after line 40: \"If Schedule D, line 18, is zero or blank, skip lines 41 through 43 and go to line 44. Otherwise, go to line 41.\" The candidate subtracts line 41 from line 1 with no skip; triage finds no shown amount that differs (no candidate-shows-skipped): on every sampled return where the project hides line 42 (Schedule D line 18 zero), the candidate's line 1 less line 41 is 0, consistent with line 42 being the 28-percent remainder; observed on the sample, not proved. Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,054 of 1,599 agree; no value and no candidate-shows-skipped; 435 candidate-refuses, 110 candidate-unknown. The candidate refusals read line 1, refused by cited project gates (f2441.line14_bad on classm.w2.1.deepseek; f8959.2) on returns the project refuses; the unknowns are records withholding an answer the interview asks of every filer (classm.f4952.1; representation). Project stands.",
+   "subject_key": "0cd34dce8fa6c57f97d26be4c649bc18823b7c9d7ed54b43075f12e85480a5bd"
+  },
+  {
+   "key": "43",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040sd p. 16, after line 40: \"If Schedule D, line 18, is zero or blank, skip lines 41 through 43 and go to line 44. Otherwise, go to line 41.\" i1040sd p. 15, after line 22: \"If lines 1 and 16 are the same, skip lines 23 through 43 and go to line 44. Otherwise, go to line 23.\" i1040sd p. 16, after line 32: \"If lines 1 and 32 are the same, skip lines 33 through 43 and go to line 44. Otherwise, go to line 33.\" The candidate gates line 43 on Schedule D line 18 (g28.line7) and the skips after lines 22 and 32, as the project does (BUG-0150). Triage executable-triage-v2 (triage/sdtw.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, no partial records; 1,599 comparisons): 1,164 of 1,599 agree; no value difference; 435 candidate-refuses. The candidate refusals read line 1 through line 42, refused by cited project gates (f2441.line14_bad on classm.w2.1.deepseek) on returns the project refuses. Project stands.",
+   "subject_key": "e64071de24ff7dbb6fd8cdff3ce195c0cf5f03499c96a58040095f000ddd8128"
+  },
+  {
+   "key": "44",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "2e1334a6650f9f12dcfd9bd261d5bb136cd8f69fd178b0ec02763fc40bfe6594"
+  },
+  {
+   "key": "45",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "761011309a5773ba4fae68c51ea048148b278036b5403ab23e428363104e74aa"
+  },
+  {
+   "key": "46",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "b53dc3c9bde3ce00da8dd46367de3e0b51090a8df2dea70fd246804372ff49e9"
+  },
+  {
+   "key": "47",
+   "record": "24be127675f588388b2c971b4bc51eaa5adb93431c7d625778645664ee95260e",
+   "status": "AGREE",
+   "subject_key": "3ede5c29ac82897cdcf9e680a9cc06bdd5b47bc93ffeb6a6ff7458c8585b11bb"
+  }
+ ],
+ "subjects": {
+  "1": "1c0725e9bb355032dd19c4e1b76431883615c9f2545b572126c6f1d7d33a5935",
+  "2": "35dcc0d9b2ea7aa888afa60d931779807c4fed87fa144916abcdf2c4d5c07d14",
+  "3": "39fba7a263730ca3462877185bd6884d8dce5725c6aeffc3264e93bea377740f",
+  "4": "d85dc790d13284247492b95bff86af31c4da3bd8278bcb17abd890f04f1450a5",
+  "5": "b5fdb97150dbf8b81a39a27714967a1e4d36707d56a3bf45659be368aab69d62",
+  "6": "f03ed353b16861acfa4351d44790a4e5e730cf38ce0e0d52cd54ae5ce73a6e63",
+  "7": "b1599b453c0476059c089d6911c62c5bac71a9b04b73a38b7f19b38213305513",
+  "8": "76881f7ca2eedaa52eafaa8068bed5058df5d330c926438b32f955de587a9aae",
+  "9": "f6c0dc8730af16dd1c9da0b7244c4ed6215d311410fa434bd1542e3b78c6e29a",
+  "10": "d871cc94abc62f5eeed6709a3f6a832d42dd2582c5e5e0ec778bbb65ff4cd24d",
+  "11": "4897cab105a3027675a958a5e493be1e1cc5c8d61207e7ef4103bcd1d264380c",
+  "12": "5d75f13a0586b0de600e321ccbdc448a3be1545eccbf9e38a1ddad0f8ddf8ba9",
+  "13": "087c776f6db7dda722851de825946c925413c44d67880432ff387fe6c5a4b5f1",
+  "14": "632dd254980bd25d0ebdc89e7790f09939c4b2ed5f8d7d03f0263491ac929261",
+  "15": "96f6715b7feb91af33cc98cae2e01efb5cbc6babcf859776b3c797e945828ccd",
+  "16": "f671cf2b2afdd7c825bc0f02eb4988e0be400558b6b16650319d0518583154b6",
+  "17": "a8ad7c3fb25735935d05dece15c542d0d5b97f709f0c0760fa8d48f862407500",
+  "18": "01c96df8f8ad8c11fb37bada6c088f75b0b72eec2fb1d17be0c47c9381df531f",
+  "19": "4e09f900e0eba682520a4ec6c721747ca8490cd0a3d90e04c0e22d79429bc071",
+  "20": "d243dcae7d7a7975059c126aea7778cfccce3b9ebd4f8083c3335a2b34ab3b3f",
+  "21": "530be567a8c02df605f0cfc55e01488bfd7009772f6b3a0d14ab9335239176de",
+  "22": "5a4ffe9861004eb0977215298d2b878711eb2ee6594b63811122beffd929688f",
+  "23": "aecd5d8f3cbbea1c19cd6d9790c6276273ce139f0081a08dd89a943a0db9a63f",
+  "24": "1abf1ed67c410f0831c4b3e8492d9976fb32ecfbd7246f9c90c6e2ab226639a3",
+  "25": "a8b29186ee03396d55bf05986eb6e82ae0b22a24034581f7387808e956ccb8f7",
+  "26": "550f9e42622b2b5a4e3961abc38ed98846e0069eae84f2e29e69207ddbd14c21",
+  "27": "3f8e3d7ee763cf3bce17bde36588e4e9180df92d43674e91661c85665e1cdff7",
+  "28": "18a90dbe1d940f9854c1f3ac3b5d4a72566f9abb0727198033ff5e6ee4037afa",
+  "29": "6b0d7f5aa76c90721f41fbdc36454b68e2a58a8fd8706e290d96b7c4b06a689b",
+  "30": "43b9a2b6ee140c84608dbd4f0c5ab08456dfcdb3b241d862215d421bdd28c2b8",
+  "31": "b8b1c6e1ee4ab1b07a67c38239293cb5f3c79236fa99b78a3542d571f2ec8eb4",
+  "32": "2cea81d6eb36fe8f00ad79a81a3a4e7e3fbe59220afb68d908dae7969d501118",
+  "33": "d0c460807a637810a84e1f4b618dc7f9657e523a0919ff3dbbac8cb9580d343c",
+  "34": "2b1a54c01a6e9afc12f7dacf0bd70428991570ee7e99acae731fe84e6dd1190f",
+  "35": "f8aed3b147ccaa7ecafd8d3f8db601a5e42407255fecea309b76291ecd6cd3eb",
+  "36": "1e15e0b4bc96894633e576e0695e90cab2549790d328cc8714e0ff1b26f92460",
+  "37": "0e6d7eebc3d9771660cdab634347b1a3fb74d1a4f7291bc6ee1f7d3aac81900a",
+  "38": "2f86fd05880b07172e635f7e08afc80519b684f7e2a1a1554fb399f8e03f4120",
+  "39": "7cfa6bfa14abf3097f467944f1a8567d6b0319f33514c8971b78acf6034eff00",
+  "40": "2897dbcabb54fa8bb6aff700f125432782ee9d9a7b2ce1dd2770b80a16cfae31",
+  "41": "4b5b073f7d2aa139dd1fd7c21a6698151ec77abddaea62912bcc11a20f81ec76",
+  "42": "e9d779e593410f7630377981a987fa717c57e2db247d1b336b8c6b6069cd38fa",
+  "43": "06671678d6c0b7617c87fd9d4f055586eafa3bc39459c1446b5cfb3c0faf235d",
+  "44": "f6ed8f08bd6e54795a1c5434bc7c2132204282ad4bd165a5a074c1690083e1d5",
+  "45": "476daf49eff01e9718807bfd7dc01aa6c4e98c841848da15b879dded09122234",
+  "46": "faf83629c0a6672205dea940b6408881802fe123bc692d9d0c0d662c3c193c5d",
+  "47": "e09491c5deb30e65a7c8783d4b166442ebed6c496f77c66cb0514e7ac51966a7"
+ },
+ "__rest__": "00e2c531b38e20d5876431bbdd73e9a5202745d11ffe800e9a417e86bbc7af82"
+}

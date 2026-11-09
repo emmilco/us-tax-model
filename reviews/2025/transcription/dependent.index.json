@@ -1,0 +1,209 @@
+{
+ "kind": "transcription",
+ "form": "dependent",
+ "family": "claude",
+ "base": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+ "lines": [
+  {
+   "key": "dependent.one",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "AGREE",
+   "subject_key": "36a9e4cdf461fbe353aff7dbe06def65892970175b715f9ff9990899ec1f06b9"
+  },
+  {
+   "key": "dependent.claimed",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 19, Step 4. The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). Now the reply asks dependent.lawful of every entry, where the project asks it only of a Step 4 relative only as a member of the household all year (i1040gi p. 19, Step 4), so it is unknown on qualifying children and close relatives (classm.clcw26.2.deepseek dep_b, completed: project yes); its own refusal gates on dependent.divorced_rule and dependent.married fire only on refused or partial records (for example classm.retirement.1 with other_claimant withheld); the project-refuses are its cited per-person screens (dependent TIN, i1040gi p. 22) and the project-unknowns are partial or refused records. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,679 of 7,119 agree; 179 candidate-unknown, 161 project-unknown, 99 project-refuses, 1 candidate-refuses; on returns the full interview completes: 75 candidate-unknown. No completed-return value difference. Project stands.",
+   "subject_key": "356dcfc84a208d2f0656f7f6a7129cac5d7c1a6077413d9d374ffe9d5abcb9b1"
+  },
+  {
+   "key": "dependent.ctc_child",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 18, Step 3, questions 1 to 4. The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). The reply's test is the project's on every return the interview completes: the differences are the project's cited per-person screens (for example the qualifying child of more than one person, i1040gi p. 21, and the dependent TIN, p. 22), project unknowns on refused or partial records, and the reply's own married refusal on a refused record (stage8.refuse.dependent.married.other_claimant_unanswered). Reclassified from model error: the multiple-support refusal it was ruled on is gone. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,931 of 7,119 agree; 124 project-unknown, 62 project-refuses, 2 candidate-refuses; on returns the full interview completes: none. No completed-return difference. Project stands.",
+   "subject_key": "7a5d27ffc5c06245934976a0e0cf31cd1251f49bf29325ae38df9b561ef3fd76"
+  },
+  {
+   "key": "dependent.odc_person",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 19, Steps 4 and 5. The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). The Step 5 tests are the project's; the line inherits the reply's dependent.claimed: the reply asks dependent.lawful of every entry, where the project asks it only of a Step 4 relative only as a member of the household all year (i1040gi p. 19, Step 4), so it is unknown on qualifying children and close relatives (classm.clcw26.2.deepseek dep_b, completed: project yes). executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,765 of 7,119 agree; 167 candidate-unknown, 99 project-refuses, 87 project-unknown, 1 candidate-refuses; on returns the full interview completes: 69 candidate-unknown. No completed-return value difference. Project stands.",
+   "subject_key": "7e34d7a4040e4fcce97f0c53d5eb25eba2dcf98fdf680d602c56ef1fdcbfb9bd"
+  },
+  {
+   "key": "dependent.ctc_amount",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040s8812 line 5, \"Multiply line 4 by $2,200\". The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). The reply's test is the project's on every return the interview completes: the differences are the project's cited per-person screens (for example the qualifying child of more than one person, i1040gi p. 21, and the dependent TIN, p. 22), project unknowns on refused or partial records, and the reply's own married refusal on a refused record (stage8.refuse.dependent.married.other_claimant_unanswered). Reclassified from model error: the multiple-support refusal it was ruled on is gone. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,931 of 7,119 agree; 124 project-unknown, 62 project-refuses, 2 candidate-refuses; on returns the full interview completes: none. No completed-return difference. Project stands.",
+   "subject_key": "cfd65f0dcf7e24b062dc4adacc2d4f481932bea305ecc5f96512ae8f7153bdf3"
+  },
+  {
+   "key": "dependent.odc_amount",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040s8812 line 7. The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). Inherits dependent.odc_person: unknown on dependent.lawful where the project gives $500 (classm.clcw26.2.deepseek dep_b, completed). executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,765 of 7,119 agree; 167 candidate-unknown, 99 project-refuses, 87 project-unknown, 1 candidate-refuses; on returns the full interview completes: 69 candidate-unknown. No completed-return value difference. Project stands.",
+   "subject_key": "e51bd38c8343702823830135b38592cc529c97bbe15d7c33a29d88e1eff29620"
+  },
+  {
+   "key": "dependent.actc_amount",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040s8812 line 16b. The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). The reply's test is the project's on every return the interview completes: the differences are the project's cited per-person screens (for example the qualifying child of more than one person, i1040gi p. 21, and the dependent TIN, p. 22), project unknowns on refused or partial records, and the reply's own married refusal on a refused record (stage8.refuse.dependent.married.other_claimant_unanswered). Reclassified from model error: the multiple-support refusal it was ruled on is gone. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,931 of 7,119 agree; 124 project-unknown, 62 project-refuses, 2 candidate-refuses; on returns the full interview completes: none. No completed-return difference. Project stands.",
+   "subject_key": "996cb2f6e5f603e6e8f91fd74a52d557cf568514eadecb0aa64290eade510a4c"
+  },
+  {
+   "key": "dependent.hoh_absence",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 14, Test 2; p501 p. 9, Temporary absences. The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). The gate is the project's design; the differences are the project's cited per-person screens, project unknowns on refused records, and one reply refusal on its divorced_rule gate on a partial record. Reclassified from model error: the multiple-support refusal it was ruled on is gone. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,977 of 7,119 agree; 111 project-refuses, 30 project-unknown, 1 candidate-refuses; on returns the full interview completes: none. No completed-return difference. Project stands.",
+   "subject_key": "5c5e22e3bdf64e388d8a40f881c0cb0724ac094d77b48d83ddfbf2cf61dd18c3"
+  },
+  {
+   "key": "dependent.hoh_test2",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 14, Test 2; p501 p. 9, Temporary absences and Death or birth. The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). As the earlier ruling: the reply has no part-year route for a person born or who died in the year (stage15.f2441.parent_died_part_year, incomplete: project true, candidate false); the completed project-unknowns on dependent.absence_no_return (for example classm.s3.4.deepseek dep_a) are on returns that do not file head of household, where the interview never needs the line. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,545 of 7,119 agree; 454 project-unknown, 111 project-refuses, 7 value, 1 candidate-refuses, 1 candidate-unknown; on returns the full interview completes: 63 project-unknown. No completed-return amount differs. Project stands.",
+   "subject_key": "30720cb4dadcc6ef5baedbeab00fae5c60ad2fffd27140e00a57b964dfceddc4"
+  },
+  {
+   "key": "dependent.hoh_test1",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 14, Test 1, \"your parent whom you can claim as a dependent, except under a multiple support agreement\". The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). As the earlier ruling: the reply's test is the project's; every difference is a project refusal (the cited per-person screens) or a project unknown on a refused or partial record. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,953 of 7,119 agree; 88 project-unknown, 78 project-refuses; on returns the full interview completes: none. No completed-return difference. Project stands.",
+   "subject_key": "cf5c2bc2be798029a9e9e56c65a752ba531c4d486e80f7f9b4a2ed29002e4ce6"
+  },
+  {
+   "key": "dependent.eic_child",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 41, Step 3; p. 44, Qualifying child of more than one person and Married child. The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). As the earlier ruling: the reply's test is the project's; the differences are the project's cited kidnap and tiebreak screens, the reply's married refusal on refused records, and completed project-unknowns on dependent.kidnapped (classm.f8962.2.deepseek dep_b) on returns with no EIC, where the interview never needs the line. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,826 of 7,119 agree; 269 project-unknown, 19 project-refuses, 5 candidate-refuses; on returns the full interview completes: 21 project-unknown. No completed-return value difference. Project stands.",
+   "subject_key": "246e9e34a563d0120611ede7ad2f5dc71a1c9f83e0e9268e108237a807fde2bc"
+  },
+  {
+   "key": "dependent.eic_ssn_child",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 46, Worksheet A, line 2. The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). Inherits dependent.eic_child (completed project-unknowns on kidnapped on returns with no EIC). executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,829 of 7,119 agree; 266 project-unknown, 19 project-refuses, 5 candidate-refuses; on returns the full interview completes: 20 project-unknown. No completed-return value difference. Project stands.",
+   "subject_key": "d4fb6e69f75996c7ba4413578d6ae612f4447fe9ac8ac933dce38faa9772e468"
+  },
+  {
+   "key": "dependent.dc_qp",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i2441 p. 1, Qualifying Person(s), \"A qualifying child under age 13 whom you can claim as a dependent\"; p503 p. 3. The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). As the earlier ruling: no f2441.care condition, so the completed values are project no and candidate yes on entries with no care paid (classm.f4952.1.deepseek dep_c), and it asks dependent.dc_incapable where no care was paid (classm.f4952.1.deepseek dep_a); its own refusal gates on dependent.divorced_rule and dependent.married fire only on refused or partial records (for example classm.retirement.1 with other_claimant withheld). executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 3,322 of 7,119 agree; 2,026 candidate-unknown, 1,605 value, 150 candidate-refuses, 13 project-unknown, 3 project-refuses; on returns the full interview completes: 602 value, 348 candidate-unknown. Project stands.",
+   "subject_key": "de913307111ebb88cfc03f07fabc010ab9cd7668b3d09443879c7500abbb8c0a"
+  },
+  {
+   "key": "dependent.dc_count",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "AGREE",
+   "subject_key": "28c4896a449aa1d2c61aaf367d006d4a6cb1ac45e02be6f49192c1d6b8036958"
+  },
+  {
+   "key": "dependent.ptc_magi_counted",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i8962 p. 8, Line 2b, dependents \"who are required to file\". The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). As the earlier ruling: the reply's formula represents the project's choose on ptc_files; the completed project-unknowns (classm.sd.2.deepseek dep_b) are returns with no Form 8962, where the interview does not ask ptc_files and no printed amount reads the line; the one value (stage18.mut.unclaimed_relative, incomplete) is a mutation record; the reply's refusals are its divorced_rule gate on refused records. Reclassified from model error: the multiple-support refusal is gone. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 6,302 of 7,119 agree; 617 project-unknown, 199 candidate-refuses, 1 value; on returns the full interview completes: 126 project-unknown. Project stands.",
+   "subject_key": "1b18aea45097a5d6304db9f7a609bc08cfe4c39449f53060f4f138ef3818857e"
+  },
+  {
+   "key": "2(d)",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i2441 p. 3, Column (d); p. 1, Qualifying Person(s). The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). As the earlier ruling: column (d) inherits the reply's dc_qp, unknown on dc_incapable where no care was paid and the project hides the column (classm.f4952.1.deepseek dep_a, completed); the value is the part-year record stage15.f2441.parent_died_part_year (incomplete). executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 4,201 of 7,119 agree; 2,751 candidate-unknown, 150 candidate-refuses, 13 project-unknown, 3 project-refuses, 1 value; on returns the full interview completes: 461 candidate-unknown. No completed-return amount differs. Project stands.",
+   "subject_key": "f24730c397df51cba5d9d5af4489c5a826b6541296bea900a66bcfca5aeabd27"
+  },
+  {
+   "key": "2(c)",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i2441 p. 3, Column (c). The project's tree is unchanged since the ruling in reviews/2025/transcription/dependent.md at c1e852dc; the reply's tree differs from every earlier one ruled on this line (this round's reply no longer has the multiple-support refusal). As the earlier ruling: the box inherits the reply's dc_qp: completed candidate-shows-skipped (generated 35 dep_a, the box checked with no care paid) and unknowns on dc_incapable. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 5,539 of 7,119 agree; 1,352 candidate-unknown, 150 candidate-refuses, 59 project-unknown, 15 candidate-shows-skipped, 3 project-refuses, 1 value; on returns the full interview completes: 215 candidate-unknown, 4 candidate-shows-skipped. Project stands.",
+   "subject_key": "4a4f68a6e4bc9a5f0273184bbf8ea6ec2760f01848170aa6b4f52f4a271d0092"
+  },
+  {
+   "key": "27",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 2, line 27; i8863 p. 3; p970 p. 11. The project line is new in this round (edu_aoc became a nested choice in the form's order, BUG-0460), which changes no value on a complete return. As the earlier rulings on this line: the reply asks dependent.edu of every entry with no f8863.paid gate (classm.f4952.1.deepseek dep_a, completed: unknown where the project hides the line), and refuses on its divorced_rule gate on refused records, and it requires an issued TIN against p970 p. 11 (a timely ITIN or ATIN application counts, owner decision T-113): f1.t113.dep_aoc_applied gives $0.00 where the project gives $4,000.00. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 3,198 of 7,119 agree; 3,643 candidate-unknown, 192 candidate-refuses, 83 project-unknown, 2 project-refuses, 1 value; on returns the full interview completes: 922 candidate-unknown. Project stands.",
+   "subject_key": "b55a0fa31be2f62aa2bc97f86e91d150425c0ff9bc208b0d39d93c81e78ce100"
+  },
+  {
+   "key": "28",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 2, line 28; i8863 p. 3; p970 p. 11. The project line is new in this round (edu_aoc became a nested choice in the form's order, BUG-0460), which changes no value on a complete return. As the earlier rulings on this line: the reply asks dependent.edu of every entry with no f8863.paid gate (classm.f4952.1.deepseek dep_a, completed: unknown where the project hides the line), and refuses on its divorced_rule gate on refused records, and it requires an issued TIN against p970 p. 11 (a timely ITIN or ATIN application counts, owner decision T-113): f1.t113.dep_aoc_applied gives $0.00 where the project gives $2,000.00. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 3,198 of 7,119 agree; 3,643 candidate-unknown, 192 candidate-refuses, 83 project-unknown, 2 project-refuses, 1 value; on returns the full interview completes: 922 candidate-unknown. Project stands.",
+   "subject_key": "ceb3ad6d083558e0e1676ff1288f6e367b422ad62b7f0a1e1b1d6a982f33bd18"
+  },
+  {
+   "key": "29",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 2, line 29; i8863 p. 3; p970 p. 11. The project line is new in this round (edu_aoc became a nested choice in the form's order, BUG-0460), which changes no value on a complete return. As the earlier rulings on this line: the reply asks dependent.edu of every entry with no f8863.paid gate (classm.f4952.1.deepseek dep_a, completed: unknown where the project hides the line), and refuses on its divorced_rule gate on refused records, and it requires an issued TIN against p970 p. 11 (a timely ITIN or ATIN application counts, owner decision T-113): f1.t113.dep_aoc_applied gives $0.00 where the project gives $500.00. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 3,198 of 7,119 agree; 3,643 candidate-unknown, 192 candidate-refuses, 83 project-unknown, 2 project-refuses, 1 value; on returns the full interview completes: 922 candidate-unknown. Project stands.",
+   "subject_key": "9f860f582a82af5c448e79785d098b053b3391f0dca638856750f9e3134fa359"
+  },
+  {
+   "key": "30",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 2, line 30; i8863 p. 3; p970 p. 11. The project line is new in this round (edu_aoc became a nested choice in the form's order, BUG-0460), which changes no value on a complete return. As the earlier rulings on this line: the reply asks dependent.edu of every entry with no f8863.paid gate (classm.f4952.1.deepseek dep_a, completed: unknown where the project hides the line), and refuses on its divorced_rule gate on refused records, and it requires an issued TIN against p970 p. 11 (a timely ITIN or ATIN application counts, owner decision T-113): f1.t113.dep_aoc_applied gives $0.00 where the project gives $2,500.00. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 3,198 of 7,119 agree; 3,643 candidate-unknown, 192 candidate-refuses, 83 project-unknown, 2 project-refuses, 1 value; on returns the full interview completes: 922 candidate-unknown. Project stands.",
+   "subject_key": "58f8abcddbc871bd8c1ffef812923665c42fa83e4d6df7978d0230d463164f2f"
+  },
+  {
+   "key": "31",
+   "record": "d09a21f93dba38b2b0d542808454ae63a2c97d48a9f8777e4637cae025d9892b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 3, Who cannot claim a credit. The project line is new in this round (edu_aoc became a nested choice in the form's order, BUG-0460), which changes no value on a complete return. As the earlier rulings on this line: the reply asks dependent.edu of every entry with no f8863.paid gate (classm.f4952.1.deepseek dep_a, completed: unknown where the project hides the line), and refuses on its divorced_rule gate on refused records; f1.t113.dep_llc_applied is refused by the project, as the owner decided (T-113). executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,643 fixtures, 500 generated returns seed 20261026, 2,157 partial records; 7,119 comparisons): 3,193 of 7,119 agree; 3,649 candidate-unknown, 191 candidate-refuses, 83 project-unknown, 3 project-refuses; on returns the full interview completes: 922 candidate-unknown. Project stands.",
+   "subject_key": "1c0e1d080d6121bc5865dffbaa89782c9174f24098ea3852b43671e5646280a4"
+  }
+ ],
+ "subjects": {
+  "dependent.one": "858660bbf031f30a7be0943c8d565dfd22a05dfea0dff850664c1d7d444819a0",
+  "dependent.claimed": "f46b5b585cf931a423a9c7f4f6cd0b7e49b661b2dfa67bb29207135829e2cfa7",
+  "dependent.ctc_child": "bf58dbad505032abf3ae193b3fb8583e9d0d7305e71ada8e54784fdf1e502f34",
+  "dependent.odc_person": "799499ce908f7ffb98c1d31223e57cdef5fdb49a50d567f7f1ebf360defde783",
+  "dependent.ctc_amount": "40da80610e0a25b08b8c15174f57561810a85b05364bb6772d8095ba39b0d0af",
+  "dependent.odc_amount": "8787b0eaea982485e10019b1aaca49c8d4324d6e821b4e7a626280dcce57aacc",
+  "dependent.actc_amount": "1bfda50b9b704786adae4b94f74aaf394ae05daacdfb311fc46106ffd039a5b8",
+  "dependent.hoh_absence": "257bddef9fe2279f1382081e06a8f89dd8e9a3c571da2c84be41e79159bbc6af",
+  "dependent.hoh_test2": "23b043a9750cc97cb7cdfaeb38f693c4202c52792af07c35120f52bde5529eef",
+  "dependent.hoh_test1": "c6e356c92c3e7be4e6cc710b641d679122a73d97f9ebdbd9cd4124c14d120540",
+  "dependent.eic_child": "e6b445989bf16a29c0a0a854e7c5cf33ae88705f199dd082be35b76aadf2088a",
+  "dependent.eic_ssn_child": "13a10a27cfe497e84f3d8382b58f29d4c35a6866e22ec3a7245f738043ba728d",
+  "dependent.dc_qp": "9f6b5e11d0d3e69fbbba418a393290afbda9e69b55608edca6a6788816f5d4e0",
+  "dependent.dc_count": "6e8b475ab185eebd8f897a7b2cceeb2d4e5cd73e196df35ea0733c70f0d819bd",
+  "dependent.ptc_magi_counted": "dc37480e7a684ec9e368613070ff4c1c2bfe572c940ed65972af335d9f08ded4",
+  "2(d)": "d8cab86c5341256235bef272a906a213b13903ecae21a3303ac2776a718dc561",
+  "2(c)": "a645050c6a1b4d17ed4184d13f12b45e3fb5be826a53ee5ce6575967388f2aa3",
+  "27": "7aea92765861ff8d30f450e1d7fe250fc2f3e313f7aad6d0aebdbc8c3677c842",
+  "28": "07f258eb75473e0b5ec9a1b46f8f9630cde90183416b1a469cd20b5037c9d03b",
+  "29": "3ae6fe658fed184ee3fe4467b02eb4d88c288173595b904417e70c6597fb814e",
+  "30": "9d04d4b1d2105695dcb21c343e6b7cd8dd0e96d6cd22bdce4e928808a8d1220d",
+  "31": "321bfdd7973080652afa780ae8c983384159e30004eb5f1f2f4d6bf098e059e4"
+ },
+ "__rest__": "f028e8ebb7d35d80df5faee4808d2ffdf5d99bfea35f697361138bde2dc82f12",
+ "foreign": {
+  "dependent.one": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "dependent.claimed": "8246bdae131532c90f4c13705ecca700425310b88ccb2c1104c921ecc4642205",
+  "dependent.ctc_child": "0514eda5e27e3d60a9189ebaf5d8d52b6480cbbd02ad1c0b59665c62ac7cd96a",
+  "dependent.odc_person": "fd8f2069e84bc899aaba9e3e0dbc1723b78d6021de23c159e2e553024602205b",
+  "dependent.ctc_amount": "6d4d45e82d0114c7d42205c1da33832f034e9fa3e28711ca3e777153196442a5",
+  "dependent.odc_amount": "baa230b7b03cd38be8e79f8be2b4cf243e7e67189f2f29854f7fe1b0ab465d79",
+  "dependent.actc_amount": "6d4d45e82d0114c7d42205c1da33832f034e9fa3e28711ca3e777153196442a5",
+  "dependent.hoh_absence": "8246bdae131532c90f4c13705ecca700425310b88ccb2c1104c921ecc4642205",
+  "dependent.hoh_test2": "8246bdae131532c90f4c13705ecca700425310b88ccb2c1104c921ecc4642205",
+  "dependent.hoh_test1": "8246bdae131532c90f4c13705ecca700425310b88ccb2c1104c921ecc4642205",
+  "dependent.eic_child": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "dependent.eic_ssn_child": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "dependent.dc_qp": "0fb263faf6a7f8a93d6f821957868083f6400f194060a939e6f58ffb573f5963",
+  "dependent.dc_count": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "dependent.ptc_magi_counted": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "2(d)": "0fb263faf6a7f8a93d6f821957868083f6400f194060a939e6f58ffb573f5963",
+  "2(c)": "0fb263faf6a7f8a93d6f821957868083f6400f194060a939e6f58ffb573f5963",
+  "27": "b083d892a22b28c827478d0a3a6ad4ac8ca93c9294c9d08839b46f7d5451d3f7",
+  "28": "b0ef5290ef7b0c63147044ddc141a410fd94dbeab8099cbef58dce062862030e",
+  "29": "686d440b1c4c624d26f16c70d8b0ca910176fe85dd5e8cc6438eb86359d5aaed",
+  "30": "a2673a38d5ac01603d84261716e40e003105bf4710dd661ff26a3deb9853393c",
+  "31": "11398ad7059a4044b7387ccd885c0bbae44263f645f9f41c3b851944d24fba7a"
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "kind": "render",
+ "form": "sli",
+ "family": "claude",
+ "base": "b52d3b19c9b08baf29a21b5972959c1667055172192b3ba0c2d9f2a301b4d26e",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1",
+   "record": "99f119ed1524e98735340a9e1589f4e4875080b6b5a1e0ceba0584393deeeffc",
+   "status": "MATCH",
+   "subject_key": "7d18921784ad5c77de72fa2f9d306d38ee33b96a3da28f32bff1e1fd6d7c1e46"
+  },
+  {
+   "key": "2",
+   "record": "b52d3b19c9b08baf29a21b5972959c1667055172192b3ba0c2d9f2a301b4d26e",
+   "status": "MATCH",
+   "subject_key": "fd39e2baaca9913fedd57801adffd4e502dae2113e8a7169706eb0ac838c8a18"
+  },
+  {
+   "key": "3",
+   "record": "b52d3b19c9b08baf29a21b5972959c1667055172192b3ba0c2d9f2a301b4d26e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: refusal located elsewhere; project retained (as the prior rulings). Schedule 1 lines 12, 14 and 23 are outside this tool: scope.schedule1 asks about \"an adjustment on Schedule 1 line 12, 14 or 23\" and refuses Form 1040 lines 8 and 10, so worksheet line 2 (Form 1040 line 9) refuses whenever one applies and within scope they are zero. The lines in scope (11, 13, 15 to 20 and 25) are all added. i1040gi, Student Loan Interest Deduction Worksheet, line 3, \"Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25\".",
+   "subject_key": "a1bd414c3456a829ce22f9e821e174a446c868e22873a64fa96faccfd4f0fea3"
+  },
+  {
+   "key": "4",
+   "record": "b52d3b19c9b08baf29a21b5972959c1667055172192b3ba0c2d9f2a301b4d26e",
+   "status": "MATCH",
+   "subject_key": "3c2fae89b276c51181d4b5d68e1f2892b5f3bdeaa71986c1e0104afabe3a6fca"
+  },
+  {
+   "key": "5",
+   "record": "b52d3b19c9b08baf29a21b5972959c1667055172192b3ba0c2d9f2a301b4d26e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; project retained (as the prior rulings). A married filer filing separately cannot take the deduction (i1040gi p. 98, Line 21, \"Your filing status is any status except married filing separately\"), and the project gives zero for that status on Schedule 1 line 21 (sli.eligible tests the filing status), so the zero on line 5 changes nothing; a separate return is also refused (scope.ready, s3.mfs).",
+   "subject_key": "8e9f430303ca2f9d859316d8c71853f5dbcb22611e3e208ed7ffad6b6cb027ea"
+  },
+  {
+   "key": "6",
+   "record": "b52d3b19c9b08baf29a21b5972959c1667055172192b3ba0c2d9f2a301b4d26e",
+   "status": "MATCH",
+   "subject_key": "edf108ea8ac233362d4197d37605eddcc332d0b71631fa0dc03a44810c7874cf"
+  },
+  {
+   "key": "8",
+   "record": "b52d3b19c9b08baf29a21b5972959c1667055172192b3ba0c2d9f2a301b4d26e",
+   "status": "MATCH",
+   "subject_key": "4ce408b0bdb261447e4a5111bdc9b00d852b0c6e0c4a93420ed6d9062b6d48fa"
+  },
+  {
+   "key": "9",
+   "record": "b52d3b19c9b08baf29a21b5972959c1667055172192b3ba0c2d9f2a301b4d26e",
+   "status": "MATCH",
+   "subject_key": "e847a8e1bdfc5caa3cd1ce184f12e8b3b04c069cf768346518e3a934fbb9b1fe"
+  }
+ ],
+ "subjects": {
+  "1": "7f3670ef200b4b51c8a107adb53cc44b63efe8de99bc2ea165f65fa2d89a0035",
+  "2": "44a322e52fce7e7a028df233a318d945fcc9a2726176337b964ce5f20c99d463",
+  "3": "9a7502bf57f013ced47f8150707fb8e150be4eb5138caec1da8a48527632a73b",
+  "4": "e4e03402ab3d98b2d59c43c95d6607f6b5291dadd68687d950576d408e73913f",
+  "5": "5a97e4bc0f0144ba2ea1ed5e71505d3b7ff5e059ecc9bbb141867e92ed25f876",
+  "6": "720bb61c4e5a977f8e56a97d2ee72953edcda9d2cf9ef9285a673caed8771e75",
+  "8": "ed1bc3b0be293664c0793145429d0ce816af825a511247376827c8866c5cfed5",
+  "9": "9f5a76e3866c7af0a334d8fdc9aeff29357e2668cb6482285d1c11d0226ec0b6"
+ },
+ "__rest__": "d6d486c34c7306cec96ffd4fcb63dac9cbe5b3cae1dbe18fa37601df3331b603"
+}

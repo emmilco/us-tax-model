@@ -1,0 +1,74 @@
+{
+ "kind": "render",
+ "form": "clcw26",
+ "family": "claude",
+ "base": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+ "lines": [
+  {
+   "key": "1",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: interface gap; the model says the pages given never define Form 1040 line 15, so they do not confirm it equals line 11b minus line 14 without a floor at zero. The worksheet is applied to this return with each 2024 figure read as the 2025 one (amb.2025.clcw_to_2026). Line 1 is held before the zero floor, as i1040sd p. 14, Line 21 requires (\"would be less than zero if you could enter a negative amount on that line\"), and as amb.2025.clcw_line1_signed does for the 2024 worksheet. The identity is printed on Form 1040 (2025) p. 2, line 15: \"Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income\". That page was not given to the reviewer (only i1040sd pp. 10 and 14 and p550 p. 103 were). The English states the source correctly; the UNCLEAR is a coverage gap of the review. Same ruling as the first Stage 20 round."
+  },
+  {
+   "key": "2",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  },
+  {
+   "key": "4",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  },
+  {
+   "key": "5",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  },
+  {
+   "key": "6",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  },
+  {
+   "key": "7",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  },
+  {
+   "key": "8",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  },
+  {
+   "key": "9",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  },
+  {
+   "key": "10",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  },
+  {
+   "key": "11",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  },
+  {
+   "key": "12",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  },
+  {
+   "key": "13",
+   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "status": "MATCH"
+  }
+ ]
+}

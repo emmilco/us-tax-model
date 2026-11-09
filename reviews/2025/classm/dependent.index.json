@@ -1,0 +1,103 @@
+{
+ "kind": "classm",
+ "form": "dependent",
+ "family": "claude",
+ "base": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+ "lines": [
+  {
+   "key": "case classm.dependent.1",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": null
+  },
+  {
+   "key": "classm.dependent.1 — dependent[dep_a].dc_line2d",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.dependent.1 — dependent[dep_a].dc_line2c",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.dependent.2",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": null
+  },
+  {
+   "key": "classm.dependent.2 — dependent[dep_c].dc_line2d",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.dependent.2 — dependent[dep_c].dc_line2c",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.dependent.3",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": null
+  },
+  {
+   "key": "classm.dependent.3 — dependent[dep_a].dc_line2d",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.dependent.3 — dependent[dep_a].dc_line2c",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.dependent.4",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": null
+  },
+  {
+   "key": "classm.dependent.4 — dependent[dep_a].dc_line2d",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.dependent.4 — dependent[dep_a].dc_line2c",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.dependent.5",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": null
+  },
+  {
+   "key": "classm.dependent.5 — dependent[dep_a].dc_line2d",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.dependent.5 — dependent[dep_a].dc_line2c",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.dependent.5 — dependent[dep_b].dc_line2d",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.dependent.5 — dependent[dep_b].dc_line2c",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.dependent.5 — dependent[dep_c].dc_line2d",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.dependent.5 — dependent[dep_c].dc_line2c",
+   "record": "ea582f98d1269db38aba1992349b36cbb52f9257122b2f4af630f564a3a40605",
+   "status": "AGREE"
+  }
+ ]
+}

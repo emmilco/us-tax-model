@@ -1,0 +1,50 @@
+{
+ "kind": "transcription",
+ "form": "qbi",
+ "family": "deepseek",
+ "base": "043e8292f728a97c7e2d35e4d9ac0751dc37531c8b5bbe7a25e9cdf7dec4a175",
+ "lines": [
+  {
+   "key": "qbi.zero",
+   "record": "043e8292f728a97c7e2d35e4d9ac0751dc37531c8b5bbe7a25e9cdf7dec4a175",
+   "status": "AGREE",
+   "subject_key": "9587a34f6457cfa3f67f05667b5b8e1de5015efeecf061953df8dc02c0ccba59"
+  },
+  {
+   "key": "qbi.eligible",
+   "record": "043e8292f728a97c7e2d35e4d9ac0751dc37531c8b5bbe7a25e9cdf7dec4a175",
+   "status": "DISAGREE",
+   "ruling": "Ruling: open",
+   "subject_key": "f5d727d931d68785f6748b45c1605e95bede703f3a5c6459b42b56ae20679224"
+  },
+  {
+   "key": "qbi.taxable_before",
+   "record": "043e8292f728a97c7e2d35e4d9ac0751dc37531c8b5bbe7a25e9cdf7dec4a175",
+   "status": "DISAGREE",
+   "ruling": "Ruling: open",
+   "subject_key": "3c56a6269ba976d428566b5ce84d3a2c4df32df97963b42aad13c8f49af81e7d"
+  },
+  {
+   "key": "qbi.net_capital_gain",
+   "record": "043e8292f728a97c7e2d35e4d9ac0751dc37531c8b5bbe7a25e9cdf7dec4a175",
+   "status": "DISAGREE",
+   "ruling": "Ruling: open",
+   "subject_key": "471cc06f09adc87c3d265a8b53af55dfee1bb5a052bb3800791096e765491434"
+  },
+  {
+   "key": "qbi.deduction",
+   "record": "043e8292f728a97c7e2d35e4d9ac0751dc37531c8b5bbe7a25e9cdf7dec4a175",
+   "status": "DISAGREE",
+   "ruling": "Ruling: open",
+   "subject_key": "2c108b186db329973a5682c106a03cd098e5941c9f29ba5dac9b854214bfad1a"
+  }
+ ],
+ "subjects": {
+  "qbi.zero": "d351e905679017dd4f47fae49b296df613ed439c812435776e137e37960346b9",
+  "qbi.eligible": "89df4a43629e5362b3721b7fdbe0f71badd568ffd6315d95f86caf6b14820177",
+  "qbi.taxable_before": "b83f0cad61a74d71f14d043cea5f54ced08d9f944f7c5fa4e5bb4d6b5a4302f0",
+  "qbi.net_capital_gain": "d124683365e2e0299bde158194b9e151884b237e5b3cafa2ea2f063f0934af85",
+  "qbi.deduction": "8ad77c43b32b60307aca48df5f4cf13e85a666d68b12b6eb9508b6cadcb82f65"
+ },
+ "__rest__": "3ecd850aa0c9743f71e02cf3a8fda571cbba92fac4295ed77a1231fbce2a3a92"
+}

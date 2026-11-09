@@ -1,0 +1,35 @@
+{
+ "kind": "render",
+ "form": "tipjob",
+ "family": "deepseek",
+ "base": "7d390fb7ca908044a82de92ef04ffc6e11901b7a2cdba55e48e3ff4ceb50b23c",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-04); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1(b)",
+   "record": "fadf47bc57bfa62e29f5376b9ef704beec2669d0a9de9e4e808717252b8f36f8",
+   "status": "MATCH",
+   "subject_key": "56c1312eff922951c6247a7cfaa10016367a218e9c8d9090f7e27054e06a0014"
+  },
+  {
+   "key": "1(c)",
+   "record": "7d390fb7ca908044a82de92ef04ffc6e11901b7a2cdba55e48e3ff4ceb50b23c",
+   "status": "MATCH",
+   "subject_key": "228e336dc92edd18a605c19d5e37b1386b359f5f08d4ecf682539f111d593b5e"
+  },
+  {
+   "key": "1(d)",
+   "record": "7d390fb7ca908044a82de92ef04ffc6e11901b7a2cdba55e48e3ff4ceb50b23c",
+   "status": "MATCH",
+   "subject_key": "58c6e6944abb0cbcf159cbcda8d6f9c2bf65614d57e04fe95bee861c8382853f"
+  }
+ ],
+ "subjects": {
+  "1(b)": "78252a1c7a5b8e25882900e48073e0e375f046a6d1d1353aa9ea968802966782",
+  "1(c)": "dc81b1fdb2e434e71f49b139aec5466fef26bb4ba5c68d165e439ad08b6aa1e3",
+  "1(d)": "75ed0b95689bdb06499d0392551b4bcd32a543b9f194be357438a21599f26e1c"
+ },
+ "__rest__": "c37992897a314480e61bbf3608e11b869900af62a9097269e5f2adb60c7e7d11"
+}

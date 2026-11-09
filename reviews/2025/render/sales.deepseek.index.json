@@ -1,0 +1,37 @@
+{
+ "kind": "render",
+ "form": "sales",
+ "family": "deepseek",
+ "base": "95574f1972eabc3305372b16f0b0e136d0a2f875b2451e04d051e6eb994566eb",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "(e)",
+   "record": "0cf0cb566d0d76c7cda907eab8860a7bf378591038ee64be40fef7e3840cdaca",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). f8949 p. 1, box G: \"Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\"; i8949 p. 8, code B. The helper is true only for boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G). Within boxes A to F the condition reads as the instructions do. The R3 restructuring of the sales questions changed the glossary text, not this line. Project stands on the English.",
+   "subject_key": "964d2b8e458dc73879877a26e1d726fdd796274373f3d9db2a39da33dffa610a"
+  },
+  {
+   "key": "(g)",
+   "record": "0cf0cb566d0d76c7cda907eab8860a7bf378591038ee64be40fef7e3840cdaca",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; same objection as the round-2 and round-3 rulings (other codes, here code E selling expenses, digital asset transaction costs and option premiums). Codes other than B and W are refused at sales.one on sales.bad_code (\"Unsupported adjustment or code B without a broker basis report\"), and the sales.code question sends an unreflected selling expense or option premium to code E (choose other), so on a completed return column (g) is the code B correction plus the code W adjustment; digital asset rows never reach the line (boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G)). Project stands.",
+   "subject_key": "7b3def22eefbe8a12f80a76d287a401aafa12ca7633626510e59e620c3f2dafb"
+  },
+  {
+   "key": "(h)",
+   "record": "97b020a17b0ac09d1c6895e20d5852b1769c2ed1264562f8013efeb37bd80fbb",
+   "status": "MATCH",
+   "subject_key": "5bbc6f7a9e0467cbdbb2a170714048343af9e08fde19c49d755f1bc74275b877"
+  }
+ ],
+ "subjects": {
+  "(e)": "35b4dd45acfb89238962c5f6cf689bca4b8ca5756c6cb69685d5cb4d95ea73f6",
+  "(g)": "7b0533993727aec41a91a4c468aef48839a1294bf2597f97afa329d9530fc7db",
+  "(h)": "2478528525171d6f13225a6f4ef4eec3f9b7fa92f6869221628e8b2282792bf9"
+ },
+ "__rest__": "173d9d26e48e7de243e42df8a66476933ccaf441a5d2d8dd3a5d3a9677bc158c"
+}

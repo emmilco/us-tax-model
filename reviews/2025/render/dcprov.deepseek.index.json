@@ -1,0 +1,23 @@
+{
+ "kind": "render",
+ "form": "dcprov",
+ "family": "deepseek",
+ "base": "7f71cc8985aab9b53926fc3d5a93b5c7de489641955a4f32e107945455235e4c",
+ "lines": [
+  {
+   "key": "1(c)",
+   "record": "7f71cc8985aab9b53926fc3d5a93b5c7de489641955a4f32e107945455235e4c",
+   "status": "MATCH"
+  },
+  {
+   "key": "1(d)",
+   "record": "7f71cc8985aab9b53926fc3d5a93b5c7de489641955a4f32e107945455235e4c",
+   "status": "MATCH"
+  },
+  {
+   "key": "1(e)",
+   "record": "7f71cc8985aab9b53926fc3d5a93b5c7de489641955a4f32e107945455235e4c",
+   "status": "MATCH"
+  }
+ ]
+}

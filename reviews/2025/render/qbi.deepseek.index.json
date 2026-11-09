@@ -1,0 +1,14 @@
+{
+ "kind": "render",
+ "form": "qbi",
+ "family": "deepseek",
+ "base": "2ee7759a3a4e771ee0fa6494adf98c12c6f0daf0df362ade2d77b274267d9df2",
+ "lines": [
+  {
+   "key": "3",
+   "record": "2ee7759a3a4e771ee0fa6494adf98c12c6f0daf0df362ade2d77b274267d9df2",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; on the sign: f8995 p. 1, line 3 \"Qualified business net (loss) carryforward from the prior year\" is printed in parentheses and line 4 says \"Combine lines 2 and 3\". The qbi line 3 is an input entered as a positive amount, and the form line that prints it negates it (f8995.line3: \"Subtract qbi line 3 from qbi helper 'Year parameter sales.zero'\"), so lines 4 and 16 combine a negative amount as the form requires; the model read the input's sign convention as the printed amount. On the second point (the \"qualified portion\" allowed this year, i8995 p. 4, Line 3: \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year\"; i8995 p. 3: previously suspended losses allowed are \"treated as a qualified net loss carryforward ... See Line 3\"): scope, refused by qbi.unsupported (\"losses or deductions suspended in an earlier year by another provision and allowed this year\") on qbi.eligible. Incidental citation-only finding on this line: findings.md F2."
+  }
+ ]
+}

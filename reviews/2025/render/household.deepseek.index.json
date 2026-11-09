@@ -1,0 +1,396 @@
+{
+ "kind": "render",
+ "form": "household",
+ "family": "deepseek",
+ "base": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+ "head_rows": {
+  "line-scoped reviews": "3 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "persons",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "dde08bf8bcd452b9cb2781b2ead8605595019f9b9633f98bf5f1b79213863ec6"
+  },
+  {
+   "key": "taxpayers",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "b26b9163691707e81a1d3b877ebcd88876bbbf5b5f79328f574ec352429850ab"
+  },
+  {
+   "key": "spouses",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "7e6132720737b6c0892f20e29b813660cc7c2867945b710c9e18da01f3f69e48"
+  },
+  {
+   "key": "roster_ok",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "719731e9b08cf6af43fa23cd3962ab022ab3e3d88b329768aa43f661daf2f30a"
+  },
+  {
+   "key": "roster_bad",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "cd90a22ec9945f7bbed241e9e05af33e836eb471bdbde13eb6da74e69af9d2ce"
+  },
+  {
+   "key": "hsa_people",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "f4b31d4498f5a26a193ec6ebda56b60ee969856c1e8d8085ea9ca3b11542348e"
+  },
+  {
+   "key": "hsa_both",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "7d0575f057bf58278f600d996e86b3dc899c9d481bdd4aad88f9f82e031f259b"
+  },
+  {
+   "key": "hsa_split_count",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "128dc2a649f04b412933d48bb2ec9b0845d528cd8f83e30a9693e3d8e099ad6a"
+  },
+  {
+   "key": "hsa_agreed_count",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "aeabb016ded8dba92dc6ec89916d8d68d3eb767623bcbe38c4434ec6722e2da6"
+  },
+  {
+   "key": "hsa_step1_sum",
+   "record": "a0fbbaa38fb6d2dc6d7edec1565afcfb17e14dc3e4e9969c11c0b7b6f6ea27a7",
+   "status": "MISMATCH",
+   "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\". As the prior rulings: the line is unchanged by R4, which reworded only household.married, household.unmarried and household.qss_eligible; the sum is not line 6: it checks an agreed allocation (f8889.allocation_bad refuses when the spouses' Step 1 limits differ or their shares exceed one Step 1 limit; i8889 p. 7, Step 2), and line 4 (Archer MSA contributions) is zero on every computed return because f8889.unsupported refuses them, a Form 8889 screen outside the household render. Project stands.",
+   "subject_key": "d4493a780c87b70b631f6e09014db92eb1e7d98460829239e522e308522bcdb3"
+  },
+  {
+   "key": "hsa_share_sum",
+   "record": "a0fbbaa38fb6d2dc6d7edec1565afcfb17e14dc3e4e9969c11c0b7b6f6ea27a7",
+   "status": "MISMATCH",
+   "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Steps 1 to 3. As the prior rulings and hsa_step1_sum: the line is unchanged by R4; the sum of the shares is the check f8889.allocation_bad makes on an agreed allocation, not line 6, and is computed with line 4 zero (f8889.unsupported refuses Archer MSA contributions). Project stands.",
+   "subject_key": "468a2dc61f3028d283bcd64b81b8f457602a88299b80805d2c7a54419ce5b201"
+  },
+  {
+   "key": "work_ssn_count",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "8683b1ef0549f44881ea7937ef838d26c94e37f8ff92cc7436783cb5c8fbd6a2"
+  },
+  {
+   "key": "any_work_ssn",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "c07d84d71e4d8d59e41b4a3246da3007b9a9d61b85246190b2c039cb58dbb73f"
+  },
+  {
+   "key": "eic_ssn_count",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "97da7be019d527bd7a8df9cbf30777f66fce9ea27712dc3dd64950eb24901755"
+  },
+  {
+   "key": "all_eic_ssn",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "670e9a9a721565165226074c3e5f2263ed769ca4471d16d2602e307ed085669c"
+  },
+  {
+   "key": "under16_count",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "732d683d4b605c65f9cceaa912e6ba68726c9aab5c7ba38fe5925196b600133c"
+  },
+  {
+   "key": "filer_under16",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "dfa9c90f72019218bb791997e59f59df8d2fa27c6cb2354a18321d53f11aebe1"
+  },
+  {
+   "key": "tin_count",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "c0e66de6d5f4e43755edff8e850c79e66fd21bb144c72ec4fdb13bd4f2e8f211"
+  },
+  {
+   "key": "all_tin",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "e4b3aa5886481bd75f2a1b27905fa5199a4dd0462f4ffd17ca568b6907fe3da2"
+  },
+  {
+   "key": "id_count",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "371a9df1a2c7ce467915ea6a3ca558c60cbb8006ad6e363a64bac22ba63e772e"
+  },
+  {
+   "key": "ctc_ssn",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; i1040gi p. 7, \"If you are filing a joint return, only one spouse is required to have a valid SSN in order to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN\" (amb.2025.ctc_spouse_itin_application). The helper is the filer-side test; the qualifying child's SSN valid for employment is tested per child in dependent.ctc_child, which the reviewer reads as missing here. Project stands.",
+   "subject_key": "ba69e30ce7fb56db7fbe0007262ce69ae49960994218c791013affc00c7e5788"
+  },
+  {
+   "key": "taxpayer_work_ssn_count",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "4d8c64f031e51041fc4139eb88bf329c8118ac37849840f29e2ba5a4a7bed241"
+  },
+  {
+   "key": "taxpayer_work_ssn",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "4d8c64f031e51041fc4139eb88bf329c8118ac37849840f29e2ba5a4a7bed241"
+  },
+  {
+   "key": "home_cost",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; p501 p. 9, Keeping Up a Home, Note: \"if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided ... Amounts paid out of funds received in the child's or qualifying person's name, such as Social Security, are considered paid by the child, not you. If the total amount you paid is more than the amount others paid, you meet the requirement\". The note sits in the cost-of-keeping-up-a-home test, so TANF used for the home counts as paid by you, as the question says (BUG-0258); funds in any other household member's name are paid by that member, not by you, so \"a person who lives in the home\" changes no answer to \"over half\". Project stands.",
+   "subject_key": "2f841070b5974125d59b9090c36e912ca6a010ae9385593de6ca0f9a4fd00e59"
+  },
+  {
+   "key": "unmarried",
+   "record": "a0fbbaa38fb6d2dc6d7edec1565afcfb17e14dc3e4e9969c11c0b7b6f6ea27a7",
+   "status": "MATCH",
+   "subject_key": "e2ef7dcfda8ddf8c530b62b22adc4e3e21479246b23ac73febfaa36a99bacf43"
+  },
+  {
+   "key": "married",
+   "record": "a0fbbaa38fb6d2dc6d7edec1565afcfb17e14dc3e4e9969c11c0b7b6f6ea27a7",
+   "status": "MATCH",
+   "subject_key": "ecafbb5e7f340669d7b8ddbfdf81854af2f8e9f21585d6544383b613e10df61c"
+  },
+  {
+   "key": "community_property",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "a2f8323ed4b328005a497052a044f9d4a3f3fa4264df7dd7fb280f4f023cf8ee"
+  },
+  {
+   "key": "hoh_community_property",
+   "record": "a0fbbaa38fb6d2dc6d7edec1565afcfb17e14dc3e4e9969c11c0b7b6f6ea27a7",
+   "status": "MATCH",
+   "subject_key": "75fdf07e757166b6bf0d10c743bdf68221d4d3e93500a14b23a1aaaa89f9ba4a"
+  },
+  {
+   "key": "credit_disallowed",
+   "record": "45eebc1cbe489773df8c12feb6cfa0090445f9e8ca1e708f6cb0ecf859e1a01b",
+   "status": "MATCH",
+   "subject_key": "5261ee8ffa0f2f4ce41dc9a0a7e6384fdfe8702180d0473b09f520bfecdb033f"
+  },
+  {
+   "key": "no",
+   "record": "45eebc1cbe489773df8c12feb6cfa0090445f9e8ca1e708f6cb0ecf859e1a01b",
+   "status": "MATCH",
+   "subject_key": "4d7581c00423729a9ecaff2fac55997f85f968844906d3be1370576461af924d"
+  },
+  {
+   "key": "eic_above_zero",
+   "record": "9923f504bb74d10589b8fc82d078d05aacf802824ebaeb50b4bd24bbd39de7f8",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; i1040gi p. 48, Worksheet B, Part 7, line 11, \"Look at the amounts on lines 10 and 7. Then, enter the smaller amount on line 11.\" and \"This is your earned income credit\" (Enter this amount on Form 1040 or 1040-SR, line 27a); p. 46, Worksheet A, line 6, \"This is your earned income credit\". The reviewer read Worksheet B line 6 (earned income, from line 4b) for line 11; Worksheet B line 11 is the credit, and eic.line6 is that credit for a filer who answered Yes to Step 5, question 2 (eic.line1 reads Worksheet B line 6 for that filer; eic.yaml, Worksheet A lines 2 to 6 are Worksheet B lines 7 to 11). Project stands on the English.",
+   "subject_key": "86b2bce77a34d5c40c1de28ab2fb85eaa1fd109a2f14664fa8772286faa44d7d"
+  },
+  {
+   "key": "eic_claimed",
+   "record": "9923f504bb74d10589b8fc82d078d05aacf802824ebaeb50b4bd24bbd39de7f8",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; i1040gi p. 48, Worksheet B, Part 7, line 11, \"This is your earned income credit\"; p. 46, Worksheet A, line 6, \"This is your earned income credit\". As for eic_above_zero: Worksheet B line 11 is the credit of a filer who goes to Worksheet B after Step 5, question 2, and the label names it as the alternative to Worksheet A line 6; Step 6 for that filer is figured on Worksheet B, which the project computes through eic.line6. Project stands on the English.",
+   "subject_key": "764a8163506ed0ec3ef9133fa955f180da578cf3725e9362aa3a78f8e3757dba"
+  },
+  {
+   "key": "claims_8862_credit",
+   "record": "9923f504bb74d10589b8fc82d078d05aacf802824ebaeb50b4bd24bbd39de7f8",
+   "status": "MATCH",
+   "subject_key": "a3efed3400a5e83ce841d11937a6605e38dcea98d8a6b3d94f259fade1d8ce6f"
+  },
+  {
+   "key": "credit_disallowed_if_claimed",
+   "record": "9923f504bb74d10589b8fc82d078d05aacf802824ebaeb50b4bd24bbd39de7f8",
+   "status": "MATCH",
+   "subject_key": "a3380320923e50d07e50a63860e92b017443e38a5f83dc13a0a8c36a845a8ee0"
+  },
+  {
+   "key": "ctc_disallowed_claim",
+   "record": "9923f504bb74d10589b8fc82d078d05aacf802824ebaeb50b4bd24bbd39de7f8",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 39, Form 8862, who must file, \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit\" ... \"for a year after 2015 was denied or reduced\"; i1040s8812 p. 2, Form 8862 may be required. The restatement is the gate as encoded: one combined question for the earlier earned income credit and child tax credit histories (household.credit_disallowed, T-101), so a Yes for an earned income credit disallowance alone also refuses Schedule 8812. That is a wider refusal only, never a wrong amount (a Yes refuses; Form 8862 and the disallowance periods are outside the tool). The line 8 more than line 11 test is unchanged from the earlier ruling (BUG-0350 review correction, accepted low). This round only moved the answer behind its gate line household.credit_disallowed_if_claimed. render MISMATCH. Project stands.",
+   "subject_key": "479b8fc37c8a71feafaba3f6c92a339dd3968dbc0f72c6bd85135e5b8620f3e2"
+  },
+  {
+   "key": "eic_disallowed_claim",
+   "record": "9923f504bb74d10589b8fc82d078d05aacf802824ebaeb50b4bd24bbd39de7f8",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\". The restatement is the gate as encoded: one combined question for the earlier earned income credit and child tax credit histories (household.credit_disallowed, T-101), so a Yes for a child tax credit disallowance alone also refuses the earned income credit. That is a wider refusal only, never a wrong amount. The Worksheet B point is a model error as ruled on eic_above_zero (i1040gi p. 48, Worksheet B line 11, \"This is your earned income credit\"). render MISMATCH. Project stands.",
+   "subject_key": "341076114ff3828f200aef00eb0f15fa6b22b514830e268faa9c58af74c47188"
+  },
+  {
+   "key": "test1_persons",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "bdf820eb8bb746cfea612b57bccc2a4ccb723c815b015790999e2c8993b67a8b"
+  },
+  {
+   "key": "test2_persons",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; i1040gi p. 14, Test 2, items 2 to 4 (qualifying children who are not your dependent). The dependent collection holds every person evaluated for Test 2, and dependent.hoh_test2 counts a qualifying child not claimed as a dependent (its derivation reads dependent.qualifying_child beside dependent.claimed), so the non-dependent Test 2 persons the reviewer names are counted. Project stands.",
+   "subject_key": "8f91466a5b2b8df51706f99d09a283fe7b47e8a0bd10083fcaadf3434cc6e559"
+  },
+  {
+   "key": "test2_absence_persons",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; i1040gi p. 14, Test 2; p501 p. 9 (BUG-0267). As test2_persons and the prior ruling: dependent.hoh_absence does not require dependent.claimed where Test 2 allows an unclaimed qualifying child. Project stands.",
+   "subject_key": "ad6715efe9c9f47f8cebf4c921e1c3c8fef35e3a8a090bf88fa391f2ff585711"
+  },
+  {
+   "key": "hoh_absence",
+   "record": "a0fbbaa38fb6d2dc6d7edec1565afcfb17e14dc3e4e9969c11c0b7b6f6ea27a7",
+   "status": "MATCH",
+   "subject_key": "6387524a0b59e4abdb66dcb0b7b47f055383cc45fe507b4ac0af4eebc01aae9d"
+  },
+  {
+   "key": "test1_met",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "35fa21b6dc0b6d47e168982ccd2dc5b6277277ae5d1f7764518125d1993e61f3"
+  },
+  {
+   "key": "test2_met",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "212381a2f2101fb24c5dfa3698ad823146eb74acf11c151a375d08153ef0e099"
+  },
+  {
+   "key": "hoh_eligible",
+   "record": "a0fbbaa38fb6d2dc6d7edec1565afcfb17e14dc3e4e9969c11c0b7b6f6ea27a7",
+   "status": "MATCH",
+   "subject_key": "58cb498222a7605c4b7e22513da9157bf13491c40743b81846e7881a44a5b9b6"
+  },
+  {
+   "key": "hoh_fails",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "1a26e465da1679aa2a25e34821436a8d5ab201e5b226043d4622c8e3eb1f2484"
+  },
+  {
+   "key": "qss_eligible",
+   "record": "a0fbbaa38fb6d2dc6d7edec1565afcfb17e14dc3e4e9969c11c0b7b6f6ea27a7",
+   "status": "MATCH",
+   "subject_key": "1f7382dc3e27aa9c3fac41e8d8a2b2496a492a9c9e3be31a91ec3a569efde430"
+  },
+  {
+   "key": "qss_fails",
+   "record": "a0fbbaa38fb6d2dc6d7edec1565afcfb17e14dc3e4e9969c11c0b7b6f6ea27a7",
+   "status": "MATCH",
+   "subject_key": "5ece9703d035da247c0d5062ae9959ed5a506ee8348791fc17fa43400c3ed4a9"
+  },
+  {
+   "key": "rdp",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "13c40cb6c1a70154c839f995ee59eab7c718e652a76064595dc018655b3c2ef4"
+  },
+  {
+   "key": "spouse_died_2025",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "9bab08e7d27e7d790ed858b7701ab4326c86efdf2726c2801d2bdafc67b87f86"
+  },
+  {
+   "key": "widowed_2025",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "61702f17a4d4e8a0198329685dceae549f99369c989834196843efb996c14769"
+  },
+  {
+   "key": "cp_married",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "0c09ddfa094f2c302b3eab618722626f9758c6fc49ede9703bba26b20e748a8a"
+  },
+  {
+   "key": "cp_marriage_ended",
+   "record": "a0fbbaa38fb6d2dc6d7edec1565afcfb17e14dc3e4e9969c11c0b7b6f6ea27a7",
+   "status": "MATCH",
+   "subject_key": "a829fb558252a0a8bc7debf643a30023a3fa786d182400e73d5772961e367ff0"
+  },
+  {
+   "key": "rdp_community_property",
+   "record": "c82971a42eaf57909375b0ab1e570a97147434566a28d790c74c4918308448c6",
+   "status": "MATCH",
+   "subject_key": "5953c138899630eeda4afd1114f2470f60d23c478de0c4b6b2c7915acbfd177d"
+  },
+  {
+   "key": "filing_status_conflict",
+   "record": "a0fbbaa38fb6d2dc6d7edec1565afcfb17e14dc3e4e9969c11c0b7b6f6ea27a7",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 14, Married Filing Separately; p501 p. 6, Spouse died during the year. As the prior ruling: a separate return is refused for the whole return by s3.mfs on scope.ready, so the married-filing-separately case never reaches line 12e; a single return in the year of a spouse's death is refused by household.widowed_2025. The gate covers the single and joint contradictions (BUG-0286). The R4 rewording of household.married (paragraphs, no word lost) changed no condition. Project stands.",
+   "subject_key": "a0784175cb2698a1ce263cfd6cecdfec462a9723daf7b613c3f3b50883deb700"
+  }
+ ],
+ "subjects": {
+  "persons": "9d27206b964b69630b3746b27911e13be4cf759946a8d56ff5673f93680ae538",
+  "taxpayers": "782df83519f374a0a0ae75c282568871ace0949664b2c443bb933b9b69341d78",
+  "spouses": "796bc0e83786b1de3d3b9abc5a0d79fe8bc2648b31914ab8113f2f3d34db1556",
+  "roster_ok": "96e5a1665099a37f97bad0caff16d27e6c64aa1127f01feb9aec0368ac4fc30e",
+  "roster_bad": "2ed3edf7ee500562d6142caf694eb41c72a6cdfe1226ec4a78fca57e4b8f453d",
+  "hsa_people": "b712295f60780bb4df59fbe5983088cc1b27b031df2a712b045322c2222f71fd",
+  "hsa_both": "5643d209813ddc56e96f1c0472f68ae949bcd0394600aaa6e8ebeeafc65e7309",
+  "hsa_split_count": "3650b4b4a5e850662cd14bacdd8455fcd39fc3200f4799f02194eaa975e17ed8",
+  "hsa_agreed_count": "441f9eca79300f70379e218b893f92e2029c444a4d07020be12c94cadf8dc0ec",
+  "hsa_step1_sum": "0a7b2ca32202e8d6bf7f5398eb5afc6aecf9505237540b92b329efa800077a04",
+  "hsa_share_sum": "9c9a4e884a80abaac2071c736643ab280c84858829dca3ca13064fa13d715501",
+  "work_ssn_count": "efdfc01b4332a0ffb4659f0de610718d633f11889eb5aa52bdb47482a52102fe",
+  "any_work_ssn": "8cf5c050a092dedf06e47acf5700fc9d4570bc0bf751538a98207bfe6dff1288",
+  "eic_ssn_count": "9e4db7de07306c30eea28273af6049c0e51d09f93fe3c09705d4308faf50400d",
+  "all_eic_ssn": "79c4eddec538dbb09af42480cc9c2c4854201db7d404d531a70003d119fb37cf",
+  "under16_count": "8f3f202d279edafc323c441449a347616b3a1eb5907cf6c0ade3a6ec939bae8c",
+  "filer_under16": "5d4f9632063f50fb7e49376eaf5700fa9ce247d27019c394986546ab1ad0d41a",
+  "tin_count": "4368f99f1c0c575c26aa7799c96a05e47b810d98891fdb81c6448247682faa93",
+  "all_tin": "af34290d4377e65f616a5cac6cc32191c9d9f7734f084b273a907c6a5e22e6e2",
+  "id_count": "01d48500a4c174fa9fc94bb598d34112c719e6f0f0ed94d7a475f61772dcf845",
+  "ctc_ssn": "6db1ea6e6bf0997fe35cdba42f550f7d8f5364c0c879a3e4840dc16cb2735d06",
+  "taxpayer_work_ssn_count": "5068464ee7473e72ce4ced8b1fd28f82d248aced4e6d7af55067d91f3a3c274b",
+  "taxpayer_work_ssn": "5068464ee7473e72ce4ced8b1fd28f82d248aced4e6d7af55067d91f3a3c274b",
+  "home_cost": "eb66faee704155180e7a0405c09ffc7b275a7f6d24d4dbc5728c431b67db38e8",
+  "unmarried": "b687b58de22b6968b0b213dbadc07b6306c306109730ab10780b098737071212",
+  "married": "2d20e6ac24216b13d34a9e8a4c579dc854b0e47935eed788dabcf90dd9b86fd7",
+  "community_property": "b9aff9b390e2a39a45d6d12d52893607f842b1ed5bef3be8d1561f5b1cd099b3",
+  "hoh_community_property": "e2566e71d47655f6c2406035873f820859bb85fa8082259b0a7545c8f60b3e8f",
+  "credit_disallowed": "989dc700b136c7dd4a99e966063cb8c6ffc7c021dce2fde70b2e601395506ae8",
+  "no": "862ec62b4d8d1425bef39d73175d5475dc393df0e53f24087769a96a2f481bc5",
+  "eic_above_zero": "ba8cc62641f042b53a3e8556e037fcff9cb04f69869ee89aa107eea31fdbe42f",
+  "eic_claimed": "472baf74f6ab93118321b78d8a272026dbcd847d19833768a300cdd189ef8b07",
+  "claims_8862_credit": "8abcb4b35afc133d6a4f2952c3d7fa264a53eb4d080bfbd3afb41cc618920f6c",
+  "credit_disallowed_if_claimed": "bcb5d7482711ff551bdc48062745ad7ec0253ce750ed43effeb3b25897a177b3",
+  "ctc_disallowed_claim": "ff0a4426a96732faca61875426cd70a142d6ed45de77395a933dbf27b25a8e21",
+  "eic_disallowed_claim": "68941b7b335d727ca6facfa551bc70e57e0c23c724dc811377ae1b4c6eecafd0",
+  "test1_persons": "61eba99c99a2954329aae0987e04656665117574a385f2411b3d8a05bbd064b6",
+  "test2_persons": "1d35fdd798dd9a81ca48f308819882a59628f8aa6ff5b53f9d8cc9ca342486f5",
+  "test2_absence_persons": "e3a1d693ed3c732ef3d443dfe9d56839b0bd3174ead47afc92e93275b833d8ea",
+  "hoh_absence": "9b7aeeec84fb23ac45cddf97cfd71262e74a9beddb97dc2048b54107a24d8e42",
+  "test1_met": "5ef108d86b78c027a5b671c9e0d775022de60ef74103e4b9252697f9f76ffe1f",
+  "test2_met": "b114dc2c4be9cb5368c0bafcbcfd3693bc2b537358a6b82c83449829c9a00bf4",
+  "hoh_eligible": "fe6fd3d53dd4956541b1301a6451b709315b8d019168a6d1e37eff4c2f5f1a9f",
+  "hoh_fails": "f132fdaebf093a6209c082ec2ba21290e1fe55ab3e12b7d1bba194b5b3aced6f",
+  "qss_eligible": "a60fbc2d99325bfe450cb0a60b674633604e0387ca4b5c31aa53252d60ec8690",
+  "qss_fails": "876bc8582890356064ee02a68759c1f5e14ac51780b4b94dc1a51c90085770cb",
+  "rdp": "f5b3282a090b3ea7717369f71c18e431a3f483e60e79e3e3374419283293fa99",
+  "spouse_died_2025": "ed9ee674679bf195b762d0b7b440d47d762a3626fa0957a0c2c93ec9749bc17d",
+  "widowed_2025": "9315d0120ebcd1cdf1759865fa10bc9526596b0a4b7ab5f4599bed28130849ef",
+  "cp_married": "9e9b1b5b0c0497e24d3359e9174343c28509afffa37acc7bd8837ee487b0e113",
+  "cp_marriage_ended": "1f38f9d3857c80f7634fbda0dfc9d272a23b86d3ee2e7e7ca9b2314c6ee406d8",
+  "rdp_community_property": "a457c28da276619b0ca48859c82d583a1101e0dffaa3a325cee46978d24be5b9",
+  "filing_status_conflict": "7aafae4e2b5bd4d0b53dd7dd2201fe48163cab9a7783da40f948b7452afb2c90"
+ },
+ "__rest__": "cb5c9ecba569eb410b0a79967c0b3d9cd7c9c97721476ca24d67e84169c728d8"
+}

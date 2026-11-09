@@ -1,0 +1,22 @@
+{
+ "kind": "transcription",
+ "form": "ny_tcw",
+ "family": "claude",
+ "base": "1d41ce89421d26c42bfef4f2b4b5ccdaa2f95d6cd241946ddcc206321989291d",
+ "lines": [
+  {
+   "key": "tax",
+   "record": "1d41ce89421d26c42bfef4f2b4b5ccdaa2f95d6cd241946ddcc206321989291d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (line3: \"ny_tcw.line3: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "a164c4b2e413275c637e2db74d28e12f752ef5d57bf2b72a01a735534ee67417"
+  }
+ ],
+ "subjects": {
+  "tax": "7471a1eedaf841657b0e1342489ada07e7eedefaded12c1d88ef5afc35581a4b"
+ },
+ "__rest__": "06dd9418b27c5e8a1e6741a0f9b10946b53091ccaa46f23188eb44aa8b5b5271",
+ "foreign": {
+  "tax": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

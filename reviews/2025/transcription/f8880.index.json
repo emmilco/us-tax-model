@@ -1,0 +1,172 @@
+{
+ "kind": "transcription",
+ "form": "f8880",
+ "family": "claude",
+ "base": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1(a)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; values are representation. f8880 p. 1, line 1: \"Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2025. Do not include rollover contributions\". The new reply sums the taxpayer's person.ira_trad (when person.sav_trad) and person.sav_roth, the components of the project's person.sav_line1, and no longer zeroes an ineligible person here (round 1's ambiguity point is gone). executable-triage-v2 (`../triage/f8880.json`; 1,376 fixtures, 500 generated returns seed 20261026, no partial records; 1,876 comparisons; every completed witness read with the cap lifted, T-083): 1,875 of 1,876 agree; 1 project-refuses on a refused return (the cited screen person.ira_excess_gate). Project stands.",
+   "subject_key": "1c26bc036e061843fe51499b2330883e0c489de89dc0dde1408aa7e2db692972"
+  },
+  {
+   "key": "1(b)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; values are representation. f8880 p. 2, Column (b): \"Complete column (b) only if you're filing a joint return\". The candidate adds an explicit joint guard to the same sum; the roster has a spouse entry only on a joint return (interview/questions-2025.yaml, $person: \"Who is on this return? Enter [\\\"taxpayer\\\"], or [\\\"taxpayer\\\",\\\"spouse\\\"] if you are married filing jointly\"). executable-triage-v2 (`../triage/f8880.json`; 1,376 fixtures, 500 generated returns seed 20261026, no partial records; 1,876 comparisons; every completed witness read with the cap lifted, T-083): 1,701 of 1,876 agree; 18 candidate-refuses (refused returns, f8880.h_able, the project's ABLE screen person.sav_able raised earlier) and 157 candidate-unknown (person.sav_able; 108 incomplete, 49 refused); none on a completed return. Project stands.",
+   "subject_key": "df081d43f73646c8343c076fc52c693a77a3bb04ae9389ccc1bf794578a73154"
+  },
+  {
+   "key": "2(a)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "f607f4fbd3a1d9069807b933ac0bcf0231ea055280187288763f50a176a66f9e"
+  },
+  {
+   "key": "2(b)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; values are representation. f8880 p. 2, Column (b): \"Complete column (b) only if you're filing a joint return\". Same sum as the project with an explicit joint guard; the roster has a spouse entry only on a joint return (interview/questions-2025.yaml, $person: \"Who is on this return? Enter [\\\"taxpayer\\\"], or [\\\"taxpayer\\\",\\\"spouse\\\"] if you are married filing jointly\"). executable-triage-v2 (`../triage/f8880.json`; 1,376 fixtures, 500 generated returns seed 20261026, no partial records; 1,876 comparisons; every completed witness read with the cap lifted, T-083): 1,697 of 1,876 agree; 22 candidate-refuses, 4 on completed returns (classm.s3.3[.deepseek] and classm.f5695.8[.deepseek]: the candidate's f8880.h_excess refuses on person.sav_excess alone, records with no box 12 deferrals that the interview cannot produce, T-081 (5)), 18 refused; 157 candidate-unknown on person.sav_excess (none completed); no value difference. Project stands.",
+   "subject_key": "c2e15208bb772b4689e62197a4354225720cf84904d34a19b62b266d1e28b947"
+  },
+  {
+   "key": "3(a)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "56f5fddcb68ca251f637f568ce99f2cc074f2c35e11e2431dd804a3d2f7e3b7b"
+  },
+  {
+   "key": "3(b)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "116b3cc43580fdce27940ab20f0011a3dcbc4e40f46daf3f456329e1ed8aee24"
+  },
+  {
+   "key": "4(a)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f8880 p. 2, Line 4: \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions)\"; \"If you're filing a joint return, include both spouses' amounts in both columns\"; Exception: \"Don't include your spouse's distributions with yours when entering an amount on line 4 if you and your spouse didn't file a joint return for the year the distribution was received\". On a joint return the candidate takes each spouse's sav_dist and sav_prior_joint plus the taxpayer's sav_prior_other; otherwise the taxpayer's sav_dist and sav_prior_other. The same totals as the project. executable-triage-v2 (`../triage/f8880.json`; 1,376 fixtures, 500 generated returns seed 20261026, no partial records; 1,876 comparisons; every completed witness read with the cap lifted, T-083): 1,876 of 1,876 agree. Project stands.",
+   "subject_key": "8fbebca561da4cfc4c9aa3c8a544659f4e602af9ffacdd8fe448712887b6f31a"
+  },
+  {
+   "key": "4(b)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f8880 p. 2, Line 4: \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions)\"; \"If you're filing a joint return, include both spouses' amounts in both columns\"; Exception: \"Don't include your spouse's distributions with yours when entering an amount on line 4 if you and your spouse didn't file a joint return for the year the distribution was received\"; f8880 p. 2, Column (b): \"Complete column (b) only if you're filing a joint return\". As 4(a) with the spouse's sav_prior_other and zero off a joint return. executable-triage-v2 (`../triage/f8880.json`; 1,376 fixtures, 500 generated returns seed 20261026, no partial records; 1,876 comparisons; every completed witness read with the cap lifted, T-083): 1,876 of 1,876 agree. Project stands.",
+   "subject_key": "0c862909864f8c9edb13ced49360414fc5d8010e5d575c4cb57fa880e547e841"
+  },
+  {
+   "key": "5(a)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "5dc85994d4743d96b0d8d7325282eeb48c67c24f247737b8184f6547fce1ee26"
+  },
+  {
+   "key": "5(b)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "99863660fa7e5d6dac9830b2b6d7e4f89129d9cc65310f5c0ae2a3f3257c3bcb"
+  },
+  {
+   "key": "6(a)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f8880 p. 1, Caution: \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else's 2025 tax return; or (c) was a student\"; amb.2025.savers_ineligible_column (owner decision 4: an ineligible person's own column is zero on line 6), the placement the candidate now also uses. The only difference in reading: the candidate tests person.sav_claimed alone, the project sav_claimed with sa.dependent. executable-triage-v2 (`../triage/f8880.json`; 1,376 fixtures, 500 generated returns seed 20261026, no partial records; 1,876 comparisons; every completed witness read with the cap lifted, T-083): 1,851 of 1,876 agree; on completed returns 2 value (classm.f5695.2 and classm.f5695.2.deepseek: person.sav_claimed true with sa.dependent false, an answer the interview never asks, T-081 (5): project $2,000.00, candidate $0.00), 4 candidate-refuses (classm.s3.3[.deepseek] and classm.f5695.8[.deepseek]: the candidate's f8880.h_excess refuses on person.sav_excess alone, records with no box 12 deferrals that the interview cannot produce, T-081 (5)) and 1 candidate-unknown (stage16.cleanup.f5695_small_wind, no contribution, person.sav_claimed not asked); on refused returns 8 value, 9 candidate-refuses and 1 project-refuses (person.ira_excess_gate). Every completed difference is on a record the interview cannot produce. Project stands.",
+   "subject_key": "dfb8aaf03794a3cef4f28583108463b30f198fa3a4e1c5ad111dbc57c21eaf9b"
+  },
+  {
+   "key": "6(b)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; values are representation. f8880 p. 1, Caution: \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else's 2025 tax return; or (c) was a student\". As 6(a) for the spouse column. executable-triage-v2 (`../triage/f8880.json`; 1,376 fixtures, 500 generated returns seed 20261026, no partial records; 1,876 comparisons; every completed witness read with the cap lifted, T-083): 1,683 of 1,876 agree; 36 candidate-refuses (4 on completed returns, classm.s3.3[.deepseek] and classm.f5695.8[.deepseek]: the candidate's f8880.h_excess refuses on person.sav_excess alone, records with no box 12 deferrals that the interview cannot produce, T-081 (5); 32 refused) and 157 candidate-unknown (person.sav_able; none completed); no value difference. Project stands.",
+   "subject_key": "decdcea496f33a1148d795cc5331458bb3f1429a57ade5e73eecebb1854e3896"
+  },
+  {
+   "key": "7",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "02e24538c4cfa8cea8bcd00836c9457af1465c275d25c8be01226303ad5abec1"
+  },
+  {
+   "key": "8",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "aca013ce38fe40764621f77af5fc8a2c3b73bc692f4e814904b47e76e4820452"
+  },
+  {
+   "key": "9",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "850432c75ca582e9af73a1428cd30267386d4d55cfab5888275129a8ac062b21"
+  },
+  {
+   "key": "10",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "0749a77770859096594b0c78cbe04a3cf901752ccc4682f61bdff3dcee56a459"
+  },
+  {
+   "key": "(CLW 1)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "a4aeba0ac644de981c0d73183d7d6ba19b5aadcaada73c8002edf7e29c4a8196"
+  },
+  {
+   "key": "(CLW 2)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "1ebcbbb8e3334cebe5d3a2528223f1c6dd6d2e20b4552c5e332ed95cbd9c892b"
+  },
+  {
+   "key": "(CLW 3)",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "b23ef00988207c78ad7ec8f5d2d8e0cc9835582c7cde45734a870fd5d0c8ae75"
+  },
+  {
+   "key": "11",
+   "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
+   "status": "AGREE",
+   "subject_key": "48667827238a408899c90a417c733e48c08050ddfa12d8d46f3ef8f557a8f8cb"
+  },
+  {
+   "key": "12",
+   "record": "7b76796cecf7c5fc693db68e9df494540b7b2018becd32b25249e38190ecee7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained. Form 8880 (2025), line 7, \"If zero, stop; you can’t take this credit\"; line 9, \"Note: If line 9 is zero, stop; you can’t take this credit\"; p. 2, Credit Limit Worksheet, \"But if zero or less, stop; you can’t take the credit—don’t file this form\"; p. 2, Who Can Take This Credit, \"However, you can’t take the credit if either of the following applies\". The reply enters the smaller of lines 10 and 11 and lets each stop show as a zero there (line 7 or line 9 zero makes line 10 zero; worksheet line 3 zero makes line 11 zero). The project takes $0 through f8880.can_take, a nested choose that decides the AGI test first (line 8 within the limit, so line 9 is not zero), then the worksheet, then contributions in a column whose person can take the credit, then line 7 (owner decision 2026-11-07, eligibility AGI-first). It gives the same amount on every completed return: above the limit line 9 is 0.0, with no room line 11 is zero, and with no counted contributions line 6 is zero in both columns, so line 7 is zero. The order changes only which questions are asked and, where line 8 refuses, that the refusal of line 8 is reached before contributions are.",
+   "subject_key": "5ea42653f4b87b5d9c18560161f60d32d8d57e7472042ab3d82d79b5db05d93a"
+  }
+ ],
+ "subjects": {
+  "1(a)": "e3096f680949a505d98256a20a628dd99a5188488259de93ec93db75975174af",
+  "1(b)": "2c52638460b2945cf8e5baff4f2af67fea576879edde3baa2cfc7683a8642ab8",
+  "2(a)": "186a88ee44ea0ec84966bd783cbd2fd14c3a8a3b25ae78229af6997f7d9035f6",
+  "2(b)": "6b2c8ed7dbe2fde0fc6579df471a0f0fccfda81a6d8717c81729a52776388184",
+  "3(a)": "36e707c3be2b1a1de6e595f783bdcaab32e4f8343b349cdda4e5bfd0b9ef0c8d",
+  "3(b)": "c1da47967955bed1580256ae880162ec6b7cd29f5e3e08cbb0a6e3884c4cc1b9",
+  "4(a)": "7aa12d27fa7a78d23e96a36c7372988d5162f4bd405553bacc9cc81ee12b33e8",
+  "4(b)": "992f24d1a10d343f769cce557a34e7332474b8a3fe3a3fa567725228fa506d11",
+  "5(a)": "e4bdf68ce81453fd0817cce7846a02d57d40f8175226172b15490027a6f3f75c",
+  "5(b)": "5c2f485611a097396b3207a4562f50f700e0370e52a5ccd5b5be0d3e4441ef8e",
+  "6(a)": "ce44ecff7356cd598adef2aacc36a39a8559ee21d47140ac46a0942d0e8ab802",
+  "6(b)": "cedb1659fde4ffbfb143c7d4847fb6c03ec5b895f478f7e24e0b3b30ffcd8b85",
+  "7": "d4af2dd0a4766ec063c55483e43f437c12b4a64e9970f4ebf5e0b3424099bcce",
+  "8": "cf15f528238e50741b2acc517e2ca2cfb6954fd02c62e6a7c6485a5a3d0c3955",
+  "9": "2a9d2759398849dc82a7e82098f0f8dd72b811c02f82bb124453afe873fc5977",
+  "10": "2571811aa8e093ee7c7a13db5b6240ed44b8e2993ff70ffdf50bf79fdf106c63",
+  "(CLW 1)": "41be60b5ae2e6b0e4d9bc98bfe1c9112aaef9a3ac4e2d8aa8701355ef7f0a2c1",
+  "(CLW 2)": "d9a482e897852d2a4128b02b2dced78efd8f02036c1608d72aabc616024bf23f",
+  "(CLW 3)": "e659ffba861b15b70663b66e51f78d6f760f2a1a456318bbf796ffec26f65a13",
+  "11": "1be4c3bfef14b5cc0ad3d43de206e3936e5b3df7bd52e83c041dc0c584d8bbb0",
+  "12": "6642a99e7116e281e3bad98ff3722bb637d7819a58c114d877644c978de08a02"
+ },
+ "__rest__": "4c452a711996c1afeef45b363d189b0fa2199e4efddcdc3d2682895c3b614e85",
+ "foreign": {
+  "12": "247c260e64510a4f48dd1cac83672ba6af737c8a2404b458030622d7c2e76506"
+ }
+}

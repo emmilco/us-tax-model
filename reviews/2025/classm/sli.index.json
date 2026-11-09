@@ -1,0 +1,233 @@
+{
+ "kind": "classm",
+ "form": "sli",
+ "family": "claude",
+ "base": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+ "lines": [
+  {
+   "key": "case classm.sli.1",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": null
+  },
+  {
+   "key": "classm.sli.1 — 1",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.1 — 2",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.1 — 3",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.1 — 4",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.1 — 5",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.1 — 6",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.1 — 8",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.1 — 9",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.sli.2",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": null
+  },
+  {
+   "key": "classm.sli.2 — 1",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.2 — 2",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.2 — 3",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.2 — 4",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.2 — 5",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.2 — 6",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.sli.2 — 8",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.2 — 9",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.sli.3",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": null
+  },
+  {
+   "key": "classm.sli.3 — 1",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.3 — 2",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.3 — 3",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.3 — 4",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.3 — 5",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.3 — 6",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.sli.3 — 8",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.3 — 9",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.sli.4",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": null
+  },
+  {
+   "key": "classm.sli.4 — 1",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.4 — 2",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.4 — 3",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.4 — 4",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.4 — 5",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.4 — 6",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.sli.4 — 8",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.4 — 9",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.sli.5",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": null
+  },
+  {
+   "key": "classm.sli.5 — 1",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.5 — 2",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.5 — 3",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.5 — 4",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.5 — 5",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.5 — 6",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.sli.5 — 8",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sli.5 — 9",
+   "record": "06978c7aa682e315324106a7d14dff30b1abc67a88fb61e1e16dcf04e2d57140",
+   "status": "AGREE"
+  }
+ ]
+}

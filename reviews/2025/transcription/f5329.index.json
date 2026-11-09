@@ -1,0 +1,89 @@
+{
+ "kind": "transcription",
+ "form": "f5329",
+ "family": "claude",
+ "base": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
+ "lines": [
+  {
+   "key": "f5329.tax",
+   "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
+   "status": "AGREE",
+   "subject_key": "f27f7be7d0d2db8b48489452a859b141931c41c972fa70294635962d7b93780e"
+  },
+  {
+   "key": "f5329.must",
+   "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2225 of 2228 comparisons agree; on completed returns no difference.",
+   "subject_key": "a7161d3f83e1ac6a7100a3790980a66c2ea2f4d0c986d7ce1b07c41dc5deb6a4"
+  },
+  {
+   "key": "f5329.one",
+   "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
+   "status": "AGREE",
+   "subject_key": "ea4f49d6db750628449fbbea6d057d097bb43031e66c9274bb248479d84281d1"
+  },
+  {
+   "key": "1",
+   "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i5329 p. 1, Who Must File: \"if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount ... you don't have to file Form 5329.\" The project hides the line when the form is not filed; the candidate shows an amount there. Triage executable-triage-v2 (triage/f5329.json): 2138 of 2228 comparisons agree; on completed returns {\"candidate-shows-skipped\": 3}.",
+   "subject_key": "741f018d69035dc25ee8cffc120caf6312d3febd3f65a287f9bf23210414bb64"
+  },
+  {
+   "key": "2",
+   "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i5329 p. 5, Line 2. representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2145 of 2228 comparisons agree; on completed returns no difference.",
+   "subject_key": "74a5b8bf1cff9a2da2c343ab7d870e69c545f678cfacffeb39f753f9de136de7"
+  },
+  {
+   "key": "3",
+   "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i5329 p. 1, Who Must File: \"if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount ... you don't have to file Form 5329.\" The project hides the line when the form is not filed; the candidate shows an amount there. Triage executable-triage-v2 (triage/f5329.json): 2133 of 2228 comparisons agree; on completed returns {\"candidate-shows-skipped\": 3}.",
+   "subject_key": "5981b69a67bf9fcfb83fbf811ea62b59a38b02b4ed2bc11706863effa32d138f"
+  },
+  {
+   "key": "4",
+   "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i5329 p. 1, Who Must File: \"if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount ... you don't have to file Form 5329.\" The project hides the line when the form is not filed; the candidate shows an amount there. Triage executable-triage-v2 (triage/f5329.json): 2134 of 2228 comparisons agree; on completed returns {\"candidate-shows-skipped\": 3}.",
+   "subject_key": "ad5ab5748f8c97b8c880697f5c9cb860e8af69b5c1a00e8f282ee05f87a34507"
+  },
+  {
+   "key": "47",
+   "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i5329 p. 8, Line 47. representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2196 of 2228 comparisons agree; on completed returns no difference.",
+   "subject_key": "aa8367cef0dd4dbf2dc1b1228651d2491da7146942ff1224df3828864eb6f767"
+  },
+  {
+   "key": "48",
+   "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; lines 42 to 46 are refused through person.x_other (BUG-0313). representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2195 of 2228 comparisons agree; on completed returns no difference.",
+   "subject_key": "bbb6c645423336d370b57cce57aa9ae5a1f4f86b27c3846e6926d3f6fa8f184f"
+  },
+  {
+   "key": "49",
+   "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2196 of 2228 comparisons agree; on completed returns no difference.",
+   "subject_key": "db022757167d5ce8bbb7f7df394039cc5080a9746998e4e03c5584ad621ffa28"
+  }
+ ],
+ "subjects": {
+  "f5329.tax": "59e6f6d7383df4c7a21316f0670617c683eff2d23b19aa52b0e26785d75a7134",
+  "f5329.must": "66d905687033fe3c388e6e7afbfdc69dfe642fff4c4d44093fe45d15526b676b",
+  "f5329.one": "2a8599b7f9d681f0366275de22e3cf5a1f19a905ea58ce59034f46cfa4e0a500",
+  "1": "89754392f93940daf27e16f1e6493cd2dd31a298c5311fd10348a4aa65277068",
+  "2": "c871f2c2f30fe05c67985f75750d3b11518aa5225a2ccea322e0bc3ed82ab27a",
+  "3": "27f6256aa5bc3e2cb64897be1336cbcca60bc4baa5a299a72930ce12b646d5e6",
+  "4": "56f7ee62a585d54d0c8671650b7daff541f2f0b2b632e284171b5c59dae2b12c",
+  "47": "228de467db8bbce58e5afd5dd910615dbb8659c7ec71438d33b8e55bb3477fff",
+  "48": "784bb847bea5eb1b6a89f844db33baf73737625349a3641fe924ae345b940c46",
+  "49": "6477f7894d4cc0e8a342754bfd89a7b6a270fb1b251c7816051cd4a2c9f5b972"
+ },
+ "__rest__": "4c207866421816c1e9bbbee293f2b3b9ba53816f3f8f373afbc41758193585e9"
+}

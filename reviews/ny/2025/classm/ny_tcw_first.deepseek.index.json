@@ -1,0 +1,109 @@
+{
+ "kind": "classm",
+ "form": "ny_tcw_first",
+ "family": "deepseek",
+ "base": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+ "lines": [
+  {
+   "key": "case classm.ny_tcw_first.1",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": null
+  },
+  {
+   "key": "classm.ny_tcw_first.1 — line3",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), Tax computation worksheet 1, line 3, \"Multiply line 2 by 5.5% (0.055)\": $38,275 x 0.055: exactly $2,105.125, which the project rounds half-up to $2,105.00; the model's $2,105.13 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "classm.ny_tcw_first.1 — stop",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw_first.1 — line4",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), Tax computation worksheet 1, line 4, the New York State tax rate schedule (married filing jointly) on $38,275: $1,202 plus 5.5% of the excess over $27,900: exactly $1,772.625, which the project rounds half-up to $1,773.00; the model's $1,772.63 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "classm.ny_tcw_first.1 — line5",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" Tax computation worksheet 1, line 5, \"Subtract line 4 from line 3\": with lines 3 and 4 each rounded where computed, $2,105 - $1,773 = $332; with cents kept, $2,105.125 - $1,772.625 = $332.50; the project's $332.00 follows from lines 3 and 4 rounded where computed; the model's $332.50 from the same lines in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "classm.ny_tcw_first.1 — line6",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw_first.1 — line8",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw_first.1 — line9_phased",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), line 9, lines 4 and 8 ($0, line 6 being $0): the schedule on $38,275: exactly $1,772.625, which the project rounds half-up to $1,773.00; the model's $1,772.63 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "classm.ny_tcw_first.1 — tax",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), line 9, lines 4 and 8 ($0, line 6 being $0): the schedule on $38,275: exactly $1,772.625, which the project rounds half-up to $1,773.00; the model's $1,772.63 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "case classm.ny_tcw_first.2",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": null
+  },
+  {
+   "key": "classm.ny_tcw_first.2 — line3",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; the case pairs the worksheet 1 binding of ny_tcw_first (flat rate ny.tcw.first.rate, 5.5%, given to the model as \"(3) The worksheet's flat rate ... 5.5%\") with a single filer, a combination no return takes: IT-201 routes a single filer to worksheet 7 (forms/ny/2025/ny_it201.yaml, ny_it201.tcw.w7, rate ny.tcw.first.rate6), whose line 3 reads \"Multiply line 2 by 6% (0.06)\" (IT-201-I web edition, Tax computation worksheet 7). With the rate the case supplies, the definition's line is the project's (line 3 = $120,000 x 5.5% = $6,600; line 4, the single schedule on $120,000, = $4,271 + 6% x $39,350 = $6,632; line 5 = max(0, $6,600 - $6,632) = $0, so lines 8 = $0 and 9 = tax = $6,632). The model applied worksheet 7's 6% instead of the supplied rate; under 6% its figures are worksheet 7's ($7,200, $568, 0.4070, $231, $6,863), which is what IT-201 computes for this return through ny_it201.tcw.w7. Neither side is evidence for the bound definition: the job is a construction artifact of classm-jobs (instance binding chosen independently of the filing status; tooling low in research/audits/ny/BUG-0424_lows.md). Dropped from the fixture. [dropped]"
+  },
+  {
+   "key": "classm.ny_tcw_first.2 — stop",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw_first.2 — line4",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (arithmetic); IT-201-I (web edition), New York State tax rate schedule, \"Single and married filing separately\", over $80,650 but not over $215,400: \"$4,271 plus 6% of the excess over $80,650\"; on $120,000 that is $4,271 + $2,361.00 = $6,632.00 exactly, the project's. The model's $6,631.75 is not the schedule on $120,000 under any rounding. Recomputed from the source, not from the engine. Dropped from the fixture as not evidence. [dropped]"
+  },
+  {
+   "key": "classm.ny_tcw_first.2 — line5",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; the case pairs the worksheet 1 binding of ny_tcw_first (flat rate ny.tcw.first.rate, 5.5%, given to the model as \"(3) The worksheet's flat rate ... 5.5%\") with a single filer, a combination no return takes: IT-201 routes a single filer to worksheet 7 (forms/ny/2025/ny_it201.yaml, ny_it201.tcw.w7, rate ny.tcw.first.rate6), whose line 3 reads \"Multiply line 2 by 6% (0.06)\" (IT-201-I web edition, Tax computation worksheet 7). With the rate the case supplies, the definition's line is the project's (line 3 = $120,000 x 5.5% = $6,600; line 4, the single schedule on $120,000, = $4,271 + 6% x $39,350 = $6,632; line 5 = max(0, $6,600 - $6,632) = $0, so lines 8 = $0 and 9 = tax = $6,632). The model applied worksheet 7's 6% instead of the supplied rate; under 6% its figures are worksheet 7's ($7,200, $568, 0.4070, $231, $6,863), which is what IT-201 computes for this return through ny_it201.tcw.w7. Neither side is evidence for the bound definition: the job is a construction artifact of classm-jobs (instance binding chosen independently of the filing status; tooling low in research/audits/ny/BUG-0424_lows.md). Dropped from the fixture. [dropped]"
+  },
+  {
+   "key": "classm.ny_tcw_first.2 — line6",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw_first.2 — line8",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; the case pairs the worksheet 1 binding of ny_tcw_first (flat rate ny.tcw.first.rate, 5.5%, given to the model as \"(3) The worksheet's flat rate ... 5.5%\") with a single filer, a combination no return takes: IT-201 routes a single filer to worksheet 7 (forms/ny/2025/ny_it201.yaml, ny_it201.tcw.w7, rate ny.tcw.first.rate6), whose line 3 reads \"Multiply line 2 by 6% (0.06)\" (IT-201-I web edition, Tax computation worksheet 7). With the rate the case supplies, the definition's line is the project's (line 3 = $120,000 x 5.5% = $6,600; line 4, the single schedule on $120,000, = $4,271 + 6% x $39,350 = $6,632; line 5 = max(0, $6,600 - $6,632) = $0, so lines 8 = $0 and 9 = tax = $6,632). The model applied worksheet 7's 6% instead of the supplied rate; under 6% its figures are worksheet 7's ($7,200, $568, 0.4070, $231, $6,863), which is what IT-201 computes for this return through ny_it201.tcw.w7. Neither side is evidence for the bound definition: the job is a construction artifact of classm-jobs (instance binding chosen independently of the filing status; tooling low in research/audits/ny/BUG-0424_lows.md). Dropped from the fixture. [dropped]"
+  },
+  {
+   "key": "classm.ny_tcw_first.2 — line9_phased",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; the case pairs the worksheet 1 binding of ny_tcw_first (flat rate ny.tcw.first.rate, 5.5%, given to the model as \"(3) The worksheet's flat rate ... 5.5%\") with a single filer, a combination no return takes: IT-201 routes a single filer to worksheet 7 (forms/ny/2025/ny_it201.yaml, ny_it201.tcw.w7, rate ny.tcw.first.rate6), whose line 3 reads \"Multiply line 2 by 6% (0.06)\" (IT-201-I web edition, Tax computation worksheet 7). With the rate the case supplies, the definition's line is the project's (line 3 = $120,000 x 5.5% = $6,600; line 4, the single schedule on $120,000, = $4,271 + 6% x $39,350 = $6,632; line 5 = max(0, $6,600 - $6,632) = $0, so lines 8 = $0 and 9 = tax = $6,632). The model applied worksheet 7's 6% instead of the supplied rate; under 6% its figures are worksheet 7's ($7,200, $568, 0.4070, $231, $6,863), which is what IT-201 computes for this return through ny_it201.tcw.w7. Neither side is evidence for the bound definition: the job is a construction artifact of classm-jobs (instance binding chosen independently of the filing status; tooling low in research/audits/ny/BUG-0424_lows.md). Dropped from the fixture. [dropped]"
+  },
+  {
+   "key": "classm.ny_tcw_first.2 — tax",
+   "record": "eeab418ed7a3e9c4f47d7db303678572706334e505ac408440bad3b8c369b483",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; the case pairs the worksheet 1 binding of ny_tcw_first (flat rate ny.tcw.first.rate, 5.5%, given to the model as \"(3) The worksheet's flat rate ... 5.5%\") with a single filer, a combination no return takes: IT-201 routes a single filer to worksheet 7 (forms/ny/2025/ny_it201.yaml, ny_it201.tcw.w7, rate ny.tcw.first.rate6), whose line 3 reads \"Multiply line 2 by 6% (0.06)\" (IT-201-I web edition, Tax computation worksheet 7). With the rate the case supplies, the definition's line is the project's (line 3 = $120,000 x 5.5% = $6,600; line 4, the single schedule on $120,000, = $4,271 + 6% x $39,350 = $6,632; line 5 = max(0, $6,600 - $6,632) = $0, so lines 8 = $0 and 9 = tax = $6,632). The model applied worksheet 7's 6% instead of the supplied rate; under 6% its figures are worksheet 7's ($7,200, $568, 0.4070, $231, $6,863), which is what IT-201 computes for this return through ny_it201.tcw.w7. Neither side is evidence for the bound definition: the job is a construction artifact of classm-jobs (instance binding chosen independently of the filing status; tooling low in research/audits/ny/BUG-0424_lows.md). Dropped from the fixture. [dropped]"
+  }
+ ]
+}

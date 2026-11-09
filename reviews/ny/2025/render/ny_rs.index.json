@@ -1,0 +1,829 @@
+{
+ "kind": "render",
+ "form": "ny_rs",
+ "family": "claude",
+ "base": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+ "lines": [
+  {
+   "key": "(line 38)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "bcc512a60c54fcd7b61fbbfc50b463cf936fe3138d7fd9ba173ae8d05fb6c1be"
+  },
+  {
+   "key": "(band 1) (single.b1.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "df388ffa99a7f8b98dfa469a7089b5be1ba39d41ab2daef2b449fca00dab5e06"
+  },
+  {
+   "key": "(band 1) (single.b1.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "f0d3fde1bd1307524791e535a3e94e8715f3602744cd2c26173c7a7b3669a0cb"
+  },
+  {
+   "key": "(band 1) (single.b1.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "cc877bb66cd200831531d06ef29465bede317c087013ee865685a693acd85fc3"
+  },
+  {
+   "key": "The tax is (single.b1.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "4409d548683d1472188dea9ba4561a9425620c0647078874f524318c8cf86feb"
+  },
+  {
+   "key": "(band 2) (single.b2.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "1023d91cf6f0df5a80725de49facef084aad6f5e7e0e0a38482df80e21a6dc15"
+  },
+  {
+   "key": "(band 2) (single.b2.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "cd1e0618ffe0e78416ddf7a309696c37c024ce74359482fac574ff992e8e3653"
+  },
+  {
+   "key": "(band 2) (single.b2.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "6eb2b0d816047118ea81054c076fc82155c0fd8121d1d8ce6353d0625df100dc"
+  },
+  {
+   "key": "The tax is (single.b2.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "1d7d38fa7f94763806a932f4a24ed33c45191f4aee58adee66f6cdb8a959b6d7"
+  },
+  {
+   "key": "(band 3) (single.b3.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "83ac2b7706cc2fb46a81f73b5dabbc1a2eea6e64267a4a7b5dc4b98095b50262"
+  },
+  {
+   "key": "(band 3) (single.b3.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "60fc63b78649a69ed0587e1ad49bcc27e26a7e3dfc2a392937bc2cff9b92a908"
+  },
+  {
+   "key": "(band 3) (single.b3.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "3dcc0e1d0b409629f32e003b29615e1a72e333ceeb944a1afedbdfb64f3ba9cf"
+  },
+  {
+   "key": "The tax is (single.b3.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "c6e09124a02ec0bd7c83658a197d752853c86a2e719e1bc4ae56a78c2c676c6d"
+  },
+  {
+   "key": "(band 4) (single.b4.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "6c5ebcabfe5f422448974ff4048d0a88824926abe0d27c8cadd25d00f87604c6"
+  },
+  {
+   "key": "(band 4) (single.b4.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "ea1464ff2f07bba00270d44f62413345e0215ccfc7caad3899938045f5d3de1b"
+  },
+  {
+   "key": "(band 4) (single.b4.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "378dd063f1a384b36b8cede43f25ed4e6daac874052921cd729de80386ae4eab"
+  },
+  {
+   "key": "The tax is (single.b4.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "fc6c4ef10c9432f8747a20f36a2b7f42e228195bb504ebe5c7812cf88f806a36"
+  },
+  {
+   "key": "(band 5) (single.b5.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "5298f09272f44f62c000087ef9a0d4a2346166bfae1373d94b509d3a581ecc4b"
+  },
+  {
+   "key": "(band 5) (single.b5.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "b122b68183163b9e5e6d5700e0386c6f45c5e118ab0292d095096ac006148a77"
+  },
+  {
+   "key": "(band 5) (single.b5.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "6135468314dbf4c5b4c777accd9b1fbfe546a1a36dcf8cfe513db5a515c21874"
+  },
+  {
+   "key": "The tax is (single.b5.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "224907760dc96a91b2fd287040aec65b96dea759c24735d8794f9caa850f7c52"
+  },
+  {
+   "key": "(band 6) (single.b6.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "53f06cbec22e56bed26e0481fee08f4849aff7be2a44cad0ea84a6c0cca8d67b"
+  },
+  {
+   "key": "(band 6) (single.b6.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "4ad37a4c394ee305aba5859aa4a03630f4e2a48946020a1654c137c926bd15aa"
+  },
+  {
+   "key": "(band 6) (single.b6.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "1b9cd2eb658e45e8a69aeac024cc924bdd4e5ba6d7aae4b32947cd497ce56a05"
+  },
+  {
+   "key": "The tax is (single.b6.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "08446e45a265b31d3e220ba0cbf30bbe2a97d0ab3e38817eaf4be18fac2b405b"
+  },
+  {
+   "key": "(band 7) (single.b7.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "37ff6ddf1220654fceeb8534f946e5b2c369c8c013bd6178ecdc063cdef498a8"
+  },
+  {
+   "key": "(band 7) (single.b7.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "1a45067408ac9bc382d9153dbe927bf54b77b403193891f514a4d0d5871fc995"
+  },
+  {
+   "key": "(band 7) (single.b7.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "aae5602e43bd8aff1162db5d7000192c7258d6cc292cf3631727d6783de7f34e"
+  },
+  {
+   "key": "The tax is (single.b7.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "5210fb044e9827aa7fb3ef7201e243dc84fc34ade88fc83e9b6a29c9335b55da"
+  },
+  {
+   "key": "(band 8) (single.b8.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "3bca2358b52f08068e07e89c8b05e255be125dbfc6af71345f2c6c4953276945"
+  },
+  {
+   "key": "(band 8) (single.b8.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "ee9b88869d1d522f8564e9b7d1bb017eb8873a703c30c731bc78aa4d6c0a0404"
+  },
+  {
+   "key": "(band 8) (single.b8.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "714cc7df2002811c51a5e47c62288a6043509b176b507dbce0d37f0408b32e9c"
+  },
+  {
+   "key": "The tax is (single.b8.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "fa8420baed57895f8469b459a335f48e428bd3cb43a2ac7c6594deced3a08499"
+  },
+  {
+   "key": "(band 9) (single.b9.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "2e9972723311cc2f4794ae2dcae3c1bec719cdc010fc5359d2ffd98f7d314426"
+  },
+  {
+   "key": "(band 9) (single.b9.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "2b222415c7d69f3da1fde132bacc689f59229909a95f3fc898fa3f7f645dd2f0"
+  },
+  {
+   "key": "(band 9) (single.b9.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "163e8675039c3ea74f658fee7b71422f6be9f28ced8cf3bafd5c791f78e46b7e"
+  },
+  {
+   "key": "The tax is (single.b9.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "60f5014e130a3163cf83f498de5f1d19fade680e1366b0009061aeb3856986cc"
+  },
+  {
+   "key": "The tax is (single.result)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "44c47240ae2a626719b909f7f22c224d7ce00b955fbf0997d3fa025efe87df4e"
+  },
+  {
+   "key": "(band 1) (mfj.b1.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "5e242f5c533e9f3850182ec28b7eec3f5b655da9cf955f5b73876e8b3915c945"
+  },
+  {
+   "key": "(band 1) (mfj.b1.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "f0d3fde1bd1307524791e535a3e94e8715f3602744cd2c26173c7a7b3669a0cb"
+  },
+  {
+   "key": "(band 1) (mfj.b1.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "e276fb4b869512cfa7ede613a813489f41c7c11191dbe0281ffca45f07e84e55"
+  },
+  {
+   "key": "The tax is (mfj.b1.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "5019da6c28f76183ac433eb2744cc853f8f063711d5103daeb323b5e2f468998"
+  },
+  {
+   "key": "(band 2) (mfj.b2.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "24ecb9e7777b2e4523d8a04a9ba4ae6dddb6c5f3e7ae4d54ae5d36b8288a5016"
+  },
+  {
+   "key": "(band 2) (mfj.b2.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "cd1e0618ffe0e78416ddf7a309696c37c024ce74359482fac574ff992e8e3653"
+  },
+  {
+   "key": "(band 2) (mfj.b2.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "3342f787bddbad4def886dca426dd578f083cf3b2674fce9888317578e7906a3"
+  },
+  {
+   "key": "The tax is (mfj.b2.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "eed24a0f092a1315a75252b72aae8516d694787d71cf0728d8637034676d6816"
+  },
+  {
+   "key": "(band 3) (mfj.b3.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "d2b1e4b9d29c5b6a70f40bcfec5314b5612e27e0afb4ea50838207df6eae1cdf"
+  },
+  {
+   "key": "(band 3) (mfj.b3.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "60fc63b78649a69ed0587e1ad49bcc27e26a7e3dfc2a392937bc2cff9b92a908"
+  },
+  {
+   "key": "(band 3) (mfj.b3.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "f6d5837addc4e58d1a0fae50746920c26814bb996624c7da6996c8502f2c1a84"
+  },
+  {
+   "key": "The tax is (mfj.b3.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "11de90f03242e6c28c505d7f3f082dce5313f8f7fba423cf01c8859bda445b89"
+  },
+  {
+   "key": "(band 4) (mfj.b4.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "4ab61c11ace686267ba937bdbb126dbef9efc49b4939c37de8bc8471207e50a1"
+  },
+  {
+   "key": "(band 4) (mfj.b4.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "ea1464ff2f07bba00270d44f62413345e0215ccfc7caad3899938045f5d3de1b"
+  },
+  {
+   "key": "(band 4) (mfj.b4.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "2734c2e901446ea917f14a2c8e8fdf34613e6681d331fadff4c45a0c3b6f2bd7"
+  },
+  {
+   "key": "The tax is (mfj.b4.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "6082a94d3e1ce30a8ab154cf4437d881f8d99358bc747d3503ae54fb7ed31a27"
+  },
+  {
+   "key": "(band 5) (mfj.b5.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "946a6ef8b15548496322bd0dd78cafb9c111e897c193ebabadde943a527a0058"
+  },
+  {
+   "key": "(band 5) (mfj.b5.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "b122b68183163b9e5e6d5700e0386c6f45c5e118ab0292d095096ac006148a77"
+  },
+  {
+   "key": "(band 5) (mfj.b5.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "c0d8064cafd785990773a250c6872ce6e43c7fda4061ab1ff85efece8a9d0f7b"
+  },
+  {
+   "key": "The tax is (mfj.b5.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "c4e8370aa6e6c66bfa64ef4d440ac996d0929133c6d733fadce0f538444f1f8e"
+  },
+  {
+   "key": "(band 6) (mfj.b6.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "3d2536597b11a53ed62ec3830f383ac0e8036207d9bb18f37f049353f3cbea67"
+  },
+  {
+   "key": "(band 6) (mfj.b6.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "4ad37a4c394ee305aba5859aa4a03630f4e2a48946020a1654c137c926bd15aa"
+  },
+  {
+   "key": "(band 6) (mfj.b6.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "5840f1bf98cc8db974def8eef1d447f9f45fc46716b0520af4dfc766365d9de3"
+  },
+  {
+   "key": "The tax is (mfj.b6.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "9610b519a06da36deb0f977138506845d3c220d2f9abde4f0a7d90a986851ab0"
+  },
+  {
+   "key": "(band 7) (mfj.b7.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "54a29d57dc089d0a70de36f6b6ba0fd53f60cabfdaef83e583feb2b5fc976cca"
+  },
+  {
+   "key": "(band 7) (mfj.b7.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "1a45067408ac9bc382d9153dbe927bf54b77b403193891f514a4d0d5871fc995"
+  },
+  {
+   "key": "(band 7) (mfj.b7.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "8624f81bebc6af9b8b7d05f8d3cb4a2c9751383f179ddf405ce537b0ef38383e"
+  },
+  {
+   "key": "The tax is (mfj.b7.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "c5dc9fa4e9bcc927b5576d627732a44d6963725b1056eed8213e65064db38577"
+  },
+  {
+   "key": "(band 8) (mfj.b8.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "362fb2b32c5c58dc3e5688de669b9d6a8bc1adad227a8bbac1d9f0b10d95e7c6"
+  },
+  {
+   "key": "(band 8) (mfj.b8.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "ee9b88869d1d522f8564e9b7d1bb017eb8873a703c30c731bc78aa4d6c0a0404"
+  },
+  {
+   "key": "(band 8) (mfj.b8.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "1b4351476e45f24d350a878b8f6d7555ce8e5968b9a930fcaf256588a9949041"
+  },
+  {
+   "key": "The tax is (mfj.b8.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "90040772eec76dab4cdde24d8b2040b2d7b78cbb1519b11e63ccb0f6833002a1"
+  },
+  {
+   "key": "(band 9) (mfj.b9.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "be5919b66308d1011195de7a3ba4ca66a5f982b46222015a9c6e4d81dcc90a95"
+  },
+  {
+   "key": "(band 9) (mfj.b9.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "2b222415c7d69f3da1fde132bacc689f59229909a95f3fc898fa3f7f645dd2f0"
+  },
+  {
+   "key": "(band 9) (mfj.b9.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "702c91795ccbd50cdfcf2eab554feb835f1d5b5a14b7300dc1deff891173611d"
+  },
+  {
+   "key": "The tax is (mfj.b9.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "5233865430cbea66bdbfc0bf63dad4441cee9c6333f049c062f71299d6bd8171"
+  },
+  {
+   "key": "The tax is (mfj.result)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "44c47240ae2a626719b909f7f22c224d7ce00b955fbf0997d3fa025efe87df4e"
+  },
+  {
+   "key": "(band 1) (hoh.b1.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "85a9e3dd558011f07891490eb8f9fa7bb48cd2274b7b822a719c5d65954a7b37"
+  },
+  {
+   "key": "(band 1) (hoh.b1.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "f0d3fde1bd1307524791e535a3e94e8715f3602744cd2c26173c7a7b3669a0cb"
+  },
+  {
+   "key": "(band 1) (hoh.b1.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "22493559b216afbcee5e3aa91530bc9e3e77b340b0ff56277466eb0909fe90d2"
+  },
+  {
+   "key": "The tax is (hoh.b1.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "fdc8253a9060ab85eb0fd157d196516a553a405636bb5f9f01820925ddb42006"
+  },
+  {
+   "key": "(band 2) (hoh.b2.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "ddaf480deef23f6898ccf8ae06dda1df00f2e9b84a3566ff56cb7b40cbdd738b"
+  },
+  {
+   "key": "(band 2) (hoh.b2.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "cd1e0618ffe0e78416ddf7a309696c37c024ce74359482fac574ff992e8e3653"
+  },
+  {
+   "key": "(band 2) (hoh.b2.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "ec908969d4a1e8c80ebaa76017bf18477eb92b218bd7748a2d81698fde735f8d"
+  },
+  {
+   "key": "The tax is (hoh.b2.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "d312f1817ccd31d37f67e08e8d369d949ba965a3a463bf742fb8d89c42a28277"
+  },
+  {
+   "key": "(band 3) (hoh.b3.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "dc31f2589d7f261cf8e6431fdcb3c1e497435dd9e3bf111b74ad88ca4de2896e"
+  },
+  {
+   "key": "(band 3) (hoh.b3.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "60fc63b78649a69ed0587e1ad49bcc27e26a7e3dfc2a392937bc2cff9b92a908"
+  },
+  {
+   "key": "(band 3) (hoh.b3.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "a291e336b26f66760a8540a7ecc4c17b2cbf9ee149438aced28ca410bef226c2"
+  },
+  {
+   "key": "The tax is (hoh.b3.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "8759f8bd50e594589da8cd1e43f832c01f117eab8480edc607359f8919c66d86"
+  },
+  {
+   "key": "(band 4) (hoh.b4.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "18e7063e08170fe67c01d8781181fb13e95d430dc94b1b8606630634a465af5d"
+  },
+  {
+   "key": "(band 4) (hoh.b4.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "ea1464ff2f07bba00270d44f62413345e0215ccfc7caad3899938045f5d3de1b"
+  },
+  {
+   "key": "(band 4) (hoh.b4.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "e421f31c7fb4a77ded3ee2b473e56982d74f42af78ba73bede0ad9161e283b49"
+  },
+  {
+   "key": "The tax is (hoh.b4.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "f22b917583061f0c9b866451e674f1ee74abdc74ff84f2a183d1b2176ebef977"
+  },
+  {
+   "key": "(band 5) (hoh.b5.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "f5c2cbdc329d5281dd53487ca9ff87d49b92295769584df0263455f23c793dcc"
+  },
+  {
+   "key": "(band 5) (hoh.b5.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "b122b68183163b9e5e6d5700e0386c6f45c5e118ab0292d095096ac006148a77"
+  },
+  {
+   "key": "(band 5) (hoh.b5.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "5f940bccd80cc0ace39e83069a6388431d58ce27df34fc18d91ee7a6fea4e726"
+  },
+  {
+   "key": "The tax is (hoh.b5.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "dded15294f4b10942fcee81964be2ade29f5af63886ace2d0c7e013148a13ce8"
+  },
+  {
+   "key": "(band 6) (hoh.b6.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "9570238fcbbc4d2eb8603d1c248bccc21542e3d8b138b4bc933685ab555bc95a"
+  },
+  {
+   "key": "(band 6) (hoh.b6.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "4ad37a4c394ee305aba5859aa4a03630f4e2a48946020a1654c137c926bd15aa"
+  },
+  {
+   "key": "(band 6) (hoh.b6.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "be50fa50ae2d47de1b85a124d6d89266d15920cb482ecc7101eb2c176f9b153c"
+  },
+  {
+   "key": "The tax is (hoh.b6.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "b8ed19cf7cec5107599c0e1a8b6ed9954f4d96f40bd5300df68e8210a6cd5ecd"
+  },
+  {
+   "key": "(band 7) (hoh.b7.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "ed58f06f119cd87a98dfb6474b2f0f715e8ce9d0811d273564bf04bfedff652c"
+  },
+  {
+   "key": "(band 7) (hoh.b7.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "1a45067408ac9bc382d9153dbe927bf54b77b403193891f514a4d0d5871fc995"
+  },
+  {
+   "key": "(band 7) (hoh.b7.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "469f89d8be895b3ebcc3730ef8c26af76b9f7555f45cc3d6c168de1bb7843140"
+  },
+  {
+   "key": "The tax is (hoh.b7.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "2db68e4694089258ba44b66253ba55ddcc47c7d36b8c98164076678269703233"
+  },
+  {
+   "key": "(band 8) (hoh.b8.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "f7cfdb6155586492dbb7461397f004047a2472288087ddf58ea7121f6be7cbb8"
+  },
+  {
+   "key": "(band 8) (hoh.b8.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "ee9b88869d1d522f8564e9b7d1bb017eb8873a703c30c731bc78aa4d6c0a0404"
+  },
+  {
+   "key": "(band 8) (hoh.b8.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "51705b8b7b1a270d9b5ac7ece9e5fa3635241c116c15f2cc683dd0b0d7e1d857"
+  },
+  {
+   "key": "The tax is (hoh.b8.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "18488490fc57160fabb3831f97e90c1683803b90c4a23678480462e611dc252d"
+  },
+  {
+   "key": "(band 9) (hoh.b9.excess)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "d2b248c391a4bed232b5ca8c96d72726a49a74a117edef51c1873b07cc921919"
+  },
+  {
+   "key": "(band 9) (hoh.b9.product)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "subject_key": "2b222415c7d69f3da1fde132bacc689f59229909a95f3fc898fa3f7f645dd2f0"
+  },
+  {
+   "key": "(band 9) (hoh.b9.base)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "2adbb50d17aa24ec093fbd50c10480ca48314d1f9cdd21fa10bd6d0121e33927"
+  },
+  {
+   "key": "The tax is (hoh.b9.tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "a268720db90c833b36814827c3632c182ad974d6a1f6e8292d295863790fc50b"
+  },
+  {
+   "key": "The tax is (hoh.result)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "44c47240ae2a626719b909f7f22c224d7ce00b955fbf0997d3fa025efe87df4e"
+  },
+  {
+   "key": "The tax is (tax)",
+   "record": "de99d2f6424836ee0e3919b6010cf645e8f0cf9c68920efc18b2585d315d0423",
+   "status": "MATCH",
+   "subject_key": "a5f2c5b7c373b0af2194b2201b665810c682674ede22c15dcb47d1cb836ed705"
+  }
+ ],
+ "subjects": {
+  "(line 38)": "8717bf74f48454bf59c9aef5e6d2a5405ff8b98243e8190d75919270a773df2e",
+  "(band 1) (single.b1.excess)": "04bcff0b659af51af0a360000b6bfb503e294daf6f2d391e359031e2280dc1fd",
+  "(band 1) (single.b1.product)": "64835fcbd1c546f293daeca9431c38b9fdd737719f3c811627feafac864542e9",
+  "(band 1) (single.b1.base)": "50ddd23fcf691eac45e142c40b953b4f728d65746d3a5c7b7c847e5cdaca7896",
+  "The tax is (single.b1.tax)": "ed53d6833716f50e48d23fe72291baff0ca582f90e21ebdc6e3c2e247c077dd8",
+  "(band 2) (single.b2.excess)": "de8a814c622785f9845a549bc0c4b5f614a42aaa4d5b089f8f7770c7cbe05741",
+  "(band 2) (single.b2.product)": "98a7106325e036c7d42e5200b186bcf3e058b1707c8ae9cde75d3183cca2c17e",
+  "(band 2) (single.b2.base)": "5a5070de281e400877024a8e1fea596d91f4d0ee21605dfb3021470040052fe3",
+  "The tax is (single.b2.tax)": "eeaf918781cd3c63bbbe437dbd94f080ed297ce99b7f4b559d4a9ad63a2d3e31",
+  "(band 3) (single.b3.excess)": "9c4558e8de1b7ebff5a918d5feff4da36e986d44f9c43678963c998db075408b",
+  "(band 3) (single.b3.product)": "4f2a30b2964a40feb3d2a622be26bb052904efd87efa2aa5a379de71251d26f0",
+  "(band 3) (single.b3.base)": "b0a353e21e4e7d61ddadaf375ab82cb79675b8c803cb4f8024d399e852eea2e6",
+  "The tax is (single.b3.tax)": "9c627e4d5f9571f33f821a4789fcbc7b8025eff7a2bbde732a18d928f7c53483",
+  "(band 4) (single.b4.excess)": "b068ee3b6bd1fbb9e027cb11bb9edd60e963c2face0d8106a8377615d5165cde",
+  "(band 4) (single.b4.product)": "2b6599dc27a4bdd3c87d17e6b568a491a8b1135efda3a0259ff5494ba6f21989",
+  "(band 4) (single.b4.base)": "7d9b99e9ce6deb2d906d09d8990f93d48a55418a145cab28b3a97c9ed9ce0ee9",
+  "The tax is (single.b4.tax)": "d14765626255d3e14c5384c09976390406d719fde022624891914442a36b5e9c",
+  "(band 5) (single.b5.excess)": "d8a70f250db11b8d1c0c1366daea66140f9e30d30978b917a86a6de07b5f8fc9",
+  "(band 5) (single.b5.product)": "f62a12d01e274439fed086190d057983ae4387f48354926f21642d3e828085ce",
+  "(band 5) (single.b5.base)": "d3e9721a6252bb0029ae2ed1d09dfabea3368582cb05fee1bd6ac51cbb6ff715",
+  "The tax is (single.b5.tax)": "d79a0ca210dcaded926dd94b732f0b54f0054bc665713a0f4e50cec3abcd2051",
+  "(band 6) (single.b6.excess)": "2c81cf2c560b2923250d2f49d23d4fd6c5c7f9f7ca33d4a8b6307b531db23194",
+  "(band 6) (single.b6.product)": "1537928e1c82e9edfe286db911486b27fd4eaa07265bfa853a1993bffec4ca15",
+  "(band 6) (single.b6.base)": "d24f5830f74ff6ed21d0b12cc9e976554d47c968fa35e1e94e59a0f38bc52621",
+  "The tax is (single.b6.tax)": "0965ddac9f918560a8be2aef72d109ebd93f9a56b3b2b5038009a962511afc2b",
+  "(band 7) (single.b7.excess)": "eac4ca5392c5e847024230e4817b5b02f8c512d7b3657ff524ff7289f32580fb",
+  "(band 7) (single.b7.product)": "901bd2e2b7229f9bb544ff486a03aa83cb582fa8e73354f4c43cefa35dad41c3",
+  "(band 7) (single.b7.base)": "d77f4e1d3b5335c7e7834f5b838fb113a0df775ce8205ee033ee841a7b7bb51d",
+  "The tax is (single.b7.tax)": "4c811686817373028e8f4bcc6ff2bfbf77a9c96c4f510eac5d939c22ba7bd960",
+  "(band 8) (single.b8.excess)": "a67b3a3c20c24b0350327e15288534860491ea78c868726b767873b247b80144",
+  "(band 8) (single.b8.product)": "9b525cd37b34a29aed577dad90e767ee110e45dc6163b06b32eb3429679336c5",
+  "(band 8) (single.b8.base)": "89f9042c7fd067888ebb1693b40841a65e2bdf2bbcc5f9d66d5a2cc2a06235e1",
+  "The tax is (single.b8.tax)": "38985425d7d31b7029303a3d8ce3cec36f4899faff6b3e8464ce832c803e7e38",
+  "(band 9) (single.b9.excess)": "fb3b6122e3327de34e3caf08b268f22c9451841750318f8865de7fe3d4e3dedc",
+  "(band 9) (single.b9.product)": "274ca7a439bc40271762db51b213dffdd490aca2a9fa79951e70baf21511a920",
+  "(band 9) (single.b9.base)": "3d2fc6aaa261866d95f6d764a56dda426582bb299d3e2665427e2914a1344ff8",
+  "The tax is (single.b9.tax)": "4ded06c5eaebfaa91db86beb0f5a49ea58fc5c78d1c3ace61c6a06aad7e0d029",
+  "The tax is (single.result)": "bb4890ac3994af7ee73904956dcb82b2030737e9e974b80884280171df854aa8",
+  "(band 1) (mfj.b1.excess)": "5bf2a5c2cf26d29d79a19c77d62f1a1ca46dccf30cc53102d4e027376c5ec47a",
+  "(band 1) (mfj.b1.product)": "64835fcbd1c546f293daeca9431c38b9fdd737719f3c811627feafac864542e9",
+  "(band 1) (mfj.b1.base)": "bfba967dc9f26ac452eb9cd5d1a94b028efa5f3bdf1214dddd810f1314f00092",
+  "The tax is (mfj.b1.tax)": "6ba1530c10f1877c39946c8cf2387c91601d39fad028c9154572a189095dca8d",
+  "(band 2) (mfj.b2.excess)": "adeccce5cffc67d857a86a34f7c0744694ba4246c4ede0833dc1f9169191d4b2",
+  "(band 2) (mfj.b2.product)": "98a7106325e036c7d42e5200b186bcf3e058b1707c8ae9cde75d3183cca2c17e",
+  "(band 2) (mfj.b2.base)": "ec7ed415c8e71d9e77fd456d07189e144a0509d81081e5a982179de32950ba27",
+  "The tax is (mfj.b2.tax)": "b912962101d7db682b2a5d30b3c8578b85799d539b504a3f0ab8ba79c2a3cb1f",
+  "(band 3) (mfj.b3.excess)": "19f5881da2ee1a3a42bbbc7695e3eb8dd5fadd0ac5d26ad591dfedb2f780aedf",
+  "(band 3) (mfj.b3.product)": "4f2a30b2964a40feb3d2a622be26bb052904efd87efa2aa5a379de71251d26f0",
+  "(band 3) (mfj.b3.base)": "edbbb774ababbf118601282625ea13717f5bccbc0570ff5a5116472f92e8ffe4",
+  "The tax is (mfj.b3.tax)": "b6e3366d2cae4d1b395fba9ab88e38a2aa3efaaf59eee1022f779acda3a5813f",
+  "(band 4) (mfj.b4.excess)": "15f16fd3814e197453e40b122122470e2923cadb16e124850c0c14dc6f522fd3",
+  "(band 4) (mfj.b4.product)": "2b6599dc27a4bdd3c87d17e6b568a491a8b1135efda3a0259ff5494ba6f21989",
+  "(band 4) (mfj.b4.base)": "8130a29f9030609f3b76840916ab976dcfd7ac42007826cdcdc260febf2ece74",
+  "The tax is (mfj.b4.tax)": "e65fe3bc0dce5c659ec1fca866dc6cd6039449a1c97e3fc6fb3949a627c799cb",
+  "(band 5) (mfj.b5.excess)": "278e224db8bb05d9f6689d9452ca39a799f4846d88ec1809abca2c7031ebd3fd",
+  "(band 5) (mfj.b5.product)": "f62a12d01e274439fed086190d057983ae4387f48354926f21642d3e828085ce",
+  "(band 5) (mfj.b5.base)": "ab4cb9c3cf1f6d2f8d8d4585b1ed23ef218db93d4d639faa0df23f752b013c7e",
+  "The tax is (mfj.b5.tax)": "d681001040f90ca91a3c2a7896b56f5ce9cec053aa311706f121db3ee51eac6c",
+  "(band 6) (mfj.b6.excess)": "2a9c428a43d1169162fa1f93896626d1091a3cbfe670cfc74981a507e85238ab",
+  "(band 6) (mfj.b6.product)": "1537928e1c82e9edfe286db911486b27fd4eaa07265bfa853a1993bffec4ca15",
+  "(band 6) (mfj.b6.base)": "5a16c70e2b71155b5ac818374aa15cc52db2a0d2e1ec3711a84a2d0ef1a7d2ef",
+  "The tax is (mfj.b6.tax)": "976f85a2f91c407a82911dcf4f5e27617e145342e7e342c7ebca53083008ee03",
+  "(band 7) (mfj.b7.excess)": "8a10c8128a5f5dc885628377d5570b6af8ebe26f2f273930ba3cb3b481f2e2b7",
+  "(band 7) (mfj.b7.product)": "901bd2e2b7229f9bb544ff486a03aa83cb582fa8e73354f4c43cefa35dad41c3",
+  "(band 7) (mfj.b7.base)": "0c49108605c3171499cc637f403a7ef1c3e605913b6faea4fa5248bdfa194deb",
+  "The tax is (mfj.b7.tax)": "b6e0b7b677c016c92b14606480f7fcaa8f6a629552341941ea4751f0b74f21da",
+  "(band 8) (mfj.b8.excess)": "09b6d6c19baafead5a46fa00aa96bb934fd04d64ea77836c677d16a7b0468ae8",
+  "(band 8) (mfj.b8.product)": "9b525cd37b34a29aed577dad90e767ee110e45dc6163b06b32eb3429679336c5",
+  "(band 8) (mfj.b8.base)": "349ddee0d2d5ca69cc7c8f02f99a8ecccf6320a5c2ff60ae41435df881cdbcd0",
+  "The tax is (mfj.b8.tax)": "45b190e87cb7fadec1a14da1ee30b5390a3e9d8fd0f19a4972d7defe7979c298",
+  "(band 9) (mfj.b9.excess)": "03b0d5f8f9fa703ab45bbdf7fac7ac542c618dc1614041181f6fe200f4c33326",
+  "(band 9) (mfj.b9.product)": "274ca7a439bc40271762db51b213dffdd490aca2a9fa79951e70baf21511a920",
+  "(band 9) (mfj.b9.base)": "6253f30d3be726e0da5dd4e7a9f510a7cdbc45e001bf493b5631771b3ce9ba94",
+  "The tax is (mfj.b9.tax)": "a15412228606c1b5552a49bb8a0db819aa93511f51c7f39f837071559bb0b3de",
+  "The tax is (mfj.result)": "bb4890ac3994af7ee73904956dcb82b2030737e9e974b80884280171df854aa8",
+  "(band 1) (hoh.b1.excess)": "ba6e1e80ef7652bf623bc187f9357af8977a1ec7563e6382239938395a6ed7e8",
+  "(band 1) (hoh.b1.product)": "64835fcbd1c546f293daeca9431c38b9fdd737719f3c811627feafac864542e9",
+  "(band 1) (hoh.b1.base)": "bccf1540bb82c52a9147bc9e8fb74481dd2bb7b817a60313dca83f93f6e9b172",
+  "The tax is (hoh.b1.tax)": "85c243c997c67366c8d3b7e79d3221aa3feb847a0ee18ea972cdc0ff64a063ab",
+  "(band 2) (hoh.b2.excess)": "c6bc906df8958d5a8553671007a0c5ecb4a73ee1b61c33b964d3c5003c0de9d7",
+  "(band 2) (hoh.b2.product)": "98a7106325e036c7d42e5200b186bcf3e058b1707c8ae9cde75d3183cca2c17e",
+  "(band 2) (hoh.b2.base)": "e9254b51687d14cf7babd3e324255c4495a9a96a574bb36e60374dd18ffee9f3",
+  "The tax is (hoh.b2.tax)": "f87f684bec08b3bedce3d232c4801e19403aa3d54c014adfb792257c20dfab2f",
+  "(band 3) (hoh.b3.excess)": "2a435c35a0bca80139ffa729832f3c15d4186255966cd32d2c81ec7436876303",
+  "(band 3) (hoh.b3.product)": "4f2a30b2964a40feb3d2a622be26bb052904efd87efa2aa5a379de71251d26f0",
+  "(band 3) (hoh.b3.base)": "28e5717d53fbaf1f5b4d0916b628b5f6d16b3fdf8034c0ca18ff794618ba235d",
+  "The tax is (hoh.b3.tax)": "afbe0bbee18d4fad0856f0c64f3fdbca5ac7da49e2b8451130a87be28251e984",
+  "(band 4) (hoh.b4.excess)": "94a11c80d73f6b28465f4f8fd42237d4df392b09c9abd7645a5c4c839f5a1433",
+  "(band 4) (hoh.b4.product)": "2b6599dc27a4bdd3c87d17e6b568a491a8b1135efda3a0259ff5494ba6f21989",
+  "(band 4) (hoh.b4.base)": "061947bd13e1ae052f56e3749b57d10c3e7a2bc910237ab26c022a8a06170bb4",
+  "The tax is (hoh.b4.tax)": "56aa34a41b2867c1a268f23414ace557514de5d1acd2c5f5ee44570250f2844d",
+  "(band 5) (hoh.b5.excess)": "dbc766d78fbf6328e635e98ce104245f8b82951e8578e9db980b4357aaf9f67f",
+  "(band 5) (hoh.b5.product)": "f62a12d01e274439fed086190d057983ae4387f48354926f21642d3e828085ce",
+  "(band 5) (hoh.b5.base)": "8ee8cf6902a59c50d16d0187bea8735f97c82de42cfa857334bc6b4881fc1083",
+  "The tax is (hoh.b5.tax)": "b0544fbff9b10e16ff1be18883f189c07120faaccef3cfb711309aba59b9ac00",
+  "(band 6) (hoh.b6.excess)": "82ad09acd14f38aa116773147f56448ae22fc5011f42bd3b1f07d6c9bf033379",
+  "(band 6) (hoh.b6.product)": "1537928e1c82e9edfe286db911486b27fd4eaa07265bfa853a1993bffec4ca15",
+  "(band 6) (hoh.b6.base)": "090d16215ebd16070ecf7675465ad8eb5104d3b8da63a2d66c0a2b53f09e7d24",
+  "The tax is (hoh.b6.tax)": "f342f09e9dcabe371ee4b315fce6dedccee9bf7382da27e6fbf6a4eaecea3375",
+  "(band 7) (hoh.b7.excess)": "0b3e19168b9c4018606c387f67a0ee4a9f277af7e7ce9ccec7a4cfa9aae24a28",
+  "(band 7) (hoh.b7.product)": "901bd2e2b7229f9bb544ff486a03aa83cb582fa8e73354f4c43cefa35dad41c3",
+  "(band 7) (hoh.b7.base)": "167394f18949100d697b5d82dcf02d19fe33b7f3d6da7f35630abc2235737ac7",
+  "The tax is (hoh.b7.tax)": "eb9eae7af31f7a502ca508a6f266431b988783e872b0961285002d36c3fec059",
+  "(band 8) (hoh.b8.excess)": "264160ff8a6dadd88e155dc3532098df416020fe9b77271f3f815033838fbf01",
+  "(band 8) (hoh.b8.product)": "9b525cd37b34a29aed577dad90e767ee110e45dc6163b06b32eb3429679336c5",
+  "(band 8) (hoh.b8.base)": "cb7dc18d42a6eeb1bba8883672bb538ae3905671e4b91611b3a5a0d5c8dd25d5",
+  "The tax is (hoh.b8.tax)": "15d3024cba6a49b4777766a83296ca18db6ea50e44152e03c59667e109d23d55",
+  "(band 9) (hoh.b9.excess)": "53fdaf21f0dcef9efda3f27101e451545f1bfc3760a4fbfcf444ddbde40c652c",
+  "(band 9) (hoh.b9.product)": "274ca7a439bc40271762db51b213dffdd490aca2a9fa79951e70baf21511a920",
+  "(band 9) (hoh.b9.base)": "32885a9b52e00309239f5c7181d4c0aa0f40b986b76b32f0d0cde674190c7089",
+  "The tax is (hoh.b9.tax)": "e0605507c936cfdb52c9183062e1190001109e1b2b05b6d9b0b3162a8e047d82",
+  "The tax is (hoh.result)": "bb4890ac3994af7ee73904956dcb82b2030737e9e974b80884280171df854aa8",
+  "The tax is (tax)": "67dd14e62181ab75e3da3ca6f1280c9cee7fb6af9461f513d619d4bc3e9e3c03"
+ },
+ "__rest__": "e93245fa311883b38850802b473ec4378d4fe5d1201a40befaeee0ba468eb14f"
+}

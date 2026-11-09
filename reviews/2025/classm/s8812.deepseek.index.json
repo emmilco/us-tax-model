@@ -1,0 +1,608 @@
+{
+ "kind": "classm",
+ "form": "s8812",
+ "family": "deepseek",
+ "base": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+ "lines": [
+  {
+   "key": "case classm.s8812.1",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": null
+  },
+  {
+   "key": "classm.s8812.1 — 1",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 2a",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 2b",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 2c",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 2d",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 3",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 4",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 5",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 6",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 7",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 8",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 9",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 10",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 11",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 12",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — (CLW A 1)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — (CLW A 2)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — (CLW A 3)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — (CLW A 4)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — (CLW A 5)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 13",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 14",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 16a",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 16b",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 17",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 18a",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 18b",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 19",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.s8812.1 — 20",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.1 — 27",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.s8812.2",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": null
+  },
+  {
+   "key": "classm.s8812.2 — 1",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.2 — 2a",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.s8812.2 — 2b",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.s8812.2 — 2c",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.s8812.2 — 2d",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.2 — 3",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.2 — 4",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.2 — 5",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.2 — 6",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.2 — 7",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.2 — 8",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.2 — 9",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.2 — 10",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.2 — 11",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.2 — 12",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.s8812.2 — 14",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.s8812.2 — 16a",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.s8812.2 — 27",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "case classm.s8812.3",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": null
+  },
+  {
+   "key": "classm.s8812.3 — 1",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 2a",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 2b",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 2c",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 2d",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 3",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 4",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 5",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 6",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 7",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 8",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 9",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 10",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 11",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 12",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW A 1)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW A 2)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW A 3)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW A 4)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW A 5)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 13",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 14",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 16a",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 16b",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 17",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 18a",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 18b",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 19",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 20",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 21",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 22",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 23",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 24",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 25",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 26",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — 27",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 1)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 2)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 3)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 4)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 5)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 7)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 8)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 9)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 10)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 11)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 12)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 13)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 14)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.3 — (CLW B 15)",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.s8812.4",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": null
+  },
+  {
+   "key": "classm.s8812.4 — 1",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 2a",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 2b",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 2c",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 2d",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 3",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 4",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 5",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 6",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 7",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 8",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 9",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 10",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 11",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.s8812.4 — 12",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.s8812.4 — 14",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.s8812.4 — 16a",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.s8812.4 — 27",
+   "record": "61bfdb026a654c9021e7a65494987b8d9d9f2dd1ffde337d64a90c1acc84e9e8",
+   "status": "SKIPPED"
+  }
+ ]
+}

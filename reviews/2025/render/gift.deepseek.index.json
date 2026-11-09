@@ -1,0 +1,72 @@
+{
+ "kind": "render",
+ "form": "gift",
+ "family": "deepseek",
+ "base": "1418dc17f9ad9bb048c070c102d8a055e02f8906a255324605c6ee55515afca2",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "deduction",
+   "record": "1418dc17f9ad9bb048c070c102d8a055e02f8906a255324605c6ee55515afca2",
+   "status": "MATCH",
+   "subject_key": "a54ec0aefa92cb2e9cd2f24fefe45ebfd04f81d6603fd858f89f7c5fbc36b74d"
+  },
+  {
+   "key": "public_securities",
+   "record": "1418dc17f9ad9bb048c070c102d8a055e02f8906a255324605c6ee55515afca2",
+   "status": "MATCH",
+   "subject_key": "eb6619f8a38c484089f100c904fc012297687a1cf6d22ea51c47f59ff74fdb1a"
+  },
+  {
+   "key": "special",
+   "record": "4f804a707edec4954516c537f4b68946da5a97c7339687aa0090cf7a335873a1",
+   "status": "MISSING",
+   "ruling": "Ruling: model error; the reply returned no verdict for this line. The restructured gift.special question was judged MATCH in the Claude render pass of the same restatement (reviews/2025/render/gift.md), and its words are the earlier question's (R3 word check: none lost).",
+   "subject_key": "3c9cab85728d6ab5b1825bb2d9c8e2bddca1349be349addd1cb902417dc653ce"
+  },
+  {
+   "key": "over_5000",
+   "record": "540e69bad16e1ce10c7680853bcb413a94d726c134abe64eabda8889c9a3c492",
+   "status": "MATCH",
+   "subject_key": "1eec0e4db2e2d232b2457c511c47dfd6c590e412a268b42bc8199bd18063682f"
+  },
+  {
+   "key": "not_public",
+   "record": "540e69bad16e1ce10c7680853bcb413a94d726c134abe64eabda8889c9a3c492",
+   "status": "MATCH",
+   "subject_key": "2a0f9b68c00128cb7c44b31f7ff4a8243802548967c9b515679773f42c1244a1"
+  },
+  {
+   "key": "no",
+   "record": "540e69bad16e1ce10c7680853bcb413a94d726c134abe64eabda8889c9a3c492",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: model error; gift.no is the false alternative of gift.section_b, taken when the deduction is $5,000 or less (f8283 p. 1, Section B, \"more than $5,000 per item or group\"); it is a structural constant the text need not state, and the restatement (false) matches the project.",
+   "subject_key": "6685f18f2d03cc2655d4b66f8d866d5903eb52ad8028d6837a949ea0bddd396c"
+  },
+  {
+   "key": "section_b",
+   "record": "540e69bad16e1ce10c7680853bcb413a94d726c134abe64eabda8889c9a3c492",
+   "status": "MATCH",
+   "subject_key": "620a9c3b83e58070b399b18ce8b7637b2873b37eebf0ab6b2e11c6892eb959d7"
+  },
+  {
+   "key": "allowed",
+   "record": "540e69bad16e1ce10c7680853bcb413a94d726c134abe64eabda8889c9a3c492",
+   "status": "MATCH",
+   "subject_key": "7a6f90f99fa015f48b646eb7b0f05433c33eeb098d8dab00f41b1075931073b2"
+  }
+ ],
+ "subjects": {
+  "deduction": "2c743be67b29b3d1bc72955e6d9df9a4cf4ff957f8e03656f34f2f1651dd1275",
+  "public_securities": "e6a87578d54851f8c4cc5e873fc24302bc51124ced33e09660437210e75e16f2",
+  "special": "40a1549aba0e72b0e00eb760f5c2ed54b7f87008bc774e60be9e4adb6e91a76c",
+  "over_5000": "cf86d4f8648cf4a6b9897d576176959c24abb6eb3885764b787b94bf3c4e8a9c",
+  "not_public": "208bc9f49f33ae44786e8dfad2c8ddec1b80b5949d0fdae3b40ea389131fa14d",
+  "no": "d9fa15f532ffe8528369f1a894ea723d018c837730f4432559a9eef822bb07ab",
+  "section_b": "41faadbceda9c3c8ee5d88f29ba0785cea9242aa59052f66a5be178e843372f7",
+  "allowed": "9b2d891a2631662a76396816fd880615d4c3d39bcfb1d8da5c5661eacd44e13f"
+ },
+ "__rest__": "453167e36426ad055796eee7ca39439492a94ba8c947ab84ce7cc052e0dd764e"
+}

@@ -1,0 +1,193 @@
+{
+ "kind": "render",
+ "form": "f2441",
+ "family": "claude",
+ "base": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+ "lines": [
+  {
+   "key": "1 (box)",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "2 (box)",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "4",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the model says person.dc_earned omits Form 1040 lines 1b, 1c, 1d, 1f, 1g and 1h with no refusal. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h (household employee wages, tips not on a W-2, Medicaid waiver payments, adoption benefits, Form 8919 wages, other earned income) by scope.other_income (refused at f1040.line8 and scope.ready), statutory-employee and notary income by sc.statutory (sc.screened at sc.line1), and Schedule SE items outside the tool by person.se_screened. On the remaining returns line 1z is lines 1a and 1e, which person.dc_earned adds per person (amb.2025.dc_line1e_attribution) with net self-employment earnings. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\" and adds statutory-employee Schedule C line 1 and net self-employment earnings; p. 5, Line 18, \"Earned income ... is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\". Same ruling as the earlier rounds. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)"
+  },
+  {
+   "key": "5",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The excerpt's missing Form 1040 page is a real context limitation, supplied in this adjudication; it is not model noise or a claim of support for the excluded cases. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)"
+  },
+  {
+   "key": "6",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "7",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "8",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "9a",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "9b",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "9c",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "CLW 1",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "CLW 2",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the model says Schedule 3 line 6l (Form 8978, line 14) is omitted with no refusal. i2441 p. 5, Line 10 Credit Limit Worksheet, line 2: \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". scope.credits asks about Form 8978 adjustments and refuses at s3.line8, and scope.other_line16 screens Form 8978 at f1040.line16, so on every computed return line 6l is zero and worksheet line 2 is Schedule 3 line 1. Same ruling as the earlier rounds. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)"
+  },
+  {
+   "key": "CLW 3",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "10",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "11",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "12",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "13",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "14",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "15",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "16",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "17",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "18",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the model accepts that line 1e is left out but says person.dc_earned_b omits the other line 1z components. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h (household employee wages, tips not on a W-2, Medicaid waiver payments, adoption benefits, Form 8919 wages, other earned income) by scope.other_income (refused at f1040.line8 and scope.ready), statutory-employee and notary income by sc.statutory (sc.screened at sc.line1), and Schedule SE items outside the tool by person.se_screened. On the remaining returns line 1z is lines 1a and 1e, and person.dc_earned_b takes box 1 wages and net self-employment earnings without the line 12 benefits. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\" and adds statutory-employee Schedule C line 1 and net self-employment earnings; p. 5, Line 18, \"Earned income ... is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\". Same ruling as the earlier rounds. Re-checked for the hardening round: person.dc_earned, person.dc_earned_b, scope.other_income, sc.statutory and person.se_screened are unchanged since round 4 (BUG-0262 changes only f2441 lines 16 and 17; BUG-0263 only person.sep_s3). (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)"
+  },
+  {
+   "key": "19",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The refreshed prompt supplies Form 1040. The omitted wage classes are explicitly outside completed-return scope, not reviewer noise or supported cases. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)"
+  },
+  {
+   "key": "20",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "21",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "22",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "23",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "24",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "25",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "26",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "27",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "28",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "29",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "30",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  },
+  {
+   "key": "31",
+   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "status": "MATCH"
+  }
+ ]
+}

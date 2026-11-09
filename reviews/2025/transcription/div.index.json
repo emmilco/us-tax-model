@@ -1,0 +1,57 @@
+{
+ "kind": "transcription",
+ "form": "div",
+ "family": "claude",
+ "base": "3a15ed464ec0c4e2a869b1a15dfbe0440a3dd97a9abbf9ddcd4d29cf7f919dcf",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "div.has_ordinary",
+   "record": "31d267669399bd40f58212d806210436bac367702c17842636fc25c41ec56fba",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the candidate's all[div.any = true, box 1a > 0] is the project's test written out: the project's operand sb.ordinary_dividends_if_dividends is box 1a when div.any is yes and zero when it is no, so both are true exactly when dividends were received and box 1a is above zero. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
+   "subject_key": "b76cc605ad37089b1490bad07fbca820261b44bd10cf7948e1230613d318fb96"
+  },
+  {
+   "key": "div.zero",
+   "record": "31d267669399bd40f58212d806210436bac367702c17842636fc25c41ec56fba",
+   "status": "AGREE",
+   "subject_key": "b3f619d94d9c15ffa0bfd1bb946083950e57d6fc8abc7b6a65b3a03a646a0d40"
+  },
+  {
+   "key": "div.box2b_if_capital_gain",
+   "record": "31d267669399bd40f58212d806210436bac367702c17842636fc25c41ec56fba",
+   "status": "AGREE",
+   "subject_key": "a539738063f8c4829ae6977820956c12d15f39dab5fb3fa9e44e764d0a371220"
+  },
+  {
+   "key": "div.box2d_if_capital_gain",
+   "record": "31d267669399bd40f58212d806210436bac367702c17842636fc25c41ec56fba",
+   "status": "AGREE",
+   "subject_key": "ab680655c18278bcd80a182a3d37bb62f56690da436e6f0db7ca1c8a28ee0385"
+  },
+  {
+   "key": "div.box12_if_dividends",
+   "record": "31d267669399bd40f58212d806210436bac367702c17842636fc25c41ec56fba",
+   "status": "AGREE",
+   "subject_key": "2bd0a28336318915c3fd16ce69ff83f4544a158ed608d9010ef61e7cb354f398"
+  }
+ ],
+ "subjects": {
+  "div.has_ordinary": "51c58c1de7464bc47824ab0732e2e7831ea30d020938580b7f2bd8eee2826ad4",
+  "div.zero": "023fca92bb2ca85c42b5ddf6296460a606a9efbc6b93efb54dd6aa7da46b1887",
+  "div.box2b_if_capital_gain": "d037b9cb7d43cab62280380d52b31c7076837f085745fbc7d567bb1bdb2e2821",
+  "div.box2d_if_capital_gain": "f0f73fe697c3e65e8a82d138affaeb3b54cd208ee43548636fb0794a7dab5dbf",
+  "div.box12_if_dividends": "a5dfd6825e6b28b269a3a9ee79dcdb95d6803af033b1f5b53856a0d8879cb82a"
+ },
+ "__rest__": "ab9ea5065d1d3f1a23ab77de1d140198c1b1c4bc6363087c360e4f5384b11029",
+ "foreign": {
+  "div.has_ordinary": "79fe0ced00bb0018af4444279cf97e3103af48b98b71dbe246eb7345eb7a1d4b",
+  "div.zero": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "div.box2b_if_capital_gain": "e66df5ffb01429da4dbe373a716a5b03ac1f814676c023182c27b8da224a0c25",
+  "div.box2d_if_capital_gain": "e66df5ffb01429da4dbe373a716a5b03ac1f814676c023182c27b8da224a0c25",
+  "div.box12_if_dividends": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+ }
+}

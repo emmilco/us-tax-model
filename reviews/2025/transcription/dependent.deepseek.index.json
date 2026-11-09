@@ -1,0 +1,209 @@
+{
+ "kind": "transcription",
+ "form": "dependent",
+ "family": "deepseek",
+ "base": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+ "lines": [
+  {
+   "key": "dependent.one",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "AGREE",
+   "subject_key": "36a9e4cdf461fbe353aff7dbe06def65892970175b715f9ff9990899ec1f06b9"
+  },
+  {
+   "key": "dependent.claimed",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 18, Step 2, question 1, and p. 19, Step 4, question 2, \"Was your qualifying relative a U.S. citizen, U.S. national, U.S. resident alien, or a resident of Canada or Mexico? ... No. STOP ... You can't claim this person as a dependent\"; p501 p. 21, Multiple Support Agreement, \"two or more persons, each of whom would be able to claim the person as a dependent but for the support test, together provide more than half of the person's support\" (the support test of a qualifying relative; i1040gi p. 19, Step 4, \"For whom you provided over half of the person's support in 2025. But see ... Multiple support agreements\"). New: the reply drops the citizenship test from its dependency tests: 200 completed values, project no and candidate yes, every one on an entry that is neither a U.S. citizen, national or resident alien nor a resident of Canada or Mexico (192 qualifying relatives, for example classm.s2.3.deepseek dep_c, a 22-year-old child; 8 qualifying children, for example classm.f8889.1.deepseek dep_c). It also drops the \"Could you be claimed as a dependent\" test (sa.dependent; Step 2, question 4, and Step 4, question 5) and the joint-return spouse-relative route (dependent.spouse_relative), with no completed witness. As the earlier ruling, it refuses dependent.multiple_support for every entry (120 completed unknowns on qualifying children, for example classm.f4952.1.deepseek dep_c; generated 126 dep_b refused) and asks dependent.lawful of household_member entries (14, for example classm.clcw26.2.deepseek dep_b). Its new part-year residency route asks dependent.born_died where the months answer already applies the birth and death rule (1 completed, mutation.t2.qss_sdtw_sli dep_a). Its earlier joint_return question on qualifying relatives is gone. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 6,234 of 7,537 agree; 483 candidate-unknown, 338 value, 316 project-refuses, 161 project-unknown, 5 candidate-refuses; on returns the full interview completes: 200 value, 155 candidate-unknown, 3 project-unknown, 1 candidate-refuses. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "356dcfc84a208d2f0656f7f6a7129cac5d7c1a6077413d9d374ffe9d5abcb9b1"
+  },
+  {
+   "key": "dependent.ctc_child",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 7, \"If you are filing a joint return, only one spouse is required to have a valid SSN in order to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN\"; p. 18, Step 3, question 4, \"Did you, or your spouse if filing a joint return, and this child have SSNs valid for employment\"; Step 2, question 4. As the earlier ruling (the reply does not test household.ctc_ssn): it now tests household.taxpayer_work_ssn, the filer's own SSN only, and no other person's identification number: stage13.ctc_spouse_ssn (only the spouse has an SSN valid for employment: project true, candidate false; likewise generated 383), stage13.ctc_spouse_no_id (the spouse has no SSN or ITIN: project false, candidate true); and reading its qualifying-child test directly instead of dependent.claimed it drops the \"Could you be claimed as a dependent\" test (sa.dependent yes: stage8.single.filer_is_dependent, generated 46 dep_a and others, project false, candidate true). These 12 values are on incomplete or refused records; on completed returns only partial records and one born_died question (mutation.t2.qss_sdtw_sli dep_a) differ. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 7,361 of 7,537 agree; 97 candidate-unknown, 38 project-unknown, 28 project-refuses, 12 value, 1 candidate-refuses; on returns the full interview completes: 6 candidate-unknown. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "7a5d27ffc5c06245934976a0e0cf31cd1251f49bf29325ae38df9b561ef3fd76"
+  },
+  {
+   "key": "dependent.odc_person",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 19, Steps 4 and 5. As the earlier ruling, the line inherits the reply's dependent.claimed: 123 completed unknowns on multiple_support (for example classm.f4952.1.deepseek dep_c), 14 on lawful (classm.clcw26.2.deepseek dep_b, project yes and $500), generated 126 dep_b refused, one born_died question. Its own dependent.citizen test hides the dropped citizenship test here, so no completed value differs. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 6,658 of 7,537 agree; 487 candidate-unknown, 316 project-refuses, 55 project-unknown, 16 value, 5 candidate-refuses; on returns the full interview completes: 143 candidate-unknown, 1 candidate-refuses. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "7e34d7a4040e4fcce97f0c53d5eb25eba2dcf98fdf680d602c56ef1fdcbfb9bd"
+  },
+  {
+   "key": "dependent.ctc_amount",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040s8812 line 5; i1040gi p. 7 (one spouse's valid SSN on a joint return). Inherits dependent.ctc_child, as the earlier ruling: stage13.ctc_spouse_ssn $0 against the project's $2,200 and stage13.ctc_spouse_no_id $2,200 against $0, on incomplete records. No completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 7,361 of 7,537 agree; 97 candidate-unknown, 38 project-unknown, 28 project-refuses, 12 value, 1 candidate-refuses; on returns the full interview completes: 6 candidate-unknown. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "cfd65f0dcf7e24b062dc4adacc2d4f481932bea305ecc5f96512ae8f7153bdf3"
+  },
+  {
+   "key": "dependent.odc_amount",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040s8812 line 7. Inherits dependent.odc_person, as the earlier ruling: 143 completed unknowns (multiple_support, lawful; project $500 or $0) and generated 126 dep_b refused (project $500). No completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 6,658 of 7,537 agree; 487 candidate-unknown, 316 project-refuses, 55 project-unknown, 16 value, 5 candidate-refuses; on returns the full interview completes: 143 candidate-unknown, 1 candidate-refuses. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "e51bd38c8343702823830135b38592cc529c97bbe15d7c33a29d88e1eff29620"
+  },
+  {
+   "key": "dependent.actc_amount",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040s8812 line 16b. Inherits dependent.ctc_child, as the earlier ruling (household.taxpayer_work_ssn in place of household.ctc_ssn; values on incomplete or refused records only). No completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 7,361 of 7,537 agree; 97 candidate-unknown, 38 project-unknown, 28 project-refuses, 12 value, 1 candidate-refuses; on returns the full interview completes: 6 candidate-unknown. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "996cb2f6e5f603e6e8f91fd74a52d557cf568514eadecb0aa64290eade510a4c"
+  },
+  {
+   "key": "dependent.hoh_absence",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 14, Test 2; p501 p. 9, Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\" As the earlier ruling, the line has no Test 2 condition: it is now a copy of dependent.absence_no_return (it was its negation), so it asks the answer of every entry (38 completed unknowns, for example classm.s3.4.deepseek dep_c, project false) and is true for an entry that is not a Test 2 person (3 values on incomplete or refused records). No completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 6,897 of 7,537 agree; 385 project-refuses, 251 candidate-unknown, 3 value, 1 project-unknown; on returns the full interview completes: 38 candidate-unknown. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "5c5e22e3bdf64e388d8a40f881c0cb0724ac094d77b48d83ddfbf2cf61dd18c3"
+  },
+  {
+   "key": "dependent.hoh_test2",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 14, Test 2, items 1 and 2; i1040gi p. 18, Step 2, question 1, and p. 19, Step 4, question 2, \"Was your qualifying relative a U.S. citizen, U.S. national, U.S. resident alien, or a resident of Canada or Mexico? ... No. STOP ... You can't claim this person as a dependent\". New: the earlier deviation (unclaimed qualifying children left out) is gone, but the line inherits the reply's dependent.claimed without its citizenship test: 177 completed values, project false and candidate true, on entries that are neither citizens, nationals or resident aliens nor residents of Canada or Mexico (for example classm.f1040.2.deepseek dep_a, an in-law). It also refuses dependent.multiple_support for every entry (66 completed unknowns, for example classm.f4952.1.deepseek dep_c; generated 126 dep_b refused) and asks months, lawful and born_died where the project does not need them (27 completed, for example classm.s3.4.deepseek dep_c on months); the rest are partial records. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 6,470 of 7,537 agree; 412 candidate-unknown, 317 project-refuses, 228 value, 105 project-unknown, 5 candidate-refuses; on returns the full interview completes: 177 value, 100 candidate-unknown, 1 candidate-refuses, 1 project-unknown. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "30720cb4dadcc6ef5baedbeab00fae5c60ad2fffd27140e00a57b964dfceddc4"
+  },
+  {
+   "key": "dependent.hoh_test1",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 14, Test 1, \"your parent whom you can claim as a dependent, except under a multiple support agreement\"; i1040gi p. 18, Step 2, question 1, and p. 19, Step 4, question 2, \"Was your qualifying relative a U.S. citizen, U.S. national, U.S. resident alien, or a resident of Canada or Mexico? ... No. STOP ... You can't claim this person as a dependent\". As the earlier ruling, its own test is the project's but it refuses dependent.multiple_support for every entry, not only a parent (123 completed unknowns, for example classm.f4952.1.deepseek dep_c, a child; generated 126 dep_b refused), and asks parent_home_paid where the project does not need it (8). New: 2 completed values from the dropped citizenship test (generated 35 dep_b and 179 dep_a, a parent who is not a citizen, national, resident alien or resident of Canada or Mexico: project false, candidate true). executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 6,520 of 7,537 agree; 607 candidate-unknown, 296 project-refuses, 97 project-unknown, 14 candidate-refuses, 3 value; on returns the full interview completes: 137 candidate-unknown, 2 value, 1 candidate-refuses, 1 project-unknown. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "cf5c2bc2be798029a9e9e56c65a752ba531c4d486e80f7f9b4a2ed29002e4ce6"
+  },
+  {
+   "key": "dependent.eic_child",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 41, Step 3; p. 44, Qualifying child of more than one person. As the earlier ruling: the differences are refusals (the reply's dependent.divorced_rule refusal on refused returns; the project's cited eic_tiebreak and kidnap_eic) and unknowns on partial records. The 8 completed project-unknowns (dependent.kidnapped, for example classm.f8962.2.deepseek dep_b) are returns with no EIC, where the interview never needs the line. No completed-return value differs. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 7,364 of 7,537 agree; 82 candidate-unknown, 52 project-unknown, 33 candidate-refuses, 6 project-refuses; on returns the full interview completes: 8 project-unknown, 3 candidate-unknown. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "246e9e34a563d0120611ede7ad2f5dc71a1c9f83e0e9268e108237a807fde2bc"
+  },
+  {
+   "key": "dependent.eic_ssn_child",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 46, Worksheet A, line 2. As the earlier ruling, inherits dependent.eic_child (8 completed project-unknowns on returns with no EIC; the others partial records). No completed-return value differs. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 7,358 of 7,537 agree; 88 candidate-unknown, 52 project-unknown, 33 candidate-refuses, 6 project-refuses; on returns the full interview completes: 8 project-unknown, 4 candidate-unknown. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "d4fb6e69f75996c7ba4413578d6ae612f4447fe9ac8ac933dce38faa9772e468"
+  },
+  {
+   "key": "dependent.dc_qp",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i2441 p. 1, Qualifying Person(s), \"1. A qualifying child under age 13 whom you can claim as a dependent.\" The earlier ruling's defect is gone (the reply now tests f2441.care), but its under-13 route asks only that the person be claimed, not that they be your qualifying child: 135 values, project no and candidate yes, on qualifying relatives under 13 with care paid (for example classm.dependent.3.deepseek and classm.dependent.4.deepseek dep_a), all on refused returns. On completed returns only partial records differ. No completed-return value differs. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 7,099 of 7,537 agree; 246 candidate-unknown, 135 value, 52 candidate-refuses, 3 project-unknown, 2 project-refuses; on returns the full interview completes: 5 candidate-unknown. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "de913307111ebb88cfc03f07fabc010ab9cd7668b3d09443879c7500abbb8c0a"
+  },
+  {
+   "key": "dependent.dc_count",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i2441 p. 3, Line 2. This adjudicates the declaration, not the tax reading: the reply's line, a sum_over the dependent collection inside a per-entry line, fails reference validation (\"collection parent binding mismatch\") and was not executed. Read against the source, its expression is the Form 2441 count of qualifying persons, which the project computes as f2441.qp_count from its one-per-entry dependent.dc_count filtered by dependent.dc_qp; the other lines of the reply were executed. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 records): not executed, 7,537 candidate-invalid (dependent.dependent.dc_count: collection parent binding mismatch). Project stands.",
+   "subject_key": "28c4896a449aa1d2c61aaf367d006d4a6cb1ac45e02be6f49192c1d6b8036958"
+  },
+  {
+   "key": "dependent.ptc_magi_counted",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "AGREE",
+   "subject_key": "1b18aea45097a5d6304db9f7a609bc08cfe4c39449f53060f4f138ef3818857e"
+  },
+  {
+   "key": "2(d)",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i2441 p. 3, Column (d). As the earlier ruling: it is dc_paid for every entry, so it asks dc_paid where no care was paid (333 completed unknowns where the project hides the column, for example classm.f4952.1.deepseek dep_a) and shows an amount on a hidden column (generated 360 dep_b, $5,920). executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 5,195 of 7,537 agree; 1,964 candidate-unknown, 313 candidate-shows-skipped, 62 project-unknown, 3 project-refuses; on returns the full interview completes: 333 candidate-unknown, 1 candidate-shows-skipped. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "f24730c397df51cba5d9d5af4489c5a826b6541296bea900a66bcfca5aeabd27"
+  },
+  {
+   "key": "2(c)",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i2441 p. 3, Column (c). As the earlier ruling: no qualifying-person test; it reads dc_incapable for every entry (109 completed unknowns where the project hides the box, for example classm.f4952.1.deepseek dep_b) and dc_over12_care (generated 348 dep_a). No value. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 6,657 of 7,537 agree; 820 candidate-unknown, 57 project-unknown, 3 project-refuses; on returns the full interview completes: 110 candidate-unknown. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "4a4f68a6e4bc9a5f0273184bbf8ea6ec2760f01848170aa6b4f52f4a271d0092"
+  },
+  {
+   "key": "27",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 2, line 27; i8863 p. 2, \"You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student\"; p970 p. 11. As the earlier ruling: no gate on the student being your claimed dependent, so it asks dependent.edu of every entry (880 completed unknowns where the project hides the line, for example classm.f4952.1.deepseek dep_a) and shows an amount where the project hides the line for a person who is not your dependent (generated 135 dep_b, a household member who did not live with you all year, and generated 311 dep_a); and, as this project's ruling on the Claude family's same reading, it requires dependent.edu_tin_issued (85 completed, for example classm.f8863.2.deepseek dep_a), against the p970 p. 11 rule for a timely ITIN or ATIN application. Its edu_over refusal is gone; the project's refusals are its cited edu_over_refused screen. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 4,321 of 7,537 agree; 3,100 candidate-unknown, 71 project-refuses, 37 project-unknown, 6 candidate-shows-skipped, 2 value; on returns the full interview completes: 967 candidate-unknown, 2 candidate-shows-skipped. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "9fb1711711728d5539bb49d8108b445bed29a54aa6fca8eb9834eaab6f596268"
+  },
+  {
+   "key": "28",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 2, line 28; i8863 p. 2, \"You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student\"; p970 p. 11. As the earlier ruling: no gate on the student being your claimed dependent, so it asks dependent.edu of every entry (880 completed unknowns where the project hides the line, for example classm.f4952.1.deepseek dep_a) and shows an amount where the project hides the line for a person who is not your dependent (generated 135 dep_b, a household member who did not live with you all year, and generated 311 dep_a); and, as this project's ruling on the Claude family's same reading, it requires dependent.edu_tin_issued (85 completed, for example classm.f8863.2.deepseek dep_a), against the p970 p. 11 rule for a timely ITIN or ATIN application. Its edu_over refusal is gone; the project's refusals are its cited edu_over_refused screen. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 4,321 of 7,537 agree; 3,100 candidate-unknown, 71 project-refuses, 37 project-unknown, 6 candidate-shows-skipped, 2 value; on returns the full interview completes: 967 candidate-unknown, 2 candidate-shows-skipped. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "ec0fc9947b3cd55a88ac63c0824dbafc17fe66a3bbb9dc2263e3495014e21062"
+  },
+  {
+   "key": "29",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 2, line 29; i8863 p. 2, \"You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student\"; p970 p. 11. As the earlier ruling: no gate on the student being your claimed dependent, so it asks dependent.edu of every entry (880 completed unknowns where the project hides the line, for example classm.f4952.1.deepseek dep_a) and shows an amount where the project hides the line for a person who is not your dependent (generated 135 dep_b, a household member who did not live with you all year, and generated 311 dep_a); and, as this project's ruling on the Claude family's same reading, it requires dependent.edu_tin_issued (85 completed, for example classm.f8863.2.deepseek dep_a), against the p970 p. 11 rule for a timely ITIN or ATIN application. Its edu_over refusal is gone; the project's refusals are its cited edu_over_refused screen. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 4,321 of 7,537 agree; 3,100 candidate-unknown, 71 project-refuses, 37 project-unknown, 6 candidate-shows-skipped, 2 value; on returns the full interview completes: 967 candidate-unknown, 2 candidate-shows-skipped. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "d68831fc7c808cea7341711d49279ce41721d60718a5d2691b1f0c156848a291"
+  },
+  {
+   "key": "30",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 2, line 30; i8863 p. 2, \"You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student\"; p970 p. 11. As the earlier ruling: no gate on the student being your claimed dependent, so it asks dependent.edu of every entry (880 completed unknowns where the project hides the line, for example classm.f4952.1.deepseek dep_a) and shows an amount where the project hides the line for a person who is not your dependent (generated 135 dep_b, a household member who did not live with you all year, and generated 311 dep_a); and, as this project's ruling on the Claude family's same reading, it requires dependent.edu_tin_issued (85 completed, for example classm.f8863.2.deepseek dep_a), against the p970 p. 11 rule for a timely ITIN or ATIN application. Its edu_over refusal is gone; the project's refusals are its cited edu_over_refused screen. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 4,321 of 7,537 agree; 3,100 candidate-unknown, 71 project-refuses, 37 project-unknown, 6 candidate-shows-skipped, 2 value; on returns the full interview completes: 967 candidate-unknown, 2 candidate-shows-skipped. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "e3de1deed4789e10601930602da81e9a7d910695e4108bc556b39cbd5597bce7"
+  },
+  {
+   "key": "31",
+   "record": "e0ac29e2091900c76090a5c90f0e3fe895562eaca4ce1f2bc1d1cb435fe6311c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 2, \"You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student\"; p970 p. 11. As the earlier ruling: no gate on the student being your claimed dependent, so it asks dependent.edu of every entry (880 completed unknowns where the project hides the line, for example classm.f4952.1.deepseek dep_a); and, as this project's ruling on the Claude family's same reading, it requires dependent.edu_tin_issued (86 completed, for example classm.f8863.2.deepseek dep_a), against the p970 p. 11 rule for a timely ITIN or ATIN application. Its edu_over refusal is gone; the project's refusals are its cited edu_over_refused screen. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.deepseek.json`; 1,638 fixtures, 500 generated returns seed 20261026, 2,358 partial records; 7,537 comparisons): 4,322 of 7,537 agree; 3,105 candidate-unknown, 73 project-refuses, 37 project-unknown; on returns the full interview completes: 967 candidate-unknown. Every completed-return difference was enumerated with the witness cap lifted (scratch `/tmp/r2/adj/dep/full/dependent.deepseek.json`). Project stands.",
+   "subject_key": "fae6b4dde1a9a65832d73f197f11e31f5afe3bb7566f17e1e47547dab442ce7c"
+  }
+ ],
+ "subjects": {
+  "dependent.one": "858660bbf031f30a7be0943c8d565dfd22a05dfea0dff850664c1d7d444819a0",
+  "dependent.claimed": "f46b5b585cf931a423a9c7f4f6cd0b7e49b661b2dfa67bb29207135829e2cfa7",
+  "dependent.ctc_child": "bf58dbad505032abf3ae193b3fb8583e9d0d7305e71ada8e54784fdf1e502f34",
+  "dependent.odc_person": "799499ce908f7ffb98c1d31223e57cdef5fdb49a50d567f7f1ebf360defde783",
+  "dependent.ctc_amount": "40da80610e0a25b08b8c15174f57561810a85b05364bb6772d8095ba39b0d0af",
+  "dependent.odc_amount": "8787b0eaea982485e10019b1aaca49c8d4324d6e821b4e7a626280dcce57aacc",
+  "dependent.actc_amount": "1bfda50b9b704786adae4b94f74aaf394ae05daacdfb311fc46106ffd039a5b8",
+  "dependent.hoh_absence": "257bddef9fe2279f1382081e06a8f89dd8e9a3c571da2c84be41e79159bbc6af",
+  "dependent.hoh_test2": "23b043a9750cc97cb7cdfaeb38f693c4202c52792af07c35120f52bde5529eef",
+  "dependent.hoh_test1": "c6e356c92c3e7be4e6cc710b641d679122a73d97f9ebdbd9cd4124c14d120540",
+  "dependent.eic_child": "e6b445989bf16a29c0a0a854e7c5cf33ae88705f199dd082be35b76aadf2088a",
+  "dependent.eic_ssn_child": "13a10a27cfe497e84f3d8382b58f29d4c35a6866e22ec3a7245f738043ba728d",
+  "dependent.dc_qp": "9f6b5e11d0d3e69fbbba418a393290afbda9e69b55608edca6a6788816f5d4e0",
+  "dependent.dc_count": "6e8b475ab185eebd8f897a7b2cceeb2d4e5cd73e196df35ea0733c70f0d819bd",
+  "dependent.ptc_magi_counted": "dc37480e7a684ec9e368613070ff4c1c2bfe572c940ed65972af335d9f08ded4",
+  "2(d)": "d8cab86c5341256235bef272a906a213b13903ecae21a3303ac2776a718dc561",
+  "2(c)": "a645050c6a1b4d17ed4184d13f12b45e3fb5be826a53ee5ce6575967388f2aa3",
+  "27": "fff572d1472c2dee2d7c2f76a184f8cc452e6b60b8404cbb3cb007a4ca2a9cb7",
+  "28": "a1625a167376c9ce18a8be8776a3f5076d2d4b0b9f3b22341fa9937d55c8169c",
+  "29": "3d0bf69be0c59a1cd42f37e7b5bce68775775c4dbb4bc152897a34b13b3d2d4a",
+  "30": "ef9a6fcbf02c9e877a4f941ddb1871979af171638f7ffe18e4b27d4a65191274",
+  "31": "e9038d7a9b025103982eaf5b78445e773d0889e9679472a53b0b38503d1c01ba"
+ },
+ "__rest__": "f028e8ebb7d35d80df5faee4808d2ffdf5d99bfea35f697361138bde2dc82f12",
+ "foreign": {
+  "dependent.one": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "dependent.claimed": "8246bdae131532c90f4c13705ecca700425310b88ccb2c1104c921ecc4642205",
+  "dependent.ctc_child": "0514eda5e27e3d60a9189ebaf5d8d52b6480cbbd02ad1c0b59665c62ac7cd96a",
+  "dependent.odc_person": "fd8f2069e84bc899aaba9e3e0dbc1723b78d6021de23c159e2e553024602205b",
+  "dependent.ctc_amount": "6d4d45e82d0114c7d42205c1da33832f034e9fa3e28711ca3e777153196442a5",
+  "dependent.odc_amount": "baa230b7b03cd38be8e79f8be2b4cf243e7e67189f2f29854f7fe1b0ab465d79",
+  "dependent.actc_amount": "6d4d45e82d0114c7d42205c1da33832f034e9fa3e28711ca3e777153196442a5",
+  "dependent.hoh_absence": "8246bdae131532c90f4c13705ecca700425310b88ccb2c1104c921ecc4642205",
+  "dependent.hoh_test2": "8246bdae131532c90f4c13705ecca700425310b88ccb2c1104c921ecc4642205",
+  "dependent.hoh_test1": "8246bdae131532c90f4c13705ecca700425310b88ccb2c1104c921ecc4642205",
+  "dependent.eic_child": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "dependent.eic_ssn_child": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "dependent.dc_qp": "0fb263faf6a7f8a93d6f821957868083f6400f194060a939e6f58ffb573f5963",
+  "dependent.dc_count": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "dependent.ptc_magi_counted": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "2(d)": "0fb263faf6a7f8a93d6f821957868083f6400f194060a939e6f58ffb573f5963",
+  "2(c)": "0fb263faf6a7f8a93d6f821957868083f6400f194060a939e6f58ffb573f5963",
+  "27": "b083d892a22b28c827478d0a3a6ad4ac8ca93c9294c9d08839b46f7d5451d3f7",
+  "28": "b0ef5290ef7b0c63147044ddc141a410fd94dbeab8099cbef58dce062862030e",
+  "29": "686d440b1c4c624d26f16c70d8b0ca910176fe85dd5e8cc6438eb86359d5aaed",
+  "30": "a2673a38d5ac01603d84261716e40e003105bf4710dd661ff26a3deb9853393c",
+  "31": "11398ad7059a4044b7387ccd885c0bbae44263f645f9f41c3b851944d24fba7a"
+ }
+}

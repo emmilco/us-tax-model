@@ -466,7 +466,7 @@ def write_log(form_doc, model, prompt, used, printed, verdicts, raw_text, meta):
     out += _sections(results, kept)
     out += subjects.table_for("render", fid, Y)
     out += ["## Raw response", "", "```yaml", raw_text.strip(), "```", ""]
-    open(path, "w", encoding="utf-8").write("\n".join(out))
+    rulings.write_log("render", fid, "\n".join(out), family)
     return path, counts
 
 
@@ -503,9 +503,9 @@ def scoped_main(a, form_doc):
     """--lines: judge only some lines and merge the verdicts into the existing log."""
     fid, family = a.form, families.family_of(a.model)
     path = rulings.log_path("render", fid, family)
-    if not os.path.exists(path):
+    if not rulings.has_log("render", fid, family):
         raise SystemExit(f"{fid}: no render log of the {family} family to merge into; run the whole review")
-    old = open(path, encoding="utf-8").read()
+    old = rulings.read_log("render", fid, family)
     asked = [n.strip() for n in a.lines.split(",") if n.strip()]
     names = asked if asked == ["auto"] else sorted(render_scope(form_doc, asked))
     scope_keys, scope_ids, _, stale, gone = T.plan_scope("render", fid, old, names)
@@ -519,12 +519,12 @@ def scoped_main(a, form_doc):
                 # (plan_scope), so the current table records what the log reviewed.
                 merged = T.merge_log("render", fid, old, "## Raw response", {}, key_order, [], None, None, _counts)
                 if not a.dry_run:
-                    open(path, "w", encoding="utf-8").write(merged)
+                    rulings.write_log("render", fid, merged, family)
                 print(f"{fid}: recorded the line subjects the log reviewed; no model call")
             return
         merged = T.merge_log("render", fid, old, "## Raw response", {}, key_order, gone, None, None, _counts)
         if not a.dry_run:
-            open(path, "w", encoding="utf-8").write(merged)
+            rulings.write_log("render", fid, merged, family)
         print(f"{fid}: dropped {', '.join(gone)}; no model call")
         return
     scope_ids = set(scope_ids)
@@ -555,7 +555,7 @@ def scoped_main(a, form_doc):
     kept = rulings.kept("render", fid, family, context=rulings.review_context("render", "\n".join(block)))
     fresh = {r["printed"]: T.part_of(_sections([r], kept, pid)) for r in results}
     merged = T.merge_log("render", fid, old, "## Raw response", fresh, key_order, gone, block, pid, _counts)
-    open(path, "w", encoding="utf-8").write(merged)
+    rulings.write_log("render", fid, merged, family)
     print(f"{fid}: match {counts['MATCH']}, mismatch {counts['MISMATCH']}, unclear {counts['UNCLEAR']}, missing {counts['MISSING']}; cost {meta.get('cost_usd')} -> {os.path.relpath(path, ROOT)}")
     sys.exit(0 if counts["MISMATCH"] + counts["UNCLEAR"] + counts["MISSING"] == 0 else 3)
 

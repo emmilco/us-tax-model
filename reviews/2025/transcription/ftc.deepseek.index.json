@@ -1,0 +1,25 @@
+{
+ "kind": "transcription",
+ "form": "ftc",
+ "family": "deepseek",
+ "base": "a033318f0db0d058a799aa5e3616261d8711d212120b781b75df6a2141b83a8a",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "ftc.credit",
+   "record": "198742d36ea4767fe9082b3e2844cd9cd6dd24df27f29a7d5129fda556e6c337",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1116 p. 25, Line 20, \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\", and p. 2, \"the smaller of (a) your total foreign tax, or (b) your regular tax\". The reply takes regular tax as Form 1040 line 16 alone, saying Schedule 2 line 1z was not provided; it is a line of another form the project reads (s2.line1z), and leaving it out understates the limit wherever Schedule 2 line 1z is not zero. With no foreign tax both give $0. The Form 4972 subtraction is refused by scope.other_line16. Same disagreement as the Claude pass of this round.",
+   "subject_key": "0f0fe8f0f14bebf44eb919e4f2e180e685d10081203167b1025cc0cf9f23ecf3"
+  }
+ ],
+ "subjects": {
+  "ftc.credit": "5e13043a75fa0f2b47f421d784159a141514ad9141fb60c6753177782cce0a49"
+ },
+ "__rest__": "0b27c1db7e23a8e90ed880b6d5e278e7ce96926cdbe182df2a1cfd1afeed920d",
+ "foreign": {
+  "ftc.credit": "cb42de4021aa2818fc3fce716161252aacd39b40b09f928b21d0dad04f02a637"
+ }
+}

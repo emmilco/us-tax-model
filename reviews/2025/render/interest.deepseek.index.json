@@ -1,0 +1,18 @@
+{
+ "kind": "render",
+ "form": "interest",
+ "family": "deepseek",
+ "base": "17d3e84502ca907ff3f95317c527d4f6cad15173c5f7b7f2fd3ded57b4ece6da",
+ "lines": [
+  {
+   "key": "amount",
+   "record": "17d3e84502ca907ff3f95317c527d4f6cad15173c5f7b7f2fd3ded57b4ece6da",
+   "status": "MATCH"
+  },
+  {
+   "key": "penalty",
+   "record": "17d3e84502ca907ff3f95317c527d4f6cad15173c5f7b7f2fd3ded57b4ece6da",
+   "status": "MATCH"
+  }
+ ]
+}

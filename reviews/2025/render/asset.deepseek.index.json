@@ -1,0 +1,124 @@
+{
+ "kind": "render",
+ "form": "asset",
+ "family": "deepseek",
+ "base": "bfa57c229125c57d1d864b5014b4278e1c6f4fdfc90d4a3549ba3629e71d65ad",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "(a)",
+   "record": "e7cd6c3b78290a21323f586cf12d1836811932c95f995e12ca8da27d457e8829",
+   "status": "MATCH",
+   "subject_key": "251b64df2888d7eec8926597d76466d9b5a4b726548d7498bcc5f22c36a4da6f"
+  },
+  {
+   "key": "(d)",
+   "record": "e7cd6c3b78290a21323f586cf12d1836811932c95f995e12ca8da27d457e8829",
+   "status": "MATCH",
+   "subject_key": "3714b4681bdbea1cd1b3ea1af0e7a7e94479b33728535e2222b8391d7dfd789e"
+  },
+  {
+   "key": "(screen) (asset.screen)",
+   "record": "e7cd6c3b78290a21323f586cf12d1836811932c95f995e12ca8da27d457e8829",
+   "status": "MISSING",
+   "ruling": "Ruling: model error; the reply returned no verdict for this line. The restructured asset.screen question was judged MATCH in the Claude render pass of the same restatement (reviews/2025/render/asset.md), and its words are the earlier question's (R3 word check: none lost).",
+   "subject_key": "57bbf4242d63a813eb3e0d010a8e115faf13b1a11c0776e8343144129b43596e"
+  },
+  {
+   "key": "(b)",
+   "record": "f2cff087453662b87398259dfcde7e2a01af52eb4dd058532844140a07f26c16",
+   "status": "MISSING",
+   "ruling": "Ruling: model error; the model returned no verdict for this line.",
+   "subject_key": "5c114833b2dbb22f6c6ac937dfaa276d7b21fe97f99491357414e63222b06bd8"
+  },
+  {
+   "key": "(c)",
+   "record": "e7cd6c3b78290a21323f586cf12d1836811932c95f995e12ca8da27d457e8829",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; same objection as the earlier rulings. This marker is the business basis before section 179 and the special allowance (its label); the form's column (c) after those deductions is 19(c) (asset.col19c), which subtracts them (i4562 p. 9, Lines 19a Through 19j, column (c)). asset.screen refuses property whose basis \"is reduced by a credit or deduction other than the section 179 deduction and the special depreciation allowance\", so on a computed return the only reductions are the two 19(c) subtracts. No printed amount differs. Project stands.",
+   "subject_key": "0821f071012fd141ba57b6317ceef954559a3a40a703f8c3621a8363acc468c8"
+  },
+  {
+   "key": "6(c)",
+   "record": "e7cd6c3b78290a21323f586cf12d1836811932c95f995e12ca8da27d457e8829",
+   "status": "MATCH",
+   "subject_key": "c71512a244c0c806e7b92b5458ae9c940c87772677a2a93ffd1820483af0b50c"
+  },
+  {
+   "key": "(screen) (asset.bonus_same)",
+   "record": "bfa57c229125c57d1d864b5014b4278e1c6f4fdfc90d4a3549ba3629e71d65ad",
+   "status": "MATCH",
+   "subject_key": "27a1dc845a4fb4c5fc5adf8e3e25492ec323e060f87b62d2c7946597a72bc5df"
+  },
+  {
+   "key": "14",
+   "record": "e7cd6c3b78290a21323f586cf12d1836811932c95f995e12ca8da27d457e8829",
+   "status": "MATCH",
+   "subject_key": "09a70f81e97595b1a526ba312c20abf784cb9475f39d8fa75deb5818cf386b77"
+  },
+  {
+   "key": "25",
+   "record": "bfa57c229125c57d1d864b5014b4278e1c6f4fdfc90d4a3549ba3629e71d65ad",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; same as the earlier rulings. asset.f25 copies asset.bonus, the per-asset special allowance, and is shown only for listed property placed in service in 2025 (asset.on_26_2025); \"from line 14\" names the shared per-asset amount, not the non-listed total (i4562 p. 14, Line 25).",
+   "subject_key": "7be801003da35365a22af5bbc047dd2fe73dd05d9824e28123bad0f3f4dd0ad4"
+  },
+  {
+   "key": "26(i)",
+   "record": "e7cd6c3b78290a21323f586cf12d1836811932c95f995e12ca8da27d457e8829",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; same as the earlier rulings. asset.f26i copies asset.s179, the per-asset elected section 179 cost (the input whose marker is 6(c)), shown only for listed property; Form 4562 line 6 itself is s179.line6, \"Elected cost of section 179 property (other than listed property)\", which sums the non-listed elections (i4562 p. 5, Line 6, \"Enter the elected section 179 cost of listed property in column (i) of line 26\"). Project stands.",
+   "subject_key": "83a4e642b69f3a8b2cbc5ccf3548d422cd323af3313977e9436bfc41c258730b"
+  },
+  {
+   "key": "19(c)",
+   "record": "e7cd6c3b78290a21323f586cf12d1836811932c95f995e12ca8da27d457e8829",
+   "status": "MATCH",
+   "subject_key": "aec9f506888c151719484fb786217cf8e4fc1bd48e92a54092dc6b659135b21a"
+  },
+  {
+   "key": "19(g)",
+   "record": "e7cd6c3b78290a21323f586cf12d1836811932c95f995e12ca8da27d457e8829",
+   "status": "MATCH",
+   "subject_key": "61a9d57fb7b50fa596d4e5e4ddf0b676212255b132af44dc771e7c2ce23763a8"
+  },
+  {
+   "key": "(e)",
+   "record": "bfa57c229125c57d1d864b5014b4278e1c6f4fdfc90d4a3549ba3629e71d65ad",
+   "status": "MATCH",
+   "subject_key": "24ada8f78293d0f6e299735a0fa5a52e0f4124d01bb007baa88be19893ec5853"
+  },
+  {
+   "key": "17",
+   "record": "e7cd6c3b78290a21323f586cf12d1836811932c95f995e12ca8da27d457e8829",
+   "status": "MATCH",
+   "subject_key": "b3d1e824ae61d4e2a6317a80c3bed7410ad9647a7a016a708a873f742f110fbf"
+  },
+  {
+   "key": "26(h)",
+   "record": "f2cff087453662b87398259dfcde7e2a01af52eb4dd058532844140a07f26c16",
+   "status": "MATCH",
+   "subject_key": "5b9afc4d8ef78c12983e3c6014a1eaa8c72d25b2cfe9c56e57a5907afbfc3124"
+  }
+ ],
+ "subjects": {
+  "(a)": "e7ddc5c08fd4fdfb949997e3fd3aaa39b70c52428a85a8e87272ea5c37bda358",
+  "(d)": "b92ddb258734975b9f3862acfd79b1bee56e7844fd13894f7e35d6be7c8d8e54",
+  "(screen) (asset.screen)": "403bea3751c53fd013b85f53589e47ad6da348c6eee96cc150f54b347c4d6009",
+  "(b)": "11c2b67acc1cf618b82feacbaddb645adda0fb28a8d1efc758cf7952f6f6cfd8",
+  "(c)": "d73586c607b01c97ecdfab67f565e7b67aaf3ed18e11df61d97bab267ebb8f74",
+  "6(c)": "084dddb1873a0f47ceb66432c36955190ec9664cc738b5f474619c191e8ecce7",
+  "(screen) (asset.bonus_same)": "2f34e9e3885fb3fa0b0ec17dc96999e5445e98b80c54ddbaaa89064cca8fe4ea",
+  "14": "27d44495cfd6497c4dfdcdc5e24b593b76bb784200fd9031e9e335cfeb45e781",
+  "25": "4b426ebe7b78071c2a8116ed219a8177a4e50a5d5cd1964666a8cbc004017fea",
+  "26(i)": "972bf999bb72cb2de985955f855b6d9c9bae4e980b417a580fd7fd6d51ef6d5a",
+  "19(c)": "5b66752b589f0971467311e10fed998f21c63678fcf35bcdfbd9884586abec92",
+  "19(g)": "03bbe7b036774ffb313bb79f78b8a4f71d9012e5e129191f610ef58659e0be41",
+  "(e)": "58c601084fe91483f688a5198d983bff68af4e5e06906923295c9f5e6a2925d6",
+  "17": "6a34fb433b328c67729c214a1ec1207019105c47a5d049f10f94ffc4706a75c5",
+  "26(h)": "c177f61a98dd2618c32a9fb4836533b01729248ee90a47cec70859fcd50cecd9"
+ },
+ "__rest__": "f636cbc4d4d8b77135b4fed9b7130553c8aeaa64b4580beda19da8d4f7a1c38a"
+}

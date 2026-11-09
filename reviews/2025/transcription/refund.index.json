@@ -1,0 +1,92 @@
+{
+ "kind": "transcription",
+ "form": "refund",
+ "family": "claude",
+ "base": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+ "lines": [
+  {
+   "key": "refund.has",
+   "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+   "status": "AGREE",
+   "subject_key": "29c4a685e94d3dbb27168ae7df10236aa087e5f941fdaa627cae28ea8cdc812e"
+  },
+  {
+   "key": "refund.taxable",
+   "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error and scope; inherited from the candidate's lines 6 and 9. i1040gi p. 88, Line 1, TIP: \"None of your refund is taxable if, in the year you paid the tax, you either (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes\". The candidate's own choice (zero without a refund, zero when the 2024 tax was not deducted on Schedule A, line 9 otherwise) is the project's choice on refund.worksheet, with the box 8 and other-year gates (refund.not_2024, whose PENDING-5 wording adds tax paid \"before 2024\") met on every refund on both sides. On refund returns the differences are: stage16.mut.refund_single_unasked (single 2024 status; project $1,400.00, candidate unknown for refund.spouse_born) and stage16.mut.refund_line3_stop (line 3 STOP; project $0.00, candidate unknown for refund.status), inherited from lines 6 and 9 (model error there); and stage16.refuse.refund.line5e_bad (project refuses at the cited impossible-entry screen refund.line5e_bad, candidate $3,000.00): scope. The completed-return project-unknown (partials withholding refund.not_2024 or refund.itemized) are on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.json`; 1,495 fixtures, 500 generated returns seed 20261026, 640 partial records from 40 bases; 2,635 comparisons): 2,552 agree; differences 2 candidate-unknown, 1 project-refuses, 80 project-unknown; on completed returns 44 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "subject_key": "69a7673a31a9f1487d85f38a50987db62c6cc63492ec9e044490a45f3f27debf"
+  },
+  {
+   "key": "1",
+   "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+   "status": "AGREE",
+   "subject_key": "a01d03674a74258f24c136fe25dc8f7bdcc908b73b35213ebae6aabb1cbe587d"
+  },
+  {
+   "key": "2",
+   "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+   "status": "AGREE",
+   "subject_key": "d4191aeb5cfa019780982234fb0d33b2df7846d1b54fee265a2a0041f2ead0fb"
+  },
+  {
+   "key": "3",
+   "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+   "status": "AGREE",
+   "subject_key": "277c9b303dc46ca88335d774322f03fb9000a2411b01d766cfeb9efb01ac101d"
+  },
+  {
+   "key": "4",
+   "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+   "status": "AGREE",
+   "subject_key": "3236b988baab4de5679c0a4395c7e97839f67007b9cabb6828b63ea476c738bb"
+  },
+  {
+   "key": "5",
+   "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+   "status": "AGREE",
+   "subject_key": "12addebbb92689d7a4aa7e0571089a7eaaa23216af6fd5882161635a421de94d"
+  },
+  {
+   "key": "6",
+   "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 90, worksheet line 6: \"Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)\" and its footnote \"*If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return\"; p. 33, Line 12d: \"Don’t check any boxes for your spouse if your filing status is head of household\". The candidate takes the spouse boxes for every 2024 filing status; the project counts them only for married filing jointly or separately, and zeroes them for single, head of household and qualifying surviving spouse (amb.2025.refund_boxes_2024). The candidate therefore needs the spouse answers where the source does not: stage16.mut.refund_single_unasked (single, a refund, the spouse questions unasked) gives the project $0.00 and the candidate unknown for refund.spouse_born. No value differs on any record. The completed-return candidate-unknown (spouse boxes withheld) and project-unknown (refund.status withheld where the candidate's answers are No) are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.json`; 1,495 fixtures, 500 generated returns seed 20261026, 640 partial records from 40 bases; 2,635 comparisons): 2,514 agree; differences 81 candidate-unknown, 40 project-unknown; on completed returns 44 candidate-unknown, 22 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "subject_key": "fb7f8d695f181e36c2aabb0eefca111f8ddc3cf71821f7b99b3b84fcdf3b5d8b"
+  },
+  {
+   "key": "7",
+   "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+   "status": "AGREE",
+   "subject_key": "489d18e12fd2e2d07a5a5201aa14101f9201830354fb56f336324bb76c52525f"
+  },
+  {
+   "key": "8",
+   "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; inherited from line 6. i1040gi p. 90, Note: \"If the filing status on your 2024 Form 1040 or 1040-SR was married filing separately and your spouse itemized deductions in 2024, skip lines 5 through 7, enter the amount from line 4 on line 8\", and line 8: \"Is the amount on line 7 less than the amount on line 4? No. STOP None of your refund is taxable. Yes. Subtract line 7 from line 4\". The candidate's own line 8 (copy line 4 for a separate return with an itemizing spouse, otherwise line 4 less line 7 floored) is the project's. Its only differences come through line 7 from its line 6: stage16.mut.refund_single_unasked (project $1,400.00, candidate unknown for refund.spouse_born) and partial records withholding the spouse boxes on bases with no refund (Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads). Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.json`; 1,495 fixtures, 500 generated returns seed 20261026, 640 partial records from 40 bases; 2,635 comparisons): 2,554 agree; differences 81 candidate-unknown; on completed returns 44 candidate-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "subject_key": "26923beecf641d85fb36c11b8bfd59d0c07d2829825dbe4ec2d86855d39842bf"
+  },
+  {
+   "key": "9",
+   "record": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 90, worksheet line 3: \"Is the amount on line 1 more than the amount on line 2? No. STOP None of your refund is taxable.\" and line 9: \"Enter the smaller of line 3 or line 8\". The project stops at line 3 (zero when line 1 is not more than line 2, without lines 4 to 8); the candidate always takes the smaller of lines 3 and 8, so after a line 3 STOP it still needs line 8, the 2024 filing status and the box answers: stage16.mut.refund_line3_stop gives the project $0.00 and the candidate unknown for refund.status. It also inherits line 6 (stage16.mut.refund_single_unasked: project $1,400.00, candidate unknown for refund.spouse_born). stage16.refuse.refund.box8 and .not_2024 (candidate refuses on its line-1 gates; the project refuses the same returns at refund.taxable) and stage16.refuse.refund.line5e_bad (project refuses at the cited screen, candidate $3,000.00) are scope on refused returns. The completed-return candidate-unknown are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.json`; 1,495 fixtures, 500 generated returns seed 20261026, 640 partial records from 40 bases; 2,635 comparisons): 2,310 agree; differences 2 candidate-refuses, 322 candidate-unknown, 1 project-refuses; on completed returns 176 candidate-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Corrects the earlier \"equivalent\" class of this unchanged pair, whose triage did not show the STOP witness. Project stands.",
+   "subject_key": "aeba6b6e0ea98220fdfb982ed5c991ab6165a1303103ccbca23c3e145d838838"
+  }
+ ],
+ "subjects": {
+  "refund.has": "6bd0ea50399f2920d7ff293034a6853e1de7c6cfc1f1b0dc94229cbd400ab049",
+  "refund.taxable": "44e2ccc3c429357f1e1bf8789bbf3172ac3da031a3bdd8cd3d2169683d15b7d9",
+  "1": "c7db273fdb74a02c74e40bf81a97232f756a677bb3dd7be39a63f54709999fda",
+  "2": "91eb1ef47a73d5a7374918887568614cf502d38e4d54dd584ff71e4c439c2fc6",
+  "3": "dee0b86519f8bb9ddf2c825b78358413221b68d930a03e98e7344a8d18bf6ede",
+  "4": "3c5a9ffb234d55e9d92f41c2448191732b0c6e38e87d64a593f5b1a5603fc4e3",
+  "5": "c02e5042fa5062503cbaf42cafe2f64610447e57d9faf525a0e1904747cfda6f",
+  "6": "bd0f71484f4b227904202cecbc11ee69fc6b5c8cda8b7ca7fa271046dbc23630",
+  "7": "5d74c147b1a5ab8fec6ef3b481bfde13d4561526952288baa8079115adfad20c",
+  "8": "3f62e583d65006a11a37557b8c3af5e2fea48bf36f8e191f1cced570c6f3cb8c",
+  "9": "17798256689f7d38756c72948184990c053352ca7de96936fb93cb52982ee74e"
+ },
+ "__rest__": "9a12945506dcc91b7709e71f5f54423e182739ad982dde223b33e1168f0e0716"
+}

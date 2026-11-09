@@ -1,0 +1,224 @@
+{
+ "kind": "render",
+ "form": "s1a",
+ "family": "claude",
+ "base": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+ "lines": [
+  {
+   "key": "1",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "2a",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "2b",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "2c",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "2d",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "2e",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "4a",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "4b",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "4c",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "5",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "6",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "7",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "8",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "9",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "10",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "12",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "13",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "14a",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "14b",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "14c",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "15",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "16",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "17",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "18",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "20",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "21",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "23",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "24",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "25",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "26",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "27",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "29",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "30",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "31",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "32",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "33",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "34",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "35",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "36a",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "36b",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; project retained. A spouse entry exists only on a joint return: any other roster is refused at Form 1040 line 1a (household.roster_bad; Form 1040 page 1, 'If joint return, spouse's first name'), so whenever the spouse's birth date and SSN can be tested the return is filed jointly (Schedule 1-A line 36b; i1040gi p. 110). (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)"
+  },
+  {
+   "key": "37",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  },
+  {
+   "key": "38",
+   "record": "aa8d9d3fc188fb41baf2c87be317d16b04375261ebac6662b5e0e73dd33894c1",
+   "status": "MATCH"
+  }
+ ]
+}

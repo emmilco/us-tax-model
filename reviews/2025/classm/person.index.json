@@ -1,0 +1,53 @@
+{
+ "kind": "classm",
+ "form": "person",
+ "family": "claude",
+ "base": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+ "lines": [
+  {
+   "key": "case classm.person.1",
+   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "status": null
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].employers",
+   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].overcount",
+   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].over",
+   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].wages",
+   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].withheld",
+   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].eligible",
+   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].excess",
+   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].credit",
+   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "status": "AGREE"
+  }
+ ]
+}

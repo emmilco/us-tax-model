@@ -1,0 +1,131 @@
+{
+ "kind": "render",
+ "form": "ftc",
+ "family": "claude",
+ "base": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+ "lines": [
+  {
+   "key": "taxes",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "aba41d4eef1fa3043703291d0d54bef5ebfee58d5f006ccdb1c0c11f11543cc5"
+  },
+  {
+   "key": "all_passive",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "39214ef11a56f24e7fd6ab8123501c311b1b14300f057f3a2becaa77bc655c73"
+  },
+  {
+   "key": "statements",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "f6aee30947bc1b42c6be18baa33e040a15ac8da7a7af9e37e5cd8556c547336f"
+  },
+  {
+   "key": "eligible",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "2c6a79075b97cc9c1512547cea47fd498066050aa8dcc1e21d1b66acba9c3aa1"
+  },
+  {
+   "key": "elect",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "d820efe11fde4ec6a6fb148d65759bdadb190e2c5a54a15829f01133f4dbef99"
+  },
+  {
+   "key": "limit",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "2fee35b428dc14dac1ac98e6b99a955c22bd8b6739acd1df6e0adf93ddbfa2db"
+  },
+  {
+   "key": "zero",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "7cdeb9e80195a5615892c1ad32cb7eed892a90f763235eb14102b84ed1d0a7d6"
+  },
+  {
+   "key": "has_tax",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "9ad9de8597fd272ee0f5d9a9a4918d284cc21d5bc7e2a9ddf7375cdf4ac92009"
+  },
+  {
+   "key": "no",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "18f8a9d50ec4636c288c50ccb976ba98a40332d2e10a289eab76ee9ef789dd4a"
+  },
+  {
+   "key": "all_passive_if_tax",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "ee1f217d94f2659a6cff303e912533339c1501f233bf9f3142338fcb05806e22"
+  },
+  {
+   "key": "statements_if_tax",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "af84f7aea40351e19c261f356b218db0a3bdca4e49b781c3dcf5ec263a286493"
+  },
+  {
+   "key": "eligible_if_tax",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "64592cec098c3d4898a04c69e6145fe3523e48cbd0a0b2aa85de91da883e6173"
+  },
+  {
+   "key": "elect_if_tax",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "e2517fe3f52952b13ea391fc1eb52835823bcdc576c40dc6c553bcf689969682"
+  },
+  {
+   "key": "needs1116",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "e150b6979aefe4984b197e129b6d86ff1bf2495032ad4c0d9a2fcd9e20b4c88a"
+  },
+  {
+   "key": "regular_tax",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; as the prior ruling. Screens scope.other_line16 and scope.credits. i1116 p. 25, Line 20, \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\". Form 4972 tax and a Form 8978 amount are refused by scope.other_line16 (which names Form 4972 and a Form 8978 amount), so nothing is subtracted or adjusted on any return the tool completes. Unchanged by the gate round.",
+   "subject_key": "6edaa7f139427fe14a9443478172ec4dc6295fa6b63b528311393bf6e317d34e"
+  },
+  {
+   "key": "limited",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "b42f75537b53f099cd220e71bd0bd34a44a37d7a7e2cd70348c108591c195e94"
+  },
+  {
+   "key": "credit",
+   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "status": "MATCH",
+   "subject_key": "f3e981a1eb4777aee3d472f495d5073d3860a40389e958f2deb5bd5f600fe4e7"
+  }
+ ],
+ "subjects": {
+  "taxes": "e6d588a93b1ac6228df4a292cd466cb7ac8f603a98696488172beaf7a68c206f",
+  "all_passive": "e2f969fdb75a96cd6ab0bf2e64c8779c9492eff9ab622ef594f4aeae757074d9",
+  "statements": "13e2d9df332aed24bbee5ced09955425f5ded1ba51316a040eaaa097f1b1208b",
+  "eligible": "95155ec3ba732e5389fb3b04b77f0689a110d034d5580dd7fb6c71b14a1de5e3",
+  "elect": "64f163b8eb270cad4bdb1d626aae9fb4f495c4b05d3619ba5850d464cdeca9ea",
+  "limit": "7861aa365730f3bb92cc3ff5d8db0fc99202ac69261abff8af27c50e712014da",
+  "zero": "30aa8978e16f8afbd14b9a2dfdb3b46389696ea81c185d9b916e716410069191",
+  "has_tax": "13175e5b5bbd7aab5933429df51d4c3d417c686be59f875c66605982b570e27b",
+  "no": "2533a78fa5244d11b339dafa15b212c92a4fa6cc6efe2cdbebfb4595cb511a00",
+  "all_passive_if_tax": "c5dbf8770c3fde7ee327b5ab335778b055583e0b6bd88b5fdfac9c8264b7b63f",
+  "statements_if_tax": "2df197ed0b0e20a036e358bb449125ede470b0d9c6c3540e8aefeea084bf8950",
+  "eligible_if_tax": "2af50f8e33c2f255a2a1aa14ffef9de06fe21c76978ce14de637dcac04184d91",
+  "elect_if_tax": "b5d2972bb75489d29a50cdfd0a174e9e53248ee5877b732d17cb4e279ce6d138",
+  "needs1116": "2e3b3732b2b08383984b0930b9c0d4f0174b78a54bfe6429fe75fc5e299036f8",
+  "regular_tax": "9708e41122ecdaf9ac692bbfdc199dc4e05b00233f3861a7c8094d89caed5945",
+  "limited": "da26157cf0aea3df3f30f29dbbf26a300f25e0742ff83e73e16494997e9764e9",
+  "credit": "720a4f71d3098a07cda22166ba3f07f4d14d93e9d80a30d570260029e2f88cdc"
+ },
+ "__rest__": "8987249afe36e362d3bf00fb617ecae69dc7aac9d4ee3abd263aeae4d097b5db"
+}

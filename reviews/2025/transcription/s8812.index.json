@@ -1,0 +1,413 @@
+{
+ "kind": "transcription",
+ "form": "s8812",
+ "family": "claude",
+ "base": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "s8812.clwb_complete",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "ceab042b78d065f0de078b88754f17af9d3c2a50f81c3fedc8931370efbbdc26"
+  },
+  {
+   "key": "1",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "b3dbf91a99cf3c442b2aeff4034726a69c628e1634a14cf6bc12b397e80dfe81"
+  },
+  {
+   "key": "2a",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "6f2e24dff0175831d1417822a8a9ecf2dfc73ac1aa1264f8ac6a60432f88d758"
+  },
+  {
+   "key": "2b",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "9d36dc728214083c7f8dc21aec45d9a0e6d4b6d337fe8dd1c06bda5f6492ea6e"
+  },
+  {
+   "key": "2c",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "9f3608874121418a69b835b12094f5d5b59e7a24cb69e038e06b419fc8888b37"
+  },
+  {
+   "key": "2d",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "0bdd812186e3d624e77894c6897c41d185ee69ad5b8daa5b1ba4c019a1fe42eb"
+  },
+  {
+   "key": "3",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "4e3bb4c335c63e93cae38b2a24664bad82aa27912d5d180b2a17fc0dc5213633"
+  },
+  {
+   "key": "4",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "ee9522bd40782e9db1f3d9e7cbc7918381847b10132b1882eee86c63f09ea66f"
+  },
+  {
+   "key": "5",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f1040s8812 p. 1, line 5: \"Multiply line 4 by $2,200\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 2,143 agree. Same as the bklg ruling. Project stands.",
+   "subject_key": "4f19b1c97e61d2b134f59bde5acc5325681ea15d777a13f2f02389b3b7b99fee"
+  },
+  {
+   "key": "6",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "8038f9bf87fd049b5b0a94849c8deade900ec49b93a600f4ac681258713693bd"
+  },
+  {
+   "key": "7",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f1040s8812 p. 1, line 7: \"Multiply line 6 by $500\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 2,143 agree. Same as the bklg ruling. Project stands.",
+   "subject_key": "1ea5a7d375500c38b46f956a7fd129d578db5d0261a6f472f8d7a8a21180a1ef"
+  },
+  {
+   "key": "8",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "0033cd026c0b207c563abfc82b5a70944d2c395ad7868570090cc78f86dacf59"
+  },
+  {
+   "key": "9",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "923d3cf03e3b47357f7cda13fdcbe1068d5c8ebc7ede11488eebc557ba9ce705"
+  },
+  {
+   "key": "10",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "5fbb22faad88493c770d14bbb5ffc359c83c39f86172c5624e5cceff67c83db2"
+  },
+  {
+   "key": "11",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "AGREE",
+   "subject_key": "48efe1eed23038ced599f63a95de1e4c6cdd7ebd0b50a1856871e063ddee650e"
+  },
+  {
+   "key": "12",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"; line 12 \"Subtract line 11 from line 8\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 2,139 agree; 2 candidate-unknown, 2 project-refuses (on completed returns: 2 candidate-unknown). Same subtraction; the reply hides the line on the stop where the project shows $0. The reply declares the household.ctc_disallowed_claim refusal on its line 8, but that gate reads s8812.line8 (T-101, i1040s8812 p. 2, Form 8862 may be required), so the reply cycles (\"cycle at s8812.line8\") on the T-101 fixtures f2.t101.credit_disallowed_no_credit_claimed and f2.t101.credit_disallowed_eic_zero, completed returns the project figures; the project places the gate on line 12. Project stands.",
+   "subject_key": "41bcc24cdf7c91a1e671704f28db24fb2168cb2cda2988e9d047da8684e3c213"
+  },
+  {
+   "key": "(CLW A 1)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation (+ scope); i1040s8812 p. 3, Credit Limit Worksheet A, line 1; f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,119 agree; 611 candidate-shows-skipped, 213 candidate-unknown, 142 candidate-refuses, 56 project-refuses, 2 project-unknown (on completed returns: 167 candidate-shows-skipped). The reply's shown_when (line 11 below line 8) is the project's s8812.show13 (line 12 above zero), since line 12 is line 8 less line 11 floored at zero; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. The candidate-refuses and unknowns are on refused or incomplete returns, met through Form 1040 line 18. The earlier model error (no shown_when) does not recur. Project stands.",
+   "subject_key": "0398fa973f1c05b5123a76a39dcc5e5332f7d7880148f67a76b6d686754626bc"
+  },
+  {
+   "key": "(CLW A 2)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation (+ scope); i1040s8812 p. 3, Credit Limit Worksheet A, line 2; f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,490 agree; 304 project-refuses, 124 candidate-unknown, 122 candidate-shows-skipped, 90 candidate-refuses, 13 project-unknown (on completed returns: 22 candidate-shows-skipped). As worksheet line 1: the reply's shown_when is s8812.show13; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays; the other differences are on refused or incomplete returns. Project stands.",
+   "subject_key": "1d816d3679e5f339ed56c823b6d4e474e2f07108df3eb4612521be7e91295bb7"
+  },
+  {
+   "key": "(CLW A 3)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation (+ scope); i1040s8812 p. 3, Credit Limit Worksheet A, line 3. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,127 agree; 564 candidate-shows-skipped, 212 candidate-unknown, 189 candidate-refuses, 49 project-refuses, 2 project-unknown (on completed returns: 166 candidate-shows-skipped). As worksheet line 1; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
+   "subject_key": "addc1ae0bd812a876c238c820d0e2fdc3716d1ac1eab03471743996af018780c"
+  },
+  {
+   "key": "(CLW A 4)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); i1040s8812 p. 3, Credit Limit Worksheet A, line 4. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,551 agree; 532 project-refuses, 44 project-unknown, 12 candidate-unknown, 4 candidate-refuses (on completed returns: 1 candidate-unknown). Visibility is s8812.show13 as on line 1; the value reads Worksheet B line 15. Through Credit Limit Worksheet A line 4 it reads the reply's Worksheet B line 14, whose declaration fails validation (s8812.clwb_14 among the invalid lines), so it is unknown on stage16.cleanup.mut.clwb_three_figured, a completed return. Project stands.",
+   "subject_key": "e310b58a95def898cbf7b50512e1d28243d2ac4b2e7994d979873af8a133e76a"
+  },
+  {
+   "key": "(CLW A 5)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); i1040s8812 p. 3, Credit Limit Worksheet A, line 5. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,119 agree; 561 candidate-shows-skipped, 224 candidate-unknown, 192 candidate-refuses, 45 project-refuses, 2 project-unknown (on completed returns: 166 candidate-shows-skipped, 1 candidate-unknown). Visibility as line 1; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Through Credit Limit Worksheet A line 4 it reads the reply's Worksheet B line 14, whose declaration fails validation (s8812.clwb_14 among the invalid lines), so it is unknown on stage16.cleanup.mut.clwb_three_figured, a completed return. Project stands.",
+   "subject_key": "a3881b866ec514fdc9f9853665568a34610e3f2594043596c9d4dc02f995c12a"
+  },
+  {
+   "key": "13",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f1040s8812 p. 1, line 13 (Credit Limit Worksheet A). executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,119 agree; 561 candidate-shows-skipped, 224 candidate-unknown, 192 candidate-refuses, 45 project-refuses, 2 project-unknown (on completed returns: 166 candidate-shows-skipped, 1 candidate-unknown). Visibility as worksheet line 1; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Through Credit Limit Worksheet A line 4 it reads the reply's Worksheet B line 14, whose declaration fails validation (s8812.clwb_14 among the invalid lines), so it is unknown on stage16.cleanup.mut.clwb_three_figured, a completed return. Project stands.",
+   "subject_key": "51c4727f8bf64ba8465a730249d21059ceda0c22232d58c7a45b5e4243f422b5"
+  },
+  {
+   "key": "14",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f1040s8812 p. 1, line 14: \"Enter the smaller of line 12 or line 13\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 2,126 agree; 14 candidate-unknown, 3 project-refuses (on completed returns: 3 candidate-unknown). The reply declares the household.ctc_disallowed_claim refusal on its line 8, but that gate reads s8812.line8 (T-101, i1040s8812 p. 2, Form 8862 may be required), so the reply cycles (\"cycle at s8812.line8\") on the T-101 fixtures f2.t101.credit_disallowed_no_credit_claimed and f2.t101.credit_disallowed_eic_zero, completed returns the project figures; the project places the gate on line 12. Through Credit Limit Worksheet A line 4 it reads the reply's Worksheet B line 14, whose declaration fails validation (s8812.clwb_14 among the invalid lines), so it is unknown on stage16.cleanup.mut.clwb_three_figured, a completed return. Project stands.",
+   "subject_key": "aca0776adbc24424791578c997d170e724140d5fe7648908f08e69894799d322"
+  },
+  {
+   "key": "16a",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 2,126 agree; 14 candidate-unknown, 3 project-refuses (on completed returns: 3 candidate-unknown). Same subtraction. The reply declares the household.ctc_disallowed_claim refusal on its line 8, but that gate reads s8812.line8 (T-101, i1040s8812 p. 2, Form 8862 may be required), so the reply cycles (\"cycle at s8812.line8\") on the T-101 fixtures f2.t101.credit_disallowed_no_credit_claimed and f2.t101.credit_disallowed_eic_zero, completed returns the project figures; the project places the gate on line 12. Through Credit Limit Worksheet A line 4 it reads the reply's Worksheet B line 14, whose declaration fails validation (s8812.clwb_14 among the invalid lines), so it is unknown on stage16.cleanup.mut.clwb_three_figured, a completed return. Project stands.",
+   "subject_key": "2db49766683f5e5a21a17c77fbd1b7cfe9e7ff3ad950937cc2c998d0799406cc"
+  },
+  {
+   "key": "16b",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"; f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,451 agree; 564 project-refuses, 84 candidate-shows-skipped, 44 project-unknown (on completed returns: 33 candidate-shows-skipped). Same reply as the before-catalog-refresh ruling: the line has no shown_when, so it shows the per-child amount after the line 12 or 16a stop (project s8812.show16b); all 33 completed differences are of that kind. Project stands.",
+   "subject_key": "5ebfe9f49ac61d593b6d34cbf5d15301a34900ea0f5970bc6d0ace536a44b9eb"
+  },
+  {
+   "key": "17",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f1040s8812 p. 2, line 17; f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,709 agree; 244 candidate-unknown, 187 candidate-refuses, 3 project-refuses (on completed returns: 3 candidate-unknown). The reply's shown_when matches s8812.show_iia; the value reads line 14. The reply declares the household.ctc_disallowed_claim refusal on its line 8, but that gate reads s8812.line8 (T-101, i1040s8812 p. 2, Form 8862 may be required), so the reply cycles (\"cycle at s8812.line8\") on the T-101 fixtures f2.t101.credit_disallowed_no_credit_claimed and f2.t101.credit_disallowed_eic_zero, completed returns the project figures; the project places the gate on line 12. Through Credit Limit Worksheet A line 4 it reads the reply's Worksheet B line 14, whose declaration fails validation (s8812.clwb_14 among the invalid lines), so it is unknown on stage16.cleanup.mut.clwb_three_figured, a completed return. The candidate-refuses are on refused returns. Project stands.",
+   "subject_key": "e98ac829f31ead26f10a8386d8f8fa8234da73744fc761dbabea03020f617d15"
+  },
+  {
+   "key": "18a",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\"; i1040s8812 p. 7, Earned Income Chart. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 763 agree; 1,049 candidate-shows-skipped, 194 project-refuses, 108 candidate-unknown, 20 project-unknown, 9 candidate-refuses (on completed returns: 1 candidate-refuses, 244 candidate-shows-skipped, 12 candidate-unknown). Same as the before-catalog-refresh ruling: the line has no shown_when, so it shows earned income after the line 12, 16a or 16b stop (project s8812.show_iia); the chart's branches match where both show. It also needs s8812.combat_pay where Part II-A is not reached (completed partials withholding it, e.g. classm.f8960.1.deepseek, classm.sd.1.deepseek; and it refuses stage5.return.refund_combat_pay_no_children, the BUG-0401 regression where line 12 stops and the project keeps every Form 1040 value: checked this round, Form 1040 line 28 $0.00 and line 24 $20,267.00); BUG-0401 reads the combat-pay answer only through s8812.show_iia, as i1040s8812 Part II-A does. Project stands.",
+   "subject_key": "08856376bd4af609e3fe0fb97516e9d2f0fd58bc32792f14423d5635a95071f5"
+  },
+  {
+   "key": "18b",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040s8812 p. 2, line 18b; f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,459 agree; 625 project-refuses, 33 candidate-unknown, 21 project-unknown, 5 candidate-refuses (on completed returns: 1 candidate-refuses, 12 candidate-unknown). The reply's shown_when is s8812.show_iia by reading and its value is $0 with a combat-pay refusal, the project's s8812.combat_pay gate; the differences are that refusal evaluated where triage ignores the reply's shown_when (stage5.return.refund_combat_pay_no_children, where line 12 stops) and partials withholding the answer; every project-refuses is on a refused return. Project stands.",
+   "subject_key": "69e4115f26f37e0b7eb660aaa87f68829ee98eea448f1474018e21440896ddfd"
+  },
+  {
+   "key": "19",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f1040s8812 p. 2, line 19; f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 777 agree; 1,035 candidate-shows-skipped, 194 project-refuses, 108 candidate-unknown, 20 project-unknown, 9 candidate-refuses (on completed returns: 1 candidate-refuses, 234 candidate-shows-skipped, 12 candidate-unknown). The reply's shown_when is s8812.show_iia plus line 18a above $2,500, where the project shows $0: no shown difference. Through line 18a: It also needs s8812.combat_pay where Part II-A is not reached (completed partials withholding it, e.g. classm.f8960.1.deepseek, classm.sd.1.deepseek; and it refuses stage5.return.refund_combat_pay_no_children, the BUG-0401 regression where line 12 stops and the project keeps every Form 1040 value: checked this round, Form 1040 line 28 $0.00 and line 24 $20,267.00); BUG-0401 reads the combat-pay answer only through s8812.show_iia, as i1040s8812 Part II-A does. Project stands.",
+   "subject_key": "76d646886ebf945f71320a230590deb514119eb2b9cc16e4f77452da804a0902"
+  },
+  {
+   "key": "20",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f1040s8812 p. 2, line 20: \"Multiply line 19 by 15% (0.15)\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 777 agree; 1,035 candidate-shows-skipped, 194 project-refuses, 108 candidate-unknown, 20 project-unknown, 9 candidate-refuses (on completed returns: 1 candidate-refuses, 234 candidate-shows-skipped, 12 candidate-unknown). Visibility is s8812.show_iia; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Through lines 18a and 19: It also needs s8812.combat_pay where Part II-A is not reached (completed partials withholding it, e.g. classm.f8960.1.deepseek, classm.sd.1.deepseek; and it refuses stage5.return.refund_combat_pay_no_children, the BUG-0401 regression where line 12 stops and the project keeps every Form 1040 value: checked this round, Form 1040 line 28 $0.00 and line 24 $20,267.00); BUG-0401 reads the combat-pay answer only through s8812.show_iia, as i1040s8812 Part II-A does. Project stands.",
+   "subject_key": "0acb652ec74d28077c57903bb6ea88389403afe151b28c026f8dba03a78730ec"
+  },
+  {
+   "key": "21",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 16. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14). Project stands.",
+   "subject_key": "d0ce60ab7bf40a1badd86a76b5ea561d261a26e58ef83efac76691099ad27856"
+  },
+  {
+   "key": "22",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation (+ scope); f1040s8812 p. 2, line 22 and the instruction after line 20. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,306 agree; 539 project-refuses, 149 candidate-shows-skipped, 135 candidate-unknown, 7 candidate-refuses, 7 project-unknown (on completed returns: 112 candidate-shows-skipped). By reading, the reply's shown_when is the project's s8812.show_iib: line 20 below line 17 already implies lines 12, 16a and 16b above zero, and its extra Puerto Rico branch is refused (s8812.puerto_rico); triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. The candidate-unknown and refusals (s2.other) are on refused or incomplete returns. Project stands.",
+   "subject_key": "036380de32e12da8b7b0b4761e68ae15fd68c8bc48d38ca855d9bf41e3f677fd"
+  },
+  {
+   "key": "23",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040s8812 p. 2, line 23. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14); it reads line 21. Project stands.",
+   "subject_key": "6b0ce267dbba287bdb6c0ea613558fe2f1db4050d5b29ecdb560349815aeb6c6"
+  },
+  {
+   "key": "24",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation (+ scope); f1040s8812 p. 2, line 24. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,483 agree; 222 candidate-shows-skipped, 156 candidate-unknown, 154 project-refuses, 123 candidate-refuses, 5 project-unknown (on completed returns: 84 candidate-shows-skipped). By reading, the reply's shown_when is the project's s8812.show_iib: line 20 below line 17 already implies lines 12, 16a and 16b above zero, and its extra Puerto Rico branch is refused (s8812.puerto_rico); triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. The candidate-refuses (s3.mfs, person.over) and unknowns are on refused or incomplete returns. Project stands.",
+   "subject_key": "e3fefe2b6913d0faf2f2fc497775fee496ca38f2cda3fba2ff0902b97daf2c2f"
+  },
+  {
+   "key": "25",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040s8812 p. 2, line 25. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14); it reads line 23. Project stands.",
+   "subject_key": "90e711b04b44b0b5eb63ac7825468dd6603fe93665fd8cca50f97ffbc9643cde"
+  },
+  {
+   "key": "26",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040s8812 p. 2, line 26. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14); it reads line 25. Project stands.",
+   "subject_key": "e42dabb95d0d82be860da26e08da0b19c9b757afde32e5150e709f209599acb2"
+  },
+  {
+   "key": "27",
+   "record": "37f3a975b65a79e7f54c6ca403818392364e805f68a7540935c4aba210408a16",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f1040s8812 p. 2, after line 20, \"No. If you are a bona fide resident of Puerto Rico, go to line 21. Otherwise, skip Part II-B and enter the smaller of line 17 or line 20 on line 27\". executable-triage-v2 (`../triage/s8812.json`; 1,638 fixtures, 500 generated returns seed 20261026, 75 partial records): the candidate is invalid on every record (2,213) and was not executed; this adjudicates the declaration, not the tax reading. The Puerto Rico path is refused by the project (refuses: s8812.puerto_rico_if_child, which asks s8812.puerto_rico only when line 4 is more than zero; i1040s8812 p. 3, \"you may be eligible to claim the ACTC if you had at least one qualifying child\"). Project stands.",
+   "subject_key": "87a7437e75ae2955792bb6e3884fc79c2c4093a9fc87d19827dd6c0cc3c26bc4"
+  },
+  {
+   "key": "(CLW B 1)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); i1040s8812 p. 5, Credit Limit Worksheet B, line 1. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,648 agree; 446 candidate-shows-skipped, 46 candidate-unknown, 3 project-refuses (on completed returns: 156 candidate-shows-skipped, 2 candidate-unknown). The reply's shown_when (Form 5695 Part I claimed and line 4 above zero) omits the line 12 stop: Credit Limit Worksheet B is reached only through Worksheet A line 4, after line 12 (project: s8812.show_clwb requires s8812.show13), so it shows the worksheet on returns that stop at line 12 (f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"). triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Values agree where both show. Project stands.",
+   "subject_key": "779baffdb584bb349b6f5f14d422e6a045ade2b79bee30dacfb9e00fd21fc1bf"
+  },
+  {
+   "key": "(CLW B 2)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 2. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,338 agree; 484 project-refuses, 297 candidate-shows-skipped, 23 candidate-unknown, 1 project-unknown (on completed returns: 92 candidate-shows-skipped). Same reply as the before-catalog-refresh ruling: no shown_when, so it shows the line on returns that do not complete Worksheet B (project s8812.show_clwb). Project stands.",
+   "subject_key": "d956d8f04c4a208d8baf84b6f77d2dd67e5459dcf5b3097d428a7e39efec51f6"
+  },
+  {
+   "key": "(CLW B 3)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 3. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 340 agree; 1,317 candidate-shows-skipped, 455 project-refuses, 28 candidate-unknown, 3 project-unknown (on completed returns: 299 candidate-shows-skipped). No shown_when, so it shows the line on returns that do not complete Worksheet B (project s8812.show_clwb), the before-catalog-refresh disagreement; the type error of the earlier reply is gone. Project stands.",
+   "subject_key": "3a08614e786ce22d57b23c263ce592cb9f2a4b1e224d3bacb679f6adbfa5b5fa"
+  },
+  {
+   "key": "(CLW B 4)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 4. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 361 agree; 1,296 candidate-shows-skipped, 455 project-refuses, 28 candidate-unknown, 3 project-unknown (on completed returns: 288 candidate-shows-skipped). The reply's shown_when (Form 5695 Part I claimed and line 4 above zero) omits the line 12 stop: Credit Limit Worksheet B is reached only through Worksheet A line 4, after line 12 (project: s8812.show_clwb requires s8812.show13), so it shows the worksheet on returns that stop at line 12 (f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"). triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
+   "subject_key": "c614bfe4011ad3459bda4f02546bc25f98473a589d0b8424572a654a184458a9"
+  },
+  {
+   "key": "(CLW B 5)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 5. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 361 agree; 1,296 candidate-shows-skipped, 455 project-refuses, 28 candidate-unknown, 3 project-unknown (on completed returns: 288 candidate-shows-skipped). The reply's shown_when (Form 5695 Part I claimed and line 4 above zero) omits the line 12 stop: Credit Limit Worksheet B is reached only through Worksheet A line 4, after line 12 (project: s8812.show_clwb requires s8812.show13), so it shows the worksheet on returns that stop at line 12 (f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"). triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
+   "subject_key": "a5fa2598abea39f80895448dc780a164100cb1d4e56345ae642314dc11f7286a"
+  },
+  {
+   "key": "(CLW B 7)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 7. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14); it copies line 21. Project stands.",
+   "subject_key": "661932ff901b6fe3cd009a96bb735c976edebb346128a3d8cc3c8980dfa33421"
+  },
+  {
+   "key": "(CLW B 8)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 6: \"Otherwise, leave lines 7 through 10 blank\"; line 8. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,356 agree; 464 project-refuses, 157 candidate-unknown, 153 candidate-shows-skipped, 12 candidate-refuses, 1 project-unknown (on completed returns: 112 candidate-shows-skipped). No shown_when, so it shows the line where line 6 leaves it blank and on returns without the worksheet (project s8812.clwb_to7). Same as the before-catalog-refresh ruling. Project stands.",
+   "subject_key": "1e9ce2591607f31ff0327e8d6036b8e131adcf0833450d69d976f9031c7a03c3"
+  },
+  {
+   "key": "(CLW B 9)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 9. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14); it reads line 7. Project stands.",
+   "subject_key": "859cc0b6e0d61a19d885689cef9690996589d6c449541164b5173642aa1245fb"
+  },
+  {
+   "key": "(CLW B 10)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); i1040s8812 p. 5, Credit Limit Worksheet B, lines 6 and 10. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,511 agree; 240 candidate-shows-skipped, 175 candidate-unknown, 133 candidate-refuses, 84 project-refuses (on completed returns: 84 candidate-shows-skipped). The reply's shown_when carries line 6's routing but, as worksheet line 1, omits the line 12 stop. The reply's shown_when (Form 5695 Part I claimed and line 4 above zero) omits the line 12 stop: Credit Limit Worksheet B is reached only through Worksheet A line 4, after line 12 (project: s8812.show_clwb requires s8812.show13), so it shows the worksheet on returns that stop at line 12 (f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"). triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
+   "subject_key": "b98504da4f8dc194bf8d7435343a292be80038fc914a9d2ad9562688b0759345"
+  },
+  {
+   "key": "(CLW B 11)",
+   "record": "37f3a975b65a79e7f54c6ca403818392364e805f68a7540935c4aba210408a16",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 6, \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11\". executable-triage-v2 (`../triage/s8812.json`; 1,638 fixtures, 500 generated returns seed 20261026, 75 partial records): the candidate is invalid on every record (2,213) and was not executed; this adjudicates the declaration, not the tax reading. The Puerto Rico path is refused by the project (refuses: s8812.puerto_rico_if_child, asked only when line 4 is more than zero; with line 4 zero, worksheet line 2 is zero and line 13, \"Enter the smaller of line 2 or line 12\", is zero whatever line 11 is). Project stands.",
+   "subject_key": "30acbdc77f5bef2560da33be6687cc03d1b72a61f3a162e09cf193f5da09e20a"
+  },
+  {
+   "key": "(CLW B 12)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 6, Credit Limit Worksheet B, line 12. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14). Project stands.",
+   "subject_key": "e6817fa8ed1b7943db56bc67ba92bcda7240e5de3b4892bcb8914c8834295104"
+  },
+  {
+   "key": "(CLW B 13)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 6, Credit Limit Worksheet B, line 13. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14). Project stands.",
+   "subject_key": "625ca4594a68748c1039f220c1fc9529a46c0974cb44e38d9dc5375a3a84ea63"
+  },
+  {
+   "key": "(CLW B 14)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 6, Credit Limit Worksheet B, line 14. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14). Project stands.",
+   "subject_key": "7ea2b40b43cf51af21ee3b10e82d3a060cc4c537fe716cdfd54b643a82aac3b5"
+  },
+  {
+   "key": "(CLW B 15)",
+   "record": "237d84e894fb37d9778fa8f98a42929f60c6db247eda974987649b08d514190b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); i1040s8812 p. 6, Credit Limit Worksheet B, line 15: \"Enter the total of the amounts from — Schedule 3, line 5a; Schedule 3, line 6c; Schedule 3, line 6g; and Schedule 3, line 6h.\" executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,430 agree; 522 project-refuses, 155 candidate-unknown, 23 candidate-refuses, 13 candidate-shows-skipped (on completed returns: 1 candidate-unknown). The reply's shown_when (Form 5695 Part I claimed and line 4 above zero) omits the line 12 stop: Credit Limit Worksheet B is reached only through Worksheet A line 4, after line 12 (project: s8812.show_clwb requires s8812.show13), so it shows the worksheet on returns that stop at line 12 (f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"). It reads worksheet line 14, invalid, so it is unknown on stage16.cleanup.mut.clwb_three_figured. Lines 6c, 6g and 6h are refused by scope.credits, as the reply notes. Project stands.",
+   "subject_key": "63f12a70f128c3b0b67c6e845507e8150eb5ca722c930e2d6ee5aee3d36ef63c"
+  }
+ ],
+ "subjects": {
+  "s8812.clwb_complete": "fd4e13e6bc354b5d047296f52185bebe8db94c7f7d61838ff3a43bf3996ed075",
+  "1": "726e81a1f9560521abf02085fc4bdba346b8d7a6e561521afa77413772546c04",
+  "2a": "76dca4c11aa08c040226f3dcb4e9d35a6526be3cfd042191d1ef099eb51bf5dd",
+  "2b": "0e1de812ea6ea1d19890fb79973158269657922b0f500378b2d2c95c9f4324d6",
+  "2c": "9b61da1903f3bb265a43b29eab0fc1d592d31af39e0097a8c53eac29662f8891",
+  "2d": "c529d8f926a565b263415b5fbc90ddca337efdd054179fd8f85d3ca763ffac40",
+  "3": "785bb469d88afb7f26ba27198ba9e610245b777c1e091e9f174cbf45a72aaa92",
+  "4": "acb911756f12e0432421c2b1945b6184eca8aed5a6568b0efe164bc1c1e9ffbb",
+  "5": "5a28cc88fa11d12dddbe5dd3bd26a277cd09ef747d4fa1baf80ab3e8b9b38de6",
+  "6": "cb20b8885513867db7fdc345a16dc7c36cec319788d58c9b41f65e92287c988b",
+  "7": "aa09fb3d7a4c722725e22356c8a3d914fb152448ae2be149adec232d99b0272c",
+  "8": "09c44f21b82389447c9bfda40d2540400f8bc0c0d54a9943278a1b62340c4682",
+  "9": "84743a077073125147cb30b8aa8ec7abe26097960485e07f8a5489fedf125705",
+  "10": "ee89da9b0dd821957ffb65933cfdad3ac19528d908fa229d9c898f12d1960df0",
+  "11": "6efab51a89b36bf900a02c92653e95235c0b5f4d73c71dd058ec7720d69d86d0",
+  "12": "3b4c257839088a2958f8c7690603a404af326a188c4f9a2009800941b7bb9003",
+  "(CLW A 1)": "877500c05f9b56344db1784b6741359211258b95265fca80d5932fedefe7c6f8",
+  "(CLW A 2)": "06a14468e84fa420bce3f0e31bb4174d457156f51e68055c2e2b32f75ab16f39",
+  "(CLW A 3)": "61f0c09671b7648c360d1ae551e31d1a2a7a3caaf3c6706d0a77bc0006f58076",
+  "(CLW A 4)": "8542d57a961dcc469bb56c2d9385e9b3a511346908f9e848bfae0d7c56392cca",
+  "(CLW A 5)": "42cdbf544a354696984949fcfd7cdf0aa846d3f48915a0d5058f262f09b5b59e",
+  "13": "1468df663953e3b73591eb991c72f1bca19ad288fb0a7c3a6417f34a67962984",
+  "14": "84baf8ecdb7b32ea5f49e6706a97aa55ffbb9df25e861564b73ce74973972b9e",
+  "16a": "3d98ca73a1b6332bd82c9ceb2daebeb2aabd99efc843653de914f1feb1f74e03",
+  "16b": "604e7dfab38da55e794e9583176f6265014f8329698e5cb587b1d4d1140b50e0",
+  "17": "7181301d44f76fddbaafbefdf2805d932f76b3a10e49bf810a0c26b00b752009",
+  "18a": "d9a0845721ea0f1a024971ecb361a7833a6fb8bd77192926217fc39f7af8332b",
+  "18b": "0d1e3e71d94e41d0b93873ad007ac8d897a7ca6bf895a8d6fe26c9a37dfe3434",
+  "19": "7251697fc0074a19522ab5dd388541085f7e6331eb534827dabea50ee7a6ef00",
+  "20": "6ae7b1fe85db2da8d829f6db09b41fdbe04de5816c29ff18420bd2679c9629a8",
+  "21": "07d932ff5152faad01e426cda5d7297195ed4c742e0ed6ec5db33e1e26ec0537",
+  "22": "1dc2276bcf27423668f065ae8861fb32ea4b77ab5863b40fe954f85e77262e08",
+  "23": "582fa9dbd088b2e435dd8923c37112d5b564b645ee81f9daadd1cc3f0e644e8e",
+  "24": "07e2ba2f1f2271364291e5a99e8e1f24abf48f6bf86fcc19c4a83e0e2799b4c2",
+  "25": "2e484bbc3e5d603741c5e7d65d2eca129af97edfd82f3aa13311469ebf70ac0b",
+  "26": "46a059dfd21928a2e1df69a502d7e31afb0eabef39dffb1c259f1f0fb1fc9f04",
+  "27": "63f0c0e751d37f801993d00a03cd3a180db9b36ed53994128ea4ffd6ed385941",
+  "(CLW B 1)": "8080855abfd856eacc16271d2ce0a399b072fafd4dda7cdc6ed310262295c0a6",
+  "(CLW B 2)": "6fa00c15fea3fc67cf2382a36e3dd3ec7e0b04e1ec2c2857a9030edb94387fbd",
+  "(CLW B 3)": "814000dfdbc9c08afb328b83e37dfec9657d5c6706eda96bbc3b08d2cc1e8e5b",
+  "(CLW B 4)": "61efd6bc9f899c31718e5c509a6b6b35071a4745d364dca83ab7e792ca05f76e",
+  "(CLW B 5)": "bfd33646b84e8e5fab5c7274d6824faca7564213b729efd411fe0048a873730e",
+  "(CLW B 7)": "a49ff581228c7a4a59be5bf25f39a4c635c1251064489aaf31fcbaf092258a30",
+  "(CLW B 8)": "09633136fa21960a89c9b37dd4c06ca5a0deb72691d38ea84d3a3a4479212928",
+  "(CLW B 9)": "4bb7531a765f985f8c0083a443fde1b5ef8c0ec24e36064bea339e8ff5a547ab",
+  "(CLW B 10)": "95cc800f42f24e489fa206a5b603695eb999efc2a4455b14cba83d9221d7f40b",
+  "(CLW B 11)": "e472a091353dfccd59e03fba5e547078902b14aeacccd9ab171ccb0843fc365c",
+  "(CLW B 12)": "a35230b46bdb79b0cbc0ff81d0261f93d4388a2b107d3ef733e36c64c50bb7d1",
+  "(CLW B 13)": "fa3d85aa4d14d2b9dd68db2cee8e64d022042093a1a2083a6f6e398508b33391",
+  "(CLW B 14)": "ec534fdd1cca14e99aa45b58d741aecd3c29d807cd216568aa2b011ba971ee98",
+  "(CLW B 15)": "ebf175fd0773f267c272c3da08227066c5fba5ad94b8639c7a2a376831534205"
+ },
+ "__rest__": "26b9e33184e6b547f9a42f1bcf2f7306c3c3f194ef3e258fda9aed8fc3076ec6",
+ "foreign": {
+  "27": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "(CLW B 11)": "127301fc8ea42af98695155ffec1a3844bdb0cf332076fe8235e5d74871f0ddb"
+ }
+}

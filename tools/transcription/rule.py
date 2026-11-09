@@ -47,8 +47,9 @@ def line_subject(kind, form, key, snap=None):
 
 
 def apply(form, rulings, kind="transcription", family=families.DEFAULT):
-    path = sidecar.log_path(kind, form, family)
-    text = open(path, encoding="utf-8").read()
+    text = sidecar.read_log(kind, form, family)
+    if text is None:
+        raise SystemExit(f"{families.stem(form, family)}: no {kind} log")
     head, sep, rest = text.partition("\n## Lines\n")
     body, sep2, tail = rest.partition("\n## Raw ")
     parts = body.split("\n### ")
@@ -101,8 +102,8 @@ def apply(form, rulings, kind="transcription", family=families.DEFAULT):
             applied.append(printed)
         parts[i] = title + "\n" + content
     body = "\n### ".join(parts)
-    open(path, "w", encoding="utf-8").write(head + sep + body + sep2 + tail)
     if applied:
+        sidecar.write_log(kind, form, head + sep + body + sep2 + tail, family)
         sidecar.save(kind, form, stored, family)
     return applied
 
@@ -133,5 +134,5 @@ if __name__ == "__main__":
     ap.add_argument("--family", default=families.DEFAULT, help="the model family whose log is ruled")
     a = ap.parse_args()
     done = apply(a.form, json.load(open(a.rulings)), a.kind, a.family)
-    remaining = open(sidecar.log_path(a.kind, a.form, a.family), encoding="utf-8").read().count("Ruling: open")
+    remaining = sidecar.read_log(a.kind, a.form, a.family).count("Ruling: open")
     print(f"{a.form}: ruled {len(done)} line(s) {done}; open rulings remaining: {remaining}")

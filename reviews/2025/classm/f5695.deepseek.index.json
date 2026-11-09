@@ -1,0 +1,2980 @@
+{
+ "kind": "classm",
+ "form": "f5695",
+ "family": "deepseek",
+ "base": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+ "lines": [
+  {
+   "key": "case classm.f5695.1",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.1 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.1 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.1 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.1 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.1 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.1 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.1 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.2",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.2 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.2 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.2 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.3",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.3 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.3 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.3 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.3 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.3 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.3 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.4",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.4 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.4 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.4 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.5",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.5 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.5 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.5 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.6",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.6 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.6 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.6 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained. i5695 p. 5, Residential Clean Energy Credit Limit Worksheet line 2 includes the child tax credit (Form 1040 line 19, or Credit Limit Worksheet B line 14), and the project's f5695.ctc reads it; on this return Form 1040 line 19 is $0 (Schedule 8812 line 12 $0), so line 2 is only Form 5695 line 32 ($2,300.00) and line 14 is $4,555.00. The model subtracted a child tax credit equal to the project's line 14 figure that the return does not have. Line 13 is $0, so line 15 is unaffected. [dropped]"
+  },
+  {
+   "key": "classm.f5695.6 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.6 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.6 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.6 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.6 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.7",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.7 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.7 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.7 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.8",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.8 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.8 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.8 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.8 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.8 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.8 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.8 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.8 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.8 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.8 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.8 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.8 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.8 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.9",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.9 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.9 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.9 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.10",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.10 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.10 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.10 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.11 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained. i5695 p. 5, Residential Clean Energy Credit Limit Worksheet line 2 includes the child tax credit (Form 1040 line 19, or Credit Limit Worksheet B line 14), and the project's f5695.ctc reads it; on this return Form 1040 line 19 is $0 (Schedule 8812 line 12 $0), so line 2 is only Form 5695 line 32 ($600.00) and line 14 is $8,455.00. The model subtracted a child tax credit equal to the project's line 14 figure that the return does not have. Line 13 is $0, so line 15 is unaffected. [dropped]"
+  },
+  {
+   "key": "classm.f5695.11 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.11 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.11 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.12",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.12 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.12 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.12 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.12 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.12 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.12 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.12 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.12 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.12 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.12 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.12 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.12 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.12 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.13 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.13 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.13 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.14 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.14 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.14 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.15 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.15 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.15 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.15 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.15 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.15 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.15 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.15 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.15 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.15 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.15 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.16 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.16 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.16 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.17",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.17 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.17 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.17 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.f5695.18",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": null
+  },
+  {
+   "key": "classm.f5695.18 — 5b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.18 — 6a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 6b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 11",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.18 — 13",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 14",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 15",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 16",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 18b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 19c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 19f",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 19g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 19h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 20c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 20d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 22c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 22d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 23c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 23d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 24c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 24d",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 25e",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.18 — 26c",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.f5695.18 — 27",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 28",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 29g",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 29h",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 30",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 31",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 32",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 32a",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f5695.18 — 32b",
+   "record": "f357f4bae5ed7ee043f1f309320aa7cdc6c26ddbb0a1b62091c7eb90033634c6",
+   "status": "AGREE"
+  }
+ ]
+}

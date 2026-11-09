@@ -1,0 +1,425 @@
+{
+ "kind": "render",
+ "form": "f1040",
+ "family": "deepseek",
+ "base": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "Filing Status",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "821a994a2038d3f1db713493df4827f8d41876778c3dc4da6ad24861057217ef"
+  },
+  {
+   "key": "1a",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "d6934c60d1c902a1febe80247735f94418305f5122c05cc97542ff718f41d0d5"
+  },
+  {
+   "key": "1e",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "d5ef22c78afd0ef5f6f109bbcdf2677760c4d7ffd5f520a87e049470dd07e00f"
+  },
+  {
+   "key": "1z",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope — Form 1040 line 1z and i1040gi p. 25. Lines 1b through 1d and 1f through 1h are Schedule 1 and other-income categories refused as a whole return by `scope.other_income`; the project adds only line 1a and line 1e while those regimes are outside the tool. The reviewer counted the printed addends without the return-level refusal.",
+   "subject_key": "e8f982cb026bf344e28015aa9a37b8583b5368981126d75e1e4fb13961ff623f"
+  },
+  {
+   "key": "2a",
+   "record": "1d7f6a971f1a5743bb024947f134f8a63d7416da5719d6f6f63cbba86912a895",
+   "status": "MATCH",
+   "subject_key": "c1e761d50f548f176012d596b230d71a5822c926136c0756b2e4998cdfc43f0f"
+  },
+  {
+   "key": "2b",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "5fcc23954b692569dc31edd39ea34ba57901711568268f9735580b422e2adf0b"
+  },
+  {
+   "key": "3b",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "fc0d919dc7faf6fd5ac65cb5e848228df75d29999a29cc62284e92cd2106738c"
+  },
+  {
+   "key": "3a",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "a5bb5e744249efcaf1969c5b9b518611ac84cd332c8aa8d0afbe6e7678661ce5"
+  },
+  {
+   "key": "4a",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "a28c1d2d1d899a3c9b47a283668ddb707c18323b70e203d8109645e207e34eb4"
+  },
+  {
+   "key": "4b",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "6620cadac0eb1b28001d7d8cedfd87e8954994a18a874f7f585e6db170935a35"
+  },
+  {
+   "key": "4c",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "65dd2eedde6095c32437eb186806035694176d2be3b1fdddc2b7a12a3e3d79a4"
+  },
+  {
+   "key": "5a",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "b76b5a16b1954031c1d380c5bd5ea6b5098986fb0cb9acbc6b754561d87863fa"
+  },
+  {
+   "key": "5b",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "ec85e20a66ce88520e36db64b23fe5b475dbb850a0805b24a1221022a2d44945"
+  },
+  {
+   "key": "5c",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "faa6d5a633865d9447f56acba882229790b9fbe485ef62cb3e4a379353fc1665"
+  },
+  {
+   "key": "6a",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "3c9c39fcb7e8eae4ef7b851ec424f4dd09a3454888081f205f0696886e9d3ebb"
+  },
+  {
+   "key": "6b",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "d86997f8ac54a6d770580153f56807e9982af844a479111f1e56657854524caf"
+  },
+  {
+   "key": "6c",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "6e7418ae5ee4e7661f9714a9d1e33de059a17660aa77b84c318ff5e3b5688442"
+  },
+  {
+   "key": "6d",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "b15723a0ce56afa259fd7bd5a73a4347320cd20a3c0872ce48afa26c06efb4e5"
+  },
+  {
+   "key": "7a",
+   "record": "1d7f6a971f1a5743bb024947f134f8a63d7416da5719d6f6f63cbba86912a895",
+   "status": "MATCH",
+   "subject_key": "cbc65e57f66377947812a3df05229203f74a5496d61137c118c64a53fa676113"
+  },
+  {
+   "key": "8",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "a0943fae316ad24e6c300f3097b0449bdad9dab3a6b6341d175888610610b81d"
+  },
+  {
+   "key": "9",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "4daf4f7b42bcf1e2f4e4022edc444fd514938e25a69dc55ebdaa5f296d58049f"
+  },
+  {
+   "key": "10",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "8a370d1449f8f47d0e15fa61b6f0e96449dc43e4092ac8de1d61296517252810"
+  },
+  {
+   "key": "11a",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "a2565bb845cb974ed446b0df31ea3b5f270943a234756eedd7630f8745da751e"
+  },
+  {
+   "key": "11b",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "32592108731abba0dc0ba828c4a253f46fd14c001b6e21d9e94468a6d214fc91"
+  },
+  {
+   "key": "12e",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "c8471961f994e71f3f5b1d00762a2d60fc53060230b2f06c9e0b3bf321c18d54"
+  },
+  {
+   "key": "13a",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "e258352b596023db5e54802197df09cb01780ab8d6b70ddbd7aa52ea71c3d100"
+  },
+  {
+   "key": "13b",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "0f90650ca430b6e91289701897da2d2d5481f86c2e6516f5ebb818dbd36aca29"
+  },
+  {
+   "key": "14",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "bdf6c97e615899c0e27014edd4fba398236d2bd592a46c1851646e444d486ec0"
+  },
+  {
+   "key": "15",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "0408976021cc764d34f396f6ae3042c01392df49a48c8bcc9e933f2ce9727ea2"
+  },
+  {
+   "key": "16",
+   "record": "1d7f6a971f1a5743bb024947f134f8a63d7416da5719d6f6f63cbba86912a895",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; project retained. i1040gi, Line 16: \"If you are filing Form 2555, you must use the Foreign Earned Income Tax Worksheet\"; Form 2555 is refused by sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\"), which refuses the deduction and so line 16 downstream; the refusal sits on Schedule A, not on this line's derivation, so the rendered English did not name it. Line 16 itself is unchanged; it went stale through line 3a.",
+   "subject_key": "154a1169ba7a440f03803277395e6c4f36ba965a810a8f65cdd4fc83bdbc8c4c"
+  },
+  {
+   "key": "17",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "45b00d9cc0e82d68ec0ebff411154ac4865f412bcf690ede798a3752e74b543d"
+  },
+  {
+   "key": "18",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "9f2f23b34d2c954de77e2ca2ae97a48e77e13482535277e87b5efa622f00a7b0"
+  },
+  {
+   "key": "19",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "661ccf6fabacdfc5dbeed2679b49c1aaaa34dc4213b748a5632cae37de70e51e"
+  },
+  {
+   "key": "20",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "87f9a4c891ad603b013b63a33ef42efdc16e0e87e7596fb2113586ea46e21fca"
+  },
+  {
+   "key": "21",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "e78210c213e00048312b24026d843d2132e9a009cd106de05c02a2261e74fb5f"
+  },
+  {
+   "key": "22",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "b7625788ce9d141ec0fb0b6a14319f1ace11c791eef0514ffd26dc6378d7b134"
+  },
+  {
+   "key": "23",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "565b62d0d2099e28f8bde9131d9cdd1b983a66f38a14863f602c82c80f97f629"
+  },
+  {
+   "key": "24",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "8a9088c903bd76123f037f69f6223cbcc803b93e11c44db7676c5cc1892640e6"
+  },
+  {
+   "key": "25a",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "2c184e8afa2c53003fbdabbd8d99953b958c052d0887c3ddc169b23662b41314"
+  },
+  {
+   "key": "25b",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "3d59126eb9decb27d448ea8050fd6513b8ce1208d4468fccc02655a209781dd9"
+  },
+  {
+   "key": "25c",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "765633c11525cfb2bc2c48f7bd8a3bfdc87d1ccf6d935e7f8b569dcff84529a1"
+  },
+  {
+   "key": "25d",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "32367a5f60de89b04ec8f6d7624e0666985a95faeb6e468198df7b170084de4f"
+  },
+  {
+   "key": "26",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "addc2cf8a17d25a2c4eb2a39e55ce191e60fd9333bef58222b1a012e04ed73ae"
+  },
+  {
+   "key": "27a",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "bf43f55d097b1a5e46a1c995d6d792d9aebf9e6e659449289508fc523e3ee32e"
+  },
+  {
+   "key": "27b",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "606a0e7612c377cc8a32e5d09cb71fa391d090017caeb529643a214232705aae"
+  },
+  {
+   "key": "27c",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity — i1040gi p. 43, Line 27c; T-027 in TASKS-DONE records the owner's disclosed design limit: instruction-mandated STOP boxes are computed, while the filer's voluntary EIC opt-out is not asked. The helper label explicitly discloses that limitation.",
+   "subject_key": "171d8b40e4a452ee0dba6c4bee06fb2fec98e4faef3369b23c6152cea5853410"
+  },
+  {
+   "key": "Dependents (separated spouses)",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "0b5bd74ffa4a6f74166572e4ee73a64075c3a6138c5360a76f16c995a061ab7b"
+  },
+  {
+   "key": "28",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "b9a6b7bffe1cf49c42ad8901287d1a5cdb07dbf867fff6b95ff2f1d43d88edac"
+  },
+  {
+   "key": "28 (box)",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity — Form 1040 line 28 and i1040gi p. 61; BUG-0174 records the owner's 2026-10-27 decision to retain the ACTC opt-out as a disclosed design limit, closing BUG-0162. The label and note explicitly state that the choice is not asked.",
+   "subject_key": "71d929f4d0e57acacf3d490441222411409e25718323efb656b75393099439be"
+  },
+  {
+   "key": "29",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope — MFS is refused by `scope.ready` through `s3.mfs` for the whole return, and nonresident aliens by `scope.other_income`. `f8863.line3` through `line8` implement the MAGI limit and phaseout; the reviewer mistakes the initial eligibility gate for the whole Form 8863 calculation.",
+   "subject_key": "de9f2cac53deba78dbbb37c79697f5559fb12c922347700466e78642e368a536"
+  },
+  {
+   "key": "30",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "0ec05bc32870b6f2677cc9e91a4b98a39c873e6dea58078be55a6fd818670215"
+  },
+  {
+   "key": "31",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "6e7bd6f7e4b96c2ae7ad40d1d733de8156425caf28fc5cdac2d22d1be075670b"
+  },
+  {
+   "key": "32",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "dc36bf810bf2133bc5668e4eb9e29d140fdb7186a8d35ff5aea96d81d2a38dc5"
+  },
+  {
+   "key": "33",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "faad0b12cf2557cdd8c99dd7f74d77751a193deb9597faffdf9552ff6e3dcd3f"
+  },
+  {
+   "key": "34",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "7c13739700ee13036a176974639d16ef34bf19df8a34cb4109a20ea8cfe75606"
+  },
+  {
+   "key": "35a",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "8d1fc4c19a6c03deb960c6cf7e9bccc441522b7020e9873c344ae2784abf0162"
+  },
+  {
+   "key": "36",
+   "record": "f2cdc003f4d93a79bdaa6afc7f09788f77a61e2b9f37438b2160214d13c0ec32",
+   "status": "MATCH",
+   "subject_key": "f9353794e510e213d059e32845b29cdef528d551751d4b8d31b2777f7e460044"
+  },
+  {
+   "key": "37",
+   "record": "1d7f6a971f1a5743bb024947f134f8a63d7416da5719d6f6f63cbba86912a895",
+   "status": "MATCH",
+   "subject_key": "1340d46a1046897ed3d6410b7c2a2ce81125e6c850ceda24ce36f8fc2d63101a"
+  }
+ ],
+ "subjects": {
+  "Filing Status": "801fa2ed5458122404d348444fe6a5005e94d94c822fb1b9c35f915b193514b1",
+  "1a": "30edf8cb3b612e9385107ce98977eda708e34ff0da9de56c2189ee80af12f628",
+  "1e": "f11ac36da1c34a2647c8a2d99ccb55dda332b3355f00e2ddd18e457120a40e60",
+  "1z": "8d8cb9b32215c44e593de2b042813d8b0fb77927bd1ebaaedd46ce46ca6dd573",
+  "2a": "4c95958fd0c5baf2865c3dc2cd0e386585c42f6317797633ee69495279ac1c98",
+  "2b": "48291acb502b02c2e8d526c1ea984748a53248240981b7cfac306b63033cca22",
+  "3b": "747eeb072037cc1b34b72900a4247be3c419c015d581dc88da0d831bb8476af7",
+  "3a": "6e3f46c7c8292bb173f0601aef6e345571ad75004482003ff7622a866936784c",
+  "4a": "05a3932cddc2a2f29c0d72e13ac268505324c3950c79f791aa31f8d54bbeeace",
+  "4b": "56e420c34717b46f375797c738aef59393c202a9e02d59404e83eb8f0ec60318",
+  "4c": "57c369639ec75e445e5ec501d1c30c3c6a0527a4256e616578db15459895b089",
+  "5a": "d4c67777f053a9c053eeff48460d6e744c0f48631555ee68b5c34854418e9ffb",
+  "5b": "962ccf72782982d2a31cabf866b0fa061fd80eb19ddcc5a9a848e61bc81d7a1c",
+  "5c": "b153cbd61a59874c4e79b6c131d588fc0ccecd393141723d33074620ba4229e5",
+  "6a": "49bda76655bc51d6f65861fd1c37addbcc512de35da37cccb4bcf08e46f5582f",
+  "6b": "2cfe44440e5bb1af343272aa6c6e2101d02fb705630feb24f0ce2ab80a6a49cf",
+  "6c": "3c94f12aab755979ebd0fa69cef087ff9431eda7f027a051756157d85e5ff4a9",
+  "6d": "e3960ca641905a84b592ad3a90dd7fd46a3b0cdb8bbd1abdc97f718f0ec97eca",
+  "7a": "19acf19ce2d9361081a65416cc166e8efbf5899ab70464f86bc0961e99e17658",
+  "8": "a42edcad6b686d6a14fc6fe265fcd8d634b143446c75ca4bde2c0bcec8c02a3a",
+  "9": "6eb28ba8daf2367c84e1f463c3894181bc2460e2274187b64d4d43cf66eda4ac",
+  "10": "4530ea57e270b30dbeb7901b5515647693a7231b8435745678fd61e01501f9a8",
+  "11a": "064e972a2617f2fc888fe2d32b56ceaef22b560bd8e8a239578aec3f4f800b5c",
+  "11b": "7df116c5e90d3201485de113ebc2dab1b5231717df077133b325ece94ff93004",
+  "12e": "425b1308f105c075cccfe4063d95e736f1e0a6c2bf7008e6b2aaf5b93dbc3396",
+  "13a": "dfe2b5904c4bf25e025191f62d204a2a0ea19e7b88c01e4ee78678c56b769883",
+  "13b": "aaffecdd8735a76d4cdbabda6a1050129779c26b30681ef982fd627ad92fa861",
+  "14": "f382b6e34fc4d618f353fe9f753b9c25a7fc9f37d575432fc2b1f49bf18bda77",
+  "15": "a97370574cdfcfe2e6fa2d02920c8666b1c5e3961701e5c8627a8355b5aa4559",
+  "16": "24a3ce21743f784e8b8039882b304f41409b726e4e7d959ce5cde2f5aeb2e8b7",
+  "17": "28ea233a6bb93db2d5371ed426827b429860b05eb3ef8ceb5ca08f871edfc37d",
+  "18": "8eb51b0b9ea4c3d13d6bfb4d05fedc53d6cbc0d13c450f90c3314e0ee431bbea",
+  "19": "2acec0fabe27c85c4a2078c2b853eed218c07d0213990e32254404612600ba6a",
+  "20": "01ed37b509ce1ea3b92e5ebe784b8ce7afa934acecf29a9b1ba35d8cfc318f3c",
+  "21": "488a6f40cfeef64592a169e651b5ccffa0b776abed92d43a265b678fdb7c70d1",
+  "22": "4fc3c905c3f8087eea95546206ce15c437a1aa49ebda6b27b7ff122561f2e09c",
+  "23": "4de241816132c91672d4b2977c76a8edfb65b36f325527553baeb31781474e67",
+  "24": "169bf1262298740731a05a3cd9d8d294c0abeedb31dac1710955b12a61f14fb2",
+  "25a": "e9f098bb7694453182629cc2bffed2babd0fbbcef95ce60728a40aedcc06a24c",
+  "25b": "e5c7fda1c4103e3bd2de94274c530cf2ebd82c0361bea352190dfb412bf97254",
+  "25c": "0cbde6a60f561c456bc743901a7fbdf4c6741962be4d99a35a4bd68c65da9fc0",
+  "25d": "2310b22723ad6d41cc8fa2c890078655225e7ff7da8f96bff198b123daf66b38",
+  "26": "873d740a679a3e4b54dbbadae7ea2e2bc300a8f34bd241dab0fb45dd4bba36cc",
+  "27a": "573144681e12d4056104c47f6600c90f24b176e1218f23a43fc27f35f94cf131",
+  "27b": "0c3530f1fa1f857d1981662f7a0f1ce81b5648641b6e2622aca0b18281ade7cf",
+  "27c": "8f767749a673221ab6780c065b48c4c9b52bb3dff5e9c2a75e7bf4e225570ea1",
+  "Dependents (separated spouses)": "8eec894864d5bac420dacd4969a5834baacac856d2106ef2f89c5f9f0efafe51",
+  "28": "befadb1ce960fdf4051e3f7b79c62fd5df9916a044eda34cdf2977d44bd2284a",
+  "28 (box)": "7cc8ac2cd5fde24fad5aad84211fc7674cd733a3e4c90283629f7948c48ef531",
+  "29": "38e40ee5db57acada98d3feb21e4384845e3fb65c3dec8bf394585a59d4c1a7d",
+  "30": "d802ea3dee0e6e9c79a240718ede75cc55115960b5dac897ed1b9c9ebe0bea3d",
+  "31": "c5eb806c50ca7c3b98c519785b5064acc52416a647c6845dc92cb5e3404dbe39",
+  "32": "67339e596a308c76e88e5c5056da589a754af3f2a18b94ccb804beca885a3f36",
+  "33": "9de860e58d613bae4e531bce9bf58312a4aa0b13e2ce74a5f9c13f4d75bb9033",
+  "34": "dcd0891ec7d863908be0d9c6a8fbfc6598cf920499c165c8e4df25452034f1df",
+  "35a": "2cb7e8d0b935bf4109c4af7779143617535183fe71b5344e65c4663a99b88a89",
+  "36": "74453e87a12a9ad4f531bc68598275d22457e19ab91694dcd60775bd47274078",
+  "37": "85e0cbd9b84d1c2951370b5e38be091c5edabc86bffad0986705d0c38d1278b3"
+ },
+ "__rest__": "a02369f056bb4a3b4c6df9a1a89e527f66b2c456b9302ec0a858cfe0c6e75fc6"
+}

@@ -1,0 +1,109 @@
+{
+ "kind": "render",
+ "form": "ny_tcw",
+ "family": "claude",
+ "base": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+ "lines": [
+  {
+   "key": "1",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "b7db0455b347e6dbbffcd31d92fef47d8de706b255b59d09b5e1196698ef3050"
+  },
+  {
+   "key": "2",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "0085781429fe8cb48cadcf0e52b2d80b6de2c4b44405e734a39ec48992269bc8"
+  },
+  {
+   "key": "(6)",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "4308aca83fd6e029045b80b15435ade42ee1f78a475711c672a6a2d76c541615"
+  },
+  {
+   "key": "3",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "6eca1ecc1312ef1442a9025e0e1f6f5b2e6eaa8fa2148ab63a802171fe07a578"
+  },
+  {
+   "key": "4",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "01e3080036b1cfba832292ea958c51a538a805be69fd710103ccb6062ee71091"
+  },
+  {
+   "key": "5",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "6f3f27dc70a4695c38d787bf0168afe4e6ae75415fa9fd0fa4871005ce1a0a01"
+  },
+  {
+   "key": "6",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "30ab390dab763cc0df49cdbaf78f06b95a453a7664c15ef9d4f639c656532a84"
+  },
+  {
+   "key": "(7)",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "341697cc764438547c35b5762b38ce5c904fcb3df80b4579f8576d547a404ca2"
+  },
+  {
+   "key": "7",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "c08dd89cb2741ad7f26cf848d54fe8c87c59c7a0cfa845f8b8ca560ad6625bc9"
+  },
+  {
+   "key": "(scale) (hundred)",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "68166f324c696a9502e63e4e1b9e79d0983da11a1c9a9e7abcc71b4155415b58"
+  },
+  {
+   "key": "(scale) (line9_scaled)",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "ecefe81fa681f1813babcd002df0aa4fc06dcf78ede5b3756f1cf72a2b9364ac"
+  },
+  {
+   "key": "8, 9",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "0731454b19e6aacee1c8a5c8db9f9579bb80abd77dcaf737fefea533972cd1db"
+  },
+  {
+   "key": "9",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "c68e7449914d6f014385dcb312072e884914316f52f86e2b509fa370832e06f0"
+  },
+  {
+   "key": "10",
+   "record": "31c602933daba7346b82d03c198bf324d35a264f48302698efa32358ddb637df",
+   "status": "MATCH",
+   "subject_key": "e5ec93da534db8ee12591e6feb1cef4c3fa5cd4fb3366dfab125382d7727b139"
+  }
+ ],
+ "subjects": {
+  "1": "e683e8ed87df115c479e249048fad92e9e5ff67ed5a84d2e6434d4e4febc999c",
+  "2": "213a0464dd2d750928d7f3739b53d19517107548d1bbb165abeaa90b0c6614d4",
+  "(6)": "3fb33029041c7056125818938007e433b8feb76eb0bcca369ee668e4e9855fa2",
+  "3": "dc93d39430ff6ff12692275a7c70abd469ad0618a5ab38067537f9f7c932f312",
+  "4": "15c089047f7cfbfb2e7e230b0d383864743d50c882b707d38d4583528736ccee",
+  "5": "d5460a0b4a91b46ab17e06641a991fcc8dcedf1ebc412ed856f3dd38fb3bb320",
+  "6": "df56e8dd37bdb3c483a745ff460908e99c913bde4020d46247c3503b0cd3ae5a",
+  "(7)": "ac38179ee5f36c67a6211a50d84a5f56d0e5ee3fa8efc4f45c0f108f075734c0",
+  "7": "a3b9eed023fad924980cdc7b63616a90e8f63caeb35d4a2b11344faf86d2fc6a",
+  "(scale) (hundred)": "569f42fadc0ec0d17a08049ea8a24f65016566d3e26f72b7d2f01ce80633c595",
+  "(scale) (line9_scaled)": "cdef1f16e6ff61b3cca0456104e85edc7bc1017c8e6ad8a84a5874fab507dcf2",
+  "8, 9": "9a83ce257135067ac0b5e1283e1c75ee6cbd93b05723dfb2560d7b8b79d47c86",
+  "9": "636c9b34cbad1cbf7677214098825d971a43accd8be6cc30d907a3d90e27e1c7",
+  "10": "a887f4b9ff2e15dee1bba891a9d5328ac984bee0e3bc590f6f0fd34d29e39d84"
+ },
+ "__rest__": "ceb66b5911f951eaa51d177cefbded1f2d31a6109c509121ff6ca66f10e893ea"
+}

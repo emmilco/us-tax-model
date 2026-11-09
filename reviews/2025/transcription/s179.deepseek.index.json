@@ -1,0 +1,112 @@
+{
+ "kind": "transcription",
+ "form": "s179",
+ "family": "deepseek",
+ "base": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+ "lines": [
+  {
+   "key": "s179.differs",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f4562 line 13: \"Carryover of disallowed deduction to 2026. Add lines 9 and 10, less line 12\", and i4562 p. 5, Line 12: \"The limitations on lines 5 and 11 apply to the taxpayer, and not to each separate business or activity. Therefore, if you have more than one business or activity, you may allocate your allowable section 179 expense deduction among them.\" The interface line is \"The deduction differs from the amounts elected for 2025\" (line 8): when it is false each Schedule C deducts its own 2025 elections (sc.s179_allowed), when true the return's line 12 goes to its only Schedule C. The candidate tests line 12 against lines 9 plus 10, which is false exactly when a 2024 carryover is deducted in full. With this reply's line 1 now agreeing, triage shows it directly on a completed return: stage14.s179.carryover_no_property (no 2025 property, $3,000 carryover, one Schedule C): line 8 $0, line 12 $3,000; project true, candidate false, so the business would deduct its $0 of 2025 elections and the $3,000 carryover would be neither deducted nor carried to line 13 (taxable income $3,000 too high). Likewise classm.sc.3 ($1,323 carryover deducted in full). Triage executable-triage-v2 (triage/s179.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, 28 partial records): 1,604 of 1,627 comparisons agree; differences: 15 value, 8 project-refuses; by full-interview outcome of the return: completed: 7 value; incomplete: 2 value; refused: 8 project-refuses, 6 value; witnesses (project / candidate): value e.g. stage14.s179.carryover_no_property (true / false; return completed), classm.sc.3 (true / false; return refused); project-refuses e.g. stage13.refuse.joint_without_spouse (refusal at household.roster_bad / unknown s179.line10; return refused), stage13.refuse.single_with_spouse (refusal at household.roster_bad / unknown s179.line10; return refused). The other value records come from the candidate's line 11 (wages omitted, e.g. classm.s8812.3, stage14.s179.wages_count) or from line 5 zero with a carryover (classm.s179.2, where both routes give $0). The project-refuses records are cited gates, including the BUG-0148 refusal s179.over_limit (stage14.s179.refuse_over_limit, stage14.s179.refuse_zero_limit; i4562 p. 4, Line 3, \"The amount of section 179 property for which you can make the election is limited to the maximum dollar amount on line 1\"): scope.",
+   "subject_key": "c2cb0acaaa1f2f74dfeb856af79cc66b41e67cda8752356fbd1897f098205b15"
+  },
+  {
+   "key": "s179.multi",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i4562 p. 5, Line 12: \"The limitations on lines 5 and 11 apply to the taxpayer, and not to each separate business or activity. Therefore, if you have more than one business or activity, you may allocate your allowable section 179 expense deduction among them.\" The candidate is true on every return with more than one Schedule C, so Schedule C refuses there even with no section 179 deduction to allocate (classm.f8995.3: two Schedules C, lines 8, 10 and 12 $0.00, Form 1040 line 37 computed; project false, candidate true). The project refuses only when line 12 differs from the 2025 elections (line 8) and there is more than one Schedule C; otherwise each business deducts its own elections, an allocation the \"may allocate\" sentence permits, so the project computes correctly where the candidate refuses and the candidate names no condition the project misses. Triage executable-triage-v2 (triage/s179.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, 28 partial records): 1,534 of 1,627 comparisons agree; differences: 52 project-refuses, 38 value, 3 project-unknown; by full-interview outcome of the return: completed: 10 value; refused: 52 project-refuses, 28 value, 3 project-unknown; witnesses (project / candidate): value e.g. classm.f8995.3 (false / true; return completed), classm.asset.1 (false / true; return refused); project-refuses e.g. classm.carloan.1 (refusal at person[taxpayer].sc[biz_a].scveh[car_1].low_use / true; return refused), classm.scveh.5 (refusal at person[taxpayer].sc[biz_a].ho_both_limits / true; return refused); project-unknown e.g. classm.asset.2 without s179.line10 (unknown s179.line10 / true; return refused), classm.ltc.2 without s179.line10 (unknown s179.line10 / true; return refused). The project-refuses records are cited upstream gates (scveh.low_use, sc.ho_both_limits, sc.ho_multi, sc.ho_screened, household.roster_bad) on refused returns; the project-unknown records withhold s179.line10 on returns the full interview refuses or leaves incomplete.",
+   "subject_key": "88c7bee8fdb703026378ad714816529a4ed302d5dd521a8490191eeed2503e24"
+  },
+  {
+   "key": "2",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "AGREE",
+   "subject_key": "af9611a472440db225855d9944e8c82faa806c71ed3019de84e5ebf54da0978e"
+  },
+  {
+   "key": "1",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "AGREE",
+   "subject_key": "8038a636dd12477799f5d8ace5555be187f794865a977f2cbfc6e35ed4032c0f"
+  },
+  {
+   "key": "3",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "AGREE",
+   "subject_key": "b34a42727cca6b3aca0ba8eb7498519e51ec77c9560f55c4f98257868c1bd878"
+  },
+  {
+   "key": "4",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "AGREE",
+   "subject_key": "505e59c8fc815967ff9e7d29ff154684fd33548e33f3324380cc9501beaa5743"
+  },
+  {
+   "key": "5",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "AGREE",
+   "subject_key": "43000ecfca10c9c3f11b1f019e767157321b5aba600625f909eb3c890c523062"
+  },
+  {
+   "key": "6(c)",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "AGREE",
+   "subject_key": "f9c61124035d209b870ff03379ae76373bf23e4635faf6c6b776f5c425228993"
+  },
+  {
+   "key": "7",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "AGREE",
+   "subject_key": "3774427fef7d2a7d152db87532f4d9b278bb209eb1b10034b18b9018222771b9"
+  },
+  {
+   "key": "8",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "AGREE",
+   "subject_key": "669622dac66a770702a3bd55d3f01033399f44259e74ff28c87eee551670dcb1"
+  },
+  {
+   "key": "9",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "AGREE",
+   "subject_key": "5bd9aa7331de7ab65f57ed2b930bd4e3312eeb44544c085c4999512f2c49946c"
+  },
+  {
+   "key": "11",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i4562 p. 5, Line 11, Individuals: \"Also, include all wages, salaries, tips, and other compensation you earned as an employee (from Form 1040, line 1a).\" The candidate omits Form 1040 line 1a and uses only the Schedule C income before the section 179 deduction. Example: stage14.s179.wages_count (Schedule C income before section 179 $3,000, wages $20,000): project line 11 $23,000.00 (fixture expectation), candidate $3,000.00 by its expression, so its line 12 would be $3,000 instead of $10,000. Its line 1 now agrees with the project, so triage shows the wage omission directly: classm.f2441.1.deepseek (wages only, no Schedule C) project $50,000.00 / candidate $0.00. This is a separate source error from the line 1 ambiguity, whose register entry does not cover wages. Triage executable-triage-v2 (triage/s179.deepseek.json; 1,099 fixtures, 500 generated returns seed 20261026, 28 partial records): 441 of 1,627 comparisons agree; differences: 1116 value, 64 project-unknown, 6 project-refuses; by full-interview outcome of the return: completed: 419 value; incomplete: 204 value, 14 project-unknown; refused: 493 value, 50 project-unknown, 6 project-refuses; witnesses (project / candidate): value e.g. classm.f2441.1.deepseek ($50,000.00 / $0.00; return completed), classm.f2441.2.deepseek ($85,000.00 / $0.00; return completed); project-refuses e.g. stage13.refuse.joint_without_spouse (refusal at household.roster_bad / $0.00; return refused), stage13.refuse.single_with_spouse (refusal at household.roster_bad / $0.00; return refused); project-unknown e.g. classm.f4952.3 (unknown s179.line10 / $0.00; return refused), classm.g28.2 (unknown s179.line10 / $0.00; return refused). The project-unknown records withhold s179.line10, which the project needs on separate returns for its cited refusal s179.mfs (i4562 p. 5, Line 5; e.g. classm.f4952.3, married filing separately), or lack a roster answer, all on returns the full interview refuses or leaves incomplete; the project-refuses records are the cited gates household.roster_bad, household.filer_under16 and s179.mfs (stage14.s179.refuse_mfs, generated 6 and 62): scope.",
+   "subject_key": "d87d359780c641062c2bf5bee6e9e555ce3c0644b589a88a3f91580bf8e55e79"
+  },
+  {
+   "key": "12",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "AGREE",
+   "subject_key": "d7910702cce1e594e9d5b35de3f32d87230746ad2f936beefbfac0b5f2a41604"
+  },
+  {
+   "key": "13",
+   "record": "a118b1e61f24859de9e86fc3da4abd50db78591b4d12448bf6423d8e026ff7eb",
+   "status": "AGREE",
+   "subject_key": "1134566012fb63c16c3d4b31990daca3ba0db81a0a3433461e5eefb16d7d09ff"
+  }
+ ],
+ "subjects": {
+  "s179.differs": "9d985536c1b891c07df63b59cef5370d7c83994eda9c74da99bf4980d5652f74",
+  "s179.multi": "a22c8e20dc78557979ce8773f50eb76e8de96ec8e5bb4554ea4f436c647a6599",
+  "2": "79a2c27b15e95be266d52318350c52ebe3c95836464c1b83de41e49a7ea25a90",
+  "1": "8bcb543cf34e50fa8b564b219dca661bea6e48c145d96ba2276caf00b7a77f8f",
+  "3": "e127292be1b20414f12dc61bfed1e5c858032f946ec9d3aa7506b6b1afb0f390",
+  "4": "7f101e4d6c80b3ddc0c384dc0d9561aad2b0030fa6fb998a1c509affd443b5c8",
+  "5": "038647c5b5141bd6d22b029ca077c7db28a0df28beee6ee8499fe36b491df18c",
+  "6(c)": "6e0a22a20a4ccf75770e91feca5f3cbf56138771975bc4832babf0fbb3bd91b6",
+  "7": "7a7e76e9751b1729281c937f6bc87491cf0a4f0fb89b9fe2bad21b78c7eb66e9",
+  "8": "83bef42d501af77dfa5d10da200432c87f7608a4b7afbfe3c06c556148007ef6",
+  "9": "8ac1804bd8ba1a9fdbb602de52592b07bf8410d757cef839ac12d4b6d89af932",
+  "11": "a6b22763ae63b1eb4c812643793004631886309e31f5bcb1080abfbdb782f3df",
+  "12": "4c79b4cf046514c5698e0e6f6d5213a128b17e61d4977277238bb12961ebe45a",
+  "13": "ce0f9e7187254c449da0fc3d425ff018df883dcd328ef982a202d04e0ab360a1"
+ },
+ "__rest__": "ae6356cbe430ddb4762dd5706a6fb640c2faf0f6d308bb93cf20787947dd2675"
+}

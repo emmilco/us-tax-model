@@ -44,7 +44,13 @@ PASS_FIELDS = {"model": "model requested", "reported": "model reported", "policy
 
 
 def parse_log(kind, path):
-    """The log's header fields and, per judged line, its status and the model's stated reason."""
+    """The log's header fields and, per judged line, its status and the model's stated reason. A path that
+    is a form's log (rulings.log_path) is read as the review store assembles it (rulings.read_log)."""
+    form, family = families.split_stem(os.path.basename(path)[:-3])
+    if os.path.abspath(path) == os.path.abspath(rulings.log_path(kind, form, family)):
+        text = rulings.read_log(kind, form, family)
+        if text is not None:
+            return parse_log_text(kind, text)
     with open(path, encoding="utf-8") as f:
         return parse_log_text(kind, f.read())
 

@@ -1,0 +1,498 @@
+{
+ "kind": "classm",
+ "form": "sc",
+ "family": "claude",
+ "base": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+ "lines": [
+  {
+   "key": "case classm.sc.1",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": null
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line3",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line4",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line5",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line7",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line9",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line12",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line13",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line20a",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line24b",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line27a",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line27b",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line28",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line29",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].ho_line4",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].ho_line1",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].ho_line5",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line30",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line31",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line40",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].line42",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].s179_allowed",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].f7206_line2",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].f7206_line3",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].f7206_line4",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].f7206_line5",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].f7206_line7",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].f7206_line8",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].f7206_line9",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].f7206_line10",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].f7206_line13",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].f7206_line14",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_a].qbi",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line3",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line4",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line5",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line7",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line9",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line12",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line13",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line20a",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line24b",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line27a",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line27b",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line28",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line29",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].ho_line4",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].ho_line1",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].ho_line5",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line30",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line31",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line40",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].line42",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].s179_allowed",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].f7206_line2",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].f7206_line3",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].f7206_line4",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].f7206_line5",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].f7206_line7",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].f7206_line8",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].f7206_line9",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].f7206_line10",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].f7206_line13",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].f7206_line14",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.1 — person[taxpayer].sc[biz_b].qbi",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.sc.2",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": null
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line3",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line4",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line5",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line7",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line9",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line12",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line13",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line20a",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line24b",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line27a",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line27b",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line28",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line29",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].ho_line4",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].ho_line1",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].ho_line5",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line30",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line31",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line40",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].line42",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].s179_allowed",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].f7206_line2",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].f7206_line3",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].f7206_line4",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].f7206_line5",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].f7206_line7",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].f7206_line8",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].f7206_line9",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].f7206_line10",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].f7206_line13",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].f7206_line14",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sc.2 — person[taxpayer].sc[biz_a].qbi",
+   "record": "75418717cf992623a23b3ed426c9290971ae272003d00d73d4aad12eeb61e9fb",
+   "status": "AGREE"
+  }
+ ]
+}

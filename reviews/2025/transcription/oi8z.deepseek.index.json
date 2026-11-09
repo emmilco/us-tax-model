@@ -1,0 +1,25 @@
+{
+ "kind": "transcription",
+ "form": "oi8z",
+ "family": "deepseek",
+ "base": "260fb5ce6c9a43553e0a860f4c66ace1d9d8e426d0c7c9661dc10882e4d78137",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "oi8z.taxable",
+   "record": "4e6feab5d5189893bda491a501b0c0523f58ee3ba46541b8ab1cb600217b6eb2",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration; the reply sums oi8z.amount over the collection on the item's own line (invalid_model_types: \"collection parent binding mismatch\"), where i1040gi p. 92, Line 8z, lists each item's amount and the project copies the item's amount. Triage executable-triage-v2 (reviews/2025/transcription/triage/oi8z.deepseek.json; 1,638 fixtures, 500 generated returns seed 20261026, 44 partial records): 109 of 180 comparisons agree; 49 project-refuses and 22 project-unknown (the kinds oi8z.figured refuses), all on refused or incomplete returns; no completed return differs. Project stands.",
+   "subject_key": "a59373c62b4a5b097e71eef5a9dd6fecfec5d9d6523c6449ae75c04cdd6a2173"
+  }
+ ],
+ "subjects": {
+  "oi8z.taxable": "a5d72d82366bd7b6155acbee656cdf1ae81a8a937da73a21b23e20401fb8c511"
+ },
+ "__rest__": "9b11cc29785845924b626fad6f7f0a62bdf1f9b626cc1aab9a2c543ecad4736e",
+ "foreign": {
+  "oi8z.taxable": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

@@ -1,0 +1,112 @@
+{
+ "kind": "render",
+ "form": "ny_tcw_first",
+ "family": "claude",
+ "base": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+ "lines": [
+  {
+   "key": "1",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "MATCH",
+   "subject_key": "930583fbbf8e2f91a15acbb22a2967841d67abc272903daa38b3a1c544bc26c4"
+  },
+  {
+   "key": "2",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "MATCH",
+   "subject_key": "eb905d068fb0b4edcbbcf0c01b711491c1f97381d8cb6603665743d4391d076c"
+  },
+  {
+   "key": "(3)",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: interface gap; the rate is bound by the calling lines, which the reviewer of this definition does not see. Checked: ny_it201.tcw.w1 (married filing jointly and qualifying surviving spouse) binds ny.tcw.first.rate = 55/1000, and ny_it201.tcw.w7 (single and married filing separately) and ny_it201.tcw.w12 (head of household) bind ny.tcw.first.rate6 = 6/100, as IT-201-I-html prints: Tax computation worksheet 1, \"3. Multiply line 2 by 5.5% (0.055)\"; worksheets 7 and 12, \"3. Multiply line 2 by 6% (0.06)\".",
+   "subject_key": "51f1fd25f4da6b5bdfcc0c8955c6ad6ae4ce43c21c73aa47adb9c2fec82b719d"
+  },
+  {
+   "key": "3",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. Worksheet 1 line 3 is \"Multiply line 2 by 5.5% (0.055)\"; the product is rounded once to the dollar.",
+   "subject_key": "91838c0ef2d3ebfce0e45a2803087fcff3c9a4eccae84cca37fe775c6cd6a932"
+  },
+  {
+   "key": "(3, Stop)",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "MATCH",
+   "subject_key": "d5197a6ef555e94e2c66f567c565d991703e8ad54103558b68e52fbdd4a15b58"
+  },
+  {
+   "key": "4",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "MATCH",
+   "subject_key": "702e0c1aba9b28f5282c04be28e5e00030417853f355323f1e92bc5ad2bcb108"
+  },
+  {
+   "key": "5",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "MATCH",
+   "subject_key": "4f558d22595e45593a1164e44feefb7f03caf482a8a860b26cb0c1de1cda3918"
+  },
+  {
+   "key": "6",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "MATCH",
+   "subject_key": "f59635d173a91d9412142e232705c615588361684b691ff2143fb166afe8b6b1"
+  },
+  {
+   "key": "(scale) (hundred)",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "MATCH",
+   "subject_key": "d5afeb909c50b23db71d870b500a159a7c7bf6692c515766d198944fdb5c2b37"
+  },
+  {
+   "key": "(scale) (line8_scaled)",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "MATCH",
+   "subject_key": "2a0c7900a7d92d0a3d77ec383e5da526c41bc4cc61d17d40e2ec8b063779dc07"
+  },
+  {
+   "key": "7, 8",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "MATCH",
+   "subject_key": "7b35d9167a3035d7b8fc0ebf819bd92a00b2bcca38462e62cd0aeb547f1e8e10"
+  },
+  {
+   "key": "8",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. Line 8, \"Multiply line 5 by line 7\", is the exact product of line 5 and the four-place ratio (amb.ny.2025.fourth_decimal; the \"7, 8\" helper carries it times 100 so it is exact), rounded once to the dollar.",
+   "subject_key": "0e1d31b0c14fd2273086673145ac8f4d92cdb52010a09a91092c334638e1c972"
+  },
+  {
+   "key": "9 (line9_phased)",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "MATCH",
+   "subject_key": "2e65cb7c3f02fee4250e2db73a4be14891d250030f02145f1d16e3e166ac3efb"
+  },
+  {
+   "key": "9 (tax)",
+   "record": "078d79866edaf82d049c5b27a7f07ea33bd761b523f75467e3fae5b9cf375dfc",
+   "status": "MATCH",
+   "subject_key": "46baf6044dc0d78d7bc1e527fb79e9caad2318d682a8378cbb47beae8809cb53"
+  }
+ ],
+ "subjects": {
+  "1": "201f34ea7a148d637a94f4c13e77e67afa3a8bbef8e232768217de7b5be73b6f",
+  "2": "0f120a35db5ee3e1b6ca1c6d39578791cf8199fa32e7172362e44469f65ec487",
+  "(3)": "ba5b46b8366838c2b6bd9200632a9b30d480068458d6f8d2930fdb85b3901e7f",
+  "3": "b3acdc3dfa178a26188de769fd23deec1515e7927266a9b4141d34f031dbb01f",
+  "(3, Stop)": "0d081a7ff1e20b4f1040d831a113006bfaf712301bfa95fa7da2acc9f4348413",
+  "4": "06882c8486a72b697eee3e963e57cef8a76f8e87202bba077200c88c18e4af12",
+  "5": "230d251dae0e755b46dbb9c94699dce65f5a7b49a5fd41c06a73f68bd9423ace",
+  "6": "45c848d02bca90b301b6700e0e56090ce390c9ab7607973a695cbc6f4d145ff9",
+  "(scale) (hundred)": "996c4e74fb940b2ea9005dd011872f860efa151521931733ca00e97189b8df56",
+  "(scale) (line8_scaled)": "7ba4975c5c3d3efa4a35d629e3e41efa8b493c001b6b6932da5ab113672595d5",
+  "7, 8": "bc094c6c4454638cdf55a36f93bdb4d05c3a0af6c7e23dcf52bb8dba50b2e59e",
+  "8": "05e3c3d70ea5d6627b11dee254ef516132b9cee0d6346d01c3dcc3d7584a216e",
+  "9 (line9_phased)": "28ce2a4825d1584bc1cd1f36bdbc4223a0cb6e5250e4cbead790bf885a529f11",
+  "9 (tax)": "7b811a30d09b14013ebde7d37f9a4339ffdeca8569850c248dc259c917049a43"
+ },
+ "__rest__": "8155a4f9e17ae2938bfb77ee4bcefc3abf9982f5dd9a3e6140cd5ab5ec3cfd42"
+}

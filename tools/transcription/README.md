@@ -116,11 +116,28 @@ is its own log beside the others, never a replacement: the Claude logs keep
 their plain names, and a run with another family writes
 
 ```
-reviews/<year>/transcription/<form>.<family>.md   with <form>.<family>.rulings.json
-reviews/<year>/render/<form>.<family>.md          with <form>.<family>.rulings.json
-reviews/<year>/classm/<form>.<family>.md          with <form>.<family>.rulings.json
-fixtures/<year>/classm.<family>.json              that family's class M fixtures
+reviews/<year>/transcription/<form>.<family>.index.json   with <form>.<family>.rulings.json
+reviews/<year>/render/<form>.<family>.index.json          with <form>.<family>.rulings.json
+reviews/<year>/classm/<form>.<family>.index.json          with <form>.<family>.rulings.json
+fixtures/<year>/classm.<family>.json                      that family's class M fixtures
 ```
+
+A review is committed as records and an index (`review_store.py`; design
+`docs/2026-11-09_review_store_design.md`, 2.2). Each pass (a whole-form review, or a line-scoped
+pass) is one record, `reviews/store/<kind>/<record-sha>.md`, written once and never rewritten:
+the pass's header or block, the sections of the lines it judged (each with its ruling as
+`Ruling: open`), their gate rows and the raw reply; `record-sha` hashes kind, form, family,
+scope, each scoped line's subject, the prompt and response hashes and the policies. The index
+maps each compared line to `{key, record, status, ruling, subject_key}` (the subject key folds
+the line subject and, for transcription, its foreign interfaces), with the line subjects, the
+rest of the document (`__rest__`), the foreign interfaces, the whole-form record its header
+comes from (`base`) and the header rows a later pass rewrote (`head_rows`). A rerun writes one
+record and changes only the index; a ruling changes only the index. The per-form log is a view,
+not committed: tools read it with `rulings.read_log` and write it with `rulings.write_log`
+(which stores what is new and checks the view reproduces the log byte for byte), and
+`python3 tools/transcription/review_store.py render [--kind K] [--form F]` writes the readable
+views to `.transcription/logs/<year>/<kind>/<stem>.md` (git-ignored; a writer refreshes its
+own). `review_store.py check` verifies every index's records.
 
 `rulings.py`, `rule.py` (`--family deepseek`) and `check_logs.py` address a log
 by (kind, form, family); the Claude family is implied when none is named. The

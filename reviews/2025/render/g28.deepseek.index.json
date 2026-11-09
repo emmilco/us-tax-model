@@ -1,0 +1,67 @@
+{
+ "kind": "render",
+ "form": "g28",
+ "family": "deepseek",
+ "base": "0e4979ed4e93e88e132df856eebec9cb51bf8573dd8df063ff97d49d25a51c55",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1",
+   "record": "0e4979ed4e93e88e132df856eebec9cb51bf8573dd8df063ff97d49d25a51c55",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 1. Refusal located elsewhere; project retained. Form 8949 Part II collectibles: sales.special refuses them per sale; constructed on classm.g28.2 (node engine/dist/main.js eval): sales[s1].special true refuses sd.line17, g28.line7, u1250.line18 and f1040.line7a. The income package widened the question to collectibles held through a partnership, S corporation or trust (PENDING-6). In scope line 1 is $0.00. The div refusals are not the only screens; the model saw only this line's own refusals. Same ruling as Stage 20.",
+   "subject_key": "dd68e0b646cca23e78f5186c2c84de1abd6c241608b503c046b1e7b02b11e481"
+  },
+  {
+   "key": "2",
+   "record": "0e4979ed4e93e88e132df856eebec9cb51bf8573dd8df063ff97d49d25a51c55",
+   "status": "MATCH",
+   "subject_key": "8426ea0e111ccd65ca4da99a019e08c4c6bdd8bbb806ec3a4f23809a8a6c2959"
+  },
+  {
+   "key": "3",
+   "record": "0e4979ed4e93e88e132df856eebec9cb51bf8573dd8df063ff97d49d25a51c55",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 3. Refusal located elsewhere; project retained. Forms 4684, 6252, 6781 and 8824: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 3 is $0.00. Same ruling as Stage 20.",
+   "subject_key": "d50d2d6b216b8e4abf74afd040c110f70b8f960e368e78eab9a31481142d09c4"
+  },
+  {
+   "key": "5",
+   "record": "0e4979ed4e93e88e132df856eebec9cb51bf8573dd8df063ff97d49d25a51c55",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 5, printed \"( )\". Refusal located elsewhere; project retained. The Schedule K-1 (Form 1041) box 11 code D carryover is a capital loss on a Schedule K-1: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. The project's line 5 is Schedule D line 14 held negative, the page's entry; the model raises the K-1 omission, not the sign (T-140). Same ruling as Stage 20.",
+   "subject_key": "6b511540d08eb1b882cb36d09283020c76c9e649f85624b4c40c1a468551efca"
+  },
+  {
+   "key": "4",
+   "record": "704c5a58ab7047f8fd3231f1e70796a24cdf450669e30891934fb69e7e6deed6",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 4: \"Enter the total of any collectibles gain reported to you on: • Form 1099-DIV, box 2d; • Form 2439, box 1d; and • Schedule K-1 from a partnership, S corporation, estate, or trust.\" Form 2439 and Schedule K-1 amounts: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") refuses them, reaching Form 1040 line 7a through Schedule D lines 7, 15 and 16 (as the earlier rulings of this line). Within scope line 4 is Form 1099-DIV box 2d alone. The restatement now names the box 2a condition of the box 2d input: f1099div p. 5, \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\", so box 2d is zero when box 2a is. Project retained.",
+   "subject_key": "3a847b0bbc10d5b70a3fcca2e1e7b1fe8f969f299d6b19ce0278937f2abb272f"
+  },
+  {
+   "key": "6",
+   "record": "0e4979ed4e93e88e132df856eebec9cb51bf8573dd8df063ff97d49d25a51c55",
+   "status": "MATCH",
+   "subject_key": "91d12646dde5113f19fbb2aa3f531b7e54494de896b7f22ec6fcf3a6b6555363"
+  },
+  {
+   "key": "7",
+   "record": "704c5a58ab7047f8fd3231f1e70796a24cdf450669e30891934fb69e7e6deed6",
+   "status": "MATCH",
+   "subject_key": "6f9ad62b06dba0de7bdd4ce172fd2535c837e54fdaddc0bcd5f039ad69b26248"
+  }
+ ],
+ "subjects": {
+  "1": "715205bbbe4bad15e1483dbc7a04b0c5b236f1a588f788a5f0df27ed9cb1d63e",
+  "2": "6282e4be7e2b480b3d5b547ded3043c192acff2ef61407cb72f941c5a9006285",
+  "3": "91696c467c502b4e13c65458a970ae5c6c24655d41e611d1495459f3203ca1fa",
+  "5": "11e0c5560452fce7fb68bb8b5886890a3451153cd6b4efe8e5f7cbb680e7d87e",
+  "4": "727852d2db4365fe5a7842bc5249ca539c1514c5dc18256600a494eb40fa4f21",
+  "6": "4a35e37f60f12a8d1c01d962160486443fac4421179adcf2192cfee09631954e",
+  "7": "29a02c670e7b07fde98ac38e7db51987b284daa874d16de4367bd0edc2a3caa4"
+ },
+ "__rest__": "98dcc1328cc45881d8b4dab0186222fa449c102d4c0c88dd830dedc671d61bd9"
+}

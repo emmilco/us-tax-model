@@ -1,0 +1,51 @@
+{
+ "kind": "transcription",
+ "form": "sales",
+ "family": "claude",
+ "base": "9d3118026893a1c312a9f2d8f6ed48ff9175923e1c54b7d5ae7765d55be6842d",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "sales.one",
+   "record": "51bc6b75714d40053092852fb59d1cc3602d6dbed67ac52f0250cca1f5f5ef73",
+   "status": "AGREE",
+   "subject_key": "6fcda75e7e7e62f02da2cc759795964f2a560063de57c2df71d60fda52470ce2"
+  },
+  {
+   "key": "(e)",
+   "record": "51bc6b75714d40053092852fb59d1cc3602d6dbed67ac52f0250cca1f5f5ef73",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; same reply and project as the round-2 and round-3 rulings. f8949 p. 1, box G; i8949 p. 8, code B. The reply adds boxes G and J to the reported-basis boxes, but boxes G to L are refused at the transaction by sales.digital at sales.one. Triage executable-triage-v2 (reviews/2025/transcription/triage/sales.json; 1,638 fixtures, 500 generated returns seed 20261026, 476 partial records): 1,758 of 1,765 comparisons agree; the 7 value differences are all on refused returns (boxes G and J); no completed return differs. Project stands.",
+   "subject_key": "09e8a20031b2dccc6efb5e3a00c977a97a9692de5a962b768d77ac831be7cabd"
+  },
+  {
+   "key": "(g)",
+   "record": "51bc6b75714d40053092852fb59d1cc3602d6dbed67ac52f0250cca1f5f5ef73",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation and scope; i8949 p. 8, code B, and p. 10, code W. Values: reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW, as the project. The reply adds boxes G and J (refused by sales.digital) and declares its own gates (h_aggregate_bad, h_other_code, special), which the project has as sales.bad_aggregate, sales.bad_code and sales.special. Triage executable-triage-v2 (reviews/2025/transcription/triage/sales.json; 1,638 fixtures, 500 generated returns seed 20261026, 476 partial records): 1,627 of 1,765 comparisons agree; 16 candidate-refuses, 119 candidate-unknown and 3 project-unknown, all on refused or incomplete returns; no completed return differs (the round-3 h_wash_excess refusals do not recur). Project stands.",
+   "subject_key": "a4be7cdd82e69b32c57af5b3b9be67b56438d4182a2b31fd6534b06eddfaf531"
+  },
+  {
+   "key": "(h)",
+   "record": "133518d24d4a1d9f017becfde969856c0cffd3fe245165a4d4d594dd1cf9bdcc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation and model error; i8949 p. 11, column (h). The value is the project's ((d) less (e) plus (g)); the reply shows the line only on the detail route, but the transaction's column (h) amount is read on both routes (sd.line1a.h and sd.line8a.h for the aggregate route), and the project's sheet is a values sheet, so the display condition changes no value. Its candidate refusals are column (g)'s h_wash_excess gate (see (g)). Scratch run of triage.mjs on the round-3 reply (.transcription/sales.lines-ceb969c79173) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 476 partial records; 1,762 comparisons per line): 1,380 agree; on completed returns 42 candidate refusals, the column (g) records; 4 value differences, all on refused returns. Project stands.",
+   "subject_key": "132bd4367ef6dd80f3e301d94849177c9506271754dce9e1f4b195f333a59375"
+  }
+ ],
+ "subjects": {
+  "sales.one": "7aa4c2c823c6b0f59668d5fb5d3da9875c8964cfb1d6766aac6834ae80faf6c2",
+  "(e)": "b7f290bb5c1dd9dbd25b593ae9a7e0244a1e684e986b47849a9572b164e73d0d",
+  "(g)": "1413c8d8ed06a157299368253fb69f59581cc704bba27cd1699427677401a9e9",
+  "(h)": "99ee2a26d2615b358c59742db7fe5cb7211304df3fd2300bdc0b375bc504b241"
+ },
+ "__rest__": "d66e458afa5745f8eec417fb8e25dc768244f7e1dca0d2d0114dfbf47d7cba76",
+ "foreign": {
+  "sales.one": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(e)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(g)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(h)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

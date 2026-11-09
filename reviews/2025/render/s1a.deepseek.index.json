@@ -1,0 +1,225 @@
+{
+ "kind": "render",
+ "form": "s1a",
+ "family": "deepseek",
+ "base": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+ "lines": [
+  {
+   "key": "1",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "2a",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "2b",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "2c",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "2d",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "2e",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "4a",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "4b",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "4c",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "5",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "6",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "7",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "8",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "9",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "10",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "12",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "13",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "14a",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "14b",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "14c",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "15",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "16",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "17",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "18",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "20",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "21",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "23",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 110, Part IV, before Line 22: \"if you deducted some or all of the interest that you paid or accrued on your loan as interest on Schedule C, Schedule E, or Schedule F, then you can’t deduct that same interest as QPVLI on Schedule 1-A.\" Column (ii) asks only for interest deducted on Schedule C (carloan.col_ii_input, zero without a Schedule C) because Schedule E and Schedule F are outside the tool: the Schedule 1 screen scope.schedule1 refuses rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1) and farm income (Schedule F) (forms/2025/scope.yaml). No return in scope can have the interest deducted on Schedule E or F, so line 23 is not overstated on any computed return."
+  },
+  {
+   "key": "24",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "25",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "26",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "27",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "29",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "30",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "31",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "32",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "33",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "34",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "35",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "36a",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "36b",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; project retained. Schedule 1-A line 36b: \"If you are married filing jointly, your spouse has a valid social security number (see instructions), and your spouse was born before January 2, 1961, enter the amount from line 35\"; i1040gi p. 110: \"If you are married, you must file a joint return with your spouse to claim this deduction.\" The English gates line 36b on the spouse entry, and a spouse entry exists only on a joint return: household.roster_ok requires one entry for the spouse exactly when filing jointly and any other roster is refused at household.roster_bad (Form 1040 page 1, \"If joint return, spouse’s first name\"; fixtures stage13.refuse.single_with_spouse and stage13.refuse.joint_without_spouse, both refused at household.roster_bad, witnesses in triage/s179.json). A head of household or other non-joint return with a spouse entry is therefore refused, never given line 35; married filing separately is refused for the whole return at s3.mfs. The model read the line 36b English without the roster refusal located elsewhere."
+  },
+  {
+   "key": "37",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  },
+  {
+   "key": "38",
+   "record": "95ac06faa1853f8281e73593b2dcb3c40d6c3d82ab82117613383ed08395a0a1",
+   "status": "MATCH"
+  }
+ ]
+}

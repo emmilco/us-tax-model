@@ -1,0 +1,193 @@
+{
+ "kind": "render",
+ "form": "f8863",
+ "family": "claude",
+ "base": "6999bf61938961674d7c39b0b3c7c3c79a987d424431291f062d2f27b9b5a5ec",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-04); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "ba96c9704421d7f47f5c546360c8db70b863da37578f75c7dbc8b411dcfef9f2"
+  },
+  {
+   "key": "2",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 2: \"Enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 2) gives the page's amount for every status the tool completes (edu.magi_limit). The married filing separately amount is never reached: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and params/2025.yaml records the mfs amount as never reached; the transcription triage confirms it (mfs witnesses generated 63, 115, 128 are refused returns). No line or English defect.",
+   "subject_key": "99d1831e6ba4f495f8ff60d3aa5d0180526b2eb1646228bdd9b1a80ed3d2eb63"
+  },
+  {
+   "key": "3",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "70d7e73ab0af4dad425f37f2c3e8b480f270578015ea9a3bffe2ddc80d3536ae"
+  },
+  {
+   "key": "4",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "99cb8f1fbb76dea3624493d6c08b6c44c3fbc3734223ca0aa63689e1ce37c374"
+  },
+  {
+   "key": "5",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 5: \"Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 5) gives the page's amount for every status the tool completes (edu.phaseout_range). The married filing separately amount is never reached: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and params/2025.yaml records the mfs amount as never reached; the transcription triage confirms it (mfs witnesses generated 63, 115, 128 are refused returns). No line or English defect.",
+   "subject_key": "0de4d3929f350d892ec12f23c2c92cbd5008a5dc6a297fc8cc563aadbfd3351c"
+  },
+  {
+   "key": "7",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "e1bed749a1dfbaeaa0860077f50407908ab0d2ce94a1f07dc9ee5ce4a8b8fed1"
+  },
+  {
+   "key": "7 (box)",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "db5a48092d4d3eaf845eddc4173d773ddf1d55440f3aee83f283c52079068b03"
+  },
+  {
+   "key": "8",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "b41936dc3c7543cf67dd49b16dc696f88d6d4cae1304bdc4a0e97081f0ae9081"
+  },
+  {
+   "key": "9",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "988b60abbbfc007bd079a1a61e812a3dffca210666c95f26879e20d8c8e414af"
+  },
+  {
+   "key": "10",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "d122d5f0f3e9a6379f6c8b89162b0ea48e6b2882409b94a1d1eabcea59b22aaf"
+  },
+  {
+   "key": "11",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "edb2179f4776911435c120c389fefa16af2bc9f022747d1eebdb4c88b78b6e24"
+  },
+  {
+   "key": "12",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "435c8160df11861d2ea1e5eb4eb93edbabdee513d0d28cd818d3044ed24a976c"
+  },
+  {
+   "key": "13",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 13: \"Enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit, \"2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 13) gives the page's amount for every status the tool completes. Married filing separately never reaches the line: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and the parameter records the mfs amount as never reached (params/2025.yaml, edu.magi_limit). The transcription triage confirms it: the mfs witnesses with expenses (gen#82, #155, #415) are refused under the full interview (S1).",
+   "subject_key": "28000adea077041246bc8d209e3f9772b6f4f78b31de9b6fea037664b026dec1"
+  },
+  {
+   "key": "14",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "6c00289fc913fcbeb24e716cccf354608cf18ad78c0a0b228b110d53ca32a569"
+  },
+  {
+   "key": "15",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "88ef300b78c0d21c42fcba881098cbfb3be8c39e2e1522378b82bf98c955a8cb"
+  },
+  {
+   "key": "16",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 16: \"Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 16) gives the page's amount for every status the tool completes (edu.phaseout_range). The married filing separately amount is never reached: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and params/2025.yaml records the mfs amount as never reached; the transcription triage confirms it (mfs witnesses generated 63, 115, 128 are refused returns). No line or English defect.",
+   "subject_key": "feb4b6c16f966f8a52e2d7fcd3512631039c7c2600e7a14b8040e33e0b2e7b13"
+  },
+  {
+   "key": "18",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "db66a6fead8e534a6713bf0c99c5c4cfe432d2223ae1de98f43b035f29ffe299"
+  },
+  {
+   "key": "(CLW 1)",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "8dc8b8e25788e8e2dea69a9ea133403a2dd635ee5554ece7b8410af9c2e9adef"
+  },
+  {
+   "key": "(CLW 2)",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "b0ffab65b6a51de12e76741cc243fe1b80e1f9417e89199bd4eb27d11daa6e4f"
+  },
+  {
+   "key": "(CLW 3)",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "7cf8c4303199c771dce33d46a1d063221caea21880943ca238f391dbcbd8eb99"
+  },
+  {
+   "key": "(CLW 4)",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "e3944384c47833ca8164b576f9cb79408265ef0365e53ba39b886e9f1a214cb4"
+  },
+  {
+   "key": "(CLW 5)",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "a20ad71bcd526394e2c891815ef84482d943ae1433289e8b69e18a815db7281c"
+  },
+  {
+   "key": "(CLW 6)",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "e5df26f0e3366eabd9c18c0e768912d385799f2685d465a268837c5006cd62d9"
+  },
+  {
+   "key": "(CLW 7)",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "d9fbba6ad3a0c3357c5a401909940a5afdc56ae975cc45c8c0fb5032ba1e5e7c"
+  },
+  {
+   "key": "19",
+   "record": "5309835a338fa6d827710a9e934bc25f55f8a5131ef8aabb5aa0f3d1bb512e6b",
+   "status": "MATCH",
+   "subject_key": "5c547dafd0c9d0c267846899711c19e411c4205304ee2b9613e2b29ea27d7156"
+  }
+ ],
+ "subjects": {
+  "1": "c8c2eea84ce4b1ee87f9bc83934d5439cd74d35ff826c2cbf50d651844aca108",
+  "2": "48aa6c57851d112b16df6f3e600aa40a79c5d6c89099eb3a50a94ffae0536263",
+  "3": "2d4296a702297210bc9a98047ceb07ec417ff2dac7cd87b7d0c6043cea687736",
+  "4": "de3806d5e29175df38fa9d3f1b2f0d9f34750550a93933ab7c12a7a2f1a2e386",
+  "5": "6e560733a3655a8309eb2552f5eef34434033b2c684ab2a36fa8efd1b076f4fa",
+  "7": "9ab6c633d76acd73e97147854cc43785a7c81199d429717bcb8cd5d8a9382261",
+  "7 (box)": "296a9ce7a39d623b34f4aa02c164680b8023c1b27f71b6fc2d6d7c53b67d5082",
+  "8": "614eb526d49548afc15f99c2200eb3d479ec1dfbba564e4a89ae0bfc37e0a201",
+  "9": "3ceedfbf3bde1345a6459ce7fefd952a56d8ef976e6fb70aa3cefb9888ec0424",
+  "10": "9fa1ca3cce6d219d87f1a3fc51a42a477211060076c610555764de9096eaf530",
+  "11": "3e403b8099145d17bdf417fc7db840054a53e079b7ea110ae29f8b5096a2e169",
+  "12": "1ce679b6cf599ca6c06678e6bcd6256a7ed4bf08b59c5ad0c82cf6a876fa1c4a",
+  "13": "241ca1ade6152bc039a0705de86b573fa5d0894899fd89b39c862d8958363eeb",
+  "14": "b19160c73e269dfb9f0496f56432798239e4681b5edb52ae0985bf725003bddf",
+  "15": "0b7916cb4936ede3fd1efc45fae02c827c5eeed9f8ad3ba22e2d1ed37aa7bbd4",
+  "16": "0f9a04bd9bb08503655f0c3d3a66513fca82e227b93ad8f9e0bcc586e1ea381c",
+  "18": "c57e3780e5c6203d66069bb7a41a76ba46fb1284ccd237bbab485a270f19ca44",
+  "(CLW 1)": "2d720aab8ab714c12528afdec77dc0579dd29e164859ed39f4d436155af3fac4",
+  "(CLW 2)": "64a8b720b9fa456371b5f6b24455fe7b1ed965910d295d8ca91409859ffa41f2",
+  "(CLW 3)": "889734071a093f24059149a51121f0a4308759e04e8e46abddbff371c9173fc7",
+  "(CLW 4)": "f468e46de53e8675ae8f62f4423db62cb76504c45fd231d019b52d740d52c044",
+  "(CLW 5)": "dce12924a909ddeae3573281d06a8bed89587af4d8f070d34c3276accc867923",
+  "(CLW 6)": "d1da1c8cb6eb7e36985279d24e0586fd38676b18d1f6866f15e8ee4ca87277b7",
+  "(CLW 7)": "55aa46ffb714b63dfb260858d8161d2f25773c6b76c77d4aae6f774e58148a3a",
+  "19": "18446b3beeb2f4a01cbbcb40295626ece8804fa336c9c1a3f5db998ad64cb385"
+ },
+ "__rest__": "c77cddae2f6235841536a8af7b486c400a7b8cddcda811e2b8a471d3d6c43e6d"
+}

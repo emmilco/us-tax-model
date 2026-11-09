@@ -1,0 +1,24 @@
+{
+ "kind": "transcription",
+ "form": "gift",
+ "family": "deepseek",
+ "base": "932f42e57a2b32261b2c1c4f1e39638650f580401827a0804c2c5355fc204d9b",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "gift.allowed",
+   "record": "19705f2a8e4f6a59473f796beff78abe996cb1811ed0685ff8b71a0cad9b1fa5",
+   "status": "AGREE",
+   "subject_key": "50af504ebb0617776a7213a95c0df0f1bf7b26fca3d8b8a0f5ed9052d5553ccb"
+  }
+ ],
+ "subjects": {
+  "gift.allowed": "9f6d6615d42b166da141ae78c5a205745c428e73b54142a7072ce3730fb0622f"
+ },
+ "__rest__": "ddbcf2f1a297aa931cad1239e9a5fd1dd8e5972b3c96439aab19e487bc291084",
+ "foreign": {
+  "gift.allowed": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

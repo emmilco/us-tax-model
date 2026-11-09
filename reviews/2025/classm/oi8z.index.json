@@ -1,0 +1,33 @@
+{
+ "kind": "classm",
+ "form": "oi8z",
+ "family": "claude",
+ "base": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+ "lines": [
+  {
+   "key": "case classm.oi8z.1",
+   "record": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+   "status": null
+  },
+  {
+   "key": "classm.oi8z.1 — oi8z[item_a].recovery",
+   "record": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.1 — oi8z[item_a].additional_tax",
+   "record": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.1 — oi8z[item_a].figured",
+   "record": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.1 — oi8z[item_a].taxable",
+   "record": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+   "status": "AGREE"
+  }
+ ]
+}

@@ -1,0 +1,128 @@
+{
+ "kind": "render",
+ "form": "f8995",
+ "family": "claude",
+ "base": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "2",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: representation; restatement accepted. person.qbi is the sum over the person's Schedule C entries of sc.qbi, which is Form 8995 line 1 column (c) for that business (person.yaml, cited to i8995 pp. 2, 4); line 2 adds them over the persons on the return, which is lines 1i to 1v column (c) with one row per Schedule C, and more than five businesses are included in the line 2 total as i8995 says ('include the income and loss from those trade(s) or business(es) in the total for line 2'). Other trades or businesses are refused through qbi.unsupported.",
+   "subject_key": "61110b34d40ad1e6ff9ae632b639c4c567cc7bad66e55278bc9a9fd9f18cb60e"
+  },
+  {
+   "key": "3",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "1207372050cd5ebfb8baf33bc8ce0aa3eb00397f64c8b9b961d87070351df5b4"
+  },
+  {
+   "key": "4",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "5ea8a60226850015c9a7cbdcd5112a00ff285f15dc24a6da2156bccc8cff58bc"
+  },
+  {
+   "key": "5",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "b92f787ba3e254b4f4a0fca8a17996f74edcd28de68f795c1dac62d7b13a3c23"
+  },
+  {
+   "key": "7",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "0cc97bbbc6c037ff0d6b9f9e9d7157487f873cd3dc1209c254b701bc214da1fd"
+  },
+  {
+   "key": "16",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "d7e02e73655e43a9a604576879fb4ab356d05f05079639fcd93b1dcbb4106cb7"
+  },
+  {
+   "key": "17",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "e7b824a1933592eb398aee030410fc5af1f75e1e0cac88605481741f35a98ea3"
+  },
+  {
+   "key": "6",
+   "record": "ac1b6a4f193cf75aafcafee4465e1f5f300e86e9092e8d3028000175617a4e28",
+   "status": "MATCH",
+   "subject_key": "1b5eef32b848e04f007e0f0fb2b4107c08c2cec6ab46b86f841566ab424c56a7"
+  },
+  {
+   "key": "8",
+   "record": "ac1b6a4f193cf75aafcafee4465e1f5f300e86e9092e8d3028000175617a4e28",
+   "status": "MATCH",
+   "subject_key": "842110b9aa5293cd93021b4c3de38ce50fb0f2591b661de12863d1797eee1f80"
+  },
+  {
+   "key": "9",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "4e73e250fa81a6a2f68673889cd3a3efd90135bbe082f88b055e81b1fa33c333"
+  },
+  {
+   "key": "10",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "8d2293636ba1e9339d539dcf59a172d3c4f51852c0aaa6628880eb7752b8deed"
+  },
+  {
+   "key": "11",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "154f1bd081e7cac6369e188eb98c0c4ce9879c02da3e0983b2726ed2d5d1b040"
+  },
+  {
+   "key": "12",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; project retained. For a Schedule D filer the helper is the smaller of Schedule D lines 15 and 16, floored at zero, plus Form 1040 line 3a, as i8995 p. 4, Line 12 says. When Schedule D is not required ('your net capital gain is the amount reported on Form 1040 ... line 7a') the only capital item in scope is capital gain distributions, and the Schedule D lines are still figured from line 13 alone, so lines 15 and 16 both equal the line 7a amount (checked earlier: $1,234 of distributions gives sd.line15 = sd.line16 = f1040.line7a = qbi.net_capital_gain = $1,234). No change to the data.",
+   "subject_key": "11fbbdc340cf59b520e040c32b03f8b164d940ed2bc5345cc2a234930628f635"
+  },
+  {
+   "key": "13",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "5172cc248f394be54ffbeec74745ea98ff0dbe4964813d70a60957a40d0b015f"
+  },
+  {
+   "key": "14",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "19b5ee59b3a19a267527ef36ba1859ba432aac9444efd46f55cead43e1bad8b9"
+  },
+  {
+   "key": "15",
+   "record": "b2bc2e7bf85448d007948fa0c1252a7f16bfa63c3872960f68841f6e6a86e8a7",
+   "status": "MATCH",
+   "subject_key": "e07a972215af0e5f9f17b129921b2bf2cb83f408f6365cd0fca18d9dff3e4d93"
+  }
+ ],
+ "subjects": {
+  "2": "99daea0273066bbb2722d6bcf3e206a4bf38a10ce0eb0d29986a085c71867720",
+  "3": "883483ca5ebb4570a139fe664562fbb99083354dc39d3694e4670d66c5ae9922",
+  "4": "b9531ac49ff118dbd5f80c373eeef8befadb9be46921d3b1b8fb63d445db3061",
+  "5": "ccc284ea37141c3d3ded309136f80dc7c8c2e7652cba89bb1586dd7dd9d3d8d3",
+  "7": "7c96aa9136109dec103f5b24868815f092b1ed699c1fc7b69ce460c259afbe47",
+  "16": "95d699ddf32fdb771b2f75f9e4941f5a668132ffe042376eb417e71fae3e00ac",
+  "17": "d8310c9eef48f97cd1fe056b1fbd59a621f71b23cc2673888401f63b664f537d",
+  "6": "15eed467a1e8bccce53fa0f07b90d1954a3e761831c28991bdd64480f2040cf8",
+  "8": "3d861fdfe9e473d8be85892e1bc9c106dc15941a001b1b5303e9afc4c347d950",
+  "9": "37a163f1231187952322e6d8ec06c29ce03a574b072aa0539458a2ad502eb8ff",
+  "10": "db2625f7012fe5399f732c1688f5b7960bad78a713e0ab1a41cd3093c773c76e",
+  "11": "cd69b2b0ef0fa2d02d8b9c2afbcd2a5cd5184fe71380286f6c282cedf41cec78",
+  "12": "2f8b07e3a3b75eda11fda3f445bda3523bc137708d3f7cf50505097a929f36f8",
+  "13": "d8b999c6c325de8dec336f115fbb743253ccf7539d17f4c4b027bd2a11604571",
+  "14": "35f0f5c573414a89e64efef6adbffaba668d2dfcf8291ef16154f490e8210f12",
+  "15": "85c3ee3b28a12fd542715238dcad957743acad9b3c7d2b003c08476564e8ae37"
+ },
+ "__rest__": "5e3959daf7fda5a21382991accbdbe4e4f3b4806a3e1ce5bbc6ba7e93a09b575"
+}

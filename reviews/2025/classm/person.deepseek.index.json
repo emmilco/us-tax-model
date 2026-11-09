@@ -1,0 +1,53 @@
+{
+ "kind": "classm",
+ "form": "person",
+ "family": "deepseek",
+ "base": "3592eae5f50647a5f64c2aee1f78213aa4cc78c4365d4aff238d6e49eba49800",
+ "lines": [
+  {
+   "key": "case classm.person.1",
+   "record": "3592eae5f50647a5f64c2aee1f78213aa4cc78c4365d4aff238d6e49eba49800",
+   "status": null
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].employers",
+   "record": "3592eae5f50647a5f64c2aee1f78213aa4cc78c4365d4aff238d6e49eba49800",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].overcount",
+   "record": "3592eae5f50647a5f64c2aee1f78213aa4cc78c4365d4aff238d6e49eba49800",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].over",
+   "record": "3592eae5f50647a5f64c2aee1f78213aa4cc78c4365d4aff238d6e49eba49800",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].wages",
+   "record": "3592eae5f50647a5f64c2aee1f78213aa4cc78c4365d4aff238d6e49eba49800",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].withheld",
+   "record": "3592eae5f50647a5f64c2aee1f78213aa4cc78c4365d4aff238d6e49eba49800",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].eligible",
+   "record": "3592eae5f50647a5f64c2aee1f78213aa4cc78c4365d4aff238d6e49eba49800",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].excess",
+   "record": "3592eae5f50647a5f64c2aee1f78213aa4cc78c4365d4aff238d6e49eba49800",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[taxpayer].credit",
+   "record": "3592eae5f50647a5f64c2aee1f78213aa4cc78c4365d4aff238d6e49eba49800",
+   "status": "AGREE"
+  }
+ ]
+}

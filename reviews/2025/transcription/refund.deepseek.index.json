@@ -1,0 +1,96 @@
+{
+ "kind": "transcription",
+ "form": "refund",
+ "family": "deepseek",
+ "base": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+ "lines": [
+  {
+   "key": "refund.has",
+   "record": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 88, Line 1: \"If you received a refund, credit, or offset of state or local income taxes in 2025, you may be required to report this amount\". refund.has is whether a refund was received (refund.received more than zero), which s1.line1 uses to decide whether to read anything else; the candidate redefines it as line 9 more than zero. Value witnesses: stage16.refund.f1, f2, f4 and f7 (refunds that are not taxable; project true, candidate false) and two refused stage16.cleanup returns; it needs the whole worksheet on every return (completed-return candidate-unknown for refund.box8 on 124 fixtures with no refund, for example), and refuses on the worksheet gates (stage16.refuse.refund.exc_tax, exc_who, box8, not_2024). Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 848 agree; differences 4 candidate-refuses, 1499 candidate-unknown, 23 project-unknown, 6 value; on completed returns 254 candidate-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "subject_key": "29c4a685e94d3dbb27168ae7df10236aa087e5f941fdaa627cae28ea8cdc812e"
+  },
+  {
+   "key": "refund.taxable",
+   "record": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error and scope; inherited from lines 6 and 9. i1040gi p. 88, Line 1, TIP: \"None of your refund is taxable if, in the year you paid the tax, you either (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes\"; i1040gi p. 90, worksheet line 3: \"Is the amount on line 1 more than the amount on line 2? No. STOP None of your refund is taxable.\". The candidate copies its line 9 and moves the gates onto the worksheet lines. Its differences on refund returns are stage16.mut.refund_single_unasked (project $1,400.00, candidate unknown for refund.spouse_born) and stage16.mut.refund_line3_stop (project $0.00, candidate unknown for refund.status), inherited from lines 6 and 9; stage16.refuse.refund.line5e_bad (project refuses at the cited screen, candidate $3,000.00) is scope. The completed-return candidate-unknown (refund.exc_tax, exc_who, the status and box answers withheld) are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,216 agree; differences 163 candidate-unknown, 1 project-refuses; on completed returns 91 candidate-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "subject_key": "69a7673a31a9f1487d85f38a50987db62c6cc63492ec9e044490a45f3f27debf"
+  },
+  {
+   "key": "1",
+   "record": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation and scope; i1040gi p. 90, worksheet line 1: \"Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\". Where the worksheet is used (itemized, no sales-tax election) the candidate takes the same smaller of refund.received and line 5d; it enters zero otherwise, where the project's refund.taxable never reads line 1. stage16.refuse.refund.box8 and .not_2024 (candidate refuses on line 1, project $3,000.00 on line 1 and refuses the same returns at refund.taxable) are scope on refused returns. The completed-return differences (refund.itemized, box8 or not_2024 withheld from the candidate; refund.line5d_2024 withheld from the project) are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,263 agree; differences 2 candidate-refuses, 69 candidate-unknown, 46 project-unknown; on completed returns 39 candidate-unknown, 13 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "subject_key": "a01d03674a74258f24c136fe25dc8f7bdcc908b73b35213ebae6aabb1cbe587d"
+  },
+  {
+   "key": "2",
+   "record": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation and scope; i1040gi p. 90, worksheet line 2, \"Yes. Subtract the amount on your 2024 Schedule A, line 5e\" from line 5d. Both take line 5d less line 5e floored at zero where the worksheet is used; the candidate enters zero where it is not. stage16.refuse.refund.line5e_bad (project refuses at the cited impossible-entry screen refund.line5e_bad, candidate $0.00) is scope. The completed-return differences are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,310 agree; differences 23 candidate-unknown, 1 project-refuses, 46 project-unknown; on completed returns 13 candidate-unknown, 26 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "subject_key": "d4191aeb5cfa019780982234fb0d33b2df7846d1b54fee265a2a0041f2ead0fb"
+  },
+  {
+   "key": "3",
+   "record": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+   "status": "AGREE",
+   "subject_key": "277c9b303dc46ca88335d774322f03fb9000a2411b01d766cfeb9efb01ac101d"
+  },
+  {
+   "key": "4",
+   "record": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 90, worksheet line 4: \"Enter your total itemized deductions from your 2024 Schedule A, line 17.\" Both enter refund.line17_2024 where the worksheet is used; the candidate enters zero otherwise. Every difference is a partial record on a base with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,334 agree; differences 23 candidate-unknown, 23 project-unknown; on completed returns 13 candidate-unknown, 13 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "subject_key": "3236b988baab4de5679c0a4395c7e97839f67007b9cabb6828b63ea476c738bb"
+  },
+  {
+   "key": "5",
+   "record": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+   "status": "AGREE",
+   "subject_key": "12addebbb92689d7a4aa7e0571089a7eaaa23216af6fd5882161635a421de94d"
+  },
+  {
+   "key": "6",
+   "record": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 90, worksheet line 6: \"Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)\" and its footnote \"*If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return\"; p. 33, Line 12d: \"Don’t check any boxes for your spouse if your filing status is head of household\". The candidate counts the spouse boxes for every 2024 status and needs them where the source does not: stage16.mut.refund_single_unasked (single; project $0.00, candidate unknown for refund.spouse_born). The other differences are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,310 agree; differences 47 candidate-unknown, 23 project-unknown; on completed returns 26 candidate-unknown, 13 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "subject_key": "fb7f8d695f181e36c2aabb0eefca111f8ddc3cf71821f7b99b3b84fcdf3b5d8b"
+  },
+  {
+   "key": "7",
+   "record": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+   "status": "AGREE",
+   "subject_key": "489d18e12fd2e2d07a5a5201aa14101f9201830354fb56f336324bb76c52525f"
+  },
+  {
+   "key": "8",
+   "record": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; inherited from line 6. i1040gi p. 90, line 8: \"Is the amount on line 7 less than the amount on line 4? No. STOP None of your refund is taxable. Yes. Subtract line 7 from line 4\". The candidate's own line 8 logic is the project's; its differences are stage16.mut.refund_single_unasked (project $1,400.00, candidate unknown for refund.spouse_born, through line 7) and partial records on bases with no refund (Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads). Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,287 agree; differences 70 candidate-unknown, 23 project-unknown; on completed returns 39 candidate-unknown, 13 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "subject_key": "26923beecf641d85fb36c11b8bfd59d0c07d2829825dbe4ec2d86855d39842bf"
+  },
+  {
+   "key": "9",
+   "record": "d5e4c82009daf7aad95a0c0b4fd67ad6ed56d2f9e835c0c54034758fdcff4c2c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 90, worksheet line 3: \"Is the amount on line 1 more than the amount on line 2? No. STOP None of your refund is taxable.\". The candidate always takes the smaller of lines 3 and 8, so after a line 3 STOP it still needs line 8 and the 2024 filing status: stage16.mut.refund_line3_stop (project $0.00, candidate unknown for refund.status); it inherits line 6 (stage16.mut.refund_single_unasked). stage16.refuse.refund.box8, .not_2024 and .line5e_bad are scope on refused returns. The completed-return differences are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,122 agree; differences 2 candidate-refuses, 186 candidate-unknown, 1 project-refuses, 69 project-unknown; on completed returns 104 candidate-unknown, 26 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "subject_key": "aeba6b6e0ea98220fdfb982ed5c991ab6165a1303103ccbca23c3e145d838838"
+  }
+ ],
+ "subjects": {
+  "refund.has": "6bd0ea50399f2920d7ff293034a6853e1de7c6cfc1f1b0dc94229cbd400ab049",
+  "refund.taxable": "44e2ccc3c429357f1e1bf8789bbf3172ac3da031a3bdd8cd3d2169683d15b7d9",
+  "1": "c7db273fdb74a02c74e40bf81a97232f756a677bb3dd7be39a63f54709999fda",
+  "2": "91eb1ef47a73d5a7374918887568614cf502d38e4d54dd584ff71e4c439c2fc6",
+  "3": "dee0b86519f8bb9ddf2c825b78358413221b68d930a03e98e7344a8d18bf6ede",
+  "4": "3c5a9ffb234d55e9d92f41c2448191732b0c6e38e87d64a593f5b1a5603fc4e3",
+  "5": "c02e5042fa5062503cbaf42cafe2f64610447e57d9faf525a0e1904747cfda6f",
+  "6": "bd0f71484f4b227904202cecbc11ee69fc6b5c8cda8b7ca7fa271046dbc23630",
+  "7": "5d74c147b1a5ab8fec6ef3b481bfde13d4561526952288baa8079115adfad20c",
+  "8": "3f62e583d65006a11a37557b8c3af5e2fea48bf36f8e191f1cced570c6f3cb8c",
+  "9": "17798256689f7d38756c72948184990c053352ca7de96936fb93cb52982ee74e"
+ },
+ "__rest__": "9a12945506dcc91b7709e71f5f54423e182739ad982dde223b33e1168f0e0716"
+}

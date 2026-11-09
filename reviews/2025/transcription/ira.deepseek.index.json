@@ -1,0 +1,236 @@
+{
+ "kind": "transcription",
+ "form": "ira",
+ "family": "deepseek",
+ "base": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+ "lines": [
+  {
+   "key": "ira.joint",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "AGREE",
+   "subject_key": "650b00cadee11427e3c93e763261ad85336676418e7ceece6c6e70eb24622231"
+  },
+  {
+   "key": "ira.joint_type",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "AGREE",
+   "subject_key": "0584e2faba9aee89fafcec70c1b5dc6c790e981e5f3a9f3e9017923622d6f93c"
+  },
+  {
+   "key": "ira.anyone_covered",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 96: \"You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan.\" The candidate reads person.ira_cov per column, as the project does. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1640 of 1640 comparisons agree; no differences. Observed equivalence on this sample, not proof. Project stands.",
+   "subject_key": "b8fe1125e124ed80ad80b91d1bd912656cae0786aa25b811b203f39f7c4f04aa"
+  },
+  {
+   "key": "ira.cov_gate",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 31, Lines 6a and 6b, Exception: \"You made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment. Instead, use the worksheets in Pub. 590-A\". The candidate's gate copies ira.anyone_covered and drops both the social security benefits and the traditional contributions the exception names. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 645 of 1640 comparisons agree; 925 candidate-unknown, 70 value. The 70 value records are returns with a covered person but no social security benefits or no traditional contributions (stage16.ira.i1, stage16.ira.i2, audit.ira.covered_age50_joint_phaseout: project false, candidate true); bound in place of the project's gate, it also changes when the Social Security worksheet's IRA copy (person.ira_ssb_figured) refuses. The 925 candidate-unknown records are no-contribution returns where the candidate needs coverage the source does not. Project stands.",
+   "subject_key": "a67a1ff94d46f42b4b087e291668f5f313871de24d96dcd5503d3e4ac73733f4"
+  },
+  {
+   "key": "ira.kbh_short",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 98, Caution: \"If married filing jointly and line 10 is less than $14,000 ($15,000 if one spouse is age 50 or older at the end of 2025; $16,000 if both spouses are age 50 or older at the end of 2025), stop here and use the worksheet in Pub. 590-A to figure your IRA deduction.\" The caution is part of a worksheet used only with traditional contributions (i1040gi p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.\"); the candidate drops that condition. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1473 of 1640 comparisons agree; 148 candidate-unknown, 10 value, 9 candidate-refuses. The 10 value records are joint returns without contributions and line 10 under the caution amount, where the candidate refuses lines 12a, 12b and 20; classm.sli.4 and classm.ssb.4 are refused by nothing else. The 148 candidate-unknown records are no-contribution joint returns where its line 10 needs ira.special (its line 8 refusal) or ira.se_capital; the 9 candidate-refuses records (generated 113, 121, 169) are returns refused by other cited gates (scope). Project stands.",
+   "subject_key": "cabddbac80a8fcaa119570d5d74a9b319832a4c6d9eae666efde89ff251a4562"
+  },
+  {
+   "key": "ira.both_kinds",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 95, Line 20, item 2: \"If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions.\" The candidate counts a person with both kinds on any return and omits the joint-return condition. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1439 of 1640 comparisons agree; 200 candidate-unknown, 1 value. The value record stage16.mut.ira_trad_and_roth is a single return with traditional and Roth contributions: the candidate's gate is true and its lines 12a, 12b and 20 refuse, where the project figures a $3,000 deduction and the item does not apply. (Its per-person count is also the narrow reading amb.2025.ira_both_kinds rejects, not observed on this sample.) The 200 candidate-unknown records answer No to person.sav_trad and supply no amount, which is necessarily zero (representation). Project stands.",
+   "subject_key": "68aa62a24c5881151847d211b098ddd4ff253e848550dd3e8d3699f403657673"
+  },
+  {
+   "key": "ira.over_comp",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; p590a p. 35, Excess Contributions: \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of: • $7,000 ($8,000 if you are age 50 or older), or • Your taxable compensation for the year.\" The project refuses when traditional plus Roth contributions exceed line 10 (with person.ira_over_limit for the dollar limit); the candidate compares each column's traditional contributions with line 10 alone. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 611 of 1640 comparisons agree; 987 candidate-unknown, 41 candidate-refuses, 1 value. The single value record, stage16.refuse.ira.kbh_short (project true, candidate false), is refused by ira.kbh_short anyway; where the lines can differ on a reachable return (Roth contributions taking the total above compensation), the project refuses with this cited screen an excess the tool does not prepare. The 41 candidate-refuses records are returns refused by other gates; the 987 candidate-unknown records answer No to person.sav_trad (amount necessarily zero) or are no-contribution partial records on which a zero line 11 cannot exceed line 10. Project stands.",
+   "subject_key": "a56f543eed52913b096296ac7346b4bd28355e14c3f1a881532e10fe536905e2"
+  },
+  {
+   "key": "ira.special_gate",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 95, Line 20: \"Use the IRA Deduction Worksheet to figure the amount, if any, of your IRA deduction. But read the following list before you fill in the worksheet.\" The candidate's gate is ira.special itself, with no contribution condition (i1040gi p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.\"), and its line 8 refuses on it. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 674 of 1640 comparisons agree; 966 candidate-unknown. All 966 candidate-unknown records have no traditional contributions (classm.f2441.1.deepseek, classm.asset.2, partial classm.s3.2 without ira.special), where the project does not ask the screen; the candidate requires an answer the source does not need and would refuse such a return. Project stands.",
+   "subject_key": "116c3153018e8ee43e40d6920731b970f6120a5f3bed71f130069bb2f4e79bae"
+  },
+  {
+   "key": "ira.combat_gate",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 98, line 8: \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i.\" The candidate's gate is the constant false, so its line 8 leaves out nontaxable combat pay, which the source puts on line 8. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1621 of 1640 comparisons agree; 18 project-unknown, 1 value. The value record stage16.refuse.ira.combat_pay (combat pay with traditional contributions) is refused by the project and computed by the candidate ($5,000 on line 20) without the combat pay. The 18 project-unknown records omit person.sav_trad (stage16.hsa.partial.H01, classm.f8889.3), which the interview asks; the project needs to know of contributions before it can rule combat pay out. Project stands.",
+   "subject_key": "61f599b7353134628959b13721ad6d1ba815fb305ce30d34c62df11c4daf344f"
+  },
+  {
+   "key": "ira.excl_gate",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 96: \"If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction.\" The candidate's gate is the constant false, so it figures the deduction with the worksheet where the source sends a covered filer with Form 2555 to Pub. 590-A. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1622 of 1640 comparisons agree; 17 project-unknown, 1 value. The value record stage16.refuse.ira.excluded_income is refused by the project and computed by the candidate ($2,800 on line 20). The 17 project-unknown records omit person.sav_trad, which the interview asks. Project stands.",
+   "subject_key": "6bb715f4296658de2d75a42a0b7ca3b4506f94e2d57a4b34811ed8fc20789217"
+  },
+  {
+   "key": "ira.line20",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 97, line 6: \"Is the amount on line 5 less than the amount on line 2?\" with the No answer \"None of your IRA contributions are deductible.\". Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 576 of 1640 comparisons agree; 1006 candidate-unknown, 51 candidate-refuses, 6 project-refuses, 1 value. The value record stage16.ira.i2 (single, covered, line 5 $90,000, line 2 $89,000, so line 6a is No): the project deducts $0; the candidate's line 7a takes the $200 floor on a zero line 6a and deducts $200. Of the 51 candidate-refuses records, stage16.mut.ira_trad_and_roth (single; its ira.both_kinds) and 5 no-contribution joint returns (its ira.kbh_short) are reachable returns the source computes; the rest are refused by other gates (scope). The 6 project-refuses records are cited scope screens (person.ira_excess_gate, person.ira_over_limit, ira.over_comp, ira.excl_gate, ira.combat_gate, person.ira_dist_gate), the last three of which the candidate ignores (ruled on those gates). The 1,006 candidate-unknown records mostly need ira.deduct_less on returns with no deduction, where the answer is necessarily No (representation). Project stands.",
+   "subject_key": "ea4fbad37909ac35c02151ea02813628f3c91ffc811a6e1155b6be9beca1c824"
+  },
+  {
+   "key": "1a",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 97, line 1: \"Were you covered by a retirement plan (see Were You Covered by a Retirement Plan)?\" and \"If married filing jointly, was your spouse covered by a retirement plan?\"; i1040gi p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.\" The candidate reads person.ira_cov without the contribution condition the project's shown line carries; the deduction reads person.ira_cov on both sides. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 668 of 1640 comparisons agree; 924 candidate-unknown, 48 value. All 48 value records have no traditional contributions (classm.f8880.1, stage14.sep.basic, classm.f5695.5); all 924 candidate-unknown records are no-contribution returns where coverage is not asked. On a return with no traditional IRA contributions the worksheet is not used and no amount reads the line. Project stands.",
+   "subject_key": "b3738bb3061d9580a4bac09b7a3a7eb97d8a7fe6b8ac78e3b27e3625a9cf3563"
+  },
+  {
+   "key": "1b",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 97, line 1: \"Were you covered by a retirement plan (see Were You Covered by a Retirement Plan)?\" and \"If married filing jointly, was your spouse covered by a retirement plan?\"; i1040gi p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.\" Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1496 of 1640 comparisons agree; 134 candidate-unknown, 10 value. All 10 value records are joint returns without traditional contributions (classm.ira.2, classm.se.2); the 134 candidate-unknown records are no-contribution returns where spouse coverage is not asked (two of them rosters the interview cannot produce: stage13.refuse.single_with_spouse, ss.person.separation). On a return with no traditional IRA contributions the worksheet is not used and no amount reads the line. Project stands.",
+   "subject_key": "c63547941e259a3152b1e870dbb183d29631af9f7bc28d8cfc7488344f2ea935"
+  },
+  {
+   "key": "2a",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 97: \"If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a (and line 7b, if applicable), and go to line 8.\" Under the skipped-line rule (README), a nonzero amount on a line the source says to skip, on a reachable return, is a defect of the side producing it even when no later amount changes; the project shows zero. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 18 of 1640 comparisons agree; 1475 value, 133 candidate-unknown, 14 project-unknown. 180 value records are reachable returns (refused nowhere else) on which no one is covered, so line 2a is skipped, and the candidate enters an amount: stage16.ira.i6 (single, contributions) $0 against $89,000; stage16.mut.ira_kbh_none_edge (joint) $0 against $246,000. No deduction changes, since its line 7 takes the applicable amount when no one is covered. The 133 candidate-unknown records are no-contribution joint returns where coverage is not asked (representation); the 14 project-unknown records omit person.sav_trad, which the interview asks. The candidate's $10,000 for every separate return ignores the lived-apart amount, but married filing separately is refused for the whole return by s3.mfs (scope.ready). Project stands.",
+   "subject_key": "4ec52e6e7724825a87fc7f21e1339116342383f4f6107cd9e07baceb88534033"
+  },
+  {
+   "key": "2b",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 97: \"If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a (and line 7b, if applicable), and go to line 8.\" Under the skipped-line rule (README), a nonzero amount on a line the source says to skip, on a reachable return, is a defect of the side producing it even when no later amount changes; the project shows zero. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 9 of 1640 comparisons agree; 1485 value, 132 candidate-unknown, 14 project-unknown. 180 value records are reachable returns (refused nowhere else) on which no one is covered, so line 2b is skipped, and the candidate enters an amount: stage16.mut.ira_kbh_none_edge (joint) $0 against $246,000; classm.f5695.1 (no spouse’s column) $0 against $89,000. No deduction changes, since its line 7 takes the applicable amount when no one is covered. Off a joint return there is no spouse's column (i1040gi p. 95, Line 20, item 6: \"You must file a joint return to deduct contributions to your spouse’s IRA.\"). The 132 candidate-unknown records are no-contribution joint returns where coverage is not asked (representation); the 14 project-unknown records omit person.sav_trad. Project stands.",
+   "subject_key": "6b46bb91b5aa46af4ba5fa0d07d6485a23e831a31303ab6eb1879d577cd49637"
+  },
+  {
+   "key": "3",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "AGREE",
+   "subject_key": "a6e8f086c1689b1caffb5294fbf542fed7a6ea2598efbcd8857904541183da4a"
+  },
+  {
+   "key": "4",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "AGREE",
+   "subject_key": "6f453d662c5a0133ec4b07075f9b1f4ab999109cbd1e6a395241e486d33a4df9"
+  },
+  {
+   "key": "5",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "AGREE",
+   "subject_key": "658f0f75205f4f0790f5e01d0dbbf515f0385239b130eba31456c385042300c1"
+  },
+  {
+   "key": "6a",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 97: \"If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a (and line 7b, if applicable), and go to line 8.\" Under the skipped-line rule (README), a nonzero amount on a line the source says to skip, on a reachable return, is a defect of the side producing it even when no later amount changes; the project shows zero. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 500 of 1640 comparisons agree; 628 value, 372 candidate-refuses, 140 candidate-unknown. 99 value records are reachable returns (refused nowhere else) on which no one is covered, so line 6a is skipped, and the candidate enters an amount: stage16.ira.i6 $0 against $84,000; classm.f5695.1 $0 against $56,064. No deduction changes, since its line 7 takes the applicable amount when no one is covered. The 372 candidate-refuses records come from figuring line 5 on every return, and every one of them is a return the project refuses on scope.ready, Form 1040 line 24 or Schedule 1 line 20 for another cited gate (scope); the 140 candidate-unknown records are no-contribution returns needing coverage or line 5 inputs (representation). Project stands.",
+   "subject_key": "5e815e98f07bac21cba1de4725d72b854afda11bc460b155a3b46ecd9f11c825"
+  },
+  {
+   "key": "6b",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 97: \"If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a (and line 7b, if applicable), and go to line 8.\" Under the skipped-line rule (README), a nonzero amount on a line the source says to skip, on a reachable return, is a defect of the side producing it even when no later amount changes; the project shows zero. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 493 of 1640 comparisons agree; 635 value, 373 candidate-refuses, 139 candidate-unknown. 99 value records are reachable returns (refused nowhere else) on which no one is covered, so line 6b is skipped, and the candidate enters an amount: stage16.ira.i7 (joint) $0 against $146,000; classm.f5695.1 (no spouse’s column) $0 against $56,064. No deduction changes, since its line 7 takes the applicable amount when no one is covered. The 373 candidate-refuses records come from figuring line 5 on every return, and every one of them is a return the project refuses on scope.ready, Form 1040 line 24 or Schedule 1 line 20 for another cited gate (scope); the 139 candidate-unknown records are no-contribution returns needing coverage or line 5 inputs (representation). Project stands.",
+   "subject_key": "94a0d47c622e7d122b7dee011a5cd3f760d754a3d1b3e65b4297626dc1aad462"
+  },
+  {
+   "key": "7a",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 97, line 6: \"Is the amount on line 5 less than the amount on line 2?\" with the No answer \"None of your IRA contributions are deductible.\"; i1040gi p. 97, line 6: \"If married filing jointly or qualifying surviving spouse, and the result is $20,000 or more ($10,000 or more in the column for the IRA of a person who wasn’t covered by a retirement plan), enter the applicable amount below on line 7 for that column and go to line 8.\" The candidate multiplies whenever someone is covered: it gives the $200 floor when line 6a is zero and a percentage when line 6a is at or above the threshold. Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 48 of 1640 comparisons agree; 947 candidate-unknown, 620 value, 25 candidate-refuses. stage16.ira.i2 (single, line 5 not less than line 2): $0 against $200, which reaches line 12a and Schedule 1 line 20; stage16.mut.ira_joint_full_edge (joint, line 6a over $20,000): $7,000 against $7,010. The other 618 value records are no-contribution returns (zero against the applicable amount, no deduction either way); the 947 candidate-unknown records are no-contribution returns needing coverage or age; the 25 candidate-refuses records are returns refused for other gates. Project stands.",
+   "subject_key": "dc9ffbdad0b237f749fad594ee6c139a1174cb87f2bed8750ca0f719cbe9b83e"
+  },
+  {
+   "key": "7b",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 97, line 6: \"If married filing jointly or qualifying surviving spouse, and the result is $20,000 or more ($10,000 or more in the column for the IRA of a person who wasn’t covered by a retirement plan), enter the applicable amount below on line 7 for that column and go to line 8.\" Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 27 of 1640 comparisons agree; 925 candidate-unknown, 651 value, 37 candidate-refuses. stage16.ira.i1 (joint, spouse not covered, line 6b at least $10,000): the project enters the applicable $7,000 and the candidate $83,650 (70% of line 6b); stage16.mut.ira_joint_full_edge: $7,000 against $84,010. The candidate also figures line 7b on returns that are not joint (stage16.ira.i3: $0 against $2,800), which have no spouse's column (i1040gi p. 95, Line 20, item 6: \"You must file a joint return to deduct contributions to your spouse’s IRA.\"); line 11b is zero there. The 925 candidate-unknown records are no-contribution returns needing coverage or age; the 37 candidate-refuses records are returns refused for other gates. Line 12b is capped by line 11b, so on the sample no deduction differs, but the printed line is wrong. Project stands.",
+   "subject_key": "17d4537ebe17475554f34acff7837124e30c206b9b23fdad4e97e9604c19916b"
+  },
+  {
+   "key": "8",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 98, line 8: \"Wages, salaries, tips, etc. Generally, this is the amount reported in box 1 of Form W-2.\" The candidate's wages equal the project's on every record where both compute; the difference is its refusal on ira.special with no contribution condition (i1040gi p. 95, Line 20: \"Use the IRA Deduction Worksheet to figure the amount, if any, of your IRA deduction. But read the following list before you fill in the worksheet.\"). Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 688 of 1640 comparisons agree; 949 candidate-unknown, 2 project-refuses, 1 candidate-refuses. All 949 candidate-unknown records need ira.special on returns with no traditional contributions (classm.f2441.1.deepseek, classm.qdcg.2). The candidate-refuses record (stage16.refuse.ira.special) is refused by the project too; the 2 project-refuses records are the cited Schedule 1 line 2a alimony screens (scope). Project's wages stand.",
+   "subject_key": "5c5986a54ab574151e617d4db7dee0b0310cc2acb0654d1faba200d341a538ff"
+  },
+  {
+   "key": "9",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "AGREE",
+   "subject_key": "96c58efa95b4389b05ff5b5da1a04020bc099f330b85628c6f5827858209c4cc"
+  },
+  {
+   "key": "10",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "AGREE",
+   "subject_key": "c74e8031c2676d82b29539741375da2f72018db6c1efe6a248eecbcedb4a6498"
+  },
+  {
+   "key": "11a",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 98, line 11: \"Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025 to your IRA on line 11a and to your spouse’s IRA on line 11b.\" Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 693 of 1640 comparisons agree; 947 candidate-unknown. All 947 candidate-unknown records answer No to person.sav_trad and supply no amount: person.ira_trad is the amount question the interview asks only after Yes on person.sav_trad; the candidate reads it without that question, so on a return answered No the amount is not supplied, although it is necessarily zero. Project stands.",
+   "subject_key": "90c50288344da88824d0d71f32bc3d5a013d5567e7fcb3f38e6d86a1ff6c3311"
+  },
+  {
+   "key": "11b",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 98, line 11: \"Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025 to your IRA on line 11a and to your spouse’s IRA on line 11b.\"; i1040gi p. 95, Line 20, item 6: \"You must file a joint return to deduct contributions to your spouse’s IRA.\" Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1505 of 1640 comparisons agree; 135 candidate-unknown. All 135 candidate-unknown records are returns whose spouse answered No to person.sav_trad (classm.f2441.2, stage16.mut.ira_joint_full_edge), or the roster the interview cannot produce (stage13.refuse.single_with_spouse): person.ira_trad is the amount question the interview asks only after Yes on person.sav_trad; the candidate reads it without that question, so on a return answered No the amount is not supplied, although it is necessarily zero. Project stands.",
+   "subject_key": "05852417eae413e4c195f35c785a8477a183d848342d6a37ef66f9a8b6117fc6"
+  },
+  {
+   "key": "12a",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 98, line 12: \"On line 12a, enter the smallest of line 7a, 10, or 11a. On line 12b, enter the smallest of line 7b, 10, or 11b. This is the most you can deduct.\"; i1040gi p. 97, line 6: \"Is the amount on line 5 less than the amount on line 2?\" with the No answer \"None of your IRA contributions are deductible.\". Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 595 of 1640 comparisons agree; 985 candidate-unknown, 53 candidate-refuses, 6 project-refuses, 1 value. The value record stage16.ira.i2: $0 against $200, the candidate's line 7a floor on a zero line 6a. Of the 53 candidate-refuses records, stage16.mut.ira_trad_and_roth (single; its ira.both_kinds) and 6 no-contribution joint returns (its ira.kbh_short) are reachable returns the source computes; the rest are refused for other gates (scope). The 6 project-refuses records are cited scope screens (person.ira_excess_gate, person.ira_over_limit, ira.over_comp, ira.excl_gate, ira.combat_gate, person.ira_dist_gate). The 985 candidate-unknown records need coverage, the amount after No to person.sav_trad or ira.special on no-contribution returns. Project stands.",
+   "subject_key": "1af410cd6a06d09365b3d99c8a62f8612066aa40d8001f97c9e4c1a1615c843c"
+  },
+  {
+   "key": "12b",
+   "record": "a15f29aec0241fbc9f5a5d2f191b74a60b062214ca2586886d0549e2f0dd1f57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 98, line 12: \"On line 12a, enter the smallest of line 7a, 10, or 11a. On line 12b, enter the smallest of line 7b, 10, or 11b. This is the most you can deduct.\"; i1040gi p. 95, Line 20, item 6: \"You must file a joint return to deduct contributions to your spouse’s IRA.\" Triage executable-triage-v1 (triage/ira.deepseek.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 584 of 1640 comparisons agree; 989 candidate-unknown, 67 candidate-refuses. No value differs. Of the 67 candidate-refuses records, 6 no-contribution joint returns (its ira.kbh_short: classm.sli.4, classm.ssb.4) and stage16.mut.ira_trad_and_roth (its ira.both_kinds, on a single return) are reachable returns the source computes; the rest are refused for other gates (scope). The 989 candidate-unknown records need coverage, the amount after No to person.sav_trad or ira.special on no-contribution returns. Project stands.",
+   "subject_key": "cd4ecc1be065d8eec41dc32c2debc3dfa1ba4af85d414c0a78e9f24ea505c3e9"
+  }
+ ],
+ "subjects": {
+  "ira.joint": "365ccaca121eb16b932e2022f643d66aee0844b00391a8bb1b74a6f4a88037be",
+  "ira.joint_type": "1a8ea69d2a1cc0353622a72fb5471b38fcec12960d77a79b56ba45207815e306",
+  "ira.anyone_covered": "b7db71ab3bed181a7b39a82f25a2de45f393378839d46f09b280c39b1dc21ece",
+  "ira.cov_gate": "42e34fb72af678637525cb7d96066015972e411b333ab68dc6982455ce23883b",
+  "ira.kbh_short": "8471d8496289d4b1b3ed6d47555a1876a0e972a225541c2699e0f867f289e4f2",
+  "ira.both_kinds": "685e53786f58b5dd7566565bcba2eb87e34321c6c6742dbf674150b103133bbd",
+  "ira.over_comp": "52312a29a87661c0b3bbeb0f73a944e94eaa0659aa21a60b0e4a37f469b7bae7",
+  "ira.special_gate": "78ff47ae51b6551a9a428636bef048582633ffe14db3c26de52f0af739bfa8c7",
+  "ira.combat_gate": "14a3c3b59daa2cdfbe197c4a58413d73c4115ae56b144dd666e3fdb88fd88f2a",
+  "ira.excl_gate": "24f0f6dcaa11552258cefbe852fa5180dda40ee575e960b8a22b3ffa31c53d5d",
+  "ira.line20": "4684b87b7d7cadb71376be1fa615ab5c7cb06d31cad7067cc609fe3f5997b865",
+  "1a": "c718de8917f5f3888088c2a52e5ab3577d2839ec4b9db9f6e8aac2bdeb20785c",
+  "1b": "0b5459110e122f5244fe421f199b71693e94bdb2b298b595bbfb7047e07cdb7e",
+  "2a": "ccb0da605717d3932003df64bc4c824dfdd9fae011ed6963ab02690e3f898f08",
+  "2b": "ddf84c2e73e1ce075545e6d4029961148bf976a6d1b808435a89033fdac21ce0",
+  "3": "bc14901fb260ce8688f9c8baededb5672681a68ce774fe262e2565cc57242b02",
+  "4": "69cb0dabe8a28bcada7ace583db4be72b7c505dcb00b5c82633156eff3997582",
+  "5": "fe50f22bd737d68fd830892f141a3015680f501d8429a822e94f34e127296812",
+  "6a": "6f180290ff561ad4086e053e82f7dfff76cf663585ceb09697c39866c82d70ec",
+  "6b": "22a0cfbc9aab2c14dab9a7aed3ebbe0e79e3317a623d7d21e2c95d061cfd2e8c",
+  "7a": "91c5dba4d0d8f4c5f8fe4c956633c4388eb0ee3087a5450b792f59da64367c12",
+  "7b": "009b873ffbba562008d783dd1dbe365542d24f1a185698fe385c1bd2b767348b",
+  "8": "7597109de3fec41b733a74816d8a220d240e9ecde0bf76774502bdbce079b654",
+  "9": "0b806f1a31e147b2cbc269826fa9e900506495312ab407c0c8f74f3f2de8fda2",
+  "10": "bca4d9e6e7600ac219f8466c342382500fa2e0de9bac73aa2670bcec80f6fe6a",
+  "11a": "9f9c7a464eb572ffd5a9e421c438ffeb0251460c5da96d152c2666972981acd3",
+  "11b": "25435b164251aec5cb70ef5bcb9a9bf2111fdbb4d90739305808653e93b34838",
+  "12a": "b82f13e6cb42f6758d3a0c95c27f44da7b3260011de4b745d26c3f3b6ad947e2",
+  "12b": "d2de7691f80a33c706c2a569fc632d89caec7b5b00593c7d63c0743147dc6522"
+ },
+ "__rest__": "51bd60f3e1f3c5dc4a9156da6cc70b2d7fd330e94846768242fe389be4a6c05d"
+}

@@ -1,0 +1,57 @@
+{
+ "kind": "transcription",
+ "form": "sb",
+ "family": "claude",
+ "base": "e7e819909c6f6e33764ab0d991705d0e9013e6a66417745b89b4e1a75e39de3e",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "sb.ordinary_dividends_if_dividends",
+   "record": "f9626fa84e2649a89c8e1d06e7119c516d8a420c62573e686b1f775bebb583f1",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the candidate takes line 6 when div.any is yes and zero when it is no; the project takes box 1a (sb.ordinary_dividends) when div.any is yes and zero otherwise, and line 6 is a copy of this gate line with the Schedule B refusals, so the two agree on every return where line 6 is not refused (a refused line 6 refuses the return either way). Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
+   "subject_key": "901ef572c77871f1b4885a34f0e8401c0197090d9b00f48cd6495fa4d7bd9545"
+  },
+  {
+   "key": "2",
+   "record": "f9626fa84e2649a89c8e1d06e7119c516d8a420c62573e686b1f775bebb583f1",
+   "status": "AGREE",
+   "subject_key": "557f43cb325979c12a5daf4dce51d7afe45574ec5f941faf9c10859cb45d99bc"
+  },
+  {
+   "key": "3",
+   "record": "f9626fa84e2649a89c8e1d06e7119c516d8a420c62573e686b1f775bebb583f1",
+   "status": "AGREE",
+   "subject_key": "18000aa66712f56798a6d4c15d40478b1c33df200f3edb76e45b3505c6d822df"
+  },
+  {
+   "key": "4",
+   "record": "e7e819909c6f6e33764ab0d991705d0e9013e6a66417745b89b4e1a75e39de3e",
+   "status": "AGREE",
+   "subject_key": "89b7dc8295724fb1d53ff7619946e8259d61421d56767d3ce38fab8405f90f81"
+  },
+  {
+   "key": "6",
+   "record": "f9626fa84e2649a89c8e1d06e7119c516d8a420c62573e686b1f775bebb583f1",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the candidate reads sb.ordinary_dividends whatever the filer received dividends or other distributions (div.any), so it needs that answer where the source does not: i1040sb p. 2, Line 5, \"Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements\": a filer who received no dividends has none to report. The project reads the gate line sb.ordinary_dividends_if_dividends, which takes sb.ordinary_dividends when the filer received dividends or other distributions (div.any) holds and zero otherwise; the interview asks sb.ordinary_dividends only then (gated_by sb.ordinary_dividends_if_dividends), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
+   "subject_key": "8d72b42202329aa1849bdd7b1fbcc26cb7c7bfc4a9239dc5380bcb87ffcf3595"
+  }
+ ],
+ "subjects": {
+  "sb.ordinary_dividends_if_dividends": "b1d271d8d849b7c1efeca53defa98c7bd54ccc1decc43a9cac93006238a8ca45",
+  "2": "c2b650684ceb34df8615b05b853364172e30d7ba59937c04127f531c8ed61b4a",
+  "3": "1c76ab65b96979369ebb8017a12a4cece2ea2d7eb8d0c715b871937b0071643c",
+  "4": "d225f28e9701cf230747bff686459225d04bd398ce08e2040a616fb8958167c4",
+  "6": "e809b51c44b136b040bc80da353c594902708b11e4cef581dd48ab7d213290ce"
+ },
+ "__rest__": "013e58d3d274e971cd170d48794200b98ac690d600b9af1e38e8133de7ae11db",
+ "foreign": {
+  "sb.ordinary_dividends_if_dividends": "6c48c72035307b8bd1ab9c5771777c8b178c3509cec1b4d6aa030c43e1a415f8",
+  "2": "31e4161f21912b241e1de23fe5f89c504cead2e99f9ac4d8aced189ce6e5cdde",
+  "3": "31e4161f21912b241e1de23fe5f89c504cead2e99f9ac4d8aced189ce6e5cdde",
+  "6": "31e4161f21912b241e1de23fe5f89c504cead2e99f9ac4d8aced189ce6e5cdde"
+ }
+}

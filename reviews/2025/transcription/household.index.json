@@ -1,0 +1,167 @@
+{
+ "kind": "transcription",
+ "form": "household",
+ "family": "claude",
+ "base": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "household.persons",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "AGREE",
+   "subject_key": "f395b92a07d2c8e1b4bc5e2e644a8e7eb73a46d5ba3e0190565dfe81260887fd"
+  },
+  {
+   "key": "household.roster_bad",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040 p. 1, \"If joint return, spouse's first name\"; amb.2025.filer_under_16. The roster test (one taxpayer; a spouse entry exactly on a joint return) is the project's; the project also carries household.roster_ok's under-16 refusal, which the reply bypasses. Every difference is that refusal (project-unknown on incomplete records, one project-refuses); none on a completed return. As the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`), re-checked. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,287 of 2,300 agree; 12 project-unknown, 1 project-refuses; on returns the full interview completes: none. Project stands.",
+   "subject_key": "24e1cb27118950b8ef308510b491221201e593293503d6922ef44ad567bbcd03"
+  },
+  {
+   "key": "household.hsa_both",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i8889 p. 4, \"If you and your spouse each have separate HSAs, complete a separate Form 8889 for each\". Both count persons with a Form 8889 and test for two (0 < n against 1 <= n on an integral count). No difference. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,300 of 2,300 agree; none; on returns the full interview completes: none. Project stands.",
+   "subject_key": "1839eccec76a1a2bf109956108ca3bcc4d57db6b53fb21ed4c9a01cec64dc8d3"
+  },
+  {
+   "key": "household.hsa_split_count",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "AGREE",
+   "subject_key": "4a1d46db9898fe85c761784b93218eb3cbc613c71ca5ef30f22258755d0ee1d8"
+  },
+  {
+   "key": "household.hsa_agreed_count",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "AGREE",
+   "subject_key": "28f6d8c2f569f32f4bb074ef05cf41b6a278640b9019f8ae77138595eda52cc2"
+  },
+  {
+   "key": "household.hsa_step1_sum",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "AGREE",
+   "subject_key": "34057507d1c825db39af7944ef3bf5acc1cc013f7dd6c24a1f21a4d144d32bbb"
+  },
+  {
+   "key": "household.hsa_share_sum",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "AGREE",
+   "subject_key": "35003b7b7f676c2728b6f721fa227e9662d61b972daf360ae5c3cf1ab9286a97"
+  },
+  {
+   "key": "household.all_eic_ssn",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 40, Step 1, question 2. \"No filer without a valid SSN\" against \"every filer has one\": the same test. No difference. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,300 of 2,300 agree; none; on returns the full interview completes: none. Project stands.",
+   "subject_key": "19c60643e4cc69dec828878b18ce7d81755de4c54bb01601693550db0f2df212"
+  },
+  {
+   "key": "household.all_tin",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 19, Step 5, question 1 (an applied-for ITIN counts, as the project reads it). The reply counts filers with neither a TIN nor an application and tests zero; same test. No difference. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,300 of 2,300 agree; none; on returns the full interview completes: none. Project stands.",
+   "subject_key": "fff067d4f8d49a11dd730f0c749e8e2cbc03996b3427ca35ef1a6b6fec47a756"
+  },
+  {
+   "key": "household.ctc_ssn",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 7, \"If you are filing a joint return, only one spouse is required to have a valid SSN ... The other spouse must have either an SSN or ITIN\" (amb.2025.ctc_spouse_itin_application). The reply requires person.tin of every filer, also of one who answered person.work_ssn Yes (an SSN valid for employment is an SSN), which the interview then does not ask: the 5 completed candidate-unknowns are class M records whose route-limited answers omit person.tin for such a filer (classm.s3.4, classm.s3.4.deepseek, classm.tcw.5, classm.tcw.2 spouse). The 1 completed value (generated 147, work_ssn Yes with tin No) is the contradictory answer pair of the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`). Reply unchanged; the class changes from representation because the class M route-limited answers now complete those records. No completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,224 of 2,300 agree; 56 candidate-unknown, 20 value; on returns the full interview completes: 5 candidate-unknown, 1 value. Project stands.",
+   "subject_key": "52db3ed47e0dfb461acdb377a5ac25c29e1d768f844e30eb6567c668bd7e8fdd"
+  },
+  {
+   "key": "household.taxpayer_work_ssn",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi pp. 101, 106 and 110 (Schedule 1-A: the taxpayer's own valid SSN). The reply now counts only the taxpayer's entry, as the project (1 <= n against 0 < n on an integral count); the prior model error (either spouse) is gone. No difference. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,300 of 2,300 agree; none; on returns the full interview completes: none. Project stands.",
+   "subject_key": "2175bc55e9d5669b2b1928818295d9b8db330f1149098c455759e81177834eb9"
+  },
+  {
+   "key": "household.ctc_disallowed_claim",
+   "record": "49552e70794e7f7d9d2a6ad65dd3b5ccea0e359cfd9cd310871715a7edeb8d57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040s8812 p. 2, Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\" (Form 8862 is needed only to claim the credit). The candidate copies household.credit_disallowed, so it is true whenever the answer is Yes, also on a return that claims no child tax credit or credit for other dependents (Schedule 8812 line 8 not above line 11, where line 12 says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"). The project tests line 8 above line 11 first and then the answer, which it now reads through its gate line household.credit_disallowed_if_claimed (asked only when the return claims one of the four credits). executable-triage-v2 (`../triage/household.json`; 1,638 fixtures, 500 generated returns seed 20261026, 235 partial records): no value difference on a completed return; 1 candidate-unknown on a completed return (the answer is withheld where the project does not need it); the other differences are refused or incomplete records. Same reading as the earlier ruling on this line (T-101). Project stands.",
+   "subject_key": "9c5107eeae5ea9492b03df1f25c99646b3256ccd6a375641fa267f3d31318fac"
+  },
+  {
+   "key": "household.eic_disallowed_claim",
+   "record": "49552e70794e7f7d9d2a6ad65dd3b5ccea0e359cfd9cd310871715a7edeb8d57",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\" (to take the credit; the Reminder on p. 46, \"to find out if you must file Form 8862 to take the credit for 2025\"). The candidate copies household.credit_disallowed, so it is true on a return that takes no earned income credit. The project tests that the credit is claimed (Steps 1 to 5 passed and eic.line6, Worksheet A line 6 or Worksheet B line 11, above zero) and then the answer, read through its gate line household.credit_disallowed_if_claimed. executable-triage-v2 (`../triage/household.json`; 1,638 fixtures, 500 generated returns seed 20261026, 235 partial records): the value differences on completed returns are f2.t101.credit_disallowed_no_credit_claimed and f2.t101.credit_disallowed_eic_zero (answer Yes, no earned income credit claimed: project false, candidate true), the narrowing T-101 made; 3 candidate-unknown on completed returns (answer withheld where the project does not need it); the rest are refused or incomplete records. Project stands.",
+   "subject_key": "574841cdf5b0e954d4f6ed0530d49a0b2ef43ec540ac612508413096727be72c"
+  },
+  {
+   "key": "household.hoh_fails",
+   "record": "c2037f7dce8b78a6935157e3aa1954a52fc061148a3f652e5f2ffb9e8d846b01",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 14, Head of Household: \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\"; i1040gi p. 23 (amb.2025.hoh_community_property). R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). The reply writes the project's test inline (status head of household, and the unmarried test fails or neither Test 1 nor Test 2 applies) and drops the household.hoh_community_property refusal the project carries on household.hoh_eligible; it reads household.unmarried as the project does. The differences are that cited refusal (refused records) and partial records withholding household.community_property. executable-triage-v2 on this pass's reply (`.transcription/household.lines-d801bd4b40fd.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 235 partial records; 2,373 comparisons): 2,368 of 2,373 agree; differences on returns the full interview completes: none; no completed-return value difference. Project stands.",
+   "subject_key": "bf93de11e3d64cc31632add6f0d4f3f6bab74c977bef10f053c71088d66a5f17"
+  },
+  {
+   "key": "household.qss_fails",
+   "record": "c2037f7dce8b78a6935157e3aa1954a52fc061148a3f652e5f2ffb9e8d846b01",
+   "status": "AGREE",
+   "subject_key": "5bbbc45da16662277c521dbaa94845cb737c97e6cb68d1211e0bfc3bb72346c8"
+  },
+  {
+   "key": "household.widowed_2025",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; p501 p. 6 and i1040gi p. 13 (a 2025 death allows a joint return). As the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`): the reply adds a joint-return branch to the owner's single/HOH gate (BUG-0277), flagging a valid death-year joint return (stage21.household.status_joint_death_year, incomplete). None completed. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,295 of 2,300 agree; 4 candidate-unknown, 1 value; on returns the full interview completes: none. Project stands.",
+   "subject_key": "19726c0ed3e2a4e0c550199403f8bd4de63a791d8a5558138bd92e7b9a5ca62a"
+  },
+  {
+   "key": "household.cp_marriage_ended",
+   "record": "c2037f7dce8b78a6935157e3aa1954a52fc061148a3f652e5f2ffb9e8d846b01",
+   "status": "AGREE",
+   "subject_key": "269b646144b09756cdd3faf2e161fc547cef367f22099212fd24a26ac754a612"
+  },
+  {
+   "key": "household.rdp_community_property",
+   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 23, Community Property States; p501 p. 6. As the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`): the reply tests household.rdp alone, dropping the nonjoint and community-property guards, so it asks the answer on every return (262 completed candidate-unknowns, for example classm.f8889.1.deepseek). Not a tax-value disagreement. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 611 of 2,300 agree; 1,689 candidate-unknown; on returns the full interview completes: 262 candidate-unknown. Project stands.",
+   "subject_key": "8c2126fd6028bdbbe7fb58e99819675a65efbf220a2d8cc6aba3439ba85fca4d"
+  },
+  {
+   "key": "household.filing_status_conflict",
+   "record": "c2037f7dce8b78a6935157e3aa1954a52fc061148a3f652e5f2ffb9e8d846b01",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi pp. 13-15 and p501 pp. 6-8. R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). As the prior rulings: the published gate (BUG-0286) checks the marriage-entry conflicts of the single and joint statuses; the reply also flags a single return with a 2025 death (refused by household.widowed_2025) and married filing separately while not married (MFS is refused by s3.mfs on scope.ready). The values differ only on refused or incomplete records; the one completed-return difference is a partial record withholding household.married (classm.f5695.2.deepseek), which the reply reads on a status where the project does not. executable-triage-v2 on this pass's reply (`.transcription/household.lines-d801bd4b40fd.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 235 partial records; 2,373 comparisons): 2,156 of 2,373 agree; differences on returns the full interview completes: 1 candidate-unknown; no completed-return value difference. Project stands.",
+   "subject_key": "c4b0872ee70cc0167a6406448f7077095e0fa6a268a211525974b987209fe18f"
+  }
+ ],
+ "subjects": {
+  "household.persons": "051f56aed77ac065bdcc00895a0e699ac8f949543491df2f2b7868a8b9123bd2",
+  "household.roster_bad": "cc4f520f3f6cefa637d7eda3c50f4bc3afba32dcfba9900bf9bee06ff65d2f10",
+  "household.hsa_both": "09ffc95f78a86ec051d152745f229d228dbd57c22f76733efec28059d1a080c9",
+  "household.hsa_split_count": "1b3d4587ff65d664f0bac78aaac8fbaf8d6fc209ea0d6fd1b403158c000bf84b",
+  "household.hsa_agreed_count": "3d1960a8e76f2da1770bb3012f6d001a4a6a4a689e1ef5c386cbf99732f4ff73",
+  "household.hsa_step1_sum": "1fece38e47b55ebe85dd98adf3393ed0a87805d9c5da12cd11169c3aaa3dacad",
+  "household.hsa_share_sum": "138cbed91d7485649cecaa1bb38bf2b8936ec59e97a66a8580e15a0561027ea9",
+  "household.all_eic_ssn": "1a65caecfbe742ef3e79e731a1c7bc61c045f8752ed33f5747af5b94cda971f6",
+  "household.all_tin": "39a0a9dbbd692b85be692db919a5bdf229cf569008c30a8593aa85ea600cfeb4",
+  "household.ctc_ssn": "d41be11acea17875358a482ebdc70634b707036b885d9cb80416783951b70fb3",
+  "household.taxpayer_work_ssn": "3cf01354a8ba1896a5b3b46b1cfbfc4f2dcbb8cd6b40afeee98735599ebc1f3e",
+  "household.ctc_disallowed_claim": "4f6aa4fba134278d8a6d5af62c855bb567df8a2d29494e026c5e6b5cb0dcc3c3",
+  "household.eic_disallowed_claim": "db27aa04d8a35d9c40bf4e7baff1a3c5807e3d9a6624a6ca5ab2112a65db7dc9",
+  "household.hoh_fails": "96f9e45bb7ef3a93a4f8b7b83b29c455ab3d4e320c880494442b0edcd6417f70",
+  "household.qss_fails": "49db0cd4d57e1d8f68ff7615a282d68a1900f30e202c0c01e4293d18fbb0dbb1",
+  "household.widowed_2025": "161fcf97bb6e3d4edd76f62b4971c15375c5df3847a8896afe5b31853f07b7e5",
+  "household.cp_marriage_ended": "a4dd7ded639151d4f130ebbd7925404435613a1b67daf9bec834a91a4e8b05d2",
+  "household.rdp_community_property": "cb7ac4eaf81490b4b959f5e229c0a0c49d5f3d3cc6e4f3ab0c18cc7a4c0311ba",
+  "household.filing_status_conflict": "959a2f15e9956ceabebb956ee7da3f4445592fe8ec91d323c61333d89a41e07f"
+ },
+ "__rest__": "92bf81ae283c1e0d5fa92ecd444c292ac15487a8e6ed56b6d46422a82d26927b",
+ "foreign": {
+  "household.ctc_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
+  "household.eic_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
+  "household.hoh_fails": "2121c0653ea07b6e66eb554692c09dec8702e5fa509ab61684756cd39fd552e3",
+  "household.qss_fails": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "household.cp_marriage_ended": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "household.filing_status_conflict": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0"
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "kind": "transcription",
+ "form": "oi8z",
+ "family": "claude",
+ "base": "36af4181188a185aeb3819f3570233a77ba738cec8b1f653e71272c62d8f4f7d",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "oi8z.taxable",
+   "record": "56c93dfb95071c1184512b486e4a70ff4beb4cb1d3350abd728846fcd1342067",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 92, Line 8z, \"List the type and amount of each item of other income\". The reply zeroes the corrective-distribution kind, reading it as a loss; the project copies the item's amount and computes only RTAA payments and kickbacks: every other kind, the corrective distribution included, is refused at oi8z.figured (\"a corrective distribution, disaster relief payments, insurance dividends, or any other kind\") or oi8z.additional_tax. Triage executable-triage-v2 (reviews/2025/transcription/triage/oi8z.json; 1,638 fixtures, 500 generated returns seed 20261026, 44 partial records): 109 of 180 comparisons agree; 49 project-refuses and 22 project-unknown, all on refused or incomplete returns; no completed return differs. The R3 restructuring of the oi8z.kind question kept each kind's words (word check: none lost). Project stands.",
+   "subject_key": "a59373c62b4a5b097e71eef5a9dd6fecfec5d9d6523c6449ae75c04cdd6a2173"
+  }
+ ],
+ "subjects": {
+  "oi8z.taxable": "a5d72d82366bd7b6155acbee656cdf1ae81a8a937da73a21b23e20401fb8c511"
+ },
+ "__rest__": "9b11cc29785845924b626fad6f7f0a62bdf1f9b626cc1aab9a2c543ecad4736e",
+ "foreign": {
+  "oi8z.taxable": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

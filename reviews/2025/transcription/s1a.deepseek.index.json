@@ -1,0 +1,347 @@
+{
+ "kind": "transcription",
+ "form": "s1a",
+ "family": "deepseek",
+ "base": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+ "lines": [
+  {
+   "key": "1",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "AGREE",
+   "subject_key": "828aa8f765f539aac3704104b952fe7b78430d52b98fb6b31c2a799ffb4d2e68"
+  },
+  {
+   "key": "2a",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "AGREE",
+   "subject_key": "bc8e7ef9760e6f4d9b3d83d752a5b8a265108ffe4d1775e42c99e0093f50062b"
+  },
+  {
+   "key": "2b",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "AGREE",
+   "subject_key": "d9df87c25a6e1943caf090552acca70efce1e040ccbbecc8e55be6d7dc19d3a1"
+  },
+  {
+   "key": "2c",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "AGREE",
+   "subject_key": "ff93dae31051f2d5012e89f57a5100e4d82c086d3717eb8c03a940c903514ae1"
+  },
+  {
+   "key": "2d",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "AGREE",
+   "subject_key": "74e7635c6c606dd3cdd76f664b23cc039fc713d086ccc7fa77edf9e293953e56"
+  },
+  {
+   "key": "2e",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "AGREE",
+   "subject_key": "b87af7865e324cfbda71044e3ada6d47a782b45551c3004f2841e88b4405125f"
+  },
+  {
+   "key": "3",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "AGREE",
+   "subject_key": "24f77ab591aba5931b284d639b88629b3f26ced3bb3496cfcf490093d19224b6"
+  },
+  {
+   "key": "4a",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 4a's dependency closure carries that error: its expression reads s1a.h_tip_employers and s1a.h_tip_reported. This ruling adjudicates the declaration, not the tax reading (i1040gi p. 101, Part II caution; p. 104, Line 4a). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "2bcbb2d0c9a9a0cca96847a47c626114ed8b6ebdf2ade6445f09482f6bae1f80"
+  },
+  {
+   "key": "4b",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 104, Line 4b: \"Enter the qualified tips included on Form 4137, line 1, row A, column (c).\"; p. 101: \"If you received cash and charge tips of $20 or more in a calendar month and didn’t report all of those tips to your employer, you must file Form 4137.\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate enters $0 with no refusal. The project's line 4b is $0 too, except on Form 4137 returns, which it refuses at its cited gate s2.other (stage12.refuse.form4137_one_employer and stage12.refuse.form4137_two_employers, refused); those returns are refused at s2.other in any case, so the candidate's $0 reaches no computed return. The only difference is the project's scope refusal.",
+   "subject_key": "3fe5495e74fddcc813bf7aa4e1ee417acb44fa52f9f873a8b77d54e7428e1682"
+  },
+  {
+   "key": "4c",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 4c's dependency closure carries that error: its expression reads s1a.h_tip_employers, s1a.h_tip_total and s1a.h_line4c_single, which reads line 4a. This ruling adjudicates the declaration, not the tax reading (i1040gi p. 104, Line 4c and the Qualified Tips From More Than One Employer Worksheet). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "4d2a169804957bde26bf0d9c5059acf73735a70bf6a1d8a0e1656f95bc121691"
+  },
+  {
+   "key": "5",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 104, Line 5: \"Include the qualified tips you and/or your spouse received in the course of a trade or business, but only to the extent the trade or business in which you received the qualified tips has net income.\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate enters $0 with no screen, its note saying trade-or-business tips are \"outside the closed input interface\"; the prompt's published interface includes the per-business screen sc.tips_ot and the gate s1.sc_1a. A filer who received qualified tips in a Schedule C business is given $0 on line 5, and the candidate's line 13 carries no refusal either, so the deduction the source allows is dropped. Example (evaluated read-only with engine/dist/main.js eval): stage14.refuse.sch1a_tips_business_only with s1a.tips true and one $5,000 employee tip job added: project line 5 refusal at s1.sc_1a (and Form 1040 line 37 refused with the shared BUG-0154 text); candidate $0.00 by its expression.",
+   "subject_key": "f61e326afcf8bf3b714d9f7f11a597a87892179880ead45fe7060c44e62dc02b"
+  },
+  {
+   "key": "6",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 6's dependency closure carries that error: it adds line 4c (s1a.h_tip_employers, s1a.h_tip_total) and line 5. This ruling adjudicates the declaration, not the tax reading (Schedule 1-A line 6). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "867f70d99af0d4f58e52b1889f3fe37229873fda8897f3d34cfbf21ab44afaf1"
+  },
+  {
+   "key": "7",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 7's dependency closure carries that error: it reads line 6, which reads line 4c. This ruling adjudicates the declaration, not the tax reading (Schedule 1-A line 7). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "28789bdc153c7c70b4431086aa1b2ba3b1017e1b80d26e6c7579d38c7b882ddd"
+  },
+  {
+   "key": "8",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 101, Part II caution: \"Fill out Schedule 1-A, Part II, only if: • You (and/or your spouse if filing a joint return) received qualified tips in 2025. • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 8 copies line 3 with no test of whether Part II is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part2 false). It is the same expression as the Claude reply's line 8, which triage executed: classm.f2441.1.deepseek, s1a.tips false, completed: project $0.00 / $50,000.00; 509 completed returns differ (triage/s1a.json).",
+   "subject_key": "97123f5f5180404a68e8ab5b9febc440ee2072ed10669c1f89cd46b1a146828b"
+  },
+  {
+   "key": "9",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 101, Part II caution: \"Fill out Schedule 1-A, Part II, only if: • You (and/or your spouse if filing a joint return) received qualified tips in 2025. • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 9 enters $150,000 or $300,000 with no test of whether Part II is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part2 false). It is the same expression as the Claude reply's line 9, which triage executed: classm.f2441.1.deepseek: project $0.00 / $150,000.00; 510 completed returns differ (triage/s1a.json).",
+   "subject_key": "f5898227b239f4541499bbd652e6bb7555e9ccee5e14ad77f0118b8d62e29e61"
+  },
+  {
+   "key": "10",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 101, Part II caution: \"Fill out Schedule 1-A, Part II, only if: • You (and/or your spouse if filing a joint return) received qualified tips in 2025. • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 10 subtracts line 9 from line 8 with no test of whether Part II is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part2 false). It is the same expression as the Claude reply's line 10, which triage executed: classm.f2441.1.deepseek: project $0.00 / -$100,000.00; 508 completed returns differ (triage/s1a.json).",
+   "subject_key": "cd6331d0f00da5e9d7a3974298db16302419086bf0117734d668ff449ae87739"
+  },
+  {
+   "key": "12",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 101, Part II caution: \"Fill out Schedule 1-A, Part II, only if: • You (and/or your spouse if filing a joint return) received qualified tips in 2025. • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 12 figures the $100-per-$1,000 reduction (zero when line 10 is zero or less) with no test of whether Part II is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part2 false). It is an expression equivalent to the Claude reply's line 12, which triage executed: classm.f5695.7: project $0.00 / $9,400.00; 61 completed returns differ (triage/s1a.json).",
+   "subject_key": "d3bc719330e5e3e6930b032f871d6ebad1b63dfc9ac63045ba9f1ca9dd7498eb"
+  },
+  {
+   "key": "13",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 13's dependency closure carries that error: it subtracts line 12 from line 7, which reads line 6 and line 4c. This ruling adjudicates the declaration, not the tax reading (i1040gi p. 101, Part II; p. 104, Line 5). Read against the source, the line would also lack any refusal for qualified tips received in a trade or business (see line 5) and any married filing separately bar (\"If you are married, you must file a joint return with your spouse to claim this deduction\", p. 101). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "00a3e6c44912ba1d6a59c3eb9d26a5c72bfd6d5e7e1364d18c68fedd27cc0509"
+  },
+  {
+   "key": "14a",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 14a's dependency closure carries that error: its expression reads s1a.h_ot_total. This ruling adjudicates the declaration, not the tax reading (i1040gi p. 106, Part III; p. 108, Line 14a). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "1544bca00016b366abd9bbb39f7f418cf12d9e2a5f65328c4736a85327c306ab"
+  },
+  {
+   "key": "14b",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 108, Line 14b: \"Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3.\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate enters $0 with no screen, its note saying nonemployee overtime is \"outside the closed input interface\"; the published interface includes sc.tips_ot and s1.sc_1a. Example: stage14.sch1a.refuse_overtime_1099 (s1a.overtime true, sc[gig].tips_ot true, Form 1099 overtime): project line 14b refusal at s1.sc_1a (evaluated read-only); candidate $0.00 by its expression, and its line 21 has no refusal, so the line 14b amount is dropped.",
+   "subject_key": "09a24c5b788f6b318f64c99bfbc7041e3c8d6b2610c71aaf53acb1847b830e4e"
+  },
+  {
+   "key": "14c",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 14c's dependency closure carries that error: it adds line 14a (s1a.h_ot_total) and line 14b. This ruling adjudicates the declaration, not the tax reading (Schedule 1-A line 14c). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "25dc3c4a8996b7ab1f21cfa558c406f4f16fef47262c76ec3af7d4e95c348fa6"
+  },
+  {
+   "key": "15",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 15's dependency closure carries that error: it reads line 14c, which reads line 14a. This ruling adjudicates the declaration, not the tax reading (Schedule 1-A line 15). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "e629caf15619fbb2c475ea87d2a2b8a39f43252d55e8ea5ec0fc0ae582ebc4df"
+  },
+  {
+   "key": "16",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 106, Part III caution: \"Fill out Schedule 1-A, Part III, only if: • You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025; and • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 16 copies line 3 with no test of whether Part III is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part3 false). It is the same expression as the Claude reply's line 16, which triage executed: classm.f2441.1.deepseek, s1a.overtime false: project $0.00 / $50,000.00; 509 completed returns differ (triage/s1a.json).",
+   "subject_key": "51ff038bb356c42ebdcbc64197a4cd11e9eb14be201576e247a25b1ec039f110"
+  },
+  {
+   "key": "17",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 106, Part III caution: \"Fill out Schedule 1-A, Part III, only if: • You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025; and • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 17 enters $150,000 or $300,000 with no test of whether Part III is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part3 false). It is the same expression as the Claude reply's line 17, which triage executed: classm.f2441.1.deepseek: project $0.00 / $150,000.00; 510 completed returns differ (triage/s1a.json).",
+   "subject_key": "f2733b9adc2027a166a703c0cd72b28410a1fa069067ef19aaa44aa324b85d38"
+  },
+  {
+   "key": "18",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 106, Part III caution: \"Fill out Schedule 1-A, Part III, only if: • You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025; and • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 18 subtracts line 17 from line 16 with no test of whether Part III is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part3 false). It is the same expression as the Claude reply's line 18, which triage executed: classm.f2441.1.deepseek: project $0.00 / -$100,000.00; 508 completed returns differ (triage/s1a.json).",
+   "subject_key": "a26637b439e9d9a16f9e4685995b70d2df5dc4b504b504a4855d150fe3a53e4f"
+  },
+  {
+   "key": "20",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 106, Part III caution: \"Fill out Schedule 1-A, Part III, only if: • You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025; and • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 20 figures the $100-per-$1,000 reduction with no test of whether Part III is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part3 false). It is an expression equivalent to the Claude reply's line 20, which triage executed: classm.f5695.7: project $0.00 / $9,400.00; 63 completed returns differ (triage/s1a.json).",
+   "subject_key": "c5b90a3ea086da645e23ec51f51da8b82ea69c92f500741f4306f0c883d48a3d"
+  },
+  {
+   "key": "21",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 21's dependency closure carries that error: it subtracts line 20 from line 15, which reads line 14c and line 14a. This ruling adjudicates the declaration, not the tax reading (i1040gi p. 106, Part III; p. 108, Line 14b). Read against the source, the line would also lack the Form 1099 overtime refusal (see line 14b) and the married filing separately bar (p. 106). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "3164c1a2c6c3aa5058222355aa4a89aa86d64a5f220185938b6cb140e6dd5710"
+  },
+  {
+   "key": "23",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 23's dependency closure carries that error: its expression reads s1a.h_car_total (col_iii). This ruling adjudicates the declaration, not the tax reading (i1040gi p. 109, Part IV; p. 110, Line 22). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "f203ee4891d7f6d38055a005bb281e2cc06fa420fbb131b899464532b0ff5834"
+  },
+  {
+   "key": "24",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 24's dependency closure carries that error: it reads line 23, which reads s1a.h_car_total. This ruling adjudicates the declaration, not the tax reading (Schedule 1-A line 24). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "914410d0be9d1973001d22861531498bdbb7a467da715ee7920b0a9ab32afdc3"
+  },
+  {
+   "key": "25",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 109, Part IV: \"Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025.\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 25 copies line 3 with no test of whether Part IV is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part4 false). It is the same expression as the Claude reply's line 25, which triage executed: classm.f2441.1.deepseek, s1a.carloan false: project $0.00 / $50,000.00; 509 completed returns differ (triage/s1a.json).",
+   "subject_key": "bb0e85aaf2db6508ee5ac37a6f40927fd8432fc7e3dc39c8ef86fb874c4e6278"
+  },
+  {
+   "key": "26",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 109, Part IV: \"Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025.\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 26 enters $100,000 or $200,000 with no test of whether Part IV is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part4 false). It is the same expression as the Claude reply's line 26, which triage executed: classm.f2441.1.deepseek: project $0.00 / $100,000.00; 510 completed returns differ (triage/s1a.json).",
+   "subject_key": "c191e3ed93b915786332fe49a769eec6ca2a6cb00a9d78f6d97122695b347e5a"
+  },
+  {
+   "key": "27",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 109, Part IV: \"Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025.\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 27 subtracts line 26 from line 25 with no test of whether Part IV is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part4 false). It is the same expression as the Claude reply's line 27, which triage executed: classm.f2441.1.deepseek: project $0.00 / -$50,000.00; 508 completed returns differ (triage/s1a.json).",
+   "subject_key": "2a8762aadfb88050b83051f624c3b66513ad2a90e6f10e211caffa3eb10229d4"
+  },
+  {
+   "key": "29",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 109, Part IV: \"Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025.\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 29 figures the $200-per-$1,000 reduction with no test of whether Part IV is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part4 false). It is an expression equivalent to the Claude reply's line 29, which triage executed: classm.f8889.1.deepseek: project $0.00 / $4,800.00; 107 completed returns differ (triage/s1a.json).",
+   "subject_key": "9d30e13767e0833bf7ce52e0c1ba529ebc5492b8f1eef6ac5d90df1045ab03e0"
+  },
+  {
+   "key": "30",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 30's dependency closure carries that error: it subtracts line 29 from line 24, which reads line 23 and s1a.h_car_total. This ruling adjudicates the declaration, not the tax reading (i1040gi p. 110, Line 27). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "fd98b695e4aae4dd5ea36d01365813d26f960a2fad1635a25a8ef699afd4429d"
+  },
+  {
+   "key": "31",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 31 copies line 3 with no test of whether Part V is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false). It is the same expression as the Claude reply's line 31, which triage executed: classm.f2441.1.deepseek, filer not born before January 2, 1961: project $0.00 / $50,000.00; 499 completed returns differ (triage/s1a.json).",
+   "subject_key": "97ded7b020ea1f946c9d2bcc13df6ac78bbf2ff19e5cf0be59d2be157a9cd3cc"
+  },
+  {
+   "key": "32",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 32 enters $75,000 or $150,000 with no test of whether Part V is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false). It is the same expression as the Claude reply's line 32, which triage executed: classm.f2441.1.deepseek: project $0.00 / $75,000.00; 500 completed returns differ (triage/s1a.json).",
+   "subject_key": "a4598a745db407c1318c22704cc8fbe00b82a54b31c80e9b693fab8b88801dc6"
+  },
+  {
+   "key": "33",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 33 subtracts line 32 from line 31 with no test of whether Part V is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false). It is the same expression as the Claude reply's line 33, which triage executed: classm.f2441.1.deepseek: project $0.00 / -$25,000.00; 497 completed returns differ (triage/s1a.json).",
+   "subject_key": "00c8c48446a0c1ee32b7815df00a6fa5bfd45911b185985f0416b81c5ccdfbe3"
+  },
+  {
+   "key": "34",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 34 figures 6% of line 33 (zero when line 33 is zero or less) with no test of whether Part V is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false). It is an expression equivalent to the Claude reply's line 34, which triage executed: classm.f8889.1.deepseek: project $0.00 / $4,435.68; 159 completed returns differ (triage/s1a.json).",
+   "subject_key": "b4452949611c3a206bf27ccc0e21d6ac6d4fe708a5427bf5c9a164b1cdb5b2c9"
+  },
+  {
+   "key": "35",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate's line 35 subtracts line 34 from $6,000 with no test of whether Part V is filled out, so it shows a nonzero amount on returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false). It is the same expression as the Claude reply's line 35, which triage executed: classm.f2441.1.deepseek: project $0.00 / $6,000.00; 443 completed returns differ (triage/s1a.json).",
+   "subject_key": "b73552c952a41373ac60e10c7ca8133c3c18a3997e419a9347394003bbe62104"
+  },
+  {
+   "key": "36a",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; Schedule 1-A line 36a: \"If you have a valid social security number (see instructions) and were born before January 2, 1961, enter the amount from line 35\"; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate copies line 35 with no age, SSN, filing-status or death test, its note saying the interface \"does not supply these qualification facts\"; the prompt's published interface includes person.age65, person.work_ssn and person.died_before_65. Every filer is given the senior deduction. Example: classm.f2441.1.deepseek (head of household, person.age65 false, completed): project line 36a $0.00 (evaluated read-only); candidate line 35 is $6,000 there (line 33 is $50,000 less $75,000, below zero; the Claude reply's identical line 35 evaluates to $6,000.00, triage/s1a.json), so the candidate's line 36a is $6,000.00 and Form 1040 line 13b would be $6,000 too high.",
+   "subject_key": "a2127fbfef6d690f375a5a4daf78b75b858ae554f4580ff5f31be3e170e0991e"
+  },
+  {
+   "key": "36b",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; Schedule 1-A line 36b: \"If you are married filing jointly, your spouse has a valid social security number (see instructions), and your spouse was born before January 2, 1961, enter the amount from line 35\". Ruled by reading the expression against the source: the expression has no validation error in its own closure, but triage cannot execute a reply with any validation error (triage/s1a.deepseek.json, state invalid). The candidate enters $0 on every return, its note saying spouse facts are not supplied; the published interface includes person.role, person.age65 and person.work_ssn. Example: stage13.senior_spouse_only (married filing jointly, spouse born before January 2, 1961, with a valid SSN): project line 36b $6,000.00 (fixture expectation); candidate $0.00 by its expression, so the spouse's deduction is lost.",
+   "subject_key": "e6b751b7660213134e65293881f0c1fec9a17ab9fecbab2786cb3935f87b586d"
+  },
+  {
+   "key": "37",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "AGREE",
+   "subject_key": "d74d2f6e7a5745ca0de33e40061c1de76969491ff321af220eea68251ef25e08"
+  },
+  {
+   "key": "38",
+   "record": "81034a01fd9ebb22fae3a94ae5a6410093f3b2af5812f03106a41016251ad5fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on the validation failure. The reply fails reference validation (triage/s1a.deepseek.json, state invalid; the log's \"Host-side model expression type checks\"): s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total use the bare fields tip_employers, tip_reported, tip_total, ot_total and col_iii, which do not resolve; the published interface in the prompt names them person.tip_employers, person.tip_reported, person.tip_total, person.ot_total and carloan.col_iii. Line 38's dependency closure carries that error: it adds lines 13, 21 and 30, whose closures read s1a.h_tip_employers, s1a.h_tip_reported, s1a.h_tip_total, s1a.h_ot_total and s1a.h_car_total. This ruling adjudicates the declaration, not the tax reading (Schedule 1-A line 38). Triage cannot execute a reply with any validation error, so no comparison was run.",
+   "subject_key": "a0d29b62fdec1d8f12cb3bf23fbcef6dbabd79a6bccc7d04e3b2724b2883838d"
+  }
+ ],
+ "subjects": {
+  "1": "ef3f5c519fb2ae746e5ddd12863321b763c478332ca0e58f9dbcb79d29cd7f8b",
+  "2a": "a2e870f4699e496b70a135d9a34a7f55378218fe3759a58f812376c821407eab",
+  "2b": "d667e06d585194da1da3f496907ce5a688083771b4ee1819cd330f796708cdb7",
+  "2c": "b93235dac893c88156320a5e205c37e58d22f68fa84df763eddeb423151fd529",
+  "2d": "4285d17a64cee5801085768557c6a5fd78117fc6c3e77a78c7b4f65a36bec7aa",
+  "2e": "758844a2c4e1ac96ad892c8a175dcd88b1199a734084b18fbdf22483c11ba6d5",
+  "3": "24bf2378d5d93636b24d69425c3802bdd6f044d519df7e7e5880bacd4ebb5034",
+  "4a": "4e084852be1e705d5943f18011601457b58b2d8444675a520d18ef775f6388ee",
+  "4b": "962d69c7328730605d14d18d73c400c885b5a0abbf3ddc2f821bb9ca4b8e2a0f",
+  "4c": "76bc0e61f0551b5e69e9cc79664fc51cb9986f9e01824342520079acd46f162c",
+  "5": "9a9fb6c50c20b19185ea8e2df92f7c5b7786d8e50be2a257b83de60c59846e58",
+  "6": "93b57a3c0a9b142b82c1bd791c9f5864e4d45dd1e4121c7d7b8a8b231354d7ec",
+  "7": "d6484181c4ada712df1d3d6d9d4b7ac7e2556c246880585324426ede354ce0b3",
+  "8": "ebc273eabb740e40e3fd0807e60238bbcd20ad8f1969e682c1932d47dbb63072",
+  "9": "d679b9194f285eb0ca1fda64e55e21e234b9c0682ba96a87ebcc61c3733c21ff",
+  "10": "3a0b2252c9fea1f239cad7d31c940f42539a3975a884101b5aeaab82c64472a2",
+  "12": "1dc0f9e36a83a251edbadf6843728c4892c8bb17d4d914eb6fe1d55b00535560",
+  "13": "30630adb2e473485b656eff8243454f6e1a2a159831822b4961a0ddf3289a132",
+  "14a": "f114b6b67043a970f005a9301e6acd10f0967ddd54674fbbd12b14de20a57211",
+  "14b": "10ad35ef0ba791ef27cd8f6ede1af2c8135206f5132a109e2c0da792d66e8b76",
+  "14c": "66c40d688bb38dfce43bc82357a8dc7c1df567de3a5cc6950bf1732a3fe8afd1",
+  "15": "a54d584c14ca2185b0b984b4ef2a05cd0ef0320088ff5bffd81a9522618085f1",
+  "16": "17a918a8b5a33780b96ce31bb931d6d29c6712a4529bb27ab3d168627bb9178b",
+  "17": "7d669574cdd58acf6b5216d9af049d89ffdc453aa9d425aed42a89faf66f3fa1",
+  "18": "8dda137f6dccc82f44ecdc9e68ed093b367ca5723c1dd2b12c0b0bd0a64ab959",
+  "20": "825aff2bdcd5cd49f4ee45efbac53ba9a7c56e1e21c33a5a10495ed95c27e497",
+  "21": "1f28ee33c915ddb8b57ec54a7694773287845bafad71c445c59d715861a7d3df",
+  "23": "b77e6a9b29210cb415937d4e0950e5c23b94e394a073fa972b45ad1d2c9155e8",
+  "24": "bd64259123ed0a74f62c34fe86c7ec07c8f8ff9b4b93ba0ab22bbdd26792454f",
+  "25": "00a2c9c64ab02e51e974ad37197564fa19ea4c5481d1d78f5798438dc8b49c69",
+  "26": "bb2a40a5edc01be5c9b9f9150a35aca18577a5a857868acdac8263a9ceeb72bd",
+  "27": "5815a055fb12f2b44f21281c55d8b6e31ce5a0c49e7bf89217b5bb605c14981b",
+  "29": "e292df497d194bb5dd71c775de2fea1a73908733477666766cc8afc0c8a76143",
+  "30": "de3e5c788a7d82cda0028b6060cb98d0c7f8b6ea5a860e28a98dd0ce435b2503",
+  "31": "efb894ef91852f8b3f49111b8bda621cfe40aeeadeb1230461227b3ff40937aa",
+  "32": "4456f04d70cbd1acaac1448bc060644c645bb396990f69b2f7884ef706b5ac27",
+  "33": "6df9d5f05e6f9fe76a9ec31d54fd57f71a1d5c2b0af9c804fc7dfc1c8c97c9b7",
+  "34": "fcaa2554c805379f594065385fe342377e2eb7c2f33d0bbd35394ab75e53a054",
+  "35": "78f453381d9e5198101871382c7c1cfc87c4be2bdfdcacebd1cfc5e144a4ef62",
+  "36a": "4915966bb676ea9d2de54e7e501b1eb8b137096893e7ed495c4a2e5be9486536",
+  "36b": "c9b3d18e9e50696030cfc67e4ab1ecce43361045b06cc29a18ad3baf90d55e3d",
+  "37": "fc7d03532d51ba25762dfb5da94fad32ce6add3f0ff78bad6ec6459d1da55e46",
+  "38": "9facc7e38e6598ef8f0375e3ba82d91ba4b3e45fdc12d509746ce655eec9e02b"
+ },
+ "__rest__": "72d6a605d769b79dd9b412e8f8a7e363d66aa6f28a55bfe31e2428c7309d2c07"
+}

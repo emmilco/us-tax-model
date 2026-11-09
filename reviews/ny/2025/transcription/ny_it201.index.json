@@ -1,0 +1,1435 @@
+{
+ "kind": "transcription",
+ "form": "ny_it201",
+ "family": "claude",
+ "base": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "C",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "0b48e05b45b4b4454a716d4220ba3fce631bbac91b8604ce5cc62520f0b9c9fb"
+  },
+  {
+   "key": "H (count)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap; the reviewer was not given the federal dependent fields (dependent.claimed, dependent.one), which the New York text never names, and encoded zero. The project counts the dependents for whom dependent.claimed is true, the federal qualifying-child and qualifying-relative tests, which is the class item H lists: IT-201-I p. 6, Item H, \"Enter the required information for each dependent you claimed on federal Form 1040. Also enter the required information for any dependent you were entitled to claim on your federal return but chose not to\". No New York fact reads differently; not a defect.",
+   "subject_key": "f42fd86c91b6ed278ac97272c905a840d9c47d5848364e0e366a228b74ddb5b3"
+  },
+  {
+   "key": "1",
+   "record": "d1dc4a59e84993d53d00029dab04b7bc1e1528cf45ee696041afc1b13ae00ae1",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" R4 reran this line because its refusals read ny_it201.ask.state_resident, restructured into a question and a list (no word lost). The line-scoped request gave only the pages the line and its refusals cite (IT-201-I pp. 3-5, 13-14, 30-31; line 1 cites only the form page), so neither the p. 7 instruction nor federal Form 1040 line 1z was in the request, and the reply entered a zero stand-in, which its note says is not a computation; it differs wherever there are wages (35 value differences, all on refused records; on the federal fixtures, which carry no New York answers, the project is unknown or refuses at the residency gates). The project's line follows p. 7, rounded by amb.ny.2025.whole_dollars, as the prior ruling. executable-triage-v2 on this pass's reply (`.transcription/ny_it201.lines-6b86b273ff34.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 40 partial records; 2,178 comparisons): 0 of 2,178 agree; differences on returns the full interview completes: 120 project-refuses, 244 project-unknown; no completed-return value difference. Project stands; the citation gap is BUG-0439.",
+   "subject_key": "6b3c7994dfc2ccff77921a5f9452d19feb4deb328210695791d70011fb0729b5"
+  },
+  {
+   "key": "2",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line2b in cents. Same reference otherwise.",
+   "subject_key": "60b8b33c0063a8c77844b5c85eead708358d9b25158bf00807e72c15b77db168"
+  },
+  {
+   "key": "3",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line3b in cents. Same reference otherwise.",
+   "subject_key": "306f64739e14559917780813cff7ca28d273c9723e1beac28914b7ce1514b900"
+  },
+  {
+   "key": "4",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies s1.line1 in cents. Same reference otherwise.",
+   "subject_key": "40ea6d9b2d472a3147dea65d21388dd02a7001743f9121149c69ac6368000dc0"
+  },
+  {
+   "key": "5",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies s1.line2a in cents. Same reference otherwise.",
+   "subject_key": "2405afc0139440705ee888b09a815374b579657be9fc319e466cde567e09b07c"
+  },
+  {
+   "key": "6",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies s1.line3 in cents. Same reference otherwise.",
+   "subject_key": "4b76aab5c7ac9156b478df841e1aa3ccc414e1b11c5532acafbe6981906d127d"
+  },
+  {
+   "key": "7",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line7a in cents. Same reference otherwise.",
+   "subject_key": "695646b423014bf68846c4ad97e0293c48f64251057904bda5c269d4fdef0455"
+  },
+  {
+   "key": "8",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "efb69cff3c67ed00d35acbda9cb7c8f91d14e7af32da40240a6e9192bca1bd06"
+  },
+  {
+   "key": "9",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line4b in cents. Same reference otherwise.",
+   "subject_key": "4e46962f87a9a6c98a9a83ab055bd78244ff572e645026db53c7c9d2cca69e79"
+  },
+  {
+   "key": "10",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line5b in cents. Same reference otherwise.",
+   "subject_key": "3081dc4c29af9d373b58e635952d5aa3a70a34bff57b2847da1220a3824033c1"
+  },
+  {
+   "key": "11",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "fe0961dc1c84f38171c5bc4463552271d2796edc08ec162f06d89ff096d91153"
+  },
+  {
+   "key": "12",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "22a9bf883941d7e1fedf0c885b82911037bdfb8f503beac7dda0337fa4806f93"
+  },
+  {
+   "key": "13",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "633a065ff75d539a913e43914e02a430f8c2b28096de9e2d9fe093c412a5d4f4"
+  },
+  {
+   "key": "14",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies s1.line7 in cents. Same reference otherwise.",
+   "subject_key": "8d7d3cedc71fa01b90cf6235cfe658b1037db541563635c5b5feb893b5c75804"
+  },
+  {
+   "key": "15",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line6b in cents. Same reference otherwise.",
+   "subject_key": "9c37de03ecca1068f342575b2fe1e94595b6600283f73a3375067edf7938a942"
+  },
+  {
+   "key": "16",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies s1.line9 in cents. Same reference otherwise.",
+   "subject_key": "176ae6aed62d64bba02a3a99ef9836e65aaa526211e0fc993b369872689272f9"
+  },
+  {
+   "key": "17",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "e97348baec4d1fecb95e9b22929a99cc6ce4b00ccae301c422d93937f4906a18"
+  },
+  {
+   "key": "18",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies s1.line26 in cents. Same reference otherwise.",
+   "subject_key": "1120c363c8fa8ae2d49948521fa41eab0abdcc80298eb9d2ca2c9dbcf63d50ba"
+  },
+  {
+   "key": "19",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "85de7bcbb2e2723160a586a9d47c39181c44db3ca1f7e2cd71239075c4fdd8b3"
+  },
+  {
+   "key": "(check)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The check compares line 19 with federal AGI rounded once to the dollar (decision C3; the line's own label); the reply compares it with unrounded federal AGI, which would fail whenever federal AGI has cents.",
+   "subject_key": "602298cdbecdc740bf2f6b0bbe86d597e57ab978c4deaa43e8f46cf57b4ecea9"
+  },
+  {
+   "key": "20",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "c6702418f942a337fc649d3b6f9c19fb367f6e3e553cdf76631ab14e992db0a4"
+  },
+  {
+   "key": "21",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "91af22b09aba672c9a455caf0d8b068b1c70eca04cebadf4f538cbfea82f813d"
+  },
+  {
+   "key": "22",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "fee6d12ee0a1a5b1f6583ffd002062e182ac8b4ff5b15046ebefb31767bfafaf"
+  },
+  {
+   "key": "23",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "5da8e6837afbf468464691fa7fc6159a104bc7e760f858a3133ec23556cebd12"
+  },
+  {
+   "key": "24",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "ceb1c280e3760d7a79f7ba63506e4f9af6b46d4ac2376df7e19f4d58a90b20eb"
+  },
+  {
+   "key": "25",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.line25 (owner decision B1): the form labels line 25 \"(from line 4)\" but IT-201-I p. 8 says only \"If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25.\" The project refuses (ny_it201.gate.line25) when line 4 is more than zero or an inflation check was included, and is zero otherwise; wherever it is not refused the reply's line 4 is also zero.",
+   "subject_key": "3f513f502301acd8d0999f72f899e6031e9c35d878611cbdbccbf4716692393a"
+  },
+  {
+   "key": "26",
+   "record": "8c3a4d6300a732c307a999d862499db70c254ac5289b52b1661aabde36909e74",
+   "status": "AGREE",
+   "subject_key": "012e456921864be914c1a191dc498591bfa0d9e4e5240c209cd523156c60bd2e"
+  },
+  {
+   "key": "27",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "46eef140a1e9b2f84408baf835ea967ddb4a4c8f05760f20099a467a08e2798b"
+  },
+  {
+   "key": "28",
+   "record": "8c3a4d6300a732c307a999d862499db70c254ac5289b52b1661aabde36909e74",
+   "status": "AGREE",
+   "subject_key": "08178f4e7eabb071df19ef3a1eb179474c1c6f8640a1c87ad04c2d5c2b4a8d22"
+  },
+  {
+   "key": "29",
+   "record": "8c3a4d6300a732c307a999d862499db70c254ac5289b52b1661aabde36909e74",
+   "status": "AGREE",
+   "subject_key": "8649bbd5173880331cd23a851020878b336e70538aff08d667481cf162b4d8c1"
+  },
+  {
+   "key": "30",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "4115ccfbb12db3e7e0ec7c2592f3c5bb2cabe009ce85f8900c11507ba0ab9ab8"
+  },
+  {
+   "key": "31",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "9532dcae29eabaab651e9a3084ff58673a835ad56065505b664de2aec6f91a8e"
+  },
+  {
+   "key": "32",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "2d03d6372747aef61b360ee99c5c645af76a22a239e3485f6250376be3260eee"
+  },
+  {
+   "key": "33",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "d5cb1d45df04d288d521819e1107ba14ace3fb4226934f3434a80e94e98b2353"
+  },
+  {
+   "key": "(table) (ny_it201.std_deduction)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "faadbe67123d6189758c6d73353a58cba8c614f9eb55972d5674f5ea68c94f3d"
+  },
+  {
+   "key": "(table) (ny_it201.std_deduction_dependent)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "03dffd39fe5bc9121763cb71637aaf34654082b199413ff2f4400306f6b47cba"
+  },
+  {
+   "key": "34",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "99f418257eb51a1136d9b7ccb3d5a6c5dd1601403d8518637fdaa8ef2a959217"
+  },
+  {
+   "key": "35",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "90669556af708804f5760614b9c81131ecc976e1fb9f55fda4a5887a8fb8504c"
+  },
+  {
+   "key": "36",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "85072c3160b9e82cb2a17d14be35e8448ebc6bad1a87aa71f2a200b1fd79672d"
+  },
+  {
+   "key": "37",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "13e2083cdc93a0582acbf2d3ed40371049a5a1fe4a5081f8a027fc7032b2866f"
+  },
+  {
+   "key": "38",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "ad089c10a327343a96bd3f93af52068a950717673db26e42624911b147de3e33"
+  },
+  {
+   "key": "(39) (ny_it201.tax_table)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "a24f39d272dd4f0550936e7c3f0eb6a513c2f3270a5b847e4eb376d5c223273d"
+  },
+  {
+   "key": "(39) (ny_it201.tax_schedule)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "8ac17486ed740aa94c069e67c08cd65b04ac921a2d799fbc01c93f8bff24ce1a"
+  },
+  {
+   "key": "(39) (ny_it201.tax_low)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "df1ce4d48c37677ce949069bd9176311c5ce1879e8996f3b94161faf91236077"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w1)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "32b8b93770356773c44df5dd30be0def91d750dc0e2c017d7ae11ef1eb067cd4"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w7)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "9f40b24ad9edfa062a48ab21cc5495bddea675e5138e006ad3466b1077ccde2c"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w12)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "d74c1ecbda9606eafd2627c3d17a06a66469b80832ad9f622b9a70db99f2e937"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w2)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "3f0301d32f42a3c2ec697e21a434235d55cccd84c28200f010ed5a9243b5ba04"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w3)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "a73c40db314ce19d40995600d4b8814c66ebc23c55750136fbbc66cac3013124"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w4)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "f253804f96f512e26da96806ab0f325c8b51272a83a572e35d8a6fce273ce175"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w5)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "237b3f472f8bc0f57a54427cfb86438e53042a75595f16867c627330bd7a531b"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w8)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "e7c321708ccc9e3a83f775075d8d34fccfe0bb868bdbffd414cfd62a2944a5cd"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w9)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "6cac867c5244f36c62a62b7fbd483d1123e11fc494d5960b0a7bcef58dc824cc"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w10)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "ac20ed858918c695b84b821b35e24537bbcb6d5010243393fa497dca4b73fdbd"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w13)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "43f558e80600b7ec6585e77520509903f91367fa7ec369d3a87efeab591d9dcb"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w14)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "88992d9e7d9480864fd3babd48413382bf98b19eff7f67f3eccbe08494128b18"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w15)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "4650864fe048510f740cbb58f2fb86e3a870fd8d21bcb91b6e25f51c08d5a57a"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.top)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "821b72ed2f42787de2929c3d733fa73976686e4aedb287db0f803e99d7d01419"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.mfj)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "528d7c5c72ffcb5f957756b58e33895b8bef5b194295702f846f0a9201f55529"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.single)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "5d5056cf1c04643a2017cc742b1ee41de33a4a96e55de5b11595fdbce44394b1"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.hoh)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "3e38fae2910cfb84b0c5e4415021cfea4b9fa55dc63d87cf3687a6a76936ae89"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.by_status)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "c8a6e0b26ca50baeafee104005e939ef324df8d8ae6d5606e6731185d814e57b"
+  },
+  {
+   "key": "(39) (ny_it201.tax_high)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "ceaaba974432aaa498abeff44876a15f55b07f74c6486183f02266cc3d08a533"
+  },
+  {
+   "key": "39",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "3bb88f2a697a760c4f1257f7e63144311614eb4ec66c2fc10689f9196031a978"
+  },
+  {
+   "key": "(Note 1)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "ab725172a98f79390fc849f286cf93b43ae362dacb9ab8eab038d8ab6a74ff29"
+  },
+  {
+   "key": "(column)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "2688207b1d89eff5e70b8f042afcf4f815c247eac51defb1b7b751d900a27bb5"
+  },
+  {
+   "key": "(table 2, column 1)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "50798fbbba09077569f45710bc38ae7638378efda1766cf55f9c14c760c7e289"
+  },
+  {
+   "key": "(table 5, column 1)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "f58cf9a305634777e32b18d2daa10589e2859559388120f486c1b13aa7d6b733"
+  },
+  {
+   "key": "(table 2, column 2)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "2e0d16628145988ecaca2e920ae651996fbc465dde30b82603d770220a53e0f2"
+  },
+  {
+   "key": "(table 5, column 2)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "84198f59866505f221c28e4607b0829e2a85ff0d196e0a549716ca7985dec1ba"
+  },
+  {
+   "key": "(table 2, column 3)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "eed8cc0f938d54c4efe385c75c20bb6c6bef1a57ed41d576f189d2b2cf4ea328"
+  },
+  {
+   "key": "(table 5, column 3)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "ce128e07286a5401064a567a7b382c554c4c7479de4f5efc4e2f1a5c4ed185c7"
+  },
+  {
+   "key": "(table 2, column 4)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "606c79415372b344e2ff4d7d74c0b0e709b17579174c4fb1cb94c06c79ff1b31"
+  },
+  {
+   "key": "(table 5, column 4)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "dd0b81c9e7512a8228fa49bdfce6816a296f3d007c4a6039dd6ce486b28d94bc"
+  },
+  {
+   "key": "(table 2, column 5)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "a2590cde07b94b28cbe745131bad4d37157eb3bc8c804e8606fb1f965d94743b"
+  },
+  {
+   "key": "(table 5, column 5)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "41c93480d29b80edfb257181a03e040430bd48147e2577c11dcc1711dcb630bc"
+  },
+  {
+   "key": "(table 2, column 6)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "c6196148bbfc1246644482cb28252a29bd6c027a786ec80e3d861a48c8dbf858"
+  },
+  {
+   "key": "(table 5, column 6)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "5eb4fad751a877acdaf09c445b485c2ed9885065d84f56db52b7c76e37be2f9e"
+  },
+  {
+   "key": "(table 2, column 7)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "5a55764bf99f6980ba21b671dbd8916be7124190e3d15f6c1ff619bf698aad04"
+  },
+  {
+   "key": "(table 5, column 7)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "f0edbe4ed8f2695a9ad57a63e6af00be042db29db068bbf72dc59b5a16f0aef3"
+  },
+  {
+   "key": "(table 2)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; for 1 to 7 people both pick the same column. Over 7 people the reply extrapolates column 7 by the column 6 to 7 step, which equals the printed over-7 column in every row (IT-201-I pp. 13 and 14, \"Note 3 For each individual over 7, add the amount in this column to the column 7 amount.\"); the project instead refuses that case wherever a credit is allowed (state, refused on line 40 by ny_it201.gate.hh_state_over7), a refusal of the author's choosing, not a wrong amount.",
+   "subject_key": "43f3199c028e818beeaa7f2b04a4d82de458a18bbdb51e7fdf1e97e6d17620cc"
+  },
+  {
+   "key": "(table 5)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; for 1 to 7 people both pick the same column. Over 7 people the reply extrapolates column 7 by the column 6 to 7 step, which equals the printed over-7 column in every row (IT-201-I pp. 13 and 14, \"Note 3 For each individual over 7, add the amount in this column to the column 7 amount.\"); the project instead refuses that case wherever a credit is allowed (city, refused on line 48 by ny_it201.gate.hh_city_over7), a refusal of the author's choosing, not a wrong amount.",
+   "subject_key": "f0a40b46fba57d1cd32143f7877d452308cc3f77fd530d88bce6bdcfd830bfd8"
+  },
+  {
+   "key": "(table 1)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "33d4b779c19f1cf1b399fa5f24ca01ecfb4347bcf057c1b51280e913a74bee66"
+  },
+  {
+   "key": "(table 4)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "7a9c1d40d6207247b50b2882192b092510b48a433f95994880a52e88f3f5aef1"
+  },
+  {
+   "key": "(40)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "5193444fcd046529fcc63ddcd0cd16a3439246241aeadfb68ec2d706b2345d25"
+  },
+  {
+   "key": "(48)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "2f97e47e42d28da0a01f25ed1f4366bbc6697f81e859d5305455602e7e273e15"
+  },
+  {
+   "key": "40",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "12dc58dffba29de50df693edecbe35f677f9b5289009c270efbfc0e5cb758d2c"
+  },
+  {
+   "key": "41",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "b19cbc6fd0920516432b23e9fb659e3c6e747e1c4595023f613de9a055da4d28"
+  },
+  {
+   "key": "42",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "81f5bf2c72f469fa9fa8931e2c8d5f917fc1609353c528bca8137b31b2139647"
+  },
+  {
+   "key": "43",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "81f41968fadc54d54dd017024e4b7f467f6b05bd47aff279def15fd8865280a2"
+  },
+  {
+   "key": "44",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "b39e9cffec65d79afaab7e2b0cfdfd1a0f1c6637190719b78321943c5667df85"
+  },
+  {
+   "key": "45",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "0c0c3c87057c908a2b25a47e03c818d2401a3eaf325f1ec0e52c027414333676"
+  },
+  {
+   "key": "46",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "62f79e2bcffb596170a0d22f49c714ff7c6ffbd4337d72397d39fa270975287f"
+  },
+  {
+   "key": "47",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "40e9ed1ef856a4fe96025b54b29f4812f44346d9137e36e7a2e665d147c29974"
+  },
+  {
+   "key": "(47a) (ny_it201.city_tax_table)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "e366bf9e483a41c28423e556af0a00f0cc4b8ef14cf671efe83e7ad4c2359e03"
+  },
+  {
+   "key": "(47a) (ny_it201.city_tax_schedule)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "82e1521c3c40f8da4077011699fd484a7dba644158bb4af1488066c3c124828e"
+  },
+  {
+   "key": "47a",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "2e7b84cff8a131d104bf9d42d0bbe6eacfcc1ce5505424d858875b5a8bb6a8a4"
+  },
+  {
+   "key": "48",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply adds a full-year City resident guard. The project refuses a part-year City resident for the whole return (ny_it201.gate.part_year_city on line 1; IT-201-I p. 14, \"If you were a New York City resident for only part of 2025, complete Form IT-360.1\"), so on every computed return the guard is true and the two agree (p. 13, \"If you marked the Yes box at item C on the front of Form IT-201, you do not qualify for this credit and should go to line 49.\").",
+   "subject_key": "56d9dcd02bb49662167434852beec7b95a978f73ad8a053248525b18206c55cb"
+  },
+  {
+   "key": "49",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "ad604c8c762a9c84a24b35aef8b0bdf93d298a9aedd77053c80faa24868b20c6"
+  },
+  {
+   "key": "50",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "b7cf4dc7d9f3c4d0baa430a15003b2210a604cea5edfbe0207c06b082d3e0d44"
+  },
+  {
+   "key": "51",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "6ec206aa840dbc77e69f3d31dd49d1fd0856d6830bc26a37c886f51765a46bb9"
+  },
+  {
+   "key": "52",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "132a504dc55a0cb8afd063b7ec792b6e4777ac2073af574c24b3c2d4b3dd1e00"
+  },
+  {
+   "key": "53",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "179113e7e9f82196fba6ab39ecc579e343e4b59ce2a3478f6bc4f24d5e8a8c5f"
+  },
+  {
+   "key": "54",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "3f821da493ccac1ef92b851fe9e88f9af8aceffae12618e049c8e21bdf5a7f7d"
+  },
+  {
+   "key": "54a",
+   "record": "8c3a4d6300a732c307a999d862499db70c254ac5289b52b1661aabde36909e74",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; both sides enter $0 for line 54a. The second adds shown_when ny_it201.ask.mctmt, which the evaluator does not read (display only); where the source says to skip lines 54a through 54e (IT-201-I p. 15, \"If No, skip lines 54a through 54e, and go to line 55\") the project enters zero, which lines 54c, 54e and 58 read, as the adjudication method allows. The Yes case is refused on both sides (the project through ny_it201.gate.mctmt).",
+   "subject_key": "57c347e40b9831e025265960c8f5a19746733d58a960e207c8f4c484a89b3eb3"
+  },
+  {
+   "key": "54b",
+   "record": "8c3a4d6300a732c307a999d862499db70c254ac5289b52b1661aabde36909e74",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; as line 54a: both sides enter $0, the second's shown_when is display only, and the Yes case is refused on both sides.",
+   "subject_key": "fc1e8a08118026b6d03be725cdd7be9dfca065821df16d8257fddc2d70015003"
+  },
+  {
+   "key": "54c",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once to the dollar; the reply keeps cents. The MCTMT is refused when it applies (decision B5, ny_it201.gate.mctmt), and lines 54a and 54b are 0 on every computed return and both give 0.",
+   "subject_key": "ac2244283d1af10e2894a7b56aaa8a44921f2847bde69dcc203cfb85775efd9d"
+  },
+  {
+   "key": "54d",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once to the dollar; the reply keeps cents. The MCTMT is refused when it applies (decision B5, ny_it201.gate.mctmt), and lines 54a and 54b are 0 on every computed return and both give 0.",
+   "subject_key": "c1bbf64480d1722e2a1225560a83e56cd5f9aa3e9c69ce072b70687b22fc5580"
+  },
+  {
+   "key": "54e",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "fd7c5861c0b719ea4f88b130eb4a5f9a9d4559e9b3266ef09cf4cd54de8e55d1"
+  },
+  {
+   "key": "55",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "34708a821744c8d21433046adb9da6cc14981e4a4f33995864c93f4997f25dd8"
+  },
+  {
+   "key": "56",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "3b722cdc69290b6c1fb3fe864cbeacaca5535e8c8d8b1c546b98e7f49d1010be"
+  },
+  {
+   "key": "57",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "82432ab4cace9bd6f2b7a52e5a60f941d429aa1a1d21079030afb9834d0a803f"
+  },
+  {
+   "key": "58",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "7f49e120edfb1e0132923a94f658d1a9df964785732a68c4e53328c39764f30e"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b1)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "e347d6b18efa7fa7700818b69f58d5b50217fc7834b0c64c7f95dafc52488a17"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b2)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "82aeafcd6bf769dac00acd500a88d0fb61d2af0bb423aa7d0e8aa5805f3995c0"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b3)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "494997f8d5b4d0ef1affd441f373d1361b6ed394a29b68d7d10e305a03f8a240"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b4)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "8af9b3139d9938740c949e2e96bf833c2e6ec5bc118f758435868e74620f7f5b"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b5)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "39e9b34cd2c0984ffb7668486f7e08a355144c05b827e76f973c15837c0dddd9"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b6)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "59b0e8504e3f2822126eb5dc220b39d8327dead698dc7e9ff99b0a29e3fee6fd"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b7)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "d35d641e1a566eb7f99412d1d370954d5d967aff6ebe61a116693e5a7be6ebfc"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.top_product)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The reply rounds 0.0175% of income to the cent, the register once to the dollar. Its floor of line 19 at zero equals the project's (Note 1) helper (line 19 floored at zero) on this row, which applies only above $200,000.",
+   "subject_key": "8a2ab5b4ca70c2bd434c43ff9f17bd9bbba17cdd28d4418cde6d0d5c15823e0b"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.cap)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "59dbf7c663a5207b318a9638b5d85aca61f9e4f7fbbb345822b5b10125fe32f8"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.top)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "1fe7f8dea1650d918efed643c04373dbc8cd9b7c471261455d45f613294f6516"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.chart)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; IT-201-I-html, Sales and use tax chart, \"If your federal adjusted gross income (line 19) is:\" ... \"up to $15,000*\" ... \"*This may be any amount up to $15,000, including 0 or a negative amount.\" The project selects on line 19 floored at zero ((Note 1)), the reply on line 19 with the first row reached by \"not over $15,000\"; a zero or negative AGI falls in the first row either way, and the other rows are the same.",
+   "subject_key": "f3c957b8acf02636fa216d232656528be8127fb66dfe31c9749f59e5fb404ac2"
+  },
+  {
+   "key": "59",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "0850522add3385f67b3469ca86768a94d4e8012ab8fb3bbd9c0e6355c8d8f5dd"
+  },
+  {
+   "key": "60",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "dc68c8ad53567ca97a0910b9353da21e26807740a988564e983ba516913c3cd7"
+  },
+  {
+   "key": "61",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "aacae934f71f80bcea5ce063556ba55290f093dde04766bdfef1ce07024001b3"
+  },
+  {
+   "key": "62",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "d4b01d066510ddef71656f8b3694e2d25af4e3c781f7155b447299034eff7f5b"
+  },
+  {
+   "key": "63",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "fafcb73cb697d207dec5f9308a3ebc9f6ffed9ddb155eeeba48f8fe75c0924fd"
+  },
+  {
+   "key": "64",
+   "record": "8c3a4d6300a732c307a999d862499db70c254ac5289b52b1661aabde36909e74",
+   "status": "AGREE",
+   "subject_key": "42770558dbb29e9e96d35c51f440009c53452837937daccc42abe72eaa290146"
+  },
+  {
+   "key": "65",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "1ada765d1a74c039aff730e3fe32ee91e47e09bd6d07fc8ada337bf1587410d1"
+  },
+  {
+   "key": "66",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "d41722e99087d5f7b78aa446a82ff66216eabd5eb5ead6e6b98b16b3be0bd628"
+  },
+  {
+   "key": "67",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "f91fdc067443b53c7ddd057d9d75a769098533e3241df411353d351d2f4c00c8"
+  },
+  {
+   "key": "68",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "b5324df00e2d6ccaabd603415298cf09e14cc9b2503a9c6cf3a73a58bf5f3dcb"
+  },
+  {
+   "key": "(69) (ny_it201.stc_income)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "aa1a5b4fdc825e4aec42809b4fd256b6fe019e3bbbd92972ff0032c1f8a6886d"
+  },
+  {
+   "key": "(69) (ny_it201.stc_fixed_amount)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "c48423efbb42a14427794a0460890cfd2572c9b72c4fb37ae1f52505fb9a42b1"
+  },
+  {
+   "key": "69",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; as line 48: the reply's full-year City resident guard is always true on a computed return (ny_it201.gate.part_year_city refuses the rest); the item C and income tests are the same.",
+   "subject_key": "02fab76c80a87d4e4347e3652353180e55108518f4dd27e35de9b8a3a5943c72"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr_low)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "512fddab168ec4083801e94ce9861d16647a365e7d6e0b2912f56ade3e3de81f"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr_excess)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "392651b663c169eaf1ae5ebeb6f920cbed7697d036c032b68856a835036b6045"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr_excess_product)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "31f01aae5aa45f0ca6f33981651a025699c73be60369c800235139513ce4843c"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr_base)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "cc18f0f44058ceb70e4e2867f5ae59be60653b42b2f3f3583335e1ea8eb120df"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr_high)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "3082c7470c19448a527659c84c552c22dd9309d6e0c9f043ba8d31716ca36eb1"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "81f5fef6cad4f0e8f139743a3a598034877c6efd5d15470cd9a1bc53eb2d6b72"
+  },
+  {
+   "key": "69a",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "18ed00da64c5f3f66d1e16970197283b8518778b05c4d128fb4022f31f788c88"
+  },
+  {
+   "key": "70",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "05f79c016df92961e6114bd872f8e416c3914380d0f9369d58957f2cecb97c10"
+  },
+  {
+   "key": "70a",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "f9aa9469733ed23cd463476544b1ba29f9b9d66384dc65da26b6494114966633"
+  },
+  {
+   "key": "71",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "036ad61590e5667e3b4ff120bf1709927b806dc5e40554433ca581147b717d93"
+  },
+  {
+   "key": "72",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "f51161a9483127e5fc3fbe3885f587942a660f03a9cb8f5910724240741d179f"
+  },
+  {
+   "key": "73",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "3b4239ea94bf3bbf32dfe34811b9efe8cac6abbf4fac1c1dba94132718e8c5d9"
+  },
+  {
+   "key": "74",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the project enters 0 and the reply sums ny_it2.yonkers_withheld. Every W-2 record with Yonkers tax withheld is refused (ny_it2.yonkers_gate on ny_it2 line 19; Yonkers is outside the tool, ny_it201.gate.yonkers), so on a computed return the sum is 0 too.",
+   "subject_key": "a28a263a95aff8855b98330545e1cc58667eea4ed0550e10c75ea76c6cb9aec1"
+  },
+  {
+   "key": "76",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "a7c2bd32973940a76c4cb18c70d4b36da8a5eadc0e8319a8987d4ada4704ef86"
+  },
+  {
+   "key": "(80)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "4ace846938251372ac28fec0055f204b2ae7e31870200524905a70b4728852ca"
+  },
+  {
+   "key": "(81) (ny_it201.prepayments)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "2870ec1fc58ab860f888e5c413402b396b2867f5bd3b3d357a57a4264604c3a0"
+  },
+  {
+   "key": "(81) (ny_it201.safe_harbor_100)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds the product (100% of the typed 2024 tax; IT-201-I p. 23, \"the amount of your 2024 New York income tax\") once to the dollar; the reply keeps cents. At most a 50-cent difference in the safe-harbor threshold.",
+   "subject_key": "9bd02f1d12f75ac25f3af6cad6da6f317f8b87b36650b4fffe12b0054aa23af2"
+  },
+  {
+   "key": "(81) (ny_it201.safe_harbor_110)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds the product (110% of the typed 2024 tax; IT-201-I p. 23, \"the amount of your 2024 New York income tax\") once to the dollar; the reply keeps cents. At most a 50-cent difference in the safe-harbor threshold.",
+   "subject_key": "5694149687ef5319352430bedc34b51f0e2f8537341495f3ae48f4e23294226a"
+  },
+  {
+   "key": "(81) (ny_it201.safe_harbor)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "3fd073ae619b95b954e7520e773e0d43a44eb44cd21fe11693c5077f8937b0e2"
+  },
+  {
+   "key": "81",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "3c96824a81960989705949b428057952fd2e7f5af327bdba2a3e2fe439d00790"
+  },
+  {
+   "key": "82",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "AGREE",
+   "subject_key": "c85559a962121dc20359ab353e101e39feb8d115ea15270b0c91ac6233181ee7"
+  },
+  {
+   "key": "(77)",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "996ae0887ec4beafc28e4116d06248c2d8746f0bc2c678b974a41b3d872e2df9"
+  },
+  {
+   "key": "77",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "438901ac7858e980e822103abd4e49391dce971ca7bcaed3e601b865c3571e00"
+  },
+  {
+   "key": "79",
+   "record": "8c3a4d6300a732c307a999d862499db70c254ac5289b52b1661aabde36909e74",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the project asks the line 79 amount only when line 77 is above zero (ny_it201.has_overpayment; IT-201-I p. 23, Line 79, \"Enter the amount of overpayment from line 77 that you want applied\") and is $0 otherwise; the second copies the amount. They differ only where line 77 is $0 and a positive amount is supplied, a record the interview cannot produce (the amount is not asked then), and where the second's own check (line 79 more than line 77) refuses. Equal wherever line 77 is above zero.",
+   "subject_key": "40f2404e719209a3d8c8f8b7e4415fbfb14fb8ec9414339d8dbb7df46b5e385d"
+  },
+  {
+   "key": "78",
+   "record": "8c3a4d6300a732c307a999d862499db70c254ac5289b52b1661aabde36909e74",
+   "status": "AGREE",
+   "subject_key": "bf568c5ce17efd5c66c9e5636379be35f8436c1feb7338886da2c91b4a0029b2"
+  },
+  {
+   "key": "78a",
+   "record": "8c3a4d6300a732c307a999d862499db70c254ac5289b52b1661aabde36909e74",
+   "status": "AGREE",
+   "subject_key": "5c8cccd6aed2fc346f50070157858aabbd8093bf93d77065f7dfb4a678ca77e9"
+  },
+  {
+   "key": "78b",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "31a7e92368c90060831f018311ed38b0fd0c1ac44ce7723fe79b8bca19cb4c11"
+  },
+  {
+   "key": "80",
+   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: \"model changed a published result type\"; ny_it201.line32: \"model changed a published result type\"; ny_it201.tax_schedule: \"ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "57cde938b2e44d0f5ba595bc3082fdfccb2fefeefd1ce1297c78145a35e47e53"
+  }
+ ],
+ "subjects": {
+  "C": "ec3d44ebace17d5b01c6e4e6c3fbc9045203535db2e6545ad6d3250167378a8b",
+  "H (count)": "c775556cf6baebf885155f3e0e760fff74624401c1c24b030e770258031b62a5",
+  "1": "2e68d97efd58ec2f0398cec4d680d134b85e779f056cae9ea05e011a9f7506f1",
+  "2": "0ab699890c51786638b6f0c1b93f2c9a51e56b9ec03cfab26033df0c734de77c",
+  "3": "69f377530fe78842ed6435d2451a374c955c9ac4c0f217290631c73ceb170a92",
+  "4": "f5190222dc5ddab58aa5d89b74a4dc3d317370884faacfd2008a57428b329152",
+  "5": "132a990696b1fde2839233bf7895b845638c4b1b785f3564f6df43b06023a2c0",
+  "6": "9123a3a8d16b505e08083ab79f30ae367988df3551a156d0323c377915dc59f3",
+  "7": "2d136637435f62b970b5c353e75c779fd715ede38a628d7f540cf43908766b3d",
+  "8": "ddca4f9241dc13a80dac3054c79ba47e742d66a2d4527a43e24a0175bcd2ad86",
+  "9": "fa2de10ec03aa64ccf1542f423302a72ecd9b6c9cd67bb1ca30525561821dea3",
+  "10": "58fda5324f2827306aedd0ae09b732627ff98aa73f9a7a54cab70f75d94a145e",
+  "11": "8eb82d5beb69c0454a6c759554cac2f83ac3ac26c85bb799d78878dddb7180dd",
+  "12": "f93d792cc48f087f11a780f631740b170a99108e3903ab2a66a22cf6a57e9100",
+  "13": "e6186fd24690d86a5662edc53a2960ff2b88573c971dc46b90c11ca9fa80ebb7",
+  "14": "3536134c20a3b32dca75e377fb677f868f982518f57d8a268f0a92801417d4cd",
+  "15": "c8a6c6974deaaa30601d06a52ca8e95d8be9498c9c8cec9e86578122a31204dc",
+  "16": "fcae79e9430e49ca07e2ca670c5fa11acdd4f2ca6b7b9bb2fedc8be3fa2fa601",
+  "17": "2c6c63d22fd2ea3acdab25328125be88d1dffce895245f87fbcd2f975f169735",
+  "18": "54565592a271f37c5e115a816c787c5dadc2b582917534dfd27eae600c5d37c4",
+  "19": "05b98a40f529d1582546ba909de6efb73514a3ff483e36e56facd9ab865be2f9",
+  "(check)": "1a6b59c6fdf31c7e7e5420d0e6c5fd77e83f07151a7c3183325eff1eabf29586",
+  "20": "99961d519248e1225d52071150e8f142d409c38acfd6e8da047b4d6ded8b6a8a",
+  "21": "2b5f736cceb9bf4e2d4c90b34fdbb495ba49de40af926d50a152e6a37fea94ff",
+  "22": "aca1944cd1a38f488eb5bca2e3fc850ea0813e5cc52d948d8c664b14cb08d798",
+  "23": "5f6e9136f6366d6a8b34269668769646ed0f64834225510e482c8bdf72923580",
+  "24": "21c0d2dfdd9596d93a352afde0aed197eaace4975ae4b553cc352faebfc98614",
+  "25": "de58098410f407e1c01c87e3cb686ffee38e692005dbdab7ce229ce8e27d6cb2",
+  "26": "d1f68152b516f0bcb6ed88f676b3e6e049b95368336581ccaadc90eed3c45bfb",
+  "27": "3408d939107960440ca6f29c6127ff6b3b38dcb7addc6b2f81154360af68bc35",
+  "28": "581b6c7221fb58a0c32840a593873435e47b461da699ada8cf3359e9eb6872f0",
+  "29": "d69a2eb963dbfdacf5f4123f9b8c2e509f18db5bf102f44d9b7e00b7febdfedb",
+  "30": "09f1cf6c47cc4b6c10b8bd6306b25342787e09159a30b9ea719655b429cc8d48",
+  "31": "4698820240520cad69161260266f113cfd5b3fd7152dc7ea1bff5e3f15a0df1c",
+  "32": "ebbcaf666cfcea9cf9853233fe4f7e1b523ff86345bf133e3fa5bcf60d74792b",
+  "33": "a0c21f6f0a8e7e815639bafc8edc228d1c12f5a0edb74e134b42188ab7914b5d",
+  "(table) (ny_it201.std_deduction)": "3e8b1b4b2e252ed6b695dc85b7a73edab55b2b040929199658937ce7a7fe82b2",
+  "(table) (ny_it201.std_deduction_dependent)": "c07f2439085f2c2d07e3a2b0be460af7dae29460bdd55deb9bf61f0415e4681f",
+  "34": "1904ace98a7c474a74ba6be43f742667bb42a915c6dc5d5e48b63eaaeb51b6cc",
+  "35": "9d610a8ea56ab1ad19975ad8f2472ecf605a5c0cdbaeb39e77bab3d079bdd86c",
+  "36": "e8f5476b99522afe40f29c0a8e17fa58160974e4f7023814e5462af4d12b4a0c",
+  "37": "811219783cf3019c714cddd44a54c90c9f0728552d6bb4184d0f5eb659d95cfa",
+  "38": "f4f472d238f61ffae2cea11f76ee5f73a5baf0c921004f916cd788fd5e9f96f4",
+  "(39) (ny_it201.tax_table)": "1cdfdcbbe593b710f004ebfb414342885879cd1675d4186d5f23afc6f454a96b",
+  "(39) (ny_it201.tax_schedule)": "b9132acdc127eb85d355530028ce8fb00f3b2403b47b8e3a0512e9edb807072a",
+  "(39) (ny_it201.tax_low)": "bc5cd19bcab2bbb104bd259ec607457f3123ac3e24d4d396962def1b93fd06bc",
+  "(39) (ny_it201.tcw.w1)": "516026111e884ba28a82734945798f2bd6786666599d68de0a4b64dd389d29a0",
+  "(39) (ny_it201.tcw.w7)": "d15882cf1000257f1894e5df08e363d049c664daba6a591bcc7555c6bbf436f7",
+  "(39) (ny_it201.tcw.w12)": "89f237ee0156482b114b8860acb5daf2aee3a6dbe34706ba99f31b4a2239b1dc",
+  "(39) (ny_it201.tcw.w2)": "54e5746409ba7261fa478a2080896faa2b551a371fa19531a0cfb4a20b2d676f",
+  "(39) (ny_it201.tcw.w3)": "b48b64600656b96290757975e69ff5c26fb87908f0530c747eac878dc1db7861",
+  "(39) (ny_it201.tcw.w4)": "7de9fdafd3621e29658a74b296e4245423c87e8b150f01a7664e87642f8a1ddd",
+  "(39) (ny_it201.tcw.w5)": "985efdcd3364618b96575b629487165d1d16f51ad9cd95d244716b0e5475b357",
+  "(39) (ny_it201.tcw.w8)": "2e32fb0efa8c925b71cbdf61c92f2027386511e2d7176a3501200f351caf8976",
+  "(39) (ny_it201.tcw.w9)": "6db7cefffe004fe5eaa6973dde1e45abf9420c0b2b06685bdfe6f9c2e2c73e73",
+  "(39) (ny_it201.tcw.w10)": "a5c63b7fbbc41a76ea1b438e34550fe0931c083f684439345ab6cb1b7bc5f7f8",
+  "(39) (ny_it201.tcw.w13)": "bd9c828ed79c6723b8b6f0e87844856d62d2c53c7bbb5ac3350009bb96fd838b",
+  "(39) (ny_it201.tcw.w14)": "c916638d4f912aa9992e695c64757c3086bad398dcbccb02bea985ae5b5e8018",
+  "(39) (ny_it201.tcw.w15)": "cf60889b4c9e0bf72b4f8a91622acd2cdb0a0e82142ae2d909a2be1214cbec5c",
+  "(39) (ny_it201.tcw.top)": "e2ca8b48e232dbe55906203df0ed24964edec6da3cee4cea57e300ecade5988f",
+  "(39) (ny_it201.tcw.mfj)": "3a3039bc16e1499c64176a93eb7dd5d3924ecbb3319f8556c8bfd74dd0ceb032",
+  "(39) (ny_it201.tcw.single)": "ee10cced449ae8b8ed68c121c66c00460a55d5cd26e71b8430e9cd44512cfd8a",
+  "(39) (ny_it201.tcw.hoh)": "3569ef749bb5bc3f312be76cc6f344a627b6a7fe2cdae1d2b26d5da1064120ea",
+  "(39) (ny_it201.tcw.by_status)": "8bef046691b1c67611c2bc271635bf9f65bbb73b255a8f873dd5c1f72cbce676",
+  "(39) (ny_it201.tax_high)": "90710efab4694fcb1cf43e92e4cd4a04e7034361902e20e29b46be0d59cc64d8",
+  "39": "3258e702fbcc475c837657311a68be4ea23cff6f91fc024e56e29513356e0b46",
+  "(Note 1)": "6f60d08080f11567300c21e85d8e7772c8f3a34041aeecc87f114d4a3876f326",
+  "(column)": "755b0e82ef970bff5cd06199221c70e429a40da96c21bc31a5d6fa3155439618",
+  "(table 2, column 1)": "1b54a1cafa51f35fb05033eeb67c54babdcb14b6dda6f913ae2877cd0846a5cf",
+  "(table 5, column 1)": "b07ead687cc845ca8cded41b804bd7877566b60651f49bcfefc686b80b3f3d25",
+  "(table 2, column 2)": "aa2ea0ce78568a3813b63686307e4d0a49deeab1fa343d8f1e1d6679fe1d0c46",
+  "(table 5, column 2)": "bef4081d863148d42af34893dde5661d4a4a7f9b1eea4eec57bc947714591ddf",
+  "(table 2, column 3)": "a0b2f5d8afe5ee0c05e9d1adccfb89affe74f75b16440d6c24104e4f8a495540",
+  "(table 5, column 3)": "defb677fa2d852e5bfd9847c3d75f182c0bc41468d3f2e0afe11c61d9142f979",
+  "(table 2, column 4)": "c7161ceb2ceb7fddc34c18074997566e9e6a28dd3ab4a95e0485cc46aacfddaa",
+  "(table 5, column 4)": "a9d60a5c52cb429a1ddb242b78214ba73eb3a9b0831e1ddf348ae3cb777f06bc",
+  "(table 2, column 5)": "8cb2ae448b0598a89e67e0ef143daebc29bf26ae06017fd28ff8ef4d783ae03a",
+  "(table 5, column 5)": "452fb3edb237e35f9529e00a573ab01784c352e187ce13a2059f6acd987c17f1",
+  "(table 2, column 6)": "c838019e9a76ce0a5c6512a6c227ed231380ac2899b8001147aefb1a07f47ac9",
+  "(table 5, column 6)": "e08b60f14336ce83b663b38f9bfe1055fcc4dea0cd2b679bfdd3e0aa577ee3a1",
+  "(table 2, column 7)": "451ca8e43224887d28aece6df0a8e44c4a41097b8c2b5fd3286580276af832d3",
+  "(table 5, column 7)": "dd44690a5dafae130cba2e115a3d035f1b74b2785afb8c98b622db46029df7e1",
+  "(table 2)": "5e102e162a500af5408946db853eec88b44336d13225fca36938e9e59a86f516",
+  "(table 5)": "4560b7a258a59e8b3d201eed5b81e66293c43d0af05c473ba904da5e1537e044",
+  "(table 1)": "63aca473979d96c8373ff3e5fb76a5353b972509a14e40c451f29205c1217067",
+  "(table 4)": "0a25bd3acea2988cbb48f061c55d48273a56e48645c056a6716751fe5363c972",
+  "(40)": "541ff2a2baacad5723118b887833f960ffee4c4e103ccb553b354967396894ba",
+  "(48)": "7d1b29555db02bc4bf10f99711c361c4e905e309334f3f1878f568f643c66f4f",
+  "40": "e5d486e616ed39fe1552a5920f6af0aa1f29114c453ecce49e749e9e48ad7bf2",
+  "41": "dde2b80ea36c16b950dc1fbf212df0476a99ba82627637a622de2779b2fa7ce6",
+  "42": "0ec8ee41986e2fd917b337e852c5779e4c03a51cc163c205a4725cbbbe021d35",
+  "43": "0768df9e4e3c2093dd64254dab9da933e92437160ff7432ed6b497a9974db3d5",
+  "44": "d9c1f6421eb531382bf98ff1abee59ee6fcf03af4021fc84c869179ace2c1fde",
+  "45": "eaa1f4b99acf5bca3dd6ee22d1cf4d933b81a8a593cd5d3c769718bb5a5e08e3",
+  "46": "4e963942d24b2cc5816108bf07d9ea2f01f0096501b7a8b38a7f6cbda1c94eef",
+  "47": "9c9560e4bd04eb5acde237110af8f7f50ba69cb9863105422764a46a810ae929",
+  "(47a) (ny_it201.city_tax_table)": "bd05e12d49c8ebd491719f703f5c075b25d9ed1a27b4b062ae41b81302aca07e",
+  "(47a) (ny_it201.city_tax_schedule)": "955dfacc3974a6201ce7e63d003299ebb2ceba0e9c6b50c7bb76e127e010dbd4",
+  "47a": "651b0f0a32747a4c5557ef8e89c953192d4eb9c5424cc65afae17dc99711f1d1",
+  "48": "4865deec6666bdd5f8e78028fcf7d0dfc553564d06102d3bddfb64cd52604965",
+  "49": "1db6691ce9f81b4388b131a798061fc3bfbdbebf37bf65cbd97a99463dbe00b2",
+  "50": "44018f281480785a1039b29dcf5c844b446f6a1766f8ab5be60df1ae9672b7e2",
+  "51": "c2d87b2d469173c3b43e86edc2fe70c02a6cbe705e92223b55b21d92e3cced66",
+  "52": "c82b7d8d8e9aa1d59a34e2e84824bed2ccb3dbfa7bd53fb5c3a3b7c24ef2f339",
+  "53": "c2d0dccc536ae22102e706b0aa8c87b1851dee4c48337d39c342599e0d7455f2",
+  "54": "1f5ae71234b822f1433ce55adc77874d354366d3d7b7b517fbc1c509d226562f",
+  "54a": "2ae9049d329fb56af0d08c13dc1a8ce2d53e021d5ed491b086a7081cd81423ce",
+  "54b": "ca9c5733c1ad8c0afc63d2ad9341547f60e1cbe2fe57594c6114f344031db068",
+  "54c": "783501a8ad15a7530e67431a2524856557bb9964d6b14d150a1a09017c24b61f",
+  "54d": "6802883037aba3880ae4f2fbe220d6e9aa6aedc2b66e6b10ff74f7e77ce9c932",
+  "54e": "92d48f290f85d3d7dd60fe620655c3a3a265eee311bebb06013d174a23f05fbd",
+  "55": "31754bcd5c26187078347f6a2f88d928bfd640d841e5ac9d55bb6dacf9742c2f",
+  "56": "4c51383bc800e4b19d7c6d5955fb60514bb9ad6c0c4d8b6cc4bb31a640917816",
+  "57": "ded965d62f5a0157bae2a04211b9292373e6111b5998da4ead1900d7b9a7df5d",
+  "58": "8248a1165273dd22bc12f16e0f7bcf121da3db24bd4349b657060dc1550e87fc",
+  "(chart) (ny_it201.sut.b1)": "6a78628364c0503d8c43c79a8ac083af7091d9310cd0eb887924c557ff35f358",
+  "(chart) (ny_it201.sut.b2)": "a4b23068fee21e73a408f47ad53865384b0eb40335f201fa7146109eded1308d",
+  "(chart) (ny_it201.sut.b3)": "8d16a35855b5ba01b7e93cdde3605e2f5ef7d8d0920aee2b9c84053c8bb809f5",
+  "(chart) (ny_it201.sut.b4)": "4c1e3214b55396e53f105ee3fa64246d72bcf976d69a14a0d317d92d4d5871ce",
+  "(chart) (ny_it201.sut.b5)": "238b937d62c8dd8666cbbc859480c2ed64c6cf00c41d2e6b510436f60c8b0e29",
+  "(chart) (ny_it201.sut.b6)": "7a4fc611ceb1d78adb146f46b524b5cfcfe0ce88f03020a3c78d5adba452bb53",
+  "(chart) (ny_it201.sut.b7)": "d7793aa874d2cf7a903377b207bad5b714a833ee5bc2738378db3e3feb09d018",
+  "(chart) (ny_it201.sut.top_product)": "b19eb64bde332548ff1c6a06ca20eccc551a4066193c8b369fdc3d0f169bde57",
+  "(chart) (ny_it201.sut.cap)": "bc3867caeff5c2ce46a56af458bf69baf597cced77741c5a77da1d6cd50bfe65",
+  "(chart) (ny_it201.sut.top)": "3f337836dcc9231409008d5ffa2d8fd4efd0f392d18987ef2eb91f6b587d3fc7",
+  "(chart) (ny_it201.sut.chart)": "f490093538fc554603fa13fbad139b3e32a8a2596400e226d1e3bc28d80f8fbc",
+  "59": "19025f897e86e3c72f15ed92f4ed608c2be9fe4fffc0afa4dbd9a33c62ee44cc",
+  "60": "178b3aea541212cd6e1b0cd15cbe019527381140b66487bac2fd04adfdd4a50b",
+  "61": "0b1b43168dba06f33619b3fe34032977426efaeca1c9b52368dfb6046db94791",
+  "62": "6f15d5a82c661c9f283180e613bb2b496ada9cadd3c892cb5f65dcbf5a2ca901",
+  "63": "e639b93848b4db093b37f67361d8e81fad11f6b9a75a47905985bf8a85d8065c",
+  "64": "c71166797a30ba2eaad8ab5ae966d6e54c82a9cc554e3077e72afa82957977b6",
+  "65": "608d5c54b046b0074bcc8348156bd1f8277fe57f0f2e287e2bc232815463d3d4",
+  "66": "9184d921bf71f25c0b753169559508fa01f5f34f8035a24e2c258c01cfba3389",
+  "67": "ad1ffde0f4c0943b7555852ac0ebdfdd7c0a43ba7c71f2ea134e48a162294d53",
+  "68": "28e5232bbc53db4ea6026f334d435f719337517b3831474ce5092f2e7a83e86c",
+  "(69) (ny_it201.stc_income)": "62ba7be73352ad33cd177abe32908842d63b53a47c561e73c6aeaea1061c5cae",
+  "(69) (ny_it201.stc_fixed_amount)": "465c3ee72cd12b7930ba6e0405cdcd11e4c2584be267c8cdbef3d9a89fa5daef",
+  "69": "588066351f475d0705e98077689e393c707abf08fdfa523811de1e844d378172",
+  "(69a) (ny_it201.stc_rr_low)": "d9b59a3b434a627b090e64b836527b08bcf6be95530ea879f4497c5d6c204285",
+  "(69a) (ny_it201.stc_rr_excess)": "0c13f94345415ffbfee0e8c75359d94af1077370fe4cace8c655918f9f928815",
+  "(69a) (ny_it201.stc_rr_excess_product)": "5902990a16f4487def5ecbe7bfd791270fe9a577d1e84e12238edb319275b91d",
+  "(69a) (ny_it201.stc_rr_base)": "37e15bd0fc1758a39110cdfec9db6c3515b48f52d4fd2ccfac96c90a6e6f3be8",
+  "(69a) (ny_it201.stc_rr_high)": "43865a0c6d1329972c2ce2308462ba22c42af6ecfc31287abecbeffdaef05860",
+  "(69a) (ny_it201.stc_rr)": "0b69254835ad6e07459b0e9b272c59af782c879daf6936cb07968468c941f621",
+  "69a": "80f26a95b0f8609132ea0ebca0aff81e2274a929504a3732e9a829bd4b30cfe0",
+  "70": "e3aaff16e76e6a984478fa45884823613b76ac2184a4331fe4f601c9d385b814",
+  "70a": "86ebfabea438b8b09e9a1082ab0de9768429259c76f2f63dedc36c21fb09d41d",
+  "71": "ad8327098fd580d523c4e65af05619ffcffed9970e993d7abc90bc4efbe6c2b6",
+  "72": "71786054aa33ea7b4166512cc56fe73b38bec93cdc0e5b17f6b0803970afd8ac",
+  "73": "9af397dcbfb68952a82ca6d31bcfcfe48b2bda1a37d578d8f6b59f660d8976f8",
+  "74": "408aacfa9a75dc6246b58dbf0fe1a10e8852e1d560574e40c13e633b35d5ba08",
+  "76": "df416db18be40a8cba4f4fedb0314b8b74e00ae459737b2baf82def58e63336c",
+  "(80)": "bdbf0aa5bd8d503b9603c6662a6f544f1cf50b9cc2292d04c953b129682f884a",
+  "(81) (ny_it201.prepayments)": "e61a939f45dae8971d470f29b7be1a175cb128937784f470aa6a118f5609194a",
+  "(81) (ny_it201.safe_harbor_100)": "a25a7da23d7538b98920566d546215ff1831b3bd6a6f8aca6e35bf48deb4e345",
+  "(81) (ny_it201.safe_harbor_110)": "d6ded2bcec460c0b15173c6b44480c051bf8456fde88f14f465a87bcaf0b0a0e",
+  "(81) (ny_it201.safe_harbor)": "ca4509b83345181872175ebfee780dd9deb2961fdebdf14cd66e9f9e9562be82",
+  "81": "c90b9a73fe012dd1f0ac3cb5d1d29c0bafb7a33f6c6c1d04fa995e7a19b58d39",
+  "82": "92127e1f501aba9e24c5a5d194b0fc49526947578561e9c63c364b1847e69e47",
+  "(77)": "4375e1f0e0866c428c3d6d860b0d2ffb70bb1e712f017ae7680d9e995df42049",
+  "77": "29fd7542de31bcd9346db1baf2ae8a85089faa1b107e02260b5e7fbe5a35dcea",
+  "79": "45b0a28e7fd35b290c7d85c48be9a8475c9b305cff08a20a49fc1cd7244323fe",
+  "78": "0d8a419b2badd40c527f68a3ce1f765d979d77e67c537e8c074a8cb4b6b8d9c6",
+  "78a": "b60d840810ba0accc5c6f818b2e4578d8abf62ce54bed1eb3d61198c9dc57dce",
+  "78b": "952a2407b88a305131f59dbc5b01d3c958037b4dc8c3814213eaaef2b2a23517",
+  "80": "69f908b3b7023775621c35f6979f28695581a441a69f7ab6f7ffae21196cc082"
+ },
+ "__rest__": "9b8e1400e9ed29bae97a2ef3b82bfebd260de441d31e5edaee1d2a9cc93e1284",
+ "foreign": {
+  "C": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "H (count)": "5bbcc5d1caf027b187fc89eccf2bb910be795eed1cb2b810c6c8fc805bec0cdf",
+  "1": "db8517858ef828ebeecf59583a46ac018977f95fd60cd3216d797cff46b8c229",
+  "2": "37553ac0dd1921e4f151ad8b0243b815ea0001b6d76125dd79dfc42b5cec69dd",
+  "3": "4e26f0f3fa313f1ffd6edec92adb28fefa00764c88b8a6e12a6ffa5b1d422def",
+  "4": "d70b36dfb1e886e21a87de8d623fdee26b7884df60194071abc923d4910ec5db",
+  "5": "deef43d4826a4457bd51fbc26a75a604d2ab5092761c5aa8d06ac8e24674b450",
+  "6": "8c5c092c09eee7fa99aad01476aa0fd2a2b9c27c0e28b51404a0cac5a4e7b91e",
+  "7": "eddd40e2316d0c89721d62967a0b57dc83362f36901c18d270b3590e8947595e",
+  "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "9": "1524937991a344954550454584d2ce7b46c7885d971a17fcb987d2dceba6d55d",
+  "10": "f71b1a0c84b4acc28c4bb0fef0e2a1f63a1ecbd09df4eb1eba0633999ccff642",
+  "11": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "12": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "13": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "14": "096009a19b5ac466d447ac37369ae95778eab9caf54d79a809755fcf0f70a887",
+  "15": "43f56340cb28bacf1d63358e7e8e4bf5bfc4a2f2429661c0847274bac424b2a9",
+  "16": "ea3d5bae5b27cb4a21fe8c7d93c83a78d8a5e22e8a2f49e3da279d5febe64c8b",
+  "17": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "18": "e0436ca291374ee6b9ca824a57b73cdc61e0895908ace373530866803bfe056d",
+  "19": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(check)": "6d41e4e13caaba2306b7554eeb9238e86ac64fbdd47dc4696d7e1414b37dd1d3",
+  "20": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "21": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "22": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "23": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "24": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "25": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "26": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "27": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "28": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "29": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "30": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "31": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "32": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "33": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(table) (ny_it201.std_deduction)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(table) (ny_it201.std_deduction_dependent)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "34": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "35": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "36": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "37": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "38": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(39) (ny_it201.tax_table)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(39) (ny_it201.tax_schedule)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tax_low)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(39) (ny_it201.tcw.w1)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w7)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w12)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w2)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w3)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w4)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w5)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w8)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w9)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w10)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w13)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w14)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.w15)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "(39) (ny_it201.tcw.top)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(39) (ny_it201.tcw.mfj)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(39) (ny_it201.tcw.single)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(39) (ny_it201.tcw.hoh)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(39) (ny_it201.tcw.by_status)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(39) (ny_it201.tax_high)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "39": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(Note 1)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(column)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 2, column 1)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 5, column 1)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 2, column 2)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 5, column 2)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 2, column 3)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 5, column 3)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 2, column 4)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 5, column 4)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 2, column 5)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 5, column 5)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 2, column 6)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 5, column 6)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 2, column 7)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 5, column 7)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 2)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(table 5)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(table 1)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(table 4)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(40)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(48)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "40": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "41": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "42": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "43": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "44": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "45": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "46": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "47": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(47a) (ny_it201.city_tax_table)": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "(47a) (ny_it201.city_tax_schedule)": "6d467107cbd3e1573da9abd73b3a2cafca2d91e50bbf11debcdd897823744dc8",
+  "47a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "48": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "49": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "50": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "51": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "52": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "53": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "54": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "54a": "5b32ca2cb27655f655096a0caa7ee74f8dce7a85894316e7b6b7b74384756b8a",
+  "54b": "5b32ca2cb27655f655096a0caa7ee74f8dce7a85894316e7b6b7b74384756b8a",
+  "54c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "54d": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "54e": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "55": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "56": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "57": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "58": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(chart) (ny_it201.sut.b1)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(chart) (ny_it201.sut.b2)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(chart) (ny_it201.sut.b3)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(chart) (ny_it201.sut.b4)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(chart) (ny_it201.sut.b5)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(chart) (ny_it201.sut.b6)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(chart) (ny_it201.sut.b7)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(chart) (ny_it201.sut.top_product)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(chart) (ny_it201.sut.cap)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(chart) (ny_it201.sut.top)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(chart) (ny_it201.sut.chart)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "59": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "60": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "61": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "62": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "63": "ae083ca1e053beaf072d860c3f4538073c2ec04c5212631a92f5ddb1c98f9c68",
+  "64": "d7a178975feb28d030c9e65166597f5830e1042ee3ce2286c014931593396e11",
+  "65": "dcd9172040fa80b96b5cfdea5d56ff709411c35bd1952db1164291b1e4a20b1b",
+  "66": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "67": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "68": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(69) (ny_it201.stc_income)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(69) (ny_it201.stc_fixed_amount)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "69": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(69a) (ny_it201.stc_rr_low)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(69a) (ny_it201.stc_rr_excess)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(69a) (ny_it201.stc_rr_excess_product)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(69a) (ny_it201.stc_rr_base)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(69a) (ny_it201.stc_rr_high)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(69a) (ny_it201.stc_rr)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "69a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "70": "dcd9172040fa80b96b5cfdea5d56ff709411c35bd1952db1164291b1e4a20b1b",
+  "70a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "71": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "72": "57c3181b9c23f4fff4ecc97aa6b03bd0b2de79eec56b741e3c9c341e7d36fa0b",
+  "73": "fd1502625ab212170cfb5ecddf54bb5b97b48de8c2d51a2b07fecf78881ecfde",
+  "74": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "76": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(80)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(81) (ny_it201.prepayments)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(81) (ny_it201.safe_harbor_100)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(81) (ny_it201.safe_harbor_110)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(81) (ny_it201.safe_harbor)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "81": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "82": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(77)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "77": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "79": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "78": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "78a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "78b": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "80": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "kind": "classm",
+ "form": "gift",
+ "family": "claude",
+ "base": "84ce7a944e3b1dd5baf5c0ac841bfda09ae5fd5b5e7d92ce88290973bde61d5c",
+ "lines": [
+  {
+   "key": "case classm.gift.1",
+   "record": "84ce7a944e3b1dd5baf5c0ac841bfda09ae5fd5b5e7d92ce88290973bde61d5c",
+   "status": null
+  },
+  {
+   "key": "classm.gift.1 — gift[item_a].over_5000",
+   "record": "84ce7a944e3b1dd5baf5c0ac841bfda09ae5fd5b5e7d92ce88290973bde61d5c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.gift.1 — gift[item_a].section_b",
+   "record": "84ce7a944e3b1dd5baf5c0ac841bfda09ae5fd5b5e7d92ce88290973bde61d5c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.gift.1 — gift[item_a].allowed",
+   "record": "84ce7a944e3b1dd5baf5c0ac841bfda09ae5fd5b5e7d92ce88290973bde61d5c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.gift.1 — gift[item_b].over_5000",
+   "record": "84ce7a944e3b1dd5baf5c0ac841bfda09ae5fd5b5e7d92ce88290973bde61d5c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.gift.1 — gift[item_b].not_public",
+   "record": "84ce7a944e3b1dd5baf5c0ac841bfda09ae5fd5b5e7d92ce88290973bde61d5c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.gift.1 — gift[item_b].section_b",
+   "record": "84ce7a944e3b1dd5baf5c0ac841bfda09ae5fd5b5e7d92ce88290973bde61d5c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.gift.1 — gift[item_b].allowed",
+   "record": "84ce7a944e3b1dd5baf5c0ac841bfda09ae5fd5b5e7d92ce88290973bde61d5c",
+   "status": "AGREE"
+  }
+ ]
+}

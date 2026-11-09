@@ -1,0 +1,34 @@
+{
+ "kind": "render",
+ "form": "f8606",
+ "family": "claude",
+ "base": "00e54f484e3560154fac822a8b3c9c0c47f7981b6efe8c332d8d6eb36c7d22d5",
+ "lines": [
+  {
+   "key": "1",
+   "record": "00e54f484e3560154fac822a8b3c9c0c47f7981b6efe8c332d8d6eb36c7d22d5",
+   "status": "MATCH"
+  },
+  {
+   "key": "2",
+   "record": "00e54f484e3560154fac822a8b3c9c0c47f7981b6efe8c332d8d6eb36c7d22d5",
+   "status": "MISMATCH",
+   "ruling": "Ruling: second construction right; fixed (BUG-0086: the screen person.ira_basis_adjusted refuses Form 8606 line 2 in these cases, and the basis question now follows the Total Basis Chart). Line 2 is the answer to person.ira_basis, which asks for \"zero if this is the first year you file Form 8606; otherwise the amount from line 14 of the last Form 8606 you filed (see the Total Basis Chart in the Form 8606 instructions for a form before 2001)\". The instructions ask for more: i8606 p. 9, Total Basis Chart, for a last Form 8606 for 2024, \"the amount from line 14 of that Form 8606 as adjusted to include the amount from line 6 of the Line 15c Worksheet, if any\"; and p. 9, Line 2, \"you may need to enter an amount that is more than -0- (even if this is the first year you are required to file Form 8606) or increase or decrease the amount from the chart\" after a return of excess traditional IRA contributions, a transfer incident to divorce, or a rollover of the nontaxable part of a qualified plan \"that wasn’t previously reported on Form 8606, line 2\". Nothing asks about or refuses these (person.ira_excess covers an excess still in the IRA, not one returned), and the interview help says \"zero if you never filed Form 8606\". A filer in one of these cases who follows the question enters the wrong basis on lines 2, 3 and 14 (no 2025 tax changes; a distribution is refused)."
+  },
+  {
+   "key": "3",
+   "record": "00e54f484e3560154fac822a8b3c9c0c47f7981b6efe8c332d8d6eb36c7d22d5",
+   "status": "MATCH"
+  },
+  {
+   "key": "3 (question)",
+   "record": "00e54f484e3560154fac822a8b3c9c0c47f7981b6efe8c332d8d6eb36c7d22d5",
+   "status": "MATCH"
+  },
+  {
+   "key": "14",
+   "record": "00e54f484e3560154fac822a8b3c9c0c47f7981b6efe8c332d8d6eb36c7d22d5",
+   "status": "MATCH"
+  }
+ ]
+}

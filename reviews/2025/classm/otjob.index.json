@@ -1,0 +1,216 @@
+{
+ "kind": "classm",
+ "form": "otjob",
+ "family": "claude",
+ "base": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+ "lines": [
+  {
+   "key": "case classm.otjob.1",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": null
+  },
+  {
+   "key": "classm.otjob.1 — person[spouse].otjob[ot_1].refused",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.1 — person[spouse].otjob[ot_1].figured",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.1 — person[spouse].otjob[ot_1].by_third",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.1 — person[spouse].otjob[ot_1].by_half",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.1 — person[spouse].otjob[ot_1].by_quarter",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.1 — person[spouse].otjob[ot_1].col_b",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_1].refused",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. An employee who is not FLSA-eligible has no qualified overtime compensation (Notice 2025-69, pp. 22-25; i1040gi p. 106), so the project enters $0 for this employer and the method question does not arise; the model also refused the method. The employer's column (b) and line 14a agree. [dropped]"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_1].figured",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_1].by_third",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_1].by_half",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_1].by_quarter",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_1].col_b",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_2].refused",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_2].figured",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_2].by_third",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_2].by_half",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_2].by_quarter",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.1 — person[taxpayer].otjob[ot_2].col_b",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.otjob.2",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": null
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_1].refused",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_1].figured",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_1].by_third",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_1].by_half",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_1].by_quarter",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_1].col_b",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_2].refused",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_2].figured",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_2].by_third",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_2].by_half",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_2].by_quarter",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.2 — person[taxpayer].otjob[ot_2].col_b",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.otjob.3",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": null
+  },
+  {
+   "key": "classm.otjob.3 — person[taxpayer].otjob[ot_1].refused",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.3 — person[taxpayer].otjob[ot_1].figured",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.3 — person[taxpayer].otjob[ot_1].by_third",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.3 — person[taxpayer].otjob[ot_1].by_half",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The line is the amount under a method the filer did not choose for this employer; the project figures every method's helper and column (b) reads only the chosen one (Notice 2025-69 Section III.B.2, pp. 22-25). Column (b) agrees. [dropped]"
+  },
+  {
+   "key": "classm.otjob.3 — person[taxpayer].otjob[ot_1].by_quarter",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.otjob.3 — person[taxpayer].otjob[ot_1].col_b",
+   "record": "babb3004541f1b26f285d42d398c83d63f381547996cb285dfea13aa4a5bb9a4",
+   "status": "AGREE"
+  }
+ ]
+}

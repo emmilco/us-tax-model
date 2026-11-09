@@ -1,0 +1,1197 @@
+{
+ "kind": "render",
+ "form": "ny_it201",
+ "family": "claude",
+ "base": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+ "head_rows": {
+  "line-scoped reviews": "3 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "C",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "aa2c11f0e546de5d899d2c2206e3e7a66f43ace826e5b00061f8e6897e979f41"
+  },
+  {
+   "key": "H (count)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "261077373a88464338be6e9ed109b199dacc25b283b8eb18d3ac91d242f16b6e"
+  },
+  {
+   "key": "1",
+   "record": "91a645334350e3f58e818166ff9c24042f9f16ca4daf608f73a4eb8f62b42929",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" The line-scoped request (rerun because line 1's refusals read the restructured ny_it201.ask.state_resident) gave only the pages its citations name, and line 1 cites only the form page, so p. 7 was not given; the restatement follows it, rounded half up by amb.ny.2025.whole_dollars (IT-201-I p. 2, whole dollars). The model found the refusals consistent with the text. Citation gap: BUG-0439. Project stands.",
+   "subject_key": "5b1ee8e81036443b84eb4b32905cd93bfd0530410e807fdb4336345b7e2c6899"
+  },
+  {
+   "key": "2",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "68f54cbef39ceae68df53b48e08e201fcc9e4ebd10b62b6b851c401cdf220c05"
+  },
+  {
+   "key": "3",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "ac626ed54f432a3c3545fbe619d5a6b97e47e76dc5a7b3176be1b1e6e34f55d1"
+  },
+  {
+   "key": "4",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "a3944e59bac9b927b610c0f8b396da2d754a84a5e896231d99aea5d3a3c75819"
+  },
+  {
+   "key": "5",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "39f4c120f9ea4f2c9714dba63462f3675323268fa4cf053dd6b3fe2f07cd8364"
+  },
+  {
+   "key": "6",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "aacc43baf9eb87493c174edb885c5b7b37dbb4c3184c110e58330af21a82adbd"
+  },
+  {
+   "key": "7",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "257d8eac67e7cc0193a751b136991973b906e195da44a4da2c8ed6ff262c0110"
+  },
+  {
+   "key": "8",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; the line is zero because the federal return it copies cannot hold Form 4797 gains or losses: this tool refuses it on the federal return (scope.schedule1, \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; the federal encoding has no Schedule 1 line 4 (\"Other gains or (losses). Check if any from Form(s): ... 4797\"); f1040s1 p. 1), and the New York return is computed only from a computed federal return. The rendering's note says so. Not a defect.",
+   "subject_key": "3c15f41a6cf425423fbfd310d35c71697c8236accc4284b0f3e0a88cf8eb1401"
+  },
+  {
+   "key": "9",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "b3f06e7ae32ac4a81e55bd557e1cd2b96c56635bab7653ca596e368fd39f5148"
+  },
+  {
+   "key": "10",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "ac14740fe4f6fe673b7ddb5c09c42a39d1738a9d010e3af10dd3a713f4be316f"
+  },
+  {
+   "key": "11",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; the line is zero because the federal return it copies cannot hold Schedule E income: this tool refuses it on the federal return (scope.schedule1, \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; the federal encoding has no Schedule 1 line 5 (\"Rental real estate, royalties, partnerships, S corporations, trusts, etc. Attach Schedule E\"); f1040s1 p. 1), and the New York return is computed only from a computed federal return. The rendering's note says so. Not a defect.",
+   "subject_key": "36ffbd9f78cea9c59c538e596c3d9c6ae3e13c4edcf3f95ebfa51ed060b154cb"
+  },
+  {
+   "key": "12",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; line 12 is the rental real estate included in line 11, and line 11 is always zero because the federal return refuses Schedule E (scope.schedule1; no federal Schedule 1 line 5), so line 12 is zero too. Not a defect.",
+   "subject_key": "7fccdc8af99340cf01f1e99439a6454d27a9548ca98b6fb236c846168e51ad79"
+  },
+  {
+   "key": "13",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; the line is zero because the federal return it copies cannot hold Schedule F income: this tool refuses it on the federal return (scope.schedule1, \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; the federal encoding has no Schedule 1 line 6 (\"Farm income or (loss). Attach Schedule F\"); f1040s1 p. 1), and the New York return is computed only from a computed federal return. The rendering's note says so. Not a defect.",
+   "subject_key": "3b196df25d0f0ee1092f120ab68aeec423370364fe21a50cf6f8277c63c7977b"
+  },
+  {
+   "key": "14",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "c1230a34285739517e39b8ca557c3cfa80d30c8d3311b588ed594116481731e9"
+  },
+  {
+   "key": "15",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "85e6b334e1b02e57d33c8e9cd139b5f49bba0b37374e5b6fd633f897df4260ed"
+  },
+  {
+   "key": "16",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "2219502d8969a0ad0938b94739b09e8a7ac286a21bc08f5715906786c917e989"
+  },
+  {
+   "key": "17",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "25b5d07cbac6411f09c387e7fc625664d28e4eafb5a483147c6560cd0b339dc9"
+  },
+  {
+   "key": "18",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "08d5abfb912bd8b152b703f243031d4acc6e979269dd6586e134de1ed664a60f"
+  },
+  {
+   "key": "19",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "a822510abe1b5d80844a82cf73ab07843c400004f646a1e153e52baf70a6d2be"
+  },
+  {
+   "key": "(check)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "925a8e4d8bc0ae89a1eb419730f9be702e9d38e458f12d4e1c671b47f5fb211b"
+  },
+  {
+   "key": "20",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "12d0f50ed97e2697e9b10ac5dbf8f64bf83cdcddad1183051876be06ec4ec1ac"
+  },
+  {
+   "key": "21",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "e1763e4403385254ad2f41d69b0fe75db348f1a4b14acd6c252a89910b92de1a"
+  },
+  {
+   "key": "22",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "cdb545c983f8c0b0448c7428877e285e058f8a85b70188a48203dd01f7ac8a91"
+  },
+  {
+   "key": "23",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "0c6614540c5a74813f9f3019f29d5f84798ff578dd84900aa7b9b9a6f0c787e5"
+  },
+  {
+   "key": "24",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "87adc63e4f38be30301d26b2a2ecab88265057a75411980b1551a7ee91d44aa4"
+  },
+  {
+   "key": "25",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "1200eb90917b6ad9e6ecabdcf54121f41a83957cb446311a552c069527c88aaf"
+  },
+  {
+   "key": "26",
+   "record": "7d5197ec8ace0da8eaf93834872b534dd726291f0451e43aecab025e413adcd0",
+   "status": "MATCH",
+   "subject_key": "3029d43799e07fb41ed7fda2e0720925194b34b494b58413f8f5b78cf5fc0a49"
+  },
+  {
+   "key": "27",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "79f501f03924f7ee53026345c9a7182207648d97e2f952e242ac2ae8f90cf2f9"
+  },
+  {
+   "key": "28",
+   "record": "7d5197ec8ace0da8eaf93834872b534dd726291f0451e43aecab025e413adcd0",
+   "status": "MATCH",
+   "subject_key": "0ae795433df7b2fcb2b56ae3568fb0e3a8e0f6f06fcba35e633fbe26dc64fba5"
+  },
+  {
+   "key": "29",
+   "record": "7d5197ec8ace0da8eaf93834872b534dd726291f0451e43aecab025e413adcd0",
+   "status": "MATCH",
+   "subject_key": "047519f600342ff23d654d7ef3771e0dbbff7f4e6a69866b45665bec459b291c"
+  },
+  {
+   "key": "30",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "55b5b14bcc78eb39c204e98e212f51953bbf2763794b604feff01d3cf455b7a3"
+  },
+  {
+   "key": "31",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "aefcff2189bea59f9bfbf9d1842ee362d73e5ef8d48410d1388ac1e3af3ee9e6"
+  },
+  {
+   "key": "32",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "cc921a63386c7d92e5a583380c318201d33f86214b2521255a7658749d48d9ff"
+  },
+  {
+   "key": "33",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "5854bc86606ec80c15c3bdf4a7707b841f30bac23867ee245923421a0c8951c1"
+  },
+  {
+   "key": "(table) (ny_it201.std_deduction)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "8a096c79d3d85fa08518bbac08a54682a69dce6245997e3ee246793be9da8adf"
+  },
+  {
+   "key": "(table) (ny_it201.std_deduction_dependent)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "5db9455f06eb0ea7a5d4e56b0eae79980b1432e5c9ba6583e6d32efb15109e54"
+  },
+  {
+   "key": "34",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "78f17a7234b82905833ec4cacbd533fff092cb6649bd7e053c1fe18e2cdbfb0f"
+  },
+  {
+   "key": "35",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "239ffd91d706578f1f62ca4c4035ccc9229472a72fc07f31a26d51c8d456cd3e"
+  },
+  {
+   "key": "36",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "91fe89fbf37d9eb44d5778d2b85655a4d0f789c8a6a86ba8235af74d55c1978a"
+  },
+  {
+   "key": "37",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "a059a1a479ff759189e2fb91230c4e7b0939bf2bb76438ddea3cb16263d384aa"
+  },
+  {
+   "key": "38",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "a5dbd5622d95a8e63fd0e3aad8a5aa27110c2b019acf6ecd88071f771d847461"
+  },
+  {
+   "key": "(39) (ny_it201.tax_table)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "7c1b498f58072766442f15aec78cc505fa3c87c0ffe7622ab47d8a1005ac0e29"
+  },
+  {
+   "key": "(39) (ny_it201.tax_schedule)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "a275af920c8e2252436f2305506f13c790271f55885d78143491c73b38451f36"
+  },
+  {
+   "key": "(39) (ny_it201.tax_low)",
+   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "status": "MATCH",
+   "subject_key": "aed02e28a4f9d47051fbf2ef20c07f47c090c21c23208fb92695f10e3296005a"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w1)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "bafefc64e1e8bfee107cdab29e96c065dbf6dee8ca22c12b894b696ea9fdc172"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w7)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "428cfc3a8c658ec83f7e3f556d21c0d90dad90d084f43d039bfe79b2cb4b7003"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w12)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "f4125a6fef410902ca64d22ff2c89068f6e01cb5ff06504ee959b96cba1d7b24"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w2)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "f2bd0c9da6721e9cea710e2a45b970185c6a799f073ba94f4595a734eb0db42a"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w3)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "f5689d794f6b726d96482600a72d4c7b22c908f9e68d4d8a7e0d84dd31f28405"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w4)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "6776ceeaae278b0f269fae48c86c55bf8b2a42a10282a1507077eb7acca9623d"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w5)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "df7e55d4478ab219308bac579aa277df69a4016ce45a79be0c152cd24ea82c33"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w8)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "e44e4db861d24c40eacaa8ba1f318ab8e126df795c82943dc18b79bb59b97030"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w9)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "e7ec49902f318ca5a7ac578d7ab92826c9cccaceb6847eab28ad2f083b11c30d"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w10)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "4ac3d46aa43eeffac73e8efb1520a7ee36912ad81cc1048adf1fc1d88ac70383"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w13)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "ce92cbe5e955978793e6081511aa38b4f03cc2c5f82855ebefdb026bf08b5df9"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w14)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "10299969fd3acbd6823dc612d2e0902df545c3899fae0a51874c8af097a6d83a"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.w15)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "506cb69a6b67d3f11fa862d900ff84f15d143dddddf9e1ac688d1d5e28f14ce7"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.top)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "c9c021180429640c3505114183de84285f9c1d8de5215d8285f395a1d2a41383"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.mfj)",
+   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "status": "MATCH",
+   "subject_key": "03de36b70b51831899a1ef1e17fff2082cf84b03915b0cd67464da4920941f92"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.single)",
+   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "status": "MATCH",
+   "subject_key": "03de36b70b51831899a1ef1e17fff2082cf84b03915b0cd67464da4920941f92"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.hoh)",
+   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "status": "MATCH",
+   "subject_key": "03de36b70b51831899a1ef1e17fff2082cf84b03915b0cd67464da4920941f92"
+  },
+  {
+   "key": "(39) (ny_it201.tcw.by_status)",
+   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "status": "MATCH",
+   "subject_key": "99ea825ac47ab37c881cb61b92f688b2b824891128212057fbaab603a62960a9"
+  },
+  {
+   "key": "(39) (ny_it201.tax_high)",
+   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "status": "MATCH",
+   "subject_key": "1f5118feb5bcafd236682224c97ef729f8d889e142fccf2b5bc479b367f3f2d7"
+  },
+  {
+   "key": "39",
+   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "status": "MATCH",
+   "subject_key": "1711637c14c318d26ba52c3e4f8a006742ce54f465ccc9abb73af39fdc824e92"
+  },
+  {
+   "key": "(Note 1)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "ef13802f20b0c2aa22028763065a97bc196a4e7d405df5e13c2d7419afacc7dd"
+  },
+  {
+   "key": "(column)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "2ed0aa2c5eb2e13322189dd06621865d6f3b4851b7ac8fb4f4a987bf243b990d"
+  },
+  {
+   "key": "(table 2, column 1)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "4656e70684c1b66f9eb14a84768ff3b3fa61f3d2f9b685de13b10cb7521ef253"
+  },
+  {
+   "key": "(table 5, column 1)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "8a5e01cb40d83e0009fa4587077a2e9cf73fc92f85d6030ad3ff35abb78ac650"
+  },
+  {
+   "key": "(table 2, column 2)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "848a07b8254730a065b438768b38923ead065b170b7cc018c4b8c4fde91ca8f3"
+  },
+  {
+   "key": "(table 5, column 2)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "90d2009973c9d62f5e7c974debe6eec280c11c08e2ce0d512ff8c5c3c7a75869"
+  },
+  {
+   "key": "(table 2, column 3)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "c11fe4a867a742f315a8acc869f44e759bb2554f49dd47c549c5a939bca10ec4"
+  },
+  {
+   "key": "(table 5, column 3)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "ae43c00d629e268b28892f12ac698f8f1f77909cd61832ebe2554ef1c25ebf39"
+  },
+  {
+   "key": "(table 2, column 4)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "bbfa07cac8608fc8b2a580579a36fe22c4d9782183eab116e69e136c7d615c3e"
+  },
+  {
+   "key": "(table 5, column 4)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "4cf3034739df46032e8659ed5001bc03e4875335ce5d6a8279d96f9269bbc98f"
+  },
+  {
+   "key": "(table 2, column 5)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "b6e203e6f9552d1d944c31672457686af9b0d10f8cceeb57ea6cf7bf4b232c60"
+  },
+  {
+   "key": "(table 5, column 5)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "901c3e3ca0bcc62361ec382fd9f121e72f10461e4704b2f895ed10b7f4197040"
+  },
+  {
+   "key": "(table 2, column 6)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "81e750eeabae8c13a4018c9b2c2e11684a2bf30f531f540d4a07089a3e6f6559"
+  },
+  {
+   "key": "(table 5, column 6)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "84c415e27dec4a8e1e2f058cbd1c56ea4cc9665aad524504d2c1331696b1c5e1"
+  },
+  {
+   "key": "(table 2, column 7)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "69171c7939a902318ce3c3cf2e1e829ed3292af6a544cf80ff41af685e46ae51"
+  },
+  {
+   "key": "(table 5, column 7)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "cbaf70a4baf190e38cc61d08ced4282a411448747b61058296925a841a0ff2db"
+  },
+  {
+   "key": "(table 2)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "e920e193aa5b6a549a4c4b288a06979f3f369c6b2fa47301efd7e68511a9b7c4"
+  },
+  {
+   "key": "(table 5)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "bb9bcfd4cc506d93b65b224407bb4d877f213c41181af66be83b2e7a1caf06ea"
+  },
+  {
+   "key": "(table 1)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "3b08c8c00cfeec3335ef0b3cfc10acf2c7d2c39e24b710cef3c14c2ecf24e863"
+  },
+  {
+   "key": "(table 4)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "762eed5229b13a3ca80d1b49fba5c2d3cc9fb364e92855ea096ec8d28662f185"
+  },
+  {
+   "key": "(40)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "4924b026b427f566a4802588477135688188d507b26e5044f6f7bb7f2af600fc"
+  },
+  {
+   "key": "(48)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "02507a25ce3751f8c85909b5ae60b15fcf333860ccc74874338160bd2e6824ec"
+  },
+  {
+   "key": "40",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "547ecec7974d336f61724cd3762354f2e13a1a76139568cc43670dacc43d2b65"
+  },
+  {
+   "key": "41",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "727312c7b89a5b90258a92b2b67397edb7b128665a86510a4068bb8dcb7000ff"
+  },
+  {
+   "key": "42",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "6320d3c3bc8079a80fa0c91bb8a27de377c5d8719eab79574508042e60b21e0e"
+  },
+  {
+   "key": "43",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "3bedde380bcc5bf2109a0ec696f355d682ed54e0c569596913de4055ac8bda1c"
+  },
+  {
+   "key": "44",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "8f55bd787a8171dd5450e3bb68c041ee4d307d66d6dfdf7ab4ddb56e98320a49"
+  },
+  {
+   "key": "45",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "c05aad957086204c0983bcfdbc9fa8fec5979a8c1cd8fd9c1ea8d5bf0151c29c"
+  },
+  {
+   "key": "46",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "5bc8a927ba178b8cb05dc09fa6d1ee04bda87c3da44dfacd1a714b8707f3cc68"
+  },
+  {
+   "key": "47",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "644a387ad22219c05dbf6f1056222f5d6a672f3197ec5eb0fe30cee101fbb2d7"
+  },
+  {
+   "key": "(47a) (ny_it201.city_tax_table)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "c7780f24f710b2335c04a83c23ca904f44fefa484752011feb50d762a35e6db0"
+  },
+  {
+   "key": "(47a) (ny_it201.city_tax_schedule)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "9c1013eb0c51e74a4f7ddbafbbc43befad074107c2fe2792ed6628ec835d67e7"
+  },
+  {
+   "key": "47a",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "36362701a5772d7ac863363773248075c63e96ba2c510305b31f0a4652de951b"
+  },
+  {
+   "key": "48",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "26eb71d7147548c60668f4a429fd82c72f2e4f7037e5fd7c6fea8ca252143920"
+  },
+  {
+   "key": "49",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "ef30f11a23f321fcf89ea8971084866bc46d5b50ab752050a18419f5ba2a8f39"
+  },
+  {
+   "key": "50",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "d4d4765f52aa410996c49224826849e853d74dc72268aee7eacc09d8a246e56b"
+  },
+  {
+   "key": "51",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "277ca4a747dc958218d16eaff27feecf220f5ccd894ca48f62143cd798ebeff6"
+  },
+  {
+   "key": "52",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "0bbec0b392cc6f197d5d2bdf5db03affc22cbc56245866be12233ce3cb26508f"
+  },
+  {
+   "key": "53",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "a2d80f762a2203a9a493f5d0f05caad4d21a7d0ee1f8b10fc9699ba9d3362fde"
+  },
+  {
+   "key": "54",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "43bda09e43959e4e140e5b0dc45d431c788f899ebaa52d21b5721a5f528acb0e"
+  },
+  {
+   "key": "54a",
+   "record": "7d5197ec8ace0da8eaf93834872b534dd726291f0451e43aecab025e413adcd0",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; self-employment income other than Schedule C is refused on the federal return before New York is reached (a refused federal return is a refused New York return, interview/ny/2025.yaml targets_from): scope.schedule1 refuses partnerships and other Schedule K-1 income, farm income (Schedule F), church employee income and income as a minister; scope.other_income refuses \"wages or tips not on a Form W-2\" and \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\" (the salary of a U.S. citizen employed by a foreign government or an international organization comes without a Form W-2); person.se_screen refuses \"other self-employment income not on a Schedule C\" and income \"earned as a U.S. citizen employed by a foreign government\". Within the tool Schedule C is the only source, which ny_it201.mctmt_people reads (its note says so).",
+   "subject_key": "0c90c3731ff53769368e870de1873fbf8dd7c8699c65dfdb0d0f49cf543af497"
+  },
+  {
+   "key": "54b",
+   "record": "7d5197ec8ace0da8eaf93834872b534dd726291f0451e43aecab025e413adcd0",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; as line 54a: every source of self-employment income other than Schedule C is refused federally, so the condition's reading of Schedule C alone drops no Zone 2 amount the tool can reach.",
+   "subject_key": "b3f379d34d9a49c7886847055d79f1e843b248098c4490df8b1f1a33cc369e7d"
+  },
+  {
+   "key": "54c",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "8682969f01981852c393a60f93bad4fcfe561f5fb4deae153f12570d2eb13a5a"
+  },
+  {
+   "key": "54d",
+   "record": "2cf67c2a2a99485ae294523f619df1151e75592d1765c25bf42aa7e377345fca",
+   "status": "MATCH",
+   "subject_key": "fb46519e8acf648a8a1f3e608cab44339d2735f8a2ddea258e689efaecf4820c"
+  },
+  {
+   "key": "54e",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "8c26b42968927eacd145c0923d440b0515c75407ffe844e6c335aa7921adc48f"
+  },
+  {
+   "key": "55",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "aa76e5844980ab51cb2c30f512d2ef87d9e1a26ee4dc87c3f84b2bc3f0cb244f"
+  },
+  {
+   "key": "56",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "7691882a6664d710e3c91cb91e6908f2c23a0620f03b62a74fd44f667b9fffbd"
+  },
+  {
+   "key": "57",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "67cfa3bab461061f43316106a0992c87b9db129b9bc524c0affdb51edea1c9bb"
+  },
+  {
+   "key": "58",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "25230de5861d710bf089ab7aecf5b47b50b99bbab6f82065dfcb5943944b455f"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b1)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "9b7cc28af99367f6089b794a40dda36c833fb33054826c9e029c2a0348f41f32"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b2)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "2da74eb6845a174d3118d61e774da96d2925b5f3e5efe1283c304434389c97ec"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b3)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "8df3a2c85dd706cce9cf201c65dfe443f9d8b30fbf6e9844ff2f728cf24642b5"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b4)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "3b4860aa74097a4dd64c8cc31f72ad748857d430de2efade24ada26794000988"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b5)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "8b5364aadb0d20e948d5d512cefb4a2bc4dc526855307d0022790b07fc92ff2d"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b6)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "e2510ebf554e97c28afc2fb5b9fbed2676745af3247030236f5213167361bc1c"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.b7)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "34543ac9c1121d70a25c8af5d1534051cc45cf5c578caa19f6fe75ce6acc862f"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.top_product)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "41bafdd56121a937d9c42b0801a8bd2d7abb83a4ed2ad4ef4576a4392f6f8108"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.cap)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "15ef2e3f0571272c77fc8cd9915f4fcc6620acc58dfde6733757fb6156735b07"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.top)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "1772847b8636371593cd5d25d98df93fccfed20b9d0c7e21ecc6b29f12b25bae"
+  },
+  {
+   "key": "(chart) (ny_it201.sut.chart)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "9ee900358f69d130fcadf4f48a3581a99fa346cc557460a12822e19838e42b63"
+  },
+  {
+   "key": "59",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "8ac5db94336404e42ac8a8ccdef15d870a1b5ebe86f3722b9627b59065bedb98"
+  },
+  {
+   "key": "60",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "11d074947cbffa364c53a14c68288eb1260917cfc226c225eccb662f27d92365"
+  },
+  {
+   "key": "61",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "1c3b57dcf0e31db2affb41d7803261a17829ad8c8ad07db37f050b38c723e3f8"
+  },
+  {
+   "key": "62",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "865dae08c5a32b0b6a847de6df81e18de33f21d16cbb0962df95b99b579b2133"
+  },
+  {
+   "key": "63",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "0e4a2356b7bbb1013e0dfdfd9f9301b1523f7e0bf295a3ceead54c0640553aea"
+  },
+  {
+   "key": "64",
+   "record": "7d5197ec8ace0da8eaf93834872b534dd726291f0451e43aecab025e413adcd0",
+   "status": "MATCH",
+   "subject_key": "2b4f17101bcf45af6f370cc44632a535255a70b34c52b81c45e61c8e7cbd1750"
+  },
+  {
+   "key": "65",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "4970a1c7b707c1ef4bed31afc9514d0c1814573088e7580fb1fe1b0a4293e66b"
+  },
+  {
+   "key": "66",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "a3f50afdd2778a46e234fc9c87fe92c9c2ed1b4d2c9c592e5d69552cc55cbc58"
+  },
+  {
+   "key": "67",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "b9e74ae8e3668c4f7f18d3f5e6e8949b59ba3c354a64804eb019e972f8e218bd"
+  },
+  {
+   "key": "68",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "a176a04766a38f246af83992bdf74bb5f9837ab56f71a2f6fd0d39620d449a6d"
+  },
+  {
+   "key": "(69) (ny_it201.stc_income)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "122085aad86ca45e6da5965db564eddc23437fd4e6930f7c353aa5435a1ce48c"
+  },
+  {
+   "key": "(69) (ny_it201.stc_fixed_amount)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "45a24113aae18f73c61adc489abd33dbf3880f78f19787e4039e21639bf9dd28"
+  },
+  {
+   "key": "69",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "1e4874500c0216a1bf9d244fc26757b4e176e890dc395d5e07450fc009d374a7"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr_low)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "a98d191f4d2bbee991abc4cddd3b2e30b3975bb48c5abe276a2b19fe2b2e0e39"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr_excess)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "015aa9ee92be95ff5048cfa45d7b7ec2b43078735ca99ec0f7a40b4193160f01"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr_excess_product)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "01eb0a4957df0bb3fd91d5004ec4495cba3f62a045b4a959fce2a09ac51cf2f0"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr_base)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "96db00a95cd25a32cae0a1d8d2bf4541fba7b2bdaafa506ce9b1a08dde7dae85"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr_high)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "01eb0a4957df0bb3fd91d5004ec4495cba3f62a045b4a959fce2a09ac51cf2f0"
+  },
+  {
+   "key": "(69a) (ny_it201.stc_rr)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "37a6c5253c94fdb40c8fdb7224d691bbf3770e568adb9dec5663571434d41d09"
+  },
+  {
+   "key": "69a",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "9fab3341523323f058d46ab0c9dff048feb10754326b7c7bc5de5733e3468a23"
+  },
+  {
+   "key": "70",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "4ae89def4e28da5dad5b73d347d1f2d71d0f6674241c26a7cb2704dcdc84d03e"
+  },
+  {
+   "key": "70a",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "604d4cfc6402acf3e68601b1e0c04fd4676970e4a92d0474ce963ae85dd66ff6"
+  },
+  {
+   "key": "71",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "2f0049ff76a3d3eb488d044fa60fd878a655f3c86247923d9725e2b174ba00ed"
+  },
+  {
+   "key": "72",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "d3012fcbc35fa57a66fde00e607b2846929f0629011077ae21c07287f29efadb"
+  },
+  {
+   "key": "73",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "aa85e85ce49b8b9675cb082a470793c175c0e32cffbf09d403dcc7a79ee96c46"
+  },
+  {
+   "key": "74",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "1ba03f9800ca9b0af1a7ac71b50ebb07c058c010c3f4fdc334cb98fa27bc81c1"
+  },
+  {
+   "key": "75",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "c243071e750cc642849e55dd837ed4653785a3d55848a48695afaa3a3d6835c9"
+  },
+  {
+   "key": "76",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "fdfae44766fd5a1d3fff81f1ebdd484ac942859a935bcc88e77752032a5339a8"
+  },
+  {
+   "key": "(80)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "0dfda77893c9840f0730176080c261c5103e92787b8f4b32927ddb59f0e61f0e"
+  },
+  {
+   "key": "(81) (ny_it201.prepayments)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "22059c386e549bf2ec764dde729a0b67b6f3d1769ae762283e01d344243371e3"
+  },
+  {
+   "key": "(81) (ny_it201.safe_harbor_100)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "41606a899c842b0e75d98d9dd986b3bcd656a378ebd3757ddc4b1031b1d85cbb"
+  },
+  {
+   "key": "(81) (ny_it201.safe_harbor_110)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "92f197d15477d1e4fb3f65c1a4ee0719192825262db1a642d2ecda5f4fc2df8c"
+  },
+  {
+   "key": "(81) (ny_it201.safe_harbor)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "4d54cab889d066a6dfff280dbfa20ecbd67fea49cb895bfdb465e7a972a7e0d4"
+  },
+  {
+   "key": "81",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "4ec9dc1ee39205e33aea60875ae7a4dec4d4c702b6f536997d7700fe46cf4d9a"
+  },
+  {
+   "key": "82",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "73d3570a697e5e59ab7182e045f077743ee841b320ecc73ef74c304551b0480b"
+  },
+  {
+   "key": "(77)",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "2e050e2efe9aa3a91f4a9353052d931d9df8ec9af791d29509717250a24176b9"
+  },
+  {
+   "key": "77",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "450e5bd6b98d369051561b0f70e833986af97c4a5653c50bbb134bec769812ed"
+  },
+  {
+   "key": "79",
+   "record": "7d5197ec8ace0da8eaf93834872b534dd726291f0451e43aecab025e413adcd0",
+   "status": "MATCH",
+   "subject_key": "2b91588e40df9cfcb9eb9c5ed1c65d7ef2393bf11e34c166cfc371eaf99e1e7a"
+  },
+  {
+   "key": "78",
+   "record": "7d5197ec8ace0da8eaf93834872b534dd726291f0451e43aecab025e413adcd0",
+   "status": "MATCH",
+   "subject_key": "3b618093f9adb7b81828bfe0d7086396d71403c964a556ea17e7c6c3eae5d527"
+  },
+  {
+   "key": "78a",
+   "record": "7d5197ec8ace0da8eaf93834872b534dd726291f0451e43aecab025e413adcd0",
+   "status": "MATCH",
+   "subject_key": "f06833898c0b9a450c42a0d16a2fe38fdcc2c870dba6ab29de3578bee70e6474"
+  },
+  {
+   "key": "78b",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "194d8d8fa537d7b8f801ecb4c5b5f6229465bc8c4ae3cdfa0213608acbba7c34"
+  },
+  {
+   "key": "80",
+   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "status": "MATCH",
+   "subject_key": "be83e2e48c1af8408964925cc0ac4ccb5eaaa9c5c48949aa88d71c971cfb189b"
+  }
+ ],
+ "subjects": {
+  "C": "2f4cfc9d431b0aebac77b25abb69510a4a1c812968120d5bfa95309f7b5a70d8",
+  "H (count)": "0c8c87a494445eedac6b11398976eaa3cc695158ad2d7d62ac07fde93f319b62",
+  "1": "b82216fde0ece13b54ed01a359eff700095b60d0893c828617d2cfae397e68bd",
+  "2": "41a22296c262da3dae545c48ee34e0f1f178cb656d50b89b46b262cac4e8812b",
+  "3": "ec9f1eece2ab7d441953cd351e87aea12bb92fc22ece65ed1f45d255fdff67fe",
+  "4": "e1d3337da945c87972767038058bedf0ab6eef7a7fc10340c3622f29f03e99ff",
+  "5": "235dd3d6b2d7b9373f979dfef950e012f942a6e0a125603c4809ee690d712246",
+  "6": "90d88b945c84a4fa55deec45942df8ded46685519be1159e194d81131951a2bc",
+  "7": "82878111e894a0c2004d43356934f07bac5d7e8f2e7ee4dec372f85418870044",
+  "8": "6f160cf0e4c77dd6a181f583dafdb27927047a023c3bfc494088abace52fb537",
+  "9": "d97d6666d0cdb46cec05d3972a3e516f4fa1ebb03582f1d5bb4130fb7212d223",
+  "10": "4b80cf7fc52861a084bcdb382925656131fa1c39857710b601d457aab7552a9f",
+  "11": "727ca2184449f1657e5b53a38aa4398bc08085b62d016cb37247916ddd9ccb08",
+  "12": "0395ac8976a63d93a5362b42d969940f459e1dd2d3110f9d107b670d9d4a0c26",
+  "13": "4ec1d54b039900ad9ea6933aa4d08f174c02f00535843d7760c0f68736fb9c7b",
+  "14": "f2e176edc8c5592ca3ca6e1917bb32bb9bb18c62297265e75d27fda732d7f271",
+  "15": "6968d1daf494ca8e847660489861948862d0563ece3c7bd8f78c0ec38e50357d",
+  "16": "4879f5d4641ca8a93f394cec8939fc80fa2e91beb132f6cd83c33c4317e0fcac",
+  "17": "2dd88a1cd98337186525093ddb5df722d837e0ec48c8969c8ea5a4315e69d0bb",
+  "18": "68c2887413c1d5fabba2464c31aca95b30c51525af6b38f3ee0dfd0316c83a24",
+  "19": "b0aa3430c68b45677572a3564afe889901b01ac11bd0d8d7857c92c693075be7",
+  "(check)": "e7b435db21cbeac2bafd631ffe088b75c31a59e2a427e92c2a1bebb82a0f9b6f",
+  "20": "eb49d2043b7ab3f162c42a5509904ff35b61dcbe914297deb7e3c6a489bed467",
+  "21": "e01caf9bd3722539ce10fa1333b1a97b9cdf4008e32003289683113531d0876c",
+  "22": "b25b8e11fd3673b4378bf161581aa0e94220e828cbd8149e12dccd6258cffdd0",
+  "23": "9462caffa68f1e9961478ad54d8387e58fd23f5bec240a1d08fd58d271ed0759",
+  "24": "8c9a6ce3ad8284582054a2a18d11a3530b7d42fd1eceb4ffc225cf6f95bb5315",
+  "25": "ba0407c3752f220d0a58de49ad8ce27624bf03fab0477bcb3873e53f2eefdea7",
+  "26": "a1d30f523fb437a8c3c79bb0ed3698b61d70ded981c7f25ec3fea74d863adb7a",
+  "27": "ef46a52e6b14e33021b324fe149004c417bc54ee7800843188ba1fc4fba78e36",
+  "28": "10da1d6ef569ec0386da996fd8b7f172ca2ae495adb26b41e78e60e3b7548991",
+  "29": "2f8d71cff9a7f3c5f522ef1f106f1060930ddbc398d85ac73067f91fece1ac25",
+  "30": "40dc0624b2968f29c94dc17fefcc0c41e378546a1691f0ecdc91605f75018338",
+  "31": "55c1f5580047d968273a02c5f223c44c911eb6cd1ad6d6f3a0ec8ba21cf54147",
+  "32": "f594bf709a4c5f0afd174d32acc1943f10ecc5b329502bdd0a5c8af0954befc6",
+  "33": "7b96b7c994a8e9a524d0193eb82a7a320ca68169b98c81a7b8f3f5cf2cfaf050",
+  "(table) (ny_it201.std_deduction)": "0e8766c3c819e055d3d598b209b3e55c2835cd45cf104996847a451f3ecd7c3b",
+  "(table) (ny_it201.std_deduction_dependent)": "0fcde989e3b289b6a1609ebb5c9889f90e37528033509cc51d2e0c05e7da9310",
+  "34": "e0683f78f75a43ac73f781aa9b352ffa3c7311880dc48320cf8dd4e056e3cc8c",
+  "35": "654c67a879b75f8d7359e6f35b59180300efab6569e481f75c706e0fbbf6aaa0",
+  "36": "19baf153857b46aba808e84884fc62df0f4d214854e1aad69053202256f3f80c",
+  "37": "26fc983509b26bf9a2ce7a2f1ae231b2f728a34cabf782b09e4df36ded036819",
+  "38": "3dd5b97685a42f476fc377301827435eb8cd7a5c230cec8bf7870d08ea43e87c",
+  "(39) (ny_it201.tax_table)": "b64a324f7f9afbb628f2e2f41c6408e524670eb6d0ad50fbe49222a1e50f5730",
+  "(39) (ny_it201.tax_schedule)": "29bcfa6923dd528f07b2df3c79020d21f1b10af51361ba6ff0388b0179cead5a",
+  "(39) (ny_it201.tax_low)": "0a015228fd30bece32c79c19f6afec747232321c92a0e3d5260306dfec26d5ae",
+  "(39) (ny_it201.tcw.w1)": "209751d3fcc49f0250ab41532b45d7d79d5e5ef24e2cea693b9e1dd701c6d758",
+  "(39) (ny_it201.tcw.w7)": "7acb0d534c38913cb03ecde61832c65ebd652c8030662d459a990f420501a886",
+  "(39) (ny_it201.tcw.w12)": "4c6dddbcad460c7be5a3ef847fcf8b709b56ee20e76994534c4261fe0e867a1a",
+  "(39) (ny_it201.tcw.w2)": "16e9f9efa1f7d4e23d928f9202f078d977e61b42423719744261a7a2bcb11593",
+  "(39) (ny_it201.tcw.w3)": "ae6f9f70c57cf1699f633c678b908e9cb7c68062f11ad60628b69788dfc77ad7",
+  "(39) (ny_it201.tcw.w4)": "6f6dc9fbdaaf2e4f3aa0799855d21089d86015e09bc6aed7e15f0feae1cbb55f",
+  "(39) (ny_it201.tcw.w5)": "1565d255c220d38de72ef1c4742ab2716ac181ce2b4aec1fc08e6378dc9e6f7f",
+  "(39) (ny_it201.tcw.w8)": "f59c5c29efe4d708e3bfd1f648851591cb5db59a22360b13fce8c883dc303110",
+  "(39) (ny_it201.tcw.w9)": "286d36196c149e92eb67b769e5ee05adb2608bb5857e20df0b037156ebe551fe",
+  "(39) (ny_it201.tcw.w10)": "6c6b85a11476bb55731a12673d7e0ea694a70ab830bf9c721c5dff12b5f0ee14",
+  "(39) (ny_it201.tcw.w13)": "ee403b0f4ed53c4ab5f2933c9355ed5b611de9d0fccdee0b7725127b2bc5e8f7",
+  "(39) (ny_it201.tcw.w14)": "6f269b48b7cd75641edef9829ae8297b41ed728ba89ef391e103e51838b79ae9",
+  "(39) (ny_it201.tcw.w15)": "fb16da287b7d05c9c285e4e6fc8a18b52e72feed718690ea796812b28b28ceab",
+  "(39) (ny_it201.tcw.top)": "1f46d30522a768618abd742027e27833134cc916aa8f14e5ee3b951a0a6a103a",
+  "(39) (ny_it201.tcw.mfj)": "8745ec3fc6ca6a97e208b77942c31202757ec09601b5fbffd465f1622c002d42",
+  "(39) (ny_it201.tcw.single)": "8745ec3fc6ca6a97e208b77942c31202757ec09601b5fbffd465f1622c002d42",
+  "(39) (ny_it201.tcw.hoh)": "8745ec3fc6ca6a97e208b77942c31202757ec09601b5fbffd465f1622c002d42",
+  "(39) (ny_it201.tcw.by_status)": "1a5586a8598f3c464d57180e53c15ba5c242348b528a5fd9c29870fda42970d7",
+  "(39) (ny_it201.tax_high)": "bd49c6fe1d68ffdfea8d051d504637bb6e9e7f5f301fa55ed26e0bd341fd6e0b",
+  "39": "b01d0f039f30bbfd4500ef40ad8d36d40a2ddae40e12d5b786607aad96da3d22",
+  "(Note 1)": "c2232bfddb8e1503259af7718a9e339e36b83ae47bd9e757d31c74a52cf924b9",
+  "(column)": "bf4968e8b23937a8c339f0a41929770c2dcfa778a0ff2f693977a941806753f2",
+  "(table 2, column 1)": "762f3e134de576ae4a7d7e36d261483fe77cd0ded71299a39bc0acbd688c5ae1",
+  "(table 5, column 1)": "9a76d6b116983a75167d52314ac1b8a11cf0b9f64623a6b5dbdb03c710916c00",
+  "(table 2, column 2)": "e3b8c5f4ee650c6c9979251e44f0995708c3b6783525fe2aa69e75a9c7190a61",
+  "(table 5, column 2)": "98f57b50050445e4088ea45395f220970d885bf2fb4f83fa8609cd71e64e9166",
+  "(table 2, column 3)": "c0065b659f44792cbb22267cf0f0139978aa449da878303fa63db52001c63a30",
+  "(table 5, column 3)": "c87d8034ba11103a9521265578675773e292119163f61a632ee7ff38ae3c815c",
+  "(table 2, column 4)": "6b620c220df3e262905e3ec8b4350bcd567a3a30140b6af2bc5a3c5c803d6127",
+  "(table 5, column 4)": "34bcd83fa227f79777c4b654831ca93290f3b02a6de662bd780e048ace520076",
+  "(table 2, column 5)": "8fc9806b243480a8d1ee0b6044fe70bdaa91c217d7af11418251832236947edc",
+  "(table 5, column 5)": "905efca37e84043612097d2f19f2a774a692ff6c37e6b0247335ab1f4b25309b",
+  "(table 2, column 6)": "bd7f58622acd85318606d1abd7f753fa00ee1d32fabc2328ae9eae19fc818df9",
+  "(table 5, column 6)": "e0f61c2b9f928db7b6fc6ee5c1b97ebf85c36b570572855b2be4fbc4a0c3f650",
+  "(table 2, column 7)": "3a9116d65a58a930644aa6368e1d3d56f44729194bc666d58588a124c91f9b37",
+  "(table 5, column 7)": "942686ed0c2a8d9111f2bb3cfadb37edd76b5e90f947de37988083401508fab4",
+  "(table 2)": "2a900f8f5ce3803220cdc2431b06cf50ad4697ae3526385c3a46ac33041fe00d",
+  "(table 5)": "6c3e73bf37007dcde1f39ee96a559290a2f63947e359cce7876e46e142aaf363",
+  "(table 1)": "148b4499fd3728f81ff374338dbfdd86035beffb6ab3205ace66b04f5c86dc4d",
+  "(table 4)": "3bada7525cd785b2bc159137d40feb4a1d7e118d0bce8c44b5023bfe8e5edf6d",
+  "(40)": "5b7b0c67337989723dbdc71cc86b9847b5ed126547cbde9341d020162b85c8bc",
+  "(48)": "be511286c5c784fd8d72020f389fccbbb129504aed32cb20b32446ec3aac31cc",
+  "40": "e4964f3319baf2c14ebf16bf74edbe8f23a19839eb9dbcbb0a9849d016fc1245",
+  "41": "075d46d01371a5ddcd7001399bd6fd86e2fd64dee162009a078db661e35e5696",
+  "42": "38e7e54fbb206e02ea396710bf968ace785c38da186476e2966f9dfa145165a6",
+  "43": "0ce88c0c67a3d1a4c17d47409bdb3950bae1670b9c7809c9044bf8a22d001994",
+  "44": "3cd7a1684f99ef0f7b695ee4ef8035b18d064b2baec6f51ddfcd4495b1b6b0b3",
+  "45": "cf184c7edef7915511928ac48e8dd74b4029be254fa88bb36dafb9331625719b",
+  "46": "3a4b70ebaa11c78e77a31aa2289cbde65f222bd14dda945373f8def7d7c3ef1f",
+  "47": "596853293d9a5f37f7a8548f7af108d090cd5fd4b1d57abd17088a9002c59ca8",
+  "(47a) (ny_it201.city_tax_table)": "a7fa356eefc0bcfdec2a0c5004f0c51b39bd516823e6749b0e748546dc612c80",
+  "(47a) (ny_it201.city_tax_schedule)": "f307de98fbb6466a67c1e78bb7fe74deb1c590cd502323d04626dd2591d234cf",
+  "47a": "05e571c7eda86eea3ee225d8e9917433078f45ba8b9e0789163160f85dbceb24",
+  "48": "ff3fbd5ae6aa0580837b4020155b48891ac4370dfc4d1c7f02ee58f7e5fe684b",
+  "49": "8eeb7186e42775f3ec6e0cff74306a2a6a677e6cbbbaf6925fad91c0d8879ff3",
+  "50": "459b49222e30a4359e91a309b6f34d09333434b80aa65f4551682fbb70343c9c",
+  "51": "fc54bacc0650aca8b740602356f61d1cb244af2e71e5e0f980bcd6f99d549474",
+  "52": "7690406c9c23247e330709f2bf007a36a5eacf7431410f2da6d6535a0e50ebc4",
+  "53": "466cc37329c0a2b8c09874334c0fd61ac0401db563dd73b902beb25a6541458b",
+  "54": "7e1e452513fae92f3ff51828f5e7e174032e1bda227d2052f1aabc31af278e89",
+  "54a": "0cb2702f7081d5653cdb88626d5282009bd8cce70b70816a3230cd224991999b",
+  "54b": "7bc3a7ce99e59311d3b023163a612624395fac872f75e417b749422633a9b8d2",
+  "54c": "dc290918b70f6f5b9e9ec1999a3444b509104fd6616e8c4e2eb6fd2dddf86131",
+  "54d": "4b47ec5976c61ebbfc50b9ba99d0b9b0885a0f6976b916584125700949cafebc",
+  "54e": "363a24922a6e8efe1fe270587a0bb9349804e9bf92bb0a759a12c506911d2ac7",
+  "55": "90eac345d77c2d4bbf8b7041316a446d26651a61cf0f2492263ab98ee61da23b",
+  "56": "5ce2f693c23229dbcd06dcf713ab834255c141e446b9122f22e56357e6a7765a",
+  "57": "330b403b9a9df312a0f0956563620e80938aab53d39b40366b76edba6b7033c3",
+  "58": "f24e1e35714e29d46e688c7005d638ae0690988ed1643c63f154e34a352740e8",
+  "(chart) (ny_it201.sut.b1)": "2af0018d75dbbeb4bb04675d7af8db0c72aaaeb73f5c401501bdf9769107eecd",
+  "(chart) (ny_it201.sut.b2)": "e2a78e6ecedf4dcc1b849c4ffdab0aa624be0351922a2c30f0d19ddc16db5cd4",
+  "(chart) (ny_it201.sut.b3)": "2cc15c22c03d8be35b211be5c2d74cfab31df2c48eec1748a2f2bb5bfb437487",
+  "(chart) (ny_it201.sut.b4)": "a62ab9a69ee9b824675f1d81dfc23ca900c182e6929bf67ae87b78e76420c9f7",
+  "(chart) (ny_it201.sut.b5)": "56e73292419e3e87e81836ae91fd80fd0d02cf170d1c1fd41c1acf6b6cc46fa2",
+  "(chart) (ny_it201.sut.b6)": "53020f44a85ade725145672d5436f46866e1832cea48a58d7b5ae7aad3c09dc7",
+  "(chart) (ny_it201.sut.b7)": "74a19403e68438b64cb04189d8a9b669270bd305462bf78e2f312b67c9d234ea",
+  "(chart) (ny_it201.sut.top_product)": "73ea64cb38c487244314563ce9746ba8ba31454ddffd2a07261afe7cf23e7ebd",
+  "(chart) (ny_it201.sut.cap)": "4df4f43d41a4eb23cb9a8a1dad254cae661bb0b7a26cfe803d2a510506e4c74e",
+  "(chart) (ny_it201.sut.top)": "9af06e0ee4723749c98eb27fb954f505f8faf8afdfebf41c127de3e283950f4d",
+  "(chart) (ny_it201.sut.chart)": "20dcd6d7211eb560c45f956f59aa83f0dfd429ffad3808a2830adadbb0e9752d",
+  "59": "db33a8aff0191f7f63aac4d97e8e865ca77d87ab10105fdbc3e42ef6fac4ded5",
+  "60": "15c6c3523f008134cec04ca119978e35f294fdd72220059944267153f7f8bb43",
+  "61": "95411e1d41538d66f1651ea42f62ece8d3f365a6cdfe2dce6a0fcac46810e83f",
+  "62": "624417f0c5415c0364412c313e174c575d0f60f18edb757bafe6cef37871cf5a",
+  "63": "116e4c60c910ef8aa80ff6cf65e23c5fd7fe1b775e02b00d1655445396f6594f",
+  "64": "6969c713ff6bce01679a0879d435f94ebdc1053c4ab8423a21430e8c3ca7e38c",
+  "65": "9e31cadedda4bf6b230eb458cacc032a09ccd052221ec1304cd46c228ecdfd4a",
+  "66": "cf60c0a98c5c05ec04a370d0a624eb29cc64db709fb89aa6f704ec61e0df3e10",
+  "67": "bcdd51d96ce219344ab65342ea21ccff7ccdb239f4a7abc717d638e06674dba1",
+  "68": "36e1662b373cef13281406fd4929ac8d620a6a7e2e762aea223f0a7115776f18",
+  "(69) (ny_it201.stc_income)": "de1338d480c5b810312817bdaa6a5606ab07a34e682b98b42fca2f9d1e6755ce",
+  "(69) (ny_it201.stc_fixed_amount)": "80e4e2f2e9ac6f0a884ce75d1933e434933d02746b7c88132e94c79f57afb892",
+  "69": "eab359f7e0086463d5fcaac50379e2d8799d82ab7131acb7136de210fa909f62",
+  "(69a) (ny_it201.stc_rr_low)": "850101ea8025450936011493501f8c8efa608dd9cf54fe0943d3c676e9532167",
+  "(69a) (ny_it201.stc_rr_excess)": "041d753e26891e16b3f97e8147560e3393698cb0786be76d0b6ac8d725434354",
+  "(69a) (ny_it201.stc_rr_excess_product)": "e9b801362d2eef5ef0fd9a793e13900eb1b9bac6fdaf6761f0d902b70ad21f5b",
+  "(69a) (ny_it201.stc_rr_base)": "8b76330641a4c0450c8a5f2af2cb216187253609b2204a9e77a05a56d26997c2",
+  "(69a) (ny_it201.stc_rr_high)": "e9b801362d2eef5ef0fd9a793e13900eb1b9bac6fdaf6761f0d902b70ad21f5b",
+  "(69a) (ny_it201.stc_rr)": "8c5bf23f63c83a37aec3e27a01fb326a6b830b2f21ebc3d68a0bafddf2f9d2a9",
+  "69a": "92ae8fc1a0cc75b4c395ebd35847f61e4f3b9235041a621dfb5bfbc0f00a9f54",
+  "70": "c1b77882bfa478597244335ac2467c270683611a99bd0edc816291b96e9130cb",
+  "70a": "67cd8ff3610b8af9e0e65ce00d0a23f3618f35a40567f56c441582890222445e",
+  "71": "2ad8ca4d4503d4801c04677fcd31020bd46fafb81af8441cb7093d5c6f99d010",
+  "72": "87f84ef2d5d528ce3c4b59f019a1901dccd500c0776b0107e12c675b1c4f7f97",
+  "73": "3b771e9381d3b525af3fa86e0940c9cee195ae859a2c2c4684aec6a79d8e0d49",
+  "74": "f45d3e3ae95f61d7e71e605f811ebe4c2dfd15ae8508dde2fcd878c224e877f0",
+  "75": "500ad39c749f24a3aba113cc8dd750892edffd9022a235336300674b545beb3e",
+  "76": "3c50701dcacee9a92285d767e87be7f4d37df38776106854869debf46fadb3cd",
+  "(80)": "2b3063a9debbcc2519fe45d4fe608ae2ca2be17ed73c0512f63e2d3129115380",
+  "(81) (ny_it201.prepayments)": "ce53892b5d06e37d8f63e8fe2f2cb96ea011220f80be38ea75e34d57f8bb0771",
+  "(81) (ny_it201.safe_harbor_100)": "2113469f220b9d81c6751e5376e3edacd0e4e7d5dfd01ac8fdbcdb437983a976",
+  "(81) (ny_it201.safe_harbor_110)": "32ba9c529ca72a8e1d720511f5fcb8da09494f7709363cb044845b484bc02438",
+  "(81) (ny_it201.safe_harbor)": "e8d092202a2f419d209bc471182b66a14517c0301529042d56cc23f22adf0113",
+  "81": "5161eb3dc2812cdfe28c9d5d828de9f7d57425cc391b88d179e6c24ffd092c33",
+  "82": "a8b44b754142c484f8a5b288f15843a649fea7a6f96afeb173b4f2012c3963ad",
+  "(77)": "b620cd8da4d6b8bb0b16851566574d7b3c0ecfdbe41656a6a003565b43b50dcf",
+  "77": "39167c32d56a1003b448f8bfec8ae7098ccd9febb46ea4b93e75aa4c2e24a3b0",
+  "79": "4c3717f5ac7363450544036df39fddf2253e2ba454ce23b566a6163560d6ec0c",
+  "78": "f08ea0aa827d718b485cc1bb05fdc2ee50db17c837651617732c9a5828448c26",
+  "78a": "bf5b3713b257994c48ecef4d585529abbd38d8f935780e46d5cad6d80af9fd60",
+  "78b": "24d520cf3f6dc798998e1f90b5a40dd7f38843ae1de48b354a3da321cb38a4f6",
+  "80": "c3e95064e42b75d697f018c796f3a9261573236c0005b609cf5c2dedb9708bb5"
+ },
+ "__rest__": "eff327fea59ac4f2d56d292426436dddf9389d4a6daf829d71258d67638e5517"
+}

@@ -1,0 +1,38 @@
+{
+ "kind": "classm",
+ "form": "ltc",
+ "family": "claude",
+ "base": "218d059dc6dceb85e5ea25a2a064e1a8230c6a806e5ec5b4cb896017c6dfb87c",
+ "lines": [
+  {
+   "key": "case classm.ltc.1",
+   "record": "218d059dc6dceb85e5ea25a2a064e1a8230c6a806e5ec5b4cb896017c6dfb87c",
+   "status": null
+  },
+  {
+   "key": "classm.ltc.1 — person[taxpayer].sc[biz_a].ltc[self].limit",
+   "record": "218d059dc6dceb85e5ea25a2a064e1a8230c6a806e5ec5b4cb896017c6dfb87c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ltc.1 — person[taxpayer].sc[biz_a].ltc[self].amount",
+   "record": "218d059dc6dceb85e5ea25a2a064e1a8230c6a806e5ec5b4cb896017c6dfb87c",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.ltc.2",
+   "record": "218d059dc6dceb85e5ea25a2a064e1a8230c6a806e5ec5b4cb896017c6dfb87c",
+   "status": null
+  },
+  {
+   "key": "classm.ltc.2 — person[taxpayer].sc[biz_a].ltc[self].limit",
+   "record": "218d059dc6dceb85e5ea25a2a064e1a8230c6a806e5ec5b4cb896017c6dfb87c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ltc.2 — person[taxpayer].sc[biz_a].ltc[self].amount",
+   "record": "218d059dc6dceb85e5ea25a2a064e1a8230c6a806e5ec5b4cb896017c6dfb87c",
+   "status": "AGREE"
+  }
+ ]
+}

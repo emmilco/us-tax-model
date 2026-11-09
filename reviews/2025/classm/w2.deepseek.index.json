@@ -1,0 +1,208 @@
+{
+ "kind": "classm",
+ "form": "w2",
+ "family": "deepseek",
+ "base": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+ "lines": [
+  {
+   "key": "case classm.w2.1",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": null
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].wages",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].over",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].has_box10",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].box10_bad",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].dc_net",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].dc_benefits",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].has_g",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].g_bad",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].g_gov_part",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].g_counted",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].code_h",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].sav_listed",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[spouse].w2[emp_a].sav_deferral",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].wages",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].over",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].has_box10",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].box10_bad",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].dc_net",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].dc_benefits",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].has_g",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].g_bad",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].g_gov_part",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].g_counted",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].code_h",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].sav_listed",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_a].sav_deferral",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].wages",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].over",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].has_box10",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].box10_bad",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].dc_net",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].dc_benefits",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].has_g",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].g_bad",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].g_gov_part",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].g_counted",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].code_h",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].sav_listed",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.w2.1 — person[taxpayer].w2[emp_b].sav_deferral",
+   "record": "68a29e27935186e314b745fbbae1f83c4ecb3968772be30a62769035e53e8161",
+   "status": "AGREE"
+  }
+ ]
+}

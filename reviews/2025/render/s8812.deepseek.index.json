@@ -1,0 +1,366 @@
+{
+ "kind": "render",
+ "form": "s8812",
+ "family": "deepseek",
+ "base": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "c892c2c0e1b02dcdd5a08a39ae83fc1761e778e392dd3ad1235dee7b5a50bc5a"
+  },
+  {
+   "key": "2a",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "2d1f6efd20c9a6e2211d720ac3d03938a646b9673d2845251559ca01ae2c02e6"
+  },
+  {
+   "key": "2b",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "efbacd5e3f10e31ae76603d8285c248df89ec6a1b7a52785055fe6ea83728e6c"
+  },
+  {
+   "key": "2c",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "deef193866e1c6db88ddcb8569dc77184d6f61c3cbd345690d897048e2f638f1"
+  },
+  {
+   "key": "2d",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "78e0e5b2578dfae8ba36b222defe3baddd9df60b295996554fc755892d7a8768"
+  },
+  {
+   "key": "3",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "50af8522f012c0849cfa8031beafc2710a5fe762fd3c6f5e52c4c9ccacf05aed"
+  },
+  {
+   "key": "4",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "440fbc916b68bcb261bc1656c3ee5098345e41cd8c91e68e8785fcccb5cb9d61"
+  },
+  {
+   "key": "5",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "9979e6001d03094faa7442aea0543a6cd1e0c9abde1775cd4dfb86a2deb63a50"
+  },
+  {
+   "key": "6",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "5d74eb1f10eb8ce520eb2a8aaec319593775ea396845d1c11cb9b35db8fc8247"
+  },
+  {
+   "key": "7",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "d66eded7f7a2192175aab8412b1f400b2831236ffe021189049dea978b7cb572"
+  },
+  {
+   "key": "8",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "f40f6637344b0692f32c865ca3c55655eacd413cfb1e5cc63519d3c29f9ed83d"
+  },
+  {
+   "key": "9",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "4a5b42d79acf91c4c8c981d65b6b63a488c738f1f6b0446da65803f731d60555"
+  },
+  {
+   "key": "10",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "a8f3de1615e80c248af0ab98dc13b192afb357fcfa004eece248b0f86b0dba8b"
+  },
+  {
+   "key": "11",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "de6c830d7249abc98e8b600918b52349440db061c43cf499853a49fd9c68d127"
+  },
+  {
+   "key": "12",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "b01e52723df150a7e2ab591b7f07c95cca79e39dc9ae0739904c297979f84124"
+  },
+  {
+   "key": "(CLW A 1)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "f84466604f78d05141796878f43c4c38e21814f05f34779b277f41b353d0a846"
+  },
+  {
+   "key": "(CLW A 2)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "fe645f8db2ac5431f2a80cd09049b10fd4a14aae6193b20d5c0e3363480b60a8"
+  },
+  {
+   "key": "(CLW A 3)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "822c772b06b43e7f9152a748ce40984b3258774fdf3a586201c3da2c7d35fc8a"
+  },
+  {
+   "key": "(CLW A 4)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "33240e4a99a4da33999151dcdae4375f4ba49abd22aa8b685dd8e2eff552873d"
+  },
+  {
+   "key": "(CLW A 5)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "90e21b21cfd222bd96b653ca93e47c7c1bb2785a0e815306e071421f6d414a3b"
+  },
+  {
+   "key": "13",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "8a7c1953e06aa3108f3d5e70f8711c23f7e2278c942ea4509831eb9136d82f63"
+  },
+  {
+   "key": "14",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "34dd9fada454d7ee4917a4a51a954c65ef0a39969a751988b89ad17bb85d2dbc"
+  },
+  {
+   "key": "16a",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "990e8a396cf61b4e82d08ca75f959cf04d597b1d176167828ccb6178268e9605"
+  },
+  {
+   "key": "16b",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "e71ae582157d5e78eb501eae34723adc171b9f9dff853e396c7cc1920244e600"
+  },
+  {
+   "key": "17",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "6e7d03e8665a6e8ebd5ef70075c366f5815b3b1c9cd06105f48942d9b44d1a12"
+  },
+  {
+   "key": "18a",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; two points, both refused upstream. (1) i1040s8812 p. 7, Earned Income Chart, first row: a filer with net earnings from self-employment who will \"use either optional method to figure those net earnings\" uses \"the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC)\". The optional methods are refused upstream through person.se_screen (\"electing an optional method (Schedule SE Part II)\"), so that row never applies to a return the tool completes; the rendered English shows only line 18a's own operands. (2) The chart adds \"all of your nontaxable combat pay if you did not elect to include it in earned income for the EIC\" (p. 7); nontaxable combat pay is refused on both branches through s8812.combat_pay (at eic.step5_line4, (Step 5, 4), and at the Earned Income Worksheet line 1b, s8812.eiw_1b), so it is $0 on every return the tool completes. Previously judged MATCH. Re-checked this round: person.se_screen still names \"electing an optional method (Schedule SE Part II)\", and BUG-0401 changed only s8812.from_part_iia and s8812.part_iib_result (the combat-pay gate read through s8812.show_iia), not these lines. Project stands on the English.",
+   "subject_key": "bbeac03be7f9e7729e1713013dd736437d42e03834c616cf1608e73349efadad"
+  },
+  {
+   "key": "18b",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "ee5a899cdd1850d8989e4db6bc79fa8681ecba40a241f617333813cd034e39f6"
+  },
+  {
+   "key": "19",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "0e4b4be378049e291e34d53605eb4ee2012ab8b3e8156042ff9808c53c6a62f9"
+  },
+  {
+   "key": "20",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "73a2ac8c016ef146f1e909c80c2471ba03d314d30715e0ddafe55bf04400276d"
+  },
+  {
+   "key": "21",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040s8812 p. 9, Additional Medicare Tax and RRTA Tax Worksheet, line 16: \"Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812 and, if applicable, line 7 of Credit Limit Worksheet B\". Lines 11 and 15 are the Tier 1 RRTA amounts, outside the slice: person.rrta refuses the per-person Medicare totals that Form 8959 line 19 sums, and the Form 8959 lines refuse on f8959.unsupported (RRTA compensation), so a return with RRTA compensation refuses before this line. The rendered line cannot show that upstream refusal. Re-checked this round: person.se_screen still names \"electing an optional method (Schedule SE Part II)\", and BUG-0401 changed only s8812.from_part_iia and s8812.part_iib_result (the combat-pay gate read through s8812.show_iia), not these lines. Project stands on the English.",
+   "subject_key": "47404c2522eaf3ea3f3b81e8e00f2523c2fec7955200006e35a86796b7ae560b"
+  },
+  {
+   "key": "22",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "59e22253eb251fc809912251bed69ff741ad539b78c4bbfcba2f8c593de20b0c"
+  },
+  {
+   "key": "23",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "8a6075a8a66d63c67c4bbd9a4f3c62e8df42a7ac5eaaf54aa28005bd6eb51be6"
+  },
+  {
+   "key": "24",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "6c9cde19d968983c6fd2f56983686c7e563f966dd99532e6bca9570aa3e97f88"
+  },
+  {
+   "key": "25",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "d52f6c435c7290f912d9101a698fe3085d8d4a4837abb73c366e984d7c81c090"
+  },
+  {
+   "key": "26",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "12a075fef6aaf3351ef89bd594ce570b65567e37805219f9452ca58e2ee57a94"
+  },
+  {
+   "key": "27",
+   "record": "f78911b56fb362df93a3820638770b7907138a79114c790106ec4e585edad4d7",
+   "status": "MATCH",
+   "subject_key": "b2bfa4b1e3fd6afd27dc4502544a16a8771dec6ee52d50ff01039d413c7c0643"
+  },
+  {
+   "key": "(CLW B 1)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "52455373a2af422d927c940a03766af8a0cd3506f940a1ef370b33dcc15cfe57"
+  },
+  {
+   "key": "(CLW B 2)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "f7c867e4a47a217a279fe2349a58ecaa59eb135abb7ac60f9a78371aba2379bd"
+  },
+  {
+   "key": "(CLW B 3)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "d34f7ae65717993d7892b55a6bf9bf508cb753718a00bfa5789533fd8c413224"
+  },
+  {
+   "key": "(CLW B 4)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "9e3a9ec6858b5e500e9de7ba37345bb6f570957d0df80d338f27b08f169dd639"
+  },
+  {
+   "key": "(CLW B 5)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "bc197d5d7161606db2ab6b38b9fe3c783da81720d7aba05d482ae60800f956d9"
+  },
+  {
+   "key": "(CLW B 7)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "2272877706f08a8a4d70a6a06ce7407ffa749b12f13fa0b762dae1eb6af31e61"
+  },
+  {
+   "key": "(CLW B 8)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "6c0cc7f5a9f07d7451fe43e3fc960e6a4134ba6fff7540033a35ce552920634d"
+  },
+  {
+   "key": "(CLW B 9)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "c093ad753e0feaf292cd381fb6a2a781f4eaa37bcc4eeeef1248f5a3ca957721"
+  },
+  {
+   "key": "(CLW B 10)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "341bf3668e07e0abf4e084cbcfcd81ad7dbb3c26c7b0d2e16399d6b0c4dc0c5f"
+  },
+  {
+   "key": "(CLW B 11)",
+   "record": "f78911b56fb362df93a3820638770b7907138a79114c790106ec4e585edad4d7",
+   "status": "MATCH",
+   "subject_key": "b657eab7c52f64a517dbf454d9f94b3d978bb21f0fa0df779cd77e261e609069"
+  },
+  {
+   "key": "(CLW B 12)",
+   "record": "c2a3243bb5ab626947f571dc7f9ab075aaad0cc150aa975d450d03711d5cc167",
+   "status": "MATCH",
+   "subject_key": "fd55bb4217f4b83f7aeeab9354626e37d2f9e387b5dd65b1aa9f1ebbf1c297f6"
+  },
+  {
+   "key": "(CLW B 13)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "fdb2e45fd51c3b4bf06bd4e13c1da65cc68cdb00d7e8c854ee23289221a6ed70"
+  },
+  {
+   "key": "(CLW B 14)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "a1e741d7d760457bdf03e533733387929faa6b8de1916c8373d8c63447726829"
+  },
+  {
+   "key": "(CLW B 15)",
+   "record": "a3620dc40d5b411b06c808cecc825f86d459c1fb374502b85d2556e2d2ae2c86",
+   "status": "MATCH",
+   "subject_key": "afd1da4ae689bdb1bbe67731675f5227c0696bd0b138a11bc7485a8c0a4f3e94"
+  }
+ ],
+ "subjects": {
+  "1": "7326b0ede23793253aeeeade47d2c43e009205c0192dbdd0c1d958f8dd44aa3a",
+  "2a": "d1fcc389877a05b0756c7c4919aac049b27e83f1560da6d9e11ffe64b90e7483",
+  "2b": "1563bf489470d236088fb2a9ad1332d49fd46b804752c7de43190231df85d28a",
+  "2c": "7b4f2da3ff2ba4982f28656ed8ae6e63a398bf334b1b5989aa07ee537cbfc4fc",
+  "2d": "6279a391f192116b6acd435d78c8fa529aaaa6e9035e7cac6543a9d29c2ec71a",
+  "3": "73dc791905257534fc3829cf018fb9c2a95008c0a55dbc790efc65d23b94fa02",
+  "4": "02b0f1fbfb4e03d080e1eeb9647c800ac157fb3498f05808ba7260afc55db941",
+  "5": "89922cb460df83c00386d258e1f23b9ba853c8c3c30168b651d7881dfe6b340d",
+  "6": "d4c5ba49236970a171916fcffa08ae70bf83e0a166702b2bd1fc146ed95b79af",
+  "7": "0e60abb3224df532b80d65853890e6b847c08fdda426b60a7a7895b760828a0d",
+  "8": "75d3fc70baa509ae7803983ca33771ac22259200451a86b8b44a2f86f5f2b6aa",
+  "9": "b28611934fe6e9a3a9601b44af827b24519b9b8a81a30fd5e1714415b867e2d2",
+  "10": "450eb335ab8c83874426d412fd1b37bee195fdfb7a92bf920d4f372add1b55f2",
+  "11": "cdea0715f73ae09ee5b980fa7cb70ca49d017870ae895fe6e2648660aabf674e",
+  "12": "346f06b2c700a442b3300b4a584d05c91258d2403609b7e24fa21db4b914b777",
+  "(CLW A 1)": "e6b54d520041d1f70fcc4f4256eb0c6e2b1f0a7417f26bd2d34796bd3954e62e",
+  "(CLW A 2)": "375c701db3a6cf556b6ff2bd054953dd1b69b425d3e3c4c6177ad650f3536db8",
+  "(CLW A 3)": "ef46ad567c122dcf49dd97a13660c57e4627c844026b2c3e2641e321d7ebb808",
+  "(CLW A 4)": "7176da4d9a69dedddad071c6aa7cd24dac01eaaf8396211f6acabb5f50bcc7cc",
+  "(CLW A 5)": "00516e9f7b21fa67d2cd6872bddd9b3a0120c5994d02fab83119ad7fbd17676d",
+  "13": "9f59fdc6342b620a49c8441c8923996bd20e9c8a9ab13b444e052302ec4cd0b2",
+  "14": "9ac712ed60ca486b67357c72ff56a166f2322739c551016bcca3b4da9a120c41",
+  "16a": "2a3764402f20cd2711f331452596dde7e717d6bbbc9dcb2f355e3bb2ebcae1e9",
+  "16b": "aced70e4ce069173be68ac1bcda9cfa2a18dc01372d6550f2791d20a21a52631",
+  "17": "f3c95fb070d1d064b5bdcec6ccf1293d1e6a66134bbf753323849bf3c48e1f12",
+  "18a": "60a46fb52514a87cd6459a809dc168d5b7f819b8109822a669a59f93d8fc1a81",
+  "18b": "108d10bb3d6e99a0985e86ce024e04a78ae8c402ee7d6941f3ed19139e55945a",
+  "19": "a938c3653c318b4599c17535bb4172fffef69ab0b343c9e35d39a443021fb2de",
+  "20": "2d5f4d43c74f4dec083951ee2fbb37c26bbc6ad3fc7a8996d43e1e2f5e9f4430",
+  "21": "2a0861477943d3919fb36cc8302b430bb50c217b1c6eb61c248b12a3cde420fc",
+  "22": "b2fca12c5a87a5d84a63e0b46a153c2b67c9fe17c45839ad45443389c8b9ddcb",
+  "23": "e7ae9febe0c1ca4cc422ceca6fecb3f2fec01aba7326ba818932ae59ec124c4b",
+  "24": "666a64f83be62068e9813cdcf2778d2d5796cdfc3d3c2ebe4bfcc0cb4af956c7",
+  "25": "ff9aa336e9b52485a434321a3b88397c72897ea9639d47d4830e08178c7cc7dc",
+  "26": "fde38d4a1a2015c7ec5563147005591856245a407a5cef986a1b2b671bf8e402",
+  "27": "97b7ec92d5711b024a3b9a6ea7cb99368821c1593111b04d0c9b4f199360db3e",
+  "(CLW B 1)": "b54d8e122f1e97c5b01b6024c022230d3307378227b88e062d62637d3e5e752d",
+  "(CLW B 2)": "6a43c2ca6c9c89328924c89584effd381fdcb003bc6dc3c2aacc8f0506ca48dc",
+  "(CLW B 3)": "2b89fd64291f94510fb024018cfbffd184b466bdc4f9f8fdcef3e1c645e25c12",
+  "(CLW B 4)": "6d2914689f1d7f763b9e2624927615dbf240de7a0a7e089d5affc1e06b01434d",
+  "(CLW B 5)": "a7382350b2f71959a8d4f3df0ffb7cf38fa61054dd46593a1a86a0597505538d",
+  "(CLW B 7)": "710ceede7f3375afc12ae52b6b952c86c78a0eff79509bc82794ba7f4da3cab7",
+  "(CLW B 8)": "515d8552bc3a4116cfe9e5e8fbcd6d46078e54807d8bd59ebc2f1a7c0d6b8eb2",
+  "(CLW B 9)": "9e0e758cd12434831708fae51b5a1d47307ad337984bdcb948d61957ddfc4617",
+  "(CLW B 10)": "7de04f1a5d5f417e2c7895c1ccecaf12959b9925a632e3a4a4d5173382f46368",
+  "(CLW B 11)": "27edf37c08989d364bb47b371c187ce63aeddeab28ef6606d8574d3681588ba0",
+  "(CLW B 12)": "e08c871d4ee1cb5c102bd8275eaf6e8271398af8697f27a64dc3ef2f6529921d",
+  "(CLW B 13)": "8eef5300e32950531e9d619bdd474b48935d62f721425c854cf80d4cf82d6b33",
+  "(CLW B 14)": "f5c339a814703507f15d3bd03deaa1dadfb3877559e69ca7b0599c6d264a3d47",
+  "(CLW B 15)": "c1c5ab4105bf889b691bafd1e18a6e36437a1e8a4f50ae290ae0904f1d718f6b"
+ },
+ "__rest__": "2abbd6b34d56633a21ef96dface3fb6db6aca1c0cfb3f64517fea5a545f499ff"
+}

@@ -1,0 +1,73 @@
+{
+ "kind": "transcription",
+ "form": "g28",
+ "family": "claude",
+ "base": "396c47472f2609e027ab5ecdd0b7e587699a50c0852c03166c3572c936b91fb4",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1",
+   "record": "396c47472f2609e027ab5ecdd0b7e587699a50c0852c03166c3572c936b91fb4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 1. executable-triage-v2 (`reviews/2025/transcription/triage/g28.json`; 1,495 fixtures, 500 generated returns seed 20261026, 40 partial bases, 0 partial records; 1,995 comparisons per line): 1836 of 1995 agree; incomplete: 33 project-unknown; refused: 113 project-refuses, 13 project-unknown. The project line copies div.screen, a zero that refuses through div.section1202 (i1040sd p. 8, \"Gain from Form 1099-DIV and Alternative Minimum Tax\"), div.amt and div.unsupported (f1099div, Instructions for Recipient), cited distribution scope screens; the candidate enters zero (a constant, or arithmetic on its own zero lines). Every project refusal is on a return the project refuses; every project-unknown is on an incomplete fixture or generated return (the Form 1099-DIV screen answers that div.screen reads are unanswered there) or a refused one. No completed return differs, and the candidate never shows a nonzero amount, so its missing shown_when has no effect on this line. Form 8949 Part II collectibles are refused per sale by sales.special (constructed on classm.g28.2: sales[s1].special true refuses sd.line17, g28.line7 and f1040.line7a), so in scope line 1 is zero, the candidate's value.",
+   "subject_key": "ad0d74128a1bb06a1e71d5c230e50f3c3cc9a9852ea170f5f6ef7f5fe190cc42"
+  },
+  {
+   "key": "2",
+   "record": "396c47472f2609e027ab5ecdd0b7e587699a50c0852c03166c3572c936b91fb4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 2. executable-triage-v2 (`reviews/2025/transcription/triage/g28.json`; 1,495 fixtures, 500 generated returns seed 20261026, 40 partial bases, 0 partial records; 1,995 comparisons per line): 1836 of 1995 agree; incomplete: 33 project-unknown; refused: 113 project-refuses, 13 project-unknown. The project line copies div.screen, a zero that refuses through div.section1202 (i1040sd p. 8, \"Gain from Form 1099-DIV and Alternative Minimum Tax\"), div.amt and div.unsupported (f1099div, Instructions for Recipient), cited distribution scope screens; the candidate enters zero (a constant, or arithmetic on its own zero lines). Every project refusal is on a return the project refuses; every project-unknown is on an incomplete fixture or generated return (the Form 1099-DIV screen answers that div.screen reads are unanswered there) or a refused one. No completed return differs, and the candidate never shows a nonzero amount, so its missing shown_when has no effect on this line. Code Q section 1202 exclusions are refused by sales.special and div.section1202, so in scope line 2 is zero.",
+   "subject_key": "4cafb4f2bf2ee3574e2c7d8aea831a8686effb6a57fc7f7569b78ebb6ee08951"
+  },
+  {
+   "key": "3",
+   "record": "396c47472f2609e027ab5ecdd0b7e587699a50c0852c03166c3572c936b91fb4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 3. executable-triage-v2 (`reviews/2025/transcription/triage/g28.json`; 1,495 fixtures, 500 generated returns seed 20261026, 40 partial bases, 0 partial records; 1,995 comparisons per line): 1894 of 1995 agree; incomplete: 5 project-unknown; refused: 95 project-refuses, 1 project-unknown. The project line copies div.screen, a zero that refuses through div.section1202 (i1040sd p. 8, \"Gain from Form 1099-DIV and Alternative Minimum Tax\"), div.amt and div.unsupported (f1099div, Instructions for Recipient), cited distribution scope screens; the candidate enters zero (a constant, or arithmetic on its own zero lines). Every project refusal is on a return the project refuses; every project-unknown is on an incomplete fixture or generated return (the Form 1099-DIV screen answers that div.screen reads are unanswered there) or a refused one. No completed return differs, and the candidate never shows a nonzero amount, so its missing shown_when has no effect on this line. Forms 4684, 6252, 6781 and 8824 are refused by sd.other_forms (constructed: sd.other_forms true refuses sd.line17, g28.line5, g28.line7 and f1040.line7a), so in scope line 3 is zero.",
+   "subject_key": "3be8574f8fcd7787773e64cbf7c1060b6149ece739fd2ed9d4163f752018c1f4"
+  },
+  {
+   "key": "5",
+   "record": "396c47472f2609e027ab5ecdd0b7e587699a50c0852c03166c3572c936b91fb4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet\"; f1040sd p. 2, line 17, No: skip lines 18 through 21. executable-triage-v2 (`reviews/2025/transcription/triage/g28.json`; 1,495 fixtures, 500 generated returns seed 20261026, 40 partial bases, 0 partial records; 1,995 comparisons per line): 1884 of 1995 agree; completed: 3 candidate-shows-skipped; incomplete: 4 candidate-shows-skipped, 4 project-unknown; refused: 10 candidate-shows-skipped, 89 project-refuses, 1 project-unknown. The candidate declares shown_when null, so it shows a nonzero amount on a line the project hides because Schedule D line 17 is No (worksheet not reached); a nonzero amount shown on a line the filer never reaches is a defect of the side that produces it (README). The 3 completed-return witnesses, each with sd.line17 No (evaluated for classm.clcw.2, classm.tcw.5 and classm.f5695.2) and the project hidden, candidate amount in parentheses: classm.clcw.2.deepseek (−$9,376.00), classm.clcw.2 (−$9,376.00), mutation.t2.no_senior_part5 (−$9,376.00). T-140: the candidate now copies sd.line14 held negative (its note: \"held as a negative amount, the same as Schedule D line 14\"), the project's expression; triage records no value difference on this line or on lines 6 and 7 that combine it, where Stage 20 and earlier rounds had sign-convention differences. Only shown_when differs. The remaining project-refuses and project-unknown differences are on refused or incomplete returns only, at the cited Schedule D and Form 1099-DIV screens (scope).",
+   "subject_key": "342a746e8c6ec87f0685baf9b67e958f7c45674cd36f3490e9a750906c7ca3b6"
+  },
+  {
+   "key": "4",
+   "record": "d83bfa1438e24b4e9b56a375b098068657d1d1a6f27a79d261f897f67c2652c7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the candidate reads div.box2d whatever box 2a is above zero, so it needs that answer where the source does not: f1099div p. 5, \"Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain\": with box 2a zero, box 2d is zero. The project reads the gate line div.box2d_if_capital_gain, which takes div.box2d when box 2a is above zero holds and zero otherwise; the interview asks div.box2d only then (gated_by div.box2d_if_capital_gain), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane. Form 2439 and Schedule K-1 amounts are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\"), as the earlier rulings of this line.",
+   "subject_key": "ebf0a93281d79c94d33461335ec61018efe8529ba5d696e53038e316adeae4e7"
+  },
+  {
+   "key": "6",
+   "record": "396c47472f2609e027ab5ecdd0b7e587699a50c0852c03166c3572c936b91fb4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet\"; f1040sd p. 2, line 17, No: skip lines 18 through 21. executable-triage-v2 (`reviews/2025/transcription/triage/g28.json`; 1,495 fixtures, 500 generated returns seed 20261026, 40 partial bases, 0 partial records; 1,995 comparisons per line): 1814 of 1995 agree; completed: 34 candidate-shows-skipped; incomplete: 22 candidate-shows-skipped; refused: 1 candidate-refuses, 87 candidate-shows-skipped, 36 project-refuses, 1 project-unknown. The candidate declares shown_when null, so it shows a nonzero amount on a line the project hides because Schedule D line 17 is No (worksheet not reached); a nonzero amount shown on a line the filer never reaches is a defect of the side that produces it (README). The 34 completed-return witnesses, each with sd.line17 No (evaluated for classm.clcw.2, classm.tcw.5 and classm.f5695.2) and the project hidden, candidate amount in parentheses: classm.clcw.2.deepseek (−$24,626.00), classm.clcw26.2.deepseek (−$10,701.00), classm.s3.4.deepseek (−$2,004.00), classm.f8962.1.deepseek (−$33,531.00), classm.f8962.3.deepseek (−$62,606.00), classm.f5695.2.deepseek (−$63,344.00), classm.aqee.1.deepseek (−$33,531.00), classm.eic.4.deepseek (−$33,531.00), classm.f8962.1.gpt (−$33,531.00), classm.f8962.3.gpt (−$62,606.00), classm.asset.1 (−$54,825.00), classm.f5695.2 (−$63,344.00), classm.f5695.7 (−$33,531.00), classm.ltc.1 (−$1,657.00), classm.s3.4 (−$2,004.00), classm.clcw.2 (−$24,626.00), classm.clcw26.2 (−$10,701.00), classm.f1095a.1 (−$63,344.00), classm.aqee.1 (−$33,531.00), mutation.t2.no_senior_part5 (−$24,626.00), mutation.eic.qss_one_child (−$33,531.00), generated 20 (−$35,266.82), generated 73 (−$49,618.41), generated 124 (−$79,094.51), generated 179 (−$32,245.92), generated 199 (−$12,317.62), generated 230 (−$49,723.95), generated 277 (−$14,612.14), generated 287 (−$57,137.90), generated 328 (−$33,719.92), generated 363 (−$6,080.82), generated 403 (−$23,064.52), generated 448 (−$44,873.61), generated 487 (−$12,435.58). The arithmetic (the smaller of Schedule D line 7 and zero) matches the project's. The remaining project-refuses and project-unknown differences are on refused or incomplete returns only, at the cited Schedule D and Form 1099-DIV screens (scope). The one candidate-refuses witness is the income package's new fixture sales.refuse.wash_over_loss: the candidate's line reads Schedule D, which refuses at the new gate sales[a].wash_bad (i8949 p. 10, code W, \"enter the amount of the nondeductible loss\"), while the project line is hidden on that refused return; both refuse the return at the same gate, so it is not an amount difference and shows the gate refuses what it should.",
+   "subject_key": "10d5b322a8f6c16a8018d22c9fbad47a7e854caf6ea8e118f3b616dcdb2fd352"
+  },
+  {
+   "key": "7",
+   "record": "396c47472f2609e027ab5ecdd0b7e587699a50c0852c03166c3572c936b91fb4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet\"; f1040sd p. 2, line 17, No: skip lines 18 through 21. executable-triage-v2 (`reviews/2025/transcription/triage/g28.json`; 1,495 fixtures, 500 generated returns seed 20261026, 40 partial bases, 0 partial records; 1,995 comparisons per line): 1945 of 1995 agree; completed: 1 candidate-shows-skipped; refused: 1 candidate-refuses, 12 candidate-shows-skipped, 36 project-refuses. The candidate declares shown_when null, so it shows a nonzero amount on a line the project hides because Schedule D line 17 is No (worksheet not reached); a nonzero amount shown on a line the filer never reaches is a defect of the side that produces it (README). The 1 completed-return witnesses, each with sd.line17 No (evaluated for classm.clcw.2, classm.tcw.5 and classm.f5695.2) and the project hidden, candidate amount in parentheses: classm.tcw.5 ($1,930.00). The sum of lines 1 to 6 floored at zero matches the project's; the only completed witness is classm.tcw.5, where line 4 is shown. The remaining project-refuses and project-unknown differences are on refused or incomplete returns only, at the cited Schedule D and Form 1099-DIV screens (scope). The one candidate-refuses witness is the income package's new fixture sales.refuse.wash_over_loss: the candidate's line reads Schedule D, which refuses at the new gate sales[a].wash_bad (i8949 p. 10, code W, \"enter the amount of the nondeductible loss\"), while the project line is hidden on that refused return; both refuse the return at the same gate, so it is not an amount difference and shows the gate refuses what it should.",
+   "subject_key": "76b20b929e71e5262a81dfbcf6fef94a52c0f88f1d80a14cbc64aeafcd44bfd6"
+  }
+ ],
+ "subjects": {
+  "1": "ded8cfabb214c0ae25316327026ff5eefd4845b568acd38f115a0ed23bc5d2b8",
+  "2": "54081a67c131d07dfdfdf91026f4131b62d7805ee499cd0344138a1115eb4e6d",
+  "3": "bae9f955798177653ecb7add521120d54a05aea3b2c4a8377f1b989de63f8719",
+  "5": "b10f962a71c65e05715fc4cd20b65efec63f314a8e45d95d080a360dc22a2e01",
+  "4": "692228b299b96b7c06236aa18b89650f69fd58eb6769302a63b307ebecf87498",
+  "6": "e1b1091ff4f7c8166f5d6d0df9062f9e9e4815d91ac2f0b49b5b1ba91c3d2597",
+  "7": "858fe3a88112a808c7d459724a56f2814697ae5e77da626a5d203c2af46a9f0f"
+ },
+ "__rest__": "6f27d8ba7b5cb1d290db16d572164b3d893e8bdebd7a1c9afff69b2b985646db",
+ "foreign": {
+  "4": "e8168933d7e0858e8b24a58966c6f246b50f24f4d3423d32696670e4684add17"
+ }
+}

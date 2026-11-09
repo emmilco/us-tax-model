@@ -1,0 +1,120 @@
+{
+ "kind": "render",
+ "form": "asset",
+ "family": "claude",
+ "base": "29fb98fc5ef41cf40f29429a9231b56dba6721ca4d69be28a6cf0bdc6a0e9d8e",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "(a)",
+   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "status": "MATCH",
+   "subject_key": "251b64df2888d7eec8926597d76466d9b5a4b726548d7498bcc5f22c36a4da6f"
+  },
+  {
+   "key": "(d)",
+   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "status": "MATCH",
+   "subject_key": "3714b4681bdbea1cd1b3ea1af0e7a7e94479b33728535e2222b8391d7dfd789e"
+  },
+  {
+   "key": "(screen) (asset.screen)",
+   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "status": "MATCH",
+   "subject_key": "57bbf4242d63a813eb3e0d010a8e115faf13b1a11c0776e8343144129b43596e"
+  },
+  {
+   "key": "(b)",
+   "record": "3bb68a4f714c9dea8a41a848ef9a70b2dc1ad8940de8d70719c12e5487ef8ae2",
+   "status": "MATCH",
+   "subject_key": "5c114833b2dbb22f6c6ac937dfaa276d7b21fe97f99491357414e63222b06bd8"
+  },
+  {
+   "key": "(c)",
+   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "status": "MATCH",
+   "subject_key": "0821f071012fd141ba57b6317ceef954559a3a40a703f8c3621a8363acc468c8"
+  },
+  {
+   "key": "6(c)",
+   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; same objection as the earlier rulings. i4562 p. 2 lists \"Single purpose agricultural (livestock) or horticultural structures\" as section 179 property; such a structure is Table B-1 class 01.4 (p946 Appendix B, Agriculture), which tables/2025/class_lives.yaml maps to outside, so asset.outside (\"The asset class is outside this tool\") refuses it before any election is figured. The petroleum storage facility, the other item the earlier finding named, is in the question's list (now its own bullet). The omission changes no amount the tool computes. Project stands.",
+   "subject_key": "c71512a244c0c806e7b92b5458ae9c940c87772677a2a93ffd1820483af0b50c"
+  },
+  {
+   "key": "(screen) (asset.bonus_same)",
+   "record": "29fb98fc5ef41cf40f29429a9231b56dba6721ca4d69be28a6cf0bdc6a0e9d8e",
+   "status": "MATCH",
+   "subject_key": "27a1dc845a4fb4c5fc5adf8e3e25492ec323e060f87b62d2c7946597a72bc5df"
+  },
+  {
+   "key": "14",
+   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "status": "MATCH",
+   "subject_key": "09a70f81e97595b1a526ba312c20abf784cb9475f39d8fa75deb5818cf386b77"
+  },
+  {
+   "key": "25",
+   "record": "29fb98fc5ef41cf40f29429a9231b56dba6721ca4d69be28a6cf0bdc6a0e9d8e",
+   "status": "MATCH",
+   "subject_key": "7be801003da35365a22af5bbc047dd2fe73dd05d9824e28123bad0f3f4dd0ad4"
+  },
+  {
+   "key": "26(i)",
+   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "status": "MATCH",
+   "subject_key": "83a4e642b69f3a8b2cbc5ccf3548d422cd323af3313977e9436bfc41c258730b"
+  },
+  {
+   "key": "19(c)",
+   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "status": "MATCH",
+   "subject_key": "aec9f506888c151719484fb786217cf8e4fc1bd48e92a54092dc6b659135b21a"
+  },
+  {
+   "key": "19(g)",
+   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "status": "MATCH",
+   "subject_key": "61a9d57fb7b50fa596d4e5e4ddf0b676212255b132af44dc771e7c2ce23763a8"
+  },
+  {
+   "key": "(e)",
+   "record": "29fb98fc5ef41cf40f29429a9231b56dba6721ca4d69be28a6cf0bdc6a0e9d8e",
+   "status": "MATCH",
+   "subject_key": "24ada8f78293d0f6e299735a0fa5a52e0f4124d01bb007baa88be19893ec5853"
+  },
+  {
+   "key": "17",
+   "record": "1783761f752b75c5935ee3e1ec519964e3eb668dced2fd4f3644235eb12d14e3",
+   "status": "MATCH",
+   "subject_key": "b3d1e824ae61d4e2a6317a80c3bed7410ad9647a7a016a708a873f742f110fbf"
+  },
+  {
+   "key": "26(h)",
+   "record": "3bb68a4f714c9dea8a41a848ef9a70b2dc1ad8940de8d70719c12e5487ef8ae2",
+   "status": "MATCH",
+   "subject_key": "5b9afc4d8ef78c12983e3c6014a1eaa8c72d25b2cfe9c56e57a5907afbfc3124"
+  }
+ ],
+ "subjects": {
+  "(a)": "e7ddc5c08fd4fdfb949997e3fd3aaa39b70c52428a85a8e87272ea5c37bda358",
+  "(d)": "b92ddb258734975b9f3862acfd79b1bee56e7844fd13894f7e35d6be7c8d8e54",
+  "(screen) (asset.screen)": "403bea3751c53fd013b85f53589e47ad6da348c6eee96cc150f54b347c4d6009",
+  "(b)": "11c2b67acc1cf618b82feacbaddb645adda0fb28a8d1efc758cf7952f6f6cfd8",
+  "(c)": "d73586c607b01c97ecdfab67f565e7b67aaf3ed18e11df61d97bab267ebb8f74",
+  "6(c)": "084dddb1873a0f47ceb66432c36955190ec9664cc738b5f474619c191e8ecce7",
+  "(screen) (asset.bonus_same)": "2f34e9e3885fb3fa0b0ec17dc96999e5445e98b80c54ddbaaa89064cca8fe4ea",
+  "14": "27d44495cfd6497c4dfdcdc5e24b593b76bb784200fd9031e9e335cfeb45e781",
+  "25": "4b426ebe7b78071c2a8116ed219a8177a4e50a5d5cd1964666a8cbc004017fea",
+  "26(i)": "972bf999bb72cb2de985955f855b6d9c9bae4e980b417a580fd7fd6d51ef6d5a",
+  "19(c)": "5b66752b589f0971467311e10fed998f21c63678fcf35bcdfbd9884586abec92",
+  "19(g)": "03bbe7b036774ffb313bb79f78b8a4f71d9012e5e129191f610ef58659e0be41",
+  "(e)": "58c601084fe91483f688a5198d983bff68af4e5e06906923295c9f5e6a2925d6",
+  "17": "6a34fb433b328c67729c214a1ec1207019105c47a5d049f10f94ffc4706a75c5",
+  "26(h)": "c177f61a98dd2618c32a9fb4836533b01729248ee90a47cec70859fcd50cecd9"
+ },
+ "__rest__": "f636cbc4d4d8b77135b4fed9b7130553c8aeaa64b4580beda19da8d4f7a1c38a"
+}

@@ -1,0 +1,22 @@
+{
+ "kind": "transcription",
+ "form": "ny_city_rs",
+ "family": "claude",
+ "base": "b2fc66bf7f96bb87e19e7f5186b64a9d1579620e1f4b855877f6daa3e1af8b8e",
+ "lines": [
+  {
+   "key": "tax",
+   "record": "b2fc66bf7f96bb87e19e7f5186b64a9d1579620e1f4b855877f6daa3e1af8b8e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\"; p. 2, \"Increase amounts that are 50 cents or more to the next dollar.\"). Evaluated on a grid of whole-dollar amounts for every status (scratch evaluator, params/ny/2025.yaml): the reply differs from the project only by the cents of the band product, never more than 50 cents; the bands' \"over\" amounts equal the previous bands' upper limits, so the reordered guards select the same band.",
+   "subject_key": "51a2b4f834c8037e211582ce993dc567e601fd55ea2ff4416c16925cd0dae9b5"
+  }
+ ],
+ "subjects": {
+  "tax": "1375f6457f620b10ddc65ea24a408dfb6d075a751a59f7e4d39a2a8e8f25a1c5"
+ },
+ "__rest__": "c7c692de84a1a626df677d175d6b407414322e8610a485411895dfd2800f052c",
+ "foreign": {
+  "tax": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

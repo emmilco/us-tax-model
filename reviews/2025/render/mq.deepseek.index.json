@@ -1,0 +1,43 @@
+{
+ "kind": "render",
+ "form": "mq",
+ "family": "deepseek",
+ "base": "f1052b16c34d218e82a8694cac2fed161d9fcd316166fb6dca0908ee56ce22fc",
+ "lines": [
+  {
+   "key": "q4",
+   "record": "f1052b16c34d218e82a8694cac2fed161d9fcd316166fb6dca0908ee56ce22fc",
+   "status": "MATCH"
+  },
+  {
+   "key": "total",
+   "record": "f1052b16c34d218e82a8694cac2fed161d9fcd316166fb6dca0908ee56ce22fc",
+   "status": "MATCH"
+  },
+  {
+   "key": "five",
+   "record": "f1052b16c34d218e82a8694cac2fed161d9fcd316166fb6dca0908ee56ce22fc",
+   "status": "MATCH"
+  },
+  {
+   "key": "two",
+   "record": "f1052b16c34d218e82a8694cac2fed161d9fcd316166fb6dca0908ee56ce22fc",
+   "status": "MATCH"
+  },
+  {
+   "key": "q4x5",
+   "record": "f1052b16c34d218e82a8694cac2fed161d9fcd316166fb6dca0908ee56ce22fc",
+   "status": "MATCH"
+  },
+  {
+   "key": "totalx2",
+   "record": "f1052b16c34d218e82a8694cac2fed161d9fcd316166fb6dca0908ee56ce22fc",
+   "status": "MATCH"
+  },
+  {
+   "key": "applies",
+   "record": "f1052b16c34d218e82a8694cac2fed161d9fcd316166fb6dca0908ee56ce22fc",
+   "status": "MATCH"
+  }
+ ]
+}

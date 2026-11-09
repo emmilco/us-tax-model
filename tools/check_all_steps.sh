@@ -131,6 +131,7 @@ step siblings_check python3 tools/siblings.py --check "$@"
 step adapter_contracts python3 tools/transcription/adapter_contracts.py "$@"
 step classm_skipped python3 tools/transcription/audit_skipped.py "$@"
 step compare_families python3 tools/transcription/compare_families.py "$@"
+step review_store python3 tools/transcription/review_store.py check
 step check_logs python3 tools/transcription/check_logs.py "$@"
 step check_table_logs python3 tools/transcription/check_table_logs.py "$@"
 step citations python3 tools/citations.py --strict "$@"
@@ -172,6 +173,7 @@ step ny_limits python3 tools/check_limits.py --jurisdiction ny "$@"
 step ny_tax_table python3 tools/extract_ny_tax_table.py --check "$@"
 step ny_predict_self_test python3 tools/ny_predict.py --self-test
 step ny_review_tools python3 tools/transcription/test_ny_review.py
+step ny_review_store python3 tools/transcription/review_store.py --jurisdiction ny check
 step ny_check_logs python3 tools/transcription/check_logs.py --jurisdiction ny "$@"
 step ny_completeness python3 tools/transcription/check_completeness.py --jurisdiction ny "$@"
 step ny_screen_currency python3 tools/transcription/check_screens.py --jurisdiction ny "$@"

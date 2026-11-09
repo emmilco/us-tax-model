@@ -1,0 +1,248 @@
+{
+ "kind": "classm",
+ "form": "f1095a",
+ "family": "claude",
+ "base": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+ "lines": [
+  {
+   "key": "case classm.f1095a.1",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": null
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_jan",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_feb",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_mar",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_apr",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_may",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_jun",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_jul",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_aug",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_sep",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_oct",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_nov",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].a_dec",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_jan",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_feb",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_mar",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_apr",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_may",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_jun",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_jul",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_aug",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_sep",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_oct",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_nov",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_dec",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].yr_a_uniform",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].line33a",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].yr_b_uniform",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].line33b",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].line33c",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_a].b_used",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_jan",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_feb",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_mar",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_apr",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_may",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_jun",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_jul",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_aug",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_sep",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_oct",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_nov",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].a_dec",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].yr_a_monthly",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].line33a",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].yr_c_monthly",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].line33c",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.f1095a.1 — f1095a[mkt_b].b_used",
+   "record": "a1ef62419c396da8736926b08c9d674a4aef1fd4f43e85513d616c4fcc65cc71",
+   "status": "AGREE"
+  }
+ ]
+}

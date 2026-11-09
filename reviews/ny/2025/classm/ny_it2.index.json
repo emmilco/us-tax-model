@@ -1,0 +1,23 @@
+{
+ "kind": "classm",
+ "form": "ny_it2",
+ "family": "claude",
+ "base": "e0cc0688f3e73a2ae3522186fdd9bd224a3fda25be8c38531407dbfa7aa6a1b6",
+ "lines": [
+  {
+   "key": "case classm.ny_it2.1",
+   "record": "e0cc0688f3e73a2ae3522186fdd9bd224a3fda25be8c38531407dbfa7aa6a1b6",
+   "status": null
+  },
+  {
+   "key": "classm.ny_it2.1 — ny_it2[w0].state_whole",
+   "record": "e0cc0688f3e73a2ae3522186fdd9bd224a3fda25be8c38531407dbfa7aa6a1b6",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_it2.1 — ny_it2[w0].city_whole",
+   "record": "e0cc0688f3e73a2ae3522186fdd9bd224a3fda25be8c38531407dbfa7aa6a1b6",
+   "status": "AGREE"
+  }
+ ]
+}

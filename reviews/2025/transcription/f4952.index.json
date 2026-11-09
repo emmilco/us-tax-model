@@ -1,0 +1,135 @@
+{
+ "kind": "transcription",
+ "form": "f4952",
+ "family": "claude",
+ "base": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
+ "head_rows": {
+  "line-scoped reviews": "3 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "f4952.required",
+   "record": "6f9596d3bced37c987428d7365fa9862e5db8c047b407204034a47887fcf224c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\". The candidate drops the project's disjunct for a positive line 4g, so a filer whose only reason to file is the election is told the form is not required: the same reading as the earlier rulings on this line. It also reads the input f4952.carryover where the project reads its gate line f4952.carryover_if_interest; the two differ only on records with f4952.has_interest false and the carryover answered, which the interview cannot produce (the gated input is unreachable when the gate is no). Project stands.",
+   "subject_key": "a3b10a9335736ce01421a7c0144c23af1f694e0e62d126b5e50839daf7822911"
+  },
+  {
+   "key": "1",
+   "record": "6f9596d3bced37c987428d7365fa9862e5db8c047b407204034a47887fcf224c",
+   "status": "AGREE",
+   "subject_key": "4bf00e20f8b2ab90c88f6aa603a31c193fec01099c007a2e3418c17bafcfb338"
+  },
+  {
+   "key": "4a",
+   "record": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
+   "status": "AGREE",
+   "subject_key": "18d1bbf2c76ffa0199fd20b8d7e43f09d0453a6dfdbe017b6f0ece88892641cb"
+  },
+  {
+   "key": "2",
+   "record": "6f9596d3bced37c987428d7365fa9862e5db8c047b407204034a47887fcf224c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f4952 p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\". The candidate takes f4952.prior_7 when f4952.carryover is true and zero when false; the project reads the gate line f4952.carryover_if_interest, which is f4952.carryover when f4952.has_interest is yes and false otherwise (f4952 p. 3, Who Must File). They differ only on records with the gate no and the carryover answered, which the interview cannot produce, since the gated input is then unreachable. The project's refusals on f4952.unsupported and f4952.alternative_allocation are cited scope screens. Project stands.",
+   "subject_key": "6dda51f3c283574722ea6b78a05d877a6155d41383cc7eca00774b5d82944fd4"
+  },
+  {
+   "key": "3",
+   "record": "6f9596d3bced37c987428d7365fa9862e5db8c047b407204034a47887fcf224c",
+   "status": "AGREE",
+   "subject_key": "e5eeda321eebfe0d533cb7ad31e311d820d575ab0d8bd383c2f32b6bb83a399e"
+  },
+  {
+   "key": "4b",
+   "record": "1197a065d0ee177532f53a3872da2e3d6f13b3bf9dd76f04eb05bf2b16e04a98",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the candidate reads f1040.line3a whatever box 1a is above zero, so it needs that answer where the source does not: i1040gi p. 25, Line 3a, \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b\": with box 1a (line 3b) zero, line 3a is zero. The project reads the gate line f1040.line3a_if_ordinary, which takes f1040.line3a when box 1a is above zero holds and zero otherwise; the interview asks f1040.line3a only then (gated_by f1040.line3a_if_ordinary), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
+   "subject_key": "d0302b26789c26a334e9300634d1982bfd113617a2fbf3ee8849e354b67286c3"
+  },
+  {
+   "key": "4c",
+   "record": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
+   "status": "AGREE",
+   "subject_key": "8d7f675a9bd4b246c23e47199b99097a5fd6c10dfad481b24144e16d3ff94e96"
+  },
+  {
+   "key": "4d",
+   "record": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same as the backlog-round ruling (line, candidate and evidence unchanged). f4952 p. 3, Line 4d: \"Net gain from the disposition of property held for investment is the excess, if any, of your total gains over your total losses\". Form 1040 line 7a floored at zero is Schedule D line 16 floored at zero on every return the project computes. Triage executable-triage-v2 (`../triage/f4952.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 194 partial records): 2,259 of 2,259 agree.",
+   "subject_key": "c9611c2f6ea3120cc80a3760527ba59fdc2a2f34d08184d3c145373b04bcf671"
+  },
+  {
+   "key": "4e",
+   "record": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; same as the backlog-round ruling. f4952 p. 3, Line 4e: \"the excess, if any, of your net long-term capital gain over your net short-term capital loss\". Both branches of the candidate give the project's amount (no value difference); its refusal at line 4e on f4952.alternative_allocation reaches returns that do not use the form. Triage executable-triage-v2 (`../triage/f4952.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 194 partial records): 2,074 of 2,259 agree; on completed returns 20 candidate-unknown, 4 candidate-refuses, no value. The screen pattern of the earlier rounds holds: every completed-return refusal or unknown is on a return that does not use Form 4952 (line 1 $0, no 2024 carryforward, no line 4g election), where the candidate still asks or refuses on f4952.unsupported or f4952.alternative_allocation, answers the source does not need (prior ruling, backlog round, checked on the recorded witnesses: e.g. classm.clcw.2.deepseek refused on f4952.alternative_allocation, classm.s3.2.deepseek unknown).",
+   "subject_key": "d5af47be618ad12c9c30482bd8f15b8ceb695facbeabf157e10df55143522b85"
+  },
+  {
+   "key": "4f",
+   "record": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
+   "status": "AGREE",
+   "subject_key": "0f46c84c5c55b36328c2095ae06f59ca11f1397bce4552790731c15593859278"
+  },
+  {
+   "key": "4h",
+   "record": "c2adfce194ee5f0fad4aa6442b893e2cbfc53eebf0ee63e6ae66bf8065b218fe",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; same reply and project as the earlier ruling. f4952 p. 1, line 4h, \"Add lines 4c, 4f, and 4g\". Scratch run of triage.mjs on the round-3 reply (.transcription/f4952.lines-a00ac5b69f6a) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 186 partial records; 2,264 comparisons per line): 2,212 agree; no completed-return difference; the rest are the project's cited refusals and unknowns on refused or incomplete returns, where the reply reads its screens on returns that do not use Form 4952. Project stands.",
+   "subject_key": "325bdbc1a5bb42a6972fcfda616d60907de1a79b6cfe8aa87a2caea2cc8e63a6"
+  },
+  {
+   "key": "5",
+   "record": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
+   "status": "AGREE",
+   "subject_key": "ad00db764f40e9e7bb5ffb94b7e870a194eabbc999195eaf4a4964a84a0ac9e6"
+  },
+  {
+   "key": "6",
+   "record": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
+   "status": "AGREE",
+   "subject_key": "514dc5ad71a6e865ba6af1c5b1bd08aee7d0a1157827838e15435fdd20844728"
+  },
+  {
+   "key": "7",
+   "record": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
+   "status": "AGREE",
+   "subject_key": "78b4c43a3fc4a37dbd4a73899de7eb6582651d7e2ed3b4cf1a796a51bf5c1e99"
+  },
+  {
+   "key": "8",
+   "record": "6f9596d3bced37c987428d7365fa9862e5db8c047b407204034a47887fcf224c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the same reply and reading as the earlier rulings: f4952 p. 1, line 8, \"Enter the smaller of line 3 or line 6\"; the amounts agree where both compute, but the reply figures lines 3 and 6 on every return and reaches the f4952.unsupported and f4952.alternative_allocation screens on returns that do not use Form 4952 (f4952.used false, line 8 $0). Project stands.",
+   "subject_key": "848ec7a486993b10954326916c75b031255f19c71116f87fbae1281fc58223c2"
+  }
+ ],
+ "subjects": {
+  "f4952.required": "2d46dedaabe9f6e9ec521ccb30556f5a233d6ba8172d0e4f27f41182fd5a67c8",
+  "1": "040d57fedb2d2884f77c37869c16886627408afe407590f1725a32c148cbf5f4",
+  "4a": "c21d4937d2ac41d88b812da7c86688878ed02c5163ce0b9faad7ea035d8ea5bf",
+  "2": "230ba4ef4077a7b4719e9801d9b3571d8859e4b3b40c604df65b5733d83f697b",
+  "3": "f86056ac188244bebd0b409f071eaf62534349ea18baf66fbb4a3b62da7f4f3d",
+  "4b": "5354454438868809725d7225a618287f516687b56819a0f1391f20833873a08f",
+  "4c": "6ed8f4f7add56e5ba37356af0d13416c0ce5da868ee207a1915ca4cc41b627ca",
+  "4d": "39e350352eb15f2cbc6b7f28bb64f396f5de1b2423d50aa76436b1e44c15d00b",
+  "4e": "174630a8e414cfd53ec1e1c3db148b9f8b24e23ba12123f8e025ffc887668202",
+  "4f": "d16be06871fbe5d9c1e48fa42151588aa59c2ca6874b00cc99205231a87a92ad",
+  "4h": "e11b98c2f91ad7e550f9e7349bb55f54fbe3169235120aa7f30f681ea607aa70",
+  "5": "5ebd93c3bfd8a8fd3ecb9fca06f288e514c82648f687e844d6b9559338ab4c35",
+  "6": "73868ad0c486b367c5e733328ffa97ece933dfa463b6d647d49c0bb4a921ff2d",
+  "7": "ea6ef3551538e84e7d8d5f873599d0793891af205442e430186a37a3bc141cbe",
+  "8": "9740719bf581c7008dd088bd44208c755f1c6b091ea774300950852ddf7ea932"
+ },
+ "__rest__": "9b7c7c4aeba3ea3ae16cf7d238a6cce71a67f7b7722c45a41770e3a6bd2f9b70",
+ "foreign": {
+  "f4952.required": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "1": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "2": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "4b": "5d5fac7682b7a2fa13c2250bae25effb6239a504e9095246e6b2c15009ed77b2",
+  "4h": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+ }
+}

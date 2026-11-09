@@ -1,0 +1,39 @@
+{
+ "kind": "transcription",
+ "form": "sb",
+ "family": "deepseek",
+ "base": "73e803f940075ca91190c6f58bbc26df12aecdf470c219fc4fa3142091755df9",
+ "lines": [
+  {
+   "key": "2",
+   "record": "73e803f940075ca91190c6f58bbc26df12aecdf470c219fc4fa3142091755df9",
+   "status": "AGREE",
+   "subject_key": "6e72a133b4de469656cded0ad76cdefbd72e86d9ea1d5657665b3834df80e1b2"
+  },
+  {
+   "key": "3",
+   "record": "73e803f940075ca91190c6f58bbc26df12aecdf470c219fc4fa3142091755df9",
+   "status": "AGREE",
+   "subject_key": "1921ec18b529370f10dde1af480449e27b73707c59ae4c8b5da3688ad18ccfb0"
+  },
+  {
+   "key": "4",
+   "record": "73e803f940075ca91190c6f58bbc26df12aecdf470c219fc4fa3142091755df9",
+   "status": "AGREE",
+   "subject_key": "89b7dc8295724fb1d53ff7619946e8259d61421d56767d3ce38fab8405f90f81"
+  },
+  {
+   "key": "6",
+   "record": "73e803f940075ca91190c6f58bbc26df12aecdf470c219fc4fa3142091755df9",
+   "status": "AGREE",
+   "subject_key": "3cb4fb85993515797d218af3f20ccf0a81b53e7726bcce3588bd70d47249fea4"
+  }
+ ],
+ "subjects": {
+  "2": "c50077315e01753f305aeb2faefdec8cf47b1b1b5c07cec069ab870b435db8cc",
+  "3": "adc59757e6a1b9b5432546a2629e52eb2085417f19b75ae843e9098856165263",
+  "4": "d225f28e9701cf230747bff686459225d04bd398ce08e2040a616fb8958167c4",
+  "6": "592f2cf2def1924c2c4599e2709a3a18aa5910d0457f75ea5f71c12ba4bc7469"
+ },
+ "__rest__": "013e58d3d274e971cd170d48794200b98ac690d600b9af1e38e8133de7ae11db"
+}

@@ -1,0 +1,234 @@
+{
+ "kind": "transcription",
+ "form": "f8863",
+ "family": "deepseek",
+ "base": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+ "lines": [
+  {
+   "key": "f8863.zero",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "AGREE",
+   "subject_key": "2900818d7e8869b87d1beb3f7c8cec39b67daa3c59b519d741acfaafa09c4235"
+  },
+  {
+   "key": "f8863.eligible",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i8863 p. 3, Who cannot claim a credit: \"1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,039 agree; 31 candidate-refuses, 28 project-unknown, 22 value (on completed returns: 8 value). The reply drops the dependent bar (its note calls it outside the inputs, but person.sav_claimed is published and the Claude reply uses it) and folds the line 4 stop into the published helper, whose label is \"expenses paid, and neither you nor your spouse is claimed as a dependent\". The completed values are that fold: classm.f1040.2 and its twin, generated 150 and 174 (project true, reply false where line 4 is $0; checked on classm.f1040.2 and generated 150). The candidate-refuses and other values are on refused returns (married filing separately is refused for the whole return (s3.mfs on scope.ready)). Project stands.",
+   "subject_key": "8cd4bc75dcbb8e7bec133df03bde4e58d8ae0c6fb9bf491f81b606c41f9a36ab"
+  },
+  {
+   "key": "f8863.kid_needed",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 631 agree; 1,416 candidate-unknown, 33 project-refuses, 27 value, 13 project-unknown (on completed returns: 176 candidate-unknown, 9 value). The reply's helper reads f8863.line7 and the person conditions in a way that cycles back to f8863.kid_needed (\"cycle at f8863.kid_needed\" on classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project false); the completed values follow from it. Project stands.",
+   "subject_key": "1bca43480c196fa14c069de97d57e7d494b6ae9e9d5774cf4d035c2b75a11967"
+  },
+  {
+   "key": "1",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 1, line 1; i8863 p. 3, Who cannot claim a credit: \"1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\"; i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 698 agree; 1,402 candidate-unknown, 17 project-unknown, 2 candidate-refuses, 1 candidate-shows-skipped (on completed returns: 183 candidate-unknown). The reply sums every Part III line 30 with no eligibility or dependent bar. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
+   "subject_key": "37e92db5b2dfc83e2d91ea7c40b5906c209d7ba22af8c80d3e6d247781c095e9"
+  },
+  {
+   "key": "2",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap; f8863 p. 1, line 2. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 104 agree; 1,953 candidate-shows-skipped, 62 project-unknown, 1 candidate-unknown (on completed returns: 339 candidate-shows-skipped). The reply has no shown_when, so it shows the line on returns that do not file Form 8863 (no expenses paid, or a person claimed), where the project hides lines 1 to 4 on f8863.eligible; no source skip governs that: interface gap. Values agree where the project shows it. Project stands.",
+   "subject_key": "f01a899854f26b7355066837cc91b2a9dab21f7f1659800f5b2a5a60ba649d1c"
+  },
+  {
+   "key": "3",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap (+ scope); f8863 p. 1, line 3. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 121 agree; 1,472 candidate-shows-skipped, 417 candidate-refuses, 54 project-unknown, 53 candidate-unknown, 3 project-refuses (on completed returns: 336 candidate-shows-skipped). The reply has no shown_when, so it shows the line on returns that do not file Form 8863 (no expenses paid, or a person claimed), where the project hides lines 1 to 4 on f8863.eligible; no source skip governs that: interface gap. The candidate-refuses are returns refused elsewhere, reached through Form 1040 line 11b. Project stands.",
+   "subject_key": "5dcec4976210d2eb4a133225b6c54edb47fca5952f01d2c897358f50287e6f03"
+  },
+  {
+   "key": "4",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap (+ scope); f8863 p. 1, line 4. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 622 agree; 971 candidate-shows-skipped, 417 candidate-refuses, 54 project-unknown, 53 candidate-unknown, 3 project-refuses (on completed returns: 212 candidate-shows-skipped). The reply has no shown_when, so it shows the line on returns that do not file Form 8863 (no expenses paid, or a person claimed), where the project hides lines 1 to 4 on f8863.eligible; no source skip governs that: interface gap. Project stands.",
+   "subject_key": "aafa0f6613947e738dc51e2c17a29f5c9da84ae06c2785cba01b870ab72a3f96"
+  },
+  {
+   "key": "5",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error and interface gap; f8863 p. 1, line 5; line 4, \"If zero or less, stop\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 63 agree; 1,990 candidate-shows-skipped, 35 project-unknown, 31 project-refuses, 1 candidate-unknown (on completed returns: 347 candidate-shows-skipped). The reply has no shown_when, so besides the whole-form case it shows $10,000 / $20,000 after the line 4 stop (classm.f1040.2 (checked: joint, line 4 $0, line 10 $14,484.00) is shown by the reply after the line 4 stop, f8863 p. 1, line 4: \"If zero or less, stop; you can’t take any education credit\"). Project stands.",
+   "subject_key": "9af867111624aa26fa9cabb4865e85abbd34b19e0c6f23eaee7f53ab76ae6548"
+  },
+  {
+   "key": "7",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f8863 p. 1, lines 6 and 7; i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 481 agree; 1,425 candidate-unknown, 191 candidate-refuses, 14 project-unknown, 9 project-refuses (on completed returns: 183 candidate-unknown). Same prorate, but through line 1 the reply needs f8863.ban everywhere. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
+   "subject_key": "3f6c290fe8be06b979fb81c4bd95ce80ca75c1ffbf9b3de2c8f7eaec8cb25217"
+  },
+  {
+   "key": "7 (box)",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i8863 p. 7, Line 7. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 853 agree; 1,215 candidate-unknown, 36 project-refuses, 16 project-unknown (on completed returns: 157 candidate-unknown). Through f8863.kid_needed the reply's box cycles (\"cycle at f8863.kid_needed\" on completed returns where the project hides the box, e.g. classm.f4952.1.deepseek, classm.g28.1.deepseek). Project stands.",
+   "subject_key": "d89b37e6694fe767b55cf4fc1e392afb49f9e36b18d2a08003b2fde6315b747b"
+  },
+  {
+   "key": "8",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 8; i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 475 agree; 1,440 candidate-unknown, 181 candidate-refuses, 14 project-unknown, 10 project-refuses (on completed returns: 183 candidate-unknown). Same rate; through line 7 the reply needs the ban answer. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
+   "subject_key": "706f85ab076af0c13ca925b9310b9b953d3a5d2f82ba2e0b9de76ae6f9fa7cce"
+  },
+  {
+   "key": "9",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 9; i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 476 agree; 1,430 candidate-unknown, 191 candidate-refuses, 14 project-unknown, 9 project-refuses (on completed returns: 183 candidate-unknown). Same subtraction; through line 7 the reply needs the ban answer. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
+   "subject_key": "283b1aac331df32a4b0aa8cdb2bd5f207ec5ddba304c5d86ce7ebd0a30056d58"
+  },
+  {
+   "key": "10",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 10. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,018 agree; 46 candidate-unknown, 28 project-refuses, 14 project-unknown, 12 candidate-refuses, 2 candidate-shows-skipped (on completed returns: 2 candidate-shows-skipped). The 2 completed candidate-shows-skipped: classm.f1040.2 (checked: joint, line 4 $0, line 10 $14,484.00) is shown by the reply after the line 4 stop, f8863 p. 1, line 4: \"If zero or less, stop; you can’t take any education credit\"; the reply also has no dependent bar. Same disagreement as the before-catalog-refresh ruling; the other differences: every difference is on an incomplete or refused return. Project stands.",
+   "subject_key": "1510c7f9b3ce5dd74c2f4b506203f8d3e219d05320e22a6204fe1cd1f67d5f0e"
+  },
+  {
+   "key": "11",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 11; line 10, \"If zero, skip lines 11 through 17\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,018 agree; 46 candidate-unknown, 28 project-refuses, 14 project-unknown, 12 candidate-refuses, 2 candidate-shows-skipped (on completed returns: 2 candidate-shows-skipped). The reply's shown_when tests line 10 only, so classm.f1040.2 (checked: joint, line 4 $0, line 10 $14,484.00) is shown by the reply after the line 4 stop, f8863 p. 1, line 4: \"If zero or less, stop; you can’t take any education credit\". Project stands.",
+   "subject_key": "499e1c537123793c4a2f092e98d933e4e9f854f5b8cd88ddc31d40177953b50b"
+  },
+  {
+   "key": "12",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 12. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,018 agree; 46 candidate-unknown, 28 project-refuses, 14 project-unknown, 12 candidate-refuses, 2 candidate-shows-skipped (on completed returns: 2 candidate-shows-skipped). As line 11: classm.f1040.2 (checked: joint, line 4 $0, line 10 $14,484.00) is shown by the reply after the line 4 stop, f8863 p. 1, line 4: \"If zero or less, stop; you can’t take any education credit\". Project stands.",
+   "subject_key": "4a1fc4dbe8cd5583ae9f4c20e662618498b9061278cd2ea8c2f8ba12270d01a5"
+  },
+  {
+   "key": "13",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error and interface gap; f8863 p. 1, line 13. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 16 agree; 2,031 candidate-shows-skipped, 37 project-refuses, 35 project-unknown, 1 candidate-unknown (on completed returns: 355 candidate-shows-skipped). The reply's shown_when (line 10 above zero) hides the line without Part III line 31 amounts but not after the line 4 stop (classm.f1040.2 (checked: joint, line 4 $0, line 10 $14,484.00) is shown by the reply after the line 4 stop, f8863 p. 1, line 4: \"If zero or less, stop; you can’t take any education credit\"); triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
+   "subject_key": "ccb585d0f4f3fdcf43fc1ced1a804d07886d08b979b2ebc6931227d305cd8370"
+  },
+  {
+   "key": "14",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error and interface gap (+ scope); f8863 p. 1, line 14. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 64 agree; 1,549 candidate-shows-skipped, 411 candidate-refuses, 53 candidate-unknown, 33 project-unknown, 10 project-refuses (on completed returns: 352 candidate-shows-skipped). As line 13; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
+   "subject_key": "0b4de56ee7510d4a81f739a8dc56701259d7d0fa961e4c14ec4eb598c8806272"
+  },
+  {
+   "key": "15",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error and interface gap (+ scope); f8863 p. 1, line 15. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 601 agree; 1,012 candidate-shows-skipped, 411 candidate-refuses, 53 candidate-unknown, 33 project-unknown, 10 project-refuses (on completed returns: 220 candidate-shows-skipped). As line 13; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
+   "subject_key": "1c1162b5003982d17cdea7212650a464780b554570af56d762ec1ac671eb6e05"
+  },
+  {
+   "key": "16",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error and interface gap; f8863 p. 1, line 16; line 15, \"If zero or less, skip lines 16 and 17\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 16 agree; 2,031 candidate-shows-skipped, 37 project-refuses, 35 project-unknown, 1 candidate-unknown (on completed returns: 355 candidate-shows-skipped). As line 13 (the reply adds line 15 above zero, which does not catch the line 4 stop); triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
+   "subject_key": "cbe404d1e557edcc0c2c9b92824ac6c8159edda862a0d8e2d2713eb13e909215"
+  },
+  {
+   "key": "18",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f8863 p. 1, lines 17 and 18. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,616 agree; 423 candidate-refuses, 63 candidate-unknown, 14 project-unknown, 4 project-refuses (none on a completed return). Same prorate (amb.2025.edu_ratio_places); the candidate-refuses and unknowns are on returns refused or incomplete elsewhere; every difference is on an incomplete or refused return. Same class as the before-catalog-refresh ruling. Project stands.",
+   "subject_key": "1a73ada8ec308bf478f505d26ee2fc45025e074a09c935f5045bd4b445abd397"
+  },
+  {
+   "key": "(CLW 1)",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i8863 p. 8, Credit Limit Worksheet, line 1. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,616 agree; 423 candidate-refuses, 63 candidate-unknown, 14 project-unknown, 4 project-refuses (none on a completed return). Same copy of line 18; every difference is on an incomplete or refused return. Project stands.",
+   "subject_key": "f750380060dd9c4b0bbb789c405c714720f89ab91023a6e29b593f53cec4c3e2"
+  },
+  {
+   "key": "(CLW 2)",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, line 2; i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 476 agree; 1,430 candidate-unknown, 191 candidate-refuses, 14 project-unknown, 9 project-refuses (on completed returns: 183 candidate-unknown). Same copy of line 9, which needs the ban answer through line 7. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
+   "subject_key": "eb3d34c99c49191b8706d1fb57590c01e7e1cae21be456c3e3c50907afdde7b7"
+  },
+  {
+   "key": "(CLW 3)",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, \"3. Add lines 1 and 2\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 475 agree; 1,204 candidate-unknown, 423 candidate-refuses, 14 project-unknown, 4 project-refuses (on completed returns: 183 candidate-unknown). Same sum; through worksheet line 2 the reply needs the ban answer. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
+   "subject_key": "6a6e18bfcc5089fae9b4d13b6b7d875a4600ebc0e62351e8026e281ffa43c725"
+  },
+  {
+   "key": "(CLW 4)",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, line 4. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares f8863.clw4 and f8863.clw5 with a changed published result type (\"model changed a published result type\"), so triage runs none of the lines that read them. Read as intended it copies Form 1040 line 18, with no shown_when. Project stands.",
+   "subject_key": "7df5850c60aae623fbe94ac8b1aabbc54e2cb8ef3c76f675e52d1d946a123c24"
+  },
+  {
+   "key": "(CLW 5)",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, line 5. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares f8863.clw4 and f8863.clw5 with a changed published result type (\"model changed a published result type\"), so triage runs none of the lines that read them. Read as intended it adds Schedule 3 lines 1 and 2, the project's sum within scope (lines 6d and 6l refused by scope.credits). Project stands.",
+   "subject_key": "ae14aeb358da42670badc2469ec7973c92ac6d2ffe4e56cbc1acb092ab055c5f"
+  },
+  {
+   "key": "(CLW 6)",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, \"6. Subtract line 5 from line 4\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares f8863.clw4 and f8863.clw5 with a changed published result type (\"model changed a published result type\"), so triage runs none of the lines that read them; it reads both. Project stands.",
+   "subject_key": "6b655803a9cdb25d4274ee1e655d13b5e53d5e3375e55990821d204410e77237"
+  },
+  {
+   "key": "(CLW 7)",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, line 7. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares f8863.clw4 and f8863.clw5 with a changed published result type (\"model changed a published result type\"), so triage runs none of the lines that read them; it reads worksheet line 6. The expression is the project's. Project stands.",
+   "subject_key": "b4a12328aa25e59a8acb52bf496a1cbc7a80f9dfe1da137f8b38d198599bc6e6"
+  },
+  {
+   "key": "19",
+   "record": "e86d38127114a3ee49029994491524f4117d4c9f5479dbc451789be39057c361",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f8863 p. 1, line 19. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares f8863.clw4 and f8863.clw5 with a changed published result type (\"model changed a published result type\"), so triage runs none of the lines that read them; it copies worksheet line 7. The expression is the project's. Project stands.",
+   "subject_key": "d5b1ba968e3de96e612f411843c7eb58172246194d082ae8fe5024212111d480"
+  }
+ ],
+ "subjects": {
+  "f8863.zero": "d543b93adb53afde75f226bfad3857796495cc45eb2149582e7ab7f1cae32c96",
+  "f8863.eligible": "63c83feb038acb6ed306adea7a713cd87099e7c33040f15dff201e2da80307e0",
+  "f8863.kid_needed": "b04ded11aed0bea5ebf3017548dab9235158fc20066bf1545a9699b8f21cf2eb",
+  "1": "164751cb3afedae5d25edad15862fcdb67331c5f62eceb6924321da379f1e66b",
+  "2": "e91d3b6c6e2e136d8707722bd61a8e91cfe4be40e99224858de3490ca588f3d2",
+  "3": "edb34c18bf0668da5964a82c5dbd1dddd9479dbd3f17a89afe7a531ec452bd23",
+  "4": "ffa475f042a2efb8a51238bf3eeb3ac5adc81e103859f14da72d54f7701cd4e0",
+  "5": "d298ea14aa9ed5cd3a0bc1eda688773abe462f9e9c93e7fd836d9b7ef393331d",
+  "7": "7641d8f11441f95219c0b05f479282ab8683ac1d1f774b3657d89a85134e3864",
+  "7 (box)": "239465efe8e6f68bf224d1ea18cfc23380d5e3fd842798a2beef5ef68035bfeb",
+  "8": "a43dbcb82987e88dade09546ac518feed271147a11ea7938ea41feeaadc6e970",
+  "9": "83c14433209e8979ee5e2bb7119bf2b48b8e696fd7dba2819aa31fdbc6b18e73",
+  "10": "f68b966d233a9f94e845e1fc0fd11b93b4737f973e85b6f30f69b227e63bfbdd",
+  "11": "72b5a8a445a72358471ff62ec69c4950fd01df90b25cb15b5e904400dbb3a060",
+  "12": "750d065b3a4bd97ed367a37013874ede409da57eed31fb617c5e78745d234c05",
+  "13": "8495f9eced93f27c644645387cd922a26856d9bebedcbd9e2314000250f6db04",
+  "14": "b1ee715d09adb8f7e0e746ed7b9ce74f9850fd0723682e3bb63d1c09223154d1",
+  "15": "b8c3d6462dcfbc9716374f553e4541cf1930ca8c7ad811ce9e468a5f0dc49bfc",
+  "16": "9df11f5da1ef588a6612c8b17ee02e47c37a571b9945171414e561a69b4c5aa7",
+  "18": "379d9723565a4ef6ec0cdb093b2e705c24b6e68f4fa06f31fa260bfe591225f3",
+  "(CLW 1)": "3cf787de238d04e869c165f1f4005cb6a2d233f6c2f66f417bdaf42f6795bce9",
+  "(CLW 2)": "a05a16001677dbe9988666ec5e4a63bf9228689ba5d43831768e2e7b9e6c11eb",
+  "(CLW 3)": "94d39e3a4fa8c295b7e06bb32ec29a2b0032734a5eb0a9a50439977dee1ba5cd",
+  "(CLW 4)": "bc86fc64fcf85bd7432489dff32bc6fb1cd06636d9339542268e9cdfa68fe8ea",
+  "(CLW 5)": "b8a8bdaa4568e4447d684974561f6ba3f56af2703742f86bfa48af42bfad7361",
+  "(CLW 6)": "4c92346e5f5a94e69aabd433fe215c07fcf263977c34f4a0cb6227dde664ad4a",
+  "(CLW 7)": "57f2645a7931627fd096106c8ecd97bb4ce559384bf8338403da555d7e96ed45",
+  "19": "e957ba06ea0dd35887b335aba8996319217c1c341f20044baa4fce21cedef7b0"
+ },
+ "__rest__": "bd80fc5be489be58cf339e45b85ce5d43a64f4185cc0cc17d42d804812fda0a5"
+}

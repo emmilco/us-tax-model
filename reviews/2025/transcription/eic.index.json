@@ -1,0 +1,169 @@
+{
+ "kind": "transcription",
+ "form": "eic",
+ "family": "claude",
+ "base": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-06); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "eic.self_employed",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "AGREE",
+   "subject_key": "2e72332b8822abb26820afc71d916845284c1b0ddf1a1e630d3fbb4d761f22ae"
+  },
+  {
+   "key": "eic.eligible",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi pp. 40-43, Steps 1 to 5, and p. 46, Worksheet A, line 2. executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 1,945 of 2,135 agree; differences 59 candidate-unknown, 51 project-unknown, 51 value, 24 candidate-refuses, 5 project-refuses; on returns the full interview completes: 19 value, 1 candidate-unknown. Completed-return witnesses were listed with the witness cap lifted (triage.mjs run directly; scratch /tmp/adj-bklg-dems/eic.full.json, rerun minutes later while concurrent class M runs were rewriting fixtures/2025/classm*.json, so its counts can differ from the record by a few class M records). On classm.asset.1 (a completed return the project ends at an earlier STOP) the candidate is unknown for dependent.kidnapped, which the project and the interview do not ask there; a candidate that needs an answer the source does not need is a model error (README). The value differences are all on completed returns with no earned income for the credit (Worksheet A line 2 or Worksheet B line 4b zero, \"STOP You can't take the credit\"): classm.f1040.4, classm.f1040.4.deepseek, classm.f8863.2, classm.f8863.2.deepseek, classm.sli.4, classm.ssb.4, stage14.s8812.eiw_stop_with_se_tax, stage14.s8812.eiw_zero_with_se_tax, stage14.eic.wsb_stop_27c, generated 143, 170, 238, 242, 253, 254, 261, 355, 405, 412 and two partial records of classm.f8863.2.deepseek. The id eic.eligible is a project interface (the prompt lists it without a definition and says \"These names are not instructions for how to compute them\"); the source has no quantity of that name. The project's reading (label \"Steps 1 to 5 passed in order\") leaves the worksheet STOPs to eic.line6, and eic.credit agrees on every completed return, so no eic amount differs. The candidate folds the worksheet STOP into the test. The difference does reach a printed result through the backlog package's new gate household.eic_disallowed_claim (household.credit_disallowed and eic.eligible): with the Form 8862 answer Yes, classm.ssb.4 and stage14.eic.wsb_stop_27c, whose EIC is $0, are refused at eic.credit and Form 1040 lines 27a, 34 and 37 (evaluated). i1040gi p. 43: \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed\", that is, to take the credit, and these filers cannot take it. Finding F1 (`.transcription/proposed/bklg/eic.findings.md`): the gate should read the credit figured (eic.line6 above zero), not eic.eligible. Project's eic.eligible stands as labelled; the finding is in the gate that reads it.",
+   "subject_key": "011a3325e8d4971e4bdbb713eef0ffc740a3388ee87148f0cf839b2bd58afa62"
+  },
+  {
+   "key": "eic.credit",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi pp. 40-46, each \"STOP You can't take the credit\"; Worksheet A, line 6, \"Enter this amount on Form 1040 or 1040-SR, line 27a\". executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 1,994 of 2,135 agree; differences 59 candidate-unknown, 51 project-unknown, 24 candidate-refuses, 6 project-refuses, 1 value; on returns the full interview completes: 1 candidate-unknown. On classm.asset.1 (a completed return the project ends at an earlier STOP) the candidate is unknown for dependent.kidnapped, which the project and the interview do not ask there; a candidate that needs an answer the source does not need is a model error (README). No value differs on a completed return; the remaining differences are refusals and unknowns on refused or incomplete records (scope screens and question order). The refusal gate changed by the package (household.eic_disallowed_claim) is the project's; see finding F1 on eic.eligible. Project stands.",
+   "subject_key": "5bf9e5b9254fdcb8aab6294d969f7d5243c0a3cf95eb5e76be82bae7b8284f0b"
+  },
+  {
+   "key": "eic.check_27c",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 43, Line 27c, and the STOPs on pp. 40-47 that say to check it. executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 2,038 of 2,135 agree; differences 72 candidate-unknown, 13 candidate-refuses, 11 project-refuses, 1 value; on returns the full interview completes: 1 candidate-unknown. On classm.asset.1 (a completed return the project ends at an earlier STOP) the candidate is unknown for dependent.kidnapped, which the project and the interview do not ask there; a candidate that needs an answer the source does not need is a model error (README). No value differs on a completed return. Project stands.",
+   "subject_key": "8bdfad5d390a884f2c5e579dadd3740d058d15b6866f53f1f71e90421daac20d"
+  },
+  {
+   "key": "eic.separated_box",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 41, Step 3, questions 3 and 6 (amb.2025.separated_spouses_box). executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 2,104 of 2,135 agree; differences 12 candidate-refuses, 12 project-refuses, 7 candidate-unknown; on returns the full interview completes: none. No completed-return difference: the candidate refuses through dependent screens (dependent.married, dependent.eic_tiebreak) and the project through sa.excluded_income on records refused either way, and the unknowns (dependent.us_half) are on incomplete records. Project stands.",
+   "subject_key": "23d888d75330883d5bee1eec53c4e9734c80c3a39a1b841ba242986af982269d"
+  },
+  {
+   "key": "eic.clergy",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 42, Step 5, question 1, and p. 43, Line 27b. executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 2,135 of 2,135 agree; differences none; on returns the full interview completes: none. No difference on any compared record.",
+   "subject_key": "23b59498967ed4e546a7566088cdbb3776f1b2ffbc2b4e2dcab88a1dea95eeee"
+  },
+  {
+   "key": "(Step 5, 1)",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 42, Step 5, question 1: \"No. Complete the following worksheet.\" Step 5 is reached only after Steps 1 to 4, each of which can end \"STOP You can't take the credit\" (pp. 40-41). The candidate has no shown_when and shows a nonzero amount on 194 completed returns where the project hides the line (shown_when eic.reached_step5); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 517 of 2,135 agree; differences 1079 candidate-shows-skipped, 437 project-refuses, 102 project-unknown; on returns the full interview completes: 194 candidate-shows-skipped. Project stands.",
+   "subject_key": "a388741955aadb816afcaf132064fbc64baf49cc11ec1c8108a4d6478ca6eee2"
+  },
+  {
+   "key": "(Step 5, 2)",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 42, Step 5, line 2 (Medicaid waiver payments). Both sides give $0 on every supported return (combat pay is refused through s8812.combat_pay); executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 1,604 of 2,135 agree; differences 429 project-refuses, 102 project-unknown; on returns the full interview completes: none. No completed-return difference: the differences are on refused or incomplete records where the project's shown_when eic.reached_step5 evaluates the upstream screens. Project stands.",
+   "subject_key": "212860c220230c337e330eb26934090541068b5d2e32e29667c74a54e2f9dc2c"
+  },
+  {
+   "key": "(Step 5, 3)",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 42, Step 5, question 1: \"No. Complete the following worksheet.\" Step 5 is reached only after Steps 1 to 4, each of which can end \"STOP You can't take the credit\" (pp. 40-41). The candidate has no shown_when and shows a nonzero amount on 194 completed returns where the project hides the line (shown_when eic.reached_step5); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 545 of 2,135 agree; differences 1079 candidate-shows-skipped, 413 project-refuses, 98 project-unknown; on returns the full interview completes: 194 candidate-shows-skipped. Project stands.",
+   "subject_key": "f1ff367f06764330423a0e922424c2ab3699cace7bad6e1145a5147f1cf97a64"
+  },
+  {
+   "key": "(Step 5, 4)",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; i1040gi p. 42, Step 5, line 4 (nontaxable combat pay election). Both sides give $0 on every supported return (combat pay is refused through s8812.combat_pay); executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 1,590 of 2,135 agree; differences 440 project-refuses, 98 project-unknown, 5 candidate-refuses, 2 candidate-unknown; on returns the full interview completes: none. No completed-return difference: the differences are on refused or incomplete records where the project's shown_when eic.reached_step5 evaluates the upstream screens. Project stands.",
+   "subject_key": "67197cdc4e0b88e74d1cac24af51fe7830f5b78cd9bfda09b09b7226c016e134"
+  },
+  {
+   "key": "(Step 5, 5)",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 42, Step 5, question 1: \"No. Complete the following worksheet.\" Step 5 is reached only after Steps 1 to 4, each of which can end \"STOP You can't take the credit\" (pp. 40-41). The candidate has no shown_when and shows a nonzero amount on 194 completed returns where the project hides the line (shown_when eic.reached_step5); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 551 of 2,135 agree; differences 1074 candidate-shows-skipped, 405 project-refuses, 98 project-unknown, 5 candidate-refuses, 2 candidate-unknown; on returns the full interview completes: 194 candidate-shows-skipped. Project stands.",
+   "subject_key": "1aa6c1a5084f1c146e0e2ee724ac1d3c38f06f854c89805d4219b7ccf641ddeb"
+  },
+  {
+   "key": "4b",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 47, Worksheet B: \"Use this worksheet if you answered “Yes” to Step 5, question 2.\" and line 4b: \"If line 4b is zero or less, STOP You can’t take the credit.\" The candidate has no shown_when and shows a nonzero amount on 328 completed returns where the project hides the line (shown_when eic.show_wsb4b); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. The completed returns where the candidate is unknown or refuses read person.se_screen, the Schedule SE screen, on returns with no Schedule C, where the project and the interview never ask it (the Step 5 question 2 test is the Schedule C count, eic.self_employed): unknown on classm.eic.1, stage5.return.owed, stage5.return.refund, stage5.return.itemized, stage5.return.refund_f4952_screens_unused and f2.t101.credit_disallowed_no_credit_claimed (person.se_screen), classm.asset.1 and stage14.joint.spouse_wages (the spouse's person.se_screen); on classm.f5695.2, classm.f5695.2.deepseek and classm.ssb.5 the record carries a Yes the interview would not ask, and the candidate refuses there. A candidate that needs an answer the source does not need is a model error (README). executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 303 of 2,135 agree; differences 934 candidate-unknown, 552 candidate-shows-skipped, 315 project-refuses, 19 project-unknown, 12 candidate-refuses; on returns the full interview completes: 328 candidate-shows-skipped, 8 candidate-unknown, 3 candidate-refuses. Project stands.",
+   "subject_key": "45eddc50c80ab712ef0690b304026ef19071c04e05d44535102e6c98e8b0af78"
+  },
+  {
+   "key": "6 (eic.wsb_6)",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 47, Worksheet B: \"Use this worksheet if you answered “Yes” to Step 5, question 2.\" and line 4b: \"If line 4b is zero or less, STOP You can’t take the credit.\" The candidate has no shown_when and shows a nonzero amount on 324 completed returns where the project hides the line (shown_when eic.show_wsb6); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. The completed returns where the candidate is unknown or refuses read person.se_screen, the Schedule SE screen, on returns with no Schedule C, where the project and the interview never ask it (the Step 5 question 2 test is the Schedule C count, eic.self_employed): unknown on classm.eic.1, stage5.return.owed, stage5.return.refund, stage5.return.itemized, stage5.return.refund_f4952_screens_unused and f2.t101.credit_disallowed_no_credit_claimed (person.se_screen), classm.asset.1 and stage14.joint.spouse_wages (the spouse's person.se_screen); on classm.f5695.2, classm.f5695.2.deepseek and classm.ssb.5 the record carries a Yes the interview would not ask, and the candidate refuses there. A candidate that needs an answer the source does not need is a model error (README). executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 325 of 2,135 agree; differences 934 candidate-unknown, 534 candidate-shows-skipped, 315 project-refuses, 17 project-unknown, 10 candidate-refuses; on returns the full interview completes: 324 candidate-shows-skipped, 8 candidate-unknown, 3 candidate-refuses. Project stands.",
+   "subject_key": "c745bbe4dd0ca2001253522064bc6d33ea1a0b8f05adadb9ae32acf33cfcce2f"
+  },
+  {
+   "key": "1",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A: \"Use this worksheet only if you answered “No” to Step 5, question 2. Otherwise, use Worksheet B.\" and line 2: \"If line 2 is zero, STOP You can’t take the credit.\" The candidate has no shown_when and shows a nonzero amount on 254 completed returns where the project hides the line (shown_when eic.eligible); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. On classm.asset.1 and stage14.joint.spouse_wages (completed joint returns, the spouse without self-employment) the candidate is unknown for the spouse's person.se_screen, which the interview does not ask there; a candidate that needs an answer the source does not need is a model error (README). executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 568 of 2,135 agree; differences 1143 candidate-shows-skipped, 325 project-refuses, 90 project-unknown, 5 candidate-refuses, 4 candidate-unknown; on returns the full interview completes: 254 candidate-shows-skipped, 2 candidate-unknown. Project stands.",
+   "subject_key": "814a7f2842907288d3e5e4e3d62849b8257fa2bbf4ded39a1b3849b58c92cbea"
+  },
+  {
+   "key": "2",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A: \"Use this worksheet only if you answered “No” to Step 5, question 2. Otherwise, use Worksheet B.\" and line 2: \"If line 2 is zero, STOP You can’t take the credit.\" The candidate has no shown_when and shows a nonzero amount on 14 completed returns where the project hides the line (shown_when eic.eligible); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. On classm.asset.1 and stage14.joint.spouse_wages (completed joint returns, the spouse without self-employment) the candidate is unknown for the spouse's person.se_screen, which the interview does not ask there; a candidate that needs an answer the source does not need is a model error (README). executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 1,592 of 2,135 agree; differences 316 project-refuses, 87 project-unknown, 69 candidate-unknown, 58 candidate-shows-skipped, 13 candidate-refuses; on returns the full interview completes: 14 candidate-shows-skipped, 2 candidate-unknown. Project stands.",
+   "subject_key": "147d02a00c039e9d89c9efa4bf54ebb2506ebfa6cf34e13d7f87656ad89bc5f7"
+  },
+  {
+   "key": "3",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A: \"Use this worksheet only if you answered “No” to Step 5, question 2. Otherwise, use Worksheet B.\" and line 2: \"If line 2 is zero, STOP You can’t take the credit.\" The candidate has no shown_when and shows a nonzero amount on 320 completed returns where the project hides the line (shown_when eic.show3); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 714 of 2,135 agree; differences 1350 candidate-shows-skipped, 38 project-unknown, 27 project-refuses, 6 candidate-unknown; on returns the full interview completes: 320 candidate-shows-skipped. Project stands.",
+   "subject_key": "8a321e2a9da4bd70d469067daef3b0e7df0ed36f3b919c504eb6f693b32469de"
+  },
+  {
+   "key": "4",
+   "record": "bfa5519d78e004ae38a32d083d736d456c18539a221baae90aa199bf74b1fd99",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 46, Worksheet A, line 2, \"If line 2 is zero, You can’t take the credit.\" and line 4. The value agrees (lines 3 and 1 compared). The reply gives no shown_when and notes the STOP after line 2 as an open point; the project shows line 4 under eic.show3, which requires eic.eligible, the condition on which the worksheet is completed. The difference is whether the line is shown, not its value; the reviewed change (the wording of the scope questions this line's condition reads) does not bear on it. As the prior ruling.",
+   "subject_key": "e34d5f5970493af7446c54ba5e0f5e59dd2106092cd0d69b79ba425b137c455c"
+  },
+  {
+   "key": "5",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 4: \"Are the amounts on lines 3 and 1 the same? Yes. Skip line 5; enter the amount from line 2 on line 6.\" The candidate has no shown_when and shows a nonzero amount on 4 completed returns where the project hides the line (shown_when eic.show5); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. On classm.asset.1 (a completed joint return, the spouse without self-employment) the candidate is unknown for the spouse's person.se_screen, which the interview does not ask there; a candidate that needs an answer the source does not need is a model error (README). executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 2,057 of 2,135 agree; differences 22 candidate-unknown, 19 candidate-shows-skipped, 17 project-refuses, 16 candidate-refuses, 4 project-unknown; on returns the full interview completes: 4 candidate-shows-skipped, 1 candidate-unknown. Project stands.",
+   "subject_key": "85968832713497621facbcc07a08102157afd8ad0c40122d69cf3529b56f15ed"
+  },
+  {
+   "key": "6 (eic.line6)",
+   "record": "985c67fa508488b2f0a27301975149673ded056a0bed4625b74a550539b8bdf7",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 4: \"Are the amounts on lines 3 and 1 the same? Yes. Skip line 5; enter the amount from line 2 on line 6.\" The candidate has no shown_when and shows a nonzero amount on 2 completed returns where the project hides the line (shown_when eic.eligible); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Where both sides show the line, no value differs on a completed return. On classm.asset.1 and stage14.joint.spouse_wages (completed joint returns, the spouse without self-employment) the candidate is unknown for the spouse's person.se_screen, which the interview does not ask there; a candidate that needs an answer the source does not need is a model error (README). executable-triage-v2 (`reviews/2025/transcription/triage/eic.json`; 1,495 fixtures, 500 generated returns seed 20261026, 140 partial records; 2,135 comparisons): 1,919 of 2,135 agree; differences 85 project-unknown, 76 candidate-unknown, 25 candidate-shows-skipped, 17 candidate-refuses, 13 project-refuses; on returns the full interview completes: 2 candidate-shows-skipped, 2 candidate-unknown. Project stands.",
+   "subject_key": "527a132095831cf30508e0bf32a9099cbc1f932d621e469016bc4a70dcb58fa3"
+  }
+ ],
+ "subjects": {
+  "eic.zero": "52aee938642df0c53e51498dcf7f0375a2dca1b221662a37474feb9a2f92e2d9",
+  "eic.self_employed": "055a0cb5a33e1ca077a25b4066e576b957fe3ecfb88e31430139c9058cc2f751",
+  "eic.eligible": "1f11065b46532736688428bd098e21362f1c2313dac71792caa0c167ca0a4745",
+  "eic.credit": "ae0631876c5ccf2d00e24c2768c5ff0b94bc74d8328318c2a53fb51f8efc3b7c",
+  "eic.check_27c": "41d723c4ffe1ce0ab2d253440ba106b846210532921f1e327c3aa83c4939b0de",
+  "eic.separated_box": "1adbdded473e40ca35d41c8dc124e96331ef40a9f643a6eb0bbd18cdeaa4dbeb",
+  "eic.clergy": "c34466ce2b1c242bf5bb418b6b0d77070c8e920d6c8754944817940261a62022",
+  "(Step 5, 1)": "2efc9989ab9e88ee59a60e52bef317c32e083f4daffddbc3a1fbabd087a1f4fb",
+  "(Step 5, 2)": "6b45fc18cce78787130cda49d3193be2f6308c64e85a9541750e5b0906175e46",
+  "(Step 5, 3)": "ee1e77452525cf7053d754f8f34fe8212f1d6a39f1ec0d3b9f8d315036ac80f2",
+  "(Step 5, 4)": "347d338f84384222dd304b1bb6b7e40b6d37350061a4fd7c93101f4e723583f6",
+  "(Step 5, 5)": "a1f234d1bf19c2f861ad6457b1042714684a95127706bf9a2b4565f2e1da6ee0",
+  "4b": "dfaa36f3cb2f694fef0a64f8a12b6d3ed764afb48ebf42513c626804bec5a941",
+  "6 (eic.wsb_6)": "77e5882bce6e40efa495720fe9f82f627defc33ccb5fd787c44e15f0830496c3",
+  "1": "b963423da888d4b0b082aeef502c63282169c39eb0d2638d29f305223a61cfa0",
+  "2": "8cbf849564567e00c34a79ae7bdcce9841d1f8d261d9b0df6ab43545b404c1ed",
+  "3": "46bd970b6de9db3899631067e0a5ee29eab3118b73ff1e149dd580796fc04693",
+  "4": "4ac7f368aff26800e0e7bfd116e771722394918af85702788dae05f434807db0",
+  "5": "04033454d48f2ba6e48f1d5d3d7b0d6e7b9a5d4374bc6bafc36189da66f0ba50",
+  "6 (eic.line6)": "3060e76b56080dbc5fe602f7c9f24b62e24be849cdccc8de139bb2621d33d04c"
+ },
+ "__rest__": "0cb74bdc4a8e058e063ada8c81e332a05cd9947874f874edab33db08a9fe38c7",
+ "foreign": {
+  "4": "4c1dfbdcde6fe523b8773ff9b17b75ce1a51280271534487ba61f4a57e08cd19"
+ }
+}

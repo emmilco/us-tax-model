@@ -190,17 +190,15 @@ def main():
     only = set(a.forms.split(",")) if a.forms else None
     counts = {"logs": 0, "changed": 0, "stale before": 0, "stale after": 0}
     held, cache = [], {}
-    for name in sorted(os.listdir(logs)):
-        if not name.endswith(".md"):
-            continue
-        fid, family = families.split_stem(name[:-3])
+    import rulings
+    for fid, family in rulings.forms_with_logs("transcription"):
+        name = families.stem(fid, family) + ".md"
         if only and fid not in only:
             continue
         if not os.path.exists(subjects.path("transcription", fid, Y)):
             print(f"{name}: no document {fid}; left as it is")
             continue
-        path = os.path.join(logs, name)
-        text = open(path, encoding="utf-8").read()
+        text = rulings.read_log("transcription", fid, family)
         versions = cache.setdefault(fid, Versions(fid, Y))
         new, how, before, after = migrate_one(fid, text, Y, versions)
         state = lambda s: "current" if s is None else "stale"
@@ -212,7 +210,7 @@ def main():
         if new != text:
             counts["changed"] += 1
             if not a.dry_run:
-                open(path, "w", encoding="utf-8").write(new)
+                rulings.write_log("transcription", fid, new, family)
         print(f"{name}: {how}; {state(before)} -> {state(after)}" + (f" ({after})" if after else ""))
     print(f"\n{counts['logs']} logs; {counts['changed']} {'would change' if a.dry_run else 'changed'}; "
           f"stale before {counts['stale before']}, after {counts['stale after']}; "

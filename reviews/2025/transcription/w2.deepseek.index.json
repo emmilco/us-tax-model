@@ -1,0 +1,47 @@
+{
+ "kind": "transcription",
+ "form": "w2",
+ "family": "deepseek",
+ "base": "351f0af63e5fb3556e159514acee7b3c1be98707cb3a95d8d30dc60971c5292a",
+ "lines": [
+  {
+   "key": "w2.wages",
+   "record": "351f0af63e5fb3556e159514acee7b3c1be98707cb3a95d8d30dc60971c5292a",
+   "status": "AGREE",
+   "subject_key": "3f8440bc8855cc99ce0e1e38f19cc7816ac94d7ae47326bb3faab03a246e72ff"
+  },
+  {
+   "key": "w2.one",
+   "record": "351f0af63e5fb3556e159514acee7b3c1be98707cb3a95d8d30dc60971c5292a",
+   "status": "AGREE",
+   "subject_key": "4ff4ccf7d7c3fa2fd6fe1617ed78b8c94380c721ffddb9ef9de6a61100b4e047"
+  },
+  {
+   "key": "w2.over",
+   "record": "351f0af63e5fb3556e159514acee7b3c1be98707cb3a95d8d30dc60971c5292a",
+   "status": "AGREE",
+   "subject_key": "30f410cca012f514982b817a831ba46e1847bbc34d29bf9c8619d6392630dee8"
+  },
+  {
+   "key": "w2.dc_benefits",
+   "record": "351f0af63e5fb3556e159514acee7b3c1be98707cb3a95d8d30dc60971c5292a",
+   "status": "AGREE",
+   "subject_key": "28e7f0db653e45c4ded36de7f3d59c32359115d45f45daeca335f25870804745"
+  },
+  {
+   "key": "w2.sav_deferral",
+   "record": "351f0af63e5fb3556e159514acee7b3c1be98707cb3a95d8d30dc60971c5292a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope/representation on completed consistent W-2 inputs; this maximum-reasoning response now includes all supported D/E/F/S/AA/BB/EE amounts. Positive codeH is excluded by project w2.code_h at sav_listed (its Schedule1 deduction is outside scope). For governmental G, w2.g_bad requires elective part E <= total G, so the model min(E,G) equals the project E; for non-governmental or absent G both contribute zero. box12_any=False means no listed amounts. f8880 (2025) p.2 Line2 and iw2w3 pp.20-21 establish the elective governmental G portion and designated Roth codes. An offline comparison of the actual model expression agrees across1152 admitted code/amount combinations (.transcription/w2-max-accepted-domain-proof.json). Refusal behavior and inconsistent/unanswered entries are not asserted equivalent.",
+   "subject_key": "fcd7e2637480e8537daf6481b907304d41992e8612ba1950dfabf8402aa3ff56"
+  }
+ ],
+ "subjects": {
+  "w2.wages": "36d131bbae2d570d91b93139bdc3a7b396878826341e3a047e88257799cf8b8d",
+  "w2.one": "9be7f13c9894c498411b80501fa0fe3014adfa5625d26045d5f412c2236a1f0c",
+  "w2.over": "8827f7b29fb14e2923cbb1d6d4e261ecb97f96da6eda8582d499b4effdcbfdcd",
+  "w2.dc_benefits": "876758f91d6d7bab466b66a397e8b768cc617c504211992ef7fe8bae384936b1",
+  "w2.sav_deferral": "bf1c15c42dece8607ab399d209d48ac43b72574043d729b8ab3b831b51f49bde"
+ },
+ "__rest__": "17b19adb5db03ff719acfe87a9c9408e5322d29dd42b05809bcaa4ab9e1abef7"
+}

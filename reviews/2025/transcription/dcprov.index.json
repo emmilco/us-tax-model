@@ -1,0 +1,25 @@
+{
+ "kind": "transcription",
+ "form": "dcprov",
+ "family": "claude",
+ "base": "ad79aaaafe0afa4fd1f7f64c6e80785e995ff544014ae4181b5f6cd7c15ae27f",
+ "lines": [
+  {
+   "key": "dcprov.one",
+   "record": "ad79aaaafe0afa4fd1f7f64c6e80785e995ff544014ae4181b5f6cd7c15ae27f",
+   "status": "AGREE",
+   "subject_key": "9f43fbdeef5b3eaf40dc112bc888ac3a512391278e35f36b6a1a629e1ee46807"
+  },
+  {
+   "key": "dcprov.see_statement",
+   "record": "ad79aaaafe0afa4fd1f7f64c6e80785e995ff544014ae4181b5f6cd7c15ae27f",
+   "status": "AGREE",
+   "subject_key": "b6920d5a6a2b9c739af5d3ba2aa85800e67d92390384fccbaaa3792ae8c7d8e9"
+  }
+ ],
+ "subjects": {
+  "dcprov.one": "40d62414e1066a94bbf1d1394d27fc67c54442accd404a6dca2a4026e58a6961",
+  "dcprov.see_statement": "a51a50b914bc89763684dcadbc2acb17e21d5838b5f67ec3d412ef2fd900b823"
+ },
+ "__rest__": "4ae26dd2b340e2e5f23433a7a855d5e8deddca7f6623ee5a64f3ebd7f33200ec"
+}

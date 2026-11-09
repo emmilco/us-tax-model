@@ -60,7 +60,7 @@ def prepare_replay(path, prompt, response, meta, current_subject, archive_root=N
     The caller must also enforce review_response's exact current request/model/
     system match. This cannot migrate an older request with different context.
     """
-    path = Path(path)
+    path = materialize(Path(path))
     original = path.read_text()
     receipt = verify_saved(original, prompt, response, meta, current_subject)
     if receipt['request_provenance'] != 'bound':
@@ -73,7 +73,7 @@ def prepare_replay(path, prompt, response, meta, current_subject, archive_root=N
             or Path(str(base)+'.response.txt').read_text() != response
             or json.loads(Path(str(base)+'.meta.json').read_text()) != meta):
         raise ValueError('saved replay artifacts changed after request verification')
-    artifacts = [path, path.with_suffix('.rulings.json')]
+    artifacts = [path, Path(rulings.sidecar_path('transcription', *families.split_stem(path.stem)))]
     artifacts += [Path(str(base) + suffix) for suffix in ('.prompt.txt','.response.txt','.meta.json')]
     manifest = {}
     for artifact in artifacts:
@@ -192,10 +192,21 @@ def audit_pass(form_doc, log, pid, block, tagged):
             "type_errors": current.validation_errors, "input_context": interfaces, "changes": changes}
 
 
+def materialize(path):
+    """A log's view file at `path` (rulings.log_path), written from the review store when the store holds
+    the log, so the file read is the committed review."""
+    form, family = families.split_stem(path.stem)
+    text = rulings.read_log('transcription', form, family)
+    if text is not None and (not path.exists() or path.read_text() != text):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text)
+    return path
+
+
 def audit(path):
     form, family = families.split_stem(path.stem)
     base = Path(T.RAW) / path.stem
-    log = path.read_text()
+    log = materialize(path).read_text()
     prompt = base.with_suffix(base.suffix + ".prompt.txt").read_text()
     response = base.with_suffix(base.suffix + ".response.txt").read_text()
     meta = json.loads(base.with_suffix(base.suffix + ".meta.json").read_text())
@@ -246,8 +257,8 @@ def main():
     args = parser.parse_args()
     selected = set(args.forms.split(",")) if args.forms else None
     results, errors = [], []
-    for path in sorted(Path(T.LOGS).glob("*.md")):
-        form, family = families.split_stem(path.stem)
+    for form, family in rulings.forms_with_logs("transcription"):
+        path = Path(rulings.log_path("transcription", form, family))
         if (selected and form not in selected) or (args.family and family != args.family):
             continue
         try:

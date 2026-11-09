@@ -1,0 +1,55 @@
+{
+ "kind": "render",
+ "form": "refund",
+ "family": "deepseek",
+ "base": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+ "lines": [
+  {
+   "key": "1",
+   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 89, Line 1, Exception: \"1. You received a refund in 2025 that is for a tax year other than 2024\", \"2. You received a refund other than an income tax refund, such as a general sales tax or real property tax refund, in 2025 of an amount deducted or credit claimed in an earlier year\" and \"5. You made your last payment of 2024 estimated state or local income tax in 2025\". Exceptions 1 and 5 are refused by refund.not_2024 (\"Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024 state or local income tax in 2025 or before 2024?\", PENDING-5 of the credits-misc package having added \"or before 2024\"), whose refusal sits on refund.taxable, the line Schedule 1 line 1 enters, so no such refund reaches line 1 on a completed return; the model saw only line 1's refusals (refund.exc_tax, refund.exc_who). Exception 2 is outside refund.received (\"State or local income tax refunds, credits or offsets\") and refused by scope.schedule1 (\"a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund\"). The cap at line 5d is amb.2025.refund_cap_5d."
+  },
+  {
+   "key": "2",
+   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+   "status": "MATCH"
+  },
+  {
+   "key": "4",
+   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+   "status": "MATCH"
+  },
+  {
+   "key": "5",
+   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+   "status": "MATCH"
+  },
+  {
+   "key": "6",
+   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; i1040gi p. 90, worksheet line 6: \"Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)\" and its footnote \"*If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return\"; p. 33, Line 12d: \"Don’t check any boxes for your spouse if your filing status is head of household\". Each per-box helper is refund.per_box when its box is checked and zero otherwise, and refund.per_box is $1,550, or $1,950 when the 2024 status was single or head of household (refund.box_married, refund.box_unmarried), so the sum is the number of boxes times the amount. The married filing separately condition for the spouse boxes is in the spouse questions themselves (refund.spouse_born, refund.spouse_blind: \"answer yes only if your spouse also had no income, wasn't filing a return, and couldn't be claimed as a dependent on another person's return\"), as the footnote says; zeroing the spouse boxes for single, head of household and qualifying surviving spouse is the recorded reading amb.2025.refund_boxes_2024. Unchanged by the backlog packages."
+  },
+  {
+   "key": "7",
+   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+   "status": "MATCH"
+  },
+  {
+   "key": "8",
+   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+   "status": "MATCH"
+  },
+  {
+   "key": "9",
+   "record": "837774a83710b7d83afbd968c66be3e32dd0615555c7ff5766913732ee46785c",
+   "status": "MATCH"
+  }
+ ]
+}

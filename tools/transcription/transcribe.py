@@ -2130,7 +2130,7 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
     out += ["## Raw second transcription", "", "```yaml", raw_text.strip(), "```", ""]
     path = rulings.log_path("transcription", fid, family)
     if not dry_run:
-        open(path, "w", encoding="utf-8").write("\n".join(out))
+        rulings.write_log("transcription", fid, "\n".join(out), family)
     return path, counts
 
 
@@ -2329,11 +2329,11 @@ def scoped_main(a, form_doc, mani, params, values):
     """--lines: review only some lines and merge the verdicts into the existing log."""
     fid, family = a.form, families.family_of(a.model)
     path = rulings.log_path("transcription", fid, family)
-    if not os.path.exists(path):
+    if not rulings.has_log("transcription", fid, family):
         raise SystemExit(f"{fid}: no transcription log of the {family} family to merge into; run the whole review")
     if input_contracts.load(fid, Y):
         raise SystemExit(f"{fid}: a form with source partial-input cases is reviewed whole (its cases read every line)")
-    old = open(path, encoding="utf-8").read()
+    old = rulings.read_log("transcription", fid, family)
     names = [n.strip() for n in a.lines.split(",") if n.strip()]
     scope_keys, scope_ids, reach, stale, gone = plan_scope("transcription", fid, old, names)
     if reach is None:
@@ -2348,13 +2348,13 @@ def scoped_main(a, form_doc, mani, params, values):
                 # (plan_scope), so the current table records what the log reviewed.
                 merged = merge_log("transcription", fid, old, "## Raw second transcription", {}, key_order, [], None, None, _transcription_counts)
                 if not a.dry_run:
-                    open(path, "w", encoding="utf-8").write(merged)
+                    rulings.write_log("transcription", fid, merged, family)
                 print(f"{fid}: recorded the line subjects the log reviewed; no model call")
             return
         merged = merge_log("transcription", fid, old, "## Raw second transcription", {}, key_order, gone, None, None,
                            _transcription_counts)
         if not a.dry_run:
-            open(path, "w", encoding="utf-8").write(merged)
+            rulings.write_log("transcription", fid, merged, family)
         print(f"{fid}: dropped {', '.join(gone)}; no model call")
         return
     scoped_doc = {**form_doc, "lines": [l for l in form_doc["lines"] if l["id"] in reach]}
@@ -2411,7 +2411,7 @@ def write_scoped(form_doc, model, prompt, used, results, extra, raw_text, meta, 
     merged = merge_log("transcription", fid, old, "## Raw second transcription", fresh, key_order, gone, block, pid,
                        _transcription_counts, gate_rows)
     path = rulings.log_path("transcription", fid, family)
-    open(path, "w", encoding="utf-8").write(merged)
+    rulings.write_log("transcription", fid, merged, family)
     return path, counts
 
 

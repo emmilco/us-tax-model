@@ -1,0 +1,19 @@
+{
+ "kind": "render",
+ "form": "carloan",
+ "family": "claude",
+ "base": "c029dfdc004ef9f10c45392476fe7bc868d15a0c95d13b9b57c09f61098a947a",
+ "lines": [
+  {
+   "key": "22(ii)",
+   "record": "c029dfdc004ef9f10c45392476fe7bc868d15a0c95d13b9b57c09f61098a947a",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 110, Schedule 1-A, Line 22: \"On line 22, column (ii), enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F).\" The objection (Schedules E and F left out, no refusal named) is answered by a cited scope screen: scope.schedule1 asks about \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F)\" and refuses Form 1040 lines 8 and 10 when true (forms/2025/scope.yaml; f1040.line8, f1040.line10), so on every completed return Schedule C is the only place the interest can be deducted elsewhere; the form note says \"Schedules E and F are refused\". Same ruling as the archived rounds; the rendering is new (column (ii) is now the QPVLI part of the Schedule C interest, BUG-0175) and states that correctly (\"The QPVLI part of the Schedule C interest, by how you came to owe the loan\", fr-2025-24154 p. 23, proposed § 1.163-16(g)(1): \"Independently deductible interest is limited to interest that is QPVLI ... and that is otherwise deductible by the taxpayer as a different type of interest\"; (g)(2): the QPVLI \"is reduced to the extent that the taxpayer deducts that independently deductible interest as non-QPVLI\"). Not a model error (the source does name E and F)."
+  },
+  {
+   "key": "22(iii)",
+   "record": "c029dfdc004ef9f10c45392476fe7bc868d15a0c95d13b9b57c09f61098a947a",
+   "status": "MATCH"
+  }
+ ]
+}

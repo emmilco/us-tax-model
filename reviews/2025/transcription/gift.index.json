@@ -1,0 +1,24 @@
+{
+ "kind": "transcription",
+ "form": "gift",
+ "family": "claude",
+ "base": "9a2625f5e650c0be5d2b72d94c268ea5f66169af89afa684ed92b3b67c4fa18a",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "gift.allowed",
+   "record": "65f10abd184aa7b36693fa041f6eeed1f3f732a600bb49c830059f4417ca4dcd",
+   "status": "AGREE",
+   "subject_key": "d53be4d3df8e9403a9df316b270b792083ee5136cbd5c449e918a3df0a6928e5"
+  }
+ ],
+ "subjects": {
+  "gift.allowed": "892b8bb69a3ddd4fea578dee516127d3fd6fc167c104ce8ea1dff4a311b712d8"
+ },
+ "__rest__": "ddbcf2f1a297aa931cad1239e9a5fd1dd8e5972b3c96439aab19e487bc291084",
+ "foreign": {
+  "gift.allowed": "71ba755c3f0ee0c5fda98953eae22277a49edb26047a976720966e420f659adb"
+ }
+}

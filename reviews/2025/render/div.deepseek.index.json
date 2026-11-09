@@ -1,0 +1,119 @@
+{
+ "kind": "render",
+ "form": "div",
+ "family": "deepseek",
+ "base": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+ "lines": [
+  {
+   "key": "box2b",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box2c",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box2d",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box2e",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box2f",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box3",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box9",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box10",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box12",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box13",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "basis_reconciled",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box1a",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box1b",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box2a",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "box5",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "section1202",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "amt",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "unsupported",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; f1099div p. 5, Box 3: \"To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain.\" The input div.basis_reconciled asks \"For box 3, have basis reductions been applied to records with no distribution exceeding basis?\"; for a positive box 3 a No (which includes any distribution exceeding basis) makes div.unsupported true and div.screen refuses. The excess-distribution case the model says is omitted is therefore inside the question and refused. Same reading as the prior ruling on this line (sidecar `reviews/2025/render/div.deepseek.rulings.json`); the restatement is unchanged, and the line reopened only because the review context changed. Project stands."
+  },
+  {
+   "key": "bad_special",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "screen",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "bad_components",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  },
+  {
+   "key": "special_total",
+   "record": "5f428c1a3cae15527719495448b91dab00aabd6f8a9bca43974664cffd2fad77",
+   "status": "MATCH"
+  }
+ ]
+}

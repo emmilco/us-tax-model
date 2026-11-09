@@ -1,0 +1,86 @@
+{
+ "kind": "transcription",
+ "form": "sli",
+ "family": "claude",
+ "base": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "sli.deduction",
+   "record": "fb11e5a5d6510584fdedfada71cf0a6514cca3fc22a0af175275174060d01378",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; same reply and project as the round-2 and round-3 rulings. i1040gi p. 98, Line 21: \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's ... 2025 tax return.\" The reply refuses on sa.dependent (who can be claimed) where the source and the project (sli.claimed_count, person.sav_claimed) test being claimed. Triage executable-triage-v2 (reviews/2025/transcription/triage/sli.json; 1,638 fixtures, 500 generated returns seed 20261026, 40 partial records): the candidate declaration is invalid on this pass's scoped interface (candidate-invalid on all 2,178 records), so no value is compared. The R3 restructuring of sli.interest kept its words (word check: none lost). Project stands.",
+   "subject_key": "e070beaa6e513256952049a96506d207997bc1d5068872610ff657eacd7fa268"
+  },
+  {
+   "key": "1",
+   "record": "fb11e5a5d6510584fdedfada71cf0a6514cca3fc22a0af175275174060d01378",
+   "status": "AGREE",
+   "subject_key": "19e4c2e0adf1a00b0cf28fe992c2365c2131fe29e9e6d694ac4ff33ce616a365"
+  },
+  {
+   "key": "2",
+   "record": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
+   "status": "AGREE",
+   "subject_key": "f06c8819501913f493f68b1bb6e0be5ca054747f95e5db438105fdd7e72b4057"
+  },
+  {
+   "key": "3",
+   "record": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
+   "status": "AGREE",
+   "subject_key": "f07e3d9bebfe282c4eca83ff706210ab035d058525d9b401b5c851cf50412050"
+  },
+  {
+   "key": "4",
+   "record": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
+   "status": "AGREE",
+   "subject_key": "f32025b8289dae45ffdd495f774c8052b2230bd7f64be1c0681c55ffa354d6e2"
+  },
+  {
+   "key": "5",
+   "record": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained. The worksheet gives no amount for married filing separately, which cannot take the deduction; the project enters zero there and the second enters $85,000. Neither reaches Schedule 1 line 21: sli.deduction is zero for married filing separately.",
+   "subject_key": "ce9ee876a8bfb6f2a7896163c7878035443117f9891fc46e5eabb8f7514d4577"
+  },
+  {
+   "key": "6",
+   "record": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
+   "status": "DISAGREE",
+   "ruling": "Ruling: equivalent; project retained. Line 6 is used only when line 4 is more than line 5 (line 8 skips it otherwise), where the signed difference and the floored one are the same.",
+   "subject_key": "5fa1cb46053862fc689f8bbd79a12639929de4eda90fa91d8c3589638cdeba17"
+  },
+  {
+   "key": "8",
+   "record": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
+   "status": "DISAGREE",
+   "ruling": "Ruling: equivalent; project retained. The project skips to zero when line 4 is not more than line 5, as the worksheet says; the second always applies the ratio, which then has a part of zero or less, and prorate keeps the ratio at 0 or more, so it also gives zero (the same argument as the classified mutant on sli.line8).",
+   "subject_key": "62b692301af092a9b3d658fd054bce8f5ec90c363dd594ca00acc8552dadeda2"
+  },
+  {
+   "key": "9",
+   "record": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
+   "status": "DISAGREE",
+   "ruling": "Ruling: equivalent; project retained. Line 8 never exceeds line 1: prorate's ratio is at most 1.000 (Lean lemma prorate_le_amount), so the floor at zero never applies.",
+   "subject_key": "38f41dc9a9a2edda35036ecf12749928e4dba691ec6225af07ff6a5eebb2746c"
+  }
+ ],
+ "subjects": {
+  "sli.deduction": "e510e998d17fa197cdf50db53efa20d06379788a84dcbfc8776a2fd9176bb10f",
+  "1": "14f6e6e5ef6247b19ad2cc842ee75ae62cc347165052596c02dafcd1794de6d7",
+  "2": "03b76842d0b2c01ed25446bb350441f94e4e87fe6f19ca18a3ea8ee9d0f06a4d",
+  "3": "3a2f5cd698d5de7f0de48e3a76ddcbbd07c2f0b49b90c745ef539cc95ad9986d",
+  "4": "7525f5f108db9d3ec62d4c245aeea6b7186ca4e6c389a61b6e16750c48e330f2",
+  "5": "20c8ee35cb8da865b0bf308195f8641c250b33a3f63a3bdbf99bfcaefb21ed7d",
+  "6": "a77e5ff66b75bc33b649dc4f50a40614a840ae63e3bc5db7725797dbf0141e82",
+  "8": "68e05b5c4fcce5f4405fc5b1812ce224725cb97279f98d9586daca9df7f883f0",
+  "9": "7274f8a4ef90caae8b570f37c9581f7075be8d799b18248edab0c8a8e1d75673"
+ },
+ "__rest__": "cdbf85c374e333f356e978a01b3319b841c43b9a1e74b210b748829916056fb7",
+ "foreign": {
+  "sli.deduction": "5e71e09486b3638eef1ca7ad68c53ea93594179c3192bf31e4e4b3916035bc7d",
+  "1": "858fe29eeecfc7e735a4186d6ac0601622fb726b32d175e564be98b0c47a1478"
+ }
+}

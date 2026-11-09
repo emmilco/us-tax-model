@@ -1,0 +1,139 @@
+{
+ "kind": "render",
+ "form": "f8863",
+ "family": "deepseek",
+ "base": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+ "lines": [
+  {
+   "key": "1",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "2",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 2: \"Enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 2) gives the page's amount for every status the tool completes (edu.magi_limit). The married filing separately amount is never reached: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and params/2025.yaml records the mfs amount as never reached; the transcription triage confirms it (mfs witnesses generated 63, 115, 128 are refused returns). Same point as the earlier rounds, re-checked on the current f8863.yaml (BUG-0392 changed only the dependent bar of f8863.eligible). Project stands on the English."
+  },
+  {
+   "key": "3",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "4",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "5",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 5: \"Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 5) gives the page's amount for every status the tool completes (edu.phaseout_range). The married filing separately amount is never reached: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and params/2025.yaml records the mfs amount as never reached; the transcription triage confirms it (mfs witnesses generated 63, 115, 128 are refused returns). Same point as the earlier rounds, re-checked on the current f8863.yaml (BUG-0392 changed only the dependent bar of f8863.eligible). Project stands on the English."
+  },
+  {
+   "key": "7",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "7 (box)",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "8",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "9",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "10",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "11",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "12",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "13",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 13: \"Enter $180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 13) gives the page's amount for every status the tool completes (edu.magi_limit). The married filing separately amount is never reached: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and params/2025.yaml records the mfs amount as never reached; the transcription triage confirms it (mfs witnesses generated 63, 115, 128 are refused returns). Same point as the earlier rounds, re-checked on the current f8863.yaml (BUG-0392 changed only the dependent bar of f8863.eligible). Project stands on the English."
+  },
+  {
+   "key": "14",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "15",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; f8863 p. 1, line 15: \"Subtract line 14 from line 13. If zero or less, skip lines 16 and 17, enter -0- on line 18, and go to line 19\". The English floors line 15 at zero; the skip is carried by shown_when. Lines 13 to 16 are shown only on f8863.show_llc, which requires f8863.show_after4 (line 4 above zero) and line 10 above zero. Line 13 is line 2 and line 14 is line 3 (both Form 1040 line 11b, both refused with excluded income), so line 15 equals line 4 and is above zero wherever lines 15 and 16 are shown; where line 15 would be zero, line 4 has stopped the form and lines 15 to 19 are hidden. Line 18 is line 12 times line 15 / line 16, so a zero line 15 would give -0- as printed. Same point as the earlier rounds, re-checked on the current f8863.yaml (BUG-0392 changed only the dependent bar of f8863.eligible). Project stands on the English."
+  },
+  {
+   "key": "16",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; screen s3.mfs. f8863 p. 1, line 16: \"Enter $20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The English (rendered/2025/f8863.md, line 16) gives the page's amount for every status the tool completes (edu.phaseout_range). The married filing separately amount is never reached: scope.ready refuses the whole return on s3.mfs (\"Married filing separately\", remedy \"Married filing jointly is supported\", i1040gi p. 14), and params/2025.yaml records the mfs amount as never reached; the transcription triage confirms it (mfs witnesses generated 63, 115, 128 are refused returns). The model's second point, that line 16 shows whenever line 10 is above zero although it is skipped when line 15 is zero or less, is representation: line 16 is shown on f8863.show_llc, which also requires line 4 above zero, and line 15 equals line 4 (f8863 p. 1, lines 2 to 4 and 13 to 15 are the same figures). Same point as the earlier rounds, re-checked on the current f8863.yaml (BUG-0392 changed only the dependent bar of f8863.eligible). Project stands on the English."
+  },
+  {
+   "key": "18",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; f8863 p. 1, line 10: \"If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19\"; f8863 p. 1, line 15: \"Subtract line 14 from line 13. If zero or less, skip lines 16 and 17, enter -0- on line 18, and go to line 19\". When line 10 is zero, lines 11 and 12 are zero and line 18 (line 12 times the line 17 ratio) is $0.00, the -0- the form asks for; lines 11 to 17 are hidden (f8863.show_llc requires line 10 above zero). Line 18 itself is shown on f8863.show_after4, which matches the form: after line 4, line 18 is always entered (a figure or -0-) because the Credit Limit Worksheet line 1 reads it. Same point as the earlier rounds, re-checked on the current f8863.yaml (BUG-0392 changed only the dependent bar of f8863.eligible). Project stands on the English."
+  },
+  {
+   "key": "(CLW 1)",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "(CLW 2)",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "(CLW 3)",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "(CLW 4)",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "(CLW 5)",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "(CLW 6)",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "(CLW 7)",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  },
+  {
+   "key": "19",
+   "record": "be2dcc00c306a7fe5cfef1cd7425519ccc829a679f2547a372415e110e009395",
+   "status": "MATCH"
+  }
+ ]
+}

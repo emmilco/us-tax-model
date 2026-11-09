@@ -1,0 +1,153 @@
+{
+ "kind": "render",
+ "form": "f8889",
+ "family": "deepseek",
+ "base": "a075c08bb1ed2c0d46450c485575c0ae61ae206b8367d2f40edf73381565ac9d",
+ "head_rows": {
+  "line-scoped reviews": "4 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "2",
+   "record": "e7354547495c354d9a00f963567ba05cd887e4671486c13591475c9622b07701",
+   "status": "MATCH",
+   "subject_key": "174b0d50b6e8ab908bd6d5bf024121012ba34aea0bfb39f8423bcb6bcdd0411b"
+  },
+  {
+   "key": "9",
+   "record": "a075c08bb1ed2c0d46450c485575c0ae61ae206b8367d2f40edf73381565ac9d",
+   "status": "MATCH",
+   "subject_key": "439e665b7f453f3f46f69ff8c37676154277050d48546ae70a15f628b3e4792b"
+  },
+  {
+   "key": "3",
+   "record": "7f045590343d9accf3b82afe07f5039d45c6233d1dfa1f9ba605c19bcb81bf76",
+   "status": "MATCH",
+   "subject_key": "0d74ef46e438161f08121f4a9cbceed383e3dabb1c5a67e106e4002b31a743c3"
+  },
+  {
+   "key": "4",
+   "record": "a075c08bb1ed2c0d46450c485575c0ae61ae206b8367d2f40edf73381565ac9d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f8889 p. 1, line 4: \"Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2. If you or your spouse had family coverage under an HDHP at any time during 2025, also include any amount contributed to your spouse's Archer MSAs\". Every case with a nonzero line 4 is refused by f8889.unsupported, which since BUG-0236 asks about \"contributions by you or your employer to an Archer MSA for 2025 (Form 8853), or, if you or your spouse had family coverage under an HDHP at any time during 2025, any contribution by anyone to your spouse's Archer MSA\"; the line's cite names the refusal. Zero is the value on every completed return.",
+   "subject_key": "0ea15f5fcafd721f8ae70914b44e133e95ed14f89471869a90aa0e1d1d97c0a7"
+  },
+  {
+   "key": "5",
+   "record": "b4d9b3f753d42d563e9191a541e1e07ecdebd33916acf8de4aa0e5a2d4852ef5",
+   "status": "MATCH",
+   "subject_key": "ecbde25c7c864f8266ece22d07128556bb4bfb1246387a4a478d77eda84e39a5"
+  },
+  {
+   "key": "6",
+   "record": "7f045590343d9accf3b82afe07f5039d45c6233d1dfa1f9ba605c19bcb81bf76",
+   "status": "MATCH",
+   "subject_key": "3f988c785e6c806402d2498ce9f656bf6e27a9805be2691c9fe0c45be5136e1f"
+  },
+  {
+   "key": "7",
+   "record": "7f045590343d9accf3b82afe07f5039d45c6233d1dfa1f9ba605c19bcb81bf76",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; project retained. i8889 p. 7, Line 7, Additional Contribution Amount Worksheet: \"$1,000 x number of months eligible\" for months in which \"You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month\" and \"You were not enrolled in Medicare for the month\"; p. 5, Line 3, Note: \"If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\". Whether a self-only month in a year with family months counts is the registered ambiguity amb.2025.hsa_line7_months (owner accepted, after Stage 13): every eligible month counts, since line 3 leaves the $1,000 out for every month once a married filer had family coverage. Line 7 and line7_counted are unchanged by this round (line7_total now chooses on full_year, which equals use_last_month whenever coverage changed).",
+   "subject_key": "7cf62b476ad971dbb9f0e2c010b93c8872f28fec9a4557f35ed8ec02ec18c7e1"
+  },
+  {
+   "key": "8",
+   "record": "a075c08bb1ed2c0d46450c485575c0ae61ae206b8367d2f40edf73381565ac9d",
+   "status": "MATCH",
+   "subject_key": "c7db06fa58e27669c9cbbac38f12974080965b13f9bb5642cf891ef4a6e940fd"
+  },
+  {
+   "key": "10",
+   "record": "a075c08bb1ed2c0d46450c485575c0ae61ae206b8367d2f40edf73381565ac9d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f8889 p. 1, line 10. Qualified HSA funding distributions are refused by f8889.unsupported (\"a qualified HSA funding distribution from an IRA in 2025\"), as the line's cite says; zero is the value on every completed return.",
+   "subject_key": "a918a4b8310e96e33abf68cfac47e93258e80b119dbfa576b6fa2f4220ee9875"
+  },
+  {
+   "key": "11",
+   "record": "a075c08bb1ed2c0d46450c485575c0ae61ae206b8367d2f40edf73381565ac9d",
+   "status": "MATCH",
+   "subject_key": "5c0ccd8c2a94ca6d78fe6f4c47467fb48f05d1e750d0392331e483d556612c25"
+  },
+  {
+   "key": "12",
+   "record": "a075c08bb1ed2c0d46450c485575c0ae61ae206b8367d2f40edf73381565ac9d",
+   "status": "MATCH",
+   "subject_key": "4acd0b052bb475b19161b01c06cae5ca9adbd4318e403cec596e8d473bd3edf0"
+  },
+  {
+   "key": "13",
+   "record": "53984eb772ad71668eca5dbe5cf8dc73f22bf1f7b0487e9213e206201e5ab8c7",
+   "status": "MATCH",
+   "subject_key": "4c557cbebb3a47ce8ba9b7fc6bbfbd0ffd503131df917b482351f1212b35eb24"
+  },
+  {
+   "key": "14a",
+   "record": "e7354547495c354d9a00f963567ba05cd887e4671486c13591475c9622b07701",
+   "status": "MATCH",
+   "subject_key": "19cf7f6528cd72424be423fd22003261f05f0e79e0fd02cc404123c1134a9f5b"
+  },
+  {
+   "key": "14b",
+   "record": "e7354547495c354d9a00f963567ba05cd887e4671486c13591475c9622b07701",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; same objection as the earlier ruling. Excess contributions withdrawn by the due date are refused by f8889.unsupported, so on a completed return line 14b holds rollovers only.",
+   "subject_key": "692f9d6004246e436823c870ba145fa081f45c39ca0da9ffb6d65caa131ca355"
+  },
+  {
+   "key": "14c",
+   "record": "e7354547495c354d9a00f963567ba05cd887e4671486c13591475c9622b07701",
+   "status": "MATCH",
+   "subject_key": "a815c7a72bf76a7f9be58da1c057fc1f97a0dcd43b6c7d22e3365d76222508c7"
+  },
+  {
+   "key": "15",
+   "record": "e7354547495c354d9a00f963567ba05cd887e4671486c13591475c9622b07701",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; same objection as the earlier ruling. A withdrawal of excess contributions, and any earlier-year excess remaining in the HSA, is refused by f8889.unsupported, so the case cannot reach line 15 on a completed return.",
+   "subject_key": "1abf3c24e8c50cce1d9b086adebd759e9a4d7952d5c822af025742aafadf8639"
+  },
+  {
+   "key": "16",
+   "record": "53984eb772ad71668eca5dbe5cf8dc73f22bf1f7b0487e9213e206201e5ab8c7",
+   "status": "MATCH",
+   "subject_key": "f0377f90f575c133d81a54af1194066258a0b4ed4d63b82de19e3414aa24ea06"
+  },
+  {
+   "key": "17a",
+   "record": "a075c08bb1ed2c0d46450c485575c0ae61ae206b8367d2f40edf73381565ac9d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i8889 p. 9, Exceptions to the Additional 20% Tax (\"distributions made after the account beneficiary: Dies, Becomes disabled or Turns age 65\"). A distribution made after the account beneficiary's death is reported by the beneficiary or the estate; f8889.unsupported refuses \"an HSA you acquired because of the account beneficiary's death\" and \"the HSA of a person who died in 2025 whose estate is the beneficiary\", so only disability and age 65 can apply on a completed return.",
+   "subject_key": "a312a041bbdab47ec27d67c852aa01270bcee7df1783f79afe6b63328c17bd55"
+  },
+  {
+   "key": "17b",
+   "record": "53984eb772ad71668eca5dbe5cf8dc73f22bf1f7b0487e9213e206201e5ab8c7",
+   "status": "MATCH",
+   "subject_key": "7822f77bd1a16b6a93b88a3a0fc557e2c59c20bdfafd400a9d431f5906f34cce"
+  }
+ ],
+ "subjects": {
+  "2": "2801d78e69c37ee24115db41e5235da312bd06df55e272ee28083dc011a5f5bf",
+  "9": "c907349dbc8b5965c63f2946fe179ae94c3521ade0757220c0a0f0662cacf4e2",
+  "3": "5d4887fcb0bae38f9045defe38df90c47aedbf8420880830f87a60440b89a079",
+  "4": "66c8cb628df1fc8f52a3e6a07c44e516b2b37dc7b8337191d71e6c52ecef5fad",
+  "5": "596a0f9d51d06f96f387d802ebf21ecaefb7dde46c5c4084ac0e31e3aa0c94c1",
+  "6": "c4ebd67bcf627c6d2799f6c759be8edd272f4a9a4e3571a57f26bd75c725132c",
+  "7": "aa51cc660a8483c9a0c877415c3b30e28dc8df1df693a93da2682633e390b790",
+  "8": "140c092b04ec360b69526e0117464af2bb1daf4e1cd18619ddace827684b6909",
+  "10": "4d894568a5073a0219da252a0228e9f16d4da19de17284ac2591ccbd8a62bdf0",
+  "11": "10231ebfca7ee67bae504c3d67a48b26630654159159ba35f8f04439cb17d497",
+  "12": "433e1aab81c429caf584307e3aefe3f7b97a2077d40a3f639fdb9a4d76c7915b",
+  "13": "86d4a112904354a5b848a02b594d6e4c1c3db44cb1bf8e74e4951a62ce0f5d64",
+  "14a": "2a13fc3666dd83c836cabda2b0e3f470c3e797bc913548161b25f9a6763613d4",
+  "14b": "1cc9da67d36bfb3e4e5dbc97332dd6257b083257857343d18c0872f8fb0d6b72",
+  "14c": "ab5463202f3bac2cc65837d523f1a5b1e024ca4c01ad301d1192e808e93a3385",
+  "15": "77217f5fc55edb678d58ccdd180199765484af7676b109948635f8c0328a77e6",
+  "16": "a87b211bcc66d994060adb506b344fdd74c9fe4eab74b749c18844a3fc8c8a46",
+  "17a": "2b52e5398cab09553bc77bfe41957ef8e1bf70e6915a380f8705b30eec8cf27e",
+  "17b": "e7734566a9890e60f78161a6258e0e6978ce360c9e15cfa9b8ef40dd9501e8f1"
+ },
+ "__rest__": "bdc36683c122885994a35ce87a05757264baa4a4985325d2b5046e65d8a7ef69"
+}

@@ -1,0 +1,113 @@
+{
+ "kind": "render",
+ "form": "f8995a",
+ "family": "claude",
+ "base": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "27",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "MATCH",
+   "subject_key": "6d1c687d964e49629a4e2a9e5ff69b486466db9a8c7e4c2397af3fdc35880202"
+  },
+  {
+   "key": "29",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "MATCH",
+   "subject_key": "505cd53fcd9af5a5bdf2d32721cd825f57fa424b8e76167fca099e89a73bb76c"
+  },
+  {
+   "key": "38",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "MATCH",
+   "subject_key": "36ab921ff14fd5d97520fa92e63882304ff4d9a45fb54db19cbab3d8bdc6542c"
+  },
+  {
+   "key": "40",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "MATCH",
+   "subject_key": "e0481745c39650fecb27ae3b4f3718898354c9e3b403b19b507ab21d53228f16"
+  },
+  {
+   "key": "28",
+   "record": "23fc1fa7ad51ff180333da75acdeb938b12e30632fe9f7a650ce8e86661274ed",
+   "status": "MATCH",
+   "subject_key": "b2a6d3ca299ef560cdef2eb6d8fa40826e44f6d5b23237df27eb893a96b4ea4c"
+  },
+  {
+   "key": "30",
+   "record": "23fc1fa7ad51ff180333da75acdeb938b12e30632fe9f7a650ce8e86661274ed",
+   "status": "MATCH",
+   "subject_key": "45d1fe93b234e6a70ffc448d848848f23517f412ac7edf191670772d4d8b168b"
+  },
+  {
+   "key": "31",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "MATCH",
+   "subject_key": "14a24299e79d0323815facb5ec0e5225d8fcb9c6c3760ad1d500cf25e9c6da4a"
+  },
+  {
+   "key": "32",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "MATCH",
+   "subject_key": "2751b96333b9f7209c134693c65d0205945852c4452e468a4ce780f77c117300"
+  },
+  {
+   "key": "33",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "MATCH",
+   "subject_key": "a58e793b810f52e11e9a893f0a3365ddef0cf40bf5ac669fdc9c4622d4e3d06e"
+  },
+  {
+   "key": "34",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: representation; project retained. For a Schedule D filer the helper is the smaller of Schedule D lines 15 and 16, floored at zero, plus Form 1040 line 3a, as the instructions say. When Schedule D is not required (i8995 p. 4: \"your net capital gain is the amount reported on Form 1040, 1040-SR, or 1040-NR, line 7a\") the Schedule D lines are still computed from line 13 alone, so lines 15 and 16 both equal the box 2a total that line 7a carries, and the helper gives the same amount. No change to the data.",
+   "subject_key": "a97c6baf5bc46e8281f032f6616eb45305d5399f1526ba3fb4b649e74142585b"
+  },
+  {
+   "key": "35",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "MATCH",
+   "subject_key": "f8e48c85fc66f9f15702d8639dc88c08ce941004f6ec0e602789dffbd0c34098"
+  },
+  {
+   "key": "36",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "MATCH",
+   "subject_key": "edbfdee7086cabfec53da1cd36612fc6c922fea47d7ac517a467afcef24c6ddd"
+  },
+  {
+   "key": "37",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "MATCH",
+   "subject_key": "cbdef3ea6b52af91d6fa1d00cbeacee43c3d879a57d3359c6ec10c3d025c1644"
+  },
+  {
+   "key": "39",
+   "record": "3fb908e614b21bbc4fecaca86e29fdfad0518087074790752173db8bfdeb19d7",
+   "status": "MATCH",
+   "subject_key": "7ff976f3346c61bdf6e3e24ce15343f7745c1d4ef289d1d074a3bd88702391c3"
+  }
+ ],
+ "subjects": {
+  "27": "55e827cbc0d1def9e911a106a83b576d84f0d49963aad019710cbfe432fc1893",
+  "29": "b28254734a394baea671beb13e14a1c76097c6546d5201e72bdf91a9f769fd87",
+  "38": "68624d7557c2a14b8df01e62e2b56ff097f55446dd90e8cc965a72b7ffa7267c",
+  "40": "3f2aa569b0b8584dd4ba336f6e3da3c15782c941e279a7b79b5aef3f19d2a998",
+  "28": "2868a38c05b22047c1fd6de66c67141baba2ebfa3388f74d878fc4cafb1220ad",
+  "30": "d265d6a0bd1ebb69c0de04acbcf10f65a7e90a9253e5614ed2e775e35caa0f19",
+  "31": "448e1725c751e9e01a621ba54b104f60dd2fdbabf121aba5ae0bfb11555c2236",
+  "32": "1ddb2a8ceaa098b4df21bea8710720d30ac772f9f81545aafc8310459dcd3432",
+  "33": "2cb8126bd62aa891a24bacbec3d18b5cc3e9f2c55f91d6632bc4c092845b9a52",
+  "34": "cedf3890e7cb7d5e478a6abeda717547abb306ade24af57dbcb307a04028e22c",
+  "35": "61543add5725276ec3653e5097a38409c819cb2aee738f1252f8a45b860dae2a",
+  "36": "809bd973ee3e31af79d98efda82bbf37f0540326acbe176f93d4114955020962",
+  "37": "d7ecfdbf2cf6160d84d3ba61638228bb8c151119503e32a0734884c2b789688c",
+  "39": "a80b2e7935a6d407a5299fd668dec9abf18397f47f8eb114d395e0f54b3c9452"
+ },
+ "__rest__": "f875ddea121908d0b09d6e0f82bb3615b33f9ee3afef7921618eb12670dbfd8f"
+}

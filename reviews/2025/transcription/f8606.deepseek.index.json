@@ -1,0 +1,49 @@
+{
+ "kind": "transcription",
+ "form": "f8606",
+ "family": "deepseek",
+ "base": "d811a7a2c09ded0c3ae9662f94273b2de19c5809b1b17b5e82c393040719351a",
+ "lines": [
+  {
+   "key": "1",
+   "record": "d811a7a2c09ded0c3ae9662f94273b2de19c5809b1b17b5e82c393040719351a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: open",
+   "subject_key": "b97e9c260a0d895a5bfc4608847cc53a8b63bda5e15861a8752f4bcab99d6f86"
+  },
+  {
+   "key": "2",
+   "record": "d811a7a2c09ded0c3ae9662f94273b2de19c5809b1b17b5e82c393040719351a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: open",
+   "subject_key": "03091ff367d473a5f0c686ce608cc182bc70306e8486c73cd9e05ec16f564b82"
+  },
+  {
+   "key": "3",
+   "record": "d811a7a2c09ded0c3ae9662f94273b2de19c5809b1b17b5e82c393040719351a",
+   "status": "AGREE",
+   "subject_key": "11479dc3a723ef251480cbd58a0e8f641c2fe436b368260fa24bcff21e6089d4"
+  },
+  {
+   "key": "3 (question)",
+   "record": "d811a7a2c09ded0c3ae9662f94273b2de19c5809b1b17b5e82c393040719351a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: open",
+   "subject_key": "b214d56de18b37c19975345f249e5af44fe9e4936e962355df13750f2e80ea27"
+  },
+  {
+   "key": "14",
+   "record": "d811a7a2c09ded0c3ae9662f94273b2de19c5809b1b17b5e82c393040719351a",
+   "status": "AGREE",
+   "subject_key": "4da303d971095cf1e88e47ce062705f008257057f21f99f055fe7b902f2e418f"
+  }
+ ],
+ "subjects": {
+  "1": "4a68943cbdef9daffb1d1b441e96fcecce555879fcee8c6594c2282aedc86f47",
+  "2": "634073c12d2dfaa21084b3b4533c3cd4299d417d78dfe0930c27a99a6080c699",
+  "3": "77fbbfad2ddf811236cef8789fcb59b34d74edcd850b9de4b1baca041ed2aed8",
+  "3 (question)": "c24a7c83e2a4313a662c1b4741330510a55b4965188362643d7497d540a754dc",
+  "14": "ce0f81a1499de0a7e565a9b7d7838c92fbdb0266be5c7fb3cb42afbee6e3db89"
+ },
+ "__rest__": "747a9efefad1937c3c4ae86081de60fab2c059bf372254f1ebc973326d746dac"
+}

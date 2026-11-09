@@ -1,0 +1,49 @@
+{
+ "kind": "transcription",
+ "form": "f8606",
+ "family": "claude",
+ "base": "930af053a6496c814280d9170f12f5ac511243e5f1b2906b4f18d92c0270d0c6",
+ "lines": [
+  {
+   "key": "1",
+   "record": "930af053a6496c814280d9170f12f5ac511243e5f1b2906b4f18d92c0270d0c6",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained. The second leaves line 1 an input; the project figures it as the instructions direct for a filer who used the IRA Deduction Worksheet (person.ira_nondeductible): i8606 p. 9, Line 1, \"subtract line 12 of the worksheet (or the amount you chose to deduct on Schedule 1 (Form 1040), line 20, if less) from the smaller of line 10 or line 11 of the worksheet\". The other sources in the second's note are refused or the same: the Pub. 590-A worksheet (ira.kbh_short, ira.both_kinds), qualified reservist repayments (ira.special), the election to deduct less (ira.less_gate), and contributions with no deductible part, which the same subtraction gives with line 12 zero, contributions above the limit being refused (person.ira_over_limit, ira.over_comp).",
+   "subject_key": "b97e9c260a0d895a5bfc4608847cc53a8b63bda5e15861a8752f4bcab99d6f86"
+  },
+  {
+   "key": "2",
+   "record": "930af053a6496c814280d9170f12f5ac511243e5f1b2906b4f18d92c0270d0c6",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained. Both take line 2 as the filer's amount: the project asks it (person.ira_basis) only of a person who files Form 8606 (person.ira_8606_line2), zero otherwise. i8606 p. 9, Line 2, \"Generally, if this is the first year you are required to file Form 8606, enter -0-. Otherwise, use the Total Basis Chart\". The wording of the project's question is a separate proposed finding, ruled in the render log for this line.",
+   "subject_key": "03091ff367d473a5f0c686ce608cc182bc70306e8486c73cd9e05ec16f564b82"
+  },
+  {
+   "key": "3",
+   "record": "930af053a6496c814280d9170f12f5ac511243e5f1b2906b4f18d92c0270d0c6",
+   "status": "AGREE",
+   "subject_key": "11479dc3a723ef251480cbd58a0e8f641c2fe436b368260fa24bcff21e6089d4"
+  },
+  {
+   "key": "3 (question)",
+   "record": "930af053a6496c814280d9170f12f5ac511243e5f1b2906b4f18d92c0270d0c6",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; project retained. The project asks the question of each person (person.ira_dist) and shows the answer on the Form 8606 of a person who files it (f8606.dist, person.ira_dist_gate: nondeductible contributions and Yes); a Yes refuses line 14, and the deduction through person.ira_deduction, since lines 4 to 13 are not prepared. Form 8606 (2025), Part I, \"In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?\" and \"Go to line 4\".",
+   "subject_key": "b214d56de18b37c19975345f249e5af44fe9e4936e962355df13750f2e80ea27"
+  },
+  {
+   "key": "14",
+   "record": "930af053a6496c814280d9170f12f5ac511243e5f1b2906b4f18d92c0270d0c6",
+   "status": "AGREE",
+   "subject_key": "4da303d971095cf1e88e47ce062705f008257057f21f99f055fe7b902f2e418f"
+  }
+ ],
+ "subjects": {
+  "1": "4a68943cbdef9daffb1d1b441e96fcecce555879fcee8c6594c2282aedc86f47",
+  "2": "634073c12d2dfaa21084b3b4533c3cd4299d417d78dfe0930c27a99a6080c699",
+  "3": "77fbbfad2ddf811236cef8789fcb59b34d74edcd850b9de4b1baca041ed2aed8",
+  "3 (question)": "c24a7c83e2a4313a662c1b4741330510a55b4965188362643d7497d540a754dc",
+  "14": "ce0f81a1499de0a7e565a9b7d7838c92fbdb0266be5c7fb3cb42afbee6e3db89"
+ },
+ "__rest__": "747a9efefad1937c3c4ae86081de60fab2c059bf372254f1ebc973326d746dac"
+}

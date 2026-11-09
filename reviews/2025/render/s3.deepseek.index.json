@@ -1,0 +1,108 @@
+{
+ "kind": "render",
+ "form": "s3",
+ "family": "deepseek",
+ "base": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-04); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1",
+   "record": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1116 p. 25, Line 20 subtracts \"any tax included on line 16 from Form 4972\", but Form 4972 is refused for the whole return by scope.other_line16 (its question names Form 4972), so no Form 4972 tax is ever on line 16 and ftc.regular_tax (Form 1040 line 16 plus Schedule 2 line 1z) is the source's regular tax on every computed return. The earlier Stage 18 finding on line 1z is fixed (line 1z is now added).",
+   "subject_key": "ae9a9acb3f2fd6fe3c52a33711a89d3af9edcb3a256c043c180d2b2eb31f85b7"
+  },
+  {
+   "key": "2",
+   "record": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+   "status": "MATCH",
+   "subject_key": "84e18bb81b2a6221b6263b84056f44ae794e535bf78d627f5896e8ce92cd810d"
+  },
+  {
+   "key": "3",
+   "record": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; married filing separately is refused for the whole return by s3.mfs through scope.ready (i8863 p. 3), and the MAGI phaseout is applied in f8863 lines 3 to 8; the f8863.eligible gate is not the whole Form 8863 computation. Same reading as the earlier rounds.",
+   "subject_key": "e2a76de977b9c8b38fc9ea353744dc101d2c11e4997ed87e579fdd48b6a6b901"
+  },
+  {
+   "key": "4",
+   "record": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+   "status": "MATCH",
+   "subject_key": "df04c4b5314ea29dc87b6397588c5fb14a1cdd1ef6c482738f7a2e2f6cf21dd5"
+  },
+  {
+   "key": "5a",
+   "record": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+   "status": "MATCH",
+   "subject_key": "6a6d108536e96b5eb98bc9c03bb5f445cf342f6a56c993724fc5d1c3476e3b8b"
+  },
+  {
+   "key": "5b",
+   "record": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+   "status": "MATCH",
+   "subject_key": "5432c2a1e300e3a51106b0dfb2bc5513b7d14b05bfa6b730f46d46021cd6db27"
+  },
+  {
+   "key": "8",
+   "record": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+   "status": "MATCH",
+   "subject_key": "03327434444f7daffae8cb03aba77e5f1e2f2fa091114e3ff1febc197ae118ab"
+  },
+  {
+   "key": "9",
+   "record": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+   "status": "MATCH",
+   "subject_key": "d706e2d4cff3a76f1613955dbc6325b232346fbc2a6983d726bcab97bf1a7edc"
+  },
+  {
+   "key": "10",
+   "record": "b580fc07aa620c9eaf7c271f116c6aa940215908d0dcbfb953bea3d26670c0c8",
+   "status": "MATCH",
+   "subject_key": "28f733119c2465c27a4111ff993baae49a04fa60a0c39f3eef56223389a02ea9"
+  },
+  {
+   "key": "11",
+   "record": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+   "status": "MATCH",
+   "subject_key": "f013b290e2685fc5121ca3f939b4207294a90d6b0c61b4c3b95ca2807d934773"
+  },
+  {
+   "key": "12",
+   "record": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+   "status": "MATCH",
+   "subject_key": "b985077eb3b1df346c3fc071f26a5c447ad053f942cef5795d31f1ceda527841"
+  },
+  {
+   "key": "14",
+   "record": "c0ac8a8d600f6b88841272b4a2a8bdd05f1a40872face32bd8383a8046d1cc88",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040s3 p. 1, line 14, \"Add lines 13a through 13z\". Line 14 is a supplied subtotal, an acknowledged input boundary (the component credits are prepared outside the tool). Same ruling as the earlier rounds.",
+   "subject_key": "8b2cda6a478bee52a635171810f751efee531f6d3b5f099098abb8d53d27b095"
+  },
+  {
+   "key": "15",
+   "record": "b580fc07aa620c9eaf7c271f116c6aa940215908d0dcbfb953bea3d26670c0c8",
+   "status": "MATCH",
+   "subject_key": "83fb404d09ad451ef7ce84a8c0c7a4dbf44bee5498e6674578e6aecb555e8164"
+  }
+ ],
+ "subjects": {
+  "1": "ded34d212eacabb39f6445472e28854183bea291945d9f82d0e283104bd132e6",
+  "2": "c6c1a986f392158e972b3d3c504a77f107b56ffccb86a08d2a3da67af9d74b37",
+  "3": "56a99ba96761c8684a9a02abb9be7b20e5dc55509f54fb7056bd6497647c170d",
+  "4": "e5524e535715293c1d2815fe688423294c14e6dfb2295db127d82169eca12162",
+  "5a": "c4988be8840967b5a0de6a27ae75af66eba648a95e1a36e5cc79cfdd952ff32e",
+  "5b": "dccae798383c7016d21dce56517ef5342f264596ea3f46872ee8dcea28cb32fd",
+  "8": "c78511342c4e05abaaf795ce9c089e6944e289e61f200b396a83cc3067bfffbd",
+  "9": "26c3895c47ea7bcc8d11f9f873c430fa59e41ba5e05cd1f204526673ccb2e823",
+  "10": "0a080902944cb2f9763abe35a934374184f7f2c814d9a925967b2a14ad97f21c",
+  "11": "03eaa13bfa979a1356fd0bf0ca3bcf3467a54375cfd41232c56dc6ecb6ff1b01",
+  "12": "9776dbe8e19e058487c7d0fcab3f6cc1b66daa8d4c4a63cb0458258443320126",
+  "14": "274556e49568cac38013771b4db92a4a387571a3b8699206e456a64ceccc2a1d",
+  "15": "4391ff8be6d5a8995dca5dcd614274d5da5c51b27d59aaf664fb741e3ef4f28d"
+ },
+ "__rest__": "487560df15d6fc1a64adb3d4ac3ebeac2bb6f161dcfda5434ce9e3e5e454415d"
+}

@@ -1,0 +1,74 @@
+{
+ "kind": "render",
+ "form": "clcw",
+ "family": "claude",
+ "base": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+ "lines": [
+  {
+   "key": "1",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.2025.clcw_line1_signed. UNCLEAR: the model says nothing in the text given says line 15 equals line 11 minus line 14, and that Form 1040-NR is left out without a refusal. i1040sd p. 10, line 1: \"Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15. If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses\". The rendering states the reading recorded in amb.2025.clcw_line1_signed (owner's decision D2(a), 2026-10-27): ask for 2024 lines 11 and 14 as printed and take line 1 as their difference, because the printed line 15 is floored at zero and the worksheet wants the amount before the floor. The identity is printed on the 2024 Form 1040 (sources/2024/f1040 p. 1, line 15: \"Subtract line 14 from line 11. If zero or less, enter -0-. This is your taxable income\"), a page the review was not given (it had i1040sd pp. 3 and 10 and p550 pp. 102-103), because the line's citation names only the worksheet. Form 1040-NR is outside the tool (this tool prepares Form 1040 or 1040-SR only), so leaving it out changes nothing. Same ruling as the first Stage 20 round. The BUG-0185 change (line 1 shown only when clcw.applies) agrees with p. 10, \"Otherwise, you don't have any carryovers\", and is not disputed."
+  },
+  {
+   "key": "2",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  },
+  {
+   "key": "4",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  },
+  {
+   "key": "5",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  },
+  {
+   "key": "6",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  },
+  {
+   "key": "7",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  },
+  {
+   "key": "8",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  },
+  {
+   "key": "9",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  },
+  {
+   "key": "10",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  },
+  {
+   "key": "11",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  },
+  {
+   "key": "12",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  },
+  {
+   "key": "13",
+   "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
+   "status": "MATCH"
+  }
+ ]
+}

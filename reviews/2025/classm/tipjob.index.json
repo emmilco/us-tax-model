@@ -1,0 +1,43 @@
+{
+ "kind": "classm",
+ "form": "tipjob",
+ "family": "claude",
+ "base": "99a01d0d51f2140007f4940a997b4a9c8c8f241d0208eae91a098e06fe6b1ab5",
+ "lines": [
+  {
+   "key": "case classm.tipjob.1",
+   "record": "99a01d0d51f2140007f4940a997b4a9c8c8f241d0208eae91a098e06fe6b1ab5",
+   "status": null
+  },
+  {
+   "key": "classm.tipjob.1 — person[taxpayer].tipjob[tip_1].mixed",
+   "record": "99a01d0d51f2140007f4940a997b4a9c8c8f241d0208eae91a098e06fe6b1ab5",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.tipjob.1 — person[taxpayer].tipjob[tip_1].col_d",
+   "record": "99a01d0d51f2140007f4940a997b4a9c8c8f241d0208eae91a098e06fe6b1ab5",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.tipjob.1 — person[taxpayer].tipjob[tip_2].mixed",
+   "record": "99a01d0d51f2140007f4940a997b4a9c8c8f241d0208eae91a098e06fe6b1ab5",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.tipjob.1 — person[taxpayer].tipjob[tip_2].col_d",
+   "record": "99a01d0d51f2140007f4940a997b4a9c8c8f241d0208eae91a098e06fe6b1ab5",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.tipjob.1 — person[taxpayer].tipjob[tip_3].mixed",
+   "record": "99a01d0d51f2140007f4940a997b4a9c8c8f241d0208eae91a098e06fe6b1ab5",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.tipjob.1 — person[taxpayer].tipjob[tip_3].col_d",
+   "record": "99a01d0d51f2140007f4940a997b4a9c8c8f241d0208eae91a098e06fe6b1ab5",
+   "status": "AGREE"
+  }
+ ]
+}

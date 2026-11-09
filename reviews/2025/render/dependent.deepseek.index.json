@@ -1,0 +1,89 @@
+{
+ "kind": "render",
+ "form": "dependent",
+ "family": "deepseek",
+ "base": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+ "lines": [
+  {
+   "key": "2(d)",
+   "record": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner's decision, Stage 15 decision 6). Column (d) shows each person's expenses including those paid with dependent care benefits, and f2441.line30 subtracts line 28 once from the total, since the instructions give no rule for dividing line 28 among the qualifying persons; the model reads the unchosen reading (net each column (d)), as ruled on this line before. Project stands.",
+   "subject_key": "cc33779ad0783cfc7feb1c058873982b8638ec956488da1f037986696b447e6f"
+  },
+  {
+   "key": "2(c)",
+   "record": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+   "status": "MATCH",
+   "subject_key": "01cdfeeec9c4bcb8c3bd73f2712251e499cf32dca026ba3562e694107014e732"
+  },
+  {
+   "key": "23",
+   "record": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+   "status": "MATCH",
+   "subject_key": "c92b2b21960768e28a8b066706cef95cca4f25c3fa073bbe13ee6409e381463d"
+  },
+  {
+   "key": "24",
+   "record": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+   "status": "MATCH",
+   "subject_key": "20d7830a65474aca628117852e1cbaadc95a72ffb3f2828c020715938184f84a"
+  },
+  {
+   "key": "25",
+   "record": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+   "status": "MATCH",
+   "subject_key": "45847cb71ecb6368c6fc023d8a1d918fc9cdd1ed87714eac8b7767cb6ecb8175"
+  },
+  {
+   "key": "26",
+   "record": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+   "status": "MATCH",
+   "subject_key": "d5654bd989902c95dce8eb6ffebe59cdf0b84579b5260a913623bef58f96969a"
+  },
+  {
+   "key": "27",
+   "record": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+   "status": "MATCH",
+   "subject_key": "999dbdeaed40c6f36df0cb856c695489035d3c658cd1ed61dcb4843a3f1b77d9"
+  },
+  {
+   "key": "28",
+   "record": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+   "status": "MATCH",
+   "subject_key": "552cf84ca8b12384ed238857aaac586a1937cb6a3ec11539cedbc92160b6d665"
+  },
+  {
+   "key": "29",
+   "record": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+   "status": "MATCH",
+   "subject_key": "80a2e5b04475c97f6338c8e844a1562e53a7434721484e34369efd5273808200"
+  },
+  {
+   "key": "30",
+   "record": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+   "status": "MATCH",
+   "subject_key": "7f8cfff84dab2175aa1fe56dfbaad170162f2485111541f7f02edd13fb7cbb11"
+  },
+  {
+   "key": "31",
+   "record": "cfdf861f8d6f6d60d591e68ee732231bba3da016dc57c5d5e4c48fa77be6aecd",
+   "status": "MATCH",
+   "subject_key": "d8cbcd001228960b4a3cc8fe9cf3a0bc03023e989c8b4ba796db46ff01936feb"
+  }
+ ],
+ "subjects": {
+  "2(d)": "f7e42973fe29ad72d98658d96dce0d09b8c81ec36865f67aa53f5dff8f10cf63",
+  "2(c)": "d469bd18ec04026f6dbe31e33e6c5de811719198379aac7a89c10eb24d6c027e",
+  "23": "6ef859612fc9225528754b68254a0f904c73e2d5cbe8172eadcfd9a024d89b7e",
+  "24": "950b5911626062d8b6e371390ffa4abaa869d4f8ae8879b4c770300013e47632",
+  "25": "d478c5d661e7a967987ef96c88fb3d604b3cdf01a1cfcb6e3ba0e9ef25c1fcb4",
+  "26": "411783735e8d1485648d29199c6cec2a0dcf0678979c53de8767046ed22d7ea8",
+  "27": "d883ea37db9be7919a4239a0f1eb5500e6dc9b6e45efae8d8cacaa3652aa2842",
+  "28": "c4d94ba423f8ced4fedc040427f68062b807eadb897cfd2c8eff8c1941568634",
+  "29": "2c1ea0ed4348a682d6c93cac00116706fbe2544bdac5234024c54f6a3b19287b",
+  "30": "024ada48eae478aaf65324bb03373939e99bf28fc2e3d64c9a22e054b3659175",
+  "31": "68484b92ea79f0afa1712786736d7f9d8474f65e85bc9cbc6282e7895b4a5bed"
+ },
+ "__rest__": "85c13429612c31523d60858f9c1f8860027800b8a1a07fdceb234a74b1f8f973"
+}

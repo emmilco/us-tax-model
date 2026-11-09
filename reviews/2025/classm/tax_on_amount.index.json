@@ -1,0 +1,38 @@
+{
+ "kind": "classm",
+ "form": "tax_on_amount",
+ "family": "claude",
+ "base": "19714ff43ea516e76f3313ca8015cc6c541a6c021e36b79155567d011819be6b",
+ "lines": [
+  {
+   "key": "case classm.tax_on_amount.1",
+   "record": "19714ff43ea516e76f3313ca8015cc6c541a6c021e36b79155567d011819be6b",
+   "status": null
+  },
+  {
+   "key": "classm.tax_on_amount.1 — below_boundary",
+   "record": "19714ff43ea516e76f3313ca8015cc6c541a6c021e36b79155567d011819be6b",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.tax_on_amount.1 — tax",
+   "record": "19714ff43ea516e76f3313ca8015cc6c541a6c021e36b79155567d011819be6b",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.tax_on_amount.2",
+   "record": "19714ff43ea516e76f3313ca8015cc6c541a6c021e36b79155567d011819be6b",
+   "status": null
+  },
+  {
+   "key": "classm.tax_on_amount.2 — below_boundary",
+   "record": "19714ff43ea516e76f3313ca8015cc6c541a6c021e36b79155567d011819be6b",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.tax_on_amount.2 — tax",
+   "record": "19714ff43ea516e76f3313ca8015cc6c541a6c021e36b79155567d011819be6b",
+   "status": "AGREE"
+  }
+ ]
+}

@@ -46,7 +46,48 @@ def sidecar_path(kind, form, family=families.DEFAULT):
 
 
 def log_path(kind, form, family=families.DEFAULT):
-    return os.path.join(REVIEWS, kind, families.stem(form, family) + ".md")
+    """Where a form's log is written as a readable view (review_store.view_path): generated from the
+    committed index and records, never read back as the record. Read a log with read_log."""
+    import review_store
+    return review_store.view_path(kind, form, family)
+
+
+def read_log(kind, form, family=families.DEFAULT):
+    """A form's review log, as review_store assembles it from its index and records; None when the form
+    has no index. A log file at log_path is read only outside the generated views (a test's own log)."""
+    import review_store
+    text = review_store.view(kind, form, family)
+    if text is not None:
+        return text
+    path = log_path(kind, form, family)
+    if review_store.is_view(path) or not os.path.exists(path):
+        return None
+    return open(path, encoding="utf-8").read()
+
+
+def has_log(kind, form, family=families.DEFAULT):
+    import review_store
+    if os.path.exists(review_store.index_path(kind, form, family)):
+        return True
+    path = log_path(kind, form, family)
+    return not review_store.is_view(path) and os.path.exists(path)
+
+
+STORE_ELSEWHERE = False  # store logs as records even in a reviews directory outside the repository's (tests)
+
+
+def write_log(kind, form, text, family=families.DEFAULT):
+    """Store a log a review tool wrote (review_store.ingest) and refresh its readable view; returns the
+    view's path."""
+    import review_store
+    path = log_path(kind, form, family)
+    if review_store.is_view(path) or STORE_ELSEWHERE or os.path.exists(review_store.index_path(kind, form, family)):
+        review_store.ingest(kind, form, family, text)
+    # else: a reviews directory outside the repository's (a test's) keeps plain log files
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
+    return path
 
 
 # A transcription disagreement is keyed by its printed line and both expression texts. The sidecar
@@ -349,7 +390,9 @@ def forms_with_logs(kind):
     d = os.path.join(REVIEWS, kind)
     if not os.path.isdir(d):
         return []
-    pairs = [families.split_stem(f[:-3]) for f in os.listdir(d) if f.endswith(".md")]
+    stems = {f[:-len(".index.json")] for f in os.listdir(d) if f.endswith(".index.json")}
+    stems |= {f[:-3] for f in os.listdir(d) if f.endswith(".md")}  # a test's own log files
+    pairs = [families.split_stem(s) for s in stems]
     return sorted(pairs, key=lambda p: (p[0], p[1] != families.DEFAULT, p[1]))
 
 
@@ -357,7 +400,7 @@ def migrate():
     total = 0
     for kind in KINDS:
         for form, family in forms_with_logs(kind):
-            text = open(log_path(kind, form, family), encoding="utf-8").read()
+            text = read_log(kind, form, family)
             rulings = load(kind, form, family)
             for key, line in log_sections(kind, text):
                 key = stored_key(kind, key)
@@ -383,7 +426,7 @@ def compact(triage_dir=None):
         for form, family in forms_with_logs(kind):
             if not os.path.exists(sidecar_path(kind, form, family)):
                 continue
-            text = open(log_path(kind, form, family), encoding="utf-8").read()
+            text = read_log(kind, form, family)
             blocks = pass_blocks(text)
             live = {}
             for key, _, content in log_sections(kind, text, with_content=True):
@@ -416,7 +459,7 @@ def prune():
     dropped = 0
     for kind in KINDS:
         for form, family in forms_with_logs(kind):
-            text = open(log_path(kind, form, family), encoding="utf-8").read()
+            text = read_log(kind, form, family)
             live = {stored_key(kind, key) for key, _ in log_sections(kind, text)}
             side = load(kind, form, family)
             kept = {k: v for k, v in side.items() if k in live}
@@ -435,7 +478,7 @@ def check():
     problems, stale, total = [], 0, 0
     for kind in KINDS:
         for form, family in forms_with_logs(kind):
-            text = open(log_path(kind, form, family), encoding="utf-8").read()
+            text = read_log(kind, form, family)
             side = load(kind, form, family)
             seen = set()
             stem = families.stem(form, family)

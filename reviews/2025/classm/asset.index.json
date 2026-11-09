@@ -1,0 +1,208 @@
+{
+ "kind": "classm",
+ "form": "asset",
+ "family": "claude",
+ "base": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+ "lines": [
+  {
+   "key": "case classm.asset.1",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": null
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].period",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].basis",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_a].asset[item_1].macrs_prior",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].period",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].basis",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].bonus",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].col19c",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_1].macrs2025",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].period",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].basis",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].f25",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].f26i",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.1 — person[taxpayer].sc[biz_b].asset[item_2].dep_listed",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.asset.2",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": null
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[lot].period",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[lot].basis",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[lot].bonus",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[lot].col19c",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[lot].macrs2025",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[pc].period",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[pc].basis",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[pc].bonus",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[pc].col19c",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.2 — person[taxpayer].sc[desk].asset[pc].macrs2025",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.asset.3",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": null
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_1].period",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_1].basis",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_1].macrs_prior",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_2].period",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_2].basis",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_2].f25",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_2].f26i",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.3 — person[taxpayer].sc[biz_b].asset[item_2].dep_listed",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.asset.4",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": null
+  },
+  {
+   "key": "classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].period",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].basis",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].bonus",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].col19c",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.asset.4 — person[taxpayer].sc[biz_a].asset[item_1].macrs2025",
+   "record": "64a2d328c414bd58a0b65d9e56946098a6afe5135dadd74c0a7b992a8cd17e5a",
+   "status": "AGREE"
+  }
+ ]
+}

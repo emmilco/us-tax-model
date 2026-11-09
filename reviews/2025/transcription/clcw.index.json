@@ -1,0 +1,102 @@
+{
+ "kind": "transcription",
+ "form": "clcw",
+ "family": "claude",
+ "base": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+ "lines": [
+  {
+   "key": "1",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "03739829064d96b054baf8ececb3a9da86b94476681ef92a112c7199869581d4"
+  },
+  {
+   "key": "2",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "f555c2758c66211adef40487498f7c9fbd8cfbb83d696e8864cfbaa7558d3bb1"
+  },
+  {
+   "key": "3",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "5352634056cc67f4420c2fd7a44dfeac9b33139ecc79b1f63dc81328537e8bc0"
+  },
+  {
+   "key": "4",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "5c5923505460c00f43955ac67fb1191ab60acd3b8fa6d1fc9c791c681d802929"
+  },
+  {
+   "key": "5",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "bcc2571b0d096f27af1eeee7238cd3aa23678ad3103fd6db4a06cc58bf62326b"
+  },
+  {
+   "key": "6",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "8b1f168d609d7666d8ac27509c39f22dad5e3fba197b96213d8fb7f92b67c873"
+  },
+  {
+   "key": "7",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "76a5b27781a494857759e09996340c9b730f50d621c20684d09e24c6f7255c52"
+  },
+  {
+   "key": "8",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "9ac1807623f4e23c5067aa1d4977116ced254af5a799161966c6dfa48cdf17ba"
+  },
+  {
+   "key": "9",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "4b437602f10df43d5b8a3a0a519028c3b009e7f05cd45cc130783825325f0b5b"
+  },
+  {
+   "key": "10",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "f38f5e2fd7a285f08fc4f631824aa6d353e239f8007822183cec244d2ad6bdf8"
+  },
+  {
+   "key": "11",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "77f7fd6afa74d60e3fd4089c5054ab26f7112ee7e1bf5185f3b56b3dcf9f2e25"
+  },
+  {
+   "key": "12",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "f7f91c8816cef013707c484e054dafae07b4c5362a687dbbae902c716f80675c"
+  },
+  {
+   "key": "13",
+   "record": "81aa9600fee4a105b99819278b2ca26e4c9b616fec298ad61b3fad6eea3bb8bc",
+   "status": "AGREE",
+   "subject_key": "be8ee507b67213f2ac3595035871bd202b015dae9fd57101c59ee71d728deeab"
+  }
+ ],
+ "subjects": {
+  "1": "87ea0b475b431509d2f4efe54c41a9847cbe96f3334b9b39c132d09b03ac921e",
+  "2": "c0079d0c227193a4948b971bdbb04d6f7dd072a9ef09831e6ab5377086848456",
+  "3": "554ceca242024273b60a44537056d788c47bab6ec97b3e7c4bf736d8b19b01cf",
+  "4": "8aced6d5379bb7680acaba843c8c790e6b1ed94a287d07b8d2712ed23b078d30",
+  "5": "c5b7e3a20605bb0b2b2e2c1ce6c92fd39175cb3ec7c808160e2ccd90cba8b47b",
+  "6": "54beb5a5e8032b3d7098edd3efbf2d2378296e2460a494bd6dff692e8beb87b6",
+  "7": "b2ef60ba66bd0b97634c5b2bf9514fd0a601560fa683133c7b54847decb5d9d0",
+  "8": "0ce56cd8a99632d54771757a611ae4f7a6ddf68ed77f2f376765582a6534b23f",
+  "9": "fa1d7c8b4c8c44b5c9c06baf2678998c2fd8edae4512f2cd1ebafeef03af8a3d",
+  "10": "bbba156a5874b863d73a3bf6a10b3820c27e613d9a7cfc88d2a0a7fdeff6af4f",
+  "11": "603174d8aeae5158ff020597a075c3fe23220f952c4388a5bcfa4105ca28c9e5",
+  "12": "24c507ffb885b7aab1114e89c581cb9cc574ee9cf520d772ae235cc1ec60a165",
+  "13": "bdf40efed1e064c6194763b4e9baf1ce46b3eee7b956e4c30ce9db822798b38f"
+ },
+ "__rest__": "06b25a0db0dfdaef7a95b5deeae884cbb0cb10f3f5a86b0c35e017beef08b6f1"
+}

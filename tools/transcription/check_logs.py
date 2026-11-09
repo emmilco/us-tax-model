@@ -21,6 +21,7 @@ import json, os, re, subprocess, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import families  # noqa: E402
 import rulings  # noqa: E402
+import review_store  # noqa: E402
 import subjects  # noqa: E402
 import compare_families  # noqa: E402
 import pending  # noqa: E402
@@ -89,6 +90,16 @@ def transcription_forms():
     return out
 
 
+def log_text(kind, logs, fid, family):
+    """A form's log: as the review store assembles it (rulings.read_log), else a plain log file in `logs`
+    (a test's), else None."""
+    text = rulings.read_log(kind, fid, family)
+    if text is None:
+        path = os.path.join(logs, families.stem(fid, family) + ".md")
+        text = open(path, encoding="utf-8").read() if os.path.exists(path) else None
+    return text
+
+
 def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, required=True):
     """One log per form of the family under `logs`; no open ruling; every source hash current;
     the subject it reviewed (subjects.py) unchanged. For an optional family a missing log is
@@ -97,16 +108,15 @@ def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, requ
     tag = f"{kind} logs [{family}{'' if required else ', optional'}]"
     waiting = PENDING.get(kind, set()) if required else set()
     for fid in (expected if expected is not None else forms):
-        path = os.path.join(logs, families.stem(fid, family) + ".md")
-        if not os.path.exists(path):
+        text = log_text(kind, logs, fid, family)
+        if text is None:
             if fid in waiting:
                 print(f"{tag}: {fid}: pending, no review yet (listed in {pending.name()})"); continue
             problems.append(f"{fid}: no {kind} log"); continue
         if fid in waiting:
             problems.append(f"{fid}: has a {kind} log but is still listed as pending; remove it from {pending.name()}")
-        text = open(path, encoding="utf-8").read()
         quality = None
-        if family != families.DEFAULT and os.path.exists(os.path.join(logs, fid + ".md")):
+        if family != families.DEFAULT and log_text(kind, logs, fid, families.DEFAULT) is not None:
             quality = compare_families.compare(kind, fid, family)["quality"]
             if quality["state"] == "pending":
                 note = f"{fid}: second-family review not eligible: " + "; ".join(quality["blockers"])
@@ -119,7 +129,9 @@ def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, requ
             if required:
                 problems.append(f"{fid}: open ruling(s) in the {kind} log")
         stale = []
-        state = subjects.log_state(kind, fid, Y, text)
+        state = review_store.state(kind, fid, family, Y)  # from the index: per line, __rest__, foreign interfaces
+        if state is review_store.NO_INDEX:
+            state = subjects.log_state(kind, fid, Y, text)
         if state:
             stale.append(state)
         for row in re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M):
@@ -144,7 +156,7 @@ def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, requ
         print(f"[{family}] {p}", file=sys.stderr)
     total = len(expected if expected is not None else forms)
     waited = sum(1 for fid in (expected if expected is not None else forms)
-                 if fid in waiting and not os.path.exists(os.path.join(logs, families.stem(fid, family) + ".md")))
+                 if fid in waiting and log_text(kind, logs, fid, family) is None)
     logged = total - len(missing) - waited
     if not required:
         opened = (f"; open rulings in {len(open_counts)} log(s): " + ", ".join(f"{f} ({n})" for f, n in sorted(open_counts.items()))) if open_counts else "; no open rulings"
@@ -164,12 +176,10 @@ def check_families(kind, logs):
     """Every log under `logs` belongs to a family named in families.json."""
     known = set(families.load(kind)["required"]) | set(families.load(kind)["optional"])
     bad = []
-    if os.path.isdir(logs):
-        for f in sorted(os.listdir(logs)):
-            if f.endswith(".md"):
-                form, fam = families.split_stem(f[:-3])
-                if fam not in known:
-                    bad.append(f"{form}: the {kind} log {f} names a model family {fam!r} not listed in tools/transcription/families.json")
+    for form, fam in rulings.forms_with_logs(kind):
+        if fam not in known:
+            f = families.stem(form, fam) + ".index.json"
+            bad.append(f"{form}: the {kind} log {f} names a model family {fam!r} not listed in tools/transcription/families.json")
     for p in bad:
         print(p, file=sys.stderr)
     return bool(bad)

@@ -13,6 +13,7 @@ from pathlib import Path
 
 import classm as M
 import families
+import rulings
 from taxyear import Y
 import jurisdiction  # --jurisdiction ny: fixtures/ny/<year>/, reviews/ny/<year>/
 
@@ -97,22 +98,26 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--apply", action="store_true")
     args = ap.parse_args()
-    writes, removed, changed = {}, [], 0
+    writes, removed, changed, logs = {}, [], 0, {}
     for fixture in sorted(jurisdiction.ypath("fixtures", Y).glob("classm*.json")):
         family = fixture.stem.partition(".")[2] or families.DEFAULT
         fx = json.loads(fixture.read_text())
         before = json.dumps(fx, sort_keys=True)
-        for log in sorted(jurisdiction.ypath("reviews", Y, "classm").glob("*.md")):
-            fid, log_family = families.split_stem(log.stem)
+        for fid, log_family in rulings.forms_with_logs("classm"):
             if log_family != family:
                 continue
+            log = Path(rulings.log_path("classm", fid, log_family))
             cases = {c["id"].removesuffix("." + family) if family != families.DEFAULT else c["id"]: c
                      for c in fx["cases"] if c["id"].startswith(f"classm.{fid}.")}
-            result, dropped, updated = reclassify(log.read_text(), cases, M.load_form(fid))
+            result, dropped, updated = reclassify(rulings.read_log("classm", fid, log_family), cases, M.load_form(fid))
             removed.extend(dropped)
             changed += updated
             if updated:
+                if args.apply:  # the view of the original, archived below before it is replaced
+                    log.parent.mkdir(parents=True, exist_ok=True)
+                    log.write_text(rulings.read_log("classm", fid, log_family))
                 writes[log] = result
+                logs[log] = (fid, log_family)
         if json.dumps(fx, sort_keys=True) != before:
             writes[fixture] = json.dumps(fx, indent=2) + "\n"
     if args.apply and writes:
@@ -129,7 +134,10 @@ def main():
             manifest[str(relative)] = hashlib.sha256(original).hexdigest()
         (archive / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
         for path, text in writes.items():
-            path.write_text(text)
+            if path in logs:
+                rulings.write_log("classm", logs[path][0], text, logs[path][1])
+            else:
+                path.write_text(text)
     action = "excluded" if args.apply else "to exclude"
     print(f"class M skipped audit: {len(removed)} numeric assertions {action}; {changed} log sections reclassified")
     return 0 if args.apply or not writes else 1

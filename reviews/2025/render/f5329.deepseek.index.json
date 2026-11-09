@@ -1,0 +1,44 @@
+{
+ "kind": "render",
+ "form": "f5329",
+ "family": "deepseek",
+ "base": "b1cb980419ffa207a774a5246a00cf0d1a57a671b8d6b32ae83fa259cf2336be",
+ "lines": [
+  {
+   "key": "1",
+   "record": "b1cb980419ffa207a774a5246a00cf0d1a57a671b8d6b32ae83fa259cf2336be",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; i5329 p. 1: code 1 with the full tax needs no Form 5329, and line 1 holds the amounts the tool carries. A distribution outside those cases meets the entry screens; the Roth and recapture amounts are recorded as BUG-0314."
+  },
+  {
+   "key": "2",
+   "record": "b1cb980419ffa207a774a5246a00cf0d1a57a671b8d6b32ae83fa259cf2336be",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "b1cb980419ffa207a774a5246a00cf0d1a57a671b8d6b32ae83fa259cf2336be",
+   "status": "MATCH"
+  },
+  {
+   "key": "4",
+   "record": "b1cb980419ffa207a774a5246a00cf0d1a57a671b8d6b32ae83fa259cf2336be",
+   "status": "MATCH"
+  },
+  {
+   "key": "47",
+   "record": "b1cb980419ffa207a774a5246a00cf0d1a57a671b8d6b32ae83fa259cf2336be",
+   "status": "MATCH"
+  },
+  {
+   "key": "48",
+   "record": "b1cb980419ffa207a774a5246a00cf0d1a57a671b8d6b32ae83fa259cf2336be",
+   "status": "MATCH"
+  },
+  {
+   "key": "49",
+   "record": "b1cb980419ffa207a774a5246a00cf0d1a57a671b8d6b32ae83fa259cf2336be",
+   "status": "MATCH"
+  }
+ ]
+}

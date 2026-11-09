@@ -1,0 +1,225 @@
+{
+ "kind": "render",
+ "form": "s1",
+ "family": "deepseek",
+ "base": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "1039f440fce27cbe813649990df4dd54d0ef9352be65320d98ee64231bb4b84b"
+  },
+  {
+   "key": "7",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "0de08a3cb810713ab1b3964f893a59a51f109558174f073da5c286e294f02ca1"
+  },
+  {
+   "key": "7 (box)",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "ebc007ae9c75124851378c4f93d1068c6fa91acadb5aa967ad7aa1e338b68fd0"
+  },
+  {
+   "key": "7 (amount repaid)",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "df5b7624675a0f12fe0457b2746fc532bc2256b856bf802f54d585702010dd91"
+  },
+  {
+   "key": "3",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "c54336bc1dea0694f355a57ecea5c5bca9cf309b8c7806ac725b4d7de1380b34"
+  },
+  {
+   "key": "8b",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "72e8f792f6148b74004566e8ea6269756746bd56038af20f6b884f1bea84e816"
+  },
+  {
+   "key": "8g",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "e06d8b4955244c30564e75f1293a7adc72c5c13599a01ef2290cd0c08aabc8ef"
+  },
+  {
+   "key": "8h",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "2e6d12e9b2d06ae3f938203256d6462e72f842a838dc8650a152c1837e5a2883"
+  },
+  {
+   "key": "8i",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "a5d84b6c421f3780f88a8d7f90ed3b522c3b9dc6bcca6da84f64f97c2d9088f2"
+  },
+  {
+   "key": "8j",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "92e75e7f43e91626951c68a5a635ee9addf6c218631ad5c88fb7006a10d5e458"
+  },
+  {
+   "key": "8r",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "0069f578eb4bf03d23f0d0f614f142a3005ff2d9646345886b64b78a73528a68"
+  },
+  {
+   "key": "8z",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "b2e46e96a051b8f3bff4ece13f2dbe800294d5087d659089abd40cc20bb8b540"
+  },
+  {
+   "key": "2a",
+   "record": "a78099464032e98fdbeb900db0473e53e5051d61d0b5d2bef4d26ec8a55bd24c",
+   "status": "MATCH",
+   "subject_key": "c263eb69d5b4946f7c14b643e57667e4948aff73ea18891b4df75af1905939f1"
+  },
+  {
+   "key": "8c",
+   "record": "a78099464032e98fdbeb900db0473e53e5051d61d0b5d2bef4d26ec8a55bd24c",
+   "status": "MATCH",
+   "subject_key": "b64b5f28330f95a7ea159f4cd86caffd6c11d81fcf4673aa5a1bf04c975cb6e7"
+  },
+  {
+   "key": "8f",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 91, Line 8f: \"Enter the total of the amounts from Form 8889, lines 16 and 20.\" Line 20 (Part III, income from failing to remain an eligible individual during a testing period) arises from a qualified HSA funding distribution or from a testing period that began in an earlier year (a last-month-rule testing period that begins in December 2025 cannot be failed in 2025); both are refused by f8889.unsupported (\"a qualified HSA funding distribution from an IRA in 2025 ... failing to remain an eligible individual during a testing period that began in an earlier year\"), as the line's citation says. Within scope line 20 is zero and person.hsa_taxable is line 16. Same point as the earlier rounds; re-checked on the current scope.yaml, f8889.yaml and s3.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393, and the alimony and educator wording, BUG-0394). Project stands on the English.",
+   "subject_key": "100a59ff3933a60db034a9f1389477c63a2d96920f38d7a97cfbeae39aba9488"
+  },
+  {
+   "key": "9",
+   "record": "a78099464032e98fdbeb900db0473e53e5051d61d0b5d2bef4d26ec8a55bd24c",
+   "status": "MATCH",
+   "subject_key": "2c3c49ba2d72956a19e25ed74b7e7163778df4c4a27990b790737b0fdf5f44fe"
+  },
+  {
+   "key": "10",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: its text names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\" (checked on the current forms/2025/scope.yaml); within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; the income package changed only the wording of the alimony and unemployment screens, which does not touch this line. Same point as the earlier rounds; re-checked on the current scope.yaml, f8889.yaml and s3.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393, and the alimony and educator wording, BUG-0394). Project stands on the English.",
+   "subject_key": "af75401d75f7a8fa34e4124509da222647d021a4418d713bc0cca401f39568fc"
+  },
+  {
+   "key": "11",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "ee0399e5030cafddbb26bcddfe515b561b427cd9f66b1452b563116d3d46c924"
+  },
+  {
+   "key": "13",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "38907987e02fbdb3a419a5d9905379594c268e535dadd2f7c0f262742265fecf"
+  },
+  {
+   "key": "15",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 93, Line 15: \"If you were self-employed and owe self-employment tax, fill in Schedule SE to figure the amount of your deduction.\" Self-employment income other than Schedule C (farm income on Schedule F, partnership income on a Schedule K-1, church employee income, and since BUG-0233 income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner) is named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them, so within scope only a Schedule C reaches Schedule SE, and person.se_line13 is that deduction. Unchanged by the fix round apart from the clergy wording, which widens the screen. Same point as the earlier rounds; re-checked on the current scope.yaml, f8889.yaml and s3.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393, and the alimony and educator wording, BUG-0394). Project stands on the English.",
+   "subject_key": "c32af13f229c7e7cfc6ca264b11e210d3c5d3ee7013543625091142ad7d2ff0c"
+  },
+  {
+   "key": "16",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 93, Line 16, \"Self-Employed SEP, SIMPLE, and Qualified Plans ... If you were self-employed or a partner, you may be able to take this deduction\". Qualified plans other than SEP and SIMPLE are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan)\"), and partners are refused there too; within scope person.s16 is the SEP or SIMPLE deduction of a person with a Schedule C, and a filer with a qualified plan answering \"none\" to person.plan has already answered yes to the screen. Unchanged by fix round 3. Same point as the earlier rounds; re-checked on the current scope.yaml, f8889.yaml and s3.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393, and the alimony and educator wording, BUG-0394). Project stands on the English.",
+   "subject_key": "30f065bffd4c038dd33d3dfe2b4fc3c017bb2727196fa5fad7fff89c82525f70"
+  },
+  {
+   "key": "17",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 93, Line 17 (self-employed health insurance, Form 7206), which also reaches partners and more-than-2% S corporation shareholders. The screen scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them names \"partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\", so within scope the deduction arises only from a Schedule C business, which person.sehi computes. Same point as the earlier rounds; re-checked on the current scope.yaml, f8889.yaml and s3.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393, and the alimony and educator wording, BUG-0394). Project stands on the English.",
+   "subject_key": "d9d14a7287935fcd3e3069097191708957e00ce136d22674ee03964199ac3a6c"
+  },
+  {
+   "key": "18",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "9d81df4442082a536761a57476b6da46511253c998ec4caac026103578b4f30a"
+  },
+  {
+   "key": "19a",
+   "record": "a78099464032e98fdbeb900db0473e53e5051d61d0b5d2bef4d26ec8a55bd24c",
+   "status": "MATCH",
+   "subject_key": "65b189128cad5496a2e5f83cc55dc70b7bb590e4ebeaca0651baf1b2ba367796"
+  },
+  {
+   "key": "20",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 97, IRA Deduction Worksheet line 2: \"Single, head of household, or married filing separately and you lived apart from your spouse for all of 2025, enter $89,000 ... Married filing separately and you lived with your spouse at any time in 2025, enter $10,000\"; p. 96: \"Married persons filing separately. If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025.\" The model says the helper uses $10,000 for married filing separately regardless of the line 20 checkbox. Both rules are for married filing separately only, and a married filing separately return is refused at the return level (s3.mfs on scope.ready: \"The rules for a married filing separately return ... are outside this tool. Married filing jointly is supported.\", i1040gi p. 14). On a joint return the worksheet's own spouse rule ($246,000 for the person not covered) is applied (person.ira_not_covered_joint). Line 20 copies the worksheet total; unchanged by the fix round. Same point as the earlier rounds; re-checked on the current scope.yaml, f8889.yaml and s3.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393, and the alimony and educator wording, BUG-0394). Project stands on the English.",
+   "subject_key": "857735354b7a4fc1e16b4a6d9cf7126c89539f58044795b9b401b68ebc4169d3"
+  },
+  {
+   "key": "21",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MATCH",
+   "subject_key": "8c4b9bd180471cd227f452dd73d6ad30b6cb4071b454dd265bb96531499eb0e1"
+  },
+  {
+   "key": "24a",
+   "record": "787a52e645141cd74c6c70d6b135a5b9585301bc6aff5ad79c7420afcdacaea6",
+   "status": "MATCH",
+   "subject_key": "b750c7a101cdda8eb3f42e1c7cad33e2ecf975152ba814d904ba5b665f5d1c5f"
+  },
+  {
+   "key": "25",
+   "record": "787a52e645141cd74c6c70d6b135a5b9585301bc6aff5ad79c7420afcdacaea6",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds; re-judged because line 24a now reads its gate line s1.jury_to_employer_if_pay. Project stands on the English.",
+   "subject_key": "351af763442e7cce3173bd229da88c314cf27f15f94485b85db9781619d9766a"
+  },
+  {
+   "key": "26",
+   "record": "84df7261babbb829a4afed1ec59d29457ec8bb58f19b6812b5a5820c0194b551",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\", checked on the current scope.yaml); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same point as the earlier rounds; re-checked on the current scope.yaml, f8889.yaml and s3.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393, and the alimony and educator wording, BUG-0394). Project stands on the English.",
+   "subject_key": "b9971c49cee297c10f1f7acd0a5bbeae9423c6595946e3a596c46368f86707ca"
+  }
+ ],
+ "subjects": {
+  "1": "3cf027355da75e3c1f9ff97b91bfd36372ca9ab6e610480bc31bdbad6d856ef1",
+  "7": "d23cac3fd35a6e5c74c7ffdb8f6ed2a696ff014771f7c92a10935588a91d6d51",
+  "7 (box)": "cfa288e2100e3813f7e9936325f2459f2d5aae2719904140e13654637972b0a7",
+  "7 (amount repaid)": "50dca390cec3a553681e83bce8aae15fcfb84e11f571e67f6bcdce2e63fd6742",
+  "3": "bc3ec168d14d2a8cd64d175e37c7e910d8a5af268c316d775da646c4dd01ddcd",
+  "8b": "adfb6ff250a141ed5fab7f20a031c8747e794eef23ddd9b2cef9fb2168eaf763",
+  "8g": "a3571d84edee2cfb3de333815f5d20985387df2f1636b2e1b6e1aac16cd49204",
+  "8h": "9ed043904bf99e07ffdba67546672e89dcf24deb3424681bd8a7dc67942ad15e",
+  "8i": "c68f1e8a3ff60d5244459d36d21b0b62e65c8c933467f51dea16aa0ae2b8407d",
+  "8j": "29a9416344de32f83f0e9092659845581207319a988464bfe47bd71bcf5eb305",
+  "8r": "97662a747727caf31391c45b947c97f49ba69e76d0f9c4043b5d7c40354a9f7d",
+  "8z": "716e4f6692a25b41948e6fdbe805ecff692e5452aeffbfaba8b32f5e0f42e407",
+  "2a": "4a10d6f1f0d1e84a1163eb6cf950895f4668a789194a38c2f17635530e4d4da6",
+  "8c": "80adfd672aa8bb986148f7d5c9a17bef372ee3b0c00f669b24440bdf6e75ffd4",
+  "8f": "61cd1ea00f9720c8fa0491e4eabe0184235cd502525725831f06f21d546abb4a",
+  "9": "dde89809ce8bad85e766e1cf4963bb04bda3013b8e040b530ddf16dd98fc1302",
+  "10": "d6214796af17b99dfca44131888035ff71b7c5e63bc3d2a2cae51af7939a196c",
+  "11": "444b97633e80dc22f7362c42b60b247a91d3290a3d4917b7429f07dec9ebf99d",
+  "13": "d28511b7f2c281e110c89fdb0b05daddf7fd81c5cd68febefceddfd95320e99c",
+  "15": "2862a9af51da579f2eeae0fca7a1e5fd656c4e385c5dde00e4cedea04abf6f88",
+  "16": "aef86069282bbaabff9f8a9daed19f8276dbdddcce570580486b1dcecd2b8871",
+  "17": "bf48e84e65b403942498520eeb97e8bffef5b0d9e4a871749fcad25441a36591",
+  "18": "68468ce4276ba46f7520091bb4beb4cca084d19d6b0ceb9bbba6fc637e9593ac",
+  "19a": "36620465c8c2c92815455755333a427d0ec30ef08594be3b2c91244d9acc5a37",
+  "20": "f5fe786e81fd42f622503e89aab81fb0d7d0dd71d81f7ef1bb4a2c0c276a41cc",
+  "21": "6a9e1286ec5d1c79200191fa27ea65aad3e34c1557b4f969476844c8c2b25dbf",
+  "24a": "d0fbed7869157afc41a042ee4e71347d6896026dbf9429c2d32eb412db42a286",
+  "25": "c3cc27cbf052acae70854b6056de1f9f7c2bfa9717211b348d2fafede9c896e0",
+  "26": "7ada04370e3a07740337ad078e0e63008201c54239e01a63516de1f64def451a"
+ },
+ "__rest__": "f5e70797ebc2b9e4473c24c82607878d7004ef8e9ac2a487cb492e6158a05791"
+}

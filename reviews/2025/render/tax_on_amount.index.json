@@ -1,0 +1,28 @@
+{
+ "kind": "render",
+ "form": "tax_on_amount",
+ "family": "claude",
+ "base": "efb70ff34f214b9c0f916020b002d0278f96eb3faffee0db4f0365a5e97de3af",
+ "lines": [
+  {
+   "key": "(a) (amount)",
+   "record": "efb70ff34f214b9c0f916020b002d0278f96eb3faffee0db4f0365a5e97de3af",
+   "status": "MATCH"
+  },
+  {
+   "key": "(a) (table_tax)",
+   "record": "efb70ff34f214b9c0f916020b002d0278f96eb3faffee0db4f0365a5e97de3af",
+   "status": "MATCH"
+  },
+  {
+   "key": "(a) (worksheet_tax)",
+   "record": "efb70ff34f214b9c0f916020b002d0278f96eb3faffee0db4f0365a5e97de3af",
+   "status": "MATCH"
+  },
+  {
+   "key": "(b)",
+   "record": "efb70ff34f214b9c0f916020b002d0278f96eb3faffee0db4f0365a5e97de3af",
+   "status": "MATCH"
+  }
+ ]
+}

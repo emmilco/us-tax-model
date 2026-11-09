@@ -1,0 +1,18 @@
+{
+ "kind": "classm",
+ "form": "dcprov",
+ "family": "claude",
+ "base": "500bbeb73011f8c9e886fd65bf8547dddf6a655ca816c6b62de3d26f840ebd39",
+ "lines": [
+  {
+   "key": "case classm.dcprov.1",
+   "record": "500bbeb73011f8c9e886fd65bf8547dddf6a655ca816c6b62de3d26f840ebd39",
+   "status": null
+  },
+  {
+   "key": "classm.dcprov.1 — dcprov[prov_a].see_statement",
+   "record": "500bbeb73011f8c9e886fd65bf8547dddf6a655ca816c6b62de3d26f840ebd39",
+   "status": "AGREE"
+  }
+ ]
+}

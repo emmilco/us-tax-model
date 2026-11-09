@@ -1,0 +1,68 @@
+{
+ "kind": "classm",
+ "form": "ny_tcw",
+ "family": "claude",
+ "base": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+ "lines": [
+  {
+   "key": "case classm.ny_tcw.1",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": null
+  },
+  {
+   "key": "classm.ny_tcw.1 — line3",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "classm.ny_tcw.1 — line6",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw.1 — line7",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw.1 — line9",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw.1 — tax",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": "SKIPPED"
+  },
+  {
+   "key": "case classm.ny_tcw.2",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": null
+  },
+  {
+   "key": "classm.ny_tcw.2 — line3",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw.2 — line6",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw.2 — line7",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw.2 — line9",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.ny_tcw.2 — tax",
+   "record": "dab9294786272c15c9611184decced8766a4311d996e72a5eb35b0d3ec5b324d",
+   "status": "AGREE"
+  }
+ ]
+}

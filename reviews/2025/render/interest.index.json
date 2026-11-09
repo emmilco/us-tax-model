@@ -1,0 +1,18 @@
+{
+ "kind": "render",
+ "form": "interest",
+ "family": "claude",
+ "base": "6cf0f3b8c1f5437bc785bc261654ef53fe0453dd2ab9a4d22e86288337356309",
+ "lines": [
+  {
+   "key": "amount",
+   "record": "6cf0f3b8c1f5437bc785bc261654ef53fe0453dd2ab9a4d22e86288337356309",
+   "status": "MATCH"
+  },
+  {
+   "key": "penalty",
+   "record": "6cf0f3b8c1f5437bc785bc261654ef53fe0453dd2ab9a4d22e86288337356309",
+   "status": "MATCH"
+  }
+ ]
+}

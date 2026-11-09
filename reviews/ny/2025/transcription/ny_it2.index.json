@@ -1,0 +1,31 @@
+{
+ "kind": "transcription",
+ "form": "ny_it2",
+ "family": "claude",
+ "base": "d2e8a1eafd94a1084c45428c8fa9f55ec84c5b5aadd132827b35f63396f79a55",
+ "lines": [
+  {
+   "key": "17a (whole dollars)",
+   "record": "d2e8a1eafd94a1084c45428c8fa9f55ec84c5b5aadd132827b35f63396f79a55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on shown_when; the reply shows the whole-dollar line only when the amount is more than zero. The project shows it on every record, as the source requires a record for every W-2: IT-201-I p. 21, \"You must complete a W-2 record for each W-2 you receive, even if it does not show any New York State, New York City (NYC), or Yonkers wages or tax withheld.\" The value expressions are the same (half-up to the dollar; IT-2 p. 2, \"drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar\").",
+   "subject_key": "3c526983dbff7f8863ae36df887669672e266b9492ad42bb67ff42c40d47940c"
+  },
+  {
+   "key": "19 (whole dollars)",
+   "record": "d2e8a1eafd94a1084c45428c8fa9f55ec84c5b5aadd132827b35f63396f79a55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on shown_when; the reply shows the whole-dollar line only when the amount is more than zero. The project shows it on every record, as the source requires a record for every W-2: IT-201-I p. 21, \"You must complete a W-2 record for each W-2 you receive, even if it does not show any New York State, New York City (NYC), or Yonkers wages or tax withheld.\" The value expressions are the same (half-up to the dollar; IT-2 p. 2, \"drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar\").",
+   "subject_key": "846b33584f581e28da4dfc83f66f4102236e9cf44807aaec75bbbd35ae7a732e"
+  }
+ ],
+ "subjects": {
+  "17a (whole dollars)": "b889dd5c68284e54638c814182aba8d34d9165d00207640c37c81a16ea2a1d67",
+  "19 (whole dollars)": "bea2f03fe1d7613fd2dfd0b3d12f211bdd15bcba73e4e08f702b0127f9e1ff87"
+ },
+ "__rest__": "563acf0600ec1c8f1741f1d64d2bad8c9b36d45c64ada15fec51979356f9b8d0",
+ "foreign": {
+  "17a (whole dollars)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "19 (whole dollars)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

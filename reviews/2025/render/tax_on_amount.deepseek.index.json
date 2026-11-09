@@ -1,0 +1,28 @@
+{
+ "kind": "render",
+ "form": "tax_on_amount",
+ "family": "deepseek",
+ "base": "3fdaa437dc276dd5e9a58f16eb96d41373dd0c1ad03bd5f6c4fa02398cc8eb1d",
+ "lines": [
+  {
+   "key": "(a) (amount)",
+   "record": "3fdaa437dc276dd5e9a58f16eb96d41373dd0c1ad03bd5f6c4fa02398cc8eb1d",
+   "status": "MATCH"
+  },
+  {
+   "key": "(a) (table_tax)",
+   "record": "3fdaa437dc276dd5e9a58f16eb96d41373dd0c1ad03bd5f6c4fa02398cc8eb1d",
+   "status": "MATCH"
+  },
+  {
+   "key": "(a) (worksheet_tax)",
+   "record": "3fdaa437dc276dd5e9a58f16eb96d41373dd0c1ad03bd5f6c4fa02398cc8eb1d",
+   "status": "MATCH"
+  },
+  {
+   "key": "(b)",
+   "record": "3fdaa437dc276dd5e9a58f16eb96d41373dd0c1ad03bd5f6c4fa02398cc8eb1d",
+   "status": "MATCH"
+  }
+ ]
+}

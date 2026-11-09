@@ -1,0 +1,196 @@
+{
+ "kind": "render",
+ "form": "f2441",
+ "family": "deepseek",
+ "base": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+ "lines": [
+  {
+   "key": "1 (box)",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "2 (box)",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "4",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the model says person.dc_earned omits Form 1040 lines 1b to 1d and 1f to 1h with no refusal. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h by scope.other_income (f1040.line8, scope.ready), statutory-employee income by sc.statutory (sc.line1), Schedule SE items outside the tool by person.se_screened; on the remaining returns line 1z is lines 1a and 1e. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\". Same ruling as the hardening round; this round changes only the person.dc_earned_b label (T-121), not an expression of person.dc_earned or dc_earned_b. Project stands."
+  },
+  {
+   "key": "5",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the model accepts the structure and says the spouse's amount omits the same line 1z parts. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h by scope.other_income (f1040.line8, scope.ready), statutory-employee income by sc.statutory (sc.line1), Schedule SE items outside the tool by person.se_screened; on the remaining returns line 1z is lines 1a and 1e. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\". Same ruling as the hardening round; this round changes only the person.dc_earned_b label (T-121), not an expression of person.dc_earned or dc_earned_b. Project stands."
+  },
+  {
+   "key": "6",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "7",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "8",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "9a",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "9b",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "9c",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "CLW 1",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "CLW 2",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i2441 p. 5, Credit Limit Worksheet, line 2, \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". scope.credits refuses Form 8978 adjustments (s3.line8) and scope.other_line16 screens Form 8978 at f1040.line16, so line 6l is zero on every computed return. Same ruling as the hardening round. Project stands."
+  },
+  {
+   "key": "CLW 3",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "10",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "11",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "12",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; Form 2441 line 12, \"If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership\". sc.special screens a self-employed person's own dependent care assistance program (sc.line1) and scope.schedule1 refuses partnerships (f1040.line8, line 10), so line 12 is the Form W-2 box 10 benefits on every computed return. Same ruling as the hardening round. Project stands."
+  },
+  {
+   "key": "13",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "14",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "15",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "16",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "17",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "18",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; with the undetermined case scope. i2441 p. 5, Line 18, \"for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\". The only dependent care benefits in line 1z are line 1e (line 26), drawn from line 12 and the line 13 carryover; box 1 plus net self-employment earnings without line 1e is line 1z less the line 12 benefits except where line 1e holds line 13 carryover. That case is now refused wherever it can change an amount: f2441.line13_earned (T-121) refuses line 25 when line 13 is above zero, line 20 is below lines 17 and 21, and line 26 is above zero; the hardening round's low L3 is closed by it. Project stands."
+  },
+  {
+   "key": "19",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the model says married filing separately must enter the spouse's earned income on line 19 (i2441 p. 2, Married Persons Filing Separately). Married filing separately is refused on every return by s3.mfs at lines 11 and 26 (owner decision 5). Its line 1e point is ruled as on line 18 (representation; the undetermined line 13 case refused by f2441.line13_earned). Project stands."
+  },
+  {
+   "key": "20",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "21",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; Form 2441 line 21, \"$2,500 if married filing separately and you were required to enter your spouse's earned income on line 19\". Married filing separately is refused by s3.mfs (owner decision 5), so line 21 is $5,000 or the plan maximum on every computed return. Same ruling as earlier rounds. Project stands."
+  },
+  {
+   "key": "22",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; Form 2441 line 22, \"Is any amount on line 12 or 13 from your sole proprietorship or partnership? No. Enter -0-. Yes. Enter the amount here\". Both Yes cases are refused (sc.special at sc.line1, scope.schedule1 at f1040.line8 and line 10), so line 22 is zero on every computed return. Same ruling as the hardening round. Project stands."
+  },
+  {
+   "key": "23",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "24",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "25",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "26",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "27",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "28",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "29",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "30",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  },
+  {
+   "key": "31",
+   "record": "79a906d0dacaa76cb85c37feab3ddec5926e7027ec0ca895eb821a427f8074f4",
+   "status": "MATCH"
+  }
+ ]
+}

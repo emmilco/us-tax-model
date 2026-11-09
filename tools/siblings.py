@@ -299,9 +299,12 @@ def changed_logs(base):
     forms = set()
     for path in changed.splitlines():
         name = Path(path).name
-        if not name.endswith(".md"):
+        if name.endswith(".index.json"):  # a review in the review store (tools/transcription/review_store.py)
+            stem = name[:-len(".index.json")]
+        elif name.endswith(".md"):  # a review log committed before the store
+            stem = name[:-3]
+        else:
             continue
-        stem = name[:-3]
         if stem.endswith(".deepseek"):
             stem = stem[: -len(".deepseek")]
         forms.add(stem.split(".")[0])
@@ -368,7 +371,7 @@ def reviews_since(docs, ids, rev):
     for target in ids:
         forms.add(target.split(".")[0])
     changed = subprocess.run(["git", "diff", "--name-only", rev], capture_output=True, text=True, check=False).stdout
-    refreshed = set(re.findall(r"reviews/\d+/(?:transcription|render)/[^/]*?([a-z0-9_]+)(?:\.deepseek)?\.md", changed))
+    refreshed = set(re.findall(r"reviews/\d+/(?:transcription|render)/[^/]*?([a-z0-9_]+)(?:\.deepseek)?(?:\.index\.json|\.md)", changed))
     missing = sorted(f for f in forms if f not in refreshed)
     if missing:
         print(f"siblings: no review log changed since {rev} for: {', '.join(missing)}", file=sys.stderr)

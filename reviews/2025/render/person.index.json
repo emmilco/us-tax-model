@@ -1,0 +1,235 @@
+{
+ "kind": "render",
+ "form": "person",
+ "family": "claude",
+ "base": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+ "lines": [
+  {
+   "key": "rrta",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "ea8e14e270e62c6070a382e8d508e38f07b920ce108d3d9dfa61b58f71e4b083"
+  },
+  {
+   "key": "employers",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "c1fe1f81f2dba383f96bce71004f8bd9138ed028278cef6e9421d2b818f7a0bd"
+  },
+  {
+   "key": "overcount",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "0e0d09bc7a80fc8f3804deb38ed3bfc307047c02c364a14fd43364571d1eeef2"
+  },
+  {
+   "key": "over",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "0bcd730636448b0fd4e4213be8fe0705e94a72684fe89dd8c7d35eea6f631ff8"
+  },
+  {
+   "key": "wages",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "85be4f14f3bb3234b51ae65c4d63da2b3bda620b7be5b312dccf08b0bb06ce28"
+  },
+  {
+   "key": "withheld",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "21485829efd6adf35b181a4e7e5a6199a9b948ca5715ec4c608d13a406bc773f"
+  },
+  {
+   "key": "eligible",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "4a9792e7e67ba60bcf38aa21e92d9fb652cdb20e08bd1e9f184feb01eba4a7f0"
+  },
+  {
+   "key": "excess",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "41ce3d4bb42e8aebe68c30a421f497402e4b4e79295509aab70f9b05639dc2d3"
+  },
+  {
+   "key": "zero",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "146b904db4ce5755a0c5a520be5233f3d7e6c3b77931291fea9b88623f801320"
+  },
+  {
+   "key": "credit",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "9a07c1b46d60bca74af6773cc3fea0da8d880b5d96ae98689b27f81b33242e55"
+  },
+  {
+   "key": "(screen) (person.se_screen)",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "d522cc3dbbf355a1644bed31bd7ff003d60145092f1371e47679ba0ab5cdcf87"
+  },
+  {
+   "key": "(screen) (person.plan_screen)",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "e5ae8f3937676220211e0761c82ae080459c0bf5abdadf4665bf90d4862b8c2e"
+  },
+  {
+   "key": "Step 1",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "2a7254d61d57a61e1d665c6b12b2cd770ae2aa2fa83fd3dd23598397d9c1366d"
+  },
+  {
+   "key": "Step 2",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "b614c825c6bcabe85b6b83285a007b1f33fc0d52dc552c2ae06821ee47a5d507"
+  },
+  {
+   "key": "Step 3",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "afc5d15bb03d4b97669c647b8fe71bbe8b5958140e7890c4940e3cfaa3c53475"
+  },
+  {
+   "key": "Step 5",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "64367d49b19ea890b3acef741a4635f4881b6c71d666bada61df91027188c984"
+  },
+  {
+   "key": "Step 6",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "a99e13dc9c7addccf3a52e1ca970e86a42db35d5144214791d59ac77cd3fc88b"
+  },
+  {
+   "key": "Step 7",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "ca193a241339ee9182b8406969dc4bdf974ec2e50279752f0437657ecd06470b"
+  },
+  {
+   "key": "Step 8",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "277e8ef91c61cd8233d157b02e49935cb56aa4ba286c90859a6fc80216116569"
+  },
+  {
+   "key": "Step 21",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "4aacf39d2f1947f0d9743e6ebf893b3e08b7bdd6907aa87673516062861c7e6c"
+  },
+  {
+   "key": "(screen) (person.sav_able)",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "2524a4f5a6deba16729da07fe63d649b02f6fe3cb9f8d32f75535da1b6e09e44"
+  },
+  {
+   "key": "(screen) (person.sav_excess)",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "4621e20730011f968db7188d53c1b16e7349c74f2481be3016aa54f263ffe15f"
+  },
+  {
+   "key": "(screen) (person.ira_excess)",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "7b2eee9ec4f2ea992f0ee13347686c4eb8dbd3c0f2d3be5dde5396ba7988a93e"
+  },
+  {
+   "key": "23",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "56e9545248a0bad451e2d2c0d95bf46fa0348bd41e8385ba7c6993c524670fa2"
+  },
+  {
+   "key": "24",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "c6be707913bd786947dd6fd7c78bea001564f9b308b8bc2b895ea4ed076e589d"
+  },
+  {
+   "key": "25",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "53eff1f5618f30b41276cbbcaad44849a7a27f705fc4d0eeff9b609b36a7cf06"
+  },
+  {
+   "key": "26",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "58da86ba3ebcd135f66e3d381c561fad7867b7e67c7bbf59cf9f66aaf36352c6"
+  },
+  {
+   "key": "27",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "e4929853c34a96ad28d51565c7bdfcbe4c9c2a551a57de59ed4acbea68732ac9"
+  },
+  {
+   "key": "28",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "9b0dd9ede508ffd374dadd57eb45e6ad0740d00711d3ca7e9d439ec3309eed2d"
+  },
+  {
+   "key": "29",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "a0805ee2d637d1cb53b86b6a03af7b05a84a2e0cccc73a9687e046b87436aaa3"
+  },
+  {
+   "key": "30",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "ebdd890508fc29cdce52b9643e3d8e3e48b7fa1822f6610d2b38917e73509f61"
+  },
+  {
+   "key": "31",
+   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "status": "MATCH",
+   "subject_key": "22bf8a2e056f0160be5a35aec1cd6db99dcec441f93d9e1b03dc382b3f59d2e3"
+  }
+ ],
+ "subjects": {
+  "rrta": "c288d66fc0f67a39aebb651525bd843ea9349d3ed442ec217c0f6b87e8491641",
+  "employers": "08db99585cb04c792038309076c08f4a25e53de478703fbeda72de2fb371c53b",
+  "overcount": "09ea1d2d60f982805105b3a93befc7303a0de55c8d3de283a6ddb62694dd6741",
+  "over": "da0cb84ba3b2f215c551b8517f33892c0e8df9c6dce69f97c5cf79d684ad9815",
+  "wages": "ef55de63eecf9940ed7ddc4524060e242c1ac3627a6a21df545d29ed78e168be",
+  "withheld": "5dab9ef0579d279bb77cbc94ca90c5869f94016d96bf65afe4b34aaa22af019a",
+  "eligible": "6b2594067f72412d9f12c77b8627857f26c0aa81b9c1419b2f55922fecb8a726",
+  "excess": "2ec6c73ca182e811cf7259d5a2359870a6b4847c23b1a1213dd210cceb89c0f9",
+  "zero": "56a11e09deb0116e1f3c128f1752c8b174532238c961ae27a9a708421219f121",
+  "credit": "04f651e17bd41d95113216306e28f5303f80898e3ef2041e1a151adc423b3e75",
+  "(screen) (person.se_screen)": "b117049b2d5c553634ae6c5ee8d0619cf62c008db8ea56a0cfd25844c808caa2",
+  "(screen) (person.plan_screen)": "ed86e8484bea910c1df4dd0d64973e941cda2456c239f982c52205101ac3bd51",
+  "Step 1": "2f1ee32f848fae246d96f744b1f94b9cb1b1e64460d6a4c0b48c0c935a1fd51d",
+  "Step 2": "11602d9af4406ebfba4bb3cb46649bd7be586b4194b42ab25e064553db835639",
+  "Step 3": "6dc9e181cefa05af31b1d01d394d867ff43f957d419f78037ca796695fe1f2fa",
+  "Step 5": "e00f89f146804b9f4194bc873efd88c70e6260f55aa15c548921892b6bdd3c0d",
+  "Step 6": "5c109917e19c8a33451ba0d9c242848d4f96a7a3812418f2d5d77536f94746a0",
+  "Step 7": "4785acf98f3e9e7f81ba9b4142b456ed5dcc40b05432d2aac35039d71f2e8b1f",
+  "Step 8": "4d37fed6cb8938331b58ff550c7a9144c7e9a75890f7b63ad4c24ac1dd9007f6",
+  "Step 21": "c09eb630c2d318f1edb9dbc207e75c4ce84b690f82647c535d3a905095456a44",
+  "(screen) (person.sav_able)": "4dac837ece8f3062a726a3909e8e873a3c1a610a0dc74c0fe2bb112fbf2fb6e6",
+  "(screen) (person.sav_excess)": "8268c2fc44d105f215387ac095fc2d13542bd84d97ae1432802d40bdd791497e",
+  "(screen) (person.ira_excess)": "0725f9a698f6683481a436d50d331a4b1194adc6c9248c3aea874d016a1a961b",
+  "23": "9223c23e3c46b26b83ccb5d841633f2f1b39bbf9863863f6d107c062cbebd231",
+  "24": "9f1d38d7e493b18f7b91c64374bad4f7eaa16e7049076217bf16d8d3c87ed5a7",
+  "25": "92bbf9d23da231a378008f560b77f4ecc9287bdf9de6a32bb55f97d1df37d95c",
+  "26": "5e230914a1d319de23b13cb4bc87ab8ec9fae1f62dbbda87ffa25dcff0585388",
+  "27": "d04de78e920912b791ba394ae04e95f4fef3f10775f71a81750b78e02d2017aa",
+  "28": "64f318a8c10578a3c2d0a7174d1edb8fc670185c9e2823f4757760363b220961",
+  "29": "d415e839d3b21c9a897530d90f0ab5460521b98b50772217912525df774c966d",
+  "30": "501858bae5de6663c688087286e82619f981040f1fee5d0e69e3c8d43fa99a1c",
+  "31": "a4982520f1dc72c4c683082f99b9af4e316c5c97a1fca88b4f2818b6fafd2763"
+ },
+ "__rest__": "774637a29894532eb1f17ff28873aee0739a6158bd21538f87516cd8da60346c"
+}

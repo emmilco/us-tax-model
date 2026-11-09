@@ -400,7 +400,7 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
     out += ["## Raw responses", ""]
     for job in jobs:
         out += [f"### {job['id']}", "", "```yaml", runs[job["id"]]["raw"].strip(), "```", ""]
-    open(path, "w", encoding="utf-8").write("\n".join(out))
+    rulings.write_log("classm", fid, "\n".join(out), family)
     # Merge this document's cases into the family's fixture file.
     fx = json.load(open(fixture)) if os.path.exists(fixture) else {"tax_year": YEAR, "cases": []}
     # A rerun regenerates the cases, so a mutant only a replaced case killed can survive: name the

@@ -403,3 +403,41 @@ def _own_state(kind, fid, year, text, recorded_subject):
         tool = "transcribe.py" if kind == "transcription" else "render_compare.py"
         return f"the {kind} log is stale for {'; '.join(parts)}; rerun them: {tool} --form {fid} --lines auto"
     return None
+
+
+# ---------- the review store ----------
+#
+# A form's review is committed as records and an index (review_store.py). The index holds, per compared
+# line, the record its verdict comes from and its line subject (for transcription with its foreign
+# interfaces), and the rest of the document as `__rest__`; index_state is log_state read from it.
+
+def index_state(kind, fid, year, index, recorded_subject, has_passes):
+    """log_state of a form's index: `recorded_subject` is the subject hash its whole-form record's header
+    records (None if none), `has_passes` whether any compared line's verdict comes from a line-scoped pass.
+    A line is current when its recorded subject equals the current one, and the rest as well."""
+    if not recorded_subject:
+        return f"the {kind} log records no subject hash (tools/transcription/subjects.py)"
+    what = {"transcription": "form", "render": "rendered English", "classm": "computation"}[kind]
+    whole = recorded_subject == current(kind, fid, year)
+    rows = index.get("subjects")
+    if kind == "classm" or (whole and not has_passes) or rows is None:
+        own = None if whole else f"the {kind} log reviewed an earlier {what} of {fid}; rerun the review"
+    else:
+        cur, cur_rest = current_line_subjects(kind, fid, year)
+        stale = [k for k in cur if rows.get(k) != cur[k]]
+        gone = sorted(set(rows) - set(cur))
+        own = None
+        if index.get("__rest__") != cur_rest:
+            own = f"the {kind} log reviewed an earlier {what} of {fid} outside every compared line; rerun the whole review"
+        elif stale or gone:
+            parts = ([f"lines changed or not yet reviewed: {', '.join(stale)}"] if stale else []) + \
+                    ([f"lines no longer compared: {', '.join(gone)}"] if gone else [])
+            tool = "transcribe.py" if kind == "transcription" else "render_compare.py"
+            own = f"the {kind} log is stale for {'; '.join(parts)}; rerun them: {tool} --form {fid} --lines auto"
+    if own is None and kind == "transcription" and index.get("foreign") and os.path.exists(path("transcription", fid, year)):
+        rec, now = index["foreign"], current_foreign(fid, year)
+        moved = [k for k in now if k in rec and rec[k] != now[k]]
+        if moved:
+            return (f"the transcription log is stale for lines whose foreign interfaces (another document's input question, "
+                    f"marker or type) changed: {', '.join(moved)}; rerun them: transcribe.py --form {fid} --lines auto")
+    return own

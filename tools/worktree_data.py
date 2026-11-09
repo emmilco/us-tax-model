@@ -91,8 +91,10 @@ def referenced(root=ROOT):
         for m in REF.findall(text):
             refs.setdefault(m.rstrip("."), f)
         parts = f.split("/")
-        if f.endswith(".md") and parts[-2] in ("transcription", "render"):
-            stem = parts[-1][:-3]
+        # A form's review (its index, or a log file before the review store) names its whole-form receipt by its stem.
+        stem = (parts[-1][:-len(".index.json")] if f.endswith(".index.json")
+                else parts[-1][:-3] if f.endswith(".md") and "store" not in parts else None)
+        if stem and parts[-2] in ("transcription", "render"):
             refs.setdefault(f".transcription/{stem}" + (".render" if parts[-2] == "render" else ""), f)
     return refs
 

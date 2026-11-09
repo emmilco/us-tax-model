@@ -3038,5 +3038,104 @@ class StructuredTextOneLineTests(unittest.TestCase):
             self.assertIn("Including: (1) a [nested: c; d]; (2) b", M.given_name(given, "x"))
 
 
+class ReviewStore(unittest.TestCase):
+    """A log is stored as one record per pass and a per-form index; its view is the log byte for byte."""
+    S1, S2, S3, REST = "1" * 64, "2" * 64, "3" * 64, "4" * 64
+
+    def log(self, ruling="Ruling: open", s2=None, pass_b=False):
+        import subjects as S
+        head = ("# Transcription agreement — x\n\nintro\n\n| field | value |\n| --- | --- |\n| date | 2026-11-01 |\n"
+                + ("| line-scoped reviews | 1 (latest 2026-11-02); see Line-scoped reviews |\n" if pass_b else "")
+                + "| prompt sha256 | " + "a" * 64 + " |\n| prompt policy | p-v1 |\n| subject sha256 | " + "5" * 64 + " |\n"
+                + "| printed lines compared | 2 |\n| agree / disagree / missing | 1 / 1 / 0 |\n")
+        sec1 = "1 — one\nStatus: **AGREE**\n\n"
+        sec2 = (f"2 — two\nStatus: **DISAGREE**\n\nProject:\n\n```json\n{{\"const\": 1}}\n```\n\nSecond:\n\n```json\n{{\"const\": 2}}\n```\n\n{ruling}\n"
+                + ("Reviewed in: pass bbbbbbbbbbbb\n" if pass_b else "") + "\n")
+        tail = S.table({"1": self.S1, "2": s2 or self.S2}, self.REST)
+        if pass_b:
+            block = ("#### Pass bbbbbbbbbbbb\n\n| field | value |\n| --- | --- |\n| date | 2026-11-02 |\n| review scope | lines 2 |\n"
+                     "| prompt sha256 | " + "b" * 64 + " |\n| subject sha256 | " + "6" * 64 + " |\n\n##### Raw second transcription\n\n```yaml\nlines: [b]\n```")
+            tail += [T.PASS_HEADING, "", T.PASS_INTRO, "", block, ""]
+        return (head + "\n## Lines\n" + "\n### " + sec1 + "\n### " + sec2 + "\n" + "\n".join(tail).rstrip("\n") + "\n"
+                + "\n## Raw second transcription\n\n```yaml\nlines: [a]\n```\n")
+
+    def setUp(self):
+        import review_store
+        self.store = review_store
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        stack = contextlib.ExitStack()
+        stack.enter_context(patch.object(rulings, "REVIEWS", self.temp.name))
+        stack.enter_context(patch.object(rulings, "STORE_ELSEWHERE", True))
+        self.addCleanup(stack.close)
+
+    def records(self):
+        d = Path(self.temp.name, "store", "transcription")
+        return {p.name: p.read_text() for p in d.glob("*.md")} if d.exists() else {}
+
+    def test_view_is_the_log_and_a_ruling_changes_only_the_index(self):
+        text = self.log()
+        rulings.write_log("transcription", "x", text)
+        self.assertEqual(rulings.read_log("transcription", "x"), text)
+        index = json.loads(Path(self.store.index_path("transcription", "x")).read_text())
+        self.assertNotIn("extras", index)  # the frame is generated, not stored
+        self.assertEqual([(l["key"], l["status"], l.get("ruling")) for l in index["lines"]],
+                         [("1", "AGREE", None), ("2", "DISAGREE", "Ruling: open")])
+        self.assertEqual(index["__rest__"], self.REST)
+        self.assertEqual(index["lines"][0]["subject_key"], self.store.subject_key(self.S1, None))
+        before = self.records()
+        self.assertEqual(len(before), 1)
+        self.assertIn("Ruling: open", next(iter(before.values())))
+        ruled = self.log("Ruling: scope; same amount")
+        rulings.write_log("transcription", "x", ruled)
+        self.assertEqual(rulings.read_log("transcription", "x"), ruled)
+        self.assertEqual(self.records(), before)  # the record is never rewritten
+        self.assertEqual(self.store.check(), 0)
+
+    def test_a_line_scoped_pass_adds_one_record_and_keeps_the_rest(self):
+        rulings.write_log("transcription", "x", self.log())
+        first = self.records()
+        merged = self.log("Ruling: open", s2=self.S3, pass_b=True)
+        rulings.write_log("transcription", "x", merged)
+        self.assertEqual(rulings.read_log("transcription", "x"), merged)
+        after = self.records()
+        self.assertEqual(len(after), 2)
+        self.assertTrue(set(first) <= set(after))  # the whole-form record is kept, unchanged
+        passes = self.store.line_passes("transcription", "x")
+        self.assertEqual({k: v["pass"] for k, v in passes.items()}, {"1": None, "2": "bbbbbbbbbbbb"})
+        index = json.loads(Path(self.store.index_path("transcription", "x")).read_text())
+        self.assertEqual(index["head_rows"]["line-scoped reviews"], "1 (latest 2026-11-02); see Line-scoped reviews")
+        self.assertEqual(self.store.check(), 0)
+
+    def test_a_new_whole_review_replaces_the_base_record(self):
+        rulings.write_log("transcription", "x", self.log())
+        first = set(self.records())
+        again = self.log().replace("| date | 2026-11-01 |", "| date | 2026-11-05 |").replace("a" * 64, "c" * 64)
+        rulings.write_log("transcription", "x", again)
+        self.assertEqual(rulings.read_log("transcription", "x"), again)
+        after = set(self.records())
+        self.assertEqual(len(after), 1)
+        self.assertFalse(first & after)  # the earlier review's record is no longer named, so it is removed
+
+    def test_a_record_stored_with_other_content_is_refused(self):
+        rulings.write_log("transcription", "x", self.log())
+        path = next(Path(self.temp.name, "store", "transcription").glob("*.md"))
+        ident, parts = self.store.parse_record(path.read_text())
+        with self.assertRaisesRegex(ValueError, "never rewritten"):
+            self.store.write_record(ident, [(n, t + "x") for n, t in parts.items()])
+
+    def test_index_state_follows_lines_rest_and_foreign_interfaces(self):
+        import subjects as S
+        index = {"subjects": {"1": "a", "2": "b"}, "__rest__": "r", "foreign": {"1": "f"}}
+        with patch.object(S, "current", return_value="w"), \
+                patch.object(S, "current_line_subjects", return_value=({"1": "a", "2": "b"}, "r")), \
+                patch.object(S, "current_foreign", return_value={"1": "f", "2": "g"}), patch.object(S.os.path, "exists", return_value=True):
+            self.assertIsNone(S.index_state("transcription", "x", "2025", index, "v", True))
+            self.assertIn("outside every compared line", S.index_state("transcription", "x", "2025", {**index, "__rest__": "q"}, "v", True))
+            self.assertIn("lines changed or not yet reviewed: 2", S.index_state("transcription", "x", "2025", {**index, "subjects": {"1": "a", "2": "c"}}, "v", True))
+            self.assertIn("foreign interfaces", S.index_state("transcription", "x", "2025", {**index, "foreign": {"1": "e"}}, "v", True))
+            self.assertIsNone(S.index_state("transcription", "x", "2025", {**index, "__rest__": "q"}, "w", False))  # reviewed whole, unchanged
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

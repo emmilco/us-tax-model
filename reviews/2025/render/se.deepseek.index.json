@@ -1,0 +1,88 @@
+{
+ "kind": "render",
+ "form": "se",
+ "family": "deepseek",
+ "base": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+ "lines": [
+  {
+   "key": "2",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: open"
+  },
+  {
+   "key": "8a",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: open"
+  },
+  {
+   "key": "4a",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MATCH"
+  },
+  {
+   "key": "4b",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: open"
+  },
+  {
+   "key": "4c",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MATCH"
+  },
+  {
+   "key": "5b",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: open"
+  },
+  {
+   "key": "6",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MATCH"
+  },
+  {
+   "key": "7",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MATCH"
+  },
+  {
+   "key": "8d",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: open"
+  },
+  {
+   "key": "9",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MATCH"
+  },
+  {
+   "key": "10",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MATCH"
+  },
+  {
+   "key": "11",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MATCH"
+  },
+  {
+   "key": "12",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MATCH"
+  },
+  {
+   "key": "13",
+   "record": "132ba065f8c3290ed55f270f1862c274503aa6740bafca33e8c63b7875a0231b",
+   "status": "MATCH"
+  }
+ ]
+}

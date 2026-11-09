@@ -1,0 +1,149 @@
+{
+ "kind": "render",
+ "form": "u1250",
+ "family": "claude",
+ "base": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "1",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sd p. 13, lines 1 to 9: \"If you aren’t reporting a gain on Form 4797, line 7, skip lines 1 through 9 and go to line 10\". Refusal located elsewhere; project retained. Form 4797 property: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 1 is $0.00. Same ruling as Stage 20.",
+   "subject_key": "a05bd5677965c07a6a6d668872406612e10ff6579dd13b1c01ae39ba35a56212"
+  },
+  {
+   "key": "2",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MATCH",
+   "subject_key": "7fdd9f8d4191b809e034bb96a126ed5229ad31a76fd4a197353a5569ff2e14e0"
+  },
+  {
+   "key": "3",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MATCH",
+   "subject_key": "4214eac83a93085d864db45b93459996aa83554b6d9470c0e4e4ed1aba9f065e"
+  },
+  {
+   "key": "4",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sd p. 13, line 4. Refusal located elsewhere; project retained. Form 6252 installment sales: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 4 is $0.00. Same ruling as Stage 20.",
+   "subject_key": "d82cdeb48754514257da255e07281cd183c63f975e0c6eda502e7758c67a4f63"
+  },
+  {
+   "key": "5",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sd p. 13, line 5. Refusal located elsewhere; project retained. Schedule K-1 unrecaptured section 1250 gain (also refused by scope.schedule1): sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 5 is $0.00. Same ruling as Stage 20.",
+   "subject_key": "22d4961da09a89aa896d6f67f46cb15910bb8f8901f598e6b65c27c619f5f92c"
+  },
+  {
+   "key": "6",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MATCH",
+   "subject_key": "3ea29937f95e19016a51091fdf89e1eb036e1903d773f8c7b76f3a467bf73846"
+  },
+  {
+   "key": "7",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MATCH",
+   "subject_key": "bf3cc660d58aedf30ea51fd182089972c2833d8126cdc790b07361ec3cf2d2a8"
+  },
+  {
+   "key": "8",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the same. Refusal located elsewhere; project retained. Form 4797 line 8 amounts: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 8 is $0.00. Same ruling as Stage 20.",
+   "subject_key": "9db0fccb690f3d68502452e0158ac5d9e65108f00e6cbd69a2da3bd7ff419667"
+  },
+  {
+   "key": "9",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MATCH",
+   "subject_key": "61ac68d9898b4c6b36df8db5bb691fed10762816a00603b9df503e4543fd6cc4"
+  },
+  {
+   "key": "10",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sd p. 13, line 10. Refusal located elsewhere; project retained. Sales of an interest in a partnership: sales.special refuses them per sale; constructed on classm.g28.2 (node engine/dist/main.js eval): sales[s1].special true refuses sd.line17, g28.line7, u1250.line18 and f1040.line7a; the question now names \"an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property\" (PENDING-6). In scope line 10 is $0.00. Same ruling as Stage 20.",
+   "subject_key": "58168ee8d60bfa33cb3be2b209766f0aa2cdbd608c696c3df651cab37de882d6"
+  },
+  {
+   "key": "12",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sd p. 13, line 12. Refusal located elsewhere; project retained. Section 1250 property sold directly (\"depreciable real property (section 1250 property)\" in sales.special) and installment sales or Form 4797 dispositions (sd.other_forms): sales.special refuses them per sale; constructed on classm.g28.2 (node engine/dist/main.js eval): sales[s1].special true refuses sd.line17, g28.line7, u1250.line18 and f1040.line7a. In scope line 12 is $0.00. Same ruling as Stage 20.",
+   "subject_key": "ba999fac50ba053042976ef6695c59a66969a022575ef85f40d7135b0688985d"
+  },
+  {
+   "key": "16",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sd p. 13, line 16, printed \"( )\". Refusal located elsewhere; project retained. The Schedule K-1 (Form 1041) box 11 code D carryover is a capital loss on a Schedule K-1: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. The project's line 16 is Schedule D line 14 held negative, the page's entry; the model raises the K-1 omission, not the sign (T-140). Same ruling as Stage 20.",
+   "subject_key": "b3aa14197f31eda4472ac147657c12d8f5e80f85e02f528f6f95b8e21f1cb64a"
+  },
+  {
+   "key": "11",
+   "record": "375e37c2acfc3c69671458e5702769eaecc8d48aa336d3c9824bf85050517e99",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sd p. 13, Unrecaptured Section 1250 Gain Worksheet, line 11: \"Enter the total of any amounts reported to you as “unrecaptured section 1250 gain” on a Schedule K-1, Form 1099-DIV, or Form 2439 ...\" Schedule K-1 and Form 2439 amounts: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") refuses them, reaching Form 1040 line 7a through Schedule D lines 7, 15 and 16 (as the earlier rulings of this line); a Form 1099-R lump-sum distribution by retirement.special (\"a lump-sum distribution you may report on Form 4972\"), as in the earlier rulings. Within scope line 11 is Form 1099-DIV box 2b alone. The box 2a condition is the box 2b input's: f1099div p. 5, \"Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain\", so box 2b is zero when box 2a is. Project retained.",
+   "subject_key": "c6f736d117f28c78050706985f9c469fec4680ea0d9bc4f0657e4c1a09ca67ef"
+  },
+  {
+   "key": "13",
+   "record": "375e37c2acfc3c69671458e5702769eaecc8d48aa336d3c9824bf85050517e99",
+   "status": "MATCH",
+   "subject_key": "3cfb0c008b4fa1cf30b4a382bcac603983e757697e9de8c7990803edf1776d9a"
+  },
+  {
+   "key": "14",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; i1040sd p. 13, line 14, \"enter the total of lines 1 through 4 of the 28% Rate Gain Worksheet\". In scope g28 lines 1 to 3 are $0.00 (div.screen, behind sales.special and sd.other_forms) and line 4 is Form 1099-DIV box 2d, non-negative, so the total is never negative on a reachable return and NonNegDollars holds. The model agrees the \"Otherwise, enter -0-\" branch is equivalent. Same ruling as Stage 20.",
+   "subject_key": "f8060d5a0c4fef2c02ac6c3542a4f7cdfcccbbc38553a8d52a30cf872cd02b8c"
+  },
+  {
+   "key": "15",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MATCH",
+   "subject_key": "ae9ea52c25e2d37fdb8724b1db828e9feecf8f937c8e35f20fa87c9b6c66c69a"
+  },
+  {
+   "key": "17",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MATCH",
+   "subject_key": "4b7e3a4e09954a56e0b2476a77895f097ba0776d2d0ffdfc66e67c27bd925a7b"
+  },
+  {
+   "key": "18",
+   "record": "075e9536a1b707cb61fb7d8741a174eb325c999f31c10e034df9647583045ec3",
+   "status": "MATCH",
+   "subject_key": "16b6ec124cd06afbdc597e5dc1936b84d010b04fbb8c1cd2c5a101693b2a3c00"
+  }
+ ],
+ "subjects": {
+  "1": "a42299c42c7c0fac65d6ba108bc0d30d93ef25d3e4da1d26ce03cdc8ceb559f7",
+  "2": "cef480c8bebc1c78ffff1e301b877fc3965a00a0947f3c13683154c85d1189d1",
+  "3": "38f12764745c9c546cb56a896ca3ebb8908e531dfc26926346e2c236bd348430",
+  "4": "30738ade212c03086bc4d83e8cbdac0e262bd1318f4cf0bcded9403afe756235",
+  "5": "bf7f2179d9c98fc4577ebb2d18fdbb9edf648081a2b1a8b448619270931cafaf",
+  "6": "c00eb598e071f07cbcbeade33478a631754d253bad7e8b63ba7a994184cccd42",
+  "7": "fc8ec5dcfebaeb11872bf386ff4a902fddc4388d0a09ae29cec96ccf06a054fa",
+  "8": "9d10afc452842e12e07359a267627f93ca8856c4579c545729096fd38ae0e518",
+  "9": "f904ef16f37edce9b7da29baf59fa361df8cb972ecb360c30a8c0bb62496f92d",
+  "10": "391cc8565050b58ecec8b1554c09b5bfc5b2381d0b1b5a538b2cb5245cd8933f",
+  "12": "ed381921c0beefae9d9a2aa8a9fc51151d103baa8dccaed314f3a0ee2a71e118",
+  "16": "90db11e965da6d903458a9ad09b77f266c00b798caabb395b986f639c257c12f",
+  "11": "c10887b7f9393fad982b7c30addc378ae36a1bc3e1188cad6dbf8bf4202b1c20",
+  "13": "6b254348f75a19e7f1b2289512cfd141c6cd17e05652855c4a750703bf193201",
+  "14": "02dad5573bf37912eb969fc61ab59c1dd018dbef49505fa45455c71f5b7f7f05",
+  "15": "81ecb18775a038cfee1e4cad052056de403e95111259fcadd2c1f33a9ae2e660",
+  "17": "28254859ee2237f89b26fc3aa6970c5977bc2066b9fb399befd608c1b86abe5b",
+  "18": "e55f95a750ab3155b947f4327edeab2cecbc0c459a74b4438c5b1c43493019d1"
+ },
+ "__rest__": "d6f30987a046031815d1abfcf3d827b4fb52ce80b62b30a27e15e7d52e830f00"
+}

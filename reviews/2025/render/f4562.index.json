@@ -1,0 +1,85 @@
+{
+ "kind": "render",
+ "form": "f4562",
+ "family": "claude",
+ "base": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+ "lines": [
+  {
+   "key": "12",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "14",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "17",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "19a(g)",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "19b(g)",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "19c(g)",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "19d(g)",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "19f(g)",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "19e(g)",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "21",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "22",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. The omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers (2005 to 2025); lines 19g to 19j (25-year, residential rental, nonresidential real property) through asset.screen ('real property ... or land') and the recovery-class lookup (macrs_period has only 3- to 20-year periods and 'outside'); line 20 (ADS) through asset.screen ('you depreciate it under ADS'), each refusing asset.cost (asset.screened). Vehicles are listed property on line 21. With those refused the total is the lines listed."
+  },
+  {
+   "key": "25",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "26(h)",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Listed property used 50% or less (line 27) is refused on the asset (asset.basis refuses on asset.listed_low, 'Listed property used 50% or less in a qualified business use (Form 4562 line 27)') and on an owned vehicle depreciated by actual expenses (scveh.placed refuses on scveh.low_use); a leased vehicle or one on the standard mileage rate has no column (h) depreciation. Checked: classm.asset.1 with item_1 listed at 40% gives sc.f26h refused on listed_low, and car_1 owned at under 50% gives it refused on low_use. So every entry the helper adds belongs on line 26."
+  },
+  {
+   "key": "28",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  },
+  {
+   "key": "29",
+   "record": "52a738c03453e6cb8a23981731e52d04fbe6ee37bbe7e74cc75bc78b533b1f2b",
+   "status": "MATCH"
+  }
+ ]
+}

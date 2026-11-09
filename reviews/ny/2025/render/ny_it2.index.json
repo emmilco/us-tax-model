@@ -1,0 +1,46 @@
+{
+ "kind": "render",
+ "form": "ny_it2",
+ "family": "claude",
+ "base": "aeb709409efba936375810f79fef256b49b08f5a529531d77b533f86344b595a",
+ "lines": [
+  {
+   "key": "17a",
+   "record": "aeb709409efba936375810f79fef256b49b08f5a529531d77b533f86344b595a",
+   "status": "MATCH",
+   "subject_key": "a4f74992fe95df7977b1397d8ef2f50d9e714f5a3c77df4d66e8997b50190457"
+  },
+  {
+   "key": "19 (Yonkers)",
+   "record": "aeb709409efba936375810f79fef256b49b08f5a529531d77b533f86344b595a",
+   "status": "MATCH",
+   "subject_key": "97d41e79a7de324762fc65a3d5045f111894dc43a26f0f94526cf5f87b967d67"
+  },
+  {
+   "key": "17a (whole dollars)",
+   "record": "aeb709409efba936375810f79fef256b49b08f5a529531d77b533f86344b595a",
+   "status": "MATCH",
+   "subject_key": "8201d7626ee92e0573c56e747b6f1f7c16fbecf927ce2fa777720585842629bb"
+  },
+  {
+   "key": "19",
+   "record": "aeb709409efba936375810f79fef256b49b08f5a529531d77b533f86344b595a",
+   "status": "MATCH",
+   "subject_key": "7a7a5584ed8b3173bf0ae69c682bdcf24ba2f2cb79ab1929532c4368d4c0bb19"
+  },
+  {
+   "key": "19 (whole dollars)",
+   "record": "aeb709409efba936375810f79fef256b49b08f5a529531d77b533f86344b595a",
+   "status": "MATCH",
+   "subject_key": "d06bab8eaa6d81bb8d6175fb7d5a71b2377dae796b5b4032f6e9f6fb9c18c2aa"
+  }
+ ],
+ "subjects": {
+  "17a": "38f8018270f6c45ec8c67642733480a4a03520b4d911cda1c953c11ceb22fc45",
+  "19 (Yonkers)": "b53af12b55449117fb336286ecdc8976b5dba8c610f622ec0b7c832916570b08",
+  "17a (whole dollars)": "0b6f7417bc0b1dbaa59920c4395b90dd61d7617085190c60e50787ace963123a",
+  "19": "42f6704f169107132afac5ba739572859e679c60f2fb820e8efba842805fa5a2",
+  "19 (whole dollars)": "c949a6ba803777466f49b9b648fda8edfa748627167d624e6da2565bb5c3ccfa"
+ },
+ "__rest__": "7f81808e16a3ebcf41cacb68d9a14af68fedf63abaf5e1f8751b95630ee7ab75"
+}

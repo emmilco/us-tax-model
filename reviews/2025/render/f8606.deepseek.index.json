@@ -1,0 +1,34 @@
+{
+ "kind": "render",
+ "form": "f8606",
+ "family": "deepseek",
+ "base": "be3de8ecf40422a173ccadb2058dc9a07078702ff6a4c0c0c61c30b6b4716edd",
+ "lines": [
+  {
+   "key": "1",
+   "record": "be3de8ecf40422a173ccadb2058dc9a07078702ff6a4c0c0c61c30b6b4716edd",
+   "status": "MISMATCH",
+   "ruling": "Ruling: open"
+  },
+  {
+   "key": "2",
+   "record": "be3de8ecf40422a173ccadb2058dc9a07078702ff6a4c0c0c61c30b6b4716edd",
+   "status": "MATCH"
+  },
+  {
+   "key": "3",
+   "record": "be3de8ecf40422a173ccadb2058dc9a07078702ff6a4c0c0c61c30b6b4716edd",
+   "status": "MATCH"
+  },
+  {
+   "key": "3 (question)",
+   "record": "be3de8ecf40422a173ccadb2058dc9a07078702ff6a4c0c0c61c30b6b4716edd",
+   "status": "MATCH"
+  },
+  {
+   "key": "14",
+   "record": "be3de8ecf40422a173ccadb2058dc9a07078702ff6a4c0c0c61c30b6b4716edd",
+   "status": "MATCH"
+  }
+ ]
+}

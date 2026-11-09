@@ -1,0 +1,28 @@
+{
+ "kind": "render",
+ "form": "ltc",
+ "family": "claude",
+ "base": "e02fc473d1126529bd0eacf75b403df2889ca8a0d0d26da792e3a79ba8108994",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "2(a)",
+   "record": "9a7f9681aee81f10f6db91f7d34e3ab49d08eda1511714a45e0440957a36c6f1",
+   "status": "MATCH",
+   "subject_key": "d70a65587597bedf0c124cfa5d54c9ea72c77db6e75c5319b199fe84fa195bd7"
+  },
+  {
+   "key": "2(b)",
+   "record": "e02fc473d1126529bd0eacf75b403df2889ca8a0d0d26da792e3a79ba8108994",
+   "status": "MATCH",
+   "subject_key": "5a4654a47ffa7cc4bfb24695b8f18aca9f47b9c1a61bfe3b82565ac3575ac0ba"
+  }
+ ],
+ "subjects": {
+  "2(a)": "3a0c14f6380a27934b690ecce7f9076636ae738430b99d03bfe6ed3bcd90e8cc",
+  "2(b)": "bedb626f9e3a0590b30ab49cff0ca8207490010f34f7529d0909e4853e18f541"
+ },
+ "__rest__": "9680d6b2041e715d2fbd99eee9f6f1d7e9ed0a159eea2e0316d9712917df7063"
+}

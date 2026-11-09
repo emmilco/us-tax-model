@@ -1,0 +1,16 @@
+{
+ "kind": "transcription",
+ "form": "div",
+ "family": "deepseek",
+ "base": "321b4fb8251faa97788b013c32d7c5c3a0bd6909be0efc6de9bf6801ff1bf5d4",
+ "lines": [
+  {
+   "key": "div.screen",
+   "record": "321b4fb8251faa97788b013c32d7c5c3a0bd6909be0efc6de9bf6801ff1bf5d4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap; f1099div (2025) Instructions for Recipient describes the dividend boxes, but defines no quantity named div.screen. The reply explicitly invents a total of special amounts because the required export has no supplied semantic contract. The project uses this internal adapter as zero after scope checks, including when unsupported Form4797/K-1 amounts are absent; that behavior was not independently inferable from the id/type alone. No whole-tree equivalence or clean model-only error is claimed. BUG-0135/T-064 keeps this source-interface review pending until adapter and source-defined quantities are separated."
+  }
+ ],
+ "subjects": {},
+ "__rest__": "ab9ea5065d1d3f1a23ab77de1d140198c1b1c4bc6363087c360e4f5384b11029"
+}

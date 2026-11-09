@@ -1,0 +1,29 @@
+{
+ "kind": "render",
+ "form": "oi8z",
+ "family": "deepseek",
+ "base": "a19f546a84819df60a5e45fb389992f60c5a524f4b3d8c4e2f7597b16a6160c1",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "8z (type)",
+   "record": "446797120ae7aebc3056fd6049fde97556d0b8a821194c875e858ebf1c2c91eb",
+   "status": "MATCH",
+   "subject_key": "a0790dedf37e63df4a92fcb29e947e110076cc033b6e02b93b07e8f7bad2e305"
+  },
+  {
+   "key": "8z (amount)",
+   "record": "a19f546a84819df60a5e45fb389992f60c5a524f4b3d8c4e2f7597b16a6160c1",
+   "status": "MISMATCH",
+   "ruling": "Ruling: open",
+   "subject_key": "9a60e24da2f6bac1b449280f8f3e9cacbc35a431f78d0b7ab6eecfa77872530d"
+  }
+ ],
+ "subjects": {
+  "8z (type)": "b17bb335f519ea7e57a1b5f86b47fad0219f96a9f0866844ee10335c2ed19a81",
+  "8z (amount)": "d08a0d16f93c9b413a4c926f1ba4dcfea4bf4a30e6a3cd45485b5fdbca2076cf"
+ },
+ "__rest__": "88bff9466958832063aaa5eb6d014d9f7e1967406a1c16d9a33bbdc8e315f9de"
+}

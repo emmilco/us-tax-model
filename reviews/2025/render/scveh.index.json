@@ -1,0 +1,209 @@
+{
+ "kind": "render",
+ "form": "scveh",
+ "family": "claude",
+ "base": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+ "head_rows": {
+  "line-scoped reviews": "3 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "43",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; same as the earlier ruling (restatement and objection unchanged). The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on Schedule C line 43 from their own records.",
+   "subject_key": "401eac68613491e39dff3813f6536cbad0fbcef3549eda04c1b740282e6852c2"
+  },
+  {
+   "key": "44a",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "e2d0d636cd2d9cdab7703577dcad9bf8abfd066ae73dd15b6385cd7a7ffb2fe3"
+  },
+  {
+   "key": "44b",
+   "record": "6262d7e275e65f8875e0058e18c27dc2796ffe67f85d7ecac6609305a32cde68",
+   "status": "MATCH",
+   "subject_key": "4253a13eb4dfda1f66a78fb464203053485a41e20aad6c1074edc2f5dbeb4ce6"
+  },
+  {
+   "key": "44c",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "9786977319f8ba11619d7e60163e66f4d9b888689998236cc2cc49135daf8ca6"
+  },
+  {
+   "key": "(screen) (scveh.smr_ok)",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "2ce0a274d0eb3d2f9976c2ad5a9e0e29ba10204d81bda9e3ec8faf353dbef52f"
+  },
+  {
+   "key": "(screen) (scveh.employee_use)",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "65c5d0c05faf1a764fd6261751f698b3dd6a097278d91e19c273a234f1c2b1cf"
+  },
+  {
+   "key": "9 (scveh.line9)",
+   "record": "6262d7e275e65f8875e0058e18c27dc2796ffe67f85d7ecac6609305a32cde68",
+   "status": "MATCH",
+   "subject_key": "b90aa0b24e000c1c60b83ff16987dc931905755f9d91cc3f84b04d1315bb5e00"
+  },
+  {
+   "key": "(screen) (scveh.lease_smr_before)",
+   "record": "6262d7e275e65f8875e0058e18c27dc2796ffe67f85d7ecac6609305a32cde68",
+   "status": "MATCH",
+   "subject_key": "d6e435a180bc49ec58bb63755dc7f57f6c817619d55da41d22b3af7554f37aee"
+  },
+  {
+   "key": "20a",
+   "record": "6262d7e275e65f8875e0058e18c27dc2796ffe67f85d7ecac6609305a32cde68",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; An inclusion amount for leased property is refused for the business through sc.special (\"an inclusion amount for leased property\"), so the business portion of the lease payments is the line 20a amount for every vehicle that reaches it. The model's \"no refusal covers it\" is wrong. Same point as the deepseek refresh-round ruling.",
+   "subject_key": "faf81b9067fc2571dd12811f33a0fae275a7ef8cfe9889d7991dbf018b047626"
+  },
+  {
+   "key": "(b)",
+   "record": "6262d7e275e65f8875e0058e18c27dc2796ffe67f85d7ecac6609305a32cde68",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; same restatement and objection as the refresh-round ruling. The tool needs the year (and, for 2025 property, the quarter, asked separately) to choose the tables and limits; no value depends on the month or day otherwise. A vehicle converted from personal use in 2025 is refused by scveh.screen.",
+   "subject_key": "0a69d6e420ab172595fd4522f8a11acc804f23e134a90c92820731d4568d9e04"
+  },
+  {
+   "key": "(screen) (scveh.screen)",
+   "record": "04b700fb4d837cf3fb2af6531c68a7baad11f567cc8e8e5351b616de9df5ec3d",
+   "status": "MATCH",
+   "subject_key": "71b6abe6ca3b2ce08667bcd5ac96ff71a20454904885e1886cf61b2d4a2128ef"
+  },
+  {
+   "key": "(d)",
+   "record": "816de5313b9c534f106e777dbda457627edf2394d846a86bfb1bb4f86711a4ff",
+   "status": "MATCH",
+   "subject_key": "c176fbb431e2500f0c1cbe588d1b22c5266283fe1b5f73e8194967fdb8195dc7"
+  },
+  {
+   "key": "13",
+   "record": "816de5313b9c534f106e777dbda457627edf2394d846a86bfb1bb4f86711a4ff",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13, \"Multiply line 12 by line 8. This is your business/investment cost\" (the line's cite). The printed handle 13 is that worksheet line, not Schedule C line 13; the depreciation rate, section 179 and special-allowance subtraction and the automobile limits are on the project's later worksheet lines (column (h), scveh.macrs). The restatement states the line. Project stands.",
+   "subject_key": "f8cb7ddcc2cf73a6be1b6cf7b8ab042c7e79e65863bd80ea4ecaad9be9ce35b1"
+  },
+  {
+   "key": "(screen) (scveh.bonus_same)",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "b912c2cc2fe7ee691f5b023e1401bf51ca8ae98b51d0c3cce2ad0e75c2be6610"
+  },
+  {
+   "key": "7",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "18297721918f881e4f501aabb5824ae103c8e55d0b4bb32557c70993a4b37dbd"
+  },
+  {
+   "key": "9 (scveh.line9w)",
+   "record": "6262d7e275e65f8875e0058e18c27dc2796ffe67f85d7ecac6609305a32cde68",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; as worksheet line 13: the months proration applies only to a vehicle converted in 2025, refused by scveh.screen; otherwise line 9 is line 7 times the business-use percentage. Project stands.",
+   "subject_key": "e054eb3d0c923a5ad250b0f17bb5dd8470a7f995fcaaed45908f576d4d7bd2f1"
+  },
+  {
+   "key": "10",
+   "record": "6262d7e275e65f8875e0058e18c27dc2796ffe67f85d7ecac6609305a32cde68",
+   "status": "MATCH",
+   "subject_key": "b704df78a12e0c5adb3471b331d6c966bc5c37f021caee060e8c13b6883e5e01"
+  },
+  {
+   "key": "11",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "f3052f4e0246a0d3af8d96256928259a469af25227de1bbdabb8769b54d14ae0"
+  },
+  {
+   "key": "14",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "6f2e9b33713daf9fc906e13fca243e79fad78ed28a0b74b0b193d325eadcdf04"
+  },
+  {
+   "key": "15",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "573b01e265779da2cd36573c44191288b085a64382c0abc3df0aaceb062fb445"
+  },
+  {
+   "key": "16",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "e65785872f2158ab9c7c7077a435c84241c38e0f866a05fb4ca6ae00bdc5772c"
+  },
+  {
+   "key": "25",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; same as the earlier ruling (restatement and objection unchanged). The vehicle's special allowance (scveh.bonus_v) takes line 25 only for a passenger automobile under the limits and line 16 otherwise; a vehicle that is not a passenger automobile is not limited.",
+   "subject_key": "83368c9d742a5541d5a483bca4875bae860649bc19ab497df7427515b3c4fecf"
+  },
+  {
+   "key": "17",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "6e062b37f2275779b8bf7dec9897da47a812f656bd2e498885adce635b6b50e8"
+  },
+  {
+   "key": "18",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "ec4ee87923ea249246b5b3201bbb1f207abffde8dd1837eced13dd7bb81848d9"
+  },
+  {
+   "key": "19",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "3ab8b96ef4b1d53805ccaab300f368148597989e79774aeb3c95615fb2714055"
+  },
+  {
+   "key": "20",
+   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
+   "status": "MATCH",
+   "subject_key": "757e776b1ee98800ecdd6edb8274a48e3c8deb53ac634a30db8f463ef9040b00"
+  },
+  {
+   "key": "(i)",
+   "record": "6262d7e275e65f8875e0058e18c27dc2796ffe67f85d7ecac6609305a32cde68",
+   "status": "MATCH",
+   "subject_key": "8e64c0d6a9fc98bb9b62ed19c7c9ec1b259f6edac1556654bb918173550570b4"
+  }
+ ],
+ "subjects": {
+  "43": "653bdae1d00d54a8d0e502e8af68db95ad1303fb72a32c6351af88bf712d8ad9",
+  "44a": "146e16db3d74cebceb6b516ed6bb866cf35b480210cddeb836faf76b938c1111",
+  "44b": "912a0646daf46af54d73f00939094e22a3a6afcc364df5e2217b9d0c63ecdc85",
+  "44c": "1b5eb777d9f95e6354b469528f86cf17ecd87a5ca3790f73cb02264e7986557c",
+  "(screen) (scveh.smr_ok)": "46b635c544800b328e90dea9151300dcc66a54a49a073c67ac61a45be02b9236",
+  "(screen) (scveh.employee_use)": "643c015b12e980ff10a568580ea8efa7789a30b1a2cf4fd3e81007f0b717da5c",
+  "9 (scveh.line9)": "5d6585aa42f1558d281bc21fd242d8d136b0432b35c7e6268b8eca450f0c3d03",
+  "(screen) (scveh.lease_smr_before)": "3b7b3aabbc6c5d31b1c98695ea76b5ebda1e48236a80be3d7d009a3c51d93807",
+  "20a": "bdae3ad9304c24d80874654c5098bdea7b7b46c534edf85e944e4f3a456df4ad",
+  "(b)": "3d1072852e40be84db47283401be422fb858a0c61b8ba666b2b967fbc82bb104",
+  "(screen) (scveh.screen)": "8e05c51fb73208ef560cbdf7d2afcaf4eec521001c018878bc47a2a6a66e189c",
+  "(d)": "08427331c7ae9558829419cdbb0913d4bebf8f41d9028fcc1383858dbb1a1fd9",
+  "13": "392f341557b6cc28e59c9ebf8308e0364afc87e1a3c66a6f5df892433fd21133",
+  "(screen) (scveh.bonus_same)": "bcc0a3d54012fab053eedd53cdfdd1d7d0a471c32654babe2b00b4cf3cc2d878",
+  "7": "7abf8db58a329d5016a0adcdd95e4c171494f2cfa2c13c57c7e54b1b2b5b52c5",
+  "9 (scveh.line9w)": "d456efa786a3ce1221cc59286357f5c111d0c4c34d469456b480450792d994f4",
+  "10": "589d91da44efb134d4b5927ff415b6ed942501fcb1cbb14ae23dbb986448e02c",
+  "11": "c251a67e80a7ae5b87a09491a97732e13a0ad6f5b6546240351ec3b1aa545148",
+  "14": "2f3e0ff547054de12f2e2311a07f5424fdcdd40990b41183a2a7839d31afda9e",
+  "15": "a460f2a57dfea4f6813be6b9396fe1447868deb1ef32883ea94cc76d9516938c",
+  "16": "d681606b31a260ca767d93260165221287ebb8b675271d1a6a0ac85e8f27b547",
+  "25": "09b526c3e2bfdef7107fade957b43cd30706c2b3b335d8fe2c5109edc2ca9d51",
+  "17": "fc975993c0b947311ad7309e5133ef9bf5d4c91a95ce22d614c92c48402c61af",
+  "18": "1433c848ce00876f117ce1f917f38006e3920a8385ffd823f98ec13b0287db87",
+  "19": "e0b0040e611610107f13e8fbfc3724388721d42414f77a656df7e24694bf77f8",
+  "20": "0f5f8fb24b71f5f7b6554a14f6c9dff7910f7ff7b48be987895cec7827fb7609",
+  "(i)": "966d5d0067ae17da45b260faab5b188cf09c9006b88dc957a68ffc92a2ace594"
+ },
+ "__rest__": "0d3a516739bb4c8544a0dd5b10f1356f4404d87199552357356aeea4cca5155d"
+}

@@ -1,0 +1,32 @@
+{
+ "kind": "transcription",
+ "form": "aqee",
+ "family": "deepseek",
+ "base": "6a440183e9c0e8cf5ce0598fde1b05a41acd691bf200ae16e97a1c3d03c6d86f",
+ "lines": [
+  {
+   "key": "ws4_llc",
+   "record": "6a440183e9c0e8cf5ce0598fde1b05a41acd691bf200ae16e97a1c3d03c6d86f",
+   "status": "AGREE",
+   "subject_key": "c42de0608f13a8b2cfe78da84d461b4b2eb0dd9aa70d4d33188b5af05185c500"
+  },
+  {
+   "key": "zero",
+   "record": "6a440183e9c0e8cf5ce0598fde1b05a41acd691bf200ae16e97a1c3d03c6d86f",
+   "status": "AGREE",
+   "subject_key": "771f9d76b63bd59be50d43c65d9095a10833754f0f5851cf3f51fa764de1953f"
+  },
+  {
+   "key": "line30",
+   "record": "6a440183e9c0e8cf5ce0598fde1b05a41acd691bf200ae16e97a1c3d03c6d86f",
+   "status": "AGREE",
+   "subject_key": "17cd7f6fc895679bab228932bfdeb12344460346caddc12dd8c2cc0b417e80c0"
+  }
+ ],
+ "subjects": {
+  "ws4_llc": "8b5c7ce4ffc02b7090bac6fd1c647701488ace71ea7489b8272c9a984efc301c",
+  "zero": "f6eae38375d474fbf3c1cb2a6625fd4892928e86598e4dacff4ac864f36f3ccb",
+  "line30": "7d9c2253c7621ae1e1ee8727ffe4197d94fc6dc48fe0093cd7c5fb42edb98353"
+ },
+ "__rest__": "55159c35252d56e7b0da2002e792007601b30321e14ef308a56e662a269a8f8a"
+}

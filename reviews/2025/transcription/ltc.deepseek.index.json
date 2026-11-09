@@ -1,0 +1,31 @@
+{
+ "kind": "transcription",
+ "form": "ltc",
+ "family": "deepseek",
+ "base": "a7da4a9f91106aa96f9a96f1b39c07afc0a22423e876a106aa2aac989a06bb1f",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "ltc.amount",
+   "record": "5f9b78c81ce4fcc0de2f0653c5f0524e1c38caf4ec323bea44041f2cdb96b12d",
+   "status": "AGREE",
+   "subject_key": "2419836ae9657e33e95abf8f39bbe271ac5c257226a869fd4f74ff0471a6f4b8"
+  },
+  {
+   "key": "2(b)",
+   "record": "a7da4a9f91106aa96f9a96f1b39c07afc0a22423e876a106aa2aac989a06bb1f",
+   "status": "AGREE",
+   "subject_key": "4601d1e1647950bfdb184b9add649274fd9d01c1c983afab9259c7f2c4767639"
+  }
+ ],
+ "subjects": {
+  "ltc.amount": "b9f8b3c8c6c16ccd6092cf9322764a44272696af9b92ec7a17d40bacede0d79e",
+  "2(b)": "be1bc3486c4ac604c2230b183e578bff0751dbaab1c1ee0190d642a68419b0e2"
+ },
+ "__rest__": "d7dc454d6b46478b770b8f3bc4c29597a7902f0a42eba92c01e52c69c90a55c8",
+ "foreign": {
+  "ltc.amount": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

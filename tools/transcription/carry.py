@@ -485,12 +485,13 @@ def recorded(text, field):
 def source_log(kind, form, family, origin):
     """(source text, label, snapshot) for the earlier log, or (None, reason, None)."""
     stem = families.stem(form, family)
-    rel = f"{_dirs('reviews')[-1]}/{kind}/{stem}.md"  # where the log is committed
+    rel = f"{_dirs('reviews')[-1]}/{kind}/{stem}.md"  # where the log was committed before the review store
     if origin is None or origin.startswith("git:"):
         rev = "HEAD" if origin is None else origin[4:]
-        text = _git("show", f"{rev}:{rel}")
+        text, rel, blob = committed_log(kind, form, family, rev)
         label = f"{rel} at {(_git('rev-parse', '--short', rev) or rev).strip()}"
     else:
+        blob = None
         if os.path.isdir(origin):
             path = os.path.join(origin, ARCHIVE_PREFIX[kind] + stem + ".md")
             if not os.path.exists(path):
@@ -503,7 +504,7 @@ def source_log(kind, form, family, origin):
         label = os.path.relpath(os.path.abspath(path), ROOT)
     if text is None:
         return None, "no source log", None
-    rev = introducing_commit(rel, text)
+    rev = introducing_commit(rel, blob if blob is not None else text)
     if rev is None:
         subject = recorded(text, "subject sha256")
         rev = subject and subject_commit(kind, form, subject)
@@ -519,13 +520,32 @@ def source_logs(kind, form, family, origin):
     if origin is not None:
         text, label, snap = source_log(kind, form, family, origin)
         return ([(text, label, snap)], None) if text is not None else ([], label)
-    rel = f"{_dirs('reviews')[-1]}/{kind}/{families.stem(form, family)}.md"
+    md, index = _log_rels(kind, form, family)
     out = []
-    for rev in (_git("log", "--format=%H", "--", rel) or "").split():
-        text = _git("show", f"{rev}:{rel}")
+    for rev in (_git("log", "--format=%H", "--", index, md) or "").split():
+        text, rel, _ = committed_log(kind, form, family, rev)
         if text is not None:
             out.append((text, f"{rel} at {rev[:8]}", snapshot(rev)))
     return (out, None) if out else ([], "no source log")
+
+
+def _log_rels(kind, form, family):
+    """(the log file a form's review was committed as before the review store, its index)."""
+    base = f"{_dirs('reviews')[-1]}/{kind}/{families.stem(form, family)}"
+    return base + ".md", base + ".index.json"
+
+
+def committed_log(kind, form, family, rev):
+    """(log text, repository-relative path it was committed under, that file's text) of a form's review at
+    a commit: the view of its index and records (review_store), or before the store the log file; Nones
+    when the commit holds neither."""
+    import review_store
+    md, index = _log_rels(kind, form, family)
+    raw = _git("show", f"{rev}:{index}")
+    if raw is not None:
+        return review_store.view(kind, form, family, read=review_store._reader(rev)), index, raw
+    text = _git("show", f"{rev}:{md}")
+    return text, md, text
 
 
 _snapshots = {}
@@ -543,8 +563,7 @@ def snapshot(rev):
 def plan(kind, form, family=families.DEFAULT, origin=None, current=None):
     """(rulings for rule.apply, report counter, [(handle, why)] for every section left open)."""
     stats = collections.Counter()
-    path = sidecar.log_path(kind, form, family)
-    text = open(path, encoding="utf-8").read()
+    text = sidecar.read_log(kind, form, family)
     targets = [s for s in sections(kind, text) if s["ruling"] == sidecar.OPEN]
     stats["open"] = len(targets)
     if not targets:

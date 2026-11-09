@@ -1,0 +1,217 @@
+{
+ "kind": "transcription",
+ "form": "s1",
+ "family": "claude",
+ "base": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+ "head_rows": {
+  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "s1.has_sc",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "f7f5c4d13516953d85c91969b6b78b445e84d51d6bce6c95c3e69848df513cf2"
+  },
+  {
+   "key": "s1.sc_1a",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "ca1d69e8e42467e654cfd4383e902bae201b75e1c0ca42b872faa2c27510bff9"
+  },
+  {
+   "key": "s1.has_gambling",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 91, Line 8b: \"Enter gambling winnings not attributable to a trade or business\"; p525 p. 33, Gambling winnings: \"If you're in the trade or business of gambling, use Schedule C (Form 1040)\". The test itself is the project's (line 8b is a copy of s1.gambling_winnings, so line 8b above zero and winnings above zero are the same test), but the reply's line 8b declares `refuses: [s1.gambling_pro]` with no guard, so its test needs the professional-gambler answer on every return; the source and the project need it only when there are winnings (gate s1.gambling_business = has_gambling and gambling_pro). A candidate that needs an answer the source does not need is a model error (README). executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 1,125 agree; 1,549 candidate-unknown, 1 candidate-refuses (on completed returns: 154 candidate-unknown). The test is the project's (line 8b copies s1.gambling_winnings), but the reply's line 8b declares the s1.gambling_pro refusal with no guard, so it needs the professional-gambler answer on every return; every difference is candidate-unknown or candidate-refuses on s1.gambling_pro with the project false (classm.f4952.1.deepseek, classm.s3.1.deepseek and others). Same reply and project as the bklg ruling, which stands. Project stands.",
+   "subject_key": "9e6c74e22fb6b650cf95f61b2fa3db15d7eda88c5e7c7c91a211de011db46ac4"
+  },
+  {
+   "key": "1",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 88, Line 1: \"If you received a refund, credit, or offset of state or local income taxes in 2025, you may be required to report this amount\". executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 1,134 agree; 1,541 candidate-unknown (on completed returns: 143 candidate-unknown). With no refund received line 1 is zero and the worksheet is not needed; the project guards on refund.received above zero, the reply copies refund.line9 without that guard and needs worksheet answers (refund.box8) from filers without a refund, project $0.00 in every witness (classm.f4952.1.deepseek, classm.s3.1.deepseek and others). Same disagreement as the bklg ruling, which stands. Project stands.",
+   "subject_key": "ee9b1224b0cf9050b5279a72c5568e56d8eb9988ed7f813d4c15de2493d87384"
+  },
+  {
+   "key": "7",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 89, Line 7: \"You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025. Report this amount on line 7\", reduced by contributions (\"If you made contributions to a governmental unemployment compensation program and you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions\") and by 2025 overpayments repaid. With no compensation paid in 2025, line 7 is zero and neither s1.uc_repaid nor the s1.uc_unsupported screen is needed; the project asks both only when s1.has_uc (s1.uc_paid above zero). The candidate drops that guard and declares the screen on every return. executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 1,281 agree; 1,348 candidate-unknown, 46 candidate-refuses (on completed returns: 9 candidate-refuses, 155 candidate-unknown). The reply drops the s1.has_uc guard, so it needs s1.uc_unsupported and s1.uc_repaid (or refuses on the screen) on returns without unemployment compensation, project $0.00 in every witness. Same reply and project as the bklg ruling, which stands. Project stands.",
+   "subject_key": "7b966877271691254f74aad9c0c7ef6638acd16ac18da1ae3501a2ebde39af74"
+  },
+  {
+   "key": "7 (box)",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "9c61c5c87e3e37d2ca7a110926ca026d36ce241a657f753fc4f5530b3c19ca63"
+  },
+  {
+   "key": "7 (amount repaid)",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; f1040s1 line 7, the repaid amount entry; i1040gi p. 89, Line 7. executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 2,675 agree. Both copy s1.uc_repaid; the reply shows it only when the line 7 box is checked, the project always (with $0 when nothing was repaid), so no shown amount differs. Project stands.",
+   "subject_key": "bad896b5c467ab3c9ee7493737abd875828898ecab30708228f528f86d7cbe39"
+  },
+  {
+   "key": "3",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "3ec852e6b2897a3b28bfdf1a59274872b3d66cbdf6a986375062fab08cde1d59"
+  },
+  {
+   "key": "8b",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "664b56f706204fd48c8dd1324dad90d496dbe3200cb8cd019a09b038a8f4b8dd"
+  },
+  {
+   "key": "8z",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "d72f77c7a8c48c6b6e69772384002d481fba27e04a7cdd61f7a61e2866ec6f67"
+  },
+  {
+   "key": "2a",
+   "record": "15b5999e3b68934f7aee376a768fbafa0d9106406737225ac2b4edddb89e6894",
+   "status": "AGREE",
+   "subject_key": "ad0bed06344f42ade6b27f5515839755fa0cbfb37d171361f174264140905120"
+  },
+  {
+   "key": "8c",
+   "record": "15b5999e3b68934f7aee376a768fbafa0d9106406737225ac2b4edddb89e6894",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 91, Line 8c: \"Enter any canceled debt. Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable. See Pub. 4681\". R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). The reply's expression is identical to the one ruled before: it reads the s1.cod_unsupported refusal whenever canceled debt is answered yes, where the project asks the screen only with an amount above zero (s1.cod_refused; amb.2025.cod_fully_taxable); the two differences are incomplete fixtures with canceled debt answered yes and zero (stage16.regress.s1.cod_yes_zero, mutation.t2.s1.cod_none_with_alimony). executable-triage-v2 on this pass's reply (`.transcription/s1.lines-53848595d961.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 586 partial records; 2,724 comparisons): 2,722 of 2,724 agree; differences on returns the full interview completes: none; no completed-return value difference. Project stands.",
+   "subject_key": "57d5a0f0a8c2e9860b195d0321fb18664801447fcfc1b18c24f9b9cc783a895d"
+  },
+  {
+   "key": "8f",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "34ff8356bcca9150eec4e028b8be589d1324c1d3f590c60383cece024738d8c6"
+  },
+  {
+   "key": "9",
+   "record": "15b5999e3b68934f7aee376a768fbafa0d9106406737225ac2b4edddb89e6894",
+   "status": "AGREE",
+   "subject_key": "233d664e4d63cf5dd5d5fa79fa3d52a5c5a71de4181d42f904c1f3dc92300cd5"
+  },
+  {
+   "key": "10",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "aeeda48e5d9ab9ef17125781a5db1ef6e47b378d46a03530fd5567fc6ac334a1"
+  },
+  {
+   "key": "11",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "2d02beb155bcc4dc91e915b149218d6ca023b2dab85f2801404f7f8da9bd18cd"
+  },
+  {
+   "key": "13",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "7b66133e2f1b0c7ad1a2e0782daaf785d40b78ec2b114196fbd0df3420b9fdff"
+  },
+  {
+   "key": "15",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "19bfba4a69af01103c88c87c55d0eda1bdfcd5329c7b1b3a216c76f4a8eb4da1"
+  },
+  {
+   "key": "16",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 93, Line 16: \"If you were self-employed or a partner, you may be able to take this deduction\". Partnership and other Schedule E or K-1 income is refused by scope.schedule1, so within scope only a person with a Schedule C can have the deduction; the project asks person.plan only then (person.s16, guarded by person.has_sc). The candidate sums person.plan_deduction for every person, asking plan questions of people with no self-employment income and reaching the SEP and SIMPLE excess screens for them. executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 1,191 agree; 1,337 candidate-unknown, 147 candidate-refuses (on completed returns: 51 candidate-refuses, 53 candidate-unknown). The reply sums person.plan_deduction for every person, asking plan questions (and reaching the SEP and SIMPLE excess screens) for people with no Schedule C; the project asks person.plan only with a Schedule C (person.s16), project $0.00 in every witness (candidate-refuses classm.f8889.1.deepseek on sep_excess). Same reply and project as the bklg ruling, which stands. Project stands.",
+   "subject_key": "da1ae5e44ed16495332626d032a2332418d33da6163dcf15627341be26a381b9"
+  },
+  {
+   "key": "17",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "7e9ab82804a0ac58c011302cfcba667982dbd9539bb5c29a3abe7b2d1193cc50"
+  },
+  {
+   "key": "18",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "6ed01169e886a7b423de3fb41a3db5c46636799c37dd66d053d04c525a4a71ba"
+  },
+  {
+   "key": "19a",
+   "record": "15b5999e3b68934f7aee376a768fbafa0d9106406737225ac2b4edddb89e6894",
+   "status": "AGREE",
+   "subject_key": "53974dbd1e99f1b72dd27364f66130c0b9a4acf65cbb720fde4f8bdc90850927"
+  },
+  {
+   "key": "20",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "b33be80a1cc62ccfa6d1df38b78e296779d5f11a42692cf09283a696fff4a821"
+  },
+  {
+   "key": "21",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "b44a7ba9a5e5a3164e0b85803dbf886392a69b930a499e8eb0dc96dffcfe32a5"
+  },
+  {
+   "key": "24a",
+   "record": "6e7bd13b456e72dae0d3414b9e99c56b9ab16aee5426c2f12e73d1101fb5005c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.2025.jury_24a_cap. i1040gi p. 91, Line 8h, \"Enter any jury duty pay and see the instructions for line 24a\"; p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer\"; p525 p. 34, Jury duty, \"Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h. If you must give the pay to your employer ... you can deduct the amount turned over to your employer\". The candidate reads the amount given to the employer directly; the project reads it through s1.jury_to_employer_if_pay, which asks it only when line 8h is above zero and is zero otherwise. They differ only where line 8h is zero and an amount given is entered, which the chosen reading of amb.2025.jury_24a_cap treats as an impossible entry (the pay given is part of the pay on line 8h); with line 8h zero the project no longer asks it. executable-triage-v2 (`../triage/s1.json`; 1,638 fixtures, 500 generated returns seed 20261026, 586 partial records): no value difference; 41 candidate-unknown (21 on completed returns, where line 8h is zero and the amount given is withheld) and 40 project-unknown, on incomplete or refused records. Project stands.",
+   "subject_key": "2b3a6475361f7b21971b94c40c1faea681e9bf037d4be8c54b19489b1275c7c0"
+  },
+  {
+   "key": "25",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "40b4f293cabe89f452e4e3c094ba7b8f31da1fc23393a9be1b3ea91d1ed4467e"
+  },
+  {
+   "key": "26",
+   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "status": "AGREE",
+   "subject_key": "fe0d1bf43e01af07b0c7f3e00438818e240d39e1c46d91c6064a02710409b353"
+  }
+ ],
+ "subjects": {
+  "s1.has_sc": "0fe1b1b9461b2a4c48585ceada14a7c4ecfedd2f9f0ed4039dcbb6dcbb4ff250",
+  "s1.sc_1a": "5c6f1b079cd92fba4c6d2b1a6f359ba77427d33e9f45725797617359bf69d6c5",
+  "s1.has_gambling": "0004dd0246d5f113d37aae5199674f2f6982787a3dce56b9c0625398efa821c3",
+  "1": "22095d5b679fd68f482e87a713c5db00395fae9e5a4f972380f9559246c90320",
+  "7": "0c49895dd31c3526c8a1a287485cd4a78fd7c95fe4e8ac315c65bcb4da175487",
+  "7 (box)": "a7b8cefbda2b21428ebb0c77416aa500d39436bc1d37ec3a4e11636ef235b90c",
+  "7 (amount repaid)": "0e226e880c8123be43e078cdd131700d49d3bd1249f914e3560d27f9bf9cae28",
+  "3": "c97c946386c5fb2067144aa7f84b4311e2207f35de90cd4575a6a5145f2a548e",
+  "8b": "9801b85953dc73ab5f699a4a78f57f510d76005bffbf319720c7e5a181ef41e7",
+  "8z": "630e42eaae09bcc1f9c3a94b62627ca12df3047d675eedcd4e7443f1360b1dcb",
+  "2a": "e1493423994cfe12c12ec3dafd66b28f41ae972ac4a5066b2fc96ddfd0497103",
+  "8c": "a8eddbc38d4847adc86e851084e1b98f1be02d7b47741c4275128072ce062088",
+  "8f": "dee58c3a3a2e9d420ebd44edc73fd91c3b2398b04d3f339930e9912c50bae6cb",
+  "9": "b854920582a55c11a40124eb4b492ae48407f236e3fc06f9a31ce64b89cacf69",
+  "10": "6c36a2439085118e58153a4eedf06b6b3556c61da0268e00e54e72c18962a6d9",
+  "11": "044622b1359c92e89ddafdebcf93219d03874a227210145e840c3635ea4836eb",
+  "13": "544655e51ba5584cd13ac2f7d4ae27838a90075a0ecba6e0be48c48c12c4de13",
+  "15": "74a5219a8e318410bb9f9e85e851f03cba70b8f64eec16d37fe4d19736f1890c",
+  "16": "46ccfd82cbcf302bc2c6dd19178440f482f2a3a979fae3924279fe41cbd9db44",
+  "17": "ae8565ac3ac27148d55fda031fb952dd231c17d638c5f37fdb31bae596f0c399",
+  "18": "d0843bef728c388d96ec672f0464994db9be0ac65197c5e23a6f9963b6ba97ab",
+  "19a": "e62aaf80f52f72d95dcc5429b30ff09522645327337b81e74b87622c3a58c3e9",
+  "20": "b550eeb947adf246372cd559bbc937259ff83c85f8a2e7e1c191a5bdac8b61a2",
+  "21": "1a5d9962277c896a177908b1334498f2ad890269bdcbe23a087e88d4cf52777c",
+  "24a": "1a07d314abe52be1b8483fe634bff5cb3c320b672b3af641ea83a8234870f9a6",
+  "25": "c38ffe50b1c38810522edb06965e35cef4cb3a1489b32da902ee06976a5d733d",
+  "26": "8a994c6eee6006255d99630346fdabaadca00d972b915194e48e0c524fe81b65"
+ },
+ "__rest__": "1df47ff476caab5254486cac7cc33ec3618e59f81de5a353661491aecf3e58a8",
+ "foreign": {
+  "2a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "9": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "19a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "24a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "kind": "transcription",
+ "form": "ftc",
+ "family": "claude",
+ "base": "65c196ceb6df30d9c6140b3c66b0abbdb93374ba0893d011bec927b0b749dc3a",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "ftc.credit",
+   "record": "5185f10d6620894b48f3979b8709c9ad6b5ccb4cf6dceac73f91410a028e8789",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error, with scope for the not-elected return; as the prior ruling of this disagreement. i1116 p. 2, \"To make the election, just enter on the foreign tax credit line of your tax return ... the smaller of (a) your total foreign tax, or (b) your regular tax\"; p. 25, Line 20, \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z\"; p. 2, Who should file, \"File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply\". The reply puts the election conditions in the guards and enters $0 when they fail; the project enters $0 without foreign tax and otherwise refuses through ftc.needs1116 (Form 1116 is deferred, not dropped): the prior ruling's scope point. New in this reply: regular tax is Form 1040 line 16 alone, leaving out Schedule 2 line 1z, against p. 25, Line 20: a model error. The gate round changed only which election answers ftc.needs1116 reads (each now behind ftc.has_tax, false without foreign tax), not ftc.credit.",
+   "subject_key": "0f0fe8f0f14bebf44eb919e4f2e180e685d10081203167b1025cc0cf9f23ecf3"
+  }
+ ],
+ "subjects": {
+  "ftc.credit": "5e13043a75fa0f2b47f421d784159a141514ad9141fb60c6753177782cce0a49"
+ },
+ "__rest__": "0b27c1db7e23a8e90ed880b6d5e278e7ce96926cdbe182df2a1cfd1afeed920d",
+ "foreign": {
+  "ftc.credit": "cb42de4021aa2818fc3fce716161252aacd39b40b09f928b21d0dad04f02a637"
+ }
+}

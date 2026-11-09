@@ -1,0 +1,111 @@
+{
+ "kind": "transcription",
+ "form": "s2",
+ "family": "claude",
+ "base": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "s2.line8_file",
+   "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
+   "status": "AGREE",
+   "subject_key": "491e040628e914545e65d8bf30f853c01fdd9d4a4a714dc95fae29d668229a27"
+  },
+  {
+   "key": "1a",
+   "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 111, Line 1a: \"If the advance credit payments were more than the premium tax credit you can claim, the amount you must repay will be shown on Form 8962, line 29. Enter that amount, if any, on line 1a\"; i8962 p. 3, Who Must File (Form 8962 only with a Form 1095-A or advance payments). The project enters zero when no Form 1095-A is listed; the candidate copies Form 8962 line 29 on every return, so a filer with no Marketplace coverage must answer Form 8962's questions (f8962.alloc) and reach its household income. Triage executable-triage-v2 (`../triage/s2.json`; 1,372 fixtures, 500 generated returns seed 20261026, 80 partial records; 1,952 comparisons): 603 of 1,952 agree; 889 candidate-unknown (489 on completed returns, for example witnesses 0-5 classm.f2441.1.deepseek to .6.deepseek, project $0.00); 460 candidate-refuses, all on refused returns (witnesses 6-11, for example classm.w2.1.deepseek, classm.f8889.2.deepseek: refusals reached through Form 8962's household income); no value differs. The published interface offers the f1095a count, so the guard was expressible. Same ruling as Stage 18 and round 1. Project stands.",
+   "subject_key": "9f631f0c0118d39a032b59577a15e3e029455a4ce880f3d09047a9ee1ca52c35"
+  },
+  {
+   "key": "1z",
+   "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
+   "status": "AGREE",
+   "subject_key": "da0d5eeb97557bc71462f14a3f769839ebd7abef19e533bfda2b6610a1479309"
+  },
+  {
+   "key": "2",
+   "record": "26286123230c40a18508a3db78e8ba33629760fd39187ad8c120ea63501b3b8f",
+   "status": "AGREE",
+   "subject_key": "0323e615e78efb0a0cd25bdc01b760a34d8484fcbef3e13f06a5ec784298aa78"
+  },
+  {
+   "key": "3",
+   "record": "26286123230c40a18508a3db78e8ba33629760fd39187ad8c120ea63501b3b8f",
+   "status": "AGREE",
+   "subject_key": "1c71b23dc21133d5c77d8bf62c047ed9f40f349d3bf134ad2e17db4d1c3fd475"
+  },
+  {
+   "key": "4",
+   "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
+   "status": "AGREE",
+   "subject_key": "78681fc25fe9c762a6fbaf433a17b7fc533043157f7a5e0112ef7b0d3ee2d5a5"
+  },
+  {
+   "key": "8",
+   "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
+   "status": "AGREE",
+   "subject_key": "c5fc84e01980a1ac50cba96953d3d695e127c5dcb50c502df663c9f32330b151"
+  },
+  {
+   "key": "8 (box)",
+   "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
+   "status": "AGREE",
+   "subject_key": "30697421fdb25af77d680f4952470c1afbc74878d08f8254c54a791fe7e468a4"
+  },
+  {
+   "key": "11",
+   "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
+   "status": "AGREE",
+   "subject_key": "6df2cf5fa681669bf84fdec72656d8a1a50be1775b85028b18dc56c2d50e7e4c"
+  },
+  {
+   "key": "12",
+   "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
+   "status": "AGREE",
+   "subject_key": "e685da4c8b12575a0c59007b3d0b89b3e07e8cb353584160eb96667c9a714b96"
+  },
+  {
+   "key": "17c",
+   "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
+   "status": "AGREE",
+   "subject_key": "90d7c371193da792746b224f760da48d8c53da08f7e2d7675a271ceda3fe483f"
+  },
+  {
+   "key": "18",
+   "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
+   "status": "AGREE",
+   "subject_key": "58e1b24c785b88ed4cec3a6a8784d4265b743e8235de013037e286b08f32aa7a"
+  },
+  {
+   "key": "21",
+   "record": "26286123230c40a18508a3db78e8ba33629760fd39187ad8c120ea63501b3b8f",
+   "status": "AGREE",
+   "subject_key": "5b55d357ee298effe2e3acbe4208a62e4739c37c4aaff6a6e27d7cf9218016a6"
+  }
+ ],
+ "subjects": {
+  "s2.line8_file": "deb8be263885897cf5058b90185a21cfbad1938e3b0c9298cb84098d5a29294d",
+  "1a": "45c38ce8fdfae6506bcf62fdeee06baaffe971d62e9f9cdb5cbb53c45888473b",
+  "1z": "6f4b1df49b40ea901fd5f718d9895e33a1fe75eb19126d946bfd778466b46996",
+  "2": "9841a212c237db8f273bf6e877b07eff99bd8470332a3531bd4215be6b0f489e",
+  "3": "fd7514f3e2234ae5d2f476f4758f56747ddcaae7f4339ee1deae9ba2ed707264",
+  "4": "953ef54c0b1d62d61d6b53201beb0d3ad1e1265d162735865c2ae696027a420c",
+  "8": "7355e8cb8c3b54d4f15ff1dde8c8942afb9116cf25c38c82aa861eb1becf57f1",
+  "8 (box)": "5de2b5104f546bd8692ed681b83939a3c8a4346164cf927662e2d0cc42eb95a8",
+  "11": "94fed3df7408c90ad14eb46920279e55243992b0a2d252e4009cfe635586e260",
+  "12": "8815af92f32d42a0845b67cc205b1f75b926aa1f211865b195398d8c43314de6",
+  "17c": "a0773b09a661c82935a41d37eac6c5d2fc11bd478506d923f364a2385b9616d7",
+  "18": "70b979917d928776213d250602da518e7d7b607beb59522fca084ad3286f5069",
+  "21": "197d56cfbf8944170d4901f4514dbae5452c868acd056774925c1a0d0e338f54"
+ },
+ "__rest__": "afebc9cd3ed3e50a0f1f9e9d83cb49dd824e77c8da32f20b0c141d045a8c0355",
+ "foreign": {
+  "2": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "21": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}
