@@ -7,8 +7,8 @@ instructions and tax tables, and the Tax Law as published on the New York State
 Senate's laws site; never accepts return data.
 
 Jurisdictions. Each has its own catalog, archive directory and allow-listed hosts:
-  us  tools/sources-<year>.json     sources/<year>/     www.irs.gov, www.govinfo.gov, www.fincen.gov, www.ssa.gov, www.rrb.gov
-  ny  tools/sources-ny-<year>.json  sources/ny/<year>/  www.tax.ny.gov, under /pdf/, /forms/
+  us  tools/sources/<year>.json     sources/<year>/     www.irs.gov, www.govinfo.gov, www.fincen.gov, www.ssa.gov, www.rrb.gov
+  ny  tools/sources/ny/<year>.json  sources/ny/<year>/  www.tax.ny.gov, under /pdf/, /forms/
                                                         or /pit/file/tax-tables/ only;
                                                         legislation.nysenate.gov, under
                                                         /pdf/laws/TAX only
@@ -56,11 +56,11 @@ EXTRACT = ROOT / "tools" / "extract_text.py"
 DERIVED = [("file", "sha256"), ("text_file", "text_sha256"), ("cols_file", "cols_sha256"), ("pages_file", "pages_sha256")]
 JURISDICTIONS = {
     "us": {"hosts": ("www.irs.gov", "www.govinfo.gov", "www.fincen.gov", "www.ssa.gov", "www.rrb.gov"), "paths": None,
-           "archive": ROOT / "sources" / Y, "catalog": Path(__file__).with_name(f"sources-{Y}.json")},
+           "archive": ROOT / "sources" / Y, "catalog": ROOT / "tools" / "sources" / f"{Y}.json"},
     "ny": {"hosts": ("www.tax.ny.gov", "legislation.nysenate.gov"),
            "paths": {"www.tax.ny.gov": ("/pdf/", "/forms/", "/pit/file/tax-tables/"),
                      "legislation.nysenate.gov": ("/pdf/laws/TAX",)},
-           "archive": ROOT / "sources" / "ny" / Y, "catalog": Path(__file__).with_name(f"sources-ny-{Y}.json")},
+           "archive": ROOT / "sources" / "ny" / Y, "catalog": ROOT / "tools" / "sources" / "ny" / f"{Y}.json"},
 }
 # Set by main() from --jurisdiction; the federal archive by default.
 ARCHIVE = JURISDICTIONS["us"]["archive"]

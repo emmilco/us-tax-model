@@ -14,7 +14,7 @@ exactly as before, so federal results do not change.
     params_file()           params/<year>.yaml       or params/ny/<year>.yaml
     register_file()         ambiguities/<year>.yaml  or ambiguities/ny/<year>.yaml
     interview_dir()         interview/               or interview/ny/
-    catalog()               tools/sources-<year>.json or tools/sources-ny-<year>.json
+    catalog()               tools/sources/<year>.json or tools/sources/ny/<year>.json
 """
 
 import os
@@ -69,7 +69,7 @@ def interview_dir():
 
 
 def catalog(year):
-    return ROOT / "tools" / (f"sources-ny-{year}.json" if NY else f"sources-{year}.json")
+    return (ROOT / "tools" / "sources" / "ny" if NY else ROOT / "tools" / "sources") / f"{year}.json"
 
 
 def label():

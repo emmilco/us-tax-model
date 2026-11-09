@@ -1,7 +1,7 @@
 # Source archiving (Stage 0)
 
 Run `python3 tools/fetch_sources.py --fetch` deliberately to retrieve the public
-IRS PDFs listed in `tools/sources-2025.json`. Python 3, curl and Poppler's
+IRS PDFs listed in `tools/sources/2025.json`. Python 3, curl and Poppler's
 `pdftotext` must already be installed. No packages are downloaded by the script.
 Use `--only ID ...` to retrieve a subset. No return data is accepted or sent.
 

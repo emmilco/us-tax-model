@@ -22,7 +22,7 @@ For each citation segment:
     old beside new;
   - a document with no edition in one of the years is reported as such (a document
     whose id changes from year to year names its successor with "next" in the
-    earlier year's catalog, tools/sources-<year>.json).
+    earlier year's catalog, tools/sources/<year>.json).
 
 Findings are grouped by what carries the citation: form line, refusal, collection,
 parameter, table, ambiguity register entry, interview question. A parameter whose

@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Check the source catalogs' document titles against the archived documents, offline, in check-all.
 
-Each entry of tools/sources-<year>.json and tools/sources-ny-<year>.json may carry a `title`, the
+Each entry of tools/sources/<year>.json and tools/sources/ny/<year>.json may carry a `title`, the
 document's printed title, and a `designation`, the form, schedule or publication number as the document
 prints it ("Form 1040", "Schedule A (Form 1040)", "Publication 590-A"), each taken verbatim from its archived
 text (the web UI shows "<designation> - <title>" as the name of a question's source). A document with no
@@ -102,7 +102,7 @@ def check(catalogs, required):
         by_id = {e["id"]: e for e in entries}
         for entry in entries:
             doc_id = entry["id"]
-            where = f"{catalog.relative_to(catalog.parents[1])}: {doc_id}"
+            where = f"{catalog.relative_to(next(d for d in catalog.parents if d.name == 'tools').parent)}: {doc_id}"
             source_id = doc_id
             if "title_source" in entry:
                 source_id = entry["title_source"]
@@ -138,7 +138,7 @@ def check(catalogs, required):
 def self_test():
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp)
-        (root / "tools").mkdir()
+        (root / "tools" / "sources").mkdir(parents=True)
         archive = root / "sources" / "2025"
         archive.mkdir(parents=True)
         (archive / "fa.txt").write_text("SCHEDULE A\n(Form\n 1040)\nItemized\n   Deductions\n", encoding="utf-8")
@@ -147,7 +147,7 @@ def self_test():
         (archive / "manifest.json").write_text(json.dumps({"documents": [
             {"id": "fa", "file": "fa.pdf", "text_file": "fa.txt"}, {"id": "fb", "file": "fb.pdf", "cols_file": "fb.cols.txt"},
             {"id": "sheet", "file": "sheet.xls"}]}), encoding="utf-8")
-        catalog = root / "tools" / "sources-2025.json"
+        catalog = root / "tools" / "sources" / "2025.json"
         rows = [{"id": "fa", "title": "Itemized Deductions", "designation": "SCHEDULE A (Form 1040)"},
                 {"id": "fb", "title": "Instructions for Form B", "designation": "Instructions for Form B"},
                 {"id": "sheet", "title": "Table 1. All Returns"}]
@@ -157,17 +157,17 @@ def self_test():
                  {"id": "fa", "title": "Itemized Deductions", "designation": "Schedule A"}, {"id": "fb", "title": "Instructions for Form B", "designation": ""}]
         catalog.write_text(json.dumps(rows), encoding="utf-8")
         got = check([(catalog, archive)], True)
-        expect = ["tools/sources-2025.json: fc: no title",
-                  "tools/sources-2025.json: fa: title 'Itemised Deductions' does not occur in the archived text",
-                  "tools/sources-2025.json: missing: no archived text to check the title against",
-                  "tools/sources-2025.json: fb: the title is empty",
-                  "tools/sources-2025.json: fa: designation 'Schedule A' does not occur in the archived text",
-                  "tools/sources-2025.json: fb: the designation is empty"]
+        expect = ["tools/sources/2025.json: fc: no title",
+                  "tools/sources/2025.json: fa: title 'Itemised Deductions' does not occur in the archived text",
+                  "tools/sources/2025.json: missing: no archived text to check the title against",
+                  "tools/sources/2025.json: fb: the title is empty",
+                  "tools/sources/2025.json: fa: designation 'Schedule A' does not occur in the archived text",
+                  "tools/sources/2025.json: fb: the designation is empty"]
         assert got == expect, got
         assert check([(catalog, archive)], False) == expect[1:], "an unadopted year may lack titles"
         rows = [{"id": "sheet", "designation": "Table 1."}, {"id": "gone", "designation": "Form G"}]
         catalog.write_text(json.dumps(rows), encoding="utf-8")
-        assert check([(catalog, archive)], False) == ["tools/sources-2025.json: gone: no archived text to check the designation against"], "a designation may stand without a title and is checked"
+        assert check([(catalog, archive)], False) == ["tools/sources/2025.json: gone: no archived text to check the designation against"], "a designation may stand without a title and is checked"
         (archive / "fj.txt").write_text("Sched J\nIncome Averaging\n", encoding="utf-8")
         (archive / "ij.txt").write_text("Instructions for Schedule J\n(Form 1040)\nIncome Averaging for\nFarmers\n", encoding="utf-8")
         man = json.loads((archive / "manifest.json").read_text(encoding="utf-8"))
@@ -183,7 +183,7 @@ def self_test():
                 {**fj, "title_source": "fb"}, {**fj, "designation": "Schedule K (Form 1040)"}, {**fj, "designation": None}, {**fj, "title_source": 7}]
         catalog.write_text(json.dumps(rows), encoding="utf-8")
         got = check([(catalog, archive)], True)
-        where = "tools/sources-2025.json: fj"
+        where = "tools/sources/2025.json: fj"
         assert got == [f"{where}: title 'Income Averaging for Farmers and Fishermen' does not occur in the archived text of ij",
                        f"{where}: title_source must name another document of the catalog",
                        f"{where}: title_source must name another document of the catalog",
@@ -204,7 +204,7 @@ def self_test():
             {"text": "Use Form B", "doc": "ib"}, dict(good, page="2"), dict(good, text=" "), "Use Form B")]
         catalog.write_text(json.dumps(rows), encoding="utf-8")
         got = check([(catalog, archive)], True)
-        where = "tools/sources-2025.json: fb: form_purpose"
+        where = "tools/sources/2025.json: fb: form_purpose"
         expect = [f"{where} 'Use Form B to figure the B tax.'... does not occur on ib page 1",
                   f"{where} 'Use Form B to figure the C tax.'... does not occur on ib page 2",
                   f"{where} cites ib page 3, which is not archived",
@@ -223,8 +223,8 @@ def main():
         self_test()
         return
     adopted = [str(y) for y in json.loads((ROOT / "years.json").read_text())["adopted"]]
-    catalogs = [(ROOT / "tools" / f"sources-{Y}.json", ROOT / "sources" / Y),
-                (ROOT / "tools" / f"sources-ny-{Y}.json", ROOT / "sources" / "ny" / Y)]
+    catalogs = [(ROOT / "tools" / "sources" / f"{Y}.json", ROOT / "sources" / Y),
+                (ROOT / "tools" / "sources" / "ny" / f"{Y}.json", ROOT / "sources" / "ny" / Y)]
     problems = check(catalogs, Y in adopted)
     if problems:
         print("\n".join(problems), file=sys.stderr)
