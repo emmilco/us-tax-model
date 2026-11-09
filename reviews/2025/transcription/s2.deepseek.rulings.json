@@ -5,66 +5,99 @@
  "rulings": [
   {
    "printed": "11",
-   "project": "{\"ref\": \"f8959.line18\"}",
-   "second": "{\"ref\": \"f8959.line24\"}",
+   "project_expr_sha256": "e57f6da32679026aaf313983bf515b025e758d9c41786aea4d7602cd6cc8f23a",
+   "second_expr_sha256": "43a5b675a199c43d1fc4b1ee48f83e444985fa34d534e2989b2a730d083b4716",
    "ruling": "Ruling: interface gap; by reading. Not executable: the reply fails validation (`../triage/s2.deepseek.json`, state invalid: s2.line4 \"reference 'line12' does not resolve\"), so triage runs none of its lines; this line is outside line 4's dependency closure. f8959 p. 1, line 18: \"Add lines 7, 13, and 17. Also include this amount on Schedule 2 (Form 1040), line 11\"; line 24 is the Additional Medicare Tax withholding that goes to Form 1040 line 25c. The candidate copies f8959.line24, the withholding, instead of the tax. Form 8959 was not among the pages given (f1040s2, i5329 pp. 1 and 5, i1040gi pp. 111 and 112, i1040sse), Schedule 2 line 11 says only \"Additional Medicare Tax. Attach Form 8959\", and the interface names the Form 8959 lines by printed number only: the deciding text was not given, as ruled in Stage 18 and round 1. Project stands.",
-   "context": "74204921d5f64b9792827cb5e623778d03c5d99c1555da66dafcf5c53aeaac40"
+   "context": "74204921d5f64b9792827cb5e623778d03c5d99c1555da66dafcf5c53aeaac40",
+   "subject_key": "8d3c47dc1d30ad595fb9c170f0eabc866354fdb50f3a3c30a242568c4aeb58e3",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "17c",
-   "project": "{\"collection\": \"person\", \"field\": \"person.hsa_addtax\", \"op\": \"sum_over\", \"where\": null}",
-   "second": "{\"expression\": {\"collection\": \"person\", \"field\": \"person.hsa_addtax\", \"op\": \"sum_over\", \"where\": null}, \"invalid_model_types\": [{\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: collection reference requires sum_over\"}, {\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: comparison operands have incompatible types\"}]}",
+   "project_expr_sha256": "b742ec9cd90bd7c87e3db8a5d980f6603410749890b72d6ee824dbde8d9b3508",
+   "second_expr_sha256": "37a74e9d70440044d13f2dd8aa943cc6c715f922a68fe6e8a1b758a93a1de0ae",
    "ruling": "Ruling: model error; on the refusal declaration, not the tax reading. f1040s2 line 17c, \"Additional tax on HSA distributions. Attach Form 8889\"; f8889 line 17b, \"Also, include this amount in the total on Schedule 2 (Form 1040), Part II, line 17c\". The candidate's expression is the project's (person.hsa_addtax summed over person), but its declared gate f8889.unsupported is a question of each person's Form 8889 entry, not a return-level Boolean, and fails validation (\"s2.s2.__type_gate_9: collection reference requires sum_over\"; \"comparison operands have incompatible types\"). That is the only validation error of the reply and the reason triage/s2.deepseek.json executed nothing. The project reaches the same screen inside each Form 8889 (f8889.unsupported refuses lines 13 and 16). Project stands.",
-   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182"
+   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182",
+   "subject_key": "6980790515651d6c875cd55f2c95b81b3390ae8c4e9087c31816789bf1bc1972"
   },
   {
    "printed": "18",
-   "project": "{\"line\": \"17c\"}",
-   "second": "{\"expression\": {\"line\": \"17c\"}, \"invalid_model_types\": [{\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: collection reference requires sum_over\"}, {\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: comparison operands have incompatible types\"}]}",
+   "project_expr_sha256": "0b91ce22855979b8472a433c2711d4d9a938e4efbfd08a3e361cb6e2bb4a279b",
+   "second_expr_sha256": "3cfc6ab8411e3ef715eca8699aeeff668124df95705b525de917360336dc3b2c",
    "ruling": "Ruling: model error; on the declaration it depends on, not the tax reading. f1040s2 line 18, \"Total additional taxes. Add lines 17a through 17z\". The candidate's expression is the project's (line 17c, the other line 17 items refused by s2.other at line 21), but it depends on line 17c, whose refusal declaration fails validation (f8889.unsupported used as a return-level gate), so the line is reported invalid. Substance agrees. Project stands.",
-   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182"
+   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182",
+   "subject_key": "d84eab738a69563b2c25cf69073dc25f59d8cd50a4ab66c4e5a5cd0efa564904"
   },
   {
    "printed": "1a",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"collection\": \"f1095a\", \"field\": \"f1095a.one\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"f1095a\", \"field\": \"f1095a.one\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, \"then\": {\"ref\": \"f8962.line29\"}}], \"op\": \"choose\"}",
-   "second": "{\"ref\": \"f8962.line29\"}",
+   "project_expr_sha256": "c14b5eaf3508b4632364452eb0a16ddc270bed0c33bc613b8b4c2a1ee294ab57",
+   "second_expr_sha256": "c71d0ad2d7f5da2555e0a2b3bcfe0348bc1069986f845ac40a4918c801769ae7",
    "ruling": "Ruling: model error; by reading. Not executable: the reply fails validation (`../triage/s2.deepseek.json`, state invalid: s2.line4 \"reference 'line12' does not resolve\"), so triage runs none of its lines; this line is outside line 4's dependency closure. i1040gi p. 111, Line 1a: \"If the advance credit payments were more than the premium tax credit you can claim, the amount you must repay will be shown on Form 8962, line 29. Enter that amount, if any, on line 1a\"; i8962 p. 3, Who Must File. The candidate copies Form 8962 line 29 on every return, as the Claude reply (whose identical expression triage ran: 889 candidate-unknown, 489 on completed returns, `../triage/s2.json`), so a filer with no Form 1095-A must answer Form 8962's questions. Project stands.",
-   "context": "74204921d5f64b9792827cb5e623778d03c5d99c1555da66dafcf5c53aeaac40"
+   "context": "74204921d5f64b9792827cb5e623778d03c5d99c1555da66dafcf5c53aeaac40",
+   "subject_key": "d178e959d45e1c7a3b3fa41e8de5b4a4d48b8ae6e0d7f75f78880cf3c52ced23",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "21",
-   "project": "{\"of\": [{\"line\": \"11\"}, {\"line\": \"12\"}, {\"line\": \"18\"}, {\"line\": \"4\"}, {\"line\": \"8\"}], \"op\": \"sum\"}",
-   "second": "{\"expression\": {\"of\": [{\"line\": \"11\"}, {\"line\": \"12\"}, {\"line\": \"18\"}, {\"line\": \"4\"}, {\"line\": \"8\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"s2.line4\", \"message\": \"s2.s2.line4: reference 'line12' does not resolve\"}]}",
-   "ruling": "Ruling: model error; Not executable: the reply fails validation (`../triage/s2.deepseek.json`, state invalid: s2.line4 \"reference 'line12' does not resolve\"), so triage runs none of its lines: line 21 adds line 4, whose reference fails. f1040s2 p. 2, line 21, \"Add lines 4, 7 through 16, 18, and 19\"; the expression itself (lines 4, 8, 11, 12 and 18) is the project's, with s2.other refusing every other Part II amount.",
-   "context": "74204921d5f64b9792827cb5e623778d03c5d99c1555da66dafcf5c53aeaac40"
-  },
-  {
-   "printed": "21",
-   "project": "{\"of\": [{\"line\": \"11\"}, {\"line\": \"12\"}, {\"line\": \"18\"}, {\"line\": \"4\"}], \"op\": \"sum\"}",
-   "second": "{\"expression\": {\"of\": [{\"line\": \"11\"}, {\"line\": \"12\"}, {\"line\": \"18\"}, {\"line\": \"4\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: collection reference requires sum_over\"}, {\"line\": \"s2.line17c\", \"message\": \"s2.s2.__type_gate_9: comparison operands have incompatible types\"}]}",
+   "project_expr_sha256": "10565b20a4de08d13d12b589641d764d51ccf3bdc540a5d2c383ab833546c447",
+   "second_expr_sha256": "ffdd44579b8afeb5833495a5e4e6bab6fff62d86a48ef8f5c668e5f10b35bea2",
    "ruling": "Ruling: model error; on the declaration it depends on, not the tax reading. f1040s2 line 21, \"Add lines 4, 7 through 16, 18, and 19. These are your total other taxes\". The candidate's expression is the project's (lines 4, 11, 12 and 18, refused on s2.other), but it depends on line 18 and through it on line 17c's invalid refusal declaration. Its own line 4 and line 11 operands are the interface gaps ruled on those lines. Substance agrees with the project's line. Project stands.",
-   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182"
+   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182",
+   "subject_key": "70dbe312a7f2b27e06098798f8fb6c6895ec038546125fb7ec8335e566a7ad4c"
+  },
+  {
+   "printed": "21",
+   "project_expr_sha256": "52572aa78e7454f292b7565904ebe7f69e3adfebc4cea1adf256706d4c26577e",
+   "second_expr_sha256": "7e8d93f78376160aa341fbbe23ade19f1436fba3d214bbab913910fe87ebc621",
+   "ruling": "Ruling: model error; Not executable: the reply fails validation (`../triage/s2.deepseek.json`, state invalid: s2.line4 \"reference 'line12' does not resolve\"), so triage runs none of its lines: line 21 adds line 4, whose reference fails. f1040s2 p. 2, line 21, \"Add lines 4, 7 through 16, 18, and 19\"; the expression itself (lines 4, 8, 11, 12 and 18) is the project's, with s2.other refusing every other Part II amount.",
+   "context": "74204921d5f64b9792827cb5e623778d03c5d99c1555da66dafcf5c53aeaac40",
+   "subject_key": "70dbe312a7f2b27e06098798f8fb6c6895ec038546125fb7ec8335e566a7ad4c"
   },
   {
    "printed": "4",
-   "project": "{\"collection\": \"person\", \"field\": \"person.se_line12\", \"op\": \"sum_over\", \"where\": null}",
-   "second": "{\"collection\": \"person\", \"field\": \"person.se_line13\", \"op\": \"sum_over\", \"where\": null}",
-   "ruling": "Ruling: interface gap; f1040sse p. 1, line 12: \"Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4\"; line 13: \"Deduction for one-half of self-employment tax ... Enter here and on Schedule 1 (Form 1040), line 15\". The reply does not validate: its line 17c declares refusal gate f8889.unsupported, a per-person Form 8889 question (f8889 is a collection under person), as a return-level gate, which the checker rejects (\"s2.s2.__type_gate_9: collection reference requires sum_over\"; \"comparison operands have incompatible types\"), so triage/s2.deepseek.json (executable-triage-v2) executed no line (6 x candidate invalid). The malformed declaration is not evidence either way; this line is ruled by reading its expression against the source. The candidate sums person.se_line13, the half-SE-tax deduction, which would put half the tax on line 4. The pages given were f1040s2, i1040gi p. 111 and i1040sse pp. 1-5; the Schedule SE form, which alone says which line goes to Schedule 2 line 4, was not among them, and the interface lists person.se_line12 and person.se_line13 only as \"(helper)\" with no label. The deciding text was not given: interface gap (a coverage gap of the review). Project stands (the Claude reply, on the same pages, chose line 12).",
-   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182"
-  },
-  {
-   "printed": "4",
-   "project": "{\"collection\": \"person\", \"field\": \"person.se_line12\", \"op\": \"sum_over\", \"where\": null}",
-   "second": "{\"expression\": {\"ref\": \"line12\"}, \"invalid_model_types\": [{\"line\": \"s2.line4\", \"message\": \"s2.s2.line4: reference 'line12' does not resolve\"}]}",
+   "project_expr_sha256": "6f2b202b95f2862454658b4dff13e47ff221afd869a17d9af4fff9f3c13a626c",
+   "second_expr_sha256": "2f298251f1fd7f7a36b76f0e36307801ae49075edccb17e5619f957dbf6aad47",
    "ruling": "Ruling: model error; Not executable: the reply fails validation (`../triage/s2.deepseek.json`, state invalid: s2.line4 \"reference 'line12' does not resolve\"), so triage runs none of its lines: the line's own reference fails, so the declaration is adjudicated, not the tax reading. f1040s2 line 4, \"Self-employment tax. Attach Schedule SE\"; the project sums person.se_line12 (Schedule SE line 12 of each person, i1040sse p. 2, Joint Returns, \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\"). The candidate names an unqualified \"line12\", which is no published id; the intent (Schedule SE line 12) is the project's, but the per-person sum is missing.",
-   "context": "74204921d5f64b9792827cb5e623778d03c5d99c1555da66dafcf5c53aeaac40"
+   "context": "74204921d5f64b9792827cb5e623778d03c5d99c1555da66dafcf5c53aeaac40",
+   "subject_key": "e6f77876ca1f966f495270fd66cb84c66045335e03ebc3326b0623627d433420",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4",
+   "project_expr_sha256": "6f2b202b95f2862454658b4dff13e47ff221afd869a17d9af4fff9f3c13a626c",
+   "second_expr_sha256": "86bea6b613a1316f196b4d116f09a6df1583cdd00427297d0c454c68e2e6e203",
+   "ruling": "Ruling: interface gap; f1040sse p. 1, line 12: \"Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4\"; line 13: \"Deduction for one-half of self-employment tax ... Enter here and on Schedule 1 (Form 1040), line 15\". The reply does not validate: its line 17c declares refusal gate f8889.unsupported, a per-person Form 8889 question (f8889 is a collection under person), as a return-level gate, which the checker rejects (\"s2.s2.__type_gate_9: collection reference requires sum_over\"; \"comparison operands have incompatible types\"), so triage/s2.deepseek.json (executable-triage-v2) executed no line (6 x candidate invalid). The malformed declaration is not evidence either way; this line is ruled by reading its expression against the source. The candidate sums person.se_line13, the half-SE-tax deduction, which would put half the tax on line 4. The pages given were f1040s2, i1040gi p. 111 and i1040sse pp. 1-5; the Schedule SE form, which alone says which line goes to Schedule 2 line 4, was not among them, and the interface lists person.se_line12 and person.se_line13 only as \"(helper)\" with no label. The deciding text was not given: interface gap (a coverage gap of the review). Project stands (the Claude reply, on the same pages, chose line 12).",
+   "context": "60cad8d8626091d8b9b832119daad83739a1d262962990c174c0ec172313c182",
+   "subject_key": "e6f77876ca1f966f495270fd66cb84c66045335e03ebc3326b0623627d433420"
   },
   {
    "printed": "8 (box)",
-   "project": "{\"args\": [{\"args\": [{\"collection\": \"person\", \"field\": \"person.x_must\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"8\"}], \"test\": \"lt\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"collection\": \"person\", \"field\": \"person.x_must\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}",
+   "project_expr_sha256": "4a90e44b99c557fb4a40be83d207ef846fe92501128dab8a389e778568c17205",
+   "second_expr_sha256": "6903df59d7a5b121995f59aa5f1b8500d567ec1e66178321a5d2a0ae22e3dc12",
    "ruling": "Ruling: model error; by reading. Not executable: the reply fails validation (`../triage/s2.deepseek.json`, state invalid: s2.line4 \"reference 'line12' does not resolve\"), so triage runs none of its lines; this line is outside line 4's dependency closure. f1040s2 p. 1, line 8, \"Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here\"; i1040gi p. 112 (given this round), Line 8, Exception: \"If only item (1) applies and distribution code 1 is correctly shown in box 7 of all your Forms 1099-R, you don't have to file Form 5329. Instead, multiply the taxable amount of the distribution by 10% (0.10) and enter the result on line 8. ... Also check the box on line 8 to indicate that you don't have to file Form 5329\". The box marks a 10% tax entered on line 8 without the form; the candidate checks it on every return where no one must file Form 5329, including the great majority with no line 8 tax (in round 1 the same reading executed: 1,796 value differences, all project false, candidate true). The project checks it only with a line 8 amount and no one required to file. Project stands.",
-   "context": "74204921d5f64b9792827cb5e623778d03c5d99c1555da66dafcf5c53aeaac40"
+   "context": "74204921d5f64b9792827cb5e623778d03c5d99c1555da66dafcf5c53aeaac40",
+   "subject_key": "9c1d868ea572be50b7a8b93e1a8fbd9a55ec4c355acf9a7ddfbda0dd68a0ad70",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

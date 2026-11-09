@@ -4,48 +4,82 @@
  "rulings": [
   {
    "printed": "1",
-   "project": "{\"ref\": \"sb.line2\"}",
-   "second": "{\"from\": {\"ref\": \"f1040.line2b\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "project_expr_sha256": "8c29ec9e6688e1aed75fa2c16be311c78d2e1b4f6745f2be923f15c6b92d5be8",
+   "second_expr_sha256": "04d847a57b6c0dfd304a08e2723f105deef4408d4ec32ec748ce0c9c3f9adc2d",
    "ruling": "Ruling: scope; Form 8960 (2025) p. 1, line 1, \"Taxable interest (see instructions)\". Form 1040 line 2b copies Schedule B line 4, which is line 2 less line 3, and line 3 (the Form 8815 exclusion) is refused by sb.unsupported, so the candidate's floored line 2b and the project's Schedule B line 2 are the same amount; the floor is a type wrapper. The only differences are refusals and unknowns on the cited screens the project carries on line 1 (f8960.refund and f8960.unsupported, which since PENDING-3 of the credits-misc package also names \"section 404(k) dividends on employer securities held in an employee stock ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a)\" (i8960 p. 13, Line 7: \"Section 404(k) dividends reported on line 2 (enter as a negative amount)\"); the added item only widens a screen that refuses on Yes), none on a completed return: project-refuses at f8960.refund (e.g. classm.person.1.deepseek, classm.f5695.8), project-unknown with f8960.unsupported or f8960.refund withheld (e.g. classm.asset.2, classm.sales.1). No value difference. Triage executable-triage-v2 (`reviews/2025/transcription/triage/f8960.json`; 1,495 fixtures, 500 generated returns seed 20261026, 133 partial records from 40 bases; 2,128 comparisons): 1,855 agree; differences 39 project-refuses, 234 project-unknown; on completed returns no difference. Project stands.",
-   "context": "32b050af8bbfbc88eab692774904517c9ebb1e802ae5d29bb8b62f4b6023a36d"
+   "context": "32b050af8bbfbc88eab692774904517c9ebb1e802ae5d29bb8b62f4b6023a36d",
+   "subject_key": "d2dc220ecc53efe9c32b760d249c1babb7eeb90d9ee53d834ecf6c86f81b7ba4"
   },
   {
    "printed": "13",
-   "project": "{\"ref\": \"f1040.line11b\"}",
-   "second": "{\"expression\": {\"ref\": \"f1040.line11\"}, \"invalid_model_types\": [{\"line\": \"f8960.line13\", \"message\": \"f8960.f8960.line13: reference 'f1040.line11' does not resolve\"}]}",
+   "project_expr_sha256": "8226bf0bdc81e1373428f18139c0fa0e26bd9954d28b8a726957a54dd7b68fa2",
+   "second_expr_sha256": "808011687bd92948b28dc5379545ff8a59d3374c4ad8fc1f5b10d0f40c9e1416",
    "ruling": "Ruling: model error on the declaration; the reply reads f1040.line11, which does not resolve (invalid_model_types: \"reference 'f1040.line11' does not resolve\"); its note says the scoped catalog did not list Form 1040 line 11. i8960 p. 22, Line 13: \"If you didn't exclude any amounts from your gross income under section 911 and you don't own an interest in a CFC or PFIC, your MAGI is your AGI as reported on Form 1040 or 1040-SR.\" The project reads f1040.line11b, which copies line 11a, as the earlier rulings. Triage executable-triage-v2 (reviews/2025/transcription/triage/f8960.json; 1,638 fixtures, 500 generated returns seed 20261026, 112 partial records): 2,203 of 2,250 comparisons agree; the 47 differences are the project's line refusing or unknown on f8960.refund (12 and 12 witnesses), which the project's return does not read where it completes. Project stands.",
    "context": "36c6ef1f9232c4d74cba05c987373858e5f60c42adf0154387ab5823ae8522cc",
    "date": "2026-11-07",
-   "run": "53ba1474ded783d6002b8bac5b23701e10d4e56f8f977cdf8ee927d2d02bdc84"
+   "run": "53ba1474ded783d6002b8bac5b23701e10d4e56f8f977cdf8ee927d2d02bdc84",
+   "subject_key": "6c7a7b7089e23728663d0c35f478b90042a6a56db3d324f7875057d1c156218f"
   },
   {
    "printed": "13",
-   "project": "{\"ref\": \"f1040.line11b\"}",
-   "second": "{\"ref\": \"f1040.line11a\"}",
+   "project_expr_sha256": "8226bf0bdc81e1373428f18139c0fa0e26bd9954d28b8a726957a54dd7b68fa2",
+   "second_expr_sha256": "a629a87417630cc487637f18aaeedd2034a4f8be545c446c907978329d2d6979",
    "ruling": "Ruling: representation; i8960 p. 22, Line 13: \"If you didn’t exclude any amounts from your gross income under section 911 and you don’t own an interest in a CFC or PFIC, your MAGI is your AGI as reported on Form 1040 or 1040-SR.\" The reply reads f1040.line11a, the project f1040.line11b, which copies line 11a (forms/2025/f1040.yaml, f1040.line11b: op copy from f1040.line11a), so the value is the same on every return. The section 911 and CFC/PFIC cases are refused (f8960.unsupported names both, and since round 2 scope.other_line16 refuses any CFC or PFIC stock; \"If you exclude amounts under section 911 or own certain CFCs or PFICs, your MAGI is your AGI as modified\", i8960 p. 22). Same point as the refresh-round ruling.",
    "context": "a34dbec53049ca7316c78911b5dd88a13c04ceb54806769202a2feea71ca07b0",
    "date": "2026-11-04",
-   "run": "a39a69271a26aac45768bb1c18d7d7ab68ede523123e3e10dbdd36024903175b"
+   "run": "a39a69271a26aac45768bb1c18d7d7ab68ede523123e3e10dbdd36024903175b",
+   "subject_key": "6c7a7b7089e23728663d0c35f478b90042a6a56db3d324f7875057d1c156218f"
   },
   {
    "printed": "16",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"ref\": \"f1040.line11b\"}, {\"line\": \"14\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"line\": \"14\"}, {\"ref\": \"f1040.line11b\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"12\"}, {\"line\": \"15\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"line\": \"12\"}, {\"line\": \"15\"}], \"op\": \"smaller_of\"}",
+   "project_expr_sha256": "4431c68d788302d8584eb097a86912fe03049a0514a9bab22a6bb1e274590de9",
+   "second_expr_sha256": "a79da7ecd26668115e5250959df3edaf8f6668e6876d1a41c1a042db9f52a09a",
    "ruling": "Ruling: model error; i8960 p. 1, \"Attach Form 8960 to your return if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount\"; f8960 p. 1, line 16, \"Enter the smaller of line 12 or line 15\". The candidate's smaller of lines 12 and 15 is the project's amount on every return (with MAGI, which is AGI in scope, not above line 14, line 15 is $0 and both give $0; no value difference). It figures line 12 on every return, so it asks or refuses on the Form 8960 screens (f8960.unsupported, f8960.refund, f8960.allocated_taxes) of filers who do not file the form, answers the source does not need; the project gates line 12 on the new f8960.used (BUG-0401). Triage executable-triage-v2 (`../triage/f8960.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 121 partial records): 908 of 2,186 agree; on completed returns 202 candidate-unknown, 16 candidate-refuses, no value. No error introduced by BUG-0401: f8960.used compares sa.agi (Form 1040 line 11b) with line 14, the same comparison line 15 makes from line 13.",
-   "context": "db75d8063a5cdb51b556a75fd536f1bf04d1147ab06fe95a6b4c9aa3f2b71d81"
+   "context": "db75d8063a5cdb51b556a75fd536f1bf04d1147ab06fe95a6b4c9aa3f2b71d81",
+   "subject_key": "15303d302447ee1c86bc86d395e80de27100bb7864ec3c0bc739afbfa6a725c3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8960",
+     "fixture:classm.f2441.2.deepseek@f8960",
+     "fixture:classm.f2441.3.deepseek@f8960",
+     "fixture:classm.f2441.4.deepseek@f8960",
+     "fixture:classm.f2441.5.deepseek@f8960",
+     "fixture:classm.f2441.6.deepseek@f8960",
+     "fixture:classm.f8889.6.deepseek@f8960",
+     "fixture:classm.f4952.3.deepseek@f8960",
+     "fixture:classm.f4952.4.deepseek@f8960",
+     "fixture:classm.clcw.3.deepseek@f8960",
+     "fixture:classm.f8880.4.deepseek@f8960",
+     "fixture:classm.f5695.8.deepseek@f8960",
+     "fixture:classm.asset.3@f8960",
+     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@f8960",
+     "fixture:stage16.cleanup.refuse.retirement.special_first@f8960",
+     "fixture:stage4.refuse.niit.allocation@f8960",
+     "partial:classm.carloan.1-f8960.unsupported@f8960"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "2",
-   "project": "{\"ref\": \"sb.line6\"}",
-   "second": "{\"ref\": \"f1040.line3b\"}",
+   "project_expr_sha256": "dda08cd2a64985c01bbe3d60adaae22851c1d35fda99d0cbf8613a26e2bae6d9",
+   "second_expr_sha256": "8dca4fae4f37984eaf36643368331f433cb136348fae967b117536a4d464b227",
    "ruling": "Ruling: scope; Form 8960 (2025) p. 1, line 2, \"Ordinary dividends (see instructions)\". Form 1040 line 3b copies Schedule B line 6, the project's reference, so the amounts are the same on every return. The differences are the candidate's own declaration of f8960.unsupported on line 2 (its note: section 404(k) ESOP dividends \"are screened by f8960.unsupported\"), where the project reads that screen on line 1 and the later lines: candidate-refuses on stage4.refuse.8960.unsupported, .simultaneous and classm.w2.1, and candidate-unknown with it withheld (classm.asset.2, classm.sales.1); every witness is a refused or incomplete return. The PENDING-3 wording of the screen matches i8960 p. 7, Line 2: \"If line 2 includes dividends from employer securities held in an employee stock ownership plan (ESOP) that are deductible under section 404(k) ... include those amounts as negative modifications on line 7\". No value difference. Triage executable-triage-v2 (`reviews/2025/transcription/triage/f8960.json`; 1,495 fixtures, 500 generated returns seed 20261026, 133 partial records from 40 bases; 2,128 comparisons): 1,915 agree; differences 17 candidate-refuses, 196 candidate-unknown; on completed returns no difference. Project stands.",
-   "context": "32b050af8bbfbc88eab692774904517c9ebb1e802ae5d29bb8b62f4b6023a36d"
+   "context": "32b050af8bbfbc88eab692774904517c9ebb1e802ae5d29bb8b62f4b6023a36d",
+   "subject_key": "624c1d62e6d75a7c90ee2c4122d0f56fb5f6a672b1479bfa12549cbdffdbdd88"
   },
   {
    "printed": "9b",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"ref\": \"sa.line17\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"sa.age65\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"sa.age65\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sa.standard_extra\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"sa.blind\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"sa.blind\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sa.standard_extra\"}}], \"op\": \"choose\"}, {\"param\": \"sa.standard_base\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.elect_itemize\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.elect_itemize\"}], \"test\": \"eq\"}, {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"sa.age65\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"sa.age65\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sa.standard_extra\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"sa.blind\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"sa.blind\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sa.standard_extra\"}}], \"op\": \"choose\"}, {\"param\": \"sa.standard_base\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}, {\"ref\": \"sa.line17\"}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"input\": \"f8960.allocated_taxes\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"ref\": \"sa.line17\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"sa.age65\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"sa.age65\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sa.standard_extra\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"sa.blind\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"sa.blind\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sa.standard_extra\"}}], \"op\": \"choose\"}, {\"param\": \"sa.standard_base\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.elect_itemize\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.elect_itemize\"}], \"test\": \"eq\"}, {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sa.spouse_itemizes\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"sa.age65\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"sa.age65\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sa.standard_extra\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"sa.blind\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sales.zero\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"sa.blind\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sa.standard_extra\"}}], \"op\": \"choose\"}, {\"param\": \"sa.standard_base\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}, {\"ref\": \"sa.line17\"}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"input\": \"f8960.allocated_taxes\"}, {\"ref\": \"sa.line5e\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: equivalent representation; project retained. Both read line 9b as the state, local and foreign income tax allocable to net investment income, allowed only when itemizing. The second transcription caps the allocation at Schedule A line 5e; the project takes the supplied allocation and refuses the return through `f8960.bad_allocation` when the claimed allocation exceeds the Schedule A deduction, so within the non-refused scope the values agree. No change to the data."
+   "project_expr_sha256": "cca3db07fd082146f8146f4239267974084c7e01e66c94654f1d970ccb9e4c0c",
+   "second_expr_sha256": "4eef26bb2c8e86b27df80778e784c624fb0ae7c7ff863a266141295b3788bcf8",
+   "ruling": "Ruling: equivalent representation; project retained. Both read line 9b as the state, local and foreign income tax allocable to net investment income, allowed only when itemizing. The second transcription caps the allocation at Schedule A line 5e; the project takes the supplied allocation and refuses the return through `f8960.bad_allocation` when the claimed allocation exceeds the Schedule A deduction, so within the non-refused scope the values agree. No change to the data.",
+   "subject_key": "b51bfe7fae703401a194b496d7d3d407ef86e32d2467b58bcc3982b4a6bbb51f"
   }
  ]
 }

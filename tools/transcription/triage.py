@@ -11,9 +11,11 @@ so it is not the size of the completed sample. A reply with invalid declarations
 (T-143): valid lines are compared, and a pair whose candidate line or dependency failed schema, type or
 reference validation is reported as `candidate-invalid` and listed in `invalid_lines`.
 
-Each section is evaluated against the reply that judged it. A section the log marks "Reviewed in: pass <id>"
-was judged in a line-scoped pass: its candidate comes from that pass's reply (the pass block's receipt,
-checked against the block's prompt hash and recorded reply), with the project's other computed lines
+Each section is evaluated against the reply that judged it, as the committed review log records it, so
+triage runs in a checkout without the git-ignored review data. A section the log marks "Reviewed in: pass <id>"
+was judged in a line-scoped pass: its candidate comes from that pass's recorded reply (its receipt under
+.transcription/, when this checkout holds it, must answer the block's prompt hash and equal the recorded reply;
+a receipt it lacks is recorded as `receipt_verified: false`), with the project's other computed lines
 spliced in beside it as compare() splices them for type validation, so a scoped line the reply omits stays
 missing. Every other section is evaluated against the whole-form reply. Each reply is evaluated in its own
 run. A record with line-scoped sections lists each pass under `passes` and marks its lines with `pass`;
@@ -23,7 +25,9 @@ pass reply cannot be found, verified or parsed.
 Usage: triage.py --form sd [--family deepseek] [--generated 500] [--seed 20261026] [--partial-bases 40]
        triage.py --form sd [--family deepseek] --explain <handle> [--witness N] [--completed] [--depth 6]
 --completed indexes the line's separate sample of witnesses on completed returns.
-Writes reviews/<year>/transcription/triage/<stem>.json. Raw replies are read, never changed.
+Writes .transcription/triage/<year>/<stem>.json (New York: .transcription/triage/ny/<year>/), git-ignored and
+regenerated on demand; a ruling keeps only a compact stamp of the line it relied on (rulings.triage_stamp).
+Raw replies are read, never changed.
 """
 import argparse, hashlib, json, os, re, subprocess, sys
 
@@ -34,7 +38,7 @@ import transcribe as T  # noqa: E402
 
 ROOT = T.ROOT
 POLICY = "executable-triage-v2"
-OUT = str(T.jurisdiction.ypath("reviews", T.Y, "transcription", "triage"))
+OUT = rulings.TRIAGE_DIR  # git-ignored: regenerated on demand, never committed
 RAW_HEADING = "## Raw second transcription"
 
 
@@ -105,15 +109,10 @@ def load_pass(form, pid, block, doc):
     receipt, prompt_sha, scope = row("receipt"), row("prompt sha256"), row("review scope")
     if not receipt or not prompt_sha or not scope or not scope.startswith("lines "):
         raise Unavailable("its block records no receipt, prompt sha256 or review scope")
-    response, meta = os.path.join(ROOT, receipt + ".response.txt"), os.path.join(ROOT, receipt + ".meta.json")
-    if not os.path.exists(response) or not os.path.exists(meta):
-        raise Unavailable(f"no reply or receipt metadata at {receipt}")
-    if json.load(open(meta, encoding="utf-8")).get("prompt_sha256") != prompt_sha:
-        raise Unavailable(f"{receipt} answers a different request")
-    raw = open(response, encoding="utf-8").read()
-    logged = block.partition("\n##### Raw second transcription\n\n```yaml\n")[2].rpartition("\n```")[0]
-    if raw.strip() != logged.strip():
-        raise Unavailable(f"{receipt}.response.txt is not the reply the log records")
+    raw = rulings._fenced(block, "\n##### Raw second transcription\n\n```yaml\n")
+    if raw is None:
+        raise Unavailable("its block records no reply")
+    verified = verify_receipt(receipt, prompt_sha, raw)
     keys = dict(T.line_keys(doc))
     names = scope[len("lines "):].split(", ")
     unknown = [k for k in names if k not in keys]
@@ -123,7 +122,31 @@ def load_pass(form, pid, block, doc):
         own = own_lines(form, doc, raw)
     except (ValueError, T.yaml.YAMLError) as ex:
         raise Unavailable(f"its reply cannot be parsed: {ex}")
-    return {"raw": raw, "receipt": receipt, "scope": names, "scope_ids": {keys[k] for k in names}, "own": own}
+    return {"raw": raw, "receipt": receipt, "verified": verified, "scope": names, "scope_ids": {keys[k] for k in names},
+            "own": own}
+
+
+def verify_receipt(receipt, prompt_sha, raw):
+    """Check a pass's receipt in the git-ignored review data against the reply the log records: True when
+    its metadata answers the block's prompt and its reply is the recorded one, False when this checkout does
+    not hold it (the reply is then read from the log alone); a receipt that contradicts the log refuses."""
+    response, meta = os.path.join(ROOT, receipt + ".response.txt"), os.path.join(ROOT, receipt + ".meta.json")
+    if not os.path.exists(response) or not os.path.exists(meta):
+        return False
+    if json.load(open(meta, encoding="utf-8")).get("prompt_sha256") != prompt_sha:
+        raise Unavailable(f"{receipt} answers a different request")
+    if open(response, encoding="utf-8").read().strip() != raw.strip():
+        raise Unavailable(f"{receipt}.response.txt is not the reply the log records")
+    return True
+
+
+def whole_reply(form, family):
+    """The whole-form reply the log records (its "## Raw second transcription"), else exit."""
+    text = open(rulings.log_path("transcription", form, family), encoding="utf-8").read()
+    raw = rulings.section_reply("transcription", text, "", "")
+    if raw is None:
+        raise SystemExit(f"{families.stem(form, family)}: the transcription log records no whole-form reply")
+    return raw
 
 
 def own_lines(form, doc, raw):
@@ -230,11 +253,11 @@ def triage(form, family, generated, seed, partial_bases, max_witnesses=6):
               "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit"}
     found = {}
     if None in groups or not passes:
-        raw = open(os.path.join(ROOT, ".transcription", stem + ".response.txt"), encoding="utf-8").read()
+        raw = whole_reply(form, family)
         second = own_lines(form, doc, raw)
         pairs = pairs_for(form, doc["lines"], second, groups.get(None, []))
         answer = evaluate(stem, form, doc, second, pairs, generated, seed, partial_bases, max_witnesses)
-        record.update({"response_sha256": hashlib.sha256(raw.encode()).hexdigest(), **run_summary(answer)})
+        record.update({"response_sha256": T.response_sha256(raw), **run_summary(answer)})
         found.update(verdicts(pairs, answer))
     else:
         record.update({"response_sha256": None, "state": "no whole-form sections", "errors": [], "invalid_lines": [],
@@ -246,7 +269,8 @@ def triage(form, family, generated, seed, partial_bases, max_witnesses=6):
             pairs = pairs_for(form, doc["lines"], got["own"], groups[pid])
             lines = executed_lines(doc, got["own"], got["scope_ids"])
             answer = evaluate(stem, form, doc, lines, pairs, generated, seed, partial_bases, max_witnesses)
-            record["passes"][pid] = {"response_sha256": hashlib.sha256(got["raw"].encode()).hexdigest(), "receipt": got["receipt"],
+            record["passes"][pid] = {"response_sha256": T.response_sha256(got["raw"]), "receipt": got["receipt"],
+                                     **({} if got["verified"] else {"receipt_verified": False}),
                                      "review_scope": got["scope"], **run_summary(answer)}
             found.update({h: {**line, "pass": pid} for h, line in verdicts(pairs, answer).items()})
     record["lines"] = [found[h[0]] for h in handles]
@@ -282,7 +306,7 @@ def explain(form, family, handle, witness, depth, completed=False):
                          "rerun triage")
     doc = T.load_form(form)
     if pid is None:
-        lines = own_lines(form, doc, open(os.path.join(ROOT, ".transcription", stem + ".response.txt"), encoding="utf-8").read())
+        lines = own_lines(form, doc, whole_reply(form, family))
     else:
         try:
             got = load_pass(form, pid, pass_blocks(form, family).get(pid), doc)

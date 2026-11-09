@@ -6,6 +6,7 @@ import hashlib
 import json
 import io
 import re
+import shutil
 import sys
 import tempfile
 import subprocess
@@ -57,6 +58,37 @@ class RulingContext(unittest.TestCase):
             self.assertNotIn("Ruling: open", path.read_text())
             write("Input: all 2025 incurred care, regardless of payment date")
             self.assertIn("Ruling: open", path.read_text())
+
+    def test_sidecar_stores_expression_hashes_and_the_triage_stamp(self):
+        """A transcription ruling stores both expressions by the hash of their logged text, and the stamp
+        of the triage line that evaluated the reply it rules; an older row embedding expressions reads
+        as the same key."""
+        with tempfile.TemporaryDirectory() as temp, patch.object(rulings, "REVIEWS", temp), \
+                patch.object(rulings, "TRIAGE_DIR", temp + "/triage"), \
+                patch.object(T, "LOGS", temp), patch.object(T.subjects, "current", return_value="a" * 64):
+            Path(temp, "transcription").mkdir()
+            Path(temp, "triage").mkdir()
+            project, second = '{"input":"x.expenses"}', '{"line":"2"}'
+            rows = [{"printed": "1", "label": "Expenses", "status": "DISAGREE", "project": project, "second": second}]
+            T.write_log({"id": "x", "title": "Test form"}, "claude-opus-5-5", "p", [], rows, [], "lines: []", {})
+            run = T.response_sha256("lines: []")
+            Path(temp, "triage", "x.json").write_text(json.dumps({"policy": "executable-triage-v2", "response_sha256": run, "lines": [
+                {"handle": "1", "triage": "differs", "kinds": {"value": 2},
+                 "witnesses": [{"source": {"kind": "fixture", "id": "c1"}, "instance": "x"},
+                               {"source": {"kind": "generated", "seed": 7, "index": 3}, "instance": "x"}]}]}))
+            rule.apply("x", {"1": "representation; same amount"})
+            stored = json.loads(Path(rulings.sidecar_path("transcription", "x")).read_text())["rulings"][0]
+            self.assertNotIn("project", stored)
+            self.assertEqual((stored["project_expr_sha256"], stored["second_expr_sha256"]),
+                             (hashlib.sha256(project.encode()).hexdigest(), hashlib.sha256(second.encode()).hexdigest()))
+            self.assertEqual(stored["triage"], {"verdict": "differs", "kinds": ["value"], "policy": "executable-triage-v2",
+                                                "witnesses": ["fixture:c1@x", "generated:7.3@x"]})
+            self.assertLess(len(json.dumps(stored["triage"])), 200)
+            self.assertEqual(rulings.check(), 0)
+            old = {"printed": "1", "project": project, "second": second, "ruling": "Ruling: scope"}
+            self.assertEqual(rulings.compact_row("transcription", old),
+                             {"printed": "1", "project_expr_sha256": stored["project_expr_sha256"],
+                              "second_expr_sha256": stored["second_expr_sha256"], "ruling": "Ruling: scope"})
 
     def test_legacy_rulings_are_preserved_but_not_automatically_reused(self):
         with tempfile.TemporaryDirectory() as temp, patch.object(rulings, "REVIEWS", temp):
@@ -1366,7 +1398,7 @@ class TriageWitnesses(unittest.TestCase):
                 seen["payload"] = json.loads(input)
                 return subprocess.CompletedProcess(cmd, 0, stdout="{}", stderr="")
             with patch.object(triage, "OUT", temp), patch.object(triage.subprocess, "run", side_effect=run), \
-                    patch("builtins.open", side_effect=lambda p, *a, **k: io.StringIO("lines: []") if str(p).endswith(".response.txt") else io.open(p, *a, **k)), \
+                    patch.object(triage, "whole_reply", return_value="lines: []"), \
                     patch.object(triage.T, "load_form", return_value={"lines": []}), patch.object(triage.T, "load_defs", return_value={}), \
                     patch.object(triage.T, "model_type_context", return_value={}), patch.object(sys, "stdout", io.StringIO()):
                 triage.explain("x", "deepseek", "3", 0, 6, completed=True)
@@ -1419,7 +1451,7 @@ class TriageLineScopedPasses(unittest.TestCase):
                 + section("4", "MISSING", self.B) + section("9", "AGREE", "cccccccccccc")
                 + f"\n{T.PASS_HEADING}\n\nintro\n\n"
                 + "\n".join(block(pid, scope, logged.get(pid, raw)) for pid, (scope, raw) in self.replies.items())
-                + "\n## Raw second transcription\n\n```yaml\nx\n```\n")
+                + f"\n## Raw second transcription\n\n```yaml\n{self.WHOLE.strip()}\n```\n")
         self.log = self.root / "x.deepseek.md"
         self.log.write_text(text)
 
@@ -1464,8 +1496,9 @@ class TriageLineScopedPasses(unittest.TestCase):
         self.assertEqual({h: lines[h]["triage"] for h in "1234"}, {"1": "differs", "2": "differs", "3": "differs", "4": "missing"})
         self.assertEqual(record["bank"], {"runs": 1})
         self.assertEqual({p: (v["review_scope"], v["bank"], v["response_sha256"]) for p, v in record["passes"].items()},
-                         {self.A: (["2"], {"runs": 2}, hashlib.sha256(self.REPLY_A.encode()).hexdigest()),
-                          self.B: (["3", "4"], {"runs": 3}, hashlib.sha256(self.REPLY_B.encode()).hexdigest())})
+                         {self.A: (["2"], {"runs": 2}, hashlib.sha256(self.REPLY_A.strip().encode()).hexdigest()),
+                          self.B: (["3", "4"], {"runs": 3}, hashlib.sha256(self.REPLY_B.strip().encode()).hexdigest())})
+        self.assertNotIn("receipt_verified", record["passes"][self.A])
         self.assertEqual(json.loads(Path(path).read_text()), record)
 
     def test_explain_rebuilds_a_pass_witness_from_the_spliced_pass_reply(self):
@@ -1495,9 +1528,18 @@ class TriageLineScopedPasses(unittest.TestCase):
             triage.triage("x", "deepseek", 1, 1, 1)
         self.assertEqual(self.payloads, [])
 
-    def test_a_pass_without_its_reply_is_refused(self):
-        Path(self.root, ".transcription", f"x.deepseek.lines-{self.B}.response.txt").unlink()
-        self.assert_refused(rf"x.deepseek: cannot triage .*3 \(pass {self.B}: no reply .*\); 4 \(pass {self.B}: no reply")
+    def test_replies_are_read_from_the_log_without_review_data(self):
+        """A checkout without .transcription/ (a fresh clone) triages from the committed log alone; a
+        receipt it cannot check is recorded as unverified."""
+        shutil.rmtree(self.root / ".transcription")
+        triage, stack = self.patched()
+        with stack:
+            path, record = triage.triage("x", "deepseek", 1, 1, 1)
+        self.assertEqual([l["id"] for l in self.payloads[0]["lines"]], ["x.l1"])
+        self.assertEqual([l["id"] for l in self.payloads[2]["lines"]][:2], ["x.hh", "x.l3"])
+        self.assertEqual({p: v.get("receipt_verified") for p, v in record["passes"].items()}, {self.A: False, self.B: False})
+        self.assertEqual({l["handle"]: l["triage"] for l in record["lines"]}, {"1": "differs", "2": "differs", "3": "differs", "4": "missing"})
+        self.assertTrue(path.startswith(str(self.root / "out")))
 
     def test_a_receipt_for_another_request_is_refused(self):
         self.receipt(self.A, self.REPLY_A, prompt_sha="f" * 64)
@@ -1520,14 +1562,15 @@ class TriageLineScopedPasses(unittest.TestCase):
 
     def test_whole_form_log_records_no_passes(self):
         self.log.write_text("# log\n\n## Lines\n\n### 1 — x\n\nStatus: **DISAGREE**\nRuling: open\n\n"
-                            "### 9 — x\n\nStatus: **AGREE**\nReviewed in: pass cccccccccccc\n\n## Raw second transcription\n\nx\n")
+                            "### 9 — x\n\nStatus: **AGREE**\nReviewed in: pass cccccccccccc\n\n## Raw second transcription\n\n"
+                            f"```yaml\n{self.WHOLE.strip()}\n```\n")
         triage, stack = self.patched()
         with stack:
             path, record = triage.triage("x", "deepseek", 1, 1, 1)
         self.assertEqual(len(self.payloads), 1)
         self.assertNotIn("passes", record)
         self.assertEqual([(l["handle"], "pass" in l) for l in record["lines"]], [("1", False)])
-        self.assertEqual(record["response_sha256"], hashlib.sha256(self.WHOLE.encode()).hexdigest())
+        self.assertEqual(record["response_sha256"], hashlib.sha256(self.WHOLE.strip().encode()).hexdigest())
 
 
 class ClassMProvenance(unittest.TestCase):

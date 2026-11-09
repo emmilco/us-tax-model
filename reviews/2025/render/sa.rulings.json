@@ -9,65 +9,75 @@
    "ruling": "Ruling: scope; i1040sca p. 2, Line 1: \"Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.\" As the prior ruling: the restatement leaves that person out because the case cannot reach line 1: a filer who, or whose joint spouse, can be claimed as a dependent is refused by sa.dependent (\"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien?\"), on the deduction line Form 1040 line 12e reads, so no completed return has that person's expenses to enter (PENDING-4 of the ptc-sa package). The R4 restructuring moved the people into a list without adding or removing one; nothing else in the restatement is objected to.",
    "context": "b5b1c1df6c1886c2ad3a857ed98893bbd465ebb438a535f3f2f60d090b93f695",
    "date": "2026-11-07",
-   "run": "9aa8d1e8c1601c032e68ed58f7108abb8a8b1fcc1b896c777f161fab5137ad5b"
+   "run": "9aa8d1e8c1601c032e68ed58f7108abb8a8b1fcc1b896c777f161fab5137ad5b",
+   "subject_key": "fc44eb7d4ccb674d3ca303cb519f6db5eee47618ca6dfec07733ea0ca18d7553"
   },
   {
    "printed": "1",
    "restated": "Input — Unreimbursed eligible medical and dental expenses paid in 2025 (Pub. 502 lists what counts) for yourself, your spouse, your dependents, your child whom you do not claim only because of the rules for children of divorced or separated parents, and anyone you could have claimed as a dependent except that the person had gross income of $5,200 or more or filed a joint return. Reduce them by payments from insurance or other sources, but do not reduce them by a 2025 reimbursement of expenses paid in an earlier year. Leave out: amounts equal to tax-free distributions from a health savings account (HSA) or an Archer MSA; insurance premiums paid by a pretax reduction of your pay, and premiums and other medical and dental expenses paid by an employer-sponsored health plan (cafeteria plan) unless they are included in box 1 of your Form W-2; premiums for someone on your policy who is not one of the people listed above (for example a nondependent child under age 27), unless you had family coverage when you added that person and your premiums did not increase; if you are a retired public safety officer, premiums to the extent paid with a tax-free distribution from your retirement plan; the housework part of pay to someone who did both nursing and housework (only the nursing help counts); and meals while away from home for medical care, other than hospital care, which includes its meals and lodging (other lodging for medical care counts at no more than $50 a night for each person who meets the Pub. 502 lodging requirements). Reduce health insurance premiums by any self-employed health insurance deduction on Schedule 1 (Form 1040), line 17. For Marketplace coverage on a Form 1095-A, include the total premiums (including the part paid by advance payments of the premium tax credit), minus the premium tax credit allowed on Form 8962, line 24, and minus any excess advance payments you do not have to repay because of the repayment limit (Form 8962, line 27 minus line 29); advance payments you do repay count as premiums you paid. Include qualified long-term care insurance premiums only up to the limit for the age at the end of 2025 of the person for whom they were paid: $480 if 40 or under, $900 if 41 to 50, $1,800 if 51 to 60, $4,810 if 61 to 70, $6,020 if 71 or older. On the final return of a person who died in 2025, include the medical expenses paid out of that person's estate that Pub. 502 allows on the final return.",
    "model": "The restatement leaves out one person whose expenses count. The IRS text also includes \"Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.\" A filer following the restatement would leave those expenses out.",
    "ruling": "Ruling: scope; i1040sca p. 2, Line 1: \"Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.\" The restatement leaves that person out because the case cannot reach line 1: a filer who, or whose joint spouse, can be claimed as a dependent is refused by sa.dependent (\"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien?\"), on the deduction line Form 1040 line 12e reads, so no completed return has that person's expenses to enter. PENDING-4 of the ptc-sa package records the omission as deliberate for this reason. The rest of the PENDING-2 and PENDING-4 wording (Marketplace premiums less the credit allowed and the unrepaid excess advance payments; whose expenses count; the cafeteria-plan and nondependent-premium exclusions) is not objected to.",
-   "context": "50e2a8ed5a308d0da8690dbf2495a56110f7e520f752c6e6bff54867dfaffa33"
+   "context": "50e2a8ed5a308d0da8690dbf2495a56110f7e520f752c6e6bff54867dfaffa33",
+   "subject_key": "fc44eb7d4ccb674d3ca303cb519f6db5eee47618ca6dfec07733ea0ca18d7553"
   },
   {
    "printed": "10",
    "restated": "Add line 8e and line 9.",
    "model": "the model returned no verdict for this line",
    "ruling": "Ruling: model error; the model returned no verdict for this line, so there is no objection to rule on. The DeepSeek render log judges it.",
-   "context": "4f0afc31f5e7c09b96e3c409455b65e0b153be2082f2ca99682b1a5e17d08ddb"
+   "context": "4f0afc31f5e7c09b96e3c409455b65e0b153be2082f2ca99682b1a5e17d08ddb",
+   "subject_key": "bc15534d58d87fe27baadaf5f35135d39bf9e8337a9fc90e2201d834a710cf2d"
   },
   {
    "printed": "12",
    "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 12 is \"Other than by cash or check,\" but the restatement sums gift.allowed, which the glossary does not define. Without that definition, the per-gift amount cannot be checked against the IRS property-gift rules.",
-   "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and gift.allowed is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input (f1040sa line 12, \"Other than by cash or check\"). The per-gift rules are judged in the logs of `gift`. Same in substance as the earlier rulings on this line. No change to the data."
+   "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and gift.allowed is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input (f1040sa line 12, \"Other than by cash or check\"). The per-gift rules are judged in the logs of `gift`. Same in substance as the earlier rulings on this line. No change to the data.",
+   "subject_key": "0992b6685f6af44b68986d3a083db6ae0eff1326ff489603ce3741349fc2d878"
   },
   {
    "printed": "12",
    "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 12 is 'Other than by cash or check' (attach Form 8283 if over $500). The glossary does not define gift.allowed or the gift roster, and the line 12 instructions are not in the pages given, so the per-gift amount cannot be checked.",
-   "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and `gift.allowed` is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input. No change to the data."
+   "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and `gift.allowed` is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input. No change to the data.",
+   "subject_key": "0992b6685f6af44b68986d3a083db6ae0eff1326ff489603ce3741349fc2d878"
   },
   {
    "printed": "12",
    "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 12 is 'Other than by cash or check.' The restatement sums 'gift.allowed' over gift entries, but gift.allowed and the gift roster are not defined in the glossary. Without that definition I cannot tell whether the sum covers only noncash gifts at the deductible amount.",
-   "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and gift.allowed is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input (f1040sa line 12, \"Other than by cash or check\"). The per-gift rules are judged in the logs of `gift`. Same in substance as the earlier rulings on this line. No change to the data."
+   "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and gift.allowed is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input (f1040sa line 12, \"Other than by cash or check\"). The per-gift rules are judged in the logs of `gift`. Same in substance as the earlier rulings on this line. No change to the data.",
+   "subject_key": "0992b6685f6af44b68986d3a083db6ae0eff1326ff489603ce3741349fc2d878"
   },
   {
    "printed": "12",
    "restated": "Add gift.allowed over every confirmed gift entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 12 is gifts 'Other than by cash or check.' The value gift.allowed and the gift entries it is summed over are not defined in the text given, so it cannot be confirmed that only noncash gifts are counted and that the cash gifts on line 11 are excluded.",
-   "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and `gift.allowed` is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input. No change to the data."
+   "ruling": "Ruling: representation; project retained. The gift collection holds noncash gifts only (forms/2025/gift.yaml, cited to i8283), and `gift.allowed` is each entry's deductible amount after its Form 8283 screens; cash and check gifts are the line 11 input. No change to the data.",
+   "subject_key": "0992b6685f6af44b68986d3a083db6ae0eff1326ff489603ce3741349fc2d878"
   },
   {
    "printed": "2",
    "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
    "model": "The form says \"Enter amount from Form 1040 or 1040-SR, line 11b\" with no floor at zero. The helper floors AGI at zero, which changes lines 2 through 4 when line 11b is negative.",
    "ruling": "Ruling: ambiguity — amb.2025.sa_medical_negative_agi. The project floors AGI at zero for the medical-expense 7.5% limitation (the recorded reading), and the helper line 2 displays that floored amount; a negative AGI is the registered ambiguity.",
-   "context": "612bae5c4cfb2f38bc54d62fccfcc4733cdae9feb1dcd36e12ca37810a095960"
+   "context": "612bae5c4cfb2f38bc54d62fccfcc4733cdae9feb1dcd36e12ca37810a095960",
+   "subject_key": "114e34423ec0342658fc789d0dfc1a901704a7f89c24f8dad1bbb363eb8be55e"
   },
   {
    "printed": "2",
    "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
    "model": "The form says 'Enter amount from Form 1040 or 1040-SR, line 11b' and gives no floor. The program enters zero when AGI is negative, so the printed line 2 differs whenever line 11b is below zero.",
-   "ruling": "Ruling: genuine ambiguity; project retained (amb.2025.sa_medical_negative_agi). The printed line 2 says \"Enter amount from Form 1040 or 1040-SR, line 11b\" and the form gives no floor, as the model says (f1040sa p. 1). With line 11b below zero the printed arithmetic makes line 3 (\"Multiply line 2 by 7.5% (0.075)\") negative and line 4 (\"Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-\") larger than line 1: a deduction of medical expenses that were not paid. The instruction allows \"only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b\" (i1040sca p. 1, Medical and Dental Expenses), and no part of the expenses exceeds the expenses themselves; the project therefore enters line 11b on line 2 at no less than zero, which leaves lines 3 and 4 as printed. Tax-Calculator and PolicyEngine-US floor adjusted gross income at zero before the percentage (BUG-0094). The helper that floors it is named on line 2 and the glossary states the floor; the difference from the printed line is confined to a negative line 11b."
+   "ruling": "Ruling: genuine ambiguity; project retained (amb.2025.sa_medical_negative_agi). The printed line 2 says \"Enter amount from Form 1040 or 1040-SR, line 11b\" and the form gives no floor, as the model says (f1040sa p. 1). With line 11b below zero the printed arithmetic makes line 3 (\"Multiply line 2 by 7.5% (0.075)\") negative and line 4 (\"Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-\") larger than line 1: a deduction of medical expenses that were not paid. The instruction allows \"only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b\" (i1040sca p. 1, Medical and Dental Expenses), and no part of the expenses exceeds the expenses themselves; the project therefore enters line 11b on line 2 at no less than zero, which leaves lines 3 and 4 as printed. Tax-Calculator and PolicyEngine-US floor adjusted gross income at zero before the percentage (BUG-0094). The helper that floors it is named on line 2 and the glossary states the floor; the difference from the printed line is confined to a negative line 11b.",
+   "subject_key": "114e34423ec0342658fc789d0dfc1a901704a7f89c24f8dad1bbb363eb8be55e"
   },
   {
    "printed": "2",
    "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
    "model": "The program floors adjusted gross income at zero, but the IRS line says only 'Enter amount from Form 1040 or 1040-SR, line 11b' and gives no floor. A negative AGI would therefore produce a different line 2.",
    "ruling": "Ruling: ambiguity (amb.2025.sa_medical_negative_agi); the project floors AGI at zero for the 7.5% limit, the recorded reading.",
-   "context": "4f0afc31f5e7c09b96e3c409455b65e0b153be2082f2ca99682b1a5e17d08ddb"
+   "context": "4f0afc31f5e7c09b96e3c409455b65e0b153be2082f2ca99682b1a5e17d08ddb",
+   "subject_key": "114e34423ec0342658fc789d0dfc1a901704a7f89c24f8dad1bbb363eb8be55e"
   },
   {
    "printed": "5a",
@@ -76,14 +86,16 @@
    "ruling": "Ruling: scope; f1040sa p. 1, line 5a, \"State and local income taxes or general sales taxes. You may include either income taxes or general sales taxes on line 5a\"; i1040sca p. 2. The sales-tax election is refused by sa.unsupported (\"... or the sales-tax election?\"), which gates Schedule A, so line 5a carries income taxes only on every computed return; the restatement's \"no sales-tax election\" is the question's own first line, unchanged by the R4 restructuring (no word lost). Project stands.",
    "context": "b5b1c1df6c1886c2ad3a857ed98893bbd465ebb438a535f3f2f60d090b93f695",
    "date": "2026-11-07",
-   "run": "9aa8d1e8c1601c032e68ed58f7108abb8a8b1fcc1b896c777f161fab5137ad5b"
+   "run": "9aa8d1e8c1601c032e68ed58f7108abb8a8b1fcc1b896c777f161fab5137ad5b",
+   "subject_key": "857d83a68ab5a0197dac2b7ca9a4996598a4695c957c7dc37aea320e1dc86f49"
   },
   {
    "printed": "9",
    "restated": "Enter the amount from f4952 line 8.",
    "model": "The form says \"Investment interest. Attach Form 4952 if required,\" which implies some filers deduct investment interest without Form 4952. The restated f4952 line 8 is zero when Form 4952 is not used. The line 9 instructions are not in the pages given, so I cannot tell whether those filers would get zero wrongly.",
    "ruling": "Ruling: representation; the model asks whether a filer may deduct investment interest without Form 4952 and get zero. f4952 (2025) p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense. Exception. You don’t have to file Form 4952 if all of the following apply\" (investment income from interest and ordinary dividends less qualified dividends above the expense, no other deductible investment expenses, no 2024 carryover). Such a filer still has investment interest on Form 4952 line 1 above zero, so f4952.used is true and f4952.line8 is the smaller of lines 3 and 6, which under the exception's first condition is the whole interest: the form is used as the computation, whether or not it is filed (f4952.required). Line 8 is zero only with no investment interest, no carryforward and no election, when there is nothing to deduct. Inspected in forms/2025/f4952.yaml (f4952.used, f4952.line8) after PENDING-6 of the credits-misc package.",
-   "context": "50e2a8ed5a308d0da8690dbf2495a56110f7e520f752c6e6bff54867dfaffa33"
+   "context": "50e2a8ed5a308d0da8690dbf2495a56110f7e520f752c6e6bff54867dfaffa33",
+   "subject_key": "901cf756de526130de6c8606a5fa27f98d7603d754dc16bdb2ba5a1edb8a46a5"
   }
  ]
 }

@@ -7,26 +7,30 @@
    "restated": "Choose — [helper \"Positive foreign taxes\" = true → helper \"Smaller of ftc.taxes, f1040.line16\"] [helper \"Positive foreign taxes\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The branching and the refusal are right. However, when foreign tax is positive the credit takes the 'limited' value, which measures regular tax as Form 1040 line 16 alone instead of 'the total of Form 1040... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972'. So the credit can differ from 'the smaller of (a) your total foreign tax, or (b) your regular tax.'",
    "ruling": "Ruling: scope/representation on supported completed individual returns; i1116 (2025) pp.1–2 requires the smaller of foreign tax and regular tax, with p.25 Line20 defining regular tax as Form1040 line16 plus Schedule2 PartI line1z less Form4972 tax, with Form8978 adjustments. s2.other explicitly excludes advance-credit repayments and every other unsupported Schedule2 tax and is enforced at s2.line3/line21. scope.other_line16 excludes Forms4972/8978 and is enforced at f1040.line16. Thus the additional terms are zero on supported completed returns; Form1040 line16 is the regular-tax amount in this slice. Stand-alone excluded cases are not claimed equivalent. The reviewer correctly identifies the full IRS rule; its reduction here depends on those declared refusals, not model noise.",
-   "context": "4f7fc0160cccf6e85ae6a0ff5af29328a4d1b55fa6c4a733ef9f5ec4f130d142"
+   "context": "4f7fc0160cccf6e85ae6a0ff5af29328a4d1b55fa6c4a733ef9f5ec4f130d142",
+   "subject_key": "ff5cc2a4950e874c0fb59f707c97b000b649e84b1401b5e92d6cec26de7c3ca9"
   },
   {
    "printed": "credit",
    "restated": "Choose — [helper \"Positive foreign taxes\" = true → helper \"Smaller of ftc.taxes, f1040.line16\"] [helper \"Positive foreign taxes\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The structure (smaller of foreign tax or regular tax, zero if no foreign tax, refusal to Form 1116 when the election fails) is consistent with the text. However, it depends on the 'limited' operand, whose definition of regular tax is in line 20 instructions that are not provided.",
-   "ruling": "Ruling: representation; project retained. Regular tax for the election is \"your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))\", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data."
+   "ruling": "Ruling: representation; project retained. Regular tax for the election is \"your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))\", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data.",
+   "subject_key": "ff5cc2a4950e874c0fb59f707c97b000b649e84b1401b5e92d6cec26de7c3ca9"
   },
   {
    "printed": "limited",
    "restated": "Enter the smaller of helper \"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7\" or f1040 line 16.",
    "model": "The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax' and to 'See the instructions for line 20... for how to figure your regular tax'. For individuals, line 20 means 'the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972' (adjusted for Form 8978). The program uses Form 1040 line 16 alone: it leaves out Schedule 2 line 1z and does not subtract the Form 4972 tax.",
    "ruling": "Ruling: scope/representation on supported completed individual returns; i1116 (2025) pp.1–2 requires the smaller of foreign tax and regular tax, with p.25 Line20 defining regular tax as Form1040 line16 plus Schedule2 PartI line1z less Form4972 tax, with Form8978 adjustments. s2.other explicitly excludes advance-credit repayments and every other unsupported Schedule2 tax and is enforced at s2.line3/line21. scope.other_line16 excludes Forms4972/8978 and is enforced at f1040.line16. Thus the additional terms are zero on supported completed returns; Form1040 line16 is the regular-tax amount in this slice. Stand-alone excluded cases are not claimed equivalent. The reviewer correctly identifies the full IRS rule; its reduction here depends on those declared refusals, not model noise.",
-   "context": "4f7fc0160cccf6e85ae6a0ff5af29328a4d1b55fa6c4a733ef9f5ec4f130d142"
+   "context": "4f7fc0160cccf6e85ae6a0ff5af29328a4d1b55fa6c4a733ef9f5ec4f130d142",
+   "subject_key": "1164621abfa5261aaef8ca1d65520198d56a36f3d03dd58ffc5ea10acbc88563"
   },
   {
    "printed": "limited",
    "restated": "Enter the smaller of helper \"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7\" or f1040 line 16.",
    "model": "The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax. See the instructions for line 20, later, for how to figure your regular tax.' Those line 20 instructions are not provided, so it cannot be confirmed that Form 1040 line 16 equals 'regular tax' for this purpose.",
-   "ruling": "Ruling: representation; project retained. Regular tax for the election is \"your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))\", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data."
+   "ruling": "Ruling: representation; project retained. Regular tax for the election is \"your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))\", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data.",
+   "subject_key": "1164621abfa5261aaef8ca1d65520198d56a36f3d03dd58ffc5ea10acbc88563"
   },
   {
    "printed": "regular_tax",
@@ -35,14 +39,16 @@
    "ruling": "Ruling: scope; as the prior ruling. Screens scope.other_line16 and scope.credits. i1116 p. 25, Line 20, \"Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\". Form 4972 tax and a Form 8978 amount are refused by scope.other_line16 (which names Form 4972 and a Form 8978 amount), so nothing is subtracted or adjusted on any return the tool completes. Unchanged by the gate round.",
    "context": "63e929ad662a9343b347cdc313131eec1e464737f6b53232f16683c8ab286bf1",
    "date": "2026-11-07",
-   "run": "506908280fc51b20f29615b270aae21ced74b5ccb3f225f6533ad3299c571743"
+   "run": "506908280fc51b20f29615b270aae21ced74b5ccb3f225f6533ad3299c571743",
+   "subject_key": "3e8e84f5bedef540b0e867fcf30dcaabe8440148b9286ca7944fa536becd3742"
   },
   {
    "printed": "regular_tax",
    "restated": "Add f1040 line 16 and s2 line 1z.",
    "model": "The line 20 instructions define regular tax for individuals as \"the total of Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\". The restatement omits the Form 4972 subtraction. It also omits the Form 8978 line 14 adjustment and the rule \"If ... the amount of your tax is zero or less, enter -0-\".",
    "ruling": "Ruling: scope; screens scope.other_line16 and scope.credits. i1116 p. 25, Line 20, \"Individuals. Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.\" and \"If you file Form 8978, Partner’s Additional Reporting Year Tax, you will need to increase or decrease the amount you report on Form 1116, line 20 ... If, after your adjustment, the amount of your tax is zero or less, enter -0- on Form 1116, line 20.\" The restatement is the BUG-0190 fix (round-1 F1): ftc.regular_tax = f1040.line16 + s2.line1z. The three omitted terms are refused. Form 4972: scope.other_line16 (\"... including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount ...\") refuses f1040.line16 and scope.ready, so no Form 4972 tax is in line 16 and nothing is subtracted. Form 8978: a positive amount is in line 16 and refused by the same screen; a negative one goes to Schedule 3 Part I and is refused by scope.credits (\"... any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)\", at f1040 lines 29 and 30). The zero floor applies only \"after your adjustment\"; without one, line 16 and line 1z are both NonNegDollars, so their sum is never below zero. The fix uses line 1z, not line 3, which agrees with the page (line 3 adds the alternative minimum tax, section 26(b)(2)). Regression stage18.ftc_limit_with_repayment evaluates to ftc.regular_tax $375.00, ftc.credit $200.00 and Form 1040 line 22 $175.00, the round-1 source values. No new error found.",
-   "context": "a9ae962a287487f3a50157a55f18b4bb518c3f421f18ecad9a9f950f6cfaad2b"
+   "context": "a9ae962a287487f3a50157a55f18b4bb518c3f421f18ecad9a9f950f6cfaad2b",
+   "subject_key": "3e8e84f5bedef540b0e867fcf30dcaabe8440148b9286ca7944fa536becd3742"
   }
  ]
 }

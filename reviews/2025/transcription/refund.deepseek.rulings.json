@@ -5,108 +5,316 @@
  "rulings": [
   {
    "printed": "1",
-   "project": "{\"of\": [{\"input\": \"refund.line5d_2024\"}, {\"input\": \"refund.received\"}], \"op\": \"smaller_of\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"input\": \"refund.line5d_2024\"}, {\"input\": \"refund.received\"}], \"op\": \"smaller_of\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "e06d172c0761d9b24238b7276c3c33242f1b309be7d9bc5f7dd7a1b63e83550f",
+   "second_expr_sha256": "9c750910cba9033d6770e1bcf979b6405667ae34ef6bc96e0319665f566ff304",
    "ruling": "Ruling: representation and scope; i1040gi p. 90, worksheet line 1: \"Enter the income tax refund from Form(s) 1099-G (or similar statement). But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\". Where the worksheet is used (itemized, no sales-tax election) the candidate takes the same smaller of refund.received and line 5d; it enters zero otherwise, where the project's refund.taxable never reads line 1. stage16.refuse.refund.box8 and .not_2024 (candidate refuses on line 1, project $3,000.00 on line 1 and refuses the same returns at refund.taxable) are scope on refused returns. The completed-return differences (refund.itemized, box8 or not_2024 withheld from the candidate; refund.line5d_2024 withheld from the project) are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,263 agree; differences 2 candidate-refuses, 69 candidate-unknown, 46 project-unknown; on completed returns 39 candidate-unknown, 13 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
-   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8"
+   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8",
+   "subject_key": "68b9738b51186ee4c16d47679f88862e9d5452283c9ad09daea10c48e267b0d7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage16.refuse.refund.box8@refund",
+     "fixture:stage16.refuse.refund.not_2024@refund",
+     "partial:classm.f8889.2.deepseek-refund.received@refund",
+     "partial:classm.f8889.2.deepseek-refund.box8@refund",
+     "partial:classm.f8889.2.deepseek-refund.not_2024@refund",
+     "partial:classm.f8889.2.deepseek-refund.itemized@refund",
+     "partial:classm.f8889.2.deepseek-refund.line5d_2024@refund",
+     "partial:classm.f4952.1.deepseek-refund.received@refund",
+     "partial:classm.f4952.1.deepseek-refund.box8@refund",
+     "partial:classm.f4952.1.deepseek-refund.not_2024@refund",
+     "partial:classm.f4952.1.deepseek-refund.itemized@refund",
+     "partial:classm.f4952.1.deepseek-refund.line5d_2024@refund",
+     "partial:classm.f8960.1.deepseek-refund.received@refund",
+     "partial:classm.f8960.1.deepseek-refund.line5d_2024@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "1",
-   "project": "{\"of\": [{\"input\": \"refund.line5d_2024\"}, {\"input\": \"refund.received\"}], \"op\": \"smaller_of\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"input\": \"refund.line5d_2024\"}, {\"input\": \"refund.received\"}], \"op\": \"smaller_of\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "e06d172c0761d9b24238b7276c3c33242f1b309be7d9bc5f7dd7a1b63e83550f",
+   "second_expr_sha256": "e9b8d9db93fd8c5977dff15a069cddff504c9813737f744ee3f4638bccb367f4",
    "ruling": "Ruling: representation; i1040gi p. 90, worksheet line 1: \"Enter the income tax refund from Form(s) 1099-G (or similar statement). But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\"; p. 88: the worksheet is used \"If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A\". Where the worksheet is used (itemized, no sales-tax election) the candidate takes the same smaller of refund.received and line 5d; it enters zero otherwise, where the project's refund.taxable never reads line 1. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,791 of 1,878 agree. The 34 project-unknown records (17 bases withholding refund.received or refund.line5d_2024) and the 51 candidate-unknown records (withholding refund.itemized, refund.box8 or refund.not_2024) are partial records on which the candidate yields $0.00, so its eligibility test is false there and the worksheet is not reached; in the interview refund.itemized, box 8 and not_2024 are answered on refund.taxable before line 1 is read. The 2 candidate-refuses records (stage16.refuse.refund.box8, not_2024; project line 1 $3,000.00) are returns the project refuses on refund.taxable under the same gates, scope. No printed amount differs.",
-   "context": "39e7d8e558a68163683d7b8e2a1ee64e731c80644cfcbd4cba19d22dd749638f"
+   "context": "39e7d8e558a68163683d7b8e2a1ee64e731c80644cfcbd4cba19d22dd749638f",
+   "subject_key": "68b9738b51186ee4c16d47679f88862e9d5452283c9ad09daea10c48e267b0d7"
   },
   {
    "printed": "2",
-   "project": "{\"from\": {\"input\": \"refund.line5d_2024\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"refund.line5e_2024\"}}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"from\": {\"input\": \"refund.line5d_2024\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"refund.line5e_2024\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "1045b0d0efa7c978f8098474ff7887cbfeb5e0ad2d0d533022a8c03dd4847712",
+   "second_expr_sha256": "1e355c1f288c6e0b6336bb11fe2eb1630857df54ebfdff5c68055fb6a9b6e134",
    "ruling": "Ruling: representation and scope; i1040gi p. 90, worksheet line 2, \"Yes. Subtract the amount on your 2024 Schedule A, line 5e\" from line 5d. Both take line 5d less line 5e floored at zero where the worksheet is used; the candidate enters zero where it is not. stage16.refuse.refund.line5e_bad (project refuses at the cited impossible-entry screen refund.line5e_bad, candidate $0.00) is scope. The completed-return differences are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,310 agree; differences 23 candidate-unknown, 1 project-refuses, 46 project-unknown; on completed returns 13 candidate-unknown, 26 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
-   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8"
+   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8",
+   "subject_key": "3a48022a397f9ae9c5979076ed060acd0090d1b8e6cdb531a941ab5d3740aef0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage16.refuse.refund.line5e_bad@refund",
+     "partial:classm.f8889.2.deepseek-refund.itemized@refund",
+     "partial:classm.f8889.2.deepseek-refund.line5d_2024@refund",
+     "partial:classm.f8889.2.deepseek-refund.line5e_2024@refund",
+     "partial:classm.f4952.1.deepseek-refund.itemized@refund",
+     "partial:classm.f4952.1.deepseek-refund.line5d_2024@refund",
+     "partial:classm.f4952.1.deepseek-refund.line5e_2024@refund",
+     "partial:classm.f8960.1.deepseek-refund.itemized@refund",
+     "partial:classm.f8960.1.deepseek-refund.line5d_2024@refund",
+     "partial:classm.f8960.1.deepseek-refund.line5e_2024@refund",
+     "partial:classm.sd.1.deepseek-refund.itemized@refund",
+     "partial:classm.u1250.2.deepseek-refund.itemized@refund",
+     "partial:classm.clcw.4.deepseek-refund.itemized@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "2",
-   "project": "{\"from\": {\"input\": \"refund.line5d_2024\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"refund.line5e_2024\"}}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"from\": {\"input\": \"refund.line5d_2024\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"refund.line5e_2024\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "1045b0d0efa7c978f8098474ff7887cbfeb5e0ad2d0d533022a8c03dd4847712",
+   "second_expr_sha256": "94ad143f0a9306d34c7878b2d9fc63e4580671ac6b137ebaa05cda31d4e62089",
    "ruling": "Ruling: representation; i1040gi p. 90, worksheet line 2: \"Is the amount ... paid in 2024 (generally, this is the amount reported on your 2024 Schedule A, line 5d) more than the amount on your 2024 Schedule A, line 5e? No. Enter the amount from line 1 on line 3 and go to line 4. Yes. Subtract the amount on your 2024 Schedule A, line 5e\". Both take line 5d less line 5e floored at zero where the worksheet is used; the candidate enters zero where it is not. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,826 of 1,878 agree. The 34 project-unknown (withholding refund.line5d_2024 or refund.line5e_2024) and 17 candidate-unknown (withholding refund.itemized) records are partial records off the worksheet path (candidate $0.00 from its false eligibility test). The 1 project-refuses record (stage16.refuse.refund.line5e_bad, candidate $0.00) is the cited impossible-entry screen (i1040sca p. 7, Line 5e, \"enter the smaller of line 5d or $40,000\"), scope. Project stands.",
-   "context": "39e7d8e558a68163683d7b8e2a1ee64e731c80644cfcbd4cba19d22dd749638f"
+   "context": "39e7d8e558a68163683d7b8e2a1ee64e731c80644cfcbd4cba19d22dd749638f",
+   "subject_key": "3a48022a397f9ae9c5979076ed060acd0090d1b8e6cdb531a941ab5d3740aef0"
   },
   {
    "printed": "4",
-   "project": "{\"input\": \"refund.line17_2024\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"input\": \"refund.line17_2024\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: representation; i1040gi p. 90, worksheet line 4: \"Enter your total itemized deductions from your 2024 Schedule A, line 17.\" Both enter refund.line17_2024 where the worksheet is used; the candidate enters zero otherwise. Every difference is a partial record on a base with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,334 agree; differences 23 candidate-unknown, 23 project-unknown; on completed returns 13 candidate-unknown, 13 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
-   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8"
-  },
-  {
-   "printed": "4",
-   "project": "{\"input\": \"refund.line17_2024\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"refund.line17_2024\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "9481745ecb4aa0cd6ed1737e90c08e19e6dc36fd6ea8d4de19ea307cd91e8efa",
+   "second_expr_sha256": "7e27a4b45bfcbc6fbb437572e3e4dbae88179a6197ae21a89d5f698ba90d3a7b",
    "ruling": "Ruling: representation; i1040gi p. 90, worksheet line 4: \"Enter your total itemized deductions from your 2024 Schedule A, line 17.\" Both enter refund.line17_2024 when 2024 deductions were itemized; the candidate enters zero otherwise, where the worksheet is not used and the project's line 4 is not reached. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,844 of 1,878 agree; the 17 candidate-unknown records withhold refund.itemized and the 17 project-unknown records withhold refund.line17_2024 on bases where the candidate gives $0.00 (not itemized), all partial records off the worksheet path. Project stands.",
-   "context": "39e7d8e558a68163683d7b8e2a1ee64e731c80644cfcbd4cba19d22dd749638f"
+   "context": "39e7d8e558a68163683d7b8e2a1ee64e731c80644cfcbd4cba19d22dd749638f",
+   "subject_key": "d58943e3b7d5ba53e288a9aee5e1641b8f1901771341343823e8c25ba731a94f"
+  },
+  {
+   "printed": "4",
+   "project_expr_sha256": "9481745ecb4aa0cd6ed1737e90c08e19e6dc36fd6ea8d4de19ea307cd91e8efa",
+   "second_expr_sha256": "92cf643b24ab3e19fbbbbe805256dea6222c9f65f6753de6eec40adb085d6a41",
+   "ruling": "Ruling: representation; i1040gi p. 90, worksheet line 4: \"Enter your total itemized deductions from your 2024 Schedule A, line 17.\" Both enter refund.line17_2024 where the worksheet is used; the candidate enters zero otherwise. Every difference is a partial record on a base with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,334 agree; differences 23 candidate-unknown, 23 project-unknown; on completed returns 13 candidate-unknown, 13 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8",
+   "subject_key": "d58943e3b7d5ba53e288a9aee5e1641b8f1901771341343823e8c25ba731a94f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:classm.f8889.2.deepseek-refund.itemized@refund",
+     "partial:classm.f8889.2.deepseek-refund.line17_2024@refund",
+     "partial:classm.f4952.1.deepseek-refund.itemized@refund",
+     "partial:classm.f4952.1.deepseek-refund.line17_2024@refund",
+     "partial:classm.f8960.1.deepseek-refund.itemized@refund",
+     "partial:classm.f8960.1.deepseek-refund.line17_2024@refund",
+     "partial:classm.sd.1.deepseek-refund.itemized@refund",
+     "partial:classm.sd.1.deepseek-refund.line17_2024@refund",
+     "partial:classm.u1250.2.deepseek-refund.itemized@refund",
+     "partial:classm.u1250.2.deepseek-refund.line17_2024@refund",
+     "partial:classm.clcw.4.deepseek-refund.itemized@refund",
+     "partial:classm.clcw.4.deepseek-refund.line17_2024@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "6",
-   "project": "{\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.spouse_blind\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.spouse_blind\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.spouse_born\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.spouse_born\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.you_blind\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.you_blind\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.you_born\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.you_born\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}], \"op\": \"sum\"}",
-   "second": "{\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.spouse_blind\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.spouse_blind\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.spouse_born\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.spouse_born\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.you_blind\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.you_blind\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.you_born\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.you_born\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}], \"op\": \"sum\"}",
-   "ruling": "Ruling: model error; i1040gi p. 90, worksheet line 6: \"Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)\" and its footnote \"*If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return\"; p. 33, Line 12d: \"Don’t check any boxes for your spouse if your filing status is head of household\". The candidate counts the spouse boxes for every 2024 status and needs them where the source does not: stage16.mut.refund_single_unasked (single; project $0.00, candidate unknown for refund.spouse_born). The other differences are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,310 agree; differences 47 candidate-unknown, 23 project-unknown; on completed returns 26 candidate-unknown, 13 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
-   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8"
-  },
-  {
-   "printed": "6",
-   "project": "{\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.spouse_blind\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.spouse_blind\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.spouse_born\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.spouse_born\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.you_blind\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.you_blind\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.you_born\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.you_born\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}], \"op\": \"sum\"}",
-   "second": "{\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.spouse_blind\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.spouse_blind\"}], \"test\": \"ne\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.spouse_born\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.spouse_born\"}], \"test\": \"ne\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.you_blind\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.you_blind\"}], \"test\": \"ne\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.you_born\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_unmarried\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"refund.box_married\"}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.you_born\"}], \"test\": \"ne\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}], \"op\": \"sum\"}",
+   "project_expr_sha256": "a43a2621c566c0fd1047c075d72ab5dbd4c92695c5029a0bbefb180e283691df",
+   "second_expr_sha256": "0a84424e7ea19952fc6cff68e1dfe8ec0a27f60036c78b2a3c3afe7d711d1fba",
    "ruling": "Ruling: model error; i1040gi p. 90, worksheet line 6: \"Spouse was born before January 2, 1960. Spouse is blind.\" with \"*If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income\", and i1040gi p. 33, Line 12d (given to the reviewer): \"Don't check any boxes for your spouse if your filing status is head of household\". The project asks the spouse boxes only for a 2024 joint or separate return (amb.2025.refund_boxes_2024); the candidate asks refund.spouse_born and refund.spouse_blind of every filer, including single and head of household, answers the text does not need. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,826 of 1,878 agree. Of the 35 candidate-unknown records, stage16.mut.refund_single_unasked is a single filer (project $0.00, candidate needs refund.spouse_born) and the other 34 withhold a spouse question the project does not ask on that base. The 17 project-unknown records withhold refund.status where no box is checked; the project reads status for line 6 even then, but line 5 needs status whenever line 6 is used (lines 5 to 7 are skipped only for a 2024 separate return, itself a status answer), so this is not a reachable difference. Box amounts and status mapping otherwise agree. Project stands.",
-   "context": "39e7d8e558a68163683d7b8e2a1ee64e731c80644cfcbd4cba19d22dd749638f"
+   "context": "39e7d8e558a68163683d7b8e2a1ee64e731c80644cfcbd4cba19d22dd749638f",
+   "subject_key": "50939a5ead0aba36757a41a6d2cf564a0d5079a758ada2971a521ceaa549d345"
+  },
+  {
+   "printed": "6",
+   "project_expr_sha256": "a43a2621c566c0fd1047c075d72ab5dbd4c92695c5029a0bbefb180e283691df",
+   "second_expr_sha256": "97f377b71961f186d78e56957eb06b990bc3c79e14ae4494c91ce6f825567d5c",
+   "ruling": "Ruling: model error; i1040gi p. 90, worksheet line 6: \"Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)\" and its footnote \"*If your filing status is married filing separately, you can check the boxes for your spouse only if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return\"; p. 33, Line 12d: \"Don’t check any boxes for your spouse if your filing status is head of household\". The candidate counts the spouse boxes for every 2024 status and needs them where the source does not: stage16.mut.refund_single_unasked (single; project $0.00, candidate unknown for refund.spouse_born). The other differences are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,310 agree; differences 47 candidate-unknown, 23 project-unknown; on completed returns 26 candidate-unknown, 13 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
+   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8",
+   "subject_key": "50939a5ead0aba36757a41a6d2cf564a0d5079a758ada2971a521ceaa549d345",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage16.mut.refund_single_unasked@refund",
+     "partial:classm.f8889.2.deepseek-refund.status@refund",
+     "partial:classm.f8889.2.deepseek-refund.spouse_born@refund",
+     "partial:classm.f8889.2.deepseek-refund.spouse_blind@refund",
+     "partial:classm.f4952.1.deepseek-refund.status@refund",
+     "partial:classm.f4952.1.deepseek-refund.spouse_born@refund",
+     "partial:classm.f4952.1.deepseek-refund.spouse_blind@refund",
+     "partial:classm.f8960.1.deepseek-refund.status@refund",
+     "partial:classm.f8960.1.deepseek-refund.spouse_born@refund",
+     "partial:classm.sd.1.deepseek-refund.status@refund",
+     "partial:classm.u1250.2.deepseek-refund.status@refund",
+     "partial:classm.clcw.4.deepseek-refund.status@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "8",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"from\": {\"line\": \"4\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"7\"}}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.mfs_spouse_itemized\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"line\": \"4\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"7\"}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.mfs_spouse_itemized\"}], \"test\": \"eq\"}, \"then\": {\"line\": \"4\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.mfs_spouse_itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"line\": \"4\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.mfs_spouse_itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"from\": {\"line\": \"4\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"7\"}}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "598f5148295750da5c9d8836df3886c82bfceb98d719d87d82fe2a8ac4288aa7",
+   "second_expr_sha256": "55497eb84d3f5e3fe543dc339f0d4fcae2a7020ce4e802fc14ba9e5a5a88e7ed",
    "ruling": "Ruling: model error; inherited from line 6. i1040gi p. 90, line 8: \"Is the amount on line 7 less than the amount on line 4? No. STOP None of your refund is taxable. Yes. Subtract line 7 from line 4\". The candidate's own line 8 logic is the project's; its differences are stage16.mut.refund_single_unasked (project $1,400.00, candidate unknown for refund.spouse_born, through line 7) and partial records on bases with no refund (Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads). Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,287 agree; differences 70 candidate-unknown, 23 project-unknown; on completed returns 39 candidate-unknown, 13 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
-   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8"
+   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8",
+   "subject_key": "368a8f50575d64ee7bef57fceaa866e3fb81fd5014ace46b3f33944b207419a1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage16.mut.refund_single_unasked@refund",
+     "partial:classm.f8889.2.deepseek-refund.itemized@refund",
+     "partial:classm.f8889.2.deepseek-refund.line17_2024@refund",
+     "partial:classm.f8889.2.deepseek-refund.spouse_born@refund",
+     "partial:classm.f8889.2.deepseek-refund.spouse_blind@refund",
+     "partial:classm.f4952.1.deepseek-refund.itemized@refund",
+     "partial:classm.f4952.1.deepseek-refund.line17_2024@refund",
+     "partial:classm.f4952.1.deepseek-refund.spouse_born@refund",
+     "partial:classm.f8960.1.deepseek-refund.line17_2024@refund",
+     "partial:classm.sd.1.deepseek-refund.line17_2024@refund",
+     "partial:classm.u1250.2.deepseek-refund.line17_2024@refund",
+     "partial:classm.clcw.4.deepseek-refund.line17_2024@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "8",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfj\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"from\": {\"line\": \"4\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"7\"}}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"input\": \"refund.status\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.mfs_spouse_itemized\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"line\": \"4\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"7\"}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.mfs_spouse_itemized\"}], \"test\": \"eq\"}, \"then\": {\"line\": \"4\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"refund.mfs_spouse_itemized\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"line\": \"4\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"7\"}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"refund.mfs_spouse_itemized\"}], \"test\": \"eq\"}, \"then\": {\"line\": \"4\"}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "598f5148295750da5c9d8836df3886c82bfceb98d719d87d82fe2a8ac4288aa7",
+   "second_expr_sha256": "f4d92a36b028039e415016f2afffa8d8ffacacbcc14c69ad3fa97e49ef88134a",
    "ruling": "Ruling: model error and scope; i1040gi p. 90, Note: \"If the filing status on your 2024 Form 1040 or 1040-SR was married filing separately and your spouse itemized deductions in 2024, skip lines 5 through 7, enter the amount from line 4 on line 8\". executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,382 fixtures, 500 generated returns seed 20261026, 445 partial records from 40 bases; 2,327 comparisons; every witness enumerated by an uncapped scratch rerun of tools/transcription/triage.mjs, the record keeps 6 per kind): 2,133 of 2,327 agree; 190 candidate-unknown (113 completed), 4 candidate-refuses. The candidate copies line 4 whenever refund.mfs_spouse_itemized is true without testing the 2024 status, so it asks every filer whether a spouse itemized (and a non-separate filer answering yes would skip lines 5 to 7); the Note applies only to a separate return. Completed candidate-unknown, all enumerated: stage16.mut.refund_single_unasked (single filer, project $1,400.00, candidate needs refund.mfs_spouse_itemized) and 112 no-refund partial records withholding refund.mfs_spouse_itemized, a spouse box question or an exception gate the candidate declares on line 8. The candidate-refuses (stage16.refuse.refund.exc_tax, exc_who, box8, not_2024; project $15,400.00) are refused by the project on refund.taxable or line 1: scope. Project stands.",
-   "context": "2804befaa74adc464906bf849c782f323589e25b6ec167391c5c475a1a504c69"
+   "context": "2804befaa74adc464906bf849c782f323589e25b6ec167391c5c475a1a504c69",
+   "subject_key": "368a8f50575d64ee7bef57fceaa866e3fb81fd5014ace46b3f33944b207419a1"
   },
   {
    "printed": "9",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"1\"}, {\"line\": \"2\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"line\": \"2\"}, {\"line\": \"1\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"8\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"8\"}], \"op\": \"smaller_of\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "c4ae25ee2032b154ea498afc15a162c8834e5d8e59ad2c0740280c005a84c56b",
+   "second_expr_sha256": "4dc2ad9534bb2728a86223a6284bbb6e15b8f941dc3da72f01df9a7d9c9098e0",
    "ruling": "Ruling: model error and scope; i1040gi p. 90, worksheet line 3: \"Is the amount on line 1 more than the amount on line 2? No. STOP None of your refund is taxable.\"; line 9: \"Enter the smaller of line 3 or line 8\". executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,382 fixtures, 500 generated returns seed 20261026, 445 partial records from 40 bases; 2,327 comparisons; every witness enumerated by an uncapped scratch rerun of tools/transcription/triage.mjs, the record keeps 6 per kind): 2,160 of 2,327 agree; 83 candidate-unknown (50 completed), 81 project-unknown (32 completed), 2 candidate-refuses, 1 project-refuses. The candidate takes the smaller of lines 3 and 8 whenever the worksheet applies, so after a line 3 STOP it still needs line 8 and the questions behind it, and it inherits line 8's spouse-itemized question. Completed candidate-unknown, all enumerated: stage16.mut.refund_line3_stop (project $0.00 at the STOP) and stage16.mut.refund_single_unasked (project $1,400.00), both needing refund.mfs_spouse_itemized; 48 no-refund partial records withholding refund.box8, refund.not_2024 or refund.itemized. The 32 completed project-unknown are no-refund partial records withholding refund.line5d_2024 or refund.line5e_2024 where the candidate gives $0.00 (worksheet not used), on which refund.taxable does not read line 9. The candidate-refuses (stage16.refuse.refund.box8, not_2024; project $0.00) are refused by the project on refund.taxable: scope. The project-refuses record (stage16.refuse.refund.line5e_bad, candidate $3,000.00) is the cited impossible-entry screen refund.line5e_bad (i1040sca p. 7, Line 5e, \"enter the smaller of line 5d or $40,000\"): scope. Project stands.",
-   "context": "2804befaa74adc464906bf849c782f323589e25b6ec167391c5c475a1a504c69"
+   "context": "2804befaa74adc464906bf849c782f323589e25b6ec167391c5c475a1a504c69",
+   "subject_key": "978ab95d47708d08834a241313564475fd0ef85e1b78d8da2f20c373a4b884d3"
   },
   {
    "printed": "9",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"1\"}, {\"line\": \"2\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"line\": \"2\"}, {\"line\": \"1\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"8\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"8\"}], \"op\": \"smaller_of\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "c4ae25ee2032b154ea498afc15a162c8834e5d8e59ad2c0740280c005a84c56b",
+   "second_expr_sha256": "77a940d3d9e91940f7b192f94c3388e9b47b27d7cbbbb7ef699124eb778f3eca",
    "ruling": "Ruling: model error; i1040gi p. 90, worksheet line 3: \"Is the amount on line 1 more than the amount on line 2? No. STOP None of your refund is taxable.\" The project stops at line 3 (refund.line3_more false gives zero without lines 4 to 8); the candidate always takes the smaller of line 3 and line 8, so after a line 3 STOP it still needs line 8 and the 2024 filing status, which the text does not need, and it inherits the line 6 spouse questions. Triage executable-triage-v1 (triage/refund.deepseek.json; 1,083 fixtures, 500 generated returns, 295 partial records over 17 bases): 1,771 of 1,878 agree. Candidate-unknown 19: stage16.mut.refund_line3_stop (project $0.00, candidate needs refund.status), stage16.mut.refund_single_unasked (project $1,400.00, needs refund.spouse_born), and 17 partial records withholding refund.itemized, which the project answers on refund.taxable before line 9. Project-unknown 85: 17 bases each withholding refund.received, refund.exc_tax, refund.exc_who, refund.line5d_2024 or refund.line5e_2024 where the candidate gives $0.00 (not itemized), so the project's refund.taxable takes zero without line 9. Candidate-refuses 2 (stage16.refuse.refund.box8, not_2024; project line 9 $0.00) are refused by the project on refund.taxable, scope; project-refuses 1 (stage16.refuse.refund.line5e_bad, candidate $3,000.00) is the cited impossible-entry screen (i1040sca p. 7, Line 5e), scope. Project stands.",
-   "context": "39e7d8e558a68163683d7b8e2a1ee64e731c80644cfcbd4cba19d22dd749638f"
+   "context": "39e7d8e558a68163683d7b8e2a1ee64e731c80644cfcbd4cba19d22dd749638f",
+   "subject_key": "978ab95d47708d08834a241313564475fd0ef85e1b78d8da2f20c373a4b884d3"
   },
   {
    "printed": "9",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"1\"}, {\"line\": \"2\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"line\": \"2\"}, {\"line\": \"1\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"8\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"8\"}], \"op\": \"smaller_of\"}",
+   "project_expr_sha256": "c4ae25ee2032b154ea498afc15a162c8834e5d8e59ad2c0740280c005a84c56b",
+   "second_expr_sha256": "fe5caf298af0e55478b58ac43ab08e514dd0e9badfd375237c3269f489c789c5",
    "ruling": "Ruling: model error; i1040gi p. 90, worksheet line 3: \"Is the amount on line 1 more than the amount on line 2? No. STOP None of your refund is taxable.\". The candidate always takes the smaller of lines 3 and 8, so after a line 3 STOP it still needs line 8 and the 2024 filing status: stage16.mut.refund_line3_stop (project $0.00, candidate unknown for refund.status); it inherits line 6 (stage16.mut.refund_single_unasked). stage16.refuse.refund.box8, .not_2024 and .line5e_bad are scope on refused returns. The completed-return differences are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. No value differs. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,122 agree; differences 2 candidate-refuses, 186 candidate-unknown, 1 project-refuses, 69 project-unknown; on completed returns 104 candidate-unknown, 26 project-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
-   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8"
+   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8",
+   "subject_key": "978ab95d47708d08834a241313564475fd0ef85e1b78d8da2f20c373a4b884d3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage16.refuse.refund.box8@refund",
+     "fixture:stage16.refuse.refund.not_2024@refund",
+     "fixture:stage16.mut.refund_single_unasked@refund",
+     "fixture:stage16.mut.refund_line3_stop@refund",
+     "fixture:stage16.refuse.refund.line5e_bad@refund",
+     "partial:classm.f8889.2.deepseek-refund.received@refund",
+     "partial:classm.f8889.2.deepseek-refund.box8@refund",
+     "partial:classm.f8889.2.deepseek-refund.not_2024@refund",
+     "partial:classm.f8889.2.deepseek-refund.itemized@refund",
+     "partial:classm.f8889.2.deepseek-refund.line5d_2024@refund",
+     "partial:classm.f8889.2.deepseek-refund.line5e_2024@refund",
+     "partial:classm.f8889.2.deepseek-refund.status@refund",
+     "partial:classm.f4952.1.deepseek-refund.received@refund",
+     "partial:classm.f4952.1.deepseek-refund.line5d_2024@refund",
+     "partial:classm.f4952.1.deepseek-refund.line5e_2024@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "refund.has",
-   "project": "{\"args\": [{\"const\": 0}, {\"input\": \"refund.received\"}], \"test\": \"lt\"}",
-   "second": "{\"args\": [{\"const\": 0}, {\"line\": \"9\"}], \"test\": \"lt\"}",
+   "project_expr_sha256": "ff48bfbe66eb95d4be473531c77aedf7e03a49e76bf1c7046e19548d779b3007",
+   "second_expr_sha256": "385e32d58a1a29d90d51e7c66335e2f407c080cbc3890170795c9d12186c2af1",
    "ruling": "Ruling: model error; i1040gi p. 88, Line 1: \"If you received a refund, credit, or offset of state or local income taxes in 2025, you may be required to report this amount\". refund.has is whether a refund was received (refund.received more than zero), which s1.line1 uses to decide whether to read anything else; the candidate redefines it as line 9 more than zero. Value witnesses: stage16.refund.f1, f2, f4 and f7 (refunds that are not taxable; project true, candidate false) and two refused stage16.cleanup returns; it needs the whole worksheet on every return (completed-return candidate-unknown for refund.box8 on 124 fixtures with no refund, for example), and refuses on the worksheet gates (stage16.refuse.refund.exc_tax, exc_who, box8, not_2024). Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 848 agree; differences 4 candidate-refuses, 1499 candidate-unknown, 23 project-unknown, 6 value; on completed returns 254 candidate-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
-   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8"
+   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8",
+   "subject_key": "71380453224369b3c96dbf95b3d88e5d8dbe196c9a4413a57cf9ff85fbd7b2a4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@refund",
+     "fixture:classm.f2441.2.deepseek@refund",
+     "fixture:classm.f2441.3.deepseek@refund",
+     "fixture:classm.f2441.4.deepseek@refund",
+     "fixture:classm.f2441.5.deepseek@refund",
+     "fixture:classm.f2441.6.deepseek@refund",
+     "fixture:stage16.refund.f1@refund",
+     "fixture:stage16.refund.f2@refund",
+     "fixture:stage16.refund.f4@refund",
+     "fixture:stage16.refund.f7@refund",
+     "fixture:stage16.refuse.refund.exc_tax@refund",
+     "fixture:stage16.refuse.refund.exc_who@refund",
+     "fixture:stage16.refuse.refund.box8@refund",
+     "fixture:stage16.refuse.refund.not_2024@refund",
+     "fixture:stage16.cleanup.refuse.sa_charity.simultaneous@refund",
+     "fixture:stage16.cleanup.refuse.sa_excluded.simultaneous@refund",
+     "partial:classm.f8889.2.deepseek-refund.received@refund",
+     "partial:classm.f4952.1.deepseek-refund.received@refund",
+     "partial:classm.f8960.1.deepseek-refund.received@refund",
+     "partial:classm.sd.1.deepseek-refund.received@refund",
+     "partial:classm.u1250.2.deepseek-refund.received@refund",
+     "partial:classm.clcw.4.deepseek-refund.received@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "refund.taxable",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"line\": \"9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"line\": \"9\"}",
+   "project_expr_sha256": "bdcdede77fadf132ddea8e8a6676468c471bae362ca38722910ba13122b9e9da",
+   "second_expr_sha256": "c868e0694a346f1183f3609638e7228a8d97d501dfac77da0ff300a6986834f1",
    "ruling": "Ruling: model error and scope; inherited from lines 6 and 9. i1040gi p. 88, Line 1, TIP: \"None of your refund is taxable if, in the year you paid the tax, you either (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes\"; i1040gi p. 90, worksheet line 3: \"Is the amount on line 1 more than the amount on line 2? No. STOP None of your refund is taxable.\". The candidate copies its line 9 and moves the gates onto the worksheet lines. Its differences on refund returns are stage16.mut.refund_single_unasked (project $1,400.00, candidate unknown for refund.spouse_born) and stage16.mut.refund_line3_stop (project $0.00, candidate unknown for refund.status), inherited from lines 6 and 9; stage16.refuse.refund.line5e_bad (project refuses at the cited screen, candidate $3,000.00) is scope. The completed-return candidate-unknown (refund.exc_tax, exc_who, the status and box answers withheld) are partial records on bases with no refund: Every partial base of the bank is a return with no refund (refund.received $0.00), and s1.line1 reads the worksheet only when refund.has (refund.received more than zero) is true (forms/2025/s1.yaml), so the partial-record differences on those bases are on lines the return never reads. Triage executable-triage-v2 (`reviews/2025/transcription/triage/refund.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 385 partial records from 40 bases; 2,380 comparisons): 2,216 agree; differences 163 candidate-unknown, 1 project-refuses; on completed returns 91 candidate-unknown; every completed-return witness enumerated by an uncapped scratch rerun of the same evaluator (the record keeps 6 per kind). Project stands.",
-   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8"
+   "context": "5ccb0bad3edc37c1f5429f903eea3964cb54959cf5b59901003925a807c9cdc8",
+   "subject_key": "9751d989f96056f76f60dcab3a78c097a87b285cc7802f02954b73358c12253d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage16.mut.refund_single_unasked@refund",
+     "fixture:stage16.mut.refund_line3_stop@refund",
+     "fixture:stage16.refuse.refund.line5e_bad@refund",
+     "partial:classm.f8889.2.deepseek-refund.exc_tax@refund",
+     "partial:classm.f8889.2.deepseek-refund.exc_who@refund",
+     "partial:classm.f8889.2.deepseek-refund.status@refund",
+     "partial:classm.f8889.2.deepseek-refund.you_born@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

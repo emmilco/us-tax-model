@@ -5,31 +5,35 @@
  "rulings": [
   {
    "printed": "1",
-   "project": "{\"collection\": \"person\", \"field\": \"person.medicare5\", \"op\": \"sum_over\", \"where\": null}",
-   "second": "{\"collection\": \"w2\", \"field\": \"w2.box5\", \"op\": \"sum_over\", \"where\": null}",
+   "project_expr_sha256": "aad4a65e6d66bb3d4905ecf4117af2e1bf99944c6e5106c36803f5df5723995f",
+   "second_expr_sha256": "c9eba6d4e29f8acf25a5b2ac5e512c8992c168fea3cfedf700bf8ad33728cc97",
    "ruling": "Ruling: model error (nested collection interface); f8959 (2025) p.1 line1 totals W-2 box5 across filers/employers. W-2 is explicitly nested under person in the shared catalog. A root sum_over(w2) in the second looks for an undeclared root $w2 roster instead of the confirmed per-person rosters; it does not express that total. On stage13.excess_ss_you, the project produces the required numeric sum and the second is unknown for missing $w2. Proof: .transcription/f8959-flat-w2-witness.json. The project nests the sum through person.medicare5. This is not a source disagreement about the tax rate.",
-   "context": "6474c6c747d5af80183bd8f682b27e6cec23e0753e7cffba70aeb391895d6124"
+   "context": "6474c6c747d5af80183bd8f682b27e6cec23e0753e7cffba70aeb391895d6124",
+   "subject_key": "a11f61cf045827e2718b10cb1a166ed2512d261b18ba01c1b825955d5557b6c4"
   },
   {
    "printed": "15",
-   "project": "{\"line\": \"5\"}",
-   "second": "{\"param\": \"medicare.threshold\"}",
+   "project_expr_sha256": "3d204cc405d4cdf75f5147c2c37f6185b09404f75fbbe20a6febc27856e1e972",
+   "second_expr_sha256": "d9befdb182a205419e2f0304de72344e7acb781b846879a693a95d42b7bdd1c0",
    "ruling": "Ruling: representation; f8959 p.1 lines5/9/15 print the identical filing-status threshold table. Copying line5 and reading medicare.threshold directly have the same published type and filing-status amounts. No tax-value difference.",
-   "context": "d3c894c21305fe726710abd3a4eec332387de598a68103b241260dc3217e5bc9"
+   "context": "d3c894c21305fe726710abd3a4eec332387de598a68103b241260dc3217e5bc9",
+   "subject_key": "89cd5bb1b2cb33f42bc1751fd380723b85a77a28938263db589d8f7d2516ac8b"
   },
   {
    "printed": "19",
-   "project": "{\"collection\": \"person\", \"field\": \"person.medicare6\", \"op\": \"sum_over\", \"where\": null}",
-   "second": "{\"collection\": \"w2\", \"field\": \"w2.box6\", \"op\": \"sum_over\", \"where\": null}",
+   "project_expr_sha256": "c0234f75729b29eca32b6970ff4d6c189eccc6d685d2cd1570207d7caef8308d",
+   "second_expr_sha256": "0a57efa7aaef6f3c4f998347c9f7647289d0f4db32156fefc7f501c4c988be60",
    "ruling": "Ruling: model error (nested collection interface); f8959 (2025) p.1 line19 totals W-2 box6 across filers/employers. W-2 is explicitly nested under person in the shared catalog. A root sum_over(w2) in the second looks for an undeclared root $w2 roster instead of the confirmed per-person rosters; it does not express that total. On stage13.excess_ss_you, the project produces the required numeric sum and the second is unknown for missing $w2. Proof: .transcription/f8959-flat-w2-witness.json. The project nests the sum through person.medicare6. This is not a source disagreement about the tax rate.",
-   "context": "6474c6c747d5af80183bd8f682b27e6cec23e0753e7cffba70aeb391895d6124"
+   "context": "6474c6c747d5af80183bd8f682b27e6cec23e0753e7cffba70aeb391895d6124",
+   "subject_key": "cba82e3bebecdea83cb805d5c201db6bb6d2d335eb82b11cf54c38cd88b8e0c9"
   },
   {
    "printed": "9",
-   "project": "{\"line\": \"5\"}",
-   "second": "{\"param\": \"medicare.threshold\"}",
+   "project_expr_sha256": "3d204cc405d4cdf75f5147c2c37f6185b09404f75fbbe20a6febc27856e1e972",
+   "second_expr_sha256": "d9befdb182a205419e2f0304de72344e7acb781b846879a693a95d42b7bdd1c0",
    "ruling": "Ruling: representation; f8959 p.1 lines5/9/15 print the identical filing-status threshold table. The project copies line5, whose expression is medicare.threshold; the reply reads that same status-keyed parameter directly. No tax-value difference.",
-   "context": "d3c894c21305fe726710abd3a4eec332387de598a68103b241260dc3217e5bc9"
+   "context": "d3c894c21305fe726710abd3a4eec332387de598a68103b241260dc3217e5bc9",
+   "subject_key": "916e4f3b4b9bb18721dd4c2c55df06439ab1da9eda1447d4259c6e7f49914de1"
   }
  ]
 }

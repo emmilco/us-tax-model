@@ -10,14 +10,16 @@
    "ruling": "Ruling: scope; i1040sca p. 2, Line 1: \"Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.\" As the prior ruling: the restatement leaves that person out because the case cannot reach line 1: a filer who, or whose joint spouse, can be claimed as a dependent is refused by sa.dependent (\"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien?\"), on the deduction line Form 1040 line 12e reads, so no completed return has that person's expenses to enter (PENDING-4 of the ptc-sa package). The R4 restructuring moved the people into a list without adding or removing one; nothing else in the restatement is objected to.",
    "context": "db327c7d4d79ab5f5358a8ae1c64414ed3c1f830924a9d93257afb36002e3b4d",
    "date": "2026-11-07",
-   "run": "111f74820bc8af916d653f822497b668ac317d5fe369818c33aab413be88e536"
+   "run": "111f74820bc8af916d653f822497b668ac317d5fe369818c33aab413be88e536",
+   "subject_key": "fc44eb7d4ccb674d3ca303cb519f6db5eee47618ca6dfec07733ea0ca18d7553"
   },
   {
    "printed": "1",
    "restated": "Input — Unreimbursed eligible medical and dental expenses paid in 2025 (Pub. 502 lists what counts) for yourself, your spouse, your dependents, your child whom you do not claim only because of the rules for children of divorced or separated parents, and anyone you could have claimed as a dependent except that the person had gross income of $5,200 or more or filed a joint return. Reduce them by payments from insurance or other sources, but do not reduce them by a 2025 reimbursement of expenses paid in an earlier year. Leave out: amounts equal to tax-free distributions from a health savings account (HSA) or an Archer MSA; insurance premiums paid by a pretax reduction of your pay, and premiums and other medical and dental expenses paid by an employer-sponsored health plan (cafeteria plan) unless they are included in box 1 of your Form W-2; premiums for someone on your policy who is not one of the people listed above (for example a nondependent child under age 27), unless you had family coverage when you added that person and your premiums did not increase; if you are a retired public safety officer, premiums to the extent paid with a tax-free distribution from your retirement plan; the housework part of pay to someone who did both nursing and housework (only the nursing help counts); and meals while away from home for medical care, other than hospital care, which includes its meals and lodging (other lodging for medical care counts at no more than $50 a night for each person who meets the Pub. 502 lodging requirements). Reduce health insurance premiums by any self-employed health insurance deduction on Schedule 1 (Form 1040), line 17. For Marketplace coverage on a Form 1095-A, include the total premiums (including the part paid by advance payments of the premium tax credit), minus the premium tax credit allowed on Form 8962, line 24, and minus any excess advance payments you do not have to repay because of the repayment limit (Form 8962, line 27 minus line 29); advance payments you do repay count as premiums you paid. Include qualified long-term care insurance premiums only up to the limit for the age at the end of 2025 of the person for whom they were paid: $480 if 40 or under, $900 if 41 to 50, $1,800 if 51 to 60, $4,810 if 61 to 70, $6,020 if 71 or older. On the final return of a person who died in 2025, include the medical expenses paid out of that person's estate that Pub. 502 allows on the final return.",
    "model": "The restatement omits the eligible category in the IRS instructions: 'Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.'",
    "ruling": "Ruling: scope; i1040sca p. 2, Line 1: \"Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.\" The restatement leaves that person out because the case cannot reach line 1: a filer who, or whose joint spouse, can be claimed as a dependent is refused by sa.dependent (\"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien?\"), on the deduction line Form 1040 line 12e reads, so no completed return has that person's expenses to enter. PENDING-4 of the ptc-sa package records the omission as deliberate for this reason. The rest of the PENDING-2 and PENDING-4 wording (Marketplace premiums less the credit allowed and the unrepaid excess advance payments; whose expenses count; the cafeteria-plan and nondependent-premium exclusions) is not objected to.",
-   "context": "dd5add3d9ed496ee7d2ddfe7f11b098b09201f08da0c3df6f101d2bded7a64d5"
+   "context": "dd5add3d9ed496ee7d2ddfe7f11b098b09201f08da0c3df6f101d2bded7a64d5",
+   "subject_key": "fc44eb7d4ccb674d3ca303cb519f6db5eee47618ca6dfec07733ea0ca18d7553"
   },
   {
    "printed": "11",
@@ -26,28 +28,32 @@
    "ruling": "Ruling: model error; i1040sca p. 10, Line 11: \"Deduction for gifts by cash or check limited. If your deduction for the gifts you made in cash or by check is limited, see Pub. 526 to figure the amount you can deduct.\" The project's line 11 is the before-limits amount, and a limited deduction is refused: sa.line11 is read only by sa.line14, which only sa.line17 reads, and sa.line17 refuses when sa.charity_limited is true (the filer's answer to 'reduced by income limits, or carried over', asked whenever sa.gifts is yes, which it must be for line 11 to be nonzero). No limited amount reaches a printed total. The restatement itself (the sa.gifts gate, then the cash amount, else zero) matches the project.",
    "context": "ca01f501768feef423f8d9bf44d6abd4701c67ed0e7a49832f308dcc96c89ffa",
    "date": "2026-11-07",
-   "run": "9f8d612034c7a682bf5e3a0efc535523bb0a76798a44bc2798e8d47b175873e7"
+   "run": "9f8d612034c7a682bf5e3a0efc535523bb0a76798a44bc2798e8d47b175873e7",
+   "subject_key": "b95cc6c02348003fc182a56e17964f5c1c580967886fc461c584d2c63b3625f0"
   },
   {
    "printed": "2",
    "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
    "model": "IRS line 2 says 'Enter amount from Form 1040 or 1040-SR, line 11b'; the restatement instead uses an AGI floored at zero, which changes the amount if line 11b is negative.",
    "ruling": "Ruling: ambiguity (amb.2025.sa_medical_negative_agi); the project floors AGI at zero for the 7.5% limit, the recorded reading.",
-   "context": "a974dad0027e2b455fea02a1dea2297fc2b5189c8d237d72ef5ba8db43d4118e"
+   "context": "a974dad0027e2b455fea02a1dea2297fc2b5189c8d237d72ef5ba8db43d4118e",
+   "subject_key": "114e34423ec0342658fc789d0dfc1a901704a7f89c24f8dad1bbb363eb8be55e"
   },
   {
    "printed": "2",
    "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
    "model": "The IRS line says 'Enter amount from Form 1040 or 1040-SR, line 11b'; the restatement uses a helper that floors line 11b at zero, changing the amount when AGI is negative.",
    "ruling": "Ruling: ambiguity — amb.2025.sa_medical_negative_agi. The project floors AGI at zero for the medical-expense 7.5% limitation (the recorded reading), and the helper line 2 displays that floored amount. The IRS line says \"Enter amount from Form 1040 or 1040-SR, line 11b\"; a negative AGI is the registered ambiguity, not a new defect.",
-   "context": "a3c824fe95742926f1b5ad19eb137ffdfd78fc1c6e7201fe94a1520f7ee449f3"
+   "context": "a3c824fe95742926f1b5ad19eb137ffdfd78fc1c6e7201fe94a1520f7ee449f3",
+   "subject_key": "114e34423ec0342658fc789d0dfc1a901704a7f89c24f8dad1bbb363eb8be55e"
   },
   {
    "printed": "2",
    "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
    "model": "The IRS line says 'Enter amount from Form 1040 or 1040-SR, line 11b'; the restatement uses an AGI helper that is not less than zero, adding a floor not in the line.",
    "ruling": "Ruling: ambiguity; amb.2025.sa_medical_negative_agi. The model says the restatement floors Form 1040 line 11b at zero. Schedule A (2025) line 2: \"Enter amount from Form 1040 or 1040-SR, line 11b\"; the project floors adjusted gross income at zero for the 7.5% medical-expense limitation and displays that floored amount, the recorded reading for a negative AGI, not a new defect. Unchanged by the backlog packages.",
-   "context": "dd5add3d9ed496ee7d2ddfe7f11b098b09201f08da0c3df6f101d2bded7a64d5"
+   "context": "dd5add3d9ed496ee7d2ddfe7f11b098b09201f08da0c3df6f101d2bded7a64d5",
+   "subject_key": "114e34423ec0342658fc789d0dfc1a901704a7f89c24f8dad1bbb363eb8be55e"
   }
  ]
 }

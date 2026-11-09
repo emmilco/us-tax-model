@@ -8,7 +8,8 @@
    "restated": "helper \"Was your EIC for a year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or are you in a 2- or 10-year disallowance period?\" = true and s8812 line 8 > s8812 line 11",
    "model": "Schedule 8812 line 8 > line 11 only passes the phaseout test; the actual credit is line 14, 'Enter the smaller of line 12 or line 13. This is your child tax credit and credit for other dependents,' so line 8 > line 11 alone can still yield zero credit.",
    "ruling": "Ruling: scope; i1040s8812 p. 2, Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\". The restatement is the gate as encoded (the earlier disallowance answer and Schedule 8812 line 8 more than line 11, so line 12 is positive). The reviewer is right that line 12 positive does not by itself mean a credit (line 14 is the smaller of lines 12 and 13; line 27 can also be zero), so the gate refuses some returns that would claim $0. That is a refusal only, never a wrong amount, and it is the residual over-refusal accepted (low) in BUG-0350's review correction: tightening on line 14 or 27 would read lines downstream of the refused line 12. Recorded under Low in `.transcription/proposed/bklg/household.findings.md`. render MISMATCH. Project stands.",
-   "context": "c9e490fe070734b59fab26b3b99b0acef73659e813676a911a5d7dc44630714f"
+   "context": "c9e490fe070734b59fab26b3b99b0acef73659e813676a911a5d7dc44630714f",
+   "subject_key": "35d5cd5071daae9ecfb227d45b9f7efdeadf19eb2f4293d2e8ae8d515d167c5b"
   },
   {
    "printed": "ctc_disallowed_claim",
@@ -17,14 +18,16 @@
    "ruling": "Ruling: scope; i1040gi p. 39, Form 8862, who must file, \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit\" ... \"for a year after 2015 was denied or reduced\"; i1040s8812 p. 2, Form 8862 may be required. The restatement is the gate as encoded: one combined question for the earlier earned income credit and child tax credit histories (household.credit_disallowed, T-101), so a Yes for an earned income credit disallowance alone also refuses Schedule 8812. That is a wider refusal only, never a wrong amount (a Yes refuses; Form 8862 and the disallowance periods are outside the tool). The line 8 more than line 11 test is unchanged from the earlier ruling (BUG-0350 review correction, accepted low). This round only moved the answer behind its gate line household.credit_disallowed_if_claimed. render MISMATCH. Project stands.",
    "context": "ccf6342d01d2df7156bbb4d85cdc5d1d30488cdb1d40087534b5acbea2646eb1",
    "date": "2026-11-07",
-   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21"
+   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21",
+   "subject_key": "35d5cd5071daae9ecfb227d45b9f7efdeadf19eb2f4293d2e8ae8d515d167c5b"
   },
   {
    "printed": "ctc_ssn",
    "restated": "helper \"You, or your spouse if filing jointly, have an SSN valid for employment\" = true and helper \"Number of people on the return with an SSN valid for employment or an SSN or ITIN\" = helper \"Number of people on the return (you, and your spouse if filing jointly)\"",
    "model": "The IRS says 'To claim the child tax credit, you must have a valid SSN, which means it must be valid for employment' and 'If your qualifying child didn’t have an SSN valid for employment... you can’t claim the child tax credit for that child'; the restatement allows SSN or ITIN for each other person and does not check the qualifying children.",
    "ruling": "Ruling: model error; i1040gi p. 7, \"If you are filing a joint return, only one spouse is required to have a valid SSN in order to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN\" (amb.2025.ctc_spouse_itin_application). The helper is the filer-side test; the qualifying child's SSN valid for employment is tested per child in dependent.ctc_child, which the reviewer reads as missing here. Project stands.",
-   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d",
+   "subject_key": "0a52e189fe180cf8b4d4499c302dd148daedb90ef259ade95c62be30fb2dc702"
   },
   {
    "printed": "eic_above_zero",
@@ -33,7 +36,8 @@
    "ruling": "Ruling: model error; i1040gi p. 48, Worksheet B, Part 7, line 11, \"Look at the amounts on lines 10 and 7. Then, enter the smaller amount on line 11.\" and \"This is your earned income credit\" (Enter this amount on Form 1040 or 1040-SR, line 27a); p. 46, Worksheet A, line 6, \"This is your earned income credit\". The reviewer read Worksheet B line 6 (earned income, from line 4b) for line 11; Worksheet B line 11 is the credit, and eic.line6 is that credit for a filer who answered Yes to Step 5, question 2 (eic.line1 reads Worksheet B line 6 for that filer; eic.yaml, Worksheet A lines 2 to 6 are Worksheet B lines 7 to 11). Project stands on the English.",
    "context": "ccf6342d01d2df7156bbb4d85cdc5d1d30488cdb1d40087534b5acbea2646eb1",
    "date": "2026-11-07",
-   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21"
+   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21",
+   "subject_key": "6d6dcb97e545e913e3f4044c40c085516cb53740defa624221e2539e36561523"
   },
   {
    "printed": "eic_claimed",
@@ -42,7 +46,8 @@
    "ruling": "Ruling: model error; i1040gi p. 48, Worksheet B, Part 7, line 11, \"This is your earned income credit\"; p. 46, Worksheet A, line 6, \"This is your earned income credit\". As for eic_above_zero: Worksheet B line 11 is the credit of a filer who goes to Worksheet B after Step 5, question 2, and the label names it as the alternative to Worksheet A line 6; Step 6 for that filer is figured on Worksheet B, which the project computes through eic.line6. Project stands on the English.",
    "context": "ccf6342d01d2df7156bbb4d85cdc5d1d30488cdb1d40087534b5acbea2646eb1",
    "date": "2026-11-07",
-   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21"
+   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21",
+   "subject_key": "a9dbdabb8023e5d775525ee31b0a6ecfe0bd693dbdfb3dff957e16ba5dffb88f"
   },
   {
    "printed": "eic_disallowed_claim",
@@ -51,21 +56,24 @@
    "ruling": "Ruling: scope; i1040gi p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\". The restatement is the gate as encoded: one combined question for the earlier earned income credit and child tax credit histories (household.credit_disallowed, T-101), so a Yes for a child tax credit disallowance alone also refuses the earned income credit. That is a wider refusal only, never a wrong amount. The Worksheet B point is a model error as ruled on eic_above_zero (i1040gi p. 48, Worksheet B line 11, \"This is your earned income credit\"). render MISMATCH. Project stands.",
    "context": "ccf6342d01d2df7156bbb4d85cdc5d1d30488cdb1d40087534b5acbea2646eb1",
    "date": "2026-11-07",
-   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21"
+   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21",
+   "subject_key": "abca9ac08a985d27bf7e70773be77e9a8436f0c8e1fb172faa7219dc2c001b0e"
   },
   {
    "printed": "filer_under16",
    "restated": "helper \"Number of people on the return under age 16 at the end of 2025\" > 0 (a count)",
    "model": "The IRS text provided does not make being under age 16 a filing-status or return-eligibility rule; the only mention is the Self-Select PIN restriction.",
    "ruling": "Ruling: ambiguity; amb.2025.filer_under_16 (owner's decision, 2026-10-22), reading 2 chosen: refuse a return on which you, or your spouse if filing jointly, were under 16, as an entry check. The refusal cites the one sentence the text has about age 16 (i1040gi p. 66, Self-Select PIN) and names the register entry; it does not claim the text forbids the return, which is the model's point.",
-   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d",
+   "subject_key": "755860a3f2c7eda495e3a753be6a28724a7338c3c3b6f79ca7b137050e2db64e"
   },
   {
    "printed": "filing_status_conflict",
    "restated": "(f1040 line Filing Status = 'single' and helper \"Were you married at the end of 2025?\" = true or f1040 line Filing Status = 'mfj' and helper \"Were you married at the end of 2025?\" = false and helper \"Did your spouse die in 2025?\" = false)",
    "model": "It omits MFS: the IRS says 'Check the “Married filing separately” box... if you are married at the end of 2025 and file a separate return,' so MFS with married false and no 2025 spouse death is also a conflict.",
    "ruling": "Ruling: scope; i1040gi p. 14, Married Filing Separately. MFS is refused for the whole return by s3.mfs on scope.ready; the gate covers the single and joint contradictions (BUG-0286). As the prior ruling. Project stands.",
-   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d",
+   "subject_key": "00c201f9bc968f494741a4aff77a62e5af23bca50661c4e71696136d89e5d6ec"
   },
   {
    "printed": "filing_status_conflict",
@@ -74,49 +82,56 @@
    "ruling": "Ruling: scope; i1040gi p. 14, Married Filing Separately; p501 p. 6, Spouse died during the year. As the prior ruling: a separate return is refused for the whole return by s3.mfs on scope.ready, so the married-filing-separately case never reaches line 12e; a single return in the year of a spouse's death is refused by household.widowed_2025. The gate covers the single and joint contradictions (BUG-0286). The R4 rewording of household.married (paragraphs, no word lost) changed no condition. Project stands.",
    "context": "62d4bab5c098a466ddb6f5d12fccaa89333669d231a37c0887784e0ae64d4d25",
    "date": "2026-11-07",
-   "run": "f7e4ea97590e355da7dc189b67dccfb46e46d6b495ebbf4dc7f741decf2c607c"
+   "run": "f7e4ea97590e355da7dc189b67dccfb46e46d6b495ebbf4dc7f741decf2c607c",
+   "subject_key": "00c201f9bc968f494741a4aff77a62e5af23bca50661c4e71696136d89e5d6ec"
   },
   {
    "printed": "filing_status_conflict",
    "restated": "(f1040 line Filing Status = 'single' and helper \"Were you married at the end of 2025?\" = true or f1040 line Filing Status = 'mfj' and helper \"Were you married at the end of 2025?\" = false and helper \"Did your spouse die in 2025?\" = false)",
    "model": "The restatement only flags single and MFJ conflicts; IRS says \"Check the 'Married filing separately' box ... if you are married at the end of 2025 and file a separate return,\" so MFS with not married should also be flagged.",
    "ruling": "Ruling: scope — i1040gi p. 14, Married Filing Separately: a separate return is refused for the whole return by `s3.mfs` on `scope.ready`, so a still-married filer who checks MFS never reaches line 12e and cannot produce the conflict the reviewer describes. The gate covers the single and joint contradictions; HOH and QSS have their own tests, and a joint death-year return stays supported. BUG-0286 records the entry check.",
-   "context": "e728e711d3a85f01f98471fae37691185e2a0057ba1f4493b5af641b8881687e"
+   "context": "e728e711d3a85f01f98471fae37691185e2a0057ba1f4493b5af641b8881687e",
+   "subject_key": "00c201f9bc968f494741a4aff77a62e5af23bca50661c4e71696136d89e5d6ec"
   },
   {
    "printed": "hoh_community_property",
    "restated": "f1040 line Filing Status = 'hoh' and helper \"Were you married at the end of 2025?\" = true and helper \"Did you live in a community property state at any time in 2025?\" = true",
    "model": "IRS Pub. 501 says 'If you were considered married for part of the year and lived in a community property state ... special rules may apply.' The restatement requires married at the end of 2025, so it misses part-year married HOH filers in a community property state.",
    "ruling": "Ruling: scope — The cited part-year community-property situation is now separately refused by household.cp_marriage_ended on f1040.line1a (BUG-0278); household.hoh_community_property continues to cover the married HOH case. The eight stage21.household regression fixtures exercise both gates and their negative controls. The review interpreted this one gate as the entire return screen.",
-   "context": "4d9fb380c42e126f5361b7c009d75b52da7e88c1caed11cde2a5260e71ae7609"
+   "context": "4d9fb380c42e126f5361b7c009d75b52da7e88c1caed11cde2a5260e71ae7609",
+   "subject_key": "80e17d60eabc273e20558fb6667e53c98c1f86e5615896ad37f305af2c85cb72"
   },
   {
    "printed": "hoh_community_property",
    "restated": "f1040 line Filing Status = 'hoh' and helper \"Were you married at the end of 2025?\" = true and helper \"Did you live in a community property state at any time in 2025?\" = true",
    "model": "The IRS says 'If you were considered married for part of the year and lived in a community property state... special rules may apply'; this helper requires married at the end of 2025, missing part-year married HOH filers.",
    "ruling": "Ruling: scope; i1040gi p. 23. The part-year community-property case is refused separately by household.cp_marriage_ended on f1040.line1a (BUG-0278); this gate covers the married HOH case. As the prior ruling. Project stands.",
-   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d",
+   "subject_key": "80e17d60eabc273e20558fb6667e53c98c1f86e5615896ad37f305af2c85cb72"
   },
   {
    "printed": "home_cost",
    "restated": "Input — Did you pay over half the cost of keeping up your home for 2025? Cost of keeping up a home includes expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home. It does not include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation, or the value of your services or those of a member of your household. Amounts paid out of funds received in the name of a person who lives in the home, such as their Social Security, count as paid by that person, not you. TANF or similar payments you received and used for the home count as paid by you.",
    "model": "The IRS note says TANF used 'to support another person' is considered support you provided for that person, and amounts in a child's or qualifying person's name are considered paid by the child; the restatement instead treats TANF used for the home as paid by you and refers to any person living in the home.",
    "ruling": "Ruling: model error; p501 p. 9, Keeping Up a Home, Note: \"if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided ... Amounts paid out of funds received in the child's or qualifying person's name, such as Social Security, are considered paid by the child, not you. If the total amount you paid is more than the amount others paid, you meet the requirement\". The note sits in the cost-of-keeping-up-a-home test, so TANF used for the home counts as paid by you, as the question says (BUG-0258); funds in any other household member's name are paid by that member, not by you, so \"a person who lives in the home\" changes no answer to \"over half\". Project stands.",
-   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d",
+   "subject_key": "e2abef3b43492c825721b855f716951536081b45c14a9c369f4d71e9f85a3ecf"
   },
   {
    "printed": "hsa_share_sum",
    "restated": "Add person.hsa_share over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Equal shares are half of the Step 1 limit, but the restatement's Step 1 forces Form 8889 line 4 to zero instead of subtracting Archer MSA contributions, so the shares are overstated.",
    "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1 and Step 2; Form 8889 line 4 is zero because Archer MSA contributions are refused by f8889.unsupported, a Form 8889 screen outside the household render. The equal-division shares are Step 2's, and the sum adds both spouses' parts. Same as hsa_step1_sum. Project stands.",
-   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d",
+   "subject_key": "0e51c1ef6e225f85f999da2d3946808885ea2234b69bf5b75ba8243b5095062a"
   },
   {
    "printed": "hsa_share_sum",
    "restated": "Add person.hsa_share over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "For equal allocation the share is half of a Step 1 limit that subtracts a zero line 4, but IRS line 4 requires Archer MSA contributions; the summed spouses' parts are therefore wrong in equal-allocation cases.",
    "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\"; Form 8889 line 4 (Archer MSA contributions). The project enters zero on line 4 because Archer MSA contributions are refused by f8889.unsupported (forms/2025/f8889.yaml, line 4 cite \"Archer MSA contributions are refused by f8889.unsupported\"), a screen on Form 8889 that the household render does not show. Equal division halves a Step 1 limit whose line 4 is zero on every computed return. Same as fix round 2. Project stands.",
-   "context": "927660fcdc2a26fab7ebd8daa75663a68706ebdfbfcf6f577225cf1e8f0f5d29"
+   "context": "927660fcdc2a26fab7ebd8daa75663a68706ebdfbfcf6f577225cf1e8f0f5d29",
+   "subject_key": "0e51c1ef6e225f85f999da2d3946808885ea2234b69bf5b75ba8243b5095062a"
   },
   {
    "printed": "hsa_share_sum",
@@ -125,21 +140,24 @@
    "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Steps 1 to 3. As the prior rulings and hsa_step1_sum: the line is unchanged by R4; the sum of the shares is the check f8889.allocation_bad makes on an agreed allocation, not line 6, and is computed with line 4 zero (f8889.unsupported refuses Archer MSA contributions). Project stands.",
    "context": "62d4bab5c098a466ddb6f5d12fccaa89333669d231a37c0887784e0ae64d4d25",
    "date": "2026-11-07",
-   "run": "f7e4ea97590e355da7dc189b67dccfb46e46d6b495ebbf4dc7f741decf2c607c"
+   "run": "f7e4ea97590e355da7dc189b67dccfb46e46d6b495ebbf4dc7f741decf2c607c",
+   "subject_key": "0e51c1ef6e225f85f999da2d3946808885ea2234b69bf5b75ba8243b5095062a"
   },
   {
    "printed": "hsa_share_sum",
    "restated": "Add person.hsa_share over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The shares rest on the same Step 1 limit, which uses Form 8889 line 4 as $0 rather than the required Archer MSA contributions from Form 8853 lines 1 and 2.",
    "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Steps 1 and 2; Form 8889 line 4 is zero on every computed return because Archer MSA contributions are refused by f8889.unsupported, a Form 8889 screen outside the household render. The line is unchanged by the household pass. The shares halve (or allocate) a Step 1 limit computed with that zero. Same as hsa_step1_sum and fix rounds 2 and 4. Project stands.",
-   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8"
+   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8",
+   "subject_key": "0e51c1ef6e225f85f999da2d3946808885ea2234b69bf5b75ba8243b5095062a"
   },
   {
    "printed": "hsa_step1_sum",
    "restated": "Add person.hsa_step1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Form 8889 line 4 is 'Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2,' not zero; forcing line 4 to zero overstates the Step 1 limits because Step 1 subtracts line 4 from refigured line 3.",
    "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\"; Form 8889 line 4 (Archer MSA contributions). The project enters zero on line 4 because Archer MSA contributions are refused by f8889.unsupported (forms/2025/f8889.yaml, line 4 cite \"Archer MSA contributions are refused by f8889.unsupported\"), a screen on Form 8889 that the household render does not show. The sum is what Step 1 and Step 2 add for both spouses. Same as the completeness-fixes ruling of the Claude render. Project stands.",
-   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d",
+   "subject_key": "bd00542fefe5cc87e5b12ceb369f73067c0b9eb95ab26018814edbb9b65337e0"
   },
   {
    "printed": "hsa_step1_sum",
@@ -148,231 +166,264 @@
    "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\". As the prior rulings: the line is unchanged by R4, which reworded only household.married, household.unmarried and household.qss_eligible; the sum is not line 6: it checks an agreed allocation (f8889.allocation_bad refuses when the spouses' Step 1 limits differ or their shares exceed one Step 1 limit; i8889 p. 7, Step 2), and line 4 (Archer MSA contributions) is zero on every computed return because f8889.unsupported refuses them, a Form 8889 screen outside the household render. Project stands.",
    "context": "62d4bab5c098a466ddb6f5d12fccaa89333669d231a37c0887784e0ae64d4d25",
    "date": "2026-11-07",
-   "run": "f7e4ea97590e355da7dc189b67dccfb46e46d6b495ebbf4dc7f741decf2c607c"
+   "run": "f7e4ea97590e355da7dc189b67dccfb46e46d6b495ebbf4dc7f741decf2c607c",
+   "subject_key": "bd00542fefe5cc87e5b12ceb369f73067c0b9eb95ab26018814edbb9b65337e0"
   },
   {
    "printed": "hsa_step1_sum",
    "restated": "Add person.hsa_step1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The Step 1 computation treats f8889 line 4 as zero, but IRS line 4 says 'Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2'; the summed Step 1 limit is therefore overstated when Archer MSA contributions exist.",
    "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\"; Form 8889 line 4 (Archer MSA contributions). The project enters zero on line 4 because Archer MSA contributions are refused by f8889.unsupported (forms/2025/f8889.yaml, line 4 cite \"Archer MSA contributions are refused by f8889.unsupported\"), a screen on Form 8889 that the household render does not show. The model's overstatement needs a nonzero line 4, which no computed return has. Same as fix round 2. Project stands.",
-   "context": "927660fcdc2a26fab7ebd8daa75663a68706ebdfbfcf6f577225cf1e8f0f5d29"
+   "context": "927660fcdc2a26fab7ebd8daa75663a68706ebdfbfcf6f577225cf1e8f0f5d29",
+   "subject_key": "bd00542fefe5cc87e5b12ceb369f73067c0b9eb95ab26018814edbb9b65337e0"
   },
   {
    "printed": "hsa_step1_sum",
    "restated": "Add person.hsa_step1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The Step 1 limits are computed with Form 8889 line 4 forced to $0, but line 4 requires 'the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2'; the sum is overstated when line 4 is nonzero.",
    "ruling": "Ruling: interface gap; i8889 p. 7, Line 6, Step 1: \"When refiguring line 5, use the same amount you previously entered on line 4\"; Form 8889 line 4 (Archer MSA contributions). The line is unchanged by the household pass. The project enters zero on line 4 because Archer MSA contributions are refused by f8889.unsupported (forms/2025/f8889.yaml, line 4 cite \"Archer MSA contributions are refused by f8889.unsupported\"), a Form 8889 screen the household render does not show. The model's overstatement needs a nonzero line 4, which no computed return has. Same as fix rounds 2 and 4. Project stands.",
-   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8"
+   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8",
+   "subject_key": "bd00542fefe5cc87e5b12ceb369f73067c0b9eb95ab26018814edbb9b65337e0"
   },
   {
    "printed": "qss_eligible",
    "restated": "Input — Do all five of these tests apply to you? 1. Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025 (if your spouse died in 2025, answer No). 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent, or could claim as a dependent except that, for 2025, the child had gross income of $5,200 or more, the child filed a joint return, or you could be claimed as a dependent on someone else's return; an adopted child, including a child lawfully placed with you for legal adoption, is always your own child. 3. This child lived in your home for all of 2025, counting temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service or detention in a juvenile facility, as time lived in the home, but only an absence from which it was reasonable to assume the absent person would return and during which you kept up the home; a child born or who died in 2025, or adopted or lawfully placed with you for legal adoption in 2025, lived with you all year if your home was the child's home for the entire time the child was alive, or since the adoption or placement. 4. You paid over half the cost of keeping up your home (rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities and food eaten in the home; not clothing, education, medical treatment, vacations, life insurance, transportation or anyone’s services; amounts paid from a household member’s own funds, such as Social Security, count as paid by them). 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn't actually do so.",
    "model": "Test 3 omits the IRS exception that a kidnapped child may still qualify the filer for QSS; the IRS text says you may be eligible even if the qualifying child has been kidnapped.",
    "ruling": "Ruling: finding; p501 p. 11, Qualifying Surviving Spouse, Kidnapped child: \"You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped.\" The model is right: test 3 of the question has no kidnapped-child exception. This is fix round 2's household F1 (.transcription/proposed/fixr2/household.findings.md), a low over-refusal batched by the owner in TASKS.md T-092. It is not re-raised as new. T-091 added only the expected-return clause to test 3 (p501 pp. 9, 11), which the T-091 round found no wider and no narrower than the source. The kidnapped-child gap predates T-091 and is unaffected by the correction. Project stands pending T-092.",
-   "context": "844fc86c2bbed7ecc653ba6f69e6d8798c8c494632cddf62b1e6eb6992d65663"
+   "context": "844fc86c2bbed7ecc653ba6f69e6d8798c8c494632cddf62b1e6eb6992d65663",
+   "subject_key": "f47aca361b89406bcc3f14bb4d22ec5868089f31e9fa7530741e9060bb7d332e"
   },
   {
    "printed": "qss_eligible",
    "restated": "Input — Do all five of these tests apply to you? 1. Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025 (if your spouse died in 2025, answer No). 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent, or could claim as a dependent except that, for 2025, the child had gross income of $5,200 or more, the child filed a joint return, or you could be claimed as a dependent on someone else's return; an adopted child, including a child lawfully placed with you for legal adoption, is always your own child. 3. This child lived in your home for all of 2025, counting temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service or detention in a juvenile facility, as time lived in the home, but only an absence from which it was reasonable to assume the absent person would return and during which you kept up the home; a child born or who died in 2025, or adopted or lawfully placed with you for legal adoption in 2025, lived with you all year if your home was the child's home for the entire time the child was alive, or since the adoption or placement; if the child did not live with you all of 2025 because the child was presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family, answer No (the kidnapped-child rule of Pub. 501 is outside this tool). 4. You paid over half the cost of keeping up your home (rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities and food eaten in the home; not clothing, education, medical treatment, vacations, life insurance, transportation, or the value of your own or a household member’s services; amounts paid from a household member’s own funds, such as Social Security, count as paid by them; TANF or similar payments you received and used for the home count as paid by you). 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn't actually do so.",
    "model": "IRS Pub. 501 says 'You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped.' The restatement instead says to answer No for a kidnapped child.",
    "ruling": "Ruling: scope — p501 p. 11 allows the kidnapped-child exception, which the owner explicitly kept outside this tool (BUG-0273). The question names that exclusion and f1040.line12e refuses through household.qss_fails with the kidnapped-child remedy. BUG-0276 limits this instruction to kidnapping that kept the child away during 2025; the exclusion is not a claim that the IRS forbids QSS.",
-   "context": "4d9fb380c42e126f5361b7c009d75b52da7e88c1caed11cde2a5260e71ae7609"
+   "context": "4d9fb380c42e126f5361b7c009d75b52da7e88c1caed11cde2a5260e71ae7609",
+   "subject_key": "f47aca361b89406bcc3f14bb4d22ec5868089f31e9fa7530741e9060bb7d332e"
   },
   {
    "printed": "qss_eligible",
    "restated": "Input — Do all five of these tests apply to you? 1. Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025 (if your spouse died in 2025, answer No). 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent, or could claim as a dependent except that, for 2025, the child had gross income of $5,200 or more, the child filed a joint return, or you could be claimed as a dependent on someone else's return; an adopted child, including a child lawfully placed with you for legal adoption, is always your own child. 3. This child lived in your home for all of 2025, counting temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service or detention in a juvenile facility, as time lived in the home, but only an absence from which it was reasonable to assume the absent person would return and during which you kept up the home; a child born or who died in 2025, or adopted or lawfully placed with you for legal adoption in 2025, lived with you all year if your home was the child's home for the entire time the child was alive, or since the adoption or placement; if the child did not live with you all of 2025 because the child was presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family, answer No (the kidnapped-child rule of Pub. 501 is outside this tool). 4. You paid over half the cost of keeping up your home (rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities and food eaten in the home; not clothing, education, medical treatment, vacations, life insurance, transportation, or the value of your own or a household member’s services; amounts paid from a household member’s own funds, such as Social Security, count as paid by them; TANF or similar payments you received and used for the home count as paid by you). 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn't actually do so.",
    "model": "It tells the filer to answer No if the child was presumed kidnapped, but Pub. 501 says 'You may be eligible to file as a qualifying surviving spouse even if the child... has been kidnapped'; it also repeats the TANF home-cost statement.",
    "ruling": "Ruling: scope; p501 p. 11, Kidnapped child (outside the tool, BUG-0273; the No reaches household.qss_fails with the remedy at f1040.line12e). The repeated TANF statement is ruled on home_cost (p501 p. 9 Note). As the prior ruling. Project stands.",
-   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d",
+   "subject_key": "f47aca361b89406bcc3f14bb4d22ec5868089f31e9fa7530741e9060bb7d332e"
   },
   {
    "printed": "qss_eligible",
    "restated": "Input — Do all five of these tests apply to you? 1. Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025 (if your spouse died in 2025, answer No). 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent, or could claim as a dependent except that, for 2025, the child had gross income of $5,200 or more, the child filed a joint return, or you could be claimed as a dependent on someone else's return; an adopted child, including a child lawfully placed with you for legal adoption, is always your own child. 3. This child lived in your home for all of 2025, counting temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service or detention in a juvenile facility, as time lived in the home, but only an absence from which it was reasonable to assume the absent person would return and during which you kept up the home; a child born or who died in 2025, or adopted or lawfully placed with you for legal adoption in 2025, lived with you all year if your home was the child's home for the entire time the child was alive, or since the adoption or placement; if the child did not live with you all of 2025 because the child was presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family, answer No (the kidnapped-child rule of Pub. 501 is outside this tool). 4. You paid over half the cost of keeping up your home (rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities and food eaten in the home; not clothing, education, medical treatment, vacations, life insurance, transportation, or the value of your own or a household member’s services; amounts paid from a household member’s own funds, such as Social Security, count as paid by them; TANF or similar payments you received and used for the home count as paid by you). 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn't actually do so.",
    "model": "Pub. 501 says 'You may be eligible to file as a qualifying surviving spouse even if the child ... has been kidnapped,' but the restatement says to answer No, excluding a case the IRS may allow.",
    "ruling": "Ruling: scope; p501 p. 11, Kidnapped child. The owner kept the kidnapped-child exception outside the tool (BUG-0273, BUG-0276); the question tells that filer to answer No and f1040.line12e then refuses through household.qss_fails, whose remedy names the kidnapped-child rule of Pub. 501. The reviewer did not see that refusal (it sits on Form 1040 line 12e). Wording unchanged this round; as the Claude family's ruling. render MISMATCH. Project stands.",
-   "context": "c9e490fe070734b59fab26b3b99b0acef73659e813676a911a5d7dc44630714f"
+   "context": "c9e490fe070734b59fab26b3b99b0acef73659e813676a911a5d7dc44630714f",
+   "subject_key": "f47aca361b89406bcc3f14bb4d22ec5868089f31e9fa7530741e9060bb7d332e"
   },
   {
    "printed": "qss_eligible",
    "restated": "Input — Do all five of these tests apply to you? 1. Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025 (if your spouse died in 2025, answer No). 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent, or could claim as a dependent except that, for 2025, the child had gross income of $5,200 or more, the child filed a joint return, or you could be claimed as a dependent on someone else's return; an adopted child, including a child lawfully placed with you for legal adoption, is always your own child. 3. This child lived in your home for all of 2025, counting temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service or detention in a juvenile facility, as time lived in the home, but only an absence from which it was reasonable to assume the absent person would return and during which you kept up the home; a child born or who died in 2025, or adopted or lawfully placed with you for legal adoption in 2025, lived with you all year if your home was the child's home for the entire time the child was alive, or since the adoption or placement; if the child did not live with you all of 2025 because the child was presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family, answer No (the kidnapped-child rule of Pub. 501 is outside this tool). 4. You paid over half the cost of keeping up your home (rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities and food eaten in the home; not clothing, education, medical treatment, vacations, life insurance, transportation, or the value of your own or a household member’s services; amounts paid from a household member’s own funds, such as Social Security, count as paid by them; TANF or similar payments you received and used for the home count as paid by you). 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn't actually do so.",
    "model": "The restatement says to answer No for a kidnapped child, but the IRS says 'You may be eligible to file as a qualifying surviving spouse even if the child ... has been kidnapped.'",
    "ruling": "Ruling: scope — p501 p. 11 allows the kidnapped-child exception, which the owner explicitly kept outside this tool (BUG-0273, BUG-0276). The question names that exclusion and f1040.line12e refuses through household.qss_fails with the kidnapped-child remedy.",
-   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a"
+   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a",
+   "subject_key": "f47aca361b89406bcc3f14bb4d22ec5868089f31e9fa7530741e9060bb7d332e"
   },
   {
    "printed": "qss_eligible",
    "restated": "Input — Do all five of these tests apply to you? 1. Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025 (if your spouse died in 2025, answer No). 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent, or could claim as a dependent except that, for 2025, the child had gross income of $5,200 or more, the child filed a joint return, or you could be claimed as a dependent on someone else's return; an adopted child, including a child lawfully placed with you for legal adoption, is always your own child. 3. This child lived in your home for all of 2025, counting temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service or detention in a juvenile facility, as time lived in the home, but only an absence from which it was reasonable to assume the absent person would return and during which you kept up the home; a child born or who died in 2025, or adopted or lawfully placed with you for legal adoption in 2025, lived with you all year if your home was the child's home for the entire time the child was alive, or since the adoption or placement; if the child was presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family, answer No (the kidnapped-child rule of Pub. 501 is outside this tool). 4. You paid over half the cost of keeping up your home (rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities and food eaten in the home; not clothing, education, medical treatment, vacations, life insurance, transportation, or the value of your own or a household member’s services; amounts paid from a household member’s own funds, such as Social Security, count as paid by them; TANF or similar payments you received and used for the home count as paid by you). 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn't actually do so.",
    "model": "It instructs 'answer No' if the child was kidnapped, but Pub. 501 says 'You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped.'",
    "ruling": "Ruling: scope; p501 p. 11, Qualifying Surviving Spouse, Kidnapped child: \"You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped. You can claim qualifying surviving spouse filing status if all the following statements are true\", followed by four statements on the years of the kidnapping and the return. The model reads \"answer No\" as denying the status. The No is the design of BUG-0273 (T-114): the kidnapped-child rule is outside the tool, and the No reaches household.qss_fails, whose remedy at f1040.line12e now ends \"or the qualifying child was presumed kidnapped, whose rule (Pub. 501) is outside this tool\". So the filer is refused with a remedy that names the case, not given a computed return without the status. Witness (stage21.pending1.qss_valid_computes): qss_eligible yes gives line 12e $31,500; no refuses lines 12e, 16, 19 and 24 at household.qss_fails with that remedy. Before BUG-0273 the same filer got the remedy \"the tests are not met\" (fix round 2 F1); the change fixes that. The rest of the new wording was read word by word against p501 p. 9: test 4's \"the value of your own or a household member's services\" restates \"the value of your services or those of a member of your household\" (BUG-0275), and \"TANF or similar payments you received and used for the home count as paid by you\" restates the TANF note for the home (BUG-0274). One low wording point introduced by BUG-0273 (the kidnapped clause has no time anchor) is F3 in `.transcription/proposed/hhpass/household.findings.md`. Project stands.",
-   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8"
+   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8",
+   "subject_key": "f47aca361b89406bcc3f14bb4d22ec5868089f31e9fa7530741e9060bb7d332e"
   },
   {
    "printed": "qss_fails",
    "restated": "f1040 line Filing Status = 'qss' and helper \"Do all five qualifying surviving spouse tests apply to you?\" = false",
    "model": "It relies on qss_eligible, which is set to No for a kidnapped child; that can flag a QSS as failing even though Pub. 501 allows eligibility under the kidnapped-child rule.",
    "ruling": "Ruling: scope; p501 p. 11, Kidnapped child (as for qss_eligible). The gate is unchanged: status qss and household.qss_eligible no. The model's objection is qss_eligible's: a filer whose child was kidnapped answers No and the gate fires. That is the cited refusal of the kidnapped-child case designed in BUG-0273; the remedy at f1040.line12e names it (\"or the qualifying child was presumed kidnapped, whose rule (Pub. 501) is outside this tool\"). A refusal, never a computed return without the status (stage21.pending1.qss_valid_computes with qss_eligible no). Project stands.",
-   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8"
+   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8",
+   "subject_key": "bd5f7a756a752fa7285e5ad6c1d5573ab026a844606613bbf81d686359849671"
   },
   {
    "printed": "rdp_community_property",
    "restated": "f1040 line Filing Status ≠ 'mfj' and helper \"Did you live in a community property state at any time in 2025?\" = true and helper \"Were you a registered domestic partner in Nevada, Washington or California at any time in 2025?\" = true",
    "model": "It adds a 'not filing jointly' condition; the IRS text says a registered domestic partner in Nevada, Washington, or California must generally report half the combined community income, with no filing-status limitation.",
    "ruling": "Ruling: interface gap; i1040gi p. 23, Community Property States: \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555.\" The model says the gate's not-joint condition has no basis in the text given. What decides it is p501 p. 6, not among the pages given (p501 pp. 9 and 11): registered domestic partners \"aren't lawfully married for federal tax purposes\". A joint return needs a spouse (i1040gi p. 13, Married Filing Jointly) and already reports both spouses' combined income. So the partner rule reaches a partner on a single, head of household or qualifying surviving spouse return, where the gate refuses, and s3.mfs refuses married filing separately. The line is unchanged since fix round 2. As the fix-round-5 ruling of the Claude render. Project stands.",
-   "context": "844fc86c2bbed7ecc653ba6f69e6d8798c8c494632cddf62b1e6eb6992d65663"
+   "context": "844fc86c2bbed7ecc653ba6f69e6d8798c8c494632cddf62b1e6eb6992d65663",
+   "subject_key": "65352eb006e7f11bc72be9eb533504a3834aca8a3603abba432641780d7e8891"
   },
   {
    "printed": "roster_bad",
    "restated": "helper \"One entry for you, and one for your spouse exactly when filing jointly\" = false",
    "model": "It uses the joint-only spouse rule, so it would flag a married filing separately return with the required spouse information as bad; IRS says for MFS to 'Enter your spouse’s name in the entry space. Be sure to enter your spouse’s SSN or ITIN.'",
    "ruling": "Ruling: scope; same objection as roster_ok, which this line negates. Married filing separately is refused for the whole return (s3.mfs), so the joint-only spouse entry rejects no return the tool computes.",
-   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d",
+   "subject_key": "5d5ee96449eee9ebbe40c6c13a9e15bf5441c21f5e82049038c9c14be1cf037e"
   },
   {
    "printed": "roster_ok",
    "restated": "(f1040 line Filing Status = 'mfj' and helper \"Number of entries for you\" = 1 (a count) and helper \"Number of entries for your spouse\" = 1 (a count) or f1040 line Filing Status ≠ 'mfj' and helper \"Number of entries for you\" = 1 (a count) and helper \"Number of entries for your spouse\" = 0 (a count))",
    "model": "IRS requires a married filing separately return to enter the spouse's name and SSN/ITIN, but the restatement allows a spouse entry only when filing jointly: 'Enter your spouse’s name in the entry space. Be sure to enter your spouse’s SSN or ITIN.'",
    "ruling": "Ruling: scope; the model says a married filing separately return must show the spouse's name and SSN (i1040gi p. 14, Married Filing Separately, \"Enter your spouse's name in the entry space. Be sure to enter your spouse's SSN or ITIN\"), so a spouse entry should be allowed off a joint return. The person collection holds the people whose income and items are on the return (f1040 p. 1, \"If joint return, spouse's first name and middle initial\"). Married filing separately is refused for the whole return (s3.mfs, i1040gi p. 14), so no computed return needs the separate filer's spouse as a name entry.",
-   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d",
+   "subject_key": "a930eed565dd9c96b2db0063ee452edbddccb88644a3c68801a5c7a4aea6ef23"
   },
   {
    "printed": "test1_met",
    "restated": "helper \"Number of parents who qualify you under Test 1\" > 0 (a count)",
    "model": "Because it is test1_persons > 0, it inherits the live-in-parent exclusion and can report Test 1 not met even though the IRS text says 'Your parent didn't have to live with you.'",
    "ruling": "Ruling: representation; i1040gi p. 14, Test 1: \"Your parent didn't have to live with you.\" The objection is test1_persons' (the helper label read as excluding a parent who lives with you), inherited through the count: Test 1 met is test1_persons above 0, which is the source's \"either Test 1 or Test 2 applies\" for Test 1. As ruled for test1_persons, the helper dependent.hoh_test1 has no residence condition, and a co-resident parent who fails Test 1 on the label's reading meets Test 2 on the same facts. Project stands.",
-   "context": "cf89f7f3a325c00103f4dd242a7d63948822962d229964b0213e94484e133bc8"
+   "context": "cf89f7f3a325c00103f4dd242a7d63948822962d229964b0213e94484e133bc8",
+   "subject_key": "ae96665b2083747971b4f46ed949419e9b33d871cbba424f99889bb6c840487f"
   },
   {
    "printed": "test1_met",
    "restated": "helper \"Number of parents who qualify you under Test 1\" > 0 (a count)",
    "model": "Because test1_persons excludes a live-in parent, Test 1 can be false even though the IRS says 'Your parent didn’t have to live with you.'",
    "ruling": "Ruling: representation; i1040gi p. 14, Test 1: \"Your parent didn't have to live with you.\" The line is unchanged by the household pass. The objection is test1_persons', inherited through the count: Test 1 met is test1_persons above 0, the source's \"either Test 1 or Test 2 applies\" for Test 1. As ruled for test1_persons, dependent.hoh_test1 has no residence condition. As ruled in fix round 5. Project stands.",
-   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8"
+   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8",
+   "subject_key": "ae96665b2083747971b4f46ed949419e9b33d871cbba424f99889bb6c840487f"
   },
   {
    "printed": "test1_met",
    "restated": "helper \"Number of parents who qualify you under Test 1\" > 0 (a count)",
    "model": "IRS Test 1 requires 'You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent...'; the restatement only checks that a Test 1 parent exists.",
    "ruling": "Ruling: interface gap; the model says Test 1 requires \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent\" (i1040gi p. 14) and that the restatement only checks that a Test 1 parent exists. The cost condition is inside the per-entry helper dependent.hoh_test1, which is defined in rendered/2025/dependent.md, outside the text given: dependent.parent_home_paid asks whether you paid over half the cost of keeping up your parent's main home for all of 2025 (or the part of the year the parent was alive, p501 p. 9; a rest home counts, p501 p. 9). The count is Test 1 met. As round 2's test1_persons ruling. Project stands.",
-   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d",
+   "subject_key": "ae96665b2083747971b4f46ed949419e9b33d871cbba424f99889bb6c840487f"
   },
   {
    "printed": "test1_met",
    "restated": "helper \"Number of parents who qualify you under Test 1\" > 0 (a count)",
    "model": "Its count omits a parent living with you, while IRS Test 1 says 'Your parent didn’t have to live with you.'",
    "ruling": "Ruling: representation — i1040gi p. 14, Test 1. Inherits test1_persons' objection to the helper label wording; dependent.hoh_test1 imposes no nonresidency restriction on a qualifying parent.",
-   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a"
+   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a",
+   "subject_key": "ae96665b2083747971b4f46ed949419e9b33d871cbba424f99889bb6c840487f"
   },
   {
    "printed": "test1_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "IRS Test 1 does not exclude a parent who lives with you; it says 'Your parent didn’t have to live with you.' The restatement routes such a parent only to Test 2.",
    "ruling": "Ruling: representation; i1040gi p. 14, Test 1: \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent ... Your parent didn't have to live with you.\" The model reads the helper's label (\"through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\") as excluding a parent who lives with you. The helper's expression (dependent.hoh_test1: parent, your dependent, dependent.parent_home_paid) has no residence condition, and parent_home_paid asks about \"a home that was their main home\" without one, so such a parent counts under Test 1. If a filer answered no for that parent because of the label, Test 2 qualifies on the same facts. The label is imprecise but has no wrong effect. Same as the completeness-fixes ruling. Project stands.",
-   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d",
+   "subject_key": "a48c94e9759462c3df01f77d80412ebeeabcd13f892de179418906133faad94e"
   },
   {
    "printed": "test1_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "IRS Test 1 says 'Your parent didn’t have to live with you'; it does not require the parent to live elsewhere. The restatement excludes a parent who lives with you from Test 1, although such a parent can still meet Test 1.",
    "ruling": "Ruling: representation; i1040gi p. 14, Test 1: \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent ... Your parent didn't have to live with you.\" The model reads the helper's label (\"through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\") as excluding a co-resident parent. The helper's expression (dependent.hoh_test1: parent, your dependent, dependent.parent_home_paid) has no residence condition, and parent_home_paid asks \"did you pay over half the cost of keeping up a home that was their main home for all of 2025\" without one, so a co-resident parent counts under Test 1. Were a filer to answer no for such a parent from the label, Test 2 qualifies on the same facts (household.home_cost for the home you share; the parent your dependent and living with you more than half the year; no multiple support). The label is imprecise, not wrong in effect. Project stands.",
-   "context": "79c4ef11c1758e0f4cee42536f8eec6afa4913c45fe378054255ee22e7607ecf"
+   "context": "79c4ef11c1758e0f4cee42536f8eec6afa4913c45fe378054255ee22e7607ecf",
+   "subject_key": "a48c94e9759462c3df01f77d80412ebeeabcd13f892de179418906133faad94e"
   },
   {
    "printed": "test1_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "IRS Test 1 says 'Your parent didn’t have to live with you.' The restatement counts a parent under Test 1 only if the parent does not live with you, excluding a live-in parent who can meet Test 1.",
    "ruling": "Ruling: representation — i1040gi p. 14 Test 1 says the parent did not have to live with you. dependent.hoh_test1 tests relationship=parent, claimed=true and parent_home_paid=true; it imposes no nonresidency condition. parent_home_paid asks whether the home was the parent's main home, including death-year/rest-home cases (p501 p. 9). Its label describes the typical Test 1 route, but the actual input question and expression do not exclude a live-in parent.",
-   "context": "4d9fb380c42e126f5361b7c009d75b52da7e88c1caed11cde2a5260e71ae7609"
+   "context": "4d9fb380c42e126f5361b7c009d75b52da7e88c1caed11cde2a5260e71ae7609",
+   "subject_key": "a48c94e9759462c3df01f77d80412ebeeabcd13f892de179418906133faad94e"
   },
   {
    "printed": "test1_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "It limits Test 1 to a parent who does not live with you, but the IRS says 'Your parent didn’t have to live with you,' so a parent living with you can still meet Test 1.",
    "ruling": "Ruling: representation — i1040gi p. 14 Test 1 says \"Your parent didn't have to live with you.\" dependent.hoh_test1 tests relationship == \"parent\", claimed == true and parent_home_paid == true; it imposes no nonresidency condition. parent_home_paid asks whether the home was the parent's main home, including death-year/rest-home cases (p501 p. 9). Its helper label describes the typical Test 1 route, but the actual input question and expression do not exclude a live-in parent.",
-   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a"
+   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a",
+   "subject_key": "a48c94e9759462c3df01f77d80412ebeeabcd13f892de179418906133faad94e"
   },
   {
    "printed": "test1_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The restatement limits Test 1 to a parent 'who does not live with you,' but the IRS text says 'Your parent didn't have to live with you,' so a live-in parent can still meet Test 1.",
    "ruling": "Ruling: representation; i1040gi p. 14, Test 1: \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent ... Your parent didn't have to live with you.\" The model reads the helper's label (\"through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\") as excluding a co-resident parent. The helper's expression (dependent.hoh_test1: parent, your dependent, dependent.parent_home_paid) has no residence condition, and parent_home_paid asks about \"a home that was their main home\" without one, so such a parent counts under Test 1. Were a filer to answer no for that parent because of the label, Test 2 qualifies on the same facts (household.home_cost for the home you share, which since BUG-0258 and BUG-0260 carries the same p501 p. 9 cost definition and own-funds rule as parent_home_paid; the parent your dependent and living with you more than half the year). The label is imprecise, not wrong in effect. The restatement and the objection are those ruled in fix round 2 and the completeness-fixes round. Project stands.",
-   "context": "cf89f7f3a325c00103f4dd242a7d63948822962d229964b0213e94484e133bc8"
+   "context": "cf89f7f3a325c00103f4dd242a7d63948822962d229964b0213e94484e133bc8",
+   "subject_key": "a48c94e9759462c3df01f77d80412ebeeabcd13f892de179418906133faad94e"
   },
   {
    "printed": "test1_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The restatement limits Test 1 to a parent who does not live with you, but the IRS says 'Your parent didn’t have to live with you'; a live-in parent can still satisfy Test 1.",
    "ruling": "Ruling: representation; i1040gi p. 14, Test 1: \"You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent ... Your parent didn't have to live with you.\" The line is unchanged by the household pass. The model reads the per-entry helper's label (dependent.hoh_test1, \"through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)\") as excluding a co-resident parent. The helper's expression (relationship parent, dependent.claimed, dependent.parent_home_paid) has no residence condition, and parent_home_paid asks about \"a home that was their main home\" without one, so such a parent counts under Test 1; were a filer to answer no because of the label, Test 2 qualifies on the same facts (household.home_cost carries the same p501 p. 9 cost definition). Witness: stage8.hoh.parent.test1 gives head of household (line 12e $23,625). The label is imprecise, not wrong in effect. As ruled in fix rounds 2 and 5. Project stands.",
-   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8"
+   "context": "5180bad2bf83c2ad8ec895e6327eda7ab5e161fab706258dc92107603f4e67d8",
+   "subject_key": "a48c94e9759462c3df01f77d80412ebeeabcd13f892de179418906133faad94e"
   },
   {
    "printed": "test2_absence_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person only by counting an absence head of household does not count\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "It counts only dependent entries, so it omits Test 2 persons such as 'Your unmarried qualifying child who isn’t your dependent.'",
    "ruling": "Ruling: representation — i1040gi p. 14, Test 2, and p501 p. 9 (BUG-0267). As on test2_persons, the dependent collection holds every person evaluated for Test 2, including an unmarried qualifying child not claimed as a dependent; dependent.hoh_absence does not require dependent.claimed == true where Test 2 allows an unclaimed qualifying child.",
-   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a"
+   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a",
+   "subject_key": "9ecfe41615fae8be9ff0a7bc88e3a38ce6b30237f059dea9982a13ac8b344d99"
   },
   {
    "printed": "test2_absence_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person only by counting an absence head of household does not count\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The same omission exists for non-dependent Test 2 persons: the IRS Test 2 can turn on a qualifying child who isn’t your dependent, but the restatement counts only dependent entries.",
    "ruling": "Ruling: representation; i1040gi p. 14, Test 2; p501 p. 9 (BUG-0267). As test2_persons and the prior ruling: dependent.hoh_absence does not require dependent.claimed where Test 2 allows an unclaimed qualifying child. Project stands.",
-   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d",
+   "subject_key": "9ecfe41615fae8be9ff0a7bc88e3a38ce6b30237f059dea9982a13ac8b344d99"
   },
   {
    "printed": "test2_met",
    "restated": "helper \"Did you pay over half the cost of keeping up your home for 2025?\" = true and helper \"Number of persons who qualify you under Test 2\" > 0 (a count)",
    "model": "It depends on a Test 2 count that omits non-dependent qualifying children; the IRS Test 2 includes 'Your unmarried qualifying child who isn’t your dependent.'",
    "ruling": "Ruling: representation — i1040gi p. 14, Test 2. Inherits test2_persons' objection; the dependent collection includes unclaimed qualifying child entries evaluated by dependent.hoh_test2.",
-   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a"
+   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a",
+   "subject_key": "3eba0651dacf0681cb87969240281be3cc886777e4128189f1d7429b88eefe07"
   },
   {
    "printed": "test2_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "IRS Test 2 includes 'Your unmarried qualifying child who isn’t your dependent' and a married qualifying child who isn’t your dependent only because you can be claimed elsewhere. The restatement counts only confirmed dependent entries, omitting those non-dependent Test 2 persons.",
    "ruling": "Ruling: model error; the model read \"every confirmed dependent entry\" as every person who is your dependent. It is the renderer's wording for every entry of the dependent collection (every person listed), and dependent.hoh_test2 has a second branch for \"Your unmarried qualifying child who isn't your dependent\" (i1040gi p. 14, Test 2, item 2): qualifying_child, not married, lived with you more than half the year, with no dependency condition. Item 3 (a married child not your dependent only because you can be claimed) is refused through dependent.married, item 4 through dependent.divorced_rule. As ruled in round 2. Project stands.",
-   "context": "79c4ef11c1758e0f4cee42536f8eec6afa4913c45fe378054255ee22e7607ecf"
+   "context": "79c4ef11c1758e0f4cee42536f8eec6afa4913c45fe378054255ee22e7607ecf",
+   "subject_key": "f0699c140797c3157616f64bafc402b39d3426c4379db95b0d2ff47c78e0a059"
   },
   {
    "printed": "test2_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "IRS Test 2 includes certain non-dependent qualifying children ('Your unmarried qualifying child who isn’t your dependent' and a married qualifying child not your dependent), but the restatement counts only confirmed dependent entries.",
    "ruling": "Ruling: model error; the model read \"every confirmed dependent entry\" as every person who is your dependent. It is the renderer's wording for every entry of the dependent collection (every person listed), and dependent.hoh_test2 has a second branch for \"Your unmarried qualifying child who isn't your dependent\" (i1040gi p. 14, Test 2, item 2): qualifying_child, not married, lived with you more than half the year, with no dependency condition. Item 3 (a married child not your dependent only because you can be claimed) is refused through dependent.married, item 4 through dependent.divorced_rule. As ruled in round 2 and the completeness fixes. Project stands.",
-   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d",
+   "subject_key": "f0699c140797c3157616f64bafc402b39d3426c4379db95b0d2ff47c78e0a059"
   },
   {
    "printed": "test2_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The restatement counts only confirmed dependent entries, but IRS Test 2 expressly includes 'Your unmarried qualifying child who isn’t your dependent' and other qualifying children who are not dependents.",
    "ruling": "Ruling: model error; the model read \"every confirmed dependent entry\" as every person who is your dependent. It is the renderer's wording for every entry of the dependent collection (every person listed, as the round-1 ruling on the same text found), and the helper dependent.hoh_test2 it sums has a second branch for \"Your unmarried qualifying child who isn't your dependent\" (i1040gi p. 14, Test 2, item 2): qualifying_child, not married, lived with you more than half the year, with no dependency condition. Items 3 and 4 (a married child not your dependent only because you can be claimed, and the custodial parent's released child) are refused through dependent.married and dependent.divorced_rule.",
-   "context": "55b35b4588335d4d9a70be93ca26c04b5b019e766b44060c41ed50a8c47870c1"
+   "context": "55b35b4588335d4d9a70be93ca26c04b5b019e766b44060c41ed50a8c47870c1",
+   "subject_key": "f0699c140797c3157616f64bafc402b39d3426c4379db95b0d2ff47c78e0a059"
   },
   {
    "printed": "test2_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting only absences head of household counts (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "IRS Test 2 includes 'Your unmarried qualifying child who isn’t your dependent,' a married qualifying child who isn’t your dependent, and certain divorced/separated-parent children; counting only dependent entries misses those non-dependent Test 2 persons.",
    "ruling": "Ruling: representation; i1040gi p. 14, Test 2, items 2 to 4 (qualifying children who are not your dependent). The dependent collection holds every person evaluated for Test 2, and dependent.hoh_test2 counts a qualifying child not claimed as a dependent (its derivation reads dependent.qualifying_child beside dependent.claimed), so the non-dependent Test 2 persons the reviewer names are counted. Project stands.",
-   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d",
+   "subject_key": "f0699c140797c3157616f64bafc402b39d3426c4379db95b0d2ff47c78e0a059"
   },
   {
    "printed": "test2_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting only absences head of household counts (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "It counts only dependent entries, but Test 2 also includes 'Your unmarried qualifying child who isn’t your dependent' and similar qualifying children not claimed as dependents.",
    "ruling": "Ruling: representation — i1040gi p. 14, Test 2, and p501 p. 9, Table 4. In this tool every person evaluated for Head of Household Test 2 (including an unmarried qualifying child who is not claimed as a dependent) is entered as an entry in the dependent collection with dependent.claimed == true or false, and dependent.hoh_test2 evaluates the unmarried qualifying child branch without requiring dependent.claimed == true. The model mistakes \"dependent entry\" (collection record) for \"claimed dependent\".",
-   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a"
+   "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a",
+   "subject_key": "f0699c140797c3157616f64bafc402b39d3426c4379db95b0d2ff47c78e0a059"
   },
   {
    "printed": "test2_persons",
    "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting only absences head of household counts (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "It counts time lived as more than half the year or part of the year alive with HOH-counted absences, but omits the IRS rule that an adopted, lawfully placed, or eligible foster child (and kidnapped child) is treated as living with you for the required time.",
    "ruling": "Ruling: interface gap; p501 p. 9, Adopted child or foster child: \"The person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the child was adopted or placed with you in 2025.\"; p501 p. 9, Kidnapped child: \"You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped.\" The model says the restatement omits the adoption, placement and foster-child rule and the kidnapped-child rule. The restatement names the per-entry helper dependent.hoh_test2 by its label. The T-091 correction changed only the label, adding \"counting only absences head of household counts\", which is accurate: hoh_test2 is hoh_test2_lived and absence_no_return no. The helper and its parts are defined in rendered/2025/dependent.md, outside the text given. There dependent.hoh_lived_half carries the adoption and placement rule (dependent.placed with dependent.part_year_home, \"more than half the time since the person was adopted or placed with you in 2025\"), dependent.months carries it for a qualifying child, and a kidnapped child is refused at dependent.lived_half (BUG-0213), which hoh_lived_half reads. The omission is in the label only and predates T-091; the fix-round-2 render ruled the same objection an interface gap. The new lines test2_absence_persons and hoh_absence and the new refusal on hoh_eligible were judged MATCH. Project stands.",
-   "context": "844fc86c2bbed7ecc653ba6f69e6d8798c8c494632cddf62b1e6eb6992d65663"
+   "context": "844fc86c2bbed7ecc653ba6f69e6d8798c8c494632cddf62b1e6eb6992d65663",
+   "subject_key": "f0699c140797c3157616f64bafc402b39d3426c4379db95b0d2ff47c78e0a059"
   },
   {
    "printed": "under16_count",
    "restated": "Add person.one over every confirmed person entry for which helper \"Were you under age 16 at the end of 2025?\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The IRS text provided does not define an under-16 count or filing restriction; the only mention is the Self-Select PIN rule for first-time filers under 16.",
    "ruling": "Ruling: ambiguity; amb.2025.filer_under_16 (owner's decision, 2026-10-22). The model is right that the text has no age-16 filing rule; the register says so (\"The archived instructions state no minimum age for a filer or a spouse on a joint return\"; i1040gi p. 66, \"You can't use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025\"). The count feeds the owner's entry check household.filer_under16, reading 2 (chosen).",
-   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+   "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d",
+   "subject_key": "133e56d12b7253291fb32174a62ca0955be9cedad99c7510a337a53b8a12a657"
   }
  ]
 }

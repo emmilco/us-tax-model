@@ -6,33 +6,38 @@
    "printed": "1",
    "restated": "Enter the amount from f1040 line 15.",
    "model": "The IRS line adds a case the restatement leaves out, and no refusal names it: \"However, if you are filing Form 2555 (relating to foreign earned income), enter the amount from line 3 of the Foreign Earned Income Tax Worksheet.\" The restatement always uses f1040 line 15.",
-   "ruling": "Ruling: scope; project retained. The Foreign Earned Income Tax Worksheet alternative applies only to a filer who claimed the exclusion or housing deduction on Form 2555 (i1040gi p. 36, line 16: \"If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must use the Foreign Earned Income Tax Worksheet\"). That filer reports the exclusion on Schedule 1, line 8d (i1040gi p. 91: \"Foreign earned income exclusion and housing exclusion from Form 2555\"), and the return refuses any Schedule 1 income at Form 1040 line 8 (`scope.schedule1`, forms/2025/f1040.yaml) before line 16 is reached. The alternative is recorded as not encoded in the worksheet note. No change to the data."
+   "ruling": "Ruling: scope; project retained. The Foreign Earned Income Tax Worksheet alternative applies only to a filer who claimed the exclusion or housing deduction on Form 2555 (i1040gi p. 36, line 16: \"If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must use the Foreign Earned Income Tax Worksheet\"). That filer reports the exclusion on Schedule 1, line 8d (i1040gi p. 91: \"Foreign earned income exclusion and housing exclusion from Form 2555\"), and the return refuses any Schedule 1 income at Form 1040 line 8 (`scope.schedule1`, forms/2025/f1040.yaml) before line 16 is reached. The alternative is recorded as not encoded in the worksheet note. No change to the data.",
+   "subject_key": "d63d0fa8dbb58123e994a07820fe4fc22a114983020197e7e347fdb630c7d645"
   },
   {
    "printed": "1",
    "restated": "Enter the amount from f1040 line 15.",
    "model": "The restatement always takes Form 1040 line 15, and no refusal excludes Form 2555 filers. The IRS line adds: \"However, if you are filing Form 2555 (relating to foreign earned income), enter the amount from line 3 of the Foreign Earned Income Tax Worksheet.\"",
    "ruling": "Ruling: scope; the model says no refusal excludes Form 2555 filers. The worksheet's alternative applies only to a filer who claims the foreign earned income or housing exclusion or the housing deduction on Form 2555 (i1040gi p. 36, Line 16: \"If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must figure your tax using the Foreign Earned Income Tax Worksheet\"). That exclusion is reported on Schedule 1 line 8d, which is refused by s1.line8_other (s1.yaml: \"the foreign earned income or housing exclusion from Form 2555 (8d)\"), and sa.excluded_income asks about Form 2555; the worksheet note records the alternative as not encoded. Unchanged by Stage 20 (line 1 reads Form 1040 line 15, whose Schedule D inputs changed only in their English names); same ruling as the earlier round.",
-   "context": "d3cfe36f3daba0792a62019b916380e20aa4e7e4e1d374414569561379cf26fc"
+   "context": "d3cfe36f3daba0792a62019b916380e20aa4e7e4e1d374414569561379cf26fc",
+   "subject_key": "d63d0fa8dbb58123e994a07820fe4fc22a114983020197e7e347fdb630c7d645"
   },
   {
    "printed": "1",
    "restated": "Enter the amount from f1040 line 15.",
    "model": "The restatement always uses Form 1040 line 15 and has no refusal for Form 2555 filers. The IRS text adds: \"However, if you are filing Form 2555 (relating to foreign earned income), enter the amount from line 3 of the Foreign Earned Income Tax Worksheet.\"",
    "ruling": "Ruling: scope; project retained. The Foreign Earned Income Tax Worksheet applies only to a filer who claims the foreign earned income or housing exclusion or the housing deduction on Form 2555 (i1040gi p. 36, Line 16), reported on Schedule 1 line 8d, which s1.line8_other refuses. Same reading as the earlier rounds.",
-   "context": "97ccf403ca0387d831287109794584169787711f6d3eca4eab5957290c028483"
+   "context": "97ccf403ca0387d831287109794584169787711f6d3eca4eab5957290c028483",
+   "subject_key": "d63d0fa8dbb58123e994a07820fe4fc22a114983020197e7e347fdb630c7d645"
   },
   {
    "printed": "2",
    "restated": "Enter the amount from f1040 line 3a.",
    "model": "The restatement matches \"Enter the amount from Form 1040 or 1040-SR, line 3a.\" However, the asterisk sends Form 2555 filers to a footnote in the Foreign Earned Income Tax Worksheet, and that footnote is not in the text given, so the Form 2555 case cannot be judged.",
-   "ruling": "Ruling: scope; project retained. As line 1: the Form 2555 footnote applies only to a filer who claimed the foreign earned income exclusion or housing exclusion or deduction, which is reported on Schedule 1 and refused (scope.schedule1, and sa.excluded_income asks about Form 2555)."
+   "ruling": "Ruling: scope; project retained. As line 1: the Form 2555 footnote applies only to a filer who claimed the foreign earned income exclusion or housing exclusion or deduction, which is reported on Schedule 1 and refused (scope.schedule1, and sa.excluded_income asks about Form 2555).",
+   "subject_key": "d107389a67729519f1de50594599183318f0439d568bcc203576d214e839ba6d"
   },
   {
    "printed": "3",
    "restated": "Choose — [helper \"Are you filing Schedule D?\" = true → helper \"Enter the smaller of line 15 or line 16 of Schedule D. If either line 15 or line 16 is blank or a loss, enter -0-.\"] [helper \"Are you filing Schedule D?\" = false → sd helper \"Capital gain distributions, generally Form 1099-DIV box 2a\"]",
    "model": "The Yes branch matches: taking the smaller of Schedule D lines 15 and 16, floored at zero, gives -0- when either is a loss. The No branch is the problem. IRS says \"Enter the amount from Form 1040 or 1040-SR, line 7a,\" but the restatement uses a separate 1099-DIV box 2a input, and the wording of line 7a is not given. The text also doesn't support the program's test for whether Schedule D is filed, and the asterisk's Form 2555 footnote is missing.",
-   "ruling": "Ruling: representation; project retained. \"Are you filing Schedule D?\" is derived rather than asked: Schedule D is required when any sale is entered or a 28% or unrecaptured section 1250 amount exists, and a filer with only capital gain distributions need not file it (i1040gi p. 31, line 7a, Exception 1: \"You don't have to file Form 8949 or Schedule D if you aren't deferring any capital gain by investing in a qualified opportunity fund and both of the following apply. 1. You have no capital losses, and your only capital gains are capital gain distributions\"), in which case line 7a carries the Form 1099-DIV box 2a total the No branch reads. The transcription log for qdcg carries the same ruling. No change to the data."
+   "ruling": "Ruling: representation; project retained. \"Are you filing Schedule D?\" is derived rather than asked: Schedule D is required when any sale is entered or a 28% or unrecaptured section 1250 amount exists, and a filer with only capital gain distributions need not file it (i1040gi p. 31, line 7a, Exception 1: \"You don't have to file Form 8949 or Schedule D if you aren't deferring any capital gain by investing in a qualified opportunity fund and both of the following apply. 1. You have no capital losses, and your only capital gains are capital gain distributions\"), in which case line 7a carries the Form 1099-DIV box 2a total the No branch reads. The transcription log for qdcg carries the same ruling. No change to the data.",
+   "subject_key": "d9d973802dc832d4c2e7611d42f01a498bc905b79caff9be225b287bc0a2c3ee"
   }
  ]
 }

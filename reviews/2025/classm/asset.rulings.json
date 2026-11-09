@@ -8,7 +8,8 @@
    "project": "$1.00",
    "model": "$100.00",
    "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.1",
@@ -16,7 +17,8 @@
    "project": "$0.01",
    "model": "$1.00",
    "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.1",
@@ -24,7 +26,8 @@
    "project": "no",
    "model": "yes",
    "ruling": "Ruling: model error; project retained. asset.s179_bad first requires a section 179 election greater than zero; this property's election is zero, so the gate is false whatever its business use. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "447d60da1c2dbfad7431f51468122fed5ecdd2115ec2854636ee6e9ddda837ab"
   },
   {
    "case": "classm.asset.1",
@@ -32,7 +35,8 @@
    "project": "$368.06",
    "model": "$613.44",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "2ae3f1fce69fec46ae083b412f0314037578f0d4536bdf586651e1fd3a8fe37f"
   },
   {
    "case": "classm.asset.1",
@@ -40,7 +44,8 @@
    "project": "$363.27",
    "model": "$605.45",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "86caf99da1db5b3fa2cd4d814b4c6a4370e528f9d495cd66245eaf9cc150a90a"
   },
   {
    "case": "classm.asset.1",
@@ -48,7 +53,8 @@
    "project": "$591.86",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "776bc73cbb46eb865d17c173f042abb07b1c79b8b015fc39d58d1272464c7dc0"
   },
   {
    "case": "classm.asset.1",
@@ -56,7 +62,8 @@
    "project": "$0.40",
    "model": "$40.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.1",
@@ -64,7 +71,8 @@
    "project": "$1.00",
    "model": "$100.00",
    "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.1",
@@ -72,7 +80,8 @@
    "project": "$3,195.00",
    "model": "$5,325.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "ae1f441bf53e41860189af7716fef4df7573a86b09782ed7831abbc50bc9845f"
   },
   {
    "case": "classm.asset.1",
@@ -80,7 +89,8 @@
    "project": "$901.50",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "011dcb489ab05d6c788e9646c9e7a96f42183ba798b823025b788a83f2970fa4"
   },
   {
    "case": "classm.asset.1",
@@ -88,7 +98,8 @@
    "project": "$902.10",
    "model": "$758.33",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "225e5e554f14b440c82f754035779df9b03336abcb6ca86ea696752c06408c49"
   },
   {
    "case": "classm.asset.1",
@@ -96,7 +107,8 @@
    "project": "$902.10",
    "model": "$758.33",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "2ae3f1fce69fec46ae083b412f0314037578f0d4536bdf586651e1fd3a8fe37f"
   },
   {
    "case": "classm.asset.1",
@@ -104,7 +116,8 @@
    "project": "$901.50",
    "model": "$189.68",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "86caf99da1db5b3fa2cd4d814b4c6a4370e528f9d495cd66245eaf9cc150a90a"
   },
   {
    "case": "classm.asset.1",
@@ -112,7 +125,8 @@
    "project": "$1.00",
    "model": "$100.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.1",
@@ -120,7 +134,8 @@
    "project": "4.461%",
    "model": "3.75%",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f110dc1798bf615abe53151b5c1316171327bdcf1111c0090cb0a38d0d1638"
   },
   {
    "case": "classm.asset.1",
@@ -128,7 +143,8 @@
    "project": "4.458%",
    "model": "0.938%",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d025ddcde073dfb4540146a31c102a7dac73b3399aad9f9df330bd2eded16006"
   },
   {
    "case": "classm.asset.2",
@@ -136,7 +152,8 @@
    "project": "$4,762.09",
    "model": "$1,667.40",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "36bb8e9edd7f15efaaaabfce6eae312dbc9f9036e226689470f3102b1fbb86fb"
   },
   {
    "case": "classm.asset.2",
@@ -144,7 +161,8 @@
    "project": "$4,762.09",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "011dcb489ab05d6c788e9646c9e7a96f42183ba798b823025b788a83f2970fa4"
   },
   {
    "case": "classm.asset.2",
@@ -152,7 +170,8 @@
    "project": "8",
    "model": "11",
    "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "5a9a43bff2b4fc615af132be389e72110d4f6d7559679e17c78cb58d33920522"
   },
   {
    "case": "classm.asset.2",
@@ -160,7 +179,8 @@
    "project": "8",
    "model": "16",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "5a9a43bff2b4fc615af132be389e72110d4f6d7559679e17c78cb58d33920522"
   },
   {
    "case": "classm.asset.2",
@@ -169,7 +189,8 @@
    "model": "$2,324.50",
    "ruling": "Ruling: model error; p946 Table 4-1, GDS using SL: \"Qualified improvement property (as defined in section 168(e)(6) of the Internal Revenue Code) placed in service after 2017\". The class is 15-year straight line, as the project has it. The model applied Table A-1's 150% declining balance rate of 5.00%; the straight-line half-year rate of 3.33% gives the project's $1,548.12.",
    "drop": true,
-   "context": "c5acd52bb7f42e34a16ab9b695df52d11d8f0c1088fde4222ba891dd576e1b95"
+   "context": "c5acd52bb7f42e34a16ab9b695df52d11d8f0c1088fde4222ba891dd576e1b95",
+   "subject_key": "225e5e554f14b440c82f754035779df9b03336abcb6ca86ea696752c06408c49"
   },
   {
    "case": "classm.asset.2",
@@ -177,7 +198,8 @@
    "project": "$4,762.09",
    "model": "$1,667.40",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "225e5e554f14b440c82f754035779df9b03336abcb6ca86ea696752c06408c49"
   },
   {
    "case": "classm.asset.2",
@@ -185,7 +207,8 @@
    "project": "$3,812.34",
    "model": "$1,333.92",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "2ae3f1fce69fec46ae083b412f0314037578f0d4536bdf586651e1fd3a8fe37f"
   },
   {
    "case": "classm.asset.2",
@@ -193,7 +216,8 @@
    "project": "$4,762.09",
    "model": "$1,667.40",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "86caf99da1db5b3fa2cd4d814b4c6a4370e528f9d495cd66245eaf9cc150a90a"
   },
   {
    "case": "classm.asset.2",
@@ -201,7 +225,8 @@
    "project": "$1,587.36",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "776bc73cbb46eb865d17c173f042abb07b1c79b8b015fc39d58d1272464c7dc0"
   },
   {
    "case": "classm.asset.2",
@@ -209,7 +234,8 @@
    "project": "$1,587.36",
    "model": "$555.80",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "b8e56d9c6594393797316e58014dd4767c78f4ffef2439a22f49a2be31b13af3"
   },
   {
    "case": "classm.asset.2",
@@ -217,7 +243,8 @@
    "project": "$3,447.73",
    "model": "$2,414.38",
    "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "b8e56d9c6594393797316e58014dd4767c78f4ffef2439a22f49a2be31b13af3"
   },
   {
    "case": "classm.asset.2",
@@ -225,7 +252,8 @@
    "project": "$1.00",
    "model": "$100.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.2",
@@ -234,7 +262,8 @@
    "model": "y15",
    "ruling": "Ruling: model error; p946 Table 4-1, GDS using SL: \"Qualified improvement property (as defined in section 168(e)(6) of the Internal Revenue Code) placed in service after 2017\". The class is 15-year straight line, as the project has it.",
    "drop": true,
-   "context": "c5acd52bb7f42e34a16ab9b695df52d11d8f0c1088fde4222ba891dd576e1b95"
+   "context": "c5acd52bb7f42e34a16ab9b695df52d11d8f0c1088fde4222ba891dd576e1b95",
+   "subject_key": "2e8750be8528884e66fe2a3b26a7059859817aaa72283972d0efe3f1f712f68c"
   },
   {
    "case": "classm.asset.2",
@@ -242,7 +271,8 @@
    "project": "y7",
    "model": "y10",
    "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "2e8750be8528884e66fe2a3b26a7059859817aaa72283972d0efe3f1f712f68c"
   },
   {
    "case": "classm.asset.2",
@@ -250,7 +280,8 @@
    "project": "y7",
    "model": "y15",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "2e8750be8528884e66fe2a3b26a7059859817aaa72283972d0efe3f1f712f68c"
   },
   {
    "case": "classm.asset.2",
@@ -258,7 +289,8 @@
    "project": "14.29%",
    "model": "10%",
    "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f110dc1798bf615abe53151b5c1316171327bdcf1111c0090cb0a38d0d1638"
   },
   {
    "case": "classm.asset.2",
@@ -266,7 +298,8 @@
    "project": "14.29%",
    "model": "5%",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f110dc1798bf615abe53151b5c1316171327bdcf1111c0090cb0a38d0d1638"
   },
   {
    "case": "classm.asset.2",
@@ -274,7 +307,8 @@
    "project": "10.71%",
    "model": "7.5%",
    "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d025ddcde073dfb4540146a31c102a7dac73b3399aad9f9df330bd2eded16006"
   },
   {
    "case": "classm.asset.2",
@@ -282,7 +316,8 @@
    "project": "17.85%",
    "model": "6.25%",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d025ddcde073dfb4540146a31c102a7dac73b3399aad9f9df330bd2eded16006"
   },
   {
    "case": "classm.asset.2",
@@ -290,7 +325,8 @@
    "project": "17.85%",
    "model": "12.5%",
    "ruling": "Ruling: model error; project retained. The model recalled asset class 48.32 as having an 18-year class life ('from memory'); the archived Pub. 946 (2025) Appendix B, Table B-2, gives class 48.32 a class life of 13 years and a GDS recovery period of 7 years (tables/2025/class_lives.yaml, checked by its second transcription). The period, last year, rates and depreciation that follow from it differ for that reason. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "47230d6e6b608bddb2b79d4c63fc52a9f45b8371c13e39b112206ea2fcda2b2b"
   },
   {
    "case": "classm.asset.2",
@@ -298,7 +334,8 @@
    "project": "3.57%",
    "model": "1.25%",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "47230d6e6b608bddb2b79d4c63fc52a9f45b8371c13e39b112206ea2fcda2b2b"
   },
   {
    "case": "classm.asset.2",
@@ -306,7 +343,8 @@
    "project": "$17,550.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "9c54b514424ed2d4930c4ef65fc454dc6d014dee1ead4879b369926d32e5e874"
   },
   {
    "case": "classm.asset.2",
@@ -314,7 +352,8 @@
    "project": "$1,316.25",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "36bb8e9edd7f15efaaaabfce6eae312dbc9f9036e226689470f3102b1fbb86fb"
   },
   {
    "case": "classm.asset.2",
@@ -322,7 +361,8 @@
    "project": "$8,775.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "776bc73cbb46eb865d17c173f042abb07b1c79b8b015fc39d58d1272464c7dc0"
   },
   {
    "case": "classm.asset.2",
@@ -330,7 +370,8 @@
    "project": "$1.00",
    "model": "$100.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.2",
@@ -338,7 +379,8 @@
    "project": "$1.00",
    "model": "$100.00",
    "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.3",
@@ -346,7 +388,8 @@
    "project": "$989.35",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "011dcb489ab05d6c788e9646c9e7a96f42183ba798b823025b788a83f2970fa4"
   },
   {
    "case": "classm.asset.3",
@@ -354,7 +397,8 @@
    "project": "$2,059.69",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "776bc73cbb46eb865d17c173f042abb07b1c79b8b015fc39d58d1272464c7dc0"
   },
   {
    "case": "classm.asset.3",
@@ -362,7 +406,8 @@
    "project": "$0.30",
    "model": "$30.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.3",
@@ -370,7 +415,8 @@
    "project": "$1.00",
    "model": "$100.00",
    "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.3",
@@ -378,7 +424,8 @@
    "project": "6",
    "model": "8",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "5a9a43bff2b4fc615af132be389e72110d4f6d7559679e17c78cb58d33920522"
   },
   {
    "case": "classm.asset.3",
@@ -386,7 +433,8 @@
    "project": "$1,531.50",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "776bc73cbb46eb865d17c173f042abb07b1c79b8b015fc39d58d1272464c7dc0"
   },
   {
    "case": "classm.asset.3",
@@ -394,7 +442,8 @@
    "project": "$1,531.50",
    "model": "$1,093.49",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "b8e56d9c6594393797316e58014dd4767c78f4ffef2439a22f49a2be31b13af3"
   },
   {
    "case": "classm.asset.3",
@@ -402,7 +451,8 @@
    "project": "$1.00",
    "model": "$100.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.3",
@@ -410,7 +460,8 @@
    "project": "y5",
    "model": "y7",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "2e8750be8528884e66fe2a3b26a7059859817aaa72283972d0efe3f1f712f68c"
   },
   {
    "case": "classm.asset.3",
@@ -418,7 +469,8 @@
    "project": "20%",
    "model": "14.29%",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f110dc1798bf615abe53151b5c1316171327bdcf1111c0090cb0a38d0d1638"
   },
   {
    "case": "classm.asset.3",
@@ -426,7 +478,8 @@
    "project": "15%",
    "model": "10.71%",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d025ddcde073dfb4540146a31c102a7dac73b3399aad9f9df330bd2eded16006"
   },
   {
    "case": "classm.asset.3",
@@ -434,7 +487,8 @@
    "project": "25%",
    "model": "17.85%",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "47230d6e6b608bddb2b79d4c63fc52a9f45b8371c13e39b112206ea2fcda2b2b"
   },
   {
    "case": "classm.asset.4",
@@ -442,7 +496,8 @@
    "project": "$40.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "837db12e6ba16e3788d36a6c274b0c00b94ad7d8769a158721a68459c760b433"
   },
   {
    "case": "classm.asset.4",
@@ -450,7 +505,8 @@
    "project": "$100.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "b2347db0ba76ebc365cfee9f2da04fd621b45047c3a90befd89275805857cedf"
   },
   {
    "case": "classm.asset.4",
@@ -458,7 +514,8 @@
    "project": "$100.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "381655686881e842813a2679266c31964a92fa7cee2e346cce9d01a69b3c3098"
   },
   {
    "case": "classm.asset.4",
@@ -466,7 +523,8 @@
    "project": "$100.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "0a1a6f5fb80a577e807e37a3f79a2712cb787e3ce75e0634af71b742b6ed3908"
   },
   {
    "case": "classm.asset.4",
@@ -474,7 +532,8 @@
    "project": "$2,501.67",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "011dcb489ab05d6c788e9646c9e7a96f42183ba798b823025b788a83f2970fa4"
   },
   {
    "case": "classm.asset.4",
@@ -482,7 +541,8 @@
    "project": "$5.90",
    "model": "$5.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "2ae3f1fce69fec46ae083b412f0314037578f0d4536bdf586651e1fd3a8fe37f"
   },
   {
    "case": "classm.asset.4",
@@ -490,7 +550,8 @@
    "project": "$5.90",
    "model": "$3.75",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "86caf99da1db5b3fa2cd4d814b4c6a4370e528f9d495cd66245eaf9cc150a90a"
   },
   {
    "case": "classm.asset.4",
@@ -498,7 +559,8 @@
    "project": "$2,501.67",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "776bc73cbb46eb865d17c173f042abb07b1c79b8b015fc39d58d1272464c7dc0"
   },
   {
    "case": "classm.asset.4",
@@ -506,7 +568,8 @@
    "project": "$0.38",
    "model": "$38.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.4",
@@ -514,7 +577,8 @@
    "project": "$1.00",
    "model": "$100.00",
    "ruling": "Ruling: representation; project retained. pct_c carries the business-use percentage as one cent per percentage point (100% is $1.00) so that the percentage can be the part of a money ratio (prorate); the model wrote it as dollars. The basis it feeds agrees. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.4",
@@ -522,7 +586,8 @@
    "project": "5.9%",
    "model": "5%",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f110dc1798bf615abe53151b5c1316171327bdcf1111c0090cb0a38d0d1638"
   },
   {
    "case": "classm.asset.4",
@@ -530,7 +595,8 @@
    "project": "5.9%",
    "model": "3.75%",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The 2025-property route (basis after a 2025 allowance, the half-year and mid-quarter amounts, the 2025 section 179 cost) is figured for property placed in service before 2025 but read by no line it reaches, and the allowance alternatives are figured for property that claims none; the printed lines of the route the entry takes agree (for earlier property, the unadjusted basis, the 2025 rate and line 17). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d025ddcde073dfb4540146a31c102a7dac73b3399aad9f9df330bd2eded16006"
   },
   {
    "case": "classm.asset.4",
@@ -538,7 +604,8 @@
    "project": "$2,167.80",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e0d0b1c0753348cefcc0ae4f79d62f955aa5a0a5bf97b6d0161985ef481a59c8"
   },
   {
    "case": "classm.asset.4",
@@ -546,7 +613,8 @@
    "project": "$867.12",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "837db12e6ba16e3788d36a6c274b0c00b94ad7d8769a158721a68459c760b433"
   },
   {
    "case": "classm.asset.4",
@@ -554,7 +622,8 @@
    "project": "$2,167.80",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "b2347db0ba76ebc365cfee9f2da04fd621b45047c3a90befd89275805857cedf"
   },
   {
    "case": "classm.asset.4",
@@ -562,7 +631,8 @@
    "project": "$2,167.80",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "381655686881e842813a2679266c31964a92fa7cee2e346cce9d01a69b3c3098"
   },
   {
    "case": "classm.asset.4",
@@ -570,7 +640,8 @@
    "project": "$270.76",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "225e5e554f14b440c82f754035779df9b03336abcb6ca86ea696752c06408c49"
   },
   {
    "case": "classm.asset.4",
@@ -578,7 +649,8 @@
    "project": "$270.76",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "2ae3f1fce69fec46ae083b412f0314037578f0d4536bdf586651e1fd3a8fe37f"
   },
   {
    "case": "classm.asset.4",
@@ -586,7 +658,8 @@
    "project": "$304.79",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "86caf99da1db5b3fa2cd4d814b4c6a4370e528f9d495cd66245eaf9cc150a90a"
   },
   {
    "case": "classm.asset.4",
@@ -594,7 +667,8 @@
    "project": "$2,167.80",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "bb5bf17bfcbf16c6d4c0cd8f1e637aeea41d41dc08bc2db8e16ff75856d257cd"
   },
   {
    "case": "classm.asset.4",
@@ -602,7 +676,8 @@
    "project": "$2,167.80",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "f3ca5ee0fa676c4469aba0a3c3209e4948dc97e6277cb705534a8d0f65253bf9"
   },
   {
    "case": "classm.asset.4",
@@ -610,7 +685,8 @@
    "project": "$0.20",
    "model": "$20.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "73236d902bfdf5db5aff61f3368f4fb9833067945b3340b4f8e187a58564de5c"
   },
   {
    "case": "classm.asset.4",
@@ -618,7 +694,8 @@
    "project": "12.49%",
    "model": "14.29%",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f110dc1798bf615abe53151b5c1316171327bdcf1111c0090cb0a38d0d1638"
   },
   {
    "case": "classm.asset.4",
@@ -626,7 +703,8 @@
    "project": "14.06%",
    "model": "3.57%",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d025ddcde073dfb4540146a31c102a7dac73b3399aad9f9df330bd2eded16006"
   },
   {
    "case": "classm.asset.4",
@@ -634,7 +712,8 @@
    "project": "no",
    "model": "yes",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "447d60da1c2dbfad7431f51468122fed5ecdd2115ec2854636ee6e9ddda837ab"
   },
   {
    "case": "classm.asset.4",
@@ -642,7 +721,8 @@
    "project": "$2,167.80",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained. The project figures every line of every entry (the 2025 lines for earlier property and the reverse, the listed-property lines for property that is not listed and the reverse, the lines after a zero basis); the Form 4562 totals take each only where it belongs (sc sums with the 2025 and listed filters), and the printed lines of the entry that the case uses agree. The model entered zero or worked it as if it applied. Not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "ae1f441bf53e41860189af7716fef4df7573a86b09782ed7831abbc50bc9845f"
   }
  ]
 }

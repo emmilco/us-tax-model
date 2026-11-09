@@ -39,6 +39,13 @@ def is_finding(ruling):
     return compare_families.ruling_category(body) == "finding" or bool(re.match(r"defect\b", body, re.I))
 
 
+def line_subject(kind, form, key, snap=None):
+    """The cross-document subject (carry.line_subject) of the line a disagreement key names, in the
+    working tree (or `snap`), else None."""
+    import carry  # carry imports this module
+    return carry.line_subject(kind, snap or carry.Snapshot(None), form, key[1] if kind == "classm" else key[0])
+
+
 def apply(form, rulings, kind="transcription", family=families.DEFAULT):
     path = sidecar.log_path(kind, form, family)
     text = open(path, encoding="utf-8").read()
@@ -48,6 +55,7 @@ def apply(form, rulings, kind="transcription", family=families.DEFAULT):
     applied = []
     stored = sidecar.load(kind, form, family)
     blocks = sidecar.pass_blocks(text)
+    snap = None
     for i in range(1, len(parts)):
         title, _, content = parts[i].partition("\n")
         context = sidecar.section_context(kind, text, content, blocks)
@@ -77,8 +85,15 @@ def apply(form, rulings, kind="transcription", family=families.DEFAULT):
             if severity is not None and severity not in sidecar.SEVERITIES:
                 raise SystemExit(f"{form}: severity at {printed} is not one of {', '.join(sidecar.SEVERITIES)}")
             run = sidecar.section_run(kind, text, title, content, blocks)
-            stored[found[0]] = {"ruling": ruling.rstrip(), "drop": bool(drop), "context": context, "date": today(),
-                                **({"run": run} if run else {}), **({"severity": severity} if severity else {})}
+            if snap is None:
+                import carry
+                snap = carry.Snapshot(None)
+            subject = line_subject(kind, form, found[0], snap)
+            stamp = sidecar.triage_for(kind, form, family, found[0][0], run)
+            stored[sidecar.stored_key(kind, found[0])] = {
+                "ruling": ruling.rstrip(), "drop": bool(drop), "context": context, "date": today(),
+                **({"run": run} if run else {}), **({"severity": severity} if severity else {}),
+                **({"subject_key": subject} if subject else {}), **({"triage": stamp} if stamp else {})}
             if drop:
                 ruling = ruling.rstrip() + " [dropped]"
                 drop_from_fixture(form, printed.split(" \u2014 ")[0], rest.split(" \u2014 ")[0], family)

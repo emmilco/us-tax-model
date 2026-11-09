@@ -11,7 +11,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "d3ac62b6cf950b6021718d7e78b758fabb501eaeeb0088843e94e999a57d967c"
+   "run": "d3ac62b6cf950b6021718d7e78b758fabb501eaeeb0088843e94e999a57d967c",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   },
   {
    "case": "classm.ny_city_rs.10",
@@ -22,7 +23,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "40fc36cf42818374a5f19253ba079428b33fc16560ea53933db66bd1fe4fde47"
+   "run": "40fc36cf42818374a5f19253ba079428b33fc16560ea53933db66bd1fe4fde47",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   },
   {
    "case": "classm.ny_city_rs.11",
@@ -33,7 +35,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "087227656e4e60e60d3ac4d736ca7dbed74d760340df12d0ff4eb61afd496006"
+   "run": "087227656e4e60e60d3ac4d736ca7dbed74d760340df12d0ff4eb61afd496006",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   },
   {
    "case": "classm.ny_city_rs.12",
@@ -44,7 +47,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "b73016c3b55e58927f0894ae53bbb0cbc5c656da9adc68b38bd2bf1e0529f919"
+   "run": "b73016c3b55e58927f0894ae53bbb0cbc5c656da9adc68b38bd2bf1e0529f919",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   },
   {
    "case": "classm.ny_city_rs.13",
@@ -55,7 +59,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "48e41708b047d8b5f57a6e3f44f8dd50a33146c6ca51a747b0db8c93ea4f2644"
+   "run": "48e41708b047d8b5f57a6e3f44f8dd50a33146c6ca51a747b0db8c93ea4f2644",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   },
   {
    "case": "classm.ny_city_rs.14",
@@ -66,7 +71,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "196ea025a668b7a3b92fb795007fd0d63e1ad3977d07164c8b99f74fe8ef645b"
+   "run": "196ea025a668b7a3b92fb795007fd0d63e1ad3977d07164c8b99f74fe8ef645b",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   },
   {
    "case": "classm.ny_city_rs.2",
@@ -77,7 +83,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "4ce2bd6cb7ecd07131b677cf228b93f6f3d4a6f3e861fa2569ec7b586eeb991b"
+   "run": "4ce2bd6cb7ecd07131b677cf228b93f6f3d4a6f3e861fa2569ec7b586eeb991b",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   },
   {
    "case": "classm.ny_city_rs.4",
@@ -88,7 +95,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "73eaab5fe6e118cc329570003be5db48a85db2d4c21a4f6a06c87177119fcf82"
+   "run": "73eaab5fe6e118cc329570003be5db48a85db2d4c21a4f6a06c87177119fcf82",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   },
   {
    "case": "classm.ny_city_rs.5",
@@ -99,7 +107,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "4027e28535f18a358d8479f21ddba17e8d5ac77b73932e605632a79afabefe76"
+   "run": "4027e28535f18a358d8479f21ddba17e8d5ac77b73932e605632a79afabefe76",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   },
   {
    "case": "classm.ny_city_rs.7",
@@ -110,7 +119,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "95f5843e269d620fb9e1be80fb039b9f26a206548382e65c3222a75f1958650e"
+   "run": "95f5843e269d620fb9e1be80fb039b9f26a206548382e65c3222a75f1958650e",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   },
   {
    "case": "classm.ny_city_rs.8",
@@ -121,7 +131,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "82075129ceda935c770e30148c592aae5c9b6cf0a0d53250788251aec433184c"
+   "run": "82075129ceda935c770e30148c592aae5c9b6cf0a0d53250788251aec433184c",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   },
   {
    "case": "classm.ny_city_rs.9",
@@ -132,7 +143,8 @@
    "drop": true,
    "context": "1170c5323cfb496c0f9c7c611859dad84f9a796dd68e47b4192232a310f76ca1",
    "date": "2026-11-05",
-   "run": "362d8d31e5755164558646a3e3afed38126ee6e27859ea66bc02dea49a9daf20"
+   "run": "362d8d31e5755164558646a3e3afed38126ee6e27859ea66bc02dea49a9daf20",
+   "subject_key": "cbc0012c5dabb974da057e2566c9d77ba988c29dfb006d54b4af07f954a4ea03"
   }
  ]
 }

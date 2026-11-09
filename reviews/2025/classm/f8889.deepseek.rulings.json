@@ -10,7 +10,8 @@
    "model": "$1,844.00",
    "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
    "drop": true,
-   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e",
+   "subject_key": "f2d65ed8e9a541bfe66f63d0d4f496d223e5d543a56fe72fa6db98363c1fcaba"
   },
   {
    "case": "classm.f8889.2",
@@ -19,7 +20,8 @@
    "model": "$1,844.00",
    "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
    "drop": true,
-   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e",
+   "subject_key": "41c6530445d13dedc7dea66fe0bbbe8d8eaefa83d4942d5f310e26951b765b5c"
   },
   {
    "case": "classm.f8889.2",
@@ -28,7 +30,8 @@
    "model": "$1,094.00",
    "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
    "drop": true,
-   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e",
+   "subject_key": "587574425961ef11ff3d16b66baa7e972dea84b25a8033673da6f5e4d68103f9"
   },
   {
    "case": "classm.f8889.2",
@@ -37,7 +40,8 @@
    "model": "$1,844.00",
    "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
    "drop": true,
-   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e",
+   "subject_key": "87913fe82a7f33fee63c9f4c4bb5e1764e1d37e88f0e5a01b6d579da42f56a50"
   },
   {
    "case": "classm.f8889.2",
@@ -46,7 +50,8 @@
    "model": "$7,456.00",
    "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
    "drop": true,
-   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e",
+   "subject_key": "f2d65ed8e9a541bfe66f63d0d4f496d223e5d543a56fe72fa6db98363c1fcaba"
   },
   {
    "case": "classm.f8889.2",
@@ -55,7 +60,8 @@
    "model": "$5,031.25",
    "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months; model value dropped from the fixture. Inherits line 8 (line 11 is $0.00): Form 8889 (2025), line 12, \"Subtract line 11 from line 8. If zero or less, enter -0-\". The case (fixtures/2025/classm.deepseek.json, classm.f8889.2.deepseek; married filing jointly, household.married yes) has the taxpayer age 55 or older, an eligible individual in all 12 months, 9 of them with family coverage, December family, the last-month rule not used, both spouses with a Form 8889. i8889 p. 7, Additional Contribution Amount Worksheet: \"1. $1,000 × number of months eligible\"; the owner's reading amb.2025.hsa_line7_months counts every month treated as eligible, 12, so line 7 is $1,000.00 (\"If items (1) and (2) apply to all months during 2025, enter $1,000 on line 7\" is the all-family case). The model's work, \"Age 55+, married, family coverage 9 months: 1,000 x 9/12 = 750.00.\", counts only the family months, the reading the owner did not choose. Line 6 ($4,281.25) agrees. Line 13 is $0.00 on both readings (line 2 is $0.00).",
    "drop": true,
-   "context": "9b64b388ff3a1f39bc4e6246cac34313064de9feca34fc3864fb3db5f7443152"
+   "context": "9b64b388ff3a1f39bc4e6246cac34313064de9feca34fc3864fb3db5f7443152",
+   "subject_key": "f2d65ed8e9a541bfe66f63d0d4f496d223e5d543a56fe72fa6db98363c1fcaba"
   },
   {
    "case": "classm.f8889.2",
@@ -64,7 +70,8 @@
    "model": "$7,456.00",
    "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
    "drop": true,
-   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e",
+   "subject_key": "587574425961ef11ff3d16b66baa7e972dea84b25a8033673da6f5e4d68103f9"
   },
   {
    "case": "classm.f8889.2",
@@ -73,7 +80,8 @@
    "model": "$750.00",
    "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months; model value dropped from the fixture (the non-chosen reading). The case (fixtures/2025/classm.deepseek.json, classm.f8889.2.deepseek; married filing jointly, household.married yes) has the taxpayer age 55 or older, an eligible individual in all 12 months, 9 of them with family coverage, December family, the last-month rule not used, both spouses with a Form 8889. i8889 p. 7, Additional Contribution Amount Worksheet: \"1. $1,000 × number of months eligible\"; the owner's reading amb.2025.hsa_line7_months counts every month treated as eligible, 12, so line 7 is $1,000.00 (\"If items (1) and (2) apply to all months during 2025, enter $1,000 on line 7\" is the all-family case). The model's work, \"Age 55+, married, family coverage 9 months: 1,000 x 9/12 = 750.00.\", counts only the family months, the reading the owner did not choose. Line 6 ($4,281.25) agrees.",
    "drop": true,
-   "context": "9b64b388ff3a1f39bc4e6246cac34313064de9feca34fc3864fb3db5f7443152"
+   "context": "9b64b388ff3a1f39bc4e6246cac34313064de9feca34fc3864fb3db5f7443152",
+   "subject_key": "b624ee3f4e0a311ca13ebf2102a0d39bc4559225704513bb849acd26d236976d"
   },
   {
    "case": "classm.f8889.2",
@@ -82,7 +90,8 @@
    "model": "$7,456.00",
    "ruling": "Ruling: model error; i8889 p.7 line6 Steps1-4 require equal division when allocation=equal. The nine family months give $8550*9/12=$6412.50, whose equal share is $3206.25. The spouse has no self-only months and a $750 catchup, giving line8/12 $3956.25 and deduction min($3637,$3956.25)=$3637. The taxpayer adds $4300*3/12=$1075 of self-only limit, giving line6/8/12 $4281.25. The reply instead uses the inactive agreed-allocation amounts $1094/$7456 and carries that mistake through the named lines. Drop the seven wrong numeric assertions; retain the actual reply and work. No model value is repaired into an agreement.",
    "drop": true,
-   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e"
+   "context": "70b9db7be17d12874111770ed175ad8d4a5fab70b5dda69994602fba9fc6e69e",
+   "subject_key": "87913fe82a7f33fee63c9f4c4bb5e1764e1d37e88f0e5a01b6d579da42f56a50"
   },
   {
    "case": "classm.f8889.2",
@@ -91,7 +100,8 @@
    "model": "$5,031.25",
    "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months; model value dropped from the fixture. Inherits line 7: Form 8889 (2025), line 8, \"Add lines 6 and 7\", $4,281.25 + $1,000.00 = $5,281.25 on the chosen reading, the model's $5,031.25 on the other. The case (fixtures/2025/classm.deepseek.json, classm.f8889.2.deepseek; married filing jointly, household.married yes) has the taxpayer age 55 or older, an eligible individual in all 12 months, 9 of them with family coverage, December family, the last-month rule not used, both spouses with a Form 8889. i8889 p. 7, Additional Contribution Amount Worksheet: \"1. $1,000 × number of months eligible\"; the owner's reading amb.2025.hsa_line7_months counts every month treated as eligible, 12, so line 7 is $1,000.00 (\"If items (1) and (2) apply to all months during 2025, enter $1,000 on line 7\" is the all-family case). The model's work, \"Age 55+, married, family coverage 9 months: 1,000 x 9/12 = 750.00.\", counts only the family months, the reading the owner did not choose. Line 6 ($4,281.25) agrees.",
    "drop": true,
-   "context": "9b64b388ff3a1f39bc4e6246cac34313064de9feca34fc3864fb3db5f7443152"
+   "context": "9b64b388ff3a1f39bc4e6246cac34313064de9feca34fc3864fb3db5f7443152",
+   "subject_key": "87913fe82a7f33fee63c9f4c4bb5e1764e1d37e88f0e5a01b6d579da42f56a50"
   }
  ]
 }

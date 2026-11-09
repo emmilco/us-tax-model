@@ -4,42 +4,48 @@
  "rulings": [
   {
    "printed": "5",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"sli.base_other\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sli.base_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sli.base_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, \"then\": {\"param\": \"sli.base_other\"}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: representation; project retained. The worksheet gives no amount for married filing separately, which cannot take the deduction; the project enters zero there and the second enters $85,000. Neither reaches Schedule 1 line 21: sli.deduction is zero for married filing separately."
+   "project_expr_sha256": "8483af9700758061844c6df5132a102046e5c18826438dbe534b383021eff469",
+   "second_expr_sha256": "b3fad40fe31fbf817e9caa137b93a373229c2b838aab5781605f23a852c1048c",
+   "ruling": "Ruling: representation; project retained. The worksheet gives no amount for married filing separately, which cannot take the deduction; the project enters zero there and the second enters $85,000. Neither reaches Schedule 1 line 21: sli.deduction is zero for married filing separately.",
+   "subject_key": "80c5d817003325c5d05da594b77bdd357b1e47153df5157ccefd99919c3dcc1c"
   },
   {
    "printed": "6",
-   "project": "{\"from\": {\"line\": \"4\"}, \"op\": \"subtract\", \"take\": {\"line\": \"5\"}}",
-   "second": "{\"from\": {\"line\": \"4\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"5\"}}",
-   "ruling": "Ruling: equivalent; project retained. Line 6 is used only when line 4 is more than line 5 (line 8 skips it otherwise), where the signed difference and the floored one are the same."
+   "project_expr_sha256": "87635572a875dee77e950c4e53eb71f8c6b842e5f08ffdced880bd3bf3541adc",
+   "second_expr_sha256": "d9b6607ce98f740f3fc8ba61e7505d1386d169642e0d4470f35f0c245d91efa1",
+   "ruling": "Ruling: equivalent; project retained. Line 6 is used only when line 4 is more than line 5 (line 8 skips it otherwise), where the signed difference and the floored one are the same.",
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "printed": "8",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4\"}, {\"line\": \"5\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"line\": \"5\"}, {\"line\": \"4\"}], \"test\": \"lt\"}, \"then\": {\"amount\": {\"line\": \"1\"}, \"op\": \"prorate\", \"part\": {\"line\": \"6\"}, \"places\": 3, \"whole\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"sli.divisor_other\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sli.divisor_joint\"}}], \"op\": \"choose\"}}}], \"op\": \"choose\"}",
-   "second": "{\"amount\": {\"line\": \"1\"}, \"op\": \"prorate\", \"part\": {\"line\": \"6\"}, \"places\": 3, \"whole\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"sli.divisor_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, \"then\": {\"param\": \"sli.divisor_other\"}}], \"op\": \"choose\"}}",
-   "ruling": "Ruling: equivalent; project retained. The project skips to zero when line 4 is not more than line 5, as the worksheet says; the second always applies the ratio, which then has a part of zero or less, and prorate keeps the ratio at 0 or more, so it also gives zero (the same argument as the classified mutant on sli.line8)."
+   "project_expr_sha256": "6850197afebd647a4b13a2835bfac1047751fd6d310fe2d986afe6aa2530c454",
+   "second_expr_sha256": "1f6244e8614f424f8a912315b70906a52d281b0b21e937da80b59ead0c34c822",
+   "ruling": "Ruling: equivalent; project retained. The project skips to zero when line 4 is not more than line 5, as the worksheet says; the second always applies the ratio, which then has a part of zero or less, and prorate keeps the ratio at 0 or more, so it also gives zero (the same argument as the classified mutant on sli.line8).",
+   "subject_key": "d707b2b9166357e3f671fbb542609b3c19995d32d8b94723fe5c7d188d581072"
   },
   {
    "printed": "9",
-   "project": "{\"from\": {\"line\": \"1\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}",
-   "second": "{\"from\": {\"line\": \"1\"}, \"op\": \"subtract\", \"take\": {\"line\": \"8\"}}",
-   "ruling": "Ruling: equivalent; project retained. Line 8 never exceeds line 1: prorate's ratio is at most 1.000 (Lean lemma prorate_le_amount), so the floor at zero never applies."
+   "project_expr_sha256": "cf9b09af3c1bdc549f877ff223fc05815984f3dba306cc3a836ff54de05e6346",
+   "second_expr_sha256": "a0eb44063663bc97d52e366d4edb3225ac23ce777df07582dce7d9c576912c03",
+   "ruling": "Ruling: equivalent; project retained. Line 8 never exceeds line 1: prorate's ratio is at most 1.000 (Lean lemma prorate_le_amount), so the floor at zero never applies.",
+   "subject_key": "114591512ca89fa53b52c90341cac994e6e6ba41bcfc42dc73d6bbfe313937aa"
   },
   {
    "printed": "sli.deduction",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"sli.interest\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"sli.interest\"}], \"test\": \"lt\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"line\": \"9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, \"then\": {\"line\": \"9\"}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "649cc4797e9cb55c8cdb2e09138ad86cb2c6b869adf1c3eeeb13bd04f7ad2262",
+   "second_expr_sha256": "d049a2be923489fb2821255cf66271e39c848209999c6d3eb7d378a2f559c0b8",
+   "ruling": "Ruling: equivalent; project retained. The second omits the 'interest more than zero' guard; with no interest line 1 and line 9 are zero, so the value is the same, and the project's guard keeps a filer without student loan interest from being asked whether they are claimed as a dependent. The eligibility tests (not married filing separately, not claimed as a dependent) agree.",
+   "subject_key": "15109bcec31790cc953e660a5156a0fa4d07fed4e6ad0d8666eaebfb7a7a3d8f"
+  },
+  {
+   "printed": "sli.deduction",
+   "project_expr_sha256": "8ed365790d97799ffbe4db36d9f45a7f99d3871c1c52a7f2da5f0cd2a9aa86b3",
+   "second_expr_sha256": "63a0dfab6eab45fc93a662c2ef3475c02f3599ac62cf5cd6ebe78358f0a9fa90",
    "ruling": "Ruling: model error; same reply and project as the round-2 and round-3 rulings. i1040gi p. 98, Line 21: \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's ... 2025 tax return.\" The reply refuses on sa.dependent (who can be claimed) where the source and the project (sli.claimed_count, person.sav_claimed) test being claimed. Triage executable-triage-v2 (reviews/2025/transcription/triage/sli.json; 1,638 fixtures, 500 generated returns seed 20261026, 40 partial records): the candidate declaration is invalid on this pass's scoped interface (candidate-invalid on all 2,178 records), so no value is compared. The R3 restructuring of sli.interest kept its words (word check: none lost). Project stands.",
    "context": "6500b0cc24adc139d0c6a295985e228989e01bea2fe94cfcef6ae0663c69b389",
    "date": "2026-11-07",
-   "run": "cceddb0c89287a32d1b08d45ab9eaa20ee0a8e245ec8fc64c0a323a96a549e22"
-  },
-  {
-   "printed": "sli.deduction",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"sli.interest\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"sli.interest\"}], \"test\": \"lt\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"line\": \"9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"sli.claimed\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"sli.claimed\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"line\": \"9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"sli.claimed\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: equivalent; project retained. The second omits the 'interest more than zero' guard; with no interest line 1 and line 9 are zero, so the value is the same, and the project's guard keeps a filer without student loan interest from being asked whether they are claimed as a dependent. The eligibility tests (not married filing separately, not claimed as a dependent) agree."
+   "run": "cceddb0c89287a32d1b08d45ab9eaa20ee0a8e245ec8fc64c0a323a96a549e22",
+   "subject_key": "15109bcec31790cc953e660a5156a0fa4d07fed4e6ad0d8666eaebfb7a7a3d8f"
   }
  ]
 }

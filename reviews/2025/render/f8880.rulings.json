@@ -6,34 +6,39 @@
    "printed": "(CLW 2)",
    "restated": "Add s3 line 1 and s3 line 2.",
    "model": "The IRS says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l'. The restatement adds only Schedule 3 lines 1 and 2, leaving out lines 3, 6d and 6l.",
-   "ruling": "Ruling: scope; project retained. Schedule 3 lines 3, 6d and 6l are credits this tool refuses: any credit other than those it computes is the scope.credits screen, refused on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 3 and 6a to 6z ...)\"), so on every return that reaches the worksheet they are zero, and lines 1 and 2 are the whole of the line. The line's citation says so. f8880 p. 2, Credit Limit Worksheet, \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\"."
+   "ruling": "Ruling: scope; project retained. Schedule 3 lines 3, 6d and 6l are credits this tool refuses: any credit other than those it computes is the scope.credits screen, refused on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 3 and 6a to 6z ...)\"), so on every return that reaches the worksheet they are zero, and lines 1 and 2 are the whole of the line. The line's citation says so. f8880 p. 2, Credit Limit Worksheet, \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\".",
+   "subject_key": "eb18e03b469962a3a4a70fc939f70f1285cf40a4b22aa57da4d2cd23e87e0bac"
   },
   {
    "printed": "(CLW 2)",
    "restated": "Add s3 line 1 and s3 line 2.",
    "model": "The worksheet says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l'. The restatement adds only Schedule 3 lines 1 and 2, leaving out lines 3, 6d and 6l.",
-   "ruling": "Ruling: scope; project retained (as the prior ruling). Schedule 3 lines 3, 6d and 6l are credits this tool refuses through scope.credits (refused on Schedule 3 line 8, \"Other credit forms (Schedule 3 lines 3 and 6a to 6z ...)\"), so on every return that reaches the worksheet they are zero and lines 1 and 2 are the whole of the line; the line's citation says so. f8880 p. 2, Credit Limit Worksheet, \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". No change."
+   "ruling": "Ruling: scope; project retained (as the prior ruling). Schedule 3 lines 3, 6d and 6l are credits this tool refuses through scope.credits (refused on Schedule 3 line 8, \"Other credit forms (Schedule 3 lines 3 and 6a to 6z ...)\"), so on every return that reaches the worksheet they are zero and lines 1 and 2 are the whole of the line; the line's citation says so. f8880 p. 2, Credit Limit Worksheet, \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". No change.",
+   "subject_key": "eb18e03b469962a3a4a70fc939f70f1285cf40a4b22aa57da4d2cd23e87e0bac"
   },
   {
    "printed": "(CLW 2)",
    "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
    "model": "The IRS says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l'. The restatement adds only Schedule 3 lines 1–3 and omits lines 6d and 6l, with no refusal that covers them.",
    "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The rendered line adds Schedule 3 lines 1, 2 and 3 and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show. Same ruling as Stage 19.",
-   "context": "e26f1822e34f26287c635a9459c28b3f05ccb3ffbc4f7e03b7204449ae812444"
+   "context": "e26f1822e34f26287c635a9459c28b3f05ccb3ffbc4f7e03b7204449ae812444",
+   "subject_key": "eb18e03b469962a3a4a70fc939f70f1285cf40a4b22aa57da4d2cd23e87e0bac"
   },
   {
    "printed": "(CLW 2)",
    "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
    "model": "The IRS worksheet says \"Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l.\" The restatement adds only Schedule 3 lines 1 through 3, omitting 6d (credit for the elderly or disabled) and 6l, and no refusal excludes those cases.",
    "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The rendered line (rendered/2025/f8880.md, (CLW 2)) adds Schedule 3 lines 1, 2 and 3 and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show. Same ruling as round 1; BUG-0209 changed only this line's shown_when (f8880.past9).",
-   "context": "54d451fb8991ba9f3efb6cfc235e393f70f848e768b1135b186c60e818e739eb"
+   "context": "54d451fb8991ba9f3efb6cfc235e393f70f848e768b1135b186c60e818e739eb",
+   "subject_key": "eb18e03b469962a3a4a70fc939f70f1285cf40a4b22aa57da4d2cd23e87e0bac"
   },
   {
    "printed": "(CLW 2)",
    "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
    "model": "The worksheet says \"Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l.\" The restatement adds only Schedule 3 lines 1-3 and omits 6d (elderly or disabled credit) and 6l.",
    "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The rendered line (rendered/2025/f8880.md, (CLW 2)) adds Schedule 3 lines 1, 2 and 3, the last being the education credits since Stage 19, and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show.",
-   "context": "2029ea100d2d4c089505799ed1df861996d691087b24bf348d86e4b30bf58cdb"
+   "context": "2029ea100d2d4c089505799ed1df861996d691087b24bf348d86e4b30bf58cdb",
+   "subject_key": "eb18e03b469962a3a4a70fc939f70f1285cf40a4b22aa57da4d2cd23e87e0bac"
   },
   {
    "printed": "(CLW 2)",
@@ -42,21 +47,24 @@
    "ruling": "Ruling: scope; the English is the source within the slice, as the prior rulings. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". Lines 6d and 6l are refused through scope.credits on Schedule 3 line 8, so on every return that reaches the worksheet they are zero; the line's citation says so.",
    "context": "2bc96c188f94d348c0a0f6d9645230a90268b4249d8c6f8f9acd46ea943f3267",
    "date": "2026-11-07",
-   "run": "37b037b1d3d1d6c6056dac3bac0f74e87aa32aabad04a6d6d111889ee1b6f2e3"
+   "run": "37b037b1d3d1d6c6056dac3bac0f74e87aa32aabad04a6d6d111889ee1b6f2e3",
+   "subject_key": "eb18e03b469962a3a4a70fc939f70f1285cf40a4b22aa57da4d2cd23e87e0bac"
   },
   {
    "printed": "(CLW 2)",
    "restated": "Add s3 line 1, s3 line 2, and s3 line 3.",
    "model": "The worksheet says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l.' The restatement adds only Schedule 3 lines 1, 2 and 3, leaving out lines 6d and 6l, and no refusal excludes those credits.",
    "ruling": "Ruling: scope; the English is the source within the slice. f8880 p. 2, Credit Limit Worksheet: \"2. Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l\". The rendered line (rendered/2025/f8880.md, (CLW 2)) adds Schedule 3 lines 1, 2 and 3 and its citation says \"(lines 6d and 6l are refused by scope.credits)\": the credit for the elderly or the disabled (line 6d) and any other Schedule 3 line 6 credit are refused through scope.credits on Schedule 3 line 8 (\"Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)\"), so on every return that reaches the worksheet they are zero. The refusal sits on Schedule 3, which the render does not show. Same ruling as Stages 19 and 21; T-067 added only shown_when f8880.past7 to this line.",
-   "context": "34c3fcc24a8e3c130ebda67b8ab78c497fc3306456a4ae8dc9633f0901b625e5"
+   "context": "34c3fcc24a8e3c130ebda67b8ab78c497fc3306456a4ae8dc9633f0901b625e5",
+   "subject_key": "eb18e03b469962a3a4a70fc939f70f1285cf40a4b22aa57da4d2cd23e87e0bac"
   },
   {
    "printed": "1(b)",
    "restated": "Add person.sav_line1 over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The instructions say \"Complete column (b) only if you're filing a joint return.\" The restatement sums spouse entries with no joint-return condition, unlike line 4(b), which is gated on married filing jointly. A spouse entry on a non-joint return would therefore put an amount in column (b).",
    "ruling": "Ruling: representation; f8880 p. 2, Column (b): \"Complete column (b) only if you’re filing a joint return\". The rendered sum over spouse entries has no filing-status condition of its own because the roster has a spouse entry only on a joint return: the $person question reads \"Who is on this return? Enter [\\\"taxpayer\\\"], or [\\\"taxpayer\\\",\\\"spouse\\\"] if you are married filing jointly\" (interview/questions-2025.yaml, help \"One entry for you and, on a joint return, one for your spouse\"), so the sum is zero on any other return. Line 4(b) carries an explicit joint guard because its joint-year input (person.sav_prior_joint) sums over both entries. The roster rule is stated in the interview, not checked by a refusal; a filer who answered against it is outside what the interview produces.",
-   "context": "2029ea100d2d4c089505799ed1df861996d691087b24bf348d86e4b30bf58cdb"
+   "context": "2029ea100d2d4c089505799ed1df861996d691087b24bf348d86e4b30bf58cdb",
+   "subject_key": "9c9b8448040f38d7c1e067a84b501a3e8fb681e034a97598034920a1854f7208"
   },
   {
    "printed": "1(b)",
@@ -65,14 +73,16 @@
    "ruling": "Ruling: representation; as the prior ruling. f8880 p. 2, Column (b): \"Complete column (b) only if you’re filing a joint return\". The roster has a spouse entry only on a joint return (the $person question: \"Who is on this return: just you, or you and your spouse on a joint return?\"), so the spouse sum is zero on any other return.",
    "context": "2bc96c188f94d348c0a0f6d9645230a90268b4249d8c6f8f9acd46ea943f3267",
    "date": "2026-11-07",
-   "run": "37b037b1d3d1d6c6056dac3bac0f74e87aa32aabad04a6d6d111889ee1b6f2e3"
+   "run": "37b037b1d3d1d6c6056dac3bac0f74e87aa32aabad04a6d6d111889ee1b6f2e3",
+   "subject_key": "9c9b8448040f38d7c1e067a84b501a3e8fb681e034a97598034920a1854f7208"
   },
   {
    "printed": "2(b)",
    "restated": "Add person.sav_line2 over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'spouse', within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The instructions say \"Complete column (b) only if you're filing a joint return.\" The restatement sums spouse entries without requiring a joint return.",
    "ruling": "Ruling: representation; as line 1(b). f8880 p. 2, Column (b): \"Complete column (b) only if you’re filing a joint return\"; the roster has a spouse entry only on a joint return: the $person question reads \"Who is on this return? Enter [\\\"taxpayer\\\"], or [\\\"taxpayer\\\",\\\"spouse\\\"] if you are married filing jointly\" (interview/questions-2025.yaml, help \"One entry for you and, on a joint return, one for your spouse\"), so the spouse sum is column (b) of a joint return and zero otherwise.",
-   "context": "2029ea100d2d4c089505799ed1df861996d691087b24bf348d86e4b30bf58cdb"
+   "context": "2029ea100d2d4c089505799ed1df861996d691087b24bf348d86e4b30bf58cdb",
+   "subject_key": "d778cea8cb5d515efb43fe060d1f414196e1548fd9b042ea88b670052b3c3625"
   },
   {
    "printed": "2(b)",
@@ -81,13 +91,15 @@
    "ruling": "Ruling: representation; as line 1(b) and the prior ruling. f8880 p. 2, Column (b): \"Complete column (b) only if you’re filing a joint return\"; the roster has a spouse entry only on a joint return.",
    "context": "2bc96c188f94d348c0a0f6d9645230a90268b4249d8c6f8f9acd46ea943f3267",
    "date": "2026-11-07",
-   "run": "37b037b1d3d1d6c6056dac3bac0f74e87aa32aabad04a6d6d111889ee1b6f2e3"
+   "run": "37b037b1d3d1d6c6056dac3bac0f74e87aa32aabad04a6d6d111889ee1b6f2e3",
+   "subject_key": "d778cea8cb5d515efb43fe060d1f414196e1548fd9b042ea88b670052b3c3625"
   },
   {
    "printed": "4(a)",
    "restated": "Add helper \"Distributions received in 2025 that line 4 counts (the Forms 1099-R of the return, less rollovers and the excluded kinds)\", helper \"Distributions from years filed jointly, counted in both columns (on a joint return; none otherwise)\", and helper \"Your own distributions in 2023, 2024 and 2026 (before the due date) from years not filed jointly with your spouse\".",
    "model": "The IRS asks for 'the total amount of distributions you... received after 2022 and before the due date'. A filer who is not filing jointly for 2025 drops their own distributions from earlier years filed jointly: prior_joint is $0 when not filing jointly, and prior_own_a covers only years 'not filed jointly with your spouse'. Those distributions still belong in column (a).",
-   "ruling": "Ruling: representation; project retained. The model read the helper label of f8880.prior_own_a (\"from years not filed jointly with your spouse\") as leaving out a non-joint filer's distributions from an earlier year filed jointly. The input it sums, person.sav_prior_other, is asked as all of the filer's 2023, 2024 and early-2026 distributions on a return that is not joint (\"on a return that is not a joint return: all your distributions in 2023 and 2024, and in 2026 before the due date of your 2025 return\"), and person.sav_prior_joint is asked on a joint return only, so on a non-joint return every distribution of the filer is in column (a). f8880 p. 2, Line 4, \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions)\"."
+   "ruling": "Ruling: representation; project retained. The model read the helper label of f8880.prior_own_a (\"from years not filed jointly with your spouse\") as leaving out a non-joint filer's distributions from an earlier year filed jointly. The input it sums, person.sav_prior_other, is asked as all of the filer's 2023, 2024 and early-2026 distributions on a return that is not joint (\"on a return that is not a joint return: all your distributions in 2023 and 2024, and in 2026 before the due date of your 2025 return\"), and person.sav_prior_joint is asked on a joint return only, so on a non-joint return every distribution of the filer is in column (a). f8880 p. 2, Line 4, \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions)\".",
+   "subject_key": "6b8e9d1d296a7c60f4ececfc3b9f7751e6837658012a5a00c2263d65067a777a"
   }
  ]
 }

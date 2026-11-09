@@ -6,67 +6,78 @@
    "printed": "2",
    "restated": "Input — Bound by the calling line (this person's Schedule C results).",
    "model": "The IRS line covers more than Schedule C results: \"Net profit or (loss) from Schedule C, line 31; and Schedule K-1 (Form 1065), box 14, code A (other than farming).\" The restatement binds only this person's Schedule C and names no refusal for partnership amounts.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names net earnings from a partnership (Schedule K-1, box 14, code A) and other self-employment income not on a Schedule C."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names net earnings from a partnership (Schedule K-1, box 14, code A) and other self-employment income not on a Schedule C.",
+   "subject_key": "2380ceffb922f10a226df9f21c355e4659f8eb044445d96b5198b0391fa629ce"
   },
   {
    "printed": "2",
    "restated": "Input — Bound by the calling line (this person's Schedule C results).",
    "model": "The IRS line is \"Net profit or (loss) from Schedule C, line 31; and Schedule K-1 (Form 1065), box 14, code A (other than farming)\". The restatement takes only Schedule C results and has no refusal naming the excluded partnership income.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names net earnings from a partnership (Schedule K-1, box 14, code A) and other self-employment income not on a Schedule C."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names net earnings from a partnership (Schedule K-1, box 14, code A) and other self-employment income not on a Schedule C.",
+   "subject_key": "2380ceffb922f10a226df9f21c355e4659f8eb044445d96b5198b0391fa629ce"
   },
   {
    "printed": "3",
    "restated": "Enter the amount from line 2.",
    "model": "The IRS line says \"Combine lines 1a, 1b, and 2\". The restatement uses line 2 only, dropping the farm profit (1a) and the CRP payment line (1b), with no refusal.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names farm income (Schedule F) and Conservation Reserve Program payments, the sources of lines 1a and 1b."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names farm income (Schedule F) and Conservation Reserve Program payments, the sources of lines 1a and 1b.",
+   "subject_key": "79fc687537a38873ac0b1f830e8d5abf005ebfe9c071fa391b7f2aebcb52bc0d"
   },
   {
    "printed": "3",
    "restated": "Enter the amount from line 2.",
    "model": "The IRS says \"Combine lines 1a, 1b, and 2,\" and line 1b is a subtraction (entered in parentheses). The restatement uses line 2 alone, and no refusal names the excluded farm amounts on lines 1a and 1b.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names farm income (Schedule F) and Conservation Reserve Program payments, the sources of lines 1a and 1b."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names farm income (Schedule F) and Conservation Reserve Program payments, the sources of lines 1a and 1b.",
+   "subject_key": "79fc687537a38873ac0b1f830e8d5abf005ebfe9c071fa391b7f2aebcb52bc0d"
   },
   {
    "printed": "4b",
    "restated": "Enter the amount from helper \"Zero\".",
    "model": "The IRS line says \"If you elect one or both of the optional methods, enter the total of lines 15 and 17 here\". The restatement always enters $0 and has no refusal for filers who elect an optional method.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names electing an optional method (Schedule SE Part II)."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names electing an optional method (Schedule SE Part II).",
+   "subject_key": "fcc80817d7a037798eeee88ecb5a61ca39f18cf9306543bd5a5e0110fa4fe3c8"
   },
   {
    "printed": "4b",
    "restated": "Enter the amount from helper \"Zero\".",
    "model": "The IRS says \"If you elect one or both of the optional methods, enter the total of lines 15 and 17 here.\" The restatement always enters $0, and no refusal names the excluded optional-method elections.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names electing an optional method (Schedule SE Part II)."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names electing an optional method (Schedule SE Part II).",
+   "subject_key": "fcc80817d7a037798eeee88ecb5a61ca39f18cf9306543bd5a5e0110fa4fe3c8"
   },
   {
    "printed": "5b",
    "restated": "Enter the amount from helper \"Zero\".",
    "model": "The IRS line says \"Multiply line 5a by 92.35% (0.9235). If less than $100, enter -0-\". The restatement always enters $0, ignoring church employee income, with no refusal.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names church employee income, the source of line 5a."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names church employee income, the source of line 5a.",
+   "subject_key": "9c0b6ac62544917878143a9d2928e5b84ac7a29f0496542e9480def33c4166d7"
   },
   {
    "printed": "5b",
    "restated": "Enter the amount from helper \"Zero\".",
    "model": "The IRS says \"Multiply line 5a by 92.35% (0.9235). If less than $100, enter -0-.\" The restatement always enters $0, and no refusal names church employee income as excluded.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names church employee income, the source of line 5a."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names church employee income, the source of line 5a.",
+   "subject_key": "9c0b6ac62544917878143a9d2928e5b84ac7a29f0496542e9480def33c4166d7"
   },
   {
    "printed": "8a",
    "restated": "Input — Bound by the calling line (this person's Forms W-2, boxes 3 and 7).",
    "model": "The IRS line is \"Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation\". The restatement leaves out railroad retirement (tier 1) compensation and has no refusal.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Railroad retirement (tier 1) compensation is refused for the whole return through person.rrta (the wage statements' RRTA question), which stops Schedule 3 line 11 (person.credit) and Form 8959 line 1 (person.medicare5); with it refused, line 8a is the Form W-2 boxes 3 and 7 total."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. Railroad retirement (tier 1) compensation is refused for the whole return through person.rrta (the wage statements' RRTA question), which stops Schedule 3 line 11 (person.credit) and Form 8959 line 1 (person.medicare5); with it refused, line 8a is the Form W-2 boxes 3 and 7 total.",
+   "subject_key": "46b28e782d0ce7905da1ceb2051b0c8c86cc09913e43704ea162e670ae289103"
   },
   {
    "printed": "8d",
    "restated": "Enter the amount from line 8a.",
    "model": "The IRS line says \"Add lines 8a, 8b, and 8c\". The restatement uses line 8a only, omitting unreported tips (Form 4137) and Form 8919 wages, with no refusal.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names tips reported on Form 4137 and wages on Form 8919, the sources of lines 8b and 8c."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names tips reported on Form 4137 and wages on Form 8919, the sources of lines 8b and 8c.",
+   "subject_key": "130cf41fd73cb3b55b812224c36dff1457825ad4abd46e18e0ce5854264afe0e"
   },
   {
    "printed": "8d",
    "restated": "Enter the amount from line 8a.",
    "model": "The IRS says \"Add lines 8a, 8b, and 8c,\" which includes unreported tips from Form 4137, line 10, and wages from Form 8919, line 10. The restatement uses line 8a alone, and no refusal names these exclusions.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names tips reported on Form 4137 and wages on Form 8919, the sources of lines 8b and 8c."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names tips reported on Form 4137 and wages on Form 8919, the sources of lines 8b and 8c.",
+   "subject_key": "130cf41fd73cb3b55b812224c36dff1457825ad4abd46e18e0ce5854264afe0e"
   }
  ]
 }

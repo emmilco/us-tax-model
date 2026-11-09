@@ -8,112 +8,128 @@
    "restated": "Input — Do you count this Form 1095-A's column B? Count it unless another Form 1095-A from the same state, whose column B you count, shows coverage in every month this one does. For a month that several forms from one state cover, column B is entered from only one of them; forms from different states, and policies from one state that follow one another, are each counted.",
    "model": "The IRS rule is monthly: 'If you have more than one Form 1095-A showing coverage in a particular month... Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.' The program's form-level 'shows coverage in every month this one does' rule can count both forms in a partial overlap and double-count the overlapping months.",
    "ruling": "Ruling: scope — the objection is a partial same-state overlap where both forms' column B would be counted and the overlapping months added twice. The project refuses that return at f8962.two_counted: \"Of the Forms 1095-A whose column B you counted, do two from the same state show coverage in the same month?\" answered yes refuses Form 8962 lines 24 and 25 with the citation i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The render review of this collection form does not include the consuming form's gate, so it cannot see the refusal.",
-   "context": "5956851a1542cda3e03e0e989378bf88b5d31cbe2bde0ea02efb83b83cd76ff7"
+   "context": "5956851a1542cda3e03e0e989378bf88b5d31cbe2bde0ea02efb83b83cd76ff7",
+   "subject_key": "fb51fd1693c589b8b32832892f2cfa505937bd143c6dbcb11225b945b5ed3233"
   },
   {
    "printed": "b_counted",
    "restated": "Input — Do you count this Form 1095-A's column B? Count it unless another Form 1095-A from the same state, whose column B you count, shows coverage in every month this one does. For a month that several forms from one state cover, column B is entered from only one of them; forms from different states, and policies from one state that follow one another, are each counted.",
    "model": "The IRS rule is monthly: if more than one Form 1095-A shows coverage in a particular month from the same state, enter column B from only one form. The 'covers every month this one does' test can leave both partially overlapping same-state forms counted, double-counting the overlapping months.",
    "ruling": "Ruling: scope; the objection is a partial same-state overlap where both forms' column B would be counted and the overlapping months added twice. The project refuses it, and the related December-2025 marriage with separate plans: f8962.two_counted asks whether two counted Forms 1095-A from one state show coverage in the same month and refuses lines 24 and 25 on Yes (i8962 p. 16, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"); f8962.marriage refuses a return married in 2025 with coverage before the first full month of marriage, which covers a December marriage. The ptc-sa package folded f8962.b_zero (a month with column (a) above zero and column (b) zero) into the same computed gate, so the gate now refuses more, never less. The render review of this collection form does not include the consuming form's gates.",
-   "context": "e1dabbbedebf6defac974848bfb97c09df3850ff79c0c9c32faabdb80cdf2f4a"
+   "context": "e1dabbbedebf6defac974848bfb97c09df3850ff79c0c9c32faabdb80cdf2f4a",
+   "subject_key": "fb51fd1693c589b8b32832892f2cfa505937bd143c6dbcb11225b945b5ed3233"
   },
   {
    "printed": "b_counted",
    "restated": "Input — Do you count this Form 1095-A's column B? Count it unless another Form 1095-A from the same state, whose column B you count, shows coverage in every month this one does. For a month that several forms from one state cover, column B is entered from only one of them; forms from different states, and policies from one state that follow one another, are each counted.",
    "model": "The rule would count two same-state forms with partially overlapping months, but IRS says 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.' It also omits the December-marriage exception.",
    "ruling": "Ruling: scope — the objection is a partial same-state overlap where both forms' column B would be counted and the overlapping months added twice, and the December-2025 marriage with separate plans where column B is added across plans. The project refuses both: f8962.two_counted asks whether two counted Forms 1095-A from one state show coverage in the same month and refuses on yes (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"); f8962.marriage refuses a return married in 2025 with coverage before the first full month of marriage, which covers a December marriage, through Part V (i8962 p. 13, Table 4). The render review of this collection form does not include the consuming form's gates, so it cannot see either refusal.",
-   "context": "cc725948ed542e262e9c271bd0b63e7298734b905ec075bb8516585908f5252f"
+   "context": "cc725948ed542e262e9c271bd0b63e7298734b905ec075bb8516585908f5252f",
+   "subject_key": "fb51fd1693c589b8b32832892f2cfa505937bd143c6dbcb11225b945b5ed3233"
   },
   {
    "printed": "b_used",
    "restated": "(f8962 helper \"Number of Forms 1095-A\" = 1 (a count) or helper \"Do you count this Form 1095-A's column B?\" = true)",
    "model": "This gate applies b_counted to the whole form, so in a partial same-state overlap it can count both forms; IRS says for a particular month with multiple Forms 1095-A, 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.'",
    "ruling": "Ruling: scope — the gate's per-form answer cannot by itself prevent a partial same-state overlap, but the return is refused there by f8962.two_counted, which asks whether two counted Forms 1095-A from one state show coverage in the same month and refuses on yes (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"). The render review of this collection form does not see the consuming form's refusal.",
-   "context": "5956851a1542cda3e03e0e989378bf88b5d31cbe2bde0ea02efb83b83cd76ff7"
+   "context": "5956851a1542cda3e03e0e989378bf88b5d31cbe2bde0ea02efb83b83cd76ff7",
+   "subject_key": "a39523a3274b39109ef0accc1cb0720a48b88df20a6dc2ce6f94f38803b70747"
   },
   {
    "printed": "in_a_apr",
    "restated": "Input — April 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "f12e8852244b63b0c149507dda72213cd760ec18b998bd34ee51acc76102d757"
   },
   {
    "printed": "in_a_aug",
    "restated": "Input — August 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "82bf91e486c6b6badce806dd6381df2a89483cc02b906efff8f0f6ed2bd400e7"
   },
   {
    "printed": "in_a_dec",
    "restated": "Input — December 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "311c8ed97e5f787498200268e7f5fc2295a2c1a706da5dada27fd78fb12d8eaa"
   },
   {
    "printed": "in_a_feb",
    "restated": "Input — February 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "96ac4a775d8466dd0e2f2b471d51f39af488e7162b10551845542233478f3c4c"
   },
   {
    "printed": "in_a_jan",
    "restated": "Input — January 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "465e9b4f9a06d5af10f80cec19e32b21f9a550f0c8f32fde7c7fa643d75380af"
   },
   {
    "printed": "in_a_jul",
    "restated": "Input — July 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "74cae601bacd42a87446df6a8b8924c72650ade4266447894cd0f7c27c5776c9"
   },
   {
    "printed": "in_a_jun",
    "restated": "Input — June 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "c161073b938ca11a1f12845862766e662a605534979669c7c1da2d881300a2c1"
   },
   {
    "printed": "in_a_mar",
    "restated": "Input — March 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "6a3fad69f15aa53d3801996ac9530dc84c75a8d8182c24624e43526a7eaddc9c"
   },
   {
    "printed": "in_a_may",
    "restated": "Input — May 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "5a6d2142c9b174f374f3e487a50cdf984c25b4edae5d2be9f031d1a471ebd283"
   },
   {
    "printed": "in_a_nov",
    "restated": "Input — November 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "ac2b52e24364b1fb30b6620859ab27a87d85c7bd72d8b23ee00fa728e148e764"
   },
   {
    "printed": "in_a_oct",
    "restated": "Input — October 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "b3af1cb6ce6e4de17b477606f24f7d1b63a896def82858a19d9f96341c70d0d4"
   },
   {
    "printed": "in_a_sep",
    "restated": "Input — September 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
    "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9",
+   "subject_key": "01894cc36dcec97b46b54f79db98642525a30712ca7054cdf9cf7f83e6a3f557"
   }
  ]
 }

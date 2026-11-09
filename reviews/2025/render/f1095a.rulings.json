@@ -7,119 +7,136 @@
    "restated": "Input — Do you count this Form 1095-A's column B? Count it unless another Form 1095-A from the same state, whose column B you count, shows coverage in every month this one does. For a month that several forms from one state cover, column B is entered from only one of them; forms from different states, and policies from one state that follow one another, are each counted.",
    "model": "The IRS rule applies month by month (\"Enter the amount from column B of only one Form 1095-A—do not add the amounts\" for a month several same-state forms cover), and it has a marriage exception (\"add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage\"). A whole-form yes/no would double-count partially overlapping same-state forms and would ignore the marriage rule.",
    "ruling": "Ruling: scope; the partial same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)), and a 2025 marriage with separate coverage before the first full month of marriage by f8962.marriage (i8962 p. 13, Table 4). The render of this collection form does not include the consuming form's gates.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "fb51fd1693c589b8b32832892f2cfa505937bd143c6dbcb11225b945b5ed3233"
   },
   {
    "printed": "b_counted",
    "restated": "Input — Do you count this Form 1095-A's column B? Count it unless another Form 1095-A from the same state, whose column B you count, shows coverage in every month this one does. For a month that several forms from one state cover, column B is entered from only one of them; forms from different states, and policies from one state that follow one another, are each counted.",
    "model": "The rule omits the marriage exception. i8962 says that 'if you got married in December of 2025 and you and your spouse ... were enrolled in separate qualified health plans, add the amounts from Form 1095-A, column B, for each plan', and 'add together the amounts from column B ... for each month before the first full month of marriage'. The test is also per form rather than per month, so two same-state forms that only partly overlap are both counted; that adds column B for the overlap months, contrary to 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.'",
    "ruling": "Ruling: scope; screens f8962.two_counted, f8962.marriage and s3.mfs. Both points are refused situations, and the BUG-0189 wording is the page's rule where it computes. (1) Partly overlapping forms: i8962 p. 16, Column (b), \"If you have more than one Form 1095-A showing coverage in a particular month, use the following rules to determine the amounts to enter on Form 8962, column (b), for that month. • If individuals in your coverage family enrolled in separate policies in the same state ... Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The reviewer is right that the question is per form: two same-state forms that share only some months (for example January to June and April to December) are both counted, since neither covers every month of the other. They are not added, however: f8962.same_state_counted then asks \"Of the Forms 1095-A whose column B you counted, do two from the same state show coverage in the same month?\", Yes, and f8962.two_counted refuses line 24 (fixture stage18.refuse.two_counted_same_state, gate f8962.two_counted; the remedy says \"Forms that share only some of their months need month-by-month choices this tool does not take\"). Identical or nested coverage counts one form, and policies that follow one another are each counted, as p. 16 requires for each month. (2) Marriage: i8962 p. 16, \"See Marriage in 2025, later, if you got married during 2025\"; the December-marriage rule the reviewer quotes needs enrollment before the first full month of a 2025 marriage (January 2026), so f8962.married_in_2025 holds and the return is refused by f8962.marriage on a joint return (fixture stage18.refuse.year_of_marriage) or s3.mfs on a separate one, as D5 decides. No new error from the round-1 fix: on every computed return the counted forms give one column B for each month in each state.",
-   "context": "1b171cb5fbc0451263deb6d0ed05c2f2c785aea529e3ad013fd5c51f3d3de637"
+   "context": "1b171cb5fbc0451263deb6d0ed05c2f2c785aea529e3ad013fd5c51f3d3de637",
+   "subject_key": "fb51fd1693c589b8b32832892f2cfa505937bd143c6dbcb11225b945b5ed3233"
   },
   {
    "printed": "b_counted",
    "restated": "Input — Do you count this Form 1095-A's column B? Count it unless another Form 1095-A from the same state, whose column B you count, shows coverage in every month this one does. For a month that several forms from one state cover, column B is entered from only one of them; forms from different states, and policies from one state that follow one another, are each counted.",
    "model": "The rule works per form, so two same-state forms that only partly overlap are both counted, which adds column B for the shared months. The IRS says, for a month with more than one form, 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.' It also omits the marriage exception: 'if you got married in December of 2025 ... add the amounts from Form 1095-A, column B, for each plan' and 'add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage.'",
    "ruling": "Ruling: scope — the partial same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"), and the December-2025 marriage with separate plans by f8962.marriage, which refuses Part V for a 2025 marriage with coverage before the first full month of marriage (i8962 p. 13, Table 4). The render review of this collection form does not include the consuming form's gates.",
-   "context": "aaebd136ac3269ce82099e1ddad4ebce9f04edff8cbda56a175fd3bde86ecd3d"
+   "context": "aaebd136ac3269ce82099e1ddad4ebce9f04edff8cbda56a175fd3bde86ecd3d",
+   "subject_key": "fb51fd1693c589b8b32832892f2cfa505937bd143c6dbcb11225b945b5ed3233"
   },
   {
    "printed": "b_counted",
    "restated": "Input — Do you count this Form 1095-A's column B? Count it unless another Form 1095-A from the same state, whose column B you count, shows coverage in every month this one does. For a month that several forms from one state cover, column B is entered from only one of them; forms from different states, and policies from one state that follow one another, are each counted.",
    "model": "The text says that for one-state policies you \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" This form-level yes/no counts both of two same-state forms whose months only partly overlap, so the shared months are added twice. It also ignores the marriage rules, which require adding column B from separate same-state forms: \"if you got married in December of 2025 ... add the amounts from Form 1095-A, column B, for each plan\" and \"add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage.\"",
    "ruling": "Ruling: scope; the objection is a partial same-state overlap where both forms' column B would be counted and the overlapping months added twice, and the December-2025 marriage with separate plans. The project refuses both: f8962.two_counted asks whether two counted Forms 1095-A from one state show coverage in the same month and refuses lines 24 and 25 on Yes (i8962 p. 16, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"); f8962.marriage refuses a return married in 2025 with coverage before the first full month of marriage, which covers a December marriage. The ptc-sa package folded f8962.b_zero (a month with column (a) above zero and column (b) zero) into the same computed gate, so the gate now refuses more, never less. The render review of this collection form does not include the consuming form's gates.",
-   "context": "0f2663eeb9231e0e00443798e25e22610330043ec26b7d53040e51d0a689d1a0"
+   "context": "0f2663eeb9231e0e00443798e25e22610330043ec26b7d53040e51d0a689d1a0",
+   "subject_key": "fb51fd1693c589b8b32832892f2cfa505937bd143c6dbcb11225b945b5ed3233"
   },
   {
    "printed": "in_b_apr",
    "restated": "Input — April 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "969ac76b852795867e68b8a06efe50543ea6ea73d18bda89b9a28e6b55bb6f78"
   },
   {
    "printed": "in_b_aug",
    "restated": "Input — August 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "d885badf737cf7fd2e3ce79e0ae9ec3ba518d98f6325c9768fe5e2de2f91cd75"
   },
   {
    "printed": "in_b_dec",
    "restated": "Input — December 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "6d5a83bef99ce66924f27f261e6022c531b7d14d6077f343fb1cbefe8bb3f821"
   },
   {
    "printed": "in_b_feb",
    "restated": "Input — February 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "b2387fcaf16f97722e7cff6ff92c030c86038d23a62ed67824daef6fcb15c9aa"
   },
   {
    "printed": "in_b_jan",
    "restated": "Input — January 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "66f6195209774150b1729908a3a8b3a1c4f27875d5f47f82c94c9ec4dfa17c04"
   },
   {
    "printed": "in_b_jul",
    "restated": "Input — July 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "6c535ad41978d7795c19fd32277328984959ecd03fafd9df476ba68110afb383"
   },
   {
    "printed": "in_b_jun",
    "restated": "Input — June 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "67bee66438aa3f2021df3661bb56ce09b0bb7f740f9331dd68620e59522dea9c"
   },
   {
    "printed": "in_b_mar",
    "restated": "Input — March 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "feb333208efcd1cf0021baa13aaea478becb12d4b3ca84d8bc792410c152df58"
   },
   {
    "printed": "in_b_may",
    "restated": "Input — May 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "c84ca09b0f12bf45d2dc79c19992e6f43298fee2e39f4e5e5e2b4a1ae8463ec5"
   },
   {
    "printed": "in_b_nov",
    "restated": "Input — November 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "4bb0ac15634c4bed14b72a8c9272cf18566a363978bf3976b2bfd29ba93d11a2"
   },
   {
    "printed": "in_b_oct",
    "restated": "Input — October 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "95e8f7d4b841ff6d94ee4f3b6cee6838d62320676396f6743998fa7d34c6275b"
   },
   {
    "printed": "in_b_sep",
    "restated": "Input — September 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month (column A blank) or if that month's premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only \"If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid ... and the amount of the premium paid ... is not sufficient to avoid termination.\" The restatement zeroes it whenever premiums were unpaid by the due date, even where column A shows the full premium, such as a grace-period month.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "850850ab1ce129d741fca162d28017a264d4d3c8281e25de7963b9f7175f1359"
   },
   {
    "printed": "mo_b",
    "restated": "Input — The monthly amount in Part III, column B (monthly SLCSP premium), the same in every month: the amount in column B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero although the premiums were paid by the due date of your return (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool); zero if the premiums were not paid by the due date of your return (not including extensions)",
    "model": "The IRS zeroes column (b) only where column A shows -0- because premiums were unpaid, and it allows the credit when the amount paid is sufficient to avoid termination. The text is: \"not allowed a monthly credit amount for any month that the enrollment premiums for the month were not paid by the due date of your return ..., unless the amount of the premium paid for the month is sufficient to avoid termination of the coverage.\" The restatement zeroes column B whenever premiums were not paid by the due date.",
    "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
-   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153"
+   "context": "a014b2a6f3fac46f2ff69c1f309b97fa0519c7c05b35e68783d5ce728ee69153",
+   "subject_key": "79f873386dae6c7f882d0f8b044ea6f3b2dd6b3e7d668784734954d032afebe3"
   }
  ]
 }

@@ -2085,7 +2085,7 @@ def _sections(results, kept, pass_id=None):
             out += ["", "Project:", "", "```json", r["project"], "```", "", "Second:", "", "```json", str(r["second"]), "```"]
             if r.get("note"):
                 out += ["", f"Second transcription's note: {r['note']}"]
-            ruling = kept.get((r["printed"], r["project"], str(r["second"])), "Ruling: open")
+            ruling = kept.get(rulings.stored_key("transcription", (r["printed"], r["project"], str(r["second"]))), "Ruling: open")
             out += ["", ruling, *tag, ""]
         else:
             out += [*tag, ""]

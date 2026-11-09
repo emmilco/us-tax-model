@@ -8,14 +8,16 @@
    "restated": "Input — The asset class of this property: find the property in Pub. 946 Appendix B, Table B-1, and the activity it is used in in Table B-2 (use the Table B-2 class when the property is specifically listed there under your activity); or choose A (personal property with no class life), B (qualified technological equipment), C (property used in research and experimentation), or qualified improvement property",
    "model": "The IRS column (a) is 'Classification of property' and says to sort the property 'according to its classification (3-year property, 5-year property, etc.)'; the restatement instead asks for the Appendix B asset class or A/B/C/QIP.",
    "ruling": "Ruling: representation — the line is an intermediate in the project's basis computation. (a) the class input derives the form's 3/5/7-year classification through the Appendix B class; (b) the year plus the 2025 quarter gives the MACRS convention the form's month would give; (c) the pre-section-179 basis is shown under the column marker (c), and the form's column (c) after section 179 and the special allowance is item 19(c) (asset.col19c), which subtracts them. No printed tax amount differs. Lines 25 and 26(i) copy the per-asset allowance and elected cost, not the other lines' columns.",
-   "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5"
+   "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5",
+   "subject_key": "cc84b4e328c6c0f5e08cacdda487691534b689ebfbdd9c3118492d270503e2bc"
   },
   {
    "printed": "(b)",
    "restated": "Input — The year you placed this property in service in the business (2005 to 2025)",
    "model": "The IRS column (b) calls for the 'Month and year placed in service' and line 19 is only for assets placed in service during 2025, while the restatement asks only for the year and permits 2005 through 2025.",
    "ruling": "Ruling: representation — the line is an intermediate in the project's basis computation. (a) the class input derives the form's 3/5/7-year classification through the Appendix B class; (b) the year plus the 2025 quarter gives the MACRS convention the form's month would give; (c) the pre-section-179 basis is shown under the column marker (c), and the form's column (c) after section 179 and the special allowance is item 19(c) (asset.col19c), which subtracts them. No printed tax amount differs. Lines 25 and 26(i) copy the per-asset allowance and elected cost, not the other lines' columns.",
-   "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5"
+   "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5",
+   "subject_key": "e4bf7f9853f8016f0a73ab5a390605136cfb5dbda2332ad2834f7c74fc0c777f"
   },
   {
    "printed": "(b)",
@@ -24,14 +26,16 @@
    "ruling": "Ruling: model error; the model returned no verdict for this line.",
    "context": "3ee89151d414149e3f969cee1458e28bf63806de8c0b928300cb8bfe1d3980ed",
    "date": "2026-11-04",
-   "run": "3da0e7083893f74e162c0a0a385b59ccb642ef00952782c133e17db8328074d3"
+   "run": "3da0e7083893f74e162c0a0a385b59ccb642ef00952782c133e17db8328074d3",
+   "subject_key": "e4bf7f9853f8016f0a73ab5a390605136cfb5dbda2332ad2834f7c74fc0c777f"
   },
   {
    "printed": "(c)",
    "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
    "model": "IRS column (c) says to multiply cost by business-use percentage and then 'subtract any credits and deductions allocable to the property', including 'Section 179 expense deduction' and 'any special depreciation allowance'; the restatement stops after multiplying by the business-use percentage.",
    "ruling": "Ruling: scope; asset.screen refuses property whose basis was adjusted for anything other than depreciation, so on a computed return the only reductions are section 179 and the special allowance, which the project subtracts at 19(c).",
-   "context": "d1c0518ed5c7af2569758ae9d739c80030cb9a9adc562d8fec4ec7c54247ab3f"
+   "context": "d1c0518ed5c7af2569758ae9d739c80030cb9a9adc562d8fec4ec7c54247ab3f",
+   "subject_key": "3f38249e0057119d96cde929a35e7501589a2f1db566823c43e9e488ade94c4f"
   },
   {
    "printed": "(c)",
@@ -40,7 +44,8 @@
    "ruling": "Ruling: representation; same objection as the earlier rulings. This marker is the business basis before section 179 and the special allowance (its label); the form's column (c) after those deductions is 19(c) (asset.col19c), which subtracts them (i4562 p. 9, Lines 19a Through 19j, column (c)). asset.screen refuses property whose basis \"is reduced by a credit or deduction other than the section 179 deduction and the special depreciation allowance\", so on a computed return the only reductions are the two 19(c) subtracts. No printed amount differs. Project stands.",
    "context": "b59456c941c6a85540de05eb1bf529ff8a01cd158b0cb40e629ccc1822d0d1c1",
    "date": "2026-11-07",
-   "run": "0f614eda4dd2a987001f351c561a2c74aa1753571cd0625f87bb9486b0fc7346"
+   "run": "0f614eda4dd2a987001f351c561a2c74aa1753571cd0625f87bb9486b0fc7346",
+   "subject_key": "3f38249e0057119d96cde929a35e7501589a2f1db566823c43e9e488ade94c4f"
   },
   {
    "printed": "(c)",
@@ -49,35 +54,40 @@
    "ruling": "Ruling: scope; as the Claude ruling of this marker: the subtraction of section 179 and the special allowance is printed at 19(c), and asset.screen refuses any other basis-reducing credit or deduction (i4562 p. 11, Column (c)).",
    "context": "3ee89151d414149e3f969cee1458e28bf63806de8c0b928300cb8bfe1d3980ed",
    "date": "2026-11-04",
-   "run": "3da0e7083893f74e162c0a0a385b59ccb642ef00952782c133e17db8328074d3"
+   "run": "3da0e7083893f74e162c0a0a385b59ccb642ef00952782c133e17db8328074d3",
+   "subject_key": "3f38249e0057119d96cde929a35e7501589a2f1db566823c43e9e488ade94c4f"
   },
   {
    "printed": "(c)",
    "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
    "model": "IRS line 19 column (c) says after multiplying cost by business use, 'subtract any credits and deductions allocable to the property' (including section 179 and the special allowance); the restatement stops after the multiplication.",
    "ruling": "Ruling: representation — the line is an intermediate in the project's basis computation. (a) the class input derives the form's 3/5/7-year classification through the Appendix B class; (b) the year plus the 2025 quarter gives the MACRS convention the form's month would give; (c) the pre-section-179 basis is shown under the column marker (c), and the form's column (c) after section 179 and the special allowance is item 19(c) (asset.col19c), which subtracts them. No printed tax amount differs. Lines 25 and 26(i) copy the per-asset allowance and elected cost, not the other lines' columns.",
-   "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5"
+   "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5",
+   "subject_key": "3f38249e0057119d96cde929a35e7501589a2f1db566823c43e9e488ade94c4f"
   },
   {
    "printed": "(c)",
    "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
    "model": "IRS line 19 column (c) says to multiply cost by business/investment use and then 'From that result, subtract any credits and deductions allocable to the property,' including the section 179 expense deduction and any special depreciation allowance; the restatement stops after the multiplication.",
    "ruling": "Ruling: scope; this marker is the business basis before section 179 and the special allowance (its label); the reduced basis is 19(c). asset.screen refuses property whose basis \"is reduced by a credit or deduction other than the section 179 deduction and the special depreciation allowance\" (BUG-0373 wording), so on a computed return the only reductions are the two the project subtracts at 19(c).",
-   "context": "0899bbbdf0f73c9854a16881513a0aa61e3f1de9aef353b4b14f2604764b1627"
+   "context": "0899bbbdf0f73c9854a16881513a0aa61e3f1de9aef353b4b14f2604764b1627",
+   "subject_key": "3f38249e0057119d96cde929a35e7501589a2f1db566823c43e9e488ade94c4f"
   },
   {
    "printed": "(c)",
    "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
    "model": "IRS line 26/27 uses qualified business use: \"Use line 26 to figure depreciation for property used more than 50% in a qualified business use. Use line 27 ... 50% or less in a qualified business use.\" The refusal gate asset.listed_low instead tests the business/investment-use percentage.",
    "ruling": "Ruling: representation; the listed-property questions now state the qualified business use limits (BUG-0315), so the percentage asked is the one the 50% test uses; any remaining exclusions are the BUG-0307 gap.",
-   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c",
+   "subject_key": "3f38249e0057119d96cde929a35e7501589a2f1db566823c43e9e488ade94c4f"
   },
   {
    "printed": "(d)",
    "restated": "Find the entry in GDS recovery period by asset class (Pub. 946, Appendix B, Tables B-1 and B-2) for asset_class column (a).",
    "model": "The IRS assigns qualified improvement property to 15-year property in the line 19 classification instructions (\"Qualified improvement property ... placed in service by you after December 31, 2017\"), but the restatement only points to Appendix B Tables B-1/B-2, which do not list QIP.",
    "ruling": "Ruling: representation; cqip, qualified improvement property placed in service after 2017, is one of the asset class answers and maps to 15-year straight line (Pub. 946 Table 4-1).",
-   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c",
+   "subject_key": "5da58ace09e2e7c8ffb8137dce792adc3af686c0c886029fb4e94fb08124c3c7"
   },
   {
    "printed": "(screen) (asset.screen)",
@@ -86,112 +96,128 @@
    "ruling": "Ruling: model error; the reply returned no verdict for this line. The restructured asset.screen question was judged MATCH in the Claude render pass of the same restatement (reviews/2025/render/asset.md), and its words are the earlier question's (R3 word check: none lost).",
    "context": "b59456c941c6a85540de05eb1bf529ff8a01cd158b0cb40e629ccc1822d0d1c1",
    "date": "2026-11-07",
-   "run": "0f614eda4dd2a987001f351c561a2c74aa1753571cd0625f87bb9486b0fc7346"
+   "run": "0f614eda4dd2a987001f351c561a2c74aa1753571cd0625f87bb9486b0fc7346",
+   "subject_key": "1d34189a95e84f1098ed7f11be0a3d5bfb46af32db689bf33b0d36843ac994c9"
   },
   {
    "printed": "14",
    "restated": "Choose — [helper \"Special depreciation allowance for this class of property\" = 'full' → helper \"The allowance when it is claimed: 100% if acquired after January 19, 2025, otherwise 40%\"] [helper \"Special depreciation allowance for this class of property\" = 'forty' → helper \"40% special allowance\"] [helper \"Special depreciation allowance for this class of property\" = 'none' → helper \"Zero\"]",
    "model": "The IRS also provides a 50% allowance for qualified reuse and recycling property and limits the 40% rate to property acquired after September 27, 2017; the restatement applies 40% to any property not acquired after January 19, 2025.",
    "ruling": "Ruling: finding — i4562 pp. 5–7, Line 14. The 40% rate applies to property acquired after September 27, 2017 and before January 20, 2025; qualified reuse and recycling property placed in service after August 31, 2008 is eligible for 50%. The restatement's \"otherwise 40%\" applies 40% to any property not acquired after January 19, 2025, and the bonus-choice question has no 50% branch. A pre-September-27-2017 asset can be given 40% and a reuse/recycling asset cannot be given 50%. BUG-0291; fix the screen and add the branches with the asset pass (T-158).",
-   "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
+   "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c",
+   "subject_key": "6eeeb40181277e2dc14befb61620c89478361e216ba6b21136004d1995db701f"
   },
   {
    "printed": "14",
    "restated": "Choose — [helper \"Special depreciation allowance for this class of property\" = 'full' → helper \"The allowance when it is claimed: 100% if acquired after January 19, 2025; 40% if acquired after September 27, 2017 and before January 20, 2025\"] [helper \"Special depreciation allowance for this class of property\" = 'forty' → helper \"40% special allowance\"] [helper \"Special depreciation allowance for this class of property\" = 'none' → helper \"Zero\"]",
    "model": "IRS says to figure the allowance by subtracting from the business/investment cost \"any credits and deductions allocable to the property\"; the special-allowance helpers use only cost less the section 179 election.",
    "ruling": "Ruling: scope; asset.screen refuses property whose basis was adjusted for anything other than depreciation, so on a computed return there are no other credits or deductions allocable to it.",
-   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c",
+   "subject_key": "6eeeb40181277e2dc14befb61620c89478361e216ba6b21136004d1995db701f"
   },
   {
    "printed": "19(c)",
    "restated": "Enter the amount from helper \"Basis for MACRS depreciation (after section 179 and the special allowance)\".",
    "model": "IRS line 19(c) says to subtract 'any credits and deductions allocable to the property'; the restatement subtracts only section 179 and the special allowance.",
    "ruling": "Ruling: scope — asset.screen refuses an asset whose basis was adjusted for anything other than depreciation (i4562 pp. 11–12), which covers the credits and deductions allocable to the property that column (c) subtracts. The MACRS basis subtracts section 179 and the special allowance, the two adjustments in this slice.",
-   "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
+   "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c",
+   "subject_key": "3f1af482a3ca585bac336512c321f25d9d0c96d46e46fb6000a3b3e0df4ac61e"
   },
   {
    "printed": "19(c)",
    "restated": "Enter the amount from helper \"Basis for MACRS depreciation (after section 179 and the special allowance)\".",
    "model": "IRS says after multiplying cost by business/investment use, \"subtract any credits and deductions allocable to the property.\" The helper only subtracts section 179 and the special allowance, omitting other required credits and deductions.",
    "ruling": "Ruling: scope; asset.screen refuses property whose basis was adjusted for anything other than depreciation, so on a computed return there are no other credits or deductions allocable to it.",
-   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c",
+   "subject_key": "3f1af482a3ca585bac336512c321f25d9d0c96d46e46fb6000a3b3e0df4ac61e"
   },
   {
    "printed": "25",
    "restated": "Enter the amount from line 14.",
    "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it does not say to enter the amount from line 14, and line 14 is not the listed-property allowance.",
    "ruling": "Ruling: representation — the line is an intermediate in the project's basis computation. (a) the class input derives the form's 3/5/7-year classification through the Appendix B class; (b) the year plus the 2025 quarter gives the MACRS convention the form's month would give; (c) the pre-section-179 basis is shown under the column marker (c), and the form's column (c) after section 179 and the special allowance is item 19(c) (asset.col19c), which subtracts them. No printed tax amount differs. Lines 25 and 26(i) copy the per-asset allowance and elected cost, not the other lines' columns.",
-   "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5"
+   "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5",
+   "subject_key": "9aec01cb470bd46bddcd4d087b2f1b2f1429b4c71bab9f99fb90d362b957b1bc"
   },
   {
    "printed": "25",
    "restated": "Enter the amount from line 14.",
    "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it does not say to enter the line 14 amount, and line 14 is for non-listed property in this restatement.",
    "ruling": "Ruling: representation; restatement accepted. The per-asset allowance appears on line 25 for listed property and line 14 otherwise, figured by the same instructions (i4562 p. 14, \"Enter on line 25 your total special depreciation allowance for all qualified listed property\").",
-   "context": "0899bbbdf0f73c9854a16881513a0aa61e3f1de9aef353b4b14f2604764b1627"
+   "context": "0899bbbdf0f73c9854a16881513a0aa61e3f1de9aef353b4b14f2604764b1627",
+   "subject_key": "9aec01cb470bd46bddcd4d087b2f1b2f1429b4c71bab9f99fb90d362b957b1bc"
   },
   {
    "printed": "25",
    "restated": "Enter the amount from line 14.",
    "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it is not the amount from line 14, which is the non-listed-property special allowance line.",
    "ruling": "Ruling: representation; restatement accepted. The per-asset allowance appears on line 25 for listed property and line 14 otherwise, figured by the same instructions.",
-   "context": "d1c0518ed5c7af2569758ae9d739c80030cb9a9adc562d8fec4ec7c54247ab3f"
+   "context": "d1c0518ed5c7af2569758ae9d739c80030cb9a9adc562d8fec4ec7c54247ab3f",
+   "subject_key": "9aec01cb470bd46bddcd4d087b2f1b2f1429b4c71bab9f99fb90d362b957b1bc"
   },
   {
    "printed": "25",
    "restated": "Enter the amount from line 14.",
    "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it is not the line 14 amount, which the restatement reports only for property other than listed property.",
    "ruling": "Ruling: representation — i4562 p. 13, Line 25. asset.f25 copies asset.bonus, the per-asset special allowance; the printed line 14 is the non-listed-property line, so \"from line 14\" is loose wording, not the value. The line is shown only for listed property placed in service in 2025, and the Schedule C totals read the per-asset amount filtered by asset.listed.",
-   "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
+   "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c",
+   "subject_key": "9aec01cb470bd46bddcd4d087b2f1b2f1429b4c71bab9f99fb90d362b957b1bc"
   },
   {
    "printed": "25",
    "restated": "Enter the amount from line 14.",
    "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; line 14 is not the listed-property special allowance total, so copying line 14 uses a different operand.",
    "ruling": "Ruling: representation; same as the earlier rulings. asset.f25 copies asset.bonus, the per-asset special allowance, and is shown only for listed property placed in service in 2025 (asset.on_26_2025); \"from line 14\" names the shared per-asset amount, not the non-listed total (i4562 p. 14, Line 25).",
-   "context": "1022025251c7545fbf2d300b6e4abcdc4afaba27da273b9dfb92f8ebeb775334"
+   "context": "1022025251c7545fbf2d300b6e4abcdc4afaba27da273b9dfb92f8ebeb775334",
+   "subject_key": "9aec01cb470bd46bddcd4d087b2f1b2f1429b4c71bab9f99fb90d362b957b1bc"
   },
   {
    "printed": "25",
    "restated": "Enter the amount from line 14.",
    "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; the restatement instead takes the line 14 amount, which is for non-listed property.",
    "ruling": "Ruling: representation; restatement accepted. Line 14 and line 19 amounts are figured per asset and shown by listed status (asset.on_19, asset.on_26_2025); for listed property the same per-asset allowance, election and depreciation appear on lines 25, 26(i) and 26(h), figured by the line 19 instructions as i4562 p. 15, Column (h) directs. The objection reads the shared helper names as the other lines' columns.",
-   "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb"
+   "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb",
+   "subject_key": "9aec01cb470bd46bddcd4d087b2f1b2f1429b4c71bab9f99fb90d362b957b1bc"
   },
   {
    "printed": "25",
    "restated": "Enter the amount from line 14.",
    "model": "IRS says \"Enter on line 25 your total special depreciation allowance for all qualified listed property.\" The restatement copies line 14, which the program itself limits to non-listed property.",
    "ruling": "Ruling: representation; restatement accepted. The per-asset allowance appears on line 25 for listed property and line 14 otherwise, figured by the same instructions.",
-   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c",
+   "subject_key": "9aec01cb470bd46bddcd4d087b2f1b2f1429b4c71bab9f99fb90d362b957b1bc"
   },
   {
    "printed": "26(h)",
    "restated": "Add helper \"MACRS on 2025 property\" and helper \"MACRS on property placed in service before 2025\".",
    "model": "IRS line 26(h) says for property used more than 50% in a qualified business use and placed in service after 1986, 'figure column (h) by following the instructions for line 19, column (g)'; the restatement adds line 19(g)/line 17 amounts, which are for non-listed property, instead of computing from the listed property's own basis after line 26(i) and line 25.",
    "ruling": "Ruling: representation; restatement accepted. Line 14 and line 19 amounts are figured per asset and shown by listed status (asset.on_19, asset.on_26_2025); for listed property the same per-asset allowance, election and depreciation appear on lines 25, 26(i) and 26(h), figured by the line 19 instructions as i4562 p. 15, Column (h) directs. The objection reads the shared helper names as the other lines' columns.",
-   "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb"
+   "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb",
+   "subject_key": "3d45a77fdbd311ab0dbc1f91579c3e3963805feeb7fc0528a63837d86a918e79"
   },
   {
    "printed": "26(i)",
    "restated": "Enter the amount from line 6(c).",
    "model": "IRS line 6 says 'Do not include any listed property on line 6,' and line 26 column (i) is the elected section 179 cost for listed property; the restatement takes line 6(c).",
    "ruling": "Ruling: representation; restatement accepted. Line 14 and line 19 amounts are figured per asset and shown by listed status (asset.on_19, asset.on_26_2025); for listed property the same per-asset allowance, election and depreciation appear on lines 25, 26(i) and 26(h), figured by the line 19 instructions as i4562 p. 15, Column (h) directs. The objection reads the shared helper names as the other lines' columns.",
-   "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb"
+   "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb",
+   "subject_key": "a7904ee0d9340864d2644cf8d0d1808fa7eb0fad766279f92730c2db1de94569"
   },
   {
    "printed": "26(i)",
    "restated": "Enter the amount from line 6(c).",
    "model": "IRS line 6 says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; copying line 6(c) is therefore wrong.",
    "ruling": "Ruling: representation; restatement accepted. The per-asset section 179 election appears in column (i) for listed property and on line 6 otherwise.",
-   "context": "d1c0518ed5c7af2569758ae9d739c80030cb9a9adc562d8fec4ec7c54247ab3f"
+   "context": "d1c0518ed5c7af2569758ae9d739c80030cb9a9adc562d8fec4ec7c54247ab3f",
+   "subject_key": "a7904ee0d9340864d2644cf8d0d1808fa7eb0fad766279f92730c2db1de94569"
   },
   {
    "printed": "26(i)",
    "restated": "Enter the amount from line 6(c).",
    "model": "IRS line 6 says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; line 26(i) is not the line 6(c) amount.",
    "ruling": "Ruling: representation; i4562 p. 5, Line 6, and p. 16, Column (i). asset.f26i copies asset.s179, the per-asset elected section 179 cost; the printed line 6(c) is the non-listed column, so \"from line 6(c)\" is loose wording. A listed property's elected cost is the amount the 26(i) column asks for.",
-   "context": "0899bbbdf0f73c9854a16881513a0aa61e3f1de9aef353b4b14f2604764b1627"
+   "context": "0899bbbdf0f73c9854a16881513a0aa61e3f1de9aef353b4b14f2604764b1627",
+   "subject_key": "a7904ee0d9340864d2644cf8d0d1808fa7eb0fad766279f92730c2db1de94569"
   },
   {
    "printed": "26(i)",
@@ -200,28 +226,32 @@
    "ruling": "Ruling: representation; same as the earlier rulings. asset.f26i copies asset.s179, the per-asset elected section 179 cost (the input whose marker is 6(c)), shown only for listed property; Form 4562 line 6 itself is s179.line6, \"Elected cost of section 179 property (other than listed property)\", which sums the non-listed elections (i4562 p. 5, Line 6, \"Enter the elected section 179 cost of listed property in column (i) of line 26\"). Project stands.",
    "context": "b59456c941c6a85540de05eb1bf529ff8a01cd158b0cb40e629ccc1822d0d1c1",
    "date": "2026-11-07",
-   "run": "0f614eda4dd2a987001f351c561a2c74aa1753571cd0625f87bb9486b0fc7346"
+   "run": "0f614eda4dd2a987001f351c561a2c74aa1753571cd0625f87bb9486b0fc7346",
+   "subject_key": "a7904ee0d9340864d2644cf8d0d1808fa7eb0fad766279f92730c2db1de94569"
   },
   {
    "printed": "26(i)",
    "restated": "Enter the amount from line 6(c).",
    "model": "IRS says \"Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.\" Line 26(i) is the listed property election, not the line 6(c) amount.",
    "ruling": "Ruling: representation; restatement accepted. The per-asset section 179 election appears in column (i) for listed property and on line 6 otherwise.",
-   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c",
+   "subject_key": "a7904ee0d9340864d2644cf8d0d1808fa7eb0fad766279f92730c2db1de94569"
   },
   {
    "printed": "26(i)",
    "restated": "Enter the amount from line 6(c).",
    "model": "IRS says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.'; line 6(c) is not the listed-property elected section 179 cost.",
    "ruling": "Ruling: representation; same as the earlier rulings. asset.f26i copies asset.s179, the per-asset elected section 179 cost, shown only for listed property (i4562 p. 5, Line 6, \"Enter the elected section 179 cost of listed property in column (i) of line 26\").",
-   "context": "1022025251c7545fbf2d300b6e4abcdc4afaba27da273b9dfb92f8ebeb775334"
+   "context": "1022025251c7545fbf2d300b6e4abcdc4afaba27da273b9dfb92f8ebeb775334",
+   "subject_key": "a7904ee0d9340864d2644cf8d0d1808fa7eb0fad766279f92730c2db1de94569"
   },
   {
    "printed": "26(i)",
    "restated": "Enter the amount from line 6(c).",
    "model": "The IRS text says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; line 26(i) is not the amount from line 6(c).",
    "ruling": "Ruling: representation — the line is an intermediate in the project's basis computation. (a) the class input derives the form's 3/5/7-year classification through the Appendix B class; (b) the year plus the 2025 quarter gives the MACRS convention the form's month would give; (c) the pre-section-179 basis is shown under the column marker (c), and the form's column (c) after section 179 and the special allowance is item 19(c) (asset.col19c), which subtracts them. No printed tax amount differs. Lines 25 and 26(i) copy the per-asset allowance and elected cost, not the other lines' columns.",
-   "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5"
+   "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5",
+   "subject_key": "a7904ee0d9340864d2644cf8d0d1808fa7eb0fad766279f92730c2db1de94569"
   }
  ]
 }

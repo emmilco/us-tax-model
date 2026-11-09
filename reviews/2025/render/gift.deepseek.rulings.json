@@ -8,7 +8,8 @@
    "restated": "Enter the amount from helper \"Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions\".",
    "model": "Its Section B refusal inherits that overbroad classification; the IRS excepts vehicles, intellectual property, inventory, and certain other securities reportable in Section A, not just publicly traded securities.",
    "ruling": "Ruling: scope; accepted over-refusal. f8283 Section B covers \"Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory Reportable in Section A)\". The project sends every over-$5,000 group except publicly traded securities to the Section B refusal, so a vehicle, intellectual property, inventory or certain other securities over $5,000 are refused rather than computed. That refuses returns the tool could support; it never computes a wrong amount.",
-   "context": "9bee6ea9ebce90e936420e9fe48cb68b4dbf2e5bca9ffcd0b3fbbae41ac3e42e"
+   "context": "9bee6ea9ebce90e936420e9fe48cb68b4dbf2e5bca9ffcd0b3fbbae41ac3e42e",
+   "subject_key": "0cbe4ce83477aea260b61ac291e4da67c6238bc3b052b0547739fbf4efd03e8a"
   },
   {
    "printed": "no",
@@ -17,28 +18,32 @@
    "ruling": "Ruling: model error; gift.no is the false alternative of gift.section_b, taken when the deduction is $5,000 or less (f8283 p. 1, Section B, \"more than $5,000 per item or group\"); it is a structural constant the text need not state, and the restatement (false) matches the project.",
    "context": "23e60d2622a4fd0458376c98867cf9d19f87b5dd670d86207db212d8e250dd5c",
    "date": "2026-11-07",
-   "run": "e8975f841b43734a6db6e06d20425c9f75421ba61ea309453d3996ad01842536"
+   "run": "e8975f841b43734a6db6e06d20425c9f75421ba61ea309453d3996ad01842536",
+   "subject_key": "ac4c72a036beba2b8248702ce008bbfc7b1da4f3abd76e06b1881e88d05db190"
   },
   {
    "printed": "public_securities",
    "restated": "Input — Is this group publicly traded securities? A security counts only if it is (a) listed on a recognized stock exchange whose quotations are published daily, (b) regularly traded on a national or regional over-the-counter market, or (c) mutual fund shares quoted daily in a national newspaper of general circulation. Answer No for privately held stock, LLC or partnership interests, and for stock that has a ticker symbol but is not regularly traded.",
    "model": "The IRS says 'A security is generally considered to be publicly traded if' and includes 'Certain other securities even though the securities do not meet any of the criteria'; the restatement says a security 'counts only if' it meets (a)-(c) and adds a No for a ticker symbol not regularly traded, which the text does not impose.",
    "ruling": "Ruling: scope; accepted over-refusal. i8283 p. 9, Securities: \"A security is generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations are published daily; (b) regularly traded on a national or regional over-the-counter market; or (c) quoted daily in a national newspaper of general circulation in the case of mutual fund shares\"; i8283 p. 3, Section A, item 2.d: \"Certain other securities even though the securities do not meet any of the criteria described in paragraphs 2.a through 2.c above (for more information, see Regulations section 1.170A-13(c)(7)(xi)(B))\". The model is right that the PENDING-4 wording (\"counts only if\", and No for \"stock that has a ticker symbol but is not regularly traded\") is narrower than the text: it leaves out the 2.d securities, and a security listed on a recognized exchange with daily quotations meets (a) whether or not it trades often. But a No here only sends the group to Section B: gift.section_b (No and a deduction over $5,000) refuses gift.allowed (\"A group of similar items over $5,000 requires Section B and a qualified appraisal; publicly traded securities are excepted\"), and a group of $5,000 or less is in Section A either way. A Yes the text would deny is not made more likely by the narrowing. So the narrower wording can only refuse a return the tool could support; it never computes a wrong amount, as with gift.section_b. Low: the \"ticker symbol but is not regularly traded\" sentence could be limited to stock not listed on a recognized exchange (findings file, Low).",
-   "context": "d2d545729a1ae1c9f5329c42cc75d44591d69f542bee85952f8a966ca2c2d405"
+   "context": "d2d545729a1ae1c9f5329c42cc75d44591d69f542bee85952f8a966ca2c2d405",
+   "subject_key": "bc7349ce2e3f16ba0e30410148b99a110e9074f4717699a59e6e44dd81eb05a9"
   },
   {
    "printed": "section_b",
    "restated": "helper \"Is this group publicly traded securities (listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper of general circulation)?\" = false and helper \"Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions\" > $5,000",
    "model": "The IRS Section B is 'Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory Reportable in Section A)'; the helper excludes only publicly traded securities, so it would incorrectly treat vehicles, intellectual property, inventory, and certain other securities as Section B.",
    "ruling": "Ruling: scope; accepted over-refusal, unchanged. f8283 Section B covers \"Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory Reportable in Section A)\". The project sends every over-$5,000 group except publicly traded securities to the Section B refusal on gift.allowed, so a vehicle, intellectual property, inventory or a 2.d security over $5,000 is refused rather than computed (and gift.special already refuses vehicles, intellectual property and inventory). That refuses returns the tool could support; it never computes a wrong amount. The PENDING-4 change reworded gift.public_securities only.",
-   "context": "d2d545729a1ae1c9f5329c42cc75d44591d69f542bee85952f8a966ca2c2d405"
+   "context": "d2d545729a1ae1c9f5329c42cc75d44591d69f542bee85952f8a966ca2c2d405",
+   "subject_key": "b82eb5cb6e93e6cd0e14283f4534a7db2ed994044d54a8a572b3e478ff15d8f1"
   },
   {
    "printed": "section_b",
    "restated": "helper \"Is this group publicly traded securities?\" = false and helper \"Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions\" > $5,000",
    "model": "The IRS Section B exclusion is broader: 'Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory Reportable in Section A),' and Section A also includes certain other securities even over $5,000. The helper excludes only publicly traded securities.",
    "ruling": "Ruling: scope; accepted over-refusal. f8283 Section B covers \"Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory Reportable in Section A)\". The project sends every over-$5,000 group except publicly traded securities to the Section B refusal, so a vehicle, intellectual property, inventory or certain other securities over $5,000 are refused rather than computed. That refuses returns the tool could support; it never computes a wrong amount.",
-   "context": "9bee6ea9ebce90e936420e9fe48cb68b4dbf2e5bca9ffcd0b3fbbae41ac3e42e"
+   "context": "9bee6ea9ebce90e936420e9fe48cb68b4dbf2e5bca9ffcd0b3fbbae41ac3e42e",
+   "subject_key": "b82eb5cb6e93e6cd0e14283f4534a7db2ed994044d54a8a572b3e478ff15d8f1"
   },
   {
    "printed": "special",
@@ -47,7 +52,8 @@
    "ruling": "Ruling: model error; the reply returned no verdict for this line. The restructured gift.special question was judged MATCH in the Claude render pass of the same restatement (reviews/2025/render/gift.md), and its words are the earlier question's (R3 word check: none lost).",
    "context": "406933d1033f9f4e9a6ea9f432b6734ae0555a46f6181695c01748e970cd97ac",
    "date": "2026-11-07",
-   "run": "62e254b27259388fa24d3778c2a4bbe11bf2b923ee797e07914ca19d84f62067"
+   "run": "62e254b27259388fa24d3778c2a4bbe11bf2b923ee797e07914ca19d84f62067",
+   "subject_key": "8cfbd811d17421ba33b934069eee904e368a1693a283b3a0c02db55c1dbcf879"
   }
  ]
 }

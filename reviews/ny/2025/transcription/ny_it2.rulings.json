@@ -4,21 +4,23 @@
  "rulings": [
   {
    "printed": "17a (whole dollars)",
-   "project": "{\"shown_when\": null, \"value\": {\"of\": {\"line\": \"17a\"}, \"op\": \"round\", \"rule\": \"half_up\", \"unit\": 100}}",
-   "second": "{\"shown_when\": {\"args\": [{\"const\": 0}, {\"line\": \"17a\"}], \"test\": \"lt\"}, \"value\": {\"of\": {\"line\": \"17a\"}, \"op\": \"round\", \"rule\": \"half_up\", \"unit\": 100}}",
+   "project_expr_sha256": "e306204f7471aec87a46ed23f6e86a64c985f59946dd97698089c0b937fde99f",
+   "second_expr_sha256": "2bddfc48f2c762be2be01bfc28ce315eb174c431ae7913484ee2690e10150288",
    "ruling": "Ruling: model error on shown_when; the reply shows the whole-dollar line only when the amount is more than zero. The project shows it on every record, as the source requires a record for every W-2: IT-201-I p. 21, \"You must complete a W-2 record for each W-2 you receive, even if it does not show any New York State, New York City (NYC), or Yonkers wages or tax withheld.\" The value expressions are the same (half-up to the dollar; IT-2 p. 2, \"drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar\").",
    "context": "0a9db825d54378bdd60374965d62d4dafa766cdaca3d3f4c60cacba88e7f990f",
    "date": "2026-11-04",
-   "run": "1d360a5d9b090c655763095bb8197d585a04c4b3685f22273792a6769820bf1f"
+   "run": "1d360a5d9b090c655763095bb8197d585a04c4b3685f22273792a6769820bf1f",
+   "subject_key": "39998b30c0bfe34674ba48cb608e50b9538315a389cd9fc27eeacccb752dae06"
   },
   {
    "printed": "19 (whole dollars)",
-   "project": "{\"shown_when\": null, \"value\": {\"of\": {\"line\": \"19\"}, \"op\": \"round\", \"rule\": \"half_up\", \"unit\": 100}}",
-   "second": "{\"shown_when\": {\"args\": [{\"const\": 0}, {\"line\": \"19\"}], \"test\": \"lt\"}, \"value\": {\"of\": {\"line\": \"19\"}, \"op\": \"round\", \"rule\": \"half_up\", \"unit\": 100}}",
+   "project_expr_sha256": "34add4580213cc80cf990640865a842373c66ab0d8b34e2f4f0d937f8afc40d3",
+   "second_expr_sha256": "1e5b9e36b0ff22a91101b8853d80994416c4a6f766d503931b299f11baa30812",
    "ruling": "Ruling: model error on shown_when; the reply shows the whole-dollar line only when the amount is more than zero. The project shows it on every record, as the source requires a record for every W-2: IT-201-I p. 21, \"You must complete a W-2 record for each W-2 you receive, even if it does not show any New York State, New York City (NYC), or Yonkers wages or tax withheld.\" The value expressions are the same (half-up to the dollar; IT-2 p. 2, \"drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar\").",
    "context": "0a9db825d54378bdd60374965d62d4dafa766cdaca3d3f4c60cacba88e7f990f",
    "date": "2026-11-04",
-   "run": "1d360a5d9b090c655763095bb8197d585a04c4b3685f22273792a6769820bf1f"
+   "run": "1d360a5d9b090c655763095bb8197d585a04c4b3685f22273792a6769820bf1f",
+   "subject_key": "6b8324fbbdd2f490f405246e1337e562ffb8a022ea19573d981d4ccf8e399572"
   }
  ]
 }

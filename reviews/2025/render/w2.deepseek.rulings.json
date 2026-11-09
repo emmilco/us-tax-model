@@ -10,7 +10,8 @@
    "ruling": "Ruling: model error; iw2w3 p. 17, Box 2: \"Show the total federal income tax withheld from the employee's wages for the year\" and \"For Forms W-2AS, W-2CM, W-2GU, or W-2VI, show the total American Samoa, CNMI, Guam, or U.S. Virgin Islands income tax withheld.\" The quote supports the restatement (round-2 fix, w2#2): on those forms box 2 is territorial tax, not federal income tax withheld, so the federal withholding entered from them is zero. Project stands.",
    "context": "e463add6cf745702f7a0ec65ba07e0e0b00453e0eff0a394d22cc55cf7796b5b",
    "date": "2026-11-04",
-   "run": "7f8f3c66e8c0f85bb1a9e9da123ee5c1b3b2fa8dff2f02f0857326ebf571e0ff"
+   "run": "7f8f3c66e8c0f85bb1a9e9da123ee5c1b3b2fa8dff2f02f0857326ebf571e0ff",
+   "subject_key": "05c831afef9b17e9ff6f0ba196e968b1183548a08d3b8067f37667894707c99e"
   }
  ]
 }

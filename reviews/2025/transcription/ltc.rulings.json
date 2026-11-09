@@ -4,9 +4,10 @@
  "rulings": [
   {
    "printed": "2(b)",
-   "project": "{\"keys\": [{\"input\": \"ltc.age\"}], \"op\": \"keyed_lookup\", \"table\": \"ltc_limit\"}",
-   "second": "{\"keys\": [{\"input\": \"ltc.age\"}], \"op\": \"keyed_lookup\", \"table\": \"ltc.age_limit\"}",
-   "ruling": "Ruling: representation; project retained. The same lookup of the age-band amount by ltc.age; the second names its own table (ltc.age_limit) and lists its rows ($480, $900, $1,800, $4,810, $6,020), which are the project's ltc_limit rows (f7206 line 2(b); i7206 pp. 1–2)."
+   "project_expr_sha256": "f91aae32e28e62951774dce9015eb7f1b4edec171d4eee76073dbc070b4ccad2",
+   "second_expr_sha256": "4a4d8ce9a30daa6fe37d2ba90cdfcff1975e1a428707eb70b187a2a63d09a38b",
+   "ruling": "Ruling: representation; project retained. The same lookup of the age-band amount by ltc.age; the second names its own table (ltc.age_limit) and lists its rows ($480, $900, $1,800, $4,810, $6,020), which are the project's ltc_limit rows (f7206 line 2(b); i7206 pp. 1–2).",
+   "subject_key": "b79d837eb728357d66ed86fdf99c85a00e07371e97de6f12502048be02df2423"
   }
  ]
 }

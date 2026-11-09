@@ -338,15 +338,22 @@ page whose heading starts a line. The log records which pages were used.
 
 Before ruling, `triage.py` executes both sides of every open disagreement on the same
 inputs (every fixture, generated returns and partial records withholding one answer of
-the reviewed document) and writes `reviews/2025/transcription/triage/<stem>.json` with
-comparison counts, difference kinds and witnesses. `--explain` rebuilds one witness and
-prints both derivation trees. Each section is evaluated against the reply that judged it: a section marked
-`Reviewed in: pass <id>` against that pass's reply (its block's receipt, accepted only when the receipt's
-prompt hash and text match the block), with the project's other computed lines spliced beside it as
+the reviewed document) and writes `.transcription/triage/<year>/<stem>.json` (git-ignored, regenerated on
+demand; New York under `.transcription/triage/ny/<year>/`) with comparison counts, difference kinds and
+witnesses. A ruling written while a record of the reply it rules exists keeps a compact stamp of that line
+(`triage`: verdict, kind names, witness ids, policy) in the rulings file. `--explain` rebuilds one witness and
+prints both derivation trees. Every reply is read from the committed review log, so triage runs without the
+git-ignored review data. Each section is evaluated against the reply that judged it: a section marked
+`Reviewed in: pass <id>` against that pass's recorded reply (its receipt, when this checkout holds it, must
+answer the block's prompt hash and equal the recorded reply; one it lacks is recorded as `receipt_verified:
+false`), with the project's other computed lines spliced beside it as
 `compare()` splices them for type validation (a scoped line the reply omits stays missing); every other
 section against the whole-form reply. Each reply is evaluated in its own run; the record lists each pass
 under `passes` and marks its lines with `pass`. Triage exits non-zero, naming the form, the handles, the
-pass ids and the reason, when a pass reply cannot be found, verified or parsed. The method and ruling classes are in
+pass ids and the reason, when a pass reply cannot be found, parsed, or reconciled with its receipt.
+A transcription rulings entry stores both expressions as `project_expr_sha256` and `second_expr_sha256` (the
+sha256 of each expression's text as the log section embeds it; the text is in the log), and every entry
+records the line's cross-document subject when it was ruled (`subject_key`, `carry.line_subject`). The method and ruling classes are in
 `reviews/2025/transcription/adjudication/README.md`.
 
 ```

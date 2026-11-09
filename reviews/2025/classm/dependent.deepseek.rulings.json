@@ -10,7 +10,8 @@
    "model": "yes",
    "ruling": "Ruling: model error; project retained (no). Case inputs (fixtures/2025/classm.deepseek.json, classm.dependent.1.deepseek): dep_a is a sibling aged 15, a student, disabled, 12 months, dc_incapable yes, dc_paid $0.00, so the project claims dep_a as a qualifying child and dc_disabled_qp is yes; but f2441.care is no (and f2441.benefits no), and dependent.dc_qp begins with f2441.care, so dc_qp and the box are no (node engine/dist/main.js eval: dependent[dep_a].dc_qp no, dc_line2c no). The model's work (\"Age 15 is over 12 and the person was disabled/not able to care for themselves\") ignores that no care was paid. i2441 p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\"; with no care provided there is no care time, no line 2 entry and no Form 2441 (i2441 p. 1, Purpose of Form). The box is display-only (dependent.dc_line2c, \"it changes no amount\"). Same reading and ruling as the dep_b entry of this case in round 2 and rounds 2 and 3 before Stage 19.",
    "drop": true,
-   "context": "868666c5d1113b2a34be02da1a5e881c9d46d738f8929aebbe18e28b8a5178ea"
+   "context": "868666c5d1113b2a34be02da1a5e881c9d46d738f8929aebbe18e28b8a5178ea",
+   "subject_key": "8695b9e8833d302c4d880de076d097562187dcc742a2764af8337153394cfbd4"
   },
   {
    "case": "classm.dependent.1",
@@ -19,7 +20,8 @@
    "model": "yes",
    "ruling": "Ruling: model error; project retained (no). Case inputs (fixtures/2025/classm.deepseek.json, classm.dependent.1.deepseek): dep_b is a household_member aged 71, 12 months, gross income $4,588.00, supported, dc_incapable yes, so the project claims dep_b as a qualifying relative and its dc_disabled_qp is yes; but f2441.care is no (and f2441.benefits no), and dependent.dc_qp begins with f2441.care, so dc_qp and the box are no. The prompt showed \"Did you pay for the care of a qualifying person so you could work or look for work?: no\"; the model's work (\"Dep_b was age 71 (over 12) and permanently and totally disabled\") ignores it, and reads permanent and total disability where column (c) turns on being unable to care for oneself (dc_incapable, yes here). i2441 p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\"; with no care provided there is no care time, no line 2 entry and no Form 2441 (i2441 p. 1, Purpose of Form). The box is display-only (dependent.dc_line2c, \"it changes no amount\"). Same reading and ruling as rounds 2 and 3.",
    "drop": true,
-   "context": "93cffcdd0a520e632ea15a1ad0b701b2a1b47f766bd5bd69b80f9d9ea8f55cf4"
+   "context": "93cffcdd0a520e632ea15a1ad0b701b2a1b47f766bd5bd69b80f9d9ea8f55cf4",
+   "subject_key": "8695b9e8833d302c4d880de076d097562187dcc742a2764af8337153394cfbd4"
   },
   {
    "case": "classm.dependent.2",
@@ -28,7 +30,8 @@
    "model": "yes",
    "ruling": "Ruling: model error; project retained (no); model value dropped from the fixture. Case inputs (fixtures/2025/classm.deepseek.json, classm.dependent.2.deepseek; identical to the Claude case and to round 1, prompt sha256 102d5812...): f1040.status qss, f2441.care no, f2441.benefits no, f2441.nondependent no; dep_b is a household member aged 71, disabled yes, dc_incapable yes, 12 months, dc_paid $0.00, claimed as a qualifying relative (qr_all_year yes, gross income $4,588.00). node engine/dist/main.js eval: dependent[dep_b].dc_disabled_qp yes but dependent.dc_qp no, because dc_qp begins with f2441.care; dc_line2c no, f2441.qp_count 0, f2441.line3 $0.00. The model's work (\"Dep_b is over age 12 and permanently and totally disabled\") tests only the person, ignores that no care was paid, and reads permanent and total disability for inability to care for oneself. i2441 p. 1, Purpose of Form: \"If you paid someone to care for your child or other qualifying person so you (or your spouse if filing jointly) could work or look for work in 2025, you may be able to take the credit\"; p. 3, Line 2: \"Complete columns (a) through (d) for each qualifying person\"; p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled.\" No care, no line 2 entry, no box. Display-only line (\"it changes no amount\"). dc_line2c and dc_qp are identical in HEAD and the working tree and read no hoh_* or absence line. The Claude model now agrees (no) on this case. Same ruling as the T-091 round and fix rounds 2 to 4 (classm.dependent.1 dep_b).",
    "drop": true,
-   "context": "cc070ed62a40bc33f3a42da0f791407ec6a9c14aa90c27c2dfe79e632e55a236"
+   "context": "cc070ed62a40bc33f3a42da0f791407ec6a9c14aa90c27c2dfe79e632e55a236",
+   "subject_key": "8695b9e8833d302c4d880de076d097562187dcc742a2764af8337153394cfbd4"
   },
   {
    "case": "classm.dependent.5",
@@ -37,7 +40,8 @@
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Case inputs (fixtures/2025/classm.deepseek.json, classm.dependent.5.deepseek): f2441.care yes; dep_b is a child aged 25, not a student, not disabled, dc_incapable no, joint_return yes with married no (contradictory answers), dc_paid $250.00. The project claims dep_b as a qualifying relative, but dc_child_all_year, dc_child and dc_disabled_qp are all no, so dependent.dc_qp is no; dependent.dc_line2d copies dc_paid and shows $250.00. The model's $0.00 is the source's reading (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"). The $250.00 reaches nothing: f2441.paid_total (line 3) sums column (d) only where dc_qp is yes, and the interview never asks dc_paid for a non-qualifying person. The same entry was ruled as classm.dependent.6 in Stage 19 round 3 (renumbered: the D3 kidnapped answer added to the fixtures). The expectation is dropped because the fixture would pin a value no interview return shows.",
    "drop": true,
-   "context": "8611c1e3396f206abe8503196345bfb6205f558c5d51bf22a24023cbddad9640"
+   "context": "8611c1e3396f206abe8503196345bfb6205f558c5d51bf22a24023cbddad9640",
+   "subject_key": "3eeb24ffbff2f96c8050bcea975020930d07a1cc5c49034449e12e6b1a1b958a"
   },
   {
    "case": "classm.dependent.6",
@@ -46,7 +50,8 @@
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Case inputs (fixtures/2025/classm.deepseek.json, classm.dependent.6.deepseek): f2441.care yes; dep_b is a child aged 25, not a student, not disabled, dc_incapable no, joint_return yes with married no, dc_paid $250.00. The project claims dep_b as a qualifying relative, but dc_child_all_year, dc_child and dc_disabled_qp are all no, so dependent.dc_qp is no; dependent.dc_line2d copies dc_paid and shows $250.00. The model's $0.00 is the source's reading (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"). The $250.00 reaches nothing: f2441.paid_total (line 3) sums column (d) only where dc_qp is true, and the interview never asks dc_paid for a non-qualifying person (the where filter is evaluated before the field). The amount exists only because the generated return supplies an answer the interview does not ask; the same entry was ruled as classm.dependent.8 in Stage 19 rounds 1 and 2 (the case is renumbered) and at classm.dependent.5 in Stage 18. The expectation is dropped because the fixture would pin a value no interview return shows.",
    "drop": true,
-   "context": "868666c5d1113b2a34be02da1a5e881c9d46d738f8929aebbe18e28b8a5178ea"
+   "context": "868666c5d1113b2a34be02da1a5e881c9d46d738f8929aebbe18e28b8a5178ea",
+   "subject_key": "3eeb24ffbff2f96c8050bcea975020930d07a1cc5c49034449e12e6b1a1b958a"
   },
   {
    "case": "classm.dependent.8",
@@ -55,7 +60,8 @@
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Case inputs (fixtures/2025/classm.deepseek.json, classm.dependent.8.deepseek; identical to the Claude case): f2441.care yes; dep_b is a child aged 25, not a student, not disabled, dc_incapable no, joint_return yes with married no, dc_paid $250.00. dependent.dc_qp is no and dependent.dc_line2d copies dc_paid and shows $250.00. The model's $0.00 is the source's reading (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"). The $250.00 reaches nothing: f2441.paid_total (line 3) sums column (d) only where dc_qp is true ($1,480.00), and with both dc_paid answers removed and --target f2441.paid_total only dependent[dep_a].dc_paid is demanded, so the interview never computes dep_b's line. The model's reason (\"age 25 and not disabled\") is right about the person and immaterial to any amount. Unchanged by T-091 and its correction (HEAD and working tree compared; no dc_* line reads hoh_test2_lived, hoh_test2, hoh_absence or absence_no_return). Same case and ruling as Stage 19 to the T-091 round. The expectation is dropped because the fixture would pin a value no interview return shows.",
    "drop": true,
-   "context": "cc070ed62a40bc33f3a42da0f791407ec6a9c14aa90c27c2dfe79e632e55a236"
+   "context": "cc070ed62a40bc33f3a42da0f791407ec6a9c14aa90c27c2dfe79e632e55a236",
+   "subject_key": "3eeb24ffbff2f96c8050bcea975020930d07a1cc5c49034449e12e6b1a1b958a"
   }
  ]
 }

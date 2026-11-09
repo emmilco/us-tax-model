@@ -4,19 +4,21 @@
  "rulings": [
   {
    "printed": "div.has_ordinary",
-   "project": "{\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"div.any\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"sb.ordinary_dividends\"}], \"test\": \"lt\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "29d5ea1a1d08d778145d0d675229edc36e7591439c72ceeff3db96afb8eff0c4",
+   "second_expr_sha256": "38abfb74dd5bf469ab54eac8af90bbb3e4dc28d41477cc6e947d3117d46e604e",
    "ruling": "Ruling: representation; the candidate's all[div.any = true, box 1a > 0] is the project's test written out: the project's operand sb.ordinary_dividends_if_dividends is box 1a when div.any is yes and zero when it is no, so both are true exactly when dividends were received and box 1a is above zero. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
    "context": "baa53037d113b92af21df3ee6a4096b6b6643aa4ac4a08404ccd0995b74a8af1",
    "date": "2026-11-07",
-   "run": "82fea38fe7acc09a7b6ee991a8fd892d2f439c976812ed8d5532b14f2c394fcc"
+   "run": "82fea38fe7acc09a7b6ee991a8fd892d2f439c976812ed8d5532b14f2c394fcc",
+   "subject_key": "b5e1159b55f7aa707bff24179b0ee37b57a88d1b64221611ec418d9baeb3276b"
   },
   {
    "printed": "div.screen",
-   "project": "{\"const\": 0}",
-   "second": "{\"of\": [{\"input\": \"div.box10\"}, {\"input\": \"div.box2c\"}, {\"input\": \"div.box2e\"}, {\"input\": \"div.box2f\"}, {\"input\": \"div.box9\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"div.basis_reconciled\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"div.box3\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"div.basis_reconciled\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}], \"op\": \"sum\"}",
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "180d5bbe6c35f8c63fe509e92487495d2f3ee10a56c7800c03d882f6b7931b39",
    "ruling": "Ruling: interface gap; f1099div (2025) Instructions for Recipient describes the dividend boxes, but defines no quantity named div.screen. The reply explicitly invents a total of special amounts because the required export has no supplied semantic contract. The project uses this internal adapter as zero after scope checks, including when unsupported Form4797/K-1 amounts are absent; that behavior was not independently inferable from the id/type alone. No whole-tree equivalence or clean model-only error is claimed. BUG-0135/T-064 keeps this source-interface review pending until adapter and source-defined quantities are separated.",
-   "context": "c02ab66879a6dccaecfbf97eaf92d61dafceb5c0ae2e7d6890e7cdfb0cc5bb02"
+   "context": "c02ab66879a6dccaecfbf97eaf92d61dafceb5c0ae2e7d6890e7cdfb0cc5bb02",
+   "subject_key": "210c1c5884e4c21e971cdf24bfee45b05ee0a6654d5930db1169ddb78cf53e37"
   }
  ]
 }

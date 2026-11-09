@@ -10,7 +10,8 @@
    "model": "$0.00",
    "ruling": "Ruling: model error; project retained. i5695 p. 5, Residential Clean Energy Credit Limit Worksheet line 2 includes the child tax credit (Form 1040 line 19, or Credit Limit Worksheet B line 14), and the project's f5695.ctc reads it; on this return Form 1040 line 19 is $0 (Schedule 8812 line 12 $0), so line 2 is only Form 5695 line 32 ($600.00) and line 14 is $8,455.00. The model subtracted a child tax credit equal to the project's line 14 figure that the return does not have. Line 13 is $0, so line 15 is unaffected.",
    "drop": true,
-   "context": "2026c9394ea232533ecdc4f5a6aa24d5db6ea47c6a88c095344b5be16ae403c1"
+   "context": "2026c9394ea232533ecdc4f5a6aa24d5db6ea47c6a88c095344b5be16ae403c1",
+   "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e"
   },
   {
    "case": "classm.f5695.16",
@@ -19,7 +20,8 @@
    "model": "$0.00",
    "ruling": "Ruling: model error; model value dropped from the fixture. i5695 p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14: \"Enter the total of the following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return: ... + Energy efficient home improvement credit, Form 5695, line 32 ... + Child tax credit or credit for other dependents, Form 1040, 1040-SR, or 1040-NR, line 19* ...\". The prompt (.classm/classm.f5695.16.deepseek.prompt.txt) gives Form 1040 line 18 $7,955.00, Schedule 3 line 5b (Form 5695 line 32) $600.00, Schedule 3 line 3 $0.00, Schedule 8812 line 12 $0.00 (no child tax credit or credit for other dependents; Credit Limit Worksheet B not completed, Worksheet B line 14 $0.00) and Credit Limit Worksheet A line 3 $7,355.00. The model's work, \"Limit worksheet: 7,955 - (600 + 7,355) = 0.00\", subtracts Credit Limit Worksheet A line 3 as if it were the child tax credit, the round-1 error of cases 5, 6 and 9; the credit taken on Form 1040 line 19 is $0.00. Worksheet line 3 is $7,955.00 less $600.00 = $7,355.00, the project's value. Unrelated to BUG-0196 (remedy wording only).",
    "drop": true,
-   "context": "6dde64a717e0d5a62e77cb79525574bb33cb71bb80e1956dddc9cd74bfd0b83f"
+   "context": "6dde64a717e0d5a62e77cb79525574bb33cb71bb80e1956dddc9cd74bfd0b83f",
+   "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e"
   },
   {
    "case": "classm.f5695.5",
@@ -28,7 +30,8 @@
    "model": "$0.00",
    "ruling": "Ruling: model error; model value dropped from the fixture. i5695 p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14: \"Enter the total of the following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return: ... + Energy efficient home improvement credit, Form 5695, line 32 ... + Child tax credit or credit for other dependents, Form 1040, 1040-SR, or 1040-NR, line 19* ...\". The prompt (.classm/classm.f5695.5.deepseek.prompt.txt) gives Form 1040 line 18 $11,255.00, Schedule 3 line 5b (Form 5695 line 32) $1,200.00, Schedule 3 lines 1 to 4 $0.00, Schedule 8812 line 12 $0.00 (no child tax credit or credit for other dependents; Credit Limit Worksheet B not completed) and Credit Limit Worksheet A line 3 $10,055.00. The model's work, \"11255 - (1200 + 10055) = 0\", subtracts Credit Limit Worksheet A line 3 as if it were the child tax credit; the credit taken on Form 1040 line 19 is $0.00 (Schedule 8812 line 14 is the smaller of line 12, $0.00, and line 13). Worksheet line 3 is $11,255.00 less $1,200.00 = $10,055.00, the project's value. The worksheet's line 2 (including Schedule 3 line 3, $0.00 here) is otherwise the project's.",
    "drop": true,
-   "context": "6dde64a717e0d5a62e77cb79525574bb33cb71bb80e1956dddc9cd74bfd0b83f"
+   "context": "6dde64a717e0d5a62e77cb79525574bb33cb71bb80e1956dddc9cd74bfd0b83f",
+   "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e"
   },
   {
    "case": "classm.f5695.6",
@@ -37,7 +40,8 @@
    "model": "$0.00",
    "ruling": "Ruling: model error; project retained. i5695 p. 5, Residential Clean Energy Credit Limit Worksheet line 2 includes the child tax credit (Form 1040 line 19, or Credit Limit Worksheet B line 14), and the project's f5695.ctc reads it; on this return Form 1040 line 19 is $0 (Schedule 8812 line 12 $0), so line 2 is only Form 5695 line 32 ($2,300.00) and line 14 is $4,555.00. The model subtracted a child tax credit equal to the project's line 14 figure that the return does not have. Line 13 is $0, so line 15 is unaffected.",
    "drop": true,
-   "context": "2026c9394ea232533ecdc4f5a6aa24d5db6ea47c6a88c095344b5be16ae403c1"
+   "context": "2026c9394ea232533ecdc4f5a6aa24d5db6ea47c6a88c095344b5be16ae403c1",
+   "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e"
   },
   {
    "case": "classm.f5695.9",
@@ -46,7 +50,8 @@
    "model": "$0.00",
    "ruling": "Ruling: model error; model value dropped from the fixture. i5695 p. 5, Residential Clean Energy Credit Limit Worksheet—Line 14: \"Enter the total of the following credit(s)/adjustment(s) if you are taking the credit(s)/adjustment(s) on your 2025 income tax return: ... + Energy efficient home improvement credit, Form 5695, line 32 ... + Child tax credit or credit for other dependents, Form 1040, 1040-SR, or 1040-NR, line 19* ...\". The prompt (.classm/classm.f5695.9.deepseek.prompt.txt) gives Form 1040 line 18 $9,055.00, Schedule 3 line 5b (Form 5695 line 32) $600.00, Schedule 3 lines 1 to 4 $0.00, Schedule 8812 line 12 $0.00 (no child tax credit or credit for other dependents; Credit Limit Worksheet B not completed) and Credit Limit Worksheet A line 3 $8,455.00. The model's work, \"Worksheet: 9055.00 - 600.00 energy credit - 8455.00 child tax credit = 0.00.\", subtracts Credit Limit Worksheet A line 3 as if it were the child tax credit; the credit taken on Form 1040 line 19 is $0.00 (Schedule 8812 line 14 is the smaller of line 12, $0.00, and line 13). Worksheet line 3 is $9,055.00 less $600.00 = $8,455.00, the project's value. The worksheet's line 2 (including Schedule 3 line 3, $0.00 here) is otherwise the project's.",
    "drop": true,
-   "context": "6dde64a717e0d5a62e77cb79525574bb33cb71bb80e1956dddc9cd74bfd0b83f"
+   "context": "6dde64a717e0d5a62e77cb79525574bb33cb71bb80e1956dddc9cd74bfd0b83f",
+   "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e"
   }
  ]
 }

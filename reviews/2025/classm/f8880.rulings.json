@@ -9,7 +9,8 @@
    "model": "no answer",
    "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a worksheet after a STOP counts as skipped. The case has line 7 $0.00, so f8880.past7 is false and the project now hides (CLW 1) (shown_when f8880.past7, T-067); the $0.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"Skipped; line 7 is zero, so stop\"), which follows the source. The prompt (.classm/classm.f8880.1.prompt.txt) lists the line as \"line (CLW 1)\"; the reply names it \"CLW 1\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.f8880.3 writes \"(CLW n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
    "drop": true,
-   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b"
+   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b",
+   "subject_key": "3337c471ba657d30e84962f7b434b26c3d52639e877b620ada4959e91cc56627"
   },
   {
    "case": "classm.f8880.1",
@@ -18,7 +19,8 @@
    "model": "no answer",
    "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a worksheet after a STOP counts as skipped. The case has line 7 $0.00, so f8880.past7 is false and the project now hides (CLW 2) (shown_when f8880.past7, T-067); the $0.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"Skipped; line 7 is zero, so stop\"), which follows the source. The prompt (.classm/classm.f8880.1.prompt.txt) lists the line as \"line (CLW 2)\"; the reply names it \"CLW 2\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.f8880.3 writes \"(CLW n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
    "drop": true,
-   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b"
+   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b",
+   "subject_key": "c82b11e09b9a2128f7349376779aeed5a6e8a41414f7149e50f55545aec10289"
   },
   {
    "case": "classm.f8880.1",
@@ -27,7 +29,8 @@
    "model": "no answer",
    "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a worksheet after a STOP counts as skipped. The case has line 7 $0.00, so f8880.past7 is false and the project now hides (CLW 3) (shown_when f8880.past7, T-067); the $0.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"Skipped; line 7 is zero, so stop\"), which follows the source. The prompt (.classm/classm.f8880.1.prompt.txt) lists the line as \"line (CLW 3)\"; the reply names it \"CLW 3\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.f8880.3 writes \"(CLW n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
    "drop": true,
-   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b"
+   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b",
+   "subject_key": "1c875965a558cca6242fc88ebed07aa8774eeaec3a7c6a2fff0572de12a1a9bd"
   },
   {
    "case": "classm.f8880.1",
@@ -35,7 +38,8 @@
    "project": "$-12,028.87",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 7 is zero in this case, and the model stopped there and left the later lines at zero; the project figures every line regardless and applies the stop on line 12 (f8880.can_take), which is zero here on both sides. f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". As the stop rulings in reviews/2025/classm/eic and s8812.",
-   "drop": true
+   "drop": true,
+   "subject_key": "fd8a26cf08d03461af3e29648f80dd984a5a97db1b9f4265deccf8d17c2f4a50"
   },
   {
    "case": "classm.f8880.1",
@@ -43,7 +47,8 @@
    "project": "50%",
    "model": "0%",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 7 is zero in this case, and the model stopped there and left the later lines at zero; the project figures every line regardless and applies the stop on line 12 (f8880.can_take), which is zero here on both sides. f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". As the stop rulings in reviews/2025/classm/eic and s8812.",
-   "drop": true
+   "drop": true,
+   "subject_key": "c3f1678139a915bf1c0d743022daad44880020ffc3769ba22c1182a13fde97c8"
   },
   {
    "case": "classm.f8880.2",
@@ -52,7 +57,8 @@
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.2.prompt.txt) lists the line as \"line (CLW 1)\"; the reply names it \"CLW 1\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); cases 1 and 4 write \"(CLW n)\" and were read). The worksheet is reached (line 7 $4,000.00, line 8 $43,469.45 not more than the $79,000 limit, line 9 0.5: f8880.past9 true). The reply's value is $1,198.00, equal to the project's $1,198.00; lines 11 and 12 ($1,198.00) agree. No project defect. No expectation exists for a line without a parsed answer; the drop is a no-op.",
    "drop": true,
-   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b"
+   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b",
+   "subject_key": "3337c471ba657d30e84962f7b434b26c3d52639e877b620ada4959e91cc56627"
   },
   {
    "case": "classm.f8880.2",
@@ -61,7 +67,8 @@
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.2.prompt.txt) lists the line as \"line (CLW 2)\"; the reply names it \"CLW 2\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); cases 1 and 4 write \"(CLW n)\" and were read). The worksheet is reached (line 7 $4,000.00, line 8 $43,469.45 not more than the $79,000 limit, line 9 0.5: f8880.past9 true). The reply's value is $0.00, equal to the project's $0.00; lines 11 and 12 ($1,198.00) agree. No project defect. No expectation exists for a line without a parsed answer; the drop is a no-op.",
    "drop": true,
-   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b"
+   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b",
+   "subject_key": "c82b11e09b9a2128f7349376779aeed5a6e8a41414f7149e50f55545aec10289"
   },
   {
    "case": "classm.f8880.2",
@@ -70,7 +77,8 @@
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.2.prompt.txt) lists the line as \"line (CLW 3)\"; the reply names it \"CLW 3\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); cases 1 and 4 write \"(CLW n)\" and were read). The worksheet is reached (line 7 $4,000.00, line 8 $43,469.45 not more than the $79,000 limit, line 9 0.5: f8880.past9 true). The reply's value is $1,198.00, equal to the project's $1,198.00; lines 11 and 12 ($1,198.00) agree. No project defect. No expectation exists for a line without a parsed answer; the drop is a no-op.",
    "drop": true,
-   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b"
+   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b",
+   "subject_key": "1c875965a558cca6242fc88ebed07aa8774eeaec3a7c6a2fff0572de12a1a9bd"
   },
   {
    "case": "classm.f8880.2",
@@ -81,7 +89,8 @@
    "drop": true,
    "context": "5695d979f00ceb3654ca6342c6e45e4b5d9913a91d142846f7f26a4f5a2f9cab",
    "date": "2026-11-07",
-   "run": "a2117478002db2d5a14321e1b7afe45477cde019bd501c6584ec5026e0498ba6"
+   "run": "a2117478002db2d5a14321e1b7afe45477cde019bd501c6584ec5026e0498ba6",
+   "subject_key": "e83a3dd7358b267daf401e39168b60c7c26c4da401a44984d72f04c299383e1b"
   },
   {
    "case": "classm.f8880.2",
@@ -92,7 +101,8 @@
    "drop": true,
    "context": "5695d979f00ceb3654ca6342c6e45e4b5d9913a91d142846f7f26a4f5a2f9cab",
    "date": "2026-11-07",
-   "run": "a2117478002db2d5a14321e1b7afe45477cde019bd501c6584ec5026e0498ba6"
+   "run": "a2117478002db2d5a14321e1b7afe45477cde019bd501c6584ec5026e0498ba6",
+   "subject_key": "1fa8c6457020eb2b7a802937cc7539f51e2f9e63154c3bc34dc9c64129886f4e"
   },
   {
    "case": "classm.f8880.2",
@@ -103,7 +113,8 @@
    "drop": true,
    "context": "5695d979f00ceb3654ca6342c6e45e4b5d9913a91d142846f7f26a4f5a2f9cab",
    "date": "2026-11-07",
-   "run": "a2117478002db2d5a14321e1b7afe45477cde019bd501c6584ec5026e0498ba6"
+   "run": "a2117478002db2d5a14321e1b7afe45477cde019bd501c6584ec5026e0498ba6",
+   "subject_key": "0d5b45d8f6339b59cc136fada8d481de158377aa37d60690d9b05320b01ddadb"
   },
   {
    "case": "classm.f8880.3",
@@ -112,7 +123,8 @@
    "model": "no answer",
    "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a worksheet after a STOP counts as skipped. The case (joint; spouse ineligible, line 6(b) zero) has line 7 $0.00, so f8880.past7 and f8880.past9 are false and the project hides (CLW 1) (shown_when f8880.past9); the $0.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"Skipped: line 7 is zero, so the form stops\"), which follows the source. The prompt (.classm/classm.f8880.3.prompt.txt) lists the line as \"line (CLW 1)\"; the reply names it \"CLW 1\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); cases 1 and 4 write \"(CLW n)\" and were read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
    "drop": true,
-   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b"
+   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b",
+   "subject_key": "3337c471ba657d30e84962f7b434b26c3d52639e877b620ada4959e91cc56627"
   },
   {
    "case": "classm.f8880.3",
@@ -121,7 +133,8 @@
    "model": "no answer",
    "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a worksheet after a STOP counts as skipped. The case (joint; spouse ineligible, line 6(b) zero) has line 7 $0.00, so f8880.past7 and f8880.past9 are false and the project hides (CLW 2) (shown_when f8880.past9); the $0.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"Skipped: line 7 is zero, so the form stops\"), which follows the source. The prompt (.classm/classm.f8880.3.prompt.txt) lists the line as \"line (CLW 2)\"; the reply names it \"CLW 2\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); cases 1 and 4 write \"(CLW n)\" and were read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
    "drop": true,
-   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b"
+   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b",
+   "subject_key": "c82b11e09b9a2128f7349376779aeed5a6e8a41414f7149e50f55545aec10289"
   },
   {
    "case": "classm.f8880.3",
@@ -130,7 +143,8 @@
    "model": "no answer",
    "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a worksheet after a STOP counts as skipped. The case (joint; spouse ineligible, line 6(b) zero) has line 7 $0.00, so f8880.past7 and f8880.past9 are false and the project hides (CLW 3) (shown_when f8880.past9); the $0.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"Skipped: line 7 is zero, so the form stops\"), which follows the source. The prompt (.classm/classm.f8880.3.prompt.txt) lists the line as \"line (CLW 3)\"; the reply names it \"CLW 3\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); cases 1 and 4 write \"(CLW n)\" and were read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
    "drop": true,
-   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b"
+   "context": "b330180178dd7d17092e3b776a60b7dd035453ecf4e1491822d4b5ffe87f0e1b",
+   "subject_key": "1c875965a558cca6242fc88ebed07aa8774eeaec3a7c6a2fff0572de12a1a9bd"
   },
   {
    "case": "classm.f8880.3",
@@ -141,7 +155,8 @@
    "drop": true,
    "context": "5695d979f00ceb3654ca6342c6e45e4b5d9913a91d142846f7f26a4f5a2f9cab",
    "date": "2026-11-07",
-   "run": "102062fc20a00acdad9e4f71aae4dfb6df872a257dc0744a7e6f22ea8ef9ef43"
+   "run": "102062fc20a00acdad9e4f71aae4dfb6df872a257dc0744a7e6f22ea8ef9ef43",
+   "subject_key": "8b44cb8fb35cff34ecc5c5adcf374ce0c20ff678f5c87f2e1eb19284c149c929"
   },
   {
    "case": "classm.f8880.3",
@@ -152,7 +167,8 @@
    "drop": true,
    "context": "bfeee6182dbbf496f4db9edee197e1c5c860cb4f39bf622d29626563193c4fa0",
    "date": "2026-11-07",
-   "run": "4c4d9e70152063e84d7c2795bc1d515c216e01eeeecc4a717a9f8263d1528ca2"
+   "run": "4c4d9e70152063e84d7c2795bc1d515c216e01eeeecc4a717a9f8263d1528ca2",
+   "subject_key": "e83a3dd7358b267daf401e39168b60c7c26c4da401a44984d72f04c299383e1b"
   },
   {
    "case": "classm.f8880.3",
@@ -163,7 +179,8 @@
    "drop": true,
    "context": "5695d979f00ceb3654ca6342c6e45e4b5d9913a91d142846f7f26a4f5a2f9cab",
    "date": "2026-11-07",
-   "run": "102062fc20a00acdad9e4f71aae4dfb6df872a257dc0744a7e6f22ea8ef9ef43"
+   "run": "102062fc20a00acdad9e4f71aae4dfb6df872a257dc0744a7e6f22ea8ef9ef43",
+   "subject_key": "65936f0716baf5fc8b8247374e100d36446a44ad7cdca51e9ada0c173b6b1719"
   },
   {
    "case": "classm.f8880.3",
@@ -174,7 +191,8 @@
    "drop": true,
    "context": "bfeee6182dbbf496f4db9edee197e1c5c860cb4f39bf622d29626563193c4fa0",
    "date": "2026-11-07",
-   "run": "4c4d9e70152063e84d7c2795bc1d515c216e01eeeecc4a717a9f8263d1528ca2"
+   "run": "4c4d9e70152063e84d7c2795bc1d515c216e01eeeecc4a717a9f8263d1528ca2",
+   "subject_key": "1fa8c6457020eb2b7a802937cc7539f51e2f9e63154c3bc34dc9c64129886f4e"
   },
   {
    "case": "classm.f8880.3",
@@ -185,7 +203,8 @@
    "drop": true,
    "context": "bfeee6182dbbf496f4db9edee197e1c5c860cb4f39bf622d29626563193c4fa0",
    "date": "2026-11-07",
-   "run": "4c4d9e70152063e84d7c2795bc1d515c216e01eeeecc4a717a9f8263d1528ca2"
+   "run": "4c4d9e70152063e84d7c2795bc1d515c216e01eeeecc4a717a9f8263d1528ca2",
+   "subject_key": "0d5b45d8f6339b59cc136fada8d481de158377aa37d60690d9b05320b01ddadb"
   },
   {
    "case": "classm.f8880.4",
@@ -194,7 +213,8 @@
    "model": "no answer",
    "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a worksheet after a STOP counts as skipped. The case has line 7 $0.00, so f8880.past7 is false and the project now hides (CLW 1) (shown_when f8880.past7, T-067); the $26.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"Stopped at line 7\"), which follows the source. The prompt (.classm/classm.f8880.4.prompt.txt) lists the line as \"line (CLW 1)\"; the reply names it \"CLW 1\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.f8880.3 writes \"(CLW n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
    "drop": true,
-   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b"
+   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b",
+   "subject_key": "3337c471ba657d30e84962f7b434b26c3d52639e877b620ada4959e91cc56627"
   },
   {
    "case": "classm.f8880.4",
@@ -203,7 +223,8 @@
    "model": "no answer",
    "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a worksheet after a STOP counts as skipped. The case has line 7 $0.00, so f8880.past7 is false and the project now hides (CLW 2) (shown_when f8880.past7, T-067); the $0.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"Stopped at line 7\"), which follows the source. The prompt (.classm/classm.f8880.4.prompt.txt) lists the line as \"line (CLW 2)\"; the reply names it \"CLW 2\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.f8880.3 writes \"(CLW n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
    "drop": true,
-   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b"
+   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b",
+   "subject_key": "c82b11e09b9a2128f7349376779aeed5a6e8a41414f7149e50f55545aec10289"
   },
   {
    "case": "classm.f8880.4",
@@ -212,7 +233,8 @@
    "model": "no answer",
    "ruling": "Ruling: representation; skipped line (README skipped-line rule; T-079 (1)). f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a worksheet after a STOP counts as skipped. The case has line 7 $0.00, so f8880.past7 is false and the project now hides (CLW 3) (shown_when f8880.past7, T-067); the $26.00 in the log is the hidden internal value, requested only because the class M fill of a non-collection document ignores shown_when (T-079 (1)). The reply leaves the line blank (\"Stopped at line 7\"), which follows the source. The prompt (.classm/classm.f8880.4.prompt.txt) lists the line as \"line (CLW 3)\"; the reply names it \"CLW 3\" without the parentheses, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (known defect T-070 (1), T-081 (1); case classm.f8880.3 writes \"(CLW n)\" and was read). Not a model error and not a project defect. Expectation dropped (none was recorded).",
    "drop": true,
-   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b"
+   "context": "b5f324d269f07067ab34b10c315846fc72b025e38d4bfe8b74d361ab7a2cc72b",
+   "subject_key": "1c875965a558cca6242fc88ebed07aa8774eeaec3a7c6a2fff0572de12a1a9bd"
   },
   {
    "case": "classm.f8880.4",
@@ -221,7 +243,8 @@
    "model": "$0.00",
    "ruling": "Ruling: ambiguity; amb.2025.savers_ineligible_column; model value dropped from the fixture (the non-chosen placement). The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution. f8880 p. 1, Caution: \"You cannot take this credit if either of the following applies. ... The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student\". The model applies the Caution on line 1(b) (\"spouse is a student/dependent/born after 1/1/2008, so the Caution rule excludes it\"); the project enters the contribution on line 1(b) as printed and zeroes the spouse's column on line 6(b) under amb.2025.savers_ineligible_column (owner decision 4): \"On a joint return, an ineligible spouse's own column is zero (line 6 of that column), and the other spouse's column is figured as usual\", chosen as f8880.line6a/6b through f8880.elig_a/elig_b. Lines 6(b), 7 and 12 are $0.00 on both readings.",
    "drop": true,
-   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b"
+   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b",
+   "subject_key": "251b0e2bf47a16860a2aee53800d661cbad71fd5437b3b39f4a0a480eced918e"
   },
   {
    "case": "classm.f8880.4",
@@ -229,7 +252,8 @@
    "project": "$26.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 7 is zero in this case, and the model stopped there and left the later lines at zero; the project figures every line regardless and applies the stop on line 12 (f8880.can_take), which is zero here on both sides. f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". As the stop rulings in reviews/2025/classm/eic and s8812.",
-   "drop": true
+   "drop": true,
+   "subject_key": "0f17d196bc62d055d5205b510d3aace0e99e2100728ada167846e4ac563900e2"
   },
   {
    "case": "classm.f8880.4",
@@ -240,7 +264,8 @@
    "drop": true,
    "context": "bfeee6182dbbf496f4db9edee197e1c5c860cb4f39bf622d29626563193c4fa0",
    "date": "2026-11-07",
-   "run": "879d58c1f573e0f05ca77d40832b47957ff65b4a102178b406fdd724241b7c82"
+   "run": "879d58c1f573e0f05ca77d40832b47957ff65b4a102178b406fdd724241b7c82",
+   "subject_key": "8b44cb8fb35cff34ecc5c5adcf374ce0c20ff678f5c87f2e1eb19284c149c929"
   },
   {
    "case": "classm.f8880.4",
@@ -251,7 +276,8 @@
    "drop": true,
    "context": "bfeee6182dbbf496f4db9edee197e1c5c860cb4f39bf622d29626563193c4fa0",
    "date": "2026-11-07",
-   "run": "879d58c1f573e0f05ca77d40832b47957ff65b4a102178b406fdd724241b7c82"
+   "run": "879d58c1f573e0f05ca77d40832b47957ff65b4a102178b406fdd724241b7c82",
+   "subject_key": "65936f0716baf5fc8b8247374e100d36446a44ad7cdca51e9ada0c173b6b1719"
   },
   {
    "case": "classm.f8880.4",
@@ -260,7 +286,8 @@
    "model": "$0.00",
    "ruling": "Ruling: ambiguity; amb.2025.savers_ineligible_column; model value dropped from the fixture. Inherits line 1(b): the model's $0.00 is the Caution applied on line 1(b), the project's $665.00 is line 1(b) plus line 2(b) as printed, the zero placed on line 6(b) under amb.2025.savers_ineligible_column (owner decision 4): \"On a joint return, an ineligible spouse's own column is zero (line 6 of that column), and the other spouse's column is figured as usual\", chosen as f8880.line6a/6b through f8880.elig_a/elig_b. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
    "drop": true,
-   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b"
+   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b",
+   "subject_key": "1fa8c6457020eb2b7a802937cc7539f51e2f9e63154c3bc34dc9c64129886f4e"
   },
   {
    "case": "classm.f8880.4",
@@ -271,7 +298,8 @@
    "drop": true,
    "context": "bfeee6182dbbf496f4db9edee197e1c5c860cb4f39bf622d29626563193c4fa0",
    "date": "2026-11-07",
-   "run": "879d58c1f573e0f05ca77d40832b47957ff65b4a102178b406fdd724241b7c82"
+   "run": "879d58c1f573e0f05ca77d40832b47957ff65b4a102178b406fdd724241b7c82",
+   "subject_key": "6cab788ad27f19a3b86c8f59f038f23028792b7d0d23cbf26cb0fca2a5fe953b"
   },
   {
    "case": "classm.f8880.4",
@@ -280,7 +308,8 @@
    "model": "$0.00",
    "ruling": "Ruling: ambiguity; amb.2025.savers_ineligible_column; model value dropped from the fixture. As line 3(b): line 5(b) is line 3(b) less line 4(b) ($0.00); the difference is where the ineligible spouse's zero goes, which amb.2025.savers_ineligible_column (owner decision 4): \"On a joint return, an ineligible spouse's own column is zero (line 6 of that column), and the other spouse's column is figured as usual\", chosen as f8880.line6a/6b through f8880.elig_a/elig_b puts on line 6(b). The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
    "drop": true,
-   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b"
+   "context": "6979fe511df6e36cec643290d5a1298b27a902d08ba184360da1bbac094de25b",
+   "subject_key": "0d5b45d8f6339b59cc136fada8d481de158377aa37d60690d9b05320b01ddadb"
   },
   {
    "case": "classm.f8880.4",
@@ -288,7 +317,8 @@
    "project": "$73,135.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Line 7 is zero in this case, and the model stopped there and left the later lines at zero; the project figures every line regardless and applies the stop on line 12 (f8880.can_take), which is zero here on both sides. f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". As the stop rulings in reviews/2025/classm/eic and s8812.",
-   "drop": true
+   "drop": true,
+   "subject_key": "fd8a26cf08d03461af3e29648f80dd984a5a97db1b9f4265deccf8d17c2f4a50"
   }
  ]
 }

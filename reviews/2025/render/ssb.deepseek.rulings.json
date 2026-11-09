@@ -10,7 +10,8 @@
    "ruling": "Ruling: representation; i1040gi p. 32, worksheet line 9: \"Is the amount on line 8 less than the amount on line 7? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. ... STOP\". On the No branch the restatement's floor gives $0, and the round-2 display conditions stop the worksheet there (ssb.past9 is line 9 above zero; ssb.show10_15 hides lines 10 to 15 and ssb.show16_18 hides lines 16 to 18 unless married filing separately and living together, a return refused by s3.mfs), so no amount is shown past the STOP. Project stands.",
    "context": "faef0d6f0be0eaa9ad2d04b995a880a33a0c72a15665e03517f536b5c18ed8d1",
    "date": "2026-11-04",
-   "run": "2fc89fe0e9a089bfd7e70e3730e5473a9f7cb5b075eee9d8798ea6dd57296ea4"
+   "run": "2fc89fe0e9a089bfd7e70e3730e5473a9f7cb5b075eee9d8798ea6dd57296ea4",
+   "subject_key": "496f46624328b6d73751b425d8b4a4b7beb09d70eb7a42548d94621f51f5c1f3"
   }
  ]
 }

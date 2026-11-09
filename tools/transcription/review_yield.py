@@ -26,6 +26,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, HERE)
 import families  # noqa: E402
+import rulings  # noqa: E402
 
 KINDS = ["transcription", "render", "classm", "completeness", "screen", "false_no"]
 CLASSES = ["model error", "scope", "representation", "ambiguity", "interface gap", "finding", "other"]
@@ -61,7 +62,11 @@ def git_show(ref, relpath):
     return r.stdout if r.returncode == 0 else None
 
 
-def key_of(item):
+def key_of(item, kind=None):
+    """A ruling's identity for the window: its row in the stored form (an older revision's embedded
+    expressions hashed as now), without what is recorded beside the ruling (rulings.EXTRA)."""
+    if kind is not None:
+        item = {k: v for k, v in rulings.compact_row(kind, item).items() if k not in rulings.EXTRA}
     return json.dumps(item, sort_keys=True)
 
 
@@ -74,9 +79,9 @@ def ruling_items(root, ref=None):
             doc = json.load(open(path, encoding="utf-8"))
             fam = family_of_file(path, doc)
             old = git_show(ref, os.path.relpath(path, root))
-            seen = Counter(key_of(r) for r in json.loads(old).get("rulings", [])) if old else Counter()
+            seen = Counter(key_of(r, kind) for r in json.loads(old).get("rulings", [])) if old else Counter()
             for r in doc.get("rulings", []):
-                k = key_of(r)
+                k = key_of(r, kind)
                 new = bool(ref) and seen[k] == 0
                 if seen[k]:
                     seen[k] -= 1

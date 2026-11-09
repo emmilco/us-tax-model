@@ -8,112 +8,128 @@
    "restated": "Add helper \"Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)\" and line 12 (sc.s179_allowed).",
    "model": "IRS line 13 is depreciation and the section 179 expense deduction; Form 4562 line 22 includes lines 14 through 17, lines 19 and 20(g), and line 21, while the restatement's helper lists only lines 14, 17, 19 and 21.",
    "ruling": "Ruling: scope; the model says the helper lists Form 4562 lines 14, 17, 19 and 21 where line 22 also adds lines 15, 16 and 20. Those lines are refused before they can be nonzero: line 20 (ADS) and line 15 (property under a section 168(f)(1) election, a method other than the MACRS tables) by asset.screen (\"you must depreciate it under ADS ... or you elected ADS ... or you depreciate it by a method other than the MACRS percentage tables\"), and line 16 (ACRS and other depreciation) by the same screen (\"it was placed in service before 2005\", \"you amortize it\"); vehicles on ADS are refused by scveh.low_use. Line 12 (section 179) is added separately. i4562 p. 13, Line 22.",
-   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19"
+   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19",
+   "subject_key": "4e440d9717bc8ccdec7ba832c871bc02045ee814597813125a8e3c23bfc8cc91"
   },
   {
    "printed": "24a",
    "restated": "Input — Lodging and transportation for overnight business travel away from your tax home, and incidental expenses of that travel (fees and tips to porters, baggage carriers, bellhops, hotel maids, stewards and others on ships, and hotel servants in foreign countries; not laundry, lodging taxes or telephone calls), either at their actual cost or, for a travel day on which you paid or incurred no meal expenses and did not use the standard meal allowance, at $5 for that day (not meals and not entertainment; on a day you use the standard meal allowance, incidental expenses are part of that allowance); not expenses of employment away from home for a period of more than 1 year; not travel expenses for your spouse, your dependent or any other person unless that person is your employee, the travel is for a bona fide business purpose and the expenses would otherwise be deductible by that person; and not a convention, seminar or similar meeting held outside the North American area unless it is directly related to your business and it is as reasonable to hold it outside the North American area as within it; zero if none",
    "model": "IRS instructions say incidental expenses do not include 'laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams or telephone calls'; the restatement omits cleaning and pressing and telegrams.",
    "ruling": "Ruling: finding (low); the model says the question's incidental-expense exclusions omit \"cleaning and pressing of clothing\" and \"telegrams\". p463 p. 7, Incidental expenses: \"Incidental expenses don’t include expenses for laundry, cleaning and pressing of clothing, lodging taxes, costs of telegrams or telephone calls\"; the question names only \"laundry, lodging taxes or telephone calls\". Small effect (laundry and dry cleaning are deductible travel expenses, p463 Table 1-1); see `.transcription/proposed/rf/sc.findings.md`, Low.",
-   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19"
+   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19",
+   "subject_key": "5526c3ff11bed606d552f9d84b3bd6a25e4a21e42ba7396639c40b57753ed7df"
   },
   {
    "printed": "32",
    "restated": "Input — Is all your investment in this business at risk (box 32a)? Answer no if any of these is invested in it: a nonrecourse loan used to finance the business, buy property used in it, or buy the business, that is not secured by your own property other than property used in the business and that you are not personally responsible to repay; cash, property or borrowed money protected against loss by a guarantee, stop-loss agreement or similar arrangement (casualty and tort-liability insurance do not count); money borrowed for use in the business from someone who has an interest in it other than as a creditor, or from a person related (under section 465(b)(3)(C)) to someone other than you who has such an interest",
    "model": "IRS instructions state 'there is an exception for certain nonrecourse financing borrowed by you in connection with holding real property'; the restatement treats any such nonrecourse loan as not at risk and omits that exception.",
    "ruling": "Ruling: scope; accepted over-refusal. A filer whose only nonrecourse financing is qualified real property financing answers no and is refused through sc.not_at_risk, though that financing is at risk; a refusal, never a wrong amount.",
-   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da"
+   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da",
+   "subject_key": "94bb39f29d6deb149dc6376eb525a10fb63ff80905c3d676d9c299cca3f09c73"
   },
   {
    "printed": "32",
    "restated": "Input — Is all your investment in this business at risk (box 32a)? Answer no if any of these is invested in it: a nonrecourse loan used to finance the business, buy property used in it, or buy the business, that is not secured by your own property other than property used in the business and that you are not personally responsible to repay; cash, property or borrowed money protected against loss by a guarantee, stop-loss agreement or similar arrangement (casualty and tort-liability insurance do not count); money borrowed for use in the business from someone who has an interest in it other than as a creditor, or from a person related (under section 465(b)(3)(C)) to someone other than you who has such an interest",
    "model": "The IRS line 32 instructions include an exception for certain nonrecourse financing borrowed in connection with holding real property; the restatement says to answer no for any such nonrecourse loan without mentioning that exception.",
    "ruling": "Ruling: scope; accepted over-refusal. A filer whose only nonrecourse financing is qualified real property financing answers no and is refused through sc.not_at_risk, though that financing is at risk; a refusal, never a wrong amount.",
-   "context": "6d6176476fc8561220fef03d134bb0276d0978d9eb8e73b2523780953c8d05c0"
+   "context": "6d6176476fc8561220fef03d134bb0276d0978d9eb8e73b2523780953c8d05c0",
+   "subject_key": "94bb39f29d6deb149dc6376eb525a10fb63ff80905c3d676d9c299cca3f09c73"
   },
   {
    "printed": "3a",
    "restated": "Enter $5 (sc.ho_rate).",
    "model": "the model returned no verdict for this line",
    "ruling": "Ruling: model error; the model returned no verdict for this line, so there is no objection to rule on. The Claude render log judges it.",
-   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574",
+   "subject_key": "023bdad32606db6c9b2e2d6e0dcdfee1306e7405ece44fb2282e3f620aab92a6"
   },
   {
    "printed": "4 (sc.f7206_line4)",
    "restated": "Enter the amount from helper \"Net profit of this business (zero for a loss)\".",
    "model": "IRS Form 7206 line 4 says 'Enter your net profit* and any other earned income** from the trade or business under which the insurance plan is established'; the restatement uses only net profit of this business.",
    "ruling": "Ruling: scope; same as the earlier ruling (restatement and objection unchanged). f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created\"; the tool admits no such income outside Schedule C (Form 4797 and other income refused, sd.other_forms, scope.yaml; Schedule F and K-1 profits refused by person.x_other).",
-   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19"
+   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19",
+   "subject_key": "15882397ba700a8406832367fc1c1ff30eb30c79cc3807c4e3ac5d0881142fd8"
   },
   {
    "printed": "4 (sc.f7206_line4)",
    "restated": "Enter the amount from helper \"Net profit of this business (zero for a loss)\".",
    "model": "IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business'; the restatement uses only a zero-for-loss net profit helper and omits other earned income.",
    "ruling": "Ruling: scope; f7206 line 4 footnote, \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income\". The only earned income from the business the tool admits is its Schedule C net profit; Form 4797 and other income are refused (sd.other_forms, scope.yaml).",
-   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da"
+   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da",
+   "subject_key": "15882397ba700a8406832367fc1c1ff30eb30c79cc3807c4e3ac5d0881142fd8"
   },
   {
    "printed": "4 (sc.f7206_line4)",
    "restated": "Enter the amount from helper \"Net profit of this business (zero for a loss)\".",
    "model": "IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business'; the restatement uses only net profit, zero for a loss.",
    "ruling": "Ruling: scope; f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income.\" The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other).",
-   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574",
+   "subject_key": "15882397ba700a8406832367fc1c1ff30eb30c79cc3807c4e3ac5d0881142fd8"
   },
   {
    "printed": "5 (sc.f7206_line5)",
    "restated": "Enter the amount from person helper \"Total of all net profits of this person's businesses (losses not included)\".",
    "model": "IRS Form 7206 line 5 includes 'plus any other income allocable to the profitable businesses'; the restatement only totals net profits and excludes losses.",
    "ruling": "Ruling: scope; same as the earlier ruling. Schedule F and K-1 profits are refused by the self-employment screen (person.x_other) and other earned income outside Schedule C is refused (sd.other_forms, scope.yaml), so the total of net profits of the profitable businesses is the line 5 amount.",
-   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19"
+   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19",
+   "subject_key": "0b78bb66b053b8a8151fc4f22d183c741e02df65e7cfb0e617a36d0e96d3277a"
   },
   {
    "printed": "5 (sc.f7206_line5)",
    "restated": "Enter the amount from person helper \"Total of all net profits of this person's businesses (losses not included)\".",
    "model": "IRS line 5 requires 'all net profits' from Schedule C, Schedule F, or K-1 code A plus other allocable income; the restatement sums only Schedule C net profits.",
    "ruling": "Ruling: scope; Schedule F and K-1 profits are refused by the self-employment screen (person.x_other) and other earned income outside Schedule C is refused (sd.other_forms, scope.yaml), so the sum of Schedule C net profits is the line on every computed return.",
-   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da"
+   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da",
+   "subject_key": "0b78bb66b053b8a8151fc4f22d183c741e02df65e7cfb0e617a36d0e96d3277a"
   },
   {
    "printed": "5 (sc.f7206_line5)",
    "restated": "Enter the amount from person helper \"Total of all net profits of this person's businesses (losses not included)\".",
    "model": "IRS line 5 requires 'the total of all net profits from Schedule C..., Schedule F..., or Schedule K-1..., plus any other income'; the restatement sums only Schedule C net profits.",
    "ruling": "Ruling: scope; f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income.\" The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other).",
-   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574",
+   "subject_key": "0b78bb66b053b8a8151fc4f22d183c741e02df65e7cfb0e617a36d0e96d3277a"
   },
   {
    "printed": "5 (sc.f7206_line5)",
    "restated": "Enter the amount from person helper \"Total of all net profits of this person's businesses (losses not included)\".",
    "model": "The IRS line 5 requires the total of net profits from Schedule C, Schedule F, and Schedule K-1, plus other income allocable to profitable businesses; the helper adds only confirmed Schedule C entries.",
    "ruling": "Ruling: scope; Schedule F and K-1 profits are refused by the self-employment screen (person.x_other) and other earned income outside Schedule C is refused (sd.other_forms, scope.yaml).",
-   "context": "6d6176476fc8561220fef03d134bb0276d0978d9eb8e73b2523780953c8d05c0"
+   "context": "6d6176476fc8561220fef03d134bb0276d0978d9eb8e73b2523780953c8d05c0",
+   "subject_key": "0b78bb66b053b8a8151fc4f22d183c741e02df65e7cfb0e617a36d0e96d3277a"
   },
   {
    "printed": "9 (sc.f7206_line9)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "IRS line 9 includes 'Schedule 1..., line 16, self-employed SEP, SIMPLE, and qualified plans'; the restatement uses only the SEP or SIMPLE deduction.",
    "ruling": "Ruling: scope; person.plan_screen refuses contributions \"to a qualified plan (such as a solo 401(k))\", so line 16 on a computed return holds only the SEP or SIMPLE deduction.",
-   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574",
+   "subject_key": "d3898a9e5ce080db1f3f1a199602db6915991020019f3654821b745a426114a7"
   },
   {
    "printed": "9 (sc.f7206_line9)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "IRS line 9 says 'Enter the amount ... from Schedule 1, line 16 ... attributable to the same trade or business'; the restatement instead prorates that amount by line 4 divided by line 5.",
    "ruling": "Ruling: ambiguity (amb.2025.f7206_plan_attribution, now linked on sc.f7206_line9); the line 16 deduction is attributed in proportion to net profit, the recorded reading.",
-   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da"
+   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da",
+   "subject_key": "d3898a9e5ce080db1f3f1a199602db6915991020019f3654821b745a426114a7"
   },
   {
    "printed": "9 (sc.f7206_line9)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "The IRS line 9 says to enter the amount from Schedule 1 line 16 attributable to the same trade or business; the restatement instead multiplies that deduction by line 4 divided by line 5.",
    "ruling": "Ruling: ambiguity (amb.2025.f7206_plan_attribution); the line 16 deduction is attributed in proportion to net profit, the recorded reading.",
-   "context": "6d6176476fc8561220fef03d134bb0276d0978d9eb8e73b2523780953c8d05c0"
+   "context": "6d6176476fc8561220fef03d134bb0276d0978d9eb8e73b2523780953c8d05c0",
+   "subject_key": "d3898a9e5ce080db1f3f1a199602db6915991020019f3654821b745a426114a7"
   },
   {
    "printed": "F",
    "restated": "Input — Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 (Form 3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization rules (section 263A) because your average annual gross receipts for the 3 prior years were more than $31 million?",
    "model": "Line F asks only for the accounting method, including cash, accrual, other, and method changes via Form 3115; section 263A capitalization is a Part II/Part III matter, not a line F question.",
    "ruling": "Ruling: representation; the input is a scope screen that also carries the section 263A questions; it narrows the supported returns and changes no amount on a computed return.",
-   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574",
+   "subject_key": "6fbf3d0ff8a464e4fa043bca22f7dcc1f1c58af69c3ea62bd7fefcf5e4fda18e"
   }
  ]
 }

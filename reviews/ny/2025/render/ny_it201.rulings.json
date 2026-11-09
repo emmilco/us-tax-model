@@ -9,7 +9,8 @@
    "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" The line-scoped request (rerun because line 1's refusals read the restructured ny_it201.ask.state_resident) gave only the pages its citations name, and line 1 cites only the form page, so p. 7 was not given; the restatement follows it, rounded half up by amb.ny.2025.whole_dollars (IT-201-I p. 2, whole dollars). The model found the refusals consistent with the text. Citation gap: BUG-0439. Project stands.",
    "context": "44ed7d5c6ec947a4beb343e1d97711fb991b324a6641b29d8799039f7693d46e",
    "date": "2026-11-07",
-   "run": "a1034af935fcdeb8f9e5faeb37e39f96fcf0063cccc86bebd68ad50b6ff12be7"
+   "run": "a1034af935fcdeb8f9e5faeb37e39f96fcf0063cccc86bebd68ad50b6ff12be7",
+   "subject_key": "5d8ffba565a29953186f406204fd00992f4c07253f0fd372b1f8adaf54491eb1"
   },
   {
    "printed": "11",
@@ -18,7 +19,8 @@
    "ruling": "Ruling: model error; the line is zero because the federal return it copies cannot hold Schedule E income: this tool refuses it on the federal return (scope.schedule1, \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; the federal encoding has no Schedule 1 line 5 (\"Rental real estate, royalties, partnerships, S corporations, trusts, etc. Attach Schedule E\"); f1040s1 p. 1), and the New York return is computed only from a computed federal return. The rendering's note says so. Not a defect.",
    "context": "9abcae0aba916408bf708704d4956c338404333d5fa26955eb8a6a2dcb9cee88",
    "date": "2026-11-04",
-   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678"
+   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678",
+   "subject_key": "a976059f03af281317db37d5f932e63361dce4f9396589980cf5145d509ca42d"
   },
   {
    "printed": "12",
@@ -27,7 +29,8 @@
    "ruling": "Ruling: model error; line 12 is the rental real estate included in line 11, and line 11 is always zero because the federal return refuses Schedule E (scope.schedule1; no federal Schedule 1 line 5), so line 12 is zero too. Not a defect.",
    "context": "9abcae0aba916408bf708704d4956c338404333d5fa26955eb8a6a2dcb9cee88",
    "date": "2026-11-04",
-   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678"
+   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678",
+   "subject_key": "df4ca86978c138dfd49cf620acd0e98874061bf2451a4193e082b599d6476c13"
   },
   {
    "printed": "13",
@@ -36,7 +39,8 @@
    "ruling": "Ruling: model error; the line is zero because the federal return it copies cannot hold Schedule F income: this tool refuses it on the federal return (scope.schedule1, \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; the federal encoding has no Schedule 1 line 6 (\"Farm income or (loss). Attach Schedule F\"); f1040s1 p. 1), and the New York return is computed only from a computed federal return. The rendering's note says so. Not a defect.",
    "context": "9abcae0aba916408bf708704d4956c338404333d5fa26955eb8a6a2dcb9cee88",
    "date": "2026-11-04",
-   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678"
+   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678",
+   "subject_key": "123ce07ce04e905a19ef0bfbe96a0fa704f3000318a7fa0c8d51c2be9acf9baf"
   },
   {
    "printed": "54a",
@@ -45,7 +49,8 @@
    "ruling": "Ruling: scope; self-employment income other than Schedule C is refused on the federal return before New York is reached (a refused federal return is a refused New York return, interview/ny/2025.yaml targets_from): scope.schedule1 refuses partnerships and other Schedule K-1 income, farm income (Schedule F), church employee income and income as a minister; scope.other_income refuses \"wages or tips not on a Form W-2\" and \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\" (the salary of a U.S. citizen employed by a foreign government or an international organization comes without a Form W-2); person.se_screen refuses \"other self-employment income not on a Schedule C\" and income \"earned as a U.S. citizen employed by a foreign government\". Within the tool Schedule C is the only source, which ny_it201.mctmt_people reads (its note says so).",
    "context": "585972fb5603add3ab94315a340b347888c168268f4754b217801a1bbafb694f",
    "date": "2026-11-07",
-   "run": "e973bae9d38b2ef0267f277ccfc6cace2db1c02d2264d9bc2aff37acdb646a65"
+   "run": "e973bae9d38b2ef0267f277ccfc6cace2db1c02d2264d9bc2aff37acdb646a65",
+   "subject_key": "353134fe1b43c713025fbbfb8dd49df59c8e9a78320e97b6baf1ffe8e6cf5635"
   },
   {
    "printed": "54b",
@@ -54,7 +59,8 @@
    "ruling": "Ruling: scope; as line 54a: every source of self-employment income other than Schedule C is refused federally, so the condition's reading of Schedule C alone drops no Zone 2 amount the tool can reach.",
    "context": "585972fb5603add3ab94315a340b347888c168268f4754b217801a1bbafb694f",
    "date": "2026-11-07",
-   "run": "e973bae9d38b2ef0267f277ccfc6cace2db1c02d2264d9bc2aff37acdb646a65"
+   "run": "e973bae9d38b2ef0267f277ccfc6cace2db1c02d2264d9bc2aff37acdb646a65",
+   "subject_key": "766a46aee9b4cb64d8103118f8cae20ea624894dd079bd4dc37aac3375d87d79"
   },
   {
    "printed": "8",
@@ -63,7 +69,8 @@
    "ruling": "Ruling: model error; the line is zero because the federal return it copies cannot hold Form 4797 gains or losses: this tool refuses it on the federal return (scope.schedule1, \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; the federal encoding has no Schedule 1 line 4 (\"Other gains or (losses). Check if any from Form(s): ... 4797\"); f1040s1 p. 1), and the New York return is computed only from a computed federal return. The rendering's note says so. Not a defect.",
    "context": "9abcae0aba916408bf708704d4956c338404333d5fa26955eb8a6a2dcb9cee88",
    "date": "2026-11-04",
-   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678"
+   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678",
+   "subject_key": "2e7dee6c2419013c9f86c18bf07e3fb37831d9e2853cd324069afa1ef1fa7e06"
   }
  ]
 }

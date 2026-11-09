@@ -4,16 +4,18 @@
  "rulings": [
   {
    "printed": "1(c)",
-   "project": "{\"const\": 0}",
-   "second": "{\"input\": \"Form 4137, column 1(c), the qualified tips included for this\"}",
-   "ruling": "Ruling: scope; project retained, with the refusal now on the line. Form 4137 is outside this tool (s2.other, which names Form 4137), so column (c) is zero within scope; the line now carries that refusal."
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "e185e7c52e554dd39131c5dea58b8f851315ca0243d942a1077032adce72bbe8",
+   "ruling": "Ruling: scope; project retained, with the refusal now on the line. Form 4137 is outside this tool (s2.other, which names Form 4137), so column (c) is zero within scope; the line now carries that refusal.",
+   "subject_key": "08be7d1c239a413e1a9759d648840efa0b3a880b60278cc7b54f968c7a348058"
   },
   {
    "printed": "1(d)",
-   "project": "{\"of\": [{\"line\": \"1(b)\"}, {\"line\": \"1(c)\"}], \"op\": \"larger_of\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"tipjob.qualified\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"tipjob.qualified\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"line\": \"1(b)\"}, {\"line\": \"1(c)\"}], \"op\": \"larger_of\"}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "e57116ba11286e4e21fb79926b1571eef944dc73d1c6d5597cf1f999a55a8de2",
+   "second_expr_sha256": "9b1d2907435dfd5b66a3d067e991a50148a96143ec6c752aba37bd44784c35fb",
    "ruling": "Ruling: scope; i1040gi (2025) p.104 column(d) takes the greater of columns(b)/(c), with Form4137 outside this tool. On the admitted qualified=true rows both choose that same greater amount. The reply instead returns zero for qualified=false; the project refuses mixed/unqualified employer rows through tipjob.mixed on the input amount, following the previously recorded owner scope choice. That existing refusal decision is retained, with no new owner approval or equivalence of the refused case claimed. The reply does not admit splitting or silently dropping an employer.",
-   "context": "0702ad98ee1b15287fc4fb3c966ed94cbe6e2376504a6d12630a7f807ef5c9b2"
+   "context": "0702ad98ee1b15287fc4fb3c966ed94cbe6e2376504a6d12630a7f807ef5c9b2",
+   "subject_key": "66267d4f30653d152ca05099ab5a2ac8a39ce1e8310217dc83649bb452e4e309"
   }
  ]
 }

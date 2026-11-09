@@ -9,7 +9,8 @@
    "model": "$2,191.00",
    "ruling": "Ruling: model error; i8962 p. 10, Line 7, \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\"; i8962 p. 11, Table 2, the row for line 5 values 200 to 250 pairs 238 with 0.0352 and 239 with 0.0356. Line 5 is 238 on this case (both sides agree), so the applicable figure is 0.0352, the project's 3.52%. The model's work, \"Table 2, line 5 = 238 gives 0.0356\", reads the next column (the figure for 239). Line 11(c) is line 8a, $2,166 (project); the model's $2,191 follows its line 8a. The fixture expectation is the model's value; dropped.",
    "drop": true,
-   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712"
+   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712",
+   "subject_key": "c242194462ae7c95864d5bd93a4e4b61d4f05b658f30a057eafeb10f32e6c8ae"
   },
   {
    "case": "classm.f8962.5",
@@ -18,7 +19,8 @@
    "model": "$5,705.00",
    "ruling": "Ruling: model error; i8962 p. 10, Line 7, \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\"; i8962 p. 11, Table 2, the row for line 5 values 200 to 250 pairs 238 with 0.0352 and 239 with 0.0356. Line 5 is 238 on this case (both sides agree), so the applicable figure is 0.0352, the project's 3.52%. The model's work, \"Table 2, line 5 = 238 gives 0.0356\", reads the next column (the figure for 239). Line 11(d) is $7,896 - $2,166 = $5,730 (project); the model's $5,705 follows its line 8a. The fixture expectation is the model's value; dropped.",
    "drop": true,
-   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712"
+   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712",
+   "subject_key": "88026060464d717470e9928664af5ce94c8295c566c72a53b4ed53541f93f0ff"
   },
   {
    "case": "classm.f8962.5",
@@ -27,7 +29,8 @@
    "model": "$5,705.00",
    "ruling": "Ruling: model error; i8962 p. 10, Line 7, \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\"; i8962 p. 11, Table 2, the row for line 5 values 200 to 250 pairs 238 with 0.0352 and 239 with 0.0356. Line 5 is 238 on this case (both sides agree), so the applicable figure is 0.0352, the project's 3.52%. The model's work, \"Table 2, line 5 = 238 gives 0.0356\", reads the next column (the figure for 239). Line 11(e) is the smaller of $8,640 and $5,730, $5,730 (project); the model's $5,705 follows its line 11(d). The fixture expectation is the model's value; dropped.",
    "drop": true,
-   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712"
+   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712",
+   "subject_key": "93b2ade851291166f42824e87f11c627293404975719e5557d89a20eabc93d51"
   },
   {
    "case": "classm.f8962.5",
@@ -36,7 +39,8 @@
    "model": "$5,705.00",
    "ruling": "Ruling: model error; i8962 p. 10, Line 7, \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\"; i8962 p. 11, Table 2, the row for line 5 values 200 to 250 pairs 238 with 0.0352 and 239 with 0.0356. Line 5 is 238 on this case (both sides agree), so the applicable figure is 0.0352, the project's 3.52%. The model's work, \"Table 2, line 5 = 238 gives 0.0356\", reads the next column (the figure for 239). Line 24 is line 11(e), $5,730 (project); the model's $5,705 follows its line 11(e). The fixture expectation is the model's value; dropped.",
    "drop": true,
-   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712"
+   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712",
+   "subject_key": "bedf2caef6b129f9722a974ceea39775bb9a3a3ab6987c5e782b96035109c81a"
   },
   {
    "case": "classm.f8962.5",
@@ -45,7 +49,8 @@
    "model": "$949.00",
    "ruling": "Ruling: model error; i8962 p. 10, Line 7, \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\"; i8962 p. 11, Table 2, the row for line 5 values 200 to 250 pairs 238 with 0.0352 and 239 with 0.0356. Line 5 is 238 on this case (both sides agree), so the applicable figure is 0.0352, the project's 3.52%. The model's work, \"Table 2, line 5 = 238 gives 0.0356\", reads the next column (the figure for 239). Line 27 is $6,654 - $5,730 = $924 (project); the model's $949 follows its line 24. The fixture expectation is the model's value; dropped.",
    "drop": true,
-   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712"
+   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712",
+   "subject_key": "82e3383fd3c02644f4435907efdfc546220b9b4c23b02d8c60a8ca970bb0fcb9"
   },
   {
    "case": "classm.f8962.5",
@@ -54,7 +59,8 @@
    "model": "$949.00",
    "ruling": "Ruling: model error; i8962 p. 10, Line 7, \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\"; i8962 p. 11, Table 2, the row for line 5 values 200 to 250 pairs 238 with 0.0352 and 239 with 0.0356. Line 5 is 238 on this case (both sides agree), so the applicable figure is 0.0352, the project's 3.52%. The model's work, \"Table 2, line 5 = 238 gives 0.0356\", reads the next column (the figure for 239). Line 29 is the smaller of $924 and $975 (line 28, agreed), $924 (project); the model's $949 follows its line 27. The fixture expectation is the model's value; dropped.",
    "drop": true,
-   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712"
+   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712",
+   "subject_key": "cf4728fb8c73ec7b68ef5d4d7bc457ec9234586673dae025aac4e95739f2f411"
   },
   {
    "case": "classm.f8962.5",
@@ -63,7 +69,8 @@
    "model": "3.56%",
    "ruling": "Ruling: model error; i8962 p. 10, Line 7, \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\"; i8962 p. 11, Table 2, the row for line 5 values 200 to 250 pairs 238 with 0.0352 and 239 with 0.0356. Line 5 is 238 on this case (both sides agree), so the applicable figure is 0.0352, the project's 3.52%. The model's work, \"Table 2, line 5 = 238 gives 0.0356\", reads the next column (the figure for 239). The project's 3.52% is right. The fixture expectation is the model's value; dropped.",
    "drop": true,
-   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712"
+   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712",
+   "subject_key": "721507e404fa21e65e55753104055369eb4ce1a28850cf726bba9a004fc99ebc"
   },
   {
    "case": "classm.f8962.5",
@@ -72,7 +79,8 @@
    "model": "$2,191.00",
    "ruling": "Ruling: model error; i8962 p. 10, Line 7, \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\"; i8962 p. 11, Table 2, the row for line 5 values 200 to 250 pairs 238 with 0.0352 and 239 with 0.0356. Line 5 is 238 on this case (both sides agree), so the applicable figure is 0.0352, the project's 3.52%. The model's work, \"Table 2, line 5 = 238 gives 0.0356\", reads the next column (the figure for 239). Line 8a is $61,543 x 0.0352 = $2,166.31, rounded to $2,166, the project's value; the model's $2,191 carries its 0.0356. The fixture expectation is the model's value; dropped.",
    "drop": true,
-   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712"
+   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712",
+   "subject_key": "13673835c42f7b77119a40104e33486e6a4f6daa256ce6bbd66a0027417c3420"
   },
   {
    "case": "classm.f8962.5",
@@ -81,7 +89,8 @@
    "model": "$183.00",
    "ruling": "Ruling: model error; i8962 p. 10, Line 7, \"Enter on line 7 the decimal number from Table 2 that applies to the amount you entered on line 5.\"; i8962 p. 11, Table 2, the row for line 5 values 200 to 250 pairs 238 with 0.0352 and 239 with 0.0356. Line 5 is 238 on this case (both sides agree), so the applicable figure is 0.0352, the project's 3.52%. The model's work, \"Table 2, line 5 = 238 gives 0.0356\", reads the next column (the figure for 239). Line 8b is $2,166 / 12 = $180.50, rounded to $181, the project's value; the model's $183 follows its line 8a. The fixture expectation is the model's value; dropped.",
    "drop": true,
-   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712"
+   "context": "66555a65d8872e859f91bc8a712d313236b544fc205b996c1f0c9ae67caf7712",
+   "subject_key": "5dd9d33b00c46b0ffd3a669b563874b3653141290ee305d76e42c9d3bda88e57"
   }
  ]
 }

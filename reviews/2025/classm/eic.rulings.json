@@ -8,7 +8,8 @@
    "project": "$5,137.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.1.prompt.txt) lists the line as \"line (Step 5, 1)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 1\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 1)\" and were read). The reply's value is $5,137.00 (Form 1040 line 1z); the project's is $5,137.00. They are equal, and Step 5 is reached on this return (eic.reached_step5 true; Worksheet A line 1 $5,137.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "1e2435b1148cbe49035874517d5d11287c65a2c2eb25b5bdf08f68cfafdb8de5"
   },
   {
    "case": "classm.eic.1",
@@ -16,7 +17,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.1.prompt.txt) lists the line as \"line (Step 5, 2)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 2\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 2)\" and were read). The reply's value is $0.00 (no Medicaid waiver payments); the project's is $0.00. They are equal, and Step 5 is reached on this return (eic.reached_step5 true; Worksheet A line 1 $5,137.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "8dab2150a4c9a207cfe4ecc47bc5c852a7b51c931469bf567818cd9797682646"
   },
   {
    "case": "classm.eic.1",
@@ -24,7 +26,8 @@
    "project": "$5,137.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.1.prompt.txt) lists the line as \"line (Step 5, 3)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 3\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 3)\" and were read). The reply's value is $5,137.00 (line 1 minus line 2); the project's is $5,137.00. They are equal, and Step 5 is reached on this return (eic.reached_step5 true; Worksheet A line 1 $5,137.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "9caa0984ad669c998da37a16bae255b5376c4489518b3294af597cffd9c66dad"
   },
   {
    "case": "classm.eic.1",
@@ -32,7 +35,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.1.prompt.txt) lists the line as \"line (Step 5, 4)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 4\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 4)\" and were read). The reply's value is $0.00 (no combat pay elected); the project's is $0.00. They are equal, and Step 5 is reached on this return (eic.reached_step5 true; Worksheet A line 1 $5,137.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "a6b05d4217ea419cb970da96d8a4cca02b5135f9b92f134884b77a6709eb0341"
   },
   {
    "case": "classm.eic.1",
@@ -40,7 +44,8 @@
    "project": "$5,137.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.1.prompt.txt) lists the line as \"line (Step 5, 5)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 5\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 5)\" and were read). The reply's value is $5,137.00 (lines 3 plus 4); the project's is $5,137.00. They are equal, and Step 5 is reached on this return (eic.reached_step5 true; Worksheet A line 1 $5,137.00 agrees), so no project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "5ee6ac44faedbc8e68d44f7e6dfbe93cae5542b2316298ece1a3954ca344da01"
   },
   {
    "case": "classm.eic.1",
@@ -48,7 +53,8 @@
    "project": "$32,936.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees.",
-   "drop": true
+   "drop": true,
+   "subject_key": "117a22ba314b9963326e1987c11b8666dd56f34c5fd96b07ef7d6ef8639df8e6"
   },
   {
    "case": "classm.eic.1",
@@ -56,7 +62,8 @@
    "project": "$5,137.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "117a22ba314b9963326e1987c11b8666dd56f34c5fd96b07ef7d6ef8639df8e6"
   },
   {
    "case": "classm.eic.1",
@@ -64,7 +71,8 @@
    "project": "$2,798.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.1",
@@ -72,7 +80,8 @@
    "project": "$723.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The worksheet leaves line 5 blank when line 4 is Yes or line 3 is below the line 5 amount (i1040gi p. 46, Worksheet A, line 4, 'Yes. Skip line 5; enter the amount from line 2 on line 6', and line 5, 'Yes. Leave line 5 blank'); the project figures line 5 always and line 6 reads it only in the case the worksheet uses it, so line 6 is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.1",
@@ -80,7 +89,8 @@
    "project": "$32,936.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees.",
-   "drop": true
+   "drop": true,
+   "subject_key": "78cd471469f85ecbf001b90bed2281954d8a63203158852d7100247d4fd2c7ec"
   },
   {
    "case": "classm.eic.1",
@@ -88,7 +98,8 @@
    "project": "$5,137.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "78cd471469f85ecbf001b90bed2281954d8a63203158852d7100247d4fd2c7ec"
   },
   {
    "case": "classm.eic.10",
@@ -96,7 +107,8 @@
    "project": "$48,342.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d273ae4ce370ddfabad0746a2bad092c4c1438cee29e9991e6b917d63054b7af"
   },
   {
    "case": "classm.eic.10",
@@ -104,7 +116,8 @@
    "project": "$48,598.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.2",
@@ -112,7 +125,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.2.prompt.txt) lists the line as \"line (Step 5, 1)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 1\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 1)\" and were read). The reply's value is blank (\"Step 1 Q1: MFS, no children with valid SSNs, AGI $22,732 is not under $19,104, so STOP and Step 5 is never reached\"); the project's is $0.00. The reply's blank is right: i1040gi p. 40, Step 1, question 1, \"No children who have valid SSNs lived with you, is the amount on Form 1040 or 1040-SR, line 11b, less than $19,104 ...? No. STOP\" (eic.reached_step5 false). The project's Step 5 lines are helpers that shown_when cannot hide (TASKS T-067), but every one is $0.00 here, which the skipped-line rule permits; no finding. Nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "1e2435b1148cbe49035874517d5d11287c65a2c2eb25b5bdf08f68cfafdb8de5"
   },
   {
    "case": "classm.eic.2",
@@ -121,7 +135,8 @@
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.2.prompt.txt) lists the line as \"line (Step 5, 1)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 1\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is blank: \"Not reached. Step 1 Q1: no qualifying children and line 11b $65,538.15 is not less than $19,104, so STOP, you can't take the credit.\" That is the source reading (i1040gi p. 40, Step 1, question 1, with no qualifying child: \"less than $19,104 ($26,214 if married filing jointly)? ... No. STOP\"). The project's value is $31,939.00 (eic.reached_step5 false, eic.credit $0.00): the Step 5 helper lines are figured and shown on a return that never reaches Step 5, the open T-067 (BUG-0151; shown_when does not apply to helpers). Not a new finding, and the credit is $0.00 on both sides. Dropped: a line the flow chart never reaches is not evidence for the fixture.",
    "drop": true,
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "1e2435b1148cbe49035874517d5d11287c65a2c2eb25b5bdf08f68cfafdb8de5"
   },
   {
    "case": "classm.eic.2",
@@ -130,7 +145,8 @@
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.2.prompt.txt) lists the line as \"line (Step 5, 2)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 2\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is blank: \"Not reached. Step 1 Q1: no qualifying children and line 11b $65,538.15 is not less than $19,104, so STOP, you can't take the credit.\" That is the source reading (i1040gi p. 40, Step 1, question 1, with no qualifying child: \"less than $19,104 ($26,214 if married filing jointly)? ... No. STOP\"). The project's value is $0.00 (eic.reached_step5 false, eic.credit $0.00): the Step 5 helper lines are figured and shown on a return that never reaches Step 5, the open T-067 (BUG-0151; shown_when does not apply to helpers). Not a new finding, and the credit is $0.00 on both sides. Dropped: a line the flow chart never reaches is not evidence for the fixture.",
    "drop": true,
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "8dab2150a4c9a207cfe4ecc47bc5c852a7b51c931469bf567818cd9797682646"
   },
   {
    "case": "classm.eic.2",
@@ -138,7 +154,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.2.prompt.txt) lists the line as \"line (Step 5, 3)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 3\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 3)\" and were read). The reply's value is blank (\"Step 1 Q1: MFS, no children with valid SSNs, AGI $22,732 is not under $19,104, so STOP and Step 5 is never reached\"); the project's is $0.00. The reply's blank is right: i1040gi p. 40, Step 1, question 1, \"No children who have valid SSNs lived with you, is the amount on Form 1040 or 1040-SR, line 11b, less than $19,104 ...? No. STOP\" (eic.reached_step5 false). The project's Step 5 lines are helpers that shown_when cannot hide (TASKS T-067), but every one is $0.00 here, which the skipped-line rule permits; no finding. Nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "9caa0984ad669c998da37a16bae255b5376c4489518b3294af597cffd9c66dad"
   },
   {
    "case": "classm.eic.2",
@@ -147,7 +164,8 @@
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.2.prompt.txt) lists the line as \"line (Step 5, 3)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 3\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is blank: \"Not reached. Step 1 Q1: no qualifying children and line 11b $65,538.15 is not less than $19,104, so STOP, you can't take the credit.\" That is the source reading (i1040gi p. 40, Step 1, question 1, with no qualifying child: \"less than $19,104 ($26,214 if married filing jointly)? ... No. STOP\"). The project's value is $31,939.00 (eic.reached_step5 false, eic.credit $0.00): the Step 5 helper lines are figured and shown on a return that never reaches Step 5, the open T-067 (BUG-0151; shown_when does not apply to helpers). Not a new finding, and the credit is $0.00 on both sides. Dropped: a line the flow chart never reaches is not evidence for the fixture.",
    "drop": true,
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "9caa0984ad669c998da37a16bae255b5376c4489518b3294af597cffd9c66dad"
   },
   {
    "case": "classm.eic.2",
@@ -156,7 +174,8 @@
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.2.prompt.txt) lists the line as \"line (Step 5, 4)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 4\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is blank: \"Not reached. Step 1 Q1: no qualifying children and line 11b $65,538.15 is not less than $19,104, so STOP, you can't take the credit.\" That is the source reading (i1040gi p. 40, Step 1, question 1, with no qualifying child: \"less than $19,104 ($26,214 if married filing jointly)? ... No. STOP\"). The project's value is $0.00 (eic.reached_step5 false, eic.credit $0.00): the Step 5 helper lines are figured and shown on a return that never reaches Step 5, the open T-067 (BUG-0151; shown_when does not apply to helpers). Not a new finding, and the credit is $0.00 on both sides. Dropped: a line the flow chart never reaches is not evidence for the fixture.",
    "drop": true,
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "a6b05d4217ea419cb970da96d8a4cca02b5135f9b92f134884b77a6709eb0341"
   },
   {
    "case": "classm.eic.2",
@@ -164,7 +183,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.2.prompt.txt) lists the line as \"line (Step 5, 5)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 5\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 5)\" and were read). The reply's value is blank (\"Step 1 Q1: MFS, no children with valid SSNs, AGI $22,732 is not under $19,104, so STOP and Step 5 is never reached\"); the project's is $0.00. The reply's blank is right: i1040gi p. 40, Step 1, question 1, \"No children who have valid SSNs lived with you, is the amount on Form 1040 or 1040-SR, line 11b, less than $19,104 ...? No. STOP\" (eic.reached_step5 false). The project's Step 5 lines are helpers that shown_when cannot hide (TASKS T-067), but every one is $0.00 here, which the skipped-line rule permits; no finding. Nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "5ee6ac44faedbc8e68d44f7e6dfbe93cae5542b2316298ece1a3954ca344da01"
   },
   {
    "case": "classm.eic.2",
@@ -173,7 +193,8 @@
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.2.prompt.txt) lists the line as \"line (Step 5, 5)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 5\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is blank: \"Not reached. Step 1 Q1: no qualifying children and line 11b $65,538.15 is not less than $19,104, so STOP, you can't take the credit.\" That is the source reading (i1040gi p. 40, Step 1, question 1, with no qualifying child: \"less than $19,104 ($26,214 if married filing jointly)? ... No. STOP\"). The project's value is $31,939.00 (eic.reached_step5 false, eic.credit $0.00): the Step 5 helper lines are figured and shown on a return that never reaches Step 5, the open T-067 (BUG-0151; shown_when does not apply to helpers). Not a new finding, and the credit is $0.00 on both sides. Dropped: a line the flow chart never reaches is not evidence for the fixture.",
    "drop": true,
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "5ee6ac44faedbc8e68d44f7e6dfbe93cae5542b2316298ece1a3954ca344da01"
   },
   {
    "case": "classm.eic.2",
@@ -181,7 +202,8 @@
    "project": "$22,732.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Step 1 ends the flow chart for this return (i1040gi p. 40, Step 1, question 1, 'No. STOP'); the project figures Worksheet A's lines for every return and eic.credit is zero when Steps 1 to 5 fail, so line 27a is zero on both sides.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.2",
@@ -189,7 +211,8 @@
    "project": "$23,500.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46).",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.2",
@@ -197,7 +220,8 @@
    "project": "$64,140.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.2",
@@ -205,7 +229,8 @@
    "project": "$-74,959.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "117a22ba314b9963326e1987c11b8666dd56f34c5fd96b07ef7d6ef8639df8e6"
   },
   {
    "case": "classm.eic.3",
@@ -213,7 +238,8 @@
    "project": "$33.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.3",
@@ -221,7 +247,8 @@
    "project": "$13,709.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "117a22ba314b9963326e1987c11b8666dd56f34c5fd96b07ef7d6ef8639df8e6"
   },
   {
    "case": "classm.eic.3",
@@ -229,7 +256,8 @@
    "project": "$10.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.3",
@@ -237,7 +265,8 @@
    "project": "$5,490.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The worksheet leaves line 5 blank when line 4 is Yes or line 3 is below the line 5 amount (i1040gi p. 46, Worksheet A, line 4, 'Yes. Skip line 5; enter the amount from line 2 on line 6', and line 5, 'Yes. Leave line 5 blank'); the project figures line 5 always and line 6 reads it only in the case the worksheet uses it, so line 6 is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.3",
@@ -245,7 +274,8 @@
    "project": "$649.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet A says to leave line 5 blank when line 3 is less than the amount for the filing status and number of children ($17,730 married filing jointly with none) and to take line 2; the project looks line 5 up regardless and line 6 takes line 2. The credit, line 6, agrees at $0.00.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.3",
@@ -253,7 +283,8 @@
    "project": "$13,709.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "78cd471469f85ecbf001b90bed2281954d8a63203158852d7100247d4fd2c7ec"
   },
   {
    "case": "classm.eic.4",
@@ -261,7 +292,8 @@
    "project": "$5,137.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.4.prompt.txt) lists the line as \"line (Step 5, 1)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 1\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is $5,137.00 (\"Form 1040 line 1z = 5,137.00\"; Medicaid waiver payments and combat pay zero in this tool); the project's is $5,137.00. They are equal, and Step 5 is reached (eic.reached_step5 true, eic.credit $1,743.00, which the reply's line 6 agrees with), so the project amount is not a T-067 case. Nothing to drop.",
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "1e2435b1148cbe49035874517d5d11287c65a2c2eb25b5bdf08f68cfafdb8de5"
   },
   {
    "case": "classm.eic.4",
@@ -269,7 +301,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.4.prompt.txt) lists the line as \"line (Step 5, 2)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 2\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is $0.00 (\"Form 1040 line 1z = 5,137.00\"; Medicaid waiver payments and combat pay zero in this tool); the project's is $0.00. They are equal, and Step 5 is reached (eic.reached_step5 true, eic.credit $1,743.00, which the reply's line 6 agrees with), so the project amount is not a T-067 case. Nothing to drop.",
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "8dab2150a4c9a207cfe4ecc47bc5c852a7b51c931469bf567818cd9797682646"
   },
   {
    "case": "classm.eic.4",
@@ -277,7 +310,8 @@
    "project": "$5,137.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.4.prompt.txt) lists the line as \"line (Step 5, 3)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 3\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is $5,137.00 (\"Form 1040 line 1z = 5,137.00\"; Medicaid waiver payments and combat pay zero in this tool); the project's is $5,137.00. They are equal, and Step 5 is reached (eic.reached_step5 true, eic.credit $1,743.00, which the reply's line 6 agrees with), so the project amount is not a T-067 case. Nothing to drop.",
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "9caa0984ad669c998da37a16bae255b5376c4489518b3294af597cffd9c66dad"
   },
   {
    "case": "classm.eic.4",
@@ -285,7 +319,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.4.prompt.txt) lists the line as \"line (Step 5, 4)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 4\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is $0.00 (\"Form 1040 line 1z = 5,137.00\"; Medicaid waiver payments and combat pay zero in this tool); the project's is $0.00. They are equal, and Step 5 is reached (eic.reached_step5 true, eic.credit $1,743.00, which the reply's line 6 agrees with), so the project amount is not a T-067 case. Nothing to drop.",
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "a6b05d4217ea419cb970da96d8a4cca02b5135f9b92f134884b77a6709eb0341"
   },
   {
    "case": "classm.eic.4",
@@ -293,7 +328,8 @@
    "project": "$5,137.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.4.prompt.txt) lists the line as \"line (Step 5, 5)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 5\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is $5,137.00 (\"Form 1040 line 1z = 5,137.00\"; Medicaid waiver payments and combat pay zero in this tool); the project's is $5,137.00. They are equal, and Step 5 is reached (eic.reached_step5 true, eic.credit $1,743.00, which the reply's line 6 agrees with), so the project amount is not a T-067 case. Nothing to drop.",
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "5ee6ac44faedbc8e68d44f7e6dfbe93cae5542b2316298ece1a3954ca344da01"
   },
   {
    "case": "classm.eic.4",
@@ -301,7 +337,8 @@
    "project": "$45,880.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d273ae4ce370ddfabad0746a2bad092c4c1438cee29e9991e6b917d63054b7af"
   },
   {
    "case": "classm.eic.4",
@@ -309,7 +346,8 @@
    "project": "$62,208.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46).",
-   "drop": true
+   "drop": true,
+   "subject_key": "d273ae4ce370ddfabad0746a2bad092c4c1438cee29e9991e6b917d63054b7af"
   },
   {
    "case": "classm.eic.4",
@@ -317,7 +355,8 @@
    "project": "$33.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet A line 2 is $0 (the EIC Table gives no credit for this earned income), so the worksheet stops there (amb.2025.eic_below_table); the project figures lines 3 and 5 anyway, and the credit, line 6, agrees at $0.00.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.4",
@@ -325,7 +364,8 @@
    "project": "$45,880.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.4",
@@ -333,7 +373,8 @@
    "project": "$61,797.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46).",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.4",
@@ -341,7 +382,8 @@
    "project": "$9,719.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Step 1 ends the flow chart for this return (i1040gi p. 40, Step 1, question 1, 'No. STOP'); the project figures Worksheet A's lines for every return and eic.credit is zero when Steps 1 to 5 fail, so line 27a is zero on both sides.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.4",
@@ -349,7 +391,8 @@
    "project": "yes",
    "model": "no",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "011abc05b8c23c0cafff4032607d19ae49146a9ce764945cb7d550bd7d96cc5a"
   },
   {
    "case": "classm.eic.4",
@@ -357,7 +400,8 @@
    "project": "$10.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet A line 2 is $0 (the EIC Table gives no credit for this earned income), so the worksheet stops there (amb.2025.eic_below_table); the project figures lines 3 and 5 anyway, and the credit, line 6, agrees at $0.00.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.4",
@@ -365,7 +409,8 @@
    "project": "$649.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Step 1 ends the flow chart for this return (i1040gi p. 40, Step 1, question 1, 'No. STOP'); the project figures Worksheet A's lines for every return and eic.credit is zero when Steps 1 to 5 fail, so line 27a is zero on both sides.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.5",
@@ -373,7 +418,8 @@
    "project": "$62,208.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The flow chart stops at Step 1 (i1040gi p. 40: with no qualifying child, Form 1040 line 11b is not less than $19,104), so no worksheet line is reached; the project figures the lines anyway and its credit, Worksheet A line 6, is $0.00 as the model's.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d273ae4ce370ddfabad0746a2bad092c4c1438cee29e9991e6b917d63054b7af"
   },
   {
    "case": "classm.eic.5",
@@ -381,7 +427,8 @@
    "project": "$66,499.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d273ae4ce370ddfabad0746a2bad092c4c1438cee29e9991e6b917d63054b7af"
   },
   {
    "case": "classm.eic.5",
@@ -389,7 +436,8 @@
    "project": "$13,054.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46).",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.5",
@@ -397,7 +445,8 @@
    "project": "$61,797.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The flow chart stops at Step 1 (i1040gi p. 40: with no qualifying child, Form 1040 line 11b is not less than $19,104), so no worksheet line is reached; the project figures the lines anyway and its credit, Worksheet A line 6, is $0.00 as the model's.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.5",
@@ -405,7 +454,8 @@
    "project": "$66,558.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.5",
@@ -413,7 +463,8 @@
    "project": "$62,208.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The flow chart stops at Step 1 (i1040gi p. 40: with no qualifying child, Form 1040 line 11b is not less than $19,104), so no worksheet line is reached; the project figures the lines anyway and its credit, Worksheet A line 6, is $0.00 as the model's.",
-   "drop": true
+   "drop": true,
+   "subject_key": "117a22ba314b9963326e1987c11b8666dd56f34c5fd96b07ef7d6ef8639df8e6"
   },
   {
    "case": "classm.eic.5",
@@ -421,7 +472,8 @@
    "project": "$649.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46).",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.5",
@@ -430,7 +482,8 @@
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. i1040gi p. 40, Step 1, question 2: \"Do you, and your spouse if filing a joint return, have a valid SSN? ... No. STOP You can't take the credit.\" The case has no valid SSN for the EIC (eic.step1_ssn false, eic.eligible false); the reply stops there and enters $0.00 (\"No valid SSNs for EIC -> can't take the credit (check box 27c); EIC = 0\"), its other Worksheet A lines blank. The project hides Worksheet A line 6 (shown_when eic.eligible, false), the credit eic.credit is $0.00 and line 27c is checked (eic.check_27c true), so both sides file no credit. The $4,080.00 in the log is the hidden line's internal value, compared because the class M fill of a non-collection document ignores shown_when (T-079 (1)). Not caused by the BUG-0195 wording (eic.us_home is Yes on this case). Dropped: a hidden line's internal value is not evidence.",
    "drop": true,
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "4d12691bc9110676ef519fb3479fe76985d21e24801c4f4cda51f1ff676a57af"
   },
   {
    "case": "classm.eic.5",
@@ -438,7 +491,8 @@
    "project": "$62,208.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The flow chart stops at Step 1 (i1040gi p. 40: with no qualifying child, Form 1040 line 11b is not less than $19,104), so no worksheet line is reached; the project figures the lines anyway and its credit, Worksheet A line 6, is $0.00 as the model's.",
-   "drop": true
+   "drop": true,
+   "subject_key": "78cd471469f85ecbf001b90bed2281954d8a63203158852d7100247d4fd2c7ec"
   },
   {
    "case": "classm.eic.6",
@@ -446,7 +500,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.6.prompt.txt) lists the line as \"line (Step 5, 1)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 1\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is $0.00 (Form 1040 line 1z $0.00); the project's is $0.00. They are equal. The return is refused (sa.excluded_income, excluded foreign or possession income; i1040gi p. 40, Step 1, question 3, \"Are you filing Form 2555?\"), and eic.us_home, the BUG-0195 question, is answered No here, which does not enter these lines. Nothing to drop: the values agree and neither side shows a nonzero amount.",
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "1e2435b1148cbe49035874517d5d11287c65a2c2eb25b5bdf08f68cfafdb8de5"
   },
   {
    "case": "classm.eic.6",
@@ -454,7 +509,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.6.prompt.txt) lists the line as \"line (Step 5, 2)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 2\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is $0.00 (Form 1040 line 1z $0.00); the project's is $0.00. They are equal. The return is refused (sa.excluded_income, excluded foreign or possession income; i1040gi p. 40, Step 1, question 3, \"Are you filing Form 2555?\"), and eic.us_home, the BUG-0195 question, is answered No here, which does not enter these lines. Nothing to drop: the values agree and neither side shows a nonzero amount.",
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "8dab2150a4c9a207cfe4ecc47bc5c852a7b51c931469bf567818cd9797682646"
   },
   {
    "case": "classm.eic.6",
@@ -462,7 +518,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.6.prompt.txt) lists the line as \"line (Step 5, 3)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 3\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is $0.00 (Form 1040 line 1z $0.00); the project's is $0.00. They are equal. The return is refused (sa.excluded_income, excluded foreign or possession income; i1040gi p. 40, Step 1, question 3, \"Are you filing Form 2555?\"), and eic.us_home, the BUG-0195 question, is answered No here, which does not enter these lines. Nothing to drop: the values agree and neither side shows a nonzero amount.",
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "9caa0984ad669c998da37a16bae255b5376c4489518b3294af597cffd9c66dad"
   },
   {
    "case": "classm.eic.6",
@@ -470,7 +527,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.6.prompt.txt) lists the line as \"line (Step 5, 4)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 4\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is $0.00 (Form 1040 line 1z $0.00); the project's is $0.00. They are equal. The return is refused (sa.excluded_income, excluded foreign or possession income; i1040gi p. 40, Step 1, question 3, \"Are you filing Form 2555?\"), and eic.us_home, the BUG-0195 question, is answered No here, which does not enter these lines. Nothing to drop: the values agree and neither side shows a nonzero amount.",
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "a6b05d4217ea419cb970da96d8a4cca02b5135f9b92f134884b77a6709eb0341"
   },
   {
    "case": "classm.eic.6",
@@ -478,7 +536,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading (T-070 (1)). The prompt (.classm/classm.eic.6.prompt.txt) lists the line as \"line (Step 5, 5)\" and asks for the whole handle exactly as given; the reply names it \"Step 5, 5\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, and the log records no answer (the replies for classm.eic.1, .3, .5 and .8 write \"(Step 5, n)\" and classm.eic.7 \"line (Step 5, n)\", and were read). The reply's value is $0.00 (Form 1040 line 1z $0.00); the project's is $0.00. They are equal. The return is refused (sa.excluded_income, excluded foreign or possession income; i1040gi p. 40, Step 1, question 3, \"Are you filing Form 2555?\"), and eic.us_home, the BUG-0195 question, is answered No here, which does not enter these lines. Nothing to drop: the values agree and neither side shows a nonzero amount.",
-   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978"
+   "context": "2b3b123b4f505a6273f93920177a26ddc92f9eebf1ff8bc39a94238d01361978",
+   "subject_key": "5ee6ac44faedbc8e68d44f7e6dfbe93cae5542b2316298ece1a3954ca344da01"
   },
   {
    "case": "classm.eic.6",
@@ -486,7 +545,8 @@
    "project": "$33,401.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d273ae4ce370ddfabad0746a2bad092c4c1438cee29e9991e6b917d63054b7af"
   },
   {
    "case": "classm.eic.6",
@@ -494,7 +554,8 @@
    "project": "$51,610.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46).",
-   "drop": true
+   "drop": true,
+   "subject_key": "d273ae4ce370ddfabad0746a2bad092c4c1438cee29e9991e6b917d63054b7af"
   },
   {
    "case": "classm.eic.6",
@@ -502,7 +563,8 @@
    "project": "$65,785.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Step 1 ends the flow chart for this return (i1040gi p. 40, Step 1, question 1, 'No. STOP'); the project figures Worksheet A's lines for every return and eic.credit is zero when Steps 1 to 5 fail, so line 27a is zero on both sides.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d273ae4ce370ddfabad0746a2bad092c4c1438cee29e9991e6b917d63054b7af"
   },
   {
    "case": "classm.eic.6",
@@ -510,7 +572,8 @@
    "project": "$33,704.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.6",
@@ -518,7 +581,8 @@
    "project": "$51,610.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46).",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.6",
@@ -526,7 +590,8 @@
    "project": "$66,664.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Step 1 ends the flow chart for this return (i1040gi p. 40, Step 1, question 1, 'No. STOP'); the project figures Worksheet A's lines for every return and eic.credit is zero when Steps 1 to 5 fail, so line 27a is zero on both sides.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.6",
@@ -534,7 +599,8 @@
    "project": "yes",
    "model": "no",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46).",
-   "drop": true
+   "drop": true,
+   "subject_key": "011abc05b8c23c0cafff4032607d19ae49146a9ce764945cb7d550bd7d96cc5a"
   },
   {
    "case": "classm.eic.6",
@@ -542,7 +608,8 @@
    "project": "$51,610.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees. Step 1 also stops this return.",
-   "drop": true
+   "drop": true,
+   "subject_key": "117a22ba314b9963326e1987c11b8666dd56f34c5fd96b07ef7d6ef8639df8e6"
   },
   {
    "case": "classm.eic.6",
@@ -550,7 +617,8 @@
    "project": "$65,785.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "117a22ba314b9963326e1987c11b8666dd56f34c5fd96b07ef7d6ef8639df8e6"
   },
   {
    "case": "classm.eic.6",
@@ -558,7 +626,8 @@
    "project": "$51,610.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees. Step 1 also stops this return.",
-   "drop": true
+   "drop": true,
+   "subject_key": "78cd471469f85ecbf001b90bed2281954d8a63203158852d7100247d4fd2c7ec"
   },
   {
    "case": "classm.eic.6",
@@ -566,7 +635,8 @@
    "project": "$65,785.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "78cd471469f85ecbf001b90bed2281954d8a63203158852d7100247d4fd2c7ec"
   },
   {
    "case": "classm.eic.7",
@@ -574,7 +644,8 @@
    "project": "$25,428.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d273ae4ce370ddfabad0746a2bad092c4c1438cee29e9991e6b917d63054b7af"
   },
   {
    "case": "classm.eic.7",
@@ -582,7 +653,8 @@
    "project": "$25,686.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.7",
@@ -590,7 +662,8 @@
    "project": "$19,388.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "117a22ba314b9963326e1987c11b8666dd56f34c5fd96b07ef7d6ef8639df8e6"
   },
   {
    "case": "classm.eic.7",
@@ -598,7 +671,8 @@
    "project": "$44,084.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees.",
-   "drop": true
+   "drop": true,
+   "subject_key": "117a22ba314b9963326e1987c11b8666dd56f34c5fd96b07ef7d6ef8639df8e6"
   },
   {
    "case": "classm.eic.7",
@@ -606,7 +680,8 @@
    "project": "$2,787.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46).",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.7",
@@ -614,7 +689,8 @@
    "project": "$7,152.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The worksheet leaves line 5 blank when line 4 is Yes or line 3 is below the line 5 amount (i1040gi p. 46, Worksheet A, line 4, 'Yes. Skip line 5; enter the amount from line 2 on line 6', and line 5, 'Yes. Leave line 5 blank'); the project figures line 5 always and line 6 reads it only in the case the worksheet uses it, so line 6 is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.7",
@@ -622,7 +698,8 @@
    "project": "$19,388.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42, 'Were you self-employed at any time in 2025'); the project figures its lines for every return and line 1 of Worksheet A reads them only for a return with a Schedule C (eic.self_employed), so the credit is the same.",
-   "drop": true
+   "drop": true,
+   "subject_key": "78cd471469f85ecbf001b90bed2281954d8a63203158852d7100247d4fd2c7ec"
   },
   {
    "case": "classm.eic.7",
@@ -630,7 +707,8 @@
    "project": "$44,084.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Worksheet B is used only when Step 5, question 2 is Yes (i1040gi p. 42: self-employment, church employee or statutory employee income); the project figures its lines for every return and nothing reads them when it is not used. The credit, Worksheet A line 6 (Form 1040 line 27a), agrees.",
-   "drop": true
+   "drop": true,
+   "subject_key": "78cd471469f85ecbf001b90bed2281954d8a63203158852d7100247d4fd2c7ec"
   },
   {
    "case": "classm.eic.8",
@@ -638,7 +716,8 @@
    "project": "$10,723.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d273ae4ce370ddfabad0746a2bad092c4c1438cee29e9991e6b917d63054b7af"
   },
   {
    "case": "classm.eic.8",
@@ -646,7 +725,8 @@
    "project": "$3,647.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a099dcc4a96ea9ca43826eeeeb91b625c5950bc74afd90594749caad7cb186"
   },
   {
    "case": "classm.eic.8",
@@ -654,7 +734,8 @@
    "project": "$108.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46).",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.8",
@@ -662,7 +743,8 @@
    "project": "$20,673.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "e4f685b1cbaf7622476c1fee370efbdb9bff9db3cf75701464e4a605a5adf751"
   },
   {
    "case": "classm.eic.8",
@@ -670,7 +752,8 @@
    "project": "$10.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The model leaves Worksheet A lines blank after a STOP (or line 5 when line 4 is Yes); the project figures each line always and the credit reads it only where the worksheet uses it, so line 6 and Form 1040 line 27a are the same (as ruled in Stage 9; i1040gi pp. 40-46).",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.8",
@@ -678,7 +761,8 @@
    "project": "$281.00",
    "model": "$1,819.00",
    "ruling": "Ruling: model table-reading error; project retained; model value dropped from the fixture. The 2025 EIC Table row 'At least 48,650 But less than 48,700', one qualifying child, in the column for single, head of household or qualifying surviving spouse, is $281 (i1040gi, the EIC Table page whose rows run 48,600 to 48,800; the printed row reads '289 281 273 265' for 48,600, 48,650, 48,700 and 48,750); the model's $1,819 appears in no column of that row. Line 3 ($48,693.10) is above the $23,350 line 5 amount, so line 5 is looked up, as both sides agree.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.8",
@@ -686,7 +770,8 @@
    "project": "$4,328.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.8",
@@ -702,7 +787,8 @@
    "project": "$73,579.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.9.prompt.txt) lists the line as \"line (Step 5, 1)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 1\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 1)\" and were read). The reply's value is $73,579.00 (Form 1040 line 1z); the project's is $73,579.00. They are equal, and Step 5 is reached (eic.reached_step5 true; Worksheet B line 4a reads it and line 4b $55,005.10 agrees), so the project amount is not a T-067 case. Nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "1e2435b1148cbe49035874517d5d11287c65a2c2eb25b5bdf08f68cfafdb8de5"
   },
   {
    "case": "classm.eic.9",
@@ -710,7 +796,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.9.prompt.txt) lists the line as \"line (Step 5, 2)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 2\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 2)\" and were read). The reply's value is $0.00 (no Medicaid waiver payments); the project's is $0.00. They are equal, and Step 5 is reached (eic.reached_step5 true; Worksheet B line 4a reads it and line 4b $55,005.10 agrees), so the project amount is not a T-067 case. Nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "8dab2150a4c9a207cfe4ecc47bc5c852a7b51c931469bf567818cd9797682646"
   },
   {
    "case": "classm.eic.9",
@@ -718,7 +805,8 @@
    "project": "$73,579.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.9.prompt.txt) lists the line as \"line (Step 5, 3)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 3\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 3)\" and were read). The reply's value is $73,579.00 (line 1 minus line 2); the project's is $73,579.00. They are equal, and Step 5 is reached (eic.reached_step5 true; Worksheet B line 4a reads it and line 4b $55,005.10 agrees), so the project amount is not a T-067 case. Nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "9caa0984ad669c998da37a16bae255b5376c4489518b3294af597cffd9c66dad"
   },
   {
    "case": "classm.eic.9",
@@ -726,7 +814,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.9.prompt.txt) lists the line as \"line (Step 5, 4)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 4\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 4)\" and were read). The reply's value is $0.00 (no combat pay elected); the project's is $0.00. They are equal, and Step 5 is reached (eic.reached_step5 true; Worksheet B line 4a reads it and line 4b $55,005.10 agrees), so the project amount is not a T-067 case. Nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "a6b05d4217ea419cb970da96d8a4cca02b5135f9b92f134884b77a6709eb0341"
   },
   {
    "case": "classm.eic.9",
@@ -734,7 +823,8 @@
    "project": "$73,579.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.eic.9.prompt.txt) lists the line as \"line (Step 5, 5)\" and says each line is \"named by its printed number as it appears in the IRS text (where two lines share a number, followed by a name in parentheses: answer with the whole handle, exactly as given)\"; the reply names it \"Step 5, 5\" without the parentheses, the class M parser (tools/transcription/classm.py extract) strips only a leading 'line ' before matching, and the log records no answer (the replies for classm.eic.3 to classm.eic.8 use \"(Step 5, 5)\" and were read). The reply's value is $73,579.00 (lines 3 plus 4); the project's is $73,579.00. They are equal, and Step 5 is reached (eic.reached_step5 true; Worksheet B line 4a reads it and line 4b $55,005.10 agrees), so the project amount is not a T-067 case. Nothing to drop.",
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "5ee6ac44faedbc8e68d44f7e6dfbe93cae5542b2316298ece1a3954ca344da01"
   },
   {
    "case": "classm.eic.9",
@@ -742,7 +832,8 @@
    "project": "$2,787.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. Where the printed steps say STOP (Steps 1 to 5) or line 4 is Yes (line 5 skipped) or line 2 is zero, the model leaves the later Worksheet A lines blank; the project computes every line regardless and applies eligibility in eic.credit, which Form 1040 line 27a reads (zero when a step stops). In an ordinary evaluation the worksheet lines are not reached on an ineligible return; where the model fills line 6 it agrees with the project, and where a step stops (for example Form 2555 at Step 1, question 3) the project's line 6 is figured but Form 1040 line 27a is zero or refused.",
-   "drop": true
+   "drop": true,
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   },
   {
    "case": "classm.eic.9",
@@ -751,7 +842,8 @@
    "model": "$1,819.00",
    "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A, line 5: \"No. Look up the amount on line 3 in the EIC Table to find the credit. Be sure you use the correct column for your filing status and the number of qualifying children you have who have valid SSNs.\" Line 3 is $48,693.10, single, one qualifying child with a valid SSN. The EIC Table, i1040gi p. 56, row \"48,650 48,700\" gives, for single, head of household or qualifying surviving spouse, 0 children $0, 1 child $281, 2 children $1,819, 3 children $2,713. Project $281.00 (tables/2025/eic_1.yaml); model $1,819.00 (\"EIC Table, Single, 1 child: 48,650-48,700 gives 1,819\"), the two-children column. The model's value is a misread table, not evidence. Also, the line is after a STOP on this return (Worksheet B line 4b $55,005.10 is not less than $50,434, i1040gi p. 47, line 5 \"No. STOP\"), so the project hides it (eic.show5 false) and the model should have left it blank; line 6 and the credit ($0.00) agree.",
    "drop": true,
-   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d"
+   "context": "b5fa8a73b19544278c34d60b9e15356f3bac06b64e5d6f7206a3f046360b9c2d",
+   "subject_key": "43a48b1d99d2ad5f2b114ebc23c6f32b105cad4653186f95f7cd5aca61de9bf6"
   }
  ]
 }

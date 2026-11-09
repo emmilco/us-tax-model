@@ -4,17 +4,19 @@
  "rulings": [
   {
    "printed": "15",
-   "project": "{\"line\": \"5\"}",
-   "second": "{\"param\": \"medicare.threshold\"}",
+   "project_expr_sha256": "3d204cc405d4cdf75f5147c2c37f6185b09404f75fbbe20a6febc27856e1e972",
+   "second_expr_sha256": "d9befdb182a205419e2f0304de72344e7acb781b846879a693a95d42b7bdd1c0",
    "ruling": "Ruling: representation; f8959 p.1 lines5/9/15 print the identical filing-status threshold table. Copying line5 and reading medicare.threshold directly have the same published type and filing-status amounts. No tax-value difference.",
-   "context": "888149479c2e498bea4bb948c3cd5620f3f956471f9be2e7691160cd522fde42"
+   "context": "888149479c2e498bea4bb948c3cd5620f3f956471f9be2e7691160cd522fde42",
+   "subject_key": "89cd5bb1b2cb33f42bc1751fd380723b85a77a28938263db589d8f7d2516ac8b"
   },
   {
    "printed": "9",
-   "project": "{\"line\": \"5\"}",
-   "second": "{\"param\": \"medicare.threshold\"}",
+   "project_expr_sha256": "3d204cc405d4cdf75f5147c2c37f6185b09404f75fbbe20a6febc27856e1e972",
+   "second_expr_sha256": "d9befdb182a205419e2f0304de72344e7acb781b846879a693a95d42b7bdd1c0",
    "ruling": "Ruling: representation; f8959 p.1 lines5/9/15 print the identical filing-status threshold table. The project copies line5, whose expression is medicare.threshold; the reply reads that same status-keyed parameter directly. No tax-value difference.",
-   "context": "888149479c2e498bea4bb948c3cd5620f3f956471f9be2e7691160cd522fde42"
+   "context": "888149479c2e498bea4bb948c3cd5620f3f956471f9be2e7691160cd522fde42",
+   "subject_key": "916e4f3b4b9bb18721dd4c2c55df06439ab1da9eda1447d4259c6e7f49914de1"
   }
  ]
 }

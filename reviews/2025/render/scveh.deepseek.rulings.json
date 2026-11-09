@@ -8,42 +8,48 @@
    "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
    "model": "Form 4562 Part V column (b) says 'Date placed in service. Enter the date the property was placed in service' and treats conversion date as placed-in-service; the restatement asks only for a year.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records. No value depends on the month or day except through the quarter, asked separately.",
-   "context": "062fe51d11c052b605e0fcc5602f5848224140a09312a63031bbc358540c8b1a"
+   "context": "062fe51d11c052b605e0fcc5602f5848224140a09312a63031bbc358540c8b1a",
+   "subject_key": "a36491fd93d78779a6d9249aa4954d53c745a81ce8384da173173432f98d50c6"
   },
   {
    "printed": "(b)",
    "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
    "model": "Form 4562 Part V column (b) says 'Enter the date the property was placed in service'; the restatement asks only for the year.",
    "ruling": "Ruling: representation; restatement accepted. As line 43: the year chooses the recovery year and the limits, the quarter (asked separately) the mid-quarter table; the filer enters the full date on Form 4562 column (b).",
-   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56"
+   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56",
+   "subject_key": "a36491fd93d78779a6d9249aa4954d53c745a81ce8384da173173432f98d50c6"
   },
   {
    "printed": "(b)",
    "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
    "model": "IRS column (b) says \"Date placed in service\" and instructs entering the date, not just the year.",
    "ruling": "Ruling: representation; same as the earlier ruling. No value depends on the month or day except through the quarter, asked separately.",
-   "context": "b4e14dc4dd83ad0c6e1fe02e9eb53caadd6de330c91fe99d9b3a624416f305eb"
+   "context": "b4e14dc4dd83ad0c6e1fe02e9eb53caadd6de330c91fe99d9b3a624416f305eb",
+   "subject_key": "a36491fd93d78779a6d9249aa4954d53c745a81ce8384da173173432f98d50c6"
   },
   {
    "printed": "(b)",
    "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
    "model": "IRS column (b) says \"Date placed in service. Enter the date the property was placed in service\"; the restatement asks only for the year.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records.",
-   "context": "9cf77a8b2fc649ccb86911bce6b85ebe8d60ceaf65a95c6a907be7e5689f615b"
+   "context": "9cf77a8b2fc649ccb86911bce6b85ebe8d60ceaf65a95c6a907be7e5689f615b",
+   "subject_key": "a36491fd93d78779a6d9249aa4954d53c745a81ce8384da173173432f98d50c6"
   },
   {
    "printed": "(b)",
    "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
    "model": "IRS column (b) says 'Date placed in service. Enter the date the property was placed in service'; the restatement asks only for the year, omitting the date and the conversion-date rule.",
    "ruling": "Ruling: representation; restatement accepted. i4562 p. 14, Column (b), \"Enter the date the property was placed in service\": the tool needs the year (and the quarter, asked separately, for 2025 property); the filer writes the date from their records.",
-   "context": "81b74c32cf7b55bda77a1d552f549139c6eadfbf6c3c572524ef2821b44fd162"
+   "context": "81b74c32cf7b55bda77a1d552f549139c6eadfbf6c3c572524ef2821b44fd162",
+   "subject_key": "a36491fd93d78779a6d9249aa4954d53c745a81ce8384da173173432f98d50c6"
   },
   {
    "printed": "(b)",
    "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
    "model": "IRS says 'Column (b)—Date placed in service. Enter the date the property was placed in service'; the restatement asks only for the year.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records. No value depends on the month or day except through the quarter, asked separately.",
-   "context": "666a951d2c298d4fe1840fea772d3fb97120ab013823d2e09e183799e840eaa6"
+   "context": "666a951d2c298d4fe1840fea772d3fb97120ab013823d2e09e183799e840eaa6",
+   "subject_key": "a36491fd93d78779a6d9249aa4954d53c745a81ce8384da173173432f98d50c6"
   },
   {
    "printed": "(b)",
@@ -52,7 +58,8 @@
    "ruling": "Ruling: representation; same as the refresh-round ruling: no value depends on the month or day except through the quarter, asked separately.",
    "context": "afe9eb5058d0ff5a13ae5ccf7394c2acadb528690ad739565ba221d89754f74c",
    "date": "2026-11-04",
-   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415"
+   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415",
+   "subject_key": "a36491fd93d78779a6d9249aa4954d53c745a81ce8384da173173432f98d50c6"
   },
   {
    "printed": "(screen) (scveh.screen)",
@@ -61,7 +68,8 @@
    "ruling": "Ruling: representation (a screen wider than the source); i4562 p. 15 and p946 p. 60 define the electric-vehicle category as vehicles produced by an original equipment manufacturer, designed to run primarily on electricity and placed in service after August 5, 1997, and before 2007. The screen item \"it is an electric vehicle placed in service before 2007\" refuses every such vehicle and more; any vehicle placed in service before 2007 is also refused by the first item (\"you placed it in service before 2019\"). A wider refusal changes no computed amount. The item's wording is unchanged by the R3 restructuring. Project stands.",
    "context": "e2cda65437606ea240c4c85806655da7e37ce69c204864704fd2d006705e764e",
    "date": "2026-11-07",
-   "run": "5b4cca39d260bc9fb797dd51a45c6eaf68a0970c26242959bbe6a6e6cb1abf92"
+   "run": "5b4cca39d260bc9fb797dd51a45c6eaf68a0970c26242959bbe6a6e6cb1abf92",
+   "subject_key": "62b6317a9d45e8f759fe9ac7e89f68cba255f89995faed238dd2553bf551f6e5"
   },
   {
    "printed": "13",
@@ -70,7 +78,8 @@
    "ruling": "Ruling: scope; the converted-vehicle months proration applies only to an owned vehicle converted from personal use in 2025, which scveh.screen refuses (\"you converted it from personal use to business use during 2025\"). Project stands.",
    "context": "afe9eb5058d0ff5a13ae5ccf7394c2acadb528690ad739565ba221d89754f74c",
    "date": "2026-11-04",
-   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415"
+   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415",
+   "subject_key": "62cbd17a058f4d88f6fe806bbf48b43b2cd2c98d8b5ef6393e5fcde24e8338ca"
   },
   {
    "printed": "13",
@@ -79,56 +88,64 @@
    "ruling": "Ruling: model error; p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13, \"Multiply line 12 by line 8. This is your business/investment cost\". The handle 13 is that worksheet line, not Schedule C line 13; depreciation and the automobile limits are on later worksheet lines (scveh.macrs). Same point as the Claude ruling of this line. Project stands.",
    "context": "eed466f87803a3b21978d947f64322034433b0531090f6bbcb37ed0e70266234",
    "date": "2026-11-04",
-   "run": "b9e375fc83b2b6b6b88a983d3ce5751c54ac4f2fb66625d914c080b7c539ac6d"
+   "run": "b9e375fc83b2b6b6b88a983d3ce5751c54ac4f2fb66625d914c080b7c539ac6d",
+   "subject_key": "62cbd17a058f4d88f6fe806bbf48b43b2cd2c98d8b5ef6393e5fcde24e8338ca"
   },
   {
    "printed": "19",
    "restated": "Choose — [helper \"Placed in service in 2025\" = true → helper \"Line 19 for a 2025 vehicle, half-year or mid-quarter\"] [helper \"Placed in service in 2025\" = false → helper \"Line 19 for a vehicle placed in service before 2025 (zero after the recovery period, when the worksheet is not used)\"]",
    "model": "For a 2019 vehicle, the IRS says 'If the recovery period for an automobile ended before your tax year beginning in 2025, enter your unrecovered basis, if any, in column (h)' and permits deductions after the recovery period; the restatement returns zero for a 2019 vehicle.",
    "ruling": "Ruling: representation; restatement accepted. Line 19 is a line of the automobile worksheet, which is not used after the recovery period; a 2019 vehicle's deduction is its unrecovered basis, limited and prorated (scveh.post, read by scveh.macrs_pass for column (h); Pub. 946 p. 61, Deductions After the Recovery Period), as stage14.veh.2019_cheap_mq3 asserts (BUG-0059).",
-   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56"
+   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56",
+   "subject_key": "cff7ea3067db965d38838a78389bdfdf4beb9d134a6ae39d7d79820c22d0e35c"
   },
   {
    "printed": "20a",
    "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
    "model": "IRS line 20a says to enter the business portion of rental cost but also that \"if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount\"; the restatement omits that reduction.",
    "ruling": "Ruling: scope; same as the earlier ruling (restatement and objection unchanged). An inclusion amount for leased property is refused for the business through sc.special (\"an inclusion amount for leased property\"), so the business portion of the lease payments is the line 20a amount for every vehicle that reaches it.",
-   "context": "b4e14dc4dd83ad0c6e1fe02e9eb53caadd6de330c91fe99d9b3a624416f305eb"
+   "context": "b4e14dc4dd83ad0c6e1fe02e9eb53caadd6de330c91fe99d9b3a624416f305eb",
+   "subject_key": "6d866db2c105f06ab443ed7fd591afdbc3553a3d5d6cbfb114bc5ab9939680d1"
   },
   {
    "printed": "20a",
    "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
    "model": "IRS says 'But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement omits the inclusion amount.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. sc.special refuses \"an inclusion amount for leased property\" for the business, read for every Schedule C, so the business portion of the lease payments is the line 20a amount on a computed return.",
-   "context": "666a951d2c298d4fe1840fea772d3fb97120ab013823d2e09e183799e840eaa6"
+   "context": "666a951d2c298d4fe1840fea772d3fb97120ab013823d2e09e183799e840eaa6",
+   "subject_key": "6d866db2c105f06ab443ed7fd591afdbc3553a3d5d6cbfb114bc5ab9939680d1"
   },
   {
    "printed": "20a",
    "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
    "model": "IRS says 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement uses only the business portion of lease payments and omits the inclusion amount.",
    "ruling": "Ruling: scope; refusal located elsewhere, restatement accepted. i1040sc line 20a, \"if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount\": sc.special refuses \"an inclusion amount for leased property\" for the business, read for every Schedule C (the wording is unchanged by this package; checked in forms/2025/sc.yaml).",
-   "context": "81b74c32cf7b55bda77a1d552f549139c6eadfbf6c3c572524ef2821b44fd162"
+   "context": "81b74c32cf7b55bda77a1d552f549139c6eadfbf6c3c572524ef2821b44fd162",
+   "subject_key": "6d866db2c105f06ab443ed7fd591afdbc3553a3d5d6cbfb114bc5ab9939680d1"
   },
   {
    "printed": "20a",
    "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
    "model": "IRS says if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount; the restatement only takes the business portion of lease payments and has no inclusion-amount adjustment or refusal.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. sc.special refuses \"an inclusion amount for leased property\" for the business, read for every Schedule C (checked by evaluation in the A-backlog session: sc.special answered Yes refuses at sc.line1).",
-   "context": "9cf77a8b2fc649ccb86911bce6b85ebe8d60ceaf65a95c6a907be7e5689f615b"
+   "context": "9cf77a8b2fc649ccb86911bce6b85ebe8d60ceaf65a95c6a907be7e5689f615b",
+   "subject_key": "6d866db2c105f06ab443ed7fd591afdbc3553a3d5d6cbfb114bc5ab9939680d1"
   },
   {
    "printed": "20a",
    "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
    "model": "IRS says to enter the business portion of rental cost, but 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.' The restatement omits that reduction.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. An inclusion amount for leased property is refused for the business through sc.special (\"an inclusion amount for leased property\"), so the business portion of the lease payments is the line 20a amount for every vehicle that reaches it.",
-   "context": "062fe51d11c052b605e0fcc5602f5848224140a09312a63031bbc358540c8b1a"
+   "context": "062fe51d11c052b605e0fcc5602f5848224140a09312a63031bbc358540c8b1a",
+   "subject_key": "6d866db2c105f06ab443ed7fd591afdbc3553a3d5d6cbfb114bc5ab9939680d1"
   },
   {
    "printed": "20a",
    "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
    "model": "The IRS says 'enter on line 20a the business portion of your rental cost. But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement omits the inclusion amount.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. An inclusion amount for leased property is refused for the business through sc.special ('an inclusion amount for leased property'), so the business portion of the lease payments is the line 20a amount for every vehicle that reaches it.",
-   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56"
+   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56",
+   "subject_key": "6d866db2c105f06ab443ed7fd591afdbc3553a3d5d6cbfb114bc5ab9939680d1"
   },
   {
    "printed": "20a",
@@ -137,49 +154,56 @@
    "ruling": "Ruling: scope; same as the refresh-round ruling: an inclusion amount for leased property is refused for the business through sc.special, so line 20a is the business portion of the lease payments on every vehicle that reaches it.",
    "context": "afe9eb5058d0ff5a13ae5ccf7394c2acadb528690ad739565ba221d89754f74c",
    "date": "2026-11-04",
-   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415"
+   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415",
+   "subject_key": "6d866db2c105f06ab443ed7fd591afdbc3553a3d5d6cbfb114bc5ab9939680d1"
   },
   {
    "printed": "43",
    "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
    "model": "IRS line 43 asks \"When did you place your vehicle in service for business purposes? (month/day/year)\"; the restatement asks only for the year, omitting month/day.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records.",
-   "context": "9cf77a8b2fc649ccb86911bce6b85ebe8d60ceaf65a95c6a907be7e5689f615b"
+   "context": "9cf77a8b2fc649ccb86911bce6b85ebe8d60ceaf65a95c6a907be7e5689f615b",
+   "subject_key": "b31d673a60c989717a4b7c80cf8b2cc07cb6aeb31b90b28936afd6a2e4dfebc5"
   },
   {
    "printed": "43",
    "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
    "model": "IRS line 43 asks \"When did you place your vehicle in service for business purposes? (month/day/year)\"; the restatement asks only for the year.",
    "ruling": "Ruling: representation; same as the earlier ruling. The tool needs the year (and, for 2025 property, the quarter); the filer writes the full date on Schedule C line 43 from their own records.",
-   "context": "b4e14dc4dd83ad0c6e1fe02e9eb53caadd6de330c91fe99d9b3a624416f305eb"
+   "context": "b4e14dc4dd83ad0c6e1fe02e9eb53caadd6de330c91fe99d9b3a624416f305eb",
+   "subject_key": "b31d673a60c989717a4b7c80cf8b2cc07cb6aeb31b90b28936afd6a2e4dfebc5"
   },
   {
    "printed": "43",
    "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
    "model": "IRS line 43 asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement asks only for the year, omitting month and day.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records. No value depends on the month or day except through the quarter, asked separately.",
-   "context": "81b74c32cf7b55bda77a1d552f549139c6eadfbf6c3c572524ef2821b44fd162"
+   "context": "81b74c32cf7b55bda77a1d552f549139c6eadfbf6c3c572524ef2821b44fd162",
+   "subject_key": "b31d673a60c989717a4b7c80cf8b2cc07cb6aeb31b90b28936afd6a2e4dfebc5"
   },
   {
    "printed": "43",
    "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
    "model": "IRS line asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement collects only the year.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records. No value depends on the month or day except through the quarter, asked separately.",
-   "context": "666a951d2c298d4fe1840fea772d3fb97120ab013823d2e09e183799e840eaa6"
+   "context": "666a951d2c298d4fe1840fea772d3fb97120ab013823d2e09e183799e840eaa6",
+   "subject_key": "b31d673a60c989717a4b7c80cf8b2cc07cb6aeb31b90b28936afd6a2e4dfebc5"
   },
   {
    "printed": "43",
    "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
    "model": "The IRS line asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement records only the year, omitting the month and day.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on Schedule C line 43 and Form 4562 from their own records. No value depends on the month or day except through the quarter, which is asked separately.",
-   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56"
+   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56",
+   "subject_key": "b31d673a60c989717a4b7c80cf8b2cc07cb6aeb31b90b28936afd6a2e4dfebc5"
   },
   {
    "printed": "7",
    "restated": "Choose — [helper \"Placed in service in 2025\" = true → helper \"Limit for a 2025 vehicle\"] [helper \"Placed in service in 2025\" = false → helper \"Limit for the vehicle's 2025 year of recovery\"]",
    "model": "The IRS text limits the deduction for passenger automobiles; the restatement uses the passenger-automobile limit table helper for every 2025 vehicle, even when the vehicle is not a passenger automobile.",
    "ruling": "Ruling: representation; restatement accepted. The worksheet line is figured for every vehicle but read only for a passenger automobile (scveh.bonus_v, scveh.macrs_pass); checked by evaluation on stage14.veh.suv_179 with passenger answered both ways: the allowance is $20,200 and $70,000.",
-   "context": "9cf77a8b2fc649ccb86911bce6b85ebe8d60ceaf65a95c6a907be7e5689f615b"
+   "context": "9cf77a8b2fc649ccb86911bce6b85ebe8d60ceaf65a95c6a907be7e5689f615b",
+   "subject_key": "02cc115a507ac2cd0dfdd611aea6399fea9793f79198f1d2c55064fef5e228b4"
   },
   {
    "printed": "9 (scveh.line9w)",
@@ -188,7 +212,8 @@
    "ruling": "Ruling: scope; as line 13: a vehicle converted in 2025 is refused by scveh.screen, so line 7 times the business-use percentage is the whole supported case. Project stands.",
    "context": "afe9eb5058d0ff5a13ae5ccf7394c2acadb528690ad739565ba221d89754f74c",
    "date": "2026-11-04",
-   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415"
+   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415",
+   "subject_key": "da5c9302f680a5ec0f3a47ab1bc44373133dac05cb6562ad2864963d1e6bf4b2"
   }
  ]
 }

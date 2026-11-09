@@ -9,7 +9,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"(CLW 1)\\\" (Dollars)\"; the reply names every line of this case \"line (CLW 1) (Dollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "3337c471ba657d30e84962f7b434b26c3d52639e877b620ada4959e91cc56627"
   },
   {
    "case": "classm.f8880.1",
@@ -17,7 +18,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"(CLW 2)\\\" (Dollars)\"; the reply names every line of this case \"line (CLW 2) (Dollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "c82b11e09b9a2128f7349376779aeed5a6e8a41414f7149e50f55545aec10289"
   },
   {
    "case": "classm.f8880.1",
@@ -25,7 +27,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"(CLW 3)\\\" (NonNegDollars)\"; the reply names every line of this case \"line (CLW 3) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "1c875965a558cca6242fc88ebed07aa8774eeaec3a7c6a2fff0572de12a1a9bd"
   },
   {
    "case": "classm.f8880.1",
@@ -33,7 +36,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"1(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 1(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "13816c33a29bc54cdc3083af92e835aa94aea40995cb4650f5983adfc55e3f07"
   },
   {
    "case": "classm.f8880.1",
@@ -41,7 +45,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"1(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 1(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "251b0e2bf47a16860a2aee53800d661cbad71fd5437b3b39f4a0a480eced918e"
   },
   {
    "case": "classm.f8880.1",
@@ -49,7 +54,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"10\\\" (NonNegDollars)\"; the reply names every line of this case \"line 10 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "de574499f716bee0224646fb3f9440edc3882f807572656b4d213399d5236ccb"
   },
   {
    "case": "classm.f8880.1",
@@ -57,7 +63,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"11\\\" (NonNegDollars)\"; the reply names every line of this case \"line 11 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "0f17d196bc62d055d5205b510d3aace0e99e2100728ada167846e4ac563900e2"
   },
   {
    "case": "classm.f8880.1",
@@ -65,7 +72,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"12\\\" (NonNegDollars)\"; the reply names every line of this case \"line 12 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank (\"Skipped: line 7 is zero, so stop; no credit\"), which is the source: f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\". The project shows $0.00, not a nonzero amount on a skipped line. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "c25f00e5988219f43abcefa45754d4c5448b1f783f5193b340412b781ca39667"
   },
   {
    "case": "classm.f8880.1",
@@ -73,7 +81,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"2(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 2(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "8b44cb8fb35cff34ecc5c5adcf374ce0c20ff678f5c87f2e1eb19284c149c929"
   },
   {
    "case": "classm.f8880.1",
@@ -81,7 +90,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"2(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 2(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "e83a3dd7358b267daf401e39168b60c7c26c4da401a44984d72f04c299383e1b"
   },
   {
    "case": "classm.f8880.1",
@@ -89,7 +99,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"3(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 3(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "65936f0716baf5fc8b8247374e100d36446a44ad7cdca51e9ada0c173b6b1719"
   },
   {
    "case": "classm.f8880.1",
@@ -97,7 +108,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"3(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 3(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "1fa8c6457020eb2b7a802937cc7539f51e2f9e63154c3bc34dc9c64129886f4e"
   },
   {
    "case": "classm.f8880.1",
@@ -105,7 +117,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"4(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 4(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "885609d9527cf6b97ee73ae30736d6f9d07677efad7d9c8279ccdb712da49446"
   },
   {
    "case": "classm.f8880.1",
@@ -113,7 +126,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"4(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 4(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "3c4e7aad7ba36ff16838ed316216fd78584b9cffa9519551013f2065f24ae6b5"
   },
   {
    "case": "classm.f8880.1",
@@ -121,7 +135,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"5(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 5(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "6cab788ad27f19a3b86c8f59f038f23028792b7d0d23cbf26cb0fca2a5fe953b"
   },
   {
    "case": "classm.f8880.1",
@@ -129,7 +144,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"5(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 5(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "0d5b45d8f6339b59cc136fada8d481de158377aa37d60690d9b05320b01ddadb"
   },
   {
    "case": "classm.f8880.1",
@@ -137,7 +153,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"6(a)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 6(a) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "5e2865bd4edafcdc55f2a0239ff6e2f5fb9392c84b81570160dd688b81aaa77b"
   },
   {
    "case": "classm.f8880.1",
@@ -145,7 +162,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"6(b)\\\" (NonNegDollars)\"; the reply names every line of this case \"line 6(b) (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The case is head of household; the reply leaves column (b) blank (\"Column (b) is completed only for a joint return\"), as f8880 p. 2, Column (b), \"Complete column (b) only if you're filing a joint return\". The project shows $0.00, not a nonzero amount. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "db8c84cf96469b826848dd2381bdcb1a12c711f93fdd39147c7bc3dd54cfd816"
   },
   {
    "case": "classm.f8880.1",
@@ -153,7 +171,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"7\\\" (NonNegDollars)\"; the reply names every line of this case \"line 7 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). The reply's value is $0.00; the project's is $0.00. They are equal, so no project defect. No expectation is recorded for a line without a parsed answer; after the parser fix this line would agree.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "355f23aebbd54dbe3c607717eb92cebb4b000bf3cec286fa36740a902362f21d"
   },
   {
    "case": "classm.f8880.1",
@@ -161,7 +180,8 @@
    "project": "$32,936.00",
    "model": "no answer",
    "ruling": "Ruling: finding; on the project's line (S21-8880-STOP, `.transcription/proposed/stage21/f8880.findings.md`), and model error on the reply format. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"8\\\" (Dollars)\"; the reply names every line of this case \"line 8 (Dollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank, which is the source (f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a line after a STOP counts as skipped, README); the project shows $32,936.00 on a line the filer never reaches. Display only; line 12 is $0.00. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "fd8a26cf08d03461af3e29648f80dd984a5a97db1b9f4265deccf8d17c2f4a50"
   },
   {
    "case": "classm.f8880.1",
@@ -169,7 +189,8 @@
    "project": "50%",
    "model": "no answer",
    "ruling": "Ruling: finding; on the project's line (S21-8880-STOP, `.transcription/proposed/stage21/f8880.findings.md`), and model error on the reply format. The prompt (.classm/classm.f8880.1.deepseek.prompt.txt) lists the line as \"\\\"9\\\" (Rate)\"; the reply names every line of this case \"line 9 (Rate)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer for any of the case's 21 lines (T-070 (1), T-081 (1); the same model's replies for classm.f8880.2 to .4 use the bare handle and were read). Line 7 is $0.00 and the reply leaves the line blank, which is the source (f8880 p. 1, line 7, \"Add the amounts on line 6. If zero, stop; you can't take this credit\"; a line after a STOP counts as skipped, README); the project shows 50% on a line the filer never reaches. Display only; line 12 is $0.00. No numeric assertion to keep or drop.",
-   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e"
+   "context": "cf279f1429aa1384128d64c000a4bc6f9d2e2dab5db0399e5f061a872a7eca2e",
+   "subject_key": "c3f1678139a915bf1c0d743022daad44880020ffc3769ba22c1182a13fde97c8"
   },
   {
    "case": "classm.f8880.2",
@@ -180,7 +201,8 @@
    "drop": true,
    "context": "3fb5fad6aa790641ddcde6f11de19a9d1f53f86d4bb5730273c932ffa088e864",
    "date": "2026-11-07",
-   "run": "d2d821ec5efe6ab05d325cd4df51b89161d0b5449502c589a62e81897786567a"
+   "run": "d2d821ec5efe6ab05d325cd4df51b89161d0b5449502c589a62e81897786567a",
+   "subject_key": "db8c84cf96469b826848dd2381bdcb1a12c711f93fdd39147c7bc3dd54cfd816"
   },
   {
    "case": "classm.f8880.2",
@@ -191,7 +213,8 @@
    "drop": true,
    "context": "3fb5fad6aa790641ddcde6f11de19a9d1f53f86d4bb5730273c932ffa088e864",
    "date": "2026-11-07",
-   "run": "d2d821ec5efe6ab05d325cd4df51b89161d0b5449502c589a62e81897786567a"
+   "run": "d2d821ec5efe6ab05d325cd4df51b89161d0b5449502c589a62e81897786567a",
+   "subject_key": "355f23aebbd54dbe3c607717eb92cebb4b000bf3cec286fa36740a902362f21d"
   },
   {
    "case": "classm.f8880.3",
@@ -202,7 +225,8 @@
    "drop": true,
    "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
    "date": "2026-11-07",
-   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9"
+   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9",
+   "subject_key": "e83a3dd7358b267daf401e39168b60c7c26c4da401a44984d72f04c299383e1b"
   },
   {
    "case": "classm.f8880.3",
@@ -213,7 +237,8 @@
    "drop": true,
    "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
    "date": "2026-11-07",
-   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9"
+   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9",
+   "subject_key": "1fa8c6457020eb2b7a802937cc7539f51e2f9e63154c3bc34dc9c64129886f4e"
   },
   {
    "case": "classm.f8880.3",
@@ -224,7 +249,8 @@
    "drop": true,
    "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
    "date": "2026-11-07",
-   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9"
+   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9",
+   "subject_key": "0d5b45d8f6339b59cc136fada8d481de158377aa37d60690d9b05320b01ddadb"
   },
   {
    "case": "classm.f8880.3",
@@ -235,7 +261,8 @@
    "drop": true,
    "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
    "date": "2026-11-07",
-   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9"
+   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9",
+   "subject_key": "db8c84cf96469b826848dd2381bdcb1a12c711f93fdd39147c7bc3dd54cfd816"
   },
   {
    "case": "classm.f8880.3",
@@ -246,7 +273,8 @@
    "drop": true,
    "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
    "date": "2026-11-07",
-   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9"
+   "run": "4eeca340d6de6b776462185a40daeb3f0de8f63eadcfdbe396680c2d4399dbb9",
+   "subject_key": "355f23aebbd54dbe3c607717eb92cebb4b000bf3cec286fa36740a902362f21d"
   },
   {
    "case": "classm.f8880.4",
@@ -255,7 +283,8 @@
    "model": "$1,330.00",
    "ruling": "Ruling: model error; model value dropped from the fixture. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution. The model's work, \"Spouse line 1 entries: 665.00 + 665.00 = 1330.00\", counts the one $665.00 contribution twice; f8880 p. 1, line 1, \"Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2025\", is that one contribution. The project's $665.00 is right on its reading (amb.2025.savers_ineligible_column puts the ineligible spouse's zero on line 6(b)).",
    "drop": true,
-   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64",
+   "subject_key": "251b0e2bf47a16860a2aee53800d661cbad71fd5437b3b39f4a0a480eced918e"
   },
   {
    "case": "classm.f8880.4",
@@ -266,7 +295,8 @@
    "drop": true,
    "context": "3fb5fad6aa790641ddcde6f11de19a9d1f53f86d4bb5730273c932ffa088e864",
    "date": "2026-11-07",
-   "run": "b4557eeca9703fd00645a490d89240bb51787262f9558e0dcfd183f640d69ebf"
+   "run": "b4557eeca9703fd00645a490d89240bb51787262f9558e0dcfd183f640d69ebf",
+   "subject_key": "8b44cb8fb35cff34ecc5c5adcf374ce0c20ff678f5c87f2e1eb19284c149c929"
   },
   {
    "case": "classm.f8880.4",
@@ -277,7 +307,8 @@
    "drop": true,
    "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
    "date": "2026-11-07",
-   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c"
+   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c",
+   "subject_key": "8b44cb8fb35cff34ecc5c5adcf374ce0c20ff678f5c87f2e1eb19284c149c929"
   },
   {
    "case": "classm.f8880.4",
@@ -288,7 +319,8 @@
    "drop": true,
    "context": "3fb5fad6aa790641ddcde6f11de19a9d1f53f86d4bb5730273c932ffa088e864",
    "date": "2026-11-07",
-   "run": "b4557eeca9703fd00645a490d89240bb51787262f9558e0dcfd183f640d69ebf"
+   "run": "b4557eeca9703fd00645a490d89240bb51787262f9558e0dcfd183f640d69ebf",
+   "subject_key": "65936f0716baf5fc8b8247374e100d36446a44ad7cdca51e9ada0c173b6b1719"
   },
   {
    "case": "classm.f8880.4",
@@ -299,7 +331,8 @@
    "drop": true,
    "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
    "date": "2026-11-07",
-   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c"
+   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c",
+   "subject_key": "65936f0716baf5fc8b8247374e100d36446a44ad7cdca51e9ada0c173b6b1719"
   },
   {
    "case": "classm.f8880.4",
@@ -308,7 +341,8 @@
    "model": "$1,330.00",
    "ruling": "Ruling: model error; model value dropped from the fixture. Inherits the double count on line 1(b) (model 1,330.00 + 0.00); the case has one $665.00 Roth IRA contribution for the spouse. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
    "drop": true,
-   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64",
+   "subject_key": "1fa8c6457020eb2b7a802937cc7539f51e2f9e63154c3bc34dc9c64129886f4e"
   },
   {
    "case": "classm.f8880.4",
@@ -319,7 +353,8 @@
    "drop": true,
    "context": "3fb5fad6aa790641ddcde6f11de19a9d1f53f86d4bb5730273c932ffa088e864",
    "date": "2026-11-07",
-   "run": "b4557eeca9703fd00645a490d89240bb51787262f9558e0dcfd183f640d69ebf"
+   "run": "b4557eeca9703fd00645a490d89240bb51787262f9558e0dcfd183f640d69ebf",
+   "subject_key": "6cab788ad27f19a3b86c8f59f038f23028792b7d0d23cbf26cb0fca2a5fe953b"
   },
   {
    "case": "classm.f8880.4",
@@ -330,7 +365,8 @@
    "drop": true,
    "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
    "date": "2026-11-07",
-   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c"
+   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c",
+   "subject_key": "6cab788ad27f19a3b86c8f59f038f23028792b7d0d23cbf26cb0fca2a5fe953b"
   },
   {
    "case": "classm.f8880.4",
@@ -339,7 +375,8 @@
    "model": "$1,330.00",
    "ruling": "Ruling: model error; model value dropped from the fixture. Inherits the double count on line 1(b) (1,330.00 - 0.00); project 665.00. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
    "drop": true,
-   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64",
+   "subject_key": "0d5b45d8f6339b59cc136fada8d481de158377aa37d60690d9b05320b01ddadb"
   },
   {
    "case": "classm.f8880.4",
@@ -350,7 +387,8 @@
    "drop": true,
    "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
    "date": "2026-11-07",
-   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c"
+   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c",
+   "subject_key": "5e2865bd4edafcdc55f2a0239ff6e2f5fb9392c84b81570160dd688b81aaa77b"
   },
   {
    "case": "classm.f8880.4",
@@ -359,7 +397,8 @@
    "model": "$1,330.00",
    "ruling": "Ruling: model error; model value dropped from the fixture. Two errors: the line 1(b) double count, and the Caution not applied at all. f8880 p. 1, Caution: \"You cannot take this credit if either of the following applies. ... The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student\"; the spouse was born after January 1, 2008, so the spouse's contribution gives no credit on any reading of amb.2025.savers_ineligible_column (the chosen reading zeroes the spouse's column on line 6(b), the other bars the whole credit). The model's $1,330.00 counts it; the project's $0.00 is right. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
    "drop": true,
-   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64",
+   "subject_key": "db8c84cf96469b826848dd2381bdcb1a12c711f93fdd39147c7bc3dd54cfd816"
   },
   {
    "case": "classm.f8880.4",
@@ -368,7 +407,8 @@
    "model": "$1,330.00",
    "ruling": "Ruling: model error; model value dropped from the fixture. Inherits line 6(b): with the spouse ineligible under the Caution (f8880 p. 1, \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008\") and no taxpayer contribution, line 7 is $0.00 (\"If zero, stop; you can’t take this credit\"), as the project has. The case (fixtures/2025/classm.json, classm.f8880.4; married filing jointly) has the spouse born after January 1, 2008 (person[spouse].sav_born false) with a $665.00 Roth IRA contribution (person[spouse].sav_roth 66500), no other contribution or distribution.",
    "drop": true,
-   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64"
+   "context": "505fac1d994dcbb08076ba22f83162b9d6dc250c5e75694a42df05b1f31d9f64",
+   "subject_key": "355f23aebbd54dbe3c607717eb92cebb4b000bf3cec286fa36740a902362f21d"
   },
   {
    "case": "classm.f8880.4",
@@ -379,7 +419,8 @@
    "drop": true,
    "context": "9dfaaea79a4549481c1a11d317e078fba8ed459f2133443d50e2aa382dd4c4c8",
    "date": "2026-11-07",
-   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c"
+   "run": "5882a0c37e4b989e0108a57249f67f73c13b6dbcada4d2c6ab1f91be9b0a4b3c",
+   "subject_key": "355f23aebbd54dbe3c607717eb92cebb4b000bf3cec286fa36740a902362f21d"
   }
  ]
 }

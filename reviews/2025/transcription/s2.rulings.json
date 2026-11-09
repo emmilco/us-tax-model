@@ -4,28 +4,54 @@
  "rulings": [
   {
    "printed": "1a",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"collection\": \"f1095a\", \"field\": \"f1095a.one\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"f1095a\", \"field\": \"f1095a.one\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, \"then\": {\"ref\": \"f8962.line29\"}}], \"op\": \"choose\"}",
-   "second": "{\"ref\": \"f8962.line29\"}",
+   "project_expr_sha256": "c14b5eaf3508b4632364452eb0a16ddc270bed0c33bc613b8b4c2a1ee294ab57",
+   "second_expr_sha256": "c71d0ad2d7f5da2555e0a2b3bcfe0348bc1069986f845ac40a4918c801769ae7",
    "ruling": "Ruling: model error; i1040gi p. 111, Line 1a: \"If the advance credit payments were more than the premium tax credit you can claim, the amount you must repay will be shown on Form 8962, line 29. Enter that amount, if any, on line 1a\"; i8962 p. 3, Who Must File (Form 8962 only with a Form 1095-A or advance payments). The project enters zero when no Form 1095-A is listed; the candidate copies Form 8962 line 29 on every return, so a filer with no Marketplace coverage must answer Form 8962's questions (f8962.alloc) and reach its household income. Triage executable-triage-v2 (`../triage/s2.json`; 1,372 fixtures, 500 generated returns seed 20261026, 80 partial records; 1,952 comparisons): 603 of 1,952 agree; 889 candidate-unknown (489 on completed returns, for example witnesses 0-5 classm.f2441.1.deepseek to .6.deepseek, project $0.00); 460 candidate-refuses, all on refused returns (witnesses 6-11, for example classm.w2.1.deepseek, classm.f8889.2.deepseek: refusals reached through Form 8962's household income); no value differs. The published interface offers the f1095a count, so the guard was expressible. Same ruling as Stage 18 and round 1. Project stands.",
-   "context": "592219dc9c256b1445e0bf10f950a92afb5cfe4d6d084c331c216244ab0a0da1"
+   "context": "592219dc9c256b1445e0bf10f950a92afb5cfe4d6d084c331c216244ab0a0da1",
+   "subject_key": "d178e959d45e1c7a3b3fa41e8de5b4a4d48b8ae6e0d7f75f78880cf3c52ced23",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@s2",
+     "fixture:classm.f2441.2.deepseek@s2",
+     "fixture:classm.f2441.3.deepseek@s2",
+     "fixture:classm.f2441.4.deepseek@s2",
+     "fixture:classm.f2441.5.deepseek@s2",
+     "fixture:classm.f2441.6.deepseek@s2",
+     "fixture:classm.w2.1.deepseek@s2",
+     "fixture:classm.f8889.2.deepseek@s2",
+     "fixture:classm.f8889.5.deepseek@s2",
+     "fixture:classm.g28.2.deepseek@s2",
+     "fixture:classm.clcw.1.deepseek@s2",
+     "fixture:classm.clcw.4.deepseek@s2"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "2",
-   "project": "{\"const\": 0}",
-   "second": "{\"param\": \"sales.zero\"}",
-   "ruling": "Ruling: equivalent; project retained. Both are zero within scope (the alternative minimum tax is refused through s2.amt); the second copies the zero parameter sales.zero where the project writes the constant 0."
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "182b441bc4a1347b3c594dfb643c92519039d031ece3239f28a56d53b37a46f5",
+   "ruling": "Ruling: equivalent; project retained. Both are zero within scope (the alternative minimum tax is refused through s2.amt); the second copies the zero parameter sales.zero where the project writes the constant 0.",
+   "subject_key": "ac0ee0f511548b3bb1a66c0b02df35c6500d8f2762531987911ad7ea46ff56f3"
   },
   {
    "printed": "3",
-   "project": "{\"const\": 0}",
-   "second": "{\"line\": \"2\"}",
-   "ruling": "Ruling: equivalent; project retained. Line 3 is \"Add lines 1z and 2\" (f1040s2 p. 1, line 3); line 1z is zero within scope because every line 1 item is refused by s2.other (\"Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax or Net Investment Income Tax\"), and line 2 is zero because the alternative minimum tax is refused by s2.amt. The second copies line 2, which is zero, where the project writes the constant 0, as ruled before."
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "182b441bc4a1347b3c594dfb643c92519039d031ece3239f28a56d53b37a46f5",
+   "ruling": "Ruling: equivalent; project retained. Lines 1z and 2 are both zero within scope (s2.other and s2.amt refuse them); the second copies the zero parameter where the project writes the constant 0.",
+   "subject_key": "25498619172831228ef3c05ec90d4e568526b5a2efbf42d5286267328e169e4c"
   },
   {
    "printed": "3",
-   "project": "{\"const\": 0}",
-   "second": "{\"param\": \"sales.zero\"}",
-   "ruling": "Ruling: equivalent; project retained. Lines 1z and 2 are both zero within scope (s2.other and s2.amt refuse them); the second copies the zero parameter where the project writes the constant 0."
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "3a5f77614c394ce2998c1f07cae566f5c67486f8b39d31206c2a9bc85bccd408",
+   "ruling": "Ruling: equivalent; project retained. Line 3 is \"Add lines 1z and 2\" (f1040s2 p. 1, line 3); line 1z is zero within scope because every line 1 item is refused by s2.other (\"Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax or Net Investment Income Tax\"), and line 2 is zero because the alternative minimum tax is refused by s2.amt. The second copies line 2, which is zero, where the project writes the constant 0, as ruled before.",
+   "subject_key": "25498619172831228ef3c05ec90d4e568526b5a2efbf42d5286267328e169e4c"
   }
  ]
 }

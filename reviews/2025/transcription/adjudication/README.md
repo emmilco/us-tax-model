@@ -12,8 +12,9 @@ written into the log and its sidecar by `tools/transcription/rule.py`.
    A ruling quotes the sentence that decides it, with document and page.
 2. **Executable triage.** `tools/transcription/triage.py` evaluates the project's line and the
    model's validated candidate on every fixture case, 500 generated returns (seed 20261026) and
-   partial records that withhold one answer the reviewed document asks. Records are in
-   `triage/<stem>.json`; policy `executable-triage-v2` compares what the values sheet shows, so a
+   partial records that withhold one answer the reviewed document asks. Records are regenerated on
+   demand into the git-ignored `.transcription/triage/2025/<stem>.json`; a ruling keeps a compact stamp
+   of the line it relied on (verdict, kinds, witness ids, policy) in its rulings file; policy `executable-triage-v2` compares what the values sheet shows, so a
    project line hidden by `shown_when` agrees with a candidate's zero. Agreement there is observed equivalence on that sample, not proof.
    `triage.py --form F [--family deepseek] --explain <handle> --witness N` rebuilds a recorded
    witness and prints both derivation trees and the inputs read.

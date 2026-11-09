@@ -5,402 +5,1301 @@
  "rulings": [
   {
    "printed": "(CLW 1)",
-   "project": "{\"line\": \"18\"}",
-   "second": "{\"expression\": {\"line\": \"18\"}, \"invalid_model_types\": [{\"line\": \"f8863.clw1\", \"message\": \"model changed a published result type\"}]}",
-   "ruling": "Ruling: model error; on the declaration, not the tax reading. The reply declares f8863.clw1 as Dollars where the published interface has NonNegDollars, and the host type check rejects it (\"model changed a published result type\"; M4), which makes the whole reply unexecutable. The expression, a copy of line 18, is the project's (i8863 p. 8, Credit Limit Worksheet, \"1. Enter the amount from Form 8863, line 18\"). Project stands.",
-   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873"
+   "project_expr_sha256": "52f9cb3d674beddefc203e02805bed010edd3d284a44e9487e4b157f7307f12f",
+   "second_expr_sha256": "b9a83d4d7e47fdb52efd063a253d7719e426f42bcdef5abeaad50ce5c2142ac4",
+   "ruling": "Ruling: scope; i8863 p. 8, Credit Limit Worksheet, line 1. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,616 agree; 423 candidate-refuses, 63 candidate-unknown, 14 project-unknown, 4 project-refuses (none on a completed return). Same copy of line 18; every difference is on an incomplete or refused return. Project stands.",
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "b5c1481c2debd145feffa890bfb1e362be973cbadfddc7c5e8319ee6144561b6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.g28.2.deepseek@f8863",
+     "fixture:classm.clcw.1.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:stage19.refuse.excluded_income@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW 1)",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"line\": \"18\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"line\": \"18\"}}",
-   "ruling": "Ruling: scope; i8863 p. 8, Credit Limit Worksheet, line 1. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,616 agree; 423 candidate-refuses, 63 candidate-unknown, 14 project-unknown, 4 project-refuses (none on a completed return). Same copy of line 18; every difference is on an incomplete or refused return. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "project_expr_sha256": "cc1d90bb01efdc9419e63a9ff259be410434c55eada9260e5f32156d233e570b",
+   "second_expr_sha256": "0876f90a669f534d7e2510414886500fea9ec851f547d3e1bcce18cceeed9de9",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. The reply declares f8863.clw1 as Dollars where the published interface has NonNegDollars, and the host type check rejects it (\"model changed a published result type\"; M4), which makes the whole reply unexecutable. The expression, a copy of line 18, is the project's (i8863 p. 8, Credit Limit Worksheet, \"1. Enter the amount from Form 8863, line 18\"). Project stands.",
+   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873",
+   "subject_key": "b5c1481c2debd145feffa890bfb1e362be973cbadfddc7c5e8319ee6144561b6"
   },
   {
    "printed": "(CLW 2)",
-   "project": "{\"line\": \"9\"}",
-   "second": "{\"expression\": {\"line\": \"9\"}, \"invalid_model_types\": [{\"line\": \"f8863.clw2\", \"message\": \"model changed a published result type\"}]}",
-   "ruling": "Ruling: model error; on the declaration, not the tax reading. The reply declares f8863.clw2 as Dollars where the published interface has NonNegDollars (\"model changed a published result type\"; M4). The expression, a copy of line 9, is the project's (i8863 p. 8, Credit Limit Worksheet, \"2. Enter the amount from Form 8863, line 9\"). Project stands.",
-   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873"
-  },
-  {
-   "printed": "(CLW 2)",
-   "project": "{\"line\": \"9\"}",
-   "second": "{\"expression\": {\"line\": \"9\"}, \"invalid_model_types\": [{\"line\": \"f8863.kid_needed\", \"message\": \"malformed expression (project schema): data/all/1/gt/0 must be string, data/all/1/gt/0 must have required property 'const', data/all/1/gt/0 must NOT have additional properties\"}, {\"line\": \"f8863.kid_needed\", \"message\": \"f8863.f8863.kid_needed: comparison operands have incompatible types\"}]}",
-   "ruling": "Ruling: model error; on the declaration. The expression, a copy of line 9, is the project's (i8863 p. 8, Credit Limit Worksheet, \"2. Enter the amount from Form 8863, line 9\"); the published type is now kept. The line reads f8863.kid_needed through line 7 (box) and line 8, so it cannot execute (M4); the ruling adjudicates the declaration, not the tax reading. Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
-  },
-  {
-   "printed": "(CLW 2)",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"line\": \"9\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"line\": \"9\"}}",
+   "project_expr_sha256": "ace6f6a67bba146c5524d620a8ba17552cca8ad4c2729cde4ffb385402c72e56",
+   "second_expr_sha256": "f7efb332c17534e23f9a8e536d4cab677ad8fcc639d3089aa7037085b6829398",
    "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, line 2; i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 476 agree; 1,430 candidate-unknown, 191 candidate-refuses, 14 project-unknown, 9 project-refuses (on completed returns: 183 candidate-unknown). Same copy of line 9, which needs the ban answer through line 7. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "4a932e19991e9d9fa1955418c0e14ec0bf102cfd6511e070006075c036f887e8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.dependent.2@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW 2)",
+   "project_expr_sha256": "c868e0694a346f1183f3609638e7228a8d97d501dfac77da0ff300a6986834f1",
+   "second_expr_sha256": "7cb720c8f5a61e6480edb597e45796f124cab1b1c197e56138efe20ca97e1926",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. The reply declares f8863.clw2 as Dollars where the published interface has NonNegDollars (\"model changed a published result type\"; M4). The expression, a copy of line 9, is the project's (i8863 p. 8, Credit Limit Worksheet, \"2. Enter the amount from Form 8863, line 9\"). Project stands.",
+   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873",
+   "subject_key": "4a932e19991e9d9fa1955418c0e14ec0bf102cfd6511e070006075c036f887e8"
+  },
+  {
+   "printed": "(CLW 2)",
+   "project_expr_sha256": "c868e0694a346f1183f3609638e7228a8d97d501dfac77da0ff300a6986834f1",
+   "second_expr_sha256": "fd82f67be3d7b4418e191c3b36b495715df1ddcb0992619b8e88746da922f8d8",
+   "ruling": "Ruling: model error; on the declaration. The expression, a copy of line 9, is the project's (i8863 p. 8, Credit Limit Worksheet, \"2. Enter the amount from Form 8863, line 9\"); the published type is now kept. The line reads f8863.kid_needed through line 7 (box) and line 8, so it cannot execute (M4); the ruling adjudicates the declaration, not the tax reading. Project stands.",
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "4a932e19991e9d9fa1955418c0e14ec0bf102cfd6511e070006075c036f887e8"
   },
   {
    "printed": "(CLW 3)",
-   "project": "{\"of\": [{\"line\": \"(CLW 1)\"}, {\"line\": \"(CLW 2)\"}], \"op\": \"sum\"}",
-   "second": "{\"expression\": {\"of\": [{\"line\": \"(CLW 1)\"}, {\"line\": \"(CLW 2)\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"f8863.clw1\", \"message\": \"model changed a published result type\"}, {\"line\": \"f8863.clw2\", \"message\": \"model changed a published result type\"}, {\"line\": \"f8863.clw3\", \"message\": \"model changed a published result type\"}]}",
-   "ruling": "Ruling: model error; on the declaration, not the tax reading. The reply declares f8863.clw3 as Dollars where the published interface has NonNegDollars, and it reads clw1 and clw2, also retyped (\"model changed a published result type\"; M4). The expression, the sum of worksheet lines 1 and 2, is the project's (i8863 p. 8, Credit Limit Worksheet, \"3. Add lines 1 and 2\"). Project stands.",
-   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873"
-  },
-  {
-   "printed": "(CLW 3)",
-   "project": "{\"of\": [{\"line\": \"(CLW 1)\"}, {\"line\": \"(CLW 2)\"}], \"op\": \"sum\"}",
-   "second": "{\"expression\": {\"of\": [{\"line\": \"(CLW 1)\"}, {\"line\": \"(CLW 2)\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"f8863.kid_needed\", \"message\": \"malformed expression (project schema): data/all/1/gt/0 must be string, data/all/1/gt/0 must have required property 'const', data/all/1/gt/0 must NOT have additional properties\"}, {\"line\": \"f8863.kid_needed\", \"message\": \"f8863.f8863.kid_needed: comparison operands have incompatible types\"}]}",
-   "ruling": "Ruling: model error; on the declaration. The expression, the sum of worksheet lines 1 and 2, is the project's (i8863 p. 8, Credit Limit Worksheet, \"3. Add lines 1 and 2\"). It is unexecutable through worksheet line 2, which reads f8863.kid_needed (M4). Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
-  },
-  {
-   "printed": "(CLW 3)",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"of\": [{\"line\": \"(CLW 1)\"}, {\"line\": \"(CLW 2)\"}], \"op\": \"sum\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"of\": [{\"line\": \"(CLW 1)\"}, {\"line\": \"(CLW 2)\"}], \"op\": \"sum\"}}",
+   "project_expr_sha256": "478d064fa6428d288e07d35daa3f34f7953f8895bda3e38834522c03aa8f42f3",
+   "second_expr_sha256": "edf2ab1c3c3b898bc69fc36648c1660008584860c386f5f5292cc8d9694e359b",
    "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, \"3. Add lines 1 and 2\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 475 agree; 1,204 candidate-unknown, 423 candidate-refuses, 14 project-unknown, 4 project-refuses (on completed returns: 183 candidate-unknown). Same sum; through worksheet line 2 the reply needs the ban answer. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "67b7ee261eee9b9310c4a4bbd85bd2bb02e00177b769308db49129257e399ba2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.g28.2.deepseek@f8863",
+     "fixture:classm.clcw.1.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "fixture:stage19.refuse.excluded_income@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW 3)",
+   "project_expr_sha256": "d2b4c6c61162ae279f9acf58770468c2942893685c373124ae48efff6542a745",
+   "second_expr_sha256": "a4f373e147408723abbdf885f37469b08d4579226e30d9cb270461df4411523a",
+   "ruling": "Ruling: model error; on the declaration. The expression, the sum of worksheet lines 1 and 2, is the project's (i8863 p. 8, Credit Limit Worksheet, \"3. Add lines 1 and 2\"). It is unexecutable through worksheet line 2, which reads f8863.kid_needed (M4). Project stands.",
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "67b7ee261eee9b9310c4a4bbd85bd2bb02e00177b769308db49129257e399ba2"
+  },
+  {
+   "printed": "(CLW 3)",
+   "project_expr_sha256": "d2b4c6c61162ae279f9acf58770468c2942893685c373124ae48efff6542a745",
+   "second_expr_sha256": "b2d4874404e07b51dc5c8030b43eabf84d8afe9d50761e2d981b72d76c6be4fe",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. The reply declares f8863.clw3 as Dollars where the published interface has NonNegDollars, and it reads clw1 and clw2, also retyped (\"model changed a published result type\"; M4). The expression, the sum of worksheet lines 1 and 2, is the project's (i8863 p. 8, Credit Limit Worksheet, \"3. Add lines 1 and 2\"). Project stands.",
+   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873",
+   "subject_key": "67b7ee261eee9b9310c4a4bbd85bd2bb02e00177b769308db49129257e399ba2"
   },
   {
    "printed": "(CLW 4)",
-   "project": "{\"ref\": \"f1040.line18\"}",
-   "second": "{\"expression\": {\"from\": {\"ref\": \"f1040.line18\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, \"invalid_model_types\": [{\"line\": \"f8863.clw4\", \"message\": \"model changed a published result type\"}]}",
+   "project_expr_sha256": "d8e2f3d914a38f06e70d3ea14dd7f489928d74c39a24e9ddb988fb2bb5a4a433",
+   "second_expr_sha256": "03d9b4f183a6eac68ccbb5b086e22a89ad012630b102cbc13b3629431c54c5dd",
    "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, line 4. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares f8863.clw4 and f8863.clw5 with a changed published result type (\"model changed a published result type\"), so triage runs none of the lines that read them. Read as intended it copies Form 1040 line 18, with no shown_when. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "a5620ff0de54f12fa2fd7bbc451becdfa76b3b1af7c3d7adc114baedea7196d8",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW 5)",
-   "project": "{\"of\": [{\"ref\": \"s3.line1\"}, {\"ref\": \"s3.line2\"}], \"op\": \"sum\"}",
-   "second": "{\"expression\": {\"of\": [{\"from\": {\"ref\": \"s3.line1\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, {\"ref\": \"s3.line2\"}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"f8863.clw5\", \"message\": \"model changed a published result type\"}]}",
+   "project_expr_sha256": "51e5745a48f8dd7a31a4fbd93ba3f91ae8aecebbe4ac97405691296c917f4ea8",
+   "second_expr_sha256": "2258b9465f3210856be1cb3c404fa08ae52ef88705fc5fabe3202885f0086319",
    "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, line 5. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares f8863.clw4 and f8863.clw5 with a changed published result type (\"model changed a published result type\"), so triage runs none of the lines that read them. Read as intended it adds Schedule 3 lines 1 and 2, the project's sum within scope (lines 6d and 6l refused by scope.credits). Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "dbc69e8c4d99349df6521af8ef08262d2a685c7e75db4bab582945e464002d80",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW 6)",
-   "project": "{\"from\": {\"line\": \"(CLW 4)\"}, \"op\": \"subtract\", \"take\": {\"line\": \"(CLW 5)\"}}",
-   "second": "{\"expression\": {\"from\": {\"line\": \"(CLW 4)\"}, \"op\": \"subtract\", \"take\": {\"line\": \"(CLW 5)\"}}, \"invalid_model_types\": [{\"line\": \"f8863.clw4\", \"message\": \"model changed a published result type\"}, {\"line\": \"f8863.clw5\", \"message\": \"model changed a published result type\"}]}",
+   "project_expr_sha256": "ac54681b403b196c79b1cf7eb4acaec89ac30b307479c0c284336a11c3df8b18",
+   "second_expr_sha256": "0fece85539d878a93265d96962f2d6ebcf4ed6337abba11e084f778a759c4b25",
    "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, \"6. Subtract line 5 from line 4\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares f8863.clw4 and f8863.clw5 with a changed published result type (\"model changed a published result type\"), so triage runs none of the lines that read them; it reads both. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "60924cb66100d0140106c9359d015097809d836eeaaa464bc2683afad1c63419",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW 6)",
-   "project": "{\"from\": {\"line\": \"(CLW 4)\"}, \"op\": \"subtract\", \"take\": {\"line\": \"(CLW 5)\"}}",
-   "second": "{\"from\": {\"line\": \"(CLW 4)\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"(CLW 5)\"}}",
+   "project_expr_sha256": "ac54681b403b196c79b1cf7eb4acaec89ac30b307479c0c284336a11c3df8b18",
+   "second_expr_sha256": "96f219e1c661ed156fc11157d25115412203a772969985e54ac591afdc7e9ed5",
    "ruling": "Ruling: representation; The deepseek reply fails the host checks (f8863.kid_needed: \"malformed expression (project schema): data/all/1/gt/0 must be string ...\" and \"comparison operands have incompatible types\"; M4), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. i8863 p. 8, Credit Limit Worksheet, \"6. Subtract line 5 from line 4\". The project subtracts as printed; the candidate floors at zero. Line 5 is Schedule 3 lines 1 and 2 (6d and 6l refused on scope.credits), and the foreign tax credit and the Form 2441 credit, limited by Form 1040 line 18 less Schedule 3 line 1, never exceed line 18 together, so line 6 is never negative and the floor never binds. Class D property edu_clw_nonneg (reports/2025/properties.md: 400 trials, 119 applicable, holds). Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "60924cb66100d0140106c9359d015097809d836eeaaa464bc2683afad1c63419"
   },
   {
    "printed": "(CLW 7)",
-   "project": "{\"of\": [{\"line\": \"(CLW 3)\"}, {\"line\": \"(CLW 6)\"}], \"op\": \"smaller_of\"}",
-   "second": "{\"expression\": {\"of\": [{\"line\": \"(CLW 3)\"}, {\"line\": \"(CLW 6)\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"f8863.clw1\", \"message\": \"model changed a published result type\"}, {\"line\": \"f8863.clw2\", \"message\": \"model changed a published result type\"}, {\"line\": \"f8863.clw3\", \"message\": \"model changed a published result type\"}]}",
-   "ruling": "Ruling: model error; on the declaration, not the tax reading. The expression, the smaller of worksheet lines 3 and 6, is the project's (i8863 p. 8, Credit Limit Worksheet, \"7. Enter the smaller of line 3 or line 6 here and on Form 8863, line 19\"); the line is unexecutable because it reads f8863.clw3, whose retyped declaration fails the host type check (with clw1 and clw2; M4). Project stands.",
-   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873"
-  },
-  {
-   "printed": "(CLW 7)",
-   "project": "{\"of\": [{\"line\": \"(CLW 3)\"}, {\"line\": \"(CLW 6)\"}], \"op\": \"smaller_of\"}",
-   "second": "{\"expression\": {\"of\": [{\"line\": \"(CLW 3)\"}, {\"line\": \"(CLW 6)\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"f8863.clw4\", \"message\": \"model changed a published result type\"}, {\"line\": \"f8863.clw5\", \"message\": \"model changed a published result type\"}]}",
+   "project_expr_sha256": "70acdea8d18968439d2e3c2d3d2232b2814191a59f5d8793cc5fb03aff5dff59",
+   "second_expr_sha256": "07b7ccf6aae1809a63ec2298278b01ce365f2e62abc8b4adecd6f90b472eff36",
    "ruling": "Ruling: model error; i8863 p. 8, Credit Limit Worksheet, line 7. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares f8863.clw4 and f8863.clw5 with a changed published result type (\"model changed a published result type\"), so triage runs none of the lines that read them; it reads worksheet line 6. The expression is the project's. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "015e21ef0e70256f99c376b877d1bacc2e4432f8a2f2aced0dde8b80d5bda4fc",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW 7)",
-   "project": "{\"of\": [{\"line\": \"(CLW 3)\"}, {\"line\": \"(CLW 6)\"}], \"op\": \"smaller_of\"}",
-   "second": "{\"expression\": {\"of\": [{\"line\": \"(CLW 3)\"}, {\"line\": \"(CLW 6)\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"f8863.kid_needed\", \"message\": \"malformed expression (project schema): data/all/1/gt/0 must be string, data/all/1/gt/0 must have required property 'const', data/all/1/gt/0 must NOT have additional properties\"}, {\"line\": \"f8863.kid_needed\", \"message\": \"f8863.f8863.kid_needed: comparison operands have incompatible types\"}]}",
+   "project_expr_sha256": "70acdea8d18968439d2e3c2d3d2232b2814191a59f5d8793cc5fb03aff5dff59",
+   "second_expr_sha256": "c98d30351cd42f55aa2cc6f53472ccf5cf8429df58a20cf9f59ec8f0c01a2b75",
    "ruling": "Ruling: model error; on the declaration. The expression, the smaller of worksheet lines 3 and 6, is the project's (i8863 p. 8, Credit Limit Worksheet, \"7. Enter the smaller of line 3 or line 6 here and on Form 8863, line 19\"). It is unexecutable through worksheet line 3, which reads f8863.kid_needed (M4). Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "015e21ef0e70256f99c376b877d1bacc2e4432f8a2f2aced0dde8b80d5bda4fc"
+  },
+  {
+   "printed": "(CLW 7)",
+   "project_expr_sha256": "70acdea8d18968439d2e3c2d3d2232b2814191a59f5d8793cc5fb03aff5dff59",
+   "second_expr_sha256": "e34e4a5a521df49ad800035742a21cc4fb6cb95bf8121d2ca9284a69d9a5feef",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. The expression, the smaller of worksheet lines 3 and 6, is the project's (i8863 p. 8, Credit Limit Worksheet, \"7. Enter the smaller of line 3 or line 6 here and on Form 8863, line 19\"); the line is unexecutable because it reads f8863.clw3, whose retyped declaration fails the host type check (with clw1 and clw2; M4). Project stands.",
+   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873",
+   "subject_key": "015e21ef0e70256f99c376b877d1bacc2e4432f8a2f2aced0dde8b80d5bda4fc"
   },
   {
    "printed": "1",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}",
+   "project_expr_sha256": "5f3d58e6642a0d249eba4dc92b331e642dff91e0097afd63eb9714b4be1f1435",
+   "second_expr_sha256": "17ef8b9e06b6f76c20d8b510e934d04bf6cd4540106bcb57f1cc081d0d0d68ac",
    "ruling": "Ruling: model error; f8863 p. 1, line 1; i8863 p. 3, Who cannot claim a credit: \"1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\"; i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 698 agree; 1,402 candidate-unknown, 17 project-unknown, 2 candidate-refuses, 1 candidate-shows-skipped (on completed returns: 183 candidate-unknown). The reply sums every Part III line 30 with no eligibility or dependent bar. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "398bcd2f085edc17d02bd8eb9f683b6b6f9e64ae0c7881391eb386df4e2df268",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:stage19.refuse.ban@f8863",
+     "generated:20261026.32@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.dependent.4.deepseek-f8863.paid@f8863",
+     "partial:classm.retirement.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "1",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"ref\": \"sa.dependent\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"sa.dependent\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: model error; The deepseek reply fails the host checks (f8863.kid_needed: \"malformed expression (project schema): data/all/1/gt/0 must be string ...\" and \"comparison operands have incompatible types\"; M4), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. f8863 p. 1, line 1: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate's guard tests sa.dependent (can be claimed) instead of sli.claimed (is claimed) (M1, variant), and its `refuses: [f8863.ban]` refuses on a ban answer even where no American opportunity credit is claimed (line 1 or line 4 zero), against i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\" (M6; the project screens line 1 > 0, line 4 > 0 and the ban, BUG-0198). Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
-  },
-  {
-   "printed": "1",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"from\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.ban\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.ban\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}], \"op\": \"choose\"}}",
-   "ruling": "Ruling: model error; The deepseek reply fails the host type check (f8863.line19: \"model changed a published result type\", published Dollars declared NonNegDollars), so triage executed none of it (`../triage/f8863.deepseek.json`, state invalid); this line is ruled by reading its expression against the source. f8863 p. 1, line 1: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate subtracts the whole sum when its eligible helper is false, so line 1 is zero when expenses were not paid or a ban is answered; it has no dependent bar, so a claimed filer gets line 1 and the refundable line 8 (M1), and a ban gives zero instead of the project's cited refusal (i8863 p. 1, Form 8862 may be required). Project stands.",
-   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047"
-  },
-  {
-   "printed": "1",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}",
+   "project_expr_sha256": "b003be6709104dfecbb9e6931ce3a0462db06493be7de90ad43a5a10ccf9c93a",
+   "second_expr_sha256": "17ef8b9e06b6f76c20d8b510e934d04bf6cd4540106bcb57f1cc081d0d0d68ac",
    "ruling": "Ruling: model error; The deepseek reply fails the model type check (f8863.clw1, clw2 and clw3: \"model changed a published result type\"), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. f8863 p. 1, line 1: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" The candidate is the bare sum of person.edu_line30 and dependent.edu_line30, the project the same sum when f8863.eligible, else zero. With f8863.paid false the sums are zero anyway (edu_student requires it), so the only difference is a filer claimed as a dependent (sli.claimed true) with an American opportunity student: the candidate enters line 30 and so a refundable line 8 on Form 1040 line 29, which item 1 forbids (M1). Project stands.",
-   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873"
+   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873",
+   "subject_key": "398bcd2f085edc17d02bd8eb9f683b6b6f9e64ae0c7881391eb386df4e2df268"
+  },
+  {
+   "printed": "1",
+   "project_expr_sha256": "b003be6709104dfecbb9e6931ce3a0462db06493be7de90ad43a5a10ccf9c93a",
+   "second_expr_sha256": "687e5402ad871ae985aa99a7eaac2c330aebb3ed8dbb21cfaae6d79bab85a223",
+   "ruling": "Ruling: model error; The deepseek reply fails the host type check (f8863.line19: \"model changed a published result type\", published Dollars declared NonNegDollars), so triage executed none of it (`../triage/f8863.deepseek.json`, state invalid); this line is ruled by reading its expression against the source. f8863 p. 1, line 1: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate subtracts the whole sum when its eligible helper is false, so line 1 is zero when expenses were not paid or a ban is answered; it has no dependent bar, so a claimed filer gets line 1 and the refundable line 8 (M1), and a ban gives zero instead of the project's cited refusal (i8863 p. 1, Form 8862 may be required). Project stands.",
+   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047",
+   "subject_key": "398bcd2f085edc17d02bd8eb9f683b6b6f9e64ae0c7881391eb386df4e2df268"
+  },
+  {
+   "printed": "1",
+   "project_expr_sha256": "b003be6709104dfecbb9e6931ce3a0462db06493be7de90ad43a5a10ccf9c93a",
+   "second_expr_sha256": "dafdbb83465cc7c93f4ec7f1f94180e8d6b78de2225911b7fa20497e1370d3b9",
+   "ruling": "Ruling: model error; The deepseek reply fails the host checks (f8863.kid_needed: \"malformed expression (project schema): data/all/1/gt/0 must be string ...\" and \"comparison operands have incompatible types\"; M4), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. f8863 p. 1, line 1: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate's guard tests sa.dependent (can be claimed) instead of sli.claimed (is claimed) (M1, variant), and its `refuses: [f8863.ban]` refuses on a ban answer even where no American opportunity credit is claimed (line 1 or line 4 zero), against i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\" (M6; the project screens line 1 > 0, line 4 > 0 and the ban, BUG-0198). Project stands.",
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "398bcd2f085edc17d02bd8eb9f683b6b6f9e64ae0c7881391eb386df4e2df268"
   },
   {
    "printed": "10",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}",
+   "project_expr_sha256": "354141a22c29d1a42bf05df4dc54d17bb1eeb85d8cd8477100b09c066e1ed8f1",
+   "second_expr_sha256": "aa464f8dd383130dfb8257c63183a758f11d0bb078647088241f9a8966b88431",
    "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 10. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,018 agree; 46 candidate-unknown, 28 project-refuses, 14 project-unknown, 12 candidate-refuses, 2 candidate-shows-skipped (on completed returns: 2 candidate-shows-skipped). The 2 completed candidate-shows-skipped: classm.f1040.2 (checked: joint, line 4 $0, line 10 $14,484.00) is shown by the reply after the line 4 stop, f8863 p. 1, line 4: \"If zero or less, stop; you can’t take any education credit\"; the reply also has no dependent bar. Same disagreement as the before-catalog-refresh ruling; the other differences: every difference is on an incomplete or refused return. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "9fc31c9caf52e742ec8ecfb0bf648957074b7551105136fb5475385610f6d6ba",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f1040.2.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.tcw.15@f8863",
+     "fixture:classm.f1040.2@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:stage16.cleanup.refuse.f1040_line16@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "10",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"ref\": \"sa.dependent\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"sa.dependent\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "696e786c4790a455f86f745e052e9e571986b92f4f5e265a8bb9b80347f39cdc",
+   "second_expr_sha256": "51506d7cf4d57f0a2d3f15744b693135697b8eabd28ae5bb2f35a3a2814115f4",
    "ruling": "Ruling: model error; The deepseek reply fails the host checks (f8863.kid_needed: \"malformed expression (project schema): data/all/1/gt/0 must be string ...\" and \"comparison operands have incompatible types\"; M4), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. f8863 p. 1, line 10: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 31.\"; f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate gives the line 31 total with no line 4 test, so it shows an amount after the line 4 stop (M2; the project hides it, show_after4), and its sa.dependent guard bars a filer who can be but is not claimed (M1, variant). Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "9fc31c9caf52e742ec8ecfb0bf648957074b7551105136fb5475385610f6d6ba"
   },
   {
    "printed": "10",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"from\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}, \"op\": \"subtract_floor0\", \"take\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}}",
-   "ruling": "Ruling: model error; The deepseek reply fails the host type check (f8863.line19: \"model changed a published result type\", published Dollars declared NonNegDollars), so triage executed none of it (`../triage/f8863.deepseek.json`, state invalid); this line is ruled by reading its expression against the source. f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\"; f8863 p. 1, line 10: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 31.\" i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate's line 10 is the Part III line 31 total whenever expenses were paid: no dependent bar (M1) and no shown_when, so it shows the amount after the line 4 stop (the Claude reply's witnesses classm.f1040.2 $14,484.00 and classm.dependent.4 $8,728.00 have line 4 $0.00) (M2). Project stands.",
-   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047"
-  },
-  {
-   "printed": "10",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}",
+   "project_expr_sha256": "696e786c4790a455f86f745e052e9e571986b92f4f5e265a8bb9b80347f39cdc",
+   "second_expr_sha256": "aa464f8dd383130dfb8257c63183a758f11d0bb078647088241f9a8966b88431",
    "ruling": "Ruling: model error; The deepseek reply fails the model type check (f8863.clw1, clw2 and clw3: \"model changed a published result type\"), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. f8863 p. 1, line 10: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 31.\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" The candidate is the bare sum; the project is the same sum when f8863.eligible, else zero. On stage19.mut.claimed_filer_llc (sli.claimed true, a lifetime learning student) the candidate enters the student's line 31 and so a credit on line 18 and Schedule 3 line 3 for a filer claimed as a dependent (M1; the Claude triage of the same reading shows candidate $2,000.00 on line 18 there). Project stands.",
-   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873"
+   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873",
+   "subject_key": "9fc31c9caf52e742ec8ecfb0bf648957074b7551105136fb5475385610f6d6ba"
+  },
+  {
+   "printed": "10",
+   "project_expr_sha256": "696e786c4790a455f86f745e052e9e571986b92f4f5e265a8bb9b80347f39cdc",
+   "second_expr_sha256": "fc2708f9678d8fe8406d0df037a93092cce51634ae1172214298e0da9298f531",
+   "ruling": "Ruling: model error; The deepseek reply fails the host type check (f8863.line19: \"model changed a published result type\", published Dollars declared NonNegDollars), so triage executed none of it (`../triage/f8863.deepseek.json`, state invalid); this line is ruled by reading its expression against the source. f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\"; f8863 p. 1, line 10: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 31.\" i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate's line 10 is the Part III line 31 total whenever expenses were paid: no dependent bar (M1) and no shown_when, so it shows the amount after the line 4 stop (the Claude reply's witnesses classm.f1040.2 $14,484.00 and classm.dependent.4 $8,728.00 have line 4 $0.00) (M2). Project stands.",
+   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047",
+   "subject_key": "9fc31c9caf52e742ec8ecfb0bf648957074b7551105136fb5475385610f6d6ba"
   },
   {
    "printed": "11",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"of\": [{\"line\": \"10\"}, {\"param\": \"llc.expense_cap\"}], \"op\": \"smaller_of\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, \"value\": {\"of\": [{\"line\": \"10\"}, {\"param\": \"llc.expense_cap\"}], \"op\": \"smaller_of\"}}",
+   "project_expr_sha256": "c91bc51a3e44d2ba490d64aaf8d052490be8179d8f2ec64d74da3f5b68fcf811",
+   "second_expr_sha256": "c3db447b6e8f3a4f9e9643dff7b4e51d765f12b871467ff2c7b343c680420d73",
    "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 11; line 10, \"If zero, skip lines 11 through 17\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,018 agree; 46 candidate-unknown, 28 project-refuses, 14 project-unknown, 12 candidate-refuses, 2 candidate-shows-skipped (on completed returns: 2 candidate-shows-skipped). The reply's shown_when tests line 10 only, so classm.f1040.2 (checked: joint, line 4 $0, line 10 $14,484.00) is shown by the reply after the line 4 stop, f8863 p. 1, line 4: \"If zero or less, stop; you can’t take any education credit\". Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "af8bb893154e7f90d80dc6a291f5659b4a538cf36ce9e590d8a41214a36cf50f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f1040.2.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.tcw.15@f8863",
+     "fixture:classm.f1040.2@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:stage16.cleanup.refuse.f1040_line16@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "12",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"amount\": {\"line\": \"11\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"llc.rate\"}}}",
-   "second": "{\"shown_when\": {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, \"value\": {\"amount\": {\"line\": \"11\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"llc.rate\"}}}",
+   "project_expr_sha256": "e399af32e1be149f77c19822b2ad4d28947c8290b07a97a19026ad1de38e2652",
+   "second_expr_sha256": "3e14c18674da4545eb1658a0eb98cc2cb15c6da5b0d0327ab2000abbf2974202",
    "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 12. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,018 agree; 46 candidate-unknown, 28 project-refuses, 14 project-unknown, 12 candidate-refuses, 2 candidate-shows-skipped (on completed returns: 2 candidate-shows-skipped). As line 11: classm.f1040.2 (checked: joint, line 4 $0, line 10 $14,484.00) is shown by the reply after the line 4 stop, f8863 p. 1, line 4: \"If zero or less, stop; you can’t take any education credit\". Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "55e6a6f64509c5ef788cfd3402f57432b94792d8fc7e9d049606378909a7e9f5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f1040.2.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.tcw.15@f8863",
+     "fixture:classm.f1040.2@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:stage16.cleanup.refuse.f1040_line16@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "13",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"param\": \"edu.magi_limit\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, \"value\": {\"param\": \"edu.magi_limit\"}}",
+   "project_expr_sha256": "98cdea3cad479cec5678f6b7ed3c93530f690e6f4b02bd42241f0029cdf1d55d",
+   "second_expr_sha256": "2923ae3f4ccd2bb45714c2af30cc231a8d2ecb7da13674286d2ee8e18a7724c4",
    "ruling": "Ruling: model error and interface gap; f8863 p. 1, line 13. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 16 agree; 2,031 candidate-shows-skipped, 37 project-refuses, 35 project-unknown, 1 candidate-unknown (on completed returns: 355 candidate-shows-skipped). The reply's shown_when (line 10 above zero) hides the line without Part III line 31 amounts but not after the line 4 stop (classm.f1040.2 (checked: joint, line 4 $0, line 10 $14,484.00) is shown by the reply after the line 4 stop, f8863 p. 1, line 4: \"If zero or less, stop; you can’t take any education credit\"); triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "820882b61f00295f0d5cdb48f4ec3c8ec5082c4d459e7bb142ee3f67f38b3f3b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.scveh.4@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "14",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"ref\": \"f1040.line11b\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, \"value\": {\"ref\": \"f1040.line11b\"}}",
+   "project_expr_sha256": "76a7d2a616a68286389a0e51f570f1bec36c22a0609300cd3ee86d7d54056a40",
+   "second_expr_sha256": "2f2e9ce3f8dfe763a9ba0a3de2d99e106854dfc500e1073ad23cd5f02ca40a19",
    "ruling": "Ruling: model error and interface gap (+ scope); f8863 p. 1, line 14. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 64 agree; 1,549 candidate-shows-skipped, 411 candidate-refuses, 53 candidate-unknown, 33 project-unknown, 10 project-refuses (on completed returns: 352 candidate-shows-skipped). As line 13; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "32c2bd90caebda3817dfcc3d828bcf2a6f8455befd4944f2de337bca9b865e5b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.g28.2.deepseek@f8863",
+     "fixture:classm.clcw.1.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.eic.8@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:mutation.t2.f8889.all_year_dec_unanswered@f8863",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863",
+     "fixture:stage19.refuse.period_over_dependent@f8863",
+     "fixture:stage19.refuse.excluded_income@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "15",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"from\": {\"line\": \"13\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"14\"}}}",
-   "second": "{\"shown_when\": {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, \"value\": {\"from\": {\"line\": \"13\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"14\"}}}",
+   "project_expr_sha256": "49bb3819db035b357bc732035bbfd825b3101d3af9c393a7a69cda17c98779f7",
+   "second_expr_sha256": "9cc85c9e39a8767d77f93347822979abefc1c36b6ac7727ae71edd2a7b200ae4",
    "ruling": "Ruling: model error and interface gap (+ scope); f8863 p. 1, line 15. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 601 agree; 1,012 candidate-shows-skipped, 411 candidate-refuses, 53 candidate-unknown, 33 project-unknown, 10 project-refuses (on completed returns: 220 candidate-shows-skipped). As line 13; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "1c32768ec83bae478bc493ee397e73a0bfe1d9b98563845048c31333e72520cb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.g28.2.deepseek@f8863",
+     "fixture:classm.clcw.1.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.eic.8@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:mutation.t2.f8889.all_year_dec_unanswered@f8863",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863",
+     "fixture:stage19.refuse.period_over_dependent@f8863",
+     "fixture:stage19.refuse.excluded_income@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "16",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"param\": \"edu.phaseout_range\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"15\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"param\": \"edu.phaseout_range\"}}",
+   "project_expr_sha256": "3186bc890578070f4ad9157679d30e8aaa32dff5d0f5aac619354eff3e7fa885",
+   "second_expr_sha256": "1b0a21cbc44bcfdfc1d11126dd3dbc2d7b23b80e3352198c00d9fe2f1198a2bd",
    "ruling": "Ruling: model error and interface gap; f8863 p. 1, line 16; line 15, \"If zero or less, skip lines 16 and 17\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 16 agree; 2,031 candidate-shows-skipped, 37 project-refuses, 35 project-unknown, 1 candidate-unknown (on completed returns: 355 candidate-shows-skipped). As line 13 (the reply adds line 15 above zero, which does not catch the line 4 stop); triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "780dde126597eab8f368c2c03660f3c870c3aa9e5050d2858a8f4a89935db0e7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.scveh.4@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "18",
-   "project": "{\"amount\": {\"line\": \"12\"}, \"op\": \"prorate\", \"part\": {\"line\": \"15\"}, \"places\": 3, \"whole\": {\"line\": \"16\"}}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"15\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"12\"}, \"op\": \"prorate\", \"part\": {\"line\": \"15\"}, \"places\": 3, \"whole\": {\"line\": \"16\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"line\": \"15\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "5807bd106ad6b1eb566c575cbcb8d6f4599711011f3ef6f09e0c37280fdd3d4c",
+   "second_expr_sha256": "3c4e01eb0a0345ba830596a998e3657cb350711ab21cf59dc4762eb4cb3320a2",
    "ruling": "Ruling: scope; The deepseek reply fails the model type check (f8863.clw1, clw2 and clw3: \"model changed a published result type\"), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. f8863 p. 1, line 15: \"If zero or less, skip lines 16 and 17, enter -0- on line 18\"; lines 17 and 18. The candidate keeps the project's prorate (three places, amb.2025.edu_ratio_places) under a guard (paid, line 15 > 0, not mfs) and zero otherwise. Line 15 zero makes prorate zero, and paid false makes line 10 and so line 12 zero, so the values are equal; the only difference is mfs, refused by scope.ready on s3.mfs (S1). Project stands.",
-   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873"
+   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873",
+   "subject_key": "e24611aa7adc787378882c952003ae57ea78621a19e799086f6cdf87b46ac64c"
   },
   {
    "printed": "18",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"amount\": {\"line\": \"12\"}, \"op\": \"prorate\", \"part\": {\"line\": \"15\"}, \"places\": 3, \"whole\": {\"line\": \"16\"}}}",
-   "second": "{\"shown_when\": null, \"value\": {\"amount\": {\"line\": \"12\"}, \"op\": \"prorate\", \"part\": {\"line\": \"15\"}, \"places\": 3, \"whole\": {\"line\": \"16\"}}}",
+   "project_expr_sha256": "ce621845eb42b838596abf2bd97125b03326f6d4f2e8efc5ab0fa2a29a460004",
+   "second_expr_sha256": "7c1ac4f3cfeec569a3da340175e448dd362948f8a9b759aebb1cde063a63d78d",
    "ruling": "Ruling: scope; f8863 p. 1, lines 17 and 18. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,616 agree; 423 candidate-refuses, 63 candidate-unknown, 14 project-unknown, 4 project-refuses (none on a completed return). Same prorate (amb.2025.edu_ratio_places); the candidate-refuses and unknowns are on returns refused or incomplete elsewhere; every difference is on an incomplete or refused return. Same class as the before-catalog-refresh ruling. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "e24611aa7adc787378882c952003ae57ea78621a19e799086f6cdf87b46ac64c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.g28.2.deepseek@f8863",
+     "fixture:classm.clcw.1.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:stage19.refuse.excluded_income@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "19",
-   "project": "{\"line\": \"(CLW 7)\"}",
-   "second": "{\"expression\": {\"from\": {\"line\": \"(CLW 7)\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, \"invalid_model_types\": [{\"line\": \"f8863.line19\", \"message\": \"model changed a published result type\"}]}",
-   "ruling": "Ruling: model error; on the declaration. f8863 p. 1, line 19: \"Nonrefundable education credits. Enter the amount from line 7 of the Credit Limit Worksheet (see instructions) here and on Schedule 3 (Form 1040), line 3\". The published type is Dollars; the reply declared NonNegDollars and floored Credit Limit Worksheet line 7 at zero, which fails the host check and makes the whole reply unexecutable. The ruling adjudicates the declaration: the floor never binds (worksheet line 6 is never negative, property edu_clw_nonneg, Stage 19), so the value is otherwise the project's copy of CLW 7. Project stands.",
-   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047"
-  },
-  {
-   "printed": "19",
-   "project": "{\"line\": \"(CLW 7)\"}",
-   "second": "{\"expression\": {\"line\": \"(CLW 7)\"}, \"invalid_model_types\": [{\"line\": \"f8863.clw1\", \"message\": \"model changed a published result type\"}, {\"line\": \"f8863.clw2\", \"message\": \"model changed a published result type\"}, {\"line\": \"f8863.clw3\", \"message\": \"model changed a published result type\"}]}",
-   "ruling": "Ruling: model error; on the declaration, not the tax reading. The expression, a copy of worksheet line 7, is the project's (f8863 p. 1, line 19: \"Nonrefundable education credits. Enter the amount from line 7 of the Credit Limit Worksheet (see instructions) here and on Schedule 3 (Form 1040), line 3\"); the line is unexecutable because its dependencies f8863.clw1 to clw3 fail the host type check (M4). Project stands.",
-   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873"
-  },
-  {
-   "printed": "19",
-   "project": "{\"line\": \"(CLW 7)\"}",
-   "second": "{\"expression\": {\"line\": \"(CLW 7)\"}, \"invalid_model_types\": [{\"line\": \"f8863.clw4\", \"message\": \"model changed a published result type\"}, {\"line\": \"f8863.clw5\", \"message\": \"model changed a published result type\"}]}",
+   "project_expr_sha256": "366ee7304116217a50df272b2dcea45e5e6dad8e92e2aff9c42fd343e6731c49",
+   "second_expr_sha256": "20af8d0b5430456e7e2bc41a24e64bf015e684cc5adae5da7b43d696179d6b7c",
    "ruling": "Ruling: model error; f8863 p. 1, line 19. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares f8863.clw4 and f8863.clw5 with a changed published result type (\"model changed a published result type\"), so triage runs none of the lines that read them; it copies worksheet line 7. The expression is the project's. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "6773eda317440cd2c1cfd3ed7cf13754cc7eb07f89999d6be3cba6192ad902cf",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "19",
-   "project": "{\"line\": \"(CLW 7)\"}",
-   "second": "{\"expression\": {\"line\": \"(CLW 7)\"}, \"invalid_model_types\": [{\"line\": \"f8863.kid_needed\", \"message\": \"malformed expression (project schema): data/all/1/gt/0 must be string, data/all/1/gt/0 must have required property 'const', data/all/1/gt/0 must NOT have additional properties\"}, {\"line\": \"f8863.kid_needed\", \"message\": \"f8863.f8863.kid_needed: comparison operands have incompatible types\"}]}",
+   "project_expr_sha256": "366ee7304116217a50df272b2dcea45e5e6dad8e92e2aff9c42fd343e6731c49",
+   "second_expr_sha256": "52c1b326428bab5fb9bf32baac72614f3a0776f57eda5ba385312e883b665f16",
    "ruling": "Ruling: model error; on the declaration. The expression, a copy of worksheet line 7, is the project's (f8863 p. 1, line 19: \"Nonrefundable education credits. Enter the amount from line 7 of the Credit Limit Worksheet (see instructions) here and on Schedule 3 (Form 1040), line 3\"). It is unexecutable through the worksheet, which reads f8863.kid_needed (M4). Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "6773eda317440cd2c1cfd3ed7cf13754cc7eb07f89999d6be3cba6192ad902cf"
+  },
+  {
+   "printed": "19",
+   "project_expr_sha256": "366ee7304116217a50df272b2dcea45e5e6dad8e92e2aff9c42fd343e6731c49",
+   "second_expr_sha256": "689fd1f7a5582cdc90fc16200024302512308174c1e597f0f0bae069db7d6cf6",
+   "ruling": "Ruling: model error; on the declaration, not the tax reading. The expression, a copy of worksheet line 7, is the project's (f8863 p. 1, line 19: \"Nonrefundable education credits. Enter the amount from line 7 of the Credit Limit Worksheet (see instructions) here and on Schedule 3 (Form 1040), line 3\"); the line is unexecutable because its dependencies f8863.clw1 to clw3 fail the host type check (M4). Project stands.",
+   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873",
+   "subject_key": "6773eda317440cd2c1cfd3ed7cf13754cc7eb07f89999d6be3cba6192ad902cf"
+  },
+  {
+   "printed": "19",
+   "project_expr_sha256": "366ee7304116217a50df272b2dcea45e5e6dad8e92e2aff9c42fd343e6731c49",
+   "second_expr_sha256": "f6fe965cf6ea729612fc00bc3f7dc5a61418b6afd9156bb782890023cb7ce204",
+   "ruling": "Ruling: model error; on the declaration. f8863 p. 1, line 19: \"Nonrefundable education credits. Enter the amount from line 7 of the Credit Limit Worksheet (see instructions) here and on Schedule 3 (Form 1040), line 3\". The published type is Dollars; the reply declared NonNegDollars and floored Credit Limit Worksheet line 7 at zero, which fails the host check and makes the whole reply unexecutable. The ruling adjudicates the declaration: the floor never binds (worksheet line 6 is never negative, property edu_clw_nonneg, Stage 19), so the value is otherwise the project's copy of CLW 7. Project stands.",
+   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047",
+   "subject_key": "6773eda317440cd2c1cfd3ed7cf13754cc7eb07f89999d6be3cba6192ad902cf"
   },
   {
    "printed": "2",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"value\": {\"param\": \"edu.magi_limit\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"param\": \"edu.magi_limit\"}}",
+   "project_expr_sha256": "53782c220a10602604b1faa7c2e4a15195b7579ded208fed66118db71d2eb3fc",
+   "second_expr_sha256": "dd5e5eaa7a064f27bb829d6bb70477102014675ed8281e3f69f09d48cc037c64",
    "ruling": "Ruling: interface gap; f8863 p. 1, line 2. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 104 agree; 1,953 candidate-shows-skipped, 62 project-unknown, 1 candidate-unknown (on completed returns: 339 candidate-shows-skipped). The reply has no shown_when, so it shows the line on returns that do not file Form 8863 (no expenses paid, or a person claimed), where the project hides lines 1 to 4 on f8863.eligible; no source skip governs that: interface gap. Values agree where the project shows it. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "1862660a6261103741284cc3c1d7946c920c03ee2b262ed8de9989feb09ea5a8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "3",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"value\": {\"ref\": \"f1040.line11b\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"ref\": \"f1040.line11b\"}}",
+   "project_expr_sha256": "cc02b712f405450f9b651c10af5bc362eda061298137859c14ee26ddefa7df45",
+   "second_expr_sha256": "903ec5dee406c0b21e10327413e6133076604a12816fb0865fc16c60abf6a078",
    "ruling": "Ruling: interface gap (+ scope); f8863 p. 1, line 3. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 121 agree; 1,472 candidate-shows-skipped, 417 candidate-refuses, 54 project-unknown, 53 candidate-unknown, 3 project-refuses (on completed returns: 336 candidate-shows-skipped). The reply has no shown_when, so it shows the line on returns that do not file Form 8863 (no expenses paid, or a person claimed), where the project hides lines 1 to 4 on f8863.eligible; no source skip governs that: interface gap. The candidate-refuses are returns refused elsewhere, reached through Form 1040 line 11b. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "ac1693b0283a3b7446627cb2b3746a10a0e6c087df3c67c6bfab923cb6cb94eb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.g28.2.deepseek@f8863",
+     "fixture:classm.clcw.1.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:mutation.t2.f8889.all_year_dec_unanswered@f8863",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@f8863",
+     "fixture:stage19.refuse.excluded_income@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "4",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"value\": {\"from\": {\"line\": \"2\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"3\"}}}",
-   "second": "{\"shown_when\": null, \"value\": {\"from\": {\"line\": \"2\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"3\"}}}",
+   "project_expr_sha256": "a169309e191ef9d65db7a5b3cd2a29845ca212611d69c6bb500ff5e2ad281441",
+   "second_expr_sha256": "8330f462543980adf6309c5de77ef47af60e5942617355cc5a4825045959e011",
    "ruling": "Ruling: interface gap (+ scope); f8863 p. 1, line 4. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 622 agree; 971 candidate-shows-skipped, 417 candidate-refuses, 54 project-unknown, 53 candidate-unknown, 3 project-refuses (on completed returns: 212 candidate-shows-skipped). The reply has no shown_when, so it shows the line on returns that do not file Form 8863 (no expenses paid, or a person claimed), where the project hides lines 1 to 4 on f8863.eligible; no source skip governs that: interface gap. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "1890dc7a5f2a2a1b6444a706cb0826ddafb2ba00ce425014f9a425e8d9b309dd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.g28.2.deepseek@f8863",
+     "fixture:classm.clcw.1.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:mutation.t2.f8889.all_year_dec_unanswered@f8863",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@f8863",
+     "fixture:stage19.refuse.excluded_income@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "5",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"param\": \"edu.phaseout_range\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"param\": \"edu.phaseout_range\"}}",
+   "project_expr_sha256": "e4583d0ecb9ea561b0fa1b0e5cd8e498988a7134680ef2ca85cb07732af4020f",
+   "second_expr_sha256": "053da67fd0a76d58aa3e9b119b6e582a313ddc9f8054afeeb748d58c74f3ff03",
    "ruling": "Ruling: model error and interface gap; f8863 p. 1, line 5; line 4, \"If zero or less, stop\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 63 agree; 1,990 candidate-shows-skipped, 35 project-unknown, 31 project-refuses, 1 candidate-unknown (on completed returns: 347 candidate-shows-skipped). The reply has no shown_when, so besides the whole-form case it shows $10,000 / $20,000 after the line 4 stop (classm.f1040.2 (checked: joint, line 4 $0, line 10 $14,484.00) is shown by the reply after the line 4 stop, f8863 p. 1, line 4: \"If zero or less, stop; you can’t take any education credit\"). Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "fca0fe99a1ce3ebd492eb9ba29e409be23255d0895ef49977555c68a450a2081",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.scveh.4@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "7",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"amount\": {\"line\": \"1\"}, \"op\": \"prorate\", \"part\": {\"line\": \"4\"}, \"places\": 3, \"whole\": {\"line\": \"5\"}}}",
-   "second": "{\"shown_when\": null, \"value\": {\"amount\": {\"line\": \"1\"}, \"op\": \"prorate\", \"part\": {\"line\": \"4\"}, \"places\": 3, \"whole\": {\"line\": \"5\"}}}",
+   "project_expr_sha256": "822db55ab74a5b178fbc88b35b1cc15f7bc61ce5dd3e6af0ccb8ec54e765d6d3",
+   "second_expr_sha256": "a07070ee8a9402bfc16334a7944cc9dc46cc1703bcd59885f54b55f4c53c2ccd",
    "ruling": "Ruling: model error (+ scope); f8863 p. 1, lines 6 and 7; i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 481 agree; 1,425 candidate-unknown, 191 candidate-refuses, 14 project-unknown, 9 project-refuses (on completed returns: 183 candidate-unknown). Same prorate, but through line 1 the reply needs f8863.ban everywhere. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "6828d511408cbee94836d45d22e9c2b7aa22b1baa5275b3ffc2004a4db3dc175",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.dependent.2@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "7 (box)",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"lt\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "58a8b3cb091eb2bd1001da17cb2b1234451948ba9143322d8137d311aa04ee1c",
+   "second_expr_sha256": "1ce5f32dd6847d336e037560005f2737df1155a3fd73c10cd3a10e8b3c5fb429",
    "ruling": "Ruling: model error; i8863 p. 7, Line 7. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 853 agree; 1,215 candidate-unknown, 36 project-refuses, 16 project-unknown (on completed returns: 157 candidate-unknown). Through f8863.kid_needed the reply's box cycles (\"cycle at f8863.kid_needed\" on completed returns where the project hides the box, e.g. classm.f4952.1.deepseek, classm.g28.1.deepseek). Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "805642bd3d606bf6663c1deec667bbd5f161d4085bb20b403f633afb12d5be66",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "7 (box)",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"lt\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"ref\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.edu_fulltime\"}], \"test\": \"eq\"}], \"test\": \"all\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"ref\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.edu_parent\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.edu_born_2002\"}], \"test\": \"ne\"}], \"test\": \"all\"}}], \"test\": \"lt\"}",
-   "ruling": "Ruling: model error; The deepseek reply fails the host type check (f8863.line19: \"model changed a published result type\", published Dollars declared NonNegDollars), so triage executed none of it (`../triage/f8863.deepseek.json`, state invalid); this line is ruled by reading its expression against the source. i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you. ... 3. You’re not filing a joint return for 2025. If you meet these conditions, check the box next to line 7, skip line 8, and enter the amount from line 7 on line 9.\" The box copies the candidate's kid_needed, which has no line 7 > 0 test, so it would be checked on returns with no American opportunity credit and after the line 4 stop, and it needs the line 7 answers there (M3). Project stands.",
-   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047"
-  },
-  {
-   "printed": "7 (box)",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"lt\"}], \"test\": \"all\"}",
-   "second": "{\"expression\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"unknown\": \"{\\\"collection\\\": \\\"person\\\", \\\"field\\\": \\\"person.one\\\", \\\"op\\\": \\\"sum_over\\\", \\\"where\\\": {\\\"all\\\": [{\\\"eq\\\": [\\\"person.role\\\", {\\\"const\\\": \\\"taxpayer\\\"}], \\\"op\\\": \\\"test\\\"}, {\\\"not\\\": {\\\"eq\\\": [\\\"person.edu_born_2002\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, \\\"op\\\": \\\"test\\\"}, {\\\"eq\\\": [\\\"person.edu_parent\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, {\\\"any\\\": [{\\\"not\\\": {\\\"eq\\\": [\\\"person.sav_born\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, \\\"op\\\": \\\"test\\\"}, {\\\"all\\\": [{\\\"eq\\\": [\\\"person.sav_born\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, {\\\"not\\\": {\\\"eq\\\": [\\\"person.edu_born_2007\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, \\\"op\\\": \\\"test\\\"}, {\\\"eq\\\": [\\\"person.edu_half_support\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}], \\\"op\\\": \\\"test\\\"}, {\\\"all\\\": [{\\\"eq\\\": [\\\"person.edu_born_2007\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, {\\\"not\\\": {\\\"eq\\\": [\\\"person.edu_born_2002\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, \\\"op\\\": \\\"test\\\"}, {\\\"eq\\\": [\\\"person.edu_fulltime\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, {\\\"eq\\\": [\\\"person.edu_half_support\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}], \\\"op\\\": \\\"test\\\"}], \\\"op\\\": \\\"test\\\"}], \\\"op\\\": \\\"test\\\"}}\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"invalid_model_types\": [{\"line\": \"f8863.kid_needed\", \"message\": \"malformed expression (project schema): data/all/1/gt/0 must be string, data/all/1/gt/0 must have required property 'const', data/all/1/gt/0 must NOT have additional properties\"}, {\"line\": \"f8863.kid_needed\", \"message\": \"f8863.f8863.kid_needed: comparison operands have incompatible types\"}]}",
+   "project_expr_sha256": "58a8b3cb091eb2bd1001da17cb2b1234451948ba9143322d8137d311aa04ee1c",
+   "second_expr_sha256": "267475ef8e8fc90b04c686da683d79bf50f05ac2ea072b7f04644ed99d3823f5",
    "ruling": "Ruling: model error; on the declaration. The deepseek reply fails the host checks (f8863.kid_needed: \"malformed expression (project schema): data/all/1/gt/0 must be string ...\" and \"comparison operands have incompatible types\"; M4), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. The box is a copy of the candidate's malformed kid_needed (M4). By reading, it is the line 7 condition set of i8863 p. 7 (\"If you meet these conditions, check the box next to line 7, skip line 8\") without the line 7 > 0 test, so it needs the age and support answers on returns with no American opportunity credit (M3); as a Boolean flow predicate its display is exempt. Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "805642bd3d606bf6663c1deec667bbd5f161d4085bb20b403f633afb12d5be66"
+  },
+  {
+   "printed": "7 (box)",
+   "project_expr_sha256": "58a8b3cb091eb2bd1001da17cb2b1234451948ba9143322d8137d311aa04ee1c",
+   "second_expr_sha256": "ce1aff9d462f8f74377f3eac4c9c37f404aad0757c7fdf58f5f5db1fad3aa432",
+   "ruling": "Ruling: model error; The deepseek reply fails the host type check (f8863.line19: \"model changed a published result type\", published Dollars declared NonNegDollars), so triage executed none of it (`../triage/f8863.deepseek.json`, state invalid); this line is ruled by reading its expression against the source. i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you. ... 3. You’re not filing a joint return for 2025. If you meet these conditions, check the box next to line 7, skip line 8, and enter the amount from line 7 on line 9.\" The box copies the candidate's kid_needed, which has no line 7 > 0 test, so it would be checked on returns with no American opportunity credit and after the line 4 stop, and it needs the line 7 answers there (M3). Project stands.",
+   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047",
+   "subject_key": "805642bd3d606bf6663c1deec667bbd5f161d4085bb20b403f633afb12d5be66"
   },
   {
    "printed": "8",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"aoc.refundable_rate\"}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"f8863.ban\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"aoc.refundable_rate\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"line\": \"4\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"f8863.ban\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: scope; The deepseek reply fails the model type check (f8863.clw1, clw2 and clw3: \"model changed a published result type\"), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. f8863 p. 1, line 8: \"Refundable American opportunity credit. Multiply line 7 by 40% (0.40).\"; i8863 p. 7: \"check the box next to line 7, skip line 8\". The candidate computes 40% of line 7 when the box is clear, as the project does, but under a guard (not f8863.ban, paid, line 4 > 0, not mfs) that gives zero otherwise. Paid false or line 4 zero make line 7 zero, so 40% of it is zero too. The rest differ only by refusals: with f8863.ban true and line 1 above zero the project refuses on line 7 (f8863.ban_refused, i8863 p. 1, \"Form 8862 may be required\"; D1), where the candidate enters zero, and mfs is refused by scope.ready on s3.mfs (S1, S3). Project stands.",
-   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873"
-  },
-  {
-   "printed": "8",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"aoc.refundable_rate\"}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"expression\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"aoc.refundable_rate\"}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}, \"invalid_model_types\": [{\"line\": \"f8863.kid_needed\", \"message\": \"malformed expression (project schema): data/all/1/gt/0 must be string, data/all/1/gt/0 must have required property 'const', data/all/1/gt/0 must NOT have additional properties\"}, {\"line\": \"f8863.kid_needed\", \"message\": \"f8863.f8863.kid_needed: comparison operands have incompatible types\"}]}",
+   "project_expr_sha256": "44185d4acc58ff7b818c888a3c8275a3bbfd374eb86ba7af0bb4f7d469b3e540",
+   "second_expr_sha256": "14b24daeb170f1c9f07eb2a890f41c1f1504f14916693830a03c5bace0fa36ec",
    "ruling": "Ruling: model error; on the declaration. The deepseek reply fails the host checks (f8863.kid_needed: \"malformed expression (project schema): data/all/1/gt/0 must be string ...\" and \"comparison operands have incompatible types\"; M4), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. The expression equals the project's (f8863 p. 1, line 8: \"Refundable American opportunity credit. Multiply line 7 by 40% (0.40).\"; zero when the box is checked, i8863 p. 7, \"skip line 8\"). It is unexecutable because it reads 7 (box), a copy of the malformed kid_needed (M4). Its inherited f8863.ban refusal is unconditional (from its lines 1 and 7), so it would refuse where no credit is claimed, against i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\" (M6). Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "e853b8420162326e9c49ce5fea189027855c95ff7abd43525bb6ae9b9e33a65d"
   },
   {
    "printed": "8",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"aoc.refundable_rate\"}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"from\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"aoc.refundable_rate\"}}, \"op\": \"subtract_floor0\", \"take\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"aoc.refundable_rate\"}}}], \"op\": \"choose\"}}",
+   "project_expr_sha256": "44185d4acc58ff7b818c888a3c8275a3bbfd374eb86ba7af0bb4f7d469b3e540",
+   "second_expr_sha256": "aa90928a4c2e5205daae64bbc58aca8a66ab8ef733786805ea49b13e166ee011",
+   "ruling": "Ruling: scope; The deepseek reply fails the model type check (f8863.clw1, clw2 and clw3: \"model changed a published result type\"), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. f8863 p. 1, line 8: \"Refundable American opportunity credit. Multiply line 7 by 40% (0.40).\"; i8863 p. 7: \"check the box next to line 7, skip line 8\". The candidate computes 40% of line 7 when the box is clear, as the project does, but under a guard (not f8863.ban, paid, line 4 > 0, not mfs) that gives zero otherwise. Paid false or line 4 zero make line 7 zero, so 40% of it is zero too. The rest differ only by refusals: with f8863.ban true and line 1 above zero the project refuses on line 7 (f8863.ban_refused, i8863 p. 1, \"Form 8862 may be required\"; D1), where the candidate enters zero, and mfs is refused by scope.ready on s3.mfs (S1, S3). Project stands.",
+   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873",
+   "subject_key": "e853b8420162326e9c49ce5fea189027855c95ff7abd43525bb6ae9b9e33a65d"
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "44185d4acc58ff7b818c888a3c8275a3bbfd374eb86ba7af0bb4f7d469b3e540",
+   "second_expr_sha256": "b1e02a963700440b24a1d34f66cef6e60ebfaef61e9158e71212e8e31b0ad942",
    "ruling": "Ruling: model error; The deepseek reply fails the host type check (f8863.line19: \"model changed a published result type\", published Dollars declared NonNegDollars), so triage executed none of it (`../triage/f8863.deepseek.json`, state invalid); this line is ruled by reading its expression against the source. f8863 p. 1, line 8: \"Refundable American opportunity credit. Multiply line 7 by 40% (0.40).\" i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you. ... 3. You’re not filing a joint return for 2025. If you meet these conditions, check the box next to line 7, skip line 8, and enter the amount from line 7 on line 9.\" Line 7 times 40% less the same amount when the box is checked is the project's choose, value for value; the line differs through its line 1, which has no dependent bar (M1: a filer claimed as a dependent would get a refundable credit on Form 1040 line 29) and zeroes a ban instead of refusing. Project stands.",
-   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047"
+   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047",
+   "subject_key": "e853b8420162326e9c49ce5fea189027855c95ff7abd43525bb6ae9b9e33a65d"
   },
   {
    "printed": "8",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"aoc.refundable_rate\"}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"value\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"aoc.refundable_rate\"}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}}",
+   "project_expr_sha256": "c2fed91ac92678681930e1be5fececf0f4f47a550cc6d5111c68a6c79ca94af5",
+   "second_expr_sha256": "a7818f364673e1280c09993b871b203114b065f6abf20c7e49c5359280d58266",
    "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 8; i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 475 agree; 1,440 candidate-unknown, 181 candidate-refuses, 14 project-unknown, 10 project-refuses (on completed returns: 183 candidate-unknown). Same rate; through line 7 the reply needs the ban answer. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "e853b8420162326e9c49ce5fea189027855c95ff7abd43525bb6ae9b9e33a65d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.dependent.2@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "9",
-   "project": "{\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"f8863.ban\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"line\": \"4\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"f8863.ban\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: scope; The deepseek reply fails the model type check (f8863.clw1, clw2 and clw3: \"model changed a published result type\"), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. f8863 p. 1, line 9: \"Subtract line 8 from line 7.\" The candidate keeps the subtraction under the guard of its line 8 (not f8863.ban, paid, line 4 > 0, not mfs) and zero otherwise; as for line 8, paid false and line 4 zero give zero on both sides, and the remaining differences are the project's refusals on f8863.ban_refused (D1) and s3.mfs (S1, S3). Project stands.",
-   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873"
-  },
-  {
-   "printed": "9",
-   "project": "{\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}",
-   "second": "{\"expression\": {\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}, \"invalid_model_types\": [{\"line\": \"f8863.kid_needed\", \"message\": \"malformed expression (project schema): data/all/1/gt/0 must be string, data/all/1/gt/0 must have required property 'const', data/all/1/gt/0 must NOT have additional properties\"}, {\"line\": \"f8863.kid_needed\", \"message\": \"f8863.f8863.kid_needed: comparison operands have incompatible types\"}]}",
-   "ruling": "Ruling: model error; on the declaration. The deepseek reply fails the host checks (f8863.kid_needed: \"malformed expression (project schema): data/all/1/gt/0 must be string ...\" and \"comparison operands have incompatible types\"; M4), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. The expression equals the project's (f8863 p. 1, line 9: \"Subtract line 8 from line 7. Enter here and on line 2 of the Credit Limit Worksheet.\"). The line reads f8863.kid_needed through line 7 (box) and line 8, so it cannot execute (M4); the ruling adjudicates the declaration, not the tax reading. Its f8863.ban refusal is unconditional (M6, as line 8). Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
-  },
-  {
-   "printed": "9",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}}",
-   "second": "{\"shown_when\": null, \"value\": {\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}}",
+   "project_expr_sha256": "4d218eebe56378b83c225e2702fb5f46f50e2c5ab11b09b91f5810ecc9cf683e",
+   "second_expr_sha256": "5daf5a95ec1f149b7cd0162a87cca93b3f5364176b9502c8d94d16b21cc0e86e",
    "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 9; i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 476 agree; 1,430 candidate-unknown, 191 candidate-refuses, 14 project-unknown, 9 project-refuses (on completed returns: 183 candidate-unknown). Same subtraction; through line 7 the reply needs the ban answer. Model error: the reply needs f8863.ban on returns where the project hides the line and the source needs no ban answer (no American opportunity credit claimed): the completed candidate-unknown include classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project hidden. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "2b81c82f375cb7a61543115fe587a2f9ee976732f41dbae541101e354eca71a4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.dependent.2@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "fe40497c5e1344b889df846aafb47d94713d685d47a82e95b5bd492f63edcae8",
+   "second_expr_sha256": "05a8eefdf8f70ed93038e53a2746dd1d1b7069f05c1de7f0e307de08ade58a4f",
+   "ruling": "Ruling: model error; on the declaration. The deepseek reply fails the host checks (f8863.kid_needed: \"malformed expression (project schema): data/all/1/gt/0 must be string ...\" and \"comparison operands have incompatible types\"; M4), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. The expression equals the project's (f8863 p. 1, line 9: \"Subtract line 8 from line 7. Enter here and on line 2 of the Credit Limit Worksheet.\"). The line reads f8863.kid_needed through line 7 (box) and line 8, so it cannot execute (M4); the ruling adjudicates the declaration, not the tax reading. Its f8863.ban refusal is unconditional (M6, as line 8). Project stands.",
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "2b81c82f375cb7a61543115fe587a2f9ee976732f41dbae541101e354eca71a4"
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "fe40497c5e1344b889df846aafb47d94713d685d47a82e95b5bd492f63edcae8",
+   "second_expr_sha256": "f2ee00846a8cd2001260e13b5bfe24ba0f2031a94b02c82102e6e9fd9125b9c4",
+   "ruling": "Ruling: scope; The deepseek reply fails the model type check (f8863.clw1, clw2 and clw3: \"model changed a published result type\"), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. f8863 p. 1, line 9: \"Subtract line 8 from line 7.\" The candidate keeps the subtraction under the guard of its line 8 (not f8863.ban, paid, line 4 > 0, not mfs) and zero otherwise; as for line 8, paid false and line 4 zero give zero on both sides, and the remaining differences are the project's refusals on f8863.ban_refused (D1) and s3.mfs (S1, S3). Project stands.",
+   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873",
+   "subject_key": "2b81c82f375cb7a61543115fe587a2f9ee976732f41dbae541101e354eca71a4"
   },
   {
    "printed": "f8863.eligible",
-   "project": "{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "8ab977d1d4270ec132eb95481dc914b2ca4e27860b370a62fac0cc839f488b91",
+   "second_expr_sha256": "0eab07f26de0a56443ec91609d47ea9f8da5b11dcbbb970710285e55eca44917",
    "ruling": "Ruling: model error; i8863 p. 3, Who cannot claim a credit: \"1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,039 agree; 31 candidate-refuses, 28 project-unknown, 22 value (on completed returns: 8 value). The reply drops the dependent bar (its note calls it outside the inputs, but person.sav_claimed is published and the Claude reply uses it) and folds the line 4 stop into the published helper, whose label is \"expenses paid, and neither you nor your spouse is claimed as a dependent\". The completed values are that fold: classm.f1040.2 and its twin, generated 150 and 174 (project true, reply false where line 4 is $0; checked on classm.f1040.2 and generated 150). The candidate-refuses and other values are on refused returns (married filing separately is refused for the whole return (s3.mfs on scope.ready)). Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "b46e5b54fa393ccb4da1caf2d0728400fed7c853f2bbf4ba21aca1bed0b538c8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f1040.2.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.scveh.4@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.f1040.2@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:stage19.f8863.claimed_person_answer@f8863",
+     "generated:20261026.63@f8863",
+     "generated:20261026.83@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f8863.eligible",
-   "project": "{\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"f8863.ban\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
-   "ruling": "Ruling: model error; The deepseek reply fails the model type check (f8863.clw1, clw2 and clw3: \"model changed a published result type\"), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate is (not f8863.ban and line 1 > 0, or line 10 > 0) and paid and line 4 > 0 and not mfs: it has no test of sli.claimed, so a filer claimed as a dependent with expenses and line 4 above zero is eligible, against item 1 (M1). The added line 4 and credit-above-zero tests change no amount (with line 4 zero lines 7 and 18 prorate to zero), the mfs test is redundant with scope.ready on s3.mfs (S1), and the ban test turns into zero what the project refuses through f8863.ban_refused on line 7 (D1; S3). Project stands.",
-   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873"
-  },
-  {
-   "printed": "f8863.eligible",
-   "project": "{\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"ref\": \"sa.dependent\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
-   "ruling": "Ruling: model error; The deepseek reply fails the host checks (f8863.kid_needed: \"malformed expression (project schema): data/all/1/gt/0 must be string ...\" and \"comparison operands have incompatible types\"; M4), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate tests sa.dependent (\"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien?\") where the source bars only a filer who is claimed (sli.claimed): a filer whom someone could claim but does not loses the credit (M1, variant). Its mfs test duplicates s3.mfs (married filing separately is refused for the whole return by scope.ready on s3.mfs (\"Married filing separately\", i1040gi p. 14) (S1)); dual-status status is already refused by scope.other_income. Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
-  },
-  {
-   "printed": "f8863.eligible",
-   "project": "{\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.ban\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "c2a783367ad159a56ff727956b20364baea5e21748896377a1321d8c2e13d83c",
+   "second_expr_sha256": "789821f58ac4a8b750630c05a688eadcba461ea87289f2e80559365f084369ce",
    "ruling": "Ruling: model error; The deepseek reply fails the host type check (f8863.line19: \"model changed a published result type\", published Dollars declared NonNegDollars), so triage executed none of it (`../triage/f8863.deepseek.json`, state invalid); this line is ruled by reading its expression against the source. i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" i8863 p. 1, Form 8862 may be required: \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit.\" The candidate is f8863.paid and not f8863.ban. It drops the dependent bar (M1: a filer claimed on another return gets both credits) and the mfs bar (mfs is refused for the whole return on s3.mfs, scope), and it turns a ban, which the project refuses when an American opportunity credit is actually claimed (f8863.ban_refused: line 1 and line 4 above zero), into a zero line 1 (no American opportunity credit, no refusal); its eligible helper gates only line 1 (line 10 is gated on f8863.paid alone). Project stands.",
-   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047"
+   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047",
+   "subject_key": "b46e5b54fa393ccb4da1caf2d0728400fed7c853f2bbf4ba21aca1bed0b538c8"
+  },
+  {
+   "printed": "f8863.eligible",
+   "project_expr_sha256": "c2a783367ad159a56ff727956b20364baea5e21748896377a1321d8c2e13d83c",
+   "second_expr_sha256": "d1c7b883b65c1945db4d3ebbbdc5b034f86379ab8b40116782e4fb6647b68f70",
+   "ruling": "Ruling: model error; The deepseek reply fails the model type check (f8863.clw1, clw2 and clw3: \"model changed a published result type\"), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate is (not f8863.ban and line 1 > 0, or line 10 > 0) and paid and line 4 > 0 and not mfs: it has no test of sli.claimed, so a filer claimed as a dependent with expenses and line 4 above zero is eligible, against item 1 (M1). The added line 4 and credit-above-zero tests change no amount (with line 4 zero lines 7 and 18 prorate to zero), the mfs test is redundant with scope.ready on s3.mfs (S1), and the ban test turns into zero what the project refuses through f8863.ban_refused on line 7 (D1; S3). Project stands.",
+   "context": "bf9fbdf3b604148dd7ff1d085f6803c2021e340aad46dd44617b602b31ebc873",
+   "subject_key": "b46e5b54fa393ccb4da1caf2d0728400fed7c853f2bbf4ba21aca1bed0b538c8"
+  },
+  {
+   "printed": "f8863.eligible",
+   "project_expr_sha256": "c2a783367ad159a56ff727956b20364baea5e21748896377a1321d8c2e13d83c",
+   "second_expr_sha256": "d94c41130d00f036669f08d63db646046268717c50239c19b4c4b4a7a70e583c",
+   "ruling": "Ruling: model error; The deepseek reply fails the host checks (f8863.kid_needed: \"malformed expression (project schema): data/all/1/gt/0 must be string ...\" and \"comparison operands have incompatible types\"; M4), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate tests sa.dependent (\"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien?\") where the source bars only a filer who is claimed (sli.claimed): a filer whom someone could claim but does not loses the credit (M1, variant). Its mfs test duplicates s3.mfs (married filing separately is refused for the whole return by scope.ready on s3.mfs (\"Married filing separately\", i1040gi p. 14) (S1)); dual-status status is already refused by scope.other_income. Project stands.",
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "b46e5b54fa393ccb4da1caf2d0728400fed7c853f2bbf4ba21aca1bed0b538c8"
   },
   {
    "printed": "f8863.kid_needed",
-   "project": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"ref\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.edu_fulltime\"}], \"test\": \"eq\"}], \"test\": \"all\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"ref\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.edu_parent\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.edu_born_2002\"}], \"test\": \"ne\"}], \"test\": \"all\"}}], \"test\": \"lt\"}",
-   "ruling": "Ruling: model error; The deepseek reply fails the host type check (f8863.line19: \"model changed a published result type\", published Dollars declared NonNegDollars), so triage executed none of it (`../triage/f8863.deepseek.json`, state invalid); this line is ruled by reading its expression against the source. i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you. ... 3. You’re not filing a joint return for 2025. If you meet these conditions, check the box next to line 7, skip line 8, and enter the amount from line 7 on line 9.\" f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\". The candidate is the count of the taxpayer meeting conditions 1 to 3 (not joint inside the count), with no line 7 > 0 or line 1 > 0 test, so it asks the line 7 age, student and support questions on every non-joint return with Form 8863 lines, including returns with no American opportunity amount and returns stopped at line 4 (the Claude reply's 11 completed witnesses, e.g. classm.s3.2, show such returns) (M3). Project stands.",
-   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047"
-  },
-  {
-   "printed": "f8863.kid_needed",
-   "project": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"lt\"}",
-   "ruling": "Ruling: model error; i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 631 agree; 1,416 candidate-unknown, 33 project-refuses, 27 value, 13 project-unknown (on completed returns: 176 candidate-unknown, 9 value). The reply's helper reads f8863.line7 and the person conditions in a way that cycles back to f8863.kid_needed (\"cycle at f8863.kid_needed\" on classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project false); the completed values follow from it. Project stands.",
-   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2"
-  },
-  {
-   "printed": "f8863.kid_needed",
-   "project": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
-   "second": "{\"expression\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"unknown\": \"{\\\"collection\\\": \\\"person\\\", \\\"field\\\": \\\"person.one\\\", \\\"op\\\": \\\"sum_over\\\", \\\"where\\\": {\\\"all\\\": [{\\\"eq\\\": [\\\"person.role\\\", {\\\"const\\\": \\\"taxpayer\\\"}], \\\"op\\\": \\\"test\\\"}, {\\\"not\\\": {\\\"eq\\\": [\\\"person.edu_born_2002\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, \\\"op\\\": \\\"test\\\"}, {\\\"eq\\\": [\\\"person.edu_parent\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, {\\\"any\\\": [{\\\"not\\\": {\\\"eq\\\": [\\\"person.sav_born\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, \\\"op\\\": \\\"test\\\"}, {\\\"all\\\": [{\\\"eq\\\": [\\\"person.sav_born\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, {\\\"not\\\": {\\\"eq\\\": [\\\"person.edu_born_2007\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, \\\"op\\\": \\\"test\\\"}, {\\\"eq\\\": [\\\"person.edu_half_support\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}], \\\"op\\\": \\\"test\\\"}, {\\\"all\\\": [{\\\"eq\\\": [\\\"person.edu_born_2007\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, {\\\"not\\\": {\\\"eq\\\": [\\\"person.edu_born_2002\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, \\\"op\\\": \\\"test\\\"}, {\\\"eq\\\": [\\\"person.edu_fulltime\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}, {\\\"eq\\\": [\\\"person.edu_half_support\\\", {\\\"const\\\": true}], \\\"op\\\": \\\"test\\\"}], \\\"op\\\": \\\"test\\\"}], \\\"op\\\": \\\"test\\\"}], \\\"op\\\": \\\"test\\\"}}\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"invalid_model_types\": [{\"line\": \"f8863.kid_needed\", \"message\": \"malformed expression (project schema): data/all/1/gt/0 must be string, data/all/1/gt/0 must have required property 'const', data/all/1/gt/0 must NOT have additional properties\"}, {\"line\": \"f8863.kid_needed\", \"message\": \"f8863.f8863.kid_needed: comparison operands have incompatible types\"}]}",
+   "project_expr_sha256": "de547f8229a1bca08c25ea4b92cb31961e6513eab8883b39fc667a864403eb5a",
+   "second_expr_sha256": "267475ef8e8fc90b04c686da683d79bf50f05ac2ea072b7f04644ed99d3823f5",
    "ruling": "Ruling: model error; on the declaration. The deepseek reply fails the host checks (f8863.kid_needed: \"malformed expression (project schema): data/all/1/gt/0 must be string ...\" and \"comparison operands have incompatible types\"; M4), so triage executed none of it (`../triage/f8863.deepseek.json`, every open line \"candidate invalid\"); this line is ruled by reading the expression against the source. The expression puts a sum_over inline as a comparison operand, which the schema rejects, and compares a Count with a Bool expression. By reading, it defines the helper as the line 7 box condition (i8863 p. 7, Line 7, conditions 1 (a, b, or c), 2 and 3: under 24, a parent alive, not joint, with the age, student and support tests read correctly from person.sav_born, edu_born_2007 and edu_born_2002), not the published \"Line 7 is above zero on a return that is not joint (the line 7 conditions are asked)\"; with no line 7 > 0 test it would ask the taxpayer's age and support questions on every return that is not joint (M3). Project stands.",
-   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49"
+   "context": "433b33861b9ee69b13eaf6991a940fc5aee4739a856ba58f9ed446ada8769d49",
+   "subject_key": "d212b4de9913b5cc6a18180267e25640976dc776fa13f99304a77c21a4865547"
+  },
+  {
+   "printed": "f8863.kid_needed",
+   "project_expr_sha256": "de547f8229a1bca08c25ea4b92cb31961e6513eab8883b39fc667a864403eb5a",
+   "second_expr_sha256": "5a8ea92fda26b584a0cdfb05aafe7bd1d0de89ba55da766beb0a48072becdb93",
+   "ruling": "Ruling: model error; i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 631 agree; 1,416 candidate-unknown, 33 project-refuses, 27 value, 13 project-unknown (on completed returns: 176 candidate-unknown, 9 value). The reply's helper reads f8863.line7 and the person conditions in a way that cycles back to f8863.kid_needed (\"cycle at f8863.kid_needed\" on classm.f4952.1.deepseek, classm.f8960.1.deepseek and others, project false); the completed values follow from it. Project stands.",
+   "context": "497768d45a855d51c2001b5004ffa4732802eefa9cfda139acb9e95632ea64e2",
+   "subject_key": "d212b4de9913b5cc6a18180267e25640976dc776fa13f99304a77c21a4865547",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.s3.2.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f8863.2.deepseek@f8863",
+     "fixture:classm.aqee.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.s3.2@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:classm.f8863.2@f8863",
+     "fixture:classm.aqee.1@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863",
+     "partial:classm.f1040.3.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8863.kid_needed",
+   "project_expr_sha256": "de547f8229a1bca08c25ea4b92cb31961e6513eab8883b39fc667a864403eb5a",
+   "second_expr_sha256": "ce1aff9d462f8f74377f3eac4c9c37f404aad0757c7fdf58f5f5db1fad3aa432",
+   "ruling": "Ruling: model error; The deepseek reply fails the host type check (f8863.line19: \"model changed a published result type\", published Dollars declared NonNegDollars), so triage executed none of it (`../triage/f8863.deepseek.json`, state invalid); this line is ruled by reading its expression against the source. i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you. ... 3. You’re not filing a joint return for 2025. If you meet these conditions, check the box next to line 7, skip line 8, and enter the amount from line 7 on line 9.\" f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\". The candidate is the count of the taxpayer meeting conditions 1 to 3 (not joint inside the count), with no line 7 > 0 or line 1 > 0 test, so it asks the line 7 age, student and support questions on every non-joint return with Form 8863 lines, including returns with no American opportunity amount and returns stopped at line 4 (the Claude reply's 11 completed witnesses, e.g. classm.s3.2, show such returns) (M3). Project stands.",
+   "context": "7060ad6eaefc806ee66b326246e15e7b1b5ec83bbfd1d2ca00d94fdbc090e047",
+   "subject_key": "d212b4de9913b5cc6a18180267e25640976dc776fa13f99304a77c21a4865547"
   }
  ]
 }

@@ -6,37 +6,43 @@
    "printed": "11",
    "restated": "Enter the amount from f8959 line 18.",
    "model": "Schedule 2 says only 'Additional Medicare Tax. Attach Form 8959' and does not name which Form 8959 line to carry over. The Form 8959 page or instructions identifying line 18 as the total Additional Medicare Tax are not in the text given.",
-   "ruling": "Ruling: representation; project retained. Form 8959 line 18 reads 'Add lines 7, 13, and 17. Also include this amount on Schedule 2 (Form 1040), line 11' (f8959), which is the carried line."
+   "ruling": "Ruling: representation; project retained. Form 8959 line 18 reads 'Add lines 7, 13, and 17. Also include this amount on Schedule 2 (Form 1040), line 11' (f8959), which is the carried line.",
+   "subject_key": "fccd9a4842424a30ff88be94b68b3df7f3483d5cf95a530fd93535edf54cca1d"
   },
   {
    "printed": "12",
    "restated": "Enter the amount from f8960 line 17.",
    "model": "Schedule 2 says only 'Net investment income tax. Attach Form 8960' and does not name which Form 8960 line to carry over. The Form 8960 page or instructions identifying line 17 as the net investment income tax are not in the text given.",
-   "ruling": "Ruling: representation; project retained. Form 8960 line 17 reads 'Net investment income tax for individuals. Multiply line 16 by 3.8% (0.038). Enter here and include on your tax return' (f8960); Schedule 2 line 12 is where it is included."
+   "ruling": "Ruling: representation; project retained. Form 8960 line 17 reads 'Net investment income tax for individuals. Multiply line 16 by 3.8% (0.038). Enter here and include on your tax return' (f8960); Schedule 2 line 12 is where it is included.",
+   "subject_key": "30b4d16eb069b68fb1d8d54a79862643d1e828650479e573003481bd9d88f518"
   },
   {
    "printed": "4",
    "restated": "Add person.se_line12 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Adding across persons agrees with the instruction \"If both spouses have self-employment income, each must file a separate Schedule SE... Enter the combined SE tax on Schedule 2 (Form 1040), line 4.\" But nothing given here shows that Schedule SE line 12 is the SE tax amount; the Schedule SE form itself is not included.",
-   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is \"Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4\" (f1040sse p. 1, line 12); on a joint return each spouse's line 12 is added (i1040sse p. 2, \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\"). The Schedule SE form was not among the pages given."
+   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is \"Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4\" (f1040sse p. 1, line 12); on a joint return each spouse's line 12 is added (i1040sse p. 2, \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\"). The Schedule SE form was not among the pages given.",
+   "subject_key": "7a723a7c471b4627ab0124478946e8aafbb030e578d53a3785250c9b9bde388a"
   },
   {
    "printed": "4",
    "restated": "Add person.se_line12 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Adding the amount across both spouses fits the instruction \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\". However, the text provided does not show which Schedule SE line holds the SE tax, so it cannot confirm that Schedule SE line 12 is that amount.",
-   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is \"Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4\" (f1040sse p. 1, line 12); on a joint return each spouse's line 12 is added (i1040sse p. 2, \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\"). The Schedule SE form was not among the pages given."
+   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is \"Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4\" (f1040sse p. 1, line 12); on a joint return each spouse's line 12 is added (i1040sse p. 2, \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\"). The Schedule SE form was not among the pages given.",
+   "subject_key": "7a723a7c471b4627ab0124478946e8aafbb030e578d53a3785250c9b9bde388a"
   },
   {
    "printed": "4",
    "restated": "Add person.se_line12 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The Schedule SE instructions say to \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\" and support summing over spouses. However, the Schedule SE form itself is not provided, so nothing confirms that Schedule SE line 12 is the self-employment tax amount.",
-   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is 'Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4' (f1040sse, line 12); on a joint return each spouse's line 12 is summed (i1040sse, 'enter the combined SE tax on Schedule 2 (Form 1040), line 4')."
+   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is 'Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4' (f1040sse, line 12); on a joint return each spouse's line 12 is summed (i1040sse, 'enter the combined SE tax on Schedule 2 (Form 1040), line 4').",
+   "subject_key": "7a723a7c471b4627ab0124478946e8aafbb030e578d53a3785250c9b9bde388a"
   },
   {
    "printed": "4",
    "restated": "Add person.se_line12 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The instructions say to \"Enter the combined SE tax on Schedule 2 (Form 1040), line 4\" for both spouses, so adding across people fits. But the text given never says that Schedule SE line 12 is the SE tax, and it says to enter -0- on line 4 in the line 1b case where both lines 4a and 4c are under $400 and the total of lines 1a and 2 is $434 or more. Schedule SE's own line wording is needed to check the operand.",
-   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is 'Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4' (f1040sse p. 1); on a joint return each spouse's line 12 is added (i1040sse, 'enter the combined SE tax on Schedule 2 (Form 1040), line 4'). The line 1b case (Conservation Reserve Program payments) is refused through person.se_screen ('farm income (Schedule F) or Conservation Reserve Program payments'), and line 4c under $400 gives line 12 zero (se.owes). The tier 1 railroad compensation omitted from line 8a is the defect ruled under person.se_screen; it changes this line for a railroad employee with a Schedule C."
+   "ruling": "Ruling: representation; restatement accepted. Schedule SE line 12 is 'Self-employment tax. Add lines 10 and 11. Enter here and on Schedule 2 (Form 1040), line 4' (f1040sse p. 1); on a joint return each spouse's line 12 is added (i1040sse, 'enter the combined SE tax on Schedule 2 (Form 1040), line 4'). The line 1b case (Conservation Reserve Program payments) is refused through person.se_screen ('farm income (Schedule F) or Conservation Reserve Program payments'), and line 4c under $400 gives line 12 zero (se.owes). The tier 1 railroad compensation omitted from line 8a is the defect ruled under person.se_screen; it changes this line for a railroad employee with a Schedule C.",
+   "subject_key": "7a723a7c471b4627ab0124478946e8aafbb030e578d53a3785250c9b9bde388a"
   }
  ]
 }

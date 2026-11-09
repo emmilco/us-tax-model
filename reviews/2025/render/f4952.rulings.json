@@ -9,7 +9,8 @@
    "ruling": "Ruling: scope; f4952 p. 3, Line 1: \"Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation\" and \"Interest expense, disallowed under section 264, on indebtedness with respect to life insurance, endowment, or annuity contracts issued after June 8, 1997, even if the proceeds were used to purchase any property held for investment.\" Schedule K-1 interest: partnerships and S corporations (\"Schedule E or a Schedule K-1\") are refused for the return by scope.schedule1, so no completed return has K-1 investment interest. Section 264: the round-2 wording of f4952.line1 excludes only interest \"disallowed under section 264\"; interest that section 264 disallows is not deductible at all, and the date clause says why such interest is excluded even when traced to investment property, so dropping it does not exclude any deductible interest. The model's claim that the amount changes is not borne out. Project stands.",
    "context": "16e2a22b98a489ddc2f44cebdc481c859d622f433648e4b5328510af70ae6ed2",
    "date": "2026-11-04",
-   "run": "fef95f021fa97c06d90117208b50f6deeff5a23ce5d7d697484f379dae9f452c"
+   "run": "fef95f021fa97c06d90117208b50f6deeff5a23ce5d7d697484f379dae9f452c",
+   "subject_key": "f14a1b575dcaa6cdbee97725a6d43bcbe1e24fd64fab5691f8c147645b14a516"
   },
   {
    "printed": "3",
@@ -18,26 +19,30 @@
    "ruling": "Ruling: model error; the model agrees that line 3 is \"Add lines 1 and 2\" (f4952 p. 1, line 3) and marks it MISMATCH only for its line 1 objection, ruled at line 1 (scope).",
    "context": "16e2a22b98a489ddc2f44cebdc481c859d622f433648e4b5328510af70ae6ed2",
    "date": "2026-11-04",
-   "run": "fef95f021fa97c06d90117208b50f6deeff5a23ce5d7d697484f379dae9f452c"
+   "run": "fef95f021fa97c06d90117208b50f6deeff5a23ce5d7d697484f379dae9f452c",
+   "subject_key": "a8e6e6ca7f60b01cd6bc516aca2ebcc8b9b283177db5ccdab10e24391a074f18"
   },
   {
    "printed": "4a",
    "restated": "Add sb line 2 and sb line 6.",
    "model": "Line 4a is 'Gross income from property held for investment', but Schedule B line 2 comes before line 3, where 'you may be able to exclude part or all of the interest' on series EE or I savings bonds (Form 8815). Using line 2 would count excludable interest that is not gross income, where the taxable total after line 3 should be used. The text given does not show any other mismatch for ordinary dividends.",
    "ruling": "Ruling: scope; the model says Schedule B line 2 comes before line 3, where savings bond interest can be excluded (Form 8815), so line 4a could count excludable interest. f4952 p. 3, Line 4a: \"Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties.\" The exclusion is refused: Schedule B line 3 (sb.line3) is zero and refuses on sb.unsupported (\"a savings bond interest exclusion\"), and sb.line2 carries the same screen, so on every computed return line 2 is the taxable interest (line 4). The English names the lines correctly; no amount differs within scope. Same reading as the earlier rounds.",
-   "context": "f16f89303bdab941e20fee8e3668eb4fc0ba2a9acca5e0da96e6d7c506b841d2"
+   "context": "f16f89303bdab941e20fee8e3668eb4fc0ba2a9acca5e0da96e6d7c506b841d2",
+   "subject_key": "af9091691362f55d35ca751cb269d1794cf042b1a65f723fbf421703ef0640f2"
   },
   {
    "printed": "4d",
    "restated": "Subtract $0 from sd line 16. If zero or less, enter -0-.",
    "model": "Line 4d is the \"excess, if any, of your total gains over your total losses from the disposition of property held for investment.\" The only wording given for sd line 16 is \"Combine the amounts for Schedule D line 16,\" which does not show that it is limited to property held for investment. None of the gates excludes non-investment dispositions on Schedule D.",
-   "ruling": "Ruling: scope and representation; project retained. Within scope Schedule D line 16 holds only securities sales and capital gain distributions (property held for investment); carryovers and other dispositions are refused (`sd.other_forms`), so line 16 floored at zero is the net gain from the disposition of property held for investment."
+   "ruling": "Ruling: scope and representation; project retained. Within scope Schedule D line 16 holds only securities sales and capital gain distributions (property held for investment); carryovers and other dispositions are refused (`sd.other_forms`), so line 16 floored at zero is the net gain from the disposition of property held for investment.",
+   "subject_key": "fa7a4a1f7cf64efa1ba66c9a691089c4b33e441011af886db02ad717b0bd9340"
   },
   {
    "printed": "4e",
    "restated": "Enter the smaller of line 4d or sd helper \"Nonnegative net capital gain for QDCGT\".",
    "model": "Line 4e is the smaller of 4d or \"net long-term capital gain over your net short-term capital loss from the disposition of property held for investment.\" Schedule D line 15's wording is not provided, and nothing shows the Schedule D figures are limited to property held for investment. So the helper's min(line 15, line 16) floored at zero cannot be confirmed.",
-   "ruling": "Ruling: scope and representation; project retained. As for line 4d: within scope the smaller of Schedule D lines 15 and 16, floored at zero, is the excess of net long-term capital gain over net short-term capital loss from investment property; the alternative allocation that changes line 4e is refused (`f4952.alternative_allocation`)."
+   "ruling": "Ruling: scope and representation; project retained. As for line 4d: within scope the smaller of Schedule D lines 15 and 16, floored at zero, is the excess of net long-term capital gain over net short-term capital loss from investment property; the alternative allocation that changes line 4e is refused (`f4952.alternative_allocation`).",
+   "subject_key": "a14df43946b5e228880aa03865d42f0d64673359b181b1a34c0820a9beb96aaa"
   }
  ]
 }

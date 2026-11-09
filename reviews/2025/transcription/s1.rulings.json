@@ -4,118 +4,216 @@
  "rulings": [
   {
    "printed": "1",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"refund.received\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"refund.received\"}], \"test\": \"lt\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"ref\": \"refund.line9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"ref\": \"refund.line9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "1565e325485bd9721f334ef0a65b2a86eaa2c6939bdf12555460cdbe4959aed8",
+   "second_expr_sha256": "297bda6218c64c0cbc5c8ed956f0cf05279aea1dfbc245bce36f8b556e2a058a",
    "ruling": "Ruling: model error; i1040gi p. 88, Line 1: \"If you received a refund, credit, or offset of state or local income taxes in 2025, you may be required to report this amount\". executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 1,134 agree; 1,541 candidate-unknown (on completed returns: 143 candidate-unknown). With no refund received line 1 is zero and the worksheet is not needed; the project guards on refund.received above zero, the reply copies refund.line9 without that guard and needs worksheet answers (refund.box8) from filers without a refund, project $0.00 in every witness (classm.f4952.1.deepseek, classm.s3.1.deepseek and others). Same disagreement as the bklg ruling, which stands. Project stands.",
-   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf"
+   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf",
+   "subject_key": "92d9362f0728e1f84c731ae660783cb76ae821a2e2481db9e165d2443bab8074",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@s1",
+     "fixture:classm.f2441.2.deepseek@s1",
+     "fixture:classm.f2441.3.deepseek@s1",
+     "fixture:classm.f2441.4.deepseek@s1",
+     "fixture:classm.f2441.5.deepseek@s1",
+     "fixture:classm.f2441.6.deepseek@s1"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "1",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"refund.received\"}, {\"param\": \"sales.zero\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"param\": \"sales.zero\"}, {\"input\": \"refund.received\"}], \"test\": \"lt\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"ref\": \"refund.line9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"param\": \"sales.zero\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"ref\": \"refund.line9\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"refund.sales\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"refund.itemized\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"param\": \"sales.zero\"}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: equivalent; project retained. The project gives zero when no refund was received (refund.has) and otherwise the worksheet result, zero unless you itemized for 2024 and deducted income taxes; the second gives the latter alone. With no refund, worksheet line 1 is zero (the smaller of zero and 2024 line 5d), so line 9 is zero and the two agree (i1040gi p. 90, State and Local Income Tax Refund Worksheet, line 1, \"Enter the income tax refund from Form(s) 1099-G\", and line 9, \"Enter the smaller of line 3 or line 8 here and on Schedule 1, line 1\"). The project's guard keeps the worksheet's questions and its exception screens from being asked of a filer with no refund."
+   "project_expr_sha256": "4a93a9c28d9b8eb7655b323ba42bd38d1325566520017e8925464b458f1cb101",
+   "second_expr_sha256": "8e49450da6d296e9ed29f09c901ad0bcfee6722485b7b650bc819bb5b4611fb0",
+   "ruling": "Ruling: equivalent; project retained. The project gives zero when no refund was received (refund.has) and otherwise the worksheet result, zero unless you itemized for 2024 and deducted income taxes; the second gives the latter alone. With no refund, worksheet line 1 is zero (the smaller of zero and 2024 line 5d), so line 9 is zero and the two agree (i1040gi p. 90, State and Local Income Tax Refund Worksheet, line 1, \"Enter the income tax refund from Form(s) 1099-G\", and line 9, \"Enter the smaller of line 3 or line 8 here and on Schedule 1, line 1\"). The project's guard keeps the worksheet's questions and its exception screens from being asked of a filer with no refund.",
+   "subject_key": "92d9362f0728e1f84c731ae660783cb76ae821a2e2481db9e165d2443bab8074"
   },
   {
    "printed": "11",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.educator_expenses\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.educator_expenses\"}], \"test\": \"lt\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"input\": \"s1.educator_expenses\"}, {\"param\": \"s1.educator_max\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.eligible_educator\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"input\": \"s1.educator_expenses\"}, {\"param\": \"s1.educator_max\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: equivalent; project retained. With no qualified expenses the smaller of the expenses and $300 is zero either way; the project's guard keeps a filer without expenses from being asked whether they were an eligible educator."
+   "project_expr_sha256": "3ca9a2de22ccdd550f7b28587a17ffb784e5c6fbb87140b5e4910116c00a5505",
+   "second_expr_sha256": "fd77981cb185c3156f27a290c2081112524a8f431888dd26cbb51220a1942ec5",
+   "ruling": "Ruling: equivalent; project retained. With no qualified expenses the smaller of the expenses and $300 is zero either way; the project's guard keeps a filer without expenses from being asked whether they were an eligible educator.",
+   "subject_key": "24bad8573e5cde73a2c8c2194bb6786de738b2312650c140587e35aa91342f66"
   },
   {
    "printed": "16",
-   "project": "{\"collection\": \"person\", \"field\": \"person.s16\", \"op\": \"sum_over\", \"where\": null}",
-   "second": "{\"collection\": \"person\", \"field\": \"person.plan_deduction\", \"op\": \"sum_over\", \"where\": null}",
+   "project_expr_sha256": "f23f27cb699ca8f6a4a4ca740b09748d7f7ab207646d31f574fb1d9eedcc1dae",
+   "second_expr_sha256": "b7aed696d3b9bb5404c3b83ceb3d353156b56accda4d48b1aa48d4eddfa1b0b6",
    "ruling": "Ruling: model error; i1040gi p. 93, Line 16: \"If you were self-employed or a partner, you may be able to take this deduction\". Partnership and other Schedule E or K-1 income is refused by scope.schedule1, so within scope only a person with a Schedule C can have the deduction; the project asks person.plan only then (person.s16, guarded by person.has_sc). The candidate sums person.plan_deduction for every person, asking plan questions of people with no self-employment income and reaching the SEP and SIMPLE excess screens for them. executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 1,191 agree; 1,337 candidate-unknown, 147 candidate-refuses (on completed returns: 51 candidate-refuses, 53 candidate-unknown). The reply sums person.plan_deduction for every person, asking plan questions (and reaching the SEP and SIMPLE excess screens) for people with no Schedule C; the project asks person.plan only with a Schedule C (person.s16), project $0.00 in every witness (candidate-refuses classm.f8889.1.deepseek on sep_excess). Same reply and project as the bklg ruling, which stands. Project stands.",
-   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf"
+   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf",
+   "subject_key": "9e853552b668ff8fdb045941642bf61a5bbec9b94716d51eb8f41d5ad9b3bd84",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@s1",
+     "fixture:classm.f2441.2.deepseek@s1",
+     "fixture:classm.f2441.3.deepseek@s1",
+     "fixture:classm.f2441.4.deepseek@s1",
+     "fixture:classm.f2441.5.deepseek@s1",
+     "fixture:classm.f2441.6.deepseek@s1",
+     "fixture:classm.f8889.1.deepseek@s1",
+     "fixture:classm.clcw.3.deepseek@s1",
+     "fixture:classm.clcw26.2.deepseek@s1",
+     "fixture:classm.dependent.4.deepseek@s1",
+     "fixture:classm.s2.3.deepseek@s1",
+     "fixture:classm.f8880.2.deepseek@s1"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "19a",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s1.alimony_paid\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s1.alimony_paid\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"ne\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "546365dff0e94ab515ff5cb65695bfeeb02ac138771d904d387aa9d5f383345b",
+   "second_expr_sha256": "47e06647abc68c825b84203bc03ed5be818e683aad554e69295157108a9a516e",
    "ruling": "Ruling: representation; as line 2a: s1.alimony_paid when s1.alimony is true, zero otherwise, the project's line for every answered value; the agreement-date and changed-agreement conditions are in the s1.alimony question and the refused cases in s1.alimony_unsupported.",
    "context": "8e168fabc80dfefb262160cd14a5e60237388cc494bb39524df4d05c54793b4d",
    "date": "2026-11-04",
-   "run": "68116d69bff88edfcc71d7837f31274043094232b8876dfc88021ac84175d7fc"
+   "run": "68116d69bff88edfcc71d7837f31274043094232b8876dfc88021ac84175d7fc",
+   "subject_key": "88551b4b7f98341812036b4d96ad6970419c7d4549f4d76e76fbd2277a321ea8"
   },
   {
    "printed": "20",
-   "project": "{\"collection\": \"person\", \"field\": \"person.ira_deduction\", \"op\": \"sum_over\", \"where\": null}",
-   "second": "{\"of\": [{\"ref\": \"ira.line12a\"}, {\"ref\": \"ira.line12b\"}], \"op\": \"sum\"}",
+   "project_expr_sha256": "734b9913dd9977d8fdfac33b115d057cab32933037fbc63665bb341233f2bb12",
+   "second_expr_sha256": "213f3f9e8a533a55a7111aca29cc19474e7674ef013ca3066cb38abe043aa857",
    "ruling": "Ruling: representation; i1040gi p. 98, IRA Deduction Worksheet, line 12: \"Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20\". The candidate's ira.line12a plus ira.line12b is the same total of person.ira_deduction over you and your spouse as the project's ira.total. executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,495 fixtures, 500 generated returns seed 20261026, 639 partial records from 40 bases; 2,634 comparisons per line; completed-return witnesses listed from an uncapped scratch re-run of triage.mjs, /tmp/adj-bklg-income/full/, same counts): 2,605 of 2,634 agree; no value differences and no difference on a completed return. The 22 candidate-unknown (21 incomplete, 1 refused; e.g. stage16.ira.i1 to i10, stage16.mut.ira_kbh_one_edge, audit.ira.covered_age50_single_phaseout, ss.person.separation) stop inside person.ira_deduction on modified AGI, which the candidate builds from its own Schedule 1 lines (line 1 needing refund.box8, ruled above, and the ungated refusal declarations on lines 2a and 19a that read s1.alimony_unsupported on every return); the 7 project-refuses (stage16.refuse.ira.kbh_short, .over_comp, .special, .excluded_income, .combat_pay, .dist, .deduct_less) are the IRA worksheet gates inside person.ira_deduction, which the candidate reaches too once those answers exist. Same expression and ruling as fix round 3. Project stands.",
-   "context": "cf52b5b82eaefdc17c5fb53020a6dab28ac825051d33fc5bb8eea2bf3e93719f"
+   "context": "cf52b5b82eaefdc17c5fb53020a6dab28ac825051d33fc5bb8eea2bf3e93719f",
+   "subject_key": "55667e7655db8858c50be8351958e6a6f8dc2968884328aab0b341cf087d0b05"
   },
   {
    "printed": "24a",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"8h\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"8h\"}], \"test\": \"lt\"}, \"then\": {\"input\": \"s1.jury_to_employer\"}}], \"op\": \"choose\"}",
-   "second": "{\"input\": \"s1.jury_to_employer\"}",
+   "project_expr_sha256": "9fd0b9b5423b9fba13a8fa3e372689658d8b110316c8025a1ace85ddea414dac",
+   "second_expr_sha256": "a88af11880531b6cd67d57157e12ecde927ab9f96b51c7e47c58e316a5fab791",
    "ruling": "Ruling: ambiguity; amb.2025.jury_24a_cap. i1040gi p. 91, Line 8h, \"Enter any jury duty pay and see the instructions for line 24a\"; p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer\"; p525 p. 34, Jury duty, \"Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h. If you must give the pay to your employer ... you can deduct the amount turned over to your employer\". The candidate reads the amount given to the employer directly; the project reads it through s1.jury_to_employer_if_pay, which asks it only when line 8h is above zero and is zero otherwise. They differ only where line 8h is zero and an amount given is entered, which the chosen reading of amb.2025.jury_24a_cap treats as an impossible entry (the pay given is part of the pay on line 8h); with line 8h zero the project no longer asks it. executable-triage-v2 (`../triage/s1.json`; 1,638 fixtures, 500 generated returns seed 20261026, 586 partial records): no value difference; 41 candidate-unknown (21 on completed returns, where line 8h is zero and the amount given is withheld) and 40 project-unknown, on incomplete or refused records. Project stands.",
    "context": "4b2dc67a3c1284bfbd9ffdf9825834c041c32bcc87d7242c6ec55f8b8a54f53d",
    "date": "2026-11-07",
-   "run": "c5beecd6ca67caf19cbe478a6e5be7c34d74d126b442a9bb7544de5ba2f65b05"
+   "run": "c5beecd6ca67caf19cbe478a6e5be7c34d74d126b442a9bb7544de5ba2f65b05",
+   "subject_key": "68e08a92e8d393107e154b530aebb5fc62196ae906780c0593306f4a006f40d1"
   },
   {
    "printed": "2a",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s1.alimony_received\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s1.alimony_received\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"ne\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "45f8f1567f62e3e23f2f090ccf0469fda4dc17a17182989df6eeb8eca5e93bfa",
+   "second_expr_sha256": "659cbd9addc40c69fd517e70826a5d0b6f8ba83bf9600968ec2f46ed48e7d172",
    "ruling": "Ruling: representation; the reply enters s1.alimony_received when s1.alimony is true and zero otherwise; the project enters zero when false and the amount when true. For an answered Bool these are the same; both need s1.alimony. The round-2 wording of the alimony inputs (A2, s1#4) is what the reply read (\"agreement entered into on or before December 31, 2018, unless a later change expressly provides that alimony isn't included in income\"); its refusals (more than one agreement, recapture, payments partly not alimony) go through s1.alimony_unsupported as in the project.",
    "context": "8e168fabc80dfefb262160cd14a5e60237388cc494bb39524df4d05c54793b4d",
    "date": "2026-11-04",
-   "run": "68116d69bff88edfcc71d7837f31274043094232b8876dfc88021ac84175d7fc"
+   "run": "68116d69bff88edfcc71d7837f31274043094232b8876dfc88021ac84175d7fc",
+   "subject_key": "aba6c94f75ae0adea928e64ad412aa6edf291f40d4fef808c02203ce14065734"
   },
   {
    "printed": "7",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.uc_paid\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.uc_paid\"}], \"test\": \"lt\"}, \"then\": {\"from\": {\"input\": \"s1.uc_paid\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"s1.uc_repaid\"}}}], \"op\": \"choose\"}",
-   "second": "{\"from\": {\"input\": \"s1.uc_paid\"}, \"op\": \"subtract\", \"take\": {\"input\": \"s1.uc_repaid\"}}",
-   "ruling": "Ruling: equivalent within valid inputs; project retained. The amount repaid is part of a 2025 overpayment of the compensation received, so it never exceeds it and the floor at zero does not apply; with no unemployment compensation both give zero, and the project's guard keeps a filer without it from being asked about repayments."
+   "project_expr_sha256": "c16bd3ee8833eae83d3b019235d8f185bf9eb092e5ae004ed3c9026041e936c6",
+   "second_expr_sha256": "2814d99eebdc5a987d016b7b9a24a1bc64204865f1e10e39ce81884e186a1983",
+   "ruling": "Ruling: equivalent within valid inputs; project retained. The amount repaid is part of a 2025 overpayment of the compensation received, so it never exceeds it and the floor at zero does not apply; with no unemployment compensation both give zero, and the project's guard keeps a filer without it from being asked about repayments.",
+   "subject_key": "6067d3558724269babcd67d0ad4ed154bfc2eeac9d37232a01de979c8a4b38af"
   },
   {
    "printed": "7",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.uc_paid\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.uc_paid\"}], \"test\": \"lt\"}, \"then\": {\"from\": {\"input\": \"s1.uc_paid\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"s1.uc_repaid\"}}}], \"op\": \"choose\"}",
-   "second": "{\"from\": {\"input\": \"s1.uc_paid\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"s1.uc_repaid\"}}",
+   "project_expr_sha256": "c16bd3ee8833eae83d3b019235d8f185bf9eb092e5ae004ed3c9026041e936c6",
+   "second_expr_sha256": "9feb66b1dd1fc717936d8a83d341f28b59398d5116234859e501c6ea98245a91",
    "ruling": "Ruling: model error; i1040gi p. 89, Line 7: \"You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025. Report this amount on line 7\", reduced by contributions (\"If you made contributions to a governmental unemployment compensation program and you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions\") and by 2025 overpayments repaid. With no compensation paid in 2025, line 7 is zero and neither s1.uc_repaid nor the s1.uc_unsupported screen is needed; the project asks both only when s1.has_uc (s1.uc_paid above zero). The candidate drops that guard and declares the screen on every return. executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 1,281 agree; 1,348 candidate-unknown, 46 candidate-refuses (on completed returns: 9 candidate-refuses, 155 candidate-unknown). The reply drops the s1.has_uc guard, so it needs s1.uc_unsupported and s1.uc_repaid (or refuses on the screen) on returns without unemployment compensation, project $0.00 in every witness. Same reply and project as the bklg ruling, which stands. Project stands.",
-   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf"
+   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf",
+   "subject_key": "6067d3558724269babcd67d0ad4ed154bfc2eeac9d37232a01de979c8a4b38af",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@s1",
+     "fixture:classm.f2441.2.deepseek@s1",
+     "fixture:classm.f2441.3.deepseek@s1",
+     "fixture:classm.f2441.4.deepseek@s1",
+     "fixture:classm.f2441.5.deepseek@s1",
+     "fixture:classm.f2441.6.deepseek@s1",
+     "fixture:classm.dependent.3.deepseek@s1",
+     "fixture:classm.f1040.6.deepseek@s1",
+     "fixture:classm.otjob.3@s1",
+     "fixture:classm.s1.3@s1",
+     "fixture:classm.s1a.1@s1",
+     "fixture:classm.f1040.6@s1"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "7 (amount repaid)",
-   "project": "{\"shown_when\": null, \"value\": {\"input\": \"s1.uc_repaid\"}}",
-   "second": "{\"shown_when\": {\"line\": \"7 (box)\"}, \"value\": {\"input\": \"s1.uc_repaid\"}}",
+   "project_expr_sha256": "bdf17235cd12ddb660a3fb20dfa11271632c789887db9e2fbad697eb21d50ba0",
+   "second_expr_sha256": "63c5a2fa0c0265906e0853b982b9dee953cb052020b7ca5c80769a136ab50126",
    "ruling": "Ruling: representation; f1040s1 line 7, the repaid amount entry; i1040gi p. 89, Line 7. executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 2,675 agree. Both copy s1.uc_repaid; the reply shows it only when the line 7 box is checked, the project always (with $0 when nothing was repaid), so no shown amount differs. Project stands.",
-   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf"
+   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf",
+   "subject_key": "411c2bd22209cf1bf559b759ca97dfe84f30c49fbb0cc63133b15cffa5475119",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "8c",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.cod_any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.cod_any\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.cod_amount\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.cod_amount\"}], \"test\": \"lt\"}, \"then\": {\"input\": \"s1.cod_amount\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.cod_any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.cod_any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s1.cod_amount\"}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "62c7ec1a6b5ae1073e682c10e74e33263a1d247218db03240673ad0d0c4490b9",
+   "second_expr_sha256": "de81a41ab483dfcaf1f9ecf456af13fd54c4debf2bd9c0727191fcdf871d4652",
+   "ruling": "Ruling: equivalent; project retained. With no canceled debt both give zero; with some, both give the amount (i1040gi p. 91, Line 8c; p525 p. 20, Canceled Debts, \"If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c\"). The project's guard places the exceptions-and-exclusions refusal (s1.cod_unsupported, on s1.cod_refused) only on a return that has canceled debt.",
+   "subject_key": "cf6393d997f3ba0c5339de5b38ef93f533799cab087953fdec68da2a293a7673"
+  },
+  {
+   "printed": "8c",
+   "project_expr_sha256": "9bd13b80e005cfb36f3673e9c79b51a86a367bfce0b72e48e64b32ac4db5bec5",
+   "second_expr_sha256": "de81a41ab483dfcaf1f9ecf456af13fd54c4debf2bd9c0727191fcdf871d4652",
+   "ruling": "Ruling: equivalent; project retained. The project asks first whether any debt was canceled (s1.cod_any, the owner's answer to Stage 16 question 13) and asks the amount only on a Yes; with no canceled debt both give zero, and with some both give the amount (i1040gi p. 91, Line 8c; p525 p. 20, Canceled Debts, \"If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c\"). A Yes with a zero amount gives zero in both. The project's guards place the exceptions-and-exclusions refusal (s1.cod_unsupported, on s1.cod_refused) only on a return that has canceled debt.",
+   "subject_key": "cf6393d997f3ba0c5339de5b38ef93f533799cab087953fdec68da2a293a7673"
+  },
+  {
+   "printed": "8c",
+   "project_expr_sha256": "9bd13b80e005cfb36f3673e9c79b51a86a367bfce0b72e48e64b32ac4db5bec5",
+   "second_expr_sha256": "fd2f662203a49c204a20e37a5fe71913684763a1f392034ad461091d64a3e5cc",
    "ruling": "Ruling: model error; i1040gi p. 91, Line 8c: \"Enter any canceled debt. Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable. See Pub. 4681\". R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). The reply's expression is identical to the one ruled before: it reads the s1.cod_unsupported refusal whenever canceled debt is answered yes, where the project asks the screen only with an amount above zero (s1.cod_refused; amb.2025.cod_fully_taxable); the two differences are incomplete fixtures with canceled debt answered yes and zero (stage16.regress.s1.cod_yes_zero, mutation.t2.s1.cod_none_with_alimony). executable-triage-v2 on this pass's reply (`.transcription/s1.lines-53848595d961.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 586 partial records; 2,724 comparisons): 2,722 of 2,724 agree; differences on returns the full interview completes: none; no completed-return value difference. Project stands.",
    "context": "f97e19d520bd32aad58f507b96a5dca647023589770079d609656d6d582cfd8d",
    "date": "2026-11-07",
-   "run": "88d1d447faf6596c37092e2bdd45a34712d71b3508fd4920e7ba8d122713df71"
-  },
-  {
-   "printed": "8c",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.cod_any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.cod_any\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.cod_amount\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.cod_amount\"}], \"test\": \"lt\"}, \"then\": {\"input\": \"s1.cod_amount\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"input\": \"s1.cod_amount\"}",
-   "ruling": "Ruling: equivalent; project retained. The project asks first whether any debt was canceled (s1.cod_any, the owner's answer to Stage 16 question 13) and asks the amount only on a Yes; with no canceled debt both give zero, and with some both give the amount (i1040gi p. 91, Line 8c; p525 p. 20, Canceled Debts, \"If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c\"). A Yes with a zero amount gives zero in both. The project's guards place the exceptions-and-exclusions refusal (s1.cod_unsupported, on s1.cod_refused) only on a return that has canceled debt."
-  },
-  {
-   "printed": "8c",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"input\": \"s1.cod_amount\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"input\": \"s1.cod_amount\"}], \"test\": \"lt\"}, \"then\": {\"input\": \"s1.cod_amount\"}}], \"op\": \"choose\"}",
-   "second": "{\"input\": \"s1.cod_amount\"}",
-   "ruling": "Ruling: equivalent; project retained. With no canceled debt both give zero; with some, both give the amount (i1040gi p. 91, Line 8c; p525 p. 20, Canceled Debts, \"If the debt is a nonbusiness debt, report the canceled amount on Schedule 1 (Form 1040), line 8c\"). The project's guard places the exceptions-and-exclusions refusal (s1.cod_unsupported, on s1.cod_refused) only on a return that has canceled debt."
+   "run": "88d1d447faf6596c37092e2bdd45a34712d71b3508fd4920e7ba8d122713df71",
+   "subject_key": "cf6393d997f3ba0c5339de5b38ef93f533799cab087953fdec68da2a293a7673"
   },
   {
    "printed": "8z",
-   "project": "{\"collection\": \"oi8z\", \"field\": \"oi8z.taxable\", \"op\": \"sum_over\", \"where\": null}",
-   "second": "{\"collection\": \"oi8z\", \"field\": \"oi8z.amount\", \"op\": \"sum_over\", \"where\": null}",
+   "project_expr_sha256": "d13edd20cd5d6ec1f31d9cb47a67cfbc32c3e7f97a793bff43ab725ff54961e1",
+   "second_expr_sha256": "8673ae75db0eaaa80dbc943c20c61bf7b1cf65535e39d18ae4efe0928e4ea69a",
    "ruling": "Ruling: ambiguity; i1040gi p. 92, Line 8z: \"Use line 8z to report any taxable income not reported elsewhere on your return ... For more details, see Miscellaneous Income in Pub. 525\". The candidate sums oi8z.amount for every kind, refusing only recoveries, a corrective-distribution loss and charitable recapture; the project sums oi8z.taxable, which also refuses kinds whose taxable part needs other rules (corrective distributions, disaster relief, insurance dividends, any other kind) through oi8z.figured, the owner's choice amb.2025.line8z_kinds (decision D4). Triage executable-triage-v1 (triage/s1.json): 2,187 of 2,210 agree; all 23 differences are project-refuses on oi8z.figured where the candidate computes the entered amount (classm.dependent.3: kind other, candidate $6,999.00; stage16.refuse.oi8z.figured: $2,300.00; generated 0, 28, 39, 50). Project stands.",
-   "context": "17198776ac9150f6fe290a710c57db027cf0426fd9142a5bda0b3e6f932f5a9a"
+   "context": "17198776ac9150f6fe290a710c57db027cf0426fd9142a5bda0b3e6f932f5a9a",
+   "subject_key": "b6595f7e92f2fc11ef5b61adf214c7e948253456e62b12f6d0f02662fcb676f4"
   },
   {
    "printed": "s1.has_gambling",
-   "project": "{\"args\": [{\"const\": 0}, {\"input\": \"s1.gambling_winnings\"}], \"test\": \"lt\"}",
-   "second": "{\"args\": [{\"const\": 0}, {\"line\": \"8b\"}], \"test\": \"lt\"}",
+   "project_expr_sha256": "9a6e1a079d3b026e27f86a34d532459f5d2448455e748ae3caac9dfa5116e7e8",
+   "second_expr_sha256": "9f69267fc224c9a57ad5108cc0d94bd205b5390b3665bcef162c404dbdb334b2",
    "ruling": "Ruling: model error; i1040gi p. 91, Line 8b: \"Enter gambling winnings not attributable to a trade or business\"; p525 p. 33, Gambling winnings: \"If you're in the trade or business of gambling, use Schedule C (Form 1040)\". The test itself is the project's (line 8b is a copy of s1.gambling_winnings, so line 8b above zero and winnings above zero are the same test), but the reply's line 8b declares `refuses: [s1.gambling_pro]` with no guard, so its test needs the professional-gambler answer on every return; the source and the project need it only when there are winnings (gate s1.gambling_business = has_gambling and gambling_pro). A candidate that needs an answer the source does not need is a model error (README). executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 610 partial records from 40 bases; 2,675 comparisons): 1,125 agree; 1,549 candidate-unknown, 1 candidate-refuses (on completed returns: 154 candidate-unknown). The test is the project's (line 8b copies s1.gambling_winnings), but the reply's line 8b declares the s1.gambling_pro refusal with no guard, so it needs the professional-gambler answer on every return; every difference is candidate-unknown or candidate-refuses on s1.gambling_pro with the project false (classm.f4952.1.deepseek, classm.s3.1.deepseek and others). Same reply and project as the bklg ruling, which stands. Project stands.",
-   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf"
+   "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf",
+   "subject_key": "82de8e10933d04fc4f72145bdff999dd97b5dcb90b93a6f6585529683462f3b7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@s1",
+     "fixture:classm.f2441.2.deepseek@s1",
+     "fixture:classm.f2441.3.deepseek@s1",
+     "fixture:classm.f2441.4.deepseek@s1",
+     "fixture:classm.f2441.5.deepseek@s1",
+     "fixture:classm.f2441.6.deepseek@s1",
+     "fixture:stage16.refuse.s1.gambling_business@s1"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

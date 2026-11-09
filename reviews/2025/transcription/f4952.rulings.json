@@ -4,206 +4,264 @@
  "rulings": [
   {
    "printed": "2",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover\"}}], \"op\": \"choose\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover\"}}], \"op\": \"choose\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.prior_7\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.prior_7\"}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: representation; f4952 p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\". The candidate takes f4952.prior_7 when f4952.carryover is true and zero when false; the project reads the gate line f4952.carryover_if_interest, which is f4952.carryover when f4952.has_interest is yes and false otherwise (f4952 p. 3, Who Must File). They differ only on records with the gate no and the carryover answered, which the interview cannot produce, since the gated input is then unreachable. The project's refusals on f4952.unsupported and f4952.alternative_allocation are cited scope screens. Project stands.",
-   "context": "581d4a9f0e79541890b3fab86b275295aef261fddf1c9b227b5108111760488f",
-   "date": "2026-11-07",
-   "run": "559ca688d1c72b6b8b899bc357d35ac74928bc398e549cfdbb17318e910fc1f0"
-  },
-  {
-   "printed": "2",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover_answer\"}}], \"op\": \"choose\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover_answer\"}}], \"op\": \"choose\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.prior_7\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover_answer\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover_answer\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.prior_7\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "c0811a4fea93c1fcd72be9a7e1279d36864aaa6596b86513a13566f142fa6b9e",
+   "second_expr_sha256": "dc59fd2e34e40db92c5c67b7fe22ec8a5fb94355765f3881d3ca14f74a3bfdf7",
    "ruling": "Ruling: model error; the reply's declaration fails validation (triage executable-triage-v2, `reviews/2025/transcription/triage/f4952.json`: \"f4952.f4952.line2: reference 'f4952.carryover' does not resolve\" and \"comparison operands have incompatible types\"; candidate-invalid on all 2,364 records), so this adjudicates the declaration. On its merits the restated expression is the project's: zero when f4952.has_interest is false (the project's f4952.carryover gate line is then false, f4952 p. 3, Who Must File), otherwise f4952.prior_7 when f4952.carryover_answer is true and zero when it is false (f4952 p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"); it leaves out the project's refusal screens f4952.unsupported and f4952.alternative_allocation, cited scope screens. Project stands.",
    "context": "d9bdec31d7c75eae8b54628336101046d32556376bee1dda2ee56108578ee29b",
    "date": "2026-11-07",
-   "run": "79e2db3d15a3f3892ceef6bfa6843764d3000cf8557676b45fd1aba2694cefe1"
+   "run": "79e2db3d15a3f3892ceef6bfa6843764d3000cf8557676b45fd1aba2694cefe1",
+   "subject_key": "f1379f786999ab1a8af0ade193a71cab0f2dae3d4983ed090bae17389906e906"
+  },
+  {
+   "printed": "2",
+   "project_expr_sha256": "ec08a1b7c448d7b2c8c38e3ea6bd27453f2dc22fc5904bceb7f7bf72532c1aa2",
+   "second_expr_sha256": "ffba9eabe72c8109b40a9585eacea0bb634fe516f6d69c46564e512e9d61bb77",
+   "ruling": "Ruling: representation; f4952 p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\". The candidate takes f4952.prior_7 when f4952.carryover is true and zero when false; the project reads the gate line f4952.carryover_if_interest, which is f4952.carryover when f4952.has_interest is yes and false otherwise (f4952 p. 3, Who Must File). They differ only on records with the gate no and the carryover answered, which the interview cannot produce, since the gated input is then unreachable. The project's refusals on f4952.unsupported and f4952.alternative_allocation are cited scope screens. Project stands.",
+   "context": "581d4a9f0e79541890b3fab86b275295aef261fddf1c9b227b5108111760488f",
+   "date": "2026-11-07",
+   "run": "559ca688d1c72b6b8b899bc357d35ac74928bc398e549cfdbb17318e910fc1f0",
+   "subject_key": "f1379f786999ab1a8af0ade193a71cab0f2dae3d4983ed090bae17389906e906"
   },
   {
    "printed": "4a",
-   "project": "{\"of\": [{\"ref\": \"sb.line2\"}, {\"ref\": \"sb.line6\"}], \"op\": \"sum\"}",
-   "second": "{\"of\": [{\"collection\": \"interest\", \"field\": \"interest.amount\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"f1040.line3b\"}], \"op\": \"sum\"}",
-   "ruling": "Ruling: representation; f4952 p.3 Line4a includes taxable interest and ordinary dividends in this screened slice. ScheduleB line2 is the sum of interest.amount entries; Form1040 line2b copies that subtotal. ScheduleB line6 supplies the same ordinary-dividend total carried to Form1040 line3b. The alternative references identify the same prepared-return amounts; this does not assert equivalence for independently inconsistent boundary overrides or every unknown/refusal ordering.",
-   "context": "b1a6f3f01276270e9e90818a898a05b08219673e7ade16f2c26a0878d7467f6c"
+   "project_expr_sha256": "2bd64e9aa7b69a31e5a25b484270e8a5c91b58e73e8f1a7c604c8479b1221ce6",
+   "second_expr_sha256": "0625d889c6ce92b43f345a2ace42de3638e364f6553fde8e54214b147d405320",
+   "ruling": "Ruling: equivalent within scope; project retained. The project sums Schedule B line 2 (total interest before the excludable savings-bond interest on line 3, which is refused and zero) and Schedule B line 6 (ordinary dividends); the second sums Form 1040 lines 2b and 3b, which are those Schedule B totals carried to Form 1040. Same values within scope (Form 4952 instructions pp. 3–4, line 4a).",
+   "subject_key": "bb16a63e967943d32f4219f90f2ed6ebc1f26b54b26c4b47a0154fd9fc7a6fb6"
   },
   {
    "printed": "4a",
-   "project": "{\"of\": [{\"ref\": \"sb.line2\"}, {\"ref\": \"sb.line6\"}], \"op\": \"sum\"}",
-   "second": "{\"of\": [{\"ref\": \"f1040.line2b\"}, {\"ref\": \"f1040.line3b\"}], \"op\": \"sum\"}",
-   "ruling": "Ruling: equivalent within scope; project retained. The project sums Schedule B line 2 (total interest before the excludable savings-bond interest on line 3, which is refused and zero) and Schedule B line 6 (ordinary dividends); the second sums Form 1040 lines 2b and 3b, which are those Schedule B totals carried to Form 1040. Same values within scope (Form 4952 instructions pp. 3–4, line 4a)."
-  },
-  {
-   "printed": "4a",
-   "project": "{\"of\": [{\"ref\": \"sb.line2\"}, {\"ref\": \"sb.line6\"}], \"op\": \"sum\"}",
-   "second": "{\"of\": [{\"ref\": \"f1040.line3b\"}, {\"ref\": \"sb.line2\"}], \"op\": \"sum\"}",
+   "project_expr_sha256": "2bd64e9aa7b69a31e5a25b484270e8a5c91b58e73e8f1a7c604c8479b1221ce6",
+   "second_expr_sha256": "1703cc910aec3b64d8b4c56d5d945fb08b42d876096cb2e5d1984e936eecd852",
    "ruling": "Ruling: model error; f4952 p. 3, Line 4a: \"Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties.\" The amounts are the project's: Form 1040 line 3b copies Schedule B line 6 (Form 1099-DIV box 1a), and Alaska Permanent Fund dividends are on Schedule 1 line 8g, not Schedule B. No value difference. The candidate attaches f4952.unsupported to line 4a, a screen the project reads only when the form is used. Every completed-return difference is on a return that does not use Form 4952: line 1 $0, no 2024 carryforward and no line 4g election (checked on the recorded completed witnesses with --explain). It follows structurally: when the form is used, the project's line 8 reads line 5 and line 2, which refuse on f4952.unsupported and f4952.alternative_allocation, so a completed project return with that screen unanswered or answered Yes has no investment interest, carryforward or election. On such a return every amount is zero whatever the screens say, and the candidate still asks or refuses on them, an answer the source does not need (the over-refusal PENDING-6 of the credits-misc package removed from the project). Triage executable-triage-v2 (`../triage/f4952.json`; 1,495 fixtures, 500 generated returns seed 20261026, 210 partial records; 2,205 comparisons): 2,068 agree; 103 candidate-unknown, 34 candidate-refuses; on completed returns 20 candidate-unknown, 9 candidate-refuses. Completed witness 2 (classm.f8962.1.deepseek): project $0.00, candidate refuses.",
-   "context": "b51117a0bdbd04a4862c1b25b4fee60f15ab48d4ee4f7fb3986ada1d3c697056"
+   "context": "b51117a0bdbd04a4862c1b25b4fee60f15ab48d4ee4f7fb3986ada1d3c697056",
+   "subject_key": "bb16a63e967943d32f4219f90f2ed6ebc1f26b54b26c4b47a0154fd9fc7a6fb6"
+  },
+  {
+   "printed": "4a",
+   "project_expr_sha256": "2bd64e9aa7b69a31e5a25b484270e8a5c91b58e73e8f1a7c604c8479b1221ce6",
+   "second_expr_sha256": "6f8d89676f40b59ed0c98e66f9c935ff8a71d01da29a152fe3d3dcdbff67428a",
+   "ruling": "Ruling: representation; f4952 p.3 Line4a includes taxable interest and ordinary dividends in this screened slice. ScheduleB line2 is the sum of interest.amount entries; Form1040 line2b copies that subtotal. ScheduleB line6 supplies the same ordinary-dividend total carried to Form1040 line3b. The alternative references identify the same prepared-return amounts; this does not assert equivalence for independently inconsistent boundary overrides or every unknown/refusal ordering.",
+   "context": "b1a6f3f01276270e9e90818a898a05b08219673e7ade16f2c26a0878d7467f6c",
+   "subject_key": "bb16a63e967943d32f4219f90f2ed6ebc1f26b54b26c4b47a0154fd9fc7a6fb6"
   },
   {
    "printed": "4b",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}, \"then\": {\"ref\": \"f1040.line3a\"}}], \"op\": \"choose\"}",
-   "second": "{\"ref\": \"f1040.line3a\"}",
+   "project_expr_sha256": "d261fa00efafc9e06bebf29bfd58ccfc42eea136c924ce241692d993c0efd2f8",
+   "second_expr_sha256": "6f8be0192dc63390089e4536556da7c1c35faaba2bc3f044ba84ab37b1cdc631",
    "ruling": "Ruling: model error; the candidate reads f1040.line3a whatever box 1a is above zero, so it needs that answer where the source does not: i1040gi p. 25, Line 3a, \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b\": with box 1a (line 3b) zero, line 3a is zero. The project reads the gate line f1040.line3a_if_ordinary, which takes f1040.line3a when box 1a is above zero holds and zero otherwise; the interview asks f1040.line3a only then (gated_by f1040.line3a_if_ordinary), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
    "context": "9006aad319d5ae4282d88df5b79788eab087ef30274cc52618fbe72d8d3b8c53",
    "date": "2026-11-07",
-   "run": "329935f47b3f57353fb5623b11f2c4dea24e11b1c1722c68e8df2364a7894b5e"
+   "run": "329935f47b3f57353fb5623b11f2c4dea24e11b1c1722c68e8df2364a7894b5e",
+   "subject_key": "670a70265beab5764fdca658fb367ecd8b30be98fbb1ad5a244650393fc9b2fb"
   },
   {
    "printed": "4d",
-   "project": "{\"from\": {\"ref\": \"sd.line16\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
-   "second": "{\"from\": {\"ref\": \"f1040.line7a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "project_expr_sha256": "36a1557c071cd74178b99c94bdd20e778a1ab3692bfae7546622b1006cde3ee1",
+   "second_expr_sha256": "3472bf7f3a8c931e1a36e89f408789020b29b1b97a2256058d0dce367759ff6d",
    "ruling": "Ruling: representation; same as the backlog-round ruling (line, candidate and evidence unchanged). f4952 p. 3, Line 4d: \"Net gain from the disposition of property held for investment is the excess, if any, of your total gains over your total losses\". Form 1040 line 7a floored at zero is Schedule D line 16 floored at zero on every return the project computes. Triage executable-triage-v2 (`../triage/f4952.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 194 partial records): 2,259 of 2,259 agree.",
-   "context": "1552a87ed41e6d2b27c736c5298317ee8789e608f23bbf81080d136e94031dca"
+   "context": "1552a87ed41e6d2b27c736c5298317ee8789e608f23bbf81080d136e94031dca",
+   "subject_key": "0836816c8f6838591ed3b6482b2d5e34ac2ed2cf164b8cd1f3f258077c06811c",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "4d",
-   "project": "{\"from\": {\"ref\": \"sd.line16\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
-   "second": "{\"of\": [{\"const\": 0}, {\"ref\": \"sd.line16\"}], \"op\": \"larger_of\"}",
-   "ruling": "Ruling: equivalent representation; project retained. Line 16 floored at zero equals the larger of zero and line 16."
+   "project_expr_sha256": "36a1557c071cd74178b99c94bdd20e778a1ab3692bfae7546622b1006cde3ee1",
+   "second_expr_sha256": "c6e8336a1c89ac95e4c00a570c390086ecd0f046b1f3124597f3f9ac4ee2332e",
+   "ruling": "Ruling: equivalent representation; project retained. Line 16 floored at zero equals the larger of zero and line 16.",
+   "subject_key": "0836816c8f6838591ed3b6482b2d5e34ac2ed2cf164b8cd1f3f258077c06811c"
   },
   {
    "printed": "4e",
-   "project": "{\"of\": [{\"line\": \"4d\"}, {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"smaller_of\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"sd.line14\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"sd.line6\"}], \"test\": \"le\"}, {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"g28.line7\"}}], \"op\": \"choose\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"u1250.line18\"}}], \"op\": \"choose\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"collection\": \"sales\", \"field\": \"sales.one\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}], \"test\": \"all\"}, \"then\": {\"line\": \"4d\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"sales\", \"field\": \"sales.one\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"g28.line7\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"u1250.line18\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}, {\"args\": [{\"ref\": \"sd.line14\"}, {\"const\": 0}], \"test\": \"lt\"}, {\"args\": [{\"ref\": \"sd.line6\"}, {\"const\": 0}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"4d\"}, {\"from\": {\"ref\": \"sd.line15\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: model error; f4952 p. 3, Line 4e: \"Net capital gain from the disposition of property held for investment is the excess, if any, of your net long-term capital gain over your net short-term capital loss from the disposition of property held for investment. Capital gain distributions from mutual funds are treated as long-term capital gains.\" Both branches of the candidate give the project's amount: with no sales, carryovers or 28%/section 1250 amounts line 4d is the long-term distributions; otherwise the smaller of line 4d and floored line 15 is the smaller of line 4d and the floored smaller of lines 15 and 16, because line 4d is floored line 16. No value difference. The candidate refuses at line 4e on f4952.alternative_allocation, which the project reads only when the form is used. Every completed-return difference is on a return that does not use Form 4952: line 1 $0, no 2024 carryforward and no line 4g election (checked on the recorded completed witnesses with --explain). It follows structurally: when the form is used, the project's line 8 reads line 5 and line 2, which refuse on f4952.unsupported and f4952.alternative_allocation, so a completed project return with that screen unanswered or answered Yes has no investment interest, carryforward or election. On such a return every amount is zero whatever the screens say, and the candidate still asks or refuses on them, an answer the source does not need (the over-refusal PENDING-6 of the credits-misc package removed from the project). Triage executable-triage-v2 (`../triage/f4952.json`; 1,495 fixtures, 500 generated returns seed 20261026, 210 partial records; 2,205 comparisons): 2,061 agree; 101 candidate-unknown, 40 candidate-refuses, 3 project-refuses; on completed returns 20 candidate-unknown, 6 candidate-refuses. Completed witness 0 (classm.clcw.2.deepseek): alternative allocation Yes with no line 4g election, project $0.00, candidate refuses.",
-   "context": "b51117a0bdbd04a4862c1b25b4fee60f15ab48d4ee4f7fb3986ada1d3c697056"
-  },
-  {
-   "printed": "4e",
-   "project": "{\"of\": [{\"line\": \"4d\"}, {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"smaller_of\"}",
-   "second": "{\"of\": [{\"line\": \"4d\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"sd.line14\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"sd.line6\"}], \"test\": \"le\"}, {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"g28.line7\"}}], \"op\": \"choose\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"u1250.line18\"}}], \"op\": \"choose\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"collection\": \"sales\", \"field\": \"sales.one\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}], \"test\": \"all\"}, \"then\": {\"line\": \"4d\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"sales\", \"field\": \"sales.one\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"g28.line7\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"sd.line17\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"u1250.line18\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}, {\"args\": [{\"ref\": \"sd.line14\"}, {\"const\": 0}], \"test\": \"lt\"}, {\"args\": [{\"ref\": \"sd.line6\"}, {\"const\": 0}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"4d\"}, {\"from\": {\"ref\": \"sd.line15\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}], \"op\": \"smaller_of\"}",
+   "project_expr_sha256": "b7c560bbed6332c51cf442a040336d8fb925f3c1cd134ccb3ef67a3e76fbe3e2",
+   "second_expr_sha256": "75bd18b2c71d5c12665d7addc800ff898eae0f0e4ba384dd0ac521a202756c39",
    "ruling": "Ruling: model error; same as the backlog-round ruling. f4952 p. 3, Line 4e: \"the excess, if any, of your net long-term capital gain over your net short-term capital loss\". Both branches of the candidate give the project's amount (no value difference); its refusal at line 4e on f4952.alternative_allocation reaches returns that do not use the form. Triage executable-triage-v2 (`../triage/f4952.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 194 partial records): 2,074 of 2,259 agree; on completed returns 20 candidate-unknown, 4 candidate-refuses, no value. The screen pattern of the earlier rounds holds: every completed-return refusal or unknown is on a return that does not use Form 4952 (line 1 $0, no 2024 carryforward, no line 4g election), where the candidate still asks or refuses on f4952.unsupported or f4952.alternative_allocation, answers the source does not need (prior ruling, backlog round, checked on the recorded witnesses: e.g. classm.clcw.2.deepseek refused on f4952.alternative_allocation, classm.s3.2.deepseek unknown).",
-   "context": "1552a87ed41e6d2b27c736c5298317ee8789e608f23bbf81080d136e94031dca"
+   "context": "1552a87ed41e6d2b27c736c5298317ee8789e608f23bbf81080d136e94031dca",
+   "subject_key": "04c665fae665d9d17055710b243915c072daf64c0f7bc951a122e47d99f842d2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f4952",
+     "fixture:classm.f2441.2.deepseek@f4952",
+     "fixture:classm.f2441.3.deepseek@f4952",
+     "fixture:classm.f2441.4.deepseek@f4952",
+     "fixture:classm.f2441.5.deepseek@f4952",
+     "fixture:classm.f2441.6.deepseek@f4952",
+     "fixture:classm.clcw.2.deepseek@f4952",
+     "fixture:classm.clcw.4.deepseek@f4952",
+     "fixture:classm.dependent.3.deepseek@f4952",
+     "fixture:classm.eic.6.deepseek@f4952",
+     "fixture:classm.eic.7.deepseek@f4952",
+     "fixture:classm.f5329.3.deepseek@f4952",
+     "fixture:classm.scveh.2@f4952",
+     "fixture:classm.scveh.4@f4952",
+     "fixture:stage16.f4952.required_unanswered_bad_dividends@f4952"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "4e",
-   "project": "{\"of\": [{\"line\": \"4d\"}, {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"smaller_of\"}",
-   "second": "{\"of\": [{\"line\": \"4d\"}, {\"from\": {\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"collection\": \"sales\", \"field\": \"sales.one\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0, \"type\": \"Count\"}], \"test\": \"le\"}, {\"args\": [{\"ref\": \"g28.line7\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"ref\": \"u1250.line18\"}, {\"const\": 0}], \"test\": \"le\"}], \"test\": \"all\"}, \"then\": {\"ref\": \"f1040.line7a\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"sales\", \"field\": \"sales.one\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"g28.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"u1250.line18\"}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"smaller_of\"}",
+   "project_expr_sha256": "b7c560bbed6332c51cf442a040336d8fb925f3c1cd134ccb3ef67a3e76fbe3e2",
+   "second_expr_sha256": "ad578c8957ec4977aec61cb7a401eb7373fb244acd2fe322e14554b7c99ec4cd",
    "ruling": "Ruling: representation; f4952 p.3 line4e defines positive net long-term gain less net short-term loss, with distributions treated as long-term. On the supported completed ScheduleD path this is the positive smaller of lines15/16. The reply separately selects Form1040 line7a when ScheduleD is not required, where supported gains are distributions only. This is a bounded source/representation ruling, not a partial-input proof.",
-   "context": "41731cf1c012733ac014f69b0e1db12115dd06c2f7ca96c5b412642113ea1bab"
+   "context": "41731cf1c012733ac014f69b0e1db12115dd06c2f7ca96c5b412642113ea1bab",
+   "subject_key": "04c665fae665d9d17055710b243915c072daf64c0f7bc951a122e47d99f842d2"
+  },
+  {
+   "printed": "4e",
+   "project_expr_sha256": "b7c560bbed6332c51cf442a040336d8fb925f3c1cd134ccb3ef67a3e76fbe3e2",
+   "second_expr_sha256": "ba95b7fa5a3803b7aaf82ef9cae6c2be3353741f818dfe421c1ac72080a540ab",
+   "ruling": "Ruling: model error; f4952 p. 3, Line 4e: \"Net capital gain from the disposition of property held for investment is the excess, if any, of your net long-term capital gain over your net short-term capital loss from the disposition of property held for investment. Capital gain distributions from mutual funds are treated as long-term capital gains.\" Both branches of the candidate give the project's amount: with no sales, carryovers or 28%/section 1250 amounts line 4d is the long-term distributions; otherwise the smaller of line 4d and floored line 15 is the smaller of line 4d and the floored smaller of lines 15 and 16, because line 4d is floored line 16. No value difference. The candidate refuses at line 4e on f4952.alternative_allocation, which the project reads only when the form is used. Every completed-return difference is on a return that does not use Form 4952: line 1 $0, no 2024 carryforward and no line 4g election (checked on the recorded completed witnesses with --explain). It follows structurally: when the form is used, the project's line 8 reads line 5 and line 2, which refuse on f4952.unsupported and f4952.alternative_allocation, so a completed project return with that screen unanswered or answered Yes has no investment interest, carryforward or election. On such a return every amount is zero whatever the screens say, and the candidate still asks or refuses on them, an answer the source does not need (the over-refusal PENDING-6 of the credits-misc package removed from the project). Triage executable-triage-v2 (`../triage/f4952.json`; 1,495 fixtures, 500 generated returns seed 20261026, 210 partial records; 2,205 comparisons): 2,061 agree; 101 candidate-unknown, 40 candidate-refuses, 3 project-refuses; on completed returns 20 candidate-unknown, 6 candidate-refuses. Completed witness 0 (classm.clcw.2.deepseek): alternative allocation Yes with no line 4g election, project $0.00, candidate refuses.",
+   "context": "b51117a0bdbd04a4862c1b25b4fee60f15ab48d4ee4f7fb3986ada1d3c697056",
+   "subject_key": "04c665fae665d9d17055710b243915c072daf64c0f7bc951a122e47d99f842d2"
   },
   {
    "printed": "4h",
-   "project": "{\"of\": [{\"line\": \"4c\"}, {\"line\": \"4f\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}], \"op\": \"sum\"}",
-   "second": "{\"of\": [{\"line\": \"4c\"}, {\"line\": \"4f\"}, {\"line\": \"4g\"}], \"op\": \"sum\"}",
+   "project_expr_sha256": "ebf5c56461f2c87608b5deff3ca8e1b714f04172192617e579d615575874688e",
+   "second_expr_sha256": "7d977f9b30a766d52ace9bc8ad72e931d853137bb615e945215e528a83f27c65",
    "ruling": "Ruling: model error; same reply and project as the earlier ruling. f4952 p. 1, line 4h, \"Add lines 4c, 4f, and 4g\". Scratch run of triage.mjs on the round-3 reply (.transcription/f4952.lines-a00ac5b69f6a) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 186 partial records; 2,264 comparisons per line): 2,212 agree; no completed-return difference; the rest are the project's cited refusals and unknowns on refused or incomplete returns, where the reply reads its screens on returns that do not use Form 4952. Project stands.",
    "context": "1790fdecaec3a931b2aa4fc20deb397a92bf8bf72d288ce61ed850bcbca747e5",
    "date": "2026-11-04",
-   "run": "afecabe56f9df6743352654bbafea8754171d91b0909bc1a47f28e213da94ce1"
+   "run": "afecabe56f9df6743352654bbafea8754171d91b0909bc1a47f28e213da94ce1",
+   "subject_key": "8f09cc10e084cc239bdadf70949b351fb88e3071faf47be84fbec30e54e565e1"
   },
   {
    "printed": "8",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"line\": \"1\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover\"}}], \"op\": \"choose\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover\"}}], \"op\": \"choose\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}",
-   "ruling": "Ruling: model error; the same reply and reading as the earlier rulings: f4952 p. 1, line 8, \"Enter the smaller of line 3 or line 6\"; the amounts agree where both compute, but the reply figures lines 3 and 6 on every return and reaches the f4952.unsupported and f4952.alternative_allocation screens on returns that do not use Form 4952 (f4952.used false, line 8 $0). Project stands.",
-   "context": "581d4a9f0e79541890b3fab86b275295aef261fddf1c9b227b5108111760488f",
-   "date": "2026-11-07",
-   "run": "559ca688d1c72b6b8b899bc357d35ac74928bc398e549cfdbb17318e910fc1f0"
-  },
-  {
-   "printed": "8",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"line\": \"1\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover_answer\"}}], \"op\": \"choose\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover_answer\"}}], \"op\": \"choose\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}",
-   "ruling": "Ruling: model error; the reply's declaration fails validation (triage executable-triage-v2, `reviews/2025/transcription/triage/f4952.json`: invalid candidate declaration, through lines 3 and 2, on all 2,364 records). On its merits the same reply and reading as the earlier ruling: f4952 p. 1, line 8, \"Enter the smaller of line 3 or line 6\"; the amounts agree where both compute, but the reply figures lines 3 and 6 on every return and reaches the f4952.unsupported and f4952.alternative_allocation screens on returns that do not use Form 4952 (f4952.used false, line 8 $0). Project stands.",
-   "context": "d9bdec31d7c75eae8b54628336101046d32556376bee1dda2ee56108578ee29b",
-   "date": "2026-11-07",
-   "run": "79e2db3d15a3f3892ceef6bfa6843764d3000cf8557676b45fd1aba2694cefe1"
-  },
-  {
-   "printed": "8",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"line\": \"1\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}",
+   "project_expr_sha256": "7a24a37754effd9d7a2b34a6ce9d88371eed0e3e5a2cc80abe6682e7cccf25cc",
+   "second_expr_sha256": "8b86671eccf262c2a4b3b216401c7c484f39d463d7d77778ad969fb1760f0bda",
    "ruling": "Ruling: model error; same reply and project as the round-2 ruling. f4952 p. 1, line 8, \"Enter the smaller of line 3 or line 6\": the amounts agree where both compute, but the reply figures lines 3 and 6 on every return and reaches the f4952.unsupported and f4952.alternative_allocation screens on returns that do not use Form 4952. Scratch run of triage.mjs on the round-3 reply (.transcription/f4952.lines-a00ac5b69f6a) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 186 partial records; 2,264 comparisons per line): 2,026 agree; on completed returns 13 candidate refusals (f4952.unsupported, f4952.alternative_allocation, e.g. classm.clcw.2.deepseek) and 34 candidate-unknown (e.g. classm.s3.2.deepseek), all with project line 8 $0 and f4952.used false. Project stands.",
    "context": "1790fdecaec3a931b2aa4fc20deb397a92bf8bf72d288ce61ed850bcbca747e5",
    "date": "2026-11-04",
-   "run": "afecabe56f9df6743352654bbafea8754171d91b0909bc1a47f28e213da94ce1"
+   "run": "afecabe56f9df6743352654bbafea8754171d91b0909bc1a47f28e213da94ce1",
+   "subject_key": "9c78988a04a91bcdc14e5e4541ea4f77f74ea3c8a31c754214eed92318362cbf"
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "dfb595e8717fd2a31262603635e5951203ae7fbba8fabf3073a77f2fa02c0d21",
+   "second_expr_sha256": "8b86671eccf262c2a4b3b216401c7c484f39d463d7d77778ad969fb1760f0bda",
+   "ruling": "Ruling: model error; the reply's declaration fails validation (triage executable-triage-v2, `reviews/2025/transcription/triage/f4952.json`: invalid candidate declaration, through lines 3 and 2, on all 2,364 records). On its merits the same reply and reading as the earlier ruling: f4952 p. 1, line 8, \"Enter the smaller of line 3 or line 6\"; the amounts agree where both compute, but the reply figures lines 3 and 6 on every return and reaches the f4952.unsupported and f4952.alternative_allocation screens on returns that do not use Form 4952 (f4952.used false, line 8 $0). Project stands.",
+   "context": "d9bdec31d7c75eae8b54628336101046d32556376bee1dda2ee56108578ee29b",
+   "date": "2026-11-07",
+   "run": "79e2db3d15a3f3892ceef6bfa6843764d3000cf8557676b45fd1aba2694cefe1",
+   "subject_key": "9c78988a04a91bcdc14e5e4541ea4f77f74ea3c8a31c754214eed92318362cbf"
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "e4934d1d3af6295d6e16e7f6bc52916910ecbb5eea670fcd8946e2308377a30f",
+   "second_expr_sha256": "8b86671eccf262c2a4b3b216401c7c484f39d463d7d77778ad969fb1760f0bda",
+   "ruling": "Ruling: model error; the same reply and reading as the earlier rulings: f4952 p. 1, line 8, \"Enter the smaller of line 3 or line 6\"; the amounts agree where both compute, but the reply figures lines 3 and 6 on every return and reaches the f4952.unsupported and f4952.alternative_allocation screens on returns that do not use Form 4952 (f4952.used false, line 8 $0). Project stands.",
+   "context": "581d4a9f0e79541890b3fab86b275295aef261fddf1c9b227b5108111760488f",
+   "date": "2026-11-07",
+   "run": "559ca688d1c72b6b8b899bc357d35ac74928bc398e549cfdbb17318e910fc1f0",
+   "subject_key": "9c78988a04a91bcdc14e5e4541ea4f77f74ea3c8a31c754214eed92318362cbf"
   },
   {
    "printed": "f4952.required",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover\"}}], \"op\": \"choose\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover\"}}], \"op\": \"choose\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "16d5e4a2252072780e69af439a9af85dc9738c560b39de7288453b1ca4dd4a72",
+   "second_expr_sha256": "86b12ed74a038c8bd5bb6443a8f9547da2d2d9276184a54d65bf32bb8d7a4fad",
+   "ruling": "Ruling: model error; f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income (don't enter more than the sum of lines 4b and 4e)\". The candidate keeps the Stage 20 change (it tests line 3, so a 2024 carryforward alone can require the form; f4952 p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense. Exception. You don't have to file Form 4952 if all of the following apply. ... You don't have any carryover of disallowed investment interest expense from 2024.\") but drops the project's disjunct for a positive line 4g, so a filer whose only reason to file is the election is told the form is not required. Triage executable-triage-v2 (`../triage/f4952.json`, 1,866 comparisons): 1,603 agree, 37 value (12 on completed returns), 158 project-refuses, 67 project-unknown, 1 candidate-refuses. Every recorded value witness is project true, candidate false with an election: witness 0 (classm.f8889.1.deepseek, completed) line 4g $3,846; witness 9 (classm.retirement.4, completed) line 4g $6,963. The refusals are the cited screens f4952.unsupported and f4952.alternative_allocation and upstream sd.other_forms (witnesses 1-4), the unknowns withheld screen answers (witnesses 12-15), and the candidate refusal an upstream sb.fbar_required (witness 16). Same ruling as the earlier rounds. The Stage 20 change itself agrees with p. 3: line 3 adds the line 2 carryforward, and a filer with a carryforward is outside the exception.",
+   "context": "70f5dd8205318c93f2ee6406d08bcb2dab81b330384859f5bcc744a699756632",
+   "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
+  },
+  {
+   "printed": "f4952.required",
+   "project_expr_sha256": "1e4d07cc2341f4a6625164f390fe5829e0de341eb7d4868831276384591225b1",
+   "second_expr_sha256": "8d307d8057de8df80ba182812ea7aa117481cef69789e65cb97a730af0b2c4cf",
    "ruling": "Ruling: model error; f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\". The candidate drops the project's disjunct for a positive line 4g, so a filer whose only reason to file is the election is told the form is not required: the same reading as the earlier rulings on this line. It also reads the input f4952.carryover where the project reads its gate line f4952.carryover_if_interest; the two differ only on records with f4952.has_interest false and the carryover answered, which the interview cannot produce (the gated input is unreachable when the gate is no). Project stands.",
    "context": "581d4a9f0e79541890b3fab86b275295aef261fddf1c9b227b5108111760488f",
    "date": "2026-11-07",
-   "run": "559ca688d1c72b6b8b899bc357d35ac74928bc398e549cfdbb17318e910fc1f0"
+   "run": "559ca688d1c72b6b8b899bc357d35ac74928bc398e549cfdbb17318e910fc1f0",
+   "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
   },
   {
    "printed": "f4952.required",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover_answer\"}}], \"op\": \"choose\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"f4952.no\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"f4952.carryover_answer\"}}], \"op\": \"choose\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"2\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"f4952.has_interest\"}], \"test\": \"eq\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "2044d907cd3838a54ab6e9a5e730961b0c8efbdc79422c5bdd2866c2b3b81722",
+   "second_expr_sha256": "6b42eed4a0965c9e0a0a4672960c7b7c3051f5d8f2449feb0c0d9958fc83935e",
    "ruling": "Ruling: model error; the reply's declaration fails reference validation (triage executable-triage-v2, `reviews/2025/transcription/triage/f4952.json`: \"f4952.f4952.required: reference 'f4952.line1' does not resolve\" and \"reference 'f4952.carryover' does not resolve\"; candidate-invalid on all 2,364 records), so this adjudicates the declaration and reads the expression on its merits: f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\". The candidate drops the project's disjunct for a positive line 4g, so a filer whose only reason to file is the election is told the form is not required: the same reading as the earlier rulings on this line. Its new conjunct, f4952.has_interest true, is the gate the project reads through lines 1 and 2 (f4952 p. 3, Who Must File). Project stands.",
    "context": "d9bdec31d7c75eae8b54628336101046d32556376bee1dda2ee56108578ee29b",
    "date": "2026-11-07",
-   "run": "79e2db3d15a3f3892ceef6bfa6843764d3000cf8557676b45fd1aba2694cefe1"
+   "run": "79e2db3d15a3f3892ceef6bfa6843764d3000cf8557676b45fd1aba2694cefe1",
+   "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
   },
   {
    "printed": "f4952.required",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"3\"}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "ruling": "Ruling: model error; f4952 p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense.\" f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\". The candidate's filing test (a positive line 3 outside the exception, or a positive line 4g) is the project's required_test, and the values agree on every record; it omits the project's f4952.used conjunct, so its refusal on f4952.unsupported reaches returns with no investment interest. Every completed-return difference is on a return that does not use Form 4952: line 1 $0, no 2024 carryforward and no line 4g election (checked on the recorded completed witnesses with --explain). It follows structurally: when the form is used, the project's line 8 reads line 5 and line 2, which refuse on f4952.unsupported and f4952.alternative_allocation, so a completed project return with that screen unanswered or answered Yes has no investment interest, carryforward or election. On such a return every amount is zero whatever the screens say, and the candidate still asks or refuses on them, an answer the source does not need (the over-refusal PENDING-6 of the credits-misc package removed from the project). Triage executable-triage-v2 (`../triage/f4952.json`; 1,495 fixtures, 500 generated returns seed 20261026, 210 partial records; 2,205 comparisons): 2,030 agree; 81 project-refuses, 58 candidate-unknown, 22 project-unknown, 14 candidate-refuses; on completed returns 20 candidate-unknown, 9 candidate-refuses. Completed witnesses 0 (classm.s3.2.deepseek, f4952.unsupported not supplied) and 2 (classm.f8962.1.deepseek, f4952.unsupported Yes): project false, candidate unknown or refused. The project refusals are cited screens on returns that use the form (f4952.bad_election, f4952.alternative_allocation) or upstream (sd.other_forms, div.bad_components); the project-unknowns are withheld screen answers on such returns.",
-   "context": "b51117a0bdbd04a4862c1b25b4fee60f15ab48d4ee4f7fb3986ada1d3c697056"
-  },
-  {
-   "printed": "f4952.required",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}], \"test\": \"all\"}",
-   "ruling": "Ruling: model error; same point as the refresh-round ruling (project line unchanged). f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\"; p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense. Exception. You don’t have to file Form 4952 if all of the following apply\". The reply's filing test is (carryforward, line 1 or line 4g) and (line 4c not above line 1, line 5 positive, or a carryforward); it drops the project's separate line 4g trigger, so a return whose exception holds but which elects on line 4g is false in the reply and true in the project. The election is made only on the form. Project stands.",
-   "context": "de5b1cc165e36fec3882237b34110e04ed4771a95b45a5b2300719ddc2dea779",
-   "date": "2026-11-04",
-   "run": "4f79431ffb0ef723b885e3b5ca1b9d78f6253383ddf58ca922d45117fe43bb9e"
-  },
-  {
-   "printed": "f4952.required",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "4e1bf81ed0dbc09950570bfdffeb8ccb470d8011176503e8c1d0690128d329cd",
+   "second_expr_sha256": "12682b07815e4bf5c7406dcc660021734354cfb94b9f793cf91b18a241d69553",
    "ruling": "Ruling: model error; f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\", and p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense. Exception. You don’t have to file Form 4952 if all of the following apply\". The election is made only by an entry on the form, so a return with a line 4g election files Form 4952 even when the exception otherwise holds; the candidate (its note: \"I did not encode a 4g election as a separate filing trigger\") is false there. Triage executable-triage-v2 (`../triage/f4952.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 194 partial records): 2,067 of 2,259 agree; on completed returns 16 value. All six recorded completed witnesses (classm.f1040.2 and .deepseek, classm.f5329.2 and .deepseek, classm.tcw.16: line 4c above line 1, no carryforward; classm.tcw.10: line 1 $0) are line 4g elections, project true, candidate false; structurally a project-true candidate-false difference needs the exception to hold, which leaves only the election branch. The refusals and unknowns elsewhere are the screen pattern of the earlier rounds on records the interview cannot complete. The project's line is unchanged from the backlog round.",
-   "context": "1552a87ed41e6d2b27c736c5298317ee8789e608f23bbf81080d136e94031dca"
+   "context": "1552a87ed41e6d2b27c736c5298317ee8789e608f23bbf81080d136e94031dca",
+   "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
   },
   {
    "printed": "f4952.required",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"any\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "4e1bf81ed0dbc09950570bfdffeb8ccb470d8011176503e8c1d0690128d329cd",
+   "second_expr_sha256": "8c177389d69941f0fb2e41aec1d8fa495be4eb35eb3b634e4ba34c5b12612145",
    "ruling": "Ruling: model error; same disagreement as the earlier rulings. f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\", and p. 3, Who Must File, \"Exception. You don't have to file Form 4952 if all of the following apply\". The reply again ties the filing duty to interest or a carryforward and an exception condition failing, with no line 4g election trigger (and it drops the project's line 3 above zero test, which its interest-or-carryforward test stands in for). Scratch run of triage.mjs on the round-3 reply (.transcription/f4952.lines-a00ac5b69f6a) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 186 partial records; 2,264 comparisons per line): 2,075 agree; on completed returns 17 value differences, all project true and reply false with the exception holding or line 1 $0, so each is a line 4g election (e.g. classm.f1040.2.deepseek, classm.f5329.2.deepseek, classm.tcw.10); the rest are the project's cited refusals and unknowns on refused or incomplete returns. The round-3 line 4g wording fix (timely-filed election) does not bear on it. Project stands.",
    "context": "7012a7e58725e644aed40cb230d9e899a25353f60b105abc37b645880295e7e1",
    "date": "2026-11-04",
-   "run": "0a4a58af708cb0bd70a3d2079c2b0581c6aa413637fd034af3169833ecd86fe8"
+   "run": "0a4a58af708cb0bd70a3d2079c2b0581c6aa413637fd034af3169833ecd86fe8",
+   "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
   },
   {
    "printed": "f4952.required",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}",
+   "project_expr_sha256": "4e1bf81ed0dbc09950570bfdffeb8ccb470d8011176503e8c1d0690128d329cd",
+   "second_expr_sha256": "abd1c71c9d9697fae26ce7986d85214d94689f0a3192e0e75970bb81f02a0b91",
    "ruling": "Ruling: model error; the same disagreement as the earlier rulings of this round. f4952 p. 3, Who Must File: you must file Form 4952 to claim a deduction for investment interest expense, with the Exception when all of its conditions apply; p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\". The reply makes filing required whenever the exception fails, with no test that any interest is claimed (the project's line 3 above zero) and no line 4g election trigger; the project stands.",
    "context": "1790fdecaec3a931b2aa4fc20deb397a92bf8bf72d288ce61ed850bcbca747e5",
    "date": "2026-11-04",
-   "run": "afecabe56f9df6743352654bbafea8754171d91b0909bc1a47f28e213da94ce1"
+   "run": "afecabe56f9df6743352654bbafea8754171d91b0909bc1a47f28e213da94ce1",
+   "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
   },
   {
    "printed": "f4952.required",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"2\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "ruling": "Ruling: equivalent in scope; project retained. The second tests line 2 (the carryover) where the project tests the carryover answer; line 2 is nonzero only with a carryover, which is refused (f4952.carryover)."
+   "project_expr_sha256": "4e1bf81ed0dbc09950570bfdffeb8ccb470d8011176503e8c1d0690128d329cd",
+   "second_expr_sha256": "dc4407b1437af3e9c1c89bb5764c469b8c5e246e5d603982d03325ffbab2a10e",
+   "ruling": "Ruling: model error; same point as the refresh-round ruling (project line unchanged). f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\"; p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense. Exception. You don’t have to file Form 4952 if all of the following apply\". The reply's filing test is (carryforward, line 1 or line 4g) and (line 4c not above line 1, line 5 positive, or a carryforward); it drops the project's separate line 4g trigger, so a return whose exception holds but which elects on line 4g is false in the reply and true in the project. The election is made only on the form. Project stands.",
+   "context": "de5b1cc165e36fec3882237b34110e04ed4771a95b45a5b2300719ddc2dea779",
+   "date": "2026-11-04",
+   "run": "4f79431ffb0ef723b885e3b5ca1b9d78f6253383ddf58ca922d45117fe43bb9e",
+   "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
   },
   {
    "printed": "f4952.required",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.unsupported\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "ruling": "Ruling: representation; f4952 p.3 Who Must File gives interest/dividends less qualified dividends, no other deductible expenses and no carryover as the exception. The project line5 is zero on its admitted slice and refuses unsupported expenses; the reply tests that screen directly. Both require filing for a positive line4g election under pp.3-4. This ruling is limited to completed supported facts, not missing-screen equivalence.",
-   "context": "41731cf1c012733ac014f69b0e1db12115dd06c2f7ca96c5b412642113ea1bab"
+   "project_expr_sha256": "4e1bf81ed0dbc09950570bfdffeb8ccb470d8011176503e8c1d0690128d329cd",
+   "second_expr_sha256": "f13ffd44a74ff4398cf26efb7aa986fccdf9aa313de58189d13512003851314b",
+   "ruling": "Ruling: model error; f4952 p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense.\" f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\". The candidate's filing test (a positive line 3 outside the exception, or a positive line 4g) is the project's required_test, and the values agree on every record; it omits the project's f4952.used conjunct, so its refusal on f4952.unsupported reaches returns with no investment interest. Every completed-return difference is on a return that does not use Form 4952: line 1 $0, no 2024 carryforward and no line 4g election (checked on the recorded completed witnesses with --explain). It follows structurally: when the form is used, the project's line 8 reads line 5 and line 2, which refuse on f4952.unsupported and f4952.alternative_allocation, so a completed project return with that screen unanswered or answered Yes has no investment interest, carryforward or election. On such a return every amount is zero whatever the screens say, and the candidate still asks or refuses on them, an answer the source does not need (the over-refusal PENDING-6 of the credits-misc package removed from the project). Triage executable-triage-v2 (`../triage/f4952.json`; 1,495 fixtures, 500 generated returns seed 20261026, 210 partial records; 2,205 comparisons): 2,030 agree; 81 project-refuses, 58 candidate-unknown, 22 project-unknown, 14 candidate-refuses; on completed returns 20 candidate-unknown, 9 candidate-refuses. Completed witnesses 0 (classm.s3.2.deepseek, f4952.unsupported not supplied) and 2 (classm.f8962.1.deepseek, f4952.unsupported Yes): project false, candidate unknown or refused. The project refusals are cited screens on returns that use the form (f4952.bad_election, f4952.alternative_allocation) or upstream (sd.other_forms, div.bad_components); the project-unknowns are withheld screen answers on such returns.",
+   "context": "b51117a0bdbd04a4862c1b25b4fee60f15ab48d4ee4f7fb3986ada1d3c697056",
+   "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
   },
   {
    "printed": "f4952.required",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}], \"test\": \"any\"}",
+   "project_expr_sha256": "ef9ccec4c7583b14a49c03be673b58f32016b4f55ff6a3c853fd724a16764aa0",
+   "second_expr_sha256": "40b3b44748bfe77d29b9094b6b49ee7b27f7e6ce9c852977dadca96826e60ff2",
    "ruling": "Ruling: model error; f4952 p.4 Line4g says to make the election by entering the elected amount on line4g. A positive declared election therefore needs this form even if the interest-expense deduction otherwise meets the p.3 filing exception. Both returned predicates omit the positive-line4g condition. For investment interest $100, ordinary nonqualified investment income $200 and declared elected dividends $50, the exception can hold while the election still requires Form4952. The project asks whether the form is needed for the deduction or declared election; no new owner scope choice is made.",
-   "context": "b1a6f3f01276270e9e90818a898a05b08219673e7ade16f2c26a0878d7467f6c"
+   "context": "b1a6f3f01276270e9e90818a898a05b08219673e7ade16f2c26a0878d7467f6c",
+   "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
   },
   {
    "printed": "f4952.required",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}",
-   "ruling": "Ruling: model error; f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income (don't enter more than the sum of lines 4b and 4e)\". The candidate keeps the Stage 20 change (it tests line 3, so a 2024 carryforward alone can require the form; f4952 p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense. Exception. You don't have to file Form 4952 if all of the following apply. ... You don't have any carryover of disallowed investment interest expense from 2024.\") but drops the project's disjunct for a positive line 4g, so a filer whose only reason to file is the election is told the form is not required. Triage executable-triage-v2 (`../triage/f4952.json`, 1,866 comparisons): 1,603 agree, 37 value (12 on completed returns), 158 project-refuses, 67 project-unknown, 1 candidate-refuses. Every recorded value witness is project true, candidate false with an election: witness 0 (classm.f8889.1.deepseek, completed) line 4g $3,846; witness 9 (classm.retirement.4, completed) line 4g $6,963. The refusals are the cited screens f4952.unsupported and f4952.alternative_allocation and upstream sd.other_forms (witnesses 1-4), the unknowns withheld screen answers (witnesses 12-15), and the candidate refusal an upstream sb.fbar_required (witness 16). Same ruling as the earlier rounds. The Stage 20 change itself agrees with p. 3: line 3 adds the line 2 carryforward, and a filer with a carryforward is outside the exception.",
-   "context": "70f5dd8205318c93f2ee6406d08bcb2dab81b330384859f5bcc744a699756632"
+   "project_expr_sha256": "ef9ccec4c7583b14a49c03be673b58f32016b4f55ff6a3c853fd724a16764aa0",
+   "second_expr_sha256": "448a4787618cb37ee679a16a652d8d17be1fab8091191a5003e556ef220a2c4e",
+   "ruling": "Ruling: representation; f4952 p.3 Who Must File gives interest/dividends less qualified dividends, no other deductible expenses and no carryover as the exception. The project line5 is zero on its admitted slice and refuses unsupported expenses; the reply tests that screen directly. Both require filing for a positive line4g election under pp.3-4. This ruling is limited to completed supported facts, not missing-screen equivalence.",
+   "context": "41731cf1c012733ac014f69b0e1db12115dd06c2f7ca96c5b412642113ea1bab",
+   "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
+  },
+  {
+   "printed": "f4952.required",
+   "project_expr_sha256": "ef9ccec4c7583b14a49c03be673b58f32016b4f55ff6a3c853fd724a16764aa0",
+   "second_expr_sha256": "fd767e1a70b8cee782c2e10f5136014e77674427588d00c38042185fad2efe7a",
+   "ruling": "Ruling: equivalent in scope; project retained. The second tests line 2 (the carryover) where the project tests the carryover answer; line 2 is nonzero only with a carryover, which is refused (f4952.carryover).",
+   "subject_key": "cf30ce1aa6bb197e378d5b8e3c934251d569c77f2e0cd89c4694ebe82042d9e9"
   }
  ]
 }

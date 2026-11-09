@@ -8,21 +8,24 @@
    "restated": "Add f1040 line 2b and f1040 line 3b.",
    "model": "IRS line 4a includes ordinary dividends \"except Alaska Permanent Fund dividends\"; adding f1040 line 3b without that exclusion would include them.",
    "ruling": "Ruling: model error; the model says the restatement (Form 1040 line 2b plus line 3b, BUG-0391) includes Alaska Permanent Fund dividends. f4952 p. 3, Line 4a: \"ordinary dividends (except Alaska Permanent Fund dividends)\". Form 1040 line 3b is Schedule B line 6 (Form 1099-DIV ordinary dividends); Alaska Permanent Fund dividends are entered on Schedule 1 line 8g (s1.yaml; p525 p. 31, \"report it as income on Schedule 1\") and never reach line 3b. Same point as the earlier rulings on the Schedule B restatement.",
-   "context": "339d090be4ce3ebb3e8f65ff6983fb1d16b1408fe0e8e880db927d6507ccfce0"
+   "context": "339d090be4ce3ebb3e8f65ff6983fb1d16b1408fe0e8e880db927d6507ccfce0",
+   "subject_key": "af9091691362f55d35ca751cb269d1794cf042b1a65f723fbf421703ef0640f2"
   },
   {
    "printed": "4a",
    "restated": "Add sb line 2 and sb line 6.",
    "model": "IRS line 4a includes ordinary dividends but 'except Alaska Permanent Fund dividends'; the restatement adds Schedule B ordinary dividends without that exception, so it can overstate line 4a.",
    "ruling": "Ruling: model error; the model says the restatement adds Schedule B ordinary dividends without the Alaska Permanent Fund exception. f4952 p. 3, Line 4a: \"ordinary dividends (except Alaska Permanent Fund dividends)\". Schedule B line 6 copies sb.ordinary_dividends, \"Total ordinary dividends, Form 1099-DIV box 1a\"; Alaska Permanent Fund dividends are not Form 1099-DIV dividends and are reported on Schedule 1 line 8g (s1.yaml, p525 p. 31, \"report it as income on Schedule 1\"), so they never reach line 4a. The model assumed they are in Schedule B line 6.",
-   "context": "d3b3d2ff5fd2216d722dd23fdccca816dde70b5e0a311beb2423586175bf55a4"
+   "context": "d3b3d2ff5fd2216d722dd23fdccca816dde70b5e0a311beb2423586175bf55a4",
+   "subject_key": "af9091691362f55d35ca751cb269d1794cf042b1a65f723fbf421703ef0640f2"
   },
   {
    "printed": "4a",
    "restated": "Add sb line 2 and sb line 6.",
    "model": "IRS line 4a says 'Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends (except Alaska Permanent Fund dividends), annuities, and royalties.' The program simply adds Schedule B interest and ordinary dividends, omitting the Alaska Permanent Fund dividend exclusion.",
    "ruling": "Ruling: model error; the model says the restatement adds Schedule B ordinary dividends without the Alaska Permanent Fund exception. f4952 p. 3, Line 4a: \"ordinary dividends (except Alaska Permanent Fund dividends)\". Schedule B line 6 copies sb.ordinary_dividends, the Form 1099-DIV box 1a total; Alaska Permanent Fund dividends are not Form 1099-DIV dividends and are entered on Schedule 1 line 8g (s1.yaml, p525 p. 31, \"report it as income on Schedule 1\"), so they never reach line 4a. Same ruling as the earlier rounds.",
-   "context": "40291248a3286298823b80a012aaf3d589f548af2199093a1d75e536f636d612"
+   "context": "40291248a3286298823b80a012aaf3d589f548af2199093a1d75e536f636d612",
+   "subject_key": "af9091691362f55d35ca751cb269d1794cf042b1a65f723fbf421703ef0640f2"
   },
   {
    "printed": "4b",
@@ -31,21 +34,24 @@
    "ruling": "Ruling: scope; project retained. f4952 line 4b, \"Enter the portion of ordinary dividends included on line 4a that are qualified dividends\": f4952.unsupported refuses investment income other than interest and ordinary dividends, so in scope every qualified dividend on Form 1040 line 3a is included on line 4a; the Form 1041 alternative is for estates and trusts, not this return. The box 1a condition is the line 3a gate: qualified dividends are part of ordinary dividends (i1040gi p. 25, Line 3a).",
    "context": "8c5d05ca571d521f897f09996e633ba9aa0c4d44dc6adea8dce862904037bb4e",
    "date": "2026-11-07",
-   "run": "4064f947fc2b9aaeee0d5b3cdf6c2d7b524dc7b10d14203064b38d7815a97463"
+   "run": "4064f947fc2b9aaeee0d5b3cdf6c2d7b524dc7b10d14203064b38d7815a97463",
+   "subject_key": "0c90f23a869fdc8174457dd413299a2b4a6ec2716853ac1379da12569567b9d3"
   },
   {
    "printed": "4d",
    "restated": "Subtract $0 from sd line 16. If zero or less, enter -0-.",
    "model": "The IRS line is 'Net gain from the disposition of property held for investment'; the restatement uses Schedule D line 16, which is not limited to property held for investment and can include other gains or losses.",
    "ruling": "Ruling: scope; f4952 (2025) p.3 Lines4d/4e restrict disposition amounts to property held for investment. The supported ScheduleD stream is manually classified securities and fund capital-gain distributions; sales.special refuses special/nonsecurities property and sd.other_forms refuses Forms4797/6252/4684/6781/8824 and K-1 gains. f4952.unsupported at line2 screens other investment income/expenses beyond interest, dividends and securities sales. Within this declared completed-return slice the ScheduleD totals/net-capital-gain helper are the investment amounts. The broader IRS cases are excluded; the ruling does not assert that arbitrary ScheduleD amounts from an excluded return are investment-property amounts.",
-   "context": "a4d9d892f344de4921870980e203a48fd23b96694153a378f20eefba436b8b8d"
+   "context": "a4d9d892f344de4921870980e203a48fd23b96694153a378f20eefba436b8b8d",
+   "subject_key": "fa7a4a1f7cf64efa1ba66c9a691089c4b33e441011af886db02ad717b0bd9340"
   },
   {
    "printed": "4e",
    "restated": "Enter the smaller of line 4d or sd helper \"Nonnegative net capital gain for QDCGT\".",
    "model": "The IRS line uses 'your net capital gain from the disposition of property held for investment'; the restatement uses the QDCGT helper based on the smaller of Schedule D lines 15 and 16, which is not limited to property held for investment.",
    "ruling": "Ruling: scope; f4952 (2025) p.3 Lines4d/4e restrict disposition amounts to property held for investment. The supported ScheduleD stream is manually classified securities and fund capital-gain distributions; sales.special refuses special/nonsecurities property and sd.other_forms refuses Forms4797/6252/4684/6781/8824 and K-1 gains. f4952.unsupported at line2 screens other investment income/expenses beyond interest, dividends and securities sales. Within this declared completed-return slice the ScheduleD totals/net-capital-gain helper are the investment amounts. The broader IRS cases are excluded; the ruling does not assert that arbitrary ScheduleD amounts from an excluded return are investment-property amounts.",
-   "context": "a4d9d892f344de4921870980e203a48fd23b96694153a378f20eefba436b8b8d"
+   "context": "a4d9d892f344de4921870980e203a48fd23b96694153a378f20eefba436b8b8d",
+   "subject_key": "a14df43946b5e228880aa03865d42f0d64673359b181b1a34c0820a9beb96aaa"
   },
   {
    "printed": "4g",
@@ -55,7 +61,8 @@
    "context": "cb2f7a37146ad439ea251c417b872890eba0a40c2f6bed9e74010043c0f044e4",
    "date": "2026-11-04",
    "run": "3c43ead49f14edb500fd7f24e130092037daade4c1b0d1d8b25cc5b3fb56b74b",
-   "severity": "low"
+   "severity": "low",
+   "subject_key": "289d7c40234e2376392be3ff439ec0573c272291155a5c3b55f187acaacf0f82"
   }
  ]
 }

@@ -8,7 +8,8 @@
    "project": "$424.00",
    "model": "$0.00",
    "ruling": "Ruling: model error; project retained. carloan.mixed_interest is the line carloan.allocated reads for an original loan; with carloan.mixed false it is the whole interest, 424.00 (the qualifying part is the whole loan, ratio 1.000000; proposed § 1.163-16(d)(2)(iii)(A)). The model wrote 0.00 for 'not a mixed loan' while entering 424.00 on allocated, which copies this line. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "25c1a82899f5d1eee9da487efd7d3cf8655cb246c32a2f659964a37036482a4c"
   },
   {
    "case": "classm.carloan.1",
@@ -16,7 +17,8 @@
    "project": "$424.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan financed nothing that does not qualify (carloan.mixed false), so carloan.mixed_interest is the whole interest and carloan.mixed_prorated, with the qualifying part it divides, is read by no line this entry reaches (proposed § 1.163-16(d)(2)(iii)(A) allocates only where part of the loan is not an SPVL); the project figures it whatever the branch. Its value is 424.00 x 15,244.00/15,244.00 (1.000000) = 424.00. allocated and qpvli agree (424.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "3cce0a9ad0928ca9ee3e92a878d262fdba60453574c30e4465c68c4001f769b3"
   },
   {
    "case": "classm.carloan.1",
@@ -24,7 +26,8 @@
    "project": "$15,244.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan financed nothing that does not qualify (carloan.mixed false), so carloan.mixed_interest is the whole interest and carloan.mixed_prorated, with the qualifying part it divides, is read by no line this entry reaches (proposed § 1.163-16(d)(2)(iii)(A) allocates only where part of the loan is not an SPVL); the project figures it whatever the branch. Its value is 15,244.00 less the nonqualifying debt 0.00 (4,723.00 less the 9,729.00 down payment, not below zero) = 15,244.00, the whole loan. allocated, qpvli and column (iii) agree (424.00, 318.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "56b2a3f9d157e45ad3cc49f7f946e8e61507cc69e1f9d36ef0aabea6c84db1f4"
   },
   {
    "case": "classm.carloan.1",
@@ -32,7 +35,8 @@
    "project": "$424.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan is an original loan, so carloan.allocated reads carloan.mixed_interest and the refinancing helpers (proposed § 1.163-16(d)(4)) are read by no line this entry reaches; the project figures them whatever the branch. Its value is 424.00 x 15,244.00/15,244.00 (1.000000) = 424.00. allocated and qpvli agree (424.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "08c356b2a73009fbdbad260dde6342698efec225dd70d5da343f629b6d7d6166"
   },
   {
    "case": "classm.carloan.1",
@@ -40,7 +44,8 @@
    "project": "$15,244.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan is an original loan, so carloan.allocated reads carloan.mixed_interest and the refinancing helpers (proposed § 1.163-16(d)(4)) are read by no line this entry reaches; the project figures them whatever the branch. Its value is the smaller of the refinanced balance 37,593.00 and the loan 15,244.00 = 15,244.00. allocated and qpvli agree (424.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "abe5ecd8e9993b4aad73b797ca4bd4bdb7a2cfe748f01f1a0c0f719076adf692"
   },
   {
    "case": "classm.carloan.1",
@@ -48,7 +53,8 @@
    "project": "$75,615.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The vehicle is not an applicable passenger vehicle, so the entry is not eligible and carloan.qpvli is zero by its eligibility choice (i1040gi p. 109); the project figures the allocation helpers whatever the eligibility, the model zeroed them. Its value is 75,615.00 less the nonqualifying debt 0.00 (7,445.00 less the 9,382.00 down payment, not below zero, proposed § 1.163-16(d)(2)(iii)(B)) = 75,615.00. The interest is 0.00 and every interest line and qpvli agree. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "56b2a3f9d157e45ad3cc49f7f946e8e61507cc69e1f9d36ef0aabea6c84db1f4"
   },
   {
    "case": "classm.carloan.2",
@@ -56,7 +62,8 @@
    "project": "$31,177.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan is a refinancing, so carloan.allocated reads carloan.refi_interest, and the loan financed nothing that does not qualify (carloan.mixed false); the mixed-loan helpers are read by no line this entry reaches. The generated return answers mixed false yet gives a nonqualifying amount; the project figures the helper from the inputs as given, the model zeroed it. Its value is 37,635.00 less 6,458.00 = 31,177.00. The interest is 0.00; allocated and qpvli agree (0.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "56b2a3f9d157e45ad3cc49f7f946e8e61507cc69e1f9d36ef0aabea6c84db1f4"
   },
   {
    "case": "classm.carloan.2",
@@ -64,7 +71,8 @@
    "project": "$6,458.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan is a refinancing, so carloan.allocated reads carloan.refi_interest, and the loan financed nothing that does not qualify (carloan.mixed false); the mixed-loan helpers are read by no line this entry reaches. The generated return answers mixed false yet gives a nonqualifying amount; the project figures the helper from the inputs as given, the model zeroed it. Its value is 8,969.00 less the 2,511.00 down payment = 6,458.00 (proposed § 1.163-16(d)(2)(iii)(B)). The interest is 0.00; allocated and qpvli agree (0.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "1fa0edd0e8ae6c54641b3522fa20112429cf515c81e7cacd1b1e2fd7f6c5de49"
   },
   {
    "case": "classm.carloan.2",
@@ -72,7 +80,8 @@
    "project": "$75,391.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan passed to the filer by a borrower's death, so carloan.allocated reads carloan.mixed_interest, which for a loan that financed nothing that does not qualify (carloan.mixed false) is the whole interest; the mixed-loan helpers are read by no line this entry reaches. The generated return answers mixed false yet gives a nonqualifying amount; the project figures the helper from the inputs as given, the model zeroed it. Its value is 78,378.00 less 2,987.00 = 75,391.00. The interest is 0.00; allocated and qpvli agree (0.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "56b2a3f9d157e45ad3cc49f7f946e8e61507cc69e1f9d36ef0aabea6c84db1f4"
   },
   {
    "case": "classm.carloan.2",
@@ -80,7 +89,8 @@
    "project": "$2,987.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan passed to the filer by a borrower's death, so carloan.allocated reads carloan.mixed_interest, which for a loan that financed nothing that does not qualify (carloan.mixed false) is the whole interest; the mixed-loan helpers are read by no line this entry reaches. The generated return answers mixed false yet gives a nonqualifying amount; the project figures the helper from the inputs as given, the model zeroed it. Its value is 7,376.00 less the 4,389.00 down payment = 2,987.00 (proposed § 1.163-16(d)(2)(iii)(B)). The interest is 0.00; allocated and qpvli agree (0.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "1fa0edd0e8ae6c54641b3522fa20112429cf515c81e7cacd1b1e2fd7f6c5de49"
   },
   {
    "case": "classm.carloan.3",
@@ -89,7 +99,8 @@
    "model": "$551.51",
    "ruling": "Ruling: ambiguity; amb.2025.carloan_ratio_places (chosen: ratio rounded half-up to six places; recorded alternatives: exact ratio, three places); model value dropped from the fixture. fr-2025-24154 p. 21, proposed § 1.163-16(d)(2)(iii)(A): \"payments of interest and principal are allocated to the portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ... on a pro rata basis\", and (d)(4): \"A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis\" -- no rounding of the ratio is given. The model worked 2,149 x 3,151/12,278 with the exact ratio (551.5148, $551.51), the register's second reading; the project rounds the ratio to 0.256638 (2,149 x 0.256638 = 551.5151, $551.52). The proration itself (column (ii) is the QPVLI part of the Schedule C interest, fr-2025-24154 p. 23, proposed § 1.163-16(g)(1): \"Independently deductible interest is limited to interest that is QPVLI ... and that is otherwise deductible by the taxpayer as a different type of interest\"; (g)(2): the QPVLI \"is reduced to the extent that the taxpayer deducts that independently deductible interest as non-QPVLI\") agrees, so the BUG-0175 reading is confirmed on this refinanced loan. Dropped as the non-chosen reading.",
    "drop": true,
-   "context": "98ff418b5c67882fbf045fbad28483c38baf493c711814182b0eacd91baa9d79"
+   "context": "98ff418b5c67882fbf045fbad28483c38baf493c711814182b0eacd91baa9d79",
+   "subject_key": "2565464d9ccc02edc739b7543dbce2eb82fd536993f41d3577070783380e4e8e"
   },
   {
    "case": "classm.carloan.3",
@@ -98,7 +109,8 @@
    "model": "$1,654.55",
    "ruling": "Ruling: ambiguity; amb.2025.carloan_ratio_places (chosen: ratio rounded half-up to six places; recorded alternatives: exact ratio, three places); model value dropped from the fixture. i1040gi p. 110, Line 22: \"On line 22, column (iii), enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii).\" The model's QPVLI $2,206.06 equals the project's (8,596 x 0.256638 = 2,206.0602; exact 2,206.0593); the one-cent difference is column (ii) under the exact ratio ($551.51 against $551.52), so $1,654.55 is the register's exact-ratio reading and the project's $1,654.54 the chosen one. Dropped as the non-chosen reading.",
    "drop": true,
-   "context": "98ff418b5c67882fbf045fbad28483c38baf493c711814182b0eacd91baa9d79"
+   "context": "98ff418b5c67882fbf045fbad28483c38baf493c711814182b0eacd91baa9d79",
+   "subject_key": "8fe342e619c79c1d213c9e7cc7a1100468f7232468bfeb88e30bd42f356e5cc4"
   },
   {
    "case": "classm.carloan.3",
@@ -106,7 +118,8 @@
    "project": "$12,004.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan is an original loan, so carloan.allocated reads carloan.mixed_interest (here the mixed-loan proration: 12,004.00 x 0.00/4,744.00 = 0.00, the 9,208.00 of nonqualifying amounts exceeding the 4,744.00 loan) and the refinancing helpers (proposed § 1.163-16(d)(4)) are read by no line this entry reaches; the project figures them whatever the branch. Its value is 12,004.00 x 4,744.00/4,744.00 (1.000000) = 12,004.00. allocated and qpvli agree (0.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "08c356b2a73009fbdbad260dde6342698efec225dd70d5da343f629b6d7d6166"
   },
   {
    "case": "classm.carloan.3",
@@ -114,7 +127,8 @@
    "project": "$4,744.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan is an original loan, so carloan.allocated reads carloan.mixed_interest (here the mixed-loan proration: 12,004.00 x 0.00/4,744.00 = 0.00, the 9,208.00 of nonqualifying amounts exceeding the 4,744.00 loan) and the refinancing helpers (proposed § 1.163-16(d)(4)) are read by no line this entry reaches; the project figures them whatever the branch. Its value is the smaller of the refinanced balance 40,387.00 and the loan 4,744.00 = 4,744.00. allocated and qpvli agree (0.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "abe5ecd8e9993b4aad73b797ca4bd4bdb7a2cfe748f01f1a0c0f719076adf692"
   },
   {
    "case": "classm.carloan.4",
@@ -122,7 +136,8 @@
    "project": "$69,155.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan is a refinancing, so carloan.allocated reads carloan.refi_interest and the mixed-loan helpers are read by no line this entry reaches; the loan also fails the loan requirements, so qpvli is zero by its eligibility choice. The project figures the helper whatever the branch: 69,155.00 less nonqualifying debt 0.00 = 69,155.00. The interest is 0.00; allocated and qpvli agree (0.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "56b2a3f9d157e45ad3cc49f7f946e8e61507cc69e1f9d36ef0aabea6c84db1f4"
   },
   {
    "case": "classm.carloan.4",
@@ -130,7 +145,8 @@
    "project": "$44,545.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The loan fails the loan requirements (carloan.requirements false), so carloan.qpvli is zero by its eligibility choice (i1040gi p. 109); the project figures the refinancing helpers whatever the eligibility, the model zeroed them. Its value is the smaller of the refinanced balance 44,545.00 and the loan 69,155.00 = 44,545.00 (proposed § 1.163-16(d)(4)). The interest is 0.00; refi_interest, allocated and qpvli agree (0.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "abe5ecd8e9993b4aad73b797ca4bd4bdb7a2cfe748f01f1a0c0f719076adf692"
   },
   {
    "case": "classm.carloan.4",
@@ -138,7 +154,8 @@
    "project": "$4,413.00",
    "model": "$0.00",
    "ruling": "Ruling: model error; project retained. carloan.mixed_interest is the line carloan.allocated reads for an original loan; with carloan.mixed false it is the whole interest, 4,413.00 (the qualifying part is the whole loan, ratio 1.000000; proposed § 1.163-16(d)(2)(iii)(A)). The model wrote 0.00 for 'not a mixed loan' while entering 4,413.00 on allocated, which copies this line. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "25c1a82899f5d1eee9da487efd7d3cf8655cb246c32a2f659964a37036482a4c"
   },
   {
    "case": "classm.carloan.4",
@@ -146,7 +163,8 @@
    "project": "$4,413.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan financed nothing that does not qualify (carloan.mixed false), so carloan.mixed_interest is the whole interest and carloan.mixed_prorated, with the qualifying part it divides, is read by no line this entry reaches (proposed § 1.163-16(d)(2)(iii)(A) allocates only where part of the loan is not an SPVL); the project figures it whatever the branch. Its value is 4,413.00 x 29,421.00/29,421.00 (1.000000) = 4,413.00. allocated and qpvli agree (4,413.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "3cce0a9ad0928ca9ee3e92a878d262fdba60453574c30e4465c68c4001f769b3"
   },
   {
    "case": "classm.carloan.4",
@@ -154,7 +172,8 @@
    "project": "$29,421.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan financed nothing that does not qualify (carloan.mixed false), so carloan.mixed_interest is the whole interest and carloan.mixed_prorated, with the qualifying part it divides, is read by no line this entry reaches (proposed § 1.163-16(d)(2)(iii)(A) allocates only where part of the loan is not an SPVL); the project figures it whatever the branch. Its value is 29,421.00 less the nonqualifying debt 0.00 (2,066.00 less the 5,037.00 down payment, not below zero) = 29,421.00, the whole loan. allocated, qpvli and column (iii) agree (4,413.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "56b2a3f9d157e45ad3cc49f7f946e8e61507cc69e1f9d36ef0aabea6c84db1f4"
   },
   {
    "case": "classm.carloan.4",
@@ -162,7 +181,8 @@
    "project": "$4,413.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan is an original loan, so carloan.allocated reads carloan.mixed_interest and the refinancing helpers (proposed § 1.163-16(d)(4)) are read by no line this entry reaches; the project figures them whatever the branch. Its value is 4,413.00 x 29,421.00/29,421.00 (1.000000) = 4,413.00. allocated and qpvli agree (4,413.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "08c356b2a73009fbdbad260dde6342698efec225dd70d5da343f629b6d7d6166"
   },
   {
    "case": "classm.carloan.4",
@@ -170,7 +190,8 @@
    "project": "$29,421.00",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this entry does not take; project retained; model value dropped from the fixture. The loan is an original loan, so carloan.allocated reads carloan.mixed_interest and the refinancing helpers (proposed § 1.163-16(d)(4)) are read by no line this entry reaches; the project figures them whatever the branch. Its value is the smaller of the refinanced balance 33,968.00 and the loan 29,421.00 = 29,421.00. allocated and qpvli agree (4,413.00). Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "abe5ecd8e9993b4aad73b797ca4bd4bdb7a2cfe748f01f1a0c0f719076adf692"
   }
  ]
 }

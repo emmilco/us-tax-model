@@ -5,14 +5,16 @@ Each review log (`reviews/<year>/<kind>/<form>.md`, or `<form>.<family>.md` for 
 model family other than Claude: families.py) is rendered by its tool; the rulings a
 person wrote on its disagreements live in `<form>.rulings.json` (`<form>.<family>.rulings.json`) next
 to it, keyed by the disagreement they answer (the printed line and the two sides
-of the disagreement), with a context hash covering the reviewed subject,
-prompts and source excerpts. Only an unchanged disagreement in the same
-recorded context can reuse a ruling. `rule.py` writes both files;
-`check_logs.py` fails when a log's rulings and its sidecar disagree.
+of the disagreement; a transcription expression is stored as the sha256 of its text, stored_key),
+with a context hash covering the reviewed subject, prompts and source excerpts. Only an unchanged
+disagreement in the same recorded context can reuse a ruling. An entry also records the line's
+cross-document subject and, for transcription, a compact stamp of the triage it relied on (EXTRA).
+`rule.py` writes both files; `check_logs.py` fails when a log's rulings and its sidecar disagree.
 
     rulings.py --migrate     # build every sidecar from the rulings already in the logs
     rulings.py --check       # report log/sidecar disagreements (exit 1 on any)
     rulings.py --prune       # drop sidecar entries whose disagreement no longer occurs
+    rulings.py --compact [--triage-dir DIR]   # rewrite every sidecar in the stored form
 """
 import argparse, hashlib, json, os, re, sys
 
@@ -47,21 +49,63 @@ def log_path(kind, form, family=families.DEFAULT):
     return os.path.join(REVIEWS, kind, families.stem(form, family) + ".md")
 
 
+# A transcription disagreement is keyed by its printed line and both expression texts. The sidecar
+# stores each expression as the sha256 of its exact text as the log section embeds it (stored_key),
+# not the text: the expressions are in the review record, and a section and its entry still match
+# exactly. Render and class M sides are short and kept as text.
+HASHED = {"transcription": (("project", "project_expr_sha256"), ("second", "second_expr_sha256"))}
+# What an entry records besides its key, ruling, drop flag, context and stamps: the line's
+# cross-document subject when it was ruled (`subject_key`: carry.line_subject), and for transcription
+# the executable triage the ruling relied on (`triage`: triage_stamp), when a triage record existed.
+EXTRA = ("subject_key", "triage")
+
+
+def _sha_text(text):
+    return hashlib.sha256(str(text).encode()).hexdigest()
+
+
+def stored_key(kind, key):
+    """The sidecar key of a disagreement keyed as its log section reads it (section_key)."""
+    if kind not in HASHED:
+        return tuple(key)
+    return (key[0], *(_sha_text(x) for x in key[1:]))
+
+
+def stored_fields(kind):
+    """The sidecar row fields that hold the key, in key order."""
+    hashed = dict(HASHED.get(kind, ()))
+    return tuple(hashed.get(f, f) for f in KINDS[kind])
+
+
+def compact_row(kind, row):
+    """A sidecar row in the stored form: a row that still embeds expressions (as in revisions written
+    before they were hashed) has them replaced by their hashes; any other row is returned as is."""
+    out = dict(row)
+    for field, hashed in HASHED.get(kind, ()):
+        if field in out:
+            out[hashed] = _sha_text(out.pop(field))
+    return out
+
+
 def load(kind, form, family=families.DEFAULT):
-    """{key tuple: {"ruling": text without the dropped suffix, "drop": bool}}."""
+    """{stored key tuple: {"ruling": text without the dropped suffix, "drop": bool, ...}}."""
     path = sidecar_path(kind, form, family)
     if not os.path.exists(path):
         return {}
     data = json.load(open(path, encoding="utf-8"))
-    fields = KINDS[kind]
-    return {tuple(r[f] for f in fields): {"ruling": r["ruling"], "drop": bool(r.get("drop")),
-                                        **({"context": r["context"]} if r.get("context") else {}),
-                                        **{s: r[s] for s in STAMPS if r.get(s)}}
-            for r in data["rulings"]}
+    fields = stored_fields(kind)
+    out = {}
+    for r in data["rulings"]:
+        r = compact_row(kind, r)
+        out[tuple(r[f] for f in fields)] = {"ruling": r["ruling"], "drop": bool(r.get("drop")),
+                                            **({"context": r["context"]} if r.get("context") else {}),
+                                            **{s: r[s] for s in STAMPS + EXTRA if r.get(s)}}
+    return out
 
 
 def save(kind, form, rulings, family=families.DEFAULT):
-    fields = KINDS[kind]
+    """Write a sidecar; `rulings` is keyed by stored keys (stored_key)."""
+    fields = stored_fields(kind)
     rows = []
     for key in sorted(rulings, key=lambda k: tuple(str(x) for x in k)):
         row = dict(zip(fields, key))
@@ -70,7 +114,7 @@ def save(kind, form, rulings, family=families.DEFAULT):
             row["drop"] = True
         if rulings[key].get("context"):
             row["context"] = rulings[key]["context"]
-        for s in STAMPS:
+        for s in STAMPS + EXTRA:
             if rulings[key].get(s):
                 row[s] = rulings[key][s]
         rows.append(row)
@@ -82,6 +126,57 @@ def save(kind, form, rulings, family=families.DEFAULT):
         json.dump({**head, "rulings": rows}, f, indent=1, ensure_ascii=False)
         f.write("\n")
     return path
+
+
+def witness_id(w):
+    """A triage witness's input by name: a fixture case, a generated return (seed.index) or a partial
+    record (its base case and the withheld answer), with the instance the line was read in."""
+    s = w.get("source") or {}
+    kind = s.get("kind")
+    name = (s.get("id") if kind == "fixture" else f"{s.get('seed')}.{s.get('index')}" if kind == "generated"
+            else f"{s.get('base')}-{s.get('withheld')}" if kind == "partial" else json.dumps(s, sort_keys=True))
+    return f"{kind}:{name}@{w.get('instance')}"
+
+
+def triage_stamp(record, line):
+    """The compact stamp of the triage line a ruling relied on: its verdict, the kinds of difference
+    found (names only), the ids of its witnesses and the triage policy."""
+    return {"verdict": line["triage"], "kinds": sorted(line.get("kinds") or {}),
+            "witnesses": [witness_id(w) for w in line.get("witnesses") or []], "policy": record.get("policy")}
+
+
+# Triage records (triage.py) are regenerated on demand into git-ignored review data, by jurisdiction and year.
+TRIAGE_DIR = os.path.join(ROOT, ".transcription", "triage", os.path.relpath(REVIEWS, os.path.join(ROOT, "reviews")))
+
+
+def triage_path(form, family=families.DEFAULT):
+    return os.path.join(TRIAGE_DIR, families.stem(form, family) + ".json")
+
+
+def triage_line(record, handle, run):
+    """The line of a triage record that evaluated section `handle` against the reply `run`
+    (transcribe.response_sha256), else None."""
+    for line in record.get("lines", []):
+        if line.get("handle") != handle:
+            continue
+        pid = line.get("pass")
+        reply = (record.get("passes") or {}).get(pid, {}).get("response_sha256") if pid else record.get("response_sha256")
+        if run and reply == run:
+            return line
+    return None
+
+
+def triage_for(kind, form, family, handle, run, path=None):
+    """The triage stamp for a ruling on section `handle` of reply `run`: from the form's triage record when
+    one exists and evaluated that very reply, else None."""
+    if kind != "transcription":
+        return None
+    path = path or triage_path(form, family)
+    if not os.path.exists(path):
+        return None
+    record = json.load(open(path, encoding="utf-8"))
+    line = triage_line(record, handle, run)
+    return triage_stamp(record, line) if line else None
 
 
 def review_context(kind, text):
@@ -199,7 +294,7 @@ def stamp_errors(row):
 
 
 def kept(kind, form, family=families.DEFAULT, *, context):
-    """Only reuse rulings explicitly made in this review context."""
+    """Only reuse rulings explicitly made in this review context; keyed by stored keys (stored_key)."""
     return {k: v["ruling"] + (DROPPED if v["drop"] else "") for k, v in load(kind, form, family).items()
             if v.get("context") == context}
 
@@ -265,6 +360,7 @@ def migrate():
             text = open(log_path(kind, form, family), encoding="utf-8").read()
             rulings = load(kind, form, family)
             for key, line in log_sections(kind, text):
+                key = stored_key(kind, key)
                 if line != OPEN:
                     t, drop = split_ruling(line)
                     # Migration copies historical rulings; it cannot establish that
@@ -276,13 +372,52 @@ def migrate():
     print(f"rulings: {total} written to sidecars")
 
 
+def compact(triage_dir=None):
+    """Rewrite every sidecar in the stored form (compact_row), adding to each entry without them the
+    line's cross-document subject as it is now (carry.line_subject) and, for a live transcription entry,
+    the stamp of the triage record in `triage_dir` that evaluated the reply its section records."""
+    import carry
+    snap = carry.Snapshot(None)
+    stats = {"entries": 0, "subject_key": 0, "triage": 0}
+    for kind in KINDS:
+        for form, family in forms_with_logs(kind):
+            if not os.path.exists(sidecar_path(kind, form, family)):
+                continue
+            text = open(log_path(kind, form, family), encoding="utf-8").read()
+            blocks = pass_blocks(text)
+            live = {}
+            for key, _, content in log_sections(kind, text, with_content=True):
+                live[stored_key(kind, key)] = (key, content)
+            side = load(kind, form, family)
+            for skey, entry in side.items():
+                stats["entries"] += 1
+                if not entry.get("subject_key"):
+                    subject = carry.line_subject(kind, snap, form, skey[1] if kind == "classm" else skey[0])
+                    if subject:
+                        entry["subject_key"] = subject
+                if entry.get("subject_key"):
+                    stats["subject_key"] += 1
+                if kind == "transcription" and triage_dir and not entry.get("triage") and skey in live:
+                    key, content = live[skey]
+                    run = entry.get("run") or section_run(kind, text, key[0], content, blocks)
+                    stamp = triage_for(kind, form, family, key[0], run,
+                                       os.path.join(triage_dir, families.stem(form, family) + ".json"))
+                    if stamp:
+                        entry["triage"] = stamp
+                if entry.get("triage"):
+                    stats["triage"] += 1
+            save(kind, form, side, family)
+    print(f"rulings: {stats['entries']} entries in the stored form; {stats['subject_key']} with a subject key, "
+          f"{stats['triage']} with a triage stamp")
+
+
 def prune():
     """Drop sidecar entries whose disagreement no longer occurs in the log."""
     dropped = 0
     for kind in KINDS:
         for form, family in forms_with_logs(kind):
             text = open(log_path(kind, form, family), encoding="utf-8").read()
-            live = {key for key, _ in log_sections(kind, text)}
+            live = {stored_key(kind, key) for key, _ in log_sections(kind, text)}
             side = load(kind, form, family)
             kept = {k: v for k, v in side.items() if k in live}
             if len(kept) != len(side):
@@ -308,6 +443,7 @@ def check():
             for key, line, content in log_sections(kind, text, with_content=True):
                 if line == OPEN:
                     continue
+                key = stored_key(kind, key)
                 total += 1; seen.add(key)
                 t, drop = split_ruling(line)
                 s = side.get(key)
@@ -331,12 +467,17 @@ if __name__ == "__main__":
     ap.add_argument("--migrate", action="store_true")
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--prune", action="store_true", help="drop sidecar entries whose disagreement no longer occurs")
+    ap.add_argument("--compact", action="store_true", help="rewrite every sidecar in the stored form, with subject keys "
+                    "and, from --triage-dir, triage stamps")
+    ap.add_argument("--triage-dir", help="directory of triage records (<stem>.json) to stamp rulings from (--compact)")
     a = ap.parse_args()
     if a.migrate:
         migrate()
+    if a.compact:
+        compact(a.triage_dir)
     if a.prune:
         prune()
     if a.check:
         sys.exit(check())
-    if not (a.migrate or a.check or a.prune):
+    if not (a.migrate or a.check or a.prune or a.compact):
         ap.print_help()

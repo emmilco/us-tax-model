@@ -9,7 +9,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 1 (NonNegDollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 1 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 1\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2",
+   "subject_key": "454fd3b2f0df6415b1411532b06b2a23acdd88a59ff817006aca32f7720a5cea"
   },
   {
    "case": "classm.g28.1",
@@ -17,7 +18,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 2 (NonNegDollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 2 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 2\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2",
+   "subject_key": "06f6fe14b458ff64c31310415ce9ef146790025aee756dd45a9a811899dcd0eb"
   },
   {
    "case": "classm.g28.1",
@@ -25,7 +27,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 3 (NonNegDollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 3 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 3\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2",
+   "subject_key": "45e0cd19bd5551ec2a34a49231aaf6d7fc008f5c86b4d4451ac9d92826cd8b2a"
   },
   {
    "case": "classm.g28.1",
@@ -33,7 +36,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 4 (NonNegDollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 4 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 4\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2",
+   "subject_key": "b48a001fef5e63987f55c37ef09df3b112de5cf94d25e522ded6415c0be90efc"
   },
   {
    "case": "classm.g28.1",
@@ -41,7 +45,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 5 (Dollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 5 (Dollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 5\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2",
+   "subject_key": "c9677ae6d255c36826dc937f9d05b7a388c2beca2a5f76c8dbaba164e7f20179"
   },
   {
    "case": "classm.g28.1",
@@ -49,7 +54,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 6 (Dollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 6 (Dollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 6\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2",
+   "subject_key": "bd5de310e547ab620760239bbae9e6d49f70fab5529d1ce55f86d3475500cd36"
   },
   {
    "case": "classm.g28.1",
@@ -57,7 +63,8 @@
    "project": "$0.00",
    "model": "no answer",
    "ruling": "Ruling: model error; on the reply format, not the tax reading. The prompt (.classm/classm.g28.1.deepseek.prompt.txt) lists the line as \"line 7 (NonNegDollars)\" and asks for printed: \"<printed>\"; the reply names it \"line 7 (NonNegDollars)\", keeping the type, and the class M parser (tools/transcription/classm.py extract) strips only a leading \"line \" before matching, so the log records no answer (the same model's reply for classm.g28.2 uses \"line 7\" and was read). The reply's value is $0.00; the project's is $0.00. The worksheet is not reached on this return (Schedule D line 17 No; g28.reached false; i1040sd p. 11, Line 18: \"If you checked “Yes” on line 17, complete the 28% Rate Gain Worksheet in these instructions\"), so the project hides the line and the right entry is blank; the reply's zero is permitted by the skipped-line rule. No project defect. No expectation is recorded for a line without a parsed answer; nothing to drop.",
-   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2"
+   "context": "87416c2e12a5e5795bcf2dfaaf564d87798c61f1b3a264026730d68359775bb2",
+   "subject_key": "c1f6c6ac417f740735fd5eb42658455f8c3983f5f2284124be2b2c3d6a6a4037"
   }
  ]
 }

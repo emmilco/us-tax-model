@@ -6,229 +6,265 @@
    "printed": "1 (sc.line1)",
    "restated": "Input — Gross receipts or sales of this business for 2025, including all amounts reported to you on Forms 1099-NEC, 1099-MISC and 1099-K for this business (zero if none)",
    "model": "The IRS asks only for gross receipts and 'amounts properly shown on your Forms 1099-NEC', telling filers to check Forms 1099 'for business income that must be reported on this line'. Line 6 separately takes 'Prizes and awards related to your trade or business' and similar items that can appear on Form 1099-MISC, so 'all amounts reported ... on Forms 1099-MISC' can put line 6 income on line 1.",
-   "ruling": "Ruling: model right; fixed (BUG-0067). The question asked for all amounts on Forms 1099-MISC, which can include line 6 income such as prizes and awards (i1040sc p. 6, Line 6). It now asks for amounts properly shown on Forms 1099-NEC and other gross receipts reported on a Form 1099, not the other business income asked separately. Not re-reviewed on the new wording."
+   "ruling": "Ruling: model right; fixed (BUG-0067). The question asked for all amounts on Forms 1099-MISC, which can include line 6 income such as prizes and awards (i1040sc p. 6, Line 6). It now asks for amounts properly shown on Forms 1099-NEC and other gross receipts reported on a Form 1099, not the other business income asked separately. Not re-reviewed on the new wording.",
+   "subject_key": "8498a1257606e27ab9bc06f0d5d7c11024b6aad1fc16bb79f60f7815611a56b1"
   },
   {
    "printed": "1(c)",
    "restated": "Subtract helper \"Deductions attributable to this business: self-employment tax, retirement plan and health insurance (Form 7206 for this business)\" from helper \"The amount for Schedule 1, line 3 and Schedule SE, line 2\".",
    "model": "Form 8995 QBI must account for the 'deductible part of self-employment tax, self-employment health insurance deduction, and contributions to qualified retirement plans' attributable to the business. The text gives no method for attributing the SE tax or plan deductions among businesses, so the profit-share proration cannot be verified.",
-   "ruling": "Ruling: owner accepted (amb.2025.qbi_attribution, T-041); restatement accepted. i8995 p. 2 says QBI accounts for the deductible part of self-employment tax, the self-employment health insurance deduction and contributions to qualified retirement plans attributable to the business but gives no method; the project attributes them by the business's share of net profits (Form 7206 lines 7 and 9) and its own Form 7206 line 14."
+   "ruling": "Ruling: owner accepted (amb.2025.qbi_attribution, T-041); restatement accepted. i8995 p. 2 says QBI accounts for the deductible part of self-employment tax, the self-employment health insurance deduction and contributions to qualified retirement plans attributable to the business but gives no method; the project attributes them by the business's share of net profits (Form 7206 lines 7 and 9) and its own Form 7206 line 14.",
+   "subject_key": "b359fa97efc29489ad9fc049e1e5a3e905f0a23ceb6147c546429dc03b85f4b2"
   },
   {
    "printed": "1(c)",
    "restated": "Subtract helper \"Deductions attributable to this business: self-employment tax, retirement plan and health insurance (Form 7206 for this business)\" from helper \"The amount for Schedule 1, line 3 and Schedule SE, line 2\".",
    "model": "Form 8995 QBI must account for the 'deductible part of self-employment tax, self-employment health insurance deduction, and contributions to qualified retirement plans' attributable to the business. The text gives no method for attributing these to a business, so the profit-share proration cannot be confirmed.",
-   "ruling": "Ruling: owner accepted (amb.2025.qbi_attribution, T-041); restatement accepted. i8995 p. 2 says QBI accounts for the deductible part of self-employment tax, the self-employment health insurance deduction and contributions to qualified retirement plans attributable to the business but gives no method; the project attributes them by the business's share of net profits (Form 7206 lines 7 and 9) and its own Form 7206 line 14."
+   "ruling": "Ruling: owner accepted (amb.2025.qbi_attribution, T-041); restatement accepted. i8995 p. 2 says QBI accounts for the deductible part of self-employment tax, the self-employment health insurance deduction and contributions to qualified retirement plans attributable to the business but gives no method; the project attributes them by the business's share of net profits (Form 7206 lines 7 and 9) and its own Form 7206 line 14.",
+   "subject_key": "b359fa97efc29489ad9fc049e1e5a3e905f0a23ceb6147c546429dc03b85f4b2"
   },
   {
    "printed": "1(c)",
    "restated": "Subtract helper \"Deductions attributable to this business: self-employment tax, retirement plan and health insurance (Form 7206 for this business)\" from helper \"The amount for Schedule 1, line 3 and Schedule SE, line 2\".",
    "model": "Form 8995 says QBI accounts for the 'deductible part of self-employment tax, self-employment health insurance deduction, and contributions to qualified retirement plans' attributable to the business. The text gives no method for attributing the SEP or SIMPLE deduction, so the pro rata allocation cannot be confirmed.",
-   "ruling": "Ruling: agent reading for the owner (amb.2025.qbi_attribution, TASKS.md T-041); restatement accepted. i8995 p. 2 says QBI accounts for the deductible part of self-employment tax, the self-employment health insurance deduction and contributions to qualified retirement plans attributable to the business but gives no method; the project attributes them by the business's share of net profits (Form 7206 lines 7 and 9) and its own Form 7206 line 14."
+   "ruling": "Ruling: agent reading for the owner (amb.2025.qbi_attribution, TASKS.md T-041); restatement accepted. i8995 p. 2 says QBI accounts for the deductible part of self-employment tax, the self-employment health insurance deduction and contributions to qualified retirement plans attributable to the business but gives no method; the project attributes them by the business's share of net profits (Form 7206 lines 7 and 9) and its own Form 7206 line 14.",
+   "subject_key": "b359fa97efc29489ad9fc049e1e5a3e905f0a23ceb6147c546429dc03b85f4b2"
   },
   {
    "printed": "1(c)",
    "restated": "Subtract helper \"Deductions attributable to this business: self-employment tax, retirement plan and health insurance (Form 7206 for this business)\" from helper \"The amount for Schedule 1, line 3 and Schedule SE, line 2\".",
    "model": "Subtracting the self-employment tax deduction, retirement contributions and health insurance deduction agrees with the Form 8995 instructions on attributable items. The text does not say how to attribute the deductible self-employment tax among several businesses, so the net-profit-share allocation cannot be confirmed; the instructions' full QBI exclusions are also only partly provided.",
    "ruling": "Ruling: ambiguity (amb.2025.qbi_attribution); i8995 p. 2 names the attributable deductions but no allocation among businesses; the project prorates by net profit, the recorded reading.",
-   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3",
+   "subject_key": "b359fa97efc29489ad9fc049e1e5a3e905f0a23ceb6147c546429dc03b85f4b2"
   },
   {
    "printed": "12 (sc.s179_allowed)",
    "restated": "Choose — [s179 helper \"The deduction differs from the amounts elected for 2025\" = false → helper \"Section 179 elected for this business's 2025 property\"] [s179 helper \"The deduction differs from the amounts elected for 2025\" = true → helper \"The return's section 179 deduction, for its only Schedule C\"]",
    "model": "The program sets Form 4562 line 1 to a flat $2,500,000, but Worksheet 1 says 'Enter the smaller of line 1 or line 2' and 'Enter the amount from line 3 here and on Form 4562, line 1'. When 2025 section 179 cost is below $2,500,000, this overstates lines 5 and 11, so a carryover can raise the line 12 deduction and Schedule C line 13 too much.",
    "ruling": "Ruling: ambiguity — T-043 / amb.2025.s179_carryover_no_property (owner adopted): s179.line1 is the $2,500,000 limitation, not the smaller of the limitation and the 2025 cost, on the line 1 instruction's reading. Worksheet 1's \"Enter the smaller of line 1 or line 2\" is the recorded competing reading; the project keeps the owner's adopted line 1. The render complaint repeats it.",
-   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300"
+   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300",
+   "subject_key": "e753501b0c35ab0e37e34103d669476ff8bf9cab0953b0a60177114bb47a46f2"
   },
   {
    "printed": "12 (sc.s179_allowed)",
    "restated": "Choose — [s179 helper \"The deduction differs from the amounts elected for 2025\" = false → helper \"Section 179 elected for this business's 2025 property\"] [s179 helper \"The deduction differs from the amounts elected for 2025\" = true → helper \"The return's section 179 deduction, for its only Schedule C\"]",
    "model": "The return's deduction relies on Form 4562 line 1 being a flat $2,500,000, but Worksheet 1 says to enter the smaller of total section 179 cost or the limit: 'Enter the amount from line 3 here and on Form 4562, line 1.' With a carryover, line 5 and therefore lines 11 and 12 can differ: $10,000 of cost and a $5,000 carryover give $10,000 under the worksheet and $15,000 here.",
    "ruling": "Ruling: ambiguity (owner ruling T-043, amb.2025.s179_carryover_no_property); s179.line1 is the $2,500,000 limitation on the line 1 instruction's reading, and Worksheet 1's smaller-of reading is the recorded competing one.",
-   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3",
+   "subject_key": "e753501b0c35ab0e37e34103d669476ff8bf9cab0953b0a60177114bb47a46f2"
   },
   {
    "printed": "13 (sc.line13)",
    "restated": "Add helper \"Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)\" and line 12 (sc.s179_allowed).",
    "model": "Form 4562 line 22 adds 'line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21'. The helper covers only lines 14, 17 and 19 (3- to 20-year and 15-year SL), plus listed property from line 25 and 'line 26' column (h); it omits lines 15, 16, 19g–j, 20 and line 27, with no refusal shown. Whether the asset roster can contain such property cannot be determined from the text.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. As Form 4562 line 22: The omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers; lines 19g to 19j (25-year, residential rental, nonresidential real property) through asset.screen (real property) and the recovery-class lookup ('outside'); line 20 (ADS) through asset.screen ('you depreciate it under ADS'). With those refused the total is the lines listed."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. As Form 4562 line 22: The omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers; lines 19g to 19j (25-year, residential rental, nonresidential real property) through asset.screen (real property) and the recovery-class lookup ('outside'); line 20 (ADS) through asset.screen ('you depreciate it under ADS'). With those refused the total is the lines listed.",
+   "subject_key": "4e440d9717bc8ccdec7ba832c871bc02045ee814597813125a8e3c23bfc8cc91"
   },
   {
    "printed": "13 (sc.line13)",
    "restated": "Add helper \"Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)\" and line 12 (sc.s179_allowed).",
    "model": "Form 4562 line 22 totals 'line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21'. The helper takes only lines 14, 17, 19 (seven periods; no 25-year, residential or nonresidential real property) and 21. It omits line 15, line 16 ('Other depreciation (including ACRS)') and line 20 (ADS), and no refusal names these exclusions.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. As Form 4562 line 22: The omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers; lines 19g to 19j (25-year, residential rental, nonresidential real property) through asset.screen (real property) and the recovery-class lookup ('outside'); line 20 (ADS) through asset.screen ('you depreciate it under ADS'). With those refused the total is the lines listed."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. As Form 4562 line 22: The omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers; lines 19g to 19j (25-year, residential rental, nonresidential real property) through asset.screen (real property) and the recovery-class lookup ('outside'); line 20 (ADS) through asset.screen ('you depreciate it under ADS'). With those refused the total is the lines listed.",
+   "subject_key": "4e440d9717bc8ccdec7ba832c871bc02045ee814597813125a8e3c23bfc8cc91"
   },
   {
    "printed": "13 (sc.line13)",
    "restated": "Add helper \"Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)\" and line 12 (sc.s179_allowed).",
    "model": "Form 4562 line 22 totals 'line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21'. The restatement omits line 15, line 16 ('Other depreciation (including ACRS)'), line 20 (ADS) and lines 19g-19j, and no refusal names these exclusions.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. As Form 4562 line 22: The omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers; lines 19g to 19j (25-year, residential rental, nonresidential real property) through asset.screen (real property) and the recovery-class lookup ('outside'); line 20 (ADS) through asset.screen ('you depreciate it under ADS'). With those refused the total is the lines listed."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. As Form 4562 line 22: The omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers; lines 19g to 19j (25-year, residential rental, nonresidential real property) through asset.screen (real property) and the recovery-class lookup ('outside'); line 20 (ADS) through asset.screen ('you depreciate it under ADS'). With those refused the total is the lines listed.",
+   "subject_key": "4e440d9717bc8ccdec7ba832c871bc02045ee814597813125a8e3c23bfc8cc91"
   },
   {
    "printed": "13 (sc.line13)",
    "restated": "Add helper \"Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)\" and line 12 (sc.s179_allowed).",
    "model": "Form 4562 line 28 says 'Add amounts in column (h), lines 25 through 27', but the helper adds only line 25 and column (h) of line 26, omitting line 27. Line 22 also adds 'lines 14 through 17, lines 19 and 20', while the helper omits lines 15, 16 and 20 and names no refusal for them.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. As Form 4562 lines 22 and 28: the omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers; line 20 (ADS) through asset.screen ('you depreciate it under ADS'); and line 27 (listed property used 50% or less in a qualified business use) through the asset's and the vehicle's low-use refusal ('Listed property used 50% or less in a qualified business use (Form 4562 line 27)', asset.yaml, scveh.yaml). With those refused the total is the lines listed."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. As Form 4562 lines 22 and 28: the omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers; line 20 (ADS) through asset.screen ('you depreciate it under ADS'); and line 27 (listed property used 50% or less in a qualified business use) through the asset's and the vehicle's low-use refusal ('Listed property used 50% or less in a qualified business use (Form 4562 line 27)', asset.yaml, scveh.yaml). With those refused the total is the lines listed.",
+   "subject_key": "4e440d9717bc8ccdec7ba832c871bc02045ee814597813125a8e3c23bfc8cc91"
   },
   {
    "printed": "13 (sc.line13)",
    "restated": "Add helper \"Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)\" and line 12 (sc.s179_allowed).",
    "model": "The total covers only Form 4562 lines 14, 17, certain line 19 rows, 21 (via line 28) and 12. The Form 4562 total says 'Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21'. Lines 15, 16, 19g–19j and 20 are omitted, and no refusal names them.",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. As Form 4562 line 22: The omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers; lines 19g to 19j (25-year, residential rental, nonresidential real property) through asset.screen (real property) and the recovery-class lookup ('outside'); line 20 (ADS) through asset.screen ('you depreciate it under ADS'). With those refused the total is the lines listed."
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. As Form 4562 line 22: The omitted lines are refused on the asset: line 15 (property elected out of MACRS) and line 16 (other depreciation, including ACRS) through asset.screen ('by a method other than the MACRS percentage tables') and the years placed in service the tool offers; lines 19g to 19j (25-year, residential rental, nonresidential real property) through asset.screen (real property) and the recovery-class lookup ('outside'); line 20 (ADS) through asset.screen ('you depreciate it under ADS'). With those refused the total is the lines listed.",
+   "subject_key": "4e440d9717bc8ccdec7ba832c871bc02045ee814597813125a8e3c23bfc8cc91"
   },
   {
    "printed": "2 (sc.f7206_line2)",
    "restated": "Add ltc.amount over every confirmed ltc entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Form 7206 line 2 is the per-person smaller of the payments or the age-based limit, but how ltc.amount is figured is not given. The scope 'within the current person' rather than this business's plan also cannot be checked.",
-   "ruling": "Ruling: representation; restatement accepted. ltc.amount is the smaller of the payments and the age limit for each person covered under this business's plan (ltc.yaml, Form 7206 line 2(a), 2(b)); the sum is over this business's entries, which are children of the sc entry. A person covered under more than one business is refused since BUG-0063."
+   "ruling": "Ruling: representation; restatement accepted. ltc.amount is the smaller of the payments and the age limit for each person covered under this business's plan (ltc.yaml, Form 7206 line 2(a), 2(b)); the sum is over this business's entries, which are children of the sc entry. A person covered under more than one business is refused since BUG-0063.",
+   "subject_key": "9d6e5194cdf23d85c72a92339af7028493e3fea088da23727a76f4596fa0c5f6"
   },
   {
    "printed": "2 (sc.f7206_line2)",
    "restated": "Add ltc.amount over every confirmed ltc entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Form 7206 line 2 requires, for each person, 'the smaller of (a) or (b)' using the age limits ($480 to $6,020). The restatement sums ltc.amount, and the given material does not show whether that amount is capped.",
-   "ruling": "Ruling: representation; restatement accepted. ltc.amount is the smaller of the payments and the age limit for each person covered under this business's plan (ltc.yaml, Form 7206 line 2(a), 2(b)); the sum is over this business's entries, which are children of the sc entry. A person covered under more than one business is refused since BUG-0063."
+   "ruling": "Ruling: representation; restatement accepted. ltc.amount is the smaller of the payments and the age limit for each person covered under this business's plan (ltc.yaml, Form 7206 line 2(a), 2(b)); the sum is over this business's entries, which are children of the sc entry. A person covered under more than one business is refused since BUG-0063.",
+   "subject_key": "9d6e5194cdf23d85c72a92339af7028493e3fea088da23727a76f4596fa0c5f6"
   },
   {
    "printed": "2 (sc.f7206_line2)",
    "restated": "Add ltc.amount over every confirmed ltc entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 2 requires 'for each person covered the smaller of (a) or (b)', with the age-based limits. The definition of ltc.amount is not given, so it cannot be confirmed that each entry is capped.",
-   "ruling": "Ruling: representation; restatement accepted. ltc.amount is the smaller of the payments and the age limit for each person covered under this business's plan (ltc.yaml, Form 7206 line 2(a), 2(b)); the sum is over this business's entries, which are children of the sc entry. A person covered under more than one business is refused since BUG-0063."
+   "ruling": "Ruling: representation; restatement accepted. ltc.amount is the smaller of the payments and the age limit for each person covered under this business's plan (ltc.yaml, Form 7206 line 2(a), 2(b)); the sum is over this business's entries, which are children of the sc entry. A person covered under more than one business is refused since BUG-0063.",
+   "subject_key": "9d6e5194cdf23d85c72a92339af7028493e3fea088da23727a76f4596fa0c5f6"
   },
   {
    "printed": "2 (sc.f7206_line2)",
    "restated": "Add ltc.amount over every confirmed ltc entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Line 2 requires, for each person, 'the smaller of (a) or (b)' using the age-based amounts. Whether ltc.amount applies that cap and the employer-subsidy exclusion is not shown.",
-   "ruling": "Ruling: representation; restatement accepted. ltc.amount is the smaller of the payments and the age limit for each person covered under this business's plan (ltc.yaml, Form 7206 line 2(a), 2(b)); the sum is over this business's entries, which are children of the sc entry. A person covered under more than one business is refused since BUG-0063."
+   "ruling": "Ruling: representation; restatement accepted. ltc.amount is the smaller of the payments and the age limit for each person covered under this business's plan (ltc.yaml, Form 7206 line 2(a), 2(b)); the sum is over this business's entries, which are children of the sc entry. A person covered under more than one business is refused since BUG-0063.",
+   "subject_key": "9d6e5194cdf23d85c72a92339af7028493e3fea088da23727a76f4596fa0c5f6"
   },
   {
    "printed": "2 (sc.f7206_line2)",
    "restated": "Add ltc.amount over every confirmed ltc entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The smaller-of test and total per person are right, but the helper excludes months when 'the person' was eligible for a subsidized plan. The form says: 'Don't include payments for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of either your dependent or your child.' A covered person's premiums would be wrongly included when the filer is the one eligible.",
    "ruling": "Ruling: finding (BUG-0304, fixed in this pass); f7206 line 2: \"any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of either your dependent or your child\". ltc.payments tested the person covered; it now states the filer's test, and the ltc reviews were rerun on the new wording.",
-   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3",
+   "subject_key": "9d6e5194cdf23d85c72a92339af7028493e3fea088da23727a76f4596fa0c5f6"
   },
   {
    "printed": "23",
    "restated": "Input — Business taxes and licenses: sales tax imposed on you as the seller, real estate and personal property taxes on business assets, licenses and regulatory fees paid each year (not licenses you must amortize, such as some liquor licenses), the employer share of social security and Medicare taxes, federal unemployment tax, federal highway use tax, state unemployment contributions (not income or self-employment tax, not taxes on property you bought, and not real estate taxes on your home, which with the simplified method for business use of the home you can deduct only on Schedule A); zero if none",
    "model": "The IRS list includes 'Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit fund if they are considered taxes under state law'. The restatement keeps only 'state unemployment contributions' and omits paid family and medical leave fund contributions.",
    "ruling": "Ruling: finding (low; pre-existing, not introduced by the package); i1040sc p. 9, Line 23, \"Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit fund if they are considered taxes under state law\". The question names state unemployment contributions only, so a filer may leave out paid family and medical leave fund contributions (an understated deduction). The package changed only the license wording (\"not licenses you must amortize\"), which matches p. 9. See bklg/sc.findings.md.",
-   "context": "2d23ee9369b1835a72d131382592deee3745abf60c266fdaadf15073d91f20cf"
+   "context": "2d23ee9369b1835a72d131382592deee3745abf60c266fdaadf15073d91f20cf",
+   "subject_key": "a1afdd3ed706ee9ce4224ae77d70199de54672ae1d7bbf29ae16d896e8450529"
   },
   {
    "printed": "24b",
    "restated": "Add helper \"50% of the meals subject to the 50% limit\" and helper \"80% of the meals under the hours of service limits\".",
    "model": "Only the 50% and 80% categories are provided. The instructions also say 'you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages', and likewise for amounts reported on Form 1099-NEC. These 100% meals have no place, and no refusal names them.",
-   "ruling": "Ruling: scope gap recorded; restatement accepted for the meals it asks. Meals fully deductible (treated as wages, or reported on Form 1099-NEC; i1040sc p. 10) have no input; a filer who entered them at 50% would understate the deduction. Left for the owner as TASKS.md T-042 (a 100% input or a refusal)."
+   "ruling": "Ruling: scope gap recorded; restatement accepted for the meals it asks. Meals fully deductible (treated as wages, or reported on Form 1099-NEC; i1040sc p. 10) have no input; a filer who entered them at 50% would understate the deduction. Left for the owner as TASKS.md T-042 (a 100% input or a refusal).",
+   "subject_key": "92ed3a5f97abe43b9f98e52c36fabc76f20e15138a5d28dd2dd9474f58798e3f"
   },
   {
    "printed": "24b",
    "restated": "Add helper \"50% of the meals subject to the 50% limit\", helper \"80% of the meals under the hours of service limits\", and helper \"Meals and incidentals not subject to the 50% limit, deducted in full\".",
    "model": "The 50% and 80% DOT parts and the employee-wage and 1099-NEC full-deduction exceptions match the instructions. The added 100% categories (client-reimbursed meals, employee recreation, food for the public, meals sold) come from 'chapter 5 of Pub. 15 ... other exceptions', which was not provided.",
    "ruling": "Ruling: ambiguity (amb.2025.meals_full_exceptions); i1040sc p. 10, Line 24b, \"See chapter 5 of Pub. 15, Employer's Tax Guide, for details and other exceptions\". The added full-deduction categories are the register's recorded reading of those exceptions; the review pages did not include Pub. 15.",
-   "context": "2d23ee9369b1835a72d131382592deee3745abf60c266fdaadf15073d91f20cf"
+   "context": "2d23ee9369b1835a72d131382592deee3745abf60c266fdaadf15073d91f20cf",
+   "subject_key": "92ed3a5f97abe43b9f98e52c36fabc76f20e15138a5d28dd2dd9474f58798e3f"
   },
   {
    "printed": "24b",
    "restated": "Add helper \"50% of the meals subject to the 50% limit\", helper \"80% of the meals under the hours of service limits\", and helper \"Meals and incidentals not subject to the 50% limit, deducted in full\".",
    "model": "The 50% and 80% rates and the first two full-deduction categories match 'Amount of deduction'. The text only points to Pub. 15 and Pub. 334 for 'other exceptions', so the customer-reimbursed, employee-recreation, public-promotion and sold-to-public categories need those missing sources.",
    "ruling": "Ruling: owner ruling (T-042; amb.2025.meals_full_exceptions); restatement accepted. The 50% and 80% rates and the two full-deduction cases match i1040sc p. 10 as the model says. The other categories come from Pub. 463 (2025) p. 16, Exception to the 50% Limit for Meals, which the instruction reaches through 'See chapter 5 of Pub. 15 ... for details and other exceptions. See also chapter 8 of Pub. 334': Pub. 15 chapter 5 lists no exceptions and Pub. 334 refers to Pub. 463. The model was given the i1040sc pages only, so it could not see that list.",
-   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300"
+   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300",
+   "subject_key": "92ed3a5f97abe43b9f98e52c36fabc76f20e15138a5d28dd2dd9474f58798e3f"
   },
   {
    "printed": "24b",
    "restated": "Add helper \"50% of the meals subject to the 50% limit\", helper \"80% of the meals under the hours of service limits\", and helper \"Meals and incidentals not subject to the 50% limit, deducted in full\".",
    "model": "The 50% and 80% rates and the two full-deduction cases (wages subject to withholding; nonemployee amounts reported on Form 1099-NEC) match the text. The other fully deductible categories in the helper (client reimbursements, employee recreation, food for the public, meals sold) are not in the given text, which only refers to 'chapter 5 of Pub. 15 ... for details and other exceptions'.",
-   "ruling": "Ruling: owner ruling (T-042; amb.2025.meals_full_exceptions); restatement accepted. The 50% and 80% rates and the two full-deduction cases match i1040sc p. 10 as the model says. The other categories come from Pub. 463 (2025) p. 16, Exception to the 50% Limit for Meals, which the instruction reaches through 'See chapter 5 of Pub. 15 ... for details and other exceptions. See also chapter 8 of Pub. 334': Pub. 15 chapter 5 lists no exceptions and Pub. 334 refers to Pub. 463. The model was given the i1040sc pages only, so it could not see that list."
+   "ruling": "Ruling: owner ruling (T-042; amb.2025.meals_full_exceptions); restatement accepted. The 50% and 80% rates and the two full-deduction cases match i1040sc p. 10 as the model says. The other categories come from Pub. 463 (2025) p. 16, Exception to the 50% Limit for Meals, which the instruction reaches through 'See chapter 5 of Pub. 15 ... for details and other exceptions. See also chapter 8 of Pub. 334': Pub. 15 chapter 5 lists no exceptions and Pub. 334 refers to Pub. 463. The model was given the i1040sc pages only, so it could not see that list.",
+   "subject_key": "92ed3a5f97abe43b9f98e52c36fabc76f20e15138a5d28dd2dd9474f58798e3f"
   },
   {
    "printed": "24b",
    "restated": "Add helper \"50% of the meals subject to the 50% limit\", helper \"80% of the meals under the hours of service limits\", and helper \"Meals and incidentals not subject to the 50% limit, deducted in full\".",
    "model": "The 50%, 80% and full-deduction structure agrees with 'Amount of deduction', and the employee and nonemployee full-deduction cases are in the text. The other full-deduction categories (client-reimbursed meals, employee recreation, public promotion, meals sold) rest on Pub. 15 chapter 5 and Pub. 334 chapter 8, which are not provided.",
    "ruling": "Ruling: ambiguity (owner ruling T-042, amb.2025.meals_full_exceptions); restatement accepted. The 50% and 80% rates and the two full-deduction cases match i1040sc p. 10. The other categories come from Pub. 463 p. 16, which the instruction reaches through its references; the model was given the i1040sc pages only.",
-   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3",
+   "subject_key": "92ed3a5f97abe43b9f98e52c36fabc76f20e15138a5d28dd2dd9474f58798e3f"
   },
   {
    "printed": "32",
    "restated": "Input — All your investment in this business is at risk: you have no nonrecourse loans not secured by your own property, no amounts protected against loss by a guarantee or stop-loss agreement, and no amounts borrowed from someone with an interest in the business (box 32a)",
    "model": "The box 32b test omits part of the IRS condition: amounts borrowed 'from a person who has an interest in the business other than as a creditor or who is related under section 465(b)(3)(C) to a person (other than you) having such an interest'. A related-party loan would pass as at risk, while an ordinary creditor could be read as disqualifying.",
    "ruling": "Ruling: finding — i1040sc p. 15, Line 32, Some investment is not at risk: \"Amounts borrowed for use in the business from a person who has an interest in the business other than as a creditor or who is related under section 465(b)(3)(C) to a person (other than you) having such an interest.\" The box 32a question names a lender with an interest in the business but omits the related-party prong, so a related-party loan can answer Yes and deduct a loss the at-risk rules would limit. BUG-0290; fix the question with the Schedule C form pass (T-157).",
-   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300"
+   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300",
+   "subject_key": "94bb39f29d6deb149dc6376eb525a10fb63ff80905c3d676d9c299cca3f09c73"
   },
   {
    "printed": "4 (sc.f7206_line4)",
    "restated": "Enter the amount from helper \"Net profit of this business (zero for a loss)\".",
    "model": "It enters only this business's net profit. The form says: 'Enter your net profit* and any other earned income** from the trade or business,' and earned income includes gains from property you created. No screen excludes that income.",
    "ruling": "Ruling: scope; f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income.\" The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other).",
-   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3",
+   "subject_key": "15882397ba700a8406832367fc1c1ff30eb30c79cc3807c4e3ac5d0881142fd8"
   },
   {
    "printed": "5 (sc.f7206_line5)",
    "restated": "Enter the amount from person helper \"Total of all net profits of this person's businesses (losses not included)\".",
    "model": "It totals only the Schedule C net profits. The form also adds 'plus any other income allocable to the profitable businesses,' and no screen excludes that income. Schedule F and K-1 profits are excluded by the self-employment screen, but this item is not.",
    "ruling": "Ruling: scope; f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income.\" The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other). The same holds for \"other income allocable to the profitable businesses\".",
-   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3",
+   "subject_key": "0b78bb66b053b8a8151fc4f22d183c741e02df65e7cfb0e617a36d0e96d3277a"
   },
   {
    "printed": "7 (sc.f7206_line7)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"Schedule 1, line 15 (this person's), times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "Form 7206 says to multiply 'Schedule 1 (Form 1040), line 15' by line 6, while the program uses only this person's Schedule SE line 13 and this person's profits. The text does not say how to apply lines 5 and 7 on a joint return where both spouses have self-employment income; the computation is otherwise right.",
    "ruling": "Ruling: owner accepted (amb.2025.f7206_line15_person, T-041); restatement accepted. On a joint return Schedule 1 line 15 combines both spouses; Form 7206 is figured for the person whose business establishes the plan, and line 9 looks to 'the same trade or business', so the project uses that person's own Schedule SE line 13. The readings agree when only one spouse is self-employed.",
-   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300"
+   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300",
+   "subject_key": "6d4d767f34cc00cd088184007bbed4c66f3076fb7fa263f3a076d801a7a53c1a"
   },
   {
    "printed": "7 (sc.f7206_line7)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"Schedule 1, line 15 (this person's), times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "The form multiplies 'Schedule 1 (Form 1040), line 15' by line 6. The program uses this person's Schedule SE line 13. The given text does not say how to treat a joint return where both spouses owe self-employment tax.",
-   "ruling": "Ruling: owner accepted (amb.2025.f7206_line15_person, T-041); restatement accepted. On a joint return Schedule 1 line 15 combines both spouses; Form 7206 is figured for the person whose business establishes the plan, and line 9 looks to 'the same trade or business', so the project uses that person's own Schedule SE line 13. The readings agree when only one spouse is self-employed."
+   "ruling": "Ruling: owner accepted (amb.2025.f7206_line15_person, T-041); restatement accepted. On a joint return Schedule 1 line 15 combines both spouses; Form 7206 is figured for the person whose business establishes the plan, and line 9 looks to 'the same trade or business', so the project uses that person's own Schedule SE line 13. The readings agree when only one spouse is self-employed.",
+   "subject_key": "6d4d767f34cc00cd088184007bbed4c66f3076fb7fa263f3a076d801a7a53c1a"
   },
   {
    "printed": "7 (sc.f7206_line7)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"Schedule 1, line 15 (this person's), times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "The form says 'Multiply Schedule 1 (Form 1040), line 15', which on a joint return combines both spouses. The restatement uses only this person's Schedule SE line 13, and the text does not say how a joint return where both spouses have self-employment tax is handled.",
-   "ruling": "Ruling: owner accepted (amb.2025.f7206_line15_person, T-041); restatement accepted. On a joint return Schedule 1 line 15 combines both spouses; Form 7206 is figured for the person whose business establishes the plan, and line 9 looks to 'the same trade or business', so the project uses that person's own Schedule SE line 13. The readings agree when only one spouse is self-employed."
+   "ruling": "Ruling: owner accepted (amb.2025.f7206_line15_person, T-041); restatement accepted. On a joint return Schedule 1 line 15 combines both spouses; Form 7206 is figured for the person whose business establishes the plan, and line 9 looks to 'the same trade or business', so the project uses that person's own Schedule SE line 13. The readings agree when only one spouse is self-employed.",
+   "subject_key": "6d4d767f34cc00cd088184007bbed4c66f3076fb7fa263f3a076d801a7a53c1a"
   },
   {
    "printed": "9 (sc.f7206_line9)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "Form 7206 asks for the Schedule 1 line 16 amount 'attributable to the same trade or business' but gives no method. The text does not say that prorating by share of net profits is correct.",
-   "ruling": "Ruling: agent reading for the owner (amb.2025.f7206_plan_attribution, TASKS.md T-041); restatement accepted. The form gives no method for the part of Schedule 1 line 16 attributable to the business; the project prorates by the business's share of net profits, as Form 7206 lines 6 and 7 do for the self-employment tax."
+   "ruling": "Ruling: agent reading for the owner (amb.2025.f7206_plan_attribution, TASKS.md T-041); restatement accepted. The form gives no method for the part of Schedule 1 line 16 attributable to the business; the project prorates by the business's share of net profits, as Form 7206 lines 6 and 7 do for the self-employment tax.",
+   "subject_key": "d3898a9e5ce080db1f3f1a199602db6915991020019f3654821b745a426114a7"
   },
   {
    "printed": "9 (sc.f7206_line9)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "Form 7206 line 9 asks for the Schedule 1, line 16 amount 'attributable to the same trade or business'. The text does not say to allocate by share of net profits, so the proration method cannot be confirmed.",
-   "ruling": "Ruling: agent reading for the owner (amb.2025.f7206_plan_attribution, TASKS.md T-041); restatement accepted. The form gives no method for the part of Schedule 1 line 16 attributable to the business; the project prorates by the business's share of net profits, as Form 7206 lines 6 and 7 do for the self-employment tax."
+   "ruling": "Ruling: agent reading for the owner (amb.2025.f7206_plan_attribution, TASKS.md T-041); restatement accepted. The form gives no method for the part of Schedule 1 line 16 attributable to the business; the project prorates by the business's share of net profits, as Form 7206 lines 6 and 7 do for the self-employment tax.",
+   "subject_key": "d3898a9e5ce080db1f3f1a199602db6915991020019f3654821b745a426114a7"
   },
   {
    "printed": "9 (sc.f7206_line9)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "Line 9 asks for the Schedule 1 line 16 amount 'attributable to the same trade or business in which the insurance plan is established.' The program prorates the person's whole deduction by share of net profits, and the text does not say whether proration equals that attribution.",
-   "ruling": "Ruling: owner accepted (amb.2025.f7206_plan_attribution, T-041); restatement accepted. The form gives no method for the part of Schedule 1 line 16 attributable to the business; the project prorates by the business's share of net profits, as Form 7206 lines 6 and 7 do for the self-employment tax. (The register entry's premise that the plan limits are figured on all businesses is questioned under the person render log, Step 1.)"
+   "ruling": "Ruling: owner accepted (amb.2025.f7206_plan_attribution, T-041); restatement accepted. The form gives no method for the part of Schedule 1 line 16 attributable to the business; the project prorates by the business's share of net profits, as Form 7206 lines 6 and 7 do for the self-employment tax. (The register entry's premise that the plan limits are figured on all businesses is questioned under the person render log, Step 1.)",
+   "subject_key": "d3898a9e5ce080db1f3f1a199602db6915991020019f3654821b745a426114a7"
   },
   {
    "printed": "9 (sc.f7206_line9)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "The form asks for the Schedule 1 line 16 amount 'attributable to the same trade or business in which the insurance plan is established'. The program prorates by share of net profits, but the text gives no proration method.",
-   "ruling": "Ruling: agent reading for the owner (amb.2025.f7206_plan_attribution, TASKS.md T-041); restatement accepted. The form gives no method for the part of Schedule 1 line 16 attributable to the business; the project prorates by the business's share of net profits, as Form 7206 lines 6 and 7 do for the self-employment tax."
+   "ruling": "Ruling: agent reading for the owner (amb.2025.f7206_plan_attribution, TASKS.md T-041); restatement accepted. The form gives no method for the part of Schedule 1 line 16 attributable to the business; the project prorates by the business's share of net profits, as Form 7206 lines 6 and 7 do for the self-employment tax.",
+   "subject_key": "d3898a9e5ce080db1f3f1a199602db6915991020019f3654821b745a426114a7"
   },
   {
    "printed": "9 (sc.f7206_line9)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "The form asks for the Schedule 1, line 16 amount 'attributable to the same trade or business in which the insurance plan is established'. The given text does not say how to attribute it, so the profit-share proration cannot be confirmed.",
-   "ruling": "Ruling: owner accepted (amb.2025.f7206_plan_attribution, T-041); restatement accepted. The form gives no method for the part of Schedule 1 line 16 attributable to the business; the project prorates by the business's share of net profits, as Form 7206 lines 6 and 7 do for the self-employment tax."
+   "ruling": "Ruling: owner accepted (amb.2025.f7206_plan_attribution, T-041); restatement accepted. The form gives no method for the part of Schedule 1 line 16 attributable to the business; the project prorates by the business's share of net profits, as Form 7206 lines 6 and 7 do for the self-employment tax.",
+   "subject_key": "d3898a9e5ce080db1f3f1a199602db6915991020019f3654821b745a426114a7"
   },
   {
    "printed": "9 (sc.line9)",
    "restated": "Add scveh.line9 over every confirmed scveh entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The line is a sum of scveh.line9, but how the vehicle record figures standard mileage or actual expenses is not in the text given. The scope 'within the current person' rather than this business also cannot be checked.",
-   "ruling": "Ruling: representation; restatement accepted. Line 9 is the sum of each vehicle's line 9 within this business (the sc entry is the parent of its scveh entries, so 'the current person' sum is taken inside this business's entry); each vehicle's standard mileage or actual expense figure has its own transcription, render and class M logs (scveh)."
+   "ruling": "Ruling: representation; restatement accepted. Line 9 is the sum of each vehicle's line 9 within this business (the sc entry is the parent of its scveh entries, so 'the current person' sum is taken inside this business's entry); each vehicle's standard mileage or actual expense figure has its own transcription, render and class M logs (scveh).",
+   "subject_key": "7b15e45b78e7cd0ad9043929a3983ab87bac5267ff9608892f2dd062b09cc19f"
   },
   {
    "printed": "G",
    "restated": "Input — Did you \"materially participate\" in the operation of this business during 2025 (for example, you worked in it more than 500 hours, or your work was substantially all the work done in it, or more than 100 hours and at least as much as anyone else; see the seven tests in the instructions for line G), and is the business something other than a rental activity?",
    "model": "The restatement leaves out the oil and gas exception. The IRS text says to check Yes if 'you meet any of the material participation tests ... or the exception for oil and gas applies', and a working interest 'is not a passive activity'. Such a filer would answer No and be refused as passive, which the refusal does not name.",
-   "ruling": "Ruling: fixed (BUG-0064). The question now includes the exception for oil and gas (i1040sc p. 4, line G; p. 5, Exception for oil and gas), so a working interest is answered Yes and not refused as passive."
+   "ruling": "Ruling: fixed (BUG-0064). The question now includes the exception for oil and gas (i1040sc p. 4, line G; p. 5, Exception for oil and gas), so a working interest is answered Yes and not refused as passive.",
+   "subject_key": "9f016e1e9db129172f59d4a7cd83e239e27455204af38c1b4f60d37f2bbb05d7"
   }
  ]
 }

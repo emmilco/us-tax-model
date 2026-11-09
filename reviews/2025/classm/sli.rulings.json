@@ -8,7 +8,8 @@
    "project": "$-52,064.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "case": "classm.sli.2",
@@ -16,7 +17,8 @@
    "project": "$2,500.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model wrote the bar into the lines, and the project figures every worksheet line (line 1 is the interest $3,000.00 limited to $2,500.00, p. 99, line 1) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a838eeff3bcd4d61dc882d62ced60ba97b05c6e51125f9811275b717b5f28285"
   },
   {
    "case": "classm.sli.2",
@@ -24,7 +26,8 @@
    "project": "$87,733.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model left the worksheet blank, and the project figures every worksheet line (line 2 is Form 1040 line 9, $87,733.00) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. A blank is not the number zero. Dropped from the fixture as not evidence. No change to the data.",
-   "drop": true
+   "drop": true,
+   "subject_key": "3c153da955e87e162ff1ced0762ced2c360a2f4da18eeb6cc3b2c64f494d66c2"
   },
   {
    "case": "classm.sli.2",
@@ -32,7 +35,8 @@
    "project": "$87,733.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model left the worksheet blank, and the project figures every worksheet line (line 4 is line 2 less a $0.00 line 3, $87,733.00) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. A blank is not the number zero. Dropped from the fixture as not evidence. No change to the data.",
-   "drop": true
+   "drop": true,
+   "subject_key": "6eb8b0d52a5ec45cab08b9284610ac7204f391dc942b891ed8ef3dfcfb43428d"
   },
   {
    "case": "classm.sli.2",
@@ -40,7 +44,8 @@
    "project": "$85,000.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model left the worksheet blank, and the project figures every worksheet line (line 5 is $85,000 for a qualifying surviving spouse, p. 99, line 5) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. A blank is not the number zero. Dropped from the fixture as not evidence. No change to the data.",
-   "drop": true
+   "drop": true,
+   "subject_key": "80c5d817003325c5d05da594b77bdd357b1e47153df5157ccefd99919c3dcc1c"
   },
   {
    "case": "classm.sli.2",
@@ -48,7 +53,8 @@
    "project": "$13,294.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "case": "classm.sli.2",
@@ -56,7 +62,8 @@
    "project": "$2,584.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. A married filer filing separately cannot take the deduction (i1040gi p. 98, 'Your filing status is any status except married filing separately') and does not use the worksheet; the project figures every worksheet line for such a filer and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is 0.00, as the model's line 9; the model wrote the bar into the lines instead. With no line 5 amount printed for this status the project's line 5 is 0.00, so line 4 is more than line 5 and line 6 is 2,584.00 less 0.00 = 2,584.00. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "case": "classm.sli.2",
@@ -64,7 +71,8 @@
    "project": "$2,733.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model left the worksheet blank, and the project figures every worksheet line (line 6 is $87,733.00 less $85,000.00 = $2,733.00) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. A blank is not the number zero. Dropped from the fixture as not evidence. No change to the data.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "case": "classm.sli.2",
@@ -72,7 +80,8 @@
    "project": "$2,215.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d707b2b9166357e3f671fbb542609b3c19995d32d8b94723fe5c7d188d581072"
   },
   {
    "case": "classm.sli.2",
@@ -80,7 +89,8 @@
    "project": "$430.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. A married filer filing separately cannot take the deduction (i1040gi p. 98, 'Your filing status is any status except married filing separately') and does not use the worksheet; the project figures every worksheet line for such a filer and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is 0.00, as the model's line 9; the model wrote the bar into the lines instead. The project's line 8 is 2,500.00 x 0.172 (2,584.00/15,000.00 = 0.17227, three places, amb.2025.sli_ratio_places) = 430.00. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d707b2b9166357e3f671fbb542609b3c19995d32d8b94723fe5c7d188d581072"
   },
   {
    "case": "classm.sli.2",
@@ -88,7 +98,8 @@
    "project": "$455.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model left the worksheet blank, and the project figures every worksheet line (line 8 is $2,500.00 x 0.182, $2,733.00 / $15,000.00 = 0.18220 to three places (amb.2025.sli_ratio_places), = $455.00) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. A blank is not the number zero. Dropped from the fixture as not evidence. No change to the data.",
-   "drop": true
+   "drop": true,
+   "subject_key": "d707b2b9166357e3f671fbb542609b3c19995d32d8b94723fe5c7d188d581072"
   },
   {
    "case": "classm.sli.2",
@@ -96,7 +107,8 @@
    "project": "$2,045.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer (qualifying surviving spouse) is claimed as a dependent on someone else's return and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model left the worksheet blank, and the project figures every worksheet line (line 9 is $2,500.00 less $455.00 = $2,045.00; the amount carried to Schedule 1 line 21 is sli.deduction) and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. A blank is not the number zero. Dropped from the fixture as not evidence. No change to the data.",
-   "drop": true
+   "drop": true,
+   "subject_key": "114591512ca89fa53b52c90341cac994e6e6ba41bcfc42dc73d6bbfe313937aa"
   },
   {
    "case": "classm.sli.2",
@@ -104,7 +116,8 @@
    "project": "$2,070.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. A married filer filing separately cannot take the deduction (i1040gi p. 98, 'Your filing status is any status except married filing separately') and does not use the worksheet; the project figures every worksheet line for such a filer and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is 0.00, as the model's line 9; the model wrote the bar into the lines instead. The project's line 9 is 2,500.00 less 430.00 = 2,070.00; the amount carried to Schedule 1 line 21 is sli.deduction, 0.00. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "114591512ca89fa53b52c90341cac994e6e6ba41bcfc42dc73d6bbfe313937aa"
   },
   {
    "case": "classm.sli.2",
@@ -112,7 +125,8 @@
    "project": "$285.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction.",
-   "drop": true
+   "drop": true,
+   "subject_key": "114591512ca89fa53b52c90341cac994e6e6ba41bcfc42dc73d6bbfe313937aa"
   },
   {
    "case": "classm.sli.3",
@@ -120,7 +134,8 @@
    "project": "$-22,792.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "case": "classm.sli.3",
@@ -128,7 +143,8 @@
    "project": "$-68,954.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As in the earlier rulings on this line: the project figures line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it (i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 6, \"Is the amount on line 4 more than the amount on line 5? No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9\"); line 8 reads line 6 only when line 4 is more than line 5 (sli.over). Here line 4 is $16,046.00 and line 5 $85,000.00, so the project's line 6 is -$68,954.00; line 8 ($0.00) and line 9 ($0.00) agree. Dropped from the fixture as not evidence. No change to the data.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "case": "classm.sli.3",
@@ -136,7 +152,8 @@
    "project": "$-95,817.72",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet says 'No. Skip lines 6 and 7, enter -0- on line 8' (i1040gi p. 99); line 8 reads line 6 only when line 4 is more than line 5 (sli.over), so lines 8 and 9 agree. Here line 4 is -10,817.72 and line 5 85,000.00, so the project's line 6 is -95,817.72; lines 8 and 9 are 0.00 in both. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "case": "classm.sli.4",
@@ -144,7 +161,8 @@
    "project": "$-163,276.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet says 'No. Skip lines 6 and 7, enter -0- on line 8' (i1040gi p. 99); line 8 reads line 6 only when line 4 is more than line 5 (sli.over), so lines 8 and 9 agree. Here line 4 is 6,724.00 and line 5 170,000.00, so the project's line 6 is -163,276.00; lines 8 and 9 are 0.00 in both. Dropped from the fixture as not evidence.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "case": "classm.sli.4",
@@ -152,7 +170,8 @@
    "project": "$-273,568.92",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As in the earlier rulings on this line: the project figures line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it (i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 6, \"Is the amount on line 4 more than the amount on line 5? No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9\"); line 8 reads line 6 only when line 4 is more than line 5 (sli.over). Here line 4 is -$103,568.92 and line 5 $170,000.00, so the project's line 6 is -$273,568.92; line 8 ($0.00) and line 9 ($164.00) agree. Dropped from the fixture as not evidence. No change to the data.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "case": "classm.sli.4",
@@ -160,7 +179,8 @@
    "project": "$-44,193.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "case": "classm.sli.5",
@@ -168,7 +188,8 @@
    "project": "$-163,276.00",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The project figures every worksheet line: line 6 (line 4 less line 5) also when line 4 is not more than line 5, where the worksheet skips it, and the worksheet lines for a married filer filing separately, who cannot take the deduction. Line 8 uses line 6 only when line 4 is more than line 5, and the deduction (sli.deduction, which Schedule 1 line 21 copies) is zero for a married filer filing separately; on every case the model and the project agree on the deduction.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   },
   {
    "case": "classm.sli.5",
@@ -176,7 +197,8 @@
    "project": "$21,750.13",
    "model": "$0.00",
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. A married filer filing separately cannot take the deduction (i1040gi p. 98, Line 21, \"Your filing status is any status except married filing separately\") and does not use the worksheet; the project figures every worksheet line for such a filer and applies the bar in sli.eligible, so sli.deduction, which Schedule 1 line 21 copies, is $0.00, as the model's line 9. With no line 5 amount printed for this status (p. 99, line 5) the project's line 5 is $0.00, on which the model's blank agrees, so line 4 is more than line 5 and line 6 is $21,750.13 less $0.00 = $21,750.13; line 8 is $0.00 in both (line 1 is $0.00). As the earlier ruling on classm.sli.2 line 6. Dropped from the fixture as not evidence. No change to the data.",
-   "drop": true
+   "drop": true,
+   "subject_key": "a959649661f34b7fec63362091a3f86908f90755f86d75d8461bd52e1c7bef93"
   }
  ]
 }

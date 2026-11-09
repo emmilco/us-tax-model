@@ -4,48 +4,54 @@
  "rulings": [
   {
    "printed": "13",
-   "project": "{\"param\": \"qdcg.fifteen_rate_ceiling\"}",
-   "second": "{\"from\": {\"param\": \"qdcg.fifteen_rate_ceiling\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "project_expr_sha256": "f0d59d8506af7d4773f5ac122bdbe67033fa14af03da8d1be3533c7c1234111e",
+   "second_expr_sha256": "426bf0f2c2defeeeb8d86e00537bf2d93cea3b958864c34409ae638455383e8a",
    "ruling": "Ruling: representation; i1040gi p.38 line13 prints positive filing-status ceilings. The matching year parameter is always positive in every declared status; subtract_floor0(parameter,0) leaves that amount unchanged and adds no missing filer input. The extra floor does not change the printed quantity.",
-   "context": "2d4ef7c2e2b5325b4556772a1b38343d1d9d62888f427f9612709dadc44b8b8e"
+   "context": "2d4ef7c2e2b5325b4556772a1b38343d1d9d62888f427f9612709dadc44b8b8e",
+   "subject_key": "49f4ee1bd8301eaa4b4c485b0538760bc837b4fb57a8cbcbdd049604ad2eaad9"
   },
   {
    "printed": "2",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sb.ordinary_dividends\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}, \"then\": {\"ref\": \"f1040.line3a\"}}], \"op\": \"choose\"}",
-   "second": "{\"ref\": \"f1040.line3a\"}",
+   "project_expr_sha256": "d261fa00efafc9e06bebf29bfd58ccfc42eea136c924ce241692d993c0efd2f8",
+   "second_expr_sha256": "6f8be0192dc63390089e4536556da7c1c35faaba2bc3f044ba84ab37b1cdc631",
    "ruling": "Ruling: model error; the candidate reads f1040.line3a whatever box 1a is above zero, so it needs that answer where the source does not: i1040gi p. 25, Line 3a, \"Qualified dividends are also included in the ordinary dividend total required to be shown on line 3b\": with box 1a (line 3b) zero, line 3a is zero. The project reads the gate line f1040.line3a_if_ordinary, which takes f1040.line3a when box 1a is above zero holds and zero otherwise; the interview asks f1040.line3a only then (gated_by f1040.line3a_if_ordinary), so on every return the interview can produce with the condition true the two sides agree. Ruled by reading: the scoped reply names interfaces the candidate bank does not resolve, as in the earlier line-scoped passes of this lane.",
    "context": "b4d08c22842da37172cc9cbcc39f2c0103d7bb4f013c258b9fa9fbe812af0a07",
    "date": "2026-11-07",
-   "run": "0993abdb1168f8ba60e5fca591a435d57bf33cd5017d4da94324f74eb41456b3"
+   "run": "0993abdb1168f8ba60e5fca591a435d57bf33cd5017d4da94324f74eb41456b3",
+   "subject_key": "6d2e73abc03c36615d3ca8a084335e4ab804dae26303db25f6a70cf37436e3a0"
   },
   {
    "printed": "3",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"ref\": \"div.any\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"sd.distributions\"}}], \"op\": \"choose\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"ref\": \"f1040.line7a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "ca01342a31b178df36b6abfe8b432658e2e00311a8efe25a32ea7a73f472162f",
+   "second_expr_sha256": "7db2b39385a5cfbeb5c4087d69c70700d168d79aea076e8c9444319e8d6a3777",
    "ruling": "Ruling: equivalent representation; project retained. The No branch reads “Enter the amount from Form 1040 or 1040-SR, line 7a” (i1040gi p. 38). When Schedule D is not required, line 7a carries the total capital gain distributions from Form 1099-DIV box 2a (i1040gi p. 33, line 7a, Exception 1), the value the project references directly through its gate line sd.distributions_if_dividends (box 2a when dividends or distributions were received, zero otherwise); the candidate references line 7a literally, as in the earlier ruling of this line.",
    "context": "b4d08c22842da37172cc9cbcc39f2c0103d7bb4f013c258b9fa9fbe812af0a07",
    "date": "2026-11-07",
-   "run": "0993abdb1168f8ba60e5fca591a435d57bf33cd5017d4da94324f74eb41456b3"
+   "run": "0993abdb1168f8ba60e5fca591a435d57bf33cd5017d4da94324f74eb41456b3",
+   "subject_key": "25f2daff9eac2d191503dd1cd1ee92af5b7c7315bee2186e96719654f71ac9b8"
   },
   {
    "printed": "3",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"sd.distributions\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"ref\": \"f1040.line7a\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"from\": {\"ref\": \"sd.line15\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, {\"from\": {\"ref\": \"sd.line16\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "e5427232f0557534ed14bb9ecad35712623dfed01a6143df4949c562cc3c8a42",
+   "second_expr_sha256": "ab753cee14d2acdfc80d945a61fe8e69167a1e6e0ea1d628fb5fc8dc648d3630",
+   "ruling": "Ruling: equivalent representation; project retained. The No branch reads “Enter the amount from Form 1040 or 1040-SR, line 7a” (i1040gi p. 38). When Schedule D is not required, line 7a carries the total capital gain distributions from Form 1099-DIV box 2a (i1040gi p. 33, line 7a, Exception 1), which is the value the project references directly (`sd.distributions`); the second transcription references line 7a literally. No change to the data.",
+   "subject_key": "25f2daff9eac2d191503dd1cd1ee92af5b7c7315bee2186e96719654f71ac9b8"
+  },
+  {
+   "printed": "3",
+   "project_expr_sha256": "e5427232f0557534ed14bb9ecad35712623dfed01a6143df4949c562cc3c8a42",
+   "second_expr_sha256": "fd63e4d46a2b96a548ba54a8d39a3aabe4f4fb8a64fb2ff91b4649855c700add",
    "ruling": "Ruling: representation; i1040gi p.38 QDCG worksheet line3 uses Form1040 line7a when ScheduleD is not filed; in the supported distribution-only route that amount is sd.distributions, while all direct sales/loss routes require ScheduleD. On the filed route, max(min(SD15,SD16),0) equals min(max(SD15,0),max(SD16,0)), the printed loss-to-zero rule. This compares the prepared, supported-return quantities; it does not claim arbitrary inconsistent supplied cross-form subtotals or all partial-input paths are equivalent.",
-   "context": "2d4ef7c2e2b5325b4556772a1b38343d1d9d62888f427f9612709dadc44b8b8e"
-  },
-  {
-   "printed": "3",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"sd.distributions\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"ref\": \"f1040.line7a\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"(question)\"}], \"test\": \"eq\"}, \"then\": {\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: equivalent representation; project retained. The No branch reads “Enter the amount from Form 1040 or 1040-SR, line 7a” (i1040gi p. 38). When Schedule D is not required, line 7a carries the total capital gain distributions from Form 1099-DIV box 2a (i1040gi p. 33, line 7a, Exception 1), which is the value the project references directly (`sd.distributions`); the second transcription references line 7a literally. No change to the data."
+   "context": "2d4ef7c2e2b5325b4556772a1b38343d1d9d62888f427f9612709dadc44b8b8e",
+   "subject_key": "25f2daff9eac2d191503dd1cd1ee92af5b7c7315bee2186e96719654f71ac9b8"
   },
   {
    "printed": "6",
-   "project": "{\"param\": \"qdcg.zero_rate_ceiling\"}",
-   "second": "{\"from\": {\"param\": \"qdcg.zero_rate_ceiling\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
+   "project_expr_sha256": "93e67dca61c7858955c9516804fc0922d129df61a67dabd9ce193d433299153e",
+   "second_expr_sha256": "186f07a1d3ece45c3deec77bd779728d095f6efe6595a77402043f065ac782af",
    "ruling": "Ruling: representation; i1040gi p.38 line6 prints positive filing-status ceilings. The matching year parameter is always positive in every declared status; subtract_floor0(parameter,0) leaves that amount unchanged and adds no missing filer input. The extra floor does not change the printed quantity.",
-   "context": "2d4ef7c2e2b5325b4556772a1b38343d1d9d62888f427f9612709dadc44b8b8e"
+   "context": "2d4ef7c2e2b5325b4556772a1b38343d1d9d62888f427f9612709dadc44b8b8e",
+   "subject_key": "7c8c3564323c6bc91bfa1507342da565c700becc4d1290d212e5cc033bb3bd53"
   }
  ]
 }

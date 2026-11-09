@@ -8,21 +8,24 @@
    "restated": "Input — Does any of these apply to you: your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return; you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse); or an excess contribution from an earlier year is still in your traditional or Roth IRA?",
    "model": "Pub. 590-A defines an excess contribution by the $7,000/$8,000 or compensation limits and by failure to withdraw it; it does not make recharacterizing a 2025 contribution an excess contribution by itself.",
    "ruling": "Ruling: model error; project retained. The model reads the screen as a definition of an excess contribution. The English lists three separate cases joined by \"; ... ; or\": contributions above the limit \"and the excess was not withdrawn with its earnings by the due date of your return\" (p590a p. 35, \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of\" the limit or compensation), \"you recharacterized a 2025 contribution\", and an earlier excess still in the IRA. It does not say a recharacterization is an excess contribution; it screens recharacterized contributions as their own case, as amb.2025.savers_traditional records (\"Excess or recharacterized contributions, traditional or Roth, are refused by one screen per person (person.ira_excess)\").",
-   "context": "da345ebe6576e309df5502390571b2a6348576fa182cf72216b7f513bb5e51c6"
+   "context": "da345ebe6576e309df5502390571b2a6348576fa182cf72216b7f513bb5e51c6",
+   "subject_key": "c003195f78984d4baf07a1ef4a45f06353f28bf296b330dd2eb65367e72195bd"
   },
   {
    "printed": "(screen) (person.ira_excess)",
    "restated": "Input — Does any of these apply to you: your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return; you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse); or an excess contribution from an earlier year is still in your traditional or Roth IRA?",
    "model": "The IRS says excess IRA contributions must be withdrawn by the date the return is due, including extensions, but the restatement omits 'including extensions' and would treat a withdrawal during an extension as not withdrawn.",
    "ruling": "Ruling: finding (low severity, L1 in fixr4/person.findings.md; a screen that refuses more than its source, no amount). p590a p. 35, Excess Contributions Withdrawn by Due Date of Return: \"You won't have to pay the 6% tax if you withdraw an excess contribution made during a tax year and you also withdraw any interest or other income earned on the excess contribution. You must complete your withdrawal by the date your tax return for that year is due, including extensions.\"; p. 35: \"In general, if the excess contributions for a year aren't withdrawn by the date your return for the year is due (including extensions), you are subject to a 6% tax.\" The reviewer is right: person.ira_excess asks whether the excess \"was not withdrawn with its earnings by the due date of your return\" without \"including extensions\", while the same publication says contributions must be made by the due date \"not including extensions\" (p590a p. 11, \"Contributions must be made by due date\"), so a filer who withdrew the excess after April 15 but within an extension can read the question as yes. The question is a refusal screen (person.ira_excess_gate), so that reading refuses a return the source lets the tool compute; it changes no amount on a completed return. New to the open list in this round (an earlier deepseek objection to the recharacterization case was ruled a model error); fix round 4 changed only the person.itin_applied wording (BUG-0259), which does not touch this screen. Project retained pending the T-092 batch.",
-   "context": "9b31ffa7bfab2e33b3d7010d89b92e9320958592a28897c9d5afef83755d4560"
+   "context": "9b31ffa7bfab2e33b3d7010d89b92e9320958592a28897c9d5afef83755d4560",
+   "subject_key": "c003195f78984d4baf07a1ef4a45f06353f28bf296b330dd2eb65367e72195bd"
   },
   {
    "printed": "(screen) (person.ira_excess)",
    "restated": "Input — Does any of these apply to you: your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return; you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse); or an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025?",
    "model": "Pub. 590-A defines an excess contribution as the amount over the smaller of $7,000 ($8,000 if 50 or older) or taxable compensation; a recharacterized 2025 contribution is not itself an excess contribution.",
    "ruling": "Ruling: scope; accepted over-refusal. A recharacterized 2025 contribution that answers Yes is refused rather than computed; the screen never lets an excess through.",
-   "context": "4917603b44ead740d1a8c1dad66b6c5ce764c9569fd12497af0a0775a401f100"
+   "context": "4917603b44ead740d1a8c1dad66b6c5ce764c9569fd12497af0a0775a401f100",
+   "subject_key": "c003195f78984d4baf07a1ef4a45f06353f28bf296b330dd2eb65367e72195bd"
   },
   {
    "printed": "(screen) (person.ira_excess)",
@@ -31,21 +34,24 @@
    "ruling": "Ruling: scope; accepted over-refusal, as the prior ruling. p590a pp. 30, 35. The model's UNCLEAR is that the given Pub. 590-A pages do not state the Roth limits or the shared $7,000/$8,000 limit; the screen asks the filer and refuses on Yes, so no line is computed from those limits, and a filer over either limit answers Yes. The R4 restructuring listed the three items in their original order, with no word lost. Project stands.",
    "context": "5be12c06787efd1cc47927d9e82e268b996598e3ec3df00a9a737678004c7001",
    "date": "2026-11-07",
-   "run": "aef41be794a59ad44dfd5314e64a771d1fc3ff4dd7e8bf29b65dd8c938073105"
+   "run": "aef41be794a59ad44dfd5314e64a771d1fc3ff4dd7e8bf29b65dd8c938073105",
+   "subject_key": "c003195f78984d4baf07a1ef4a45f06353f28bf296b330dd2eb65367e72195bd"
   },
   {
    "printed": "(screen) (person.sav_able)",
    "restated": "Input — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?",
    "model": "Form 8880 line 4 is limited to certain distributions received after 2022, with rollovers and other amounts excluded; the restatement asks about any ABLE distribution and merges it with a contribution question.",
    "ruling": "Ruling: scope; accepted over-refusal. The screen refuses any ABLE distribution alongside the credit, wider than the f8880 line 4 rule; it refuses returns the tool could support and never computes a wrong amount.",
-   "context": "4917603b44ead740d1a8c1dad66b6c5ce764c9569fd12497af0a0775a401f100"
+   "context": "4917603b44ead740d1a8c1dad66b6c5ce764c9569fd12497af0a0775a401f100",
+   "subject_key": "a9f4840a8622d90c78751e237a6adc0fbc86535fdaea8462b90eeb51ecf6edbb"
   },
   {
    "printed": "(screen) (person.sav_able)",
    "restated": "Input — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?",
    "model": "IRS Form 8880 line 4 includes only 'Certain distributions received after 2022 and before the due date' rather than any ABLE distribution; the restatement also combines that with the separate line 1 ABLE contribution question.",
    "ruling": "Ruling: scope; f8880 p. 2, Line 4: \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions) from any of the following types of plans. • Traditional or Roth IRAs, or ABLE accounts.\" followed by \"Don't include any of the following\" (rollovers and other excluded distributions); Who Can Take This Credit, \"(e) contributions, as a designated beneficiary of an ABLE account, to the ABLE account\". The English says what the project asks: one screen that refuses the credit for ABLE contributions and for any ABLE distribution in the line 4 period (person.sav_able refuses person.sav_line1 and the line 4 distributions). The model is right that line 4 counts only some ABLE distributions; the screen is wider, so a return with only an excluded ABLE distribution is refused rather than figured. A broader refusal never misfigures a credit; refusal scope, not a misstatement.",
-   "context": "da345ebe6576e309df5502390571b2a6348576fa182cf72216b7f513bb5e51c6"
+   "context": "da345ebe6576e309df5502390571b2a6348576fa182cf72216b7f513bb5e51c6",
+   "subject_key": "a9f4840a8622d90c78751e237a6adc0fbc86535fdaea8462b90eeb51ecf6edbb"
   },
   {
    "printed": "(screen) (person.se_screen)",
@@ -54,42 +60,48 @@
    "ruling": "Ruling: scope; i1040sse p. 1 and i1040sc p. 14, Statutory employees. The screen need not name statutory employee income: a Schedule C of statutory employee wages (or notary fees) is asked by sc.statutory and refused by sc.screened (sc.line1), so no such income reaches Schedule SE, as the person#4 completeness ruling. The R4 restructuring listed the screen's items in their original order, with no word lost. Project stands.",
    "context": "5be12c06787efd1cc47927d9e82e268b996598e3ec3df00a9a737678004c7001",
    "date": "2026-11-07",
-   "run": "aef41be794a59ad44dfd5314e64a771d1fc3ff4dd7e8bf29b65dd8c938073105"
+   "run": "aef41be794a59ad44dfd5314e64a771d1fc3ff4dd7e8bf29b65dd8c938073105",
+   "subject_key": "60266b93f93de8bfb22c9296390328109022736561805ba503d7a5233bdd7942"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "IRS Step 3 says \"Net earnings from self-employment. Subtract step 2 from step 1\" and does not include the zero-or-less floor added by the restatement.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading; the line itself carries no ambiguity field pointing back to the entry (a traceability gap only, noted in the summary). Project stands.",
-   "context": "95a2d7c8206bd561be91e06f3deba4e750b2e2e759add510bdb28db247a20dc6"
+   "context": "95a2d7c8206bd561be91e06f3deba4e750b2e2e759add510bdb28db247a20dc6",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not direct entering -0- when zero or less, so the added floor can change a negative result.",
    "ruling": "Ruling: representation; a contribution limit cannot go below zero; the floor changes no deduction, which p560 p. 39 limits by the worksheet.",
-   "context": "48a014643998dfa6cd290cc40373b9ae5e337be1663b701d34bf90fba3a19d41"
+   "context": "48a014643998dfa6cd290cc40373b9ae5e337be1663b701d34bf90fba3a19d41",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not provide 'If zero or less, enter -0-,' so the added nonnegative floor changes loss cases.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading; the line itself still carries no ambiguity field pointing back to the entry (a traceability gap only, noted in round 1). Unchanged since round 1; project stands.",
-   "context": "4ec02d0eaa540f569a3c7d963a5135c90a6f9163bcda4a91cc0cc670c590c347"
+   "context": "4ec02d0eaa540f569a3c7d963a5135c90a6f9163bcda4a91cc0cc670c590c347",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not provide a zero-or-less floor.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading; the line itself still carries no ambiguity field pointing back to the entry (a traceability gap only, noted in round 1). Unchanged since round 1; the Stage 21 reply repeats the same reading, person.sep_s3 is unchanged in the Stage 21 subject and still carries no ambiguity field; project stands.",
-   "context": "7c7f6a6a5cc1a99e7b5d885c80662859ed3dab4ef28a408cc24ab75602ae87b2"
+   "context": "7c7f6a6a5cc1a99e7b5d885c80662859ed3dab4ef28a408cc24ab75602ae87b2",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not say to enter -0- if zero or less, so the added zero floor can change a negative result.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading. Unchanged since round 1; fix round 3 changed only the person.tin wording (BUG-0256), which does not touch person.sep_s3 or its English, and the reply repeats the same reading. Project stands.",
-   "context": "91f03bbb146e097e91c2ef2b7c518bb70755dc1e98097de2ef687f87669b17f8"
+   "context": "91f03bbb146e097e91c2ef2b7c518bb70755dc1e98097de2ef687f87669b17f8",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
@@ -98,70 +110,80 @@
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181). p560 p. 39, \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor; person.sep_s3 floors Step 3 at zero and its English says so, the register's chosen reading. Same restatement and objection as the refresh-round ruling. Project stands.",
    "context": "a3f51b27c17b0c92f1943a6e1d9109f687f114d9ddcfb07a3643c188a09e3c47",
    "date": "2026-11-04",
-   "run": "58b149768492a9fc1833fed9fb6806bf2c3f6ee33fb3c3c93b34d48efc674b9e"
+   "run": "58b149768492a9fc1833fed9fb6806bf2c3f6ee33fb3c3c93b34d48efc674b9e",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "IRS Step 3 says only 'Subtract step 2 from step 1'; it does not say to enter -0- if zero or less, so a negative result should not be floored.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading; the line itself still carries no ambiguity field pointing back to the entry (a traceability gap only, noted in round 1). Unchanged since round 1 (the round-3 reply repeats the round-2 reading); project stands.",
-   "context": "732da67b91f0140d9f0bd64f773859473c2dcb1f3c8cb892632167e36e8cad11"
+   "context": "732da67b91f0140d9f0bd64f773859473c2dcb1f3c8cb892632167e36e8cad11",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "IRS says 'Net earnings from self-employment. Subtract step 2 from step 1'; the added 'if zero or less, enter -0-' floor is not in the IRS text and can change a negative amount to zero.",
    "ruling": "Ruling: representation; a contribution limit cannot go below zero; the floor changes no deduction, which p560 p. 39 limits by the worksheet.",
-   "context": "6a924962d6e3f23b692081702ab44dfa5c816ccb2b483ee13c34a9384b66884d"
+   "context": "6a924962d6e3f23b692081702ab44dfa5c816ccb2b483ee13c34a9384b66884d",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "Pub. 560 Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not provide the added 'If zero or less, enter -0-' floor.",
    "ruling": "Ruling: finding; the project's line, not its English, departs from the page. p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" (no floor; the page prints no \"-0-\" instruction for Steps 3 to 21). person.sep_s3 is NonNegDollars by subtract_floor0, and the English states that faithfully (\"If zero or less, enter -0-\"), so the model read the English correctly. On a reachable return the printed step differs: a SEP participant (person.plan sep, contribution $0) whose Schedule C shows a $5,000 loss has Step 1 -$5,000.00 and Step 2 $0.00; the page's arithmetic gives Step 3 -$5,000.00 (and negative Steps 5, 7 and 21), the project prints $0.00 (constructed, not executed). No Form 1040 amount changes: any contribution above zero is refused at person.sep_excess on both readings, and a zero contribution deducts zero. The floor is a reasonable reading (a maximum deductible contribution below zero has no meaning), but it is an unprinted rule with no ambiguity-register entry, as amb.2025.sa_medical_negative_agi records for the like case on Schedule A. Severity: low (printed worksheet steps only). Proposed: record the reading in ambiguities/2025.yaml and cite it on person.sep_s3; see .transcription/proposed/round4/person.findings.md.",
-   "context": "da345ebe6576e309df5502390571b2a6348576fa182cf72216b7f513bb5e51c6"
+   "context": "da345ebe6576e309df5502390571b2a6348576fa182cf72216b7f513bb5e51c6",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "Pub. 560 Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; the restatement adds 'If zero or less, enter -0-,' which is not in the IRS text and changes a negative result.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading. Unchanged since round 1; the fixes of this round (person.tin, person.edu_1098t, person.edu_inst, person.x_other wording) do not touch person.sep_s3 or its English, and the reply repeats the same reading. Project stands.",
-   "context": "4db6b6b97c40cd71f754549f888b08b83309fecdbcf7f79548ef2d03baa9160e"
+   "context": "4db6b6b97c40cd71f754549f888b08b83309fecdbcf7f79548ef2d03baa9160e",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "Pub. 560 Step 3 says only to subtract step 2 from step 1; it does not say to enter -0- when zero or less.",
    "ruling": "Ruling: representation; a contribution limit cannot go below zero; the floor changes no deduction, which p560 p. 39 limits by the worksheet.",
-   "context": "4917603b44ead740d1a8c1dad66b6c5ce764c9569fd12497af0a0775a401f100"
+   "context": "4917603b44ead740d1a8c1dad66b6c5ce764c9569fd12497af0a0775a401f100",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "Pub. 560 Step 3 says only “Net earnings from self-employment. Subtract step 2 from step 1”; the restatement adds “If zero or less, enter -0-,” which changes a negative result to zero.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading. Unchanged since round 1; fix round 3 changed only the person.tin wording (BUG-0256), which does not touch person.sep_s3 or its English, and the reply repeats the same reading. Project stands.",
-   "context": "a6d724dd6bf9ec8bf236a48d186ff365be281136d76c83fc7e927ec432e740ff"
+   "context": "a6d724dd6bf9ec8bf236a48d186ff365be281136d76c83fc7e927ec432e740ff",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "The IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not provide the added 'If zero or less, enter -0-' floor.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading. Unchanged since round 1; fix round 4 changed only the person.itin_applied wording (BUG-0259), which does not touch person.sep_s3 or its English, and the reply repeats the same reading. Project stands.",
-   "context": "9b31ffa7bfab2e33b3d7010d89b92e9320958592a28897c9d5afef83755d4560"
+   "context": "9b31ffa7bfab2e33b3d7010d89b92e9320958592a28897c9d5afef83755d4560",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "The IRS text says 'Net earnings from self-employment. Subtract step 2 from step 1'; it has no zero-or-less floor, while the restatement adds one.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181). p560 p. 39, \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor; person.sep_s3 floors Step 3 at zero and its English says so, the register's chosen reading. As the prior ruling. Project stands.",
-   "context": "6c07ed438381c1ad324761dd895dd27244a41fab33394fe0f17f33bb83a97984"
+   "context": "6c07ed438381c1ad324761dd895dd27244a41fab33394fe0f17f33bb83a97984",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   },
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "The IRS worksheet says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not say 'If zero or less, enter -0-,' so the added zero floor changes a negative Step 3.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading. Unchanged since round 1; fix round 3 changed only the person.tin wording (BUG-0256), which does not touch person.sep_s3 or its English, and the reply repeats the same reading. Project stands.",
-   "context": "2d24d31b75b8d7cfa8b2ddbdc6c92b63d4610d9b7ec9838c193cbd8c02c59730"
+   "context": "2d24d31b75b8d7cfa8b2ddbdc6c92b63d4610d9b7ec9838c193cbd8c02c59730",
+   "subject_key": "e9e1ee4b13a63c0989e09f0afad892f7679be5b2632cd0974369449486cda00b"
   }
  ]
 }

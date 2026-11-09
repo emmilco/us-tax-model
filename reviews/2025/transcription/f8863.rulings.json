@@ -4,297 +4,1246 @@
  "rulings": [
   {
    "printed": "(CLW 1)",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"line\": \"18\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"line\": \"18\"}}",
+   "project_expr_sha256": "52f9cb3d674beddefc203e02805bed010edd3d284a44e9487e4b157f7307f12f",
+   "second_expr_sha256": "b9a83d4d7e47fdb52efd063a253d7719e426f42bcdef5abeaad50ce5c2142ac4",
    "ruling": "Ruling: representation and scope; i8863 p. 8, Credit Limit Worksheet, \"1. Enter the amount from Form 8863, line 18\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,090 agree; 16 candidate-unknown, 8 project-refuses, 4 project-unknown, 2 candidate-refuses (none on a completed return). Same copy; every difference is on an incomplete or refused return. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "b5c1481c2debd145feffa890bfb1e362be973cbadfddc7c5e8319ee6144561b6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.eic.8@f8863",
+     "generated:20261026.418@f8863",
+     "generated:20261026.430@f8863",
+     "generated:20261026.466@f8863",
+     "partial:classm.clcw.4.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW 2)",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"line\": \"9\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"line\": \"9\"}}",
+   "project_expr_sha256": "ace6f6a67bba146c5524d620a8ba17552cca8ad4c2729cde4ffb385402c72e56",
+   "second_expr_sha256": "f7efb332c17534e23f9a8e536d4cab677ad8fcc639d3089aa7037085b6829398",
    "ruling": "Ruling: representation and scope; i8863 p. 8, Credit Limit Worksheet, \"2. Enter the amount from Form 8863, line 9\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,088 agree; 16 candidate-unknown, 8 project-refuses, 4 project-unknown, 2 candidate-refuses, 2 value (none on a completed return). Same copy; the 2 values are MFS returns, married filing separately is refused for the whole return (s3.mfs on scope.ready; i8863 p. 3, Who cannot claim a credit, \"2. Your filing status is married filing separately\"). Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "4a932e19991e9d9fa1955418c0e14ec0bf102cfd6511e070006075c036f887e8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.eic.8@f8863",
+     "generated:20261026.63@f8863",
+     "generated:20261026.354@f8863",
+     "generated:20261026.418@f8863",
+     "generated:20261026.430@f8863",
+     "generated:20261026.466@f8863",
+     "partial:classm.clcw.4.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW 3)",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"of\": [{\"line\": \"(CLW 1)\"}, {\"line\": \"(CLW 2)\"}], \"op\": \"sum\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"of\": [{\"line\": \"(CLW 1)\"}, {\"line\": \"(CLW 2)\"}], \"op\": \"sum\"}}",
+   "project_expr_sha256": "478d064fa6428d288e07d35daa3f34f7953f8895bda3e38834522c03aa8f42f3",
+   "second_expr_sha256": "edf2ab1c3c3b898bc69fc36648c1660008584860c386f5f5292cc8d9694e359b",
    "ruling": "Ruling: representation and scope; i8863 p. 8, Credit Limit Worksheet, \"3. Add lines 1 and 2\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,088 agree; 16 candidate-unknown, 8 project-refuses, 4 project-unknown, 2 candidate-refuses, 2 value (none on a completed return). Same sum; the 2 values are MFS returns, married filing separately is refused for the whole return (s3.mfs on scope.ready; i8863 p. 3, Who cannot claim a credit, \"2. Your filing status is married filing separately\"). Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "67b7ee261eee9b9310c4a4bbd85bd2bb02e00177b769308db49129257e399ba2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.eic.8@f8863",
+     "generated:20261026.63@f8863",
+     "generated:20261026.354@f8863",
+     "generated:20261026.418@f8863",
+     "generated:20261026.430@f8863",
+     "generated:20261026.466@f8863",
+     "partial:classm.clcw.4.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW 4)",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"ref\": \"f1040.line18\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"ref\": \"f1040.line18\"}}",
+   "project_expr_sha256": "a9b51f8dbb83f1c776c46b080c19062c07a3347b427a648703c13aa36f6e4590",
+   "second_expr_sha256": "86a14dbe8f6107816c7992fc219c250d6df46698d4cbcd73f10018e800a95835",
    "ruling": "Ruling: model error and interface gap; i8863 p. 8, Credit Limit Worksheet, \"4. Enter the amount from Form 1040 or 1040-SR, line 18\"; f8863 p. 1, line 4, \"If zero or less, stop; you can’t take any education credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 307 agree; 835 candidate-shows-skipped, 665 candidate-refuses, 286 candidate-unknown, 27 project-unknown (on completed returns: 237 candidate-shows-skipped). The reply has no shown_when, so it shows Form 1040 line 18 after the line 4 stop (classm.f1040.2 type: line 4 $0) — a defect of the reply — and on returns that do not file Form 8863 (interface gap, as lines 2 to 4). Values agree where the project shows the line. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "a5620ff0de54f12fa2fd7bbc451becdfa76b3b1af7c3d7adc114baedea7196d8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.4.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8889.6.deepseek@f8863",
+     "fixture:classm.f4952.3.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.gift.1@f8863",
+     "fixture:classm.sb.1@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "partial:classm.f2441.1.deepseek-f8863.paid@f8863",
+     "partial:classm.f2441.5.deepseek-f8863.paid@f8863",
+     "partial:classm.u1250.2.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW 5)",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"of\": [{\"ref\": \"s3.line1\"}, {\"ref\": \"s3.line2\"}], \"op\": \"sum\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"of\": [{\"ref\": \"s3.line1\"}, {\"ref\": \"s3.line2\"}], \"op\": \"sum\"}}",
+   "project_expr_sha256": "00f0a322edfa566432fd82203ece91db546297248673c0184b4c6bb573738eaa",
+   "second_expr_sha256": "ebccaf4d871dfd717d9e6eb3184f09a719b1ed5dd3e6ec818b3d5ffcae7eb16a",
    "ruling": "Ruling: model error and interface gap (+ scope); i8863 p. 8, Credit Limit Worksheet, line 5, Schedule 3 lines 1, 2, 6d and 6l. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,629 agree; 184 candidate-unknown, 169 candidate-refuses, 85 candidate-shows-skipped, 30 project-unknown, 23 project-refuses (on completed returns: 25 candidate-shows-skipped). As worksheet line 4 for visibility. The sum of Schedule 3 lines 1 and 2 is the project's within scope (lines 6d and 6l are refused by scope.credits, as the reply notes); the candidate-refuses (f2441.line14_bad and others) are returns refused elsewhere. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "dbc69e8c4d99349df6521af8ef08262d2a685c7e75db4bab582945e464002d80",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.clcw26.3.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f1040.6.deepseek@f8863",
+     "fixture:classm.retirement.4.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.15@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:classm.f5329.3@f8863",
+     "partial:classm.f2441.1.deepseek-f8863.paid@f8863",
+     "partial:classm.f2441.5.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW 6)",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"from\": {\"line\": \"(CLW 4)\"}, \"op\": \"subtract\", \"take\": {\"line\": \"(CLW 5)\"}}}",
-   "second": "{\"shown_when\": null, \"value\": {\"from\": {\"line\": \"(CLW 4)\"}, \"op\": \"subtract\", \"take\": {\"line\": \"(CLW 5)\"}}}",
+   "project_expr_sha256": "d7f12e9b94f1d8abec673b5d3d108734098ca5fe702ddc5d018a78be1abc133c",
+   "second_expr_sha256": "7f3af86d255e3a1220af6de545fc6b62be33dc114d38abcbe137efe768be95a9",
    "ruling": "Ruling: model error and interface gap (+ scope); i8863 p. 8, Credit Limit Worksheet, \"6. Subtract line 5 from line 4\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 312 agree; 795 candidate-shows-skipped, 702 candidate-refuses, 284 candidate-unknown, 26 project-unknown, 1 project-refuses (on completed returns: 237 candidate-shows-skipped). As worksheet line 4: amounts after the line 4 stop and on returns without the form. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "60924cb66100d0140106c9359d015097809d836eeaaa464bc2683afad1c63419",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.4.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8889.6.deepseek@f8863",
+     "fixture:classm.f4952.3.deepseek@f8863",
+     "fixture:classm.f8960.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sb.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.15@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:stage19.refuse.other_credits@f8863",
+     "partial:classm.f2441.1.deepseek-f8863.paid@f8863",
+     "partial:classm.f2441.5.deepseek-f8863.paid@f8863",
+     "partial:classm.u1250.2.deepseek-f8863.paid@f8863",
+     "partial:classm.s3.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW 7)",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"of\": [{\"line\": \"(CLW 3)\"}, {\"line\": \"(CLW 6)\"}], \"op\": \"smaller_of\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"of\": [{\"line\": \"(CLW 3)\"}, {\"line\": \"(CLW 6)\"}], \"op\": \"smaller_of\"}}",
+   "project_expr_sha256": "10364f2acacd11ccbfdefdcc404983dcd60e8969406d84065aae931afdd1fadf",
+   "second_expr_sha256": "f5500cd9d1344cf1c6f7664cab7be50242a4eedeaffc0a09c8c102af9832a3fa",
    "ruling": "Ruling: representation and scope; i8863 p. 8, Credit Limit Worksheet, \"7. Enter the smaller of line 3 or line 6 here and on Form 8863, line 19\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,123 agree; 702 candidate-refuses, 291 candidate-unknown, 2 project-refuses, 1 project-unknown, 1 value (none on a completed return). Same value wherever the project shows the line (the smaller of line 3, $0 when the credit is not figured); every difference is on an incomplete or refused return, the reply reaching refusals elsewhere through Form 1040 line 18. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "015e21ef0e70256f99c376b877d1bacc2e4432f8a2f2aced0dde8b80d5bda4fc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.4.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8889.6.deepseek@f8863",
+     "fixture:classm.f4952.3.deepseek@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sb.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.15@f8863",
+     "fixture:stage19.refuse.other_credits@f8863",
+     "generated:20261026.354@f8863",
+     "generated:20261026.430@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "1",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": \"other\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.lawful\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": \"household_member\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"other\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.qr_all_year\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.spouse_relative\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"in_law\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"parent\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"parent_relative\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"param\": \"qc.age_limit\"}, {\"input\": \"dependent.age\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"param\": \"qc.student_age_limit\"}, {\"input\": \"dependent.age\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.student\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.disabled\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"input\": \"dependent.months\"}, {\"const\": 6, \"type\": \"Count\"}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.joint_return\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.self_support\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.supported\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.gross_income\"}, {\"param\": \"qr.gross_income_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.canada_mexico\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.citizen\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"ref\": \"sa.dependent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.student\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.age\"}, {\"param\": \"qc.student_age_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.age\"}, {\"param\": \"qc.age_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.disabled\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.joint_return\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.self_support\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 6, \"type\": \"Count\"}, {\"input\": \"dependent.months\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.canada_mexico\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.citizen\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"ref\": \"sa.dependent\"}], \"test\": \"eq\"}], \"test\": \"all\"}], \"test\": \"any\"}}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}",
+   "project_expr_sha256": "5f3d58e6642a0d249eba4dc92b331e642dff91e0097afd63eb9714b4be1f1435",
+   "second_expr_sha256": "f3a6519bce6cdae5e3ea7fa0465fbe7358477bf7e9734d6f6817c6424d806e6a",
    "ruling": "Ruling: representation and scope; f8863 p. 1, line 1: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,936 agree; 125 candidate-refuses, 41 candidate-unknown, 17 project-unknown, 1 candidate-shows-skipped (none on a completed return). No value differs; every difference is on an incomplete or refused return (the reply's f8863.ban refusal and unknowns on returns that are refused or incomplete elsewhere). The dependent bar the earlier rounds found missing sits in the reply's f8863.eligible, which guards lines 7 and 18. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "398bcd2f085edc17d02bd8eb9f683b6b6f9e64ae0c7881391eb386df4e2df268",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.eic.8.deepseek@f8863",
+     "fixture:classm.retirement.1.deepseek@f8863",
+     "fixture:classm.retirement.2.deepseek@f8863",
+     "fixture:classm.retirement.3.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.1@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.f8959.2@f8863",
+     "fixture:classm.retirement.2@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:mutation.t2.person.simple_nonelective_excess@f8863",
+     "generated:20261026.32@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.dependent.4.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "1",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: model error; f8863 p. 1, line 1: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" i8863 p. 1, Form 8862 may be required: \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit.\" Triage executable-triage-v2 (`../triage/f8863.json`; 1,374 fixtures, 500 generated returns seed 20261026, 58 partial records; 1,932 comparisons; every completed-return difference inspected with the 6-witness cap lifted, T-083): 1,882 of 1,932 agree; 7 value, 37 candidate-unknown, 2 candidate-refuses, 3 project-refuses, 1 project-unknown; no completed-return difference. The sum is the project's, but (a) the guard drops the dependent bar (M1: a claimed filer with Part III line 30 amounts would get line 1 and the refundable line 8; not in the sample for this line, shown on f8863.eligible by stage19.mut.claimed_filer_llc), and (b) the line refuses on f8863.ban read before the amount: 37 candidate-unknown on records without the ban answer (ss.*, stage16.hsa.partial.*, 28 incomplete and 9 refused), where the project hides the line or needs no ban answer (M3). The 7 values are mfs generated returns (63, 115, 128, 132, 219, 302, 318; project $2,128.22 to $5,000.00, candidate $0.00): The mfs differences are on returns refused for the whole return by scope.ready on s3.mfs (\"Married filing separately\", i1040gi p. 14), so the project's mfs value is never filed (scope). Refusals are cited gates (stage19.refuse.ban, dependent.divorced_rule, dependent.claimed_no_tin) on refused returns (scope). Project stands.",
-   "context": "2e5abc8be94d39f7203a9add22734ea56f86d8e174536a07abdb8e9e3ab13c21"
-  },
-  {
-   "printed": "1",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"line\": \"4\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "b003be6709104dfecbb9e6931ce3a0462db06493be7de90ad43a5a10ccf9c93a",
+   "second_expr_sha256": "1e5eca560b24e096e463f73f3a6b418db86177a7dcfaaaefbc93413d0c23150b",
    "ruling": "Ruling: model error; the candidate zeroes line 1 when line 4 is zero and refuses on any ban answer. f8863 p. 1, line 1: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\", then f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\": the stop follows line 4, so lines 1 to 4 are completed (M5). Triage executable-triage-v2 (`../triage/f8863.json`; 1,325 fixtures, 500 generated returns seed 20261026, 52 partial records; 1,877 comparisons): 600 agree, 1,277 differ. Completed: 7 value, project $2,500.00 / $5,000.00 against candidate $0.00 on classm.s3.2 (and .deepseek) and gen#90 (--explain witness 18: f8863.paid true, line 3 $280,586.75, line 4 $0.00, candidate eligible false); 488 candidate-unknown (f8863.ban asked on every return, M3). The candidate's `refuses: [f8863.ban]` also refuses where no credit is claimed, against i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\" (M6; the over-refusal the project fixed in BUG-0198). Refused returns: 14 value, 22 candidate-refuses and 7 project-refuses (the refusal witnesses are whole-return screens unrelated to Form 8863 (dependent divorced_rule, married, other_claimant; sales special and bad_aggregate; sb.form8938; f2441.line14_bad; scope.schedule1; sb.unsupported), every one on a return refused under the full interview (S2); stage19.refuse.ban and stage19.refuse.excluded_income are refused by both, S3). It also has no sli.claimed test (M1; no American opportunity student with a claimed filer is sampled). Project stands.",
-   "context": "8d6db571caef2aa90419040f4443008f3323216ce61b0a9abe1462b56987d3a8"
+   "context": "8d6db571caef2aa90419040f4443008f3323216ce61b0a9abe1462b56987d3a8",
+   "subject_key": "398bcd2f085edc17d02bd8eb9f683b6b6f9e64ae0c7881391eb386df4e2df268"
   },
   {
    "printed": "1",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line30\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": \"household_member\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"other\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 12, \"type\": \"Count\"}, {\"input\": \"dependent.months\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"in_law\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"parent\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"parent_relative\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"param\": \"qc.age_limit\"}, {\"input\": \"dependent.age\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"param\": \"qc.student_age_limit\"}, {\"input\": \"dependent.age\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.student\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.disabled\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"input\": \"dependent.months\"}, {\"const\": 6, \"type\": \"Count\"}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.joint_return\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.self_support\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.supported\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.gross_income\"}, {\"param\": \"qr.gross_income_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.canada_mexico\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.citizen\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"ref\": \"sa.dependent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.student\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.age\"}, {\"param\": \"qc.student_age_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.age\"}, {\"param\": \"qc.age_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.disabled\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.joint_return\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.self_support\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 6, \"type\": \"Count\"}, {\"input\": \"dependent.months\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.canada_mexico\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.citizen\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"ref\": \"sa.dependent\"}], \"test\": \"eq\"}], \"test\": \"all\"}], \"test\": \"any\"}}, {\"collection\": \"person\", \"field\": \"person.edu_line30\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "b003be6709104dfecbb9e6931ce3a0462db06493be7de90ad43a5a10ccf9c93a",
+   "second_expr_sha256": "73c8936fa739c0aa88cc6b8ac02f8360f26217786a0afb0a14748d1c4cb7a54f",
    "ruling": "Ruling: model error; the candidate drops the dependent bar. f8863 p. 1, line 1: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\"; i8863 p. 3, Who cannot claim a credit: \"1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" Both sum person.edu_line30 and dependent.edu_line30; the candidate gates on f8863.paid only (no sli.claimed test) and filters dependents by a restated dependency test instead of the per-entry dependent.claimed that dependent.edu_student already reads (no value difference from the filter). Triage executable-triage-v2 (`../triage/f8863.json`; 1,868 comparisons): 1,867 agree; the one difference is candidate-unknown on partial classm.clcw.4.deepseek (f8863.paid withheld; project hidden, return refused). No sampled return has a claimed filer with an American opportunity student, so triage cannot show it, but on such a return the candidate enters line 30 on line 1 and so a refundable line 8 on Form 1040 line 29, which item 1 forbids (M1; the same omission shows on line 10 and 18 at stage19.mut.claimed_filer_llc). Project stands.",
-   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c"
+   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c",
+   "subject_key": "398bcd2f085edc17d02bd8eb9f683b6b6f9e64ae0c7881391eb386df4e2df268"
+  },
+  {
+   "printed": "1",
+   "project_expr_sha256": "b003be6709104dfecbb9e6931ce3a0462db06493be7de90ad43a5a10ccf9c93a",
+   "second_expr_sha256": "7dca740cca4038b3f2a8d5081356ab1fffc08725c86cd31ae211255b1358098e",
+   "ruling": "Ruling: model error; f8863 p. 1, line 1: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 30\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" i8863 p. 1, Form 8862 may be required: \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit.\" Triage executable-triage-v2 (`../triage/f8863.json`; 1,374 fixtures, 500 generated returns seed 20261026, 58 partial records; 1,932 comparisons; every completed-return difference inspected with the 6-witness cap lifted, T-083): 1,882 of 1,932 agree; 7 value, 37 candidate-unknown, 2 candidate-refuses, 3 project-refuses, 1 project-unknown; no completed-return difference. The sum is the project's, but (a) the guard drops the dependent bar (M1: a claimed filer with Part III line 30 amounts would get line 1 and the refundable line 8; not in the sample for this line, shown on f8863.eligible by stage19.mut.claimed_filer_llc), and (b) the line refuses on f8863.ban read before the amount: 37 candidate-unknown on records without the ban answer (ss.*, stage16.hsa.partial.*, 28 incomplete and 9 refused), where the project hides the line or needs no ban answer (M3). The 7 values are mfs generated returns (63, 115, 128, 132, 219, 302, 318; project $2,128.22 to $5,000.00, candidate $0.00): The mfs differences are on returns refused for the whole return by scope.ready on s3.mfs (\"Married filing separately\", i1040gi p. 14), so the project's mfs value is never filed (scope). Refusals are cited gates (stage19.refuse.ban, dependent.divorced_rule, dependent.claimed_no_tin) on refused returns (scope). Project stands.",
+   "context": "2e5abc8be94d39f7203a9add22734ea56f86d8e174536a07abdb8e9e3ab13c21",
+   "subject_key": "398bcd2f085edc17d02bd8eb9f683b6b6f9e64ae0c7881391eb386df4e2df268"
   },
   {
    "printed": "10",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": \"other\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.lawful\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": \"household_member\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"other\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.qr_all_year\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.spouse_relative\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"in_law\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"parent\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"parent_relative\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"param\": \"qc.age_limit\"}, {\"input\": \"dependent.age\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"param\": \"qc.student_age_limit\"}, {\"input\": \"dependent.age\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.student\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.disabled\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"input\": \"dependent.months\"}, {\"const\": 6, \"type\": \"Count\"}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.joint_return\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.self_support\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.supported\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.gross_income\"}, {\"param\": \"qr.gross_income_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.canada_mexico\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.citizen\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"ref\": \"sa.dependent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.student\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.age\"}, {\"param\": \"qc.student_age_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.age\"}, {\"param\": \"qc.age_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.disabled\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.joint_return\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.self_support\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 6, \"type\": \"Count\"}, {\"input\": \"dependent.months\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.canada_mexico\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.citizen\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"ref\": \"sa.dependent\"}], \"test\": \"eq\"}], \"test\": \"all\"}], \"test\": \"any\"}}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}",
+   "project_expr_sha256": "354141a22c29d1a42bf05df4dc54d17bb1eeb85d8cd8477100b09c066e1ed8f1",
+   "second_expr_sha256": "8373d20b02a729de5ecdf66f612d8b4504762bee00ce5a85386b5409f789be13",
    "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\"; f8863 p. 1, line 10. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,898 agree; 127 candidate-refuses, 51 candidate-unknown, 28 project-refuses, 14 project-unknown, 2 candidate-shows-skipped (on completed returns: 2 candidate-shows-skipped). The reply's line 10 has no shown_when, so it shows an amount after the line 4 stop: classm.f1040.2 and its DeepSeek twin (checked: joint, line 3 $258,609, line 4 $0, project hides line 10, reply $14,484.00). Same disagreement as the before-catalog-refresh ruling. The other differences are on incomplete or refused returns. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "9fc31c9caf52e742ec8ecfb0bf648957074b7551105136fb5475385610f6d6ba",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f1040.2.deepseek@f8863",
+     "fixture:classm.eic.8.deepseek@f8863",
+     "fixture:classm.retirement.1.deepseek@f8863",
+     "fixture:classm.retirement.2.deepseek@f8863",
+     "fixture:classm.retirement.3.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.1@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.f8959.2@f8863",
+     "fixture:classm.retirement.2@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.f1040.2@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "10",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "696e786c4790a455f86f745e052e9e571986b92f4f5e265a8bb9b80347f39cdc",
+   "second_expr_sha256": "453b14efd40ef3f1974fa15af4d76f14f93b54f5675a52babe7988fb55cc3783",
    "ruling": "Ruling: model error; f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\"; f8863 p. 1, line 10: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 31.\" i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" Triage executable-triage-v2 (`../triage/f8863.json`; 1,374 fixtures, 500 generated returns seed 20261026, 58 partial records; 1,932 comparisons; every completed-return difference inspected with the 6-witness cap lifted, T-083): 1,909 of 1,932 agree; 12 candidate-shows-skipped (9 on completed returns), 3 candidate-refuses, 4 candidate-unknown, 1 project-refuses, 3 project-unknown. The candidate shows line 10 whenever expenses are paid. All 9 completed witnesses checked: 8 are after the line 4 stop (classm.f1040.2 and .deepseek, line 4 $0.00, candidate $14,484.00; classm.dependent.4 and .deepseek $8,728.00; classm.f5695.2 and .deepseek $2,429.00; generated 90 $5,135.20 and 437 $13,609.87), where the project hides the line (f8863.show_after4 no); 1 is a filer claimed as a dependent (stage19.mut.claimed_filer_llc, candidate $12,200.00; M1). A nonzero amount after a stop is a defect of the side that shows it (README). The rest are partial records withholding f8863.paid and refusals on refused returns (scope). Project stands.",
-   "context": "2e5abc8be94d39f7203a9add22734ea56f86d8e174536a07abdb8e9e3ab13c21"
+   "context": "2e5abc8be94d39f7203a9add22734ea56f86d8e174536a07abdb8e9e3ab13c21",
+   "subject_key": "9fc31c9caf52e742ec8ecfb0bf648957074b7551105136fb5475385610f6d6ba"
   },
   {
    "printed": "10",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"line\": \"4\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: model error; the candidate drops the dependent bar (M1). f8863 p. 1, line 10: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 31.\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" Triage executable-triage-v2 (`../triage/f8863.json`; 1,325 fixtures, 500 generated returns seed 20261026, 52 partial records; 1,877 comparisons): 1,848 agree, 29 differ. One completed-return difference, candidate-shows-skipped on stage19.mut.claimed_filer_llc (sli.claimed true, a lifetime learning student): project hidden (f8863.eligible false), candidate $12,200.00, a lifetime learning amount for a filer claimed as a dependent. Its line 4 > 0 guard now follows the stop (the round-1 M2 is gone). The rest are on refused returns: 25 candidate-refuses (classm.dependent.5 and .6, gen#10; the refusal witnesses are whole-return screens unrelated to Form 8863 (dependent divorced_rule, married, other_claimant; sales special and bad_aggregate; sb.form8938; f2441.line14_bad; scope.schedule1; sb.unsupported), every one on a return refused under the full interview (S2); stage19.refuse.excluded_income, refused by both), 2 project-refuses (gen#156, #322, dependent divorced_rule) and 1 project-unknown (partial of classm.eic.2.deepseek withholding f8863.paid, refused). Project stands.",
-   "context": "8d6db571caef2aa90419040f4443008f3323216ce61b0a9abe1462b56987d3a8"
-  },
-  {
-   "printed": "10",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, \"then\": {\"of\": [{\"collection\": \"dependent\", \"field\": \"dependent.edu_line31\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": \"household_member\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"other\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 12, \"type\": \"Count\"}, {\"input\": \"dependent.months\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"in_law\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"parent\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"parent_relative\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"param\": \"qc.age_limit\"}, {\"input\": \"dependent.age\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"param\": \"qc.student_age_limit\"}, {\"input\": \"dependent.age\"}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.student\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.disabled\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"input\": \"dependent.months\"}, {\"const\": 6, \"type\": \"Count\"}], \"test\": \"le\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.joint_return\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.self_support\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.supported\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.gross_income\"}, {\"param\": \"qr.gross_income_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.canada_mexico\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.citizen\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"ref\": \"sa.dependent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.student\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.age\"}, {\"param\": \"qc.student_age_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.younger\"}], \"test\": \"eq\"}, {\"args\": [{\"input\": \"dependent.age\"}, {\"param\": \"qc.age_limit\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.disabled\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": \"child\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"sibling_descendant\"}, {\"input\": \"dependent.relationship\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.joint_return\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"dependent.self_support\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 6, \"type\": \"Count\"}, {\"input\": \"dependent.months\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"dependent.canada_mexico\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"dependent.citizen\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": false}, {\"ref\": \"sa.dependent\"}], \"test\": \"eq\"}], \"test\": \"all\"}], \"test\": \"any\"}}, {\"collection\": \"person\", \"field\": \"person.edu_line31\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "696e786c4790a455f86f745e052e9e571986b92f4f5e265a8bb9b80347f39cdc",
+   "second_expr_sha256": "8be3b1e760c3d53bd6ec70e2fc5681a91815799eacf9368b7ba5e40303e9e832",
    "ruling": "Ruling: model error; the candidate shows line 10 after the line 4 stop and omits the dependent bar. f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" Triage executable-triage-v2 (`../triage/f8863.json`; 1,318 fixtures, 500 generated returns seed 20261026, 50 partial records; 1,868 comparisons): 1,838 agree, 30 differ. 14 candidate-shows-skipped, 10 on completed returns: classm.f1040.2 (and .deepseek, candidate $6,651.00), classm.f5695.2 (and .deepseek, $2,429.00), classm.dependent.3 (and .deepseek, $2,165.00, refused); on classm.f1040.2 the derivation (--explain witness 4) has f8863.eligible true and both sides sum $6,651.00 from dep_b's line 31, but f8863.show_after4 is false because line 4 is zero, so the project hides the line and the candidate shows an amount on a line the form says to skip (M2). The candidate's guard is f8863.paid only, so a filer claimed as a dependent also gets a line 10 sum (M1; stage19.mut.claimed_filer_llc, see line 18). 6 candidate-refuses (the refusal witnesses are other whole-return screens (dependent divorced_rule, married, multiple_support, claimed_no_tin, other_claimant; sb.form8938; sales digital; f8889 mfs/excess/unsupported; scope.other_income) that one side meets first because it reads a different operand order; every one is on a return refused under the full interview; S2) and 10 candidate-unknown (the candidate-unknown witnesses are partial records withholding f8863.paid (classm.clcw.4, f4952.1, f8960.1, sd.1, clcw26.4, f5695.5, f8889.2 deepseek bases); there the project hides the line without that answer (line 4 is zero or the filer is claimed), so the candidate asks an answer the source does not need to decide the line; M3). Project stands.",
-   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c"
+   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c",
+   "subject_key": "9fc31c9caf52e742ec8ecfb0bf648957074b7551105136fb5475385610f6d6ba"
+  },
+  {
+   "printed": "10",
+   "project_expr_sha256": "696e786c4790a455f86f745e052e9e571986b92f4f5e265a8bb9b80347f39cdc",
+   "second_expr_sha256": "bd4b64aec1ca2865c8f2d6fd771c1f96db942893a71dcd527256b53a0898926b",
+   "ruling": "Ruling: model error; the candidate drops the dependent bar (M1). f8863 p. 1, line 10: \"After completing Part III for each student, enter the total of all amounts from all Parts III, line 31.\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" Triage executable-triage-v2 (`../triage/f8863.json`; 1,325 fixtures, 500 generated returns seed 20261026, 52 partial records; 1,877 comparisons): 1,848 agree, 29 differ. One completed-return difference, candidate-shows-skipped on stage19.mut.claimed_filer_llc (sli.claimed true, a lifetime learning student): project hidden (f8863.eligible false), candidate $12,200.00, a lifetime learning amount for a filer claimed as a dependent. Its line 4 > 0 guard now follows the stop (the round-1 M2 is gone). The rest are on refused returns: 25 candidate-refuses (classm.dependent.5 and .6, gen#10; the refusal witnesses are whole-return screens unrelated to Form 8863 (dependent divorced_rule, married, other_claimant; sales special and bad_aggregate; sb.form8938; f2441.line14_bad; scope.schedule1; sb.unsupported), every one on a return refused under the full interview (S2); stage19.refuse.excluded_income, refused by both), 2 project-refuses (gen#156, #322, dependent divorced_rule) and 1 project-unknown (partial of classm.eic.2.deepseek withholding f8863.paid, refused). Project stands.",
+   "context": "8d6db571caef2aa90419040f4443008f3323216ce61b0a9abe1462b56987d3a8",
+   "subject_key": "9fc31c9caf52e742ec8ecfb0bf648957074b7551105136fb5475385610f6d6ba"
   },
   {
    "printed": "11",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"of\": [{\"line\": \"10\"}, {\"param\": \"llc.expense_cap\"}], \"op\": \"smaller_of\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"of\": [{\"line\": \"10\"}, {\"param\": \"llc.expense_cap\"}], \"op\": \"smaller_of\"}}",
+   "project_expr_sha256": "c91bc51a3e44d2ba490d64aaf8d052490be8179d8f2ec64d74da3f5b68fcf811",
+   "second_expr_sha256": "80dfbbc7ab530887e30308c546fe0915279ac7c75253f7b0d8e1fe38ca79526e",
    "ruling": "Ruling: representation and scope; f8863 p. 1, line 11; line 10, \"If zero, skip lines 11 through 17\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,898 agree; 127 candidate-refuses, 51 candidate-unknown, 28 project-refuses, 14 project-unknown, 2 candidate-shows-skipped (on completed returns: 2 candidate-shows-skipped). The reply's shown_when (line 10 and line 4 above zero) carries both skips; the 2 completed candidate-shows-skipped are classm.f1040.2 (and .deepseek), where line 4 is $0 and the reply's shown_when also hides the line: triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "af8bb893154e7f90d80dc6a291f5659b4a538cf36ce9e590d8a41214a36cf50f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f1040.2.deepseek@f8863",
+     "fixture:classm.eic.8.deepseek@f8863",
+     "fixture:classm.retirement.1.deepseek@f8863",
+     "fixture:classm.retirement.2.deepseek@f8863",
+     "fixture:classm.retirement.3.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.1@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.f8959.2@f8863",
+     "fixture:classm.retirement.2@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.f1040.2@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "12",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"amount\": {\"line\": \"11\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"llc.rate\"}}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"amount\": {\"line\": \"11\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"llc.rate\"}}}",
+   "project_expr_sha256": "e399af32e1be149f77c19822b2ad4d28947c8290b07a97a19026ad1de38e2652",
+   "second_expr_sha256": "ecf00b8e05c4ecdef9851b1660e071e1dd410a6030ae1a90e778605700a42097",
    "ruling": "Ruling: representation and scope; f8863 p. 1, line 12: \"Multiply line 11 by 20% (0.20)\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,898 agree; 127 candidate-refuses, 51 candidate-unknown, 28 project-refuses, 14 project-unknown, 2 candidate-shows-skipped (on completed returns: 2 candidate-shows-skipped). As line 11: the reply's shown_when carries the line 4 and line 10 skips; the completed witnesses are classm.f1040.2 (line 4 $0), hidden on both: triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "55e6a6f64509c5ef788cfd3402f57432b94792d8fc7e9d049606378909a7e9f5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f1040.2.deepseek@f8863",
+     "fixture:classm.eic.8.deepseek@f8863",
+     "fixture:classm.retirement.1.deepseek@f8863",
+     "fixture:classm.retirement.2.deepseek@f8863",
+     "fixture:classm.retirement.3.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.1@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.f8959.2@f8863",
+     "fixture:classm.retirement.2@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.f1040.2@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:classm.f8962.1@f8863",
+     "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "13",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"param\": \"edu.magi_limit\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"param\": \"edu.magi_limit\"}}",
+   "project_expr_sha256": "98cdea3cad479cec5678f6b7ed3c93530f690e6f4b02bd42241f0029cdf1d55d",
+   "second_expr_sha256": "5d056166eb86eb2bb4268a7bae20e8cd8d4704975201eb7ed450b873d3b94182",
    "ruling": "Ruling: representation and interface gap; f8863 p. 1, line 13; line 10, \"If zero, skip lines 11 through 17\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 16 agree; 2,031 candidate-shows-skipped, 37 project-refuses, 35 project-unknown, 1 candidate-unknown (on completed returns: 355 candidate-shows-skipped). By reading, the reply's shown_when (line 10 and line 4 above zero) hides the line wherever line 10 is $0 or line 4 stops, as show_llc does; it lacks only the whole-form condition (f8863.eligible: a person claimed, or MFS, with Part III line 31 amounts), the interface gap of lines 2 to 5; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays, so the counts are not displayed differences. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "820882b61f00295f0d5cdb48f4ec3c8ec5082c4d459e7bb142ee3f67f38b3f3b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.scveh.4@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "14",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"ref\": \"f1040.line11b\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"ref\": \"f1040.line11b\"}}",
+   "project_expr_sha256": "76a7d2a616a68286389a0e51f570f1bec36c22a0609300cd3ee86d7d54056a40",
+   "second_expr_sha256": "c02f52f78f7685a2b9669e0b426700e9afdb187ede892324a233f2ef29800ff3",
    "ruling": "Ruling: representation and interface gap (+ scope); f8863 p. 1, line 14. executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 70 agree; 1,534 candidate-shows-skipped, 422 candidate-refuses, 55 candidate-unknown, 33 project-unknown, 6 project-refuses (on completed returns: 352 candidate-shows-skipped). As line 13; the candidate-refuses are returns refused elsewhere that the reply reaches through Form 1040 line 11b; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "32c2bd90caebda3817dfcc3d828bcf2a6f8455befd4944f2de337bca9b865e5b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.g28.2.deepseek@f8863",
+     "fixture:classm.clcw.1.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.eic.8@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:mutation.t2.f8889.all_year_dec_unanswered@f8863",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863",
+     "fixture:stage19.refuse.period_over_dependent@f8863",
+     "fixture:f1.t113.dep_llc_applied@f8863",
+     "fixture:f1.t113.person_llc_itin_applied@f8863",
+     "generated:20261026.408@f8863",
+     "generated:20261026.430@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "15",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"from\": {\"line\": \"13\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"14\"}}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"from\": {\"line\": \"13\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"14\"}}}",
+   "project_expr_sha256": "49bb3819db035b357bc732035bbfd825b3101d3af9c393a7a69cda17c98779f7",
+   "second_expr_sha256": "332af672563cce3fff3ed454a687f92e4bebbfc0189e806b84892e1908afe315",
    "ruling": "Ruling: representation and interface gap (+ scope); f8863 p. 1, line 15: \"Subtract line 14 from line 13. If zero or less, skip lines 16 and 17, enter -0- on line 18\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 603 agree; 1,001 candidate-shows-skipped, 422 candidate-refuses, 55 candidate-unknown, 33 project-unknown, 6 project-refuses (on completed returns: 220 candidate-shows-skipped). As line 13; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "1c32768ec83bae478bc493ee397e73a0bfe1d9b98563845048c31333e72520cb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.g28.2.deepseek@f8863",
+     "fixture:classm.clcw.1.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.eic.8@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:mutation.t2.f8889.all_year_dec_unanswered@f8863",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863",
+     "fixture:stage19.refuse.period_over_dependent@f8863",
+     "fixture:f1.t113.dep_llc_applied@f8863",
+     "fixture:f1.t113.person_llc_itin_applied@f8863",
+     "generated:20261026.408@f8863",
+     "generated:20261026.430@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "16",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"param\": \"edu.phaseout_range\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"10\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"15\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"param\": \"edu.phaseout_range\"}}",
+   "project_expr_sha256": "3186bc890578070f4ad9157679d30e8aaa32dff5d0f5aac619354eff3e7fa885",
+   "second_expr_sha256": "8a14c930fb1f4e5ef96e62e3ee1e01c9d399c43eb8b0a93c8f8689cbba596a4a",
    "ruling": "Ruling: representation and interface gap; f8863 p. 1, line 16; line 15, \"If zero or less, skip lines 16 and 17\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 16 agree; 2,031 candidate-shows-skipped, 37 project-refuses, 35 project-unknown, 1 candidate-unknown (on completed returns: 355 candidate-shows-skipped). The reply's shown_when adds line 15 above zero, which the project's show_llc implies (line 15 equals line 4 here); triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "780dde126597eab8f368c2c03660f3c870c3aa9e5050d2858a8f4a89935db0e7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.scveh.4@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "18",
-   "project": "{\"amount\": {\"line\": \"12\"}, \"op\": \"prorate\", \"part\": {\"line\": \"15\"}, \"places\": 3, \"whole\": {\"line\": \"16\"}}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"12\"}, \"op\": \"prorate\", \"part\": {\"line\": \"15\"}, \"places\": 3, \"whole\": {\"line\": \"16\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: representation and scope; f8863 p. 1, lines 17 and 18: \"Multiply line 12 by line 17.\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,090 agree; 16 candidate-unknown, 8 project-refuses, 4 project-unknown, 2 candidate-refuses (none on a completed return). Same prorate behind the reply's eligibility guard; every difference is on an incomplete or refused return. The earlier completed difference (stage19.mut.claimed_filer_llc) is gone: the reply now bars a claimed taxpayer as the project does. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
-  },
-  {
-   "printed": "18",
-   "project": "{\"amount\": {\"line\": \"12\"}, \"op\": \"prorate\", \"part\": {\"line\": \"15\"}, \"places\": 3, \"whole\": {\"line\": \"16\"}}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"12\"}, \"op\": \"prorate\", \"part\": {\"line\": \"15\"}, \"places\": 3, \"whole\": {\"line\": \"16\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "5807bd106ad6b1eb566c575cbcb8d6f4599711011f3ef6f09e0c37280fdd3d4c",
+   "second_expr_sha256": "3a0996ca818f84ea63c88f3822da93982bdce9a28d4b94544166eeaf24104599",
    "ruling": "Ruling: model error; f8863 p. 1, lines 17 and 18: \"Multiply line 12 by line 17.\" with i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" The candidate keeps the project's prorate behind paid and not-mfs guards. Triage executable-triage-v2 (`../triage/f8863.json`; 1,318 fixtures, 500 generated returns seed 20261026, 50 partial records; 1,868 comparisons): 1,841 agree, 27 differ. One completed-return difference: stage19.mut.claimed_filer_llc, project hidden (f8863.eligible false because sli.claimed is true, so f8863.show_after4 is false), candidate $2,000.00, an amount where the filer cannot claim any credit (M1). 11 project-refuses and 5 candidate-refuses (the refusal witnesses are other whole-return screens (dependent divorced_rule, married, multiple_support, claimed_no_tin, other_claimant; sb.form8938; sales digital; f8889 mfs/excess/unsupported; scope.other_income) that one side meets first because it reads a different operand order; every one is on a return refused under the full interview; S1/S2), 10 candidate-unknown (the candidate-unknown witnesses are partial records withholding f8863.paid (classm.clcw.4, f4952.1, f8960.1, sd.1, clcw26.4, f5695.5, f8889.2 deepseek bases); there the project hides the line without that answer (line 4 is zero or the filer is claimed), so the candidate asks an answer the source does not need to decide the line; M3). Project stands.",
-   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c"
+   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c",
+   "subject_key": "e24611aa7adc787378882c952003ae57ea78621a19e799086f6cdf87b46ac64c"
+  },
+  {
+   "printed": "18",
+   "project_expr_sha256": "5807bd106ad6b1eb566c575cbcb8d6f4599711011f3ef6f09e0c37280fdd3d4c",
+   "second_expr_sha256": "9e3dade78d0d052180ad125e85c4790da2f013f3f55b20e3ed3e9d21ac2bf5bf",
+   "ruling": "Ruling: representation and scope; f8863 p. 1, lines 17 and 18: \"Multiply line 12 by line 17.\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,090 agree; 16 candidate-unknown, 8 project-refuses, 4 project-unknown, 2 candidate-refuses (none on a completed return). Same prorate behind the reply's eligibility guard; every difference is on an incomplete or refused return. The earlier completed difference (stage19.mut.claimed_filer_llc) is gone: the reply now bars a claimed taxpayer as the project does. Project stands.",
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "e24611aa7adc787378882c952003ae57ea78621a19e799086f6cdf87b46ac64c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.eic.8@f8863",
+     "generated:20261026.418@f8863",
+     "generated:20261026.430@f8863",
+     "generated:20261026.466@f8863",
+     "partial:classm.clcw.4.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "19",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"line\": \"(CLW 7)\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"line\": \"(CLW 7)\"}}",
+   "project_expr_sha256": "5f7c5d6e8c06fc3392c76b1a2aa0b20d5bac63f3dd7be9c769e14d75f03ad9f6",
+   "second_expr_sha256": "faecf7872e707a1ebfc1b85aebfc2f9f18925dfc91ada6bdfda68aa0c545cc06",
    "ruling": "Ruling: representation and scope; f8863 p. 1, line 19: \"Enter the amount from line 7 of the Credit Limit Worksheet\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 1,123 agree; 702 candidate-refuses, 291 candidate-unknown, 2 project-refuses, 1 project-unknown, 1 value (none on a completed return). As worksheet line 7; every difference is on an incomplete or refused return. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "6773eda317440cd2c1cfd3ed7cf13754cc7eb07f89999d6be3cba6192ad902cf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.4.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8889.6.deepseek@f8863",
+     "fixture:classm.f4952.3.deepseek@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sb.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.15@f8863",
+     "fixture:stage19.refuse.other_credits@f8863",
+     "generated:20261026.354@f8863",
+     "generated:20261026.430@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "2",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"value\": {\"param\": \"edu.magi_limit\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"param\": \"edu.magi_limit\"}}",
+   "project_expr_sha256": "53782c220a10602604b1faa7c2e4a15195b7579ded208fed66118db71d2eb3fc",
+   "second_expr_sha256": "dd5e5eaa7a064f27bb829d6bb70477102014675ed8281e3f69f09d48cc037c64",
    "ruling": "Ruling: interface gap; f8863 p. 1, line 2; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 104 agree; 1,953 candidate-shows-skipped, 62 project-unknown, 1 candidate-unknown (on completed returns: 339 candidate-shows-skipped). The reply has no shown_when, so it shows the line on returns that do not file Form 8863 at all (no qualified expenses paid, or a person claimed as a dependent), where the project hides lines 1 to 4 on f8863.eligible; the source has no skip instruction for these lines, and the whole-form condition is the project's visibility, not a printed STOP: interface gap, as the earlier rounds ruled for f8962's whole-form visibility. Wherever the project shows the line, the values agree. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "1862660a6261103741284cc3c1d7946c920c03ee2b262ed8de9989feb09ea5a8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "3",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"value\": {\"ref\": \"f1040.line11b\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"ref\": \"f1040.line11b\"}}",
+   "project_expr_sha256": "cc02b712f405450f9b651c10af5bc362eda061298137859c14ee26ddefa7df45",
+   "second_expr_sha256": "903ec5dee406c0b21e10327413e6133076604a12816fb0865fc16c60abf6a078",
    "ruling": "Ruling: interface gap (+ scope); f8863 p. 1, line 3: \"Enter the amount from Form 1040 or 1040-SR, line 11b\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 126 agree; 1,457 candidate-shows-skipped, 429 candidate-refuses, 55 candidate-unknown, 53 project-unknown (on completed returns: 336 candidate-shows-skipped). The reply has no shown_when, so it shows the line on returns that do not file Form 8863 at all (no qualified expenses paid, or a person claimed as a dependent), where the project hides lines 1 to 4 on f8863.eligible; the source has no skip instruction for these lines, and the whole-form condition is the project's visibility, not a printed STOP: interface gap, as the earlier rounds ruled for f8962's whole-form visibility. The candidate-refuses are returns refused elsewhere that the reply reaches by reading Form 1040 line 11b on every return. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "ac1693b0283a3b7446627cb2b3746a10a0e6c087df3c67c6bfab923cb6cb94eb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.g28.2.deepseek@f8863",
+     "fixture:classm.clcw.1.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:mutation.t2.f8889.all_year_dec_unanswered@f8863",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "4",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"value\": {\"from\": {\"line\": \"2\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"3\"}}}",
-   "second": "{\"shown_when\": null, \"value\": {\"from\": {\"line\": \"2\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"3\"}}}",
+   "project_expr_sha256": "a169309e191ef9d65db7a5b3cd2a29845ca212611d69c6bb500ff5e2ad281441",
+   "second_expr_sha256": "8330f462543980adf6309c5de77ef47af60e5942617355cc5a4825045959e011",
    "ruling": "Ruling: interface gap (+ scope); f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can't take any education credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 623 agree; 960 candidate-shows-skipped, 429 candidate-refuses, 55 candidate-unknown, 53 project-unknown (on completed returns: 212 candidate-shows-skipped). The reply has no shown_when, so it shows the line on returns that do not file Form 8863 at all (no qualified expenses paid, or a person claimed as a dependent), where the project hides lines 1 to 4 on f8863.eligible; the source has no skip instruction for these lines, and the whole-form condition is the project's visibility, not a printed STOP: interface gap, as the earlier rounds ruled for f8962's whole-form visibility. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "1890dc7a5f2a2a1b6444a706cb0826ddafb2ba00ce425014f9a425e8d9b309dd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.w2.1.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.g28.2.deepseek@f8863",
+     "fixture:classm.clcw.1.deepseek@f8863",
+     "fixture:classm.clcw.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.f8889.3@f8863",
+     "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
+     "fixture:mutation.t2.f8889.all_year_dec_unanswered@f8863",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "5",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"param\": \"edu.phaseout_range\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}, \"value\": {\"param\": \"edu.phaseout_range\"}}",
+   "project_expr_sha256": "e4583d0ecb9ea561b0fa1b0e5cd8e498988a7134680ef2ca85cb07732af4020f",
+   "second_expr_sha256": "377ddaf757da8e7d5e62d6c16f56a59249d96cb53fd506f9c8c86af8b3a8988c",
    "ruling": "Ruling: interface gap; f8863 p. 1, line 5; f8863 p. 1, line 4, \"If zero or less, stop\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 63 agree; 1,990 candidate-shows-skipped, 35 project-unknown, 31 project-refuses, 1 candidate-unknown (on completed returns: 347 candidate-shows-skipped). The reply's shown_when (line 4 above zero) carries the line 4 stop; it lacks only the whole-form condition (f8863.eligible), so on returns without the form it shows $10,000 / $20,000 where the project hides it; triage applies only the project's shown_when (tools/transcription/triage.mjs), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "fca0fe99a1ce3ebd492eb9ba29e409be23255d0895ef49977555c68a450a2081",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.scveh.4@f8863",
+     "fixture:classm.dependent.1@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "7",
-   "project": "{\"amount\": {\"line\": \"1\"}, \"op\": \"prorate\", \"part\": {\"line\": \"4\"}, \"places\": 3, \"whole\": {\"line\": \"5\"}}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"1\"}, \"op\": \"prorate\", \"part\": {\"line\": \"4\"}, \"places\": 3, \"whole\": {\"line\": \"5\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"ne\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: representation and scope; f8863 p. 1, lines 6 and 7: \"Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded to at least three places). Multiply line 1 by line 6.\" (amb.2025.edu_ratio_places on both sides). executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,088 agree; 16 candidate-unknown, 8 project-refuses, 4 project-unknown, 2 candidate-refuses, 2 value (none on a completed return). Same prorate on every return the tool completes; the 2 values are MFS returns, married filing separately is refused for the whole return (s3.mfs on scope.ready; i8863 p. 3, Who cannot claim a credit, \"2. Your filing status is married filing separately\"); every difference is on an incomplete or refused return. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
-  },
-  {
-   "printed": "7",
-   "project": "{\"amount\": {\"line\": \"1\"}, \"op\": \"prorate\", \"part\": {\"line\": \"4\"}, \"places\": 3, \"whole\": {\"line\": \"5\"}}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"1\"}, \"op\": \"prorate\", \"part\": {\"line\": \"4\"}, \"places\": 3, \"whole\": {\"line\": \"5\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "cd542eda336976594d9f92663342b72ce2eae784bec414be5d21d69ec6c6ee26",
+   "second_expr_sha256": "425726411e274ac5e1ecbb94515bc36f8e74210e28547d61f9aa07656db477cf",
    "ruling": "Ruling: scope; same prorate on every return the tool completes. f8863 p. 1, lines 6 and 7: \"Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded to at least three places). Multiply line 1 by line 6.\" (amb.2025.edu_ratio_places on both sides). The candidate wraps it in paid and not-mfs guards giving zero otherwise. Triage executable-triage-v2 (`../triage/f8863.json`; 1,318 fixtures, 500 generated returns seed 20261026, 50 partial records; 1,868 comparisons): 1,842 agree, 26 differ, none on a completed return: 3 value (project $2,500.00 / $4,760.15 / $2,500.00, candidate $0.00 on gen#82, #155, #415; married filing separately is refused for the whole return by scope.ready on s3.mfs (\"Married filing separately\", i1040gi p. 14; the sampled value witnesses gen#82, #155, #415 have f1040.status mfs and project_return refused)); 7 project-refuses and 5 candidate-refuses (the refusal witnesses are other whole-return screens (dependent divorced_rule, married, multiple_support, claimed_no_tin, other_claimant; sb.form8938; sales digital; f8889 mfs/excess/unsupported; scope.other_income) that one side meets first because it reads a different operand order; every one is on a return refused under the full interview); 11 candidate-unknown, all partials withholding f8863.paid, where the candidate's Form 8862/ban gate asks f8863.ban while the project's f8863.ban_refused needs line 1 > 0 first and the line is hidden (M3) (S1, S2). The candidate's refusal note matches the project's f8863.ban_refused. Project stands.",
-   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c"
+   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c",
+   "subject_key": "6828d511408cbee94836d45d22e9c2b7aa22b1baa5275b3ffc2004a4db3dc175"
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "cd542eda336976594d9f92663342b72ce2eae784bec414be5d21d69ec6c6ee26",
+   "second_expr_sha256": "51686550106abf909e366b4ef1fd63ab823b7f8983a682cbd3c7d62fff313a32",
+   "ruling": "Ruling: representation and scope; f8863 p. 1, lines 6 and 7: \"Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded to at least three places). Multiply line 1 by line 6.\" (amb.2025.edu_ratio_places on both sides). executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,088 agree; 16 candidate-unknown, 8 project-refuses, 4 project-unknown, 2 candidate-refuses, 2 value (none on a completed return). Same prorate on every return the tool completes; the 2 values are MFS returns, married filing separately is refused for the whole return (s3.mfs on scope.ready; i8863 p. 3, Who cannot claim a credit, \"2. Your filing status is married filing separately\"); every difference is on an incomplete or refused return. Project stands.",
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "6828d511408cbee94836d45d22e9c2b7aa22b1baa5275b3ffc2004a4db3dc175",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.eic.8@f8863",
+     "generated:20261026.63@f8863",
+     "generated:20261026.354@f8863",
+     "generated:20261026.418@f8863",
+     "generated:20261026.430@f8863",
+     "generated:20261026.466@f8863",
+     "partial:classm.clcw.4.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "7 (box)",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"lt\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 1, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"le\"}], \"test\": \"all\"}",
-   "ruling": "Ruling: scope; the box is the same Bool on every return the tool completes. i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\" The candidate's 1 <= count equals the project's 0 < count, and its kid_needed differs only by redundant tests (see f8863.kid_needed). Triage executable-triage-v2 (`../triage/f8863.json`; 1,318 fixtures, 500 generated returns seed 20261026, 50 partial records; 1,868 comparisons): 1,839 agree, 29 differ, no value difference: 12 project-refuses and 10 candidate-refuses (the refusal witnesses are other whole-return screens (dependent divorced_rule, married, multiple_support, claimed_no_tin, other_claimant; sb.form8938; sales digital; f8889 mfs/excess/unsupported; scope.other_income) that one side meets first because it reads a different operand order; every one is on a return refused under the full interview), 7 candidate-unknown (the candidate-unknown witnesses are partial records withholding f8863.paid (classm.clcw.4, f4952.1, f8960.1, sd.1, clcw26.4, f5695.5, f8889.2 deepseek bases); there the project hides the line without that answer (line 4 is zero or the filer is claimed), so the candidate asks an answer the source does not need to decide the line; M3) (S2). Project stands.",
-   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c"
-  },
-  {
-   "printed": "7 (box)",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"lt\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.edu_fulltime\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"ref\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"ref\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"lt\"}], \"test\": \"all\"}",
-   "ruling": "Ruling: model error; i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you. ... 3. You’re not filing a joint return for 2025. If you meet these conditions, check the box next to line 7, skip line 8, and enter the amount from line 7 on line 9.\" Triage executable-triage-v2 (`../triage/f8863.json`; 1,374 fixtures, 500 generated returns seed 20261026, 58 partial records; 1,932 comparisons; every completed-return difference inspected with the 6-witness cap lifted, T-083): 1,866 of 1,932 agree; no value difference; 33 candidate-unknown (24 incomplete, 9 refused), 31 project-refuses, 2 candidate-refuses. Wherever both evaluate the Bool is the project's (its count of the taxpayer meeting conditions 1 and 2, on a non-joint return with line 1 above zero, equals the project's kid_needed and f8863.kid). The unknowns are all f8863.ban, inherited from its line 1: Its line 1 refuses on a gate (f8863.h_ban_aoc) that reads f8863.ban before the American opportunity amount, so every line reading line 1 needs the ban answer on returns where no American opportunity credit is claimed and the interview does not ask it (M3). Project refusals are cited whole-return screens and the candidate refusals dependent.other_claimant, all on refused returns (scope). Project stands.",
-   "context": "2e5abc8be94d39f7203a9add22734ea56f86d8e174536a07abdb8e9e3ab13c21"
-  },
-  {
-   "printed": "7 (box)",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"lt\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"lt\"}], \"test\": \"all\"}",
-   "ruling": "Ruling: representation and scope; i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,078 agree; 19 project-unknown, 13 candidate-unknown, 8 project-refuses, 2 candidate-refuses (none on a completed return). Same Bool wherever both evaluate; every difference is on an incomplete or refused return. The earlier model error (the ban answer needed everywhere) no longer appears among the witnesses. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
-  },
-  {
-   "printed": "7 (box)",
-   "project": "{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"lt\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": 1, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"ref\": \"f8863.line7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2002\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_fulltime\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": false}, {\"input\": \"person.edu_born_2007\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_half_support\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": false}, {\"input\": \"person.sav_born\"}], \"test\": \"eq\"}], \"test\": \"any\"}, {\"args\": [{\"const\": true}, {\"input\": \"person.edu_parent\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"le\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "58a8b3cb091eb2bd1001da17cb2b1234451948ba9143322d8137d311aa04ee1c",
+   "second_expr_sha256": "4d5dac29dcb9ae33073fae23b362941c127fd8f4af42c6ab67ce5259208cbdbd",
    "ruling": "Ruling: model error; same Bool wherever both evaluate, but the candidate needs the ban answer everywhere (M3). i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\" The candidate's count of the taxpayer with person.edu_kid (which itself requires f8863.kid_needed, so line 7 above zero) at 1 or more, on a return that is not joint, equals the project's kid_needed and count above zero. Triage executable-triage-v2 (`../triage/f8863.json`; 1,325 fixtures, 500 generated returns seed 20261026, 52 partial records; 1,877 comparisons): 612 agree, 1,265 differ, no value difference: 378 candidate-unknown on completed returns and 264 on incomplete ones (f8863.ban, through its line 1 refusal; i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\"), 408 candidate-refuses and 215 candidate-unknown on refused returns (the refusal witnesses are whole-return screens unrelated to Form 8863 (dependent divorced_rule, married, other_claimant; sales special and bad_aggregate; sb.form8938; f2441.line14_bad; scope.schedule1; sb.unsupported), every one on a return refused under the full interview (S2)). Project stands.",
-   "context": "8d6db571caef2aa90419040f4443008f3323216ce61b0a9abe1462b56987d3a8"
+   "context": "8d6db571caef2aa90419040f4443008f3323216ce61b0a9abe1462b56987d3a8",
+   "subject_key": "805642bd3d606bf6663c1deec667bbd5f161d4085bb20b403f633afb12d5be66"
+  },
+  {
+   "printed": "7 (box)",
+   "project_expr_sha256": "58a8b3cb091eb2bd1001da17cb2b1234451948ba9143322d8137d311aa04ee1c",
+   "second_expr_sha256": "777cea9837335b8adc725469ed366ef72ae18c42809a0953cd51a86d0b8cb920",
+   "ruling": "Ruling: scope; the box is the same Bool on every return the tool completes. i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\" The candidate's 1 <= count equals the project's 0 < count, and its kid_needed differs only by redundant tests (see f8863.kid_needed). Triage executable-triage-v2 (`../triage/f8863.json`; 1,318 fixtures, 500 generated returns seed 20261026, 50 partial records; 1,868 comparisons): 1,839 agree, 29 differ, no value difference: 12 project-refuses and 10 candidate-refuses (the refusal witnesses are other whole-return screens (dependent divorced_rule, married, multiple_support, claimed_no_tin, other_claimant; sb.form8938; sales digital; f8889 mfs/excess/unsupported; scope.other_income) that one side meets first because it reads a different operand order; every one is on a return refused under the full interview), 7 candidate-unknown (the candidate-unknown witnesses are partial records withholding f8863.paid (classm.clcw.4, f4952.1, f8960.1, sd.1, clcw26.4, f5695.5, f8889.2 deepseek bases); there the project hides the line without that answer (line 4 is zero or the filer is claimed), so the candidate asks an answer the source does not need to decide the line; M3) (S2). Project stands.",
+   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c",
+   "subject_key": "805642bd3d606bf6663c1deec667bbd5f161d4085bb20b403f633afb12d5be66"
+  },
+  {
+   "printed": "7 (box)",
+   "project_expr_sha256": "58a8b3cb091eb2bd1001da17cb2b1234451948ba9143322d8137d311aa04ee1c",
+   "second_expr_sha256": "81feb6f5c66992db94e96167595ec627ab6283f5a284e01afe6e6b53b98c6ffd",
+   "ruling": "Ruling: representation and scope; i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,078 agree; 19 project-unknown, 13 candidate-unknown, 8 project-refuses, 2 candidate-refuses (none on a completed return). Same Bool wherever both evaluate; every difference is on an incomplete or refused return. The earlier model error (the ban answer needed everywhere) no longer appears among the witnesses. Project stands.",
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "805642bd3d606bf6663c1deec667bbd5f161d4085bb20b403f633afb12d5be66",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.4.deepseek@f8863",
+     "fixture:classm.f8962.1.deepseek@f8863",
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.f4952.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.eic.8@f8863",
+     "generated:20261026.418@f8863",
+     "generated:20261026.430@f8863",
+     "generated:20261026.466@f8863",
+     "partial:classm.clcw.4.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7 (box)",
+   "project_expr_sha256": "58a8b3cb091eb2bd1001da17cb2b1234451948ba9143322d8137d311aa04ee1c",
+   "second_expr_sha256": "a58f14bcf1fc491153b11956170f9907b90a8fbc8e2947038d26962d48e77d85",
+   "ruling": "Ruling: model error; i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you. ... 3. You’re not filing a joint return for 2025. If you meet these conditions, check the box next to line 7, skip line 8, and enter the amount from line 7 on line 9.\" Triage executable-triage-v2 (`../triage/f8863.json`; 1,374 fixtures, 500 generated returns seed 20261026, 58 partial records; 1,932 comparisons; every completed-return difference inspected with the 6-witness cap lifted, T-083): 1,866 of 1,932 agree; no value difference; 33 candidate-unknown (24 incomplete, 9 refused), 31 project-refuses, 2 candidate-refuses. Wherever both evaluate the Bool is the project's (its count of the taxpayer meeting conditions 1 and 2, on a non-joint return with line 1 above zero, equals the project's kid_needed and f8863.kid). The unknowns are all f8863.ban, inherited from its line 1: Its line 1 refuses on a gate (f8863.h_ban_aoc) that reads f8863.ban before the American opportunity amount, so every line reading line 1 needs the ban answer on returns where no American opportunity credit is claimed and the interview does not ask it (M3). Project refusals are cited whole-return screens and the candidate refusals dependent.other_claimant, all on refused returns (scope). Project stands.",
+   "context": "2e5abc8be94d39f7203a9add22734ea56f86d8e174536a07abdb8e9e3ab13c21",
+   "subject_key": "805642bd3d606bf6663c1deec667bbd5f161d4085bb20b403f633afb12d5be66"
   },
   {
    "printed": "8",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"aoc.refundable_rate\"}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"aoc.refundable_rate\"}}}, {\"guard\": {\"args\": [{\"const\": true}, {\"line\": \"7 (box)\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}}",
+   "project_expr_sha256": "c2fed91ac92678681930e1be5fececf0f4f47a550cc6d5111c68a6c79ca94af5",
+   "second_expr_sha256": "4efa15dc2586955ad6c42595cfdf4f9a77298a272dae0ced7fb5f8a718020bce",
    "ruling": "Ruling: representation and scope; f8863 p. 1, line 8: \"Multiply line 7 by 40% (0.40)\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,088 agree; 16 candidate-unknown, 8 project-refuses, 4 project-unknown, 2 candidate-refuses, 2 value (none on a completed return). The reply hides the line when the line 7 box is checked (the project shows $0) and after the line 4 stop; values agree where both show; the 2 values are MFS returns, married filing separately is refused for the whole return (s3.mfs on scope.ready; i8863 p. 3, Who cannot claim a credit, \"2. Your filing status is married filing separately\"). Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "e853b8420162326e9c49ce5fea189027855c95ff7abd43525bb6ae9b9e33a65d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.eic.8@f8863",
+     "generated:20261026.63@f8863",
+     "generated:20261026.354@f8863",
+     "generated:20261026.418@f8863",
+     "generated:20261026.430@f8863",
+     "generated:20261026.466@f8863",
+     "partial:classm.clcw.4.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "9",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}}",
-   "second": "{\"shown_when\": {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}, \"value\": {\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}}",
+   "project_expr_sha256": "4d218eebe56378b83c225e2702fb5f46f50e2c5ab11b09b91f5810ecc9cf683e",
+   "second_expr_sha256": "73888db15ba18cab8d418d7967d09ea32a5bdf1a4dfc4da2001e4ef90e7a356d",
    "ruling": "Ruling: representation and scope; f8863 p. 1, line 9: \"Subtract line 8 from line 7\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,088 agree; 16 candidate-unknown, 8 project-refuses, 4 project-unknown, 2 candidate-refuses, 2 value (none on a completed return). Same subtraction; the 2 values are MFS returns, married filing separately is refused for the whole return (s3.mfs on scope.ready; i8863 p. 3, Who cannot claim a credit, \"2. Your filing status is married filing separately\"). Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "2b81c82f375cb7a61543115fe587a2f9ee976732f41dbae541101e354eca71a4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.sales.1@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.sa.8@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.eic.6@f8863",
+     "fixture:classm.eic.8@f8863",
+     "generated:20261026.63@f8863",
+     "generated:20261026.354@f8863",
+     "generated:20261026.418@f8863",
+     "generated:20261026.430@f8863",
+     "generated:20261026.466@f8863",
+     "partial:classm.clcw.4.deepseek-f8863.paid@f8863",
+     "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f8863.eligible",
-   "project": "{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.one\", \"op\": \"sum_over\", \"where\": {\"args\": [{\"args\": [{\"const\": \"taxpayer\"}, {\"ref\": \"person.role\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"ref\": \"person.sav_claimed\"}], \"test\": \"eq\"}], \"test\": \"all\"}}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "8ab977d1d4270ec132eb95481dc914b2ca4e27860b370a62fac0cc839f488b91",
+   "second_expr_sha256": "cafa479ad3784bfb5a141d2c236e0b82fc5e5f9cada0e53964e8c527786b9e9f",
    "ruling": "Ruling: model error and scope; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,107 agree; 9 project-unknown, 4 value (none on a completed return). BUG-0392's helper counts both people on the return with person.sav_claimed (\"you, and your spouse if filing jointly\"); the reply counts only the taxpayer, narrower than the project's reading of \"you\" on a joint return, and adds an MFS term. The 4 values are MFS returns (generated 63 checked: status mfs, project true, reply false), married filing separately is refused for the whole return (s3.mfs on scope.ready; i8863 p. 3, Who cannot claim a credit, \"2. Your filing status is married filing separately\"); the project-unknown are class M fixtures that leave f8863.paid or person.sav_claimed unanswered, on refused returns. No completed return differs. The BUG-0392 change reads the actual claim, as the source does (\"You’re claimed\"), and is neither wider nor narrower than it. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "b46e5b54fa393ccb4da1caf2d0728400fed7c853f2bbf4ba21aca1bed0b538c8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.tcw.9@f8863",
+     "fixture:classm.tcw.12@f8863",
+     "fixture:classm.tcw.15@f8863",
+     "fixture:classm.sa.4@f8863",
+     "generated:20261026.63@f8863",
+     "generated:20261026.354@f8863",
+     "generated:20261026.417@f8863",
+     "generated:20261026.430@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f8863.eligible",
-   "project": "{\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
-   "ruling": "Ruling: model error; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" Triage executable-triage-v2 (`../triage/f8863.json`; 1,374 fixtures, 500 generated returns seed 20261026, 58 partial records; 1,932 comparisons; every completed-return difference inspected with the 6-witness cap lifted, T-083): 1,917 of 1,932 agree; 12 value (1 on a completed return), 3 project-unknown. The candidate tests paid expenses and status not mfs and drops the dependent bar (its note: \"'Claimed as a dependent on another person's return' is not encoded\"). Completed witness: stage19.mut.claimed_filer_llc (sli.claimed yes) project no, candidate yes, so the candidate gives a claimed filer a lifetime learning credit (line 10 $12,200.00). The other 11 values are mfs generated returns (63, 115, 128, 132, 144, 219, 302, 318, 322, 378, 379; project yes, candidate no). The mfs differences are on returns refused for the whole return by scope.ready on s3.mfs (\"Married filing separately\", i1040gi p. 14), so the project's mfs value is never filed (scope). The 3 project-unknown are partial records withholding f8863.paid on refused returns (representation). Project stands.",
-   "context": "2e5abc8be94d39f7203a9add22734ea56f86d8e174536a07abdb8e9e3ab13c21"
-  },
-  {
-   "printed": "f8863.eligible",
-   "project": "{\"args\": [{\"args\": [{\"const\": false}, {\"ref\": \"sli.claimed\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "c2a783367ad159a56ff727956b20364baea5e21748896377a1321d8c2e13d83c",
+   "second_expr_sha256": "0eab07f26de0a56443ec91609d47ea9f8da5b11dcbbb970710285e55eca44917",
    "ruling": "Ruling: model error; the candidate drops the dependent bar and moves the line 4 stop ahead of line 1. i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\". Project: f8863.paid and not sli.claimed; candidate: f8863.paid, status not mfs, line 4 above zero. Triage executable-triage-v2 (`../triage/f8863.json`; 1,325 fixtures, 500 generated returns seed 20261026, 52 partial records; 1,877 comparisons): 1,795 agree, 82 differ. Completed returns: 16 value; the sampled witnesses (classm.s3.2, classm.f5695.2 and their .deepseek twins, classm.f1040.2.deepseek) have line 4 $0.00, where the project is true and shows lines 1 to 4 (the stop comes after line 4) and the candidate is false, which zeroes its line 1 (M5; see line 1). By reading, the candidate is also true on stage19.mut.claimed_filer_llc (sli.claimed true), where it shows a lifetime learning amount on line 10 (M1; line 10 witness). Refused returns: 25 value (mfs among them; married filing separately is refused for the whole return by scope.ready on s3.mfs (\"Married filing separately\", i1040gi p. 14) (S1)) and 29 candidate-refuses (the refusal witnesses are whole-return screens unrelated to Form 8863 (dependent divorced_rule, married, other_claimant; sales special and bad_aggregate; sb.form8938; f2441.line14_bad; scope.schedule1; sb.unsupported), every one on a return refused under the full interview (S2); also stage19.refuse.excluded_income, refused by both). The 9 project-unknown are partial records withholding f8863.paid, the return-level question that decides whether Form 8863 is completed at all (i8863 p. 2, Who Can Claim an Education Credit), which the interview always asks. Project stands.",
-   "context": "8d6db571caef2aa90419040f4443008f3323216ce61b0a9abe1462b56987d3a8"
+   "context": "8d6db571caef2aa90419040f4443008f3323216ce61b0a9abe1462b56987d3a8",
+   "subject_key": "b46e5b54fa393ccb4da1caf2d0728400fed7c853f2bbf4ba21aca1bed0b538c8"
+  },
+  {
+   "printed": "f8863.eligible",
+   "project_expr_sha256": "c2a783367ad159a56ff727956b20364baea5e21748896377a1321d8c2e13d83c",
+   "second_expr_sha256": "c27d1ecd23af1698f7c9faaddc8f08bf96980e267a7d5e58b780f0053d3e607f",
+   "ruling": "Ruling: model error; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" Triage executable-triage-v2 (`../triage/f8863.json`; 1,374 fixtures, 500 generated returns seed 20261026, 58 partial records; 1,932 comparisons; every completed-return difference inspected with the 6-witness cap lifted, T-083): 1,917 of 1,932 agree; 12 value (1 on a completed return), 3 project-unknown. The candidate tests paid expenses and status not mfs and drops the dependent bar (its note: \"'Claimed as a dependent on another person's return' is not encoded\"). Completed witness: stage19.mut.claimed_filer_llc (sli.claimed yes) project no, candidate yes, so the candidate gives a claimed filer a lifetime learning credit (line 10 $12,200.00). The other 11 values are mfs generated returns (63, 115, 128, 132, 144, 219, 302, 318, 322, 378, 379; project yes, candidate no). The mfs differences are on returns refused for the whole return by scope.ready on s3.mfs (\"Married filing separately\", i1040gi p. 14), so the project's mfs value is never filed (scope). The 3 project-unknown are partial records withholding f8863.paid on refused returns (representation). Project stands.",
+   "context": "2e5abc8be94d39f7203a9add22734ea56f86d8e174536a07abdb8e9e3ab13c21",
+   "subject_key": "b46e5b54fa393ccb4da1caf2d0728400fed7c853f2bbf4ba21aca1bed0b538c8"
   },
   {
    "printed": "f8863.kid_needed",
-   "project": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f8863.paid\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
-   "ruling": "Ruling: scope; the helper is the same on every return the tool completes. i8863 p. 7, Line 7: \"3. You’re not filing a joint return for 2025.\" and \"If you meet these conditions, check the box next to line 7, skip line 8\". Project: line 1 > 0, line 7 > 0, status not mfj; candidate: paid and not mfs, line 7 > 0, not mfj. Line 7 is line 1 times a ratio of at most 1.000, so line 7 > 0 implies line 1 > 0, and paid false makes line 1 zero (person.edu_student and dependent.edu_student require f8863.paid). Triage executable-triage-v2 (`../triage/f8863.json`; 1,318 fixtures, 500 generated returns seed 20261026, 50 partial records; 1,868 comparisons): 1,844 agree, 24 differ, all on refused returns: 3 value (status mfs; married filing separately is refused for the whole return by scope.ready on s3.mfs (\"Married filing separately\", i1040gi p. 14; the sampled value witnesses gen#82, #155, #415 have f1040.status mfs and project_return refused)), 14 project-refuses and 6 candidate-refuses (the refusal witnesses are other whole-return screens (dependent divorced_rule, married, multiple_support, claimed_no_tin, other_claimant; sb.form8938; sales digital; f8889 mfs/excess/unsupported; scope.other_income) that one side meets first because it reads a different operand order; every one is on a return refused under the full interview), 1 candidate-unknown (partial, refused) (S1, S2). Project stands.",
-   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c"
-  },
-  {
-   "printed": "f8863.kid_needed",
-   "project": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "de547f8229a1bca08c25ea4b92cb31961e6513eab8883b39fc667a864403eb5a",
+   "second_expr_sha256": "12e2462706f6a80be168e85bd2d61837faafaed224eda86adc4cdd7669177ebb",
    "ruling": "Ruling: model error; i8863 p. 7, Line 7: \"You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you. ... 3. You’re not filing a joint return for 2025. If you meet these conditions, check the box next to line 7, skip line 8, and enter the amount from line 7 on line 9.\" f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\". Triage executable-triage-v2 (`../triage/f8863.json`; 1,374 fixtures, 500 generated returns seed 20261026, 58 partial records; 1,932 comparisons; every completed-return difference inspected with the 6-witness cap lifted, T-083): 1,850 of 1,932 agree; 16 value (11 on completed returns), 31 candidate-unknown, 34 project-refuses, 1 project-unknown. The candidate drops the project's line 7 > 0 test. All 11 completed values (classm.s3.2 and .deepseek, generated 15, 236, 269, 277, 402, 437, 447, 449, 464; line 1 $2,500.00 or $5,000.00, not joint) have line 4 $0.00 and line 7 $0.00: the form has stopped at line 4, yet the candidate's helper is yes and the line 7 age, student and support conditions would be asked. The 31 candidate-unknown are f8863.ban on incomplete or refused records: Its line 1 refuses on a gate (f8863.h_ban_aoc) that reads f8863.ban before the American opportunity amount, so every line reading line 1 needs the ban answer on returns where no American opportunity credit is claimed and the interview does not ask it (M3). The 5 refused values are mfs or line 4 zero; the 34 project-refuses are cited whole-return screens (scope). Project stands.",
-   "context": "2e5abc8be94d39f7203a9add22734ea56f86d8e174536a07abdb8e9e3ab13c21"
+   "context": "2e5abc8be94d39f7203a9add22734ea56f86d8e174536a07abdb8e9e3ab13c21",
+   "subject_key": "d212b4de9913b5cc6a18180267e25640976dc776fa13f99304a77c21a4865547"
   },
   {
    "printed": "f8863.kid_needed",
-   "project": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"all\"}",
+   "project_expr_sha256": "de547f8229a1bca08c25ea4b92cb31961e6513eab8883b39fc667a864403eb5a",
+   "second_expr_sha256": "473f90208371b684b322f5388725133c3f7e2ef27c44df9be8ea37d22eb4bbf3",
+   "ruling": "Ruling: scope; the helper is the same on every return the tool completes. i8863 p. 7, Line 7: \"3. You’re not filing a joint return for 2025.\" and \"If you meet these conditions, check the box next to line 7, skip line 8\". Project: line 1 > 0, line 7 > 0, status not mfj; candidate: paid and not mfs, line 7 > 0, not mfj. Line 7 is line 1 times a ratio of at most 1.000, so line 7 > 0 implies line 1 > 0, and paid false makes line 1 zero (person.edu_student and dependent.edu_student require f8863.paid). Triage executable-triage-v2 (`../triage/f8863.json`; 1,318 fixtures, 500 generated returns seed 20261026, 50 partial records; 1,868 comparisons): 1,844 agree, 24 differ, all on refused returns: 3 value (status mfs; married filing separately is refused for the whole return by scope.ready on s3.mfs (\"Married filing separately\", i1040gi p. 14; the sampled value witnesses gen#82, #155, #415 have f1040.status mfs and project_return refused)), 14 project-refuses and 6 candidate-refuses (the refusal witnesses are other whole-return screens (dependent divorced_rule, married, multiple_support, claimed_no_tin, other_claimant; sb.form8938; sales digital; f8889 mfs/excess/unsupported; scope.other_income) that one side meets first because it reads a different operand order; every one is on a return refused under the full interview), 1 candidate-unknown (partial, refused) (S1, S2). Project stands.",
+   "context": "6ec448e8c4e45fe5e676058e4822e64efbef43eaca4035feee065875c3d0962c",
+   "subject_key": "d212b4de9913b5cc6a18180267e25640976dc776fa13f99304a77c21a4865547"
+  },
+  {
+   "printed": "f8863.kid_needed",
+   "project_expr_sha256": "de547f8229a1bca08c25ea4b92cb31961e6513eab8883b39fc667a864403eb5a",
+   "second_expr_sha256": "dd70fada2ba1d9c8eeff6c7fa152486f18b424252ade4d7839a021629a594ded",
    "ruling": "Ruling: scope; i8863 p. 7, Line 7: \"3. You’re not filing a joint return for 2025.\" executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 2,095 agree; 9 project-refuses, 8 project-unknown, 6 candidate-refuses, 2 value (none on a completed return). Same reply and project as the before-catalog-refresh ruling, but the ban answer the reply's line 1 needed on every return no longer appears (no candidate-unknown): every difference is on an incomplete or refused return. Project stands.",
-   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059"
+   "context": "69f32b251a2c51baf11a4885d36f58982ce83d0f0e6de5037b892a6a19f13059",
+   "subject_key": "d212b4de9913b5cc6a18180267e25640976dc776fa13f99304a77c21a4865547",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.4@f8863",
+     "fixture:classm.sc.2@f8863",
+     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.scveh.3@f8863",
+     "fixture:classm.tcw.9@f8863",
+     "fixture:classm.tcw.12@f8863",
+     "fixture:classm.tcw.15@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:classm.sa.7@f8863",
+     "fixture:classm.eic.5@f8863",
+     "generated:20261026.37@f8863",
+     "generated:20261026.63@f8863",
+     "generated:20261026.256@f8863",
+     "generated:20261026.330@f8863",
+     "generated:20261026.335@f8863",
+     "generated:20261026.354@f8863",
+     "generated:20261026.369@f8863",
+     "generated:20261026.417@f8863",
+     "generated:20261026.430@f8863",
+     "generated:20261026.470@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

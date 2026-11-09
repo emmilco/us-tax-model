@@ -4,73 +4,285 @@
  "rulings": [
   {
    "printed": "1",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"48\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l1\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.x_must\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"collection\": \"retirement\", \"field\": \"retirement.l1\", \"op\": \"sum_over\", \"where\": null}}",
-   "second": "{\"shown_when\": null, \"value\": {\"collection\": \"retirement\", \"field\": \"retirement.l1\", \"op\": \"sum_over\", \"where\": null}}",
+   "project_expr_sha256": "332ea446cfb9c9c06696fbc7e78ec8e321ae9b7d97e8412b78066328a37b0016",
+   "second_expr_sha256": "fd230bf5854a628f4e3dc2f5b867f241c12497a03aaf04ddf699db36ad0780be",
    "ruling": "Ruling: model error; i5329 p. 1, Who Must File: \"if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount ... you don't have to file Form 5329.\" The project hides the line when the form is not filed; the candidate shows an amount there. Triage executable-triage-v2 (triage/f5329.json): 2138 of 2228 comparisons agree; on completed returns {\"candidate-shows-skipped\": 3}.",
-   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a"
+   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a",
+   "subject_key": "d20461ddce73d53a93198fdb72b6ecc963e723face625aa7e9caef686a75bd8f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@person[taxpayer].f5329[form]",
+     "fixture:classm.s2.3.deepseek@person[taxpayer].f5329[form]",
+     "fixture:classm.f8959.1@person[taxpayer].f5329[form]",
+     "fixture:classm.f8959.2@person[taxpayer].f5329[form]",
+     "fixture:classm.s2.3@person[taxpayer].f5329[form]",
+     "fixture:classm.dependent.2@person[taxpayer].f5329[form]",
+     "fixture:stage11.refuse.hsa_months@person[taxpayer].f5329[form]",
+     "fixture:stage11.refuse.hsa_screen@person[taxpayer].f5329[form]",
+     "fixture:stage16.cleanup.refuse.retirement.special_first@person[spouse].f5329[form]",
+     "fixture:ss.person.separation@person[second].f5329[form]",
+     "fixture:stage21.example.tom_jones@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e1@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e9@person[spouse].f5329[form]",
+     "fixture:stage21.refuse.early_screen@person[taxpayer].f5329[form]",
+     "fixture:stage21.mut.no05_medical_unasked@person[taxpayer].f5329[form]",
+     "generated:20261026.301@person[taxpayer].f5329[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "2",
-   "project": "{\"of\": [{\"from\": {\"collection\": \"retirement\", \"field\": \"retirement.l2\", \"op\": \"sum_over\", \"where\": null}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e05\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e09\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e19\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e22\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e23\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e05\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"ref\": \"person.zero\"}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e05\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e05\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"sa.line4\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e09\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"ref\": \"person.zero\"}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e09\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"from\": {\"param\": \"f5329.cap_first_home\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"person.x_prior09\"}}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e09\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e19\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"ref\": \"person.zero\"}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e19\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"amount\": {\"param\": \"f5329.cap_birth\"}, \"count\": {\"input\": \"person.x_births\"}, \"op\": \"multiply_count\"}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e19\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}, {\"of\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e22\", \"op\": \"sum_over\", \"where\": null}, {\"param\": \"f5329.cap_abuse\"}], \"op\": \"smaller_of\"}, {\"of\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e23\", \"op\": \"sum_over\", \"where\": null}, {\"param\": \"f5329.cap_emergency\"}], \"op\": \"smaller_of\"}], \"op\": \"sum\"}], \"op\": \"sum\"}",
-   "second": "{\"collection\": \"retirement\", \"field\": \"retirement.l2\", \"op\": \"sum_over\", \"where\": null}",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" p590b p. 27, First home, \"When added to all your prior qualified first-time homebuyer distributions, if any, total qualifying distributions can’t be more than $10,000\"; p. 28, \"A qualified birth or adoption distribution must not exceed $5,000 per taxpayer\", \"must not exceed the lesser of $10,300 for 2025 ...\", \"must not exceed the lesser of $1,000 ...\". The candidate enters the exception amounts before the per-person limits (person.x_l2_all; its note says the limits \"apply there\", but that helper is labelled \"Exception amounts before the per-person limits\"), so line 2 exceeds what can be excluded whenever a limit binds. Triage executable-triage-v2 (triage/f5329.json; 1,372 fixtures and 500 generated returns seed 20261026, 2,149 comparisons): 2,144 agree; 5 value: stage21.blind.e4 (completed) project $13,800.00, candidate $19,000.00; stage21.blind.e5 $11,000.00 vs $12,200.00; stage21.blind.e6 $7,475.00 vs $9,000.00 (exception 05 above Schedule A line 4); stage21.mut.e23_over_cap $1,000.00 vs $1,500.00; stage21.refuse.limit_binds (refused) $1,000.00 vs $1,500.00. Project stands.",
-   "context": "2d76d6d3e88f04e940cfa1d93db6b7947850245708de793e08bb043c62ba6d8d"
-  },
-  {
-   "printed": "2",
-   "project": "{\"of\": [{\"from\": {\"collection\": \"retirement\", \"field\": \"retirement.l2\", \"op\": \"sum_over\", \"where\": null}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e05\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e09\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e19\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e22\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e23\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"of\": [{\"alternatives\": [{\"guard\": {\"args\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e05\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"ref\": \"person.zero\"}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e05\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e05\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"sa.line4\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e09\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"ref\": \"person.zero\"}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e09\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"from\": {\"param\": \"f5329.cap_first_home\"}, \"op\": \"subtract_floor0\", \"take\": {\"input\": \"person.x_prior09\"}}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e09\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e19\", \"op\": \"sum_over\", \"where\": null}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"ref\": \"person.zero\"}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e19\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"amount\": {\"param\": \"f5329.cap_birth\"}, \"count\": {\"input\": \"person.x_births\"}, \"op\": \"multiply_count\"}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e19\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}, {\"of\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e22\", \"op\": \"sum_over\", \"where\": null}, {\"param\": \"f5329.cap_abuse\"}], \"op\": \"smaller_of\"}, {\"of\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e23\", \"op\": \"sum_over\", \"where\": null}, {\"param\": \"f5329.cap_emergency\"}], \"op\": \"smaller_of\"}], \"op\": \"sum\"}], \"op\": \"sum\"}",
-   "second": "{\"of\": [{\"from\": {\"collection\": \"retirement\", \"field\": \"retirement.l2\", \"op\": \"sum_over\", \"where\": null}, \"op\": \"subtract_floor0\", \"take\": {\"of\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e05\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e09\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e19\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e22\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e23\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}}, {\"of\": [{\"collection\": \"retirement\", \"field\": \"retirement.l2_e05\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e09\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e19\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e22\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"retirement\", \"field\": \"retirement.l2_e23\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}], \"op\": \"sum\"}",
+   "project_expr_sha256": "f61d711d96ebf8e5fcf628057b414c327bb95dabb32a15399625dc86237bd1b4",
+   "second_expr_sha256": "0fd3a6c5305a7b5ed85f84f7f0e3bdb87cf2e80765ed7567e40d3dc7e4e71425",
    "ruling": "Ruling: representation; i5329 p. 5, Line 2. representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2145 of 2228 comparisons agree; on completed returns no difference.",
-   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a"
+   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a",
+   "subject_key": "21d3aa08489a27e3b38c8c64b9dc511a75a21457d783fd2be9703d634b141186",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@person[taxpayer].f5329[form]",
+     "fixture:classm.f8959.1@person[taxpayer].f5329[form]",
+     "fixture:classm.f8959.2@person[taxpayer].f5329[form]",
+     "fixture:classm.dependent.2@person[taxpayer].f5329[form]",
+     "fixture:stage11.refuse.hsa_months@person[taxpayer].f5329[form]",
+     "fixture:stage11.refuse.hsa_screen@person[taxpayer].f5329[form]",
+     "fixture:stage16.cleanup.refuse.retirement.special_first@person[spouse].f5329[form]",
+     "fixture:ss.person.separation@person[second].f5329[form]",
+     "fixture:stage21.blind.e4@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e5@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e6@person[taxpayer].f5329[form]",
+     "fixture:stage21.mut.e23_over_cap@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.two23@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.limit_binds@person[taxpayer].f5329[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2",
+   "project_expr_sha256": "f61d711d96ebf8e5fcf628057b414c327bb95dabb32a15399625dc86237bd1b4",
+   "second_expr_sha256": "a2b91930cd87c150e90410b7ebe8144a5d122737e98979e756c7bfed9865ef4e",
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2: \"Enter on line 2 the amount that you can exclude. In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" p590b p. 27, First home, \"When added to all your prior qualified first-time homebuyer distributions, if any, total qualifying distributions can’t be more than $10,000\"; p. 28, \"A qualified birth or adoption distribution must not exceed $5,000 per taxpayer\", \"must not exceed the lesser of $10,300 for 2025 ...\", \"must not exceed the lesser of $1,000 ...\". The candidate enters the exception amounts before the per-person limits (person.x_l2_all; its note says the limits \"apply there\", but that helper is labelled \"Exception amounts before the per-person limits\"), so line 2 exceeds what can be excluded whenever a limit binds. Triage executable-triage-v2 (triage/f5329.json; 1,372 fixtures and 500 generated returns seed 20261026, 2,149 comparisons): 2,144 agree; 5 value: stage21.blind.e4 (completed) project $13,800.00, candidate $19,000.00; stage21.blind.e5 $11,000.00 vs $12,200.00; stage21.blind.e6 $7,475.00 vs $9,000.00 (exception 05 above Schedule A line 4); stage21.mut.e23_over_cap $1,000.00 vs $1,500.00; stage21.refuse.limit_binds (refused) $1,000.00 vs $1,500.00. Project stands.",
+   "context": "2d76d6d3e88f04e940cfa1d93db6b7947850245708de793e08bb043c62ba6d8d",
+   "subject_key": "21d3aa08489a27e3b38c8c64b9dc511a75a21457d783fd2be9703d634b141186"
   },
   {
    "printed": "3",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"48\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l1\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.x_must\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"from\": {\"line\": \"1\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"2\"}}}",
-   "second": "{\"shown_when\": null, \"value\": {\"from\": {\"line\": \"1\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"2\"}}}",
+   "project_expr_sha256": "97ae96596e2bbf034c880cc56b21248ee22a3f85ea45d0f754ea82d5b8933616",
+   "second_expr_sha256": "47df688d79a2247444111a7d1fe196ed49542faa960cf1dc75cc67f200dedf2d",
    "ruling": "Ruling: model error; i5329 p. 1, Who Must File: \"if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount ... you don't have to file Form 5329.\" The project hides the line when the form is not filed; the candidate shows an amount there. Triage executable-triage-v2 (triage/f5329.json): 2133 of 2228 comparisons agree; on completed returns {\"candidate-shows-skipped\": 3}.",
-   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a"
+   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a",
+   "subject_key": "34bf78ea56ad8e475baaa9a5f1b20908b95f2f1ef095ab958a10fc064730cae1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@person[taxpayer].f5329[form]",
+     "fixture:classm.s2.3.deepseek@person[taxpayer].f5329[form]",
+     "fixture:classm.f8959.1@person[taxpayer].f5329[form]",
+     "fixture:classm.f8959.2@person[taxpayer].f5329[form]",
+     "fixture:classm.s2.3@person[taxpayer].f5329[form]",
+     "fixture:classm.dependent.2@person[taxpayer].f5329[form]",
+     "fixture:stage11.refuse.hsa_months@person[taxpayer].f5329[form]",
+     "fixture:stage11.refuse.hsa_screen@person[taxpayer].f5329[form]",
+     "fixture:stage16.cleanup.refuse.retirement.special_first@person[spouse].f5329[form]",
+     "fixture:ss.person.separation@person[second].f5329[form]",
+     "fixture:stage21.example.tom_jones@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e1@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e4@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e5@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e6@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e9@person[spouse].f5329[form]",
+     "fixture:stage21.mut.e23_over_cap@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.two23@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.limit_binds@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.early_screen@person[taxpayer].f5329[form]",
+     "fixture:stage21.mut.no05_medical_unasked@person[taxpayer].f5329[form]",
+     "generated:20261026.301@person[taxpayer].f5329[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "4",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"48\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l1\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.x_must\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"of\": [{\"amount\": {\"from\": {\"line\": \"3\"}, \"op\": \"subtract_floor0\", \"take\": {\"from\": {\"collection\": \"retirement\", \"field\": \"retirement.l1_s\", \"op\": \"sum_over\", \"where\": null}, \"op\": \"subtract_floor0\", \"take\": {\"collection\": \"retirement\", \"field\": \"retirement.l2_s\", \"op\": \"sum_over\", \"where\": null}}}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"f5329.early_rate\"}}, {\"amount\": {\"from\": {\"collection\": \"retirement\", \"field\": \"retirement.l1_s\", \"op\": \"sum_over\", \"where\": null}, \"op\": \"subtract_floor0\", \"take\": {\"collection\": \"retirement\", \"field\": \"retirement.l2_s\", \"op\": \"sum_over\", \"where\": null}}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"f5329.simple_rate\"}}], \"op\": \"sum\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"of\": [{\"amount\": {\"from\": {\"line\": \"3\"}, \"op\": \"subtract_floor0\", \"take\": {\"from\": {\"collection\": \"retirement\", \"field\": \"retirement.l1_s\", \"op\": \"sum_over\", \"where\": null}, \"op\": \"subtract_floor0\", \"take\": {\"collection\": \"retirement\", \"field\": \"retirement.l2_s\", \"op\": \"sum_over\", \"where\": null}}}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"f5329.early_rate\"}}, {\"amount\": {\"from\": {\"collection\": \"retirement\", \"field\": \"retirement.l1_s\", \"op\": \"sum_over\", \"where\": null}, \"op\": \"subtract_floor0\", \"take\": {\"collection\": \"retirement\", \"field\": \"retirement.l2_s\", \"op\": \"sum_over\", \"where\": null}}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"f5329.simple_rate\"}}], \"op\": \"sum\"}}",
+   "project_expr_sha256": "06e3f1f23a48120f43ee230f1663886ae4e5bbb4d45ec2bd2485bca89cd4de62",
+   "second_expr_sha256": "24d7ffe5918e2c629532937fb48eb7c8cf95a4063c6052f63b9debdb288a4686",
    "ruling": "Ruling: model error; i5329 p. 1, Who Must File: \"if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount ... you don't have to file Form 5329.\" The project hides the line when the form is not filed; the candidate shows an amount there. Triage executable-triage-v2 (triage/f5329.json): 2134 of 2228 comparisons agree; on completed returns {\"candidate-shows-skipped\": 3}.",
-   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a"
+   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a",
+   "subject_key": "f87409fa0a40d568316689463a7469c83db3621a936714c0d238d70cde02d468",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@person[taxpayer].f5329[form]",
+     "fixture:classm.s2.3.deepseek@person[taxpayer].f5329[form]",
+     "fixture:classm.f8959.1@person[taxpayer].f5329[form]",
+     "fixture:classm.f8959.2@person[taxpayer].f5329[form]",
+     "fixture:classm.s2.3@person[taxpayer].f5329[form]",
+     "fixture:classm.dependent.2@person[taxpayer].f5329[form]",
+     "fixture:stage11.refuse.hsa_months@person[taxpayer].f5329[form]",
+     "fixture:stage11.refuse.hsa_screen@person[taxpayer].f5329[form]",
+     "fixture:stage16.cleanup.refuse.retirement.special_first@person[spouse].f5329[form]",
+     "fixture:ss.person.separation@person[second].f5329[form]",
+     "fixture:stage21.example.tom_jones@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e1@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e4@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e5@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e6@person[taxpayer].f5329[form]",
+     "fixture:stage21.blind.e9@person[spouse].f5329[form]",
+     "fixture:stage21.mut.e23_over_cap@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.early_screen@person[taxpayer].f5329[form]",
+     "fixture:stage21.mut.no05_medical_unasked@person[taxpayer].f5329[form]",
+     "generated:20261026.301@person[taxpayer].f5329[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "47",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"48\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l1\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.x_must\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"collection\": \"f8889\", \"field\": \"f8889.excess_amt\", \"op\": \"sum_over\", \"where\": null}}",
-   "second": "{\"shown_when\": null, \"value\": {\"collection\": \"f8889\", \"field\": \"f8889.excess_amt\", \"op\": \"sum_over\", \"where\": null}}",
+   "project_expr_sha256": "3b9bf434df594730951ad6d8fef41c955f1b154bb810295942350367a1672327",
+   "second_expr_sha256": "6e5410bd92217194ba54b8702b4f12dba54d72c5a41b8d8a4dfeae262cdc80c4",
    "ruling": "Ruling: representation; i5329 p. 8, Line 47. representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2196 of 2228 comparisons agree; on completed returns no difference.",
-   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a"
+   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a",
+   "subject_key": "333fa5f78c6a505c482e62b9ae0d174cdf9d876196d4711f9d2141aa17ceb7cf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@person[sample].f5329[form]",
+     "fixture:classm.f8889.3@person[sample].f5329[form]",
+     "fixture:stage10.ira.roth_code_unanswered@person[taxpayer].f5329[form]",
+     "fixture:stage13.refuse.hsa_family_one_spouse@person[spouse].f5329[form]",
+     "fixture:stage16.hsa.partial.H05@person[sample].f5329[form]",
+     "fixture:stage16.hsa.partial.H06@person[sample].f5329[form]",
+     "fixture:stage16.hsa.partial.H07@person[sample].f5329[form]",
+     "fixture:stage21.refuse.wrong_kind@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.bad_code_screen_unasked@person[taxpayer].f5329[form]",
+     "generated:20261026.84@person[taxpayer].f5329[form]",
+     "generated:20261026.119@person[spouse].f5329[form]",
+     "generated:20261026.121@person[spouse].f5329[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "48",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"48\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l1\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.x_must\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"line\": \"47\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"line\": \"47\"}}",
+   "project_expr_sha256": "b82b784f684e7944aee61c97ea1de5da9531b4463ed61b36fded841ecd2a9a8f",
+   "second_expr_sha256": "b2f80e45772df2096f0321a22ba0b3c53ee2024fc442c08363af2e06146495de",
    "ruling": "Ruling: scope; lines 42 to 46 are refused through person.x_other (BUG-0313). representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2195 of 2228 comparisons agree; on completed returns no difference.",
-   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a"
+   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a",
+   "subject_key": "333fa5f78c6a505c482e62b9ae0d174cdf9d876196d4711f9d2141aa17ceb7cf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@person[sample].f5329[form]",
+     "fixture:classm.f8889.3@person[sample].f5329[form]",
+     "fixture:stage10.ira.roth_code_unanswered@person[taxpayer].f5329[form]",
+     "fixture:stage13.refuse.hsa_family_one_spouse@person[spouse].f5329[form]",
+     "fixture:stage16.hsa.partial.H05@person[sample].f5329[form]",
+     "fixture:stage16.hsa.partial.H06@person[sample].f5329[form]",
+     "fixture:stage16.hsa.partial.H07@person[sample].f5329[form]",
+     "fixture:stage21.refuse.x_other@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.wrong_kind@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.bad_code_screen_unasked@person[taxpayer].f5329[form]",
+     "generated:20261026.84@person[taxpayer].f5329[form]",
+     "generated:20261026.119@person[spouse].f5329[form]",
+     "generated:20261026.121@person[spouse].f5329[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "49",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"48\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l1\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0, \"type\": \"Count\"}, {\"collection\": \"person\", \"field\": \"person.x_must\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"48\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"48\"}], \"test\": \"lt\"}, \"then\": {\"amount\": {\"of\": [{\"line\": \"48\"}, {\"ref\": \"person.x_hsa_value\"}], \"op\": \"smaller_of\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"f5329.excess_rate\"}}}], \"op\": \"choose\"}}",
-   "second": "{\"shown_when\": null, \"value\": {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"48\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"48\"}], \"test\": \"lt\"}, \"then\": {\"amount\": {\"of\": [{\"line\": \"48\"}, {\"ref\": \"person.x_hsa_value\"}], \"op\": \"smaller_of\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"f5329.excess_rate\"}}}], \"op\": \"choose\"}}",
+   "project_expr_sha256": "4ad18ed96bb65fcfe00b1f2d0da8a4b3a4b69e701a0f728dbe2f6efec1b2e526",
+   "second_expr_sha256": "01ed000c2d77f816e91c88c2d2c8279dd5002197db5bd057cdd8e42019d4df2f",
    "ruling": "Ruling: representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2196 of 2228 comparisons agree; on completed returns no difference.",
-   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a"
+   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a",
+   "subject_key": "ba284dc58f330ea47df1f05665000c50530c63f3cfb510bcb62cbcb9970a0e09",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@person[sample].f5329[form]",
+     "fixture:classm.f8889.3@person[sample].f5329[form]",
+     "fixture:stage10.ira.roth_code_unanswered@person[taxpayer].f5329[form]",
+     "fixture:stage13.refuse.hsa_family_one_spouse@person[spouse].f5329[form]",
+     "fixture:stage16.hsa.partial.H05@person[sample].f5329[form]",
+     "fixture:stage16.hsa.partial.H06@person[sample].f5329[form]",
+     "fixture:stage16.hsa.partial.H07@person[sample].f5329[form]",
+     "fixture:stage21.refuse.wrong_kind@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.bad_code_screen_unasked@person[taxpayer].f5329[form]",
+     "generated:20261026.84@person[taxpayer].f5329[form]",
+     "generated:20261026.119@person[spouse].f5329[form]",
+     "generated:20261026.121@person[spouse].f5329[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f5329.must",
-   "project": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"48\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l1_s\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l2\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"2\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"47\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"from\": {\"collection\": \"retirement\", \"field\": \"retirement.l1_s\", \"op\": \"sum_over\", \"where\": null}, \"op\": \"subtract_floor0\", \"take\": {\"collection\": \"retirement\", \"field\": \"retirement.l2_s\", \"op\": \"sum_over\", \"where\": null}}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "ruling": "Ruling: representation; i5329 p. 1, Who Must File: \"However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329.\"; i1040gi p. 112, Line 8, Exception: \"But you must file Form 5329 if distribution code 1 is incorrectly shown in box 7 of Form 1099-R or you qualify for an exception\". Both lines say the form is required for an exception, a code S amount or 2025 HSA excess. The candidate tests line 2 after the per-person limits, the code S part of line 3 and line 47; the project tests the exception amounts before the limits, code S line 1 amounts and line 48. They differ only where every claimed exception is limited to $0 (for example exception 05 with Schedule A line 4 at $0), or a code S distribution is wholly excepted; the tax is the same either way, and filing a form with an exception claimed is what p. 112 asks of a filer who claims one. Triage executable-triage-v2 (triage/f5329.json; 1,372 fixtures and 500 generated returns seed 20261026, 2,149 comparisons): 2,149 of 2,149 agree. Project stands.",
-   "context": "2d76d6d3e88f04e940cfa1d93db6b7947850245708de793e08bb043c62ba6d8d"
-  },
-  {
-   "printed": "f5329.must",
-   "project": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"48\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l1_s\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l2\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"any\"}",
-   "second": "{\"args\": [{\"args\": [{\"const\": 0}, {\"line\": \"2\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"48\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"collection\": \"retirement\", \"field\": \"retirement.l1_s\", \"op\": \"sum_over\", \"where\": null}], \"test\": \"lt\"}], \"test\": \"any\"}",
+   "project_expr_sha256": "5b7464adbce78a309c36330c6c14781c748bbdf1acbf8eac30ff999e5877ea03",
+   "second_expr_sha256": "936c6db4afee5bdb986c6fa1c45f7ddab350df606e15d026a073ec93a856fe4d",
    "ruling": "Ruling: representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2225 of 2228 comparisons agree; on completed returns no difference.",
-   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a"
+   "context": "b80dae3d41d6e01ba8dc5d7f119e1e29bd9708187f8dd6b75d4b7b3d3fb1461a",
+   "subject_key": "333fa5f78c6a505c482e62b9ae0d174cdf9d876196d4711f9d2141aa17ceb7cf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage21.refuse.two23@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.limit_binds@person[taxpayer].f5329[form]",
+     "fixture:stage21.refuse.x_other@person[taxpayer].f5329[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f5329.must",
+   "project_expr_sha256": "5b7464adbce78a309c36330c6c14781c748bbdf1acbf8eac30ff999e5877ea03",
+   "second_expr_sha256": "b676ab149b26a56a645d8c4d1b3a06f3115588ae6b4d940ae16950971fedc37e",
+   "ruling": "Ruling: representation; i5329 p. 1, Who Must File: \"However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329.\"; i1040gi p. 112, Line 8, Exception: \"But you must file Form 5329 if distribution code 1 is incorrectly shown in box 7 of Form 1099-R or you qualify for an exception\". Both lines say the form is required for an exception, a code S amount or 2025 HSA excess. The candidate tests line 2 after the per-person limits, the code S part of line 3 and line 47; the project tests the exception amounts before the limits, code S line 1 amounts and line 48. They differ only where every claimed exception is limited to $0 (for example exception 05 with Schedule A line 4 at $0), or a code S distribution is wholly excepted; the tax is the same either way, and filing a form with an exception claimed is what p. 112 asks of a filer who claims one. Triage executable-triage-v2 (triage/f5329.json; 1,372 fixtures and 500 generated returns seed 20261026, 2,149 comparisons): 2,149 of 2,149 agree. Project stands.",
+   "context": "2d76d6d3e88f04e940cfa1d93db6b7947850245708de793e08bb043c62ba6d8d",
+   "subject_key": "333fa5f78c6a505c482e62b9ae0d174cdf9d876196d4711f9d2141aa17ceb7cf"
   }
  ]
 }

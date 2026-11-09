@@ -6,60 +6,69 @@
    "printed": "5a",
    "restated": "Enter the amount from f1040 line 7a.",
    "model": "The form says 'Net gain or loss from disposition of property (see instructions)', but the line 5a instructions are not in the pages given. Nothing given ties the line to Form 1040 line 7a or covers gains reported elsewhere, such as Form 4797.",
-   "ruling": "Ruling: representation; project retained. The dispositions of property in net investment income within the slice are the securities sales and capital gain distributions Schedule D carries to Form 1040 line 7a; every other disposition or adjustment (i8960 p. 9, line 5a) is refused by `f8960.unsupported` (\"Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911 exclusion, disposition adjustment, NOL or other NIIT modification outside this slice?\"). No change to the data."
+   "ruling": "Ruling: representation; project retained. The dispositions of property in net investment income within the slice are the securities sales and capital gain distributions Schedule D carries to Form 1040 line 7a; every other disposition or adjustment (i8960 p. 9, line 5a) is refused by `f8960.unsupported` (\"Any annuity, rental, royalty, business/pass-through income, CFC/PFIC holding, section 911 exclusion, disposition adjustment, NOL or other NIIT modification outside this slice?\"). No change to the data.",
+   "subject_key": "b9e3fe4fddb0e51aeefeccdb2840545d381740328c4eaeb26961e5992f7b6795"
   },
   {
    "printed": "5a",
    "restated": "Enter the amount from f1040 line 7a.",
    "model": "The form says only \"Net gain or loss from disposition of property (see instructions)\", and the line 5a instructions are not in the pages given. The text cannot show whether Form 1040 line 7a (\"Capital gain or (loss)\") is the right source amount, including how capital losses are treated.",
-   "ruling": "Ruling: representation; project retained. Line 5a combines \"Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4\" (i8960 p. 9, Line 5a—Net Gain or Loss From Disposition of Property; that page was not among those given). Schedule 1 line 4 (Form 4797) is refused by scope.schedule1 (\"sales of business property (Form 4797)\"), so line 5a is Form 1040 line 7a, with a capital loss as limited there; any other disposition or adjustment is refused by f8960.unsupported (\"a disposition adjustment ... or another net investment income adjustment\")."
+   "ruling": "Ruling: representation; project retained. Line 5a combines \"Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4\" (i8960 p. 9, Line 5a—Net Gain or Loss From Disposition of Property; that page was not among those given). Schedule 1 line 4 (Form 4797) is refused by scope.schedule1 (\"sales of business property (Form 4797)\"), so line 5a is Form 1040 line 7a, with a capital loss as limited there; any other disposition or adjustment is refused by f8960.unsupported (\"a disposition adjustment ... or another net investment income adjustment\").",
+   "subject_key": "b9e3fe4fddb0e51aeefeccdb2840545d381740328c4eaeb26961e5992f7b6795"
   },
   {
    "printed": "5a",
    "restated": "Enter the amount from f1040 line 7a.",
    "model": "The instructions say to combine \"Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4\", and the worksheet totals columns (A) and (B), but the restatement uses only line 7a. No refusal names Schedule 1 line 4; the unsupported gate's reference to sales of trade or business property does not clearly cover every amount reported there.",
    "ruling": "Ruling: scope; the model says the restatement uses only line 7a and the unsupported gate's reference to sales of trade or business property does not clearly cover every amount reported on Schedule 1 line 4. i8960 p. 9, Line 5a: \"Calculate and enter the amount of net gain or loss from the disposition of property by combining the following amounts from your properly completed return. - Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4.\" Schedule 1 line 4 is refused by scope.schedule1, not by f8960.unsupported: it names \"sales of business property (Form 4797)\", and a Form 4684 gain entered on line 4 falls under its opening \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; it refuses Form 1040 line 8 and every later line, so on every computed return Schedule 1 line 4 is zero and line 5a is Form 1040 line 7a. Other dispositions adjusted on lines 5b and 5c are refused by f8960.unsupported, whose BUG-0248 gloss now names NUA gain and the sale of business property or a partnership or S corporation interest (i8960 p. 9). Same reading as Stage 20.",
-   "context": "96e8d8d017766aac531d2993516939cde9009a58505aa0485cf003c0f1e28c3f"
+   "context": "96e8d8d017766aac531d2993516939cde9009a58505aa0485cf003c0f1e28c3f",
+   "subject_key": "b9e3fe4fddb0e51aeefeccdb2840545d381740328c4eaeb26961e5992f7b6795"
   },
   {
    "printed": "5a",
    "restated": "Enter the amount from f1040 line 7a.",
    "model": "The instructions say to combine 'Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4'. The restatement uses only Form 1040 line 7a and omits Schedule 1 line 4, and no refusal names it.",
    "ruling": "Ruling: scope; the model says the restatement omits Schedule 1 line 4 and no refusal names it. i8960 p. 9, Line 5a: \"Calculate and enter the amount of net gain or loss from the disposition of property by combining the following amounts from your properly completed return. - Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4.\" Schedule 1 line 4 (Form 4797) is refused by scope.schedule1 (\"sales of business property (Form 4797)\"), so it is zero on every computed return and line 5a is Form 1040 line 7a, which after Stage 20 includes the capital loss carryover as limited on Schedule D line 21, the figure the Net Gains and Losses Worksheet line 1, column (A), takes (i8960 p. 10). Other dispositions are refused by f8960.unsupported (\"a disposition adjustment\"). Same reading as the earlier rounds.",
-   "context": "c4f85c56d7ef5d80b020b878173f865283e4278c1f38b80b7aea599a80cf1ba9"
+   "context": "c4f85c56d7ef5d80b020b878173f865283e4278c1f38b80b7aea599a80cf1ba9",
+   "subject_key": "b9e3fe4fddb0e51aeefeccdb2840545d381740328c4eaeb26961e5992f7b6795"
   },
   {
    "printed": "5a",
    "restated": "Enter the amount from f1040 line 7a.",
    "model": "The instructions say to combine 'Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4'. The restatement uses only line 7a and has no refusal for Schedule 1 line 4 gains or losses. An example that could slip through is a Form 4797 ordinary loss on section 1244 stock.",
    "ruling": "Ruling: scope; the model says the restatement takes only Form 1040 line 7a. i8960 p. 9, Line 5a: \"Calculate and enter the amount of net gain or loss from the disposition of property by combining the following amounts from your properly completed return. • Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4.\" Schedule 1 line 4 (Form 4797, and a Form 4684 gain entered there) is refused by scope.schedule1, which names \"sales of business property (Form 4797)\" and opens \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; so on every computed return Schedule 1 line 4 is zero and line 5a is Form 1040 line 7a. Other dispositions adjusted on lines 5b and 5c are refused by f8960.unsupported. The credits-misc package changed only that screen's list (section 404(k) dividends), not line 5a. Same reading as the earlier rounds.",
-   "context": "8b691fd6362cc604a63bc0bfdec4e1c13269abfba75635efa19f783356f7e34d"
+   "context": "8b691fd6362cc604a63bc0bfdec4e1c13269abfba75635efa19f783356f7e34d",
+   "subject_key": "b9e3fe4fddb0e51aeefeccdb2840545d381740328c4eaeb26961e5992f7b6795"
   },
   {
    "printed": "5a",
    "restated": "Enter the amount from f1040 line 7a.",
    "model": "The instructions say to combine 'Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4'. The restatement uses only line 7a, and no refusal covers every Schedule 1 line 4 gain or loss (for example a Form 4797 section 1244 stock loss).",
    "ruling": "Ruling: scope; same as the earlier ruling (restatement and model note unchanged). i8960 p. 9, Line 5a: \"combining ... Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4.\" Schedule 1 line 4 (Form 4797, a Form 4684 gain) is refused by scope.schedule1 (\"sales of business property (Form 4797)\"), so on every computed return line 5a is Form 1040 line 7a.",
-   "context": "d8d8f62c33a46cd59d48170126feeb59a84a4fb650ad5ea261082400e010b180"
+   "context": "d8d8f62c33a46cd59d48170126feeb59a84a4fb650ad5ea261082400e010b180",
+   "subject_key": "b9e3fe4fddb0e51aeefeccdb2840545d381740328c4eaeb26961e5992f7b6795"
   },
   {
    "printed": "5b",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "Net Gains and Losses Worksheet line 2(h) says 'Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations', and it applies unconditionally. The carryforward_adj refusal fires only when line 15 > $0. When modified AGI is at or below the threshold and a prior-year 2(i) amount exists, the program enters 0 on line 5b instead of that amount.",
    "ruling": "Ruling: scope; the model says line 2(h) applies unconditionally and the refusal fires only when line 15 is above zero. i8960 p. 10, Net Gains and Losses Worksheet, line 2(h): \"Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations\"; p. 9: \"Starting in 2014, capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII on lines 5b and 5c was a net loss\". The screen f8960.carryforward_adj (a 2025 carryover, line 15 above zero, and a 2024 line 2(i) amount) refuses line 5b; it is limited to returns over the threshold by the owner's decision D3 (research/premises/stage20-capital-loss-carryover.decisions.md: the line 2(i) question is \"asked only when Form 8960 is required and a carryover exists\"). At or below the threshold Form 8960 is not filed (i8960 p. 1, Who Must File: \"Attach Form 8960 to your return if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount\", a page not given) and lines 15 to 17 make the tax zero whatever line 5b holds, so no amount changes. In scope (no 2(a)-2(g) or line 3 amounts, no 2024 line 2(i)) line 2(j) is zero, so line 5b is zero. Not ruled a finding; noted in the Stage 20 summary that the 2025 worksheet line 2(i), which a filer with a 2024 line 2(i) below the threshold would carry to 2026, is not shown.",
-   "context": "c4f85c56d7ef5d80b020b878173f865283e4278c1f38b80b7aea599a80cf1ba9"
+   "context": "c4f85c56d7ef5d80b020b878173f865283e4278c1f38b80b7aea599a80cf1ba9",
+   "subject_key": "8d639048b93668b86d1a5776330b5fcd6b773a4c43b5a7bd3abe37edfa8bdfea"
   },
   {
    "printed": "9b",
    "restated": "Choose — [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = true → helper \"Deductible state/local income and property taxes reasonably allocated to net investment income; exclude foreign taxes for which a credit is claimed\"] [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The instructions include 'foreign income taxes' and 'foreign real property taxes' on line 9b, but the bad_allocation refusal caps the allocation at Schedule A line 5e, which holds only state and local taxes. A valid allocation that includes deductible foreign taxes would be refused as an error, and the text gives no basis for that cap.",
-   "ruling": "Ruling: scope; project retained. A deduction for foreign income or foreign real property taxes is refused on Schedule A (sa.unsupported names the foreign tax deduction), so within scope the allocable taxes are the state and local taxes on Schedule A line 5e."
+   "ruling": "Ruling: scope; project retained. A deduction for foreign income or foreign real property taxes is refused on Schedule A (sa.unsupported names the foreign tax deduction), so within scope the allocable taxes are the state and local taxes on Schedule A line 5e.",
+   "subject_key": "d1597a2edc73e3e0ef6de057b44330b78f19448c8b1aceab9a26d091abbc93c6"
   },
   {
    "printed": "9b",
    "restated": "Choose — [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = true → helper \"Deductible state/local income and property taxes reasonably allocated to net investment income; exclude foreign taxes for which a credit is claimed\"] [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The instructions say \"Include state, local, and foreign income taxes you paid ... attributable to NII. Include also state, local, and foreign real property taxes\". The program's input covers only state and local taxes, and the bad_allocation check caps it at Schedule A line 5e. Foreign income and real property taxes that the filer deducted rather than credited are therefore left out, and no refusal names that exclusion.",
-   "ruling": "Ruling: scope; project retained. A deduction for foreign income or foreign real property taxes is refused on Schedule A (sa.unsupported, \"a foreign tax or generation-skipping tax deduction\"), so within scope the deducted taxes allocable to net investment income (i8960 p. 17, line 9b) are the state and local taxes on Schedule A line 5e, which is what the f8960.bad_allocation cap holds."
+   "ruling": "Ruling: scope; project retained. A deduction for foreign income or foreign real property taxes is refused on Schedule A (sa.unsupported, \"a foreign tax or generation-skipping tax deduction\"), so within scope the deducted taxes allocable to net investment income (i8960 p. 17, line 9b) are the state and local taxes on Schedule A line 5e, which is what the f8960.bad_allocation cap holds.",
+   "subject_key": "d1597a2edc73e3e0ef6de057b44330b78f19448c8b1aceab9a26d091abbc93c6"
   }
  ]
 }

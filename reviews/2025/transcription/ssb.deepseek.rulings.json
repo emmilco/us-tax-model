@@ -5,137 +5,185 @@
  "rulings": [
   {
    "printed": "10",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"ssb.adjust_single\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.adjust_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.adjust_single\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}], \"test\": \"any\"}, \"then\": {\"param\": \"ssb.adjust_single\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.adjust_joint\"}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet line 10: \"Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying surviving spouse, or married filing separately and you lived apart from your spouse for all of 2025\". Same status mapping as the project, with zero for the skipped separate-and-together case; guards grouped differently. Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): all 1,751 comparisons agree. Equivalent by reading and on the sample.",
-   "context": "9a8c419076fdd4799173d0f1a6520e677bcce3acbb4878abb1c2f7c1fe0b7751"
-  },
-  {
-   "printed": "10",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"ssb.adjust_single\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.adjust_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.adjust_single\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.adjust_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, \"then\": {\"param\": \"ssb.adjust_single\"}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "4b7d9e60e1cbb10a634c8b31c08e906438878e4f7158bc84561fa172d1dc401a",
+   "second_expr_sha256": "7baa52eee0fdcf0436e736422fcd3a416c4dbeee79f44dca9257d25885ccef99",
    "ruling": "Ruling: model error; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply shows line 10 ($12,000 or $9,000) whenever lines 8 to 15 are not skipped, including after the STOPs at lines 7 and 9, where the project hides it (ssb.show10_15, the round-2 fix of SSB-L1); a nonzero amount shown on a line the source skips is the reply's defect (the owner's rule of 2026-10-26; reviews/2025/transcription/adjudication/README.md). Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
    "context": "e4d7f5429087a52a61e886108b4deb74e5e371e12a2b3996cfd9a75fbf4ee269",
    "date": "2026-11-04",
-   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b"
+   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b",
+   "subject_key": "b18a822421af0bbf971d35ee774b9ad74e83ab4b4aa4f9404cf372bf23fa1f46"
+  },
+  {
+   "printed": "10",
+   "project_expr_sha256": "4b7d9e60e1cbb10a634c8b31c08e906438878e4f7158bc84561fa172d1dc401a",
+   "second_expr_sha256": "bd34e5fbb179a13dbbfddffab9c96aa14d13382a47594e2c42cfa7a5093ac280",
+   "ruling": "Ruling: representation; i1040gi p. 32, worksheet line 10: \"Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying surviving spouse, or married filing separately and you lived apart from your spouse for all of 2025\". Same status mapping as the project, with zero for the skipped separate-and-together case; guards grouped differently. Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): all 1,751 comparisons agree. Equivalent by reading and on the sample.",
+   "context": "9a8c419076fdd4799173d0f1a6520e677bcce3acbb4878abb1c2f7c1fe0b7751",
+   "subject_key": "b18a822421af0bbf971d35ee774b9ad74e83ab4b4aa4f9404cf372bf23fa1f46"
   },
   {
    "printed": "11",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"9\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"from\": {\"line\": \"9\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"10\"}}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"value\": {\"from\": {\"line\": \"9\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"10\"}}}",
+   "project_expr_sha256": "30778686bb0bbf4fdb62a37a282e3fe6e3aa45f4367ab983cd82c7a312c1d910",
+   "second_expr_sha256": "6e8a27be40b94991856f67cef921ec84a05316a159b7cc87a1d9d08ee7c29742",
    "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply shows the line after the STOPs at lines 7 and 9, where the project hides it (ssb.show10_15), but there its value is $0 (line 9 is zero, so lines 11 to 15 are zero), so no nonzero amount is shown past a STOP; the value is the project's elsewhere. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
    "context": "e4d7f5429087a52a61e886108b4deb74e5e371e12a2b3996cfd9a75fbf4ee269",
    "date": "2026-11-04",
-   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b"
+   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b",
+   "subject_key": "5df879a5df15e11c8031051a7c9239e84d6668abc4da5baa4862c1c0b6b6cc67"
   },
   {
    "printed": "12",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"9\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"of\": [{\"line\": \"10\"}, {\"line\": \"9\"}], \"op\": \"smaller_of\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"value\": {\"of\": [{\"line\": \"10\"}, {\"line\": \"9\"}], \"op\": \"smaller_of\"}}",
+   "project_expr_sha256": "2d72a26dbed7c8cf3c457422ac92311ed103ffe278eb222c2509a88e5d10b613",
+   "second_expr_sha256": "5ef7fa7b2a9d36e08c14d96b0ca2631b7d41e33e281281c81322ce99e99a14dc",
    "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply shows the line after the STOPs at lines 7 and 9, where the project hides it (ssb.show10_15), but there its value is $0 (line 9 is zero, so lines 11 to 15 are zero), so no nonzero amount is shown past a STOP; the value is the project's elsewhere. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
    "context": "e4d7f5429087a52a61e886108b4deb74e5e371e12a2b3996cfd9a75fbf4ee269",
    "date": "2026-11-04",
-   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b"
+   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b",
+   "subject_key": "e5f8c585c8f434fe1d5dc6268b44af58f5df49bda375f2d17c2f3c07dda61186"
   },
   {
    "printed": "13",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"9\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"amount\": {\"line\": \"12\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.half\"}}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"value\": {\"amount\": {\"line\": \"12\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.half\"}}}",
+   "project_expr_sha256": "f544a48f2ddf492d6461b68fdab168e145aae727235a6539b49aa548719af40e",
+   "second_expr_sha256": "c1edb9edef559c01da8555e5e808a0aad427061dd20afe4b6b9959a4df1aac67",
    "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply shows the line after the STOPs at lines 7 and 9, where the project hides it (ssb.show10_15), but there its value is $0 (line 9 is zero, so lines 11 to 15 are zero), so no nonzero amount is shown past a STOP; the value is the project's elsewhere. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
    "context": "e4d7f5429087a52a61e886108b4deb74e5e371e12a2b3996cfd9a75fbf4ee269",
    "date": "2026-11-04",
-   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b"
+   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b",
+   "subject_key": "1dde3ffa2d84129a4b3464873b80511782a33910fc8bdfe9f5fefdf9b89eb08b"
   },
   {
    "printed": "14",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"9\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"of\": [{\"line\": \"13\"}, {\"line\": \"2\"}], \"op\": \"smaller_of\"}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"value\": {\"of\": [{\"line\": \"13\"}, {\"line\": \"2\"}], \"op\": \"smaller_of\"}}",
+   "project_expr_sha256": "ea23c2df8f413dd04b152cf79f575f874ba42d11f7e873c11643be4867bacff4",
+   "second_expr_sha256": "dda460bf7a59e399f4b1c45c52b8da5433982e0a1813bc7ed37d36c8856b7527",
    "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply shows the line after the STOPs at lines 7 and 9, where the project hides it (ssb.show10_15), but there its value is $0 (line 9 is zero, so lines 11 to 15 are zero), so no nonzero amount is shown past a STOP; the value is the project's elsewhere. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
    "context": "e4d7f5429087a52a61e886108b4deb74e5e371e12a2b3996cfd9a75fbf4ee269",
    "date": "2026-11-04",
-   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b"
+   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b",
+   "subject_key": "eb705814000ff3b9d8dfb9a4f839b2b69a0d8fcab8e9d20132c1d6bb7f2b2552"
   },
   {
    "printed": "15",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"9\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"amount\": {\"line\": \"11\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.rate85\"}}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"value\": {\"amount\": {\"line\": \"11\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.rate85\"}}}",
+   "project_expr_sha256": "bda371961521195b08437c352532d8fa87f2dd1c69eb589784f67de41d878143",
+   "second_expr_sha256": "58d9008a0ce6d0c715e9f6279f7f4fe45e814390356dbd2572a2620446343813",
    "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply shows the line after the STOPs at lines 7 and 9, where the project hides it (ssb.show10_15), but there its value is $0 (line 9 is zero, so lines 11 to 15 are zero), so no nonzero amount is shown past a STOP; the value is the project's elsewhere. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
    "context": "e4d7f5429087a52a61e886108b4deb74e5e371e12a2b3996cfd9a75fbf4ee269",
    "date": "2026-11-04",
-   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b"
+   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b",
+   "subject_key": "37e34d0b1aec3abbcb648e5eb00d70ec14a63766fcb0a656356f7e7cfe8b3597"
   },
   {
    "printed": "16",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.rate85\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.rate85\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: scope; i1040gi p. 32, line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\", and p. 31, Line 6c: \"If any of your benefits are taxable for 2025 and they include a lump-sum benefit payment that was for an earlier year, you may be able to reduce the taxable amount with the lump-sum election\". Both sides choose line 7 times 85% for separate-and-together and lines 14 plus 15 otherwise (equivalent guards). The differences are where the lump-sum refusal sits: the project refuses on line 2 (ssb.lump_sum, cited p. 31 Line 6c), the candidate only on line 18. Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): 1,722 of 1,751 agree. Project-refuses 5 (classm.eic.6, stage10.refuse.lump_sum, generated 131 and 302: lump-sum election, candidate $27,764.40 etc.; stage16.refuse.ira.ssb_covered: ira.cov_gate); the candidate refuses line 18 (6b) on the same lump-sum returns, so no printed amount differs. Project-unknown 23 withhold ssb.lump_sum, which the candidate's line 18 also needs. Candidate-refuses 1 (stage16.refuse.ira.deduct_less) comes from line 6 (ambiguity ruled there). Project stands.",
-   "context": "9a8c419076fdd4799173d0f1a6520e677bcce3acbb4878abb1c2f7c1fe0b7751"
-  },
-  {
-   "printed": "16",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.rate85\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"amount\": {\"line\": \"7\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.rate85\"}}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"14\"}, {\"line\": \"15\"}], \"op\": \"sum\"}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "3f6380ee8a3e5010cea41d4fb5d293fbb8bf583a998eccd25dbe17b7261a744f",
+   "second_expr_sha256": "3b6c4044d53c309a9d409a4817ce293fb737eca3913abf429c44b1b94b8918c4",
    "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". Value: line 7 times 85% for a separate filer living together, lines 14 plus 15 otherwise; the reply tests ssb.lived_apart \"not true\" where the project tests \"false\", the same for an answered question. After a STOP the value is $0. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
    "context": "e4d7f5429087a52a61e886108b4deb74e5e371e12a2b3996cfd9a75fbf4ee269",
    "date": "2026-11-04",
-   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b"
+   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b",
+   "subject_key": "d92fd39a4303d6d4c4693a66822226e6df2c85e6419aa5d421b7797127927b62"
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "3f6380ee8a3e5010cea41d4fb5d293fbb8bf583a998eccd25dbe17b7261a744f",
+   "second_expr_sha256": "50563ad4e3b49668a40eb53fb75e2ecc08cb23e99f2f14d320e3530f74471058",
+   "ruling": "Ruling: scope; i1040gi p. 32, line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\", and p. 31, Line 6c: \"If any of your benefits are taxable for 2025 and they include a lump-sum benefit payment that was for an earlier year, you may be able to reduce the taxable amount with the lump-sum election\". Both sides choose line 7 times 85% for separate-and-together and lines 14 plus 15 otherwise (equivalent guards). The differences are where the lump-sum refusal sits: the project refuses on line 2 (ssb.lump_sum, cited p. 31 Line 6c), the candidate only on line 18. Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): 1,722 of 1,751 agree. Project-refuses 5 (classm.eic.6, stage10.refuse.lump_sum, generated 131 and 302: lump-sum election, candidate $27,764.40 etc.; stage16.refuse.ira.ssb_covered: ira.cov_gate); the candidate refuses line 18 (6b) on the same lump-sum returns, so no printed amount differs. Project-unknown 23 withhold ssb.lump_sum, which the candidate's line 18 also needs. Candidate-refuses 1 (stage16.refuse.ira.deduct_less) comes from line 6 (ambiguity ruled there). Project stands.",
+   "context": "9a8c419076fdd4799173d0f1a6520e677bcce3acbb4878abb1c2f7c1fe0b7751",
+   "subject_key": "d92fd39a4303d6d4c4693a66822226e6df2c85e6419aa5d421b7797127927b62"
   },
   {
    "printed": "17",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"line\": \"9\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"amount\": {\"line\": \"1\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.rate85\"}}}",
-   "second": "{\"shown_when\": null, \"value\": {\"amount\": {\"line\": \"1\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ssb.rate85\"}}}",
+   "project_expr_sha256": "c473e9c3fbe367d620a24bd8484e208d83574eaf29bcece98701d11c66130105",
+   "second_expr_sha256": "38b853cd741740ba29e9910bca3b27456bafbfe78ce8ad7eeda2a4c7906d37d3",
    "ruling": "Ruling: model error; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply shows line 17 (line 1 times 85%) on every return, including after the STOPs at lines 7 and 9, where the project hides it (ssb.show16_18, the round-2 fix of SSB-L1); a nonzero amount shown on a line the source skips is the reply's defect (the owner's rule of 2026-10-26; reviews/2025/transcription/adjudication/README.md). Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
    "context": "e4d7f5429087a52a61e886108b4deb74e5e371e12a2b3996cfd9a75fbf4ee269",
    "date": "2026-11-04",
-   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b"
+   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b",
+   "subject_key": "438b3301957f6d83d9ed7ae37b36179a915a90fa619656556f86adb472a07dcb"
   },
   {
    "printed": "18",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"1\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"16\"}, {\"line\": \"17\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
-   "second": "{\"of\": [{\"line\": \"16\"}, {\"line\": \"17\"}], \"op\": \"smaller_of\"}",
+   "project_expr_sha256": "5f68c87cd953f37aaf5c185bfa5dd22e725361fb0c51b6a824eb4863b7df4edf",
+   "second_expr_sha256": "44bcda9f0291b240bf725f02c08c3ed536c892b25e5f5214aa75bd3fd8aa5443",
    "ruling": "Ruling: representation; same line and candidate as the refresh-round ruling, whose model error was about the reply's screens on other lines; in this pass the line's only refusals are ssb.lump_sum and ssb.pub915, which the project's line reads too. Value: the smaller of lines 16 and 17; with no benefits line 17 is $0, so the project's line 1 guard changes no amount (i1040gi p. 32, worksheet line 18). Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
    "context": "e4d7f5429087a52a61e886108b4deb74e5e371e12a2b3996cfd9a75fbf4ee269",
    "date": "2026-11-04",
-   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b"
+   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b",
+   "subject_key": "0911a09367bf0dc8c155a2d81f67af80d9c2b78d5926312f4262f330bf65ede6"
   },
   {
    "printed": "6",
-   "project": "{\"of\": [{\"collection\": \"person\", \"field\": \"person.ira_ssb\", \"op\": \"sum_over\", \"where\": null}, {\"ref\": \"s1.line11\"}, {\"ref\": \"s1.line13\"}, {\"ref\": \"s1.line15\"}, {\"ref\": \"s1.line16\"}, {\"ref\": \"s1.line17\"}, {\"ref\": \"s1.line18\"}, {\"ref\": \"s1.line19a\"}, {\"ref\": \"s1.line25\"}], \"op\": \"sum\"}",
-   "second": "{\"of\": [{\"ref\": \"s1.line11\"}, {\"ref\": \"s1.line13\"}, {\"ref\": \"s1.line15\"}, {\"ref\": \"s1.line16\"}, {\"ref\": \"s1.line17\"}, {\"ref\": \"s1.line18\"}, {\"ref\": \"s1.line19a\"}, {\"ref\": \"s1.line20\"}, {\"ref\": \"s1.line25\"}], \"op\": \"sum\"}",
+   "project_expr_sha256": "5ceda9510bbc7d8e299096c568fb1ba7f8225e900a2000a35a108321d28fcbae",
+   "second_expr_sha256": "e9954b32aeaa3f43c215d1d4b5f30df3d7f31dc21a99e29b2e8cc58ee56196a6",
    "ruling": "Ruling: ambiguity (+ scope); amb.2025.ira_ssb_copy; i1040gi p. 32, worksheet line 6: \"Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25\"; i1040gi p. 31, Exception. executable-triage-v2 (`reviews/2025/transcription/triage/ssb.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 124 partial records from 40 bases; 2,189 comparisons): 2,149 agree; 26 project-refuses, 12 candidate-unknown, 1 candidate-refuses, 1 project-unknown (none on a completed return). Same reply and project as the before-catalog-refresh ruling, which stands: the reply reads s1.line20 literally, the register's text at issue; the differences are the register's cycle and IRA returns refused by ira.cov_gate / ira.less_gate; none on a completed return. Project stands.",
-   "context": "d95a6854542c678077269b7df39c4768eabcaf0222e28d4d19f387482efe4668"
+   "context": "d95a6854542c678077269b7df39c4768eabcaf0222e28d4d19f387482efe4668",
+   "subject_key": "2feac20f0ef3a02787dde24e9d15e0dd3f8e9322f32d750ed9ed94f7bacbdecb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.2.deepseek@ssb",
+     "fixture:classm.dependent.3.deepseek@ssb",
+     "fixture:classm.dependent.3@ssb",
+     "fixture:classm.f8889.2@ssb",
+     "fixture:mutation.t2.mfj_no_overtime_part3@ssb",
+     "fixture:mutation.t2.s1a.line13_magi_first@ssb",
+     "fixture:stage16.ira.i1@ssb",
+     "fixture:stage16.ira.i2@ssb",
+     "fixture:stage16.ira.i3@ssb",
+     "fixture:stage16.ira.i4@ssb",
+     "fixture:stage16.ira.i5@ssb",
+     "fixture:stage16.ira.i8@ssb",
+     "fixture:stage16.refuse.ira.deduct_less@ssb",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "8",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"ssb.base_single\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.base_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.base_single\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}], \"test\": \"all\"}, {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}], \"test\": \"any\"}, \"then\": {\"param\": \"ssb.base_single\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.base_joint\"}}], \"op\": \"choose\"}",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet line 8: \"Married filing jointly, enter $32,000; Single, head of household, qualifying surviving spouse, or married filing separately and you lived apart from your spouse for all of 2025, enter $25,000; Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15\". Both give $32,000 joint, $25,000 single, head of household, qualifying surviving spouse or separate-and-apart, and zero (the skipped line) for separate-and-together; the guards are only grouped differently. Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): all 1,751 comparisons agree, including partial records withholding ssb.lived_apart. Equivalent by reading and on the sample.",
-   "context": "9a8c419076fdd4799173d0f1a6520e677bcce3acbb4878abb1c2f7c1fe0b7751"
-  },
-  {
-   "printed": "8",
-   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"const\": \"hoh\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"qss\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"single\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}], \"test\": \"any\"}, \"then\": {\"param\": \"ssb.base_single\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.base_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.base_single\"}}], \"op\": \"choose\"}}], \"op\": \"choose\"}",
-   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"eq\"}, \"then\": {\"param\": \"ssb.base_joint\"}}, {\"guard\": {\"args\": [{\"const\": \"mfj\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, \"then\": {\"param\": \"ssb.base_single\"}}], \"op\": \"choose\"}",
+   "project_expr_sha256": "f8b0260abea3db36bea8b376831b0e98a8e71105ba5ce61a31d622993e443d6f",
+   "second_expr_sha256": "68df0004e20dc35068759cf770ae5bd4378bed23b7778f48726343ac25708fa1",
    "ruling": "Ruling: model error; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply shows line 8 ($32,000 joint, $25,000 otherwise) whenever lines 8 to 15 are not skipped for a separate filer living together, including after the line 7 STOP (line 6 not less than line 5), where the project hides it (ssb.show8_9, the round-2 fix); a nonzero amount shown on a line the source skips is the reply's defect (the owner's rule of 2026-10-26; reviews/2025/transcription/adjudication/README.md). Its $25,000 for a separate filer living together is hidden and on a refused return. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
    "context": "e4d7f5429087a52a61e886108b4deb74e5e371e12a2b3996cfd9a75fbf4ee269",
    "date": "2026-11-04",
-   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b"
+   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b",
+   "subject_key": "5df1e3814092df6521f5dd8e36bfdb9df74ec961dda5424ef4ad0bf65a30597d"
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "f8b0260abea3db36bea8b376831b0e98a8e71105ba5ce61a31d622993e443d6f",
+   "second_expr_sha256": "a07aceb08e16bb562f25a26dc2e36cc847e76f6db94506f7fa75cbfd65f9c5d3",
+   "ruling": "Ruling: representation; i1040gi p. 32, worksheet line 8: \"Married filing jointly, enter $32,000; Single, head of household, qualifying surviving spouse, or married filing separately and you lived apart from your spouse for all of 2025, enter $25,000; Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15\". Both give $32,000 joint, $25,000 single, head of household, qualifying surviving spouse or separate-and-apart, and zero (the skipped line) for separate-and-together; the guards are only grouped differently. Triage executable-triage-v1 (triage/ssb.deepseek.json; 1,083 fixtures, 500 generated returns, 168 partial records): all 1,751 comparisons agree, including partial records withholding ssb.lived_apart. Equivalent by reading and on the sample.",
+   "context": "9a8c419076fdd4799173d0f1a6520e677bcce3acbb4878abb1c2f7c1fe0b7751",
+   "subject_key": "5df1e3814092df6521f5dd8e36bfdb9df74ec961dda5424ef4ad0bf65a30597d"
   },
   {
    "printed": "9",
-   "project": "{\"shown_when\": {\"args\": [{\"args\": [{\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}, {\"args\": [{\"const\": false}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"7\"}], \"test\": \"lt\"}], \"test\": \"all\"}, \"value\": {\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}}",
-   "second": "{\"shown_when\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"ssb.lived_apart\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": \"mfs\"}, {\"ref\": \"f1040.status\"}], \"test\": \"ne\"}], \"test\": \"any\"}, \"value\": {\"from\": {\"line\": \"7\"}, \"op\": \"subtract_floor0\", \"take\": {\"line\": \"8\"}}}",
+   "project_expr_sha256": "0f77ad4bc7adbd13e797ed1e6e88c8c52ea97bf5e83a6d9082bff1b114f5f3a6",
+   "second_expr_sha256": "5687f36c34b16ee87b3045e6cc7329e571524636b4b029fe3a5ccdf846844d0e",
    "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply shows line 9 after the line 7 STOP and on its own No branch, where it is $0 (line 7 is zero, or line 8 is not less than line 7); the project hides it after the line 7 STOP and shows $0 on the No branch. No nonzero amount is shown past a STOP. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
    "context": "e4d7f5429087a52a61e886108b4deb74e5e371e12a2b3996cfd9a75fbf4ee269",
    "date": "2026-11-04",
-   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b"
+   "run": "5428d22b170c7be57464a02afad5e634616f8e0c443caf58d703b37da1fbf94b",
+   "subject_key": "6c2a3f60634ac54e52242417ad9ff3547370da67e11ae257624c0a5f5395cc77"
   },
   {
    "printed": "ssb.has_benefits",
-   "project": "{\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}",
-   "second": "{\"args\": [{\"const\": 0}, {\"input\": \"ssb.benefits\"}], \"test\": \"lt\"}",
+   "project_expr_sha256": "0855970be7e1c3f2a0db0e8e23c275edb5fa067594eb539423986639cc8c12b8",
+   "second_expr_sha256": "866cbeb6b60662461272c3218b1e7f78f20d84e1881d02ba8b6022a4152093d9",
    "ruling": "Ruling: representation; i1040gi p. 31, Lines 6a and 6b: \"Use the Social Security Benefits Worksheet in these instructions to see if any of your benefits are taxable.\" executable-triage-v2 (`reviews/2025/transcription/triage/ssb.deepseek.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 124 partial records from 40 bases; 2,189 comparisons): 2,189 agree. Same reply and project as the before-catalog-refresh ruling, which stands: both test the box 5 total (the project through ssb.line1, a copy of ssb.benefits). Project stands.",
-   "context": "d95a6854542c678077269b7df39c4768eabcaf0222e28d4d19f387482efe4668"
+   "context": "d95a6854542c678077269b7df39c4768eabcaf0222e28d4d19f387482efe4668",
+   "subject_key": "1281b06ac0838bbd832a726a2709b99abf79cf354fa098d1901808ac7e852bd1",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }
