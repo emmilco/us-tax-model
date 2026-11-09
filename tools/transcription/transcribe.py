@@ -1496,6 +1496,14 @@ def gate_check(result, project_id, second_line, second_by_id):
     return result
 
 
+def support_lines(project_lines, second_lines, only):
+    """The project's computed lines that stand in for the rest of the document beside a line-scoped
+    reply (`only`: the scoped line ids): every computed line the reply does not define and that is
+    not in scope. A scoped line the reply omits is not supplied, so it stays missing."""
+    own = {l["id"] for l in second_lines}
+    return [l for l in project_lines if l["id"] not in own and l["id"] not in only and l["expr"].get("op") != "input"]
+
+
 def compare(form_id, project_lines, second_lines, only=None):
     """Compare every target line, or with `only` (line ids) those of a line-scoped review. In a
     line-scoped review the reply defines only its own lines: the project's other computed lines
@@ -1508,7 +1516,7 @@ def compare(form_id, project_lines, second_lines, only=None):
         type_errors = validate_model_types(form_id, second_lines)
     else:
         own = {l["id"] for l in second_lines}
-        support = [l for l in project_lines if l["id"] not in own and l["id"] not in only and l["expr"].get("op") != "input"]
+        support = support_lines(project_lines, second_lines, only)
         type_errors = [e for e in validate_model_types(form_id, second_lines + support) if e["line"] is None or e["line"] in own]
     params_doc = year_params()
     parameter_rows = (params_doc.get("params") or params_doc)["values"]

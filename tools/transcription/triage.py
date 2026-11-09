@@ -11,14 +11,21 @@ so it is not the size of the completed sample. A reply with invalid declarations
 (T-143): valid lines are compared, and a pair whose candidate line or dependency failed schema, type or
 reference validation is reported as `candidate-invalid` and listed in `invalid_lines`.
 
+Each section is evaluated against the reply that judged it. A section the log marks "Reviewed in: pass <id>"
+was judged in a line-scoped pass: its candidate comes from that pass's reply (the pass block's receipt,
+checked against the block's prompt hash and recorded reply), with the project's other computed lines
+spliced in beside it as compare() splices them for type validation, so a scoped line the reply omits stays
+missing. Every other section is evaluated against the whole-form reply. Each reply is evaluated in its own
+run. A record with line-scoped sections lists each pass under `passes` and marks its lines with `pass`;
+the top-level response, state, bank and errors are the whole-form reply's. Triage refuses a form when a
+pass reply cannot be found, verified or parsed.
+
 Usage: triage.py --form sd [--family deepseek] [--generated 500] [--seed 20261026] [--partial-bases 40]
        triage.py --form sd [--family deepseek] --explain <handle> [--witness N] [--completed] [--depth 6]
 --completed indexes the line's separate sample of witnesses on completed returns.
-Sections the log marks "Reviewed in: pass <id>" were judged in a line-scoped pass; triage refuses a form
-with any such disagreeing section, because the whole-form reply is not the evidence they came from.
 Writes reviews/<year>/transcription/triage/<stem>.json. Raw replies are read, never changed.
 """
-import argparse, hashlib, json, os, subprocess, sys
+import argparse, hashlib, json, os, re, subprocess, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import families  # noqa: E402
@@ -28,6 +35,7 @@ import transcribe as T  # noqa: E402
 ROOT = T.ROOT
 POLICY = "executable-triage-v2"
 OUT = str(T.jurisdiction.ypath("reviews", T.Y, "transcription", "triage"))
+RAW_HEADING = "## Raw second transcription"
 
 
 def disagreement_handles(form, family):
@@ -68,10 +76,68 @@ def line_scoped_sections(form, family, only=None):
 
 
 def refuse_line_scoped(form, family, found):
+    """Exit, naming each section ({handle: "pass id: reason"}) whose pass reply is unavailable."""
     if found:
-        raise SystemExit(f"{families.stem(form, family)}: triage of line-scoped passes is not supported yet; "
-                         f"these sections were reviewed in line-scoped passes, not in the whole-form reply: "
-                         + ", ".join(f"{h} (pass {pid})" for h, pid in sorted(found.items())))
+        raise SystemExit(f"{families.stem(form, family)}: cannot triage these sections, whose line-scoped pass reply "
+                         f"cannot be found, verified or parsed (the whole-form reply is not the evidence they came from): "
+                         + "; ".join(f"{h} (pass {why})" for h, why in sorted(found.items())))
+
+
+class Unavailable(Exception):
+    """A line-scoped pass whose reply cannot be found, verified against the log, or parsed."""
+
+
+def pass_blocks(form, family):
+    """{pass id: block text} of the log's line-scoped reviews."""
+    text = open(rulings.log_path("transcription", form, family), encoding="utf-8").read()
+    return T._log_parts(text, RAW_HEADING)[4]
+
+
+def load_pass(form, pid, block, doc):
+    """{raw, receipt, scope keys, scope ids, own lines} of line-scoped pass `pid`. The reply is the
+    block's receipt, accepted only when its recorded prompt hash is the block's and its text is the
+    reply the block records; the scope is the block's review scope, mapped to the current form."""
+    if block is None:
+        raise Unavailable("the log has no block for it")
+    def row(name):
+        m = re.search(rf"^\| {re.escape(name)} \| (.*?) \|$", block, re.M)
+        return m.group(1) if m else None
+    receipt, prompt_sha, scope = row("receipt"), row("prompt sha256"), row("review scope")
+    if not receipt or not prompt_sha or not scope or not scope.startswith("lines "):
+        raise Unavailable("its block records no receipt, prompt sha256 or review scope")
+    response, meta = os.path.join(ROOT, receipt + ".response.txt"), os.path.join(ROOT, receipt + ".meta.json")
+    if not os.path.exists(response) or not os.path.exists(meta):
+        raise Unavailable(f"no reply or receipt metadata at {receipt}")
+    if json.load(open(meta, encoding="utf-8")).get("prompt_sha256") != prompt_sha:
+        raise Unavailable(f"{receipt} answers a different request")
+    raw = open(response, encoding="utf-8").read()
+    logged = block.partition("\n##### Raw second transcription\n\n```yaml\n")[2].rpartition("\n```")[0]
+    if raw.strip() != logged.strip():
+        raise Unavailable(f"{receipt}.response.txt is not the reply the log records")
+    keys = dict(T.line_keys(doc))
+    names = scope[len("lines "):].split(", ")
+    unknown = [k for k in names if k not in keys]
+    if unknown:
+        raise Unavailable("its scope names lines the form no longer compares: " + ", ".join(unknown))
+    try:
+        own = own_lines(form, doc, raw)
+    except (ValueError, T.yaml.YAMLError) as ex:
+        raise Unavailable(f"its reply cannot be parsed: {ex}")
+    return {"raw": raw, "receipt": receipt, "scope": names, "scope_ids": {keys[k] for k in names}, "own": own}
+
+
+def own_lines(form, doc, raw):
+    """The reply's lines, with a definition's own namespace normalized as compare() does."""
+    second = T.extract_yaml(raw)["lines"]
+    if form in T.load_defs():
+        second = T.normalize_definition_ids(form, doc["lines"], second)
+    return second
+
+
+def executed_lines(doc, own, scope_ids=None):
+    """The lines triage executes: the reply's own, and for a line-scoped pass the project's other
+    computed lines beside them (transcribe.support_lines)."""
+    return own if scope_ids is None else own + T.support_lines(doc["lines"], own, scope_ids)
 
 
 def pairs_for(form, project_lines, second_lines, handles):
@@ -98,37 +164,30 @@ def pairs_for(form, project_lines, second_lines, handles):
     return out
 
 
-def triage(form, family, generated, seed, partial_bases, max_witnesses=6):
-    stem = families.stem(form, family)
-    refuse_line_scoped(form, family, line_scoped_sections(form, family))
-    raw_path = os.path.join(ROOT, ".transcription", stem + ".response.txt")
-    raw = open(raw_path, encoding="utf-8").read()
-    doc = T.load_form(form)
-    second = T.extract_yaml(raw)["lines"]
-    if form in T.load_defs():
-        second = T.normalize_definition_ids(form, doc["lines"], second)
-    handles = disagreement_handles(form, family)
-    pairs = pairs_for(form, doc["lines"], second, handles)
-    record = {"policy": POLICY, "form": form, "family": family,
-              "response_sha256": hashlib.sha256(raw.encode()).hexdigest(),
-              "log_sha256_at_triage": hashlib.sha256(open(rulings.log_path("transcription", form, family), "rb").read()).hexdigest(),
-              "subject_sha256": T.subjects.current("transcription", form, T.Y),
-              "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit"}
+def evaluate(stem, form, doc, lines, pairs, generated, seed, partial_bases, max_witnesses):
+    """triage.mjs's answer for the pairs with a candidate, evaluated on `lines` in one run."""
     evaluable = [p for p in pairs if p["candidate"]]
-    if evaluable:
-        payload = {"context": T.model_type_context(), "form": form, "lines": second, "pairs": [{k: p[k] for k in ("handle", "project", "candidate", "shown_when")} for p in evaluable],
-                   "ownInputs": [l["id"] for l in doc["lines"] if l["expr"].get("op") == "input"],
-                   "generated": generated, "seed": seed, "partialBases": partial_bases, "maxWitnesses": max_witnesses}
-        result = subprocess.run(["node", "--max-old-space-size=4096", os.path.join(ROOT, "tools", "transcription", "triage.mjs")],
-                                input=json.dumps(payload, allow_nan=False), text=True, capture_output=True, timeout=3600)
-        if result.returncode:
-            raise SystemExit(f"{stem}: triage evaluator failed: {result.stderr[-1500:]}")
-        answer = json.loads(result.stdout)
-    else:
-        answer = {"state": "no candidate lines", "errors": [], "lines": []}
+    if not evaluable:
+        return {"state": "no candidate lines", "errors": [], "lines": []}
+    payload = {"context": T.model_type_context(), "form": form, "lines": lines, "pairs": [{k: p[k] for k in ("handle", "project", "candidate", "shown_when")} for p in evaluable],
+               "ownInputs": [l["id"] for l in doc["lines"] if l["expr"].get("op") == "input"],
+               "generated": generated, "seed": seed, "partialBases": partial_bases, "maxWitnesses": max_witnesses}
+    result = subprocess.run(["node", "--max-old-space-size=4096", os.path.join(ROOT, "tools", "transcription", "triage.mjs")],
+                            input=json.dumps(payload, allow_nan=False), text=True, capture_output=True, timeout=3600)
+    if result.returncode:
+        raise SystemExit(f"{stem}: triage evaluator failed: {result.stderr[-1500:]}")
+    return json.loads(result.stdout)
+
+
+def run_summary(answer):
+    return {"state": answer["state"], "errors": answer.get("errors", []), "invalid_lines": answer.get("invalid_lines", []),
+            "bank": answer.get("bank"), "failures": answer.get("failures", [])}
+
+
+def verdicts(pairs, answer):
+    """{handle: record line} of one run."""
     evaluated = {l["handle"]: l for l in answer.get("lines", [])}
-    record.update({"state": answer["state"], "errors": answer.get("errors", []), "invalid_lines": answer.get("invalid_lines", []),
-                   "bank": answer.get("bank"), "failures": answer.get("failures", []), "lines": []})
+    out = {}
     for p in pairs:
         line = evaluated.get(p["handle"], {})
         if p["candidate"] is None:
@@ -143,7 +202,54 @@ def triage(form, family, generated, seed, partial_bases, max_witnesses=6):
             verdict = "differs"
         else:
             verdict = "agrees on sample"
-        record["lines"].append({**p, "triage": verdict, **{k: v for k, v in line.items() if k not in p}})
+        out[p["handle"]] = {**p, "triage": verdict, **{k: v for k, v in line.items() if k not in p}}
+    return out
+
+
+def triage(form, family, generated, seed, partial_bases, max_witnesses=6):
+    stem = families.stem(form, family)
+    doc = T.load_form(form)
+    handles = disagreement_handles(form, family)
+    tagged = line_scoped_sections(form, family)
+    groups = {}
+    for h in handles:
+        groups.setdefault(tagged.get(h[0]), []).append(h)
+    passes = sorted(pid for pid in groups if pid is not None)
+    loaded, refused = {}, {}
+    if passes:
+        blocks = pass_blocks(form, family)
+        for pid in passes:
+            try:
+                loaded[pid] = load_pass(form, pid, blocks.get(pid), doc)
+            except Unavailable as ex:
+                refused.update({h[0]: f"{pid}: {ex}" for h in groups[pid]})
+    refuse_line_scoped(form, family, refused)
+    record = {"policy": POLICY, "form": form, "family": family,
+              "log_sha256_at_triage": hashlib.sha256(open(rulings.log_path("transcription", form, family), "rb").read()).hexdigest(),
+              "subject_sha256": T.subjects.current("transcription", form, T.Y),
+              "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit"}
+    found = {}
+    if None in groups or not passes:
+        raw = open(os.path.join(ROOT, ".transcription", stem + ".response.txt"), encoding="utf-8").read()
+        second = own_lines(form, doc, raw)
+        pairs = pairs_for(form, doc["lines"], second, groups.get(None, []))
+        answer = evaluate(stem, form, doc, second, pairs, generated, seed, partial_bases, max_witnesses)
+        record.update({"response_sha256": hashlib.sha256(raw.encode()).hexdigest(), **run_summary(answer)})
+        found.update(verdicts(pairs, answer))
+    else:
+        record.update({"response_sha256": None, "state": "no whole-form sections", "errors": [], "invalid_lines": [],
+                       "bank": None, "failures": []})
+    if passes:
+        record["passes"] = {}
+        for pid in passes:
+            got = loaded[pid]
+            pairs = pairs_for(form, doc["lines"], got["own"], groups[pid])
+            lines = executed_lines(doc, got["own"], got["scope_ids"])
+            answer = evaluate(stem, form, doc, lines, pairs, generated, seed, partial_bases, max_witnesses)
+            record["passes"][pid] = {"response_sha256": hashlib.sha256(got["raw"].encode()).hexdigest(), "receipt": got["receipt"],
+                                     "review_scope": got["scope"], **run_summary(answer)}
+            found.update({h: {**line, "pass": pid} for h, line in verdicts(pairs, answer).items()})
+    record["lines"] = [found[h[0]] for h in handles]
     os.makedirs(OUT, exist_ok=True)
     path = os.path.join(OUT, stem + ".json")
     with open(path, "w", encoding="utf-8") as f:
@@ -159,21 +265,31 @@ def explain(form, family, handle, witness, depth, completed=False):
     line = next((l for l in record["lines"] if l["handle"] == handle), None)
     if line is None:
         raise SystemExit(f"{stem}: no line {handle!r} in the triage record")
+    pid = line.get("pass")
+    state = record["passes"][pid] if pid else record
     which = "completed_witnesses" if completed else "witnesses"
     found = line.get(which) or []
     if not found:
         raise SystemExit(f"{stem}: line {handle!r} has no {which.replace('_', ' ')} (triage: {line['triage']}"
-                         + (f"; {record['state']}: {record.get('errors')}" if record.get("state") != "evaluated" else "") + ")")
+                         + (f"; {state['state']}: {state.get('errors')}" if state.get("state") != "evaluated" else "") + ")")
     if not 0 <= witness < len(found):
         raise SystemExit(f"{stem}: line {handle!r} has {len(found)} {which.replace('_', ' ')}; --witness {witness} is out of range")
     w = found[witness]
-    refuse_line_scoped(form, family, line_scoped_sections(form, family, only=handle))
-    raw = open(os.path.join(ROOT, ".transcription", stem + ".response.txt"), encoding="utf-8").read()
+    now = line_scoped_sections(form, family, only=handle).get(handle)
+    if now != pid:
+        where = lambda p: f"pass {p}" if p else "the whole-form reply"
+        raise SystemExit(f"{stem}: the triage record has {handle!r} from {where(pid)}, but the log now has it from {where(now)}; "
+                         "rerun triage")
     doc = T.load_form(form)
-    second = T.extract_yaml(raw)["lines"]
-    if form in T.load_defs():
-        second = T.normalize_definition_ids(form, doc["lines"], second)
-    payload = {"context": T.model_type_context(), "form": form, "lines": second,
+    if pid is None:
+        lines = own_lines(form, doc, open(os.path.join(ROOT, ".transcription", stem + ".response.txt"), encoding="utf-8").read())
+    else:
+        try:
+            got = load_pass(form, pid, pass_blocks(form, family).get(pid), doc)
+        except Unavailable as ex:
+            refuse_line_scoped(form, family, {handle: f"{pid}: {ex}"})
+        lines = executed_lines(doc, got["own"], got["scope_ids"])
+    payload = {"context": T.model_type_context(), "form": form, "lines": lines,
                "pairs": [{"handle": handle, "project": line["project"], "candidate": line["candidate"]}],
                "ownInputs": [], "generated": 0, "seed": 0, "partialBases": 0, "maxWitnesses": 0,
                "explain": {"handle": handle, "source": w["source"], "instance": w["instance"], "depth": depth}}
@@ -202,7 +318,10 @@ def main():
     tally = {}
     for line in record["lines"]:
         tally[line["triage"]] = tally.get(line["triage"], 0) + 1
-    print(f"{families.stem(a.form, a.family)}: {record['state']}; {tally}; bank {record.get('bank')} -> {os.path.relpath(path, ROOT)}")
+    passes = record.get("passes") or {}
+    print(f"{families.stem(a.form, a.family)}: {record['state']}; {tally}; bank {record.get('bank')}"
+          + "".join(f"; pass {pid}: {p['state']}, bank {p.get('bank')}" for pid, p in passes.items())
+          + f" -> {os.path.relpath(path, ROOT)}")
 
 
 if __name__ == "__main__":

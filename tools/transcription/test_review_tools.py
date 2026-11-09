@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Offline regression tests for independence, noise accounting and response provenance."""
 import contextlib
+import hashlib
 import json
 import io
 import re
@@ -1371,41 +1372,161 @@ class TriageWitnesses(unittest.TestCase):
             self.assertEqual(seen["payload"]["explain"]["source"], w["source"])
 
 
-class TriageLineScopedGuard(unittest.TestCase):
-    def log(self, temp, tag):
-        section = lambda h, extra="": f"### {h} — x\n\nStatus: **DISAGREE**\nRuling: open\n{extra}\n"
-        text = ("# log\n\n## Lines\n\n" + section("3") + "\n" + section("7", f"\nReviewed in: pass {tag}\n" if tag else "")
-                + "\n### 9 — x\n\nStatus: **AGREE**\nReviewed in: pass aaaaaaaaaaaa\n\n## Raw second transcription\n\nx\n")
-        path = Path(temp, "x.md")
-        path.write_text(text)
-        return patch.object(rulings, "log_path", return_value=str(path))
+class TriageLineScopedPasses(unittest.TestCase):
+    """A log mixing a whole-form section and two line-scoped passes: each section is evaluated against
+    the reply that judged it, with the project's other computed lines spliced beside a pass reply."""
+    A, B = "aaaaaaaaaaaa", "bbbbbbbbbbbb"
+    DOC = {"id": "x", "lines": [
+        {"id": "x.i1", "printed": "A", "type": "Money", "label": "in", "expr": {"op": "input", "source": "q"}},
+        {"id": "x.l1", "printed": "1", "type": "Money", "label": "one", "expr": {"op": "ref", "ref": "x.i1"}},
+        {"id": "x.l2", "printed": "2", "type": "Money", "label": "two", "expr": {"op": "ref", "ref": "x.l1"}},
+        {"id": "x.h", "printed": "(helper)", "type": "Money", "label": "h", "expr": {"op": "ref", "ref": "x.l1"}},
+        {"id": "x.l3", "printed": "3", "type": "Money", "label": "three", "expr": {"op": "ref", "ref": "x.h"}},
+        {"id": "x.l4", "printed": "4", "type": "Money", "label": "four", "expr": {"op": "ref", "ref": "x.l3"}}]}
+    WHOLE = "```yaml\nlines:\n- {id: x.l1, printed: '1', type: Money, expr: {op: ref, ref: x.i1}}\n```\n"
+    REPLY_A = ("```yaml\nlines:\n- {id: x.hh, printed: (helper), type: Money, expr: {op: ref, ref: x.l1}}\n"
+               "- {id: x.l2, printed: '2', type: Money, expr: {op: ref, ref: x.hh}}\n```\n")
+    REPLY_B = ("```yaml\nlines:\n- {id: x.hh, printed: (helper), type: Money, expr: {op: ref, ref: x.l2}}\n"
+               "- {id: x.l3, printed: '3', type: Money, expr: {op: ref, ref: x.hh}}\n```\n")
 
-    def test_line_scoped_section_is_refused_with_form_handle_and_pass(self):
-        import triage
-        with tempfile.TemporaryDirectory() as temp, self.log(temp, "0123456789ab"):
-            self.assertEqual(triage.line_scoped_sections("x", "deepseek"), {"7": "0123456789ab"})
-            with patch("builtins.open", side_effect=lambda p, *a, **k: io.StringIO("lines: []") if str(p).endswith(".response.txt") else io.open(p, *a, **k)):
-                with self.assertRaisesRegex(SystemExit, r"x.*not supported yet.*7 \(pass 0123456789ab\)"):
-                    triage.triage("x", "deepseek", 1, 1, 1)
-                with patch.object(triage, "OUT", temp):
-                    Path(temp, families.stem("x", "deepseek") + ".json").write_text(json.dumps(
-                        {"state": "evaluated", "lines": [{"handle": "7", "triage": "differs", "witnesses": [{"kind": "v", "source": {}, "instance": "i"}]}]}))
-                    with self.assertRaisesRegex(SystemExit, r"7 \(pass 0123456789ab\)"):
-                        triage.explain("x", "deepseek", "7", 0, 6)
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        (self.root / ".transcription").mkdir()
+        self.replies = {self.A: ("2", self.REPLY_A), self.B: ("3, 4", self.REPLY_B)}
+        for pid, (_, raw) in self.replies.items():
+            self.receipt(pid, raw)
+        (self.root / ".transcription" / (families.stem("x", "deepseek") + ".response.txt")).write_text(self.WHOLE)
+        self.write_log()
+        self.payloads = []
 
-    def test_whole_form_log_still_triages(self):
+    def receipt(self, pid, raw, prompt_sha=None):
+        base = self.root / ".transcription" / f"x.deepseek.lines-{pid}"
+        Path(str(base) + ".response.txt").write_text(raw)
+        Path(str(base) + ".meta.json").write_text(json.dumps({"prompt_sha256": prompt_sha or pid * 5 + "abcd"}))
+
+    def write_log(self, logged=None):
+        section = lambda h, status="DISAGREE", pid=None: (f"### {h} — x\n\nStatus: **{status}**\nRuling: open\n"
+                                                          + (f"Reviewed in: pass {pid}\n" if pid else "") + "\n")
+        block = lambda pid, scope, raw: (f"#### Pass {pid}\n\n| field | value |\n| --- | --- |\n| date | 2026-11-0{1 if pid == self.A else 2} |\n"
+                                         f"| review scope | lines {scope} |\n| prompt sha256 | {pid * 5 + 'abcd'} |\n"
+                                         f"| receipt | .transcription/x.deepseek.lines-{pid} |\n\n##### Raw second transcription\n\n"
+                                         f"```yaml\n{raw.strip()}\n```\n")
+        logged = logged or {}
+        text = ("# log\n\n## Lines\n\n" + section("1") + section("2", pid=self.A) + section("3", pid=self.B)
+                + section("4", "MISSING", self.B) + section("9", "AGREE", "cccccccccccc")
+                + f"\n{T.PASS_HEADING}\n\nintro\n\n"
+                + "\n".join(block(pid, scope, logged.get(pid, raw)) for pid, (scope, raw) in self.replies.items())
+                + "\n## Raw second transcription\n\n```yaml\nx\n```\n")
+        self.log = self.root / "x.deepseek.md"
+        self.log.write_text(text)
+
+    def run_evaluator(self, cmd, input, **kw):
+        payload = json.loads(input)
+        self.payloads.append(payload)
+        lines = [{"handle": p["handle"], "compared": 3, "differ": 1, "kinds": {"value": 1},
+                  "witnesses": [{"kind": "value", "source": {"kind": "fixture", "id": "f"}, "instance": "x"}]} for p in payload["pairs"]]
+        out = {"state": "evaluated", "errors": [], "invalid_lines": [], "bank": {"runs": len(self.payloads)}, "failures": [], "lines": lines}
+        if "explain" in payload:
+            out = {"handle": payload["explain"]["handle"]}
+        return subprocess.CompletedProcess(cmd, 0, stdout=json.dumps(out), stderr="")
+
+    def patched(self):
         import triage
-        with tempfile.TemporaryDirectory() as temp, self.log(temp, None):
-            self.assertEqual(triage.line_scoped_sections("x", "deepseek"), {})
-            handles = [("3", "DISAGREE", True)]
-            with patch.object(triage, "OUT", temp), patch.object(triage, "ROOT", temp), \
-                    patch("builtins.open", side_effect=lambda p, *a, **k: io.StringIO("lines: []") if str(p).endswith(".response.txt") else io.open(p, *a, **k)), \
-                    patch.object(triage.T, "load_form", return_value={"lines": []}), patch.object(triage.T, "load_defs", return_value={}), \
-                    patch.object(triage.T, "extract_yaml", return_value={"lines": []}), \
-                    patch.object(triage, "pairs_for", return_value=[{"handle": "3", "status": "DISAGREE", "candidate": None, "project": "x.3"}]), \
-                    patch.object(triage.T.subjects, "current", return_value="s"):
-                path, record = triage.triage("x", "deepseek", 1, 1, 1)
-            self.assertEqual(record["lines"][0]["triage"], "missing")
+        stack = contextlib.ExitStack()
+        for target, attr, value in ((triage, "ROOT", str(self.root)), (triage, "OUT", str(self.root / "out")),
+                                    (rulings, "log_path", lambda *a: str(self.log)), (triage.T, "load_form", lambda f: self.DOC),
+                                    (triage.T, "load_defs", lambda: {}), (triage.T, "exported_lines", lambda d: []),
+                                    (triage.T, "model_type_context", lambda: {}), (triage.T.subjects, "current", lambda *a: "s"),
+                                    (triage.subprocess, "run", self.run_evaluator)):
+            stack.enter_context(patch.object(target, attr, value))
+        return triage, stack
+
+    def test_each_section_is_evaluated_against_the_reply_that_judged_it(self):
+        triage, stack = self.patched()
+        with stack:
+            path, record = triage.triage("x", "deepseek", 1, 1, 1)
+        whole, a, b = self.payloads
+        self.assertEqual([l["id"] for l in whole["lines"]], ["x.l1"])
+        # Pass A: its own lines, then the project's computed lines outside its scope (x.l2).
+        self.assertEqual([l["id"] for l in a["lines"]], ["x.hh", "x.l2", "x.l1", "x.h", "x.l3", "x.l4"])
+        self.assertEqual(a["lines"][0]["expr"], {"op": "ref", "ref": "x.l1"})
+        # Pass B: its own helper of the same id, not pass A's; the scoped line 4 it omitted is not supplied.
+        self.assertEqual([l["id"] for l in b["lines"]], ["x.hh", "x.l3", "x.l1", "x.l2", "x.h"])
+        self.assertEqual(b["lines"][0]["expr"], {"op": "ref", "ref": "x.l2"})
+        self.assertEqual([[p["handle"] for p in q["pairs"]] for q in (whole, a, b)], [["1"], ["2"], ["3"]])
+        lines = {l["handle"]: l for l in record["lines"]}
+        self.assertEqual([l["handle"] for l in record["lines"]], ["1", "2", "3", "4"])
+        self.assertNotIn("pass", lines["1"])
+        self.assertEqual({h: lines[h].get("pass") for h in "234"}, {"2": self.A, "3": self.B, "4": self.B})
+        self.assertEqual({h: lines[h]["triage"] for h in "1234"}, {"1": "differs", "2": "differs", "3": "differs", "4": "missing"})
+        self.assertEqual(record["bank"], {"runs": 1})
+        self.assertEqual({p: (v["review_scope"], v["bank"], v["response_sha256"]) for p, v in record["passes"].items()},
+                         {self.A: (["2"], {"runs": 2}, hashlib.sha256(self.REPLY_A.encode()).hexdigest()),
+                          self.B: (["3", "4"], {"runs": 3}, hashlib.sha256(self.REPLY_B.encode()).hexdigest())})
+        self.assertEqual(json.loads(Path(path).read_text()), record)
+
+    def test_explain_rebuilds_a_pass_witness_from_the_spliced_pass_reply(self):
+        triage, stack = self.patched()
+        with stack, patch.object(sys, "stdout", io.StringIO()):
+            triage.triage("x", "deepseek", 1, 1, 1)
+            triage.explain("x", "deepseek", "3", 0, 6)
+            triage.explain("x", "deepseek", "1", 0, 6)
+        b, whole = self.payloads[-2:]
+        self.assertEqual([l["id"] for l in b["lines"]], ["x.hh", "x.l3", "x.l1", "x.l2", "x.h"])
+        self.assertEqual([l["id"] for l in whole["lines"]], ["x.l1"])
+
+    def test_explain_refuses_a_record_from_another_reply_than_the_log_now_names(self):
+        triage, stack = self.patched()
+        with stack:
+            triage.triage("x", "deepseek", 1, 1, 1)
+            stem = Path(self.root, "out", families.stem("x", "deepseek") + ".json")
+            record = json.loads(stem.read_text())
+            del record["lines"][2]["pass"]
+            stem.write_text(json.dumps(record))
+            with self.assertRaisesRegex(SystemExit, r"'3' from the whole-form reply, but the log now has it from pass bbbbbbbbbbbb; rerun triage"):
+                triage.explain("x", "deepseek", "3", 0, 6)
+
+    def assert_refused(self, pattern):
+        triage, stack = self.patched()
+        with stack, self.assertRaisesRegex(SystemExit, pattern):
+            triage.triage("x", "deepseek", 1, 1, 1)
+        self.assertEqual(self.payloads, [])
+
+    def test_a_pass_without_its_reply_is_refused(self):
+        Path(self.root, ".transcription", f"x.deepseek.lines-{self.B}.response.txt").unlink()
+        self.assert_refused(rf"x.deepseek: cannot triage .*3 \(pass {self.B}: no reply .*\); 4 \(pass {self.B}: no reply")
+
+    def test_a_receipt_for_another_request_is_refused(self):
+        self.receipt(self.A, self.REPLY_A, prompt_sha="f" * 64)
+        self.assert_refused(rf"2 \(pass {self.A}: .*answers a different request\)$")
+
+    def test_a_receipt_that_is_not_the_logged_reply_is_refused(self):
+        self.write_log({self.B: self.REPLY_A})
+        self.assert_refused(rf"3 \(pass {self.B}: .*is not the reply the log records\)")
+
+    def test_an_unparseable_pass_reply_is_refused(self):
+        self.replies[self.B] = ("3, 4", "no yaml here\n")
+        self.receipt(self.B, "no yaml here\n")
+        self.write_log()
+        self.assert_refused(rf"3 \(pass {self.B}: its reply cannot be parsed")
+
+    def test_a_scope_naming_a_line_no_longer_compared_is_refused(self):
+        self.replies[self.A] = ("2, 7", self.REPLY_A)
+        self.write_log()
+        self.assert_refused(rf"2 \(pass {self.A}: its scope names lines the form no longer compares: 7\)")
+
+    def test_whole_form_log_records_no_passes(self):
+        self.log.write_text("# log\n\n## Lines\n\n### 1 — x\n\nStatus: **DISAGREE**\nRuling: open\n\n"
+                            "### 9 — x\n\nStatus: **AGREE**\nReviewed in: pass cccccccccccc\n\n## Raw second transcription\n\nx\n")
+        triage, stack = self.patched()
+        with stack:
+            path, record = triage.triage("x", "deepseek", 1, 1, 1)
+        self.assertEqual(len(self.payloads), 1)
+        self.assertNotIn("passes", record)
+        self.assertEqual([(l["handle"], "pass" in l) for l in record["lines"]], [("1", False)])
+        self.assertEqual(record["response_sha256"], hashlib.sha256(self.WHOLE.encode()).hexdigest())
 
 
 class ClassMProvenance(unittest.TestCase):

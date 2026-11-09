@@ -333,9 +333,13 @@ Before ruling, `triage.py` executes both sides of every open disagreement on the
 inputs (every fixture, generated returns and partial records withholding one answer of
 the reviewed document) and writes `reviews/2025/transcription/triage/<stem>.json` with
 comparison counts, difference kinds and witnesses. `--explain` rebuilds one witness and
-prints both derivation trees. Triage reads only the whole-form reply, so it exits non-zero, naming the form,
-the handles and the pass ids, when a disagreeing section is marked `Reviewed in: pass <id>` (judged in a
-line-scoped pass); triage of line-scoped passes is not supported. The method and ruling classes are in
+prints both derivation trees. Each section is evaluated against the reply that judged it: a section marked
+`Reviewed in: pass <id>` against that pass's reply (its block's receipt, accepted only when the receipt's
+prompt hash and text match the block), with the project's other computed lines spliced beside it as
+`compare()` splices them for type validation (a scoped line the reply omits stays missing); every other
+section against the whole-form reply. Each reply is evaluated in its own run; the record lists each pass
+under `passes` and marks its lines with `pass`. Triage exits non-zero, naming the form, the handles, the
+pass ids and the reason, when a pass reply cannot be found, verified or parsed. The method and ruling classes are in
 `reviews/2025/transcription/adjudication/README.md`.
 
 ```
