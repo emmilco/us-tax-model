@@ -2082,6 +2082,22 @@ class CarryOver(unittest.TestCase):
         self.assertEqual(ruled, {})
         self.assertEqual({w for _, w in left}, {"the log is stale; rerun first"})
 
+    def test_against_the_working_tree_currency_is_log_state(self):
+        # A line-scoped pass leaves the header's whole-form subject behind; check_logs.py's
+        # log_state still calls the log current, and carry must agree with it.
+        self.write(self.rows(), prompt="a changed prompt")
+        working_tree = carry.Snapshot(None)
+        with patch.object(carry.subjects, "log_state", return_value=None) as state, \
+                patch.object(carry.subjects, "of_text", return_value="b" * 64):
+            _, _, left = carry.plan("transcription", "x", origin="old.md", current=working_tree)
+        state.assert_called_once()
+        self.assertNotIn("the log is stale; rerun first", {w for _, w in left})
+        with patch.object(carry.subjects, "log_state", return_value="the transcription log is stale for lines ..."), \
+                patch.object(carry.subjects, "of_text", return_value="a" * 64):
+            ruled, _, left = carry.plan("transcription", "x", origin="old.md", current=working_tree)
+        self.assertEqual(ruled, {})
+        self.assertEqual({w for _, w in left}, {"the log is stale; rerun first"})
+
     def test_validation_failure_is_ruled_mechanically_and_shown_when_is_not(self):
         invalid = T.canonical({"invalid_model_types": [{"line": "x.h", "message": "x.x.h: whole operand\nis not money"},
                                                        {"line": None, "message": "model contains a non-finite numeric value"}],

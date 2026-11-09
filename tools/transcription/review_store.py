@@ -548,8 +548,6 @@ def migrate():
 # Indexes held out of the line/subject agreement below: {"<kind>/<stem>": reason}. Shrink-only: an entry is
 # removed when its form is reviewed, and an entry that no longer has a gap fails until it is removed.
 SUBJECT_VERDICT_EXCEPTIONS = {
-    "transcription/eic": "eic.zero is a compared line (household.yaml reads it) with a line subject and no verdict "
-                         "section; reviewing it needs a paid transcription call (BUG-0468)",
     "transcription/div.deepseek": "optional-family log whose verdict section div.screen has no line subject; "
                                   "stale for the lines now compared, rerun only where it can earn credit (BUG-0468)",
 }

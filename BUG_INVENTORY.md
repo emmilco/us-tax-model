@@ -6356,3 +6356,22 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** the eic transcription review records no verdict on `eic.zero` (a helper whose expression is the parameter `sales.zero`, cited at i1040gi p. 42, Step 5, worksheet lines 2 and 4) while its index says every compared line is current.
 - **Disposition:** the check is fixed: `review_store.py check` fails when an index has a line subject without a verdict section or the reverse, in every kind and family, federal and New York (self-test `test_a_line_subject_without_a_verdict_fails_the_store_check`). Held, not fixed: both gaps are listed with their reasons in the shrink-only `SUBJECT_VERDICT_EXCEPTIONS` of `tools/transcription/review_store.py`; closing `eic.zero` needs a line-scoped transcription review (a paid call, not run). The entry leaves the list when that review lands; the check fails if a listed index no longer has a gap.
 - **Tags:** review-store; check-weakness; subjects; eic; open
+
+## BUG-0469 — carry.py judged every log with a line-scoped pass stale once its whole-form subject was out of date
+
+- **Date:** 2026-11-09
+- **Caught by:** the eic.zero line-scoped review (BUG-0468): rerun_all.py's carry left all 17 reader disagreements open as "the log is stale; rerun first" while check_logs.py called the log current.
+- **Source:** `tools/transcription/carry.py` `plan` compared the first `| subject sha256 |` row of the log (the header's, from the last whole-form review) with the form's current subject. A line-scoped pass records its own subject further down and leaves the header as it was, so after any change to the form every later line-scoped log read as stale. `subjects.log_state`, which check_logs.py uses, judges such a log line by line.
+- **Symptom:** no repeat disagreement was carried after a line-scoped review of a form that had changed since its whole review; each was left for adjudication.
+- **Disposition:** fixed: against the working tree carry asks `subjects.log_state` (`log_is_current`); against a commit or an in-memory snapshot it keeps the whole-form subject comparison, which can refuse a current log but never accepts a stale one. Self-test `test_against_the_working_tree_currency_is_log_state` fails on the old code. On eic it then carried 5 of 17. Not checked: which earlier line-scoped reviews left carriable disagreements to adjudication because of this.
+- **Closes:** BUG-0468 for `transcription/eic` (eic.zero): the line-scoped review (pass a55b2baf366f) AGREEs on `eic.zero`, and `transcription/eic` has left `SUBJECT_VERDICT_EXCEPTIONS`. The pass's scope took in the 17 lines that read `eic.zero`: 5 rulings carried once this bug was fixed, 12 adjudicated, all project stands. `transcription/div.deepseek` stays held under BUG-0468.
+- **Tags:** carry; subjects; line-scoped; tool; fixed
+
+## BUG-0470 — Review scope rows join line keys with ", ", which some keys contain, and three readers split on it
+
+- **Date:** 2026-11-09
+- **Caught by:** the eic adjudication after the eic.zero review: triage.py refused every section of pass a55b2baf366f.
+- **Source:** `transcribe.py` and `render_compare.py` write `| review scope | lines <k1>, <k2>, ... |`. Printed-line keys such as `(Step 5, 1)` contain ", ". `triage.py` (`names = scope[...].split(", ")`) and `audit_transcription.py` (split on "," and strip) refuse the pass as naming unknown lines. `review_store.py` (writing records) splits the same way without failing: the broken pieces enter the record's identity, so fixing the split changes the hash of every stored record whose scope holds such a key.
+- **Symptom:** triage and the transcription audit cannot read a line-scoped pass whose scope includes a key with a comma; review-store record identities hold split key fragments.
+- **Disposition:** open. The eic rulings of pass a55b2baf366f were stamped from triage run with only that split patched in memory (`.transcription/triage/2025/eic.json`); rerun triage on eic when this is fixed and compare. Fix: an unambiguous scope format (or parse against the form's keys) in the writers and all three readers, and a store migration for the records whose identity changes; count the affected records first.
+- **Tags:** review-store; triage; line-scoped; tool; open
