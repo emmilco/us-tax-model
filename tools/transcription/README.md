@@ -351,6 +351,25 @@ text's page breaks; a whole document when it has six pages or fewer; and for
 a locator that names a worksheet or an instruction line without a page, the
 page whose heading starts a line. The log records which pages were used.
 
+## Carrying reviews across a tax year
+
+`year_carry.py`, run from the TY+1 tree with `--year <TY+1>` and `--from <TY tree>`, lists for each
+transcription, render and class M review which compared lines carry to TY+1 and which need a review, and
+with `--write` writes the carried entries into TY+1's indexes (same record, status and ruling, each marked
+`carried: {from, year_key}`; a form's `__rest__` is set to TY+1's only when the document's own fields
+carry). A line carries only when its year-carry key is equal in both years: its subject with foreign
+interfaces, the values of the parameters, enums and tables its reach reads, the cited source text at
+anchor-section granularity over its reach and the foreign lines it names (never only the quoted words; a
+citation naming no page stands for its whole document), and the review tools' policy versions. Year
+literals are normalized in lockstep: only where the year moved by exactly +1 between the two years'
+texts, within ten years before the tax year; the project's own year is normalized only where its cited
+source moved that year and kept it nowhere unchanged in the same context. So a fixed statutory date the
+project wrongly incremented, a rolling year the project failed to move, and a birth-year cutoff all need
+a review. The report lists every carried line for spot review and separates the lines that wait only on
+a TY+1 source not yet archived or a TY+1 parameter not yet set. `--self-test` (in check-all) runs
+near-miss pairs: a paragraph added under the same heading, a changed parameter value, an incremented
+fixed date, a rolling year not moved, a moved birth year.
+
 ## Rulings
 
 Before ruling, `triage.py` executes both sides of every open disagreement on the same

@@ -61,7 +61,7 @@ def _read(path):
 
 
 def _inside(path, top):
-    path, top = os.path.abspath(path), os.path.abspath(top)
+    path, top = os.path.realpath(path), os.path.realpath(top)
     return path == top or path.startswith(top + os.sep)
 
 
@@ -85,7 +85,7 @@ def view_path(kind, form, family=families.DEFAULT):
     index when the reviews directory is elsewhere (a test's)."""
     reviews = _reviews()
     if _inside(reviews, REVIEWS_TOP):
-        top = os.path.join(VIEWS_TOP, os.path.relpath(reviews, REVIEWS_TOP))
+        top = os.path.join(VIEWS_TOP, os.path.relpath(os.path.realpath(reviews), os.path.realpath(REVIEWS_TOP)))
     else:
         top = reviews
     return os.path.join(top, kind, families.stem(form, family) + ".md")
@@ -272,7 +272,7 @@ def load_record(kind, sha, read=None):
     if read is None:
         content = _read(path)
     else:
-        content = read(os.path.relpath(path, ROOT))
+        content = read(os.path.relpath(os.path.realpath(path), os.path.realpath(ROOT)))
         if content is None:
             raise FileNotFoundError(path)
     return parse_record(content)
@@ -367,7 +367,7 @@ def load_index(kind, form, family=families.DEFAULT, read=None):
         if not os.path.exists(path):
             return None
         return json.loads(_read(path))
-    text = read(os.path.relpath(path, ROOT))
+    text = read(os.path.relpath(os.path.realpath(path), os.path.realpath(ROOT)))
     return json.loads(text) if text is not None else None
 
 

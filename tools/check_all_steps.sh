@@ -132,6 +132,7 @@ step adapter_contracts python3 tools/transcription/adapter_contracts.py "$@"
 step classm_skipped python3 tools/transcription/audit_skipped.py "$@"
 step compare_families python3 tools/transcription/compare_families.py "$@"
 step review_store python3 tools/transcription/review_store.py check
+step year_carry_self_test python3 tools/transcription/year_carry.py --self-test
 step check_logs python3 tools/transcription/check_logs.py "$@"
 step check_table_logs python3 tools/transcription/check_table_logs.py "$@"
 step citations python3 tools/citations.py --strict "$@"

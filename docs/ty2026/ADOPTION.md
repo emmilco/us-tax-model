@@ -46,7 +46,11 @@ unchanged.
    `simple_catchup`, `savers_rate`, `dc_rate`) need re-extraction from the finals.
 7. **Reviews of changed forms only** (CLAUDE.md, inference cost): transcription, render and class M for the forms whose
    content changed; completeness and screen reviews for those forms; adjudicate only those. Make the completeness
-   prompt year-aware first (T-230).
+   prompt year-aware first (T-230). Which lines changed is decided by `tools/transcription/year_carry.py --year 2026
+   --from <the 2025 tree> --write` (tools/transcription/README.md, "Carrying reviews across a tax year"): it carries
+   the 2025 verdicts of unchanged lines into the 2026 indexes, and `--lines auto` then reviews the rest. Before that,
+   check_logs must read a carried record's source snapshot rows against the 2025 manifest (not yet built). A rehearsal
+   on this preparation copy is in `research/ty2026/review_carry_rehearsal.md`.
 8. **`years.json`**: add 2026 only when every 2026 source is final and the 2026 build and fixtures pass.
 9. **check-all** on the owner's machine (`tools/check_all.sh --year 2026`), then commit with the hook.
 
