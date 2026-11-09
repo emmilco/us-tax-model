@@ -92,45 +92,24 @@ def shift_year(key, value, shift):
     return f"y{int(m.group(1)) + shift}" if m else value
 
 
-def resolve(inputs, params, where="fixture"):
-    """The inputs with each parameter-relative one ({"param", "status"?, "offset"}) replaced by
-    the parameter's value (for the status, if given) plus the offset, as engine/src/fixture-inputs.ts
-    resolves them; one that names no dollar amount, or whose offset is not a whole number of cents,
-    is refused (ValueError) as the engine refuses it."""
-    out = {}
-    for k, v in inputs.items():
-        if not (isinstance(v, dict) and isinstance(v.get("param"), str)):
-            out[k] = v
-            continue
-        entry = (params.get(v["param"]) or {}).get("value")
-        base = entry if "status" not in v else entry.get(v["status"]) if isinstance(entry, dict) else None
-        offset = v.get("offset")
-        if not _cents(base) or not _cents(offset):
-            status = f"[{v['status']}]" if "status" in v else ""
-            raise ValueError(f"{where}: input {k} refers to {v['param']}{status}, which is not a dollar amount")
-        out[k] = base + offset
-    return out
-
-
-def _cents(x):
-    return isinstance(x, int) and not isinstance(x, bool)
-
-
 def self_test():
-    params = {"a.amount": {"value": 1000}, "a.by_status": {"value": {"mfj": 2000, "single": 1000}},
-              "a.rate": {"value": {"num": 1, "den": 2}}}
-    good = resolve({"x": {"param": "a.amount", "offset": -1}, "y": {"param": "a.by_status", "status": "mfj", "offset": 5},
-                    "z": 7, "w": {"kind": "other"}}, params)
-    ok = good == {"x": 999, "y": 2005, "z": 7, "w": {"kind": "other"}}
+    """Parameter-relative inputs resolve through the engine (fixture_inputs.resolve_cases, the resolver this tool
+    uses), and one naming no dollar amount is refused. A class M file name keeps the defaults out."""
+    import taxyear
+    year = taxyear.YEAR
+    base = canonical_params(year)["medicare.threshold"]["value"]["mfj"]
+    case = lambda inputs: [{"id": "t", "file": "classm.json", "inputs": inputs}]
+    good = resolve_cases(case({"x": {"param": "medicare.threshold", "status": "mfj", "offset": -1}, "z": 7}), year)
+    ok = good == {"t": {"x": base - 1, "z": 7}}
     refused = []
-    for bad in ({"param": "a.missing", "offset": 0}, {"param": "a.rate", "offset": 0}, {"param": "a.by_status", "offset": 0},
-                {"param": "a.by_status", "status": "hoh", "offset": 0}, {"param": "a.amount", "offset": 0.5},
-                {"param": "a.amount"}):
+    for bad in ({"param": "a.missing", "offset": 0}, {"param": "medicare.threshold", "offset": 0},
+                {"param": "medicare.threshold", "status": "xyz", "offset": 0},
+                {"param": "medicare.threshold", "status": "mfj", "offset": 0.5}):
         try:
-            resolve({"k": bad}, params, where="case t")
+            resolve_cases(case({"k": bad}), year)
             refused.append(False)
         except ValueError as e:
-            refused.append(str(e).startswith("case t: input k refers to "))
+            refused.append("input k refers to " in str(e) and "not a dollar amount" in str(e))
     print("fixtures-year self-test: parameter-relative inputs " + ("resolve, and those naming no dollar amount are refused"
           if ok and all(refused) else f"WRONG (resolved {good}; refused {refused})"))
     return 0 if ok and all(refused) else 1
