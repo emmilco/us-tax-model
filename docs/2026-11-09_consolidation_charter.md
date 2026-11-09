@@ -75,16 +75,16 @@ means the form is stable and only small changes or year updates happen.
 | Render review | whole form | changed lines only, and only when the wording changed | About $70 per bug on stable forms |
 | Class M (cases) | yes | when the form's arithmetic changes | Found nothing in the ledger window |
 | Completeness, screen and false-no reviews | yes | a fixed sample per form per milestone, its union ruled once | $2 to $3 per bug. Completeness behaves like a random sample, so rerunning on every edit only pulls in old low findings |
-| Second family (DeepSeek, GPT) | dropped | dropped | 1 bug in 1,488 rulings. Owner, 2026-11-09: Claude-only reviews from now on |
+| Second family (DeepSeek, GPT) | inactive | inactive | 1 bug in 1,488 rulings. Owner, 2026-11-09: Claude-only reviews; machinery kept dormant |
 | Human reading | optional | optional | Validation policy, 10-24 |
 
 Budget: the $3.00 owner gate in `rerun_all.py` stays. There is no monthly budget for now: the gate and the
 once-per-round rule bound the spend. Revisit after one month of ledger data at maintenance rates.
 
-**The second family is dropped (owner, 2026-11-09).** No new DeepSeek or GPT review runs. Phase 1 removes the
-second-family machinery, or reduces it to reading the existing historical logs: the family runs in `rerun_all.py`,
-the eligibility checks in `check_logs.py` and `compare_families.py`, and the second-family report. CLAUDE.md's
-model-authority and DeepSeek rules are updated to match.
+**The second family is inactive (owner, 2026-11-09).** No DeepSeek or GPT review runs. Its machinery is
+disabled, not deleted: an `active` flag in `families.json`, skipped by `rerun_all.py` unless overridden with a recorded
+reason, and treated as history by `check_logs.py`. `compare_families.py` and the transport code stay dormant, with
+their self-tests, so reactivating a family is a flag change.
 
 ## 5. Process rules and their enforcement
 
@@ -149,7 +149,7 @@ In order of yearly cost saved:
 1. The rollover procedure in section 7, ledger fields first (cheap, and the measurement depends on them), then review
    carry across years, year changes as operations, mechanical parameters, year-free ids, and New York year handling.
 2. Content-addressed review logs (section 3), with the cross-year carry.
-3. Removing the second-family machinery (section 4).
+3. Disabling the second family (section 4): inactive flag, dormant code kept.
 4. Check-all: fold the 34 self-tests into fewer steps, and parameterize the 16 New York mirrors. Drop or demote
    `human_review` (packets are optional) and the stage-named `review_stage2..5`.
 5. The 22 tech-debt items that still hold, including the dangling commit per background run, the Python

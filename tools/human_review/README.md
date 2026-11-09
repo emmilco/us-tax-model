@@ -49,7 +49,7 @@ The modules: `reading.py` (the canonical JSON read as English, one literal templ
 
 The list holds 26 optional items. Items 1 to 13 are the original list; items 14 to 26 were added under the former stop-rule decision13. The 2026-10-24 amendment retires that mandatory-reading consequence and any required sequence. The list remains available for voluntary review. Its original selection rule was stakes times churn: dollars and share of returns affected, using archived IRS counts, times commits touching the definition.
 
-Items 14 to 26 originally preferred lines no engine reaches, household predicates outside the Direct File comparison, and coarse citation locators. A missing engine comparison does not itself mean a line now has evidence from only one model family: consult both the per-line evidence report and `reports/2025/second_family.md` for current coverage and gaps.
+Items 14 to 26 originally preferred lines no engine reaches, household predicates outside the Direct File comparison, and coarse citation locators. A missing engine comparison does not itself mean a line now has evidence from only one model family: consult the per-line evidence report for current coverage and gaps. `reports/2025/second_family.md` is historical: the second review family is inactive and that report is no longer regenerated.
 
 ## What the log records
 
@@ -67,8 +67,8 @@ with a reason earns H only when the exact log contents are committed with the na
 author. This is author attribution, not a cryptographic proof of who read the page. For guided questions H credits only that computation; for other packets it credits the
 printed line and the helpers expanded in its reading, with links naming the reader and the printed
 line that covered each helper. It does not credit other printed lines merely referenced by number.
-Second-family transcription/render readings remain in `second_family.md`; they are not yet wired
-into the scoreboard.
+Historical second-family transcription/render readings are recorded in `second_family.md`, which is
+no longer regenerated while the second family is inactive.
 
 ## Verification
 
