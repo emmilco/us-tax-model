@@ -10,5 +10,7 @@ lean/*
 # The engine differential: its runner, adapters, comparison and the explanations of engine differences.
 tools/engines/*
 fixtures/*/differential/engine_investigations.json
-# The human-review tooling, whose test (human_review) only the full tier runs.
-tools/human_review/*
+# The human-review tooling's code and data, which its test (human_review) reads and only the full tier runs.
+# Its README and the browser test (run by hand, by no step) need only the fast tier.
+tools/human_review/*.py
+tools/human_review/*.json

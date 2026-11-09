@@ -88,7 +88,7 @@ A full-green tree is also fast- and docs-green, and a fast-green tree is docs-gr
 Which tier a commit needs is decided from the paths it changes against its parent
 (`tools/tier_paths.py`): **full** if it changes a path in `tools/full_paths.txt` (the
 mutation tool and its equivalence and pinned lists, the Lean evaluator and its
-comparison, the engine differential, the human-review tooling), **docs** if every changed path is in
+comparison, the engine differential, the human-review tooling's code and data but not its README), **docs** if every changed path is in
 `tools/docs_paths.txt`, **fast** otherwise; a merge needs at least fast, a commit with
 no parent full. The lists are read from the parent, so a commit cannot widen the list
 it is judged by. `tools/tier_paths.py --self-test` (run by `hooks/test_green.sh`) checks
