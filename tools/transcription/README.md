@@ -683,9 +683,10 @@ malformed stamp. Completeness and screen rulings (hand-written JSON) are not sta
 lines (a compared line; any line of the form, meaning the compared lines that read it; a line of another form,
 meaning this form's lines reading it; or `auto`, the lines whose subject changed) and merge the result into the
 existing log of that family as a `#### Pass <prompt sha>` block under `## Line-scoped reviews`. The scoped prompt
-carries the target lines, every other printed computed line by id, marker and type, all inputs, the excerpt the
+carries the target lines, every other printed computed line by id, marker and type (and, for one with a `shown_when`, the
+line id of its display condition, with a note that the line's amount is computed whether or not it is shown), all inputs, the excerpt the
 targets and their helpers and inputs cite, and the source-derived catalog for those pages only
-(`source-only-computation-v3+lines-v2`), narrowed as a New York catalog is: a form the excerpt names only as a form
+(`source-only-computation-v3+lines-v3`; logs recorded under `+lines-v1` and `+lines-v2` stay independent), narrowed as a New York catalog is: a form the excerpt names only as a form
 ("Form 1040") is listed whole only where the scoped lines' own citations name it; otherwise its input lines and the
 lines the excerpt names by form and line are listed (reason `named form, inputs and named lines: ...`), and a
 collection named only as a form only by its named lines. Definitions, shared pages, worksheets, named lines (a form feeding a line the excerpt names) and the

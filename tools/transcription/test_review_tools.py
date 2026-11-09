@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Offline regression tests for independence, noise accounting and response provenance."""
 import contextlib
+import copy
 import hashlib
 import json
 import io
@@ -2249,6 +2250,26 @@ class LineScopedReviews(unittest.TestCase):
             if line["id"] not in scope and line["printed"] in T.HELPER_PRINTED:
                 self.assertNotIn(line["id"], part)
         self.assertNotIn("f1040.line2b", part.replace("SOURCE", ""))
+
+    def test_scoped_prompt_states_the_display_condition_of_listed_unscoped_lines(self):
+        scope, _ = T.scoped_lines(self.doc, ["f8960.line1"])
+        doc = copy.deepcopy(self.doc)
+        listed_ids = [l["id"] for l in doc["lines"] if l["id"] not in scope and l["printed"] not in T.HELPER_PRINTED
+                      and l["expr"].get("op") != "input"]
+        self.assertGreaterEqual(len(listed_ids), 2)
+        shown, plain = listed_ids[:2]
+        for l in doc["lines"]:
+            l.pop("shown_when", None)
+            if l["id"] == shown:
+                l["shown_when"] = "f8960.gate"
+        with patch.object(T, "collection_notes", return_value=""), patch.object(T, "screen_notes", return_value=""):
+            part = T.build_prompt(doc, "SOURCE", {}, {}, scope=scope)
+        listed = part.partition(T.SCOPE_NOTE)[2].partition("\n\n")[0].splitlines()
+        row = lambda lid: next(r for r in listed if f"(id {lid};" in r)
+        self.assertIn("; shown only when f8960.gate is true, its amount computed either way)", row(shown))
+        self.assertNotIn("shown only when", row(plain))
+        self.assertIn('marked "shown only when" is skipped where its condition is false, not zeroed',
+                      " ".join(T.SCOPE_NOTE.split()))
 
     def test_partial_review_merges_and_keeps_rulings_of_both_reviews(self):
         old = self.base_log({"f8960.line2": {"expr": {"op": "copy", "from": "f1040.line3a"}}})

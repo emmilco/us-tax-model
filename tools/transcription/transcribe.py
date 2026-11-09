@@ -1010,8 +1010,10 @@ always shown, not because it may be omitted where the text conditions a line."""
 
 SCOPE_NOTE = """This is a line-scoped review: transcribe only the printed lines listed above and the result
 interfaces listed below, with any helper lines they need. The document's other printed lines are
-reviewed separately and are not to be transcribed here. Where the IRS text of a listed line uses one
-of them, reference it by the id shown:
+reviewed separately and are not to be transcribed here. A listed line marked "shown only when" is
+skipped where its condition is false, not zeroed: its amount is still computed. A line you transcribe
+that uses it only where it is completed must test that condition itself, by the id shown. Where the IRS
+text of a listed line uses one of them, reference it by the id shown:
 """
 
 
@@ -1031,7 +1033,9 @@ def build_prompt(form_doc, excerpt, params, other_lines, param_types=None, colle
         others = [l for l in targets if l["id"] not in scope]
         targets = [l for l in targets if l["id"] in scope]
         exported = [l for l in exported if l["id"] in scope]
-        scope_block = "\n" + SCOPE_NOTE + ("\n".join(printed_row(l) for l in others) if others else "  (none)") + "\n"
+        other_row = lambda l: printed_row(l)[:-1] + (f"; shown only when {l['shown_when']} is true, its amount computed either way)"
+                                                     if l.get("shown_when") else ")")
+        scope_block = "\n" + SCOPE_NOTE + ("\n".join(other_row(l) for l in others) if others else "  (none)") + "\n"
     tgt = "\n".join(printed_row(l) for l in targets) if targets or scope is None else "  (none)"
     exp = "\n".join(f"  - id {l['id']} ({l['type']})" for l in exported)
     inp = "\n".join(indent_rest(f"  - {l['id']} (printed {keys[l['id']]!r}, type {l['type']}): {l['expr'].get('source','')}", "      ")
@@ -1981,10 +1985,12 @@ def extract_yaml(text):
 
 PASS_HEADING = "## Line-scoped reviews"
 # A line-scoped request's policy: lines-v1 chooses its catalog from the excerpt alone; lines-v2 also
-# narrows it by the scoped lines' citations (catalog_selection with `cited`). Both are chosen from the source.
-LINE_PROMPT_POLICY = PROMPT_POLICY + "+lines-v2"
+# narrows it by the scoped lines' citations (catalog_selection with `cited`); lines-v3 also states the display
+# condition of each listed unscoped line that has one. All are chosen from the source.
+LINE_PROMPT_POLICY = PROMPT_POLICY + "+lines-v3"
 # Line-scoped prompt policies under which a pass is as independent as a whole review under PROMPT_POLICY.
-INDEPENDENT_LINE_PROMPT_POLICIES = frozenset({PROMPT_POLICY + "+lines-v1", LINE_PROMPT_POLICY})
+INDEPENDENT_LINE_PROMPT_POLICIES = frozenset({PROMPT_POLICY + "+lines-v1", PROMPT_POLICY + "+lines-v2",
+                                                      LINE_PROMPT_POLICY})
 
 
 def _review_rows(form_doc, model, prompt, used, results, extra, meta, interfaces, contract, replay_receipt=None,
