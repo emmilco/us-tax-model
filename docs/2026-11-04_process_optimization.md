@@ -1,3 +1,5 @@
+> **Historical (2026-11-09):** superseded by `docs/2026-11-09_consolidation_charter.md`. Kept as a record; it no longer governs.
+
 # Development-process optimization — 2026-11-04
 
 Opportunities to reach the same integrity at lower inference cost or with less work, from a read-only

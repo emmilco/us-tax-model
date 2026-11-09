@@ -1,3 +1,5 @@
+> **Historical (2026-11-09):** superseded by `docs/2026-11-09_consolidation_charter.md`. Kept as a record; it no longer governs.
+
 # Integrity plan — 2026-10-22 (v7, amended 2026-10-24 and 2026-10-26)
 
 **Owner amendment, 2026-10-26:** the remaining work is re-sequenced and the gate for resuming

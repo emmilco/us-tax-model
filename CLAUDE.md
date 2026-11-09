@@ -5,11 +5,10 @@ Current execution: read the top entry of `HANDOFF-NEXT-SESSION.md` first; it nam
 facts. Older handoffs (all of `handoffs/` except HARDENING-1, including `HANDOFF.md`, `HANDOFF-INTEGRITY.md`
 and `HANDOFF-STAGE-16.md`) are historical. `docs/2026-10-24_validation_policy.md` remains the controlling validation
 amendment: human packets and ruling samples are optional; proceed without waiting for them and preserve
-original verdicts. The required review family is Claude (`claude-opus-5-5`); `deepseek-flash` and
-`gpt-6-astra` are optional peer families (owner's model-authority ranking is in the validation policy:
-`claude-fable-5-1` above all; `gpt-6-astra`, `claude-opus-5-5`, `gemini-4-argon`, `deepseek-v4.1-flash`
-and `gpt-6.1-sol` interchangeable; Gemini 3, GPT-6 Luna/Terra, Claude Sonnet/Haiku mechanical or
-advisory only).
+original verdicts. Reviews are Claude-only (`claude-opus-5-5`): the second review family (DeepSeek, GPT) is
+dropped (owner, 2026-11-09; `docs/2026-11-09_consolidation_charter.md`), and no new second-family runs are made.
+Existing second-family logs are historical. The consolidation charter governs the execution order and the
+verification system.
 
 - **Inference cost (owner decision 2026-11-03).** Use inference only where it adds evidence.
   Paid review calls (transcription, render, class M, completeness, screen) and agents are
@@ -20,9 +19,6 @@ advisory only).
   - Rule repeat disagreements mechanically where the carry-over tool allows (T-218), and scope
     reviews to changed lines and their readers (T-219). Enforced in `rerun_all.py`: carry runs after
     each review, and transcription and render are line-scoped unless the tool refuses or `--whole`.
-  - DeepSeek transcription runs only on forms where its log is eligible for second-family credit
-    (`compare_families.py`) or for a change the owner flags; DeepSeek render and class M run as before
-    (owner decision 2026-11-04).
   - Mechanical agent work (applying rulings, bug-entry formatting, input ripple, bookkeeping)
     runs on Sonnet; judgment (adjudication, source reading, design) on Opus.
   - One review per form per round, run after all of that form's fixes in the round

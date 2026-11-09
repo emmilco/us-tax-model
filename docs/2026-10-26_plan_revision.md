@@ -1,3 +1,5 @@
+> **Historical (2026-11-09):** superseded by `docs/2026-11-09_consolidation_charter.md`. Kept as a record; it no longer governs.
+
 # Plan revision — owner amendment, 2026-10-26
 
 **Execution-order update, 2026-11-01:** the owner-approved

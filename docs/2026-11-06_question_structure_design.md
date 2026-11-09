@@ -1,3 +1,5 @@
+> **Historical (2026-11-09):** superseded by `docs/2026-11-09_consolidation_charter.md`. Kept as a record; it no longer governs.
+
 # T-251 question structure: design
 
 Status: approved by the owner 2026-11-06 (intent readback confirmed the same day). Built on the T-236 branch, merged with T-236.
