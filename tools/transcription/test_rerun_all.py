@@ -64,8 +64,10 @@ class UsageLimitBreaker(unittest.TestCase):
                 "--ledger", self.ledger, *extra]
         if model:
             argv += ["--model", model]
+        if model and not RA.families.is_active(RA.families.family_of(model)):
+            argv += ["--inactive-family", RA.families.family_of(model), "--inactive-family-reason", "breaker test"]
         out = io.StringIO()
-        with patch.object(sys, "argv", argv), patch.object(RA, "forms_for", return_value=forms), \
+        with patch.dict(os.environ), patch.object(sys, "argv", argv), patch.object(RA, "forms_for", return_value=forms), \
                 patch.object(RA.subprocess, "run", side_effect=self.fake(outcomes)), contextlib.redirect_stdout(out):
             with self.assertRaises(SystemExit) as done:
                 RA.main()
@@ -81,6 +83,7 @@ class UsageLimitBreaker(unittest.TestCase):
         self.assertIn("gpt transcription (3): b, c, d", out)
         self.assertIn("rerun_all.py --kinds transcription --forms b,c,d", out)
         self.assertIn("--model gpt-6-astra", out)
+        self.assertIn("--inactive-family gpt --inactive-family-reason 'breaker test'", out)
 
     def test_an_ordinary_failure_does_not_open_the_breaker(self):
         code, out, summary = self.main(["a", "b", "c"], {"a": proc(1, "", "RuntimeError: codex exited 1: HTTP 504"),
@@ -104,8 +107,9 @@ class UsageLimitBreaker(unittest.TestCase):
             return proc(1, "", "no saved response") if "--from-response" in cmd else proc(0, "agree")
         summary = os.path.join(self.temp.name, "summary.json")
         argv = ["rerun_all.py", "--kinds", "transcription", "--jobs", "1", "--no-carry", "--resume", "--model",
-                "gpt-6-astra", "--summary", summary, "--ledger", self.ledger]
-        with patch.object(sys, "argv", argv), patch.object(RA, "forms_for", return_value=["a", "b", "c"]), \
+                "gpt-6-astra", "--inactive-family", "gpt", "--inactive-family-reason", "breaker test",
+                "--summary", summary, "--ledger", self.ledger]
+        with patch.dict(os.environ), patch.object(sys, "argv", argv), patch.object(RA, "forms_for", return_value=["a", "b", "c"]), \
                 patch.object(RA.subprocess, "run", side_effect=run), contextlib.redirect_stdout(io.StringIO()):
             with self.assertRaises(SystemExit):
                 RA.main()
@@ -113,6 +117,30 @@ class UsageLimitBreaker(unittest.TestCase):
         rows = {r["form"]: r for r in json.loads(Path(summary).read_text())}
         self.assertTrue(rows["c"]["reused"])
         self.assertEqual(rows["b"].get("skipped"), "usage limit")
+
+    def test_an_inactive_family_is_refused_without_the_override(self):
+        argv = ["rerun_all.py", "--kinds", "transcription", "--model", "deepseek-flash", "--dry-run", "--ledger", self.ledger]
+        err = io.StringIO()
+        with patch.dict(os.environ), patch.object(sys, "argv", argv), patch.object(RA, "forms_for", return_value=["a"]), \
+                patch.object(RA.subprocess, "run", side_effect=self.fake({})), contextlib.redirect_stderr(err):
+            with self.assertRaises(SystemExit) as done:
+                RA.main()
+        self.assertEqual(done.exception.code, 2)
+        self.assertIn("'deepseek' (deepseek-flash) is inactive", err.getvalue())
+        self.assertEqual(self.dry_calls + self.calls, [])
+
+    def test_the_override_reaches_each_tool(self):
+        seen = []
+        fake = self.fake({})
+        def run(cmd, **kw):
+            env = kw.get("env") or os.environ
+            seen.append((env.get(RA.families.OVERRIDE_ENV), env.get(RA.families.OVERRIDE_REASON_ENV)))
+            return fake(cmd, **kw)
+        self.fake = lambda outcomes: run
+        code, out, summary = self.main(["a"], {})
+        self.assertEqual((code, self.calls), (0, ["a"]))
+        self.assertEqual(set(seen), {("gpt", "breaker test")})  # the dry run and the paid run
+        self.assertNotIn(RA.families.OVERRIDE_ENV, os.environ)  # the test's environment is restored
 
     def test_other_families_continue(self):
         breaker = RA.Breaker()

@@ -13,6 +13,10 @@ The forms of a kind are those with a log of any model family; each tool writes t
 the family `--model` names (families.py), so a second family's run leaves the Claude logs as
 they are.
 
+Only active families (families.json) run. A `--model` of an inactive family is refused unless
+`--inactive-family FAMILY --inactive-family-reason TEXT` names that family; the reason is passed to
+each tool and recorded in each paid call's cost-ledger row.
+
 A model family's first usage-limit failure (USAGE_LIMIT) opens its breaker: no further job of that
 family calls the model in this run (a --resume reuse of a matching saved response still runs, since it
 makes no call). Calls already in flight finish. The jobs not run are listed at the end with the command
@@ -37,7 +41,7 @@ Guards, applied before any paid call:
 
 --dry-run plans and prints the estimate and calls no model.
 """
-import argparse, json, os, re, subprocess, sys, threading, time
+import argparse, json, os, re, shlex, subprocess, sys, threading, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -277,7 +281,9 @@ def main():
     ap.add_argument("--ledger", help="cost ledger that prices the estimate (default .transcription/costs.jsonl)")
     ap.add_argument("--no-carry", action="store_true", help="do not carry earlier rulings over to repeat disagreements (carry.py)")
     ap.add_argument("--summary", default=os.path.join(ROOT, ".transcription", "rerun_summary.json"))
+    families.add_override_args(ap)
     a = ap.parse_args()
+    families.apply_override(ap, a)  # refuses a --model of an inactive family unless the override names it
     if a.jobs < 1:
         ap.error("--jobs must be positive")
     if a.force_rerun is not None and not a.force_rerun.strip():
@@ -367,7 +373,9 @@ def skipped_report(results, a):
                *(["--lines", a.lines] if a.lines and kind in ("transcription", "render") else []),
                *(["--reasoning-effort", a.reasoning_effort] if a.reasoning_effort else []),
                *(["--max-output-tokens", str(a.max_output_tokens)] if a.max_output_tokens is not None else []),
-               *(["--case-jobs", str(a.case_jobs)] if kind == "classm" and a.case_jobs != 1 else [])]
+               *(["--case-jobs", str(a.case_jobs)] if kind == "classm" and a.case_jobs != 1 else []),
+               *(["--inactive-family", a.inactive_family, "--inactive-family-reason", shlex.quote(a.inactive_family_reason)]
+                 if a.inactive_family else [])]
         out += [f"  {family} {kind} ({len(forms)}): {', '.join(sorted(forms))}", "    " + " ".join(cmd)]
     return "\n".join(out) + "\n"
 

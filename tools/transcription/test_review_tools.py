@@ -31,6 +31,12 @@ import adapter_contracts as adapters
 import carry
 import migrate_line_subjects as ML
 import input_context
+import os
+
+# The DeepSeek family is inactive (families.json), but its transport, token budget and comparison paths are
+# kept and tested: these tests run them under the override a deliberate DeepSeek run would use. The tests of
+# the inactive state itself (InactiveFamilies) remove it.
+os.environ[families.OVERRIDE_ENV], os.environ[families.OVERRIDE_REASON_ENV] = "deepseek", "offline test of the dormant family"
 
 
 def log(statuses, rulings=None):
@@ -199,6 +205,89 @@ class OptionalStaleLogs(unittest.TestCase):
             with patch.object(check_logs.subjects, "log_state", return_value="subject changed"), \
                  contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
                 self.assertTrue(check_logs.check("render", d, "RENDER_LOGS_OPTIONAL", ["f1"], families.DEFAULT, required=True))
+
+
+class InactiveFamilies(unittest.TestCase):
+    """families.json `active`: an inactive family's model is not called without the override naming it, an
+    overridden call records its reason in the cost ledger, and check_logs counts its logs as history."""
+
+    def setUp(self):
+        self.env = patch.dict(os.environ)
+        self.env.start()
+        self.addCleanup(self.env.stop)
+        os.environ.pop(families.OVERRIDE_ENV, None); os.environ.pop(families.OVERRIDE_REASON_ENV, None)
+
+    def test_only_claude_is_active(self):
+        self.assertEqual({f for f, on in families.load()["active"].items() if on}, {"claude"})
+        self.assertFalse(families.is_active("deepseek") or families.is_active("gpt") or families.is_active("other"))
+
+    def test_an_inactive_model_is_refused_before_any_transport_or_ledger_row(self):
+        with tempfile.TemporaryDirectory() as temp, patch.object(T, "RAW", temp), \
+                patch.object(T, "_deepseek_key", side_effect=AssertionError("must not read keychain")), \
+                patch.object(T, "_call_codex", side_effect=AssertionError("must not run codex")):
+            for model in ("deepseek-flash", "gpt-6-astra"):
+                with self.assertRaisesRegex(families.InactiveFamily, "is inactive.*--inactive-family"):
+                    T.call_model("PUBLIC", model)
+            os.environ[families.OVERRIDE_ENV], os.environ[families.OVERRIDE_REASON_ENV] = "gpt", "why"
+            with self.assertRaises(families.InactiveFamily):
+                T.call_model("PUBLIC", "deepseek-flash")  # the override names another family
+            self.assertFalse(os.path.exists(os.path.join(temp, T.LEDGER_NAME)))
+
+    def test_an_overridden_call_records_its_reason(self):
+        os.environ[families.OVERRIDE_ENV], os.environ[families.OVERRIDE_REASON_ENV] = "deepseek", "owner asked for one form"
+        meta = {"model_reported": ["deepseek-flash"], "usage": {}, "cost_usd": None, "transport": "deepseek"}
+        with tempfile.TemporaryDirectory() as temp, patch.object(T, "RAW", temp), \
+                patch.object(T, "_call_deepseek", return_value=("lines: []", meta)):
+            T.call_model("PUBLIC", "deepseek-flash", kind="render", subject="x")
+            row = json.loads(Path(temp, T.LEDGER_NAME).read_text())
+        self.assertEqual(row["inactive_family_override"], {"family": "deepseek", "reason": "owner asked for one form"})
+
+    def test_a_writer_refuses_an_inactive_model_at_its_arguments(self):
+        import argparse
+        ap = argparse.ArgumentParser(); ap.add_argument("--model"); families.add_override_args(ap)
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err), self.assertRaises(SystemExit):
+            families.apply_override(ap, ap.parse_args(["--model", "deepseek-flash"]))
+        self.assertIn("inactive", err.getvalue())
+        for argv in (["--inactive-family", "deepseek"], ["--inactive-family", "claude", "--inactive-family-reason", "x"]):
+            with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+                families.apply_override(ap, ap.parse_args(argv))
+        families.apply_override(ap, ap.parse_args(["--model", "deepseek-flash", "--inactive-family", "deepseek",
+                                                   "--inactive-family-reason", "one form"]))
+        self.assertEqual(families.override(), ("deepseek", "one form"))
+
+    def test_check_logs_counts_an_inactive_familys_logs_as_history(self):
+        import check_logs
+        out = io.StringIO()
+        with patch.object(check_logs, "check", side_effect=AssertionError("an inactive family is not checked")) as check, \
+                patch.object(check_logs, "check_families", return_value=False), \
+                patch.object(check_logs.families, "load", return_value={"required": ["claude"], "optional": ["deepseek"],
+                                                                       "active": {"claude": False, "deepseek": False}, "models": {}}), \
+                patch.object(check_logs.rulings, "forms_with_logs", return_value=[("f1", "claude"), ("f1", "deepseek"), ("f2", "deepseek")]), \
+                contextlib.redirect_stdout(out):
+            self.assertFalse(check_logs.check_kind("render"))
+        self.assertIn("render logs [deepseek, inactive]: 2 log(s) kept as history", out.getvalue())
+
+    def test_the_second_family_report_is_kept_while_every_second_family_is_inactive(self):
+        with tempfile.TemporaryDirectory() as temp:
+            report = Path(temp, "second_family.md"); report.write_text("history\n")
+            out = io.StringIO()
+            with patch.object(C, "REPORT", str(report)), patch.object(C, "compare", side_effect=AssertionError("no comparison")), \
+                    contextlib.redirect_stdout(out):
+                C.main()
+            self.assertEqual(report.read_text(), "history\n")
+        self.assertIn("every second family is inactive", out.getvalue())
+
+    def test_check_logs_checks_a_reactivated_family_as_optional(self):
+        import check_logs
+        calls = []
+        with patch.object(check_logs, "check", side_effect=lambda *a, **k: calls.append((a[4], k["required"])) or False), \
+                patch.object(check_logs, "check_families", return_value=False), \
+                patch.object(check_logs.families, "load", return_value={"required": ["claude"], "optional": ["deepseek", "gpt"],
+                                                                       "active": {"claude": True, "deepseek": True}, "models": {}}), \
+                patch.object(check_logs.rulings, "forms_with_logs", return_value=[]), contextlib.redirect_stdout(io.StringIO()):
+            check_logs.check_kind("render")
+        self.assertEqual(calls, [("claude", True), ("deepseek", False)])
 
 
 class RenderedSubject(unittest.TestCase):

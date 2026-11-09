@@ -581,7 +581,9 @@ def main():
     ap.add_argument("--from-response", action="store_true", help="re-read the saved response; call no model")
     ap.add_argument("--lines", help="line-scoped review merged into the existing log: comma-separated line ids or keys "
                                     "(each with the judged lines whose glossary names it), or 'auto' for the lines whose subject changed")
+    families.add_override_args(ap)
     a = ap.parse_args()
+    families.apply_override(ap, a)
     form_doc = load_form(a.form)
     if a.lines:
         return scoped_main(a, form_doc)

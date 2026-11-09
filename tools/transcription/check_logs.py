@@ -12,6 +12,11 @@ and does not fail, since a review is rerun only where it can earn credit. A log 
 is in neither list fails. Counts are printed per kind and family. Runs offline in check-all; the logs
 themselves are produced deliberately by transcribe.py and render_compare.py (network steps).
 
+Only active families (families.json `active`) are checked as above. An inactive family's logs are history:
+counted and printed, never required and never failed for staleness, open rulings or eligibility. Their
+integrity is still checked, for every family, by rulings.check() below (each ruling in a log equals its
+sidecar's) and by `review_store.py check` (every record present and named by its hash).
+
 Optional human reading logs (reviews/<year>/human/) earn H only with a current receipt,
 MATCH and reason, and exact contents committed by the named reader. Incomplete, stale or
 negative readings are pending without failing this check. Malformed/duplicate records and
@@ -186,15 +191,23 @@ def check_families(kind, logs):
 
 
 def check_kind(kind, expected=None):
-    """Every required family's logs of a kind, then every optional family's; logs of unlisted families fail."""
+    """Every active required family's logs of a kind, then every active optional family's; an inactive
+    family's logs are counted as history; logs of unlisted families fail."""
     logs = os.path.join(REVIEWS, kind)
     env = {"transcription": "TRANSCRIPTION_LOGS_OPTIONAL", "render": "RENDER_LOGS_OPTIONAL", "classm": "CLASSM_LOGS_OPTIONAL"}[kind]
     fams = families.load(kind)
     failed = check_families(kind, logs)
     for fam in fams["required"]:
-        failed = check(kind, logs, env, expected, fam, required=True) or failed
+        if fams["active"].get(fam, False):
+            failed = check(kind, logs, env, expected, fam, required=True) or failed
     for fam in fams["optional"]:
-        failed = check(kind, logs, env, expected, fam, required=False) or failed
+        if fams["active"].get(fam, False):
+            failed = check(kind, logs, env, expected, fam, required=False) or failed
+    for fam in fams["required"] + fams["optional"]:
+        if not fams["active"].get(fam, False):
+            logged = sum(1 for _, f in rulings.forms_with_logs(kind) if f == fam)
+            print(f"{kind} logs [{fam}, inactive]: {logged} log(s) kept as history; not checked for currency "
+                  f"(set \"active\" in tools/transcription/families.json to check them again)")
     return failed
 
 

@@ -95,14 +95,15 @@ project's; a render comparison, in which an isolated model that has not seen the
 reads each line's English against the page; class M hand-work, in which an isolated model works
 branch-covering inputs on the printed worksheet; and blind predictions of whole-return values made
 before the encoding was run. Every model runs with no repository access and no network
-(`tools/transcription/README.md`). Transcription and render reviews run under two model families,
-Claude and DeepSeek, on every form; class M hand-work under the second family covers fewer forms (about
-25, against about 55 under Claude), and blind predictions are not split by family. Every disagreement
-must be ruled against the source with the page and quote recorded, and the logs are committed under
-`reviews/2025/`. `reports/2025/second_family.md` compares the families: 149 form-and-kind pairs, 71
-eligible and 77 pending. Ruled second-family model error is 8.6% in aggregate (401 of 4,661 lines
-judged); the 10% limit applies per form-kind run, and several pending forms are well above it.
-**Guarantees:** for each eligible review, two readings of the same page produced the same structure,
+(`tools/transcription/README.md`). Reviews run under the Claude model family only. The second families
+(DeepSeek, GPT) are inactive in `tools/transcription/families.json`: no new review runs under them and
+`check_logs.py` does not require or fail their logs. Their earlier logs stay in `reviews/2025/` as
+history, integrity-checked, and their class M fixtures still run as evidence cases. The last comparison
+of the families, `reports/2025/second_family.md`, is kept as written (149 form-and-kind pairs, 71
+eligible and 77 pending; ruled second-family model error 8.6% in aggregate) and is not regenerated while
+the families are inactive. Every disagreement must be ruled against the source with the page and quote
+recorded, and the logs are committed under `reviews/2025/`.
+**Guarantees:** for each review, an independent reading of the same page produced the same structure,
 or the difference is on record with its ruling. **Does not guarantee:** independence of the readers;
 two models reading the same English can share a misreading.
 

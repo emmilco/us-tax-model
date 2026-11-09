@@ -14,6 +14,10 @@ A line one log judged and the other did not (MISSING, or absent from one log) is
 floor and counted. A log whose subject hash is no longer current is marked stale in the table.
 The report's "Summary:" line is also printed when the report is written.
 
+While every second family is inactive (families.json `active`) the report is not rewritten: the last one
+written stays as the record of the families' historical logs, and the run says so. Reactivating a family
+resumes the comparison on the next run.
+
     python3 tools/transcription/compare_families.py
 """
 import datetime, json, os, re, sys
@@ -338,7 +342,13 @@ def pairs():
 
 
 def main():
-    results = [compare(kind, form, fam) for kind, form, fam in pairs()]
+    known = families.load()
+    if not any(on for fam, on in known["active"].items() if fam != families.DEFAULT):
+        kept = "is kept as last written" if os.path.exists(REPORT) else "does not exist"
+        print(f"second_family: every second family is inactive (tools/transcription/families.json); "
+              f"{os.path.relpath(REPORT, ROOT)} {kept} and is not regenerated")
+        return
+    results = [compare(kind, form, fam) for kind, form, fam in pairs() if families.is_active(fam)]
     fams = sorted({r["family"] for r in results})
     judged = sum(len(r["judged"]) for r in results)
     agreed = sum(len(r["both_agree"]) for r in results)

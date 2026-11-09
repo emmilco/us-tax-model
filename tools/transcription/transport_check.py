@@ -3,11 +3,13 @@
 print the model the service reported and its token usage, nothing else. A deliberate network step;
 the API key is read from the macOS keychain inside the transport and is never printed.
 
-Usage: transport_check.py [--model deepseek-flash]
+Usage: transport_check.py [--model deepseek-flash] --inactive-family deepseek --inactive-family-reason TEXT
+(the override is needed while the DeepSeek family is inactive in families.json)
 """
 import argparse, json, os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import families  # noqa: E402
 from transcribe import MissingCredential, call_model  # noqa: E402
 
 PROMPT = "Reply with the single word ok."
@@ -17,12 +19,14 @@ SYSTEM = "You answer exactly as instructed."
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="deepseek-flash")
+    families.add_override_args(ap)
     a = ap.parse_args()
+    families.apply_override(ap, a)
     if not a.model.startswith("deepseek"):
         sys.exit(f"transport_check: {a.model!r} does not name a DeepSeek model")
     try:
         text, meta = call_model(PROMPT, a.model, timeout=120, system=SYSTEM)
-    except MissingCredential as ex:
+    except (MissingCredential, families.InactiveFamily) as ex:
         sys.exit(f"transport_check: {ex}")
     except RuntimeError as ex:
         sys.exit(f"transport_check: {ex}")

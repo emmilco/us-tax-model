@@ -436,7 +436,9 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--from-response", action="store_true")
     ap.add_argument("--case-jobs", type=int, default=1, help="concurrent isolated case requests (default 1)")
+    families.add_override_args(ap)
     a = ap.parse_args()
+    families.apply_override(ap, a)
     if not 1 <= a.case_jobs <= 8:
         ap.error('--case-jobs must be between 1 and 8')
     # The jobs are built from the canonical data, so build it and rebuild this document's jobs
