@@ -29,9 +29,10 @@ verification system.
     (tools/README.md, "Review rerun guards"). Completeness and screen reruns are not guarded.
   - Every agent brief states the agent's model and its class (mechanical or
     judgment), and every `agent_runs.jsonl` row records both, as `model` and
-    `class` fields.
-  - Every paid review call is logged in `.transcription/costs.jsonl` (`tools/transcription/costs.py`)
-    and every agent run in `research/costs/agent_runs.jsonl`.
+    `class` fields, with the tax `year` and `jurisdiction` (`us` or `ny`) the work is for
+    (`tools/check_agent_runs.py` requires all four on rows from 2026-11-10).
+  - Every paid review call is logged in `.transcription/costs.jsonl` (`tools/transcription/costs.py`),
+    with `year` and `jurisdiction`, and every agent run in `research/costs/agent_runs.jsonl`.
 - **Worktrees (owner decision 2026-11-07).** Agents in worktrees clone review data with
   `tools/worktree_data.py clone` and their results are carried back with `carry-back`; never copy
   `.transcription/` by hand; missing files are added with `fill`, never copied by hand;

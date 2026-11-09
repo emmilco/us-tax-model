@@ -29,7 +29,7 @@ import input_context  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
-from taxyear import Y  # noqa: E402
+from taxyear import Y, YEAR  # noqa: E402
 import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York documents, sources and logs)
 import archive_text  # noqa: E402
 from structured_text import indent_rest, inline, summary  # noqa: E402
@@ -1637,7 +1637,7 @@ TOOL_KINDS = {"transcribe.py": "transcription", "render_compare.py": "render", "
 
 
 def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_effort=None, max_output_tokens=None,
-               kind=None, subject=None):
+               kind=None, subject=None, year=None, jurisdiction_id=None):
     """One fixed-prompt call; returns (text, meta). The transport follows the model name:
     `claude*` runs `claude -p` in print mode with no tools; `deepseek*` posts to DeepSeek's
     hosted OpenAI-compatible endpoint; `gpt*` runs `codex exec` in an empty read-only scratch
@@ -1646,7 +1646,9 @@ def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_e
     Every call that reaches a transport appends one line to the cost ledger
     (.transcription/costs.jsonl), success or failure; the ledger never enters a prompt,
     a receipt or meta. kind and subject name the review (transcription, render, classm,
-    completeness, screen, false_no) and its form; kind defaults from the calling script."""
+    completeness, screen, false_no) and its form; kind defaults from the calling script. year and
+    jurisdiction_id (us or ny) name the tax year and jurisdiction the call is spent on; they default to
+    the run's own (--year, --jurisdiction)."""
     import time
     families.require_selected_model(model)
     if not model.startswith("deepseek") and (reasoning_effort is not None or max_output_tokens is not None):
@@ -1672,7 +1674,7 @@ def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_e
     finally:
         try:
             record_cost(started, time.monotonic() - clock, model, transport, prompt, system, meta, outcome, kind, subject,
-                        response=text)
+                        response=text, year=year, jurisdiction_id=jurisdiction_id)
         except Exception as ex:  # the ledger must never lose or alter a review result
             print(f"warning: cost ledger not written: {type(ex).__name__}: {ex}", file=sys.stderr)
 
@@ -1728,9 +1730,15 @@ def response_sha256(text):
     return hashlib.sha256(text.strip().encode()).hexdigest()
 
 
-def record_cost(started, seconds, model, transport, prompt, system, meta, outcome, kind=None, subject=None, response=None):
+def record_cost(started, seconds, model, transport, prompt, system, meta, outcome, kind=None, subject=None, response=None,
+                year=None, jurisdiction_id=None):
     """Append one JSON line to RAW/costs.jsonl: one write() on an O_APPEND descriptor, so lines from
-    concurrent processes do not interleave."""
+    concurrent processes do not interleave. The row's year (int) and jurisdiction ("us" or "ny") are
+    the arguments, else the run's own: --year (taxyear.YEAR) and --jurisdiction (jurisdiction.J)."""
+    year = YEAR if year is None else year
+    jurisdiction_id = jurisdiction.J if jurisdiction_id is None else jurisdiction_id
+    if not isinstance(year, int) or isinstance(year, bool) or jurisdiction_id not in jurisdiction.JURISDICTIONS:
+        raise ValueError(f"cost row needs an integer year and a jurisdiction in {jurisdiction.JURISDICTIONS}: {year!r}, {jurisdiction_id!r}")
     tool = os.path.basename(sys.argv[0]) if sys.argv and sys.argv[0] else "-"
     meta = meta or {}
     usage = meta.get("usage") or {}
@@ -1740,6 +1748,7 @@ def record_cost(started, seconds, model, transport, prompt, system, meta, outcom
         estimated, basis = None, f"price table unreadable: {type(ex).__name__}"
     record = {"timestamp": started.isoformat(timespec="seconds"), "tool": tool,
               "kind": kind or TOOL_KINDS.get(tool, "unknown"), "subject": subject,
+              "year": year, "jurisdiction": jurisdiction_id,
               "model_requested": model, "model_reported": meta.get("model_reported"),
               "transport": meta.get("transport", transport), "prompt_chars": len(prompt), "system_chars": len(system),
               "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),

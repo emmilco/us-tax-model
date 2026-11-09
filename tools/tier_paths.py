@@ -55,6 +55,9 @@ READERS = {
     ("tools/task_row.py", "TASKS-DONE.md"): ("docs", ["bookkeeping_tools"]),
     # --check compares docs/COVERAGE.md with the page it generates from canonical/.
     ("tools/coverage/tree.py", "docs/*"): ("docs", ["coverage_tree"]),
+    # Validates research/costs/agent_runs.jsonl; the quoted component "research" also names research/audits.
+    ("tools/check_agent_runs.py", "research/costs/*"): ("docs", ["check_agent_runs", "check_agent_runs_self_test"]),
+    ("tools/check_agent_runs.py", "research/audits/*"): ("none", "the quoted component is research/costs"),
     # Pinned open-defect survivors must name an open entry.
     ("engine/src/mutate.ts", "BUG_INVENTORY.md"): ("slow", ["mutate", "ny_mutate"]),
     ("tools/coverage/roadmap.py", "TASKS.md"): ("none", "roadmap.py is run by hand, by no check-all step"),

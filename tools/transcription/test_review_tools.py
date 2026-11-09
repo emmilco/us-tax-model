@@ -1685,6 +1685,40 @@ class CostLedger(unittest.TestCase):
         self.assertIsInstance(ok["estimated_cost_usd"], float)
         self.assertTrue(failed["outcome"].startswith("error: RuntimeError"))
 
+    def call(self, **kwargs):
+        with patch.object(T, "RAW", self.temp.name), patch.object(families, "selected_model", return_value="deepseek-flash"), \
+                patch.object(T, "_call_deepseek", return_value=("lines: []", json.loads(json.dumps(self.META)))):
+            T.call_model("PUBLIC", "deepseek-flash", **kwargs)
+
+    def test_every_review_kind_records_the_runs_year_and_jurisdiction(self):
+        for kind in ("transcription", "render", "classm", "completeness", "screen", "false_no", "tables"):
+            self.call(kind=kind, subject="s")
+        rows = self.rows()
+        self.assertEqual([r["kind"] for r in rows], ["transcription", "render", "classm", "completeness", "screen", "false_no", "tables"])
+        for r in rows:
+            self.assertEqual((r["year"], r["jurisdiction"]), (T.YEAR, T.jurisdiction.J))
+            self.assertIsInstance(r["year"], int)
+
+    def test_the_ledger_follows_the_runs_context_and_an_explicit_value_wins(self):
+        with patch.object(T, "YEAR", 2026), patch.object(T.jurisdiction, "J", "ny"):
+            self.call(kind="screen", subject="ny_it201.ask.x")
+        self.call(kind="render", subject="f1040", year=2024, jurisdiction_id="us")
+        ctx, explicit = self.rows()
+        self.assertEqual((ctx["year"], ctx["jurisdiction"]), (2026, "ny"))
+        self.assertEqual((explicit["year"], explicit["jurisdiction"]), (2024, "us"))
+
+    def test_a_bad_year_or_jurisdiction_is_refused_and_the_review_still_returns(self):
+        import datetime
+        now = datetime.datetime.now(datetime.timezone.utc)
+        with patch.object(T, "RAW", self.temp.name):
+            for bad in ({"year": "2025"}, {"year": True}, {"jurisdiction_id": "ca"}):
+                with self.assertRaises(ValueError):
+                    T.record_cost(now, 0.1, "claude-x", "claude-print", "P", "S", {}, "ok", **bad)
+        self.assertFalse(self.ledger.exists())
+        with patch.object(T, "RAW", self.temp.name), contextlib.redirect_stderr(io.StringIO()):
+            self.call(kind="render", subject="x", jurisdiction_id="ca")  # the ledger never loses a review result
+        self.assertFalse(self.ledger.exists())
+
     def test_rejected_options_make_no_ledger_line(self):
         with patch.object(T, "RAW", self.temp.name), patch.object(T, "_call_claude", side_effect=AssertionError("no network")):
             with self.assertRaises(ValueError):
@@ -1736,6 +1770,29 @@ def _ledger_writer(raw, n):
     for _ in range(50):
         T.record_cost(datetime.datetime.now(datetime.timezone.utc), 0.1, "claude-x", "claude-print", "P" * 5000, "S",
                       {"usage": {}, "cost_usd": 0.01}, "ok", "transcription", f"w{n}")
+
+
+class CostSummary(unittest.TestCase):
+    ROWS = [
+        {"subject": "f8962", "kind": "render", "model_requested": "claude-opus-5-5", "estimated_cost_usd": 1.0, "year": 2026, "jurisdiction": "us"},
+        {"subject": "ny_it201", "kind": "render", "model_requested": "claude-opus-5-5", "estimated_cost_usd": 2.0, "year": 2026, "jurisdiction": "ny"},
+        {"subject": "f8962", "kind": "render", "model_requested": "claude-opus-5-5", "estimated_cost_usd": 4.0},
+        {"subject": "classm.ny_it201.3", "kind": "classm", "model_requested": "claude-opus-5-5", "estimated_cost_usd": 8.0},
+        {"subject": "gate:f8889.x", "kind": "false_no", "model_requested": "claude-opus-5-5", "estimated_cost_usd": 16.0},
+        {"subject": None, "kind": "transport-check", "model_requested": "claude-opus-5-5", "estimated_cost_usd": None},
+    ]
+
+    def test_a_row_without_the_fields_is_read_as_2025_and_a_jurisdiction_from_its_subject(self):
+        import costs
+        self.assertEqual([(costs.row_year(r), costs.row_jurisdiction(r)) for r in self.ROWS],
+                         [(2026, "us"), (2026, "ny"), (2025, "us"), (2025, "ny"), (2025, "us"), (2025, "us")])
+
+    def test_summary_breaks_spend_down_by_year_and_jurisdiction(self):
+        import costs
+        groups = costs.summarize(self.ROWS, ["year", "jurisdiction"])
+        self.assertEqual({k: g["estimated_usd"] for k, g in groups.items()},
+                         {("2025", "ny"): 8.0, ("2025", "us"): 20.0, ("2026", "ny"): 2.0, ("2026", "us"): 1.0})
+        self.assertEqual(groups[("2025", "us")]["unpriced"], 1)
 
 
 class SourceCatalog(unittest.TestCase):

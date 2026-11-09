@@ -78,8 +78,8 @@ The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast
   and `engine_differential.{md,json}` as the last full run wrote them; `evidence.md`
   then says that its E column dates from the latest release.
 - **docs**: compile, the build, and the checks that read the bookkeeping paths in
-  `tools/docs_paths.txt` (`check_bug_inventory`, `siblings_check`,
-  `siblings_self_test`, `bookkeeping_tools`, `coverage_tree`, `green_self_test`),
+  `tools/docs_paths.txt` (`check_bug_inventory`, `check_agent_runs`,
+  `check_agent_runs_self_test`, `siblings_check`, `siblings_self_test`, `bookkeeping_tools`, `coverage_tree`, `green_self_test`),
   about 3 minutes, nearly all of it the build.
 
 A full-green tree is also fast- and docs-green, and a fast-green tree is docs-green.

@@ -1,21 +1,46 @@
 #!/usr/bin/env python3
 """Summarize the paid-call cost ledger (.transcription/costs.jsonl, written by transcribe.call_model).
 
-Usage: costs.py [--by day,family,kind,form] [--since YYYY-MM-DD] [--ledger PATH] [--json]
+Usage: costs.py [--by year,jurisdiction,day,family,kind,form,model] [--since YYYY-MM-DD] [--ledger PATH] [--json]
        costs.py --yield [--ledger PATH] [--out PATH]   (cost against rulings and bugs; see review_yield.py)
 
 Each group shows calls, failures, prompt characters, the reported cost (Claude) and the
 estimated cost (prices.json; reported cost where the transport reports one). A call whose
 model has no cited price counts in "unpriced" and adds nothing to the estimate.
+
+Every row written since the ledger gained them carries "year" (int) and "jurisdiction" ("us" or
+"ny"). A row without them predates the fields; for those the reader INFERS year 2025 (the only
+year reviewed then) and the jurisdiction from the subject: New York when any dot- or
+colon-separated part of the subject begins "ny_" (ny_it201, classm.ny_it201.3), else federal.
+The ledger history is not rewritten; the inference is a reading rule, not a recorded fact.
 """
-import argparse, json, os, sys
+import argparse, json, os, re, sys
 from collections import defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import families  # noqa: E402
 import transcribe  # noqa: E402
 
-KEYS = {"day": lambda r: r.get("timestamp", "")[:10],
+LEGACY_YEAR = 2025
+
+
+def row_year(r):
+    """The row's tax year; LEGACY_YEAR (inferred) for a row written before the field existed."""
+    return r["year"] if r.get("year") is not None else LEGACY_YEAR
+
+
+def row_jurisdiction(r):
+    """The row's jurisdiction; inferred from the subject (see the module docstring) for a row written
+    before the field existed."""
+    if r.get("jurisdiction"):
+        return r["jurisdiction"]
+    parts = re.split(r"[.:]", r.get("subject") or "")
+    return "ny" if any(p.startswith("ny_") for p in parts) else "us"
+
+
+KEYS = {"year": lambda r: str(row_year(r)),
+        "jurisdiction": row_jurisdiction,
+        "day": lambda r: r.get("timestamp", "")[:10],
         "family": lambda r: families.family_of(r.get("model_requested") or "-"),
         "kind": lambda r: r.get("kind") or "-",
         "form": lambda r: r.get("subject") or "-",
@@ -54,7 +79,7 @@ def summarize(rows, by):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--by", default="day,family,kind", help="comma-separated: " + ", ".join(KEYS))
+    ap.add_argument("--by", default="year,jurisdiction,family,kind", help="comma-separated: " + ", ".join(KEYS))
     ap.add_argument("--since", help="only calls on or after this UTC date")
     ap.add_argument("--ledger", default=os.path.join(transcribe.RAW, transcribe.LEDGER_NAME))
     ap.add_argument("--json", action="store_true")

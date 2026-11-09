@@ -76,7 +76,9 @@ python3 tools/transcription/transport_check.py [--model deepseek-flash]   # one 
 Every call that reaches a transport (`call_model`, used by transcription,
 render, class M, completeness, screen, false-no, table and transport checks) appends one
 JSON line to `.transcription/costs.jsonl`, success or failure: timestamp,
-tool, kind, subject (form, job, screen or gate), model requested and reported,
+tool, kind, subject (form, job, screen or gate), `year` (integer) and `jurisdiction`
+(`us` or `ny`) of the run (`--year`, `--jurisdiction`; a caller may pass `year` and
+`jurisdiction_id` to `call_model`), model requested and reported,
 transport, prompt and system characters, the prompt's sha256 and the reply's
 (`response_sha256`, the identity a ruling's `run` stamp names), the usage fields as reported,
 `cost_usd` as reported, `estimated_cost_usd` with its `price_basis`, duration
@@ -91,8 +93,13 @@ than a bill when codex runs under a ChatGPT plan. Each price names the page it
 was read from; a model without a cited price is left unpriced.
 
 ```
-python3 tools/transcription/costs.py [--by day,family,kind,form] [--since 2026-11-01] [--json]
+python3 tools/transcription/costs.py [--by year,jurisdiction,day,family,kind,form,model] [--since 2026-11-01] [--json]
 ```
+
+The default grouping is year, jurisdiction, family and kind. A row written before the ledger
+carried `year` and `jurisdiction` is read as year 2025 and, for the jurisdiction, as New York when a
+dot- or colon-separated part of its subject begins `ny_`, else federal. This is an inference
+(the ledger history is not rewritten), made by `costs.py` only when a reader asks.
 
 ## Model families
 

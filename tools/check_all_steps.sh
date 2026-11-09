@@ -35,7 +35,7 @@ while [ "$#" -gt 0 ]; do
 done
 set -- ${args[@]+"${args[@]}"}
 slow_steps=" mutate engine_differential compare ny_compare ny_mutate "
-docs_steps=" compile build check_bug_inventory siblings_check siblings_self_test bookkeeping_tools coverage_tree green_self_test "
+docs_steps=" compile build check_bug_inventory check_agent_runs check_agent_runs_self_test siblings_check siblings_self_test bookkeeping_tools coverage_tree green_self_test "
 case "$tier" in
   full|fast|docs) ;;
   *) echo "check-all: unknown tier '$tier' (full, fast or docs)" >&2; exit 2 ;;
@@ -114,6 +114,8 @@ step check_auto_limits_self_test python3 tools/check_auto_limits.py --self-test 
 step check_source_titles python3 tools/check_source_titles.py "$@"
 step check_source_titles_self_test python3 tools/check_source_titles.py --self-test
 step check_bug_inventory python3 tools/check_bug_inventory.py
+step check_agent_runs python3 tools/check_agent_runs.py
+step check_agent_runs_self_test python3 tools/check_agent_runs.py --self-test
 step review_tools python3 tools/transcription/test_review_tools.py
 step input_context python3 tools/transcription/test_input_context.py
 step rerun_all_tools python3 tools/transcription/test_rerun_all.py
