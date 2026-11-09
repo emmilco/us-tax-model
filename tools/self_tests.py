@@ -54,6 +54,7 @@ TESTS = [
     ("limits_self_test", "code", True, ["python3", "tools/check_limits.py", "--self-test"]),
     ("completeness_self_test", "code", True, ["python3", "tools/transcription/check_completeness.py", "--self-test"]),
     ("ny_predict_self_test", "code", False, ["python3", "tools/ny_predict.py", "--self-test"]),
+    ("review_yield_tests", "code", False, ["python3", "tools/transcription/test_review_yield.py"]),
     # The bookkeeping group: the bookkeeping tools' tests, and the tier classifier's (run by test_green.sh).
     ("bookkeeping_tools", "bookkeeping", False, ["python3", "-m", "unittest", "tools/test_bookkeeping_tools.py"]),
     ("green_self_test", "bookkeeping", False, ["bash", "tools/hooks/test_green.sh"]),

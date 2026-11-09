@@ -210,3 +210,26 @@ the credit formula built from Rev. Proc. 2024-40 section 3.06(1); see
 Completed completeness reviews and claim rulings always require their exact current prompt hash, including foreign refusal context. Legacy never-reviewed debt has a separate local subject: full own canonical form, cited source sections, system instructions and reviewer implementation. A foreign refusal addition alone does not bring that deferred debt due; own arithmetic, wording, source or policy changes do. The original baseline hashes remain intact.
 
 `tools/transcription/migrate_completeness_debt.py CHECKOUT COMMIT` reconstructs historical full prompts from a built historical checkout, verifies authored inputs, reviewer and source manifest against Git, and refuses any baseline mismatch before recording local subjects in `reviews/2025/completeness/rulings.json`. The 2026-11-01 migration used f44bae4801bc36934cfc361bf2d9f8c52884a8bf and independently rebuilt its canonical output. Existing completed reviews are never eligible for this exemption. The normal completeness self-test includes the debt regression tests.
+
+## Scripts run by hand
+
+These scripts are not run by check-all; each is run deliberately, and its own header says how. Every other script
+under `tools/` is named by check-all or by another tool's code (a reference search, not a trace of every call). The table extractors are the yearly ones: at a year's adoption each writes
+that year's table from its archived source, and the check-all step named beside it checks the result.
+
+| Script | What it is for |
+|---|---|
+| `extract_tax_table.py` | The Tax Table from `i1040gi.pdf` into `tables/<year>/tax_table.yaml` (yearly) |
+| `extract_macrs_tables.py` | The MACRS tables of Pub. 946 into `tables/<year>/macrs_gds.yaml` (yearly; checked by `check_macrs_tables.py`) |
+| `extract_class_lives.py` | Pub. 946 Appendix B into `tables/<year>/class_lives.yaml` and its enum file (yearly) |
+| `extract_eic_table.py` | The EIC Table (section above) |
+| `engines/ny_policyengine.py` | The New York differential against PolicyEngine-US, under the engines interpreter (`engines/setup.sh`) |
+| `coverage/estimate.py` | The coverage estimate (spec 2.4), under the engines interpreter with the microdata `coverage/fetch_microdata.sh` downloads once |
+| `coverage/roadmap.py` | `reports/roadmap.html` from the coverage estimate and the open rows of `TASKS.md` |
+| `ny_fixtures.py` | Writes the New York fixtures from `ny_predict.py`'s predictions |
+| `new_bug.py`, `task_row.py` | Append a `BUG_INVENTORY.md` entry; add or update a `TASKS.md` row (tested by `test_bookkeeping_tools.py`) |
+| `ocr_audit.py` | An image-grounded audit of the archived text layers (Tesseract), for a person to adjudicate; not a gate |
+| `extraction/page_review.py` | Local HTML pages of each archived page beside the project's reading of it, for a person to judge |
+| `transcription/migrate_completeness_debt.py` | The completeness-debt migration (section above) |
+| `transcription/migrate_line_subjects.py` | Rewrites transcription logs' line-subject tables (`transcription/README.md`; tested by `test_review_tools.py`) |
+| `human_review/test_browser.mjs`, `../ui/test_browser.mjs` | Browser smoke tests of the review packet and the web UI, against a separately launched headless Chrome |

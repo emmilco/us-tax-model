@@ -62,7 +62,7 @@ READERS = {
     ("engine/src/mutate.ts", "BUG_INVENTORY.md"): ("slow", ["mutate", "ny_mutate"]),
     ("tools/coverage/roadmap.py", "TASKS.md"): ("none", "roadmap.py is run by hand, by no check-all step"),
     ("tools/transcription/review_yield.py", "BUG_INVENTORY.md"):
-        ("none", "review_yield.py runs from costs.py --yield, by no check-all step; its test uses a temporary tree"),
+        ("none", "review_yield.py runs from costs.py --yield; its test (self_tests review_yield_tests) uses a temporary tree"),
     ("tools/transcription/review_yield.py", "research/costs/*"): ("none", "as above"),
     ("tools/transcription/review_yield.py", "research/audits/*"): ("none", "the quoted component is research/costs"),
     ("tools/transcription/test_review_yield.py", "BUG_INVENTORY.md"): ("none", "writes its own inventory in a temporary tree"),

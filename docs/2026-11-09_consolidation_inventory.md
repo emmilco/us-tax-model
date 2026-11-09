@@ -324,6 +324,12 @@ tools READMEs: `structured_text.py`, `test_bookkeeping_tools.py`, `test_consiste
 `transcription/review_yield.py`, `transcription/test_classm_jobs.mjs`, `transcription/test_ny_review.py`,
 `transcription/test_review_yield.py`. All but `test_review_yield.py` are run by check-all or imported.
 
+**Phase 1 (charter section 8, item 6).** Re-searched by name and import over every tracked text file outside the data
+directories: the only scripts named by no tool, engine, UI or hook code are the four the owner kept (`ny_policyengine.py`,
+`extract_macrs_tables.py`, `extract_tax_table.py`, `migrate_completeness_debt.py`); `structural_leaks.mjs` was already removed.
+None retired: every script mentioned only in passing by other code had a clear, current purpose. The scripts run by hand
+are now listed in `tools/README.md` ("Scripts run by hand"), and `test_review_yield.py` runs in check-all (`self_tests`).
+
 ### 4.2 Python reimplementations of evaluator or renderer logic (still present)
 
 | Class | Location | Lines in file | Note |
@@ -472,6 +478,17 @@ single words. `tools/`: Python and shell in snake_case, no hyphenated script nam
 **Languages (tracked, excluding sources, reviews, reports, rendered and fixtures).** TypeScript 12,909 lines in 36 files; Python 31,193 in
 108 files (this includes tool tests and a few files outside `tools/`); `.mjs` 1,964; shell 1,177; Lean 1,933 in 6 files; YAML 86,689 in
 125 files; JSON 189,726 in 906 files; Markdown 41,577 in 766 files.
+
+---
+
+### 6.1 Phase 1 (charter section 6 conventions, item 7)
+
+- **Tests:** every Python `test_*.py` now runs in check-all (`test_review_yield.py` added to `self_tests`). The two
+  browser tests (`.mjs`, a headless Chrome launched by hand) are listed in `tools/README.md` as run by hand.
+- **Engine file names:** all multi-word names in `engine/src` are kebab-case already.
+- **`adapter_contracts/2025/`** holds federal contracts only (`div`, `f4952`), so it is the federal `<kind>/<year>/` form.
+- **Not done, for the owner:** the New York source catalog's name (`tools/sources-ny-2025.json`), the undated name of
+  the confirmed charter, interview file names (the gate lane owns `interview/`), and trimming `HANDOFF-NEXT-SESSION.md`.
 
 ---
 
