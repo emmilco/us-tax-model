@@ -10,7 +10,8 @@ import { createHash } from "node:crypto";
 import { stableStringify } from "./util.js";
 import { loadCanonical } from "./canonical.js";
 import { allTargets, evaluate, multiplyRateHalfUp } from "./eval.js";
-import { loadCases } from "./fixtures.js";
+import type { FixtureCase } from "./fixtures.js";
+import { loadFixtureCases } from "./fixture-inputs.js";
 import { runChecks } from "./check.js";
 import type { CanonicalData, Expr, FormDoc, Line } from "./types.js";
 import { NY_MODE, YEAR } from "./year.js";
@@ -2351,22 +2352,54 @@ const normal = (v: { kind: string; cents?: number; value?: unknown; num?: number
 // those cases, so the kill can be lost unless a stage fixture keeps the case.
 type Outcome = "check" | "fixtures" | `classm:${string}` | "survives";
 
+// The fixture cases mutants are judged by. A case evaluates only the lines it expects (`targets`): a line's value is
+// memoized per line and depends only on the inputs, not on which other lines the same evaluation is asked for (no
+// cycles: the checker rejects them before a mutant is evaluated), so it equals the value a whole-return evaluation
+// gives. That holds for a line the whole-return evaluation names (allTargets). A case that also expects a line it
+// does not name, such as a def instance's line, which exists only where another line reaches it, keeps the
+// whole-return evaluation (`targets` null), so that a mutant that no longer reaches the line still kills the case.
+// Which lines allTargets names depends on the documents' lines, the collections and the case's rosters, none of
+// which a mutant changes, so the baseline decides it for every mutant.
+interface JudgingCases {
+  all: (FixtureCase & { file: string; targets: string[] | null })[];
+  /** The cases other than class M, grouped by file, in file order. */
+  byFile: Map<string, JudgingCases["all"]>;
+  /** The class M cases, in file order: the first that kills a mutant is the one reported. */
+  classm: JudgingCases["all"];
+}
+
+function judgingCases(baseline: CanonicalData): JudgingCases {
+  const all = loadFixtureCases(NY_MODE ? "ny" : "federal", baseline).map((c) => {
+    const expected = Object.keys(c.expect ?? {});
+    const named = new Set(allTargets(baseline, c.inputs));
+    const targets = expected.every((t) => named.has(t)) ? expected : null;
+    return { ...(c as unknown as FixtureCase), file: c.file, targets };
+  });
+  const byFile = new Map<string, JudgingCases["all"]>();
+  for (const c of all) if (c.evidence !== "M") byFile.set(c.file, [...(byFile.get(c.file) ?? []), c]);
+  return { all, byFile, classm: all.filter((c) => c.evidence === "M") };
+}
+
 // What happens to one mutant: the checker rejects it, a fixture value changes, or it survives.
 // Cases other than class M are tried first, so a kill is attributed to class M only when no other case makes it.
-function outcome(baseline: CanonicalData, cases: ReturnType<typeof loadCases>["cases"], m: Mutation): Outcome {
+// Among those, mutation.json (small cases built to kill mutants) goes first, then the file named for the mutant's
+// document; any order gives the same outcome, the first kill only ends the search sooner.
+function outcome(baseline: CanonicalData, cases: JudgingCases, m: Mutation): Outcome {
   const data = cloneData(baseline);
   m.apply(data);
   if (runChecks(data).errors.length > 0) return "check";
-  const kills = (c: (typeof cases)[number]): boolean => {
-    const result = evaluate(data, c.inputs, allTargets(data, c.inputs));
+  const kills = (c: JudgingCases["all"][number]): boolean => {
+    const result = evaluate(data, c.inputs, c.targets ?? allTargets(data, c.inputs));
     for (const [key, expected] of Object.entries(c.expect ?? {})) {
       const der = result.derivations.get(key);
       if (!der || normal(der.value) !== normal(expected)) return true;
     }
     return false;
   };
-  if (cases.some((c) => c.evidence !== "M" && kills(c))) return "fixtures";
-  const classm = cases.find((c) => c.evidence === "M" && kills(c));
+  const first = ["mutation.json", `${m.where.split(".")[0]}.json`];
+  const files = [...new Set([...first, ...cases.byFile.keys()])];
+  if (files.some((f) => (cases.byFile.get(f) ?? []).some(kills))) return "fixtures";
+  const classm = cases.classm.find(kills);
   return classm ? `classm:${classm.id}` : "survives";
 }
 
@@ -2387,7 +2420,7 @@ function mutantsDigest(muts: Mutation[]): string {
 // mutant list so the main thread can confirm every worker split the same list.
 export function mutantShare(index: number, count: number): { digest: string; outcomes: [number, Outcome][] } {
   const baseline = loadCanonical();
-  const cases = loadCases().cases;
+  const cases = judgingCases(baseline);
   const muts = selectMutants(mutations(baseline));
   const outcomes: [number, Outcome][] = [];
   for (let i = index; i < muts.length; i += count) outcomes.push([i, outcome(baseline, cases, muts[i]!)]);
@@ -2401,7 +2434,7 @@ function workerCount(): number {
   return Number.isInteger(set) && set > 0 ? set : defaultWorkers();
 }
 
-async function outcomesOf(baseline: CanonicalData, cases: ReturnType<typeof loadCases>["cases"], muts: Mutation[]): Promise<Outcome[]> {
+async function outcomesOf(baseline: CanonicalData, cases: JudgingCases, muts: Mutation[]): Promise<Outcome[]> {
   const count = workerCount();
   if (count === 1) return muts.map((m) => outcome(baseline, cases, m));
   const digest = mutantsDigest(muts);
@@ -2427,7 +2460,7 @@ const OPEN_DEFECT_SURVIVORS: Record<string, string> = {};
 
 export async function runMutation(): Promise<number> {
   const baseline = loadCanonical();
-  const fixtureFile = loadCases();
+  const fixtureFile = judgingCases(baseline);
 
   // A mismatching baseline must never make every mutant look killed.
   const baselineErrors = runChecks(baseline).errors;
@@ -2435,8 +2468,8 @@ export async function runMutation(): Promise<number> {
     // Every mutant would then be "killed by checker" and the score a vacuous 100% (T-225).
     throw new Error(`mutation baseline has ${baselineErrors.length} check error(s); fix them first: ${baselineErrors.slice(0, 3).join("; ")}`);
   }
-  for (const c of fixtureFile.cases) {
-    const result=evaluate(baseline,c.inputs,allTargets(baseline,c.inputs));
+  for (const c of fixtureFile.all) {
+    const result=evaluate(baseline,c.inputs,c.targets ?? allTargets(baseline,c.inputs));
     for (const [key,expected] of Object.entries(c.expect ?? {})) {
       const actual=result.derivations.get(key)?.value;
       if (!actual || normal(actual)!==normal(expected)) throw new Error(`mutation baseline mismatch: ${c.id} ${key}`);
@@ -2449,7 +2482,7 @@ export async function runMutation(): Promise<number> {
   let killedByCheck = 0;
   let killedByFixtures = 0;
 
-  const outcomes = await outcomesOf(baseline, fixtureFile.cases, muts);
+  const outcomes = await outcomesOf(baseline, fixtureFile, muts);
   muts.forEach((m, i) => {
     if (outcomes[i] === "check") killedByCheck++;
     else if (outcomes[i] === "fixtures") killedByFixtures++;
