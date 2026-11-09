@@ -487,8 +487,11 @@ single words. `tools/`: Python and shell in snake_case, no hyphenated script nam
   browser tests (`.mjs`, a headless Chrome launched by hand) are listed in `tools/README.md` as run by hand.
 - **Engine file names:** all multi-word names in `engine/src` are kebab-case already.
 - **`adapter_contracts/2025/`** holds federal contracts only (`div`, `f4952`), so it is the federal `<kind>/<year>/` form.
-- **Not done, for the owner:** the New York source catalog's name (`tools/sources-ny-2025.json`), the undated name of
-  the confirmed charter, interview file names (the gate lane owns `interview/`), and trimming `HANDOFF-NEXT-SESSION.md`.
+- **Source catalogs** (owner decision): `tools/sources/<year>.json` and `tools/sources/ny/<year>.json`.
+- **Charter** (owner decision): undated, `docs/consolidation_charter.md`. The reference in the append-only
+  `docs/ARGON_CLAUDE_DISCUSSION.md` keeps the old path.
+- **Not done:** interview file names (the gate lane owns `interview/`; after it merges) and trimming
+  `HANDOFF-NEXT-SESSION.md`.
 
 ---
 

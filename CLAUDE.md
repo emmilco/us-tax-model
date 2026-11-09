@@ -6,7 +6,7 @@ facts. Older handoffs (all of `handoffs/` except HARDENING-1, including `HANDOFF
 and `HANDOFF-STAGE-16.md`) are historical. `docs/2026-10-24_validation_policy.md` remains the controlling validation
 amendment: human packets and ruling samples are optional; proceed without waiting for them and preserve
 original verdicts. Reviews are Claude-only (`claude-opus-5-5`): the second review family (DeepSeek, GPT) is
-inactive (owner, 2026-11-09; `docs/2026-11-09_consolidation_charter.md`). Its machinery is kept dormant and no
+inactive (owner, 2026-11-09; `docs/consolidation_charter.md`). Its machinery is kept dormant and no
 second-family runs are made unless the owner reactivates a family. Existing second-family logs are historical. The consolidation charter governs the execution order and the
 verification system.
 
