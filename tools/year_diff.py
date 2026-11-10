@@ -167,7 +167,7 @@ def carriers(year):
     if p.exists():
         for e in yaml.safe_load(p.read_text(encoding="utf-8"))["register"]["entries"]:
             add("ambiguity", e["id"], p, e.get("cite"))
-    p = jurisdiction.interview_dir() / f"questions-{y}.yaml"
+    p = jurisdiction.interview_dir(y) / "questions.yaml"
     if p.exists():
         for q in yaml.safe_load(p.read_text(encoding="utf-8"))["bank"]["questions"]:
             add("question", q["input"], p, q.get("cite"))
@@ -476,7 +476,7 @@ def adopt(from_year, to_year):
     pairs = [(ypath("forms", f), ypath("forms", t)), (ypath("tables", f), ypath("tables", t)),
              (jurisdiction.params_file(f), jurisdiction.params_file(t)),
              (jurisdiction.register_file(f), jurisdiction.register_file(t))]
-    pairs += [(p, p.with_name(p.name.replace(f, t))) for p in sorted((jurisdiction.interview_dir()).glob(f"*{f}.yaml"))]
+    pairs += [(jurisdiction.interview_dir(f), jurisdiction.interview_dir(t))]
     clash = [str(dst.relative_to(ROOT)) for _, dst in pairs if dst.exists()]
     if clash:
         sys.exit("adopt: refusing to overwrite " + ", ".join(clash))

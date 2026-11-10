@@ -1,6 +1,6 @@
 # The New York question bank (decision C5): asked after the federal interview (orders from 1000, above every federal
 # question), residency screens first. Prompts and citations come from the form lines (forms/ny/2025/), as for the
-# federal bank. A New York refusal stops only the New York profile (interview/ny/2025.yaml); the federal profiles
+# federal bank. A New York refusal stops only the New York profile (interview/ny/2025/ny.yaml); the federal profiles
 # are unchanged.
 bank:
   tax_year: 2025

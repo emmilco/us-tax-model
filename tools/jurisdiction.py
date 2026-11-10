@@ -13,7 +13,7 @@ exactly as before, so federal results do not change.
     ypath("reports", "x")   reports/<year>/x         or reports/ny/<year>/x
     params_file()           params/<year>.yaml       or params/ny/<year>.yaml
     register_file()         ambiguities/<year>.yaml  or ambiguities/ny/<year>.yaml
-    interview_dir()         interview/               or interview/ny/
+    interview_dir(year)     interview/<year>/        or interview/ny/<year>/
     catalog()               tools/sources/<year>.json or tools/sources/ny/<year>.json
 """
 
@@ -64,8 +64,8 @@ def register_file(year):
     return ROOT / "ambiguities" / "ny" / f"{year}.yaml" if NY else ROOT / "ambiguities" / f"{year}.yaml"
 
 
-def interview_dir():
-    return ROOT / "interview" / "ny" if NY else ROOT / "interview"
+def interview_dir(year):
+    return (ROOT / "interview" / "ny" if NY else ROOT / "interview") / str(year)
 
 
 def catalog(year):

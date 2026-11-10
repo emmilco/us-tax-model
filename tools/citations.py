@@ -359,7 +359,7 @@ def data_files(year=Y):
     y = str(year)
     files = sorted(glob.glob(str(ypath("forms", y) / "*.yaml"))) + sorted(glob.glob(str(ypath("tables", y) / "*.yaml")))
     files += [str(f) for f in (jurisdiction.params_file(y), jurisdiction.register_file(y)) if f.exists() or not jurisdiction.NY]
-    files += sorted(f for f in glob.glob(str(jurisdiction.interview_dir() / "*.yaml")) if re.search(rf"(^|-){y}\.yaml$", os.path.basename(f)))
+    files += sorted(glob.glob(str(jurisdiction.interview_dir(y) / "*.yaml")))
     return files
 
 

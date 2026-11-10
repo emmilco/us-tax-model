@@ -2,7 +2,7 @@
 
 The interview is a client of the evaluator (`engine/src/interview.ts`): the inputs the
 evaluator finds unknown and reachable on the way to a profile's targets are the questions;
-authored data (`questions-2025.yaml`) supplies their wording and order; an append-only log
+authored data (`2025/questions.yaml`) supplies their wording and order; an append-only log
 supplies the answers. All amounts are integer cents. No data is transmitted.
 
 With dependencies and Lean installed, rebuild and check offline with `npm run check-all`.
@@ -14,10 +14,10 @@ A profile file lists its targets, its initial answers and the inputs it asks; th
 
 | Profile | File | Targets | Scope reported by the CLI |
 |---|---|---|---|
-| default (`social-security`) | `2025.yaml` | Form 1040 line 31 | Social Security credit and supplied Schedule 3 Part II subtotals; not a complete return |
-| `sales` | `sales-2025.yaml` | Form 1040 lines 7a and 16 | securities sales, Schedule D and tax-method selection; AGI and taxable income computed; not a complete return |
-| `stage4` | `stage4-2025.yaml` | `scope.ready`, lines 7a and 16, the Schedule A deduction, Form 4952 line 8, the QBI deduction, Schedule 2 line 21, Form 8959 line 24, Schedule 3 line 1 | form slices with eligibility and valuation screens; not a complete return |
-| `full` | `full-2025.yaml` | `scope.ready`, Form 1040 lines 24, 33, 34 and 37, `f2441.line1_box`, `f2441.line1_paid`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.line32b`, `ira.basis_total` | the whole return: Form 1040 lines 1a–37 end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them); no filing or transmission |
+| default (`social-security`) | `2025/social-security.yaml` | Form 1040 line 31 | Social Security credit and supplied Schedule 3 Part II subtotals; not a complete return |
+| `sales` | `2025/sales.yaml` | Form 1040 lines 7a and 16 | securities sales, Schedule D and tax-method selection; AGI and taxable income computed; not a complete return |
+| `stage4` | `2025/stage4.yaml` | `scope.ready`, lines 7a and 16, the Schedule A deduction, Form 4952 line 8, the QBI deduction, Schedule 2 line 21, Form 8959 line 24, Schedule 3 line 1 | form slices with eligibility and valuation screens; not a complete return |
+| `full` | `2025/full.yaml` | `scope.ready`, Form 1040 lines 24, 33, 34 and 37, `f2441.line1_box`, `f2441.line1_paid`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.line32b`, `ira.basis_total` | the whole return: Form 1040 lines 1a–37 end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them); no filing or transmission |
 
 The default, `sales` and `stage4` profiles fix the person roster to `taxpayer` in their
 initial answers. The `full` profile starts from no answers and asks `$person` first:
@@ -79,7 +79,7 @@ shows the title once), every reference of
 the citation's locator with the quoted words set apart, and the document's id and revision. A
 status line under the tabs shows the return's progress, or its refusal, labelled provisional
 while questions are pending and final once none are, with the refusal's form, remedy, trigger
-and source in a dialog. A refusal whose gate is a consistency check (`conflict_checks-2025.yaml`:
+and source in a dialog. A refusal whose gate is a consistency check (`2025/conflict_checks.yaml`:
 answers that contradict each other or are impossible, such as more family months than eligible
 months) is shown instead as conflicting answers, neither unsupported nor provisional: the
 check's explanation and the answers it reads, each a link that reopens its question, above the
@@ -198,7 +198,7 @@ log and the profile-mismatch error.
 
 ## Question data
 
-Every profile asks its questions from one bank, `questions-2025.yaml`: each entry gives
+Every profile asks its questions from one bank, `2025/questions.yaml`: each entry gives
 an input's `order` and `help`. Its prompt is filled at build from the form line's
 question text, after its collection's frame (for example "For this business — "), and
 its citation from the line (a roster question's from its collection). An entry states a

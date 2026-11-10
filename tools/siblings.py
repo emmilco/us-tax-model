@@ -178,7 +178,7 @@ def anchor_index(docs):
             for key in anchors(line):
                 out.setdefault(key, set()).add(line["id"])
     questions = []
-    for path in sorted((ROOT / "interview").glob(f"questions-{Y}.yaml")):
+    for path in sorted((ROOT / "interview" / Y).glob("questions.yaml")):
         import yaml
         bank = yaml.safe_load(path.read_text(encoding="utf-8"))
         for q in (bank.get("bank") or {}).get("questions") or []:
@@ -229,7 +229,7 @@ def input_ripple(key):
     stem = key.split("[")[0]
     paths = [
         ("forms", ROOT / "forms" / Y),
-        ("interview", ROOT / "interview"),
+        ("interview", ROOT / "interview" / Y),
         ("fixtures", ROOT / "fixtures" / Y),
         ("generator", ROOT / "engine" / "src" / "generate.ts"),
         ("engine cases", ROOT / "tools" / "engines" / "generate_cases.py"),
@@ -280,11 +280,12 @@ def entry_base(bug, head_text):
     else the parent of the commit that added it. The search follows first parents and diffs a merge
     against its first parent, so an entry is attributed to the commit that brought it onto this line
     of history: a merge that renumbered a branch's entries, rather than a branch commit that used the
-    same heading for another entry."""
+    same heading for another entry. It matches the heading line itself (-G anchored at the line start), not the
+    heading's text anywhere, which a later entry may quote."""
     if f"## {bug} " not in head_text:
         return "HEAD"
     out = subprocess.run(["git", "log", "-1", "-s", "--first-parent", "--diff-merges=first-parent",
-                          "--format=%H", "-S", f"## {bug} ", "--",
+                          "--format=%H", "-G", f"^## {bug} ", "--",
                           str(BUGS.relative_to(ROOT))], capture_output=True, text=True, check=False).stdout.strip()
     return f"{out}^" if out else "HEAD"
 

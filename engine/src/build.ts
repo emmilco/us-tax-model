@@ -227,11 +227,14 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   // (`source`), and its citation the line's (a roster question's, its collection's), unless the
   // bank states its own; stating one equal to the derived value is an error, so copies of form
   // data do not creep back into the interview.
-  const bank = (parseYaml(readFileSync(join(ROOT, "interview", `questions-${YEAR}.yaml`), "utf8")) as { bank: QuestionBank }).bank;
+  // Interview data lives in interview/<year>/ (federal) and interview/ny/<year>/ (New York).
+  const INTERVIEW = join(ROOT, "interview", `${YEAR}`);
+  const NY_INTERVIEW = join(ROOT, "interview", "ny", `${YEAR}`);
+  const bank = (parseYaml(readFileSync(join(INTERVIEW, "questions.yaml"), "utf8")) as { bank: QuestionBank }).bank;
   // The New York question bank (decision C5), merged into the federal one: its inputs are New York lines
   // (ids ny_) and rosters ($ny_), asked by the New York profile only.
-  const NY_BANK = join(ROOT, "interview", "ny", `questions-${YEAR}.yaml`);
-  const NY_PROFILE = join(ROOT, "interview", "ny", `${YEAR}.yaml`);
+  const NY_BANK = join(NY_INTERVIEW, "questions.yaml");
+  const NY_PROFILE = join(NY_INTERVIEW, "ny.yaml");
   // "all" in a profile means every federal question, so the federal profiles are unchanged by the New York bank.
   const federalInputs = bank.questions.map((q) => q.input);
   if (existsSync(NY_BANK)) {
@@ -296,13 +299,13 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       ...(q.value_labels ? { value_labels: q.value_labels } : {}) };
   };
   const resolved = new Map(bank.questions.flatMap((q) => { const r = resolveQuestion(q); return r ? [[q.input, r] as const] : []; }));
-  const loadProfile = (file: string, name: string): InterviewData => {
-    const profile = (parseYaml(readFileSync(join(ROOT, "interview", file), "utf8")) as { interview: InterviewProfile }).interview;
+  const loadProfile = (path: string, name: string): InterviewData => {
+    const profile = (parseYaml(readFileSync(path, "utf8")) as { interview: InterviewProfile }).interview;
     const own = profile.questions === "all" ? federalInputs : profile.questions;
-    // questions_from: a profile (in interview/) whose questions come first, as the New York profile takes the
+    // questions_from: a federal profile (in interview/<year>/) whose questions come first, as the New York profile takes the
     // federal full profile's.
     const before = profile.questions_from
-      ? (parseYaml(readFileSync(join(ROOT, "interview", profile.questions_from), "utf8")) as { interview: InterviewProfile }).interview.questions
+      ? (parseYaml(readFileSync(join(INTERVIEW, profile.questions_from), "utf8")) as { interview: InterviewProfile }).interview.questions
       : [];
     const inputs = [...(before === "all" ? federalInputs : before), ...own];
     if (new Set(inputs).size !== inputs.length) errors.push(`${name}: duplicate questions`);
@@ -310,7 +313,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     // targets_from: a profile whose targets come first (the New York profile takes the federal full profile's, so a
     // refused federal return refuses it too).
     const targetsBefore = profile.targets_from
-      ? (parseYaml(readFileSync(join(ROOT, "interview", profile.targets_from), "utf8")) as { interview: InterviewProfile }).interview.targets
+      ? (parseYaml(readFileSync(join(INTERVIEW, profile.targets_from), "utf8")) as { interview: InterviewProfile }).interview.targets
       : [];
     return {
       tax_year: profile.tax_year, targets: [...targetsBefore, ...profile.targets], initial: profile.initial,
@@ -318,22 +321,22 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       questions: inputs.flatMap((input) => resolved.get(input) ?? []),
     };
   };
-  const interview = loadProfile(`${YEAR}.yaml`, "interview");
-  const salesInterview = loadProfile(`sales-${YEAR}.yaml`, "sales interview");
-  const stage4Interview = loadProfile(`stage4-${YEAR}.yaml`, "Stage 4 interview");
-  const fullInterview = loadProfile(`full-${YEAR}.yaml`, "full interview");
-  const nyInterview = existsSync(NY_PROFILE) ? loadProfile(join("ny", `${YEAR}.yaml`), "New York interview") : null;
+  const interview = loadProfile(join(INTERVIEW, "social-security.yaml"), "interview");
+  const salesInterview = loadProfile(join(INTERVIEW, "sales.yaml"), "sales interview");
+  const stage4Interview = loadProfile(join(INTERVIEW, "stage4.yaml"), "Stage 4 interview");
+  const fullInterview = loadProfile(join(INTERVIEW, "full.yaml"), "full interview");
+  const nyInterview = existsSync(NY_PROFILE) ? loadProfile(NY_PROFILE, "New York interview") : null;
   // The refusal gates that are consistency checks, each with the explanation the web UI shows for its conflict
   // (presentation only). Every key must be a gate line: a line that some line's `refuses` names in `when`.
-  const CONFLICTS = join(ROOT, "interview", `conflict_checks-${YEAR}.yaml`);
+  const CONFLICTS = join(INTERVIEW, "conflict_checks.yaml");
   const conflictChecks = existsSync(CONFLICTS)
     ? parseYaml(readFileSync(CONFLICTS, "utf8")) as { tax_year: number; conflicts: Record<string, string> }
     : null;
   if (conflictChecks) {
     const gateLines = new Set([...forms, ...defs].flatMap((d) => d.lines.flatMap((l) => (l.refuses ?? []).map((r) => r.when))));
-    if (!conflictChecks.conflicts || typeof conflictChecks.conflicts !== "object") errors.push(`conflict_checks-${YEAR}.yaml: no conflicts map`);
+    if (!conflictChecks.conflicts || typeof conflictChecks.conflicts !== "object") errors.push(`interview/${YEAR}/conflict_checks.yaml: no conflicts map`);
     for (const [gate, text] of Object.entries(conflictChecks.conflicts ?? {})) {
-      const where = `conflict_checks-${YEAR}.yaml: ${gate}`;
+      const where = `interview/${YEAR}/conflict_checks.yaml: ${gate}`;
       if (!gateLines.has(gate)) errors.push(`${where}: not a refusal gate (no line's refuses names it)`);
       if (typeof text !== "string" || text.trim() === "" || text.includes("\n")) errors.push(`${where}: the explanation must be one non-empty paragraph`);
       else if (/cannot prepare|outside this tool|not supported/i.test(text)) errors.push(`${where}: the explanation of a conflict must not describe it as unsupported`);

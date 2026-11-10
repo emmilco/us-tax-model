@@ -13,8 +13,8 @@ interview:
     doc: ny_it201i
     locator: 'p. 3, New York State full-year residents: Who must file?, "You must file a New York State resident
       return if you meet any of the following conditions:"'
-  questions_from: full-2025.yaml
-  targets_from: full-2025.yaml
+  questions_from: full.yaml
+  targets_from: full.yaml
   questions:
   - ny_it201.ask.state_resident
   - ny_it201.ask.city_resident

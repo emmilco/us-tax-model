@@ -7,7 +7,7 @@
 //   GET  /api/returns/:name           the return's state; each question carries `forms`, the forms its prompt and
 //                                     help name that the catalogs hold, with designation, title and purpose; and
 //                                     `conflicts`, each refusal whose gate is a consistency check
-//                                     (interview/conflict_checks-<year>.yaml) with its explanation and the answers and
+//                                     (interview/<year>/conflict_checks.yaml) with its explanation and the answers and
 //                                     figures the gate reads
 //   POST /api/returns/:name/answer {input, value[, labels]}
 //                                     (labels: a roster answer's label for each entry key, kept in the log)
@@ -89,7 +89,7 @@ export function questionForms(config: InterviewData, forms: FormEntry[]): Map<st
 }
 
 /** The refusal gates that are consistency checks, by gate line, each with its explanation
- * (interview/conflict_checks-<year>.yaml, checked and written by the build); empty when the build wrote none. */
+ * (interview/<year>/conflict_checks.yaml, checked and written by the build); empty when the build wrote none. */
 export function loadConflicts(dir: string = CANON_DIR): Record<string, string> {
   const path = join(dir, "conflicts.json");
   return existsSync(path) ? (JSON.parse(readFileSync(path, "utf8")) as { conflicts: Record<string, string> }).conflicts : {};

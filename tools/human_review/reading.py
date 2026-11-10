@@ -99,7 +99,7 @@ class Canon:
         source_params = yaml.safe_load((ROOT / "params" / f"{Y}.yaml").read_text(encoding="utf-8"))["params"]
         if without_snapshot(source_params) != without_snapshot(self.params):
             raise ValueError("canonical parameters are stale; run npm run build before opening a packet")
-        bank = yaml.safe_load((ROOT / "interview" / f"questions-{Y}.yaml").read_text(encoding="utf-8"))
+        bank = yaml.safe_load((ROOT / "interview" / str(Y) / "questions.yaml").read_text(encoding="utf-8"))
         self.frames = (bank.get("bank") or {}).get("frames", {})
         self.readers = {}
         for lid, l in self.lines.items():

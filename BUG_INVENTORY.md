@@ -6712,3 +6712,12 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Witness (executed):** `git log -1 --format=%H -S "## BUG-0492 " -- BUG_INVENTORY.md` prints nothing; with `-m` it prints `b9c5b37d`.
 - **Disposition:** fixed. `entry_base` searches with `--first-parent --diff-merges=first-parent`, so an entry is attributed to the commit that brought it onto this line of history; BUG-0492 and BUG-0493 resolve to `b9c5b37d`, BUG-0482 to BUG-0486 to `62c47c07` (the old search had matched the branches' differently numbered entries of the same heading), older entries as before. The renumbered entries in the inventory are the regression case of `siblings.py --self-test` and `--check`. The cause was renumbering entries inside a merge commit; when merging, renumber in a commit of their own on the branch first.
 - **Tags:** tooling; check-all; merge; fixed
+
+## BUG-0496 — siblings.py attributed a fix entry to a later entry that quotes its heading
+
+- **Date:** 2026-11-10
+- **Caught by:** siblings_check failing on main at 96ef8a7b, found while renaming the interview files.
+- **Source:** `entry_base` (tools/siblings.py) found the commit that added an entry with `git log -S "## BUG-NNNN "`, which counts the string anywhere. BUG-0495's body quotes `-S "## BUG-0492 "`, so the commit that added BUG-0495 changed that count and the search attributed BUG-0492 to it, measuring its sibling refresh from the wrong base.
+- **Symptom:** `siblings.py --check` failed on main from 96ef8a7b: "BUG-0492: no review log changed since 96ef8a7b^ for sibling form(s): dependent, household, ny_it201, s1a, sd".
+- **Disposition:** fixed: the search matches the heading line, `-G "^## BUG-NNNN "` (with BUG-0495's `--first-parent --diff-merges=first-parent`). BUG-0492 resolves to b9c5b37d again; BUG-0482, BUG-0471, BUG-0494 and older entries as before. siblings.py --check and --self-test pass.
+- **Tags:** tooling; check-all; siblings; fixed

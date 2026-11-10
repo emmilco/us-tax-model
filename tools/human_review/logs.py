@@ -44,7 +44,7 @@ def review_subject(rec):
     ids = [rec["id"], *rec["helpers"], *rec["leaves"]]
     forms = {c.form_of[lid] for lid in ids if lid in c.form_of}
     paths = [ROOT / "forms" / packet.Y / f"{fid}.yaml" for fid in sorted(forms)]
-    paths += [ROOT / "params" / f"{packet.Y}.yaml", ROOT / "interview" / f"questions-{packet.Y}.yaml"]
+    paths += [ROOT / "params" / f"{packet.Y}.yaml", ROOT / "interview" / str(packet.Y) / "questions.yaml"]
     if rec["form"] == "tax_table":
         paths.append(ROOT / "tables" / packet.Y / "tax_table.yaml")
     paths += [packet.HERE / f for f in ("reading.py", "packet.py", "pages.py", "logs.py", "steps.py")]
