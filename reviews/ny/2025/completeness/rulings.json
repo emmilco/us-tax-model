@@ -23,14 +23,26 @@
   "unruled:ny_it201#1": {
    "class": "real gap",
    "bug": "BUG-0424",
-   "evidence": "ny_it201i pp. 5-6, Item A, filing status 3: \"You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown ...\" and \"your spouse refuses to sign a joint New York return\". As the earlier ny_it201#1 ruling (the same situation; this claim adds the item H note): a filer on a joint federal return who must file separately for New York is not asked about and not refused; the New York return follows the federal status. Rare; low; BUG-0424.",
-   "prompt_sha": "a11c6e2145c1393c952532b8d8d9ee0d9d72d15aaf89a0449f1a2dacb647d4ed"
+   "evidence": "ny_it201i pp. 5-6, Item A, filing status 3: \"You are unable to file a joint New York return because: - the address or whereabouts of your spouse is unknown ...\" and \"your spouse refuses to sign a joint New York return\". As the earlier ny_it201#1 ruling: a filer on a joint federal return who must file separately for New York is not asked about and not refused; the New York return follows the federal status. The spouse-residency gate (ny_it201.gate.spouse_nonresident), now a choice on the filing status, is unchanged in meaning. Rare; low; BUG-0424.",
+   "prompt_sha": "97d0adf5c2125e5cbb3eab730409bc8cc25e45be27b3ac2b4e7111a0579bd97c"
   },
   "unruled:ny_it201#2": {
    "class": "wrong",
-   "evidence": "ny_it201i p. 11, Lines 37 and 38: \"If line 36 is more than line 35, leave line 37 and line 38 blank.\" ny_it201.line37 is subtract_floor0 of line 35 and line 36 (type NonNegDollars), so it is zero, never negative, when the dependent exemptions exceed line 35, and its note reads the blank as zero; line 38 copies it. The claim's negative flow to lines 38, 47 and 69a does not occur.",
-   "prompt_sha": "a11c6e2145c1393c952532b8d8d9ee0d9d72d15aaf89a0449f1a2dacb647d4ed",
+   "evidence": "ny_it201i p. 11, Lines 37 and 38: \"If line 36 is more than line 35, leave line 37 and line 38 blank.\" ny_it201.line37 is subtract_floor0 of line 35 and line 36 (type NonNegDollars), so it is zero, never negative, when the dependent exemptions exceed line 35, and its note reads the blank as zero; line 38 copies it. The claim's negative flow to lines 38, 47 and 69a does not occur. [Restamped unchanged from the ruling of earlier claim #2 under prompt_sha a11c6e21: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "97d0adf5c2125e5cbb3eab730409bc8cc25e45be27b3ac2b4e7111a0579bd97c",
    "line": "ny_it201.line37"
+  },
+  "unruled:ny_it201#3": {
+   "class": "wrong",
+   "line": "ny_it201.line69a",
+   "evidence": "ny_it201i p. 20, Line 69a: \"If you ... marked Yes at item C ... you do not qualify to claim this credit.\" ny_it201.line69a is a choice on ny_it201.item_c: Yes takes ny_it201.zero_stc ($0), No takes the rate reduction amount (ny_it201.stc_rr); its $500,000 refusal gate (ny_it201.gate.stc_rr_income) applies only with item C No. The item C rule the claim says is missing is the line's first guard.",
+   "prompt_sha": "97d0adf5c2125e5cbb3eab730409bc8cc25e45be27b3ac2b4e7111a0579bd97c"
+  },
+  "unruled:ny_it201#4": {
+   "class": "real gap",
+   "bug": "BUG-0481",
+   "evidence": "ny_it201i p. 18, Line 59: \"You may not use this line to report: ... any unpaid sales and use tax on motor vehicles, trailers, all-terrain vehicles, vessels, or snowmobiles. This tax is paid directly to the Department of Motor Vehicles (DMV).\" ny_it201.ask.owes_use_tax has no exclusion for tax paid to the DMV, so a filer whose only unpaid use tax is on such a vehicle under $1,000 answers Yes and gets a chart amount on line 59. The business-purchase part of the claim is covered: ny_it201.ask.use_tax_st141 names purchases for a business and is refused (Form ST-141). Low; BUG-0481.",
+   "prompt_sha": "97d0adf5c2125e5cbb3eab730409bc8cc25e45be27b3ac2b4e7111a0579bd97c"
   }
  }
 }

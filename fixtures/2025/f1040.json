@@ -768,7 +768,7 @@
         "f1040.line27a"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Mutation-equivalence second reading (kills refusal.eic.eic.step1_resident.0), predicted from the archived i1040gi before recording: as stage9.eic.refuse.other_income but with the Schedule 1 screen left unanswered, the state the interview is in when it stops at the other-income refusal (the scope screens share one order and are asked by key). AGI is then unknown, so Step 1 question 1 cannot be answered, but the other-income screen (which covers nonresident alien status, Step 1 question 4, p. 40) is answered Yes: the EIC refuses on it (a refusal outranks an unknown, spec 4.7.2), so lines 27a and 27c carry the Step 1 question 4 refusal rather than a $0 credit.",
+      "evidence_note": "Mutation-equivalence second reading (kills refusal.eic.eic.step1_resident.0), predicted from the archived i1040gi before recording: as stage9.eic.refuse.other_income but with the Schedule 1 screen left unanswered, the state the interview is in when it stops at the other-income refusal (the scope screens share one order and are asked by key). AGI is then unknown, so Step 1 question 1 cannot be answered, but the other-income screen (which covers nonresident alien status, Step 1 question 4, p. 40) is answered Yes: the EIC refuses on it (a refusal outranks an unknown, spec 4.7.2), so line 27c carries the Step 1 question 4 refusal rather than a $0 credit (through the Worksheet B line 5 test, whose steps are a conjunction). Line 27a is unknown: the EIC steps are a chain in the flow chart's order, and Step 1, question 1 waits on AGI, which waits on the Schedule 1 screen.",
       "inputs": {
         "scope.other_income": true,
         "$w2@person[taxpayer]": [
@@ -782,17 +782,9 @@
       },
       "expect": {
         "f1040.line27a": {
-          "kind": "refusal",
-          "gate": "scope.other_income",
-          "form": "Nonresident aliens (EIC, Step 1, question 4)",
-          "remedy": "Nonresident and dual-status treatment is outside this tool.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "p. 40, Step 1, question 4; p. 44, Nonresident aliens",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "unknown",
+          "reason": "no input supplied for scope.schedule1",
+          "input": "scope.schedule1"
         },
         "f1040.line27c": {
           "kind": "refusal",

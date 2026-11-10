@@ -291,6 +291,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Form 4952 is used and must be filed (for an election, or to claim interest when the exception does not apply)
       = false
       cite: [f4952] p. 3, Who Must File, "you must file Form 4952 to claim a deduction for your investment interest expense" and "Exception. You don’t have to file Form 4952 if all of the following apply" (2025; created 2025-05-28; 5113c166)
+      note: taken: {"eq":["f4952.used",{"const":true}],"op":"test"}
 
 == Form 8959 — Additional Medicare Tax on wages and self-employment income ==
   (helper) Any church employee income or other self-employment income outside Schedule SE as this tool prepares it, RRTA compensation, tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137), Form 8919 wages, uncollected Medicare tax in Form W-2 box 12 (codes B or N), or Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)?
@@ -923,6 +924,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i5329] p. 8, Line 47, "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12)." (2025; aec3d325)
       note: confirmed roster $f8889@person[taxpayer]:
+  (helper) Your spouse's entry, if your spouse was born before January 2, 1961, and has a valid SSN
+      = false
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.role",{"const":"taxpayer"}],"op":"test"}
 
 == Form 5329, Additional Taxes on Qualified Plans (Including IRAs) and Other Tax-Favored Accounts (Parts I and VII), one per person — person[taxpayer].f5329[form] ==
   1   Early distributions includible in income
@@ -2120,10 +2125,12 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s1a.line21: chose $0 (guard 0)
   s1a.line30: chose $0 (guard 0)
   s1a.line36a: chose $0 (guard 0)
+  person[taxpayer].spouse_senior_work_ssn: chose false (guard 0)
   s1a.line36b: chose $0 (guard 0)
   qbi.deduction: chose $0 (guard 0)
   sd.line18: chose $0 (guard 0)
   sd.line19: chose $0 (guard 0)
+  f4952.required: chose false (guard 0)
   qdcg.line3: chose $10,000 (guard 0)
   root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.single.result: chose $68,947.25 (guard 3)
       not taken: guard 0 = false
@@ -2394,7 +2401,8 @@ Derivations:
   sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
   sa.age65: test(sa.age65_count = 0; 0 = 0)
   s1a.line36a: choose(sa.age65 = false; false = false; s1a.zero = $0)
-  s1a.spouse_senior_count: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
+  person[taxpayer].spouse_senior_work_ssn: choose(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].no = false)
+  s1a.spouse_senior_count: sum_over(person[taxpayer].spouse_senior_work_ssn = false; true = true)
   s1a.spouse_senior: test(s1a.spouse_senior_count = 0; 0 = 0)
   s1a.line36b: choose(s1a.spouse_senior = false; false = false; s1a.zero = $0)
   s1a.line37: sum(s1a.line36a = $0; s1a.line36b = $0)
@@ -2452,7 +2460,7 @@ Derivations:
   sd.line19: choose(sd.line17 = true; true = true; u1250.line18 = $0)
   f4952.exception: test(f4952.line4c = $10,000; f4952.line1_if_interest = $1,000; f4952.line5 = $0; 0 = $0; f4952.carryover_if_interest = false; false = false)
   f4952.required_test: test(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line3 = $1,000; 0 = $0; f4952.exception = true; false = false)
-  f4952.required: test(f4952.used = true; true = true; f4952.required_test = false; true = true)
+  f4952.required: choose(f4952.used = true; true = true; f4952.required_test = false)
   sd.filing4952: copy(f4952.required = false)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = true; true = true; sd.line17 = true; true = true; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0; sd.filing4952 = false; true = true)
   qdcg.line1: copy(f1040.line15 = $294,000)

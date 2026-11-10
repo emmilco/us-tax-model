@@ -5,7 +5,7 @@
  "base": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
  "head_rows": {
   "agree / disagree / missing": "83 / 84 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,10 +23,10 @@
   },
   {
    "key": "1",
-   "record": "d1dc4a59e84993d53d00029dab04b7bc1e1528cf45ee696041afc1b13ae00ae1",
+   "record": "9603abe26187d2610d2d51bb911736f03de60e6c6ac52cacaf55a01cf57d2ca0",
    "status": "DISAGREE",
-   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" R4 reran this line because its refusals read ny_it201.ask.state_resident, restructured into a question and a list (no word lost). The line-scoped request gave only the pages the line and its refusals cite (IT-201-I pp. 3-5, 13-14, 30-31; line 1 cites only the form page), so neither the p. 7 instruction nor federal Form 1040 line 1z was in the request, and the reply entered a zero stand-in, which its note says is not a computation; it differs wherever there are wages (35 value differences, all on refused records; on the federal fixtures, which carry no New York answers, the project is unknown or refuses at the residency gates). The project's line follows p. 7, rounded by amb.ny.2025.whole_dollars, as the prior ruling. executable-triage-v2 on this pass's reply (`.transcription/ny_it201.lines-6b86b273ff34.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 40 partial records; 2,178 comparisons): 0 of 2,178 agree; differences on returns the full interview completes: 120 project-refuses, 244 project-unknown; no completed-return value difference. Project stands; the citation gap is BUG-0439.",
-   "subject_key": "6b3c7994dfc2ccff77921a5f9452d19feb4deb328210695791d70011fb0729b5"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies f1040.line1z in cents, the same reference otherwise (IT-201-I p. 7, Lines 1 through 19, \"The amount entered on line 1 ... should be the same as the amount reported on federal Form 1040, line 1z\"). This pass reran the line because its third refusal gate, ny_it201.gate.spouse_nonresident, became a choice on the filing status (BUG-0466/0471 follow-up, T-264; the same conjunction in operand order); the reply's note puts the same whole-return refusals on the line. The line-scoped request gave only the pages the line and its refusals cite (an interface gap of the review, as ruled before: the p. 7 instruction and the federal line were not in its catalog). executable-triage-v2 (.transcription/triage/ny/2025/ny_it201.json): 20 of 2,287 comparisons agree; differences: 35 value (cents against whole dollars, generated returns), 497 project-refuses and 1,718 project-unknown (the project's residency and scope gates on records without the New York answers, the federal fixtures among them), 17 candidate-refuses (other forms' refusals reached through Form 1040 line 1z). Project stands.",
+   "subject_key": "97418f490f9b03eca0cdadf6c4a19d70ec46b6446a134bc4e63373481d1f7ba8"
   },
   {
    "key": "2",
@@ -1098,7 +1098,7 @@
  "subjects": {
   "C": "ec3d44ebace17d5b01c6e4e6c3fbc9045203535db2e6545ad6d3250167378a8b",
   "H (count)": "c775556cf6baebf885155f3e0e760fff74624401c1c24b030e770258031b62a5",
-  "1": "2e68d97efd58ec2f0398cec4d680d134b85e779f056cae9ea05e011a9f7506f1",
+  "1": "7b338bee14b842e9bfc6273e7a410753225616680a56fb5bf5a479bf3e8b31ba",
   "2": "0ab699890c51786638b6f0c1b93f2c9a51e56b9ec03cfab26033df0c734de77c",
   "3": "69f377530fe78842ed6435d2451a374c955c9ac4c0f217290631c73ceb170a92",
   "4": "f5190222dc5ddab58aa5d89b74a4dc3d317370884faacfd2008a57428b329152",

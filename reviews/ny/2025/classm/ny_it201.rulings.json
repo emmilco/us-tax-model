@@ -51,6 +51,30 @@
   },
   {
    "case": "classm.ny_it201.1",
+   "printed": "(69a) (ny_it201.stc_rr)",
+   "project": "$75.00",
+   "model": "$75.02",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $75.02 (MFJ table, over 21,600) is the same computation kept in cents; the project's $75.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "583a6c75330b28a81ca34dd90ccd193099d719202b4302a308247ed2b87a5d12",
+   "subject_key": "3427390f30144340c81e85f7958ffa68e3f0ed84a35810af3f17851ae5bdf97d"
+  },
+  {
+   "case": "classm.ny_it201.1",
+   "printed": "(69a) (ny_it201.stc_rr_excess_product)",
+   "project": "$38.00",
+   "model": "$38.02",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $38.02 (16,675 x 0.00228) is the same computation kept in cents; the project's $38.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "583a6c75330b28a81ca34dd90ccd193099d719202b4302a308247ed2b87a5d12",
+   "subject_key": "06d0d2e4fd5485610cd500fe294cc3e6f45ae05052fdbc5abe2db62b095fb7ca"
+  },
+  {
+   "case": "classm.ny_it201.1",
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$46.00",
    "model": "$45.60",
@@ -75,6 +99,18 @@
   },
   {
    "case": "classm.ny_it201.1",
+   "printed": "(69a) (ny_it201.stc_rr_high)",
+   "project": "$75.00",
+   "model": "$75.02",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $75.02 (37 + 38.02) is the same computation kept in cents; the project's $75.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "583a6c75330b28a81ca34dd90ccd193099d719202b4302a308247ed2b87a5d12",
+   "subject_key": "e703f3e437fcd4d800acbb23e5c2ea1654ea6c09196a69ca357d5f7385df6365"
+  },
+  {
+   "case": "classm.ny_it201.1",
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$55.00",
    "model": "$54.72",
@@ -96,6 +132,30 @@
    "date": "2026-11-09",
    "run": "7580dfc6182125fb11baf84ba4a731124e616c196255856c98a568b06bc635a4",
    "subject_key": "c3f41a4233234d9ca8453e8195a92311e3bef1adcb267cffe46b30e89db693c2"
+  },
+  {
+   "case": "classm.ny_it201.1",
+   "printed": "(chart) (ny_it201.sut.top)",
+   "project": "$10.00",
+   "model": "$9.51",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $9.51 (Smaller of 9.51 or 125) is the same computation kept in cents; the project's $10.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "583a6c75330b28a81ca34dd90ccd193099d719202b4302a308247ed2b87a5d12",
+   "subject_key": "52b5e4e4ce58760cc3b9d062ce2db137f92375f199bd56f8783e18ededeece62"
+  },
+  {
+   "case": "classm.ny_it201.1",
+   "printed": "(chart) (ny_it201.sut.top_product)",
+   "project": "$10.00",
+   "model": "$9.51",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $9.51 (54,325 x 0.000175) is the same computation kept in cents; the project's $10.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "583a6c75330b28a81ca34dd90ccd193099d719202b4302a308247ed2b87a5d12",
+   "subject_key": "667da8c3af681f0fa2b34321eb2b883e78ee705666ab0e514a1ee41839842c63"
   },
   {
    "case": "classm.ny_it201.1",
@@ -232,6 +292,18 @@
   {
    "case": "classm.ny_it201.2",
    "printed": "(39) (ny_it201.tax_low)",
+   "project": "$1,866.00",
+   "model": "$1,865.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $36900, less than $36950, column single: $1866. The amount is $36,900 (agreed on both sides). The model gave $1,865.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "7ad63d201c361c0c1a2574c2fb6e8641630d5423448ab2ebcdee82f69fa5bdde"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "(39) (ny_it201.tax_low)",
    "project": "$665.00",
    "model": "$666.00",
    "ruling": "Ruling: model error; the 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables), the row \"At least 16,600 But less than 16,650\", column \"Married filing jointly\": $665. The amount is $16,638 (agreed on both sides). The model gave $666.00, which is the rate schedule applied to $16,638 itself (the amount the case gives as the rate-schedule helper), not the table row; the table rows step in $50 bands, so the two differ by a dollar here. IT-201-I (web edition), Line 39: \"If Yes, find your New York State tax using the 2025 New York State Tax Table (visit www.tax.ny.gov and search: table); or if line 38 is $65,000 or more, use the New York State tax rate schedule below.\" The table's own example: \"Their taxable income on line 38 is $38,275. First, they find the 38,250 - 38,300 income line. ... The amount shown ... is $1,773.\" Line 33 is $107,688, more than $107,650, so this return takes the tax computation worksheet and the helper is off its route; its value is still the table row. Recomputed from the archived table, not from the engine. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.)",
@@ -240,6 +312,18 @@
    "date": "2026-11-07",
    "run": "04086f4ce1bc4c9b7c02c23e557510729b393e148e07a4e26795133928c44782",
    "subject_key": "e94d3377657bb7b8bbbc93a38f99b38ba94df9fee0b6fae036a572aa6f2a3c50"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "(39) (ny_it201.tax_table)",
+   "project": "$1,866.00",
+   "model": "$1,865.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $36900, less than $36950, column single: $1866. The amount is $36,900 (agreed on both sides). The model gave $1,865.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "c53472f47e2d5618005569f5b77deb74b07b7039480a581df0c3740aa1427afd"
   },
   {
    "case": "classm.ny_it201.2",
@@ -255,6 +339,17 @@
   },
   {
    "case": "classm.ny_it201.2",
+   "printed": "(47a)",
+   "project": "$1,313.00",
+   "model": "$1,312.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_city_tax_table.yaml), the row at least $36900, less than $36950, column single: $1313. The amount is $36,900 (agreed on both sides). The model gave $1,312.00, the case's given amount for another helper that shares the printed marker (47a) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027"
+  },
+  {
+   "case": "classm.ny_it201.2",
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$28.00",
    "model": "$28.45",
@@ -267,6 +362,42 @@
   },
   {
    "case": "classm.ny_it201.2",
+   "printed": "(69a) (ny_it201.stc_rr)",
+   "project": "$78.00",
+   "model": "$77.77",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $77.77 (Single, taxable income over 12000) is the same computation kept in cents; the project's $78.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "3427390f30144340c81e85f7958ffa68e3f0ed84a35810af3f17851ae5bdf97d"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "(69a) (ny_it201.stc_rr_excess_product)",
+   "project": "$57.00",
+   "model": "$56.77",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $56.77 (24900 x 0.00228) is the same computation kept in cents; the project's $57.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "06d0d2e4fd5485610cd500fe294cc3e6f45ae05052fdbc5abe2db62b095fb7ca"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "(69a) (ny_it201.stc_rr_high)",
+   "project": "$78.00",
+   "model": "$77.77",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $77.77 (21 + 56.77) is the same computation kept in cents; the project's $78.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "e703f3e437fcd4d800acbb23e5c2ea1654ea6c09196a69ca357d5f7385df6365"
+  },
+  {
+   "case": "classm.ny_it201.2",
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$28.00",
    "model": "$28.45",
@@ -276,6 +407,18 @@
    "date": "2026-11-09",
    "run": "69ea64fd843b37fc213e760add76ec1e3af73583f2a35a549682204776a9de44",
    "subject_key": "fad51d9280209a074f9e9db73be1c7460bbebb68fe7868e787b27dfe63b4d0c3"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "(80)",
+   "project": "$3,179.00",
+   "model": "$3,177.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"3177 - 0\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $3,179.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "d70679d116fb3d7f2c226a2afbda8e9f2e711e0aa7ff318d29de66c798333c95"
   },
   {
    "case": "classm.ny_it201.2",
@@ -300,6 +443,150 @@
    "date": "2026-11-09",
    "run": "69ea64fd843b37fc213e760add76ec1e3af73583f2a35a549682204776a9de44",
    "subject_key": "47a257fa768a47c9dd094e063be6607c197ffdee9eee106ddc83d6d59bad83ae"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "(table) (ny_it201.std_deduction)",
+   "project": "$8,000.00",
+   "model": "$3,100.00",
+   "ruling": "Ruling: representation; project retained. The helper ny_it201.std_deduction is the standard deduction table's row for the filing status alone (\"Single and you marked item C No | $8,000\"); the item C Yes row (\"Single and you marked item C Yes | $3,100\") is the separate helper ny_it201.std_deduction_dependent, and line 34 takes it (IT-201-I web edition, New York State standard deduction table). The model put line 34's amount in the status helper, as ruled on this line in earlier rounds. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "47af3ca1fa78ae1d7b02512624a9ac52168068371e0e087b1663e1fc41079fd3"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "39",
+   "project": "$1,866.00",
+   "model": "$1,865.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $36900, less than $36950, column single: $1866. The amount is $36,900 (agreed on both sides). The model gave $1,865.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "59e5031b8d8807d50b7c1509f7f6e88c502c99cb5c465882ce8d72f0d409817a"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "44",
+   "project": "$1,866.00",
+   "model": "$1,865.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1865 - 0\") is the form's, but it starts from its table errors on line 39, each ruled model error in this case; with the table amounts the line is the project's $1,866.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "a1ac589ac34b73ca06258030dfb0a2f0cd8d0bbe478beab5851460e56335b6b4"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "46",
+   "project": "$1,866.00",
+   "model": "$1,865.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1865 + 0\") is the form's, but it starts from its table errors on line 39, each ruled model error in this case; with the table amounts the line is the project's $1,866.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "95e1f48bc36e92caa7b3a4e47147327832919f92af52af27a270e87178762767"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "47a",
+   "project": "$1,313.00",
+   "model": "$1,312.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_city_tax_table.yaml), the row at least $36900, less than $36950, column single: $1313. The amount is $36,900 (agreed on both sides). The model gave $1,312.00, the case's given amount for another helper that shares the printed marker (47a) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "ba50bb7cebdf4b1ce758ed27d5de7ac5ac9eaeca3cab9dcc1271bd67cae5247c"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "49",
+   "project": "$1,313.00",
+   "model": "$1,312.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1312 - 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $1,313.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "34c59e3f400ca7b06694a6774c156b3445998512ee249ecb4867a64b76af9bb0"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "52",
+   "project": "$1,313.00",
+   "model": "$1,312.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1312 + 0 + 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $1,313.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "c3d1a7d59dbf444a0768a580284b08a343d2765cee0ad1c12b39066efd1e5bb2"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "54",
+   "project": "$1,313.00",
+   "model": "$1,312.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1312 - 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $1,313.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "420fc53b0391744f38a61428d781a8434d1bb05fe9e749439a29b154b70923fd"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "58",
+   "project": "$1,313.00",
+   "model": "$1,312.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1312 + 0 + 0 + 0 + 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $1,313.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "2a6df61d9eaaa37a9dd4bf00515f59313ecaf782ffea4f7d9bb9dd5793a44e20"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "61",
+   "project": "$3,179.00",
+   "model": "$3,177.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1865 + 1312 + 0 + 0\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $3,179.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "71578b4ceb0a13a4badb7bd09dd478e2b655e13cc2e16c5c04b43775afc5de64"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "62",
+   "project": "$3,179.00",
+   "model": "$3,177.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"From line 61\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $3,179.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "81179b987fb0b82d6df5d55090cbc77be82ae2c8e643e4a5482618116ffc2383"
+  },
+  {
+   "case": "classm.ny_it201.2",
+   "printed": "80",
+   "project": "$3,179.00",
+   "model": "$3,177.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"3177 + 0 + 0\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $3,179.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "8872670d1c917e8d9f3b5633d405d1b08bd3daa33aa1d80d302f6b8479542027",
+   "subject_key": "9e94ada1f237b0cbd6ff93a845c1ccbcc59c06d63a113e0ca7ccfc9f2e0d2c98"
   },
   {
    "case": "classm.ny_it201.3",
@@ -327,6 +614,18 @@
   },
   {
    "case": "classm.ny_it201.3",
+   "printed": "(39) (ny_it201.tax_table)",
+   "project": "$307.00",
+   "model": "$308.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $7650, less than $7700, column single: $307. The amount is $7,688 (agreed on both sides). The model gave $308.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "c53472f47e2d5618005569f5b77deb74b07b7039480a581df0c3740aa1427afd"
+  },
+  {
+   "case": "classm.ny_it201.3",
    "printed": "(39) (ny_it201.tcw.top)",
    "project": "$4,022.00",
    "model": "$4,022.10",
@@ -347,6 +646,17 @@
    "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
    "date": "2026-11-09",
    "run": "c37466e123dcd2323fcd429c2eda35c07a3b1021bfbd929d73965afee4173087"
+  },
+  {
+   "case": "classm.ny_it201.3",
+   "printed": "(47a)",
+   "project": "$236.00",
+   "model": "$237.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_city_tax_table.yaml), the row at least $7650, less than $7700, column single: $236. The amount is $7,688 (agreed on both sides). The model gave $237.00, the case's given amount for another helper that shares the printed marker (47a) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20"
   },
   {
    "case": "classm.ny_it201.3",
@@ -410,6 +720,42 @@
   },
   {
    "case": "classm.ny_it201.3",
+   "printed": "(80)",
+   "project": "$468.00",
+   "model": "$469.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"545 - 76\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $468.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "d70679d116fb3d7f2c226a2afbda8e9f2e711e0aa7ff318d29de66c798333c95"
+  },
+  {
+   "case": "classm.ny_it201.3",
+   "printed": "(chart) (ny_it201.sut.top)",
+   "project": "$19.00",
+   "model": "$18.85",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $18.85 (Smaller of 18.85 or 125) is the same computation kept in cents; the project's $19.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "52b5e4e4ce58760cc3b9d062ce2db137f92375f199bd56f8783e18ededeece62"
+  },
+  {
+   "case": "classm.ny_it201.3",
+   "printed": "(chart) (ny_it201.sut.top_product)",
+   "project": "$19.00",
+   "model": "$18.85",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $18.85 (107,688 x 0.000175) is the same computation kept in cents; the project's $19.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "667da8c3af681f0fa2b34321eb2b883e78ee705666ab0e514a1ee41839842c63"
+  },
+  {
+   "case": "classm.ny_it201.3",
    "printed": "(table) (ny_it201.std_deduction)",
    "project": "$8,000.00",
    "model": "$3,100.00",
@@ -470,6 +816,18 @@
   },
   {
    "case": "classm.ny_it201.3",
+   "printed": "47a",
+   "project": "$236.00",
+   "model": "$237.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_city_tax_table.yaml), the row at least $7650, less than $7700, column single: $236. The amount is $7,688 (agreed on both sides). The model gave $237.00, the case's given amount for another helper that shares the printed marker (47a) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "ba50bb7cebdf4b1ce758ed27d5de7ac5ac9eaeca3cab9dcc1271bd67cae5247c"
+  },
+  {
+   "case": "classm.ny_it201.3",
    "printed": "49",
    "project": "$1,313.00",
    "model": "$1,312.00",
@@ -479,6 +837,18 @@
    "date": "2026-11-09",
    "run": "c37466e123dcd2323fcd429c2eda35c07a3b1021bfbd929d73965afee4173087",
    "subject_key": "2d64edec629a81cd2d9823d46652321c5aa9266df3c44db4d3a3b90931ea0f60"
+  },
+  {
+   "case": "classm.ny_it201.3",
+   "printed": "49",
+   "project": "$236.00",
+   "model": "$237.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"237 - 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $236.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "34c59e3f400ca7b06694a6774c156b3445998512ee249ecb4867a64b76af9bb0"
   },
   {
    "case": "classm.ny_it201.3",
@@ -494,6 +864,18 @@
   },
   {
    "case": "classm.ny_it201.3",
+   "printed": "52",
+   "project": "$236.00",
+   "model": "$237.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"237 + 0 + 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $236.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "c3d1a7d59dbf444a0768a580284b08a343d2765cee0ad1c12b39066efd1e5bb2"
+  },
+  {
+   "case": "classm.ny_it201.3",
    "printed": "54",
    "project": "$1,313.00",
    "model": "$1,312.00",
@@ -503,6 +885,18 @@
    "date": "2026-11-09",
    "run": "c37466e123dcd2323fcd429c2eda35c07a3b1021bfbd929d73965afee4173087",
    "subject_key": "c66197bbe4e5b5c4255f0d95aca8a78edd26e465fa2cc5baee79eb42101ec15a"
+  },
+  {
+   "case": "classm.ny_it201.3",
+   "printed": "54",
+   "project": "$236.00",
+   "model": "$237.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"237 - 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $236.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "420fc53b0391744f38a61428d781a8434d1bb05fe9e749439a29b154b70923fd"
   },
   {
    "case": "classm.ny_it201.3",
@@ -518,6 +912,18 @@
   },
   {
    "case": "classm.ny_it201.3",
+   "printed": "58",
+   "project": "$236.00",
+   "model": "$237.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"237 + 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $236.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "2a6df61d9eaaa37a9dd4bf00515f59313ecaf782ffea4f7d9bb9dd5793a44e20"
+  },
+  {
+   "case": "classm.ny_it201.3",
    "printed": "61",
    "project": "$3,179.00",
    "model": "$3,177.00",
@@ -527,6 +933,18 @@
    "date": "2026-11-09",
    "run": "c37466e123dcd2323fcd429c2eda35c07a3b1021bfbd929d73965afee4173087",
    "subject_key": "3a656cc9a633ef5b6efbd11ba5dbca55a915bc1b5e6e6024e9b0c02bb4d7ab2d"
+  },
+  {
+   "case": "classm.ny_it201.3",
+   "printed": "61",
+   "project": "$544.00",
+   "model": "$545.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"308 + 237 + 0 + 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $544.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "71578b4ceb0a13a4badb7bd09dd478e2b655e13cc2e16c5c04b43775afc5de64"
   },
   {
    "case": "classm.ny_it201.3",
@@ -542,6 +960,18 @@
   },
   {
    "case": "classm.ny_it201.3",
+   "printed": "62",
+   "project": "$544.00",
+   "model": "$545.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"From line 61\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $544.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "81179b987fb0b82d6df5d55090cbc77be82ae2c8e643e4a5482618116ffc2383"
+  },
+  {
+   "case": "classm.ny_it201.3",
    "printed": "80",
    "project": "$3,179.00",
    "model": "$3,177.00",
@@ -553,207 +983,267 @@
    "subject_key": "4920fd8cd06933e031f33f9b038f70235b515845fdf07ee2c993a3c2def68d52"
   },
   {
+   "case": "classm.ny_it201.3",
+   "printed": "80",
+   "project": "$468.00",
+   "model": "$469.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"545 - 76 + 0 penalty + 0 interest\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $468.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "1502036ade251b49ad447050213a391f2cbe1122e8bae12a7e9283dff27a2d20",
+   "subject_key": "9e94ada1f237b0cbd6ff93a845c1ccbcc59c06d63a113e0ca7ccfc9f2e0d2c98"
+  },
+  {
    "case": "classm.ny_it201.4",
    "printed": "(39) (ny_it201.tax_low)",
    "project": "$353.00",
    "model": "$352.00",
-   "ruling": "Ruling: model error; the 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables), the row \"At least 8,800 But less than 8,850\", column \"Head of a household\": $353. The amount is $8,800 (agreed on both sides). The model gave $352.00, which is the rate schedule applied to $8,800 itself (the amount the case gives as the rate-schedule helper), not the table row; the table rows step in $50 bands, so the two differ by a dollar here. IT-201-I (web edition), Line 39: \"If Yes, find your New York State tax using the 2025 New York State Tax Table (visit www.tax.ny.gov and search: table); or if line 38 is $65,000 or more, use the New York State tax rate schedule below.\" The table's own example: \"Their taxable income on line 38 is $38,275. First, they find the 38,250 - 38,300 income line. ... The amount shown ... is $1,773.\" Recomputed from the archived table, not from the engine. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $8800, less than $8850, column hoh: $353. The amount is $8,800 (agreed on both sides). The model gave $352.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "786621a69bdd197499e98318afa84d17a6ee34f36e0460b84197c7633e391fb4"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "7ad63d201c361c0c1a2574c2fb6e8641630d5423448ab2ebcdee82f69fa5bdde"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "(39) (ny_it201.tax_table)",
    "project": "$353.00",
    "model": "$352.00",
-   "ruling": "Ruling: model error; the 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables), the row \"At least 8,800 But less than 8,850\", column \"Head of a household\": $353. The amount is $8,800 (agreed on both sides). The model gave $352.00, which is the rate schedule applied to $8,800 itself (the amount the case gives as the rate-schedule helper), not the table row; the table rows step in $50 bands, so the two differ by a dollar here. IT-201-I (web edition), Line 39: \"If Yes, find your New York State tax using the 2025 New York State Tax Table (visit www.tax.ny.gov and search: table); or if line 38 is $65,000 or more, use the New York State tax rate schedule below.\" The table's own example: \"Their taxable income on line 38 is $38,275. First, they find the 38,250 - 38,300 income line. ... The amount shown ... is $1,773.\" Recomputed from the archived table, not from the engine. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $8800, less than $8850, column hoh: $353. The amount is $8,800 (agreed on both sides). The model gave $352.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "c78b35bfeca427094934c228c3e9d2d96977c79b499344437349715c88ac896b"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "c53472f47e2d5618005569f5b77deb74b07b7039480a581df0c3740aa1427afd"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "(47a)",
    "project": "$272.00",
    "model": "$271.00",
-   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables), the row \"At least 8,800 But less than 8,850\", column \"Head of a household\": $272 (row read in the archived table text). Line 47 is $8,800, agreed on both sides. The model gave $271.00, the case's given rate-schedule helper amount (ny_it201.city_tax_schedule, which shares the printed marker (47a)), not the table row; the rows step in $50 bands. The section is ny_it201.city_tax_table, printed (47a); the line is neither renamed nor removed (forms/ny/2025/ny_it201.yaml, unchanged by the gate-wave rewrite). The carry tool's \"line not found\" is a review-handle artifact: two lines share the marker (47a) and the section title carries no line id, so the printed-to-line lookup is not unique. Same case, line and values as the earlier model-error ruling of this disagreement.",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_city_tax_table.yaml), the row at least $8800, less than $8850, column hoh: $272. The amount is $8,800 (agreed on both sides). The model gave $271.00, the case's given amount for another helper that shares the printed marker (47a) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c"
+  },
+  {
+   "case": "classm.ny_it201.4",
+   "printed": "(69a) (ny_it201.stc_rr)",
+   "project": "$15.00",
+   "model": "$15.05",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $15.05 (Head of household table, 0-14400 bracket) is the same computation kept in cents; the project's $15.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "3427390f30144340c81e85f7958ffa68e3f0ed84a35810af3f17851ae5bdf97d"
+  },
+  {
+   "case": "classm.ny_it201.4",
+   "printed": "(69a) (ny_it201.stc_rr_low)",
+   "project": "$15.00",
+   "model": "$15.05",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $15.05 (8800 x 0.00171 = 15.048) is the same computation kept in cents; the project's $15.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "8bda734f43bb899e0e260515f89c0c17c5bc896fd52eed6b5f42a3b77c90fcc9"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "(80)",
    "project": "$472.00",
    "model": "$470.00",
-   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"548 - 78\") is the form's, but it starts from its table errors on line 39 ($352.00 model, $353.00 project) and line 47a ($271.00 model, $272.00 project), each ruled model error in this case; with the table amounts the line is the project's $472.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"548 - 78\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $472.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "c3f41a4233234d9ca8453e8195a92311e3bef1adcb267cffe46b30e89db693c2"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "d70679d116fb3d7f2c226a2afbda8e9f2e711e0aa7ff318d29de66c798333c95"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "(chart) (ny_it201.sut.top)",
    "project": "$4.00",
    "model": "$3.50",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), Line 59, Sales and use tax chart, \"200,001 and greater | 0.0175% (0.000175) of income, or $125, whichever is smaller\", on federal adjusted gross income (line 19) of $20,000 (the row this return does not take; its chart amount is another row's): exactly $3.50, which the project rounds half-up to $4.00; the model's $3.50 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries p. 7's \"Enter only whole dollar amounts on your New York return.\" but neither p. 2's rounding rule nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $3.50 (Smaller of 3.50 and 125) is the same computation kept in cents; the project's $4.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "5fd2ffbe907e923241106ed0454f0f95eb79897adac57751971d1ce1e59efc8f"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "52b5e4e4ce58760cc3b9d062ce2db137f92375f199bd56f8783e18ededeece62"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "(chart) (ny_it201.sut.top_product)",
    "project": "$4.00",
    "model": "$3.50",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), Line 59, Sales and use tax chart, \"200,001 and greater | 0.0175% (0.000175) of income, or $125, whichever is smaller\", on federal adjusted gross income (line 19) of $20,000 (the row this return does not take; its chart amount is another row's): exactly $3.50, which the project rounds half-up to $4.00; the model's $3.50 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries p. 7's \"Enter only whole dollar amounts on your New York return.\" but neither p. 2's rounding rule nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $3.50 (20000 x 0.000175) is the same computation kept in cents; the project's $4.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "47a257fa768a47c9dd094e063be6607c197ffdee9eee106ddc83d6d59bad83ae"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "667da8c3af681f0fa2b34321eb2b883e78ee705666ab0e514a1ee41839842c63"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "39",
    "project": "$353.00",
    "model": "$352.00",
-   "ruling": "Ruling: model error; the 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables), the row \"At least 8,800 But less than 8,850\", column \"Head of a household\": $353. The amount is $8,800 (agreed on both sides). The model gave $352.00, which is the rate schedule applied to $8,800 itself (the amount the case gives as the rate-schedule helper), not the table row; the table rows step in $50 bands, so the two differ by a dollar here. IT-201-I (web edition), Line 39: \"If Yes, find your New York State tax using the 2025 New York State Tax Table (visit www.tax.ny.gov and search: table); or if line 38 is $65,000 or more, use the New York State tax rate schedule below.\" The table's own example: \"Their taxable income on line 38 is $38,275. First, they find the 38,250 - 38,300 income line. ... The amount shown ... is $1,773.\" Recomputed from the archived table, not from the engine. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $8800, less than $8850, column hoh: $353. The amount is $8,800 (agreed on both sides). The model gave $352.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "36a6a5679a330132756fdd9e8ef4ce98de2180b8477e4875300b716836bc3e0f"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "59e5031b8d8807d50b7c1509f7f6e88c502c99cb5c465882ce8d72f0d409817a"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "44",
    "project": "$293.00",
    "model": "$292.00",
-   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"352 - 60\") is the form's, but it starts from its table errors on line 39 ($352.00 model, $353.00 project), each ruled model error in this case; with the table amounts the line is the project's $293.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"352 - 60\") is the form's, but it starts from its table errors on line 39, each ruled model error in this case; with the table amounts the line is the project's $293.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "e36caa68a39e3a31625b378f2184f20d4488dcabdb004ddfccb2edfaae03cd9b"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "a1ac589ac34b73ca06258030dfb0a2f0cd8d0bbe478beab5851460e56335b6b4"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "46",
    "project": "$293.00",
    "model": "$292.00",
-   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"292 + 0\") is the form's, but it starts from its table errors on line 39 ($352.00 model, $353.00 project), each ruled model error in this case; with the table amounts the line is the project's $293.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"292 + 0\") is the form's, but it starts from its table errors on line 39, each ruled model error in this case; with the table amounts the line is the project's $293.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "95ae25dab2c887380cd6e77c315da6594a80b9a001dd7244433fee5e8effeb8d"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "95e1f48bc36e92caa7b3a4e47147327832919f92af52af27a270e87178762767"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "47a",
    "project": "$272.00",
    "model": "$271.00",
-   "ruling": "Ruling: model error; the 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables), the row \"At least 8,800 But less than 8,850\", column \"Head of a household\": $272. The amount is $8,800 (agreed on both sides). The model gave $271.00, which is the rate schedule applied to $8,800 itself (the amount the case gives as the rate-schedule helper), not the table row; the table rows step in $50 bands, so the two differ by a dollar here. IT-201-I (web edition), Line 47a: \"NYC taxable income less than $65,000 (line 47) | NYC tax table\". The table's own example: \"Their taxable income on line 38 is $38,275. First, they find the 38,250 - 38,300 income line. ... The amount shown ... is $1,773.\" Recomputed from the archived table, not from the engine. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_city_tax_table.yaml), the row at least $8800, less than $8850, column hoh: $272. The amount is $8,800 (agreed on both sides). The model gave $271.00, the case's given amount for another helper that shares the printed marker (47a) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "7125b0ef80cd080c985721e5f82bbb9cbccc033ddbdecd3edb507bb3650d9c00"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "ba50bb7cebdf4b1ce758ed27d5de7ac5ac9eaeca3cab9dcc1271bd67cae5247c"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "49",
    "project": "$257.00",
    "model": "$256.00",
-   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"271 - 15\") is the form's, but it starts from its table errors on line 47a ($271.00 model, $272.00 project), each ruled model error in this case; with the table amounts the line is the project's $257.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"271 - 15\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $257.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "2d64edec629a81cd2d9823d46652321c5aa9266df3c44db4d3a3b90931ea0f60"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "34c59e3f400ca7b06694a6774c156b3445998512ee249ecb4867a64b76af9bb0"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "52",
    "project": "$257.00",
    "model": "$256.00",
-   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"256 + 0 + 0\") is the form's, but it starts from its table errors on line 47a ($271.00 model, $272.00 project), each ruled model error in this case; with the table amounts the line is the project's $257.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"256 + 0 + 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $257.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "70341e5cbbe2da0e0997601fdc3ce65e8b132665022c7398158529b39a1ea7e8"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "c3d1a7d59dbf444a0768a580284b08a343d2765cee0ad1c12b39066efd1e5bb2"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "54",
    "project": "$257.00",
    "model": "$256.00",
-   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"256 - 0\") is the form's, but it starts from its table errors on line 47a ($271.00 model, $272.00 project), each ruled model error in this case; with the table amounts the line is the project's $257.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"256 - 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $257.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "c66197bbe4e5b5c4255f0d95aca8a78edd26e465fa2cc5baee79eb42101ec15a"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "420fc53b0391744f38a61428d781a8434d1bb05fe9e749439a29b154b70923fd"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "58",
    "project": "$257.00",
    "model": "$256.00",
-   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"256 + 0\") is the form's, but it starts from its table errors on line 47a ($271.00 model, $272.00 project), each ruled model error in this case; with the table amounts the line is the project's $257.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"256 + 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $257.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "daf9ce67bc79d840fa22b64f092e473002fe0054226876b2d68a82ab35f38ca2"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "2a6df61d9eaaa37a9dd4bf00515f59313ecaf782ffea4f7d9bb9dd5793a44e20"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "61",
    "project": "$550.00",
    "model": "$548.00",
-   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"292 + 256 + 0 + 0\") is the form's, but it starts from its table errors on line 39 ($352.00 model, $353.00 project) and line 47a ($271.00 model, $272.00 project), each ruled model error in this case; with the table amounts the line is the project's $550.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"292 + 256 + 0 + 0\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $550.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "3a656cc9a633ef5b6efbd11ba5dbca55a915bc1b5e6e6024e9b0c02bb4d7ab2d"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "71578b4ceb0a13a4badb7bd09dd478e2b655e13cc2e16c5c04b43775afc5de64"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "62",
    "project": "$550.00",
    "model": "$548.00",
-   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"From line 61\") is the form's, but it starts from its table errors on line 39 ($352.00 model, $353.00 project) and line 47a ($271.00 model, $272.00 project), each ruled model error in this case; with the table amounts the line is the project's $550.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"From line 61\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $550.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "aba1d96fd85a326ea4ff44cb2a8248ce02da0fd5280ccb16f361147758fd24b9"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "81179b987fb0b82d6df5d55090cbc77be82ae2c8e643e4a5482618116ffc2383"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "80",
    "project": "$472.00",
    "model": "$470.00",
-   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"548 - 78 + 0 + 0\") is the form's, but it starts from its table errors on line 39 ($352.00 model, $353.00 project) and line 47a ($271.00 model, $272.00 project), each ruled model error in this case; with the table amounts the line is the project's $472.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.) (carried over from reviews/ny/2025/classm/ny_it201.index.json at 26f283ec, review of 2026-11-07) [Restamped unchanged: the line's subject changed since that review (gate-wave rewrite, values unchanged), but case, line, project value and model value are identical.]",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"470 + 0 + 0\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $472.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
    "drop": true,
-   "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
-   "date": "2026-11-09",
-   "run": "0428f0a013b006839f1ed299dd8c2886544259e816e6a8c4f93dcf14434e13b1",
-   "subject_key": "4920fd8cd06933e031f33f9b038f70235b515845fdf07ee2c993a3c2def68d52"
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "61443faa50da738f62e3f29141b08a7d7033611543cc70138753466ea0d9ea0c",
+   "subject_key": "9e94ada1f237b0cbd6ff93a845c1ccbcc59c06d63a113e0ca7ccfc9f2e0d2c98"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "(39) (ny_it201.tax_low)",
+   "project": "$1,597.00",
+   "model": "$1,596.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $32000, less than $32050, column single: $1597. The amount is $32,000 (agreed on both sides). The model gave $1,596.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "7ad63d201c361c0c1a2574c2fb6e8641630d5423448ab2ebcdee82f69fa5bdde"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "(39) (ny_it201.tax_table)",
+   "project": "$1,597.00",
+   "model": "$1,596.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $32000, less than $32050, column single: $1597. The amount is $32,000 (agreed on both sides). The model gave $1,596.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "c53472f47e2d5618005569f5b77deb74b07b7039480a581df0c3740aa1427afd"
   },
   {
    "case": "classm.ny_it201.5",
@@ -781,6 +1271,29 @@
   },
   {
    "case": "classm.ny_it201.5",
+   "printed": "(47a)",
+   "project": "$1,126.00",
+   "model": "$1,125.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_city_tax_table.yaml), the row at least $32000, less than $32050, column single: $1126. The amount is $32,000 (agreed on both sides). The model gave $1,125.00, the case's given amount for another helper that shares the printed marker (47a) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "(69a) (ny_it201.stc_rr)",
+   "project": "$67.00",
+   "model": "$66.60",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $66.60 (NYC taxable income 32000 is over 12000) is the same computation kept in cents; the project's $67.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "3427390f30144340c81e85f7958ffa68e3f0ed84a35810af3f17851ae5bdf97d"
+  },
+  {
+   "case": "classm.ny_it201.5",
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$75.00",
    "model": "$75.02",
@@ -805,6 +1318,30 @@
   },
   {
    "case": "classm.ny_it201.5",
+   "printed": "(69a) (ny_it201.stc_rr_excess_product)",
+   "project": "$46.00",
+   "model": "$45.60",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $45.60 (20000 x 0.00228) is the same computation kept in cents; the project's $46.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "06d0d2e4fd5485610cd500fe294cc3e6f45ae05052fdbc5abe2db62b095fb7ca"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "(69a) (ny_it201.stc_rr_high)",
+   "project": "$67.00",
+   "model": "$66.60",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $66.60 (21 + 45.60) is the same computation kept in cents; the project's $67.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "e703f3e437fcd4d800acbb23e5c2ea1654ea6c09196a69ca357d5f7385df6365"
+  },
+  {
+   "case": "classm.ny_it201.5",
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$75.00",
    "model": "$75.02",
@@ -818,6 +1355,18 @@
   {
    "case": "classm.ny_it201.5",
    "printed": "(69a) (ny_it201.stc_rr_low)",
+   "project": "$55.00",
+   "model": "$54.72",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $54.72 (32000 x 0.00171) is the same computation kept in cents; the project's $55.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "8bda734f43bb899e0e260515f89c0c17c5bc896fd52eed6b5f42a3b77c90fcc9"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$65.00",
    "model": "$65.45",
    "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), Line 69a, \"Calculation of NYC school tax credit (rate reduction amount) for married filing jointly ② and qualifying surviving spouse ⑤\", \"0.171% of taxable income\" on New York City taxable income of $38,275 (a helper of the row this return does not take, line 47 being over $21,600): exactly $65.45025, which the project rounds half-up to $65.00; the model's $65.45 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries p. 7's \"Enter only whole dollar amounts on your New York return.\" but neither p. 2's rounding rule nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence. (Carried over from the previous review of this log, git HEAD: the same case, line, project value and model value. carry.py declined it only because the line's transitive subject changed: the new year parameters ny.false and ny.mctmt.threshold, and for the lines reading lines 54a to 54e or 77 to 79 the new formal gates, none of which changes this value.)",
@@ -826,6 +1375,18 @@
    "date": "2026-11-07",
    "run": "fa1f0dd985eb691d265500bff5ebe09e8b8400f76df8385164539d4f170822d4",
    "subject_key": "721a3a4a6c4167e4093dc2418862cbdf1552b9dbc67eef440039b39850e66d58"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "(80)",
+   "project": "$2,603.00",
+   "model": "$2,601.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"2731 - 130\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $2,603.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "d70679d116fb3d7f2c226a2afbda8e9f2e711e0aa7ff318d29de66c798333c95"
   },
   {
    "case": "classm.ny_it201.5",
@@ -852,6 +1413,138 @@
    "subject_key": "47a257fa768a47c9dd094e063be6607c197ffdee9eee106ddc83d6d59bad83ae"
   },
   {
+   "case": "classm.ny_it201.5",
+   "printed": "39",
+   "project": "$1,597.00",
+   "model": "$1,596.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $32000, less than $32050, column single: $1597. The amount is $32,000 (agreed on both sides). The model gave $1,596.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "59e5031b8d8807d50b7c1509f7f6e88c502c99cb5c465882ce8d72f0d409817a"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "44",
+   "project": "$1,597.00",
+   "model": "$1,596.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1596 - 0\") is the form's, but it starts from its table errors on line 39, each ruled model error in this case; with the table amounts the line is the project's $1,597.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "a1ac589ac34b73ca06258030dfb0a2f0cd8d0bbe478beab5851460e56335b6b4"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "46",
+   "project": "$1,597.00",
+   "model": "$1,596.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1596 + 0\") is the form's, but it starts from its table errors on line 39, each ruled model error in this case; with the table amounts the line is the project's $1,597.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "95e1f48bc36e92caa7b3a4e47147327832919f92af52af27a270e87178762767"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "47a",
+   "project": "$1,126.00",
+   "model": "$1,125.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_city_tax_table.yaml), the row at least $32000, less than $32050, column single: $1126. The amount is $32,000 (agreed on both sides). The model gave $1,125.00, the case's given amount for another helper that shares the printed marker (47a) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "ba50bb7cebdf4b1ce758ed27d5de7ac5ac9eaeca3cab9dcc1271bd67cae5247c"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "49",
+   "project": "$1,126.00",
+   "model": "$1,125.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1125 - 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $1,126.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "34c59e3f400ca7b06694a6774c156b3445998512ee249ecb4867a64b76af9bb0"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "52",
+   "project": "$1,126.00",
+   "model": "$1,125.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1125 + 0 + 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $1,126.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "c3d1a7d59dbf444a0768a580284b08a343d2765cee0ad1c12b39066efd1e5bb2"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "54",
+   "project": "$1,126.00",
+   "model": "$1,125.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1125 - 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $1,126.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "420fc53b0391744f38a61428d781a8434d1bb05fe9e749439a29b154b70923fd"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "58",
+   "project": "$1,126.00",
+   "model": "$1,125.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1125 + 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $1,126.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "2a6df61d9eaaa37a9dd4bf00515f59313ecaf782ffea4f7d9bb9dd5793a44e20"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "61",
+   "project": "$2,733.00",
+   "model": "$2,731.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"1596 + 1125 + 10 + 0\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $2,733.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "71578b4ceb0a13a4badb7bd09dd478e2b655e13cc2e16c5c04b43775afc5de64"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "62",
+   "project": "$2,733.00",
+   "model": "$2,731.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"From line 61\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $2,733.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "81179b987fb0b82d6df5d55090cbc77be82ae2c8e643e4a5482618116ffc2383"
+  },
+  {
+   "case": "classm.ny_it201.5",
+   "printed": "80",
+   "project": "$2,603.00",
+   "model": "$2,601.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"2601 + penalty 0 + other 0\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $2,603.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "00628e051b081e77ad5be89140710e80d9d4feb7aedf56da4c4b87a75182a5f0",
+   "subject_key": "9e94ada1f237b0cbd6ff93a845c1ccbcc59c06d63a113e0ca7ccfc9f2e0d2c98"
+  },
+  {
    "case": "classm.ny_it201.6",
    "printed": "(39) (ny_it201.tax_low)",
    "project": "$2,037.00",
@@ -862,6 +1555,18 @@
    "date": "2026-11-09",
    "run": "15024e6cb98733045cd226e31ea6d36b9babd7a2c4584e1dfe10272c76b67310",
    "subject_key": "786621a69bdd197499e98318afa84d17a6ee34f36e0460b84197c7633e391fb4"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "(39) (ny_it201.tax_low)",
+   "project": "$3,241.00",
+   "model": "$3,242.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $64950, less than $65000, column joint: $3241. The amount is $64,999 (agreed on both sides). The model gave $3,242.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "7ad63d201c361c0c1a2574c2fb6e8641630d5423448ab2ebcdee82f69fa5bdde"
   },
   {
    "case": "classm.ny_it201.6",
@@ -877,6 +1582,18 @@
   },
   {
    "case": "classm.ny_it201.6",
+   "printed": "(39) (ny_it201.tax_table)",
+   "project": "$3,241.00",
+   "model": "$3,242.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $64950, less than $65000, column joint: $3241. The amount is $64,999 (agreed on both sides). The model gave $3,242.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "c53472f47e2d5618005569f5b77deb74b07b7039480a581df0c3740aa1427afd"
+  },
+  {
+   "case": "classm.ny_it201.6",
    "printed": "(47a)",
    "project": "$1,432.00",
    "model": "$1,431.00",
@@ -885,6 +1602,29 @@
    "context": "0618f1f7c1a3b29b3fb396e29e753935bbb266267df43e5d01241798d406892a",
    "date": "2026-11-09",
    "run": "15024e6cb98733045cd226e31ea6d36b9babd7a2c4584e1dfe10272c76b67310"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "(47a)",
+   "project": "$2,308.00",
+   "model": "$2,309.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_city_tax_table.yaml), the row at least $64950, less than $65000, column joint: $2308. The amount is $64,999 (agreed on both sides). The model gave $2,309.00, the case's given amount for another helper that shares the printed marker (47a) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "(69a) (ny_it201.stc_rr)",
+   "project": "$136.00",
+   "model": "$135.95",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $135.95 (Taxable income over 21600, so the high formula applies) is the same computation kept in cents; the project's $136.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "3427390f30144340c81e85f7958ffa68e3f0ed84a35810af3f17851ae5bdf97d"
   },
   {
    "case": "classm.ny_it201.6",
@@ -912,6 +1652,30 @@
   },
   {
    "case": "classm.ny_it201.6",
+   "printed": "(69a) (ny_it201.stc_rr_excess_product)",
+   "project": "$99.00",
+   "model": "$98.95",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $98.95 (43399 x 0.00228) is the same computation kept in cents; the project's $99.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "06d0d2e4fd5485610cd500fe294cc3e6f45ae05052fdbc5abe2db62b095fb7ca"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "(69a) (ny_it201.stc_rr_high)",
+   "project": "$136.00",
+   "model": "$135.95",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $135.95 (37 + 98.95) is the same computation kept in cents; the project's $136.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "e703f3e437fcd4d800acbb23e5c2ea1654ea6c09196a69ca357d5f7385df6365"
+  },
+  {
+   "case": "classm.ny_it201.6",
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$85.00",
    "model": "$84.84",
@@ -921,6 +1685,18 @@
    "date": "2026-11-09",
    "run": "15024e6cb98733045cd226e31ea6d36b9babd7a2c4584e1dfe10272c76b67310",
    "subject_key": "69ed7fc56e5d5fe6f280511548c074196b5f191da1ee29f1983b421785b46bd3"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "(69a) (ny_it201.stc_rr_low)",
+   "project": "$111.00",
+   "model": "$111.15",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $111.15 (64999 x 0.00171) is the same computation kept in cents; the project's $111.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "8bda734f43bb899e0e260515f89c0c17c5bc896fd52eed6b5f42a3b77c90fcc9"
   },
   {
    "case": "classm.ny_it201.6",
@@ -936,6 +1712,30 @@
   },
   {
    "case": "classm.ny_it201.6",
+   "printed": "(80)",
+   "project": "$5,288.00",
+   "model": "$5,290.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"5551 - 261\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $5,288.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "d70679d116fb3d7f2c226a2afbda8e9f2e711e0aa7ff318d29de66c798333c95"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "(chart) (ny_it201.sut.top)",
+   "project": "$14.00",
+   "model": "$14.18",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $14.18 (Smaller of 14.18 or 125) is the same computation kept in cents; the project's $14.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "52b5e4e4ce58760cc3b9d062ce2db137f92375f199bd56f8783e18ededeece62"
+  },
+  {
+   "case": "classm.ny_it201.6",
    "printed": "(chart) (ny_it201.sut.top)",
    "project": "$8.00",
    "model": "$8.40",
@@ -945,6 +1745,18 @@
    "date": "2026-11-09",
    "run": "15024e6cb98733045cd226e31ea6d36b9babd7a2c4584e1dfe10272c76b67310",
    "subject_key": "5fd2ffbe907e923241106ed0454f0f95eb79897adac57751971d1ce1e59efc8f"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "(chart) (ny_it201.sut.top_product)",
+   "project": "$14.00",
+   "model": "$14.18",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $14.18 (81049 x 0.000175) is the same computation kept in cents; the project's $14.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "667da8c3af681f0fa2b34321eb2b883e78ee705666ab0e514a1ee41839842c63"
   },
   {
    "case": "classm.ny_it201.6",
@@ -972,6 +1784,18 @@
   },
   {
    "case": "classm.ny_it201.6",
+   "printed": "39",
+   "project": "$3,241.00",
+   "model": "$3,242.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York State Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_tax_table.yaml), the row at least $64950, less than $65000, column joint: $3241. The amount is $64,999 (agreed on both sides). The model gave $3,242.00, the case's given amount for another helper that shares the printed marker (39) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "59e5031b8d8807d50b7c1509f7f6e88c502c99cb5c465882ce8d72f0d409817a"
+  },
+  {
+   "case": "classm.ny_it201.6",
    "printed": "44",
    "project": "$2,037.00",
    "model": "$2,036.00",
@@ -981,6 +1805,18 @@
    "date": "2026-11-09",
    "run": "15024e6cb98733045cd226e31ea6d36b9babd7a2c4584e1dfe10272c76b67310",
    "subject_key": "e36caa68a39e3a31625b378f2184f20d4488dcabdb004ddfccb2edfaae03cd9b"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "44",
+   "project": "$3,241.00",
+   "model": "$3,242.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"3242 - 0\") is the form's, but it starts from its table errors on line 39, each ruled model error in this case; with the table amounts the line is the project's $3,241.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "a1ac589ac34b73ca06258030dfb0a2f0cd8d0bbe478beab5851460e56335b6b4"
   },
   {
    "case": "classm.ny_it201.6",
@@ -996,6 +1832,18 @@
   },
   {
    "case": "classm.ny_it201.6",
+   "printed": "46",
+   "project": "$3,241.00",
+   "model": "$3,242.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"3242 + 0\") is the form's, but it starts from its table errors on line 39, each ruled model error in this case; with the table amounts the line is the project's $3,241.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "95e1f48bc36e92caa7b3a4e47147327832919f92af52af27a270e87178762767"
+  },
+  {
+   "case": "classm.ny_it201.6",
    "printed": "47a",
    "project": "$1,432.00",
    "model": "$1,431.00",
@@ -1005,6 +1853,18 @@
    "date": "2026-11-09",
    "run": "15024e6cb98733045cd226e31ea6d36b9babd7a2c4584e1dfe10272c76b67310",
    "subject_key": "7125b0ef80cd080c985721e5f82bbb9cbccc033ddbdecd3edb507bb3650d9c00"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "47a",
+   "project": "$2,308.00",
+   "model": "$2,309.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. The 2025 New York City Tax Table (sources/ny/2025/ny_it201_tax_tables, tables/ny/2025/ny_city_tax_table.yaml), the row at least $64950, less than $65000, column joint: $2308. The amount is $64,999 (agreed on both sides). The model gave $2,309.00, the case's given amount for another helper that shares the printed marker (47a) (the rate-schedule computation), not the table row; the table rows step in $50 bands. IT-201-I (web edition), Line 39: \"find your New York State tax using the 2025 New York State Tax Table\", and Line 47a for the City table. As ruled on these lines in earlier rounds.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "ba50bb7cebdf4b1ce758ed27d5de7ac5ac9eaeca3cab9dcc1271bd67cae5247c"
   },
   {
    "case": "classm.ny_it201.6",
@@ -1020,6 +1880,18 @@
   },
   {
    "case": "classm.ny_it201.6",
+   "printed": "49",
+   "project": "$2,308.00",
+   "model": "$2,309.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"2309 - 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $2,308.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "34c59e3f400ca7b06694a6774c156b3445998512ee249ecb4867a64b76af9bb0"
+  },
+  {
+   "case": "classm.ny_it201.6",
    "printed": "52",
    "project": "$1,432.00",
    "model": "$1,431.00",
@@ -1029,6 +1901,18 @@
    "date": "2026-11-09",
    "run": "15024e6cb98733045cd226e31ea6d36b9babd7a2c4584e1dfe10272c76b67310",
    "subject_key": "70341e5cbbe2da0e0997601fdc3ce65e8b132665022c7398158529b39a1ea7e8"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "52",
+   "project": "$2,308.00",
+   "model": "$2,309.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"2309 + 0 + 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $2,308.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "c3d1a7d59dbf444a0768a580284b08a343d2765cee0ad1c12b39066efd1e5bb2"
   },
   {
    "case": "classm.ny_it201.6",
@@ -1044,6 +1928,18 @@
   },
   {
    "case": "classm.ny_it201.6",
+   "printed": "54",
+   "project": "$2,308.00",
+   "model": "$2,309.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"2309 - 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $2,308.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "420fc53b0391744f38a61428d781a8434d1bb05fe9e749439a29b154b70923fd"
+  },
+  {
+   "case": "classm.ny_it201.6",
    "printed": "58",
    "project": "$1,432.00",
    "model": "$1,431.00",
@@ -1053,6 +1949,18 @@
    "date": "2026-11-09",
    "run": "15024e6cb98733045cd226e31ea6d36b9babd7a2c4584e1dfe10272c76b67310",
    "subject_key": "daf9ce67bc79d840fa22b64f092e473002fe0054226876b2d68a82ab35f38ca2"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "58",
+   "project": "$2,308.00",
+   "model": "$2,309.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"2309 + 0 + 0 + 0 + 0\") is the form's, but it starts from its table errors on line 47a, each ruled model error in this case; with the table amounts the line is the project's $2,308.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "2a6df61d9eaaa37a9dd4bf00515f59313ecaf782ffea4f7d9bb9dd5793a44e20"
   },
   {
    "case": "classm.ny_it201.6",
@@ -1068,6 +1976,18 @@
   },
   {
    "case": "classm.ny_it201.6",
+   "printed": "61",
+   "project": "$5,549.00",
+   "model": "$5,551.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"3242 + 2309 + 0 + 0\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $5,549.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "71578b4ceb0a13a4badb7bd09dd478e2b655e13cc2e16c5c04b43775afc5de64"
+  },
+  {
+   "case": "classm.ny_it201.6",
    "printed": "62",
    "project": "$3,469.00",
    "model": "$3,467.00",
@@ -1080,6 +2000,18 @@
   },
   {
    "case": "classm.ny_it201.6",
+   "printed": "62",
+   "project": "$5,549.00",
+   "model": "$5,551.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"From line 61\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $5,549.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "81179b987fb0b82d6df5d55090cbc77be82ae2c8e643e4a5482618116ffc2383"
+  },
+  {
+   "case": "classm.ny_it201.6",
    "printed": "80",
    "project": "$3,321.00",
    "model": "$3,319.00",
@@ -1089,6 +2021,18 @@
    "date": "2026-11-09",
    "run": "15024e6cb98733045cd226e31ea6d36b9babd7a2c4584e1dfe10272c76b67310",
    "subject_key": "4920fd8cd06933e031f33f9b038f70235b515845fdf07ee2c993a3c2def68d52"
+  },
+  {
+   "case": "classm.ny_it201.6",
+   "printed": "80",
+   "project": "$5,288.00",
+   "model": "$5,290.00",
+   "ruling": "Ruling: model error, carried: the model's own arithmetic on this line (\"5290 + 0 + 0\") is the form's, but it starts from its table errors on line 39 and line 47a, each ruled model error in this case; with the table amounts the line is the project's $5,288.00, and the difference is exactly the carried amount. Dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
+   "date": "2026-11-10",
+   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
+   "subject_key": "9e94ada1f237b0cbd6ff93a845c1ccbcc59c06d63a113e0ca7ccfc9f2e0d2c98"
   },
   {
    "case": "classm.ny_it201.7",

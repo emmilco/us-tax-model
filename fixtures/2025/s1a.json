@@ -2963,6 +2963,70 @@
           }
         }
       }
+    },
+    {
+      "id": "t264.s1a.mfs_parts_2_3",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture, predicted from the archived i1040gi before evaluating: a married filer filing separately who answers Yes to qualified tips and to qualified overtime. Parts II and III apply only if the filer is not married filing separately (p. 101, \"If you are married, you must file a joint return with your spouse to claim this deduction\"; p. 106, the same for overtime), so s1a.part2 and s1a.part3 are false.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "f1040.status": "mfs",
+        "s1a.tips": true,
+        "s1a.overtime": true
+      },
+      "expect": {
+        "s1a.part2": {
+          "kind": "bool",
+          "value": false
+        },
+        "s1a.part3": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "t264.s1a.mfs_spouse_entry",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture, predicted from the archived i1040gi before evaluating: a married filer filing separately who answers Yes to qualified tips, with a spouse entry whose final return is that of a person who died in 2025 before reaching age 65. Part II applies only if the filer is not married filing separately (p. 101, \"If you are married, you must file a joint return with your spouse to claim this deduction\"), whatever the spouse entry says, so s1a.part2 is false.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "f1040.status": "mfs",
+        "s1a.tips": true,
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "person[spouse].role": "spouse",
+        "person[spouse].died_before_65": true
+      },
+      "expect": {
+        "s1a.part2": {
+          "kind": "bool",
+          "value": false
+        }
+      }
     }
   ]
 }

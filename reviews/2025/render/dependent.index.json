@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "b32b431555d8278cb8c5c645963f5963e5589272d14045c69d59e728d9f0682d",
  "head_rows": {
-  "match / mismatch / unclear / missing": "6 / 5 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "1 / 10 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -17,9 +17,9 @@
   },
   {
    "key": "2(c)",
-   "record": "b0e70a32f935f65e4816e683cb0ef8f8b2d8786f7fe5d476595917f172014245",
+   "record": "025984abb172a5a33029fd272d7570ae5cc2eac52cb15ac7350c0aa3684552fd",
    "status": "MATCH",
-   "subject_key": "d8c16958dc39f2870a49fbfe332be2d11daa41b52e635243681a7209b6f4de01"
+   "subject_key": "86ac3557a5f8b195c8aa54d2237a7e3d2b194434175cd78eb43a2f0e1c83b187"
   },
   {
    "key": "23",
@@ -51,47 +51,52 @@
   },
   {
    "key": "27",
-   "record": "b0e70a32f935f65e4816e683cb0ef8f8b2d8786f7fe5d476595917f172014245",
-   "status": "MATCH",
-   "subject_key": "e1bb0f6711599016f834613c5107ef549fbe4a84db9a5502221da41737a621ef"
+   "record": "025984abb172a5a33029fd272d7570ae5cc2eac52cb15ac7350c0aa3684552fd",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29). i8863 p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T\"; p970 p. 2, Reminders: \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.\" The register chooses Pub. 970, which the reviewer was not given. The model agrees with the line's amount; its only objection is the date in the eligible-student gate (dependent.edu_1098t), unchanged in this round, the objection ruled the same way on lines 23 to 26 (this log, the earlier rulings). Project stands.",
+   "subject_key": "a57f8fb84b7bb986b29f3aa0b9259d629c9ed1ab94ef7481c981f609ea7e515a"
   },
   {
    "key": "28",
-   "record": "b0e70a32f935f65e4816e683cb0ef8f8b2d8786f7fe5d476595917f172014245",
-   "status": "MATCH",
-   "subject_key": "257f899ace6b61cce951ccd8ee9a1f3cd64dd4da7a35647c9dff8c8c7e13d865"
+   "record": "025984abb172a5a33029fd272d7570ae5cc2eac52cb15ac7350c0aa3684552fd",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29). i8863 p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T\"; p970 p. 2, Reminders: \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.\" The register chooses Pub. 970, which the reviewer was not given. The model agrees with the line's amount; its only objection is the date in the eligible-student gate (dependent.edu_1098t), unchanged in this round, the objection ruled the same way on lines 23 to 26 (this log, the earlier rulings). Project stands.",
+   "subject_key": "037677cffec0b9b4734d45e6e793d32e5d8776cccea72c888d2fe44cb28d5d21"
   },
   {
    "key": "29",
-   "record": "b0e70a32f935f65e4816e683cb0ef8f8b2d8786f7fe5d476595917f172014245",
-   "status": "MATCH",
-   "subject_key": "a001c29e0fec2054fa8f9d1e6cde085331b6ae1ba1f2c7ec91f80e55dc18b005"
+   "record": "025984abb172a5a33029fd272d7570ae5cc2eac52cb15ac7350c0aa3684552fd",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29). i8863 p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T\"; p970 p. 2, Reminders: \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.\" The register chooses Pub. 970, which the reviewer was not given. The model agrees with the line's amount; its only objection is the date in the eligible-student gate (dependent.edu_1098t), unchanged in this round, the objection ruled the same way on lines 23 to 26 (this log, the earlier rulings). Project stands.",
+   "subject_key": "e3f61e075fcaf9e649ba1aa7764f951f15a4fb920bb6d0b5378a1b43f7d828c1"
   },
   {
    "key": "30",
-   "record": "b0e70a32f935f65e4816e683cb0ef8f8b2d8786f7fe5d476595917f172014245",
-   "status": "MATCH",
-   "subject_key": "8bbb6f1d4878e7f14df213e9e7b3c3d3af6754b1ac2353d9a5482e60c0e36521"
+   "record": "025984abb172a5a33029fd272d7570ae5cc2eac52cb15ac7350c0aa3684552fd",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29). i8863 p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T\"; p970 p. 2, Reminders: \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.\" The register chooses Pub. 970, which the reviewer was not given. The model agrees with the line's amount; its only objection is the date in the eligible-student gate (dependent.edu_1098t), unchanged in this round, the objection ruled the same way on lines 23 to 26 (this log, the earlier rulings). Project stands.",
+   "subject_key": "1acbfc011af11af17903a3680b2692e15587f23be46d8a8808592e4a8fdc41ea"
   },
   {
    "key": "31",
-   "record": "b0e70a32f935f65e4816e683cb0ef8f8b2d8786f7fe5d476595917f172014245",
-   "status": "MATCH",
-   "subject_key": "b7b17371e8d23e403147b9211d344640a2867412df98c1b01c849cae0c1cafd1"
+   "record": "025984abb172a5a33029fd272d7570ae5cc2eac52cb15ac7350c0aa3684552fd",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29). i8863 p. 1: \"After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T\"; p970 p. 2, Reminders: \"After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.\" The register chooses Pub. 970, which the reviewer was not given. The model agrees with the line's amount; its only objection is the date in the eligible-student gate (dependent.edu_1098t), unchanged in this round, the objection ruled the same way on lines 23 to 26 (this log, the earlier rulings). Project stands.",
+   "subject_key": "ac93115945d879f8966a938814c80c1d59605572183e64de416f08bd9675856c"
   }
  ],
  "subjects": {
   "2(d)": "f7e42973fe29ad72d98658d96dce0d09b8c81ec36865f67aa53f5dff8f10cf63",
-  "2(c)": "0bbb4539810fe8f78869b74ca747d79b2e5e57a0a6a44cb4c8800af247aa1b49",
+  "2(c)": "23f50b00fa2d6451edc82177ce0ceedd2eacdf74abfa888d2b72c1de69387c29",
   "23": "6ef859612fc9225528754b68254a0f904c73e2d5cbe8172eadcfd9a024d89b7e",
   "24": "950b5911626062d8b6e371390ffa4abaa869d4f8ae8879b4c770300013e47632",
   "25": "d478c5d661e7a967987ef96c88fb3d604b3cdf01a1cfcb6e3ba0e9ef25c1fcb4",
   "26": "411783735e8d1485648d29199c6cec2a0dcf0678979c53de8767046ed22d7ea8",
-  "27": "28ae0a4b416f96a27d9c11168df8c91906275200e9280c09cae62bc36238146f",
-  "28": "ee259a228f36f2a3241843c9cd7e7c1ef001d4083268a5168c644b8c5700255a",
-  "29": "8ab80f8e7ebd197dceb2834244d61fe02a86ae6dbcf556face7460da1ddd7dea",
-  "30": "f100deef7dff9b340cb805c5a2d2d1cb709bee9342a75d655b762e86bf39e4b2",
-  "31": "654521f1141069bb959129c8246b8ff0dab328a36c0d29a56da7d00e202693d3"
+  "27": "7c7f5f30c59e717f2fc29c4d7a9f6c55d4fa4b287c98a3b37d7fa52ce66fc8f1",
+  "28": "7e727fdd840800b0d1f07ee77400fb2a09fe02df0db338a740eca633237c8bc6",
+  "29": "966fe4bb91ddd15f056d22762c587f11ea1336148b0957ea0cebb690a4bd4881",
+  "30": "b658065519c3e953279b836225ad9e7b16ac2ae94ae9fecf1a54cc17848c11c6",
+  "31": "f6dc25581603eff91236a661395b0c1fa2a3e4e8c044b0dea11c27d7709284fb"
  },
  "__rest__": "85c13429612c31523d60858f9c1f8860027800b8a1a07fdceb234a74b1f8f973"
 }

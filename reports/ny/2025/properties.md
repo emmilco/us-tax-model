@@ -13,7 +13,7 @@ The refusal properties of spec 6.3 checked over 400 generated returns with New Y
 
 ## Branch coverage of the generated corpus
 
-303 of 326 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+310 of 333 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - ny_it201.no:true
 - ny_it201.gate.line26:true

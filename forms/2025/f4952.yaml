@@ -623,16 +623,20 @@ form:
       type: Bool
       label: Form 4952 is used and must be filed (for an election, or to claim interest when the exception does not apply)
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - f4952.used
-              - const: true
-          - op: test
+            - f4952.used
+            - const: true
+          then: f4952.required_test
+        - guard:
+            op: test
             eq:
-              - f4952.required_test
-              - const: true
+            - f4952.used
+            - const: false
+          then: f4952.no
       cite:
         doc: f4952
         locator: p. 3, Who Must File, "you must file Form 4952 to claim a deduction for your investment interest expense"

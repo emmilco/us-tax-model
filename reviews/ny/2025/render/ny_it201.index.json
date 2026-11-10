@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
  "head_rows": {
-  "line-scoped reviews": "4 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -21,10 +21,10 @@
   },
   {
    "key": "1",
-   "record": "91a645334350e3f58e818166ff9c24042f9f16ca4daf608f73a4eb8f62b42929",
+   "record": "08c0112d0f11401c2519b3632ce5e6e06806ca2108820ecbbf6d81d6cf76064b",
    "status": "UNCLEAR",
-   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" The line-scoped request (rerun because line 1's refusals read the restructured ny_it201.ask.state_resident) gave only the pages its citations name, and line 1 cites only the form page, so p. 7 was not given; the restatement follows it, rounded half up by amb.ny.2025.whole_dollars (IT-201-I p. 2, whole dollars). The model found the refusals consistent with the text. Citation gap: BUG-0439. Project stands.",
-   "subject_key": "5b1ee8e81036443b84eb4b32905cd93bfd0530410e807fdb4336345b7e2c6899"
+   "ruling": "Ruling: interface gap; ny_it201i p. 7, Lines 1 through 19, \"The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z.\" The line-scoped request (rerun because line 1's third refusal gate, ny_it201.gate.spouse_nonresident, became a choice on the filing status, BUG-0466/0471 follow-up) gave only the pages its citations name, and line 1 cites only the form page, so p. 7 was not given; the restatement follows it, rounded half up by amb.ny.2025.whole_dollars (IT-201-I p. 2, whole dollars). The model found the refusals consistent with the text. Citation gap: BUG-0439, as ruled on this line before. Project stands.",
+   "subject_key": "6c41544ad7da2dbe5de77782e6aab06312f68c756cbffd9ea06bd8c3609b4c8c"
   },
   {
    "key": "2",
@@ -1018,15 +1018,15 @@
   },
   {
    "key": "80",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "08c0112d0f11401c2519b3632ce5e6e06806ca2108820ecbbf6d81d6cf76064b",
    "status": "MATCH",
-   "subject_key": "be83e2e48c1af8408964925cc0ac4ccb5eaaa9c5c48949aa88d71c971cfb189b"
+   "subject_key": "fef2966c5b37591bc582ddf43d438b0cb7210584d4bc8a14de7f6ad3fb542a7d"
   }
  ],
  "subjects": {
   "C": "2f4cfc9d431b0aebac77b25abb69510a4a1c812968120d5bfa95309f7b5a70d8",
   "H (count)": "0c8c87a494445eedac6b11398976eaa3cc695158ad2d7d62ac07fde93f319b62",
-  "1": "b82216fde0ece13b54ed01a359eff700095b60d0893c828617d2cfae397e68bd",
+  "1": "9d38ea7dc7cfbdf0b6ba9b20d7a38113e939e18a7d2113eca32dc541f6eaf402",
   "2": "41a22296c262da3dae545c48ee34e0f1f178cb656d50b89b46b262cac4e8812b",
   "3": "ec9f1eece2ab7d441953cd351e87aea12bb92fc22ece65ed1f45d255fdff67fe",
   "4": "e1d3337da945c87972767038058bedf0ab6eef7a7fc10340c3622f29f03e99ff",
@@ -1191,7 +1191,7 @@
   "78": "f08ea0aa827d718b485cc1bb05fdc2ee50db17c837651617732c9a5828448c26",
   "78a": "bf5b3713b257994c48ecef4d585529abbd38d8f935780e46d5cad6d80af9fd60",
   "78b": "24d520cf3f6dc798998e1f90b5a40dd7f38843ae1de48b354a3da321cb38a4f6",
-  "80": "c3e95064e42b75d697f018c796f3a9261573236c0005b609cf5c2dedb9708bb5"
+  "80": "7c97286f2935f18ed36285afc6441d6de491e831d620ab4a1accd6f70e99ab4b"
  },
  "__rest__": "eff327fea59ac4f2d56d292426436dddf9389d4a6daf829d71258d67638e5517"
 }

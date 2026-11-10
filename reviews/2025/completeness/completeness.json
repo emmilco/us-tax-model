@@ -489,23 +489,27 @@
  },
  {
   "form": "dependent",
-  "prompt_sha": "8ebef6a4230a9c6b06b457f4e0e89ffd160d5f56f94c42a086167e823e30b217",
+  "prompt_sha": "751585c44274ae12984c946f8a2fb07ccff9c14988f014931285a6d03ac3417e",
   "claims": [
    {
     "item": "dependent.edu_aoc",
     "sentences": [
      {
-      "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
+      "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
       "page": "i8863 p. 3"
+     },
+     {
+      "quote": "If you claim the American opportunity credit even though you’re not eligible, you may be banned from claiming the credit depending on your conduct.",
+      "page": "i8863 p. 1"
      },
      {
       "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
       "page": "i8863 p. 1"
      }
     ],
-    "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+    "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If you claim the American opportunity credit even though you’re not eligible, you may be banned from claiming the credit depending on your conduct. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
     "page": "i8863 p. 3; i8863 p. 1",
-    "why_uncovered": "dependent.edu_aoc treats a student as an American opportunity credit student when lines 23 to 26, the TINs and the EIN allow it. No question asks whether the filer is in a 2-year (reckless or intentional disregard) or 10-year (fraud) ban period after a final determination. No question asks whether an earlier American opportunity credit was denied or reduced, which would require Form 8862. No refusal covers these situations. The HANDLED ELSEWHERE list has no Form 8863 or Form 8862 refusal for the American opportunity credit; the Form 8862 rules it lists are for the EIC only.",
+    "why_uncovered": "dependent.edu_aoc treats a student as an American opportunity credit student when lines 23–26, the filer and student TINs, and the institution's EIN allow it. No question asks whether a prior final determination of reckless or intentional disregard (2-year ban) or fraud (10-year ban) bars the credit. No question asks whether a prior denial or reduction requires Form 8862. No refusal on this form or in the HANDLED ELSEWHERE list covers either case; the f8863 refusal there concerns only the Credit Limit Worksheet.",
     "closest_item": "dependent.edu_aoc",
     "effect": "eligibility"
    }
@@ -614,7 +618,7 @@
     ]
    }
   ],
-  "cost": 0.560704,
+  "cost": 0.568752,
   "model": "claude-opus-5-5"
  },
  {
@@ -634,30 +638,8 @@
  },
  {
   "form": "eic",
-  "prompt_sha": "b27e654357e57dfb59c7dfcdeabf6ef9fed9a2d597e15ba3eddf2127737ffae3",
+  "prompt_sha": "c6e997a517e8b3faf8b8701673309ab74814394eb90bea6188055f1377e2a47a",
   "claims": [
-   {
-    "item": "eic.step1_ssn",
-    "sentences": [
-     {
-      "quote": "Do you, and your spouse if filing a joint return, have a social security number issued on or before the due date of your 2025 return (including extensions) that allows you to work and is valid for EIC purposes (explained later under Definitions and Special Rules)?",
-      "page": "i1040gi p. 40"
-     },
-     {
-      "quote": "However, if “Valid for Work Only With DHS Authorization” is printed on your social security card, your SSN is valid for EIC purposes only as long as the DHS authorization is still valid.",
-      "page": "i1040gi p. 45"
-     },
-     {
-      "quote": "If you didn’t have an SSN issued on or before the due date of your 2025 return (including extensions), you can’t claim the EIC on your original or an amended 2025 return.",
-      "page": "i1040gi p. 45"
-     }
-    ],
-    "quote": "Do you, and your spouse if filing a joint return, have a social security number issued on or before the due date of your 2025 return (including extensions) that allows you to work and is valid for EIC purposes (explained later under Definitions and Special Rules)? / However, if “Valid for Work Only With DHS Authorization” is printed on your social security card, your SSN is valid for EIC purposes only as long as the DHS authorization is still valid. / If you didn’t have an SSN issued on or before the due date of your 2025 return (including extensions), you can’t claim the EIC on your original or an amended 2025 return.",
-    "page": "i1040gi p. 40; i1040gi p. 45",
-    "why_uncovered": "The helper is worded only as \"Do you have\" a valid SSN. Its cite covers only the \"Not Valid for Employment\" exception. Nothing shows that the spouse's SSN is tested on a joint return. Nothing tests whether a DHS-conditioned SSN still had valid authorization. No question or refusal addresses either point.",
-    "closest_item": "eic.step1_ssn",
-    "effect": "eligibility"
-   },
    {
     "item": "eic.check_27c",
     "sentences": [
@@ -668,67 +650,23 @@
     ],
     "quote": "Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box in the instructions for line 27a.",
     "page": "i1040gi p. 43",
-    "why_uncovered": "The encoding says outright that the filer's own choice not to claim the EIC is not asked. A filer who declines the credit would still have a credit computed on line 27a, with no 27c box.",
+    "why_uncovered": "The encoding says it does not ask whether the filer chooses not to claim the EIC. eic.check_27c only covers the STOP instructions. eic.credit still computes and enters the credit on line 27a when the filer has elected not to claim it. No question or refusal covers this election.",
     "closest_item": "eic.check_27c",
     "effect": "amount"
    },
    {
-    "item": "eic.has_qc",
+    "item": "eic.step1_ssn",
     "sentences": [
      {
-      "quote": "If you have at least one child who meets the conditions to be your qualifying child for purposes of claiming the EIC, complete and attach Schedule EIC, even if that child doesn’t have a valid SSN.",
-      "page": "i1040gi p. 40"
-     },
-     {
-      "quote": "If you have a qualifying child, complete and attach Schedule EIC.",
-      "page": "i1040gi p. 46"
+      "quote": "However, if “Valid for Work Only With DHS Authorization” is printed on your social security card, your SSN is valid for EIC purposes only as long as the DHS authorization is still valid.",
+      "page": "i1040gi p. 45"
      }
     ],
-    "quote": "If you have at least one child who meets the conditions to be your qualifying child for purposes of claiming the EIC, complete and attach Schedule EIC, even if that child doesn’t have a valid SSN. / If you have a qualifying child, complete and attach Schedule EIC.",
-    "page": "i1040gi p. 40; i1040gi p. 46",
-    "why_uncovered": "No line, question or refusal produces or requires Schedule EIC when there is a qualifying child. This includes a child without a valid SSN who adds no credit.",
-    "closest_item": "eic.has_qc",
-    "effect": "presentation"
-   },
-   {
-    "item": "eic.qc_count",
-    "sentences": [
-     {
-      "quote": "If the child is a full-time student, check the “Full-time student” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR",
-      "page": "i1040gi p. 41"
-     },
-     {
-      "quote": "If the child is permanently and totally disabled, check the “Permanently and totally disabled” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
-      "page": "i1040gi p. 41"
-     },
-     {
-      "quote": "If the child lived with you in the United States for more than half of 2025, check both boxes (box (a) and box (b)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
-      "page": "i1040gi p. 41"
-     },
-     {
-      "quote": "Also, make sure to check the box to the right of the address block on page 1 of Form 1040 or 1040-SR.",
-      "page": "i1040gi p. 41"
-     }
-    ],
-    "quote": "If the child is a full-time student, check the “Full-time student” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR / If the child is permanently and totally disabled, check the “Permanently and totally disabled” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR. / If the child lived with you in the United States for more than half of 2025, check both boxes (box (a) and box (b)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR. / Also, make sure to check the box to the right of the address block on page 1 of Form 1040 or 1040-SR.",
-    "page": "i1040gi p. 41",
-    "why_uncovered": "The qualifying-child count is computed. No encoded item sets the Dependents-section boxes (rows 5 and 6) or the address-block box that the qualifying-child tests require.",
-    "closest_item": "eic.qc_count",
-    "effect": "presentation"
-   },
-   {
-    "item": "eic.us_home",
-    "sentences": [
-     {
-      "quote": "If your main home (and spouse’s if filing a joint return) was in the United States for more than half of 2025, check the box to the right of the address block on page 1 of Form 1040 or 1040–SR.",
-      "page": "i1040gi p. 42"
-     }
-    ],
-    "quote": "If your main home (and spouse’s if filing a joint return) was in the United States for more than half of 2025, check the box to the right of the address block on page 1 of Form 1040 or 1040–SR.",
-    "page": "i1040gi p. 42",
-    "why_uncovered": "The question asks whether the main home was in the United States. No line or helper records the resulting checkbox on page 1 of Form 1040.",
-    "closest_item": "eic.us_home",
-    "effect": "presentation"
+    "quote": "However, if “Valid for Work Only With DHS Authorization” is printed on your social security card, your SSN is valid for EIC purposes only as long as the DHS authorization is still valid.",
+    "page": "i1040gi p. 45",
+    "why_uncovered": "eic.step1_ssn cites only the “Not Valid for Employment” exception to a valid SSN. It has no question about a DHS-authorization legend or whether that authorization is still current. No refusal covers that case, so such a number could be treated as valid after the authorization has lapsed.",
+    "closest_item": "eic.step1_ssn",
+    "effect": "eligibility"
    },
    {
     "item": "eic.wsb_se",
@@ -740,7 +678,7 @@
     ],
     "quote": "Don’t include on these lines any statutory employee income, any net profit from services performed as a notary public, any amount exempt from self-employment tax as the result of the filing and approval of Form 4029 or Form 4361, or any other amounts exempt from self-employment tax.",
     "page": "i1040gi p. 47",
-    "why_uncovered": "Worksheet B lines 1e and 2c are computed from Schedule C. No question or refusal excludes notary public net profit, Form 4029/4361 exempt amounts, or other amounts exempt from self-employment tax. Statutory employee income is refused, but the other exclusions are not addressed.",
+    "why_uncovered": "eic.wsb_se computes Worksheet B lines 1e and 2c from Schedule SE and Schedule C amounts. Nothing asks about notary public net profit, a Form 4029 or 4361 exemption, or other SE-exempt amounts, and nothing removes them. Line 2b (Schedule C, line 31) would include such amounts. Statutory employee income alone is refused.",
     "closest_item": "eic.wsb_se",
     "effect": "amount"
    }
@@ -773,7 +711,7 @@
     ]
    }
   ],
-  "cost": 0.391636,
+  "cost": 0.363448,
   "model": "claude-opus-5-5"
  },
  {
@@ -3525,73 +3463,69 @@
  },
  {
   "form": "person",
-  "prompt_sha": "d03ed69a7669a043f0644acca759dc6380ebe167329738870890a4025821daea",
+  "prompt_sha": "79f142b084936f6aef36d141cb07bb7c3123c9675341fa9d22bcd8587361599b",
   "claims": [
    {
     "item": "person.se_line2",
     "sentences": [
      {
-      "quote": "Fees received for services performed as a notary public.",
-      "page": "i1040sse p. 4"
-     },
-     {
-      "quote": "If you had no other income subject to SE tax, check box number 3 and enter “Exempt—Notary” on Schedule 2 (Form 1040), line 4. Don’t file Schedule SE.",
-      "page": "i1040sse p. 4"
-     },
-     {
-      "quote": "Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
-      "page": "i1040sc p. 14"
-     },
-     {
       "quote": "If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2.",
+      "page": "i1040sse p. 4"
+     },
+     {
+      "quote": "Fees received for services performed as a notary public.",
       "page": "i1040sse p. 4"
      },
      {
       "quote": "However, do not report this amount on Schedule SE (Form 1040), line 2.",
       "page": "i1040sc p. 14"
+     },
+     {
+      "quote": "Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
+      "page": "i1040sc p. 14"
      }
     ],
-    "quote": "Fees received for services performed as a notary public. / If you had no other income subject to SE tax, check box number 3 and enter “Exempt—Notary” on Schedule 2 (Form 1040), line 4. Don’t file Schedule SE. / Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income. / If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2. / However, do not report this amount on Schedule SE (Form 1040), line 2.",
+    "quote": "If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2. / Fees received for services performed as a notary public. / However, do not report this amount on Schedule SE (Form 1040), line 2. / Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
     "page": "i1040sse p. 4; i1040sc p. 14",
-    "why_uncovered": "person.se_line2 takes the net profit or loss from every one of the person's Schedules C (person.sc_total). The self-employment screen (person.se_screen) does not ask about notary public fees, and no refusal covers them. The only statutory-employee refusals listed are on the EIC and Schedule 8812 paths. Nothing removes a notary's or statutory employee's Schedule C profit from Schedule SE line 2. That profit then flows into SE tax, the line 13 deduction, the SEP/SIMPLE compensation base, Form 8959, and earned income for the EIC and Form 2441.",
+    "why_uncovered": "Schedule SE line 2 is computed as this person's Schedule C line 31 for all businesses. The self-employment screen (person.se_screen) does not ask about statutory-employee Schedules C or notary public fees. The EIC and Schedule 8812 refusals for statutory employees are listed under HANDLED ELSEWHERE, but they apply only to those credits. They do not stop self-employment tax from being figured, so this income can wrongly be subject to SE tax.",
     "closest_item": "person.se_line2",
     "effect": "amount"
    },
    {
-    "item": "person.ira_trad",
+    "item": "person.dc_earned",
     "sentences": [
      {
-      "quote": "Don’t include any repayments of qualified reservist distributions. You can’t deduct them.",
-      "page": "i1040gi p. 95"
+      "quote": "If you are filing Schedule C (Form 1040) as a statutory employee, the amount shown on line 1 of the schedule.",
+      "page": "i2441 p. 4"
      },
      {
-      "quote": "Include on line 1 any repayment of a qualified reservist distribution.",
-      "page": "i8606 p. 9"
+      "quote": "If you filed Schedule C (Form 1040) to report income as a statutory employee, also include as earned income the amount from line 1 of that Schedule C (Form 1040).",
+      "page": "p503 p. 11"
      }
     ],
-    "quote": "Don’t include any repayments of qualified reservist distributions. You can’t deduct them. / Include on line 1 any repayment of a qualified reservist distribution.",
-    "page": "i1040gi p. 95; i8606 p. 9",
-    "why_uncovered": "The person.ira_trad question lists several items to exclude: rollovers, prior-year deducted contributions, withdrawn contributions, trustees' fees and SEP/SIMPLE employer contributions. It does not mention repayments of qualified reservist distributions. A filer could therefore count such a repayment as a deductible contribution. In addition, person.ira_nondeductible (Form 8606 line 1) is derived only from the worksheet, so the repayment is never added to line 1 or to basis.",
-    "closest_item": "person.ira_trad",
+    "quote": "If you are filing Schedule C (Form 1040) as a statutory employee, the amount shown on line 1 of the schedule. / If you filed Schedule C (Form 1040) to report income as a statutory employee, also include as earned income the amount from line 1 of that Schedule C (Form 1040).",
+    "page": "i2441 p. 4; p503 p. 11",
+    "why_uncovered": "Earned income for Form 2441 is built from Form W-2 box 1, line 1e, and Schedule SE line 3 less line 15 (or Schedule C profit or loss when there is no Schedule SE). Nothing asks whether a Schedule C is a statutory-employee one, so the rule to use Schedule C line 1 is not applied and no refusal covers the case.",
+    "closest_item": "person.dc_earned",
     "effect": "amount"
    },
    {
-    "item": "person.edu_aoc",
+    "item": "person.employer_max",
     "sentences": [
      {
-      "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
-      "page": "i8863 p. 3"
+      "quote": "If you choose a matching contribution less than 3%, the percentage must be at least 1%.",
+      "page": "p560 p. 16"
      },
      {
-      "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
-      "page": "i8863 p. 1"
+      "quote": "You can't choose a percentage less than 3% for more than 2 years during the 5-year period that ends with (and includes) the year for which the choice is effective.",
+      "page": "p560 p. 16"
      }
     ],
-    "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
-    "page": "i8863 p. 3; i8863 p. 1",
-    "why_uncovered": "person.edu_aoc qualifies a student based on lines 23–26, the filers' TINs and the institution's EIN. No question asks about a prior disallowance, a reckless/fraud ban period, or the Form 8862 requirement, and no refusal covers them. The EIC Form 8862 rules are separate and are not applied to the American opportunity credit.",
-    "closest_item": "person.edu_aoc",
-    "effect": "eligibility"
+    "quote": "If you choose a matching contribution less than 3%, the percentage must be at least 1%. / You can't choose a percentage less than 3% for more than 2 years during the 5-year period that ends with (and includes) the year for which the choice is effective.",
+    "page": "p560 p. 16",
+    "why_uncovered": "The SIMPLE matching maximum is always set at 3% of compensation. person.simple_kind only asks whether the plan matches or makes nonelective contributions. It never asks for a lower elected match percentage, so matching contributions above a lower elected rate are not caught as excess and get deducted.",
+    "closest_item": "person.employer_max",
+    "effect": "amount"
    },
    {
     "item": "person.x_c22",
@@ -3603,7 +3537,7 @@
     ],
     "quote": "An eligible distribution to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA.",
     "page": "p590b p. 28",
-    "why_uncovered": "person.x_c22 limits exception 22 only to the $10,300 parameter (person.x_cap22). The IRA's present value is never asked, so the 50% limit is not applied.",
+    "why_uncovered": "Exception 22 is capped only at the fixed $10,300. Nothing asks for the present value of the IRA, and no refusal covers the 50%-of-value limit.",
     "closest_item": "person.x_c22",
     "effect": "amount"
    },
@@ -3621,8 +3555,44 @@
     ],
     "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000. / You are also limited in taking emergency personal expense distributions in subsequent years as you may not take this type of distribution in the following 3 calendar years unless:",
     "page": "p590b p. 28",
-    "why_uncovered": "person.x_c23 caps exception 23 at $1,000, and person.x_two23 refuses more than one such distribution in the year. Two rules are missing. First, the 'total interest in the IRA minus $1,000' limit is not applied, because the IRA balance is never asked. Second, no question asks whether an emergency personal expense distribution was taken in the prior 3 calendar years and left unrepaid or not replaced by contributions.",
+    "why_uncovered": "Exception 23 is capped at $1,000, and the case of more than one exception-23 distribution in the year is refused. But nothing asks for the IRA balance (the 'total interest minus $1,000' limit). Nothing asks whether an earlier emergency distribution in the prior 3 calendar years was not repaid or offset by new contributions, which would disqualify this one.",
     "closest_item": "person.x_c23",
+    "effect": "amount"
+   },
+   {
+    "item": "person.edu_aoc",
+    "sentences": [
+     {
+      "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
+      "page": "i8863 p. 3"
+     },
+     {
+      "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+      "page": "i8863 p. 1"
+     }
+    ],
+    "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+    "page": "i8863 p. 3; i8863 p. 1",
+    "why_uncovered": "Eligibility for the American opportunity credit rests on lines 23–26, the TINs, the Form 1098-T and the EIN. No question or refusal covers an earlier disallowance, the 2-year or 10-year ban, or the Form 8862 requirement.",
+    "closest_item": "person.edu_aoc",
+    "effect": "eligibility"
+   },
+   {
+    "item": "person.ira_trad",
+    "sentences": [
+     {
+      "quote": "Don’t include any repayments of qualified reservist distributions. You can’t deduct them.",
+      "page": "i1040gi p. 95"
+     },
+     {
+      "quote": "Include on line 1 any repayment of a qualified reservist distribution.",
+      "page": "i8606 p. 9"
+     }
+    ],
+    "quote": "Don’t include any repayments of qualified reservist distributions. You can’t deduct them. / Include on line 1 any repayment of a qualified reservist distribution.",
+    "page": "i1040gi p. 95; i8606 p. 9",
+    "why_uncovered": "The traditional IRA contribution question leaves out rollovers, contributions deducted for 2024, withdrawn contributions, trustees' fees and employer contributions. It does not leave out repayments of qualified reservist distributions, so such a repayment would be counted on worksheet line 11 and deducted. It would also not be sent to Form 8606 line 1 as nondeductible.",
+    "closest_item": "person.ira_trad",
     "effect": "amount"
    }
   ],
@@ -3897,7 +3867,7 @@
     ]
    }
   ],
-  "cost": 1.080632,
+  "cost": 1.096684,
   "model": "claude-opus-5-5"
  },
  {
@@ -4484,7 +4454,7 @@
  },
  {
   "form": "s1a",
-  "prompt_sha": "c1e801ce9956e20b7564a71b5df3cbc956c0fe08b133e0c2a9ba317a7255348e",
+  "prompt_sha": "a13b8e4aadf6fcb9efa06d4c39c2d3cc523483babe21077c9b7301e5593ea0ac",
   "claims": [
    {
     "item": "s1a.tips",
@@ -4512,75 +4482,31 @@
     ],
     "quote": "Amounts are qualified tips only if they are paid voluntarily and without any consequence in the event of nonpayment. / Qualified tips do not include service charges, automatic gratuities, or any other mandatory amounts automatically added to a customer’s bill by the vendor or the establishment, unless the customer is expressly provided an option to disregard or modify such charges, gratuities, and amounts without consequence. / Cash tips don’t include items paid in any medium other than cash. / Tips received while performing a service that is a felony or misdemeanor under applicable law are not qualified tips. / Amounts received for prostitution and pornographic activity are not qualified tips.",
     "page": "i1040gi p. 102",
-    "why_uncovered": "The tips question asks only whether the tips were received as an employee in a listed tipped occupation. It does not tell the filer to leave out automatic gratuities and service charges, non-cash tips, or tips earned for illegal services. Line 4a takes the W-2 box 7 or Form 4070 amount without any of these exclusions.",
+    "why_uncovered": "The tips question only asks whether the tips were received as an employee in an occupation on the IRS tipped-occupations list. It does not exclude automatic gratuities or service charges, noncash tips, or tips from illegal services. Nothing asks about these exclusions or refuses when they apply.",
     "closest_item": "s1a.tips",
     "effect": "amount"
    },
    {
-    "item": "s1a.tip_ssn_count",
+    "item": "s1a.tip_reported",
     "sentences": [
      {
-      "quote": "A valid SSN for purposes of the deduction for qualified tips is one that is valid for employment and that is issued by the Social Security Administration (SSA) before the due date of your 2025 return (including extensions).",
-      "page": "i1040gi p. 104"
+      "quote": "If you received tips as an employee in more than one occupation for the same employer, only those tips that were received in an occupation on the list of occupations that customarily and regularly received tips on or before December 31, 2024, are considered qualified tips.",
+      "page": "i1040gi p. 103"
      },
      {
-      "quote": "However, if “Valid for Work Only with DHS Authorization” is printed on your social security card, your SSN is valid only as long as the DHS authorization is valid.",
-      "page": "i1040gi p. 104"
+      "quote": "Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c.",
+      "page": "i1040gi p. 103"
      }
     ],
-    "quote": "A valid SSN for purposes of the deduction for qualified tips is one that is valid for employment and that is issued by the Social Security Administration (SSA) before the due date of your 2025 return (including extensions). / However, if “Valid for Work Only with DHS Authorization” is printed on your social security card, your SSN is valid only as long as the DHS authorization is valid.",
-    "page": "i1040gi p. 104",
-    "why_uncovered": "The count relies on a valid SSN but cites only the 'Fill out Part II only if' sentence. Nothing asks whether the SSN is valid for employment, was issued before the return's due date, or depends on DHS authorization that is still valid. A filer with an SSN not valid for employment would wrongly get the deduction.",
-    "closest_item": "s1a.tip_ssn_count",
-    "effect": "eligibility"
-   },
-   {
-    "item": "s1a.ot_ssn_count",
-    "sentences": [
-     {
-      "quote": "A valid SSN for purposes of the deduction for qualified overtime compensation is one that is valid for employment and that is issued by the SSA before the due date of your 2025 return (including extensions).",
-      "page": "i1040gi p. 108"
-     }
-    ],
-    "quote": "A valid SSN for purposes of the deduction for qualified overtime compensation is one that is valid for employment and that is issued by the SSA before the due date of your 2025 return (including extensions).",
-    "page": "i1040gi p. 108",
-    "why_uncovered": "Nothing implements or asks about the requirement that the SSN be valid for employment and issued before the due date. The helper cites only the general SSN condition.",
-    "closest_item": "s1a.ot_ssn_count",
-    "effect": "eligibility"
-   },
-   {
-    "item": "s1a.senior_count",
-    "sentences": [
-     {
-      "quote": "A valid SSN for purposes of the enhanced deduction for seniors is one that is valid for employment and that is issued by the SSA before the due date of your 2025 return (including extensions).",
-      "page": "i1040gi p. 110"
-     }
-    ],
-    "quote": "A valid SSN for purposes of the enhanced deduction for seniors is one that is valid for employment and that is issued by the SSA before the due date of your 2025 return (including extensions).",
-    "page": "i1040gi p. 110",
-    "why_uncovered": "The senior count checks the birth date and that the SSN is valid. It does not ask whether the SSN is valid for employment or was issued before the return's due date.",
-    "closest_item": "s1a.senior_count",
-    "effect": "eligibility"
+    "quote": "If you received tips as an employee in more than one occupation for the same employer, only those tips that were received in an occupation on the list of occupations that customarily and regularly received tips on or before December 31, 2024, are considered qualified tips. / Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c.",
+    "page": "i1040gi p. 103",
+    "why_uncovered": "The amount is taken from Form W-2 box 7, Forms 4070, or box 14 for each employer. Nothing removes tips earned in a non-listed occupation for the same employer. The tips question only asks whether any listed-occupation tips were received, not whether the reported amount mixes listed and unlisted occupations.",
+    "closest_item": "s1a.tip_reported",
+    "effect": "amount"
    },
    {
     "item": "s1a.carloan",
     "sentences": [
-     {
-      "quote": "The vehicle has undergone final assembly in the United States.",
-      "page": "i1040gi p. 109"
-     },
-     {
-      "quote": "The vehicle is a car, minivan, van, SUV, pickup truck, or motorcycle, and has a gross vehicle weight rating of less than 14,000 pounds, and",
-      "page": "i1040gi p. 109"
-     },
-     {
-      "quote": "The original use of the vehicle starts with you (a used vehicle does not qualify),",
-      "page": "i1040gi p. 109"
-     },
-     {
-      "quote": "Your loan is secured by a first lien on the purchased APV.",
-      "page": "i1040gi p. 109"
-     },
      {
       "quote": "The loan was originated by you.",
       "page": "i1040gi p. 109"
@@ -4590,13 +4516,29 @@
       "page": "i1040gi p. 109"
      },
      {
+      "quote": "Your loan is secured by a first lien on the purchased APV.",
+      "page": "i1040gi p. 109"
+     },
+     {
+      "quote": "The vehicle is a motor vehicle manufactured primarily for use on public streets, roads, and highways (not including a vehicle operated exclusively on a rail or rails),",
+      "page": "i1040gi p. 109"
+     },
+     {
+      "quote": "The vehicle is a car, minivan, van, SUV, pickup truck, or motorcycle, and has a gross vehicle weight rating of less than 14,000 pounds, and",
+      "page": "i1040gi p. 109"
+     },
+     {
+      "quote": "The vehicle has undergone final assembly in the United States.",
+      "page": "i1040gi p. 109"
+     },
+     {
       "quote": "If a loan met requirements 1 through 5 at the time it was originated by a previous obligor, and you became the obligor by reason of a previous obligor’s death, interest paid by you on the loan is generally QPVLI if the loan continues to be secured by a first lien on the purchased APV.",
       "page": "i1040gi p. 109"
      }
     ],
-    "quote": "The vehicle has undergone final assembly in the United States. / The vehicle is a car, minivan, van, SUV, pickup truck, or motorcycle, and has a gross vehicle weight rating of less than 14,000 pounds, and / The original use of the vehicle starts with you (a used vehicle does not qualify), / Your loan is secured by a first lien on the purchased APV. / The loan was originated by you. / The proceeds from your loan were used to purchase an APV (lease payments do not qualify). / If a loan met requirements 1 through 5 at the time it was originated by a previous obligor, and you became the obligor by reason of a previous obligor’s death, interest paid by you on the loan is generally QPVLI if the loan continues to be secured by a first lien on the purchased APV.",
+    "quote": "The loan was originated by you. / The proceeds from your loan were used to purchase an APV (lease payments do not qualify). / Your loan is secured by a first lien on the purchased APV. / The vehicle is a motor vehicle manufactured primarily for use on public streets, roads, and highways (not including a vehicle operated exclusively on a rail or rails), / The vehicle is a car, minivan, van, SUV, pickup truck, or motorcycle, and has a gross vehicle weight rating of less than 14,000 pounds, and / The vehicle has undergone final assembly in the United States. / If a loan met requirements 1 through 5 at the time it was originated by a previous obligor, and you became the obligor by reason of a previous obligor’s death, interest paid by you on the loan is generally QPVLI if the loan continues to be secured by a first lien on the purchased APV.",
     "page": "i1040gi p. 109",
-    "why_uncovered": "The car loan question covers a loan taken out after 2024, a new vehicle, the vehicle types and personal use. It does not ask about final assembly in the U.S., the weight limit under 14,000 pounds, a first lien securing the loan, or whether the filer originated the loan. It also does not exclude leases or apply the exception for a loan assumed because the previous obligor died.",
+    "why_uncovered": "The car loan question asks only four things: a loan taken out after 2024, to buy a new vehicle of a listed type, for personal use. It does not ask about or refuse on loan origination by the filer, lease versus purchase, first-lien security, the weight limit or public-road requirement, or US final assembly. It also does not cover the deceased-obligor exception.",
     "closest_item": "s1a.carloan",
     "effect": "eligibility"
    },
@@ -4634,7 +4576,7 @@
     ],
     "quote": "In order to take the QPVLI deduction, you must include the vehicle identification number (VIN) of the purchased applicable passenger vehicle (APV) (see Applicable passenger vehicle, later) on your tax return. / If the purchased APV was replaced due to an unforeseen intervening event (for example, a defective APV was replaced under a state lemon law), include the VIN of the substitute APV. / Interest on items and services not customarily financed in an APV purchase transaction and that are directly related to the purchased APV, such as liability insurance, a trailer, or amounts representing debt on a vehicle traded in as part of the purchase transaction for the APV (so-called negative equity), is not eligible for the deduction. / The loan amount is limited to the outstanding balance of the refinanced loan as of the date of the refinancing. / If some or all of the QPVLI qualifies to be deducted in more than one place on your return, you may choose where to report the deduction, but you cannot deduct the same amount more than once. / On line 22, column (ii), enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F). / On line 22, column (iii), enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii).",
     "page": "i1040gi p. 109; i1040gi p. 110",
-    "why_uncovered": "Line 22 is not encoded. The line 23 total adds column (iii), but nothing collects the required VINs or reduces interest by the amount deducted on Schedule C, E or F. Nothing excludes interest on negative equity, insurance or a trailer, or limits a refinanced loan to the balance outstanding at refinancing.",
+    "why_uncovered": "No line 22 item is encoded. Nothing collects the required VIN for each vehicle. Nothing subtracts interest already deducted on Schedule C, E or F (column ii). Nothing excludes interest on negative equity, insurance or trailers, or limits refinanced loan amounts. Line 23 simply adds column (iii) amounts.",
     "closest_item": "s1a.line23_total",
     "effect": "amount"
    }
@@ -4656,7 +4598,7 @@
     ]
    }
   ],
-  "cost": 0.225008,
+  "cost": 0.21612399999999998,
   "model": "claude-opus-5-5"
  },
  {

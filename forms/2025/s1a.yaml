@@ -235,20 +235,20 @@ form:
     label: 'Part II applies: qualified tips claimed, not married filing separately, and a person who received them has a valid SSN'
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - s1a.tips
-        - const: true
-      - op: test
-        ne:
-        - f1040.status
-        - const: mfs
-      - op: test
-        eq:
-        - s1a.tip_ssn
-        - const: true
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1a.tips
+          - const: true
+        then: s1a.part2_ssn
+      - guard:
+          op: test
+          eq:
+          - s1a.tips
+          - const: false
+        then: s1a.no
     cite:
       doc: i1040gi
       locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
@@ -947,20 +947,20 @@ form:
     label: 'Part III applies: qualified overtime claimed, not married filing separately, and a person who received it has a valid SSN'
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - s1a.overtime
-        - const: true
-      - op: test
-        ne:
-        - f1040.status
-        - const: mfs
-      - op: test
-        eq:
-        - s1a.ot_ssn
-        - const: true
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1a.overtime
+          - const: true
+        then: s1a.part3_ssn
+      - guard:
+          op: test
+          eq:
+          - s1a.overtime
+          - const: false
+        then: s1a.no
     cite:
       doc: i1040gi
       locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on
@@ -1896,15 +1896,9 @@ form:
       field: person.one
       where:
         op: test
-        all:
-        - op: test
-          eq:
-          - person.age65
-          - const: true
-        - op: test
-          eq:
-          - person.work_ssn
-          - const: true
+        eq:
+        - person.senior_work_ssn
+        - const: true
     cite:
       doc: i1040gi
       locator: 'p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN"'
@@ -2371,19 +2365,9 @@ form:
       field: person.one
       where:
         op: test
-        all:
-        - op: test
-          eq:
-          - person.role
-          - const: spouse
-        - op: test
-          eq:
-          - person.age65
-          - const: true
-        - op: test
-          eq:
-          - person.work_ssn
-          - const: true
+        eq:
+        - person.spouse_senior_work_ssn
+        - const: true
     cite:
       doc: i1040gi
       locator: 'p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN"'
@@ -2515,3 +2499,95 @@ form:
     cite:
       doc: f1040s1a
       locator: Schedule 1-A (2025), line 38
+  - id: s1a.no
+    printed: (helper)
+    label: Year parameter household.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: f1040s1a
+      locator: Schedule 1-A (2025)
+  - id: s1a.part2_ssn
+    printed: (helper)
+    label: 'Part II, once qualified tips are claimed: not married filing separately, and a person who received them has a valid SSN'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: single
+        then: s1a.tip_ssn
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: mfj
+        then: s1a.tip_ssn
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: mfs
+        then: s1a.no
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: hoh
+        then: s1a.tip_ssn
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: qss
+        then: s1a.tip_ssn
+    cite:
+      doc: i1040gi
+      locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
+        Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
+  - id: s1a.part3_ssn
+    printed: (helper)
+    label: 'Part III, once qualified overtime is claimed: not married filing separately, and a person who received it has a valid SSN'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: single
+        then: s1a.ot_ssn
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: mfj
+        then: s1a.ot_ssn
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: mfs
+        then: s1a.no
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: hoh
+        then: s1a.ot_ssn
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: qss
+        then: s1a.ot_ssn
+    cite:
+      doc: i1040gi
+      locator: p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if"; p. 106, Part III No Tax on
+        Overtime, "If you are married, you must file a joint return with your spouse to claim this deduction"

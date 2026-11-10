@@ -4,6 +4,52 @@
  "rulings": [
   {
    "printed": "10",
+   "project_expr_sha256": "0275634d651e53375c346c16c6efc3d1da892904b0a2997e56d60bce7e1f6e78",
+   "second_expr_sha256": "97743d5bebb6ea12c688fe5a9037dbd22830039dd83c94a3786bda3d7ad13418",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: class M agreed on all 344 values of 8 cases on this encoding. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 60 of 2,361 comparisons agree; differences {\"candidate-refuses\": 463, \"candidate-unknown\": 32, \"project-unknown\": 86, \"value\": 1720}; on completed returns {\"value\": 1123}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "13f81c41075a3b5e2e2949314208fdcd70992cb3e1a97f864d5de88ebb34d127",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:stage14.asset.bonus_40_before@s1a",
+     "fixture:stage14.asset.refuse_qip_2017@s1a",
+     "fixture:stage14.asset.refuse_ads_past_gds@s1a",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s1a",
+     "fixture:stage14.asset.refuse_class@s1a",
+     "fixture:stage14.asset.refuse_listed_low@s1a",
+     "fixture:stage14.asset.refuse_s179_over@s1a",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s1a",
+     "fixture:classm.f8889.3.deepseek@s1a",
+     "fixture:classm.f8889.4.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.f8960.2.deepseek@s1a",
+     "fixture:classm.person.1.deepseek@s1a",
+     "fixture:classm.sa.5.deepseek@s1a",
+     "fixture:classm.carloan.3@s1a",
+     "fixture:classm.f4952.4@s1a",
+     "fixture:classm.f8889.3@s1a",
+     "fixture:classm.f8889.4@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "10",
    "project_expr_sha256": "44cd2f2a0aa3847c1c35e18c1b847866688163cb9975905b32c1cf58a7162569",
    "second_expr_sha256": "97743d5bebb6ea12c688fe5a9037dbd22830039dd83c94a3786bda3d7ad13418",
    "ruling": "Ruling: model error; i1040gi p. 101, Part II caution: \"Fill out Schedule 1-A, Part II, only if: • You (and/or your spouse if filing a joint return) received qualified tips in 2025. • You have a valid social security number (SSN).\" The candidate's line 10 subtracts line 9 from line 8 with no test of whether Part II is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out (e.g. classm.f2441.1.deepseek: project $0.00, candidate -$100,000.00). Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part2 false), which changes no deduction but makes the candidate's shown amount a defect. Triage executable-triage-v2 (triage/s1a.json; 1,099 fixtures, 500 generated returns seed 20261026, 108 partial records): 78 of 1,707 comparisons agree; differences: 1104 value, 394 candidate-refuses, 129 project-unknown, 2 candidate-unknown; by full-interview outcome of the return: completed: 508 value; incomplete: 217 value, 93 project-unknown; refused: 394 candidate-refuses, 379 value, 36 project-unknown, 2 candidate-unknown; witnesses (project / candidate): value e.g. classm.f2441.1.deepseek ($0.00 / $-100,000.00; return completed), classm.f2441.2.deepseek ($0.00 / $-215,000.00; return completed); candidate-refuses e.g. classm.w2.1.deepseek ($0.00 / refusal at f2441.line14_bad; return refused), classm.f8889.4.deepseek ($0.00 / refusal at sd.other_forms; return refused); candidate-unknown e.g. stage16.cleanup.refuse.f2441_line24 ($0.00 / unknown person[spouse].sav_trad; return refused), ss.mfs ($0.00 / unknown sb.unsupported; return refused); project-unknown e.g. classm.f4952.2 (unknown s1a.tips / $348,523.00; return incomplete), classm.f4952.1 (unknown s1a.tips / $238,706.00; return refused). The project-unknown records withhold the Part screen the source needs to decide whether the Part is filled out, on returns the full interview refuses or leaves incomplete. The candidate refusals and unknowns are upstream gates or answers its ungated chain reaches through line 3, all on refused returns.",
@@ -120,6 +166,52 @@
   },
   {
    "printed": "12",
+   "project_expr_sha256": "d0a9b85b6d6a66dda9c931ae93c7cc9346a882263b611823555619a7b77db8b6",
+   "second_expr_sha256": "c163ea609668687a26757eb81627137f3a71d3157d1d308320de6d6af832c80d",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: class M agreed on all 344 values of 8 cases on this encoding. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 1,497 of 2,361 comparisons agree; differences {\"candidate-refuses\": 463, \"candidate-unknown\": 32, \"project-unknown\": 86, \"value\": 283}; on completed returns {\"value\": 140}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "161e823d20fe9502a72717896c09fbe966e50eec322667b5c3cb9fa6ddde25f3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@s1a",
+     "fixture:stage14.asset.refuse_ads_past_gds@s1a",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s1a",
+     "fixture:stage14.asset.refuse_class@s1a",
+     "fixture:stage14.asset.refuse_listed_low@s1a",
+     "fixture:stage14.asset.refuse_s179_over@s1a",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s1a",
+     "fixture:classm.f8889.3.deepseek@s1a",
+     "fixture:classm.f8889.4.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.f8960.2.deepseek@s1a",
+     "fixture:classm.g28.1.deepseek@s1a",
+     "fixture:classm.sd.1.deepseek@s1a",
+     "fixture:classm.sd.2.deepseek@s1a",
+     "fixture:classm.sd.3.deepseek@s1a",
+     "fixture:classm.u1250.1.deepseek@s1a",
+     "fixture:classm.clcw.2.deepseek@s1a",
+     "fixture:classm.person.1.deepseek@s1a",
+     "fixture:classm.sa.5.deepseek@s1a",
+     "fixture:classm.carloan.3@s1a",
+     "fixture:classm.f4952.4@s1a",
+     "fixture:classm.f8889.3@s1a",
+     "fixture:classm.f8889.4@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "12",
    "project_expr_sha256": "ddba9ab450216e0d0f351830ba84164b2809acb2af18fa3eabec0feb20b786aa",
    "second_expr_sha256": "d7c24841b975556b2a30ccfa03b43556a87f99eba20e728dec3aac4593101bd6",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: class M agreed on all 344 values of 8 cases on this encoding.",
@@ -194,6 +286,36 @@
   },
   {
    "printed": "14a",
+   "project_expr_sha256": "1b2749f4eaa8a43e63506b5985d308a19091b7ee3e33d351e1939336e3324abe",
+   "second_expr_sha256": "4417700936888e257a20a26fbdc484cf2d388b41b755edc907601f45a707579b",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,352 of 2,361 comparisons agree; differences {\"candidate-refuses\": 1, \"candidate-unknown\": 5, \"value\": 3}; on completed returns none.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "358e1a976f9f0b24468ed4c28cc5811f5a0bf509d7d0a6110898ba379e4f7dfc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.3.deepseek@s1a",
+     "fixture:classm.asset.4@s1a",
+     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@s1a",
+     "generated:20261026.96@s1a",
+     "generated:20261026.258@s1a",
+     "generated:20261026.302@s1a",
+     "generated:20261026.386@s1a",
+     "partial:classm.f8960.3.deepseek-s1a.tips@s1a",
+     "partial:classm.f8960.3.deepseek-s1a.carloan@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14a",
    "project_expr_sha256": "7f5ea97462d075a8e090a3124844f73215454727643710e292e204a3e4e33ad7",
    "second_expr_sha256": "e5f6cd9c18ce3f6ac2b9dad790f6917bb4771d7a35b0741f07b93f878eac26fc",
    "ruling": "Ruling: model error; i1040gi p. 106, Part III caution: \"Fill out Schedule 1-A, Part III, only if: • You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025; and • You have a valid social security number (SSN).\" The candidate's line 14a reads the worksheet roster $otjob (person.ot_total) on every return with no s1a.overtime or Part gate, although s1a.overtime is in its interface and it tests it on its deduction line. A filer who answers s1a.overtime no is never asked for that roster, so the candidate's line 14a is unknown on completed returns where the source needs no answer, because the Part is not filled out at all: an answer required that the source does not need to determine the result. The value differences are married filing separately returns (stage12.mfs.bar $0.00 / $6,000.00; generated 96, 258, 386: s1a.overtime true, status mfs), on which the candidate omits \"If you are married, you must file a joint return with your spouse to claim this deduction\" (p. 106) on this line; all are refused at s3.mfs. Triage executable-triage-v2 (triage/s1a.json; 1,099 fixtures, 500 generated returns seed 20261026, 108 partial records): 406 of 1,707 comparisons agree; differences: 1294 candidate-unknown, 4 value, 2 project-unknown, 1 candidate-refuses; by full-interview outcome of the return: completed: 424 candidate-unknown; incomplete: 208 candidate-unknown; refused: 662 candidate-unknown, 4 value, 2 project-unknown, 1 candidate-refuses; witnesses (project / candidate): value e.g. stage12.mfs.bar ($0.00 / $6,000.00; return refused), generated 96 ($0.00 / $32,267.31; return refused); candidate-refuses e.g. generated 302 ($0.00 / refusal at person[taxpayer].otjob[ot_1].refused; return refused); candidate-unknown e.g. classm.f2441.1.deepseek ($0.00 / unknown $otjob@person[taxpayer]; return completed), classm.f2441.3.deepseek ($0.00 / unknown $otjob@person[taxpayer]; return completed); project-unknown e.g. classm.carloan.1 without s1a.overtime (unknown s1a.overtime / $0.00; return refused), classm.otjob.1 without s1a.overtime (unknown s1a.overtime / $11,471.00; return refused).",
@@ -249,6 +371,38 @@
   },
   {
    "printed": "14b",
+   "project_expr_sha256": "439bbff74c77328b320660bc90d309c721b37b713da51007ce619c048ed54c15",
+   "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "ruling": "Ruling: scope; project retained. Overtime reported on Form 1099-NEC or 1099-MISC is nonemployee compensation, refused through scope.schedule1, which line 14b carries. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,249 of 2,361 comparisons agree; differences {\"candidate-refuses\": 3, \"project-refuses\": 2, \"project-unknown\": 107}; on completed returns none.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "5166cc808b1e90ac0500e343cb989c274c4c77fe104244bd9f94766c9683c6c9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@s1a",
+     "fixture:classm.f8889.5.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.dependent.1.deepseek@s1a",
+     "fixture:classm.dependent.2.deepseek@s1a",
+     "fixture:stage12.refuse.overtime_nonemployee@s1a",
+     "fixture:stage14.refuse.sch1a_tips@s1a",
+     "fixture:stage14.refuse.sch1a_tips_business_only@s1a",
+     "fixture:stage14.sch1a.refuse_overtime_1099@s1a",
+     "generated:20261026.102@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14b",
    "project_expr_sha256": "8b329826e42fa4269f98654296f06c2be376971eeee6f249b1fa048306ee35ef",
    "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
    "ruling": "Ruling: scope; i1040gi p. 108, Line 14b: \"Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3.\" and p. 106, Part III caution: \"Fill out Schedule 1-A, Part III, only if: • You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025; and • You have a valid social security number (SSN).\" The candidate gives $0 and refuses at s1a.h_sc_1a (the sc.tips_ot screen) on every return; it refuses stage14.refuse.sch1a_tips and stage14.refuse.sch1a_tips_business_only where the project's line 14b is $0 (Part III gate false), and the project refuses both returns at s1.sc_1a on lines 13 and 21. The project's refusals at its cited screen scope.schedule1 (stage12.refuse.overtime_nonemployee, generated 102), where the candidate gives $0, are on refused returns; the project-unknown records withhold s1a.overtime, which the source needs (p. 106). No difference is on a completed return. Triage executable-triage-v2 (triage/s1a.json; 1,099 fixtures, 500 generated returns seed 20261026, 108 partial records): 1,525 of 1,707 comparisons agree; differences: 177 project-unknown, 2 candidate-refuses, 2 project-refuses, 1 candidate-unknown; by full-interview outcome of the return: incomplete: 109 project-unknown; refused: 68 project-unknown, 2 candidate-refuses, 2 project-refuses, 1 candidate-unknown; witnesses (project / candidate): candidate-refuses e.g. stage14.refuse.sch1a_tips ($0.00 / refusal at s1a.h_sc_1a; return refused), stage14.refuse.sch1a_tips_business_only ($0.00 / refusal at s1a.h_sc_1a; return refused); project-refuses e.g. stage12.refuse.overtime_nonemployee (refusal at scope.schedule1 / $0.00; return refused), generated 102 (refusal at scope.schedule1 / $0.00; return refused); candidate-unknown e.g. stage16.cleanup.f8959_line16_se_refused ($0.00 / unknown person[taxpayer].sc[b].tips_ot; return refused); project-unknown e.g. classm.f4952.2 (unknown s1a.overtime / $0.00; return incomplete), classm.f4952.1 (unknown s1a.overtime / $0.00; return refused).",
@@ -291,6 +445,41 @@
    "second_expr_sha256": "901120f84ffa71d1292de8ff6bee4999087f9225e63ebd215335025184e17008",
    "ruling": "Ruling: scope; project retained. Overtime reported on Form 1099-NEC or 1099-MISC is nonemployee compensation, refused through scope.schedule1, which line 14b carries.",
    "subject_key": "fe11c4aec7b356d55ca339dfd5ee4278917ada78c5c631714f47306d66ce5c5f"
+  },
+  {
+   "printed": "14c",
+   "project_expr_sha256": "39fd782cc31048b4c15ead214715589a2a83342a09e5f529b8cb8486189eaa9b",
+   "second_expr_sha256": "bf34b6c56470ecee5d0df5ffaba5f84779f288284ce958f0540ab196338c2994",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: class M agreed on all 344 values of 8 cases on this encoding. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,348 of 2,361 comparisons agree; differences {\"candidate-refuses\": 4, \"candidate-unknown\": 5, \"project-refuses\": 1, \"value\": 3}; on completed returns none.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "0de72d8aac80624b2a329b69d5fa9d776b4236bfa803ee051410789ad87e3233",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.3.deepseek@s1a",
+     "fixture:classm.asset.4@s1a",
+     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@s1a",
+     "fixture:stage12.refuse.overtime_nonemployee@s1a",
+     "fixture:stage14.refuse.sch1a_tips@s1a",
+     "fixture:stage14.refuse.sch1a_tips_business_only@s1a",
+     "fixture:stage14.sch1a.refuse_overtime_1099@s1a",
+     "generated:20261026.96@s1a",
+     "generated:20261026.258@s1a",
+     "generated:20261026.302@s1a",
+     "generated:20261026.386@s1a",
+     "partial:classm.f8960.3.deepseek-s1a.tips@s1a",
+     "partial:classm.f8960.3.deepseek-s1a.carloan@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "14c",
@@ -395,6 +584,42 @@
    "subject_key": "14b5b865f5f28dc0f7588a109c58d01b0f77f95b312ff0065f6438a5033cbb33"
   },
   {
+   "printed": "15",
+   "project_expr_sha256": "9e073c55de5fdbaf88c74b5dc2e8340a86d7af10be2253c8dcc31a66cd3dac89",
+   "second_expr_sha256": "e667b27b4c0470a1e4852fae30fb6ae6ef0462aef772271677cacf92f3301f9b",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). The project also counts only the tips or overtime of a person with a valid SSN ('the spouse who received ... must have a valid SSN'); the second sums every person's. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,346 of 2,361 comparisons agree; differences {\"candidate-refuses\": 4, \"candidate-unknown\": 7, \"project-refuses\": 1, \"value\": 3}; on completed returns none.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "74987af63ebd58bf51a0edf7f68fe7f28c8d896133819d11defe28216691b913",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.3.deepseek@s1a",
+     "fixture:classm.asset.4@s1a",
+     "fixture:stage21.choose.eic_limit_status_unanswered@s1a",
+     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@s1a",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@s1a",
+     "fixture:stage12.refuse.overtime_nonemployee@s1a",
+     "fixture:stage14.refuse.sch1a_tips@s1a",
+     "fixture:stage14.refuse.sch1a_tips_business_only@s1a",
+     "fixture:stage14.sch1a.refuse_overtime_1099@s1a",
+     "generated:20261026.96@s1a",
+     "generated:20261026.258@s1a",
+     "generated:20261026.302@s1a",
+     "generated:20261026.386@s1a",
+     "partial:classm.f8960.3.deepseek-s1a.tips@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "16",
    "project_expr_sha256": "69c1763d30f2035d8f4b3097d6d5c20d16ecc4b9645281d90c8aa81b03c42e83",
    "second_expr_sha256": "d12771cf09eaa3ad5c3a5e391d50c7522cbf8ebbd9ddd80bf3a5f1e2ba749821",
@@ -449,6 +674,52 @@
    "subject_key": "6a45dff3630a8a7866de0f163446af977db000549762ed968b5653cee136c0cc"
   },
   {
+   "printed": "16",
+   "project_expr_sha256": "fb9c4e33ca48c4b1d139c43fb3525143dbb392304951986b564faec88deb5b8b",
+   "second_expr_sha256": "d12771cf09eaa3ad5c3a5e391d50c7522cbf8ebbd9ddd80bf3a5f1e2ba749821",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 109 of 2,361 comparisons agree; differences {\"candidate-refuses\": 459, \"candidate-unknown\": 32, \"project-unknown\": 86, \"value\": 1675}; on completed returns {\"value\": 1092}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "fa768dc295523311941106fa5157037ec240ac587e95cc3d8fe8bad57e89b28e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:stage14.asset.bonus_40_before@s1a",
+     "fixture:stage14.asset.refuse_qip_2017@s1a",
+     "fixture:stage14.asset.refuse_ads_past_gds@s1a",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s1a",
+     "fixture:stage14.asset.refuse_class@s1a",
+     "fixture:stage14.asset.refuse_listed_low@s1a",
+     "fixture:stage14.asset.refuse_s179_over@s1a",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s1a",
+     "fixture:classm.f8889.3.deepseek@s1a",
+     "fixture:classm.f8889.4.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.f8960.2.deepseek@s1a",
+     "fixture:classm.person.1.deepseek@s1a",
+     "fixture:classm.sa.5.deepseek@s1a",
+     "fixture:classm.carloan.3@s1a",
+     "fixture:classm.f4952.4@s1a",
+     "fixture:classm.f8889.3@s1a",
+     "fixture:classm.f8889.4@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "17",
    "project_expr_sha256": "04f6053fe3dd1c1387459d3d67ce013072ee02a1591b53f6d8d9a9181b00ed2c",
    "second_expr_sha256": "ad5234ef149f2d7afbcd340843c236d276c159ae9224102a999a94aad830d447",
@@ -461,6 +732,41 @@
    "second_expr_sha256": "ad5234ef149f2d7afbcd340843c236d276c159ae9224102a999a94aad830d447",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110).",
    "subject_key": "043d1e3afb3b327440b9ed3105c5591504ce56fb08f947020010c8c6bc7c94c8"
+  },
+  {
+   "printed": "17",
+   "project_expr_sha256": "a1e91c187de56578bdb3d017a6f3008a9dfd783e2ec7692700964c84de8a6560",
+   "second_expr_sha256": "ad5234ef149f2d7afbcd340843c236d276c159ae9224102a999a94aad830d447",
+   "ruling": "Ruling: model error; i1040gi p. 106, Part III caution: \"Fill out Schedule 1-A, Part III, only if: • You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025; and • You have a valid social security number (SSN).\" The candidate's line 17 enters $150,000 or $300,000 with no test of whether Part III is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part3 false), which changes no deduction but makes the candidate's shown amount a defect. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 58 of 2,361 comparisons agree; differences {\"candidate-unknown\": 2, \"project-unknown\": 125, \"value\": 2176}; on completed returns {\"value\": 1122}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "552fdb5b038a1424780539166db5544602c215993f365df831cd8a7d53875d72",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:stage14.asset.bonus_40_before@s1a",
+     "fixture:classm.f8889.1.deepseek@s1a",
+     "fixture:classm.f8889.2.deepseek@s1a",
+     "fixture:classm.f8889.5.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.f8960.2.deepseek@s1a",
+     "fixture:stage21.choose.eic_limit_status_unanswered@s1a",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "17",
@@ -542,6 +848,98 @@
      "fixture:classm.sb.1@s1a",
      "fixture:stage16.cleanup.refuse.f2441_line24@s1a",
      "fixture:ss.mfs@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "18",
+   "project_expr_sha256": "fe8b7b7bc3130fbf33544ddb838d64a82df306f8be3b29404ae16bed75c1c44e",
+   "second_expr_sha256": "195889107804ef26c386257fa60b5df9b0ad2fd9d3866a9807a6fcb96ea3a8c3",
+   "ruling": "Ruling: model error; i1040gi p. 106, Part III caution: \"Fill out Schedule 1-A, Part III, only if: • You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025; and • You have a valid social security number (SSN).\" The candidate's line 18 subtracts line 17 from line 16 with no test of whether Part III is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part3 false), which changes no deduction but makes the candidate's shown amount a defect. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 73 of 2,361 comparisons agree; differences {\"candidate-refuses\": 459, \"candidate-unknown\": 32, \"project-unknown\": 86, \"value\": 1711}; on completed returns {\"value\": 1119}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "21de929d9008d844bc013640f98e76ce49bc7ee7afab2f5b38972fdd48240583",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:stage14.asset.bonus_40_before@s1a",
+     "fixture:stage14.asset.refuse_qip_2017@s1a",
+     "fixture:stage14.asset.refuse_ads_past_gds@s1a",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s1a",
+     "fixture:stage14.asset.refuse_class@s1a",
+     "fixture:stage14.asset.refuse_listed_low@s1a",
+     "fixture:stage14.asset.refuse_s179_over@s1a",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s1a",
+     "fixture:classm.f8889.3.deepseek@s1a",
+     "fixture:classm.f8889.4.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.f8960.2.deepseek@s1a",
+     "fixture:classm.person.1.deepseek@s1a",
+     "fixture:classm.sa.5.deepseek@s1a",
+     "fixture:classm.carloan.3@s1a",
+     "fixture:classm.f4952.4@s1a",
+     "fixture:classm.f8889.3@s1a",
+     "fixture:classm.f8889.4@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "20",
+   "project_expr_sha256": "378b065eba2952eda7211af46e6b51d6c5a007030264039350c98116bc2cedb1",
+   "second_expr_sha256": "c25e5788f150d0375c57f345aae2dd12f15c83aa7fc48884db4fac85bbe485dc",
+   "ruling": "Ruling: model error; i1040gi p. 106, Part III caution: \"Fill out Schedule 1-A, Part III, only if: • You (and/or your spouse if filing a joint return) received qualified overtime compensation in 2025; and • You have a valid social security number (SSN).\" The candidate's line 20 figures the $100-per-$1,000 reduction with no test of whether Part III is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part3 false), which changes no deduction but makes the candidate's shown amount a defect. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 1,506 of 2,361 comparisons agree; differences {\"candidate-refuses\": 459, \"candidate-unknown\": 32, \"project-unknown\": 86, \"value\": 278}; on completed returns {\"value\": 139}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "499a0fdcec85914da7d539e3e2686fb23265fa1b59855475ba913b24dcf55ecf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@s1a",
+     "fixture:stage14.asset.refuse_ads_past_gds@s1a",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s1a",
+     "fixture:stage14.asset.refuse_class@s1a",
+     "fixture:stage14.asset.refuse_listed_low@s1a",
+     "fixture:stage14.asset.refuse_s179_over@s1a",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s1a",
+     "fixture:classm.f8889.3.deepseek@s1a",
+     "fixture:classm.f8889.4.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.f8960.2.deepseek@s1a",
+     "fixture:classm.g28.1.deepseek@s1a",
+     "fixture:classm.sd.1.deepseek@s1a",
+     "fixture:classm.sd.3.deepseek@s1a",
+     "fixture:classm.u1250.1.deepseek@s1a",
+     "fixture:classm.clcw.2.deepseek@s1a",
+     "fixture:classm.clcw26.1.deepseek@s1a",
+     "fixture:classm.person.1.deepseek@s1a",
+     "fixture:classm.sa.5.deepseek@s1a",
+     "fixture:classm.carloan.3@s1a",
+     "fixture:classm.f4952.4@s1a",
+     "fixture:classm.f8889.3@s1a",
+     "fixture:classm.f8889.4@s1a"
     ],
     "policy": "executable-triage-v2"
    }
@@ -951,6 +1349,52 @@
   },
   {
    "printed": "31",
+   "project_expr_sha256": "705c9b7ac108c103f463c8fe6c23cf1ac06756dab5f5b30313e6e7ac68e6b62e",
+   "second_expr_sha256": "d12771cf09eaa3ad5c3a5e391d50c7522cbf8ebbd9ddd80bf3a5f1e2ba749821",
+   "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" The candidate's line 31 copies line 3 with no test of whether Part V is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false), which changes no deduction but makes the candidate's shown amount a defect. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 131 of 2,361 comparisons agree; differences {\"candidate-refuses\": 464, \"candidate-unknown\": 32, \"project-unknown\": 7, \"value\": 1727}; on completed returns {\"value\": 1073}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "53abdc30abfb43326823e6c1d0b7236586e1763ccae01984142d8e42b00d7aa2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:stage14.asset.bonus_40_before@s1a",
+     "fixture:stage14.asset.refuse_qip_2017@s1a",
+     "fixture:stage14.asset.refuse_ads_past_gds@s1a",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s1a",
+     "fixture:stage14.asset.refuse_class@s1a",
+     "fixture:stage14.asset.refuse_listed_low@s1a",
+     "fixture:stage14.asset.refuse_s179_over@s1a",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s1a",
+     "fixture:classm.f8889.3.deepseek@s1a",
+     "fixture:classm.f8889.4.deepseek@s1a",
+     "fixture:classm.f8889.5.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.sa.5.deepseek@s1a",
+     "fixture:classm.carloan.3@s1a",
+     "fixture:classm.s1.6@s1a",
+     "fixture:classm.sli.4@s1a",
+     "fixture:classm.ssb.5@s1a",
+     "fixture:classm.eic.10@s1a",
+     "fixture:classm.f8889.3@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "31",
    "project_expr_sha256": "e2cb6e3deee92b0ae0f151244bf107f128b1abffa837b8fe9340181bc2ec9720",
    "second_expr_sha256": "d12771cf09eaa3ad5c3a5e391d50c7522cbf8ebbd9ddd80bf3a5f1e2ba749821",
    "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" The candidate's line 31 copies line 3 with no test of whether Part V is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out (e.g. classm.f2441.1.deepseek, filer not born before January 2, 1961: project $0.00, candidate $50,000.00). Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false), which changes no deduction but makes the candidate's shown amount a defect. Triage executable-triage-v2 (triage/s1a.json; 1,099 fixtures, 500 generated returns seed 20261026, 108 partial records): 115 of 1,707 comparisons agree; differences: 1198 value, 391 candidate-refuses, 3 candidate-unknown; by full-interview outcome of the return: completed: 499 value; incomplete: 298 value; refused: 401 value, 391 candidate-refuses, 3 candidate-unknown; witnesses (project / candidate): value e.g. classm.f2441.1.deepseek ($0.00 / $50,000.00; return completed), classm.f2441.2.deepseek ($0.00 / $85,000.00; return completed); candidate-refuses e.g. classm.f8889.4.deepseek ($0.00 / refusal at sd.other_forms; return refused), classm.f8889.5.deepseek ($0.00 / refusal at sd.carryover; return refused); candidate-unknown e.g. stage16.cleanup.refuse.rrta_medicare ($0.00 / unknown f2441.benefits; return refused), stage16.cleanup.refuse.f2441_line24 ($0.00 / unknown person[spouse].sav_trad; return refused). The candidate refusals and unknowns are upstream gates or answers its ungated chain reaches through line 3, all on refused returns.",
@@ -979,6 +1423,41 @@
      "fixture:stage16.cleanup.refuse.rrta_medicare@s1a",
      "fixture:stage16.cleanup.refuse.f2441_line24@s1a",
      "fixture:ss.mfs@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "32",
+   "project_expr_sha256": "0fddd268284a6261232c259b35376a20118a00f55c87bee4cce18d42d5cef5d7",
+   "second_expr_sha256": "dc61b4f66a7d3a6575009ce1cb9ae0a04363f4ce6ec1b2e4058adaca2b6c99cf",
+   "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" The candidate's line 32 enters $75,000 or $150,000 with no test of whether Part V is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false), which changes no deduction but makes the candidate's shown amount a defect. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 80 of 2,361 comparisons agree; differences {\"candidate-unknown\": 2, \"project-unknown\": 24, \"value\": 2255}; on completed returns {\"value\": 1103}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "5bf967432874e92674c873feee48235a059273d1fcf3e280e32141a675b1f9cd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:stage14.asset.bonus_40_before@s1a",
+     "fixture:classm.f8889.1.deepseek@s1a",
+     "fixture:classm.f8889.2.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.sa.5.deepseek@s1a",
+     "fixture:classm.asset.3@s1a",
+     "fixture:classm.s1.6@s1a",
+     "fixture:stage21.choose.eic_limit_status_unanswered@s1a",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@s1a"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1071,6 +1550,98 @@
      "fixture:stage16.cleanup.refuse.rrta_medicare@s1a",
      "fixture:stage16.cleanup.refuse.f2441_line24@s1a",
      "fixture:ss.mfs@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "33",
+   "project_expr_sha256": "c61b05f775e929d19bf112ccae9f5b13978abd3c71840a051bf66598f7824f79",
+   "second_expr_sha256": "960bca2ca8413f552784cd71608ee1f75dfc71dd4fc3383a0af2cf78e4d87e89",
+   "ruling": "Ruling: model error; i1040gi p. 110, Part V caution: \"Fill out Schedule 1-A, Part V, only if: • You (and/or your spouse if filing a joint return) were born before January 2, 1961. • You have a valid social security number (SSN).\" The candidate's line 33 subtracts line 32 from line 31 with no test of whether Part V is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part5 false), which changes no deduction but makes the candidate's shown amount a defect. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 102 of 2,361 comparisons agree; differences {\"candidate-refuses\": 464, \"candidate-unknown\": 32, \"project-unknown\": 7, \"value\": 1756}; on completed returns {\"value\": 1098}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "8d17955ceb59098f37331eda8c7de846e331cc617028158ea4a61258f1af2721",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:stage14.asset.bonus_40_before@s1a",
+     "fixture:stage14.asset.refuse_qip_2017@s1a",
+     "fixture:stage14.asset.refuse_ads_past_gds@s1a",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s1a",
+     "fixture:stage14.asset.refuse_class@s1a",
+     "fixture:stage14.asset.refuse_listed_low@s1a",
+     "fixture:stage14.asset.refuse_s179_over@s1a",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s1a",
+     "fixture:classm.f8889.3.deepseek@s1a",
+     "fixture:classm.f8889.4.deepseek@s1a",
+     "fixture:classm.f8889.5.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.sa.5.deepseek@s1a",
+     "fixture:classm.carloan.3@s1a",
+     "fixture:classm.s1.6@s1a",
+     "fixture:classm.sli.4@s1a",
+     "fixture:classm.ssb.5@s1a",
+     "fixture:classm.eic.10@s1a",
+     "fixture:classm.f8889.3@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "34",
+   "project_expr_sha256": "193f7b366025d5174e32e57249a265bd2842b6d304384075fac51a97b895cc1e",
+   "second_expr_sha256": "1bd3acd329e11f27ce3f6ea0c7b3a7517b262fb4c3fcad123a7fdd8b53137494",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 1,203 of 2,361 comparisons agree; differences {\"candidate-refuses\": 464, \"candidate-unknown\": 32, \"project-unknown\": 7, \"value\": 655}; on completed returns {\"value\": 362}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "41a7ae138da7cbf385fe86e8155fbecd489e7ac9da20de53d87fd2cd0af008e7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@s1a",
+     "fixture:stage14.asset.refuse_ads_past_gds@s1a",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s1a",
+     "fixture:stage14.asset.refuse_class@s1a",
+     "fixture:stage14.asset.refuse_listed_low@s1a",
+     "fixture:stage14.asset.refuse_s179_over@s1a",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s1a",
+     "fixture:classm.f8889.3.deepseek@s1a",
+     "fixture:classm.f8889.4.deepseek@s1a",
+     "fixture:classm.f8889.5.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f8960.2.deepseek@s1a",
+     "fixture:classm.g28.1.deepseek@s1a",
+     "fixture:classm.sd.1.deepseek@s1a",
+     "fixture:classm.sd.3.deepseek@s1a",
+     "fixture:classm.u1250.1.deepseek@s1a",
+     "fixture:classm.clcw.2.deepseek@s1a",
+     "fixture:classm.sa.5.deepseek@s1a",
+     "fixture:classm.carloan.3@s1a",
+     "fixture:classm.s1.6@s1a",
+     "fixture:classm.sli.4@s1a",
+     "fixture:classm.ssb.5@s1a",
+     "fixture:classm.eic.10@s1a",
+     "fixture:classm.f8889.3@s1a"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1194,6 +1765,52 @@
    "subject_key": "42b1bdbd5fd4ff2f8325381fa49dd2e2a0d6fe18b1d343ffb656011258a49d7f"
   },
   {
+   "printed": "35",
+   "project_expr_sha256": "d3c50700fe21fb015847c8a784ad167c89c2afa0e9c28e1755afdba82067aaa9",
+   "second_expr_sha256": "1f3bab9947593c0fd67e24c01d4c9048600fcdc3f06d3b5772ad6050391f574e",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 351 of 2,361 comparisons agree; differences {\"candidate-refuses\": 464, \"candidate-unknown\": 32, \"project-unknown\": 7, \"value\": 1507}; on completed returns {\"value\": 981}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "d87346fbf176fe225af6702d420f1f27d01a14ab4882ef2f7025f89698847205",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:stage14.asset.bonus_40_before@s1a",
+     "fixture:stage14.asset.refuse_qip_2017@s1a",
+     "fixture:stage14.asset.refuse_ads_past_gds@s1a",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s1a",
+     "fixture:stage14.asset.refuse_class@s1a",
+     "fixture:stage14.asset.refuse_listed_low@s1a",
+     "fixture:stage14.asset.refuse_s179_over@s1a",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s1a",
+     "fixture:classm.f8889.3.deepseek@s1a",
+     "fixture:classm.f8889.4.deepseek@s1a",
+     "fixture:classm.f8889.5.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.sa.5.deepseek@s1a",
+     "fixture:classm.carloan.3@s1a",
+     "fixture:classm.s1.6@s1a",
+     "fixture:classm.sli.4@s1a",
+     "fixture:classm.ssb.5@s1a",
+     "fixture:classm.eic.10@s1a",
+     "fixture:classm.f8889.3@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "36a",
    "project_expr_sha256": "0cc592c611493bc5096bd3e89304550aec4d5501f08828826473be162c0364af",
    "second_expr_sha256": "3f6916718124695fcb7e482780045c1dd786d3d04374560cc62aee7a3c49ead1",
@@ -1243,6 +1860,29 @@
   },
   {
    "printed": "36b",
+   "project_expr_sha256": "c59d55ec0f0ae23c55042682c521f880ab8633413df51e028633f07138643e89",
+   "second_expr_sha256": "1e0e12f2daab72b5419f6a3f3da7ae18c919b2befd82e6ff4c18b9cc3da69e4b",
+   "ruling": "Ruling: scope; i1040gi p. 110, Death of a taxpayer in 2025: \"If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn’t qualify for the enhanced deduction for seniors.\" As line 36a for the spouse: the candidate gives $0 and the project refuses at its cited gate s1a.spouse_senior_decedent (stage13.refuse.senior_spouse_decedent, generated 491). The project-unknown record lacks a roster role on an incomplete return. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,358 of 2,361 comparisons agree; differences {\"project-refuses\": 2, \"project-unknown\": 1}; on completed returns none.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "0a641d40d8488242adc28659c2e8dd131a30865390edbd607fe6feb9e31e3abc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage13.refuse.senior_spouse_decedent@s1a",
+     "fixture:ss.person.separation@s1a",
+     "generated:20261026.491@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "36b",
    "project_expr_sha256": "e54764e6e34c00caf2f6ba1692ba0373732cf38858e49aa487e0606f747ecd7f",
    "second_expr_sha256": "c85849d35842e58cd9617e566c72e02f2bed4176c0be9f6bb1701522d235d951",
    "ruling": "Ruling: scope; i1040gi p. 110, Death of a taxpayer in 2025: \"If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn’t qualify for the enhanced deduction for seniors.\" As line 36a for the spouse: the candidate gives $0 and the project refuses at its cited gate s1a.spouse_senior_decedent (stage13.refuse.senior_spouse_decedent, generated 491). The project-unknown record lacks a roster role on an incomplete return. Triage executable-triage-v2 (triage/s1a.json; 1,099 fixtures, 500 generated returns seed 20261026, 108 partial records): 1,704 of 1,707 comparisons agree; differences: 2 project-refuses, 1 project-unknown; by full-interview outcome of the return: incomplete: 1 project-unknown; refused: 2 project-refuses; witnesses (project / candidate): project-refuses e.g. stage13.refuse.senior_spouse_decedent (refusal at s1a.spouse_senior_decedent / $0.00; return refused), generated 491 (refusal at s1a.spouse_senior_decedent / $0.00; return refused); project-unknown e.g. ss.person.separation (unknown person[second].role / $0.00; return incomplete).",
@@ -1275,6 +1915,36 @@
    "second_expr_sha256": "22a3baa0002a362471770d9d56ebf99dc79f7f478bb089d5dab41c3fb3464d54",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). The project also counts only the tips or overtime of a person with a valid SSN ('the spouse who received ... must have a valid SSN'); the second sums every person's.",
    "subject_key": "81a929fbd24ef446f7cb2b2f3cf283a80c83afb319c76b9e0c6ccbe22edc8129"
+  },
+  {
+   "printed": "4a",
+   "project_expr_sha256": "7f1f2202db3582ae97903206468a31335e96b5240d3dc9e71b0dc05b38bfce54",
+   "second_expr_sha256": "61b1d60080392bf4c74c96ef6212c9c690a0076eab3655e74ebe0a0738cf550b",
+   "ruling": "Ruling: representation; i1040gi p. 101, Schedule 1-A Part II caution: \"Fill out Schedule 1-A, Part II, only if: • You (and/or your spouse if filing a joint return) received qualified tips in 2025. • You have a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips must have a valid SSN.\" and p. 104, \"If you received qualified tips as an employee with respect to employment with more than one employer, enter -0- on line 4a\". Both sides count employers only for people with person.work_ssn and enter the reported tips for one employer; the project adds the Part II gate s1a.part2, while the candidate tests s1a.tips and filing status inside its one-employer test, which is false on its own when there is no single employer. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,353 of 2,361 comparisons agree; differences {\"candidate-refuses\": 3, \"candidate-unknown\": 2, \"project-unknown\": 2, \"value\": 1}; on completed returns none.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "f76f9dc26568b859ad393d0e43b80f93da7c8a61de718d5e46c2d52e3f243e02",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.person.1.deepseek@s1a",
+     "fixture:classm.sli.1@s1a",
+     "fixture:classm.ssb.1@s1a",
+     "fixture:classm.person.15@s1a",
+     "fixture:stage12.refuse.form4137_one_employer@s1a",
+     "generated:20261026.95@s1a",
+     "generated:20261026.386@s1a",
+     "generated:20261026.431@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "4a",
@@ -1329,6 +1999,36 @@
    "second_expr_sha256": "545ceedf30ec1a935963acb2da22a397b45c780d54b77cfb21628dc40cd8fe83",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading after class M); the second figures the line whether or not the part applies. Where the part applies the two agree: class M agreed on all 344 values of 8 cases on this encoding.",
    "subject_key": "022d64c1329265ca1219786707314fce9ec3b857c294882332539a5266c4094c"
+  },
+  {
+   "printed": "4b",
+   "project_expr_sha256": "902f5efc3111f6b5c8380d6425d8b335c0ee7ac03d181073ee96d1891c070934",
+   "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "ruling": "Ruling: scope; i1040gi p. 104, Line 4b: \"Enter the qualified tips included on Form 4137, line 1, row A, column (c).\"; p. 101: \"If you received cash and charge tips of $20 or more in a calendar month and didn’t report all of those tips to your employer, you must file Form 4137.\" Both sides give $0 when Form 4137 is not filed, and no difference is on a completed return. The project refuses Form 4137 returns at its cited gate s2.other (stage12.refuse.form4137_one_employer, stage12.refuse.form4137_two_employers), where the candidate's $0 stands, but those returns are refused at s2.other in any case. The candidate refuses at its own screen f8959.unsupported, and is unknown where that answer is not supplied, only on returns the full interview refuses or leaves incomplete. The project-unknown records withhold s1a.tips, the Part II screen the source needs (p. 101). Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,232 of 2,361 comparisons agree; differences {\"project-refuses\": 4, \"project-unknown\": 125}; on completed returns none.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "a1b4c86d50266acf638be2b7d1df5354551657e4665ce4a30d22eacd2949b120",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@s1a",
+     "fixture:classm.f8889.2.deepseek@s1a",
+     "fixture:classm.f8889.5.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.f8960.2.deepseek@s1a",
+     "fixture:stage12.refuse.form4137_one_employer@s1a",
+     "fixture:stage12.refuse.form4137_two_employers@s1a",
+     "generated:20261026.95@s1a",
+     "generated:20261026.461@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "4b",
@@ -1439,6 +2139,38 @@
   },
   {
    "printed": "4c",
+   "project_expr_sha256": "a556a98b233299216517e71cfe7d484248284aa27f3c4616505ea5e3b0dc39a1",
+   "second_expr_sha256": "852ff2eed87edebad7b2c7554060a421e877242c7557c3a7240749ffd626b63b",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions (i1040gi p. 101; p. 106; p. 110). Stage 14 adds no condition here; Schedule C tips and overtime are refused through s1.sc_1a. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,350 of 2,361 comparisons agree; differences {\"candidate-refuses\": 5, \"candidate-unknown\": 3, \"value\": 3}; on completed returns none.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "62f02bea0dc106c73e14ff2059acb695424e9e13b1c6738170a0c7ae887403d6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sli.1@s1a",
+     "fixture:classm.ssb.1@s1a",
+     "fixture:mutation.t2.f8880.inherited_ira@s1a",
+     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@s1a",
+     "generated:20261026.96@s1a",
+     "generated:20261026.144@s1a",
+     "generated:20261026.258@s1a",
+     "generated:20261026.319@s1a",
+     "generated:20261026.339@s1a",
+     "generated:20261026.386@s1a",
+     "generated:20261026.431@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4c",
    "project_expr_sha256": "d73190bf3788d7751a0e0f2930ca9d08cf8a87a3f1b7f9186efbe1e4776f1006",
    "second_expr_sha256": "036d721c2f762795b666784bf8baee71c7523f1fdf74397fc386b9cd784e4d4a",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). The project also counts only the tips or overtime of a person with a valid SSN ('the spouse who received ... must have a valid SSN'); the second sums every person's.",
@@ -1457,6 +2189,39 @@
    "second_expr_sha256": "49b8b558975c505f6edf4c756c28af625e21ea9ed6786bd057e731069495f1cf",
    "ruling": "Ruling: scope; project retained. Qualified tips in a trade or business need Schedule C, E or F and the net income limitation, refused through scope.schedule1, which line 5 carries; the second takes the limited amount as a filer's entry.",
    "subject_key": "3a705ffe5973d7fd8d0bb820ca6a9c05cb2b4215bd0d7daa4e8df6ec0857c6f3"
+  },
+  {
+   "printed": "5",
+   "project_expr_sha256": "902f5efc3111f6b5c8380d6425d8b335c0ee7ac03d181073ee96d1891c070934",
+   "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "ruling": "Ruling: scope; i1040gi p. 104, Line 5: \"Include the qualified tips you and/or your spouse received in the course of a trade or business, but only to the extent the trade or business in which you received the qualified tips has net income.\" and p. 101, Part II caution: \"Fill out Schedule 1-A, Part II, only if: • You (and/or your spouse if filing a joint return) received qualified tips in 2025. • You have a valid social security number (SSN).\" The candidate gives $0 and refuses at s1a.h_sc_1a (person.sc_1a, the per-business screen sc.tips_ot) on every return. It refuses the three business-tips or Form 1099 overtime fixtures (stage14.refuse.sch1a_tips, stage14.refuse.sch1a_tips_business_only, stage14.sch1a.refuse_overtime_1099) where the project's line 5 is $0 because the Part II gate is false; the project refuses the same three returns at s1.sc_1a on lines 13 and 21 (BUG-0147, one shared text since BUG-0154), so both refuse them. The project's refusals at its cited screen scope.schedule1 (Schedule E or F trade or business), where the candidate gives $0, are on refused returns; the project-unknown records withhold s1a.tips, which the source needs (p. 101); the candidate-unknown record withholds sc.tips_ot on a refused return. No difference is on a completed return; the round-2 defect of this family (no screen) is not in this reply. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,248 of 2,361 comparisons agree; differences {\"candidate-refuses\": 3, \"project-refuses\": 3, \"project-unknown\": 107}; on completed returns none.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "4d537623895a65b285e1f345ade3abcbe3f3628b1f671894335344f49eb55c6f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@s1a",
+     "fixture:classm.f8889.5.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.dependent.1.deepseek@s1a",
+     "fixture:classm.dependent.2.deepseek@s1a",
+     "fixture:mutation.t2.mfj_no_overtime_part3@s1a",
+     "fixture:mutation.t2.s1a.line13_magi_first@s1a",
+     "fixture:stage12.refuse.tips_trade_or_business@s1a",
+     "fixture:stage14.refuse.sch1a_tips@s1a",
+     "fixture:stage14.refuse.sch1a_tips_business_only@s1a",
+     "fixture:stage14.sch1a.refuse_overtime_1099@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "5",
@@ -1546,6 +2311,80 @@
      "generated:20261026.258@s1a",
      "generated:20261026.386@s1a",
      "partial:classm.carloan.1-s1a.tips@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "6",
+   "project_expr_sha256": "d6c64bcbbd98101044366e221c122d2b671f8b8ecb4ba4295d23d4d2d870fcf3",
+   "second_expr_sha256": "4102da43a59df56ddce7249f9efb3367ea2306f3496b113606f925b100cf28fd",
+   "ruling": "Ruling: model error; i1040gi p. 101, Part II caution: \"Fill out Schedule 1-A, Part II, only if: • You (and/or your spouse if filing a joint return) received qualified tips in 2025. • You have a valid social security number (SSN).\" Inherited from line 4c: the candidate's line 6 reads its line 4c, which reads the $tipjob roster with no s1a.tips or Part II gate, so it is unknown on completed returns where the source needs no answer. Its other differences are line 5's refusal at s1a.h_sc_1a on returns the project refuses at s1.sc_1a, the project's scope.schedule1 refusal (stage12.refuse.tips_trade_or_business), and married filing separately values on returns refused at s3.mfs. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,344 of 2,361 comparisons agree; differences {\"candidate-refuses\": 8, \"candidate-unknown\": 3, \"project-refuses\": 3, \"value\": 3}; on completed returns none.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "9b5e6a3fbf366f1bb60b7a7a11ab3f72ab2c7a12ec2859dfa77047afcd12c0fe",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sli.1@s1a",
+     "fixture:classm.ssb.1@s1a",
+     "fixture:mutation.t2.mfj_no_overtime_part3@s1a",
+     "fixture:mutation.t2.f8880.inherited_ira@s1a",
+     "fixture:mutation.t2.s1a.line13_magi_first@s1a",
+     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@s1a",
+     "fixture:stage12.refuse.tips_trade_or_business@s1a",
+     "fixture:stage14.refuse.sch1a_tips@s1a",
+     "fixture:stage14.refuse.sch1a_tips_business_only@s1a",
+     "fixture:stage14.sch1a.refuse_overtime_1099@s1a",
+     "generated:20261026.96@s1a",
+     "generated:20261026.144@s1a",
+     "generated:20261026.258@s1a",
+     "generated:20261026.319@s1a",
+     "generated:20261026.386@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "3d209812934c47a9bab042cce4672031450d219c581266678994305d64ac3dde",
+   "second_expr_sha256": "e39f2bf8aa5a36a396870fc2bb5be6d5d5054a12423bd05e2a31ece9b713f250",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). The project also counts only the tips or overtime of a person with a valid SSN ('the spouse who received ... must have a valid SSN'); the second sums every person's. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 2,344 of 2,361 comparisons agree; differences {\"candidate-refuses\": 8, \"candidate-unknown\": 3, \"project-refuses\": 3, \"value\": 3}; on completed returns none.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "bb5d09889dba53224a5520d91f47b495a230e42b2ac2aab999f0df54d189afe2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sli.1@s1a",
+     "fixture:classm.ssb.1@s1a",
+     "fixture:mutation.t2.mfj_no_overtime_part3@s1a",
+     "fixture:mutation.t2.f8880.inherited_ira@s1a",
+     "fixture:mutation.t2.s1a.line13_magi_first@s1a",
+     "fixture:mutation.t2.s1a.mfs_ssn_unanswered@s1a",
+     "fixture:stage12.refuse.tips_trade_or_business@s1a",
+     "fixture:stage14.refuse.sch1a_tips@s1a",
+     "fixture:stage14.refuse.sch1a_tips_business_only@s1a",
+     "fixture:stage14.sch1a.refuse_overtime_1099@s1a",
+     "generated:20261026.96@s1a",
+     "generated:20261026.144@s1a",
+     "generated:20261026.258@s1a",
+     "generated:20261026.319@s1a",
+     "generated:20261026.386@s1a"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1651,6 +2490,52 @@
   },
   {
    "printed": "8",
+   "project_expr_sha256": "5a00f401548266b010442a467d7ace47cc787836ea5503be9448cf8eb0d91196",
+   "second_expr_sha256": "d12771cf09eaa3ad5c3a5e391d50c7522cbf8ebbd9ddd80bf3a5f1e2ba749821",
+   "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110). Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 95 of 2,361 comparisons agree; differences {\"candidate-refuses\": 463, \"candidate-unknown\": 32, \"project-unknown\": 86, \"value\": 1685}; on completed returns {\"value\": 1096}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "7a396a537a894adae8a94179880e75cc0e23111724cec1b6a9fe1f05adf0730a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:stage14.asset.bonus_40_before@s1a",
+     "fixture:stage14.asset.refuse_qip_2017@s1a",
+     "fixture:stage14.asset.refuse_ads_past_gds@s1a",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s1a",
+     "fixture:stage14.asset.refuse_class@s1a",
+     "fixture:stage14.asset.refuse_listed_low@s1a",
+     "fixture:stage14.asset.refuse_s179_over@s1a",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s1a",
+     "fixture:classm.f8889.3.deepseek@s1a",
+     "fixture:classm.f8889.4.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.f8960.2.deepseek@s1a",
+     "fixture:classm.person.1.deepseek@s1a",
+     "fixture:classm.sa.5.deepseek@s1a",
+     "fixture:classm.carloan.3@s1a",
+     "fixture:classm.f4952.4@s1a",
+     "fixture:classm.f8889.3@s1a",
+     "fixture:classm.f8889.4@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8",
    "project_expr_sha256": "9ad4ea360167ebfd5a88888b87b5faf016742520b10f1d6181c7ee13c08f293a",
    "second_expr_sha256": "d12771cf09eaa3ad5c3a5e391d50c7522cbf8ebbd9ddd80bf3a5f1e2ba749821",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110).",
@@ -1662,6 +2547,41 @@
    "second_expr_sha256": "ad5234ef149f2d7afbcd340843c236d276c159ae9224102a999a94aad830d447",
    "ruling": "Ruling: owner's ruling; project retained. Each printed line of Parts II to V is $0 unless its part applies (Schedule 1-A, 'Fill out Part N only if'; the owner chose this strictly accurate reading in Stage 12); the second figures the line whether or not the part applies. The Stage 13 conditions are those of the instructions: Part II and Part III need 'a valid social security number (SSN). If you are married filing a joint return, the spouse who received the qualified tips [overtime] must have a valid SSN' (i1040gi p. 101; p. 106), Part V 'the spouse who is claiming the enhanced deduction for seniors' (p. 110).",
    "subject_key": "4aefad9d3096b5c9e3c8ec8aa1af10bcba75851ca862271df4ee8f3f67bbd8f3"
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "514b40ba5f0518cb79523032e79d17c2edd35526a525c2b4ff147972d8767fdb",
+   "second_expr_sha256": "ad5234ef149f2d7afbcd340843c236d276c159ae9224102a999a94aad830d447",
+   "ruling": "Ruling: model error; i1040gi p. 101, Part II caution: \"Fill out Schedule 1-A, Part II, only if: • You (and/or your spouse if filing a joint return) received qualified tips in 2025. • You have a valid social security number (SSN).\" The candidate's line 9 enters $150,000 or $300,000 with no test of whether Part II is filled out, so it shows a nonzero amount on completed returns where the Part is not filled out. Under the adjudication README skip rule a line of a Part the instructions say not to fill out must not show an amount on a reachable return; the project enters zero there through its Part gate (s1a.part2 false), which changes no deduction but makes the candidate's shown amount a defect. Re-reviewed because the Part gates were rewritten (s1a.part2 and s1a.part3 a nested choose on the tips or overtime answer, then the filing status, then the SSN test; the Part V counts through person.senior_work_ssn), the same conjunctions in operand order, which change no completed value (BUG-0466/0471 follow-up, T-264); the reply is of the same kind as the one ruled before on this line, and the reading stands. executable-triage-v2 (.transcription/triage/2025/s1a.json; 1,747 fixtures, 500 generated returns seed 20261026, 114 partial records): 45 of 2,361 comparisons agree; differences {\"candidate-unknown\": 2, \"project-unknown\": 125, \"value\": 2189}; on completed returns {\"value\": 1126}.",
+   "context": "178f4e57c7db42921be5f50d94965281844389669d4447a07f04bfff4da77123",
+   "date": "2026-11-10",
+   "run": "d3a15e8c9e3467dfb6cb2232f9f26bf6408d30fac797c586aaa254fbad003f14",
+   "subject_key": "d2c3522a07e12d6721c9d7f7a35e106cc3c5ad967f8cf151e175eee709f342ce",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s1a",
+     "fixture:stage14.asset.mq_7yr@s1a",
+     "fixture:stage14.asset.mq_mixed@s1a",
+     "fixture:stage14.asset.mq_not@s1a",
+     "fixture:stage14.asset.bonus_100@s1a",
+     "fixture:stage14.asset.bonus_40_before@s1a",
+     "fixture:classm.f8889.1.deepseek@s1a",
+     "fixture:classm.f8889.2.deepseek@s1a",
+     "fixture:classm.f8889.5.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.f4952.4.deepseek@s1a",
+     "fixture:classm.f8960.2.deepseek@s1a",
+     "fixture:stage21.choose.eic_limit_status_unanswered@s1a",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "9",

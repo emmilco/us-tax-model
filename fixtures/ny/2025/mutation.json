@@ -52041,7 +52041,7 @@
     "ny_city_rs"
    ],
    "evidence": "synthetic regression (not class B)",
-   "evidence_note": "ny.official.tax_table_38275 with f1040.status withheld and a New York special condition code answered Yes (item G). ny_it201.gate.special_code refuses New York taxable income (line 38) and the City taxable income (line 47). The State and City rate schedules (ny_rs.tax, ny_city_rs.tax) choose on the filing status first, and every status's schedule reads the refused amount in its first guard, so whichever status is answered the schedule tax is that refusal: ny_it201.tax_schedule and ny_it201.city_tax_schedule are refused, not held unknown behind the unanswered status (spec 4.7.3).",
+   "evidence_note": "ny.official.tax_table_38275 with f1040.status withheld and a New York special condition code answered Yes (item G). Line 1 lists the joint-return spouse-residency refusal (ny_it201.gate.spouse_nonresident) before the special condition code refusal, and that gate chooses on the filing status first, so with the status withheld line 1 waits on it: New York taxable income (line 38), the City taxable income (line 47) and the State and City rate schedule taxes (ny_it201.tax_schedule, ny_it201.city_tax_schedule) are unknown, not refused (spec 4.7.3).",
    "inputs": {
     "person[taxpayer].x_other": false,
     "person[spouse].x_other": false,
@@ -52341,56 +52341,24 @@
    },
    "expect": {
     "ny_it201.line38": {
-     "kind": "refusal",
-     "gate": "ny_it201.gate.special_code",
-     "form": "Item G special condition codes",
-     "remedy": "A special condition (for example Build America Bond interest, which changes the household credit income) is outside this tool.",
-     "cite": {
-      "doc": "ny_it201i",
-      "locator": "p. 13, Note 1, \"if on Form IT-201 you entered special condition code A6 (for Build America Bond interest), your federal adjusted gross income is the line 19 amount minus any Build America Bond interest\"",
-      "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
-      "snapshot": "29489d6eed7529bc1388e57a5bf0814e6e6d94d02288c5c83a377d21e3773f72",
-      "tax_year": 2025
-     }
+     "kind": "unknown",
+     "reason": "no input supplied for f1040.status",
+     "input": "f1040.status"
     },
     "ny_it201.tax_schedule": {
-     "kind": "refusal",
-     "gate": "ny_it201.gate.special_code",
-     "form": "Item G special condition codes",
-     "remedy": "A special condition (for example Build America Bond interest, which changes the household credit income) is outside this tool.",
-     "cite": {
-      "doc": "ny_it201i",
-      "locator": "p. 13, Note 1, \"if on Form IT-201 you entered special condition code A6 (for Build America Bond interest), your federal adjusted gross income is the line 19 amount minus any Build America Bond interest\"",
-      "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
-      "snapshot": "29489d6eed7529bc1388e57a5bf0814e6e6d94d02288c5c83a377d21e3773f72",
-      "tax_year": 2025
-     }
+     "kind": "unknown",
+     "reason": "no input supplied for f1040.status",
+     "input": "f1040.status"
     },
     "ny_it201.line47": {
-     "kind": "refusal",
-     "gate": "ny_it201.gate.special_code",
-     "form": "Item G special condition codes",
-     "remedy": "A special condition (for example Build America Bond interest, which changes the household credit income) is outside this tool.",
-     "cite": {
-      "doc": "ny_it201i",
-      "locator": "p. 13, Note 1, \"if on Form IT-201 you entered special condition code A6 (for Build America Bond interest), your federal adjusted gross income is the line 19 amount minus any Build America Bond interest\"",
-      "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
-      "snapshot": "29489d6eed7529bc1388e57a5bf0814e6e6d94d02288c5c83a377d21e3773f72",
-      "tax_year": 2025
-     }
+     "kind": "unknown",
+     "reason": "no input supplied for f1040.status",
+     "input": "f1040.status"
     },
     "ny_it201.city_tax_schedule": {
-     "kind": "refusal",
-     "gate": "ny_it201.gate.special_code",
-     "form": "Item G special condition codes",
-     "remedy": "A special condition (for example Build America Bond interest, which changes the household credit income) is outside this tool.",
-     "cite": {
-      "doc": "ny_it201i",
-      "locator": "p. 13, Note 1, \"if on Form IT-201 you entered special condition code A6 (for Build America Bond interest), your federal adjusted gross income is the line 19 amount minus any Build America Bond interest\"",
-      "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
-      "snapshot": "29489d6eed7529bc1388e57a5bf0814e6e6d94d02288c5c83a377d21e3773f72",
-      "tax_year": 2025
-     }
+     "kind": "unknown",
+     "reason": "no input supplied for f1040.status",
+     "input": "f1040.status"
     }
    }
   }

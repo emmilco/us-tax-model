@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
  "head_rows": {
-  "printed lines compared": "102",
-  "agree / disagree / missing": "54 / 48 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+  "printed lines compared": "104",
+  "agree / disagree / missing": "54 / 50 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -31,10 +31,10 @@
   },
   {
    "key": "person.work_ssn_or_tin",
-   "record": "5f9195fa5d9341bc2c5164857284b8c1ab86b3c4354b9303b2ae3e525f4ef7cb",
+   "record": "9a924ab08d10b96b2af975d2d614bbbbc0eca92b13b6d241447a6f0525b34855",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 17, Before you begin: \"only one spouse is required to have a valid SSN\" and \"The other spouse must have either an SSN or ITIN\". Both sides read a person as having an SSN valid for employment or an SSN or ITIN; the project's nested choose asks person.work_ssn first and then person.tin, the operands of the old any in their order, and agrees with the reply on every record where both answers are given. executable-triage-v2 (`.transcription/triage/2025/person.json`; 1,702 fixtures, 500 generated returns seed 20261026, 1,661 partial records; 4,518 comparisons): 4,228 of 4,518 agree; differences 290 project-unknown (58 on returns the interview completes, 188 incomplete, 44 refused), every one a record with person.work_ssn withheld and person.tin yes; no value difference and no refusal difference. On the 58 completed returns the helper is not read by any printed amount (no printed line differs). Trade-off of the gate-wave rewrite (BUG-0466/BUG-0471, owner decision 2026-11-09): on records with an answer withheld, a value HEAD computed through the three-valued all/any is now unknown until the first guard of the nested choose is answered; no printed value or refusal changes on a completed return (1,702 of 1,702 fixtures pass). Witness, evaluated in both trees: mutation.t3.mfj_no_tips_ssn_unanswered (taxpayer work_ssn withheld, tin yes, spouse with a valid SSN): HEAD gives household.ctc_ssn true, f1040.line19 $4,400.00 and line37 $545.50; the current tree gives unknown for person.work_ssn_or_tin and each of those lines, asking person.work_ssn. This is the owner-accepted BUG-0466 design, not a reading of the source. Project stands.",
-   "subject_key": "ccd20131b6177e38adb9c52afe2ec654ce4f80b8dca821c3fd4e5b600076252d"
+   "ruling": "Ruling: representation; i1040gi p. 17, Before you begin: \"The other spouse must have either an SSN or ITIN\". The reply is the project's former test, any[tin, work_ssn]; the project is the same disjunction as a nested choose with person.tin first (owner, T-264: the interview asks the SSN-or-ITIN question first, and an SSN valid for employment is an SSN), so on definite answers the two agree. executable-triage-v2 (.transcription/triage/2025/person.json; 1,747 fixtures, 500 generated returns seed 20261026): 4,499 of 4,573 comparisons agree; every difference is project-unknown (74), records that state work_ssn and withhold tin: partial records, and class M records whose route never reads the line (classm.s1a.1, .2, .5, .9: no dependent, so household.id_count is not read), where the project waits for the first operand as the owner accepted (BUG-0471 trade-off). No completed value differs. Project retained.",
+   "subject_key": "6ef97c50da130d8df0b5f933730a2bae8eba92e34d3125c62b9d19011d6f59f3"
   },
   {
    "key": "person.educator_deduction",
@@ -529,6 +529,20 @@
    "subject_key": "45061f2d171a71ffad63da3d4b804f93c924c2a9c6d1720500ccbd597ed3903e"
   },
   {
+   "key": "person.senior_work_ssn",
+   "record": "9a924ab08d10b96b2af975d2d614bbbbc0eca92b13b6d241447a6f0525b34855",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 110: \"Fill out Schedule 1-A, Part V, only if: You (and/or your spouse if filing a joint return) were born before January 2, 1961. You have a valid social security number (SSN).\" The reply is the conjunction all[age65, work_ssn]; the project is the same test as a nested choose on age65 first, the order the Schedule 1-A Part V counts read it, so a person's SSN question is reached only for someone born before January 2, 1961. executable-triage-v2: 4,571 of 4,573 comparisons agree; the 2 differences are project-unknown on refused partial records withholding age65 with work_ssn answered no, where the conjunction is false from its second operand and the choose waits for its first (the BUG-0471 trade-off, owner accepted). No completed value differs. Project retained.",
+   "subject_key": "b027144031842b5c275d89589e5f8b047c032f3c94c1520d392220015b0b651e"
+  },
+  {
+   "key": "person.spouse_senior_work_ssn",
+   "record": "9a924ab08d10b96b2af975d2d614bbbbc0eca92b13b6d241447a6f0525b34855",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi p. 110: \"If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN.\" The reply is all[role spouse, age65, work_ssn]; the project is the same conjunction as a nested choose in that order (role, then age, then SSN, through person.senior_work_ssn). executable-triage-v2: 4,532 of 4,573 comparisons agree; all 41 differences are project-unknown on incomplete or refused partial records withholding person.role (the role is asked first for every person entry), where the conjunction is decided false by a later operand (the BUG-0471 trade-off, owner accepted). No completed value differs. Project retained.",
+   "subject_key": "9626eaed7cc0dc188a7d9d1db37b9f31d25c2a6eb336a63ce729bf9c2e8bff8b"
+  },
+  {
    "key": "employers",
    "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
    "status": "AGREE",
@@ -674,7 +688,7 @@
   "person.one": "b8c3fe457df27c28a5b9ceba67c044ce1bd837e2947d16ac68c022571c49a8d8",
   "person.age65_box": "070324378ae1c306c9de2c56d6d084f92f7dc61936140f6c4a33a066ede4b13a",
   "person.tin_or_itin_applied": "b0b43e2547cefb96cd9a526890539c97451c91fb221ebe4a1304e54814be6742",
-  "person.work_ssn_or_tin": "bf15ba5b250916efe61b352636d95f6164cc2896b88dac3049a29101cb014fb0",
+  "person.work_ssn_or_tin": "f92cfd496aa340dba4812e15a6ce42e628d252df4b1c1324f6a524ec09aa4d59",
   "person.educator_deduction": "91e8af5d7ad2bbfe890a66e9517ea95f2a6d84882017c13a0964e8678b3ef417",
   "person.hsa_forms": "16f71fc60325994fcbadd912163258f6fbb15ad6fce56ad795df618b99432413",
   "person.hsa_split": "04bd0457964ad10200391ff5f7fe0ce64c254acb5289587f2c996e15e04a1d22",
@@ -751,6 +765,8 @@
   "person.x_other_exc": "a00e0b1a59db195d537856872dff65750b8bec6c479f8c07c3f88686e7c7e70e",
   "person.x_limit_binds": "eecca81ae200b378228067391b948580ad6f7301f50821678b11330b5341bb42",
   "person.x_hsa_excess": "fdd45bb5717bf952ebab45851dc751e9befd367d231b938a051c02655fc1ab10",
+  "person.senior_work_ssn": "081d554fe222cc0300d01fdc95181383e5eaf9121048dc763c90c797da36d7b5",
+  "person.spouse_senior_work_ssn": "71792e413e89469258a32d0971b6e8e83178b9e43d093938b414437694bd8665",
   "employers": "b2cd4b150ab20eb6cb3897d7ee8052136899059e20b34a2710d82824ebe51be6",
   "overcount": "f1f62828cb60b45dcff0a7f9b4aefde742da06ce093408621b8cc68592af34df",
   "over": "eb60c7783c2dd86a738ce6f5fdf96bcdca6c574e7d59463da3a91b21108b67c0",
@@ -856,6 +872,8 @@
   "person.x_other_exc": "06473eff074ac06f38ca7b5e6eecdaff9f0067492cefda8086e9998128436729",
   "person.x_limit_binds": "4f219f49e584c1ef115bd910cda8a0056bbe4b4f9dda56f64e2a60f966a5da3e",
   "person.x_hsa_excess": "560c217ec289ee2f80a14bfcf7909401dce9063538dde6f1b7463d8372e73944",
+  "person.senior_work_ssn": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "person.spouse_senior_work_ssn": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
   "employers": "a21737938bf4ab945998a6c0df7f81a35a8ad425d3befbde25d4bf35485e5d05",
   "overcount": "d8170d11b5f256e619a888cd6fe3fec37ddb4a273268d3b40cb61e02797dc807",
   "over": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",

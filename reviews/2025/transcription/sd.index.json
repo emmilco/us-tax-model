@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-09); see Line-scoped reviews"
+  "agree / disagree / missing": "15 / 41 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -21,9 +22,10 @@
   },
   {
    "key": "sd.filing4952",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
-   "status": "AGREE",
-   "subject_key": "50b839cdd8f2e257e559908f595d492fe2f1705b957a9d0b51bbbf2ed341dd2d"
+   "record": "63ed4e60666ed661a75e5e7d0a83f29f6882822276f4dcc88ae33c9856ec80a4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; f4952 p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense. Exception. You don't have to file Form 4952 if all of the following apply.\" The reply's note says the Schedule D pages do not say when Form 4952 is filed and reads it as filed whenever the filer has investment interest (f4952.has_interest); the project reads f4952.required (Form 4952 used, an election on line 4g or interest paid or carried forward, and the filing test with its exception). The reply is true where the exception applies and the form is not filed (classm.sd.2.deepseek: project false, reply true). The reply was not given the Form 4952 pages that decide it (an interface gap of the review), but its reading contradicts the source. Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/sd.json; 1,747 fixtures, 500 generated returns seed 20261026, 120 partial records): 1,994 of 2,366 comparisons agree; differences {\"project-refuses\": 135, \"project-unknown\": 24, \"value\": 213}; on completed returns {\"value\": 67}.",
+   "subject_key": "4b338abbb122ccbb5a9591238dd21a19ccef93225d8f9f2614ef5a93c7c50b05"
   },
   {
    "key": "sd.investment_election",
@@ -365,10 +367,10 @@
   },
   {
    "key": "20",
-   "record": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
+   "record": "63ed4e60666ed661a75e5e7d0a83f29f6882822276f4dcc88ae33c9856ec80a4",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 2, line 20: \"Are lines 18 and 19 both zero or blank and you are not filing Form 4952?\". The candidate's predicate is the project's with lines 18 and 19 read as its own lines 18 and 19 (which now agree with the project's: the candidate takes g28.line7 and u1250.line18 behind line 17), so it is the same test. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,070 of 2,115 comparisons agree; 44 project-refuses, 1 project-unknown (by return: {\"refused\": {\"project-refuses\": 44, \"project-unknown\": 1}}). No value differs: the 4 Stage 20 value differences (classm.sd.2, stage20.blind.r7, generated 235), caused by the candidate's positive line 14 entering g28.line5, are gone after the T-140 sign note. Project refusals are cited gates read through g28/u1250 and Form 4952 (sales[s1].digital 16, div.bad_components 9, sales[a].digital 6, sales[s2].digital 4, div.amt 3, div.section1202 2, div.unsupported 2, div.bad_special 1, sales[s3].digital 1); the project-unknown withholds div.box2c. Project stands.",
-   "subject_key": "7b1fd43dba41cb211423f1bcf3ae106fa631a7ccafe4f9e146f5989e7fcfc652"
+   "ruling": "Ruling: model error; f1040sd p. 2, line 20: \"Are lines 18 and 19 both zero or blank and you are not filing Form 4952?\". The reply's lines 18 and 19 are the project's, as ruled before; every difference comes from its sd.filing4952 reading (filed whenever there is investment interest), ruled model error on that line (classm.sd.2.deepseek: project true, reply false). Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/sd.json; 1,747 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,096 of 2,366 comparisons agree; differences {\"project-refuses\": 96, \"project-unknown\": 24, \"value\": 150}; on completed returns {\"value\": 61}.",
+   "subject_key": "2748bd6c705364d9d915e7e78a894d993f16a8260289f61e6e7ffafdd0e543e5"
   },
   {
    "key": "21",
@@ -444,6 +446,7 @@
  },
  "__rest__": "428de7b0aecb0ec58b80e6b99fb756277616bb08aed9f21f90e6accedff64e84",
  "foreign": {
+  "sd.filing4952": "c405707b740da3bf0125426dc18b58e2ef543b6ec4effa8f0989c54d79b6c596",
   "sd.distributions_if_dividends": "972cf38c15d80da0f8de2081225037cf0d43af899903b01f148edc4104ceee2a",
   "1a(d)": "9be5983747fc9cda810f24cad0652eba05f223caadb64489bdbe925b4280ceb9",
   "1a(e)": "eb6185ca0555cd878b6822d2d7d596baea1f4d66ed53c65b4bf9ab6eb847e8c8",
@@ -480,6 +483,7 @@
   "13": "50d638b3489ec9106a7903e3fe89f538c4938a1c481a3921f285f376d8cb4b74",
   "7": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "20": "11eeae15ac96f8b70e57e71d2e8fe0e6529f22fabbb484d45554ddd477f459b2",
   "22": "5d5fac7682b7a2fa13c2250bae25effb6239a504e9095246e6b2c15009ed77b2"
  }
 }

@@ -57,9 +57,9 @@
 ## (helper) — `person.work_ssn`
 
 - **Authored helper label:** Do you have an SSN valid for employment issued before the due date of your return?
-- **Encoded (Bool):** Input — Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?
-- Expr: `{"op":"input","source":"Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?"}`
-- Cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Bool):** Input — Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)? If your card says "Valid for Work Only With DHS Authorization", answer yes only if the DHS authorization is valid.
+- Expr: `{"op":"input","source":"Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)? If your card says \"Valid for Work Only With DHS Authorization\", answer yes only if the DHS authorization is valid."}`
+- Cite: [i1040gi] p. 18, Step 3, question 4; p. 104, Valid SSN for No Tax on Tips, "However, if “Valid for Work Only with DHS Authorization” is printed on your social security card, your SSN is valid only as long as the DHS authorization is valid"; p. 108, Valid SSN, "see Valid SSN for No Tax on Tips, earlier"; p. 110, Valid SSN, "see Valid SSN for No Tax on Tips, earlier" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.eic_ssn`
 
@@ -128,8 +128,8 @@
 ## (helper) — `person.work_ssn_or_tin`
 
 - **Authored helper label:** An SSN valid for employment, or an SSN or ITIN
-- **Encoded (Bool):** Choose — [helper "Do you have an SSN valid for employment issued before the due date of your return?" = true → helper "Do you have an SSN valid for employment issued before the due date of your return?"] [helper "Do you have an SSN valid for employment issued before the due date of your return?" = false → helper "Do you have an SSN or ITIN issued on or before the due date of your return?"]
-- Expr: `{"alternatives":[{"guard":{"eq":["person.work_ssn",{"const":true}],"op":"test"},"then":"person.work_ssn"},{"guard":{"eq":["person.work_ssn",{"const":false}],"op":"test"},"then":"person.tin"}],"op":"choose"}`
+- **Encoded (Bool):** Choose — [helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = true → helper "Do you have an SSN or ITIN issued on or before the due date of your return?"] [helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = false → helper "Do you have an SSN valid for employment issued before the due date of your return?"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.tin",{"const":true}],"op":"test"},"then":"person.tin"},{"guard":{"eq":["person.tin",{"const":false}],"op":"test"},"then":"person.work_ssn"}],"op":"choose"}`
 - Cite: [i1040gi] p. 17, Before you begin, "The other spouse must have either an SSN or ITIN" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.died_before_65`
@@ -2323,3 +2323,17 @@
 - **Encoded (NonNegDollars):** Add f8889.excess_amt over every confirmed f8889 entry, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"f8889","field":"f8889.excess_amt","op":"sum_over"}`
 - Cite: [i5329] p. 8, Line 47, "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12)." (2025; sha256 aec3d325)
+
+## (helper) — `person.senior_work_ssn`
+
+- **Authored helper label:** Born before January 2, 1961, and has a valid SSN
+- **Encoded (Bool):** Choose — [helper "Were you born before January 2, 1961?" = true → helper "Do you have an SSN valid for employment issued before the due date of your return?"] [helper "Were you born before January 2, 1961?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.age65",{"const":true}],"op":"test"},"then":"person.work_ssn"},{"guard":{"eq":["person.age65",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.spouse_senior_work_ssn`
+
+- **Authored helper label:** Your spouse's entry, if your spouse was born before January 2, 1961, and has a valid SSN
+- **Encoded (Bool):** Choose — [helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' → helper "Year parameter household.no (false)"] [helper "Whose entry is this, yours or your spouse's?" = 'spouse' → helper "Born before January 2, 1961, and has a valid SSN"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},"then":"person.no"},{"guard":{"eq":["person.role",{"const":"spouse"}],"op":"test"},"then":"person.senior_work_ssn"}],"op":"choose"}`
+- Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)

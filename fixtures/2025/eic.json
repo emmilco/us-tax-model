@@ -3148,6 +3148,102 @@
           }
         }
       }
+    },
+    {
+      "id": "t264.eic.mfs_no_child_step4",
+      "covers": [
+        "eic"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture, predicted from the archived i1040gi before evaluating: a married filer filing separately with no qualifying child and $30,000 of wages. Step 4, question 1 (p. 41), \"Are you a married taxpayer whose filing status is married filing separately or head of household?\" is Yes for married filing separately, so eic.married_rules is true and Step 4 ends there (\"Yes. STOP You can't take the credit\"): eic.step4 is false.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "f1040.status": "mfs"
+      },
+      "expect": {
+        "eic.married_rules": {
+          "kind": "bool",
+          "value": true
+        },
+        "eic.step4": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "t264.eic.step2_schedule1",
+      "covers": [
+        "eic"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture, predicted from the archived i1040gi before evaluating: a single filer with $30,000 of wages who answers Yes to the Schedule 1 screen (Schedule E, rental of personal property or passive activity income, among others). Step 2, question 4 (p. 40), \"Do any of the following apply for 2025? You are filing Schedule E. ... Yes. Use Worksheet 1 in Pub. 596 to see if you can take the credit\", is the Pub. 596 Worksheet 1 refusal for that screen.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "scope.schedule1": true
+      },
+      "expect": {
+        "eic.step2_other": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Pub. 596, Worksheet 1 (EIC, Step 2, question 4)",
+          "remedy": "Schedule E, rental of personal property and passive activity income are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 40, Step 2, question 4, \"Yes. Use Worksheet 1 ... in Pub. 596\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "t264.eic.show5_agi_open_married_child",
+      "covers": [
+        "eic"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation-equivalence second reading, predicted from the archived i1040gi and spec 4.7 before evaluating: a single filer with no wages, a married child (eic_child refuses: Married child, p. 44) and the interest roster left unanswered, so AGI (line 11b, Worksheet A line 3) is unknown. The EIC steps are a chain in the flow chart's order and stop unknown at Step 1, question 1. Worksheet A line 1 is $0, below the first EIC Table amount, so line 2 is $0 without the table; line 4 compares the unknown line 3 with line 1 and is unknown; line 5's threshold chooses on the number of qualifying children with valid SSNs, which the married child refuses, so the line 5 test is that refusal, and whether line 5 is completed (eic.show5) meets it before line 2 is read (spec 4.7.2).",
+      "inputs": {
+        "$w2@person[taxpayer]": [],
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].married": true,
+        "f1040.status": "single",
+        "$interest": null,
+        "s179.line10": null
+      },
+      "expect": {
+        "eic.show5": {
+          "kind": "refusal",
+          "gate": "dependent[child].married",
+          "form": "Married child (EIC)",
+          "remedy": "A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 44, Married child",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

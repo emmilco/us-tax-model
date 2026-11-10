@@ -1807,7 +1807,7 @@ ENCODING:
     cites: i1040gi p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025)
 - dependent.eic_tiebreak [(gate)] The qualifying child of another person who is also your qualifying child for the EIC
     cites: i1040gi p. 44, Qualifying child of more than one person, "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits"
-- dependent.kidnap_eic_related [(helper)] A child presumed kidnapped: meets the EIC relationship test but did not live with you in the United States for more than half of 2025
+- dependent.kidnap_eic_kidnapped [(helper)] A child who meets the EIC relationship test: presumed kidnapped and did not live with you in the United States for more than half of 2025
     cites: i1040gi p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)
 - dependent.not_us_half [(helper)] Did not live with you in the United States for more than half of 2025
     cites: i1040gi p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)
@@ -2005,6 +2005,12 @@ ENCODING:
     REFUSES when dependent.edu_llc_tin_refused: Lifetime learning credit for a student whose ITIN or ATIN was only applied for
     REFUSES when dependent.edu_over_refused: Adjusted Qualified Education Expenses Worksheet for more than one academic period
     cites: f8863 p. 2, Part III, line 31, "Adjusted qualified education expenses (see instructions). Include the total of all amounts from all Parts III, line 31, on Part II, line 10"; i8863 p. 9, Line 31
+- dependent.under_7_months [(helper)] Lived with you for fewer than 7 months of 2025, not counting the time missing
+    cites: p501 p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (a child who lived with you for more than half of 2025 meets the residency test without this treatment)
+- dependent.under_19_kidnap [(helper)] Aged 18 or under at the end of 2025
+    cites: p501 p. 18, Kidnapped child, "This treatment applies for all years until the earlier of: 1. The year there is a determination that the child is dead, or 2. The year the child would have reached age 18."
+- dependent.meets_tests [(helper)] Meets the tests to be your dependent (a qualifying child, or else a qualifying relative)
+    cites: i1040gi pp. 17–19, Who Qualifies as Your Dependent
 
 HANDLED ELSEWHERE (refusals on other forms tied to lines this form reads):
 - eic: Nonresident aliens (EIC, Step 1, question 4) -- Nonresident and dual-status treatment is outside this tool.

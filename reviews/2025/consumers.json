@@ -953,6 +953,30 @@
    "question_phrase": "Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico",
    "source_phrase": "Line 12, \"Enter on line 12 the total value of your contributions of property other than by cash or check\"",
    "reason": "sa.line12 refuses on this Schedule A-wide screen as it did before the gate; p. 10 defines nothing the screen asks."
+  },
+  "consumer:person.work_ssn@i1040gi:p17": {
+   "verdict": "same",
+   "question_phrase": "an SSN valid for employment, issued before the due date of your 2025 return (including extensions)? If your card says \"Valid for Work Only With DHS Authorization\", answer yes only if the DHS authorization is valid",
+   "source_phrase": "Before you begin, \"If you want to claim the child tax credit, you must have a valid SSN, which means it must be valid for employment and issued before the due date of your return (including extensions)\"",
+   "reason": "The question asks exactly the p. 17 definition (valid for employment, issued by the due date); the DHS sentence states when a card with that legend is valid for employment, as p. 22 says for a child's SSN, and narrows nothing the child tax credit counts."
+  },
+  "consumer:person.work_ssn@i1040gi:p101": {
+   "verdict": "same",
+   "question_phrase": "an SSN valid for employment, issued before the due date of your 2025 return (including extensions)? If your card says \"Valid for Work Only With DHS Authorization\", answer yes only if the DHS authorization is valid",
+   "source_phrase": "Schedule 1-A, Part II, \"Fill out Schedule 1-A, Part II, only if: ... You have a valid social security number (SSN)\"",
+   "reason": "Part II's valid SSN is defined on p. 104 as one valid for employment and issued by the SSA before the due date, with the DHS-authorization limit, which is the question's wording."
+  },
+  "consumer:person.work_ssn@i1040gi:p103": {
+   "verdict": "same",
+   "question_phrase": "an SSN valid for employment, issued before the due date of your 2025 return (including extensions)? If your card says \"Valid for Work Only With DHS Authorization\", answer yes only if the DHS authorization is valid",
+   "source_phrase": "Qualified tips, the tips counted for a person with a valid SSN (Part II, p. 101; Valid SSN for No Tax on Tips, p. 104)",
+   "reason": "s1a.tip_reported counts the tips of persons with a valid SSN for Part II, the p. 104 definition the question states, DHS limit included."
+  },
+  "consumer:person.work_ssn@i1040gi:p106": {
+   "verdict": "same",
+   "question_phrase": "an SSN valid for employment, issued before the due date of your 2025 return (including extensions)? If your card says \"Valid for Work Only With DHS Authorization\", answer yes only if the DHS authorization is valid",
+   "source_phrase": "Schedule 1-A, Part III, \"Fill out Schedule 1-A, Part III, only if: ... You have a valid social security number (SSN)\"",
+   "reason": "Part III's valid SSN is defined on p. 108 as one valid for employment and issued before the due date, with p. 104's DHS limit by reference, which is the question's wording."
   }
  },
  "baseline": {
@@ -1155,13 +1179,6 @@
   "consumer:person.sav_born@i8863:p7": "75304e427ba4f04e",
   "consumer:person.sav_trad@i1040gi:p98": "cbb597c38c2d92fb",
   "consumer:person.tin@i8863:p3": "89a90b3c572b1142",
-  "consumer:person.work_ssn@i1040gi:p101": "9c7bbd28ac16e2a7",
-  "consumer:person.work_ssn@i1040gi:p103": "9c7bbd28ac16e2a7",
-  "consumer:person.work_ssn@i1040gi:p104": "9c7bbd28ac16e2a7",
-  "consumer:person.work_ssn@i1040gi:p106": "9c7bbd28ac16e2a7",
-  "consumer:person.work_ssn@i1040gi:p108": "9c7bbd28ac16e2a7",
-  "consumer:person.work_ssn@i1040gi:p110": "9c7bbd28ac16e2a7",
-  "consumer:person.work_ssn@i1040gi:p17": "9c7bbd28ac16e2a7",
   "consumer:person.x_other@f5329:p2": "ccd90a47265491c1",
   "consumer:refund.box8@i1040gi:p88": "a7762b99faf9424b",
   "consumer:refund.exc_tax@i1040gi:p90": "24f912758ccecaf1",

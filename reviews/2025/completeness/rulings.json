@@ -59,20 +59,21 @@
    "line": "dependent.dc_paid"
   },
   "unruled:eic#1": {
-   "class": "covered",
-   "line": "person.eic_ssn",
-   "evidence": "i1040gi pp. 40, 45, \"Do you, and your spouse if filing a joint return, have a social security number issued on or before the due date\". As the earlier eic#2 ruling: person.eic_ssn is asked of each person on the return, states the due-date rule and that a \"Valid for Work Only With DHS Authorization\" card is valid only while the authorization is valid; eic.step1_ssn reads household.all_eic_ssn, which requires every person (both spouses on a joint return).",
-   "prompt_sha": "b27e654357e57dfb59c7dfcdeabf6ef9fed9a2d597e15ba3eddf2127737ffae3"
+   "class": "out of scope",
+   "evidence": "i1040gi p. 43, \"Check the box on line 27c if you do not want to claim the earned income credit\". The filer's own choice not to claim is a recorded design limit: the eic.check_27c label says \"the filer's own choice not to claim the EIC is not asked\" and TASKS-DONE T-027 records it (the sibling line 28 choice was recorded the same way, BUG-0174). The claim reads the label correctly; no amount is wrong for a filer who claims the credit. [Restamped unchanged from the ruling of earlier claim #2 under prompt_sha b27e6543: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "c6e997a517e8b3faf8b8701673309ab74814394eb90bea6188055f1377e2a47a"
   },
   "unruled:eic#2": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 43, \"Check the box on line 27c if you do not want to claim the earned income credit\". The filer's own choice not to claim is a recorded design limit: the eic.check_27c label says \"the filer's own choice not to claim the EIC is not asked\" and TASKS-DONE T-027 records it (the sibling line 28 choice was recorded the same way, BUG-0174). The claim reads the label correctly; no amount is wrong for a filer who claims the credit.",
-   "prompt_sha": "b27e654357e57dfb59c7dfcdeabf6ef9fed9a2d597e15ba3eddf2127737ffae3"
+   "class": "covered",
+   "line": "person.eic_ssn",
+   "evidence": "i1040gi p. 45, \"if 'Valid for Work Only With DHS Authorization' is printed on your social security card, your SSN is valid for EIC purposes only as long as the DHS authorization is still valid\". As the earlier eic#1 ruling: eic.step1_ssn reads household.all_eic_ssn, which counts person.eic_ssn of every person, and person.eic_ssn asks for an SSN \"valid for the EIC\" and says \"a card that says 'Valid for Work Only With DHS Authorization' is valid only while the authorization is valid\".",
+   "prompt_sha": "c6e997a517e8b3faf8b8701673309ab74814394eb90bea6188055f1377e2a47a"
   },
   "unruled:eic#3": {
-   "class": "presentation",
-   "evidence": "i1040gi pp. 40, 46, \"complete and attach Schedule EIC\". As the earlier eic#3 ruling: Schedule EIC is filing information; the qualifying-child tests that set the credit are asked (dependent.eic_child, eic.qc_count).",
-   "prompt_sha": "b27e654357e57dfb59c7dfcdeabf6ef9fed9a2d597e15ba3eddf2127737ffae3"
+   "class": "out of scope",
+   "gate": "person.se_screened",
+   "evidence": "i1040gi p. 47, \"Don't include on these lines any statutory employee income, any net profit from services performed as a notary public, any amount exempt from self-employment tax as the result of ... Form 4029 or Form 4361\". sc.statutory asks for statutory employee income or notary fees and sc.screened refuses the Schedule C; person.se_screen names an approved Form 4361 or 4029 and exempt self-employment income and person.se_screened refuses. Executed on stage14.eic.wsb_only_business: se_screen true refuses eic.wsb_se and f1040.line27a at person[taxpayer].se_screened, statutory true refuses them at sc[odd].screened. [Restamped unchanged from the ruling of earlier claim #6 under prompt_sha b27e6543: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "c6e997a517e8b3faf8b8701673309ab74814394eb90bea6188055f1377e2a47a"
   },
   "unruled:f1040#1": {
    "class": "real gap",
@@ -544,8 +545,8 @@
   "unruled:s1a#1": {
    "class": "covered",
    "line": "tipjob.qualified",
-   "evidence": "i1040gi pp. 101-103. Every employee tip amount is a tipjob entry whose tipjob.qualified question requires tips \"paid in cash (including by check, card or app), voluntarily, without negotiation and in an amount the customer decided, not for a service that is a felony or misdemeanor ..., and not for prostitution or pornographic activity\"; No refuses through tipjob.mixed, so automatic gratuities, non-cash and illegal-service tips cannot reach line 4a or 4c.",
-   "prompt_sha": "c1e801ce9956e20b7564a71b5df3cbc956c0fe08b133e0c2a9ba317a7255348e"
+   "evidence": "i1040gi pp. 101-103. Every employee tip amount is a tipjob entry whose tipjob.qualified question requires tips \"paid in cash (including by check, card or app), voluntarily, without negotiation and in an amount the customer decided, not for a service that is a felony or misdemeanor ..., and not for prostitution or pornographic activity\"; No refuses through tipjob.mixed, so automatic gratuities, non-cash and illegal-service tips cannot reach line 4a or 4c. [Restamped unchanged from the ruling of earlier claim #1 under prompt_sha c1e801ce: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "a13b8e4aadf6fcb9efa06d4c39c2d3cc523483babe21077c9b7301e5593ea0ac"
   },
   "unruled:s2#1": {
    "class": "out of scope",
@@ -742,38 +743,38 @@
   "unruled:dependent#1": {
    "class": "out of scope",
    "gate": "f8863.ban_refused",
-   "evidence": "i8863 pp. 1, 3, \"Don't claim the American opportunity credit for 2 years after there was a final determination\" and \"you must attach a completed Form 8862\". As the earlier dependent#4 ruling: f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans, and f8863.ban_refused refuses line 7 and its readers. Rechecked by execution: stage19.example.jack_kay with f8863.ban true refuses f8863.line7, line8 and f1040.line29 at f8863.ban_refused (the gate's rewrite as a choose on f8863.aoc_claimed keeps the HEAD conjunction).",
-   "prompt_sha": "8ebef6a4230a9c6b06b457f4e0e89ffd160d5f56f94c42a086167e823e30b217"
+   "evidence": "i8863 pp. 1, 3, \"Don't claim the American opportunity credit for 2 years after there was a final determination\" and \"you must attach a completed Form 8862\". As the earlier dependent#1 ruling: f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans for the return's American opportunity credit (filers and dependents alike), and f8863.ban_refused refuses line 7 and its readers (stage19.example.jack_kay with f8863.ban true refuses f8863.line7, line8 and f1040.line29).",
+   "prompt_sha": "751585c44274ae12984c946f8a2fb07ccff9c14988f014931285a6d03ac3417e"
   },
   "unruled:person#1": {
    "class": "out of scope",
    "gate": "sc.screened",
-   "evidence": "i1040sse p. 4; i1040sc p. 14. As the earlier person#5 ruling: sc.statutory asks whether the Schedule C is statutory employee income or notary public fees and sc.screened refuses the Schedule C, so no such line 31 reaches person.se_line2; executed on stage14.eic.wsb_only_business, sc[odd].statutory true refuses eic.wsb_se and f1040.line27a at sc[odd].screened.",
-   "prompt_sha": "d03ed69a7669a043f0644acca759dc6380ebe167329738870890a4025821daea"
+   "evidence": "i1040sse p. 4; i1040sc p. 14. As the ruling of the same claim earlier in this round (person#1, and person#5 before it): sc.statutory asks whether the Schedule C is statutory employee income or notary public fees and sc.screened refuses the Schedule C, so no such line 31 reaches person.se_line2 (stage14.eic.wsb_only_business, sc[odd].statutory true refuses at sc[odd].screened).",
+   "prompt_sha": "79f142b084936f6aef36d141cb07bb7c3123c9675341fa9d22bcd8587361599b"
   },
   "unruled:person#2": {
    "class": "out of scope",
-   "gate": "scope.other_income",
-   "evidence": "i1040gi p. 95 (reservist repayments not deductible); i8606 p. 9, \"Include on line 1 any repayment of a qualified reservist distribution\". As the earlier person#1 ruling: scope.other_income lists \"a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)\" and refuses the return, so no such repayment reaches person.ira_trad.",
-   "prompt_sha": "d03ed69a7669a043f0644acca759dc6380ebe167329738870890a4025821daea"
+   "gate": "sc.screened",
+   "evidence": "i2441 p. 4 and p503 p. 11 (a statutory employee's Schedule C line 1 is earned income). sc.statutory asks whether the Schedule C is statutory employee income or notary public fees, and sc.screened refuses that Schedule C, so no statutory-employee Schedule C reaches person.dc_earned; the same screen as person#1.",
+   "prompt_sha": "79f142b084936f6aef36d141cb07bb7c3123c9675341fa9d22bcd8587361599b"
   },
   "unruled:person#3": {
    "class": "out of scope",
-   "gate": "f8863.ban_refused",
-   "evidence": "i8863 pp. 1, 3. As the earlier person#4 ruling: f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans for the return's American opportunity credit (filers and dependents alike), and f8863.ban_refused refuses line 7; executed on stage19.example.jack_kay, f8863.ban true refuses f8863.line7, line8 and f1040.line29.",
-   "prompt_sha": "d03ed69a7669a043f0644acca759dc6380ebe167329738870890a4025821daea"
+   "gate": "person.plan_screened",
+   "evidence": "p560 p. 16, Employer matching contributions: \"If you choose a matching contribution less than 3%, the percentage must be at least 1%\". person.employer_max allows matching up to 3% of compensation, the plan's maximum; a plan that elected a lower match for 2025 makes any matching above that rate more than the deductible amount, and person.plan_screen asks whether there are \"contributions that are more than the maximum deductible amount\" and person.plan_screened refuses the person's retirement lines on Yes. The reading relies on the screen's wording reaching a filer who knows the plan's elected rate; no amount is computed for such contributions.",
+   "prompt_sha": "79f142b084936f6aef36d141cb07bb7c3123c9675341fa9d22bcd8587361599b"
   },
   "unruled:person#4": {
    "class": "covered",
    "line": "retirement.exc_amount",
-   "evidence": "p590b p. 28. As the prior ruling on this claim: retirement.exc_amount tells the filer to enter, for exception 22, no more than 50% of the present value of the IRA or plan account; person.x_c22 applies the $10,300 cap. [Restamped unchanged from the ruling of earlier claim #2 under prompt_sha ca1d25d6: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "d03ed69a7669a043f0644acca759dc6380ebe167329738870890a4025821daea"
+   "evidence": "p590b p. 28. As the prior ruling on this claim: retirement.exc_amount tells the filer to enter, for exception 22, no more than 50% of the present value of the IRA or plan account; person.x_c22 applies the $10,300 cap. [Restamped unchanged from the ruling of earlier claim #4 under prompt_sha a0dc7c50: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "79f142b084936f6aef36d141cb07bb7c3123c9675341fa9d22bcd8587361599b"
   },
   "unruled:person#5": {
    "class": "covered",
    "line": "retirement.exc_amount",
-   "evidence": "p590b p. 28. As the prior ruling on this claim: retirement.exc_amount caps exception 23 at the total interest in the IRA or plan account minus $1,000; retirement.early_screen refuses an emergency distribution within 3 years after an unrepaid earlier one; person.x_two23 refuses more than one in a year. [Restamped unchanged from the ruling of earlier claim #3 under prompt_sha ca1d25d6: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "d03ed69a7669a043f0644acca759dc6380ebe167329738870890a4025821daea"
+   "evidence": "p590b p. 28. As the prior ruling on this claim: retirement.exc_amount caps exception 23 at the total interest in the IRA or plan account minus $1,000; retirement.early_screen refuses an emergency distribution within 3 years after an unrepaid earlier one; person.x_two23 refuses more than one in a year. [Restamped unchanged from the ruling of earlier claim #5 under prompt_sha a0dc7c50: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "79f142b084936f6aef36d141cb07bb7c3123c9675341fa9d22bcd8587361599b"
   },
   "unruled:f8962#3": {
    "class": "covered",
@@ -797,22 +798,6 @@
    "evidence": "i1040sc p. 8. As the earlier sc#6 ruling: the statements and margin notations for lines 16a and 16b are filing information; the interest is entered. [Restamped unchanged from the ruling of earlier claim #4 under prompt_sha 8dea2914: same form, same quoted text, same cited page, same item and effect.]",
    "prompt_sha": "bf6e1387463ae8b04d8215c3e6b4a33197d34cac877d4b0b49d43d59feb3cf8a"
   },
-  "unruled:eic#4": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 41: the \"Full-time student\" and \"Permanently and totally disabled\" boxes on row (6), the row (5) boxes and the address-block box are checkboxes on Form 1040; as the earlier eic#3 ruling, they are filing information and the tests behind them are asked (dependent.eic_child, eic.us_home).",
-   "prompt_sha": "b27e654357e57dfb59c7dfcdeabf6ef9fed9a2d597e15ba3eddf2127737ffae3"
-  },
-  "unruled:eic#5": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 42, \"check the box to the right of the address block on page 1 of Form 1040\". The checkbox is filing information; the main-home test it reports is asked by eic.us_home and gates the credit.",
-   "prompt_sha": "b27e654357e57dfb59c7dfcdeabf6ef9fed9a2d597e15ba3eddf2127737ffae3"
-  },
-  "unruled:eic#6": {
-   "class": "out of scope",
-   "gate": "person.se_screened",
-   "evidence": "i1040gi p. 47, \"Don't include on these lines any statutory employee income, any net profit from services performed as a notary public, any amount exempt from self-employment tax as the result of ... Form 4029 or Form 4361\". sc.statutory asks for statutory employee income or notary fees and sc.screened refuses the Schedule C; person.se_screen names an approved Form 4361 or 4029 and exempt self-employment income and person.se_screened refuses. Executed on stage14.eic.wsb_only_business: se_screen true refuses eic.wsb_se and f1040.line27a at person[taxpayer].se_screened, statutory true refuses them at sc[odd].screened.",
-   "prompt_sha": "b27e654357e57dfb59c7dfcdeabf6ef9fed9a2d597e15ba3eddf2127737ffae3"
-  },
   "unruled:f1040#8": {
    "class": "out of scope",
    "gate": "s8812.combat_pay",
@@ -831,34 +816,22 @@
    "prompt_sha": "0d503d53cf6b55ec48be2d17d21bc6cf7ed8658adc960cf5e1cd923ec49c39c8"
   },
   "unruled:s1a#2": {
-   "class": "real gap",
-   "bug": "BUG-0473",
-   "evidence": "i1040gi p. 104, \"if 'Valid for Work Only with DHS Authorization' is printed on your social security card, your SSN is valid only as long as the DHS authorization is valid.\" The employment-validity and due-date parts are covered by person.work_ssn (\"an SSN valid for employment, issued before the due date of your 2025 return\"), but that question omits the DHS condition that dependent.work_ssn carries (BUG-0215). Executed stage12.tips.one_employer: with person.work_ssn yes, s1a.line13 is $8,000; the source gives $0 (stage12.tips.no_valid_ssn) when the DHS authorization has lapsed.",
-   "prompt_sha": "c1e801ce9956e20b7564a71b5df3cbc956c0fe08b133e0c2a9ba317a7255348e"
+   "class": "covered",
+   "line": "tipjob.qualified",
+   "evidence": "i1040gi p. 103, \"Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c.\" tipjob.qualified asks, for each employer, \"Were all the tips you are counting from this employer received in an occupation on the IRS list of occupations that customarily and regularly received tips on or before December 31, 2024\"; No refuses through tipjob.mixed (\"Splitting one employer's reported tips between qualified and nonqualified tips is outside this tool\"), so an employer's amount that mixes listed and unlisted occupations cannot reach line 4a.",
+   "prompt_sha": "a13b8e4aadf6fcb9efa06d4c39c2d3cc523483babe21077c9b7301e5593ea0ac"
   },
   "unruled:s1a#3": {
    "class": "covered",
-   "line": "person.work_ssn",
-   "evidence": "i1040gi p. 108, \"valid for employment and that is issued by the SSA before the due date of your 2025 return\". s1a.ot_ssn_count counts only persons with person.work_ssn yes, and that question asks exactly this (\"Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?\"). The DHS condition the page incorporates by reference is the s1a#2 gap.",
-   "prompt_sha": "c1e801ce9956e20b7564a71b5df3cbc956c0fe08b133e0c2a9ba317a7255348e"
+   "line": "carloan.requirements",
+   "evidence": "i1040gi p. 109. As the earlier s1a#5 ruling: s1a.carloan routes to carloan entries; carloan.requirements asks origination after 2024, purchase of the vehicle (\"lease payments do not qualify\") and a first lien; carloan.vehicle asks new, under 14,000 pounds and final assembly in the United States; carloan.kind has the \"death\" case for a loan assumed on a previous obligor's death.",
+   "prompt_sha": "a13b8e4aadf6fcb9efa06d4c39c2d3cc523483babe21077c9b7301e5593ea0ac"
   },
   "unruled:s1a#4": {
    "class": "covered",
-   "line": "person.work_ssn",
-   "evidence": "i1040gi p. 110, \"valid for employment and that is issued by the SSA before the due date of your 2025 return\". s1a.senior_count requires person.age65 and person.work_ssn yes, and person.work_ssn asks exactly these two conditions. The DHS condition the page incorporates by reference is the s1a#2 gap.",
-   "prompt_sha": "c1e801ce9956e20b7564a71b5df3cbc956c0fe08b133e0c2a9ba317a7255348e"
-  },
-  "unruled:s1a#5": {
-   "class": "covered",
-   "line": "carloan.eligible",
-   "evidence": "i1040gi p. 109. As the earlier s1a#1 ruling, rechecked in carloan.yaml: s1a.carloan routes to carloan entries; carloan.requirements asks origination after 2024, purchase of the vehicle (\"lease payments do not qualify\") and a first lien; carloan.vehicle asks new, under 14,000 pounds and final assembly in the United States; carloan.kind has the \"death\" case for a loan assumed on a previous obligor's death.",
-   "prompt_sha": "c1e801ce9956e20b7564a71b5df3cbc956c0fe08b133e0c2a9ba317a7255348e"
-  },
-  "unruled:s1a#6": {
-   "class": "covered",
    "line": "carloan.col_iii",
-   "evidence": "i1040gi pp. 109-110. s1a.line23_total sums carloan.col_iii, which subtracts carloan.col_ii (the Schedule C part, carloan.col_ii_input; Schedules E and F are refused by scope.schedule1); carloan.mixed/nonqualifying exclude negative equity, insurance and trailers, and carloan.refi_balance limits a refinancing to the balance at refinancing. Each entry is named by its VIN; writing the VIN on the return is filing information.",
-   "prompt_sha": "c1e801ce9956e20b7564a71b5df3cbc956c0fe08b133e0c2a9ba317a7255348e"
+   "evidence": "i1040gi pp. 109-110. s1a.line23_total sums carloan.col_iii, which subtracts carloan.col_ii (the Schedule C part, carloan.col_ii_input; Schedules E and F are refused by scope.schedule1); carloan.mixed/nonqualifying exclude negative equity, insurance and trailers, and carloan.refi_balance limits a refinancing to the balance at refinancing. Each entry is named by its VIN; writing the VIN on the return is filing information. [Restamped unchanged from the ruling of earlier claim #6 under prompt_sha c1e801ce: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "a13b8e4aadf6fcb9efa06d4c39c2d3cc523483babe21077c9b7301e5593ea0ac"
   },
   "unruled:sc#5": {
    "class": "out of scope",
@@ -928,6 +901,17 @@
    "line": "person.sav_student",
    "evidence": "f8880 p. 2, Who Can Take This Credit. person.sav_student, read by person.sav_ineligible (and so f8880.inelig_a / inelig_b), asks 'during any part of 5 calendar months of 2025, were you enrolled as a full-time student at a school, or did you take a full-time, on-farm training course ...' and excludes on-the-job training courses, correspondence schools and Internet-only schools, word for word.",
    "prompt_sha": "1f194d3e8903967d570ee4883018a4a459cd6041406b9b4b9ff66d67eadc5aab"
+  },
+  "unruled:person#6": {
+   "class": "out of scope",
+   "gate": "f8863.ban_refused",
+   "evidence": "i8863 pp. 1, 3. As the earlier person#3 ruling: f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans for the return's American opportunity credit, and f8863.ban_refused refuses line 7 (stage19.example.jack_kay, f8863.ban true refuses f8863.line7, line8 and f1040.line29).",
+   "prompt_sha": "79f142b084936f6aef36d141cb07bb7c3123c9675341fa9d22bcd8587361599b"
+  },
+  "unruled:person#7": {
+   "class": "out of scope",
+   "evidence": "i1040gi p. 95 (reservist repayments not deductible); i8606 p. 9, \"Include on line 1 any repayment of a qualified reservist distribution\". As the earlier person#2 ruling: scope.other_income lists \"a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)\" and refuses the return, so no such repayment reaches person.ira_trad.",
+   "prompt_sha": "79f142b084936f6aef36d141cb07bb7c3123c9675341fa9d22bcd8587361599b"
   }
  }
 }

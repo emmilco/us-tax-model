@@ -736,7 +736,7 @@
         "f4952:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.refund.f7 with Yes to the Form 4952 screen for interest attributable to royalties, a business, passive activities or tax-exempt income, as the interview asks them: it stops at the refusal, so the alternative allocation question and the investment interest amount are not asked and are left out. Form 4952 line 3 (line 1 plus line 2) returns line 2's refusal ahead of the unasked line 1; whether Form 4952 is required returns its own entry for the screen. The refused values are the evaluator's. Ordinary dividends (box 1a) of $0 answered, with the dividends question answered yes: qualified dividends (line 3a) are asked only when box 1a is above zero, and the recorded $0 assumes it is not.",
+      "evidence_note": "Inputs are stage16.refund.f7 with Yes to the Form 4952 screen for interest attributable to royalties, a business, passive activities or tax-exempt income, as the interview asks them: it stops at the refusal, so the alternative allocation question and the investment interest amount are not asked and are left out. Form 4952 line 3 (line 1 plus line 2) returns line 2's refusal ahead of the unasked line 1; whether Form 4952 is required first asks whether the form is used (an election on line 4g, interest or a carryforward), so it waits on the unasked line 4g. The refused values are the evaluator's. Ordinary dividends (box 1a) of $0 answered, with the dividends question answered yes: qualified dividends (line 3a) are asked only when box 1a is above zero, and the recorded $0 assumes it is not.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -796,17 +796,9 @@
           }
         },
         "f4952.required": {
-          "kind": "refusal",
-          "gate": "f4952.unsupported",
-          "form": "Form 4952 / Form 6198 / Schedule E",
-          "remedy": "Allocate the interest and prepare the applicable unsupported schedule or at-risk computation.",
-          "cite": {
-            "doc": "f4952",
-            "locator": "pp. 1, 3–4, Investment Interest Expense Deduction",
-            "revision": "2025; created 2025-05-28",
-            "snapshot": "5113c1669c7ca4ab49b3e6322c675e14f53d6053b49e59fea27677dbc210df03",
-            "tax_year": 2025
-          }
+          "kind": "unknown",
+          "reason": "no input supplied for f4952.line4g",
+          "input": "f4952.line4g"
         }
       }
     },
@@ -1176,6 +1168,73 @@
           "gate": "f4952.alternative_allocation",
           "form": "Form 4952 alternative allocation",
           "remedy": "Only the default capital-gain-first allocation is supported; alternative allocation and Form 1116 coordination are outside scope.",
+          "cite": {
+            "doc": "f4952",
+            "locator": "pp. 1, 3–4, Investment Interest Expense Deduction",
+            "revision": "2025; created 2025-05-28",
+            "snapshot": "5113c1669c7ca4ab49b3e6322c675e14f53d6053b49e59fea27677dbc210df03",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "t264.f4952.unsupported_with_interest",
+      "covers": [
+        "f4952:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "stage16.cleanup.refuse.f4952_unsupported with $1,000 of investment interest on line 1, so Form 4952 is used: whether it must be filed then reads the filing test, whose own entry is the refusal for the screen (interest attributable to royalties, a business, passive activities or tax-exempt income).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "f1040.line26": 200000,
+        "div.any": true,
+        "f4952.has_interest": true,
+        "f4952.unsupported": true,
+        "f4952.line1": 100000,
+        "f4952.line4g": null,
+        "f2441.benefits": null,
+        "sd.distributions": null,
+        "ssb.benefits": null,
+        "sd.other_forms": null,
+        "refund.received": null,
+        "s1.alimony": null,
+        "s1.uc_paid": null,
+        "s1.line8_other": null,
+        "person[taxpayer].educator_expenses": null,
+        "person[taxpayer].sav_trad": null,
+        "person[taxpayer].ira_dist": null,
+        "ira.deduct_less": null,
+        "sli.interest": null,
+        "s1.line8h": null,
+        "sa.dependent": null,
+        "s1a.carloan": null,
+        "person[taxpayer].age65": null,
+        "sa.excluded_income": null,
+        "f1040.tax_exempt_interest": null,
+        "div.box12": null,
+        "ftc.taxes": null,
+        "f2441.care": null,
+        "f5695.part2_any": null,
+        "f5695.part1_any": null,
+        "f5695.business_use": null,
+        "f5695.line7a": null,
+        "f5695.line12": null,
+        "f8959.unsupported": null,
+        "f5695.condo": null,
+        "sd.carryover": null,
+        "s179.line10": null,
+        "f4952.alternative_allocation": null
+      },
+      "expect": {
+        "f4952.required": {
+          "kind": "refusal",
+          "gate": "f4952.unsupported",
+          "form": "Form 4952 / Form 6198 / Schedule E",
+          "remedy": "Allocate the interest and prepare the applicable unsupported schedule or at-risk computation.",
           "cite": {
             "doc": "f4952",
             "locator": "pp. 1, 3–4, Investment Interest Expense Deduction",

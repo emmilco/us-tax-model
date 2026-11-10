@@ -4,15 +4,15 @@
  "family": "claude",
  "base": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "f4952.required",
-   "record": "6f9596d3bced37c987428d7365fa9862e5db8c047b407204034a47887fcf224c",
+   "record": "6dc9047ef4efb1473fdd7fc47cd25b365958e72bf0d67fdaaba618a908fb1a45",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f4952 p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\". The candidate drops the project's disjunct for a positive line 4g, so a filer whose only reason to file is the election is told the form is not required: the same reading as the earlier rulings on this line. It also reads the input f4952.carryover where the project reads its gate line f4952.carryover_if_interest; the two differ only on records with f4952.has_interest false and the carryover answered, which the interview cannot produce (the gated input is unreachable when the gate is no). Project stands.",
-   "subject_key": "a3b10a9335736ce01421a7c0144c23af1f694e0e62d126b5e50839daf7822911"
+   "ruling": "Ruling: model error; f4952 p. 3, Who Must File: \"you must file Form 4952 to claim a deduction for your investment interest expense\", with the Exception; p. 4: \"To make the election, enter on line 4g the amount you elect to include in investment income\". The reply requires has_interest and never tests a positive line 4g election, so it says the form is not required for an election without investment interest paid (executable-triage-v2: 22 value differences on completed returns, e.g. classm.f8880.2.deepseek, project true, reply false), and it reads the unsupported-items screen even where the form is not used (92 candidate-unknown on completed returns). The project's line is a choice on f4952.used (an election on line 4g, interest paid or accrued in 2025, or a carryforward) followed by the filing test, the same conjunction as before in operand order; the rewrite changes no completed value (every fixture passes). Project retained.",
+   "subject_key": "3b03ba3f4d05682174f87fae57afd5ab5b3874d2b21c93a46399e6c9f54ec812"
   },
   {
    "key": "1",
@@ -106,7 +106,7 @@
   }
  ],
  "subjects": {
-  "f4952.required": "2d46dedaabe9f6e9ec521ccb30556f5a233d6ba8172d0e4f27f41182fd5a67c8",
+  "f4952.required": "9a9236d8d551fdb6aff6f024e3397a7dcf78ab8b9a8140f1ace5631774912066",
   "1": "040d57fedb2d2884f77c37869c16886627408afe407590f1725a32c148cbf5f4",
   "4a": "c21d4937d2ac41d88b812da7c86688878ed02c5163ce0b9faad7ea035d8ea5bf",
   "2": "230ba4ef4077a7b4719e9801d9b3571d8859e4b3b40c604df65b5733d83f697b",

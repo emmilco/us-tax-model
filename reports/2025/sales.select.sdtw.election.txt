@@ -275,6 +275,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Form 4952 is used and must be filed (for an election, or to claim interest when the exception does not apply)
       = true
       cite: [f4952] p. 3, Who Must File, "you must file Form 4952 to claim a deduction for your investment interest expense" and "Exception. You don’t have to file Form 4952 if all of the following apply" (2025; created 2025-05-28; 5113c166)
+      note: taken: {"eq":["f4952.used",{"const":true}],"op":"test"}
 
 == Form 8995 — Qualified Business Income Deduction Simplified Computation ==
   2   Total qualified business income or (loss). Combine lines 1i through 1v, column (c)
@@ -552,6 +553,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [f8606] Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" and "Go to line 4" (2025; 748a2bf2)
       note: taken: {"eq":["person.ira_has",{"const":false}],"op":"test"}
+  (helper) Your spouse's entry, if your spouse was born before January 2, 1961, and has a valid SSN
+      = false
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.role",{"const":"taxpayer"}],"op":"test"}
 
 == Form W-2 — wage, withholding and Social Security boxes by employer — person[taxpayer].w2[migrated] ==
   1   Wages, tips, other compensation
@@ -1782,11 +1787,13 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s1a.line21: chose $0 (guard 0)
   s1a.line30: chose $0 (guard 0)
   s1a.line36a: chose $0 (guard 0)
+  person[taxpayer].spouse_senior_work_ssn: chose false (guard 0)
   s1a.line36b: chose $0 (guard 0)
   qbi.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   sd.line18: chose $0 (guard 0)
   sd.line19: chose $0 (guard 0)
+  f4952.required: chose true (guard 0)
   sdtw.line4: chose $4,000 (guard 0)
   sdtw.line23: chose $3,999.99 (guard 0)
   sdtw.line24: chose $2,349.99 (guard 0)
@@ -2058,7 +2065,8 @@ Derivations:
   sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
   sa.age65: test(sa.age65_count = 0; 0 = 0)
   s1a.line36a: choose(sa.age65 = false; false = false; s1a.zero = $0)
-  s1a.spouse_senior_count: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
+  person[taxpayer].spouse_senior_work_ssn: choose(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].no = false)
+  s1a.spouse_senior_count: sum_over(person[taxpayer].spouse_senior_work_ssn = false; true = true)
   s1a.spouse_senior: test(s1a.spouse_senior_count = 0; 0 = 0)
   s1a.line36b: choose(s1a.spouse_senior = false; false = false; s1a.zero = $0)
   s1a.line37: sum(s1a.line36a = $0; s1a.line36b = $0)
@@ -2113,7 +2121,7 @@ Derivations:
   u1250.line18: subtract_floor0(u1250.line13 = $0; u1250.line17 = $0)
   sd.line19: choose(sd.line17 = true; true = true; u1250.line18 = $0)
   f4952.required_test: test(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0.01; 0 = $0)
-  f4952.required: test(f4952.used = true; true = true; f4952.required_test = true; true = true)
+  f4952.required: choose(f4952.used = true; true = true; f4952.required_test = true)
   sd.filing4952: copy(f4952.required = true)
   sd.investment_election: copy(f4952.election = $0.01)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = true; true = true; sd.line17 = true; true = true; sd.line18 = $0; 0 = $0; sd.line19 = $0; 0 = $0; sd.filing4952 = true; true = true; sd.investment_election = $0.01; 0 = $0)

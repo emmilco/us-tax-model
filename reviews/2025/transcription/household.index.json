@@ -5,7 +5,7 @@
  "base": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
  "head_rows": {
   "agree / disagree / missing": "6 / 13 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -68,30 +68,30 @@
   },
   {
    "key": "household.ctc_ssn",
-   "record": "df989d49e11408dbed45807f6a8e9ef8df9135bdcc887cb8fbc57e0715052acd",
+   "record": "681888e6a560346c4808ec9f04baf93c9b90bb2dc5ac77384c5d81d95274879d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 17, Before you begin: \"If you are filing a joint return, only one spouse is required to have a valid SSN ... The other spouse must have either an SSN or ITIN\". Both sides count the filers with an SSN valid for employment and the filers with an SSN or ITIN; the project reads the count through person.work_ssn_or_tin. executable-triage-v2 (`.transcription/triage/2025/household.json`; 1,702 fixtures, 500 generated returns seed 20261026, 247 partial records; 2,449 comparisons): 2,446 of 2,449 agree; differences 3 project-unknown (1 completed, 1 incomplete, 1 refused), each a record with person.work_ssn withheld; no value or refusal difference. Trade-off of the gate-wave rewrite (BUG-0466/BUG-0471, owner decision 2026-11-09): on records with an answer withheld, a value HEAD computed through the three-valued all/any is now unknown until the first guard of the nested choose is answered; no printed value or refusal changes on a completed return (1,702 of 1,702 fixtures pass). Witness, evaluated in both trees: mutation.t3.mfj_no_tips_ssn_unanswered: HEAD household.ctc_ssn true and f1040.line19 $4,400.00; current unknown until person.work_ssn is answered. This is the owner-accepted BUG-0466 design, not a reading of the source. Project stands.",
-   "subject_key": "6a8719cc320aa164ddb8d8f5904287da8f83a5f6127af9fa0506c66014ac3667"
+   "ruling": "Ruling: representation; project retained. i1040gi p. 17, Before you begin: \"If you are filing a joint return, only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN\". The reply counts the taxpayer's and the spouse's entries by role; the project counts every person, and any roster other than one entry for you and, on a joint return, one for your spouse is refused at Form 1040 line 1a (household.roster_bad), so the counts agree within scope, as ruled before. The project's person count reads person.work_ssn_or_tin, now a choice on person.tin first (owner, T-264), so it is unknown on records that answer work_ssn and withhold tin (classm.s1a.1: no dependent, the line is not read on that return); the reply's unknowns withhold the filing status (stage21.choose.eic_limit_status_unanswered). No value differs. Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/household.json; 1,747 fixtures, 500 generated returns seed 20261026, 247 partial records): 2,484 of 2,520 comparisons agree; differences {\"candidate-unknown\": 3, \"project-unknown\": 33}; on completed returns {\"project-unknown\": 5}.",
+   "subject_key": "f13b857a3d06926f2d8f5415c41a1bc216bc7b07094da13fc12741897957566e"
   },
   {
    "key": "household.taxpayer_work_ssn",
-   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "record": "681888e6a560346c4808ec9f04baf93c9b90bb2dc5ac77384c5d81d95274879d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi pp. 101, 106 and 110 (Schedule 1-A: the taxpayer's own valid SSN). The reply now counts only the taxpayer's entry, as the project (1 <= n against 0 < n on an integral count); the prior model error (either spouse) is gone. No difference. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,300 of 2,300 agree; none; on returns the full interview completes: none. Project stands.",
-   "subject_key": "2175bc55e9d5669b2b1928818295d9b8db330f1149098c455759e81177834eb9"
+   "ruling": "Ruling: representation; project retained. The project tests 0 < count and the reply 1 <= count; for a count the two are the same test, as ruled before. No difference. Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/household.json; 1,747 fixtures, 500 generated returns seed 20261026, 247 partial records): 2,520 of 2,520 comparisons agree; differences {}; on completed returns none.",
+   "subject_key": "2df78cbda9ce30cc4f62e4bcef3374e55f2a39d5e1bf96f0bcd8a83492404676"
   },
   {
    "key": "household.ctc_disallowed_claim",
-   "record": "49552e70794e7f7d9d2a6ad65dd3b5ccea0e359cfd9cd310871715a7edeb8d57",
+   "record": "681888e6a560346c4808ec9f04baf93c9b90bb2dc5ac77384c5d81d95274879d",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040s8812 p. 2, Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\" (Form 8862 is needed only to claim the credit). The candidate copies household.credit_disallowed, so it is true whenever the answer is Yes, also on a return that claims no child tax credit or credit for other dependents (Schedule 8812 line 8 not above line 11, where line 12 says \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"). The project tests line 8 above line 11 first and then the answer, which it now reads through its gate line household.credit_disallowed_if_claimed (asked only when the return claims one of the four credits). executable-triage-v2 (`../triage/household.json`; 1,638 fixtures, 500 generated returns seed 20261026, 235 partial records): no value difference on a completed return; 1 candidate-unknown on a completed return (the answer is withheld where the project does not need it); the other differences are refused or incomplete records. Same reading as the earlier ruling on this line (T-101). Project stands.",
+   "ruling": "Ruling: model error; i1040s8812 p. 2, Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\". As ruled before (T-101): the reply copies household.credit_disallowed, true whenever the answer is Yes also on a return that claims none of the credits (f2.t101.credit_disallowed_eic_zero: project false, reply true), and it needs the answer where the project does not ask it (classm.s8812.4.deepseek). Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/household.json; 1,747 fixtures, 500 generated returns seed 20261026, 247 partial records): 1,717 of 2,520 comparisons agree; differences {\"candidate-unknown\": 98, \"project-refuses\": 629, \"project-unknown\": 74, \"value\": 2}; on completed returns {\"candidate-unknown\": 73, \"value\": 1}.",
    "subject_key": "9c5107eeae5ea9492b03df1f25c99646b3256ccd6a375641fa267f3d31318fac"
   },
   {
    "key": "household.eic_disallowed_claim",
-   "record": "49552e70794e7f7d9d2a6ad65dd3b5ccea0e359cfd9cd310871715a7edeb8d57",
+   "record": "681888e6a560346c4808ec9f04baf93c9b90bb2dc5ac77384c5d81d95274879d",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\" (to take the credit; the Reminder on p. 46, \"to find out if you must file Form 8862 to take the credit for 2025\"). The candidate copies household.credit_disallowed, so it is true on a return that takes no earned income credit. The project tests that the credit is claimed (Steps 1 to 5 passed and eic.line6, Worksheet A line 6 or Worksheet B line 11, above zero) and then the answer, read through its gate line household.credit_disallowed_if_claimed. executable-triage-v2 (`../triage/household.json`; 1,638 fixtures, 500 generated returns seed 20261026, 235 partial records): the value differences on completed returns are f2.t101.credit_disallowed_no_credit_claimed and f2.t101.credit_disallowed_eic_zero (answer Yes, no earned income credit claimed: project false, candidate true), the narrowing T-101 made; 3 candidate-unknown on completed returns (answer withheld where the project does not need it); the rest are refused or incomplete records. Project stands.",
+   "ruling": "Ruling: model error; i1040gi p. 43, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed\" (the form goes with a claim of the credit). As ruled before (T-101): the reply copies household.credit_disallowed, so it is true on a Yes answer also when no credit is claimed (f2.t101.credit_disallowed_eic_zero: project false, reply true), and it needs the answer where eic.eligible is false and the project does not ask it (classm.s8812.4.deepseek). Reviewed again line-scoped as a T-150 sibling refresh (the readers of the gate-wave follow-up's rewritten lines, BUG-0466/0471, T-264; this line itself is unchanged). executable-triage-v2 (.transcription/triage/2025/household.json; 1,747 fixtures, 500 generated returns seed 20261026, 247 partial records): 1,804 of 2,520 comparisons agree; differences {\"candidate-unknown\": 104, \"project-refuses\": 540, \"project-unknown\": 70, \"value\": 2}; on completed returns {\"candidate-unknown\": 73, \"value\": 1}.",
    "subject_key": "574841cdf5b0e954d4f6ed0530d49a0b2ef43ec540ac612508413096727be72c"
   },
   {
@@ -160,7 +160,8 @@
  "__rest__": "92bf81ae283c1e0d5fa92ecd444c292ac15487a8e6ed56b6d46422a82d26927b",
  "foreign": {
   "household.all_tin": "903be3bb070d065eecf65bff50847ecbaa615ca8e55cdc2e0343a7cc2f0a00c6",
-  "household.ctc_ssn": "45033fd9efdcc30506c78cef0929754bc15c7de5a788c78c69cb7687028d932f",
+  "household.ctc_ssn": "c6d381f93823e72aeb28e81f83a2fdfe88982ccf287753bc7b20c9cb79ae64db",
+  "household.taxpayer_work_ssn": "8f963784efb122ae143d3856406322e4a86f0dcb4ac0620b866758facf9352db",
   "household.ctc_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
   "household.eic_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
   "household.hoh_fails": "2121c0653ea07b6e66eb554692c09dec8702e5fa509ab61684756cd39fd552e3",

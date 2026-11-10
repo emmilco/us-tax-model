@@ -662,6 +662,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i5329] p. 8, Line 47, "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12)." (2025; aec3d325)
       note: confirmed roster $f8889@person[taxpayer]:
+  (helper) Your spouse's entry, if your spouse was born before January 2, 1961, and has a valid SSN
+      = false
+      cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.role",{"const":"taxpayer"}],"op":"test"}
 
 == Form 5329, Additional Taxes on Qualified Plans (Including IRAs) and Other Tax-Favored Accounts (Parts I and VII), one per person — person[taxpayer].f5329[form] ==
   1   Early distributions includible in income
@@ -1633,6 +1637,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s1a.line21: chose UNKNOWN (no input supplied for s1a.overtime)
   s1a.line30: chose UNKNOWN (no input supplied for s1a.carloan)
   s1a.line36a: chose $0 (guard 0)
+  person[taxpayer].spouse_senior_work_ssn: chose false (guard 0)
   s1a.line36b: chose $0 (guard 0)
   qbi.deduction: chose UNKNOWN (no input supplied for s1a.tips)
   sd.line18: chose $0 (guard 1)
@@ -1872,7 +1877,8 @@ Derivations:
   sa.age65: test(sa.age65_count = 0; 0 = 0)
   s1a.zero: param(#sales.zero = $0)
   s1a.line36a: choose(sa.age65 = false; false = false; s1a.zero = $0)
-  s1a.spouse_senior_count: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
+  person[taxpayer].spouse_senior_work_ssn: choose(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].no = false)
+  s1a.spouse_senior_count: sum_over(person[taxpayer].spouse_senior_work_ssn = false; true = true)
   s1a.spouse_senior: test(s1a.spouse_senior_count = 0; 0 = 0)
   s1a.line36b: choose(s1a.spouse_senior = false; false = false; s1a.zero = $0)
   s1a.line37: sum(s1a.line36a = $0; s1a.line36b = $0)

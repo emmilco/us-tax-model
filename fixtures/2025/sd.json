@@ -321,7 +321,7 @@
         "sales.loss.mfs.0"
       ],
       "evidence": "synthetic regression (not independently hand-worked)",
-      "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim. Mutation-score assertion (T-159), checked against the archived i1040gi: a married filer filing separately with no qualifying child answers Yes to Step 4, question 1 (p. 41, \"Yes. STOP You can't take the credit.\"), a stop that does not say to check line 27c; no stop before it says so.",
+      "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim. Mutation-score assertion (T-159), checked against the archived i1040gi: a married filer filing separately with no qualifying child answers Yes to Step 4, question 1 (p. 41, \"Yes. STOP You can't take the credit.\"), a stop that does not say to check line 27c; no stop before it says so. With tax-exempt interest withheld, Step 2, question 1 is open, and the EIC steps are a chain in the flow chart's order, so whether Step 4 is reached, and with it the line 27c box, is unknown.",
       "inputs": {
         "$sales": [
           "a"
@@ -347,8 +347,9 @@
           "value": false
         },
         "eic.check_27c": {
-          "kind": "bool",
-          "value": false
+          "kind": "unknown",
+          "reason": "no input supplied for f1040.tax_exempt_interest",
+          "input": "f1040.tax_exempt_interest"
         }
       }
     },

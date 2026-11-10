@@ -275,7 +275,19 @@ form:
       printed: '(gate)'
       label: 'A joint return with a spouse who was not a full-year New York State and City resident'
       type: Bool
-      expr: { op: test, all: [{ op: test, eq: ["f1040.status", { const: mfj }] }, { op: test, eq: ["ny_it201.ask.spouse_resident", { const: false }] }] }
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, eq: ["f1040.status", { const: single }] }
+            then: "ny_it201.no"
+          - guard: { op: test, eq: ["f1040.status", { const: mfj }] }
+            then: "ny_it201.spouse_not_resident"
+          - guard: { op: test, eq: ["f1040.status", { const: mfs }] }
+            then: "ny_it201.no"
+          - guard: { op: test, eq: ["f1040.status", { const: hoh }] }
+            then: "ny_it201.no"
+          - guard: { op: test, eq: ["f1040.status", { const: qss }] }
+            then: "ny_it201.no"
       cite: { doc: ny_it201i, locator: 'p. 4, Item A, "One spouse is a New York State resident and the other is a nonresident or part-year resident."' }
     - id: ny_it201.gate.special_accrual
       printed: '(gate)'
@@ -2320,3 +2332,9 @@ form:
       type: NonNegDollars
       expr: { op: sum, of: ["ny_it201.tax_due", "ny_it201.line81", "ny_it201.line82"] }
       cite: { doc: ny_it201i, locator: 'p. 23, Line 80: Amount you owe, "Enter on line 80 the amount of tax you owe plus any estimated tax penalty you owe (see line 81 instructions) and any other penalties and interest you owe (see line 82 instructions)."' }
+    - id: ny_it201.spouse_not_resident
+      printed: '(helper)'
+      label: 'The spouse on a joint return was not a full-year New York State and City resident'
+      type: Bool
+      expr: { op: test, eq: ["ny_it201.ask.spouse_resident", { const: false }] }
+      cite: { doc: ny_it201i, locator: 'p. 4, Item A, "One spouse is a New York State resident and the other is a nonresident or part-year resident."' }
