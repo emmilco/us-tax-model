@@ -148,27 +148,56 @@ form:
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, question 1
+    - id: eic.status_mfs
+      printed: (helper)
+      label: Filing status married filing separately
+      type: Bool
+      expr:
+        op: test
+        eq:
+        - f1040.status
+        - const: mfs
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married
+          filing separately or head of household?"
     - id: eic.married_rules
       printed: (helper)
       type: Bool
       label: A married filer whose filing status is married filing separately or head of household
       expr:
-        op: test
-        any:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - f1040.status
-              - const: mfs
-          - op: test
-            all:
-              - op: test
-                eq:
-                  - f1040.status
-                  - const: hoh
-              - op: test
-                eq:
-                  - household.married
-                  - const: true
+            - f1040.status
+            - const: single
+          then: eic.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfj
+          then: eic.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfs
+          then: eic.status_mfs
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: hoh
+          then: household.married
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: qss
+          then: eic.no
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married
@@ -629,81 +658,201 @@ form:
       expr:
         op: test
         any:
-          - op: test
-            eq:
-              - eic.married_rules
-              - const: false
-          - op: test
-            eq:
-              - eic.same_home
-              - const: false
-          - op: test
-            eq:
-              - eic.legally_separated
-              - const: true
+        - op: test
+          eq:
+          - eic.married_rules
+          - const: false
+        - op: test
+          eq:
+          - eic.same_home
+          - const: false
+        - op: test
+          eq:
+          - eic.legally_separated
+          - const: true
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5
           ("No. STOP")
+    - id: eic.status_mfj
+      printed: (helper)
+      label: Filing status married filing jointly
+      type: Bool
+      expr:
+        op: test
+        eq:
+        - f1040.status
+        - const: mfj
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, questions 2 to 6
+    - id: eic.step3_not_joint
+      printed: (helper)
+      label: 'Step 3, questions 3 to 6, for a return that is not joint: passing questions 3 to 5, then not a qualifying child
+        of another person'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - eic.step3_married
+            - const: true
+          then: eic.not_qc_of_another
+        - guard:
+            op: test
+            eq:
+            - eic.step3_married
+            - const: false
+          then: eic.no
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, questions 2 to 6
+    - id: eic.not_qc_of_another
+      printed: (helper)
+      label: 'Step 3, question 6: not a qualifying child of another person'
+      type: Bool
+      expr:
+        op: test
+        eq:
+        - eic.qc_of_another
+        - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, questions 2 to 6
     - id: eic.step3
       printed: (helper)
       type: Bool
       label: 'Step 3, questions 2 to 6: filing jointly, or passing questions 3 to 5 and not a qualifying child of another person'
       expr:
-        op: test
-        any:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - f1040.status
-              - const: mfj
-          - op: test
-            all:
-              - op: test
-                eq:
-                  - eic.step3_married
-                  - const: true
-              - op: test
-                eq:
-                  - eic.qc_of_another
-                  - const: false
+            - f1040.status
+            - const: single
+          then: eic.step3_not_joint
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfj
+          then: eic.status_mfj
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfs
+          then: eic.step3_not_joint
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: hoh
+          then: eic.step3_not_joint
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: qss
+          then: eic.step3_not_joint
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, questions 2 to 6
+    - id: eic.step4_age
+      printed: (helper)
+      label: 'Step 4 for a filer outside the married rules: aged 25 to 64, main home in the United States, and not a qualifying
+        child or dependent of another person'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - eic.age_range
+            - const: true
+          then: eic.step4_home
+        - guard:
+            op: test
+            eq:
+            - eic.age_range
+            - const: false
+          then: eic.no
+      cite:
+        doc: i1040gi
+        locator: pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960
+          and before January 2, 2001)
+    - id: eic.step4_home
+      printed: (helper)
+      label: 'Step 4 for a filer outside the married rules aged 25 to 64: main home in the United States, and not a qualifying
+        child or dependent of another person'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - eic.us_home
+            - const: true
+          then: eic.step4_dependent
+        - guard:
+            op: test
+            eq:
+            - eic.us_home
+            - const: false
+          then: eic.no
+      cite:
+        doc: i1040gi
+        locator: pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960
+          and before January 2, 2001)
+    - id: eic.step4_dependent
+      printed: (helper)
+      label: 'Step 4, questions 3 and 4: filing jointly, or not a qualifying child or dependent of another person'
+      type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - f1040.status
+          - const: mfj
+        - op: test
+          all:
+          - op: test
+            eq:
+            - eic.qc_of_another
+            - const: false
+          - op: test
+            eq:
+            - sa.dependent
+            - const: false
+      cite:
+        doc: i1040gi
+        locator: pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960
+          and before January 2, 2001)
     - id: eic.step4
       printed: (helper)
       type: Bool
       label: 'Step 4: not a married filer filing separately or as head of household, aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person'
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - eic.married_rules
-              - const: false
-          - op: test
+            - eic.married_rules
+            - const: true
+          then: eic.no
+        - guard:
+            op: test
             eq:
-              - eic.age_range
-              - const: true
-          - op: test
-            eq:
-              - eic.us_home
-              - const: true
-          - op: test
-            any:
-              - op: test
-                eq:
-                  - f1040.status
-                  - const: mfj
-              - op: test
-                all:
-                  - op: test
-                    eq:
-                      - eic.qc_of_another
-                      - const: false
-                  - op: test
-                    eq:
-                      - sa.dependent
-                      - const: false
+            - eic.married_rules
+            - const: false
+          then: eic.step4_age
       cite:
         doc: i1040gi
         locator: pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31,
@@ -720,28 +869,20 @@ form:
       type: Bool
       label: Step 3 for a filer with a qualifying child, Step 4 otherwise
       expr:
-        op: test
-        any:
-          - op: test
-            all:
-              - op: test
-                eq:
-                  - eic.has_qc
-                  - const: true
-              - op: test
-                eq:
-                  - eic.step3
-                  - const: true
-          - op: test
-            all:
-              - op: test
-                eq:
-                  - eic.has_qc
-                  - const: false
-              - op: test
-                eq:
-                  - eic.step4
-                  - const: true
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - eic.has_qc
+            - const: true
+          then: eic.step3
+        - guard:
+            op: test
+            eq:
+            - eic.has_qc
+            - const: false
+          then: eic.step4
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, question 1, "No. Skip questions 2 through 6; go to Step 4"
@@ -973,6 +1114,17 @@ form:
       cite:
         doc: i1040gi
         locator: p. 42, Step 5, question 3
+    - id: eic.no
+      printed: (helper)
+      label: Year parameter household.no (false)
+      type: Bool
+      expr:
+        op: param
+        ref: household.no
+      cite:
+        doc: i1040gi
+        locator: pp. 40–43, Steps 1 to 6 (each "No. STOP You can't take the credit" ends the flow chart; Step 6, question 1, "No.
+          Go to Worksheet A")
     - id: eic.eligible
       printed: (helper)
       type: Bool

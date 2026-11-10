@@ -4,6 +4,41 @@
  "rulings": [
   {
    "printed": "1 (box)",
+   "project_expr_sha256": "1eac9c54c605b4cb42fb8ed7f3f7bd31b38038481bcd74e9b7eda45943f7cb67",
+   "second_expr_sha256": "cfd50c41c188e65ed8c596894c8f012b58237d02dc4b453c7652eacdb235299c",
+   "ruling": "Ruling: model error; f2441 (2025) p. 1, Part I: \"If you have more than three care providers, see the instructions and check this box\"; i2441 p. 2, Line 1: \"If you have more than three care providers, check the box above line 1 and attach a statement to your return with the required information.\" The question \"Did you receive dependent care benefits?\" is a separate entry below line 1 (f2441 p. 1, \"No ▶ Complete only Part II below. Yes ▶ Complete Part III on page 2 next.\"). The candidate transcribes the box as the benefits answer (f2441.benefits), which is a different entry of the form. executable-triage-v2 (`.transcription/triage/2025/f2441.json`, pass 045801c274b5; 1,702 fixtures, 500 generated returns seed 20261026, 319 partial records; 2,521 comparisons): 2,402 of 2,521 agree; differences 79 value, 38 project-unknown, 2 candidate-unknown; on returns the full interview completes: 23 value; witnesses enumerated with the cap lifted (scratch /tmp/adj/tr/eicwork/full/f2441.json). The 23 completed value differences are of the two shapes: 21 returns with dependent care benefits and one care provider (project false, candidate true; e.g. classm.f2441.1, classm.f2441.3, stage15.f2441.s4, stage19.mut.dc_box10_spouse_only) and 2 returns with four providers and no benefits (classm.f2441.2, stage15.mut.f2441_four_providers: project true, candidate false); f2441.provider_count and f2441.benefits evaluated on all 23. The source supports the project on each. The other differences are on incomplete or refused records. Gate-wave check: f2441.line1_box gives the same value in HEAD and the working tree on all 23 witnesses and every completed return (1,702 fixtures and 500 generated returns evaluated in both trees); it differs only on 8 refused records, false in HEAD and unknown in the working tree where the choose waits on f2441.filing. Project stands.",
+   "context": "2e6a52c5d47fbca36e4f36c384c360ceea0303fccbfe5de3951220d13dba765a",
+   "date": "2026-11-09",
+   "run": "8f5dd6b92c6049ee5599427ff9158a9c83dda12a2b31dec1b062e91e4900559e",
+   "subject_key": "dc1cd8a129d6aa06ee3ad3a9ecb9fe8aca7ac0588574aebdb8ce859a18f2533c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f2441",
+     "fixture:classm.f2441.2.deepseek@f2441",
+     "fixture:classm.f2441.3.deepseek@f2441",
+     "fixture:classm.f2441.4.deepseek@f2441",
+     "fixture:classm.f2441.5.deepseek@f2441",
+     "fixture:classm.f2441.6.deepseek@f2441",
+     "partial:stage14.asset.hy_5yr-f2441.care@f2441",
+     "partial:stage14.asset.bonus_100-f2441.care@f2441",
+     "partial:stage14.asset.prior_7yr-f2441.care@f2441",
+     "partial:stage14.asset.qip-f2441.care@f2441",
+     "partial:stage14.asset.done-f2441.care@f2441",
+     "partial:stage14.asset.refuse_class-f2441.care@f2441",
+     "partial:classm.f2441.3.deepseek-f2441.benefits@f2441",
+     "partial:classm.dependent.2.deepseek-f2441.benefits@f2441"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1 (box)",
    "project_expr_sha256": "4ccf94f19845c12881e127a1a05fde111e2343d17e5d63d4f5f111e9b820c6dd",
    "second_expr_sha256": "b7e1f0ef98e2e684907bec7b5e350ed7a500fbfe7c846d143acdda872a1ab6a8",
    "ruling": "Ruling: model error; Form 2441 p. 1, Part I, line 1; i2441 p. 1, \"Who Must File\". executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases; 2,375 comparisons): 1,245 of 2,375 agree; 1,130 candidate-unknown; on completed returns: 89 candidate-unknown. Same expression as the earlier rounds: the provider count with no test that the return files Form 2441, so it needs the dcprov roster from filers without care or benefits (every difference is candidate-unknown \"collection roster\", project false; 89 on completed returns, all with f2441.benefits and f2441.care no). Project stands.",

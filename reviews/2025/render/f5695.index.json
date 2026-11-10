@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "4173fb9721d1eeab7c41ccad8eb8aefbaa512b83bfd0019caa0f87b35f75b056",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-09); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -81,9 +81,9 @@
   },
   {
    "key": "14",
-   "record": "5fa2668eef90a5dee35d2e3abe194f81f331058a78cd362dcf2433dc15279829",
+   "record": "1237ed072135b6e24688ca07d6595fb4acab0c225e0ce8bfa0f47dc466231ce6",
    "status": "MATCH",
-   "subject_key": "9610c972d946a9000e9f28b5641e37fa3d89dd4cb40b31779bb53c5b13b0c74c"
+   "subject_key": "ae88bf9cd2c7df08f22c621742d89edc248d59a65b4f99a278cacc768eb9e50a"
   },
   {
    "key": "15",
@@ -285,9 +285,9 @@
   },
   {
    "key": "23d",
-   "record": "4173fb9721d1eeab7c41ccad8eb8aefbaa512b83bfd0019caa0f87b35f75b056",
+   "record": "1237ed072135b6e24688ca07d6595fb4acab0c225e0ce8bfa0f47dc466231ce6",
    "status": "MATCH",
-   "subject_key": "c398d686b41fa037d3c6db76319e12a7427711f04ac5e1041759299a86d4cda5"
+   "subject_key": "5f18ce2d1be52c7fb6c9334f58650ff1e8284066212cdb2072948e1dd096ea8f"
   },
   {
    "key": "24a",
@@ -309,9 +309,9 @@
   },
   {
    "key": "24d",
-   "record": "4173fb9721d1eeab7c41ccad8eb8aefbaa512b83bfd0019caa0f87b35f75b056",
+   "record": "1237ed072135b6e24688ca07d6595fb4acab0c225e0ce8bfa0f47dc466231ce6",
    "status": "MATCH",
-   "subject_key": "3a97b979b805f2a28c5f5d6c8398bc4d75aaaa7770de7361c6d630bc1310794e"
+   "subject_key": "341d702d975b6145cdcf4b597f3050a8d29f95cc3858a3a6a8f41cf540aa1847"
   },
   {
    "key": "25a",
@@ -405,9 +405,9 @@
   },
   {
    "key": "29h",
-   "record": "4173fb9721d1eeab7c41ccad8eb8aefbaa512b83bfd0019caa0f87b35f75b056",
+   "record": "1237ed072135b6e24688ca07d6595fb4acab0c225e0ce8bfa0f47dc466231ce6",
    "status": "MATCH",
-   "subject_key": "2fc5d68beff165cda014bbb2f9c448cfab6403773f420d739307298d1b497a53"
+   "subject_key": "84b8259354b7a1235bb2f25fc3b5a98137a71b5e87f6f0694efdd2c336eb209f"
   },
   {
    "key": "30",
@@ -435,9 +435,9 @@
   },
   {
    "key": "32b",
-   "record": "4173fb9721d1eeab7c41ccad8eb8aefbaa512b83bfd0019caa0f87b35f75b056",
+   "record": "1237ed072135b6e24688ca07d6595fb4acab0c225e0ce8bfa0f47dc466231ce6",
    "status": "MATCH",
-   "subject_key": "98ddf9c97205898bb2985fd311bc2aa81628385c082f395f4f45151463e971dd"
+   "subject_key": "bc5f1ab94f1c98a477337e65c8e5cad36b7902cf0fced50bbd228b833606cfcd"
   }
  ],
  "subjects": {
@@ -453,7 +453,7 @@
   "11": "d15d401bd86b2b16263b0e6f46d95d6726c3351c828885e518de98131992d233",
   "12": "4e7eda0bb20b6cbb6c281453c3d09db1318f7ee71b798c6764aa1efc4167735c",
   "13": "9e14ab21edcfc5a6df525f4d6a5ea55ce89c86e5e64630af84cdd23a0aae671c",
-  "14": "59f1b642637659eeaf6d644ba8eb79dacaa9b671efeea9edbccfcc69700a44e9",
+  "14": "6f98139919d801b870749de5b1a6aab55039cb13ef8c23f8c4a0141ce4b3511d",
   "15": "2578d786a18122f796bdaf1d06ce233328ce2ae33e151814a6e38a7282d14e6f",
   "16": "34c675cb0351b4eda86e0e1166e63342febd160b2ccc04c33a441b3819a4d306",
   "17a": "68d8223be5604680b6bbea2c4505413e640d82385c6959097649edaf8b00a81e",
@@ -487,11 +487,11 @@
   "23a (ii)": "b85a0817a22bca92fa33c00f9e84977b9c81c11ce54b4781afa0746e90f7f357",
   "23b": "96c9dd83a5af89c5bbb003b51edb50150d7ad90609d5fffc860fbe199364ae03",
   "23c": "5868a1b7c7fa73acccab27fed5d12baca326c1981ba52a0f60138fe818e3a324",
-  "23d": "90f71bfbc24658196c2db1d73cc6f2cae69d49bdbe1b8addc261c68886bdfd15",
+  "23d": "a46fb2d291d6da13e35bd0c3d95a4424f13bafcc078c14e561abfe72f3c67aa1",
   "24a": "fba9f6427f4af31f12d7d6564a485b7d0b91c391fef7dea52e786511670c15ef",
   "24b": "b7031e04c97dc8072dfd236b8ee461c9d327a816b502ea22acf2e11048119784",
   "24c": "be0bf9d87d4c4efbdeddfee943eeb1bd5c5ab1e63935590e372dd75cd24a355b",
-  "24d": "774dc8faa4e1191bf678105408ce31a46a475a07251d89f1f19bb539b397b6f4",
+  "24d": "b53fc4452007572de95964f36a3ca8367f55dced15a9296aca43f1ce0b7dce5f",
   "25a": "8f025e2e069b85f0bf9d7845302761c9f34948c26821ce67f29f559a05302507",
   "25c": "2160c26a709ba634fb1a60c8484c331f9e5743f7601d3cb2cda79a5aa3709302",
   "25e": "989d41027adbbbada32950aba8e6b8573cc76cd59fd61cd018902e4bc8e630ea",
@@ -507,12 +507,12 @@
   "29e": "5885639c0e6f0208a4cd56c10dc0919d24c7b37eb773a3e1736d5d83d4f34e7e",
   "29f": "7c62fe3654c3191d324449aa813fcf864dc89166c3ee7bc331823fd86486c28e",
   "29g": "1bf29cb17b296f31c4c0dee335eabeed7fa2154cb6509240d4879f911f40b657",
-  "29h": "f347c53818170688a74cba0b7af385dd0dcaa673c711c6e3ce823359f8809b81",
+  "29h": "808eefa5ba3ae9af5c0736edf41d1a7ab374b7629e080756ec634f010538f610",
   "30": "acc14419cbf835b9ebc8e0209d51cbcb951721d8796f5e2ba047a3e122d77826",
   "31": "c6eaadee1249404f420e6660e7db11cbd4a29ba795bbe1f8d19d3bef1daf5850",
   "32": "5d81651df115af25fe9c696c28bce7adadb8d52e8c48b1af492937cda913a925",
   "32a": "72f6e9ebbd28b9dc4e573b3f09a80a7f4f4a74395e1e3f931671cc0e78e5accc",
-  "32b": "fa6410115c1c9185a9d26dba97a75dc0ae10d0bca79e0ee417298b21fb8725d6"
+  "32b": "bb1edd3e60abd5d0a314b0e346e11a9c53d5f24bd3fbab386ae406e2f3a43bd2"
  },
  "__rest__": "c8ce22e6e4828d8c26605ea8ad12ffbdda8d2f032baf0f3b350ed0d18e53bc90"
 }

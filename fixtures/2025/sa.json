@@ -855,6 +855,31 @@
       }
     },
     {
+      "id": "stage4.mut.charity_limited_standard_figured",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the not-married-filing-separately alternative of sa.mfs_spouse_extra), predicted from the archived i1040gi before evaluating: the inputs of stage4.refuse.sa.charity_limited (single, wages $100,000, charitable gifts that a percentage limit would reduce, refused on Schedule A). The standard deduction does not depend on the charitable gifts or their limits: a single filer, not 65 or older and not blind, with no spouse, has the single standard deduction, $15,750 (i1040gi Standard Deduction Chart).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 10000000,
+        "person[taxpayer].w2[emp_a].box4": 620000,
+        "person[taxpayer].w2[emp_a].box5": 20000000,
+        "person[taxpayer].w2[emp_a].box6": 290000,
+        "sa.gifts": true,
+        "sa.charity_limited": true
+      },
+      "expect": {
+        "sa.standard": {
+          "kind": "money",
+          "cents": 1575000
+        }
+      }
+    },
+    {
       "id": "stage4.refuse.sa.excluded_income",
       "walk": "stage4",
       "covers": [

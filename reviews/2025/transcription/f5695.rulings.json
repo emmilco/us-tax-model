@@ -508,6 +508,42 @@
   {
    "printed": "23d",
    "project_expr_sha256": "b1fcdfaa893b417f5ac300d8937f1e814649c30b991cfa9616f3c6af90d2146f",
+   "second_expr_sha256": "735f0d8ef596b87e384c3f4a1eff8a0067e8516921b2389102f7c7cf8098af78",
+   "ruling": "Ruling: model error (+ scope); f5695 p. 3, line 21b: \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26.\"; i5695 p. 5, Part II, \"Caution: To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item.\" The candidate zeroes the line for a missing QMID, a new home, business use or joint occupancy where the project refuses (f5695.wh_no_qmid; f5695.sec_b_new_home, i5695 p. 1, \"The energy efficient home improvement credit (Part II) is only available for existing homes\"; owner decision 7), and its guards read f5695.b_new_home, business_use and joint_occupancy on returns where they are not asked. On a return without Part II (f5695.part2_any No) or with line 21a or 21b No every Section B amount is $0 and the interview asks none of the Section B questions; the project's lines, guarded on lines 21a and 21b or on cost lines that are $0, do not read them. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 3d43c227c169, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 1,552 partial records from 40 bases; 3,754 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 3,502 of 3,754 agree; 203 candidate-unknown, 46 candidate-refuses, 3 project-refuses; on completed returns 93 candidate-unknown (f5695.b_new_home 63, business_use 15, joint_occupancy 15; e.g. classm.f5695.2 and .deepseek: line 21a No, project $0.00) and 1 candidate-refuses (generated 360: part2_any No, joint_occupancy Yes supplied). The refusals on both sides are on refused returns. Gate wave (BUG-0471): f5695.wh_no_qmid is now a choose on f5695.wh_costs then f5695.wh_qmid_missing, the HEAD `all` in its operand order; the line is the same in HEAD and the working tree on every completed fixture and generated return (stage15.refuse.f5695.qmid_wh_furnace_enabling_hp refuses at f5695.wh_no_qmid in both). Same ruling as the refresh round. Project stands.",
+   "context": "cc7432f0c53b91e50cdc34f46b6d0071113a1ce514716a2dc59a504a11309364",
+   "date": "2026-11-09",
+   "run": "2bb90fedb0cf1a409baffdf6372690404292fdaa4648ccfddab1ea409814aeb9",
+   "subject_key": "7ca6608c0a9770ee9723e10fedd03a25db7546e0880e04fa4bf95a6e534aed81",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.s3.3.deepseek@f5695",
+     "fixture:classm.f5695.2.deepseek@f5695",
+     "fixture:classm.f5695.4.deepseek@f5695",
+     "fixture:classm.f5695.5.deepseek@f5695",
+     "fixture:classm.f5695.7.deepseek@f5695",
+     "fixture:classm.f5695.8.deepseek@f5695",
+     "fixture:classm.carloan.2@f5695",
+     "fixture:classm.dcprov.1@f5695",
+     "fixture:classm.w2.1@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part1@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part2@f5695",
+     "fixture:stage15.refuse.f5695.joint_occupancy@f5695",
+     "fixture:stage15.refuse.f5695.qmid_wh_furnace_enabling_hp@f5695",
+     "fixture:stage15.mut.f5695_one_cent_no_qmid_condo@f5695",
+     "generated:20261026.315@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "23d",
+   "project_expr_sha256": "b1fcdfaa893b417f5ac300d8937f1e814649c30b991cfa9616f3c6af90d2146f",
    "second_expr_sha256": "844cf72f57dd0a67d92ac90a3b6ae0b7cdc3f79ada474583b739cedfb5e17efa",
    "ruling": "Ruling: representation; project retained. Both figure the line only when lines 21a and 21b are both Yes (f5695.sec_b_claimed; f5695 p. 3, lines 21a and 21b, \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26\"). The second also zeroes it when the property is for a newly constructed home (f5695.b_new_home) and when a QMID is missing (f5695.qmid_wh No); the project refuses both instead: Section B property for a new home on line 30 (f5695.sec_b_new_home; i5695 p. 1, Caution, \"The energy efficient home improvement credit (Part II) is only available for existing homes\") and the missing QMID on f5695.wh_capped (f5695.wh_no_qmid; i5695 p. 5, Part II, \"Caution: To qualify for the energy efficient home improvement credit for specified property, you must provide a valid QMID for each item\"; owner decision 7, \"an item without a valid QMID\"). On every return the tool completes the two agree.",
    "subject_key": "4519f893f38b08256d55fbd5ba0fa982ff8056ff65c2014c087146ad1ce83cf5"
@@ -649,6 +685,41 @@
      "fixture:stage15.mut.f5695_one_cent_no_qmid_condo@f5695",
      "partial:classm.dependent.3.deepseek-f5695.line21a@f5695",
      "partial:classm.aqee.1.deepseek-f5695.line21a@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "24d",
+   "project_expr_sha256": "2d0734cb3f3bcafc3594c1c5b0225e4943a74b77e55409d696b71640be9e2b4a",
+   "second_expr_sha256": "a89d1583631fed85695566b968127eb513ecdcb44054ccb2fa45d4560a6b8537",
+   "ruling": "Ruling: model error (+ scope); as line 23d, with f5695.qmid_furnace and f5695.furnace_no_qmid: f5695 p. 3, line 21b, \"Skip lines 22 through 25 and line 29\"; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". On a return without Part II (f5695.part2_any No) or with line 21a or 21b No every Section B amount is $0 and the interview asks none of the Section B questions; the project's lines, guarded on lines 21a and 21b or on cost lines that are $0, do not read them. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 3d43c227c169, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 1,552 partial records from 40 bases; 3,754 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 3,503 of 3,754 agree; 203 candidate-unknown, 46 candidate-refuses, 2 project-refuses; on completed returns 93 candidate-unknown (f5695.b_new_home 63, business_use 15, joint_occupancy 15; project $0.00) and 1 candidate-refuses (generated 360: part2_any No, joint_occupancy Yes supplied). The refusals on both sides are on refused returns. Gate wave (BUG-0471): f5695.furnace_no_qmid is a choose on f5695.furnace_costs then f5695.furnace_qmid_missing, the HEAD `all`'s truth table; the line is the same in HEAD and the working tree on every completed fixture and generated return. Project stands.",
+   "context": "cc7432f0c53b91e50cdc34f46b6d0071113a1ce514716a2dc59a504a11309364",
+   "date": "2026-11-09",
+   "run": "2bb90fedb0cf1a409baffdf6372690404292fdaa4648ccfddab1ea409814aeb9",
+   "subject_key": "a73f2b77a403eaa7a8af84601d30da5ed9d62227c4800b51a66ec651157922f3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.s3.3.deepseek@f5695",
+     "fixture:classm.f5695.2.deepseek@f5695",
+     "fixture:classm.f5695.4.deepseek@f5695",
+     "fixture:classm.f5695.5.deepseek@f5695",
+     "fixture:classm.f5695.7.deepseek@f5695",
+     "fixture:classm.f5695.8.deepseek@f5695",
+     "fixture:classm.carloan.2@f5695",
+     "fixture:classm.dcprov.1@f5695",
+     "fixture:classm.w2.1@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part1@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part2@f5695",
+     "fixture:stage15.refuse.f5695.joint_occupancy@f5695",
+     "fixture:stage15.refuse.f5695.qmid_wh_furnace_enabling_hp@f5695",
+     "fixture:stage15.mut.f5695_one_cent_no_qmid_condo@f5695"
     ],
     "policy": "executable-triage-v2"
    }
@@ -806,6 +877,40 @@
    "ruling": "Ruling: scope; values otherwise equal. f5695 p. 3, line 21b: \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26.\" The candidate drops the 21a/21b gate on line 29h because its 29c line carries it; the products and caps are the project's. Triage executable-triage-v2 (`../triage/f5695.json`; 1,495 fixtures, 500 generated returns seed 20261026, 1,690 partial records; 3,685 comparisons): 3,597 agree; 67 candidate-refuses, 20 candidate-unknown, 1 project-refuses; on completed returns 10 candidate-unknown. The candidate refusals (f5695.h_new_home_refuse) and project refusals (the QMID screens) are on refused returns. The candidate-unknowns on completed returns are partial records that withhold an answer the candidate's own guard reads (line 17a, 17b, 17c or 17e; line 21a, 21b or f5695.b_new_home) on returns with no cost on the line, where the project's line does not need it; the project-unknowns are returns without that Section, where the interview never asks the cost and the project's printed line, read only through Schedule 3 line 5b, is not reached (as earlier rounds).",
    "context": "2c41aae54bd45385ac57f7f13998ed777963e2779562b5133fb35193ec2c86b8",
    "subject_key": "5a20dfba808919c3b9fb926f254231ae35017efa4bb7a191311b80c016bca1d6"
+  },
+  {
+   "printed": "29h",
+   "project_expr_sha256": "c6f7bf44508776b2204c9e1af105af8423f6f3a3d32aa1a7a7f3324afc53d144",
+   "second_expr_sha256": "ae47c231c098594e8173faa46f9cbef1073ebf188d796c72b1755346a13a0baa",
+   "ruling": "Ruling: model error (+ scope); as line 23d, with f5695.qmid_hp and f5695.hp_no_qmid: f5695 p. 3, line 21b, \"Skip lines 22 through 25 and line 29\"; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". On a return without Part II (f5695.part2_any No) or with line 21a or 21b No every Section B amount is $0 and the interview asks none of the Section B questions; the project's lines, guarded on lines 21a and 21b or on cost lines that are $0, do not read them. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 3d43c227c169, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 1,552 partial records from 40 bases; 3,754 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 3,504 of 3,754 agree; 203 candidate-unknown, 46 candidate-refuses, 1 project-refuses; on completed returns 93 candidate-unknown (f5695.b_new_home 63, business_use 15, joint_occupancy 15; project $0.00) and 1 candidate-refuses (generated 360: part2_any No, joint_occupancy Yes supplied). The refusals on both sides are on refused returns. Gate wave (BUG-0471): f5695.hp_no_qmid is a choose on f5695.hp_costs then f5695.hp_qmid_missing, the HEAD `all`'s truth table; the line is the same in HEAD and the working tree on every completed fixture and generated return. Project stands.",
+   "context": "cc7432f0c53b91e50cdc34f46b6d0071113a1ce514716a2dc59a504a11309364",
+   "date": "2026-11-09",
+   "run": "2bb90fedb0cf1a409baffdf6372690404292fdaa4648ccfddab1ea409814aeb9",
+   "subject_key": "f0def873ba0a36b7da290f463117630e645250f109a90f2da9f1f30d136baceb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.s3.3.deepseek@f5695",
+     "fixture:classm.f5695.2.deepseek@f5695",
+     "fixture:classm.f5695.4.deepseek@f5695",
+     "fixture:classm.f5695.5.deepseek@f5695",
+     "fixture:classm.f5695.7.deepseek@f5695",
+     "fixture:classm.f5695.8.deepseek@f5695",
+     "fixture:classm.carloan.2@f5695",
+     "fixture:classm.dcprov.1@f5695",
+     "fixture:classm.w2.1@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part1@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part2@f5695",
+     "fixture:stage15.refuse.f5695.joint_occupancy@f5695",
+     "fixture:stage15.refuse.f5695.qmid_wh_furnace_enabling_hp@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "29h",
@@ -986,6 +1091,45 @@
    "subject_key": "88843388f196966fa0b1fe6ba3e0196a38bcd4aa3c6981c84810b3139286f9c1"
   },
   {
+   "printed": "32b",
+   "project_expr_sha256": "c330366117f5d8ca8e7839ff66562e28f40c27fa91843791fc258ab8430453e7",
+   "second_expr_sha256": "b0822401c56811ef4033504042ec377980935cfc7f17499b189b7762f9c91bbc",
+   "ruling": "Ruling: model error; minor, a Boolean on which no amount depends. i5695 p. 7, Lines 32a and 32b: \"Line 32b. Occupants of a condominium or cooperative who are claiming a fractional share of the qualified energy efficiency improvements or residential energy property costs must check the box on line 32b.\" The box goes with a Part II claim; the candidate checks it on the condominium answer alone, and needs that answer on returns without Part II, where the interview does not ask it (its question reads \"... and include in Part II a fractional share ...\"). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 3d43c227c169, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 1,552 partial records from 40 bases; 3,754 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 3,298 of 3,754 agree; 404 candidate-unknown, 28 project-unknown, 24 value; on completed returns 178 candidate-unknown (f5695.condo, project No) and 4 value: classm.sd.2, classm.sd.2.deepseek, mutation.t2.no_carloan_part4_b and generated 294, records that supply f5695.condo Yes with f5695.part2_any No (an answer the interview never asks there): project No, candidate Yes. Checked in both trees on classm.sd.2, classm.sd.2.deepseek and mutation.t2.no_carloan_part4_b: line 32b No, line 32 $0.00 in HEAD and in the working tree; the rewritten choose (part2_any, then f5695.condo, else household.no) has the HEAD `all`'s truth table. The 20 other values are on refused returns. Same ruling as the earlier rounds. Project stands.",
+   "context": "cc7432f0c53b91e50cdc34f46b6d0071113a1ce514716a2dc59a504a11309364",
+   "date": "2026-11-09",
+   "run": "2bb90fedb0cf1a409baffdf6372690404292fdaa4648ccfddab1ea409814aeb9",
+   "subject_key": "ad64a0a9222cdefc880ddf94380bbc4518dcfff5ded1e55452918486584d3751",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f5695",
+     "fixture:classm.f2441.2.deepseek@f5695",
+     "fixture:classm.f2441.3.deepseek@f5695",
+     "fixture:classm.f2441.4.deepseek@f5695",
+     "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:classm.f2441.6.deepseek@f5695",
+     "fixture:classm.sd.2.deepseek@f5695",
+     "fixture:classm.clcw26.3.deepseek@f5695",
+     "fixture:classm.carloan.1@f5695",
+     "fixture:classm.carloan.2@f5695",
+     "fixture:classm.s179.3@f5695",
+     "fixture:classm.sd.2@f5695",
+     "partial:stage14.asset.hy_5yr-f5695.part2_any@f5695",
+     "partial:stage14.asset.bonus_100-f5695.part2_any@f5695",
+     "partial:stage14.asset.prior_7yr-f5695.part2_any@f5695",
+     "partial:stage14.asset.qip-f5695.part2_any@f5695",
+     "partial:stage14.asset.done-f5695.part2_any@f5695",
+     "partial:stage14.asset.refuse_class-f5695.part2_any@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "5b",
    "project_expr_sha256": "bead973856aacdf883611ca2c12aa86827836c50a9d19f10bc6c136c21b6c617",
    "second_expr_sha256": "6ff957e8c8be8b8fcf7bcbb66bec52d85d7110656543e1265b8443c4eef87ae9",
@@ -1040,6 +1184,48 @@
     "verdict": "agrees on sample",
     "kinds": [],
     "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f5695.claiming_part1",
+   "project_expr_sha256": "0357de3a8b29e7ba0b3a8e3be80685a305a15ff27d502539ab5c4a0156e63903",
+   "second_expr_sha256": "cf4e8e3eb764ae555f82360e89c17c48b4b89b1cfeaae8ef217e8f783d0f0130",
+   "ruling": "Ruling: model error; i1040s8812 p. 3 of the archived text (cited p. 4 in the project), Credit Limit Worksheet B: \"Complete Credit Limit Worksheet B only if you meet all of the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I.\" The candidate's test (line 13 above zero) is the project's on every return with Part I, but it figures line 13 on every return, so it needs the Part I screens and cost answers of filers who have no Part I, which the interview asks only with Part I (the project tests f5695.part1_any first). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 3d43c227c169, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 1,552 partial records from 40 bases; 3,754 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 3,161 of 3,754 agree; 530 candidate-unknown, 32 candidate-refuses, 29 project-unknown, 2 value; on completed returns 255 candidate-unknown, every one with project No (f5695.business_use 132, f5695.construction_later 17, the Part I cost answers on partial records withholding them: lines 1, 2, 3, 4, 5a, 7a and 12 15 each, battery cost 1), and 2 candidate-refuses (generated 113 and 493: part1_any No, f5695.line7a Yes supplied, which the interview does not ask without Part I; the candidate refuses at its fuel-cell gate). The 2 values are refused returns with part1_any No and Part I amounts supplied that the interview never asks (classm.dcprov.1, mutation.t2.qss_s1a_car: project No, candidate Yes). Gate wave (BUG-0471): the rewritten choose (part1_any, then line13_positive, else household.no) has the HEAD `all`'s truth table; claiming_part1 and every Form 5695 line evaluate the same in HEAD and the working tree on all completed fixtures and the 500 generated returns (e.g. classm.sd.2 No in both). Same ruling as the refresh round. Project stands.",
+   "context": "cc7432f0c53b91e50cdc34f46b6d0071113a1ce514716a2dc59a504a11309364",
+   "date": "2026-11-09",
+   "run": "2bb90fedb0cf1a409baffdf6372690404292fdaa4648ccfddab1ea409814aeb9",
+   "subject_key": "50a356d5b2a163ed7dfc0f81fb2de2bb27c05824880b5691148fc400e869e625",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f5695",
+     "fixture:classm.f2441.2.deepseek@f5695",
+     "fixture:classm.f2441.3.deepseek@f5695",
+     "fixture:classm.f2441.4.deepseek@f5695",
+     "fixture:classm.f2441.5.deepseek@f5695",
+     "fixture:classm.f2441.6.deepseek@f5695",
+     "fixture:classm.clcw.1.deepseek@f5695",
+     "fixture:classm.carloan.1@f5695",
+     "fixture:classm.dcprov.1@f5695",
+     "fixture:classm.s179.1@f5695",
+     "fixture:classm.clcw.1@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part2@f5695",
+     "fixture:mutation.t2.qss_s1a_car@f5695",
+     "fixture:mutation.t2.s3.one_employer@f5695",
+     "partial:stage14.asset.hy_5yr-f5695.part1_any@f5695",
+     "partial:stage14.asset.bonus_100-f5695.part1_any@f5695",
+     "partial:stage14.asset.prior_7yr-f5695.part1_any@f5695",
+     "partial:stage14.asset.qip-f5695.part1_any@f5695",
+     "partial:stage14.asset.done-f5695.part1_any@f5695",
+     "partial:stage14.asset.refuse_class-f5695.part1_any@f5695"
+    ],
     "policy": "executable-triage-v2"
    }
   },

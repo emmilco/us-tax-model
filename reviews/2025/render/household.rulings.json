@@ -19,6 +19,16 @@
    "subject_key": "00c201f9bc968f494741a4aff77a62e5af23bca50661c4e71696136d89e5d6ec"
   },
   {
+   "printed": "filing_status_conflict",
+   "restated": "Choose — [f1040 line Filing Status = 'single' → helper \"Were you married at the end of 2025?\"] [f1040 line Filing Status = 'mfj' → helper \"Filing jointly, not married at the end of 2025, and no spouse who died in 2025\"] [f1040 line Filing Status = 'mfs' → helper \"Year parameter household.no (false)\"] [f1040 line Filing Status = 'hoh' → helper \"Year parameter household.no (false)\"] [f1040 line Filing Status = 'qss' → helper \"Year parameter household.no (false)\"]",
+   "model": "MFS and QSS always return false, so some conflicts are never detected. The IRS says to check MFS only 'if you are married at the end of 2025 and file a separate return,' and QSS requires that 'you didn't remarry before the end of 2025.'",
+   "ruling": "Ruling: scope; i1040gi p. 14, Married Filing Separately; p. 15, Qualifying Surviving Spouse, \"1. Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025.\" A separate return is outside the tool: s3.mfs refuses scope.ready and the return's closing lines (executed on stage8.hoh.child.ctc with status mfs and household.married No: f1040.line31, line33 and line37 refused at s3.mfs), so an unmarried MFS filer gets no completed return. A remarried QSS filer fails household.qss_eligible, whose first test is the no-remarriage test, and household.qss_fails refuses line 12e (executed with status qss: line 12e and line 24 refused at household.qss_fails). The gate covers the two supported statuses that can contradict the marriage facts (single with a year-end marriage; joint with no year-end marriage and no 2025 death), as BUG-0286 records; its expression was not changed by the gate-wave rewrite. As the prior ruling. Project stands.",
+   "context": "fe6337dca96dadf56185db7801cfeb662d8d68ffe14f020204660d838e8f560f",
+   "date": "2026-11-09",
+   "run": "cf3f13ff2914b8ea8813dda9a38af6ee60f48730a34871c9a5b18b7703c829c6",
+   "subject_key": "e0d49611119309c857cc78e25e04fee01d734282f6d444d4cb723a1f09b2af92"
+  },
+  {
    "printed": "hsa_share_sum",
    "restated": "Add person.hsa_share over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Half of Step 1, or the agreed part, fits Line 6 Steps 2 and 3 ('divide... equally... unless you both agree on a different allocation'). The shares inherit Step 1's f8889 line 4 fixed at $0 despite the IRS 'Enter the amount you and your employer contributed to your Archer MSAs', and no refusal for that case is shown.",

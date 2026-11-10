@@ -82,8 +82,8 @@
 ## (gate) — `sa.mfs_spouse_extra`
 
 - **Authored helper label:** Married filing separately and claiming age or blindness boxes for your spouse
-- **Encoded (Bool):** f1040 line Filing Status = 'mfs' and helper "Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?" = true
-- Expr: `{"all":[{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["sa.spouse_extra",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Married filing separately" = true → helper "Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?"] [helper "Married filing separately" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.mfs",{"const":true}],"op":"test"},"then":"sa.spouse_extra"},{"guard":{"eq":["sa.mfs",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.age65_count`
@@ -513,8 +513,8 @@
 ## (helper) — `sa.boxes_age65`
 
 - **Authored helper label:** Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly), not counting a person who died in 2025 before reaching 65
-- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Were you born before January 2, 1961?" = true and helper "Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?" = false, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.age65",{"const":true}],"op":"test"},{"eq":["person.died_before_65",{"const":false}],"op":"test"}],"op":"test"}}`
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Born before January 2, 1961, and not a person who died in 2025 before reaching 65 (a box checked for age)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.age65_box",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.extra_age65`
@@ -572,6 +572,6 @@
 ## (helper) — `sa.mfs_spouse_itemizes`
 
 - **Authored helper label:** MFS with spouse itemizing
-- **Encoded (Bool):** helper "Married filing separately" = true and helper "Married filing separately with a spouse who itemizes?" = true
-- Expr: `{"all":[{"eq":["sa.mfs",{"const":true}],"op":"test"},{"eq":["sa.spouse_itemizes",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Married filing separately" = true → helper "Married filing separately with a spouse who itemizes?"] [helper "Married filing separately" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.mfs",{"const":true}],"op":"test"},"then":"sa.spouse_itemizes"},{"guard":{"eq":["sa.mfs",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 34, Line 12e, Exception 2 (2025; printed date 2026-02-25; sha256 482e9c48)

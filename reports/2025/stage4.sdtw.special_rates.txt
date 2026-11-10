@@ -446,9 +446,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8960] p. 1, Part III, line 17, "Net investment income tax for individuals. Multiply line 16 by 3.8% (0.038)" (2025; created 2025-08-19; 9b323b71)
       note: half-up to the cent per the ambiguity register; Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
+  (helper) Year parameter household.no (false)
+      = false
+      cite: [i8960] pp. 17–18, Line 9b, the allowable taxes allocable to net investment income (2025; printed date 2026-02-04; b10fbb23)
   (gate) Claimed NIIT tax allocation exceeds the Schedule A tax deduction
       = false
       cite: [i8960] pp. 17–18, Line 9b, the allowable taxes allocable to net investment income (2025; printed date 2026-02-04; b10fbb23)
+      note: taken: {"eq":["sa.itemizes",{"const":false}],"op":"test"}
 
 == Form 8995 — Qualified Business Income Deduction Simplified Computation ==
   2   Total qualified business income or (loss). Combine lines 1i through 1v, column (c)
@@ -571,6 +575,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Did you live in a community property state at any time in 2025?
       = false
       cite: [i1040gi] p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Year parameter household.no (false)
+      = false
+      cite: [i1040gi] p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit"; p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Head of household checked without meeting its tests
       = false
       cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
@@ -583,24 +590,38 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Filing as single or head of household although your spouse died in 2025
       = false
       cite: [i1040gi] p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  (helper) Not filing jointly: lived in a community property state, not married at the end of 2025, and married for part of 2025 while living there
+      = false
+      cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555." (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["household.community_property",{"const":false}],"op":"test"}
   (gate) Not filing jointly, and married for part of 2025 while living in a community property state
       = false
       cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555." (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
   (gate) Not filing jointly, living in a community property state, and a registered domestic partner in Nevada, Washington or California
       = false
       cite: [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555" (2025; printed date 2026-02-25; 482e9c48)
   (gate) The filing status conflicts with the marriage facts entered
       = false
       cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025." (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
 
 == IRA Deduction Worksheet — Schedule 1, Line 20 ==
+  (helper) Year parameter household.no (false)
+      = false
+      cite: [i1040gi] p. 95, Line 20, "If you were a member of the U.S. Armed Forces, earned income includes any nontaxable combat pay you received" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Add the amounts on lines 12a and 12b
       = $0
       cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20" (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
+  (helper) An IRA deduction above zero (line 12a and 12b together)
+      = false
+      cite: [p590a] p. 16, Form 8606, "When you file, you can even designate otherwise deductible contributions as nondeductible contributions" (2025; ca0e4287)
   (gate) An IRA deduction above zero and the election to deduct less
       = false
       cite: [p590a] p. 16, Form 8606, "When you file, you can even designate otherwise deductible contributions as nondeductible contributions" (2025; ca0e4287)
+      note: taken: {"eq":["ira.has_deduction",{"const":false}],"op":"test"}
   (helper) The total of lines 12a and 12b for Schedule 1, line 20
       = $0
       cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20" (2025; printed date 2026-02-25; 482e9c48)
@@ -625,6 +646,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Qualified educator expenses you paid in 2025
       = $0
       cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses, 'equipment (including computer equipment, software, and services)', 'for personal protective equipment, disinfectant, and other supplies used for the prevention of the spread of coronavirus', and 'You must reduce your qualified expenses by the following amounts'; p. 93, 'Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses in health or physical education.' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Born before January 2, 1961, and not a person who died in 2025 before reaching 65 (a box checked for age)
+      = false
+      cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.age65",{"const":false}],"op":"test"}
   (helper) Any qualified educator expenses for this person
       = false
       cite: [i1040gi] p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
@@ -726,6 +751,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Did you make contributions (other than rollover contributions) to a traditional IRA for 2025?
       = false
       cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; created 2025-11-04; ba2b2877)
+  (helper) Year parameter household.no (false)
+      = false
+      cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D" (2025; printed date 2025-02-19; bfecbc99)
   (helper) This person's traditional IRA contributions for 2025 (zero if the traditional IRA question was answered No)
       = $0
       cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 11, "Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025" (2025; printed date 2026-02-25; 482e9c48)
@@ -740,6 +768,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conversion
       = false
       cite: [f8606] Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" and "Go to line 4" (2025; 748a2bf2)
+      note: taken: {"eq":["person.ira_has",{"const":false}],"op":"test"}
   (helper) Form 5329 line 1 for this person: early distributions includible in income
       = $0
       cite: [i5329] p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:" (2025; aec3d325)
@@ -1013,9 +1042,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any gambling winnings
       = false
       cite: [i1040gi] p. 91, Line 8b (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Year parameter household.no (false)
+      = false
+      cite: [p525] p. 33, Gambling winnings, "If you’re in the trade or business of gambling, use Schedule C (Form 1040)" (2025; 39b0fa5e)
   (gate) Gambling winnings of a professional gambler
       = false
       cite: [p525] p. 33, Gambling winnings, "If you’re in the trade or business of gambling, use Schedule C (Form 1040)" (2025; 39b0fa5e)
+      note: taken: {"eq":["s1.has_gambling",{"const":false}],"op":"test"}
   8b  Gambling
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 8b; i1040gi p. 91, Line 8b, "Enter gambling winnings not attributable to a trade or business" (2025; created 2025-07-25; 8dafec71)
@@ -1261,6 +1294,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Married filing separately and claiming age or blindness boxes for your spouse
       = false
       cite: [i1040gi] p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.mfs",{"const":false}],"op":"test"}
   (helper) Your entry, if the answer is yes
       = 0
       cite: [f1040sa] i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked" (2025; created 2025-11-20; c14acf34)
@@ -1426,6 +1460,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) MFS with spouse itemizing
       = false
       cite: [i1040gi] p. 34, Line 12e, Exception 2 (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.mfs",{"const":false}],"op":"test"}
 
 == Schedule B — supported interest and ordinary dividends ==
   (helper) Any nominee income, original issue discount reported in an amount other than on Form 1099-OID, accrued interest paid on a bond purchase, bond premium adjustment, accrued market discount, a contingent payment debt instrument, seller-financed mortgage interest, a savings bond interest exclusion, or other special treatment?
@@ -2054,6 +2089,9 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sd.to1040: chose $100,000 (guard 1)
       not taken: guard 0 = false
+  household.cp_not_joint: chose false (guard 1)
+      not taken: guard 0 = false
+  household.cp_marriage_ended: chose false (guard 0)
   f1040.line1e: chose $0 (guard 1)
       not taken: guard 0 = false
   sb.unsupported_if_income: chose false (guard 0)
@@ -2063,6 +2101,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s1.line2a: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.line7: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s1.gambling_business: chose false (guard 1)
       not taken: guard 0 = false
   s1.line8c: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -2076,11 +2116,19 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   person[taxpayer].ira_contrib: chose $0 (guard 1)
       not taken: guard 0 = false
+  person[taxpayer].ira_dist_gate: chose false (guard 1)
+      not taken: guard 0 = false
   person[taxpayer].ira_deduction: chose $0 (guard 1)
+      not taken: guard 0 = false
+  ira.less_gate: chose false (guard 1)
       not taken: guard 0 = false
   sli.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.jury_to_employer_if_pay: chose $0 (guard 1)
+      not taken: guard 0 = false
+  household.filing_status_conflict: chose false (guard 0)
+  household.widowed_2025: chose false (guard 0)
+  sa.mfs_spouse_itemizes: chose false (guard 1)
       not taken: guard 0 = false
   sa.charity_limited_if_gifts: chose false (guard 1)
       not taken: guard 0 = false
@@ -2097,6 +2145,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   sa.line12: chose $0 (guard 1)
       not taken: guard 0 = false
   sa.line16: chose $0 (guard 1)
+      not taken: guard 0 = false
+  sa.mfs_spouse_extra: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].age65_box: chose false (guard 1)
       not taken: guard 0 = false
   sa.standard: chose $15,750 (guard 1)
       not taken: guard 0 = false
@@ -2163,6 +2215,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   f8960.line9a: chose $0 (guard 1)
       not taken: guard 0 = false
+  f8960.bad_allocation: chose false (guard 1)
+      not taken: guard 0 = false
   f8960.line9b: chose $0 (guard 1)
       not taken: guard 0 = false
   f8960.line16: chose $100,000 (guard 0)
@@ -2227,7 +2281,9 @@ Derivations:
   household.spouses: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
   household.roster_ok: test(household.filer_under16 = false; f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
   household.roster_bad: test(household.roster_ok = true; false = false)
-  household.cp_marriage_ended: test(f1040.status = single; "mfj" = mfj; household.community_property = false; true = true)
+  household.no: param(#household.no = false)
+  household.cp_not_joint: choose(household.community_property = false; true = true; household.community_property = false; false = false; household.no = false)
+  household.cp_marriage_ended: choose(f1040.status = single; "single" = single; household.cp_not_joint = false)
   household.rdp_community_property: test(f1040.status = single; "mfj" = mfj; household.community_property = false; true = true)
   person[taxpayer].box1: sum_over(person[taxpayer].w2[a].box1 = $215,750)
   f1040.line1a: sum_over(household.roster_bad = false; household.cp_marriage_ended = false; household.rdp_community_property = false; person[taxpayer].box1 = $215,750)
@@ -2263,7 +2319,8 @@ Derivations:
   s1.has_uc: test(s1.uc_paid = $0; #sales.zero = $0)
   s1.line7: choose(s1.has_uc = false; true = true; s1.has_uc = false; false = false; s1.zero = $0)
   s1.has_gambling: test(s1.gambling_winnings = $0; #sales.zero = $0)
-  s1.gambling_business: test(s1.has_gambling = false; true = true)
+  s1.no: param(#household.no = false)
+  s1.gambling_business: choose(s1.has_gambling = false; true = true; s1.has_gambling = false; false = false; s1.no = false)
   s1.line8b: copy(s1.gambling_business = false; s1.gambling_winnings = $0)
   s1.line8c: choose(s1.cod_any = false; true = true; s1.cod_any = false; false = false; s1.zero = $0)
   s1.line8f: sum_over(person[taxpayer].hsa_taxable = $0)
@@ -2288,10 +2345,13 @@ Derivations:
   s1.line19a: choose(s1.alimony = false; true = true; s1.alimony = false; false = false; s1.zero = $0)
   person[taxpayer].ira_contrib: choose(person[taxpayer].sav_trad = false; true = true; person[taxpayer].sav_trad = false; false = false; person[taxpayer].zero = $0)
   person[taxpayer].ira_has: test(person[taxpayer].ira_contrib = $0; #sales.zero = $0)
-  person[taxpayer].ira_dist_gate: test(person[taxpayer].ira_has = false; true = true)
+  person[taxpayer].no: param(#household.no = false)
+  person[taxpayer].ira_dist_gate: choose(person[taxpayer].ira_has = false; true = true; person[taxpayer].ira_has = false; false = false; person[taxpayer].no = false)
   person[taxpayer].ira_deduction: choose(person[taxpayer].ira_dist_gate = false; person[taxpayer].ira_has = false; true = true; person[taxpayer].ira_has = false; false = false; person[taxpayer].zero = $0)
   ira.total: sum_over(person[taxpayer].ira_deduction = $0)
-  ira.less_gate: test(ira.total = $0; #sales.zero = $0)
+  ira.has_deduction: test(ira.total = $0; #sales.zero = $0)
+  ira.no: param(#household.no = false)
+  ira.less_gate: choose(ira.has_deduction = false; true = true; ira.has_deduction = false; false = false; ira.no = false)
   ira.line20: copy(ira.less_gate = false; ira.total = $0)
   s1.line20: copy(ira.line20 = $0)
   sli.has: test(sli.interest = $0; #sales.zero = $0)
@@ -2307,13 +2367,13 @@ Derivations:
   f1040.line10: copy(scope.schedule1 = false; s1.line26 = $0)
   f1040.line11a: subtract(f1040.line9 = $315,750; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $315,750)
-  household.filing_status_conflict: test(f1040.status = single; "single" = single; household.married = false; true = true; f1040.status = single; "mfj" = mfj)
+  household.filing_status_conflict: choose(f1040.status = single; "single" = single; household.married = false)
   household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
-  household.widowed_2025: test(f1040.status = single; "single" = single; household.spouse_died_2025 = false; true = true)
+  household.widowed_2025: choose(f1040.status = single; "single" = single; household.spouse_died_2025 = false)
   household.qss_fails: test(f1040.status = single; "qss" = qss)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
-  sa.mfs_spouse_itemizes: test(sa.mfs = false; true = true)
   sa.no: param(#sa.no = false)
+  sa.mfs_spouse_itemizes: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.no = false)
   sa.charity_limited_if_gifts: choose(sa.gifts = false; true = true; sa.gifts = false; false = false; sa.no = false)
   sa.agi: copy(f1040.line11b = $315,750)
   sa.zero: param(#sales.zero = $0)
@@ -2353,10 +2413,11 @@ Derivations:
   sa.line15: copy(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; sa.zero = $0)
   sa.line16: choose(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; s1.has_gambling = false; true = true; s1.has_gambling = false; false = false; sa.zero = $0)
   sa.line17: sum(sa.unsupported = false; sa.charity_limited_if_gifts = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $0; sa.line10 = $0; sa.line14 = $0; sa.line15 = $0; sa.line16 = $0)
-  sa.mfs_spouse_extra: test(f1040.status = single; "mfs" = mfs)
+  sa.mfs_spouse_extra: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.no = false)
   sa.standardbase: param(#sa.standard_base = $15,750)
   sa.extra: param(#sa.standard_extra = $2,000)
-  sa.boxes_age65: sum_over(person[taxpayer].age65 = false; true = true)
+  person[taxpayer].age65_box: choose(person[taxpayer].age65 = false; true = true; person[taxpayer].age65 = false; false = false; person[taxpayer].no = false)
+  sa.boxes_age65: sum_over(person[taxpayer].age65_box = false; true = true)
   sa.extra_age65: multiply_count(sa.extra = $2,000; sa.boxes_age65 = 0)
   sa.boxes_blind: sum_over(person[taxpayer].blind = false; true = true)
   sa.extra_blind: multiply_count(sa.extra = $2,000; sa.boxes_blind = 0)
@@ -2610,7 +2671,8 @@ Derivations:
   f8960.line7: copy(f8960.unsupported = false; f8960.refund = false; f8960.zero = $0)
   f8960.line8: sum(f8960.line1 = $0; f8960.line2 = $0; f8960.line3 = $0; f8960.line4c = $0; f8960.line5d = $100,000; f8960.line6 = $0; f8960.line7 = $0)
   f8960.line9a: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; f8960.zero = $0)
-  f8960.bad_allocation: test(sa.itemizes = false; true = true)
+  f8960.no: param(#household.no = false)
+  f8960.bad_allocation: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; f8960.no = false)
   f8960.line9b: choose(f8960.bad_allocation = false; sa.itemizes = false; true = true; sa.itemizes = false; false = false; f8960.zero = $0)
   f8960.line9c: copy(f8960.unsupported = false; f8960.refund = false; f8960.zero = $0)
   f8960.line9d: sum(f8960.line9a = $0; f8960.line9b = $0; f8960.line9c = $0)

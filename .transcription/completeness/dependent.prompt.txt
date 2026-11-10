@@ -1620,6 +1620,12 @@ ENCODING:
 - dependent.part_year_home [(helper)] Lived with you more than half the part of 2025 they were alive, or since the adoption or placement?
     QUESTION: Was your home this person's home for more than half of the part of 2025 they were alive (or, for a person adopted or placed with you in 2025, more than half of the time since the adoption or placement), counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you?
     cites: p501 p. 9, Death or birth, "Your qualifying child or qualifying relative who lived with you for more than half the part of the year they were alive"; i1040gi p. 15, "more than half the time since the person was adopted or placed with you in 2025"; i1040gi pp. 14-15, temporary absences, "or detention in a juvenile facility"
+- dependent.hoh_part_year [(helper)] For a relative other than a qualifying child who did not live with you more than half of 2025: born or died in 2025, or adopted or placed, and lived with you more than half of the part of the year
+    cites: p501 p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025"
+- dependent.hoh_part_year_relative [(helper)] Born or died in 2025, or adopted or placed with you in 2025, and lived with you more than half of the part of the year
+    cites: p501 p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025"
+- dependent.born_died_or_placed [(helper)] Born or died in 2025, or adopted or placed with you in 2025
+    cites: p501 p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025"
 - dependent.hoh_lived_half [(helper)] Lived with you more than half of 2025, or, for a relative other than a qualifying child (whose months already count the part of the year), more than half of the part of 2025 they were alive or since their adoption or placement
     cites: p501 p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025"
 - dependent.dc_lived_half [(helper)] Lived with you more than half of 2025, or, for a person other than a qualifying child born or who died in 2025, more than half of the part of 2025 they were alive
@@ -1647,6 +1653,16 @@ ENCODING:
 - dependent.eic_ssn [(helper)] SSN valid for the EIC, issued on or before the due date of your return?
     QUESTION: Did this person have a social security number issued on or before the due date of your 2025 return (including extensions) that is valid for the EIC? Any number issued by the Social Security Administration is valid unless the card says "Not Valid for Employment" and the number was issued solely to apply for or receive a federally funded benefit; a card that says "Valid for Work Only With DHS Authorization" is valid only while the authorization is valid.
     cites: i1040gi pp. 44–45, Social security number (SSN), EIC
+- dependent.under_19 [(helper)] Under age 19 at the end of 2025
+    cites: i1040gi p. 17, Step 1, the age conditions
+- dependent.under_24 [(helper)] Under age 24 at the end of 2025
+    cites: i1040gi p. 17, Step 1, the age conditions
+- dependent.qc_age_younger [(helper)] Younger than you (or your spouse if filing jointly), or permanently and totally disabled
+    cites: i1040gi p. 17, Step 1, the age conditions
+- dependent.qc_age_19 [(helper)] Age test for a person aged 19 or older: under 24, a full-time student and younger than you, or permanently and totally disabled
+    cites: i1040gi p. 17, Step 1, the age conditions
+- dependent.qc_age_student [(helper)] Age test for a person aged 19 to 23: a full-time student and younger than you, or permanently and totally disabled
+    cites: i1040gi p. 17, Step 1, the age conditions
 - dependent.qc_age [(helper)] Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled
     cites: i1040gi p. 17, Step 1, the age conditions
 - dependent.lived_half [(helper)] Lived with you for more than half of 2025
@@ -1654,6 +1670,16 @@ ENCODING:
     cites: i1040gi p. 17, Step 1, "Who lived with you for more than half of 2025"
 - dependent.kidnap_residency [(gate)] A child presumed kidnapped who lived with you for fewer than 7 months of 2025, not counting the time missing
     cites: p501 p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (a child who lived with you for more than half of 2025 meets the residency test without this treatment)
+- dependent.no [(helper)] Year parameter household.no (false)
+    cites: i1040gi p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
+- dependent.qc_tests [(helper)] Qualifying child tests (Step 1): relationship, age, support, joint return and residency, each asked only when the ones before it pass
+    cites: i1040gi p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
+- dependent.qc_from_age [(helper)] Qualifying child tests (Step 1) from the age test on: age, support, joint return and residency
+    cites: i1040gi p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
+- dependent.qc_from_support [(helper)] Qualifying child tests (Step 1) from the support test on: support, joint return and residency
+    cites: i1040gi p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
+- dependent.qc_from_joint [(helper)] Qualifying child tests (Step 1) from the joint return test on: joint return and residency
+    cites: i1040gi p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
 - dependent.qualifying_child [(helper)] Qualifying child (Step 1)
     REFUSES when dependent.qc_tiebreak: Qualifying child of more than one person (tie-breaker rules)
     REFUSES when dependent.divorced_rule: Children of divorced or separated parents
@@ -1661,8 +1687,18 @@ ENCODING:
     cites: i1040gi p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
 - dependent.resident [(helper)] U.S. citizen, national or resident alien, or a resident of Canada or Mexico
     cites: i1040gi p. 18, Step 2, question 1
+- dependent.qc_dependent_resident [(helper)] Qualifying child who is a U.S. citizen, national or resident alien or a resident of Canada or Mexico, and you are not a dependent
+    cites: i1040gi p. 18, Step 2, questions 1 and 4
+- dependent.filer_not_dependent [(helper)] You (and your spouse if filing jointly) cannot be claimed as a dependent
+    cites: i1040gi p. 18, Step 2, questions 1 and 4
 - dependent.qc_dependent [(helper)] Qualifying child who is your dependent (Step 2)
     cites: i1040gi p. 18, Step 2, questions 1 and 4
+- dependent.qr_listed_relative [(helper)] A child, sibling, parent, other ancestor or in-law listed in Step 4
+    cites: i1040gi p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse."
+- dependent.qr_household_member [(helper)] A household member: lived with you all year, or a relative of your spouse on a joint return
+    cites: i1040gi p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse."
+- dependent.qr_other_relation [(helper)] A descendant of a sibling or another person: lived with you all year and the relationship did not violate local law, or a relative of your spouse on a joint return
+    cites: i1040gi p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse."
 - dependent.qr_relationship [(helper)] A relative listed in Step 4, or any other person who lived with you all year
     cites: i1040gi p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse."
 - dependent.spouse_relative [(helper)] On a joint return, related to your spouse in one of the Step 4 ways
@@ -1707,6 +1743,8 @@ ENCODING:
     REFUSES when dependent.married: Married person rules
     REFUSES when dependent.qr_kidnapped: Kidnapped child (Pub. 501)
     cites: i1040gi p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?"
+- dependent.qr_dependent_resident [(helper)] Qualifying relative who is a U.S. citizen, national or resident alien or a resident of Canada or Mexico, and you are not a dependent
+    cites: i1040gi p. 19, Step 4, questions 2 and 5
 - dependent.qr_dependent [(helper)] Qualifying relative who is your dependent (Step 4, questions 2 and 5)
     cites: i1040gi p. 19, Step 4, questions 2 and 5
 - dependent.claimed_no_tin [(gate)] A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN
@@ -1716,6 +1754,14 @@ ENCODING:
     cites: i1040gi pp. 17–19, Who Qualifies as Your Dependent
 - dependent.under_ctc_age [(helper)] Under age 17 at the end of 2025
     cites: i1040gi p. 18, Step 3, question 3
+- dependent.ctc_from_tin [(helper)] Child tax credit tests (Step 3) from the SSN, ITIN or ATIN test on
+    cites: i1040gi p. 18, Step 3, questions 1–4
+- dependent.ctc_from_citizen [(helper)] Child tax credit tests (Step 3) from the citizenship test on
+    cites: i1040gi p. 18, Step 3, questions 1–4
+- dependent.ctc_from_age [(helper)] Child tax credit tests (Step 3) from the age test on
+    cites: i1040gi p. 18, Step 3, questions 1–4
+- dependent.ctc_from_work_ssn [(helper)] Child tax credit tests (Step 3) from the work SSN test on
+    cites: i1040gi p. 18, Step 3, questions 1–4
 - dependent.ctc_child [(helper)] Qualifying child for the child tax credit (Step 3)
     cites: i1040gi p. 18, Step 3, questions 1–4
 - dependent.odc_person [(helper)] Dependent for the credit for other dependents (Steps 3 and 5)
@@ -1744,8 +1790,16 @@ ENCODING:
 - dependent.hoh_test1 [(helper)] Qualifies you for head of household under Test 1 through a parent who does not live with you (a parent who lives with you qualifies you through Test 2)
     REFUSES when dependent.claimed_no_tin: Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))
     cites: i1040gi p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
+- dependent.tiebreak_other [(helper)] With another person who can claim this person: that person is a taxpayer, or this person is also your qualifying child
+    cites: p501 p. 15, Qualifying Child of More Than One Person, "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person."; i1040gi p. 19, Step 4, "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid."
 - dependent.qc_tiebreak [(gate)] The qualifying child of another person who is also your qualifying child, or whose other person is a taxpayer
     cites: p501 p. 15, Qualifying Child of More Than One Person, "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person."; i1040gi p. 19, Step 4, "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid."
+- dependent.eic_child_tests [(helper)] EIC qualifying child tests: relationship, age, joint return and residency in the United States, each asked only when the ones before it pass
+    cites: i1040gi p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025)
+- dependent.eic_child_from_age [(helper)] EIC qualifying child tests from the age test on: age, joint return and residency in the United States
+    cites: i1040gi p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025)
+- dependent.eic_child_from_joint [(helper)] EIC qualifying child tests from the joint return test on: joint return and residency in the United States
+    cites: i1040gi p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025)
 - dependent.eic_child [(helper)] Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)
     REFUSES when dependent.kidnap_eic: Kidnapped child (Pub. 501; Pub. 596 for the EIC)
     REFUSES when dependent.eic_tiebreak: Qualifying child of more than one person (EIC)
@@ -1753,6 +1807,10 @@ ENCODING:
     cites: i1040gi p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025)
 - dependent.eic_tiebreak [(gate)] The qualifying child of another person who is also your qualifying child for the EIC
     cites: i1040gi p. 44, Qualifying child of more than one person, "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits"
+- dependent.kidnap_eic_related [(helper)] A child presumed kidnapped: meets the EIC relationship test but did not live with you in the United States for more than half of 2025
+    cites: i1040gi p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)
+- dependent.not_us_half [(helper)] Did not live with you in the United States for more than half of 2025
+    cites: i1040gi p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)
 - dependent.kidnap_eic [(gate)] A child presumed kidnapped who meets the EIC relationship test but did not live with you in the United States for more than half of 2025, not counting the time missing
     cites: i1040gi p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)
 - dependent.eic_ssn_child [(helper)] Qualifying child for the EIC who has a valid SSN
@@ -1883,6 +1941,10 @@ ENCODING:
 - dependent.edu_over [(gate)] An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution
     QUESTION: Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course materials required to be paid to the institution)?
     cites: i8863 p. 4, Tax-free educational assistance, "For tax-free educational assistance received in 2025, reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period."
+- dependent.edu_has_adj [(helper)] Adjusted qualified education expenses (worksheet line 3) above zero
+    cites: i8863 p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025."
+- dependent.edu_over_if_adj [(helper)] Adjustments that exceed one academic period's expenses, where adjusted qualified education expenses are above zero
+    cites: i8863 p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025."
 - dependent.edu_over_refused [(gate)] Adjustments that exceed one academic period's expenses
     cites: i8863 p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025."
 - dependent.edu_line23 [23] Has the American opportunity credit been claimed for this student for any 4 prior tax years?
@@ -1969,25 +2031,14 @@ HANDLED ELSEWHERE (refusals on other forms tied to lines this form reads):
 - f2441: Earned income of a spouse who died in 2025 (Form 2441, lines 5 and 19) -- The surviving spouse's choice whether to take into account the earned income of a spouse who died in 2025 is outside this tool.
 - f2441: Form 2441 for married filing separately (line A; lines 19 and 21) -- A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing
 - f5695: Residential Clean Energy Credit Limit Worksheet, line 2 (Schedule 3 lines 6c, 6d, 6f, 6g, 6h, 6l and 6m) -- Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's cr
-- f5695: Form 5695 line 19 (an exterior door without a valid QMID) -- An exterior door installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim 
-- f5695: Form 5695 line 20 (an exterior window or skylight without a valid QMID) -- An exterior window or skylight installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or
-- f5695: Form 5695 line 22 (a central air conditioner without a valid QMID) -- Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do n
-- f5695: Form 5695 line 23 (a water heater without a valid QMID) -- Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do n
-- f5695: Form 5695 line 24 (a furnace or hot water boiler without a valid QMID) -- Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do n
-- f5695: Form 5695 line 25 (enabling property without a valid QMID) -- Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do n
-- f5695: Form 5695 line 29 (a heat pump, heat pump water heater or biomass stove or boiler without a valid QMID) -- Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do n
 - f5695: Form 5695 Part II for spouses with separate main homes (a separate Form 5695 for each main home) -- Figuring lines 17a through 30 on a separate Form 5695 for each spouse's main home and combining them on line 30 is outside this tool.
 - f5695: Energy Efficient Home Improvement Credit Limit Worksheet, line 2 (Schedule 3 lines 6d and 6l) -- Credits other than the foreign tax credit, the dependent credits, the child and dependent care credit, the education credits, the saver's cr
 - f8863: Credit Limit Worksheet (Form 8863 instructions), line 5 (Schedule 3 lines 6d and 6l) -- Credits other than the foreign tax credit and the child and dependent care credit that come before the education credits are outside this to
 - f8889: Form 8889 on a married filing separately return -- Married filing separately is outside this tool; the HSA rules for spouses are supported on a joint return.
 - f8962: Form 8962 Part V, Alternative Calculation for Year of Marriage -- A 2025 marriage with Marketplace coverage before the first full month of marriage needs the year-of-marriage rules (Part V and Pub. 974), wh
+- household: Temporary absences for head of household (Pub. 501) -- For head of household, an absence counts as time lived with you only if it was reasonable to assume the absent person would return and you k
 - household: Community income on a married head of household return in a community property state (Form 8958; Pub. 555) -- A married person filing as head of household who lived in a community property state may have to report community income under state law; Fo
-- ira: An IRA deduction smaller than the most you can deduct (Form 8606) -- Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool takes the most you can deduct.
-- person: Excess elective deferrals on Form 8880 line 2 -- Elective deferrals over the limit for the year, and their later distribution, are outside this tool.
-- person: Traditional and Roth IRA contributions on a joint return (Pub. 590-A) -- On a joint return where you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, the IRA deduction is figure
-- qbi: Form 8995-A with qualified business income (taxable income above the threshold) -- The qualified business income deduction above the Form 8995 threshold is outside this tool.
 - s179: Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation) -- On a separate return the dollar limitation is shared with your spouse and figured with your spouse's property; that is outside this tool.
-- s179: A section 179 carryover from 2024 with no business on the return -- Deducting a section 179 carryover without a Schedule C business is outside this tool.
 - s1a: Schedule 1-A, line 5 (qualified tips in a trade or business, with Schedule C, E or F) -- Income from a trade or business is outside this tool.
 - s1a: Schedule 1-A, line 14b (qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C) -- Nonemployee compensation is outside this tool.
 - s3: Married filing separately -- The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together 
@@ -1996,9 +2047,6 @@ HANDLED ELSEWHERE (refusals on other forms tied to lines this form reads):
 - s8812: Earned Income Worksheet, lines 2a–2e (statutory employee, farm or partnership income) -- Statutory employee, farm and partnership income are outside this tool.
 - s8812: Earned Income Worksheet, line 4 (Schedule 1, line 8s) -- Schedule 1 amounts are outside this tool.
 - sa: Standard Deduction Worksheet for Dependents / dual-status rules -- Dependent and dual-status standard deductions are outside this resident nondependent slice.
-- sa: Standard Deduction Chart spouse boxes on a separate return -- Checking age or blindness boxes for your spouse on a married filing separately return is outside this tool.
 - sa: A return for a dependent or dual-status alien -- A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, wheth
-- sales: Form 8949, column (g), code W -- The nondeductible wash-sale loss entered is more than the loss on this sale (column (e) less column (d), after any code B correction). Check
 - scope: Form 1040 line 16 additional tax forms -- Prepare the applicable additional tax or alternative worksheet.
 - ssb: Schedule 1 adjustments (Social Security Benefits Worksheet, line 6) -- Schedule 1 adjustments on lines 12, 14 and 23 are outside this tool.
-- w2: Section 501(c)(18)(D) plan contributions (Form W-2 box 12, code H; Schedule 1, line 24f) -- Contributions to a 501(c)(18)(D) plan are deducted on Schedule 1 and count on Form 8880 line 2; that deduction is outside this tool.

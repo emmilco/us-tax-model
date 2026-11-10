@@ -71,21 +71,54 @@ form:
       doc: i8962
       locator: p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month
         of marriage?"
+  - id: f8962.no
+    printed: (helper)
+    label: Year parameter household.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: i8962
+      locator: p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month
+        of marriage?"
   - id: f8962.marriage
     printed: (gate)
     label: A joint return with Marketplace coverage before the first full month of a 2025 marriage
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - f1040.status
-        - const: mfj
-      - op: test
-        eq:
-        - f8962.married_in_2025
-        - const: true
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: mfj
+        then: f8962.married_in_2025
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: single
+        then: f8962.no
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: mfs
+        then: f8962.no
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: hoh
+        then: f8962.no
+      - guard:
+          op: test
+          eq:
+          - f1040.status
+          - const: qss
+        then: f8962.no
     cite:
       doc: i8962
       locator: p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month

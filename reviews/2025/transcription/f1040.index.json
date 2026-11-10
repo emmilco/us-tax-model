@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "b1d494b8d9c7a8ac571efc9eac58e31bed40a2ae1cf596cd087583ffaca15443",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-09); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -16,9 +16,9 @@
   },
   {
    "key": "1a",
-   "record": "b1d494b8d9c7a8ac571efc9eac58e31bed40a2ae1cf596cd087583ffaca15443",
+   "record": "4443950570801288449b10da9cba283ff549c9ace887c64b8350acc29755614d",
    "status": "AGREE",
-   "subject_key": "59e409d2ec48f0fbc63e88928e866a27946ab818ca721b78c9d1b6b72254f82b"
+   "subject_key": "241770bc41d4939da85497a828791c2247fbced6d110d1ef0cb45327bb4a7942"
   },
   {
    "key": "1e",
@@ -29,9 +29,9 @@
   },
   {
    "key": "1z",
-   "record": "b1d494b8d9c7a8ac571efc9eac58e31bed40a2ae1cf596cd087583ffaca15443",
+   "record": "4443950570801288449b10da9cba283ff549c9ace887c64b8350acc29755614d",
    "status": "AGREE",
-   "subject_key": "2f577c753c799046b5cf406be39d9307f5d06ff1fc0c7d24aa0fc40973ce6b53"
+   "subject_key": "27732cbcf25d7d9e409427c027a4c88721b880f63f774419e6c253af40e555e6"
   },
   {
    "key": "2a",
@@ -151,9 +151,9 @@
   },
   {
    "key": "12e",
-   "record": "b1d494b8d9c7a8ac571efc9eac58e31bed40a2ae1cf596cd087583ffaca15443",
+   "record": "4443950570801288449b10da9cba283ff549c9ace887c64b8350acc29755614d",
    "status": "AGREE",
-   "subject_key": "4d7798b56f6ae503205c8971bf886717541bdbd68b0e5ba1106098c1596317dc"
+   "subject_key": "8cc42fdcbd0b3928d33dbed8d8ff674168cca59fcb062fd5e4ef4974f65049c2"
   },
   {
    "key": "13a",
@@ -169,9 +169,9 @@
   },
   {
    "key": "14",
-   "record": "b1d494b8d9c7a8ac571efc9eac58e31bed40a2ae1cf596cd087583ffaca15443",
+   "record": "4443950570801288449b10da9cba283ff549c9ace887c64b8350acc29755614d",
    "status": "AGREE",
-   "subject_key": "4a450c1e646c67c5d424b4ddd245d369b7676c93415037fa14fdabb04629396c"
+   "subject_key": "d4fdf24d8a8dea3581e9dc5b7e196fb67ae682ad85b1fbacc3f7b6dd66b412cd"
   },
   {
    "key": "15",
@@ -391,7 +391,11 @@
  "__rest__": "e8cf778e9ae7c8363ed7e5f85314f01a68cf2f35dac8d2449b9664ccb42b3a78",
  "foreign": {
   "f1040.line3a_if_ordinary": "a89991d373a0ef9cd22e2a905885c90ec4104aeb0ada89f31b2838188d12bc37",
+  "1a": "f020a8428ad289e0166890c3fe5bf7a2554f1d48db6f1cc30a20a736f5867c82",
+  "1z": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "2a": "fd19b2e351c32dc8459f25a65c94080d73dfdae76fdce3fba9221b09db16ae24",
+  "12e": "cfe4a033a0d8290dcfc04dd6d44a4465de6080f1389b31f48c57c50426857576",
+  "14": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "16": "76a76cedf837979db15c7ed6ed8e6e06e46bf46dfbe14f16c8138005375620d4"
  }
 }

@@ -1,9 +1,9 @@
 ```yaml
 lines:
-  - printed: "dependent[dep_a].dc_line2d"
-    value: "740.00"
-    work: "dep_a is a qualifying relative (member of household all year, gross income $0 < $5,200, over-half support) and so your dependent; not able to care for self and lived with you 12 months, so a qualifying person (#3); expenses $740.00"
-  - printed: "dependent[dep_a].dc_line2c"
+  - printed: "dependent[dep_c].dc_line2d"
+    value: "2590.00"
+    work: "dep_c is a qualifying child (age 7, lived with you 12 months, didn't provide over half own support, no joint return) and your dependent on the MFJ return; under 13, so a qualifying person; qualified expenses incurred and paid in 2025 = $2,590.00"
+  - printed: "dependent[dep_c].dc_line2c"
     value: "no"
-    work: "Check column (c) only if the person was over age 12 and disabled; age 2 is not over 12"
+    work: "Age 7, not over age 12, and able to care for self; column (c) box not checked"
 ```

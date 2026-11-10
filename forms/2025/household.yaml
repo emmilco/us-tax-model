@@ -324,15 +324,9 @@ form:
         field: person.one
         where:
           op: test
-          any:
-          - op: test
-            eq:
-            - person.tin
-            - const: true
-          - op: test
-            eq:
-            - person.itin_applied
-            - const: true
+          eq:
+          - person.tin_or_itin_applied
+          - const: true
       cite:
         doc: i1040gi
         locator: 'p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN"; p. 19, Step 5, question 1, "(Answer ''Yes'' if you are applying for an ITIN on or before the return due date (including extensions).)"'
@@ -358,15 +352,9 @@ form:
         field: person.one
         where:
           op: test
-          any:
-          - op: test
-            eq:
-            - person.work_ssn
-            - const: true
-          - op: test
-            eq:
-            - person.tin
-            - const: true
+          eq:
+          - person.work_ssn_or_tin
+          - const: true
       cite:
         doc: i1040gi
         locator: 'p. 17, Before you begin, "The other spouse must have either an SSN or ITIN"'
@@ -503,25 +491,66 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin"'
+    - id: household.hoh_cp_married
+      printed: (helper)
+      label: 'Filing as head of household: married at the end of 2025, and lived in a community property state'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.married
+            - const: true
+          then: household.community_property
+        - guard:
+            op: test
+            eq:
+            - household.married
+            - const: false
+          then: household.no
+      cite:
+        doc: i1040gi
+        locator: p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually
+          follow state law to determine what is community income and what is separate income"
     - id: household.hoh_community_property
       printed: (gate)
       type: Bool
       label: Married, filing as head of household, and living in a community property state
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - f1040.status
-              - const: hoh
-          - op: test
+            - f1040.status
+            - const: single
+          then: household.no
+        - guard:
+            op: test
             eq:
-              - household.married
-              - const: true
-          - op: test
+            - f1040.status
+            - const: mfj
+          then: household.no
+        - guard:
+            op: test
             eq:
-              - household.community_property
-              - const: true
+            - f1040.status
+            - const: mfs
+          then: household.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: hoh
+          then: household.hoh_cp_married
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: qss
+          then: household.no
       cite:
         doc: i1040gi
         locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income"'
@@ -718,35 +747,135 @@ form:
       cite:
         doc: p501
         locator: p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+    - id: household.hoh_absence_from_test1
+      printed: (helper)
+      label: 'Head of household turns on an absence head of household does not count, from Test 1 on: Test 1 not met, home cost
+        paid, no Test 2 person, and a person who would be one only by counting an absence'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.test1_met
+            - const: true
+          then: household.no
+        - guard:
+            op: test
+            eq:
+            - household.test1_met
+            - const: false
+          then: household.hoh_absence_from_cost
+      cite:
+        doc: p501
+        locator: p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both
+          of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the
+          absent person will return to the home after the temporary absence. You must continue to keep up the home during the
+          absence."
+    - id: household.hoh_absence_from_cost
+      printed: (helper)
+      label: 'Head of household turns on an absence head of household does not count, from the home cost on: home cost paid, no
+        Test 2 person, and a person who would be one only by counting an absence'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.home_cost
+            - const: true
+          then: household.hoh_absence_from_test2
+        - guard:
+            op: test
+            eq:
+            - household.home_cost
+            - const: false
+          then: household.no
+      cite:
+        doc: p501
+        locator: p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both
+          of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the
+          absent person will return to the home after the temporary absence. You must continue to keep up the home during the
+          absence."
+    - id: household.hoh_absence_from_test2
+      printed: (helper)
+      label: 'Head of household turns on an absence head of household does not count, from Test 2 on: no Test 2 person, and a
+        person who would be one only by counting an absence'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.no_test2_persons
+            - const: true
+          then: household.any_test2_absence
+        - guard:
+            op: test
+            eq:
+            - household.no_test2_persons
+            - const: false
+          then: household.no
+      cite:
+        doc: p501
+        locator: p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both
+          of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the
+          absent person will return to the home after the temporary absence. You must continue to keep up the home during the
+          absence."
+    - id: household.no_test2_persons
+      printed: (helper)
+      label: No person qualifies you under Test 2
+      type: Bool
+      expr:
+        op: test
+        eq:
+        - household.test2_persons
+        - const: 0
+          type: Count
+      cite:
+        doc: p501
+        locator: p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both
+          of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the
+          absent person will return to the home after the temporary absence. You must continue to keep up the home during the
+          absence."
+    - id: household.any_test2_absence
+      printed: (helper)
+      label: A person would qualify you under Test 2 only by counting an absence head of household does not count
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - household.test2_absence_persons
+        - const: 0
+          type: Count
+      cite:
+        doc: p501
+        locator: p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both
+          of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the
+          absent person will return to the home after the temporary absence. You must continue to keep up the home during the
+          absence."
     - id: household.hoh_absence
       printed: (gate)
       type: Bool
       label: Head of household turns on a person who lived with you more than half the year only by counting an absence head of household does not count
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - household.unmarried
-              - const: true
-          - op: test
+            - household.unmarried
+            - const: true
+          then: household.hoh_absence_from_test1
+        - guard:
+            op: test
             eq:
-              - household.test1_met
-              - const: false
-          - op: test
-            eq:
-              - household.home_cost
-              - const: true
-          - op: test
-            eq:
-              - household.test2_persons
-              - const: 0
-                type: Count
-          - op: test
-            gt:
-              - household.test2_absence_persons
-              - const: 0
-                type: Count
+            - household.unmarried
+            - const: false
+          then: household.no
       cite:
         doc: p501
         locator: p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
@@ -763,22 +892,39 @@ form:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 1
+    - id: household.any_test2_person
+      printed: (helper)
+      label: A person qualifies you under Test 2
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - household.test2_persons
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in
+          which one of the following also lived for more than half of the year"
     - id: household.test2_met
       printed: (helper)
       type: Bool
       label: Test 2 met, having paid over half the cost of keeping up your own home
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - household.home_cost
-              - const: true
-          - op: test
-            gt:
-              - household.test2_persons
-              - const: 0
-                type: Count
+            - household.home_cost
+            - const: true
+          then: household.any_test2_person
+        - guard:
+            op: test
+            eq:
+            - household.home_cost
+            - const: false
+          then: household.no
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year"
@@ -900,22 +1046,38 @@ form:
       type: Bool
       label: Filing as single or head of household although your spouse died in 2025
       expr:
-        op: test
-        all:
-          - op: test
-            any:
-              - op: test
-                eq:
-                  - f1040.status
-                  - const: single
-              - op: test
-                eq:
-                  - f1040.status
-                  - const: hoh
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - household.spouse_died_2025
-              - const: true
+            - f1040.status
+            - const: single
+          then: household.spouse_died_2025
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfj
+          then: household.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfs
+          then: household.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: hoh
+          then: household.spouse_died_2025
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: qss
+          then: household.no
       cite:
         doc: i1040gi
         locator: 'p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."'
@@ -932,29 +1094,93 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."'
+    - id: household.cp_not_joint
+      printed: (helper)
+      label: 'Not filing jointly: lived in a community property state, not married at the end of 2025, and married for part of
+        2025 while living there'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.community_property
+            - const: true
+          then: household.cp_unmarried
+        - guard:
+            op: test
+            eq:
+            - household.community_property
+            - const: false
+          then: household.no
+      cite:
+        doc: i1040gi
+        locator: p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually
+          follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub.
+          555."
+    - id: household.cp_unmarried
+      printed: (helper)
+      label: 'Not filing jointly and lived in a community property state: not married at the end of 2025, and married for part
+        of 2025 while living there'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.married
+            - const: true
+          then: household.no
+        - guard:
+            op: test
+            eq:
+            - household.married
+            - const: false
+          then: household.cp_married
+      cite:
+        doc: i1040gi
+        locator: p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually
+          follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub.
+          555."
     - id: household.cp_marriage_ended
       printed: (gate)
       type: Bool
       label: Not filing jointly, and married for part of 2025 while living in a community property state
       expr:
-        op: test
-        all:
-          - op: test
-            ne:
-              - f1040.status
-              - const: mfj
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - household.community_property
-              - const: true
-          - op: test
+            - f1040.status
+            - const: single
+          then: household.cp_not_joint
+        - guard:
+            op: test
             eq:
-              - household.married
-              - const: false
-          - op: test
+            - f1040.status
+            - const: mfj
+          then: household.no
+        - guard:
+            op: test
             eq:
-              - household.cp_married
-              - const: true
+            - f1040.status
+            - const: mfs
+          then: household.cp_not_joint
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: hoh
+          then: household.cp_not_joint
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: qss
+          then: household.cp_not_joint
       cite:
         doc: i1040gi
         locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."'
@@ -981,27 +1207,81 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"'
+    - id: household.joint_unmarried
+      printed: (helper)
+      label: Filing jointly, not married at the end of 2025, and no spouse who died in 2025
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.married
+            - const: true
+          then: household.no
+        - guard:
+            op: test
+            eq:
+            - household.married
+            - const: false
+          then: household.no_spouse_died
+      cite:
+        doc: i1040gi
+        locator: p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered
+          married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your
+          spouse died in 2025 and you didn’t remarry in 2025."
+    - id: household.no_spouse_died
+      printed: (helper)
+      label: Your spouse did not die in 2025
+      type: Bool
+      expr:
+        op: test
+        eq:
+        - household.spouse_died_2025
+        - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered
+          married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your
+          spouse died in 2025 and you didn’t remarry in 2025."
     - id: household.filing_status_conflict
       printed: (gate)
       type: Bool
       label: The filing status conflicts with the marriage facts entered
       expr:
-        op: test
-        any:
-          - op: test
-            all:
-              - op: test
-                eq: [f1040.status, {const: single}]
-              - op: test
-                eq: [household.married, {const: true}]
-          - op: test
-            all:
-              - op: test
-                eq: [f1040.status, {const: mfj}]
-              - op: test
-                eq: [household.married, {const: false}]
-              - op: test
-                eq: [household.spouse_died_2025, {const: false}]
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: single
+          then: household.married
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfj
+          then: household.joint_unmarried
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfs
+          then: household.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: hoh
+          then: household.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: qss
+          then: household.no
       cite:
         doc: i1040gi
         locator: 'p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025."'

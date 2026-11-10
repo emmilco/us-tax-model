@@ -1738,6 +1738,173 @@
       }
     },
     {
+      "id": "stage9.mut.eic_single_child_married_questions_unasked",
+      "covers": [
+        "eic"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the single alternative of eic.married_rules), predicted from the printed instructions before evaluating: stage9.eic.one_child.line5 filed single (wages $25,000, interest $5,000, one child age 3), with the question whether you and your spouse shared a principal residence for the last 6 months of 2025 withheld. i1040gi EIC Step 3, question 3: a filer who is not married filing separately or head of household answers No and skips questions 4 and 5, so the withheld answer is not needed; question 6 is No. The single, head of household and qualifying surviving spouse columns of the EIC Table are the same, so the credit is as in stage9.eic.one_child.line5: line 6 is the smaller of $4,060 and $3,261, $3,261.",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2500000,
+        "person[taxpayer].w2[emp_a].box4": 155000,
+        "person[taxpayer].w2[emp_a].box5": 2500000,
+        "person[taxpayer].w2[emp_a].box6": 36250,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "dependent[child].age": 3,
+        "dependent[child].months": 12,
+        "interest[bank_a].amount": 500000,
+        "f1040.status": "single",
+        "eic.same_home": null
+      },
+      "expect": {
+        "eic.step3": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 326100
+        }
+      }
+    },
+    {
+      "id": "stage9.mut.eic_qss_child_married_questions_unasked",
+      "covers": [
+        "eic"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the qualifying surviving spouse alternative of eic.married_rules), predicted from the printed instructions before evaluating: stage9.eic.one_child.line5 filed with the qualifying surviving spouse status, with the question whether you and your spouse shared a principal residence for the last 6 months of 2025 withheld. i1040gi EIC Step 3, question 3 is No (the status is neither married filing separately nor head of household), so questions 4 and 5 are skipped and the withheld answer is not needed; question 6 is No, and Step 3 is passed.",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2500000,
+        "person[taxpayer].w2[emp_a].box4": 155000,
+        "person[taxpayer].w2[emp_a].box5": 2500000,
+        "person[taxpayer].w2[emp_a].box6": 36250,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": null,
+        "dependent[child].age": 3,
+        "dependent[child].months": 12,
+        "interest[bank_a].amount": 500000,
+        "f1040.status": "qss",
+        "eic.same_home": null
+      },
+      "expect": {
+        "eic.step3": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage9.mut.eic_joint_child_step3_questions_unasked",
+      "covers": [
+        "eic"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the joint alternatives of eic.married_rules and eic.step3), predicted from the printed instructions before evaluating: stage9.eic.one_child.line5's wages, interest and child on a joint return (the spouse has no income), with the Step 3 answers for a married taxpayer filing separately or as head of household (same principal residence, legal separation) and whether you could be a qualifying child of another person all withheld. i1040gi EIC Step 3, question 2: filing jointly, skip questions 3 through 6 and Step 4 and go to Step 5, so Step 3 is passed without those answers, and the special rule for separated spouses (the box on Form 1040 page 1, reached only from question 6) does not apply.",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2500000,
+        "person[taxpayer].w2[emp_a].box4": 155000,
+        "person[taxpayer].w2[emp_a].box5": 2500000,
+        "person[taxpayer].w2[emp_a].box6": 36250,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": false,
+        "household.unmarried": null,
+        "dependent[child].age": 3,
+        "dependent[child].months": 12,
+        "interest[bank_a].amount": 500000,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[spouse]": [],
+        "eic.same_home": null,
+        "eic.legally_separated": null,
+        "eic.qc_of_another": null
+      },
+      "expect": {
+        "eic.step3": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.separated_spouses": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage9.mut.eic_mfs_child_same_home",
+      "covers": [
+        "eic"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the married-filing-separately alternative of eic.step3), predicted from the printed instructions before evaluating: stage9.eic.one_child.line5's wages, interest and child filed married filing separately, with you and your spouse sharing a principal residence for the last 6 months of 2025 and not legally separated, and not a qualifying child of another person. i1040gi EIC Step 3: question 3 Yes, question 4 Yes, question 5 No: STOP, you can't take the credit (as stage9.eic.married_hoh.not_separated), so line 27a is $0.",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2500000,
+        "person[taxpayer].w2[emp_a].box4": 155000,
+        "person[taxpayer].w2[emp_a].box5": 2500000,
+        "person[taxpayer].w2[emp_a].box6": 36250,
+        "$dependent": [
+          "child"
+        ],
+        "household.home_cost": false,
+        "household.unmarried": null,
+        "dependent[child].age": 3,
+        "dependent[child].months": 12,
+        "interest[bank_a].amount": 500000,
+        "f1040.status": "mfs",
+        "household.married": true,
+        "eic.same_home": true,
+        "eic.legally_separated": false,
+        "eic.qc_of_another": false
+      },
+      "expect": {
+        "eic.step3": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
       "id": "audit.eic.filer_eic_ssn_without_work_ssn",
       "covers": [
         "eic",

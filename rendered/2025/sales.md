@@ -231,8 +231,22 @@
 ## (helper) — `sales.bad_aggregate`
 
 - **Authored helper label:** Aggregate route fails its eligibility conditions
-- **Encoded (Bool):** helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate' and (helper "Basis reported to IRS" = false or helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect" ≠ 'none' or helper "Confirm all aggregate conditions: basis reported, no broker adjustments, no Ordinary box, no QOF disposition/deferral, no corrections, no collectibles" = false)
-- Expr: `{"all":[{"eq":["sales.route",{"const":"aggregate"}],"op":"test"},{"any":[{"eq":["sales.covered",{"const":false}],"op":"test"},{"ne":["sales.code",{"const":"none"}],"op":"test"},{"eq":["sales.aggregate_eligible",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'aggregate' → helper "An aggregate-route transaction fails an aggregate condition"] [helper "Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals" = 'detail' → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sales.route",{"const":"aggregate"}],"op":"test"},"then":"sales.aggregate_fails"},{"guard":{"eq":["sales.route",{"const":"detail"}],"op":"test"},"then":"sales.no"}],"op":"choose"}`
+- Cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (helper) — `sales.aggregate_fails`
+
+- **Authored helper label:** An aggregate-route transaction fails an aggregate condition
+- **Encoded (Bool):** (helper "Basis reported to IRS" = false or helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect" ≠ 'none' or helper "Confirm all aggregate conditions: basis reported, no broker adjustments, no Ordinary box, no QOF disposition/deferral, no corrections, no collectibles" = false)
+- Expr: `{"any":[{"eq":["sales.covered",{"const":false}],"op":"test"},{"ne":["sales.code",{"const":"none"}],"op":"test"},{"eq":["sales.aggregate_eligible",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (helper) — `sales.no`
+
+- **Authored helper label:** Year parameter household.no (false)
+- **Encoded (Bool):** Enter false (household.no).
+- Expr: `{"op":"param","ref":"household.no"}`
 - Cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sales.one`

@@ -55,6 +55,18 @@
    "ruling": "Ruling: representation; project retained; model value dropped from the fixture. No one on this joint return made traditional IRA contributions for 2025 (lines 11a and 11b $0.00, on which the model agrees; i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"), and the project shows lines 2 through 6 only when there are traditional contributions and someone is covered (ira.lines2to6), $0.00 otherwise. The model worked the line as if contributions had been made ($146,000, p. 97, line 2, \"Married filing jointly, enter $146,000 in both columns\"). Line 6b is $0.00 in both (line 5, $384,470.80, is not less than line 2), as are lines 7b and 12b. No change to the data.",
    "drop": true,
    "subject_key": "af49830e65418454e4082550983fe8899f57486296cab94259cc1cf423527920"
+  },
+  {
+   "case": "classm.ira.3",
+   "printed": "7a",
+   "project": "$0.00",
+   "model": "$7,000.00",
+   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. As the classm.ira.1 ruling on this line: the filer made no traditional IRA contributions for 2025 (line 11a $0.00, agreed), and the worksheet figures the deduction for such contributions (i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"); the project shows line 7a as $0.00 for a return without traditional contributions (ira.any_trad false) and the applicable amount otherwise. The model entered the applicable amount by the line 1 instruction (p. 97, \"$7,000 if under age 50 at the end of 2025\"). Line 12a, the smallest of lines 7a, 10 and 11a, is $0.00 either way (agreed); no printed amount changes. ira.line7a is not among the lines the gate-wave rewrite changed.",
+   "drop": true,
+   "context": "a620b1d7d92a54994455f114d19cac8e45ccef8062e146e14a9e20f99fb4c965",
+   "date": "2026-11-09",
+   "run": "f9d7fdd99b2cf10241a6d488220d0b12109e694ea422dd0182de61fc0e9d2d50",
+   "subject_key": "c66a3e06c839a522d95e7685809274184d9fa24b37585cc6975192fecd861069"
   }
  ]
 }

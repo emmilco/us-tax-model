@@ -13210,6 +13210,52 @@
       }
     },
     {
+      "id": "ny.mut.mctmt_no_use_tax",
+      "covers": [
+        "ny_it201"
+      ],
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3800000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 3800000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 3800000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
+        "$sc@person[taxpayer]": [
+          "big"
+        ],
+        "ny_it201.ask.city_resident": true,
+        "ny_it201.ask.mctmt": true,
+        "$ny_it2": [
+          "w0"
+        ],
+        "ny_it2[w0].state_withheld": 300000,
+        "ny_it2[w0].city_withheld": 200000,
+        "person[taxpayer].sc[big].line1": 8000000
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the false alternative of ny_it201.gate.use_tax_abode), predicted from the archived IT-201-I before evaluating: the inputs of ny.refuse.mctmt (the MCTMT screen answered Yes, so line 54a is refused), with no sales or use tax owed (ny_it201.ask.owes_use_tax No, the default). IT-201-I p. 18, Line 59: \"Report your sales or use tax liability on this line\"; with no liability line 59 is $0, the part-year abode question is not reached, and the MCTMT refusal of lines 54a to 54e does not reach line 59.",
+      "expect": {
+        "ny_it201.line59": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
       "id": "ny.refuse.use_tax_st141",
       "covers": [
         "ny_it201"

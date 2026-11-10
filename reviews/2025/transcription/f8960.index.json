@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "7d74f0e3064f755a76d15839a999abd92d5111e00d37241b0883880a8844cf23",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "agree / disagree / missing": "22 / 3 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-09); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -105,9 +106,10 @@
   },
   {
    "key": "9b",
-   "record": "7d74f0e3064f755a76d15839a999abd92d5111e00d37241b0883880a8844cf23",
-   "status": "AGREE",
-   "subject_key": "2e09fe26277a9cb663ec85f29f1ebbf14a18aa38a5a36b8d48b98a6f0b71a743"
+   "record": "3be53b14831998c61e84fdb2c04efffce5de6dde003fba09c19e39c7be9edb15",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error (+ scope); i8960 p. 16, Part II, the deductions that may be allocated to NII include \"Certain taxes under section 164(a) reported as itemized deductions, if properly deducted on your return when calculating your U.S. regular income tax\"; pp. 17–18, Line 9b—State, Local, and Foreign Income Tax: \"You can determine the portion ... allocable to NII using any reasonable method.\" The candidate copies f8960.allocated_taxes on every return; the project enters it only when the filer itemizes (sa.itemizes) and $0 otherwise, and refuses through f8960.bad_allocation when the claimed allocation exceeds Schedule A line 5e. executable-triage-v2 (`.transcription/triage/2025/f8960.json`, pass 8768ac16f4ce, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 111 partial records from 40 bases; 2,313 comparisons; completed witnesses listed in full by a scratch rerun): 1,571 of 2,313 agree; 583 project-refuses, 129 candidate-unknown, 30 project-unknown; on completed returns 84 candidate-unknown, all non-itemizers where the project shows $0.00 without reading the allocation (e.g. classm.f2441.1: sa.itemizes No; the interview does not ask f8960.allocated_taxes there): the candidate needs an answer the source does not need, since a non-itemizer has no such deduction (model error). The 1 completed project-refuses is stage5.return.itemized_f8960_allocation_unused (allocation $999,999.99 against Schedule A line 5e $10,000.00; f8960.bad_allocation, cited i8960 pp. 17–18), a validity screen on a return that does not file Form 8960 (line 17 $0.00, Form 1040 line 24 $10,657.00 in both trees): scope. The other project-refuses are refusals reaching the line from other forms on refused returns. Gate wave (BUG-0471): f8960.bad_allocation is a choose on sa.itemizes then f8960.allocation_over_5e, the HEAD `all`'s truth table; line 9b is the same in HEAD and the working tree on every completed fixture and generated return; it differs only on classm.asset.3 (refused in both trees), where the line refuses at oi8z[item_a].figured in HEAD and is unknown in the working tree, the incomplete-state difference BUG-0471 records. Project stands.",
+   "subject_key": "2a8f1084da0e8860213eee7764600c51b588d9ff83a10662ab48a3f9a6f64241"
   },
   {
    "key": "9d",
@@ -177,7 +179,7 @@
   "5d": "53cceec991a8ff8ef484ba58beb7f6ab24818fbfcb93eee01c238dfb96e5e5d8",
   "8": "b404b8e4f9aaa953a796144ada3075836d8c84dc73f8293acdde368499865379",
   "9a": "d040a56b0381fdbce96cac94988ebb1bf93851d68a88ddd8cc10da9a2ddf5259",
-  "9b": "19b71400c06e830815b0ec37bf50a2eca535dac32d52420a11e218257fcedc6f",
+  "9b": "300a10b9f5954a1b3e2b81458bba2dd5302ac2909a08382f668897f44212cff1",
   "9d": "cf25d42c1cccd3ca79bd0d94acee13f1db7a2b9d2a883d6417bf2d8f5780e8ec",
   "11": "a06b2c0e925a8c9c46d9939cf9bad63274525c0a0768a5f824a3df0616d5b9e3",
   "12": "877684a14759abdc6d34399c6ad2307ffefc6a5451887bbbe028912559676bc8",
@@ -199,6 +201,7 @@
   "7": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "9c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "10": "6157b5bd4813ad38a88c7d94a7388df017cd8c3a856fc20d901c4f663a36df0f",
+  "9b": "c99e78a5918933ad29e72bbcf1b26f4185149795019223f99783988c5cab1d87",
   "13": "6638ccb6b97e627056d0787f5e6391d59a37aab66c48d44960cf59124922852a"
  }
 }

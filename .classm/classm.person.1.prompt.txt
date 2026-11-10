@@ -8,7 +8,7 @@ every "smaller of" and "larger of", and every filing-status choice.
 Id: person
 Title: Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others)
 Tax year: 2025
-Filing status: Single
+Filing status: Married filing jointly
 
 This document is filled in once per entry (one row or one record per person, employer, sale or gift). Each entry below is named by its key; work every listed line for every entry.
 
@@ -18,21 +18,19 @@ Only printed IRS output lines are requested. Work any intermediate steps you nee
 
 Use them as they are; they are already correct. Amounts are dollars and cents.
 
-- Form 8863, Education Credits (American Opportunity and Lifetime Learning Credits): Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim: no
+- Form 8863, Education Credits (American Opportunity and Lifetime Learning Credits): Qualified education expenses paid in 2025 for you, your spouse or a dependent you claim: yes
 - Household facts for dependents and head of household: You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN: yes
 
 Entries (each with the amounts and answers the filer supplied for it):
-- person[taxpayer]: Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative? = no; Adjusted qualified education expenses. Don't enter more than $4,000 (result of the shared computation, given rather than worked) = $0.00; Subtract $2,000 from line 27. If zero or less, enter -0- (result of the shared computation, given rather than worked) = $0.00; Multiply line 28 by 25% (0.25) (result of the shared computation, given rather than worked) = $0.00; American opportunity credit for this student. If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29 (result of the shared computation, given rather than worked) = $0.00; Adjusted qualified education expenses for the lifetime learning credit (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 12 (self-employment tax) for this person (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 13 (deduction for one-half of self-employment tax) for this person (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 4c for this person (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 6 for this person (result of the shared computation, given rather than worked) = $0.00
+- person[spouse]: Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative? = no; Adjusted qualified education expenses. Don't enter more than $4,000 (result of the shared computation, given rather than worked) = $0.00; Subtract $2,000 from line 27. If zero or less, enter -0- (result of the shared computation, given rather than worked) = $0.00; Multiply line 28 by 25% (0.25) (result of the shared computation, given rather than worked) = $0.00; American opportunity credit for this student. If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29 (result of the shared computation, given rather than worked) = $0.00; Adjusted qualified education expenses for the lifetime learning credit (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 12 (self-employment tax) for this person (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 13 (deduction for one-half of self-employment tax) for this person (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 4c for this person (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 6 for this person (result of the shared computation, given rather than worked) = $0.00
+- person[taxpayer]: Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative? = no; Adjusted qualified education expenses. Don't enter more than $4,000 (result of the shared computation, given rather than worked) = $4,000.00; Subtract $2,000 from line 27. If zero or less, enter -0- (result of the shared computation, given rather than worked) = $2,000.00; Multiply line 28 by 25% (0.25) (result of the shared computation, given rather than worked) = $500.00; American opportunity credit for this student. If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29 (result of the shared computation, given rather than worked) = $2,500.00; Adjusted qualified education expenses for the lifetime learning credit (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 12 (self-employment tax) for this person (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 13 (deduction for one-half of self-employment tax) for this person (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 4c for this person (result of the shared computation, given rather than worked) = $0.00; Schedule SE line 6 for this person (result of the shared computation, given rather than worked) = $0.00
 
 Entries of other keyed collections this one totals:
-- person[taxpayer].f8889[hsa]: One Form 8889 = 1; One Form 8889 = 1; Spouses with separate HSAs, treated as having family coverage at any time during 2025 = no; One Form 8889 = 1; Spouses with separate HSAs, treated as having family coverage at any time during 2025 = no; Do you and your spouse divide the family contribution limit equally, or by a different allocation you both agree on? = equal; Spouses with separate HSAs, treated as having family coverage at any time during 2025 = no; Step 1: refigured line 5 (refigured line 3 less line 4) = $0.00; Spouses with separate HSAs, treated as having family coverage at any time during 2025 = no; Steps 2 and 3: your part of the Step 1 limit (Step 1 less the part allocated to your spouse) = $0.00; HSA deduction (see instructions) = $0.00; Taxable HSA distributions. Subtract line 15 from line 14c. If zero or less, enter -0-. Also, include this amount in the total on Schedule 1 (Form 1040), Part I, line 8f = $0.00; Additional 20% tax (see instructions). Enter 20% (0.20) of the distributions included on line 16 that are subject to the additional 20% tax. Also, include this amount in the total on Schedule 2 (Form 1040), Part II, line 17c = $0.00; 2025 excess HSA contributions for Form 5329 line 47 = $0.00
-- person[taxpayer].tipjob[tip_1]: One employer = 1; Enter the greater of column (b) or column (c) = $4,414.00; Amount of qualified tips reported by this employer on Form W-2, or reported by you to this employer on Form(s) 4070 = $4,414.00
-- person[taxpayer].tipjob[tip_2]: One employer = 1; Enter the greater of column (b) or column (c) = $474.00; Amount of qualified tips reported by this employer on Form W-2, or reported by you to this employer on Form(s) 4070 = $474.00
-- person[taxpayer].sc[biz_a]: One business = 1; This business's owner has railroad retirement compensation = no; One business = 1; Do you claim a deduction for business use of your home for this business? = yes; One business = 1; mq_q4 of this business = $0.00; mq_total of this business = $0.00; cost179 of this business = $0.00; Section 179 elected on property other than listed property = $0.00; Line 29 for this business = $0.00; Line 31 without the section 179 expense deduction = $-86,842.48; The amount for Schedule 1, line 3 and Schedule SE, line 2 = $-86,842.48; Net profit of this business (zero for a loss) = $0.00; Self-employed health insurance deduction = $0.00; Qualified business income or (loss) of this business = $-86,842.48; One business = 1; Tips or overtime in this business to be deducted on Schedule 1-A = no
-- person[taxpayer].sc[biz_b]: This business's owner has railroad retirement compensation = no; One business = 1; One business = 1; Do you claim a deduction for business use of your home for this business? = no; One business = 1; mq_q4 of this business = $0.00; mq_total of this business = $0.00; cost179 of this business = $0.00; Section 179 elected on property other than listed property = $0.00; Line 29 for this business = $0.00; Line 31 without the section 179 expense deduction = $-59,979.57; The amount for Schedule 1, line 3 and Schedule SE, line 2 = $-59,979.57; Net profit of this business (zero for a loss) = $0.00; Self-employed health insurance deduction = $0.00; Qualified business income or (loss) of this business = $-59,979.57; One business = 1; Tips or overtime in this business to be deducted on Schedule 1-A = no
-- person[taxpayer].w2[emp_a]: One employer entry = 1; Did this employer withhold more than $10,918.20? = no; One employer entry = 1; Add social security wages and social security tips = $42,698.00; Social security tax withheld = $2,647.00; Wages, tips, other compensation = $42,698.00; Federal income tax withheld = $0.00; Medicare wages and tips = $42,698.00; Medicare tax withheld = $619.00; Dependent care benefits from this Form W-2 for Form 2441 line 12 = $0.00; Dependent care benefits = $0.00; Elective deferrals and designated Roth contributions for 2025 from this Form W-2 counted on Form 8880 line 2 = $0.00
-- person[taxpayer].w2[emp_b]: One employer entry = 1; Did this employer withhold more than $10,918.20? = no; One employer entry = 1; Add social security wages and social security tips = $12,422.00; Social security tax withheld = $770.00; Wages, tips, other compensation = $12,422.00; Federal income tax withheld = $373.00; Medicare wages and tips = $12,422.00; Medicare tax withheld = $180.00; Dependent care benefits from this Form W-2 for Form 2441 line 12 = $0.00; Dependent care benefits = $0.00; Elective deferrals and designated Roth contributions for 2025 from this Form W-2 counted on Form 8880 line 2 = $0.00
+- person[spouse].w2[e0]: One employer entry = 1; Did this employer withhold more than $10,918.20? = no; One employer entry = 1; Add social security wages and social security tips = $0.00; Social security tax withheld = $0.00; Wages, tips, other compensation = $0.00; Federal income tax withheld = $0.00; Medicare wages and tips = $0.00; Medicare tax withheld = $0.00; Dependent care benefits from this Form W-2 for Form 2441 line 12 = $0.00; Dependent care benefits = $0.00; Elective deferrals and designated Roth contributions for 2025 from this Form W-2 counted on Form 8880 line 2 = $0.00
+- person[taxpayer].w2[e0]: One employer entry = 1; Did this employer withhold more than $10,918.20? = no; One employer entry = 1; Add social security wages and social security tips = $0.00; Social security tax withheld = $10,230.00; Wages, tips, other compensation = $165,000.00; Federal income tax withheld = $0.00; Medicare wages and tips = $165,000.00; Medicare tax withheld = $2,393.00; Dependent care benefits from this Form W-2 for Form 2441 line 12 = $0.00; Dependent care benefits = $0.00; Elective deferrals and designated Roth contributions for 2025 from this Form W-2 counted on Form 8880 line 2 = $0.00
+- person[spouse].f8606[form]: Subtract line 13 from line 3. This is your total basis in traditional IRAs for 2025 and earlier years (with no 2025 distribution or conversion, the amount from line 3) = $0.00
 - person[taxpayer].f8606[form]: Subtract line 13 from line 3. This is your total basis in traditional IRAs for 2025 and earlier years (with no 2025 distribution or conversion, the amount from line 3) = $0.00
+- person[spouse].f5329[form]: This person's Form 5329 taxes for Schedule 2 line 8 (lines 4 and 49) = $0.00; This person must file Form 5329 (an exception claimed, a code S distribution, or HSA excess) = no; One form = 1
 - person[taxpayer].f5329[form]: This person's Form 5329 taxes for Schedule 2 line 8 (lines 4 and 49) = $0.00; This person must file Form 5329 (an exception claimed, a code S distribution, or HSA excess) = no; One form = 1
 
 # Lines to fill
@@ -41,6 +39,14 @@ Each line is named by a quoted handle, with its value type and what it asks: a m
 dollar amount; a Bool line takes yes or no (the answer to the question or test as stated); a Count
 line takes a whole number.
 
+- "person[spouse].employers" (Count): Total w2.one for this person
+- "person[spouse].overcount" (Count): Number of employers that withheld more than the limit
+- "person[spouse].over" (Bool): Any employer withheld more than the limit
+- "person[spouse].wages" (NonNegDollars): Total w2.wages for this person
+- "person[spouse].withheld" (NonNegDollars): Total w2.box4 for this person
+- "person[spouse].eligible" (Bool): More than one employer and total social security wages over $176,100
+- "person[spouse].excess" (NonNegDollars): Withholding above $10,918.20, if any
+- "person[spouse].credit" (NonNegDollars): Excess social security tax withheld, figured separately for this person
 - "person[taxpayer].employers" (Count): Total w2.one for this person
 - "person[taxpayer].overcount" (Count): Number of employers that withheld more than the limit
 - "person[taxpayer].over" (Bool): Any employer withheld more than the limit
@@ -715,6 +721,112 @@ If your eye condition isn’t likely to improve beyond the conditions listed abo
 If you receive a notice or letter but you would prefer to have it in Braille-ready or large print, you can use Form 9000, Alternative Media Preference, to request notices in an alternative format including Braille-ready, large print, audio, or electronic. You can attach Form 9000 to your return or mail it separately. • You can download, or view online, tax forms and publications in a variety
 33
 Need more information or forms? Visit IRS.gov.
+
+
+===== i1040gi (2025; printed date 2026-02-25) page 34 of 126, in reading order =====
+of formats, including text-only, Braille-ready files, browser-friendly HTML (other than tax forms), accessible PDF, and large print.
+Line 12e Standard Deduction or Itemized Deductions
+If you are filing Form 1040-SR,
+you can find a Standard Deduc-
+TIP
+tion Chart on the last page of that form. Don’t file the Standard Deduction Chart with your return.
+In most cases, your federal income tax will be less if you take the larger of your standard deduction or itemized deductions.
+Standard Deduction
+Most Form 1040 filers can find their standard deduction by looking at the amounts listed to the left of line 12e. Most Form 1040-SR filers can find their standard deduction by using the chart on the last page of Form 1040-SR. Exception 1—Dependent. Line 12a. If you checked a box on line 12a, use the Standard Deduction Worksheet for Dependents to figure your standard deduction.
+Someone claims you or your
+spouse as a dependent if they
+TIP
+list your or your spouse’s name and SSN in the Dependents section of their return.
+Exception 2—Spouse itemizes on a separate return. Line 12b. If you checked the box on line 12b, your standard deduction is zero, even if you were born before January 2, 1961, or were blind. Exception 3—Dual-status alien. Line 12c. If you checked the box on line 12c, your standard deduction is zero, even if you were born before January 2, 1961, or were blind. Exception 4—Born before January 2, 1961, or blind. Line 12d. If you checked any box on line 12d, figure your standard deduction by using the Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind if you are filing Form 1040 or by using the chart on the last page of Form 1040-SR.
+Exception 5—Increased standard deduction for net qualified disaster loss. If you had a net qualified disaster loss and you elect to increase your standard deduction by the amount of your net qualified disaster loss, use Schedule A to figure your standard deduction. Qualified disaster loss refers to losses arising from certain disasters occurring in 2016 and subsequent years. See the Instructions for Form 4684 and Schedule A, line 16, for more information.
+Itemized Deductions
+To figure your itemized deductions, fill in Schedule A.
+If you made a section 962 election and are taking a deduction under section 250 with respect to any income inclusions under section 951A, don’t report the deduction on line 12e. Instead, report the tax with respect to a section 962 election on line 16 and include in the statement required by line 16 how you figured the section 250 deduction.
+!
+CAUTION
+Line 13a
+Qualified Business Income Deduction (Section 199A Deduction)
+To figure your Qualified Business Income Deduction, use Form 8995 or Form 8995-A as applicable.
+Use Form 8995 if: • You have qualified business income, qualified REIT dividends, or qualified PTP income (loss); • Your 2025 taxable income before the qualified business income deduction is less than or equal to $197,300 ($394,600 if married filing jointly); and • You aren’t a patron in a specified agricultural or horticultural cooperative.
+If you don’t meet these requirements, use Form 8995-A, Qualified Business Income Deduction. Attach whichever form you use (Form 8995 or 8995-A) to your return. See the Instructions for Forms 8995 and 8995-A for more information for figuring and reporting your qualified business income deduction.
+Line 13b
+Additional Deductions From Schedule 1-A, Line 38
+If you are eligible to claim a deduction for no tax on tips, no tax on overtime, no tax on car loan interest, and/or the enhanced deduction for seniors, enter on line 13b the amount, if any, from Schedule 1-A, line 38. See Schedule 1-A and the instructions for Schedule 1-A for more information.
+Line 16
+Tax
+Include in the total on the entry space on line 16 all of the following taxes that apply. • Tax on your taxable income. Figure the tax using one of the methods described later. • Tax from Form(s) 8814 (relating to the election to report child’s interest or dividends). Check the appropriate box. • Tax from Form 4972 (relating to lump-sum distributions). Check the appropriate box. • Tax with respect to a section 962 election (election made by a domestic shareholder of a controlled foreign corporation to be taxed at corporate rates) reduced by the amount of any foreign tax credits claimed on Form 1118. See section 962 for details. Check box 3 and enter the amount and “962” in the space next to that box. Attach a statement showing how you figured the tax. • Recapture of an education credit. You may owe this tax if you claimed an education credit in an earlier year, and either tax-free educational assistance or a refund of qualified expenses was received in 2025 for the student. See Form 8863 and its instructions for more details. Check box 3 and enter the amount and “ECR” in the space next to that box. • Any tax from Form 8621, line 16e, relating to a section 1291 fund. Check box 3 and enter the amount of the tax and “1291TAX” in the space next to that box. • Tax from Form 8978, line 14 (relating to partner’s audit liability under section 6226). Check box 3 and enter the amount of the liability and “Form 8978” in the space next to that box. If the
+34
+Need more information or forms? Visit IRS.gov.
+
+
+===== i1040gi (2025; printed date 2026-02-25) page 35 of 126, as laid out =====
+Standard Deduction Worksheet for Dependents—Line 12e                                                                                                         Keep for Your Records
+Use this worksheet only if someone can claim you, or your spouse if filing jointly, as a dependent.
+
+
+ 1.       Check if:
+                               You were born before January 2, 1961.
+                               You are blind.                                                                         Total number of boxes
+                                                                                                                                                                  1.
+                                                                                                                      checked . . . . . . . . . . . . . . . . . .
+                               Spouse was born before January 2, 1961.
+                          Spouse is blind.
+ 2.       Is your earned income* more than $900?
+                 Yes. Add $450 to your earned income. Enter the total.
+                                                                                                                     . . . . . . . . . . . . . . . . . . . . . . . . . . 2.
+             No. Enter $1,350.
+ 3.    Enter the amount shown below for your filing status.
+       • Single or married filing separately—$15,750
+       • Married filing jointly—$31,500                                                                              . . . . . . . . . . . . . . . . . . . . . . . . . . 3.
+       • Head of household—$23,625
+ 4.    Standard deduction.
+    a. Enter the smaller of line 2 or line 3. If born after January 1, 1961, and not blind, stop here and enter this amount on
+       Form 1040 or 1040-SR, line 12e. Otherwise, go to line 4b . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4a.
+    b. If born before January 2, 1961, or blind, multiply the number on line 1 by $1,600 ($2,000 if single or head of
+       household) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4b.
+    c. Add lines 4a and 4b. Enter the total here and on Form 1040 or 1040-SR, line 12e . . . . . . . . . . . . . . . . . . . . . . . . . 4c.
+* Earned income includes wages, salaries, tips, professional fees, and other compensation received for personal services you performed. It also includes any taxable
+scholarship or fellowship grant. Generally, your earned income is the total of the amount(s) you reported on Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6,
+8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15.
+
+
+
+Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind
+Don’t use this chart if someone can claim you, or your spouse if filing jointly, as a dependent. Instead, use the worksheet above.
+
+      You were born before January 2, 1961.                                        You are blind.
+      Spouse was born before January 2, 1961.                                      Spouse is blind.
+
+
+Enter the total number of boxes checked . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                 ▶
+
+IF your filing                                                                        AND the number in                                                            THEN your standard
+status is . . .                                                                       the box above is . . .                                                         deduction is . . .
+                                                                                                    1                                                                  $17,750
+Single
+                                                                                                    2                                                                   19,750
+                                                                                                    1                                                                  $33,100
+                                                                                                    2                                                                   34,700
+Married filing jointly
+                                                                                                    3                                                                   36,300
+                                                                                                    4                                                                   37,900
+                                                                                                    1                                                                  $33,100
+Qualifying surviving spouse
+                                                                                                    2                                                                   34,700
+                                                                                                    1                                                                  $17,350
+                                                                                                    2                                                                   18,950
+Married filing separately*
+                                                                                                    3                                                                   20,550
+                                                                                                    4                                                                   22,150
+                                                                                                    1                                                                  $25,625
+Head of household
+                                                                                                    2                                                                   27,625
+* You can check the boxes for spouse if your filing status is married filing separately and your spouse had no income, isn’t filing a return, and can’t be claimed as a
+dependent on another person’s return.
+
+
+
+Need more information or forms? Visit IRS.gov.                                                                                                                                            35
 
 
 ===== i1040gi (2025; printed date 2026-02-25) page 40 of 126, in reading order =====

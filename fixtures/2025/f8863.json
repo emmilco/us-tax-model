@@ -3205,6 +3205,122 @@
       }
     },
     {
+      "id": "stage19.mut.aoc_student_20_not_fulltime",
+      "covers": [
+        "person",
+        "f8863"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the age 19 to 23 alternative of person.edu_kid_student_age), predicted from the archived f8863 and i8863 before evaluating: stage19.blind.e1 (single, the filer an American opportunity credit student, line 7 $1,296.41) with the filer aged 19 to 23 at the end of 2025 (born after January 1, 2002, before January 2, 2007), not a full-time student, with earned income less than one-half of support and a living parent. i8863 p. 6: \"You don't qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you\"; 1(c) needs a full-time student and 1(a) and 1(b) age 18 or under, so condition 1 is not met and the credit stays refundable, and line 8 is 40% of line 7, $518.56, as in stage19.blind.e1.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "f8863.paid": true,
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": true,
+        "person[taxpayer].edu_born_2002": false,
+        "person[taxpayer].edu_born_2007": true,
+        "person[taxpayer].edu_ein": true,
+        "person[taxpayer].edu_inst": 310000,
+        "person[taxpayer].edu_line24": true,
+        "person[taxpayer].edu_mat": 45000,
+        "person[taxpayer].w2[emp_a].box1": 8456700,
+        "person[taxpayer].w2[emp_a].box2": 676500,
+        "person[taxpayer].w2[emp_a].box4": 524315,
+        "person[taxpayer].w2[emp_a].box5": 8456700,
+        "person[taxpayer].w2[emp_a].box6": 122622,
+        "person[taxpayer].edu_half_support": true,
+        "person[taxpayer].edu_fulltime": false,
+        "person[taxpayer].edu_parent": true
+      },
+      "expect": {
+        "person[taxpayer].edu_kid": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8863.no_refund": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8863.line8": {
+          "kind": "money",
+          "cents": 51856
+        }
+      }
+    },
+    {
+      "id": "stage19.mut.aoc_joint_line7_unasked",
+      "covers": [
+        "person",
+        "f8863"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the line 7 not-needed alternative of person.edu_kid), predicted from the archived f8863 and i8863 before evaluating: stage19.blind.e1's student filing a joint return (the spouse has no income), aged 19 to 23 at the end of 2025, with the line 7 questions (full-time student, earned income less than one-half of support, a living parent) withheld. i8863 p. 6: the refundable credit is barred only if conditions 1, 2 and 3 all apply, and 3 is \"You're not filing a joint return for 2025\"; on a joint return the questions of condition 1 and 2 are not needed: no filer is counted for line 7 and the credit is not barred from being refundable.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "f8863.paid": true,
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": true,
+        "person[taxpayer].edu_born_2002": false,
+        "person[taxpayer].edu_born_2007": true,
+        "person[taxpayer].edu_ein": true,
+        "person[taxpayer].edu_inst": 310000,
+        "person[taxpayer].edu_line24": true,
+        "person[taxpayer].edu_mat": 45000,
+        "person[taxpayer].w2[emp_a].box1": 8456700,
+        "person[taxpayer].w2[emp_a].box2": 676500,
+        "person[taxpayer].w2[emp_a].box4": 524315,
+        "person[taxpayer].w2[emp_a].box5": 8456700,
+        "person[taxpayer].w2[emp_a].box6": 122622,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[spouse]": [],
+        "person[taxpayer].edu_fulltime": null,
+        "person[taxpayer].edu_half_support": null,
+        "person[taxpayer].edu_parent": null
+      },
+      "expect": {
+        "f8863.kid": {
+          "kind": "count",
+          "value": 0
+        },
+        "f8863.no_refund": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage19.mut.no_expenses_lines_after4_hidden",
+      "covers": [
+        "f8863"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the eligibility operand of f8863.show_after4), predicted from the archived i8863 before evaluating: single, W-2 wages $80,000, and no qualified education expenses paid for anyone (f8863.paid No). No education credit can be claimed and Form 8863 is not completed (i8863 p. 1, Who Can Claim an Education Credit), so the lines after line 4 are not shown, though line 4 (the line 2 limit less AGI) would be more than zero.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000
+      },
+      "expect": {
+        "f8863.show_after4": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
       "id": "stage19.mut.aoc_line4_zero_ban",
       "covers": [
         "f8863"

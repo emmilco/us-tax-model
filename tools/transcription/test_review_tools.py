@@ -2082,6 +2082,22 @@ class CarryOver(unittest.TestCase):
         self.assertEqual(ruled, {})
         self.assertEqual({w for _, w in left}, {"the log is stale; rerun first"})
 
+    def test_against_the_working_tree_currency_is_log_state(self):
+        # A line-scoped pass leaves the header's whole-form subject behind; check_logs.py's
+        # log_state still calls the log current, and carry must agree with it.
+        self.write(self.rows(), prompt="a changed prompt")
+        working_tree = carry.Snapshot(None)
+        with patch.object(carry.subjects, "log_state", return_value=None) as state, \
+                patch.object(carry.subjects, "of_text", return_value="b" * 64):
+            _, _, left = carry.plan("transcription", "x", origin="old.md", current=working_tree)
+        state.assert_called_once()
+        self.assertNotIn("the log is stale; rerun first", {w for _, w in left})
+        with patch.object(carry.subjects, "log_state", return_value="the transcription log is stale for lines ..."), \
+                patch.object(carry.subjects, "of_text", return_value="a" * 64):
+            ruled, _, left = carry.plan("transcription", "x", origin="old.md", current=working_tree)
+        self.assertEqual(ruled, {})
+        self.assertEqual({w for _, w in left}, {"the log is stale; rerun first"})
+
     def test_validation_failure_is_ruled_mechanically_and_shown_when_is_not(self):
         invalid = T.canonical({"invalid_model_types": [{"line": "x.h", "message": "x.x.h: whole operand\nis not money"},
                                                        {"line": None, "message": "model contains a non-finite numeric value"}],
@@ -2334,6 +2350,18 @@ class CompletenessPages(unittest.TestCase):
         self.assertEqual(CR.cited_pages(on_form), {"f4952": {3, 4}})
         mixed = {"lines": [line("f4952", "p. 3"), line("i8960", "p. 9")]}
         self.assertEqual(CR.cited_pages(mixed), {"i8960": {9}})
+
+    def test_a_param_named_like_a_line_does_not_tie_a_refusal_to_its_readers(self):
+        import completeness_review as CR
+        shared = {"id": "z", "lines": [{"id": "z.zero", "expr": {"op": "input"}}]}
+        reader = {"id": "r", "lines": [{"id": "r.a", "expr": {"op": "copy", "from": "z.zero"}}]}
+        gated = {"id": "g", "lines": [
+            {"id": "g.gate", "expr": {"test": "gt", "args": [{"line": "g.cost"}, {"param": "z.zero"}]}},
+            {"id": "g.cost", "expr": {"op": "input"}},
+            {"id": "g.x", "expr": {"op": "input"}, "refuses": [{"when": "g.gate", "form": "Form G line 1"}]}]}
+        self.assertEqual(CR.elsewhere(reader, [shared, reader, gated]), [])
+        gated["lines"][0]["expr"]["args"][1] = {"line": "z.zero"}
+        self.assertEqual(CR.elsewhere(reader, [shared, reader, gated]), ["- g: Form G line 1"])
 
 
 class LocatorPages(unittest.TestCase):

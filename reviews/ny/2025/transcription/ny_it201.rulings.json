@@ -1959,6 +1959,22 @@
    }
   },
   {
+   "printed": "81",
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "0f2e055fc8ff49f99d066aa0e211777d0d1bcc379fcd232e49037be7f553abda",
+   "ruling": "Ruling: scope; IT-201-I p. 23, Line 81: \"In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax based on a 12-month return\" (110% above $150,000 of 2024 New York AGI) and \"You may owe a penalty: if line 80 is $300 or more and represents more than 10% of the income tax shown on your 2025 return; or if you underpaid your estimated tax liability for any payment period. For more information, see Form IT-2105.9\". Both sides enter $0 where no penalty can be owed and leave the penalty itself to Form IT-2105.9. The project refuses through ny_it201.gate.estimated_penalty (decision B6) on any balance due with prepayments below the safe harbor or no full-year 2024 return, or a late or short installment with estimated payments; the reply refuses only where line 80 also meets the $300 and 10% test or an installment was late. The project's refusal is the wider one: a return the reply would give $0 is refused, never computed differently, so no amount differs. executable-triage-v2 (`.transcription/triage/ny/2025/ny_it201.json`; 1,702 fixtures, 500 generated returns seed 20261026): 2,202 of 2,202 agree (888 in scope); no completed-return difference. The gate's rewrite into ny_it201.est_penalty_balance and ny_it201.est_penalty_late keeps both limbs and their operands; it changes only which question an unanswered limb asks. Project stands.",
+   "context": "e320c26b8caab5055d392c51dd78d880b442c6f88299e07e399686c1857bf216",
+   "date": "2026-11-09",
+   "run": "72cc328b831714aec553ec86331356fa5379499e03d5a57f7df391f848a7a724",
+   "subject_key": "7360d3642f3400cf79d72876a3fdde6602003684e4659e815d3f968c671c53ce",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "9",
    "project_expr_sha256": "565497b5900c8b493f005685463182a2b19e78697995e140cad1853fa7652691",
    "second_expr_sha256": "251574b77fcb86a4661c2f9ac3f6772308455e8a35e35eeab003cc438467d077",

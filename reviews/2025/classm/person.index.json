@@ -2,51 +2,1232 @@
  "kind": "classm",
  "form": "person",
  "family": "claude",
- "base": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+ "base": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
  "lines": [
   {
    "key": "case classm.person.1",
-   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
    "status": null
   },
   {
+   "key": "classm.person.1 — person[spouse].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[spouse].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[spouse].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[spouse].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[spouse].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[spouse].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[spouse].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.1 — person[spouse].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
    "key": "classm.person.1 — person[taxpayer].employers",
-   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
    "status": "AGREE"
   },
   {
    "key": "classm.person.1 — person[taxpayer].overcount",
-   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
    "status": "AGREE"
   },
   {
    "key": "classm.person.1 — person[taxpayer].over",
-   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
    "status": "AGREE"
   },
   {
    "key": "classm.person.1 — person[taxpayer].wages",
-   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
    "status": "AGREE"
   },
   {
    "key": "classm.person.1 — person[taxpayer].withheld",
-   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
    "status": "AGREE"
   },
   {
    "key": "classm.person.1 — person[taxpayer].eligible",
-   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
    "status": "AGREE"
   },
   {
    "key": "classm.person.1 — person[taxpayer].excess",
-   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
    "status": "AGREE"
   },
   {
    "key": "classm.person.1 — person[taxpayer].credit",
-   "record": "f0acd245c5ec56c54086751f54a6c51564279b3ae327d5454719dfb779026c85",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.2",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.2 — person[spouse].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[spouse].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[spouse].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[spouse].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.2.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($60,000.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. [dropped]"
+  },
+  {
+   "key": "classm.person.2 — person[spouse].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[spouse].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[spouse].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[spouse].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.2.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($70,000.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. [dropped]"
+  },
+  {
+   "key": "classm.person.2 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.2 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.3",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].sep_s1",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].sep_s2",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].sep_s3",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].sep_s5",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].sep_s6",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].sep_s7",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.3 — person[taxpayer].sep_s21",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.4",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.4 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.4 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.4 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.4 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.4.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($26,000.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. [dropped]"
+  },
+  {
+   "key": "classm.person.4 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.4 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.4 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.4 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.5",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.5 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.5 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.5 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.5 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.5.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($5,200.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. [dropped]"
+  },
+  {
+   "key": "classm.person.5 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.5 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.5 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.5 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.6",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.6 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.6 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.6 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.6 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.6 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.6 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.6 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.6 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.7",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.7 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.7 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.7 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.7 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.7 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.7 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.7 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.7 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.8",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.8 — person[spouse].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[spouse].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[spouse].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[spouse].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[spouse].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[spouse].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[spouse].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[spouse].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.8 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.9",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.9 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.9 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.9 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.9 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.9.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($20,000.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. [dropped]"
+  },
+  {
+   "key": "classm.person.9 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.9 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.9 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.9 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.10",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.10 — person[spouse].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[spouse].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[spouse].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[spouse].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[spouse].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[spouse].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[spouse].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[spouse].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.10 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.11",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.11 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.11 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.11 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.11 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.11 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.11 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.11 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.11 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.12",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.12 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.12 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.12 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.12 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.12.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($30,000.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. [dropped]"
+  },
+  {
+   "key": "classm.person.12 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.12 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.12 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.12 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.13",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.13 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.13 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.13 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.13 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.13.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($30,000.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. [dropped]"
+  },
+  {
+   "key": "classm.person.13 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.13 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.13 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.13 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.14",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.14 — person[spouse].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[spouse].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[spouse].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[spouse].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[spouse].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[spouse].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[spouse].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[spouse].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.14 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.15",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.15 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.15 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.15 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.15 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.15 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.15 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.15 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.15 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.16",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.16 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.16 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.16 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.16 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.16.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($35,000.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. [dropped]"
+  },
+  {
+   "key": "classm.person.16 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.16 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.16 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.16 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.17",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.17 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.17 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.17 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.17 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.17.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($47,000.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. [dropped]"
+  },
+  {
+   "key": "classm.person.17 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.17 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.17 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.17 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.18",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.18 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.18 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.18 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.18 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.18.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($48,000.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. [dropped]"
+  },
+  {
+   "key": "classm.person.18 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.18 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.18 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.18 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.19",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.19 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.19 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.19 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.19 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.19 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.19 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.19 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.19 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.20",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.20 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.20 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.20 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.20 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.20.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($62,000.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. [dropped]"
+  },
+  {
+   "key": "classm.person.20 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.20 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.20 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.20 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.person.21",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": null
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].employers",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].overcount",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].over",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].wages",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].withheld",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].eligible",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].excess",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].credit",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].sep_s1",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].sep_s2",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].sep_s3",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].sep_s5",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].sep_s6",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].sep_s7",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.person.21 — person[taxpayer].sep_s21",
+   "record": "fe4ec7ac417ba5f23289bdb4ebea2af1f8de40d8040074b470264d4ddf5d31cb",
    "status": "AGREE"
   }
  ]

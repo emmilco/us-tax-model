@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+  "agree / disagree / missing": "83 / 84 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-09); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -829,9 +830,9 @@
   },
   {
    "key": "59",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "bbcae8a5c1c4facbabfb56e07b7b6a208ddbac6d2751ec85f37ed49fcea07ced",
    "status": "AGREE",
-   "subject_key": "0850522add3385f67b3469ca86768a94d4e8012ab8fb3bbd9c0e6355c8d8f5dd"
+   "subject_key": "bec767680dee39b3c2f2dc22f788ee6deef527f670c91943f33d69b4b38fde0e"
   },
   {
    "key": "60",
@@ -1035,9 +1036,10 @@
   },
   {
    "key": "81",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
-   "status": "AGREE",
-   "subject_key": "3c96824a81960989705949b428057952fd2e7f5af327bdba2a3e2fe439d00790"
+   "record": "bbcae8a5c1c4facbabfb56e07b7b6a208ddbac6d2751ec85f37ed49fcea07ced",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; IT-201-I p. 23, Line 81: \"In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax based on a 12-month return\" (110% above $150,000 of 2024 New York AGI) and \"You may owe a penalty: if line 80 is $300 or more and represents more than 10% of the income tax shown on your 2025 return; or if you underpaid your estimated tax liability for any payment period. For more information, see Form IT-2105.9\". Both sides enter $0 where no penalty can be owed and leave the penalty itself to Form IT-2105.9. The project refuses through ny_it201.gate.estimated_penalty (decision B6) on any balance due with prepayments below the safe harbor or no full-year 2024 return, or a late or short installment with estimated payments; the reply refuses only where line 80 also meets the $300 and 10% test or an installment was late. The project's refusal is the wider one: a return the reply would give $0 is refused, never computed differently, so no amount differs. executable-triage-v2 (`.transcription/triage/ny/2025/ny_it201.json`; 1,702 fixtures, 500 generated returns seed 20261026): 2,202 of 2,202 agree (888 in scope); no completed-return difference. The gate's rewrite into ny_it201.est_penalty_balance and ny_it201.est_penalty_late keeps both limbs and their operands; it changes only which question an unanswered limb asks. Project stands.",
+   "subject_key": "934c861367233ce12fb634b5e3b555c967a00f10f9c197a6abccc43f9621ad83"
   },
   {
    "key": "82",
@@ -1220,7 +1222,7 @@
   "(chart) (ny_it201.sut.cap)": "bc3867caeff5c2ce46a56af458bf69baf597cced77741c5a77da1d6cd50bfe65",
   "(chart) (ny_it201.sut.top)": "3f337836dcc9231409008d5ffa2d8fd4efd0f392d18987ef2eb91f6b587d3fc7",
   "(chart) (ny_it201.sut.chart)": "f490093538fc554603fa13fbad139b3e32a8a2596400e226d1e3bc28d80f8fbc",
-  "59": "19025f897e86e3c72f15ed92f4ed608c2be9fe4fffc0afa4dbd9a33c62ee44cc",
+  "59": "193df1d3a43eb245378cbde9dcd2de252860e1ddbd678b3cf84db51dcc0c65a3",
   "60": "178b3aea541212cd6e1b0cd15cbe019527381140b66487bac2fd04adfdd4a50b",
   "61": "0b1b43168dba06f33619b3fe34032977426efaeca1c9b52368dfb6046db94791",
   "62": "6f15d5a82c661c9f283180e613bb2b496ada9cadd3c892cb5f65dcbf5a2ca901",
@@ -1252,7 +1254,7 @@
   "(81) (ny_it201.safe_harbor_100)": "a25a7da23d7538b98920566d546215ff1831b3bd6a6f8aca6e35bf48deb4e345",
   "(81) (ny_it201.safe_harbor_110)": "d6ded2bcec460c0b15173c6b44480c051bf8456fde88f14f465a87bcaf0b0a0e",
   "(81) (ny_it201.safe_harbor)": "ca4509b83345181872175ebfee780dd9deb2961fdebdf14cd66e9f9e9562be82",
-  "81": "c90b9a73fe012dd1f0ac3cb5d1d29c0bafb7a33f6c6c1d04fa995e7a19b58d39",
+  "81": "c3f27a0aa29fa51ebdca02373ce9c26da2735dd784f9d7338c16ac97443b16b4",
   "82": "92127e1f501aba9e24c5a5d194b0fc49526947578561e9c63c364b1847e69e47",
   "(77)": "4375e1f0e0866c428c3d6d860b0d2ffb70bb1e712f017ae7680d9e995df42049",
   "77": "29fd7542de31bcd9346db1baf2ae8a85089faa1b107e02260b5e7fbe5a35dcea",

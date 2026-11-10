@@ -845,61 +845,6 @@
    "bugs": [],
    "adjudication": "reviews/2025/screens/adjudication/group3.md"
   },
-  "unruled:dependent.divorced_rule": {
-   "reason": "No defect: every finding is a filer answering Yes where the special rule does not apply, which refuses a return the tool would compute correctly (accepted WIDE). The question was reworded for T-110 only (the revocation timing), which the review did not dispute.",
-   "prompt_sha": "9adf644187e8637e84cafbea541d7886c7a01ffbff9d81e24b51dcf0a3aa3ac6",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi p. 20, \"If the divorce decree or separation agreement went into effect after 2008, the noncustodial parent can't include pages from the decree or agreement instead of Form 8332.\" A custodial parent with only a post-2008 decree answers Yes and is refused; safe. Executed: f1.kidnapped.returned_11's return with the kidnapped answer No and 12 months: divorced_rule Yes refuses f1040.line16 and line19 at dependent[child].divorced_rule; No computes line 16 $638 and line 19 $638. The EIC is unaffected, as a release does not move the EIC."
-    },
-    {
-     "n": 1,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi p. 20, a pre-1985 decree applies only if \"the noncustodial parent provides at least $600 for support of the child during 2025\". A Yes without that support is refused; safe. Executed: f1.kidnapped.returned_11's return with the kidnapped answer No and 12 months: divorced_rule Yes refuses f1040.line16 and line19 at dependent[child].divorced_rule; No computes line 16 $638 and line 19 $638. The EIC is unaffected, as a release does not move the EIC."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "p501 p. 22, \"The release can be for 1 year, for a number of specified years (for example, alternate years)\". A filer whose release does not cover 2025 and answers Yes is refused; a No is the correct answer and computes. Errs only toward Yes."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi p. 20, \"A child will be treated as the qualifying child or qualifying relative of the child's noncustodial parent (defined later) if all of the following conditions apply.\" A divorced custodial parent with no release or decree who reads the rule as applying answers Yes and is refused; safe."
-    }
-   ]
-  },
-  "unruled:dependent.married": {
-   "reason": "No defect: findings 0 and 1 are the WIDE findings accepted in rounds 1 and 4; the new UNCLEAR (a joint return not yet decided) repeats the source's own present tense, which the computing sibling dependent.joint_return asks identically, and no rewording can supply knowledge the filer lacks.",
-   "prompt_sha": "53ffe965f12475e84ec4c3d10e3405d8ae5346695a8ed40b1138bb6194612d84",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi p. 21, Married person: a married person who files no joint return, or one only for a refund, may still be claimed. The screen refuses dependent.qualifying_child and dependent.qualifying_relative though the Step 1 and Step 4 tests compute; the refusal is still needed on dependent.eic_child (i1040gi p. 44, Married child). Eval (stage8.hoh.child.ctc filed single): married Yes refuses lines 19 and 24 at dependent[child].married; No gives line 19 $2,200, line 24 $15,642. Safe; as group 0 and group 4 finding 0."
-    },
-    {
-     "n": 1,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi p. 17, Step 1, 'or is filing a joint return for 2025 only to claim a refund'; p. 44, 'A child who was married at the end of 2025'. A person widowed in 2025 on a refund-only joint return answers Yes and is refused though dependent.joint_return carves the refund-only return out. Safe; as group 0 and group 4 finding 1."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "i1040gi p. 17, 'Who isn't filing a joint return for 2025'. The question's 'is a joint return being filed' follows the source's present tense. The doubtful case needs a person not married at the end of 2025 (else the first clause answers Yes), that is one widowed in 2025, and a filer who does not know whether that person's joint return will be filed or later amended; dependent.joint_return asks the same clause and computes, so the screen adds nothing a rewording could fix, and a later joint return disallows the claim by amendment, as under the source. No EIC exposure: the Married child rule (p. 44) reaches only a person married at year end, whom the first clause catches."
-    }
-   ],
-   "bugs": []
-  },
   "unruled:f5695.joint_occupancy": {
    "prompt_sha": "1d0d8eed6b67b1b0e7771fc9c589472fe7c8c544d0eb611e70a5edf367d341d4",
    "reason": "No defect. PENDING-4-2 closed by credits-misc PENDING-1 (any home with Part II costs), a widening. WIDE accepted; the 'jointly' UNCLEAR is answered by the question's own 'whether you paid for the same items or for different ones'.",
@@ -1417,10 +1362,6 @@
    "bugs": [],
    "adjudication": "reviews/2025/screens/adjudication/r2.md"
   },
-  "unruled:sa.dependent": {
-   "prompt_sha": "ed663816b735dbfc49af3fa0ce3e076713185f92fdb0104a368707b0d0425394",
-   "reason": "No defect: the parenthetical is the Form 1040 dependent-question carve-out, not an EIC import. i1040gi pp. 18–19, Step 4/5: \"If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check ‘No.’\" The reviewer's pages (34–35, 41–42) do not include pp. 18–19. The line 12a checkbox and the Standard Deduction Worksheet for Dependents use that answer, so a filer in the carve-out is not claimable for this purpose and the full standard deduction is right."
-  },
   "unruled:s8812.puerto_rico": {
    "prompt_sha": "e3cd2a7f646dd06124ee476f6c2637c2dd451f9b67369ba6d8eb45fc236a419d",
    "reason": "WIDE only; each finding refuses a Puerto Rico resident whose line 27 or line 11 the non-Puerto Rico computation already gets right.",
@@ -1521,6 +1462,51 @@
      "evidence": "i8889 p. 2, Last-month rule, 'the 1st day of the last month of the tax year (December 1, for most individuals)'. A fiscal-year filer's last month is not December, but the tool prepares calendar-year returns throughout (every form's dates assume it); the gate grids carry a fiscal-year refusing row. The decedent clause added here is the owner's decision for a person who died in 2025 (BUG-0452)."
     }
    ]
+  },
+  "unruled:dependent.divorced_rule": {
+   "reason": "No defect: the one UNCLEAR is a filer holding a release whose other conditions fail answering Yes, which refuses a return the tool computes correctly on No (accepted WIDE). No answer turns a refusal into a wrong amount.",
+   "prompt_sha": "4acbaa9c29ba908884dcc4226a233bded660ae166e872221b2a846fa77a4b90d",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "accepted WIDE",
+     "evidence": "i1040gi p. 20, Children of divorced or separated parents: \"A child will be treated as the qualifying child or qualifying relative of the child's noncustodial parent (defined later) if all of the following conditions apply.\" When the support or custody condition fails the rule does not apply, so No is the source's answer, and No computes the ordinary tests; a filer who reads the release alone as making the rule apply answers Yes and is refused. Errs only toward Yes. Executed (f1.kidnapped.returned_11's return, kidnapped No): with 3 months in the filer's home and filing status single, divorced_rule Yes refuses lines 16, 19 and 27a at dependent[child].divorced_rule; No gives dependent[child].qualifying_child false, line 19 $0 (no qualifying child, as Step 1 residency fails). With 12 months: Yes refuses, No gives line 16 $638, line 19 $638. As the prior ruling's finding 3."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:dependent.married": {
+   "reason": "No defect: both WIDE findings repeat the WIDE findings accepted in groups 0 and 4 and the prior round (the screen refuses married persons whose qualifying child or relative lines would compute; the refusal is needed for dependent.eic_child, i1040gi p. 44, Married child).",
+   "prompt_sha": "c12ddc1cc873af958c4726d8d21b5a280f2c80757c6c974a651b229b626f00ae",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i1040gi p. 21, Married person: a married person who files no joint return, or one only for a refund, may still be claimed. The screen refuses dependent.qualifying_child and dependent.qualifying_relative though the Step 1 and Step 4 tests compute; the refusal is still needed on dependent.eic_child (i1040gi p. 44, Married child). Executed (stage8.hoh.child.ctc filed single): married Yes refuses lines 19 and 24 at dependent[child].married; No gives line 19 $2,200, line 24 $15,642. Safe; as group 0 and group 4 finding 0."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i1040gi p. 17, Step 1, 'or is filing a joint return for 2025 only to claim a refund'. A person on a refund-only joint return answers Yes and is refused though dependent.joint_return carves the refund-only return out. Safe; as group 0 and group 4 finding 1."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:sa.dependent": {
+   "reason": "No defect: EIC Step 4 question 5 is asked separately by eic.qc_of_another, which eic.step4_dependent requires to be No, so a filer who is only a qualifying child of another person does not get the credit.",
+   "prompt_sha": "8d9bc6f8344314388e3d9d1ae2900589ad96d7fa62cb54cc5afc80ebead9cb63",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "i1040gi p. 42, Step 4, question 5: \"Could you be a qualifying child of another person for 2025? ... Yes. STOP You can't take the credit.\" forms/2025/eic.yaml: eic.qc_of_another asks 'Could you be a qualifying child of another person for 2025?' (cite p. 41, Step 3, question 6, and p. 42, Step 4, question 5), and eic.step4_dependent is true only when filing jointly or when both eic.qc_of_another and sa.dependent are No. This screen carries question 6 only, as its refusal citation says; the reviewer saw the screen, not the sibling input."
+    }
+   ],
+   "bugs": []
   }
  },
  "baseline": {

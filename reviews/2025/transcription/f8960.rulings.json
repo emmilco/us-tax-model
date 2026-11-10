@@ -76,6 +76,45 @@
   },
   {
    "printed": "9b",
+   "project_expr_sha256": "b918159a01d00fd1f0086d041849899f7e131810cd11003f48df0106e6750ac5",
+   "second_expr_sha256": "674b0f752dc0303ea0b86dc0d77aee6be692a00192eaacbbf5131ae8c9472b47",
+   "ruling": "Ruling: model error (+ scope); i8960 p. 16, Part II, the deductions that may be allocated to NII include \"Certain taxes under section 164(a) reported as itemized deductions, if properly deducted on your return when calculating your U.S. regular income tax\"; pp. 17–18, Line 9b—State, Local, and Foreign Income Tax: \"You can determine the portion ... allocable to NII using any reasonable method.\" The candidate copies f8960.allocated_taxes on every return; the project enters it only when the filer itemizes (sa.itemizes) and $0 otherwise, and refuses through f8960.bad_allocation when the claimed allocation exceeds Schedule A line 5e. executable-triage-v2 (`.transcription/triage/2025/f8960.json`, pass 8768ac16f4ce, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 111 partial records from 40 bases; 2,313 comparisons; completed witnesses listed in full by a scratch rerun): 1,571 of 2,313 agree; 583 project-refuses, 129 candidate-unknown, 30 project-unknown; on completed returns 84 candidate-unknown, all non-itemizers where the project shows $0.00 without reading the allocation (e.g. classm.f2441.1: sa.itemizes No; the interview does not ask f8960.allocated_taxes there): the candidate needs an answer the source does not need, since a non-itemizer has no such deduction (model error). The 1 completed project-refuses is stage5.return.itemized_f8960_allocation_unused (allocation $999,999.99 against Schedule A line 5e $10,000.00; f8960.bad_allocation, cited i8960 pp. 17–18), a validity screen on a return that does not file Form 8960 (line 17 $0.00, Form 1040 line 24 $10,657.00 in both trees): scope. The other project-refuses are refusals reaching the line from other forms on refused returns. Gate wave (BUG-0471): f8960.bad_allocation is a choose on sa.itemizes then f8960.allocation_over_5e, the HEAD `all`'s truth table; line 9b is the same in HEAD and the working tree on every completed fixture and generated return; it differs only on classm.asset.3 (refused in both trees), where the line refuses at oi8z[item_a].figured in HEAD and is unknown in the working tree, the incomplete-state difference BUG-0471 records. Project stands.",
+   "context": "6758884b3ec88f9c36b774b76944537ebfd51b0b4fdbb60359d90fa042c050cd",
+   "date": "2026-11-09",
+   "run": "449a1c3275154409a3270274f09141fa6bf49538e4b11c1a3a766623ed84dee9",
+   "subject_key": "463934368b5c5ffd637de6e6da933f24a8dbc1e1a42a8096dd9c7757accd94ef",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8960",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8960",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8960",
+     "fixture:stage14.asset.refuse_class@f8960",
+     "fixture:stage14.asset.refuse_listed_low@f8960",
+     "fixture:stage14.asset.refuse_s179_over@f8960",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8960",
+     "fixture:classm.f2441.1.deepseek@f8960",
+     "fixture:classm.f2441.2.deepseek@f8960",
+     "fixture:classm.f2441.3.deepseek@f8960",
+     "fixture:classm.f2441.4.deepseek@f8960",
+     "fixture:classm.f2441.5.deepseek@f8960",
+     "fixture:classm.f2441.6.deepseek@f8960",
+     "fixture:classm.carloan.3@f8960",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8960",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@f8960",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@f8960",
+     "fixture:stage10.ira.roth_code_unanswered@f8960"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9b",
    "project_expr_sha256": "cca3db07fd082146f8146f4239267974084c7e01e66c94654f1d970ccb9e4c0c",
    "second_expr_sha256": "4eef26bb2c8e86b27df80778e784c624fb0ae7c7ff863a266141295b3788bcf8",
    "ruling": "Ruling: equivalent representation; project retained. Both read line 9b as the state, local and foreign income tax allocable to net investment income, allowed only when itemizing. The second transcription caps the allocation at Schedule A line 5e; the project takes the supplied allocation and refuses the return through `f8960.bad_allocation` when the claimed allocation exceeds the Schedule A deduction, so within the non-refused scope the values agree. No change to the data.",

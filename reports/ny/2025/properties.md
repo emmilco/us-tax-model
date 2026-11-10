@@ -9,11 +9,11 @@ The refusal properties of spec 6.3 checked over 400 generated returns with New Y
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 377; cases with a line that has both a refused and an unknown operand (the order this property guards): 265; cases with a choose stopped at an unknown guard: 391, of which 18 have one refused on every way it can still resolve.
+- Cases with a refused operand somewhere: 377; cases with a line that has both a refused and an unknown operand (the order this property guards): 269; cases with a choose stopped at an unknown guard: 393, of which 20 have one refused on every way it can still resolve.
 
 ## Branch coverage of the generated corpus
 
-287 of 310 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+303 of 326 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - ny_it201.no:true
 - ny_it201.gate.line26:true

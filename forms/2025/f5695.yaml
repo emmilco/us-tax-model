@@ -332,21 +332,49 @@ form:
     cite:
       doc: f5695
       locator: Form 5695 (2025), line 13
+  - id: f5695.no
+    printed: (helper)
+    label: Year parameter household.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: i1040s8812
+      locator: p. 4, Credit Limit Worksheet A, "You are claiming one or more of the following credits", "Residential clean energy
+        credit, Form 5695, Part I"
+  - id: f5695.line13_positive
+    printed: (helper)
+    label: Line 13 is more than zero
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f5695.line13
+      - param: sales.zero
+    cite:
+      doc: i1040s8812
+      locator: p. 4, Credit Limit Worksheet A, "You are claiming one or more of the following credits", "Residential clean energy
+        credit, Form 5695, Part I"
   - id: f5695.claiming_part1
     printed: (helper)
     label: Claiming the residential clean energy credit (Part I is completed and line 13 is more than zero)
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - f5695.part1_any
-        - const: true
-      - op: test
-        gt:
-        - f5695.line13
-        - param: sales.zero
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.part1_any
+          - const: true
+        then: f5695.line13_positive
+      - guard:
+          op: test
+          eq:
+          - f5695.part1_any
+          - const: false
+        then: f5695.no
     cite:
       doc: i1040s8812
       locator: p. 4, Credit Limit Worksheet A, "You are claiming one or more of the following credits", "Residential clean
@@ -1346,21 +1374,51 @@ form:
       doc: i5695
       locator: p. 3, Section B—Residential Energy Property Expenditures, "For qualified energy property installed in 2025, a
         valid QMID must be reported on the applicable line(s)"
+  - id: f5695.wh_costs
+    printed: (helper)
+    label: Water heater costs entered
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f5695.line23c
+      - param: sales.zero
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
+  - id: f5695.wh_qmid_missing
+    printed: (helper)
+    label: No valid QMID for each water heater item
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f5695.qmid_wh
+      - const: false
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
   - id: f5695.wh_no_qmid
     printed: (helper)
     label: Water heater costs entered without a valid QMID for each item
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        gt:
-        - f5695.line23c
-        - param: sales.zero
-      - op: test
-        eq:
-        - f5695.qmid_wh
-        - const: false
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.wh_costs
+          - const: true
+        then: f5695.wh_qmid_missing
+      - guard:
+          op: test
+          eq:
+          - f5695.wh_costs
+          - const: false
+        then: f5695.no
     cite:
       doc: i5695
       locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
@@ -1471,21 +1529,51 @@ form:
       doc: i5695
       locator: p. 3, Section B—Residential Energy Property Expenditures, "For qualified energy property installed in 2025, a
         valid QMID must be reported on the applicable line(s)"
+  - id: f5695.furnace_costs
+    printed: (helper)
+    label: Furnace and hot water boiler costs entered
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f5695.line24c
+      - param: sales.zero
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
+  - id: f5695.furnace_qmid_missing
+    printed: (helper)
+    label: No valid QMID for each furnace and hot water boiler item
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f5695.qmid_furnace
+      - const: false
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
   - id: f5695.furnace_no_qmid
     printed: (helper)
     label: Furnace and hot water boiler costs entered without a valid QMID for each item
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        gt:
-        - f5695.line24c
-        - param: sales.zero
-      - op: test
-        eq:
-        - f5695.qmid_furnace
-        - const: false
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.furnace_costs
+          - const: true
+        then: f5695.furnace_qmid_missing
+      - guard:
+          op: test
+          eq:
+          - f5695.furnace_costs
+          - const: false
+        then: f5695.no
     cite:
       doc: i5695
       locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
@@ -1929,21 +2017,51 @@ form:
       doc: i5695
       locator: p. 3, Section B—Residential Energy Property Expenditures, "For qualified energy property installed in 2025, a
         valid QMID must be reported on the applicable line(s)"
+  - id: f5695.hp_costs
+    printed: (helper)
+    label: Heat pump, heat pump water heater or biomass costs entered
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f5695.line29g
+      - param: sales.zero
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
+  - id: f5695.hp_qmid_missing
+    printed: (helper)
+    label: No valid QMID for each heat pump, heat pump water heater or biomass item
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f5695.qmid_hp
+      - const: false
+    cite:
+      doc: i5695
+      locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
+        credit for specified property, you must provide a valid QMID for each item"
   - id: f5695.hp_no_qmid
     printed: (helper)
     label: Heat pump, heat pump water heater or biomass costs entered without a valid QMID for each item
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        gt:
-        - f5695.line29g
-        - param: sales.zero
-      - op: test
-        eq:
-        - f5695.qmid_hp
-        - const: false
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.hp_costs
+          - const: true
+        then: f5695.hp_qmid_missing
+      - guard:
+          op: test
+          eq:
+          - f5695.hp_costs
+          - const: false
+        then: f5695.no
     cite:
       doc: i5695
       locator: p. 5, Part II Energy Efficient Home Improvement Credit, "To qualify for the energy efficient home improvement
@@ -2227,16 +2345,20 @@ form:
       improvements or residential energy property expenditures, check here
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - f5695.part2_any
-        - const: true
-      - op: test
-        eq:
-        - f5695.condo
-        - const: true
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.part2_any
+          - const: true
+        then: f5695.condo
+      - guard:
+          op: test
+          eq:
+          - f5695.part2_any
+          - const: false
+        then: f5695.no
     cite:
       doc: i5695
       locator: p. 7, Lines 32a and 32b, "must check the box on line 32b"

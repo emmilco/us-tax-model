@@ -139,16 +139,20 @@ form:
       type: Bool
       label: Married filing separately and claiming age or blindness boxes for your spouse
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - f1040.status
-          - const: mfs
-        - op: test
-          eq:
-          - sa.spouse_extra
-          - const: true
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - sa.mfs
+            - const: true
+          then: sa.spouse_extra
+        - guard:
+            op: test
+            eq:
+            - sa.mfs
+            - const: false
+          then: sa.no
       cite:
         doc: i1040gi
         locator: p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before
@@ -1076,15 +1080,9 @@ form:
         field: person.one
         where:
           op: test
-          all:
-          - op: test
-            eq:
-            - person.age65
-            - const: true
-          - op: test
-            eq:
-            - person.died_before_65
-            - const: false
+          eq:
+          - person.age65_box
+          - const: true
       cite:
         doc: i1040gi
         locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
@@ -1246,16 +1244,20 @@ form:
       type: Bool
       label: MFS with spouse itemizing
       expr:
-        op: test
-        all:
-          - op: test
-            eq:
-              - sa.mfs
-              - const: true
-          - op: test
-            eq:
-              - sa.spouse_itemizes
-              - const: true
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.mfs
+                - const: true
+            then: sa.spouse_itemizes
+          - guard:
+              op: test
+              eq:
+                - sa.mfs
+                - const: false
+            then: sa.no
       cite:
         doc: i1040gi
         locator: p. 34, Line 12e, Exception 2

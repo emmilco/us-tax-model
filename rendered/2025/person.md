@@ -104,6 +104,34 @@
 - Expr: `{"op":"input","source":"Were you born after December 31, 1960?"}`
 - Cite: [i1040gi] p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `person.age65_box`
+
+- **Authored helper label:** Born before January 2, 1961, and not a person who died in 2025 before reaching 65 (a box checked for age)
+- **Encoded (Bool):** Choose — [helper "Were you born before January 2, 1961?" = true → helper "Not a person who died in 2025 before reaching 65"] [helper "Were you born before January 2, 1961?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.age65",{"const":true}],"op":"test"},"then":"person.not_died_before_65"},{"guard":{"eq":["person.age65",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.not_died_before_65`
+
+- **Authored helper label:** Not a person who died in 2025 before reaching 65
+- **Encoded (Bool):** helper "Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?" = false
+- Expr: `{"eq":["person.died_before_65",{"const":false}],"op":"test"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.tin_or_itin_applied`
+
+- **Authored helper label:** An SSN or ITIN, or applied for an ITIN
+- **Encoded (Bool):** Choose — [helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = true → helper "Do you have an SSN or ITIN issued on or before the due date of your return?"] [helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = false → helper "If not, have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your return?"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.tin",{"const":true}],"op":"test"},"then":"person.tin"},{"guard":{"eq":["person.tin",{"const":false}],"op":"test"},"then":"person.itin_applied"}],"op":"choose"}`
+- Cite: [i1040gi] p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN"; p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.work_ssn_or_tin`
+
+- **Authored helper label:** An SSN valid for employment, or an SSN or ITIN
+- **Encoded (Bool):** Choose — [helper "Do you have an SSN valid for employment issued before the due date of your return?" = true → helper "Do you have an SSN valid for employment issued before the due date of your return?"] [helper "Do you have an SSN valid for employment issued before the due date of your return?" = false → helper "Do you have an SSN or ITIN issued on or before the due date of your return?"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.work_ssn",{"const":true}],"op":"test"},"then":"person.work_ssn"},{"guard":{"eq":["person.work_ssn",{"const":false}],"op":"test"},"then":"person.tin"}],"op":"choose"}`
+- Cite: [i1040gi] p. 17, Before you begin, "The other spouse must have either an SSN or ITIN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `person.died_before_65`
 
 - **Authored helper label:** Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before reaching age 65?
@@ -1067,11 +1095,25 @@
 - Expr: `{"op":"input","source":"Is the total of your elective deferrals and designated Roth contributions for 2025 (Form W-2 box 12, from all your employers) more than the limit that applies to you (for a 401(k) plan, $23,500 plus any catch-up contributions your plan allows), so that you have excess deferrals?"}`
 - Cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D" (2025; printed date 2025-02-19; sha256 bfecbc99)
 
+## (helper) — `person.no`
+
+- **Authored helper label:** Year parameter household.no (false)
+- **Encoded (Bool):** Enter false (household.no).
+- Expr: `{"op":"param","ref":"household.no"}`
+- Cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D" (2025; printed date 2025-02-19; sha256 bfecbc99)
+
+## (helper) — `person.sav_has_w2`
+
+- **Authored helper label:** Elective deferrals or designated Roth contributions in this person's Forms W-2, box 12
+- **Encoded (Bool):** helper "Elective deferrals and designated Roth contributions for 2025 from this person's Forms W-2, box 12" > $0 (sales.zero)
+- Expr: `{"gt":["person.sav_w2",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D" (2025; printed date 2025-02-19; sha256 bfecbc99)
+
 ## (gate) — `person.sav_excess_gate`
 
 - **Authored helper label:** Elective deferrals in box 12 over the limit for 2025
-- **Encoded (Bool):** helper "Elective deferrals and designated Roth contributions for 2025 from this person's Forms W-2, box 12" > $0 (sales.zero) and helper "Were your elective deferrals and designated Roth contributions for 2025 more than the limit for your plans?" = true
-- Expr: `{"all":[{"gt":["person.sav_w2",{"param":"sales.zero"}],"op":"test"},{"eq":["person.sav_excess",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Elective deferrals or designated Roth contributions in this person's Forms W-2, box 12" = true → helper "Were your elective deferrals and designated Roth contributions for 2025 more than the limit for your plans?"] [helper "Elective deferrals or designated Roth contributions in this person's Forms W-2, box 12" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.sav_has_w2",{"const":true}],"op":"test"},"then":"person.sav_excess"},{"guard":{"eq":["person.sav_has_w2",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D" (2025; printed date 2025-02-19; sha256 bfecbc99)
 
 ## (helper) — `person.sav_voluntary`
@@ -1193,8 +1235,8 @@
 ## (gate) — `person.ira_excess_gate`
 
 - **Authored helper label:** This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remained at the end of 2025 (screen)
-- **Encoded (Bool):** helper "This person made traditional or Roth IRA contributions for 2025" = true and helper "Were your 2025 IRA contributions more than allowed, recharacterized, or did an earlier excess contribution remain in your traditional or Roth IRA at the end of 2025?" = true
-- Expr: `{"all":[{"eq":["person.ira_any_contrib",{"const":true}],"op":"test"},{"eq":["person.ira_excess",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "This person made traditional or Roth IRA contributions for 2025" = true → helper "Were your 2025 IRA contributions more than allowed, recharacterized, or did an earlier excess contribution remain in your traditional or Roth IRA at the end of 2025?"] [helper "This person made traditional or Roth IRA contributions for 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.ira_any_contrib",{"const":true}],"op":"test"},"then":"person.ira_excess"},{"guard":{"eq":["person.ira_any_contrib",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [p590a] p. 35, Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you are subject to a 6% tax" (2025; sha256 ca0e4287)
 
 ## (helper) — `person.ira_age50`
@@ -1535,11 +1577,18 @@
 - Expr: `{"op":"input","source":"In 2025, did you take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth IRA conversion? Do not count rollovers, qualified charitable distributions, a one-time distribution to fund an HSA, recharacterizations, or returns of contributions made by the due date of the return."}`
 - Cite: [f8606] Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" and "For this purpose, “distributions” does not include rollovers" (2025; sha256 748a2bf2)
 
+## (helper) — `person.ira_dist_if_files`
+
+- **Authored helper label:** This person files Form 8606 for nondeductible contributions for 2025 and took a 2025 traditional IRA distribution or Roth conversion
+- **Encoded (Bool):** Choose — [helper "This person files Form 8606 for nondeductible contributions to a traditional IRA for 2025" = true → helper "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?"] [helper "This person files Form 8606 for nondeductible contributions to a traditional IRA for 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.ira_files_8606",{"const":true}],"op":"test"},"then":"person.ira_dist"},{"guard":{"eq":["person.ira_files_8606",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [f8606] Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" and "Go to line 4" (2025; sha256 748a2bf2)
+
 ## (gate) — `person.ira_dist_gate`
 
 - **Authored helper label:** Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conversion
-- **Encoded (Bool):** helper "This person made traditional IRA contributions for 2025" = true and helper "This person files Form 8606 for nondeductible contributions to a traditional IRA for 2025" = true and helper "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" = true
-- Expr: `{"all":[{"eq":["person.ira_has",{"const":true}],"op":"test"},{"eq":["person.ira_files_8606",{"const":true}],"op":"test"},{"eq":["person.ira_dist",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "This person made traditional IRA contributions for 2025" = true → helper "This person files Form 8606 for nondeductible contributions for 2025 and took a 2025 traditional IRA distribution or Roth conversion"] [helper "This person made traditional IRA contributions for 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.ira_has",{"const":true}],"op":"test"},"then":"person.ira_dist_if_files"},{"guard":{"eq":["person.ira_has",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [f8606] Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" and "Go to line 4" (2025; sha256 748a2bf2)
 
 ## (helper) — `person.ira_8606_line14`
@@ -1714,11 +1763,25 @@
 - Expr: `{"op":"input","source":"Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course materials required to be paid to the institution)?"}`
 - Cite: [i8863] p. 4, Tax-free educational assistance, "For tax-free educational assistance received in 2025, reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period." (2025; sha256 195cfd5e)
 
+## (helper) — `person.edu_has_adj`
+
+- **Authored helper label:** Adjusted qualified education expenses (worksheet line 3) above zero
+- **Encoded (Bool):** helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c" > $0
+- Expr: `{"gt":["person.edu_adj",{"const":0}],"op":"test"}`
+- Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
+
+## (helper) — `person.edu_over_if_adj`
+
+- **Authored helper label:** Adjustments that exceed one academic period's expenses, where adjusted qualified education expenses are above zero
+- **Encoded (Bool):** Choose — [helper "Adjusted qualified education expenses (worksheet line 3) above zero" = true → helper "An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution"] [helper "Adjusted qualified education expenses (worksheet line 3) above zero" = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_has_adj",{"const":true}],"op":"test"},"then":"person.edu_over"},{"guard":{"eq":["person.edu_has_adj",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
+- Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
+
 ## (gate) — `person.edu_over_refused`
 
 - **Authored helper label:** Adjustments that exceed one academic period's expenses
-- **Encoded (Bool):** helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)" = true and helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c" > $0 and helper "An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution" = true
-- Expr: `{"all":[{"eq":["person.edu_student",{"const":true}],"op":"test"},{"gt":["person.edu_adj",{"const":0}],"op":"test"},{"eq":["person.edu_over",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)" = true → helper "Adjustments that exceed one academic period's expenses, where adjusted qualified education expenses are above zero"] [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)" = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_student",{"const":true}],"op":"test"},"then":"person.edu_over_if_adj"},{"guard":{"eq":["person.edu_student",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
 - Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
 
 ## 23 — `person.edu_line23`
@@ -1929,12 +1992,54 @@
 - Expr: `{"op":"input","source":"Was at least one of your parents alive at the end of 2025?"}`
 - Cite: [i8863] p. 7, Line 7, "2. At least one of your parents was alive at the end of 2025." (2025; sha256 195cfd5e)
 
+## (helper) — `person.edu_kid_age`
+
+- **Authored helper label:** Line 7 conditions 1 and 2 for you (under 18 and a parent alive, or the tests for 18 to 23)
+- **Encoded (Bool):** Choose — [helper "Were you born before January 2, 2008?" = true → helper "Line 7 conditions 1b, 1c and 2 for you, born before January 2, 2008 (age 18 with earned income less than half of your support and a parent alive, or the tests for 19 to 23)"] [helper "Were you born before January 2, 2008?" = false → helper "At least one of your parents was alive at the end of 2025"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.sav_born",{"const":true}],"op":"test"},"then":"person.edu_kid_18"},{"guard":{"eq":["person.sav_born",{"const":false}],"op":"test"},"then":"person.edu_parent"}],"op":"choose"}`
+- Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
+
+## (helper) — `person.edu_kid_18`
+
+- **Authored helper label:** Line 7 conditions 1b, 1c and 2 for you, born before January 2, 2008 (age 18 with earned income less than half of your support and a parent alive, or the tests for 19 to 23)
+- **Encoded (Bool):** Choose — [helper "Were you born before January 2, 2007?" = true → helper "Line 7 conditions 1c and 2 for you, born before January 2, 2007 (born after January 1, 2002, first)"] [helper "Were you born before January 2, 2007?" = false → helper "Line 7 conditions 1b and 2 for you, age 18: earned income less than half of your support and a parent alive"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_born_2007",{"const":true}],"op":"test"},"then":"person.edu_kid_student_age"},{"guard":{"eq":["person.edu_born_2007",{"const":false}],"op":"test"},"then":"person.edu_kid_18_support"}],"op":"choose"}`
+- Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
+
+## (helper) — `person.edu_kid_18_support`
+
+- **Authored helper label:** Line 7 conditions 1b and 2 for you, age 18: earned income less than half of your support and a parent alive
+- **Encoded (Bool):** Choose — [helper "Your earned income was less than one-half of your support for 2025" = true → helper "At least one of your parents was alive at the end of 2025"] [helper "Your earned income was less than one-half of your support for 2025" = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_half_support",{"const":true}],"op":"test"},"then":"person.edu_parent"},{"guard":{"eq":["person.edu_half_support",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
+- Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
+
+## (helper) — `person.edu_kid_student_age`
+
+- **Authored helper label:** Line 7 conditions 1c and 2 for you, born before January 2, 2007 (born after January 1, 2002, first)
+- **Encoded (Bool):** Choose — [helper "Were you born before January 2, 2002?" = true → helper "Year parameter edu.no (false)"] [helper "Were you born before January 2, 2002?" = false → helper "Line 7 conditions 1c and 2 for you, born after January 1, 2002, and before January 2, 2007 (earned income less than half of your support first)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_born_2002",{"const":true}],"op":"test"},"then":"person.edu_no"},{"guard":{"eq":["person.edu_born_2002",{"const":false}],"op":"test"},"then":"person.edu_kid_support"}],"op":"choose"}`
+- Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
+
+## (helper) — `person.edu_kid_support`
+
+- **Authored helper label:** Line 7 conditions 1c and 2 for you, born after January 1, 2002, and before January 2, 2007 (earned income less than half of your support first)
+- **Encoded (Bool):** Choose — [helper "Your earned income was less than one-half of your support for 2025" = true → helper "Line 7 conditions 1c and 2 for you, born after January 1, 2002, and before January 2, 2007, with earned income less than half of your support: a full-time student and a parent alive"] [helper "Your earned income was less than one-half of your support for 2025" = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_half_support",{"const":true}],"op":"test"},"then":"person.edu_kid_fulltime"},{"guard":{"eq":["person.edu_half_support",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
+- Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
+
+## (helper) — `person.edu_kid_fulltime`
+
+- **Authored helper label:** Line 7 conditions 1c and 2 for you, born after January 1, 2002, and before January 2, 2007, with earned income less than half of your support: a full-time student and a parent alive
+- **Encoded (Bool):** Choose — [helper "A full-time student for 2025 (any part of 5 calendar months at an eligible educational institution)" = true → helper "At least one of your parents was alive at the end of 2025"] [helper "A full-time student for 2025 (any part of 5 calendar months at an eligible educational institution)" = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.edu_fulltime",{"const":true}],"op":"test"},"then":"person.edu_parent"},{"guard":{"eq":["person.edu_fulltime",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
+- Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
+
 ## (helper) — `person.edu_kid`
 
 - **Authored helper label:** Line 7 conditions 1 and 2 for you: under 18; or 18 with earned income less than half of your support; or over 18 and under 24, a full-time student, with earned income less than half of your support; and a parent alive
-- **Encoded (Bool):** f8863 helper "Line 7 is above zero on a return that is not joint (the line 7 conditions are asked)" = true and (helper "Were you born before January 2, 2008?" = false or helper "Were you born before January 2, 2007?" = false and helper "Your earned income was less than one-half of your support for 2025" = true or helper "Were you born before January 2, 2002?" = false and helper "A full-time student for 2025 (any part of 5 calendar months at an eligible educational institution)" = true and helper "Your earned income was less than one-half of your support for 2025" = true) and helper "At least one of your parents was alive at the end of 2025" = true
+- **Encoded (Bool):** Choose — [f8863 helper "Line 7 is above zero on a return that is not joint (the line 7 conditions are asked)" = true → helper "Line 7 conditions 1 and 2 for you (under 18 and a parent alive, or the tests for 18 to 23)"] [f8863 helper "Line 7 is above zero on a return that is not joint (the line 7 conditions are asked)" = false → helper "Year parameter edu.no (false)"]
 - Interpretation: amb.2025.edu_age_rule
-- Expr: `{"all":[{"eq":["f8863.kid_needed",{"const":true}],"op":"test"},{"any":[{"eq":["person.sav_born",{"const":false}],"op":"test"},{"all":[{"eq":["person.edu_born_2007",{"const":false}],"op":"test"},{"eq":["person.edu_half_support",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["person.edu_born_2002",{"const":false}],"op":"test"},{"eq":["person.edu_fulltime",{"const":true}],"op":"test"},{"eq":["person.edu_half_support",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"},{"eq":["person.edu_parent",{"const":true}],"op":"test"}],"op":"test"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["f8863.kid_needed",{"const":true}],"op":"test"},"then":"person.edu_kid_age"},{"guard":{"eq":["f8863.kid_needed",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
 - Cite: [i8863] p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below apply to you." (2025; sha256 195cfd5e)
 
 ## (helper) — `person.x_l1`

@@ -3,6 +3,9 @@
  "form": "f2441",
  "family": "claude",
  "base": "e1801a2b8baccd604e79f756165fa89a89a603c80cd7723ff8c70e8f1f021147",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "f2441.zero",
@@ -25,10 +28,10 @@
   },
   {
    "key": "1 (box)",
-   "record": "e1801a2b8baccd604e79f756165fa89a89a603c80cd7723ff8c70e8f1f021147",
+   "record": "dab42f12458d9970985d4a939357f573892545920f84263f05c63001580ae71a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; Form 2441 p. 1, Part I, line 1; i2441 p. 1, \"Who Must File\". executable-triage-v2 (rerun of triage.py's triage() with the witness cap lifted, record in scratch `/tmp/adj-bklg-dep-f2441/triage/f2441.json`; 1,495 fixtures, 500 generated returns seed 20261026, 380 partial records from 40 bases; 2,375 comparisons): 1,245 of 2,375 agree; 1,130 candidate-unknown; on completed returns: 89 candidate-unknown. Same expression as the earlier rounds: the provider count with no test that the return files Form 2441, so it needs the dcprov roster from filers without care or benefits (every difference is candidate-unknown \"collection roster\", project false; 89 on completed returns, all with f2441.benefits and f2441.care no). Project stands.",
-   "subject_key": "c0656467ae0a3f730daf14ac563eaef8e0dd65546bb999ffe14015d22daca6bf"
+   "ruling": "Ruling: model error; f2441 (2025) p. 1, Part I: \"If you have more than three care providers, see the instructions and check this box\"; i2441 p. 2, Line 1: \"If you have more than three care providers, check the box above line 1 and attach a statement to your return with the required information.\" The question \"Did you receive dependent care benefits?\" is a separate entry below line 1 (f2441 p. 1, \"No ▶ Complete only Part II below. Yes ▶ Complete Part III on page 2 next.\"). The candidate transcribes the box as the benefits answer (f2441.benefits), which is a different entry of the form. executable-triage-v2 (`.transcription/triage/2025/f2441.json`, pass 045801c274b5; 1,702 fixtures, 500 generated returns seed 20261026, 319 partial records; 2,521 comparisons): 2,402 of 2,521 agree; differences 79 value, 38 project-unknown, 2 candidate-unknown; on returns the full interview completes: 23 value; witnesses enumerated with the cap lifted (scratch /tmp/adj/tr/eicwork/full/f2441.json). The 23 completed value differences are of the two shapes: 21 returns with dependent care benefits and one care provider (project false, candidate true; e.g. classm.f2441.1, classm.f2441.3, stage15.f2441.s4, stage19.mut.dc_box10_spouse_only) and 2 returns with four providers and no benefits (classm.f2441.2, stage15.mut.f2441_four_providers: project true, candidate false); f2441.provider_count and f2441.benefits evaluated on all 23. The source supports the project on each. The other differences are on incomplete or refused records. Gate-wave check: f2441.line1_box gives the same value in HEAD and the working tree on all 23 witnesses and every completed return (1,702 fixtures and 500 generated returns evaluated in both trees); it differs only on 8 refused records, false in HEAD and unknown in the working tree where the choose waits on f2441.filing. Project stands.",
+   "subject_key": "ba0f813e8712c93fdcf4b55f6662a6ab71dacd07aff58c4c0ec0eb73fc1cd7ce"
   },
   {
    "key": "2 (box)",
@@ -239,7 +242,7 @@
   "f2441.zero": "d371bbfd8a55ef20774d47d11cbd8531f22db7d5b5ed3d3b141dfb7588b73506",
   "f2441.has_1e": "83ea6977338750744c939265cde97df02d01f9b913658b59d9e083be56a5feb0",
   "f2441.one_box10": "432b4a11aa75590fdfc586c72cb283de95f04a134ce663c04ed9188848288f0d",
-  "1 (box)": "4c0e9dc51278510b9aa3b6b3f8c2bfc0a2c777fce4fe173e995998b5b01ac1d8",
+  "1 (box)": "3236aa1885901179999eac9d24e4fcc22e47f2893fc4661e641095fd67a8ccee",
   "2 (box)": "ad4573baa0a47ca3079708b10805b4c912fa88fa95a17ba805d294f223ba7563",
   "3": "10973b99efcee320bd6685329a0a0b54ddbd7884ada69da8c8397b0c7a62375f",
   "4": "63fb880e3c06884539b95afaf3c44ba98876160700eb88159192bb9bd1256247",
@@ -274,5 +277,8 @@
   "30": "d8ee010b387e68f77977fcaf405bdb492727ad6dd0462b8dc035c0024ae9aede",
   "31": "28abd6ac1b904f439a5319ec1608f81a5f06622d70fb3814e82bea58266ef017"
  },
- "__rest__": "1f06a07624874ecaa821f9458bd6d2698c4231ba2e71940d70df5a23b9b1a96c"
+ "__rest__": "1f06a07624874ecaa821f9458bd6d2698c4231ba2e71940d70df5a23b9b1a96c",
+ "foreign": {
+  "1 (box)": "fbe110317d55037e9e9efad2950f82c8ac5db73914dc76e2965e61657bf5b047"
+ }
 }

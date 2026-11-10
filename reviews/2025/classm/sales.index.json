@@ -2,56 +2,76 @@
  "kind": "classm",
  "form": "sales",
  "family": "claude",
- "base": "976fba2bb29d7ae5cf23b78d1e1dbd5ed1e5e78d0a1bf1302301bf4f7c293883",
+ "base": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
  "lines": [
   {
    "key": "case classm.sales.1",
-   "record": "976fba2bb29d7ae5cf23b78d1e1dbd5ed1e5e78d0a1bf1302301bf4f7c293883",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
    "status": null
   },
   {
    "key": "classm.sales.1 — sales[s1].e",
-   "record": "976fba2bb29d7ae5cf23b78d1e1dbd5ed1e5e78d0a1bf1302301bf4f7c293883",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s1].g",
-   "record": "976fba2bb29d7ae5cf23b78d1e1dbd5ed1e5e78d0a1bf1302301bf4f7c293883",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s1].h",
-   "record": "976fba2bb29d7ae5cf23b78d1e1dbd5ed1e5e78d0a1bf1302301bf4f7c293883",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s2].e",
-   "record": "976fba2bb29d7ae5cf23b78d1e1dbd5ed1e5e78d0a1bf1302301bf4f7c293883",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s2].g",
-   "record": "976fba2bb29d7ae5cf23b78d1e1dbd5ed1e5e78d0a1bf1302301bf4f7c293883",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s2].h",
-   "record": "976fba2bb29d7ae5cf23b78d1e1dbd5ed1e5e78d0a1bf1302301bf4f7c293883",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s3].e",
-   "record": "976fba2bb29d7ae5cf23b78d1e1dbd5ed1e5e78d0a1bf1302301bf4f7c293883",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s3].g",
-   "record": "976fba2bb29d7ae5cf23b78d1e1dbd5ed1e5e78d0a1bf1302301bf4f7c293883",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s3].h",
-   "record": "976fba2bb29d7ae5cf23b78d1e1dbd5ed1e5e78d0a1bf1302301bf4f7c293883",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.sales.2",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
+   "status": null
+  },
+  {
+   "key": "classm.sales.2 — sales[s1].e",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sales.2 — sales[s1].g",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.sales.2 — sales[s1].h",
+   "record": "b6f64d7ee1300e7f9f433b23de67b4cfb65205477863ca0dba66053bc283ccf5",
    "status": "AGREE"
   }
  ]

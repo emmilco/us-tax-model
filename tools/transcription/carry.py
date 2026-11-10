@@ -560,6 +560,18 @@ def snapshot(rev):
 
 # ---------------------------------------------------------------- carry
 
+def log_is_current(kind, form, text, current):
+    """Whether the log describes the document in `current`. Against the working tree this is
+    subjects.log_state, the test check_logs.py applies: a log with line-scoped passes is current when
+    every compared line's subject is, whatever its header's whole-form subject records. Against a
+    commit or an in-memory snapshot only the header's whole-form subject is compared, which can refuse
+    a current line-scoped log but never accepts a stale one."""
+    if current.rev is None:
+        return subjects.log_state(kind, form, Y, text) is None
+    reviewed = current.read(os.path.relpath(subjects.path(kind, form, Y), ROOT))
+    return reviewed is not None and recorded(text, "subject sha256") == subjects.of_text(kind, reviewed)
+
+
 def plan(kind, form, family=families.DEFAULT, origin=None, current=None):
     """(rulings for rule.apply, report counter, [(handle, why)] for every section left open)."""
     stats = collections.Counter()
@@ -569,8 +581,7 @@ def plan(kind, form, family=families.DEFAULT, origin=None, current=None):
     if not targets:
         return {}, stats, []
     current = current or Snapshot(None)
-    reviewed = current.read(os.path.relpath(subjects.path(kind, form, Y), ROOT))
-    if reviewed is None or recorded(text, "subject sha256") != subjects.of_text(kind, reviewed):
+    if not log_is_current(kind, form, text, current):
         return {}, stats, [(s["handle"], "the log is stale; rerun first") for s in targets]
     out = {s["handle"]: m for s in targets for m in [mechanical(kind, s)] if m}
     stats["mechanical"] = len(out)

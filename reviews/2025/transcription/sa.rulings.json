@@ -75,6 +75,45 @@
   },
   {
    "printed": "sa.deduction",
+   "project_expr_sha256": "8362c3f35a9c04ebc07d7034253da9794ca3dce15cba4fffad110b300b83624d",
+   "second_expr_sha256": "08716f7ba2b44fe18f462f8ad50071ebf32d8318585b9779737d6790eb92aa95",
+   "ruling": "Ruling: model error; i1040gi p. 33, Line 12d: \"If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return\"; p. 34, Line 12e: \"In most cases, your federal income tax will be less if you take the larger of your standard deduction or itemized deductions\"; Schedule A (2025), line 18: \"If you elect to itemize deductions even though they are less than your standard deduction, check this box\". executable-triage-v2 (`.transcription/triage/2025/sa.json`, pass 3adda1bd8137; 1,702 fixtures, 500 generated returns seed 20261026, 509 partial records; 2,711 comparisons): 2,445 of 2,711 agree; differences 215 candidate-unknown, 32 project-refuses, 19 candidate-refuses; on returns the full interview completes: 148 candidate-unknown, 6 candidate-refuses; witnesses enumerated with the cap lifted (scratch /tmp/adj/tr/eicwork/full/sa.json). No value differs on any record. The completed candidate-unknowns on sa.spouse_extra (144 on sa.itemizes, 148 on sa.deduction) are all on returns that are not married filing separately (on sa.deduction's 148: single 65, head of household 29, joint 28, qualifying surviving spouse 9 among the fixtures, 17 partial records): the candidate reads sa.spouse_extra through its standard deduction (sa.h_standard) for every status, while the source's spouse-box rule is for a separate return only and the project asks it only then (sa.mfs_spouse_extra); married filing separately is itself refused (s3.mfs at scope.ready). The 6 completed candidate-refusals are classm.clcw.2, classm.clcw.2.deepseek, mutation.t2.no_senior_part5 and three partials of classm.clcw.2.deepseek: single returns whose record answers sa.spouse_extra Yes to a question that opens \"Married filing separately\", which the interview does not ask a single filer; the project itemizes there ($52,023.83 against a $15,750.00 standard deduction). A candidate that needs an answer, or refuses on one, that the source does not need is a model error (README). The 32 project-refuses are on refused records at cited screens (sa.dependent 7, a retirement distribution code 5, sb.fbar_required 4, f4952.bad_election 3, and other gift, dividend and sales screens): scope. Gate-wave check: sa.deduction and Form 1040 line 12e give the same values in HEAD and the working tree on every completed return (1,702 fixtures and 500 generated returns evaluated in both trees). As the earlier ruling on this line. Project stands.",
+   "context": "d2fb1ac14562cb9988c06bbbec1de062920bbbb5b04af5d33d8deb8ae82a8d89",
+   "date": "2026-11-09",
+   "run": "582f2d4dd29c67e7fc6f5901195e8252d3acc8b16e76761aacba853c8c87e114",
+   "subject_key": "7363bae2cf15f87b51145fd3202587e60b8d8e13a04a4f8c7d0ac40904d953ed",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@sa",
+     "fixture:classm.f2441.2.deepseek@sa",
+     "fixture:classm.f2441.3.deepseek@sa",
+     "fixture:classm.f2441.4.deepseek@sa",
+     "fixture:classm.f2441.5.deepseek@sa",
+     "fixture:classm.f2441.6.deepseek@sa",
+     "fixture:classm.f8889.1.deepseek@sa",
+     "fixture:classm.f8889.5.deepseek@sa",
+     "fixture:classm.f4952.3.deepseek@sa",
+     "fixture:classm.f4952.4.deepseek@sa",
+     "fixture:classm.clcw.2.deepseek@sa",
+     "fixture:classm.clcw26.3.deepseek@sa",
+     "fixture:classm.dependent.1.deepseek@sa",
+     "fixture:classm.dependent.2.deepseek@sa",
+     "fixture:classm.carloan.3@sa",
+     "fixture:classm.s179.3@sa",
+     "fixture:classm.clcw.2@sa",
+     "fixture:classm.clcw26.3@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sa.deduction",
    "project_expr_sha256": "a2bb36c5904901760a1216fa6be2a329a0d6295c82035f8299d4687186457da1",
    "second_expr_sha256": "55b61eec05244f9358e741427c71b5625049f0016d533d7840c1ae9945f05549",
    "ruling": "Ruling: scope and representation; project retained. Re-ruled after Schedule A line 2 took its floored operand (amb.2025.sa_medical_negative_agi): both transcriptions carry line 11b at no less than zero through line 2 and line 17. Both select the itemized total (line 17) when itemizing is elected, when a separate-return spouse itemizes, or when line 17 exceeds the standard deduction, and the standard deduction otherwise, zero when a separate-return spouse itemizes and increased by the age and blindness additions. As on sa.itemizes, the project conditions the spouse-itemizes rule on married-filing-separately status, which the second omits; married filing separately is refused (s3.mfs, spec 2.2), so within scope the selections agree; the second's single product of the addition and the summed box count equals the project's sum of one product per box (i1040gi pp. 34-35, line 12e and the Standard Deduction Chart). No change to the data.",
@@ -192,6 +231,40 @@
    "second_expr_sha256": "f6333fae4734138d7c8fe21321c17cc328db52139ff80d6008ab407f12e9d937",
    "ruling": "Ruling: scope and representation; project retained. Re-ruled after Schedule A line 2 took its floored operand (amb.2025.sa_medical_negative_agi): both transcriptions carry line 11b at no less than zero through line 2 and line 17, so the floor is not a difference. The differences left are the ones ruled before: the project conditions the spouse-itemizes rule on married-filing-separately status, which the second transcription applies alone, and married filing separately is refused (s3.mfs, spec 2.2); and the second multiplies the age and blindness addition once by the summed box count where the project adds one product per box, the same amount (i1040gi p. 33, Line 12d; pp. 34-35, line 12e and the Standard Deduction Chart). The tie (line 17 equal to the standard deduction) gives the same deduction either way. No change to the data.",
    "subject_key": "869db127b5b1ff28014bf0336e1ad143ee1547f32f0ce07f76dceb2987412109"
+  },
+  {
+   "printed": "sa.itemizes",
+   "project_expr_sha256": "a6977709f9706ed3fe433458b4aa1972306f0184d2b318e1b076d36d524cea3a",
+   "second_expr_sha256": "d0b4cc77ced16ee28f353a681ae8aba6d00f7f55aaf046a35b88cf8c9ed02e7f",
+   "ruling": "Ruling: model error; i1040gi p. 33, Line 12d: \"If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return\"; p. 34, Line 12e: \"In most cases, your federal income tax will be less if you take the larger of your standard deduction or itemized deductions\"; Schedule A (2025), line 18: \"If you elect to itemize deductions even though they are less than your standard deduction, check this box\". executable-triage-v2 (`.transcription/triage/2025/sa.json`, pass 3adda1bd8137; 1,702 fixtures, 500 generated returns seed 20261026, 509 partial records; 2,711 comparisons): 2,464 of 2,711 agree; differences 222 candidate-unknown, 24 candidate-refuses, 1 value; on returns the full interview completes: 148 candidate-unknown, 6 candidate-refuses; witnesses enumerated with the cap lifted (scratch /tmp/adj/tr/eicwork/full/sa.json). The completed candidate-unknowns on sa.spouse_extra (144 on sa.itemizes, 148 on sa.deduction) are all on returns that are not married filing separately (on sa.deduction's 148: single 65, head of household 29, joint 28, qualifying surviving spouse 9 among the fixtures, 17 partial records): the candidate reads sa.spouse_extra through its standard deduction (sa.h_standard) for every status, while the source's spouse-box rule is for a separate return only and the project asks it only then (sa.mfs_spouse_extra); married filing separately is itself refused (s3.mfs at scope.ready). The 6 completed candidate-refusals are classm.clcw.2, classm.clcw.2.deepseek, mutation.t2.no_senior_part5 and three partials of classm.clcw.2.deepseek: single returns whose record answers sa.spouse_extra Yes to a question that opens \"Married filing separately\", which the interview does not ask a single filer; the project itemizes there ($52,023.83 against a $15,750.00 standard deduction). A candidate that needs an answer, or refuses on one, that the source does not need is a model error (README). The other 4 completed candidate-unknowns need sa.elect_itemize on partial records (classm.s3.1.deepseek, classm.f8962.4.deepseek, classm.s8812.1.deepseek, classm.f5695.1.deepseek with the election withheld) whose line 17 exceeds the standard deduction, where the source itemizes without the election (project true). The 1 value difference is stage4.standard.spouse_itemizes, a refused married-filing-separately record with line 17 and the standard deduction both $0 (the deduction is $0 either way): scope. The rest are on incomplete or refused records. Gate-wave check: sa.mfs_spouse_extra, sa.mfs_spouse_itemizes and sa.boxes_age65 (all, now choose or person.age65_box) give the same sa.itemizes, sa.deduction and Form 1040 line 12e in HEAD and the working tree on every completed return (1,702 fixtures and 500 generated returns evaluated in both trees; classm.clcw.2 evaluated in both). As the earlier ruling on this line. Project stands.",
+   "context": "d2fb1ac14562cb9988c06bbbec1de062920bbbb5b04af5d33d8deb8ae82a8d89",
+   "date": "2026-11-09",
+   "run": "582f2d4dd29c67e7fc6f5901195e8252d3acc8b16e76761aacba853c8c87e114",
+   "subject_key": "b6bb1ecbd15c84017908a0c9605b84970d36a2017a54ed42485a2b074ac2804c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@sa",
+     "fixture:classm.f2441.2.deepseek@sa",
+     "fixture:classm.f2441.3.deepseek@sa",
+     "fixture:classm.f2441.4.deepseek@sa",
+     "fixture:classm.f2441.5.deepseek@sa",
+     "fixture:classm.f2441.6.deepseek@sa",
+     "fixture:classm.clcw.2.deepseek@sa",
+     "fixture:classm.dependent.5.deepseek@sa",
+     "fixture:classm.carloan.3@sa",
+     "fixture:classm.dependent.3@sa",
+     "fixture:classm.clcw.2@sa",
+     "fixture:mutation.t2.no_senior_part5@sa",
+     "fixture:stage4.standard.spouse_itemizes@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

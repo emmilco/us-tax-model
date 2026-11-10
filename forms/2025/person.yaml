@@ -173,6 +173,90 @@ form:
         doc: i1040gi
         locator: p. 41, Step 4, question 2, "Check 'Yes' if you ... were born after December 31, 1960, and before January 2,
           2001"
+    - id: person.age65_box
+      printed: (helper)
+      label: Born before January 2, 1961, and not a person who died in 2025 before reaching 65 (a box checked for age)
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.age65
+            - const: true
+          then: person.not_died_before_65
+        - guard:
+            op: test
+            eq:
+            - person.age65
+            - const: false
+          then: person.no
+      cite:
+        doc: i1040gi
+        locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January
+          2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People
+          Who Were Born Before January 2, 1961, or Were Blind
+    - id: person.not_died_before_65
+      printed: (helper)
+      label: Not a person who died in 2025 before reaching 65
+      type: Bool
+      expr:
+        op: test
+        eq:
+        - person.died_before_65
+        - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January
+          2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction Chart for People
+          Who Were Born Before January 2, 1961, or Were Blind
+    - id: person.tin_or_itin_applied
+      printed: (helper)
+      label: An SSN or ITIN, or applied for an ITIN
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.tin
+            - const: true
+          then: person.tin
+        - guard:
+            op: test
+            eq:
+            - person.tin
+            - const: false
+          then: person.itin_applied
+      cite:
+        doc: i1040gi
+        locator: p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing
+          jointly, must have either an SSN or ITIN"; p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN
+          on or before the return due date (including extensions).)"
+    - id: person.work_ssn_or_tin
+      printed: (helper)
+      label: An SSN valid for employment, or an SSN or ITIN
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.work_ssn
+            - const: true
+          then: person.work_ssn
+        - guard:
+            op: test
+            eq:
+            - person.work_ssn
+            - const: false
+          then: person.tin
+      cite:
+        doc: i1040gi
+        locator: p. 17, Before you begin, "The other spouse must have either an SSN or ITIN"
     - id: person.died_before_65
       printed: (helper)
       label: Is this the final return of a person born between January 2, 1960, and January 1, 1961, who died in 2025 before
@@ -2218,21 +2302,49 @@ form:
         doc: iw2w3
         locator: 'p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is
           $23,500, Alex''s total elective deferral amount of $26,500 is reported in box 12 with code D"'
+    - id: person.no
+      printed: (helper)
+      label: Year parameter household.no (false)
+      type: Bool
+      expr:
+        op: param
+        ref: household.no
+      cite:
+        doc: iw2w3
+        locator: p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500,
+          Alex's total elective deferral amount of $26,500 is reported in box 12 with code D"
+    - id: person.sav_has_w2
+      printed: (helper)
+      label: Elective deferrals or designated Roth contributions in this person's Forms W-2, box 12
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.sav_w2
+        - param: sales.zero
+      cite:
+        doc: iw2w3
+        locator: p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is
+          $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D"
     - id: person.sav_excess_gate
       printed: (gate)
       label: Elective deferrals in box 12 over the limit for 2025
       type: Bool
       expr:
-        op: test
-        all:
-        - op: test
-          gt:
-          - person.sav_w2
-          - param: sales.zero
-        - op: test
-          eq:
-          - person.sav_excess
-          - const: true
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.sav_has_w2
+            - const: true
+          then: person.sav_excess
+        - guard:
+            op: test
+            eq:
+            - person.sav_has_w2
+            - const: false
+          then: person.no
       cite:
         doc: iw2w3
         locator: 'p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is
@@ -2500,16 +2612,20 @@ form:
       label: This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remained at the end of 2025 (screen)
       type: Bool
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - person.ira_any_contrib
-          - const: true
-        - op: test
-          eq:
-          - person.ira_excess
-          - const: true
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_any_contrib
+            - const: true
+          then: person.ira_excess
+        - guard:
+            op: test
+            eq:
+            - person.ira_any_contrib
+            - const: false
+          then: person.no
       cite:
         doc: p590a
         locator: 'p. 35, Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date
@@ -3340,25 +3456,49 @@ form:
         doc: f8606
         locator: 'Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA
           conversion?" and "For this purpose, “distributions” does not include rollovers"'
+    - id: person.ira_dist_if_files
+      printed: (helper)
+      label: This person files Form 8606 for nondeductible contributions for 2025 and took a 2025 traditional IRA distribution
+        or Roth conversion
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_files_8606
+            - const: true
+          then: person.ira_dist
+        - guard:
+            op: test
+            eq:
+            - person.ira_files_8606
+            - const: false
+          then: person.no
+      cite:
+        doc: f8606
+        locator: Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?"
+          and "Go to line 4"
     - id: person.ira_dist_gate
       printed: (gate)
       label: Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conversion
       type: Bool
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - person.ira_has
-          - const: true
-        - op: test
-          eq:
-          - person.ira_files_8606
-          - const: true
-        - op: test
-          eq:
-          - person.ira_dist
-          - const: true
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.ira_has
+            - const: true
+          then: person.ira_dist_if_files
+        - guard:
+            op: test
+            eq:
+            - person.ira_has
+            - const: false
+          then: person.no
       cite:
         doc: f8606
         locator: 'Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA
@@ -3742,25 +3882,63 @@ form:
         locator: p. 4, Tax-free educational assistance, "For tax-free educational assistance received in 2025, reduce the qualified
           education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic
           period."
+    - id: person.edu_has_adj
+      printed: (helper)
+      label: Adjusted qualified education expenses (worksheet line 3) above zero
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - person.edu_adj
+        - const: 0
+      cite:
+        doc: i8863
+        locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each
+          academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid)
+          qualified education expenses in 2025."
+    - id: person.edu_over_if_adj
+      printed: (helper)
+      label: Adjustments that exceed one academic period's expenses, where adjusted qualified education expenses are above zero
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_has_adj
+            - const: true
+          then: person.edu_over
+        - guard:
+            op: test
+            eq:
+            - person.edu_has_adj
+            - const: false
+          then: person.edu_no
+      cite:
+        doc: i8863
+        locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each
+          academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid)
+          qualified education expenses in 2025."
     - id: person.edu_over_refused
       printed: (gate)
       label: Adjustments that exceed one academic period's expenses
       type: Bool
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - person.edu_student
-          - const: true
-        - op: test
-          gt:
-          - person.edu_adj
-          - const: 0
-        - op: test
-          eq:
-          - person.edu_over
-          - const: true
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_student
+            - const: true
+          then: person.edu_over_if_adj
+        - guard:
+            op: test
+            eq:
+            - person.edu_student
+            - const: false
+          then: person.edu_no
       cite:
         doc: i8863
         locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each
@@ -4344,52 +4522,167 @@ form:
       cite:
         doc: i8863
         locator: p. 7, Line 7, "2. At least one of your parents was alive at the end of 2025."
+    - id: person.edu_kid_age
+      printed: (helper)
+      label: Line 7 conditions 1 and 2 for you (under 18 and a parent alive, or the tests for 18 to 23)
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.sav_born
+            - const: true
+          then: person.edu_kid_18
+        - guard:
+            op: test
+            eq:
+            - person.sav_born
+            - const: false
+          then: person.edu_parent
+      cite:
+        doc: i8863
+        locator: p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below
+          apply to you."
+    - id: person.edu_kid_18
+      printed: (helper)
+      label: Line 7 conditions 1b, 1c and 2 for you, born before January 2, 2008 (age 18 with earned income less than half of
+        your support and a parent alive, or the tests for 19 to 23)
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_born_2007
+            - const: true
+          then: person.edu_kid_student_age
+        - guard:
+            op: test
+            eq:
+            - person.edu_born_2007
+            - const: false
+          then: person.edu_kid_18_support
+      cite:
+        doc: i8863
+        locator: p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below
+          apply to you."
+    - id: person.edu_kid_18_support
+      printed: (helper)
+      label: 'Line 7 conditions 1b and 2 for you, age 18: earned income less than half of your support and a parent alive'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_half_support
+            - const: true
+          then: person.edu_parent
+        - guard:
+            op: test
+            eq:
+            - person.edu_half_support
+            - const: false
+          then: person.edu_no
+      cite:
+        doc: i8863
+        locator: p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below
+          apply to you."
+    - id: person.edu_kid_student_age
+      printed: (helper)
+      label: Line 7 conditions 1c and 2 for you, born before January 2, 2007 (born after January 1, 2002, first)
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_born_2002
+            - const: true
+          then: person.edu_no
+        - guard:
+            op: test
+            eq:
+            - person.edu_born_2002
+            - const: false
+          then: person.edu_kid_support
+      cite:
+        doc: i8863
+        locator: p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below
+          apply to you."
+    - id: person.edu_kid_support
+      printed: (helper)
+      label: Line 7 conditions 1c and 2 for you, born after January 1, 2002, and before January 2, 2007 (earned income less than
+        half of your support first)
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_half_support
+            - const: true
+          then: person.edu_kid_fulltime
+        - guard:
+            op: test
+            eq:
+            - person.edu_half_support
+            - const: false
+          then: person.edu_no
+      cite:
+        doc: i8863
+        locator: p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below
+          apply to you."
+    - id: person.edu_kid_fulltime
+      printed: (helper)
+      label: 'Line 7 conditions 1c and 2 for you, born after January 1, 2002, and before January 2, 2007, with earned income less
+        than half of your support: a full-time student and a parent alive'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.edu_fulltime
+            - const: true
+          then: person.edu_parent
+        - guard:
+            op: test
+            eq:
+            - person.edu_fulltime
+            - const: false
+          then: person.edu_no
+      cite:
+        doc: i8863
+        locator: p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below
+          apply to you."
     - id: person.edu_kid
       printed: (helper)
       label: 'Line 7 conditions 1 and 2 for you: under 18; or 18 with earned income less than half of your support; or over 18
         and under 24, a full-time student, with earned income less than half of your support; and a parent alive'
       type: Bool
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - f8863.kid_needed
-          - const: true
-        - op: test
-          any:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-            - person.sav_born
+            - f8863.kid_needed
+            - const: true
+          then: person.edu_kid_age
+        - guard:
+            op: test
+            eq:
+            - f8863.kid_needed
             - const: false
-          - op: test
-            all:
-            - op: test
-              eq:
-              - person.edu_born_2007
-              - const: false
-            - op: test
-              eq:
-              - person.edu_half_support
-              - const: true
-          - op: test
-            all:
-            - op: test
-              eq:
-              - person.edu_born_2002
-              - const: false
-            - op: test
-              eq:
-              - person.edu_fulltime
-              - const: true
-            - op: test
-              eq:
-              - person.edu_half_support
-              - const: true
-        - op: test
-          eq:
-          - person.edu_parent
-          - const: true
+          then: person.edu_no
       cite:
         doc: i8863
         locator: p. 7, Line 7, "You don’t qualify for a refundable American opportunity credit if 1 (a, b, or c), 2, and 3 below

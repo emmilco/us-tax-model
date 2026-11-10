@@ -331,11 +331,18 @@
 - Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"eq":["ira.special",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 95, Line 20, "But read the following list before you fill in the worksheet" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `ira.no`
+
+- **Authored helper label:** Year parameter household.no (false)
+- **Encoded (Bool):** Enter false (household.no).
+- Expr: `{"op":"param","ref":"household.no"}`
+- Cite: [i1040gi] p. 95, Line 20, "If you were a member of the U.S. Armed Forces, earned income includes any nontaxable combat pay you received" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (gate) — `ira.combat_gate`
 
 - **Authored helper label:** Traditional IRA contributions with nontaxable combat pay
-- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and s8812 helper "Any nontaxable combat pay (Form W-2, box 12, code Q)?" = true
-- Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"eq":["s8812.combat_pay",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Anyone on the return made traditional IRA contributions for 2025" = true → s8812 helper "Any nontaxable combat pay (Form W-2, box 12, code Q)?"] [helper "Anyone on the return made traditional IRA contributions for 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ira.any_trad",{"const":true}],"op":"test"},"then":"s8812.combat_pay"},{"guard":{"eq":["ira.any_trad",{"const":false}],"op":"test"},"then":"ira.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 95, Line 20, "If you were a member of the U.S. Armed Forces, earned income includes any nontaxable combat pay you received" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `ira.excl_gate`
@@ -388,11 +395,18 @@
 - Expr: `{"op":"input","source":"The most you (and your spouse) can deduct for your traditional IRA contributions is figured on line 12 of the IRA Deduction Worksheet. Do you want to deduct a smaller amount and treat the rest as a nondeductible contribution?"}`
 - Cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 12, "Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `ira.has_deduction`
+
+- **Authored helper label:** An IRA deduction above zero (line 12a and 12b together)
+- **Encoded (Bool):** helper "Add the amounts on lines 12a and 12b" > $0 (sales.zero)
+- Expr: `{"gt":["ira.total",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [p590a] p. 16, Form 8606, "When you file, you can even designate otherwise deductible contributions as nondeductible contributions" (2025; sha256 ca0e4287)
+
 ## (gate) — `ira.less_gate`
 
 - **Authored helper label:** An IRA deduction above zero and the election to deduct less
-- **Encoded (Bool):** helper "Add the amounts on lines 12a and 12b" > $0 (sales.zero) and helper "Do you want to deduct less than the most you can deduct, treating the rest as a nondeductible contribution?" = true
-- Expr: `{"all":[{"gt":["ira.total",{"param":"sales.zero"}],"op":"test"},{"eq":["ira.deduct_less",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "An IRA deduction above zero (line 12a and 12b together)" = true → helper "Do you want to deduct less than the most you can deduct, treating the rest as a nondeductible contribution?"] [helper "An IRA deduction above zero (line 12a and 12b together)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ira.has_deduction",{"const":true}],"op":"test"},"then":"ira.deduct_less"},{"guard":{"eq":["ira.has_deduction",{"const":false}],"op":"test"},"then":"ira.no"}],"op":"choose"}`
 - Cite: [p590a] p. 16, Form 8606, "When you file, you can even designate otherwise deductible contributions as nondeductible contributions" (2025; sha256 ca0e4287)
 
 ## (helper) — `ira.line20`
