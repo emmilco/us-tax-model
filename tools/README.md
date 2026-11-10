@@ -264,5 +264,6 @@ that year's table from its archived source, and the check-all step named beside 
 | `new_bug.py`, `task_row.py` | Append a `BUG_INVENTORY.md` entry; add or update a `TASKS.md` row (tested by `test_bookkeeping_tools.py`) |
 | `ocr_audit.py` | An image-grounded audit of the archived text layers (Tesseract), for a person to adjudicate; not a gate |
 | `extraction/page_review.py` | Local HTML pages of each archived page beside the project's reading of it, for a person to judge |
+| `transcription/question_review.py` | Prototype of the question review: builds and prices every question's review prompt (`--dry-run`) and lists which existing reviews judge each input's wording (`--coverage`); calls no model |
 | `transcription/migrate_line_subjects.py` | Rewrites transcription logs' line-subject tables (`transcription/README.md`; tested by `test_review_tools.py`) |
 | `human_review/test_browser.mjs`, `../ui/test_browser.mjs` | Browser smoke tests of the review packet and the web UI, against a separately launched headless Chrome |
