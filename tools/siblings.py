@@ -248,8 +248,9 @@ def input_ripple(key):
             if stem in text:
                 hits.append(str(file.relative_to(ROOT)))
         print(f"  {label:14} {len(hits):4} file(s)" + (": " + ", ".join(hits[:4]) + (" ..." if len(hits) > 4 else "") if hits else ""))
-    print("  checklist: form line + input question + interview profile + fixtures (all stages) +")
-    print("             engine/src/generate.ts + tools/engines/generate_cases.py + input_contracts + classm jobs")
+    print("  checklist: form line + input question + interview profile + its default in fixtures/<year>/defaults.json")
+    print("             (the build fails without one) + engine/src/generate.ts (drawn unless excluded there) +")
+    print("             tools/engines/generate_cases.py + input_contracts + classm jobs")
 
 
 def bug_entries():

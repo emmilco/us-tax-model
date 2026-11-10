@@ -59,15 +59,14 @@ export function checkReturnsDir(dir: string): string {
 }
 
 /** Each source document's printed title and designation (the form, schedule or publication number as printed), by
- * id, from the year's source catalogs (tools/sources-<year>.json and tools/sources-ny-<year>.json;
+ * id, from the year's source catalogs (tools/sources/<year>.json and tools/sources/ny/<year>.json;
  * tools/check_source_titles.py checks each against the archived document), and the entries that carry a designation,
  * with a form's quoted purpose where the catalog gives one. A document with none is absent. */
 export function docNames(year: number): { titles: Record<string, string>; designations: Record<string, string>; forms: FormEntry[] } {
   const titles: Record<string, string> = {};
   const designations: Record<string, string> = {};
   const forms: FormEntry[] = [];
-  for (const name of [`sources-${year}.json`, `sources-ny-${year}.json`]) {
-    const path = join(ROOT, "tools", name);
+  for (const path of [join(ROOT, "tools", "sources", `${year}.json`), join(ROOT, "tools", "sources", "ny", `${year}.json`)]) {
     if (!existsSync(path)) continue;
     for (const e of JSON.parse(readFileSync(path, "utf8")) as { id: string; title?: string; designation?: string; form_purpose?: Purpose }[]) {
       if (e.title) titles[e.id] = e.title;

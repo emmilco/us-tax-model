@@ -62,7 +62,7 @@ READERS = {
     ("engine/src/mutate.ts", "BUG_INVENTORY.md"): ("slow", ["mutate", "ny_mutate"]),
     ("tools/coverage/roadmap.py", "TASKS.md"): ("none", "roadmap.py is run by hand, by no check-all step"),
     ("tools/transcription/review_yield.py", "BUG_INVENTORY.md"):
-        ("none", "review_yield.py runs from costs.py --yield, by no check-all step; its test uses a temporary tree"),
+        ("none", "review_yield.py runs from costs.py --yield; its test (self_tests review_yield_tests) uses a temporary tree"),
     ("tools/transcription/review_yield.py", "research/costs/*"): ("none", "as above"),
     ("tools/transcription/review_yield.py", "research/audits/*"): ("none", "the quoted component is research/costs"),
     ("tools/transcription/test_review_yield.py", "BUG_INVENTORY.md"): ("none", "writes its own inventory in a temporary tree"),
@@ -275,6 +275,21 @@ def surface_like(tracked):
     return [f for f in tracked if f.split("/")[0] in ("tools", "engine", "lean") or f in ("package.json", "tsconfig.json")]
 
 
+# Paths whose tier under the real tools/full_paths.txt is fixed: True for full, False for not full.
+FULL_EXAMPLES = {
+    "tools/human_review/packet.py": True,
+    "tools/human_review/reading_list.json": True,
+    "tools/human_review/README.md": False,
+    "tools/human_review/test_browser.mjs": False,
+    "engine/src/mutate.ts": True,
+}
+
+
+def check_examples(triggers):
+    return [f"{FULL}: {path} {'should' if want else 'should not'} need the full tier"
+            for path, want in FULL_EXAMPLES.items() if matches(path, triggers) != want]
+
+
 def unit_tests():
     allow = ["BUG_INVENTORY.md", "docs/*"]
     trig = ["engine/src/mutate*.ts", "lean/*"]
@@ -320,6 +335,9 @@ def unit_tests():
         READERS, WALKERS = saved
     assert check_lists(["docs/*", "tools/x/*", "a*.md"], ["lean/*", "docs/x"], ["docs/a", "lean/b", "tools/x/y.py"])
     assert not check_lists(["docs/*"], ["lean/*"], ["docs/a", "lean/b"])
+    assert check_examples(["tools/human_review/*"]) == [f"{FULL}: tools/human_review/README.md should not need the full tier",
+                                                         f"{FULL}: tools/human_review/test_browser.mjs should not need the full tier",
+                                                         f"{FULL}: engine/src/mutate.ts should need the full tier"]
 
 
 def self_test():
@@ -328,7 +346,7 @@ def self_test():
     allow = parse((ROOT / DOCS).read_text(encoding="utf-8"))
     triggers = parse((ROOT / FULL).read_text(encoding="utf-8"))
     slow, docs_tier = tier_steps()
-    problems = check_lists(allow, triggers, tracked)
+    problems = check_lists(allow, triggers, tracked) + check_examples(triggers)
     files = surface()
     refs, walks = scan(files, allow)
     problems += check_ledgers(refs, walks, slow, docs_tier)

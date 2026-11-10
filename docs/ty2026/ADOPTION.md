@@ -9,7 +9,7 @@ unchanged.
 
 | Step | Output | State |
 |---|---|---|
-| 1 | `sources/2026/` (91 documents, 55 IRS drafts), `tools/sources-2026.json`, `reports/2026/archive_refresh_2026-11-04.md` | archive verified (`python3 tools/fetch_sources.py --year 2026`) |
+| 1 | `sources/2026/` (91 documents, 55 IRS drafts), `tools/sources/2026.json`, `reports/2026/archive_refresh_2026-11-04.md` | archive verified (`python3 tools/fetch_sources.py --year 2026`) |
 | 2 | `reports/2026/year_diff_from_2025.{md,html}`; `reports/2026/worklist_split.md` and `research/ty2026/worklist.json` (`research/ty2026/split_worklist.py`) | 2,236 worklist items: 426 of kind (a), 1,810 of kind (b) as the script splits them; counting the 16 items of C-PEOP-23 and C-PEOP-24 as kind (b) (owner decision 2026-11-04), 410 of kind (a) and 1,826 of kind (b) |
 | 3 | `research/ty2026/changes.md` (135 entries, with C-LAW-01 and C-LAW-02 and the statute read) and `changes.verification.md` (2 high, 11 medium, 7 low; all applied) | 808 quotes checked by `research/ty2026/check_quotes.py`, 0 not printed |
 | 4 | `research/ty2026/params-2026.proposed.yaml` (`build_params.py`, `check_params.py`) | 2025 parameters: 92 values from final sources, 70 from drafts, 108 with no 2026 source, and `sc.mileage_rate` retired; 3 new 2026 parameters from final sources (`sc.mileage_rate_h1`, `sc.mileage_rate_h2`, `sa.gift_floor_rate`) |
@@ -17,7 +17,7 @@ unchanged.
 
 ## Order of work when the final documents publish
 
-1. **Refetch the finals.** For every row of `tools/sources-2026.json` with `"draft": true`, replace the URL with the
+1. **Refetch the finals.** For every row of `tools/sources/2026.json` with `"draft": true`, replace the URL with the
    final (`irs.gov/pub/irs-pdf/<name>.pdf`), drop the draft fields, delete the draft's manifest entry and files, and
    run `python3 tools/fetch_sources.py --year 2026 --fetch` and `--derive`. Add the documents still missing
    (below). Recheck the 13 continuous-use revisions (`archive_refresh_2026-11-04.md` section 5) for a newer revision.

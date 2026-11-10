@@ -1,4 +1,4 @@
-> **Historical (2026-11-09):** superseded by `docs/2026-11-09_consolidation_charter.md`. Kept as a record; it no longer governs.
+> **Historical (2026-11-09):** superseded by `docs/consolidation_charter.md`. Kept as a record; it no longer governs.
 
 # Integrity plan — 2026-10-22 (v7, amended 2026-10-24 and 2026-10-26)
 

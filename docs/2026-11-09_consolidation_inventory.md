@@ -324,6 +324,12 @@ tools READMEs: `structured_text.py`, `test_bookkeeping_tools.py`, `test_consiste
 `transcription/review_yield.py`, `transcription/test_classm_jobs.mjs`, `transcription/test_ny_review.py`,
 `transcription/test_review_yield.py`. All but `test_review_yield.py` are run by check-all or imported.
 
+**Phase 1 (charter section 8, item 6).** Re-searched by name and import over every tracked text file outside the data
+directories: the only scripts named by no tool, engine, UI or hook code are the four the owner kept (`ny_policyengine.py`,
+`extract_macrs_tables.py`, `extract_tax_table.py`, `migrate_completeness_debt.py`); `structural_leaks.mjs` was already removed.
+None retired: every script mentioned only in passing by other code had a clear, current purpose. The scripts run by hand
+are now listed in `tools/README.md` ("Scripts run by hand"), and `test_review_yield.py` runs in check-all (`self_tests`).
+
 ### 4.2 Python reimplementations of evaluator or renderer logic (still present)
 
 | Class | Location | Lines in file | Note |
@@ -403,6 +409,37 @@ Tally of the 50 rows above (the audit's own count was 37 findings; sub-items wer
 (rows marked "H (documented)" count as holding). Of the audit's seven "active bugs" (1.1 to 1.7): five are fixed (1.1, 1.2, 1.4,
 1.5, 1.7), 1.3 is partly fixed, and in 1.6 two of three sub-items are fixed and one holds (1.6c).
 
+### 5.1 Phase 1 dispositions of the 22 rows that held (charter section 8, item 5)
+
+Each row re-checked against the tree before it was decided. **Fixed**: changed in phase 1. **Partly**: some of it
+fixed, the rest decided below. **Won't fix**: kept, for the reason given. **Proposal**: a change for the owner to
+decide. **Deferred**: its paths belong to the gate-wave lane this round.
+
+| # | Disposition | Reason or change |
+|---|---|---|
+| 1.6c | Won't fix | The snapshot's tree and blob objects are unreachable anyway (`green.sh` `worktree_tree` writes them through a temporary index); the commit adds one small object per run, which `git gc` prunes with them. The commit is what `git worktree add --detach` and the checkout of the snapshot need. Changing the commit guard's checkout saves no yearly cost and puts every lane's commits at risk |
+| 2.4 | Won't fix | A module-level year, documented in `year.ts` and `taxyear.py`: a process works on one year, and other years are other processes (`YEAR_ARGS`). Passing the year through 17 engine modules and 57 tools would be a rewrite with no yearly saving |
+| 2.6 | Proposal | `compare.ts` `generatedCases` is a hand-written generator (its own LCG, a fixed list of inputs, 200 returns). Using `generate.ts` `sampleReturns` instead gives the Lean comparison the general generator's coverage and drops a list that goes stale as inputs change. It changes the compared corpus, needs the full tier, and may surface Lean disagreements to triage. The `generate.ts` exclusion sets and post-processors are the generator's model of which inputs to draw, and have no cheaper form |
+| 2.7 | Won't fix | The provers are per-form equivalence arguments of the mutation tool, keyed by line id; year-free ids (charter 7.4) keep them across years. Expressing them as data would be a redesign of the mutation tool |
+| 3.1 | Won't fix | A typed Lean data model would be a rewrite of `Eval.lean` (782 lines, 60 `getD`). The build validates the data against the schema before either evaluator reads it, and `compare` reports any disagreement between the evaluators |
+| 3.3a | Won't fix | The header states that the theorems' force comes from the definition being accepted as total; `eval_zero` is a real property. Deleting them gains nothing |
+| 3.4a | **Fixed** | D6 cannot occur: `schema/data.schema.json` types every D6 position as a line reference, so the build rejects a constant or a parameter there (checked with the build's Ajv settings: a constant or parameter in `sum`, `smaller_of`, `multiply_rate.amount`, `prorate.part`, `round.of`, `keyed_lookup.keys`, `table_lookup.key`, `multiply_count.count` and `subtract.from` is rejected). Spec 4.7 corrected |
+| 3.4b | Proposal | A batch mode for the Lean binary (several `--inputs`/`--out` pairs per process). `compare` took 309 s in the latest full run, in the same wave as `mutate` (713 s), so batching saves CPU in a shared slot, not full-tier wall time |
+| 4.1 | Partly | `fixtures_year.py` `resolve` (the Python twin of `fixture-inputs.ts`) was dead: the tool reads its inputs through `fixture_inputs.resolve_cases`, the engine's resolver. Removed, and the tool's self-test now tests the engine's resolver. `UnroundedModel` is deliberately a different evaluator (exact arithmetic, modelling engines that do not round); `Expander` normalizes expressions to compare transcriptions and has no TypeScript twin. `Reading` (`tools/human_review/reading.py`) is the one true second renderer: proposal, retire it with the human packets or have the packets use `render.ts`'s output (packets are optional, validation policy 10-24) |
+| 4.2 | Won't fix | `taxyear.py` as 2.4. The manifest loaders are one-line JSON reads, and `archive_text.manifest` is the shared reader. The four `.mjs` files are layers, not copies: `model_candidate` validates, `candidate_runtime` builds on it, `check_input_contracts` runs it, `check_adapters` evaluates authored adapters. The `bbox-layout` parsers were not re-examined |
+| 4.4a | Won't fix | A format-preserving rewrite of authored YAML, which PyYAML cannot round-trip |
+| 4.4b | Won't fix | The PDF texts interleave two columns, so the table titles are not contiguous in either PDF printing (`p946.txt`, `p463.txt`). A layout-tolerant match would be less safe than exact openings that fail by name when a new edition arrives, a few minutes' work a year |
+| 4.4c | Won't fix | `str.index` fails loudly if a heading moves; giving the reviewer spec 4.1 to 4.3 is intended |
+| 4.4f | Won't fix | UsTaxes is third-party TypeScript run as a differential engine; transpiling on load avoids a build step for a vendored tree |
+| 5.1a | Deferred | `forms/2025/person.yaml` |
+| 5.1b | Deferred | `forms/2025/person.yaml`, `forms/2025/dependent.yaml` |
+| 5.2a | Won't fix | The twelve monthly columns are the printed form (Form 8962 Part II, Form 1095-A). A per-month construct is a DSL change that would rewrite both forms and reopen their reviews |
+| 5.2d | Deferred | `forms/2025/person.yaml` |
+| 5.2e | Proposal | No line needs a date. The year-specific Bool ids (`eic.died_2025`, `f2441.paid_2026`, `household.spouse_died_2025`) are the year-literal ids of charter 7.4, and are better fixed there |
+| 5.3b | Deferred | `interview/` |
+| 5.4a | Partly | Since the per-form fixtures, a new input needs one default in `fixtures/<year>/defaults.json` (the build fails without it), not an answer in every fixture. `siblings.py --input` now says so. The other places remain, listed by that command |
+| 5.4c | Proposal | Still 14 of 198 class M cases with `mfj` and `household.unmarried`. A fix changes the class M corpus (`generate.ts`, so also the seeded sample) and `classm.json`'s cases, which is a fixture change for the owner to decide |
+
 ---
 
 ## 6. Conventions
@@ -441,6 +478,20 @@ single words. `tools/`: Python and shell in snake_case, no hyphenated script nam
 **Languages (tracked, excluding sources, reviews, reports, rendered and fixtures).** TypeScript 12,909 lines in 36 files; Python 31,193 in
 108 files (this includes tool tests and a few files outside `tools/`); `.mjs` 1,964; shell 1,177; Lean 1,933 in 6 files; YAML 86,689 in
 125 files; JSON 189,726 in 906 files; Markdown 41,577 in 766 files.
+
+---
+
+### 6.1 Phase 1 (charter section 6 conventions, item 7)
+
+- **Tests:** every Python `test_*.py` now runs in check-all (`test_review_yield.py` added to `self_tests`). The two
+  browser tests (`.mjs`, a headless Chrome launched by hand) are listed in `tools/README.md` as run by hand.
+- **Engine file names:** all multi-word names in `engine/src` are kebab-case already.
+- **`adapter_contracts/2025/`** holds federal contracts only (`div`, `f4952`), so it is the federal `<kind>/<year>/` form.
+- **Source catalogs** (owner decision): `tools/sources/<year>.json` and `tools/sources/ny/<year>.json`.
+- **Charter** (owner decision): undated, `docs/consolidation_charter.md`. The reference in the append-only
+  `docs/ARGON_CLAUDE_DISCUSSION.md` keeps the old path.
+- **Not done:** interview file names (the gate lane owns `interview/`; after it merges) and trimming
+  `HANDOFF-NEXT-SESSION.md`.
 
 ---
 
