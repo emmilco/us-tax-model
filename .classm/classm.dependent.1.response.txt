@@ -1,9 +1,0 @@
-```yaml
-lines:
-  - printed: "dependent[dep_a].dc_line2d"
-    value: "2220.00"
-    work: "Child, age 6, lived with you 7 of 12 months, and did not provide over half of own support, so a qualifying child and dependent; under 13 makes a qualifying person; enter care expenses paid in 2025 of $2,220.00"
-  - printed: "dependent[dep_a].dc_line2c"
-    value: "no"
-    work: "Age 6 is not over age 12, and the child is not unable to care for self, so leave column (c) unchecked"
-```

@@ -1,9 +1,0 @@
-```yaml
-lines:
-  - printed: "dependent[dep_c].dc_line2d"
-    value: "2590.00"
-    work: "Qualifying child (age 7, lived with you 12 months, support and joint-return tests met), claimed as dependent on MFJ return, under 13, so a qualifying person; qualified expenses incurred and paid in 2025 = $2,590.00"
-  - printed: "dependent[dep_c].dc_line2c"
-    value: "no"
-    work: "Age 7, not over age 12, and able to care for self, so the column (c) box is not checked"
-```
