@@ -181,9 +181,9 @@
    "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64"
   },
   "unruled:f4562#1.3": {
-   "class": "real gap",
-   "evidence": "i4562 p. 9. asset.screen refuses an asset 'you disposed of' in 2025, but does not name the disposition of a portion of an asset, so the basis and reserve reduction for a partial disposition is unasked. Low; BUG-0402.",
-   "bug": "BUG-0402",
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 9. asset.screen refuses an asset 'you disposed of it, or of a portion of it' (the wording BUG-0402's list asked for, added in b8bacf5f on 2026-11-04), so a partial disposition is refused. Previously ruled a real gap under BUG-0402 before that wording existed; see BUG-0497.",
    "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64"
   },
   "unruled:f4562#1.4": {
@@ -874,6 +874,543 @@
    "class": "out of scope",
    "evidence": "i1040gi p. 95 (reservist repayments not deductible); i8606 p. 9, \"Include on line 1 any repayment of a qualified reservist distribution\". As the earlier person#2 ruling: scope.other_income lists \"a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)\" and refuses the return, so no such repayment reaches person.ira_trad.",
    "subject_sha": "cea84c2f0194543311bbcab9a44c8a14bd6d129b9d24790c7337b2c8672c12d8"
+  },
+  "unruled:se#3.2": {
+   "class": "out of scope",
+   "gate": "person.se_screened",
+   "evidence": "i1040sse p. 2, Chapter 11 Bankruptcy Cases and Community Income. Same gap as se#1.3: person.se_screen lists 'a chapter 11 bankruptcy case' and 'community income on a separate return', and person.se_screened refuses (person.se_line2); the screen's text is not in the encoding list the reviewer saw.",
+   "subject_sha": "a14d554d2a4f268f75568711703b2ce9200ea0431af50eb7d3f44161cef2ec82",
+   "same_as": "unruled:se#1.3"
+  },
+  "unruled:se#3.3": {
+   "class": "out of scope",
+   "gate": "person.se_screened",
+   "evidence": "i1040sse p. 2, Form 4029 and social security agreements. Same gap as se#1.1: person.se_screen lists 'having an approved Form 4361 or Form 4029' and 'self-employment income exempt under an international social security agreement'; person.se_screened refuses.",
+   "subject_sha": "a14d554d2a4f268f75568711703b2ce9200ea0431af50eb7d3f44161cef2ec82",
+   "same_as": "unruled:se#1.1"
+  },
+  "unruled:se#4.1": {
+   "class": "out of scope",
+   "gate": "person.se_screened",
+   "evidence": "i1040sse p. 2, U.S. citizen employed by a foreign government. Same gap as se#1.2: person.se_screen lists income 'earned as a U.S. citizen employed by a foreign government' and person.se_screened refuses; such pay comes without a Form W-2, which scope.other_income also refuses.",
+   "subject_sha": "a14d554d2a4f268f75568711703b2ce9200ea0431af50eb7d3f44161cef2ec82",
+   "same_as": "unruled:se#1.2"
+  },
+  "unruled:se#4.2": {
+   "class": "out of scope",
+   "gate": "person.se_screened",
+   "evidence": "i1040sse p. 2. Same gap as se#1.3 (chapter 11 and community income on a separate return, both listed in person.se_screen; person.se_screened refuses). The participation sentences are se#1.2's: a business owned with the spouse as community property is refused by sc.spouse_owned, and otherwise each Schedule C is the earnings of the spouse who carries it on.",
+   "subject_sha": "a14d554d2a4f268f75568711703b2ce9200ea0431af50eb7d3f44161cef2ec82",
+   "same_as": "unruled:se#1.3"
+  },
+  "unruled:se#4.3": {
+   "class": "out of scope",
+   "gate": "person.se_screened",
+   "evidence": "i1040sse p. 2. Same gap as se#1.1 (Form 4029 and totalization agreements, listed in person.se_screen). The added dual-citizen sentence on foreign-government work is se#1.2's: person.se_screen lists income 'earned as a U.S. citizen employed by a foreign government'. person.se_screened refuses both.",
+   "subject_sha": "a14d554d2a4f268f75568711703b2ce9200ea0431af50eb7d3f44161cef2ec82",
+   "same_as": "unruled:se#1.1"
+  },
+  "unruled:se#5.1": {
+   "class": "out of scope",
+   "gate": "person.se_screened",
+   "evidence": "i1040sse p. 2. Same gap as se#1.2: foreign-government and international-organization pay and the dual-citizen exemption are listed in person.se_screen ('earned as a U.S. citizen employed by a foreign government', 'exempt under an international social security agreement'); person.se_screened refuses.",
+   "subject_sha": "a14d554d2a4f268f75568711703b2ce9200ea0431af50eb7d3f44161cef2ec82",
+   "same_as": "unruled:se#1.2"
+  },
+  "unruled:se#5.2": {
+   "class": "out of scope",
+   "gate": "person.se_screened",
+   "evidence": "i1040sse p. 2. Same gap as se#1.3: person.se_screen lists 'a chapter 11 bankruptcy case' and 'community income on a separate return'; person.se_screened refuses; separate returns are also refused by s3.mfs and a jointly owned community business by sc.spouse_owned.",
+   "subject_sha": "a14d554d2a4f268f75568711703b2ce9200ea0431af50eb7d3f44161cef2ec82",
+   "same_as": "unruled:se#1.3"
+  },
+  "unruled:w2#2.2": {
+   "class": "out of scope",
+   "gate": "f8959.unsupported",
+   "evidence": "i8959 p. 1. Same gap as w2#1.2: w2.box6 feeds person.medicare6 and Form 8959 line 19; f8959.unsupported asks about 'Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)' and refuses Form 8959.",
+   "subject_sha": "480fe3eae6948a29767cc3bd912338132ef05b126f0fef0a38ba5ecd368388bf",
+   "same_as": "unruled:w2#1.2"
+  },
+  "unruled:w2#3.2": {
+   "class": "out of scope",
+   "gate": "f8959.unsupported",
+   "evidence": "i8959 p. 1. Same gap as w2#1.2: a Form 499R-2/W-2PR is refused by f8959.unsupported ('Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)').",
+   "subject_sha": "480fe3eae6948a29767cc3bd912338132ef05b126f0fef0a38ba5ecd368388bf",
+   "same_as": "unruled:w2#1.2"
+  },
+  "unruled:w2#3.5": {
+   "class": "out of scope",
+   "gate": "s8812.combat_pay",
+   "evidence": "i2441 p. 5. Same gap as w2#1.5: s8812.combat_pay asks about nontaxable combat pay (box 12 code Q), and Form 2441 refuses 'Nontaxable combat pay election (Form 2441, lines 4, 5, 18 and 19)' when it is true.",
+   "subject_sha": "480fe3eae6948a29767cc3bd912338132ef05b126f0fef0a38ba5ecd368388bf",
+   "same_as": "unruled:w2#1.5"
+  },
+  "unruled:w2#5.1": {
+   "class": "out of scope",
+   "gate": "f8959.unsupported",
+   "evidence": "i8959 p. 1. Same gap as w2#1.1 (and w2#1.2 for box 6): f8959.unsupported refuses Form 8959 for 'Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)'.",
+   "subject_sha": "480fe3eae6948a29767cc3bd912338132ef05b126f0fef0a38ba5ecd368388bf",
+   "same_as": "unruled:w2#1.1"
+  },
+  "unruled:w2#5.2": {
+   "class": "out of scope",
+   "gate": "s8812.combat_pay",
+   "evidence": "i2441 p. 5. Same gap as w2#1.5, raised on w2.box12_any: s8812.combat_pay asks about code Q combat pay and Form 2441 refuses the combat pay election (lines 4, 5, 18 and 19).",
+   "subject_sha": "480fe3eae6948a29767cc3bd912338132ef05b126f0fef0a38ba5ecd368388bf",
+   "same_as": "unruled:w2#1.5"
+  },
+  "unruled:f8889#2.1": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "evidence": "p969 pp. 4-5; i8889 p. 3. Same gap as f8889#1.1: f8889.coverage_year (and months_eligible, dec_coverage) take 'covered by an HDHP' at face value (no minimum deductible and out-of-pocket tests, embedded family deductible, plans mainly of disregarded coverage, prescription plan paying before the deductible, zero-balance FSA grace period). BUG-0453.",
+   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
+   "same_as": "unruled:f8889#1.1"
+  },
+  "unruled:f8889#2.3": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "evidence": "i8889 p. 8, Line 15, 'Do not include the distribution of an excess contribution taken out after the due date'. Same gap as f8889#1.3: f8889.medical has no such exclusion (BUG-0453). The nonprescription medicine, menstrual product, condom and PPE sentences (i8889 p. 2) are covered: f8889.medical asks for 'qualified medical expenses', the HSA term, which includes them, and nothing in the question excludes them.",
+   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
+   "same_as": "unruled:f8889#1.3"
+  },
+  "unruled:f8889#2.4": {
+   "class": "presentation",
+   "evidence": "i8889 p. 4, Line 1. The line 1 self-only/family checkbox is not encoded; it changes no amount (lines 3, 6 and 7 come from f8889.coverage_year and the month counts). Raised within f8889#1.1, ruled presentation there.",
+   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2"
+  },
+  "unruled:f8889#3.1": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "evidence": "p969 pp. 4-5. Same gap as f8889#1.1 (HDHP definition and the zero-balance FSA grace period not in f8889.coverage_year). BUG-0453.",
+   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
+   "same_as": "unruled:f8889#1.1"
+  },
+  "unruled:f8889#3.3": {
+   "class": "presentation",
+   "evidence": "i8889 p. 4, Line 1. Same as f8889#2.4: the line 1 checkbox only, no amount effect.",
+   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
+   "same_as": "unruled:f8889#2.4"
+  },
+  "unruled:f8889#4.2": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "evidence": "p969 pp. 4-5. Items (1) to (4) are the gap of f8889#1.1 (BUG-0453). Item (5), the suspended or retirement HRA, is covered in substance: f8889.coverage_year counts as other coverage 'a general-purpose health FSA or HRA that pays your medical expenses', so an HRA that pays nothing during its suspension or before retirement is not other coverage, and is once it pays.",
+   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
+   "same_as": "unruled:f8889#1.1"
+  },
+  "unruled:f8889#4.3": {
+   "class": "presentation",
+   "evidence": "i8889 p. 4, Line 1. Same as f8889#2.4: the line 1 checkbox only.",
+   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
+   "same_as": "unruled:f8889#2.4"
+  },
+  "unruled:f8889#5.1": {
+   "class": "real gap",
+   "bug": "BUG-0453",
+   "evidence": "p969 pp. 4-5. Same gap as f8889#1.1 (HDHP definition and FSA grace period not in f8889.coverage_year). BUG-0453.",
+   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
+   "same_as": "unruled:f8889#1.1"
+  },
+  "unruled:f8889#5.4": {
+   "class": "presentation",
+   "evidence": "i8889 p. 4, Line 1. Same as f8889#2.4: the line 1 checkbox only.",
+   "subject_sha": "468af834bc38ee0690dfb1cea3511ef417e965d0741ec68b810a6e8b54a051b2",
+   "same_as": "unruled:f8889#2.4"
+  },
+  "unruled:f5329#2.1": {
+   "class": "wrong",
+   "evidence": "i5329 p. 5; p590b p. 28. The claim's core misreads the encoding (its list shows only the f5329 lines). The dollar caps are applied per person: person.x_cap09 ($10,000 less person.x_prior09), person.x_cap19 ($5,000 per birth, person.x_births), person.x_c05 (medical over 7.5% of AGI), person.x_c22 ($10,300), person.x_c23 ($1,000), summed in person.x_limited_sum into f5329.l2; the 50%-of-account and interest-minus-$1,000 limits are in retirement.exc_amount. The conditions (age 55/50 separation, plan type, reservist, first-home no-ownership for both spouses, birth/adoption period) are in retirement.exception, and retirement.wrong_kind refuses plan-type mismatches; one emergency distribution per year is refused by person.x_two23 and one within 3 years of an unrepaid one by retirement.early_screen. The birth/adoption statement is presentation (f5329#1.2).",
+   "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49"
+  },
+  "unruled:f5329#2.2": {
+   "class": "out of scope",
+   "gate": "f8889.unsupported",
+   "evidence": "i5329 p. 8. Same gap as f5329#1.1: f8889.unsupported names 'a withdrawal of excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions' and refuses Form 8889 lines 13 and 16.",
+   "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
+   "same_as": "unruled:f5329#1.1"
+  },
+  "unruled:f5329#2.3": {
+   "class": "out of scope",
+   "gate": "retirement.bad_code",
+   "evidence": "i5329 p. 1. Same gap as f5329#1.3: a Roth IRA distribution coded other than Q (Form 8606 line 25c amount, recapture, or a nonqualified first-home distribution, code J) is refused by retirement.bad_code.",
+   "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
+   "same_as": "unruled:f5329#1.3"
+  },
+  "unruled:f5329#3.1": {
+   "class": "out of scope",
+   "gate": "f8889.unsupported",
+   "evidence": "i5329 p. 8. Same gap as f5329#1.1: a timely withdrawal of a 2025 HSA excess is refused by f8889.unsupported; a withdrawal in the 6-month window after a timely filed return is made on an amended return.",
+   "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
+   "same_as": "unruled:f5329#1.1"
+  },
+  "unruled:f5329#3.2": {
+   "class": "out of scope",
+   "gate": "retirement.screen_refused",
+   "evidence": "p590b p. 28; i5329 p. 5. The 3-year bar on emergency distributions is refused: retirement.early_screen asks whether the distribution 'is an emergency personal expense distribution within 3 years after an earlier one you have not repaid' and retirement.screen_refused refuses. The spouse no-ownership test is in retirement.exception (exception 09). The birth/adoption statement is presentation (f5329#1.2). The 3-year point was first raised in f5329#2.1.",
+   "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49"
+  },
+  "unruled:f5329#3.3": {
+   "class": "out of scope",
+   "gate": "retirement.bad_code",
+   "evidence": "i5329 p. 1. Same gap as f5329#1.3: refused by retirement.bad_code.",
+   "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
+   "same_as": "unruled:f5329#1.3"
+  },
+  "unruled:f5329#4.1": {
+   "class": "wrong",
+   "evidence": "i5329 p. 5; p590b p. 28. Same misreading as f5329#2.1: the caps are applied in person.x_cap09/x_prior09, x_cap19/x_births, x_c05, x_c22, x_c23 (person.x_limited_sum into f5329.l2), the first-time homebuyer test for both spouses is in retirement.exception, and the 3-year emergency bar is refused by retirement.early_screen.",
+   "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
+   "same_as": "unruled:f5329#2.1"
+  },
+  "unruled:f5329#4.2": {
+   "class": "out of scope",
+   "gate": "f8889.unsupported",
+   "evidence": "i5329 p. 8. Same gap as f5329#1.1: refused by f8889.unsupported.",
+   "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
+   "same_as": "unruled:f5329#1.1"
+  },
+  "unruled:f5329#4.3": {
+   "class": "out of scope",
+   "gate": "retirement.bad_code",
+   "evidence": "i5329 p. 1. Same gap as f5329#1.3: a code J Roth distribution is refused by retirement.bad_code.",
+   "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
+   "same_as": "unruled:f5329#1.3"
+  },
+  "unruled:f5329#5.2": {
+   "class": "out of scope",
+   "gate": "f8889.unsupported",
+   "evidence": "i5329 p. 8. Same gap as f5329#1.1: refused by f8889.unsupported.",
+   "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
+   "same_as": "unruled:f5329#1.1"
+  },
+  "unruled:f5329#5.3": {
+   "class": "out of scope",
+   "gate": "retirement.bad_code",
+   "evidence": "i5329 p. 1. Same gap as f5329#1.3: refused by retirement.bad_code.",
+   "subject_sha": "a6a6117f317b295afb1afefa18d68e378114407a8858a6b3518662fde8a8ca49",
+   "same_as": "unruled:f5329#1.3"
+  },
+  "unruled:f4562#2.1": {
+   "class": "covered",
+   "line": "s179.line12",
+   "evidence": "i4562 p. 5. Same as f4562#1.1: f4562.line12 is allocated from the return's Part I (s179): line 5 with the MFS share and refusal (s179.line5), carryover (s179.line10), business income limit (s179.line11); trade-ins are refused by asset.screen. A section 179 deduction from a Schedule K-1 is refused with partnership and S corporation income (scope.schedule1).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.1"
+  },
+  "unruled:f4562#2.2": {
+   "class": "covered",
+   "line": "s179.line7",
+   "evidence": "i4562 pp. 5, 13. Same as f4562#1.12: line 29 feeds s179.line7; listed property used 50% or less is refused (asset.listed_low). Section 179 is taken before the allowance: asset.after179 is basis less section 179, and the allowance is figured on it.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.12"
+  },
+  "unruled:f4562#2.3": {
+   "class": "out of scope",
+   "gate": "asset.listed_low",
+   "evidence": "i4562 pp. 13-14. Same as f4562#1.9: listed property used 50% or less is refused (asset.listed_low); aircraft are refused by asset.screen; vehicles are scveh entries with the auto limits.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.9"
+  },
+  "unruled:f4562#2.4": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 14-15. Same as f4562#1.10: asset.screen refuses listed property whose qualified business use is 50% or less after the quoted exclusions, trade-ins, aircraft, and property whose business use percentage has changed since it was placed in service (so the recapture case); vehicles and their section 280F limits are scveh.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.10"
+  },
+  "unruled:f4562#2.5": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 9. asset.screen refuses 'you disposed of it, or of a portion of it' and 'a film, videotape or sound recording'; the percentage tables never exceed basis (f4562#1.2). The partial-disposition point is f4562#1.3, whose ruling (real gap, BUG-0402) predates the screen's 'or of a portion of it' wording; on the current encoding it is refused.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.3"
+  },
+  "unruled:f4562#2.6": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 9-12. Same as f4562#1.4: asset.screen refuses like-kind exchanges and involuntary conversions, other basis reductions, ADS, straight line and 150% elections, dispositions, short years, general asset accounts, and software other than fully expensed 2025 software; the mid-quarter test is the mq form; horses are agricultural classes, which class_lives maps to outside (asset.outside).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.4"
+  },
+  "unruled:f4562#2.7": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 10. Same as f4562#1.5: farm machinery is in agricultural classes (asset.outside, Schedule F refused by scope.schedule1); property used in a rental real estate activity is Schedule E, refused by scope.schedule1.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.5"
+  },
+  "unruled:f4562#2.9": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 12. asset.screen lists 'qualified improvement property held by an electing real property trade or business' among property that must be depreciated under ADS, and refuses. Same ADS point as f4562#1.8.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.8"
+  },
+  "unruled:f4562#2.10": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 12. Same as f4562#1.7: farming-business property is outside (agricultural classes, Schedule F refused), and asset.screen lists property with a recovery period of 10 years or more held by an electing farming business.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.7"
+  },
+  "unruled:f4562#2.11": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 10-13. Same as f4562#1.8: real property, ADS property and qualified production property are refused by asset.screen; listed property used 50% or less by asset.listed_low. The partnership and S corporation sentence applies to entity returns, which the project does not prepare.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.8"
+  },
+  "unruled:f4562#2.12": {
+   "class": "presentation",
+   "evidence": "i4562 p. 13, Part V. Where vehicle and listed-property information is reported (Part V, Form 2106 or Schedule C Part IV) changes no amount: the deduction is the same; vehicles are scveh entries.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64"
+  },
+  "unruled:f4562#3.1": {
+   "class": "covered",
+   "line": "s179.line12",
+   "evidence": "i4562 p. 5. Same as f4562#1.1 (s179 Part I: s179.line5, s179.line7, s179.line10, s179.line11).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.1"
+  },
+  "unruled:f4562#3.2": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 9. asset.screen refuses an asset 'in a general asset account'; cumulative depreciation cannot pass basis under the percentage tables (f4562#1.2). Same line 17 point as f4562#2.5.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.5"
+  },
+  "unruled:f4562#3.3": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 9-12. Same as f4562#1.4 (asset.screen; listed property and vehicles go to Part V via asset.listed).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.4"
+  },
+  "unruled:f4562#3.4": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 11. Same as f4562#1.6: smart meter and grid property is named in asset.screen; fruit and nut trees and vines are agricultural (asset.outside).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.6"
+  },
+  "unruled:f4562#3.5": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 12. Same as f4562#2.9: asset.screen lists qualified improvement property held by an electing real property trade or business.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.9"
+  },
+  "unruled:f4562#3.6": {
+   "class": "presentation",
+   "evidence": "i4562 p. 13. Same as f4562#2.12: reporting location only.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.12"
+  },
+  "unruled:f4562#3.7": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 11-13. Same as f4562#2.11 (real property and ADS refused by asset.screen; the partnership and S corporation sentence is for entity returns).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.11"
+  },
+  "unruled:f4562#3.8": {
+   "class": "out of scope",
+   "gate": "asset.listed_low",
+   "evidence": "i4562 pp. 13-14. Same as f4562#1.9 (asset.listed_low; aircraft in asset.screen).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.9"
+  },
+  "unruled:f4562#3.9": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 14-15. Same as f4562#1.10 (asset.screen; vehicles in scveh).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.10"
+  },
+  "unruled:f4562#3.10": {
+   "class": "out of scope",
+   "gate": "asset.listed_low",
+   "evidence": "i4562 pp. 14-15. Same as f4562#1.11: line 27 property is refused (asset.listed_low).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.11"
+  },
+  "unruled:f4562#3.11": {
+   "class": "covered",
+   "line": "s179.line7",
+   "evidence": "i4562 p. 13. Same as f4562#2.2 (s179.line7; asset.listed_low; asset.after179 takes section 179 before the allowance).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.2"
+  },
+  "unruled:f4562#4.1": {
+   "class": "covered",
+   "line": "s179.line12",
+   "evidence": "i4562 p. 5. Same as f4562#1.1; the limits are figured once for the return (s179, the 'Summary' Part I), not per business.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.1"
+  },
+  "unruled:f4562#4.2": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 9-12. Same as f4562#1.4 (asset.screen); listed property is reported in Part V (asset.on_19 excludes asset.listed).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.4"
+  },
+  "unruled:f4562#4.3": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 10. Same as f4562#1.5 (agricultural classes, asset.outside).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.5"
+  },
+  "unruled:f4562#4.4": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 11. Same as f4562#1.6 (asset.screen; asset.outside).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.6"
+  },
+  "unruled:f4562#4.5": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 11-12. Same as f4562#1.7: farming property outside; 150% elections refused by asset.screen; the MACRS tables for 15- and 20-year property are the 150% declining balance tables.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.7"
+  },
+  "unruled:f4562#4.6": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 10-13. Same as f4562#2.11: real property, ADS and qualified production property refused by asset.screen; entity sentence not applicable.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.11"
+  },
+  "unruled:f4562#4.7": {
+   "class": "presentation",
+   "evidence": "i4562 p. 13. Same as f4562#2.12: reporting location only.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.12"
+  },
+  "unruled:f4562#4.8": {
+   "class": "out of scope",
+   "gate": "asset.listed_low",
+   "evidence": "i4562 pp. 13-14. Same as f4562#1.9.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.9"
+  },
+  "unruled:f4562#4.9": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 14-15. Same as f4562#1.10; property placed in service before 2005 (transition property) is refused by asset.screen.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.10"
+  },
+  "unruled:f4562#4.10": {
+   "class": "out of scope",
+   "gate": "asset.listed_low",
+   "evidence": "i4562 pp. 14-15. Same as f4562#1.11 (asset.listed_low).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.11"
+  },
+  "unruled:f4562#4.11": {
+   "class": "covered",
+   "line": "s179.line7",
+   "evidence": "i4562 p. 13. Same as f4562#2.2.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.2"
+  },
+  "unruled:f4562#5.1": {
+   "class": "covered",
+   "line": "s179.line12",
+   "evidence": "i4562 p. 5. Same as f4562#1.1 (s179 Part I is the return's Summary). The partnership, S corporation and corporation business-income rules apply to entity returns, which the project does not prepare.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.1"
+  },
+  "unruled:f4562#5.2": {
+   "class": "covered",
+   "line": "asset.bonus_2025",
+   "evidence": "i4562 pp. 5, 10. The allowance is taken only on property placed in service in 2025 (asset.bonus_2025 is zero unless asset.is2025) and figured on asset.after179, after section 179; qualified production property is refused by asset.screen.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64"
+  },
+  "unruled:f4562#5.3": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 9. Same as f4562#2.5: partial dispositions and films are refused by asset.screen; the tables never exceed basis.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.5"
+  },
+  "unruled:f4562#5.4": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 9-12. Same as f4562#1.4 (asset.screen: general asset accounts, exchanges, elections, dispositions, ADS; horses agricultural, asset.outside).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.4"
+  },
+  "unruled:f4562#5.5": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 p. 10. Same as f4562#1.5 (farm machinery agricultural, asset.outside; rental real estate Schedule E refused by scope.schedule1).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.5"
+  },
+  "unruled:f4562#5.6": {
+   "class": "covered",
+   "line": "asset.class",
+   "evidence": "i4562 p. 10. Property with no class life is choice 'A (personal property with no class life)' of asset.class, which asset.period maps to 7 years; the used farm machinery, grain bin, cotton ginning and fence classes are agricultural, which class_lives maps to outside (asset.outside).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64"
+  },
+  "unruled:f4562#5.8": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 10, 12. A retail motor fuels outlet is section 1250 property, refused as real property by asset.screen; QIP of an electing real property trade or business is refused (f4562#2.9); 15-year property uses the 150% declining balance MACRS table.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.9"
+  },
+  "unruled:f4562#5.9": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 10, 12. Same as f4562#1.7: farm buildings and farming property are outside (agricultural classes; real property refused by asset.screen).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.7"
+  },
+  "unruled:f4562#5.10": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 10-13. Same as f4562#1.8 (real property and ADS refused by asset.screen). Line 23 (section 263A basis) is a memo entry outside line 22, and the entity sentence does not apply to an individual return.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.8"
+  },
+  "unruled:f4562#5.11": {
+   "class": "presentation",
+   "evidence": "i4562 p. 13. Same as f4562#2.12: reporting location only.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.12"
+  },
+  "unruled:f4562#5.12": {
+   "class": "out of scope",
+   "gate": "asset.listed_low",
+   "evidence": "i4562 pp. 13-14. Same as f4562#1.9.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.9"
+  },
+  "unruled:f4562#5.13": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i4562 pp. 14-15. Same as f4562#1.10; property placed in service before 1987 (ACRS) is refused with property placed in service before 2005 by asset.screen.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.10"
+  },
+  "unruled:f4562#5.14": {
+   "class": "out of scope",
+   "gate": "asset.listed_low",
+   "evidence": "i4562 p. 15. Same as f4562#1.11 (asset.listed_low).",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#1.11"
+  },
+  "unruled:f4562#5.15": {
+   "class": "covered",
+   "line": "s179.line7",
+   "evidence": "i4562 pp. 13, 15. Same as f4562#2.2 (s179.line7; asset.listed_low); the passenger automobile limits on vehicles are applied in scveh.",
+   "subject_sha": "0b92624ae23a375a659dc9d0d3df7f1e8edac0811049314edeb85f6255dc1b64",
+   "same_as": "unruled:f4562#2.2"
   }
  },
  "baseline": {}

@@ -2,6 +2,8 @@
  "form": "s179",
  "reviews": {
   "gate:s179.wc_ask": {
+   "subject_sha": "75a0f92e642f372a526b903a715a88695a98fa8ca29bd9eb105ca4621b78b28d",
+   "grandfathered": true,
    "condition": "s179.wc_ask",
    "lines": [
     "s179.wc_interest_if_limited"
@@ -9,31 +11,6 @@
    "inputs": [
     "s179.wc_interest"
    ],
-   "verdict": "UNCLEAR",
-   "findings": [
-    {
-     "kind": "UNCLEAR",
-     "pattern": "8",
-     "who": "A general partner who materially runs a partnership, or an active S corporation shareholder, on a return with a section 179 deduction limited by business income. The partnership or S corporation earns interest on its operating cash, and Schedule K-1 reports the filer's share as interest income in the portfolio-income box, which flows to Form 1040, line 2b.",
-     "why_no": "The question and help describe interest on 'the business's operating bank account' held for 'a business you actively conduct'. The K-1 labels the amount portfolio interest income, and the account belongs to the entity, not the filer. The filer reads it as investment interest, not working capital of their own business, and enters zero.",
-     "line": "s179.wc_interest_if_limited",
-     "irs_text": "p946 (2025) p. 19: 'figure taxable income for this purpose by totaling the net income and losses from all trades and businesses you actively conducted during the year. Net income or loss from a trade or business includes ... Interest from working capital of your trade or business.'",
-     "severity": "medium",
-     "fix": "Add to the question: 'Include your share of interest a partnership or S corporation you actively conduct earned on its working capital, even if Schedule K-1 reports it as interest or portfolio income.' Or ask a separate yes/no about K-1 interest from an entity whose business the filer actively conducts."
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "6",
-     "who": "A sole proprietor who keeps the business's operating reserve in Treasury bills or a brokerage sweep or money market fund, rather than a bank account. The interest appears on line 2b.",
-     "why_no": "The help lists 'checking, savings, money market or a certificate of deposit' and the question cites an 'operating bank account'. The filer reads these as the full set of qualifying holdings and treats T-bill or fund interest as personal investment income.",
-     "line": "s179.wc_interest_if_limited",
-     "irs_text": "p946 (2025) p. 19: 'Interest from working capital of your trade or business.'",
-     "severity": "low",
-     "fix": "Say 'in any form, including bank accounts, money market funds, Treasury bills or other short-term investments held for the business's operating needs'."
-    }
-   ],
-   "prompt_sha": "b48516ed50434fe34d52e94f3bb4b9cb5ae71a50447f376539d1c45a983de639",
-   "subject_sha": "75a0f92e642f372a526b903a715a88695a98fa8ca29bd9eb105ca4621b78b28d",
    "used": [
     {
      "doc": "p946",
@@ -53,9 +30,39 @@
      "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
     }
    ],
-   "model": "claude-opus-5-5",
-   "cost": 0.064672,
-   "date": "2026-11-10"
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A general partner who materially runs a partnership, or an active S corporation shareholder, on a return with a section 179 deduction limited by business income. The partnership or S corporation earns interest on its operating cash, and Schedule K-1 reports the filer's share as interest income in the portfolio-income box, which flows to Form 1040, line 2b.",
+       "why_no": "The question and help describe interest on 'the business's operating bank account' held for 'a business you actively conduct'. The K-1 labels the amount portfolio interest income, and the account belongs to the entity, not the filer. The filer reads it as investment interest, not working capital of their own business, and enters zero.",
+       "line": "s179.wc_interest_if_limited",
+       "irs_text": "p946 (2025) p. 19: 'figure taxable income for this purpose by totaling the net income and losses from all trades and businesses you actively conducted during the year. Net income or loss from a trade or business includes ... Interest from working capital of your trade or business.'",
+       "severity": "medium",
+       "fix": "Add to the question: 'Include your share of interest a partnership or S corporation you actively conduct earned on its working capital, even if Schedule K-1 reports it as interest or portfolio income.' Or ask a separate yes/no about K-1 interest from an entity whose business the filer actively conducts."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A sole proprietor who keeps the business's operating reserve in Treasury bills or a brokerage sweep or money market fund, rather than a bank account. The interest appears on line 2b.",
+       "why_no": "The help lists 'checking, savings, money market or a certificate of deposit' and the question cites an 'operating bank account'. The filer reads these as the full set of qualifying holdings and treats T-bill or fund interest as personal investment income.",
+       "line": "s179.wc_interest_if_limited",
+       "irs_text": "p946 (2025) p. 19: 'Interest from working capital of your trade or business.'",
+       "severity": "low",
+       "fix": "Say 'in any form, including bank accounts, money market funds, Treasury bills or other short-term investments held for the business's operating needs'."
+      }
+     ],
+     "prompt_sha": "b48516ed50434fe34d52e94f3bb4b9cb5ae71a50447f376539d1c45a983de639",
+     "model": "claude-opus-5-5",
+     "cost": 0.064672,
+     "date": "2026-11-10",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "response": ".transcription/false_no/gate_s179.wc_ask.response.txt"
+    }
+   ]
   }
  }
 }

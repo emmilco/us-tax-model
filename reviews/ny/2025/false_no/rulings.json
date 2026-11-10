@@ -1,7 +1,6 @@
 {
  "rulings": {
-  "unruled:gate:ny_it201.mctmt_possible": {
-   "prompt_sha": "773f5a3f9c5d0fcc9daae249045a6d591b5548cbcd0e2b79fa3945358a119509",
+  "unruled:gate:ny_it201.mctmt_possible#1": {
    "reason": "Every finding is self-employment income other than Schedule C (partnership, farm, minister), refused federally.",
    "findings": [
     {
@@ -33,10 +32,10 @@
      "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "438944083b1c5c15db499765401f008eaae3cc99d738248fc93432aaca27bcea"
   },
-  "unruled:gate:ny_it201.federal_care": {
-   "prompt_sha": "d864564b515c4400c443e4816550de6d6139a030cae9129829e856838924723c",
+  "unruled:gate:ny_it201.federal_care#1": {
    "reason": "The gate is the federal credit's own condition (the New York credit follows the federal one); the findings are about the federal questions' wording, or read their labels for their prompts. The wording findings that hold are registered against f2441.care (BUG-0447), the federal form's lane.",
    "findings": [
     {
@@ -44,7 +43,7 @@
      "kind": "FALSE_NO",
      "severity": "high",
      "class": "not a defect: the prompts include the spouse",
-     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person — your child under age 13, or a dependent or spouse who was not able to care for themselves — so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 — amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml)."
+     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person \u2014 your child under age 13, or a dependent or spouse who was not able to care for themselves \u2014 so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 \u2014 amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml)."
     },
     {
      "n": 1,
@@ -58,7 +57,7 @@
      "kind": "UNCLEAR",
      "severity": "medium",
      "class": "not a defect: the prompt names them",
-     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person — your child under age 13, or a dependent or spouse who was not able to care for themselves — so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 — amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml). A disabled spouse or a dependent not able to care for themselves is named in the care prompt."
+     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person \u2014 your child under age 13, or a dependent or spouse who was not able to care for themselves \u2014 so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 \u2014 amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml). A disabled spouse or a dependent not able to care for themselves is named in the care prompt."
     },
     {
      "n": 3,
@@ -73,7 +72,7 @@
      "kind": "UNCLEAR",
      "severity": "medium",
      "class": "not a defect: the prompt names box 10",
-     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person — your child under age 13, or a dependent or spouse who was not able to care for themselves — so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 — amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml). Dependent care FSA amounts are reported in W-2 box 10, which the benefits prompt names; either answer Yes asks line 64."
+     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person \u2014 your child under age 13, or a dependent or spouse who was not able to care for themselves \u2014 so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 \u2014 amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml). Dependent care FSA amounts are reported in W-2 box 10, which the benefits prompt names; either answer Yes asks line 64."
     },
     {
      "n": 5,
@@ -86,10 +85,10 @@
    ],
    "bugs": [
     "BUG-0447"
-   ]
+   ],
+   "subject_sha": "4212165716570ac81140e158b6e66ac46e5f89e93734b8591e5fcee4b0611cb5"
   },
-  "unruled:gate:ny_it201.has_pension_income": {
-   "prompt_sha": "6be5ac7f04b8347b834823e8f6375ddf40608e3e525056068b5bd94f40ebcc97",
+  "unruled:gate:ny_it201.has_pension_income#1": {
    "reason": "Every finding is pension income reported outside lines 9 and 10 (wages, an estate or trust K-1), refused federally.",
    "findings": [
     {
@@ -114,7 +113,8 @@
      "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). A disability pension before minimum retirement age comes on a Form 1099-R, and retirement.special refuses \"a disability pension received before minimum retirement age\" and \"a military disability pension\"; scope.other_income refuses \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\"; s1.line8_other refuses \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)\" (which i1040gi p. 24 sends to Schedule 1 line 8t, not line 1a, when it is in W-2 box 1); scope.schedule1 refuses estates and trusts (\"Schedule E or a Schedule K-1\"). Within the tool, pension, annuity and IRA income in federal AGI is on federal lines 4b and 5b, IT-201 lines 9 and 10 (ny_it201.has_pension_income, note)."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "285f702efc172e4efe2a8e6df978198bf000d5cb2561e4fa4bb92c79d2228a57"
   }
  },
  "baseline": {}

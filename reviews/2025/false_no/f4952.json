@@ -2,6 +2,8 @@
  "form": "f4952",
  "reviews": {
   "gate:f4952.has_interest": {
+   "subject_sha": "f1d3f8f31959bce155b578b4c50e60fa9a004593228421c2ea336cda3e6aab63",
+   "grandfathered": true,
    "condition": "f4952.has_interest",
    "lines": [
     "f4952.carryover_if_interest",
@@ -11,41 +13,6 @@
     "f4952.carryover",
     "f4952.line1"
    ],
-   "verdict": "SOUND",
-   "findings": [
-    {
-     "kind": "UNCLEAR",
-     "pattern": "6",
-     "who": "A filer whose margin or investment loan is in the name of a revocable living trust, an intentionally defective grantor trust, or a single-member LLC that holds only investments. The interest is reported to the filer on a grantor letter or brokerage statement, not on a Schedule K-1.",
-     "why_no": "The entity bullet names only 'a partnership or an S corporation'. The filer reads 'Did you or your spouse pay' as excluding interest the trust or LLC paid on its own account.",
-     "line": "f4952.line1_if_interest",
-     "irs_text": "f4952 p. 3, Line 1: \"Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment\"",
-     "severity": "low",
-     "fix": "Add a bullet: 'interest paid by a grantor trust (including a revocable living trust) or a single-member LLC you own, on a loan used for investments'."
-    },
-    {
-     "kind": "FALSE_NO",
-     "pattern": "2",
-     "who": "A filer who borrowed more than $10,000 interest-free or below market from a relative and invested the money. Section 7872 treats the forgone interest as paid by the borrower.",
-     "why_no": "No interest was actually paid or charged, so 'pay or accrue any interest' is answered no.",
-     "line": "f4952.line1_if_interest",
-     "irs_text": "f4952 p. 3, Line 1: \"Enter the investment interest expense paid or accrued during the tax year, regardless of when you incurred the indebtedness\"",
-     "severity": "low",
-     "fix": "Add a bullet: 'a below-market or interest-free loan of over $10,000 used for investments (imputed interest may apply)'."
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "8",
-     "who": "A filer with a short stock sale held open more than 45 days who paid the lender amounts in lieu of dividends. Pub. 550 can treat those payments as investment interest.",
-     "why_no": "The payments are not interest on 'money borrowed'. The filer borrowed shares, not money.",
-     "line": "f4952.line1_if_interest",
-     "irs_text": "f4952 p. 3, Purpose of Form: \"For more information, see Pub. 550, Investment Income and Expenses\"",
-     "severity": "low",
-     "fix": "Add a bullet: 'payments in lieu of dividends on a short sale'. Classify the amount in a later question."
-    }
-   ],
-   "prompt_sha": "134c698ad625dddabfa2645afd6553b3b6aa32ef04934e5d6e63fef33f959325",
-   "subject_sha": "f1d3f8f31959bce155b578b4c50e60fa9a004593228421c2ea336cda3e6aab63",
    "used": [
     {
      "doc": "f4952",
@@ -72,9 +39,49 @@
      "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
     }
    ],
-   "model": "claude-opus-5-5",
-   "cost": 0.12866,
-   "date": "2026-11-07"
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer whose margin or investment loan is in the name of a revocable living trust, an intentionally defective grantor trust, or a single-member LLC that holds only investments. The interest is reported to the filer on a grantor letter or brokerage statement, not on a Schedule K-1.",
+       "why_no": "The entity bullet names only 'a partnership or an S corporation'. The filer reads 'Did you or your spouse pay' as excluding interest the trust or LLC paid on its own account.",
+       "line": "f4952.line1_if_interest",
+       "irs_text": "f4952 p. 3, Line 1: \"Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment\"",
+       "severity": "low",
+       "fix": "Add a bullet: 'interest paid by a grantor trust (including a revocable living trust) or a single-member LLC you own, on a loan used for investments'."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A filer who borrowed more than $10,000 interest-free or below market from a relative and invested the money. Section 7872 treats the forgone interest as paid by the borrower.",
+       "why_no": "No interest was actually paid or charged, so 'pay or accrue any interest' is answered no.",
+       "line": "f4952.line1_if_interest",
+       "irs_text": "f4952 p. 3, Line 1: \"Enter the investment interest expense paid or accrued during the tax year, regardless of when you incurred the indebtedness\"",
+       "severity": "low",
+       "fix": "Add a bullet: 'a below-market or interest-free loan of over $10,000 used for investments (imputed interest may apply)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer with a short stock sale held open more than 45 days who paid the lender amounts in lieu of dividends. Pub. 550 can treat those payments as investment interest.",
+       "why_no": "The payments are not interest on 'money borrowed'. The filer borrowed shares, not money.",
+       "line": "f4952.line1_if_interest",
+       "irs_text": "f4952 p. 3, Purpose of Form: \"For more information, see Pub. 550, Investment Income and Expenses\"",
+       "severity": "low",
+       "fix": "Add a bullet: 'payments in lieu of dividends on a short sale'. Classify the amount in a later question."
+      }
+     ],
+     "prompt_sha": "134c698ad625dddabfa2645afd6553b3b6aa32ef04934e5d6e63fef33f959325",
+     "model": "claude-opus-5-5",
+     "cost": 0.12866,
+     "date": "2026-11-07",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "response": ".transcription/false_no/gate_f4952.has_interest.response.txt"
+    }
+   ]
   }
  }
 }

@@ -6721,3 +6721,12 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** `siblings.py --check` failed on main from 96ef8a7b: "BUG-0492: no review log changed since 96ef8a7b^ for sibling form(s): dependent, household, ny_it201, s1a, sd".
 - **Disposition:** fixed: the search matches the heading line, `-G "^## BUG-NNNN "` (with BUG-0495's `--first-parent --diff-merges=first-parent`). BUG-0492 resolves to b9c5b37d again; BUG-0482, BUG-0471, BUG-0494 and older entries as before. siblings.py --check and --self-test pass.
 - **Tags:** tooling; check-all; siblings; fixed
+
+## BUG-0497 — BUG-0402's partial-disposition item (f4562#3) is resolved by the asset.screen wording of 2026-11-04
+
+- **Date:** 2026-11-10
+- **Caught by:** the completeness calibration adjudication (phase 2), 2026-11-10: samples f4562#2.5 and #5.3 raised partial dispositions again, and the adjudicator found the screen already refuses them.
+- **Source:** research/audits/refresh/BUG-0402_lows.md row f4562#3 asked to add "or a portion of it" to asset.screen's disposition item; forms/2025/asset.yaml asset.screen reads "you disposed of it, or of a portion of it, or converted it to personal use in 2025" since b8bacf5f (2026-11-04).
+- **Symptom:** the completeness ruling unruled:f4562#1.3 still classed the point a real gap under BUG-0402 after the fix landed, so BUG-0402 listed an item that was already resolved.
+- **Disposition:** fixed: the ruling is now out of scope (gate asset.screened). BUG-0402's other items are unchanged.
+- **Tags:** completeness; ruling correction; fixed

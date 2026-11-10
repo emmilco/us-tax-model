@@ -330,18 +330,6 @@ def as_sample(flat):
     return unit, smp
 
 
-# The cost of a Claude screen review by prompt size: a least-squares fit to the cost ledger's 17 successful screen calls
-# (claude-opus-5-5, reported cost, 16,808 to 115,466 prompt characters, $0.09 to $0.38): $0.048 a call plus $0.00295
-# per thousand characters, within $0.03 of each call. Claude's price basis is the reported cost (prices.json), so this
-# is a planning estimate; the ledger records what each call cost.
-USD_PER_KCHAR = 0.00295
-USD_PER_CALL = 0.048
-
-
-def estimate_usd(chars):
-    return USD_PER_CALL + USD_PER_KCHAR * chars / 1000
-
-
 def plan(sc, lines, mani, records, asked, force, price, model):
     """One entry per selected unit: {screen, subject, n, note, jobs}, as completeness_review.plan."""
     out = []

@@ -267,15 +267,23 @@ class Guards(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual([c[0] for c in self.calls], ["a"])
 
-    def test_prices_are_recent_cost_per_prompt_character(self):
+    def test_prices_are_a_fit_over_recent_calls(self):
         path = os.path.join(self.temp.name, "p.jsonl")
-        rows = [{"tool": "transcribe.py", "model_requested": "deepseek-flash", "outcome": "ok", "estimated_cost_usd": 0.1 * (i + 1),
-                 "prompt_chars": 1000, "timestamp": f"2026-01-{i + 1:02d}T00:00:00+00:00"} for i in range(RA.PRICE_SAMPLE + 5)]
-        rows.append({**rows[0], "outcome": "error: x", "estimated_cost_usd": 99})
+        # Recent calls cost $0.05 plus $0.0001 a character; the five oldest and a failed call are ignored.
+        rows = [{"tool": "transcribe.py", "model_requested": "deepseek-flash", "outcome": "ok",
+                 "estimated_cost_usd": (99 if i < 5 else 0.05 + 0.0001 * 1000 * (i + 1)), "prompt_chars": 1000 * (i + 1),
+                 "timestamp": f"2026-01-{i + 1:02d}T00:00:00+00:00"} for i in range(RA.PRICE_SAMPLE + 5)]
+        rows.append({**rows[6], "outcome": "error: x", "estimated_cost_usd": 99})
         Path(path).write_text("".join(json.dumps(r) + "\n" for r in rows))
-        recent = rows[5:RA.PRICE_SAMPLE + 5]
-        want = sum(r["estimated_cost_usd"] for r in recent) / sum(r["prompt_chars"] for r in recent)
-        self.assertAlmostEqual(RA.prices(path)[("transcribe.py", "deepseek")], want)
+        fixed, per = RA.prices(path)[("transcribe.py", "deepseek")]
+        self.assertAlmostEqual(fixed, 0.05)
+        self.assertAlmostEqual(per, 0.0001)
+        import spend
+        self.assertAlmostEqual(spend.estimate(2000, "transcribe.py", "deepseek-flash", {("transcribe.py", "deepseek"): (fixed, per)}), 0.25)
+        self.assertIsNone(spend.estimate(2000, "classm.py", "deepseek-flash", {}))
+        self.assertEqual(spend.estimate(0, "classm.py", "deepseek-flash", {}), 0.0)
+        self.assertEqual(spend.fit([{"prompt_chars": 10, "estimated_cost_usd": 1.0}, {"prompt_chars": 20, "estimated_cost_usd": 0.5}]),
+                         (0.0, 1.5 / 30), "a negative slope falls back to the mean rate")
 
     def test_the_ledger_row_records_a_forced_reason(self):
         import transcribe as T

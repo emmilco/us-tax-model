@@ -26,7 +26,10 @@ verification system.
     lows wait for the form's next substantive change). Enforced in `rerun_all.py` for transcription,
     render and class M: a log that already answers its subject is not rerun without
     `--force-rerun REASON`, and a run estimated above $3.00 needs `--approve-cost`
-    (tools/README.md, "Review rerun guards"). Completeness and screen reruns are not guarded.
+    (tools/README.md, "Review rerun guards"). Completeness, screen and false-no reviews are sampled per
+    release (tools/README.md, "Sampled completeness, screen and false-no reviews"): `completeness_review.py`,
+    `screen_review.py` and `false_no_review.py` refuse samples beyond the milestone without
+    `--force-rerun REASON`, and runs above $3.00 without `--approve-cost`.
   - Every agent brief states the agent's model and its class (mechanical or
     judgment), and every `agent_runs.jsonl` row records both, as `model` and
     `class` fields, with the tax `year` and `jurisdiction` (`us` or `ny`) the work is for

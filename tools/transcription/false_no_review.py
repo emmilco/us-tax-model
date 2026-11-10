@@ -10,17 +10,22 @@ condition), each gated line with its English and gated question, the archived pa
 patterns (PATTERNS below), and asks for every kind of filer
 who would answer no truthfully, or by a plausible misreading, while the cited text gives a gated line an amount.
 
-    false_no_review.py [--gates gate:a,gate:b] [--dry-run] [--from-response] [--jobs 6] [--model M]
+    false_no_review.py [--gates gate:a,gate:b] [--samples K] [--force-rerun REASON] [--approve-cost DOLLARS]
+                       [--dry-run] [--jobs 6] [--model M]
 
-Standing review: logged per form in reviews/<year>/false_no/<form>.json (the form of the gate's condition), one entry
-per gate with its verdict, findings, prompt hash, subject hash (gates.subject), pages, model and cost; rulings in
-reviews/<year>/false_no/rulings.json under "unruled:<gate>" with the prompt hash of the review they judge. A gate whose
-subject changed since its review is stale in check-all (check_false_no.py) and is rerun with --gates. Each call is one
+Sampled standing review (samples.py): logged per form in reviews/<year>/false_no/<form>.json (the form of the gate's
+condition), one record per gate holding its subject (gates.subject) and the samples run against it, each with its
+verdict, findings, prompt hash, model and cost; rulings per sample in reviews/<year>/false_no/rulings.json under
+"unruled:<gate>#<k>" with the record's subject_sha. A run gives each selected gate the samples its current subject
+still needs this milestone; samples beyond it need --force-rerun REASON, and a run estimated above the owner's gate
+needs --approve-cost (spend.py). Between releases a gate whose subject changed is due, not failed (check_false_no.py);
+its --release mode refuses a release while any gate is due. Each call is one
 fixed-prompt call to the selected model with no tools, logged in the cost ledger as kind `false_no`
 (transcribe.call_model; costs.py reports it). Raw prompts and replies go to .transcription/false_no/.
 """
 import argparse
 import datetime
+import glob
 import hashlib
 import json
 import os
@@ -35,7 +40,9 @@ from transcribe import ROOT, manifest, excerpt_for, call_model  # noqa: E402
 from taxyear import Y  # noqa: E402
 import jurisdiction  # noqa: E402
 import gates  # noqa: E402
-from screen_review import load_lines, encoded_english, estimate_usd  # noqa: E402
+from screen_review import load_lines, encoded_english  # noqa: E402
+import samples  # noqa: E402
+import spend  # noqa: E402
 
 OUT = str(jurisdiction.ypath("reviews", Y, "false_no"))
 RAW = os.path.join(ROOT, ".transcription", *(["ny"] if jurisdiction.NY else []), "false_no")
@@ -153,19 +160,28 @@ def read_log(form):
         return json.load(f)
 
 
-def run_one(key, unit, lines, mani, model, dry, from_response):
+SYSTEM_SHA = hashlib.sha256(SYSTEM.encode()).hexdigest()
+# The fields of one sample; the others describe the gate and are kept once on its record.
+SAMPLE_FIELDS = ("verdict", "findings", "prompt_sha", "system_sha", "model", "cost", "date", "response", "rerun_reason")
+VERDICTS = ("SOUND", "FALSE_NO", "UNCLEAR")
+
+
+def run_one(key, unit, lines, mani, model, dry, from_response, k=None, subject=None):
+    """One review of a gate (a flat record: the gate's fields and the sample's, split by as_sample). Sample k's reply
+    is kept as <gate>.<subject>.<k>.response.txt; without k, as <gate>.response.txt."""
     prompt, used = prompt_for(unit, lines, mani)
     os.makedirs(RAW, exist_ok=True)
     base = os.path.join(RAW, gates.safe_name(key))
     write_text(base + ".prompt.txt", prompt)
     if dry:
         return {"gate": key, "chars": len(prompt), "lines": len(unit["gates"])}
+    response = f"{base}.{subject[:12]}.{k}.response.txt" if k and subject else base + ".response.txt"
     if from_response:
-        with open(base + ".response.txt", encoding="utf-8") as f:
+        with open(response, encoding="utf-8") as f:
             text, meta = f.read(), {}
     else:
         text, meta = call_model(prompt, model, system=SYSTEM, kind=KIND, subject=key)
-        write_text(base + ".response.txt", text)
+        write_text(response, text)
     blocks = re.findall(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
     try:
         doc = yaml.safe_load(blocks[-1] if blocks else text) or {}
@@ -173,39 +189,102 @@ def run_one(key, unit, lines, mani, model, dry, from_response):
         doc = {}
     if not isinstance(doc, dict):
         doc = {}
-    return {"gate": key, "form": gates.unit_form(unit, lines), "condition": unit["condition"],
-            "lines": [g["id"] for _, g, _ in unit["gates"]], "inputs": [i["id"] for _, _, i in unit["gates"]],
-            "verdict": str(doc.get("verdict", "UNPARSED")), "findings": doc.get("findings") or [],
-            "prompt_sha": hashlib.sha256(prompt.encode()).hexdigest(),
-            "subject_sha": gates.subject(unit, lines, encoded_english), "used": used,
-            "model": ", ".join(meta.get("model_reported", [])) or model, "cost": meta.get("cost_usd") or 0,
-            "date": datetime.date.today().isoformat()}
+    out = {"gate": key, "form": gates.unit_form(unit, lines), "condition": unit["condition"],
+           "lines": [g["id"] for _, g, _ in unit["gates"]], "inputs": [i["id"] for _, _, i in unit["gates"]],
+           "verdict": str(doc.get("verdict", "UNPARSED")), "findings": doc.get("findings") or [],
+           "prompt_sha": hashlib.sha256(prompt.encode()).hexdigest(),
+           "subject_sha": gates.subject(unit, lines, encoded_english), "used": used,
+           "model": ", ".join(meta.get("model_reported", [])) or model, "cost": meta.get("cost_usd") or 0,
+           "date": datetime.date.today().isoformat(), "system_sha": SYSTEM_SHA, "response": os.path.relpath(response, ROOT)}
+    if os.environ.get(spend.REASON_ENV):
+        out["rerun_reason"] = os.environ[spend.REASON_ENV]
+    return out
 
 
-def write_results(results):
-    """Merges each result into its form's log (a rerun replaces that gate's entry and keeps the others)."""
+def as_sample(flat):
+    """(gate fields, sample) of run_one's flat record. A verdict outside VERDICTS is an unparsed sample."""
+    unit = {k: v for k, v in flat.items() if k not in SAMPLE_FIELDS and k not in ("gate", "form")}
+    smp = {k: flat[k] for k in SAMPLE_FIELDS if k in flat}
+    if smp.get("verdict") not in VERDICTS:
+        smp["parse_error"] = True
+    return unit, smp
+
+
+def records():
+    """{gate: (form, record)} over every form's log, in the sampled format (samples.py)."""
+    out = {}
+    for path in sorted(glob.glob(os.path.join(OUT, "*.json"))):
+        if os.path.basename(path) == "rulings.json":
+            continue
+        log = json.load(open(path, encoding="utf-8"))
+        legacy = [k for k, r in log.get("reviews", {}).items() if "samples" not in r]
+        if legacy:
+            sys.exit(f"{path}: {len(legacy)} review(s) in the single-review format ({', '.join(legacy[:5])}); "
+                     "the file predates sampled reviews")
+        for key, r in log.get("reviews", {}).items():
+            out[key] = (log.get("form"), r)
+    return out
+
+
+def write_results(results, subjects):
+    """Merges each sample into its gate's record in its form's log: a gate whose subject changed starts a new record;
+    other gates' records are kept."""
     by_form = {}
-    for r in results:
+    for j, r in sorted(results, key=lambda x: x[0]["k"]):
         by_form.setdefault(r["form"], []).append(r)
     os.makedirs(OUT, exist_ok=True)
     for form, rs in sorted(by_form.items()):
         log = read_log(form)
         for r in rs:
-            log["reviews"][r["gate"]] = {k: v for k, v in r.items() if k not in ("gate", "form")}
+            unit, smp = as_sample(r)
+            rec = log["reviews"].get(r["gate"])
+            if not rec or rec.get("subject_sha") != subjects[r["gate"]]:
+                rec = log["reviews"][r["gate"]] = {"subject_sha": subjects[r["gate"]], "samples": []}
+            rec.update({k: v for k, v in unit.items() if k != "subject_sha"})
+            rec["samples"].append(smp)
         log["reviews"] = dict(sorted(log["reviews"].items()))
         with open(log_path(form), "w", encoding="utf-8") as f:
             json.dump(log, f, indent=1, ensure_ascii=False)
             f.write("\n")
 
 
+def plan(units, lines, mani, recs, asked, force, price, model):
+    """One entry per selected gate: {gate, subject, note, jobs}, as completeness_review.plan."""
+    out = []
+    for key, unit in units.items():
+        subject = gates.subject(unit, lines, encoded_english)
+        form = gates.unit_form(unit, lines)
+        held = recs.get(key)
+        rec = held[1] if held and held[0] == form else None
+        n, beyond = samples.wanted(rec, subject, asked)
+        entry = {"gate": key, "unit": unit, "subject": subject, "jobs": []}
+        if n == 0:
+            entry["note"] = "satisfied: its current subject has the milestone's samples"
+        elif beyond and not force:
+            entry["note"] = (f"refused: {n} sample(s) would go beyond the milestone's {samples.SAMPLES_PER_MILESTONE}; "
+                             "--force-rerun REASON runs them")
+        else:
+            first = len(rec["samples"]) + 1 if rec and rec.get("subject_sha") == subject else 1
+            usd = spend.estimate(len(prompt_for(unit, lines, mani)[0]), "false_no_review.py", model, price)
+            entry["jobs"] = [{"kind": "false_no", "form": key, "k": k, "run": True, "usd": usd} for k in range(first, first + n)]
+            entry["note"] = f"{n} sample(s) from #{first}"
+        out.append(entry)
+    return out
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--gates", help="comma-separated gate keys (gate:<condition>); default every gate")
-    ap.add_argument("--dry-run", action="store_true", help="write the prompts and print their sizes; no call")
-    ap.add_argument("--from-response", action="store_true", help="parse the saved replies instead of calling")
+    ap.add_argument("--dry-run", action="store_true", help="plan and estimate; call no model")
+    ap.add_argument("--samples", type=int, metavar="K", help="run K samples per gate (default: those the milestone still needs)")
+    ap.add_argument("--force-rerun", metavar="REASON", help="run samples beyond the milestone; the reason is recorded")
+    ap.add_argument("--approve-cost", metavar="DOLLARS", type=float,
+                    help=f"run although the estimate exceeds the ${spend.COST_GATE_USD:.2f} gate; at least the estimate")
     ap.add_argument("--jobs", type=int, default=6)
     ap.add_argument("--model", default="claude-opus-5-5")
     a = ap.parse_args(argv)
+    if a.force_rerun is not None and not a.force_rerun.strip():
+        ap.error("--force-rerun needs a reason")
     lines = load_lines()
     mani = manifest()
     units = gates.units(lines)
@@ -215,18 +294,31 @@ def main(argv=None):
         if unknown:
             ap.error("no such gate: " + ", ".join(unknown))
         units = {k: v for k, v in units.items() if k in wanted}
-    with ThreadPoolExecutor(max_workers=a.jobs) as ex:
-        results = list(ex.map(lambda kv: run_one(kv[0], kv[1], lines, mani, a.model, a.dry_run, a.from_response), units.items()))
+    planned = plan(units, lines, mani, records(), a.samples, a.force_rerun, spend.prices(), a.model)
+    jobs = [j for e in planned for j in e["jobs"]]
+    for e in planned:
+        print(f"{e['gate']:40s} {e['note']}" + (f"  ~${sum(j['usd'] or 0 for j in e['jobs']):.2f}" if e["jobs"] else ""))
+    print(f"{len(jobs)} sample(s), estimated ${sum(j['usd'] or 0 for j in jobs):.2f}; gate ${spend.COST_GATE_USD:.2f}")
+    refusal = spend.gate(jobs, a.approve_cost)
     if a.dry_run:
-        for r in results:
-            print(f"{r['gate']:40s} {r['lines']:3d} lines {r['chars']:8,d} chars  ~${estimate_usd(r['chars']):.2f}")
-        print(f"{len(results)} gates, {sum(r['chars'] for r in results):,} chars in all, "
-              f"~${sum(estimate_usd(r['chars']) for r in results):.2f} at the Claude rate of the ledger's screen reviews")
+        if refusal:
+            print(f"would be refused: {refusal}")
         return
-    write_results(results)
-    cost = sum(r["cost"] for r in results)
-    print(f"{len(results)} gates; verdicts: " + ", ".join(f"{v} {sum(1 for r in results if r['verdict'] == v)}"
-                                                      for v in sorted({r['verdict'] for r in results})) + f"; cost {cost:.2f}")
+    if refusal:
+        sys.exit(f"refused: {refusal}")
+    if not jobs:
+        return
+    if a.force_rerun:
+        os.environ[spend.REASON_ENV] = a.force_rerun
+    by_key = {e["gate"]: e for e in planned if e["jobs"]}
+    with ThreadPoolExecutor(max_workers=a.jobs) as ex:
+        results = list(ex.map(lambda j: (j, run_one(j["form"], by_key[j["form"]]["unit"], lines, mani, a.model, False, False,
+                                                     j["k"], by_key[j["form"]]["subject"])), jobs))
+    write_results(results, {k: e["subject"] for k, e in by_key.items()})
+    done = [as_sample(r)[1] for _, r in results]
+    print(f"{len(done)} sample(s); verdicts: " + ", ".join(f"{v} {sum(1 for d in done if d['verdict'] == v)}"
+                                                          for v in sorted({d["verdict"] for d in done}))
+          + f"; cost {sum(d['cost'] for d in done):.2f}")
 
 
 if __name__ == "__main__":

@@ -2,6 +2,8 @@
  "form": "s8812",
  "reviews": {
   "gate:s8812.has_qualifying_child": {
+   "subject_sha": "bcb6a8c3cbe4638fac33e6ecf1f2bbf3874d8ad342ca1c48def13e4b0d8bc745",
+   "grandfathered": true,
    "condition": "s8812.has_qualifying_child",
    "lines": [
     "s8812.puerto_rico_if_child"
@@ -9,21 +11,6 @@
    "inputs": [
     "s8812.puerto_rico"
    ],
-   "verdict": "SOUND",
-   "findings": [
-    {
-     "kind": "UNCLEAR",
-     "pattern": "5",
-     "who": "A bona fide resident of Puerto Rico, or the spouse of one on a joint return, who files Form 1040 and excludes Puerto Rico income. Their only dependents give the credit for other dependents, for example a 17-year-old or a parent, so line 4 is zero.",
-     "why_no": "The gate is computed from line 4, so the Puerto Rico question is never asked. If the tool collects excluded Puerto Rico income or makes its Puerto Rico refusal only through this flag, the filer's Puerto Rico status is never captured.",
-     "line": "s8812.puerto_rico_if_child (false). The amounts gated here are line 16b and Credit Limit Worksheet B line 2, and both are correctly zero. The risk is a dependent use of this flag for Part I line 2a, which applies without a qualifying child.",
-     "irs_text": "f1040s8812 (2025) p. 1, line 2a: \"Enter income from Puerto Rico that you excluded\". This is added to line 1 for the line 10 phase-out of the credit for other dependents, whether or not line 4 is more than zero.",
-     "severity": "low",
-     "fix": "Make sure nothing other than Part II-B and Credit Limit Worksheet B reads s8812.puerto_rico_if_child. Ask for excluded Puerto Rico income (line 2a) under its own ungated question about you or your spouse, such as \"Did you or your spouse exclude any income from Puerto Rico in 2025?\""
-    }
-   ],
-   "prompt_sha": "d01ab283675ebf60cdd28645c9f888074b5c8cc5d4cb3d50ded6c7bbf86a5648",
-   "subject_sha": "bcb6a8c3cbe4638fac33e6ecf1f2bbf3874d8ad342ca1c48def13e4b0d8bc745",
    "used": [
     {
      "doc": "i1040s8812",
@@ -57,9 +44,29 @@
      "cols_sha256": "3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9"
     }
    ],
-   "model": "claude-opus-5-5",
-   "cost": 0.062376,
-   "date": "2026-11-07"
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A bona fide resident of Puerto Rico, or the spouse of one on a joint return, who files Form 1040 and excludes Puerto Rico income. Their only dependents give the credit for other dependents, for example a 17-year-old or a parent, so line 4 is zero.",
+       "why_no": "The gate is computed from line 4, so the Puerto Rico question is never asked. If the tool collects excluded Puerto Rico income or makes its Puerto Rico refusal only through this flag, the filer's Puerto Rico status is never captured.",
+       "line": "s8812.puerto_rico_if_child (false). The amounts gated here are line 16b and Credit Limit Worksheet B line 2, and both are correctly zero. The risk is a dependent use of this flag for Part I line 2a, which applies without a qualifying child.",
+       "irs_text": "f1040s8812 (2025) p. 1, line 2a: \"Enter income from Puerto Rico that you excluded\". This is added to line 1 for the line 10 phase-out of the credit for other dependents, whether or not line 4 is more than zero.",
+       "severity": "low",
+       "fix": "Make sure nothing other than Part II-B and Credit Limit Worksheet B reads s8812.puerto_rico_if_child. Ask for excluded Puerto Rico income (line 2a) under its own ungated question about you or your spouse, such as \"Did you or your spouse exclude any income from Puerto Rico in 2025?\""
+      }
+     ],
+     "prompt_sha": "d01ab283675ebf60cdd28645c9f888074b5c8cc5d4cb3d50ded6c7bbf86a5648",
+     "model": "claude-opus-5-5",
+     "cost": 0.062376,
+     "date": "2026-11-07",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "response": ".transcription/false_no/gate_s8812.has_qualifying_child.response.txt"
+    }
+   ]
   }
  }
 }

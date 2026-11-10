@@ -47,26 +47,7 @@ REPORT = jurisdiction.ypath("reports", Y, "screen_currency.md")
 
 
 def unit_findings(key, form, sha, r, why_changed):
-    """The findings of one unit: `due` when its record is missing or on another subject, else one `unruled` per
-    sample with a verdict other than COVERS, and `short` when it lacks the milestone's samples."""
-    if not r or r.get("subject_sha") != sha:
-        why = "never reviewed" if not r else why_changed
-        return [{"kind": "due", "line": key, "form": form, "subject": sha,
-                 "detail": f"{why}; run screen_review.py --screens {key}"}]
-    out = []
-    for k, smp in enumerate(r.get("samples") or [], 1):
-        if smp.get("parse_error"):
-            print(f"  note: {key}: sample {k} did not parse and does not count")
-        elif smp.get("verdict") != "COVERS":
-            out.append({"kind": "unruled", "line": f"{key}#{k}", "form": form, "subject": sha,
-                        "carry": (smp.get("verdict"), samples.norm(json.dumps(smp.get("findings") or [], sort_keys=True))),
-                        "detail": f"verdict {smp.get('verdict')} with {len(smp.get('findings') or [])} finding(s); "
-                                  f"adjudicate and rule with subject_sha {sha[:12]}"})
-    if not samples.satisfied(r):
-        out.append({"kind": "short", "line": key, "form": form, "subject": sha,
-                    "detail": f"{len(samples.parsed(r))} of {samples.SAMPLES_PER_MILESTONE} sample(s); "
-                              f"run screen_review.py --screens {key}"})
-    return out
+    return samples.unit_findings(key, form, sha, r, why_changed, "COVERS", f"screen_review.py --screens {key}")
 
 
 def findings():
@@ -105,29 +86,7 @@ def gate_findings(lines, reviewed):
     return out, shas
 
 
-def unit_of(key):
-    return key.split(":", 1)[1].rsplit("#", 1)[0]
-
-
-def accepted(rulings, shas):
-    """The rulings whose subject_sha is their unit's current subject."""
-    return {k: r for k, r in rulings.items() if isinstance(r, dict) and r.get("subject_sha") == shas.get(unit_of(k))}
-
-
-def carried(found, rulings):
-    """{key: ruling} for unruled samples equal (verdict and normalised findings) to a ruled sample of the same unit."""
-    own = {}
-    for f in found:
-        k = "unruled:" + f["line"]
-        if f["kind"] == "unruled" and k in rulings:
-            own.setdefault((unit_of(k), f["carry"]), k)
-    out = {}
-    for f in found:
-        k = "unruled:" + f["line"]
-        src = own.get((unit_of(k), f.get("carry")))
-        if f["kind"] == "unruled" and k not in rulings and src:
-            out[k] = {**rulings[src], "carried_from": src}
-    return out
+accepted, carried = samples.accepted, samples.carried
 
 
 def check(rebaseline=False, release=False):

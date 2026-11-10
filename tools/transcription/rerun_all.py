@@ -32,8 +32,9 @@ Guards, applied before any paid call:
   outside every compared line, a form with partial-input cases), when --whole is given, or for a
   forced rerun of a current log (no stale line to scope to); --lines names the lines explicitly.
 - Cost estimate: each job is first run with the tool's --dry-run, which builds the request it would
-  send (and refuses line scoping where the tool would); the prompt size is priced at the recent cost per
-  prompt character of the same tool and model family in the cost ledger (.transcription/costs.jsonl).
+  send (and refuses line scoping where the tool would); the request is priced from the recent calls of the
+  same tool and model family in the cost ledger (.transcription/costs.jsonl): a fixed cost per call plus a
+  cost per prompt character (spend.py).
   The estimate is printed per job and in total. A job whose saved response --resume would reuse is
   still counted.
 - Owner gate: a run whose estimate exceeds COST_GATE_USD, or that includes calls the ledger cannot
@@ -57,6 +58,7 @@ TOOLS = {"transcription": ("transcribe.py", "--form"), "render": ("render_compar
 # DeepSeek: HTTP 402 "Insufficient Balance"). A rate limit, a timeout or an oversized request is not one.
 USAGE_LIMIT = re.compile(r"usage limit|hit your (?:\w+ )?limit|(?:hour|weekly|session) limit reached|"
                          r"insufficient balance|exceeded your (?:current )?quota|deepseek HTTP 402", re.I)
+import spend  # noqa: E402
 from spend import COST_GATE_USD, PRICE_SAMPLE, REASON_ENV, prices, gate  # noqa: E402,F401  (the owner's cost gate)
 LINE_SCOPED = ("transcription", "render")
 PROMPT = re.compile(r"prompt ([\d,]+) chars")
@@ -200,8 +202,7 @@ def plan_job(kind, form, model, lines=None, whole=False, force=None, price=None)
             return job
         job["chars"] = chars
         job["note"] = job["note"] or ("whole (asked)" if whole and kind in LINE_SCOPED else "whole")
-    rate = (price or {}).get((os.path.basename(TOOLS[kind][0]), family))
-    job["usd"] = None if job["chars"] and rate is None else job["chars"] * (rate or 0)
+    job["usd"] = spend.estimate(job["chars"], os.path.basename(TOOLS[kind][0]), model or families.DEFAULT, price or {})
     return job
 
 

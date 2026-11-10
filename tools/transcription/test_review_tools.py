@@ -3058,12 +3058,16 @@ class GateReviewRuns(unittest.TestCase):
         self.assertEqual((call.call_args.kwargs["kind"], call.call_args.kwargs["subject"]), ("false_no", "gate:div.any"))
         self.assertEqual(T.TOOL_KINDS["false_no_review.py"], "false_no")
         self.assertEqual((r["verdict"], r["form"], r["findings"][0]["severity"]), ("FALSE_NO", "div", "high"))
-        FN.write_results([r])
+        subjects = {"gate:div.any": "s1", "gate:div.has_1a": "s2"}
+        FN.write_results([({"k": 1}, r)], subjects)
         log = json.loads((self.out / "div.json").read_text())
         self.assertEqual(list(log["reviews"]), ["gate:div.any"])
-        # A rerun of another gate merges into the same form's log.
+        self.assertEqual([x["verdict"] for x in log["reviews"]["gate:div.any"]["samples"]], ["FALSE_NO"])
+        # A second sample of the same subject appends; another gate merges into the same form's log.
+        FN.write_results([({"k": 2}, r)], subjects)
+        self.assertEqual(len(json.loads((self.out / "div.json").read_text())["reviews"]["gate:div.any"]["samples"]), 2)
         r2 = dict(r, gate="gate:div.has_1a", verdict="SOUND", findings=[])
-        FN.write_results([r2])
+        FN.write_results([({"k": 1}, r2)], subjects)
         self.assertEqual(sorted(json.loads((self.out / "div.json").read_text())["reviews"]), ["gate:div.any", "gate:div.has_1a"])
         # --from-response parses the saved reply without a call.
         with patch.object(FN, "call_model", side_effect=AssertionError("offline")):
@@ -3075,17 +3079,26 @@ class GateReviewRuns(unittest.TestCase):
             r = FN.run_one("gate:div.any", self.unit, self.lines, {}, "claude-opus-5-5", False, False)
         with patch.object(FN, "call_model", return_value=("verdict: SOUND\nfindings: []\n", {"model_reported": ["claude-opus-5-5"]})):
             r2 = FN.run_one("gate:div.has_1a", G.units(self.lines)["gate:div.has_1a"], self.lines, {}, "claude-opus-5-5", False, False)
-        reviewed = {"gate:div.any": ("div", r), "gate:div.has_1a": ("div", r2)}
-        kinds = lambda lines, reviewed, rulings={}: {f["line"]: f["kind"] for f in CFN.findings(lines, reviewed, rulings)}
-        self.assertEqual(kinds(self.lines, {}), {"gate:div.any": "stale", "gate:div.has_1a": "stale"})
-        self.assertEqual(kinds(self.lines, reviewed), {"gate:div.any": "unruled"})
-        self.assertEqual(kinds(self.lines, reviewed, {"unruled:gate:div.any": {"prompt_sha": "older"}}), {"gate:div.any": "rerun"})
-        self.assertEqual(kinds(_gate_lines("Did you get dividends?"), reviewed), {"gate:div.any": "stale"})
-        self.assertEqual(kinds(self.lines, dict(reviewed, **{"gate:gone": ("div", {})})), {"gate:div.any": "unruled", "gate:gone": "orphan"})
-        # Accepted by a ruling naming the review's prompt hash (tools/baseline_check.py), and the report written.
+        record = lambda flat: dict(FN.as_sample(flat)[0], samples=[FN.as_sample(flat)[1]])
+        reviewed = {"gate:div.any": ("div", record(r)), "gate:div.has_1a": ("div", record(r2))}
+        kinds = lambda lines, reviewed: {f["line"]: f["kind"] for f in CFN.findings(lines, reviewed)[0]}
+        with patch.object(CFN.samples, "SAMPLES_PER_MILESTONE", 1):
+            self.assertEqual(kinds(self.lines, {}), {"gate:div.any": "due", "gate:div.has_1a": "due"})
+            self.assertEqual(kinds(self.lines, reviewed), {"gate:div.any#1": "unruled"})
+            self.assertEqual(kinds(_gate_lines("Did you get dividends?"), reviewed), {"gate:div.any": "due"})
+            self.assertEqual(kinds(self.lines, dict(reviewed, **{"gate:gone": ("div", {})})),
+                             {"gate:div.any#1": "unruled", "gate:gone": "orphan"})
+            found, shas = CFN.findings(self.lines, reviewed)
+            # A ruling is accepted only with the record's subject_sha; an equal second sample carries it.
+            good = {"unruled:gate:div.any#1": {"subject_sha": shas["gate:div.any"], "reason": "L-1 designed out"}}
+            self.assertEqual(CFN.samples.accepted({"unruled:gate:div.any#1": {"subject_sha": "older"}}, shas), {})
+            self.assertEqual(CFN.samples.accepted(good, shas), good)
+            twice = dict(reviewed, **{"gate:div.any": ("div", dict(record(r), samples=[FN.as_sample(r)[1]] * 2))})
+            found2, _ = CFN.findings(self.lines, twice)
+            self.assertEqual(set(CFN.samples.carried(found2, good)), {"unruled:gate:div.any#2"})
         rulings_path, report = Path(self.temp.name) / "rulings.json", Path(self.temp.name) / "report.md"
-        rulings_path.write_text(json.dumps({"rulings": {"unruled:gate:div.any": {"prompt_sha": r["prompt_sha"], "reason": "L-1 designed out"}}}))
-        found = CFN.findings(self.lines, reviewed, json.loads(rulings_path.read_text())["rulings"])
+        rulings_path.write_text(json.dumps({"rulings": good}))
+        found = [f for f in found if f["kind"] not in ("due", "short")]
         with contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(CFN.baseline_check.run("false_no", [], found, rulings_path, report, "t", "l"), 0)
             self.assertEqual(CFN.baseline_check.run("false_no", [], found, Path(self.temp.name) / "none.json", report, "t", "l"), 1)

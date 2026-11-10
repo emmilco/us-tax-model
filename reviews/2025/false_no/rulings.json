@@ -1,22 +1,21 @@
 {
  "rulings": {
-  "unruled:gate:ftc.has_tax": {
+  "unruled:gate:ftc.has_tax#1": {
    "class": "no gate defect; findings on the condition's own question, pre-existing",
-   "prompt_sha": "866b5bb5aac093b30be747522f5cd3b12eac0497cfa4b3ae1e6eb790b2550178",
-   "reason": "The gate is a C gate on ftc.has_tax (ftc.taxes above zero), which the credit already read: before the gate ftc.needs1116 was all[has_tax, ...] and ftc.credit took $0 without foreign tax, so the four election answers changed no value when ftc.taxes is zero (every fixture's recorded value is unchanged). The findings concern who answers ftc.taxes zero wrongly. (1) K-1 (Form 1041) and K-3 (Form 1065, 1120-S) foreign tax: designed out; an estate, trust, partnership or S corporation interest is refused by scope.schedule1 ('partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)'). (2) foreign tax paid directly or withheld with no payee statement: the help asks for 'Foreign income taxes you paid, after any required reductions. Usually the total of Form 1099-INT box 6 and Form 1099-DIV box 7', 'usually', not 'only', and such a filer needs Form 1116 (no qualified payee statement, i1116 p. 1), which scope.credits refuses ('any credit other than ... the foreign tax credit claimed without Form 1116'). (3) a carryover with no 2025 tax and (4) a redetermination for an earlier year: both are claimed on Form 1116 and its Schedules B and C (i1116 p. 2), refused by scope.credits; the gate changes nothing for them. (5) a filer unsure whether withheld tax is 'creditable': a wording point on ftc.taxes, low, unchanged by the gate. No finding shows a non-zero gated line under a false condition."
+   "reason": "The gate is a C gate on ftc.has_tax (ftc.taxes above zero), which the credit already read: before the gate ftc.needs1116 was all[has_tax, ...] and ftc.credit took $0 without foreign tax, so the four election answers changed no value when ftc.taxes is zero (every fixture's recorded value is unchanged). The findings concern who answers ftc.taxes zero wrongly. (1) K-1 (Form 1041) and K-3 (Form 1065, 1120-S) foreign tax: designed out; an estate, trust, partnership or S corporation interest is refused by scope.schedule1 ('partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)'). (2) foreign tax paid directly or withheld with no payee statement: the help asks for 'Foreign income taxes you paid, after any required reductions. Usually the total of Form 1099-INT box 6 and Form 1099-DIV box 7', 'usually', not 'only', and such a filer needs Form 1116 (no qualified payee statement, i1116 p. 1), which scope.credits refuses ('any credit other than ... the foreign tax credit claimed without Form 1116'). (3) a carryover with no 2025 tax and (4) a redetermination for an earlier year: both are claimed on Form 1116 and its Schedules B and C (i1116 p. 2), refused by scope.credits; the gate changes nothing for them. (5) a filer unsure whether withheld tax is 'creditable': a wording point on ftc.taxes, low, unchanged by the gate. No finding shows a non-zero gated line under a false condition.",
+   "subject_sha": "4711934c03a420b8cdc7d17bbb49ab050ab0630944e87767658fef7d930ebdaa"
   },
-  "unruled:gate:household.claims_8862_credit": {
+  "unruled:gate:household.claims_8862_credit#1": {
    "class": "no gate defect; the condition is exactly the claim the instructions name",
-   "prompt_sha": "8b227daceb9910ca136e808dd3c866a7c4c04b4ce9a3b389b980655930ea1148",
-   "reason": "The gate asks household.credit_disallowed only when the return claims the earned income credit (Steps 1 to 5 passed and eic.line6, the credit of Worksheet A line 6 or Worksheet B line 11, above zero) or Schedule 8812 line 8 is more than line 11 (line 12, 'No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit'); i1040gi p. 39 and p. 43, Form 8862, who must file ('You must file Form 8862 to claim ...'). Before the gate both refusal gates (household.ctc_disallowed_claim, household.eic_disallowed_claim) already required the same claim, so no value of a fixture changes. (1, medium) A filer who has the IRS figure the earned income credit: the tool has no such election; it always figures the credit itself (eic.credit reads eic.line6), so the condition is the credit the return claims. (2, low) A credit computed as zero because of a wrong entry: the reviewer agrees no Form 8862 applies to a credit not claimed. The earlier rounds' findings on the question's wording were fixed before this review: the question now names the spouse on a joint return, and its help covers a credit on any earlier return either spouse filed (including a joint return with someone else), any reduction by notice, letter, audit or court decision or a refund issued without the credit, and 'If you are not sure, answer Yes'."
+   "reason": "The gate asks household.credit_disallowed only when the return claims the earned income credit (Steps 1 to 5 passed and eic.line6, the credit of Worksheet A line 6 or Worksheet B line 11, above zero) or Schedule 8812 line 8 is more than line 11 (line 12, 'No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit'); i1040gi p. 39 and p. 43, Form 8862, who must file ('You must file Form 8862 to claim ...'). Before the gate both refusal gates (household.ctc_disallowed_claim, household.eic_disallowed_claim) already required the same claim, so no value of a fixture changes. (1, medium) A filer who has the IRS figure the earned income credit: the tool has no such election; it always figures the credit itself (eic.credit reads eic.line6), so the condition is the credit the return claims. (2, low) A credit computed as zero because of a wrong entry: the reviewer agrees no Form 8862 applies to a credit not claimed. The earlier rounds' findings on the question's wording were fixed before this review: the question now names the spouse on a joint return, and its help covers a credit on any earlier return either spouse filed (including a joint return with someone else), any reduction by notice, letter, audit or court decision or a refund issued without the credit, and 'If you are not sure, answer Yes'.",
+   "subject_sha": "b494e1f4194e473918ba06868d2269cacbefe031c1de55f445795b80cf5eb998"
   },
-  "unruled:gate:s1.has_jury_pay": {
+  "unruled:gate:s1.has_jury_pay#1": {
    "class": "no gate defect; the condition is the owner-approved C gate on line 8h",
-   "prompt_sha": "f67ac280d9cf5ac6b95d90c44a19badd75f04b6bbd6c2ba64839c0a5bdc0d234",
-   "reason": "The gate asks s1.jury_to_employer only when Schedule 1 line 8h is above zero (design, question hierarchy: 'Jury pay given to your employer [C: only if jury pay (8h) is above zero]'). Line 24a is a part of line 8h: i1040gi p. 91, Line 8h, 'Enter any jury duty pay and see the instructions for line 24a'; p525 p. 34, Jury duty, 'Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h. If you must give the pay to your employer ... you can deduct the amount turned over to your employer'; the chosen reading of amb.2025.jury_24a_cap treats an amount given above line 8h as an impossible entry. (1, high) Pay received and reported in 2024 and turned over in 2025: that is a repayment of an amount included in income in an earlier year, which p525 p. 36, Repayments, treats separately ('If you had to repay an amount that you included in your income in an earlier year, you may be able to deduct the amount repaid from your income for the year in which you repaid it'), not line 24a of the year of receipt; before the gate the tool asked the amount and refused it as an impossible entry (s1.jury_over), now it does not ask it. Neither handles a claim-of-right repayment, which no screen names; reported to the owner as an open question, not a gate defect. (2, medium) Jury pay entered as other income (line 8z or a Form 1099-MISC): line 8h is asked of every filer and p525 p. 34 puts jury pay on line 8h; its help now says 'All jury duty pay received in 2025, whether or not a form reported it, including any pay you gave to your employer'. (3, low) Pay signed over and never entered: the line 8h question and help both say to include pay given to the employer. Every fixture's recorded value is unchanged."
+   "reason": "The gate asks s1.jury_to_employer only when Schedule 1 line 8h is above zero (design, question hierarchy: 'Jury pay given to your employer [C: only if jury pay (8h) is above zero]'). Line 24a is a part of line 8h: i1040gi p. 91, Line 8h, 'Enter any jury duty pay and see the instructions for line 24a'; p525 p. 34, Jury duty, 'Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h. If you must give the pay to your employer ... you can deduct the amount turned over to your employer'; the chosen reading of amb.2025.jury_24a_cap treats an amount given above line 8h as an impossible entry. (1, high) Pay received and reported in 2024 and turned over in 2025: that is a repayment of an amount included in income in an earlier year, which p525 p. 36, Repayments, treats separately ('If you had to repay an amount that you included in your income in an earlier year, you may be able to deduct the amount repaid from your income for the year in which you repaid it'), not line 24a of the year of receipt; before the gate the tool asked the amount and refused it as an impossible entry (s1.jury_over), now it does not ask it. Neither handles a claim-of-right repayment, which no screen names; reported to the owner as an open question, not a gate defect. (2, medium) Jury pay entered as other income (line 8z or a Form 1099-MISC): line 8h is asked of every filer and p525 p. 34 puts jury pay on line 8h; its help now says 'All jury duty pay received in 2025, whether or not a form reported it, including any pay you gave to your employer'. (3, low) Pay signed over and never entered: the line 8h question and help both say to include pay given to the employer. Every fixture's recorded value is unchanged.",
+   "subject_sha": "89d52a3191553404d36fafa53304fea78ba3465ca843c7e50087b291199fd307"
   },
-  "unruled:gate:div.any": {
-   "prompt_sha": "250bd3f469cb817a2ee5cb9f47eccb33e384d23948d336c3ce5b0b323254fb5c",
+  "unruled:gate:div.any#1": {
    "reason": "No defect: Form 8814 is refused for every filer, a repeat of the earlier rounds' finding; the lows are wording already covered by the list and help.",
    "findings": [
     {
@@ -38,10 +37,10 @@
      "evidence": "div.any lists money market funds; its help says fund amounts are dividends even when a statement calls them interest or tax-exempt interest."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "8a0ff59b35e88d154af2737e9b25f6d41bbd6c295acecefe22e4e76a8ae32e35"
   },
-  "unruled:gate:div.has_ordinary": {
-   "prompt_sha": "6a48bd8b9001e82dc465eb01f188dc499c72c256839597f8a277ccec5aa0d487",
+  "unruled:gate:div.has_ordinary#1": {
    "reason": "No defect: Schedule K-1 and Form 8814 dividends are refused before these lines; dividends without a form and reinvested dividends are named in div.any and the box 1a help.",
    "findings": [
     {
@@ -75,10 +74,10 @@
      "evidence": "Schedule K-1 items are refused by scope.schedule1 ('partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)'), asked of every filer."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "10c3ae54a8a697b285e7abaf69caa9a4b6853eee76b4cfc51b0654946a44cc56"
   },
-  "unruled:gate:div.has_return_of_capital": {
-   "prompt_sha": "472b2828118d8b540983a26f7fc391631519d7fcc84e447c259f27a6af20c44c",
+  "unruled:gate:div.has_return_of_capital#1": {
    "reason": "No defect of the gate: the gated answer is read only with box 3 above zero, as before the gate; the parent question names returns of capital and distributions without a form.",
    "findings": [
     {
@@ -106,10 +105,10 @@
      "evidence": "The filer answers from the forms held; a later correction is an amended return."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "3932865298c67a9e6bdb379d95825ab6c49497e335459a5303ac4174c48a504b"
   },
-  "unruled:gate:sb.has_income": {
-   "prompt_sha": "c542c8d734a691a49a28cf311e6120e45d7f9b04b1b3168cec9ec318326613e7",
+  "unruled:gate:sb.has_income#1": {
    "reason": "No defect: Part III is asked of every filer by its own questions; the interest roster's and box 1a help name each source the findings describe.",
    "findings": [
     {
@@ -155,20 +154,20 @@
      "evidence": "The box 1a question's help: substitute statements and 'any ordinary dividends received without a form'."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "ce534a6d7b965f4e73ce8667e089c1fd4b5a0dc078cc41e50364233e2a240114"
   },
-  "unruled:gate:f8889.dec_coverage_if_changed": {
+  "unruled:gate:f8889.dec_coverage_if_changed#1": {
    "class": "no gate defect; findings on the December 1 question's own wording, pre-existing",
-   "prompt_sha": "dd1b8bab8c69c14f35c60bc0e93dbbe655f1eb31770a30189f0c952f2ce4b721",
-   "reason": "The gate line f8889.use_last_month hides f8889.last_month when the December 1 coverage is none (i8889 p. 2, Last-month rule, 'if you are an eligible individual on the 1st day of the last month of the tax year'), as in gate round 1, now read through f8889.dec_coverage_if_changed, so the last-month question is also not asked after an all-year answer (rule 3: eligible all year with one coverage type, the rule adds nothing). This run: (1) a spouse who died in 2025, whose last month is the month of death (medium): pre-existing wording of the December 1 question, registered as BUG-0452 for the owner; (2) a fiscal-year filer (low): the tool prepares calendar-year returns (the fiscal-year refusing row of the gate grids); (3) COBRA coverage on December 1, (4) a marketplace plan labeled HSA-eligible, (5) coverage as a family member on the spouse's family HDHP (medium, UNCLEAR): the question states that family includes coverage as a member of someone else's family HDHP; recognising a plan as an HDHP is the definition point of BUG-0453. None is a gate defect: each is a filer answering the December 1 question itself wrongly, as before the restructure."
+   "reason": "The gate line f8889.use_last_month hides f8889.last_month when the December 1 coverage is none (i8889 p. 2, Last-month rule, 'if you are an eligible individual on the 1st day of the last month of the tax year'), as in gate round 1, now read through f8889.dec_coverage_if_changed, so the last-month question is also not asked after an all-year answer (rule 3: eligible all year with one coverage type, the rule adds nothing). This run: (1) a spouse who died in 2025, whose last month is the month of death (medium): pre-existing wording of the December 1 question, registered as BUG-0452 for the owner; (2) a fiscal-year filer (low): the tool prepares calendar-year returns (the fiscal-year refusing row of the gate grids); (3) COBRA coverage on December 1, (4) a marketplace plan labeled HSA-eligible, (5) coverage as a family member on the spouse's family HDHP (medium, UNCLEAR): the question states that family includes coverage as a member of someone else's family HDHP; recognising a plan as an HDHP is the definition point of BUG-0453. None is a gate defect: each is a filer answering the December 1 question itself wrongly, as before the restructure.",
+   "subject_sha": "fdadf3111868d0328c7e9d13e571076faa92175613496be40f47157d6a2e69df"
   },
-  "unruled:gate:f8889.coverage_year": {
+  "unruled:gate:f8889.coverage_year#1": {
    "class": "no gate defect; definition points of the eligible individual, shared with the month question",
-   "prompt_sha": "e2cbe6b69d377fe68b9702144c217bf0da13e05cd529e0ef8f6ac3ba8ad54cdc",
-   "reason": "The gate hides the month counts and the December 1 coverage when coverage_year is self-only or family all year, which i8889 p. 4, Line 3, rule 3 makes decisive ('If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for a family HDHP'). Findings of the earlier runs this round were fixed in the wording (family coverage as a member of another's plan and two plans at once, i8889 p. 4, Line 1; the spouse rule in its own list; VA care and surprise billing, i8889 p. 2; family coverage as coverage for you and another person, a general-purpose FSA or HRA, backdated Medicare, p969 pp. 4, 5, 7). This run's findings are all on the definition of an eligible individual, which the month question (months_eligible) uses in the same words, so a filer who misjudges eligibility answers the month count the same way: automatic Part A (medium; the question counts Medicare coverage backdated, the automatic case is wording), a carried-over FSA balance, a drug rider or direct primary care, a spouse's non-HDHP plan covering the filer, an embedded family deductible (medium and low: HDHP and other-coverage definitions, BUG-0453), VA care not service-connected (low, wording), and a filer whose eligible spouse's family HDHP does not cover the filer (low; the question's third family rule states that case: both eligible and either had family coverage). No finding shows a filer who answers an all-year option correctly by the stated definitions while a hidden month answer would change line 3."
+   "reason": "The gate hides the month counts and the December 1 coverage when coverage_year is self-only or family all year, which i8889 p. 4, Line 3, rule 3 makes decisive ('If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for a family HDHP'). Findings of the earlier runs this round were fixed in the wording (family coverage as a member of another's plan and two plans at once, i8889 p. 4, Line 1; the spouse rule in its own list; VA care and surprise billing, i8889 p. 2; family coverage as coverage for you and another person, a general-purpose FSA or HRA, backdated Medicare, p969 pp. 4, 5, 7). This run's findings are all on the definition of an eligible individual, which the month question (months_eligible) uses in the same words, so a filer who misjudges eligibility answers the month count the same way: automatic Part A (medium; the question counts Medicare coverage backdated, the automatic case is wording), a carried-over FSA balance, a drug rider or direct primary care, a spouse's non-HDHP plan covering the filer, an embedded family deductible (medium and low: HDHP and other-coverage definitions, BUG-0453), VA care not service-connected (low, wording), and a filer whose eligible spouse's family HDHP does not cover the filer (low; the question's third family rule states that case: both eligible and either had family coverage). No finding shows a filer who answers an all-year option correctly by the stated definitions while a hidden month answer would change line 3.",
+   "subject_sha": "d2ef6a54bd35badb50bb7b819795a0166e3e835b065124bfba536ba7570c0900"
   },
-  "unruled:gate:sa.gifts": {
-   "prompt_sha": "46c03cd1ba26196ce14262f27a1376c95d10639ca5113fc33bb8892636edd61e",
+  "unruled:gate:sa.gifts#1": {
    "reason": "No defect on the archived pages after the wording rounds; the residual mediums rest on Pub. 526 rules not archived (grantor trusts, sole proprietors' gifts, split-interest gifts).",
    "findings": [
     {
@@ -203,17 +202,18 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md",
+   "subject_sha": "5ae0a7dcb1c5ae16c3ccbee50046b250206bb44fed2b505f0232cb662db79c25"
   },
-  "unruled:gate:clcw26.final_ask": {
+  "unruled:gate:clcw26.final_ask#1": {
    "class": "no gate defect; joint return designed out to a notice, wording finding low",
-   "prompt_sha": "2a4bb49a7cc403ab4479551b5f3b3e1272a92b23bce828ef69d3517b88effd47",
-   "reason": "(1) FALSE_NO, joint return of a spouse who died in 2025: by design, as the screen-review rulings of this gate. On a joint return a carryover is figured for both spouses and only the deceased spouse's part stops (p550 p. 103); the project does not split a joint carryover between the spouses and gives clcw26.decedent_notice (shown on a joint return when line 8 or line 13 is above zero: the part from the deceased spouse's losses does not carry over to 2026 and can be deducted only on this return). The question is for a return whose whole carryover is the decedent's. The same-page sentence on joint and separate returns concerns a later separate return; a 2025 separate return is refused (s3.mfs). (2) UNCLEAR, a representative reading 'filer' as themselves: low; the question says 'a return filed for the decedent', and it is asked only on a return with one filer, whose return the representative is preparing."
+   "reason": "(1) FALSE_NO, joint return of a spouse who died in 2025: by design, as the screen-review rulings of this gate. On a joint return a carryover is figured for both spouses and only the deceased spouse's part stops (p550 p. 103); the project does not split a joint carryover between the spouses and gives clcw26.decedent_notice (shown on a joint return when line 8 or line 13 is above zero: the part from the deceased spouse's losses does not carry over to 2026 and can be deducted only on this return). The question is for a return whose whole carryover is the decedent's. The same-page sentence on joint and separate returns concerns a later separate return; a 2025 separate return is refused (s3.mfs). (2) UNCLEAR, a representative reading 'filer' as themselves: low; the question says 'a return filed for the decedent', and it is asked only on a return with one filer, whose return the representative is preparing.",
+   "subject_sha": "d7881adecd94573cefc55bdcb231b9898e633c80b624142f5173b53ea1b63575"
   },
-  "unruled:gate:s179.wc_ask": {
+  "unruled:gate:s179.wc_ask#1": {
    "class": "no gate defect; one finding designed out, one wording point accepted (low)",
-   "prompt_sha": "b48516ed50434fe34d52e94f3bb4b9cb5ae71a50447f376539d1c45a983de639",
-   "reason": "(1) a partner or S corporation shareholder whose K-1 reports the entity's interest on operating cash: designed out; an interest in a partnership or S corporation is refused by scope.schedule1 ('partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)'), so only Schedule C businesses reach line 11, and their working capital is the filer's own. (2) an operating reserve held in Treasury bills or a money market fund: low; the help (interview/questions-2025.yaml, s179.wc_interest) says working capital is money held for the business's operating needs 'in any kind of account', with the account types as examples, however titled. The previous review of this gate (before the help named the account types) also raised a carryover with no 2025 property: s179.has179 reads lines 9 and 10 added together, so it is asked (fixture bug0474.s179.wc_interest_carryover_only)."
+   "reason": "(1) a partner or S corporation shareholder whose K-1 reports the entity's interest on operating cash: designed out; an interest in a partnership or S corporation is refused by scope.schedule1 ('partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)'), so only Schedule C businesses reach line 11, and their working capital is the filer's own. (2) an operating reserve held in Treasury bills or a money market fund: low; the help (interview/questions-2025.yaml, s179.wc_interest) says working capital is money held for the business's operating needs 'in any kind of account', with the account types as examples, however titled. The previous review of this gate (before the help named the account types) also raised a carryover with no 2025 property: s179.has179 reads lines 9 and 10 added together, so it is asked (fixture bug0474.s179.wc_interest_carryover_only).",
+   "subject_sha": "75a0f92e642f372a526b903a715a88695a98fa8ca29bd9eb105ca4621b78b28d"
   }
  },
  "baseline": {}

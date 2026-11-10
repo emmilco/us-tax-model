@@ -1,29 +1,36 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Standing false-no review (false_no_review.py), offline, in check-all.
+"""Standing false-no review (false_no_review.py), offline, in check-all. Sampled reviews (samples.py).
 
-Every gate (gates.py: inputs marked `gated_by`, grouped by their gate lines' condition) must have a current false-no
-review in its form's log, reviews/<year>/false_no/<form>.json: the recorded `subject_sha` must equal the gate's subject
-now (gates.subject: the condition's wording and line, each gate line and gated input with their English and wording,
-citations included). A gate whose subject changed is `stale` and is rerun with
-`python3 tools/transcription/false_no_review.py --gates <gate>`. A current review whose verdict is not SOUND is
-`unruled` until its findings are adjudicated and ruled in reviews/<year>/false_no/rulings.json under
-"unruled:<gate>" with the `prompt_sha` of the review it rules (a rerun needs a new ruling: the old one is then
-`rerun`). A logged review whose gate no longer exists is an `orphan`. Accepted as in the other source-coverage checks
-(tools/baseline_check.py); there is no baseline, since the review starts with the first gate.
+Every gate (gates.py: inputs marked `gated_by`, grouped by their gate lines' condition) has a record in its form's log,
+reviews/<year>/false_no/<form>.json, holding the samples run against one subject (gates.subject: the condition's
+wording and line, each gate line and gated input with their English and wording, citations included).
 
-    check_false_no.py [--jurisdiction ny]
+- A gate whose subject differs from its record's (or that has none, or is logged under another form) is `due`:
+  listed, not failed. It is reviewed before the next release with
+  `python3 tools/transcription/false_no_review.py --gates <gate>`.
+- Each current sample whose verdict is not SOUND is `unruled:<gate>#<k>` until its findings are adjudicated and ruled
+  in reviews/<year>/false_no/rulings.json with the record's `subject_sha`; a ruling with another subject_sha is not
+  accepted. A sample whose verdict and normalised findings equal those of a ruled sample of the same gate carries
+  that ruling. Unruled samples fail check-all.
+- A logged review whose gate no longer exists is an `orphan` (fails).
+
+`--release` is the release gate (tools/release_reviews.sh): it also fails on every due gate and every gate short of the
+milestone's samples, and writes no report. Accepted as in the other source-coverage checks (tools/baseline_check.py).
+
+    check_false_no.py [--release] [--jurisdiction ny]
 """
-import glob
 import json
 import os
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent))
-from false_no_review import OUT  # noqa: E402
+from false_no_review import OUT, records  # noqa: E402
+import samples  # noqa: E402
 from screen_review import load_lines, encoded_english  # noqa: E402
 from transcribe import ROOT  # noqa: E402
 from taxyear import Y  # noqa: E402
@@ -35,58 +42,53 @@ RULINGS = Path(OUT) / "rulings.json"
 REPORT = jurisdiction.ypath("reports", Y, "false_no_currency.md")
 
 
-def logged():
-    """{gate: (form, review)} over every form's log."""
-    out = {}
-    for path in sorted(glob.glob(os.path.join(OUT, "*.json"))):
-        if os.path.basename(path) == "rulings.json":
-            continue
-        with open(path, encoding="utf-8") as f:
-            log = json.load(f)
-        for key, r in log.get("reviews", {}).items():
-            out[key] = (log.get("form"), r)
-    return out
-
-
-def findings(lines=None, reviewed=None, rulings=None):
+def findings(lines=None, reviewed=None):
+    """(found, shas): every gate's findings, release kinds included, orphans, and each gate's current subject."""
     lines = load_lines() if lines is None else lines
-    reviewed = logged() if reviewed is None else reviewed
-    if rulings is None:
-        rulings = json.loads(RULINGS.read_text()).get("rulings", {}) if RULINGS.exists() else {}
-    out = []
+    reviewed = records() if reviewed is None else reviewed
+    out, shas = [], {}
     current = gates.units(lines)
     for key, unit in current.items():
-        sha = gates.subject(unit, lines, encoded_english)
+        sha = shas[key] = gates.subject(unit, lines, encoded_english)
         form = gates.unit_form(unit, lines)
         form_r = reviewed.get(key)
         r = form_r[1] if form_r and form_r[0] == form else None
-        if not r or r.get("subject_sha") != sha:
-            why = ("never reviewed" if not form_r else "logged under another form" if not r
-                   else "the condition's wording, the gated lines or their citations changed since the review")
-            out.append({"kind": "stale", "line": key, "form": form, "subject": sha,
-                        "detail": f"{why}; rerun false_no_review.py --gates {key}"})
-        elif r.get("verdict") != "SOUND":
-            ruling = rulings.get(f"unruled:{key}")
-            kind = "rerun" if isinstance(ruling, dict) and ruling.get("prompt_sha") not in (None, r.get("prompt_sha")) else "unruled"
-            out.append({"kind": kind, "line": key, "form": form, "subject": sha,
-                        "detail": f"verdict {r.get('verdict')} with {len(r.get('findings') or [])} finding(s); "
-                                  f"adjudicate and rule with prompt_sha {str(r.get('prompt_sha'))[:12]}"})
+        why = ("logged under another form" if form_r and not r
+               else "the condition's wording, the gated lines or their citations changed since its samples")
+        out += samples.unit_findings(key, form, sha, r, why, "SOUND", f"false_no_review.py --gates {key}")
     for key in sorted(set(reviewed) - set(current)):
         out.append({"kind": "orphan", "line": key, "form": reviewed[key][0] or "-", "subject": key,
                     "detail": f"a logged review whose gate no longer exists; remove it from {reviewed[key][0]}.json"})
-    return out
+    return out, shas
 
 
-def check():
+def check(release=False):
     forms = baseline_check.load_forms(Path(ROOT) / "canonical" / Y)
-    return baseline_check.run(
-        "false_no", forms, findings(), RULINGS, REPORT, "Standing false-no review",
-        "Generated by `tools/transcription/check_false_no.py`. `stale`: the gate's subject (its condition's wording, the "
-        "gated lines and their citations) changed since it was reviewed, or it was never reviewed. `unruled`: a current "
-        "review found FALSE_NO or UNCLEAR filers not yet ruled. `rerun`: the ruling judges an earlier review. `orphan`: a "
-        "logged review whose gate is gone.")
+    found, shas = findings()
+    due = [f for f in found if f["kind"] == "due"]
+    if not release:
+        found = [f for f in found if f["kind"] not in ("due", "short")]
+        for f in due:
+            print(f"  due at the next release: {f['line']}: {f['detail']}")
+    data = json.loads(RULINGS.read_text()) if RULINGS.exists() else {}
+    good = samples.accepted(data.get("rulings", {}), shas)
+    carry = samples.carried(found, good)
+    if carry:
+        print(f"  {len(carry)} sample(s) carry the ruling of an equal sample on the same subject")
+    with tempfile.TemporaryDirectory() as tmp:  # run() sees only the accepted and carried rulings
+        view = Path(tmp) / RULINGS.name
+        view.write_text(json.dumps({**data, "rulings": {**good, **carry}}))
+        status = baseline_check.run(
+            "false_no", forms, found, view, Path(tmp) / "report.md" if release else REPORT, "Standing false-no review",
+            "Generated by `tools/transcription/check_false_no.py`. `unruled`: a current sample (`<gate>#<sample>`) found "
+            "FALSE_NO or UNCLEAR filers not yet ruled; a ruling with `carried_from` is carried from an equal sample. "
+            "`orphan`: a logged review whose gate is gone. `due` and `short` appear only in release mode.")
+    if due and not release:
+        with open(REPORT, "a", encoding="utf-8") as out:
+            out.write("\n## Due at the next release\n\n" + "".join(f"- `{f['line']}`: {f['detail']}\n" for f in due))
+    return status
 
 
 if __name__ == "__main__":
     os.chdir(ROOT)
-    sys.exit(check())
+    sys.exit(check(release="--release" in sys.argv))

@@ -89,7 +89,7 @@ class SampleTests(unittest.TestCase):
         form = {"id": "f"}
         with mock.patch.object(CR, "prompt_for", lambda f, mani, forms=None: ("x" * 1000, [], S)), \
              mock.patch.object(CR, "context_forms", lambda: []):
-            price = {("completeness_review.py", "claude"): 0.001}
+            price = {("completeness_review.py", "claude"): (0.0, 0.001)}
             p = CR.plan([form], {}, {"f": rec(2)}, 1, None, price, "claude-opus-5-5")[0]
             self.assertEqual(p["jobs"], [])
             self.assertIn("refused", p["note"])

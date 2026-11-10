@@ -74,7 +74,7 @@ means the form is stable and only small changes or year updates happen.
 | Claude transcription (independent construction) | whole form | changed lines only (line-scoped), and only when the arithmetic changed | About $150 per bug found on stable forms |
 | Render review | whole form | changed lines only, and only when the wording changed | About $70 per bug on stable forms |
 | Class M (cases) | yes | when the form's arithmetic changes | Found nothing in the ledger window |
-| Completeness, screen and false-no reviews | yes | a fixed sample per form per milestone, its union ruled once | $2 to $3 per bug. Completeness behaves like a random sample, so rerunning on every edit only pulls in old low findings |
+| Completeness, screen and false-no reviews | yes | a fixed sample per form per milestone, its union ruled once. A milestone is a release; one sample per subject (owner, 2026-11-10). `tools/release_reviews.sh` enforces it | $2 to $3 per bug. Completeness behaves like a random sample, so rerunning on every edit only pulls in old low findings. Calibration (2026-11-10): four more samples on each of five stable forms found no real gap the first sample had missed |
 | Second family (DeepSeek, GPT) | inactive | inactive | 1 bug in 1,488 rulings. Owner, 2026-11-09: Claude-only reviews; machinery kept dormant |
 | Human reading | optional | optional | Validation policy, 10-24 |
 
@@ -93,7 +93,7 @@ Every process rule is either enforced by a tool or marked advisory. No new prose
 | Rule | Enforced by | Status |
 |---|---|---|
 | Commit only exactly tested trees | `commit_tested.sh`, hooks | enforced |
-| One review per form per round; cost estimate; owner gate above $3 | `rerun_all.py` | enforced. Completeness and screen reruns are NOT yet guarded |
+| One review per form per round; cost estimate; owner gate above $3 | `rerun_all.py`; `completeness_review.py`, `screen_review.py` and `false_no_review.py` (sampled per release, `samples.py`) | enforced |
 | Carry repeat disagreements mechanically | `carry.py` | enforced |
 | Review data moves only through the tool | `worktree_data.py` clone, fill, carry-back | enforced |
 | Background waits on a pid or a status, never `pgrep -f` | none | advisory |

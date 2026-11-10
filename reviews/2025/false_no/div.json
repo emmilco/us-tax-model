@@ -2,6 +2,8 @@
  "form": "div",
  "reviews": {
   "gate:div.any": {
+   "subject_sha": "8a0ff59b35e88d154af2737e9b25f6d41bbd6c295acecefe22e4e76a8ae32e35",
+   "grandfathered": true,
    "condition": "div.any",
    "lines": [
     "div.box10_if_dividends",
@@ -21,41 +23,6 @@
     "sb.ordinary_dividends",
     "sd.distributions"
    ],
-   "verdict": "FALSE_NO",
-   "findings": [
-    {
-     "kind": "FALSE_NO",
-     "pattern": "5",
-     "who": "A parent files jointly and elects Form 8814 to report a child's investment income. The child's mutual fund paid capital gain distributions on a Form 1099-DIV in the child's name. Neither parent received any dividends of their own.",
-     "why_no": "The gate asks whether 'you (or your spouse)' received dividends. Its nominee bullet covers dividends paid in someone else's name only when they 'belong to you'. The child's distributions belong to the child, so the parents truthfully answer no.",
-     "line": "sd.distributions_if_dividends",
-     "irs_text": "i1040sd p. 11, Line 13: 'See Capital Gain Distributions, earlier.' The Form 8814 instructions (not in the supplied text) have the parent include the child's capital gain distributions on Schedule D, line 13.",
-     "severity": "high",
-     "fix": "Add a separate gate question: 'Are you electing to report your child's interest and dividends on your return (Form 8814)?' Route the child's capital gain distributions to Schedule D, line 13, or refuse the return with a citation if Form 8814 is unsupported."
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "2",
-     "who": "A shareholder whose company was dissolved, or bought out in a cash liquidation, receives a final payout. The payer reports it in box 9 of a Form 1099-DIV.",
-     "why_no": "The filer thinks of the payout as the proceeds of selling or cashing out their shares, not as a 'dividend or other distribution'. They may not connect it to the list item 'liquidation distributions'.",
-     "line": "div.box9_if_dividends",
-     "irs_text": "f1099div p. 5: 'Boxes 9 and 10. Show cash and noncash liquidation distributions.'",
-     "severity": "low",
-     "fix": "Reword the bullet as: 'liquidation distributions (a payout, in cash or property, when a company you held shares in wound up or dissolved, even if you think of it as a sale)'."
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "8",
-     "who": "An investor's brokerage cash sweep sits in a money market fund or a municipal bond fund, and the statement labels the earnings 'interest' or 'tax-exempt interest'. The investor reads only the gate's bullets.",
-     "why_no": "The clarification that fund 'interest' counts as dividends appears only in the help text. A filer who reads the bullets alone believes they had interest, not dividends.",
-     "line": "div.box12_if_dividends",
-     "irs_text": "f1099div p. 5: 'Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year.'",
-     "severity": "low",
-     "fix": "Move the clarification into the money market fund bullet itself: 'even when your statement calls them interest or tax-exempt interest (including cash sweep funds)'."
-    }
-   ],
-   "prompt_sha": "250bd3f469cb817a2ee5cb9f47eccb33e384d23948d336c3ce5b0b323254fb5c",
-   "subject_sha": "8a0ff59b35e88d154af2737e9b25f6d41bbd6c295acecefe22e4e76a8ae32e35",
    "used": [
     {
      "doc": "f1099div",
@@ -123,11 +90,53 @@
      "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
     }
    ],
-   "model": "claude-opus-5-5",
-   "cost": 0.167296,
-   "date": "2026-11-07"
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A parent files jointly and elects Form 8814 to report a child's investment income. The child's mutual fund paid capital gain distributions on a Form 1099-DIV in the child's name. Neither parent received any dividends of their own.",
+       "why_no": "The gate asks whether 'you (or your spouse)' received dividends. Its nominee bullet covers dividends paid in someone else's name only when they 'belong to you'. The child's distributions belong to the child, so the parents truthfully answer no.",
+       "line": "sd.distributions_if_dividends",
+       "irs_text": "i1040sd p. 11, Line 13: 'See Capital Gain Distributions, earlier.' The Form 8814 instructions (not in the supplied text) have the parent include the child's capital gain distributions on Schedule D, line 13.",
+       "severity": "high",
+       "fix": "Add a separate gate question: 'Are you electing to report your child's interest and dividends on your return (Form 8814)?' Route the child's capital gain distributions to Schedule D, line 13, or refuse the return with a citation if Form 8814 is unsupported."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A shareholder whose company was dissolved, or bought out in a cash liquidation, receives a final payout. The payer reports it in box 9 of a Form 1099-DIV.",
+       "why_no": "The filer thinks of the payout as the proceeds of selling or cashing out their shares, not as a 'dividend or other distribution'. They may not connect it to the list item 'liquidation distributions'.",
+       "line": "div.box9_if_dividends",
+       "irs_text": "f1099div p. 5: 'Boxes 9 and 10. Show cash and noncash liquidation distributions.'",
+       "severity": "low",
+       "fix": "Reword the bullet as: 'liquidation distributions (a payout, in cash or property, when a company you held shares in wound up or dissolved, even if you think of it as a sale)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "An investor's brokerage cash sweep sits in a money market fund or a municipal bond fund, and the statement labels the earnings 'interest' or 'tax-exempt interest'. The investor reads only the gate's bullets.",
+       "why_no": "The clarification that fund 'interest' counts as dividends appears only in the help text. A filer who reads the bullets alone believes they had interest, not dividends.",
+       "line": "div.box12_if_dividends",
+       "irs_text": "f1099div p. 5: 'Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year.'",
+       "severity": "low",
+       "fix": "Move the clarification into the money market fund bullet itself: 'even when your statement calls them interest or tax-exempt interest (including cash sweep funds)'."
+      }
+     ],
+     "prompt_sha": "250bd3f469cb817a2ee5cb9f47eccb33e384d23948d336c3ce5b0b323254fb5c",
+     "model": "claude-opus-5-5",
+     "cost": 0.167296,
+     "date": "2026-11-07",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "response": ".transcription/false_no/gate_div.any.response.txt"
+    }
+   ]
   },
   "gate:div.has_capital_gain": {
+   "subject_sha": "63c1d99be8fe89725cd8f3c68ce6018281f9d8c7e5af71639fb22926c2ae6d2e",
+   "grandfathered": true,
    "condition": "div.has_capital_gain",
    "lines": [
     "div.box2b_if_capital_gain",
@@ -141,31 +150,6 @@
     "div.box2d",
     "div.box2f"
    ],
-   "verdict": "SOUND",
-   "findings": [
-    {
-     "kind": "UNCLEAR",
-     "pattern": "5",
-     "who": "A filer, or the spouse on a joint return, whose only Form 1099-DIV comes from a fund that paid no ordinary dividend that year. Box 1a is blank and only box 2a shows a long-term capital gain distribution, with part of it in box 2b or 2d.",
-     "why_no": "The box 2a helper applies only 'when you or your spouse received dividends or other distributions'. If the tool reaches it through a parent question about dividends, the filer may answer no, because a capital gain distribution does not feel like a 'dividend'. Then box 2a is zero, the gate is false, and boxes 2b, 2c, 2d and 2f are never asked.",
-     "line": "div.box2b_if_capital_gain (also div.box2c_if_capital_gain, div.box2d_if_capital_gain, div.box2f_if_capital_gain)",
-     "irs_text": "f1099div p. 5: 'Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT).' and 'Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain...'",
-     "severity": "low",
-     "fix": "Word the parent question as whether you or your spouse received any Form 1099-DIV, or any amount in any of its boxes (including capital gain distributions in box 2a). Do not ask about 'dividends' alone."
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "4",
-     "who": "A shareholder of a REIT or RIC that kept its long-term capital gains and sent Form 2439, not a Form 1099-DIV box 2a. The Form 2439 shows unrecaptured section 1250 gain or 28% rate gain.",
-     "why_no": "Box 2a of Form 1099-DIV is truly zero, so the gate is false. The lines here are defined only by 1099-DIV boxes, so this filer's amounts of the same kinds must come from a separate Form 2439 path.",
-     "line": "div.box2b_if_capital_gain, div.box2d_if_capital_gain (by kind of gain, not by document)",
-     "irs_text": "f1099div p. 5: 'Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain... See the Unrecaptured Section 1250 Gain Worksheet in the Instructions for Schedule D (Form 1040).'",
-     "severity": "low",
-     "fix": "No change is needed to this gate, because each box 2b, 2c, 2d and 2f amount is by definition a portion of box 2a and is zero when box 2a is zero. Make sure Form 2439 amounts are collected elsewhere and feed the same Schedule D worksheets."
-    }
-   ],
-   "prompt_sha": "be4a805f873aa016a0cfb9f8a3724ff678454e5d0da94c53a0ba6d6f9c7e0fea",
-   "subject_sha": "63c1d99be8fe89725cd8f3c68ce6018281f9d8c7e5af71639fb22926c2ae6d2e",
    "used": [
     {
      "doc": "f1099div",
@@ -194,11 +178,43 @@
      "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
     }
    ],
-   "model": "claude-opus-5-5",
-   "cost": 0.08277999999999999,
-   "date": "2026-11-07"
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer, or the spouse on a joint return, whose only Form 1099-DIV comes from a fund that paid no ordinary dividend that year. Box 1a is blank and only box 2a shows a long-term capital gain distribution, with part of it in box 2b or 2d.",
+       "why_no": "The box 2a helper applies only 'when you or your spouse received dividends or other distributions'. If the tool reaches it through a parent question about dividends, the filer may answer no, because a capital gain distribution does not feel like a 'dividend'. Then box 2a is zero, the gate is false, and boxes 2b, 2c, 2d and 2f are never asked.",
+       "line": "div.box2b_if_capital_gain (also div.box2c_if_capital_gain, div.box2d_if_capital_gain, div.box2f_if_capital_gain)",
+       "irs_text": "f1099div p. 5: 'Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT).' and 'Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain...'",
+       "severity": "low",
+       "fix": "Word the parent question as whether you or your spouse received any Form 1099-DIV, or any amount in any of its boxes (including capital gain distributions in box 2a). Do not ask about 'dividends' alone."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A shareholder of a REIT or RIC that kept its long-term capital gains and sent Form 2439, not a Form 1099-DIV box 2a. The Form 2439 shows unrecaptured section 1250 gain or 28% rate gain.",
+       "why_no": "Box 2a of Form 1099-DIV is truly zero, so the gate is false. The lines here are defined only by 1099-DIV boxes, so this filer's amounts of the same kinds must come from a separate Form 2439 path.",
+       "line": "div.box2b_if_capital_gain, div.box2d_if_capital_gain (by kind of gain, not by document)",
+       "irs_text": "f1099div p. 5: 'Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain... See the Unrecaptured Section 1250 Gain Worksheet in the Instructions for Schedule D (Form 1040).'",
+       "severity": "low",
+       "fix": "No change is needed to this gate, because each box 2b, 2c, 2d and 2f amount is by definition a portion of box 2a and is zero when box 2a is zero. Make sure Form 2439 amounts are collected elsewhere and feed the same Schedule D worksheets."
+      }
+     ],
+     "prompt_sha": "be4a805f873aa016a0cfb9f8a3724ff678454e5d0da94c53a0ba6d6f9c7e0fea",
+     "model": "claude-opus-5-5",
+     "cost": 0.08277999999999999,
+     "date": "2026-11-07",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "response": ".transcription/false_no/gate_div.has_capital_gain.response.txt"
+    }
+   ]
   },
   "gate:div.has_ordinary": {
+   "subject_sha": "10c3ae54a8a697b285e7abaf69caa9a4b6853eee76b4cfc51b0654946a44cc56",
+   "grandfathered": true,
    "condition": "div.has_ordinary",
    "lines": [
     "div.box2e_if_ordinary",
@@ -210,61 +226,6 @@
     "f1040.line3a",
     "qbi.dividends"
    ],
-   "verdict": "FALSE_NO",
-   "findings": [
-    {
-     "kind": "FALSE_NO",
-     "pattern": "4",
-     "who": "A partner, S corporation shareholder, or estate or trust beneficiary whose Schedule K-1 reports qualified dividends. The filer received no Form 1099-DIV.",
-     "why_no": "The gate is computed from 'Total ordinary dividends, Form 1099-DIV box 1a'. With no Form 1099-DIV, that total is truthfully zero.",
-     "line": "f1040.line3a_if_ordinary",
-     "irs_text": "i1040gi p. 25, Line 3a: 'Enter your total qualified dividends on line 3a ... Generally, these dividends are shown in box 1b of Form(s) 1099-DIV.' 'Generally' means the line is not limited to Form 1099-DIV.",
-     "severity": "high",
-     "fix": "Gate on the filer's total ordinary dividends from every source (Form 1040 line 3b), not on Form 1099-DIV box 1a. Or ask: 'Did you or your spouse have any dividends this year, whether shown on Form 1099-DIV, Schedule K-1, a foreign statement, or no form at all?'"
-    },
-    {
-     "kind": "FALSE_NO",
-     "pattern": "4",
-     "who": "A filer who holds shares of a qualified foreign corporation directly through a foreign broker, or who received small dividends from a payer that sent no Form 1099-DIV.",
-     "why_no": "No Form 1099-DIV arrived, so the computed box 1a total is zero, even though the filer received qualified dividends.",
-     "line": "f1040.line3a_if_ordinary",
-     "irs_text": "i1040gi p. 26: 'See Pub. 550 for the definition of qualified dividends if you received dividends not reported on Form 1099-DIV.'",
-     "severity": "high",
-     "fix": "Ask about dividends received with or without a Form 1099-DIV, and compute the gate from that answer."
-    },
-    {
-     "kind": "FALSE_NO",
-     "pattern": "5",
-     "who": "A parent who elects Form 8814 to report a child's dividends. The parent and spouse own no dividend-paying investments themselves.",
-     "why_no": "The gate counts only Forms 1099-DIV received by 'you or your spouse'. The child's Form 1099-DIV is outside it, so the gate is false.",
-     "line": "f1040.line3a_if_ordinary",
-     "irs_text": "i1040gi p. 25, Line 3a: 'If you are including your child's qualified dividends in the total on line 3a, check box 1 on line 3c.'",
-     "severity": "high",
-     "fix": "Include child's dividends reported on Form 8814 in the gate: 'you, your spouse, or a child whose dividends you report on Form 8814'."
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "2",
-     "who": "A filer whose fund or stock dividends were automatically reinvested, or left in a brokerage sweep account, and never paid out in cash.",
-     "why_no": "The helper says 'when you or your spouse received dividends or other distributions'. A filer who never received cash may read that as no.",
-     "line": "f1040.line3a_if_ordinary; qbi.dividends_if_ordinary; div.box2e_if_ordinary",
-     "irs_text": "f1099div p. 5, Box 1a: 'Shows total ordinary dividends that are taxable.' Box 5: 'Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A.'",
-     "severity": "medium",
-     "fix": "Add to the help text: 'including dividends reinvested or left in your account; enter what box 1a shows even if you received no cash.'"
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "4",
-     "who": "A partner in a partnership that holds REIT shares, whose Schedule K-1 reports section 199A dividends. The partner received no Form 1099-DIV.",
-     "why_no": "The gate is false without a Form 1099-DIV, and the gated question names only 'Form 1099-DIV box 5'. If this line is the tool's only source for Form 8995 line 6 REIT dividends, the K-1 amount is dropped.",
-     "line": "qbi.dividends_if_ordinary",
-     "irs_text": "i8995 p. 3: 'Qualified REIT dividends include any dividends you received from a REIT held for more than 45 days ... plus your qualified REIT dividends received from a regulated investment company (RIC).'",
-     "severity": "medium",
-     "fix": "Confirm that a separate ungated input carries qualified REIT dividends from Schedule K-1 to Form 8995 line 6. If none exists, add one rather than routing them through this Form 1099-DIV gate."
-    }
-   ],
-   "prompt_sha": "6a48bd8b9001e82dc465eb01f188dc499c72c256839597f8a277ccec5aa0d487",
-   "subject_sha": "10c3ae54a8a697b285e7abaf69caa9a4b6853eee76b4cfc51b0654946a44cc56",
    "used": [
     {
      "doc": "f1099div",
@@ -340,11 +301,73 @@
      "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
     }
    ],
-   "model": "claude-opus-5-5",
-   "cost": 0.14923999999999998,
-   "date": "2026-11-07"
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A partner, S corporation shareholder, or estate or trust beneficiary whose Schedule K-1 reports qualified dividends. The filer received no Form 1099-DIV.",
+       "why_no": "The gate is computed from 'Total ordinary dividends, Form 1099-DIV box 1a'. With no Form 1099-DIV, that total is truthfully zero.",
+       "line": "f1040.line3a_if_ordinary",
+       "irs_text": "i1040gi p. 25, Line 3a: 'Enter your total qualified dividends on line 3a ... Generally, these dividends are shown in box 1b of Form(s) 1099-DIV.' 'Generally' means the line is not limited to Form 1099-DIV.",
+       "severity": "high",
+       "fix": "Gate on the filer's total ordinary dividends from every source (Form 1040 line 3b), not on Form 1099-DIV box 1a. Or ask: 'Did you or your spouse have any dividends this year, whether shown on Form 1099-DIV, Schedule K-1, a foreign statement, or no form at all?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer who holds shares of a qualified foreign corporation directly through a foreign broker, or who received small dividends from a payer that sent no Form 1099-DIV.",
+       "why_no": "No Form 1099-DIV arrived, so the computed box 1a total is zero, even though the filer received qualified dividends.",
+       "line": "f1040.line3a_if_ordinary",
+       "irs_text": "i1040gi p. 26: 'See Pub. 550 for the definition of qualified dividends if you received dividends not reported on Form 1099-DIV.'",
+       "severity": "high",
+       "fix": "Ask about dividends received with or without a Form 1099-DIV, and compute the gate from that answer."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A parent who elects Form 8814 to report a child's dividends. The parent and spouse own no dividend-paying investments themselves.",
+       "why_no": "The gate counts only Forms 1099-DIV received by 'you or your spouse'. The child's Form 1099-DIV is outside it, so the gate is false.",
+       "line": "f1040.line3a_if_ordinary",
+       "irs_text": "i1040gi p. 25, Line 3a: 'If you are including your child's qualified dividends in the total on line 3a, check box 1 on line 3c.'",
+       "severity": "high",
+       "fix": "Include child's dividends reported on Form 8814 in the gate: 'you, your spouse, or a child whose dividends you report on Form 8814'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer whose fund or stock dividends were automatically reinvested, or left in a brokerage sweep account, and never paid out in cash.",
+       "why_no": "The helper says 'when you or your spouse received dividends or other distributions'. A filer who never received cash may read that as no.",
+       "line": "f1040.line3a_if_ordinary; qbi.dividends_if_ordinary; div.box2e_if_ordinary",
+       "irs_text": "f1099div p. 5, Box 1a: 'Shows total ordinary dividends that are taxable.' Box 5: 'Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A.'",
+       "severity": "medium",
+       "fix": "Add to the help text: 'including dividends reinvested or left in your account; enter what box 1a shows even if you received no cash.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner in a partnership that holds REIT shares, whose Schedule K-1 reports section 199A dividends. The partner received no Form 1099-DIV.",
+       "why_no": "The gate is false without a Form 1099-DIV, and the gated question names only 'Form 1099-DIV box 5'. If this line is the tool's only source for Form 8995 line 6 REIT dividends, the K-1 amount is dropped.",
+       "line": "qbi.dividends_if_ordinary",
+       "irs_text": "i8995 p. 3: 'Qualified REIT dividends include any dividends you received from a REIT held for more than 45 days ... plus your qualified REIT dividends received from a regulated investment company (RIC).'",
+       "severity": "medium",
+       "fix": "Confirm that a separate ungated input carries qualified REIT dividends from Schedule K-1 to Form 8995 line 6. If none exists, add one rather than routing them through this Form 1099-DIV gate."
+      }
+     ],
+     "prompt_sha": "6a48bd8b9001e82dc465eb01f188dc499c72c256839597f8a277ccec5aa0d487",
+     "model": "claude-opus-5-5",
+     "cost": 0.14923999999999998,
+     "date": "2026-11-07",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "response": ".transcription/false_no/gate_div.has_ordinary.response.txt"
+    }
+   ]
   },
   "gate:div.has_return_of_capital": {
+   "subject_sha": "3932865298c67a9e6bdb379d95825ab6c49497e335459a5303ac4174c48a504b",
+   "grandfathered": true,
    "condition": "div.has_return_of_capital",
    "lines": [
     "div.basis_reconciled_if_return_of_capital"
@@ -352,51 +375,6 @@
    "inputs": [
     "div.basis_reconciled"
    ],
-   "verdict": "FALSE_NO",
-   "findings": [
-    {
-     "kind": "FALSE_NO",
-     "pattern": "4",
-     "who": "A filer or spouse who received a return-of-capital distribution from a payer that issued no Form 1099-DIV. Examples are a foreign corporation, or a closely held U.S. corporation that paid out more than its earnings and profits.",
-     "why_no": "The helper asks only for the amount in 'box 3'. With no Form 1099-DIV there is no box 3, so the filer truthfully enters zero.",
-     "line": "div.basis_reconciled_if_return_of_capital",
-     "irs_text": "f1099div p. 5, Box 3: 'To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain. See Pub. 550.'",
-     "severity": "high",
-     "fix": "Gate on the fact, not the form: 'Did you or your spouse receive any distribution that the payer reported, or that you know to be, a return of capital (nondividend distribution), whether or not a Form 1099-DIV was issued?' Then collect the amount and the basis check for each such distribution."
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "5",
-     "who": "A filer whose REIT or fund paid only return of capital for the year. The Form 1099-DIV shows an amount in box 3 and zero in boxes 1a and 2a.",
-     "why_no": "The helper takes box 3 only 'when you or your spouse received dividends or other distributions'. A filer with no taxable dividends may answer the dividend entry question no, so box 3 is never entered.",
-     "line": "div.basis_reconciled_if_return_of_capital",
-     "irs_text": "f1099div p. 5, Box 3: 'Shows a return of capital... Any amount received in excess of your basis is taxable to you as capital gain.'",
-     "severity": "medium",
-     "fix": "Word the parent question as 'Did you or your spouse receive any Form 1099-DIV, or any distribution from a corporation, fund, or REIT, even if no box shows taxable dividends?' Help text should say a form showing only box 3 still counts."
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "8",
-     "who": "A filer who sees an amount in box 3 and reads the recipient instructions 'reduces your basis and is not taxable'. Their basis is already zero or nearly so, because of years of earlier return-of-capital payments.",
-     "why_no": "The amount is labeled 'not taxable', so the filer believes it needs no entry and enters zero for box 3. The gate turns false.",
-     "line": "div.basis_reconciled_if_return_of_capital",
-     "irs_text": "f1099div p. 5, Box 3: 'To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain.'",
-     "severity": "medium",
-     "fix": "Help text: 'Enter box 3 even though it is often not taxable. It reduces your basis, and any part above your remaining basis is taxable capital gain.'"
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "1",
-     "who": "A filer whose fund or REIT later issued a corrected Form 1099-DIV that reclassified part of box 1a into box 3. The filer enters the original form, which shows zero in box 3.",
-     "why_no": "The filer reports box 3 from the first form received. That box is zero, so the gate is false.",
-     "line": "div.basis_reconciled_if_return_of_capital",
-     "irs_text": "f1099div p. 4, form header 'CORRECTED (if checked)'; p. 5, Box 3: 'the distribution reduces your basis'",
-     "severity": "low",
-     "fix": "Help text: 'Use the latest corrected Form 1099-DIV. Funds and REITs often reclassify distributions as return of capital after year end.'"
-    }
-   ],
-   "prompt_sha": "472b2828118d8b540983a26f7fc391631519d7fcc84e447c259f27a6af20c44c",
-   "subject_sha": "3932865298c67a9e6bdb379d95825ab6c49497e335459a5303ac4174c48a504b",
    "used": [
     {
      "doc": "f1099div",
@@ -422,9 +400,59 @@
      "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
     }
    ],
-   "model": "claude-opus-5-5",
-   "cost": 0.09184400000000001,
-   "date": "2026-11-07"
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer or spouse who received a return-of-capital distribution from a payer that issued no Form 1099-DIV. Examples are a foreign corporation, or a closely held U.S. corporation that paid out more than its earnings and profits.",
+       "why_no": "The helper asks only for the amount in 'box 3'. With no Form 1099-DIV there is no box 3, so the filer truthfully enters zero.",
+       "line": "div.basis_reconciled_if_return_of_capital",
+       "irs_text": "f1099div p. 5, Box 3: 'To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain. See Pub. 550.'",
+       "severity": "high",
+       "fix": "Gate on the fact, not the form: 'Did you or your spouse receive any distribution that the payer reported, or that you know to be, a return of capital (nondividend distribution), whether or not a Form 1099-DIV was issued?' Then collect the amount and the basis check for each such distribution."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer whose REIT or fund paid only return of capital for the year. The Form 1099-DIV shows an amount in box 3 and zero in boxes 1a and 2a.",
+       "why_no": "The helper takes box 3 only 'when you or your spouse received dividends or other distributions'. A filer with no taxable dividends may answer the dividend entry question no, so box 3 is never entered.",
+       "line": "div.basis_reconciled_if_return_of_capital",
+       "irs_text": "f1099div p. 5, Box 3: 'Shows a return of capital... Any amount received in excess of your basis is taxable to you as capital gain.'",
+       "severity": "medium",
+       "fix": "Word the parent question as 'Did you or your spouse receive any Form 1099-DIV, or any distribution from a corporation, fund, or REIT, even if no box shows taxable dividends?' Help text should say a form showing only box 3 still counts."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who sees an amount in box 3 and reads the recipient instructions 'reduces your basis and is not taxable'. Their basis is already zero or nearly so, because of years of earlier return-of-capital payments.",
+       "why_no": "The amount is labeled 'not taxable', so the filer believes it needs no entry and enters zero for box 3. The gate turns false.",
+       "line": "div.basis_reconciled_if_return_of_capital",
+       "irs_text": "f1099div p. 5, Box 3: 'To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable. Any amount received in excess of your basis is taxable to you as capital gain.'",
+       "severity": "medium",
+       "fix": "Help text: 'Enter box 3 even though it is often not taxable. It reduces your basis, and any part above your remaining basis is taxable capital gain.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose fund or REIT later issued a corrected Form 1099-DIV that reclassified part of box 1a into box 3. The filer enters the original form, which shows zero in box 3.",
+       "why_no": "The filer reports box 3 from the first form received. That box is zero, so the gate is false.",
+       "line": "div.basis_reconciled_if_return_of_capital",
+       "irs_text": "f1099div p. 4, form header 'CORRECTED (if checked)'; p. 5, Box 3: 'the distribution reduces your basis'",
+       "severity": "low",
+       "fix": "Help text: 'Use the latest corrected Form 1099-DIV. Funds and REITs often reclassify distributions as return of capital after year end.'"
+      }
+     ],
+     "prompt_sha": "472b2828118d8b540983a26f7fc391631519d7fcc84e447c259f27a6af20c44c",
+     "model": "claude-opus-5-5",
+     "cost": 0.09184400000000001,
+     "date": "2026-11-07",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "response": ".transcription/false_no/gate_div.has_return_of_capital.response.txt"
+    }
+   ]
   }
  }
 }

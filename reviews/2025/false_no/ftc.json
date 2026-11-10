@@ -2,6 +2,8 @@
  "form": "ftc",
  "reviews": {
   "gate:ftc.has_tax": {
+   "subject_sha": "4711934c03a420b8cdc7d17bbb49ab050ab0630944e87767658fef7d930ebdaa",
+   "grandfathered": true,
    "condition": "ftc.has_tax",
    "lines": [
     "ftc.all_passive_if_tax",
@@ -15,61 +17,6 @@
     "ftc.eligible",
     "ftc.statements"
    ],
-   "verdict": "FALSE_NO",
-   "findings": [
-    {
-     "kind": "FALSE_NO",
-     "pattern": "4",
-     "who": "A filer whose only foreign tax was passed through on a Schedule K-1 (Form 1041) from an estate or trust, or on a Schedule K-3 (Form 1065 or 1120-S) from a partnership or S corporation. They received no Form 1099-INT with box 6 or Form 1099-DIV with box 7.",
-     "why_no": "The helper says 'generally Form 1099-INT box 6 and Form 1099-DIV box 7'. If it is filled from those boxes, or the filer reads it as limited to them, it computes $0, so the condition is false.",
-     "line": "ftc.elect_if_tax (and ftc.all_passive_if_tax, ftc.statements_if_tax, ftc.eligible_if_tax)",
-     "irs_text": "i1116 p. 1: 'Qualified payee statements include Form 1099-DIV, Form 1099-INT, Schedule K-1 (Form 1041), Schedule K-3 (Form 1065), Schedule K-3 (Form 1120-S), or similar substitute statements.'",
-     "severity": "high",
-     "fix": "Add K-1 (1041) and K-3 (1065/1120-S) foreign taxes to the helper. Ask 'Did you or your spouse have foreign tax shown on any 1099, K-1, K-3, or substitute statement?' and ask for each amount."
-    },
-    {
-     "kind": "FALSE_NO",
-     "pattern": "4",
-     "who": "A filer, or the spouse on a joint return, who paid foreign income tax directly or had it withheld with no payee statement. Examples: tax withheld on foreign wages not excluded, on a foreign pension or foreign rent, or tax paid to a foreign province or a U.S. territory.",
-     "why_no": "No 1099 box 6 or box 7 amount exists, so a helper built from those boxes, or a filer following the 'generally' list, gives $0.",
-     "line": "ftc.eligible_if_tax (Form 1116 path); all gated lines become false",
-     "irs_text": "i1116 p. 2: 'File Form 1116 to claim the foreign tax credit if the election, earlier, doesn't apply and ... You paid or accrued certain foreign taxes to a foreign country or U.S. territory.'",
-     "severity": "high",
-     "fix": "Make the gate a fact the filer can check: 'Did you or your spouse pay, or have withheld, any income tax to a foreign country, a foreign city or province, or a U.S. territory, on any income?' Then collect the amounts by source, not only from 1099 boxes."
-    },
-    {
-     "kind": "FALSE_NO",
-     "pattern": "1",
-     "who": "A filer with a foreign tax carryover from an earlier year (shown on Schedule B (Form 1116)) and foreign-source income this year, but no foreign tax paid or accrued this year.",
-     "why_no": "This year's creditable foreign taxes are truly $0, so the condition is false and the tool treats Form 1116 as not applying.",
-     "line": "ftc.eligible_if_tax (Form 1116 path, carryover absorbed on line 10); ftc.elect_if_tax",
-     "irs_text": "i1116 pp. 1-2: 'You can't carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies (but carryovers to and from other years are unaffected). See the instructions for line 10'; p. 2: 'Use Schedule B (Form 1116) to reconcile your prior-year foreign tax carryover with your current-year foreign tax carryover.'",
-     "severity": "high",
-     "fix": "Widen the gate: foreign taxes this year > 0 OR a foreign tax carryover from a prior year > 0. Ask 'Do you have an unused foreign tax credit carryover from an earlier year (prior Form 1116 / Schedule B)?'"
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "1",
-     "who": "A filer with no new foreign tax this year who had a foreign tax redetermination for a prior year, such as an additional assessment or a refund, that must be reported.",
-     "why_no": "The helper counts this year's creditable foreign taxes, so the filer enters $0 and the redetermination is never reached.",
-     "line": "ftc.eligible_if_tax (Form 1116 / Schedule C path)",
-     "irs_text": "i1116 p. 2: 'Use Schedule C (Form 1116) to report foreign tax redeterminations that occurred in the current tax year and that relate to prior tax years.'",
-     "severity": "medium",
-     "fix": "Add to the gate: 'Did you or your spouse pay additional foreign tax, or receive a refund of foreign tax, this year for an earlier year?' Route a yes to Schedule C (Form 1116)."
-    },
-    {
-     "kind": "UNCLEAR",
-     "pattern": "7",
-     "who": "A filer with foreign tax withheld on dividends who is unsure whether the tax is 'creditable' or 'after required reductions', for example because of a holding period they cannot evaluate.",
-     "why_no": "The helper asks for 'creditable foreign taxes after required reductions', a legal classification. An unsure filer enters 0 rather than the box 7 amount.",
-     "line": "ftc.eligible_if_tax; ftc.elect_if_tax",
-     "irs_text": "i1116 p. 2: 'You are still required to take into account the general rules for determining whether a tax is creditable ... You are still required to reduce the taxes available for credit by any amount you would have entered on line 12 of Form 1116.'",
-     "severity": "medium",
-     "fix": "Gate on gross foreign tax shown or paid (> $0). Apply creditability, holding-period, and line 12 reductions afterward through the ftc.eligible question."
-    }
-   ],
-   "prompt_sha": "866b5bb5aac093b30be747522f5cd3b12eac0497cfa4b3ae1e6eb790b2550178",
-   "subject_sha": "4711934c03a420b8cdc7d17bbb49ab050ab0630944e87767658fef7d930ebdaa",
    "used": [
     {
      "doc": "i1116",
@@ -93,9 +40,69 @@
      "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
     }
    ],
-   "model": "claude-opus-5-5",
-   "cost": 0.115536,
-   "date": "2026-11-07"
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer whose only foreign tax was passed through on a Schedule K-1 (Form 1041) from an estate or trust, or on a Schedule K-3 (Form 1065 or 1120-S) from a partnership or S corporation. They received no Form 1099-INT with box 6 or Form 1099-DIV with box 7.",
+       "why_no": "The helper says 'generally Form 1099-INT box 6 and Form 1099-DIV box 7'. If it is filled from those boxes, or the filer reads it as limited to them, it computes $0, so the condition is false.",
+       "line": "ftc.elect_if_tax (and ftc.all_passive_if_tax, ftc.statements_if_tax, ftc.eligible_if_tax)",
+       "irs_text": "i1116 p. 1: 'Qualified payee statements include Form 1099-DIV, Form 1099-INT, Schedule K-1 (Form 1041), Schedule K-3 (Form 1065), Schedule K-3 (Form 1120-S), or similar substitute statements.'",
+       "severity": "high",
+       "fix": "Add K-1 (1041) and K-3 (1065/1120-S) foreign taxes to the helper. Ask 'Did you or your spouse have foreign tax shown on any 1099, K-1, K-3, or substitute statement?' and ask for each amount."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer, or the spouse on a joint return, who paid foreign income tax directly or had it withheld with no payee statement. Examples: tax withheld on foreign wages not excluded, on a foreign pension or foreign rent, or tax paid to a foreign province or a U.S. territory.",
+       "why_no": "No 1099 box 6 or box 7 amount exists, so a helper built from those boxes, or a filer following the 'generally' list, gives $0.",
+       "line": "ftc.eligible_if_tax (Form 1116 path); all gated lines become false",
+       "irs_text": "i1116 p. 2: 'File Form 1116 to claim the foreign tax credit if the election, earlier, doesn't apply and ... You paid or accrued certain foreign taxes to a foreign country or U.S. territory.'",
+       "severity": "high",
+       "fix": "Make the gate a fact the filer can check: 'Did you or your spouse pay, or have withheld, any income tax to a foreign country, a foreign city or province, or a U.S. territory, on any income?' Then collect the amounts by source, not only from 1099 boxes."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer with a foreign tax carryover from an earlier year (shown on Schedule B (Form 1116)) and foreign-source income this year, but no foreign tax paid or accrued this year.",
+       "why_no": "This year's creditable foreign taxes are truly $0, so the condition is false and the tool treats Form 1116 as not applying.",
+       "line": "ftc.eligible_if_tax (Form 1116 path, carryover absorbed on line 10); ftc.elect_if_tax",
+       "irs_text": "i1116 pp. 1-2: 'You can't carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies (but carryovers to and from other years are unaffected). See the instructions for line 10'; p. 2: 'Use Schedule B (Form 1116) to reconcile your prior-year foreign tax carryover with your current-year foreign tax carryover.'",
+       "severity": "high",
+       "fix": "Widen the gate: foreign taxes this year > 0 OR a foreign tax carryover from a prior year > 0. Ask 'Do you have an unused foreign tax credit carryover from an earlier year (prior Form 1116 / Schedule B)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer with no new foreign tax this year who had a foreign tax redetermination for a prior year, such as an additional assessment or a refund, that must be reported.",
+       "why_no": "The helper counts this year's creditable foreign taxes, so the filer enters $0 and the redetermination is never reached.",
+       "line": "ftc.eligible_if_tax (Form 1116 / Schedule C path)",
+       "irs_text": "i1116 p. 2: 'Use Schedule C (Form 1116) to report foreign tax redeterminations that occurred in the current tax year and that relate to prior tax years.'",
+       "severity": "medium",
+       "fix": "Add to the gate: 'Did you or your spouse pay additional foreign tax, or receive a refund of foreign tax, this year for an earlier year?' Route a yes to Schedule C (Form 1116)."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer with foreign tax withheld on dividends who is unsure whether the tax is 'creditable' or 'after required reductions', for example because of a holding period they cannot evaluate.",
+       "why_no": "The helper asks for 'creditable foreign taxes after required reductions', a legal classification. An unsure filer enters 0 rather than the box 7 amount.",
+       "line": "ftc.eligible_if_tax; ftc.elect_if_tax",
+       "irs_text": "i1116 p. 2: 'You are still required to take into account the general rules for determining whether a tax is creditable ... You are still required to reduce the taxes available for credit by any amount you would have entered on line 12 of Form 1116.'",
+       "severity": "medium",
+       "fix": "Gate on gross foreign tax shown or paid (> $0). Apply creditability, holding-period, and line 12 reductions afterward through the ftc.eligible question."
+      }
+     ],
+     "prompt_sha": "866b5bb5aac093b30be747522f5cd3b12eac0497cfa4b3ae1e6eb790b2550178",
+     "model": "claude-opus-5-5",
+     "cost": 0.115536,
+     "date": "2026-11-07",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "response": ".transcription/false_no/gate_ftc.has_tax.response.txt"
+    }
+   ]
   }
  }
 }
