@@ -27,6 +27,31 @@ import jurisdiction  # noqa: E402  (a New York document's files are under forms/
 CITE_TEXT = re.compile(r"\[[a-z0-9-]+\] [^\n]*?; sha256 [0-9a-f]+\)")
 
 
+def scope_keys(row_text):
+    """The line keys of a pass's `review scope` row ("lines k1, k2, ..."), or None when the row does not
+    name lines. Keys are joined with ", " and a printed-line key may itself hold ", " inside its
+    parentheses ("(Step 5, 1)"), so the row splits only at ", " outside parentheses."""
+    if not row_text or not row_text.startswith("lines "):
+        return None
+    keys, depth, cur = [], 0, ""
+    text = row_text[len("lines "):]
+    i = 0
+    while i < len(text):
+        c = text[i]
+        if c == "(":
+            depth += 1
+        elif c == ")":
+            depth = max(0, depth - 1)
+        if depth == 0 and text.startswith(", ", i):
+            keys.append(cur)
+            cur, i = "", i + 2
+            continue
+        cur += c
+        i += 1
+    keys.append(cur)
+    return [k.strip() for k in keys if k.strip()]
+
+
 def _sha(obj):
     return hashlib.sha256(json.dumps(obj, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 

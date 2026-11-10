@@ -2364,6 +2364,30 @@ class CompletenessPages(unittest.TestCase):
         self.assertEqual(CR.elsewhere(reader, [shared, reader, gated]), ["- g: Form G line 1"])
 
 
+class ScopeKeys(unittest.TestCase):
+    """A pass's review scope row splits at ", " only outside parentheses."""
+
+    def test_printed_keys_holding_a_comma_stay_whole(self):
+        import subjects
+        self.assertEqual(subjects.scope_keys("lines eic.zero, (Step 5, 1), 6 (eic.wsb_6), 4b"),
+                         ["eic.zero", "(Step 5, 1)", "6 (eic.wsb_6)", "4b"])
+        self.assertIsNone(subjects.scope_keys("whole"))
+
+
+class LineScopedCatalog(unittest.TestCase):
+    """A line-scoped transcription catalog lists the collections its scoped lines sum over."""
+
+    def test_schedule_d_lines_scoped_alone_still_see_the_sales_collection(self):
+        doc, mani = T.load_form("sd"), T.manifest()
+        ids = [l["id"] for l in doc["lines"] if l["id"].startswith("sd.line1a.")]
+        reach = T.members_of(doc, ids)
+        scoped = {**doc, "lines": [l for l in doc["lines"] if l["id"] in reach]}
+        excerpt, used = T.excerpt_for(scoped, mani)
+        selected = T.catalog_selection(doc, excerpt, used, mani, whole_text=False, cited=scoped)
+        self.assertIn("sales", selected)
+        self.assertIn("sales", T.collections_read(scoped))
+
+
 class LocatorPages(unittest.TestCase):
     """transcribe.py reads page lists with tools/citations.py's grammar."""
     def test_pages_joined_by_and_are_all_read(self):

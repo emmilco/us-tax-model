@@ -450,7 +450,8 @@ def ingest(kind, form, family, text):
             shas[pid] = by_pid[pid][0]
             continue
         scope = row(block, "review scope")
-        scope = scope[len("lines "):].split(", ") if scope and scope.startswith("lines ") else [k for k, _ in mine]
+        import subjects
+        scope = subjects.scope_keys(scope) or [k for k, _ in mine]
         reply = _fenced_reply(block, "```yaml\n") or ""
         ident = identity(kind, form, family, scope, {k: subjects_now.get(k) for k, _ in mine if k in subjects_now}, block, reply)
         parts = [("block", block)] + [("section " + k, _normal(s)[0]) for k, s in mine]

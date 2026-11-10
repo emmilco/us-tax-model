@@ -118,7 +118,7 @@ def load_pass(form, pid, block, doc):
         raise Unavailable("its block records no reply")
     verified = verify_receipt(receipt, prompt_sha, raw)
     keys = dict(T.line_keys(doc))
-    names = scope[len("lines "):].split(", ")
+    names = T.subjects.scope_keys(scope)
     unknown = [k for k in names if k not in keys]
     if unknown:
         raise Unavailable("its scope names lines the form no longer compares: " + ", ".join(unknown))

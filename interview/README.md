@@ -72,7 +72,7 @@ schedule of that number) and sends only the forms the catalogs hold (`engine/src
 or below the explanation on a narrow window, is its source: the cited document's designation
 and printed title, as "Form 1040 — U.S. Individual Income Tax Return" (the `designation`, the form,
 schedule or publication number as the document prints it, and the `title` of its entry in
-`tools/sources-<year>.json` or `tools/sources-ny-<year>.json`, which `tools/check_source_titles.py`
+`tools/sources/<year>.json` or `tools/sources/ny/<year>.json`, which `tools/check_source_titles.py`
 checks against the archived document; a document with no printed designation, such as a statute or
 a statistics table, shows its title alone, and one whose title already contains its designation
 shows the title once), every reference of

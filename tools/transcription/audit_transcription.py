@@ -171,7 +171,7 @@ def audit_pass(form_doc, log, pid, block, tagged):
     if meta.get("finish_reason") == "length":
         raise ValueError(f"pass {pid}: response exhausted its output budget")
     bound = all(key in meta for key in ("prompt_sha256", "system_sha256", "prompt_policy", "model_requested"))
-    scope = [k.strip() for k in re.sub(r"^lines ", "", fields.get("review scope", "")).split(",") if k.strip()]
+    scope = T.subjects.scope_keys(fields.get("review scope", "")) or []
     keyed = dict(T.line_keys(form_doc))
     unknown = [k for k in scope if k not in keyed]
     if not scope or unknown:

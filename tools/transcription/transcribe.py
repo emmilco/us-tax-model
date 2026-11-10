@@ -699,12 +699,19 @@ def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True, cited
             out = {d: why for d, why in out.items() if jurisdiction.is_ny(d) or d in whole}
         else:
             # A form named only as a form keeps its input lines, the return's facts the text may rely on
-            # without naming a line (filing status); a collection named only as a form is not listed.
+            # without naming a line (filing status); a collection named only as a form is not listed
+            # unless a scoped line sums over it, since the model cannot write that sum without its fields.
+            summed = collections_read(cited) if cited is not None else set()
             for d in [d for d, why in out.items() if why == "named form" and d not in whole]:
                 doc = load_form(d)
+                if doc.get("collection") and d in summed:
+                    continue
                 del out[d]
                 if not doc.get("collection"):
                     inputs[d] = {l["id"] for l in doc["lines"] if l["expr"].get("op") == "input"}
+            for d in sorted(summed - set(out)):
+                if d != form_doc["id"]:
+                    out[d] = SUMMED_COLLECTION
         named = federal_named(lines_named, mani)
         if jurisdiction.NY:
             for d, ids in federal_labelled(text, mani).items():
@@ -730,6 +737,28 @@ NAMED_LINES = "named lines: "
 # A line-scoped federal catalog (catalog_selection with `cited`): of a form the excerpt names only as a form,
 # its input lines and the lines the excerpt names by form and line.
 NAMED_FORM_INPUTS = "named form, inputs and named lines: "
+# A line-scoped federal catalog: a collection a scoped line sums over, listed whole.
+SUMMED_COLLECTION = "collection a scoped line sums over"
+
+
+def collections_read(doc):
+    """The collections a document's lines sum over (`sum_over` and other ops naming a `collection`)."""
+    out = set()
+
+    def walk(x):
+        if isinstance(x, dict):
+            if isinstance(x.get("collection"), str):
+                out.add(x["collection"])
+            for v in x.values():
+                walk(v)
+        elif isinstance(x, list):
+            for v in x:
+                walk(v)
+    for l in doc.get("lines", []):
+        walk(l.get("expr"))
+        walk(l.get("shown_when"))
+        walk(l.get("refuses"))
+    return out
 
 
 def federal_named(pairs, mani):

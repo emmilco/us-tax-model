@@ -6515,3 +6515,23 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Fix sketch:** always list a collection, with its fields, that the scoped lines (or the helpers in their reach) read through `sum_over`, whatever the text names; add a self-test with the sd column lines. Then rerun the line-scoped transcription of sd lines 1a to 10 (paid, owner's call).
 - **Disposition:** open. The 24 sd sections of this pass are ruled interface gap citing this entry; the project's lines stand (no HEAD-to-current difference on any sd line over 1,702 fixtures and 500 generated returns).
 - **Tags:** review-tool; line-scoped; catalog; interface-gap; open
+
+## BUG-0480 — BUG-0479 is fixed: a line-scoped transcription catalog lists every collection its scoped lines sum over
+
+- **Date:** 2026-11-10
+- **Caught by:** the T-150 sibling refresh of BUG-0471 (sd lines 1a to 10 reviewed with no keyed collection in the catalog).
+- **Source:** `catalog_selection` (tools/transcription/transcribe.py): in a line-scoped federal review, a collection the excerpt names only as a form was dropped unless the scoped lines' citations named its IRS form; nothing checked whether the scoped lines sum over it.
+- **Symptom:** the sd line-scoped prompt listed no `sales` fields, so the second transcription wrote zero placeholders for every column sum.
+- **Disposition:** fixed. `collections_read` collects the collections a document's lines read; the line-scoped federal branch keeps such a collection and adds any not otherwise selected (`SUMMED_COLLECTION`). Self-test `LineScopedCatalog` fails on the old code. The sd lines were reviewed again with `sales` in the catalog ($0.45): 32 disagreements, all the known digital-asset widening (T-003): 4 carried, 28 ruled scope, no value difference.
+- **Closes:** BUG-0479.
+- **Tags:** transcription; catalog; line-scoped; tool; fixed
+
+## BUG-0481 — BUG-0470 is fixed: review scope rows split at ", " only outside parentheses
+
+- **Date:** 2026-11-10
+- **Caught by:** BUG-0470.
+- **Source:** as BUG-0470.
+- **Symptom:** as BUG-0470.
+- **Disposition:** fixed. `subjects.scope_keys` splits a `review scope` row at ", " outside parentheses; triage.py, audit_transcription.py and review_store.py use it. The written format is unchanged. Of 528 stored records, 2 (eic transcription) hash a scope with split fragments; they are left as stored, since a record's scope is read only to test for "whole" and unchanged passes reuse their records, so no index changes. Triage on eic now runs unpatched and reproduces the patched run on which the eic rulings rest: every line's status and verdict equal, value differences on completed returns equal (eic.eligible 98), only shows-skipped counts larger by the fixture cases added since. Self-test `ScopeKeys`.
+- **Closes:** BUG-0470.
+- **Tags:** review-store; triage; line-scoped; tool; fixed
