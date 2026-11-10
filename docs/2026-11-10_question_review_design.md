@@ -195,7 +195,8 @@ guess, not a measurement.
 The screen review is the closest analogue, and its first pass on never-reviewed screens produced BUG-0032 (25
 screens reworded). At the screen review's window rate, $43.57 would buy about 16 bugs. That is an extrapolation
 from one kind's rate on a different population, and the true figure could be several times higher or lower. The
-264 never-judged questions are where class Q came from. This is the case for a pilot.
+264 never-judged questions are a population no review has read, so no rate measured elsewhere transfers to them.
+This is the case for a pilot.
 
 **Recommended pilot (under the $3.00 gate, no approval needed): 40 units for about $2.90.** Stratify them: 15
 unjudged Bool, 10 unjudged amounts or counts, 10 render-judged with help, and 5 screen-judged as a control. A
