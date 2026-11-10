@@ -58,22 +58,22 @@ const PROFILES = ["social-security", "sales", "stage4", "full", "ny"] as const;
  * single filer. The full and New York profiles, the return a filer prepares, have none. */
 const SLICE_INITIAL = JSON.stringify({ $person: ["taxpayer"], "person[taxpayer].role": "taxpayer" });
 const INITIAL_ALLOWED: Record<string, string> = { "social-security": SLICE_INITIAL, sales: SLICE_INITIAL, stage4: SLICE_INITIAL };
-const GENERATED = Number(process.env["INTERVIEW_RULES_RUNS"] ?? 12);
+export const GENERATED = Number(process.env["INTERVIEW_RULES_RUNS"] ?? 12);
 const RANDOM_EVERY = Number(process.env["INTERVIEW_RULES_RANDOM_EVERY"] ?? 3);
 /** Random traversals per chosen walk, each with its own seed. */
 const RANDOM_SEEDS = Number(process.env["INTERVIEW_RULES_SEEDS"] ?? 5);
-const SEED = 11;
+export const SEED = 11;
 const BASELINE = resolve(import.meta.dirname, "../..", "tools", "interview_rules_baseline.json");
 const PRUNING = resolve(import.meta.dirname, "../..", "reports", String(YEAR), "interview_pruning.md");
 /** The held lists, each keyed by input template with a reason. */
 interface Baseline { early_completion: Record<string, string>; order_dependent_reach: Record<string, string>; walked_unused: Record<string, string> }
 
-type Event = { input: string; value: unknown };
+export type Event = { input: string; value: unknown };
 /** `exposed`: each input reachable at an incomplete state that a later answer made unreachable before it was answered,
  * with that answer's input. */
-interface Walk { events: Event[]; inputs: Inputs; status: string; valuesKey: string; states: number; exposed: Record<string, string> }
+export interface Walk { events: Event[]; inputs: Inputs; status: string; valuesKey: string; states: number; exposed: Record<string, string> }
 /** The answer a walk gives to an input, or undefined when it has none. */
-type Answers = (key: string, current: Inputs) => { value: unknown } | undefined;
+export type Answers = (key: string, current: Inputs) => { value: unknown } | undefined;
 const fromInputs = (inputs: Inputs): Answers => (key) => (key in inputs ? { value: inputs[key] } : undefined);
 
 /** A seeded generator in [0, 1) (mulberry32). */
@@ -93,7 +93,7 @@ function shuffled<T>(xs: T[], rand: () => number): T[] {
   return out;
 }
 
-class Unanswered extends Error {}
+export class Unanswered extends Error {}
 
 /** Walks the interview answering from `answers`: `pick` chooses the next input among the open ones. While the return is
  * incomplete every reachable unanswered input is open, so a pick `answers` lacks is a question this order reaches and
@@ -101,7 +101,7 @@ class Unanswered extends Error {}
  * reported there and the pick is made among the answered ones. A refusal is provisional (a later answer may clear it), so the walk goes on past it while a
  * reachable question has an answer, and ends complete or when none has; past a refusal only answered inputs are open.
  * Reports early completion at every state to `leak`. */
-function walk(data: CanonicalData, config: InterviewData, answers: Answers, pick: (open: string[]) => string, bound: number, leak: (reachable: string[]) => void, reach?: (key: string) => void): Walk {
+export function walk(data: CanonicalData, config: InterviewData, answers: Answers, pick: (open: string[], current: Inputs) => string, bound: number, leak: (reachable: string[]) => void, reach?: (key: string) => void): Walk {
   let current: Inputs = structuredClone(config.initial);
   const events: Event[] = [];
   const exposed: Record<string, string> = {};
@@ -122,7 +122,7 @@ function walk(data: CanonicalData, config: InterviewData, answers: Answers, pick
       open = open.filter((k) => answers(k, current));
     }
     if (!open.length) throw new Error("incomplete, and no reachable question has an answer");
-    const key = pick(open);
+    const key = pick(open, current);
     const answer = answers(key, current);
     if (!answer) throw new Unanswered(key);
     events.push({ input: key, value: answer.value });
@@ -131,12 +131,12 @@ function walk(data: CanonicalData, config: InterviewData, answers: Answers, pick
 }
 
 /** The profile's target values, serialized: what two walks over the same answers must agree on. */
-function targetKey(data: CanonicalData, config: InterviewData, inputs: Inputs): string {
+export function targetKey(data: CanonicalData, config: InterviewData, inputs: Inputs): string {
   const values = evaluate(data, inputs, config.targets).values;
   return JSON.stringify(config.targets.map((t) => values.get(t)));
 }
 
-function replayed(config: InterviewData, events: Event[]) {
+export function replayed(config: InterviewData, events: Event[]) {
   return replay(config, [{ version: 1, tax_year: config.tax_year }, ...events]);
 }
 
@@ -152,7 +152,7 @@ function onlyGiven(config: InterviewData, events: Event[]): string | null {
 }
 
 /** The interview's own order: the open question first in bank order (then by key), as interviewStatus picks. */
-function bankOrder(config: InterviewData): (open: string[]) => string {
+export function bankOrder(config: InterviewData): (open: string[]) => string {
   const order = new Map(config.questions.map((q) => [q.input, q.order]));
   const rank = (k: string) => order.get(questionTemplate(k)) ?? Infinity;
   return (open) => open.reduce((a, b) => (rank(b) < rank(a) || (rank(b) === rank(a) && b.localeCompare(a) < 0) ? b : a));
@@ -165,7 +165,7 @@ function bankOrder(config: InterviewData): (open: string[]) => string {
 export interface Classes { askedUnread: string[]; outOfOrder: Record<string, string>; withheld: number; readUnasked: string[] }
 
 /** The inputs an evaluation reads: each input line it evaluates, and each roster a collection sum confirms. */
-function readInputs(data: CanonicalData, config: InterviewData, inputs: Inputs): Set<string> {
+export function readInputs(data: CanonicalData, config: InterviewData, inputs: Inputs): Set<string> {
   const read = new Set<string>();
   for (const [k, der] of evaluate(data, inputs, config.targets).derivations) {
     if (der.op === "input") read.add(k);
@@ -186,10 +186,10 @@ function classify(data: CanonicalData, config: InterviewData, inputs: Inputs, w:
   };
 }
 
-interface Case { id: string; inputs: Inputs }
+export interface Case { id: string; inputs: Inputs }
 /** The fixture cases a profile walks: the federal whole returns (`walk: full`), or the New York stage fixtures (not the
  * class M or mutation cases); inputs resolved (fixture-inputs.ts). */
-function fixtureCases(profile: "full" | "ny", data: CanonicalData): Case[] {
+export function fixtureCases(profile: "full" | "ny", data: CanonicalData): Case[] {
   const cases = profile === "full" ? walkedCases("full", data) : loadFixtureCases("ny", data).filter((c) => !c.file.startsWith("classm") && c.file !== "mutation.json");
   return cases.map((c) => ({ id: c.id, inputs: c.inputs }));
 }
@@ -276,6 +276,12 @@ export function existenceGates(data: CanonicalData): Map<string, Set<string>> {
 /** A minimal return's walk: `open` names the existence gate opened (with its value), or none for every gate closed.
  * Throws Unanswered when the interview asks an input gated by a closed gate. */
 function minimalWalk(data: CanonicalData, config: InterviewData, profile: "full" | "ny", open: { input: string; value: unknown } | null, leak: (reachable: string[]) => void): Walk {
+  return walk(data, config, minimalAnswers(data, config, profile, open), bankOrder(config), 800, leak);
+}
+
+/** A minimal return's answers: `open`'s value for the opened existence gate, none for an input gated by a closed gate,
+ * else the closed answer (MINIMAL_BASE's value where it has one). */
+export function minimalAnswers(data: CanonicalData, config: InterviewData, profile: "full" | "ny", open: { input: string; value: unknown } | null): Answers {
   const gates = existenceGates(data);
   const allowed = open ? gates.get(open.input) ?? new Set<string>() : new Set<string>();
   const closed = new Set(gatesOf(data).map((g) => g.input).filter((i) => !allowed.has(i)));
@@ -286,7 +292,7 @@ function minimalWalk(data: CanonicalData, config: InterviewData, profile: "full"
     if (closed.has(t)) return undefined;
     return { value: key in base ? base[key] : closedAnswer(data, config, key, current) };
   };
-  return walk(data, config, answers, bankOrder(config), 800, leak);
+  return answers;
 }
 
 /** One unit of the walks' work, done by a worker thread (interview-rules-worker.ts) on its own copy of the data. Each
