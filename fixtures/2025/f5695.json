@@ -3326,6 +3326,166 @@
       }
     },
     {
+      "id": "stage15.mut.f5695_furnace_ac_no_qmid",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Mutation fixture (the furnace operand of f5695.furnace_no_qmid and the no-water-heater alternative of f5695.wh_no_qmid), predicted from the archived i5695 before evaluating: stage15.f5695.s2 with $1,000 of a furnace (line 24a) and the central air conditioner and the furnace answered as having no valid QMID (doors and windows keep theirs); no water heater. i5695 p. 5, \"you must provide a valid QMID for each item\": the capped amounts of lines 22 and 24 are refused, each by its own entry (the line's recorded refusal text), and line 23, with no water heater, is $0 and not refused.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 100000,
+        "f5695.line20a_i": 220000,
+        "f5695.line22a": 500000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_doors": true,
+        "f5695.qmid_windows": true,
+        "f5695.line24a": 100000
+      },
+      "expect": {
+        "f5695.ac_capped": {
+          "kind": "refusal",
+          "gate": "f5695.ac_no_qmid",
+          "form": "Form 5695 line 22 (a central air conditioner without a valid QMID)",
+          "remedy": "Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Part II Energy Efficient Home Improvement Credit, \"you must provide a valid QMID for each item\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        },
+        "f5695.furnace_capped": {
+          "kind": "refusal",
+          "gate": "f5695.furnace_no_qmid",
+          "form": "Form 5695 line 24 (a furnace or hot water boiler without a valid QMID)",
+          "remedy": "Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Part II Energy Efficient Home Improvement Credit, \"you must provide a valid QMID for each item\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        },
+        "f5695.wh_capped": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage15.mut.f5695_wh_no_qmid_no_furnace",
+      "covers": [
+        "f5695:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Mutation fixture (the no-furnace alternative of f5695.furnace_no_qmid), predicted from the archived i5695 before evaluating: stage15.f5695.s2 with $1,000 of a water heater (line 23a) answered as having no valid QMID; no furnace. i5695 p. 5, \"you must provide a valid QMID for each item\": the capped amount of line 23 is refused (the line's recorded refusal text), and line 24, with no furnace, is $0 and not refused.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.part2_any": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 100000,
+        "f5695.line20a_i": 220000,
+        "f5695.line22a": 500000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_doors": true,
+        "f5695.qmid_windows": true,
+        "f5695.qmid_ac": true,
+        "f5695.line23a_i": 100000
+      },
+      "expect": {
+        "f5695.wh_capped": {
+          "kind": "refusal",
+          "gate": "f5695.wh_no_qmid",
+          "form": "Form 5695 line 23 (a water heater without a valid QMID)",
+          "remedy": "Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.",
+          "cite": {
+            "doc": "i5695",
+            "locator": "p. 5, Part II Energy Efficient Home Improvement Credit, \"you must provide a valid QMID for each item\"",
+            "revision": "2025",
+            "snapshot": "55113467f9689346adc0faf8add25d7fa50a0c5a91765c67f5ff24682a68cb66",
+            "tax_year": 2025
+          }
+        },
+        "f5695.furnace_capped": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage15.mut.f5695_part1_one_cent",
+      "covers": [
+        "f5695"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the line 13 comparison of f5695.line13_positive, strictly more than zero), predicted from the archived f5695 and i1040s8812 before evaluating: stage15.f5695.s1 with one cent of solar electric property costs (line 1 $0.01). Line 6b is 30% of $0.01, $0.003, which rounds to $0.00, and with no fuel cell property or carryforward line 13 is $0. Part I is completed but line 13 is not more than zero, so no residential clean energy credit is claimed for Credit Limit Worksheet A (i1040s8812 p. 4, \"You are claiming one or more of the following credits\").",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "f5695.part1_any": true,
+        "f5695.line1": 1
+      },
+      "expect": {
+        "f5695.line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f5695.claiming_part1": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
       "id": "stage15.regress.f5695.enabling_cap",
       "covers": [
         "f5695"

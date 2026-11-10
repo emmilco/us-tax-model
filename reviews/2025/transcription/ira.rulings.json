@@ -642,6 +642,45 @@
    }
   },
   {
+   "printed": "ira.combat_gate",
+   "project_expr_sha256": "60818c7dc5e84fce51cde55f435118e5921b6c03b6aec92fb6b2587b71577e4e",
+   "second_expr_sha256": "e4872f5b0517548e460d814e9d9ab8fd1c18199db9b7a74cc43b82e9b891b28c",
+   "ruling": "Ruling: model error; i1040gi p. 98, IRA Deduction Worksheet, line 8: \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i\"; combat pay matters to line 8 only when the worksheet is used (p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"). The candidate's gate is s8812.combat_pay alone, without the contribution condition. executable-triage-v2 (`.transcription/triage/2025/ira.json`, pass 2f14fa8fede2; 1,702 fixtures, 500 generated returns seed 20261026, 69 partial records; 2,271 comparisons): 2,113 of 2,271 agree; differences 129 candidate-unknown, 20 value, 9 project-unknown; on returns the full interview completes: 62 candidate-unknown, 2 value; witnesses enumerated with the cap lifted (scratch /tmp/adj/tr/eicwork/full/ira.json). The 2 completed value differences, stage5.return.refund_combat_pay_no_children and stage8.hoh.actc.three_children.line12_stop_combat_pay, have combat pay and no traditional IRA contributions (ira.any_trad false, Schedule 1 line 20 $0): the candidate's gate is true and would refuse the IRA deduction of a return that has none; the project's is false. The 62 completed candidate-unknowns need s8812.combat_pay on returns without traditional contributions, where the project's gate is false without it and the interview does not ask it; a candidate that needs an answer the source does not need is a model error (README). The rest are on incomplete or refused records. As the earlier ruling (executable-triage-v1), whose reasoning holds for this reply. Gate-wave check: the rewrite (all of ira.any_trad and s8812.combat_pay, now a choose on ira.any_trad) gives false in HEAD and the working tree on both value witnesses (evaluated) and the same value on every completed return (1,702 fixtures and 500 generated returns evaluated in both trees); it differs only on 9 refused records, false in HEAD and unknown in the working tree. Project stands.",
+   "context": "2eedbb3dbe104418acda70a35087b3e8df4acf72835919cc1a7bc22cf19d5b5a",
+   "date": "2026-11-09",
+   "run": "49695cec4a5734c9198a466cf1fef0e7f66456fe4e11a18bb0014941120474f7",
+   "subject_key": "d9a9394a48992e225bc1dce550405639b758b5cb7bd29d89b580413384220ea4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@ira",
+     "fixture:classm.f8889.3.deepseek@ira",
+     "fixture:classm.f8889.5.deepseek@ira",
+     "fixture:classm.f4952.2.deepseek@ira",
+     "fixture:classm.f4952.3.deepseek@ira",
+     "fixture:classm.f4952.4.deepseek@ira",
+     "fixture:classm.carloan.2@ira",
+     "fixture:classm.f8959.1@ira",
+     "fixture:classm.tax_on_amount.2@ira",
+     "fixture:stage9.eic.refuse.combat_pay@ira",
+     "fixture:stage14.eic.wsb_combat_pay@ira",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ira",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ira",
+     "fixture:stage16.cleanup.refuse.scope_credits@ira",
+     "fixture:stage15.refuse.f2441.combat_pay@ira",
+     "fixture:stage16.cleanup.refuse.f2441_line24@ira",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ira",
+     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "ira.cov_gate",
    "project_expr_sha256": "f4ecbd86c683d2c62b5ab5b1677bdbcd32515a78e8fd12befb57a45b911f6e8f",
    "second_expr_sha256": "f934c8b0b702356d85c3f9fe4ace0f5b64af57fee5b1a17398e2579d18d3253c",
@@ -735,15 +774,15 @@
    "printed": "ira.line20",
    "project_expr_sha256": "734b9913dd9977d8fdfac33b115d057cab32933037fbc63665bb341233f2bb12",
    "second_expr_sha256": "b1038cc7badab0196e9cc0906543ddae7fdc49c6c67f653cb6fbc00a4f20c458",
-   "ruling": "Ruling: model error; i1040gi p. 98, line 12: \"This is the most you can deduct. Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20. Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606).\" Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 520 of 1640 comparisons agree; 1016 candidate-unknown, 102 candidate-refuses, 2 project-refuses. The candidate refuses through its gates. Of the 102 candidate-refuses records, 5 are reachable joint returns with no traditional contributions refused by its ira.kbh_short (classm.sli.4, classm.ssb.4, classm.f1040.3, generated 208 and 383; ruled model error there), where the source gives zero; the other 97 are refused by other cited gates (scope). Of the 1,016 candidate-unknown records, 966 need ira.deduct_less on returns with no deduction, where the election to deduct less is necessarily No (representation); 10 need person.plan without a Schedule C and 2 the amount after No to person.sav_trad (both necessarily determined); 38 are no-contribution partial records needing ira.special or ira.se_capital (model error, as ruled on ira.special_gate and line 9). The 2 project-refuses records are cited scope screens: stage16.refuse.person.ira_excess (person.ira_excess_gate) and stage16.refuse.ira.dist (person.ira_dist_gate). No value differs. Project stands.",
-   "context": "176d9e42d121db4a7e3216140c5154a5a03d2804125c591c94992fd3e5f123a6",
-   "subject_key": "9ff723faa6d9d3eed7241b19492e7fd78aa1c978a3aee910166b81d6bdd492fd",
+   "ruling": "Ruling: model error; i1040gi p. 98, IRA Deduction Worksheet, line 12: \"This is the most you can deduct. Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20. Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\" (amb.2025.ira_deduct_less). The sum of lines 12a and 12b is the project's sum of person.ira_deduction. executable-triage-v2 (`.transcription/triage/2025/ira.json`, pass 2f14fa8fede2; 1,702 fixtures, 500 generated returns seed 20261026, 69 partial records; 2,271 comparisons): 1,918 of 2,271 agree; differences 353 candidate-unknown; on returns the full interview completes: 153 candidate-unknown; witnesses enumerated with the cap lifted. No value differs on any record. Every one of the 153 completed differences is a candidate-unknown on ira.deduct_less, which the candidate declares as an unconditioned refusal gate, on a return whose deduction is $0 (project $0 on all 153): with nothing to deduct there is no smaller amount to elect, the project asks the election only when line 12a plus 12b is above zero (ira.less_gate), and the interview does not ask it otherwise. A candidate that needs an answer the source does not need is a model error (README). As the earlier ruling on this line. Gate-wave check: ira.less_gate (all, now a choose on ira.has_deduction) and Schedule 1 line 20 give the same values in HEAD and the working tree on every completed return (1,702 fixtures and 500 generated returns evaluated in both trees). Project stands.",
+   "context": "2eedbb3dbe104418acda70a35087b3e8df4acf72835919cc1a7bc22cf19d5b5a",
+   "date": "2026-11-09",
+   "run": "49695cec4a5734c9198a466cf1fef0e7f66456fe4e11a18bb0014941120474f7",
+   "subject_key": "913bd496c7247abbb3811f821010b50de62a3a166b2ce3b238b0aab1f683f598",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "candidate-refuses",
-     "candidate-unknown",
-     "project-refuses"
+     "candidate-unknown"
     ],
     "witnesses": [
      "fixture:classm.f2441.1.deepseek@ira",
@@ -751,17 +790,9 @@
      "fixture:classm.f2441.3.deepseek@ira",
      "fixture:classm.f2441.4.deepseek@ira",
      "fixture:classm.f2441.5.deepseek@ira",
-     "fixture:classm.f2441.6.deepseek@ira",
-     "fixture:classm.f8889.4.deepseek@ira",
-     "fixture:classm.s1.3@ira",
-     "fixture:classm.sli.4@ira",
-     "fixture:classm.ssb.4@ira",
-     "fixture:classm.f1040.3@ira",
-     "fixture:classm.dependent.3@ira",
-     "fixture:stage16.refuse.person.ira_excess@ira",
-     "fixture:stage16.refuse.ira.dist@ira"
+     "fixture:classm.f2441.6.deepseek@ira"
     ],
-    "policy": "executable-triage-v1"
+    "policy": "executable-triage-v2"
    }
   },
   {

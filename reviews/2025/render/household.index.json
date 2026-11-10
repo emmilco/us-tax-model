@@ -4,7 +4,9 @@
  "family": "claude",
  "base": "ce620459cc556d041469f29727d04cdc79561880edb04933ff505533e5509a56",
  "head_rows": {
-  "line-scoped reviews": "4 (latest 2026-11-07); see Line-scoped reviews"
+  "lines judged": "64",
+  "match / mismatch / unclear / missing": "63 / 1 / 0 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-09); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -111,27 +113,27 @@
   },
   {
    "key": "tin_count",
-   "record": "bd169650e711e5fc9f89baa9b55e0453f602e9da8121272cee1513155ad92ad2",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
    "status": "MATCH",
-   "subject_key": "c0e66de6d5f4e43755edff8e850c79e66fd21bb144c72ec4fdb13bd4f2e8f211"
+   "subject_key": "e4b2d2b9b78b938532563590cace81e55347653f42effef5945be0fc85c4b722"
   },
   {
    "key": "all_tin",
-   "record": "bd169650e711e5fc9f89baa9b55e0453f602e9da8121272cee1513155ad92ad2",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
    "status": "MATCH",
-   "subject_key": "e4b3aa5886481bd75f2a1b27905fa5199a4dd0462f4ffd17ca568b6907fe3da2"
+   "subject_key": "40fe0201ca020e06d0cab7e5f17cb94a2eaf5e76c4ae0b983c42d8ca297f1b2b"
   },
   {
    "key": "id_count",
-   "record": "bd169650e711e5fc9f89baa9b55e0453f602e9da8121272cee1513155ad92ad2",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
    "status": "MATCH",
-   "subject_key": "371a9df1a2c7ce467915ea6a3ca558c60cbb8006ad6e363a64bac22ba63e772e"
+   "subject_key": "47b6022f4d017965e926b1c0ae759a7fa34ec69e4e0190294cf46f4fd97bc57f"
   },
   {
    "key": "ctc_ssn",
-   "record": "bd169650e711e5fc9f89baa9b55e0453f602e9da8121272cee1513155ad92ad2",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
    "status": "MATCH",
-   "subject_key": "ba69e30ce7fb56db7fbe0007262ce69ae49960994218c791013affc00c7e5788"
+   "subject_key": "56caca2bfc9f79ee5b2332a3e8f92a7125bc121141a210c72c5fb99534326023"
   },
   {
    "key": "taxpayer_work_ssn_count",
@@ -170,10 +172,16 @@
    "subject_key": "a2f8323ed4b328005a497052a044f9d4a3f3fa4264df7dd7fb280f4f023cf8ee"
   },
   {
-   "key": "hoh_community_property",
-   "record": "f5065857d8f98b191aee06b2d90605ef64eb76e16533a42a1d1836c21955039e",
+   "key": "hoh_cp_married",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
    "status": "MATCH",
-   "subject_key": "75fdf07e757166b6bf0d10c743bdf68221d4d3e93500a14b23a1aaaa89f9ba4a"
+   "subject_key": "b16ff98098478eff1355ecdd51e7a6241a2b01281d68728491a30e6dbbbf9ac7"
+  },
+  {
+   "key": "hoh_community_property",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
+   "status": "MATCH",
+   "subject_key": "778d8d4511f6c19a8f193399fab747fd9626ed7e7d839182e4992b7fa20d3442"
   },
   {
    "key": "credit_disallowed",
@@ -242,10 +250,40 @@
    "subject_key": "ad6715efe9c9f47f8cebf4c921e1c3c8fef35e3a8a090bf88fa391f2ff585711"
   },
   {
-   "key": "hoh_absence",
-   "record": "f5065857d8f98b191aee06b2d90605ef64eb76e16533a42a1d1836c21955039e",
+   "key": "hoh_absence_from_test1",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
    "status": "MATCH",
-   "subject_key": "6387524a0b59e4abdb66dcb0b7b47f055383cc45fe507b4ac0af4eebc01aae9d"
+   "subject_key": "c8ccdc8f1f85c23fc8961b28e5d2784a9461063d1bc86cd10b4925c1f7910068"
+  },
+  {
+   "key": "hoh_absence_from_cost",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
+   "status": "MATCH",
+   "subject_key": "687299d1b469c40ae03c7ab1c1fa18e5a49709a9615272bde5a47c53de0c25fe"
+  },
+  {
+   "key": "hoh_absence_from_test2",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
+   "status": "MATCH",
+   "subject_key": "d9e7a0a71c129c638fbc1cd4c49882b84625edc37fabf4cb9df2ef52cd7ccfa1"
+  },
+  {
+   "key": "no_test2_persons",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
+   "status": "MATCH",
+   "subject_key": "7cd6f9301dc25a2a18741496d3fd9a8da90a12aacfcc9da2a69b488f975bc1a8"
+  },
+  {
+   "key": "any_test2_absence",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
+   "status": "MATCH",
+   "subject_key": "7ff132b66baa06931cdf1d3227013a1a2d942129c8d6b0b229bec8fb945e335c"
+  },
+  {
+   "key": "hoh_absence",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
+   "status": "MATCH",
+   "subject_key": "4ba538fb65966815246cc75977175aa6a4fc31cdf2ca55e9b6c2ce58e9e1f6ee"
   },
   {
    "key": "test1_met",
@@ -254,16 +292,22 @@
    "subject_key": "35fa21b6dc0b6d47e168982ccd2dc5b6277277ae5d1f7764518125d1993e61f3"
   },
   {
-   "key": "test2_met",
-   "record": "ce620459cc556d041469f29727d04cdc79561880edb04933ff505533e5509a56",
+   "key": "any_test2_person",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
    "status": "MATCH",
-   "subject_key": "212381a2f2101fb24c5dfa3698ad823146eb74acf11c151a375d08153ef0e099"
+   "subject_key": "47e4f9bed2fe958d55b09260e706dfa6c8c1c8dbdcfd0d6866fd436e97d214aa"
+  },
+  {
+   "key": "test2_met",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
+   "status": "MATCH",
+   "subject_key": "d1ab6cd91475afcbdd3013a8ed940dabc17e316d31ad6ae1ba25a6349b816666"
   },
   {
    "key": "hoh_eligible",
-   "record": "f5065857d8f98b191aee06b2d90605ef64eb76e16533a42a1d1836c21955039e",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
    "status": "MATCH",
-   "subject_key": "58cb498222a7605c4b7e22513da9157bf13491c40743b81846e7881a44a5b9b6"
+   "subject_key": "c3351077e0aaa8a28ff231d9e8694d42229fa895a77a9ec639dc73bdcb1720a4"
   },
   {
    "key": "hoh_fails",
@@ -297,9 +341,9 @@
   },
   {
    "key": "widowed_2025",
-   "record": "ce620459cc556d041469f29727d04cdc79561880edb04933ff505533e5509a56",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
    "status": "MATCH",
-   "subject_key": "61702f17a4d4e8a0198329685dceae549f99369c989834196843efb996c14769"
+   "subject_key": "ad7e124a5f72181a25c127ffca05502231af3ec71f1ec1e74af3944bd4f69d3c"
   },
   {
    "key": "cp_married",
@@ -308,10 +352,22 @@
    "subject_key": "0c09ddfa094f2c302b3eab618722626f9758c6fc49ede9703bba26b20e748a8a"
   },
   {
-   "key": "cp_marriage_ended",
-   "record": "f5065857d8f98b191aee06b2d90605ef64eb76e16533a42a1d1836c21955039e",
+   "key": "cp_not_joint",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
    "status": "MATCH",
-   "subject_key": "a829fb558252a0a8bc7debf643a30023a3fa786d182400e73d5772961e367ff0"
+   "subject_key": "31dbee64334876469047e2def0055d2562b2b22a64d429e24e21847eb64dfeb9"
+  },
+  {
+   "key": "cp_unmarried",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
+   "status": "MATCH",
+   "subject_key": "2d4864acd190c3ead92ae0e9d289f9000e405eb573014d8555512db9b6bcdf7d"
+  },
+  {
+   "key": "cp_marriage_ended",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
+   "status": "MATCH",
+   "subject_key": "261d79981e5bc91d46ce95e5838d6fce1778462420b4fa0b38086a40bceaff4f"
   },
   {
    "key": "rdp_community_property",
@@ -320,10 +376,23 @@
    "subject_key": "5953c138899630eeda4afd1114f2470f60d23c478de0c4b6b2c7915acbfd177d"
   },
   {
-   "key": "filing_status_conflict",
-   "record": "f5065857d8f98b191aee06b2d90605ef64eb76e16533a42a1d1836c21955039e",
+   "key": "joint_unmarried",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
    "status": "MATCH",
-   "subject_key": "a0784175cb2698a1ce263cfd6cecdfec462a9723daf7b613c3f3b50883deb700"
+   "subject_key": "56436f18d3078680371c92619dae6f39ec587b914f8d7b0d84b676ea7f8546bb"
+  },
+  {
+   "key": "no_spouse_died",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
+   "status": "MATCH",
+   "subject_key": "5aa7b0de1e9c168182262f22ac7a7f6fe790e56946611dbd67c08e634e85e187"
+  },
+  {
+   "key": "filing_status_conflict",
+   "record": "c41354a5c9eed37f30df561e6f7f0c17e8603c6636dfa43e75b77eadf1bf7a3f",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040gi p. 14, Married Filing Separately; p. 15, Qualifying Surviving Spouse, \"1. Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025.\" A separate return is outside the tool: s3.mfs refuses scope.ready and the return's closing lines (executed on stage8.hoh.child.ctc with status mfs and household.married No: f1040.line31, line33 and line37 refused at s3.mfs), so an unmarried MFS filer gets no completed return. A remarried QSS filer fails household.qss_eligible, whose first test is the no-remarriage test, and household.qss_fails refuses line 12e (executed with status qss: line 12e and line 24 refused at household.qss_fails). The gate covers the two supported statuses that can contradict the marriage facts (single with a year-end marriage; joint with no year-end marriage and no 2025 death), as BUG-0286 records; its expression was not changed by the gate-wave rewrite. As the prior ruling. Project stands.",
+   "subject_key": "96509bdea2a17e14eeac502a130b3a023c7a42d4744af6607658be62a03c5beb"
   }
  ],
  "subjects": {
@@ -344,17 +413,18 @@
   "all_eic_ssn": "79c4eddec538dbb09af42480cc9c2c4854201db7d404d531a70003d119fb37cf",
   "under16_count": "8f3f202d279edafc323c441449a347616b3a1eb5907cf6c0ade3a6ec939bae8c",
   "filer_under16": "5d4f9632063f50fb7e49376eaf5700fa9ce247d27019c394986546ab1ad0d41a",
-  "tin_count": "4368f99f1c0c575c26aa7799c96a05e47b810d98891fdb81c6448247682faa93",
-  "all_tin": "af34290d4377e65f616a5cac6cc32191c9d9f7734f084b273a907c6a5e22e6e2",
-  "id_count": "01d48500a4c174fa9fc94bb598d34112c719e6f0f0ed94d7a475f61772dcf845",
-  "ctc_ssn": "6db1ea6e6bf0997fe35cdba42f550f7d8f5364c0c879a3e4840dc16cb2735d06",
+  "tin_count": "80194da8c7d6c16fb69e391dea31b40dc50a4c7bc8aab12b319ec964f7558d3b",
+  "all_tin": "11fcaff922816bbd17bd78274bb20992b6b7b62e096e0980e09cf0d23710f685",
+  "id_count": "c7d1537ed221bb6e760bb7cb9b8b3740d73c27fa90a563ac4886457b9e3de9ea",
+  "ctc_ssn": "e70caa1c750cc94c093f21bb076a9f49222897f3ee219c68cccba21057d35c76",
   "taxpayer_work_ssn_count": "5068464ee7473e72ce4ced8b1fd28f82d248aced4e6d7af55067d91f3a3c274b",
   "taxpayer_work_ssn": "5068464ee7473e72ce4ced8b1fd28f82d248aced4e6d7af55067d91f3a3c274b",
   "home_cost": "eb66faee704155180e7a0405c09ffc7b275a7f6d24d4dbc5728c431b67db38e8",
   "unmarried": "b687b58de22b6968b0b213dbadc07b6306c306109730ab10780b098737071212",
   "married": "2d20e6ac24216b13d34a9e8a4c579dc854b0e47935eed788dabcf90dd9b86fd7",
   "community_property": "b9aff9b390e2a39a45d6d12d52893607f842b1ed5bef3be8d1561f5b1cd099b3",
-  "hoh_community_property": "e2566e71d47655f6c2406035873f820859bb85fa8082259b0a7545c8f60b3e8f",
+  "hoh_cp_married": "38913d34e97b1a49c5138b008508afdab06a05de435a6cd4275aa946a670a6a7",
+  "hoh_community_property": "ad52aa0f10b880249233b55f11c405e7c7a27d12a45f355be8d2bf1056ef915f",
   "credit_disallowed": "989dc700b136c7dd4a99e966063cb8c6ffc7c021dce2fde70b2e601395506ae8",
   "no": "862ec62b4d8d1425bef39d73175d5475dc393df0e53f24087769a96a2f481bc5",
   "eic_above_zero": "ba8cc62641f042b53a3e8556e037fcff9cb04f69869ee89aa107eea31fdbe42f",
@@ -366,20 +436,30 @@
   "test1_persons": "61eba99c99a2954329aae0987e04656665117574a385f2411b3d8a05bbd064b6",
   "test2_persons": "1d35fdd798dd9a81ca48f308819882a59628f8aa6ff5b53f9d8cc9ca342486f5",
   "test2_absence_persons": "e3a1d693ed3c732ef3d443dfe9d56839b0bd3174ead47afc92e93275b833d8ea",
-  "hoh_absence": "9b7aeeec84fb23ac45cddf97cfd71262e74a9beddb97dc2048b54107a24d8e42",
+  "hoh_absence_from_test1": "33feb3c1344a593133b725ab3f98d2ac2f25379637ada8f57f56179945853aaf",
+  "hoh_absence_from_cost": "4c6b09f08217e88ad0aad91f6e58141c9bfcf86ff4b29f0d50cbe11a9b64b516",
+  "hoh_absence_from_test2": "3773e4fe1f4f76669110d7271917205b2e653f945bf4ee5479e5e03cdaede751",
+  "no_test2_persons": "26064c31197f55aaff5e4767458a160ad2ccddafcc26a737d7547b1ed74ebcef",
+  "any_test2_absence": "f32497eb6c76e5d53108dc39965d29464846e14ce136cd6b7999ea23e999c829",
+  "hoh_absence": "19a535089bb232009868c98bfc3191df90fc7381e6dbb5f28a366481bcf72fe2",
   "test1_met": "5ef108d86b78c027a5b671c9e0d775022de60ef74103e4b9252697f9f76ffe1f",
-  "test2_met": "b114dc2c4be9cb5368c0bafcbcfd3693bc2b537358a6b82c83449829c9a00bf4",
-  "hoh_eligible": "fe6fd3d53dd4956541b1301a6451b709315b8d019168a6d1e37eff4c2f5f1a9f",
+  "any_test2_person": "baf0ec71040dd3145be45d60fed584bbf6631a035c14509b744e80468a26856a",
+  "test2_met": "c881d6a2152f1c03d4cf7b315dbd05daf300764f4264101b12ba0a048c647ad7",
+  "hoh_eligible": "f2ffc4253cd57d389b86cc5c67829cb877946176f84442c89beed74a16ad1df2",
   "hoh_fails": "f132fdaebf093a6209c082ec2ba21290e1fe55ab3e12b7d1bba194b5b3aced6f",
   "qss_eligible": "a60fbc2d99325bfe450cb0a60b674633604e0387ca4b5c31aa53252d60ec8690",
   "qss_fails": "876bc8582890356064ee02a68759c1f5e14ac51780b4b94dc1a51c90085770cb",
   "rdp": "f5b3282a090b3ea7717369f71c18e431a3f483e60e79e3e3374419283293fa99",
   "spouse_died_2025": "ed9ee674679bf195b762d0b7b440d47d762a3626fa0957a0c2c93ec9749bc17d",
-  "widowed_2025": "9315d0120ebcd1cdf1759865fa10bc9526596b0a4b7ab5f4599bed28130849ef",
+  "widowed_2025": "eb92d9dbc95d66de08461d9939b4988f061ca5ac96acc93a0770ae57bdd7c880",
   "cp_married": "9e9b1b5b0c0497e24d3359e9174343c28509afffa37acc7bd8837ee487b0e113",
-  "cp_marriage_ended": "1f38f9d3857c80f7634fbda0dfc9d272a23b86d3ee2e7e7ca9b2314c6ee406d8",
+  "cp_not_joint": "d4af28f54d723f7a07c7cb8facefa9091f12e956a4c97952eee1a975ba566cdf",
+  "cp_unmarried": "c636a7688bae63910e5ce02cb04c46a549498926eaf58bae9cf476e409b38986",
+  "cp_marriage_ended": "1f3705814e58b3f9aae25da3fa4cc1ec6b3cdf9a10ff9ce9347060db8b165144",
   "rdp_community_property": "a457c28da276619b0ca48859c82d583a1101e0dffaa3a325cee46978d24be5b9",
-  "filing_status_conflict": "7aafae4e2b5bd4d0b53dd7dd2201fe48163cab9a7783da40f948b7452afb2c90"
+  "joint_unmarried": "c4cb21d04eec22c601a9687d3cb397cc59aaf0a7e6ba81aeb55ab189d4c0675d",
+  "no_spouse_died": "8d6891765d7cb82b17d42b31c0acad25f9b24759c9f2d2c0ee7c43747b389473",
+  "filing_status_conflict": "3bcbc15f2fda50f831b507279cd796bd011a7862cb09337d65ae192b972564fa"
  },
  "__rest__": "cb5c9ecba569eb410b0a79967c0b3d9cd7c9c97721476ca24d67e84169c728d8"
 }

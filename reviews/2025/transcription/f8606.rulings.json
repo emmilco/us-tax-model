@@ -22,6 +22,38 @@
    "second_expr_sha256": "c666dc0e7abb92a2ce9bff79d44b62719516af0bd6f66bb1ac5fdac474a84830",
    "ruling": "Ruling: representation; project retained. The project asks the question of each person (person.ira_dist) and shows the answer on the Form 8606 of a person who files it (f8606.dist, person.ira_dist_gate: nondeductible contributions and Yes); a Yes refuses line 14, and the deduction through person.ira_deduction, since lines 4 to 13 are not prepared. Form 8606 (2025), Part I, \"In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?\" and \"Go to line 4\".",
    "subject_key": "f3ac76950f7067c386b173c898e20701a81fc012673d6be7da906e81d130ef04"
+  },
+  {
+   "printed": "3 (question)",
+   "project_expr_sha256": "e1f4a18d3bf2e82077467fd37d92b1e0586bb122d1f54ae4f6e003a021a22f39",
+   "second_expr_sha256": "e0cde33fb063a5756fe3f5433917409b37b20baf717e56f0cf1d82a5eacf7d06",
+   "ruling": "Ruling: model error (+ scope); Form 8606 (2025), Part I: \"In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?\" is answered on the Form 8606 of a person who files it (i8606 p. 2, Who Must File: nondeductible contributions to a traditional IRA for 2025, among others). The project shows the answer through person.ira_dist_gate, which asks person.ira_dist only of a person with traditional IRA contributions who files Form 8606 (person.ira_has, then person.ira_dist_if_files); the reply copies person.ira_dist on every entry, so it needs that answer where the form is not filed. executable-triage-v2 (`.transcription/triage/2025/f8606.json`; 1,702 fixtures, 500 generated returns seed 20261026; 2,558 comparisons): 2,144 agree; 397 candidate-unknown (170 on returns the interview completes, person[taxpayer].ira_dist or person[spouse].ira_dist not asked) and 17 project-refuses, all on refused returns where an upstream IRA screen refuses the person's IRA lines and the reply reads only the answer (stage16.refuse.ira.both_kinds, kbh_short, over_comp, person.ira_over_limit): scope. No value differs. person.ira_dist_gate was rewritten from all[ira_has, ira_files_8606, ira_dist] into a nested choose in that order (BUG-0471); no HEAD-to-current difference shows on f8606 over 1,702 fixtures and 500 generated returns. Project stands.",
+   "context": "27e9d62c9818a29ddadd1a3ec49aac6e6947da188c23b29699b966c968d90572",
+   "date": "2026-11-09",
+   "run": "3a4e192cb8260b3f354bd7f712e6d7ae7ca83e192bcda2e05b5904970b0f87f3",
+   "subject_key": "423620861d6d5a6398528bb60faa0e0c9c4c2cbc3d28e89ac34c7b608fdc4f1f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer].f8606[form]",
+     "fixture:classm.f2441.2.deepseek@person[spouse].f8606[form]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer].f8606[form]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer].f8606[form]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer].f8606[form]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer].f8606[form]",
+     "fixture:stage16.refuse.ira.both_kinds@person[spouse].f8606[form]",
+     "fixture:stage16.refuse.ira.both_kinds@person[taxpayer].f8606[form]",
+     "fixture:stage16.refuse.ira.kbh_short@person[spouse].f8606[form]",
+     "fixture:stage16.refuse.ira.kbh_short@person[taxpayer].f8606[form]",
+     "fixture:stage16.refuse.person.ira_over_limit@person[taxpayer].f8606[form]",
+     "fixture:stage16.refuse.ira.over_comp@person[taxpayer].f8606[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

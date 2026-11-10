@@ -3,191 +3,269 @@
  "form": "f2441",
  "family": "claude",
  "base": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "1 (box)",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "record": "8f4bf2406fea95f47a18e3a0f828fca15dc167c155a849bf764071989c222f3e",
+   "status": "MATCH",
+   "subject_key": "25c49f1777e396e79890281862d3203382448b0f2ab84c93238b4220b0a2498c"
   },
   {
    "key": "2 (box)",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "1a4fdef952d94ac52e9824a97894fe8b4c8bc1e624367bbbcb73efe009cd21fc"
   },
   {
    "key": "3",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "82b50ce246892a04f096788e21f74aba8936609f477229ab3525a0c0d366d770"
   },
   {
    "key": "4",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; the model says person.dc_earned omits Form 1040 lines 1b, 1c, 1d, 1f, 1g and 1h with no refusal. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h (household employee wages, tips not on a W-2, Medicaid waiver payments, adoption benefits, Form 8919 wages, other earned income) by scope.other_income (refused at f1040.line8 and scope.ready), statutory-employee and notary income by sc.statutory (sc.screened at sc.line1), and Schedule SE items outside the tool by person.se_screened. On the remaining returns line 1z is lines 1a and 1e, which person.dc_earned adds per person (amb.2025.dc_line1e_attribution) with net self-employment earnings. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\" and adds statutory-employee Schedule C line 1 and net self-employment earnings; p. 5, Line 18, \"Earned income ... is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\". Same ruling as the earlier rounds. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)"
+   "ruling": "Ruling: scope; the model says person.dc_earned omits Form 1040 lines 1b, 1c, 1d, 1f, 1g and 1h with no refusal. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h (household employee wages, tips not on a W-2, Medicaid waiver payments, adoption benefits, Form 8919 wages, other earned income) by scope.other_income (refused at f1040.line8 and scope.ready), statutory-employee and notary income by sc.statutory (sc.screened at sc.line1), and Schedule SE items outside the tool by person.se_screened. On the remaining returns line 1z is lines 1a and 1e, which person.dc_earned adds per person (amb.2025.dc_line1e_attribution) with net self-employment earnings. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\" and adds statutory-employee Schedule C line 1 and net self-employment earnings; p. 5, Line 18, \"Earned income ... is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\". Same ruling as the earlier rounds. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
+   "subject_key": "78698a3e7468e2064158bc866796661714d65cbf07c369076235de0474f21975"
   },
   {
    "key": "5",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The excerpt's missing Form 1040 page is a real context limitation, supplied in this adjudication; it is not model noise or a claim of support for the excluded cases. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)"
+   "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The excerpt's missing Form 1040 page is a real context limitation, supplied in this adjudication; it is not model noise or a claim of support for the excluded cases. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
+   "subject_key": "ec0456bb5bfb2459b0524817c8b7edde0ccc5685517f74840158cec2b9fc2593"
   },
   {
    "key": "6",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "c8422c058adc8c3e42c24327e87659110b630168db7ed6359c0e8b55a1321403"
   },
   {
    "key": "7",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "e95510eb7cf695db859859b82d42da71e06eb728131a36dcaf348ade1fde6682"
   },
   {
    "key": "8",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "6ceb48c11ab2991f1e4c4bffbddbc09809c3b6422068dffb9708f04a0e5fd79e"
   },
   {
    "key": "9a",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "cb02302de5e781ede68b0351b9123f9648cedc37acd864a41b652d0020d17fd2"
   },
   {
    "key": "9b",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "1f448e382f574d927781d1c16e452ccb3393f8e3b76cb0d5a148794091cbb250"
   },
   {
    "key": "9c",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "53f28f766c68757c9b1ac5bd1d994230c3fcc200bb93ba5eac7e9c9b66180ac7"
   },
   {
    "key": "CLW 1",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "6fcac3ca8c785b0ae45a3c9c92463aa66862903c542ede68b8b1f633ca4e0576"
   },
   {
    "key": "CLW 2",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; the model says Schedule 3 line 6l (Form 8978, line 14) is omitted with no refusal. i2441 p. 5, Line 10 Credit Limit Worksheet, line 2: \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". scope.credits asks about Form 8978 adjustments and refuses at s3.line8, and scope.other_line16 screens Form 8978 at f1040.line16, so on every computed return line 6l is zero and worksheet line 2 is Schedule 3 line 1. Same ruling as the earlier rounds. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)"
+   "ruling": "Ruling: scope; the model says Schedule 3 line 6l (Form 8978, line 14) is omitted with no refusal. i2441 p. 5, Line 10 Credit Limit Worksheet, line 2: \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". scope.credits asks about Form 8978 adjustments and refuses at s3.line8, and scope.other_line16 screens Form 8978 at f1040.line16, so on every computed return line 6l is zero and worksheet line 2 is Schedule 3 line 1. Same ruling as the earlier rounds. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
+   "subject_key": "330d89ab498c36cf1222a36d26f9a89a2d7c80cf9dd558d3d38beb16b0d4f3ad"
   },
   {
    "key": "CLW 3",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "ece4501572a53b6b54b16b42968657ce9eb32a6b74b6a37e691c16b4bf3b7c42"
   },
   {
    "key": "10",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "8dc15c37d72cd24c9c5723b54761cabe6c45480c24092d31ccc3afad807024f8"
   },
   {
    "key": "11",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "0a42c563b756a44de8812b89f6ec2f335ed3bad32223bd66f615bcbedec20ab3"
   },
   {
    "key": "12",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "d8dc7b25e9bfa9bfc321926f50acb641c93089bcfefc3e42535e1e20822753d4"
   },
   {
    "key": "13",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "6fe72b9ba645ad5e109bd3241796c18d08b660b00b8762ea1a6a8e2f9cfdb9e0"
   },
   {
    "key": "14",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "24cc5412a7ac981d0deff460429d8e428ca3101efbf50c1a31662d7bdcc44fab"
   },
   {
    "key": "15",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "3e37cfda26c5cdff8300906c2eaeed3ab1c5c06242229303a1c1a11042829e9b"
   },
   {
    "key": "16",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "90f16dfe2b9d20080ce04c22123e9aa5ae0aa01286f9021d35e2094a1d0d3e4c"
   },
   {
    "key": "17",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "150bce1993a1ec753930ed0cc9ea5aea127d2f335d4f26663d03a57bd7092123"
   },
   {
    "key": "18",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; the model accepts that line 1e is left out but says person.dc_earned_b omits the other line 1z components. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h (household employee wages, tips not on a W-2, Medicaid waiver payments, adoption benefits, Form 8919 wages, other earned income) by scope.other_income (refused at f1040.line8 and scope.ready), statutory-employee and notary income by sc.statutory (sc.screened at sc.line1), and Schedule SE items outside the tool by person.se_screened. On the remaining returns line 1z is lines 1a and 1e, and person.dc_earned_b takes box 1 wages and net self-employment earnings without the line 12 benefits. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\" and adds statutory-employee Schedule C line 1 and net self-employment earnings; p. 5, Line 18, \"Earned income ... is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\". Same ruling as the earlier rounds. Re-checked for the hardening round: person.dc_earned, person.dc_earned_b, scope.other_income, sc.statutory and person.se_screened are unchanged since round 4 (BUG-0262 changes only f2441 lines 16 and 17; BUG-0263 only person.sep_s3). (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)"
+   "ruling": "Ruling: scope; the model accepts that line 1e is left out but says person.dc_earned_b omits the other line 1z components. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h (household employee wages, tips not on a W-2, Medicaid waiver payments, adoption benefits, Form 8919 wages, other earned income) by scope.other_income (refused at f1040.line8 and scope.ready), statutory-employee and notary income by sc.statutory (sc.screened at sc.line1), and Schedule SE items outside the tool by person.se_screened. On the remaining returns line 1z is lines 1a and 1e, and person.dc_earned_b takes box 1 wages and net self-employment earnings without the line 12 benefits. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\" and adds statutory-employee Schedule C line 1 and net self-employment earnings; p. 5, Line 18, \"Earned income ... is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\". Same ruling as the earlier rounds. Re-checked for the hardening round: person.dc_earned, person.dc_earned_b, scope.other_income, sc.statutory and person.se_screened are unchanged since round 4 (BUG-0262 changes only f2441 lines 16 and 17; BUG-0263 only person.sep_s3). (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
+   "subject_key": "948791ee95087510aa20036511a96895a34677dd06cc5f62b4707365d24ec9b8"
   },
   {
    "key": "19",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The refreshed prompt supplies Form 1040. The omitted wage classes are explicitly outside completed-return scope, not reviewer noise or supported cases. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)"
+   "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The refreshed prompt supplies Form 1040. The omitted wage classes are explicitly outside completed-return scope, not reviewer noise or supported cases. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
+   "subject_key": "898266cad2d1103a741f6f4cf4d150f41ca6faeac1878c8b61dcec011ed02521"
   },
   {
    "key": "20",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "b54ae32670dec183ecf633b4a45c10c60305eb8edb014ec51801c5187a5eaba7"
   },
   {
    "key": "21",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "fcfd8ead969b68f822cb880e48d40585f161105f15fb45b7a671b2eb3451e71c"
   },
   {
    "key": "22",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "4a6414cd23a9b3271f7ba7fa2699dd0f62963633a0f063e40e557d76032825e3"
   },
   {
    "key": "23",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "9a3c7c50b2e8ae31c09e63d9f210b78231633ca612a6a830a3751090150a545d"
   },
   {
    "key": "24",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "083807cacfacac5e1229d55733d32234e8ea1ac2dd972c595402c90c8ddd7180"
   },
   {
    "key": "25",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "5db74bef22b6921302dd19095f4750973129f03b6f9ea0ea0ba35f8cd5e67297"
   },
   {
    "key": "26",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "b9650bf0857fbee8443178a0276d1e9b9a489baa104ace49d8d2b1a397e8b30f"
   },
   {
    "key": "27",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "b2d334cddfcadf6b9b1fec1d3db9679c4363773dd9a7beaa3bedf87ec9782544"
   },
   {
    "key": "28",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "9ffa5fa578183b90d4298270afe024e7dd712b297af7624b94b2a11100318924"
   },
   {
    "key": "29",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "43be5c4a6600456d1db83604853a3a6af03f7b7cdf60c54056ef90b9c791bad9"
   },
   {
    "key": "30",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "47336098c109a1f6b8e72113b0576945dae4737a11bc9d08ef53f9318d0aca34"
   },
   {
    "key": "31",
    "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "a580e2d5de09e406b98bb2394b012098b2cbe3aa983f1d0f448b52ab95706473"
   }
- ]
+ ],
+ "subjects": {
+  "1 (box)": "86743e320de904be6eb7e0d802dbff9b0d85421c8d96cae2123dc63fcbf206ee",
+  "2 (box)": "7e25e6d90fb80e6e87f2e987666208700a5bb487014174fd8ae9f43975ae7ae5",
+  "3": "58d13ce0e227a02a798b53d7ac68d072b4ed36c25b327ecb8b782baee0ccec2c",
+  "4": "65ad69c5e8c90589973e31b7331b7e54b7eeec0da4a9da21fb99ebc46d650886",
+  "5": "7e9d36ccd0386049fe2332050fc622ba6bc809c0427cdb1daf10a1670ee6bda0",
+  "6": "34f0d934a032cf5160050a88a7c21ff9f4b54c02714966c2a6fce32c9aca03fb",
+  "7": "9b9154af283c2b42e9d64eb62ce706bf52b02db97816b30e65038653eeb3c9aa",
+  "8": "17c760497e98f0b2f513dfc9cc6b76141b008ea179d06e5f01941e0ab163e0e8",
+  "9a": "1977cacb10616275b442697ba7a9affa31d8ac798cd108cb3732bb71f06d5a31",
+  "9b": "98f5a6f6d9a45a18f3db05cb5069ad192a8294feb6693b2135f28e5837ef91ca",
+  "9c": "f74e5d34374954784150a4b36925a4b51e36c003924447854be3d10e25038a00",
+  "CLW 1": "9e6914a4c2458a24954540197815718445ef1b16fa893d85a79e09335e00f1f7",
+  "CLW 2": "31afc58b3cf1a5deee2bd8dd6650a4a883ebbd795f51d555863602569d5a358c",
+  "CLW 3": "6324d98854acf0e487138b6719cafd8c23da4b97d1107e6658e5f41f94edc22f",
+  "10": "beb1d772c6355612bcb2d8cd668139efb1b99702b069e88d72a3b14454819f9a",
+  "11": "61112cd04e10bd07071fb4cfb9ebbc42d409edcd4da7bc3f3b25aa399737cc64",
+  "12": "27e355e131fd547c722f8fb844c74991cf94a00904e11f73c5ac7c019c88e90f",
+  "13": "0d6b24c4dee38b3e7fc64a5336ab4453ffd6622fed85200ab5df61f382c19433",
+  "14": "41d5eab20c50ca295760f35c98ab0acce98204a7724f31607383bbda6c75cb36",
+  "15": "ea11d49594051a18ec69c038e6a96b55c8c78a938e684ff08cd673f307460c94",
+  "16": "1f932776e414d9f216e529e9247a21cfcdd92f2367675407c0c4c5a60e58846a",
+  "17": "127059b90424a280ef0e24a4cbefd3fd41a7d8ff0134d604601e7839b8490278",
+  "18": "0173f358a0769e400ef832f67d5fed47d84f265a613c786cb44d02824177e752",
+  "19": "4fa05799b9419a9cd11d34fcdd78f0367c16e4205211c290d41584406a2b8949",
+  "20": "3aab5c68c71c94c0354eb93b008c5b539f5ff921257d450219e800653174b0d3",
+  "21": "8cf7000074db45ea7b844982714abc90f452095c7388c4a1a8a07803853c69ab",
+  "22": "b915b927da69a12457c6002e5f4945115d7ede5473d998b24281b6acff79954e",
+  "23": "e74db98f2ed34dedf19a98f08d8d1d1e292d34c7d1b2dbbc5c1e396eb43b78f7",
+  "24": "c4455d17f0737c3ab5cbad5a5d0a496bfb08d4d0b51305717e5efdeb09ad5f19",
+  "25": "5dd78c78cf5d50801c606997c1ef0bb8c189cf12af90388f719d6cad015cf91f",
+  "26": "90b1ba6674d128d79ba05341a50c2bb64366e6734e0df6a88c9f9dd10beea6b4",
+  "27": "c9c2f90ef380b3c3b0a2f081a1bf8edb6d91dade55123e9eb91cfaa47c7681e9",
+  "28": "208f72b6ca518d77c27979fd4088f6e51a4a18aeb44779a921cd4d572a31dbcd",
+  "29": "b6d8757189cc5ba3f8e0410f2083b76e555b3c635eb498aa1810ec854604c0ff",
+  "30": "db2ba30ce3aa222c209c2e088b869b3a8c7e074b385ea3a85b0a1e3217889ffb",
+  "31": "9bfe370e903a66d4b98337a63a9ce2fa854b3e0e155cfbbd12dd477da41513cc"
+ },
+ "__rest__": "bb4b29bcc2aa36444c7a09d3b0883307635faecc1234ab9c0d9ed9d55d114f4d"
 }

@@ -173,6 +173,37 @@
   },
   {
    "printed": "(CLW A 4)",
+   "project_expr_sha256": "9b1f745157f75ab3325bf8f8230ed6a49bc8dc740db333b9203a6be720536958",
+   "second_expr_sha256": "d312bf198779c3d1d101974faef9537cf0cac072a934801944ccef0c77881f7c",
+   "ruling": "Ruling: scope; values are representation. i1040s8812 p. 4, Credit Limit Worksheet A, line 4: \"If you are not completing Credit Limit Worksheet B, enter -0-; otherwise, enter the amount from Credit Limit Worksheet B.\" Both sides choose (CLW B 15) when Worksheet B is completed and zero otherwise; the reply's guard includes line 12 above zero, which is implied by the line's shown_when s8812.show13 on both sides. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 2,225 of 2,272 agree; 42 project-unknown (23 incomplete, 19 refused), 5 project-refuses; none on a completed return. The project-unknown records are ones where s8812.show13 is itself unknown, so triage displays the project line as unknown while counting the reply's raw zero (stage14.mut.asset_2025_listed_unanswered: both values $0.00, project show13 unknown, `triage.py --explain`); the reply's own shown_when is the same s8812.show13. Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 6 differences: 5 project-refuses on refused returns (scope.credits, which the project screens on this line for the Forms 8396, 8839 and 8859 credits and the reply only on (CLW B 15): classm.f8960.1, classm.sb.2, stage8.refuse.s8812.credits, generated 26; and stage15.refuse.s8812.puerto_rico_clwb, where the project refuses the Puerto Rico path through Worksheet B line 6 (s8812.puerto_rico_if_child on (CLW B 11), cited to the line 6 sentence), a cited scope screen, while the reply figures it) and 1 project-unknown on a partial record withholding s8812.puerto_rico (base classm.f5695.4.deepseek), the question that screen asks. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.4.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.retirement.2.deepseek@s8812",
+     "fixture:classm.carloan.3@s8812",
+     "fixture:classm.f8960.1@s8812",
+     "fixture:classm.sb.2@s8812",
+     "fixture:stage8.refuse.s8812.credits@s8812",
+     "fixture:stage15.refuse.s8812.puerto_rico_clwb@s8812",
+     "generated:20261026.26@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW A 4)",
    "project_expr_sha256": "f49737a15c2293c78168aed0655005888a10b251095a9d9c0983fd69fba2988b",
    "second_expr_sha256": "a5930ff1b110f8fa74c63b03895f991367a7831ee9873f96eecdf12a5ceafb34",
    "ruling": "Ruling: model error; f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit.\"; i1040s8812 p. 3, Line 13: \"Enter the amount from Credit Limit Worksheet A.\" The reply's (CLW B 14) reads (CLW B 3), which declares NonNegDollars where the published type is Dollars ('model changed a published result type'), so triage cannot execute it, and a line reading it is unknown on the one completed return that figures Credit Limit Worksheet B through line 14 (stage16.cleanup.mut.clwb_three_figured). A line whose dependency fails validation is a model error on that failure (README); this adjudicates the declaration, not the tax reading. Every other difference is on a record refused upstream (scope.credits, the Form 5695 screens) or incomplete. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`; 1,495 fixtures, 500 generated returns seed 20261026, 79 partial records; 2,074 comparisons): 1,502 of 2,074 agree; differences 516 project-refuses, 40 project-unknown, 12 candidate-unknown, 4 candidate-refuses; on returns the full interview completes: 1 candidate-unknown. Project stands.",
@@ -329,6 +360,40 @@
    }
   },
   {
+   "printed": "(CLW B 1)",
+   "project_expr_sha256": "a38c434ad18a62e41413b234251dce39f1ecdc2bf88c5cb58afbe5f9b9cf1a40",
+   "second_expr_sha256": "c2621558433ec02ea5ffbfedd4753abb7e8bf1252ba183427056aa3e7b7fc099",
+   "ruling": "Ruling: representation; i1040s8812 p. 5, Credit Limit Worksheet B, line 1: \"Enter the amount from Schedule 8812, line 12\"; i1040s8812 p. 4, Credit Limit Worksheet A, line 3: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\"; f1040s8812 p. 1, line 12: \"No. Stop here.\". This reply, unlike the earlier ones on these lines (`reviews/2025/transcription/s8812.rulings.json`, model error for a missing or line-12-blind shown_when), declares shown_when s8812.clwb_complete on every Worksheet B line, and its clwb_complete includes s8812.show13, so it is the project's s8812.show_clwb (show13, Form 5695 Part I claimed, line 4 above zero) with the conjuncts flattened. Values are the same copy of line 12. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 1,786 of 2,272 agree; 444 candidate-shows-skipped, 41 candidate-unknown, 1 project-refuses; on completed returns 302 candidate-shows-skipped (e.g. classm.f4952.1.deepseek, $3,200.00 where the project hides the line). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 0 differences on this line. Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "2bf7039cc2eebf9136e6acdc8f16f4412bdc9b224613c398ebbe969039b6b129",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f2441.1.deepseek@s8812",
+     "fixture:classm.f2441.2.deepseek@s8812",
+     "fixture:classm.f2441.3.deepseek@s8812",
+     "fixture:classm.f2441.4.deepseek@s8812",
+     "fixture:classm.f2441.5.deepseek@s8812",
+     "fixture:classm.f2441.6.deepseek@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.4.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.retirement.2.deepseek@s8812",
+     "fixture:classm.carloan.3@s8812",
+     "generated:20261026.315@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "(CLW B 10)",
    "project_expr_sha256": "8a51f83849ee54d06a4d35364ed98ae146e06cc3010e9a296b14b79fa4e9987b",
    "second_expr_sha256": "7a86bc8b42639ee34bc7bbd43ea3fef1d37dd7569ad8b0db9d2b4664a3a2a4d5",
@@ -381,14 +446,92 @@
    "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e"
   },
   {
+   "printed": "(CLW B 10)",
+   "project_expr_sha256": "c4c8c42cc034bfd43cf15bea0aad6cfa65844daab19f25f843d85d667e54ea3e",
+   "second_expr_sha256": "6ec24f2310101c5d9d54f99b4f23713fa5b8730c8abf21eec996d78cab3b75ed",
+   "ruling": "Ruling: scope; values are representation. i1040s8812 p. 6, Credit Limit Worksheet B, line 10: \"1040 and 1040-SR filers. Enter the total of the amounts from Form 1040 or 1040-SR, line 27a, and Schedule 3, line 11.\" Same value expression. The shown_when differs only by the Puerto Rico alternative of line 6 (p. 5): the project refuses the Puerto Rico path through Worksheet B line 6 (s8812.puerto_rico_if_child on (CLW B 11), cited to the line 6 sentence), a cited scope screen, while the reply figures it. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 1,753 of 2,272 agree; 260 candidate-shows-skipped, 131 candidate-refuses, 78 project-refuses, 50 candidate-unknown; on completed returns 203 candidate-shows-skipped (e.g. classm.f4952.1.deepseek, $2,798.00 where the project hides the line). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 0 differences on this line. Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f2441.1.deepseek@s8812",
+     "fixture:classm.f2441.3.deepseek@s8812",
+     "fixture:classm.f2441.4.deepseek@s8812",
+     "fixture:classm.f2441.5.deepseek@s8812",
+     "fixture:classm.f2441.6.deepseek@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.4.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.f4952.1.deepseek@s8812",
+     "fixture:classm.clcw26.3.deepseek@s8812",
+     "fixture:classm.f1095a.1.deepseek@s8812",
+     "fixture:classm.eic.2.deepseek@s8812",
+     "fixture:classm.retirement.1.deepseek@s8812",
+     "fixture:classm.retirement.2.deepseek@s8812",
+     "fixture:classm.retirement.3.deepseek@s8812",
+     "fixture:classm.retirement.4.deepseek@s8812",
+     "fixture:classm.retirement.5.deepseek@s8812",
+     "fixture:classm.sa.6.deepseek@s8812",
+     "fixture:classm.carloan.1@s8812",
+     "fixture:classm.f8960.1@s8812",
+     "fixture:classm.ltc.2@s8812",
+     "fixture:classm.retirement.1@s8812",
+     "fixture:classm.retirement.3@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "(CLW B 11)",
    "project_expr_sha256": "b6f280f3e07a06a902a96f1667cdc217520b3629448c88b1241e01dc9b7d531c",
    "second_expr_sha256": "3264e07e91e071cfe3d0d62bc08307e39a7a8bab06db4c1fc75efba878e78e7c",
-   "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 6, \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11\". executable-triage-v2 (`../triage/s8812.json`; 1,638 fixtures, 500 generated returns seed 20261026, 75 partial records): the candidate is invalid on every record (2,213) and was not executed; this adjudicates the declaration, not the tax reading. The Puerto Rico path is refused by the project (refuses: s8812.puerto_rico_if_child, asked only when line 4 is more than zero; with line 4 zero, worksheet line 2 is zero and line 13, \"Enter the smaller of line 2 or line 12\", is zero whatever line 11 is). Project stands.",
-   "context": "c166c245343a29e3f8ecc2ebf9d506ff3b1cff3a6f043b5bf3380c36a82f359e",
-   "date": "2026-11-07",
-   "run": "4f456270868f7482621264cfcfe5a5a55ea9e6d0b1d14bbe9b93ee8663aca029",
-   "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e"
+   "ruling": "Ruling: scope; i1040s8812 p. 5, Credit Limit Worksheet B, line 6: \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Yes. If line 5 above is equal to or more than line 1 above, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Otherwise, go to line 7.\" i1040s8812 p. 6, line 11: \"Subtract line 10 from line 9. If the result is zero or less, enter -0-\". Both enter zero where line 6 leaves lines 7 to 10 blank and line 9 less line 10 floored at zero otherwise; the project refuses the Puerto Rico path through Worksheet B line 6 (s8812.puerto_rico_if_child on (CLW B 11), cited to the line 6 sentence), a cited scope screen, while the reply figures it (go to line 7 when line 2 is under $5,100). executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 2,168 of 2,272 agree; 89 candidate-unknown, 8 candidate-refuses, 3 candidate-shows-skipped, 2 project-refuses, 2 project-unknown; on completed returns 52 candidate-unknown, 3 candidate-shows-skipped, 2 candidate-refuses (e.g. classm.f5695.1, the reply unknown on s8812.combat_pay where the project hides the line). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 2 differences, both the Puerto Rico screen: stage15.refuse.s8812.puerto_rico_clwb (project refuses, reply $0.00) and a partial record withholding s8812.puerto_rico (base classm.f5695.4.deepseek; project unknown, reply $0.00). Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.s8812.4.deepseek@s8812",
+     "fixture:classm.retirement.2.deepseek@s8812",
+     "fixture:classm.sa.3.deepseek@s8812",
+     "fixture:classm.sa.4.deepseek@s8812",
+     "fixture:classm.sa.5.deepseek@s8812",
+     "fixture:classm.sa.6.deepseek@s8812",
+     "fixture:classm.tax_on_amount.2@s8812",
+     "fixture:stage9.eic.refuse.combat_pay@s8812",
+     "fixture:stage9.mut.eic_married_hoh_qc_of_another@s8812",
+     "fixture:stage14.eic.wsb_combat_pay@s8812",
+     "fixture:stage15.refuse.f2441.combat_pay@s8812",
+     "fixture:stage16.cleanup.refuse.f2441_line24@s8812",
+     "fixture:stage18.blind.p20@s8812",
+     "fixture:stage5.return.refund_combat_pay_no_children@s8812",
+     "fixture:stage8.refuse.s8812.combat_pay@s8812",
+     "fixture:stage9.s8812.three_children.withholding_exceeds.no_eic@s8812",
+     "fixture:stage15.refuse.s8812.puerto_rico_clwb@s8812",
+     "generated:20261026.315@s8812",
+     "partial:classm.f5695.4.deepseek-s8812.puerto_rico@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW B 11)",
@@ -449,6 +592,96 @@
      "fixture:classm.f2441.4.deepseek@s8812",
      "fixture:classm.f2441.5.deepseek@s8812",
      "fixture:classm.f2441.6.deepseek@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW B 12)",
+   "project_expr_sha256": "d890bcda491535c23b80f2fbf46c8fcf699c859004c40167d5ef363a8f182a8f",
+   "second_expr_sha256": "551896ae1c9f362596c573f76e59239e239c0a85c74ea3c65ddbb5a72d4e95eb",
+   "ruling": "Ruling: scope; values are representation. i1040s8812 p. 6, Credit Limit Worksheet B, line 12: \"Enter the larger of line 5 or line 11\". Same value expression. This reply, unlike the earlier ones on these lines (`reviews/2025/transcription/s8812.rulings.json`, model error for a missing or line-12-blind shown_when), declares shown_when s8812.clwb_complete on every Worksheet B line, and its clwb_complete includes s8812.show13, so it is the project's s8812.show_clwb (show13, Form 5695 Part I claimed, line 4 above zero) with the conjuncts flattened. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 813 of 2,272 agree; 1,284 candidate-shows-skipped, 163 candidate-unknown, 8 candidate-refuses, 2 project-refuses, 2 project-unknown; on completed returns 915 candidate-shows-skipped, 78 candidate-unknown, 2 candidate-refuses (e.g. stage14.asset.hy_5yr, $6,511.50 where the project hides the line). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 2 differences, both the Puerto Rico screen reached through (CLW B 11): stage15.refuse.s8812.puerto_rico_clwb (project refuses at the cited line 6 Puerto Rico gate, reply $6,375.00) and a partial record withholding s8812.puerto_rico (base classm.f5695.4.deepseek; project unknown). Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s8812",
+     "fixture:stage14.asset.mq_7yr@s8812",
+     "fixture:stage14.asset.mq_mixed@s8812",
+     "fixture:stage14.asset.mq_not@s8812",
+     "fixture:stage14.asset.bonus_100@s8812",
+     "fixture:stage14.asset.bonus_40_before@s8812",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.f4952.2.deepseek@s8812",
+     "fixture:classm.f4952.3.deepseek@s8812",
+     "fixture:classm.f4952.4.deepseek@s8812",
+     "fixture:classm.tax_on_amount.2@s8812",
+     "fixture:stage9.eic.refuse.combat_pay@s8812",
+     "fixture:stage14.eic.wsb_combat_pay@s8812",
+     "fixture:stage15.refuse.f2441.combat_pay@s8812",
+     "fixture:stage16.cleanup.refuse.f2441_line24@s8812",
+     "fixture:stage5.return.refund_combat_pay_no_children@s8812",
+     "fixture:stage8.refuse.s8812.combat_pay@s8812",
+     "fixture:stage15.refuse.s8812.puerto_rico_clwb@s8812",
+     "generated:20261026.315@s8812",
+     "partial:classm.f5695.4.deepseek-s8812.puerto_rico@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW B 13)",
+   "project_expr_sha256": "9014a2d54f906fb10c68879259ad814474285a9a3b1e82aa5623694d4b3bd15f",
+   "second_expr_sha256": "12249b04f696f7d3bf8bb80dc54222daaca82630b0319655d9202d0cd9b21780",
+   "ruling": "Ruling: scope; values are representation. i1040s8812 p. 6, Credit Limit Worksheet B, line 13: \"Enter the smaller of line 2 or line 12\". Same value expression. This reply, unlike the earlier ones on these lines (`reviews/2025/transcription/s8812.rulings.json`, model error for a missing or line-12-blind shown_when), declares shown_when s8812.clwb_complete on every Worksheet B line, and its clwb_complete includes s8812.show13, so it is the project's s8812.show_clwb (show13, Form 5695 Part I claimed, line 4 above zero) with the conjuncts flattened. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 1,850 of 2,272 agree; 247 candidate-shows-skipped, 163 candidate-unknown, 8 candidate-refuses, 2 project-refuses, 2 project-unknown; on completed returns 185 candidate-shows-skipped, 78 candidate-unknown, 2 candidate-refuses (e.g. classm.f4952.1.deepseek, $1,700.00 where the project hides the line). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 2 differences, both the Puerto Rico screen reached through (CLW B 11): stage15.refuse.s8812.puerto_rico_clwb (project refuses at the cited line 6 Puerto Rico gate, reply $3,400.00) and a partial record withholding s8812.puerto_rico (base classm.f5695.4.deepseek; project unknown). Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f2441.1.deepseek@s8812",
+     "fixture:classm.f2441.2.deepseek@s8812",
+     "fixture:classm.f2441.3.deepseek@s8812",
+     "fixture:classm.f2441.4.deepseek@s8812",
+     "fixture:classm.f2441.5.deepseek@s8812",
+     "fixture:classm.f2441.6.deepseek@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.f4952.2.deepseek@s8812",
+     "fixture:classm.f4952.3.deepseek@s8812",
+     "fixture:classm.f4952.4.deepseek@s8812",
+     "fixture:classm.tax_on_amount.2@s8812",
+     "fixture:stage9.eic.refuse.combat_pay@s8812",
+     "fixture:stage14.eic.wsb_combat_pay@s8812",
+     "fixture:stage15.refuse.f2441.combat_pay@s8812",
+     "fixture:stage16.cleanup.refuse.f2441_line24@s8812",
+     "fixture:stage5.return.refund_combat_pay_no_children@s8812",
+     "fixture:stage8.refuse.s8812.combat_pay@s8812",
+     "fixture:stage15.refuse.s8812.puerto_rico_clwb@s8812",
+     "generated:20261026.315@s8812",
+     "partial:classm.f5695.4.deepseek-s8812.puerto_rico@s8812"
     ],
     "policy": "executable-triage-v2"
    }
@@ -516,6 +749,98 @@
    }
   },
   {
+   "printed": "(CLW B 14)",
+   "project_expr_sha256": "84f6d83211969a13ad7bd307a0556ea7fa79ab9b32d1da56546bb72d5201b73b",
+   "second_expr_sha256": "33b210f7c5ae548b44d17d8c799d5bc81d2d8c97e2b4e772ad6284b92d2fef74",
+   "ruling": "Ruling: scope; values are representation. i1040s8812 p. 6, Credit Limit Worksheet B, line 14: \"Is the amount on line 13 of this worksheet more than the amount on line 1? No. Subtract line 13 from line 1. Enter the result. Yes. Enter -0-.\". Same value expression. This reply, unlike the earlier ones on these lines (`reviews/2025/transcription/s8812.rulings.json`, model error for a missing or line-12-blind shown_when), declares shown_when s8812.clwb_complete on every Worksheet B line, and its clwb_complete includes s8812.show13, so it is the project's s8812.show_clwb (show13, Form 5695 Part I claimed, line 4 above zero) with the conjuncts flattened. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 1,685 of 2,272 agree; 402 candidate-shows-skipped, 174 candidate-unknown, 8 candidate-refuses, 2 project-refuses, 1 project-unknown; on completed returns 286 candidate-shows-skipped, 78 candidate-unknown, 2 candidate-refuses (e.g. classm.f4952.1.deepseek, $1,500.00 where the project hides the line). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 2 differences, both the Puerto Rico screen reached through (CLW B 11): stage15.refuse.s8812.puerto_rico_clwb (project refuses at the cited line 6 Puerto Rico gate, reply $1,000.00) and a partial record withholding s8812.puerto_rico (base classm.f5695.4.deepseek; project unknown). Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f2441.1.deepseek@s8812",
+     "fixture:classm.f2441.2.deepseek@s8812",
+     "fixture:classm.f2441.3.deepseek@s8812",
+     "fixture:classm.f2441.4.deepseek@s8812",
+     "fixture:classm.f2441.5.deepseek@s8812",
+     "fixture:classm.f2441.6.deepseek@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.4.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.f4952.2.deepseek@s8812",
+     "fixture:classm.f4952.3.deepseek@s8812",
+     "fixture:classm.tax_on_amount.2@s8812",
+     "fixture:stage9.eic.refuse.combat_pay@s8812",
+     "fixture:stage14.eic.wsb_combat_pay@s8812",
+     "fixture:stage15.refuse.f2441.combat_pay@s8812",
+     "fixture:stage5.return.refund_combat_pay_no_children@s8812",
+     "fixture:stage8.refuse.s8812.combat_pay@s8812",
+     "fixture:stage15.refuse.s8812.puerto_rico_clwb@s8812",
+     "generated:20261026.315@s8812",
+     "partial:classm.f5695.4.deepseek-s8812.puerto_rico@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW B 15)",
+   "project_expr_sha256": "d31f969af280b4c518683099c525f73c5b8782bb52e9d3e20441d5ce460eb743",
+   "second_expr_sha256": "41cae1e8b159ee6b60ac3a2541cf8afb2a3c51ba55676e5b5bc8ee403ce8b935",
+   "ruling": "Ruling: scope; values are representation. i1040s8812 p. 6, Credit Limit Worksheet B, line 15: \"Enter the total of the amounts from — Schedule 3, line 5a; Schedule 3, line 6c; Schedule 3, line 6g; and Schedule 3, line 6h. ... Enter this amount on line 4 of Credit Limit Worksheet A.\" Both copy Schedule 3 line 5a; lines 6c, 6g and 6h are refused by scope.credits on both sides (the project on Worksheet A line 4, the reply on this line). This reply, unlike the earlier ones on these lines (`reviews/2025/transcription/s8812.rulings.json`, model error for a missing or line-12-blind shown_when), declares shown_when s8812.clwb_complete on every Worksheet B line, and its clwb_complete includes s8812.show13, so it is the project's s8812.show_clwb (show13, Form 5695 Part I claimed, line 4 above zero) with the conjuncts flattened. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 1,676 of 2,272 agree; 548 project-refuses, 23 candidate-refuses, 12 candidate-shows-skipped, 12 candidate-unknown, 1 project-unknown; on completed returns 8 candidate-shows-skipped (e.g. classm.f5695.12, $3,875.00 where the project hides the line: Form 5695 Part I claimed but Worksheet B not reached). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 2 differences: stage15.refuse.s8812.puerto_rico_clwb (project refuses at the cited Credit Limit Worksheet B line 6 Puerto Rico gate, reply $1,225.00) and a partial record withholding s8812.puerto_rico (base classm.f5695.4.deepseek; project unknown). Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@s8812",
+     "fixture:stage14.asset.refuse_ads_past_gds@s8812",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s8812",
+     "fixture:stage14.asset.refuse_class@s8812",
+     "fixture:stage14.asset.refuse_listed_low@s8812",
+     "fixture:stage14.asset.refuse_s179_over@s8812",
+     "fixture:classm.clcw26.3.deepseek@s8812",
+     "fixture:classm.f5695.13.deepseek@s8812",
+     "fixture:classm.f5695.14.deepseek@s8812",
+     "fixture:classm.f5695.15.deepseek@s8812",
+     "fixture:classm.sa.6.deepseek@s8812",
+     "fixture:classm.f5695.12@s8812",
+     "fixture:classm.f5695.13@s8812",
+     "fixture:classm.f5695.14@s8812",
+     "fixture:classm.f8960.1@s8812",
+     "fixture:classm.s179.3@s8812",
+     "fixture:classm.sb.2@s8812",
+     "fixture:classm.sli.1@s8812",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@s8812",
+     "fixture:stage16.cleanup.refuse.f1040_line16@s8812",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@s8812",
+     "fixture:mutation.t2.no_itemize_f8960_9a@s8812",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@s8812",
+     "fixture:mutation.f4952.election_without_interest_used@s8812",
+     "partial:classm.f5695.4.deepseek-s8812.puerto_rico@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "(CLW B 15)",
    "project_expr_sha256": "d75ff9fe08589809cd61d6f81712a4d92b63806cad443af24d012c79fae9b8df",
    "second_expr_sha256": "2bbf94b9d037cbf133822bcdc4bea00ad182a03ff05c429734b52fbc3bf631e2",
@@ -564,9 +889,11 @@
    "printed": "(CLW B 2)",
    "project_expr_sha256": "1a4de2b9e93ffb936c583c818b95393f2d4f950e14ea9ee4bf0e1c50d205a384",
    "second_expr_sha256": "70cf2ee748361b1ab39b668d5c2cabb259922b8a9b3183481f38fd69a395bcfb",
-   "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 2. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,338 agree; 484 project-refuses, 297 candidate-shows-skipped, 23 candidate-unknown, 1 project-unknown (on completed returns: 92 candidate-shows-skipped). Same reply as the before-catalog-refresh ruling: no shown_when, so it shows the line on returns that do not complete Worksheet B (project s8812.show_clwb). Project stands.",
-   "context": "447723dc90122787630160ba19eb74770dc453f33ad046b98d96a4a6ecf4ea83",
-   "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e",
+   "ruling": "Ruling: representation; i1040s8812 p. 5, Credit Limit Worksheet B, line 2: \"Number of qualifying children under age 17 with the required social security number: ____ x $1,700. Enter the result\", and its TIP: \"The number of children you use for this line is the same as the number of children you used for line 4 of Schedule 8812.\" The reply multiplies line 4 by $1,700; the project copies line 16b, the sum over dependents of $1,700 for each child counted on line 4 (f1040s8812 p. 2, line 16b, the same product and the same TIP). This reply, unlike the earlier ones on these lines (`reviews/2025/transcription/s8812.rulings.json`, model error for a missing or line-12-blind shown_when), declares shown_when s8812.clwb_complete on every Worksheet B line, and its clwb_complete includes s8812.show13, so it is the project's s8812.show_clwb (show13, Form 5695 Part I claimed, line 4 above zero) with the conjuncts flattened. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 1,467 of 2,272 agree; 497 project-refuses, 301 candidate-shows-skipped, 6 candidate-unknown, 1 project-unknown; on completed returns 209 candidate-shows-skipped. The project-refuses are records where the worksheet's reach (line 12) is itself refused, so the project line displays a refusal. Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 0 differences on this line. Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -576,25 +903,25 @@
      "project-unknown"
     ],
     "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@s8812",
+     "fixture:stage14.asset.refuse_ads_past_gds@s8812",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s8812",
+     "fixture:stage14.asset.refuse_class@s8812",
+     "fixture:stage14.asset.refuse_listed_low@s8812",
+     "fixture:stage14.asset.refuse_s179_over@s8812",
      "fixture:classm.f2441.1.deepseek@s8812",
      "fixture:classm.f2441.2.deepseek@s8812",
      "fixture:classm.f2441.3.deepseek@s8812",
      "fixture:classm.f2441.4.deepseek@s8812",
      "fixture:classm.f2441.5.deepseek@s8812",
      "fixture:classm.f2441.6.deepseek@s8812",
-     "fixture:classm.w2.1.deepseek@s8812",
-     "fixture:classm.f8889.2.deepseek@s8812",
-     "fixture:classm.f8889.5.deepseek@s8812",
-     "fixture:classm.f8960.3.deepseek@s8812",
-     "fixture:classm.g28.2.deepseek@s8812",
-     "fixture:classm.clcw.1.deepseek@s8812",
+     "fixture:classm.retirement.2.deepseek@s8812",
+     "fixture:classm.retirement.2@s8812",
+     "fixture:stage8.mut.hoh_child_months_unanswered_absence@s8812",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@s8812",
      "fixture:stage16.cleanup.refuse.f2441_line24@s8812",
-     "fixture:ss.multi@s8812",
-     "fixture:ss.base.below@s8812",
-     "fixture:ss.base.exact@s8812",
-     "fixture:ss.base.above@s8812",
-     "fixture:ss.withheld.below@s8812",
-     "fixture:ss.withheld.exact@s8812"
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@s8812",
+     "fixture:mutation.t3.mfj_no_tips_ssn_unanswered@s8812"
     ],
     "policy": "executable-triage-v2"
    }
@@ -606,6 +933,54 @@
    "ruling": "Ruling: model error; i1040s8812 p. 3, Line 13: \"Complete Credit Limit Worksheet B only if you meet all of the following. 1. You are claiming one or more of the following credits. a. Mortgage interest credit, Form 8396. b. Adoption credit, Form 8839. c. Residential clean energy credit, Form 5695, Part I. d. District of Columbia first-time homebuyer credit, Form 8859. 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`; 1,495 fixtures, 500 generated returns seed 20261026, 79 partial records): state evaluated; this line is candidate-invalid on every record (s8812.clwb_3: model changed a published result type; invalid lines include s8812.clwb_3, s8812.clwb_4, s8812.clwb_5, s8812.clwb_11, s8812.clwb_12, s8812.clwb_13, s8812.clwb_14), so it was not executed and is ruled by reading. The reply's (CLW B 3) declares NonNegDollars where the published type is Dollars ('model changed a published result type'); this line is that declaration, so it adjudicates the declaration, not the tax reading. By reading: line 3 is the Earned Income Worksheet line 7 floored at zero, which the worksheet's own \"If zero or less, stop ... enter -0- on line 3 of Credit Limit Worksheet B\" (p. 8, line 3) makes harmless; lines 4, 5 and 11 to 14 follow the worksheet's arithmetic, but every line has shown_when null, so each would also show amounts on returns that do not complete Credit Limit Worksheet B (the skipped-line error of the reply's other worksheet lines). Project stands.",
    "context": "6ee1c7a508b6a0bfcaf5af750b27ab6a9ed9db4d9e05b94cf6dfbe8769ce6f12",
    "subject_key": "4a0e02e64d2e0b635db7ea748f116479457ee2b3012c6c1621222e624bbbfe15"
+  },
+  {
+   "printed": "(CLW B 3)",
+   "project_expr_sha256": "edcd25cb005c70a91b20579bda7f10ad98db34d41739955f091ad3dc68de20f8",
+   "second_expr_sha256": "3a653d7143b661bca30277013010083d51a2e5566cf382e45b4e331bdb2d1e4f",
+   "ruling": "Ruling: representation; i1040s8812 p. 5, Credit Limit Worksheet B, line 3: \"Enter your earned income from line 7 of the Earned Income Worksheet\"; i1040s8812 p. 8, Earned Income Worksheet, line 3: \"If zero or less, stop. ... enter -0- on line 3 of Credit Limit Worksheet B\", line 2b: \"Enter any net profit or (loss) from Schedule C, line 31\", lines 5 to 7. Both sides take line 1z plus Schedule C profit, zero when that is zero or less, otherwise less Schedule 1 line 15; the reply sums person.sc_total where the project reads Schedule 1 line 3, which is defined as that same sum (forms/2025/s1.yaml, s1.line3, with its Form 461 refusal s1.ebl), and both refuse combat pay (s8812.combat_pay) and statutory employee, farm and partnership income (scope.schedule1). This reply, unlike the earlier ones on these lines (`reviews/2025/transcription/s8812.rulings.json`, model error for a missing or line-12-blind shown_when), declares shown_when s8812.clwb_complete on every Worksheet B line, and its clwb_complete includes s8812.show13, so it is the project's s8812.show_clwb (show13, Form 5695 Part I claimed, line 4 above zero) with the conjuncts flattened. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 364 of 2,272 agree; 1,313 candidate-shows-skipped, 438 project-refuses, 148 candidate-unknown, 8 candidate-refuses, 1 project-unknown; on completed returns 931 candidate-shows-skipped, 77 candidate-unknown, 2 candidate-refuses (e.g. stage14.asset.hy_5yr, $45,910.00 where the project hides the line; the unknowns are s8812.combat_pay, unanswered where the worksheet is not reached). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 0 differences on this line. Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "4e747eb19facf229a49afc38662ea143b08b1cadf36ba69549e5491733fdb9d7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s8812",
+     "fixture:stage14.asset.mq_7yr@s8812",
+     "fixture:stage14.asset.mq_mixed@s8812",
+     "fixture:stage14.asset.mq_not@s8812",
+     "fixture:stage14.asset.bonus_100@s8812",
+     "fixture:stage14.asset.bonus_40_before@s8812",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f8889.1.deepseek@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.f4952.2.deepseek@s8812",
+     "fixture:classm.f4952.3.deepseek@s8812",
+     "fixture:classm.f4952.4.deepseek@s8812",
+     "fixture:classm.f8960.3.deepseek@s8812",
+     "fixture:classm.clcw.1.deepseek@s8812",
+     "fixture:classm.clcw.4.deepseek@s8812",
+     "fixture:classm.dependent.1.deepseek@s8812",
+     "fixture:classm.dependent.2.deepseek@s8812",
+     "fixture:classm.tax_on_amount.2@s8812",
+     "fixture:stage9.eic.refuse.combat_pay@s8812",
+     "fixture:stage14.eic.wsb_combat_pay@s8812",
+     "fixture:stage15.refuse.f2441.combat_pay@s8812",
+     "fixture:stage16.cleanup.refuse.f2441_line24@s8812",
+     "fixture:stage5.return.refund_combat_pay_no_children@s8812",
+     "fixture:stage8.refuse.s8812.combat_pay@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW B 3)",
@@ -689,11 +1064,107 @@
   },
   {
    "printed": "(CLW B 4)",
+   "project_expr_sha256": "3bd15354e4338fb38e021eba07710ea0faecbf748ac270e7089f6e87af8bc6c8",
+   "second_expr_sha256": "45d12907fa81d3485550b61943a4e33d77d29547f0606be4b4eb64054f9c5969",
+   "ruling": "Ruling: representation; i1040s8812 p. 5, Credit Limit Worksheet B, line 4: \"Is the amount on line 3 more than $2,500? No. Leave line 4 blank, enter -0- on line 5, and go to line 6. Yes. Subtract $2,500 from the amount on line 3.\" Both compute line 3 less $2,500, floored at zero; the reply also hides the line when line 3 is $2,500 or less, where the project shows zero, and line 5 reads zero either way (a zero entered on a blank line is not a skipped-line amount, README). This reply, unlike the earlier ones on these lines (`reviews/2025/transcription/s8812.rulings.json`, model error for a missing or line-12-blind shown_when), declares shown_when s8812.clwb_complete on every Worksheet B line, and its clwb_complete includes s8812.show13, so it is the project's s8812.show_clwb (show13, Form 5695 Part I claimed, line 4 above zero) with the conjuncts flattened. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 383 of 2,272 agree; 1,294 candidate-shows-skipped, 438 project-refuses, 148 candidate-unknown, 8 candidate-refuses, 1 project-unknown; on completed returns 915 candidate-shows-skipped, 77 candidate-unknown, 2 candidate-refuses (e.g. stage14.asset.hy_5yr, $43,410.00 where the project hides the line). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 0 differences on this line (a hidden line agrees with a zero). Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "3533ec63a3881ae8712584285895287b011ee530160eb25bb06190af4098fe9e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s8812",
+     "fixture:stage14.asset.mq_7yr@s8812",
+     "fixture:stage14.asset.mq_mixed@s8812",
+     "fixture:stage14.asset.mq_not@s8812",
+     "fixture:stage14.asset.bonus_100@s8812",
+     "fixture:stage14.asset.bonus_40_before@s8812",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f8889.1.deepseek@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.f4952.2.deepseek@s8812",
+     "fixture:classm.f4952.3.deepseek@s8812",
+     "fixture:classm.f4952.4.deepseek@s8812",
+     "fixture:classm.f8960.3.deepseek@s8812",
+     "fixture:classm.clcw.1.deepseek@s8812",
+     "fixture:classm.clcw.4.deepseek@s8812",
+     "fixture:classm.dependent.1.deepseek@s8812",
+     "fixture:classm.dependent.2.deepseek@s8812",
+     "fixture:classm.tax_on_amount.2@s8812",
+     "fixture:stage9.eic.refuse.combat_pay@s8812",
+     "fixture:stage14.eic.wsb_combat_pay@s8812",
+     "fixture:stage15.refuse.f2441.combat_pay@s8812",
+     "fixture:stage16.cleanup.refuse.f2441_line24@s8812",
+     "fixture:stage5.return.refund_combat_pay_no_children@s8812",
+     "fixture:stage8.refuse.s8812.combat_pay@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW B 4)",
    "project_expr_sha256": "d8782a787485ad87f688d60ed8cd44c9512075ee170c7be63bfdabdc6e68ef6b",
    "second_expr_sha256": "db5a88c2c62108fab9453b514e236d9d94a137dd5092b2226ff01c57b5aee4b6",
    "ruling": "Ruling: model error; i1040s8812 p. 3, Line 13: \"Complete Credit Limit Worksheet B only if you meet all of the following. 1. You are claiming one or more of the following credits. a. Mortgage interest credit, Form 8396. b. Adoption credit, Form 8839. c. Residential clean energy credit, Form 5695, Part I. d. District of Columbia first-time homebuyer credit, Form 8859. 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`; 1,495 fixtures, 500 generated returns seed 20261026, 79 partial records): state evaluated; this line is candidate-invalid on every record (s8812.clwb_3: model changed a published result type; invalid lines include s8812.clwb_3, s8812.clwb_4, s8812.clwb_5, s8812.clwb_11, s8812.clwb_12, s8812.clwb_13, s8812.clwb_14), so it was not executed and is ruled by reading. The reply's (CLW B 3) declares NonNegDollars where the published type is Dollars ('model changed a published result type'); this line reads it, so it adjudicates the declaration, not the tax reading. By reading: line 3 is the Earned Income Worksheet line 7 floored at zero, which the worksheet's own \"If zero or less, stop ... enter -0- on line 3 of Credit Limit Worksheet B\" (p. 8, line 3) makes harmless; lines 4, 5 and 11 to 14 follow the worksheet's arithmetic, but every line has shown_when null, so each would also show amounts on returns that do not complete Credit Limit Worksheet B (the skipped-line error of the reply's other worksheet lines). Project stands.",
    "context": "6ee1c7a508b6a0bfcaf5af750b27ab6a9ed9db4d9e05b94cf6dfbe8769ce6f12",
    "subject_key": "768b1eca843c981aa010fae618e174b96e3c447d3060db830d0b5e69d1b44c77"
+  },
+  {
+   "printed": "(CLW B 5)",
+   "project_expr_sha256": "44bceea5441f1fa78c5a057cb085b54deed658f27e74ca8bee77d1a5e57503e3",
+   "second_expr_sha256": "046821d50bb609acb3a813f6e9cb8e8c4d4374df368571e96abbe431215f1ce3",
+   "ruling": "Ruling: representation; i1040s8812 p. 5, Credit Limit Worksheet B, line 5: \"Multiply the amount on line 4 by 15% (0.15) and enter the result\". Same value expression on both sides. This reply, unlike the earlier ones on these lines (`reviews/2025/transcription/s8812.rulings.json`, model error for a missing or line-12-blind shown_when), declares shown_when s8812.clwb_complete on every Worksheet B line, and its clwb_complete includes s8812.show13, so it is the project's s8812.show_clwb (show13, Form 5695 Part I claimed, line 4 above zero) with the conjuncts flattened. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 383 of 2,272 agree; 1,294 candidate-shows-skipped, 438 project-refuses, 148 candidate-unknown, 8 candidate-refuses, 1 project-unknown; on completed returns 915 candidate-shows-skipped, 77 candidate-unknown, 2 candidate-refuses (e.g. stage14.asset.hy_5yr, $6,511.50 where the project hides the line). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 0 differences on this line. Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "cf7a0b6363f73d7e35f1c6657f5588e71867f3542be397028fdbf64e09b9b372",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s8812",
+     "fixture:stage14.asset.mq_7yr@s8812",
+     "fixture:stage14.asset.mq_mixed@s8812",
+     "fixture:stage14.asset.mq_not@s8812",
+     "fixture:stage14.asset.bonus_100@s8812",
+     "fixture:stage14.asset.bonus_40_before@s8812",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f8889.1.deepseek@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.f4952.2.deepseek@s8812",
+     "fixture:classm.f4952.3.deepseek@s8812",
+     "fixture:classm.f4952.4.deepseek@s8812",
+     "fixture:classm.f8960.3.deepseek@s8812",
+     "fixture:classm.clcw.1.deepseek@s8812",
+     "fixture:classm.clcw.4.deepseek@s8812",
+     "fixture:classm.dependent.1.deepseek@s8812",
+     "fixture:classm.dependent.2.deepseek@s8812",
+     "fixture:classm.tax_on_amount.2@s8812",
+     "fixture:stage9.eic.refuse.combat_pay@s8812",
+     "fixture:stage14.eic.wsb_combat_pay@s8812",
+     "fixture:stage15.refuse.f2441.combat_pay@s8812",
+     "fixture:stage16.cleanup.refuse.f2441_line24@s8812",
+     "fixture:stage5.return.refund_combat_pay_no_children@s8812",
+     "fixture:stage8.refuse.s8812.combat_pay@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "(CLW B 5)",
@@ -746,6 +1217,52 @@
   {
    "printed": "(CLW B 7)",
    "project_expr_sha256": "a9317c95b4001396ab3812c502bb159ba32ac7cea35474887cb39a8f46f17d25",
+   "second_expr_sha256": "6895acebcda10248162df6602f0e56081a5f5722c8d59780205ef75259da9e66",
+   "ruling": "Ruling: interface gap; i1040s8812 p. 5, Credit Limit Worksheet B, line 7: \"If your employer withheld or you paid Additional Medicare Tax or Tier 1 RRTA taxes, use the Additional Medicare Tax and RRTA Tax Worksheet to figure the amount to enter; otherwise enter the following amounts\" (Form W-2 boxes 4 and 6); i1040s8812 p. 9, that worksheet, line 16: \"Add lines 6, 7, 11, and 15. Enter here and on line 21 of Schedule 8812 and, if applicable, line 7 of Credit Limit Worksheet B\". The project copies line 21 (worksheet lines 6 and 7: boxes 4 and 6, plus Form 8959 line 7, less Form 8959 line 22, plus one-half of Form 8959 line 13; the RRTA lines refused). The reply enters boxes 4 and 6 only and says why: \"The Additional Medicare Tax and RRTA Tax Worksheet is not in the supplied text\"; the pass was given i1040s8812 pages 1, 3, 4, 5, 6 and 8, not page 9, so the review lacked the text that decides the line where Additional Medicare Tax applies. The two agree whenever Form 8959 lines 7, 13 and 22 are zero. i1040s8812 p. 5, Credit Limit Worksheet B, line 6: \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Yes. If line 5 above is equal to or more than line 1 above, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Otherwise, go to line 7.\" The reply's shown_when (s8812.clwb_complete and its line 6 test) is the project's s8812.clwb_to7 plus the Puerto Rico path the project refuses. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 404 of 2,272 agree; 1,281 candidate-shows-skipped, 536 project-refuses, 44 candidate-unknown, 7 candidate-refuses; on completed returns 892 candidate-shows-skipped (e.g. classm.f4952.1.deepseek, $2,926.00 where the project hides the line). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 0 differences on this line; none of the 7 sampled returns that reach line 7 has Additional Medicare Tax, so the page-9 difference is unexercised. Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@s8812",
+     "fixture:stage14.asset.refuse_ads_past_gds@s8812",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s8812",
+     "fixture:stage14.asset.refuse_class@s8812",
+     "fixture:stage14.asset.refuse_listed_low@s8812",
+     "fixture:stage14.asset.refuse_s179_over@s8812",
+     "fixture:classm.f2441.1.deepseek@s8812",
+     "fixture:classm.f2441.2.deepseek@s8812",
+     "fixture:classm.f2441.3.deepseek@s8812",
+     "fixture:classm.f2441.4.deepseek@s8812",
+     "fixture:classm.f2441.5.deepseek@s8812",
+     "fixture:classm.f2441.6.deepseek@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.sa.6.deepseek@s8812",
+     "fixture:classm.f8960.1@s8812",
+     "fixture:classm.qdcg.2@s8812",
+     "fixture:classm.s1a.1@s8812",
+     "fixture:classm.sli.1@s8812",
+     "fixture:stage4.refuse.8959@s8812",
+     "generated:20261026.7@s8812",
+     "generated:20261026.104@s8812",
+     "generated:20261026.205@s8812",
+     "generated:20261026.245@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW B 7)",
+   "project_expr_sha256": "a9317c95b4001396ab3812c502bb159ba32ac7cea35474887cb39a8f46f17d25",
    "second_expr_sha256": "797b4c5f7f7b2ba4e35f412eaadf3b9ea4e2f428978954eb662258c0df656959",
    "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 7. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14); it copies line 21. Project stands.",
    "context": "447723dc90122787630160ba19eb74770dc453f33ad046b98d96a4a6ecf4ea83",
@@ -794,9 +1311,11 @@
    "printed": "(CLW B 8)",
    "project_expr_sha256": "7f93e8c0251aba689e05e092a7ebbd3f7292596e185a94a05898d2ca998b22ab",
    "second_expr_sha256": "3e9ea7543ff33cdc74affd3e552b7fc8359e75dd2e2f3e4e7e752ee1eeb86986",
-   "ruling": "Ruling: model error; i1040s8812 p. 5, Credit Limit Worksheet B, line 6: \"Otherwise, leave lines 7 through 10 blank\"; line 8. executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases; 2,143 comparisons): 1,356 agree; 464 project-refuses, 157 candidate-unknown, 153 candidate-shows-skipped, 12 candidate-refuses, 1 project-unknown (on completed returns: 112 candidate-shows-skipped). No shown_when, so it shows the line where line 6 leaves it blank and on returns without the worksheet (project s8812.clwb_to7). Same as the before-catalog-refresh ruling. Project stands.",
-   "context": "447723dc90122787630160ba19eb74770dc453f33ad046b98d96a4a6ecf4ea83",
-   "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e",
+   "ruling": "Ruling: representation; i1040s8812 p. 5, Credit Limit Worksheet B, line 8: \"Enter the total of any amounts from Schedule 1, line 15; Schedule 2, line 5; Schedule 2, line 6; and Schedule 2, line 13.\" The reply copies Schedule 1 line 15 and refuses on s2.other; the project copies line 22, which is the same copy with the same s2.other refusal. i1040s8812 p. 5, Credit Limit Worksheet B, line 6: \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Yes. If line 5 above is equal to or more than line 1 above, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Otherwise, go to line 7.\" The reply's shown_when is the project's s8812.clwb_to7 plus the Puerto Rico path the project refuses. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 1,582 of 2,272 agree; 468 project-refuses, 171 candidate-shows-skipped, 41 candidate-unknown, 10 candidate-refuses; on completed returns 141 candidate-shows-skipped (e.g. stage14.asset.hy_5yr, $3,490.00 where the project hides the line). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 0 differences on this line. Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -806,30 +1325,30 @@
      "project-refuses"
     ],
     "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s8812",
+     "fixture:stage14.asset.mq_7yr@s8812",
+     "fixture:stage14.asset.mq_mixed@s8812",
+     "fixture:stage14.asset.mq_not@s8812",
+     "fixture:stage14.asset.bonus_100@s8812",
+     "fixture:stage14.asset.bonus_40_before@s8812",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
      "fixture:classm.w2.1.deepseek@s8812",
-     "fixture:classm.f8889.2.deepseek@s8812",
-     "fixture:classm.f8889.4.deepseek@s8812",
+     "fixture:classm.f8889.1.deepseek@s8812",
      "fixture:classm.f8889.5.deepseek@s8812",
      "fixture:classm.f4952.3.deepseek@s8812",
      "fixture:classm.f4952.4.deepseek@s8812",
      "fixture:classm.f8960.2.deepseek@s8812",
      "fixture:classm.f8960.3.deepseek@s8812",
-     "fixture:classm.g28.1.deepseek@s8812",
-     "fixture:classm.sd.1.deepseek@s8812",
-     "fixture:classm.sd.2.deepseek@s8812",
-     "fixture:classm.u1250.1.deepseek@s8812",
      "fixture:classm.clcw.1.deepseek@s8812",
-     "fixture:classm.clcw.2.deepseek@s8812",
      "fixture:classm.clcw.4.deepseek@s8812",
-     "fixture:classm.asset.2@s8812",
-     "fixture:classm.f4952.3@s8812",
-     "fixture:classm.f4952.4@s8812",
-     "fixture:classm.sa.5@s8812",
+     "fixture:classm.dependent.1.deepseek@s8812",
+     "fixture:classm.person.1.deepseek@s8812",
      "fixture:stage12.refuse.form4137_one_employer@s8812",
      "fixture:stage12.refuse.form4137_two_employers@s8812",
-     "fixture:stage18.refuse.s2_other_before_8962@s8812",
      "fixture:stage4.refuse.s2.other@s8812",
-     "fixture:stage4.refuse.s2.amt.simultaneous@s8812"
+     "fixture:stage4.refuse.s2.amt.simultaneous@s8812",
+     "fixture:stage18.refuse.s2_other_before_8962@s8812",
+     "fixture:stage8.refuse.s8812.s2_other@s8812"
     ],
     "policy": "executable-triage-v2"
    }
@@ -861,6 +1380,52 @@
      "fixture:classm.f2441.4.deepseek@s8812",
      "fixture:classm.f2441.5.deepseek@s8812",
      "fixture:classm.f2441.6.deepseek@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW B 9)",
+   "project_expr_sha256": "997ef5ac021e694eb0bdb1de6429c9510b4fea4e54ea965f4b6d22cb14a982bc",
+   "second_expr_sha256": "03578a5e783b4df407536eef5c03271881a4d808e00a5301e94c89a450fdda04",
+   "ruling": "Ruling: scope; values are representation. i1040s8812 p. 5, Credit Limit Worksheet B, line 9: \"Add lines 7 and 8.\" i1040s8812 p. 5, Credit Limit Worksheet B, line 6: \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Yes. If line 5 above is equal to or more than line 1 above, leave lines 7 through 10 blank, enter -0- on line 11, and go to line 12. Otherwise, go to line 7.\" Same value expression. The shown_when differs only by the Puerto Rico alternative (\"If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7\"): the project refuses the Puerto Rico path through Worksheet B line 6 (s8812.puerto_rico_if_child on (CLW B 11), cited to the line 6 sentence), a cited scope screen, while the reply figures it. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 371 of 2,272 agree; 1,373 candidate-shows-skipped, 441 project-refuses, 70 candidate-unknown, 17 candidate-refuses; on completed returns 993 candidate-shows-skipped (e.g. stage14.asset.hy_5yr, $3,490.00 where the project hides the line). Triage applies only the project's shown_when (tools/transcription/triage.mjs, the `displayed` step on the project side), so it counts the reply's raw amount on records where the reply's own shown_when hides the line too. A scratch rerun with the reply's shown_when applied to the candidate side as well (patched copy of triage.mjs, same bank; /tmp/adj/tr/s8812work/out/s8812.json; the recorded triage file untouched) gives 0 differences on this line. Only 13 of the 2,202 fixture and generated returns reach Credit Limit Worksheet B (s8812.show_clwb true; 7 of them reach lines 7 to 10), so agreement there is a small sample. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s8812",
+     "fixture:stage14.asset.mq_7yr@s8812",
+     "fixture:stage14.asset.mq_mixed@s8812",
+     "fixture:stage14.asset.mq_not@s8812",
+     "fixture:stage14.asset.bonus_100@s8812",
+     "fixture:stage14.asset.bonus_40_before@s8812",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f8889.1.deepseek@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.f4952.3.deepseek@s8812",
+     "fixture:classm.f4952.4.deepseek@s8812",
+     "fixture:classm.f8960.2.deepseek@s8812",
+     "fixture:classm.f8960.3.deepseek@s8812",
+     "fixture:classm.clcw.1.deepseek@s8812",
+     "fixture:classm.clcw.4.deepseek@s8812",
+     "fixture:classm.dependent.2.deepseek@s8812",
+     "fixture:classm.dependent.3.deepseek@s8812",
+     "fixture:classm.s1a.1@s8812",
+     "fixture:stage4.refuse.8959@s8812",
+     "fixture:stage12.refuse.form4137_one_employer@s8812",
+     "fixture:stage12.refuse.form4137_two_employers@s8812",
+     "fixture:stage4.refuse.s2.other@s8812",
+     "fixture:stage4.refuse.s2.amt.simultaneous@s8812"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1714,6 +2279,42 @@
   {
    "printed": "27",
    "project_expr_sha256": "0899ddb36290fdfa25397240d0648d1b49bd8eea6f0e1d3a4f30182b1a288286",
+   "second_expr_sha256": "95c103077e632c057b3d185bab6f25ba24bb1b49397e44751a2fd8da054b538c",
+   "ruling": "Ruling: scope; f1040s8812 p. 2, after line 20: \"No. If you are a bona fide resident of Puerto Rico, go to line 21. Otherwise, skip Part II-B and enter the smaller of line 17 or line 20 on line 27. Yes. If line 20 is equal to or more than line 17, skip Part II-B and enter the amount from line 17 on line 27. Otherwise, go to line 21.\"; after line 26: \"Next, enter the smaller of line 17 or line 26 on line 27.\" The reply routes through the project's helpers (s8812.show_iia, s8812.show_iib): zero on a stop at line 12, 16a or 16b, the smaller of lines 17 and 26 when Part II-B is completed, otherwise the smaller of lines 17 and 20; the project's choose on line 16b against $5,100 gives the same amounts (line 17 where line 20 covers it). executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 2,252 of 2,272 agree; 10 candidate-refuses, 7 project-unknown, 3 project-refuses; none on a completed return. Every difference is the Puerto Rico screen: the project refuses (stage8.refuse.s8812.puerto_rico, classm.dependent.5, stage15.refuse.s8812.puerto_rico_clwb; cited to the sentence above) or asks s8812.puerto_rico (project-unknown on partial records withholding it, e.g. base classm.f2441.3.deepseek), while the reply has no Puerto Rico path on this line; the 10 candidate-refuses are refused returns where the project's value is unknown on that unanswered question and the reply reaches an upstream refusal first (e.g. classm.dependent.1.deepseek, FBAR screen). The gate rewrite touches this line only on refused or incomplete records (BUG-0471 trade-off, owner-accepted): classm.retirement.2 and .deepseek and mutation.t3.mfj_no_tips_ssn_unanswered go from $0.00 to unknown, and mutation.t2.person.simple_nonelective_excess, a refused return in both trees, from a refusal (sales[s1].bad_aggregate) to unknown (dependent[dep_b].other_nontaxpayer unanswered). No completed-return change. Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "a59f4e7dfbff34ed0da6220d1569988e1a142c61b65a0dd33c38eef5428023d2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@s8812",
+     "fixture:classm.dependent.3.deepseek@s8812",
+     "fixture:classm.dependent.5.deepseek@s8812",
+     "fixture:classm.carloan.1@s8812",
+     "fixture:classm.dependent.1@s8812",
+     "fixture:classm.dependent.3@s8812",
+     "fixture:classm.dependent.5@s8812",
+     "fixture:stage8.refuse.s8812.puerto_rico@s8812",
+     "fixture:stage15.refuse.s8812.puerto_rico_clwb@s8812",
+     "partial:classm.f2441.3.deepseek-s8812.puerto_rico@s8812",
+     "partial:classm.g28.1.deepseek-s8812.puerto_rico@s8812",
+     "partial:classm.clcw26.2.deepseek-s8812.puerto_rico@s8812",
+     "partial:classm.s3.1.deepseek-s8812.puerto_rico@s8812",
+     "partial:classm.f5695.4.deepseek-s8812.puerto_rico@s8812",
+     "partial:classm.eic.4.deepseek-s8812.puerto_rico@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "27",
+   "project_expr_sha256": "0899ddb36290fdfa25397240d0648d1b49bd8eea6f0e1d3a4f30182b1a288286",
    "second_expr_sha256": "b9a8fca75ba5731f1763253b22a78fe7ab2fc5980cd8619d5153e347fb96478a",
    "ruling": "Ruling: model error; f1040s8812 p. 2, line 27: \"This is your additional child tax credit\". executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 78 partial records from 40 bases): the candidate is invalid and was not executed. This adjudicates the declaration, not the tax reading: the reply declares s8812.line21 with a changed published result type (\"model changed a published result type\"), and triage does not execute it or the lines that read it (s8812.line23, line25, line26, line27, clwb_7, clwb_9, clwb_11 to clwb_14); it reads line 26. Project stands.",
    "context": "447723dc90122787630160ba19eb74770dc453f33ad046b98d96a4a6ecf4ea83",
@@ -1886,6 +2487,36 @@
    "second_expr_sha256": "dbfb11a3bcb557ac8c1e559c551459e6157e36a47c1a96f55dd6d6af966f3243",
    "ruling": "Ruling: equivalent representation; project retained. Both figure line 1 (Schedule 8812 line 12) less the smaller of line 2 and line 12, floored at zero (i1040s8812 p. 6, line 14, \"Is the amount on line 13 of this worksheet more than the amount on line 1? No. Subtract line 13 from line 1. Enter the result. Yes. Enter -0-\"). The differences are naming: line 2 is the second's line 4 x $1,700 and the project's Schedule 8812 line 16b, the sum over dependents of $1,700 for each child counted on line 4 (i1040s8812 p. 5, line 2, \"The number of children you use for this line is the same as the number of children you used for line 4 of Schedule 8812\"); line 10 is the second's Schedule 8812 line 24 and the project's Form 1040 line 27a plus Schedule 3 line 11, which is line 24's definition; in the Earned Income Worksheet (line 3) the second adds line 18b, zero behind the s8812.combat_pay refusal, and sums person.sc_total where the project reads Schedule 1 line 3, which is that sum; the second's single guard for lines 7 to 11 (line 2 $5,100 or more and line 5 less than line 1) is the project's two nested choices. The Puerto Rico path of line 6 is refused in the project.",
    "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e"
+  },
+  {
+   "printed": "s8812.clwb_complete",
+   "project_expr_sha256": "0cc0e3518e866e5d611323d4dccd76add4d39e66ca343a705cc15328d6442a40",
+   "second_expr_sha256": "9237909e2ec941ab94e6878326c3bec0b9c424e99f20ec93e56f85a08be46557",
+   "ruling": "Ruling: scope; i1040s8812 p. 4, Credit Limit Worksheet A, line 3: \"Complete Credit Limit Worksheet B only if you meet all the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I. ... 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\"; f1040s8812 p. 1, line 12: \"No. Stop here.\". i1040s8812 p. 5, Credit Limit Worksheet B: \"Caution. Use this worksheet only if you meet each of the items discussed under line 3 of Credit Limit Worksheet A\". Both sides test Form 5695 Part I claimed (f5695.claiming_part1, the rewritten gate inlined: part1_any true gives line 13 above zero, false gives no) and line 4 above zero; the reply adds line 12 above zero, which the project carries in s8812.show_clwb and in Worksheet A's shown_when s8812.show13, so the two place the line 12 stop differently and agree on every displayed line. executable-triage-v2 (`.transcription/triage/2025/s8812.json`, regenerated in this worktree; pass 84e78c5fae08, receipt .transcription/s8812.lines-3360a25a435f; 1,702 fixtures, 500 generated returns seed 20261026, 70 partial records; 2,272 comparisons): 1,711 of 2,272 agree; 557 candidate-refuses, 4 project-refuses, all on refused returns; none on a completed return. The 557: the reply's extra conjunct reads line 12, which is refused upstream on those returns (e.g. stage14.asset.refuse_qip_2017, Form 4562 screen), where the project's test is false. The 4: the project reads f5695.claiming_part1 and stops at a cited Form 5695 Part I screen (stage15.refuse.f5695.business_use_part1, construction_later, fuel_cell, generated 131) where the reply's line-12 conjunct is false first. The HEAD-vs-current comparison of the gate rewrite shows no difference on this line on any fixture or generated return, and the rewritten choose reads as the old conjunction on every answered part1_any (checked in both trees on classm.f5695.2, stage15.f5695.s9 and stage15.refuse.f5695.business_use_part1). Project stands.",
+   "context": "430a189e31d51f7c549128cd778a76f5d81469b0528b2eecc7bff8c132414539",
+   "date": "2026-11-09",
+   "run": "1533929b3dcd0d6ce52614b18d0c582b60706bd705cd214fa47d9b1a8b5dcf9d",
+   "subject_key": "5ff60ce875a02030e0443759de5c364c27d245406dc77824c431ee34c9e5a54c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@s8812",
+     "fixture:stage14.asset.refuse_ads_past_gds@s8812",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s8812",
+     "fixture:stage14.asset.refuse_class@s8812",
+     "fixture:stage14.asset.refuse_listed_low@s8812",
+     "fixture:stage14.asset.refuse_s179_over@s8812",
+     "fixture:stage15.refuse.f5695.business_use_part1@s8812",
+     "fixture:stage15.refuse.f5695.construction_later@s8812",
+     "fixture:stage15.refuse.f5695.fuel_cell@s8812",
+     "generated:20261026.131@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
   }
  ]
 }

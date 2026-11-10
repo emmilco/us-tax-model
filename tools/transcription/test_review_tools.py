@@ -2351,6 +2351,18 @@ class CompletenessPages(unittest.TestCase):
         mixed = {"lines": [line("f4952", "p. 3"), line("i8960", "p. 9")]}
         self.assertEqual(CR.cited_pages(mixed), {"i8960": {9}})
 
+    def test_a_param_named_like_a_line_does_not_tie_a_refusal_to_its_readers(self):
+        import completeness_review as CR
+        shared = {"id": "z", "lines": [{"id": "z.zero", "expr": {"op": "input"}}]}
+        reader = {"id": "r", "lines": [{"id": "r.a", "expr": {"op": "copy", "from": "z.zero"}}]}
+        gated = {"id": "g", "lines": [
+            {"id": "g.gate", "expr": {"test": "gt", "args": [{"line": "g.cost"}, {"param": "z.zero"}]}},
+            {"id": "g.cost", "expr": {"op": "input"}},
+            {"id": "g.x", "expr": {"op": "input"}, "refuses": [{"when": "g.gate", "form": "Form G line 1"}]}]}
+        self.assertEqual(CR.elsewhere(reader, [shared, reader, gated]), [])
+        gated["lines"][0]["expr"]["args"][1] = {"line": "z.zero"}
+        self.assertEqual(CR.elsewhere(reader, [shared, reader, gated]), ["- g: Form G line 1"])
+
 
 class LocatorPages(unittest.TestCase):
     """transcribe.py reads page lists with tools/citations.py's grammar."""

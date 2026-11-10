@@ -1661,12 +1661,96 @@
    "subject_key": "bedf2caef6b129f9722a974ceea39775bb9a3a3ab6987c5e782b96035109c81a"
   },
   {
+   "printed": "24",
+   "project_expr_sha256": "718d01b271f759b6c253c8fe45d1ad9be2e3825e5b968b3e359fee5ac757ea88",
+   "second_expr_sha256": "f8ad276fd680cbb655ac52a89108e765179d7ce29e1985afe934a714e066818d",
+   "ruling": "Ruling: interface gap (+ scope); i8962 p. 17, Line 24: \"Enter the amount from line 11(e) or add lines 12(e) through 23(e) and enter the total.\" The routing is the project's. The reply also takes the column (e) total for a lawfully present alien below 100% (f8962.alien_below), which the project refuses (f8962.alien_branch: scope), and accepts f8962.estimate_100 without the APTC test; where Form 8962 is completed APTC was paid (i8962 p. 10), so that difference cannot reach a shown line, and none appears in the sample. The reply's line has no shown_when (the request labels shown_when Optional, T-163), so where the project hides it (f8962.filing No: Form 8962 is not completed; i8962 p. 10, \"if no APTC was paid for any individuals in your tax family, stop; do not complete Form 8962\") it needs answers the interview asks only with Form 8962: interface gap, as ruled in earlier rounds. executable-triage-v2 (`.transcription/triage/2025/f8962.json`, pass 955e0d256aa6, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 162 partial records from 40 bases; 2,364 comparisons; completed witnesses listed in full by a scratch rerun with the witness cap lifted): 1,427 of 2,364 agree; 457 candidate-unknown, 456 candidate-refuses, 19 project-refuses, 5 project-unknown; on completed returns 191 candidate-unknown, every one where the project hides line 24 (f8962.alloc 166, f8962.other 8, f8962.premium_adjust 8, f8962.fpl_table 8, f8962.estimate_100 1); no completed-return value differs. The candidate-refuses are refusals of other forms (Form 4562 and others) reached through the reply's lines on refused returns; the project-refuses are its cited gates (f8962.two_counted 14, f8962.void_form, f8962.marriage) on refused returns. Gate wave (BUG-0471): f8962.marriage is a choose on f1040.status (mfj reads f8962.married_in_2025; single, mfs, hoh and qss give household.no), the HEAD `all`'s truth table; the line is the same in HEAD and the working tree on every completed fixture and generated return; it differs only on stage21.choose.eic_limit_status_unanswered (status withheld, refused in both trees), the incomplete-state difference BUG-0471 records. Project stands.",
+   "context": "43c7498b7fd34a65904a93ce4f02fe68425a6e73c7bd6533c92b1f4fa315d2c1",
+   "date": "2026-11-09",
+   "run": "b6d78f3dd16287998be4f5548adc5fde4f639b900eb79aa8ddd6fb38ef48e377",
+   "subject_key": "6914bdd04cec84579f3ceb84e219e1b170398ac83ab0b1b4e62cd55c9d479150",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8962",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8962",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8962",
+     "fixture:stage14.asset.refuse_class@f8962",
+     "fixture:stage14.asset.refuse_listed_low@f8962",
+     "fixture:stage14.asset.refuse_s179_over@f8962",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8962",
+     "fixture:classm.f2441.1.deepseek@f8962",
+     "fixture:classm.f2441.2.deepseek@f8962",
+     "fixture:classm.f2441.3.deepseek@f8962",
+     "fixture:classm.f2441.4.deepseek@f8962",
+     "fixture:classm.f2441.5.deepseek@f8962",
+     "fixture:classm.dependent.5.deepseek@f8962",
+     "fixture:classm.asset.3@f8962",
+     "fixture:classm.scveh.3@f8962",
+     "fixture:stage18.refuse.void_1095a@f8962",
+     "fixture:stage18.refuse.year_of_marriage@f8962",
+     "fixture:stage18.refuse.two_counted_same_state@f8962",
+     "partial:classm.f8962.2.deepseek-f8962.same_state_counted@f8962",
+     "partial:classm.f5695.2.deepseek-f8962.same_state_counted@f8962",
+     "partial:classm.f8962.2.gpt-f8962.same_state_counted@f8962",
+     "partial:classm.f1095a.1.gpt-f8962.same_state_counted@f8962",
+     "partial:classm.f1095a.1.gpt-f8962.alien_below@f8962"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "25",
    "project_expr_sha256": "24ad31c0d57f1b6068c3763a9f57cf0892c5d80b1e3732193c019717184228a3",
    "second_expr_sha256": "15fc711d1f4c36b4950d620234bb9aa40d306b2612b09698c1c0d7c3fb373974",
    "ruling": "Ruling: model error; The Claude reply fails the host type check (log: model type validation fail; triage ../triage/f8962.json state invalid, 1 error, no line executed): it defines f1095a.one (as param person.one), an id the prompt publishes as an entry field of the f1095a collection (.transcription/f8962.prompt.txt line 611, \"f1095a.one (form f1095a; printed '(helper)'; type Count)\"), and the host rejects it (\"model redefined a foreign interface\"). This is M6 of round 2, narrowed from 27 ids to one; the round-3 reply, under the byte-identical prompt sha256 bf7db491..., defined none and was valid, so this is model variance. This line's own expression is the project's, character for character; it is DISAGREE only because it reads the rejected f1095a.one through line 10. The ruling adjudicates the declaration, not the tax reading. Read against the source, the choice is the project's: f8962 p. 1, line 25, \"Enter the amount from line 11, column (f), or add lines 12 through 23, column (f), and enter the total here.\" It declares f8962.other as a refusal (asked only with a Form 1095-A, M2) and a refusal when its monthly column (f) total differs from its line 11(f) (f8962.h_c_mismatch, when known), a consistency check the source does not print; on the annual route its monthly inputs are not asked, so the check is unknown and does not refuse.",
    "context": "d491f094bbe3c0cec4d957240bd46d9968349ef687091ee097f124aaebc4ddae",
    "subject_key": "a199271613ede45799ad4774c5654790d9cc2bf7031e1ce3db6df4c4d2ed28e1"
+  },
+  {
+   "printed": "25",
+   "project_expr_sha256": "47adbc18d833189eb995b61542cc20512a6322b095a01bc0515bf1c1a08e1221",
+   "second_expr_sha256": "0071697a8263678afbd2d160eed53e82f70dd65b35509e59d4625490bc6434aa",
+   "ruling": "Ruling: interface gap (+ scope); f8962 p. 1, line 25 and i8962 p. 18, Line 25: \"Enter the amount from line 11(f) or add lines 12(f) through 23(f) and enter the total.\" The value expression is the project's; the reply's shown_when lacks the Form 1095-A count and filing conditions. The reply's line has no shown_when (the request labels shown_when Optional, T-163), so where the project hides it (f8962.filing No: Form 8962 is not completed; i8962 p. 10, \"if no APTC was paid for any individuals in your tax family, stop; do not complete Form 8962\") it needs answers the interview asks only with Form 8962: interface gap, as ruled in earlier rounds. executable-triage-v2 (`.transcription/triage/2025/f8962.json`, pass 955e0d256aa6, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 162 partial records from 40 bases; 2,364 comparisons; completed witnesses listed in full by a scratch rerun with the witness cap lifted): 1,886 of 2,364 agree; 397 candidate-unknown, 68 project-refuses, 13 project-unknown; on completed returns 174 candidate-unknown, every one where the project hides line 25 (f8962.alloc 166, f8962.other 8); no completed-return value differs. The project-refuses are its cited gates (f8962.two_counted, f8962.void_form, f8962.premium_adjust, f8962.marriage) and refusals reaching the line from other forms, on refused returns. Gate wave (BUG-0471): f8962.marriage is a choose on f1040.status (mfj reads f8962.married_in_2025; single, mfs, hoh and qss give household.no), the HEAD `all`'s truth table; the line is the same in HEAD and the working tree on every completed fixture and generated return; it differs only on stage21.choose.eic_limit_status_unanswered (status withheld, refused in both trees), the incomplete-state difference BUG-0471 records. Project stands.",
+   "context": "43c7498b7fd34a65904a93ce4f02fe68425a6e73c7bd6533c92b1f4fa315d2c1",
+   "date": "2026-11-09",
+   "run": "b6d78f3dd16287998be4f5548adc5fde4f639b900eb79aa8ddd6fb38ef48e377",
+   "subject_key": "fd377dff540639d98b2fefb4b6e278b30cd17bd3d432778b8253f6d0c45426cb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8962",
+     "fixture:classm.f2441.2.deepseek@f8962",
+     "fixture:classm.f2441.3.deepseek@f8962",
+     "fixture:classm.f2441.4.deepseek@f8962",
+     "fixture:classm.f2441.5.deepseek@f8962",
+     "fixture:classm.f2441.6.deepseek@f8962",
+     "fixture:classm.eic.6.deepseek@f8962",
+     "fixture:classm.retirement.1.deepseek@f8962",
+     "fixture:classm.dependent.5.deepseek@f8962",
+     "fixture:classm.asset.3@f8962",
+     "fixture:classm.retirement.1@f8962",
+     "fixture:classm.scveh.3@f8962",
+     "partial:classm.s2.2.deepseek-f8962.premium_adjust@f8962",
+     "partial:classm.f8962.2.deepseek-f8962.premium_adjust@f8962",
+     "partial:classm.f8962.2.deepseek-f8962.same_state_counted@f8962",
+     "partial:classm.f8962.2.deepseek-f8962.fpl_table@f8962",
+     "partial:classm.f5695.2.deepseek-f8962.premium_adjust@f8962",
+     "partial:classm.f5695.2.deepseek-f8962.same_state_counted@f8962"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "25",
@@ -1869,6 +1953,43 @@
    "ruling": "Ruling: model error and interface gap — the candidate's line 9 asks f8962.married_in_2025 of every filer, where the project asks it only on a joint return (i8962 p. 13, Table 4, question 3, \"Are you filing a joint return with your spouse for 2025? ... No. You are not eligible to elect the alternative calculation. Do not complete Part V.\"); requiring it of a non-joint filer is a model error, and on stage18.married_in_2025_single it checks line 9 Yes where the project, under question 3, checks No; the remaining unknowns (f8962.alloc) are on records where the project hides line 9. Triage executable-triage-v2 (`reviews/2025/transcription/triage/f8962.json`, rerun 2026-11-03: 1,495 fixtures, 500 generated returns seed 20261026, 128 partial records from 40 bases): 853 of 2,123 comparisons agree; differences by kind {\"candidate-refuses\": 4, \"candidate-unknown\": 1195, \"project-refuses\": 71}; on completed returns {\"candidate-unknown\": 174}. The refusal-path differences are on returns the project or the candidate refuses: project-refuses where the project refuses at its own cited gates (f8962.alloc, f8962.marriage, f8962.void_form, f8962.premium_adjust, f8962.alien_branch, f8962.two_counted, dependent screens) or by a refusal reaching the line from another form, and candidate-refuses on the candidate's own declarations (for example sa.excluded_income and sa.dependent, read on records where the project hides the line); none is a completed-return amount. With the witness cap lifted (scratch), all 174 completed-return differences were listed: 164 are on records where the project hides the line (candidate-unknown there needs {\"f8962.alloc\": 158, \"f8962.married_in_2025\": 6}, answers the interview does not ask when the line is not reached); 10 where the project shows the line ({\"f8962.married_in_2025\": 10}). No completed-return value difference.",
    "context": "be0b66e7680aebca78f1114ac67fa9ad39a30a9e926f656976783eff2f3bffb8",
    "subject_key": "f72dc42fc8341bd5ca62226401751bf683844d6deaa2722ddf0be12cdb5b2eb5"
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "afd204e6f9b7a870225236a72c3dd0766a8b4780339847af9089366c63ed284a",
+   "second_expr_sha256": "cf516e996eadc8af0d5728c0fbe87c997b8d9f39b7aa64eda84b29e61cd2e11f",
+   "ruling": "Ruling: interface gap (+ scope); i8962 p. 12, Line 9: \"Before you complete line 10, you must complete Part IV if you are allocating policy amounts ... and complete Part V if you want to use the alternative calculation for year of marriage\"; p. 13, Table 4, question 3: \"Are you filing a joint return with your spouse for 2025? ... No. You are not eligible to elect the alternative calculation.\" The reply now tests the joint return before f8962.married_in_2025 (the earlier round's model error, asking it of every filer, is gone) and adds APTC paid. The reply's line has no shown_when (the request labels shown_when Optional, T-163), so where the project hides it (f8962.filing No: Form 8962 is not completed; i8962 p. 10, \"if no APTC was paid for any individuals in your tax family, stop; do not complete Form 8962\") it needs answers the interview asks only with Form 8962: interface gap, as ruled in earlier rounds. executable-triage-v2 (`.transcription/triage/2025/f8962.json`, pass 955e0d256aa6, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 162 partial records from 40 bases; 2,364 comparisons; completed witnesses listed in full by a scratch rerun with the witness cap lifted): 1,928 of 2,364 agree; 382 candidate-unknown, 51 project-refuses, 2 project-unknown, 1 value; on completed returns 166 candidate-unknown, every one where the project hides line 9, on f8962.alloc; no completed-return value differs. The value is stage18.refuse.year_of_marriage (project Yes, candidate No), refused by the project's cited f8962.marriage gate (Part V is not computed); the project-refuses are on refused returns. Gate wave (BUG-0471): f8962.marriage is a choose on f1040.status (mfj reads f8962.married_in_2025; single, mfs, hoh and qss give household.no), the HEAD `all`'s truth table; the line is the same in HEAD and the working tree on every completed fixture and generated return; it differs only on stage21.choose.eic_limit_status_unanswered (status withheld, refused in both trees), the incomplete-state difference BUG-0471 records. Project stands.",
+   "context": "43c7498b7fd34a65904a93ce4f02fe68425a6e73c7bd6533c92b1f4fa315d2c1",
+   "date": "2026-11-09",
+   "run": "b6d78f3dd16287998be4f5548adc5fde4f639b900eb79aa8ddd6fb38ef48e377",
+   "subject_key": "cc7fbfbd4507a3c0a84230beb40db7708716b77cd9c7f1e1d8bea0ff95fa1d3d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8962",
+     "fixture:classm.f2441.2.deepseek@f8962",
+     "fixture:classm.f2441.3.deepseek@f8962",
+     "fixture:classm.f2441.4.deepseek@f8962",
+     "fixture:classm.f2441.5.deepseek@f8962",
+     "fixture:classm.f2441.6.deepseek@f8962",
+     "fixture:classm.eic.6.deepseek@f8962",
+     "fixture:classm.retirement.1.deepseek@f8962",
+     "fixture:classm.dependent.5.deepseek@f8962",
+     "fixture:classm.asset.3@f8962",
+     "fixture:classm.retirement.1@f8962",
+     "fixture:classm.scveh.3@f8962",
+     "fixture:stage18.refuse.year_of_marriage@f8962",
+     "partial:classm.f8962.2.deepseek-f8962.fpl_table@f8962",
+     "partial:classm.f5695.2.deepseek-f8962.fpl_table@f8962"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f8962.any",

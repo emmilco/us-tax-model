@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "85e4f1f2d25ebcc50a9d7c62bbf753993819137414db5d15cfd4c4b4a87e54a0",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-09); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -106,9 +106,9 @@
   },
   {
    "key": "9b",
-   "record": "85e4f1f2d25ebcc50a9d7c62bbf753993819137414db5d15cfd4c4b4a87e54a0",
+   "record": "245b4dc7ac7edc65dd142db6dab65c9d23e9084909864b5a6c563fbe2f5ae917",
    "status": "MATCH",
-   "subject_key": "22fc177cc6c116bc883b25d18c3072e730e12df9a0abbf945c121c481bd519e8"
+   "subject_key": "b1bc08d4f4793697803afe25d5fc3624b39095e620691b6e0a7e1cfe16cb8324"
   },
   {
    "key": "9d",
@@ -176,7 +176,7 @@
   "5d": "cba65dff1f7e8501b2111c208bc1cc48be085c17c99395d1b587a7f957a90f6a",
   "8": "1ec7d8996716f9ab5bd2e12faa71f179cee91ebc9b1c0ca75799ae0606561467",
   "9a": "10013f9090963c33b636b17dbaa51818b0c2bbf05ec8090153bdbf9c9e03bf33",
-  "9b": "a5566ab4ef3d05941df1450872ee75aa19bfd26b2bfd084cbae26ea3553d8af7",
+  "9b": "f91652ff8f9e82bf8bdc872d516c4323e42ceb6904d1f3ec6833fc99a39af2e0",
   "9d": "f98cbfae28189f4d5190fa962e9b3c00b65de21b6c48cb692bc7d65e0cc248d7",
   "11": "1cc755d42878b7dd1d2b71b6d95b8e0d6d093839ac964dd3102364b79d827cef",
   "12": "c7e4f41e88d2149ad81ca4a66536687f056332593b679d423fd035eca042a7f2",

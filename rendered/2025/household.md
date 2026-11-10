@@ -127,8 +127,8 @@
 ## (helper) — `household.tin_count`
 
 - **Authored helper label:** Number of people on the return with an SSN or ITIN, or who have applied for an ITIN
-- **Encoded (Count):** Add person.one over every confirmed person entry for which (helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = true or helper "If not, have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your return?" = true), within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"any":[{"eq":["person.tin",{"const":true}],"op":"test"},{"eq":["person.itin_applied",{"const":true}],"op":"test"}],"op":"test"}}`
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "An SSN or ITIN, or applied for an ITIN" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.tin_or_itin_applied",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 17, Before you begin, "If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN"; p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.all_tin`
@@ -141,9 +141,9 @@
 ## (helper) — `household.id_count`
 
 - **Authored helper label:** Number of people on the return with an SSN valid for employment or an SSN or ITIN
-- **Encoded (Count):** Add person.one over every confirmed person entry for which (helper "Do you have an SSN valid for employment issued before the due date of your return?" = true or helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = true), within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "An SSN valid for employment, or an SSN or ITIN" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Interpretation: amb.2025.ctc_spouse_itin_application
-- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"any":[{"eq":["person.work_ssn",{"const":true}],"op":"test"},{"eq":["person.tin",{"const":true}],"op":"test"}],"op":"test"}}`
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.work_ssn_or_tin",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 17, Before you begin, "The other spouse must have either an SSN or ITIN" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.ctc_ssn`
@@ -221,12 +221,19 @@
 - Expr: `{"op":"input","source":"Did you live in a community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or Wisconsin) at any time in 2025?"}`
 - Cite: [i1040gi] p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `household.hoh_cp_married`
+
+- **Authored helper label:** Filing as head of household: married at the end of 2025, and lived in a community property state
+- **Encoded (Bool):** Choose — [helper "Were you married at the end of 2025?" = true → helper "Did you live in a community property state at any time in 2025?"] [helper "Were you married at the end of 2025?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.married",{"const":true}],"op":"test"},"then":"household.community_property"},{"guard":{"eq":["household.married",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (gate) — `household.hoh_community_property`
 
 - **Authored helper label:** Married, filing as head of household, and living in a community property state
-- **Encoded (Bool):** f1040 line Filing Status = 'hoh' and helper "Were you married at the end of 2025?" = true and helper "Did you live in a community property state at any time in 2025?" = true
+- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'mfj' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'mfs' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'hoh' → helper "Filing as head of household: married at the end of 2025, and lived in a community property state"] [f1040 line Filing Status = 'qss' → helper "Year parameter household.no (false)"]
 - Interpretation: amb.2025.hoh_community_property
-- Expr: `{"all":[{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},{"eq":["household.married",{"const":true}],"op":"test"},{"eq":["household.community_property",{"const":true}],"op":"test"}],"op":"test"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"household.hoh_cp_married"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"household.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.credit_disallowed`
@@ -306,11 +313,46 @@
 - Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over","where":{"eq":["dependent.hoh_absence",{"const":true}],"op":"test"}}`
 - Cite: [p501] p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
+## (helper) — `household.hoh_absence_from_test1`
+
+- **Authored helper label:** Head of household turns on an absence head of household does not count, from Test 1 on: Test 1 not met, home cost paid, no Test 2 person, and a person who would be one only by counting an absence
+- **Encoded (Bool):** Choose — [helper "Test 1 met" = true → helper "Year parameter household.no (false)"] [helper "Test 1 met" = false → helper "Head of household turns on an absence head of household does not count, from the home cost on: home cost paid, no Test 2 person, and a person who would be one only by counting an absence"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.test1_met",{"const":true}],"op":"test"},"then":"household.no"},{"guard":{"eq":["household.test1_met",{"const":false}],"op":"test"},"then":"household.hoh_absence_from_cost"}],"op":"choose"}`
+- Cite: [p501] p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `household.hoh_absence_from_cost`
+
+- **Authored helper label:** Head of household turns on an absence head of household does not count, from the home cost on: home cost paid, no Test 2 person, and a person who would be one only by counting an absence
+- **Encoded (Bool):** Choose — [helper "Did you pay over half the cost of keeping up your home for 2025?" = true → helper "Head of household turns on an absence head of household does not count, from Test 2 on: no Test 2 person, and a person who would be one only by counting an absence"] [helper "Did you pay over half the cost of keeping up your home for 2025?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.home_cost",{"const":true}],"op":"test"},"then":"household.hoh_absence_from_test2"},{"guard":{"eq":["household.home_cost",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [p501] p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `household.hoh_absence_from_test2`
+
+- **Authored helper label:** Head of household turns on an absence head of household does not count, from Test 2 on: no Test 2 person, and a person who would be one only by counting an absence
+- **Encoded (Bool):** Choose — [helper "No person qualifies you under Test 2" = true → helper "A person would qualify you under Test 2 only by counting an absence head of household does not count"] [helper "No person qualifies you under Test 2" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.no_test2_persons",{"const":true}],"op":"test"},"then":"household.any_test2_absence"},{"guard":{"eq":["household.no_test2_persons",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [p501] p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `household.no_test2_persons`
+
+- **Authored helper label:** No person qualifies you under Test 2
+- **Encoded (Bool):** helper "Number of persons who qualify you under Test 2" = 0 (a count)
+- Expr: `{"eq":["household.test2_persons",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [p501] p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `household.any_test2_absence`
+
+- **Authored helper label:** A person would qualify you under Test 2 only by counting an absence head of household does not count
+- **Encoded (Bool):** helper "Number of persons who would qualify you under Test 2 only by counting an absence head of household does not count" > 0 (a count)
+- Expr: `{"gt":["household.test2_absence_persons",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [p501] p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
 ## (gate) — `household.hoh_absence`
 
 - **Authored helper label:** Head of household turns on a person who lived with you more than half the year only by counting an absence head of household does not count
-- **Encoded (Bool):** helper "Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?" = true and helper "Test 1 met" = false and helper "Did you pay over half the cost of keeping up your home for 2025?" = true and helper "Number of persons who qualify you under Test 2" = 0 (a count) and helper "Number of persons who would qualify you under Test 2 only by counting an absence head of household does not count" > 0 (a count)
-- Expr: `{"all":[{"eq":["household.unmarried",{"const":true}],"op":"test"},{"eq":["household.test1_met",{"const":false}],"op":"test"},{"eq":["household.home_cost",{"const":true}],"op":"test"},{"eq":["household.test2_persons",{"const":0,"type":"Count"}],"op":"test"},{"gt":["household.test2_absence_persons",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?" = true → helper "Head of household turns on an absence head of household does not count, from Test 1 on: Test 1 not met, home cost paid, no Test 2 person, and a person who would be one only by counting an absence"] [helper "Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.unmarried",{"const":true}],"op":"test"},"then":"household.hoh_absence_from_test1"},{"guard":{"eq":["household.unmarried",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
 - Cite: [p501] p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
 ## (helper) — `household.test1_met`
@@ -320,11 +362,18 @@
 - Expr: `{"gt":["household.test1_persons",{"const":0,"type":"Count"}],"op":"test"}`
 - Cite: [i1040gi] p. 14, Head of Household, Test 1 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `household.any_test2_person`
+
+- **Authored helper label:** A person qualifies you under Test 2
+- **Encoded (Bool):** helper "Number of persons who qualify you under Test 2" > 0 (a count)
+- Expr: `{"gt":["household.test2_persons",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [i1040gi] p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `household.test2_met`
 
 - **Authored helper label:** Test 2 met, having paid over half the cost of keeping up your own home
-- **Encoded (Bool):** helper "Did you pay over half the cost of keeping up your home for 2025?" = true and helper "Number of persons who qualify you under Test 2" > 0 (a count)
-- Expr: `{"all":[{"eq":["household.home_cost",{"const":true}],"op":"test"},{"gt":["household.test2_persons",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Did you pay over half the cost of keeping up your home for 2025?" = true → helper "A person qualifies you under Test 2"] [helper "Did you pay over half the cost of keeping up your home for 2025?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.home_cost",{"const":true}],"op":"test"},"then":"household.any_test2_person"},{"guard":{"eq":["household.home_cost",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.hoh_eligible`
@@ -380,8 +429,8 @@
 ## (gate) — `household.widowed_2025`
 
 - **Authored helper label:** Filing as single or head of household although your spouse died in 2025
-- **Encoded (Bool):** (f1040 line Filing Status = 'single' or f1040 line Filing Status = 'hoh') and helper "Did your spouse die in 2025?" = true
-- Expr: `{"all":[{"any":[{"eq":["f1040.status",{"const":"single"}],"op":"test"},{"eq":["f1040.status",{"const":"hoh"}],"op":"test"}],"op":"test"},{"eq":["household.spouse_died_2025",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "Did your spouse die in 2025?"] [f1040 line Filing Status = 'mfj' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'mfs' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'hoh' → helper "Did your spouse die in 2025?"] [f1040 line Filing Status = 'qss' → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"household.spouse_died_2025"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"household.spouse_died_2025"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"household.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.cp_married`
@@ -391,11 +440,25 @@
 - Expr: `{"op":"input","source":"Were you married at any time during 2025, before a divorce or legal separation, while you lived in a community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or Wisconsin)? (Asked when you lived in a community property state in 2025, are not filing jointly and were not married at the end of 2025.)"}`
 - Cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555." (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `household.cp_not_joint`
+
+- **Authored helper label:** Not filing jointly: lived in a community property state, not married at the end of 2025, and married for part of 2025 while living there
+- **Encoded (Bool):** Choose — [helper "Did you live in a community property state at any time in 2025?" = true → helper "Not filing jointly and lived in a community property state: not married at the end of 2025, and married for part of 2025 while living there"] [helper "Did you live in a community property state at any time in 2025?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.community_property",{"const":true}],"op":"test"},"then":"household.cp_unmarried"},{"guard":{"eq":["household.community_property",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.cp_unmarried`
+
+- **Authored helper label:** Not filing jointly and lived in a community property state: not married at the end of 2025, and married for part of 2025 while living there
+- **Encoded (Bool):** Choose — [helper "Were you married at the end of 2025?" = true → helper "Year parameter household.no (false)"] [helper "Were you married at the end of 2025?" = false → helper "Married at any time in 2025 while living in a community property state, though not married at the end of 2025"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.married",{"const":true}],"op":"test"},"then":"household.no"},{"guard":{"eq":["household.married",{"const":false}],"op":"test"},"then":"household.cp_married"}],"op":"choose"}`
+- Cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555." (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (gate) — `household.cp_marriage_ended`
 
 - **Authored helper label:** Not filing jointly, and married for part of 2025 while living in a community property state
-- **Encoded (Bool):** f1040 line Filing Status ≠ 'mfj' and helper "Did you live in a community property state at any time in 2025?" = true and helper "Were you married at the end of 2025?" = false and helper "Married at any time in 2025 while living in a community property state, though not married at the end of 2025" = true
-- Expr: `{"all":[{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["household.community_property",{"const":true}],"op":"test"},{"eq":["household.married",{"const":false}],"op":"test"},{"eq":["household.cp_married",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "Not filing jointly: lived in a community property state, not married at the end of 2025, and married for part of 2025 while living there"] [f1040 line Filing Status = 'mfj' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'mfs' → helper "Not filing jointly: lived in a community property state, not married at the end of 2025, and married for part of 2025 while living there"] [f1040 line Filing Status = 'hoh' → helper "Not filing jointly: lived in a community property state, not married at the end of 2025, and married for part of 2025 while living there"] [f1040 line Filing Status = 'qss' → helper "Not filing jointly: lived in a community property state, not married at the end of 2025, and married for part of 2025 while living there"]
+- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"household.cp_not_joint"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"household.cp_not_joint"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"household.cp_not_joint"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"household.cp_not_joint"}],"op":"choose"}`
 - Cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `household.rdp_community_property`
@@ -405,9 +468,23 @@
 - Expr: `{"all":[{"ne":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["household.community_property",{"const":true}],"op":"test"},{"eq":["household.rdp",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `household.joint_unmarried`
+
+- **Authored helper label:** Filing jointly, not married at the end of 2025, and no spouse who died in 2025
+- **Encoded (Bool):** Choose — [helper "Were you married at the end of 2025?" = true → helper "Year parameter household.no (false)"] [helper "Were you married at the end of 2025?" = false → helper "Your spouse did not die in 2025"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.married",{"const":true}],"op":"test"},"then":"household.no"},{"guard":{"eq":["household.married",{"const":false}],"op":"test"},"then":"household.no_spouse_died"}],"op":"choose"}`
+- Cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.no_spouse_died`
+
+- **Authored helper label:** Your spouse did not die in 2025
+- **Encoded (Bool):** helper "Did your spouse die in 2025?" = false
+- Expr: `{"eq":["household.spouse_died_2025",{"const":false}],"op":"test"}`
+- Cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025." (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (gate) — `household.filing_status_conflict`
 
 - **Authored helper label:** The filing status conflicts with the marriage facts entered
-- **Encoded (Bool):** (f1040 line Filing Status = 'single' and helper "Were you married at the end of 2025?" = true or f1040 line Filing Status = 'mfj' and helper "Were you married at the end of 2025?" = false and helper "Did your spouse die in 2025?" = false)
-- Expr: `{"any":[{"all":[{"eq":["f1040.status",{"const":"single"}],"op":"test"},{"eq":["household.married",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["household.married",{"const":false}],"op":"test"},{"eq":["household.spouse_died_2025",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "Were you married at the end of 2025?"] [f1040 line Filing Status = 'mfj' → helper "Filing jointly, not married at the end of 2025, and no spouse who died in 2025"] [f1040 line Filing Status = 'mfs' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'hoh' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'qss' → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"household.married"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"household.joint_unmarried"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"household.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025." (2025; printed date 2026-02-25; sha256 482e9c48)

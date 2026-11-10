@@ -152,12 +152,15 @@ def encoding(form):
 
 
 def _line_refs(x, ids, out):
+    """The line ids an expression reads. A param name or a constant is not a line read, even when it
+    spells a line id (the param sales.zero and the line sales.zero)."""
     if isinstance(x, str):
         if x in ids:
             out.add(x)
     elif isinstance(x, dict):
-        for v in x.values():
-            _line_refs(v, ids, out)
+        for k, v in x.items():
+            if k not in ("param", "const"):
+                _line_refs(v, ids, out)
     elif isinstance(x, list):
         for v in x:
             _line_refs(v, ids, out)

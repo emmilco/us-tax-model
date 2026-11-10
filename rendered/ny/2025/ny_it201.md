@@ -1529,8 +1529,8 @@
 ## (gate) — `ny_it201.gate.use_tax_abode`
 
 - **Authored helper label:** Use tax owed with a New York abode for only part of the year (the chart amount is prorated by months)
-- **Encoded (Bool):** helper "Do you owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?" = true and helper "Did you maintain a permanent place of abode in New York State for only part of 2025 (for sales and use tax purposes)?" = true
-- Expr: `{"all":[{"eq":["ny_it201.ask.owes_use_tax",{"const":true}],"op":"test"},{"eq":["ny_it201.ask.abode_part_year",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Do you owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?" = true → helper "Did you maintain a permanent place of abode in New York State for only part of 2025 (for sales and use tax purposes)?"] [helper "Do you owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.ask.owes_use_tax",{"const":true}],"op":"test"},"then":"ny_it201.ask.abode_part_year"},{"guard":{"eq":["ny_it201.ask.owes_use_tax",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "multiply the tax amount from the chart by the number of months you maintained the permanent place of abode in New York State and divide the result by 12" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.use_tax_st141`
@@ -1906,11 +1906,46 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.ask.prior_agi_high",{"const":false}],"op":"test"},"then":"ny_it201.safe_harbor_100"},{"guard":{"eq":["ny_it201.ask.prior_agi_high",{"const":true}],"op":"test"},"then":"ny_it201.safe_harbor_110"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 23, Line 81, "However, if your 2024 New York adjusted gross income was more than $150,000 (or $75,000 if you are married filing separately for 2025) and you are not a farmer or a fisherman, your 2025 prepayments must equal at least 110% of your 2024 New York income tax based on a 12-month return." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
+## (helper) — `ny_it201.tax_due_positive`
+
+- **Authored helper label:** A balance due (more than zero)
+- **Encoded (Bool):** column (80) > $0
+- Expr: `{"gt":["ny_it201.tax_due",{"const":0}],"op":"test"}`
+- Cite: [ny_it201i] p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (helper) — `ny_it201.est_penalty_balance`
+
+- **Authored helper label:** A balance due, with prepayments below the safe harbor or no full-year 2024 return
+- **Encoded (Bool):** Choose — [helper "A balance due (more than zero)" = true → helper "Prepayments below the safe harbor, or no full-year 2024 return"] [helper "A balance due (more than zero)" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.tax_due_positive",{"const":true}],"op":"test"},"then":"ny_it201.est_below_safe_harbor"},{"guard":{"eq":["ny_it201.tax_due_positive",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- Cite: [ny_it201i] p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (helper) — `ny_it201.est_below_safe_harbor`
+
+- **Authored helper label:** Prepayments below the safe harbor, or no full-year 2024 return
+- **Encoded (Bool):** (column (81) (ny_it201.prepayments) < column (81) (ny_it201.safe_harbor) or helper "Did you file a 2024 New York return covering a full 12 months?" = false)
+- Expr: `{"any":[{"lt":["ny_it201.prepayments","ny_it201.safe_harbor"],"op":"test"},{"eq":["ny_it201.ask.prior_full_year",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [ny_it201i] p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (helper) — `ny_it201.estimated_payments_positive`
+
+- **Authored helper label:** Estimated tax payments (line 75) more than zero
+- **Encoded (Bool):** line 75 > $0
+- Expr: `{"gt":["ny_it201.line75",{"const":0}],"op":"test"}`
+- Cite: [ny_it201i] p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (helper) — `ny_it201.est_penalty_late`
+
+- **Authored helper label:** Estimated tax payments with a late or short installment
+- **Encoded (Bool):** Choose — [helper "Estimated tax payments (line 75) more than zero" = true → helper "Was any 2025 New York estimated tax installment paid late, or smaller than one quarter of the year's required payment?"] [helper "Estimated tax payments (line 75) more than zero" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.estimated_payments_positive",{"const":true}],"op":"test"},"then":"ny_it201.ask.est_late"},{"guard":{"eq":["ny_it201.estimated_payments_positive",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
+- Cite: [ny_it201i] p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
 ## (gate) — `ny_it201.gate.estimated_penalty`
 
 - **Authored helper label:** An estimated tax penalty may be owed: a balance due with prepayments below the safe harbor or no full-year 2024 return, or a late or short estimated installment
-- **Encoded (Bool):** (column (80) > $0 and (column (81) (ny_it201.prepayments) < column (81) (ny_it201.safe_harbor) or helper "Did you file a 2024 New York return covering a full 12 months?" = false) or line 75 > $0 and helper "Was any 2025 New York estimated tax installment paid late, or smaller than one quarter of the year's required payment?" = true)
-- Expr: `{"any":[{"all":[{"gt":["ny_it201.tax_due",{"const":0}],"op":"test"},{"any":[{"lt":["ny_it201.prepayments","ny_it201.safe_harbor"],"op":"test"},{"eq":["ny_it201.ask.prior_full_year",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"},{"all":[{"gt":["ny_it201.line75",{"const":0}],"op":"test"},{"eq":["ny_it201.ask.est_late",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** (helper "A balance due, with prepayments below the safe harbor or no full-year 2024 return" = true or helper "Estimated tax payments with a late or short installment" = true)
+- Expr: `{"any":[{"eq":["ny_it201.est_penalty_balance",{"const":true}],"op":"test"},{"eq":["ny_it201.est_penalty_late",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## 81 — `ny_it201.line81`

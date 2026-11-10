@@ -278,11 +278,32 @@
 - Expr: `{"op":"input","source":"Was your home this person's home for more than half of the part of 2025 they were alive (or, for a person adopted or placed with you in 2025, more than half of the time since the adoption or placement), counting temporary absences for school, vacation, business, medical care, military service or detention in a juvenile facility as time lived with you?"}`
 - Cite: [p501] p. 9, Death or birth, "Your qualifying child or qualifying relative who lived with you for more than half the part of the year they were alive"; i1040gi p. 15, "more than half the time since the person was adopted or placed with you in 2025"; i1040gi pp. 14-15, temporary absences, "or detention in a juvenile facility" (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
+## (helper) — `dependent.hoh_part_year`
+
+- **Authored helper label:** For a relative other than a qualifying child who did not live with you more than half of 2025: born or died in 2025, or adopted or placed, and lived with you more than half of the part of the year
+- **Encoded (Bool):** Choose — [helper "Qualifying child (Step 1)" = true → helper "Year parameter household.no (false)"] [helper "Qualifying child (Step 1)" = false → helper "Born or died in 2025, or adopted or placed with you in 2025, and lived with you more than half of the part of the year"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qualifying_child",{"const":true}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.qualifying_child",{"const":false}],"op":"test"},"then":"dependent.hoh_part_year_relative"}],"op":"choose"}`
+- Cite: [p501] p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025" (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.hoh_part_year_relative`
+
+- **Authored helper label:** Born or died in 2025, or adopted or placed with you in 2025, and lived with you more than half of the part of the year
+- **Encoded (Bool):** Choose — [helper "Born or died in 2025, or adopted or placed with you in 2025" = true → helper "Lived with you more than half the part of 2025 they were alive, or since the adoption or placement?"] [helper "Born or died in 2025, or adopted or placed with you in 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.born_died_or_placed",{"const":true}],"op":"test"},"then":"dependent.part_year_home"},{"guard":{"eq":["dependent.born_died_or_placed",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [p501] p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025" (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.born_died_or_placed`
+
+- **Authored helper label:** Born or died in 2025, or adopted or placed with you in 2025
+- **Encoded (Bool):** Choose — [helper "Born or died in 2025?" = true → helper "Born or died in 2025?"] [helper "Born or died in 2025?" = false → helper "Adopted, placed for adoption or placed as a foster child in 2025?"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.born_died",{"const":true}],"op":"test"},"then":"dependent.born_died"},{"guard":{"eq":["dependent.born_died",{"const":false}],"op":"test"},"then":"dependent.placed"}],"op":"choose"}`
+- Cite: [p501] p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025" (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
 ## (helper) — `dependent.hoh_lived_half`
 
 - **Authored helper label:** Lived with you more than half of 2025, or, for a relative other than a qualifying child (whose months already count the part of the year), more than half of the part of 2025 they were alive or since their adoption or placement
-- **Encoded (Bool):** (helper "Lived with you for more than half of 2025" = true or helper "Qualifying child (Step 1)" = false and (helper "Born or died in 2025?" = true or helper "Adopted, placed for adoption or placed as a foster child in 2025?" = true) and helper "Lived with you more than half the part of 2025 they were alive, or since the adoption or placement?" = true)
-- Expr: `{"any":[{"eq":["dependent.lived_half",{"const":true}],"op":"test"},{"all":[{"eq":["dependent.qualifying_child",{"const":false}],"op":"test"},{"any":[{"eq":["dependent.born_died",{"const":true}],"op":"test"},{"eq":["dependent.placed",{"const":true}],"op":"test"}],"op":"test"},{"eq":["dependent.part_year_home",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Lived with you for more than half of 2025" = true → helper "Lived with you for more than half of 2025"] [helper "Lived with you for more than half of 2025" = false → helper "For a relative other than a qualifying child who did not live with you more than half of 2025: born or died in 2025, or adopted or placed, and lived with you more than half of the part of the year"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.lived_half",{"const":true}],"op":"test"},"then":"dependent.lived_half"},{"guard":{"eq":["dependent.lived_half",{"const":false}],"op":"test"},"then":"dependent.hoh_part_year"}],"op":"choose"}`
 - Cite: [p501] p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted or placed with you in 2025" (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
 ## (helper) — `dependent.dc_lived_half`
@@ -343,11 +364,46 @@
 - Expr: `{"op":"input","source":"Did this person have a social security number issued on or before the due date of your 2025 return (including extensions) that is valid for the EIC? Any number issued by the Social Security Administration is valid unless the card says \"Not Valid for Employment\" and the number was issued solely to apply for or receive a federally funded benefit; a card that says \"Valid for Work Only With DHS Authorization\" is valid only while the authorization is valid."}`
 - Cite: [i1040gi] pp. 44–45, Social security number (SSN), EIC (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `dependent.under_19`
+
+- **Authored helper label:** Under age 19 at the end of 2025
+- **Encoded (Bool):** helper "Age at the end of 2025" < 19 (qc.age_limit)
+- Expr: `{"lt":["dependent.age",{"param":"qc.age_limit"}],"op":"test"}`
+- Cite: [i1040gi] p. 17, Step 1, the age conditions (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.under_24`
+
+- **Authored helper label:** Under age 24 at the end of 2025
+- **Encoded (Bool):** helper "Age at the end of 2025" < 24 (qc.student_age_limit)
+- Expr: `{"lt":["dependent.age",{"param":"qc.student_age_limit"}],"op":"test"}`
+- Cite: [i1040gi] p. 17, Step 1, the age conditions (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qc_age_younger`
+
+- **Authored helper label:** Younger than you (or your spouse if filing jointly), or permanently and totally disabled
+- **Encoded (Bool):** Choose — [helper "Younger than you (or your spouse if filing jointly)?" = true → helper "Younger than you (or your spouse if filing jointly)?"] [helper "Younger than you (or your spouse if filing jointly)?" = false → helper "Permanently and totally disabled?"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.younger",{"const":true}],"op":"test"},"then":"dependent.younger"},{"guard":{"eq":["dependent.younger",{"const":false}],"op":"test"},"then":"dependent.disabled"}],"op":"choose"}`
+- Cite: [i1040gi] p. 17, Step 1, the age conditions (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qc_age_19`
+
+- **Authored helper label:** Age test for a person aged 19 or older: under 24, a full-time student and younger than you, or permanently and totally disabled
+- **Encoded (Bool):** Choose — [helper "Under age 24 at the end of 2025" = true → helper "Age test for a person aged 19 to 23: a full-time student and younger than you, or permanently and totally disabled"] [helper "Under age 24 at the end of 2025" = false → helper "Permanently and totally disabled?"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.under_24",{"const":true}],"op":"test"},"then":"dependent.qc_age_student"},{"guard":{"eq":["dependent.under_24",{"const":false}],"op":"test"},"then":"dependent.disabled"}],"op":"choose"}`
+- Cite: [i1040gi] p. 17, Step 1, the age conditions (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qc_age_student`
+
+- **Authored helper label:** Age test for a person aged 19 to 23: a full-time student and younger than you, or permanently and totally disabled
+- **Encoded (Bool):** Choose — [helper "Full-time student in 2025?" = true → helper "Younger than you (or your spouse if filing jointly), or permanently and totally disabled"] [helper "Full-time student in 2025?" = false → helper "Permanently and totally disabled?"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.student",{"const":true}],"op":"test"},"then":"dependent.qc_age_younger"},{"guard":{"eq":["dependent.student",{"const":false}],"op":"test"},"then":"dependent.disabled"}],"op":"choose"}`
+- Cite: [i1040gi] p. 17, Step 1, the age conditions (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `dependent.qc_age`
 
 - **Authored helper label:** Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled
-- **Encoded (Bool):** (helper "Age at the end of 2025" < 19 (qc.age_limit) and helper "Younger than you (or your spouse if filing jointly)?" = true or helper "Age at the end of 2025" < 24 (qc.student_age_limit) and helper "Full-time student in 2025?" = true and helper "Younger than you (or your spouse if filing jointly)?" = true or helper "Permanently and totally disabled?" = true)
-- Expr: `{"any":[{"all":[{"lt":["dependent.age",{"param":"qc.age_limit"}],"op":"test"},{"eq":["dependent.younger",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"lt":["dependent.age",{"param":"qc.student_age_limit"}],"op":"test"},{"eq":["dependent.student",{"const":true}],"op":"test"},{"eq":["dependent.younger",{"const":true}],"op":"test"}],"op":"test"},{"eq":["dependent.disabled",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Under age 19 at the end of 2025" = true → helper "Younger than you (or your spouse if filing jointly), or permanently and totally disabled"] [helper "Under age 19 at the end of 2025" = false → helper "Age test for a person aged 19 or older: under 24, a full-time student and younger than you, or permanently and totally disabled"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.under_19",{"const":true}],"op":"test"},"then":"dependent.qc_age_younger"},{"guard":{"eq":["dependent.under_19",{"const":false}],"op":"test"},"then":"dependent.qc_age_19"}],"op":"choose"}`
 - Cite: [i1040gi] p. 17, Step 1, the age conditions (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.lived_half`
@@ -365,35 +421,105 @@
 - Expr: `{"all":[{"eq":["dependent.kidnapped",{"const":true}],"op":"test"},{"lt":["dependent.months",{"const":7,"type":"Count"}],"op":"test"}],"op":"test"}`
 - Cite: [p501] p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (a child who lived with you for more than half of 2025 meets the residency test without this treatment) (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
+## (helper) — `dependent.no`
+
+- **Authored helper label:** Year parameter household.no (false)
+- **Encoded (Bool):** Enter false (household.no).
+- Expr: `{"op":"param","ref":"household.no"}`
+- Cite: [i1040gi] p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qc_tests`
+
+- **Authored helper label:** Qualifying child tests (Step 1): relationship, age, support, joint return and residency, each asked only when the ones before it pass
+- **Encoded (Bool):** Choose — [helper "A child, sibling, or a descendant of either" = true → helper "Qualifying child tests (Step 1) from the age test on: age, support, joint return and residency"] [helper "A child, sibling, or a descendant of either" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qc_relationship",{"const":true}],"op":"test"},"then":"dependent.qc_from_age"},{"guard":{"eq":["dependent.qc_relationship",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qc_from_age`
+
+- **Authored helper label:** Qualifying child tests (Step 1) from the age test on: age, support, joint return and residency
+- **Encoded (Bool):** Choose — [helper "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" = true → helper "Qualifying child tests (Step 1) from the support test on: support, joint return and residency"] [helper "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qc_age",{"const":true}],"op":"test"},"then":"dependent.qc_from_support"},{"guard":{"eq":["dependent.qc_age",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qc_from_support`
+
+- **Authored helper label:** Qualifying child tests (Step 1) from the support test on: support, joint return and residency
+- **Encoded (Bool):** Choose — [helper "Provided over half of their own support?" = true → helper "Year parameter household.no (false)"] [helper "Provided over half of their own support?" = false → helper "Qualifying child tests (Step 1) from the joint return test on: joint return and residency"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.self_support",{"const":true}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.self_support",{"const":false}],"op":"test"},"then":"dependent.qc_from_joint"}],"op":"choose"}`
+- Cite: [i1040gi] p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qc_from_joint`
+
+- **Authored helper label:** Qualifying child tests (Step 1) from the joint return test on: joint return and residency
+- **Encoded (Bool):** Choose — [helper "Included on a 2025 joint return filed other than only to claim a refund?" = true → helper "Year parameter household.no (false)"] [helper "Included on a 2025 joint return filed other than only to claim a refund?" = false → helper "Lived with you for more than half of 2025"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.joint_return",{"const":true}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.joint_return",{"const":false}],"op":"test"},"then":"dependent.lived_half"}],"op":"choose"}`
+- Cite: [i1040gi] p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `dependent.qualifying_child`
 
 - **Authored helper label:** Qualifying child (Step 1)
-- **Encoded (Bool):** helper "A child, sibling, or a descendant of either" = true and helper "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" = true and helper "Provided over half of their own support?" = false and helper "Included on a 2025 joint return filed other than only to claim a refund?" = false and helper "Lived with you for more than half of 2025" = true
+- **Encoded (Bool):** helper "Qualifying child tests (Step 1): relationship, age, support, joint return and residency, each asked only when the ones before it pass" = true
 - **Refusal:** when dependent.qc_tiebreak is true, cannot complete Qualifying child of more than one person (tie-breaker rules). This person may be the qualifying child of another person. The tie-breaker rules are outside this tool. Cite: [i1040gi] p. 21, Qualifying child of more than one person (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when dependent.divorced_rule is true, cannot complete Children of divorced or separated parents. The rule for children of divorced or separated parents is outside this tool. Cite: [i1040gi] p. 20, Children of divorced or separated parents (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when dependent.married is true, cannot complete Married person rules. A married dependent is outside this tool; see Married person in the instructions. Cite: [i1040gi] p. 21, Married person (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"all":[{"eq":["dependent.qc_relationship",{"const":true}],"op":"test"},{"eq":["dependent.qc_age",{"const":true}],"op":"test"},{"eq":["dependent.self_support",{"const":false}],"op":"test"},{"eq":["dependent.joint_return",{"const":false}],"op":"test"},{"eq":["dependent.lived_half",{"const":true}],"op":"test"}],"op":"test"}`
+- Expr: `{"eq":["dependent.qc_tests",{"const":true}],"op":"test"}`
 - Cite: [i1040gi] p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.resident`
 
 - **Authored helper label:** U.S. citizen, national or resident alien, or a resident of Canada or Mexico
-- **Encoded (Bool):** (helper "U.S. citizen, U.S. national or U.S. resident alien?" = true or helper "Resident of Canada or Mexico (if not a U.S. citizen, national or resident alien)?" = true)
-- Expr: `{"any":[{"eq":["dependent.citizen",{"const":true}],"op":"test"},{"eq":["dependent.canada_mexico",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "U.S. citizen, U.S. national or U.S. resident alien?" = true → helper "U.S. citizen, U.S. national or U.S. resident alien?"] [helper "U.S. citizen, U.S. national or U.S. resident alien?" = false → helper "Resident of Canada or Mexico (if not a U.S. citizen, national or resident alien)?"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.citizen",{"const":true}],"op":"test"},"then":"dependent.citizen"},{"guard":{"eq":["dependent.citizen",{"const":false}],"op":"test"},"then":"dependent.canada_mexico"}],"op":"choose"}`
 - Cite: [i1040gi] p. 18, Step 2, question 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qc_dependent_resident`
+
+- **Authored helper label:** Qualifying child who is a U.S. citizen, national or resident alien or a resident of Canada or Mexico, and you are not a dependent
+- **Encoded (Bool):** Choose — [helper "U.S. citizen, national or resident alien, or a resident of Canada or Mexico" = true → helper "You (and your spouse if filing jointly) cannot be claimed as a dependent"] [helper "U.S. citizen, national or resident alien, or a resident of Canada or Mexico" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.resident",{"const":true}],"op":"test"},"then":"dependent.filer_not_dependent"},{"guard":{"eq":["dependent.resident",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 18, Step 2, questions 1 and 4 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.filer_not_dependent`
+
+- **Authored helper label:** You (and your spouse if filing jointly) cannot be claimed as a dependent
+- **Encoded (Bool):** sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false
+- Expr: `{"eq":["sa.dependent",{"const":false}],"op":"test"}`
+- Cite: [i1040gi] p. 18, Step 2, questions 1 and 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.qc_dependent`
 
 - **Authored helper label:** Qualifying child who is your dependent (Step 2)
-- **Encoded (Bool):** helper "Qualifying child (Step 1)" = true and helper "U.S. citizen, national or resident alien, or a resident of Canada or Mexico" = true and sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false
-- Expr: `{"all":[{"eq":["dependent.qualifying_child",{"const":true}],"op":"test"},{"eq":["dependent.resident",{"const":true}],"op":"test"},{"eq":["sa.dependent",{"const":false}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Qualifying child (Step 1)" = true → helper "Qualifying child who is a U.S. citizen, national or resident alien or a resident of Canada or Mexico, and you are not a dependent"] [helper "Qualifying child (Step 1)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qualifying_child",{"const":true}],"op":"test"},"then":"dependent.qc_dependent_resident"},{"guard":{"eq":["dependent.qualifying_child",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 18, Step 2, questions 1 and 4 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qr_listed_relative`
+
+- **Authored helper label:** A child, sibling, parent, other ancestor or in-law listed in Step 4
+- **Encoded (Bool):** (helper "Relationship to you" = 'child' or helper "Relationship to you" = 'sibling' or helper "Relationship to you" = 'parent' or helper "Relationship to you" = 'parent_relative' or helper "Relationship to you" = 'in_law')
+- Expr: `{"any":[{"eq":["dependent.relationship",{"const":"child"}],"op":"test"},{"eq":["dependent.relationship",{"const":"sibling"}],"op":"test"},{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},{"eq":["dependent.relationship",{"const":"parent_relative"}],"op":"test"},{"eq":["dependent.relationship",{"const":"in_law"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qr_household_member`
+
+- **Authored helper label:** A household member: lived with you all year, or a relative of your spouse on a joint return
+- **Encoded (Bool):** (f1040 line Filing Status = 'mfj' and helper "On a joint return, related to your spouse in one of the Step 4 ways" = true or helper "Lived with you all of 2025 as a member of your household (qualifying relative test)" = true)
+- Expr: `{"any":[{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["dependent.spouse_relative",{"const":true}],"op":"test"}],"op":"test"},{"eq":["dependent.qr_all_year",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qr_other_relation`
+
+- **Authored helper label:** A descendant of a sibling or another person: lived with you all year and the relationship did not violate local law, or a relative of your spouse on a joint return
+- **Encoded (Bool):** (f1040 line Filing Status = 'mfj' and helper "On a joint return, related to your spouse in one of the Step 4 ways" = true or helper "Lived with you all of 2025 as a member of your household (qualifying relative test)" = true and helper "Your relationship with this person did not violate local law" = true)
+- Expr: `{"any":[{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["dependent.spouse_relative",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["dependent.qr_all_year",{"const":true}],"op":"test"},{"eq":["dependent.lawful",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.qr_relationship`
 
 - **Authored helper label:** A relative listed in Step 4, or any other person who lived with you all year
-- **Encoded (Bool):** (helper "Relationship to you" = 'child' or helper "Relationship to you" = 'sibling' or helper "Relationship to you" = 'parent' or helper "Relationship to you" = 'parent_relative' or helper "Relationship to you" = 'in_law' or f1040 line Filing Status = 'mfj' and helper "On a joint return, related to your spouse in one of the Step 4 ways" = true or (helper "Relationship to you" = 'household_member' or helper "Relationship to you" = 'sibling_descendant' or helper "Relationship to you" = 'other') and helper "Lived with you all of 2025 as a member of your household (qualifying relative test)" = true and (helper "Relationship to you" ≠ 'other' and helper "Relationship to you" ≠ 'sibling_descendant' or helper "Your relationship with this person did not violate local law" = true))
-- Expr: `{"any":[{"eq":["dependent.relationship",{"const":"child"}],"op":"test"},{"eq":["dependent.relationship",{"const":"sibling"}],"op":"test"},{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},{"eq":["dependent.relationship",{"const":"parent_relative"}],"op":"test"},{"eq":["dependent.relationship",{"const":"in_law"}],"op":"test"},{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["dependent.spouse_relative",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"any":[{"eq":["dependent.relationship",{"const":"household_member"}],"op":"test"},{"eq":["dependent.relationship",{"const":"sibling_descendant"}],"op":"test"},{"eq":["dependent.relationship",{"const":"other"}],"op":"test"}],"op":"test"},{"eq":["dependent.qr_all_year",{"const":true}],"op":"test"},{"any":[{"all":[{"ne":["dependent.relationship",{"const":"other"}],"op":"test"},{"ne":["dependent.relationship",{"const":"sibling_descendant"}],"op":"test"}],"op":"test"},{"eq":["dependent.lawful",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Relationship to you" = 'child' → helper "A child, sibling, parent, other ancestor or in-law listed in Step 4"] [helper "Relationship to you" = 'sibling' → helper "A child, sibling, parent, other ancestor or in-law listed in Step 4"] [helper "Relationship to you" = 'parent' → helper "A child, sibling, parent, other ancestor or in-law listed in Step 4"] [helper "Relationship to you" = 'parent_relative' → helper "A child, sibling, parent, other ancestor or in-law listed in Step 4"] [helper "Relationship to you" = 'in_law' → helper "A child, sibling, parent, other ancestor or in-law listed in Step 4"] [helper "Relationship to you" = 'household_member' → helper "A household member: lived with you all year, or a relative of your spouse on a joint return"] [helper "Relationship to you" = 'sibling_descendant' → helper "A descendant of a sibling or another person: lived with you all year and the relationship did not violate local law, or a relative of your spouse on a joint return"] [helper "Relationship to you" = 'other' → helper "A descendant of a sibling or another person: lived with you all year and the relationship did not violate local law, or a relative of your spouse on a joint return"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.relationship",{"const":"child"}],"op":"test"},"then":"dependent.qr_listed_relative"},{"guard":{"eq":["dependent.relationship",{"const":"sibling"}],"op":"test"},"then":"dependent.qr_listed_relative"},{"guard":{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},"then":"dependent.qr_listed_relative"},{"guard":{"eq":["dependent.relationship",{"const":"parent_relative"}],"op":"test"},"then":"dependent.qr_listed_relative"},{"guard":{"eq":["dependent.relationship",{"const":"in_law"}],"op":"test"},"then":"dependent.qr_listed_relative"},{"guard":{"eq":["dependent.relationship",{"const":"household_member"}],"op":"test"},"then":"dependent.qr_household_member"},{"guard":{"eq":["dependent.relationship",{"const":"sibling_descendant"}],"op":"test"},"then":"dependent.qr_other_relation"},{"guard":{"eq":["dependent.relationship",{"const":"other"}],"op":"test"},"then":"dependent.qr_other_relation"}],"op":"choose"}`
 - Cite: [i1040gi] p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.spouse_relative`
@@ -470,11 +596,18 @@
 - Expr: `{"all":[{"eq":["dependent.qr_relationship",{"const":true}],"op":"test"},{"eq":["dependent.qualifying_child",{"const":false}],"op":"test"},{"eq":["dependent.qr_income",{"const":true}],"op":"test"},{"eq":["dependent.supported",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 19, Step 4, "Does any person meet the conditions to be your qualifying relative?" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `dependent.qr_dependent_resident`
+
+- **Authored helper label:** Qualifying relative who is a U.S. citizen, national or resident alien or a resident of Canada or Mexico, and you are not a dependent
+- **Encoded (Bool):** Choose — [helper "U.S. citizen, national or resident alien, or a resident of Canada or Mexico" = true → helper "You (and your spouse if filing jointly) cannot be claimed as a dependent"] [helper "U.S. citizen, national or resident alien, or a resident of Canada or Mexico" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.resident",{"const":true}],"op":"test"},"then":"dependent.filer_not_dependent"},{"guard":{"eq":["dependent.resident",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 19, Step 4, questions 2 and 5 (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `dependent.qr_dependent`
 
 - **Authored helper label:** Qualifying relative who is your dependent (Step 4, questions 2 and 5)
-- **Encoded (Bool):** helper "Qualifying relative (Step 4)" = true and helper "U.S. citizen, national or resident alien, or a resident of Canada or Mexico" = true and sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false
-- Expr: `{"all":[{"eq":["dependent.qualifying_relative",{"const":true}],"op":"test"},{"eq":["dependent.resident",{"const":true}],"op":"test"},{"eq":["sa.dependent",{"const":false}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Qualifying relative (Step 4)" = true → helper "Qualifying relative who is a U.S. citizen, national or resident alien or a resident of Canada or Mexico, and you are not a dependent"] [helper "Qualifying relative (Step 4)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qualifying_relative",{"const":true}],"op":"test"},"then":"dependent.qr_dependent_resident"},{"guard":{"eq":["dependent.qualifying_relative",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 19, Step 4, questions 2 and 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `dependent.claimed_no_tin`
@@ -499,11 +632,39 @@
 - Expr: `{"lt":["dependent.age",{"param":"ctc.age_limit"}],"op":"test"}`
 - Cite: [i1040gi] p. 18, Step 3, question 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `dependent.ctc_from_tin`
+
+- **Authored helper label:** Child tax credit tests (Step 3) from the SSN, ITIN or ATIN test on
+- **Encoded (Bool):** Choose — [helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true → helper "Child tax credit tests (Step 3) from the citizenship test on"] [helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.tin",{"const":true}],"op":"test"},"then":"dependent.ctc_from_citizen"},{"guard":{"eq":["dependent.tin",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 18, Step 3, questions 1–4 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.ctc_from_citizen`
+
+- **Authored helper label:** Child tax credit tests (Step 3) from the citizenship test on
+- **Encoded (Bool):** Choose — [helper "U.S. citizen, U.S. national or U.S. resident alien?" = true → helper "Child tax credit tests (Step 3) from the age test on"] [helper "U.S. citizen, U.S. national or U.S. resident alien?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.citizen",{"const":true}],"op":"test"},"then":"dependent.ctc_from_age"},{"guard":{"eq":["dependent.citizen",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 18, Step 3, questions 1–4 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.ctc_from_age`
+
+- **Authored helper label:** Child tax credit tests (Step 3) from the age test on
+- **Encoded (Bool):** Choose — [helper "Under age 17 at the end of 2025" = true → helper "Child tax credit tests (Step 3) from the work SSN test on"] [helper "Under age 17 at the end of 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.under_ctc_age",{"const":true}],"op":"test"},"then":"dependent.ctc_from_work_ssn"},{"guard":{"eq":["dependent.under_ctc_age",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 18, Step 3, questions 1–4 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.ctc_from_work_ssn`
+
+- **Authored helper label:** Child tax credit tests (Step 3) from the work SSN test on
+- **Encoded (Bool):** Choose — [helper "SSN valid for employment issued before the due date of your return?" = true → household helper "Child tax credit identification: you, or your spouse if filing jointly, have an SSN valid for employment, and each other person on the return has an SSN or ITIN"] [helper "SSN valid for employment issued before the due date of your return?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.work_ssn",{"const":true}],"op":"test"},"then":"household.ctc_ssn"},{"guard":{"eq":["dependent.work_ssn",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 18, Step 3, questions 1–4 (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `dependent.ctc_child`
 
 - **Authored helper label:** Qualifying child for the child tax credit (Step 3)
-- **Encoded (Bool):** helper "Qualifying child who is your dependent (Step 2)" = true and helper "SSN, ITIN or ATIN issued on or before the due date of your return?" = true and helper "U.S. citizen, U.S. national or U.S. resident alien?" = true and helper "Under age 17 at the end of 2025" = true and helper "SSN valid for employment issued before the due date of your return?" = true and household helper "Child tax credit identification: you, or your spouse if filing jointly, have an SSN valid for employment, and each other person on the return has an SSN or ITIN" = true
-- Expr: `{"all":[{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},{"eq":["dependent.tin",{"const":true}],"op":"test"},{"eq":["dependent.citizen",{"const":true}],"op":"test"},{"eq":["dependent.under_ctc_age",{"const":true}],"op":"test"},{"eq":["dependent.work_ssn",{"const":true}],"op":"test"},{"eq":["household.ctc_ssn",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Qualifying child who is your dependent (Step 2)" = true → helper "Child tax credit tests (Step 3) from the SSN, ITIN or ATIN test on"] [helper "Qualifying child who is your dependent (Step 2)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qc_dependent",{"const":true}],"op":"test"},"then":"dependent.ctc_from_tin"},{"guard":{"eq":["dependent.qc_dependent",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 18, Step 3, questions 1–4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.odc_person`
@@ -572,8 +733,8 @@
 ## (helper) — `dependent.hoh_absence`
 
 - **Authored helper label:** A Test 2 person only by counting an absence head of household does not count
-- **Encoded (Bool):** helper "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form)" = true and helper "Counted an absence the person was not expected to return from, or during which you did not keep up the home" = true
-- Expr: `{"all":[{"eq":["dependent.hoh_test2_lived",{"const":true}],"op":"test"},{"eq":["dependent.absence_no_return",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form)" = true → helper "Counted an absence the person was not expected to return from, or during which you did not keep up the home"] [helper "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.hoh_test2_lived",{"const":true}],"op":"test"},"then":"dependent.absence_no_return"},{"guard":{"eq":["dependent.hoh_test2_lived",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [p501] p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
 ## (helper) — `dependent.hoh_test2`
@@ -591,42 +752,84 @@
 - Expr: `{"all":[{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},{"eq":["dependent.claimed",{"const":true}],"op":"test"},{"eq":["dependent.parent_home_paid",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `dependent.tiebreak_other`
+
+- **Authored helper label:** With another person who can claim this person: that person is a taxpayer, or this person is also your qualifying child
+- **Encoded (Bool):** (helper "Every other person this person is a qualifying child of is not a taxpayer?" = false or helper "Qualifying child tests (Step 1): relationship, age, support, joint return and residency, each asked only when the ones before it pass" = true)
+- Expr: `{"any":[{"eq":["dependent.other_nontaxpayer",{"const":false}],"op":"test"},{"eq":["dependent.qc_tests",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [p501] p. 15, Qualifying Child of More Than One Person, "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person."; i1040gi p. 19, Step 4, "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
 ## (gate) — `dependent.qc_tiebreak`
 
 - **Authored helper label:** The qualifying child of another person who is also your qualifying child, or whose other person is a taxpayer
-- **Encoded (Bool):** helper "Meets the conditions to be the qualifying child of another person?" = true and (helper "Every other person this person is a qualifying child of is not a taxpayer?" = false or helper "A child, sibling, or a descendant of either" = true and helper "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" = true and helper "Provided over half of their own support?" = false and helper "Included on a 2025 joint return filed other than only to claim a refund?" = false and helper "Lived with you for more than half of 2025" = true)
-- Expr: `{"all":[{"eq":["dependent.other_claimant",{"const":true}],"op":"test"},{"any":[{"eq":["dependent.other_nontaxpayer",{"const":false}],"op":"test"},{"all":[{"eq":["dependent.qc_relationship",{"const":true}],"op":"test"},{"eq":["dependent.qc_age",{"const":true}],"op":"test"},{"eq":["dependent.self_support",{"const":false}],"op":"test"},{"eq":["dependent.joint_return",{"const":false}],"op":"test"},{"eq":["dependent.lived_half",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Meets the conditions to be the qualifying child of another person?" = true → helper "With another person who can claim this person: that person is a taxpayer, or this person is also your qualifying child"] [helper "Meets the conditions to be the qualifying child of another person?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.other_claimant",{"const":true}],"op":"test"},"then":"dependent.tiebreak_other"},{"guard":{"eq":["dependent.other_claimant",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [p501] p. 15, Qualifying Child of More Than One Person, "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person."; i1040gi p. 19, Step 4, "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.eic_child_tests`
+
+- **Authored helper label:** EIC qualifying child tests: relationship, age, joint return and residency in the United States, each asked only when the ones before it pass
+- **Encoded (Bool):** Choose — [helper "A child, sibling, or a descendant of either" = true → helper "EIC qualifying child tests from the age test on: age, joint return and residency in the United States"] [helper "A child, sibling, or a descendant of either" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qc_relationship",{"const":true}],"op":"test"},"then":"dependent.eic_child_from_age"},{"guard":{"eq":["dependent.qc_relationship",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.eic_child_from_age`
+
+- **Authored helper label:** EIC qualifying child tests from the age test on: age, joint return and residency in the United States
+- **Encoded (Bool):** Choose — [helper "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" = true → helper "EIC qualifying child tests from the joint return test on: joint return and residency in the United States"] [helper "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qc_age",{"const":true}],"op":"test"},"then":"dependent.eic_child_from_joint"},{"guard":{"eq":["dependent.qc_age",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.eic_child_from_joint`
+
+- **Authored helper label:** EIC qualifying child tests from the joint return test on: joint return and residency in the United States
+- **Encoded (Bool):** Choose — [helper "Included on a 2025 joint return filed other than only to claim a refund?" = true → helper "Year parameter household.no (false)"] [helper "Included on a 2025 joint return filed other than only to claim a refund?" = false → helper "Lived with you in the United States for more than half of 2025?"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.joint_return",{"const":true}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.joint_return",{"const":false}],"op":"test"},"then":"dependent.us_half"}],"op":"choose"}`
+- Cite: [i1040gi] p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.eic_child`
 
 - **Authored helper label:** Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)
-- **Encoded (Bool):** helper "A child, sibling, or a descendant of either" = true and helper "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" = true and helper "Included on a 2025 joint return filed other than only to claim a refund?" = false and helper "Lived with you in the United States for more than half of 2025?" = true
+- **Encoded (Bool):** helper "EIC qualifying child tests: relationship, age, joint return and residency in the United States, each asked only when the ones before it pass" = true
 - **Refusal:** when dependent.kidnap_eic is true, cannot complete Kidnapped child (Pub. 501; Pub. 596 for the EIC). A child presumed kidnapped by someone who isn't a family member, who did not live with you in the United States for more than half of 2025 without counting the time missing, may count as living with you under rules this tool does not apply. Cite: [i1040gi] p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)" (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when dependent.eic_tiebreak is true, cannot complete Qualifying child of more than one person (EIC). The tie-breaker rules for a child who is the qualifying child of more than one person are outside this tool. Cite: [i1040gi] p. 44, Qualifying child of more than one person (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when dependent.married is true, cannot complete Married child (EIC). A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person. Cite: [i1040gi] p. 44, Married child (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"all":[{"eq":["dependent.qc_relationship",{"const":true}],"op":"test"},{"eq":["dependent.qc_age",{"const":true}],"op":"test"},{"eq":["dependent.joint_return",{"const":false}],"op":"test"},{"eq":["dependent.us_half",{"const":true}],"op":"test"}],"op":"test"}`
+- Expr: `{"eq":["dependent.eic_child_tests",{"const":true}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return AND lived with you in the United States for more than half of 2025) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `dependent.eic_tiebreak`
 
 - **Authored helper label:** The qualifying child of another person who is also your qualifying child for the EIC
-- **Encoded (Bool):** helper "Meets the conditions to be the qualifying child of another person?" = true and helper "A child, sibling, or a descendant of either" = true and helper "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" = true and helper "Included on a 2025 joint return filed other than only to claim a refund?" = false and helper "Lived with you in the United States for more than half of 2025?" = true
-- Expr: `{"all":[{"eq":["dependent.other_claimant",{"const":true}],"op":"test"},{"eq":["dependent.qc_relationship",{"const":true}],"op":"test"},{"eq":["dependent.qc_age",{"const":true}],"op":"test"},{"eq":["dependent.joint_return",{"const":false}],"op":"test"},{"eq":["dependent.us_half",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Meets the conditions to be the qualifying child of another person?" = true → helper "EIC qualifying child tests: relationship, age, joint return and residency in the United States, each asked only when the ones before it pass"] [helper "Meets the conditions to be the qualifying child of another person?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.other_claimant",{"const":true}],"op":"test"},"then":"dependent.eic_child_tests"},{"guard":{"eq":["dependent.other_claimant",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 44, Qualifying child of more than one person, "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.kidnap_eic_related`
+
+- **Authored helper label:** A child presumed kidnapped: meets the EIC relationship test but did not live with you in the United States for more than half of 2025
+- **Encoded (Bool):** Choose — [helper "A child, sibling, or a descendant of either" = true → helper "Did not live with you in the United States for more than half of 2025"] [helper "A child, sibling, or a descendant of either" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qc_relationship",{"const":true}],"op":"test"},"then":"dependent.not_us_half"},{"guard":{"eq":["dependent.qc_relationship",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.not_us_half`
+
+- **Authored helper label:** Did not live with you in the United States for more than half of 2025
+- **Encoded (Bool):** helper "Lived with you in the United States for more than half of 2025?" = false
+- Expr: `{"eq":["dependent.us_half",{"const":false}],"op":"test"}`
+- Cite: [i1040gi] p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `dependent.kidnap_eic`
 
 - **Authored helper label:** A child presumed kidnapped who meets the EIC relationship test but did not live with you in the United States for more than half of 2025, not counting the time missing
-- **Encoded (Bool):** helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" = true and helper "A child, sibling, or a descendant of either" = true and helper "Lived with you in the United States for more than half of 2025?" = false
-- Expr: `{"all":[{"eq":["dependent.kidnapped",{"const":true}],"op":"test"},{"eq":["dependent.qc_relationship",{"const":true}],"op":"test"},{"eq":["dependent.us_half",{"const":false}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" = true → helper "A child presumed kidnapped: meets the EIC relationship test but did not live with you in the United States for more than half of 2025"] [helper "A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.kidnapped",{"const":true}],"op":"test"},"then":"dependent.kidnap_eic_related"},{"guard":{"eq":["dependent.kidnapped",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment) (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.eic_ssn_child`
 
 - **Authored helper label:** Qualifying child for the EIC who has a valid SSN
-- **Encoded (Bool):** helper "Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)" = true and helper "SSN valid for the EIC, issued on or before the due date of your return?" = true
-- Expr: `{"all":[{"eq":["dependent.eic_child",{"const":true}],"op":"test"},{"eq":["dependent.eic_ssn",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)" = true → helper "SSN valid for the EIC, issued on or before the due date of your return?"] [helper "Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.eic_child",{"const":true}],"op":"test"},"then":"dependent.eic_ssn"},{"guard":{"eq":["dependent.eic_child",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 46, Worksheet A, line 2, "the number of qualifying children you have who have valid SSNs"; pp. 44–45, Social security number (SSN), "For the EIC, a valid SSN is a number issued by the Social Security Administration unless 'Not Valid for Employment' is printed on the social security card" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.dc_child_all_year`
@@ -893,11 +1096,25 @@
 - Expr: `{"op":"input","source":"Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course materials required to be paid to the institution)?"}`
 - Cite: [i8863] p. 4, Tax-free educational assistance, "For tax-free educational assistance received in 2025, reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period." (2025; sha256 195cfd5e)
 
+## (helper) — `dependent.edu_has_adj`
+
+- **Authored helper label:** Adjusted qualified education expenses (worksheet line 3) above zero
+- **Encoded (Bool):** helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c" > $0
+- Expr: `{"gt":["dependent.edu_adj",{"const":0}],"op":"test"}`
+- Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
+
+## (helper) — `dependent.edu_over_if_adj`
+
+- **Authored helper label:** Adjustments that exceed one academic period's expenses, where adjusted qualified education expenses are above zero
+- **Encoded (Bool):** Choose — [helper "Adjusted qualified education expenses (worksheet line 3) above zero" = true → helper "An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution"] [helper "Adjusted qualified education expenses (worksheet line 3) above zero" = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.edu_has_adj",{"const":true}],"op":"test"},"then":"dependent.edu_over"},{"guard":{"eq":["dependent.edu_has_adj",{"const":false}],"op":"test"},"then":"dependent.edu_no"}],"op":"choose"}`
+- Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
+
 ## (gate) — `dependent.edu_over_refused`
 
 - **Authored helper label:** Adjustments that exceed one academic period's expenses
-- **Encoded (Bool):** helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = true and helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c" > $0 and helper "An academic period whose tax-free assistance and refunds exceed its expenses paid to the institution" = true
-- Expr: `{"all":[{"eq":["dependent.edu_student",{"const":true}],"op":"test"},{"gt":["dependent.edu_adj",{"const":0}],"op":"test"},{"eq":["dependent.edu_over",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = true → helper "Adjustments that exceed one academic period's expenses, where adjusted qualified education expenses are above zero"] [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception), and claimed as your dependent" = false → helper "Year parameter edu.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.edu_student",{"const":true}],"op":"test"},"then":"dependent.edu_over_if_adj"},{"guard":{"eq":["dependent.edu_student",{"const":false}],"op":"test"},"then":"dependent.edu_no"}],"op":"choose"}`
 - Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
 
 ## 23 — `dependent.edu_line23`

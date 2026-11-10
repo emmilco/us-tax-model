@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+  "agree / disagree / missing": "6 / 13 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-09); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -60,17 +61,17 @@
   },
   {
    "key": "household.all_tin",
-   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "record": "df989d49e11408dbed45807f6a8e9ef8df9135bdcc887cb8fbc57e0715052acd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 19, Step 5, question 1 (an applied-for ITIN counts, as the project reads it). The reply counts filers with neither a TIN nor an application and tests zero; same test. No difference. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,300 of 2,300 agree; none; on returns the full interview completes: none. Project stands.",
-   "subject_key": "fff067d4f8d49a11dd730f0c749e8e2cbc03996b3427ca35ef1a6b6fec47a756"
+   "ruling": "Ruling: representation; i1040gi p. 17, Before you begin: \"If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN issued on or before the due date of your 2025 return (including extensions)\"; p. 19, Step 5, question 1 (an ITIN applied for by the due date counts). Both sides now read the new helper person.tin_or_itin_applied (ruled in the person log). The project tests that the count of persons with an SSN or ITIN (or an ITIN applied for) equals the number of persons on the return; the reply tests that the count of persons without one is zero: the same test on every definite answer. The project line's where-test changed only by reading that helper in place of the former any-test. executable-triage-v2 (`.transcription/triage/2025/household.json`, pass 7073fcafb61a; 1,702 fixtures, 500 generated returns seed 20261026, 247 partial records; 2,449 comparisons): 2,449 of 2,449 agree; no difference (observed equivalence on that sample). As the prior rulings on this line. Project stands.",
+   "subject_key": "c5534c91ac053fca897f0bfbf6eade543d7be9b2746414f45914223428a22207"
   },
   {
    "key": "household.ctc_ssn",
-   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "record": "df989d49e11408dbed45807f6a8e9ef8df9135bdcc887cb8fbc57e0715052acd",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 7, \"If you are filing a joint return, only one spouse is required to have a valid SSN ... The other spouse must have either an SSN or ITIN\" (amb.2025.ctc_spouse_itin_application). The reply requires person.tin of every filer, also of one who answered person.work_ssn Yes (an SSN valid for employment is an SSN), which the interview then does not ask: the 5 completed candidate-unknowns are class M records whose route-limited answers omit person.tin for such a filer (classm.s3.4, classm.s3.4.deepseek, classm.tcw.5, classm.tcw.2 spouse). The 1 completed value (generated 147, work_ssn Yes with tin No) is the contradictory answer pair of the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`). Reply unchanged; the class changes from representation because the class M route-limited answers now complete those records. No completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,224 of 2,300 agree; 56 candidate-unknown, 20 value; on returns the full interview completes: 5 candidate-unknown, 1 value. Project stands.",
-   "subject_key": "52db3ed47e0dfb461acdb377a5ac25c29e1d768f844e30eb6567c668bd7e8fdd"
+   "ruling": "Ruling: representation; i1040gi p. 17, Before you begin: \"If you are filing a joint return, only one spouse is required to have a valid SSN ... The other spouse must have either an SSN or ITIN\". Both sides count the filers with an SSN valid for employment and the filers with an SSN or ITIN; the project reads the count through person.work_ssn_or_tin. executable-triage-v2 (`.transcription/triage/2025/household.json`; 1,702 fixtures, 500 generated returns seed 20261026, 247 partial records; 2,449 comparisons): 2,446 of 2,449 agree; differences 3 project-unknown (1 completed, 1 incomplete, 1 refused), each a record with person.work_ssn withheld; no value or refusal difference. Trade-off of the gate-wave rewrite (BUG-0466/BUG-0471, owner decision 2026-11-09): on records with an answer withheld, a value HEAD computed through the three-valued all/any is now unknown until the first guard of the nested choose is answered; no printed value or refusal changes on a completed return (1,702 of 1,702 fixtures pass). Witness, evaluated in both trees: mutation.t3.mfj_no_tips_ssn_unanswered: HEAD household.ctc_ssn true and f1040.line19 $4,400.00; current unknown until person.work_ssn is answered. This is the owner-accepted BUG-0466 design, not a reading of the source. Project stands.",
+   "subject_key": "6a8719cc320aa164ddb8d8f5904287da8f83a5f6127af9fa0506c66014ac3667"
   },
   {
    "key": "household.taxpayer_work_ssn",
@@ -95,10 +96,10 @@
   },
   {
    "key": "household.hoh_fails",
-   "record": "c2037f7dce8b78a6935157e3aa1954a52fc061148a3f652e5f2ffb9e8d846b01",
+   "record": "df989d49e11408dbed45807f6a8e9ef8df9135bdcc887cb8fbc57e0715052acd",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040gi p. 14, Head of Household: \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\"; i1040gi p. 23 (amb.2025.hoh_community_property). R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). The reply writes the project's test inline (status head of household, and the unmarried test fails or neither Test 1 nor Test 2 applies) and drops the household.hoh_community_property refusal the project carries on household.hoh_eligible; it reads household.unmarried as the project does. The differences are that cited refusal (refused records) and partial records withholding household.community_property. executable-triage-v2 on this pass's reply (`.transcription/household.lines-d801bd4b40fd.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 235 partial records; 2,373 comparisons): 2,368 of 2,373 agree; differences on returns the full interview completes: none; no completed-return value difference. Project stands.",
-   "subject_key": "bf93de11e3d64cc31632add6f0d4f3f6bab74c977bef10f053c71088d66a5f17"
+   "ruling": "Ruling: representation and scope; i1040gi p. 14, Head of Household, and p501 pp. 9-10, Tests 1 and 2: both sides refuse head of household when the filer is married at year end (or not considered unmarried) or neither test is met, reading the same dependent and home-cost answers. executable-triage-v2 (`.transcription/triage/2025/household.json`; 1,702 fixtures, 500 generated returns seed 20261026, 247 partial records; 2,449 comparisons): 2,435 of 2,449 agree; differences 9 project-unknown (7 incomplete, 2 refused), 4 project-refuses and 1 candidate-refuses, all on refused returns, where the two sides report a different first refusal; nothing on a return the interview completes. Trade-off of the gate-wave rewrite (BUG-0466/BUG-0471, owner decision 2026-11-09): on records with an answer withheld, a value HEAD computed through the three-valued all/any is now unknown until the first guard of the nested choose is answered; no printed value or refusal changes on a completed return (1,702 of 1,702 fixtures pass). Witness, evaluated in both trees: classm.f2441.3.deepseek (head of household, community_property no) with household.married withheld: HEAD gives household.hoh_fails false and f1040.line12e $23,625.00; the current tree gives unknown for both, through the rewritten household.hoh_community_property, until household.married is answered; on classm.retirement.1.deepseek (refused in both trees) with household.home_cost withheld the first refusal reported moves from dependent.divorced_rule to an i8283 gate. This is the owner-accepted BUG-0466 design, not a reading of the source. Project stands.",
+   "subject_key": "e66b43b976cd816442609b0039fd53238d245745ec1c59096548043f5954c6d6"
   },
   {
    "key": "household.qss_fails",
@@ -108,16 +109,17 @@
   },
   {
    "key": "household.widowed_2025",
-   "record": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
+   "record": "df989d49e11408dbed45807f6a8e9ef8df9135bdcc887cb8fbc57e0715052acd",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; p501 p. 6 and i1040gi p. 13 (a 2025 death allows a joint return). As the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`): the reply adds a joint-return branch to the owner's single/HOH gate (BUG-0277), flagging a valid death-year joint return (stage21.household.status_joint_death_year, incomplete). None completed. executable-triage-v2 (`reviews/2025/transcription/triage/household.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,295 of 2,300 agree; 4 candidate-unknown, 1 value; on returns the full interview completes: none. Project stands.",
-   "subject_key": "19726c0ed3e2a4e0c550199403f8bd4de63a791d8a5558138bd92e7b9a5ca62a"
+   "ruling": "Ruling: model error; i1040gi p. 13, Married Filing Jointly: \"You can check the 'Married filing jointly' box ... if any of the following apply. ... Your spouse died in 2025 and you didn't remarry in 2025.\"; p501 p. 6, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\" The gate refuses single or head of household after a spouse's death in 2025 (BUG-0277). This pass re-reviews the gate-wave rewrite (BUG-0466/0471: the all/any test became a nested choose in the original operand order): the project chooses on f1040.status (single and head of household: household.spouse_died_2025; joint, separate and qualifying surviving spouse: no). The reply adds a joint-return branch (joint, not married at the end of 2025, spouse died in 2025), which turns a valid death-year joint return into a refusal: stage21.household.status_joint_death_year (completed): project no, reply yes (identical project value in the HEAD and current trees). As the prior rulings on this line. The candidate-unknown records are partials withholding household.married, which the reply's joint branch reads. The 2 project-unknown records withhold f1040.status (stage21.choose.eic_limit_status_unanswered, mutation.t2.sd.line7a_gain_no_status): the former all-test gave no there (spouse_died_2025 no), the choose on the status is unknown; checked in both trees, f1040.line12e, which this gate refuses, is the same in both (the status is unanswered), and the printed difference on Form 8962 lines 24 to 27 of the first record comes from f8962.marriage, not this line. executable-triage-v2 (`.transcription/triage/2025/household.json`, pass 7073fcafb61a; 1,702 fixtures, 500 generated returns seed 20261026, 247 partial records; 2,449 comparisons): 2,443 of 2,449 agree; 3 candidate-unknown, 2 project-unknown, 1 value; on returns the full interview completes: 1 value. Project stands.",
+   "subject_key": "79a8daf4ab6a4fdd0a6c8a1251a7c72701fc425ac9c2c1d78501270e161c4720"
   },
   {
    "key": "household.cp_marriage_ended",
-   "record": "c2037f7dce8b78a6935157e3aa1954a52fc061148a3f652e5f2ffb9e8d846b01",
-   "status": "AGREE",
-   "subject_key": "269b646144b09756cdd3faf2e161fc547cef367f22099212fd24a26ac754a612"
+   "record": "df989d49e11408dbed45807f6a8e9ef8df9135bdcc887cb8fbc57e0715052acd",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; p501 p. 6 and i1040gi p. 23, Community Property States: a filer not filing jointly who was married for part of 2025 while living in a community property state, with the marriage ended by year end. The reply asks the same conditions (its note: the asking conditions of household.cp_married come first); the project's nested choose takes the old conjunction's operands in their order. executable-triage-v2 (`.transcription/triage/2025/household.json`; 1,702 fixtures, 500 generated returns seed 20261026, 247 partial records; 2,449 comparisons): 2,427 of 2,449 agree; differences 22 project-unknown (14 incomplete, 8 refused), each a record with household.community_property withheld; nothing on a return the interview completes. Trade-off of the gate-wave rewrite (BUG-0466/BUG-0471, owner decision 2026-11-09): on records with an answer withheld, a value HEAD computed through the three-valued all/any is now unknown until the first guard of the nested choose is answered; no printed value or refusal changes on a completed return (1,702 of 1,702 fixtures pass). Witness, evaluated in both trees: stage14.asset.hy_5yr (single, married no, cp_married no) with household.community_property withheld: HEAD gives household.cp_marriage_ended false, f1040.line11a $45,910.00 and line37 $9,637.00; the current tree gives unknown until household.community_property is answered. This is the owner-accepted BUG-0466 design, not a reading of the source. Project stands.",
+   "subject_key": "8d57b01bfeef76ae04e269db43701528e7f873829eba6288310e300f3619f7af"
   },
   {
    "key": "household.rdp_community_property",
@@ -128,10 +130,10 @@
   },
   {
    "key": "household.filing_status_conflict",
-   "record": "c2037f7dce8b78a6935157e3aa1954a52fc061148a3f652e5f2ffb9e8d846b01",
+   "record": "df989d49e11408dbed45807f6a8e9ef8df9135bdcc887cb8fbc57e0715052acd",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040gi pp. 13-15 and p501 pp. 6-8. R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). As the prior rulings: the published gate (BUG-0286) checks the marriage-entry conflicts of the single and joint statuses; the reply also flags a single return with a 2025 death (refused by household.widowed_2025) and married filing separately while not married (MFS is refused by s3.mfs on scope.ready). The values differ only on refused or incomplete records; the one completed-return difference is a partial record withholding household.married (classm.f5695.2.deepseek), which the reply reads on a status where the project does not. executable-triage-v2 on this pass's reply (`.transcription/household.lines-d801bd4b40fd.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 235 partial records; 2,373 comparisons): 2,156 of 2,373 agree; differences on returns the full interview completes: 1 candidate-unknown; no completed-return value difference. Project stands.",
-   "subject_key": "c4b0872ee70cc0167a6406448f7077095e0fa6a268a211525974b987209fe18f"
+   "ruling": "Ruling: scope; i1040gi p. 13, Single: \"But if, at the end of 2025, your divorce wasn't final (an interlocutory decree), you are considered married and can't check the box\"; Married Filing Jointly: \"You were married at the end of 2025\" or \"Your spouse died in 2025 and you didn't remarry in 2025\"; p501 p. 6. This pass re-reviews the gate-wave rewrite (BUG-0466/0471: the all/any test became a nested choose in the original operand order): the project chooses on f1040.status (single: household.married; joint: not married and no spouse who died in 2025, helper household.joint_unmarried; separate, head of household, qualifying surviving spouse: no), the former test on every definite answer. The reply folds into this one gate the cases the project refuses at its own cited gates: a 2025 death on a single or head-of-household return (household.widowed_2025), head of household while not unmarried (household.hoh_fails), married filing separately while not married (the project refuses married filing separately at s3.mfs) and qualifying surviving spouse without its tests (household.qss_fails). Every value difference is on a return the project refuses at one of those gates: classm.f8960.2.deepseek and classm.eic.2.deepseek (head of household, unmarried no: refused at household.hoh_fails; project no, reply yes), classm.retirement.2.deepseek (married filing separately: refused at s3.mfs), identical in the HEAD and current trees. The candidate-unknown records ask household.married, household.spouse_died_2025 or household.qss_eligible on returns refused or incomplete (classm.f8889.1.deepseek, classm.f8960.3.deepseek, classm.asset.4). executable-triage-v2 (`.transcription/triage/2025/household.json`, pass 7073fcafb61a; 1,702 fixtures, 500 generated returns seed 20261026, 247 partial records; 2,449 comparisons): 2,210 of 2,449 agree; 173 value, 66 candidate-unknown; on returns the full interview completes: none. As the prior rulings on this line. Project stands.",
+   "subject_key": "c811951d0341ec4c5dd84931939d99f7a1278aa79317fd104e45e97b94d2beee"
   }
  ],
  "subjects": {
@@ -143,24 +145,27 @@
   "household.hsa_step1_sum": "1fece38e47b55ebe85dd98adf3393ed0a87805d9c5da12cd11169c3aaa3dacad",
   "household.hsa_share_sum": "138cbed91d7485649cecaa1bb38bf2b8936ec59e97a66a8580e15a0561027ea9",
   "household.all_eic_ssn": "1a65caecfbe742ef3e79e731a1c7bc61c045f8752ed33f5747af5b94cda971f6",
-  "household.all_tin": "39a0a9dbbd692b85be692db919a5bdf229cf569008c30a8593aa85ea600cfeb4",
-  "household.ctc_ssn": "d41be11acea17875358a482ebdc70634b707036b885d9cb80416783951b70fb3",
+  "household.all_tin": "6b25655a24d31a921994b15670c89225170df6dfc18e6349997761c46ae9ad24",
+  "household.ctc_ssn": "31672d6fa2a177128b0a60037e4b19d7013d8303b69fa0390739a85751c703e7",
   "household.taxpayer_work_ssn": "3cf01354a8ba1896a5b3b46b1cfbfc4f2dcbb8cd6b40afeee98735599ebc1f3e",
   "household.ctc_disallowed_claim": "4f6aa4fba134278d8a6d5af62c855bb567df8a2d29494e026c5e6b5cb0dcc3c3",
   "household.eic_disallowed_claim": "db27aa04d8a35d9c40bf4e7baff1a3c5807e3d9a6624a6ca5ab2112a65db7dc9",
-  "household.hoh_fails": "96f9e45bb7ef3a93a4f8b7b83b29c455ab3d4e320c880494442b0edcd6417f70",
+  "household.hoh_fails": "6e417aa74e1c13c8bb72caad6e5d86fcfb6fd67cb08f8475bc8b1fa7cf6968d3",
   "household.qss_fails": "49db0cd4d57e1d8f68ff7615a282d68a1900f30e202c0c01e4293d18fbb0dbb1",
-  "household.widowed_2025": "161fcf97bb6e3d4edd76f62b4971c15375c5df3847a8896afe5b31853f07b7e5",
-  "household.cp_marriage_ended": "a4dd7ded639151d4f130ebbd7925404435613a1b67daf9bec834a91a4e8b05d2",
+  "household.widowed_2025": "9720fa9b74de62c288a58c2b3284b534822533ec3f2ee7898e033b3d6db5e6f1",
+  "household.cp_marriage_ended": "44e1d7306abde9a89f0e65dda7fefe127928a3681614d7576d0a22d51fa94dee",
   "household.rdp_community_property": "cb7ac4eaf81490b4b959f5e229c0a0c49d5f3d3cc6e4f3ab0c18cc7a4c0311ba",
-  "household.filing_status_conflict": "959a2f15e9956ceabebb956ee7da3f4445592fe8ec91d323c61333d89a41e07f"
+  "household.filing_status_conflict": "b29d980f2d4422dc1872bc1f1257d509452b807035eb5331e4a4fe92d8ba3195"
  },
  "__rest__": "92bf81ae283c1e0d5fa92ecd444c292ac15487a8e6ed56b6d46422a82d26927b",
  "foreign": {
+  "household.all_tin": "903be3bb070d065eecf65bff50847ecbaa615ca8e55cdc2e0343a7cc2f0a00c6",
+  "household.ctc_ssn": "45033fd9efdcc30506c78cef0929754bc15c7de5a788c78c69cb7687028d932f",
   "household.ctc_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
   "household.eic_disallowed_claim": "7923258d22a79af4e930af5c6d1524c792b9d26ddd050de1de2dd6da6cbd6fc5",
   "household.hoh_fails": "2121c0653ea07b6e66eb554692c09dec8702e5fa509ab61684756cd39fd552e3",
   "household.qss_fails": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "household.widowed_2025": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.cp_marriage_ended": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.filing_status_conflict": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0"
  }

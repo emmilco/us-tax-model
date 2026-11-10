@@ -231,13 +231,16 @@ class ReviewPath(unittest.TestCase):
         serve.save(self.body)
         self.assertEqual(serve.saved_for_item(2)["lines"][0]["reason"], reason)
 
-    def test_each_question_shows_its_own_source_and_has_no_folded_tree(self):
+    def test_each_question_shows_its_own_source_and_only_the_age65_count_folds_helpers(self):
         first = self.recs[0]
         pages = serve.line_pages(first)
         self.assertIn(2, pages["f1040"])
         self.assertEqual(set(pages), {"f1040"})
         self.assertEqual(len(self.recs), 14)
-        self.assertTrue(all(not r["helpers"] for r in self.recs))
+        # sa.boxes_age65 counts the age-65 boxes through two person helpers; no other record folds one.
+        with_helpers = {r["id"]: [h.get("id", h) if isinstance(h, dict) else h for h in r["helpers"]]
+                        for r in self.recs if r["helpers"]}
+        self.assertEqual(with_helpers, {"sa.boxes_age65": ["person.age65_box", "person.not_died_before_65"]})
         self.assertFalse(self.orphans)
 
     def test_review_of_base_amounts_does_not_approve_calculations(self):

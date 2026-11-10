@@ -3,117 +3,164 @@
  "form": "ira",
  "family": "claude",
  "base": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+ "head_rows": {
+  "match / mismatch / unclear / missing": "17 / 4 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "1a",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
    "status": "MISMATCH",
-   "ruling": "Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the worksheet's married-filing-separately rule (i1040gi p. 97, \"If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025\") is never needed; on the statuses the tool completes, line 1a is the filer's own coverage, as the line asks."
+   "ruling": "Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the worksheet's married-filing-separately rule (i1040gi p. 97, \"If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025\") is never needed; on the statuses the tool completes, line 1a is the filer's own coverage, as the line asks.",
+   "subject_key": "8276809036ddba191c2aefecbb92f91d88d40ec35a702808b89c15a7fea62b53"
   },
   {
    "key": "1b",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "23f85e268fa5ee392ce37d47402ed55db3fc3ef96a452ab9b7b22a8f63d43a7b"
   },
   {
    "key": "2a",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
    "status": "MISMATCH",
-   "ruling": "Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the $89,000 amount for a married filer who lived apart all year and the $10,000 amount (i1040gi p. 97, line 2) are never read; the single, head of household, qualifying surviving spouse and joint amounts agree, as the model says."
+   "ruling": "Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the $89,000 amount for a married filer who lived apart all year and the $10,000 amount (i1040gi p. 97, line 2) are never read; the single, head of household, qualifying surviving spouse and joint amounts agree, as the model says.",
+   "subject_key": "8fcfd51ffd5afc7c85f9f539159a10cd798f4c2b650159e2442897502f440e64"
   },
   {
    "key": "2b",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "65044c4f04d8e8eee485dc882bf55eb603c6dc50b56ab49d8cf85bda18534b50"
   },
   {
    "key": "3",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "f4fb2a50049a1567b24e1aca7f7eb1e75bbd9830a63175861c281f5211a604f7"
   },
   {
    "key": "4",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
    "status": "MISMATCH",
-   "ruling": "Ruling: refusal located elsewhere; project retained (as ruled before). Schedule 1 lines 12, 14 and 23 are outside this tool: scope.schedule1 asks about \"an adjustment on Schedule 1 line 12, 14 or 23\" and refuses Form 1040 lines 8 and 10, so worksheet line 3 (Form 1040 line 9) refuses whenever one applies and within scope they are zero, as the line's citation says. The lines in scope (11, 13, 15 to 19a and 25) are all added. i1040gi p. 97, line 4, \"Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25\"."
+   "ruling": "Ruling: refusal located elsewhere; project retained (as ruled before). Schedule 1 lines 12, 14 and 23 are outside this tool: scope.schedule1 asks about \"an adjustment on Schedule 1 line 12, 14 or 23\" and refuses Form 1040 lines 8 and 10, so worksheet line 3 (Form 1040 line 9) refuses whenever one applies and within scope they are zero, as the line's citation says. The lines in scope (11, 13, 15 to 19a and 25) are all added. i1040gi p. 97, line 4, \"Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25\".",
+   "subject_key": "2d9d5ca9b3ac8bd8c98b22d9df079c66f6d41409526b39e77db9a626733be6fc"
   },
   {
    "key": "5",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "549d55cf3a4ed23406979ea2bbf5ac30d4eead3ea63627e14d31f5eaf0ee36bd"
   },
   {
    "key": "6a",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "48df40f5a07a91a19d3ef8249f9ea40fe6a66c5bb6ccee83e0f3ee6fd2916387"
   },
   {
    "key": "6b",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "e6c275ada21e98c4d82d8503917d5a55a58452b7e482f9bbab9d1261f7a12127"
   },
   {
    "key": "7a",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "b99a72574b4a25d8a1aeaf7432b42b54f7b00dd64cfa721a7f21d1863b6a1fe0"
   },
   {
    "key": "7b",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "d7fd317ee47e07db9c2a1c703b704ac30cbccbfcfa6123684133e34d913afcb1"
   },
   {
    "key": "8",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "95cd5ed6bcdb43ae0e424cd5526a1dfa2d70e9daa036af6d01dedba1bf5f99de"
   },
   {
    "key": "9",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
    "status": "MISMATCH",
-   "ruling": "Ruling: owner ruling (register entry amb.2025.ira_se_floor); project retained. person.ira_se, now shown in the glossary, is each person's Schedule C profit or loss less that person's Schedule 1 lines 15 and 16 deductions, floored at zero per person (i1040gi p. 98, line 9, \"Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner, minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-\"); whether one spouse's loss nets against the other's earnings is the ambiguity the owner settled. Partnership earned income is refused before this line by the Schedule SE screen (person.se_screened, 'partnership and other self-employment income'), so only Schedule C earnings reach it."
+   "ruling": "Ruling: owner ruling (register entry amb.2025.ira_se_floor); project retained. person.ira_se, now shown in the glossary, is each person's Schedule C profit or loss less that person's Schedule 1 lines 15 and 16 deductions, floored at zero per person (i1040gi p. 98, line 9, \"Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner, minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-\"); whether one spouse's loss nets against the other's earnings is the ambiguity the owner settled. Partnership earned income is refused before this line by the Schedule SE screen (person.se_screened, 'partnership and other self-employment income'), so only Schedule C earnings reach it.",
+   "subject_key": "7c6dc8968d2e0243cbc0097ddeed9accfc68be28c57d2167fb755d9b1c7c1de5"
   },
   {
    "key": "10",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "d31af2769b53d8cc6cfba302f32aeb4cbb0a2f586f432dc5144bbc74fe002ae2"
   },
   {
    "key": "(screen) (ira.special)",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "1714deaa37cd3e1fbbb5d160eba80c8924c2306999e73b515a3b835918a5d404"
   },
   {
    "key": "(screen) (ira.se_capital)",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "06cea0446b162285b4eaaba385e2f15be55aac55d3476ca458da160e5e578733"
   },
   {
    "key": "11a",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "d9f9a84db674e939fb86cf5215acde98254a34608c40daf89b7d885f519ae7a8"
   },
   {
    "key": "11b",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "a6eae3997c0e5f9570a5ef1adc50f8f7b00d47cdc002bc0697f774285b942d15"
   },
   {
    "key": "12a",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; project retained (model error). person.ira_deduction is not an entered amount: it is the smallest of the person's line 7, line 10 and line 11 (person.ira_line12; zero without traditional contributions, when line 11 is zero), defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled. i1040gi p. 98, line 12, \"On line 12a, enter the smallest of line 7a, 10, or 11a\"."
+   "record": "e36b57d13a8b6a3836078ad0b783a29c2fe54f340adba7b70deada03baacb38f",
+   "status": "MATCH",
+   "subject_key": "4311c2995594d86e9c17d32d4a40dc7bb8f636c3f2a923c086262b1715a6da6f"
   },
   {
    "key": "12b",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MISMATCH",
-   "ruling": "Ruling: representation; project retained (model error). As line 12a, for the spouse entry: the smallest of line 7b, line 10 and line 11b (person.ira_line12), defined per person on the person worksheet and compared operand by operand in the transcription log for person, where it is ruled. i1040gi p. 98, line 12, \"On line 12b, enter the smallest of line 7b, 10, or 11b\"."
+   "record": "e36b57d13a8b6a3836078ad0b783a29c2fe54f340adba7b70deada03baacb38f",
+   "status": "MATCH",
+   "subject_key": "b0b68b29e12e1e93eafcdf46618b2043101d630942ca9d104cc13d5567e0f4c7"
   },
   {
    "key": "(screen) (ira.deduct_less)",
    "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "68151c575a86ef3a2d9531aac38b8119ab9f45eac6af5853f50ee779a786e93a"
   }
- ]
+ ],
+ "subjects": {
+  "1a": "1cfc286e0f8e5ad804c2e241f9e884687dbb96ed1294b68fd6a51a84de68b217",
+  "1b": "8680dcedbcb5d7e3f0ce1ce2f6e022139db2a705896e290d5e6775f91cfdffcb",
+  "2a": "680416c5fb226f5cc5d612158ba11bb3855722c82eed93f57aa893aa52f2552e",
+  "2b": "45b1070edb368a4a9446f35a2a95ea81b6e4cb4387935b1d0a61294be70ea12a",
+  "3": "2ae533443a50912ddf36d6a919292c72f911e67fe0db49398e6dfc3e9034f5a7",
+  "4": "1734267ceae5e3af5c803c8f09c7c49e60275058ef677561a2a463c3004df91b",
+  "5": "414d0113ac0a79055cd09a841d3c44747f4d19519872b3b080b40166cb84e63e",
+  "6a": "f38f6f17e123410e69b208625041b63091c7ff649911aed6a2a1fb5a7067de53",
+  "6b": "ef888fbc44eac6c0e1c680955dec0b9fdbcec536814c59453724875cfe9743bf",
+  "7a": "5611e4f688c5cfc398a563b3ac5cd4337d39555d6570f0f5251a18558635c132",
+  "7b": "677ce5d7fc28005c50cd2219b0e22a8be3b7cd9fd167d3cf7428bfd2ea544579",
+  "8": "2e002c5b49a6bf59c74f34b532a35e1831b29e53251b2a1cb9feaac8621bdfee",
+  "9": "e0c88b07f9e834cac611e12d20a888d42803b075c71f81601be2737a1b1696e1",
+  "10": "05a8fb8f9ed2403f2f49ca8c5c2a96c9a0429a65574de08177339869980e4a03",
+  "(screen) (ira.special)": "cb0a672ae260ede5704c7fe8b6d986ca7799c2ed6d3d43f494389d67578ec65c",
+  "(screen) (ira.se_capital)": "dae8086074c34029941c504a1fbf3e1a570ac6f3bf29c842880ce83e0c215a47",
+  "11a": "a2330bb4d0b76c1402650572ba3345913bbd9dba1bf36d7449b40468656bde1e",
+  "11b": "2cce555dc6a35cf66f1b1f9a4f067486f524dda968590ad3a62e4bb147027e48",
+  "12a": "d4f2c7a6fb22393562f2bd6b26c0abe6328cddd656e7e98448146749d85d405d",
+  "12b": "52b3cd09e06ac53ecaef09280b93e49de081dd313e5917e84c723ec794a8fff6",
+  "(screen) (ira.deduct_less)": "b4240e555b0ceac4d5954d9f838e2de758a9b775e15598e46e6cec0f3a36258f"
+ },
+ "__rest__": "17123d13dc65bd705a2a042799aea875ab0ac42f5ea45f1e031b5a4f0e7383c6"
 }

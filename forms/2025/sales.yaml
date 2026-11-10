@@ -509,26 +509,52 @@ form:
       label: Aggregate route fails its eligibility conditions
       type: Bool
       expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sales.route
+                - const: aggregate
+            then: sales.aggregate_fails
+          - guard:
+              op: test
+              eq:
+                - sales.route
+                - const: detail
+            then: sales.no
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    - id: sales.aggregate_fails
+      printed: (helper)
+      label: An aggregate-route transaction fails an aggregate condition
+      type: Bool
+      expr:
         op: test
-        all:
+        any:
           - op: test
             eq:
-              - sales.route
-              - const: aggregate
+              - sales.covered
+              - const: false
           - op: test
-            any:
-              - op: test
-                eq:
-                  - sales.covered
-                  - const: false
-              - op: test
-                ne:
-                  - sales.code
-                  - const: none
-              - op: test
-                eq:
-                  - sales.aggregate_eligible
-                  - const: false
+            ne:
+              - sales.code
+              - const: none
+          - op: test
+            eq:
+              - sales.aggregate_eligible
+              - const: false
+      cite:
+        doc: i1040sd
+        locator: p. 10, lines 1a and 8a
+    - id: sales.no
+      printed: (helper)
+      label: Year parameter household.no (false)
+      type: Bool
+      expr:
+        op: param
+        ref: household.no
       cite:
         doc: i1040sd
         locator: p. 10, lines 1a and 8a

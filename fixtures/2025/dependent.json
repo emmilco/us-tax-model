@@ -6204,6 +6204,408 @@
       }
     },
     {
+      "id": "stage8.mut.child_abroad_not_resident",
+      "covers": [
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the not-resident alternative of dependent.qc_dependent_resident and its place in dependent.qc_dependent), predicted from the archived i1040gi before evaluating: stage8.single.dependent.boundaries' child age 10 who lived with you all year and is neither a U.S. citizen, national or resident alien nor a resident of Canada or Mexico (you live abroad). The child passes the qualifying child tests (relationship, age, residency), but i1040gi Who Qualifies as Your Dependent (the citizen or resident test) bars claiming a person who is none of these, so the child is not your dependent, and a qualifying child cannot be a qualifying relative.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "household.unmarried": true,
+        "$dependent": [
+          "abroad"
+        ],
+        "dependent[abroad].age": 10,
+        "dependent[abroad].months": 12,
+        "dependent[abroad].citizen": false,
+        "dependent[abroad].canada_mexico": false
+      },
+      "expect": {
+        "dependent[abroad].qualifying_child": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[abroad].resident": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[abroad].qc_dependent": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[abroad].claimed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage8.mut.filer_dependent_parent",
+      "covers": [
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the filer-not-a-dependent operand of dependent.qr_dependent_resident), predicted from the archived i1040gi before evaluating: stage8.single.filer_is_dependent's filer (single, wages $120,000, who can be claimed as a dependent by someone else) with stage8.hoh.parent.test1's parent (age 70, gross income $4,000, over half support provided) in place of the child. The parent is a qualifying relative, but a filer who can be claimed as a dependent cannot claim anyone as a dependent (i1040gi Who Qualifies as Your Dependent, Step 4), so the parent is not claimed.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "household.unmarried": true,
+        "$dependent": [
+          "parent"
+        ],
+        "dependent[parent].relationship": "parent",
+        "dependent[parent].age": 70,
+        "dependent[parent].gross_income": 400000,
+        "dependent[parent].supported": true,
+        "sa.dependent": true
+      },
+      "expect": {
+        "dependent[parent].qualifying_relative": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[parent].qr_dependent": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[parent].claimed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage8.mut.aunt_qualifying_relative",
+      "covers": [
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the parent_relative alternative of dependent.qr_relationship), predicted from the archived i1040gi before evaluating: stage8.hoh.parent.test1's facts filed single with the filer's aunt (a sister of a parent, relationship parent_relative) in place of the parent: age 70, lived elsewhere, gross income $4,000, over half support provided. i1040gi Step 4 lists a brother or sister of your father or mother among the relatives who need not live with you, so the aunt is a qualifying relative and your dependent; she is a U.S. citizen with a TIN and not a qualifying child for the child tax credit, so she gets the $500 credit for other dependents.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "household.unmarried": true,
+        "$dependent": [
+          "aunt"
+        ],
+        "dependent[aunt].relationship": "parent_relative",
+        "dependent[aunt].age": 70,
+        "dependent[aunt].gross_income": 400000,
+        "dependent[aunt].supported": true
+      },
+      "expect": {
+        "dependent[aunt].qr_relationship": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[aunt].qualifying_relative": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[aunt].claimed": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[aunt].odc_amount": {
+          "kind": "money",
+          "cents": 50000
+        }
+      }
+    },
+    {
+      "id": "stage8.mut.grandniece_household_all_year",
+      "covers": [
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the sibling_descendant alternative of dependent.qr_relationship), predicted from the archived i1040gi before evaluating: single, wages $120,000; the filer's grandniece (a granddaughter of a sister, relationship sibling_descendant), age 25 and not a student, so not a qualifying child (age test), who lived with the filer all year as a member of the household (the relationship does not violate local law), with no gross income and over half her support provided. i1040gi Step 4: a descendant of a sibling beyond a niece or nephew is a qualifying relative only as a member of your household all year, which she is, so she is your dependent with the $500 credit for other dependents.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "household.unmarried": true,
+        "$dependent": [
+          "niece"
+        ],
+        "dependent[niece].relationship": "sibling_descendant",
+        "dependent[niece].age": 25,
+        "dependent[niece].months": 12,
+        "dependent[niece].qr_all_year": true,
+        "dependent[niece].lawful": true,
+        "dependent[niece].supported": true
+      },
+      "expect": {
+        "dependent[niece].qualifying_child": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[niece].qr_relationship": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[niece].claimed": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[niece].odc_amount": {
+          "kind": "money",
+          "cents": 50000
+        }
+      }
+    },
+    {
+      "id": "stage8.mut.mfj_household_unlawful",
+      "covers": [
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the spouse-relative and local-law operands of dependent.qr_other_relation), predicted from the archived i1040gi before evaluating: married filing jointly, wages $120,000; a person who is related to neither spouse (relationship other) lived with you all year as a member of your household, with no gross income and over half support provided, but the relationship violates local law. i1040gi Step 4: a person who is not a listed relative is a qualifying relative only as a household member all year whose relationship does not violate local law, so this person is not a qualifying relative and not your dependent.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[spouse]": [],
+        "$dependent": [
+          "friend"
+        ],
+        "dependent[friend].relationship": "other",
+        "dependent[friend].age": 40,
+        "dependent[friend].months": 12,
+        "dependent[friend].qr_all_year": true,
+        "dependent[friend].lawful": false,
+        "dependent[friend].spouse_relative": false,
+        "dependent[friend].supported": true
+      },
+      "expect": {
+        "dependent[friend].qr_relationship": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[friend].qualifying_relative": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[friend].claimed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage8.mut.mfj_spouse_relative_all_year_unanswered",
+      "covers": [
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the spouse-relative operand of dependent.qr_household_member), predicted from the archived i1040gi before evaluating: married filing jointly, wages $120,000; a household member who is the spouse's uncle (a brother of the spouse's father; relationship household_member, spouse_relative Yes), age 70, gross income $4,000, over half support provided, with the question whether he lived with you all year withheld. i1040gi Step 4: on a joint return the listed relatives of either spouse qualify without living with you, so he meets the relationship test whatever the withheld answer is.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[spouse]": [],
+        "$dependent": [
+          "uncle"
+        ],
+        "dependent[uncle].relationship": "household_member",
+        "dependent[uncle].age": 70,
+        "dependent[uncle].spouse_relative": true,
+        "dependent[uncle].qr_all_year": null,
+        "dependent[uncle].gross_income": 400000,
+        "dependent[uncle].supported": true
+      },
+      "expect": {
+        "dependent[uncle].qr_relationship": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage9.mut.kidnapped_household_child_not_eic",
+      "covers": [
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the relationship operand of dependent.kidnap_eic), predicted from the archived i1040gi before evaluating: single, wages $120,000; a 10-year-old who is not related to you (relationship household_member) and is presumed kidnapped, so did not live with you in the United States for more than half of 2025. The EIC kidnapped-child rule applies only to a child who meets the qualifying child relationship test (i1040gi EIC, Kidnapped child); this child does not, so the child is not a qualifying child for the EIC and the rule is not reached.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "household.unmarried": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "household_member",
+        "dependent[kid].age": 10,
+        "dependent[kid].months": 12,
+        "dependent[kid].kidnapped": true,
+        "dependent[kid].us_half": false
+      },
+      "expect": {
+        "dependent[kid].eic_child": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage9.mut.household_child_other_claimant_not_eic",
+      "covers": [
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the no-relationship alternative of dependent.eic_child_tests), predicted from the archived i1040gi before evaluating: single, wages $120,000; a 10-year-old friend's child (relationship household_member) who lived with you all year and is also the qualifying child of a parent who is a taxpayer. The child fails the EIC relationship test (i1040gi EIC, Qualifying child, relationship), so the child is not your qualifying child for the EIC and the tie-breaker rules are not reached for it.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "household.unmarried": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "household_member",
+        "dependent[kid].age": 10,
+        "dependent[kid].months": 12,
+        "dependent[kid].other_claimant": true
+      },
+      "expect": {
+        "dependent[kid].eic_child": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage15.mut.dc_parent_part_year_born_died_unanswered",
+      "covers": [
+        "dependent",
+        "f2441"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the part-year-home operand of dependent.dc_lived_half), predicted from the archived i2441 before evaluating: head of household, wages $120,000, paying care for a parent (age 70, gross income $4,000, over half support provided) who could not care for himself and lived with you five months; whether he was born or died in 2025 is withheld, and your home was not his home for more than half of the part of the year he was alive. i2441 p. 2, Qualifying Person: a person physically or mentally not able to care for himself who lived with you for more than half the year; neither the whole-year count nor the part-year rule is met, so he did not live with you more than half the year for Form 2441, whatever the withheld answer.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "household.unmarried": true,
+        "f1040.status": "hoh",
+        "f2441.care": true,
+        "$dependent": [
+          "parent"
+        ],
+        "dependent[parent].relationship": "parent",
+        "dependent[parent].age": 70,
+        "dependent[parent].months": 5,
+        "dependent[parent].gross_income": 400000,
+        "dependent[parent].supported": true,
+        "dependent[parent].dc_incapable": true,
+        "dependent[parent].born_died": null,
+        "dependent[parent].part_year_home": false
+      },
+      "expect": {
+        "dependent[parent].dc_lived_half": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage9.mut.kidnapped_household_child_other_claimant_unanswered",
+      "covers": [
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the no-relationship alternative of dependent.kidnap_eic_related), predicted from the archived i1040gi before evaluating: stage9.mut.kidnapped_household_child_not_eic (a 10-year-old who is not related to you, presumed kidnapped) with the question whether the child is also the qualifying child of another person withheld. The EIC kidnapped-child rule applies only to a child who meets the qualifying child relationship test (i1040gi EIC, Kidnapped child); this child does not, so the rule's refusal does not apply whatever the withheld answer is.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "household.unmarried": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "household_member",
+        "dependent[kid].age": 10,
+        "dependent[kid].months": 12,
+        "dependent[kid].kidnapped": true,
+        "dependent[kid].us_half": false,
+        "dependent[kid].other_claimant": null
+      },
+      "expect": {
+        "dependent[kid].kidnap_eic": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
       "id": "stage15.refuse.dependent.dc_no_tin",
       "covers": [
         "dependent:refuse"

@@ -57,6 +57,18 @@
    "subject_key": "9747f85be34d8057ab88909a2225019ed11d26de9e0f0dacbd5aa6994b20a0b3"
   },
   {
+   "case": "classm.f2441.1",
+   "printed": "30",
+   "project": "$18,500.00",
+   "model": "$19,500.00",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture. f2441 (2025) p. 2, line 30: \"Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here\"; i2441 p. 3, Column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28.\" The prompt (.classm/classm.f2441.1.prompt.txt) gives the two persons' \"Qualified expenses you incurred and paid in 2025\" as $18,500.00 and $1,000.00, and line 28 is $1,000.00 (agreed). The model's work, \"Column (d) total as given: 18,500 + 1,000\", leaves no benefits out, giving $19,500.00. Under either reading recorded in amb.2025.dc_line30 (the total less line 28, the chosen reading; or each person's column (d) net of the benefits for that person) the total is $19,500.00 less $1,000.00 = $18,500.00, the project's value, since no allocation of $1,000 between the two persons leaves a negative amount; as the classm.f2441.5 ruling. This is the Pub. 503 p. 13 Paris family example's own figures.",
+   "drop": true,
+   "context": "896cf0d9bde1fc12540d96eec73ed0e90d927ee83bbb22d92ee526620c5387b5",
+   "date": "2026-11-09",
+   "run": "ed1506583d94684b2055d81bf0322eac868c97702a84e31c5fe22d2a8a779cac",
+   "subject_key": "2bd325973db52785d42f48ab9467a7f864490a71db67a458f016695cc30b62a2"
+  },
+  {
    "case": "classm.f2441.2",
    "printed": "10",
    "project": "$6,185.00",

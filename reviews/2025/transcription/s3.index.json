@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "0fec04d10eb3917399737bc1bf3b0259c9537423ae7abd972872b60f667ab5b9",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-04); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-09); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -41,23 +41,23 @@
   },
   {
    "key": "5a",
-   "record": "0fec04d10eb3917399737bc1bf3b0259c9537423ae7abd972872b60f667ab5b9",
+   "record": "3a3428d8c2897a5875014e906a1fd431d37538446659c067a71770040715f19a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\", and i5695 p. 1, Who Can Take the Credits: \"You may be able to take the credits if you made energy saving improvements to your home located in the United States in 2025\". The project guards on f5695.part1_any; the candidate copies f5695.line15 on every return. executable-triage-v2 (triage/s3.json; 1,306 fixtures, 500 generated returns seed 20261026, 120 partial records from 40 bases; 1,926 comparisons): 299 of 1,926 agree; 1,627 differ, 819 candidate-unknown (459 on completed returns, classm.f2441.1.deepseek to .6.deepseek: f5695.business_use asked of filers with no property, project $0.00) and 808 candidate-refuses, all on refused returns (classm.w2.1.deepseek; classm.f4952.3.deepseek, f5695.construction_later); no value differs. The interface offers f5695.part1_any: not an interface gap. Unchanged by Stage 19; same ruling as Stage 18. Project stands.",
-   "subject_key": "962f0d87feb489b10cffddfb8aca08733213e6ced60c193e0809e73d62a61a51"
+   "ruling": "Ruling: model error; f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\", and i5695 p. 1, Who Can Take the Credits: \"You may be able to take the credits if you made energy saving improvements to your home located in the United States in 2025\". The project takes Form 5695 line 15 when f5695.part1_any (Part I property) is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers the interview asks only after a Yes. executable-triage-v2 (`.transcription/triage/2025/s3.json`; 1,702 fixtures, 500 generated returns seed 20261026, 111 partial records; 2,307 comparisons): 1,208 of 2,307 agree; 841 candidate-refuses and 258 candidate-unknown; on returns the interview completes 119 candidate-unknown (f5695.business_use and f5695.construction_later asked of filers with no Part I property, e.g. classm.f4952.1.deepseek, classm.s3.3.deepseek; project $0.00) and 2 candidate-refuses (generated 113 and 493, at f5695.line7a, where the project gives $0.00); the rest on refused or incomplete records. No value differs. The interface offers f5695.part1_any: not an interface gap. The rewrite left this line's expression unchanged and no HEAD-to-current difference shows on s3 over 1,702 fixtures and 500 generated returns. As the earlier ruling on this line. Project stands.",
+   "subject_key": "26b73d32de35d41e4e1475954e12c4174bf0c9a12a8d6065b9bead01b2579aef"
   },
   {
    "key": "5b",
-   "record": "0fec04d10eb3917399737bc1bf3b0259c9537423ae7abd972872b60f667ab5b9",
+   "record": "3a3428d8c2897a5875014e906a1fd431d37538446659c067a71770040715f19a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f1040s3 line 5b, \"Energy efficient home improvement credit from Form 5695, line 32\", and i5695 p. 1, Who Can Take the Credits: \"You may be able to take the credits if you made energy saving improvements to your home located in the United States in 2025\". The project guards on f5695.part2_any; the candidate copies f5695.line32 on every return. executable-triage-v2 (triage/s3.json; 1,306 fixtures, 500 generated returns seed 20261026, 120 partial records from 40 bases; 1,926 comparisons): 319 of 1,926 agree; 1,607 differ, 833 candidate-unknown (459 on completed returns, classm.f2441.1.deepseek to .6.deepseek, project $0.00) and 774 candidate-refuses, all on refused returns; no value differs. The interface offers f5695.part2_any: not an interface gap. Unchanged by Stage 19; same ruling as Stage 18. Project stands.",
-   "subject_key": "994318d561f94051548131909734e95f5b18ec184c21b6be28e91dd5b2978084"
+   "ruling": "Ruling: representation; f1040s3 line 5b, \"Energy efficient home improvement credit from Form 5695, line 32\". The project takes Form 5695 line 32 when f5695.part2_any is Yes and $0 otherwise; the reply copies f5695.line32 on every return. executable-triage-v2 (`.transcription/triage/2025/s3.json`; 1,702 fixtures, 500 generated returns seed 20261026, 111 partial records): 2,307 of 2,307 comparisons agree, with no refusal or unknown difference: Form 5695 line 32 is itself $0 without Part II property and needs no further answer there, so the guard and the copy give the same amount on every sampled record. The earlier model-error ruling on this line (candidate-unknown on filers without property) no longer reproduces. Project stands.",
+   "subject_key": "29d7dd66528cca96c2173defda3ad28d4eb9bcab1016675a4a5e784fc63cf3f7"
   },
   {
    "key": "8",
-   "record": "0fec04d10eb3917399737bc1bf3b0259c9537423ae7abd972872b60f667ab5b9",
+   "record": "3a3428d8c2897a5875014e906a1fd431d37538446659c067a71770040715f19a",
    "status": "AGREE",
-   "subject_key": "083ba5fa8e7345d4588120cebb0b29de079b88c6bf6435e5fc501a9c674867a3"
+   "subject_key": "35bff717bf73d4fe7449e35d82c0c852d9150655c73b7e5bfc46000ef0f1fb5c"
   },
   {
    "key": "9",
@@ -94,6 +94,9 @@
  },
  "__rest__": "8c4455c31080bf1b56e8381468347998cd07ecbe53b3dadcaf427571c0240a42",
  "foreign": {
+  "5a": "154f62859f9d594bbb35ef9901e45f6ddccd13ea5014548df596457cc860e912",
+  "5b": "cec84514a148b1ca8fc6d3219f953e45d64e7e8f0f5fead8f72d40b26c2061d4",
+  "8": "fabf9f1e3d5aaf82948b5ca22fb205d131bfa4bdec60a9137731753e84d1adf0",
   "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
  }
 }

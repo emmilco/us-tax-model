@@ -1733,7 +1733,7 @@ form:
       printed: '(gate)'
       label: 'Use tax owed with a New York abode for only part of the year (the chart amount is prorated by months)'
       type: Bool
-      expr: { op: test, all: [{ op: test, eq: ["ny_it201.ask.owes_use_tax", { const: true }] }, { op: test, eq: ["ny_it201.ask.abode_part_year", { const: true }] }] }
+      expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.ask.owes_use_tax", { const: true }] }, then: "ny_it201.ask.abode_part_year" }, { guard: { op: test, eq: ["ny_it201.ask.owes_use_tax", { const: false }] }, then: "ny_it201.no" }] }
       cite: { doc: ny_it201i, locator: 'p. 18, Line 59: Sales or use tax, "multiply the tax amount from the chart by the number of months you maintained the permanent place of abode in New York State and divide the result by 12"' }
     - id: ny_it201.gate.use_tax_st141
       printed: '(gate)'
@@ -2161,11 +2161,41 @@ form:
             then: "ny_it201.safe_harbor_110"
       cite: { doc: ny_it201i, locator: 'p. 23, Line 81, "However, if your 2024 New York adjusted gross income was more than $150,000 (or $75,000 if you are married filing separately for 2025) and you are not a farmer or a fisherman, your 2025 prepayments must equal at least 110% of your 2024 New York income tax based on a 12-month return."' }
       note: 'The farmer or fisherman exception is not asked; for one the 110% amount is required, which can only refuse more often.'
+    - id: ny_it201.tax_due_positive
+      printed: '(helper)'
+      label: 'A balance due (more than zero)'
+      type: Bool
+      expr: { op: test, gt: ["ny_it201.tax_due", { const: 0 }] }
+      cite: { doc: ny_it201i, locator: 'p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year."' }
+    - id: ny_it201.est_penalty_balance
+      printed: '(helper)'
+      label: 'A balance due, with prepayments below the safe harbor or no full-year 2024 return'
+      type: Bool
+      expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.tax_due_positive", { const: true }] }, then: "ny_it201.est_below_safe_harbor" }, { guard: { op: test, eq: ["ny_it201.tax_due_positive", { const: false }] }, then: "ny_it201.no" }] }
+      cite: { doc: ny_it201i, locator: 'p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year."' }
+    - id: ny_it201.est_below_safe_harbor
+      printed: '(helper)'
+      label: 'Prepayments below the safe harbor, or no full-year 2024 return'
+      type: Bool
+      expr: { op: test, any: [{ op: test, lt: ["ny_it201.prepayments", "ny_it201.safe_harbor"] }, { op: test, eq: ["ny_it201.ask.prior_full_year", { const: false }] }] }
+      cite: { doc: ny_it201i, locator: 'p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year."' }
+    - id: ny_it201.estimated_payments_positive
+      printed: '(helper)'
+      label: 'Estimated tax payments (line 75) more than zero'
+      type: Bool
+      expr: { op: test, gt: ["ny_it201.line75", { const: 0 }] }
+      cite: { doc: ny_it201i, locator: 'p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year."' }
+    - id: ny_it201.est_penalty_late
+      printed: '(helper)'
+      label: 'Estimated tax payments with a late or short installment'
+      type: Bool
+      expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.estimated_payments_positive", { const: true }] }, then: "ny_it201.ask.est_late" }, { guard: { op: test, eq: ["ny_it201.estimated_payments_positive", { const: false }] }, then: "ny_it201.no" }] }
+      cite: { doc: ny_it201i, locator: 'p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year."' }
     - id: ny_it201.gate.estimated_penalty
       printed: '(gate)'
       label: 'An estimated tax penalty may be owed: a balance due with prepayments below the safe harbor or no full-year 2024 return, or a late or short estimated installment'
       type: Bool
-      expr: { op: test, any: [{ op: test, all: [{ op: test, gt: ["ny_it201.tax_due", { const: 0 }] }, { op: test, any: [{ op: test, lt: ["ny_it201.prepayments", "ny_it201.safe_harbor"] }, { op: test, eq: ["ny_it201.ask.prior_full_year", { const: false }] }] }] }, { op: test, all: [{ op: test, gt: ["ny_it201.line75", { const: 0 }] }, { op: test, eq: ["ny_it201.ask.est_late", { const: true }] }] }] }
+      expr: { op: test, any: [{ op: test, eq: ["ny_it201.est_penalty_balance", { const: true }] }, { op: test, eq: ["ny_it201.est_penalty_late", { const: true }] }] }
       cite: { doc: ny_it201i, locator: 'p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year."' }
     - id: ny_it201.line81
       printed: '81'

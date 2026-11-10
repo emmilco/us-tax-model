@@ -180,21 +180,49 @@ form:
         doc: i2441
         locator: 'p. 3, Due Diligence, "Don''t list an ineligible related individual as a care provider on line 1. No credit is allowed for any amount paid to your spouse, the parent of your qualifying child, or a person whom you can claim as a dependent"'
       ambiguity: amb.2025.dc_ineligible_providers
+    - id: f2441.many_providers
+      printed: (helper)
+      label: More than three care providers
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - f2441.provider_count
+        - param: dc.providers_listed
+      cite:
+        doc: i2441
+        locator: p. 2, Line 1, "If you have more than three care providers, check the box above line 1 and attach a statement
+          to your return with the required information"
+    - id: f2441.no
+      printed: (helper)
+      label: Year parameter household.no (false)
+      type: Bool
+      expr:
+        op: param
+        ref: household.no
+      cite:
+        doc: i2441
+        locator: p. 2, Line 1, "If you have more than three care providers, check the box above line 1 and attach a statement
+          to your return with the required information"
     - id: f2441.line1_box
       printed: 1 (box)
       type: Bool
       label: If you have more than three care providers, see the instructions and check this box
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - f2441.filing
-              - const: true
-          - op: test
-            gt:
-              - f2441.provider_count
-              - param: dc.providers_listed
+            - f2441.filing
+            - const: true
+          then: f2441.many_providers
+        - guard:
+            op: test
+            eq:
+            - f2441.filing
+            - const: false
+          then: f2441.no
       cite:
         doc: i2441
         locator: 'p. 2, Line 1, "If you have more than three care providers, check the box above line 1 and attach a statement to your return with the required information"'
@@ -214,22 +242,39 @@ form:
       cite:
         doc: i2441
         locator: 'p. 3, Due Diligence, "Enter “See Attached Statement” in the columns for which you don''t have the information"'
+    - id: f2441.any_statement
+      printed: (helper)
+      label: A care provider entered as "See Attached Statement"
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - f2441.statement_count
+        - const: 0
+          type: Count
+      cite:
+        doc: i2441
+        locator: p. 3, Due Diligence, "Then, attach a statement to your return explaining that the provider didn't give you the
+          information you requested"
     - id: f2441.statement_notice
       printed: (helper)
       type: Bool
       label: 'Attachment notice: a statement must be attached explaining that a care provider did not give you the information you requested'
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - f2441.filing
-              - const: true
-          - op: test
-            gt:
-              - f2441.statement_count
-              - const: 0
-                type: Count
+            - f2441.filing
+            - const: true
+          then: f2441.any_statement
+        - guard:
+            op: test
+            eq:
+            - f2441.filing
+            - const: false
+          then: f2441.no
       cite:
         doc: i2441
         locator: 'p. 3, Due Diligence, "Then, attach a statement to your return explaining that the provider didn''t give you the information you requested"'
@@ -249,22 +294,39 @@ form:
       cite:
         doc: i2441
         locator: 'p. 3, Column (d), "You must check either the "Yes" or "No" box in column (d)"'
+    - id: f2441.any_household
+      printed: (helper)
+      label: A care provider who was your household employee
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - f2441.household_count
+        - const: 0
+          type: Count
+      cite:
+        doc: f2441
+        locator: 'p. 1, Part I, "Caution: If the care provider is your household employee, you may owe employment taxes. For details,
+          see the Instructions for Schedule H (Form 1040)."'
     - id: f2441.household_notice
       printed: (helper)
       type: Bool
       label: 'Notice: a care provider was your household employee, so you may owe employment taxes (Schedule H, which this tool does not prepare)'
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - f2441.filing
-              - const: true
-          - op: test
-            gt:
-              - f2441.household_count
-              - const: 0
-                type: Count
+            - f2441.filing
+            - const: true
+          then: f2441.any_household
+        - guard:
+            op: test
+            eq:
+            - f2441.filing
+            - const: false
+          then: f2441.no
       cite:
         doc: f2441
         locator: 'p. 1, Part I, "Caution: If the care provider is your household employee, you may owe employment taxes. For details, see the Instructions for Schedule H (Form 1040)."'

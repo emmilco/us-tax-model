@@ -6375,3 +6375,143 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** triage and the transcription audit cannot read a line-scoped pass whose scope includes a key with a comma; review-store record identities hold split key fragments.
 - **Disposition:** open. The eic rulings of pass a55b2baf366f were stamped from triage run with only that split patched in memory (`.transcription/triage/2025/eic.json`); rerun triage on eic when this is fixed and compare. Fix: an unambiguous scope format (or parse against the form's keys) in the writers and all three readers, and a store migration for the records whose identity changes; count the affected records first.
 - **Tags:** review-store; triage; line-scoped; tool; open
+
+## BUG-0471 — BUG-0466 in part: conjunctions rewritten as nested choose in their operands' order; four families held by asserted fixtures
+
+- **Date:** 2026-11-09
+- **Caught by:** BUG-0466, recorded open; this entry records the gate wave's part of it because the inventory is append-only.
+- **Source:** as recorded in BUG-0466: conjunctions whose deciding operand is answered after another operand's question becomes reachable.
+- **Symptom:** as recorded in BUG-0466.
+- **Fix:** each conjunction below is a nested `choose` on its operands in their original order (a false-valued helper line, on the parameter `household.no`, where no Bool false line existed in the document), so a later operand's question is reachable only once the earlier ones pass. With the operands in their original order, a complete return's value is unchanged: an `all` and its chain stop at the same first false or refused operand. Only incomplete states differ (an `all` that a later operand decides false while an earlier one is unknown is now unknown); where an asserted fixture holds such a state the family is left as it was.
+  - Single conjunctions: `s1.gambling_business`, `sa.mfs_spouse_extra`, `sa.mfs_spouse_itemizes`, `f8962.marriage`, `f8960.bad_allocation`, `sales.bad_aggregate`, `f8863.ban_refused`.
+  - Saver's credit and IRA: `ira.combat_gate`, `ira.less_gate`, `person.sav_excess_gate`, `person.ira_excess_gate`, `person.ira_dist_gate`, the age-65 box count `sa.boxes_age65` (through `person.age65_box`).
+  - Education credits: `person.edu_kid` (line 7 tests, age first), `person.edu_over_refused`, `dependent.edu_over_refused`, `f8863.eligible`.
+  - Form 2441 and Form 5695: `f2441.line1_box`, `f2441.statement_notice`, `f2441.household_notice`; `f5695.claiming_part1`, `f5695.line32b`, `f5695.wh_no_qmid`, `f5695.furnace_no_qmid`, `f5695.hp_no_qmid`.
+  - EIC (parts): `eic.step34` (Step 3 with a qualifying child, Step 4 without), `eic.married_rules` and `eic.step3` by filing status, `eic.step4` in its order.
+  - Dependent tests: `dependent.qualifying_child` and `dependent.qc_tiebreak` (through `dependent.qc_tests`), `dependent.qc_age`, `dependent.eic_child`, `dependent.eic_tiebreak`, `dependent.kidnap_eic`, `dependent.eic_ssn_child`, `dependent.ctc_child`, `dependent.resident`, `dependent.qc_dependent`, `dependent.qr_dependent`, `dependent.qr_relationship` (by relationship), `dependent.hoh_absence`, `dependent.hoh_lived_half`.
+  - Household: `household.hoh_absence`, `household.test2_met`, `household.cp_marriage_ended`, `household.widowed_2025`, `household.filing_status_conflict`, `household.hoh_community_property`, and the person counts `household.tin_count` and `household.id_count` (through `person.tin_or_itin_applied`, `person.work_ssn_or_tin`).
+  - New York: `ny_it201.gate.use_tax_abode`, `ny_it201.gate.estimated_penalty` (through `ny_it201.est_penalty_balance` and `ny_it201.est_penalty_late`).
+- **Held, not fixed** (reasons in `tools/interview_rules_baseline.json`):
+  - `eic.eligible`: as a chain it is unknown where its `all` is decided by a later step, and the asserted fixtures `stage9.eic.refuse.other_income.schedule1_unanswered` and `sales.loss.mfs.0` change. Holds `div.box12`, `eic.died_2025`, `eic.qc_of_another`, `f1040.tax_exempt_interest`, `person.eic_ssn` and the early completions `person.born_before_2001`, `person.eic_ssn`.
+  - `f4952.required`: as a choose on `f4952.used` the asserted fixture `stage16.cleanup.refuse.f4952_unsupported` changes. Holds `f4952.unsupported`.
+  - `ny_it201.gate.spouse_nonresident`: as a choose on the filing status the asserted fixture `ny.reg.choose.status_unanswered_refused_income` changes. Holds `ny_it201.ask.spouse_resident`.
+  - `dependent.claimed`: as a choose on `dependent.qc_dependent` the asserted fixture `stage8.refuse.dependent.married.other_claimant_unanswered` changes. Holds the walked-unused `dependent.disabled`, `dependent.gross_income`, `dependent.multiple_support`, `dependent.supported`.
+  - Not attempted: `person.work_ssn` (person-roster counts) and `s8812.combat_pay` (refusal gates on EIC, Form 2441 and Schedule 8812 lines).
+- **Fix lines:** `s1.gambling_business`, `sa.mfs_spouse_extra`, `sa.mfs_spouse_itemizes`, `f8962.marriage`, `f8960.bad_allocation`, `sales.bad_aggregate`, `f8863.ban_refused`, `ira.combat_gate`, `ira.less_gate`, `person.sav_excess_gate`, `person.ira_excess_gate`, `person.ira_dist_gate`, `sa.boxes_age65`, `person.edu_kid`, `person.edu_over_refused`, `dependent.edu_over_refused`, `f8863.eligible`, `f2441.line1_box`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.claiming_part1`, `f5695.line32b`, `f5695.wh_no_qmid`, `f5695.furnace_no_qmid`, `f5695.hp_no_qmid`, `eic.step34`, `eic.married_rules`, `eic.step3`, `eic.step4`, `dependent.qualifying_child`, `dependent.qc_tiebreak`, `dependent.qc_age`, `dependent.eic_child`, `dependent.eic_tiebreak`, `dependent.kidnap_eic`, `dependent.eic_ssn_child`, `dependent.ctc_child`, `dependent.resident`, `dependent.qc_dependent`, `dependent.qr_dependent`, `dependent.qr_relationship`, `dependent.hoh_absence`, `dependent.hoh_lived_half`, `household.hoh_absence`, `household.test2_met`, `household.cp_marriage_ended`, `household.widowed_2025`, `household.filing_status_conflict`, `household.hoh_community_property`, `household.tin_count`, `household.id_count`, `ny_it201.gate.use_tax_abode`, `ny_it201.gate.estimated_penalty`
+- **Siblings checked:** `dependent.actc_amount`, `dependent.claimed`, `dependent.claimed_no_tin`, `dependent.ctc_amount`, `dependent.ctc_child`, `dependent.ctc_from_citizen`, `dependent.dc_age13`, `dependent.dc_child_all_year`, `dependent.edu_line27`, `dependent.edu_line28`, `dependent.edu_line29`, `dependent.edu_line30`, `dependent.edu_line31`, `dependent.edu_over_refused`, `dependent.edu_student`, `dependent.eic_child`, `dependent.eic_child_from_age`, `dependent.hoh_test1`, `dependent.hoh_test2`, `dependent.hoh_test2_lived`, `dependent.odc_person`, `dependent.qc_from_age`, `dependent.qc_relationship`, `dependent.qr_listed_relative`, `dependent.qualifying_child`, `dependent.qualifying_relative`, `eic.check_27c`, `eic.eligible`, `eic.reached_step5`, `eic.separated_box`, `eic.step34`, `eic.step3_married`, `eic.step4`, `eic.wsb_line5_stop`, `f1040.line12e`, `f1040.line1a`, `f5695.furnace_capped`, `f5695.hp_capped`, `f5695.line32`, `f5695.line32a`, `f5695.wh_capped`, `f8606.dist`, `f8863.kid`, `f8863.line7`, `f8960.line9b`, `f8962.line24`, `f8962.line25`, `f8962.line9`, `household.all_tin`, `household.ctc_ssn`, `household.hoh_absence_from_cost`, `household.hoh_eligible`, `ira.line20`, `ny_it201.line59`, `ny_it201.line81`, `person.edu_line27`, `person.edu_line28`, `person.edu_line29`, `person.edu_line30`, `person.edu_line31`, `person.edu_over_refused`, `person.edu_student`, `person.ira_deduction`, `person.ira_line11`, `person.sav_line1`, `person.sav_line2`, `s1.line8b`, `s3.line5a`, `s3.line5b`, `s8812.line4`, `sa.extra_age65`, `sa.standard`, `sd.line10.d`, `sd.line10.e`, `sd.line10.g`, `sd.line10.h`, `sd.line1a.d`, `sd.line1a.e`, `sd.line1a.g`, `sd.line1a.h`, `sd.line1b.d`, `sd.line1b.e`, `sd.line1b.g`, `sd.line1b.h`, `sd.line2.d`, `sd.line2.e`, `sd.line2.g`, `sd.line2.h`, `sd.line3.d`, `sd.line3.e`, `sd.line3.g`, `sd.line3.h`, `sd.line8a.d`, `sd.line8a.e`, `sd.line8a.g`, `sd.line8a.h`, `sd.line8b.d`, `sd.line8b.e`, `sd.line8b.g`, `sd.line8b.h`, `sd.line9.d`, `sd.line9.e`, `sd.line9.g`, `sd.line9.h` (the readers of the rewritten lines; each rewrite keeps the line's value on every complete return, so no reader changes; every fixture passes unchanged)
+- **Regression predictions:** no recorded value changes.
+- **Validation:** every federal (1,659) and New York (338) fixture passes unchanged. interview-rules: 0 problems with the baseline at 2 early completions, 8 out-of-order templates and 6 asked-unread (from 4, 62 and 11). Reviews of the changed forms rerun (owner approved, $62.45): transcription, render and class M for the 13 federal forms and ny_it201, completeness for the 48 federal forms whose prompt changed and ny_it201, and three screens. All ruled: no defect in the rewrite; seven defects elsewhere filed as BUG-0472 to BUG-0478. Class M reruns added 44 federal cases and dropped classm.f8960.3, whose branches the new f8960 cases cover.
+- **Owner decision (2026-11-09), trade-off accepted:** on records with an answer withheld, a value HEAD computed through the three-valued `all`/`any` (a false operand decides `all`, a true one decides `any`, whatever the other operands) is now unknown until the first guard of the nested `choose` is answered. No printed value or refusal changes on a completed return (1,702 of 1,702 federal fixtures pass). Found in the review round of this wave, each in both trees: `person.work_ssn_or_tin` and `household.ctc_ssn` (`mutation.t3.mfj_no_tips_ssn_unanswered`, taxpayer `work_ssn` withheld: HEAD line 19 $4,400.00, line 37 $545.50, now unknown); `household.hoh_fails` through `household.hoh_community_property` (`classm.f2441.3.deepseek` with `household.married` withheld: HEAD line 12e $23,625.00, now unknown); `household.cp_marriage_ended` (`stage14.asset.hy_5yr` with `household.community_property` withheld: HEAD line 11a $45,910.00, line 37 $9,637.00, now unknown); `person.edu_kid`, `person.ira_dist_gate` and `household.widowed_2025` (false to unknown, no printed change); `f8962.marriage` (Form 8962 lines 24 to 27 go from a refusal to unknown on `stage21.choose.eic_limit_status_unanswered`); Form 8960 line 9b (`classm.asset.3`: a refusal at `oi8z[item_a].figured` to unknown); and eic helpers (`eic.qc_count`, `eic.limit`, `eic.step1_income`) unknown on 5 completed fixtures, with no printed line affected. The transcription rulings on these lines record the trade-off. Follow-up gate round: T-264.
+- **Tags:** interview; leak; conjunction; order-dependence; partial
+
+## BUG-0472 — A wage-only debtor in a chapter 11 bankruptcy case is not asked about it
+
+- **Date:** 2026-11-09
+- **Caught by:** standing completeness review (claim f1040#1), adjudicated in the gate-wave review round; the claim's ruling in `reviews/2025/completeness/rulings.json` cites this entry.
+- **Source:** i1040gi p. 23, Chapter 11 Bankruptcy Cases: "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate and reported on the estate's income tax return includes: Earnings from services you performed after the beginning of the case (both wages and self-employment income); and Income from property described in section 541 ... Because this income is taxable to the estate, don't include this income on your own individual income tax return." and "you (or the trustee if one is appointed) must allocate between you and the bankruptcy estate the wages, salary, or other compensation and withheld income tax reported to you on Form W-2. A similar allocation is required for income and withheld income tax reported to you on Forms 1099."
+- **Symptom:** a debtor in a chapter 11 case with only Form W-2 wages (and/or interest, dividends or other Form 1099 income) is never asked about the case. Line 1a is the full W-2 box 1 total and line 25a the full withholding, though the post-petition wages, the estate-property income and the matching withholding belong on the estate's return. The return is accepted with too much income and withholding.
+- **Where:** the chapter 11 question exists only in `person.se_screen` (forms/2025/person.yaml, refusing Schedule SE) and the Schedule C screens (forms/2025/sc.yaml); both are reached only with self-employment income. `scope.other_income` (forms/2025/scope.yaml) says it is "not about" wages, interest, dividends or Form 1099-R income, so a wage-only debtor answers No. Readers: `f1040.line1a`, `f1040.line2b`/`3b`, `f1040.line25a`/`25b`, and everything after total income.
+- **Witness (executed):** fixture `stage8.single.phaseout.partial` (single, W-2 wages only) evaluates with `f1040.line1a` = $215,300, `f1040.line24` = $39,656.70, `scope.ready` true; setting `person[taxpayer].se_screen` true changes nothing (no Schedule C, so the only chapter 11 question has no effect). No input can mark the return as a chapter 11 debtor's.
+- **Proposed fix:** add "being a debtor in a chapter 11 bankruptcy case" to a return-level screen that every filer answers (for example the "Other income or return treatment" list of `scope.other_income`), citing i1040gi p. 23, Chapter 11 Bankruptcy Cases; the allocation (Notice 2006-83) is outside the tool.
+- **Severity:** low (rare situation for an individual wage earner; amount-affecting when it occurs).
+- **Tags:** unasked-condition; amount-affecting; caught-by-completeness-review; open
+
+## BUG-0473 — The taxpayer's SSN question omits the DHS-authorization condition (Schedule 1-A and the credits that read it)
+
+- **Date:** 2026-11-09
+- **Caught by:** standing completeness review (claim s1a#2), adjudicated in the gate-wave review round; the claim's ruling in `reviews/2025/completeness/rulings.json` cites this entry.
+- **Source:** i1040gi p. 104, Valid SSN for No Tax on Tips: "However, if 'Valid for Work Only with DHS Authorization' is printed on your social security card, your SSN is valid only as long as the DHS authorization is valid." Pages 108 (overtime) and 110 (seniors) incorporate it ("For more information, see Valid SSN for No Tax on Tips, earlier").
+- **Symptom:** `person.work_ssn` asks "Do you have an SSN valid for employment, issued before the due date of your 2025 return (including extensions)?" without the DHS condition. A filer whose card carries the DHS legend and whose authorization has lapsed reads the card's "Valid for Work" and answers Yes. The return then gets the tips, overtime and senior deductions, and the child tax credit through the same question. `dependent.work_ssn` already carries the condition (BUG-0215); the person question does not.
+- **Where:** `forms/2025/person.yaml`, `person.work_ssn` (read by `s1a.tip_ssn_count`, `s1a.ot_ssn_count`, `s1a.senior_count`, `household.taxpayer_work_ssn_count` and the CTC counts).
+- **Witness (executed):** `stage12.tips.one_employer` with `person.work_ssn` Yes gives `s1a.line13` = $8,000 and `f1040.line13b` = $8,000. When the authorization has lapsed the source gives $0, the value `stage12.tips.no_valid_ssn` produces.
+- **Fix sketch:** add the `dependent.work_ssn` wording to the question: answer Yes only if the DHS authorization is still valid.
+- **Tags:** question-incomplete; caught-by-completeness-review; open
+
+## BUG-0474 — Working-capital interest is left out of the section 179 business income limit
+
+- **Date:** 2026-11-09
+- **Caught by:** standing completeness review (claim s179#3), adjudicated in the gate-wave review round; the claim's ruling in `reviews/2025/completeness/rulings.json` cites this entry.
+- **Source:** p946 p. 19: "Net income or loss from a trade or business includes the following items. • Section 1231 gains (or losses). • Interest from working capital of your trade or business. • Wages, salaries, tips, or other pay earned as an employee." i4562 p. 5, Line 11.
+- **Symptom:** `s179.income` is `s179.income_sc` (Schedule C line 31 before section 179) plus `f1040.line1a`. The business's working-capital interest is reported as interest income (Schedule B / Form 1040 line 2b) and never enters the limit. When line 11 binds, the tool allows too little section 179 deduction this year and carries too much forward. Section 1231 gains and NOL deductions are refused (scope.schedule1, s1.line8_other) and passive businesses are refused (sc.passive through sc.screened); only the interest item is open.
+- **Where:** `forms/2025/s179.yaml`, `s179.income` / `s179.income_sc`; no question separates the business's working-capital interest from other interest.
+- **Witness (executed):** `stage14.s179.income_limit` with `$interest=["bank_a"]` and `interest[bank_a].amount=100000` ($1,000 interest on the business's operating account) gives `s179.line11` $3,000, `s179.line12` $3,000 and `s179.line13` $7,000. The source gives line 11 and line 12 $4,000 and line 13 $6,000.
+- **Fix sketch:** ask, when the return has both a section 179 election and interest, how much of the interest is from the business's working capital, and add it to `s179.income`. Alternatively, refuse that case.
+- **Tags:** amount-affecting (low; understatement of the deduction); question-incomplete; caught-by-completeness-review; open
+
+## BUG-0475 — Home utilities, rent, insurance and repairs are not excluded from Schedule C Part II with the simplified method
+
+- **Date:** 2026-11-09
+- **Caught by:** standing completeness review (claim sc#3), adjudicated in the gate-wave review round; the claim's ruling in `reviews/2025/completeness/rulings.json` cites this entry.
+- **Source:** i1040sc p. 10: "The simplified method is an alternative to the calculation, allocation, and substantiation of actual expenses." i1040sc p. 14: "Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home (for example, expenses for advertising, wages, or supplies, or depreciation of equipment or furniture)."
+- **Symptom:** the questions for `sc.line16a`, `sc.line16b` and `sc.line23` exclude home mortgage interest and home real estate taxes. The questions for `sc.line25` ("Utility expenses of the business only"), `sc.line20b` ("Rent for other business property, such as office space"), `sc.line15` (insurance) and `sc.line21` (repairs) do not exclude the home's share. A filer who uses the simplified method can therefore deduct the business share of home utilities, rent, insurance or repairs in Part II as well as the $5-per-square-foot amount on line 30. The only other method, Form 8829, is refused, so every accepted home-office return uses the simplified method.
+- **Where:** `forms/2025/sc.yaml`, `sc.line15`, `sc.line20b`, `sc.line21`, `sc.line25` (questions); possibly a note on `sc.ho_uses`.
+- **Witness (executed):** `stage14.ho.basic` with `person[taxpayer].sc[home].line25=60000` ($600 of home utilities entered as business utilities) gives `line30` $1,000 and `line31` $18,400. The source gives $19,000, because the home's utilities are not deductible beyond line 30.
+- **Fix sketch:** add "not expenses of your home (utilities, rent, insurance, repairs), which the simplified method on line 30 replaces" to those four questions when `sc.ho_uses` is Yes, or unconditionally.
+- **Tags:** question-incomplete; amount-affecting; caught-by-completeness-review; open
+
+## BUG-0476 — A market discount bond or contingent payment debt instrument sold with no taxable Schedule B income is neither asked about nor refused
+
+- **Date:** 2026-11-09
+- **Caught by:** standing completeness review (claim sales#1), adjudicated in the gate-wave review round; the claim's ruling in `reviews/2025/completeness/rulings.json` cites this entry.
+- **Source:** i8949 p. 11 (Worksheet for code "D", market discount: "This is the amount of your gain that is ordinary income. Enter it as a negative amount (in parentheses) in Form 8949, column (g). Also, report it as interest income on your tax return."); i8949 p. 5 / i1040sd p. 5 ("If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a gain, your gain is ordinary income (interest income)"; "the Ordinary box in box 2 on Form 1099-B is checked ... an adjustment may be required").
+- **Symptom:** only `sb.unsupported` names accrued market discount and contingent payment debt instruments, and it is reached only through `sb.unsupported_if_income`, which is false unless taxable interest, ordinary dividends or capital gain distributions are above zero (`sb.has_income`). On the Form 8949 (detail) route, `sales.code` offers none/B/W/BW/other with code E as its only example, and `sales.special` does not ask about market discount, a contingent payment debt instrument or the Form 1099-B Ordinary box. So a filer whose only income from the bond is the sale gain answers none and the whole gain is computed as capital gain. It should be partly or wholly interest income, taxed at ordinary rates.
+- **Where:** forms/2025/sales.yaml (`sales.code`, `sales.special`); forms/2025/sb.yaml (`sb.unsupported_if_income`).
+- **Witness (executed):** fixture `sales.box.D` (one long-term sale, $4,000 gain, no interest or dividends) with `sb.unsupported=true`: `sb.has_income` false, `sb.unsupported_if_income` false, no refusal; `sd.line16` = `f1040.line7a` = $4,000, `f1040.line2b` = $0. Realistic case: a tax-exempt municipal bond bought at a market discount and sold at a gain, with accrued market discount in Form 1099-B box 1f and only tax-exempt interest for the year.
+- **Proposed disposition:** open, low. Ask, per sale or in `sales.special`, about accrued market discount (box 1f), a contingent payment debt instrument, or a checked Ordinary box, and refuse; or ask `sb.unsupported` whether or not Schedule B income is above zero. Rerun the sales (or sb) completeness and screen reviews. This is related to BUG-0436 (the same question, `sales.code`, leaves out other adjustments) but has a different cause.
+- **Tags:** completeness; question-incomplete; open
+
+## BUG-0477 — The capital loss carryover to 2026 is shown on a decedent's final return
+
+- **Date:** 2026-11-09
+- **Caught by:** standing completeness review (claim clcw26#1), adjudicated in the gate-wave review round; the claim's ruling in `reviews/2025/completeness/rulings.json` cites this entry.
+- **Source:** p550 p. 103, Decedent's capital loss: "A capital loss sustained by a decedent during the decedent's last tax
+  year (or carried over to that year from an earlier year) can be deducted only on the final income tax return filed for
+  the decedent." and "The decedent's estate cannot deduct any of the loss or carry it over to following years."
+- **Symptom:** final returns are accepted (`person.died_before_65`; BUG-0087 records final returns as in scope), but
+  `clcw26.line8` and `clcw26.line13` show a short-term and long-term carryover "the 2026 Schedule D line 6/14 will need"
+  on the final return of a filer who died in 2025, where no carryover exists. `clcw26.decedent_notice` fires only on a
+  joint return and speaks of "your spouse"; no question identifies a final return for a filer other than the
+  1960-born case.
+- **Witness (executed):** fixture `stage20.mut.to2026_short_gain_long_loss` (single): `clcw26.show` true,
+  `clcw26.line13` = $2,000, `clcw26.decedent_notice` false. Read as the final return of a filer who died in 2025, the
+  $2,000 long-term carryover shown does not exist.
+- **Where:** `forms/2025/clcw26.yaml` (`clcw26.decedent_notice`, and the shown_when of lines 8 and 13).
+- **Severity:** low; display-only (clcw26 lines are read by no other line), no 2025 amount changes.
+- **Possible fix:** a final-return question (or reuse of an existing decedent answer) that either suppresses lines 8
+  and 13 or widens the notice to "if this is the final return of a filer who died in 2025, none of the carryover goes
+  to 2026".
+- **Tags:** completeness; question-incomplete; open
+
+## BUG-0478 — The Form 5695 Part I screens ask what was paid in 2025, not what was installed in 2025
+
+- **Date:** 2026-11-09
+- **Caught by:** standing completeness review (claim f5695#1), adjudicated in the gate-wave review round; the claim's ruling in `reviews/2025/completeness/rulings.json` cites this entry.
+- **Source:** i5695 p. 1, Costs: "For purposes of both credits, costs are treated as being paid when the original
+  installation of the item is completed, or, in the case of costs connected with the reconstruction of your home, when
+  your original use of the reconstructed home begins."; What's New, "You can't claim residential clean energy credits
+  for expenditures made after December 31, 2025."
+- **Symptom:** the Part I cost help (lines 1 to 4, battery cost) says "A cost counts in 2025 when the original
+  installation is completed", but the screens `f5695.part1_any` ("Did you pay in 2025 for solar electric ... property")
+  and `f5695.line5a` ("Did you pay in 2025 for battery storage technology ...") ask about payment in 2025. A filer who
+  paid in 2024 for property whose installation was completed in 2025 answers No and gets no Part I credit. (The
+  converse case, paid in 2025 and installed after 2025, is handled by the cost help.) BUG-0397 fixed the same wording
+  for Part II (`f5695.part2_any`) only.
+- **Witness (executed):** fixture `stage15.f5695.s9`: `s3.line5a` = $1,225 with `f5695.part1_any` Yes; with
+  `f5695.part1_any` = No (the honest answer to the question as worded for a December 2024 payment, 2025 installation),
+  `s3.line5a` = $0.
+- **Where:** `forms/2025/f5695.yaml` (`f5695.part1_any`, `f5695.line5a`).
+- **Severity:** low; wording.
+- **Possible fix:** word `f5695.part1_any` and `f5695.line5a` as `f5695.part2_any` is worded (a cost counts in 2025 when
+  its original installation is completed, whenever paid; property installed after 2025 does not qualify).
+- **Tags:** completeness; question-incomplete; open
+
+## BUG-0479 — A line-scoped transcription catalog left out the sales collection that the scoped Schedule D lines sum over
+
+- **Date:** 2026-11-09
+- **Caught by:** adjudication of the line-scoped transcription review of `sd` (pass e771f73e2296, receipt `.transcription/sd.lines-c9db5685c8a4`), run for the BUG-0471 sibling check: the reply wrote `{"const": 0}` for 22 of the 24 open Schedule D column lines, noting "the sales collection fields are not supplied".
+- **Symptom:** the scoped prompt's "Keyed collections" list is empty: the `sales` collection (its box, route, proceeds, cost and adjustment fields), which every scoped line 1a to 10, columns (d), (e), (g), (h), sums over, is not in the catalog. Only `sales.special`, a screening input, appears. The earlier scoped pass 3c1e462d90db of the same log listed the collection. The reply therefore could not express the lines, and triage reports value differences on completed returns (for example 1b(d): 52, project $61,051.00 against the reply's $0.00 on classm.clcw26.2.deepseek) that are artefacts of the review, not of the encoding.
+- **Root cause (read from the code, not traced in a run):** `catalog_selection` in `tools/transcription/transcribe.py`, line-scoped federal branch: "a collection named only as a form is not listed", and a form named only as a form is kept whole only where the scoped lines' citations name its IRS form (`federal_whole(cited)`). The scoped Schedule D lines cite f1040sd, not Form 8949, so `sales` (Form 8949) is dropped although the lines' own expressions read it.
+- **Where:** `tools/transcription/transcribe.py`, `catalog_selection` (and `collection_notes(fid, selected)`, which lists only selected collections).
+- **Fix sketch:** always list a collection, with its fields, that the scoped lines (or the helpers in their reach) read through `sum_over`, whatever the text names; add a self-test with the sd column lines. Then rerun the line-scoped transcription of sd lines 1a to 10 (paid, owner's call).
+- **Disposition:** open. The 24 sd sections of this pass are ruled interface gap citing this entry; the project's lines stand (no HEAD-to-current difference on any sd line over 1,702 fixtures and 500 generated returns).
+- **Tags:** review-tool; line-scoped; catalog; interface-gap; open

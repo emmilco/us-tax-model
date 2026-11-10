@@ -2,8 +2,8 @@
 lines:
   - printed: "dependent[dep_a].dc_line2d"
     value: "2220.00"
-    work: "dep_a is a qualifying child and dependent under 13 (child, age 6, lived with you 7 of 12 months). Qualified expenses incurred and paid in 2025 = $2,220.00"
+    work: "Qualifying child dependent under 13 (child, age 6, lived 7 of 12 months, didn't provide over half own support). Qualified expenses paid in 2025 = 2,220.00"
   - printed: "dependent[dep_a].dc_line2c"
     value: "no"
-    work: "Age 6, so not over age 12, and able to care for themselves; column (c) box not checked"
+    work: "Age 6, not over age 12, and not disabled, so the column (c) box stays unchecked"
 ```

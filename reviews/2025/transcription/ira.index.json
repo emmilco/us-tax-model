@@ -3,6 +3,9 @@
  "form": "ira",
  "family": "claude",
  "base": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "ira.joint",
@@ -60,10 +63,10 @@
   },
   {
    "key": "ira.combat_gate",
-   "record": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
+   "record": "0ab6f13f6eea83a8033e36ddf945e9ee78d6a91aea796a050b1af148274defa3",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 98, line 8: \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i.\" Combat pay matters to line 8 only when the worksheet is used (i1040gi p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.\"); the candidate's gate omits the contribution condition and its line 8 refuses on it. Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1599 of 1640 comparisons agree; 21 candidate-unknown, 20 value. All 20 value records have combat pay and no traditional contributions; the candidate refuses Schedule 1 line 20, and stage8.refuse.s8812.combat_pay, stage9.eic.refuse.combat_pay and stage9.s8812.not_taking_eic.combat_pay are refused by nothing else on scope.ready, Form 1040 line 24 or Schedule 1 line 20. The 21 candidate-unknown records (ss.multi, ss.base.below, ss.mfj) are returns without contributions on which the project never asks combat pay. Project stands.",
-   "subject_key": "61f599b7353134628959b13721ad6d1ba815fb305ce30d34c62df11c4daf344f"
+   "ruling": "Ruling: model error; i1040gi p. 98, IRA Deduction Worksheet, line 8: \"Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i\"; combat pay matters to line 8 only when the worksheet is used (p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"). The candidate's gate is s8812.combat_pay alone, without the contribution condition. executable-triage-v2 (`.transcription/triage/2025/ira.json`, pass 2f14fa8fede2; 1,702 fixtures, 500 generated returns seed 20261026, 69 partial records; 2,271 comparisons): 2,113 of 2,271 agree; differences 129 candidate-unknown, 20 value, 9 project-unknown; on returns the full interview completes: 62 candidate-unknown, 2 value; witnesses enumerated with the cap lifted (scratch /tmp/adj/tr/eicwork/full/ira.json). The 2 completed value differences, stage5.return.refund_combat_pay_no_children and stage8.hoh.actc.three_children.line12_stop_combat_pay, have combat pay and no traditional IRA contributions (ira.any_trad false, Schedule 1 line 20 $0): the candidate's gate is true and would refuse the IRA deduction of a return that has none; the project's is false. The 62 completed candidate-unknowns need s8812.combat_pay on returns without traditional contributions, where the project's gate is false without it and the interview does not ask it; a candidate that needs an answer the source does not need is a model error (README). The rest are on incomplete or refused records. As the earlier ruling (executable-triage-v1), whose reasoning holds for this reply. Gate-wave check: the rewrite (all of ira.any_trad and s8812.combat_pay, now a choose on ira.any_trad) gives false in HEAD and the working tree on both value witnesses (evaluated) and the same value on every completed return (1,702 fixtures and 500 generated returns evaluated in both trees); it differs only on 9 refused records, false in HEAD and unknown in the working tree. Project stands.",
+   "subject_key": "b80893a8ad3d4b6361cb53c6fe4fcde6fd30c0cace9a7b7bf6d8797d23ea0618"
   },
   {
    "key": "ira.excl_gate",
@@ -74,10 +77,10 @@
   },
   {
    "key": "ira.line20",
-   "record": "b4ed89150e8053bc9ff2c0c87a1cc09929ea3c2fb2956158a134a212cf29fe46",
+   "record": "0ab6f13f6eea83a8033e36ddf945e9ee78d6a91aea796a050b1af148274defa3",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 98, line 12: \"This is the most you can deduct. Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20. Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606).\" Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 520 of 1640 comparisons agree; 1016 candidate-unknown, 102 candidate-refuses, 2 project-refuses. The candidate refuses through its gates. Of the 102 candidate-refuses records, 5 are reachable joint returns with no traditional contributions refused by its ira.kbh_short (classm.sli.4, classm.ssb.4, classm.f1040.3, generated 208 and 383; ruled model error there), where the source gives zero; the other 97 are refused by other cited gates (scope). Of the 1,016 candidate-unknown records, 966 need ira.deduct_less on returns with no deduction, where the election to deduct less is necessarily No (representation); 10 need person.plan without a Schedule C and 2 the amount after No to person.sav_trad (both necessarily determined); 38 are no-contribution partial records needing ira.special or ira.se_capital (model error, as ruled on ira.special_gate and line 9). The 2 project-refuses records are cited scope screens: stage16.refuse.person.ira_excess (person.ira_excess_gate) and stage16.refuse.ira.dist (person.ira_dist_gate). No value differs. Project stands.",
-   "subject_key": "ea4fbad37909ac35c02151ea02813628f3c91ffc811a6e1155b6be9beca1c824"
+   "ruling": "Ruling: model error; i1040gi p. 98, IRA Deduction Worksheet, line 12: \"This is the most you can deduct. Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20. Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\" (amb.2025.ira_deduct_less). The sum of lines 12a and 12b is the project's sum of person.ira_deduction. executable-triage-v2 (`.transcription/triage/2025/ira.json`, pass 2f14fa8fede2; 1,702 fixtures, 500 generated returns seed 20261026, 69 partial records; 2,271 comparisons): 1,918 of 2,271 agree; differences 353 candidate-unknown; on returns the full interview completes: 153 candidate-unknown; witnesses enumerated with the cap lifted. No value differs on any record. Every one of the 153 completed differences is a candidate-unknown on ira.deduct_less, which the candidate declares as an unconditioned refusal gate, on a return whose deduction is $0 (project $0 on all 153): with nothing to deduct there is no smaller amount to elect, the project asks the election only when line 12a plus 12b is above zero (ira.less_gate), and the interview does not ask it otherwise. A candidate that needs an answer the source does not need is a model error (README). As the earlier ruling on this line. Gate-wave check: ira.less_gate (all, now a choose on ira.has_deduction) and Schedule 1 line 20 give the same values in HEAD and the working tree on every completed return (1,702 fixtures and 500 generated returns evaluated in both trees). Project stands.",
+   "subject_key": "4c3d65c86110f3dc24197fb6811173ba971aa93403a1bb24a85351e30044da94"
   },
   {
    "key": "1a",
@@ -211,9 +214,9 @@
   "ira.both_kinds": "685e53786f58b5dd7566565bcba2eb87e34321c6c6742dbf674150b103133bbd",
   "ira.over_comp": "52312a29a87661c0b3bbeb0f73a944e94eaa0659aa21a60b0e4a37f469b7bae7",
   "ira.special_gate": "78ff47ae51b6551a9a428636bef048582633ffe14db3c26de52f0af739bfa8c7",
-  "ira.combat_gate": "14a3c3b59daa2cdfbe197c4a58413d73c4115ae56b144dd666e3fdb88fd88f2a",
+  "ira.combat_gate": "0074db81433811c53cd733ce0724ea280aa8a33d9a116aa502ddd1ddf152003f",
   "ira.excl_gate": "24f0f6dcaa11552258cefbe852fa5180dda40ee575e960b8a22b3ffa31c53d5d",
-  "ira.line20": "4684b87b7d7cadb71376be1fa615ab5c7cb06d31cad7067cc609fe3f5997b865",
+  "ira.line20": "9a631783c69c2b82b4bcd3e4d3c2de7907cf3976c84041e97cf388f0f82904ab",
   "1a": "c718de8917f5f3888088c2a52e5ab3577d2839ec4b9db9f6e8aac2bdeb20785c",
   "1b": "0b5459110e122f5244fe421f199b71693e94bdb2b298b595bbfb7047e07cdb7e",
   "2a": "ccb0da605717d3932003df64bc4c824dfdd9fae011ed6963ab02690e3f898f08",
@@ -233,5 +236,9 @@
   "12a": "b82f13e6cb42f6758d3a0c95c27f44da7b3260011de4b745d26c3f3b6ad947e2",
   "12b": "d2de7691f80a33c706c2a569fc632d89caec7b5b00593c7d63c0743147dc6522"
  },
- "__rest__": "51bd60f3e1f3c5dc4a9156da6cc70b2d7fd330e94846768242fe389be4a6c05d"
+ "__rest__": "51bd60f3e1f3c5dc4a9156da6cc70b2d7fd330e94846768242fe389be4a6c05d",
+ "foreign": {
+  "ira.combat_gate": "cd938cd9c0049e1415cd9ff4774f244f27a4cf9a93d67a02019db6d71b11a778",
+  "ira.line20": "5c16bbd2c3580c26e60a0627c1651f2d3a296698fbdc1da90687d87346d59cb1"
+ }
 }

@@ -5657,6 +5657,116 @@
       }
     },
     {
+      "id": "stage15.mut.f2441_three_providers",
+      "covers": [
+        "f2441"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the provider count of f2441.many_providers, strictly more than three), predicted from the archived i2441 before evaluating: stage15.mut.f2441_four_providers without the fourth provider (three providers: the nanny paid $8,000, the daycare paid $1,000 and one more provider paid $500 with an identifying number); the child's expenses are $9,500. Three care providers is not more than three, so the box above line 1 is not checked (i2441 p. 2, Line 1, \"If you have more than three care providers, check the box above line 1\").",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4800000,
+        "person[taxpayer].w2[emp_a].box4": 297600,
+        "person[taxpayer].w2[emp_a].box5": 4800000,
+        "person[taxpayer].w2[emp_a].box6": 69600,
+        "$dependent": [
+          "a"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "f2441.care": true,
+        "dependent[a].age": 1,
+        "dependent[a].months": 12,
+        "dependent[a].dc_paid": 950000,
+        "$dcprov": [
+          "p0",
+          "p1",
+          "p2"
+        ],
+        "dcprov[p0].household": true,
+        "dcprov[p0].paid": 800000,
+        "dcprov[p1].tin_kind": "see_statement",
+        "dcprov[p1].paid": 100000,
+        "dcprov[p2].paid": 50000
+      },
+      "expect": {
+        "f2441.line1_box": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage15.mut.f2441_one_provider_no_notices",
+      "covers": [
+        "f2441",
+        "dcprov"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the counts of f2441.any_statement and f2441.any_household, strictly more than zero), predicted from the archived i2441 before evaluating: stage15.regress.f2441.providers_statement_household (head of household, one child, expenses $9,000) with one provider, a daycare center paid $9,000 that gave its identifying number and is not a household employee. No provider is entered as 'See Attached Statement' and none was a household employee, so neither the statement notice nor the household employee notice applies (i2441 p. 3, line 1, Due Diligence and column (d)).",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4800000,
+        "person[taxpayer].w2[emp_a].box4": 297600,
+        "person[taxpayer].w2[emp_a].box5": 4800000,
+        "person[taxpayer].w2[emp_a].box6": 69600,
+        "$dependent": [
+          "a"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "f2441.care": true,
+        "dependent[a].age": 1,
+        "dependent[a].months": 12,
+        "dependent[a].dc_paid": 900000,
+        "$dcprov": [
+          "p0"
+        ],
+        "dcprov[p0].paid": 900000
+      },
+      "expect": {
+        "f2441.statement_notice": {
+          "kind": "bool",
+          "value": false
+        },
+        "f2441.household_notice": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "stage15.mut.f2441_not_filed_providers_unasked",
+      "covers": [
+        "f2441"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the not-filing alternative of f2441.line1_box), predicted from the archived i2441 before evaluating: stage15.f5695.s1's wage earner (single, W-2 wages $80,000) without the Form 5695 facts, who paid no dependent care expenses and received no dependent care benefits, so Form 2441 is not filed; the care-provider list, which is asked only for a Form 2441 filer, is withheld. With no Form 2441 the box above line 1 is not checked (i2441 p. 2, Line 1), whatever the unasked provider list would hold.",
+      "inputs": {
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "$dcprov": null
+      },
+      "expect": {
+        "f2441.line1_box": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
       "id": "stage15.mut.f2441_grace_line20_equals_line17",
       "covers": [
         "f2441"

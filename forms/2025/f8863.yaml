@@ -48,23 +48,40 @@ form:
       doc: i8863
       locator: p. 3, Who cannot claim a credit, "1. You’re claimed as a dependent on another person’s tax return, such as
         your parent’s return."
+  - id: f8863.none_claimed
+    printed: (helper)
+    label: Neither you nor your spouse is claimed as a dependent on another person's 2025 tax return
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f8863.claimed_count
+      - const: 0
+        type: Count
+    cite:
+      doc: i8863
+      locator: p. 3, Who cannot claim a credit, "1. You’re claimed as a dependent on another person’s tax return, such as your
+        parent’s return."
   - id: f8863.eligible
     printed: (helper)
     label: 'An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as
       a dependent'
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - f8863.paid
-        - const: true
-      - op: test
-        eq:
-        - f8863.claimed_count
-        - const: 0
-          type: Count
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8863.paid
+          - const: true
+        then: f8863.none_claimed
+      - guard:
+          op: test
+          eq:
+          - f8863.paid
+          - const: false
+        then: f8863.no
     cite:
       doc: i8863
       locator: p. 3, Who cannot claim a credit, "1. You’re claimed as a dependent on another person’s tax return, such as
@@ -218,9 +235,9 @@ form:
       locator: 'p. 3, American Opportunity Credit, "Caution: Don’t claim the American opportunity credit for 2 years after
         there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years
         after there was a final determination that your claim was due to fraud."'
-  - id: f8863.ban_refused
-    printed: (gate)
-    label: An American opportunity credit claimed that needs Form 8862 or is barred
+  - id: f8863.aoc_claimed
+    printed: (helper)
+    label: An American opportunity credit claimed (lines 1 and 4 both more than zero)
     type: Bool
     expr:
       op: test
@@ -233,10 +250,40 @@ form:
         gt:
         - f8863.line4
         - const: 0
-      - op: test
-        eq:
-        - f8863.ban
-        - const: true
+    cite:
+      doc: i8863
+      locator: p. 1, Form 8862 may be required, "to your tax return for the next tax year for which you claim the credit"
+  - id: f8863.no
+    printed: (helper)
+    label: Year parameter household.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: i8863
+      locator: p. 1, Form 8862 may be required, "If your American opportunity credit was denied or reduced for any reason other
+        than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information
+        To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit."
+  - id: f8863.ban_refused
+    printed: (gate)
+    label: An American opportunity credit claimed that needs Form 8862 or is barred
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8863.aoc_claimed
+          - const: true
+        then: f8863.ban
+      - guard:
+          op: test
+          eq:
+          - f8863.aoc_claimed
+          - const: false
+        then: f8863.no
     cite:
       doc: i8863
       locator: p. 1, Form 8862 may be required, "If your American opportunity credit was denied or reduced for any reason

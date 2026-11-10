@@ -841,21 +841,36 @@ form:
     cite:
       doc: i1040gi
       locator: 'p. 95, Line 20, "But read the following list before you fill in the worksheet"'
+  - id: ira.no
+    printed: (helper)
+    label: Year parameter household.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: i1040gi
+      locator: p. 95, Line 20, "If you were a member of the U.S. Armed Forces, earned income includes any nontaxable combat pay
+        you received"
   - id: ira.combat_gate
     printed: (gate)
     label: Traditional IRA contributions with nontaxable combat pay
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - ira.any_trad
-        - const: true
-      - op: test
-        eq:
-        - s8812.combat_pay
-        - const: true
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ira.any_trad
+          - const: true
+        then: s8812.combat_pay
+      - guard:
+          op: test
+          eq:
+          - ira.any_trad
+          - const: false
+        then: ira.no
     cite:
       doc: i1040gi
       locator: 'p. 95, Line 20, "If you were a member of the U.S. Armed Forces, earned income includes any nontaxable combat
@@ -984,21 +999,38 @@ form:
       locator: 'p. 98, IRA Deduction Worksheet—Continued, line 12, "Or, if you want, you can deduct a smaller amount and treat
         the rest as a nondeductible contribution (see Form 8606)"'
     ambiguity: amb.2025.ira_deduct_less
+  - id: ira.has_deduction
+    printed: (helper)
+    label: An IRA deduction above zero (line 12a and 12b together)
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - ira.total
+      - param: sales.zero
+    cite:
+      doc: p590a
+      locator: p. 16, Form 8606, "When you file, you can even designate otherwise deductible contributions as nondeductible
+        contributions"
   - id: ira.less_gate
     printed: (gate)
     label: An IRA deduction above zero and the election to deduct less
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        gt:
-        - ira.total
-        - param: sales.zero
-      - op: test
-        eq:
-        - ira.deduct_less
-        - const: true
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ira.has_deduction
+          - const: true
+        then: ira.deduct_less
+      - guard:
+          op: test
+          eq:
+          - ira.has_deduction
+          - const: false
+        then: ira.no
     cite:
       doc: p590a
       locator: 'p. 16, Form 8606, "When you file, you can even designate otherwise deductible contributions as nondeductible

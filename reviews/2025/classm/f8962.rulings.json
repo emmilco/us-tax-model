@@ -3,6 +3,30 @@
  "form": "f8962",
  "rulings": [
   {
+   "case": "classm.f8962.1",
+   "printed": "24",
+   "project": "$4,668.00",
+   "model": "$0.00",
+   "ruling": "Ruling: scope; project retained; model value dropped from the fixture. The case's return is married filing separately (job input f1040.status mfs, with household.married no), and the model followed i8962 p. 10, Column (f), \"Not an applicable taxpayer. If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC ... enter -0- on line 24, and enter the amount from line 11, column (f), on lines 25 and 27\". That is the source's reading for a separate return, but a separate return is outside the tool (forms/2025/f8962.yaml note, \"married filing separately is refused for the whole return\"; s3.mfs, i1040gi p. 14): executed on the job's inputs, scope.ready, f1040.line33 and f1040.line37 are refused at s3.mfs, so no completed return shows this Form 8962. The project's line 24 ($4,668.00, the smaller of the column (a) and (d) totals) is the computation for a filer who is an applicable taxpayer. Class M jobs that pick a separate return measure nothing the tool prepares.",
+   "drop": true,
+   "context": "a16363414f89066ba45b24f592194bb58e370e8a45011d9f0c3bde1a269a450b",
+   "date": "2026-11-09",
+   "run": "2e248431e2263c36e1a6bf974fa47f0f80dcefa517cc91deddc9ce528f86c39a",
+   "subject_key": "6914bdd04cec84579f3ceb84e219e1b170398ac83ab0b1b4e62cd55c9d479150"
+  },
+  {
+   "case": "classm.f8962.1",
+   "printed": "27",
+   "project": "$5,077.00",
+   "model": "$9,745.00",
+   "ruling": "Ruling: scope; project retained; model value dropped from the fixture. The case's return is married filing separately (job input f1040.status mfs, with household.married no), and the model followed i8962 p. 10, Column (f), \"Not an applicable taxpayer. If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC ... enter -0- on line 24, and enter the amount from line 11, column (f), on lines 25 and 27\". That is the source's reading for a separate return, but a separate return is outside the tool (forms/2025/f8962.yaml note, \"married filing separately is refused for the whole return\"; s3.mfs, i1040gi p. 14): executed on the job's inputs, scope.ready, f1040.line33 and f1040.line37 are refused at s3.mfs, so no completed return shows this Form 8962. The project's line 27 ($5,077.00, line 25 $9,745.00 less line 24 $4,668.00) is the computation for a filer who is an applicable taxpayer. Class M jobs that pick a separate return measure nothing the tool prepares.",
+   "drop": true,
+   "context": "a16363414f89066ba45b24f592194bb58e370e8a45011d9f0c3bde1a269a450b",
+   "date": "2026-11-09",
+   "run": "2e248431e2263c36e1a6bf974fa47f0f80dcefa517cc91deddc9ce528f86c39a",
+   "subject_key": "4f2509f92da9cfd574d18f2e1e365c7ad785e165f96af2986c6e4f4991a2ca72"
+  },
+  {
    "case": "classm.f8962.5",
    "printed": "11(c)",
    "project": "$2,166.00",

@@ -717,6 +717,155 @@
       }
     },
     {
+      "id": "stage8.mut.hoh_test1_eic_disallowed",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the Test 1 alternative of household.hoh_absence_from_test1), predicted from the archived i1040gi before evaluating: stage8.hoh.parent.test1 (head of household under Test 1 through a parent who lived elsewhere, whose home you paid over half the cost of) with wages of $12,000, so an EIC without a qualifying child figures to $542, and an EIC for an earlier year reduced or disallowed (the EIC is refused for Form 8862). Head of household rests on Test 1 (i1040gi p. 14), whose absence rules concern a person who lived with you; the disallowed EIC has no bearing on it, so head of household holds and line 12e is the head of household standard deduction, $23,625.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 74400,
+        "person[taxpayer].w2[emp_a].box5": 1200000,
+        "person[taxpayer].w2[emp_a].box6": 17400,
+        "f1040.status": "hoh",
+        "$dependent": [
+          "parent"
+        ],
+        "household.unmarried": true,
+        "dependent[parent].relationship": "parent",
+        "dependent[parent].age": 70,
+        "dependent[parent].gross_income": 400000,
+        "dependent[parent].supported": true,
+        "dependent[parent].parent_home_paid": true,
+        "household.credit_disallowed": true
+      },
+      "expect": {
+        "household.hoh_eligible": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2362500
+        }
+      }
+    },
+    {
+      "id": "stage8.mut.hoh_married_child_absence",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the married alternative of household.hoh_absence), predicted from the archived i1040gi before evaluating: head of household checked by a married filer who is not considered unmarried (wages $120,000), paying over half the cost of the home, with a child aged 10 who lived there all year counting an absence from which the child was not expected to return. i1040gi p. 14, Head of Household: you must be unmarried or considered unmarried on the last day of the year, so the tests are not met whatever the absence answer is.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "kid"
+        ],
+        "household.unmarried": false,
+        "household.married": true,
+        "household.home_cost": true,
+        "dependent[kid].age": 10,
+        "dependent[kid].months": 12,
+        "dependent[kid].absence_no_return": true
+      },
+      "expect": {
+        "household.hoh_eligible": {
+          "kind": "bool",
+          "value": false
+        },
+        "household.hoh_fails": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "stage8.mut.mfj_married_unanswered_line1a",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the joint alternative of household.cp_marriage_ended), predicted from the archived i1040gi before evaluating: stage15.f5695.s2 (married filing jointly, the taxpayer's wages $120,000, no other income) with the question whether you were married at the end of 2025 withheld. The community property question about a marriage that ended in 2025 concerns a filer who is not filing jointly (i1040gi p. 23, Community Property States), so it does not hold back line 1a on a joint return: line 1a is the W-2 box 1 total, $120,000.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": null,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 12000000,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 12000000,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": []
+      },
+      "expect": {
+        "f1040.line1a": {
+          "kind": "money",
+          "cents": 12000000
+        }
+      }
+    },
+    {
+      "id": "stage8.mut.mfj_spouse_itin_applied_ctc",
+      "covers": [
+        "household",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the issued-TIN operand of person.work_ssn_or_tin), predicted from the archived i1040gi before evaluating: married filing jointly, the taxpayer's wages $120,000 with an SSN valid for employment, and one child aged 10 who lived with you all year; the spouse has no SSN or ITIN and applied for an ITIN before the due date, but none was issued by then. i1040gi p. 17, Before you begin: on a joint return one spouse needs a valid SSN and \"The other spouse must have either an SSN or ITIN, and it must have been issued on or before the due date of the return\"; an ITIN only applied for does not meet it, so the child tax credit identification test fails and the child is not a child tax credit child.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married": true,
+        "$w2@person[spouse]": [],
+        "person[spouse].work_ssn": false,
+        "person[spouse].tin": false,
+        "person[spouse].itin_applied": true,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].age": 10,
+        "dependent[child].months": 12
+      },
+      "expect": {
+        "household.ctc_ssn": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[child].ctc_child": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
       "id": "stage9.mut.eic_no_child_credit_disallowed",
       "covers": [
         "eic",

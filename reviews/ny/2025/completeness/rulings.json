@@ -23,8 +23,14 @@
   "unruled:ny_it201#1": {
    "class": "real gap",
    "bug": "BUG-0424",
-   "evidence": "ny_it201i p. 5, Item A. As the prior ny_it201#1 ruling: a filer on a joint federal return who cannot file a joint New York return because the spouse's whereabouts are unknown or the spouse refuses to sign files separately; no question asks it. Rare; low.",
-   "prompt_sha": "c593a66d3d09fc59407eedc73b2619e1cb1f8883faeff147450dac732f8f5379"
+   "evidence": "ny_it201i pp. 5-6, Item A, filing status 3: \"You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown ...\" and \"your spouse refuses to sign a joint New York return\". As the earlier ny_it201#1 ruling (the same situation; this claim adds the item H note): a filer on a joint federal return who must file separately for New York is not asked about and not refused; the New York return follows the federal status. Rare; low; BUG-0424.",
+   "prompt_sha": "a11c6e2145c1393c952532b8d8d9ee0d9d72d15aaf89a0449f1a2dacb647d4ed"
+  },
+  "unruled:ny_it201#2": {
+   "class": "wrong",
+   "evidence": "ny_it201i p. 11, Lines 37 and 38: \"If line 36 is more than line 35, leave line 37 and line 38 blank.\" ny_it201.line37 is subtract_floor0 of line 35 and line 36 (type NonNegDollars), so it is zero, never negative, when the dependent exemptions exceed line 35, and its note reads the blank as zero; line 38 copies it. The claim's negative flow to lines 38, 47 and 69a does not occur.",
+   "prompt_sha": "a11c6e2145c1393c952532b8d8d9ee0d9d72d15aaf89a0449f1a2dacb647d4ed",
+   "line": "ny_it201.line37"
   }
  }
 }

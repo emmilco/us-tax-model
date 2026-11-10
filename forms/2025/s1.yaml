@@ -358,21 +358,35 @@ form:
       doc: p525
       locator: 'p. 33, Gambling winnings, "If you’re in the trade or business of gambling, use Schedule C (Form 1040). For
         tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings"'
+  - id: s1.no
+    printed: (helper)
+    label: Year parameter household.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: p525
+      locator: p. 33, Gambling winnings, "If you’re in the trade or business of gambling, use Schedule C (Form 1040)"
   - id: s1.gambling_business
     printed: (gate)
     label: Gambling winnings of a professional gambler
     type: Bool
     expr:
-      op: test
-      all:
-      - op: test
-        eq:
-        - s1.has_gambling
-        - const: true
-      - op: test
-        eq:
-        - s1.gambling_pro
-        - const: true
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.has_gambling
+          - const: true
+        then: s1.gambling_pro
+      - guard:
+          op: test
+          eq:
+          - s1.has_gambling
+          - const: false
+        then: s1.no
     cite:
       doc: p525
       locator: 'p. 33, Gambling winnings, "If you’re in the trade or business of gambling, use Schedule C (Form 1040)"'

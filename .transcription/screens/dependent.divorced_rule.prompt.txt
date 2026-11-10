@@ -14,7 +14,7 @@ Input `dependent.divorced_rule`: Does the special rule for children of divorced 
 # Lines that refuse when the answer is yes
 
 - Line `dependent.qualifying_child` (document dependent, printed (helper)): Qualifying child (Step 1)
-  Computed as (when the screen is answered no): helper "A child, sibling, or a descendant of either" = true and helper "Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled" = true and helper "Provided over half of their own support?" = false and helper "Included on a 2025 joint return filed other than only to claim a refund?" = false and helper "Lived with you for more than half of 2025" = true
+  Computed as (when the screen is answered no): helper "Qualifying child tests (Step 1): relationship, age, support, joint return and residency, each asked only when the ones before it pass" = true
   Refusal when the screen is answered yes: Children of divorced or separated parents — The rule for children of divorced or separated parents is outside this tool.
   Cited: i1040gi p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"; refusal cites i1040gi p. 20, Children of divorced or separated parents
 

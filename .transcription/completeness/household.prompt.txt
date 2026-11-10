@@ -1137,6 +1137,8 @@ ENCODING:
 - household.community_property [(helper)] Did you live in a community property state at any time in 2025?
     QUESTION: Did you live in a community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or Wisconsin) at any time in 2025?
     cites: i1040gi p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin"
+- household.hoh_cp_married [(helper)] Filing as head of household: married at the end of 2025, and lived in a community property state
+    cites: i1040gi p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income"
 - household.hoh_community_property [(gate)] Married, filing as head of household, and living in a community property state
     cites: i1040gi p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income"
 - household.credit_disallowed [(helper)] Was your (or, on a joint return, your spouse's) EIC for a year after 1996, or child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or is either of you in a 2- or 10-year disallowance period?
@@ -1162,10 +1164,22 @@ ENCODING:
     cites: i1040gi p. 14, Head of Household, Test 2
 - household.test2_absence_persons [(helper)] Number of persons who would qualify you under Test 2 only by counting an absence head of household does not count
     cites: p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+- household.hoh_absence_from_test1 [(helper)] Head of household turns on an absence head of household does not count, from Test 1 on: Test 1 not met, home cost paid, no Test 2 person, and a person who would be one only by counting an absence
+    cites: p501 p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+- household.hoh_absence_from_cost [(helper)] Head of household turns on an absence head of household does not count, from the home cost on: home cost paid, no Test 2 person, and a person who would be one only by counting an absence
+    cites: p501 p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+- household.hoh_absence_from_test2 [(helper)] Head of household turns on an absence head of household does not count, from Test 2 on: no Test 2 person, and a person who would be one only by counting an absence
+    cites: p501 p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+- household.no_test2_persons [(helper)] No person qualifies you under Test 2
+    cites: p501 p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+- household.any_test2_absence [(helper)] A person would qualify you under Test 2 only by counting an absence head of household does not count
+    cites: p501 p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
 - household.hoh_absence [(gate)] Head of household turns on a person who lived with you more than half the year only by counting an absence head of household does not count
     cites: p501 p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
 - household.test1_met [(helper)] Test 1 met
     cites: i1040gi p. 14, Head of Household, Test 1
+- household.any_test2_person [(helper)] A person qualifies you under Test 2
+    cites: i1040gi p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year"
 - household.test2_met [(helper)] Test 2 met, having paid over half the cost of keeping up your own home
     cites: i1040gi p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year"
 - household.hoh_eligible [(helper)] Unmarried or considered unmarried, and Test 1 or Test 2 applies
@@ -1196,10 +1210,18 @@ ENCODING:
 - household.cp_married [(helper)] Married at any time in 2025 while living in a community property state, though not married at the end of 2025
     QUESTION: Were you married at any time during 2025, before a divorce or legal separation, while you lived in a community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or Wisconsin)? (Asked when you lived in a community property state in 2025, are not filing jointly and were not married at the end of 2025.)
     cites: i1040gi p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."
+- household.cp_not_joint [(helper)] Not filing jointly: lived in a community property state, not married at the end of 2025, and married for part of 2025 while living there
+    cites: i1040gi p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."
+- household.cp_unmarried [(helper)] Not filing jointly and lived in a community property state: not married at the end of 2025, and married for part of 2025 while living there
+    cites: i1040gi p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."
 - household.cp_marriage_ended [(gate)] Not filing jointly, and married for part of 2025 while living in a community property state
     cites: i1040gi p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."
 - household.rdp_community_property [(gate)] Not filing jointly, living in a community property state, and a registered domestic partner in Nevada, Washington or California
     cites: i1040gi p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"
+- household.joint_unmarried [(helper)] Filing jointly, not married at the end of 2025, and no spouse who died in 2025
+    cites: i1040gi p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025."
+- household.no_spouse_died [(helper)] Your spouse did not die in 2025
+    cites: i1040gi p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025."
 - household.filing_status_conflict [(gate)] The filing status conflicts with the marriage facts entered
     cites: i1040gi p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025."
 
@@ -1232,7 +1254,6 @@ HANDLED ELSEWHERE (refusals on other forms tied to lines this form reads):
 - f8889: Form 8889 on a married filing separately return -- Married filing separately is outside this tool; the HSA rules for spouses are supported on a joint return.
 - f8962: Form 8962 Part V, Alternative Calculation for Year of Marriage -- A 2025 marriage with Marketplace coverage before the first full month of marriage needs the year-of-marriage rules (Part V and Pub. 974), wh
 - person: More than one Form 8889 for one person -- Enter one Form 8889 per person, combining all of that person's own HSAs on it. A separate Form 8889 for each HSA (with a controlling Form 88
-- person: Lifetime learning credit for a student whose ITIN or ATIN was only applied for -- The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or
 - s179: Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation) -- On a separate return the dollar limitation is shared with your spouse and figured with your spouse's property; that is outside this tool.
 - s1a: Schedule 1-A, line 5 (qualified tips in a trade or business, with Schedule C, E or F) -- Income from a trade or business is outside this tool.
 - s1a: Schedule 1-A, line 14b (qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C) -- Nonemployee compensation is outside this tool.
@@ -1243,6 +1264,5 @@ HANDLED ELSEWHERE (refusals on other forms tied to lines this form reads):
 - s8812: Credit Limit Worksheet B (Forms 8396, 8839, 8859) -- The credits that call for Credit Limit Worksheet B are outside this tool.
 - s8812: Earned Income Worksheet, lines 2a–2e (statutory employee, farm or partnership income) -- Statutory employee, farm and partnership income are outside this tool.
 - s8812: Earned Income Worksheet, line 4 (Schedule 1, line 8s) -- Schedule 1 amounts are outside this tool.
-- sa: Standard Deduction Chart spouse boxes on a separate return -- Checking age or blindness boxes for your spouse on a married filing separately return is outside this tool.
 - scope: Form 1040 line 16 additional tax forms -- Prepare the applicable additional tax or alternative worksheet.
 - ssb: Schedule 1 adjustments (Social Security Benefits Worksheet, line 6) -- Schedule 1 adjustments on lines 12, 14 and 23 are outside this tool.

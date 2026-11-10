@@ -25,7 +25,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 318; cases with a line that has both a refused and an unknown operand (the order this property guards): 231; cases with a choose stopped at an unknown guard: 381, of which 10 have one refused on every way it can still resolve.
+- Cases with a refused operand somewhere: 318; cases with a line that has both a refused and an unknown operand (the order this property guards): 232; cases with a choose stopped at an unknown guard: 386, of which 11 have one refused on every way it can still resolve.
 
 ## tax_monotone
 
@@ -41,7 +41,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-2823 of 3195 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+3160 of 3574 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.screen:true
@@ -62,12 +62,22 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dependent.placed:true
 - dependent.part_year_home:false
 - dependent.part_year_home:true
+- dependent.hoh_part_year:true
+- dependent.hoh_part_year_relative#0
+- dependent.hoh_part_year_relative:true
+- dependent.born_died_or_placed#0
+- dependent.born_died_or_placed:true
 - dependent.kidnap_residency:true
+- dependent.no:true
+- dependent.qr_relationship#3
+- dependent.qr_relationship#6
 - dependent.spouse_relative:true
 - dependent.lawful:false
 - dependent.qr_kidnapped:true
 - dependent.absence_no_return:true
 - dependent.hoh_absence:true
+- dependent.tiebreak_other:false
+- dependent.kidnap_eic#0
 - dependent.kidnap_eic:true
 - dependent.dc_under13:false
 - dependent.dc_over12_care:false
@@ -76,6 +86,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dependent.ptc_files:true
 - dependent.ptc_magi_counted#0
 - dependent.edu_over:true
+- dependent.edu_over_if_adj:true
 - dependent.edu_over_refused:true
 - dependent.edu_line26:true
 - dependent.edu_no:true
@@ -87,6 +98,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - eic.step1_foreign:false
 - eic.step1_resident:false
 - eic.step2_other:false
+- eic.no:true
 - eic.wsb_line5_stop:true
 - eic.clergy:true
 - f1040.line6d:true
@@ -95,8 +107,12 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f1095a.void:true
 - f2441.nondependent_gate:true
 - f2441.provider_ineligible:true
+- f2441.many_providers:true
+- f2441.no:true
 - f2441.line1_box:true
+- f2441.any_statement:true
 - f2441.statement_notice:true
+- f2441.any_household:true
 - f2441.household_notice:true
 - f2441.line2_box:true
 - f2441.two_or_more:true
@@ -115,6 +131,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f4952.no:true
 - f5329.l3_s:positive
 - f5329.l49_base:right
+- f5695.no:true
 - f5695.line15:right
 - f5695.line16:positive
 - f5695.ins_capped:right
@@ -129,6 +146,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8606.files:true
 - f8606.dist:true
 - f8863.ban:true
+- f8863.no:true
 - f8863.ban_refused:true
 - f8863.no_refund:true
 - f8863.line8#0
@@ -156,9 +174,12 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8959.line16:positive
 - f8960.prior_2i:true
 - f8960.carryforward_adj:true
+- f8960.allocation_over_5e:true
+- f8960.no:true
 - f8960.bad_allocation:true
 - f8962.alloc:true
 - f8962.married_in_2025:true
+- f8962.no:true
 - f8962.marriage:true
 - f8962.other:true
 - f8962.premium_adjust:true
@@ -176,12 +197,17 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - household.roster_bad:true
 - household.filer_under16:true
 - household.community_property:true
+- household.hoh_cp_married:true
 - household.hoh_community_property:true
 - household.credit_disallowed:true
 - household.no:true
 - household.credit_disallowed_if_claimed:true
 - household.ctc_disallowed_claim:true
 - household.eic_disallowed_claim:true
+- household.hoh_absence_from_test1:true
+- household.hoh_absence_from_cost:true
+- household.hoh_absence_from_test2:true
+- household.any_test2_absence:true
 - household.hoh_absence:true
 - household.qss_eligible:false
 - household.qss_fails:true
@@ -189,8 +215,12 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - household.spouse_died_2025:true
 - household.widowed_2025:true
 - household.cp_married:true
+- household.cp_not_joint#0
+- household.cp_not_joint:true
+- household.cp_unmarried:true
 - household.cp_marriage_ended:true
 - household.rdp_community_property:true
+- household.no_spouse_died:false
 - household.filing_status_conflict:true
 - ira.any_trad:true
 - ira.lines2to6:true
@@ -212,9 +242,13 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - ira.se_capital:true
 - ira.se_capital_gate:true
 - ira.special_gate:true
+- ira.no:true
+- ira.combat_gate#0
 - ira.combat_gate:true
 - ira.excl_gate:true
 - ira.deduct_less:true
+- ira.has_deduction:true
+- ira.less_gate#0
 - ira.less_gate:true
 - oi8z.additional_tax:true
 - otjob.figured#5
@@ -224,6 +258,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.sep_s7:right
 - person.sep_s21:right
 - person.ne_comp:right
+- person.no:true
 - person.ira_has:true
 - person.ira_excess:true
 - person.ira_excess_gate:true
@@ -241,11 +276,15 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.ira_basis_gate:true
 - person.ira_8606_line2#0
 - person.ira_dist:true
+- person.ira_dist_if_files#0
+- person.ira_dist_if_files:true
+- person.ira_dist_gate#0
 - person.ira_dist_gate:true
 - person.ira_ssb#0
 - person.edu_student_itin#0
 - person.edu_student_itin:true
 - person.edu_over:true
+- person.edu_over_if_adj:true
 - person.edu_over_refused:true
 - person.edu_line25:true
 - person.edu_line26:true
@@ -331,6 +370,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1.line8_other:true
 - s1.has_gambling:true
 - s1.gambling_pro:true
+- s1.no:true
+- s1.gambling_business#0
 - s1.gambling_business:true
 - s1.alimony:true
 - s1.alimony_unsupported:true
@@ -375,6 +416,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - sa.line16_gambling:right
 - sa.line16#0
 - sales.special:true
+- sales.no:true
 - sb.form5471:true
 - sb.no:true
 - sc.statutory:true

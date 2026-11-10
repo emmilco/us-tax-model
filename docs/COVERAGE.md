@@ -248,7 +248,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [iw2w3] p. 20, Box 12—Codes, "Code H—Elective deferrals under section 501(c) (18)(D) tax-exempt organization plan. Be sure to include this amount in box 1 as wages. The employee will deduct the amount on their Form 1040 or 1040-SR"
   - *Refused at:* `w2.sav_listed`
 - **`person.sav_excess_gate`**: Were your elective deferrals above the 2025 limit?
-  - *The data asks or tests:* Elective deferrals in box 12 over the limit for 2025 (`test`)
+  - *The data asks or tests:* Elective deferrals in box 12 over the limit for 2025 (`choose`)
   - *Not covered:* Excess elective deferrals on Form 8880 line 2. Elective deferrals over the limit for the year, and their later distribution, are outside this tool.
     *Source:* [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500"
   - *Refused at:* `person.sav_line2`
@@ -417,7 +417,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
 ### Household and dependents
 
 - **`household.hoh_community_property`**: Are you married, filing as head of household, and living in a community property state?
-  - *The data asks or tests:* Married, filing as head of household, and living in a community property state (`test`)
+  - *The data asks or tests:* Married, filing as head of household, and living in a community property state (`choose`)
   - *Not covered:* Community income on a married head of household return in a community property state (Form 8958; Pub. 555). A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.
     *Source:* [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555"
   - *Refused at:* `household.hoh_eligible`
@@ -427,17 +427,17 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i1040s8812] p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" and "you will not be allowed to claim any of these credits for 2 years even if you are otherwise eligible to do so. If it is determined that your error was due to fraud, you will not be allowed to claim any of these credits for 10 years"
   - *Refused at:* `s8812.line12`
 - **`household.widowed_2025`**: Are you filing as single or head of household although your spouse died in 2025?
-  - *The data asks or tests:* Filing as single or head of household although your spouse died in 2025 (`test`)
+  - *The data asks or tests:* Filing as single or head of household although your spouse died in 2025 (`choose`)
   - *Not covered:* Filing status after a spouse's death in 2025. Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.
     *Source:* [i1040gi] p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."
   - *Refused at:* `f1040.line12e`
 - **`household.cp_marriage_ended`**: Not filing jointly and not married at the end of 2025, were you married during 2025 while living in a community property state?
-  - *The data asks or tests:* Not filing jointly, and married for part of 2025 while living in a community property state (`test`)
+  - *The data asks or tests:* Not filing jointly, and married for part of 2025 while living in a community property state (`choose`)
   - *Not covered:* Community income of a marriage that ended in 2025 (Form 8958; Pub. 555). Income earned while you were married and living in a community property state may be community income under state law, half yours and half your former spouse's; Form 8958 and the community property rules of Pub. 555 are outside this tool.
     *Source:* [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."
   - *Refused at:* `f1040.line1a`
 - **`household.hoh_absence`**: Filing as head of household, does every person who would qualify you count as living with you only by counting an absence they weren't expected to return from, or during which you didn't keep up the home?
-  - *The data asks or tests:* Head of household turns on a person who lived with you more than half the year only by counting an absence head of household does not count (`test`)
+  - *The data asks or tests:* Head of household turns on a person who lived with you more than half the year only by counting an absence head of household does not count (`choose`)
   - *Not covered:* Temporary absences for head of household (Pub. 501). For head of household, an absence counts as time lived with you only if it was reasonable to assume the absent person would return and you kept up the home; the time the person who would qualify you lived with you must be recounted under that rule, which this tool does not do.
     *Source:* [p501] p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
   - *Refused at:* `household.hoh_eligible`
@@ -452,13 +452,13 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 20, Children of divorced or separated parents
   - *Refused at:* `dependent.qualifying_child`
 - **`dependent.qc_tiebreak`**: Could your qualifying child also be the qualifying child of someone else (the tie-breaker rules), or could a person you would claim be the qualifying child of another taxpayer?
-  - *The data asks or tests:* The qualifying child of another person who is also your qualifying child, or whose other person is a taxpayer (`test`)
+  - *The data asks or tests:* The qualifying child of another person who is also your qualifying child, or whose other person is a taxpayer (`choose`)
   - *Stops the return as:* Qualifying child of more than one person (tie-breaker rules)
   - *Not covered:* Qualifying child of more than one person (tie-breaker rules). This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.
     *Source:* [i1040gi] p. 21, Qualifying child of more than one person
   - *Refused at:* `dependent.qualifying_child`
 - **`dependent.eic_tiebreak`**: Could your qualifying child for the EIC also be the qualifying child of someone else (the EIC tie-breaker rules)?
-  - *The data asks or tests:* The qualifying child of another person who is also your qualifying child for the EIC (`test`)
+  - *The data asks or tests:* The qualifying child of another person who is also your qualifying child for the EIC (`choose`)
   - *Not covered:* Qualifying child of more than one person (EIC). The tie-breaker rules for a child who is the qualifying child of more than one person are outside this tool.
     *Source:* [i1040gi] p. 44, Qualifying child of more than one person
   - *Refused at:* `dependent.eic_child`
@@ -481,7 +481,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
   - *Refused at:* `dependent.lived_half`
 - **`dependent.kidnap_eic`**: For the EIC, did a child presumed kidnapped by someone outside the family live with you in the United States for half of 2025 or less, not counting the time missing?
-  - *The data asks or tests:* A child presumed kidnapped who meets the EIC relationship test but did not live with you in the United States for more than half of 2025, not counting the time missing (`test`)
+  - *The data asks or tests:* A child presumed kidnapped who meets the EIC relationship test but did not live with you in the United States for more than half of 2025, not counting the time missing (`choose`)
   - *Not covered:* Kidnapped child (Pub. 501; Pub. 596 for the EIC). A child presumed kidnapped by someone who isn't a family member, who did not live with you in the United States for more than half of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.
     *Source:* [i1040gi] p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
   - *Refused at:* `dependent.eic_child`
@@ -612,7 +612,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [f8606] Form 8606 (2025), Part I, "In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?" and "Go to line 4"
   - *Refused at:* `f8606.line14`
 - **`person.ira_dist_gate`**: For one person: nondeductible traditional IRA contributions for 2025 together with a 2025 IRA distribution or Roth conversion?
-  - *The data asks or tests:* Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conversion (`test`)
+  - *The data asks or tests:* Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conversion (`choose`)
   - *Not covered:* Nondeductible IRA contributions with a 2025 distribution or conversion (Form 8606 lines 4 to 13, Pub. 590-B). With nondeductible traditional IRA contributions for 2025 and a 2025 traditional IRA distribution or Roth conversion, the taxable part of the distribution is figured on Form 8606 lines 4 to 13 (Pub. 590-B Worksheet 1-1), which this tool does not prepare.
     *Source:* [p590a] p. 15, Both contributions for 2025 and distributions in 2025, "you must figure the taxable part of the traditional IRA distribution before you can figure your modified AGI"
   - *Refused at:* `person.ira_deduction`
@@ -823,7 +823,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [p4681] p. 3, General Rules; p. 4, Exceptions; p. 6, Exclusions
   - *Refused at:* `s1.cod_refused`
 - **`s1.gambling_business`**: Are you a professional gambler?
-  - *The data asks or tests:* Gambling winnings of a professional gambler (`test`)
+  - *The data asks or tests:* Gambling winnings of a professional gambler (`choose`)
   - *Not covered:* Schedule C (gambling as a trade or business). Gambling as a trade or business is reported on Schedule C, with losses and expenses limited to the winnings; this tool does not compute it.
     *Source:* [p525] p. 33, Gambling winnings, "For tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings"
   - *Refused at:* `s1.line8b`
@@ -861,7 +861,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i8606] p. 9, Line 2, "you may need to enter an amount that is more than -0- (even if this is the first year you are required to file Form 8606) or increase or decrease the amount from the chart"
   - *Refused at:* `person.ira_8606_line2`
 - **`person.ira_excess_gate`**: Are any IRA contributions for 2025 excess or recharacterized, or is an earlier excess still in an IRA?
-  - *The data asks or tests:* This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remained at the end of 2025 (screen) (`test`)
+  - *The data asks or tests:* This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remained at the end of 2025 (screen) (`choose`)
   - *Not covered:* Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A). Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.
     *Source:* [p590a] p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of"
   - *Not covered:* Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A). Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.
@@ -898,7 +898,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 98, IRA Deduction Worksheet—Continued, Caution, "stop here and use the worksheet in Pub. 590-A to figure your IRA deduction"
   - *Refused at:* `person.ira_line11`
 - **`ira.combat_gate`**: Do you have traditional IRA contributions and nontaxable combat pay?
-  - *The data asks or tests:* Traditional IRA contributions with nontaxable combat pay (`test`)
+  - *The data asks or tests:* Traditional IRA contributions with nontaxable combat pay (`choose`)
   - *Not covered:* Nontaxable combat pay in IRA compensation (IRA Deduction Worksheet, line 8). Nontaxable combat pay counts as compensation for the IRA deduction; it is outside this tool.
     *Source:* [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 8, "Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q or reported on Form 1040, line 1i"
   - *Refused at:* `person.ira_line11`
@@ -908,7 +908,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 95, Line 20, "don’t include that income on line 8 of the worksheet" and "Don’t include any repayments of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"
   - *Refused at:* `person.ira_line11`
 - **`ira.less_gate`**: Do you want to deduct less than the most you can for traditional IRA contributions?
-  - *The data asks or tests:* An IRA deduction above zero and the election to deduct less (`test`)
+  - *The data asks or tests:* An IRA deduction above zero and the election to deduct less (`choose`)
   - *Not covered:* An IRA deduction smaller than the most you can deduct (Form 8606). Deducting less than the most you can and treating the rest as nondeductible is outside this tool; the tool takes the most you can deduct.
     *Source:* [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 12, "Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)"
   - *Refused at:* `ira.line20`
@@ -981,7 +981,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [f4952] pp. 1, 3–4, Investment Interest Expense Deduction
   - *Refused at:* `f4952.line2`, `f4952.election_checked`, `f4952.line5`, `f4952.required_test`
 - **`sa.mfs_spouse_extra`**: On a married filing separately return, are you checking age or blindness boxes for your spouse?
-  - *The data asks or tests:* Married filing separately and claiming age or blindness boxes for your spouse (`test`)
+  - *The data asks or tests:* Married filing separately and claiming age or blindness boxes for your spouse (`choose`)
   - *Not covered:* Standard Deduction Chart spouse boxes on a separate return. Checking age or blindness boxes for your spouse on a married filing separately return is outside this tool.
     *Source:* [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart
   - *Refused at:* `sa.standard`
@@ -1095,12 +1095,12 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
 ### Education credits
 
 - **`f8863.ban_refused`**: Are you claiming the American opportunity credit after an earlier denial (Form 8862), or within a ban period?
-  - *The data asks or tests:* An American opportunity credit claimed that needs Form 8862 or is barred (`test`)
+  - *The data asks or tests:* An American opportunity credit claimed that needs Form 8862 or is barred (`choose`)
   - *Not covered:* Form 8862, Information To Claim Certain Credits After Disallowance, or a ban on the American opportunity credit. An American opportunity credit after a denial or reduction (other than for a math or clerical error) needs Form 8862, and a credit within a 2- or 10-year ban is not allowed; this tool does not prepare either.
     *Source:* [i8863] p. 1, Form 8862 may be required, "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit."
   - *Refused at:* `f8863.line7`
 - **`person.edu_over_refused`**: For you or your spouse as a student: did tax-free assistance and refunds exceed one academic period's own expenses?
-  - *The data asks or tests:* Adjustments that exceed one academic period's expenses (`test`)
+  - *The data asks or tests:* Adjustments that exceed one academic period's expenses (`choose`)
   - *Not covered:* Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.
     *Source:* [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025."
   - *Refused at:* `person.edu_line27`, `person.edu_line28`, `person.edu_line29`, `person.edu_line30`, `person.edu_line31`
@@ -1115,7 +1115,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)."; p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return."
   - *Refused at:* `dependent.edu_line31`
 - **`dependent.edu_over_refused`**: For a dependent student: did tax-free assistance and refunds exceed one academic period's own expenses?
-  - *The data asks or tests:* Adjustments that exceed one academic period's expenses (`test`)
+  - *The data asks or tests:* Adjustments that exceed one academic period's expenses (`choose`)
   - *Not covered:* Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.
     *Source:* [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025."
   - *Refused at:* `dependent.edu_line27`, `dependent.edu_line28`, `dependent.edu_line29`, `dependent.edu_line30`, `dependent.edu_line31`
@@ -1181,7 +1181,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
     *Source:* [i8962] p. 12, Allocating policy amounts, "The policy covered at least one individual in your tax family and at least one individual in another tax family"
   - *Refused at:* `f8962.line24`, `f8962.line25`
 - **`f8962.marriage`**: Did you marry in 2025 with Marketplace coverage before the first full month of marriage?
-  - *The data asks or tests:* A joint return with Marketplace coverage before the first full month of a 2025 marriage (`test`)
+  - *The data asks or tests:* A joint return with Marketplace coverage before the first full month of a 2025 marriage (`choose`)
   - *Not covered:* Form 8962 Part V, Alternative Calculation for Year of Marriage. A 2025 marriage with Marketplace coverage before the first full month of marriage needs the year-of-marriage rules (Part V and Pub. 974), which this tool does not prepare.
     *Source:* [i8962] p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?"
   - *Refused at:* `f8962.line24`, `f8962.line25`
@@ -1213,7 +1213,7 @@ These refuse a return when entered figures contradict each other, or when an ent
     *Source:* [iw2w3] p. 20, Box 12—Codes, "Code G—Elective deferrals and employer contributions (including nonelective deferrals) to any governmental or nongovernmental section 457(b) deferred compensation plan"
   - *Refused at:* `w2.g_gov_part`
 - **`f8960.bad_allocation`**
-  - *The data asks or tests:* Claimed NIIT tax allocation exceeds the Schedule A tax deduction (`test`)
+  - *The data asks or tests:* Claimed NIIT tax allocation exceeds the Schedule A tax deduction (`choose`)
   - *Not covered:* Form 8960 line 9b. Correct the allocation: the amount allocated to net investment income cannot exceed the allowed Schedule A tax deduction.
     *Source:* [i8960] pp. 17–18, Line 9b, the allowable taxes allocable to net investment income
   - *Refused at:* `f8960.line9b`
@@ -1236,7 +1236,7 @@ These refuse a return when entered figures contradict each other, or when an ent
     *Source:* [i1040gi] p. 15, Qualifying Surviving Spouse; p501 p. 11, Kidnapped child, "You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped."
   - *Refused at:* `f1040.line12e`
 - **`household.filing_status_conflict`**
-  - *The data asks or tests:* The filing status conflicts with the marriage facts entered (`test`)
+  - *The data asks or tests:* The filing status conflicts with the marriage facts entered (`choose`)
   - *Not covered:* Filing status inconsistent with your marriage facts. Correct the filing status or marriage facts. A person married at the end of 2025 cannot file as single; filing jointly requires marriage at year end or the death of a spouse during 2025. The head of household and qualifying surviving spouse tests are checked separately.
     *Source:* [i1040gi] p. 13, Single and Married Filing Jointly, "You were married at the end of 2025" and "Your spouse died in 2025 and you didn’t remarry in 2025."
   - *Refused at:* `f1040.line12e`
@@ -1257,7 +1257,7 @@ These refuse a return when entered figures contradict each other, or when an ent
 #### Sales and capital gains
 
 - **`sales.bad_aggregate`**
-  - *The data asks or tests:* Aggregate route fails its eligibility conditions (`test`)
+  - *The data asks or tests:* Aggregate route fails its eligibility conditions (`choose`)
   - *Not covered:* Form 8949. Use the detail route; this transaction does not qualify for Schedule D lines 1a/8a.
     *Source:* [i1040sd] p. 10, lines 1a and 8a
   - *Refused at:* `sales.one`
@@ -1406,17 +1406,17 @@ These refuse a return when entered figures contradict each other, or when an ent
     *Source:* [i5695] p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
   - *Refused at:* `f5695.enabling_capped`
 - **`f5695.furnace_no_qmid`**
-  - *The data asks or tests:* Furnace and hot water boiler costs entered without a valid QMID for each item (`test`)
+  - *The data asks or tests:* Furnace and hot water boiler costs entered without a valid QMID for each item (`choose`)
   - *Not covered:* Form 5695 line 24 (a furnace or hot water boiler without a valid QMID). Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.
     *Source:* [i5695] p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
   - *Refused at:* `f5695.furnace_capped`
 - **`f5695.hp_no_qmid`**
-  - *The data asks or tests:* Heat pump, heat pump water heater or biomass costs entered without a valid QMID for each item (`test`)
+  - *The data asks or tests:* Heat pump, heat pump water heater or biomass costs entered without a valid QMID for each item (`choose`)
   - *Not covered:* Form 5695 line 29 (a heat pump, heat pump water heater or biomass stove or boiler without a valid QMID). Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.
     *Source:* [i5695] p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
   - *Refused at:* `f5695.hp_capped`
 - **`f5695.wh_no_qmid`**
-  - *The data asks or tests:* Water heater costs entered without a valid QMID for each item (`test`)
+  - *The data asks or tests:* Water heater costs entered without a valid QMID for each item (`choose`)
   - *Not covered:* Form 5695 line 23 (a water heater without a valid QMID). Qualified energy property installed in 2025 qualifies only with a valid QMID reported for it; obtain the QMID from the manufacturer, or do not claim that item.
     *Source:* [i5695] p. 5, Part II Energy Efficient Home Improvement Credit, "you must provide a valid QMID for each item"
   - *Refused at:* `f5695.wh_capped`

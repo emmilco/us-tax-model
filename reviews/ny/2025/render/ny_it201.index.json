@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-09); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -772,9 +772,9 @@
   },
   {
    "key": "59",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "4be366d5949b2dca7fd5ee9a9b41fcd66d2efcae964178e373d5d646227c3beb",
    "status": "MATCH",
-   "subject_key": "8ac5db94336404e42ac8a8ccdef15d870a1b5ebe86f3722b9627b59065bedb98"
+   "subject_key": "a45a4e10b092feabcebe47951591a49b1263c2bddc3af2b1a363eec4f712be82"
   },
   {
    "key": "60",
@@ -970,9 +970,9 @@
   },
   {
    "key": "81",
-   "record": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
+   "record": "4be366d5949b2dca7fd5ee9a9b41fcd66d2efcae964178e373d5d646227c3beb",
    "status": "MATCH",
-   "subject_key": "4ec9dc1ee39205e33aea60875ae7a4dec4d4c702b6f536997d7700fe46cf4d9a"
+   "subject_key": "b539458f284837f8d3675f7fa9782c9aaf3d49d0617c1cc30fa0dc6f3f5b8b6f"
   },
   {
    "key": "82",
@@ -1150,7 +1150,7 @@
   "(chart) (ny_it201.sut.cap)": "4df4f43d41a4eb23cb9a8a1dad254cae661bb0b7a26cfe803d2a510506e4c74e",
   "(chart) (ny_it201.sut.top)": "9af06e0ee4723749c98eb27fb954f505f8faf8afdfebf41c127de3e283950f4d",
   "(chart) (ny_it201.sut.chart)": "20dcd6d7211eb560c45f956f59aa83f0dfd429ffad3808a2830adadbb0e9752d",
-  "59": "db33a8aff0191f7f63aac4d97e8e865ca77d87ab10105fdbc3e42ef6fac4ded5",
+  "59": "ba5dc5a7376b41c75f35a2bca43a0e108c192fdfa0d8fa3fe78ba9befc9586aa",
   "60": "15c6c3523f008134cec04ca119978e35f294fdd72220059944267153f7f8bb43",
   "61": "95411e1d41538d66f1651ea42f62ece8d3f365a6cdfe2dce6a0fcac46810e83f",
   "62": "624417f0c5415c0364412c313e174c575d0f60f18edb757bafe6cef37871cf5a",
@@ -1183,7 +1183,7 @@
   "(81) (ny_it201.safe_harbor_100)": "2113469f220b9d81c6751e5376e3edacd0e4e7d5dfd01ac8fdbcdb437983a976",
   "(81) (ny_it201.safe_harbor_110)": "32ba9c529ca72a8e1d720511f5fcb8da09494f7709363cb044845b484bc02438",
   "(81) (ny_it201.safe_harbor)": "e8d092202a2f419d209bc471182b66a14517c0301529042d56cc23f22adf0113",
-  "81": "5161eb3dc2812cdfe28c9d5d828de9f7d57425cc391b88d179e6c24ffd092c33",
+  "81": "27cb1dc70ef8c34083cd541928d417383116c4de9d8a60e40816404598c8fb02",
   "82": "a8b44b754142c484f8a5b288f15843a649fea7a6f96afeb173b4f2012c3963ad",
   "(77)": "b620cd8da4d6b8bb0b16851566574d7b3c0ecfdbe41656a6a003565b43b50dcf",
   "77": "39167c32d56a1003b448f8bfec8ae7098ccd9febb46ea4b93e75aa4c2e24a3b0",

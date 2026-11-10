@@ -392,38 +392,103 @@ form:
         locator: p. 9, Death or birth, "Your qualifying child or qualifying relative who lived with you for more than half the
           part of the year they were alive"; i1040gi p. 15, "more than half the time since the person was adopted or placed
           with you in 2025"; i1040gi pp. 14-15, temporary absences, "or detention in a juvenile facility"
+    - id: dependent.hoh_part_year
+      printed: (helper)
+      label: 'For a relative other than a qualifying child who did not live with you more than half of 2025: born or died in 2025,
+        or adopted or placed, and lived with you more than half of the part of the year'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.qualifying_child
+            - const: true
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.qualifying_child
+            - const: false
+          then: dependent.hoh_part_year_relative
+      cite:
+        doc: p501
+        locator: p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined
+          in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more
+          than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted
+          or placed with you in 2025"
+    - id: dependent.hoh_part_year_relative
+      printed: (helper)
+      label: Born or died in 2025, or adopted or placed with you in 2025, and lived with you more than half of the part of the
+        year
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.born_died_or_placed
+            - const: true
+          then: dependent.part_year_home
+        - guard:
+            op: test
+            eq:
+            - dependent.born_died_or_placed
+            - const: false
+          then: dependent.no
+      cite:
+        doc: p501
+        locator: p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined
+          in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more
+          than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted
+          or placed with you in 2025"
+    - id: dependent.born_died_or_placed
+      printed: (helper)
+      label: Born or died in 2025, or adopted or placed with you in 2025
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.born_died
+            - const: true
+          then: dependent.born_died
+        - guard:
+            op: test
+            eq:
+            - dependent.born_died
+            - const: false
+          then: dependent.placed
+      cite:
+        doc: p501
+        locator: p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined
+          in Table 4) must be one of the following"; i1040gi p. 15, "the person is considered to have lived with you for more
+          than half of 2025 if your main home was this person's main home for more than half the time since the person was adopted
+          or placed with you in 2025"
     - id: dependent.hoh_lived_half
       printed: (helper)
       type: Bool
       label: Lived with you more than half of 2025, or, for a relative other than a qualifying child (whose months already count
         the part of the year), more than half of the part of 2025 they were alive or since their adoption or placement
       expr:
-        op: test
-        any:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.lived_half
-              - const: true
-          - op: test
-            all:
-              - op: test
-                eq:
-                  - dependent.qualifying_child
-                  - const: false
-              - op: test
-                any:
-                  - op: test
-                    eq:
-                      - dependent.born_died
-                      - const: true
-                  - op: test
-                    eq:
-                      - dependent.placed
-                      - const: true
-              - op: test
-                eq:
-                  - dependent.part_year_home
-                  - const: true
+            - dependent.lived_half
+            - const: true
+          then: dependent.lived_half
+        - guard:
+            op: test
+            eq:
+            - dependent.lived_half
+            - const: false
+          then: dependent.hoh_part_year
       cite:
         doc: p501
         locator: p. 9, Death or birth, "To qualify you for head of household filing status, the qualifying person (as defined
@@ -548,41 +613,116 @@ form:
         doc: i1040gi
         locator: pp. 44–45, Social security number (SSN), EIC
       ambiguity: amb.2025.eic_valid_ssn
+    - id: dependent.under_19
+      printed: (helper)
+      label: Under age 19 at the end of 2025
+      type: Bool
+      expr:
+        op: test
+        lt:
+        - dependent.age
+        - param: qc.age_limit
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, the age conditions
+    - id: dependent.under_24
+      printed: (helper)
+      label: Under age 24 at the end of 2025
+      type: Bool
+      expr:
+        op: test
+        lt:
+        - dependent.age
+        - param: qc.student_age_limit
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, the age conditions
+    - id: dependent.qc_age_younger
+      printed: (helper)
+      label: Younger than you (or your spouse if filing jointly), or permanently and totally disabled
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.younger
+            - const: true
+          then: dependent.younger
+        - guard:
+            op: test
+            eq:
+            - dependent.younger
+            - const: false
+          then: dependent.disabled
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, the age conditions
+    - id: dependent.qc_age_19
+      printed: (helper)
+      label: 'Age test for a person aged 19 or older: under 24, a full-time student and younger than you, or permanently and totally
+        disabled'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.under_24
+            - const: true
+          then: dependent.qc_age_student
+        - guard:
+            op: test
+            eq:
+            - dependent.under_24
+            - const: false
+          then: dependent.disabled
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, the age conditions
+    - id: dependent.qc_age_student
+      printed: (helper)
+      label: 'Age test for a person aged 19 to 23: a full-time student and younger than you, or permanently and totally disabled'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.student
+            - const: true
+          then: dependent.qc_age_younger
+        - guard:
+            op: test
+            eq:
+            - dependent.student
+            - const: false
+          then: dependent.disabled
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, the age conditions
     - id: dependent.qc_age
       printed: (helper)
       type: Bool
       label: Under 19 and younger than you, under 24 a full-time student and younger than you, or permanently and totally disabled
       expr:
-        op: test
-        any:
-          - op: test
-            all:
-              - op: test
-                lt:
-                  - dependent.age
-                  - param: qc.age_limit
-              - op: test
-                eq:
-                  - dependent.younger
-                  - const: true
-          - op: test
-            all:
-              - op: test
-                lt:
-                  - dependent.age
-                  - param: qc.student_age_limit
-              - op: test
-                eq:
-                  - dependent.student
-                  - const: true
-              - op: test
-                eq:
-                  - dependent.younger
-                  - const: true
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.disabled
-              - const: true
+            - dependent.under_19
+            - const: true
+          then: dependent.qc_age_younger
+        - guard:
+            op: test
+            eq:
+            - dependent.under_19
+            - const: false
+          then: dependent.qc_age_19
       cite:
         doc: i1040gi
         locator: p. 17, Step 1, the age conditions
@@ -625,33 +765,114 @@ form:
       cite:
         doc: p501
         locator: p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (a child who lived with you for more than half of 2025 meets the residency test without this treatment)
+    - id: dependent.no
+      printed: (helper)
+      label: Year parameter household.no (false)
+      type: Bool
+      expr:
+        op: param
+        ref: household.no
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
+    - id: dependent.qc_tests
+      printed: (helper)
+      label: 'Qualifying child tests (Step 1): relationship, age, support, joint return and residency, each asked only when the
+        ones before it pass'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_relationship
+            - const: true
+          then: dependent.qc_from_age
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_relationship
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
+    - id: dependent.qc_from_age
+      printed: (helper)
+      label: 'Qualifying child tests (Step 1) from the age test on: age, support, joint return and residency'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_age
+            - const: true
+          then: dependent.qc_from_support
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_age
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
+    - id: dependent.qc_from_support
+      printed: (helper)
+      label: 'Qualifying child tests (Step 1) from the support test on: support, joint return and residency'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.self_support
+            - const: true
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.self_support
+            - const: false
+          then: dependent.qc_from_joint
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
+    - id: dependent.qc_from_joint
+      printed: (helper)
+      label: 'Qualifying child tests (Step 1) from the joint return test on: joint return and residency'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.joint_return
+            - const: true
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.joint_return
+            - const: false
+          then: dependent.lived_half
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
     - id: dependent.qualifying_child
       printed: (helper)
       type: Bool
       label: Qualifying child (Step 1)
       expr:
         op: test
-        all:
-          - op: test
-            eq:
-              - dependent.qc_relationship
-              - const: true
-          - op: test
-            eq:
-              - dependent.qc_age
-              - const: true
-          - op: test
-            eq:
-              - dependent.self_support
-              - const: false
-          - op: test
-            eq:
-              - dependent.joint_return
-              - const: false
-          - op: test
-            eq:
-              - dependent.lived_half
-              - const: true
+        eq:
+        - dependent.qc_tests
+        - const: true
       cite:
         doc: i1040gi
         locator: p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
@@ -679,114 +900,226 @@ form:
       type: Bool
       label: U.S. citizen, national or resident alien, or a resident of Canada or Mexico
       expr:
-        op: test
-        any:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.citizen
-              - const: true
-          - op: test
+            - dependent.citizen
+            - const: true
+          then: dependent.citizen
+        - guard:
+            op: test
             eq:
-              - dependent.canada_mexico
-              - const: true
+            - dependent.citizen
+            - const: false
+          then: dependent.canada_mexico
       cite:
         doc: i1040gi
         locator: p. 18, Step 2, question 1
+    - id: dependent.qc_dependent_resident
+      printed: (helper)
+      label: Qualifying child who is a U.S. citizen, national or resident alien or a resident of Canada or Mexico, and you are
+        not a dependent
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.resident
+            - const: true
+          then: dependent.filer_not_dependent
+        - guard:
+            op: test
+            eq:
+            - dependent.resident
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 2, questions 1 and 4
+    - id: dependent.filer_not_dependent
+      printed: (helper)
+      label: You (and your spouse if filing jointly) cannot be claimed as a dependent
+      type: Bool
+      expr:
+        op: test
+        eq:
+        - sa.dependent
+        - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 2, questions 1 and 4
     - id: dependent.qc_dependent
       printed: (helper)
       type: Bool
       label: Qualifying child who is your dependent (Step 2)
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.qualifying_child
-              - const: true
-          - op: test
+            - dependent.qualifying_child
+            - const: true
+          then: dependent.qc_dependent_resident
+        - guard:
+            op: test
             eq:
-              - dependent.resident
-              - const: true
-          - op: test
-            eq:
-              - sa.dependent
-              - const: false
+            - dependent.qualifying_child
+            - const: false
+          then: dependent.no
       cite:
         doc: i1040gi
         locator: p. 18, Step 2, questions 1 and 4
+    - id: dependent.qr_listed_relative
+      printed: (helper)
+      label: A child, sibling, parent, other ancestor or in-law listed in Step 4
+      type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - dependent.relationship
+          - const: child
+        - op: test
+          eq:
+          - dependent.relationship
+          - const: sibling
+        - op: test
+          eq:
+          - dependent.relationship
+          - const: parent
+        - op: test
+          eq:
+          - dependent.relationship
+          - const: parent_relative
+        - op: test
+          eq:
+          - dependent.relationship
+          - const: in_law
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
+          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
+          can be related to either you or your spouse."
+    - id: dependent.qr_household_member
+      printed: (helper)
+      label: 'A household member: lived with you all year, or a relative of your spouse on a joint return'
+      type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          all:
+          - op: test
+            eq:
+            - f1040.status
+            - const: mfj
+          - op: test
+            eq:
+            - dependent.spouse_relative
+            - const: true
+        - op: test
+          eq:
+          - dependent.qr_all_year
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
+          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
+          can be related to either you or your spouse."
+    - id: dependent.qr_other_relation
+      printed: (helper)
+      label: 'A descendant of a sibling or another person: lived with you all year and the relationship did not violate local
+        law, or a relative of your spouse on a joint return'
+      type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          all:
+          - op: test
+            eq:
+            - f1040.status
+            - const: mfj
+          - op: test
+            eq:
+            - dependent.spouse_relative
+            - const: true
+        - op: test
+          all:
+          - op: test
+            eq:
+            - dependent.qr_all_year
+            - const: true
+          - op: test
+            eq:
+            - dependent.lawful
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
+          with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
+          can be related to either you or your spouse."
     - id: dependent.qr_relationship
       printed: (helper)
       type: Bool
       label: A relative listed in Step 4, or any other person who lived with you all year
       expr:
-        op: test
-        any:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.relationship
-              - const: child
-          - op: test
+            - dependent.relationship
+            - const: child
+          then: dependent.qr_listed_relative
+        - guard:
+            op: test
             eq:
-              - dependent.relationship
-              - const: sibling
-          - op: test
+            - dependent.relationship
+            - const: sibling
+          then: dependent.qr_listed_relative
+        - guard:
+            op: test
             eq:
-              - dependent.relationship
-              - const: parent
-          - op: test
+            - dependent.relationship
+            - const: parent
+          then: dependent.qr_listed_relative
+        - guard:
+            op: test
             eq:
-              - dependent.relationship
-              - const: parent_relative
-          - op: test
+            - dependent.relationship
+            - const: parent_relative
+          then: dependent.qr_listed_relative
+        - guard:
+            op: test
             eq:
-              - dependent.relationship
-              - const: in_law
-          - op: test
-            all:
-              - op: test
-                eq:
-                  - f1040.status
-                  - const: mfj
-              - op: test
-                eq:
-                  - dependent.spouse_relative
-                  - const: true
-          - op: test
-            all:
-              - op: test
-                any:
-                  - op: test
-                    eq:
-                      - dependent.relationship
-                      - const: household_member
-                  - op: test
-                    eq:
-                      - dependent.relationship
-                      - const: sibling_descendant
-                  - op: test
-                    eq:
-                      - dependent.relationship
-                      - const: other
-              - op: test
-                eq:
-                  - dependent.qr_all_year
-                  - const: true
-              - op: test
-                any:
-                  - op: test
-                    all:
-                      - op: test
-                        ne:
-                          - dependent.relationship
-                          - const: other
-                      - op: test
-                        ne:
-                          - dependent.relationship
-                          - const: sibling_descendant
-                  - op: test
-                    eq:
-                      - dependent.lawful
-                      - const: true
+            - dependent.relationship
+            - const: in_law
+          then: dependent.qr_listed_relative
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: household_member
+          then: dependent.qr_household_member
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: sibling_descendant
+          then: dependent.qr_other_relation
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: other
+          then: dependent.qr_other_relation
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse."
@@ -946,25 +1279,48 @@ form:
           cite:
             doc: p501
             locator: p. 18, Kidnapped child, "You can treat a child as your qualifying relative even if the child has been kidnapped, but the following statements must be true."
+    - id: dependent.qr_dependent_resident
+      printed: (helper)
+      label: Qualifying relative who is a U.S. citizen, national or resident alien or a resident of Canada or Mexico, and you
+        are not a dependent
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.resident
+            - const: true
+          then: dependent.filer_not_dependent
+        - guard:
+            op: test
+            eq:
+            - dependent.resident
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, questions 2 and 5
     - id: dependent.qr_dependent
       printed: (helper)
       type: Bool
       label: Qualifying relative who is your dependent (Step 4, questions 2 and 5)
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.qualifying_relative
-              - const: true
-          - op: test
+            - dependent.qualifying_relative
+            - const: true
+          then: dependent.qr_dependent_resident
+        - guard:
+            op: test
             eq:
-              - dependent.resident
-              - const: true
-          - op: test
-            eq:
-              - sa.dependent
-              - const: false
+            - dependent.qualifying_relative
+            - const: false
+          then: dependent.no
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, questions 2 and 5
@@ -975,20 +1331,20 @@ form:
       expr:
         op: test
         all:
+        - op: test
+          eq:
+          - dependent.tin
+          - const: false
+        - op: test
+          any:
           - op: test
             eq:
-              - dependent.tin
-              - const: false
+            - dependent.qc_dependent
+            - const: true
           - op: test
-            any:
-              - op: test
-                eq:
-                  - dependent.qc_dependent
-                  - const: true
-              - op: test
-                eq:
-                  - dependent.qr_dependent
-                  - const: true
+            eq:
+            - dependent.qr_dependent
+            - const: true
       cite:
         doc: i1040gi
         locator: 'p. 22, Social security number, "You must enter each dependent’s social security number (SSN)"'
@@ -999,14 +1355,14 @@ form:
       expr:
         op: test
         any:
-          - op: test
-            eq:
-              - dependent.qc_dependent
-              - const: true
-          - op: test
-            eq:
-              - dependent.qr_dependent
-              - const: true
+        - op: test
+          eq:
+          - dependent.qc_dependent
+          - const: true
+        - op: test
+          eq:
+          - dependent.qr_dependent
+          - const: true
       cite:
         doc: i1040gi
         locator: pp. 17–19, Who Qualifies as Your Dependent
@@ -1031,37 +1387,113 @@ form:
       cite:
         doc: i1040gi
         locator: p. 18, Step 3, question 3
+    - id: dependent.ctc_from_tin
+      printed: (helper)
+      label: Child tax credit tests (Step 3) from the SSN, ITIN or ATIN test on
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.tin
+            - const: true
+          then: dependent.ctc_from_citizen
+        - guard:
+            op: test
+            eq:
+            - dependent.tin
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, questions 1–4
+    - id: dependent.ctc_from_citizen
+      printed: (helper)
+      label: Child tax credit tests (Step 3) from the citizenship test on
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen
+            - const: true
+          then: dependent.ctc_from_age
+        - guard:
+            op: test
+            eq:
+            - dependent.citizen
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, questions 1–4
+    - id: dependent.ctc_from_age
+      printed: (helper)
+      label: Child tax credit tests (Step 3) from the age test on
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.under_ctc_age
+            - const: true
+          then: dependent.ctc_from_work_ssn
+        - guard:
+            op: test
+            eq:
+            - dependent.under_ctc_age
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, questions 1–4
+    - id: dependent.ctc_from_work_ssn
+      printed: (helper)
+      label: Child tax credit tests (Step 3) from the work SSN test on
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.work_ssn
+            - const: true
+          then: household.ctc_ssn
+        - guard:
+            op: test
+            eq:
+            - dependent.work_ssn
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 18, Step 3, questions 1–4
     - id: dependent.ctc_child
       printed: (helper)
       type: Bool
       label: Qualifying child for the child tax credit (Step 3)
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.qc_dependent
-              - const: true
-          - op: test
+            - dependent.qc_dependent
+            - const: true
+          then: dependent.ctc_from_tin
+        - guard:
+            op: test
             eq:
-              - dependent.tin
-              - const: true
-          - op: test
-            eq:
-              - dependent.citizen
-              - const: true
-          - op: test
-            eq:
-              - dependent.under_ctc_age
-              - const: true
-          - op: test
-            eq:
-              - dependent.work_ssn
-              - const: true
-          - op: test
-            eq:
-              - household.ctc_ssn
-              - const: true
+            - dependent.qc_dependent
+            - const: false
+          then: dependent.no
       cite:
         doc: i1040gi
         locator: p. 18, Step 3, questions 1–4
@@ -1256,16 +1688,20 @@ form:
       type: Bool
       label: A Test 2 person only by counting an absence head of household does not count
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.hoh_test2_lived
-              - const: true
-          - op: test
+            - dependent.hoh_test2_lived
+            - const: true
+          then: dependent.absence_no_return
+        - guard:
+            op: test
             eq:
-              - dependent.absence_no_return
-              - const: true
+            - dependent.hoh_test2_lived
+            - const: false
+          then: dependent.no
       cite:
         doc: p501
         locator: p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence."
@@ -1310,71 +1746,129 @@ form:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
       refuses: *claimed_no_tin
+    - id: dependent.tiebreak_other
+      printed: (helper)
+      label: 'With another person who can claim this person: that person is a taxpayer, or this person is also your qualifying
+        child'
+      type: Bool
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - dependent.other_nontaxpayer
+          - const: false
+        - op: test
+          eq:
+          - dependent.qc_tests
+          - const: true
+      cite:
+        doc: p501
+        locator: p. 15, Qualifying Child of More Than One Person, "Sometimes, a child meets the relationship, age, residency,
+          support, and joint return tests to be a qualifying child of more than one person."; i1040gi p. 19, Step 4, "For this
+          purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t
+          file such a return or files only to get a refund of withheld income tax or estimated tax paid."
     - id: dependent.qc_tiebreak
       printed: (gate)
       type: Bool
       label: The qualifying child of another person who is also your qualifying child, or whose other person is a taxpayer
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.other_claimant
-              - const: true
-          - op: test
-            any:
-              - op: test
-                eq:
-                  - dependent.other_nontaxpayer
-                  - const: false
-              - op: test
-                all:
-                  - op: test
-                    eq:
-                      - dependent.qc_relationship
-                      - const: true
-                  - op: test
-                    eq:
-                      - dependent.qc_age
-                      - const: true
-                  - op: test
-                    eq:
-                      - dependent.self_support
-                      - const: false
-                  - op: test
-                    eq:
-                      - dependent.joint_return
-                      - const: false
-                  - op: test
-                    eq:
-                      - dependent.lived_half
-                      - const: true
+            - dependent.other_claimant
+            - const: true
+          then: dependent.tiebreak_other
+        - guard:
+            op: test
+            eq:
+            - dependent.other_claimant
+            - const: false
+          then: dependent.no
       cite:
         doc: p501
         locator: p. 15, Qualifying Child of More Than One Person, "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person."; i1040gi p. 19, Step 4, "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid."
+    - id: dependent.eic_child_tests
+      printed: (helper)
+      label: 'EIC qualifying child tests: relationship, age, joint return and residency in the United States, each asked only
+        when the ones before it pass'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_relationship
+            - const: true
+          then: dependent.eic_child_from_age
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_relationship
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return
+          AND lived with you in the United States for more than half of 2025)
+    - id: dependent.eic_child_from_age
+      printed: (helper)
+      label: 'EIC qualifying child tests from the age test on: age, joint return and residency in the United States'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_age
+            - const: true
+          then: dependent.eic_child_from_joint
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_age
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return
+          AND lived with you in the United States for more than half of 2025)
+    - id: dependent.eic_child_from_joint
+      printed: (helper)
+      label: 'EIC qualifying child tests from the joint return test on: joint return and residency in the United States'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.joint_return
+            - const: true
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.joint_return
+            - const: false
+          then: dependent.us_half
+      cite:
+        doc: i1040gi
+        locator: p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint return
+          AND lived with you in the United States for more than half of 2025)
     - id: dependent.eic_child
       printed: (helper)
       type: Bool
       label: Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)
       expr:
         op: test
-        all:
-          - op: test
-            eq:
-              - dependent.qc_relationship
-              - const: true
-          - op: test
-            eq:
-              - dependent.qc_age
-              - const: true
-          - op: test
-            eq:
-              - dependent.joint_return
-              - const: false
-          - op: test
-            eq:
-              - dependent.us_half
-              - const: true
+        eq:
+        - dependent.eic_child_tests
+        - const: true
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint
@@ -1403,50 +1897,81 @@ form:
       type: Bool
       label: The qualifying child of another person who is also your qualifying child for the EIC
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.other_claimant
-              - const: true
-          - op: test
+            - dependent.other_claimant
+            - const: true
+          then: dependent.eic_child_tests
+        - guard:
+            op: test
             eq:
-              - dependent.qc_relationship
-              - const: true
-          - op: test
-            eq:
-              - dependent.qc_age
-              - const: true
-          - op: test
-            eq:
-              - dependent.joint_return
-              - const: false
-          - op: test
-            eq:
-              - dependent.us_half
-              - const: true
+            - dependent.other_claimant
+            - const: false
+          then: dependent.no
       cite:
         doc: i1040gi
         locator: p. 44, Qualifying child of more than one person, "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits"
+    - id: dependent.kidnap_eic_related
+      printed: (helper)
+      label: 'A child presumed kidnapped: meets the EIC relationship test but did not live with you in the United States for more
+        than half of 2025'
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_relationship
+            - const: true
+          then: dependent.not_us_half
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_relationship
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see
+          Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets
+          the residency test without this treatment)
+    - id: dependent.not_us_half
+      printed: (helper)
+      label: Did not live with you in the United States for more than half of 2025
+      type: Bool
+      expr:
+        op: test
+        eq:
+        - dependent.us_half
+        - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see
+          Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets
+          the residency test without this treatment)
     - id: dependent.kidnap_eic
       printed: (gate)
       type: Bool
       label: A child presumed kidnapped who meets the EIC relationship test but did not live with you in the United States for more than half of 2025, not counting the time missing
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.kidnapped
-              - const: true
-          - op: test
+            - dependent.kidnapped
+            - const: true
+          then: dependent.kidnap_eic_related
+        - guard:
+            op: test
             eq:
-              - dependent.qc_relationship
-              - const: true
-          - op: test
-            eq:
-              - dependent.us_half
-              - const: false
+            - dependent.kidnapped
+            - const: false
+          then: dependent.no
       cite:
         doc: i1040gi
         locator: p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)
@@ -1455,16 +1980,20 @@ form:
       type: Bool
       label: Qualifying child for the EIC who has a valid SSN
       expr:
-        op: test
-        all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-              - dependent.eic_child
-              - const: true
-          - op: test
+            - dependent.eic_child
+            - const: true
+          then: dependent.eic_ssn
+        - guard:
+            op: test
             eq:
-              - dependent.eic_ssn
-              - const: true
+            - dependent.eic_child
+            - const: false
+          then: dependent.no
       cite:
         doc: i1040gi
         locator: p. 46, Worksheet A, line 2, "the number of qualifying children you have who have valid SSNs"; pp. 44–45,
@@ -2031,25 +2560,63 @@ form:
         locator: p. 4, Tax-free educational assistance, "For tax-free educational assistance received in 2025, reduce the qualified
           education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic
           period."
+    - id: dependent.edu_has_adj
+      printed: (helper)
+      label: Adjusted qualified education expenses (worksheet line 3) above zero
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - dependent.edu_adj
+        - const: 0
+      cite:
+        doc: i8863
+        locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each
+          academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid)
+          qualified education expenses in 2025."
+    - id: dependent.edu_over_if_adj
+      printed: (helper)
+      label: Adjustments that exceed one academic period's expenses, where adjusted qualified education expenses are above zero
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_has_adj
+            - const: true
+          then: dependent.edu_over
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_has_adj
+            - const: false
+          then: dependent.edu_no
+      cite:
+        doc: i8863
+        locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each
+          academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid)
+          qualified education expenses in 2025."
     - id: dependent.edu_over_refused
       printed: (gate)
       label: Adjustments that exceed one academic period's expenses
       type: Bool
       expr:
-        op: test
-        all:
-        - op: test
-          eq:
-          - dependent.edu_student
-          - const: true
-        - op: test
-          gt:
-          - dependent.edu_adj
-          - const: 0
-        - op: test
-          eq:
-          - dependent.edu_over
-          - const: true
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_student
+            - const: true
+          then: dependent.edu_over_if_adj
+        - guard:
+            op: test
+            eq:
+            - dependent.edu_student
+            - const: false
+          then: dependent.edu_no
       cite:
         doc: i8863
         locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each

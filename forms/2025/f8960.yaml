@@ -650,21 +650,47 @@ form:
         locator: p. 1, Part III, line 17, "Net investment income tax for individuals. Multiply line 16 by 3.8%
           (0.038)"
       ambiguity: amb.2025.multiplication_subcent
+    - id: f8960.allocation_over_5e
+      printed: (helper)
+      label: Claimed NIIT tax allocation more than Schedule A line 5e
+      type: Bool
+      expr:
+        op: test
+        gt:
+          - f8960.allocated_taxes
+          - sa.line5e
+      cite:
+        doc: i8960
+        locator: pp. 17–18, Line 9b, the allowable taxes allocable to net investment income
+    - id: f8960.no
+      printed: (helper)
+      label: Year parameter household.no (false)
+      type: Bool
+      expr:
+        op: param
+        ref: household.no
+      cite:
+        doc: i8960
+        locator: pp. 17–18, Line 9b, the allowable taxes allocable to net investment income
     - id: f8960.bad_allocation
       printed: (gate)
       label: Claimed NIIT tax allocation exceeds the Schedule A tax deduction
       type: Bool
       expr:
-        op: test
-        all:
-          - op: test
-            eq:
-              - sa.itemizes
-              - const: true
-          - op: test
-            gt:
-              - f8960.allocated_taxes
-              - sa.line5e
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.itemizes
+                - const: true
+            then: f8960.allocation_over_5e
+          - guard:
+              op: test
+              eq:
+                - sa.itemizes
+                - const: false
+            then: f8960.no
       cite:
         doc: i8960
         locator: pp. 17–18, Line 9b, the allowable taxes allocable to net investment income
