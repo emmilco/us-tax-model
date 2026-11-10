@@ -44,6 +44,9 @@ _COMMENT = ("none", "a comment or docstring citing the document")
 _KEY = ("none", "a dictionary key named docs, not a path")
 READERS = {
     ("tools/check_bug_inventory.py", "BUG_INVENTORY.md"): ("docs", ["check_bug_inventory"]),
+    ("tools/check_docs_conventions.py", "HANDOFF-NEXT-SESSION.md"): ("docs", ["check_docs_conventions"]),
+    ("tools/check_docs_conventions.py", "docs/*"): ("docs", ["check_docs_conventions"]),
+    ("tools/check_docs_conventions.py", "handoffs/*"): ("none", "named in its messages; it reads HANDOFF-NEXT-SESSION.md, not handoffs/"),
     # --check and --self-test both validate the real inventory's Siblings checked fields.
     ("tools/siblings.py", "BUG_INVENTORY.md"): ("docs", ["siblings_check", "bookkeeping_self_tests"]),
     # The tests copy the real registers and run the tools on the copies (--file).
@@ -58,6 +61,9 @@ READERS = {
     # Validates research/costs/agent_runs.jsonl; the quoted component "research" also names research/audits.
     ("tools/check_agent_runs.py", "research/costs/*"): ("docs", ["check_agent_runs", "bookkeeping_self_tests"]),
     ("tools/check_agent_runs.py", "research/audits/*"): ("none", "the quoted component is research/costs"),
+    # The hook writes the agent-run ledger outside check-all; its self-test writes a temporary one.
+    ("tools/claude_hooks/agents.py", "research/costs/*"): ("none", "a Claude Code hook writes the ledger; its self-test uses a temporary directory"),
+    ("tools/claude_hooks/agents.py", "research/audits/*"): ("none", "the quoted component is research/costs"),
     # Pinned open-defect survivors must name an open entry.
     ("engine/src/mutate.ts", "BUG_INVENTORY.md"): ("slow", ["mutate", "ny_mutate"]),
     ("tools/coverage/roadmap.py", "TASKS.md"): ("none", "roadmap.py is run by hand, by no check-all step"),
@@ -87,6 +93,9 @@ WALKERS = {
     ("tools/archive_text.py", 'glob("tools/**'): "its self-test scans tools/**/*.py",
     ("tools/check_all.sh", "--name-only"): "the run's guard: paths changed during the run, not an input of a step",
     ("tools/commit_tested.sh", "--name-only"): "commits a tested tree; not a check-all step",
+    ("tools/claims.py", "--name-only"): "pre-commit: the forms a commit changes; its self-test uses a temporary repository",
+    ("tools/claims.py", "ls-tree"): "pre-commit, root commit only: the forms of the first tree; not a check-all step",
+    ("tools/build_fresh.py", ".rglob("): "the model sources and canonical/ by modification time; reads no docs-tier path",
     ("tools/siblings.py", '"grep"'): "git grep over forms/<year> only",
     ("tools/siblings.py", "--name-only"): "git diff over reviews/<year> logs; the unscoped one serves --reviews-since, not a step",
     ("tools/siblings.py", ".rglob("): "the --input ripple over its listed source directories; not a step",

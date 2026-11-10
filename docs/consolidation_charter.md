@@ -95,11 +95,19 @@ Every process rule is either enforced by a tool or marked advisory. No new prose
 | Commit only exactly tested trees | `commit_tested.sh`, hooks | enforced |
 | One review per form per round; cost estimate; owner gate above $3 | `rerun_all.py`; `completeness_review.py`, `screen_review.py` and `false_no_review.py` (sampled per release, `samples.py`) | enforced |
 | Carry repeat disagreements mechanically | `carry.py` | enforced |
-| Review data moves only through the tool | `worktree_data.py` clone, fill, carry-back | enforced |
-| Background waits on a pid or a status, never `pgrep -f` | none | advisory |
-| Mechanical agent work runs on Sonnet | none | advisory. Proposal: an agent-launch wrapper that requires model and class, and logs the `agent_runs.jsonl` row automatically |
-| Two lanes never edit the same form at once | none | Proposal: a form-claim registry checked by `commit_tested.sh` |
+| Review data moves only through the tool | `worktree_data.py` clone, fill, carry-back; hand copies into it refused by `tools/claude_hooks/bash_guard.py` | enforced |
+| Background waits on a pid or a status, never `pgrep -f` | `tools/claude_hooks/bash_guard.py` (Claude Code hook) | enforced for `pgrep -f`; timeouts and one wait per task advisory |
+| Mechanical agent work runs on Sonnet | `tools/claude_hooks/agents.py` (Claude Code hooks) | enforced: a launch needs a model and `Class:`, `Year:`, `Jurisdiction:` in its brief; the `agent_runs.jsonl` row is written at launch and completed with usage at the end |
+| Two lanes never edit the same form at once | `tools/claims.py`, checked by `pre-commit` (owner, 2026-11-10) | enforced at commit; a merge releases the merged branch's claims; `inputs` is one claim |
 | Fixture defaults are visible test data | `defaults_guard.mjs`, commit-msg hook | enforced |
+| A merge never creates or renumbers BUG entries (renumber on the branch) | `check_bug_inventory.py --merge`, pre-commit | enforced |
+| Review checks and triage read a fresh build | `tools/build_fresh.py`, called by the review checks and triage | enforced |
+| Point-in-time docs are dated; the handoff file keeps two entries | `tools/check_docs_conventions.py`, docs tier | enforced |
+| Every paid review call is logged with year and jurisdiction | `transcribe.record_cost` refuses a row without them | enforced |
+| Verify an agent's claimed check-all status from the status record and log | none | advisory |
+| A review runs after all of its form's fixes in the round; a round with only lows starts no further round | none | advisory (once per subject is enforced) |
+| A defect the change being prepared introduces is fixed before that change is committed | none | advisory |
+| `--prefer-worktree` only after checking which copy the logs were written from | none | advisory (the flag is required) |
 
 ## 6. Conventions (from the phase 0 inventory)
 

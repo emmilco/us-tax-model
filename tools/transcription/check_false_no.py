@@ -91,4 +91,6 @@ def check(release=False):
 
 if __name__ == "__main__":
     os.chdir(ROOT)
+    import build_fresh
+    build_fresh.require()
     sys.exit(check(release="--release" in sys.argv))

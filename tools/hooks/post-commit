@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# After a merge commit, releases the form claims of the branches it merged (tools/claims.py). Never fails the commit.
+cd "$(git rev-parse --show-toplevel)" || exit 0
+python3 tools/claims.py merged || echo "post-commit: could not release merged claims (tools/claims.py merged)" >&2
+exit 0

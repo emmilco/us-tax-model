@@ -253,4 +253,6 @@ if __name__ == "__main__":
     os.chdir(ROOT)
     if "--self-test" in sys.argv:
         sys.exit(self_test())
+    import build_fresh
+    build_fresh.require()
     sys.exit(check(rebaseline="--baseline" in sys.argv, release="--release" in sys.argv))

@@ -15,7 +15,7 @@ git init -q
 git config user.email test@example.com
 git config user.name test
 mkdir -p tools/hooks
-cp "$ROOT/tools/green.sh" "$ROOT/tools/tier_paths.py" "$ROOT/tools/docs_paths.txt" "$ROOT/tools/full_paths.txt" tools/
+cp "$ROOT/tools/green.sh" "$ROOT/tools/tier_paths.py" "$ROOT/tools/docs_paths.txt" "$ROOT/tools/full_paths.txt" "$ROOT/tools/claims.py" "$ROOT/tools/check_bug_inventory.py" tools/
 cp "$ROOT/tools/hooks/pre-commit" tools/hooks/
 chmod +x tools/hooks/pre-commit
 . tools/green.sh

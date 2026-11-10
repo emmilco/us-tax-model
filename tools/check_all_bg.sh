@@ -177,8 +177,20 @@ case "${1:-}" in
     fi
     run "$@"; exit $? ;;
 esac
+case "${1:-}" in
+  -h|--help) sed -n '2,/^set -euo pipefail/p' "$0" | sed '$d' | sed 's/^# \{0,1\}//'; exit 0 ;;
+esac
 wait=0
 if [ "${1:-}" = "--wait" ]; then wait=1; shift; fi
+# Refuse anything but the options a run takes, before a run starts.
+rest=("$@")
+i=0
+while [ "$i" -lt "${#rest[@]}" ]; do
+  case "${rest[$i]}" in
+    --tier|--year) [ $((i + 1)) -lt "${#rest[@]}" ] || { echo "check-all-bg: ${rest[$i]} needs a value" >&2; exit 2; }; i=$((i + 2)) ;;
+    *) echo "check-all-bg: unknown argument '${rest[$i]}' (tools/check_all_bg.sh --help)" >&2; exit 2 ;;
+  esac
+done
 if [ "$(cd "$main" && pwd -P)" = "$(cd "$wt" 2>/dev/null && pwd -P)" ]; then
   echo "check-all-bg: this is the background run's own worktree; run it from the worktree you edit" >&2
   exit 2

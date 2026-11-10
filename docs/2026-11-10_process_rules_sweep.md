@@ -82,3 +82,19 @@ the screen check behaves the same way.
 - Buildable (hooks or checks): 1.1 to 1.4, 2.1, 2.2, 2.5, 2.6, 2.8, 2.15, 2.17, 2.18, and 2.16 if needed.
 - Advisory: 1.2 (timeouts), 2.7, 2.9 (the check), 2.10 (timing), 2.11, 2.14.
 - Needs an owner decision first: 4.1 and 4.2.
+
+## 6. Outcome (2026-11-10, phase 2)
+
+Built and enforced: 1.1 (completeness, screen and false-no reviews sampled per release, with rerun and cost guards),
+1.2 (`pgrep -f`, Claude hook), 1.3 (agent launches and their ledger rows, Claude hooks), 1.4 and 2.15 (form claims,
+`inputs` as one claim), 2.1 (`tools/build_fresh.py`), 2.2 (`check_bug_inventory.py --merge`; replayed over the last
+five merges it refuses the two that renumbered entries in the merge commit, b9c5b37d and 62c47c07), 2.5
+(`check_all_bg.sh --help`), 2.8 (hand copies into review data, Claude hook), 2.17 and 2.18
+(`tools/check_docs_conventions.py`).
+
+Found already enforced on checking: 2.6 (the pid `check_all_bg.sh` prints is the detached runner's; `check_slot.py`
+execs in place) and 2.13 (`transcribe.record_cost` raises without year and jurisdiction).
+
+Not built: 2.16 (human verdict hashes), held as a proposal. Advisory, now listed in the charter's section 5: 2.7, 2.9,
+2.10, 2.11, 2.14, and the timeout part of 1.2. Conflicts 4.1 and 4.2: settled by the owner (a release is the
+milestone, one sample per subject; a reviewer-prompt change applies prospectively).

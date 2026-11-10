@@ -60,6 +60,11 @@ TESTS = [
     ("green_self_test", "bookkeeping", False, ["bash", "tools/hooks/test_green.sh"]),
     ("siblings_self_test", "bookkeeping", False, ["python3", "tools/siblings.py", "--self-test"]),
     ("check_agent_runs_self_test", "bookkeeping", False, ["python3", "tools/check_agent_runs.py", "--self-test"]),
+    ("claims_self_test", "bookkeeping", False, ["python3", "tools/claims.py", "--self-test"]),
+    ("bug_inventory_self_test", "bookkeeping", False, ["python3", "tools/check_bug_inventory.py", "--self-test"]),
+    ("docs_conventions_self_test", "bookkeeping", False, ["python3", "tools/check_docs_conventions.py", "--self-test"]),
+    ("build_fresh_self_test", "code", False, ["python3", "tools/build_fresh.py", "--self-test"]),
+    ("claude_hooks_self_test", "bookkeeping", False, ["bash", "-c", "python3 tools/claude_hooks/bash_guard.py --self-test && python3 tools/claude_hooks/agents.py --self-test"]),
 ]
 GROUPS = ("bookkeeping", "code")
 

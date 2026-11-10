@@ -38,6 +38,9 @@ export CHECK_ALL_SLOT_DIR="$TMP/slots" CHECK_ALL_MAX_RUNS=2
 state="$(cd "$(git rev-parse --git-common-dir)" && pwd)/check-all-bg"
 get() { sed -n "s/^$2=//p" "$1"; }
 
+tools/check_all_bg.sh --help | grep -q "check_all_bg.sh \[--wait\]" || fail "--help did not print the usage"
+! tools/check_all_bg.sh --bogus 2>/dev/null || fail "an unknown argument was accepted"
+[ ! -d "$state/runs" ] || fail "--help or an unknown argument started a run"
 tools/check_all_bg.sh --wait > out1.txt 2>&1 || { cat out1.txt; fail "first run failed"; }
 echo two > f.txt
 sleep 1

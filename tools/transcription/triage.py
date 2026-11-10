@@ -353,4 +353,7 @@ def main():
 
 
 if __name__ == "__main__":
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+    import build_fresh
+    build_fresh.require()
     main()

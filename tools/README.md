@@ -219,6 +219,32 @@ sampling and satisfies the milestone until its subject changes. Runs are guarded
 `--force-rerun REASON`, and an estimate above the owner's $3.00 gate needs `--approve-cost` (`spend.py`, shared with
 `rerun_all.py`).
 
+## Process hooks
+
+- **Fresh build** (`tools/build_fresh.py`): the completeness, screen and false-no checks and triage refuse to run when
+  canonical/ is older than a model source or engine/dist older than engine/src (rebuild first).
+- **Bug inventory in merges** (`tools/check_bug_inventory.py --merge`, from pre-commit): a merge may not create or
+  renumber a BUG entry; colliding ids are renumbered in a commit on the branch before merging.
+- **Docs conventions** (`tools/check_docs_conventions.py`, docs tier): docs/ files are dated unless living, and
+  HANDOFF-NEXT-SESSION.md keeps two entries.
+- **Form claims** (`tools/claims.py`): two lanes never edit the same form at once. `tools/hooks/pre-commit` refuses a
+  commit that changes a form another branch holds, or adds an input id while another branch holds `inputs`; a commit on
+  a lane's branch claims what it changes, and `tools/hooks/post-commit` releases a branch's claims when it is merged.
+  `tools/claims.py claim <form> --reason TEXT` claims before work starts; `list` shows the claims.
+- **Claude Code hooks** (`tools/claude_hooks/`): `bash_guard.py` refuses `pgrep -f` waits and hand copies into review data; `agents.py` refuses an agent
+  launch without an explicit model or without `Class:`, `Year:` and `Jurisdiction:` in its brief (mechanical on Sonnet,
+  judgment on Opus), and writes and completes the run's row in `research/costs/agent_runs.jsonl`. They are enabled per
+  clone by `.claude/settings.json` (git-excluded), which holds the following. Each command ends in `|| true`: a deny is
+  printed as JSON, and a missing or broken script (python exits 2, which a PreToolUse hook reads as a block) must not
+  stop every call.
+
+      {"hooks": {
+        "PreToolUse": [
+          {"matcher": "Bash", "hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/tools/claude_hooks/bash_guard.py || true"}]},
+          {"matcher": "Agent|Task", "hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/tools/claude_hooks/agents.py || true"}]}],
+        "PostToolUse": [{"matcher": "Agent|Task", "hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/tools/claude_hooks/agents.py || true"}]}],
+        "SubagentStop": [{"hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/tools/claude_hooks/agents.py || true"}]}]}}
+
 ## Scripts run by hand
 
 These scripts are not run by check-all; each is run deliberately, and its own header says how. Every other script

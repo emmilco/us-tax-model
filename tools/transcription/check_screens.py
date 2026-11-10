@@ -122,4 +122,6 @@ def check(rebaseline=False, release=False):
 
 if __name__ == "__main__":
     os.chdir(ROOT)
+    import build_fresh
+    build_fresh.require()
     sys.exit(check(rebaseline="--baseline" in sys.argv, release="--release" in sys.argv))

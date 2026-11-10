@@ -41,7 +41,7 @@ done
 set -- ${args[@]+"${args[@]}"}
 run_args=("$@")
 slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate human_review "
-docs_steps=" compile build check_bug_inventory check_agent_runs siblings_check bookkeeping_self_tests coverage_tree "
+docs_steps=" compile build check_bug_inventory check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree "
 case "$tier" in
   full|fast|docs) ;;
   *) echo "check-all: unknown tier '$tier' (full, fast or docs)" >&2; exit 2 ;;
@@ -138,6 +138,7 @@ step check_auto_limits python3 tools/check_auto_limits.py "$@"
 step check_source_titles python3 tools/check_source_titles.py "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py
 step check_agent_runs python3 tools/check_agent_runs.py
+step check_docs_conventions python3 tools/check_docs_conventions.py
 step siblings_check python3 tools/siblings.py --check "$@"
 step adapter_contracts python3 tools/transcription/adapter_contracts.py "$@"
 step classm_skipped python3 tools/transcription/audit_skipped.py "$@"
