@@ -44,3 +44,8 @@ verification system.
 - **Background waits (owner decision 2026-11-07; `pgrep -f` refused by tools/claude_hooks/bash_guard.py).** Never wait with `pgrep -f "<pattern>"` (it matches
   the waiting shell itself, so the wait never ends) or for a marker in the log of a run that may be
   killed. Wait on a pid or poll `tools/check_all_bg.sh --status`, always with a timeout, one wait per task.
+- **Parallel work (owner decision 2026-11-10).** When work splits into independent pieces (separate forms, separate
+  tools), run them as parallel agent lanes in worktrees rather than in sequence. Lanes claim their forms
+  (`tools/claims.py`), and each lane's agent brief follows the cost rules above. `tools/check_all_bg.sh` runs one at
+  a time per clone; a lane verifies with `tools/check_all.sh` in its own worktree, which only waits for one of the
+  machine-wide slots (`CHECK_ALL_MAX_RUNS`, default 2).
