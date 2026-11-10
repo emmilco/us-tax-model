@@ -3027,17 +3027,24 @@ class GateReviewRuns(unittest.TestCase):
 
     def test_screen_currency_of_gates(self):
         sha = G.subject(self.unit, self.lines, ENGLISH)
-        kinds = lambda reviewed, rulings={}: {f["line"]: f["kind"] for f in CS.gate_findings(self.lines, reviewed, rulings)}
-        self.assertEqual(kinds({})["gate:div.any"], "stale")
-        current = {"gate:div.any": {"subject_sha": sha, "prompt_sha": "p1", "verdict": "COVERS"},
-                   "gate:div.has_1a": {"subject_sha": G.subject(G.units(self.lines)["gate:div.has_1a"], self.lines, ENGLISH), "prompt_sha": "p", "verdict": "COVERS"}}
-        self.assertEqual(kinds(current), {})
-        changed = _gate_lines("Did you receive dividends?")
-        self.assertEqual({f["line"]: f["kind"] for f in CS.gate_findings(changed, current, {})}, {"gate:div.any": "stale"})
-        narrow = dict(current, **{"gate:div.any": dict(current["gate:div.any"], verdict="NARROW", findings=[{"kind": "NARROW"}])})
-        self.assertEqual(kinds(narrow), {"gate:div.any": "unruled"})
-        self.assertEqual(kinds(narrow, {"unruled:gate:div.any": {"prompt_sha": "p0"}}), {"gate:div.any": "rerun"})
-        self.assertEqual(kinds(dict(current, **{"gate:gone": {}})), {"gate:gone": "orphan"})
+        kinds = lambda reviewed: {f["line"]: f["kind"] for f in CS.gate_findings(self.lines, reviewed)[0]}
+        self.assertEqual(kinds({})["gate:div.any"], "due")
+        covers = lambda subject: {"subject_sha": subject, "samples": [{"verdict": "COVERS", "prompt_sha": "p1"}]}
+        other = G.subject(G.units(self.lines)["gate:div.has_1a"], self.lines, ENGLISH)
+        current = {"gate:div.any": covers(sha), "gate:div.has_1a": covers(other)}
+        with patch.object(CS.samples, "SAMPLES_PER_MILESTONE", 1):
+            self.assertEqual(kinds(current), {})
+            changed = _gate_lines("Did you receive dividends?")
+            self.assertEqual({f["line"]: f["kind"] for f in CS.gate_findings(changed, current)[0]}, {"gate:div.any": "due"})
+            narrow = dict(current, **{"gate:div.any": {"subject_sha": sha, "samples": [
+                {"verdict": "NARROW", "findings": [{"kind": "NARROW"}]}]}})
+            self.assertEqual(kinds(narrow), {"gate:div.any#1": "unruled"})
+            found, shas = CS.gate_findings(self.lines, narrow)
+            self.assertEqual(CS.accepted({"unruled:gate:div.any#1": {"subject_sha": "old"}}, shas), {},
+                             "a ruling of another subject is not accepted")
+            self.assertEqual(kinds(dict(current, **{"gate:gone": {}})), {"gate:gone": "orphan"})
+        with patch.object(CS.samples, "SAMPLES_PER_MILESTONE", 2):
+            self.assertEqual(kinds(current), {"gate:div.any": "short", "gate:div.has_1a": "short"})
 
     def test_the_false_no_review_logs_per_form_with_its_kind_in_the_cost_ledger(self):
         prompt, _ = FN.prompt_for(self.unit, self.lines, {})
@@ -3142,20 +3149,20 @@ class GatedScreens(unittest.TestCase):
     def test_a_review_recorded_before_the_gate_stays_current_and_a_reworded_screen_does_not(self):
         plain, gated = _screen_lines(False), _screen_lines(True)
         old = SR.screen_subject("div.pr", SR.screens(plain)["div.pr"], plain, {})
-        for lines, record in ((gated, {"prompt_sha": old, "verdict": "COVERS"}),
-                              (plain, {"prompt_sha": old, "verdict": "COVERS"})):
+        covers = {"subject_sha": old, "grandfathered": True, "samples": [{"verdict": "COVERS"}]}
+        for lines, record in ((gated, covers), (plain, covers)):
             with patch.object(CS, "load_lines", return_value=lines), patch.object(CS, "manifest", return_value={}), \
                     patch.object(CS, "screens", SR.screens), patch.object(CS, "RECORD", Path(tempfile.mkdtemp()) / "r.json"), \
                     patch.object(CS, "RULINGS", Path("/nonexistent")), patch.object(CS.pending, "listed", return_value=set()):
                 CS.RECORD.write_text(json.dumps([{"screen": "div.pr", **record}]))
-                self.assertEqual([f for f in CS.findings() if f["line"] == "div.pr"], [])
+                self.assertEqual([f for f in CS.findings()[0] if f["line"] == "div.pr"], [])
         reworded = _screen_lines(True)
         reworded["div.pr"][1]["expr"]["source"] = "Outside scope or abroad?"
         with patch.object(CS, "load_lines", return_value=reworded), patch.object(CS, "manifest", return_value={}), \
                 patch.object(CS, "RECORD", Path(tempfile.mkdtemp()) / "r.json"), patch.object(CS, "RULINGS", Path("/nonexistent")), \
                 patch.object(CS.pending, "listed", return_value=set()):
-            CS.RECORD.write_text(json.dumps([{"screen": "div.pr", "prompt_sha": old, "verdict": "COVERS"}]))
-            self.assertEqual([f["kind"] for f in CS.findings() if f["line"] == "div.pr"], ["stale"])
+            CS.RECORD.write_text(json.dumps([{"screen": "div.pr", **covers}]))
+            self.assertEqual([f["kind"] for f in CS.findings()[0] if f["line"] == "div.pr"], ["due"])
 
 
 class StructuredTextOneLineTests(unittest.TestCase):

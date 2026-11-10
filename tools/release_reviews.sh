@@ -10,3 +10,5 @@ node engine/dist/main.js render >/dev/null
 node engine/dist/main.js render --ny >/dev/null
 python3 tools/transcription/check_completeness.py --release
 python3 tools/transcription/check_completeness.py --release --jurisdiction ny
+python3 tools/transcription/check_screens.py --release
+python3 tools/transcription/check_screens.py --release --jurisdiction ny

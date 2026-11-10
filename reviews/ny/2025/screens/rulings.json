@@ -1,7 +1,6 @@
 {
  "rulings": {
-  "unruled:gate:ny_it201.mctmt_possible": {
-   "prompt_sha": "cce25ad808757f8aa7bebd5ba2259e4d9faaceb3ac0dfe1078c5e46b6992ac13",
+  "unruled:gate:ny_it201.mctmt_possible#1": {
    "reason": "Three NARROW findings are self-employment income other than Schedule C, refused federally; one WIDE accepted.",
    "findings": [
     {
@@ -29,17 +28,17 @@
      "evidence": "A profit just over $50,000, or two businesses, asks the question though no MCTMT may arise; gate wording leans to yes, and with two or more sources the netting is not settled (L-41)."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "438944083b1c5c15db499765401f008eaae3cc99d738248fc93432aaca27bcea"
   },
-  "unruled:gate:ny_it201.federal_care": {
-   "prompt_sha": "f01dba6362ba8c887be82312f2494bb54a0d841d2f64085943b428e1596e7551",
+  "unruled:gate:ny_it201.federal_care#1": {
    "reason": "The spouse finding reads the federal questions' labels; their prompts name the spouse. One WIDE accepted.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
      "class": "not a defect: the prompts include the spouse",
-     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person — your child under age 13, or a dependent or spouse who was not able to care for themselves — so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 — amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml). A spouse who paid the care or received the benefits makes the answer Yes. The New York return here is a single full-year resident return of the filer (or a joint one); a separate New York return of one spouse is refused (ny_it201.ask.spouse_resident)."
+     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person \u2014 your child under age 13, or a dependent or spouse who was not able to care for themselves \u2014 so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 \u2014 amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml). A spouse who paid the care or received the benefits makes the answer Yes. The New York return here is a single full-year resident return of the filer (or a joint one); a separate New York return of one spouse is refused (ny_it201.ask.spouse_resident)."
     },
     {
      "n": 1,
@@ -48,10 +47,10 @@
      "evidence": "No earned income, a disqualified provider or a married-filing-separately filer asks the line 64 question for nothing; gate wording leans to yes."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "4212165716570ac81140e158b6e66ac46e5f89e93734b8591e5fcee4b0611cb5"
   },
-  "unruled:gate:ny_it201.has_pension_income": {
-   "prompt_sha": "2d54a7f627287e61a93eb97aae1169a8e739e52f964d549349952695b4579d79",
+  "unruled:gate:ny_it201.has_pension_income#1": {
    "reason": "Both NARROW findings are pension income outside lines 9 and 10, refused federally; one WIDE accepted.",
    "findings": [
     {
@@ -73,10 +72,10 @@
      "evidence": "A filer under 59 1/2 with an IRA or private pension is asked both questions for nothing; gate wording leans to yes."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "285f702efc172e4efe2a8e6df978198bf000d5cb2561e4fa4bb92c79d2228a57"
   },
-  "unruled:ny_it201.ask.dependent_care": {
-   "prompt_sha": "9d179625f93827274980698d3a306ed336126b77034d0f3af9d8c26a934e3815",
+  "unruled:ny_it201.ask.dependent_care#1": {
    "reason": "The question is the IT-201-I line 64 question word for word; the zero-federal-tax reading is the source's own, and the gate already requires care expenses.",
    "findings": [
     {
@@ -87,10 +86,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md",
+   "subject_sha": "7fe1def6a392a7bc78d7653425f40a66b8d929c626196eca326522b60a2a3ae9"
   },
-  "unruled:ny_it201.ask.gov_pension": {
-   "prompt_sha": "80ff59cc87d98c30ab690955f0e556a8f11f5495c3881ef1e684f73798a1f1e9",
+  "unruled:ny_it201.ask.gov_pension#1": {
    "reason": "Two WIDE accepted; the UNCLEAR on the employer list is the federal-government clause and the source's own \"certain public authorities, including\".",
    "findings": [
     {
@@ -113,10 +112,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md",
+   "subject_sha": "c67f6a67e6c59944b6f3eec4abbcd2644614fefffbb3549fa812313189681d60"
   },
-  "unruled:ny_it201.ask.mctmt": {
-   "prompt_sha": "c03518473a9f4a47d4ce431e2dc85bf58ace1e74563a1c33d5f9f0676970d43e",
+  "unruled:ny_it201.ask.mctmt#1": {
    "reason": "The combined-zones reading leans WIDE; the undefined Zone 2 is a low wording gap (BUG-0450).",
    "findings": [
     {
@@ -135,10 +134,10 @@
    "bugs": [
     "BUG-0450"
    ],
-   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md",
+   "subject_sha": "0097b8bd44e189dae391773bd848eb46985355d18f3d37d91645c26aa6b7af0b"
   },
-  "unruled:ny_it201.ask.pension_exclusion": {
-   "prompt_sha": "b1ec125fce5691a50cfe450db010bb22726fc03a27dd6fb8d27904179e676d0a",
+  "unruled:ny_it201.ask.pension_exclusion#1": {
    "reason": "WIDE only; each finding refuses a filer whose qualifying amount is 0.",
    "findings": [
     {
@@ -161,10 +160,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md",
+   "subject_sha": "0a03995ad649cf02b0a573317cc1653da2b2faed4c46bc01a55106dce936a37f"
   },
-  "unruled:ny_it201.ask.refund_529": {
-   "prompt_sha": "747f7e22d7a11a9fc3452a4cb831af827dc5e9c56c52b7cd756811f42be36b88",
+  "unruled:ny_it201.ask.refund_529#1": {
    "reason": "Real, low gap: \"part of a refund\" may draw No from a filer wanting the whole refund deposited (BUG-0449).",
    "findings": [
     {
@@ -177,10 +176,10 @@
    "bugs": [
     "BUG-0449"
    ],
-   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md",
+   "subject_sha": "7cd139e3ca70139034fdfa1954ad655871321eb25b1737164662d10ba29817c4"
   },
-  "unruled:ny_it201.ask.us_obligation_interest": {
-   "prompt_sha": "09535ba9aee3c14c466752d3e5570a2b952b343b238597fe6690fa0732189f5a",
+  "unruled:ny_it201.ask.us_obligation_interest#1": {
    "reason": "One WIDE accepted; the agency-obligation UNCLEAR is the source's own term, and the K-1 case is refused federally.",
    "findings": [
     {
@@ -203,7 +202,8 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md",
+   "subject_sha": "c0a3cbce571b5ae4d9f416253969735f8985061f4283adb93cb434149b4f295a"
   }
  },
  "baseline": {}

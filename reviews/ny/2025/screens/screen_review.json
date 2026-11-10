@@ -9,23 +9,6 @@
   "inputs": [
    "ny_it201.ask.dependent_care"
   ],
-  "verdict": "UNCLEAR",
-  "findings": [
-   {
-    "kind": "UNCLEAR",
-    "situation": "On a joint return, or when federally joint spouses file separate New York returns, the spouse rather than the filer paid for the care or received the employer dependent care benefits, and the filer answers the helper questions literally.",
-    "irs_text": "ny_it216i p. 1: \"The care was provided so you (and your spouse, if you were married) could work or look for work.\" and \"Married persons filing joint federal returns, but required to file separate New York State returns ... the credit must be claimed on the return of the spouse with the lower taxable income\"",
-    "why": "The gate is computed from two f2441 helpers, \"Did you pay for the care of a qualifying person so you could work or look for work?\" and \"Did you receive dependent care benefits?\", and neither mentions the spouse. A filer, for example the lower-income spouse who must claim the credit on a separate New York return, could truthfully answer no to both while the household still qualifies for the federal credit, so line 64 would silently be zero."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer paid for care so they could work but fails another federal or New York requirement, such as no earned income, a care provider who is the filer's dependent, or Married filing separate status without meeting the unmarried test.",
-    "irs_text": "ny_it216i p. 1: \"However, if you did not find a job and have no earned income for the year, you cannot take the credit.\" and \"If you do not meet all the requirements to be treated as unmarried, you generally cannot claim the credit.\"",
-    "why": "The gate holds, but the credit is zero. The follow-up federal-qualification question filters these cases out."
-   }
-  ],
-  "prompt_sha": "f01dba6362ba8c887be82312f2494bb54a0d841d2f64085943b428e1596e7551",
-  "subject_sha": "4212165716570ac81140e158b6e66ac46e5f89e93734b8591e5fcee4b0611cb5",
   "used": [
    {
     "doc": "ny_it216i",
@@ -61,9 +44,33 @@
     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
    }
   ],
-  "cost": 0.059171999999999995,
-  "model": "claude-opus-5-5",
-  "date": "2026-11-07"
+  "subject_sha": "4212165716570ac81140e158b6e66ac46e5f89e93734b8591e5fcee4b0611cb5",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "UNCLEAR",
+    "findings": [
+     {
+      "kind": "UNCLEAR",
+      "situation": "On a joint return, or when federally joint spouses file separate New York returns, the spouse rather than the filer paid for the care or received the employer dependent care benefits, and the filer answers the helper questions literally.",
+      "irs_text": "ny_it216i p. 1: \"The care was provided so you (and your spouse, if you were married) could work or look for work.\" and \"Married persons filing joint federal returns, but required to file separate New York State returns ... the credit must be claimed on the return of the spouse with the lower taxable income\"",
+      "why": "The gate is computed from two f2441 helpers, \"Did you pay for the care of a qualifying person so you could work or look for work?\" and \"Did you receive dependent care benefits?\", and neither mentions the spouse. A filer, for example the lower-income spouse who must claim the credit on a separate New York return, could truthfully answer no to both while the household still qualifies for the federal credit, so line 64 would silently be zero."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer paid for care so they could work but fails another federal or New York requirement, such as no earned income, a care provider who is the filer's dependent, or Married filing separate status without meeting the unmarried test.",
+      "irs_text": "ny_it216i p. 1: \"However, if you did not find a job and have no earned income for the year, you cannot take the credit.\" and \"If you do not meet all the requirements to be treated as unmarried, you generally cannot claim the credit.\"",
+      "why": "The gate holds, but the credit is zero. The follow-up federal-qualification question filters these cases out."
+     }
+    ],
+    "prompt_sha": "f01dba6362ba8c887be82312f2494bb54a0d841d2f64085943b428e1596e7551",
+    "cost": 0.059171999999999995,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-07",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/gate_ny_it201.federal_care.response.txt"
+   }
+  ]
  },
  {
   "screen": "gate:ny_it201.has_line28_income",
@@ -75,23 +82,6 @@
   "inputs": [
    "ny_it201.ask.us_obligation_interest"
   ],
-  "verdict": "COVERS",
-  "findings": [
-   {
-    "kind": "WIDE",
-    "situation": "A filer has only ordinary dividends on line 3, with no U.S. obligation interest and no dividends from a fund holding federal obligations, so the condition holds even though line 28 is zero.",
-    "irs_text": "ny_it201i p. 9, Line 28: \"Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?\"",
-    "why": "Line 3 is in the gate but not in the source's list of lines. It is still needed, because qualifying mutual fund dividends (\"Dividends you received from a regulated investment company ... qualify for this subtraction\") are reported on line 3. This is harmless extra asking."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer has any nonzero interest, business income or partnership income that includes no U.S. government obligation interest.",
-    "irs_text": "ny_it201i p. 9, Line 28: \"If No, go to line 29.\"",
-    "why": "Any nonzero amount on lines 2, 3, 6 or 11 makes the condition true. Most such filers will then answer no to the gated question."
-   }
-  ],
-  "prompt_sha": "a3fab3f3ce02d65b3704a6ee01a59b429edfef7a3f6b121d353906b6a4c72cf9",
-  "subject_sha": "c6640539d8e1d728e74ca8120ac4c7bc4240bbb2b2d0e885fdbea07b75b334e6",
   "used": [
    {
     "doc": "ny_it201i",
@@ -112,9 +102,33 @@
     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
    }
   ],
-  "cost": 0.040324,
-  "model": "claude-opus-5-5",
-  "date": "2026-11-07"
+  "subject_sha": "c6640539d8e1d728e74ca8120ac4c7bc4240bbb2b2d0e885fdbea07b75b334e6",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "COVERS",
+    "findings": [
+     {
+      "kind": "WIDE",
+      "situation": "A filer has only ordinary dividends on line 3, with no U.S. obligation interest and no dividends from a fund holding federal obligations, so the condition holds even though line 28 is zero.",
+      "irs_text": "ny_it201i p. 9, Line 28: \"Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?\"",
+      "why": "Line 3 is in the gate but not in the source's list of lines. It is still needed, because qualifying mutual fund dividends (\"Dividends you received from a regulated investment company ... qualify for this subtraction\") are reported on line 3. This is harmless extra asking."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer has any nonzero interest, business income or partnership income that includes no U.S. government obligation interest.",
+      "irs_text": "ny_it201i p. 9, Line 28: \"If No, go to line 29.\"",
+      "why": "Any nonzero amount on lines 2, 3, 6 or 11 makes the condition true. Most such filers will then answer no to the gated question."
+     }
+    ],
+    "prompt_sha": "a3fab3f3ce02d65b3704a6ee01a59b429edfef7a3f6b121d353906b6a4c72cf9",
+    "cost": 0.040324,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-07",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/gate_ny_it201.has_line28_income.response.txt"
+   }
+  ]
  },
  {
   "screen": "gate:ny_it201.has_overpayment",
@@ -126,10 +140,6 @@
   "inputs": [
    "ny_it201.line79_amount"
   ],
-  "verdict": "COVERS",
-  "findings": [],
-  "prompt_sha": "aeb948fa983ef32b6a53404cbfc481f90b72cd59b765ef5266967f052a64e6d9",
-  "subject_sha": "2fec6b02c0749f5ae8e4abc87e30345ae335e58812457f2b1b4bdd4e5b82ae58",
   "used": [
    {
     "doc": "ny_it201i",
@@ -148,9 +158,20 @@
     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
    }
   ],
-  "cost": 0.019712,
-  "model": "claude-opus-5-5",
-  "date": "2026-11-07"
+  "subject_sha": "2fec6b02c0749f5ae8e4abc87e30345ae335e58812457f2b1b4bdd4e5b82ae58",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "COVERS",
+    "findings": [],
+    "prompt_sha": "aeb948fa983ef32b6a53404cbfc481f90b72cd59b765ef5266967f052a64e6d9",
+    "cost": 0.019712,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-07",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/gate_ny_it201.has_overpayment.response.txt"
+   }
+  ]
  },
  {
   "screen": "gate:ny_it201.has_pension_income",
@@ -164,29 +185,6 @@
    "ny_it201.ask.gov_pension",
    "ny_it201.ask.pension_exclusion"
   ],
-  "verdict": "NARROW",
-  "findings": [
-   {
-    "kind": "NARROW",
-    "situation": "A filer's pension or annuity income is included in federal AGI but is not on line 9 or 10, so the computed condition is false and both gated lines are dropped. One example is a disability pension received before minimum retirement age, which is reported as wages on line 1.",
-    "irs_text": "ny_it201i p. 9, Line 29: \"Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10) that was not from a New York State or local government pension plan or federal government pension plan?\"",
-    "why": "The text says pension and annuity income is only \"generally\" reported on line 9 or 10, so some of it can sit on other lines. Requiring line 9 or 10 to be above $0 misses that income."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer receives a government pension or return of contributions included in federal AGI that the federal return places outside lines 9 and 10, such as a government disability pension reported as wages.",
-    "irs_text": "ny_it201i p. 9, Line 26: \"Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?\"",
-    "why": "Line 26 applies to any such pension included in federal AGI, whatever line it appears on. The gate only checks lines 9 and 10."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer under 59½ has a taxable IRA distribution or private pension on line 9 or 10 and no government pension.",
-    "irs_text": "ny_it201i p. 9, Line 29: \"If Yes, and you were 59½ before January 1, 2025, enter the qualifying pension and annuity income\"",
-    "why": "The condition holds here, but neither line 26 nor line 29 gets an amount. This only means a few extra questions are asked."
-   }
-  ],
-  "prompt_sha": "2d54a7f627287e61a93eb97aae1169a8e739e52f964d549349952695b4579d79",
-  "subject_sha": "285f702efc172e4efe2a8e6df978198bf000d5cb2561e4fa4bb92c79d2228a57",
   "used": [
    {
     "doc": "ny_it201i",
@@ -209,9 +207,39 @@
     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
    }
   ],
-  "cost": 0.048668,
-  "model": "claude-opus-5-5",
-  "date": "2026-11-07"
+  "subject_sha": "285f702efc172e4efe2a8e6df978198bf000d5cb2561e4fa4bb92c79d2228a57",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "NARROW",
+    "findings": [
+     {
+      "kind": "NARROW",
+      "situation": "A filer's pension or annuity income is included in federal AGI but is not on line 9 or 10, so the computed condition is false and both gated lines are dropped. One example is a disability pension received before minimum retirement age, which is reported as wages on line 1.",
+      "irs_text": "ny_it201i p. 9, Line 29: \"Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10) that was not from a New York State or local government pension plan or federal government pension plan?\"",
+      "why": "The text says pension and annuity income is only \"generally\" reported on line 9 or 10, so some of it can sit on other lines. Requiring line 9 or 10 to be above $0 misses that income."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "A filer receives a government pension or return of contributions included in federal AGI that the federal return places outside lines 9 and 10, such as a government disability pension reported as wages.",
+      "irs_text": "ny_it201i p. 9, Line 26: \"Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?\"",
+      "why": "Line 26 applies to any such pension included in federal AGI, whatever line it appears on. The gate only checks lines 9 and 10."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer under 59½ has a taxable IRA distribution or private pension on line 9 or 10 and no government pension.",
+      "irs_text": "ny_it201i p. 9, Line 29: \"If Yes, and you were 59½ before January 1, 2025, enter the qualifying pension and annuity income\"",
+      "why": "The condition holds here, but neither line 26 nor line 29 gets an amount. This only means a few extra questions are asked."
+     }
+    ],
+    "prompt_sha": "2d54a7f627287e61a93eb97aae1169a8e739e52f964d549349952695b4579d79",
+    "cost": 0.048668,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-07",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/gate_ny_it201.has_pension_income.response.txt"
+   }
+  ]
  },
  {
   "screen": "gate:ny_it201.has_refund",
@@ -223,10 +251,6 @@
   "inputs": [
    "ny_it201.ask.refund_529"
   ],
-  "verdict": "COVERS",
-  "findings": [],
-  "prompt_sha": "5c34ff73219043dad77e968717eb0c8402e750b5083e25e1fc580ddc6aa9237e",
-  "subject_sha": "a110facf90999343731b210d8101040c4a273386b443a67b92833429da805876",
   "used": [
    {
     "doc": "ny_it201i",
@@ -246,9 +270,20 @@
     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
    }
   ],
-  "cost": 0.023431999999999998,
-  "model": "claude-opus-5-5",
-  "date": "2026-11-07"
+  "subject_sha": "a110facf90999343731b210d8101040c4a273386b443a67b92833429da805876",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "COVERS",
+    "findings": [],
+    "prompt_sha": "5c34ff73219043dad77e968717eb0c8402e750b5083e25e1fc580ddc6aa9237e",
+    "cost": 0.023431999999999998,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-07",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/gate_ny_it201.has_refund.response.txt"
+   }
+  ]
  },
  {
   "screen": "gate:ny_it201.mctmt_possible",
@@ -260,35 +295,6 @@
   "inputs": [
    "ny_it201.ask.mctmt"
   ],
-  "verdict": "NARROW",
-  "findings": [
-   {
-    "kind": "NARROW",
-    "situation": "A filer or spouse with no Schedule C who is a partner in a partnership or LLC/LLP treated as a partnership has more than $50,000 of net earnings from self-employment allocated to Zone 1 or Zone 2.",
-    "irs_text": "ny_it201i p. 15: \"For purposes of the MCTMT, self-employed individuals include: • Sole proprietors • Partners in partnerships • Members of limited liability companies (LLCs) that are treated as partnerships • Partners of limited liability partnerships (LLPs) that are treated as partnerships\"",
-    "why": "The computed condition counts only Schedule C filers. A partner whose self-employment earnings come only from a partnership (K-1) makes the count zero, so the gate drops an MCTMT line the text requires."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer has one Schedule C with net profit of $50,000 or less plus partnership self-employment earnings, and together they exceed $50,000 allocated to a zone.",
-    "irs_text": "ny_it201i p. 15: \"You must calculate your MCTMT net earnings base separately for each source of self-employment income ... If you have more than one source, combine all the individual amounts on line 54a (Zone 1 amounts) or line 54b (Zone 2 amounts)\"",
-    "why": "The text combines all self-employment sources in a zone against the $50,000 threshold. The helper looks only at Schedule C profit or the number of Schedule Cs, so one modest Schedule C plus partnership income makes the condition false."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A sole-proprietor farmer reports more than $50,000 of net earnings from self-employment on Schedule F, with no Schedule C, allocated to a zone.",
-    "irs_text": "ny_it201i p. 15: \"If an individual's net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\"",
-    "why": "Farm profit counts toward net earnings from self-employment, but the helper counts only Schedule C, so the condition is false."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer has Schedule C net profit just over $50,000 or several small Schedule Cs, so net earnings from self-employment (after the 92.35% factor) or the amounts allocated to any zone are $50,000 or less.",
-    "irs_text": "ny_it201i p. 15: \"Only enter an amount on line 54a if your net earnings from self-employment allocated to Zone 1 exceed $50,000 for the tax year\"",
-    "why": "The condition holds but no MCTMT amount arises. This is acceptable because gates lean to yes."
-   }
-  ],
-  "prompt_sha": "cce25ad808757f8aa7bebd5ba2259e4d9faaceb3ac0dfe1078c5e46b6992ac13",
-  "subject_sha": "438944083b1c5c15db499765401f008eaae3cc99d738248fc93432aaca27bcea",
   "used": [
    {
     "doc": "ny_it201i",
@@ -309,9 +315,45 @@
     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
    }
   ],
-  "cost": 0.045044,
-  "model": "claude-opus-5-5",
-  "date": "2026-11-07"
+  "subject_sha": "438944083b1c5c15db499765401f008eaae3cc99d738248fc93432aaca27bcea",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "NARROW",
+    "findings": [
+     {
+      "kind": "NARROW",
+      "situation": "A filer or spouse with no Schedule C who is a partner in a partnership or LLC/LLP treated as a partnership has more than $50,000 of net earnings from self-employment allocated to Zone 1 or Zone 2.",
+      "irs_text": "ny_it201i p. 15: \"For purposes of the MCTMT, self-employed individuals include: • Sole proprietors • Partners in partnerships • Members of limited liability companies (LLCs) that are treated as partnerships • Partners of limited liability partnerships (LLPs) that are treated as partnerships\"",
+      "why": "The computed condition counts only Schedule C filers. A partner whose self-employment earnings come only from a partnership (K-1) makes the count zero, so the gate drops an MCTMT line the text requires."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "A filer has one Schedule C with net profit of $50,000 or less plus partnership self-employment earnings, and together they exceed $50,000 allocated to a zone.",
+      "irs_text": "ny_it201i p. 15: \"You must calculate your MCTMT net earnings base separately for each source of self-employment income ... If you have more than one source, combine all the individual amounts on line 54a (Zone 1 amounts) or line 54b (Zone 2 amounts)\"",
+      "why": "The text combines all self-employment sources in a zone against the $50,000 threshold. The helper looks only at Schedule C profit or the number of Schedule Cs, so one modest Schedule C plus partnership income makes the condition false."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "A sole-proprietor farmer reports more than $50,000 of net earnings from self-employment on Schedule F, with no Schedule C, allocated to a zone.",
+      "irs_text": "ny_it201i p. 15: \"If an individual's net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\"",
+      "why": "Farm profit counts toward net earnings from self-employment, but the helper counts only Schedule C, so the condition is false."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer has Schedule C net profit just over $50,000 or several small Schedule Cs, so net earnings from self-employment (after the 92.35% factor) or the amounts allocated to any zone are $50,000 or less.",
+      "irs_text": "ny_it201i p. 15: \"Only enter an amount on line 54a if your net earnings from self-employment allocated to Zone 1 exceed $50,000 for the tax year\"",
+      "why": "The condition holds but no MCTMT amount arises. This is acceptable because gates lean to yes."
+     }
+    ],
+    "prompt_sha": "cce25ad808757f8aa7bebd5ba2259e4d9faaceb3ac0dfe1078c5e46b6992ac13",
+    "cost": 0.045044,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-07",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/gate_ny_it201.mctmt_possible.response.txt"
+   }
+  ]
  },
  {
   "screen": "ny_it201.ask.dependent_care",
@@ -319,17 +361,6 @@
   "lines": [
    "ny_it201.line64"
   ],
-  "verdict": "UNCLEAR",
-  "findings": [
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer who paid work-related care for a qualifying person but had no federal income tax liability (so the nonrefundable federal credit came to $0 or could not be used) may truthfully read 'would you qualify to claim' as asking whether they could get the federal credit and answer NO, even though the refundable New York credit would be nonzero.",
-    "irs_text": "ny_it201i p. 19, Line 64: \"Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you actually claimed it)? • If No, you do not qualify for this credit.\"",
-    "why": "The question covers not claiming the federal credit, but not having been able to benefit from it because of zero federal tax. Because line 64 is a refundable credit, a filer who reads 'qualify' as 'would get an amount' answers NO, and the tool then enters $0 where Form IT-216 would allow a credit."
-   }
-  ],
-  "prompt_sha": "9d179625f93827274980698d3a306ed336126b77034d0f3af9d8c26a934e3815",
-  "subject_sha": "7fe1def6a392a7bc78d7653425f40a66b8d929c626196eca326522b60a2a3ae9",
   "used": [
    {
     "doc": "ny_it201i",
@@ -366,8 +397,26 @@
     "cols_sha256": "895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d"
    }
   ],
-  "cost": 0.063396,
-  "model": "claude-opus-5-5"
+  "subject_sha": "7fe1def6a392a7bc78d7653425f40a66b8d929c626196eca326522b60a2a3ae9",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "UNCLEAR",
+    "findings": [
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer who paid work-related care for a qualifying person but had no federal income tax liability (so the nonrefundable federal credit came to $0 or could not be used) may truthfully read 'would you qualify to claim' as asking whether they could get the federal credit and answer NO, even though the refundable New York credit would be nonzero.",
+      "irs_text": "ny_it201i p. 19, Line 64: \"Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you actually claimed it)? • If No, you do not qualify for this credit.\"",
+      "why": "The question covers not claiming the federal credit, but not having been able to benefit from it because of zero federal tax. Because line 64 is a refundable credit, a filer who reads 'qualify' as 'would get an amount' answers NO, and the tool then enters $0 where Form IT-216 would allow a credit."
+     }
+    ],
+    "prompt_sha": "9d179625f93827274980698d3a306ed336126b77034d0f3af9d8c26a934e3815",
+    "cost": 0.063396,
+    "model": "claude-opus-5-5",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/ny_it201.ask.dependent_care.response.txt"
+   }
+  ]
  },
  {
   "screen": "ny_it201.ask.gov_pension",
@@ -375,29 +424,6 @@
   "lines": [
    "ny_it201.line26"
   ],
-  "verdict": "WIDE",
-  "findings": [
-   {
-    "kind": "WIDE",
-    "situation": "A filer whose only government-plan income is periodic distributions from a New York State or local government IRC § 457 deferred compensation plan would read it as a distribution from a government plan and answer YES. Line 26 is correctly $0 for these payments.",
-    "irs_text": "ny_it201i p. 9, Line 26: \"You may not subtract the following: ... Periodic distributions from government (IRC § 457) deferred compensation plans.\"",
-    "why": "The question asks about any \"pension or other distribution ... from a New York State or local government pension plan\" and does not exclude 457 plans. So it refuses a case where the tool's line 26 value of $0 is correct."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer receiving a TIAA annuity attributable to employment at a private university, or a payment from a supplemental annuity plan funded by salary reduction, could answer YES. The question names TIAA as an example and counts any distribution from the plan, but line 26 is $0 for these amounts.",
-    "irs_text": "ny_it201i p. 9, Line 26: \"You may not subtract ... Pension payments or return of contributions that were attributable to your employment by an employer other than a New York public employer, such as a private university, and any portion attributable to contributions you made to a supplemental annuity plan which was funded through a salary reduction program.\"",
-    "why": "The question's example \"(for example an annuity paid by TIAA)\" and its plan-based wording make non-qualifying TIAA or supplemental annuity recipients answer YES, even though the tool's $0 is correct for them."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer receiving a pension as an employee of a U.S. possession, a political subdivision of a territory or possession, a federal agency or instrumentality, or a public authority other than the three named may not know whether that counts.",
-    "irs_text": "ny_it201i p. 9, Line 26: \"Certain public authorities, including: ...\" and \"The United States, its territories, possessions (or political subdivisions thereof), or any agency or instrumentality of the United States (including the military)\"",
-    "why": "The question lists only \"a U.S. territory or the District of Columbia\" and three named authorities. A filer whose employer is a possession, a subdivision, an instrumentality or another public authority could reasonably read the list as closed and answer NO."
-   }
-  ],
-  "prompt_sha": "80ff59cc87d98c30ab690955f0e556a8f11f5495c3881ef1e684f73798a1f1e9",
-  "subject_sha": "c67f6a67e6c59944b6f3eec4abbcd2644614fefffbb3549fa812313189681d60",
   "used": [
    {
     "doc": "ny_it201i",
@@ -434,8 +460,38 @@
     "cols_sha256": "895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d"
    }
   ],
-  "cost": 0.077492,
-  "model": "claude-opus-5-5"
+  "subject_sha": "c67f6a67e6c59944b6f3eec4abbcd2644614fefffbb3549fa812313189681d60",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "WIDE",
+    "findings": [
+     {
+      "kind": "WIDE",
+      "situation": "A filer whose only government-plan income is periodic distributions from a New York State or local government IRC § 457 deferred compensation plan would read it as a distribution from a government plan and answer YES. Line 26 is correctly $0 for these payments.",
+      "irs_text": "ny_it201i p. 9, Line 26: \"You may not subtract the following: ... Periodic distributions from government (IRC § 457) deferred compensation plans.\"",
+      "why": "The question asks about any \"pension or other distribution ... from a New York State or local government pension plan\" and does not exclude 457 plans. So it refuses a case where the tool's line 26 value of $0 is correct."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer receiving a TIAA annuity attributable to employment at a private university, or a payment from a supplemental annuity plan funded by salary reduction, could answer YES. The question names TIAA as an example and counts any distribution from the plan, but line 26 is $0 for these amounts.",
+      "irs_text": "ny_it201i p. 9, Line 26: \"You may not subtract ... Pension payments or return of contributions that were attributable to your employment by an employer other than a New York public employer, such as a private university, and any portion attributable to contributions you made to a supplemental annuity plan which was funded through a salary reduction program.\"",
+      "why": "The question's example \"(for example an annuity paid by TIAA)\" and its plan-based wording make non-qualifying TIAA or supplemental annuity recipients answer YES, even though the tool's $0 is correct for them."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer receiving a pension as an employee of a U.S. possession, a political subdivision of a territory or possession, a federal agency or instrumentality, or a public authority other than the three named may not know whether that counts.",
+      "irs_text": "ny_it201i p. 9, Line 26: \"Certain public authorities, including: ...\" and \"The United States, its territories, possessions (or political subdivisions thereof), or any agency or instrumentality of the United States (including the military)\"",
+      "why": "The question lists only \"a U.S. territory or the District of Columbia\" and three named authorities. A filer whose employer is a possession, a subdivision, an instrumentality or another public authority could reasonably read the list as closed and answer NO."
+     }
+    ],
+    "prompt_sha": "80ff59cc87d98c30ab690955f0e556a8f11f5495c3881ef1e684f73798a1f1e9",
+    "cost": 0.077492,
+    "model": "claude-opus-5-5",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/ny_it201.ask.gov_pension.response.txt"
+   }
+  ]
  },
  {
   "screen": "ny_it201.ask.mctmt",
@@ -444,23 +500,6 @@
    "ny_it201.line54a",
    "ny_it201.line54b"
   ],
-  "verdict": "UNCLEAR",
-  "findings": [
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer has $30,000 of net earnings from self-employment allocated to Zone 1 and $30,000 allocated to Zone 2. Neither zone exceeds $50,000, so no MCTMT is due and the tool's $0 entries are correct. The filer could still read the question as asking about the combined amount and answer YES.",
-    "irs_text": "ny_it201i p. 15: \"If an individual's net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\" Also: \"Only enter an amount on line 54a if your net earnings from self-employment allocated to Zone 1 exceed $50,000 ... Only enter an amount on line 54b if your net earnings from self-employment allocated to Zone 2 exceed $50,000.\"",
-    "why": "The question asks about earnings \"allocated to New York City (MCTD Zone 1) or to Zone 2 of more than $50,000\". It does not say the $50,000 test applies to each zone separately. A filer can read it as Zone 1 plus Zone 2 combined and answer YES, which refuses a return the tool computes correctly."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer has more than $50,000 of net earnings from self-employment allocated to a business in Nassau, Suffolk, Westchester, Rockland, Orange, Putnam or Dutchess County. The filer could answer NO because they do not know that \"Zone 2\" means those counties.",
-    "irs_text": "ny_it201i p. 15: \"Zone 2 includes the counties of: – Dutchess – Nassau – Orange – Putnam – Rockland – Suffolk – Westchester\"",
-    "why": "The question names New York City for Zone 1 but leaves \"Zone 2\" undefined. A filer who does not know the MCTD zones can reasonably answer NO even though the lines require a Zone 2 base, and line 54b would then wrongly be $0."
-   }
-  ],
-  "prompt_sha": "c03518473a9f4a47d4ce431e2dc85bf58ace1e74563a1c33d5f9f0676970d43e",
-  "subject_sha": "0097b8bd44e189dae391773bd848eb46985355d18f3d37d91645c26aa6b7af0b",
   "used": [
    {
     "doc": "ny_it201i",
@@ -498,8 +537,32 @@
     "cols_sha256": "895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d"
    }
   ],
-  "cost": 0.07250000000000001,
-  "model": "claude-opus-5-5"
+  "subject_sha": "0097b8bd44e189dae391773bd848eb46985355d18f3d37d91645c26aa6b7af0b",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "UNCLEAR",
+    "findings": [
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer has $30,000 of net earnings from self-employment allocated to Zone 1 and $30,000 allocated to Zone 2. Neither zone exceeds $50,000, so no MCTMT is due and the tool's $0 entries are correct. The filer could still read the question as asking about the combined amount and answer YES.",
+      "irs_text": "ny_it201i p. 15: \"If an individual's net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\" Also: \"Only enter an amount on line 54a if your net earnings from self-employment allocated to Zone 1 exceed $50,000 ... Only enter an amount on line 54b if your net earnings from self-employment allocated to Zone 2 exceed $50,000.\"",
+      "why": "The question asks about earnings \"allocated to New York City (MCTD Zone 1) or to Zone 2 of more than $50,000\". It does not say the $50,000 test applies to each zone separately. A filer can read it as Zone 1 plus Zone 2 combined and answer YES, which refuses a return the tool computes correctly."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer has more than $50,000 of net earnings from self-employment allocated to a business in Nassau, Suffolk, Westchester, Rockland, Orange, Putnam or Dutchess County. The filer could answer NO because they do not know that \"Zone 2\" means those counties.",
+      "irs_text": "ny_it201i p. 15: \"Zone 2 includes the counties of: – Dutchess – Nassau – Orange – Putnam – Rockland – Suffolk – Westchester\"",
+      "why": "The question names New York City for Zone 1 but leaves \"Zone 2\" undefined. A filer who does not know the MCTD zones can reasonably answer NO even though the lines require a Zone 2 base, and line 54b would then wrongly be $0."
+     }
+    ],
+    "prompt_sha": "c03518473a9f4a47d4ce431e2dc85bf58ace1e74563a1c33d5f9f0676970d43e",
+    "cost": 0.07250000000000001,
+    "model": "claude-opus-5-5",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/ny_it201.ask.mctmt.response.txt"
+   }
+  ]
  },
  {
   "screen": "ny_it201.ask.pension_exclusion",
@@ -507,29 +570,6 @@
   "lines": [
    "ny_it201.line29"
   ],
-  "verdict": "WIDE",
-  "findings": [
-   {
-    "kind": "WIDE",
-    "situation": "A filer aged 59 1/2 or older whose only line 9 or 10 income is a lump-sum (non-periodic) distribution from a 401(k), 403(b), 457 or employer pension plan must answer YES and is refused, although that income does not qualify and line 29 is correctly $0.",
-    "irs_text": "ny_it201i p. 9, Line 29: 'periodic distributions from government (IRC § 457) deferred compensation plans' ... 'periodic distributions from an annuity contract [IRC § 403(b)]' ... 'periodic distributions of benefits from ... [IRC § 401(k)]'; only IRA and HR-10 (Keogh) plans list 'lump-sum payments'",
-    "why": "The question says 'pension or annuity income or IRA distributions (periodic or lump-sum)' without limiting lump sums to IRAs and Keogh plans. As a result, it captures non-qualifying lump sums that the tool already handles correctly as zero."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer aged 59 1/2 or older whose pension or annuity income is only from a non-qualifying source must answer YES and is refused, although line 29 is correctly $0. Non-qualifying sources include an annuity bought with their own funds from an insurance company, distributions received as a nonemployee spouse under a QDRO or DRO, and amounts derived from contributions made after retirement.",
-    "irs_text": "ny_it201i p. 9, Line 29: 'Qualifying pension and annuity income does not include: • Distributions you received as a nonemployee spouse in accordance with a ... (QDRO) ... • Distributions you received as a result of an annuity contract purchased with your own funds from an insurance company'; also 'but not payments derived from contributions made after you retired'",
-    "why": "The question asks about any pension, annuity or IRA income other than line 26 government pensions. It does not exclude these listed non-qualifying categories."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer who turned 59 1/2 during 2025 and received all of their pension, annuity or IRA income before that date must answer YES ('59 1/2 or older in 2025'), although the qualifying amount, and therefore line 29, is $0.",
-    "irs_text": "ny_it201i p. 9, Line 29: 'If you became 59½ during 2025, enter only the amount you received after you became 59½'",
-    "why": "The question tests the person's age during 2025, not whether the income was received after the person reached 59 1/2. It therefore captures filers whose exclusion is zero."
-   }
-  ],
-  "prompt_sha": "b1ec125fce5691a50cfe450db010bb22726fc03a27dd6fb8d27904179e676d0a",
-  "subject_sha": "0a03995ad649cf02b0a573317cc1653da2b2faed4c46bc01a55106dce936a37f",
   "used": [
    {
     "doc": "ny_it201i",
@@ -566,8 +606,38 @@
     "cols_sha256": "895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d"
    }
   ],
-  "cost": 0.072448,
-  "model": "claude-opus-5-5"
+  "subject_sha": "0a03995ad649cf02b0a573317cc1653da2b2faed4c46bc01a55106dce936a37f",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "WIDE",
+    "findings": [
+     {
+      "kind": "WIDE",
+      "situation": "A filer aged 59 1/2 or older whose only line 9 or 10 income is a lump-sum (non-periodic) distribution from a 401(k), 403(b), 457 or employer pension plan must answer YES and is refused, although that income does not qualify and line 29 is correctly $0.",
+      "irs_text": "ny_it201i p. 9, Line 29: 'periodic distributions from government (IRC § 457) deferred compensation plans' ... 'periodic distributions from an annuity contract [IRC § 403(b)]' ... 'periodic distributions of benefits from ... [IRC § 401(k)]'; only IRA and HR-10 (Keogh) plans list 'lump-sum payments'",
+      "why": "The question says 'pension or annuity income or IRA distributions (periodic or lump-sum)' without limiting lump sums to IRAs and Keogh plans. As a result, it captures non-qualifying lump sums that the tool already handles correctly as zero."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer aged 59 1/2 or older whose pension or annuity income is only from a non-qualifying source must answer YES and is refused, although line 29 is correctly $0. Non-qualifying sources include an annuity bought with their own funds from an insurance company, distributions received as a nonemployee spouse under a QDRO or DRO, and amounts derived from contributions made after retirement.",
+      "irs_text": "ny_it201i p. 9, Line 29: 'Qualifying pension and annuity income does not include: • Distributions you received as a nonemployee spouse in accordance with a ... (QDRO) ... • Distributions you received as a result of an annuity contract purchased with your own funds from an insurance company'; also 'but not payments derived from contributions made after you retired'",
+      "why": "The question asks about any pension, annuity or IRA income other than line 26 government pensions. It does not exclude these listed non-qualifying categories."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer who turned 59 1/2 during 2025 and received all of their pension, annuity or IRA income before that date must answer YES ('59 1/2 or older in 2025'), although the qualifying amount, and therefore line 29, is $0.",
+      "irs_text": "ny_it201i p. 9, Line 29: 'If you became 59½ during 2025, enter only the amount you received after you became 59½'",
+      "why": "The question tests the person's age during 2025, not whether the income was received after the person reached 59 1/2. It therefore captures filers whose exclusion is zero."
+     }
+    ],
+    "prompt_sha": "b1ec125fce5691a50cfe450db010bb22726fc03a27dd6fb8d27904179e676d0a",
+    "cost": 0.072448,
+    "model": "claude-opus-5-5",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/ny_it201.ask.pension_exclusion.response.txt"
+   }
+  ]
  },
  {
   "screen": "ny_it201.ask.refund_529",
@@ -575,17 +645,6 @@
   "lines": [
    "ny_it201.line78a"
   ],
-  "verdict": "NARROW",
-  "findings": [
-   {
-    "kind": "NARROW",
-    "situation": "A filer who wants the entire refund on line 78 deposited into one or more NYS 529 accounts could truthfully answer NO, reading 'part of a refund' as meaning less than all of it.",
-    "irs_text": "ny_it201i p. 23, Line 78a: \"You may directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts.\"",
-    "why": "The instructions allow depositing all of the refund, but the question asks only about 'part of a refund'. A filer electing the full refund may answer NO, and the tool then enters $0 on line 78a instead of the Form IT-195, line 4 amount."
-   }
-  ],
-  "prompt_sha": "747f7e22d7a11a9fc3452a4cb831af827dc5e9c56c52b7cd756811f42be36b88",
-  "subject_sha": "7cd139e3ca70139034fdfa1954ad655871321eb25b1737164662d10ba29817c4",
   "used": [
    {
     "doc": "ny_it201i",
@@ -622,8 +681,26 @@
     "cols_sha256": "895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d"
    }
   ],
-  "cost": 0.050696,
-  "model": "claude-opus-5-5"
+  "subject_sha": "7cd139e3ca70139034fdfa1954ad655871321eb25b1737164662d10ba29817c4",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "NARROW",
+    "findings": [
+     {
+      "kind": "NARROW",
+      "situation": "A filer who wants the entire refund on line 78 deposited into one or more NYS 529 accounts could truthfully answer NO, reading 'part of a refund' as meaning less than all of it.",
+      "irs_text": "ny_it201i p. 23, Line 78a: \"You may directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts.\"",
+      "why": "The instructions allow depositing all of the refund, but the question asks only about 'part of a refund'. A filer electing the full refund may answer NO, and the tool then enters $0 on line 78a instead of the Form IT-195, line 4 amount."
+     }
+    ],
+    "prompt_sha": "747f7e22d7a11a9fc3452a4cb831af827dc5e9c56c52b7cd756811f42be36b88",
+    "cost": 0.050696,
+    "model": "claude-opus-5-5",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/ny_it201.ask.refund_529.response.txt"
+   }
+  ]
  },
  {
   "screen": "ny_it201.ask.us_obligation_interest",
@@ -631,29 +708,6 @@
   "lines": [
    "ny_it201.line28"
   ],
-  "verdict": "WIDE",
-  "findings": [
-   {
-    "kind": "WIDE",
-    "situation": "A filer received dividends from a mutual fund that holds some U.S. Treasury obligations but does not meet the 50% asset requirement each quarter, so nothing is subtractable and the tool's $0 is correct, yet the question makes the filer answer YES.",
-    "irs_text": "ny_it201i p. 9, Line 28: \"Dividends you received from a regulated investment company (mutual fund) that invests in obligations of the U.S. government and meet the 50% asset requirement each quarter qualify for this subtraction.\"",
-    "why": "The question asks about \"dividends from a fund investing in them\" with no mention of the 50% quarterly asset test. Any filer holding a common bond or balanced fund with some Treasuries would answer YES and be refused, even though line 28 would correctly be $0."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer has interest from obligations of federally sponsored or related entities, such as GNMA, FNMA or FHLMC securities or funds holding them, and cannot tell whether these count as 'other U.S. government obligations.'",
-    "irs_text": "ny_it201i p. 9, Line 28: \"enter the amount of interest income you earned from bonds or other obligations of the U.S. government.\"",
-    "why": "The question's \"other U.S. government obligations\" could reasonably be read to include agency or government-sponsored securities. A filer could answer YES or NO in good faith, and the question gives no way to resolve it."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer's partnership, S corporation or trust Schedule K-1 interest, reported on line 11, or business interest on line 6, includes interest on U.S. obligations, but the filer does not think of it as interest they received from U.S. government bonds.",
-    "irs_text": "ny_it201i p. 9, Line 28: \"Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?\"",
-    "why": "The question names only directly held examples (Treasury bills, notes or bonds, savings bonds) and fund dividends. A filer could read it as not reaching U.S. obligation interest that flows through a business or a K-1, and answer NO even though line 28 applies."
-   }
-  ],
-  "prompt_sha": "09535ba9aee3c14c466752d3e5570a2b952b343b238597fe6690fa0732189f5a",
-  "subject_sha": "c0a3cbce571b5ae4d9f416253969735f8985061f4283adb93cb434149b4f295a",
   "used": [
    {
     "doc": "ny_it201i",
@@ -690,7 +744,37 @@
     "cols_sha256": "895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d"
    }
   ],
-  "cost": 0.068628,
-  "model": "claude-opus-5-5"
+  "subject_sha": "c0a3cbce571b5ae4d9f416253969735f8985061f4283adb93cb434149b4f295a",
+  "grandfathered": true,
+  "samples": [
+   {
+    "verdict": "WIDE",
+    "findings": [
+     {
+      "kind": "WIDE",
+      "situation": "A filer received dividends from a mutual fund that holds some U.S. Treasury obligations but does not meet the 50% asset requirement each quarter, so nothing is subtractable and the tool's $0 is correct, yet the question makes the filer answer YES.",
+      "irs_text": "ny_it201i p. 9, Line 28: \"Dividends you received from a regulated investment company (mutual fund) that invests in obligations of the U.S. government and meet the 50% asset requirement each quarter qualify for this subtraction.\"",
+      "why": "The question asks about \"dividends from a fund investing in them\" with no mention of the 50% quarterly asset test. Any filer holding a common bond or balanced fund with some Treasuries would answer YES and be refused, even though line 28 would correctly be $0."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer has interest from obligations of federally sponsored or related entities, such as GNMA, FNMA or FHLMC securities or funds holding them, and cannot tell whether these count as 'other U.S. government obligations.'",
+      "irs_text": "ny_it201i p. 9, Line 28: \"enter the amount of interest income you earned from bonds or other obligations of the U.S. government.\"",
+      "why": "The question's \"other U.S. government obligations\" could reasonably be read to include agency or government-sponsored securities. A filer could answer YES or NO in good faith, and the question gives no way to resolve it."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "A filer's partnership, S corporation or trust Schedule K-1 interest, reported on line 11, or business interest on line 6, includes interest on U.S. obligations, but the filer does not think of it as interest they received from U.S. government bonds.",
+      "irs_text": "ny_it201i p. 9, Line 28: \"Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?\"",
+      "why": "The question names only directly held examples (Treasury bills, notes or bonds, savings bonds) and fund dividends. A filer could read it as not reaching U.S. obligation interest that flows through a business or a K-1, and answer NO even though line 28 applies."
+     }
+    ],
+    "prompt_sha": "09535ba9aee3c14c466752d3e5570a2b952b343b238597fe6690fa0732189f5a",
+    "cost": 0.068628,
+    "model": "claude-opus-5-5",
+    "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
+    "response": ".transcription/ny/screens/ny_it201.ask.us_obligation_interest.response.txt"
+   }
+  ]
  }
 ]

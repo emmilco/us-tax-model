@@ -16,12 +16,16 @@ their questions are not asked, so the review looks for a situation the cited tex
 the condition is false (NARROW), and checks that the condition is the one the cited text states. A gate's review is
 current while its subject (gates.subject: wording and gated lines, not the prompt's own text) is unchanged.
 
-    screen_review.py [--screens a,b] [--gates-only] [--dry-run] [--from-response] [--jobs 6] [--model M]
+    screen_review.py [--screens a,b] [--gates-only] [--samples K] [--force-rerun REASON] [--approve-cost DOLLARS]
+                     [--dry-run] [--jobs 6] [--model M]
 
-Standing review (T-088): a screen whose prompt hash (its question, the gated lines' English and refusals, and
-the pages they cite) differs from its recorded review is stale in check-all (tools/transcription/check_screens.py)
-and is rerun with --screens, which merges into reviews/<year>/screens/screen_review.json; findings are adjudicated
-in reviews/<year>/screens/screen_review.md and ruled in reviews/<year>/screens/rulings.json. Each call is one fixed-prompt call to the selected model with no tools (fixed-prompt, curated input, no action surface): `claude` through `claude -p`, or an equal-authority peer through its transport (families.py; docs/2026-10-24_validation_policy.md).
+Sampled standing review (samples.py): a unit's subject is its question, the gated lines' English and refusals and
+the pages they cite (screen_subject; gates.subject for a gate), without the system prompt. A run gives each selected
+unit the samples its current subject still needs this milestone, merged into reviews/<year>/screens/screen_review.json;
+samples beyond it need --force-rerun REASON, and a run estimated above the owner's gate needs --approve-cost
+(spend.py). Between releases a unit whose subject changed is due, not failed (tools/transcription/check_screens.py);
+its --release mode refuses a release while any unit is due. Findings are adjudicated in
+reviews/<year>/screens/screen_review.md and ruled per sample in reviews/<year>/screens/rulings.json. Each call is one fixed-prompt call to the selected model with no tools (fixed-prompt, curated input, no action surface): `claude` through `claude -p`, or an equal-authority peer through its transport (families.py; docs/2026-10-24_validation_policy.md).
 """
 import argparse, datetime, glob, hashlib, json, os, re, sys
 from concurrent.futures import ThreadPoolExecutor
@@ -33,6 +37,8 @@ from taxyear import Y  # noqa: E402
 import jurisdiction  # noqa: E402  (--jurisdiction ny: the screens of New York lines; reviews/ny/<year>/screens/)
 import gates  # noqa: E402
 from structured_text import indent_rest, continued  # noqa: E402
+import samples  # noqa: E402
+import spend  # noqa: E402
 
 OUT = str(jurisdiction.ypath("reviews", Y, "screens"))
 # A New York screen review may share its screen (a federal scope question gating New York lines) with a federal
@@ -251,7 +257,15 @@ def screen_subject(screen, gated, lines, mani):
     return hashlib.sha256(prompt.encode()).hexdigest()
 
 
-def run_one(screen, gated, lines, mani, model, dry, from_response):
+def subject_of(key, unit, lines, mani):
+    """The subject hash a unit's samples are current against: screen_subject for a screen, gates.subject for a gate."""
+    kind, gated = unit
+    return gates.subject(gated, lines, encoded_english) if kind == "gate" else screen_subject(key, gated, lines, mani)
+
+
+def run_one(screen, gated, lines, mani, model, dry, from_response, k=None, subject=None):
+    """One review of a unit (a flat record: the unit's fields and the sample's, split by SAMPLE_FIELDS). Sample k's
+    response is kept as <unit>.<subject>.<k>.response.txt; without k, as <unit>.response.txt."""
     gate = screen.startswith("gate:")
     prompt, used = prompt_for(screen, gated, lines, mani)
     os.makedirs(RAW, exist_ok=True)
@@ -259,11 +273,12 @@ def run_one(screen, gated, lines, mani, model, dry, from_response):
     open(base + ".prompt.txt", "w", encoding="utf-8").write(prompt)
     if dry:
         return {"screen": screen, "chars": len(prompt), "lines": len(gated["gates"] if gate else gated)}
+    response = f"{base}.{subject[:12]}.{k}.response.txt" if k and subject else base + ".response.txt"
     if from_response:
-        text = open(base + ".response.txt", encoding="utf-8").read(); meta = {}
+        text = open(response, encoding="utf-8").read(); meta = {}
     else:
         text, meta = call_model(prompt, model, system=SYSTEM, kind="screen", subject=screen)
-        open(base + ".response.txt", "w", encoding="utf-8").write(text)
+        open(response, "w", encoding="utf-8").write(text)
     blocks = re.findall(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
     doc = yaml.safe_load(blocks[-1] if blocks else text) or {}
     if gate:
@@ -273,12 +288,46 @@ def run_one(screen, gated, lines, mani, model, dry, from_response):
                 "prompt_sha": hashlib.sha256(prompt.encode()).hexdigest(),
                 "subject_sha": gates.subject(gated, lines, encoded_english), "used": used,
                 "cost": meta.get("cost_usd") or 0, "model": ", ".join(meta.get("model_reported", [])),
-                "date": datetime.date.today().isoformat()}
+                "date": datetime.date.today().isoformat(), "system_sha": SYSTEM_SHA,
+                "response": os.path.relpath(response, ROOT), **_reason()}
     sline = lines[screen][1]
     return {"screen": screen, "question": sline["expr"]["source"], "lines": [l["id"] for _, l, _ in gated],
             "verdict": str(doc.get("verdict", "UNPARSED")), "findings": doc.get("findings") or [],
             "prompt_sha": hashlib.sha256(prompt.encode()).hexdigest(), "subject_sha": screen_subject(screen, gated, lines, mani),
-            "used": used, "cost": meta.get("cost_usd") or 0, "model": ", ".join(meta.get("model_reported", []))}
+            "used": used, "cost": meta.get("cost_usd") or 0, "model": ", ".join(meta.get("model_reported", [])),
+            "date": datetime.date.today().isoformat(), "system_sha": SYSTEM_SHA, "response": os.path.relpath(response, ROOT),
+            **_reason()}
+
+
+SYSTEM_SHA = hashlib.sha256(SYSTEM.encode()).hexdigest()
+# The fields of one sample; the others describe the unit and are kept once on its record.
+SAMPLE_FIELDS = ("verdict", "findings", "prompt_sha", "system_sha", "cost", "model", "date", "response", "rerun_reason")
+VERDICTS = ("COVERS", "NARROW", "WIDE", "SOURCE", "UNCLEAR")
+
+
+def _reason():
+    return {"rerun_reason": os.environ[spend.REASON_ENV]} if os.environ.get(spend.REASON_ENV) else {}
+
+
+def read_records(path):
+    """{unit: record} of a screen_review.json in the sampled format (samples.py)."""
+    if not os.path.exists(path):
+        return {}
+    rows = json.load(open(path, encoding="utf-8"))
+    legacy = [r["screen"] for r in rows if "samples" not in r]
+    if legacy:
+        sys.exit(f"{path}: {len(legacy)} record(s) in the single-review format ({', '.join(legacy[:5])}); "
+                 "the file predates sampled reviews")
+    return {r["screen"]: r for r in rows}
+
+
+def as_sample(flat):
+    """(unit fields, sample) of run_one's flat record. A verdict outside VERDICTS is an unparsed sample."""
+    unit = {k: v for k, v in flat.items() if k not in SAMPLE_FIELDS}
+    smp = {k: flat[k] for k in SAMPLE_FIELDS if k in flat}
+    if smp.get("verdict") not in VERDICTS:
+        smp["parse_error"] = True
+    return unit, smp
 
 
 # The cost of a Claude screen review by prompt size: a least-squares fit to the cost ledger's 17 successful screen calls
@@ -293,34 +342,86 @@ def estimate_usd(chars):
     return USD_PER_CALL + USD_PER_KCHAR * chars / 1000
 
 
+def plan(sc, lines, mani, records, asked, force, price, model):
+    """One entry per selected unit: {screen, subject, n, note, jobs}, as completeness_review.plan."""
+    out = []
+    for key, unit in sc.items():
+        subject = subject_of(key, unit, lines, mani)
+        rec = records.get(key)
+        n, beyond = samples.wanted(rec, subject, asked)
+        entry = {"screen": key, "unit": unit, "subject": subject, "jobs": []}
+        if n == 0:
+            entry["note"] = "satisfied: its current subject has the milestone's samples"
+        elif beyond and not force:
+            entry["note"] = (f"refused: {n} sample(s) would go beyond the milestone's {samples.SAMPLES_PER_MILESTONE}; "
+                             "--force-rerun REASON runs them")
+        else:
+            first = len(rec["samples"]) + 1 if rec and rec.get("subject_sha") == subject else 1
+            chars = len(prompt_for(key, unit[1], lines, mani)[0])
+            usd = spend.estimate(chars, "screen_review.py", model, price)
+            entry["jobs"] = [{"kind": "screen", "form": key, "k": k, "run": True, "usd": usd} for k in range(first, first + n)]
+            entry["note"] = f"{n} sample(s) from #{first}"
+        out.append(entry)
+    return out
+
+
 def main():
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--screens"); ap.add_argument("--gates-only", action="store_true", help="review only the choose-guard gates")
-    ap.add_argument("--dry-run", action="store_true"); ap.add_argument("--from-response", action="store_true")
+    ap.add_argument("--dry-run", action="store_true", help="plan and estimate; call no model")
+    ap.add_argument("--samples", type=int, metavar="K", help="run K samples per unit (default: those the milestone still needs)")
+    ap.add_argument("--force-rerun", metavar="REASON", help="run samples beyond the milestone; the reason is recorded")
+    ap.add_argument("--approve-cost", metavar="DOLLARS", type=float,
+                    help=f"run although the estimate exceeds the ${spend.COST_GATE_USD:.2f} gate; at least the estimate")
     ap.add_argument("--jobs", type=int, default=6); ap.add_argument("--model", default="claude-opus-5-5")
     a = ap.parse_args()
-    lines = load_lines(); mani = manifest(); sc = {k: v for k, (_, v) in units(lines).items()}
+    if a.force_rerun is not None and not a.force_rerun.strip():
+        ap.error("--force-rerun needs a reason")
+    lines = load_lines(); mani = manifest(); sc = units(lines)
     if a.gates_only:
         sc = {k: v for k, v in sc.items() if k.startswith("gate:")}
     if a.screens:
-        sc = {k: v for k, v in sc.items() if k in a.screens.split(",")}
-    with ThreadPoolExecutor(max_workers=a.jobs) as ex:
-        results = list(ex.map(lambda kv: run_one(kv[0], kv[1], lines, mani, a.model, a.dry_run, a.from_response), sc.items()))
-    if a.dry_run:
-        for r in results:
-            print(f"{r['screen']:32s} {r['lines']:3d} lines {r['chars']:8,d} chars  ~${estimate_usd(r['chars']):.2f}")
-        print(f"{len(results)} screens, {sum(r['chars'] for r in results):,} chars in all, ~${sum(estimate_usd(r['chars']) for r in results):.2f} at the "
-              "Claude rate of the ledger's screen reviews (estimate_usd)")
-        return
+        want = a.screens.split(",")
+        missing = [w for w in want if w not in sc]
+        if missing:
+            sys.exit(f"unknown screen(s): {', '.join(missing)}")
+        sc = {k: v for k, v in sc.items() if k in want}
     os.makedirs(OUT, exist_ok=True)
     path = os.path.join(OUT, "screen_review.json")
-    # A run over some screens replaces their entries and keeps the others (the standing review, T-088).
-    previous = json.load(open(path)) if os.path.exists(path) else []
-    rerun = {r["screen"] for r in results}
-    merged = [r for r in previous if r["screen"] not in rerun] + results
-    json.dump(sorted(merged, key=lambda r: r["screen"]), open(path, "w"), indent=1, ensure_ascii=False)
-    cost = sum(r["cost"] for r in results)
-    print(f"{len(results)} screens; verdicts: " + ", ".join(f"{v} {sum(1 for r in results if r['verdict'] == v)}" for v in sorted({r['verdict'] for r in results})) + f"; cost {cost:.2f}")
+    records = read_records(path)
+    planned = plan(sc, lines, mani, records, a.samples, a.force_rerun, spend.prices(), a.model)
+    jobs = [j for e in planned for j in e["jobs"]]
+    for e in planned:
+        print(f"{e['screen']:40s} {e['note']}" + (f"  ~${sum(j['usd'] or 0 for j in e['jobs']):.2f}" if e["jobs"] else ""))
+    print(f"{len(jobs)} sample(s), estimated ${sum(j['usd'] or 0 for j in jobs):.2f}; gate ${spend.COST_GATE_USD:.2f}")
+    refusal = spend.gate(jobs, a.approve_cost)
+    if a.dry_run:
+        if refusal:
+            print(f"would be refused: {refusal}")
+        return
+    if refusal:
+        sys.exit(f"refused: {refusal}")
+    if not jobs:
+        return
+    if a.force_rerun:
+        os.environ[spend.REASON_ENV] = a.force_rerun
+    by_key = {e["screen"]: e for e in planned if e["jobs"]}
+    with ThreadPoolExecutor(max_workers=a.jobs) as ex:
+        results = list(ex.map(lambda j: (j, run_one(j["form"], by_key[j["form"]]["unit"][1], lines, mani, a.model, False, False,
+                                                     j["k"], by_key[j["form"]]["subject"])), jobs))
+    for key, e in by_key.items():
+        rec = records.get(key)
+        if not rec or rec.get("subject_sha") != e["subject"]:
+            rec = records[key] = {"screen": key, "subject_sha": e["subject"], "samples": []}
+        for j, flat in sorted([r for r in results if r[0]["form"] == key], key=lambda r: r[0]["k"]):
+            unit, smp = as_sample(flat)
+            rec.update({k: v for k, v in unit.items() if k != "subject_sha"})
+            rec["samples"].append(smp)
+    json.dump(sorted(records.values(), key=lambda r: r["screen"]), open(path, "w"), indent=1, ensure_ascii=False)
+    done = [as_sample(f)[1] for _, f in results]
+    print(f"{len(done)} sample(s); verdicts: " + ", ".join(f"{v} {sum(1 for d in done if d['verdict'] == v)}"
+                                                          for v in sorted({d["verdict"] for d in done}))
+          + f"; cost {sum(d['cost'] for d in done):.2f}")
 
 
 if __name__ == "__main__":

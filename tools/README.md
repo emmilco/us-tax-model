@@ -205,13 +205,15 @@ and the column. `node engine/dist/main.js conjecture` checks every cell against
 the credit formula built from Rev. Proc. 2024-40 section 3.06(1); see
 `reports/2025/eic_table_conjecture.md`.
 
-## Sampled completeness reviews
+## Sampled completeness and screen reviews
 
-`completeness_review.py` and `check_completeness.py` keep sampled reviews (`tools/transcription/samples.py`). A form's
-subject is the hash of its review prompt without the reviewer's system prompt; its record holds the samples run on
-that subject, and the union of their claims is ruled once. A claim equal to a ruled claim of the same form and
+`completeness_review.py` and `check_completeness.py`, and `screen_review.py` and `check_screens.py`, keep sampled
+reviews (`tools/transcription/samples.py`). A form's (or screen's) subject is the hash of its review prompt without the
+reviewer's system prompt; its record holds the samples run on that subject, and the union of their findings is ruled
+once. Screen rulings are per sample (`unruled:<screen>#<k>`); a sample carries a ruling only when its verdict and
+findings equal a ruled sample's. A claim equal to a ruled claim of the same form and
 subject (item and normalised quote) carries that ruling. Between releases a form whose subject changed is due:
-listed by check-all, not failed. `check_completeness.py --release` is the release gate: it fails while any form is
+listed by check-all, not failed. `--release` of both checks is the release gate (`tools/release_reviews.sh`): it fails while any subject is
 due or short of `SAMPLES_PER_MILESTONE` samples. A record marked `grandfathered` holds one review made before
 sampling and satisfies the milestone until its subject changes. Runs are guarded: samples beyond the milestone need
 `--force-rerun REASON`, and an estimate above the owner's $3.00 gate needs `--approve-cost` (`spend.py`, shared with

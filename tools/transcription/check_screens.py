@@ -1,32 +1,30 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Standing screen review (T-088), offline, in check-all.
+"""Standing screen review (T-088), offline, in check-all. Sampled reviews (samples.py).
 
-Every scope screen (a yes/no input that lines name as a refusal gate) must have a current screen review: the hash of
-the prompt screen_review.py would send now (the screen's question, each gated line's English and refusal, and the
-pages they cite) must equal the `prompt_sha` recorded in reviews/<year>/screens/screen_review.json. A screen whose
-question, gated lines or citations changed is `stale` and is rerun with
-`python3 tools/transcription/screen_review.py --screens <id>`. A current review whose verdict is not COVERS is
-`unruled` until its findings are adjudicated and ruled in reviews/<year>/screens/rulings.json under
-"unruled:<screen>" with the `prompt_sha` of the review it rules (so a rerun needs a new ruling).
+Every scope screen (a yes/no input that lines name as a refusal gate) and every choose-guard gate (gates.py, keyed
+`gate:<condition>`) has a record in reviews/<year>/screens/screen_review.json holding the samples run against one
+subject. A screen's subject is the prompt screen_review.py would send without the gate condition and without the
+system prompt (screen_subject); a gate's is gates.subject (the condition's wording and line, each gate line and gated
+input with their English and wording, citations included).
 
-The hash a screen is current against is its subject: the prompt without the gate condition shown for a screen whose
-input is gated (gates.py), recorded as `subject_sha` (an older record's `prompt_sha`, the same hash for an ungated
-screen). Gating a screen's input therefore does not make its review stale.
+- A unit whose subject differs from its record's (or that has none) is `due`: listed, not failed. It is reviewed
+  before the next release with `python3 tools/transcription/screen_review.py --screens <id>`.
+- Each current sample whose verdict is not COVERS is `unruled:<unit>#<k>` (k from 1) until its findings are
+  adjudicated and ruled in reviews/<year>/screens/rulings.json with the record's `subject_sha`; a ruling with another
+  subject_sha is not accepted. A sample whose verdict and normalised findings equal those of a ruled sample of the same
+  unit and subject carries that ruling. Unruled samples fail check-all.
+- A sample whose verdict did not parse is listed and does not count toward the milestone.
+- `orphan`: a recorded gate review whose gate no longer exists (fails).
 
-A choose-guard gate (gates.py, keyed `gate:<condition>`) is reviewed by the same tool and recorded in the same file.
-Its review is current while its subject (gates.subject: the condition's wording and line, each gate line and gated
-input with their English and wording, citations included) equals the recorded `subject_sha`; the prompt's own text is
-not part of it, so a change to the review prompt applies at each gate's next real change. A ruling of a gate's review
-names the `prompt_sha` recorded with that review.
+`--release` is the release gate (tools/release_reviews.sh): it also fails on every due unit and every unit short of the
+milestone's samples, and writes no report. Findings that existed when the check was introduced form the baseline
+(tools/baseline_check.py), each held while its subject is unchanged.
 
-Screens that were stale or unruled when the check was introduced form the baseline (tools/baseline_check.py), each
-held while its prompt is unchanged.
-
-    check_screens.py [--baseline]
+    check_screens.py [--release] [--baseline]
 """
-import hashlib
 import json
+import tempfile
 import os
 import sys
 from pathlib import Path
@@ -34,7 +32,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent))
-from screen_review import load_lines, screens, screen_subject, encoded_english, OUT  # noqa: E402
+from screen_review import load_lines, screens, screen_subject, encoded_english, read_records, OUT  # noqa: E402
+import samples  # noqa: E402
 import gates  # noqa: E402
 from transcribe import ROOT, manifest  # noqa: E402
 from taxyear import Y  # noqa: E402
@@ -47,71 +46,121 @@ RULINGS = Path(OUT) / "rulings.json"
 REPORT = jurisdiction.ypath("reports", Y, "screen_currency.md")
 
 
+def unit_findings(key, form, sha, r, why_changed):
+    """The findings of one unit: `due` when its record is missing or on another subject, else one `unruled` per
+    sample with a verdict other than COVERS, and `short` when it lacks the milestone's samples."""
+    if not r or r.get("subject_sha") != sha:
+        why = "never reviewed" if not r else why_changed
+        return [{"kind": "due", "line": key, "form": form, "subject": sha,
+                 "detail": f"{why}; run screen_review.py --screens {key}"}]
+    out = []
+    for k, smp in enumerate(r.get("samples") or [], 1):
+        if smp.get("parse_error"):
+            print(f"  note: {key}: sample {k} did not parse and does not count")
+        elif smp.get("verdict") != "COVERS":
+            out.append({"kind": "unruled", "line": f"{key}#{k}", "form": form, "subject": sha,
+                        "carry": (smp.get("verdict"), samples.norm(json.dumps(smp.get("findings") or [], sort_keys=True))),
+                        "detail": f"verdict {smp.get('verdict')} with {len(smp.get('findings') or [])} finding(s); "
+                                  f"adjudicate and rule with subject_sha {sha[:12]}"})
+    if not samples.satisfied(r):
+        out.append({"kind": "short", "line": key, "form": form, "subject": sha,
+                    "detail": f"{len(samples.parsed(r))} of {samples.SAMPLES_PER_MILESTONE} sample(s); "
+                              f"run screen_review.py --screens {key}"})
+    return out
+
+
 def findings():
+    """(found, shas): every unit's findings, release kinds included, and each unit's current subject."""
     lines = load_lines()
     mani = manifest()
-    reviewed = {r["screen"]: r for r in json.loads(RECORD.read_text())} if RECORD.exists() else {}
-    rulings = json.loads(RULINGS.read_text()).get("rulings", {}) if RULINGS.exists() else {}
-    out = []
+    reviewed = read_records(str(RECORD))
+    out, shas = [], {}
     waiting = pending.listed("screens")
     for screen in sorted(waiting & set(reviewed)):
         out.append({"kind": "pending", "line": screen, "form": lines[screen][0] if screen in lines else "?", "subject": "-",
                     "detail": f"reviewed but still listed as pending; remove it from {pending.name()}"})
     for screen, gated in screens(lines).items():
         sha = screen_subject(screen, gated, lines, mani)
-        form = lines[screen][0]
-        r = reviewed.get(screen)
-        if not r and screen in waiting:
+        if screen not in reviewed and screen in waiting:
             print(f"  pending: {screen}: never reviewed (listed in {pending.name()})")
-        elif not r or (r.get("subject_sha") or r.get("prompt_sha")) != sha:
-            why = "never reviewed" if not r else "question, gated lines or their citations changed since the review"
-            out.append({"kind": "stale", "line": screen, "form": form, "subject": sha,
-                        "detail": f"{why}; rerun screen_review.py --screens {screen}"})
-        elif r.get("verdict") != "COVERS":
-            ruling = rulings.get(f"unruled:{screen}")
-            # A ruling judges one review: it names the prompt hash of the review it ruled. A ruling of an earlier
-            # review does not accept this one; the finding then has its own key, and the old ruling goes stale.
-            kind = "rerun" if isinstance(ruling, dict) and ruling.get("prompt_sha") not in (None, r.get("prompt_sha")) else "unruled"
-            out.append({"kind": kind, "line": screen, "form": form, "subject": sha,
-                        "detail": f"verdict {r.get('verdict')} with {len(r.get('findings') or [])} finding(s); "
-                                  f"adjudicate and rule with prompt_sha {str(r.get('prompt_sha'))[:12]}"})
-    out.extend(gate_findings(lines, reviewed, rulings))
-    return out
+            continue
+        shas[screen] = sha
+        out += unit_findings(screen, lines[screen][0], sha, reviewed.get(screen),
+                             "question, gated lines or their citations changed since its samples")
+    gf, gshas = gate_findings(lines, reviewed)
+    return out + gf, {**shas, **gshas}
 
 
-def gate_findings(lines, reviewed, rulings):
-    """The currency of each choose-guard gate's screen review, and recorded gate reviews whose gate is gone."""
-    out = []
+def gate_findings(lines, reviewed):
+    """(findings, shas) of each choose-guard gate's samples, and recorded gate reviews whose gate is gone."""
+    out, shas = [], {}
     current = gates.units(lines)
     for key, unit in current.items():
-        sha = gates.subject(unit, lines, encoded_english)
-        form = gates.unit_form(unit, lines)
-        r = reviewed.get(key)
-        if not r or r.get("subject_sha") != sha:
-            why = "never reviewed" if not r else "the condition's wording, the gated lines or their citations changed since the review"
-            out.append({"kind": "stale", "line": key, "form": form, "subject": sha,
-                        "detail": f"{why}; rerun screen_review.py --screens {key}"})
-        elif r.get("verdict") != "COVERS":
-            ruling = rulings.get(f"unruled:{key}")
-            kind = "rerun" if isinstance(ruling, dict) and ruling.get("prompt_sha") not in (None, r.get("prompt_sha")) else "unruled"
-            out.append({"kind": kind, "line": key, "form": form, "subject": sha,
-                        "detail": f"verdict {r.get('verdict')} with {len(r.get('findings') or [])} finding(s); "
-                                  f"adjudicate and rule with prompt_sha {str(r.get('prompt_sha'))[:12]}"})
+        sha = shas[key] = gates.subject(unit, lines, encoded_english)
+        out += unit_findings(key, gates.unit_form(unit, lines), sha, reviewed.get(key),
+                             "the condition's wording, the gated lines or their citations changed since its samples")
     for key in sorted(k for k in reviewed if k.startswith("gate:") and k not in current):
         out.append({"kind": "orphan", "line": key, "form": "-", "subject": key,
                     "detail": "a recorded gate review whose gate no longer exists; remove it from screen_review.json"})
+    return out, shas
+
+
+def unit_of(key):
+    return key.split(":", 1)[1].rsplit("#", 1)[0]
+
+
+def accepted(rulings, shas):
+    """The rulings whose subject_sha is their unit's current subject."""
+    return {k: r for k, r in rulings.items() if isinstance(r, dict) and r.get("subject_sha") == shas.get(unit_of(k))}
+
+
+def carried(found, rulings):
+    """{key: ruling} for unruled samples equal (verdict and normalised findings) to a ruled sample of the same unit."""
+    own = {}
+    for f in found:
+        k = "unruled:" + f["line"]
+        if f["kind"] == "unruled" and k in rulings:
+            own.setdefault((unit_of(k), f["carry"]), k)
+    out = {}
+    for f in found:
+        k = "unruled:" + f["line"]
+        src = own.get((unit_of(k), f.get("carry")))
+        if f["kind"] == "unruled" and k not in rulings and src:
+            out[k] = {**rulings[src], "carried_from": src}
     return out
 
 
-def check(rebaseline=False):
+def check(rebaseline=False, release=False):
     forms = baseline_check.load_forms(Path(ROOT) / "canonical" / Y)
-    return baseline_check.run(
-        "screens", forms, findings(), RULINGS, REPORT, "Standing screen review",
-        "Generated by `tools/transcription/check_screens.py` (T-088). `stale`: the screen's review prompt changed since "
-        "it was reviewed (for a gate, its subject changed). `unruled`: a current review found NARROW, WIDE, SOURCE or UNCLEAR "
-        "cases not yet ruled. `orphan`: a recorded gate review whose gate is gone.", rebaseline)
+    found, shas = findings()
+    due = [f for f in found if f["kind"] == "due"]
+    if not release:
+        found = [f for f in found if f["kind"] not in ("due", "short")]
+        for f in due:
+            print(f"  due at the next release: {f['line']}: {f['detail']}")
+    data = json.loads(RULINGS.read_text()) if RULINGS.exists() else {}
+    good = accepted(data.get("rulings", {}), shas)
+    carry = carried(found, good)
+    if carry:
+        print(f"  {len(carry)} sample(s) carry the ruling of an equal sample on the same subject")
+    with tempfile.TemporaryDirectory() as tmp:  # run() sees only the accepted and carried rulings
+        view = Path(tmp) / RULINGS.name
+        view.write_text(json.dumps({**data, "rulings": {**good, **carry}}))
+        status = baseline_check.run(
+            "screens", forms, found, view, Path(tmp) / "report.md" if release else REPORT, "Standing screen review",
+            "Generated by `tools/transcription/check_screens.py` (T-088). `unruled`: a current sample "
+            "(`<unit>#<sample>`) found NARROW, WIDE, SOURCE or UNCLEAR cases not yet ruled; a ruling with `carried_from` "
+            "is carried from an equal sample. `orphan`: a recorded gate review whose gate is gone. `due` and `short` "
+            "appear only in release mode.", rebaseline)
+        if rebaseline:
+            data["baseline"] = json.loads(view.read_text())["baseline"]
+            RULINGS.write_text(json.dumps(data, indent=1) + "\n", encoding="utf-8")
+    if due and not release:
+        with open(REPORT, "a", encoding="utf-8") as out:
+            out.write("\n## Due at the next release\n\n" + "".join(f"- `{f['line']}`: {f['detail']}\n" for f in due))
+    return status
 
 
 if __name__ == "__main__":
     os.chdir(ROOT)
-    sys.exit(check(rebaseline="--baseline" in sys.argv))
+    sys.exit(check(rebaseline="--baseline" in sys.argv, release="--release" in sys.argv))

@@ -1,7 +1,6 @@
 {
  "rulings": {
-  "unruled:clcw.spouse_screen": {
-   "prompt_sha": "f259a6af14ec2a0b91a6ccb631c6ddafa615f831b7b676796e7c63edc1710855",
+  "unruled:clcw.spouse_screen#1": {
    "reason": "WIDE only; both findings refuse cases the worksheet computes correctly.",
    "findings": [
     {
@@ -18,11 +17,11 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group0.md"
+   "adjudication": "reviews/2025/screens/adjudication/group0.md",
+   "subject_sha": "f259a6af14ec2a0b91a6ccb631c6ddafa615f831b7b676796e7c63edc1710855"
   },
-  "unruled:dependent.multiple_support": {
+  "unruled:dependent.multiple_support#1": {
    "reason": "No defect: both WIDE findings repeat group 3 findings 4 and 5 (refusal of a contributor the tool would correctly reject); the UNCLEAR on who counts as 'others' errs only toward YES, as group 3 finding 6.",
-   "prompt_sha": "ffe43ba7497e64b5adf3e654eaf31be9315950c28532eac04023c39ae3bb5331",
    "findings": [
     {
      "n": 0,
@@ -43,10 +42,10 @@
      "evidence": "i1040gi p. 21: 'you and another person(s) provided more than half of your relative's support'. Counting the person's own funds or public assistance among 'others' can only turn a No into a Yes (refusal). Leaving them out is the source's reading: neither the person nor a state agency is a contributor who could claim the person, so a true multiple support situation (you plus another person over half, no one over half) is answered Yes on either reading. If the state or the person provided over half, there is no multiple support situation and No with dependent.supported No computes correctly. As group 3 finding 6."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "ffe43ba7497e64b5adf3e654eaf31be9315950c28532eac04023c39ae3bb5331"
   },
-  "unruled:f2441.plans_differ": {
-   "prompt_sha": "f21b3bc90f3b302ece734bb6397fee928154ee39e9e5870ee87b5d6afdfdc9e6",
+  "unruled:f2441.plans_differ#1": {
    "reason": "Defect (owner decision): same-maximum plans below $5,000 compute line 21 as one plan's maximum, but amb.2025.dc_plan_maximum's reason says the readings agree there, which is false for its own third reading (the sum, capped at $5,000). Finding 1 is within the same ambiguity.",
    "findings": [
     {
@@ -65,10 +64,10 @@
    "bugs": [
     "PENDING-1-2"
    ],
-   "adjudication": "reviews/2025/screens/adjudication/group1.md"
+   "adjudication": "reviews/2025/screens/adjudication/group1.md",
+   "subject_sha": "f21b3bc90f3b302ece734bb6397fee928154ee39e9e5870ee87b5d6afdfdc9e6"
   },
-  "unruled:f2441.prior_year": {
-   "prompt_sha": "1e4d4125626ce40970f721c46f8083bf5e7b3c71047a33c8d7e6ea76c978608c",
+  "unruled:f2441.prior_year#1": {
    "reason": "WIDE only.",
    "findings": [
     {
@@ -79,10 +78,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group0.md"
+   "adjudication": "reviews/2025/screens/adjudication/group0.md",
+   "subject_sha": "1e4d4125626ce40970f721c46f8083bf5e7b3c71047a33c8d7e6ea76c978608c"
   },
-  "unruled:f2441.student_disabled": {
-   "prompt_sha": "e362d6d448af00ffc4343a73acb3285356dc870be0c9042064b5113661471de9",
+  "unruled:f2441.student_disabled#1": {
    "reason": "WIDE and minor UNCLEAR only; no defect. Every finding refuses a case the tool computes (actual earned income) or is wording whose loose reading refuses.",
    "findings": [
     {
@@ -111,10 +110,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group2.md"
+   "adjudication": "reviews/2025/screens/adjudication/group2.md",
+   "subject_sha": "e362d6d448af00ffc4343a73acb3285356dc870be0c9042064b5113661471de9"
   },
-  "unruled:f4952.alternative_allocation": {
-   "prompt_sha": "1bde45c5999cc00e311ca47a02fd06974df92cc1e609bf44106d64067b4b7a24",
+  "unruled:f4952.alternative_allocation#1": {
    "reason": "No defect; the same findings as the earlier ruling: both NARROW are covered by f4952.unsupported on the same lines; the UNCLEAR errs wide.",
    "findings": [
     {
@@ -137,10 +136,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md",
+   "subject_sha": "1bde45c5999cc00e311ca47a02fd06974df92cc1e609bf44106d64067b4b7a24"
   },
-  "unruled:f4952.unsupported": {
-   "prompt_sha": "28cb69a0c93345820bcda2f107040f4739d95f8f81ff52e3e2276f269f86fa57",
+  "unruled:f4952.unsupported#1": {
    "reason": "No defect; the same findings as the earlier ruling: WIDE or minor UNCLEAR leaning WIDE.",
    "findings": [
     {
@@ -163,10 +162,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md",
+   "subject_sha": "28cb69a0c93345820bcda2f107040f4739d95f8f81ff52e3e2276f269f86fa57"
   },
-  "unruled:f5695.construction_later": {
-   "prompt_sha": "9f2201cabd96d1ba08d13ee63c9a19dabd0f1300ea374f3d0ccf2d17b288e63f",
+  "unruled:f5695.construction_later#1": {
    "reason": "No defect: WIDE accepted; installation completed in 2026 is excluded by the cost inputs' own definition; 'reconstruction' is the IRS's undefined term.",
    "findings": [
     {
@@ -189,10 +188,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group0.md"
+   "adjudication": "reviews/2025/screens/adjudication/group0.md",
+   "subject_sha": "9f2201cabd96d1ba08d13ee63c9a19dabd0f1300ea374f3d0ccf2d17b288e63f"
   },
-  "unruled:f5695.line7a": {
-   "prompt_sha": "2e97b5db4c9c7d2c962ec6a011f0c6f40a3a513da26866d6df2a7463e90bbbc8",
+  "unruled:f5695.line7a#1": {
    "reason": "WIDE accepted; condominium/cooperative UNCLEAR is the form's own line 7a wording, and a NO there only omits a credit.",
    "findings": [
     {
@@ -209,10 +208,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group3.md"
+   "adjudication": "reviews/2025/screens/adjudication/group3.md",
+   "subject_sha": "2e97b5db4c9c7d2c962ec6a011f0c6f40a3a513da26866d6df2a7463e90bbbc8"
   },
-  "unruled:f8959.unsupported": {
-   "prompt_sha": "25b7ab3798cbb3c2dc2db4810e2df650d5ed92bad207431400984959281adb13",
+  "unruled:f8959.unsupported#1": {
    "reason": "No defect: SE income that reaches Schedule SE but not through this tool's Schedule C path is refused by person.se_screen (and K-1/Schedule F by scope.schedule1); territory W-2s other than 499R-2 are WIDE.",
    "findings": [
     {
@@ -229,10 +228,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group0.md"
+   "adjudication": "reviews/2025/screens/adjudication/group0.md",
+   "subject_sha": "25b7ab3798cbb3c2dc2db4810e2df650d5ed92bad207431400984959281adb13"
   },
-  "unruled:f8960.refund": {
-   "prompt_sha": "0e7a4ecf0e1434fb45ef1190dbea7194fa16b9b94e5d0e5b76e53f2dda176e92",
+  "unruled:f8960.refund#1": {
    "reason": "No defect; as group 7 (rechecked): the section 1411 NOL case is screened by f8960.unsupported; the rest WIDE or leans WIDE.",
    "findings": [
     {
@@ -261,10 +260,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group8.md"
+   "adjudication": "reviews/2025/screens/adjudication/group8.md",
+   "subject_sha": "0e7a4ecf0e1434fb45ef1190dbea7194fa16b9b94e5d0e5b76e53f2dda176e92"
   },
-  "unruled:person.rrta": {
-   "prompt_sha": "7b79f915033acf606bf7a5b420ea3fa9e855343fb776f1f0714fbcbc28646f84",
+  "unruled:person.rrta#1": {
    "reason": "NARROW findings are caught by f8959.unsupported on the lines that consume person.medicare5/6; WIDE and minor UNCLEAR accepted.",
    "findings": [
     {
@@ -299,10 +298,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group3.md"
+   "adjudication": "reviews/2025/screens/adjudication/group3.md",
+   "subject_sha": "7b79f915033acf606bf7a5b420ea3fa9e855343fb776f1f0714fbcbc28646f84"
   },
-  "unruled:person.sav_able": {
-   "prompt_sha": "12e55d081d78405d855167e101115bd013278e7dd8da64e001a5837427be20a0",
+  "unruled:person.sav_able#1": {
    "reason": "WIDE only, plus one minor UNCLEAR; no defect, as the prior review. Rollover contributions and rolled-over distributions are excluded from Form 8880 lines 1 and 4, and refusing them is safe.",
    "findings": [
     {
@@ -325,10 +324,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r4.md"
+   "adjudication": "reviews/2025/screens/adjudication/r4.md",
+   "subject_sha": "12e55d081d78405d855167e101115bd013278e7dd8da64e001a5837427be20a0"
   },
-  "unruled:qbi.unsupported": {
-   "prompt_sha": "0e038a448076c47705f61067e894233208e007cca0acbc4913bb71c78e7dbe40",
+  "unruled:qbi.unsupported#1": {
    "reason": "No defect, as the earlier rulings: the carryforward and Schedule C QBI are computed elsewhere, the box 5 input asks for the amount after the holding-period test; reviewed again because qbi.eligible reads box 5 through its gate line.",
    "findings": [
     {
@@ -356,10 +355,10 @@
      "evidence": "Refuses lines the tool would compute; safe."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "0e038a448076c47705f61067e894233208e007cca0acbc4913bb71c78e7dbe40"
   },
-  "unruled:refund.exc_tax": {
-   "prompt_sha": "c3926035fe42d3b89926c1b4a539beb464b2185b2683bbb54ab73cd7201ce8a1",
+  "unruled:refund.exc_tax#1": {
    "reason": "No defect: the other Pub. 525 exceptions are screened by refund.not_2024 (items 1, 5), refund.exc_who (items 8, 9, nonresident) and oi8z.recovery (item 2); the question is not reached for non-itemizers.",
    "findings": [
     {
@@ -418,10 +417,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group1.md"
+   "adjudication": "reviews/2025/screens/adjudication/group1.md",
+   "subject_sha": "c3926035fe42d3b89926c1b4a539beb464b2185b2683bbb54ab73cd7201ce8a1"
   },
-  "unruled:refund.exc_who": {
-   "prompt_sha": "12a65c84548f740b554707749b346a75773788bd0ea2380f2f12369458c5c93c",
+  "unruled:refund.exc_who#1": {
    "reason": "The 2025 nonresident-alien case is refused for the whole return by scope.other_income; WIDE accepted; 'these refunds' refers to refund.received, asked immediately before.",
    "findings": [
     {
@@ -450,10 +449,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group3.md"
+   "adjudication": "reviews/2025/screens/adjudication/group3.md",
+   "subject_sha": "12a65c84548f740b554707749b346a75773788bd0ea2380f2f12369458c5c93c"
   },
-  "unruled:s1.line8_other": {
-   "prompt_sha": "0f7168a37ccdf4efd5522b49aa842824b6b3cc9cd0d69cab003a032fcb1205f8",
+  "unruled:s1.line8_other#1": {
    "reason": "No defect, as the prior review: finding 0 covered (line 8z items are entered in the oi8z collection, unsupported kinds refused); 1 and 2 accepted WIDE. The \"Other income, loss or exclusion, for example:\" heading drew no finding.",
    "findings": [
     {
@@ -476,10 +475,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r4.md"
+   "adjudication": "reviews/2025/screens/adjudication/r4.md",
+   "subject_sha": "0f7168a37ccdf4efd5522b49aa842824b6b3cc9cd0d69cab003a032fcb1205f8"
   },
-  "unruled:s2.amt": {
-   "prompt_sha": "8c4944503bfdf0740418e67497acfc1094df7c2ac93c1ae1ca8d14d8da12400c",
+  "unruled:s2.amt#1": {
    "reason": "Other Schedule 2 amounts are caught by s2.other on the same lines; WIDE accepted; whether Form 6251 is required is decided by i6251, which is not archived (known limit).",
    "findings": [
     {
@@ -502,10 +501,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group3.md"
+   "adjudication": "reviews/2025/screens/adjudication/group3.md",
+   "subject_sha": "8c4944503bfdf0740418e67497acfc1094df7c2ac93c1ae1ca8d14d8da12400c"
   },
-  "unruled:s2.other": {
-   "prompt_sha": "e8c1cc5cb94dc9a077e95b57cbe8f40c94314bf0dd3b63b658db2f378b93e2cd",
+  "unruled:s2.other#1": {
    "reason": "No defect. Finding 0 covered by f8959.unsupported (allocated tips in Form W-2 box 8); finding 1 covered by person.x_other and f8889.unsupported (an earlier year's HSA excess). As group 3.",
    "findings": [
     {
@@ -522,10 +521,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r3.md"
+   "adjudication": "reviews/2025/screens/adjudication/r3.md",
+   "subject_sha": "e8c1cc5cb94dc9a077e95b57cbe8f40c94314bf0dd3b63b658db2f378b93e2cd"
   },
-  "unruled:s8812.combat_pay": {
-   "prompt_sha": "af0845899f94ca1a60463af6135e84ca01bc0b9eb5b4235c23e88c0927772072",
+  "unruled:s8812.combat_pay#1": {
    "reason": "WIDE only.",
    "findings": [
     {
@@ -542,10 +541,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group0.md"
+   "adjudication": "reviews/2025/screens/adjudication/group0.md",
+   "subject_sha": "af0845899f94ca1a60463af6135e84ca01bc0b9eb5b4235c23e88c0927772072"
   },
-  "unruled:sa.charity_limited": {
-   "prompt_sha": "43beebe82355a7e08d7ffa0e16118b9efc52bb12e80804ec4294337ad05dc849",
+  "unruled:sa.charity_limited#1": {
    "reason": "No defect: the property reductions are asked by gift.deduction, and every non-charitable item is screened by sa.unsupported, which refuses the same lines; the screen is now asked behind sa.gifts.",
    "findings": [
     {
@@ -586,10 +585,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md",
+   "subject_sha": "c98fefa77bf361a2788500b2f9ac6cfdf7cedb438a703add48a9e3c5143f84ab"
   },
-  "unruled:sa.excluded_income": {
-   "prompt_sha": "ce7ac5753438699b7d3538f15387c03e0d383ec44a7328bdb765123a280cd922",
+  "unruled:sa.excluded_income#1": {
    "reason": "Low finding BUG-0458 (the year-of-move Puerto Rico case); the WIDE finding is accepted as before.",
    "findings": [
     {
@@ -608,10 +607,10 @@
    "bugs": [
     "BUG-0458"
    ],
-   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md",
+   "subject_sha": "ce7ac5753438699b7d3538f15387c03e0d383ec44a7328bdb765123a280cd922"
   },
-  "unruled:sa.unsupported": {
-   "prompt_sha": "af61e0da06a2af4b3ffc419fe6cc7f5490333ef01f07c630a89251852524749b",
+  "unruled:sa.unsupported#1": {
    "reason": "No defect: a charitable carryover is screened by sa.charity_limited on lines 13 and 17, reached through sa.gifts, whose wording names a carryover; the UNCLEAR is the existing debt and use limit wording.",
    "findings": [
     {
@@ -628,10 +627,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/gates-c.md"
+   "adjudication": "reviews/2025/screens/adjudication/gates-c.md",
+   "subject_sha": "af61e0da06a2af4b3ffc419fe6cc7f5490333ef01f07c630a89251852524749b"
   },
-  "unruled:sb.fbar_required": {
-   "prompt_sha": "b03c8fb0bc7882e62829c6840e6d8724571ede52b112175871140b0cce16163b",
+  "unruled:sb.fbar_required#1": {
    "reason": "As T-008: the adjustments are screened by sb.unsupported on the same lines; Part III is asked by sb.line7a and sb.line8 of every filer; the FBAR refusal is WIDE.",
    "findings": [
     {
@@ -659,10 +658,10 @@
      "evidence": "Refuses lines the tool would compute; safe."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "b03c8fb0bc7882e62829c6840e6d8724571ede52b112175871140b0cce16163b"
   },
-  "unruled:sb.form8938": {
-   "prompt_sha": "2207e9abd2f149f53dd8ef27791a9d61bcbc7717e95bc35db1962aa95601be01",
+  "unruled:sb.form8938#1": {
    "reason": "As T-008: the adjustments are screened by sb.unsupported on the same lines; WIDE accepted.",
    "findings": [
     {
@@ -696,10 +695,10 @@
      "evidence": "Refuses lines the tool would compute; safe."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "2207e9abd2f149f53dd8ef27791a9d61bcbc7717e95bc35db1962aa95601be01"
   },
-  "unruled:sb.unsupported": {
-   "prompt_sha": "371ac7070309753bd95cab95d2bf52e111a469ac9196f906d4aed5df0996db26",
+  "unruled:sb.unsupported#1": {
    "reason": "No defect: WIDE and catch-all wording, as the earlier rulings; the Form 5471 clause is now its own screen (sb.form5471), and the screen is asked behind its gate (sb.unsupported_if_income).",
    "findings": [
     {
@@ -733,10 +732,10 @@
      "evidence": "Catch-all 'other special treatment' (T-008: catch-all wording); a yes refuses, which is safe."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "0af14a7f76366e7bedefbd5d9baee604c281d4db23ecb5595dfb6f8d46680ffe"
   },
-  "unruled:sc.inventory_other": {
-   "prompt_sha": "e1fb1ae2200f53849a4773175df49239db9b1d80368db14721fd79d0d8cde19e",
+  "unruled:sc.inventory_other#1": {
    "reason": "No defect: a 2025 accounting-method change is screened by sc.method_other (through sc.screened on sc.line1); the rest is WIDE or minor UNCLEAR.",
    "findings": [
     {
@@ -765,10 +764,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group2.md"
+   "adjudication": "reviews/2025/screens/adjudication/group2.md",
+   "subject_sha": "e1fb1ae2200f53849a4773175df49239db9b1d80368db14721fd79d0d8cde19e"
   },
-  "unruled:scope.other_income": {
-   "prompt_sha": "5ec7c641d4a6d6e4aa00a80db32f52128695cd40bf9067409707071302d18bc7",
+  "unruled:scope.other_income#1": {
    "reason": "No defect. The review of the question with the chapter 11 item added (BUG-0472) raises no reading of the new item; its NARROW and UNCLEAR findings are Schedule 1 line 8 items another screen asks.",
    "findings": [
     {
@@ -785,10 +784,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r0.md"
+   "adjudication": "reviews/2025/screens/adjudication/r0.md",
+   "subject_sha": "5ec7c641d4a6d6e4aa00a80db32f52128695cd40bf9067409707071302d18bc7"
   },
-  "unruled:sd.other_forms": {
-   "prompt_sha": "3a076e4e32be22b5d339d4801cf0dcc8e4584a6b436f1d7e867c3febae7565a5",
+  "unruled:sd.other_forms#1": {
    "reason": "WIDE and safe-either-way UNCLEAR findings accepted; the K-1 section 1231 case is refused by scope.schedule1.",
    "findings": [
     {
@@ -823,10 +822,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group3.md"
+   "adjudication": "reviews/2025/screens/adjudication/group3.md",
+   "subject_sha": "3a076e4e32be22b5d339d4801cf0dcc8e4584a6b436f1d7e867c3febae7565a5"
   },
-  "unruled:w2.box12_userra": {
-   "prompt_sha": "61dfd5d7d88f228cb7afb12c82fc040a1f54b6ed1fba65b5eeff4cddebf20ed3",
+  "unruled:w2.box12_userra#1": {
    "reason": "WIDE only.",
    "findings": [
     {
@@ -837,10 +836,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group3.md"
+   "adjudication": "reviews/2025/screens/adjudication/group3.md",
+   "subject_sha": "61dfd5d7d88f228cb7afb12c82fc040a1f54b6ed1fba65b5eeff4cddebf20ed3"
   },
-  "unruled:f5695.joint_occupancy": {
-   "prompt_sha": "1d0d8eed6b67b1b0e7771fc9c589472fe7c8c544d0eb611e70a5edf367d341d4",
+  "unruled:f5695.joint_occupancy#1": {
    "reason": "No defect. PENDING-4-2 closed by credits-misc PENDING-1 (any home with Part II costs), a widening. WIDE accepted; the 'jointly' UNCLEAR is answered by the question's own 'whether you paid for the same items or for different ones'.",
    "findings": [
     {
@@ -857,10 +856,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "adjudication": "reviews/2025/screens/adjudication/group7.md",
+   "subject_sha": "1d0d8eed6b67b1b0e7771fc9c589472fe7c8c544d0eb611e70a5edf367d341d4"
   },
-  "unruled:f8960.unsupported": {
-   "prompt_sha": "97fff2485bb61620ccb672b2f0eae50392183135ee684473a35124e7b00286f9",
+  "unruled:f8960.unsupported#1": {
    "reason": "No defect; as group 9. Findings 0 to 3 are covered by sibling screens, 4 and 5 are the accepted WIDE findings, 6 and 7 are covered. The restructuring drew no finding of a narrowed item.",
    "findings": [
     {
@@ -913,10 +912,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r3.md"
+   "adjudication": "reviews/2025/screens/adjudication/r3.md",
+   "subject_sha": "97fff2485bb61620ccb672b2f0eae50392183135ee684473a35124e7b00286f9"
   },
-  "unruled:gift.special": {
-   "prompt_sha": "5b99367c0332d9be1e1f0867ac0cd5b27183eefd419759eb6a1ccef0484b9964",
+  "unruled:gift.special#1": {
    "reason": "No defect. Findings 0 and 2 accepted WIDE; finding 1 accepted (minor UNCLEAR, leans WIDE), as group 7 finding 0.",
    "findings": [
     {
@@ -939,10 +938,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r3.md"
+   "adjudication": "reviews/2025/screens/adjudication/r3.md",
+   "subject_sha": "5b99367c0332d9be1e1f0867ac0cd5b27183eefd419759eb6a1ccef0484b9964"
   },
-  "unruled:person.x_other": {
-   "prompt_sha": "7333a6ad4550a9c04265ac059b7a1a13514ca12a5e1234d9c994ada3a422f34f",
+  "unruled:person.x_other#1": {
    "reason": "No defect. Findings 0 and 1 accepted WIDE, as the prior review's 0 and 2; finding 2 accepted (minor UNCLEAR, leans WIDE), the prior finding 3 read as unclear. The restructuring drew no finding of a narrowed item.",
    "findings": [
     {
@@ -965,10 +964,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r4.md"
+   "adjudication": "reviews/2025/screens/adjudication/r4.md",
+   "subject_sha": "7333a6ad4550a9c04265ac059b7a1a13514ca12a5e1234d9c994ada3a422f34f"
   },
-  "unruled:refund.not_2024": {
-   "prompt_sha": "1d15eac04091fb53d3d83a099504d26b116f26c7b7aac20ca8b834fa2d9ede29",
+  "unruled:refund.not_2024#1": {
    "reason": "No defect. One WIDE (non-itemizer refused though line 1 is zero), as group 4 finding 2. PENDING-4-7 (2024 tax paid before 2024) closed by credits-misc PENDING-5; the screen widened only.",
    "findings": [
     {
@@ -979,10 +978,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "adjudication": "reviews/2025/screens/adjudication/group7.md",
+   "subject_sha": "1d15eac04091fb53d3d83a099504d26b116f26c7b7aac20ca8b834fa2d9ede29"
   },
-  "unruled:retirement.special": {
-   "prompt_sha": "284e269b73e9647262e13802814f8ecff3871274b85bc0aafe86d84396781a6e",
+  "unruled:retirement.special#1": {
    "reason": "No defect. Findings 0, 2 and 3 repeat the prior findings 0, 1 and 4; finding 1 (a conversion of another IRA) is covered because the conversion is itself a Form 1099-R entry on which the filer answers Yes (screen groups 2 and 4). The R2 restructure (one bullet per item, items in their original order and each multi-part item kept whole) drew no finding on its own wording.",
    "findings": [
     {
@@ -1011,10 +1010,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r2.md"
+   "adjudication": "reviews/2025/screens/adjudication/r2.md",
+   "subject_sha": "284e269b73e9647262e13802814f8ecff3871274b85bc0aafe86d84396781a6e"
   },
-  "unruled:s1.alimony_unsupported": {
-   "prompt_sha": "b0a83923f1118f2b47b354cc72c88c75111e626654628db62189a691ff36626e",
+  "unruled:s1.alimony_unsupported#1": {
    "reason": "No defect. Findings 0 and 1 covered by s1.alimony and the amount questions s1.alimony_received and s1.alimony_paid (as the prior findings 0, 1 and 5); 2 and 3 accepted WIDE (prior 3 and 4); 4 accepted (minor UNCLEAR, leans WIDE). The prior defect (payments within one household, PENDING-7-3) did not recur: the amount questions now exclude those payments. The nested list keeps the original order and grammar (\"payments of which part is not alimony: child support ..., payments for a home ..., or payments of which any part must continue ...\").",
    "findings": [
     {
@@ -1049,10 +1048,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r4.md"
+   "adjudication": "reviews/2025/screens/adjudication/r4.md",
+   "subject_sha": "b0a83923f1118f2b47b354cc72c88c75111e626654628db62189a691ff36626e"
   },
-  "unruled:s1.cod_unsupported": {
-   "prompt_sha": "dc292578de4c296b7a0334f182bb25a65eb40c48e7da08b597955e0a399b8477",
+  "unruled:s1.cod_unsupported#1": {
    "reason": "No defect. Finding 0 accepted WIDE (the prior finding 1); finding 1 covered by the help; finding 2 accepted (minor UNCLEAR, leans WIDE). The prior NARROW (short sale) did not recur.",
    "findings": [
     {
@@ -1075,10 +1074,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r4.md"
+   "adjudication": "reviews/2025/screens/adjudication/r4.md",
+   "subject_sha": "dc292578de4c296b7a0334f182bb25a65eb40c48e7da08b597955e0a399b8477"
   },
-  "unruled:s1.uc_unsupported": {
-   "prompt_sha": "00f07e8ef59c0b8466873733eda16fa442ae9ac9276f0a5ab885251b89ba80e5",
+  "unruled:s1.uc_unsupported#1": {
    "reason": "No defect. Three WIDE (accepted, as group 4); PENDING-4-9 closed by income PENDING-2, a widening. The paystub-label UNCLEAR is presentation: the question follows the i1040gi wording and the ambiguity is in the filer's records (low).",
    "findings": [
     {
@@ -1107,10 +1106,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "adjudication": "reviews/2025/screens/adjudication/group7.md",
+   "subject_sha": "00f07e8ef59c0b8466873733eda16fa442ae9ac9276f0a5ab885251b89ba80e5"
   },
-  "unruled:sales.special": {
-   "prompt_sha": "418fd7f545387e3c14cca5a2872ea4d0333ee2e33b61397f83c5a2af961ead46",
+  "unruled:sales.special#1": {
    "reason": "No defect. Findings 0 and 1 accepted WIDE (as group 12); finding 2 accepted (minor UNCLEAR, leans WIDE).",
    "findings": [
     {
@@ -1133,10 +1132,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r3.md"
+   "adjudication": "reviews/2025/screens/adjudication/r3.md",
+   "subject_sha": "418fd7f545387e3c14cca5a2872ea4d0333ee2e33b61397f83c5a2af961ead46"
   },
-  "unruled:sb.line8": {
-   "prompt_sha": "838c002bbaa3962ebebd755f1e4c2704183af720e13dbc11747c6d604bf9009d",
+  "unruled:sb.line8#1": {
    "reason": "As the earlier ruling: the adjustments are screened by sb.unsupported; WIDE accepted.",
    "findings": [
     {
@@ -1170,10 +1169,10 @@
      "evidence": "i1040sb p. 3: 'a loan of cash or marketable securities is generally considered to be a distribution'; the question counts every loan, so the residual reading errs toward yes (BUG-0246 widening, as the earlier ruling)."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "838c002bbaa3962ebebd755f1e4c2704183af720e13dbc11747c6d604bf9009d"
   },
-  "unruled:scope.other_line16": {
-   "prompt_sha": "5c48614b176894cf72b1ed621e29525b6275a2013fa786a373da675338cdea92",
+  "unruled:scope.other_line16#1": {
    "reason": "One low defect in wording R0 kept unchanged (BUG-0433, the Form 8615 condition omits the IRS examples of unearned income); the CFC/PFIC findings are the accepted over-refusal; 965(i) falls under the opening clause.",
    "findings": [
     {
@@ -1198,10 +1197,10 @@
    "bugs": [
     "BUG-0433"
    ],
-   "adjudication": "reviews/2025/screens/adjudication/r0.md"
+   "adjudication": "reviews/2025/screens/adjudication/r0.md",
+   "subject_sha": "5c48614b176894cf72b1ed621e29525b6275a2013fa786a373da675338cdea92"
   },
-  "unruled:scope.schedule1": {
-   "prompt_sha": "f8464ba61729ca85b5aa08254bd13cd557990815e761943a3a35a4ae472ff487",
+  "unruled:scope.schedule1#1": {
    "reason": "No defect, after the second round: the first round's UNCLEAR on alimony paid came from R0 sorting 'alimony under an agreement made before 2019' under income, which narrowed it to alimony received (s1.alimony asks received or paid); the list was restored to the original order and the review rerun, which raised no such finding. The NARROW findings are covered by other gates; the WIDE and UNCLEAR ones can only refuse.",
    "findings": [
     {
@@ -1242,10 +1241,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r0.md"
+   "adjudication": "reviews/2025/screens/adjudication/r0.md",
+   "subject_sha": "f8464ba61729ca85b5aa08254bd13cd557990815e761943a3a35a4ae472ff487"
   },
-  "unruled:ssb.terror_disability": {
-   "prompt_sha": "32b055c485c0a25e182e4c4934b2052ee9dd390a33dac74ea3fc51c14bfc19f5",
+  "unruled:ssb.terror_disability#1": {
    "reason": "Round-1 PENDING-3-4 closed ('eligible for coverage ... whether or not you made a claim'); the full-retirement-age finding remains WIDE (T-008).",
    "findings": [
     {
@@ -1256,10 +1255,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group4.md"
+   "adjudication": "reviews/2025/screens/adjudication/group4.md",
+   "subject_sha": "32b055c485c0a25e182e4c4934b2052ee9dd390a33dac74ea3fc51c14bfc19f5"
   },
-  "unruled:refund.box8": {
-   "prompt_sha": "2713d1b018178dca2dfbcd489b5d613dac00b23732438614a8cf05695b968b23",
+  "unruled:refund.box8#1": {
    "reason": "No defect: the UNCLEAR reading errs only toward YES (refusal of a refund the tool computes), and the nontaxable business-tax refund is refused; both accepted WIDE.",
    "findings": [
     {
@@ -1276,10 +1275,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group5.md"
+   "adjudication": "reviews/2025/screens/adjudication/group5.md",
+   "subject_sha": "2713d1b018178dca2dfbcd489b5d613dac00b23732438614a8cf05695b968b23"
   },
-  "unruled:f8962.alloc": {
-   "prompt_sha": "7eef3317d75872c42107f48507ce87bc36f5eff362184ee22958b3c838094c9c",
+  "unruled:f8962.alloc#1": {
    "reason": "No defect. One WIDE: a policy member in no tax family is 'not in' the filer's tax family and draws Yes though no Part IV allocation applies; f8962.other also refuses APTC for someone in no one's tax family. Safe.",
    "findings": [
     {
@@ -1290,10 +1289,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "adjudication": "reviews/2025/screens/adjudication/group7.md",
+   "subject_sha": "7eef3317d75872c42107f48507ce87bc36f5eff362184ee22958b3c838094c9c"
   },
-  "unruled:f8962.other": {
-   "prompt_sha": "a3f8acb2ea9f0cff07c162a0437893814731ff76120bad6f28589e99b3ed0180",
+  "unruled:f8962.other#1": {
    "reason": "No defect. Four WIDE and one UNCLEAR that leans WIDE: each reading that matters gives Yes and refuses f8962.line24 and line25; no reading lets an unsupported case compute. Findings 0, 1, 2 and 4 repeat the prior findings 0, 2, 1 and 4; finding 3 (post-employment coverage offered and not enrolled in) is new and WIDE. The R2 restructure (the coverage kinds as a nested list under the eligibility item) drew no finding on its own wording.",
    "findings": [
     {
@@ -1328,10 +1327,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r2.md"
+   "adjudication": "reviews/2025/screens/adjudication/r2.md",
+   "subject_sha": "a3f8acb2ea9f0cff07c162a0437893814731ff76120bad6f28589e99b3ed0180"
   },
-  "unruled:f8962.premium_adjust": {
-   "prompt_sha": "b7bcb1e2889ae93ea768e656fe3d24e89a85618438045e13df128b4bdfc0dc82",
+  "unruled:f8962.premium_adjust#1": {
    "reason": "No defect. Two WIDE and one UNCLEAR that leans WIDE: every Yes refuses f8962.line24 and line25, and the No reading of the UNCLEAR case computes from column A as reported, which the reviewer itself calls correct. The prior unpaid-premium NARROW did not recur; the refund finding repeats the prior finding 1.",
    "findings": [
     {
@@ -1354,10 +1353,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/r2.md"
+   "adjudication": "reviews/2025/screens/adjudication/r2.md",
+   "subject_sha": "b7bcb1e2889ae93ea768e656fe3d24e89a85618438045e13df128b4bdfc0dc82"
   },
-  "unruled:s8812.puerto_rico": {
-   "prompt_sha": "e3cd2a7f646dd06124ee476f6c2637c2dd451f9b67369ba6d8eb45fc236a419d",
+  "unruled:s8812.puerto_rico#1": {
    "reason": "WIDE only; each finding refuses a Puerto Rico resident whose line 27 or line 11 the non-Puerto Rico computation already gets right.",
    "findings": [
     {
@@ -1380,10 +1379,10 @@
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/gates-b.md"
+   "adjudication": "reviews/2025/screens/adjudication/gates-b.md",
+   "subject_sha": "405ae657096b6835160a12b67ae8eea0ce1ef5552b5009a0fcd989ef9f31b172"
   },
-  "unruled:sb.form5471": {
-   "prompt_sha": "64178532ea4501b6b5e58a1a66af8b154bcb59d83e4e40a45d7035ade0b0b497",
+  "unruled:sb.form5471#1": {
    "reason": "No defect: WIDE by design (the tool refuses a return that may need Form 5471, which it does not prepare); the question names you or your spouse.",
    "findings": [
     {
@@ -1393,10 +1392,10 @@
      "evidence": "A spouse's role refuses a head-of-household return; Form 5471 is outside the tool either way. Safe."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "64178532ea4501b6b5e58a1a66af8b154bcb59d83e4e40a45d7035ade0b0b497"
   },
-  "unruled:gate:div.has_ordinary": {
-   "prompt_sha": "5d27ea86ab061f8848122a807b5bf811d9464dd99f55bfc3f74b8715d8352199",
+  "unruled:gate:div.has_ordinary#1": {
    "reason": "No defect: dividends without a form are part of box 1a as the tool asks it; Form 8814 is refused before these lines.",
    "findings": [
     {
@@ -1418,10 +1417,10 @@
      "evidence": "Refuses lines the tool would compute; safe."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "10c3ae54a8a697b285e7abaf69caa9a4b6853eee76b4cfc51b0654946a44cc56"
   },
-  "unruled:gate:sb.has_income": {
-   "prompt_sha": "f772b8182134c74c62c3a8c81237c3c4849a0bebf015fee8f8aba69a7e7ad6b3",
+  "unruled:gate:sb.has_income#1": {
    "reason": "No defect: the interest roster's help names each case; the WIDE item is the nominee capital gain distribution limb (i1040gi p. 33).",
    "findings": [
     {
@@ -1443,10 +1442,10 @@
      "evidence": "i1040gi p. 33, line 7a: nominee capital gain distributions; the special-treatment question names nominee income. One extra question; safe."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "ce534a6d7b965f4e73ce8667e089c1fd4b5a0dc078cc41e50364233e2a240114"
   },
-  "unruled:f8889.unsupported": {
-   "prompt_sha": "e5c1dfff7dd201699cd4cffde8f7fb925c796b2bd05b86a59183a951fa01b520",
+  "unruled:f8889.unsupported#1": {
    "reason": "No defect in the screen: the NARROW finding is a fiscal-year filer, outside the whole tool (calendar-year 2025 returns; the fiscal-year refusing row of the gate grids), not a gap of this screen. Rerun after the refusal text of f8889.unsupported named the person who died in 2025 (owner decision 2026-11-07); the WIDE finding of the earlier review did not recur.",
    "findings": [
     {
@@ -1455,11 +1454,11 @@
      "class": "out of scope",
      "evidence": "i8889 p. 2, Last-month rule, 'the 1st day of the last month of the tax year (December 1, for most individuals)'. A fiscal-year filer's last month is not December, but the tool prepares calendar-year returns throughout (every form's dates assume it); the gate grids carry a fiscal-year refusing row. The decedent clause added here is the owner's decision for a person who died in 2025 (BUG-0452)."
     }
-   ]
+   ],
+   "subject_sha": "e5c1dfff7dd201699cd4cffde8f7fb925c796b2bd05b86a59183a951fa01b520"
   },
-  "unruled:dependent.divorced_rule": {
+  "unruled:dependent.divorced_rule#1": {
    "reason": "No defect: the one UNCLEAR is a filer holding a release whose other conditions fail answering Yes, which refuses a return the tool computes correctly on No (accepted WIDE). No answer turns a refusal into a wrong amount.",
-   "prompt_sha": "4acbaa9c29ba908884dcc4226a233bded660ae166e872221b2a846fa77a4b90d",
    "findings": [
     {
      "n": 0,
@@ -1468,11 +1467,11 @@
      "evidence": "i1040gi p. 20, Children of divorced or separated parents: \"A child will be treated as the qualifying child or qualifying relative of the child's noncustodial parent (defined later) if all of the following conditions apply.\" When the support or custody condition fails the rule does not apply, so No is the source's answer, and No computes the ordinary tests; a filer who reads the release alone as making the rule apply answers Yes and is refused. Errs only toward Yes. Executed (f1.kidnapped.returned_11's return, kidnapped No): with 3 months in the filer's home and filing status single, divorced_rule Yes refuses lines 16, 19 and 27a at dependent[child].divorced_rule; No gives dependent[child].qualifying_child false, line 19 $0 (no qualifying child, as Step 1 residency fails). With 12 months: Yes refuses, No gives line 16 $638, line 19 $638. As the prior ruling's finding 3."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "4acbaa9c29ba908884dcc4226a233bded660ae166e872221b2a846fa77a4b90d"
   },
-  "unruled:dependent.married": {
+  "unruled:dependent.married#1": {
    "reason": "No defect: both WIDE findings repeat the WIDE findings accepted in groups 0 and 4 and the prior round (the screen refuses married persons whose qualifying child or relative lines would compute; the refusal is needed for dependent.eic_child, i1040gi p. 44, Married child).",
-   "prompt_sha": "c12ddc1cc873af958c4726d8d21b5a280f2c80757c6c974a651b229b626f00ae",
    "findings": [
     {
      "n": 0,
@@ -1487,11 +1486,11 @@
      "evidence": "i1040gi p. 17, Step 1, 'or is filing a joint return for 2025 only to claim a refund'. A person on a refund-only joint return answers Yes and is refused though dependent.joint_return carves the refund-only return out. Safe; as group 0 and group 4 finding 1."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "c12ddc1cc873af958c4726d8d21b5a280f2c80757c6c974a651b229b626f00ae"
   },
-  "unruled:sa.dependent": {
+  "unruled:sa.dependent#1": {
    "reason": "No defect: EIC Step 4 question 5 is asked separately by eic.qc_of_another, which eic.step4_dependent requires to be No, so a filer who is only a qualifying child of another person does not get the credit.",
-   "prompt_sha": "8d9bc6f8344314388e3d9d1ae2900589ad96d7fa62cb54cc5afc80ebead9cb63",
    "findings": [
     {
      "n": 0,
@@ -1500,11 +1499,11 @@
      "evidence": "i1040gi p. 42, Step 4, question 5: \"Could you be a qualifying child of another person for 2025? ... Yes. STOP You can't take the credit.\" forms/2025/eic.yaml: eic.qc_of_another asks 'Could you be a qualifying child of another person for 2025?' (cite p. 41, Step 3, question 6, and p. 42, Step 4, question 5), and eic.step4_dependent is true only when filing jointly or when both eic.qc_of_another and sa.dependent are No. This screen carries question 6 only, as its refusal citation says; the reviewer saw the screen, not the sibling input."
     }
    ],
-   "bugs": []
+   "bugs": [],
+   "subject_sha": "8d9bc6f8344314388e3d9d1ae2900589ad96d7fa62cb54cc5afc80ebead9cb63"
   },
-  "unruled:gate:clcw26.final_ask": {
+  "unruled:gate:clcw26.final_ask#1": {
    "reason": "No defect: a joint return is left out of the final-return question on purpose and keeps clcw26.decedent_notice; the question is asked only on a return with one filer.",
-   "prompt_sha": "fc7ea38541fdcb469fda492d9bfb2d695512c28c6a24499529c2d22ff2c738e6",
    "findings": [
     {
      "n": 0,
@@ -1518,11 +1517,12 @@
      "class": "accepted (minor UNCLEAR)",
      "evidence": "p550 p. 103. The question is reached only through clcw26.not_joint, so it is asked only on a return with one filer (single, head of household, separate or qualifying surviving spouse), where \"a filer who died in 2025\" can only be that filer; a deceased spouse on a joint return is the decedent_notice case above."
     }
-   ]
+   ],
+   "subject_sha": "d7881adecd94573cefc55bdcb231b9898e633c80b624142f5173b53ea1b63575"
   }
  },
  "baseline": {
-  "unruled:sb.fbar_required": "044d3f9f7a63bdfe",
-  "unruled:sb.form8938": "555f5d0aa1a98a7f"
+  "unruled:sb.fbar_required#1": "044d3f9f7a63bdfe",
+  "unruled:sb.form8938#1": "555f5d0aa1a98a7f"
  }
 }
