@@ -89,6 +89,36 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Notice: if your spouse died in 2025, the part of these carryovers that came from your spouse's losses does not carry over to 2026; it can be deducted only on this return.
       = false
       cite: [p550] p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" (2025 returns; printed date 2026-03-05; 83552968)
+  (helper) Year parameter household.no (false)
+      = false
+      cite: [p550] p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; 83552968)
+  (helper) Not a joint return
+      = true
+      cite: [p550] p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" (2025 returns; printed date 2026-03-05; 83552968)
+  (gate) A carryover to 2026 is figured on a return other than a joint return
+      = false
+      cite: [p550] p. 103, Decedent's capital loss, "A capital loss sustained by a decedent during the decedent’s last tax year (or carried over to that year from an earlier year) can be deducted only on the final income tax return filed for the decedent" (2025 returns; printed date 2026-03-05; 83552968)
+  (helper) Is this the final return of a filer who died in 2025?
+      = false
+      cite: [p550] p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" and "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; 83552968)
+  (helper) The final return of a filer who died in 2025, when a carryover to 2026 is figured on a return other than a joint return; false otherwise
+      = false
+      cite: [p550] p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" (2025 returns; printed date 2026-03-05; 83552968)
+      note: taken: {"eq":["clcw26.final_ask",{"const":false}],"op":"test"}
+  (helper) Not the final return of a filer who died in 2025, so the carryover goes to 2026
+      = true
+      cite: [p550] p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; 83552968)
+  (helper) Schedule D line 16 and line 7 are losses, and the carryover goes to 2026
+      = false
+      cite: [p550] p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; 83552968)
+      note: taken: {"eq":["clcw26.show_st",{"const":false}],"op":"test"}
+  (helper) Schedule D line 16 and line 15 are losses, and the carryover goes to 2026
+      = false
+      cite: [p550] p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; 83552968)
+      note: taken: {"eq":["clcw26.show_lt",{"const":false}],"op":"test"}
+  (helper) Notice: this is the final return of a filer who died in 2025. The capital loss can be deducted only on this return; none of it carries over to 2026, and the estate cannot deduct it.
+      = false
+      cite: [p550] p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" and "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; 83552968)
 
 == Form 1099-DIV — distribution components and scope screening ==
   (helper) Unrecaptured section 1250 gain, box 2b
@@ -1145,9 +1175,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter sales.zero
       = $0
       cite: [f5695] Form 5695 (2025), lines 5b, 11, 18b to 20d, 22d to 26c, 29h and 32 (2025; created 2025-03-20; e2ac6a5c)
-  (helper) Any residential clean energy property paid for in 2025, or a carryforward from 2024
+  (helper) Any residential clean energy costs for 2025 (counted when the original installation is completed), or a carryforward from 2024
       = false
-      cite: [i5695] p. 2, Residential Clean Energy Credit (Part I), "You may be able to take a credit of 30% of your costs of qualified solar electric property, solar water heating property, small wind energy property, geothermal heat pump property, battery storage technology, and fuel cell property"; p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy credit carryforward from 2024" (2025; 55113467)
+      cite: [i5695] p. 2, Residential Clean Energy Credit (Part I), "You may be able to take a credit of 30% of your costs of qualified solar electric property, solar water heating property, small wind energy property, geothermal heat pump property, battery storage technology, and fuel cell property"; p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy credit carryforward from 2024"; p. 1, Costs, "For purposes of both credits, costs are treated as being paid when the original installation of the item is completed"; p. 1, Termination of credits, "You can’t claim residential clean energy credits for expenditures made after December 31, 2025" (2025; 55113467)
   (helper) Any energy efficient home improvement costs for 2025 (counted when the original installation is completed)
       = false
       cite: [i5695] p. 2, Energy Efficient Home Improvement Credit (Part II), "You may be able to take a credit equal to 30% of the sum of"; p. 1, Reminders, "A 30% credit, up to a maximum of $1,200, may be allowed for"; p. 1, Costs, "For purposes of both credits, costs are treated as being paid when the original installation of the item is completed, or, in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins"; p. 1, Termination of credits, "You can’t claim energy efficient home improvement credits for expenditures or property placed in service after December 31, 2025" (2025; 55113467)
@@ -1171,7 +1201,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i5695] p. 4, Line 4, "Enter the amounts you paid for qualified geothermal heat pump property"; p. 2, Qualified geothermal heat pump property costs, "must meet the requirements of the Energy Star program that are in effect at the time of purchase"; p. 2, Caution, "Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function other than the function of such storage don’t qualify for the residential clean energy credit" (2025; 55113467)
   5a  Qualified battery storage technology. Does the qualified battery storage technology have a capacity of at least 3 kilowatt hours? If you checked the No box, you cannot claim a credit for qualified battery storage technology
       = false
-      cite: [i5695] p. 4, Lines 5a and 5b, "To qualify for the credit, the qualified battery storage technology must have a capacity of at least 3 kilowatt hours"; p. 2, Qualified battery storage technology costs, "installed in connection with your home located in the United States" (2025; 55113467)
+      cite: [i5695] p. 4, Lines 5a and 5b, "To qualify for the credit, the qualified battery storage technology must have a capacity of at least 3 kilowatt hours"; p. 2, Qualified battery storage technology costs, "installed in connection with your home located in the United States"; p. 1, Costs, "costs are treated as being paid when the original installation of the item is completed" (2025; 55113467)
       note: Interpretation amb.2025.f5695_battery_second_home: The first (f5695.line5a asks for battery storage technology installed in connection with your home in the United States, not your main home). The owner's decision. The text names the main home where it means it (fuel cell property, line 7a) and does not for the battery; the Part I general rule is that improvements to "more than one home that you used as a residence" go on one Form 5695 (i5695 p. 2). (i5695, p. 2, Qualified battery storage technology costs, "installed in connection with your home located in the United States")
   (helper) Qualified battery storage technology costs
       = $0
@@ -5806,9 +5836,48 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i4562] p. 5, Line 11, Individuals, "the total taxable income from any trade or business you actively conducted, computed without regard to any section 179 expense deduction, the deduction for one-half of self-employment taxes" (2025; 5c1c95b7)
       note: confirmed roster $person: taxpayer
-  (helper) Business income including wages (Form 1040, line 1a)
+  (helper) Business income including wages (Form 1040, line 1a), before interest from working capital
       = $120,000
       cite: [i4562] p. 5, Line 11, "Also, include all wages, salaries, tips, and other compensation you earned as an employee (from Form 1040, line 1a) ... If you are married filing a joint return, combine the total taxable incomes for you and your spouse" (2025; 5c1c95b7)
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [p946] p. 19, Taxable income, "Interest from working capital of your trade or business" (For use in preparing 2025 returns; 07fadfb2)
+  (helper) Year parameter household.no (false)
+      = false
+      cite: [p946] p. 19, Taxable income, "Interest from working capital of your trade or business" (For use in preparing 2025 returns; 07fadfb2)
+  (helper) Lines 9 and 10 added together are more than zero (a section 179 deduction is figured)
+      = false
+      cite: [f4562] Form 4562 (2025), line 12, "Add lines 9 and 10, but don't enter more than line 11" (2025; created 2025-10-09; c05f9d1f)
+  (helper) Business income including wages is less than line 5, so line 11 is the business income
+      = true
+      cite: [i4562] p. 5, Line 11, "Enter the smaller of line 5 or the total taxable income from any trade or business" (2025; 5c1c95b7)
+  (helper) A section 179 deduction is figured and business income including wages is less than line 5, so line 11 is the business income
+      = false
+      cite: [i4562] p. 5, Line 11, "Enter the smaller of line 5 or the total taxable income from any trade or business" (2025; 5c1c95b7)
+  (helper) Taxable interest (Form 1040, line 2b) is more than zero
+      = true
+      cite: [p946] p. 19, Taxable income, "Interest from working capital of your trade or business" (For use in preparing 2025 returns; 07fadfb2)
+  (gate) Line 11 is the business income (a section 179 deduction is figured) and the return has taxable interest
+      = false
+      cite: [p946] p. 19, Taxable income, "Net income or loss from a trade or business includes the following items" and "Interest from working capital of your trade or business" (For use in preparing 2025 returns; 07fadfb2)
+      note: taken: {"eq":["s179.income_binds",{"const":false}],"op":"test"}
+  (helper) Interest from the working capital of your trade or business
+      = $0
+      cite: [p946] p. 19, Taxable income, "Net income or loss from a trade or business includes the following items" and "Interest from working capital of your trade or business" (For use in preparing 2025 returns; 07fadfb2)
+  (helper) Interest from the working capital of your trade or business, when line 11 is the business income and the return has taxable interest; zero otherwise
+      = $0
+      cite: [p946] p. 19, Taxable income, "Interest from working capital of your trade or business" (For use in preparing 2025 returns; 07fadfb2)
+      note: taken: {"eq":["s179.wc_ask",{"const":false}],"op":"test"}
+  (helper) Working-capital interest entered is more than the taxable interest on Form 1040, line 2b
+      = false
+      cite: [p946] p. 19, Taxable income, "Interest from working capital of your trade or business" (For use in preparing 2025 returns; 07fadfb2)
+  (gate) Working-capital interest is asked for and entered as more than the taxable interest on Form 1040, line 2b
+      = false
+      cite: [p946] p. 19, Taxable income, "Interest from working capital of your trade or business" (For use in preparing 2025 returns; 07fadfb2)
+      note: taken: {"eq":["s179.wc_ask",{"const":false}],"op":"test"}
+  (helper) Business income including wages (Form 1040, line 1a) and interest from the working capital of the business
+      = $120,000
+      cite: [i4562] p. 5, Line 11, "Also, include all wages, salaries, tips, and other compensation you earned as an employee (from Form 1040, line 1a) ... If you are married filing a joint return, combine the total taxable incomes for you and your spouse"; p946 p. 19, Taxable income, "Interest from working capital of your trade or business" (2025; 5c1c95b7)
   (helper) That income, if zero or less zero
       = $120,000
       cite: [p946] pp. 17-19, Business Income Limit (For use in preparing 2025 returns; 07fadfb2)
@@ -7862,6 +7931,12 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sd.line21: chose $0 (guard 1)
       not taken: guard 0 = false
+  clcw26.final_return_if_carryover: chose false (guard 1)
+      not taken: guard 0 = false
+  clcw26.show_st_carry: chose false (guard 1)
+      not taken: guard 0 = false
+  clcw26.show_lt_carry: chose false (guard 1)
+      not taken: guard 0 = false
   div.box12_if_dividends: chose $0 (guard 0)
   div.basis_reconciled_if_return_of_capital: chose false (guard 1)
       not taken: guard 0 = false
@@ -8212,6 +8287,12 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s1.cod_figured: chose $0 (guard 1)
       not taken: guard 0 = false
   s179.line5: chose $2,500,000 (guard 0)
+  s179.wc_ask: chose false (guard 1)
+      not taken: guard 0 = false
+  s179.wc_interest_if_limited: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s179.wc_over: chose false (guard 1)
+      not taken: guard 0 = false
   s1a.line4a_calc: chose $0 (guard 1)
       not taken: guard 0 = false
   s1a.line4a: chose $0 (guard 0)
@@ -8680,6 +8761,15 @@ Derivations:
   clcw26.line12: sum(clcw26.line10 = $0; clcw26.line11 = $0)
   clcw26.line13: subtract_floor0(clcw26.line9 = $0; clcw26.line12 = $0)
   clcw26.decedent_notice: test(f1040.status = single; "mfj" = mfj)
+  clcw26.no: param(#household.no = false)
+  f8880.joint: test(f1040.status = single; "mfj" = mfj)
+  clcw26.not_joint: test(f8880.joint = false; false = false)
+  clcw26.final_ask: test(clcw26.show = false; true = true)
+  clcw26.final_return_if_carryover: choose(clcw26.final_ask = false; true = true; clcw26.final_ask = false; false = false; clcw26.no = false)
+  clcw26.carries: test(clcw26.final_return_if_carryover = false; false = false)
+  clcw26.show_st_carry: choose(clcw26.show_st = false; true = true; clcw26.show_st = false; false = false; clcw26.no = false)
+  clcw26.show_lt_carry: choose(clcw26.show_lt = false; true = true; clcw26.show_lt = false; false = false; clcw26.no = false)
+  clcw26.final_notice: copy(clcw26.final_return_if_carryover = false)
   div.box1a: copy(sb.ordinary_dividends_if_dividends = $2,000)
   div.box1b: copy(f1040.line3a_if_ordinary = $1,500)
   div.box2a: copy(sd.distributions_if_dividends = $0)
@@ -9275,7 +9365,6 @@ Derivations:
   f8863.clw6: subtract(f8863.clw4 = $18,500; f8863.clw5 = $0)
   f8863.clw7: smaller_of(f8863.clw3 = $0; f8863.clw6 = $18,500)
   f8863.line19: copy(f8863.clw7 = $0)
-  f8880.joint: test(f1040.status = single; "mfj" = mfj)
   person[taxpayer].ira_any_contrib: test(person[taxpayer].ira_has = false; true = true; person[taxpayer].sav_roth = $0; #sales.zero = $0)
   person[taxpayer].ira_excess_gate: choose(person[taxpayer].ira_any_contrib = false; true = true; person[taxpayer].ira_any_contrib = false; false = false; person[taxpayer].no = false)
   person[taxpayer].sav_line1: sum(person[taxpayer].ira_excess_gate = false; person[taxpayer].sav_able = false; person[taxpayer].ira_contrib = $0; person[taxpayer].sav_roth = $0)
@@ -10090,10 +10179,21 @@ Derivations:
   s179.line9: smaller_of(s179.over_limit = false; s179.line5 = $2,500,000; s179.line8 = $0)
   s179.show10: test(s179.line5 = $2,500,000; #sales.zero = $0)
   s179.income_sc: sum_over(person[taxpayer].income179 = $0)
-  s179.income: sum(s179.income_sc = $0; f1040.line1a = $120,000)
+  s179.income_wages: sum(s179.income_sc = $0; f1040.line1a = $120,000)
+  s179.zero: param(#sales.zero = $0)
+  s179.no: param(#household.no = false)
+  s179.line9_10: sum(s179.line9 = $0; s179.line10 = $0)
+  s179.has179: test(s179.line9_10 = $0; s179.zero = $0)
+  s179.income_below5: test(s179.income_wages = $120,000; s179.line5 = $2,500,000)
+  s179.income_binds: test(s179.has179 = false; true = true)
+  s179.has_interest: test(f1040.line2b = $1,200; s179.zero = $0)
+  s179.wc_ask: choose(s179.income_binds = false; true = true; s179.income_binds = false; false = false; s179.no = false)
+  s179.wc_interest_if_limited: choose(s179.wc_ask = false; true = true; s179.wc_ask = false; false = false; s179.zero = $0)
+  s179.wc_more: test(s179.wc_interest_if_limited = $0; f1040.line2b = $1,200)
+  s179.wc_over: choose(s179.wc_ask = false; true = true; s179.wc_ask = false; false = false; s179.no = false)
+  s179.income: sum(s179.wc_over = false; s179.income_wages = $120,000; s179.wc_interest_if_limited = $0)
   s179.income0: subtract_floor0(s179.income = $120,000; #sales.zero = $0)
   s179.line11: smaller_of(s179.income0 = $120,000; s179.line5 = $2,500,000)
-  s179.line9_10: sum(s179.line9 = $0; s179.line10 = $0)
   s179.line12: smaller_of(s179.line9_10 = $0; s179.line11 = $120,000)
   s179.sc_count: sum_over(person[taxpayer].sc_count = 0)
   s179.orphan: test(s179.line10 = $0; #sales.zero = $0)

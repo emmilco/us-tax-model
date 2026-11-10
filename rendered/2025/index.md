@@ -8,7 +8,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | asset.md | form | 72 |
 | carloan.md | form | 29 |
 | clcw.md | worksheet | 33 |
-| clcw26.md | worksheet | 19 |
+| clcw26.md | worksheet | 28 |
 | dcprov.md | worksheet | 6 |
 | dependent.md | worksheet | 151 |
 | div.md | form | 39 |
@@ -45,7 +45,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | refund.md | form | 48 |
 | retirement.md | form | 89 |
 | s1.md | form | 69 |
-| s179.md | form | 28 |
+| s179.md | form | 40 |
 | s1a.md | form | 136 |
 | s2.md | form | 19 |
 | s3.md | form | 15 |

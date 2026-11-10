@@ -4,7 +4,8 @@
  "family": "claude",
  "base": "4173fb9721d1eeab7c41ccad8eb8aefbaa512b83bfd0019caa0f87b35f75b056",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-09); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "71 / 1 / 0 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -33,15 +34,15 @@
   },
   {
    "key": "5a",
-   "record": "4173fb9721d1eeab7c41ccad8eb8aefbaa512b83bfd0019caa0f87b35f75b056",
+   "record": "58dc0f896cb6db9e2739616233bb263a30ec65c0e7240e946090a9fb46db0cbb",
    "status": "MATCH",
-   "subject_key": "1ec183cef6868be5113054dd7549252af7d747b5de2f9673afdc32ca9b13887a"
+   "subject_key": "fedf982d052b4be1928b2022c91a88ffd5c0205b5904537c3573c2a3f320a868"
   },
   {
    "key": "5b",
-   "record": "5fa2668eef90a5dee35d2e3abe194f81f331058a78cd362dcf2433dc15279829",
+   "record": "58dc0f896cb6db9e2739616233bb263a30ec65c0e7240e946090a9fb46db0cbb",
    "status": "MATCH",
-   "subject_key": "d8f815f5995a8828c22a90f6ce4abab5715d8aed7e7fa325c71ea3520b5da736"
+   "subject_key": "a6784e33549e14480c8e1e78dd3dd090cff07dfedc7e6c9f41709b3f80ddd57d"
   },
   {
    "key": "6a",
@@ -81,9 +82,10 @@
   },
   {
    "key": "14",
-   "record": "1237ed072135b6e24688ca07d6595fb4acab0c225e0ce8bfa0f47dc466231ce6",
-   "status": "MATCH",
-   "subject_key": "ae88bf9cd2c7df08f22c621742d89edc248d59a65b4f99a278cacc768eb9e50a"
+   "record": "58dc0f896cb6db9e2739616233bb263a30ec65c0e7240e946090a9fb46db0cbb",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; project retained, as the earlier rulings on this line. i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following ... 2. You are not filing Form 2555\". A Form 2555 filer is refused elsewhere: Schedule 8812 lines 2a to 2c refuse when sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\") is Yes, as the note on s8812.clwb_complete records; the refusal sits on another form, so the model was not shown it.",
+   "subject_key": "1d69c8f269e484fe364bd75620b5bfef531ebc96fca9270b8ea9f4f98b00941c"
   },
   {
    "key": "15",
@@ -445,15 +447,15 @@
   "2": "56f1e0933847ef4e8cf2a801bb2ab65ed5e8d8911cc1f9a5637519e59451fc41",
   "3": "d54f8ccc8c0e27d66640ce2438267c07adfa98c703c9fd34175c651a848f0846",
   "4": "1286da1451e8465b04fec2cae0c14080c6d6dc37bfddb910d08f993cbab052f9",
-  "5a": "8d586806f80857ae15700da511c450976f127bd6133fbde3b12b057305a06a6f",
-  "5b": "e907d85b8365b23f9ffd1242d5d74d927a0d179f06c5ec6ed0277d3fe92ee7d3",
+  "5a": "ccc36fc46f90a308799abf40d92578f66a3680b5f40e2725fda6e41e211fe21b",
+  "5b": "e73a9b0bb4114ba5eefc27c5efb245490f75b29f10c9ca65dc45af43b5d64995",
   "6a": "c6fc44840d7842a231e230bbd8fe11ee7159581d98434f631c985f85d2b56e6e",
   "6b": "1f1a30f59fb02c8957983b63a52a56cf47edfd45fe0c4aef04b07974a78fd11f",
   "7a": "f8db979e451ff762b9ea59caf38907e084be71b75fd946b0aa7b29857f377c32",
   "11": "d15d401bd86b2b16263b0e6f46d95d6726c3351c828885e518de98131992d233",
   "12": "4e7eda0bb20b6cbb6c281453c3d09db1318f7ee71b798c6764aa1efc4167735c",
   "13": "9e14ab21edcfc5a6df525f4d6a5ea55ce89c86e5e64630af84cdd23a0aae671c",
-  "14": "6f98139919d801b870749de5b1a6aab55039cb13ef8c23f8c4a0141ce4b3511d",
+  "14": "e203eb2f7066f9af3523c36148520e755698d4e2a0d26d7eb0287d1398e0f780",
   "15": "2578d786a18122f796bdaf1d06ce233328ce2ae33e151814a6e38a7282d14e6f",
   "16": "34c675cb0351b4eda86e0e1166e63342febd160b2ccc04c33a441b3819a4d306",
   "17a": "68d8223be5604680b6bbea2c4505413e640d82385c6959097649edaf8b00a81e",

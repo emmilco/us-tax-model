@@ -1585,7 +1585,7 @@
         "sli"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8960.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: qualifying surviving spouse with no unrecaptured section 1250 gain (Schedule D line 19 zero): 'If Schedule D, line 19, is zero or blank, skip lines 35 through 40', so worksheet line 35 is blank ($0). Student loan interest deduction worksheet line 5 is the amount for the filing status: 'Single, head of household, or qualifying surviving spouse\u2014$85,000' (i1040gi, Schedule 1 line 21 worksheet). Mutation-score assertion (T-159): ordinary dividends of $258,039 exceed $1,500, so Schedule B Part III is completed (f1040sb Part III, \"You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends\"). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.f8960.2.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: qualifying surviving spouse with no unrecaptured section 1250 gain (Schedule D line 19 zero): 'If Schedule D, line 19, is zero or blank, skip lines 35 through 40', so worksheet line 35 is blank ($0). Student loan interest deduction worksheet line 5 is the amount for the filing status: 'Single, head of household, or qualifying surviving spouse—$85,000' (i1040gi, Schedule 1 line 21 worksheet). Mutation-score assertion (T-159): ordinary dividends of $258,039 exceed $1,500, so Schedule B Part III is completed (f1040sb Part III, \"You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends\"). Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -3518,7 +3518,8 @@
         "person[taxpayer].retirement[r2].code_screen": false,
         "person[taxpayer].retirement[r2].exception": "none",
         "person[taxpayer].retirement[r2].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "f8962.line22b": {
@@ -5979,7 +5980,8 @@
         "person[taxpayer].otjob[ot_2].special_rule": true,
         "person[taxpayer].otjob[ot_2].method": "other",
         "person[taxpayer].otjob[ot_2].statement": 113900,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "s1a.line23": {
@@ -7024,7 +7026,8 @@
         "carloan[vin_1].refi_balance": 315100,
         "carloan[vin_1].refi_whole": true,
         "carloan[vin_1].col_ii_input": 214900,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "s1a.line31": {
@@ -8778,7 +8781,8 @@
         "household.cp_married": false,
         "person[taxpayer].eic_ssn": false,
         "person[taxpayer].under16": false,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "sli.line5": {
@@ -9244,7 +9248,8 @@
         "person[taxpayer].x_prior09": 0,
         "person[taxpayer].x_births": 0,
         "person[taxpayer].x_hsa_value": 933700,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "s1a.line9": {
@@ -13042,7 +13047,8 @@
         "person[taxpayer].retirement[r1].code_screen": false,
         "person[taxpayer].retirement[r1].exception": "none",
         "person[taxpayer].retirement[r1].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "eic.line2": {
@@ -13466,7 +13472,7 @@
         "s1.line1"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the 2024 married-filing-separately amounts), inputs of stage16.refund.f3 with the 2024 filing status married filing separately (spouse did not itemize) and the 'born before January 2, 1960' box checked; expected values predicted by hand from the archived i1040gi (p. 90, State and Local Income Tax Refund Worksheet) before running the evaluator: line 1 $3,000, line 2 $0, line 3 $3,000, line 4 $20,000. Line 5: 'Single or married filing separately\u2014$14,600'. Line 6: 'Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)': one box, $1,550. Line 7 $16,150. Line 8: line 7 is less than line 4, so $20,000 - $16,150 = $3,850. Line 9 is the smaller of line 3 and line 8, $3,000, entered on Schedule 1 line 1.",
+      "evidence_note": "Mutation fixture (choose branch values: the 2024 married-filing-separately amounts), inputs of stage16.refund.f3 with the 2024 filing status married filing separately (spouse did not itemize) and the 'born before January 2, 1960' box checked; expected values predicted by hand from the archived i1040gi (p. 90, State and Local Income Tax Refund Worksheet) before running the evaluator: line 1 $3,000, line 2 $0, line 3 $3,000, line 4 $20,000. Line 5: 'Single or married filing separately—$14,600'. Line 6: 'Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)': one box, $1,550. Line 7 $16,150. Line 8: line 7 is less than line 4, so $20,000 - $16,150 = $3,850. Line 9 is the smaller of line 3 and line 8, $3,000, entered on Schedule 1 line 1.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -13663,7 +13669,7 @@
         "s1.line1"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the 2024 qualifying-surviving-spouse box amount), inputs of stage16.refund.f10 with the 'born before January 2, 1960' box checked and 2024 itemized deductions of $35,000; expected values predicted by hand from the archived i1040gi (p. 90, State and Local Income Tax Refund Worksheet) before running the evaluator: refund $2,000 (line 1 $2,000, line 2 $0, line 3 $2,000), line 4 $35,000. Line 5: 'Married filing jointly or qualifying surviving spouse\u2014$29,200'. Line 6: one box at $1,550 (the $1,950 amount is only for single or head of household). Line 7 $30,750; line 8 $35,000 - $30,750 = $4,250; line 9 the smaller of line 3 and line 8, $2,000, on Schedule 1 line 1.",
+      "evidence_note": "Mutation fixture (choose branch values: the 2024 qualifying-surviving-spouse box amount), inputs of stage16.refund.f10 with the 'born before January 2, 1960' box checked and 2024 itemized deductions of $35,000; expected values predicted by hand from the archived i1040gi (p. 90, State and Local Income Tax Refund Worksheet) before running the evaluator: refund $2,000 (line 1 $2,000, line 2 $0, line 3 $2,000), line 4 $35,000. Line 5: 'Married filing jointly or qualifying surviving spouse—$29,200'. Line 6: one box at $1,550 (the $1,950 amount is only for single or head of household). Line 7 $30,750; line 8 $35,000 - $30,750 = $4,250; line 9 the smaller of line 3 and line 8, $2,000, on Schedule 1 line 1.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -14230,7 +14236,7 @@
         "s1.line21"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the line 7 divisor by filing status), inputs of classm.sli.2 unchanged; expected values predicted by hand from the archived i1040gi (p. 99, Student Loan Interest Deduction Worksheet) before running the evaluator: qualifying surviving spouse, interest paid $3,000, so line 1 is the $2,500 maximum; line 2 (Form 1040 line 9) $87,733; line 3 $0; line 4 $87,733. Line 5: 'Single, head of household, or qualifying surviving spouse\u2014$85,000'; line 4 is more, so line 6 is $2,733. Line 7: 'Divide line 6 by $15,000 ($30,000 if married filing jointly). Enter the result as a decimal (rounded to at least three places)': 0.182. Line 8: $2,500 x 0.182 = $455. Line 9: $2,500 - $455 = $2,045. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "evidence_note": "Mutation fixture (choose branch values: the line 7 divisor by filing status), inputs of classm.sli.2 unchanged; expected values predicted by hand from the archived i1040gi (p. 99, Student Loan Interest Deduction Worksheet) before running the evaluator: qualifying surviving spouse, interest paid $3,000, so line 1 is the $2,500 maximum; line 2 (Form 1040 line 9) $87,733; line 3 $0; line 4 $87,733. Line 5: 'Single, head of household, or qualifying surviving spouse—$85,000'; line 4 is more, so line 6 is $2,733. Line 7: 'Divide line 6 by $15,000 ($30,000 if married filing jointly). Enter the result as a decimal (rounded to at least three places)': 0.182. Line 8: $2,500 x 0.182 = $455. Line 9: $2,500 - $455 = $2,045. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[taxpayer].retirement[r1].code_screen": false,
@@ -14595,7 +14601,8 @@
         "household.cp_married": false,
         "person[taxpayer].eic_ssn": true,
         "person[taxpayer].under16": false,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "sli.line5": {
@@ -14623,7 +14630,7 @@
         "s1.line21"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the line 7 divisor by filing status), inputs of classm.sli.2 with the filing status head of household; expected values predicted by hand from the archived i1040gi (p. 99, Student Loan Interest Deduction Worksheet) before running the evaluator: interest paid $3,000, line 1 $2,500; line 4 (Form 1040 line 9 less the Schedule 1 adjustments, none) $87,733. Line 5: 'Single, head of household, or qualifying surviving spouse\u2014$85,000'; line 6 $2,733. Line 7: 'Divide line 6 by $15,000 ($30,000 if married filing jointly)', rounded to three places: 0.182. Line 8 $455; line 9 $2,045. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "evidence_note": "Mutation fixture (choose branch values: the line 7 divisor by filing status), inputs of classm.sli.2 with the filing status head of household; expected values predicted by hand from the archived i1040gi (p. 99, Student Loan Interest Deduction Worksheet) before running the evaluator: interest paid $3,000, line 1 $2,500; line 4 (Form 1040 line 9 less the Schedule 1 adjustments, none) $87,733. Line 5: 'Single, head of household, or qualifying surviving spouse—$85,000'; line 6 $2,733. Line 7: 'Divide line 6 by $15,000 ($30,000 if married filing jointly)', rounded to three places: 0.182. Line 8 $455; line 9 $2,045. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[taxpayer].retirement[r1].code_screen": false,
@@ -14988,7 +14995,8 @@
         "household.cp_married": false,
         "person[taxpayer].eic_ssn": true,
         "person[taxpayer].under16": false,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "sli.line5": {
@@ -15806,7 +15814,8 @@
         "person[taxpayer].retirement[r2].code_screen": false,
         "person[taxpayer].retirement[r2].exception": "none",
         "person[taxpayer].retirement[r2].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "f8880.line4a": {
@@ -19222,7 +19231,7 @@
           "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope.",
           "cite": {
             "doc": "i1040sb",
-            "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
             "revision": "TY2025; printed April 23, 2025",
             "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287",
             "tax_year": 2025
@@ -19802,7 +19811,8 @@
         "person[taxpayer].otjob[ot_2].special_rule": true,
         "person[taxpayer].otjob[ot_2].method": "other",
         "person[taxpayer].otjob[ot_2].statement": 113900,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "s1a.line21": {
@@ -19812,7 +19822,7 @@
           "remedy": "These retirement contributions are outside this tool.",
           "cite": {
             "doc": "p560",
-            "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5",
+            "locator": "pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5",
             "revision": "For use in preparing 2025 returns",
             "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
             "tax_year": 2025
@@ -20001,7 +20011,7 @@
           "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope.",
           "cite": {
             "doc": "i1040sb",
-            "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts",
+            "locator": "pp. 1–3, interest, dividends and foreign accounts/trusts",
             "revision": "TY2025; printed April 23, 2025",
             "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287",
             "tax_year": 2025
@@ -20271,7 +20281,8 @@
         "household.cp_married": false,
         "person[taxpayer].eic_ssn": true,
         "person[taxpayer].under16": false,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "s1a.line15": {
@@ -20546,7 +20557,8 @@
         "household.cp_married": false,
         "person[taxpayer].eic_ssn": true,
         "person[taxpayer].under16": false,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "s1a.line15": {
@@ -21153,7 +21165,8 @@
         "household.cp_married": false,
         "person[taxpayer].eic_ssn": true,
         "person[taxpayer].under16": false,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "s1a.line36a": {
@@ -21433,7 +21446,8 @@
         "household.cp_married": false,
         "person[taxpayer].eic_ssn": true,
         "person[taxpayer].under16": false,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "s1a.line36a": {
@@ -22852,7 +22866,8 @@
         "person[taxpayer].retirement[r1].code_screen": false,
         "person[taxpayer].retirement[r1].exception": "none",
         "person[taxpayer].retirement[r1].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "eic.line1": {
@@ -23353,7 +23368,8 @@
         "person[taxpayer].retirement[r1].code_screen": false,
         "person[taxpayer].retirement[r1].exception": "none",
         "person[taxpayer].retirement[r1].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "eic.line1": {
@@ -23854,7 +23870,8 @@
         "person[taxpayer].retirement[r1].code_screen": false,
         "person[taxpayer].retirement[r1].exception": "none",
         "person[taxpayer].retirement[r1].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "eic.line1": {
@@ -24111,7 +24128,8 @@
         "household.cp_married": false,
         "person[taxpayer].eic_ssn": false,
         "person[taxpayer].under16": false,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "f1040.line27c": {
@@ -24360,7 +24378,8 @@
         "household.cp_married": false,
         "person[taxpayer].eic_ssn": false,
         "person[taxpayer].under16": false,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "f1040.line27c": {
@@ -27262,7 +27281,8 @@
         "sales[s1].proceeds": 4360300,
         "sales[s1].reported_basis": 0,
         "sales[s1].correct_basis": 7713400,
-        "sales[s1].wash_loss": 0
+        "sales[s1].wash_loss": 0,
+        "clcw26.final_return": false
       },
       "expect": {
         "f1040.line27a": {
@@ -27816,7 +27836,7 @@
         "person"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: Form 8863 line 27 for a student who is not an American opportunity credit student), inputs of stage19.blind.e10 unchanged; expected values predicted by hand from the archived f8863 before running the evaluator: the taxpayer is an eligible student with $400 of refunds (Adjusted Qualified Education Expenses Worksheet line 2c) but answers No to line 24 (not enrolled at least half-time). f8863 p. 2, line 24: 'No\u2014Stop! Go to line 31 for this student.' Lines 27 through 30 are therefore not completed for this student: line 27 $0 (not the $400 adjustment total).",
+      "evidence_note": "Mutation fixture (choose branch values: Form 8863 line 27 for a student who is not an American opportunity credit student), inputs of stage19.blind.e10 unchanged; expected values predicted by hand from the archived f8863 before running the evaluator: the taxpayer is an eligible student with $400 of refunds (Adjusted Qualified Education Expenses Worksheet line 2c) but answers No to line 24 (not enrolled at least half-time). f8863 p. 2, line 24: 'No—Stop! Go to line 31 for this student.' Lines 27 through 30 are therefore not completed for this student: line 27 $0 (not the $400 adjustment total).",
       "inputs": {
         "person[taxpayer].x_other": false,
         "$dependent": [],
@@ -28053,7 +28073,7 @@
         "dependent"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: Form 8863 line 27 for a dependent student who is not an American opportunity credit student), inputs of stage19.blind.e3 with the daughter's refunds of qualified education expenses set to $1,000; expected values predicted by hand from the archived f8863 and i8863 before running the evaluator: the daughter answers Yes to line 25 (completed the first 4 years of postsecondary education). f8863 p. 2, line 25: 'Yes\u2014Stop! Go to line 31 for this student.' Line 27 is not completed: $0 (not the $1,000 adjustment). Line 31 (lifetime learning credit): i8863 p. 9, Adjusted Qualified Education Expenses Worksheet, line 1 qualified expenses $7,200 (tuition paid to the institution, no course materials), line 3 total adjustments $1,000 (line 2c refunds), line 4 '1 minus 3' = $6,200.",
+      "evidence_note": "Mutation fixture (choose branch values: Form 8863 line 27 for a dependent student who is not an American opportunity credit student), inputs of stage19.blind.e3 with the daughter's refunds of qualified education expenses set to $1,000; expected values predicted by hand from the archived f8863 and i8863 before running the evaluator: the daughter answers Yes to line 25 (completed the first 4 years of postsecondary education). f8863 p. 2, line 25: 'Yes—Stop! Go to line 31 for this student.' Line 27 is not completed: $0 (not the $1,000 adjustment). Line 31 (lifetime learning credit): i8863 p. 9, Adjusted Qualified Education Expenses Worksheet, line 1 qualified expenses $7,200 (tuition paid to the institution, no course materials), line 3 total adjustments $1,000 (line 2c refunds), line 4 '1 minus 3' = $6,200.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "$dependent": [
@@ -30463,7 +30483,7 @@
           "remedy": "On a joint return with line 10 of the IRA Deduction Worksheet under $14,000 ($15,000 or $16,000 with spouses age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare.",
           "cite": {
             "doc": "i1040gi",
-            "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, Caution, \"stop here and use the worksheet in Pub. 590-A to figure your IRA deduction\"",
+            "locator": "p. 98, IRA Deduction Worksheet—Continued, Caution, \"stop here and use the worksheet in Pub. 590-A to figure your IRA deduction\"",
             "revision": "2025; printed date 2026-02-25",
             "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
@@ -30704,7 +30724,7 @@
           "remedy": "On a joint return with line 10 of the IRA Deduction Worksheet under $14,000 ($15,000 or $16,000 with spouses age 50 or older), the IRA deduction is figured with the worksheet in Pub. 590-A, which this tool does not prepare.",
           "cite": {
             "doc": "i1040gi",
-            "locator": "p. 98, IRA Deduction Worksheet\u2014Continued, Caution, \"stop here and use the worksheet in Pub. 590-A to figure your IRA deduction\"",
+            "locator": "p. 98, IRA Deduction Worksheet—Continued, Caution, \"stop here and use the worksheet in Pub. 590-A to figure your IRA deduction\"",
             "revision": "2025; printed date 2026-02-25",
             "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
@@ -31064,7 +31084,8 @@
         "household.cp_married": false,
         "person[taxpayer].eic_ssn": true,
         "person[taxpayer].under16": false,
-        "$f1095a": []
+        "$f1095a": [],
+        "s179.wc_interest": 0
       },
       "expect": {
         "s1.line16": {
@@ -31074,7 +31095,7 @@
           "remedy": "Excess SIMPLE contributions are outside this tool.",
           "cite": {
             "doc": "p560",
-            "locator": "pp. 14\u201317, chapter 3",
+            "locator": "pp. 14–17, chapter 3",
             "revision": "For use in preparing 2025 returns",
             "snapshot": "1f1f7abe9ba6ade003036a47b2baa6bddbeac82f81d2220abf9f704778d6809f",
             "tax_year": 2025
@@ -31316,7 +31337,8 @@
         "sales[s1].proceeds": 4360300,
         "sales[s1].reported_basis": 0,
         "sales[s1].correct_basis": 7713400,
-        "sales[s1].wash_loss": 0
+        "sales[s1].wash_loss": 0,
+        "clcw26.final_return": false
       },
       "expect": {
         "f1040.line11b": {
@@ -33547,7 +33569,7 @@
           "remedy": "You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.",
           "cite": {
             "doc": "i1040sb",
-            "locator": "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation\u2019s stock, or (b) combined voting power of all classes of a foreign corporation\u2019s stock with voting rights\"",
+            "locator": "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\"",
             "revision": "TY2025; printed April 23, 2025",
             "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287",
             "tax_year": 2025
@@ -33560,7 +33582,7 @@
           "remedy": "You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.",
           "cite": {
             "doc": "i1040sb",
-            "locator": "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation\u2019s stock, or (b) combined voting power of all classes of a foreign corporation\u2019s stock with voting rights\"",
+            "locator": "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\"",
             "revision": "TY2025; printed April 23, 2025",
             "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287",
             "tax_year": 2025
@@ -33573,7 +33595,7 @@
           "remedy": "You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.",
           "cite": {
             "doc": "i1040sb",
-            "locator": "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation\u2019s stock, or (b) combined voting power of all classes of a foreign corporation\u2019s stock with voting rights\"",
+            "locator": "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\"",
             "revision": "TY2025; printed April 23, 2025",
             "snapshot": "b92f31ece57a82ea576ac96507fe5df637dbda7489a80eb28aaab88e7c87b287",
             "tax_year": 2025

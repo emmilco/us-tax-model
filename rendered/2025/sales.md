@@ -74,10 +74,10 @@
 
 ## (helper) — `sales.code`
 
-- **Authored helper label:** Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect
-- **Encoded (Enum(sales_code)):** Input — Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums that the Form 1099-B (or substitute statement) does not reflect in its proceeds or basis
-- Expr: `{"op":"input","source":"Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums that the Form 1099-B (or substitute statement) does not reflect in its proceeds or basis"}`
-- Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W; p. 6, Column (d)—Proceeds (Sales Price), "If there are any selling expenses or option premiums that aren't reflected on the form or statement you received (by an adjustment to either the proceeds or basis shown)" (2025; printed date 2026-01-20; sha256 f077991c)
+- **Authored helper label:** Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect, code D for a bond with accrued market discount, or code O for a contingent payment debt instrument with the Ordinary box checked
+- **Encoded (Enum(sales_code)):** Input — Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums that the Form 1099-B (or substitute statement) does not reflect in its proceeds or basis; code D for the sale or retirement of a bond or other debt instrument with accrued market discount (such as an amount in box 1f of Form 1099-B), whose gain is interest income up to that discount even if the bond's interest is tax-exempt; or code O for a taxable contingent payment debt instrument (such as one reported with the Ordinary box in box 2 of Form 1099-B checked)
+- Expr: `{"op":"input","source":"Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums that the Form 1099-B (or substitute statement) does not reflect in its proceeds or basis; code D for the sale or retirement of a bond or other debt instrument with accrued market discount (such as an amount in box 1f of Form 1099-B), whose gain is interest income up to that discount even if the bond's interest is tax-exempt; or code O for a taxable contingent payment debt instrument (such as one reported with the Ordinary box in box 2 of Form 1099-B checked)"}`
+- Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W; p. 6, Column (d)—Proceeds (Sales Price), "If there are any selling expenses or option premiums that aren't reflected on the form or statement you received (by an adjustment to either the proceeds or basis shown)"; p. 11, Worksheet for Accrued Market Discount Adjustment in Column (g), "reporting the sale or retirement of a market discount bond, enter code “D” for the transaction in column (f)"; p. 12, Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g), "reporting the sale of a taxable contingent payment debt instrument subject to the noncontingent bond method, enter code “O”"; p. 10, "with the Ordinary box in box 2 on Form 1099-B or box 6 on Form 1099-DA checked and the security is a taxable contingent payment debt instrument"; i1040sd p. 4, Market Discount Bonds, "a capital gain from the disposition of a market discount bond is treated as interest income to the extent of accrued market discount" (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.special`
 
@@ -210,21 +210,21 @@
 ## (helper) — `sales.has_b`
 
 - **Authored helper label:** Basis correction code B applies
-- **Encoded (Bool):** (helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect" = 'B' or helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect" = 'BW')
+- **Encoded (Bool):** (helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect, code D for a bond with accrued market discount, or code O for a contingent payment debt instrument with the Ordinary box checked" = 'B' or helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect, code D for a bond with accrued market discount, or code O for a contingent payment debt instrument with the Ordinary box checked" = 'BW')
 - Expr: `{"any":[{"eq":["sales.code",{"const":"B"}],"op":"test"},{"eq":["sales.code",{"const":"BW"}],"op":"test"}],"op":"test"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.has_w`
 
 - **Authored helper label:** Wash-sale code W applies
-- **Encoded (Bool):** (helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect" = 'W' or helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect" = 'BW')
+- **Encoded (Bool):** (helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect, code D for a bond with accrued market discount, or code O for a contingent payment debt instrument with the Ordinary box checked" = 'W' or helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect, code D for a bond with accrued market discount, or code O for a contingent payment debt instrument with the Ordinary box checked" = 'BW')
 - Expr: `{"any":[{"eq":["sales.code",{"const":"W"}],"op":"test"},{"eq":["sales.code",{"const":"BW"}],"op":"test"}],"op":"test"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.bad_code`
 
 - **Authored helper label:** Unsupported adjustment or code B without a broker basis report
-- **Encoded (Bool):** (helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect" = 'other' or helper "Basis correction code B applies" = true and (helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'C' or helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'F'))
+- **Encoded (Bool):** (helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect, code D for a bond with accrued market discount, or code O for a contingent payment debt instrument with the Ordinary box checked" = 'other' or helper "Basis correction code B applies" = true and (helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'C' or helper "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets." = 'F'))
 - Expr: `{"any":[{"eq":["sales.code",{"const":"other"}],"op":"test"},{"all":[{"eq":["sales.has_b",{"const":true}],"op":"test"},{"any":[{"eq":["sales.box",{"const":"C"}],"op":"test"},{"eq":["sales.box",{"const":"F"}],"op":"test"}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
@@ -238,7 +238,7 @@
 ## (helper) — `sales.aggregate_fails`
 
 - **Authored helper label:** An aggregate-route transaction fails an aggregate condition
-- **Encoded (Bool):** (helper "Basis reported to IRS" = false or helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect" ≠ 'none' or helper "Confirm all aggregate conditions: basis reported, no broker adjustments, no Ordinary box, no QOF disposition/deferral, no corrections, no collectibles" = false)
+- **Encoded (Bool):** (helper "Basis reported to IRS" = false or helper "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect, code D for a bond with accrued market discount, or code O for a contingent payment debt instrument with the Ordinary box checked" ≠ 'none' or helper "Confirm all aggregate conditions: basis reported, no broker adjustments, no Ordinary box, no QOF disposition/deferral, no corrections, no collectibles" = false)
 - Expr: `{"any":[{"eq":["sales.covered",{"const":false}],"op":"test"},{"ne":["sales.code",{"const":"none"}],"op":"test"},{"eq":["sales.aggregate_eligible",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
 

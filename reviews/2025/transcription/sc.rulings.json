@@ -606,11 +606,48 @@
    "printed": "5 (sc.ho_line5)",
    "project_expr_sha256": "6c262f80337efed20cfa893dd4a17f7bd2a05b569b04c5e5ae228bd2b432104f",
    "second_expr_sha256": "bc82987950056a74b5f94ced0520e08b4309bedecc5c58ef57b36db221bbd9be",
-   "ruling": "Ruling: scope; same reply and project as the earlier ruling. i1040sc p. 12, Simplified Method Worksheet, line 5, \"Enter the smaller of line 1 or line 4\". The reply's line 5 is the smaller of the project's lines 1 and 4 (floored at zero), the project's value wherever both compute. Triage executable-triage-v2 (reviews/2025/transcription/triage/sc.json; 1,638 fixtures, 500 generated returns seed 20261026, 2092 partial records): 2,602 of 3,305 comparisons agree; on completed returns 41 candidate-refuses and 5 candidate-unknown, all through the reply's line 1 terms (scveh.low_use, scveh.miles_commuting, as at sc.line31_pre179), and 2 project-refuses on sc.ho_both_limits (p946 p. 19, Two different taxable income limits). Project stands.",
-   "context": "7cf54fc6fae3cb16c2fd2d0b30b0722ad97f072b43d4b1c6d03cb29e822a941b",
-   "date": "2026-11-07",
-   "run": "09b55cee04827ef848252ff9542057c865d128d72105d27005357de83318a763",
-   "subject_key": "dde22fb98e08b4d388bb4af74676f39bee5781e671a9c81cd3991045398eda19"
+   "ruling": "Ruling: finding; i1040sc p. 12, Simplified Method Worksheet, line 5, \"Enter the smaller of line 1 or line 4\". Where both compute, the reply's line 5 (the smaller of lines 1 and 4, floored at zero) is the project's; its candidate refusals and unknowns come from its line 1 terms (Form 4562 lines and sc.ho_other), as the earlier rulings. New on this pass's triage: the project's line 5 refuses on completed returns that have no home office (stage14.s179.income_limit, stage14.s179.wages_count, classm.eic.3.deepseek and the BUG-0474 fixtures built on stage14.s179.income_limit), where the reply gives $0.00: sc.ho_both_limits does not test sc.ho_uses, so a business with no home office and a reduced section 179 deduction shows the two-income-limits refusal on the worksheet's line 5, though line 30 reads line 5 only with a home office and no amount changes. Filed as BUG-0489 (low, display). executable-triage-v2 (pass 8ca5a269c0e3): 2,532 of 3,346 agree; 441 candidate-unknown, 128 candidate-refuses, 180 project-unknown, 65 project-refuses.",
+   "context": "22ad9f4642ec30a46e64cfbf4668598c0ee10f5a7385f802a9ba9e816c3d186c",
+   "date": "2026-11-10",
+   "run": "e4cafb8dbf8266c87e9de450206e10e8dc9801ba19848628a552b98b47d02b62",
+   "severity": "low",
+   "subject_key": "e40cf0e345940f46493089ee3a2704aae6461c795b77d3dbb4a1a6224b3375f6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_class@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_reuse_recycling@person[taxpayer].sc[desk]",
+     "fixture:stage14.asset.refuse_pre_2017@person[taxpayer].sc[desk]",
+     "fixture:classm.eic.3.deepseek@person[taxpayer].sc[biz_a]",
+     "fixture:classm.s179.5@person[taxpayer].sc[biz_a]",
+     "fixture:classm.s179.5@person[taxpayer].sc[biz_b]",
+     "fixture:classm.scveh.3@person[taxpayer].sc[biz_a]",
+     "fixture:mutation.t2.no_carloan_part4@person[taxpayer].sc[biz_a]",
+     "fixture:mutation.t2.mfj_no_overtime_part3@person[taxpayer].sc[biz_a]",
+     "fixture:mutation.t2.s1a.line13_magi_first@person[taxpayer].sc[biz_a]",
+     "fixture:mutation.t2.s1a.line21_magi_first@person[taxpayer].sc[biz_a]",
+     "fixture:stage14.s179.income_limit@person[taxpayer].sc[desk]",
+     "fixture:stage14.s179.wages_count@person[taxpayer].sc[desk]",
+     "fixture:bug0474.s179.wc_interest@person[taxpayer].sc[desk]",
+     "fixture:bug0474.s179.wc_interest_part@person[taxpayer].sc[desk]",
+     "fixture:bug0474.s179.interest_not_asked@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].statutory@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].passive@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].spouse_owned@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].method_other@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].special@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].inventory_other@person[taxpayer].sc[desk]",
+     "partial:classm.f4562.1-person[taxpayer].sc[biz_a].line1@person[taxpayer].sc[biz_b]",
+     "partial:classm.f4562.1-person[taxpayer].sc[biz_a].line2@person[taxpayer].sc[biz_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "7 (sc.f7206_line7)",
@@ -1192,11 +1229,33 @@
    "printed": "sc.line31_pre179",
    "project_expr_sha256": "4c2ebc3803d7032de204f6f2bb5ea8245fc0c913a531b46b14a8ff8ef2dcd3b5",
    "second_expr_sha256": "493744a1c5a5d36f1d1870101e27f7c5ab1633beb00a7c62e85541409577816f",
-   "ruling": "Ruling: model error; i4562 p. 5, Line 11, and p946 p. 19, Business Income Limit: the limit is figured without regard to the section 179 deduction only, so a vehicle's special allowance and MACRS depreciation stay deducted. The reply's vehicle terms come through its Form 4562 lines 14, 17, 19a to 19f and 21, which do not carry the project's per-vehicle amounts (scveh.bonus, scveh.macrs): on stage14.veh.suv_179 it leaves out the SUV's $38,700.00 of allowance and MACRS ($161,300.00 project, $200,000.00 reply), and its completed-return refusals and unknowns sit on scveh.low_use and scveh.miles_commuting, which the project does not need for a standard-mileage vehicle. Triage executable-triage-v2 (reviews/2025/transcription/triage/sc.json; 1,638 fixtures, 500 generated returns seed 20261026, 2092 partial records): 2,878 of 3,305 comparisons agree; on completed returns 30 candidate-refuses, 14 candidate-unknown and 1 value difference (stage14.veh.suv_179); the rest on refused or incomplete returns, where the project refuses on sc.ho_both_limits and sc.ho_multi. Project stands.",
-   "context": "7cf54fc6fae3cb16c2fd2d0b30b0722ad97f072b43d4b1c6d03cb29e822a941b",
-   "date": "2026-11-07",
-   "run": "09b55cee04827ef848252ff9542057c865d128d72105d27005357de83318a763",
-   "subject_key": "ed71d7f3294ade24dd6c944a2fbdafd0d546d8fd6d570e059adab104be58640a"
+   "ruling": "Ruling: representation; as the earlier rulings on this line. Both figure line 31 before the section 179 deduction for Pub. 946's two income limits (pp. 17-19); the project subtracts its depreciation from the asset and vehicle entries, the reply through Form 4562 lines 14, 17, 19a to 19f and 21, and the reply refigures the home office deduction inside the line. executable-triage-v2 (`.transcription/triage/2025/sc.json`, pass 8ca5a269c0e3; 1,744 fixtures, 500 generated returns seed 20261026, 2,090 partial records): 3,046 of 3,346 agree; 14 project-refuses and 286 project-unknown, none on a completed return. Project stands.",
+   "context": "22ad9f4642ec30a46e64cfbf4668598c0ee10f5a7385f802a9ba9e816c3d186c",
+   "date": "2026-11-10",
+   "run": "e4cafb8dbf8266c87e9de450206e10e8dc9801ba19848628a552b98b47d02b62",
+   "subject_key": "e8eb36d60a8d4db3bdaaa2a2fba7a3dbb9bb36398d78cb86de09302bf1a0c723",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.ho.refuse_two_businesses@person[taxpayer].sc[home]",
+     "fixture:stage14.ho.refuse_two_businesses@person[taxpayer].sc[shop]",
+     "fixture:stage14.ho.refuse_two_limits@person[taxpayer].sc[home]",
+     "fixture:stage14.refuse.statutory@person[taxpayer].sc[b]",
+     "fixture:stage14.refuse.passive@person[taxpayer].sc[b]",
+     "fixture:stage14.refuse.spouse_owned@person[taxpayer].sc[b]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].statutory@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].passive@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].spouse_owned@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].method_other@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].special@person[taxpayer].sc[desk]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].sc[desk].inventory_other@person[taxpayer].sc[desk]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "sc.line31_pre179",

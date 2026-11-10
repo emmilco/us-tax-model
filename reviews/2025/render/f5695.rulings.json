@@ -20,6 +20,16 @@
   {
    "printed": "14",
    "restated": "Enter the amount from helper \"Residential Clean Energy Credit Limit Worksheet, line 3. Subtract line 2 from line 1. If zero or less, enter -0-\".",
+   "model": "Worksheet line 2 uses the Credit Limit Worksheet B line 14 amount for line 19 only when the Schedule 8812 instructions direct you to complete Worksheet B, which requires '2. You are not filing Form 2555.' The program's Worksheet B gate (claiming Part I and line 4 more than zero) leaves out that condition, and no refusal names Form 2555, so a Form 2555 filer would get the wrong child tax credit amount. The rest of the worksheet matches: line 1 minus line 2, floored at zero, with Schedule 3 line 5b standing in for Form 5695 line 32 and the other credits refused.",
+   "ruling": "Ruling: scope; project retained, as the earlier rulings on this line. i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following ... 2. You are not filing Form 2555\". A Form 2555 filer is refused elsewhere: Schedule 8812 lines 2a to 2c refuse when sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\") is Yes, as the note on s8812.clwb_complete records; the refusal sits on another form, so the model was not shown it.",
+   "context": "4034944e0fce5b86a4a66a1c8e1d770f1882bfc2eb1ed4b34f3cfaf25e6be814",
+   "date": "2026-11-10",
+   "run": "ff4e330d16ca31e4b1a8b2dd8a25cfbd5474ffeab200772f209cd3657277981c",
+   "subject_key": "3773ca7d642782d8fe3184335f8492e85d3f4a745c3dd3de7dcc41b546b5a9f4"
+  },
+  {
+   "printed": "14",
+   "restated": "Enter the amount from helper \"Residential Clean Energy Credit Limit Worksheet, line 3. Subtract line 2 from line 1. If zero or less, enter -0-\".",
    "model": "Worksheet lines 1 to 3 match within the refused scope, and the CTC substitution follows the '*' note. However, the Schedule 8812 instructions add a condition for completing Credit Limit Worksheet B, '2. You are not filing Form 2555,' which the clwb_complete helper omits. The text given does not show whether Form 2555 filers are excluded elsewhere.",
    "ruling": "Ruling: scope; project retained. i1040s8812 p. 4, Credit Limit Worksheet A: \"Complete Credit Limit Worksheet B only if you meet all the following ... 2. You are not filing Form 2555\". f5695.ctc_line19 and s8812.clwb_complete do not test condition 2 because a Form 2555 filer is refused elsewhere: Schedule 8812 lines 2a to 2c refuse when sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\") is Yes, as the note on s8812.clwb_complete records. The refusal sits on another form, so the model was not shown it. The Schedule 8812 lines the rendered English names (line 12, Credit Limit Worksheet A line 3, Worksheet B) are unchanged by BUG-0210, which only hides Worksheet B lines 7 to 10; the worksheet is judged in the s8812 logs. Same ruling as round 1.",
    "context": "824833e4ba57889cec3905a832e2f3b0f748f3e2fd2890cdbdbe105211778b7b",

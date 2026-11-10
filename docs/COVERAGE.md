@@ -20,7 +20,7 @@ The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.jso
 
 ## Every refusal
 
-The data holds **200 refusal gates**: 161 tax situations the tool does not prepare, grouped by topic below, and 39 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **201 refusal gates**: 161 tax situations the tool does not prepare, grouped by topic below, and 40 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
 - [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (30)
 - [Household and dependents](#household-and-dependents) (15)
@@ -40,7 +40,7 @@ The data holds **200 refusal gates**: 161 tax situations the tool does not prepa
 - [Education credits](#education-credits) (5)
 - [Home energy credits](#home-energy-credits) (7)
 - [Premium tax credit](#premium-tax-credit) (7)
-- [Entry checks](#entry-checks) (39)
+- [Entry checks](#entry-checks) (40)
 
 ### Filing status, residency, wages, accounts and other taxes
 
@@ -1322,6 +1322,11 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *Not covered:* A section 179 election above the dollar limitation (Form 4562 lines 6 and 7, column (c), more than line 5). Elect no more than the dollar limitation on line 5; the rest of the cost is depreciated.
     *Source:* [i4562] p. 4, Line 3, "The amount of section 179 property for which you can make the election is limited to the maximum dollar amount on line 1"; p. 5, Line 5, "If line 5 is zero, you cannot elect to expense any section 179 property"
   - *Refused at:* `s179.line9`
+- **`s179.wc_over`**
+  - *The data asks or tests:* Working-capital interest is asked for and entered as more than the taxable interest on Form 1040, line 2b (`choose`)
+  - *Not covered:* Interest from working capital more than the taxable interest on the return. The working-capital interest is part of the taxable interest on Form 1040, line 2b; enter no more than that amount.
+    *Source:* [p946] p. 19, Taxable income, "Interest from working capital of your trade or business"
+  - *Refused at:* `s179.income`
 
 #### State and local tax refunds
 

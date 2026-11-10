@@ -53,6 +53,45 @@
    "subject_key": "663412544c78380434c85f7052ac816cc2a9607d9f1c3723351adf4b24a90c40"
   },
   {
+   "printed": "(g)",
+   "project_expr_sha256": "17936dd7b4e3f8c13d9755c0c103c81f64c570421914a824a59f42de9caccd39",
+   "second_expr_sha256": "f215bf1d4613c0a5f2b9a5091ff81c06c373cc29372e3ab252649c77a07d3d11",
+   "ruling": "Ruling: model error and scope; i8949 p. 8, code B, and p. 10, code W, \"enter the amount of the nondeductible loss as a positive number in column (g)\". Values on the supported case are the project's (reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW); boxes G and J are refused with every digital-asset box (sales.digital) and codes other than B and W at sales.bad_code, as the earlier rulings. The reply's own consistency gate (sales.h_wash_exceeds) refuses completed returns the project computes, where the wash-sale loss is no more than the loss on the sale: sales.adjust.A.W, sales.adjust.D.W, sales.adjust.A.W.equal_loss (project column (g) $500.00, $500.00, $200.00); the project refuses only a wash-sale loss above the loss after any code B correction (sales.wash_bad, and the sales.wash_loss question, \"The loss entered cannot be more than the loss on this sale\"). The reworded sales.code (BUG-0476, codes D and O) changes no value. executable-triage-v2 (`.transcription/triage/2025/sales.json`, pass 482b0f4853ea): 1,745 of 1,822 agree; 61 candidate-unknown, 7 candidate-refuses (3 on completed returns, above), 9 project-unknown. Project stands.",
+   "context": "0ee52ad8f357f0ff63283defcaa1990341623c60e76431752a656c0b0774e35d",
+   "date": "2026-11-10",
+   "run": "6ed65b740c85e73c79ab52a9f5e6c3ac529dbad17e539278c4e6f7bb25db4da0",
+   "subject_key": "c973b06f9dfe3e3a4da328f8c16cc33b89d780ad3f88d8e3727708222d7bf27b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:sales.adjust.A.W@sales[a]",
+     "fixture:sales.adjust.D.W@sales[a]",
+     "fixture:sales.adjust.A.W.equal_loss@sales[a]",
+     "fixture:bug0476.sales.market_discount_code_d@sales[a]",
+     "fixture:sales.refuse.special@sales[a]",
+     "fixture:sales.refuse.code@sales[a]",
+     "fixture:stage21.f1.special_withheld@sales[s1]",
+     "fixture:stage21.f1.special_null@sales[s1]",
+     "partial:stage12.car.mixed_sc_interest_prorated-sales[s1].special@sales[s1]",
+     "partial:classm.g28.2.deepseek-sales[s1].special@sales[s1]",
+     "partial:classm.g28.2.deepseek-sales[s2].special@sales[s2]",
+     "partial:classm.g28.2.deepseek-sales[s3].special@sales[s3]",
+     "partial:classm.f1040.6.deepseek-sales[s1].box@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s1].proceeds@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s1].correct_basis@sales[s1]",
+     "partial:classm.sa.1.deepseek-sales[s3].box@sales[s3]",
+     "partial:classm.sa.1.deepseek-sales[s3].proceeds@sales[s3]",
+     "partial:classm.sa.1.deepseek-sales[s3].correct_basis@sales[s3]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "(h)",
    "project_expr_sha256": "5f822cd2194b5e2b35673882ee841ce992af653e68d6dc10d05ef6bebaee5078",
    "second_expr_sha256": "c7ad68776015b96f99a3e7700c69f9bf17176168eda49f143107d20f65651784",

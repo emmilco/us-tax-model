@@ -3,6 +3,9 @@
  "form": "s179",
  "family": "claude",
  "base": "69253543bf677080f444696f01cadb2575cae75dffbcd938cf6a5624d817eb98",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "s179.differs",
@@ -74,10 +77,10 @@
   },
   {
    "key": "11",
-   "record": "69253543bf677080f444696f01cadb2575cae75dffbcd938cf6a5624d817eb98",
+   "record": "bc3232b9560811e8689db135a70afe97f6fbfd23f4915b4432b9f49e6e8e11a5",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i4562 p. 5, Line 11, Individuals: \"Also, include all wages, salaries, tips, and other compensation you earned as an employee (from Form 1040, line 1a).\" The candidate omits Form 1040 line 1a and uses only the Schedule C income before the section 179 deduction. Example: stage14.s179.wages_count (Schedule C income before section 179 $3,000, wages $20,000): project line 11 $23,000.00 (fixture expectation), candidate $3,000.00 by its expression, so its line 12 would be $3,000 instead of $10,000. Many value differences also pass through line 5, the consequence of the line 1 reading ruled ambiguity (amb.2025.s179_carryover_no_property), and those are not this error. This is a separate source error from the line 1 ambiguity, whose register entry does not cover wages. Triage executable-triage-v2 (triage/s179.json; 1,099 fixtures, 500 generated returns seed 20261026, 28 partial records): 339 of 1,627 comparisons agree; differences: 1215 value, 67 project-unknown, 6 project-refuses; by full-interview outcome of the return: completed: 484 value; incomplete: 215 value, 14 project-unknown; refused: 516 value, 53 project-unknown, 6 project-refuses; witnesses (project / candidate): value e.g. classm.f2441.1.deepseek ($50,000.00 / $0.00; return completed), classm.f2441.2.deepseek ($85,000.00 / $0.00; return completed); project-refuses e.g. stage13.refuse.joint_without_spouse (refusal at household.roster_bad / $0.00; return refused), stage13.refuse.single_with_spouse (refusal at household.roster_bad / $0.00; return refused); project-unknown e.g. classm.f4952.3 (unknown s179.line10 / $0.00; return refused), classm.g28.2 (unknown s179.line10 / $0.00; return refused). The project-unknown records withhold s179.line10, which the project needs on separate returns for its cited refusal s179.mfs (i4562 p. 5, Line 5; e.g. classm.f4952.3, married filing separately), or lack a roster answer, all on returns the full interview refuses or leaves incomplete; the project-refuses records are the cited gates household.roster_bad, household.filer_under16 and s179.mfs (stage14.s179.refuse_mfs, generated 6 and 62): scope.",
-   "subject_key": "d87d359780c641062c2bf5bee6e9e555ce3c0644b589a88a3f91580bf8e55e79"
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (s179.h_sc_income: \"s179.s179.h_sc_income: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "defce37efa6a00ffa7cc08c2ac8bc83dbbb5bdfce1c9bec08fcc66dda92bd3ca"
   },
   {
    "key": "12",
@@ -104,9 +107,12 @@
   "7": "7a7e76e9751b1729281c937f6bc87491cf0a4f0fb89b9fe2bad21b78c7eb66e9",
   "8": "83bef42d501af77dfa5d10da200432c87f7608a4b7afbfe3c06c556148007ef6",
   "9": "8ac1804bd8ba1a9fdbb602de52592b07bf8410d757cef839ac12d4b6d89af932",
-  "11": "a6b22763ae63b1eb4c812643793004631886309e31f5bcb1080abfbdb782f3df",
+  "11": "0eaaef1efb52c1ecfacfc0b08bde388f9554b7a43535d31654ab0918ee50bedf",
   "12": "4c79b4cf046514c5698e0e6f6d5213a128b17e61d4977277238bb12961ebe45a",
   "13": "ce0f9e7187254c449da0fc3d425ff018df883dcd328ef982a202d04e0ab360a1"
  },
- "__rest__": "ae6356cbe430ddb4762dd5706a6fb640c2faf0f6d308bb93cf20787947dd2675"
+ "__rest__": "ae6356cbe430ddb4762dd5706a6fb640c2faf0f6d308bb93cf20787947dd2675",
+ "foreign": {
+  "11": "fe5c888c6461325e76552b02767fafc465dc9deceadb836e3cae89a6a5e3b2fb"
+ }
 }

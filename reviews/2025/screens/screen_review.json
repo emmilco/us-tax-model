@@ -1810,6 +1810,55 @@
   "model": "claude-opus-5-5"
  },
  {
+  "screen": "gate:clcw26.final_ask",
+  "kind": "gate",
+  "condition": "clcw26.final_ask",
+  "lines": [
+   "clcw26.final_return_if_carryover"
+  ],
+  "inputs": [
+   "clcw26.final_return"
+  ],
+  "verdict": "NARROW",
+  "findings": [
+   {
+    "kind": "NARROW",
+    "situation": "A joint return filed for 2025 where one spouse died in 2025 and the joint return figures a capital loss carryover to 2026 that includes the deceased spouse's loss.",
+    "irs_text": "p550 p. 103: \"A capital loss sustained by a decedent during the decedent's last tax year (or carried over to that year from an earlier year) can be deducted only on the final income tax return filed for the decedent.\"",
+    "why": "A joint return with the surviving spouse can be the decedent's final return, so the decedent's share of the loss cannot carry to 2026. The gate requires \"Not a joint return\", so the tool never asks and lets that share carry over."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "On any return the gate would let through, a filer reading \"a filer who died in 2025\" may not know whether this covers a spouse who died, or only a sole filer.",
+    "irs_text": "p550 p. 103: \"can be deducted only on the final income tax return filed for the decedent\"",
+    "why": "The question does not say whether it covers a deceased spouse whose final return is filed jointly. Joint returns are in scope, so the question must cover the spouse explicitly."
+   }
+  ],
+  "prompt_sha": "fc7ea38541fdcb469fda492d9bfb2d695512c28c6a24499529c2d22ff2c738e6",
+  "subject_sha": "d7881adecd94573cefc55bdcb231b9898e633c80b624142f5173b53ea1b63575",
+  "used": [
+   {
+    "doc": "p550",
+    "revision": "2025 returns; printed date 2026-03-05",
+    "text_sha256": "e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26",
+    "pages": [
+     103
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 103, Decedent's capital loss, \"A capital loss sustained by a decedent during the decedent’s last tax year (or carried over to that year from an earlier year) can be deducted only on the final income tax return filed for the decedent\"",
+     "p. 103, Decedent's capital loss, \"can be deducted only on the final income tax return filed for the decedent\"",
+     "p. 103, Decedent's capital loss, \"can be deducted only on the final income tax return filed for the decedent\" and \"The decedent's estate cannot deduct any of the loss or carry it over to following years\""
+    ],
+    "cols_pages": [],
+    "cols_sha256": "7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51"
+   }
+  ],
+  "cost": 0.033932,
+  "model": "claude-opus-5-5",
+  "date": "2026-11-10"
+ },
+ {
   "screen": "gate:div.any",
   "kind": "gate",
   "condition": "div.any",
@@ -2488,6 +2537,50 @@
   "cost": 0.043392,
   "model": "claude-opus-5-5",
   "date": "2026-11-07"
+ },
+ {
+  "screen": "gate:s179.wc_ask",
+  "kind": "gate",
+  "condition": "s179.wc_ask",
+  "lines": [
+   "s179.wc_interest_if_limited"
+  ],
+  "inputs": [
+   "s179.wc_interest"
+  ],
+  "verdict": "COVERS",
+  "findings": [
+   {
+    "kind": "WIDE",
+    "situation": "A filer has a section 179 deduction limited by business income and has taxable interest, but all of it is personal or investment interest unrelated to any business's operating funds.",
+    "irs_text": "p946 p. 19: \"Net income or loss from a trade or business includes the following items. ... • Interest from working capital of your trade or business.\"",
+    "why": "The computed condition holds because there is taxable interest, but none of it is working-capital interest, so the gated line is zero. The question just collects a zero answer."
+   }
+  ],
+  "prompt_sha": "d5b1c1419dd369a294f66dd9d85b4cb7898fb34aece72de1640e54e542a27db9",
+  "subject_sha": "75a0f92e642f372a526b903a715a88695a98fa8ca29bd9eb105ca4621b78b28d",
+  "used": [
+   {
+    "doc": "p946",
+    "revision": "For use in preparing 2025 returns",
+    "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+    "pages": [
+     19
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 19, Taxable income, \"Interest from working capital of your trade or business\"",
+     "p. 19, Taxable income, \"Net income or loss from a trade or business includes the following items\" and \"Interest from working capital of your trade or business\""
+    ],
+    "cols_pages": [
+     19
+    ],
+    "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+   }
+  ],
+  "cost": 0.043472,
+  "model": "claude-opus-5-5",
+  "date": "2026-11-10"
  },
  {
   "screen": "gate:s8812.has_qualifying_child",

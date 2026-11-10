@@ -211,9 +211,9 @@
 ## 15 — `sc.line15`
 
 - **IRS:** Insurance (other than health)
-- **Encoded (NonNegDollars):** Input — Premiums for business insurance (not health insurance for yourself, not a reserve for self-insurance, not lost-earnings insurance); zero if none
-- Expr: `{"op":"input","source":"Premiums for business insurance (not health insurance for yourself, not a reserve for self-insurance, not lost-earnings insurance); zero if none"}`
-- Cite: [i1040sc] p. 8, Line 15 (2025; sha256 b5536db9)
+- **Encoded (NonNegDollars):** Input — Premiums for business insurance (not health insurance for yourself, not a reserve for self-insurance, not lost-earnings insurance, and not insurance on your home, because with the simplified method for business use of the home, line 30 replaces the business part of your home's expenses); zero if none
+- Expr: `{"op":"input","source":"Premiums for business insurance (not health insurance for yourself, not a reserve for self-insurance, not lost-earnings insurance, and not insurance on your home, because with the simplified method for business use of the home, line 30 replaces the business part of your home's expenses); zero if none"}`
+- Cite: [i1040sc] p. 8, Line 15; p. 14, Line 30, "Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home" (2025; sha256 b5536db9)
 
 ## 16a — `sc.line16a`
 
@@ -260,16 +260,16 @@
 ## 20b — `sc.line20b`
 
 - **IRS:** Rent or lease: other business property
-- **Encoded (NonNegDollars):** Input — Rent for other business property, such as office space; zero if none
-- Expr: `{"op":"input","source":"Rent for other business property, such as office space; zero if none"}`
-- Cite: [i1040sc] p. 8, Lines 20a and 20b (2025; sha256 b5536db9)
+- **Encoded (NonNegDollars):** Input — Rent for other business property, such as office space (not rent for your home, because with the simplified method for business use of the home, line 30 replaces the business part of your home's expenses); zero if none
+- Expr: `{"op":"input","source":"Rent for other business property, such as office space (not rent for your home, because with the simplified method for business use of the home, line 30 replaces the business part of your home's expenses); zero if none"}`
+- Cite: [i1040sc] p. 8, Lines 20a and 20b; p. 14, Line 30, "Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home" (2025; sha256 b5536db9)
 
 ## 21 — `sc.line21`
 
 - **IRS:** Repairs and maintenance
-- **Encoded (NonNegDollars):** Input — Incidental repairs and maintenance that do not add to the property's value or appreciably prolong its life (not your own labor, and not restorations or replacements, which are capitalized); zero if none
-- Expr: `{"op":"input","source":"Incidental repairs and maintenance that do not add to the property's value or appreciably prolong its life (not your own labor, and not restorations or replacements, which are capitalized); zero if none"}`
-- Cite: [i1040sc] p. 8, Line 21 (2025; sha256 b5536db9)
+- **Encoded (NonNegDollars):** Input — Incidental repairs and maintenance that do not add to the property's value or appreciably prolong its life (not your own labor, not restorations or replacements, which are capitalized, and not repairs or maintenance of your home, because with the simplified method for business use of the home, line 30 replaces the business part of your home's expenses); zero if none
+- Expr: `{"op":"input","source":"Incidental repairs and maintenance that do not add to the property's value or appreciably prolong its life (not your own labor, not restorations or replacements, which are capitalized, and not repairs or maintenance of your home, because with the simplified method for business use of the home, line 30 replaces the business part of your home's expenses); zero if none"}`
+- Cite: [i1040sc] p. 8, Line 21; p. 14, Line 30, "Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home" (2025; sha256 b5536db9)
 
 ## 22 — `sc.line22`
 
@@ -348,9 +348,9 @@
 ## 25 — `sc.line25`
 
 - **IRS:** Utilities
-- **Encoded (NonNegDollars):** Input — Utility expenses of the business only (for a home phone, not the base rate of the first line into your residence); zero if none
-- Expr: `{"op":"input","source":"Utility expenses of the business only (for a home phone, not the base rate of the first line into your residence); zero if none"}`
-- Cite: [i1040sc] p. 10, Line 25 (2025; sha256 b5536db9)
+- **Encoded (NonNegDollars):** Input — Utility expenses of the business only (for a home phone, not the base rate of the first line into your residence; not utilities of your home, such as electricity, gas, water or heating, because with the simplified method for business use of the home, line 30 replaces the business part of your home's expenses); zero if none
+- Expr: `{"op":"input","source":"Utility expenses of the business only (for a home phone, not the base rate of the first line into your residence; not utilities of your home, such as electricity, gas, water or heating, because with the simplified method for business use of the home, line 30 replaces the business part of your home's expenses); zero if none"}`
+- Cite: [i1040sc] p. 10, Line 25; p. 14, Line 30, "Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home" (2025; sha256 b5536db9)
 
 ## 26 — `sc.line26`
 

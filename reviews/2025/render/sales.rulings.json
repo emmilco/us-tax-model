@@ -155,6 +155,16 @@
   {
    "printed": "(g)",
    "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "The code B correction applies only when the box is A or D, so a box G or J digital-asset sale with an incorrect reported basis gets $0 in column (g) and no refusal. The IRS text says \"If this transaction is reported on Part I with box A or box G checked ... or Part II with box D or box J checked ... enter the basis shown on Form 1099-B or Form 1099-DA ... in column (e) ... Correct the error by entering an adjustment in column (g)\"; within boxes A and D, reported minus correct basis plus the positive wash-sale loss matches the worksheet and the code W instructions.",
+   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\". The code B part is gated on boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G). Project stands on the English.",
+   "context": "6e2eafc2eb527c8417a81e98fa9099f4363a8a25a019e960be5391fef042ccde",
+   "date": "2026-11-10",
+   "run": "1f3b62977e3861dbe8a457ad8ddfab7d82d2f6d017a44c48aa5498049e6fd68c",
+   "subject_key": "b4427a05aac8a3df5623a994f823ea55d16e873b6b489e916f516af101e9a221"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
    "model": "The code B correction is gated on \"Basis reported to IRS\", which covers only boxes A and D. A box G or J transaction with an incorrect reported basis therefore gets no column (g) basis correction, although the instructions say \"Correct the error by entering an adjustment in column (g)\" for box A, G, D or J. Separately, choosing \"other\" for any additional code (such as E) drops the B and W amounts and those codes' adjustments, with no refusal shown, although the instructions say \"enter the net adjustment in column (g)\" when more than one code applies.",
    "ruling": "Ruling: scope; same restatement and objection as the earlier rulings. i8949 p. 8, code B; boxes G and J are refused with every digital-asset box at sales.one (sales.digital), and codes other than B and W, code E included, are refused at sales.one on sales.bad_code (\"Only applicable B and W adjustments are supported\"); the model's \"never refuses\" is wrong. Project stands.",
    "context": "76f87c6e2178c938069c8964ebe4fe5219a87619cab9d6aca931412682e4eef5",

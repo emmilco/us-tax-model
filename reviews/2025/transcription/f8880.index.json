@@ -4,9 +4,17 @@
  "family": "claude",
  "base": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
+  "printed lines compared": "22",
+  "agree / disagree / missing": "14 / 8 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
+  {
+   "key": "f8880.joint",
+   "record": "e52e761ac2a265b933b3a37a55b6ab06782dde59963a1376b345ff817b49f553",
+   "status": "AGREE",
+   "subject_key": "dfed4713333202b5656d33530e08f01923cd7ce6e39da54cfc8b56e35d72db1a"
+  },
   {
    "key": "1(a)",
    "record": "bf6cc01e88a8b0bf31297a83e096e952e1795ce20a34ca2021bee74368faade5",
@@ -143,6 +151,7 @@
   }
  ],
  "subjects": {
+  "f8880.joint": "4571ccaf443ac24b61d18e6f6ca671b5e4e16f7f8647b932a031ea2619e89715",
   "1(a)": "e3096f680949a505d98256a20a628dd99a5188488259de93ec93db75975174af",
   "1(b)": "2c52638460b2945cf8e5baff4f2af67fea576879edde3baa2cfc7683a8642ab8",
   "2(a)": "186a88ee44ea0ec84966bd783cbd2fd14c3a8a3b25ae78229af6997f7d9035f6",
@@ -167,6 +176,7 @@
  },
  "__rest__": "4c452a711996c1afeef45b363d189b0fa2199e4efddcdc3d2682895c3b614e85",
  "foreign": {
+  "f8880.joint": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "12": "247c260e64510a4f48dd1cac83672ba6af737c8a2404b458030622d7c2e76506"
  }
 }

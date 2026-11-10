@@ -1507,6 +1507,24 @@
     }
    ],
    "bugs": []
+  },
+  "unruled:gate:clcw26.final_ask": {
+   "reason": "No defect: a joint return is left out of the final-return question on purpose and keeps clcw26.decedent_notice; the question is asked only on a return with one filer.",
+   "prompt_sha": "fc7ea38541fdcb469fda492d9bfb2d695512c28c6a24499529c2d22ff2c738e6",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "p550 p. 103, Decedent's capital loss. As the ruling of the earlier review of this gate (prompt 90fbaa86): on a joint return a carryover to 2026 is figured for both spouses and only the deceased spouse's part stops; clcw26.decedent_notice (shown on a joint return when line 8 or line 13 is above zero) says that part does not carry over to 2026 and can be deducted only on this return. The split of a joint carryover between the spouses is not modeled, so lines 8 and 13 stay shown with that notice; the final-return question applies only where the whole carryover is the decedent's (a return other than a joint return), as BUG-0477's fix (BUG-0485) records. The screen prompt lists only the gate's lines, not the notice."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "p550 p. 103. The question is reached only through clcw26.not_joint, so it is asked only on a return with one filer (single, head of household, separate or qualifying surviving spouse), where \"a filer who died in 2025\" can only be that filer; a deceased spouse on a joint return is the decedent_notice case above."
+    }
+   ]
   }
  },
  "baseline": {

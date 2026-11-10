@@ -1143,9 +1143,33 @@
    "printed": "5b",
    "project_expr_sha256": "c8d25922d0b7356799dfd952abdf6f974ce353d91b20d974b1c99a2d1f02d84a",
    "second_expr_sha256": "bf567af240dab92afabd67a4423225103e4138ec927aa06e8033d2b0215ed37a",
-   "ruling": "Ruling: representation; the candidate adds a shown_when that hides the line where the form says to skip it (f5695 p. 1, line 5b, \"If you checked the “Yes” box, enter the qualified battery technology costs\"); the project shows the line without one, and on every record its shown amount is $0 where the candidate hides the line, which the v3 shown_when note and the README's skipped-line rule accept (zero entered where a later line reads it as blank). Values otherwise identical. Triage executable-triage-v2 (`../triage/f5695.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 1,638 partial records): 3,703 of 3,703 agree.",
-   "context": "f58ac660aaccf9439e25a94acde898f322c90fa998a9da34b7ab7b8381a8e169",
-   "subject_key": "5a5fe7345407488a88ca2b122c2cd05dd5b0269af5d8ee8e89ded62489cf60d6"
+   "ruling": "Ruling: model error; i5695 p. 4, Lines 5a and 5b: \"If you check the “No” box, you can't include any battery storage technology costs on line 5b.\" The reply's value is the project's (the battery cost when 5a is Yes, zero otherwise) and its shown_when on 5a is the representation the earlier rulings accepted; but it attaches the business-use and construction screens (f5695.business_use, f5695.construction_later) to line 5b itself, so it needs them, or refuses, on returns where 5a is No, where the interview does not ask them; the project refuses those cases at line 6a, where Part I costs are summed. executable-triage-v2 (pass 4f7f20ef6cb8): 3,798 of 3,891 agree; 67 candidate-unknown and 26 candidate-refuses, the completed-return ones all with project $0.00 (part1_any or 5a No). Project stands.",
+   "context": "e8ff0643bb36345099a5cfa4694881641b939aab22ac62d598b76d877d87bc5c",
+   "date": "2026-11-10",
+   "run": "0acc482fc8b91862d7bc174b7be61fea116665b94d5505714383c185c23ddaa9",
+   "subject_key": "0971b8ed3b2b86208fe64a60d9c016643af71b1eb8d14ed6c5555d8b26acc507",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.clcw.1.deepseek@f5695",
+     "fixture:classm.carloan.1@f5695",
+     "fixture:classm.clcw.1@f5695",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@f5695",
+     "fixture:stage16.cleanup.refuse.f1040_line16@f5695",
+     "fixture:stage16.cleanup.refuse.f2441_line24@f5695",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part1@f5695",
+     "fixture:stage15.refuse.f5695.construction_later@f5695",
+     "fixture:stage15.refuse.f5695.business_use_part2@f5695",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@f5695",
+     "partial:stage14.asset.hy_5yr-f5695.business_use@f5695"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "6a",
@@ -1191,11 +1215,11 @@
    "printed": "f5695.claiming_part1",
    "project_expr_sha256": "0357de3a8b29e7ba0b3a8e3be80685a305a15ff27d502539ab5c4a0156e63903",
    "second_expr_sha256": "cf4e8e3eb764ae555f82360e89c17c48b4b89b1cfeaae8ef217e8f783d0f0130",
-   "ruling": "Ruling: model error; i1040s8812 p. 3 of the archived text (cited p. 4 in the project), Credit Limit Worksheet B: \"Complete Credit Limit Worksheet B only if you meet all of the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I.\" The candidate's test (line 13 above zero) is the project's on every return with Part I, but it figures line 13 on every return, so it needs the Part I screens and cost answers of filers who have no Part I, which the interview asks only with Part I (the project tests f5695.part1_any first). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 3d43c227c169, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 1,552 partial records from 40 bases; 3,754 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 3,161 of 3,754 agree; 530 candidate-unknown, 32 candidate-refuses, 29 project-unknown, 2 value; on completed returns 255 candidate-unknown, every one with project No (f5695.business_use 132, f5695.construction_later 17, the Part I cost answers on partial records withholding them: lines 1, 2, 3, 4, 5a, 7a and 12 15 each, battery cost 1), and 2 candidate-refuses (generated 113 and 493: part1_any No, f5695.line7a Yes supplied, which the interview does not ask without Part I; the candidate refuses at its fuel-cell gate). The 2 values are refused returns with part1_any No and Part I amounts supplied that the interview never asks (classm.dcprov.1, mutation.t2.qss_s1a_car: project No, candidate Yes). Gate wave (BUG-0471): the rewritten choose (part1_any, then line13_positive, else household.no) has the HEAD `all`'s truth table; claiming_part1 and every Form 5695 line evaluate the same in HEAD and the working tree on all completed fixtures and the 500 generated returns (e.g. classm.sd.2 No in both). Same ruling as the refresh round. Project stands.",
-   "context": "cc7432f0c53b91e50cdc34f46b6d0071113a1ce514716a2dc59a504a11309364",
-   "date": "2026-11-09",
-   "run": "2bb90fedb0cf1a409baffdf6372690404292fdaa4648ccfddab1ea409814aeb9",
-   "subject_key": "50a356d5b2a163ed7dfc0f81fb2de2bb27c05824880b5691148fc400e869e625",
+   "ruling": "Ruling: model error; as the earlier rulings on this line. i1040s8812, Credit Limit Worksheet B is completed only if \"You are claiming one or more of the following credits ... c. Residential clean energy credit, Form 5695, Part I.\" The reply's test (line 13 above zero) is the project's on every return with Part I, but it figures line 13 on every return, so it needs the Part I screens (f5695.business_use, f5695.construction_later) of filers who have no Part I costs, which the interview asks only after f5695.part1_any is Yes (the project tests part1_any first, BUG-0471). The rewording of part1_any (BUG-0478: a cost counts when the installation is completed) changes no value. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 4f7f20ef6cb8; 1,744 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,247 of 3,891 agree; 530 candidate-unknown, 35 candidate-refuses, 31 project-unknown, 48 value; completed-return witnesses: candidate-unknown on class M returns with no Part I (classm.f4952.1.deepseek, classm.s3.3.deepseek; project false) and one candidate refusal at its construction gate (a generated return with part1_any No); the value witnesses are refused returns (classm.dcprov.1, mutation.t2.qss_s1a_car). Project stands.",
+   "context": "e8ff0643bb36345099a5cfa4694881641b939aab22ac62d598b76d877d87bc5c",
+   "date": "2026-11-10",
+   "run": "0acc482fc8b91862d7bc174b7be61fea116665b94d5505714383c185c23ddaa9",
+   "subject_key": "2af518334801e571f0e82c45fda46dbf9e80bbff33b14098a49eb83f5561aea4",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1214,17 +1238,21 @@
      "fixture:classm.clcw.1.deepseek@f5695",
      "fixture:classm.carloan.1@f5695",
      "fixture:classm.dcprov.1@f5695",
-     "fixture:classm.s179.1@f5695",
      "fixture:classm.clcw.1@f5695",
      "fixture:stage15.refuse.f5695.business_use_part2@f5695",
      "fixture:mutation.t2.qss_s1a_car@f5695",
      "fixture:mutation.t2.s3.one_employer@f5695",
+     "generated:20261026.1@f5695",
      "partial:stage14.asset.hy_5yr-f5695.part1_any@f5695",
      "partial:stage14.asset.bonus_100-f5695.part1_any@f5695",
      "partial:stage14.asset.prior_7yr-f5695.part1_any@f5695",
      "partial:stage14.asset.qip-f5695.part1_any@f5695",
      "partial:stage14.asset.done-f5695.part1_any@f5695",
-     "partial:stage14.asset.refuse_class-f5695.part1_any@f5695"
+     "partial:stage14.asset.refuse_class-f5695.part1_any@f5695",
+     "partial:classm.dcprov.1-f5695.part2_any@f5695",
+     "partial:classm.dcprov.1-f5695.battery_cost@f5695",
+     "partial:classm.dcprov.1-f5695.line17a@f5695",
+     "partial:classm.dcprov.1-f5695.line17b@f5695"
     ],
     "policy": "executable-triage-v2"
    }

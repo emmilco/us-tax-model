@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 5615 |
-| Killed by the checker | 1352 |
-| Killed by fixtures | 3949 (49 only by class M cases) |
+| Mutants | 5657 |
+| Killed by the checker | 1370 |
+| Killed by fixtures | 3973 (48 only by class M cases) |
 | Surviving | 314 (306 provably equivalent on every input; 8 equivalent on answered inputs only) |
 | Mutation score (raw) | 94.4% |
-| Mutation score (mutants provably equivalent on every input excluded) | 99.8% |
+| Mutation score (mutants provably equivalent on every input excluded) | 99.9% |
 | Mutation score (also excluding those equivalent on answered inputs only) | 100.0% |
 
 ## Killed only by class M cases
@@ -60,7 +60,6 @@ keep it (or a stage fixture with the same facts and source-predicted values) amo
 | operand.scveh.scveh.line19_2025.line19_hy.then0 | replace an operand | scveh.scveh.line19_2025 | classm.s8812.1.deepseek |
 | operand.scveh.scveh.macrs_heavy.line19.then0 | replace an operand | scveh.scveh.macrs_heavy | classm.se.3 |
 | operand.scveh.scveh.q4_basis.zero.then1 | replace an operand | scveh.scveh.q4_basis | classm.scveh.3 |
-| operand.scveh.scveh.cost179_o.zero.then1 | replace an operand | scveh.scveh.cost179_o | classm.s179.4 |
 | operand.sdtw.sdtw.line5.line3 | replace an operand | sdtw.sdtw.line5 | classm.f1040.2.deepseek |
 | minmax.sdtw.sdtw.line7 | swap smaller_of/larger_of | sdtw.sdtw.line7 | classm.f1040.2.deepseek |
 | operand.sdtw.sdtw.line13.line10 | replace an operand | sdtw.sdtw.line13 | classm.f1040.2.deepseek |

@@ -255,6 +255,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "clcw26.final_return",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "dcprov.household",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -2156,6 +2161,11 @@
     },
     {
       "input": "s179.line10",
+      "value": 0,
+      "reason": "Closed: no amount unless the scenario states one."
+    },
+    {
+      "input": "s179.wc_interest",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
     },

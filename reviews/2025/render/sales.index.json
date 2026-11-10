@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "29aed0840712a4ca34448653ed8da8b97746531a1f715f6421ad92d801e2dd67",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-07); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -16,10 +16,10 @@
   },
   {
    "key": "(g)",
-   "record": "dcedb2e4cef65e0b34664b6efe6dfbdd4dcae845537979339bc414d9ebc78ea8",
+   "record": "4581e03a9051ecd3347aa417d39c6dd477974c8f3091031ccfe167b30a07875b",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\". The code B part is gated on boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G); the sum of the code B correction and the code W wash-sale loss is the net adjustment the model accepts. Project stands on the English.",
-   "subject_key": "7b3def22eefbe8a12f80a76d287a401aafa12ca7633626510e59e620c3f2dafb"
+   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\". The code B part is gated on boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G). Project stands on the English.",
+   "subject_key": "96f6dc0be45b45f5439faecdd3fb77ea29fcaffee4a6b7607a9bdfcc6305fee4"
   },
   {
    "key": "(h)",
@@ -30,7 +30,7 @@
  ],
  "subjects": {
   "(e)": "35b4dd45acfb89238962c5f6cf689bca4b8ca5756c6cb69685d5cb4d95ea73f6",
-  "(g)": "7b0533993727aec41a91a4c468aef48839a1294bf2597f97afa329d9530fc7db",
+  "(g)": "d3c26f2db9f248ea04d8e1654f48f79cc778de9abf437a07a01ef943850c5b49",
   "(h)": "2478528525171d6f13225a6f4ef4eec3f9b7fa92f6869221628e8b2282792bf9"
  },
  "__rest__": "173d9d26e48e7de243e42df8a66476933ccaf441a5d2d8dd3a5d3a9677bc158c"

@@ -1,0 +1,60 @@
+{
+ "form": "clcw26",
+ "reviews": {
+  "gate:clcw26.final_ask": {
+   "condition": "clcw26.final_ask",
+   "lines": [
+    "clcw26.final_return_if_carryover"
+   ],
+   "inputs": [
+    "clcw26.final_return"
+   ],
+   "verdict": "FALSE_NO",
+   "findings": [
+    {
+     "kind": "FALSE_NO",
+     "pattern": "3",
+     "who": "A married couple's spouse died in 2025. The surviving spouse files a 2025 joint return, which is the decedent's final return. The deceased spouse had capital losses, and the joint return shows a carryover to 2026.",
+     "why_no": "The gate's computed helper 'Not a joint return' is false for any joint return. So the condition 'A carryover to 2026 is figured on a return other than a joint return' is false, the question is never asked, and the line is set to false. A joint return filed with a surviving spouse is still the final income tax return filed for the decedent.",
+     "line": "clcw26.final_return_if_carryover. The decedent spouse's share of the carryover is wrongly carried to 2026 instead of being cut off.",
+     "irs_text": "p550 p. 103, Decedent's capital loss: \"can be deducted only on the final income tax return filed for the decedent ... The decedent's estate cannot deduct any of the loss or carry it over to following years\"; same page, Joint and separate returns: \"any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss\"",
+     "severity": "high",
+     "fix": "Remove the 'Not a joint return' condition from the gate. Ask whenever a carryover to 2026 is figured: 'Did you, or your spouse if filing jointly, die in 2025, making this the final return for that person?' On a joint return, then ask for the deceased spouse's share of the losses. Carry over only the surviving spouse's share."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "8",
+     "who": "An executor or personal representative prepares and signs the 2025 return of a single filer who died in 2025 with a capital loss carryover.",
+     "why_no": "The question says 'a filer who died in 2025'. The representative may read 'filer' as the person filing, which is themselves, and they are alive. The parenthetical '(a return filed for the decedent)' reduces but does not remove this reading.",
+     "line": "clcw26.final_return_if_carryover",
+     "irs_text": "p550 p. 103, Decedent's capital loss: \"can be deducted only on the final income tax return filed for the decedent\"",
+     "severity": "low",
+     "fix": "Reword: 'Did the person this return is for (the taxpayer, not a representative filing on their behalf) die in 2025?'"
+    }
+   ],
+   "prompt_sha": "2a4bb49a7cc403ab4479551b5f3b3e1272a92b23bce828ef69d3517b88effd47",
+   "subject_sha": "d7881adecd94573cefc55bdcb231b9898e633c80b624142f5173b53ea1b63575",
+   "used": [
+    {
+     "doc": "p550",
+     "revision": "2025 returns; printed date 2026-03-05",
+     "text_sha256": "e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26",
+     "pages": [
+      103
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 103, Decedent's capital loss, \"A capital loss sustained by a decedent during the decedent’s last tax year (or carried over to that year from an earlier year) can be deducted only on the final income tax return filed for the decedent\"",
+      "p. 103, Decedent's capital loss, \"can be deducted only on the final income tax return filed for the decedent\"",
+      "p. 103, Decedent's capital loss, \"can be deducted only on the final income tax return filed for the decedent\" and \"The decedent's estate cannot deduct any of the loss or carry it over to following years\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.059332,
+   "date": "2026-11-10"
+  }
+ }
+}

@@ -9,6 +9,16 @@
    "ruling": "Ruling: interface gap; the model says the pages given never define Form 1040 line 15, so they do not confirm it equals line 11b minus line 14 without a floor at zero. The worksheet is applied to this return with each 2024 figure read as the 2025 one (amb.2025.clcw_to_2026). Line 1 is held before the zero floor, as i1040sd p. 14, Line 21 requires (\"would be less than zero if you could enter a negative amount on that line\"), and as amb.2025.clcw_line1_signed does for the 2024 worksheet. The identity is printed on Form 1040 (2025) p. 2, line 15: \"Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income\". That page was not given to the reviewer (only i1040sd pp. 10 and 14 and p550 p. 103 were). The English states the source correctly; the UNCLEAR is a coverage gap of the review. Same ruling as the first Stage 20 round.",
    "context": "0473398ef62599292dfebac8afd43c064b8c4dbb1e07a9a10839f7c2c6a3c1e0",
    "subject_key": "59a0a8c2bac6f500e99d6dc324336809c9d4eb67809fd1b8abe36df165a70162"
+  },
+  {
+   "printed": "1",
+   "restated": "Subtract f1040 line 14 from f1040 line 11b.",
+   "model": "The worksheet says to enter the Form 1040 'line 15' amount and to show it in parentheses if it 'would have been a loss'. The restatement uses line 11b minus line 14 instead, and the text given never defines Form 1040 line 15 or says it equals line 11b minus line 14.",
+   "ruling": "Ruling: interface gap; same objection as the earlier rulings on this line. The identity is printed on Form 1040 (2025) p. 2, line 15: \"Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income\"; line 1 is held before the zero floor, as i1040sd p. 14, Line 21 requires (\"would be less than zero if you could enter a negative amount on that line\"). That page was not given to the reviewer. The English states the source correctly.",
+   "context": "cacbdc57a2fec52531a396a93179abee71134e0ba5964c55569069150c2022c7",
+   "date": "2026-11-10",
+   "run": "1eff4d05ab063e970af28ba6dd72698a6082a8778c5775f1e18f4763f3b0d2a2",
+   "subject_key": "639223c0ab93eea36d03e6636348f38a5d4da5e95c235fe7d08f91c6bec0eaa4"
   }
  ]
 }

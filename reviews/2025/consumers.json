@@ -953,6 +953,12 @@
    "question_phrase": "Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico",
    "source_phrase": "Line 12, \"Enter on line 12 the total value of your contributions of property other than by cash or check\"",
    "reason": "sa.line12 refuses on this Schedule A-wide screen as it did before the gate; p. 10 defines nothing the screen asks."
+  },
+  "consumer:f5695.part1_any@i1040s8812:p4": {
+   "verdict": "same",
+   "question_phrase": "Did you have 2025 costs for solar electric, solar water heating, small wind energy, geothermal heat pump, battery storage or fuel cell property for a home in the United States, or do you have a residential clean energy credit carryforward from line 16 of your 2024 Form 5695? A cost of an item counts in 2025 when its original installation is completed in 2025",
+   "source_phrase": "You are claiming one or more of the following credits ... c. Residential clean energy credit, Form 5695, Part I",
+   "reason": "Claiming the residential clean energy credit is having 2025 Part I costs (counted when installation is completed, i5695 p. 1, Costs) or a carryforward, as the question asks; f5695.claiming_part1 then also requires line 13 above zero."
   }
  },
  "baseline": {
@@ -1075,7 +1081,6 @@
   "consumer:f2441.student_disabled@i2441:p5": "8353feb14a0cf833",
   "consumer:f4952.carryover@f4952:p3": "21c998a02a237e4e",
   "consumer:f5695.joint_occupancy@i5695:p7": "ab226f3fcb8aaae3",
-  "consumer:f5695.part1_any@i1040s8812:p4": "6f916e366030af07",
   "consumer:f5695.part2_any@i5695:p7": "b7ae4aa4a4832688",
   "consumer:f5695.qmid_ac@i5695:p5": "fdd13dba4083b8a4",
   "consumer:f5695.qmid_doors@i5695:p5": "48660a1c477e0fe3",

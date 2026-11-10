@@ -957,9 +957,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals
       = detail
       cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
-  (helper) Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect
+  (helper) Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling expenses or option premiums the broker report does not reflect, code D for a bond with accrued market discount, or code O for a contingent payment debt instrument with the Ordinary box checked
       = B
-      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W; p. 6, Column (d)—Proceeds (Sales Price), "If there are any selling expenses or option premiums that aren't reflected on the form or statement you received (by an adjustment to either the proceeds or basis shown)" (2025; printed date 2026-01-20; f077991c)
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W; p. 6, Column (d)—Proceeds (Sales Price), "If there are any selling expenses or option premiums that aren't reflected on the form or statement you received (by an adjustment to either the proceeds or basis shown)"; p. 11, Worksheet for Accrued Market Discount Adjustment in Column (g), "reporting the sale or retirement of a market discount bond, enter code “D” for the transaction in column (f)"; p. 12, Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g), "reporting the sale of a taxable contingent payment debt instrument subject to the noncontingent bond method, enter code “O”"; p. 10, "with the Ordinary box in box 2 on Form 1099-B or box 6 on Form 1099-DA checked and the security is a taxable contingent payment debt instrument"; i1040sd p. 4, Market Discount Bonds, "a capital gain from the disposition of a market discount bond is treated as interest income to the extent of accrued market discount" (2025; printed date 2026-01-20; f077991c)
   (helper) Does any of the following apply to this sale?
 
       Does this sale involve:
