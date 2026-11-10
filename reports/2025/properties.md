@@ -4,20 +4,20 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 | Property | Statement | Cases | Applicable | Result |
 | --- | --- | --- | --- | --- |
-| sdtw_skip_rule | Computing lines 23–43 of the Schedule D Tax Worksheet unconditionally gives the same lines 45, 47 and Form 1040 line 16 as skipping them, and every skipped component of line 41 and line 45 is zero when computed anyway. | 400 | 147 | holds |
-| tax_bounds | Form 1040 line 16 is non-negative, at most the top rate (37/100) on taxable income plus one Tax Table band ($50), and at most the tax on all taxable income from the Tax Table or Tax Computation Worksheet. | 400 | 145 | holds |
-| deduction_choice | With no election to itemize and no spouse itemizing, Form 1040 line 16 under the project's standard-or-itemized choice is at most line 16 under either deduction forced. | 400 | 145 | holds |
-| edu_clw_nonneg | Form 8863 Credit Limit Worksheet line 6 (Form 1040 line 18 less Schedule 3 lines 1 and 2) is never negative. | 400 | 130 | holds |
-| refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 346 | holds |
-| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. A choose whose guard is unknown is a refusal exactly when every way it can still resolve is a refusal, whatever the order of its guards. | 400 | 318 | holds |
-| tax_monotone | Raising W-2 box 1 of the first employer, all else fixed, never lowers Form 1040 line 16. | 400 | 145 | holds |
-| tax_monotone_by_method | Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns. | 400 | 147 | holds |
-| screens_respected | No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206). | 400 | 93 | holds |
+| sdtw_skip_rule | Computing lines 23–43 of the Schedule D Tax Worksheet unconditionally gives the same lines 45, 47 and Form 1040 line 16 as skipping them, and every skipped component of line 41 and line 45 is zero when computed anyway. | 400 | 148 | holds |
+| tax_bounds | Form 1040 line 16 is non-negative, at most the top rate (37/100) on taxable income plus one Tax Table band ($50), and at most the tax on all taxable income from the Tax Table or Tax Computation Worksheet. | 400 | 148 | holds |
+| deduction_choice | With no election to itemize and no spouse itemizing, Form 1040 line 16 under the project's standard-or-itemized choice is at most line 16 under either deduction forced. | 400 | 148 | holds |
+| edu_clw_nonneg | Form 8863 Credit Limit Worksheet line 6 (Form 1040 line 18 less Schedule 3 lines 1 and 2) is never negative. | 400 | 133 | holds |
+| refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 343 | holds |
+| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. A choose whose guard is unknown is a refusal exactly when every way it can still resolve is a refusal, whatever the order of its guards. | 400 | 321 | holds |
+| tax_monotone | Raising W-2 box 1 of the first employer, all else fixed, never lowers Form 1040 line 16. | 400 | 148 | holds |
+| tax_monotone_by_method | Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns. | 400 | 148 | holds |
+| screens_respected | No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206). | 400 | 92 | holds |
 
 ## sdtw_skip_rule
 
 - Rewritten lines (skip rule removed in the variant): 21 — 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43.
-- Cases where Form 1040 line 16 came from this worksheet: 145. Cases with lines 1 and 16 equal (lines 23–43 skipped): 89; lines 1 and 32 equal with lines 1 and 16 different (lines 33–43 skipped): 7; Schedule D line 19 zero after line 32 (lines 35–40 skipped): 47; lines 41–43 skipped after line 32: 3.
+- Cases where Form 1040 line 16 came from this worksheet: 148. Cases with lines 1 and 16 equal (lines 23–43 skipped): 96; lines 1 and 32 equal with lines 1 and 16 different (lines 33–43 skipped): 7; Schedule D line 19 zero after line 32 (lines 35–40 skipped): 39; lines 41–43 skipped after line 32: 5.
 
 ## deduction_choice
 
@@ -25,7 +25,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 318; cases with a line that has both a refused and an unknown operand (the order this property guards): 232; cases with a choose stopped at an unknown guard: 386, of which 11 have one refused on every way it can still resolve.
+- Cases with a refused operand somewhere: 321; cases with a line that has both a refused and an unknown operand (the order this property guards): 230; cases with a choose stopped at an unknown guard: 392, of which 18 have one refused on every way it can still resolve.
 
 ## tax_monotone
 
@@ -33,26 +33,33 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## tax_monotone_by_method
 
-- Cases compared: QDCG worksheet line 25 147, Schedule D Tax Worksheet line 47 147.
+- Cases compared: QDCG worksheet line 25 148, Schedule D Tax Worksheet line 47 148.
 
 ## screens_respected
 
-- Amounts found behind each screen answered No: f2441.benefits: f2441.line13, f2441.line14, f2441.paid_2026, f2441.plan_max, person[].w2[].box10; f2441.care: dependent[].dc_paid; f5695.line17a+f5695.line17b+f5695.line17c: f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b; f5695.line21a+f5695.line21b: f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f; f5695.line25a: f5695.line25c; f5695.line26a: f5695.line26b; f5695.line5a: f5695.battery_cost; f5695.part1_any: f5695.battery_cost, f5695.line1, f5695.line12, f5695.line2, f5695.line3, f5695.line4; f5695.part2_any: f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f; person[].retirement[].annuity: person[].retirement[].cost, person[].retirement[].recovered; person[].retirement[].used_last_year: person[].retirement[].last_line4; person[].sc[].hi_uses: person[].sc[].f7206_line1; person[].sc[].scveh[].owned: person[].sc[].scveh[].cost, person[].sc[].scveh[].prior_179; person[].w2[].box12_any: person[].w2[].box12_aa, person[].w2[].box12_bb, person[].w2[].box12_d, person[].w2[].box12_e, person[].w2[].box12_ee, person[].w2[].box12_f, person[].w2[].box12_g, person[].w2[].box12_h, person[].w2[].box12_s.
+- Amounts found behind each screen answered No: f2441.benefits: f2441.line13, f2441.line14, f2441.paid_2026, f2441.plan_max, person[].w2[].box10; f2441.care: dependent[].dc_paid; f5695.line17a+f5695.line17b+f5695.line17c: f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b; f5695.line21a+f5695.line21b: f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f; f5695.line25a: f5695.line25c; f5695.line26a: f5695.line26b; f5695.line5a: f5695.battery_cost; f5695.part1_any: f5695.battery_cost, f5695.line1, f5695.line12, f5695.line2, f5695.line3, f5695.line4; f5695.part2_any: f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f; person[].retirement[].annuity: person[].retirement[].cost, person[].retirement[].recovered; person[].retirement[].used_last_year: person[].retirement[].last_line4; person[].sc[].hi_uses: person[].sc[].f7206_line1; person[].sc[].scveh[].owned: person[].sc[].scveh[].cost, person[].sc[].scveh[].s179_elect; person[].w2[].box12_any: person[].w2[].box12_aa, person[].w2[].box12_bb, person[].w2[].box12_d, person[].w2[].box12_e, person[].w2[].box12_ee, person[].w2[].box12_f, person[].w2[].box12_g, person[].w2[].box12_h, person[].w2[].box12_s.
 
 ## Branch coverage of the generated corpus
 
-3160 of 3574 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+3192 of 3620 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
+- asset.qip_early:true
 - asset.screen:true
+- asset.screened:true
 - asset.pct_bad:true
 - asset.listed_low:true
 - asset.not179:true
 - asset.s179_bad:true
 - asset.bonus_same:false
 - asset.bonus_mixed:true
+- asset.ub_prior_a:floor
+- asset.is_section179:false
+- asset.cost179_real#1
+- carloan.mixed_qualifying:floor
 - clcw.spouse_screen:true
 - clcw.bad:true
+- clcw26.no:true
 - dcprov.household:true
 - dcprov.related:true
 - dcprov.see_statement:true
@@ -93,11 +100,14 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dependent.edu_aoc26#1
 - dependent.edu_tin_issued:false
 - dependent.edu_llc_tin_refused:true
+- div.bad_special:true
 - div.no:true
 - eic.died_2025:true
 - eic.step1_foreign:false
 - eic.step1_resident:false
 - eic.step2_other:false
+- eic.step3_married:false
+- eic.step3_not_joint#1
 - eic.no:true
 - eic.wsb_line5_stop:true
 - eic.clergy:true
@@ -105,6 +115,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f1040.line27b:true
 - f1040.line28_box:true
 - f1095a.void:true
+- f2441.spouse_died_gate:true
 - f2441.nondependent_gate:true
 - f2441.provider_ineligible:true
 - f2441.many_providers:true
@@ -117,32 +128,33 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f2441.line2_box:true
 - f2441.two_or_more:true
 - f2441.limit#0
-- f2441.line3_expenses:right
 - f2441.attrib_gate:true
+- f2441.line6:positive
 - f2441.line11:right
 - f2441.line14_bad:true
-- f2441.employer_care_gate:true
+- f2441.line20:positive
 - f2441.line21:left
+- f2441.line24_20_21:right
 - f2441.line24:right
 - f2441.line13_earned:true
 - f2441.line25:positive
 - f2441.line29:floor
+- f2441.line30:positive
 - f2441.line31:left
 - f4952.no:true
 - f5329.l3_s:positive
-- f5329.l49_base:right
 - f5695.no:true
-- f5695.line15:right
-- f5695.line16:positive
+- f5695.ctc#0
 - f5695.ins_capped:right
 - f5695.doors_no_qmid:true
+- f5695.windows_no_qmid:true
 - f5695.ac_no_qmid:true
 - f5695.wh_no_qmid:true
-- f5695.furnace_capped:right
 - f5695.enabling_no_qmid:true
 - f5695.enabling_capped:right
 - f5695.separate_homes_joint:true
 - f5695.eehi_credit:right
+- f5695.line32b:true
 - f8606.files:true
 - f8606.dist:true
 - f8863.ban:true
@@ -251,7 +263,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - ira.less_gate#0
 - ira.less_gate:true
 - oi8z.additional_tax:true
-- otjob.figured#5
+- otjob.special_rule:true
 - person.itin_applied:true
 - person.under16:true
 - person.hsa_repeated:true
@@ -286,27 +298,23 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.edu_over:true
 - person.edu_over_if_adj:true
 - person.edu_over_refused:true
-- person.edu_line25:true
 - person.edu_line26:true
 - person.edu_no:true
-- person.edu_aoc25#1
 - person.edu_aoc26#1
 - person.edu_llc_tin_refused:true
 - person.edu_kid:true
 - person.x_cap09:floor
-- person.x_c05#0
-- person.x_has05:true
-- person.x_c05_min:right
-- person.x_has09:true
 - person.x_c09_min:right
-- person.x_c09#0
 - person.x_has19:true
 - person.x_c19_min:right
 - person.x_c19#0
 - person.x_c22:right
+- person.x_c23:right
 - person.x_two23:true
+- person.x_other_exc:positive
 - person.x_limit_binds:true
 - person.x_other:true
+- qdcg.line25:right
 - refund.has:true
 - refund.box8:true
 - refund.not_2024:true
@@ -355,15 +363,13 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - retirement.code_screen:true
 - retirement.screen_refused:true
 - retirement.wrong_kind:true
-- retirement.exc_capped:right
-- retirement.is_e05:true
-- retirement.l2_e05#0
-- retirement.is_e09:true
-- retirement.l2_e09#0
-- retirement.is_e19:true
-- retirement.l2_e19#0
 - retirement.is_e22:true
 - retirement.l2_e22#0
+- retirement.is_e23:true
+- retirement.l2_e23#0
+- retirement.is_s:true
+- retirement.l1_s#0
+- retirement.l2_s#0
 - s1.line1#1
 - s1.ebl:true
 - s1.sc_1a:true
@@ -393,20 +399,22 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s179.over_limit:true
 - s179.line9:left
 - s179.show10:false
+- s179.no:true
+- s179.income_below5:false
+- s179.wc_more:true
+- s179.wc_over:true
 - s179.line11:right
 - s1a.line4c_one:right
-- s1a.line18_over:true
-- s1a.line18_pos:positive
-- s1a.line21_amount#1
-- s1a.line27_over:true
-- s1a.line27_pos:positive
-- s1a.line30_amount#1
+- s1a.line21_figured:positive
+- s1a.died_before_65:true
+- s1a.senior_decedent:true
 - s2.e05_over:true
-- s2.line8_box:true
+- s8812.clw_a4#0
 - s8812.no:true
 - s8812.show_iib:true
 - s8812.few_children:false
 - s8812.line27#1
+- s8812.clwb_complete:true
 - s8812.show_clwb:true
 - s8812.clwb_three:true
 - s8812.clwb_to7:true
@@ -415,6 +423,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - sa.no:true
 - sa.line16_gambling:right
 - sa.line16#0
+- sa.standard#0
 - sales.special:true
 - sales.no:true
 - sb.form5471:true
@@ -444,10 +453,15 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - scveh.screen:true
 - scveh.screened:true
 - scveh.suv:true
+- scveh.s179_bad:true
 - scveh.bonus_same:false
 - scveh.bonus_mixed:true
+- scveh.s179_line10:right
+- scveh.line11:floor
+- scveh.d6:left
 - scveh.too_old:true
 - sd.screen:true
+- sdtw.line47:right
 - tipjob.col_d:right
 - w2.box10_bad:true
 - w2.box12_userra:true

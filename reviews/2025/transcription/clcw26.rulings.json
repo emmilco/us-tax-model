@@ -1,0 +1,58 @@
+{
+ "kind": "transcription",
+ "form": "clcw26",
+ "rulings": [
+  {
+   "printed": "13",
+   "project_expr_sha256": "3584eb2ada5b792651ce24fbd9cfa66438abcfcd82e4278a90b154fb14cc95bf",
+   "second_expr_sha256": "a53f6c92cadb7ed71efad823fd7fa8db280e8110b8d15042fc08381081f8fc07",
+   "ruling": "Ruling: model error; as line 8 of this pass. p550 p. 103, Decedent's capital loss, \"The decedent's estate cannot deduct any of the loss or carry it over to following years\": the rule removes the decedent's loss, so a surviving spouse's loss on a joint return still carries to 2026; the reply zeroes line 13 on any final return and needs clcw26.final_return on joint returns, where the project asks it not and gives clcw26.decedent_notice. On a return other than a joint return both agree (the project hides line 13 on a final return, shown_when clcw26.show_lt_carry). executable-triage-v2 (pass f224038388c3): 2,255 of 2,262 agree; on completed returns 5 candidate-unknown, all joint returns (classm.clcw26.2.deepseek, classm.s2.3.deepseek, classm.s2.3, classm.clcw26.4, classm.f8962.3); 2 more on refused returns. Project stands.",
+   "context": "89bf74935ccabab4f9573122ef78d139293144cedfc02bb6d2ae300462e6cafe",
+   "date": "2026-11-10",
+   "run": "f26e74941bb13ea5188869d6438ccb3d884f2320fe758eb5aa2b8727e06a96d2",
+   "subject_key": "8410e28e80f39a79e88ca7a2725a499c069aae5b8362f4bdb287a463a706d401",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.clcw26.2.deepseek@clcw26",
+     "fixture:classm.s2.3.deepseek@clcw26",
+     "fixture:classm.f8960.1@clcw26",
+     "fixture:classm.s2.3@clcw26",
+     "fixture:classm.tcw.11@clcw26",
+     "fixture:classm.clcw26.4@clcw26"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "0bef172ff450260f3590bbcdbcbb3a5db42d5dee1da765710038ddfc3193233c",
+   "second_expr_sha256": "3636467c36cba76bf0eccc2dda74a072a13661c4da6c19768e0a11f91abcea04",
+   "ruling": "Ruling: model error; p550 p. 103, Decedent's capital loss: \"A capital loss sustained by a decedent during the decedent’s last tax year ... can be deducted only on the final income tax return filed for the decedent\" and \"The decedent's estate cannot deduct any of the loss or carry it over to following years.\" The rule removes the decedent's loss, not a surviving spouse's: on a joint return the survivor's own loss still carries to 2026. The reply zeroes line 8 on any final return, joint returns included, and so needs clcw26.final_return on joint returns, where the project does not ask it (clcw26.final_ask: a carryover is figured on a return other than a joint return) and gives clcw26.decedent_notice instead. On a return other than a joint return both sides agree: the project hides line 8 on a final return (shown_when clcw26.show_st_carry), the reply enters zero. executable-triage-v2 (`.transcription/triage/2025/clcw26.json`, pass f224038388c3; 1,744 fixtures, 500 generated returns seed 20261026, 11 partial records): 2,255 of 2,262 agree; on completed returns 2 candidate-unknown, both joint returns (classm.clcw26.2.deepseek, classm.asset.1: final_return not asked, project $10,701.00 and $22,479.00); 4 candidate-unknown and 1 project-refuses on refused returns. Project stands.",
+   "context": "89bf74935ccabab4f9573122ef78d139293144cedfc02bb6d2ae300462e6cafe",
+   "date": "2026-11-10",
+   "run": "f26e74941bb13ea5188869d6438ccb3d884f2320fe758eb5aa2b8727e06a96d2",
+   "subject_key": "ced730279b7eff2d1d6da9c8002b94d1792826e7c9ce7daae11dbc2582223a3b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.clcw26.2.deepseek@clcw26",
+     "fixture:classm.asset.1@clcw26",
+     "fixture:classm.f8960.1@clcw26",
+     "fixture:classm.otjob.1@clcw26",
+     "fixture:classm.tcw.11@clcw26",
+     "fixture:classm.clcw26.1@clcw26",
+     "fixture:classm.f8863.2@clcw26"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

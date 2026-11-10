@@ -6515,3 +6515,105 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Fix sketch:** always list a collection, with its fields, that the scoped lines (or the helpers in their reach) read through `sum_over`, whatever the text names; add a self-test with the sd column lines. Then rerun the line-scoped transcription of sd lines 1a to 10 (paid, owner's call).
 - **Disposition:** open. The 24 sd sections of this pass are ruled interface gap citing this entry; the project's lines stand (no HEAD-to-current difference on any sd line over 1,702 fixtures and 500 generated returns).
 - **Tags:** review-tool; line-scoped; catalog; interface-gap; open
+
+## BUG-0480 — BUG-0474 is fixed: interest from the business's working capital counts toward the section 179 business income limit
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0474
+- **Caught by:** BUG-0474, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** p946 p. 19, Taxable income, "Net income or loss from a trade or business includes the following items" and "Interest from working capital of your trade or business"; i4562 p. 5, Line 11.
+- **Symptom:** as recorded in BUG-0474.
+- **Fix:** asked, not refused. `s179.wc_interest` asks how much of the taxable interest on Form 1040 line 2b is interest from the working capital of a business the filer (or spouse, on a joint return) actively conducts. It is gated (`s179.wc_interest_if_limited`, through `s179.wc_ask`, a nested choose): asked only when line 11 is the business income (`s179.income_binds`: a section 179 deduction is figured, lines 9 and 10 above zero (`s179.has179`), and the business income before it, `s179.income_wages`, Schedule C income before section 179 plus line 1a, is less than line 5 (`s179.income_below5`)) and line 2b is above zero (`s179.has_interest`); otherwise zero. The interest belongs on line 11 whenever line 11 is the business income, even where line 12 is the same, so the question is not limited to returns whose deduction it changes (the render review of this round found the narrower first gate left printed line 11 short). `s179.income` adds it. An answer above line 2b is refused at `s179.income` (`s179.wc_over`, read only where the question is asked, so a refusal of line 2b does not reach the section 179 lines of a return that is not asked; its conflict explanation is in `interview/conflict_checks-2025.yaml`, its place in `tools/coverage/tree.json`).
+- **Fix lines:** `s179.income`, `s179.wc_interest`
+- **Siblings checked:** `s179.wc_interest_if_limited` (generated; the input's gate line, new here)
+- **Regression predictions:** no recorded value changes. Nine complete-return fixtures with a Schedule C, a section 179 deduction and interest now reach the new question (`classm.f1040.4`, `classm.f8962.2`, `classm.sa.3`, `classm.asset.1`, `classm.sc.2`, `classm.f1040.4.deepseek`, `classm.eic.2.deepseek`, `mutation.t2.person.simple_nonelective_excess`) or would read it on a line they do not assert (`classm.f4952.2`, `classm.person.15`, `classm.clcw.4`, `classm.f4952.2.deepseek`, `classm.clcw.4.deepseek`, `classm.person.1.deepseek`); each gains the answer `s179.wc_interest: 0` (its interest is not described as business working capital), and none of their asserted values changes. The test-data default is 0.
+- **Validation:** fixtures `bug0474.s179.wc_interest` (the BUG-0474 witness: line 11 and line 12 $4,000, line 13 $6,000), `bug0474.s179.wc_interest_part` ($400 of $1,000: line 11 $3,400, line 13 $6,600), `bug0474.s179.wc_interest_over` (refusal), `bug0474.s179.interest_line11_only` (wages keep line 12 at lines 9 and 10, and line 11 still takes the interest: $12,000), `bug0474.s179.wc_interest_carryover_only` (a carryover with no 2025 property: asked) and `bug0474.s179.income_above_line5` (business income above line 5: not asked, the recorded answer unread), each predicted by hand before recording; every existing fixture passes; interview-rules and mutation clean.
+- **Tags:** amount-affecting; question-incomplete; fixed
+
+## BUG-0481 — BUG-0475 is fixed: Schedule C Part II questions exclude the home's insurance, rent, repairs and utilities
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0475
+- **Caught by:** BUG-0475, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i1040sc p. 10, Simplified method, "The simplified method is an alternative to the calculation, allocation, and substantiation of actual expenses"; p. 14, Line 30, "Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home".
+- **Symptom:** as recorded in BUG-0475.
+- **Fix:** wording. The questions of lines 15 (insurance), 20b (rent of other business property), 21 (repairs and maintenance) and 25 (utilities) now exclude the home's insurance, rent, repairs or maintenance, and utilities (such as electricity, gas, water or heating), because with the simplified method line 30 replaces the business part of the home's expenses; each cites p. 14, Line 30. Unconditional: without a home office the home's expenses are personal, and Form 8829 is refused, so every accepted home office uses the simplified method. A second phone line used for business stays on line 25 (i1040sc p. 10, Line 25).
+- **Fix lines:** `sc.line15`, `sc.line20b`, `sc.line21`, `sc.line25`
+- **Siblings checked:** `sc.line28`, `sc.line28_pre179` (generated; they add the four lines, no change)
+- **Regression predictions:** wording; no value changes.
+- **Validation:** fixture `bug0475.sc.home_utilities_not_in_part2` (stage14.ho.basic read with $600 of home utilities, answered $0 on line 25 as now worded: line 30 $1,000, line 31 $19,000, the source's figure in BUG-0475), predicted by hand before recording; every existing fixture passes.
+- **Tags:** question-incomplete; wording; fixed
+
+## BUG-0482 — BUG-0476 is fixed: a sale of a market discount bond or contingent payment debt instrument is refused through its adjustment code
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0476
+- **Caught by:** BUG-0476, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i8949 p. 11, Worksheet for Accrued Market Discount Adjustment in Column (g), "reporting the sale or retirement of a market discount bond, enter code “D” for the transaction in column (f)"; i8949 p. 12, Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g), code "O"; i8949 p. 10, the Ordinary box tip; i1040sd p. 4, Market Discount Bonds.
+- **Symptom:** as recorded in BUG-0476.
+- **Fix:** refused, through the per-sale adjustment question. `sales.code` now names code D (the sale or retirement of a bond or other debt instrument with accrued market discount, such as an amount in Form 1099-B box 1f, whose gain is interest income up to that discount even if the bond's interest is tax-exempt) and code O (a taxable contingent payment debt instrument, such as one reported with the Ordinary box in box 2 checked) as codes to answer other. Other is refused by `sales.bad_code` ("Only applicable B and W adjustments are supported. Review the required code and prepare the unsupported adjustment."), whatever the Schedule B income, so the case no longer depends on `sb.unsupported_if_income`. `sales.special` was not used: its refusal's remedy names only the special gains worksheets, and changing it would change 35 asserted refusals; the aggregate route already excludes box 1f adjustments and the Ordinary box (`sales.aggregate_eligible`).
+- **Fix lines:** `sales.code`
+- **Siblings checked:** `sales.aggregate_fails`, `sales.bad_code`, `sales.has_b`, `sales.has_w` (generated; they test the code's values, and no value of the code changed)
+- **Regression predictions:** wording; no value changes.
+- **Validation:** fixture `bug0476.sales.market_discount_code_d` (the BUG-0476 witness, sales.box.D read as a tax-exempt bond bought at a market discount: code other, Schedule D line 16 and Form 1040 line 7a refused), predicted by hand before recording; every existing fixture passes.
+- **Tags:** completeness; question-incomplete; refusal; fixed
+
+## BUG-0483 — BUG-0477 is fixed: the capital loss carryover to 2026 is not shown on a decedent's final return
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0477
+- **Caught by:** BUG-0477, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** p550 p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" and "The decedent's estate cannot deduct any of the loss or carry it over to following years".
+- **Symptom:** as recorded in BUG-0477.
+- **Fix:** asked; display only. `clcw26.final_return` asks whether this is the final return of a filer who died in 2025. It is gated (`clcw26.final_return_if_carryover`, through `clcw26.final_ask`, both of whose operands are figured lines): asked only when a carryover to 2026 is figured (`clcw26.show`) on a return other than a joint return (`clcw26.not_joint`, read from `f8880.joint` so that no new reader of the filing status moves the premises pinned for other forms' mutants); a joint return keeps `clcw26.decedent_notice`, since there only the deceased spouse's part of the carryover stops and the split between the spouses is not modeled (the screen review of `clcw26.final_ask` and the transcription review of lines 8 and 13 raised the joint case; ruled). On a final return lines 8 and 13 are not shown (their `shown_when` is now `clcw26.show_st_carry` / `clcw26.show_lt_carry`, which add `clcw26.carries`), and `clcw26.final_notice` says the loss does not carry to 2026 and the estate cannot deduct it. The lines' values are still figured; no other line reads them.
+- **Fix lines:** `clcw26.line8`, `clcw26.line13`, `clcw26.final_return`
+- **Siblings checked:** `clcw26.decedent_notice` (generated; the joint-return notice, unchanged), `clcw26.final_return_if_carryover` (generated; the input's gate line, new here)
+- **Regression predictions:** no recorded value changes. The test-data default is No. 68 complete-return fixtures without defaults (class M and mutation cases, single, head of household, separate or surviving-spouse returns with a carryover figured) reach the new question and gain the answer `clcw26.final_return: false` (none is described as a final return); none of their asserted values changes.
+- **Validation:** fixtures `bug0477.clcw26.final_return_long` (the BUG-0477 witness as a final return: line 13 figured at $2,000, not shown, notice given), `bug0477.clcw26.not_final_return`, `bug0477.clcw26.final_return_short` (line 8, $3,000, not shown) and `bug0477.clcw26.not_final_return_short`, each predicted by hand before recording; every existing fixture passes; interview-rules and mutation clean.
+- **Tags:** completeness; question-incomplete; display; fixed
+
+## BUG-0484 — BUG-0478 is fixed: the Form 5695 Part I screens count a cost when the installation is completed
+
+- **Date:** 2026-11-10
+- **Closes:** BUG-0478
+- **Caught by:** BUG-0478, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i5695 p. 1, Costs, "For purposes of both credits, costs are treated as being paid when the original installation of the item is completed"; p. 1, Termination of credits, "You can’t claim residential clean energy credits for expenditures made after December 31, 2025".
+- **Symptom:** as recorded in BUG-0478.
+- **Fix:** wording, as BUG-0397 worded Part II. `f5695.part1_any` asks about 2025 costs and says a cost counts in 2025 when its original installation is completed in 2025, whenever paid, and that an item installed after 2025 does not qualify; `f5695.line5a` says the same of the battery. Both cite p. 1, Costs; `f5695.part1_any` also cites Termination of credits.
+- **Fix lines:** `f5695.part1_any`, `f5695.line5a`
+- **Siblings checked:** `f5695.claiming_part1`, `f5695.line5b`, `s3.line5a` (generated; readers of the two answers, no change)
+- **Regression predictions:** wording; no value changes.
+- **Validation:** fixtures `bug0478.f5695.paid_2024_installed_2025` (the BUG-0478 witness answered Yes as now worded: Schedule 3 line 5a $1,225) and `bug0478.f5695.battery_paid_2024_installed_2025` (a $4,000 battery paid for in 2024 and installed in 2025: line 5b $4,000, Schedule 3 line 5a $1,200), each predicted by hand before recording; every existing fixture passes.
+- **Tags:** completeness; question-incomplete; wording; fixed
+
+## BUG-0485 — Form 8962 asks the Marketplace-estimate, lawfully-present-alien and Form 1095-A column C questions before household income decides whether they are read
+
+- **Date:** 2026-11-10
+- **Caught by:** interview-rules in the BUG-0474 to BUG-0478 round: adding two inputs (`s179.wc_interest`, `clcw26.final_return`) changed the random stream of the generated returns, and the new `generated.4` (full profile) reaches Form 8962.
+- **Source:** the BUG-0466 pattern in Form 8962: `f8962.applicable` is `any(line 5 at least 100, all(f8962.aptc, f8962.estimate_100))` and `f8962.alien_branch` is `all(f8962.any, line 5 below 100, f8962.alien_below)`, conjunctions whose deciding operand (line 5, household income as a percentage of the poverty line) is known only once the income questions after them are answered.
+- **Symptom:** on `generated.4` the interview asks `f8962.estimate_100`, `f8962.alien_below` and `f1095a.c_total` in bank order, and the completed return reads none of them (interview-rules: "asked in bank order and unread by the complete return"). No value is affected; the cost is questions.
+- **Where:** `forms/2025/f8962.yaml` (`f8962.applicable`, `f8962.alien_branch`, and the lines read under them), `forms/2025/f1095a.yaml` (`f1095a.line33c`).
+- **Disposition:** open; the three templates are held in `walked_unused` of `tools/interview_rules_baseline.json` until the gate wave rewrites the Form 8962 conjunctions (T-264). The forms involved are unchanged in this round, and the full tier was green on bed2d176, whose generated returns did not show it; inferred, not traced: the pattern predates this round and only the sampled return is new.
+- **Tags:** interview; leak; conjunction; order-dependence; open
+
+## BUG-0486 — Three sales rules are neither asked nor refused: a loss after extraordinary dividends, constructive ownership gain, and same-day wash-sale blocks
+
+- **Date:** 2026-11-10
+- **Caught by:** standing completeness review of `sales` (claims sales#1, sales#3 and sales#7 of prompt d51fbc85), adjudicated in the BUG-0474 to BUG-0478 review round; the claims' rulings in `reviews/2025/completeness/rulings.json` cite this entry.
+- **Source:** i1040sd p. 4, "If qualified dividends that you reported on Form 1040, 1040-SR, or 1040-NR, line 3a, include extraordinary dividends, any loss on the sale or exchange of the stock is a long-term capital loss to the extent of the extraordinary dividends"; p550 p. 79, Gains From Certain Constructive Ownership Transactions, "all or part of the gain may be treated instead as ordinary income"; p550 p. 87, "Loss from a wash sale of one block of stock or securities cannot be used to reduce any gains on identical blocks sold the same day".
+- **Symptom:** three rules the sales questions neither ask nor refuse. (1) A loss on stock held one year or less whose qualified dividends included an extraordinary dividend is classified short-term by `sales.box` (from the holding period), though it is long-term to the extent of the extraordinary dividends. (2) Gain from a constructive ownership transaction is computed as capital gain in full. (3) `sales.wash_loss` is capped at the loss of the row (`sales.wash_bad`), so blocks of identical stock sold the same day entered as one row let a gain block absorb the disallowed loss of another; the question does not say to enter each block separately.
+- **Where:** `forms/2025/sales.yaml` (`sales.box`, `sales.special`, `sales.wash_loss`); `interview/questions-2025.yaml` (`$sales`).
+- **Witness:** not executed; read from the questions' text (none of the three rules is named in `sales.box`, `sales.special`, `sales.code` or `sales.wash_loss`, nor in `sd.other_forms`).
+- **Proposed disposition:** open, low. Name the extraordinary-dividend rule in the `sales.box` question, add constructive ownership transactions to `sales.special` (refused), and say in `sales.wash_loss` or `$sales` that blocks sold the same day are entered one row per block.
+- **Tags:** completeness; question-incomplete; open
+
+## BUG-0487 — A Schedule C without a home office shows the two-income-limits refusal on Simplified Method Worksheet line 5
+
+- **Date:** 2026-11-10
+- **Caught by:** adjudication of the line-scoped transcription review of `sc` (pass 8ca5a269c0e3, Simplified Method Worksheet line 5) in the BUG-0474 to BUG-0478 review round: triage lists completed returns on which the project's line 5 refuses.
+- **Source:** i1040sc p. 10, Line 30, "Business use of your home": the Simplified Method Worksheet is completed for a business that claims the deduction for business use of the home; p946 p. 19, Two different taxable income limits.
+- **Symptom:** on a Schedule C with no home office (`sc.ho_uses` No) and a section 179 deduction that the business income limit reduces, `sc.ho_both_limits` is true (`sc.ho_unlimited` and `sc.ho_no179` are both false, since the worksheet's line 4 is $0 and line 1 is below it), so the helper `sc.ho_both` and worksheet line 5 (`sc.ho_line5`) are refusals, and the values sheet prints "REFUSED: Section 179 deduction with a home office deduction limited by gross income" for a business that has no home office. Line 30 reads line 5 only when `sc.ho_uses` is Yes, so no amount or return outcome changes.
+- **Witness (executed):** `stage14.s179.income_limit` (no home office): `person[taxpayer].sc[desk].ho_both_limits` true, `ho_line5` a refusal on `ho_both_limits`, `line30` $0, the return completed; the same on `classm.eic.3.deepseek`, `stage14.s179.wages_count` and the BUG-0474 fixtures built on `stage14.s179.income_limit`.
+- **Where:** `forms/2025/sc.yaml`, `sc.ho_both_limits` (does not test `sc.ho_uses`); the worksheet lines have no `shown_when` on `sc.ho_uses`.
+- **Proposed disposition:** open, low; display. Gate `sc.ho_both_limits` on `sc.ho_uses` (nested choose, ho_uses first), or hide the worksheet lines when `sc.ho_uses` is No.
+- **Tags:** display; refusal; open

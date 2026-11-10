@@ -4322,6 +4322,88 @@
           "cents": 210000
         }
       }
+    },
+    {
+      "id": "bug0478.f5695.paid_2024_installed_2025",
+      "covers": [
+        "f5695"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0478, predicted by hand from i5695 p. 1 (Costs, \"costs are treated as being paid when the original installation of the item is completed\") before recording: the inputs of stage15.f5695.s9 read as $10,000 of solar electric property paid for in December 2024 and installed in 2025. The Part I screen now asks about 2025 costs counted at installation, so it is answered Yes, and the credit is the one stage15.f5695.s9 records: Schedule 3 line 5a $1,225.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "$dependent": [
+          "a",
+          "b"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "f5695.part1_any": true,
+        "dependent[a].age": 4,
+        "dependent[a].months": 12,
+        "dependent[b].age": 9,
+        "dependent[b].months": 12,
+        "f5695.line1": 1000000
+      },
+      "expect": {
+        "f5695.part1_any": {
+          "kind": "bool",
+          "value": true
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 122500
+        }
+      }
+    },
+    {
+      "id": "bug0478.f5695.battery_paid_2024_installed_2025",
+      "covers": [
+        "f5695"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0478, predicted by hand from i5695 p. 1 (Costs) and pp. 4-5 (Lines 5a and 5b, line 6a, the line 14 limit) before recording: the inputs of stage15.f5695.s9 with no solar cost and a 13.5 kWh battery paid for in 2024 and installed in 2025 for $4,000. Line 5a Yes (a 2025 cost); line 5b $4,000; 30% is $1,200, under the $1,225 limit of stage15.f5695.s9, so Schedule 3 line 5a is $1,200.",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 279000,
+        "person[taxpayer].w2[emp_a].box5": 4500000,
+        "person[taxpayer].w2[emp_a].box6": 65250,
+        "$dependent": [
+          "a",
+          "b"
+        ],
+        "household.home_cost": true,
+        "household.unmarried": true,
+        "f5695.part1_any": true,
+        "dependent[a].age": 4,
+        "dependent[a].months": 12,
+        "dependent[b].age": 9,
+        "dependent[b].months": 12,
+        "f5695.line1": 0,
+        "f5695.line5a": true,
+        "f5695.battery_cost": 400000
+      },
+      "expect": {
+        "f5695.line5b": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s3.line5a": {
+          "kind": "money",
+          "cents": 120000
+        }
+      }
     }
   ]
 }

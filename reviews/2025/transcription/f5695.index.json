@@ -4,22 +4,22 @@
  "family": "claude",
  "base": "2412f626ad321a41286e883a21ba983af6890e0d3d0149c8893cfe836d2eaf88",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "f5695.claiming_part1",
-   "record": "f651dc83380e097e7d905bd2a2d52d90d6e04465dc97333cf37cbf63854ffedd",
+   "record": "a0de86380e7ff60d859cd10521021dd2caa44540036ac7dfacf61efb875f1e11",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040s8812 p. 3 of the archived text (cited p. 4 in the project), Credit Limit Worksheet B: \"Complete Credit Limit Worksheet B only if you meet all of the following. 1. You are claiming one or more of the following credits. ... c. Residential clean energy credit, Form 5695, Part I.\" The candidate's test (line 13 above zero) is the project's on every return with Part I, but it figures line 13 on every return, so it needs the Part I screens and cost answers of filers who have no Part I, which the interview asks only with Part I (the project tests f5695.part1_any first). executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 3d43c227c169, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 1,552 partial records from 40 bases; 3,754 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 3,161 of 3,754 agree; 530 candidate-unknown, 32 candidate-refuses, 29 project-unknown, 2 value; on completed returns 255 candidate-unknown, every one with project No (f5695.business_use 132, f5695.construction_later 17, the Part I cost answers on partial records withholding them: lines 1, 2, 3, 4, 5a, 7a and 12 15 each, battery cost 1), and 2 candidate-refuses (generated 113 and 493: part1_any No, f5695.line7a Yes supplied, which the interview does not ask without Part I; the candidate refuses at its fuel-cell gate). The 2 values are refused returns with part1_any No and Part I amounts supplied that the interview never asks (classm.dcprov.1, mutation.t2.qss_s1a_car: project No, candidate Yes). Gate wave (BUG-0471): the rewritten choose (part1_any, then line13_positive, else household.no) has the HEAD `all`'s truth table; claiming_part1 and every Form 5695 line evaluate the same in HEAD and the working tree on all completed fixtures and the 500 generated returns (e.g. classm.sd.2 No in both). Same ruling as the refresh round. Project stands.",
-   "subject_key": "cc9705d38b7fe5a77a8bbfccd58c54301e4e4a8215ffece24a5d4ff6b4eacab3"
+   "ruling": "Ruling: model error; as the earlier rulings on this line. i1040s8812, Credit Limit Worksheet B is completed only if \"You are claiming one or more of the following credits ... c. Residential clean energy credit, Form 5695, Part I.\" The reply's test (line 13 above zero) is the project's on every return with Part I, but it figures line 13 on every return, so it needs the Part I screens (f5695.business_use, f5695.construction_later) of filers who have no Part I costs, which the interview asks only after f5695.part1_any is Yes (the project tests part1_any first, BUG-0471). The rewording of part1_any (BUG-0478: a cost counts when the installation is completed) changes no value. executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 4f7f20ef6cb8; 1,744 fixtures, 500 generated returns seed 20261026, 1,552 partial records): 3,247 of 3,891 agree; 530 candidate-unknown, 35 candidate-refuses, 31 project-unknown, 48 value; completed-return witnesses: candidate-unknown on class M returns with no Part I (classm.f4952.1.deepseek, classm.s3.3.deepseek; project false) and one candidate refusal at its construction gate (a generated return with part1_any No); the value witnesses are refused returns (classm.dcprov.1, mutation.t2.qss_s1a_car). Project stands.",
+   "subject_key": "3ba525b05e02e18382139f10bfdd4594037b1cfb01ba698fd89b9971563b18db"
   },
   {
    "key": "5b",
-   "record": "98ce3b998bd3a227f4616d4dd52ca7f4f63ec7ecf186e6b13a9d241596d0c5aa",
+   "record": "a0de86380e7ff60d859cd10521021dd2caa44540036ac7dfacf61efb875f1e11",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i5695 p. 4, Lines 5a and 5b: \"If you check the “No” box, you can't include any battery storage technology costs on line 5b.\" The candidate takes the battery costs when 5a is Yes and zero otherwise (written with a ne test where the project tests 5a = false; 5a is a Bool, so the guards partition the same records), and adds a display condition on 5a. Values identical. Triage executable-triage-v2 (`../triage/f5695.json`, structured-text round; 1,638 fixtures, 500 generated returns seed 20261026, 1,425 partial records): 3,563 of 3,563 agree.",
-   "subject_key": "563ba4704bb05120c87d440482a9e28e0855417d2649b5850930412f636c34da"
+   "ruling": "Ruling: model error; i5695 p. 4, Lines 5a and 5b: \"If you check the “No” box, you can't include any battery storage technology costs on line 5b.\" The reply's value is the project's (the battery cost when 5a is Yes, zero otherwise) and its shown_when on 5a is the representation the earlier rulings accepted; but it attaches the business-use and construction screens (f5695.business_use, f5695.construction_later) to line 5b itself, so it needs them, or refuses, on returns where 5a is No, where the interview does not ask them; the project refuses those cases at line 6a, where Part I costs are summed. executable-triage-v2 (pass 4f7f20ef6cb8): 3,798 of 3,891 agree; 67 candidate-unknown and 26 candidate-refuses, the completed-return ones all with project $0.00 (part1_any or 5a No). Project stands.",
+   "subject_key": "f106203338d8adbe1cad8744510b50b300d6c77fd89de4ae353147fff19df1e9"
   },
   {
    "key": "6a",
@@ -234,8 +234,8 @@
   }
  ],
  "subjects": {
-  "f5695.claiming_part1": "00e7cbaba3255e629ef45d00ea717abf131bb44e9a442fe9ba7582d9c90de0b9",
-  "5b": "4ab4821ac41fa0498ae3cc519cc6a7244c71c622b86d857f820e9960a7184ceb",
+  "f5695.claiming_part1": "a00a9164f2d81befcaf914498c3f3d33d2848f9ba7ece6ad1cdf68e495852ef9",
+  "5b": "625720b0b2691ca1bfca85bbbfefeea8fb5baf63df4bd5b21eb6580e2ea9c33d",
   "6a": "05edf212a8c95f10124933099ba155546db99a8a80139b4d4fa000a291553ec1",
   "6b": "033dda84713fe99afcb352106c331342fe2469475865231043196d95777ddbd5",
   "11": "13153d1a5694d4c7116ce1ed883999ac3ee9e066aaa544187844c704016cbad9",

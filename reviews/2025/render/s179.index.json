@@ -3,73 +3,105 @@
  "form": "s179",
  "family": "claude",
  "base": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "2",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "64eb4d272574260931b16fdfffbc59830c12f2275da986111a70a69095725575"
   },
   {
    "key": "1",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; i4562 p. 4, Line 1: \"Generally, the maximum section 179 expense deduction is $2,500,000 for section 179 property (including qualified section 179 real property) placed in service during the tax year beginning in 2025.\"; \"Tip: You can use Worksheet 1 to assist you in determining the amount to enter on line 1.\"; Worksheet 1: \"3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line 3 here and on Form 4562, line 1\". The model reads Worksheet 1 as fixing line 1 at the smaller of the cost and $2,500,000; the project follows the line 1 instruction on the same page, which states the maximum as $2,500,000 and offers the worksheet as an aid. amb.2025.s179_carryover_no_property records the model's reading as the alternative and the owner adopted the project's (TASKS T-043; ambiguities/research/amb.2025.s179_carryover_no_property.md). The English says what the project computes and names the register entry (\"Interpretation: amb.2025.s179_carryover_no_property\"); lines 5, 11 and 13 change with line 1 as the model says, by design."
+   "ruling": "Ruling: ambiguity; i4562 p. 4, Line 1: \"Generally, the maximum section 179 expense deduction is $2,500,000 for section 179 property (including qualified section 179 real property) placed in service during the tax year beginning in 2025.\"; \"Tip: You can use Worksheet 1 to assist you in determining the amount to enter on line 1.\"; Worksheet 1: \"3. Enter the smaller of line 1 or line 2 here ... 4. Enter the amount from line 3 here and on Form 4562, line 1\". The model reads Worksheet 1 as fixing line 1 at the smaller of the cost and $2,500,000; the project follows the line 1 instruction on the same page, which states the maximum as $2,500,000 and offers the worksheet as an aid. amb.2025.s179_carryover_no_property records the model's reading as the alternative and the owner adopted the project's (TASKS T-043; ambiguities/research/amb.2025.s179_carryover_no_property.md). The English says what the project computes and names the register entry (\"Interpretation: amb.2025.s179_carryover_no_property\"); lines 5, 11 and 13 change with line 1 as the model says, by design.",
+   "subject_key": "861d8714ca518547873619d87abe4d416120064984740d976f862b1f3becef86"
   },
   {
    "key": "3",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "885b3931d8ba8cee4db8b9ca1b2b5ca7489440a098ab9a9f577b844c022ca6db"
   },
   {
    "key": "4",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "179a974d408efed9c9e4c947d31af89ba83fc0f7468ff1b16e42c9cdd699b7fa"
   },
   {
    "key": "5",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "ee35505b4d8821d4133ca7f51ffddc6eab4b5335b7d76ab7778be2ea436037f9"
   },
   {
    "key": "6(c)",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "bb17565b7e78c6cc72ea86bbdf826b87cc04523e2ed073b29f226bb6d9b33c31"
   },
   {
    "key": "7",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "3b9f214183cb0fc7bb4c898631fa8b3c5d4916175defc735145ee41abb304007"
   },
   {
    "key": "8",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "59d739d23518756b970ce8150ec703389b2da3feb743e6c0b9158ec4ccc1a775"
   },
   {
    "key": "9",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "c9f01b3f33b0d612a5cf800ca9c50a5bf21ce7c63540c22db27d34fe9d4c071b"
   },
   {
    "key": "10",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "977caa744cafe1f6804644007636f2430b84a016434794539c2b2fb4dfc1c21d"
   },
   {
    "key": "11",
-   "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
-   "status": "MATCH"
+   "record": "604150619f3ef6cfbbe2de80971853d62fded30a7d9f6c6bd9c0d411c3f0ce3d",
+   "status": "MATCH",
+   "subject_key": "f3551735f8cc1b69f4b1a1b3a90a9dcd2beed7fc9f34f57f3358a6b21903f726"
   },
   {
    "key": "12",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "0acb812ba06f092372536cecfad2615537272bb5d4c21024fa349cc04fcef9e5"
   },
   {
    "key": "13",
    "record": "cbfbf74825793b703be06969ca96ef36ad5c1e1c87029fff0354102b39f060ad",
    "status": "UNCLEAR",
-   "ruling": "Ruling: representation; i4562 p. 5, Line 5: \"If line 5 is zero, you cannot elect to expense any section 179 property. In this case, skip lines 6 through 11, enter zero on line 12, and enter the carryover of any disallowed deduction from 2024 (which does not include amounts attributable to qualified section 179 real property) on line 13.\" The rendered line 10 says \"Shown on the values sheet only when: Line 5 is more than zero\" (BUG-0155): that is a display condition; the line's value is still the filer's 2024 carryover, and the rendered helper \"Add lines 9 and 10\" adds it. With line 5 zero, line 9 is zero (the smaller of line 5 and line 8) and line 12 is zero (line 11 is the smaller of income and line 5), so line 13 is the carryover, as the source directs. Checked: classm.s179.2 (line 5 $0, line 10 hidden, $3,000 carryover): project line 13 $3,000.00, which the class M model worked by hand from the pages to the same $3,000.00 (AGREE); the BUG-0155 regression stage14.s179.zero_limit_carryover asserts line 13 $3,000 with line 10 hidden. The model's doubt (whether the hidden line counts as the carryover or as zero) is answered by the English: hiding changes only what is shown, and the English of line 13 says what the page says."
+   "ruling": "Ruling: representation; i4562 p. 5, Line 5: \"If line 5 is zero, you cannot elect to expense any section 179 property. In this case, skip lines 6 through 11, enter zero on line 12, and enter the carryover of any disallowed deduction from 2024 (which does not include amounts attributable to qualified section 179 real property) on line 13.\" The rendered line 10 says \"Shown on the values sheet only when: Line 5 is more than zero\" (BUG-0155): that is a display condition; the line's value is still the filer's 2024 carryover, and the rendered helper \"Add lines 9 and 10\" adds it. With line 5 zero, line 9 is zero (the smaller of line 5 and line 8) and line 12 is zero (line 11 is the smaller of income and line 5), so line 13 is the carryover, as the source directs. Checked: classm.s179.2 (line 5 $0, line 10 hidden, $3,000 carryover): project line 13 $3,000.00, which the class M model worked by hand from the pages to the same $3,000.00 (AGREE); the BUG-0155 regression stage14.s179.zero_limit_carryover asserts line 13 $3,000 with line 10 hidden. The model's doubt (whether the hidden line counts as the carryover or as zero) is answered by the English: hiding changes only what is shown, and the English of line 13 says what the page says.",
+   "subject_key": "b88a028a0edd6612c46643c4bc2f31a8dcf73b780b2de1fdd9f3fa74af8b6b3f"
   }
- ]
+ ],
+ "subjects": {
+  "2": "a088f286a73df3d9381e67b59edffb70d2e46c0047658ec1568fd5732756ec36",
+  "1": "1897404e7649cdc38f193ccd7ce2c17c5eef7ea29491ceae38322a36bdbcb06d",
+  "3": "60672abb3835b7a9129fa432fd6f5c53e1b0018b3dd1846a7e61d4824d16b685",
+  "4": "918cf7d25ff505f68864abe14372fd49f61205399c643f453fc5bae640b131ca",
+  "5": "c3ab597eabf0af4d8960c48974e76d4ea53ebf706af8af8b8aa1fa589ccfd027",
+  "6(c)": "ca407809dd7735962986e681f33fab3dcd1349540b12cc1dc60f1e2e58ded663",
+  "7": "bd8828459cddd09a183d17fa578ab151dc87703ada2c4392470ebfc06ce759a3",
+  "8": "622cded27b46698d6ea0ef130f224ad84fc9169899f4d212b52263faa0825e85",
+  "9": "94dfdabbf24d164446b02c1e4c86893bcf24bd8ed780c611408c5713b38e918e",
+  "10": "88453bd45a14f91bffbbd7748ecb5124b10dd994c3e87349cf3d55a836692e5c",
+  "11": "8afed4511264a8958d9a4688dc721b7c8e3f1ab643000e6a873efbe2c0c34b96",
+  "12": "229ebba91a4ff16252e347eb94b6f1596c046740e572518cd0674670984e0fdf",
+  "13": "4a57ceac0560c20c7f46cc1847719b885563169e36ac7b07dede2bc4f4d4923f"
+ },
+ "__rest__": "069da08af73e9d320ee9f780f7175bf5aacbbc0f80c999b2f8d8b8a943616656"
 }

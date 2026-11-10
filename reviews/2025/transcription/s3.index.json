@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "0fec04d10eb3917399737bc1bf3b0259c9537423ae7abd972872b60f667ab5b9",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -41,10 +41,10 @@
   },
   {
    "key": "5a",
-   "record": "3a3428d8c2897a5875014e906a1fd431d37538446659c067a71770040715f19a",
+   "record": "e59939654fd30fa86381b5467cfdf6efaf5d0e50d317242961b62615c8daba68",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\", and i5695 p. 1, Who Can Take the Credits: \"You may be able to take the credits if you made energy saving improvements to your home located in the United States in 2025\". The project takes Form 5695 line 15 when f5695.part1_any (Part I property) is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers the interview asks only after a Yes. executable-triage-v2 (`.transcription/triage/2025/s3.json`; 1,702 fixtures, 500 generated returns seed 20261026, 111 partial records; 2,307 comparisons): 1,208 of 2,307 agree; 841 candidate-refuses and 258 candidate-unknown; on returns the interview completes 119 candidate-unknown (f5695.business_use and f5695.construction_later asked of filers with no Part I property, e.g. classm.f4952.1.deepseek, classm.s3.3.deepseek; project $0.00) and 2 candidate-refuses (generated 113 and 493, at f5695.line7a, where the project gives $0.00); the rest on refused or incomplete records. No value differs. The interface offers f5695.part1_any: not an interface gap. The rewrite left this line's expression unchanged and no HEAD-to-current difference shows on s3 over 1,702 fixtures and 500 generated returns. As the earlier ruling on this line. Project stands.",
-   "subject_key": "26b73d32de35d41e4e1475954e12c4174bf0c9a12a8d6065b9bead01b2579aef"
+   "ruling": "Ruling: model error; as the earlier rulings on this line. f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\". The project takes Form 5695 line 15 when f5695.part1_any is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers (f5695.business_use, f5695.construction_later) the interview asks only after a Yes, or refuses at Part I gates the project never reaches. The rewording of part1_any and line 5a (BUG-0478) changes no value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass e90286e5d5fa; 1,744 fixtures, 500 generated returns seed 20261026, 111 partial records): 1,232 of 2,364 agree; 856 candidate-refuses and 276 candidate-unknown; on completed returns candidate-unknown on returns with no Part I (classm.f4952.1.deepseek, classm.s3.3.deepseek; project $0.00) and one candidate refusal (a generated return with no Part I); no value differs. Project stands.",
+   "subject_key": "8a510689defadf1b27344c9631aa7f9771eec3310c40d766180197c56bf082a0"
   },
   {
    "key": "5b",
@@ -94,7 +94,7 @@
  },
  "__rest__": "8c4455c31080bf1b56e8381468347998cd07ecbe53b3dadcaf427571c0240a42",
  "foreign": {
-  "5a": "154f62859f9d594bbb35ef9901e45f6ddccd13ea5014548df596457cc860e912",
+  "5a": "c26857f85dc656e015204fb6342cd2957b4f3ea067c5252b6c1f9a7da3ebc54f",
   "5b": "cec84514a148b1ca8fc6d3219f953e45d64e7e8f0f5fead8f72d40b26c2061d4",
   "8": "fabf9f1e3d5aaf82948b5ca22fb205d131bfa4bdec60a9137731753e84d1adf0",
   "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"

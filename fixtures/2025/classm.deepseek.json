@@ -4028,7 +4028,8 @@
         "$sc@person[spouse]": [],
         "$f1095a": [],
         "person[taxpayer].x_other": false,
-        "person[spouse].x_other": false
+        "person[spouse].x_other": false,
+        "s179.wc_interest": 0
       },
       "expect": {
         "f4952.line4a": {
@@ -8141,7 +8142,8 @@
         "dcprov[prov_a].paid": 0,
         "dcprov[prov_a].related": false,
         "$retirement@person[taxpayer]": [],
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "sd.line4": {
@@ -10161,7 +10163,8 @@
         "carloan[vin_1].refi_balance": 315100,
         "carloan[vin_1].refi_whole": true,
         "carloan[vin_1].col_ii_input": 214900,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "clcw.line1": {
@@ -11231,7 +11234,9 @@
         "person[taxpayer].otjob[ot_2].special_rule": true,
         "person[taxpayer].otjob[ot_2].method": "other",
         "person[taxpayer].otjob[ot_2].statement": 113900,
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false,
+        "s179.wc_interest": 0
       },
       "expect": {
         "clcw.line1": {
@@ -13045,7 +13050,8 @@
         "dcprov[prov_a].paid": 0,
         "dcprov[prov_a].related": false,
         "$retirement@person[taxpayer]": [],
-        "$f1095a": []
+        "$f1095a": [],
+        "clcw26.final_return": false
       },
       "expect": {
         "clcw26.line1": {
@@ -13809,7 +13815,8 @@
           "tip_2",
           "tip_3"
         ],
-        "interest[bank_a].penalty": 0
+        "interest[bank_a].penalty": 0,
+        "clcw26.final_return": false
       },
       "expect": {
         "dependent[dep_a].dc_line2c": {
@@ -19595,7 +19602,8 @@
         "person[taxpayer].sc[biz_b].line41": 0,
         "person[taxpayer].sc[biz_b].line2": 0,
         "dependent[dep_b].relationship": "child",
-        "dependent[dep_b].kidnapped": false
+        "dependent[dep_b].kidnapped": false,
+        "s179.wc_interest": 0
       },
       "expect": {
         "person[taxpayer].employers": {
@@ -23527,7 +23535,8 @@
         "person[taxpayer].x_prior09": 0,
         "person[taxpayer].x_births": 0,
         "person[taxpayer].x_hsa_value": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "s179.wc_interest": 0
       },
       "expect": {
         "f1040.line1a": {
@@ -27247,7 +27256,8 @@
         "f1095a[mkt_b].in_c_nov": 29200,
         "f1095a[mkt_b].in_a_dec": 92200,
         "f1095a[mkt_b].in_c_dec": 6200,
-        "person[taxpayer].x_other": false
+        "person[taxpayer].x_other": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "f5695.line5b": {
@@ -28636,7 +28646,8 @@
         "person[taxpayer].retirement[r1].special": false,
         "person[taxpayer].retirement[r1].annuity": false,
         "$f1095a": [],
-        "person[taxpayer].x_other": false
+        "person[taxpayer].x_other": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "f5695.line6a": {
@@ -28958,7 +28969,8 @@
         "person[taxpayer].tipjob[tip_2].amount": 0,
         "$otjob@person[taxpayer]": [],
         "$f1095a": [],
-        "person[taxpayer].x_other": false
+        "person[taxpayer].x_other": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "f5695.line6a": {
@@ -32434,7 +32446,8 @@
         "dependent[dep_c].edu_refunds": 0,
         "dependent[dep_c].edu_tin_issued": true,
         "person[taxpayer].x_other": false,
-        "person[taxpayer].retirement[r1].code_screen": false
+        "person[taxpayer].retirement[r1].code_screen": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "f8863.line1": {
@@ -33056,7 +33069,8 @@
         "dependent[dep_b].edu_mat": 0,
         "dependent[dep_b].edu_a2025": 0,
         "dependent[dep_b].edu_a2026": 0,
-        "dependent[dep_b].edu_refunds": 0
+        "dependent[dep_b].edu_refunds": 0,
+        "clcw26.final_return": false
       },
       "expect": {
         "dependent[dep_a]|inst:aqee#{\"adj\":\"dependent.edu_adj\",\"inst\":\"dependent.edu_inst\",\"mat\":\"dependent.edu_mat\"}.line27": {
@@ -34394,7 +34408,8 @@
         "person[taxpayer].x_prior09": 0,
         "person[taxpayer].x_births": 0,
         "person[taxpayer].x_hsa_value": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "s179.wc_interest": 0
       },
       "expect": {
         "eic.step5_line1": {
@@ -35593,7 +35608,8 @@
         "person[taxpayer].retirement[r1].code_screen": false,
         "person[taxpayer].retirement[r1].exception": "none",
         "person[taxpayer].retirement[r1].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "eic.step5_line1": {
@@ -36637,7 +36653,8 @@
         "person[taxpayer].retirement[r2].code_screen": false,
         "person[taxpayer].retirement[r2].exception": "none",
         "person[taxpayer].retirement[r2].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {}
     },
@@ -37051,7 +37068,8 @@
         "person[taxpayer].x_prior09": 0,
         "person[taxpayer].x_births": 0,
         "person[taxpayer].x_hsa_value": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {}
     },
@@ -37608,7 +37626,8 @@
         "person[taxpayer].x_prior09": 0,
         "person[taxpayer].x_births": 0,
         "person[taxpayer].x_hsa_value": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "eic.step5_line1": {
@@ -38282,7 +38301,8 @@
         "person[taxpayer].retirement[r2].code_screen": false,
         "person[taxpayer].retirement[r2].exception": "none",
         "person[taxpayer].retirement[r2].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "person[taxpayer].retirement[r1].smw1": {
@@ -40022,7 +40042,8 @@
         "person[taxpayer].retirement[r2].code_screen": false,
         "person[taxpayer].retirement[r2].exception": "none",
         "person[taxpayer].retirement[r2].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "person[taxpayer].retirement[r1].smw1": {
@@ -41965,7 +41986,8 @@
         "person[taxpayer].retirement[r2].code_screen": false,
         "person[taxpayer].retirement[r2].exception": "e02",
         "person[taxpayer].retirement[r2].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "person[taxpayer].f5329[form].l1": {
@@ -42169,7 +42191,8 @@
         "person[taxpayer].retirement[r1].rollover": 0,
         "person[taxpayer].retirement[r1].special": false,
         "$f1095a": [],
-        "person[taxpayer].retirement[r1].code_screen": false
+        "person[taxpayer].retirement[r1].code_screen": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "sa.line11_if_gifts": {

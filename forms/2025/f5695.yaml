@@ -23,19 +23,23 @@ form:
       locator: Form 5695 (2025), lines 5b, 11, 18b to 20d, 22d to 26c, 29h and 32
   - id: f5695.part1_any
     printed: (helper)
-    label: Any residential clean energy property paid for in 2025, or a carryforward from 2024
+    label: Any residential clean energy costs for 2025 (counted when the original installation is completed), or a
+      carryforward from 2024
     type: Bool
     expr:
       op: input
-      source: Did you pay in 2025 for solar electric, solar water heating, small wind energy, geothermal heat pump, battery
-        storage or fuel cell property for a home in the United States, or do you have a residential clean energy credit
-        carryforward from line 16 of your 2024 Form 5695?
+      source: Did you have 2025 costs for solar electric, solar water heating, small wind energy, geothermal heat pump,
+        battery storage or fuel cell property for a home in the United States, or do you have a residential clean energy
+        credit carryforward from line 16 of your 2024 Form 5695? A cost of an item counts in 2025 when its original
+        installation is completed in 2025, whenever you paid it; an item installed after 2025 does not qualify.
     cite:
       doc: i5695
       locator: p. 2, Residential Clean Energy Credit (Part I), "You may be able to take a credit of 30% of your costs of
         qualified solar electric property, solar water heating property, small wind energy property, geothermal heat pump
         property, battery storage technology, and fuel cell property"; p. 1, Purpose of Form, "Also use Form 5695 to take
-        any residential clean energy credit carryforward from 2024"
+        any residential clean energy credit carryforward from 2024"; p. 1, Costs, "For purposes of both credits, costs are
+        treated as being paid when the original installation of the item is completed"; p. 1, Termination of credits, "You
+        can’t claim residential clean energy credits for expenditures made after December 31, 2025"
   - id: f5695.part2_any
     printed: (helper)
     label: Any energy efficient home improvement costs for 2025 (counted when the original installation is completed)
@@ -174,14 +178,16 @@ form:
     type: Bool
     expr:
       op: input
-      source: Did you pay in 2025 for battery storage technology installed in connection with your home in the United States
-        that has a capacity of at least 3 kilowatt hours? (Answer No if you had none; a battery of less than 3 kilowatt hours
-        cannot be claimed.)
+      source: Did you have 2025 costs for battery storage technology installed in connection with your home in the United
+        States that has a capacity of at least 3 kilowatt hours? A cost counts in 2025 when the original installation is
+        completed in 2025, whenever you paid it; a battery installed after 2025 does not qualify. (Answer No if you had none;
+        a battery of less than 3 kilowatt hours cannot be claimed.)
     cite:
       doc: i5695
       locator: p. 4, Lines 5a and 5b, "To qualify for the credit, the qualified battery storage technology must have a
         capacity of at least 3 kilowatt hours"; p. 2, Qualified battery storage technology costs, "installed in connection
-        with your home located in the United States"
+        with your home located in the United States"; p. 1, Costs, "costs are treated as being paid when the original
+        installation of the item is completed"
     ambiguity: amb.2025.f5695_battery_second_home
   - id: f5695.battery_cost
     printed: (helper)

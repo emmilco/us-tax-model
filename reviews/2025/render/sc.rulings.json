@@ -90,6 +90,16 @@
    "subject_key": "4e440d9717bc8ccdec7ba832c871bc02045ee814597813125a8e3c23bfc8cc91"
   },
   {
+   "printed": "15",
+   "restated": "Input — Premiums for business insurance (not health insurance for yourself, not a reserve for self-insurance, not lost-earnings insurance, and not insurance on your home, because with the simplified method for business use of the home, line 30 replaces the business part of your home's expenses); zero if none",
+   "model": "The restatement only excludes health insurance for yourself, so a filer could put employee health insurance premiums on line 15. The form line reads \"Insurance (other than health)\" and the instructions say \"Deduct on line 14 amounts paid for employee accident and health insurance.\" The other exclusions (self-insurance reserve, lost-earnings policy, home costs under the simplified method) agree with the text.",
+   "ruling": "Ruling: representation; i1040sc p. 8, Line 14, \"Deduct on line 14 amounts paid for employee accident and health insurance\", and Line 15. Employee health insurance belongs on line 14, whose question names \"accident and health plans\" for employees (sc.line14); a filer who put it on line 15 instead would get the same deduction, since lines 14 and 15 are read only by the line 28 total (sc.line28, sc.line28_pre179). The added home-expense exclusion (BUG-0475) the model accepts. No value changes.",
+   "context": "3fd46731c0eef12c172a5b495b7d83963c6039900f375030ef954981ac5cdb84",
+   "date": "2026-11-10",
+   "run": "7dce67f3e79d8c088018757ceee5f7d3b3e824b94385a558fe7e6d68e4d45c16",
+   "subject_key": "0f62d09893a61bdd2f331c11c4e410e86a396258e715e0b0f1fbbcd32f53dd00"
+  },
+  {
    "printed": "2 (sc.f7206_line2)",
    "restated": "Add ltc.amount over every confirmed ltc entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Form 7206 line 2 is the per-person smaller of the payments or the age-based limit, but how ltc.amount is figured is not given. The scope 'within the current person' rather than this business's plan also cannot be checked.",
@@ -194,6 +204,16 @@
    "ruling": "Ruling: scope; f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income.\" The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other). The same holds for \"other income allocable to the profitable businesses\".",
    "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3",
    "subject_key": "0b78bb66b053b8a8151fc4f22d183c741e02df65e7cfb0e617a36d0e96d3277a"
+  },
+  {
+   "printed": "7 (sc.f7206_line7)",
+   "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"Schedule 1, line 15 (this person's), times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
+   "model": "Form 7206 line 7 says \"Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the percentage on line 6.\" The restatement instead uses this person's Schedule SE line 13. On a joint return where both spouses have self-employment income, Schedule 1 line 15 combines both spouses' amounts. The Form 7206 instructions, which would say whether to use only the filer's own share, are not provided.",
+   "ruling": "Ruling: owner accepted (amb.2025.f7206_line15_person, T-041); restatement accepted, as the earlier rulings on this line. On a joint return Schedule 1 line 15 combines both spouses; Form 7206 is figured for the person whose business establishes the plan, and line 9 looks to 'the same trade or business', so the project uses that person's own Schedule SE line 13. The readings agree when only one spouse is self-employed.",
+   "context": "3fd46731c0eef12c172a5b495b7d83963c6039900f375030ef954981ac5cdb84",
+   "date": "2026-11-10",
+   "run": "7dce67f3e79d8c088018757ceee5f7d3b3e824b94385a558fe7e6d68e4d45c16",
+   "subject_key": "cfba7aea7794ff6f7e5519ab64a32e62a8832dca00affd6a1b5a67505a3e4447"
   },
   {
    "printed": "7 (sc.f7206_line7)",

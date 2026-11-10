@@ -63,6 +63,9 @@ conflicts:
     The jury duty pay given to your employer is more than the jury duty pay reported on Schedule 1 line 8h.
   s179.over_limit: >-
     The section 179 elections are more than the dollar limitation on Form 4562 line 5.
+  s179.wc_over: >-
+    The interest entered as interest from the working capital of your business is part of the taxable interest on Form
+    1040 line 2b, but it is more than that line.
   s2.e05_over: >-
     On this joint return, the medical-expense exceptions (exception 05) of both spouses together are more than the
     medical expenses above 7.5% of your joint AGI.

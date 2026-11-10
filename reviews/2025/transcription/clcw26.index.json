@@ -3,6 +3,10 @@
  "form": "clcw26",
  "family": "claude",
  "base": "ea7d22da8f006caab98e1bc23c856c11db50c4aeaf9a55fabe23448a49b2bd7e",
+ "head_rows": {
+  "agree / disagree / missing": "11 / 2 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "1",
@@ -48,9 +52,10 @@
   },
   {
    "key": "8",
-   "record": "ea7d22da8f006caab98e1bc23c856c11db50c4aeaf9a55fabe23448a49b2bd7e",
-   "status": "AGREE",
-   "subject_key": "aaa92abaa01c965edb775cf376eb7a7227a917ff59150a88492f4da1bea68238"
+   "record": "bbf7c213a9e7479f6a02991fc0d19c0db8b60875b333f456df831f79ed75f07d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; p550 p. 103, Decedent's capital loss: \"A capital loss sustained by a decedent during the decedent’s last tax year ... can be deducted only on the final income tax return filed for the decedent\" and \"The decedent's estate cannot deduct any of the loss or carry it over to following years.\" The rule removes the decedent's loss, not a surviving spouse's: on a joint return the survivor's own loss still carries to 2026. The reply zeroes line 8 on any final return, joint returns included, and so needs clcw26.final_return on joint returns, where the project does not ask it (clcw26.final_ask: a carryover is figured on a return other than a joint return) and gives clcw26.decedent_notice instead. On a return other than a joint return both sides agree: the project hides line 8 on a final return (shown_when clcw26.show_st_carry), the reply enters zero. executable-triage-v2 (`.transcription/triage/2025/clcw26.json`, pass f224038388c3; 1,744 fixtures, 500 generated returns seed 20261026, 11 partial records): 2,255 of 2,262 agree; on completed returns 2 candidate-unknown, both joint returns (classm.clcw26.2.deepseek, classm.asset.1: final_return not asked, project $10,701.00 and $22,479.00); 4 candidate-unknown and 1 project-refuses on refused returns. Project stands.",
+   "subject_key": "23e26eeae2646e8415cd0231854c994ed2e29601eae95d31b1165cf0ea98f40a"
   },
   {
    "key": "9",
@@ -78,9 +83,10 @@
   },
   {
    "key": "13",
-   "record": "ea7d22da8f006caab98e1bc23c856c11db50c4aeaf9a55fabe23448a49b2bd7e",
-   "status": "AGREE",
-   "subject_key": "a384339e37e2cc93dc84cfff93b4679e9d6ff9a8cc418170407d3102b506f9b7"
+   "record": "bbf7c213a9e7479f6a02991fc0d19c0db8b60875b333f456df831f79ed75f07d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; as line 8 of this pass. p550 p. 103, Decedent's capital loss, \"The decedent's estate cannot deduct any of the loss or carry it over to following years\": the rule removes the decedent's loss, so a surviving spouse's loss on a joint return still carries to 2026; the reply zeroes line 13 on any final return and needs clcw26.final_return on joint returns, where the project asks it not and gives clcw26.decedent_notice. On a return other than a joint return both agree (the project hides line 13 on a final return, shown_when clcw26.show_lt_carry). executable-triage-v2 (pass f224038388c3): 2,255 of 2,262 agree; on completed returns 5 candidate-unknown, all joint returns (classm.clcw26.2.deepseek, classm.s2.3.deepseek, classm.s2.3, classm.clcw26.4, classm.f8962.3); 2 more on refused returns. Project stands.",
+   "subject_key": "ffe6955df8e5895b6e9c23ba27b60378a0b1a64ac3e87fcdd285ff1ef2bf597e"
   }
  ],
  "subjects": {
@@ -91,12 +97,16 @@
   "5": "c002940c512a9a8cc5fc525f1ace2a5f7226890ba4d8479f8cefc4e25858c323",
   "6": "efd121ac2431f5de134a97168576be088f2c18ecde23c38e7a2cb245e898ce2e",
   "7": "6202d090890b561f4c432bf66cd733885f5879ea7ab0ccd8ffada1e42ccf4df8",
-  "8": "f204c4b1c45f587c3d09f46b017240f85e56c3fef27fd954c557ff34d9d9680f",
+  "8": "af41a6e5d39becb45959deec773b25ac58afe43a3b57506b47c2b7636ff02c6a",
   "9": "ec2a220bb984a782080e0d4a61056149e1e9c7fdd1754522ec75539b7b3e71d6",
   "10": "9be608fd79d2df2414c528f2c440819252f77a7acaa8bd897b6e9c1491ebd247",
   "11": "70c6077b57c96b400d30303abb17cdd552705dd44e2f586c1b9f4c70e214327a",
   "12": "02d2ab2a23bc0cee9efbb1e9ce1fe70e2f7390e700cc867ab65168eca5fef03f",
-  "13": "7e6f8036a273b031a0492148dbb92c8478b45c207a70d0fe2f25aae2a72ec9b2"
+  "13": "8c139e3728dad1c41ec305eb45020d54a59d46a4e63ea228e6e10a9b6a899e01"
  },
- "__rest__": "4e4a319214c0092429d52e55a08780c6fada5ffb8d6a8651674b431950556488"
+ "__rest__": "4e4a319214c0092429d52e55a08780c6fada5ffb8d6a8651674b431950556488",
+ "foreign": {
+  "8": "8a4dfc9c67684c87b45f0b2fa4b24ef15d4fbc454a3a292463c755b6b0be0337",
+  "13": "1215b17632e1c3658e73ab8ee70750ec342b8a790dbec95ea4f8f44b5872a208"
+ }
 }

@@ -1,7 +1,7 @@
 # Capital loss carryover to 2026 (Capital Loss Carryover Worksheet applied to this return)
 
 - Document: `clcw26` (worksheet, tax year 2025)
-- Note: The carryovers to 2026, shown on the values sheet and read by no other line. The Schedule D instructions point to the 2026 worksheet or Pub. 550; the 13 lines of the 2025 worksheet are applied to this return with each 2024 figure read as the 2025 one (amb.2025.clcw_to_2026). Shown only when the instructions' test for a carryover to 2026 holds.
+- Note: The carryovers to 2026, shown on the values sheet and read by no other line. The Schedule D instructions point to the 2026 worksheet or Pub. 550; the 13 lines of the 2025 worksheet are applied to this return with each 2024 figure read as the 2025 one (amb.2025.clcw_to_2026). Shown only when the instructions' test for a carryover to 2026 holds. On the final return of a filer who died in 2025 (other than a joint return) the carryover lines are not shown; a notice says the loss does not carry over.
 
 ## (helper) — `clcw26.zero`
 
@@ -103,7 +103,7 @@
 
 - **IRS:** Short-term capital loss carryover to 2026. Subtract line 7 from line 5. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Subtract line 7 from line 5. If zero or less, enter -0-.
-- **Shown on the values sheet only when:** Schedule D line 16 and line 7 are losses (`clcw26.show_st`)
+- **Shown on the values sheet only when:** Schedule D line 16 and line 7 are losses, and the carryover goes to 2026 (`clcw26.show_st_carry`)
 - Interpretation: amb.2025.clcw_to_2026
 - Expr: `{"from":"clcw26.line5","op":"subtract_floor0","take":"clcw26.line7"}`
 - Cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 8, "Subtract line 7 from line 5. If zero or less, enter -0-"; p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550" (2025; printed date 2025-12-11; sha256 650643a6)
@@ -144,7 +144,7 @@
 
 - **IRS:** Long-term capital loss carryover to 2026. Subtract line 12 from line 9. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Subtract line 12 from line 9. If zero or less, enter -0-.
-- **Shown on the values sheet only when:** Schedule D line 16 and line 15 are losses (`clcw26.show_lt`)
+- **Shown on the values sheet only when:** Schedule D line 16 and line 15 are losses, and the carryover goes to 2026 (`clcw26.show_lt_carry`)
 - Interpretation: amb.2025.clcw_to_2026
 - Expr: `{"from":"clcw26.line9","op":"subtract_floor0","take":"clcw26.line12"}`
 - Cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 13, "Subtract line 12 from line 9. If zero or less, enter -0-"; p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550" (2025; printed date 2025-12-11; sha256 650643a6)
@@ -155,3 +155,66 @@
 - **Encoded (Bool):** f1040 line Filing Status = 'mfj' and (line 8 > $0 or line 13 > $0)
 - Expr: `{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"any":[{"gt":["clcw26.line8",{"const":0}],"op":"test"},{"gt":["clcw26.line13",{"const":0}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [p550] p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" (2025 returns; printed date 2026-03-05; sha256 83552968)
+
+## (helper) — `clcw26.no`
+
+- **Authored helper label:** Year parameter household.no (false)
+- **Encoded (Bool):** Enter false (household.no).
+- Expr: `{"op":"param","ref":"household.no"}`
+- Cite: [p550] p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; sha256 83552968)
+
+## (helper) — `clcw26.not_joint`
+
+- **Authored helper label:** Not a joint return
+- **Encoded (Bool):** f8880 helper "Married filing jointly" = false
+- Expr: `{"eq":["f8880.joint",{"const":false}],"op":"test"}`
+- Cite: [p550] p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" (2025 returns; printed date 2026-03-05; sha256 83552968)
+
+## (gate) — `clcw26.final_ask`
+
+- **Authored helper label:** A carryover to 2026 is figured on a return other than a joint return
+- **Encoded (Bool):** helper "Schedule D line 16 is a loss that is more than the loss on line 21, or taxable income would be less than zero, so a carryover to 2026 is figured" = true and helper "Not a joint return" = true
+- Expr: `{"all":[{"eq":["clcw26.show",{"const":true}],"op":"test"},{"eq":["clcw26.not_joint",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [p550] p. 103, Decedent's capital loss, "A capital loss sustained by a decedent during the decedent’s last tax year (or carried over to that year from an earlier year) can be deducted only on the final income tax return filed for the decedent" (2025 returns; printed date 2026-03-05; sha256 83552968)
+
+## (helper) — `clcw26.final_return`
+
+- **Authored helper label:** Is this the final return of a filer who died in 2025?
+- **Encoded (Bool):** Input — Is this the final income tax return of a filer who died in 2025 (a return filed for the decedent)?
+- Expr: `{"op":"input","source":"Is this the final income tax return of a filer who died in 2025 (a return filed for the decedent)?"}`
+- Cite: [p550] p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" and "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; sha256 83552968)
+
+## (helper) — `clcw26.final_return_if_carryover`
+
+- **Authored helper label:** The final return of a filer who died in 2025, when a carryover to 2026 is figured on a return other than a joint return; false otherwise
+- **Encoded (Bool):** Choose — [helper "A carryover to 2026 is figured on a return other than a joint return" = true → helper "Is this the final return of a filer who died in 2025?"] [helper "A carryover to 2026 is figured on a return other than a joint return" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["clcw26.final_ask",{"const":true}],"op":"test"},"then":"clcw26.final_return"},{"guard":{"eq":["clcw26.final_ask",{"const":false}],"op":"test"},"then":"clcw26.no"}],"op":"choose"}`
+- Cite: [p550] p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" (2025 returns; printed date 2026-03-05; sha256 83552968)
+
+## (helper) — `clcw26.carries`
+
+- **Authored helper label:** Not the final return of a filer who died in 2025, so the carryover goes to 2026
+- **Encoded (Bool):** helper "The final return of a filer who died in 2025, when a carryover to 2026 is figured on a return other than a joint return; false otherwise" = false
+- Expr: `{"eq":["clcw26.final_return_if_carryover",{"const":false}],"op":"test"}`
+- Cite: [p550] p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; sha256 83552968)
+
+## (helper) — `clcw26.show_st_carry`
+
+- **Authored helper label:** Schedule D line 16 and line 7 are losses, and the carryover goes to 2026
+- **Encoded (Bool):** Choose — [helper "Schedule D line 16 and line 7 are losses" = true → helper "Not the final return of a filer who died in 2025, so the carryover goes to 2026"] [helper "Schedule D line 16 and line 7 are losses" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["clcw26.show_st",{"const":true}],"op":"test"},"then":"clcw26.carries"},{"guard":{"eq":["clcw26.show_st",{"const":false}],"op":"test"},"then":"clcw26.no"}],"op":"choose"}`
+- Cite: [p550] p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; sha256 83552968)
+
+## (helper) — `clcw26.show_lt_carry`
+
+- **Authored helper label:** Schedule D line 16 and line 15 are losses, and the carryover goes to 2026
+- **Encoded (Bool):** Choose — [helper "Schedule D line 16 and line 15 are losses" = true → helper "Not the final return of a filer who died in 2025, so the carryover goes to 2026"] [helper "Schedule D line 16 and line 15 are losses" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["clcw26.show_lt",{"const":true}],"op":"test"},"then":"clcw26.carries"},{"guard":{"eq":["clcw26.show_lt",{"const":false}],"op":"test"},"then":"clcw26.no"}],"op":"choose"}`
+- Cite: [p550] p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; sha256 83552968)
+
+## (helper) — `clcw26.final_notice`
+
+- **Authored helper label:** Notice: this is the final return of a filer who died in 2025. The capital loss can be deducted only on this return; none of it carries over to 2026, and the estate cannot deduct it.
+- **Encoded (Bool):** Enter the amount from helper "The final return of a filer who died in 2025, when a carryover to 2026 is figured on a return other than a joint return; false otherwise".
+- Expr: `{"from":"clcw26.final_return_if_carryover","op":"copy"}`
+- Cite: [p550] p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the decedent" and "The decedent's estate cannot deduct any of the loss or carry it over to following years" (2025 returns; printed date 2026-03-05; sha256 83552968)

@@ -368,10 +368,12 @@ form:
     expr:
       op: input
       source: Premiums for business insurance (not health insurance for yourself, not a reserve for self-insurance, not lost-earnings
-        insurance); zero if none
+        insurance, and not insurance on your home, because with the simplified method for business use of the home, line 30 replaces
+        the business part of your home's expenses); zero if none
     cite:
       doc: i1040sc
-      locator: p. 8, Line 15
+      locator: p. 8, Line 15; p. 14, Line 30, "Use Part II of Schedule C to deduct business expenses that are
+        unrelated to the qualified business use of the home"
   - id: sc.line16a
     printed: 16a
     label: 'Interest: mortgage (paid to banks, etc.)'
@@ -453,10 +455,12 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: Rent for other business property, such as office space; zero if none
+      source: Rent for other business property, such as office space (not rent for your home, because with the simplified method for
+        business use of the home, line 30 replaces the business part of your home's expenses); zero if none
     cite:
       doc: i1040sc
-      locator: p. 8, Lines 20a and 20b
+      locator: p. 8, Lines 20a and 20b; p. 14, Line 30, "Use Part II of Schedule C to deduct business expenses that are
+        unrelated to the qualified business use of the home"
   - id: sc.line21
     printed: '21'
     label: Repairs and maintenance
@@ -464,10 +468,13 @@ form:
     expr:
       op: input
       source: Incidental repairs and maintenance that do not add to the property's value or appreciably prolong its life (not
-        your own labor, and not restorations or replacements, which are capitalized); zero if none
+        your own labor, not restorations or replacements, which are capitalized, and not repairs or maintenance of your home,
+        because with the simplified method for business use of the home, line 30 replaces the business part of your home's
+        expenses); zero if none
     cite:
       doc: i1040sc
-      locator: p. 8, Line 21
+      locator: p. 8, Line 21; p. 14, Line 30, "Use Part II of Schedule C to deduct business expenses that are
+        unrelated to the qualified business use of the home"
   - id: sc.line22
     printed: '22'
     label: Supplies (not included in Part III)
@@ -621,11 +628,13 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: Utility expenses of the business only (for a home phone, not the base rate of the first line into your residence);
-        zero if none
+      source: Utility expenses of the business only (for a home phone, not the base rate of the first line into your residence;
+        not utilities of your home, such as electricity, gas, water or heating, because with the simplified method for business use of the home, line 30 replaces the business
+        part of your home's expenses); zero if none
     cite:
       doc: i1040sc
-      locator: p. 10, Line 25
+      locator: p. 10, Line 25; p. 14, Line 30, "Use Part II of Schedule C to deduct business expenses that are
+        unrelated to the qualified business use of the home"
   - id: sc.line26
     printed: '26'
     label: Wages (less employment credits)

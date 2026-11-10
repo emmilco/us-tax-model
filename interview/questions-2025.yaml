@@ -1550,6 +1550,16 @@ bank:
     order: 12
   - input: s179.line10
     order: 12
+  - input: s179.wc_interest
+    order: 15
+    help: Asked only when you have a section 179 deduction and your business income is the business income limit (Form 4562, line 11). Interest
+      from the working capital of a business you actively conduct counts as business income for that limit. Working capital is
+      money held for the business's operating needs, in any kind of account (checking, savings, money market or a certificate
+      of deposit), however the account is titled. Interest on money not held for the business does not count.
+  - input: clcw26.final_return
+    order: 15
+    help: Asked only when a capital loss carryover to 2026 is figured. A capital loss of someone who died in 2025 can be
+      deducted only on the final return; it does not carry over to 2026.
   - input: person.se_screen
     order: 12
   - input: $ltc

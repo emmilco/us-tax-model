@@ -6,6 +6,8 @@ form:
   note: The carryovers to 2026, shown on the values sheet and read by no other line. The Schedule D instructions point to
     the 2026 worksheet or Pub. 550; the 13 lines of the 2025 worksheet are applied to this return with each 2024 figure
     read as the 2025 one (amb.2025.clcw_to_2026). Shown only when the instructions' test for a carryover to 2026 holds.
+    On the final return of a filer who died in 2025 (other than a joint return) the carryover lines are not shown; a
+    notice says the loss does not carry over.
   lines:
   - id: clcw26.zero
     printed: (helper)
@@ -193,7 +195,7 @@ form:
   - id: clcw26.line8
     printed: "8"
     label: Short-term capital loss carryover to 2026. Subtract line 7 from line 5. If zero or less, enter -0-
-    shown_when: clcw26.show_st
+    shown_when: clcw26.show_st_carry
     display: The short-term capital loss carryover to 2026, the figure the 2026 Schedule D line 6 will need.
     type: NonNegDollars
     expr:
@@ -260,7 +262,7 @@ form:
   - id: clcw26.line13
     printed: "13"
     label: Long-term capital loss carryover to 2026. Subtract line 12 from line 9. If zero or less, enter -0-
-    shown_when: clcw26.show_lt
+    shown_when: clcw26.show_lt_carry
     display: The long-term capital loss carryover to 2026, the figure the 2026 Schedule D line 14 will need.
     type: NonNegDollars
     expr:
@@ -298,3 +300,155 @@ form:
       doc: p550
       locator: p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the
         decedent"
+  - id: clcw26.no
+    printed: (helper)
+    label: Year parameter household.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to
+        following years"
+  - id: clcw26.not_joint
+    printed: (helper)
+    label: Not a joint return
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f8880.joint
+      - const: false
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the
+        decedent"
+  - id: clcw26.final_ask
+    printed: (gate)
+    label: A carryover to 2026 is figured on a return other than a joint return
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - clcw26.show
+        - const: true
+      - op: test
+        eq:
+        - clcw26.not_joint
+        - const: true
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "A capital loss sustained by a decedent during the decedent’s last tax year
+        (or carried over to that year from an earlier year) can be deducted only on the final income tax return filed for
+        the decedent"
+  - id: clcw26.final_return
+    printed: (helper)
+    label: Is this the final return of a filer who died in 2025?
+    type: Bool
+    gated_by: clcw26.final_return_if_carryover
+    expr:
+      op: input
+      source: Is this the final income tax return of a filer who died in 2025 (a return filed for the decedent)?
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the
+        decedent" and "The decedent's estate cannot deduct any of the loss or carry it over to following years"
+  - id: clcw26.final_return_if_carryover
+    printed: (helper)
+    label: The final return of a filer who died in 2025, when a carryover to 2026 is figured on a return other than a joint
+      return; false otherwise
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - clcw26.final_ask
+          - const: true
+        then: clcw26.final_return
+      - guard:
+          op: test
+          eq:
+          - clcw26.final_ask
+          - const: false
+        then: clcw26.no
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the
+        decedent"
+  - id: clcw26.carries
+    printed: (helper)
+    label: Not the final return of a filer who died in 2025, so the carryover goes to 2026
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - clcw26.final_return_if_carryover
+      - const: false
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to
+        following years"
+  - id: clcw26.show_st_carry
+    printed: (helper)
+    label: Schedule D line 16 and line 7 are losses, and the carryover goes to 2026
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - clcw26.show_st
+          - const: true
+        then: clcw26.carries
+      - guard:
+          op: test
+          eq:
+          - clcw26.show_st
+          - const: false
+        then: clcw26.no
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to
+        following years"
+  - id: clcw26.show_lt_carry
+    printed: (helper)
+    label: Schedule D line 16 and line 15 are losses, and the carryover goes to 2026
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - clcw26.show_lt
+          - const: true
+        then: clcw26.carries
+      - guard:
+          op: test
+          eq:
+          - clcw26.show_lt
+          - const: false
+        then: clcw26.no
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "The decedent's estate cannot deduct any of the loss or carry it over to
+        following years"
+  - id: clcw26.final_notice
+    printed: (helper)
+    label: 'Notice: this is the final return of a filer who died in 2025. The capital loss can be deducted only on this
+      return; none of it carries over to 2026, and the estate cannot deduct it.'
+    display: 'Notice on the values sheet: the capital loss carryover does not go to 2026 on a final return.'
+    type: Bool
+    expr:
+      op: copy
+      from: clcw26.final_return_if_carryover
+    cite:
+      doc: p550
+      locator: p. 103, Decedent's capital loss, "can be deducted only on the final income tax return filed for the
+        decedent" and "The decedent's estate cannot deduct any of the loss or carry it over to following years"

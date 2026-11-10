@@ -42,10 +42,10 @@
    "gate": "s1.cod_unsupported"
   },
   "unruled:clcw26#1": {
-   "class": "real gap",
-   "bug": "BUG-0477",
-   "evidence": "p550 p. 103, 'can be deducted only on the final income tax return filed for the decedent' and 'The decedent's estate cannot deduct any of the loss or carry it over to following years'. Final returns are accepted (person.died_before_65; BUG-0087 notes final returns are in scope), but clcw26.line8 and clcw26.line13 show a carryover to 2026 on a final return and clcw26.decedent_notice fires only on a joint return for a spouse's losses. Executed: fixture stage20.mut.to2026_short_gain_long_loss (single) gives clcw26.line13 = $2,000 with decedent_notice false, and no question identifies a final return. Low; display-only (read by no other line).",
-   "prompt_sha": "54675818d3ff9c030c1881d02ef14d5ab40ac4c0e8a48c98509f5a52956889bc"
+   "class": "out of scope",
+   "gate": "s3.mfs",
+   "evidence": "p550 p. 103; i1040sd p. 10. As the earlier clcw26#2 ruling (prompt_sha 54675818) and the earlier clcw26#3 ruling (prompt_sha 54675818): a 2025 separate return is refused (s3.mfs, through scope), so which spouse had the loss matters only on a later separate return, and the 2025 joint figure is the correct carryover of this joint return; excluded canceled debt (and its attribute reduction) is a Yes to s1.cod_unsupported, which refuses through s1.cod_refused. The decedent's part on a joint return is the notice clcw26.decedent_notice; a final return other than a joint return is clcw26.final_return (BUG-0477's fix).",
+   "prompt_sha": "97c3e7d1a243d694cc7921d910e85107e124b39e1b37134dbd3e9a50d0d4fdd6"
   },
   "unruled:dcprov#1": {
    "class": "presentation",
@@ -247,60 +247,54 @@
    "prompt_sha": "cea13eaf2478c9ca0775173da5aa3086b8a3e8552291b546d0588a1895f9172c"
   },
   "unruled:f5695#1": {
-   "class": "real gap",
-   "bug": "BUG-0478",
-   "evidence": "i5695 p. 1, Costs, 'costs are treated as being paid when the original installation of the item is completed'. The Part I cost help (f5695.line1 to line4, battery_cost) says 'A cost counts in 2025 when the original installation is completed', which handles a 2025 payment for property installed after 2025, but the screens f5695.part1_any and f5695.line5a ask 'Did you pay in 2025 for ...', so a cost paid in 2024 for property installed in 2025 is answered No and never entered. Executed: stage15.f5695.s9 gives s3.line5a $1,225; with part1_any = No (a December 2024 payment), $0. Low.",
-   "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c"
+   "class": "presentation",
+   "evidence": "i5695 p. 4. As the earlier f5695#2 ruling (prompt_sha 2d647bc9): the Part I home address and the statement of additional addresses are filing information; the amounts are asked.",
+   "prompt_sha": "618cbd2413420b890a2b4c646b887b8da467726f53b86e0120bf1ff3f3a49819"
   },
   "unruled:f5695#10": {
    "class": "presentation",
-   "evidence": "i5695 p. 7. The line 29b, 29d and 29f QMID statements; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #11 under prompt_sha 83047376: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c"
-  },
-  "unruled:f5695#11": {
-   "class": "presentation",
-   "evidence": "i5695 p. 6, Line 25b (as the earlier f5695#5 ruling). The enabled-property code is filing information; f5695.line25a asks whether enabling and enabled property were installed in 2025 and names the enabled-property lines, and no amount depends on which code A to G is entered.",
-   "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c"
+   "evidence": "i5695 p. 7. As the earlier f5695#10 ruling (prompt_sha 2d647bc9): the line 29a, 29c and 29e QMIDs and the line 29b, 29d and 29f QMID statements are filing information; f5695.qmid_hp refuses an item without a QMID.",
+   "prompt_sha": "618cbd2413420b890a2b4c646b887b8da467726f53b86e0120bf1ff3f3a49819"
   },
   "unruled:f5695#2": {
    "class": "presentation",
-   "evidence": "i5695 p. 4. The Part I home address and the statement of additional addresses is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #2 under prompt_sha 83047376: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c"
+   "evidence": "i5695 p. 5. The line 17d main-home address is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #3 under prompt_sha 2d647bc9: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "618cbd2413420b890a2b4c646b887b8da467726f53b86e0120bf1ff3f3a49819"
   },
   "unruled:f5695#3": {
    "class": "presentation",
-   "evidence": "i5695 p. 5. The line 17d main-home address is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #3 under prompt_sha 83047376: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c"
+   "evidence": "i5695 p. 6. The line 21c addresses is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #4 under prompt_sha 2d647bc9: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "618cbd2413420b890a2b4c646b887b8da467726f53b86e0120bf1ff3f3a49819"
   },
   "unruled:f5695#4": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 21c addresses is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #4 under prompt_sha 83047376: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c"
+   "evidence": "i5695 p. 6, Line 25b (as the earlier f5695#5 ruling). The enabled-property code is filing information; f5695.line25a asks whether enabling and enabled property were installed in 2025 and names the enabled-property lines, and no amount depends on which code A to G is entered. [Restamped unchanged from the ruling of earlier claim #11 under prompt_sha 2d647bc9: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "618cbd2413420b890a2b4c646b887b8da467726f53b86e0120bf1ff3f3a49819"
   },
   "unruled:f5695#5": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 19b and 19d QMIDs and the line 19e QMID statement; f5695.qmid_doors refuses an item without a QMID is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #6 under prompt_sha 83047376: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c"
+   "evidence": "i5695 p. 6. The line 19b and 19d QMIDs and the line 19e QMID statement; f5695.qmid_doors refuses an item without a QMID is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #5 under prompt_sha 2d647bc9: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "618cbd2413420b890a2b4c646b887b8da467726f53b86e0120bf1ff3f3a49819"
   },
   "unruled:f5695#6": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 20a QMIDs and the line 20b QMID statement; f5695.qmid_windows refuses an item without a QMID is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #7 under prompt_sha 83047376: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c"
+   "evidence": "i5695 p. 6. The line 20a QMIDs and the line 20b QMID statement; f5695.qmid_windows refuses an item without a QMID is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #6 under prompt_sha 2d647bc9: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "618cbd2413420b890a2b4c646b887b8da467726f53b86e0120bf1ff3f3a49819"
   },
   "unruled:f5695#7": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 22a QMID and the line 22b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #8 under prompt_sha 83047376: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c"
+   "evidence": "i5695 p. 6. The line 22a QMID and the line 22b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #7 under prompt_sha 2d647bc9: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "618cbd2413420b890a2b4c646b887b8da467726f53b86e0120bf1ff3f3a49819"
   },
   "unruled:f5695#8": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 23a QMIDs and the line 23b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #9 under prompt_sha 83047376: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c"
+   "evidence": "i5695 p. 6. The line 23a QMIDs and the line 23b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #8 under prompt_sha 2d647bc9: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "618cbd2413420b890a2b4c646b887b8da467726f53b86e0120bf1ff3f3a49819"
   },
   "unruled:f5695#9": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The line 24b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round). [Restamped unchanged from the ruling of earlier claim #10 under prompt_sha 83047376: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c"
+   "evidence": "i5695 p. 6. As the earlier f5695#9 ruling (prompt_sha 2d647bc9): the line 24a QMID and the line 24b QMID statement are filing information; f5695.qmid_furnace refuses an item without a QMID.",
+   "prompt_sha": "618cbd2413420b890a2b4c646b887b8da467726f53b86e0120bf1ff3f3a49819"
   },
   "unruled:f8606#1": {
    "class": "real gap",
@@ -524,23 +518,6 @@
    "evidence": "i1040gi p. 93. person.eligible_educator asks the 900-hour K-12 test word for word, and person.educator_expenses excludes 'home schooling or nonathletic supplies for courses in health or physical education' and is 'reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2'.",
    "prompt_sha": "92f4ea6bce2d894a980c409a39cdab414422b0d60a9715db1b4d4fccac42417f"
   },
-  "unruled:s179#1": {
-   "class": "covered",
-   "line": "asset.s179",
-   "evidence": "p946 pp. 17-18; i4562 p. 5. As the earlier s179#1 and #2 rulings, rechecked: s179.line6 sums person.s179_nonlisted from asset.s179, whose question has land, land improvements, investment property and leased property (with the lessor exceptions) and tax-exempt, governmental and foreign use entered as zero (asset.not179 asks them); asset.screen refuses trade-ins, like-kind exchanges and use predominantly outside the United States; vehicles are scveh entries, where scveh.suv_cap and scveh.s179_bad refuse an SUV election above $31,300.",
-   "prompt_sha": "68e5095a0608a7cd59f11171ce03102c7df268f53c736a2c050bb16ec00756c5"
-  },
-  "unruled:s179#2": {
-   "class": "out of scope",
-   "evidence": "p946 pp. 18-19. A joint return that replaces separate returns after the due date is an amended-return matter; the tool prepares the original return, and a separate return with a section 179 election is refused (s179.line5). [Restamped unchanged from the ruling of earlier claim #3 under prompt_sha 1ca63238: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "68e5095a0608a7cd59f11171ce03102c7df268f53c736a2c050bb16ec00756c5"
-  },
-  "unruled:s179#3": {
-   "class": "real gap",
-   "bug": "BUG-0474",
-   "evidence": "p946 p. 19, \"Net income or loss from a trade or business includes the following items. ... Interest from working capital of your trade or business.\" The passive part is out of scope (sc.passive No refuses through sc.screened), but s179.income_sc/s179.income add only Schedule C line 31 before section 179 and Form 1040 line 1a. Executed stage14.s179.income_limit with $1,000 of interest added: s179.line11 stays $3,000 (line 12 $3,000, line 13 $7,000) where the source gives $4,000 if that interest is working-capital interest.",
-   "prompt_sha": "68e5095a0608a7cd59f11171ce03102c7df268f53c736a2c050bb16ec00756c5"
-  },
   "unruled:s1a#1": {
    "class": "covered",
    "line": "tipjob.qualified",
@@ -585,22 +562,21 @@
   },
   "unruled:sales#1": {
    "class": "real gap",
-   "bug": "BUG-0476",
-   "line": "sales.code",
-   "evidence": "i8949 pp. 5, 11; i1040sd p. 5. A contingent payment debt instrument and accrued market discount are named only in sb.unsupported, which is asked only when taxable interest, ordinary dividends or capital gain distributions are above zero (sb.unsupported_if_income); sales.code and sales.special do not ask about them or the Ordinary box. Executed sales.box.D (no Schedule B income) with sb.unsupported true: no refusal, sd.line16 and f1040.line7a $4,000 capital gain, f1040.line2b $0. Witness: a tax-exempt bond bought at a market discount and sold at a gain.",
-   "prompt_sha": "7117647ede0b04e6ad6106221d5a3d2a42dd5ecb1b783d777392273139359723"
+   "bug": "BUG-0486",
+   "evidence": "i1040sd p. 4 (extraordinary dividends): sales.box classifies from the holding period and names no extraordinary-dividend rule, so a loss that is long-term to the extent of extraordinary qualified dividends is entered short-term (BUG-0486, item 1). The section 1256 part is out of scope as the earlier sales#4 ruling (prompt_sha 7117647e): sd.other_forms names Form 6781 and section 1256 contracts and refuses.",
+   "prompt_sha": "d51fbc852ad4b65c7698636de29c00d1bbc17c527691d53dc19cd047a73eb24c"
   },
   "unruled:sales#2": {
    "class": "out of scope",
    "gate": "sd.other_forms",
-   "evidence": "p550 p. 81; i1040sd p. 6, 'You report this type of ordinary loss on Form 4797, Part II, line 10.' As the earlier sales#2 ruling: sd.other_forms asks about 'gains or losses from (or that belong on) Forms 4797 ...' and refuses (executed on sales.box.D: sd.line16 refuses), which takes in section 1244 and SBIC stock losses.",
-   "prompt_sha": "7117647ede0b04e6ad6106221d5a3d2a42dd5ecb1b783d777392273139359723"
+   "evidence": "i1040sd pp. 5-6. As the earlier sales#3 ruling (prompt_sha 7117647e): a section 475(f) trader's gains and losses belong on Form 4797 Part II, which sd.other_forms names (\"gains or losses from (or that belong on) Forms 4797 ...\") and refuses.",
+   "prompt_sha": "d51fbc852ad4b65c7698636de29c00d1bbc17c527691d53dc19cd047a73eb24c"
   },
   "unruled:sales#3": {
-   "class": "out of scope",
-   "gate": "sd.other_forms",
-   "evidence": "i1040sd pp. 5-6. As the earlier sales#2 ruling: a section 475(f) trader's gains and losses (Form 4797 Part II) and an installment sale (Form 6252) belong on forms that sd.other_forms names ('Forms 4797, 2439, 6252 ...') and refuses.",
-   "prompt_sha": "7117647ede0b04e6ad6106221d5a3d2a42dd5ecb1b783d777392273139359723"
+   "class": "real gap",
+   "bug": "BUG-0486",
+   "evidence": "p550 p. 79, Gains From Certain Constructive Ownership Transactions, \"all or part of the gain may be treated instead as ordinary income\": not asked or refused (BUG-0486, item 2). The other parts are out of scope as the earlier sales#2 ruling (prompt_sha 7117647e) and the earlier sales#3 ruling (prompt_sha 7117647e): an SBIC stock loss belongs on Form 4797 and an installment sale on Form 6252, both named by sd.other_forms, which refuses.",
+   "prompt_sha": "d51fbc852ad4b65c7698636de29c00d1bbc17c527691d53dc19cd047a73eb24c"
   },
   "unruled:sb#1": {
    "class": "presentation",
@@ -608,28 +584,21 @@
    "prompt_sha": "bbaf8cd1c2cc0533d0b5a5b25ef4796e5f8736280c8ad1e9cb20fb7520c021bd"
   },
   "unruled:sc#1": {
-   "class": "covered",
-   "line": "scveh.smr_ok",
-   "evidence": "i1040sc pp. 6-7, 15. As the earlier sc#1 ruling, rechecked: scveh.smr_ok asks the first-year, whole-lease-period and five-vehicle rules and scveh.smr_bad refuses; scveh.lease_smr_bad refuses actual expenses on a leased vehicle after the standard rate; depreciation and lease payments reach lines 13 and 20a only on the actual-expense branches (scveh.is_actual_owned, scveh.is_actual_leased); scveh.miles_commuting carries the converted-vehicle rule. The statement for additional vehicles is filing information.",
-   "prompt_sha": "bf6e1387463ae8b04d8215c3e6b4a33197d34cac877d4b0b49d43d59feb3cf8a"
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "i1040sc p. 13. Near-match of the earlier sc#2 ruling (prompt_sha bf6e1387): a home is real property, which asset.screen names (\"it is real property (a building or a structural component, other than qualified improvement property) or land\") and asset.screened refuses, so no depreciation or section 179 for the home reaches line 13.",
+   "prompt_sha": "c04d4c185ec50b65505e7eef0743292a397c717a0c8804f4eb2aa4814b6b4745"
   },
   "unruled:sc#2": {
    "class": "out of scope",
-   "gate": "asset.screened",
-   "evidence": "i1040sc p. 13, \"You can't deduct any depreciation ... for the portion of your home\" with the simplified method. A home is real property, which asset.screen names (\"it is real property (a building or a structural component, other than qualified improvement property) or land\") and asset.screened refuses, so no home depreciation or section 179 can reach line 13.",
-   "prompt_sha": "bf6e1387463ae8b04d8215c3e6b4a33197d34cac877d4b0b49d43d59feb3cf8a"
+   "gate": "sc.screened",
+   "evidence": "i1040sc pp. 5, 14-15. The claim misses sc.screened: line G (sc.passive, \"Did you 'materially participate' ... and is the business something other than a rental activity?\") answered No refuses the Schedule C through sc.screened, whatever the result, so no passive-activity loss reaches line 31 (as the earlier sc#5 ruling (prompt_sha bf6e1387)); at-risk limits are refused by sc.not_at_risk.",
+   "prompt_sha": "c04d4c185ec50b65505e7eef0743292a397c717a0c8804f4eb2aa4814b6b4745"
   },
   "unruled:sc#3": {
-   "class": "real gap",
-   "bug": "BUG-0475",
-   "evidence": "i1040sc p. 14, \"Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home\"; p. 10, the simplified method replaces actual expenses. sc.line16a, sc.line16b and sc.line23 exclude home mortgage interest and real estate taxes, but sc.line25 (\"Utility expenses of the business only\"), sc.line20b (\"Rent for other business property, such as office space\"), sc.line15 and sc.line21 do not exclude the home's share. Executed stage14.ho.basic with $600 of home utilities on line 25: line 30 $1,000 and line 31 $18,400, where the source gives $19,000.",
-   "prompt_sha": "bf6e1387463ae8b04d8215c3e6b4a33197d34cac877d4b0b49d43d59feb3cf8a"
-  },
-  "unruled:sc#4": {
-   "class": "out of scope",
-   "gate": "s1.ebl",
-   "evidence": "i1040sc p. 1, \"use Form 461 to determine the amount of your excess business loss\". s1.line3 refuses (Form 461) when s1.ebl_loss, the net loss of all Schedules C on the return, exceeds s1.ebl_threshold ($313,000; $626,000 joint, rp-2024-40 section 3.32); other business income and losses that enter Form 461 (Schedule E, F, Form 4797) are refused by scope.schedule1, and wages do not enter it.",
-   "prompt_sha": "bf6e1387463ae8b04d8215c3e6b4a33197d34cac877d4b0b49d43d59feb3cf8a"
+   "class": "presentation",
+   "evidence": "i1040sc p. 5. As the earlier sc#5 ruling: the Form 1099-NEC difference statement is filing information. [Restamped unchanged from the ruling of earlier claim #6 under prompt_sha bf6e1387: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "c04d4c185ec50b65505e7eef0743292a397c717a0c8804f4eb2aa4814b6b4745"
   },
   "unruled:scope#1": {
    "class": "out of scope",
@@ -787,16 +756,6 @@
    "prompt_sha": "632cbac861d586676e0668c49a5764856b125341b959649bb5aa3dfa2fabd8e2",
    "line": "person.ira_trad"
   },
-  "unruled:sc#6": {
-   "class": "presentation",
-   "evidence": "i1040sc p. 5. As the earlier sc#5 ruling: the Form 1099-NEC difference statement is filing information. [Restamped unchanged from the ruling of earlier claim #3 under prompt_sha 8dea2914: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "bf6e1387463ae8b04d8215c3e6b4a33197d34cac877d4b0b49d43d59feb3cf8a"
-  },
-  "unruled:sc#7": {
-   "class": "presentation",
-   "evidence": "i1040sc p. 8. As the earlier sc#6 ruling: the statements and margin notations for lines 16a and 16b are filing information; the interest is entered. [Restamped unchanged from the ruling of earlier claim #4 under prompt_sha 8dea2914: same form, same quoted text, same cited page, same item and effect.]",
-   "prompt_sha": "bf6e1387463ae8b04d8215c3e6b4a33197d34cac877d4b0b49d43d59feb3cf8a"
-  },
   "unruled:eic#4": {
    "class": "presentation",
    "evidence": "i1040gi p. 41: the \"Full-time student\" and \"Permanently and totally disabled\" boxes on row (6), the row (5) boxes and the address-block box are checkboxes on Form 1040; as the earlier eic#3 ruling, they are filing information and the tests behind them are asked (dependent.eic_child, eic.us_home).",
@@ -860,17 +819,6 @@
    "evidence": "i1040gi pp. 109-110. s1a.line23_total sums carloan.col_iii, which subtracts carloan.col_ii (the Schedule C part, carloan.col_ii_input; Schedules E and F are refused by scope.schedule1); carloan.mixed/nonqualifying exclude negative equity, insurance and trailers, and carloan.refi_balance limits a refinancing to the balance at refinancing. Each entry is named by its VIN; writing the VIN on the return is filing information.",
    "prompt_sha": "c1e801ce9956e20b7564a71b5df3cbc956c0fe08b133e0c2a9ba317a7255348e"
   },
-  "unruled:sc#5": {
-   "class": "out of scope",
-   "gate": "sc.screened",
-   "evidence": "i1040sc p. 10, \"You can't use the simplified method to figure a deduction for rental use of your home.\" Renting out part of a home is a rental activity: sc.passive asks whether \"the business [is] something other than a rental activity\" and No refuses through sc.screened, and rental real estate on Schedule E is refused by scope.schedule1.",
-   "prompt_sha": "bf6e1387463ae8b04d8215c3e6b4a33197d34cac877d4b0b49d43d59feb3cf8a"
-  },
-  "unruled:sc#8": {
-   "class": "presentation",
-   "evidence": "i1040sc pp. 3-5, lines A, B, E, H and I. The business description and code, address, the started-or-acquired box and the Forms 1099 question are header entries that change no amount.",
-   "prompt_sha": "bf6e1387463ae8b04d8215c3e6b4a33197d34cac877d4b0b49d43d59feb3cf8a"
-  },
   "unruled:scveh#2": {
    "class": "out of scope",
    "gate": "sc.screened",
@@ -897,25 +845,13 @@
   "unruled:sales#4": {
    "class": "out of scope",
    "gate": "sd.other_forms",
-   "evidence": "p550 p. 82. As the earlier sales#3 ruling: sd.other_forms names Form 6781 and says 'Count section 1256 contracts', and refuses Schedule D, so a section 1256 contract is not classified by holding period.",
-   "prompt_sha": "7117647ede0b04e6ad6106221d5a3d2a42dd5ecb1b783d777392273139359723"
+   "evidence": "p550 p. 81; i8949 p. 10. As the earlier sales#2 ruling (prompt_sha 7117647e): a section 1244 stock loss is an ordinary loss on Form 4797, which sd.other_forms names and refuses. Code T (the broker's box 2 type differs from the filer's records) changes no amount: sales.box is classified from records, as the code instructs, and the code itself is filing information.",
+   "prompt_sha": "d51fbc852ad4b65c7698636de29c00d1bbc17c527691d53dc19cd047a73eb24c"
   },
   "unruled:sales#5": {
    "class": "presentation",
-   "evidence": "i8949 p. 6, 'If you don't use the actual cost, attach an explanation of your basis.' The explanation is an attachment; sales.correct_basis already asks the non-cost basis rules that fix the amount.",
-   "prompt_sha": "7117647ede0b04e6ad6106221d5a3d2a42dd5ecb1b783d777392273139359723"
-  },
-  "unruled:clcw26#2": {
-   "class": "out of scope",
-   "gate": "s3.mfs",
-   "evidence": "p550 p. 103; i1040sd p. 10. A 2025 separate return is refused (s3.mfs, through scope); separate 2024 carryovers combined on a 2025 joint return, and a joint 2024 carryover with someone other than the 2025 spouse, are refused by clcw.spouse_screen. Which spouse had the loss matters only on a 2026 separate return, outside this tax year; the 2025 joint figure on clcw26.line8/line13 is correct for the 2025 joint return.",
-   "prompt_sha": "54675818d3ff9c030c1881d02ef14d5ab40ac4c0e8a48c98509f5a52956889bc"
-  },
-  "unruled:clcw26#3": {
-   "class": "out of scope",
-   "gate": "s1.cod_unsupported",
-   "evidence": "i1040sd p. 10, 'If you excluded canceled debt from income in 2025, see Pub. 4681' (as the earlier clcw26#1 ruling). A canceled debt 'otherwise excluded from income (Form 982 ...)' is a Yes to s1.cod_unsupported, which refuses s1.cod_refused, reached from s1.line8c whenever s1.cod_any is Yes and an amount is entered; so no return with excluded canceled debt (and its attribute reduction) is computed.",
-   "prompt_sha": "54675818d3ff9c030c1881d02ef14d5ab40ac4c0e8a48c98509f5a52956889bc"
+   "evidence": "i1040sd p. 6. Expired options: the \"EXPIRED\" notation and the placement of the expiration date are Form 8949 entries; the amounts are asked (sales.proceeds, sales.reported_basis, and the option rules in sales.box), and no amount depends on the notation.",
+   "prompt_sha": "d51fbc852ad4b65c7698636de29c00d1bbc17c527691d53dc19cd047a73eb24c"
   },
   "unruled:f8863#3": {
    "class": "covered",
@@ -928,6 +864,46 @@
    "line": "person.sav_student",
    "evidence": "f8880 p. 2, Who Can Take This Credit. person.sav_student, read by person.sav_ineligible (and so f8880.inelig_a / inelig_b), asks 'during any part of 5 calendar months of 2025, were you enrolled as a full-time student at a school, or did you take a full-time, on-farm training course ...' and excludes on-the-job training courses, correspondence schools and Internet-only schools, word for word.",
    "prompt_sha": "1f194d3e8903967d570ee4883018a4a459cd6041406b9b4b9ff66d67eadc5aab"
+  },
+  "unruled:sales#6": {
+   "class": "presentation",
+   "evidence": "i8949 p. 6, 'If you don't use the actual cost, attach an explanation of your basis.' The explanation is an attachment; sales.correct_basis already asks the non-cost basis rules that fix the amount. [Restamped unchanged from the ruling of earlier claim #5 under prompt_sha 7117647e: same form, same quoted text, same cited page, same item and effect.]",
+   "prompt_sha": "d51fbc852ad4b65c7698636de29c00d1bbc17c527691d53dc19cd047a73eb24c"
+  },
+  "unruled:sales#7": {
+   "class": "real gap",
+   "bug": "BUG-0486",
+   "evidence": "p550 p. 87, \"Loss from a wash sale of one block of stock or securities cannot be used to reduce any gains on identical blocks sold the same day\": sales.wash_loss is capped at the row's loss (sales.wash_bad) and nothing says to enter each block as its own row (BUG-0486, item 3).",
+   "prompt_sha": "d51fbc852ad4b65c7698636de29c00d1bbc17c527691d53dc19cd047a73eb24c"
+  },
+  "unruled:s179#1": {
+   "class": "out of scope",
+   "gate": "asset.screened",
+   "evidence": "p946 pp. 17-18; i4562 p. 5. As the rulings of the earlier claims s179#1 and s179#2 (prompt_sha 6427f6d6): property acquired with a trade-in, in a like-kind exchange or from a related person, and property used predominantly outside the United States, are refused by asset.screen through asset.screened (and scveh.screen for vehicles), so no traded-in or related-party cost reaches line 2; land, land improvements, investment property, leased property (with the lessor exceptions) and tax-exempt, governmental and foreign use are entered as zero section 179 cost through asset.not179 and asset.s179.",
+   "prompt_sha": "3a9a0d5bd02e76fc3bd64b5f5c138864c9482b14f004be540b40da30cabd6471"
+  },
+  "unruled:s179#2": {
+   "class": "covered",
+   "line": "s179.line6",
+   "evidence": "i4562 p. 5, Line 6. s179.line6 sums person.s179_nonlisted, the elections of non-listed property only; listed property reaches line 7 (s179.line7, person.s179_listed). An election above the property's business cost is refused (asset.s179_bad, \"the election is more than the property's business cost\"; scveh.s179_bad for vehicles).",
+   "prompt_sha": "3a9a0d5bd02e76fc3bd64b5f5c138864c9482b14f004be540b40da30cabd6471"
+  },
+  "unruled:s179#3": {
+   "class": "covered",
+   "line": "scveh.s179_bad",
+   "evidence": "p946 p. 18. As the ruling of the earlier claim s179#2 (prompt_sha 6427f6d6): a vehicle is a scveh entry, where scveh.suv_cap and scveh.s179_bad refuse a section 179 election above $31,300 for a heavy SUV.",
+   "prompt_sha": "3a9a0d5bd02e76fc3bd64b5f5c138864c9482b14f004be540b40da30cabd6471"
+  },
+  "unruled:s179#4": {
+   "class": "out of scope",
+   "evidence": "p946 pp. 18-19. A joint return that replaces separate returns after the due date is an amended-return matter; the tool prepares the original return, and a separate return with a section 179 election is refused (s179.line5). [As the ruling of the earlier claim s179#4 (prompt_sha 6427f6d6); quote now with the next sentence.]",
+   "prompt_sha": "3a9a0d5bd02e76fc3bd64b5f5c138864c9482b14f004be540b40da30cabd6471"
+  },
+  "unruled:s179#5": {
+   "class": "out of scope",
+   "gate": "sc.screened",
+   "evidence": "i4562 p. 5. As the ruling of the earlier claim s179#3 (prompt_sha 6427f6d6): s179.income_sc sums only Schedules C, and sc.passive (line G, \"Did you 'materially participate' in the operation of this business\") answered No refuses through sc.screened; material participation is more than the meaningful participation of active conduct, so every business counted is actively conducted. Other trades or businesses are refused by scope.schedule1.",
+   "prompt_sha": "3a9a0d5bd02e76fc3bd64b5f5c138864c9482b14f004be540b40da30cabd6471"
   }
  }
 }

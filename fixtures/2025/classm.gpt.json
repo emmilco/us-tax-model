@@ -572,7 +572,8 @@
         "person[taxpayer].retirement[r1].code_screen": false,
         "person[taxpayer].retirement[r1].exception": "none",
         "person[taxpayer].retirement[r1].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "f8962.line1": {
@@ -1662,7 +1663,8 @@
         "person[taxpayer].retirement[r2].code_screen": false,
         "person[taxpayer].retirement[r2].exception": "none",
         "person[taxpayer].retirement[r2].exc_amount": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "clcw26.final_return": false
       },
       "expect": {
         "f8962.line1": {

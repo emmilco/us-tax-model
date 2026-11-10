@@ -667,6 +667,51 @@
           "cents": -50000
         }
       }
+    },
+    {
+      "id": "bug0476.sales.market_discount_code_d",
+      "covers": [
+        "sales"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "BUG-0476, predicted by hand from i8949 p. 11 (Worksheet for Accrued Market Discount Adjustment in Column (g), \"enter code “D” for the transaction in column (f)\") and i1040sd p. 4, Market Discount Bonds, before recording: the inputs of sales.box.D (one long-term sale, a $4,000 gain, no interest or dividends) as the sale of a tax-exempt municipal bond bought at a market discount, with accrued market discount in Form 1099-B box 1f. The adjustment question now names code D, answered other; the code is refused, so Schedule D line 16 and Form 1040 line 7a are refused rather than a $4,000 capital gain.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "D",
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 200000,
+        "sales[a].code": "other"
+      },
+      "expect": {
+        "sd.line16": {
+          "kind": "refusal",
+          "gate": "sales[a].bad_code",
+          "form": "Form 8949 adjustment instructions",
+          "remedy": "Only applicable B and W adjustments are supported. Review the required code and prepare the unsupported adjustment.",
+          "cite": {
+            "doc": "i8949",
+            "locator": "pp. 7–11, columns (e) through (h), codes B and W",
+            "revision": "2025; printed date 2026-01-20",
+            "snapshot": "f077991c83b086810c46cbad3755e0f126cb8dfd88cf8bf8ab2d5605d6e7ab45",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line7a": {
+          "kind": "refusal",
+          "gate": "sales[a].bad_code",
+          "form": "Form 8949 adjustment instructions",
+          "remedy": "Only applicable B and W adjustments are supported. Review the required code and prepare the unsupported adjustment.",
+          "cite": {
+            "doc": "i8949",
+            "locator": "pp. 7–11, columns (e) through (h), codes B and W",
+            "revision": "2025; printed date 2026-01-20",
+            "snapshot": "f077991c83b086810c46cbad3755e0f126cb8dfd88cf8bf8ab2d5605d6e7ab45",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

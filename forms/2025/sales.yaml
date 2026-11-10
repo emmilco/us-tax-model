@@ -137,18 +137,28 @@ form:
     - id: sales.code
       printed: (helper)
       label: "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling
-        expenses or option premiums the broker report does not reflect"
+        expenses or option premiums the broker report does not reflect, code D for a bond with accrued market discount,
+        or code O for a contingent payment debt instrument with the Ordinary box checked"
       type: Enum(sales_code)
       expr:
         op: input
         source: "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling
           expenses or option premiums that the Form 1099-B (or substitute statement) does not reflect in its proceeds
-          or basis"
+          or basis; code D for the sale or retirement of a bond or other debt instrument with accrued market discount
+          (such as an amount in box 1f of Form 1099-B), whose gain is interest income up to that discount even if the
+          bond's interest is tax-exempt; or code O for a taxable contingent payment debt instrument (such as one
+          reported with the Ordinary box in box 2 of Form 1099-B checked)"
       cite:
         doc: i8949
         locator: pp. 7–11, columns (e) through (h), codes B and W; p. 6, Column (d)—Proceeds (Sales Price), "If there are
           any selling expenses or option premiums that aren't reflected on the form or statement you received (by an
-          adjustment to either the proceeds or basis shown)"
+          adjustment to either the proceeds or basis shown)"; p. 11, Worksheet for Accrued Market Discount Adjustment in
+          Column (g), "reporting the sale or retirement of a market discount bond, enter code “D” for the transaction in
+          column (f)"; p. 12, Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g), "reporting the
+          sale of a taxable contingent payment debt instrument subject to the noncontingent bond method, enter code “O”";
+          p. 10, "with the Ordinary box in box 2 on Form 1099-B or box 6 on Form 1099-DA checked and the security is a
+          taxable contingent payment debt instrument"; i1040sd p. 4, Market Discount Bonds, "a capital gain from the
+          disposition of a market discount bond is treated as interest income to the extent of accrued market discount"
     - id: sales.special
       printed: (helper)
       label: |-

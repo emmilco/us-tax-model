@@ -777,6 +777,342 @@
           "cents": 0
         }
       }
+    },
+    {
+      "id": "bug0474.s179.wc_interest",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0474, predicted by hand from p946 p. 19 (Taxable income, \"Interest from working capital of your trade or business\") and i4562 p. 5, Line 11, before recording: the inputs of stage14.s179.income_limit with $1,000 of taxable interest, all of it from the working capital of the business (its operating account). Business income before section 179 $3,000 plus the $1,000 interest is $4,000; line 11 $4,000; line 12 the smaller of lines 9 and 10 ($10,000) and line 11, $4,000; line 13 $6,000 carried to 2026; the one Schedule C deducts $4,000 on line 13, so line 31 is $3,000 less $4,000, -$1,000.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 300000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].s179": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].bonus_choice": "none",
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 100000,
+        "s179.wc_interest": 100000
+      },
+      "expect": {
+        "s179.wc_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s179.income": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s179.line11": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].sc[desk].line31": {
+          "kind": "money",
+          "cents": -100000
+        }
+      }
+    },
+    {
+      "id": "bug0474.s179.wc_interest_part",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0474, predicted by hand from p946 p. 19 and i4562 p. 5, Line 11, before recording: the inputs of stage14.s179.income_limit with $1,000 of taxable interest, $400 of it from the business's working capital and $600 from personal savings. Line 11 $3,000 plus $400, $3,400; line 12 $3,400; line 13 $10,000 less $3,400, $6,600.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 300000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].s179": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].bonus_choice": "none",
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 100000,
+        "s179.wc_interest": 40000
+      },
+      "expect": {
+        "s179.line11": {
+          "kind": "money",
+          "cents": 340000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 340000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 660000
+        }
+      }
+    },
+    {
+      "id": "bug0474.s179.wc_interest_over",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "BUG-0474, predicted by hand before recording: the inputs of stage14.s179.income_limit with $1,000 of taxable interest and $1,500 entered as working-capital interest; the working-capital interest is part of the taxable interest on Form 1040 line 2b (p946 p. 19), so the entry is refused at the business income figure and line 11.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 300000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].s179": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].bonus_choice": "none",
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 100000,
+        "s179.wc_interest": 150000
+      },
+      "expect": {
+        "s179.income": {
+          "kind": "refusal",
+          "gate": "s179.wc_over",
+          "form": "Interest from working capital more than the taxable interest on the return",
+          "remedy": "The working-capital interest is part of the taxable interest on Form 1040, line 2b; enter no more than that amount.",
+          "cite": {
+            "doc": "p946",
+            "locator": "p. 19, Taxable income, \"Interest from working capital of your trade or business\"",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4",
+            "tax_year": 2025
+          }
+        },
+        "s179.line11": {
+          "kind": "refusal",
+          "gate": "s179.wc_over",
+          "form": "Interest from working capital more than the taxable interest on the return",
+          "remedy": "The working-capital interest is part of the taxable interest on Form 1040, line 2b; enter no more than that amount.",
+          "cite": {
+            "doc": "p946",
+            "locator": "p. 19, Taxable income, \"Interest from working capital of your trade or business\"",
+            "revision": "For use in preparing 2025 returns",
+            "snapshot": "07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "bug0474.s179.interest_line11_only",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0474, predicted by hand from i4562 p. 5, Line 11, and p946 p. 19 before recording: the inputs of stage14.s179.income_limit with $8,000 of wages (Form 1040 line 1a) and $1,000 of taxable interest, all from the business's working capital. Business income is $3,000 plus $8,000 plus $1,000, $12,000, less than line 5, so line 11 is $12,000 (the interest counts on line 11 even where it does not change line 12); line 12 the smaller of lines 9 and 10 ($10,000) and line 11, $10,000; line 13 $0.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 300000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].s179": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].bonus_choice": "none",
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 100000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 800000,
+        "person[taxpayer].w2[emp_a].box5": 800000,
+        "person[taxpayer].w2[emp_a].box6": 11600,
+        "s179.wc_interest": 100000
+      },
+      "expect": {
+        "s179.wc_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s179.income": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "s179.line11": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "bug0474.s179.wc_interest_carryover_only",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0474, predicted by hand from i4562 p. 5, Lines 10 to 12, and p946 p. 19 before recording: the inputs of stage14.s179.carryover_no_property (receipts $50,000, a $3,000 carryover from 2024, no 2025 property) with $1,000 of taxable interest, all from the business's working capital. A section 179 deduction is figured (lines 9 and 10 add to $3,000, line 9 $0) and business income is below line 5, so the question is asked: business income $51,000; line 11 $51,000; line 12 $3,000.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "s179.line10": 300000,
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 100000,
+        "s179.wc_interest": 100000
+      },
+      "expect": {
+        "s179.wc_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s179.income": {
+          "kind": "money",
+          "cents": 5100000
+        },
+        "s179.line11": {
+          "kind": "money",
+          "cents": 5100000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "bug0474.s179.income_above_line5",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0474, predicted by hand from i4562 p. 5, Line 11, before recording: the inputs of stage14.s179.income_limit with $2,600,000 of wages and $1,000 of taxable interest. Business income including wages, $3,000 plus $2,600,000, is not less than line 5 ($2,500,000), so line 11 is line 5 and the working-capital question is not asked (a $1,000 answer recorded here is not read): business income $2,603,000; line 11 $2,500,000; line 12 $10,000; line 13 $0.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 300000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].s179": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].bonus_choice": "none",
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 100000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 260000000,
+        "person[taxpayer].w2[emp_a].box5": 17610000,
+        "person[taxpayer].w2[emp_a].box6": 1091820,
+        "s179.wc_interest": 100000
+      },
+      "expect": {
+        "s179.wc_ask": {
+          "kind": "bool",
+          "value": false
+        },
+        "s179.income": {
+          "kind": "money",
+          "cents": 260300000
+        },
+        "s179.line11": {
+          "kind": "money",
+          "cents": 250000000
+        },
+        "s179.line12": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "s179.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "stage14.s179.line2_prior_vehicle",
+      "covers": [
+        "s179"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand from i4562 p. 4, Line 2 (\"Enter the total cost of all section 179 property you placed in service during the tax year\"), before recording: the inputs of stage14.veh.2024_prior179 (a $15,000 car placed in service in 2024, actual expenses, its $8,500 basis left after the 2024 section 179 deduction on its worksheet line 15). No property is placed in service in 2025, so Form 4562 line 2 is $0; the car's remaining basis is not 2025 section 179 cost. This replaces the class M case that asserted line 2 on such a vehicle before the round's class M rerun of s179 regenerated its cases.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 7000,
+        "person[taxpayer].sc[r].scveh[car].miles_other": 3000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].prior_179": 200000,
+        "person[taxpayer].sc[r].scveh[car].placed": "y2024",
+        "person[taxpayer].sc[r].scveh[car].cost": 1500000
+      },
+      "expect": {
+        "s179.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[r].scveh[car].cost179_o": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
     }
   ]
 }

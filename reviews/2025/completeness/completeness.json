@@ -336,33 +336,11 @@
  },
  {
   "form": "clcw26",
-  "prompt_sha": "54675818d3ff9c030c1881d02ef14d5ab40ac4c0e8a48c98509f5a52956889bc",
+  "prompt_sha": "97c3e7d1a243d694cc7921d910e85107e124b39e1b37134dbd3e9a50d0d4fdd6",
   "claims": [
    {
-    "item": "clcw26.decedent_notice",
+    "item": "clcw26.carries",
     "sentences": [
-     {
-      "quote": "A capital loss sustained by a decedent during the decedent’s last tax year (or carried over to that year from an earlier year) can be deducted only on the final income tax return filed for the decedent.",
-      "page": "p550 p. 103"
-     },
-     {
-      "quote": "The decedent's estate cannot deduct any of the loss or carry it over to following years.",
-      "page": "p550 p. 103"
-     }
-    ],
-    "quote": "A capital loss sustained by a decedent during the decedent’s last tax year (or carried over to that year from an earlier year) can be deducted only on the final income tax return filed for the decedent. / The decedent's estate cannot deduct any of the loss or carry it over to following years.",
-    "page": "p550 p. 103",
-    "why_uncovered": "The notice only covers losses of a spouse who died in 2025. Nothing handles the case where the filer is the decedent and this is their final return. There, no carryover to 2026 exists at all. Yet lines 8 and 13 would still report a short-term or long-term carryover, and no question or refusal identifies a deceased filer.",
-    "closest_item": "clcw26.decedent_notice",
-    "effect": "amount"
-   },
-   {
-    "item": "clcw26.line13",
-    "sentences": [
-     {
-      "quote": "If you and your spouse once filed separate returns and are now filing a joint return, combine your separate capital loss carryovers.",
-      "page": "p550 p. 103"
-     },
      {
       "quote": "However, if you and your spouse once filed a joint return and are now filing separate returns, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss.",
       "page": "p550 p. 103"
@@ -370,26 +348,16 @@
      {
       "quote": "If you and your spouse once filed a joint return and are filing separate returns for 2025, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss.",
       "page": "i1040sd p. 10"
-     }
-    ],
-    "quote": "If you and your spouse once filed separate returns and are now filing a joint return, combine your separate capital loss carryovers. / However, if you and your spouse once filed a joint return and are now filing separate returns, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss. / If you and your spouse once filed a joint return and are filing separate returns for 2025, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss.",
-    "page": "p550 p. 103; i1040sd p. 10",
-    "why_uncovered": "On a joint 2025 return, lines 8 and 13 give only a combined carryover. Nothing tracks or reports which spouse's losses make up that amount. That split decides what each spouse may deduct if they file separately in 2026. No question asks for the split and no refusal covers it. The decedent notice covers only a spouse's death, not a later switch to separate returns.",
-    "closest_item": "clcw26.line13",
-    "effect": "amount"
-   },
-   {
-    "item": "clcw26.show",
-    "sentences": [
+     },
      {
       "quote": "If you excluded canceled debt from income in 2025, see Pub. 4681.",
       "page": "i1040sd p. 10"
      }
     ],
-    "quote": "If you excluded canceled debt from income in 2025, see Pub. 4681.",
-    "page": "i1040sd p. 10",
-    "why_uncovered": "Excluding canceled debt (Form 982) requires reducing tax attributes, and capital loss carryovers are among them. The encoding does not ask whether canceled debt was excluded in 2025. It also does not reduce the line 8 or line 13 carryover for this, and no refusal on this form or in HANDLED ELSEWHERE covers excluded canceled debt.",
-    "closest_item": "clcw26.show",
+    "quote": "However, if you and your spouse once filed a joint return and are now filing separate returns, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss. / If you and your spouse once filed a joint return and are filing separate returns for 2025, any capital loss carryover from the joint return can be deducted only on the return of the spouse who actually had the loss. / If you excluded canceled debt from income in 2025, see Pub. 4681.",
+    "page": "p550 p. 103; i1040sd p. 10",
+    "why_uncovered": "On a joint return, the encoding computes one combined short-term and long-term carryover to 2026. It does not split that carryover by the spouse who actually had the loss, and it does not ask which spouse had it. The only spouse-attribution it handles is the decedent notice. No HANDLED ELSEWHERE refusal covers attributing a joint-return carryover to the spouse who had the loss. The worksheet also never asks whether canceled debt was excluded from income in 2025. That exclusion can reduce the capital loss carryover under the Pub. 4681 attribute-reduction rules, and nothing refuses that case.",
+    "closest_item": "clcw26.carries",
     "effect": "amount"
    }
   ],
@@ -413,7 +381,7 @@
     ]
    }
   ],
-  "cost": 0.08352399999999999,
+  "cost": 0.076816,
   "model": "claude-opus-5-5"
  },
  {
@@ -1980,28 +1948,10 @@
  },
  {
   "form": "f5695",
-  "prompt_sha": "2d647bc9e87883dc2fecb7879650ec1721c8eb0bb129db49699e6f08cee7da9c",
+  "prompt_sha": "618cbd2413420b890a2b4c646b887b8da467726f53b86e0120bf1ff3f3a49819",
   "claims": [
    {
-    "item": "f5695.part1_any",
-    "sentences": [
-     {
-      "quote": "For purposes of both credits, costs are treated as being paid when the original installation of the item is completed, or, in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins.",
-      "page": "i5695 p. 1"
-     },
-     {
-      "quote": "You can’t claim residential clean energy credits for expenditures made after December 31, 2025.",
-      "page": "i5695 p. 1"
-     }
-    ],
-    "quote": "For purposes of both credits, costs are treated as being paid when the original installation of the item is completed, or, in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins. / You can’t claim residential clean energy credits for expenditures made after December 31, 2025.",
-    "page": "i5695 p. 1",
-    "why_uncovered": "The Part I questions (part1_any and lines 1–4 and the battery cost) ask what was paid in 2025, not when the original installation was completed. part2_any applies the installation-completion timing to Part II only. construction_later covers only construction and reconstruction of a home. Nothing moves a Part I cost to the year of installation, so two cases are handled wrong. A cost paid in 2024 for property installed in 2025 is missed. A cost paid in 2025 for property whose installation is completed after 2025 is counted, although it is treated as an expenditure made after December 31, 2025.",
-    "closest_item": "f5695.part1_any",
-    "effect": "amount"
-   },
-   {
-    "item": "f5695.line1",
+    "item": "f5695.line6a",
     "sentences": [
      {
       "quote": "In the section above line 1, enter the complete address of the home where you installed the qualified residential clean energy property or technology associated with lines 1 through 4 and 5b.",
@@ -2014,8 +1964,8 @@
     ],
     "quote": "In the section above line 1, enter the complete address of the home where you installed the qualified residential clean energy property or technology associated with lines 1 through 4 and 5b. / If you made improvements to more than one home, list the complete address of the home with the greatest total cost in the section above line 1. Then, attach a statement listing the additional addresses to Form 5695.",
     "page": "i5695 p. 4",
-    "why_uncovered": "No line, question or refusal collects the Part I home address. Nothing collects the additional addresses or produces the required attached statement.",
-    "closest_item": "f5695.line1",
+    "why_uncovered": "The Part I cost questions ask only for amounts. No item collects the home's address, selects the home with the greatest cost, or produces the statement of additional addresses.",
+    "closest_item": "f5695.line6a",
     "effect": "presentation"
    },
    {
@@ -2028,7 +1978,7 @@
     ],
     "quote": "Line 17d. Enter the complete address of your main home during 2025.",
     "page": "i5695 p. 5",
-    "why_uncovered": "Line 17d is not encoded, and no question asks for the main home address.",
+    "why_uncovered": "Line 17a asks whether the improvements are in the main home and limits the credit to one main home. No item collects the line 17d address.",
     "closest_item": "f5695.line17a",
     "effect": "presentation"
    },
@@ -2042,8 +1992,22 @@
     ],
     "quote": "Line 21c. Enter the full address of each home where you installed qualified energy property.",
     "page": "i5695 p. 6",
-    "why_uncovered": "Line 21c is not encoded, and no question collects the addresses of the homes where Section B property was installed.",
+    "why_uncovered": "Line 21a is a yes/no question. No item collects the address of each home where qualified energy property was installed.",
     "closest_item": "f5695.line21a",
+    "effect": "presentation"
+   },
+   {
+    "item": "f5695.line25a",
+    "sentences": [
+     {
+      "quote": "Line 25b. Enter the code for the type(s) of enabled property from the following list.",
+      "page": "i5695 p. 6"
+     }
+    ],
+    "quote": "Line 25b. Enter the code for the type(s) of enabled property from the following list.",
+    "page": "i5695 p. 6",
+    "why_uncovered": "The line 25a question describes the enabled property types but does not record which ones apply. No item produces the line 25b code(s) (A–G).",
+    "closest_item": "f5695.line25a",
     "effect": "presentation"
    },
    {
@@ -2064,7 +2028,7 @@
     ],
     "quote": "Line 19b. Enter the QMID for the exterior door you reported on line 19a. / Line 19d. Enter the QMID(s) and amount(s) you paid for the two next most expensive qualifying exterior doors in 2025. / If you enter an amount on line 19e, attach a statement to your return listing the QMID and cost of each item included on line 19e.",
     "page": "i5695 p. 6",
-    "why_uncovered": "The encoding only asks whether a valid QMID exists for each door. It never collects the QMID values to enter on lines 19b and 19d. It also does not produce the statement required when line 19e has an amount.",
+    "why_uncovered": "The encoding asks only whether a valid QMID exists for each door and refuses if not. It does not collect the QMIDs to enter on lines 19b and 19d, or produce the itemized QMID and cost statement for line 19e.",
     "closest_item": "f5695.qmid_doors",
     "effect": "presentation"
    },
@@ -2082,7 +2046,7 @@
     ],
     "quote": "Line 20a. Enter the QMID and amounts you paid for the four most expensive exterior windows and skylights that meet Energy Star certification requirements on lines (i) through (iv). / If you enter an amount on line 20b, attach a statement to your return listing the QMID and cost of each item included on line 20b.",
     "page": "i5695 p. 6",
-    "why_uncovered": "The QMID values for lines 20a(i)–(iv) are never collected. The statement required for line 20b is not produced.",
+    "why_uncovered": "Only a yes/no on having QMIDs is asked. The QMIDs for lines 20a(i)–(iv) are not collected, and the line 20b itemized statement is not produced.",
     "closest_item": "f5695.qmid_windows",
     "effect": "presentation"
    },
@@ -2100,7 +2064,7 @@
     ],
     "quote": "Line 22a. Enter the QMID and amount you paid for the most expensive central air conditioner that achieves the highest efficiency tier that has been established by the Consortium for Energy Efficiency (CEE) that is in effect as of the beginning of the calendar year in which the property is placed in service. / If you enter an amount on line 22b, attach a statement to your return listing the QMID and cost of each item included on line 22b.",
     "page": "i5695 p. 6",
-    "why_uncovered": "The line 22a QMID value is never collected. The statement required for line 22b is not produced.",
+    "why_uncovered": "Only a yes/no on having QMIDs is asked. The line 22a QMID is not collected, and the line 22b itemized statement is not produced.",
     "closest_item": "f5695.qmid_ac",
     "effect": "presentation"
    },
@@ -2118,7 +2082,7 @@
     ],
     "quote": "Line 23a. Enter the QMID and amounts you paid for the two most expensive natural gas, propane, or oil water heaters that achieve the highest efficiency tier established by the CEE that is in effect as of the beginning of the calendar year in which the property is placed in service. / If you enter an amount on line 23b, attach a statement to your return listing the QMID and cost of each item included on line 23b.",
     "page": "i5695 p. 6",
-    "why_uncovered": "The line 23a QMID values are never collected. The statement required for line 23b is not produced.",
+    "why_uncovered": "Only a yes/no on having QMIDs is asked. The line 23a QMIDs are not collected, and the line 23b itemized statement is not produced.",
     "closest_item": "f5695.qmid_wh",
     "effect": "presentation"
    },
@@ -2126,13 +2090,17 @@
     "item": "f5695.qmid_furnace",
     "sentences": [
      {
+      "quote": "Line 24a. Enter the QMID and amount you paid for the most expensive natural gas, propane, or oil furnace or hot water boilers that achieve the highest efficiency tier established by the CEE that is in effect as of the beginning of the calendar year in which the property is placed in service.",
+      "page": "i5695 p. 6"
+     },
+     {
       "quote": "If you enter an amount on line 24b, attach a statement to your return listing the QMID and cost of each item included on line 24b.",
       "page": "i5695 p. 6"
      }
     ],
-    "quote": "If you enter an amount on line 24b, attach a statement to your return listing the QMID and cost of each item included on line 24b.",
+    "quote": "Line 24a. Enter the QMID and amount you paid for the most expensive natural gas, propane, or oil furnace or hot water boilers that achieve the highest efficiency tier established by the CEE that is in effect as of the beginning of the calendar year in which the property is placed in service. / If you enter an amount on line 24b, attach a statement to your return listing the QMID and cost of each item included on line 24b.",
     "page": "i5695 p. 6",
-    "why_uncovered": "The line 24a QMID value is never collected. The statement required for line 24b is not produced.",
+    "why_uncovered": "Only a yes/no on having QMIDs is asked. The line 24a QMID is not collected, and the line 24b itemized statement is not produced.",
     "closest_item": "f5695.qmid_furnace",
     "effect": "presentation"
    },
@@ -2150,26 +2118,16 @@
      {
       "quote": "If you enter an amount on line 29f, attach a statement to your return listing the QMID and cost of each item included on line 29f.",
       "page": "i5695 p. 7"
-     }
-    ],
-    "quote": "If you enter an amount on line 29b, attach a statement to your return listing the QMID and cost of each item included on line 29b. / If you enter an amount on line 29d, attach a statement to your return listing the QMID and cost of each item included on line 29d. / If you enter an amount on line 29f, attach a statement to your return listing the QMID and cost of each item included on line 29f.",
-    "page": "i5695 p. 7",
-    "why_uncovered": "The QMID values for lines 29a, 29c and 29e are never collected. The statements required for lines 29b, 29d and 29f are not produced.",
-    "closest_item": "f5695.qmid_hp",
-    "effect": "presentation"
-   },
-   {
-    "item": "f5695.line25a",
-    "sentences": [
+     },
      {
-      "quote": "Line 25b. Enter the code for the type(s) of enabled property from the following list.",
-      "page": "i5695 p. 6"
+      "quote": "Line 29a. Enter the QMID and amount you paid for the most expensive electric or natural gas heat pump that achieves the highest efficiency tier established by the CEE that is in effect as of the beginning of the calendar year in which the property is placed in service.",
+      "page": "i5695 p. 7"
      }
     ],
-    "quote": "Line 25b. Enter the code for the type(s) of enabled property from the following list.",
-    "page": "i5695 p. 6",
-    "why_uncovered": "Line 25b is not encoded. The 25a question names the enabled property types but does not record which A–G code to enter.",
-    "closest_item": "f5695.line25a",
+    "quote": "If you enter an amount on line 29b, attach a statement to your return listing the QMID and cost of each item included on line 29b. / If you enter an amount on line 29d, attach a statement to your return listing the QMID and cost of each item included on line 29d. / If you enter an amount on line 29f, attach a statement to your return listing the QMID and cost of each item included on line 29f. / Line 29a. Enter the QMID and amount you paid for the most expensive electric or natural gas heat pump that achieves the highest efficiency tier established by the CEE that is in effect as of the beginning of the calendar year in which the property is placed in service.",
+    "page": "i5695 p. 7",
+    "why_uncovered": "Only a yes/no on having QMIDs is asked. The QMIDs for lines 29a, 29c and 29e are not collected, and the itemized statements for lines 29b, 29d and 29f are not produced.",
+    "closest_item": "f5695.qmid_hp",
     "effect": "presentation"
    }
   ],
@@ -2193,7 +2151,7 @@
     ]
    }
   ],
-  "cost": 0.266984,
+  "cost": 0.260452,
   "model": "claude-opus-5-5"
  },
  {
@@ -4377,10 +4335,10 @@
  },
  {
   "form": "s179",
-  "prompt_sha": "68e5095a0608a7cd59f11171ce03102c7df268f53c736a2c050bb16ec00756c5",
+  "prompt_sha": "3a9a0d5bd02e76fc3bd64b5f5c138864c9482b14f004be540b40da30cabd6471",
   "claims": [
    {
-    "item": "s179.line6",
+    "item": "s179.line2",
     "sentences": [
      {
       "quote": "Land and land improvements do not qualify as section 179 property.",
@@ -4399,6 +4357,10 @@
       "page": "p946 p. 17"
      },
      {
+      "quote": "They do not qualify as section 179 property because you and your father are related persons.",
+      "page": "p946 p. 17"
+     },
+     {
       "quote": "If you acquired the property through a trade-in, do not include any carryover basis of the property traded in.",
       "page": "i4562 p. 5"
      },
@@ -4413,9 +4375,41 @@
      {
       "quote": "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid.",
       "page": "p946 p. 17"
+     }
+    ],
+    "quote": "Land and land improvements do not qualify as section 179 property. / Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property. / Generally, you cannot claim a section 179 deduction based on the cost of property you lease to someone else. / However, you can claim a section 179 deduction for the cost of the following property. / They do not qualify as section 179 property because you and your father are related persons. / If you acquired the property through a trade-in, do not include any carryover basis of the property traded in. / Include only the excess of the cost of the property over the value of the property traded in. / If you acquire qualified property in a like-kind exchange, only the excess basis of the acquired property is eligible for the section 179 deduction. / If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid.",
+    "page": "p946 p. 17; i4562 p. 5",
+    "why_uncovered": "Line 2 totals the cost of section 179 property. No question or refusal screens out property that does not qualify: land and land improvements, property leased to others by a noncorporate lessor (other than under the manufacture or short-lease exceptions), property used predominantly outside the US, property used by tax-exempt or governmental users, and property bought from related persons. Nothing limits the cost of traded-in or like-kind acquired property to the cash paid or the excess basis.",
+    "closest_item": "s179.line2",
+    "effect": "amount"
+   },
+   {
+    "item": "s179.line6",
+    "sentences": [
+     {
+      "quote": "Do not include any listed property on line 6.",
+      "page": "i4562 p. 5"
      },
      {
+      "quote": "Column (b)—Cost (business use only). Enter the cost of the property.",
+      "page": "i4562 p. 5"
+     }
+    ],
+    "quote": "Do not include any listed property on line 6. / Column (b)—Cost (business use only). Enter the cost of the property.",
+    "page": "i4562 p. 5",
+    "why_uncovered": "Line 6(c) takes an elected cost, but nothing limits the cost to the business-use portion. No check keeps listed property off line 6 so that it is reported only through line 26(i) and line 7.",
+    "closest_item": "s179.line6",
+    "effect": "amount"
+   },
+   {
+    "item": "s179.line7",
+    "sentences": [
+     {
       "quote": "You cannot elect to expense more than $31,300 of the cost of any heavy sport utility vehicle (SUV) and certain other vehicles placed in service in tax years beginning in 2025.",
+      "page": "p946 p. 18"
+     },
+     {
+      "quote": "This rule applies to any 4-wheeled vehicle primarily designed or used to carry passengers over public streets, roads, or highways that is rated at more than 6,000 pounds gross vehicle weight and not more than 14,000 pounds gross vehicle weight.",
       "page": "p946 p. 18"
      },
      {
@@ -4423,10 +4417,10 @@
       "page": "p946 p. 18"
      }
     ],
-    "quote": "Land and land improvements do not qualify as section 179 property. / Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property. / Generally, you cannot claim a section 179 deduction based on the cost of property you lease to someone else. / However, you can claim a section 179 deduction for the cost of the following property. / If you acquired the property through a trade-in, do not include any carryover basis of the property traded in. / Include only the excess of the cost of the property over the value of the property traded in. / If you acquire qualified property in a like-kind exchange, only the excess basis of the acquired property is eligible for the section 179 deduction. / If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid. / You cannot elect to expense more than $31,300 of the cost of any heavy sport utility vehicle (SUV) and certain other vehicles placed in service in tax years beginning in 2025. / However, the $31,300 limit does not apply to any vehicle:",
-    "page": "p946 p. 17; i4562 p. 5; p946 p. 18",
-    "why_uncovered": "The elected cost on line 6(c) is taken as entered. No question checks whether an item is excluded property: land or land improvements, property a noncorporate lessor leases to others, property used mostly outside the US, or property used by tax-exempt, governmental or foreign users. No question limits the cost to the cash paid when there is a trade-in. Nothing applies the $31,300 per-vehicle cap on heavy SUVs. The only refusal (over_limit) tests the total against the dollar limitation, not property eligibility or per-item caps.",
-    "closest_item": "s179.line6",
+    "quote": "You cannot elect to expense more than $31,300 of the cost of any heavy sport utility vehicle (SUV) and certain other vehicles placed in service in tax years beginning in 2025. / This rule applies to any 4-wheeled vehicle primarily designed or used to carry passengers over public streets, roads, or highways that is rated at more than 6,000 pounds gross vehicle weight and not more than 14,000 pounds gross vehicle weight. / However, the $31,300 limit does not apply to any vehicle:",
+    "page": "p946 p. 18",
+    "why_uncovered": "No encoded line, question or refusal applies the $31,300 per-vehicle cap on the elected section 179 cost of heavy SUVs. Nothing determines the vehicle exceptions either: more than nine passengers behind the driver, a 6-foot cargo bed, or the cab-forward enclosure. The elected cost of such a vehicle flows into lines 7/8 uncapped.",
+    "closest_item": "s179.line7",
     "effect": "amount"
    },
    {
@@ -4435,11 +4429,15 @@
      {
       "quote": "If you and your spouse elect to amend your separate returns by filing a joint return after the due date for filing your return, the dollar limit on the joint return is the lesser of the following amounts.",
       "page": "p946 pp. 18–19"
+     },
+     {
+      "quote": "The total cost of section 179 property you and your spouse elected to expense on your separate returns.",
+      "page": "p946 p. 19"
      }
     ],
-    "quote": "If you and your spouse elect to amend your separate returns by filing a joint return after the due date for filing your return, the dollar limit on the joint return is the lesser of the following amounts.",
-    "page": "p946 pp. 18–19",
-    "why_uncovered": "The MFS refusal applies only to separate returns. A joint return that replaces separate returns after the due date is computed with the ordinary dollar limit. Nothing caps it at the total the spouses elected to expense on their separate returns.",
+    "quote": "If you and your spouse elect to amend your separate returns by filing a joint return after the due date for filing your return, the dollar limit on the joint return is the lesser of the following amounts. / The total cost of section 179 property you and your spouse elected to expense on your separate returns.",
+    "page": "p946 pp. 18–19; p946 p. 19",
+    "why_uncovered": "The refusal for married filing separately covers separate returns only. A joint return filed after the due date to replace separate returns is a joint return, so line 5 is computed as the ordinary dollar limit. Nothing asks whether the joint return replaces separate returns, and nothing caps line 5 at the total the spouses elected on those separate returns.",
     "closest_item": "s179.line5",
     "effect": "amount"
    },
@@ -4447,17 +4445,17 @@
     "item": "s179.income_sc",
     "sentences": [
      {
-      "quote": "You are considered to actively conduct a trade or business only if you meaningfully participate in its management or operations. A mere passive investor is not considered to actively conduct a trade or business.",
+      "quote": "You are considered to actively conduct a trade or business only if you meaningfully participate in its management or operations.",
       "page": "i4562 p. 5"
      },
      {
-      "quote": "Net income or loss from a trade or business includes the following items.",
-      "page": "p946 p. 19"
+      "quote": "A mere passive investor is not considered to actively conduct a trade or business.",
+      "page": "i4562 p. 5"
      }
     ],
-    "quote": "You are considered to actively conduct a trade or business only if you meaningfully participate in its management or operations. A mere passive investor is not considered to actively conduct a trade or business. / Net income or loss from a trade or business includes the following items.",
-    "page": "i4562 p. 5; p946 p. 19",
-    "why_uncovered": "The helper takes the net profit or loss of every Schedule C on the return, figured without the section 179 deduction. No question asks whether the filer meaningfully participates in each business, so income from a passively held business is not excluded. The listed inclusion of interest from the working capital of the trade or business is also not added to the business income.",
+    "quote": "You are considered to actively conduct a trade or business only if you meaningfully participate in its management or operations. / A mere passive investor is not considered to actively conduct a trade or business.",
+    "page": "i4562 p. 5",
+    "why_uncovered": "The business-income helper takes Schedule C net profit or loss without asking whether the filer meaningfully participates in each business. Nothing excludes the income of a business in which the filer is only a passive investor from the line 11 limit.",
     "closest_item": "s179.income_sc",
     "effect": "amount"
    }
@@ -4479,7 +4477,7 @@
     ]
    }
   ],
-  "cost": 0.12006800000000001,
+  "cost": 0.137468,
   "model": "claude-opus-5-5"
  },
  {
@@ -4985,66 +4983,28 @@
  },
  {
   "form": "sales",
-  "prompt_sha": "7117647ede0b04e6ad6106221d5a3d2a42dd5ecb1b783d777392273139359723",
+  "prompt_sha": "d51fbc852ad4b65c7698636de29c00d1bbc17c527691d53dc19cd047a73eb24c",
   "claims": [
    {
-    "item": "sales.code",
+    "item": "sales.box",
     "sentences": [
      {
-      "quote": "If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a gain, your gain is ordinary income (interest income), even if you hold the debt instrument as a capital asset.",
-      "page": "i8949 p. 5"
+      "quote": "If qualified dividends that you reported on Form 1040, 1040-SR, or 1040-NR, line 3a, include extraordinary dividends, any loss on the sale or exchange of the stock is a long-term capital loss to the extent of the extraordinary dividends.",
+      "page": "i1040sd p. 4"
      },
      {
-      "quote": "If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a loss, your loss is an ordinary loss to the extent of your prior original issue discount (OID) inclusions on the debt instrument.",
-      "page": "i8949 p. 5"
+      "quote": "An extraordinary dividend is a dividend that equals or exceeds 10% (5% in the case of preferred stock) of your basis in the stock.",
+      "page": "i1040sd p. 4"
      },
      {
-      "quote": "If you received a Form 1099-B or Form 1099-DA (or substitute statement) reporting the sale of a taxable contingent payment debt instrument subject to the noncontingent bond method and the Ordinary box in box 2 on Form 1099-B is checked or the Ordinary box in box 6 on Form 1099-DA is checked, an adjustment may be required.",
-      "page": "i1040sd p. 5"
-     },
-     {
-      "quote": "If you received a Form 1099-B or Form 1099-DA (or substitute statement) reporting the sale or retirement of a market discount bond, enter code “D” for the transaction in column (f) of the appropriate part of Form 8949 and complete this worksheet to figure the amount to enter in column (g).",
-      "page": "i8949 p. 11"
-     },
-     {
-      "quote": "This is the amount of your gain that is ordinary income. Enter it as a negative amount (in parentheses) in Form 8949, column (g). Also, report it as interest income on your tax return.",
-      "page": "i8949 p. 11"
+      "quote": "Gains or losses on section 1256 contracts open at the end of the year, or terminated during the year, are treated as 60% long-term and 40% short-term, regardless of how long the contracts were held.",
+      "page": "p550 p. 82"
      }
     ],
-    "quote": "If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a gain, your gain is ordinary income (interest income), even if you hold the debt instrument as a capital asset. / If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a loss, your loss is an ordinary loss to the extent of your prior original issue discount (OID) inclusions on the debt instrument. / If you received a Form 1099-B or Form 1099-DA (or substitute statement) reporting the sale of a taxable contingent payment debt instrument subject to the noncontingent bond method and the Ordinary box in box 2 on Form 1099-B is checked or the Ordinary box in box 6 on Form 1099-DA is checked, an adjustment may be required. / If you received a Form 1099-B or Form 1099-DA (or substitute statement) reporting the sale or retirement of a market discount bond, enter code “D” for the transaction in column (f) of the appropriate part of Form 8949 and complete this worksheet to figure the amount to enter in column (g). / This is the amount of your gain that is ordinary income. Enter it as a negative amount (in parentheses) in Form 8949, column (g). Also, report it as interest income on your tax return.",
-    "page": "i8949 p. 5; i1040sd p. 5; i8949 p. 11",
-    "why_uncovered": "The Ordinary box and broker adjustments are checked only as conditions for the aggregate route (sales.aggregate_eligible). On the Form 8949 route, the code question offers only none/B/W/BW and gives code E as its sole example of 'other'. It never asks whether the security is a contingent payment debt instrument, whether the Ordinary box is checked, or whether accrued market discount appears in box 1f. A filer could therefore pick 'none'. The sale would then be computed as entirely capital gain when part or all of it is ordinary interest income.",
-    "closest_item": "sales.code",
-    "effect": "amount"
-   },
-   {
-    "item": "sales.special",
-    "sentences": [
-     {
-      "quote": "If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock.",
-      "page": "p550 p. 81"
-     },
-     {
-      "quote": "You report this type of ordinary loss on Form 4797, Part II, line 10.",
-      "page": "p550 p. 81"
-     },
-     {
-      "quote": "If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale.",
-      "page": "p550 p. 81"
-     },
-     {
-      "quote": "Report an ordinary loss from the sale, exchange, or worthlessness of small",
-      "page": "i1040sd p. 6"
-     },
-     {
-      "quote": "If you close a short sale of SBIC stock with other SBIC stock you bought only for that purpose, any loss you have on the sale is a capital loss.",
-      "page": "p550 p. 81"
-     }
-    ],
-    "quote": "If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock. / You report this type of ordinary loss on Form 4797, Part II, line 10. / If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale. / Report an ordinary loss from the sale, exchange, or worthlessness of small / If you close a short sale of SBIC stock with other SBIC stock you bought only for that purpose, any loss you have on the sale is a capital loss.",
-    "page": "p550 p. 81; i1040sd p. 6",
-    "why_uncovered": "The special-situations screen asks about collectibles, section 1202 QSB stock, section 1250 property, flow-through entity interests and QOFs. It does not ask about section 1244 small business stock or SBIC stock. Losses on these are ordinary, not capital, and are reported on Form 4797 rather than as a capital loss on Form 8949. Nothing in the encoding asks about them or refuses them.",
-    "closest_item": "sales.special",
+    "quote": "If qualified dividends that you reported on Form 1040, 1040-SR, or 1040-NR, line 3a, include extraordinary dividends, any loss on the sale or exchange of the stock is a long-term capital loss to the extent of the extraordinary dividends. / An extraordinary dividend is a dividend that equals or exceeds 10% (5% in the case of preferred stock) of your basis in the stock. / Gains or losses on section 1256 contracts open at the end of the year, or terminated during the year, are treated as 60% long-term and 40% short-term, regardless of how long the contracts were held.",
+    "page": "i1040sd p. 4; p550 p. 82",
+    "why_uncovered": "The classification question lists many holding-period overrides, but none for these. It does not recharacterize a loss on stock that paid extraordinary qualified dividends as long-term. It also neither applies the 60/40 split to section 1256 contracts, which are reported on Form 6781, nor refuses those contracts. No refusal screens for either case.",
+    "closest_item": "sales.box",
     "effect": "amount"
    },
    {
@@ -5059,29 +5019,77 @@
       "page": "i1040sd p. 5"
      },
      {
-      "quote": "If you sold property (other than publicly traded stocks or securities) at a gain and you will receive a payment in a tax year after the year of sale, you must generally report the sale on the installment method unless you elect not to.",
-      "page": "i1040sd p. 6"
+      "quote": "A trader may make an election under section 475(f) to report all gains and losses from securities held in connection with a trading business as ordinary income (or loss), including those from securities held at the end of the year.",
+      "page": "i1040sd p. 5"
      }
     ],
-    "quote": "However, if a trader previously made the mark-to-market election (explained below), each transaction is reported in Part II of Form 4797 instead of on Form 8949. / Starting with the year the election becomes effective, a trader reports all gains and losses from securities held in connection with the trading business, including securities held at the end of the year, in Part II of Form 4797. / If you sold property (other than publicly traded stocks or securities) at a gain and you will receive a payment in a tax year after the year of sale, you must generally report the sale on the installment method unless you elect not to.",
-    "page": "i1040sd p. 5; i1040sd p. 6",
-    "why_uncovered": "The route question offers only detailed Form 8949 or Schedule D aggregate totals. Nothing asks whether the filer is a trader with a section 475(f) mark-to-market election, whose securities gains and losses are ordinary and go on Form 4797. Nothing asks whether a sale of non-publicly traded securities with deferred payments must use the installment method on Form 6252. No refusal covers either case.",
+    "quote": "However, if a trader previously made the mark-to-market election (explained below), each transaction is reported in Part II of Form 4797 instead of on Form 8949. / Starting with the year the election becomes effective, a trader reports all gains and losses from securities held in connection with the trading business, including securities held at the end of the year, in Part II of Form 4797. / A trader may make an election under section 475(f) to report all gains and losses from securities held in connection with a trading business as ordinary income (or loss), including those from securities held at the end of the year.",
+    "page": "i1040sd p. 5",
+    "why_uncovered": "The route question offers only Form 8949 or the Schedule D aggregate lines. Nothing asks whether the filer is a trader with a section 475(f) election in effect, and nothing refuses that case. Such a filer's sales belong on Form 4797 as ordinary items, and positions held at year end are marked to market.",
     "closest_item": "sales.route",
     "effect": "amount"
    },
    {
-    "item": "sales.box",
+    "item": "sales.special",
     "sentences": [
      {
-      "quote": "Gains or losses on section 1256 contracts open at the end of the year, or terminated during the year, are treated as 60% long-term and 40% short-term, regardless of how long the contracts were held.",
-      "page": "p550 p. 82"
+      "quote": "If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock.",
+      "page": "p550 p. 81"
+     },
+     {
+      "quote": "You report this type of ordinary loss on Form 4797, Part II, line 10.",
+      "page": "p550 p. 81"
+     },
+     {
+      "quote": "Gain in excess of the gain you would have recognized if you had held a financial asset directly during the term of a derivative contract must be treated as ordinary income.",
+      "page": "i1040sd p. 4"
+     },
+     {
+      "quote": "If you sold property (other than publicly traded stocks or securities) at a gain and you will receive a payment in a tax year after the year of sale, you must generally report the sale on the installment method unless you elect not to.",
+      "page": "i1040sd p. 6"
      }
     ],
-    "quote": "Gains or losses on section 1256 contracts open at the end of the year, or terminated during the year, are treated as 60% long-term and 40% short-term, regardless of how long the contracts were held.",
-    "page": "p550 p. 82",
-    "why_uncovered": "The classification question covers options, contracts to sell and securities futures. It does not mention section 1256 contracts, such as nonequity options, whose character is fixed at 60/40 regardless of holding period and which are reported on Form 6781 rather than Form 8949. A filer could classify such a contract as short-term or long-term by its holding period.",
-    "closest_item": "sales.box",
+    "quote": "If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock. / You report this type of ordinary loss on Form 4797, Part II, line 10. / Gain in excess of the gain you would have recognized if you had held a financial asset directly during the term of a derivative contract must be treated as ordinary income. / If you sold property (other than publicly traded stocks or securities) at a gain and you will receive a payment in a tax year after the year of sale, you must generally report the sale on the installment method unless you elect not to.",
+    "page": "p550 p. 81; i1040sd p. 4; i1040sd p. 6",
+    "why_uncovered": "The special-situation screen covers only collectibles, section 1202 stock, section 1250 property, pass-through interests and QOFs. It does not screen out three other cases. SBIC stock losses are ordinary losses reported on Form 4797. Section 1260 constructive ownership gain is partly ordinary. A sale of non-publicly traded securities with deferred payments must go to Form 6252.",
+    "closest_item": "sales.special",
     "effect": "amount"
+   },
+   {
+    "item": "sales.code",
+    "sentences": [
+     {
+      "quote": "If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale.",
+      "page": "p550 p. 81"
+     },
+     {
+      "quote": "Report the transaction on the correct part of Form 8949, and enter -0- in column (g) on that part of the form if there are no adjustments needed for the transaction.",
+      "page": "i8949 p. 10"
+     }
+    ],
+    "quote": "If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale. / Report the transaction on the correct part of Form 8949, and enter -0- in column (g) on that part of the form if there are no adjustments needed for the transaction.",
+    "page": "p550 p. 81; i8949 p. 10",
+    "why_uncovered": "The code question gives E, D and O as examples of 'other', but it never alerts the filer to two codes. One is the section 1244 ordinary-loss situation (code S), where an ordinary loss replaces a capital loss. The other is a broker's box 2 short-term/long-term classification that differs from the filer's records (code T). Because the box is classified from records with no code T, a row can contradict the 1099-B with no code entered.",
+    "closest_item": "sales.code",
+    "effect": "amount"
+   },
+   {
+    "item": "sales.proceeds",
+    "sentences": [
+     {
+      "quote": "If an option you purchased expired, enter the expiration date in column (c) and enter “EXPIRED” in column (d).",
+      "page": "i1040sd p. 6"
+     },
+     {
+      "quote": "If an option that was granted (written) expired, enter the expiration date in column (b) and enter “EXPIRED” in column (e).",
+      "page": "i1040sd p. 6"
+     }
+    ],
+    "quote": "If an option you purchased expired, enter the expiration date in column (c) and enter “EXPIRED” in column (d). / If an option that was granted (written) expired, enter the expiration date in column (b) and enter “EXPIRED” in column (e).",
+    "page": "i1040sd p. 6",
+    "why_uncovered": "The proceeds and basis questions take numeric amounts only. Nothing produces the required 'EXPIRED' entry or the expiration date placement for expired options.",
+    "closest_item": "sales.proceeds",
+    "effect": "presentation"
    },
    {
     "item": "sales.correct_basis",
@@ -5093,15 +5101,30 @@
     ],
     "quote": "If you don't use the actual cost, attach an explanation of your basis.",
     "page": "i8949 p. 6",
-    "why_uncovered": "The correct-basis question walks through gift, inheritance, trade, spouse, services and other non-cost bases. It never asks for or produces the required attached explanation when the basis is not actual cost.",
+    "why_uncovered": "The correct-basis question walks through gift, inheritance, trade and other non-cost bases. It never requires or produces the explanation statement that must be attached when basis is not actual cost.",
     "closest_item": "sales.correct_basis",
     "effect": "presentation"
+   },
+   {
+    "item": "sales.wash_loss",
+    "sentences": [
+     {
+      "quote": "Loss from a wash sale of one block of stock or securities cannot be used to reduce any gains on identical blocks sold the same day.",
+      "page": "p550 p. 87"
+     }
+    ],
+    "quote": "Loss from a wash sale of one block of stock or securities cannot be used to reduce any gains on identical blocks sold the same day.",
+    "page": "p550 p. 87",
+    "why_uncovered": "The wash-sale loss is capped at 'the loss on this sale' (sales.wash_bad). Same-term blocks sold the same day can be combined on one row as 'VARIOUS'. In that case the row's net figure lets gains on other blocks absorb the disallowed loss, and the encoding neither requires separate rows nor computes the disallowance per block.",
+    "closest_item": "sales.wash_loss",
+    "effect": "amount"
    }
   ],
   "used": [
    {
     "doc": "i1040sd",
     "pages": [
+     4,
      5,
      6
     ]
@@ -5126,7 +5149,8 @@
      8,
      9,
      10,
-     11
+     11,
+     12
     ]
    },
    {
@@ -5153,7 +5177,7 @@
     ]
    }
   ],
-  "cost": 0.346968,
+  "cost": 0.380268,
   "model": "claude-opus-5-5"
  },
  {
@@ -5198,51 +5222,13 @@
  },
  {
   "form": "sc",
-  "prompt_sha": "bf6e1387463ae8b04d8215c3e6b4a33197d34cac877d4b0b49d43d59feb3cf8a",
+  "prompt_sha": "c04d4c185ec50b65505e7eef0743292a397c717a0c8804f4eb2aa4814b6b4745",
   "claims": [
-   {
-    "item": "sc.line9",
-    "sentences": [
-     {
-      "quote": "You must use actual expenses if you used five or more vehicles simultaneously in your business (such as in fleet operations).",
-      "page": "i1040sc p. 6"
-     },
-     {
-      "quote": "You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle.",
-      "page": "i1040sc p. 6"
-     },
-     {
-      "quote": "You can take the standard mileage rate for 2025 only if you:",
-      "page": "i1040sc p. 6"
-     },
-     {
-      "quote": "Owned the vehicle and used the standard mileage rate for the first year you placed the vehicle in service, or • Leased the vehicle and are using the standard mileage rate for the entire lease period.",
-      "page": "i1040sc p. 6"
-     },
-     {
-      "quote": "Do not deduct depreciation, rent or lease payments, or your actual operating expenses.",
-      "page": "i1040sc p. 6"
-     },
-     {
-      "quote": "If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle.",
-      "page": "i1040sc p. 7"
-     },
-     {
-      "quote": "If you converted your vehicle during the year from personal to business use (or vice versa), enter your commuting miles only for the period you drove your vehicle for business.",
-      "page": "i1040sc p. 15"
-     }
-    ],
-    "quote": "You must use actual expenses if you used five or more vehicles simultaneously in your business (such as in fleet operations). / You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle. / You can take the standard mileage rate for 2025 only if you: / Owned the vehicle and used the standard mileage rate for the first year you placed the vehicle in service, or • Leased the vehicle and are using the standard mileage rate for the entire lease period. / Do not deduct depreciation, rent or lease payments, or your actual operating expenses. / If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle. / If you converted your vehicle during the year from personal to business use (or vice versa), enter your commuting miles only for the period you drove your vehicle for business.",
-    "page": "i1040sc p. 6; i1040sc p. 7; i1040sc p. 15",
-    "why_uncovered": "Line 9 has no question and cites only the general choice between the standard mileage rate and actual expenses. No listed question, screen or refusal tests whether the standard mileage rate may be used: fleet use of five or more vehicles, using the rate in the vehicle's first year, using it for the entire lease period, or a leased vehicle that previously used the rate. No listed item asks for the Part IV vehicle information either, including commuting miles for a converted vehicle and the statement required for additional vehicles.",
-    "closest_item": "sc.line9",
-    "effect": "amount"
-   },
    {
     "item": "sc.line13",
     "sentences": [
      {
-      "quote": "You can’t deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method.",
+      "quote": "You can't deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method.",
       "page": "i1040sc p. 13"
      },
      {
@@ -5250,69 +5236,33 @@
       "page": "i1040sc p. 13"
      }
     ],
-    "quote": "You can’t deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method. / The depreciation deduction allowable for that portion of the home for that year is deemed to be zero.",
+    "quote": "You can't deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method. / The depreciation deduction allowable for that portion of the home for that year is deemed to be zero.",
     "page": "i1040sc p. 13",
-    "why_uncovered": "Line 13 and the depreciation and section 179 helpers sum asset entries. Nothing removes depreciation or section 179 claimed on the business portion of the home when the simplified method is used for line 30. The encoding handles the parallel bar on excess mortgage interest and real estate taxes on lines 16a, 16b and 23, but not depreciation.",
+    "why_uncovered": "The tool supports only the simplified method for business use of the home. The questions for lines 15, 16a, 20b, 21, 23 and 25 each exclude home expenses for that reason. Line 13 has no question, and no listed item keeps depreciation or section 179 on the business part of the home out of the line 13 asset entries. Nothing refuses that combination either.",
     "closest_item": "sc.line13",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.line25",
-    "sentences": [
-     {
-      "quote": "The simplified method is an alternative to the calculation, allocation, and substantiation of actual expenses.",
-      "page": "i1040sc p. 10"
-     },
-     {
-      "quote": "Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home (for example, expenses for advertising, wages, or supplies, or depreciation of equipment or furniture).",
-      "page": "i1040sc p. 14"
-     }
-    ],
-    "quote": "The simplified method is an alternative to the calculation, allocation, and substantiation of actual expenses. / Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home (for example, expenses for advertising, wages, or supplies, or depreciation of equipment or furniture).",
-    "page": "i1040sc p. 10; i1040sc p. 14",
-    "why_uncovered": "When the simplified method is used, actual home expenses such as home utilities, home insurance, home rent and home repairs cannot also be deducted in Part II. The questions for lines 25, 15, 20b and 21 exclude home items only for mortgage interest and real estate taxes. Nothing stops the business share of home utilities, rent, insurance or repairs from being entered there as well.",
-    "closest_item": "sc.line25",
     "effect": "amount"
    },
    {
     "item": "sc.loss_allowed",
     "sentences": [
      {
-      "quote": "If you report a loss on line 31 of your Schedule C (Form 1040), you may be subject to a business loss limitation.",
-      "page": "i1040sc p. 1"
+      "quote": "If you answered “No” on line G, you may need to complete Form 8582 to figure your loss to enter on line 31.",
+      "page": "i1040sc p. 15"
      },
      {
-      "quote": "Instead, use Form 461 to determine the amount of your excess business loss, which will be included as income on Schedule 1 (Form 1040), line 8p.",
-      "page": "i1040sc p. 1"
+      "quote": "In general, a business activity in which you do not materially participate or a rental activity is a passive activity and you have to use Form 8582 to apply a limitation that may reduce the loss, if any, that you may enter on Schedule C, line 31.",
+      "page": "i1040sc p. 5"
      },
      {
-      "quote": "Any disallowed loss resulting from this limitation will be treated as a net operating loss that must be carried forward and deducted in a subsequent year.",
-      "page": "i1040sc p. 1"
-     },
-     {
-      "quote": "If you enter a loss on line 31, you may have an excess business loss. Use Form 461 to figure your excess business loss.",
+      "quote": "If your expenses (including the expenses you report on line 30) are more than your gross income, don’t enter your loss on line 31 until you have applied the at-risk rules and the passive activity loss rules.",
       "page": "i1040sc p. 14"
      }
     ],
-    "quote": "If you report a loss on line 31 of your Schedule C (Form 1040), you may be subject to a business loss limitation. / Instead, use Form 461 to determine the amount of your excess business loss, which will be included as income on Schedule 1 (Form 1040), line 8p. / Any disallowed loss resulting from this limitation will be treated as a net operating loss that must be carried forward and deducted in a subsequent year. / If you enter a loss on line 31, you may have an excess business loss. Use Form 461 to figure your excess business loss.",
-    "page": "i1040sc p. 1; i1040sc p. 14",
-    "why_uncovered": "The loss path checks only the at-risk box (32a/32b) and the material participation answer. No question, screen or refusal applies the Form 461 excess business loss limitation or produces the Schedule 1, line 8p add-back. The Schedule 1 refusal elsewhere applies only when a filer enters such an item, and nothing here triggers it.",
+    "quote": "If you answered “No” on line G, you may need to complete Form 8582 to figure your loss to enter on line 31. / In general, a business activity in which you do not materially participate or a rental activity is a passive activity and you have to use Form 8582 to apply a limitation that may reduce the loss, if any, that you may enter on Schedule C, line 31. / If your expenses (including the expenses you report on line 30) are more than your gross income, don’t enter your loss on line 31 until you have applied the at-risk rules and the passive activity loss rules.",
+    "page": "i1040sc p. 15; i1040sc p. 5; i1040sc p. 14",
+    "why_uncovered": "sc.loss_allowed refuses only when some investment is not at risk (sc.not_at_risk, Form 6198). Line G is asked (sc.passive), but no refusal or computation is tied to a 'No' answer when line 31 is a loss. The screen covers only prior-year unallowed passive losses, so a current-year passive loss would pass through to line 31 without the Form 8582 limitation.",
     "closest_item": "sc.loss_allowed",
     "effect": "amount"
-   },
-   {
-    "item": "sc.ho_sqft",
-    "sentences": [
-     {
-      "quote": "You can’t use the simplified method to figure a deduction for rental use of your home.",
-      "page": "i1040sc p. 10"
-     }
-    ],
-    "quote": "You can’t use the simplified method to figure a deduction for rental use of your home.",
-    "page": "i1040sc p. 10",
-    "why_uncovered": "The questions for business use of the home (sc.ho_uses, sc.ho_other) ask about regular and exclusive business use, daycare, sharing, part-year use and more than one home. None excludes or refuses rental use of the home, which the simplified method cannot be used for.",
-    "closest_item": "sc.ho_sqft",
-    "effect": "eligibility"
    },
    {
     "item": "sc.line1",
@@ -5324,52 +5274,8 @@
     ],
     "quote": "If the total amounts that were reported in box 1 of Forms 1099-NEC are more than the total you are reporting on line 1, attach a statement explaining the difference.",
     "page": "i1040sc p. 5",
-    "why_uncovered": "The line 1 question asks for gross receipts including Form 1099-NEC amounts. It does not collect the Form 1099-NEC box 1 total, and nothing requires the explanatory statement when that total exceeds line 1.",
+    "why_uncovered": "The line 1 question asks only for the gross receipts amount. Nothing compares that amount with the Forms 1099-NEC box 1 total, and nothing requires or produces the explanatory statement when the 1099-NEC total is larger.",
     "closest_item": "sc.line1",
-    "effect": "presentation"
-   },
-   {
-    "item": "sc.line16a",
-    "sentences": [
-     {
-      "quote": "If you paid more mortgage interest than is shown on Form 1098, include the amount on line 16a. Attach a statement to your return explaining the difference and enter “See attached” in the margin next to line 16a.",
-      "page": "i1040sc p. 8"
-     },
-     {
-      "quote": "Attach a statement to your return showing the name and address of the person who received the Form 1098. In the margin next to line 16b, enter “See attached.”",
-      "page": "i1040sc p. 8"
-     }
-    ],
-    "quote": "If you paid more mortgage interest than is shown on Form 1098, include the amount on line 16a. Attach a statement to your return explaining the difference and enter “See attached” in the margin next to line 16a. / Attach a statement to your return showing the name and address of the person who received the Form 1098. In the margin next to line 16b, enter “See attached.”",
-    "page": "i1040sc p. 8",
-    "why_uncovered": "The line 16a question limits entries to interest paid to institutions that sent a Form 1098. The line 16b question routes mortgage interest not reported on a Form 1098 to line 16b. This conflicts with the rule that interest paid above the Form 1098 amount goes on line 16a. Nothing requires the explanatory statements or the margin notations.",
-    "closest_item": "sc.line16a",
-    "effect": "presentation"
-   },
-   {
-    "item": "sc.one",
-    "sentences": [
-     {
-      "quote": "Enter on line B the six-digit code from the Principal Business or Professional Activity Codes chart at the end of these instructions.",
-      "page": "i1040sc pp. 3-4"
-     },
-     {
-      "quote": "If you started or acquired this business in 2025, check the box on line H.",
-      "page": "i1040sc p. 5"
-     },
-     {
-      "quote": "If you made any payment in 2025 that would require you to file any Forms 1099, check the “Yes” box. Otherwise, check the “No” box.",
-      "page": "i1040sc p. 5"
-     },
-     {
-      "quote": "Enter your business address. Show a street address instead of a box number.",
-      "page": "i1040sc p. 4"
-     }
-    ],
-    "quote": "Enter on line B the six-digit code from the Principal Business or Professional Activity Codes chart at the end of these instructions. / If you started or acquired this business in 2025, check the box on line H. / If you made any payment in 2025 that would require you to file any Forms 1099, check the “Yes” box. Otherwise, check the “No” box. / Enter your business address. Show a street address instead of a box number.",
-    "page": "i1040sc pp. 3-4; i1040sc p. 5; i1040sc p. 4",
-    "why_uncovered": "The encoding has no item for the Schedule C header entries. Nothing collects the principal business description and code (lines A and B), the business address (line E), the line H box for a started or acquired business, or the line I answer about Forms 1099.",
-    "closest_item": "sc.one",
     "effect": "presentation"
    }
   ],
@@ -5477,7 +5383,7 @@
     ]
    }
   ],
-  "cost": 0.523864,
+  "cost": 0.465048,
   "model": "claude-opus-5-5"
  },
  {

@@ -1350,6 +1350,37 @@
           "cents": 50000
         }
       }
+    },
+    {
+      "id": "bug0475.sc.home_utilities_not_in_part2",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0475, predicted by hand from i1040sc p. 10 (Simplified method, \"an alternative to the calculation, allocation, and substantiation of actual expenses\") and p. 14 (\"Use Part II of Schedule C to deduct business expenses that are unrelated to the qualified business use of the home\") before recording: the inputs of stage14.ho.basic read as a business with $600 of home utilities. Line 25 now excludes the home's utilities, so it is $0; line 30 $1,000 (200 square feet x $5); line 31 $20,000 less $1,000, $19,000.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "home"
+        ],
+        "person[taxpayer].sc[home].line1": 2000000,
+        "person[taxpayer].sc[home].ho_uses": true,
+        "person[taxpayer].sc[home].ho_sqft": 200,
+        "person[taxpayer].sc[home].line25": 0
+      },
+      "expect": {
+        "person[taxpayer].sc[home].line25": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[home].line30": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].sc[home].line31": {
+          "kind": "money",
+          "cents": 1900000
+        }
+      }
     }
   ]
 }

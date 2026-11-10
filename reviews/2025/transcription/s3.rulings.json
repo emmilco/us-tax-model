@@ -66,11 +66,11 @@
    "printed": "5a",
    "project_expr_sha256": "ef1869d938335d35c45e21f30a36ab75805cb81e67dab5ef3fa33544fb4f43f1",
    "second_expr_sha256": "5aa8d1da485215be04dcacfe02731bf68c11c81aaf3ef8dba1bc6560196ef485",
-   "ruling": "Ruling: model error; f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\", and i5695 p. 1, Who Can Take the Credits: \"You may be able to take the credits if you made energy saving improvements to your home located in the United States in 2025\". The project takes Form 5695 line 15 when f5695.part1_any (Part I property) is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers the interview asks only after a Yes. executable-triage-v2 (`.transcription/triage/2025/s3.json`; 1,702 fixtures, 500 generated returns seed 20261026, 111 partial records; 2,307 comparisons): 1,208 of 2,307 agree; 841 candidate-refuses and 258 candidate-unknown; on returns the interview completes 119 candidate-unknown (f5695.business_use and f5695.construction_later asked of filers with no Part I property, e.g. classm.f4952.1.deepseek, classm.s3.3.deepseek; project $0.00) and 2 candidate-refuses (generated 113 and 493, at f5695.line7a, where the project gives $0.00); the rest on refused or incomplete records. No value differs. The interface offers f5695.part1_any: not an interface gap. The rewrite left this line's expression unchanged and no HEAD-to-current difference shows on s3 over 1,702 fixtures and 500 generated returns. As the earlier ruling on this line. Project stands.",
-   "context": "9f550e86b11dbf1399715194363d03d1b872b001152dd9a35004d96c01d42b5f",
-   "date": "2026-11-09",
-   "run": "2c2ab95638c6cc779a82f972e9ffd6c8a57382c11eab91992e53a949a5311587",
-   "subject_key": "72d0d9779686cb315b31775ebe92acc1e4ffd50c5421fe147ce732efed1a238c",
+   "ruling": "Ruling: model error; as the earlier rulings on this line. f1040s3 line 5a, \"Residential clean energy credit from Form 5695, line 15\". The project takes Form 5695 line 15 when f5695.part1_any is Yes and $0 otherwise; the reply copies f5695.line15 on every return, so it needs Part I answers (f5695.business_use, f5695.construction_later) the interview asks only after a Yes, or refuses at Part I gates the project never reaches. The rewording of part1_any and line 5a (BUG-0478) changes no value. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass e90286e5d5fa; 1,744 fixtures, 500 generated returns seed 20261026, 111 partial records): 1,232 of 2,364 agree; 856 candidate-refuses and 276 candidate-unknown; on completed returns candidate-unknown on returns with no Part I (classm.f4952.1.deepseek, classm.s3.3.deepseek; project $0.00) and one candidate refusal (a generated return with no Part I); no value differs. Project stands.",
+   "context": "871347609296adc1d8b1d7f50bc9c66a3c764ed173c1397e0f34381d3fa200ee",
+   "date": "2026-11-10",
+   "run": "e7dcef0aa53a43d189137c79adaf228a06041c3311c53f7bdca9348e064ea6a1",
+   "subject_key": "43b58f0e1e6d6c2838a57dd67a524ddb68c328db8ae78abadde9e3d0e319e393",
    "triage": {
     "verdict": "differs",
     "kinds": [

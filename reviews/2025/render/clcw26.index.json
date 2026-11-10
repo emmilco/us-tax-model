@@ -2,73 +2,102 @@
  "kind": "render",
  "form": "clcw26",
  "family": "claude",
- "base": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+ "base": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
  "lines": [
   {
    "key": "1",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
    "status": "UNCLEAR",
-   "ruling": "Ruling: interface gap; the model says the pages given never define Form 1040 line 15, so they do not confirm it equals line 11b minus line 14 without a floor at zero. The worksheet is applied to this return with each 2024 figure read as the 2025 one (amb.2025.clcw_to_2026). Line 1 is held before the zero floor, as i1040sd p. 14, Line 21 requires (\"would be less than zero if you could enter a negative amount on that line\"), and as amb.2025.clcw_line1_signed does for the 2024 worksheet. The identity is printed on Form 1040 (2025) p. 2, line 15: \"Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income\". That page was not given to the reviewer (only i1040sd pp. 10 and 14 and p550 p. 103 were). The English states the source correctly; the UNCLEAR is a coverage gap of the review. Same ruling as the first Stage 20 round."
+   "ruling": "Ruling: interface gap; same objection as the earlier rulings on this line. The identity is printed on Form 1040 (2025) p. 2, line 15: \"Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income\"; line 1 is held before the zero floor, as i1040sd p. 14, Line 21 requires (\"would be less than zero if you could enter a negative amount on that line\"). That page was not given to the reviewer. The English states the source correctly.",
+   "subject_key": "ddbcd5bc50c348e453ad0c3fa6f6b897e9d3a7a338d7f97e40522d51c1861a4b"
   },
   {
    "key": "2",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "13b481854bbe32c98dc3736a9fc3db2b5b8fc632806daab05d95c02ae788f560"
   },
   {
    "key": "3",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "0e16c64a2ef2661d78a8e2306269068365e793d557b232d47a046fd89329d1f7"
   },
   {
    "key": "4",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "71bf78f1bc9ef3c0a00a4c436f3ed62a3882291c6c664d2e6426a678d7f5df0d"
   },
   {
    "key": "5",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "815be05b20fa63961bdecda57c6a0a635bd245e3480ef0a87afebc026a9bf916"
   },
   {
    "key": "6",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "7448ee85a73ac21adab691fe502d5fed8cd72ea223c54e3efa568eb00bac7f6f"
   },
   {
    "key": "7",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "bb2028c4856926c21509b2a4090b70d28f5d98cda2d99944bd5537f9ee7cfd79"
   },
   {
    "key": "8",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "35b9373d7bfbba7f69875a03a83f1989f62c674f34fcffb26087a53b32c68a8c"
   },
   {
    "key": "9",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "6e2a7657f52cced19d5e82152f5b46925503208c4020b82ee50eb7d4e88a43d0"
   },
   {
    "key": "10",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "37938a2e3e9456da99bb79ee570bc2cabaa911a9d713de6df6db850ecb9b18b3"
   },
   {
    "key": "11",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "f301e7e7a271ebb1a5a87c2c14759bd683346b199191e0585e5b46a4cd9e2496"
   },
   {
    "key": "12",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "7bdec96f213111a100f4033b0a8e659af6fc2d0f0939e2816291fd21e3e2cfb8"
   },
   {
    "key": "13",
-   "record": "2899121ecc1c5903f1ffdffa4b91ceedc56225df71c32d53e6dd065199ae48ba",
-   "status": "MATCH"
+   "record": "2de8d6912902be5baeb722e1e5ec5b68d052019ea2f314cebbc62a0c392f1b9d",
+   "status": "MATCH",
+   "subject_key": "149ac0ff0c39a672b3d3922c51e22d2181b5ccd7c3747e5d1ed7591576247787"
   }
- ]
+ ],
+ "subjects": {
+  "1": "29d86230836d2013ed17556258bd27305d37ded12ac432d635949aa25f11c908",
+  "2": "33a5415f3630db25443c35e5b151b882da158fa8e5343464ea83fd6c39a19cc3",
+  "3": "9dbc220a9a02bfabd9f42623f52407de78fd9867f6c59e0b3b5257c5f41c2fd5",
+  "4": "03011478739fe81fc0b76c856f7411353a8746b6471ac14b4eee8297fbe9ba8f",
+  "5": "a911ecfa1ccd6facd2b4251ba3e4e81a45798231f891b4e60c82f5ec2b0e96bd",
+  "6": "61ee39cb3f7db3dae80242c20229d6c26b7813cc8471b706e373dc52cb6c32da",
+  "7": "70deaa30577ae6c4ba2b5173f373a8530d2b7b2be2c4bfc1c0444a0c4a2dd64f",
+  "8": "8d41dac6081cf069fd7f9296730766b69009667ff91e0cd003d1defeb364c9ac",
+  "9": "a2470a2b52325a64481c45b596b0d41756e5e3883b920fbe7c63d5a0fc3cedf9",
+  "10": "05dc93bcecaff027d7aa2152d2124e3ff0090df018f6763192e126cec7fa7c2f",
+  "11": "bfdea250ef11c40dbbf9316d81e3f5f9e01fe15cee60c839579a874894c2d427",
+  "12": "984b3e01988740f3bf5e4511c945d5fb3b32aca63759eebc29d81bfd2c482b1a",
+  "13": "e98dbf7d1f04a24522907d74447e2e47e3e8690643c874b1d35a7605aaa50279"
+ },
+ "__rest__": "90a35c60a0cd60118a6929832b8032e7b8450230da403bf133096eef12872225"
 }

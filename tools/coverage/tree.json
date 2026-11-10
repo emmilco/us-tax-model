@@ -148,6 +148,7 @@
   {"gate": "scveh.lease_smr_bad", "topic": "self_employment", "part": "property", "kind": "situation", "question": "Did you use the standard mileage rate in an earlier year for a leased vehicle on which you now deduct actual expenses?"},
   {"gate": "scveh.employee_bad", "topic": "self_employment", "part": "property", "kind": "situation", "question": "Do your employees use a business vehicle on actual expenses for personal purposes?"},
   {"gate": "s179.over_limit", "topic": "self_employment", "part": "property", "kind": "entry"},
+  {"gate": "s179.wc_over", "topic": "self_employment", "part": "property", "kind": "entry"},
 
   {"gate": "person.se_screened", "topic": "self_employment", "part": "se_tax", "kind": "situation", "question": "Do you have self-employment tax items beyond Schedule C, such as church or clergy income, partnership or farm self-employment income, or an optional method?", "stop": "Self-employment tax items outside Schedule C (church employee income, clergy, partnership or farm self-employment income, optional methods and others)"},
   {"gate": "person.se_rrta", "topic": "self_employment", "part": "se_tax", "kind": "situation", "question": "Do you have self-employment income and railroad retirement compensation together?"},
