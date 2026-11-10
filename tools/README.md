@@ -205,11 +205,17 @@ and the column. `node engine/dist/main.js conjecture` checks every cell against
 the credit formula built from Rev. Proc. 2024-40 section 3.06(1); see
 `reports/2025/eic_table_conjecture.md`.
 
-## Completeness review debt
+## Sampled completeness reviews
 
-Completed completeness reviews and claim rulings always require their exact current prompt hash, including foreign refusal context. Legacy never-reviewed debt has a separate local subject: full own canonical form, cited source sections, system instructions and reviewer implementation. A foreign refusal addition alone does not bring that deferred debt due; own arithmetic, wording, source or policy changes do. The original baseline hashes remain intact.
-
-`tools/transcription/migrate_completeness_debt.py CHECKOUT COMMIT` reconstructs historical full prompts from a built historical checkout, verifies authored inputs, reviewer and source manifest against Git, and refuses any baseline mismatch before recording local subjects in `reviews/2025/completeness/rulings.json`. The 2026-11-01 migration used f44bae4801bc36934cfc361bf2d9f8c52884a8bf and independently rebuilt its canonical output. Existing completed reviews are never eligible for this exemption. The normal completeness self-test includes the debt regression tests.
+`completeness_review.py` and `check_completeness.py` keep sampled reviews (`tools/transcription/samples.py`). A form's
+subject is the hash of its review prompt without the reviewer's system prompt; its record holds the samples run on
+that subject, and the union of their claims is ruled once. A claim equal to a ruled claim of the same form and
+subject (item and normalised quote) carries that ruling. Between releases a form whose subject changed is due:
+listed by check-all, not failed. `check_completeness.py --release` is the release gate: it fails while any form is
+due or short of `SAMPLES_PER_MILESTONE` samples. A record marked `grandfathered` holds one review made before
+sampling and satisfies the milestone until its subject changes. Runs are guarded: samples beyond the milestone need
+`--force-rerun REASON`, and an estimate above the owner's $3.00 gate needs `--approve-cost` (`spend.py`, shared with
+`rerun_all.py`).
 
 ## Scripts run by hand
 
@@ -230,6 +236,5 @@ that year's table from its archived source, and the check-all step named beside 
 | `new_bug.py`, `task_row.py` | Append a `BUG_INVENTORY.md` entry; add or update a `TASKS.md` row (tested by `test_bookkeeping_tools.py`) |
 | `ocr_audit.py` | An image-grounded audit of the archived text layers (Tesseract), for a person to adjudicate; not a gate |
 | `extraction/page_review.py` | Local HTML pages of each archived page beside the project's reading of it, for a person to judge |
-| `transcription/migrate_completeness_debt.py` | The completeness-debt migration (section above) |
 | `transcription/migrate_line_subjects.py` | Rewrites transcription logs' line-subject tables (`transcription/README.md`; tested by `test_review_tools.py`) |
 | `human_review/test_browser.mjs`, `../ui/test_browser.mjs` | Browser smoke tests of the review packet and the web UI, against a separately launched headless Chrome |

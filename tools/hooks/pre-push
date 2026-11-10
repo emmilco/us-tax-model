@@ -6,7 +6,8 @@
 # so a merge made by `git pull` reaches this hook untested; run check-all on it
 # first. The whole pushed range is checked, not only the tip: an untested
 # intermediate commit would otherwise reach the remote inside a green tip's range.
-# A release tag (refs/tags/r*) is refused unless its commit's tree is full-green.
+# A release tag (refs/tags/r*) is refused unless its commit's tree is full-green and recorded
+# release-ready by tools/release.sh (its sampled reviews complete).
 # Enabled with the other hooks:
 #   git config core.hooksPath tools/hooks
 set -euo pipefail
@@ -25,6 +26,11 @@ while read -r local_ref local_sha _remote_ref remote_sha; do
     tree="$(git rev-parse "$tagged^{tree}")"
     if ! is_green "$tree"; then
       echo "pre-push: release tag $local_ref is on commit $(git rev-parse --short "$tagged") (tree $tree), which no green full-tier check-all run tested; run tools/release.sh" >&2
+      failed=1
+      continue
+    fi
+    if [ ! -e "$(cd "$(git rev-parse --git-common-dir)" && pwd)/release-ready/$tree" ]; then
+      echo "pre-push: release tag $local_ref is on tree $tree, which tools/release.sh did not record as release-ready (sampled reviews complete); run tools/release.sh" >&2
       failed=1
       continue
     fi

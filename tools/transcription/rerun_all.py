@@ -57,9 +57,7 @@ TOOLS = {"transcription": ("transcribe.py", "--form"), "render": ("render_compar
 # DeepSeek: HTTP 402 "Insufficient Balance"). A rate limit, a timeout or an oversized request is not one.
 USAGE_LIMIT = re.compile(r"usage limit|hit your (?:\w+ )?limit|(?:hour|weekly|session) limit reached|"
                          r"insufficient balance|exceeded your (?:current )?quota|deepseek HTTP 402", re.I)
-COST_GATE_USD = 3.00     # an estimated run above this needs --approve-cost
-PRICE_SAMPLE = 30        # recent ledger calls per (tool, family) that set the price per prompt character
-REASON_ENV = "REVIEW_RERUN_REASON"   # transcribe.record_cost writes it into the ledger row
+from spend import COST_GATE_USD, PRICE_SAMPLE, REASON_ENV, prices, gate  # noqa: E402,F401  (the owner's cost gate)
 LINE_SCOPED = ("transcription", "render")
 PROMPT = re.compile(r"prompt ([\d,]+) chars")
 # A tool's refusal of a line-scoped review: the review must run whole.
@@ -162,23 +160,6 @@ def answered(kind, form, family):
         return f"state unreadable ({type(ex).__name__}: {ex})"
 
 
-def prices(ledger=None):
-    """{(tool, family): estimated USD per prompt character} over the most recent PRICE_SAMPLE priced,
-    successful calls of each tool and family in the cost ledger."""
-    import costs
-    import transcribe
-    rows, _ = costs.read(ledger or os.path.join(transcribe.RAW, transcribe.LEDGER_NAME))
-    groups = {}
-    for r in rows:
-        if r.get("outcome") == "ok" and r.get("estimated_cost_usd") is not None and (r.get("prompt_chars") or 0) > 0:
-            groups.setdefault((r.get("tool"), families.family_of(r.get("model_requested") or "-")), []).append(r)
-    out = {}
-    for key, rs in groups.items():
-        rs = sorted(rs, key=lambda r: r.get("timestamp", ""))[-PRICE_SAMPLE:]
-        out[key] = sum(r["estimated_cost_usd"] for r in rs) / sum(r["prompt_chars"] for r in rs)
-    return out
-
-
 def dry_run(kind, form, model, lines):
     """(prompt characters the tool would send, or None when it refuses, its last output line)."""
     cmd = tool_cmd(kind, form, model) + ["--dry-run"] + (["--lines", lines] if lines else [])
@@ -222,20 +203,6 @@ def plan_job(kind, form, model, lines=None, whole=False, force=None, price=None)
     rate = (price or {}).get((os.path.basename(TOOLS[kind][0]), family))
     job["usd"] = None if job["chars"] and rate is None else job["chars"] * (rate or 0)
     return job
-
-
-def gate(planned, approve):
-    """None when the run may proceed, else the refusal: an estimate above COST_GATE_USD, or calls the
-    ledger cannot price, need --approve-cost of at least the estimate."""
-    total = sum(j["usd"] or 0 for j in planned if j["run"])
-    unpriced = [j for j in planned if j["run"] and j["usd"] is None]
-    if unpriced and approve is None:
-        return (f"{len(unpriced)} job(s) have no ledger price for their tool and family "
-                f"({', '.join(j['kind'] + ' ' + j['form'] for j in unpriced)}); pass --approve-cost DOLLARS to run them")
-    if total > COST_GATE_USD and (approve is None or approve < total):
-        return (f"estimated ${total:.2f} exceeds the ${COST_GATE_USD:.2f} gate; pass --approve-cost {total:.2f} "
-                "(or more) to run it")
-    return None
 
 
 def estimate_report(planned):

@@ -10,16 +10,20 @@ form pages (instructions printed on the form). The encoding list is every line o
 marker, label, input question, refusals and citation. A HANDLED ELSEWHERE list adds the refusals on other forms tied to lines the form reads, the return-wide refusals (scope inputs, Form 1040), and the refusals on forms that read this form. The model returns YAML
 claims grouped by encoded item (item, sentences[quote, page], why_uncovered, effect). Each call is one fixed-prompt `claude -p` with no tools.
 
-    completeness_review.py [--forms a,b] [--dry-run] [--from-response] [--jobs 4] [--model M]
+    completeness_review.py [--forms a,b] [--samples K] [--force-rerun REASON] [--approve-cost DOLLARS]
+                           [--dry-run] [--from-response] [--jobs 4] [--model M]
 
-A form whose prompt hash differs from its recorded review is stale in check-all
-(tools/transcription/check_completeness.py); rerun it with --forms, which merges into
-reviews/<year>/completeness/completeness.json and keeps the other forms' entries. Raw prompts and responses go
-to .transcription/completeness/. Limitation: a collection form (dependent, person) is reviewed with its own lines
+Sampled (samples.py): a form's subject is the hash of its prompt without the system prompt. A run gives each
+selected form the samples its current subject still needs this milestone (samples.SAMPLES_PER_MILESTONE; a form
+whose subject changed starts over), merged into reviews/<year>/completeness/completeness.json. Samples beyond the
+milestone need --force-rerun REASON. The run is priced from the cost ledger and refused above the owner's gate
+without --approve-cost (spend.py). Between releases a form whose subject changed is due, not failed
+(tools/transcription/check_completeness.py); its --release mode refuses a release while any form is due. Raw
+prompts and responses go to .transcription/completeness/. Limitation: a collection form (dependent, person) is reviewed with its own lines
 only; the parent forms that hold its questions (household, person) are not added. A form whose prompt exceeds
 MAX_CHARS is skipped.
 """
-import argparse, hashlib, json, os, re, sys
+import argparse, datetime, hashlib, json, os, re, sys
 from concurrent.futures import ThreadPoolExecutor
 import yaml
 
@@ -33,6 +37,8 @@ import archive_text  # noqa: E402
 import baseline_check  # noqa: E402
 import citations  # noqa: E402
 from structured_text import indent_rest  # noqa: E402
+import samples  # noqa: E402
+import spend  # noqa: E402
 
 OUT = str(jurisdiction.ypath("reviews", Y, "completeness"))
 RAW = os.path.join(ROOT, ".transcription", "completeness")
@@ -213,13 +219,17 @@ def build_prompt(form, secs, forms=()):
 
 
 def prompt_for(form, mani, forms=None):
-    """(prompt, used, sha) of a form's review, or None when it has no cited instruction pages. The hash covers
-    the system prompt, so a change to the instructions makes every review stale."""
+    """(prompt, used, subject_sha) of a form's review, or None when it has no cited instruction pages. The subject
+    hash covers the prompt only, not the system prompt: a change to the reviewer's instructions applies at each
+    form's next sample and does not make every review due (samples.py)."""
     secs, used = sections(form, mani)
     if not secs:
         return None
     prompt = jurisdiction.preface(build_prompt(form, secs, forms if forms is not None else context_forms()))
-    return prompt, used, hashlib.sha256((SYSTEM + "\n" + prompt).encode()).hexdigest()
+    return prompt, used, hashlib.sha256(prompt.encode()).hexdigest()
+
+
+SYSTEM_SHA = hashlib.sha256(SYSTEM.encode()).hexdigest()
 
 
 def parse(text):
@@ -255,66 +265,145 @@ def claim(c):
             "effect": str(c.get("effect", ""))}
 
 
-def run_one(form, mani, model, dry, from_response, forms=None):
-    p = prompt_for(form, mani, forms)
-    if p is None:
-        return {"form": form["id"], "skip": "no cited instruction pages"}
-    prompt, used, sha = p
-    if len(prompt) > MAX_CHARS:
-        return {"form": form["id"], "skip": f"prompt {len(prompt):,} chars exceeds {MAX_CHARS:,}", "chars": len(prompt),
-                "pages": sum(len(u["pages"]) for u in used)}
-    pages = sum(len(u["pages"]) for u in used)
-    if dry:
-        return {"form": form["id"], "chars": len(prompt), "pages": pages}
-    os.makedirs(RAW, exist_ok=True)
-    base = os.path.join(RAW, form["id"])
-    open(base + ".prompt.txt", "w", encoding="utf-8").write(prompt)
-    if from_response:
-        text = open(base + ".response.txt", encoding="utf-8").read(); meta = {}
-    else:
-        text, meta = call_model(prompt, model, system=SYSTEM, kind="completeness", subject=form["id"])
-        open(base + ".response.txt", "w", encoding="utf-8").write(text)
+def response_path(form_id, subject, k):
+    return os.path.join(RAW, f"{form_id}.{subject[:12]}.{k}.response.txt")
+
+
+def sample(form_id, prompt, subject, k, model):
+    """Run sample k of a form's review: the sample record."""
+    path = response_path(form_id, subject, k)
+    text, meta = call_model(prompt, model, system=SYSTEM, kind="completeness", subject=form_id)
+    open(path, "w", encoding="utf-8").write(text)
     claims = parse(text)
-    rec = {"form": form["id"], "prompt_sha": sha, "claims": claims or [], "used": used,
-           "cost": meta.get("cost_usd") or 0, "model": ", ".join(meta.get("model_reported", [])) or model}
+    rec = {"system_sha": SYSTEM_SHA, "claims": claims or [], "cost": meta.get("cost_usd") or 0,
+           "model": ", ".join(meta.get("model_reported", [])) or model, "date": datetime.date.today().isoformat(),
+           "response": os.path.relpath(path, ROOT)}
+    if os.environ.get(spend.REASON_ENV):
+        rec["rerun_reason"] = os.environ[spend.REASON_ENV]
     if claims is None:
         rec["parse_error"] = True
     return rec
 
 
+def read_records(path):
+    """{form: record} of a completeness.json in the sampled format (samples.py)."""
+    if not os.path.exists(path):
+        return {}
+    rows = json.load(open(path, encoding="utf-8"))
+    legacy = [r["form"] for r in rows if "samples" not in r]
+    if legacy:
+        sys.exit(f"{path}: {len(legacy)} record(s) in the single-review format ({', '.join(legacy[:5])}); "
+                 "the file predates sampled reviews")
+    return {r["form"]: r for r in rows}
+
+
+def plan(forms, mani, records, asked, force, price, model):
+    """One entry per selected form: {form, subject, prompt, used, n, beyond, note, jobs}. `jobs` are the planned
+    samples ({kind, form, k, run, usd}) for spend.gate; a form beyond its milestone without --force-rerun plans none."""
+    everything = context_forms()
+    out = []
+    for f in forms:
+        p = prompt_for(f, mani, everything)
+        if p is None:
+            out.append({"form": f["id"], "note": "no cited instruction pages", "jobs": []})
+            continue
+        prompt, used, subject = p
+        if len(prompt) > MAX_CHARS:
+            out.append({"form": f["id"], "note": f"prompt {len(prompt):,} chars exceeds {MAX_CHARS:,}", "jobs": []})
+            continue
+        rec = records.get(f["id"])
+        n, beyond = samples.wanted(rec, subject, asked)
+        entry = {"form": f["id"], "subject": subject, "prompt": prompt, "used": used, "n": n, "beyond": beyond, "jobs": []}
+        if n == 0:
+            entry["note"] = "satisfied: its current subject has the milestone's samples"
+        elif beyond and not force:
+            entry["note"] = (f"refused: {n} sample(s) would go beyond the milestone's {samples.SAMPLES_PER_MILESTONE}; "
+                             "--force-rerun REASON runs them")
+        else:
+            first = len(rec["samples"]) + 1 if rec and rec.get("subject_sha") == subject else 1
+            usd = spend.estimate(len(prompt), "completeness_review.py", model, price)
+            entry["jobs"] = [{"kind": "completeness", "form": f["id"], "k": k, "run": True, "usd": usd}
+                             for k in range(first, first + n)]
+            entry["note"] = f"{n} sample(s) from #{first}"
+        out.append(entry)
+    return out
+
+
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--forms"); ap.add_argument("--dry-run", action="store_true"); ap.add_argument("--from-response", action="store_true")
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--forms")
+    ap.add_argument("--dry-run", action="store_true", help="plan and estimate; call no model")
+    ap.add_argument("--from-response", action="store_true",
+                    help="re-parse the saved responses of the current subject's samples; call no model")
+    ap.add_argument("--samples", type=int, metavar="K", help="run K samples per form (default: those the milestone still needs)")
+    ap.add_argument("--force-rerun", metavar="REASON", help="run samples beyond the milestone; the reason is recorded")
+    ap.add_argument("--approve-cost", metavar="DOLLARS", type=float,
+                    help=f"run although the estimate exceeds the ${spend.COST_GATE_USD:.2f} gate; at least the estimate")
     ap.add_argument("--jobs", type=int, default=4); ap.add_argument("--model", default="claude-opus-5-5")
     a = ap.parse_args()
-    forms = load_forms(); everything = context_forms(); mani = manifest()
+    if a.force_rerun is not None and not a.force_rerun.strip():
+        ap.error("--force-rerun needs a reason")
+    forms = load_forms(); mani = manifest()
     if a.forms:
         want = a.forms.split(",")
         missing = [w for w in want if w not in {f["id"] for f in forms}]
         if missing:
             sys.exit(f"unknown form(s): {', '.join(missing)}")
         forms = [f for f in forms if f["id"] in want]
-    with ThreadPoolExecutor(max_workers=a.jobs) as ex:
-        results = list(ex.map(lambda f: run_one(f, mani, a.model, a.dry_run, a.from_response, everything), forms))
-    done = [r for r in results if "skip" not in r]
-    skipped = [r for r in results if "skip" in r]
-    if a.dry_run:
-        for r in done:
-            print(f"{r['form']:20s} {r['pages']:4d} pages {r['chars']:9,d} chars")
-        print(f"{len(done)} forms, {sum(r['chars'] for r in done):,} chars in all")
-        for r in skipped:
-            print(f"skipped {r['form']}: {r['skip']}")
-        return
-    for r in skipped:
-        print(f"skipped {r['form']}: {r['skip']}")
     os.makedirs(OUT, exist_ok=True)
     path = os.path.join(OUT, "completeness.json")
-    previous = json.load(open(path)) if os.path.exists(path) else []
-    rerun = {r["form"] for r in done}
-    merged = [r for r in previous if r["form"] not in rerun] + done
-    json.dump(sorted(merged, key=lambda r: r["form"]), open(path, "w"), indent=1, ensure_ascii=False)
-    print(f"{len(done)} forms; {sum(len(r['claims']) for r in done)} claims; "
-          f"{sum(1 for r in done if r.get('parse_error'))} unparsed; cost {sum(r['cost'] for r in done):.2f}")
+    records = read_records(path)
+    if a.from_response:
+        n = 0
+        for f in forms:
+            for smp in (records.get(f["id"]) or {}).get("samples", []):
+                where = os.path.join(ROOT, smp.get("response", ""))
+                if not smp.get("response") or not os.path.exists(where):
+                    continue
+                claims = parse(open(where, encoding="utf-8").read())
+                smp["claims"] = claims or []
+                smp.pop("parse_error", None)
+                if claims is None:
+                    smp["parse_error"] = True
+                n += 1
+        json.dump(sorted(records.values(), key=lambda r: r["form"]), open(path, "w"), indent=1, ensure_ascii=False)
+        print(f"re-parsed {n} saved sample(s)")
+        return
+    planned = plan(forms, mani, records, a.samples, a.force_rerun, spend.prices(), a.model)
+    jobs = [j for e in planned for j in e["jobs"]]
+    for e in planned:
+        cost = sum(j["usd"] or 0 for j in e["jobs"])
+        print(f"{e['form']:20s} {e['note']}" + (f"  ~${cost:.2f}" if e["jobs"] else ""))
+    total = sum(j["usd"] or 0 for j in jobs)
+    print(f"{len(jobs)} sample(s), estimated ${total:.2f}; gate ${spend.COST_GATE_USD:.2f}")
+    refusal = spend.gate(jobs, a.approve_cost)
+    if a.dry_run:
+        if refusal:
+            print(f"would be refused: {refusal}")
+        return
+    if refusal:
+        sys.exit(f"refused: {refusal}")
+    if not jobs:
+        return
+    if a.force_rerun:
+        os.environ[spend.REASON_ENV] = a.force_rerun
+    os.makedirs(RAW, exist_ok=True)
+    by_form = {e["form"]: e for e in planned if e["jobs"]}
+    for e in by_form.values():
+        open(os.path.join(RAW, e["form"] + ".prompt.txt"), "w", encoding="utf-8").write(e["prompt"])
+    with ThreadPoolExecutor(max_workers=a.jobs) as ex:
+        results = list(ex.map(lambda j: (j, sample(j["form"], by_form[j["form"]]["prompt"], by_form[j["form"]]["subject"],
+                                                    j["k"], a.model)), jobs))
+    for form_id, e in by_form.items():
+        rec = records.get(form_id)
+        if not rec or rec.get("subject_sha") != e["subject"]:
+            rec = records[form_id] = {"form": form_id, "subject_sha": e["subject"], "used": e["used"], "samples": []}
+        rec["used"] = e["used"]
+        rec["samples"] += [s for j, s in sorted(results, key=lambda r: r[0]["k"]) if j["form"] == form_id]
+    json.dump(sorted(records.values(), key=lambda r: r["form"]), open(path, "w"), indent=1, ensure_ascii=False)
+    done = [s for _, s in results]
+    print(f"{len(done)} sample(s) of {len(by_form)} form(s); {sum(len(s['claims']) for s in done)} claims; "
+          f"{sum(1 for s in done if s.get('parse_error'))} unparsed; cost {sum(s['cost'] for s in done):.2f}")
 
 
 if __name__ == "__main__":

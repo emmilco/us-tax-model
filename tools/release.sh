@@ -12,6 +12,9 @@
 # with the message in <file> or a generated one, and the tag goes on that commit.
 # <n> is one more than the highest <n> among the day's existing local tags. A run that
 # is not green tags nothing; the failing step's log names what broke.
+# Before the run, the sampled reviews must be complete (tools/release_reviews.sh, on a fresh build): a
+# form due or short of samples, or an unruled finding, tags nothing. A tagged tree is recorded under
+# <git common dir>/release-ready/, which tools/hooks/pre-push requires of a pushed release tag.
 # --push pushes the tag to origin, through tools/hooks/pre-push; without it nothing is
 # pushed.
 set -euo pipefail
@@ -32,6 +35,9 @@ done
 [ "$(git symbolic-ref -q HEAD || true)" = refs/heads/main ] || die "HEAD is not the branch main"
 [ "$(worktree_tree)" = "$(git rev-parse 'HEAD^{tree}')" ] || die "the working tree differs from HEAD; a release tests the tip as committed"
 tip="$(git rev-parse HEAD)"
+
+tools/release_reviews.sh || die "the sampled reviews are not complete for a release (above); nothing tagged"
+[ "$(worktree_tree)" = "$(git rev-parse 'HEAD^{tree}')" ] || die "the review check changed the working tree; nothing tagged"
 
 common="$(cd "$(git rev-parse --git-common-dir)" && pwd)"
 last="$common/check-all-bg/last"
@@ -65,6 +71,7 @@ for t in $(git tag -l "r$day.*"); do
 done
 name="r$day.$((n + 1))"
 git tag -a "$name" -m "Release $name: full check-all green on tree $tested" "$commit"
+mkdir -p "$common/release-ready" && : > "$common/release-ready/$tested"
 echo "release: tagged $name on $(git rev-parse --short "$commit") (tree $tested)"
 if [ "$push" -eq 1 ]; then
   git push origin "refs/tags/$name"

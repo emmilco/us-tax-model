@@ -333,7 +333,7 @@ class PendingReviews(unittest.TestCase):
     def test_reviewed_but_still_listed_fails(self):
         got = run_ny("import json, tempfile, pathlib, check_completeness as K\n"
                      "tmp = pathlib.Path(tempfile.mkdtemp())\n"
-                     "(tmp / 'completeness.json').write_text(json.dumps([{'form': 'ny_it2', 'prompt_sha': 'x', 'claims': []}]))\n"
+                     "(tmp / 'completeness.json').write_text(json.dumps([{'form': 'ny_it2', 'subject_sha': 'x', 'samples': [{'claims': []}]}]))\n"
                      "(tmp / 'pending.json').write_text(json.dumps({'completeness': ['ny_it2']}))\n"
                      "K.RECORD = tmp / 'completeness.json'; K.RULINGS = tmp / 'rulings.json'; K.REPORT = tmp / 'report.md'\n"
                      "K.pending.PATH = str(tmp / 'pending.json')\n"

@@ -3,8 +3,9 @@
 # with no remote. pre-push must check every commit in the pushed range, not only the
 # tip, each against its own parents in the tier it needs (tools/tier_paths.py); must
 # handle a new ref against a remote-tracking base; and must refuse a release tag
-# (refs/tags/r*) whose commit's tree is not full-green. release.sh runs against a stub
-# of tools/check_all_bg.sh and must tag only a full-green tree.
+# (refs/tags/r*) whose commit's tree is not full-green or not recorded release-ready. release.sh
+# runs against stubs of tools/check_all_bg.sh and tools/release_reviews.sh and must tag only a
+# full-green tree whose sampled reviews are complete.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/pre-push-test.XXXXXX")"
@@ -96,7 +97,10 @@ git tag -a r2026.01.01.1 -m t "$M"
 only; rec fast "$M"
 ! hook refs/tags/r2026.01.01.1 "$(git rev-parse r2026.01.01.1)" "$Z" || fail "accepted a release tag on a fast-green tree"
 rec full "$M"
-hook refs/tags/r2026.01.01.1 "$(git rev-parse r2026.01.01.1)" "$Z" || fail "refused a release tag on a full-green tree"
+! hook refs/tags/r2026.01.01.1 "$(git rev-parse r2026.01.01.1)" "$Z" || fail "accepted a release tag on a tree not recorded release-ready"
+ready="$(cd "$(git rev-parse --git-common-dir)" && pwd)/release-ready"
+mkdir -p "$ready" && : > "$ready/$(tree "$M")"
+hook refs/tags/r2026.01.01.1 "$(git rev-parse r2026.01.01.1)" "$Z" || fail "refused a release tag on a full-green, release-ready tree"
 git tag -a v1 -m t "$M"
 only; rec fast "$M"
 hook refs/tags/v1 "$(git rev-parse v1)" "$Z" || fail "refused a non-release tag on a fast-green commit"
@@ -127,6 +131,8 @@ printf 'status=%s\ntier=full\nbase=%s\nsnapshot=%s\nsnapshot_commit=%s\ntested=%
 [ "$status" = green ]
 EOF
 chmod +x tools/check_all_bg.sh
+printf '#!/usr/bin/env bash\n[ "${REVIEWS:-}" != incomplete ]\n' > tools/release_reviews.sh
+chmod +x tools/release_reviews.sh
 git add -A
 git commit -qm stub --no-verify
 git config core.hooksPath tools/hooks
@@ -134,6 +140,9 @@ day="$(date +%Y.%m.%d)"
 
 STUB=red tools/release.sh >/dev/null 2>&1 && fail "release.sh succeeded on a red run"
 [ -z "$(git tag -l 'r*')" ] || fail "release.sh tagged after a red run"
+
+REVIEWS=incomplete STUB=same tools/release.sh >/dev/null 2>&1 && fail "release.sh succeeded with incomplete sampled reviews"
+[ -z "$(git tag -l 'r*')" ] || fail "release.sh tagged with incomplete sampled reviews"
 
 echo x > untracked.txt
 STUB=same tools/release.sh >/dev/null 2>&1 && fail "release.sh ran on a working tree that differs from HEAD"
