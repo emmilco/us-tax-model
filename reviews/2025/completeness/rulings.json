@@ -603,21 +603,9 @@
     },
     "unruled:scope#1": {
       "class": "out of scope",
-      "evidence": "p575 p. 35. retirement.special names 'a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F)' (BUG-0408) and refuses the distribution's taxable amount; scope.other_income asks the 2023 and 2024 parts and repayments.",
-      "prompt_sha": "03f152e8a3f9b2b295e780bcb14d426b0f9da8a855aef7cb070688deaece55b4",
+      "evidence": "p575 p. 35; i1040gi p. 23. A qualified disaster recovery distribution received in 2025, its election into 2025, the $22,000 limit and a recontribution of a home-purchase distribution canceled by a disaster: retirement.special names 'a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F)' (BUG-0408) and refuses the distribution's taxable amount; scope.other_income asks the 2023 and 2024 parts and repayments. The PPP loan statement is an attachment with no amount (the forgiven loan is not income), filing information as the other attachment rulings. A foreign account or foreign trust is asked by sb.line7a and sb.line8 (Schedule B Part III).",
+      "prompt_sha": "9fa9b7225f912a0fd0752914fd112555177144eece48de42db8a139144633d3b",
       "gate": "retirement.special"
-    },
-    "unruled:scope#2": {
-      "class": "out of scope",
-      "evidence": "i1040sse p. 1. As scope#3 of the refresh round: person.se_screen names an approved Form 4029 or Form 4361 and refuses Schedule SE.",
-      "prompt_sha": "03f152e8a3f9b2b295e780bcb14d426b0f9da8a855aef7cb070688deaece55b4",
-      "gate": "person.se_screened"
-    },
-    "unruled:scope#3": {
-      "class": "covered",
-      "evidence": "i1040gi p. 36; i8960 p. 22. s1.line8_other asks about 'the foreign earned income or housing exclusion from Form 2555 (8d)' and refuses f1040.line8; sa.excluded_income refuses the EIC for a Form 2555 filer. A filer with a section 911 exclusion is refused before the Foreign Earned Income Tax Worksheet or the Form 8960 line 13 add-back could matter.",
-      "prompt_sha": "03f152e8a3f9b2b295e780bcb14d426b0f9da8a855aef7cb070688deaece55b4",
-      "line": "s1.line8_other"
     },
     "unruled:scveh#1": {
       "class": "out of scope",

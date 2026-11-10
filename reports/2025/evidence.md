@@ -3358,7 +3358,7 @@ Unasserted lines: sc.one, sc.rrta, sc.zero, sc.screened, sc.meals_50_ded, sc.mea
 | scope.credits | — | — | — | — | — | — | — |
 | scope.other_income | — | — | — | — | — | — | — |
 | scope.other_line16 | — | — | — | — | — | — | — |
-| scope.ready | — | — | — | — | — | — | 5 |
+| scope.ready | — | — | — | — | — | — | 7 |
 
 ## Schedule C line 9 and Part IV, and Form 4562 Part V — one vehicle used in a business
 

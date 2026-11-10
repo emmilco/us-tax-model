@@ -5330,17 +5330,17 @@
  },
  {
   "form": "scope",
-  "prompt_sha": "03f152e8a3f9b2b295e780bcb14d426b0f9da8a855aef7cb070688deaece55b4",
+  "prompt_sha": "9fa9b7225f912a0fd0752914fd112555177144eece48de42db8a139144633d3b",
   "claims": [
    {
     "item": "scope.other_income",
     "sentences": [
      {
-      "quote": "A qualified disaster recovery distribution is a qualified disaster distribution that meets certain criteria as described in the SECURE 2.0 Act of 2022.",
+      "quote": "However, you can elect to include the entire distribution in your income in the year it was received.",
       "page": "p575 p. 35"
      },
      {
-      "quote": "However, you can elect to include the entire distribution in your income in the year it was received.",
+      "quote": "If you received a distribution from an eligible retirement plan to purchase or construct a main home but didn’t purchase or construct a main home because of a major disaster, you may be able to repay the distribution and not pay income tax or the 10% additional tax on early distributions.",
       "page": "p575 p. 35"
      },
      {
@@ -5348,66 +5348,26 @@
       "page": "p575 p. 35"
      },
      {
+      "quote": "Also report recontributions of qualified distributions for home purchases and construction that were canceled because of qualified disasters on Form 8915-F, as applicable.",
+      "page": "p575 p. 35"
+     },
+     {
       "quote": "The total of your qualified disaster recovery distributions from all plans is limited to $22,000 per disaster.",
       "page": "p575 p. 35"
      },
      {
-      "quote": "If you received a distribution from an eligible retirement plan to purchase or construct a main home but didn't purchase or construct a main home because of a major disaster, you may be able to repay the distribution and not pay income tax or the 10% additional tax on early distributions.",
-      "page": "p575 p. 35"
+      "quote": "Although you don’t need to report the income from the forgiveness of your PPP Loan on Form 1040 or 1040-SR, you do need to report certain information related to your PPP Loan as an attachment to your tax return.",
+      "page": "i1040gi p. 23"
      },
      {
-      "quote": "Also report recontributions of qualified distributions for home purchases and construction that were canceled because of qualified disasters on Form 8915-F, as applicable.",
-      "page": "p575 p. 35"
+      "quote": "You must complete Part III of Schedule B if you: • Had a foreign account; or • Received a distribution from, or were a grantor of, or a transferor to, a foreign trust.",
+      "page": "i1040gi p. 23"
      }
     ],
-    "quote": "A qualified disaster recovery distribution is a qualified disaster distribution that meets certain criteria as described in the SECURE 2.0 Act of 2022. / However, you can elect to include the entire distribution in your income in the year it was received. / Use Form 8915-F to report qualified disaster recovery distributions and repayments. / The total of your qualified disaster recovery distributions from all plans is limited to $22,000 per disaster. / If you received a distribution from an eligible retirement plan to purchase or construct a main home but didn't purchase or construct a main home because of a major disaster, you may be able to repay the distribution and not pay income tax or the 10% additional tax on early distributions. / Also report recontributions of qualified distributions for home purchases and construction that were canceled because of qualified disasters on Form 8915-F, as applicable.",
-    "page": "p575 p. 35",
-    "why_uncovered": "The screen only catches the 2025 part of a qualified disaster recovery distribution received in 2023 or 2024, or a 2025 repayment of one. It also says Form 1099-R distributions are a kind it is not about. So two things pass through: a qualified disaster recovery distribution received in 2025 itself, and a recontribution of a canceled home-purchase distribution. Both need Form 8915-F treatment: a 3-year income spread or an election to include it all in 2025, the $22,000 per-disaster limit, and relief from the 10% additional tax. No question, refusal or handled-elsewhere item names either case.",
+    "quote": "However, you can elect to include the entire distribution in your income in the year it was received. / If you received a distribution from an eligible retirement plan to purchase or construct a main home but didn’t purchase or construct a main home because of a major disaster, you may be able to repay the distribution and not pay income tax or the 10% additional tax on early distributions. / Use Form 8915-F to report qualified disaster recovery distributions and repayments. / Also report recontributions of qualified distributions for home purchases and construction that were canceled because of qualified disasters on Form 8915-F, as applicable. / The total of your qualified disaster recovery distributions from all plans is limited to $22,000 per disaster. / Although you don’t need to report the income from the forgiveness of your PPP Loan on Form 1040 or 1040-SR, you do need to report certain information related to your PPP Loan as an attachment to your tax return. / You must complete Part III of Schedule B if you: • Had a foreign account; or • Received a distribution from, or were a grantor of, or a transferor to, a foreign trust.",
+    "page": "p575 p. 35; i1040gi p. 23",
+    "why_uncovered": "On Form 8915-F, the question asks only about the 2025 part of a qualified disaster recovery distribution received in 2023 or 2024, or a 2025 repayment of one. It does not ask about a qualified disaster recovery distribution received in 2025. That distribution is reported on Form 8915-F, can be spread over three years or elected into 2025, is limited to $22,000 per disaster, and avoids the 10% additional tax. The question also does not ask about a 2025 recontribution of a home-purchase distribution canceled by a disaster. It lists Form 1099-R distributions as a kind it is not about, so a filer with a 2025 qualified disaster recovery distribution would answer No. Nothing asks about a forgiven PPP loan, which needs an attachment. Nothing asks about a foreign account or a foreign trust distribution, grant or transfer, which requires Schedule B Part III. No refusal on another form covers these cases.",
     "closest_item": "scope.other_income",
-    "effect": "amount"
-   },
-   {
-    "item": "scope.schedule1",
-    "sentences": [
-     {
-      "quote": "Exception to filing Schedule SE. If you filed Form 4029 or Form 4361 and received IRS approval, you may not need to file Schedule SE.",
-      "page": "i1040sse p. 1"
-     },
-     {
-      "quote": "If you have conscientious objections to social security insurance because of your membership in and belief in the teachings of a religious sect recognized as being in existence at all times since December 31, 1950, and which has provided a reasonable level of living for its dependent members, you are exempt from SE tax if you received IRS approval by filing Form 4029.",
-      "page": "i1040sse p. 1"
-     },
-     {
-      "quote": "In this case, don't file Schedule SE.",
-      "page": "i1040sse p. 1"
-     }
-    ],
-    "quote": "Exception to filing Schedule SE. If you filed Form 4029 or Form 4361 and received IRS approval, you may not need to file Schedule SE. / If you have conscientious objections to social security insurance because of your membership in and belief in the teachings of a religious sect recognized as being in existence at all times since December 31, 1950, and which has provided a reasonable level of living for its dependent members, you are exempt from SE tax if you received IRS approval by filing Form 4029. / In this case, don't file Schedule SE.",
-    "page": "i1040sse p. 1",
-    "why_uncovered": "The tool computes Schedule C income and the deductible part of self-employment tax. Ministers who have an approved Form 4361 fall under the clergy refusal. But nothing asks about or refuses an approved Form 4029 exemption for a member of a recognized religious sect who has Schedule C income. That filer would be charged SE tax and given the SE-tax deduction even though they are exempt.",
-    "closest_item": "scope.schedule1",
-    "effect": "amount"
-   },
-   {
-    "item": "scope.other_line16",
-    "sentences": [
-     {
-      "quote": "But if you are filing Form 2555, you must use the Foreign Earned Income Tax Worksheet instead.",
-      "page": "i1040gi p. 36"
-     },
-     {
-      "quote": "If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must figure your tax using the Foreign Earned Income Tax Worksheet.",
-      "page": "i1040gi p. 36"
-     },
-     {
-      "quote": "If you exclude amounts from income under section 911, to calculate your MAGI, you must increase your AGI by the excess of the amount excluded from income under section 911(a)(1) over the amount of any deductions (taken into account in computing AGI) or exclusions disallowed under section 911(d)(6) for the amount excluded from income under section 911(a)(1).",
-      "page": "i8960 p. 22"
-     }
-    ],
-    "quote": "But if you are filing Form 2555, you must use the Foreign Earned Income Tax Worksheet instead. / If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must figure your tax using the Foreign Earned Income Tax Worksheet. / If you exclude amounts from income under section 911, to calculate your MAGI, you must increase your AGI by the excess of the amount excluded from income under section 911(a)(1) over the amount of any deductions (taken into account in computing AGI) or exclusions disallowed under section 911(d)(6) for the amount excluded from income under section 911(a)(1).",
-    "page": "i1040gi p. 36; i8960 p. 22",
-    "why_uncovered": "The line 16 screen lists foreign-corporation situations: CFC/PFIC stock, Form 8621 and a section 962 election. It cites the Form 8960 MAGI rule that applies to section 911 exclusions, but it never asks about Form 2555 or the foreign earned income/housing exclusion. No refusal names the Foreign Earned Income Tax Worksheet or the section 911 MAGI add-back. This would be covered only if the Schedule 1 line 8d item, which the tool says it asks one by one, refuses Form 2555. Nothing in the encoding shows that it does.",
-    "closest_item": "scope.other_line16",
     "effect": "amount"
    }
   ],
@@ -5416,6 +5376,12 @@
     "doc": "i1040gi",
     "pages": [
      14
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     23
     ]
    },
    {
@@ -5455,7 +5421,7 @@
     ]
    }
   ],
-  "cost": 0.1735,
+  "cost": 0.151008,
   "model": "claude-opus-5-5"
  },
  {

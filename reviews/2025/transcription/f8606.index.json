@@ -4,15 +4,15 @@
  "family": "claude",
  "base": "930af053a6496c814280d9170f12f5ac511243e5f1b2906b4f18d92c0270d0c6",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-09); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-10); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "930af053a6496c814280d9170f12f5ac511243e5f1b2906b4f18d92c0270d0c6",
+   "record": "b8b33e029fc4a69d6d8ddc883e516eb32445d720698366f763e91781c7544acd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. The second leaves line 1 an input; the project figures it as the instructions direct for a filer who used the IRA Deduction Worksheet (person.ira_nondeductible): i8606 p. 9, Line 1, \"subtract line 12 of the worksheet (or the amount you chose to deduct on Schedule 1 (Form 1040), line 20, if less) from the smaller of line 10 or line 11 of the worksheet\". The other sources in the second's note are refused or the same: the Pub. 590-A worksheet (ira.kbh_short, ira.both_kinds), qualified reservist repayments (ira.special), the election to deduct less (ira.less_gate), and contributions with no deductible part, which the same subtraction gives with line 12 zero, contributions above the limit being refused (person.ira_over_limit, ira.over_comp).",
-   "subject_key": "b97e9c260a0d895a5bfc4608847cc53a8b63bda5e15861a8752f4bcab99d6f86"
+   "ruling": "Ruling: model error; i8606 p. 9, Line 1, \"subtract line 12 of the worksheet (or the amount you chose to deduct on Schedule 1 (Form 1040), line 20, if less) from the smaller of line 10 or line 11 of the worksheet\"; the line belongs to a Form 8606 filer (i8606 p. 2, Who Must File). No value differs. The reply is that subtraction, but it takes the smaller of the traditional contribution and ira.line10 directly instead of person.ira_10or11, so it needs answers ira.line10 reads (the Roth contribution and, through compensation, Schedule C asset answers) of persons who make no traditional contribution and file no Form 8606, where the project hides the line (shown_when f8606.files): classm.f4952.1, completed, unknown on person[taxpayer].sav_roth; stage14.mut.asset_2025_listed_unanswered, incomplete. An answer the source does not need is a model error (README). The candidate refusals are other forms' cited screens reached the same way on refused returns (stage14.asset.refuse_qip_2017); its added line-level refusal on scope.other_income (the qualified reservist repayment) changes nothing, since that screen refuses the return. The project line is unchanged; this is the T-150 sibling refresh of the BUG-0472 change to scope.other_income, whose citation shares the i8606 p. 9 Line 1 anchor. executable-triage-v2 (.transcription/triage/2025/f8606.json, pass 64b1bfea5be3; 1,767 fixtures, 500 generated returns seed 20261026): 2,278 of 2,635 comparisons agree; differences {\"candidate-refuses\": 169, \"candidate-unknown\": 188}; on completed returns {\"candidate-unknown\": 84}. Project retained.",
+   "subject_key": "1c847ffa7ecee722877e85e247cc8472618f3ea38871a62fe8a734159a31467d"
   },
   {
    "key": "2",
@@ -23,9 +23,9 @@
   },
   {
    "key": "3",
-   "record": "930af053a6496c814280d9170f12f5ac511243e5f1b2906b4f18d92c0270d0c6",
+   "record": "b8b33e029fc4a69d6d8ddc883e516eb32445d720698366f763e91781c7544acd",
    "status": "AGREE",
-   "subject_key": "11479dc3a723ef251480cbd58a0e8f641c2fe436b368260fa24bcff21e6089d4"
+   "subject_key": "3cc01ffc716975ff3d6c2721890d35432d2f1fa2bf7d06f2f54d982607e5dead"
   },
   {
    "key": "3 (question)",
@@ -50,6 +50,8 @@
  },
  "__rest__": "747a9efefad1937c3c4ae86081de60fab2c059bf372254f1ebc973326d746dac",
  "foreign": {
+  "1": "b81c5f7779f771e8551bffb4a81825a791cef3bddced8d045b5cda128c6ce005",
+  "3": "a42cecea23037a0ee6c51185f364682fc693fbc6ec08a599e79d0dad07f263d2",
   "3 (question)": "cb582794f92b18e75d8690e295babddb3021ff9d43b22fa78b6523e565ccf400",
   "14": "a42cecea23037a0ee6c51185f364682fc693fbc6ec08a599e79d0dad07f263d2"
  }

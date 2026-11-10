@@ -77,7 +77,8 @@ The data holds **201 refusal gates**: 161 tax situations the tool does not prepa
     - other earned income (Form 1040 lines 1b to 1d and 1f to 1h)
     - income or loss from a passive activity (including gain on selling an interest in one)
     - the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)
-    - a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1) (`input`)
+    - a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)
+    - you or your spouse being a debtor in a chapter 11 bankruptcy case open at any time in 2025, even if your only income is wages, interest or dividends (`input`)
   - *Stops the return as:* Nonresident or dual-status returns, and income outside the kinds the tool supports
   - *Not covered:* Nonresident aliens (EIC, Step 1, question 4). Nonresident and dual-status treatment is outside this tool.
     *Source:* [i1040gi] p. 40, Step 1, question 4; p. 44, Nonresident aliens

@@ -154,6 +154,7 @@ form:
         - income or loss from a passive activity (including gain on selling an interest in one)
         - the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)
         - a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)
+        - you or your spouse being a debtor in a chapter 11 bankruptcy case open at any time in 2025, even if your only income is wages, interest or dividends
       expr:
         op: input
         source: |-
@@ -179,10 +180,11 @@ form:
           - income or loss from a passive activity (including gain on selling an interest in one)
           - the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)
           - a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)
+          - you or your spouse being a debtor in a chapter 11 bankruptcy case open at any time in 2025, even if your only income is wages, interest or dividends
       cite:
         doc: f1040
         locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; p575 p. 35, "if you received a $18,000 qualified
-          disaster recovery distribution in 2023, you can include $6,000 in your income in 2023, 2024, and 2025"; i8606 p. 9, Line 1, "Include on line 1 any repayment of a qualified reservist distribution."
+          disaster recovery distribution in 2023, you can include $6,000 in your income in 2023, 2024, and 2025"; i8606 p. 9, Line 1, "Include on line 1 any repayment of a qualified reservist distribution."; i1040gi p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate and reported on the estate’s income tax return includes:" and "Because this income is taxable to the estate, don’t include this income on your own individual income tax return."
     - id: scope.other_line16
       printed: (helper)
       type: Bool

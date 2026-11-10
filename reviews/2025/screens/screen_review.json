@@ -5436,7 +5436,7 @@
  },
  {
   "screen": "scope.other_income",
-  "question": "Any nonresident alien status, or other income or return treatment outside the kinds listed below?\n\nKinds this question is not about:\n- wages\n- interest\n- dividends\n- supported securities sales\n- Form 1099-R distributions\n- social security benefits\n\nNonresident alien status:\n- you or your spouse, for any part of 2025\n\nOther income or return treatment, including:\n- wages or tips not on a Form W-2\n- Medicaid waiver payments (whether or not in Form W-2 box 1)\n- adoption benefits\n- dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan)\n- other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\n- income or loss from a passive activity (including gain on selling an interest in one)\n- the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)\n- a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)",
+  "question": "Any nonresident alien status, or other income or return treatment outside the kinds listed below?\n\nKinds this question is not about:\n- wages\n- interest\n- dividends\n- supported securities sales\n- Form 1099-R distributions\n- social security benefits\n\nNonresident alien status:\n- you or your spouse, for any part of 2025\n\nOther income or return treatment, including:\n- wages or tips not on a Form W-2\n- Medicaid waiver payments (whether or not in Form W-2 box 1)\n- adoption benefits\n- dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan)\n- other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\n- income or loss from a passive activity (including gain on selling an interest in one)\n- the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)\n- a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)\n- you or your spouse being a debtor in a chapter 11 bankruptcy case open at any time in 2025, even if your only income is wages, interest or dividends",
   "lines": [
    "eic.step1_resident",
    "eic.step5_line2",
@@ -5447,24 +5447,19 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer whose only income is Form W-2 wages earned abroad, and who claims the foreign earned income exclusion on Form 2555, could truthfully answer NO.",
-    "irs_text": "f1040 (2025) p. 1, line 8: \"Additional income from Schedule 1, line 10\"; i1040gi p. 40, EIC Step 1, question 3: \"Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP You can't take the credit.\"",
-    "why": "The income is wages, which the question lists as a kind it is not about, and the Form 2555 exclusion is not on the 'including' list. The filer can answer NO, and the tool then sets line 8 to zero instead of entering the negative exclusion amount that Schedule 1 carries to line 10."
+    "situation": "A filer earned wages as an inmate in a penal institution. Those wages are reported on Schedule 1, line 8u and flow into Form 1040 line 8, but the filer can truthfully answer NO because 'wages' is listed as a kind the question is not about.",
+    "irs_text": "If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a. (i1040gi p. 23, Line 1a caution)",
+    "why": "The question excludes 'wages' without exception. Its list of items to include names only wages not on a Form W-2, so inmate wages, which may come on a W-2, read as excluded. The tool then computes line 8 without the Schedule 1, line 8u amount."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer who has no extra income but claims an adjustment, a Schedule 1-A deduction or a credit cannot tell whether that counts as 'other ... return treatment'.",
-    "irs_text": "f1040 (2025) p. 1, line 10: \"Adjustments to income from Schedule 1, line 26\"; p. 2, line 13b: \"Additional deductions from Schedule 1-A, line 38\"; line 20: \"Amount from Schedule 3, line 8\"",
-    "why": "'Return treatment' is never defined, and the 'including' list names only income items. Line 10, line 13b and the credit lines that scope.ready covers may therefore be zeroed for a filer who reads the question as being only about income."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer who received money that is not taxable, such as gifts, child support, or a state tax refund after taking the standard deduction the year before, could read the question as asking about it and answer YES.",
-    "irs_text": "f1040 (2025) p. 1, line 8: \"Additional income from Schedule 1, line 10\"",
-    "why": "The question asks about any 'other income' and does not limit it to amounts that are taxable or reportable on Schedule 1. A filer whose line 8 the tool would correctly compute as zero may therefore be refused."
+    "situation": "A filer whose only income is wages earned abroad wants to exclude them on Form 2555. The exclusion is entered as a negative amount on Schedule 1, line 8d and reduces line 8.",
+    "irs_text": "If you worked abroad, you may be able to exclude part or all of your foreign earned income. For details, see Pub. 54 and Form 2555. (i1040gi p. 23, Foreign-Source Income)",
+    "why": "A filer could see foreign wages as plain 'wages', which the question excludes, and answer NO. Another filer could see the exclusion as 'other ... return treatment' and answer YES. The list of included items does not mention foreign earned income or Form 2555."
    }
   ],
-  "prompt_sha": "ef3728e9e702fe7d8e6f46636b5cb4442d71728625b4a506bcc5602fdbadbb4a",
+  "prompt_sha": "5ec7c641d4a6d6e4aa00a80db32f52128695cd40bf9067409707071302d18bc7",
+  "subject_sha": "5ec7c641d4a6d6e4aa00a80db32f52128695cd40bf9067409707071302d18bc7",
   "used": [
    {
     "doc": "f1040",
@@ -5478,7 +5473,7 @@
     "locators": [
      "Form 1040 (2025), line 8",
      "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
-     "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; , \"if you received a $18,000 qualified disaster recovery distribution in 2023, you can include $6,000 in your income in 2023, 2024, and 2025\"; , Line 1, \"Include on line 1 any repayment of a qualified reservist distribution.\"",
+     "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; , \"if you received a $18,000 qualified disaster recovery distribution in 2023, you can include $6,000 in your income in 2023, 2024, and 2025\"; , Line 1, \"Include on line 1 any repayment of a qualified reservist distribution.\"; , Chapter 11 Bankruptcy Cases, \"If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate and reported on the estate’s income tax return includes:\" and \"Because this income is taxable to the estate, don’t include this income on your own individual income tax return.\"",
      "Form 1040 (2025), the lines the screens cover: line 8, \"Additional income from Schedule 1, line 10\", line 10, \"Adjustments to income from Schedule 1, line 26\", line 13b, \"Additional deductions from Schedule 1-A, line 38\", line 16, \"Tax (see instructions). Check if any from Form(s)\", line 19, \"Child tax credit or credit for other dependents from Schedule 8812\", line 20, \"Amount from Schedule 3, line 8\", line 27a, \"Earned income credit (EIC)\", line 28, \"Additional child tax credit (ACTC) from Schedule 8812\", line 29, \"American opportunity credit from Form 8863, line 8\", line 30, \"Refundable adoption credit from Form 8839, line 13\", line 31, \"Amount from Schedule 3, line 15\""
     ],
     "cols_pages": [],
@@ -5490,6 +5485,7 @@
     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
     "pages": [
      14,
+     23,
      40,
      42,
      44
@@ -5503,6 +5499,7 @@
     ],
     "cols_pages": [
      14,
+     23,
      40,
      42,
      44
@@ -5538,7 +5535,7 @@
     "cols_sha256": "805e59f2458d33a3fc0a1d17ebede2ecd59e18d911069bbe84987e53e297ec79"
    }
   ],
-  "cost": 0.158392,
+  "cost": 0.121188,
   "model": "claude-opus-5-5"
  },
  {

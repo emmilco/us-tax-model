@@ -277,10 +277,14 @@ def checked_ids(text):
 
 def entry_base(bug, head_text):
     """The revision the entry's change is measured from: HEAD for an uncommitted entry,
-    else the parent of the commit that added it."""
+    else the parent of the commit that added it. The search follows first parents and diffs a merge
+    against its first parent, so an entry is attributed to the commit that brought it onto this line
+    of history: a merge that renumbered a branch's entries, rather than a branch commit that used the
+    same heading for another entry."""
     if f"## {bug} " not in head_text:
         return "HEAD"
-    out = subprocess.run(["git", "log", "-1", "--format=%H", "-S", f"## {bug} ", "--",
+    out = subprocess.run(["git", "log", "-1", "-s", "--first-parent", "--diff-merges=first-parent",
+                          "--format=%H", "-S", f"## {bug} ", "--",
                           str(BUGS.relative_to(ROOT))], capture_output=True, text=True, check=False).stdout.strip()
     return f"{out}^" if out else "HEAD"
 

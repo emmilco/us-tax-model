@@ -768,26 +768,20 @@
    "adjudication": "reviews/2025/screens/adjudication/group2.md"
   },
   "unruled:scope.other_income": {
-   "prompt_sha": "ef3728e9e702fe7d8e6f46636b5cb4442d71728625b4a506bcc5602fdbadbb4a",
-   "reason": "No defect. The R0 restructure kept every clause (no word lost); the NARROW finding is covered by another screen; the UNCLEAR readings can only refuse.",
+   "prompt_sha": "5ec7c641d4a6d6e4aa00a80db32f52128695cd40bf9067409707071302d18bc7",
+   "reason": "No defect. The review of the question with the chapter 11 item added (BUG-0472) raises no reading of the new item; its NARROW and UNCLEAR findings are Schedule 1 line 8 items another screen asks.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i1040gi p. 40; Schedule 1 line 8d. s1.line8_other names 'the foreign earned income or housing exclusion from Form 2555 (8d)' and refuses f1040.line8; sa.excluded_income refuses the EIC for a Form 2555 filer (eic.step1_foreign)."
+     "evidence": "i1040gi p. 23, Line 1a caution; Schedule 1 line 8u. s1.line8_other names 'wages earned while incarcerated (8u)' among the line 8 items it asks about and refuses f1040.line8 (s1.line9) on Yes, so inmate wages are refused whether or not they are on a Form W-2."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR, leans WIDE)",
-     "evidence": "f1040 lines 10, 13b and 20. As the prior ruling (finding 3): adjustments, Schedule 1-A deductions and credits are asked by scope.schedule1, scope.schedule1a and scope.credits; a filer who reads 'return treatment' to include them answers Yes and is refused. Refusal only."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR, leans WIDE)",
-     "evidence": "f1040 line 8. A filer who counts nontaxable receipts (gifts, child support) as 'other income' answers Yes and is refused; no amount is computed from a Yes. Refusal only."
+     "class": "covered",
+     "evidence": "i1040gi p. 23, Foreign-Source Income; Schedule 1 line 8d. As the prior ruling (finding 0): s1.line8_other names 'the foreign earned income or housing exclusion from Form 2555 (8d)' and refuses f1040.line8; sa.excluded_income refuses the EIC for a Form 2555 filer. Either answer to this screen leads to a refusal."
     }
    ],
    "bugs": [],

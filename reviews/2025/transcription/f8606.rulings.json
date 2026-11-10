@@ -10,6 +10,38 @@
    "subject_key": "9d0f8d2ecf09868deef8bcb95f2cc4715ed85f6ab882974f2ff1d0c554b45d59"
   },
   {
+   "printed": "1",
+   "project_expr_sha256": "84a97cc0a4deeb24325153d6ad273ceb3ba59de1f1a41972f599ba903c3ea4f8",
+   "second_expr_sha256": "398d932b3f222548cd1c2239371f359c4ea55d14357c0a08248ae29a7a896e38",
+   "ruling": "Ruling: model error; i8606 p. 9, Line 1, \"subtract line 12 of the worksheet (or the amount you chose to deduct on Schedule 1 (Form 1040), line 20, if less) from the smaller of line 10 or line 11 of the worksheet\"; the line belongs to a Form 8606 filer (i8606 p. 2, Who Must File). No value differs. The reply is that subtraction, but it takes the smaller of the traditional contribution and ira.line10 directly instead of person.ira_10or11, so it needs answers ira.line10 reads (the Roth contribution and, through compensation, Schedule C asset answers) of persons who make no traditional contribution and file no Form 8606, where the project hides the line (shown_when f8606.files): classm.f4952.1, completed, unknown on person[taxpayer].sav_roth; stage14.mut.asset_2025_listed_unanswered, incomplete. An answer the source does not need is a model error (README). The candidate refusals are other forms' cited screens reached the same way on refused returns (stage14.asset.refuse_qip_2017); its added line-level refusal on scope.other_income (the qualified reservist repayment) changes nothing, since that screen refuses the return. The project line is unchanged; this is the T-150 sibling refresh of the BUG-0472 change to scope.other_income, whose citation shares the i8606 p. 9 Line 1 anchor. executable-triage-v2 (.transcription/triage/2025/f8606.json, pass 64b1bfea5be3; 1,767 fixtures, 500 generated returns seed 20261026): 2,278 of 2,635 comparisons agree; differences {\"candidate-refuses\": 169, \"candidate-unknown\": 188}; on completed returns {\"candidate-unknown\": 84}. Project retained.",
+   "context": "99821f3b5ea0097934c93f75607012441cc8a8b03868ccb51218deb5d898803e",
+   "date": "2026-11-10",
+   "run": "9000c20e10b2c58ceda6a7f6239c0bf9fe98cdb944afa8c33df04032edfcda3b",
+   "subject_key": "3e8711e4887ada120335abfaaa68da75f5ac5e878a6781c2d16a47875c4e4c8c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@person[taxpayer].f8606[form]",
+     "fixture:stage14.asset.refuse_ads_past_gds@person[taxpayer].f8606[form]",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@person[taxpayer].f8606[form]",
+     "fixture:stage14.asset.refuse_class@person[taxpayer].f8606[form]",
+     "fixture:stage14.asset.refuse_listed_low@person[taxpayer].f8606[form]",
+     "fixture:stage14.asset.refuse_s179_over@person[taxpayer].f8606[form]",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@person[taxpayer].f8606[form]",
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8606[form]",
+     "fixture:classm.f8889.3.deepseek@person[spouse].f8606[form]",
+     "fixture:classm.f8889.3.deepseek@person[taxpayer].f8606[form]",
+     "fixture:classm.f4952.4.deepseek@person[taxpayer].f8606[form]",
+     "fixture:classm.f8960.3.deepseek@person[taxpayer].f8606[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "2",
    "project_expr_sha256": "0f7817f6801f779c33a6596024d85c771dcfdec90bbd81277d648e3bd1760948",
    "second_expr_sha256": "ad89c74058fd4261b9e2682db68544c3dcc3ad1fa0b5280cb609b657189f1de0",
